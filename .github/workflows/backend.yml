@@ -16,6 +16,8 @@ jobs:
     - run: npm ci
     - run: git submodule update --init --recursive
     - run: npm run build
+      env:
+        ALCHEMY_API: ${{ secrets.ALCHEMY_API }}
   test:
     runs-on: ubuntu-latest
     steps:

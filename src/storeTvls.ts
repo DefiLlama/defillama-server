@@ -2,6 +2,7 @@ import dynamodb from "./utils/dynamodb";
 import { wrapScheduledLambda } from "./utils/wrap";
 import protocols, {Protocol} from "./protocols/data";
 import {secondsBetweenCalls, getCurrentUnixTimestamp} from './utils/date'
+import * as Sentry from '@sentry/serverless'
 
 const maxRetries = 4;
 const secondsBetweenCallsExtra = secondsBetweenCalls * 1.5 // 1.5 to add some wiggle room
@@ -48,7 +49,9 @@ async function storeTvl(currentUnixTimestamp:number, protocol:Protocol){
       tvl = await protocol.tvlFunction()
     }catch(e){
       if(i >= maxRetries-1){
-        throw e
+        console.error(protocol.name, e);
+        Sentry.AWSLambda.captureException(e);
+        return;
       } else {
         continue;
       }

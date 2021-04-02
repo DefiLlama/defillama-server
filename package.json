@@ -12,7 +12,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "build": "sls webpack",
-    "postinstall": "rm -f node_modules/bignumber.js/bignumber.mjs"
+    "postinstall": "rm -f node_modules/bignumber.js/bignumber.mjs node_modules/node-fetch/lib/index.mjs && cp ./patches/geturl.js node_modules/@ethersproject/providers/node_modules/@ethersproject/web/lib.esm/geturl.js"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",

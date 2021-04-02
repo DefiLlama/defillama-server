@@ -147,6 +147,7 @@ import stakedao from "../../DefiLlama-Adapters/projects/stakedao/index.js";
 import basketdao from "../../DefiLlama-Adapters/projects/basketdao/index.js";
 import { fetch as ellipsis } from "../../DefiLlama-Adapters/projects/ellipsis.js";
 import { fetch as swipeswap } from "../../DefiLlama-Adapters/projects/swipeswap.js";
+import { fetch as instadapp } from "../../DefiLlama-Adapters/projects/instadapp.js";
 
 import { baseIconsUrl } from "../constants";
 
@@ -387,7 +388,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Services",
-    tvlFunction: null, //TODO
+    tvlFunction: instadapp,
   },
   {
     id: "121",
@@ -1022,7 +1023,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: alphaHomora,
+    tvlFunction: alphaHomora.tvl,
   },
   {
     id: "161",
@@ -1056,7 +1057,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: bancor,
+    tvlFunction: bancor.tvl,
   },
   {
     id: "163",

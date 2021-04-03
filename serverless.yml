@@ -49,6 +49,7 @@ provider:
       Resource: '*'
   environment:
     ALCHEMY_API: ${file(./env.js):ALCHEMY_API}
+    DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
 
@@ -123,6 +124,9 @@ functions:
     handler: src/storeTvls.default
     timeout: 600
     events:
+      - http:
+          path: update
+          method: get
       - schedule: rate(1 hour)
 
 resources:

@@ -4,6 +4,7 @@ module.exports = {
   entry: slsw.lib.entries,
   target: 'node',
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
+  externals:['ethers'],
   module: {
     rules: [
       {
@@ -21,11 +22,15 @@ module.exports = {
       },
       {
         test: /\.mjs$/,
-        resolve: { mainFields: [ "browser", "module", "main" ] }
+        resolve: { mainFields: [ "default" ] }
       }
     ],
   },
   resolve: {
     extensions: ['.ts', '.js', '.json'],
+    alias: {
+      'bignumber.js$': 'bignumber.js/bignumber.js',
+      'node-fetch$': 'node-fetch/lib/index.js'
+    }
   },
 };

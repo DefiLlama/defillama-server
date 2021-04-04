@@ -27,7 +27,7 @@ const handler = async (
       return null;
     }
     const returnedProtocol:Partial<Protocol> = {...protocol};
-    delete returnedProtocol.tvlFunction;
+    delete returnedProtocol.module;
     return {
       ...protocol,
       "tvl": item.tvl,

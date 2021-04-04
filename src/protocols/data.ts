@@ -1,156 +1,4 @@
-import { fetch as uniswap } from "../../DefiLlama-Adapters/projects/uniswap";
-import { fetch as oneinch } from "../../DefiLlama-Adapters/projects/1inch.js";
-import { fetch as aave } from "../../DefiLlama-Adapters/projects/aave.js";
-import { fetch as acryptos } from "../../DefiLlama-Adapters/projects/acryptos.js";
-import { fetch as alchemix } from "../../DefiLlama-Adapters/projects/alchemix.js";
-import { fetch as augur } from "../../DefiLlama-Adapters/projects/augur.js";
-import { fetch as autofarm } from "../../DefiLlama-Adapters/projects/autofarm.js";
-import { fetch as badgerdao } from "../../DefiLlama-Adapters/projects/badgerdao.js";
-import { fetch as balancer } from "../../DefiLlama-Adapters/projects/balancer.js";
-import { fetch as barnbridge } from "../../DefiLlama-Adapters/projects/barnbridge.js";
-import { fetch as basiscash } from "../../DefiLlama-Adapters/projects/basis-cash.js";
-import { fetch as bella } from "../../DefiLlama-Adapters/projects/bella.js";
-import { fetch as boringdao } from "../../DefiLlama-Adapters/projects/boringdao.js";
-import { fetch as bprotocol } from "../../DefiLlama-Adapters/projects/b-protocol.js";
-import { fetch as btfinance } from "../../DefiLlama-Adapters/projects/bt-finance.js";
-import { fetch as bzx } from "../../DefiLlama-Adapters/projects/bzx.js";
-import { fetch as cofix } from "../../DefiLlama-Adapters/projects/cofix.js";
-import { fetch as compound } from "../../DefiLlama-Adapters/projects/compound.js";
-import { fetch as cover } from "../../DefiLlama-Adapters/projects/cover.js";
-import { fetch as cream } from "../../DefiLlama-Adapters/projects/cream.js";
-import { fetch as curve } from "../../DefiLlama-Adapters/projects/curve.js";
-import { fetch as defichain } from "../../DefiLlama-Adapters/projects/defichain.js";
-import { fetch as defidollar } from "../../DefiLlama-Adapters/projects/defidollar.js";
-import { fetch as defisaver } from "../../DefiLlama-Adapters/projects/defisaver.js";
-import { fetch as demex } from "../../DefiLlama-Adapters/projects/demex.js";
-import { fetch as deversifi } from "../../DefiLlama-Adapters/projects/deversifi.js";
-import { fetch as devprotocol } from "../../DefiLlama-Adapters/projects/dev.js";
-import { fetch as dhedge } from "../../DefiLlama-Adapters/projects/dhedge.js";
-import { fetch as dodo } from "../../DefiLlama-Adapters/projects/dodo.js";
-import { fetch as dpi } from "../../DefiLlama-Adapters/projects/dpi.js";
-import { fetch as dracula } from "../../DefiLlama-Adapters/projects/dracula.js";
-import { fetch as energiswap } from "../../DefiLlama-Adapters/projects/energiswap.js";
-import { fetch as fantom } from "../../DefiLlama-Adapters/projects/fantom.js";
-import { fetch as finnexus } from "../../DefiLlama-Adapters/projects/finnexus.js";
-import { fetch as flamincome } from "../../DefiLlama-Adapters/projects/flamincome.js";
-import { fetch as flexa } from "../../DefiLlama-Adapters/projects/flexa.js";
-import { fetch as fuse } from "../../DefiLlama-Adapters/projects/fuse.js";
-import { fetch as gdao } from "../../DefiLlama-Adapters/projects/gdao.js";
-import { fetch as goose } from "../../DefiLlama-Adapters/projects/goose.js";
-import { fetch as growthdefi } from "../../DefiLlama-Adapters/projects/growth-defi.js";
-import { fetch as hakka } from "../../DefiLlama-Adapters/projects/hakka.js";
-import { fetch as hardprotocol } from "../../DefiLlama-Adapters/projects/hard.js";
-import { fetch as harvest } from "../../DefiLlama-Adapters/projects/harvest.js";
-import { fetch as hbtc } from "../../DefiLlama-Adapters/projects/hbtc.js";
-import { fetch as hegic } from "../../DefiLlama-Adapters/projects/hegic.js";
-import { fetch as idle } from "../../DefiLlama-Adapters/projects/idle.js";
-import { fetch as imbtc } from "../../DefiLlama-Adapters/projects/imbtc.js";
-import { fetch as incognito } from "../../DefiLlama-Adapters/projects/incognito.js";
-import { fetch as indexed } from "../../DefiLlama-Adapters/projects/indexed.js";
-import { fetch as kava } from "../../DefiLlama-Adapters/projects/kava.js";
-import { fetch as keeperdao } from "../../DefiLlama-Adapters/projects/keeper-dao.js";
-import { fetch as keep } from "../../DefiLlama-Adapters/projects/keep.js";
-import { fetch as lido } from "../../DefiLlama-Adapters/projects/lido.js";
-import { fetch as linkswap } from "../../DefiLlama-Adapters/projects/linkswap.js";
-import { fetch as mantradao } from "../../DefiLlama-Adapters/projects/mantradao.js";
-import { fetch as mushrooms } from "../../DefiLlama-Adapters/projects/mushrooms.js";
-import { fetch as nerd } from "../../DefiLlama-Adapters/projects/n3rd.js";
-import { fetch as onx } from "../../DefiLlama-Adapters/projects/onx.js";
-import { fetch as opium } from "../../DefiLlama-Adapters/projects/opium.js";
-import { fetch as pancakeswap } from "../../DefiLlama-Adapters/projects/pancake-swap.js";
-import { fetch as pickle } from "../../DefiLlama-Adapters/projects/pickle.js";
-import { fetch as piedao } from "../../DefiLlama-Adapters/projects/piedao.js";
-import { fetch as rari } from "../../DefiLlama-Adapters/projects/rari.js";
-import { fetch as raydium } from "../../DefiLlama-Adapters/projects/raydium.js";
-import { fetch as ren } from "../../DefiLlama-Adapters/projects/ren.js";
-import { fetch as sablier } from "../../DefiLlama-Adapters/projects/sablier.js";
-import { fetch as saddle } from "../../DefiLlama-Adapters/projects/saddle.js";
-import { fetch as serum } from "../../DefiLlama-Adapters/projects/serum.js";
-import { fetch as shell } from "../../DefiLlama-Adapters/projects/shell.js";
-import { fetch as siren } from "../../DefiLlama-Adapters/projects/siren.js";
-import { fetch as smoothy } from "../../DefiLlama-Adapters/projects/smoothy.js";
-import { fetch as snowswap } from "../../DefiLlama-Adapters/projects/snowswap.js";
-import { fetch as strudel } from "../../DefiLlama-Adapters/projects/strudel.js";
-import { fetch as swerve } from "../../DefiLlama-Adapters/projects/swerve.js";
-import { fetch as synlev } from "../../DefiLlama-Adapters/projects/synlev.js";
-import { fetch as synthetix } from "../../DefiLlama-Adapters/projects/synthetix.js";
-import { fetch as thorchain } from "../../DefiLlama-Adapters/projects/thorchain.js";
-import { fetch as tornado } from "../../DefiLlama-Adapters/projects/tornado-cash.js";
-import { fetch as uma } from "../../DefiLlama-Adapters/projects/uma.js";
-import { fetch as unagii } from "../../DefiLlama-Adapters/projects/unagii.js";
-import { fetch as unitprotocol } from "../../DefiLlama-Adapters/projects/unit.js";
-import { fetch as unslashed } from "../../DefiLlama-Adapters/projects/unslashed.js";
-import { fetch as valuedefi } from "../../DefiLlama-Adapters/projects/valuedefi.js";
-import { fetch as venus } from "../../DefiLlama-Adapters/projects/venus.js";
-import { fetch as wanswap } from "../../DefiLlama-Adapters/projects/wanswap.js";
-import { fetch as wbtc } from "../../DefiLlama-Adapters/projects/wbtc.js";
-import { fetch as wepiggy } from "../../DefiLlama-Adapters/projects/wepiggy.js";
-import { fetch as wingfinance } from "../../DefiLlama-Adapters/projects/wing.js";
-import { fetch as xtoken } from "../../DefiLlama-Adapters/projects/xtoken.js";
-import { fetch as yaxis } from "../../DefiLlama-Adapters/projects/yaxis.js";
-import { fetch as zlot } from "../../DefiLlama-Adapters/projects/zlot.js";
-
-// New adapters
-import mph from "../../DefiLlama-Adapters/projects/88mph/index.js";
-import yearn from "../../DefiLlama-Adapters/projects/yearn/index.js";
-import alphaHomora from "../../DefiLlama-Adapters/projects/alpha-homora/index.js";
-import auctus from "../../DefiLlama-Adapters/projects/auctus/index.js";
-import bancor from "../../DefiLlama-Adapters/projects/bancor/index.js";
-import connext from "../../DefiLlama-Adapters/projects/connext/index.js";
-import core from "../../DefiLlama-Adapters/projects/core/index.js";
-import creamswap from "../../DefiLlama-Adapters/projects/creamswap/index.js";
-import ddex from "../../DefiLlama-Adapters/projects/ddex/index.js";
-import definer from "../../DefiLlama-Adapters/projects/definer/index.js";
-import defiswap from "../../DefiLlama-Adapters/projects/defi-swap/index.js";
-import derivadex from "../../DefiLlama-Adapters/projects/derivadex/index.js";
-import dextf from "../../DefiLlama-Adapters/projects/dextf/index.js";
-import dforce from "../../DefiLlama-Adapters/projects/dforce/index.js";
-import dydx from "../../DefiLlama-Adapters/projects/dydx/index.js";
-import enzyme from "../../DefiLlama-Adapters/projects/enzyme/index.js";
-import erasure from "../../DefiLlama-Adapters/projects/erasure/index.js";
-import fortube from "../../DefiLlama-Adapters/projects/fortube/index.js";
-import futureswap from "../../DefiLlama-Adapters/projects/futureswap/index.js";
-import gnosis from "../../DefiLlama-Adapters/projects/gnosis/index.js";
-import idex from "../../DefiLlama-Adapters/projects/idex/index.js";
-import kyber from "../../DefiLlama-Adapters/projects/kyber/index.js";
-import lightningNetwork from "../../DefiLlama-Adapters/projects/lightning-network/index.js";
-import loopring from "../../DefiLlama-Adapters/projects/loopring/index.js";
-import makerdao from "../../DefiLlama-Adapters/projects/maker/index.js";
-import mcdex from "../../DefiLlama-Adapters/projects/mcdex/index.js";
-import metronome from "../../DefiLlama-Adapters/projects/metronome/index.js";
-import mstable from "../../DefiLlama-Adapters/projects/mstable/index.js";
-import nexus from "../../DefiLlama-Adapters/projects/nexus/index.js";
-import notional from "../../DefiLlama-Adapters/projects/notional/index.js";
-import peakdefi from "../../DefiLlama-Adapters/projects/peakdefi/index.js";
-import perlinx from "../../DefiLlama-Adapters/projects/perlinx/index.js";
-import polygon from "../../DefiLlama-Adapters/projects/polygon/index.js";
-import pooltogether from "../../DefiLlama-Adapters/projects/pooltogether/index.js";
-import powerindex from "../../DefiLlama-Adapters/projects/powerindex/index.js";
-import primitive from "../../DefiLlama-Adapters/projects/primitive/index.js";
-import qian from "../../DefiLlama-Adapters/projects/qian/index.js";
-import ray from "../../DefiLlama-Adapters/projects/ray/index.js";
-import reflexer from "../../DefiLlama-Adapters/projects/reflexer/index.js";
-import setProtocol from "../../DefiLlama-Adapters/projects/set-protocol/index.js";
-import sfinance from "../../DefiLlama-Adapters/projects/sfinance/index.js";
-import truefi from "../../DefiLlama-Adapters/projects/truefi/index.js";
-import unitrade from "../../DefiLlama-Adapters/projects/unitrade/index.js";
-import valueliquid from "../../DefiLlama-Adapters/projects/valueliquid/index.js";
-import vesper from "../../DefiLlama-Adapters/projects/vesper/index.js";
-import xdai from "../../DefiLlama-Adapters/projects/xdai/index.js";
-import yfii from "../../DefiLlama-Adapters/projects/yfii/index.js";
-import sushiswap from "../../DefiLlama-Adapters/projects/sushiswap/index.js";
-import { fetch as secretNetwork } from "../../DefiLlama-Adapters/projects/scrt.js";
-import { fetch as pangolin } from "../../DefiLlama-Adapters/projects/pangolin.js";
-import jarvis from "../../DefiLlama-Adapters/projects/jarvis/index.js";
-import forcedao from "../../DefiLlama-Adapters/projects/forcedao/index.js";
-import stakedao from "../../DefiLlama-Adapters/projects/stakedao/index.js";
-import basketdao from "../../DefiLlama-Adapters/projects/basketdao/index.js";
-import { fetch as ellipsis } from "../../DefiLlama-Adapters/projects/ellipsis.js";
-import { fetch as swipeswap } from "../../DefiLlama-Adapters/projects/swipeswap.js";
-import { fetch as instadapp } from "../../DefiLlama-Adapters/projects/instadapp.js";
-
 import { baseIconsUrl } from "../constants";
-
 
 export interface Protocol {
   id: string;
@@ -166,7 +14,7 @@ export interface Protocol {
   gecko_id: string;
   cmcId: string;
   category: string;
-  tvlFunction: () => Promise<number>;
+  module: string;
 }
 
 export default [
@@ -185,7 +33,7 @@ export default [
     gecko_id: "uniswap",
     cmcId: "7083",
     category: "Dexes",
-    tvlFunction: uniswap,
+    module: 'uniswap.js',
   },
   {
     id: "2",
@@ -202,7 +50,7 @@ export default [
     gecko_id: "wrapped-bitcoin",
     cmcId: "3717",
     category: "Assets",
-    tvlFunction: wbtc,
+    module: 'wbtc.js',
   },
   {
     id: "3",
@@ -219,7 +67,7 @@ export default [
     gecko_id: "curve-dao-token",
     cmcId: "6538",
     category: "Dexes",
-    tvlFunction: curve,
+    module: 'curve.js',
   },
   {
     id: "111",
@@ -236,7 +84,7 @@ export default [
     gecko_id: "aave",
     cmcId: "7278",
     category: "Lending",
-    tvlFunction: aave,
+    module: 'aave.js',
   },
   {
     id: "112",
@@ -252,7 +100,7 @@ export default [
     gecko_id: "harvest-finance",
     cmcId: "6859",
     category: "Yield",
-    tvlFunction: harvest,
+    module: 'harvest.js',
   },
   {
     id: "113",
@@ -269,7 +117,7 @@ export default [
     gecko_id: "yearn-finance",
     cmcId: "5864",
     category: "Yield",
-    tvlFunction: yearn.tvl,
+    module: 'yearn/index.js', // TODO: Fix latest
   },
   {
     id: "114",
@@ -286,7 +134,7 @@ export default [
     gecko_id: "compound-governance-token",
     cmcId: "5692",
     category: "Lending",
-    tvlFunction: compound,
+    module: 'compound.js',
   },
   {
     id: "115",
@@ -303,7 +151,7 @@ export default [
     gecko_id: "havven",
     cmcId: "2586",
     category: "Dexes",
-    tvlFunction: synthetix,
+    module: 'synthetix.js',
   },
   {
     id: "116",
@@ -320,7 +168,7 @@ export default [
     gecko_id: "balancer",
     cmcId: "5728",
     category: "Dexes",
-    tvlFunction: balancer,
+    module: 'balancer.js',
   },
   {
     id: "117",
@@ -337,7 +185,7 @@ export default [
     gecko_id: "republic-protocol",
     cmcId: "2539",
     category: "Assets",
-    tvlFunction: ren,
+    module: 'ren/index.js',
   },
   {
     id: "118",
@@ -354,7 +202,7 @@ export default [
     gecko_id: "maker",
     cmcId: "1518",
     category: "Minting",
-    tvlFunction: uniswap,
+    module: 'maker/index.js',
   },
   {
     id: "119",
@@ -371,7 +219,7 @@ export default [
     gecko_id: "sushi",
     cmcId: "6758",
     category: "Dexes",
-    tvlFunction: sushiswap.tvl,
+    module: 'sushiswap/index.js',
   },
   {
     id: "120",
@@ -388,7 +236,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Services",
-    tvlFunction: instadapp,
+    module: 'instadapp.js',
   },
   {
     id: "121",
@@ -404,7 +252,7 @@ export default [
     gecko_id: "cream",
     cmcId: "6193",
     category: "Lending",
-    tvlFunction: cream,
+    module: 'cream.js',
   },
   {
     id: "122",
@@ -421,7 +269,7 @@ export default [
     gecko_id: "nexus",
     cmcId: "1103",
     category: "Insurance",
-    tvlFunction: nexus.tvl,
+    module: 'nexus/index.js',
   },
   {
     id: "123",
@@ -438,7 +286,7 @@ export default [
     gecko_id: "dforce-token",
     cmcId: "4758",
     category: "Others",
-    tvlFunction: dforce.tvl,
+    module: 'dforce/index.js',
   },
   {
     id: "124",
@@ -454,7 +302,7 @@ export default [
     gecko_id: "keep-network",
     cmcId: "5566",
     category: "Assets",
-    tvlFunction: keep,
+    module: 'keep.js',
   },
   {
     id: "125",
@@ -471,7 +319,7 @@ export default [
     gecko_id: "meta",
     cmcId: "5748",
     category: "Minting",
-    tvlFunction: mstable.tvl,
+    module: 'mstable/index.js',
   },
   {
     id: "126",
@@ -487,7 +335,7 @@ export default [
     gecko_id: "loopring",
     cmcId: "1934",
     category: "Dexes",
-    tvlFunction: loopring.tvl,
+    module: 'loopring/index.js',
   },
   {
     id: "127",
@@ -504,7 +352,7 @@ export default [
     gecko_id: "kyber-network",
     cmcId: "404",
     category: "Dexes",
-    tvlFunction: kyber.tvl,
+    module: 'kyber/index.js',
   },
   {
     id: "128",
@@ -521,7 +369,7 @@ export default [
     gecko_id: "hegic",
     cmcId: "6929",
     category: "Options",
-    tvlFunction: hegic,
+    module: 'hegic.js',
   },
   {
     id: "129",
@@ -538,7 +386,7 @@ export default [
     gecko_id: "xdai-stake",
     cmcId: "5601",
     category: "Layer2",
-    tvlFunction: xdai.tvl,
+    module: 'xdai/index.js',
   },
   {
     id: "130",
@@ -555,7 +403,7 @@ export default [
     gecko_id: "imbtc",
     cmcId: "5292",
     category: "Assets",
-    tvlFunction: imbtc,
+    module: 'imbtc.js',
   },
   {
     id: "131",
@@ -572,7 +420,7 @@ export default [
     gecko_id: "barnbridge",
     cmcId: "7440",
     category: "Yield",
-    tvlFunction: barnbridge,
+    module: 'barnbridge.js',
   },
   {
     id: "132",
@@ -589,7 +437,7 @@ export default [
     gecko_id: "huobi-btc",
     cmcId: "478",
     category: "Assets",
-    tvlFunction: hbtc,
+    module: 'hbtc.js',
   },
   {
     id: "133",
@@ -606,7 +454,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: shell,
+    module: 'shell.js',
   },
   {
     id: "134",
@@ -623,7 +471,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: pickle,
+    module: 'pickle.js',
   },
   {
     id: "135",
@@ -640,7 +488,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    tvlFunction: kava,
+    module: 'kava.js',
   },
   {
     id: "136",
@@ -657,7 +505,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: rari,
+    module: 'rari.js',
   },
   {
     id: "137",
@@ -674,7 +522,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: thorchain,
+    module: 'thorchain.js',
   },
   {
     id: "138",
@@ -691,7 +539,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: hakka,
+    module: 'hakka.js',
   },
   {
     id: "139",
@@ -708,7 +556,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: snowswap,
+    module: 'snowswap.js',
   },
   {
     id: "140",
@@ -725,7 +573,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    tvlFunction: hardprotocol,
+    module: 'hard.js',
   },
   {
     id: "141",
@@ -741,7 +589,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Minting",
-    tvlFunction: uma,
+    module: 'uma.js',
   },
   {
     id: "142",
@@ -758,7 +606,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: swerve,
+    module: 'swerve.js',
   },
   {
     id: "143",
@@ -774,7 +622,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    tvlFunction: flexa,
+    module: 'flexa.js',
   },
   {
     id: "144",
@@ -791,7 +639,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: dydx.tvl,
+    module: 'dydx/index.js',
   },
   {
     id: "145",
@@ -808,7 +656,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: serum,
+    module: 'serum.js',
   },
   {
     id: "146",
@@ -824,7 +672,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: dodo,
+    module: 'dodo.js',
   },
   {
     id: "148",
@@ -840,7 +688,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Services",
-    tvlFunction: tornado,
+    module: 'tornado-cash.js',
   },
   {
     id: "149",
@@ -857,7 +705,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    tvlFunction: bprotocol,
+    module: 'b-protocol.js',
   },
   {
     id: "150",
@@ -874,7 +722,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: idle,
+    module: 'idle.js',
   },
   {
     id: "151",
@@ -891,7 +739,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: deversifi,
+    module: 'deversifi.js',
   },
   {
     id: "152",
@@ -908,7 +756,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: augur,
+    module: 'augur.js',
   },
   {
     id: "153",
@@ -924,7 +772,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: cofix,
+    module: 'cofix.js',
   },
   {
     id: "155",
@@ -940,7 +788,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: keeperdao,
+    module: 'keeper-dao.js',
   },
   {
     id: "156",
@@ -956,7 +804,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: zlot,
+    module: 'zlot.js',
   },
   {
     id: "157",
@@ -972,7 +820,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: mph.tvl,
+    module: '88mph/index.js',
   },
   {
     id: "158",
@@ -989,7 +837,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: dracula,
+    module: 'dracula.js',
   },
   {
     id: "159",
@@ -1006,7 +854,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: growthdefi,
+    module: 'growth-defi.js',
   },
   {
     id: "160",
@@ -1023,7 +871,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: alphaHomora.tvl,
+    module: 'alpha-homora/index.js',
   },
   {
     id: "161",
@@ -1040,7 +888,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Minting",
-    tvlFunction: boringdao,
+    module: 'boringdao.js',
   },
   {
     id: "162",
@@ -1057,7 +905,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: bancor.tvl,
+    module: 'bancor/index.js',
   },
   {
     id: "163",
@@ -1074,7 +922,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    tvlFunction: fortube.tvl,
+    module: 'fortube/index.js',
   },
   {
     id: "164",
@@ -1091,7 +939,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: valuedefi,
+    module: 'valuedefi.js',
   },
   {
     id: "165",
@@ -1107,7 +955,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Insurance",
-    tvlFunction: cover,
+    module: 'cover.js',
   },
   {
     id: "166",
@@ -1124,7 +972,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    tvlFunction: truefi.tvl,
+    module: 'truefi/index.js',
   },
   {
     id: "167",
@@ -1141,7 +989,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Indexes",
-    tvlFunction: piedao,
+    module: 'piedao.js',
   },
   {
     id: "168",
@@ -1157,7 +1005,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    tvlFunction: devprotocol,
+    module: 'dev.js',
   },
   {
     id: "169",
@@ -1174,7 +1022,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Assets",
-    tvlFunction: basiscash,
+    module: 'basis-cash.js',
   },
   {
     id: "170",
@@ -1191,7 +1039,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Options",
-    tvlFunction: finnexus,
+    module: 'finnexus.js',
   },
   {
     id: "171",
@@ -1207,7 +1055,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    tvlFunction: synlev,
+    module: 'synlev.js',
   },
   {
     id: "172",
@@ -1224,7 +1072,7 @@ export default [
     gecko_id: "index-cooperative",
     cmcId: "7336",
     category: "Indexes",
-    tvlFunction: dpi,
+    module: 'dpi.js',
   },
   {
     id: "173",
@@ -1241,7 +1089,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: badgerdao,
+    module: 'badgerdao.js',
   },
   {
     id: "174",
@@ -1258,7 +1106,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: btfinance,
+    module: 'bt-finance.js',
   },
   {
     id: "175",
@@ -1274,7 +1122,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: nerd,
+    module: 'n3rd.js',
   },
   {
     id: "176",
@@ -1291,7 +1139,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: mushrooms,
+    module: 'mushrooms.js',
   },
   {
     id: "177",
@@ -1308,7 +1156,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    tvlFunction: defisaver,
+    module: 'defisaver.js',
   },
   {
     id: "178",
@@ -1325,7 +1173,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Chain",
-    tvlFunction: defichain,
+    module: 'defichain.js',
   },
   {
     id: "179",
@@ -1342,7 +1190,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: linkswap,
+    module: 'linkswap.js',
   },
   {
     id: "180",
@@ -1359,7 +1207,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: demex,
+    module: 'demex.js',
   },
   {
     id: "181",
@@ -1376,7 +1224,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    tvlFunction: mantradao,
+    module: 'mantradao.js',
   },
   {
     id: "182",
@@ -1393,7 +1241,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Staking",
-    tvlFunction: lido,
+    module: 'lido.js',
   },
   {
     id: "183",
@@ -1409,7 +1257,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    tvlFunction: wingfinance,
+    module: 'wing.js',
   },
   {
     id: "184",
@@ -1426,7 +1274,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    tvlFunction: fuse,
+    module: 'fuse.js',
   },
   {
     id: "186",
@@ -1443,7 +1291,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: wanswap,
+    module: 'wanswap.js',
   },
   {
     id: "187",
@@ -1459,7 +1307,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: unagii,
+    module: 'unagii.js',
   },
   {
     id: "188",
@@ -1476,7 +1324,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Indexes",
-    tvlFunction: indexed,
+    module: 'indexed/index.js',
   },
   {
     id: "189",
@@ -1493,7 +1341,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: oneinch,
+    module: '1inch.js',
   },
   {
     id: "190",
@@ -1509,7 +1357,7 @@ export default [
     gecko_id: "dhedge-dao",
     cmcId: null,
     category: null,
-    tvlFunction: dhedge,
+    module: 'dhedge.js',
   },
   {
     id: "191",
@@ -1526,7 +1374,7 @@ export default [
     gecko_id: "opium",
     cmcId: null,
     category: "Insurance",
-    tvlFunction: opium,
+    module: 'opium.js',
   },
   {
     id: "192",
@@ -1543,7 +1391,7 @@ export default [
     gecko_id: "governor-dao",
     cmcId: null,
     category: null,
-    tvlFunction: gdao,
+    module: 'gdao.js',
   },
   {
     id: "193",
@@ -1560,7 +1408,7 @@ export default [
     gecko_id: "unit-protocol-duck",
     cmcId: null,
     category: "Minting",
-    tvlFunction: unitprotocol,
+    module: 'unit.js',
   },
   {
     id: "194",
@@ -1576,7 +1424,7 @@ export default [
     gecko_id: "pancakeswap",
     cmcId: null,
     category: "Dexes",
-    tvlFunction: pancakeswap,
+    module: 'pancake-swap.js',
   },
   {
     id: "195",
@@ -1593,7 +1441,7 @@ export default [
     gecko_id: "defidollar-dao",
     cmcId: null,
     category: "Minting",
-    tvlFunction: defidollar,
+    module: 'defidollar.js',
   },
   {
     id: "196",
@@ -1610,7 +1458,7 @@ export default [
     gecko_id: "fantom",
     cmcId: null,
     category: "Chains",
-    tvlFunction: fantom,
+    module: 'fantom.js',
   },
   {
     id: "197",
@@ -1627,7 +1475,7 @@ export default [
     gecko_id: "bzx-protocol",
     cmcId: "5810",
     category: "Lending",
-    tvlFunction: bzx,
+    module: 'bzx.js',
   },
   {
     id: "198",
@@ -1643,7 +1491,7 @@ export default [
     gecko_id: "privacy",
     cmcId: null,
     category: "Chain",
-    tvlFunction: incognito,
+    module: 'incognito.js',
   },
   {
     id: "199",
@@ -1659,7 +1507,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    tvlFunction: sablier,
+    module: 'sablier.js',
   },
   {
     id: "200",
@@ -1676,7 +1524,7 @@ export default [
     gecko_id: "bella-protocol",
     cmcId: "6928",
     category: "Yield",
-    tvlFunction: bella,
+    module: 'bella.js',
   },
   {
     id: "202",
@@ -1693,7 +1541,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: saddle,
+    module: 'saddle.js',
   },
   {
     id: "203",
@@ -1709,7 +1557,7 @@ export default [
     gecko_id: "siren",
     cmcId: "8701",
     category: "Options",
-    tvlFunction: siren,
+    module: 'siren.js',
   },
   {
     id: "204",
@@ -1726,7 +1574,7 @@ export default [
     gecko_id: "alchemix",
     cmcId: "8613",
     category: "Yield",
-    tvlFunction: alchemix,
+    module: 'alchemix.js',
   },
   {
     id: "205",
@@ -1742,7 +1590,7 @@ export default [
     gecko_id: "goose-finance",
     cmcId: "8449",
     category: "Yield",
-    tvlFunction: goose,
+    module: 'goose.js',
   },
   {
     id: "206",
@@ -1758,7 +1606,7 @@ export default [
     gecko_id: "xtoken",
     cmcId: "8599",
     category: "Yield",
-    tvlFunction: xtoken,
+    module: 'xtoken.js',
   },
   {
     id: "207",
@@ -1774,7 +1622,7 @@ export default [
     gecko_id: "unslashed-finance",
     cmcId: null,
     category: "Insurance",
-    tvlFunction: unslashed,
+    module: 'unslashed.js',
   },
   {
     id: "208",
@@ -1791,7 +1639,7 @@ export default [
     gecko_id: "acryptos",
     cmcId: "7844",
     category: "Yield",
-    tvlFunction: acryptos,
+    module: 'acryptos.js',
   },
   {
     id: "209",
@@ -1808,7 +1656,7 @@ export default [
     gecko_id: "auto",
     cmcId: "8387",
     category: "Yield",
-    tvlFunction: autofarm,
+    module: 'autofarm.js',
   },
   {
     id: "210",
@@ -1825,7 +1673,7 @@ export default [
     gecko_id: "yaxis",
     cmcId: "7222",
     category: "Yield",
-    tvlFunction: yaxis,
+    module: 'yaxis.js',
   },
   {
     id: "211",
@@ -1842,7 +1690,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: smoothy,
+    module: 'smoothy.js',
   },
   {
     id: "212",
@@ -1859,7 +1707,7 @@ export default [
     gecko_id: "venus",
     cmcId: "7288",
     category: "Lending",
-    tvlFunction: venus,
+    module: 'venus.js',
   },
   {
     id: "213",
@@ -1875,7 +1723,7 @@ export default [
     gecko_id: "onx-finance",
     cmcId: "8071",
     category: "Lending",
-    tvlFunction: onx,
+    module: 'onx.js',
   },
   {
     id: "214",
@@ -1891,7 +1739,7 @@ export default [
     gecko_id: "raydium",
     cmcId: "8526",
     category: "Dexes",
-    tvlFunction: raydium,
+    module: 'raydium.js',
   },
   {
     id: "215",
@@ -1908,7 +1756,7 @@ export default [
     gecko_id: "strudel-finance",
     cmcId: "8390",
     category: "Assets",
-    tvlFunction: strudel,
+    module: 'strudel.js',
   },
   {
     id: "216",
@@ -1924,7 +1772,7 @@ export default [
     gecko_id: "auctus",
     cmcId: "2653",
     category: "Options",
-    tvlFunction: auctus.tvl,
+    module: 'auctus/index.js',
   },
   {
     id: "217",
@@ -1940,7 +1788,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Layer2",
-    tvlFunction: connext.tvl,
+    module: 'connext/index.js',
   },
   {
     id: "218",
@@ -1956,7 +1804,7 @@ export default [
     gecko_id: "cvault-finance",
     cmcId: "7242",
     category: "Assets",
-    tvlFunction: core.tvl,
+    module: 'core/index.js',
   },
   {
     id: "219",
@@ -1973,7 +1821,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: ddex.tvl,
+    module: 'ddex/index.js',
   },
   {
     id: "220",
@@ -1989,7 +1837,7 @@ export default [
     gecko_id: "vesper-finance",
     cmcId: "8492",
     category: "Yield",
-    tvlFunction: vesper.tvl,
+    module: 'vesper/index.js',
   },
   {
     id: "221",
@@ -2006,7 +1854,7 @@ export default [
     gecko_id: "crypto-com-chain",
     cmcId: "1776",
     category: "Dexes",
-    tvlFunction: defiswap.tvl,
+    module: 'defi-swap/index.js',
   },
   {
     id: "222",
@@ -2023,7 +1871,7 @@ export default [
     gecko_id: "definer",
     cmcId: "7225",
     category: "Yield",
-    tvlFunction: definer.tvl,
+    module: 'definer/index.js',
   },
   {
     id: "223",
@@ -2039,7 +1887,7 @@ export default [
     gecko_id: "derivadao",
     cmcId: "7228",
     category: "Dexes",
-    tvlFunction: derivadex.tvl,
+    module: 'derivadex/index.js',
   },
   {
     id: "224",
@@ -2056,7 +1904,7 @@ export default [
     gecko_id: "dextf",
     cmcId: "8691",
     category: "Minting",
-    tvlFunction: dextf.tvl,
+    module: 'dextf/index.js',
   },
   {
     id: "225",
@@ -2073,7 +1921,7 @@ export default [
     gecko_id: "melon",
     cmcId: "1552",
     category: "Yield",
-    tvlFunction: enzyme.tvl,
+    module: 'enzyme/index.js',
   },
   {
     id: "226",
@@ -2090,7 +1938,7 @@ export default [
     gecko_id: "numeraire",
     cmcId: "1732",
     category: "Derivatives",
-    tvlFunction: erasure.tvl,
+    module: 'erasure/index.js',
   },
   {
     id: "227",
@@ -2107,7 +1955,7 @@ export default [
     gecko_id: "cream-2",
     cmcId: "6193",
     category: "Dexes",
-    tvlFunction: creamswap.tvl,
+    module: 'creamswap/index.js',
   },
   {
     id: "228",
@@ -2124,7 +1972,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: futureswap.tvl,
+    module: 'futureswap/index.js',
   },
   {
     id: "229",
@@ -2141,7 +1989,7 @@ export default [
     gecko_id: "gnosis",
     cmcId: "1659",
     category: "Dexes",
-    tvlFunction: gnosis.tvl,
+    module: 'gnosis/index.js',
   },
   {
     id: "230",
@@ -2157,7 +2005,7 @@ export default [
     gecko_id: "aurora-dao",
     cmcId: "310",
     category: "Dexes",
-    tvlFunction: idex.tvl,
+    module: 'idex/index.js',
   },
   {
     id: "231",
@@ -2173,7 +2021,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    tvlFunction: lightningNetwork.tvl,
+    module: 'lightning-network/index.js',
   },
   {
     id: "232",
@@ -2190,7 +2038,7 @@ export default [
     gecko_id: "mcdex",
     cmcId: "5956",
     category: "Dexes",
-    tvlFunction: mcdex.tvl,
+    module: 'mcdex/index.js',
   },
   {
     id: "233",
@@ -2207,7 +2055,7 @@ export default [
     gecko_id: "metronome",
     cmcId: "2873",
     category: "Assets",
-    tvlFunction: metronome.tvl,
+    module: 'metronome/index.js',
   },
   {
     id: "234",
@@ -2223,7 +2071,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    tvlFunction: notional.tvl,
+    module: 'notional/index.js',
   },
   {
     id: "235",
@@ -2240,7 +2088,7 @@ export default [
     gecko_id: "marketpeak",
     cmcId: "5354",
     category: "Yield",
-    tvlFunction: peakdefi.tvl,
+    module: 'peakdefi/index.js',
   },
   {
     id: "236",
@@ -2257,7 +2105,7 @@ export default [
     gecko_id: "perlin",
     cmcId: "4293",
     category: "Dexes",
-    tvlFunction: perlinx.tvl,
+    module: 'perlinx/index.js',
   },
   {
     id: "237",
@@ -2274,7 +2122,7 @@ export default [
     gecko_id: "swipe",
     cmcId: "4279",
     category: "Dexes",
-    tvlFunction: swipeswap,
+    module: 'swipeswap.js',
   },
   {
     id: "238",
@@ -2290,7 +2138,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    tvlFunction: ellipsis,
+    module: 'ellipsis.js',
   },
   {
     id: "239",
@@ -2307,7 +2155,7 @@ export default [
     gecko_id: "pooltogether",
     cmcId: "8508",
     category: "Others",
-    tvlFunction: pooltogether.tvl,
+    module: 'pooltogether/index.js',
   },
   {
     id: "240",
@@ -2323,7 +2171,7 @@ export default [
     gecko_id: "matic-network",
     cmcId: "3890",
     category: "Chain",
-    tvlFunction: polygon.tvl,
+    module: 'polygon/index.js',
   },
   {
     id: "241",
@@ -2340,7 +2188,7 @@ export default [
     gecko_id: "power-index-pool-token",
     cmcId: "7368",
     category: "Indexes",
-    tvlFunction: powerindex.tvl,
+    module: 'powerindex/index.js',
   },
   {
     id: "242",
@@ -2357,7 +2205,7 @@ export default [
     gecko_id: "energi",
     cmcId: "3218",
     category: "Others",
-    tvlFunction: energiswap,
+    module: 'energiswap.js',
   },
   {
     id: "243",
@@ -2373,7 +2221,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: flamincome,
+    module: 'flamincome.js',
   },
   {
     id: "244",
@@ -2390,7 +2238,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    tvlFunction: wepiggy,
+    module: 'wepiggy.js',
   },
   {
     id: "245",
@@ -2407,7 +2255,7 @@ export default [
     gecko_id: "secret",
     cmcId: "5604",
     category: "Chain",
-    tvlFunction: secretNetwork,
+    module: 'scrt.js',
   },
   {
     id: "246",
@@ -2423,7 +2271,7 @@ export default [
     gecko_id: "pangolin",
     cmcId: "8422",
     category: "Dexes",
-    tvlFunction: pangolin,
+    module: 'pangolin.js',
   },
   {
     id: "247",
@@ -2440,7 +2288,7 @@ export default [
     gecko_id: "jarvis-reward-token",
     cmcId: "5187",
     category: "Derivatives",
-    tvlFunction: jarvis.tvl,
+    module: 'jarvis/index.js',
   },
   {
     id: "248",
@@ -2456,7 +2304,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    tvlFunction: forcedao.tvl,
+    module: 'forcedao/index.js',
   },
   {
     id: "249",
@@ -2473,7 +2321,7 @@ export default [
     gecko_id: "stake-dao",
     cmcId: "8299",
     category: "Yield",
-    tvlFunction: stakedao.tvl,
+    module: 'stakedao/index.js',
   },
   {
     id: "250",
@@ -2490,6 +2338,51 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Indexes",
-    tvlFunction: basketdao.tvl,
+    module: 'basketdao/index.js',
   },
+  {
+    "id": "251",
+    "name": "Mimo Defi",
+    "address": "0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc",
+    "symbol": "MIMO",
+    "url": "https://mimo.capital",
+    "description": "The Mimo protocol is a decentralized price-stable token issuance protocol on the Ethereum blockchain",
+    "chain": "Ethereum",
+    "logo": `${baseIconsUrl}/6bJIKvBC_400x400.jpg`,
+    "audits": "2",
+    "audit_note": null,
+    "gecko_id": null,
+    "cmcId": null,
+    "category": "Lending",
+    module: 'mimo/index.js'
+  },
+  {
+    "id": "252",
+    "name": "Secret Bridge",
+    "address": "-",
+    "symbol": "-",
+    "url": "https://scrt.network/",
+    "description": "\"Bridge to port assets from the Secret Network onto Ethereum\r\n",
+    "chain": "Secret Network",
+    "logo": `${baseIconsUrl}/TGwlZlS__400x400.jpg`,
+    "audits": "0",
+    "audit_note": null,
+    "gecko_id": null,
+    "cmcId": null,
+    "category": "Assets",
+    module: 'scrt.js'
+  }
 ] as Protocol[];
+
+/*
+Missing
+import primitive from "../../DefiLlama-Adapters/projects/primitive/index.js";
+import qian from "../../DefiLlama-Adapters/projects/qian/index.js";
+import ray from "../../DefiLlama-Adapters/projects/ray/index.js";
+import reflexer from "../../DefiLlama-Adapters/projects/reflexer/index.js";
+import setProtocol from "../../DefiLlama-Adapters/projects/set-protocol/index.js";
+import sfinance from "../../DefiLlama-Adapters/projects/sfinance/index.js";
+import unitrade from "../../DefiLlama-Adapters/projects/unitrade/index.js";
+import valueliquid from "../../DefiLlama-Adapters/projects/valueliquid/index.js";
+import yfii from "../../DefiLlama-Adapters/projects/yfii/index.js";
+*/

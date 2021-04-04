@@ -122,11 +122,8 @@ functions:
           method: options
   storeTvls:
     handler: src/storeTvls.default
-    timeout: 600
+    timeout: 900
     events:
-      - http:
-          path: update
-          method: get
       - schedule: rate(1 hour)
 
 resources:

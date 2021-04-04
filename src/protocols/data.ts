@@ -151,7 +151,7 @@ export default [
     gecko_id: "havven",
     cmcId: "2586",
     category: "Dexes",
-    module: 'synthetix.js',
+    module: 'synthetix/index.js',
   },
   {
     id: "116",

@@ -80,7 +80,7 @@ async function storeTvl(unixTimestamp: number, ethBlock: number, protocol: Proto
       const module = await import(`../DefiLlama-Adapters/projects/${protocol.module}`)
       if (module.tvl) {
         const tvlBalances = await module.tvl(unixTimestamp, ethBlock);
-        tvl = await util.computeTVL(tvlBalances, 'now', false, knownTokenPrices, getCoingeckoLock);
+        tvl = await util.computeTVL(tvlBalances, 'now', false, knownTokenPrices, getCoingeckoLock, 10);
       } else if (module.fetch) {
         tvl = Number(await module.fetch());
       } else {
@@ -139,8 +139,8 @@ const handler = async () => {
     // So we'll release one every 0.6 seconds to match it
     releaseCoingeckoLock()
   }, 600)
-  await Promise.all(actions)
-  clearInterval(timer)
+  await Promise.all(actions);
+  clearInterval(timer);
   return;
 };
 

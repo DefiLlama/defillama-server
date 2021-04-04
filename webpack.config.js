@@ -33,4 +33,8 @@ module.exports = {
       'node-fetch$': 'node-fetch/lib/index.js'
     }
   },
+  optimization: {
+    // fix node modules not packaged into zip
+    concatenateModules: false
+  },
 };

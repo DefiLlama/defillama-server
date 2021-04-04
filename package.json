@@ -27,6 +27,7 @@
     "electron": "^12.0.1",
     "jest": "^26.6.3",
     "jest-dynalite": "^3.3.1",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
     "serverless": "^2.31.0",

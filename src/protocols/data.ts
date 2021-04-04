@@ -33,7 +33,7 @@ export default [
     gecko_id: "uniswap",
     cmcId: "7083",
     category: "Dexes",
-    module: 'uniswap.js',
+    module: "uniswap.js",
   },
   {
     id: "2",
@@ -50,7 +50,7 @@ export default [
     gecko_id: "wrapped-bitcoin",
     cmcId: "3717",
     category: "Assets",
-    module: 'wbtc.js',
+    module: "wbtc.js",
   },
   {
     id: "3",
@@ -67,7 +67,7 @@ export default [
     gecko_id: "curve-dao-token",
     cmcId: "6538",
     category: "Dexes",
-    module: 'curve.js',
+    module: "curve.js",
   },
   {
     id: "111",
@@ -84,7 +84,7 @@ export default [
     gecko_id: "aave",
     cmcId: "7278",
     category: "Lending",
-    module: 'aave.js',
+    module: "aave.js",
   },
   {
     id: "112",
@@ -100,7 +100,7 @@ export default [
     gecko_id: "harvest-finance",
     cmcId: "6859",
     category: "Yield",
-    module: 'harvest.js',
+    module: "harvest.js",
   },
   {
     id: "113",
@@ -117,7 +117,7 @@ export default [
     gecko_id: "yearn-finance",
     cmcId: "5864",
     category: "Yield",
-    module: 'yearn/index.js', // TODO: Fix latest
+    module: "yearn/index.js", // TODO: Fix latest
   },
   {
     id: "114",
@@ -134,7 +134,7 @@ export default [
     gecko_id: "compound-governance-token",
     cmcId: "5692",
     category: "Lending",
-    module: 'compound.js',
+    module: "compound.js",
   },
   {
     id: "115",
@@ -151,7 +151,7 @@ export default [
     gecko_id: "havven",
     cmcId: "2586",
     category: "Dexes",
-    module: 'synthetix/index.js',
+    module: "synthetix/index.js",
   },
   {
     id: "116",
@@ -168,7 +168,7 @@ export default [
     gecko_id: "balancer",
     cmcId: "5728",
     category: "Dexes",
-    module: 'balancer.js',
+    module: "balancer.js",
   },
   {
     id: "117",
@@ -185,7 +185,7 @@ export default [
     gecko_id: "republic-protocol",
     cmcId: "2539",
     category: "Assets",
-    module: 'ren/index.js',
+    module: "ren/index.js",
   },
   {
     id: "118",
@@ -202,7 +202,7 @@ export default [
     gecko_id: "maker",
     cmcId: "1518",
     category: "Minting",
-    module: 'maker/index.js',
+    module: "maker/index.js",
   },
   {
     id: "119",
@@ -219,7 +219,7 @@ export default [
     gecko_id: "sushi",
     cmcId: "6758",
     category: "Dexes",
-    module: 'sushiswap/index.js',
+    module: "sushiswap/index.js",
   },
   {
     id: "120",
@@ -236,7 +236,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Services",
-    module: 'instadapp.js',
+    module: "instadapp.js",
   },
   {
     id: "121",
@@ -252,7 +252,7 @@ export default [
     gecko_id: "cream",
     cmcId: "6193",
     category: "Lending",
-    module: 'cream.js',
+    module: "cream.js",
   },
   {
     id: "122",
@@ -269,7 +269,7 @@ export default [
     gecko_id: "nexus",
     cmcId: "1103",
     category: "Insurance",
-    module: 'nexus/index.js',
+    module: "nexus/index.js",
   },
   {
     id: "123",
@@ -286,7 +286,7 @@ export default [
     gecko_id: "dforce-token",
     cmcId: "4758",
     category: "Others",
-    module: 'dforce/index.js',
+    module: "dforce/index.js",
   },
   {
     id: "124",
@@ -302,7 +302,7 @@ export default [
     gecko_id: "keep-network",
     cmcId: "5566",
     category: "Assets",
-    module: 'keep.js',
+    module: "keep.js",
   },
   {
     id: "125",
@@ -319,7 +319,7 @@ export default [
     gecko_id: "meta",
     cmcId: "5748",
     category: "Minting",
-    module: 'mstable/index.js',
+    module: "mstable/index.js",
   },
   {
     id: "126",
@@ -335,7 +335,7 @@ export default [
     gecko_id: "loopring",
     cmcId: "1934",
     category: "Dexes",
-    module: 'loopring/index.js',
+    module: "loopring/index.js",
   },
   {
     id: "127",
@@ -352,7 +352,7 @@ export default [
     gecko_id: "kyber-network",
     cmcId: "404",
     category: "Dexes",
-    module: 'kyber/index.js',
+    module: "kyber/index.js",
   },
   {
     id: "128",
@@ -369,7 +369,7 @@ export default [
     gecko_id: "hegic",
     cmcId: "6929",
     category: "Options",
-    module: 'hegic.js',
+    module: "hegic.js",
   },
   {
     id: "129",
@@ -386,7 +386,7 @@ export default [
     gecko_id: "xdai-stake",
     cmcId: "5601",
     category: "Layer2",
-    module: 'xdai/index.js',
+    module: "xdai/index.js",
   },
   {
     id: "130",
@@ -403,7 +403,7 @@ export default [
     gecko_id: "imbtc",
     cmcId: "5292",
     category: "Assets",
-    module: 'imbtc.js',
+    module: "imbtc.js",
   },
   {
     id: "131",
@@ -420,7 +420,7 @@ export default [
     gecko_id: "barnbridge",
     cmcId: "7440",
     category: "Yield",
-    module: 'barnbridge.js',
+    module: "barnbridge.js",
   },
   {
     id: "132",
@@ -437,7 +437,7 @@ export default [
     gecko_id: "huobi-btc",
     cmcId: "478",
     category: "Assets",
-    module: 'hbtc.js',
+    module: "hbtc.js",
   },
   {
     id: "133",
@@ -454,7 +454,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'shell.js',
+    module: "shell.js",
   },
   {
     id: "134",
@@ -471,7 +471,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'pickle.js',
+    module: "pickle.js",
   },
   {
     id: "135",
@@ -488,7 +488,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    module: 'kava.js',
+    module: "kava.js",
   },
   {
     id: "136",
@@ -505,7 +505,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'rari.js',
+    module: "rari.js",
   },
   {
     id: "137",
@@ -522,7 +522,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'thorchain.js',
+    module: "thorchain.js",
   },
   {
     id: "138",
@@ -539,7 +539,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'hakka.js',
+    module: "hakka.js",
   },
   {
     id: "139",
@@ -556,7 +556,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'snowswap.js',
+    module: "snowswap.js",
   },
   {
     id: "140",
@@ -573,7 +573,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    module: 'hard.js',
+    module: "hard.js",
   },
   {
     id: "141",
@@ -589,7 +589,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Minting",
-    module: 'uma.js',
+    module: "uma.js",
   },
   {
     id: "142",
@@ -606,7 +606,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'swerve.js',
+    module: "swerve.js",
   },
   {
     id: "143",
@@ -622,7 +622,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    module: 'flexa.js',
+    module: "flexa.js",
   },
   {
     id: "144",
@@ -639,7 +639,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'dydx/index.js',
+    module: "dydx/index.js",
   },
   {
     id: "145",
@@ -656,7 +656,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'serum.js',
+    module: "serum.js",
   },
   {
     id: "146",
@@ -672,7 +672,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'dodo.js',
+    module: "dodo.js",
   },
   {
     id: "148",
@@ -688,7 +688,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Services",
-    module: 'tornado-cash.js',
+    module: "tornado-cash.js",
   },
   {
     id: "149",
@@ -705,7 +705,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    module: 'b-protocol.js',
+    module: "b-protocol.js",
   },
   {
     id: "150",
@@ -722,7 +722,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'idle.js',
+    module: "idle.js",
   },
   {
     id: "151",
@@ -739,7 +739,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'deversifi.js',
+    module: "deversifi.js",
   },
   {
     id: "152",
@@ -756,7 +756,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'augur.js',
+    module: "augur.js",
   },
   {
     id: "153",
@@ -772,7 +772,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'cofix.js',
+    module: "cofix.js",
   },
   {
     id: "155",
@@ -788,7 +788,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'keeper-dao.js',
+    module: "keeper-dao.js",
   },
   {
     id: "156",
@@ -804,7 +804,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'zlot.js',
+    module: "zlot.js",
   },
   {
     id: "157",
@@ -820,7 +820,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: '88mph/index.js',
+    module: "88mph/index.js",
   },
   {
     id: "158",
@@ -837,7 +837,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'dracula.js',
+    module: "dracula.js",
   },
   {
     id: "159",
@@ -854,7 +854,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'growth-defi.js',
+    module: "growth-defi.js",
   },
   {
     id: "160",
@@ -871,7 +871,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'alpha-homora/index.js',
+    module: "alpha-homora/index.js",
   },
   {
     id: "161",
@@ -888,7 +888,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Minting",
-    module: 'boringdao.js',
+    module: "boringdao.js",
   },
   {
     id: "162",
@@ -905,7 +905,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'bancor/index.js',
+    module: "bancor/index.js",
   },
   {
     id: "163",
@@ -922,7 +922,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    module: 'fortube/index.js',
+    module: "fortube/index.js",
   },
   {
     id: "164",
@@ -939,7 +939,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'valuedefi.js',
+    module: "valuedefi.js",
   },
   {
     id: "165",
@@ -955,7 +955,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Insurance",
-    module: 'cover.js',
+    module: "cover.js",
   },
   {
     id: "166",
@@ -972,7 +972,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    module: 'truefi/index.js',
+    module: "truefi/index.js",
   },
   {
     id: "167",
@@ -989,7 +989,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Indexes",
-    module: 'piedao.js',
+    module: "piedao.js",
   },
   {
     id: "168",
@@ -1005,7 +1005,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    module: 'dev.js',
+    module: "dev.js",
   },
   {
     id: "169",
@@ -1022,7 +1022,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Assets",
-    module: 'basis-cash.js',
+    module: "basis-cash.js",
   },
   {
     id: "170",
@@ -1039,7 +1039,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Options",
-    module: 'finnexus.js',
+    module: "finnexus.js",
   },
   {
     id: "171",
@@ -1055,7 +1055,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    module: 'synlev.js',
+    module: "synlev.js",
   },
   {
     id: "172",
@@ -1072,7 +1072,7 @@ export default [
     gecko_id: "index-cooperative",
     cmcId: "7336",
     category: "Indexes",
-    module: 'dpi.js',
+    module: "dpi.js",
   },
   {
     id: "173",
@@ -1089,7 +1089,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'badgerdao.js',
+    module: "badgerdao.js",
   },
   {
     id: "174",
@@ -1106,7 +1106,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'bt-finance.js',
+    module: "bt-finance.js",
   },
   {
     id: "175",
@@ -1122,7 +1122,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'n3rd.js',
+    module: "n3rd.js",
   },
   {
     id: "176",
@@ -1139,7 +1139,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'mushrooms.js',
+    module: "mushrooms.js",
   },
   {
     id: "177",
@@ -1156,7 +1156,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    module: 'defisaver.js',
+    module: "defisaver.js",
   },
   {
     id: "178",
@@ -1173,7 +1173,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Chain",
-    module: 'defichain.js',
+    module: "defichain.js",
   },
   {
     id: "179",
@@ -1190,7 +1190,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'linkswap.js',
+    module: "linkswap.js",
   },
   {
     id: "180",
@@ -1207,7 +1207,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'demex.js',
+    module: "demex.js",
   },
   {
     id: "181",
@@ -1224,7 +1224,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: null,
-    module: 'mantradao.js',
+    module: "mantradao.js",
   },
   {
     id: "182",
@@ -1241,7 +1241,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Staking",
-    module: 'lido.js',
+    module: "lido.js",
   },
   {
     id: "183",
@@ -1257,7 +1257,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    module: 'wing.js',
+    module: "wing.js",
   },
   {
     id: "184",
@@ -1274,7 +1274,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    module: 'fuse.js',
+    module: "fuse.js",
   },
   {
     id: "186",
@@ -1291,7 +1291,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'wanswap.js',
+    module: "wanswap.js",
   },
   {
     id: "187",
@@ -1307,7 +1307,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'unagii.js',
+    module: "unagii.js",
   },
   {
     id: "188",
@@ -1324,7 +1324,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Indexes",
-    module: 'indexed/index.js',
+    module: "indexed/index.js",
   },
   {
     id: "189",
@@ -1341,7 +1341,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: '1inch.js',
+    module: "1inch.js",
   },
   {
     id: "190",
@@ -1357,7 +1357,7 @@ export default [
     gecko_id: "dhedge-dao",
     cmcId: null,
     category: null,
-    module: 'dhedge.js',
+    module: "dhedge.js",
   },
   {
     id: "191",
@@ -1374,7 +1374,7 @@ export default [
     gecko_id: "opium",
     cmcId: null,
     category: "Insurance",
-    module: 'opium.js',
+    module: "opium.js",
   },
   {
     id: "192",
@@ -1391,7 +1391,7 @@ export default [
     gecko_id: "governor-dao",
     cmcId: null,
     category: null,
-    module: 'gdao.js',
+    module: "gdao.js",
   },
   {
     id: "193",
@@ -1408,7 +1408,7 @@ export default [
     gecko_id: "unit-protocol-duck",
     cmcId: null,
     category: "Minting",
-    module: 'unit.js',
+    module: "unit.js",
   },
   {
     id: "194",
@@ -1424,7 +1424,7 @@ export default [
     gecko_id: "pancakeswap",
     cmcId: null,
     category: "Dexes",
-    module: 'pancake-swap.js',
+    module: "pancake-swap.js",
   },
   {
     id: "195",
@@ -1441,7 +1441,7 @@ export default [
     gecko_id: "defidollar-dao",
     cmcId: null,
     category: "Minting",
-    module: 'defidollar.js',
+    module: "defidollar.js",
   },
   {
     id: "196",
@@ -1458,7 +1458,7 @@ export default [
     gecko_id: "fantom",
     cmcId: null,
     category: "Chains",
-    module: 'fantom.js',
+    module: "fantom.js",
   },
   {
     id: "197",
@@ -1475,7 +1475,7 @@ export default [
     gecko_id: "bzx-protocol",
     cmcId: "5810",
     category: "Lending",
-    module: 'bzx.js',
+    module: "bzx.js",
   },
   {
     id: "198",
@@ -1491,7 +1491,7 @@ export default [
     gecko_id: "privacy",
     cmcId: null,
     category: "Chain",
-    module: 'incognito.js',
+    module: "incognito.js",
   },
   {
     id: "199",
@@ -1507,7 +1507,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    module: 'sablier.js',
+    module: "sablier.js",
   },
   {
     id: "200",
@@ -1524,7 +1524,7 @@ export default [
     gecko_id: "bella-protocol",
     cmcId: "6928",
     category: "Yield",
-    module: 'bella.js',
+    module: "bella.js",
   },
   {
     id: "202",
@@ -1541,7 +1541,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'saddle.js',
+    module: "saddle.js",
   },
   {
     id: "203",
@@ -1557,7 +1557,7 @@ export default [
     gecko_id: "siren",
     cmcId: "8701",
     category: "Options",
-    module: 'siren.js',
+    module: "siren.js",
   },
   {
     id: "204",
@@ -1574,7 +1574,7 @@ export default [
     gecko_id: "alchemix",
     cmcId: "8613",
     category: "Yield",
-    module: 'alchemix.js',
+    module: "alchemix.js",
   },
   {
     id: "205",
@@ -1590,7 +1590,7 @@ export default [
     gecko_id: "goose-finance",
     cmcId: "8449",
     category: "Yield",
-    module: 'goose.js',
+    module: "goose.js",
   },
   {
     id: "206",
@@ -1606,7 +1606,7 @@ export default [
     gecko_id: "xtoken",
     cmcId: "8599",
     category: "Yield",
-    module: 'xtoken.js',
+    module: "xtoken.js",
   },
   {
     id: "207",
@@ -1622,7 +1622,7 @@ export default [
     gecko_id: "unslashed-finance",
     cmcId: null,
     category: "Insurance",
-    module: 'unslashed.js',
+    module: "unslashed.js",
   },
   {
     id: "208",
@@ -1639,7 +1639,7 @@ export default [
     gecko_id: "acryptos",
     cmcId: "7844",
     category: "Yield",
-    module: 'acryptos.js',
+    module: "acryptos.js",
   },
   {
     id: "209",
@@ -1656,7 +1656,7 @@ export default [
     gecko_id: "auto",
     cmcId: "8387",
     category: "Yield",
-    module: 'autofarm.js',
+    module: "autofarm.js",
   },
   {
     id: "210",
@@ -1673,7 +1673,7 @@ export default [
     gecko_id: "yaxis",
     cmcId: "7222",
     category: "Yield",
-    module: 'yaxis.js',
+    module: "yaxis.js",
   },
   {
     id: "211",
@@ -1690,7 +1690,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'smoothy.js',
+    module: "smoothy.js",
   },
   {
     id: "212",
@@ -1707,7 +1707,7 @@ export default [
     gecko_id: "venus",
     cmcId: "7288",
     category: "Lending",
-    module: 'venus.js',
+    module: "venus.js",
   },
   {
     id: "213",
@@ -1723,7 +1723,7 @@ export default [
     gecko_id: "onx-finance",
     cmcId: "8071",
     category: "Lending",
-    module: 'onx.js',
+    module: "onx.js",
   },
   {
     id: "214",
@@ -1739,7 +1739,7 @@ export default [
     gecko_id: "raydium",
     cmcId: "8526",
     category: "Dexes",
-    module: 'raydium.js',
+    module: "raydium.js",
   },
   {
     id: "215",
@@ -1756,7 +1756,7 @@ export default [
     gecko_id: "strudel-finance",
     cmcId: "8390",
     category: "Assets",
-    module: 'strudel.js',
+    module: "strudel.js",
   },
   {
     id: "216",
@@ -1772,7 +1772,7 @@ export default [
     gecko_id: "auctus",
     cmcId: "2653",
     category: "Options",
-    module: 'auctus/index.js',
+    module: "auctus/index.js",
   },
   {
     id: "217",
@@ -1788,7 +1788,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Layer2",
-    module: 'connext/index.js',
+    module: "connext/index.js",
   },
   {
     id: "218",
@@ -1804,7 +1804,7 @@ export default [
     gecko_id: "cvault-finance",
     cmcId: "7242",
     category: "Assets",
-    module: 'core/index.js',
+    module: "core/index.js",
   },
   {
     id: "219",
@@ -1821,7 +1821,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'ddex/index.js',
+    module: "ddex/index.js",
   },
   {
     id: "220",
@@ -1837,7 +1837,7 @@ export default [
     gecko_id: "vesper-finance",
     cmcId: "8492",
     category: "Yield",
-    module: 'vesper/index.js',
+    module: "vesper/index.js",
   },
   {
     id: "221",
@@ -1854,7 +1854,7 @@ export default [
     gecko_id: "crypto-com-chain",
     cmcId: "1776",
     category: "Dexes",
-    module: 'defi-swap/index.js',
+    module: "defi-swap/index.js",
   },
   {
     id: "222",
@@ -1871,7 +1871,7 @@ export default [
     gecko_id: "definer",
     cmcId: "7225",
     category: "Yield",
-    module: 'definer/index.js',
+    module: "definer/index.js",
   },
   {
     id: "223",
@@ -1887,7 +1887,7 @@ export default [
     gecko_id: "derivadao",
     cmcId: "7228",
     category: "Dexes",
-    module: 'derivadex/index.js',
+    module: "derivadex/index.js",
   },
   {
     id: "224",
@@ -1904,7 +1904,7 @@ export default [
     gecko_id: "dextf",
     cmcId: "8691",
     category: "Minting",
-    module: 'dextf/index.js',
+    module: "dextf/index.js",
   },
   {
     id: "225",
@@ -1921,7 +1921,7 @@ export default [
     gecko_id: "melon",
     cmcId: "1552",
     category: "Yield",
-    module: 'enzyme/index.js',
+    module: "enzyme/index.js",
   },
   {
     id: "226",
@@ -1938,7 +1938,7 @@ export default [
     gecko_id: "numeraire",
     cmcId: "1732",
     category: "Derivatives",
-    module: 'erasure/index.js',
+    module: "erasure/index.js",
   },
   {
     id: "227",
@@ -1955,7 +1955,7 @@ export default [
     gecko_id: "cream-2",
     cmcId: "6193",
     category: "Dexes",
-    module: 'creamswap/index.js',
+    module: "creamswap/index.js",
   },
   {
     id: "228",
@@ -1972,7 +1972,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'futureswap/index.js',
+    module: "futureswap/index.js",
   },
   {
     id: "229",
@@ -1989,7 +1989,7 @@ export default [
     gecko_id: "gnosis",
     cmcId: "1659",
     category: "Dexes",
-    module: 'gnosis/index.js',
+    module: "gnosis/index.js",
   },
   {
     id: "230",
@@ -2005,7 +2005,7 @@ export default [
     gecko_id: "aurora-dao",
     cmcId: "310",
     category: "Dexes",
-    module: 'idex/index.js',
+    module: "idex/index.js",
   },
   {
     id: "231",
@@ -2021,7 +2021,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Payments",
-    module: 'lightning-network/index.js',
+    module: "lightning-network/index.js",
   },
   {
     id: "232",
@@ -2038,7 +2038,7 @@ export default [
     gecko_id: "mcdex",
     cmcId: "5956",
     category: "Dexes",
-    module: 'mcdex/index.js',
+    module: "mcdex/index.js",
   },
   {
     id: "233",
@@ -2055,7 +2055,7 @@ export default [
     gecko_id: "metronome",
     cmcId: "2873",
     category: "Assets",
-    module: 'metronome/index.js',
+    module: "metronome/index.js",
   },
   {
     id: "234",
@@ -2071,7 +2071,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    module: 'notional/index.js',
+    module: "notional/index.js",
   },
   {
     id: "235",
@@ -2088,7 +2088,7 @@ export default [
     gecko_id: "marketpeak",
     cmcId: "5354",
     category: "Yield",
-    module: 'peakdefi/index.js',
+    module: "peakdefi/index.js",
   },
   {
     id: "236",
@@ -2105,7 +2105,7 @@ export default [
     gecko_id: "perlin",
     cmcId: "4293",
     category: "Dexes",
-    module: 'perlinx/index.js',
+    module: "perlinx/index.js",
   },
   {
     id: "237",
@@ -2122,7 +2122,7 @@ export default [
     gecko_id: "swipe",
     cmcId: "4279",
     category: "Dexes",
-    module: 'swipeswap.js',
+    module: "swipeswap.js",
   },
   {
     id: "238",
@@ -2138,7 +2138,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    module: 'ellipsis.js',
+    module: "ellipsis.js",
   },
   {
     id: "239",
@@ -2155,7 +2155,7 @@ export default [
     gecko_id: "pooltogether",
     cmcId: "8508",
     category: "Others",
-    module: 'pooltogether/index.js',
+    module: "pooltogether/index.js",
   },
   {
     id: "240",
@@ -2171,7 +2171,7 @@ export default [
     gecko_id: "matic-network",
     cmcId: "3890",
     category: "Chain",
-    module: 'polygon/index.js',
+    module: "polygon/index.js",
   },
   {
     id: "241",
@@ -2188,7 +2188,7 @@ export default [
     gecko_id: "power-index-pool-token",
     cmcId: "7368",
     category: "Indexes",
-    module: 'powerindex/index.js',
+    module: "powerindex/index.js",
   },
   {
     id: "242",
@@ -2205,7 +2205,7 @@ export default [
     gecko_id: "energi",
     cmcId: "3218",
     category: "Others",
-    module: 'energiswap.js',
+    module: "energiswap.js",
   },
   {
     id: "243",
@@ -2221,7 +2221,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'flamincome.js',
+    module: "flamincome.js",
   },
   {
     id: "244",
@@ -2238,7 +2238,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    module: 'wepiggy.js',
+    module: "wepiggy.js",
   },
   {
     id: "245",
@@ -2255,7 +2255,7 @@ export default [
     gecko_id: "secret",
     cmcId: "5604",
     category: "Chain",
-    module: 'scrt.js',
+    module: "scrt.js",
   },
   {
     id: "246",
@@ -2271,7 +2271,7 @@ export default [
     gecko_id: "pangolin",
     cmcId: "8422",
     category: "Dexes",
-    module: 'pangolin.js',
+    module: "pangolin.js",
   },
   {
     id: "247",
@@ -2288,7 +2288,7 @@ export default [
     gecko_id: "jarvis-reward-token",
     cmcId: "5187",
     category: "Derivatives",
-    module: 'jarvis/index.js',
+    module: "jarvis/index.js",
   },
   {
     id: "248",
@@ -2304,7 +2304,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    module: 'forcedao/index.js',
+    module: "forcedao/index.js",
   },
   {
     id: "249",
@@ -2321,7 +2321,7 @@ export default [
     gecko_id: "stake-dao",
     cmcId: "8299",
     category: "Yield",
-    module: 'stakedao/index.js',
+    module: "stakedao/index.js",
   },
   {
     id: "250",
@@ -2338,40 +2338,42 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Indexes",
-    module: 'basketdao/index.js',
+    module: "basketdao/index.js",
   },
   {
-    "id": "251",
-    "name": "Mimo Defi",
-    "address": "0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc",
-    "symbol": "MIMO",
-    "url": "https://mimo.capital",
-    "description": "The Mimo protocol is a decentralized price-stable token issuance protocol on the Ethereum blockchain",
-    "chain": "Ethereum",
-    "logo": `${baseIconsUrl}/6bJIKvBC_400x400.jpg`,
-    "audits": "2",
-    "audit_note": null,
-    "gecko_id": null,
-    "cmcId": null,
-    "category": "Lending",
-    module: 'mimo/index.js'
+    id: "251",
+    name: "Mimo Defi",
+    address: "0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc",
+    symbol: "MIMO",
+    url: "https://mimo.capital",
+    description:
+      "The Mimo protocol is a decentralized price-stable token issuance protocol on the Ethereum blockchain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/6bJIKvBC_400x400.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    module: "mimo/index.js",
   },
   {
-    "id": "252",
-    "name": "Secret Bridge",
-    "address": "-",
-    "symbol": "-",
-    "url": "https://scrt.network/",
-    "description": "\"Bridge to port assets from the Secret Network onto Ethereum\r\n",
-    "chain": "Secret Network",
-    "logo": `${baseIconsUrl}/TGwlZlS__400x400.jpg`,
-    "audits": "0",
-    "audit_note": null,
-    "gecko_id": null,
-    "cmcId": null,
-    "category": "Assets",
-    module: 'scrt.js'
-  }
+    id: "252",
+    name: "Secret Bridge",
+    address: "-",
+    symbol: "-",
+    url: "https://scrt.network/",
+    description:
+      '"Bridge to port assets from the Secret Network onto Ethereum\r\n',
+    chain: "Secret Network",
+    logo: `${baseIconsUrl}/TGwlZlS__400x400.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Assets",
+    module: "scrt.js",
+  },
 ] as Protocol[];
 
 /*

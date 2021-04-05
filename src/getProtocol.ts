@@ -7,7 +7,7 @@ const handler = async (
 ): Promise<IResponse> => {
   const protocolName = event.pathParameters?.protocol?.toLowerCase();
   const protocolData = protocols.find(
-    (prot) => prot.name.toLowerCase() === protocolName
+    (prot) => prot.name.toLowerCase().replace(" ", "-") === protocolName
   );
   if (protocolData === undefined) {
     return errorResponse({

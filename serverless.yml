@@ -128,6 +128,12 @@ functions:
     timeout: 900
     events:
       - schedule: rate(1 hour)
+  #import:
+  #  handler: src/import.default
+  #  events:
+  #    - http:
+  #        path: import/{id}
+  #        method: get
 
 resources:
   # CORS for api gateway errors

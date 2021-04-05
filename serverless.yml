@@ -96,7 +96,10 @@ functions:
       enabled: true
     events:
       - http:
-          path: chart/{chain?}
+          path: chart
+          method: get
+      - http:
+          path: chart/{chain}
           method: get
   protocols:
     handler: src/getProtocols.default

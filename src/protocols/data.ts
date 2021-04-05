@@ -1814,7 +1814,7 @@ export default [
     url: "https://ddex.io/",
     description:
       "A decentralized margin exchange built on Ethereum. Trade ETH and BTC with up to 5x leverage. Lend to earn interest.\r\n",
-    chain: null,
+    chain: 'Ethereum',
     logo: `${baseIconsUrl}/Cd-ILEu6_400x400.png`,
     audits: "2",
     audit_note: null,
@@ -2281,7 +2281,7 @@ export default [
     url: "https://jarvis.network/",
     description:
       "Jarvis Network is a set of protocols to gain exposure to the price of any asset against liquidity pools.",
-    chain: null,
+    chain: 'Ethereum',
     logo: `${baseIconsUrl}/s2VuUdS-_400x400.jpg`,
     audits: "2",
     audit_note: null,

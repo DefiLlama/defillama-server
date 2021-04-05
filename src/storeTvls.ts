@@ -34,11 +34,8 @@ function releaseCoingeckoLock() {
 }
 
 function getTimestampAtStartOfDay(timestamp: number) {
-  var dt = new Date(timestamp * 1000);
-  dt.setHours(0);
-  dt.setMilliseconds(0);
-  dt.setMinutes(0);
-  dt.setSeconds(0);
+  const dt = new Date(timestamp * 1000);
+  dt.setHours(0, 0, 0, 0);
   return Math.floor(dt.getTime() / 1000);
 }
 

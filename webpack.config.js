@@ -4,7 +4,6 @@ module.exports = {
   entry: slsw.lib.entries,
   target: 'node',
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
-  externals:['ethers'],
   module: {
     rules: [
       {
@@ -32,9 +31,5 @@ module.exports = {
       'bignumber.js$': 'bignumber.js/bignumber.js',
       'node-fetch$': 'node-fetch/lib/index.js'
     }
-  },
-  optimization: {
-    // fix node modules not packaged into zip
-    concatenateModules: false
-  },
+  }
 };

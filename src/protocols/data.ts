@@ -2313,8 +2313,8 @@ export default [
   {
     id: "241",
     name: "PowerPool",
-    address: "0x26607ac599266b21d13c7acf7942c7701a8b699c",
-    symbol: "PIPT",
+    address: "0x38e4adb44ef08f22f5b5b76a8f0c2d0dcbe7dca1",
+    symbol: "CVP",
     url: "https://powerpool.finance/",
     description:
       "PowerPool is a decentralized protocol for automatically managed token portfolios, and smart indices",

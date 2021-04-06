@@ -5,7 +5,7 @@ package:
 
 provider:
   name: aws
-  runtime: nodejs10.x
+  runtime: nodejs14.x
   region: eu-central-1
   endpointType: REGIONAL # Set to regional because the api gateway will be behind a cloudfront distribution
   stage: dev # Default to dev if no stage is specified

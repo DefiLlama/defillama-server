@@ -1,12 +1,15 @@
-const AWS =require('aws-sdk');
+import AWS from 'aws-sdk';
+import protocols from './protocols/data'
+import { ethers } from "ethers";
 const db = require('../imported-db/defillama-db.json');
+import {storeTvl} from './utils/getAndStoreTvl'
 
 AWS.config.update({region: 'eu-central-1'});
 const client = new AWS.DynamoDB.DocumentClient();
 
 const hourly = db[4].data;
 const daily=db[5].data;
-const ts = (date)=>Math.round(new Date(date).getTime()/1000)
+const ts = (date:string)=>Math.round(new Date(date).getTime()/1000)
 const step = 25
 const hourlyPrefix = 'hourlyTvl'
 const dailyPrefix = 'dailyTvl'
@@ -18,8 +21,8 @@ const maxProtocolId = 300
 
 const importOld = async ()=>{
   for(let i=0; i<table.length; i+=step){
-    const items = [];
-    table.slice(i, i+step).forEach((item, j)=>{
+    const items = [] as any[];
+    table.slice(i, i+step).forEach((item:any)=>{
       const processed = {
         PutRequest:{
           Item:{
@@ -45,7 +48,7 @@ const importOld = async ()=>{
   }
 }
 
-function getClosestDayStartTimestamp(timestamp) {
+function getClosestDayStartTimestamp(timestamp:number) {
   const dt = new Date(timestamp * 1000);
   dt.setHours(0, 0, 0, 0);
   const prevDayTimestamp = Math.floor(dt.getTime() / 1000);
@@ -101,7 +104,7 @@ const deleteAtTime = async ()=>{
 }
 
 const searchInterval = 3600*5 // 5 hrs
-function getTVLOfRecordClosestToTimestamp(PK, timestamp) {
+function getTVLOfRecordClosestToTimestamp(PK:string, timestamp:number) {
   return client
     .query({
       TableName,
@@ -145,5 +148,18 @@ async function fillDailyGaps(){
   }
 }
 
+async function updateProtocolTvl(protocolName:string){
+  const provider = new ethers.providers.AlchemyProvider(
+    "mainnet",
+    process.env.ALCHEMY_API
+  );
+  const lastBlockNumber = await provider.getBlockNumber();
+  const protocol = protocols.find(p=>p.name===protocolName);
+  if(protocol === undefined){
+    throw new Error('REEEEEE!')
+  }
+  const block = await provider.getBlock(lastBlockNumber - 10);
+  await storeTvl(block.timestamp, block.number, protocol)
+}
 
-fillDailyGaps();
+updateProtocolTvl('BasketDAO')

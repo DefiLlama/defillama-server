@@ -1,9 +1,7 @@
 import { wrapScheduledLambda } from "./utils/wrap";
-import protocols, { Protocol } from "./protocols/data";
-import * as Sentry from "@sentry/serverless";
+import protocols from "./protocols/data";
 import { ethers } from "ethers";
-import { util } from "@defillama/sdk";
-import storeNewTvl from "./utils/storeNewTvl";
+import {storeTvl} from './utils/getAndStoreTvl'
 
 const maxRetries = 4;
 
@@ -20,60 +18,6 @@ function releaseCoingeckoLock() {
   }
 }
 
-interface TokenPrices {
-  [token: string]: {
-    usd: number;
-  };
-}
-
-async function storeTvl(
-  unixTimestamp: number,
-  ethBlock: number,
-  protocol: Protocol,
-  knownTokenPrices: TokenPrices
-) {
-  for (let i = 0; i < maxRetries; i++) {
-    let tvl: number;
-    try {
-      const module = await import(
-        `../DefiLlama-Adapters/projects/${protocol.module}`
-      );
-      if (module.tvl) {
-        const tvlBalances = await module.tvl(unixTimestamp, ethBlock);
-        tvl = await util.computeTVL(
-          tvlBalances,
-          "now",
-          false,
-          knownTokenPrices,
-          getCoingeckoLock,
-          10
-        );
-      } else if (module.fetch) {
-        tvl = Number(await module.fetch());
-      } else {
-        throw new Error(
-          `Module for ${protocol.name} does not have a normal interface`
-        );
-      }
-      if (typeof tvl !== "number" || Number.isNaN(tvl)) {
-        throw new Error(
-          `TVL of ${protocol.name} is not a number, instead it is ${tvl}`
-        );
-      }
-    } catch (e) {
-      if (i >= maxRetries - 1) {
-        console.error(protocol.name, e);
-        Sentry.AWSLambda.captureException(e);
-        return;
-      } else {
-        continue;
-      }
-    }
-    await storeNewTvl(protocol, unixTimestamp, tvl);
-    return;
-  }
-}
-
 const handler = async () => {
   const provider = new ethers.providers.AlchemyProvider(
     "mainnet",
@@ -83,7 +27,7 @@ const handler = async () => {
   const block = await provider.getBlock(lastBlockNumber - 10); // To allow indexers to catch up
   const knownTokenPrices = {};
   const actions = protocols.map((protocol) =>
-    storeTvl(block.timestamp, block.number, protocol, knownTokenPrices)
+    storeTvl(block.timestamp, block.number, protocol, knownTokenPrices, maxRetries, getCoingeckoLock)
   );
   const timer = setInterval(() => {
     // Rate limit is 100 calls/min for coingecko's API

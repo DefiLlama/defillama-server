@@ -19,3 +19,8 @@ npm run serve
 
 ## Deploy
 Just push your changes to the `master` branch.
+
+## Cli
+```
+npx esm-ts-node src/import.ts
+```

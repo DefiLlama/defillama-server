@@ -1,6 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import dynamodb from "./utils/dynamodb";
 import protocols, { Protocol } from "./protocols/data";
+import getLastRecord from './utils/getLastRecord'
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -16,14 +17,7 @@ const handler = async (
   const response = (
     await Promise.all(
       protocols.map(async (protocol) => {
-        const lastHourlyRecord = await dynamodb.query({
-          ExpressionAttributeValues: {
-            ":pk": `hourlyTvl#${protocol.id}`,
-          },
-          KeyConditionExpression: "PK = :pk",
-          Limit: 1,
-          ScanIndexForward: false,
-        });
+        const lastHourlyRecord = await getLastRecord(protocol.id);
         const item = lastHourlyRecord.Items?.[0];
         if (item === undefined) {
           return null;

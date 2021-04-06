@@ -7,9 +7,9 @@ test("all the dynamic imports work", async () => {
 });
 
 test("no id is repeated", async () => {
-  const ids = []
+  const ids = [];
   for (const protocol of protocols) {
-    expect(ids).not.toContain(protocol.id)
-    ids.push(protocol.id)
+    expect(ids).not.toContain(protocol.id);
+    ids.push(protocol.id);
   }
 });

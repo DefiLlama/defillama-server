@@ -2657,7 +2657,7 @@ export default [
     description:
       "Synthetics protocol for on-chain price exposure to real-world assets - accessible to all.",
     chain: "Terra",
-    logo: `${baseIconsUrl}/fShXtXh-_400x400.jpg`,
+    logo: `${baseIconsUrl}/LUdffxHS_400x400.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "mirror-protocol",

@@ -2544,7 +2544,7 @@ export default [
   {
     id: "254",
     name: "Bunny",
-    address: "0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51",
+    address: "bsc:0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51",
     symbol: "BUNNY",
     url: "https://pancakebunny.finance/",
     description:

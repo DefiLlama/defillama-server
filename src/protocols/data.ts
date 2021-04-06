@@ -1369,7 +1369,7 @@ export default [
       "WanSwap is an innovative crosschain automatic market making (AMM) decentralized exchange (DEX) based on Wanchain.",
     chain: "Wanchain",
     logo: `${baseIconsUrl}/OWIhzGn8_400x400.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

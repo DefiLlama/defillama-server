@@ -13,7 +13,8 @@ const dailyPrefix = 'dailyTvl'
 
 const table = daily;
 const dynamoPrefix = dailyPrefix;
-const TableName = "prod-table"
+const TableName = "dev-table"
+const maxProtocolId = 300
 
 const importOld = async ()=>{
   for(let i=0; i<table.length; i+=step){
@@ -86,7 +87,7 @@ const deleteOverlapping = async ()=>{
 }
 
 const deleteAtTime = async ()=>{
-  for(let i =0; i<300; i++){
+  for(let i =0; i<maxProtocolId; i++){
     const SK = 1617580800;
     const PK = `${dynamoPrefix}#${i}`;
     await client.delete({
@@ -99,5 +100,50 @@ const deleteAtTime = async ()=>{
   }
 }
 
+const searchInterval = 3600*5 // 5 hrs
+function getTVLOfRecordClosestToTimestamp(PK, timestamp) {
+  return client
+    .query({
+      TableName,
+      ExpressionAttributeValues: {
+        ":pk": PK,
+        ":begin": timestamp - searchInterval,
+        ":end": timestamp + searchInterval,
+      },
+      KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end",
+    }).promise()
+    .then((records) => {
+      if (records.Items == undefined || records.Items.length == 0) {
+        return null
+      }
+      let closest = records.Items[0];
+      for (const item of records.Items.slice(1)) {
+        if (Math.abs(item.SK - timestamp) < Math.abs(closest.SK - timestamp)) {
+          closest = item;
+        }
+      }
+      return closest;
+    });
+}
 
-deleteAtTime();
+const fillTimestamp = 1608776919
+async function fillDailyGaps(){
+  for(let i =0; i<maxProtocolId; i++){
+    const PK = `${dailyPrefix}#${i}`;
+    const hourlyItem = await getTVLOfRecordClosestToTimestamp(PK, fillTimestamp)
+    console.log(hourlyItem)
+    if(hourlyItem !== null){
+      await client.put({
+        TableName,
+        Item:{
+          PK,
+          SK:getClosestDayStartTimestamp(hourlyItem.SK),
+          tvl: hourlyItem.tvl
+        }
+      }).promise()
+    }
+  }
+}
+
+
+fillDailyGaps();

@@ -8,9 +8,12 @@ const hourly = db[4].data;
 const daily=db[5].data;
 const ts = (date)=>Math.round(new Date(date).getTime()/1000)
 const step = 25
+const hourlyPrefix = 'hourlyTvl'
+const dailyPrefix = 'dailyTvl'
+
 const table = daily;
-const dynamoPrefix = 'dailyTvl';
-const TableName = "dev-table"
+const dynamoPrefix = dailyPrefix;
+const TableName = "prod-table"
 
 const importOld = async ()=>{
   for(let i=0; i<table.length; i+=step){
@@ -20,14 +23,14 @@ const importOld = async ()=>{
         PutRequest:{
           Item:{
               PK:`${dynamoPrefix}#${item.pid}`,
-              SK: ts(item.ts),
+              SK: getClosestDayStartTimestamp(ts(item.ts)),
               tvl: Number(item.TVL)
           }
         }
       }
       if(items.some(it=>it.PutRequest.Item.PK === processed.PutRequest.Item.PK &&
          it.PutRequest.Item.SK === processed.PutRequest.Item.SK)){
-        console.log('udplicate', processed)
+        console.log('duplicate', processed)
         return // duplicate
       }
       items.push(processed)
@@ -82,4 +85,19 @@ const deleteOverlapping = async ()=>{
   }
 }
 
-deleteOverlapping();
+const deleteAtTime = async ()=>{
+  for(let i =0; i<300; i++){
+    const SK = 1617580800;
+    const PK = `${dynamoPrefix}#${i}`;
+    await client.delete({
+      TableName,
+      Key:{
+        PK,
+        SK
+      }
+    }).promise()
+  }
+}
+
+
+deleteAtTime();

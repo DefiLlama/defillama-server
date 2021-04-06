@@ -2472,8 +2472,8 @@ export default [
   {
     id: "250",
     name: "BasketDAO",
-    address: "-",
-    symbol: "-",
+    address: "0x44564d0bd94343f72e3c8a0d22308b7fa71db0bb",
+    symbol: "BASK",
     url: "https://basketdao.org/",
     description:
       "A community controlled no fee token basket that you are PAID to hold.",
@@ -2481,7 +2481,7 @@ export default [
     logo: `${baseIconsUrl}/eq0vIOD1_400x400.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "basketdao",
     cmcId: null,
     category: "Indexes",
     chains: ["Ethereum"],

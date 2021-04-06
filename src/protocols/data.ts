@@ -2826,6 +2826,23 @@ export default [
     chains: ["Ethereum"],
     module: "yfii/index.js",
   },
+  {
+    id: "270",
+    name: "Liquity",
+    address: "0x6DEA81C8171D0bA574754EF6F8b412F2Ed88c54D",
+    symbol: "LQTY",
+    url: "https://www.liquity.org/",
+    description: "Liquity is a decentralized borrowing protocol that allows you to draw 0% interest loans against Ether used as collateral.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zEgsUkSu_400x400.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "liquity",
+    cmcId: null,
+    category: "Minting",
+    chains: ["Ethereum"],
+    module: "liquity/index.js",
+  },
 ] as Protocol[];
 
 /*

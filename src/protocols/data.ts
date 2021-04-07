@@ -1314,14 +1314,14 @@ export default [
     url: "https://www.lido.fi/",
     description:
       "Stake your ETH with Lido and receive liquid stETH with daily rewards.",
-    chain: "Ethereum",
+    chain: "Multi-Chain",
     logo: `${baseIconsUrl}/pGDedFg0_400x400.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "lido-dao",
+    cmcId: "8000",
     category: "Staking",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Terra"],
     module: "lido.js",
   },
   {

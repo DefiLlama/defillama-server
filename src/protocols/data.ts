@@ -2843,6 +2843,23 @@ export default [
     chains: ["Ethereum"],
     module: "liquity/index.js",
   },
+  {
+    id: "271",
+    name: "Honeyswap",
+    address: "-",
+    symbol: "-",
+    url: "https://honeyswap.org/",
+    description: "Honeyswap is a decentralized exchange built on the xDai Chain, this enables users to experience fast and secure transactions with incredibly low fees. Multiple tokens are available with which you can swap and add liquidity. It is a fork of the well known Uniswap-V2 protocol adapted to fit for the xDai Chain and the 1hive ecosystem.",
+    chain: "xDai",
+    logo: `${baseIconsUrl}/MbHsoxMI_400x400.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["xDai"],
+    module: "honeyswap/index.js",
+  },
 ] as Protocol[];
 
 /*

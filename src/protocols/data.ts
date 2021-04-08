@@ -857,7 +857,7 @@ export default [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Staking",
     chains: ["Ethereum"],
     module: "zlot.js",
   },

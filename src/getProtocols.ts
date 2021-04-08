@@ -1,12 +1,11 @@
 import { successResponse, wrap, IResponse } from "./utils";
-import dynamodb from "./utils/dynamodb";
 import protocols, { Protocol } from "./protocols/data";
 import getLastRecord from './utils/getLastRecord'
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
   if (change == Infinity) {
-    return 100;
+    return null
   }
   return change;
 }

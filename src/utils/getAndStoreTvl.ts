@@ -48,7 +48,9 @@ export async function storeTvl(
       } catch (e) {
         if (i >= maxRetries - 1) {
           console.error(protocol.name, e);
-          Sentry.AWSLambda.captureException(e);
+          const scope = new Sentry.Scope();
+          scope.setTag("protocol", protocol.name);
+          Sentry.AWSLambda.captureException(e, scope);
           return;
         } else {
           continue;

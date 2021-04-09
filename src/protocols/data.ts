@@ -2580,7 +2580,7 @@ export default [
   {
     id: "256",
     name: "Allinx",
-    address: "0xd60D91EAE3E0F46098789fb593C06003253E5D0a",
+    address: "bsc:0xd60D91EAE3E0F46098789fb593C06003253E5D0a",
     symbol: "INX",
     url: "https://allinx.io",
     description: "Simplify financial use cases for you.",

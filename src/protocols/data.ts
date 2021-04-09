@@ -2633,7 +2633,7 @@ export default [
   {
     id: "259",
     name: "Snowball",
-    address: "0xc38f41a296a4493ff429f1238e030924a1542e50",
+    address: "avax:0xc38f41a296a4493ff429f1238e030924a1542e50",
     symbol: "SNOB",
     url: "https://snowball.network",
     description:

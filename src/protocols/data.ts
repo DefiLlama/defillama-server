@@ -1896,7 +1896,7 @@ export default [
     description: "Fast, non-custodial L1-L2 and cross-L2 communication.\r\n",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ZSU1xz91_400x400.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

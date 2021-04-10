@@ -2866,7 +2866,7 @@ export default [
     address: "0x321C2fE4446C7c963dc41Dd58879AF648838f98D",
     symbol: "CTX",
     url: "https://cryptex.finance/",
-    description: "For cryptocurrency investors, traders, funds, DeFi users, and institutions, TCAP is an ERC-20 compatible smart contract that tokenizes real-time Total Market Capitalization from all cryptocurrencies and tokens listed on the largest crypto data providers in the world.",
+    description: "TCAP gives holders real-time price exposure to total cryptocurrency market cap.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/Wq5gUhFN_400x400.jpg`,
     audits: "2",

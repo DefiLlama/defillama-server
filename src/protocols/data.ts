@@ -2877,6 +2877,23 @@ export default [
     chains: ["Ethereum"],
     module: "cryptex/index.js",
   },
+  {
+    id: "273",
+    name: "ACoconut",
+    address: "0x9a0aba393aac4dfbff4333b06c407458002c6183",
+    symbol: "AC",
+    url: "http://acoconut.fi/",
+    description: "ACoconut is a multi-chain BTC DeFi project designed to enable frictionless movement of BTC liquidity between blockchain networks and DeFi protocols. DeFiLlama is a reputable data aggregator, we wish to be listed on DeFiLlama in order to get greater coverage on our project.",
+    chain: "Multi-Chain",
+    logo: `${baseIconsUrl}/NpOtjqMk_400x400.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: 'acoconut',
+    cmcId: '7382',
+    category: "Yield",
+    chains: ["Ethereum", "Binance"],
+    module: "acoconut/index.js",
+  },
 ] as Protocol[];
 
 /*

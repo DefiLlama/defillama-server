@@ -3013,6 +3013,23 @@ export default [
     chains: ["Solana"],
     module: "oxygen/index.js",
   },
+  {
+    id: "281",
+    name: "Ribbon Finance",
+    address: "-",
+    symbol: "-",
+    url: "https://www.ribbon.finance/",
+    description: "Structured products protocol",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ribbon.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Ethereum"],
+    module: "ribbon/index.js",
+  },
 ] as Protocol[];
 
 /*

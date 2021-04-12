@@ -2866,7 +2866,7 @@ export default [
     address: "0x321C2fE4446C7c963dc41Dd58879AF648838f98D",
     symbol: "CTX",
     url: "https://cryptex.finance/",
-    description: "TCAP gives holders real-time price exposure to total cryptocurrency market cap.",
+    description: "Cryptex is focused on building innovative, open-source financial solutions for the global Crypto community. Using Ethereum’s smart contract system, Cryptex is able to create decentralized financial solutions such as Total Crypto Market Cap Token, TCAP and many others.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/Wq5gUhFN_400x400.jpg`,
     audits: "2",

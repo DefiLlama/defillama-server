@@ -2336,7 +2336,7 @@ export default [
     url: "https://www.energiswap.org",
     description:
       "A fully decentralized protocol for automated liquidity provision on Energi.",
-    chain: "Ethereum",
+    chain: "Energi",
     logo: `${baseIconsUrl}/qqXDg-cd_400x400.jpg`,
     audits: "0",
     audit_note: null,

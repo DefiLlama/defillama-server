@@ -923,7 +923,7 @@ export default [
     description:
       "Alpha Finance Lab is an ecosystem of cross-chain DeFi products that focus on capturing unaddressed demand in an innovative and user friendly way. Alpha Homora, the first product, is a leveraged yield farming and leveraged liquidity providing protocol where ETH lenders can earn high lending interest rate and leveraged yield farmers/liquidity providers can increase the APY.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/eMgmyBiA_400x400.jpg`,
+    logo: `${baseIconsUrl}/AlphaToken_512x512.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

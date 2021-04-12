@@ -2894,6 +2894,23 @@ export default [
     chains: ["Ethereum", "Binance"],
     module: "acoconut/index.js",
   },
+  {
+    id: "274",
+    name: "Olive Cash",
+    address: "avax:0x617724974218A18769020A70162165A539c07E8a",
+    symbol: "OLIVE",
+    url: "https://avax.olive.cash",
+    description: "OliveCash is a cross chain Yield Farming project running on Binance Smart Chain Avalanche chain.",
+    chain: "Multi-Chain",
+    logo: `${baseIconsUrl}/KIHG_1sD_400x400.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Avalanche", "Binance"],
+    module: "olivecash/index.js",
+  },
 ] as Protocol[];
 
 /*

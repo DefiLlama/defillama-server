@@ -2996,6 +2996,23 @@ export default [
     chains: ["Ethereum"],
     module: "stakehound/index.js",
   },
+  {
+    id: "280",
+    name: "Oxygen",
+    address: "0x965697b4ef02F0DE01384D0d4F9F782B1670c163",
+    symbol: "OXY",
+    url: "https://www.oxygen.org/",
+    description: "Money market on Solana",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/oxygen.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: 'oxygen',
+    cmcId: '8029',
+    category: "Lending",
+    chains: ["Solana"],
+    module: "oxygen/index.js",
+  },
 ] as Protocol[];
 
 /*

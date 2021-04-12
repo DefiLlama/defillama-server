@@ -2880,7 +2880,7 @@ export default [
   {
     id: "273",
     name: "ACoconut",
-    address: "0x9a0aba393aac4dfbff4333b06c407458002c6183",
+    address: "bsc:0x5B45A9be49c94236E127EFCc601b7e7a1a485d0a",
     symbol: "AC",
     url: "http://acoconut.fi/",
     description: "ACoconut provides the first cross-chain yield aggregator for BTC DeFi users. ACoconut v2 consists of two open protocols: BTC+ and acBTC. BTC+ is a liquidity and yield aggregator that optimizes and distributes yield on individual chain. acBTC is a decentralized bridge that carries BTC across chains.",

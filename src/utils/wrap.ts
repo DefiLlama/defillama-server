@@ -50,7 +50,7 @@ function wrap(
       ...response,
       headers: {
         ...response.headers,
-        ...credentialsCorsHeaders(event.headers),
+        ...credentialsCorsHeaders(),
       },
     }));
   };

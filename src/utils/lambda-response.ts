@@ -100,15 +100,9 @@ export function getBody(response: string | void | IResponse) {
   );
 }
 
-export function credentialsCorsHeaders(headers: {
-  [name: string]: string | undefined;
-}) {
-  let origin = headers?.origin ?? headers?.Origin;
-  if (origin === undefined) {
-    origin = "*"; // Fallback
-  }
+export function credentialsCorsHeaders() {
   return {
-    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Origin": '*',
     "Access-Control-Allow-Credentials": "true",
   };
 }

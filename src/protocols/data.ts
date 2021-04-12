@@ -631,7 +631,7 @@ export default [
     cmcId: null,
     category: "Minting",
     chains: ["Ethereum"],
-    module: "uma.js",
+    module: "uma/index.js",
   },
   {
     id: "142",

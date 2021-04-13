@@ -2414,7 +2414,7 @@ export default [
     cmcId: "8422",
     category: "Dexes",
     chains: ["Avalanche"],
-    module: "pangolin.js",
+    module: "pangolin/index.js",
   },
   {
     id: "247",

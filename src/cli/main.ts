@@ -1,8 +1,8 @@
 import AWS from 'aws-sdk';
-import protocols from './protocols/data'
+import protocols from '../protocols/data'
 import { ethers } from "ethers";
 const db = require('../imported-db/defillama-db.json');
-import {storeTvl} from './utils/getAndStoreTvl'
+import {storeTvl} from '../utils/getAndStoreTvl'
 
 AWS.config.update({region: 'eu-central-1'});
 const client = new AWS.DynamoDB.DocumentClient();
@@ -161,5 +161,3 @@ async function updateProtocolTvl(protocolName:string){
   const block = await provider.getBlock(lastBlockNumber - 10);
   await storeTvl(block.timestamp, block.number, protocol)
 }
-
-updateProtocolTvl('BasketDAO')

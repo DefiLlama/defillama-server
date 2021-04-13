@@ -3030,17 +3030,21 @@ export default [
     chains: ["Ethereum"],
     module: "ribbon/index.js",
   },
+  {
+    id: "282",
+    name: "Yam Finance",
+    address: "0x0AaCfbeC6a24756c20D41914F2caba817C0d8521",
+    symbol: "YAM",
+    url: "https://yam.finance/",
+    description: "Yam Finance is a Decentralized Autonomous Organization building three core products. Innovative synthetic assets (degnerative.finance), permissionless insurance (Umbrella), and ground-breaking treasury management services (DAO House). The YAM token was fair launched and the DAO is an open community where anybody can participate.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yam.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: "yam-2",
+    cmcId: "7131",
+    category: "DAO",
+    chains: ["Ethereum"],
+    module: "degenerative/index.js",
+  },
 ] as Protocol[];
-
-/*
-Missing
-import primitive from "../../DefiLlama-Adapters/projects/primitive/index.js";
-import qian from "../../DefiLlama-Adapters/projects/qian/index.js";
-import ray from "../../DefiLlama-Adapters/projects/ray/index.js";
-import reflexer from "../../DefiLlama-Adapters/projects/reflexer/index.js";
-import setProtocol from "../../DefiLlama-Adapters/projects/set-protocol/index.js";
-import sfinance from "../../DefiLlama-Adapters/projects/sfinance/index.js";
-import unitrade from "../../DefiLlama-Adapters/projects/unitrade/index.js";
-import valueliquid from "../../DefiLlama-Adapters/projects/valueliquid/index.js";
-import yfii from "../../DefiLlama-Adapters/projects/yfii/index.js";
-*/

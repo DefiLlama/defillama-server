@@ -994,14 +994,14 @@ export default [
     url: "https://valuedefi.io/",
     description:
       "The Value DeFi protocol is a platform and suite of products that aim to bring fairness, true value, and innovation to Decentralized Finance.",
-    chain: "Ethereum",
+    chain: "Multi-Chain",
     logo: `${baseIconsUrl}/jN72Swyu_400x400.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Binance"],
     module: "valuedefi.js",
   },
   {

@@ -2920,7 +2920,7 @@ export default [
     description: "Liquid staking provider.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sharedstake.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: 'sharedstake-governance-token',
     cmcId: '8445',

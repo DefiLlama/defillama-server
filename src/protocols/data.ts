@@ -1143,7 +1143,7 @@ export default [
     cmcId: "7336",
     category: "Indexes",
     chains: ["Ethereum"],
-    module: "dpi.js",
+    module: "indexcoop/index.js",
   },
   {
     id: "173",
@@ -1642,7 +1642,7 @@ export default [
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "saddle.js",
+    module: "saddle/index.js",
   },
   {
     id: "203",

@@ -18,18 +18,6 @@ jobs:
     - run: npm run build
       env:
         ALCHEMY_API: ${{ secrets.ALCHEMY_API }}
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Get Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - run: npm ci
-    - run: git submodule update --init --recursive
-    - run: npm test
-      continue-on-error: true
   deploy:
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'

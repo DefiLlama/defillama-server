@@ -3083,7 +3083,6 @@ export default [
     chains: ["Solana"],
     module: "serum-amm.js",
   },
-  /*
   {
     id: "285",
     name: "Opyn",
@@ -3101,6 +3100,7 @@ export default [
     chains: ["Ethereum"],
     module: "opyn/index.js",
   },
+  /*
   {
     id: "286",
     name: "Mango Markets",

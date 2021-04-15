@@ -3056,7 +3056,7 @@ export default [
     description: "AMM",
     chain: "Solana",
     logo: `${baseIconsUrl}/orca.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

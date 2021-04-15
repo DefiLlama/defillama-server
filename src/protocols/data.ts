@@ -3083,6 +3083,7 @@ export default [
     chains: ["Solana"],
     module: "serum-amm.js",
   },
+  /*
   {
     id: "285",
     name: "Opyn",
@@ -3117,4 +3118,5 @@ export default [
     chains: ["Solana"],
     module: "mango-markets/index.js",
   },
+  */
 ] as Protocol[];

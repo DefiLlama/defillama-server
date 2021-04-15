@@ -1572,6 +1572,7 @@ export default [
     chains: ["Ethereum"],
     module: "bzx.js",
   },
+  /*
   {
     id: "198",
     name: "Incognito Chain",
@@ -1589,6 +1590,7 @@ export default [
     chains: ["Incognito Chain"],
     module: "incognito.js",
   },
+  */
   {
     id: "199",
     name: "Sablier Finance",

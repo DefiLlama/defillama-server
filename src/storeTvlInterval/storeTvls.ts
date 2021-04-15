@@ -1,6 +1,7 @@
 import protocols from "../protocols/data";
 import { ethers } from "ethers";
 import {storeTvl} from '../utils/getAndStoreTvl'
+import {getCurrentBlocks} from "@defillama/sdk/build/computeTVL/index"
 
 const maxRetries = 4;
 
@@ -18,15 +19,10 @@ function releaseCoingeckoLock() {
 }
 
 export default async (intervalStart:number, intervalEnd:number) => {
-  const provider = new ethers.providers.AlchemyProvider(
-    "mainnet",
-    process.env.ALCHEMY_API
-  );
-  const lastBlockNumber = await provider.getBlockNumber();
-  const block = await provider.getBlock(lastBlockNumber - 10); // To allow indexers to catch up
+  const {timestamp, ethereumBlock, chainBlocks} = await getCurrentBlocks()
   const knownTokenPrices = {};
   const actions = protocols.slice(intervalStart, intervalEnd).map((protocol) =>
-    storeTvl(block.timestamp, block.number, protocol, knownTokenPrices, maxRetries, getCoingeckoLock)
+    storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, knownTokenPrices, maxRetries, getCoingeckoLock)
   );
   const timer = setInterval(() => {
     // Rate limit is 100 calls/min for coingecko's API

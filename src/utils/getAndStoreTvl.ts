@@ -12,6 +12,9 @@ export interface TokenPrices {
 export async function storeTvl(
     unixTimestamp: number,
     ethBlock: number,
+    chainBlocks: {
+      [chain:string]:number
+    },
     protocol: Protocol,
     knownTokenPrices?: TokenPrices,
     maxRetries: number = 1,
@@ -24,7 +27,7 @@ export async function storeTvl(
           `../../DefiLlama-Adapters/projects/${protocol.module}`
         );
         if (module.tvl) {
-          const tvlBalances = await module.tvl(unixTimestamp, ethBlock);
+          const tvlBalances = await module.tvl(unixTimestamp, ethBlock, chainBlocks);
           tvl = await util.computeTVL(
             tvlBalances,
             "now",

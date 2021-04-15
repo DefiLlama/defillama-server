@@ -3131,7 +3131,7 @@ export default [
     gecko_id: "zero-exchange",
     cmcId: "8293",
     category: "Dexes",
-    chains: ["Solana", "Ethereum", "Binance"],
+    chains: ["Avalanche", "Ethereum", "Binance"],
     module: "zerodex/index.js",
   },
   {
@@ -3148,7 +3148,7 @@ export default [
     gecko_id: "prosper",
     cmcId: "8255",
     category: "Dexes",
-    chains: ["Solana", "Binance"],
+    chains: ["Avalanche", "Binance"],
     module: "prosper/index.js",
   },
   {
@@ -3165,7 +3165,7 @@ export default [
     gecko_id: "yetiswap",
     cmcId: null,
     category: "Dexes",
-    chains: ["Solana"],
+    chains: ["Avalanche"],
     module: "yetiswap/index.js",
   },
 ] as Protocol[];

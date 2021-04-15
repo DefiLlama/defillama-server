@@ -3100,7 +3100,6 @@ export default [
     chains: ["Ethereum"],
     module: "opyn/index.js",
   },
-  /*
   {
     id: "286",
     name: "Mango Markets",
@@ -3118,5 +3117,4 @@ export default [
     chains: ["Solana"],
     module: "mango-markets/index.js",
   },
-  */
 ] as Protocol[];

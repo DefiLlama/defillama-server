@@ -1,7 +1,6 @@
-import { wrapScheduledLambda } from "./utils/wrap";
-import protocols from "./protocols/data";
+import protocols from "../protocols/data";
 import { ethers } from "ethers";
-import {storeTvl} from './utils/getAndStoreTvl'
+import {storeTvl} from '../utils/getAndStoreTvl'
 
 const maxRetries = 4;
 
@@ -18,7 +17,7 @@ function releaseCoingeckoLock() {
   }
 }
 
-const handler = async () => {
+export default async (intervalStart:number, intervalEnd:number) => {
   const provider = new ethers.providers.AlchemyProvider(
     "mainnet",
     process.env.ALCHEMY_API
@@ -26,7 +25,7 @@ const handler = async () => {
   const lastBlockNumber = await provider.getBlockNumber();
   const block = await provider.getBlock(lastBlockNumber - 10); // To allow indexers to catch up
   const knownTokenPrices = {};
-  const actions = protocols.map((protocol) =>
+  const actions = protocols.slice(intervalStart, intervalEnd).map((protocol) =>
     storeTvl(block.timestamp, block.number, protocol, knownTokenPrices, maxRetries, getCoingeckoLock)
   );
   const timer = setInterval(() => {
@@ -38,5 +37,3 @@ const handler = async () => {
   clearInterval(timer);
   return;
 };
-
-export default wrapScheduledLambda(handler);

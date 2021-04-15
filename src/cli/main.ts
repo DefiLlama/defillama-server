@@ -159,5 +159,5 @@ async function updateProtocolTvl(protocolName:string){
     throw new Error('REEEEEE!')
   }
   const block = await provider.getBlock(lastBlockNumber - 10);
-  await storeTvl(block.timestamp, block.number, protocol)
+  await storeTvl(block.timestamp, block.number, {}, protocol)
 }

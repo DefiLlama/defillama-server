@@ -2642,7 +2642,7 @@ export default [
       "Snowball Network is a multi protocol; first as an optimized yield farm of Pangolin Dex, additionally as Stable Coin Vault and Dex for near zero fee/zero slippage stable coin swaps.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/lz0olM_z_400x400.jpg`,
-    audits: "0",
+    audits: "3",
     audit_note: null,
     gecko_id: "snowball-token",
     cmcId: null,

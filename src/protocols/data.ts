@@ -719,7 +719,7 @@ export default [
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "dodo.js",
+    module: "dodo/index.js",
   },
   {
     id: "148",

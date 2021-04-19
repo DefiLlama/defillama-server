@@ -59,6 +59,9 @@ export default async function (
     hourlyPK,
     unixTimestamp - secondsInWeek
   );
+  if((await lastHourlyTVLRecord).tvl*2 < tvl){
+    throw new Error(`TVL for ${protocol.name} has grown way to much in the last hour (${(await lastHourlyTVLRecord).tvl} to ${tvl})`)
+  }
   //console.log(protocol.name, tvl, (await lastHourlyTVLRecord).tvl, (await lastDailyTVLRecord).tvl, (await lastWeeklyTVLRecord).tvl)
   await dynamodb.put({
     PK: hourlyPK,

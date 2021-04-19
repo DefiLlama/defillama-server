@@ -59,7 +59,13 @@ export async function storeTvl(
           continue;
         }
       }
-      await storeNewTvl(protocol, unixTimestamp, tvl);
+      try{
+        await storeNewTvl(protocol, unixTimestamp, tvl);
+      } catch(e){
+        const scope = new Sentry.Scope();
+        scope.setTag("protocol", protocol.name);
+        Sentry.AWSLambda.captureException(e, scope);
+      }
       return;
     }
   }

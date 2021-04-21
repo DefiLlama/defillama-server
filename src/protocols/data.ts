@@ -596,7 +596,7 @@ export default [
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "snowswap.js",
+    module: "snowswap/index.js",
   },
   {
     id: "140",

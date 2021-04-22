@@ -1,22 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import protocols from "./protocols/data";
 import dynamodb from "./utils/dynamodb";
-
-function getClosestDayStartTimestamp(timestamp: number) {
-  const dt = new Date(timestamp * 1000);
-  dt.setHours(0, 0, 0, 0);
-  const prevDayTimestamp = Math.floor(dt.getTime() / 1000);
-  dt.setHours(24);
-  const nextDayTimestamp = Math.floor(dt.getTime() / 1000);
-  if (
-    Math.abs(prevDayTimestamp - timestamp) <
-    Math.abs(nextDayTimestamp - timestamp)
-  ) {
-    return prevDayTimestamp;
-  } else {
-    return nextDayTimestamp;
-  }
-}
+import {getClosestDayStartTimestamp} from "./date/getClosestDayStartTimestamp"
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent

@@ -1,9 +1,10 @@
 import {client, TableName, dailyPrefix} from './dynamodb'
 import {getProtocol} from './utils'
-
+import {util, api} from "@defillama/sdk"
+import {releaseCoingeckoLock, getCoingeckoLock} from "../storeTvlInterval/coingeckoLocks"
 
 async function main(){
-    const protocol = getProtocol('pangolin')
+    const protocol = getProtocol('Yearn Finance')
     const adapter = await import(`../../DefiLlama-Adapters/projects/${protocol.module}`)
     const PK = `${dailyPrefix}#${protocol.id}`
     const dailyTxs = await client
@@ -14,12 +15,17 @@ async function main(){
       },
       KeyConditionExpression: "PK = :pk",
     }).promise()
-    console.log(dailyTxs)
+    setInterval(() => {
+        releaseCoingeckoLock();
+      }, 1e3);
     await Promise.all(dailyTxs.Items!.map(async item=>{
         const {SK} = item;
         console.log(SK, item.tvl)
-        const balances = await adapter.tvl(SK)
-        const tvl = Number(balances['0xdac17f958d2ee523a2206206994597c13d831ec7'])/1e6
+        const {block} = await api.util.lookupBlock(SK)
+        const balances = await adapter.tvl(SK, block)
+        console.log(balances)
+        const {usdTvl} = await util.computeTVL(balances, SK, true, undefined, getCoingeckoLock, 3);
+        console.log("new tvl", SK, usdTvl)
         await client.update({
             TableName,
             Key:{
@@ -28,10 +34,11 @@ async function main(){
             },
             UpdateExpression: "set tvl = :tvl",
             ExpressionAttributeValues:{
-                ":tvl": tvl,
+                ":tvl": usdTvl,
             },
         }).promise()
     }))
+    process.exit()
 }
 
 main()

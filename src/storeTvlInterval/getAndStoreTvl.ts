@@ -28,7 +28,7 @@ export async function storeTvl(
         );
         if (module.tvl) {
           const tvlBalances = await module.tvl(unixTimestamp, ethBlock, chainBlocks);
-          tvl = await util.computeTVL(
+          const tvlResults = await util.computeTVL(
             tvlBalances,
             "now",
             false,
@@ -36,6 +36,7 @@ export async function storeTvl(
             getCoingeckoLock,
             10
           );
+          tvl = tvlResults.usdTvl;
         } else if (module.fetch) {
           tvl = Number(await module.fetch());
         } else {

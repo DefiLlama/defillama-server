@@ -1,6 +1,6 @@
 import protocols from "../protocols/data";
 import {storeTvl} from './getAndStoreTvl'
-import {getCurrentBlocks} from "@defillama/sdk/build/computeTVL/index"
+import {getCurrentBlocks} from "@defillama/sdk/build/computeTVL/blocks"
 import {getCoingeckoLock, releaseCoingeckoLock} from "./coingeckoLocks"
 
 const maxRetries = 4;

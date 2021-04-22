@@ -1,7 +1,8 @@
 import dynamodb from "../utils/dynamodb";
 import { Protocol } from "../protocols/data";
 import { secondsBetweenCalls, getTimestampAtStartOfDay } from "../utils/date";
-import getLastRecord from '../utils/getLastRecord'
+import getLastRecord from '../utils/getLastRecord';
+import {reportError} from '../utils/error'
 
 const secondsBetweenCallsExtra = secondsBetweenCalls * 1.5; // 1.5 to add some wiggle room
 const secondsInDay = 60 * 60 * 24;
@@ -64,7 +65,7 @@ export default async function (
   );
   const lastHourlyTVL = (await lastHourlyTVLRecord).tvl;
   if(lastHourlyTVL*2 < tvl && lastHourlyTVL !== 0){
-    throw new Error(`TVL for ${protocol.name} has grown way too much in the last hour (${lastHourlyTVL} to ${tvl})`)
+    reportError(`TVL for ${protocol.name} has grown way too much in the last hour (${lastHourlyTVL} to ${tvl})`, protocol.name)
   }
   //console.log(protocol.name, tvl, (await lastHourlyTVLRecord).tvl, (await lastDailyTVLRecord).tvl, (await lastWeeklyTVLRecord).tvl)
   await dynamodb.put({

@@ -1270,6 +1270,7 @@ export default [
     chains: ["Ethereum"],
     module: "linkswap.js",
   },
+  /*
   {
     id: "180",
     name: "Demex",
@@ -1288,6 +1289,7 @@ export default [
     chains: ["Tradehub"],
     module: "demex.js",
   },
+  */
   {
     id: "181",
     name: "MANTRA DAO",

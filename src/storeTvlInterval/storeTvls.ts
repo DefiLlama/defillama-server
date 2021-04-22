@@ -1,22 +1,9 @@
 import protocols from "../protocols/data";
-import { ethers } from "ethers";
-import {storeTvl} from '../utils/getAndStoreTvl'
+import {storeTvl} from './getAndStoreTvl'
 import {getCurrentBlocks} from "@defillama/sdk/build/computeTVL/index"
+import {getCoingeckoLock, releaseCoingeckoLock} from "./coingeckoLocks"
 
 const maxRetries = 4;
-
-const locks = [] as ((value: unknown) => void)[];
-function getCoingeckoLock() {
-  return new Promise((resolve) => {
-    locks.push(resolve);
-  });
-}
-function releaseCoingeckoLock() {
-  const firstLock = locks.shift();
-  if (firstLock !== undefined) {
-    firstLock(null);
-  }
-}
 
 export default async (intervalStart:number, intervalEnd:number) => {
   const {timestamp, ethereumBlock, chainBlocks} = await getCurrentBlocks()

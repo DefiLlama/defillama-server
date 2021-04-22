@@ -1,7 +1,7 @@
-import dynamodb from "./dynamodb";
+import dynamodb from "../utils/dynamodb";
 import { Protocol } from "../protocols/data";
-import { secondsBetweenCalls, getTimestampAtStartOfDay } from "./date";
-import getLastRecord from './getLastRecord'
+import { secondsBetweenCalls, getTimestampAtStartOfDay } from "../utils/date";
+import getLastRecord from '../utils/getLastRecord'
 
 const secondsBetweenCallsExtra = secondsBetweenCalls * 1.5; // 1.5 to add some wiggle room
 const secondsInDay = 60 * 60 * 24;

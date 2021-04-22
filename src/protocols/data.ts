@@ -3227,7 +3227,7 @@ export default [
     url: "https://www.lydia.finance/",
     description: "AMM",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/lidya.jpg`,
+    logo: `${baseIconsUrl}/lydia.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: null,

@@ -11,7 +11,6 @@ const client = new AWS.DynamoDB.DocumentClient();
 const hourly = db[4].data;
 const daily=db[5].data;
 const ts = (date:string)=>Math.round(new Date(date).getTime()/1000)
-const step = 25
 const hourlyPrefix = 'hourlyTvl'
 const dailyPrefix = 'dailyTvl'
 

@@ -1,66 +1,71 @@
-import AWS from 'aws-sdk';
-import protocols from '../protocols/data'
+import AWS from "aws-sdk";
+import protocols from "../protocols/data";
 import { ethers } from "ethers";
-const db = require('../imported-db/defillama-db.json');
-import {storeTvl} from '../storeTvlInterval/getAndStoreTvl'
-import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp"
+const db = require("../imported-db/defillama-db.json");
+import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
+import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
 
-AWS.config.update({region: 'eu-central-1'});
+AWS.config.update({ region: "eu-central-1" });
 const client = new AWS.DynamoDB.DocumentClient();
 
 const hourly = db[4].data;
-const daily=db[5].data;
-const ts = (date:string)=>Math.round(new Date(date).getTime()/1000)
-const hourlyPrefix = 'hourlyTvl'
-const dailyPrefix = 'dailyTvl'
+const daily = db[5].data;
+const ts = (date: string) => Math.round(new Date(date).getTime() / 1000);
+const hourlyPrefix = "hourlyTvl";
+const dailyPrefix = "dailyTvl";
 
 const table = daily;
 const dynamoPrefix = dailyPrefix;
-const TableName = "dev-table"
-const maxProtocolId = 300
+const TableName = "dev-table";
+const maxProtocolId = 300;
 
-
-const deleteOverlapping = async ()=>{
-  for(const item of table){
+const deleteOverlapping = async () => {
+  for (const item of table) {
     const SK = ts(item.ts);
     const newSK = getClosestDayStartTimestamp(SK);
-    const tvl = Number(item.TVL)
+    const tvl = Number(item.TVL);
     const PK = `${dynamoPrefix}#${item.pid}`;
-    console.log('delete', PK, SK)
-      await client.delete({
+    console.log("delete", PK, SK);
+    await client
+      .delete({
         TableName,
-        Key:{
+        Key: {
           PK,
-          SK
-        }
-      }).promise()
-      await client.put({
+          SK,
+        },
+      })
+      .promise();
+    await client
+      .put({
         TableName,
-        Item:{
+        Item: {
           PK,
-          SK:newSK,
-          tvl
-        }
-      }).promise()
+          SK: newSK,
+          tvl,
+        },
+      })
+      .promise();
   }
-}
+};
 
-const deleteAtTime = async ()=>{
-  for(let i =0; i<maxProtocolId; i++){
+const deleteAtTime = async () => {
+  for (let i = 0; i < maxProtocolId; i++) {
     const SK = 1617580800;
     const PK = `${dynamoPrefix}#${i}`;
-    await client.delete({
-      TableName,
-      Key:{
-        PK,
-        SK
-      }
-    }).promise()
+    await client
+      .delete({
+        TableName,
+        Key: {
+          PK,
+          SK,
+        },
+      })
+      .promise();
   }
-}
+};
 
-const searchInterval = 3600*5 // 5 hrs
-function getTVLOfRecordClosestToTimestamp(PK:string, timestamp:number) {
+const searchInterval = 3600 * 5; // 5 hrs
+function getTVLOfRecordClosestToTimestamp(PK: string, timestamp: number) {
   return client
     .query({
       TableName,
@@ -70,10 +75,11 @@ function getTVLOfRecordClosestToTimestamp(PK:string, timestamp:number) {
         ":end": timestamp + searchInterval,
       },
       KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end",
-    }).promise()
+    })
+    .promise()
     .then((records) => {
       if (records.Items == undefined || records.Items.length == 0) {
-        return null
+        return null;
       }
       let closest = records.Items[0];
       for (const item of records.Items.slice(1)) {
@@ -85,35 +91,40 @@ function getTVLOfRecordClosestToTimestamp(PK:string, timestamp:number) {
     });
 }
 
-const fillTimestamp = 1608776919
-async function fillDailyGaps(){
-  for(let i =0; i<maxProtocolId; i++){
+const fillTimestamp = 1608776919;
+async function fillDailyGaps() {
+  for (let i = 0; i < maxProtocolId; i++) {
     const PK = `${dailyPrefix}#${i}`;
-    const hourlyItem = await getTVLOfRecordClosestToTimestamp(PK, fillTimestamp)
-    console.log(hourlyItem)
-    if(hourlyItem !== null){
-      await client.put({
-        TableName,
-        Item:{
-          PK,
-          SK:getClosestDayStartTimestamp(hourlyItem.SK),
-          tvl: hourlyItem.tvl
-        }
-      }).promise()
+    const hourlyItem = await getTVLOfRecordClosestToTimestamp(
+      PK,
+      fillTimestamp
+    );
+    console.log(hourlyItem);
+    if (hourlyItem !== null) {
+      await client
+        .put({
+          TableName,
+          Item: {
+            PK,
+            SK: getClosestDayStartTimestamp(hourlyItem.SK),
+            tvl: hourlyItem.tvl,
+          },
+        })
+        .promise();
     }
   }
 }
 
-async function updateProtocolTvl(protocolName:string){
+async function updateProtocolTvl(protocolName: string) {
   const provider = new ethers.providers.AlchemyProvider(
     "mainnet",
     process.env.ALCHEMY_API
   );
   const lastBlockNumber = await provider.getBlockNumber();
-  const protocol = protocols.find(p=>p.name===protocolName);
-  if(protocol === undefined){
-    throw new Error('REEEEEE!')
+  const protocol = protocols.find((p) => p.name === protocolName);
+  if (protocol === undefined) {
+    throw new Error("REEEEEE!");
   }
   const block = await provider.getBlock(lastBlockNumber - 10);
-  await storeTvl(block.timestamp, block.number, {}, protocol)
+  await storeTvl(block.timestamp, block.number, {}, protocol);
 }

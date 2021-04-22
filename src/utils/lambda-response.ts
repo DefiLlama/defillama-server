@@ -102,7 +102,7 @@ export function getBody(response: string | void | IResponse) {
 
 export function credentialsCorsHeaders() {
   return {
-    "Access-Control-Allow-Origin": '*',
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",
   };
 }

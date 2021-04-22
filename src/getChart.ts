@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import protocols from "./protocols/data";
 import dynamodb from "./utils/dynamodb";
-import {getClosestDayStartTimestamp} from "./date/getClosestDayStartTimestamp"
+import { getClosestDayStartTimestamp } from "./date/getClosestDayStartTimestamp";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -30,12 +30,12 @@ const handler = async (
       }
     })
   );
-  if(chain !== undefined && chain !== 'ethereum'){
-    Object.keys(sumDailyTvls).forEach(timestamp=>{
-      if(Number(timestamp)<1612837719){
-        delete sumDailyTvls[Number(timestamp)]
+  if (chain !== undefined && chain !== "ethereum") {
+    Object.keys(sumDailyTvls).forEach((timestamp) => {
+      if (Number(timestamp) < 1612837719) {
+        delete sumDailyTvls[Number(timestamp)];
       }
-    })
+    });
   }
 
   const response = Object.entries(sumDailyTvls).map(([timestamp, tvl]) => ({

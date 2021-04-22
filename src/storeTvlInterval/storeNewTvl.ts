@@ -1,8 +1,8 @@
 import dynamodb from "../utils/dynamodb";
 import { Protocol } from "../protocols/data";
 import { secondsBetweenCalls, getTimestampAtStartOfDay } from "../utils/date";
-import getLastRecord from '../utils/getLastRecord';
-import {reportError} from '../utils/error'
+import getLastRecord from "../utils/getLastRecord";
+import { reportError } from "../utils/error";
 
 const secondsBetweenCallsExtra = secondsBetweenCalls * 1.5; // 1.5 to add some wiggle room
 const secondsInDay = 60 * 60 * 24;
@@ -49,12 +49,13 @@ export default async function (
   tvl: number
 ) {
   const hourlyPK = `hourlyTvl#${protocol.id}`;
-  const lastHourlyTVLRecord = getLastRecord(
-    protocol.id
-  ).then(result=> result.Items?.[0] ?? {
-    SK: undefined,
-    tvl: 0,
-  });
+  const lastHourlyTVLRecord = getLastRecord(protocol.id).then(
+    (result) =>
+      result.Items?.[0] ?? {
+        SK: undefined,
+        tvl: 0,
+      }
+  );
   const lastDailyTVLRecord = getTVLOfRecordClosestToTimestamp(
     hourlyPK,
     unixTimestamp - secondsInDay
@@ -64,8 +65,11 @@ export default async function (
     unixTimestamp - secondsInWeek
   );
   const lastHourlyTVL = (await lastHourlyTVLRecord).tvl;
-  if(lastHourlyTVL*2 < tvl && lastHourlyTVL !== 0){
-    reportError(`TVL for ${protocol.name} has grown way too much in the last hour (${lastHourlyTVL} to ${tvl})`, protocol.name)
+  if (lastHourlyTVL * 2 < tvl && lastHourlyTVL !== 0) {
+    reportError(
+      `TVL for ${protocol.name} has grown way too much in the last hour (${lastHourlyTVL} to ${tvl})`,
+      protocol.name
+    );
   }
   //console.log(protocol.name, tvl, (await lastHourlyTVLRecord).tvl, (await lastDailyTVLRecord).tvl, (await lastWeeklyTVLRecord).tvl)
   await dynamodb.put({

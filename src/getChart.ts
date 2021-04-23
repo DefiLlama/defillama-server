@@ -7,12 +7,14 @@ const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const chain = event.pathParameters?.chain?.toLowerCase();
-  console.log("chain", chain);
   const sumDailyTvls = {} as {
     [timestamp: number]: number | undefined;
   };
   await Promise.all(
     protocols.map(async (protocol) => {
+      if(protocol.name === "Stacks"){
+        return;
+      }
       if (chain !== undefined && protocol.chain.toLowerCase() !== chain) {
         return;
       }

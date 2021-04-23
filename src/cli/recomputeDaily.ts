@@ -1,4 +1,4 @@
-import { client, TableName, dailyPrefix } from "./dynamodb";
+import { client, TableName, dailyPrefix, getDailyTxs } from "./dynamodb";
 import { getProtocol } from "./utils";
 import { util, api } from "@defillama/sdk";
 import {
@@ -12,25 +12,16 @@ async function main() {
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );
   const PK = `${dailyPrefix}#${protocol.id}`;
-  const dailyTxs = await client
-    .query({
-      TableName,
-      ExpressionAttributeValues: {
-        ":pk": PK,
-      },
-      KeyConditionExpression: "PK = :pk",
-    })
-    .promise();
+  const dailyTxs = await getDailyTxs(protocol.id)
   setInterval(() => {
     releaseCoingeckoLock();
   }, 1e3);
   await Promise.all(
-    dailyTxs.Items!.map(async (item) => {
+    dailyTxs!.map(async (item) => {
       const { SK } = item;
       console.log(SK, item.tvl);
       const { block } = await api.util.lookupBlock(SK);
       const balances = await adapter.tvl(SK, block);
-      console.log(balances);
       const { usdTvl } = await util.computeTVL(
         balances,
         SK,

@@ -10,5 +10,15 @@ export const hourlyPrefix = "hourlyTvl";
 export const dailyPrefix = "dailyTvl";
 
 export const dynamoPrefix = dailyPrefix;
-export const TableName = "dev-table";
+export const TableName = "prod-table";
 export const maxProtocolId = 300;
+
+export const getDailyTxs = (protocolId:string) => client
+    .query({
+      TableName,
+      ExpressionAttributeValues: {
+        ":pk": `${dailyPrefix}#${protocolId}`,
+      },
+      KeyConditionExpression: "PK = :pk",
+    })
+    .promise().then(result=>result.Items);

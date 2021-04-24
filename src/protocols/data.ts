@@ -3271,7 +3271,7 @@ export default [
     address: null,
     symbol: "STX",
     url: "https://stacks.co",
-    description: "Stacks makes Bitcoin programmable, enabling decentralized apps and smart contracts that inherit all of Bitcoin’s powers.",
+    description: "Stacks makes Bitcoin programmable, enabling decentralized apps and smart contracts that inherit all of Bitcoin’s powers. See detailed metrics for Stacking at https://stacking.club/",
     chain: "Stacks",
     logo: `${baseIconsUrl}/stacks.png`,
     audits: "2",

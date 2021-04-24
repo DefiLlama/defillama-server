@@ -1,13 +1,10 @@
+import { TokenPrices } from "../types";
 import { Protocol } from "../protocols/data";
 import { util } from "@defillama/sdk";
 import storeNewTvl from "./storeNewTvl";
 import * as Sentry from "@sentry/serverless";
-
-export interface TokenPrices {
-  [token: string]: {
-    usd: number;
-  };
-}
+import { TokensValueLocked } from "../types";
+import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
 
 export async function storeTvl(
   unixTimestamp: number,
@@ -22,6 +19,7 @@ export async function storeTvl(
 ) {
   for (let i = 0; i < maxRetries; i++) {
     let tvl: number;
+    let tokensBalances: TokensValueLocked = {};
     try {
       const module = await import(
         `../../DefiLlama-Adapters/projects/${protocol.module}`
@@ -41,6 +39,7 @@ export async function storeTvl(
           10
         );
         tvl = tvlResults.usdTvl;
+        tokensBalances = tvlResults.tokenBalances;
       } else if (module.fetch) {
         tvl = Number(await module.fetch());
       } else {
@@ -64,7 +63,12 @@ export async function storeTvl(
         continue;
       }
     }
-    await storeNewTvl(protocol, unixTimestamp, tvl);
+
+    const storeTokensAction = storeNewTokensValueLocked(protocol, unixTimestamp, tokensBalances);
+    const storeTvlAction = storeNewTvl(protocol, unixTimestamp, tvl);
+
+    await Promise.all([storeTokensAction, storeTvlAction])
+
     return;
   }
 }

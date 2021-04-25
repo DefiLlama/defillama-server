@@ -3365,6 +3365,6 @@ export default [
     cmcId: "9322",
     category: "Assets",
     chains: ["Ethereum"],
-    module: "bond-appetit/index.js",
+    module: "bond-appetit.js",
   },
 ] as Protocol[];

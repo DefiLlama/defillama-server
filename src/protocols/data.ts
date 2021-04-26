@@ -3,6 +3,7 @@ import { baseIconsUrl } from "../constants";
 export interface Protocol {
   id: string;
   name: string;
+  slug: string;
   address: string;
   symbol: string;
   url: string;
@@ -29,6 +30,7 @@ export default [
   {
     id: "1",
     name: "Uniswap",
+    slug: "uniswap",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
     url: "https://info.uniswap.org/",
@@ -47,6 +49,7 @@ export default [
   {
     id: "2",
     name: "WBTC",
+    slug: "wbtc",
     address: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     symbol: "WBTC",
     url: "https://wbtc.network/",
@@ -65,6 +68,7 @@ export default [
   {
     id: "3",
     name: "Curve",
+    slug: "curve",
     address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
     symbol: "CRV",
     url: "https://curve.fi",
@@ -83,6 +87,7 @@ export default [
   {
     id: "111",
     name: "AAVE",
+    slug: "aave",
     address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
     symbol: "AAVE",
     url: "https://aave.com\r\n",
@@ -101,6 +106,7 @@ export default [
   {
     id: "112",
     name: "Harvest Finance",
+    slug: "harvest-finance",
     address: "0xa0246c9032bC3A600820415aE600c6388619A14D",
     symbol: "FARM",
     url: "https://harvest.finance/",
@@ -118,6 +124,7 @@ export default [
   {
     id: "113",
     name: "Yearn Finance",
+    slug: "yearn-finance",
     address: "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
     symbol: "YFI",
     url: "https://yearn.finance/",
@@ -136,6 +143,7 @@ export default [
   {
     id: "114",
     name: "Compound",
+    slug: "compound",
     address: "0xc00e94cb662c3520282e6f5717214004a7f26888",
     symbol: "COMP",
     url: "https://compound.finance",
@@ -153,7 +161,8 @@ export default [
   },
   {
     id: "115",
-    name: "Synthetix ",
+    name: "Synthetix",
+    slug: "synthetix",
     address: "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
     symbol: "SNX",
     url: "https://synthetix.io",
@@ -172,6 +181,7 @@ export default [
   {
     id: "116",
     name: "Balancer",
+    slug: "balancer",
     address: "0xba100000625a3754423978a60c9317c58a424e3d",
     symbol: "BAL",
     url: "https://balancer.finance/",
@@ -190,6 +200,7 @@ export default [
   {
     id: "117",
     name: "RenVM",
+    slug: "renvm",
     address: "0x408e41876cccdc0f92210600ef50372656052a38",
     symbol: "REN",
     url: "https://renproject.io/",
@@ -208,6 +219,7 @@ export default [
   {
     id: "118",
     name: "MakerDAO",
+    slug: "makerdao",
     address: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
     symbol: "MKR",
     url: "https://makerdao.com/",
@@ -226,6 +238,7 @@ export default [
   {
     id: "119",
     name: "SushiSwap",
+    slug: "sushiswap",
     address: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
     symbol: "SUSHI",
     url: "https://sushiswap.fi/",
@@ -244,6 +257,7 @@ export default [
   {
     id: "120",
     name: "InstaDApp",
+    slug: "instadapp",
     address: null,
     symbol: "-",
     url: "https://instadapp.io/",
@@ -262,6 +276,7 @@ export default [
   {
     id: "121",
     name: "CREAM Finance",
+    slug: "cream-finance",
     address: "0x2ba592F78dB6436527729929AAf6c908497cB200",
     symbol: "CREAM",
     url: "https://cream.finance/",
@@ -279,6 +294,7 @@ export default [
   {
     id: "122",
     name: "Nexus Mutual",
+    slug: "nexus-mutual",
     address: "0xd7c49cee7e9188cca6ad8ff264c1da2e69d4cf3b",
     symbol: "NXM",
     url: "https://nexusmutual.io/",
@@ -297,6 +313,7 @@ export default [
   {
     id: "123",
     name: "dForce",
+    slug: "dforce",
     address: "0x431ad2ff6a9c365805ebad47ee021148d6f7dbe0",
     symbol: "DF",
     url: "https://dforce.network/",
@@ -315,6 +332,7 @@ export default [
   {
     id: "124",
     name: "KEEP Network",
+    slug: "keep-network",
     address: "0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa",
     symbol: "KEEP",
     url: "https://tbtc.network/",
@@ -332,6 +350,7 @@ export default [
   {
     id: "125",
     name: "mStable",
+    slug: "mstable",
     address: "0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
     symbol: "MTA",
     url: "https://mstable.org/",
@@ -350,6 +369,7 @@ export default [
   {
     id: "126",
     name: "Loopring",
+    slug: "loopring",
     address: "0xbbbbca6a901c926f240b89eacb641d8aec7aeafd",
     symbol: "LRC",
     url: "https://loopring.org/#/",
@@ -367,6 +387,7 @@ export default [
   {
     id: "127",
     name: "Kyber",
+    slug: "kyber",
     address: "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
     symbol: "KNC",
     url: "https://kyber.network/",
@@ -385,6 +406,7 @@ export default [
   {
     id: "128",
     name: "Hegic",
+    slug: "hegic",
     address: "0x584bC13c7D411c00c01A62e8019472dE68768430",
     symbol: "HEGIC",
     url: "https://www.hegic.co/ ",
@@ -403,6 +425,7 @@ export default [
   {
     id: "129",
     name: "xDAI Stake",
+    slug: "xdai-stake",
     address: "0x0Ae055097C6d159879521C384F1D2123D1f195e6",
     symbol: "STAKE",
     url: "https://xdaichain.com/ ",
@@ -421,6 +444,7 @@ export default [
   {
     id: "130",
     name: "imToken",
+    slug: "imtoken",
     address: "0x3212b29E33587A00FB1C83346f5dBFA69A458923",
     symbol: "imBTC",
     url: "https://token.im/",
@@ -439,6 +463,7 @@ export default [
   {
     id: "131",
     name: "BarnBridge",
+    slug: "barnbridge",
     address: "0x0391D2021f89DC339F60Fff84546EA23E337750f",
     symbol: "BOND",
     url: "https://barnbridge.com/",
@@ -457,6 +482,7 @@ export default [
   {
     id: "132",
     name: "hBTC",
+    slug: "hbtc",
     address: "0x0316EB71485b0Ab14103307bf65a021042c6d380",
     symbol: "hBTC",
     url: "https://www.hbtc.finance/ ",
@@ -475,6 +501,7 @@ export default [
   {
     id: "133",
     name: "Shell Protocol",
+    slug: "shell-protocol",
     address: null,
     symbol: "-",
     url: "https://www.shellprotocol.io/",
@@ -493,6 +520,7 @@ export default [
   {
     id: "134",
     name: "Pickle",
+    slug: "pickle",
     address: "0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5",
     symbol: "PICKLE",
     url: "https://pickle.finance/",
@@ -511,6 +539,7 @@ export default [
   {
     id: "135",
     name: "Kava",
+    slug: "kava",
     address: null,
     symbol: "KAVA",
     url: "https://www.kava.io/",
@@ -529,6 +558,7 @@ export default [
   {
     id: "136",
     name: "Rari Capital",
+    slug: "rari-capital",
     address: "0xD291E7a03283640FDc51b121aC401383A46cC623",
     symbol: "RGT",
     url: "https://rari.capital/",
@@ -547,6 +577,7 @@ export default [
   {
     id: "137",
     name: "Thorchain",
+    slug: "thorchain",
     address: null,
     symbol: "RUNE",
     url: "https://thorchain.org/",
@@ -565,6 +596,7 @@ export default [
   {
     id: "138",
     name: "Hakka Finance",
+    slug: "hakka-finance",
     address: "0x0E29e5AbbB5FD88e28b2d355774e73BD47dE3bcd",
     symbol: "HAKKA",
     url: "https://hakka.finance/",
@@ -583,6 +615,7 @@ export default [
   {
     id: "139",
     name: "SnowSwap",
+    slug: "snowswap",
     address: "0xfe9A29aB92522D14Fc65880d817214261D8479AE",
     symbol: "SNOW",
     url: "https://snowswap.org/",
@@ -601,6 +634,7 @@ export default [
   {
     id: "140",
     name: "Hard Protocol",
+    slug: "hard-protocol",
     address: null,
     symbol: "HARD",
     url: "https://hard.kava.io/",
@@ -619,6 +653,7 @@ export default [
   {
     id: "141",
     name: "UMA Protocol",
+    slug: "uma-protocol",
     address: "0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828",
     symbol: "UMA",
     url: "https://umaproject.org/",
@@ -636,6 +671,7 @@ export default [
   {
     id: "142",
     name: "Swerve",
+    slug: "swerve",
     address: "0xB8BAa0e4287890a5F79863aB62b7F175ceCbD433",
     symbol: "SWRV",
     url: "https://swerve.fi/",
@@ -654,6 +690,7 @@ export default [
   {
     id: "143",
     name: "Flexa",
+    slug: "flexa",
     address: "0xff20817765cb7f73d4bde2e66e067e58d11095c2",
     symbol: "AMP",
     url: "https://amptoken.org/",
@@ -671,6 +708,7 @@ export default [
   {
     id: "144",
     name: "dYdX",
+    slug: "dydx",
     address: null,
     symbol: "-",
     url: "https://dydx.exchange/",
@@ -689,6 +727,7 @@ export default [
   {
     id: "145",
     name: "Serum",
+    slug: "serum",
     address: null,
     symbol: "SRM",
     url: "https://projectserum.com/",
@@ -707,6 +746,7 @@ export default [
   {
     id: "146",
     name: "DODO",
+    slug: "dodo",
     address: "0x43Dfc4159D86F3A37A5A4B3D4580b888ad7d4DDd",
     symbol: "DODO",
     url: "https://dodoex.io/",
@@ -724,6 +764,7 @@ export default [
   {
     id: "148",
     name: "Tornado Cash",
+    slug: "tornado-cash",
     address: null,
     symbol: "-",
     url: "https://tornado.cash/",
@@ -741,6 +782,7 @@ export default [
   {
     id: "149",
     name: "B.Protocol",
+    slug: "b.protocol",
     address: "",
     symbol: "-",
     url: "https://www.bprotocol.org/",
@@ -759,6 +801,7 @@ export default [
   {
     id: "150",
     name: "Idle Finance",
+    slug: "idle-finance",
     address: "0x875773784Af8135eA0ef43b5a374AaD105c5D39e",
     symbol: "IDLE",
     url: "https://idle.finance",
@@ -777,6 +820,7 @@ export default [
   {
     id: "151",
     name: "DeversiFi",
+    slug: "deversifi",
     address: "0xcc80c051057b774cd75067dc48f8987c4eb97a5e",
     symbol: "NEC",
     url: "https://www.deversifi.com/",
@@ -795,6 +839,7 @@ export default [
   {
     id: "152",
     name: "Augur",
+    slug: "augur",
     address: "0x221657776846890989a759ba2973e427dff5c9bb",
     symbol: "REP",
     url: "https://www.augur.net/",
@@ -813,6 +858,7 @@ export default [
   {
     id: "153",
     name: "CoFiX",
+    slug: "cofix",
     address: "0x1a23a6bfbadb59fa563008c0fb7cf96dfcf34ea1",
     symbol: "COFI",
     url: "https://cofix.io",
@@ -830,6 +876,7 @@ export default [
   {
     id: "155",
     name: "KeeperDAO",
+    slug: "keeperdao",
     address: "0xfA5047c9c78B8877af97BDcb85Db743fD7313d4a",
     symbol: "ROOK",
     url: "https://keeperdao.com/",
@@ -847,6 +894,7 @@ export default [
   {
     id: "156",
     name: "zLot",
+    slug: "zlot",
     address: "0xA8e7AD77C60eE6f30BaC54E2E7c0617Bd7B5A03E",
     symbol: "zLot",
     url: "https://zlot.finance/",
@@ -864,6 +912,7 @@ export default [
   {
     id: "157",
     name: "88mph",
+    slug: "88mph",
     address: "0x8888801af4d980682e47f1a9036e589479e835c5",
     symbol: "MPH",
     url: "https://88mph.app/",
@@ -881,6 +930,7 @@ export default [
   {
     id: "158",
     name: "Dracula",
+    slug: "dracula",
     address: "0xb78B3320493a4EFaa1028130C5Ba26f0B6085Ef8",
     symbol: "DRC",
     url: "https://dracula.sucks/",
@@ -899,6 +949,7 @@ export default [
   {
     id: "159",
     name: "Growth DeFi",
+    slug: "growth-defi",
     address: "0x09e64c2B61a5f1690Ee6fbeD9baf5D6990F8dFd0",
     symbol: "GRO",
     url: "https://growthdefi.com/",
@@ -917,6 +968,7 @@ export default [
   {
     id: "160",
     name: "Alpha Finance",
+    slug: "alpha-finance",
     address: "0xa1faa113cbe53436df28ff0aee54275c13b40975",
     symbol: "ALPHA",
     url: "https://alphafinance.io/",
@@ -935,6 +987,7 @@ export default [
   {
     id: "161",
     name: "BoringDAO",
+    slug: "boringdao",
     address: "0x3c9d6c1c73b31c837832c72e04d3152f051fc1a9",
     symbol: "BOR",
     url: "https://www.boringdao.com/",
@@ -953,6 +1006,7 @@ export default [
   {
     id: "162",
     name: "Bancor",
+    slug: "bancor",
     address: "0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
     symbol: "BNT",
     url: "https://app.bancor.network/",
@@ -971,6 +1025,7 @@ export default [
   {
     id: "163",
     name: "ForTube",
+    slug: "fortube",
     address: "0x1fcdce58959f536621d76f5b7ffb955baa5a672f",
     symbol: "FOR",
     url: "https://for.tube/",
@@ -989,6 +1044,7 @@ export default [
   {
     id: "164",
     name: "ValueDefi",
+    slug: "valuedefi",
     address: "0x49e833337ece7afe375e44f4e3e8481029218e5c",
     symbol: "VALUE",
     url: "https://valuedefi.io/",
@@ -1007,6 +1063,7 @@ export default [
   {
     id: "165",
     name: "Cover Protocol",
+    slug: "cover-protocol",
     address: "0x5d8d9f5b96f4438195be9b99eee6118ed4304286",
     symbol: "COVER",
     url: "https://www.coverprotocol.com/",
@@ -1024,6 +1081,7 @@ export default [
   {
     id: "166",
     name: "TrueFi",
+    slug: "truefi",
     address: "0x4c19596f5aaff459fa38b0f7ed92f11ae6543784",
     symbol: "TRU",
     url: "https://truefi.io/",
@@ -1042,6 +1100,7 @@ export default [
   {
     id: "167",
     name: "PieDAO",
+    slug: "piedao",
     address: "0xad32A8e6220741182940c5aBF610bDE99E737b2D",
     symbol: "DOUGH",
     url: "https://www.piedao.org/",
@@ -1060,6 +1119,7 @@ export default [
   {
     id: "168",
     name: "Dev Protocol",
+    slug: "dev-protocol",
     address: "0x5caf454ba92e6f2c929df14667ee360ed9fd5b26",
     symbol: "DEV",
     url: "https://devprtcl.com/",
@@ -1077,6 +1137,7 @@ export default [
   {
     id: "169",
     name: "Basis Cash",
+    slug: "basis-cash",
     address: "0x3449fc1cd036255ba1eb19d65ff4ba2b8903a69a",
     symbol: "BAC",
     url: "https://basis.cash/",
@@ -1095,6 +1156,7 @@ export default [
   {
     id: "170",
     name: "FinNexus",
+    slug: "finnexus",
     address: "0xef9cd7882c067686691b6ff49e650b43afbbcc6b",
     symbol: "FNX",
     url: "https://finnexus.io/",
@@ -1113,6 +1175,7 @@ export default [
   {
     id: "171",
     name: "SynLev",
+    slug: "synlev",
     address: "0x1695936d6a953df699c38ca21c2140d497c08bd9",
     symbol: "SYN",
     url: "https://synlev.com/",
@@ -1130,6 +1193,7 @@ export default [
   {
     id: "172",
     name: "Index Coop",
+    slug: "index-coop",
     address: "0x0954906da0Bf32d5479e25f46056d22f08464cab",
     symbol: "INDEX",
     url: "https://www.indexcoop.com/",
@@ -1148,6 +1212,7 @@ export default [
   {
     id: "173",
     name: "Badger DAO",
+    slug: "badger-dao",
     address: "0x3472A5A71965499acd81997a54BBA8D852C6E53d",
     symbol: "BADGER",
     url: "https://badger.finance/",
@@ -1166,6 +1231,7 @@ export default [
   {
     id: "174",
     name: "BT.Finance",
+    slug: "bt.finance",
     address: "0x76c5449f4950f6338a393f53cda8b53b0cd3ca3a",
     symbol: "BT",
     url: "https://bt.finance/",
@@ -1184,6 +1250,7 @@ export default [
   {
     id: "175",
     name: "N3RD Finance",
+    slug: "n3rd-finance",
     address: "0x32c868f6318d6334b2250f323d914bc2239e4eee",
     symbol: "N3RDz",
     url: "https://n3rd.finance/",
@@ -1201,6 +1268,7 @@ export default [
   {
     id: "176",
     name: "Mushrooms Finance",
+    slug: "mushrooms-finance",
     address: "0xa283aa7cfbb27ef0cfbcb2493dd9f4330e0fd304",
     symbol: "MM",
     url: "https://www.mushrooms.finance/",
@@ -1219,6 +1287,7 @@ export default [
   {
     id: "177",
     name: "DefiSaver",
+    slug: "defisaver",
     address: null,
     symbol: "-",
     url: "https://defisaver.com/",
@@ -1237,6 +1306,7 @@ export default [
   {
     id: "178",
     name: "DefiChain",
+    slug: "defichain",
     address: null,
     symbol: "DFI",
     url: "https://defichain.com/",
@@ -1255,6 +1325,7 @@ export default [
   {
     id: "179",
     name: "YF Link",
+    slug: "yf-link",
     address: "0x28cb7e841ee97947a86B06fA4090C8451f64c0be",
     symbol: "YFL",
     url: "https://yflink.io/",
@@ -1274,6 +1345,7 @@ export default [
   {
     id: "180",
     name: "Demex",
+    slug: "demex",
     address: null,
     symbol: "-",
     url: "https://app.dem.exchange/",
@@ -1293,6 +1365,7 @@ export default [
   {
     id: "181",
     name: "MANTRA DAO",
+    slug: "mantra-dao",
     address: "0x3593d125a4f7849a1b059e64f4517a86dd60c95d",
     symbol: "OM",
     url: "https://mantradao.com",
@@ -1311,6 +1384,7 @@ export default [
   {
     id: "182",
     name: "Lido",
+    slug: "lido",
     address: "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
     symbol: "LDO",
     url: "https://www.lido.fi/",
@@ -1329,6 +1403,7 @@ export default [
   {
     id: "183",
     name: "Wing Finance",
+    slug: "wing-finance",
     address: null,
     symbol: "WING",
     url: "https://wing.finance",
@@ -1346,6 +1421,7 @@ export default [
   {
     id: "184",
     name: "Fuse",
+    slug: "fuse",
     address: "0x970b9bb2c0444f5e81e9d0efb84c8ccdcdcaf84d",
     symbol: "FUSE",
     url: "https://fuse.io/",
@@ -1364,6 +1440,7 @@ export default [
   {
     id: "186",
     name: "WanSwap Dex",
+    slug: "wanswap-dex",
     address: null,
     symbol: "WASP",
     url: "https://wanswap.finance/",
@@ -1382,6 +1459,7 @@ export default [
   {
     id: "187",
     name: "Unagii",
+    slug: "unagii",
     address: null,
     symbol: "-",
     url: "https://www.unagii.com/",
@@ -1399,6 +1477,7 @@ export default [
   {
     id: "188",
     name: "Indexed Finance",
+    slug: "indexed-finance",
     address: "0x86772b1409b61c639eaac9ba0acfbb6e238e5f83",
     symbol: "NDX",
     url: "https://indexed.finance/",
@@ -1417,6 +1496,7 @@ export default [
   {
     id: "189",
     name: "1inch",
+    slug: "1inch",
     address: "0x111111111117dc0aa78b770fa6a738034120c302",
     symbol: "1INCH",
     url: "https://1inch.exchange/",
@@ -1435,6 +1515,7 @@ export default [
   {
     id: "190",
     name: "dHEDGE",
+    slug: "dhedge",
     address: "0xca1207647ff814039530d7d35df0e1dd2e91fa84",
     symbol: "DHT",
     url: "https://www.dhedge.org/",
@@ -1452,6 +1533,7 @@ export default [
   {
     id: "191",
     name: "Opium",
+    slug: "opium",
     address: "0x888888888889c00c67689029d7856aac1065ec11",
     symbol: "OPIUM",
     url: "https://www.opium.network/",
@@ -1470,6 +1552,7 @@ export default [
   {
     id: "192",
     name: "Governor DAO",
+    slug: "governor-dao",
     address: "0x515d7E9D75E2b76DB60F8a051Cd890eBa23286Bc",
     symbol: "GDAO",
     url: "https://governordao.org/",
@@ -1488,6 +1571,7 @@ export default [
   {
     id: "193",
     name: "Unit Protocol",
+    slug: "unit-protocol",
     address: "0x92e187a03b6cd19cb6af293ba17f2745fd2357d5",
     symbol: "DUCK",
     url: "https://app.unit.xyz/",
@@ -1506,6 +1590,7 @@ export default [
   {
     id: "194",
     name: "PancakeSwap",
+    slug: "pancakeswap",
     address: null,
     symbol: "CAKE",
     url: "https://pancakeswap.finance/",
@@ -1523,6 +1608,7 @@ export default [
   {
     id: "195",
     name: "DefiDollar",
+    slug: "defidollar",
     address: "0x20c36f062a31865bed8a5b1e512d9a1a20aa333a",
     symbol: "DFD",
     url: "https://dusd.finance/",
@@ -1541,6 +1627,7 @@ export default [
   {
     id: "196",
     name: "Fantom",
+    slug: "fantom",
     address: "0x4e15361fd6b4bb609fa63c81a2be19d873717870",
     symbol: "FTM",
     url: "https://fantom.foundation/",
@@ -1559,6 +1646,7 @@ export default [
   {
     id: "197",
     name: "bZx",
+    slug: "bzx",
     address: "0x56d811088235F11C8920698a204A5010a788f4b3",
     symbol: "BZRX",
     url: "https://bzx.network/",
@@ -1578,6 +1666,7 @@ export default [
   {
     id: "198",
     name: "Incognito Chain",
+    slug: "incognito-chain",
     address: null,
     symbol: "PRV",
     url: "https://incognito.org/",
@@ -1596,6 +1685,7 @@ export default [
   {
     id: "199",
     name: "Sablier Finance",
+    slug: "sablier-finance",
     address: null,
     symbol: "-",
     url: "https://sablier.finance/",
@@ -1613,6 +1703,7 @@ export default [
   {
     id: "200",
     name: "Bella Protocol",
+    slug: "bella-protocol",
     address: "0xa91ac63d040deb1b7a5e4d4134ad23eb0ba07e14",
     symbol: "BEL",
     url: "https://fs.bella.fi/",
@@ -1631,6 +1722,7 @@ export default [
   {
     id: "202",
     name: "Saddle Finance",
+    slug: "saddle-finance",
     address: "-",
     symbol: "-",
     url: "https://saddle.finance/",
@@ -1649,6 +1741,7 @@ export default [
   {
     id: "203",
     name: "Siren",
+    slug: "siren",
     address: "0xD23Ac27148aF6A2f339BD82D0e3CFF380b5093de",
     symbol: "SI",
     url: "https://sirenmarkets.com/",
@@ -1666,6 +1759,7 @@ export default [
   {
     id: "204",
     name: "Alchemix",
+    slug: "alchemix",
     address: "0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF",
     symbol: "ALCX",
     url: "https://alchemix.fi/",
@@ -1684,6 +1778,7 @@ export default [
   {
     id: "205",
     name: "Goose Finance",
+    slug: "goose-finance",
     address: "-",
     symbol: "EGG",
     url: "https://www.goosedefi.com/",
@@ -1701,6 +1796,7 @@ export default [
   {
     id: "206",
     name: "xToken",
+    slug: "xtoken",
     address: "0x7f3edcdd180dbe4819bd98fee8929b5cedb3adeb",
     symbol: "XTK",
     url: "https://xtoken.market/",
@@ -1718,6 +1814,7 @@ export default [
   {
     id: "207",
     name: "Unslashed",
+    slug: "unslashed",
     address: "0xe0e05c43c097b0982db6c9d626c4eb9e95c3b9ce",
     symbol: "USF",
     url: "https://unslashed.finance/",
@@ -1735,6 +1832,7 @@ export default [
   {
     id: "208",
     name: "ACryptoS",
+    slug: "acryptos",
     address: null,
     symbol: "ACS",
     url: "https://app.acryptos.com/",
@@ -1753,6 +1851,7 @@ export default [
   {
     id: "209",
     name: "Autofarm",
+    slug: "autofarm",
     address: "0xa184088a740c695e156f91f5cc086a06bb78b827",
     symbol: "AUTO",
     url: "https://autofarm.network/",
@@ -1771,6 +1870,7 @@ export default [
   {
     id: "210",
     name: "yAxis",
+    slug: "yaxis",
     address: "0xb1dc9124c395c1e97773ab855d66e879f053a289",
     symbol: "YAX",
     url: "https://www.yaxis.io",
@@ -1789,6 +1889,7 @@ export default [
   {
     id: "211",
     name: "Smoothy",
+    slug: "smoothy",
     address: "-",
     symbol: "-",
     url: "https://smoothy.finance/",
@@ -1807,6 +1908,7 @@ export default [
   {
     id: "212",
     name: "Venus",
+    slug: "venus",
     address: "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
     symbol: "XVS",
     url: "https://venus.io/",
@@ -1825,6 +1927,7 @@ export default [
   {
     id: "213",
     name: "OnX.Finance",
+    slug: "onx.finance",
     address: "0xE0aD1806Fd3E7edF6FF52Fdb822432e847411033",
     symbol: "ONX",
     url: "https://onx.finance",
@@ -1842,6 +1945,7 @@ export default [
   {
     id: "214",
     name: "Raydium",
+    slug: "raydium",
     address: "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
     symbol: "RAY",
     url: "https://raydium.io",
@@ -1859,6 +1963,7 @@ export default [
   {
     id: "215",
     name: "Strudel Finance",
+    slug: "strudel-finance",
     address: "0x297d33e17e61c2ddd812389c2105193f8348188a",
     symbol: "TRDL",
     url: "https://strudel.finance",
@@ -1877,6 +1982,7 @@ export default [
   {
     id: "216",
     name: "Auctus",
+    slug: "auctus",
     address: "0xc12d099be31567add4e4e4d0d45691c3f58f5663",
     symbol: "AUC",
     url: "https://auctus.org/",
@@ -1894,6 +2000,7 @@ export default [
   {
     id: "217",
     name: "Connext",
+    slug: "connext",
     address: "-",
     symbol: "-",
     url: "https://connext.network/",
@@ -1911,6 +2018,7 @@ export default [
   {
     id: "218",
     name: "cVault.finance",
+    slug: "cvault.finance",
     address: "0x62359ed7505efc61ff1d56fef82158ccaffa23d7",
     symbol: "CORE",
     url: "https://cvault.finance/",
@@ -1928,6 +2036,7 @@ export default [
   {
     id: "219",
     name: "DDEX",
+    slug: "ddex",
     address: "-",
     symbol: "-",
     url: "https://ddex.io/",
@@ -1946,6 +2055,7 @@ export default [
   {
     id: "220",
     name: "Vesper",
+    slug: "vesper",
     address: "0x1b40183efb4dd766f11bda7a7c3ad8982e998421",
     symbol: "VSP",
     url: "https://vesper.finance/",
@@ -1963,6 +2073,7 @@ export default [
   {
     id: "221",
     name: "Defi Swap",
+    slug: "defi-swap",
     address: "0xa0b73e1ff0b80914ab6fe0444e65848c4c34450b",
     symbol: "CRO",
     url: "https://crypto.com/defi/swap",
@@ -1981,6 +2092,7 @@ export default [
   {
     id: "222",
     name: "DeFiner",
+    slug: "definer",
     address: "0x054f76beed60ab6dbeb23502178c52d6c5debe40",
     symbol: "FIN",
     url: "https://definer.org/",
@@ -1999,6 +2111,7 @@ export default [
   {
     id: "223",
     name: "DerivaDEX",
+    slug: "derivadex",
     address: "0x3a880652f47bfaa771908c07dd8673a787daed3a",
     symbol: "DDX",
     url: "http://derivadex.com",
@@ -2016,6 +2129,7 @@ export default [
   {
     id: "224",
     name: "DEXTF Protocol",
+    slug: "dextf-protocol",
     address: "0x5f64ab1544d28732f0a24f4713c2c8ec0da089f0",
     symbol: "DEXTF",
     url: "https://dextf.com/",
@@ -2034,6 +2148,7 @@ export default [
   {
     id: "225",
     name: "Enzyme Finance",
+    slug: "enzyme-finance",
     address: "0xec67005c4e498ec7f55e092bd1d35cbc47c91892",
     symbol: "MLN",
     url: "https://enzyme.finance/",
@@ -2052,6 +2167,7 @@ export default [
   {
     id: "226",
     name: "Erasure",
+    slug: "erasure",
     address: "0x1776e1f26f98b1a5df9cd347953a26dd3cb46671",
     symbol: "NMR",
     url: "https://erasure.world/",
@@ -2070,6 +2186,7 @@ export default [
   {
     id: "227",
     name: "CreamSwap",
+    slug: "creamswap",
     address: "0x2ba592f78db6436527729929aaf6c908497cb200",
     symbol: "CREAM",
     url: "https://app.cream.finance/swap",
@@ -2088,6 +2205,7 @@ export default [
   {
     id: "228",
     name: "FutureSwap",
+    slug: "futureswap",
     address: "-",
     symbol: "-",
     url: "https://www.futureswap.com/",
@@ -2106,6 +2224,7 @@ export default [
   {
     id: "229",
     name: "Gnosis",
+    slug: "gnosis",
     address: "0x6810e776880c02933d47db1b9fc05908e5386b96",
     symbol: "GNO",
     url: "https://gnosis.io/",
@@ -2124,6 +2243,7 @@ export default [
   {
     id: "230",
     name: "IDEX",
+    slug: "idex",
     address: "0xb705268213d593b8fd88d3fdeff93aff5cbdcfae",
     symbol: "IDEX",
     url: "https://idex.io/",
@@ -2141,6 +2261,7 @@ export default [
   {
     id: "231",
     name: "Lightning Network",
+    slug: "lightning-network",
     address: "-",
     symbol: "-",
     url: "https://lightning.network/",
@@ -2158,6 +2279,7 @@ export default [
   {
     id: "232",
     name: "MCDEX",
+    slug: "mcdex",
     address: "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42",
     symbol: "MCB",
     url: "https://mcdex.io/",
@@ -2175,7 +2297,8 @@ export default [
   },
   {
     id: "233",
-    name: "Metronome ",
+    name: "Metronome",
+    slug: "metronome",
     address: "0xa3d58c4e56fedcae3a7c43a725aee9a71f0ece4e",
     symbol: "MET",
     url: "https://metronome.io/",
@@ -2194,6 +2317,7 @@ export default [
   {
     id: "234",
     name: "Notional",
+    slug: "notional",
     address: "-",
     symbol: "-",
     url: "https://notional.finance/",
@@ -2211,6 +2335,7 @@ export default [
   {
     id: "235",
     name: "PEAKDEFI",
+    slug: "peakdefi",
     address: "0x630d98424efe0ea27fb1b3ab7741907dffeaad78",
     symbol: "PEAK",
     url: "https://www.peakdefi.com/",
@@ -2228,7 +2353,8 @@ export default [
   },
   {
     id: "236",
-    name: "Perlin ",
+    name: "Perlin",
+    slug: "perlin",
     address: "0xeca82185adce47f39c684352b0439f030f860318",
     symbol: "PERL",
     url: "https://perlinx.finance/",
@@ -2247,6 +2373,7 @@ export default [
   {
     id: "237",
     name: "Swipe",
+    slug: "swipe",
     address: "0x8ce9137d39326ad0cd6491fb5cc0cba0e089b6a9",
     symbol: "SXP",
     url: "https://swap.swipe.org",
@@ -2265,6 +2392,7 @@ export default [
   {
     id: "238",
     name: "Ellipsis Finance",
+    slug: "ellipsis-finance",
     address: "0xA7f552078dcC247C2684336020c03648500C6d9F",
     symbol: "EPS",
     url: "https://ellipsis.finance/",
@@ -2282,6 +2410,7 @@ export default [
   {
     id: "239",
     name: "PoolTogether",
+    slug: "pooltogether",
     address: "0x0cec1a9154ff802e7934fc916ed7ca50bde6844e",
     symbol: "POOL",
     url: "https://pooltogether.com/",
@@ -2300,6 +2429,7 @@ export default [
   {
     id: "240",
     name: "Polygon",
+    slug: "polygon",
     address: "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
     symbol: "MATIC",
     url: "https://polygon.technology/",
@@ -2317,6 +2447,7 @@ export default [
   {
     id: "241",
     name: "PowerPool",
+    slug: "powerpool",
     address: "0x38e4adb44ef08f22f5b5b76a8f0c2d0dcbe7dca1",
     symbol: "CVP",
     url: "https://powerpool.finance/",
@@ -2335,6 +2466,7 @@ export default [
   {
     id: "242",
     name: "Energiswap",
+    slug: "energiswap",
     address: "0x1416946162b1c2c871a73b07e932d2fb6c932069",
     symbol: "NRG",
     url: "https://www.energiswap.org",
@@ -2353,6 +2485,7 @@ export default [
   {
     id: "243",
     name: "Flamincome",
+    slug: "flamincome",
     address: "0x57dD84042ec9507963016596A34EdaD42F7e4CCE ",
     symbol: "FLAG",
     url: "https://flamincome.finance",
@@ -2370,6 +2503,7 @@ export default [
   {
     id: "244",
     name: "WePiggy",
+    slug: "wepiggy",
     address: "0x4C78015679FabE22F6e02Ce8102AFbF7d93794eA",
     symbol: "WPC",
     url: "https://www.wepiggy.com/",
@@ -2388,6 +2522,7 @@ export default [
   {
     id: "245",
     name: "Secret Network",
+    slug: "secret-network",
     address: "-",
     symbol: "SCRT",
     url: "https://scrt.network/",
@@ -2406,6 +2541,7 @@ export default [
   {
     id: "246",
     name: "Pangolin",
+    slug: "pangolin",
     address: "0x60781C2586D68229fde47564546784ab3fACA982 ",
     symbol: "PNG",
     url: "https://pangolin.exchange",
@@ -2423,6 +2559,7 @@ export default [
   {
     id: "247",
     name: "Jarvis Network",
+    slug: "jarvis-network",
     address: "0x8a9c67fee641579deba04928c4bc45f66e26343a ",
     symbol: "JRT",
     url: "https://jarvis.network/",
@@ -2440,7 +2577,8 @@ export default [
   },
   {
     id: "248",
-    name: "ForceDAO ",
+    name: "ForceDAO",
+    slug: "forcedao",
     address: "-",
     symbol: "-",
     url: "https://forcedao.com/",
@@ -2458,6 +2596,7 @@ export default [
   {
     id: "249",
     name: "StakeDAO",
+    slug: "stakedao",
     address: "0x73968b9a57c6e53d41345fd57a6e6ae27d6cdb2f",
     symbol: "SDT",
     url: "https://stakedao.org/",
@@ -2476,6 +2615,7 @@ export default [
   {
     id: "250",
     name: "BasketDAO",
+    slug: "basketdao",
     address: "0x44564d0bd94343f72e3c8a0d22308b7fa71db0bb",
     symbol: "BASK",
     url: "https://basketdao.org/",
@@ -2494,6 +2634,7 @@ export default [
   {
     id: "251",
     name: "Mimo Defi",
+    slug: "mimo-defi",
     address: "0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc",
     symbol: "MIMO",
     url: "https://mimo.capital",
@@ -2512,6 +2653,7 @@ export default [
   {
     id: "252",
     name: "Secret Bridge",
+    slug: "secret-bridge",
     address: "-",
     symbol: "-",
     url: "https://scrt.network/",
@@ -2530,6 +2672,7 @@ export default [
   {
     id: "253",
     name: "BiFi",
+    slug: "bifi",
     address: "0x2791BfD60D232150Bff86b39B7146c0eaAA2BA81",
     symbol: "BiFi",
     url: "https://bifi.finance/",
@@ -2548,6 +2691,7 @@ export default [
   {
     id: "254",
     name: "Bunny",
+    slug: "bunny",
     address: "bsc:0xc9849e6fdb743d08faee3e34dd2d1bc69ea11a51",
     symbol: "BUNNY",
     url: "https://pancakebunny.finance/",
@@ -2566,6 +2710,7 @@ export default [
   {
     id: "255",
     name: "Fei Protocol",
+    slug: "fei-protocol",
     address: "0x956f47f50a910163d8bf957cf5846d573e7f87ca",
     symbol: "FEI",
     url: "https://fei.money/",
@@ -2584,6 +2729,7 @@ export default [
   {
     id: "256",
     name: "Allinx",
+    slug: "allinx",
     address: "bsc:0xd60D91EAE3E0F46098789fb593C06003253E5D0a",
     symbol: "INX",
     url: "https://allinx.io",
@@ -2601,6 +2747,7 @@ export default [
   {
     id: "257",
     name: "XDeFi",
+    slug: "xdefi",
     address: "0x000000000000d0151e748d25b766e77efe2a6c83",
     symbol: "XDEX",
     url: "https://xdefi.com/",
@@ -2619,6 +2766,7 @@ export default [
   {
     id: "258",
     name: "Wasabix",
+    slug: "wasabix",
     address: "0x896e145568624a498c5a909187363AE947631503",
     symbol: "WASABI",
     url: "https://wasabix.finance/#/app",
@@ -2637,6 +2785,7 @@ export default [
   {
     id: "259",
     name: "Snowball",
+    slug: "snowball",
     address: "avax:0xc38f41a296a4493ff429f1238e030924a1542e50",
     symbol: "SNOB",
     url: "https://snowball.network",
@@ -2655,6 +2804,7 @@ export default [
   {
     id: "260",
     name: "Mirror",
+    slug: "mirror",
     address: "0x09a3ecafa817268f77be1283176b946c4ff2e608",
     symbol: "MIR",
     url: "https://mirror.finance/",
@@ -2673,6 +2823,7 @@ export default [
   {
     id: "261",
     name: "Cometh",
+    slug: "cometh",
     address: "0x9C78EE466D6Cb57A4d01Fd887D2b5dFb2D46288f",
     symbol: "MUST",
     url: "https://www.cometh.io/",
@@ -2690,6 +2841,7 @@ export default [
   {
     id: "262",
     name: "Primitive",
+    slug: "primitive",
     address: "-",
     symbol: "-",
     url: "https://primitive.finance/",
@@ -2708,6 +2860,7 @@ export default [
   {
     id: "263",
     name: "QIAN",
+    slug: "qian",
     address: "0x65d9bc970aa9b2413027fa339f7f179b3f3f2604",
     symbol: "KUN",
     url: "https://qian.finance/",
@@ -2726,6 +2879,7 @@ export default [
   {
     id: "264",
     name: "Robo-Advisor for Yield",
+    slug: "robo-advisor-for-yield",
     address: "-",
     symbol: "-",
     url: "https://staked.us/v/robo-advisor-yield/",
@@ -2744,6 +2898,7 @@ export default [
   {
     id: "265",
     name: "Reflexer",
+    slug: "reflexer",
     address: "0x03ab458634910aad20ef5f1c8ee96f1d6ac54919",
     symbol: "RAI",
     url: "https://reflexer.finance/",
@@ -2762,6 +2917,7 @@ export default [
   {
     id: "266",
     name: "Set Protocol",
+    slug: "set-protocol",
     address: "-",
     symbol: "-",
     url: "https://www.tokensets.com/",
@@ -2780,6 +2936,7 @@ export default [
   {
     id: "267",
     name: "S Finance",
+    slug: "s-finance",
     address: "0x8a6ACA71A218301c7081d4e96D64292D3B275ce0",
     symbol: "SFG",
     url: "https://s.finance/",
@@ -2798,6 +2955,7 @@ export default [
   {
     id: "268",
     name: "UniTrade",
+    slug: "unitrade",
     address: "0x6f87d756daf0503d08eb8993686c7fc01dc44fb1",
     symbol: "TRADE",
     url: "https://unitrade.app/",
@@ -2816,6 +2974,7 @@ export default [
   {
     id: "269",
     name: "YFII",
+    slug: "yfii",
     address: "0xa1d0E215a23d7030842FC67cE582a6aFa3CCaB83",
     symbol: "YFII",
     url: "https://dfi.money/",
@@ -2833,6 +2992,7 @@ export default [
   {
     id: "270",
     name: "Liquity",
+    slug: "liquity",
     address: "0x6DEA81C8171D0bA574754EF6F8b412F2Ed88c54D",
     symbol: "LQTY",
     url: "https://www.liquity.org/",
@@ -2851,6 +3011,7 @@ export default [
   {
     id: "271",
     name: "Honeyswap",
+    slug: "honeyswap",
     address: "xdai:0x71850b7e9ee3f13ab46d67167341e4bdc905eef9",
     symbol: "HNY",
     url: "https://honeyswap.org/",
@@ -2869,6 +3030,7 @@ export default [
   {
     id: "272",
     name: "Cryptex",
+    slug: "cryptex",
     address: "0x321C2fE4446C7c963dc41Dd58879AF648838f98D",
     symbol: "CTX",
     url: "https://cryptex.finance/",
@@ -2887,6 +3049,7 @@ export default [
   {
     id: "273",
     name: "ACoconut",
+    slug: "acoconut",
     address: "bsc:0x5B45A9be49c94236E127EFCc601b7e7a1a485d0a",
     symbol: "AC",
     url: "http://acoconut.fi/",
@@ -2905,6 +3068,7 @@ export default [
   {
     id: "274",
     name: "Olive Cash",
+    slug: "olive-cash",
     address: "avax:0x617724974218A18769020A70162165A539c07E8a",
     symbol: "OLIVE",
     url: "https://avax.olive.cash",
@@ -2923,6 +3087,7 @@ export default [
   {
     id: "275",
     name: "SharedStake",
+    slug: "sharedstake",
     address: "0x84810bcf08744d5862b8181f12d17bfd57d3b078",
     symbol: "SGT",
     url: "https://www.sharedstake.org/",
@@ -2940,6 +3105,7 @@ export default [
   {
     id: "276",
     name: "Stafi",
+    slug: "stafi",
     address: "0xef3A930e1FfFFAcd2fc13434aC81bD278B0ecC8d",
     symbol: "FIS",
     url: "https://www.stafi.io/",
@@ -2957,6 +3123,7 @@ export default [
   {
     id: "277",
     name: "Stakewise",
+    slug: "stakewise",
     address: "-",
     symbol: "-",
     url: "https://stakewise.io/",
@@ -2974,6 +3141,7 @@ export default [
   {
     id: "278",
     name: "Ankr",
+    slug: "ankr",
     address: "0x8290333cef9e6d528dd5618fb97a76f268f3edd4",
     symbol: "ANKR",
     url: "https://www.ankr.com/",
@@ -2991,6 +3159,7 @@ export default [
   {
     id: "279",
     name: "StakeHound",
+    slug: "stakehound",
     address: "-",
     symbol: "-",
     url: "https://stakehound.com/",
@@ -3008,6 +3177,7 @@ export default [
   {
     id: "280",
     name: "Oxygen",
+    slug: "oxygen",
     address: "0x965697b4ef02F0DE01384D0d4F9F782B1670c163",
     symbol: "OXY",
     url: "https://www.oxygen.org/",
@@ -3025,6 +3195,7 @@ export default [
   {
     id: "281",
     name: "Ribbon Finance",
+    slug: "ribbon-finance",
     address: "-",
     symbol: "-",
     url: "https://www.ribbon.finance/",
@@ -3042,6 +3213,7 @@ export default [
   {
     id: "282",
     name: "Yam Finance",
+    slug: "yam-finance",
     address: "0x0AaCfbeC6a24756c20D41914F2caba817C0d8521",
     symbol: "YAM",
     url: "https://yam.finance/",
@@ -3060,6 +3232,7 @@ export default [
   {
     id: "283",
     name: "Orca",
+    slug: "orca",
     address: "-",
     symbol: "-",
     url: "https://www.orca.so/",
@@ -3077,6 +3250,7 @@ export default [
   {
     id: "284",
     name: "Serum Swap",
+    slug: "serum-swap",
     address: null,
     symbol: "SRM",
     url: "https://swap.projectserum.com/",
@@ -3094,6 +3268,7 @@ export default [
   {
     id: "285",
     name: "Opyn",
+    slug: "opyn",
     address: null,
     symbol: "-",
     url: "https://www.opyn.co/",
@@ -3111,6 +3286,7 @@ export default [
   {
     id: "286",
     name: "Mango Markets",
+    slug: "mango-markets",
     address: "-",
     symbol: "-",
     url: "https://mango.markets/",
@@ -3128,6 +3304,7 @@ export default [
   {
     id: "287",
     name: "0.exchange",
+    slug: "0.exchange",
     address: "0xf0939011a9bb95c3b791f0cb546377ed2693a574",
     symbol: "ZERO",
     url: "https://www.0.exchange/",
@@ -3145,6 +3322,7 @@ export default [
   {
     id: "288",
     name: "Prosper",
+    slug: "prosper",
     address: "0x8642A849D0dcb7a15a974794668ADcfbe4794B56",
     symbol: "PROS",
     url: "https://prosper.so/",
@@ -3163,6 +3341,7 @@ export default [
   {
     id: "289",
     name: "YetiSwap",
+    slug: "yetiswap",
     address: "avax:0x488F73cddDA1DE3664775fFd91623637383D6404",
     symbol: "YTS",
     url: "https://www.yetiswap.app/",
@@ -3181,6 +3360,7 @@ export default [
   {
     id: "290",
     name: "Penguin Finance",
+    slug: "penguin-finance",
     address: "avax:0xe896CDeaAC9615145c0cA09C8Cd5C25bced6384c",
     symbol: "PEFI",
     url: "https://penguinfinance.org/",
@@ -3199,6 +3379,7 @@ export default [
   {
     id: "291",
     name: "Integral",
+    slug: "integral",
     address: null,
     symbol: "-",
     url: "https://integral.link/",
@@ -3216,6 +3397,7 @@ export default [
   {
     id: "292",
     name: "Swapr",
+    slug: "swapr",
     address: null,
     symbol: "-",
     url: "https://swapr.eth.link/#/swap",
@@ -3234,6 +3416,7 @@ export default [
   {
     id: "293",
     name: "Lydia",
+    slug: "lydia",
     address: null,
     symbol: "-",
     url: "https://www.lydia.finance/",
@@ -3251,6 +3434,7 @@ export default [
   {
     id: "294",
     name: "Anchor",
+    slug: "anchor",
     address: null,
     symbol: "-",
     url: "https://terra.money/",
@@ -3268,6 +3452,7 @@ export default [
   {
     id: "295",
     name: "Stacks",
+    slug: "stacks",
     address: null,
     symbol: "STX",
     url: "https://stacks.co",
@@ -3285,6 +3470,7 @@ export default [
   {
     id: "296",
     name: "Zookeeper",
+    slug: "zookeeper",
     address: "0x6e11655d6ab3781c6613db8cb1bc3dee9a7e111f",
     symbol: "ZOO",
     url: "https://www.zookeeper.finance/",
@@ -3302,6 +3488,7 @@ export default [
   {
     id: "297",
     name: "Deus",
+    slug: "deus",
     address: "0x3b62f3820e0b035cc4ad602dece6d796bc325325",
     symbol: "DEUS",
     url: "https://deus.finance/",
@@ -3319,6 +3506,7 @@ export default [
   {
     id: "298",
     name: "Hyper Finance",
+    slug: "hyper-finance",
     address: "bsc:0x9a319b959e33369C5eaA494a770117eE3e585318",
     symbol: "HYFI",
     url: "https://hyfi.pro",
@@ -3336,6 +3524,7 @@ export default [
   {
     id: "299",
     name: "Levinswap",
+    slug: "levinswap",
     address: "xdai:0x1698cd22278ef6e7c0df45a8dea72edbea9e42aa",
     symbol: "LEVIN",
     url: "https://levinswap.org/",
@@ -3353,6 +3542,7 @@ export default [
   {
     id: "300",
     name: "BondAppetit",
+    slug: "bondappetit",
     address: "0x28A06c02287e657ec3F8e151A13C36A1D43814b0",
     symbol: "BAG",
     url: "https://bondappetit.io/",

@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse, errorResponse } from "./utils";
 import dynamodb from "./utils/dynamodb";
 import protocols from "./protocols/data";
 import getLastRecord from "./utils/getLastRecord";
-import sluggify from "./utils/sluggify"
+import sluggify from "./utils/sluggify";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent

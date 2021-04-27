@@ -1,6 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import protocols, { Protocol } from "./protocols/data";
 import getLastRecord from "./utils/getLastRecord";
+import sluggify from "./utils/sluggify";
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -25,6 +26,7 @@ const handler = async (
         delete returnedProtocol.module;
         return {
           ...protocol,
+          slug: sluggify(protocol),
           tvl: item.tvl,
           change_1h: getPercentChange(item.tvlPrev1Hour, item.tvl),
           change_1d: getPercentChange(item.tvlPrev1Day, item.tvl),

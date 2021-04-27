@@ -2,13 +2,14 @@ import { successResponse, wrap, IResponse, errorResponse } from "./utils";
 import dynamodb from "./utils/dynamodb";
 import protocols from "./protocols/data";
 import getLastRecord from "./utils/getLastRecord";
+import sluggify from "./utils/sluggify";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const protocolName = event.pathParameters?.protocol?.toLowerCase();
   const protocolData = protocols.find(
-    (prot) => prot.name.toLowerCase().replace(" ", "-") === protocolName
+    (prot) => sluggify(prot) === protocolName
   );
   if (protocolData === undefined) {
     return errorResponse({

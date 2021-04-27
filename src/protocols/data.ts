@@ -452,7 +452,7 @@ export default [
     cmcId: "7440",
     category: "Yield",
     chains: ["Ethereum"],
-    module: "barnbridge.js",
+    module: "barnbridge/index.js",
   },
   {
     id: "132",

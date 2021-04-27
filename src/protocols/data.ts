@@ -153,7 +153,7 @@ export default [
   },
   {
     id: "115",
-    name: "Synthetix ",
+    name: "Synthetix",
     address: "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
     symbol: "SNX",
     url: "https://synthetix.io",
@@ -2175,7 +2175,7 @@ export default [
   },
   {
     id: "233",
-    name: "Metronome ",
+    name: "Metronome",
     address: "0xa3d58c4e56fedcae3a7c43a725aee9a71f0ece4e",
     symbol: "MET",
     url: "https://metronome.io/",
@@ -2228,7 +2228,7 @@ export default [
   },
   {
     id: "236",
-    name: "Perlin ",
+    name: "Perlin",
     address: "0xeca82185adce47f39c684352b0439f030f860318",
     symbol: "PERL",
     url: "https://perlinx.finance/",
@@ -2440,7 +2440,7 @@ export default [
   },
   {
     id: "248",
-    name: "ForceDAO ",
+    name: "ForceDAO",
     address: "-",
     symbol: "-",
     url: "https://forcedao.com/",

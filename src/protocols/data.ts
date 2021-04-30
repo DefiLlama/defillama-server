@@ -741,8 +741,8 @@ export default [
   {
     id: "149",
     name: "B.Protocol",
-    address: "",
-    symbol: "-",
+    address: "0xbbBBBBB5AA847A2003fbC6b5C16DF0Bd1E725f61",
+    symbol: "BPRO",
     url: "https://www.bprotocol.org/",
     description:
       "B.Protocol makes lending platforms more secure by eliminating the gas wars and shifting the miner’s profit to the users.",
@@ -754,7 +754,7 @@ export default [
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    module: "b-protocol.js",
+    module: "bprotocol/index.js",
   },
   {
     id: "150",

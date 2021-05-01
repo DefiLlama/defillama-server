@@ -3285,7 +3285,7 @@ export default [
   {
     id: "296",
     name: "Zookeeper",
-    address: "0x6e11655d6ab3781c6613db8cb1bc3dee9a7e111f",
+    address: "wan:0x6e11655d6ab3781c6613db8cb1bc3dee9a7e111f",
     symbol: "ZOO",
     url: "https://www.zookeeper.finance/",
     description: "ZooKeeper brings you a brand new and exciting farming experience, enabling you to enjoy higher rewards and more interesting NFT gameplay and use cases on Wanchain",

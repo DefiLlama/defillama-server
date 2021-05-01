@@ -1,4 +1,5 @@
 const slsw = require('serverless-webpack');
+const path = require('path');
 
 module.exports = {
   entry: slsw.lib.entries,
@@ -9,6 +10,7 @@ module.exports = {
       {
         test: /\.ts$/,
         use: 'ts-loader',
+        include: path.resolve(__dirname, "src"),
         exclude: /node_modules/,
       },
       {
@@ -21,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.mjs$/,
-        resolve: { mainFields: [ "default" ] }
+        resolve: { mainFields: ["default"] }
       }
     ],
   },

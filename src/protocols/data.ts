@@ -2956,9 +2956,9 @@ export default [
   },
   {
     id: "277",
-    name: "Stakewise",
-    address: "-",
-    symbol: "-",
+    name: "StakeWise",
+    address: "0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2",
+    symbol: "SWISE",
     url: "https://stakewise.io/",
     description: "Liquid staking provider.",
     chain: "Ethereum",

@@ -22,8 +22,8 @@ export async function storeTvl(
   knownTokenPrices?: TokenPrices,
   maxRetries: number = 1,
   getCoingeckoLock?: () => Promise<unknown>,
-  storePreviousData:boolean = true,
-  useCurrentPrices:boolean = true
+  storePreviousData: boolean = true,
+  useCurrentPrices: boolean = true
 ) {
   for (let i = 0; i < maxRetries; i++) {
     let usdTvls: tvlsObject<number> = {};
@@ -35,8 +35,11 @@ export async function storeTvl(
       );
       await Promise.all(
         Object.entries(module).map(async ([chain, value]) => {
-          if((typeof value !== 'object' && typeof value !== 'function') || chain === 'default'){
-            return
+          if (
+            (typeof value !== "object" && typeof value !== "function") ||
+            chain === "default"
+          ) {
+            return;
           }
           const container =
             chain === "tvl" || chain === "fetch" ? module : value;
@@ -49,7 +52,7 @@ export async function storeTvl(
             );
             const tvlResults = await util.computeTVL(
               tvlBalances,
-              useCurrentPrices?"now":unixTimestamp,
+              useCurrentPrices ? "now" : unixTimestamp,
               false,
               knownTokenPrices,
               getCoingeckoLock,
@@ -103,7 +106,12 @@ export async function storeTvl(
       dailyUsdTokensTvl,
       storePreviousData
     );
-    const storeTvlAction = storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData);
+    const storeTvlAction = storeNewTvl(
+      protocol,
+      unixTimestamp,
+      usdTvls,
+      storePreviousData
+    );
 
     await Promise.all([
       storeTokensAction,

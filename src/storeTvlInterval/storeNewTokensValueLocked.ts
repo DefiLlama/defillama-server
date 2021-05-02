@@ -43,11 +43,13 @@ export default async (
     PK: hourlyPK,
     SK: unixTimestamp,
     ...tvl,
-    ...(storePreviousData ? {
-      tvlPrev1Hour: extractTvl(lastHourlyRecord),
-      tvlPrev1Day: extractTvl(lastDailyTVLRecord),
-      tvlPrev1Week: extractTvl(lastWeeklyTVLRecord),
-    } : {})
+    ...(storePreviousData
+      ? {
+          tvlPrev1Hour: extractTvl(lastHourlyRecord),
+          tvlPrev1Day: extractTvl(lastDailyTVLRecord),
+          tvlPrev1Week: extractTvl(lastWeeklyTVLRecord),
+        }
+      : {}),
   });
 
   if (getDay((await lastHourlyRecord)?.SK) !== getDay(unixTimestamp)) {

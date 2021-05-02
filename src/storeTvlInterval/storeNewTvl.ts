@@ -46,11 +46,13 @@ export default async function (
     PK: hourlyPK,
     SK: unixTimestamp,
     ...tvl,
-    ...(storePreviousData ? {
-      tvlPrev1Hour: lastHourlyTVL,
-      tvlPrev1Day: (await lastDailyTVLRecord).tvl,
-      tvlPrev1Week: (await lastWeeklyTVLRecord).tvl,
-    } : {})
+    ...(storePreviousData
+      ? {
+          tvlPrev1Hour: lastHourlyTVL,
+          tvlPrev1Day: (await lastDailyTVLRecord).tvl,
+          tvlPrev1Week: (await lastWeeklyTVLRecord).tvl,
+        }
+      : {}),
   });
   if (getDay((await lastHourlyTVLRecord)?.SK) !== getDay(unixTimestamp)) {
     // First write of the day

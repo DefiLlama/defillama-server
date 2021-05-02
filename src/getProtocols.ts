@@ -1,6 +1,6 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import protocols, { Protocol } from "./protocols/data";
-import getLastRecord from "./utils/getLastRecord";
+import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 
 export function getPercentChange(previous: number, current: number) {
@@ -17,9 +17,8 @@ const handler = async (
   const response = (
     await Promise.all(
       protocols.map(async (protocol) => {
-        const lastHourlyRecord = await getLastRecord(protocol.id);
-        const item = lastHourlyRecord.Items?.[0];
-        if (item === undefined) {
+        const lastHourlyRecord = await getLastRecord(hourlyTvl(protocol.id));
+        if (lastHourlyRecord === undefined) {
           return null;
         }
         const returnedProtocol: Partial<Protocol> = { ...protocol };
@@ -27,10 +26,10 @@ const handler = async (
         return {
           ...protocol,
           slug: sluggify(protocol),
-          tvl: item.tvl,
-          change_1h: getPercentChange(item.tvlPrev1Hour, item.tvl),
-          change_1d: getPercentChange(item.tvlPrev1Day, item.tvl),
-          change_7d: getPercentChange(item.tvlPrev1Week, item.tvl),
+          tvl: lastHourlyRecord.tvl,
+          change_1h: getPercentChange(lastHourlyRecord.tvlPrev1Hour, lastHourlyRecord.tvl),
+          change_1d: getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl),
+          change_7d: getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl),
         };
       })
     )

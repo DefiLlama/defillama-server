@@ -5,6 +5,7 @@ import storeNewTvl from "./storeNewTvl";
 import * as Sentry from "@sentry/serverless";
 import { TokensValueLocked } from "../types";
 import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
+import { hourlyTokensTvl, hourlyUsdTokensTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 
 export async function storeTvl(
   unixTimestamp: number,
@@ -20,6 +21,7 @@ export async function storeTvl(
   for (let i = 0; i < maxRetries; i++) {
     let tvl: number;
     let tokensBalances: TokensValueLocked = {};
+    let usdTokenBalances: TokensValueLocked = {};
     try {
       const module = await import(
         `../../DefiLlama-Adapters/projects/${protocol.module}`
@@ -40,6 +42,7 @@ export async function storeTvl(
         );
         tvl = tvlResults.usdTvl;
         tokensBalances = tvlResults.tokenBalances;
+        usdTokenBalances = tvlResults.usdTokenBalances;
       } else if (module.fetch) {
         tvl = Number(await module.fetch());
       } else {
@@ -64,10 +67,11 @@ export async function storeTvl(
       }
     }
 
-    const storeTokensAction = storeNewTokensValueLocked(protocol, unixTimestamp, tokensBalances);
+    const storeTokensAction = storeNewTokensValueLocked(protocol, unixTimestamp, tokensBalances, hourlyTokensTvl, dailyTokensTvl);
+    const storeUsdTokensAction = storeNewTokensValueLocked(protocol, unixTimestamp, usdTokenBalances, hourlyUsdTokensTvl, dailyUsdTokensTvl);
     const storeTvlAction = storeNewTvl(protocol, unixTimestamp, tvl);
 
-    await Promise.all([storeTokensAction, storeTvlAction])
+    await Promise.all([storeTokensAction, storeUsdTokensAction, storeTvlAction])
 
     return;
   }

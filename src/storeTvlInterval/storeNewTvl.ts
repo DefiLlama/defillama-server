@@ -1,7 +1,7 @@
 import dynamodb from "../utils/dynamodb";
 import { Protocol } from "../protocols/data";
 import { getTimestampAtStartOfDay, getDay, secondsInDay, secondsInWeek } from "../utils/date";
-import getLastRecord from "../utils/getLastRecord";
+import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
 
@@ -11,10 +11,10 @@ export default async function (
   unixTimestamp: number,
   tvl: number
 ) {
-  const hourlyPK = `hourlyTvl#${protocol.id}`;
-  const lastHourlyTVLRecord = getLastRecord(protocol.id).then(
+  const hourlyPK = hourlyTvl(protocol.id);
+  const lastHourlyTVLRecord = getLastRecord(hourlyPK).then(
     (result) =>
-      result.Items?.[0] ?? {
+      result ?? {
         SK: undefined,
         tvl: 0,
       }
@@ -47,7 +47,7 @@ export default async function (
   if (getDay((await lastHourlyTVLRecord)?.SK) !== getDay(unixTimestamp)) {
     // First write of the day
     await dynamodb.put({
-      PK: `dailyTvl#${protocol.id}`,
+      PK: dailyTvl(protocol.id),
       SK: getTimestampAtStartOfDay(unixTimestamp),
       tvl,
     });

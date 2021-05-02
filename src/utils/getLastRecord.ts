@@ -1,12 +1,19 @@
 import dynamodb from "./dynamodb";
 
-export default function (protocolId: string) {
+export function getLastRecord(PK: string) {
   return dynamodb.query({
     ExpressionAttributeValues: {
-      ":pk": `hourlyTvl#${protocolId}`,
+      ":pk": PK,
     },
     KeyConditionExpression: "PK = :pk",
     Limit: 1,
     ScanIndexForward: false,
-  });
+  }).then(res=>res.Items?.[0]);
 }
+
+export const hourlyTvl = (protocolId:string)=> `hourlyTvl#${protocolId}`;
+export const hourlyTokensTvl = (protocolId:string)=> `hourlyTokensTvl#${protocolId}`;
+export const hourlyUsdTokensTvl = (protocolId:string)=> `hourlyTokensTvl#${protocolId}`;
+export const dailyTvl = (protocolId:string)=> `dailyTvl#${protocolId}`;
+export const dailyTokensTvl = (protocolId:string)=> `dailyTokensTvl#${protocolId}`;
+export const dailyUsdTokensTvl = (protocolId:string)=> `dailyTokensTvl#${protocolId}`;

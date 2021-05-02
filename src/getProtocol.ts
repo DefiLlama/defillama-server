@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils";
 import dynamodb from "./utils/dynamodb";
 import protocols from "./protocols/data";
-import getLastRecord from "./utils/getLastRecord";
+import {getLastRecord, hourlyTvl, dailyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 
 const handler = async (
@@ -16,10 +16,10 @@ const handler = async (
       message: "Protocol is not on our database",
     });
   }
-  const lastHourlyRecord = getLastRecord(protocolData.id);
+  const lastHourlyRecord = getLastRecord(hourlyTvl(protocolData.id));
   const historicalTvl = await dynamodb.query({
     ExpressionAttributeValues: {
-      ":pk": `dailyTvl#${protocolData.id}`,
+      ":pk": dailyTvl(protocolData.id),
     },
     KeyConditionExpression: "PK = :pk",
   });
@@ -28,7 +28,7 @@ const handler = async (
     date: item.SK,
     totalLiquidityUSD: item.tvl,
   }));
-  const lastItem = (await lastHourlyRecord).Items?.[0];
+  const lastItem = await lastHourlyRecord;
   if (lastItem !== undefined) {
     response.tvl[response.tvl.length - 1] = {
       date: lastItem.SK,

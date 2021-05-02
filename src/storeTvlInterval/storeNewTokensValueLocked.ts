@@ -2,23 +2,28 @@ import dynamodb from "../utils/dynamodb";
 import { Protocol } from "../protocols/data";
 import { getDay, getTimestampAtStartOfDay, secondsInDay, secondsInWeek } from "../utils/date";
 import { TokensValueLocked } from "../types";
-import getLastRecord from "../utils/getLastRecord";
+import { getLastRecord } from "../utils/getLastRecord";
 import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
+
+function extractTvl(item:any|undefined){
+  if(item?.SK === undefined || typeof item?.tvl !== "object"){
+    return {}
+  } else {
+    return item.tvl
+  }
+}
+type PKconverted = (id:string)=>string
 
 export default async (protocol: Protocol,
   unixTimestamp: number,
-  tokensVL: TokensValueLocked) => {
-  const hourlyPK = `hourlyTokensTvl#${protocol.id}`;
+  tvl: TokensValueLocked,
+  hourlyTvl:PKconverted,
+  dailyTvl:PKconverted) => {
+  const hourlyPK = hourlyTvl(protocol.id);
 
   const [lastHourlyRecord, lastDailyTVLRecord, lastWeeklyTVLRecord] = await Promise.all(
     [
-      getLastRecord(protocol.id).then(
-        (result) =>
-          result.Items?.[0] ?? {
-            SK: undefined,
-            tokensVL: 0,
-          }
-      ),
+      getLastRecord(hourlyPK),
       getTVLOfRecordClosestToTimestamp(
         hourlyPK,
         unixTimestamp - secondsInDay
@@ -33,18 +38,18 @@ export default async (protocol: Protocol,
   await dynamodb.put({
     PK: hourlyPK,
     SK: unixTimestamp,
-    tokensVL,
-    tokensVLPrev1Hour: lastHourlyRecord.tokensVL || {},
-    tokensVLPrev1Day: lastDailyTVLRecord.tokensVL || {},
-    tokensVLPrev1Week: lastWeeklyTVLRecord.tokensVL || {},
+    tvl,
+    tvlPrev1Hour: extractTvl(lastHourlyRecord),
+    tvlPrev1Day: extractTvl(lastDailyTVLRecord),
+    tvlPrev1Week: extractTvl(lastWeeklyTVLRecord),
   });
 
   if (getDay((await lastHourlyRecord)?.SK) !== getDay(unixTimestamp)) {
     // First write of the day
     await dynamodb.put({
-      PK: `dailyTokensTvl#${protocol.id}`,
+      PK: dailyTvl(protocol.id),
       SK: getTimestampAtStartOfDay(unixTimestamp),
-      tokensVL,
+      tvl,
     });
   }
 }

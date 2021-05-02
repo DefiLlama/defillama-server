@@ -7,3 +7,7 @@ export interface TokenPrices {
 export type TokensValueLocked = {
   [tokenSymbolOrName: string]: number;
 };
+
+export type tvlsObject<T> = {
+  [chain: string]: T;
+};

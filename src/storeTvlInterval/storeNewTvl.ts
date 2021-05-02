@@ -9,11 +9,12 @@ import {
 import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
+import { tvlsObject } from "../types";
 
 export default async function (
   protocol: Protocol,
   unixTimestamp: number,
-  tvl: number
+  tvl: tvlsObject<number>
 ) {
   const hourlyPK = hourlyTvl(protocol.id);
   const lastHourlyTVLRecord = getLastRecord(hourlyPK).then(
@@ -33,7 +34,7 @@ export default async function (
   );
 
   const lastHourlyTVL = (await lastHourlyTVLRecord).tvl;
-  if (lastHourlyTVL * 2 < tvl && lastHourlyTVL !== 0) {
+  if (lastHourlyTVL * 2 < tvl.tvl && lastHourlyTVL !== 0) {
     reportError(
       `TVL for ${protocol.name} has grown way too much in the last hour (${lastHourlyTVL} to ${tvl})`,
       protocol.name
@@ -43,7 +44,7 @@ export default async function (
   await dynamodb.put({
     PK: hourlyPK,
     SK: unixTimestamp,
-    tvl,
+    ...tvl,
     tvlPrev1Hour: lastHourlyTVL,
     tvlPrev1Day: (await lastDailyTVLRecord).tvl,
     tvlPrev1Week: (await lastWeeklyTVLRecord).tvl,
@@ -53,7 +54,7 @@ export default async function (
     await dynamodb.put({
       PK: dailyTvl(protocol.id),
       SK: getTimestampAtStartOfDay(unixTimestamp),
-      tvl,
+      ...tvl,
     });
   }
 }

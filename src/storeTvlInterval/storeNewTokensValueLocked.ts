@@ -6,7 +6,7 @@ import {
   secondsInDay,
   secondsInWeek,
 } from "../utils/date";
-import { TokensValueLocked } from "../types";
+import { TokensValueLocked, tvlsObject } from "../types";
 import { getLastRecord } from "../utils/getLastRecord";
 import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
 
@@ -22,7 +22,7 @@ type PKconverted = (id: string) => string;
 export default async (
   protocol: Protocol,
   unixTimestamp: number,
-  tvl: TokensValueLocked,
+  tvl: tvlsObject<TokensValueLocked>,
   hourlyTvl: PKconverted,
   dailyTvl: PKconverted
 ) => {
@@ -41,7 +41,7 @@ export default async (
   await dynamodb.put({
     PK: hourlyPK,
     SK: unixTimestamp,
-    tvl,
+    ...tvl,
     tvlPrev1Hour: extractTvl(lastHourlyRecord),
     tvlPrev1Day: extractTvl(lastDailyTVLRecord),
     tvlPrev1Week: extractTvl(lastWeeklyTVLRecord),
@@ -52,7 +52,7 @@ export default async (
     await dynamodb.put({
       PK: dailyTvl(protocol.id),
       SK: getTimestampAtStartOfDay(unixTimestamp),
-      tvl,
+      ...tvl,
     });
   }
 };

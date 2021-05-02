@@ -3,7 +3,7 @@ import { Protocol } from "../protocols/data";
 import { util } from "@defillama/sdk";
 import storeNewTvl from "./storeNewTvl";
 import * as Sentry from "@sentry/serverless";
-import { TokensValueLocked } from "../types";
+import { TokensValueLocked, tvlsObject } from "../types";
 import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
 import {
   hourlyTokensTvl,
@@ -24,42 +24,52 @@ export async function storeTvl(
   getCoingeckoLock?: () => Promise<unknown>
 ) {
   for (let i = 0; i < maxRetries; i++) {
-    let tvl: number;
-    let tokensBalances: TokensValueLocked = {};
-    let usdTokenBalances: TokensValueLocked = {};
+    let usdTvls: tvlsObject<number> = {};
+    let tokensBalances: tvlsObject<TokensValueLocked> = {};
+    let usdTokenBalances: tvlsObject<TokensValueLocked> = {};
     try {
       const module = await import(
         `../../DefiLlama-Adapters/projects/${protocol.module}`
       );
-      if (module.tvl) {
-        const tvlBalances = await module.tvl(
-          unixTimestamp,
-          ethBlock,
-          chainBlocks
-        );
-        const tvlResults = await util.computeTVL(
-          tvlBalances,
-          "now",
-          false,
-          knownTokenPrices,
-          getCoingeckoLock,
-          10
-        );
-        tvl = tvlResults.usdTvl;
-        tokensBalances = tvlResults.tokenBalances;
-        usdTokenBalances = tvlResults.usdTokenBalances;
-      } else if (module.fetch) {
-        tvl = Number(await module.fetch());
-      } else {
-        throw new Error(
-          `Module for ${protocol.name} does not have a normal interface`
-        );
-      }
-      if (typeof tvl !== "number" || Number.isNaN(tvl)) {
-        throw new Error(
-          `TVL of ${protocol.name} is not a number, instead it is ${tvl}`
-        );
-      }
+      await Promise.all(
+        Object.entries(module).map(async ([chain, value]) => {
+          const container =
+            chain === "tvl" || chain === "fetch" ? module : value;
+          const storedKey = chain === "fetch" ? "tvl" : chain;
+          if (container.tvl) {
+            const tvlBalances = await container.tvl(
+              unixTimestamp,
+              ethBlock,
+              chainBlocks
+            );
+            const tvlResults = await util.computeTVL(
+              tvlBalances,
+              "now",
+              false,
+              knownTokenPrices,
+              getCoingeckoLock,
+              10
+            );
+            usdTvls[storedKey] = tvlResults.usdTvl;
+            tokensBalances[storedKey] = tvlResults.tokenBalances;
+            usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
+          } else if (container.fetch) {
+            usdTvls[storedKey] = Number(await container.fetch());
+          } else {
+            throw new Error(
+              `Module for ${protocol.name} does not have a normal interface`
+            );
+          }
+          if (
+            typeof usdTvls[storedKey] !== "number" ||
+            Number.isNaN(usdTvls[storedKey])
+          ) {
+            throw new Error(
+              `TVL of ${protocol.name} is not a number, instead it is ${usdTvls[storedKey]}`
+            );
+          }
+        })
+      );
     } catch (e) {
       if (i >= maxRetries - 1) {
         console.error(protocol.name, e);
@@ -86,7 +96,7 @@ export async function storeTvl(
       hourlyUsdTokensTvl,
       dailyUsdTokensTvl
     );
-    const storeTvlAction = storeNewTvl(protocol, unixTimestamp, tvl);
+    const storeTvlAction = storeNewTvl(protocol, unixTimestamp, usdTvls);
 
     await Promise.all([
       storeTokensAction,

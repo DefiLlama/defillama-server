@@ -33,6 +33,9 @@ export async function storeTvl(
       );
       await Promise.all(
         Object.entries(module).map(async ([chain, value]) => {
+          if(typeof value !== 'object' && typeof value !== 'function'){
+            return
+          }
           const container =
             chain === "tvl" || chain === "fetch" ? module : value;
           const storedKey = chain === "fetch" ? "tvl" : chain;

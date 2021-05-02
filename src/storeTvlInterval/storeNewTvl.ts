@@ -14,7 +14,8 @@ import { tvlsObject } from "../types";
 export default async function (
   protocol: Protocol,
   unixTimestamp: number,
-  tvl: tvlsObject<number>
+  tvl: tvlsObject<number>,
+  storePreviousData: boolean
 ) {
   const hourlyPK = hourlyTvl(protocol.id);
   const lastHourlyTVLRecord = getLastRecord(hourlyPK).then(
@@ -45,9 +46,11 @@ export default async function (
     PK: hourlyPK,
     SK: unixTimestamp,
     ...tvl,
-    tvlPrev1Hour: lastHourlyTVL,
-    tvlPrev1Day: (await lastDailyTVLRecord).tvl,
-    tvlPrev1Week: (await lastWeeklyTVLRecord).tvl,
+    ...(storePreviousData ? {
+      tvlPrev1Hour: lastHourlyTVL,
+      tvlPrev1Day: (await lastDailyTVLRecord).tvl,
+      tvlPrev1Week: (await lastWeeklyTVLRecord).tvl,
+    } : {})
   });
   if (getDay((await lastHourlyTVLRecord)?.SK) !== getDay(unixTimestamp)) {
     // First write of the day

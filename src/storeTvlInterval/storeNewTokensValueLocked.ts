@@ -24,7 +24,8 @@ export default async (
   unixTimestamp: number,
   tvl: tvlsObject<TokensValueLocked>,
   hourlyTvl: PKconverted,
-  dailyTvl: PKconverted
+  dailyTvl: PKconverted,
+  storePreviousData: boolean
 ) => {
   const hourlyPK = hourlyTvl(protocol.id);
 
@@ -42,9 +43,11 @@ export default async (
     PK: hourlyPK,
     SK: unixTimestamp,
     ...tvl,
-    tvlPrev1Hour: extractTvl(lastHourlyRecord),
-    tvlPrev1Day: extractTvl(lastDailyTVLRecord),
-    tvlPrev1Week: extractTvl(lastWeeklyTVLRecord),
+    ...(storePreviousData ? {
+      tvlPrev1Hour: extractTvl(lastHourlyRecord),
+      tvlPrev1Day: extractTvl(lastDailyTVLRecord),
+      tvlPrev1Week: extractTvl(lastWeeklyTVLRecord),
+    } : {})
   });
 
   if (getDay((await lastHourlyRecord)?.SK) !== getDay(unixTimestamp)) {

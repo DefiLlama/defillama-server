@@ -2960,7 +2960,7 @@ export default [
     address: "0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2",
     symbol: "SWISE",
     url: "https://stakewise.io/",
-    description: "Stake your ETH and earn the highest APR with the dual-token system from StakeWise",
+    description: "Stake your ETH and manage your capital flexibly with the principal and yield tokens from StakeWise.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/stakewise.png`,
     audits: "2",

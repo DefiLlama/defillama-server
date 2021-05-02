@@ -27,9 +27,18 @@ const handler = async (
           ...protocol,
           slug: sluggify(protocol),
           tvl: lastHourlyRecord.tvl,
-          change_1h: getPercentChange(lastHourlyRecord.tvlPrev1Hour, lastHourlyRecord.tvl),
-          change_1d: getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl),
-          change_7d: getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl),
+          change_1h: getPercentChange(
+            lastHourlyRecord.tvlPrev1Hour,
+            lastHourlyRecord.tvl
+          ),
+          change_1d: getPercentChange(
+            lastHourlyRecord.tvlPrev1Day,
+            lastHourlyRecord.tvl
+          ),
+          change_7d: getPercentChange(
+            lastHourlyRecord.tvlPrev1Week,
+            lastHourlyRecord.tvl
+          ),
         };
       })
     )

@@ -1,39 +1,42 @@
 import dynamodb from "../utils/dynamodb";
 import { Protocol } from "../protocols/data";
-import { getDay, getTimestampAtStartOfDay, secondsInDay, secondsInWeek } from "../utils/date";
+import {
+  getDay,
+  getTimestampAtStartOfDay,
+  secondsInDay,
+  secondsInWeek,
+} from "../utils/date";
 import { TokensValueLocked } from "../types";
 import { getLastRecord } from "../utils/getLastRecord";
 import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
 
-function extractTvl(item:any|undefined){
-  if(item?.SK === undefined || typeof item?.tvl !== "object"){
-    return {}
+function extractTvl(item: any | undefined) {
+  if (item?.SK === undefined || typeof item?.tvl !== "object") {
+    return {};
   } else {
-    return item.tvl
+    return item.tvl;
   }
 }
-type PKconverted = (id:string)=>string
+type PKconverted = (id: string) => string;
 
-export default async (protocol: Protocol,
+export default async (
+  protocol: Protocol,
   unixTimestamp: number,
   tvl: TokensValueLocked,
-  hourlyTvl:PKconverted,
-  dailyTvl:PKconverted) => {
+  hourlyTvl: PKconverted,
+  dailyTvl: PKconverted
+) => {
   const hourlyPK = hourlyTvl(protocol.id);
 
-  const [lastHourlyRecord, lastDailyTVLRecord, lastWeeklyTVLRecord] = await Promise.all(
-    [
-      getLastRecord(hourlyPK),
-      getTVLOfRecordClosestToTimestamp(
-        hourlyPK,
-        unixTimestamp - secondsInDay
-      ),
-      getTVLOfRecordClosestToTimestamp(
-        hourlyPK,
-        unixTimestamp - secondsInWeek
-      )
-    ]
-  )
+  const [
+    lastHourlyRecord,
+    lastDailyTVLRecord,
+    lastWeeklyTVLRecord,
+  ] = await Promise.all([
+    getLastRecord(hourlyPK),
+    getTVLOfRecordClosestToTimestamp(hourlyPK, unixTimestamp - secondsInDay),
+    getTVLOfRecordClosestToTimestamp(hourlyPK, unixTimestamp - secondsInWeek),
+  ]);
 
   await dynamodb.put({
     PK: hourlyPK,
@@ -52,4 +55,4 @@ export default async (protocol: Protocol,
       tvl,
     });
   }
-}
+};

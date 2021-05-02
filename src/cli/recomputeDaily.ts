@@ -12,7 +12,7 @@ async function main() {
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );
   const PK = `${dailyPrefix}#${protocol.id}`;
-  const dailyTxs = await getDailyTxs(protocol.id)
+  const dailyTxs = await getDailyTxs(protocol.id);
   setInterval(() => {
     releaseCoingeckoLock();
   }, 1e3);

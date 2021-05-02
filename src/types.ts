@@ -6,4 +6,4 @@ export interface TokenPrices {
 
 export type TokensValueLocked = {
   [tokenSymbolOrName: string]: number;
-}
+};

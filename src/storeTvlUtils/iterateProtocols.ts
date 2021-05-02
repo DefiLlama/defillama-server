@@ -1,5 +1,5 @@
 import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
-import { getCoingeckoLock, releaseCoingeckoLock } from "./coingeckoLocks"
+import { getCoingeckoLock, releaseCoingeckoLock } from "./coingeckoLocks";
 import { TokenPrices } from "../types";
 import protocols, { Protocol } from "../protocols/data";
 
@@ -15,10 +15,13 @@ type ProtocolDataProcessor = (
   knownTokenPrices: TokenPrices,
   maxRetries: number,
   getCoingeckoLock?: () => Promise<unknown>
-) => void
+) => void;
 
-
-export default async function iterateProtocols(processor: ProtocolDataProcessor, start: number, end: number) {
+export default async function iterateProtocols(
+  processor: ProtocolDataProcessor,
+  start: number,
+  end: number
+) {
   const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlocks();
   const knownTokenPrices = {};
   const actions = protocols

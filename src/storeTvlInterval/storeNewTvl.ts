@@ -1,10 +1,14 @@
 import dynamodb from "../utils/dynamodb";
 import { Protocol } from "../protocols/data";
-import { getTimestampAtStartOfDay, getDay, secondsInDay, secondsInWeek } from "../utils/date";
+import {
+  getTimestampAtStartOfDay,
+  getDay,
+  secondsInDay,
+  secondsInWeek,
+} from "../utils/date";
 import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
-
 
 export default async function (
   protocol: Protocol,

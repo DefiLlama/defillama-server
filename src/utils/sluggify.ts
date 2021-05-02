@@ -1,3 +1,3 @@
-import type {Protocol} from "../protocols/data"
+import type { Protocol } from "../protocols/data";
 
-export default (prot:Protocol) => prot.name.toLowerCase().replace(" ", "-")
+export default (prot: Protocol) => prot.name.toLowerCase().replace(" ", "-");

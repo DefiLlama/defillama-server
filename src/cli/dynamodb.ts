@@ -13,7 +13,8 @@ export const dynamoPrefix = dailyPrefix;
 export const TableName = "prod-table";
 export const maxProtocolId = 300;
 
-export const getDailyTxs = (protocolId:string) => client
+export const getDailyTxs = (protocolId: string) =>
+  client
     .query({
       TableName,
       ExpressionAttributeValues: {
@@ -21,4 +22,5 @@ export const getDailyTxs = (protocolId:string) => client
       },
       KeyConditionExpression: "PK = :pk",
     })
-    .promise().then(result=>result.Items);
+    .promise()
+    .then((result) => result.Items);

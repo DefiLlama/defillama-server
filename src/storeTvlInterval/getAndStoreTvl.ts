@@ -5,7 +5,12 @@ import storeNewTvl from "./storeNewTvl";
 import * as Sentry from "@sentry/serverless";
 import { TokensValueLocked } from "../types";
 import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
-import { hourlyTokensTvl, hourlyUsdTokensTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
+import {
+  hourlyTokensTvl,
+  hourlyUsdTokensTvl,
+  dailyTokensTvl,
+  dailyUsdTokensTvl,
+} from "../utils/getLastRecord";
 
 export async function storeTvl(
   unixTimestamp: number,
@@ -67,11 +72,27 @@ export async function storeTvl(
       }
     }
 
-    const storeTokensAction = storeNewTokensValueLocked(protocol, unixTimestamp, tokensBalances, hourlyTokensTvl, dailyTokensTvl);
-    const storeUsdTokensAction = storeNewTokensValueLocked(protocol, unixTimestamp, usdTokenBalances, hourlyUsdTokensTvl, dailyUsdTokensTvl);
+    const storeTokensAction = storeNewTokensValueLocked(
+      protocol,
+      unixTimestamp,
+      tokensBalances,
+      hourlyTokensTvl,
+      dailyTokensTvl
+    );
+    const storeUsdTokensAction = storeNewTokensValueLocked(
+      protocol,
+      unixTimestamp,
+      usdTokenBalances,
+      hourlyUsdTokensTvl,
+      dailyUsdTokensTvl
+    );
     const storeTvlAction = storeNewTvl(protocol, unixTimestamp, tvl);
 
-    await Promise.all([storeTokensAction, storeUsdTokensAction, storeTvlAction])
+    await Promise.all([
+      storeTokensAction,
+      storeUsdTokensAction,
+      storeTvlAction,
+    ]);
 
     return;
   }

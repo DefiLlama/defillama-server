@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils";
 import dynamodb from "./utils/dynamodb";
 import protocols from "./protocols/data";
-import {getLastRecord, hourlyTvl, dailyTvl } from "./utils/getLastRecord";
+import { getLastRecord, hourlyTvl, dailyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 
 const handler = async (

@@ -1,8 +1,10 @@
 import dynamodb from "../utils/dynamodb";
 import { secondsBetweenCallsExtra } from "../utils/date";
 
-
-export default function getTVLOfRecordClosestToTimestamp(PK: string, timestamp: number) {
+export default function getTVLOfRecordClosestToTimestamp(
+  PK: string,
+  timestamp: number
+) {
   return dynamodb
     .query({
       ExpressionAttributeValues: {

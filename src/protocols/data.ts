@@ -2960,7 +2960,8 @@ export default [
     address: "0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2",
     symbol: "SWISE",
     url: "https://stakewise.io/",
-    description: "Stake your ETH and manage your capital flexibly with the principal and yield tokens from StakeWise.",
+    description:
+      "Stake your ETH and manage your capital flexibly with the principal and yield tokens from StakeWise.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/stakewise.png`,
     audits: "2",
@@ -3271,7 +3272,8 @@ export default [
     address: null,
     symbol: "STX",
     url: "https://stacks.co",
-    description: "Stacks makes Bitcoin programmable, enabling decentralized apps and smart contracts that inherit all of Bitcoin’s powers. See detailed metrics for Stacking at https://stacking.club/",
+    description:
+      "Stacks makes Bitcoin programmable, enabling decentralized apps and smart contracts that inherit all of Bitcoin’s powers. See detailed metrics for Stacking at https://stacking.club/",
     chain: "Stacks",
     logo: `${baseIconsUrl}/stacks.png`,
     audits: "2",
@@ -3288,7 +3290,8 @@ export default [
     address: "wan:0x6e11655d6ab3781c6613db8cb1bc3dee9a7e111f",
     symbol: "ZOO",
     url: "https://www.zookeeper.finance/",
-    description: "ZooKeeper brings you a brand new and exciting farming experience, enabling you to enjoy higher rewards and more interesting NFT gameplay and use cases on Wanchain",
+    description:
+      "ZooKeeper brings you a brand new and exciting farming experience, enabling you to enjoy higher rewards and more interesting NFT gameplay and use cases on Wanchain",
     chain: "Wanchain",
     logo: `${baseIconsUrl}/zookeeper.png`,
     audits: "2",
@@ -3305,7 +3308,8 @@ export default [
     address: "0x3b62f3820e0b035cc4ad602dece6d796bc325325",
     symbol: "DEUS",
     url: "https://deus.finance/",
-    description: "Transpose any digitally verifiable asset securely onto the blockchain. DEUS lets you trade real-world assets and derivatives, like stocks and commodities, directly on the Ethereum blockchain.",
+    description:
+      "Transpose any digitally verifiable asset securely onto the blockchain. DEUS lets you trade real-world assets and derivatives, like stocks and commodities, directly on the Ethereum blockchain.",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/deus.jpg`,
     audits: "2",
@@ -3322,7 +3326,8 @@ export default [
     address: "bsc:0x9a319b959e33369C5eaA494a770117eE3e585318",
     symbol: "HYFI",
     url: "https://hyfi.pro",
-    description: "Hyper Finance (HyFi.pro) is a decentralized aggregate mining platform based on the ‌Binance‌ Smart Chain.",
+    description:
+      "Hyper Finance (HyFi.pro) is a decentralized aggregate mining platform based on the ‌Binance‌ Smart Chain.",
     chain: "Binance",
     logo: `${baseIconsUrl}/hyfi.png`,
     audits: "2",
@@ -3356,7 +3361,8 @@ export default [
     address: "0x28A06c02287e657ec3F8e151A13C36A1D43814b0",
     symbol: "BAG",
     url: "https://bondappetit.io/",
-    description: "BondAppétit, a DeFi protocol for business loans. BondAppétit provides an infrastructure that connects decentralized finance and traditional debt instruments with the participation of regulated securities and cryptocurrency brokers/dealers.",
+    description:
+      "BondAppétit, a DeFi protocol for business loans. BondAppétit provides an infrastructure that connects decentralized finance and traditional debt instruments with the participation of regulated securities and cryptocurrency brokers/dealers.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bondappetit.jpg`,
     audits: "2",
@@ -3373,7 +3379,8 @@ export default [
     address: "bsc:0x42F6f551ae042cBe50C739158b4f0CAC0Edb9096",
     symbol: "NRV",
     url: "https://nerve.fi",
-    description: "Nerve is a trustless bridge and stableswap AMM designed to on-ramp & trade pegged assets quickly with minimal slippage.",
+    description:
+      "Nerve is a trustless bridge and stableswap AMM designed to on-ramp & trade pegged assets quickly with minimal slippage.",
     chain: "Binance",
     logo: `${baseIconsUrl}/nerve.png`,
     audits: "2",

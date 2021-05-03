@@ -2483,7 +2483,7 @@ export default [
       "A community controlled no fee token basket that you are PAID to hold.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/eq0vIOD1_400x400.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "basketdao",
     cmcId: null,

@@ -28,6 +28,9 @@ export default async (
   storePreviousData: boolean
 ) => {
   const hourlyPK = hourlyTvl(protocol.id);
+  if(Object.keys(tvl).length === 0){
+    return
+  }
 
   const [
     lastHourlyRecord,

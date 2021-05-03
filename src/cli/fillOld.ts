@@ -8,6 +8,7 @@ import {
   getCoingeckoLock,
   releaseCoingeckoLock,
 } from "../storeTvlUtils/coingeckoLocks";
+import type { Protocol } from "../protocols/data";
 
 const secondsInDay = 24 * 3600;
 async function getBlocksRetry(timestamp: number) {
@@ -30,28 +31,40 @@ async function getFirstDate(protocolId: string) {
     dailyTvls.Items![0].SK ?? Math.round(Date.now() / 1000)
   );
 }
+async function getAndStore(timestamp: number, protocol: Protocol) {
+  const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp);
+  console.log(timestamp, ethereumBlock);
+  await storeTvl(
+    timestamp,
+    ethereumBlock,
+    chainBlocks,
+    protocol,
+    {},
+    4,
+    getCoingeckoLock,
+    false,
+    false
+  );
+}
+const batchSize = 10;
 
 const main = async () => {
   const protocol = getProtocol("Stacks");
-  let timestamp = getClosestDayStartTimestamp(Math.round(Date.now() / 1000));
+  const adapter = await import(
+    `../../DefiLlama-Adapters/projects/${protocol.module}`
+  );
+  const start = adapter.start ?? 0;
+  let timestamp = getClosestDayStartTimestamp(1617228000); //Math.round(Date.now() / 1000));
   setInterval(() => {
     releaseCoingeckoLock();
   }, 1e3);
-  while (true) {
-    const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp);
-    console.log(timestamp, ethereumBlock);
-    await storeTvl(
-      timestamp,
-      ethereumBlock,
-      chainBlocks,
-      protocol,
-      {},
-      4,
-      getCoingeckoLock,
-      false,
-      false
-    );
-    timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
+  while (timestamp > start) {
+    const batchedActions = [];
+    for (let i = 0; i < batchSize && timestamp > start; i++) {
+      batchedActions.push(getAndStore(timestamp, protocol));
+      timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
+    }
+    await Promise.all(batchedActions);
   }
 };
 main();

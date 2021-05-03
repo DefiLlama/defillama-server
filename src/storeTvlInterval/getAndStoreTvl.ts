@@ -35,10 +35,7 @@ export async function storeTvl(
       );
       await Promise.all(
         Object.entries(module).map(async ([chain, value]) => {
-          if (
-            (typeof value !== "object" && typeof value !== "function") ||
-            chain === "default"
-          ) {
+          if (chain === "default") {
             return;
           }
           const container =
@@ -64,9 +61,7 @@ export async function storeTvl(
           } else if (container.fetch) {
             usdTvls[storedKey] = Number(await container.fetch());
           } else {
-            throw new Error(
-              `Module for ${protocol.name} does not have a normal interface`
-            );
+            return;
           }
           if (
             typeof usdTvls[storedKey] !== "number" ||

@@ -777,8 +777,8 @@ export default [
   {
     id: "151",
     name: "DeversiFi",
-    address: "0xcc80c051057b774cd75067dc48f8987c4eb97a5e",
-    symbol: "NEC",
+    address: "0xdddddd4301a082e62e84e43f474f044423921918",
+    symbol: "DVF",
     url: "https://www.deversifi.com/",
     description:
       "DeversiFi gives traders ​the edge​ in fast moving decentralised finance (DeFi) markets by allowing them to ​trade at lightning speed​ and ​with deep aggregated liquidity​, directly from their privately owned cryptocurrency wallet.",

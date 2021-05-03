@@ -11,7 +11,7 @@ const handler = async () => {
       last: i + step
     }
     lambda.invoke({
-      FunctionName: 'defillama-prod-storeTvlInterval',
+      FunctionName: `defillama-${process.env.stage}-storeTvlInterval`,
       InvocationType: 'Event',
       Payload: JSON.stringify(event, null, 2) // pass params
     }, function (error, _data) {

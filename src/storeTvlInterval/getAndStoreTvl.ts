@@ -41,7 +41,7 @@ export async function storeTvl(
           const container =
             chain === "tvl" || chain === "fetch" ? module : value;
           const storedKey = chain === "fetch" ? "tvl" : chain;
-          if(typeof container !== 'object'){
+          if(typeof container !== 'object' || container === null){
             return
           }
           if (container.tvl) {

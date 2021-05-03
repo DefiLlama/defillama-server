@@ -41,6 +41,9 @@ export async function storeTvl(
           const container =
             chain === "tvl" || chain === "fetch" ? module : value;
           const storedKey = chain === "fetch" ? "tvl" : chain;
+          if(typeof container !== 'object'){
+            return
+          }
           if (container.tvl) {
             const tvlBalances = await container.tvl(
               unixTimestamp,

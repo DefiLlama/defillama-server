@@ -123,14 +123,11 @@ functions:
       - http:
           path: /{params+}
           method: options
-  storeTvls100:
-    handler: src/storeTvls100.default
+  storeTvlInterval:
+    handler: src/storeTvlInterval.default
     timeout: 900
-    events:
-      - schedule: rate(1 hour)
-  storeTvls200:
-    handler: src/storeTvls200.default
-    timeout: 900
+  triggerStoreTvls:
+    handler: src/triggerStoreTvls.default
     events:
       - schedule: rate(1 hour)
 

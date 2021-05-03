@@ -1,7 +1,7 @@
 import AWS from "aws-sdk";
 import protocols from "../protocols/data";
 import { ethers } from "ethers";
-const db = require("../imported-db/defillama-db.json");
+const db = require("../../imported-db/defillama-db.json");
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
 

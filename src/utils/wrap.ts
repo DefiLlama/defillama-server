@@ -60,11 +60,11 @@ function wrap(
 export default wrap;
 
 export function wrapScheduledLambda(
-  lambdaFunc: () => Promise<void>
+  lambdaFunc: (event:any) => Promise<void>
 ): (
   event: void,
   context?: any,
   callback?: any
 ) => Promise<void | undefined> | void {
-  return Sentry.AWSLambda.wrapHandler<void, void>(lambdaFunc);
+  return Sentry.AWSLambda.wrapHandler(lambdaFunc);
 }

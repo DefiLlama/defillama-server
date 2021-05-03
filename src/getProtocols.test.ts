@@ -1,10 +1,10 @@
 import getProtocols, { getPercentChange } from "./getProtocols";
 import { getBody } from "./utils/lambda-response";
-import storeTvls100 from "./storeTvls100";
+import storeTvls from "./storeTvlInterval/storeTvls";
 jest.mock("./protocols/data");
 
 test("snapshots of responses", async () => {
-  await storeTvls100();
+  await storeTvls(0, 10);
   expect(
     await (getProtocols({} as any) as Promise<any>).then((b) =>
       getBody(b).map((a: any) => {

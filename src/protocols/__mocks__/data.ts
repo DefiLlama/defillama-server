@@ -1,6 +1,3 @@
-import { fetch as uniswap } from "../../../DefiLlama-Adapters/projects/uniswap";
-import { fetch as aave } from "../../../DefiLlama-Adapters/projects/aave.js";
-
 export default [
   {
     id: "1",
@@ -17,7 +14,7 @@ export default [
     gecko_id: "uniswap",
     cmcId: "7083",
     category: "Dexes",
-    tvlFunction: uniswap,
+    tvlFunction: ()=>1,
   },
   {
     id: "111",
@@ -34,6 +31,6 @@ export default [
     gecko_id: "aave",
     cmcId: "7278",
     category: "Lending",
-    tvlFunction: aave,
+    tvlFunction: ()=>2,
   },
 ];

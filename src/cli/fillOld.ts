@@ -48,7 +48,7 @@ async function getAndStore(timestamp: number, protocol: Protocol, dailyItems:Dai
   }
   console.log(timestamp, ethereumBlock);
 }
-const batchSize = 5;
+const batchSize = 7;
 
 function getDailyItems(pk: string) {
   return dynamodb.query({
@@ -74,7 +74,7 @@ async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
 }
 
 const main = async () => {
-  const protocol = getProtocol("basketdao");
+  const protocol = getProtocol("stakedao");
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );
@@ -84,7 +84,7 @@ const main = async () => {
   const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens]
   const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000)
-  let timestamp = getClosestDayStartTimestamp(1618005600)//now);
+  let timestamp = getClosestDayStartTimestamp(now);
   if (timestamp > now) {
     timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
   }

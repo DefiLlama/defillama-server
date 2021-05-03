@@ -37,7 +37,7 @@ export default async function (
   const lastHourlyTVL = (await lastHourlyTVLRecord).tvl;
   if (lastHourlyTVL * 2 < tvl.tvl && lastHourlyTVL !== 0) {
     reportError(
-      `TVL for ${protocol.name} has grown way too much in the last hour (${lastHourlyTVL} to ${tvl})`,
+      `TVL for ${protocol.name} has grown way too much in the last hour (${lastHourlyTVL} to ${tvl.tvl})`,
       protocol.name
     );
   }

@@ -114,6 +114,6 @@ export async function storeTvl(
       storeTvlAction,
     ]);
 
-    return;
+    return usdTvls.tvl;
   }
 }

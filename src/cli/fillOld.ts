@@ -33,8 +33,7 @@ async function getFirstDate(protocolId: string) {
 }
 async function getAndStore(timestamp: number, protocol: Protocol) {
   const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp);
-  console.log(timestamp, ethereumBlock);
-  await storeTvl(
+  const tvl = await storeTvl(
     timestamp,
     ethereumBlock,
     chainBlocks,
@@ -45,16 +44,20 @@ async function getAndStore(timestamp: number, protocol: Protocol) {
     false,
     false
   );
+  if(tvl === 0){
+    throw new Error(`Returned 0 TVL at timestamp ${timestamp} (eth block ${ethereumBlock})`)
+  }
+  console.log(timestamp, ethereumBlock);
 }
-const batchSize = 10;
+const batchSize = 5;
 
 const main = async () => {
-  const protocol = getProtocol("Stacks");
+  const protocol = getProtocol("basketdao");
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );
   const start = adapter.start ?? 0;
-  let timestamp = getClosestDayStartTimestamp(1617228000); //Math.round(Date.now() / 1000));
+  let timestamp = getClosestDayStartTimestamp(Math.round(Date.now() / 1000));
   setInterval(() => {
     releaseCoingeckoLock();
   }, 1e3);

@@ -3253,7 +3253,7 @@ export default [
     id: "294",
     name: "Anchor",
     address: null,
-    symbol: "-",
+    symbol: "ANC",
     url: "https://terra.money/",
     description: "Money market on Terra",
     chain: "Terra",

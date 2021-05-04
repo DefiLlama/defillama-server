@@ -23,7 +23,8 @@ export async function storeTvl(
   maxRetries: number = 1,
   getCoingeckoLock?: () => Promise<unknown>,
   storePreviousData: boolean = true,
-  useCurrentPrices: boolean = true
+  useCurrentPrices: boolean = true,
+  breakIfTvlIsZero: boolean = false,
 ) {
   for (let i = 0; i < maxRetries; i++) {
     let usdTvls: tvlsObject<number> = {};
@@ -86,6 +87,9 @@ export async function storeTvl(
       } else {
         continue;
       }
+    }
+    if(breakIfTvlIsZero && usdTvls.tvl === 0){
+      return 0;
     }
 
     const storeTokensAction = storeNewTokensValueLocked(

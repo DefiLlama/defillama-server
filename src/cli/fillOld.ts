@@ -10,6 +10,7 @@ import {
 } from "../storeTvlUtils/coingeckoLocks";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
+require('dotenv').config();
 
 const secondsInDay = 24 * 3600;
 async function getBlocksRetry(timestamp: number) {
@@ -41,14 +42,15 @@ async function getAndStore(timestamp: number, protocol: Protocol, dailyItems:Dai
     4,
     getCoingeckoLock,
     false,
-    false
+    false,
+    true
   );
   if (tvl === 0) {
     throw new Error(`Returned 0 TVL at timestamp ${timestamp} (eth block ${ethereumBlock})`)
   }
   console.log(timestamp, ethereumBlock);
 }
-const batchSize = 7;
+const batchSize = 5;
 
 function getDailyItems(pk: string) {
   return dynamodb.query({
@@ -74,7 +76,7 @@ async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
 }
 
 const main = async () => {
-  const protocol = getProtocol("stakedao");
+  const protocol = getProtocol("nerve");
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );

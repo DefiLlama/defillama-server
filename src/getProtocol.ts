@@ -6,8 +6,18 @@ import {
   hourlyTvl,
   dailyTvl,
   dailyUsdTokensTvl,
+  dailyTokensTvl,
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
+
+function getHistoricalValues(pk:string){
+  return dynamodb.query({
+    ExpressionAttributeValues: {
+      ":pk": pk,
+    },
+    KeyConditionExpression: "PK = :pk",
+  });
+}
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -22,24 +32,19 @@ const handler = async (
     });
   }
   const lastHourlyRecord = getLastRecord(hourlyTvl(protocolData.id));
-  const historicalUsdTvl = dynamodb.query({
-    ExpressionAttributeValues: {
-      ":pk": dailyTvl(protocolData.id),
-    },
-    KeyConditionExpression: "PK = :pk",
-  });
-  const historicalUsdTokenTvl = dynamodb.query({
-    ExpressionAttributeValues: {
-      ":pk": dailyUsdTokensTvl(protocolData.id),
-    },
-    KeyConditionExpression: "PK = :pk",
-  });
+  const historicalUsdTvl = getHistoricalValues(dailyTvl(protocolData.id))
+  const historicalUsdTokenTvl = getHistoricalValues(dailyUsdTokensTvl(protocolData.id))
+  const historicalTokenTvl = getHistoricalValues(dailyTokensTvl(protocolData.id))
   const response = protocolData as any;
   response.tvl = (await historicalUsdTvl).Items?.map((item) => ({
     date: item.SK,
     totalLiquidityUSD: item.tvl,
   }));
   response.tokensInUsd = (await historicalUsdTokenTvl).Items?.map((item) => ({
+    date: item.SK,
+    tokens: item.tvl,
+  }));
+  response.tokens = (await historicalTokenTvl).Items?.map((item) => ({
     date: item.SK,
     tokens: item.tvl,
   }));

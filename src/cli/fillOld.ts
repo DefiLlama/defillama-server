@@ -50,7 +50,6 @@ async function getAndStore(timestamp: number, protocol: Protocol, dailyItems:Dai
   }
   console.log(timestamp, ethereumBlock);
 }
-const batchSize = 5;
 
 function getDailyItems(pk: string) {
   return dynamodb.query({
@@ -75,8 +74,9 @@ async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
   }
 }
 
+const batchSize = 5;
 const main = async () => {
-  const protocol = getProtocol("nerve");
+  const protocol = getProtocol("spookyswap");
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );

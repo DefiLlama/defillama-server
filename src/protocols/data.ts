@@ -1364,7 +1364,7 @@ export default [
   {
     id: "186",
     name: "WanSwap Dex",
-    address: null,
+    address: "wan:0x8b9f9f4aa70b1b0d586be8adfb19c1ac38e05e9a",
     symbol: "WASP",
     url: "https://wanswap.finance/",
     description:

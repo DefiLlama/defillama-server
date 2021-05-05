@@ -3391,4 +3391,22 @@ export default [
     chains: ["Binance"],
     module: "nerve/index.js",
   },
+  {
+    id: "302",
+    name: "SpookySwap",
+    address: "fantom:0x841fad6eae12c286d1fd18d1d525dffa75c7effe",
+    symbol: "BOO",
+    url: "https://app.spiritswap.finance/#/",
+    description:
+      "Automated Market Maker.",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/spooky.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: "spookyswap",
+    cmcId: "9608",
+    category: "Dexes",
+    chains: ["Fantom"],
+    module: "spookyswap/index.js",
+  },
 ] as Protocol[];

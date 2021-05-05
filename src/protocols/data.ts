@@ -1506,7 +1506,7 @@ export default [
   {
     id: "194",
     name: "PancakeSwap",
-    address: null,
+    address: "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
     symbol: "CAKE",
     url: "https://pancakeswap.finance/",
     description: "The #1 AMM and yield farm on Binance Smart Chain",
@@ -1515,7 +1515,7 @@ export default [
     audits: "2",
     audit_note: null,
     gecko_id: "pancakeswap",
-    cmcId: null,
+    cmcId: "1165",
     category: "Dexes",
     chains: ["Binance"],
     module: "pancake-swap.js",

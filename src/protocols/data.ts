@@ -3427,4 +3427,22 @@ export default [
     chains: ["Ziliqa"],
     module: "zilswap.js",
   },
+  {
+    id: "304",
+    name: "Flamingo Finance",
+    address: null,
+    symbol: "FLM",
+    url: "https://flamingo.finance/",
+    description:
+      "An Interoperable Full-Stack DeFi Protocol on Neo",
+    chain: "NEO",
+    logo: `${baseIconsUrl}/flamingo.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "flamingo-finance",
+    cmcId: "7150",
+    category: "Dexes",
+    chains: ["NEO"],
+    module: "flamingo.js",
+  },
 ] as Protocol[];

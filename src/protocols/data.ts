@@ -3409,4 +3409,22 @@ export default [
     chains: ["Fantom"],
     module: "spookyswap/index.js",
   },
+  {
+    id: "303",
+    name: "ZilSwap",
+    address: null,
+    symbol: "ZWAP",
+    url: "https://zilswap.io/swap",
+    description:
+      "Automated Market Maker.",
+    chain: "Ziliqa",
+    logo: `${baseIconsUrl}/zilswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "zilswap",
+    cmcId: "9107",
+    category: "Dexes",
+    chains: ["Ziliqa"],
+    module: "zilswap.js",
+  },
 ] as Protocol[];

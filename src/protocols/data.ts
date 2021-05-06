@@ -808,7 +808,7 @@ export default [
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "augur.js",
+    module: "augur/index.js",
   },
   {
     id: "153",

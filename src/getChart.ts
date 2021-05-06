@@ -32,13 +32,15 @@ const handler = async (
       }
     })
   );
-  if (chain !== undefined && chain !== "ethereum") {
-    Object.keys(sumDailyTvls).forEach((timestamp) => {
-      if (Number(timestamp) < 1612837719) {
-        delete sumDailyTvls[Number(timestamp)];
-      }
-    });
+  let minTimestamp = 1603757978;
+  if(chain !== undefined && chain !== "ethereum") {
+    minTimestamp = 1612837719;
   }
+  Object.keys(sumDailyTvls).forEach((timestamp) => {
+    if (Number(timestamp) < minTimestamp) {
+      delete sumDailyTvls[Number(timestamp)];
+    }
+  });
 
   const response = Object.entries(sumDailyTvls).map(([timestamp, tvl]) => ({
     date: timestamp,

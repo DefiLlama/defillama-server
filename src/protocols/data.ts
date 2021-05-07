@@ -3416,15 +3416,15 @@ export default [
     symbol: "ZWAP",
     url: "https://zilswap.io/swap",
     description:
-      "Automated Market Maker.",
-    chain: "Ziliqa",
+      "Decentralised exchange for ZRC2 tokens on Zilliqa.",
+    chain: "Zilliqa",
     logo: `${baseIconsUrl}/zilswap.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "zilswap",
     cmcId: "9107",
     category: "Dexes",
-    chains: ["Ziliqa"],
+    chains: ["Zilliqa"],
     module: "zilswap.js",
   },
   {

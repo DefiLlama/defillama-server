@@ -3396,7 +3396,7 @@ export default [
     name: "SpookySwap",
     address: "fantom:0x841fad6eae12c286d1fd18d1d525dffa75c7effe",
     symbol: "BOO",
-    url: "https://app.spiritswap.finance/#/",
+    url: "https://spookyswap.finance/",
     description:
       "Automated Market Maker.",
     chain: "Fantom",

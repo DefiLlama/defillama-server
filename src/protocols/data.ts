@@ -3445,4 +3445,22 @@ export default [
     chains: ["NEO"],
     module: "flamingo.js",
   },
+  {
+    id: "305",
+    name: "Uniswap v3",
+    address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    symbol: "UNI",
+    url: "https://uniswap.org/",
+    description:
+      "AMM with concentrated liquidity positions",
+    chain: "Ethereum",
+    logo: null,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "uniswapv3/index.js",
+  },
 ] as Protocol[];

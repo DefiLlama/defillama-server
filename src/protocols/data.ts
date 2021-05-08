@@ -1099,7 +1099,7 @@ export default [
     symbol: "FNX",
     url: "https://finnexus.io/",
     description:
-      "FinNexus Options makes it easy to buy and exercise BTC, ETH, LINK, SNX, and MKR options in a secure and decentralized way on Ethereum & Wanchain.",
+      "FinNexus Options makes it easy to buy and exercise BTC, ETH, BNB, LINK, SNX, MKR, WAN options with pooled liquidity in a secure and decentralized way on Ethereum, BSC & Wanchain.",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/fShXtXh-_400x400.jpg`,
     audits: "2",

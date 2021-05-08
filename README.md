@@ -23,5 +23,5 @@ Just push your changes to the `master` branch.
 ## Cli
 ```
 npx esm-ts-node src/import.ts
-export tableName="dev-table" && export AWS_REGION="eu-central-1" && npx ts-node src/cli/fillOld.ts
+export tableName="prod-table" && export AWS_REGION="eu-central-1" && npx ts-node src/cli/fillOld.ts
 ```

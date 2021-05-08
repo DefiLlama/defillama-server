@@ -3463,4 +3463,22 @@ export default [
     chains: ["Ethereum"],
     module: "uniswapv3/index.js",
   },
+  {
+    id: "306",
+    name: "Quickswap",
+    address: "0x6c28aef8977c9b773996d0e8376d2ee379446f2f",
+    symbol: "QUICK",
+    url: "https://quickswap.exchange/",
+    description:
+      "AMM",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/quickswap.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: "quick",
+    cmcId: "1293",
+    category: "Dexes",
+    chains: ["Polygon"],
+    module: "quickswap2/index.js",
+  },
 ] as Protocol[];

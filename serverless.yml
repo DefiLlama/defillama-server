@@ -49,6 +49,7 @@ provider:
       Resource: '*'
   environment:
     ALCHEMY_API: ${file(./env.js):ALCHEMY_API}
+    POLYGON_RPC: ${file(./env.js):POLYGON_RPC}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}

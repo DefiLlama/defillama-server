@@ -1,3 +1,4 @@
+require('dotenv').config();
 import dynamodb from "../utils/dynamodb";
 import { getProtocol } from "./utils";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
@@ -10,7 +11,6 @@ import {
 } from "../storeTvlUtils/coingeckoLocks";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
-require('dotenv').config();
 
 const secondsInDay = 24 * 3600;
 async function getBlocksRetry(timestamp: number) {
@@ -76,7 +76,7 @@ async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
 
 const batchSize = 5;
 const main = async () => {
-  const protocol = getProtocol("spookyswap");
+  const protocol = getProtocol("quickswap");
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );

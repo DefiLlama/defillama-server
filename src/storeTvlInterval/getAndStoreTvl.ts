@@ -42,7 +42,7 @@ export async function storeTvl(
           const container =
             chain === "tvl" || chain === "fetch" ? module : value;
           const storedKey = chain === "fetch" ? "tvl" : chain;
-          if(typeof container !== 'object' || container === null){
+          if (typeof container !== 'object' || container === null) {
             return
           }
           if (container.tvl) {
@@ -88,38 +88,46 @@ export async function storeTvl(
         continue;
       }
     }
-    if(breakIfTvlIsZero && usdTvls.tvl === 0){
+    if (breakIfTvlIsZero && usdTvls.tvl === 0) {
       return 0;
     }
 
-    const storeTokensAction = storeNewTokensValueLocked(
-      protocol,
-      unixTimestamp,
-      tokensBalances,
-      hourlyTokensTvl,
-      dailyTokensTvl,
-      storePreviousData
-    );
-    const storeUsdTokensAction = storeNewTokensValueLocked(
-      protocol,
-      unixTimestamp,
-      usdTokenBalances,
-      hourlyUsdTokensTvl,
-      dailyUsdTokensTvl,
-      storePreviousData
-    );
-    const storeTvlAction = storeNewTvl(
-      protocol,
-      unixTimestamp,
-      usdTvls,
-      storePreviousData
-    );
+    try {
+      const storeTokensAction = storeNewTokensValueLocked(
+        protocol,
+        unixTimestamp,
+        tokensBalances,
+        hourlyTokensTvl,
+        dailyTokensTvl,
+        storePreviousData
+      );
+      const storeUsdTokensAction = storeNewTokensValueLocked(
+        protocol,
+        unixTimestamp,
+        usdTokenBalances,
+        hourlyUsdTokensTvl,
+        dailyUsdTokensTvl,
+        storePreviousData
+      );
+      const storeTvlAction = storeNewTvl(
+        protocol,
+        unixTimestamp,
+        usdTvls,
+        storePreviousData
+      );
 
-    await Promise.all([
-      storeTokensAction,
-      storeUsdTokensAction,
-      storeTvlAction,
-    ]);
+      await Promise.all([
+        storeTokensAction,
+        storeUsdTokensAction,
+        storeTvlAction,
+      ]);
+    } catch (e) {
+      console.error(protocol.name, e);
+      const scope = new Sentry.Scope();
+      scope.setTag("protocol", protocol.name);
+      Sentry.AWSLambda.captureException(e, scope);
+      return;
+    }
 
     return usdTvls.tvl;
   }

@@ -10,7 +10,7 @@ import {
 
 const date = (timestamp: number) => '\t' + new Date(timestamp * 1000).toDateString()
 
-const projectsToRefill = ['MakerDAO']
+const projectsToRefill:string[] = ['MakerDAO']
 const notify = false;
 const deleteRepeated = false;
 
@@ -45,7 +45,7 @@ async function main() {
                         nextTimestamp = getClosestDayStartTimestamp(nextTimestamp + secondsInDay)
                         const { ethereumBlock, chainBlocks } = await getBlocksRetry(nextTimestamp);
                         const tvl = await storeTvl(
-                            timestamp,
+                            nextTimestamp,
                             ethereumBlock,
                             chainBlocks,
                             protocol,

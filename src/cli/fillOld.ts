@@ -1,10 +1,9 @@
 require('dotenv').config();
 import dynamodb from "../utils/dynamodb";
-import { getProtocol } from "./utils";
+import { getProtocol, getBlocksRetry } from "./utils";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import { getBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import {
   getCoingeckoLock,
   releaseCoingeckoLock,
@@ -13,14 +12,6 @@ import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 
 const secondsInDay = 24 * 3600;
-async function getBlocksRetry(timestamp: number) {
-  for (let i = 0; i < 5; i++) {
-    try {
-      return await getBlocks(timestamp);
-    } catch (e) { }
-  }
-  throw new Error(`rekt at ${timestamp}`);
-}
 
 async function getFirstDate(dailyTvls: any) {
   return getClosestDayStartTimestamp(
@@ -29,9 +20,21 @@ async function getFirstDate(dailyTvls: any) {
 }
 
 type DailyItems = (DocumentClient.ItemList | undefined)[]
+async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
+  for (const items of dailyItems) {
+    const itemsOnSameDay = items?.filter(item => getClosestDayStartTimestamp(item.SK) === timestamp) ?? []
+    for (const item of itemsOnSameDay) {
+      await dynamodb.delete({
+        Key: {
+          PK: item.PK,
+          SK: item.SK
+        }
+      })
+    }
+  }
+}
 
 async function getAndStore(timestamp: number, protocol: Protocol, dailyItems:DailyItems) {
-  await deleteItemsOnSameDay(dailyItems, timestamp)
   const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp);
   const tvl = await storeTvl(
     timestamp,
@@ -43,7 +46,8 @@ async function getAndStore(timestamp: number, protocol: Protocol, dailyItems:Dai
     getCoingeckoLock,
     false,
     false,
-    true
+    true,
+    ()=>deleteItemsOnSameDay(dailyItems, timestamp)
   );
   if (tvl === 0) {
     throw new Error(`Returned 0 TVL at timestamp ${timestamp} (eth block ${ethereumBlock})`)
@@ -60,23 +64,9 @@ function getDailyItems(pk: string) {
   }).then(res => res.Items);
 }
 
-async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
-  for (const items of dailyItems) {
-    const itemsOnSameDay = items?.filter(item => getClosestDayStartTimestamp(item.SK) === timestamp) ?? []
-    for (const item of itemsOnSameDay) {
-      await dynamodb.delete({
-        Key: {
-          PK: item.PK,
-          SK: item.SK
-        }
-      })
-    }
-  }
-}
-
-const batchSize = 5;
+const batchSize = 10;
 const main = async () => {
-  const protocol = getProtocol("quickswap");
+  const protocol = getProtocol("ruler");
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );

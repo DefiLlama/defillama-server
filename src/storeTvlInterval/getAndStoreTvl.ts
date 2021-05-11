@@ -25,6 +25,7 @@ export async function storeTvl(
   storePreviousData: boolean = true,
   useCurrentPrices: boolean = true,
   breakIfTvlIsZero: boolean = false,
+  runBeforeStore?: ()=>Promise<void>
 ) {
   for (let i = 0; i < maxRetries; i++) {
     let usdTvls: tvlsObject<number> = {};
@@ -92,6 +93,9 @@ export async function storeTvl(
       return 0;
     }
 
+    if(runBeforeStore !== undefined){
+      await runBeforeStore()
+    }
     try {
       const storeTokensAction = storeNewTokensValueLocked(
         protocol,

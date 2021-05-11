@@ -1536,7 +1536,7 @@ export default [
     cmcId: null,
     category: "Minting",
     chains: ["Ethereum"],
-    module: "defidollar.js",
+    module: "defidollar/index.js",
   },
   {
     id: "196",
@@ -3516,5 +3516,23 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "ruler/index.js",
+  },
+  {
+    id: "309",
+    name: "Wheat Protocol",
+    address: "bsc:0x3ab63309F85df5D4c3351ff8EACb87980E05Da4E",
+    symbol: "WHEAT",
+    url: "https://wheat.growthdefi.com/",
+    description:
+      "Growth DeFi is a decentralized ecosystem that focuses on capital efficiency and maximizing returns through a variety of products. The goal is to maximize token holder value and maintain the best yields & products in the market. The ecosystem is composed of three tokens: WHEAT: Inflationary to begin, becomes deflationary over time - makes high yield farming on BSC sustainable. gROOT: Deflationary, limited supply - managed, diversified treasury investing with revenue share. GRO: Deflationary, governance with staking rewards earns revenue from everything built",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/wheat-logo-desktop-dark.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "wheat-token",
+    cmcId: "9229",
+    category: "Yield",
+    chains: ["Binance"],
+    module: "wheat.js",
   },
 ] as Protocol[];

@@ -13,10 +13,10 @@ export function getTimestampAtStartOfDay(timestamp: number) {
   return Math.floor(dt.getTime() / 1000);
 }
 
-export function getDay(timestamp: number | undefined): number {
+export function getDay(timestamp: number | undefined): string {
   if (timestamp == undefined) {
-    return -1;
+    return 'none';
   }
   var dt = new Date(timestamp * 1000);
-  return dt.getDay();
+  return dt.toDateString()
 }

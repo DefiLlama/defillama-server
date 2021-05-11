@@ -10,7 +10,7 @@ import {
 
 const date = (timestamp: number) => '\t' + new Date(timestamp * 1000).toDateString()
 
-const projectsToRefill:string[] = ['MakerDAO']
+const projectsToRefill:string[] = ['MakerDAO', 'Ruler']
 const notify = false;
 const deleteRepeated = false;
 
@@ -28,7 +28,7 @@ async function main() {
             },
             KeyConditionExpression: "PK = :pk",
         });
-        if (historicalTvl.Items !== undefined) {
+        if (historicalTvl.Items !== undefined && historicalTvl.Items.length > 0) {
             const items = historicalTvl.Items
             let lastItemDate = getClosestDayStartTimestamp(items.shift()!.SK);
             for (const item of items) {

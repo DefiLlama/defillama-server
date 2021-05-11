@@ -2346,7 +2346,7 @@ export default [
     audit_note: null,
     gecko_id: "energi",
     cmcId: "3218",
-    category: "Others",
+    category: "Dexes",
     chains: ["Energi"],
     module: "energiswap.js",
   },

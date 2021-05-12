@@ -17,8 +17,9 @@ jobs:
     - run: git submodule update --init --recursive
     - run: npm run build
       env:
-        ALCHEMY_API: ${{ secrets.ALCHEMY_API }}
+        ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
         POLYGON_RPC: ${{ secrets.POLYGON_RPC }}
+        BSC_RPC: ${{ secrets.BSC_RPC }}
   deploy:
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
@@ -34,7 +35,8 @@ jobs:
     - name: Deploy infrastructure stack
       run: npm run deploy:prod
       env:
-        ALCHEMY_API: ${{ secrets.ALCHEMY_API }}
+        ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
         POLYGON_RPC: ${{ secrets.POLYGON_RPC }}
+        BSC_RPC: ${{ secrets.BSC_RPC }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -1,5 +1,6 @@
 require('dotenv').config()
 module.exports = {
-    ALCHEMY_API: process.env.ALCHEMY_API,
+    ETHEREUM_RPC: process.env.ETHEREUM_RPC,
+    BSC_RPC: process.env.BSC_RPC,
     POLYGON_RPC: process.env.POLYGON_RPC
 }

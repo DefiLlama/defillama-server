@@ -48,7 +48,8 @@ provider:
         - 'lambda:InvokeFunction'
       Resource: '*'
   environment:
-    ALCHEMY_API: ${file(./env.js):ALCHEMY_API}
+    ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
+    BSC_RPC: ${file(./env.js):BSC_RPC}
     POLYGON_RPC: ${file(./env.js):POLYGON_RPC}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}

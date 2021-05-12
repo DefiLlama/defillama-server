@@ -52,7 +52,7 @@ async function getAndStore(timestamp: number, protocol: Protocol, dailyItems:Dai
   if (tvl === 0) {
     throw new Error(`Returned 0 TVL at timestamp ${timestamp} (eth block ${ethereumBlock})`)
   }
-  console.log(timestamp, ethereumBlock);
+  console.log(timestamp, new Date(timestamp*1000).toDateString(), tvl);
 }
 
 function getDailyItems(pk: string) {
@@ -64,9 +64,9 @@ function getDailyItems(pk: string) {
   }).then(res => res.Items);
 }
 
-const batchSize = 10;
+const batchSize = 2;
 const main = async () => {
-  const protocol = getProtocol("ruler");
+  const protocol = getProtocol("MakerDao");
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );

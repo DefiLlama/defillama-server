@@ -12,7 +12,7 @@ export function getProtocol(name: string) {
 }
 
 export async function getBlocksRetry(timestamp: number) {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     try {
       return await getBlocks(timestamp);
     } catch (e) { }

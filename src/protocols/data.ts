@@ -42,7 +42,7 @@ export default [
     cmcId: "7083",
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "uniswap.js",
+    module: "uniswap/index.js",
   },
   {
     id: "2",
@@ -149,7 +149,7 @@ export default [
     cmcId: "5692",
     category: "Lending",
     chains: ["Ethereum"],
-    module: "compound.js",
+    module: "compound/index.js",
   },
   {
     id: "115",
@@ -1108,7 +1108,7 @@ export default [
     cmcId: null,
     category: "Options",
     chains: ["Ethereum", "Binance"],
-    module: "finnexus.js",
+    module: "finnexus/index.js",
   },
   {
     id: "171",

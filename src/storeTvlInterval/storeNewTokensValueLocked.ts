@@ -55,7 +55,7 @@ export default async (
       : {}),
   });
 
-  if (getDay((await lastHourlyRecord)?.SK) !== getDay(unixTimestamp)) {
+  if (getDay((await lastDailyTVLRecord)?.SK) !== getDay(unixTimestamp)) {
     // First write of the day
     await dynamodb.put({
       PK: dailyTvl(protocol.id),

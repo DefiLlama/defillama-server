@@ -3445,7 +3445,6 @@ export default [
     chains: ["NEO"],
     module: "flamingo.js",
   },
-  /*
   {
     id: "305",
     name: "Uniswap v3",
@@ -3464,7 +3463,6 @@ export default [
     chains: ["Ethereum"],
     module: "uniswapv3/index.js",
   },
-  */
   {
     id: "306",
     name: "Quickswap",

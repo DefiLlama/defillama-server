@@ -1324,7 +1324,7 @@ export default [
     cmcId: "8000",
     category: "Staking",
     chains: ["Ethereum", "Terra"],
-    module: "lido.js",
+    module: "lido/index.js",
   },
   {
     id: "183",

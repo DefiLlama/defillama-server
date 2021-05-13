@@ -3571,4 +3571,22 @@ export default [
     chains: ["Fantom"],
     module: "spiritswap/index.js",
   },
+  {
+    id: "312",
+    name: "Stacker Ventures",
+    address: "0xe0955f26515d22e347b17669993fcefcc73c3a0a",
+    symbol: "STACK",
+    url: "https://stacker.vc/",
+    description:
+      "Stacker Ventures is a community-run protocol for initiating and managing pooled capital on the blockchain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/stacker.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "stacker-ventures",
+    cmcId: "8629",
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "stacker/index.js",
+  },
 ] as Protocol[];

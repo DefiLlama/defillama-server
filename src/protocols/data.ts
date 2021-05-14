@@ -1522,14 +1522,14 @@ export default [
   },
   {
     id: "195",
-    name: "DefiDollar",
+    name: "DefiDollar DAO",
     address: "0x20c36f062a31865bed8a5b1e512d9a1a20aa333a",
     symbol: "DFD",
     url: "https://dusd.finance/",
     description:
-      "DefiDollar ($DUSD) aspires to be a risk-insured stablecoin layer for DeFi.",
+      "DefiDollar is a Multichain DeFi Protocol Lab",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/sm66LRyq_400x400.jpg`,
+    logo: `${baseIconsUrl}/defidollar.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: "defidollar-dao",

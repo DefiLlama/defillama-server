@@ -12,7 +12,7 @@ const handler = async (
   };
   await Promise.all(
     protocols.map(async (protocol) => {
-      if (protocol.name === "Stacks") {
+      if (protocol.name === "Stacks" || protocol.name === "Uniswap v3") {
         return;
       }
       if (chain !== undefined && protocol.chain.toLowerCase() !== chain) {

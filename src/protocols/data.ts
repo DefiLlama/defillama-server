@@ -1107,7 +1107,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Options",
-    chains: ["Ethereum", "Binance"],
+    chains: ["Ethereum", "Binance", "Wanchain"],
     module: "finnexus/index.js",
   },
   {
@@ -2667,7 +2667,7 @@ export default [
     gecko_id: "mirror-protocol",
     cmcId: "7857",
     category: "Assets",
-    chains: ["Terra"],
+    chains: ["Terra", "Ethereum"],
     module: "mirror/index.js",
   },
   {

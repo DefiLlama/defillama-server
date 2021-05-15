@@ -3317,7 +3317,7 @@ export default [
     gecko_id: "deus-finance",
     cmcId: "7125",
     category: "Synthetics",
-    chains: ["Ethereum", "xDai"],
+    chains: ["Ethereum"],
     module: "deus.js",
   },
   {

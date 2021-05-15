@@ -1055,7 +1055,7 @@ export default [
     cmcId: null,
     category: "Indexes",
     chains: ["Ethereum"],
-    module: "piedao.js",
+    module: "piedao/index.js",
   },
   {
     id: "168",

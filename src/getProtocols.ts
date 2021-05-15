@@ -2,6 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils";
 import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
+import {normalizeChain} from './utils/normalizeChain'
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -27,7 +28,7 @@ const handler = async (
           [chain:string]:number
         }
         protocol.chains.forEach(chain=>{
-          const normalizedChain = chain.toLowerCase()
+          const normalizedChain = normalizeChain(chain)
           const chainTvl = lastHourlyRecord[normalizedChain]
           if(chainTvl !== undefined){
             chainTvls[normalizedChain] = chainTvl;

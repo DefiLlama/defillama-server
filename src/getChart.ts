@@ -2,6 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils";
 import protocols from "./protocols/data";
 import dynamodb from "./utils/dynamodb";
 import { getClosestDayStartTimestamp } from "./date/getClosestDayStartTimestamp";
+import {normalizeChain} from './utils/normalizeChain'
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -27,7 +28,7 @@ const handler = async (
       if (historicalTvl.Items !== undefined) {
         historicalTvl.Items.forEach((item) => {
           const timestamp = getClosestDayStartTimestamp(item.SK);
-          const itemTvl = chain === undefined? item.tvl : item[chain] ?? item.tvl;
+          const itemTvl = chain === undefined? item.tvl : item[normalizeChain(chain)] ?? item.tvl;
           sumDailyTvls[timestamp] = itemTvl + (sumDailyTvls[timestamp] ?? 0);
         });
       }

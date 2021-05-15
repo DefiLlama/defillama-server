@@ -1905,7 +1905,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Layer2",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Polygon", "xDai", "Binance"],
     module: "connext/index.js",
   },
   {

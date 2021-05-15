@@ -31,7 +31,7 @@ const handler = async (
           const normalizedChain = normalizeChain(chain)
           const chainTvl = lastHourlyRecord[normalizedChain]
           if(chainTvl !== undefined){
-            chainTvls[normalizedChain] = chainTvl;
+            chainTvls[chain] = chainTvl;
           }
         })
         return {

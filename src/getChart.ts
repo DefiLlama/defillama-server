@@ -16,7 +16,7 @@ const handler = async (
       if (protocol.name === "Stacks" || protocol.name === "Uniswap v3") {
         return;
       }
-      if (chain !== undefined && protocol.chain.toLowerCase() !== chain) {
+      if (chain !== undefined && !protocol.chains.map(protocolChain => protocolChain.toLowerCase()).includes(chain)) {
         return;
       }
       const historicalTvl = await dynamodb.query({

@@ -185,7 +185,7 @@ export default [
     cmcId: "5728",
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "balancer.js",
+    module: "balancer/index.js",
   },
   {
     id: "117",

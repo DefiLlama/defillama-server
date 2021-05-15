@@ -28,7 +28,7 @@ const handler = async (
   );
   if (protocolData === undefined) {
     return errorResponse({
-      message: "Protocol is not on our database",
+      message: "Protocol is not in our database",
     });
   }
   const lastHourlyRecord = getLastRecord(hourlyTvl(protocolData.id));

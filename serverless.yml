@@ -117,6 +117,12 @@ functions:
       - http:
           path: protocol/{protocol}
           method: get
+  protocolTvl:
+    handler: src/getProtocolTvl.default
+    events:
+      - http:
+          path: tvl/{protocol}
+          method: get
   corsPreflight:
     handler: src/corsPreflight.default
     warmup:

@@ -23,10 +23,21 @@ const handler = async (
         }
         const returnedProtocol: Partial<Protocol> = { ...protocol };
         delete returnedProtocol.module;
+        const chainTvls = {} as {
+          [chain:string]:number
+        }
+        protocol.chains.forEach(chain=>{
+          const normalizedChain = chain.toLowerCase()
+          const chainTvl = lastHourlyRecord[normalizedChain]
+          if(chainTvl !== undefined){
+            chainTvls[normalizedChain] = chainTvl;
+          }
+        })
         return {
           ...protocol,
           slug: sluggify(protocol),
           tvl: lastHourlyRecord.tvl,
+          chainTvls,
           change_1h: getPercentChange(
             lastHourlyRecord.tvlPrev1Hour,
             lastHourlyRecord.tvl

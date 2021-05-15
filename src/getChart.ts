@@ -27,7 +27,8 @@ const handler = async (
       if (historicalTvl.Items !== undefined) {
         historicalTvl.Items.forEach((item) => {
           const timestamp = getClosestDayStartTimestamp(item.SK);
-          sumDailyTvls[timestamp] = item.tvl + (sumDailyTvls[timestamp] ?? 0);
+          const itemTvl = chain === undefined? item.tvl : item[chain] ?? item.tvl;
+          sumDailyTvls[timestamp] = itemTvl + (sumDailyTvls[timestamp] ?? 0);
         });
       }
     })

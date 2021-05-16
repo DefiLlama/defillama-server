@@ -410,7 +410,7 @@ export default [
       "The first-ever USD stable blockchain and multi-chain staking token.\r\n",
     chain: "Ethereum",
     logo: null,
-    audits: null,
+    audits: "2",
     audit_note: null,
     gecko_id: "xdai-stake",
     cmcId: "5601",

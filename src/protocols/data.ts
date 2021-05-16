@@ -1742,7 +1742,7 @@ export default [
       "Advanced Crypto Strategies, Yield Optimizer and StableSwap on BSC.",
     chain: "Binance",
     logo: `${baseIconsUrl}/WFncAyhA_400x400.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "acryptos",
     cmcId: "7844",

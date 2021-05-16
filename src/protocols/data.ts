@@ -2911,7 +2911,7 @@ export default [
     description:
       "OliveCash is a cross chain Yield Farming project running on Binance Smart Chain Avalanche chain.",
     chain: "Multi-Chain",
-    logo: `${baseIconsUrl}/olive256.png`,
+    logo: `${baseIconsUrl}/olive.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

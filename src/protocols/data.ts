@@ -3697,4 +3697,22 @@ export default [
     chains: ["Polygon"],
     module: "dfyn/index.js",
   },
+  {
+    id: "319",
+    name: "Convex Finance",
+    address: "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+    symbol: "CVX",
+    url: "https://www.convexfinance.com/",
+    description:
+      "Convex simplifies your Curve-boosting experience to maximize your yields.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/convex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "convex-finance",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "convex/index.js",
+  },
 ] as Protocol[];

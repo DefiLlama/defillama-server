@@ -77,7 +77,7 @@ export default [
     gecko_id: "curve-dao-token",
     cmcId: "6538",
     category: "Dexes",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Polygon"],
     module: "curve.js",
   },
   {
@@ -95,7 +95,7 @@ export default [
     gecko_id: "aave",
     cmcId: "7278",
     category: "Lending",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Polygon"],
     module: "aave.js",
   },
   {
@@ -238,7 +238,7 @@ export default [
     gecko_id: "sushi",
     cmcId: "6758",
     category: "Dexes",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Polygon"],
     module: "sushiswap/index.js",
   },
   {
@@ -415,7 +415,7 @@ export default [
     gecko_id: "xdai-stake",
     cmcId: "5601",
     category: "Layer2",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Binance"],
     module: "xdai/index.js",
   },
   {

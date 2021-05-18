@@ -55,11 +55,11 @@ const handler = async (
     buildHeader(header, tokens as Tokens, false)
     const rows = [header]
     for (const usdTvl of usd!) {
-        const newRow = new Array(header.length).fill(0);
+        const newRow = new Array(header.length).fill('-');
         newRow[0] = usdTvl.SK;
         newRow[1] = usdTvl.tvl;
         addToRow(header, newRow, usdTvl.SK, usdTokens as Tokens, true)
-        addToRow(header, newRow, usdTvl.SK, tokens as Tokens, true)
+        addToRow(header, newRow, usdTvl.SK, tokens as Tokens, false)
         rows.push(newRow)
     }
 

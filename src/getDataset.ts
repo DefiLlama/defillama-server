@@ -36,6 +36,7 @@ function addToRow(header: string[], row: number[], timestamp: number, tokens: To
         })
     }
 }
+function pad(s:number) { return (s < 10) ? '0' + s : s; }
 
 const handler = async (
     event: AWSLambda.APIGatewayEvent
@@ -56,7 +57,9 @@ const handler = async (
     const rows = [header]
     for (const usdTvl of usd!) {
         const newRow = new Array(header.length).fill('-');
-        newRow[0] = usdTvl.SK;
+        const date = new Date(usdTvl.SK);
+        const formattedDate = `${pad(date.getDate())}/${pad(date.getMonth()+1)}/${date.getFullYear()}`
+        newRow[0] = formattedDate;
         newRow[1] = usdTvl.tvl;
         addToRow(header, newRow, usdTvl.SK, usdTokens as Tokens, true)
         addToRow(header, newRow, usdTvl.SK, tokens as Tokens, false)

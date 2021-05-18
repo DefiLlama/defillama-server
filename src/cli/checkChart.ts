@@ -7,12 +7,14 @@ import {
     getCoingeckoLock,
     releaseCoingeckoLock,
 } from "../storeTvlUtils/coingeckoLocks";
+import { dailyTvl } from '../utils/getLastRecord';
 
 const date = (timestamp: number) => '\t' + new Date(timestamp * 1000).toDateString()
 
-const projectsToRefill:string[] = ['MakerDAO', 'Ruler']
+const projectsToRefill: string[] = []
 const notify = false;
 const deleteRepeated = false;
+const extrapolate = false;
 
 const secondsInDay = 86400;
 async function main() {
@@ -30,8 +32,9 @@ async function main() {
         });
         if (historicalTvl.Items !== undefined && historicalTvl.Items.length > 0) {
             const items = historicalTvl.Items
-            let lastItemDate = getClosestDayStartTimestamp(items.shift()!.SK);
-            for (const item of items) {
+            let lastItemDate = getClosestDayStartTimestamp(items[0].SK);
+            for (let i = 1; i < items.length; i++) {
+                const item = items[i];
                 const timestamp = getClosestDayStartTimestamp(item.SK);
                 const diff = timestamp - lastItemDate
                 const under = diff < secondsInDay * 0.5
@@ -43,19 +46,30 @@ async function main() {
                     let nextTimestamp = lastItemDate;
                     do {
                         nextTimestamp = getClosestDayStartTimestamp(nextTimestamp + secondsInDay)
-                        const { ethereumBlock, chainBlocks } = await getBlocksRetry(nextTimestamp);
-                        const tvl = await storeTvl(
-                            nextTimestamp,
-                            ethereumBlock,
-                            chainBlocks,
-                            protocol,
-                            {},
-                            4,
-                            getCoingeckoLock,
-                            false,
-                            false,
-                            true,
-                        );
+                        let tvl;
+                        if (extrapolate) {
+                            const totalTimeDiff = item.SK - items[i-1].SK
+                            tvl = (item.tvl*(nextTimestamp - items[i-1].SK)+items[i-1].tvl*(item.SK - nextTimestamp))/totalTimeDiff
+                            await dynamodb.put({
+                                PK: dailyTvl(protocol.id),
+                                SK: nextTimestamp,
+                                tvl
+                            })
+                        } else {
+                            const { ethereumBlock, chainBlocks } = await getBlocksRetry(nextTimestamp);
+                            tvl = await storeTvl(
+                                nextTimestamp,
+                                ethereumBlock,
+                                chainBlocks,
+                                protocol,
+                                {},
+                                4,
+                                getCoingeckoLock,
+                                false,
+                                false,
+                                true,
+                            );
+                        }
                         console.log(protocol.name, date(nextTimestamp), tvl)
                     } while (nextTimestamp < timestamp)
                 }

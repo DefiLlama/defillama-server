@@ -9,7 +9,7 @@ const client = new AWS.DynamoDB.DocumentClient({
 });
 const TableName = process.env.tableName ?? "test-table";
 
-export default {
+const dynamodb = {
   get: (params: Omit<AWS.DynamoDB.DocumentClient.GetItemInput, "TableName">) =>
     client.get({ TableName, ...params }).promise(),
   put: (
@@ -34,3 +34,13 @@ export default {
       .promise(),
   scan: () => client.scan({ TableName }).promise(),
 };
+export default dynamodb;
+
+export function getHistoricalValues(pk:string){
+  return dynamodb.query({
+    ExpressionAttributeValues: {
+      ":pk": pk,
+    },
+    KeyConditionExpression: "PK = :pk",
+  }).then(result=>result.Items);
+}

@@ -123,6 +123,12 @@ functions:
       - http:
           path: tvl/{protocol}
           method: get
+  dataset:
+    handler: src/getDataset.default
+    events:
+      - http:
+          path: dataset/{protocol}
+          method: get
   corsPreflight:
     handler: src/corsPreflight.default
     warmup:

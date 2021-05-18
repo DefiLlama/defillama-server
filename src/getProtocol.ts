@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils";
-import dynamodb from "./utils/dynamodb";
+import {getHistoricalValues} from "./utils/dynamodb";
 import protocols from "./protocols/data";
 import {
   getLastRecord,
@@ -9,15 +9,6 @@ import {
   dailyTokensTvl,
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-
-function getHistoricalValues(pk:string){
-  return dynamodb.query({
-    ExpressionAttributeValues: {
-      ":pk": pk,
-    },
-    KeyConditionExpression: "PK = :pk",
-  });
-}
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -36,15 +27,15 @@ const handler = async (
   const historicalUsdTokenTvl = getHistoricalValues(dailyUsdTokensTvl(protocolData.id))
   const historicalTokenTvl = getHistoricalValues(dailyTokensTvl(protocolData.id))
   const response = protocolData as any;
-  response.tvl = (await historicalUsdTvl).Items?.map((item) => ({
+  response.tvl = (await historicalUsdTvl)?.map((item) => ({
     date: item.SK,
     totalLiquidityUSD: item.tvl,
   }));
-  response.tokensInUsd = (await historicalUsdTokenTvl).Items?.map((item) => ({
+  response.tokensInUsd = (await historicalUsdTokenTvl)?.map((item) => ({
     date: item.SK,
     tokens: item.tvl,
   }));
-  response.tokens = (await historicalTokenTvl).Items?.map((item) => ({
+  response.tokens = (await historicalTokenTvl)?.map((item) => ({
     date: item.SK,
     tokens: item.tvl,
   }));

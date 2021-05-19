@@ -41,7 +41,8 @@ function pad(s:number) { return (s < 10) ? '0' + s : s; }
 const handler = async (
     event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-    const protocolName = event.pathParameters?.protocol?.toLowerCase();
+    let protocolName = event.pathParameters?.protocol?.toLowerCase();
+    protocolName = protocolName?.substring(0, protocolName.length - '.csv'.length);
     const protocolData = protocols.find(
         (prot) => sluggify(prot) === protocolName
     );

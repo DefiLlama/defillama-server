@@ -127,7 +127,7 @@ functions:
     handler: src/getDataset.default
     events:
       - http:
-          path: dataset/{protocol}.csv
+          path: dataset/{protocol}
           method: get
   corsPreflight:
     handler: src/corsPreflight.default

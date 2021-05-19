@@ -46,11 +46,11 @@ const handler = async (
       tokens: item[normalizedChain],
     })).filter(item => item.tokens !== undefined);
     if (container.tvl !== undefined && container.tvl.length > 0) {
-      const lastItem = (await lastHourlyRecord)?.[normalizedChain];
-      if (lastItem !== undefined) {
+      const lastItem = (await lastHourlyRecord);
+      if (lastItem?.[normalizedChain] !== undefined) {
         container.tvl[container.tvl.length - 1] = {
           date: lastItem.SK,
-          totalLiquidityUSD: lastItem,
+          totalLiquidityUSD: lastItem[normalizedChain],
         };
       }
       if(chain ==='tvl'){

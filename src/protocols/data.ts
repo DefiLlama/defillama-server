@@ -1789,8 +1789,8 @@ export default [
   {
     id: "211",
     name: "Smoothy",
-    address: "-",
-    symbol: "-",
+    address: "0xbf776e4fca664d791c4ee3a71e2722990e003283",
+    symbol: "SMTY",
     url: "https://smoothy.finance/",
     description:
       "Smoothy is a novel single pool liquidity protocol specialized in same backed assets with low-cost zero-slippage swapping and maximized interest earning.",
@@ -2088,8 +2088,8 @@ export default [
   {
     id: "228",
     name: "FutureSwap",
-    address: "-",
-    symbol: "-",
+    address: "0x0e192d382a36de7011f795acc4391cd302003606",
+    symbol: "FST",
     url: "https://www.futureswap.com/",
     description:
       "Futureswap is a decentralized perpetuals exchange governed by the community.",
@@ -2441,8 +2441,8 @@ export default [
   {
     id: "248",
     name: "ForceDAO",
-    address: "-",
-    symbol: "-",
+    address: "0x2c31b10ca416b82cec4c5e93c615ca851213d48d",
+    symbol: "FORCE",
     url: "https://forcedao.com/",
     description: "Your portal for cross-chain yield ",
     chain: "Ethereum",

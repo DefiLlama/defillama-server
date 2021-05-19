@@ -1514,7 +1514,7 @@ export default [
     logo: `${baseIconsUrl}/c6z3sWsY_400x400.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "pancakeswap",
+    gecko_id: "pancakeswap-token",
     cmcId: "1165",
     category: "Dexes",
     chains: ["Binance"],

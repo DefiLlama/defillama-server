@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils";
-import {getHistoricalValues} from "./utils/dynamodb";
+import { getHistoricalValues } from "./utils/dynamodb";
 import protocols from "./protocols/data";
 import {
   getLastRecord,
@@ -9,6 +9,7 @@ import {
   dailyTokensTvl,
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
+import { normalizeChain } from './utils/normalizeChain'
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -26,26 +27,42 @@ const handler = async (
   const historicalUsdTvl = getHistoricalValues(dailyTvl(protocolData.id))
   const historicalUsdTokenTvl = getHistoricalValues(dailyUsdTokensTvl(protocolData.id))
   const historicalTokenTvl = getHistoricalValues(dailyTokensTvl(protocolData.id))
-  const response = protocolData as any;
-  response.tvl = (await historicalUsdTvl)?.map((item) => ({
-    date: item.SK,
-    totalLiquidityUSD: item.tvl,
-  }));
-  response.tokensInUsd = (await historicalUsdTokenTvl)?.map((item) => ({
-    date: item.SK,
-    tokens: item.tvl,
-  }));
-  response.tokens = (await historicalTokenTvl)?.map((item) => ({
-    date: item.SK,
-    tokens: item.tvl,
-  }));
-  const lastItem = await lastHourlyRecord;
-  if (lastItem !== undefined) {
-    response.tvl[response.tvl.length - 1] = {
-      date: lastItem.SK,
-      totalLiquidityUSD: lastItem.tvl,
-    };
-  }
+  let response = protocolData as any;
+  response.chainTvls = {}
+  await Promise.all(protocolData.chains.concat(['tvl']).map(async chain => {
+    const normalizedChain = normalizeChain(chain)
+    const container = {} as any
+
+    container.tvl = (await historicalUsdTvl)?.map((item) => ({
+      date: item.SK,
+      totalLiquidityUSD: item[normalizedChain],
+    })).filter(item => item.totalLiquidityUSD !== undefined);
+    container.tokensInUsd = (await historicalUsdTokenTvl)?.map((item) => ({
+      date: item.SK,
+      tokens: item[normalizedChain],
+    })).filter(item => item.tokens !== undefined);
+    container.tokens = (await historicalTokenTvl)?.map((item) => ({
+      date: item.SK,
+      tokens: item[normalizedChain],
+    })).filter(item => item.tokens !== undefined);
+    if (container.tvl !== undefined && container.tvl.length > 0) {
+      const lastItem = (await lastHourlyRecord)?.[normalizedChain];
+      if (lastItem !== undefined) {
+        container.tvl[container.tvl.length - 1] = {
+          date: lastItem.SK,
+          totalLiquidityUSD: lastItem,
+        };
+      }
+      if(chain ==='tvl'){
+        response={
+          ...response,
+          ...container
+        };
+      } else {
+        response.chainTvls[chain] = container;
+      }
+    }
+  }))
 
   return successResponse(response, 10 * 60); // 10 mins cache
 };

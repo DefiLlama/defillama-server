@@ -547,7 +547,7 @@ export default [
   {
     id: "137",
     name: "Thorchain",
-    address: null,
+    address: "0x3155ba85d5f96b2d030a4966af206230e46849cb",
     symbol: "RUNE",
     url: "https://thorchain.org/",
     description:

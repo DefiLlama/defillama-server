@@ -144,6 +144,13 @@ functions:
     handler: src/triggerStoreTvls.default
     events:
       - schedule: rate(1 hour)
+  fetchCoingeckoData:
+    handler: src/fetchCoingeckoData.default
+    timeout: 900
+  triggerFetchCoingeckoData:
+    handler: src/triggerFetchCoingeckoData.default
+    events:
+      - schedule: rate(1 hour)
 
 resources:
   # CORS for api gateway errors

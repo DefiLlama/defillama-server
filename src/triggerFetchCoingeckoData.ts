@@ -2,7 +2,7 @@ import { wrapScheduledLambda } from "./utils/wrap";
 import fetch from 'node-fetch'
 import aws from 'aws-sdk';
 
-const step = 1000;
+const step = 500;
 const handler = async () => {
   const coins = await fetch('https://api.coingecko.com/api/v3/coins/list').then(r=>r.json())
   const lambda = new aws.Lambda();

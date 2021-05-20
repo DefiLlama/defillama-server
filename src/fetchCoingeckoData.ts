@@ -62,7 +62,7 @@ async function getAndStoreCoin(coin: Coin) {
             PK,
             timestamp,
             price,
-            symbol: (coinData.symbol as string).toUpperCase(),
+            symbol: coinData.symbol ?? coin.symbol,
             decimals: Number(tokenDecimals.output)
           }
           await dynamodb.put({

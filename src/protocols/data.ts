@@ -43,6 +43,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "uniswap/index.js",
+    twitter: "Uniswap",
   },
   {
     id: "2",
@@ -61,6 +62,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "wbtc.js",
+    twitter: "WrappedBTC",
   },
   {
     id: "3",
@@ -79,6 +81,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum", "Polygon"],
     module: "curve.js",
+    twitter: "CurveFinance",
   },
   {
     id: "111",
@@ -97,6 +100,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum", "Polygon"],
     module: "aave.js",
+    twitter: "AaveAave",
   },
   {
     id: "112",
@@ -114,6 +118,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "harvest.js",
+    twitter: "harvest_finance",
   },
   {
     id: "113",
@@ -132,6 +137,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "yearn/index.js", // TODO: Fix latest
+    twitter: "iearnfinance",
   },
   {
     id: "114",
@@ -150,6 +156,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "compound/index.js",
+    twitter: "compoundfinance",
   },
   {
     id: "115",
@@ -168,6 +175,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "synthetix/index.js",
+    twitter: "synthetix_io",
   },
   {
     id: "116",
@@ -186,6 +194,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "balancer/index.js",
+    twitter: "BalancerLabs",
   },
   {
     id: "117",
@@ -204,6 +213,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum", "Binance"],
     module: "ren/index.js",
+    twitter: "renprotocol",
   },
   {
     id: "118",
@@ -222,6 +232,7 @@ export default [
     category: "Minting",
     chains: ["Ethereum"],
     module: "maker/index.js",
+    twitter: "MakerDAO",
   },
   {
     id: "119",
@@ -240,6 +251,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum", "Polygon"],
     module: "sushiswap/index.js",
+    twitter: "SushiSwap",
   },
   {
     id: "120",
@@ -258,6 +270,7 @@ export default [
     category: "Services",
     chains: ["Ethereum"],
     module: "instadapp.js",
+    twitter: "Instadapp",
   },
   {
     id: "121",
@@ -275,6 +288,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "cream.js",
+    twitter: "CreamdotFinance",
   },
   {
     id: "122",
@@ -293,6 +307,7 @@ export default [
     category: "Insurance",
     chains: ["Ethereum"],
     module: "nexus/index.js",
+    twitter: "NexusMutual",
   },
   {
     id: "123",
@@ -311,6 +326,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum", "Binance"],
     module: "dforce/index.js",
+    twitter: "dForcenet",
   },
   {
     id: "124",
@@ -328,6 +344,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "keep.js",
+    twitter: null,
   },
   {
     id: "125",
@@ -346,6 +363,7 @@ export default [
     category: "Minting",
     chains: ["Ethereum"],
     module: "mstable/index.js",
+    twitter: "mstable_",
   },
   {
     id: "126",
@@ -363,6 +381,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "loopring/index.js",
+    twitter: "loopringorg",
   },
   {
     id: "127",
@@ -381,6 +400,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "kyber/index.js",
+    twitter: "KyberNetwork",
   },
   {
     id: "128",
@@ -399,6 +419,7 @@ export default [
     category: "Options",
     chains: ["Ethereum"],
     module: "hegic.js",
+    twitter: "HegicOptions",
   },
   {
     id: "129",
@@ -417,6 +438,7 @@ export default [
     category: "Layer2",
     chains: ["Ethereum", "Binance"],
     module: "xdai/index.js",
+    twitter: "xdaichain",
   },
   {
     id: "130",
@@ -435,6 +457,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "imbtc.js",
+    twitter: "imTokenOfficial",
   },
   {
     id: "131",
@@ -453,6 +476,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "barnbridge/index.js",
+    twitter: "Barn_Bridge",
   },
   {
     id: "132",
@@ -471,6 +495,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "hbtc.js",
+    twitter: "HBTC_official",
   },
   {
     id: "133",
@@ -489,6 +514,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "shell.js",
+    twitter: "ShellProtocol",
   },
   {
     id: "134",
@@ -507,6 +533,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "pickle.js",
+    twitter: "picklefinance",
   },
   {
     id: "135",
@@ -525,6 +552,7 @@ export default [
     category: "Lending",
     chains: ["Kava"],
     module: "kava.js",
+    twitter: "kava_labs",
   },
   {
     id: "136",
@@ -543,6 +571,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "rari.js",
+    twitter: "RariCapital",
   },
   {
     id: "137",
@@ -561,6 +590,7 @@ export default [
     category: "Dexes",
     chains: ["Binance"],
     module: "thorchain.js",
+    twitter: "THORChain",
   },
   {
     id: "138",
@@ -579,6 +609,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "hakka.js",
+    twitter: "hakkafinance",
   },
   {
     id: "139",
@@ -597,6 +628,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "snowswap/index.js",
+    twitter: "snow_swap",
   },
   {
     id: "140",
@@ -615,6 +647,7 @@ export default [
     category: null,
     chains: ["Kava"],
     module: "hard.js",
+    twitter: "hard_protocol",
   },
   {
     id: "141",
@@ -632,6 +665,7 @@ export default [
     category: "Minting",
     chains: ["Ethereum"],
     module: "uma/index.js",
+    twitter: "UMAprotocol",
   },
   {
     id: "142",
@@ -650,6 +684,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "swerve.js",
+    twitter: "SwerveFinance",
   },
   {
     id: "143",
@@ -667,6 +702,7 @@ export default [
     category: null,
     chains: ["Ethereum"],
     module: "flexa.js",
+    twitter: "amptoken",
   },
   {
     id: "144",
@@ -685,6 +721,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "dydx/index.js",
+    twitter: "dydxprotocol",
   },
   {
     id: "145",
@@ -703,6 +740,7 @@ export default [
     category: "Dexes",
     chains: ["Solana"],
     module: "serum.js",
+    twitter: "ProjectSerum",
   },
   {
     id: "146",
@@ -720,6 +758,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "dodo/index.js",
+    twitter: "BreederDodo",
   },
   {
     id: "148",
@@ -737,6 +776,7 @@ export default [
     category: "Services",
     chains: ["Ethereum"],
     module: "tornado-cash.js",
+    twitter: "TornadoCash",
   },
   {
     id: "149",
@@ -755,6 +795,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "bprotocol/index.js",
+    twitter: "bprotocoleth",
   },
   {
     id: "150",
@@ -773,6 +814,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "idle.js",
+    twitter: "idlefinance",
   },
   {
     id: "151",
@@ -791,6 +833,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "deversifi.js",
+    twitter: "deversifi",
   },
   {
     id: "152",
@@ -809,6 +852,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "augur/index.js",
+    twitter: "AugurProject",
   },
   {
     id: "153",
@@ -826,6 +870,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "cofix.js",
+    twitter: "CoFiXProtocol",
   },
   {
     id: "155",
@@ -843,6 +888,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "keeper-dao.js",
+    twitter: "Keeper_DAO",
   },
   {
     id: "156",
@@ -860,6 +906,7 @@ export default [
     category: "Staking",
     chains: ["Ethereum"],
     module: "zlot.js",
+    twitter: "zLOTFinance",
   },
   {
     id: "157",
@@ -877,6 +924,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "88mph/index.js",
+    twitter: "88mphapp",
   },
   {
     id: "158",
@@ -895,6 +943,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "dracula.js",
+    twitter: "DraculaProtocol",
   },
   {
     id: "159",
@@ -913,6 +962,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "growth-defi.js",
+    twitter: "GrowthDefi",
   },
   {
     id: "160",
@@ -931,6 +981,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum", "Binance"],
     module: "alpha-homora/index.js",
+    twitter: "AlphaFinanceLab",
   },
   {
     id: "161",
@@ -949,6 +1000,7 @@ export default [
     category: "Minting",
     chains: ["Ethereum"],
     module: "boringdao.js",
+    twitter: "TheBoringDAO",
   },
   {
     id: "162",
@@ -967,6 +1019,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "bancor/index.js",
+    twitter: "Bancor",
   },
   {
     id: "163",
@@ -985,6 +1038,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "fortube/index.js",
+    twitter: "ForTubeFi",
   },
   {
     id: "164",
@@ -1003,6 +1057,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum", "Binance"],
     module: "valuedefi.js",
+    twitter: "value_defi",
   },
   {
     id: "165",
@@ -1020,6 +1075,7 @@ export default [
     category: "Insurance",
     chains: ["Ethereum"],
     module: "cover.js",
+    twitter: "CoverProtocol",
   },
   {
     id: "166",
@@ -1038,6 +1094,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "truefi/index.js",
+    twitter: "TrustToken",
   },
   {
     id: "167",
@@ -1056,6 +1113,7 @@ export default [
     category: "Indexes",
     chains: ["Ethereum"],
     module: "piedao/index.js",
+    twitter: "PieDAO_Defi",
   },
   {
     id: "168",
@@ -1073,6 +1131,7 @@ export default [
     category: null,
     chains: ["Ethereum"],
     module: "dev.js",
+    twitter: "devprtcl",
   },
   {
     id: "169",
@@ -1091,6 +1150,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "basis-cash.js",
+    twitter: "BasisCash",
   },
   {
     id: "170",
@@ -1109,6 +1169,7 @@ export default [
     category: "Options",
     chains: ["Ethereum", "Binance", "Wanchain"],
     module: "finnexus/index.js",
+    twitter: "fin_nexus",
   },
   {
     id: "171",
@@ -1126,6 +1187,7 @@ export default [
     category: null,
     chains: ["Ethereum"],
     module: "synlev.js",
+    twitter: null,
   },
   {
     id: "172",
@@ -1144,6 +1206,7 @@ export default [
     category: "Indexes",
     chains: ["Ethereum"],
     module: "indexcoop/index.js",
+    twitter: "indexcoop",
   },
   {
     id: "173",
@@ -1162,6 +1225,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "badgerdao.js",
+    twitter: "BadgerDAO",
   },
   {
     id: "174",
@@ -1180,6 +1244,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "bt-finance.js",
+    twitter: "btdotfinance",
   },
   {
     id: "175",
@@ -1197,6 +1262,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "n3rd.js",
+    twitter: "nerdfinance1",
   },
   {
     id: "176",
@@ -1215,6 +1281,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "mushrooms.js",
+    twitter: "MushroomsFinan1",
   },
   {
     id: "177",
@@ -1233,6 +1300,7 @@ export default [
     category: "Services",
     chains: ["Ethereum"],
     module: "defisaver.js",
+    twitter: "DefiSaver",
   },
   {
     id: "178",
@@ -1251,6 +1319,7 @@ export default [
     category: "Chain",
     chains: ["DefiChain"],
     module: "defichain.js",
+    twitter: "defichain",
   },
   {
     id: "179",
@@ -1269,6 +1338,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "linkswap.js",
+    twitter: null,
   },
   /*
   {
@@ -1288,6 +1358,7 @@ export default [
     category: "Dexes",
     chains: ["Tradehub"],
     module: "demex.js",
+    twitter: "demexchange",
   },
   */
   {
@@ -1307,6 +1378,7 @@ export default [
     category: null,
     chains: ["Ethereum"],
     module: "mantradao.js",
+    twitter: "MANTRADAO",
   },
   {
     id: "182",
@@ -1325,6 +1397,7 @@ export default [
     category: "Staking",
     chains: ["Ethereum", "Terra"],
     module: "lido/index.js",
+    twitter: "LidoFinance",
   },
   {
     id: "183",
@@ -1342,6 +1415,7 @@ export default [
     category: "Lending",
     chains: ["Ontology"],
     module: "wing.js",
+    twitter: "Wing_Finance",
   },
   {
     id: "184",
@@ -1360,6 +1434,7 @@ export default [
     category: "Payments",
     chains: ["Ethereum"],
     module: "fuse.js",
+    twitter: "Fuse_network",
   },
   {
     id: "186",
@@ -1378,6 +1453,7 @@ export default [
     category: "Dexes",
     chains: ["Wanchain"],
     module: "wanswap.js",
+    twitter: "wanswap",
   },
   {
     id: "187",
@@ -1395,6 +1471,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "unagii.js",
+    twitter: "unagiidotcom",
   },
   {
     id: "188",
@@ -1413,6 +1490,7 @@ export default [
     category: "Indexes",
     chains: ["Ethereum"],
     module: "indexed/index.js",
+    twitter: "ndxfi",
   },
   {
     id: "189",
@@ -1431,6 +1509,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum", "Binance"],
     module: "1inch.js",
+    twitter: "1inchNetwork",
   },
   {
     id: "190",
@@ -1448,6 +1527,7 @@ export default [
     category: null,
     chains: ["Ethereum"],
     module: "dhedge.js",
+    twitter: "dHedgeOrg",
   },
   {
     id: "191",
@@ -1466,6 +1546,7 @@ export default [
     category: "Insurance",
     chains: ["Ethereum"],
     module: "opium.js",
+    twitter: "Opium_Network",
   },
   {
     id: "192",
@@ -1484,6 +1565,7 @@ export default [
     category: null,
     chains: ["Ethereum"],
     module: "gdao.js",
+    twitter: "Governor_DAO",
   },
   {
     id: "193",
@@ -1502,6 +1584,7 @@ export default [
     category: "Minting",
     chains: ["Ethereum", "Binance"],
     module: "unit.js",
+    twitter: "unitprotocol",
   },
   /*
   {
@@ -1520,6 +1603,7 @@ export default [
     category: "Dexes",
     chains: ["Binance"],
     module: "pancake-swap.js",
+    twitter: "PancakeSwap",
   },
   */
   {
@@ -1539,6 +1623,7 @@ export default [
     category: "Minting",
     chains: ["Ethereum"],
     module: "defidollar/index.js",
+    twitter: "defidollar",
   },
   {
     id: "196",
@@ -1557,6 +1642,7 @@ export default [
     category: "Chains",
     chains: ["Fantom"],
     module: "fantom.js",
+    twitter: "FantomFDN",
   },
   {
     id: "197",
@@ -1575,6 +1661,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "bzx.js",
+    twitter: "bZxHQ",
   },
   /*
   {
@@ -1593,6 +1680,7 @@ export default [
     category: "Chain",
     chains: ["Incognito Chain"],
     module: "incognito.js",
+    twitter: "IncognitoChain",
   },
   */
   {
@@ -1611,6 +1699,7 @@ export default [
     category: "Payments",
     chains: ["Ethereum"],
     module: "sablier.js",
+    twitter: "SablierHQ",
   },
   {
     id: "200",
@@ -1629,6 +1718,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "bella.js",
+    twitter: "BellaProtocool",
   },
   {
     id: "202",
@@ -1647,6 +1737,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "saddle/index.js",
+    twitter: "saddlefinance",
   },
   {
     id: "203",
@@ -1664,6 +1755,7 @@ export default [
     category: "Options",
     chains: ["Ethereum"],
     module: "siren.js",
+    twitter: "sirenprotocol",
   },
   {
     id: "204",
@@ -1682,6 +1774,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "alchemix.js",
+    twitter: "AlchemixFi",
   },
   {
     id: "205",
@@ -1699,6 +1792,7 @@ export default [
     category: "Yield",
     chains: ["Binance"],
     module: "goose.js",
+    twitter: "Goosedefi",
   },
   {
     id: "206",
@@ -1716,6 +1810,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "xtoken.js",
+    twitter: "xtokenmarket",
   },
   {
     id: "207",
@@ -1733,6 +1828,7 @@ export default [
     category: "Insurance",
     chains: ["Ethereum"],
     module: "unslashed.js",
+    twitter: "UnslashedF",
   },
   {
     id: "208",
@@ -1751,6 +1847,7 @@ export default [
     category: "Yield",
     chains: ["Binance"],
     module: "acryptos.js",
+    twitter: "acryptosdao",
   },
   {
     id: "209",
@@ -1769,6 +1866,7 @@ export default [
     category: "Yield",
     chains: ["Binance", "Heco"],
     module: "autofarm.js",
+    twitter: "autofarmnetwork",
   },
   {
     id: "210",
@@ -1787,6 +1885,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "yaxis.js",
+    twitter: "yaxis_project",
   },
   {
     id: "211",
@@ -1805,6 +1904,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "smoothy.js",
+    twitter: "smoothswap",
   },
   {
     id: "212",
@@ -1823,6 +1923,7 @@ export default [
     category: "Lending",
     chains: ["Binance"],
     module: "venus.js",
+    twitter: "VenusProtocol",
   },
   {
     id: "213",
@@ -1840,6 +1941,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "onx.js",
+    twitter: "OnXFinance",
   },
   {
     id: "214",
@@ -1857,6 +1959,7 @@ export default [
     category: "Dexes",
     chains: ["Solana"],
     module: "raydium.js",
+    twitter: "RaydiumProtocol",
   },
   {
     id: "215",
@@ -1875,6 +1978,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "strudel.js",
+    twitter: "EnterTheStrudel",
   },
   {
     id: "216",
@@ -1892,6 +1996,7 @@ export default [
     category: "Options",
     chains: ["Ethereum"],
     module: "auctus/index.js",
+    twitter: "AuctusOptions",
   },
   {
     id: "217",
@@ -1909,6 +2014,7 @@ export default [
     category: "Layer2",
     chains: ["Ethereum", "Polygon", "xDai", "Binance"],
     module: "connext/index.js",
+    twitter: "ConnextNetwork",
   },
   {
     id: "218",
@@ -1926,6 +2032,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "core/index.js",
+    twitter: "CORE_Vault",
   },
   {
     id: "219",
@@ -1944,6 +2051,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "ddex/index.js",
+    twitter: "ddexio2018",
   },
   {
     id: "220",
@@ -1961,6 +2069,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "vesper/index.js",
+    twitter: "VesperFi",
   },
   {
     id: "221",
@@ -1979,6 +2088,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "defi-swap/index.js",
+    twitter: "cryptocom",
   },
   {
     id: "222",
@@ -1997,6 +2107,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "definer/index.js",
+    twitter: "DeFinerOrg",
   },
   {
     id: "223",
@@ -2014,6 +2125,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "derivadex/index.js",
+    twitter: "DDX_official",
   },
   {
     id: "224",
@@ -2032,6 +2144,7 @@ export default [
     category: "Minting",
     chains: ["Ethereum"],
     module: "dextf/index.js",
+    twitter: "dextfprotocol",
   },
   {
     id: "225",
@@ -2050,6 +2163,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "enzyme/index.js",
+    twitter: "enzymefinance",
   },
   {
     id: "226",
@@ -2068,6 +2182,7 @@ export default [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "erasure/index.js",
+    twitter: "numerai",
   },
   {
     id: "227",
@@ -2086,6 +2201,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "creamswap/index.js",
+    twitter: "CreamdotFinance",
   },
   {
     id: "228",
@@ -2104,6 +2220,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "futureswap/index.js",
+    twitter: "futureswapx",
   },
   {
     id: "229",
@@ -2122,6 +2239,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "gnosis/index.js",
+    twitter: "gnosisPM",
   },
   {
     id: "230",
@@ -2139,6 +2257,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "idex/index.js",
+    twitter: "idexio",
   },
   {
     id: "231",
@@ -2156,6 +2275,7 @@ export default [
     category: "Payments",
     chains: ["Bitcoin"],
     module: "lightning-network/index.js",
+    twitter: null,
   },
   {
     id: "232",
@@ -2174,6 +2294,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "mcdex/index.js",
+    twitter: "MonteCarloDEX",
   },
   {
     id: "233",
@@ -2192,6 +2313,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "metronome/index.js",
+    twitter: "MET_Token",
   },
   {
     id: "234",
@@ -2209,6 +2331,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "notional/index.js",
+    twitter: "NotionalFinance",
   },
   {
     id: "235",
@@ -2227,6 +2350,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "peakdefi/index.js",
+    twitter: "PEAKDEFI",
   },
   {
     id: "236",
@@ -2245,6 +2369,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "perlinx/index.js",
+    twitter: "PerlinNetwork",
   },
   {
     id: "237",
@@ -2263,6 +2388,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum", "Binance"],
     module: "swipeswap.js",
+    twitter: "Swipe",
   },
   {
     id: "238",
@@ -2280,6 +2406,7 @@ export default [
     category: "Dexes",
     chains: ["Binance"],
     module: "ellipsis.js",
+    twitter: "Ellipsisfi",
   },
   {
     id: "239",
@@ -2298,6 +2425,7 @@ export default [
     category: "Others",
     chains: ["Ethereum"],
     module: "pooltogether/index.js",
+    twitter: "PoolTogether_",
   },
   {
     id: "240",
@@ -2315,6 +2443,7 @@ export default [
     category: "Chain",
     chains: ["Polygon"],
     module: "polygon/index.js",
+    twitter: "0xPolygon",
   },
   {
     id: "241",
@@ -2333,6 +2462,7 @@ export default [
     category: "Indexes",
     chains: ["Ethereum"],
     module: "powerindex/index.js",
+    twitter: "powerpoolcvp",
   },
   {
     id: "242",
@@ -2351,6 +2481,7 @@ export default [
     category: "Dexes",
     chains: ["Energi"],
     module: "energiswap.js",
+    twitter: "Energicrypto",
   },
   {
     id: "243",
@@ -2368,6 +2499,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "flamincome.js",
+    twitter: "flamincome",
   },
   {
     id: "244",
@@ -2386,6 +2518,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "wepiggy.js",
+    twitter: "wepiggydotcom",
   },
   {
     id: "245",
@@ -2404,6 +2537,7 @@ export default [
     category: "Chain",
     chains: ["Secret"],
     module: "scrt.js",
+    twitter: "SecretNetwork",
   },
   {
     id: "246",
@@ -2421,6 +2555,7 @@ export default [
     category: "Dexes",
     chains: ["Avalanche"],
     module: "pangolin/index.js",
+    twitter: "pangolindex",
   },
   {
     id: "247",
@@ -2439,6 +2574,7 @@ export default [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "jarvis/index.js",
+    twitter: "Jarvis_Network",
   },
   {
     id: "248",
@@ -2456,6 +2592,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "forcedao/index.js",
+    twitter: "force_dao",
   },
   {
     id: "249",
@@ -2474,6 +2611,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "stakedao/index.js",
+    twitter: "StakeDAOHQ",
   },
   {
     id: "250",
@@ -2492,6 +2630,7 @@ export default [
     category: "Indexes",
     chains: ["Ethereum"],
     module: "basketdao/index.js",
+    twitter: "BasketDAOOrg",
   },
   {
     id: "251",
@@ -2510,6 +2649,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "mimo/index.js",
+    twitter: "mimodefi",
   },
   {
     id: "252",
@@ -2528,6 +2668,7 @@ export default [
     category: "Assets",
     chains: ["Secret"],
     module: "scrt.js",
+    twitter: "SecretNetwork",
   },
   {
     id: "253",
@@ -2546,6 +2687,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum", "Binance"],
     module: "bifi/index.js",
+    twitter: "BIFROSTio",
   },
   {
     id: "254",
@@ -2564,6 +2706,7 @@ export default [
     category: "Yield",
     chains: ["Binance"],
     module: "bunny/index.js",
+    twitter: "PancakeBunnyFin",
   },
   {
     id: "255",
@@ -2582,6 +2725,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "fei/index.js",
+    twitter: "feiprotocol",
   },
   {
     id: "256",
@@ -2599,6 +2743,7 @@ export default [
     category: "Yield",
     chains: ["Binance"],
     module: "allinx.js",
+    twitter: "allinxproject",
   },
   {
     id: "257",
@@ -2617,6 +2762,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "xdefi/xdefi.js",
+    twitter: "xdeilab",
   },
   {
     id: "258",
@@ -2635,6 +2781,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "wasabix/index.js",
+    twitter: "WasabixFinance",
   },
   {
     id: "259",
@@ -2653,6 +2800,7 @@ export default [
     category: "Yield",
     chains: ["Avalanche"],
     module: "snowball-network.js",
+    twitter: "throwsnowballs",
   },
   {
     id: "260",
@@ -2671,6 +2819,7 @@ export default [
     category: "Assets",
     chains: ["Terra", "Ethereum"],
     module: "mirror/index.js",
+    twitter: "mirror_protocol",
   },
   {
     id: "261",
@@ -2688,6 +2837,7 @@ export default [
     category: "Dexes",
     chains: ["Polygon"],
     module: "mustcometh/index.js",
+    twitter: "MUSTCometh",
   },
   {
     id: "262",
@@ -2706,6 +2856,7 @@ export default [
     category: "Options",
     chains: ["Ethereum"],
     module: "primitive/index.js",
+    twitter: "PrimitiveFi",
   },
   {
     id: "263",
@@ -2724,6 +2875,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "qian/index.js",
+    twitter: null,
   },
   {
     id: "264",
@@ -2742,6 +2894,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "ray/index.js",
+    twitter: null,
   },
   {
     id: "265",
@@ -2760,6 +2913,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "reflexer/index.js",
+    twitter: "reflexerfinance",
   },
   {
     id: "266",
@@ -2778,6 +2932,7 @@ export default [
     category: "Indexes",
     chains: ["Ethereum"],
     module: "set-protocol/index.js",
+    twitter: "SetProtocol",
   },
   {
     id: "267",
@@ -2796,6 +2951,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "sfinance/index.js",
+    twitter: "SFinanceEx",
   },
   {
     id: "268",
@@ -2814,6 +2970,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "unitrade/index.js",
+    twitter: "UniTradeApp",
   },
   {
     id: "269",
@@ -2831,6 +2988,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "yfii/index.js",
+    twitter: "DfiMoney",
   },
   {
     id: "270",
@@ -2849,6 +3007,7 @@ export default [
     category: "Minting",
     chains: ["Ethereum"],
     module: "liquity/index.js",
+    twitter: "LiquityProtocol",
   },
   {
     id: "271",
@@ -2867,6 +3026,7 @@ export default [
     category: "Dexes",
     chains: ["xDai"],
     module: "honeyswap/index.js",
+    twitter: "Honeyswap",
   },
   {
     id: "272",
@@ -2885,6 +3045,7 @@ export default [
     category: "Indexes",
     chains: ["Ethereum"],
     module: "cryptex/index.js",
+    twitter: "CryptexFinance",
   },
   {
     id: "273",
@@ -2903,6 +3064,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum", "Binance"],
     module: "acoconut/index.js",
+    twitter: null,
   },
   {
     id: "274",
@@ -2921,6 +3083,7 @@ export default [
     category: "Yield",
     chains: ["Avalanche", "Binance"],
     module: "olivecash/index.js",
+    twitter: "OliveCashBsc",
   },
   {
     id: "275",
@@ -2938,6 +3101,7 @@ export default [
     category: "Staking",
     chains: ["Ethereum"],
     module: "sharedstake/index.js",
+    twitter: "SharedStakeDAO",
   },
   {
     id: "276",
@@ -2955,6 +3119,7 @@ export default [
     category: "Staking",
     chains: ["Ethereum"],
     module: "stafi/index.js",
+    twitter: "StaFi_Protocol",
   },
   {
     id: "277",
@@ -2973,6 +3138,7 @@ export default [
     category: "Staking",
     chains: ["Ethereum"],
     module: "stakewise/index.js",
+    twitter: "stakewise_io",
   },
   {
     id: "278",
@@ -2990,6 +3156,7 @@ export default [
     category: "Staking",
     chains: ["Ethereum"],
     module: "ankr/index.js",
+    twitter: "ankr",
   },
   {
     id: "279",
@@ -3007,6 +3174,7 @@ export default [
     category: "Staking",
     chains: ["Ethereum"],
     module: "stakehound/index.js",
+    twitter: "stakedTokens",
   },
   {
     id: "280",
@@ -3024,6 +3192,7 @@ export default [
     category: "Lending",
     chains: ["Solana"],
     module: "oxygen/index.js",
+    twitter: "Oxygen_protocol",
   },
   {
     id: "281",
@@ -3041,6 +3210,7 @@ export default [
     category: "Options",
     chains: ["Ethereum"],
     module: "ribbon/index.js",
+    twitter: "ribbonfinance",
   },
   {
     id: "282",
@@ -3059,6 +3229,7 @@ export default [
     category: "DAO",
     chains: ["Ethereum"],
     module: "degenerative/index.js",
+    twitter: "YamFinance",
   },
   {
     id: "283",
@@ -3076,6 +3247,7 @@ export default [
     category: "Dexes",
     chains: ["Solana"],
     module: "orca/index.js",
+    twitter: "orca_so",
   },
   {
     id: "284",
@@ -3093,6 +3265,7 @@ export default [
     category: "Dexes",
     chains: ["Solana"],
     module: "serum-amm.js",
+    twitter: "ProjectSerum",
   },
   {
     id: "285",
@@ -3110,6 +3283,7 @@ export default [
     category: "Options",
     chains: ["Ethereum"],
     module: "opyn/index.js",
+    twitter: "opyn_",
   },
   {
     id: "286",
@@ -3127,6 +3301,7 @@ export default [
     category: "Lending",
     chains: ["Solana"],
     module: "mango-markets/index.js",
+    twitter: "mangomarkets",
   },
   {
     id: "287",
@@ -3144,6 +3319,7 @@ export default [
     category: "Dexes",
     chains: ["Avalanche", "Ethereum", "Binance"],
     module: "zerodex/index.js",
+    twitter: "OfficialZeroDEX",
   },
   {
     id: "288",
@@ -3162,6 +3338,7 @@ export default [
     category: "Dexes",
     chains: ["Avalanche", "Binance"],
     module: "prosper/index.js",
+    twitter: "Prosperpredict",
   },
   {
     id: "289",
@@ -3180,6 +3357,7 @@ export default [
     category: "Dexes",
     chains: ["Avalanche"],
     module: "yetiswap/index.js",
+    twitter: "YetiSwap",
   },
   {
     id: "290",
@@ -3198,6 +3376,7 @@ export default [
     category: "Dexes",
     chains: ["Avalanche"],
     module: "penguin/index.js",
+    twitter: "penguin_defi",
   },
   {
     id: "291",
@@ -3215,6 +3394,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "integral/index.js",
+    twitter: "ProfessorJEY",
   },
   {
     id: "292",
@@ -3233,6 +3413,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum", "xDai"],
     module: "swapr/index.js",
+    twitter: "SwaprEth",
   },
   {
     id: "293",
@@ -3250,6 +3431,7 @@ export default [
     category: "Dexes",
     chains: ["Avalanche"],
     module: "lydia/index.js",
+    twitter: "LydiaFinance",
   },
   {
     id: "294",
@@ -3267,6 +3449,7 @@ export default [
     category: "Lending",
     chains: ["Terra"],
     module: "anchor/index.js",
+    twitter: "terra_money",
   },
   {
     id: "295",
@@ -3285,6 +3468,7 @@ export default [
     category: "Chain",
     chains: ["Stacks"],
     module: "stacks/index.js",
+    twitter: "Stacks",
   },
   {
     id: "296",
@@ -3303,6 +3487,7 @@ export default [
     category: "Yield",
     chains: ["Wanchain"],
     module: "zookeeper.js",
+    twitter: "ZooFarming",
   },
   {
     id: "297",
@@ -3321,6 +3506,7 @@ export default [
     category: "Synthetics",
     chains: ["Ethereum"],
     module: "deus.js",
+    twitter: null,
   },
   {
     id: "298",
@@ -3339,6 +3525,7 @@ export default [
     category: "Yield",
     chains: ["Binance"],
     module: "hyfi.js",
+    twitter: "hyper_finance",
   },
   {
     id: "299",
@@ -3356,6 +3543,7 @@ export default [
     category: "Dexes",
     chains: ["xDai"],
     module: "levinswap/index.js",
+    twitter: "levinswap",
   },
   {
     id: "300",
@@ -3374,6 +3562,7 @@ export default [
     category: "Assets",
     chains: ["Ethereum"],
     module: "bond-appetit.js",
+    twitter: "DeFiBonds",
   },
   {
     id: "301",
@@ -3392,6 +3581,7 @@ export default [
     category: "Dexes",
     chains: ["Binance"],
     module: "nerve/index.js",
+    twitter: "NerveFinance",
   },
   {
     id: "302",
@@ -3410,6 +3600,7 @@ export default [
     category: "Dexes",
     chains: ["Fantom"],
     module: "spookyswap/index.js",
+    twitter: "SpookySwap",
   },
   {
     id: "303",
@@ -3428,6 +3619,7 @@ export default [
     category: "Dexes",
     chains: ["Zilliqa"],
     module: "zilswap.js",
+    twitter: "ZilSwap",
   },
   {
     id: "304",
@@ -3446,6 +3638,7 @@ export default [
     category: "Dexes",
     chains: ["NEO"],
     module: "flamingo.js",
+    twitter: "FlamingoFinance",
   },
   /*
   {
@@ -3465,6 +3658,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "uniswapv3/index.js",
+    twitter: "Uniswap",
   },
   */
   {
@@ -3484,6 +3678,7 @@ export default [
     category: "Dexes",
     chains: ["Polygon"],
     module: "quickswap2/index.js",
+    twitter: "QuickswapDEX",
   },
   {
     id: "307",
@@ -3502,6 +3697,7 @@ export default [
     category: "Yield",
     chains: ["Binance"],
     module: "wault.js",
+    twitter: "Wault_Finance",
   },
   {
     id: "308",
@@ -3520,6 +3716,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "ruler/index.js",
+    twitter: "RulerProtocol",
   },
   {
     id: "309",
@@ -3538,6 +3735,7 @@ export default [
     category: "Yield",
     chains: ["Binance"],
     module: "wheat.js",
+    twitter: "GrowthDefi",
   },
   {
     id: "310",
@@ -3556,6 +3754,7 @@ export default [
     category: "Yield",
     chains: ["Binance"],
     module: "belt/index.js",
+    twitter: "BELT_Finance",
   },
   {
     id: "311",
@@ -3574,6 +3773,7 @@ export default [
     category: "Dexes",
     chains: ["Fantom"],
     module: "spiritswap/index.js",
+    twitter: "Spirit_Swap",
   },
   {
     id: "312",
@@ -3592,6 +3792,7 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "stacker/index.js",
+    twitter: "StackerVentures",
   },
   {
     id: "313",
@@ -3610,6 +3811,7 @@ export default [
     category: "Dexes",
     chains: ["Harmony"],
     module: "viperswap/index.js",
+    twitter: null,
   },
   {
     id: "314",
@@ -3628,6 +3830,7 @@ export default [
     category: "Dexes",
     chains: ["Avalanche"],
     module: "gdl/index.js",
+    twitter: "gondola_finance",
   },
   {
     id: "315",
@@ -3646,6 +3849,7 @@ export default [
     category: "Yield",
     chains: ["Solana"],
     module: "solfarm.js",
+    twitter: "Solfarmio",
   },
   {
     id: "316",
@@ -3664,6 +3868,7 @@ export default [
     category: "Dexes",
     chains: ["Secret"],
     module: "secretswap.js",
+    twitter: "SecretNetwork",
   },
   {
     id: "317",
@@ -3682,6 +3887,7 @@ export default [
     category: "Dexes",
     chains: ["Fantom"],
     module: "hyperswap/index.js",
+    twitter: "hyper_swap",
   },
   {
     id: "318",
@@ -3700,6 +3906,7 @@ export default [
     category: "Dexes",
     chains: ["Polygon"],
     module: "dfyn/index.js",
+    twitter: "_Dfyn",
   },
   {
     id: "319",
@@ -3718,5 +3925,6 @@ export default [
     category: "Yield",
     chains: ["Ethereum"],
     module: "convex/index.js",
+    twitter: "ConvexFinance",
   },
 ] as Protocol[];

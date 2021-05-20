@@ -45,17 +45,17 @@ async function getAndStoreCoin(coin: Coin) {
     const price = coinData.market_data.current_price.usd;
     const platforms = coinData.platforms;
     for (const platform in platforms) {
-      if (platform !== "") {
+      if (platform !== "" && platforms[platform] !== "") {
         try {
           const chain = platformMap[platform.toLowerCase()];
-          if (chain === undefined || platforms[platform] === "") {
+          if (chain === undefined) {
             continue;
           }
           const tokenDecimals = await decimals(
             platforms[platform],
             chain as any
           )
-          const address = chain + ':' + platforms[platform]
+          const address = chain + ':' + platforms[platform].toLowerCase()
           const PK = `asset#${address}`
           const timestamp = Math.round(Date.now() / 1000)
           const item = {

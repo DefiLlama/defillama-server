@@ -16,6 +16,7 @@ export interface Protocol {
   category: string;
   chains: string[];
   module: string;
+  twitter: string;
 }
 
 /* Audits:

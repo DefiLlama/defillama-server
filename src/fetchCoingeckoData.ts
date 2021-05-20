@@ -2,6 +2,7 @@ import fetch from 'node-fetch'
 import { wrapScheduledLambda } from "./utils/wrap";
 import { getCoingeckoLock, setTimer } from './storeTvlUtils/coingeckoLocks'
 import dynamodb from './utils/dynamodb';
+import {decimals} from '@defillama/sdk/build/erc20' 
 
 interface Coin {
   id: string,
@@ -44,14 +45,23 @@ async function getAndStoreCoin(coin: Coin) {
     const platforms = coinData.platforms;
     for(const platform in platforms){
       if(platform !== ""){
-        const prefix = platformMap[platform.toLowerCase()] ?? platform.toLowerCase();
-        const address = prefix + ':' + platforms[platform]
+        const chain = platformMap[platform.toLowerCase()];
+        if(chain === undefined){
+          continue;
+        }
+        const tokenDecimals = await decimals(
+          platforms[platform],
+          chain as any
+        )
+        const address = chain + ':' + platforms[platform]
         const PK = `asset#${address}`
         const timestamp = Math.round(Date.now()/1000)
         const item = {
           PK,
           timestamp,
-          price
+          price,
+          symbol: (coinData.symbol as string).toUpperCase(),
+          decimals: Number(tokenDecimals.output)
         }
         await dynamodb.put({
           ...item,

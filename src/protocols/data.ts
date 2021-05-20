@@ -1503,6 +1503,7 @@ export default [
     chains: ["Ethereum", "Binance"],
     module: "unit.js",
   },
+  /*
   {
     id: "194",
     name: "PancakeSwap",
@@ -1520,6 +1521,7 @@ export default [
     chains: ["Binance"],
     module: "pancake-swap.js",
   },
+  */
   {
     id: "195",
     name: "DefiDollar DAO",

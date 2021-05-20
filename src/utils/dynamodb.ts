@@ -32,15 +32,25 @@ const dynamodb = {
         },
       })
       .promise(),
+  batchGet: (keys: AWS.DynamoDB.DocumentClient.KeyList) =>
+    client
+      .batchGet({
+        RequestItems: {
+          [TableName]: {
+            Keys: keys,
+          }
+        },
+      })
+      .promise(),
   scan: () => client.scan({ TableName }).promise(),
 };
 export default dynamodb;
 
-export function getHistoricalValues(pk:string){
+export function getHistoricalValues(pk: string) {
   return dynamodb.query({
     ExpressionAttributeValues: {
       ":pk": pk,
     },
     KeyConditionExpression: "PK = :pk",
-  }).then(result=>result.Items);
+  }).then(result => result.Items);
 }

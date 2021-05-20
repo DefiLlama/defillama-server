@@ -48,7 +48,7 @@ async function getAndStoreCoin(coin: Coin) {
       if (platform !== "") {
         try {
           const chain = platformMap[platform.toLowerCase()];
-          if (chain === undefined) {
+          if (chain === undefined || platforms[platform] === "") {
             continue;
           }
           const tokenDecimals = await decimals(

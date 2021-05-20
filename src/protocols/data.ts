@@ -3928,4 +3928,23 @@ export default [
     module: "convex/index.js",
     twitter: "ConvexFinance",
   },
+  {
+    id: "320",
+    name: "Depth Finance",
+    address: "heco:0x48c859531254f25e57d1c1a8e030ef0b1c895c27",
+    symbol: "DEP",
+    url: "https://depth.fi/",
+    description:
+      "Depth is a safe and high efficient stablecoin asset management protocol, based on the HECO Chain. As a trusted stablecoin swap manager, Depth allows users earn interest on deposits and swap of stablecoins in a safe and secure environment, with good depth, low slippage, and low transaction fees.",
+    chain: "Heco",
+    logo: `${baseIconsUrl}/depth.svg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "depth-token",
+    cmcId: "9164",
+    category: "Dexes",
+    chains: ["Heco"],
+    module: "depth/index.js",
+    twitter: "DepthFi",
+  },
 ] as Protocol[];

@@ -17,20 +17,24 @@ export default async function(balances:{
         delete balances[eth];
     }
     const PKsToTokens = {} as {[t:string]:string}
-    const tokenData = await dynamodb.batchGet(Object.keys(balances).map(address=>{
+    const readKeys = Object.keys(balances).map(address=>{
         const PK = `asset#${address.startsWith('0x')?'ethereum:':''}${address.toLowerCase()}`;
         PKsToTokens[PK] = address
         return {
             PK,
             SK: 0
         }
-    }))
-    console.log(tokenData.Responses?.[process.env.tableName!])
+    })
+    const readRequests = []
+    for(let i =0; i<readKeys.length; i+=100){
+        readRequests.push(dynamodb.batchGet(readKeys.slice(i, i+100)).then(r=>r.Responses?.[process.env.tableName!]))
+    }
+    const tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)))
     let usdTvl = 0;
     const tokenBalances = {} as Balances
     const usdTokenBalances = {} as Balances
     const now = Math.round(Date.now()/1000)
-    tokenData.Responses?.[process.env.tableName!].forEach(response=>{
+    tokenData.forEach(response=>{
         if(Math.abs(response.timestamp - now) < DAY){
             const balance = balances[PKsToTokens[response.PK]]
             const {price, decimals} = response;

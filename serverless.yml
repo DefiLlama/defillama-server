@@ -27,6 +27,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
+        - dynamodb:BatchGetItem
       Resource:
         - "Fn::GetAtt": [ DynamoTable, Arn ]
     - Effect: Allow # Lambda logs on cloudwatch

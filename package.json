@@ -44,7 +44,7 @@
     "webpack": "^5.27.2"
   },
   "dependencies": {
-    "@defillama/sdk": "^2.0.8",
+    "@defillama/sdk": "^2.0.9",
     "@makerdao/multicall": "^0.12.0",
     "@project-serum/serum": "^0.13.33",
     "@sentry/serverless": "^6.2.3",

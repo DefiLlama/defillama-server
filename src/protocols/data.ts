@@ -3947,6 +3947,7 @@ export default [
     module: "depth/index.js",
     twitter: "DepthFi",
   },
+  /*
   {
     id: "321",
     name: "PancakeSwap",
@@ -3965,4 +3966,5 @@ export default [
     module: "pancake-swap.js",
     twitter: "PancakeSwap",
   },
+  */
 ] as Protocol[];

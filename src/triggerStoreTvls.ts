@@ -2,7 +2,7 @@ import { wrapScheduledLambda } from "./utils/wrap";
 import protocols from './protocols/data'
 import aws from 'aws-sdk';
 
-const step = 25;
+const step = 15;
 const handler = async () => {
   const lambda = new aws.Lambda();
   for (let i = 0; i < protocols.length; i += step) {

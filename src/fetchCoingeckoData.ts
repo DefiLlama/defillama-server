@@ -3,7 +3,6 @@ import { wrapScheduledLambda } from "./utils/wrap";
 import { getCoingeckoLock, setTimer } from './storeTvlUtils/coingeckoLocks'
 import dynamodb from './utils/dynamodb';
 import { decimals } from '@defillama/sdk/build/erc20'
-import { reportErrorObject } from './utils/error';
 
 interface Coin {
   id: string,
@@ -25,6 +24,9 @@ async function retryCoingeckoRequest(id: string) {
   return undefined
 }
 
+interface StringObject {
+  [id: string]: string | undefined
+}
 const platformMap = {
   'binance-smart-chain': 'bsc',
   'ethereum': 'ethereum',
@@ -35,9 +37,7 @@ const platformMap = {
   'xdai': 'xdai',
   'okex-chain': 'okex',
   "huobi-token": 'heco'
-} as {
-  [id: string]: string | undefined
-}
+} as StringObject
 
 async function getAndStoreCoin(coin: Coin) {
   const coinData = await retryCoingeckoRequest(coin.id)
@@ -46,7 +46,7 @@ async function getAndStoreCoin(coin: Coin) {
     if(typeof price !== 'number'){
       return
     }
-    const platforms = coinData.platforms;
+    const platforms = coinData.platforms as StringObject;
     for (const platform in platforms) {
       if (platform !== "" && platforms[platform] !== "") {
         try {
@@ -55,10 +55,10 @@ async function getAndStoreCoin(coin: Coin) {
             continue;
           }
           const tokenDecimals = await decimals(
-            platforms[platform],
+            platforms[platform]!,
             chain as any
           )
-          const address = chain + ':' + platforms[platform].toLowerCase()
+          const address = chain + ':' + platforms[platform]!.toLowerCase().trim()
           const PK = `asset#${address}`
           const timestamp = Math.round(Date.now() / 1000)
           await dynamodb.put({
@@ -76,7 +76,6 @@ async function getAndStoreCoin(coin: Coin) {
           })
         } catch (e) {
           console.error(coin, platform, e);
-          reportErrorObject(e, 'coin', coin.id)
         }
       }
     }

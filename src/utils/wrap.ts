@@ -12,16 +12,8 @@ SentryTracing.addExtensionMethods();
 Sentry.AWSLambda.init({
   dsn:
     "https://d5738d8b071c404a9423cd670b66d227@o555782.ingest.sentry.io/5685887",
-  tracesSampler: (samplingContext: SamplingContext) => {
-    try {
-      const { name, op } = samplingContext.transactionContext;
-      if (op === "awslambda.handler" && name.endsWith("storeTvls")) {
-        return 0.05;
-      }
-      return 1.0;
-    } catch (e) {
-      return 1.0;
-    }
+  tracesSampler: (_samplingContext: SamplingContext) => {
+      return 0;
   },
   environment: process.env.stage,
 });

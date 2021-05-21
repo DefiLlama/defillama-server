@@ -1587,7 +1587,6 @@ export default [
     module: "unit.js",
     twitter: "unitprotocol",
   },
-  /*
   {
     id: "194",
     name: "PancakeSwap",
@@ -1606,7 +1605,6 @@ export default [
     module: "pancake-swap.js",
     twitter: "PancakeSwap",
   },
-  */
   {
     id: "195",
     name: "DefiDollar DAO",
@@ -3947,24 +3945,5 @@ export default [
     module: "depth/index.js",
     twitter: "DepthFi",
   },
-  /*
-  {
-    id: "321",
-    name: "PancakeSwap",
-    address: "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-    symbol: "CAKE",
-    url: "https://pancakeswap.finance/",
-    description: "The #1 AMM and yield farm on Binance Smart Chain",
-    chain: "Binance",
-    logo: `${baseIconsUrl}/c6z3sWsY_400x400.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: "pancakeswap-token",
-    cmcId: "1165",
-    category: "Dexes",
-    chains: ["Binance"],
-    module: "pancake-swap.js",
-    twitter: "PancakeSwap",
-  },
-  */
+  // 321 reserved for deprecated version of pancakeswap
 ] as Protocol[];

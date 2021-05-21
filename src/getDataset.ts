@@ -17,6 +17,9 @@ type Tokens = {
 function buildHeader(header: string[], tokens: Tokens, isUsd: boolean) {
     if (tokens !== undefined) {
         tokens.forEach(snapshot => {
+            if(snapshot.tvl === undefined){
+                return
+            }
             Object.keys(snapshot.tvl).forEach(tokenSymbol => {
                 const symbol = isUsd ? `${tokenSymbol} (USD)` : tokenSymbol
                 if (!header.includes(symbol)) {

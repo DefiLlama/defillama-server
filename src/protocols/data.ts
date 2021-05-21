@@ -168,7 +168,7 @@ export default [
     description:
       "Synthetix is a derivatives liquidity protocol providing the backbone for derivatives trading in DeFi.",
     chain: "Ethereum",
-    logo: null,
+    logo: `${baseIconsUrl}/SNX.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "havven",

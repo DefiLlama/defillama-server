@@ -26,7 +26,7 @@ export async function storeTvl(
   storePreviousData: boolean = true,
   useCurrentPrices: boolean = true,
   breakIfTvlIsZero: boolean = false,
-  runBeforeStore?: ()=>Promise<void>
+  runBeforeStore?: () => Promise<void>
 ) {
   for (let i = 0; i < maxRetries; i++) {
     let usdTvls: tvlsObject<number> = {};
@@ -54,18 +54,18 @@ export async function storeTvl(
               chainBlocks
             );
             const isStandard = Object.entries(tvlBalances).every(balance => balance[0].includes('0x') && typeof balance[1] === 'string') && useCurrentPrices;
-            let tvlPromise:ReturnType<typeof util.computeTVL>
-            if(isStandard){
-              tvlPromise = util.computeTVL(
-              tvlBalances,
-              useCurrentPrices ? "now" : unixTimestamp,
-              false,
-              knownTokenPrices,
-              getCoingeckoLock,
-              10
-            );
-            } else {
+            let tvlPromise: ReturnType<typeof util.computeTVL>
+            if (isStandard) {
               tvlPromise = computeTVL(tvlBalances);
+            } else {
+              tvlPromise = util.computeTVL(
+                tvlBalances,
+                useCurrentPrices ? "now" : unixTimestamp,
+                false,
+                knownTokenPrices,
+                getCoingeckoLock,
+                10
+              );
             }
             const tvlResults = await tvlPromise;
             usdTvls[storedKey] = tvlResults.usdTvl;
@@ -101,7 +101,7 @@ export async function storeTvl(
       return 0;
     }
 
-    if(runBeforeStore !== undefined){
+    if (runBeforeStore !== undefined) {
       await runBeforeStore()
     }
     try {

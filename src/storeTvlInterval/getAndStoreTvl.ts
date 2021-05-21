@@ -11,6 +11,7 @@ import {
   dailyTokensTvl,
   dailyUsdTokensTvl,
 } from "../utils/getLastRecord";
+import computeTVL from './computeTVL'
 
 export async function storeTvl(
   unixTimestamp: number,
@@ -52,7 +53,10 @@ export async function storeTvl(
               ethBlock,
               chainBlocks
             );
-            const tvlResults = await util.computeTVL(
+            const isStandard = Object.entries(tvlBalances).every(balance => balance[0].includes('0x') && typeof balance[1] === 'string') && useCurrentPrices;
+            let tvlPromise:ReturnType<typeof util.computeTVL>
+            if(isStandard){
+              tvlPromise = util.computeTVL(
               tvlBalances,
               useCurrentPrices ? "now" : unixTimestamp,
               false,
@@ -60,6 +64,10 @@ export async function storeTvl(
               getCoingeckoLock,
               10
             );
+            } else {
+              tvlPromise = computeTVL(tvlBalances);
+            }
+            const tvlResults = await tvlPromise;
             usdTvls[storedKey] = tvlResults.usdTvl;
             tokensBalances[storedKey] = tvlResults.tokenBalances;
             usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;

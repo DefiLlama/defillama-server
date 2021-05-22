@@ -63,12 +63,6 @@ custom:
     includeModules: true
     packager: 'npm'
     excludeFiles: src/**/*.test.ts
-  warmup:
-    enabled: true
-    events:
-      - schedule: rate(5 minutes)
-    prewarm: true
-    concurrency: 1
   prune:
     automatic: true
     number: 5 # Number of versions to keep

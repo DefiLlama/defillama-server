@@ -41,42 +41,41 @@ const platformMap = {
 
 async function getAndStoreCoin(coin: Coin) {
   const coinData = await retryCoingeckoRequest(coin.id)
-  if (coinData !== undefined) {
-    const price = coinData.market_data?.current_price?.usd;
-    if(typeof price !== 'number'){
-      return
-    }
-    const platforms = coinData.platforms as StringObject;
-    for (const platform in platforms) {
-      if (platform !== "" && platforms[platform] !== "") {
-        try {
-          const chain = platformMap[platform.toLowerCase()];
-          if (chain === undefined) {
-            continue;
-          }
-          const tokenDecimals = await decimals(
-            platforms[platform]!,
-            chain as any
-          )
-          const address = chain + ':' + platforms[platform]!.toLowerCase().trim()
-          const PK = `asset#${address}`
-          const timestamp = Math.round(Date.now() / 1000)
-          await dynamodb.put({
-            PK,
-            SK: 0,
-            timestamp,
-            price,
-            symbol: coinData.symbol ?? coin.symbol,
-            decimals: Number(tokenDecimals.output)
-          })
-          await dynamodb.put({
-            PK,
-            SK: timestamp,
-            price
-          })
-        } catch (e) {
-          console.error(coin, platform, e);
+  const price = coinData?.market_data?.current_price?.usd;
+  if (typeof price !== 'number') {
+    console.error(`Couldn't get data for ${coin.id}`)
+    return
+  }
+  const platforms = coinData.platforms as StringObject;
+  for (const platform in platforms) {
+    if (platform !== "" && platforms[platform] !== "") {
+      try {
+        const chain = platformMap[platform.toLowerCase()];
+        if (chain === undefined) {
+          continue;
         }
+        const tokenDecimals = await decimals(
+          platforms[platform]!,
+          chain as any
+        )
+        const address = chain + ':' + platforms[platform]!.toLowerCase().trim()
+        const PK = `asset#${address}`
+        const timestamp = Math.round(Date.now() / 1000)
+        await dynamodb.put({
+          PK,
+          SK: 0,
+          timestamp,
+          price,
+          symbol: coinData.symbol ?? coin.symbol,
+          decimals: Number(tokenDecimals.output)
+        })
+        await dynamodb.put({
+          PK,
+          SK: timestamp,
+          price
+        })
+      } catch (e) {
+        console.error(coin, platform, e);
       }
     }
   }

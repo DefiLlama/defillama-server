@@ -10,17 +10,20 @@ const handler = async () => {
       first: i,
       last: i + step
     }
-    console.log(lambda.invoke({
-      FunctionName: `defillama-prod-storeTvlInterval`,
-      //InvocationType: 'Event',
-      Payload: JSON.stringify(event, null, 2) // pass params
-    }, function (error, _data) {
-      console.log(_data)
-      if (error) {
-        console.error('error', error);
-      }
-    }));
-
+    const prom = new Promise((resolve, _reject) => {
+      lambda.invoke({
+        FunctionName: `defillama-prod-storeTvlInterval`,
+        //InvocationType: 'Event',
+        Payload: JSON.stringify(event, null, 2) // pass params
+      }, function (error, _data) {
+        console.log(_data)
+        if (error) {
+          console.error('error', error);
+        }
+        resolve(_data)
+      });
+    })
+    await prom;
   }
 };
 

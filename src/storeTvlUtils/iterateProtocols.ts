@@ -3,7 +3,7 @@ import { getCoingeckoLock, releaseCoingeckoLock } from "./coingeckoLocks";
 import { TokenPrices } from "../types";
 import protocols, { Protocol } from "../protocols/data";
 
-const maxRetries = 4;
+const maxRetries = 1;
 
 type ProtocolDataProcessor = (
   unixTimestamp: number,

@@ -11,7 +11,7 @@ const handler = async () => {
       coins: coins.slice(i, i+step)
     }
     lambda.invoke({
-      FunctionName: `defillama-${process.env.stage}-fetchCoingeckoData`,
+      FunctionName: `defillama-prod-fetchCoingeckoData`,
       InvocationType: 'Event',
       Payload: JSON.stringify(event, null, 2) // pass params
     }, function (error, _data) {

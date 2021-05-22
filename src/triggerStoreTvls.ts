@@ -15,6 +15,7 @@ const handler = async () => {
       //InvocationType: 'Event',
       Payload: JSON.stringify(event, null, 2) // pass params
     }, function (error, _data) {
+      console.log(_data)
       if (error) {
         console.error('error', error);
       }

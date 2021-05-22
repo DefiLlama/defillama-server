@@ -696,7 +696,7 @@ export default [
     description: "Collateral for fast and efficient value transfer",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/flexa.png_small`,
-    audits: null,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

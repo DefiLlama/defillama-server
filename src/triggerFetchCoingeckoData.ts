@@ -8,7 +8,8 @@ const handler = async () => {
   const lambda = new aws.Lambda();
   for (let i = 0; i < coins.length; i += step) {
     const event = {
-      coins: coins.slice(i, i + step)
+      coins: coins.slice(i, i + step),
+      depth: 0
     }
     await new Promise((resolve, _reject) => {
       lambda.invoke({

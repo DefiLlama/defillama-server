@@ -3,6 +3,7 @@ import { wrapScheduledLambda } from "./utils/wrap";
 import { getCoingeckoLock, setTimer } from './storeTvlUtils/coingeckoLocks'
 import dynamodb from './utils/dynamodb';
 import { decimals } from '@defillama/sdk/build/erc20'
+import aws from 'aws-sdk';
 
 interface Coin {
   id: string,
@@ -39,11 +40,12 @@ const platformMap = {
   "huobi-token": 'heco'
 } as StringObject
 
-async function getAndStoreCoin(coin: Coin) {
+async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
   const coinData = await retryCoingeckoRequest(coin.id)
   const price = coinData?.market_data?.current_price?.usd;
   if (typeof price !== 'number') {
     console.error(`Couldn't get data for ${coin.id}`)
+    rejected.push(coin)
     return
   }
   const platforms = coinData.platforms as StringObject;
@@ -84,11 +86,33 @@ async function getAndStoreCoin(coin: Coin) {
 const step = 50;
 const handler = async (event: any) => {
   const coins = event.coins as Coin[];
+  const depth = event.depth as number;
+  const rejected = [] as Coin[];
   const timer = setTimer();
   for (let i = 0; i < coins.length; i += step) {
-    await Promise.all(coins.slice(i, i + step).map(getAndStoreCoin))
+    await Promise.all(coins.slice(i, i + step).map(coin => getAndStoreCoin(coin, rejected)))
   }
   clearInterval(timer);
+  if (rejected.length > 0) {
+    if (depth >= 3) {
+      console.error(rejected)
+      throw new Error("Unprocessed coins")
+    } else {
+      await new Promise((resolve, _reject) => {
+        (new aws.Lambda()).invoke({
+          FunctionName: `defillama-prod-fetchCoingeckoData`,
+          InvocationType: 'Event',
+          Payload: JSON.stringify({
+            coins: rejected,
+            depth: depth + 1
+          }, null, 2) // pass params
+        }, function (error, data) {
+          console.log(error, data)
+          resolve(data)
+        });
+      })
+    }
+  }
 };
 
 export default wrapScheduledLambda(handler);

@@ -12,7 +12,7 @@ const handler = async () => {
     }
     lambda.invoke({
       FunctionName: `defillama-prod-fetchCoingeckoData`,
-      InvocationType: 'Event',
+      //InvocationType: 'Event',
       Payload: JSON.stringify(event, null, 2) // pass params
     }, function (error, _data) {
       if (error) {

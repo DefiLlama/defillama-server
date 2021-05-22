@@ -89,8 +89,6 @@ functions:
           method: any
   chart:
     handler: src/getChart.default
-    warmup:
-      enabled: true
     events:
       - http:
           path: charts
@@ -100,8 +98,6 @@ functions:
           method: get
   protocols:
     handler: src/getProtocols.default
-    warmup:
-      enabled: true
     events:
       - http:
           path: protocols
@@ -126,8 +122,6 @@ functions:
           method: get
   corsPreflight:
     handler: src/corsPreflight.default
-    warmup:
-      enabled: true
     events:
       - http:
           path: /{params+}
@@ -158,5 +152,4 @@ resources:
 plugins:
   - serverless-webpack
   - serverless-offline
-  - serverless-plugin-warmup
   - serverless-prune-plugin

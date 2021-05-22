@@ -15,12 +15,12 @@ const handler = async () => {
         FunctionName: `defillama-prod-storeTvlInterval`,
         InvocationType: 'Event',
         Payload: JSON.stringify(event, null, 2) // pass params
-      }, function (error, _data) {
-        console.log(_data)
+      }, function (error, data) {
         if (error) {
           console.error('error', error);
         }
-        resolve(_data)
+        console.log(data)
+        resolve(data)
       });
     })
     await prom;

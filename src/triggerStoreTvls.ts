@@ -10,7 +10,7 @@ const handler = async () => {
       first: i,
       last: i + step
     }
-    lambda.invoke({
+    console.log(lambda.invoke({
       FunctionName: `defillama-prod-storeTvlInterval`,
       //InvocationType: 'Event',
       Payload: JSON.stringify(event, null, 2) // pass params
@@ -19,7 +19,8 @@ const handler = async () => {
       if (error) {
         console.error('error', error);
       }
-    });
+    }));
+
   }
 };
 

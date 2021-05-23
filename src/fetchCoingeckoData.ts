@@ -3,7 +3,8 @@ import { wrapScheduledLambda } from "./utils/wrap";
 import { getCoingeckoLock, setTimer } from './storeTvlUtils/coingeckoLocks'
 import dynamodb from './utils/dynamodb';
 import { decimals } from '@defillama/sdk/build/erc20'
-import aws from 'aws-sdk';
+import invokeLambda from './utils/invokeLambda'
+import sleep from './utils/sleep'
 
 interface Coin {
   id: string,
@@ -84,7 +85,7 @@ async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
 }
 
 const step = 50;
-const handler = async (event: any) => {
+const handler = async (event: any, context:AWSLambda.Context) => {
   const coins = event.coins as Coin[];
   const depth = event.depth as number;
   const rejected = [] as Coin[];
@@ -94,22 +95,14 @@ const handler = async (event: any) => {
   }
   clearInterval(timer);
   if (rejected.length > 0) {
-    if (depth >= 3) {
+    if (depth >= 2) {
       console.error(rejected)
       throw new Error("Unprocessed coins")
     } else {
-      await new Promise((resolve, _reject) => {
-        (new aws.Lambda()).invoke({
-          FunctionName: `defillama-prod-fetchCoingeckoData`,
-          InvocationType: 'Event',
-          Payload: JSON.stringify({
-            coins: rejected,
-            depth: depth + 1
-          }, null, 2) // pass params
-        }, function (error, data) {
-          console.log(error, data)
-          resolve(data)
-        });
+      await sleep(Math.max(context.getRemainingTimeInMillis()-10e3, 0)) // Wait until there's 10 seconds left
+      await invokeLambda(`defillama-prod-fetchCoingeckoData`, {
+        coins: rejected,
+        depth: depth + 1
       })
     }
   }

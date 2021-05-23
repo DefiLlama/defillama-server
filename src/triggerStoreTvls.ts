@@ -1,29 +1,15 @@
 import { wrapScheduledLambda } from "./utils/wrap";
 import protocols from './protocols/data'
-import aws from 'aws-sdk';
+import invokeLambda from './utils/invokeLambda'
 
 const step = 25;
 const handler = async () => {
-  const lambda = new aws.Lambda();
   for (let i = 0; i < protocols.length; i += step) {
     const event = {
       first: i,
       last: i + step
     }
-    const prom = new Promise((resolve, _reject) => {
-      lambda.invoke({
-        FunctionName: `defillama-prod-storeTvlInterval`,
-        InvocationType: 'Event',
-        Payload: JSON.stringify(event, null, 2) // pass params
-      }, function (error, data) {
-        if (error) {
-          console.error('error', error);
-        }
-        console.log(data)
-        resolve(data)
-      });
-    })
-    await prom;
+    await invokeLambda(`defillama-prod-storeTvlInterval`, event);
   }
 };
 

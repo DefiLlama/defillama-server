@@ -52,7 +52,7 @@ function wrap(
 export default wrap;
 
 export function wrapScheduledLambda(
-  lambdaFunc: (event:any) => Promise<void>
+  lambdaFunc: (event:any, context:AWSLambda.Context) => Promise<void>
 ): (
   event: void,
   context?: any,

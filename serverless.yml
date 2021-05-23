@@ -131,7 +131,6 @@ functions:
     timeout: 900
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
-    timeout: 900
     events:
       - schedule: rate(1 hour)
   fetchCoingeckoData:

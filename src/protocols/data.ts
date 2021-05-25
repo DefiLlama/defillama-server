@@ -3320,6 +3320,7 @@ export default [
     module: "zerodex/index.js",
     twitter: "OfficialZeroDEX",
   },
+  /*
   {
     id: "288",
     name: "Prosper",
@@ -3339,6 +3340,7 @@ export default [
     module: "prosper/index.js",
     twitter: "Prosperpredict",
   },
+  */
   {
     id: "289",
     name: "YetiSwap",

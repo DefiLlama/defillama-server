@@ -4043,4 +4043,23 @@ export default [
     module: "mochiswap/index.js",
     twitter: "mochiswap",
   },
+  {
+    id: "326",
+    name: "Beefy Finance",
+    address: "bsc:0xca3f508b8e4dd382ee878a314789373d80a5190a",
+    symbol: "BIFI",
+    url: "https://app.beefy.finance",
+    description:
+      'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings. Through a set of investment strategies secured and enforced by smart contracts, Beefy Finance automatically maximizes the user rewards from various liquidity pools (LPs),‌ ‌automated market making (AMM) projects,‌ ‌and‌ ‌other yield‌ farming ‌opportunities in the DeFi ecosystem.',
+    chain: "Multi-Chain",
+    logo: `${baseIconsUrl}/beefy.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "beefy-finance",
+    cmcId: "7311",
+    category: "Yield",
+    chains: ["Binance", "Polygon", "Avalanche", "Heco", "Fantom"],
+    module: "beefy/index.js",
+    twitter: "beefyfinance",
+  },
 ] as Protocol[];

@@ -5,12 +5,9 @@ import dynamodb from './utils/dynamodb';
 import { decimals } from '@defillama/sdk/build/erc20'
 import invokeLambda from './utils/invokeLambda'
 import sleep from './utils/sleep'
+import {Coin, iterateOverPlatforms} from './utils/coingeckoPlatforms'
 
-interface Coin {
-  id: string,
-  symbol: string,
-  name: string
-}
+
 
 const retries = 3;
 async function retryCoingeckoRequest(id: string) {
@@ -26,21 +23,6 @@ async function retryCoingeckoRequest(id: string) {
   return undefined
 }
 
-interface StringObject {
-  [id: string]: string | undefined
-}
-const platformMap = {
-  'binance-smart-chain': 'bsc',
-  'ethereum': 'ethereum',
-  'polygon-pos': 'polygon',
-  'avalanche': 'avax',
-  'wanchain': 'wan',
-  'fantom': 'fantom',
-  'xdai': 'xdai',
-  'okex-chain': 'okex',
-  "huobi-token": 'heco'
-} as StringObject
-
 async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
   const coinData = await retryCoingeckoRequest(coin.id)
   const price = coinData?.market_data?.current_price?.usd;
@@ -49,39 +31,26 @@ async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
     rejected.push(coin)
     return
   }
-  const platforms = coinData.platforms as StringObject;
-  for (const platform in platforms) {
-    if (platform !== "" && platforms[platform] !== "") {
-      try {
-        const chain = platformMap[platform.toLowerCase()];
-        if (chain === undefined) {
-          continue;
-        }
-        const tokenDecimals = await decimals(
-          platforms[platform]!,
-          chain as any
-        )
-        const address = chain + ':' + platforms[platform]!.toLowerCase().trim()
-        const PK = `asset#${address}`
-        const timestamp = Math.round(Date.now() / 1000)
-        await dynamodb.put({
-          PK,
-          SK: 0,
-          timestamp,
-          price,
-          symbol: coinData.symbol ?? coin.symbol,
-          decimals: Number(tokenDecimals.output)
-        })
-        await dynamodb.put({
-          PK,
-          SK: timestamp,
-          price
-        })
-      } catch (e) {
-        console.error(coin, platform, e);
-      }
-    }
-  }
+  const timestamp = Math.round(Date.now() / 1000);
+  await iterateOverPlatforms(coinData, coin, async (PK, tokenAddress, chain)=>{
+    const tokenDecimals = await decimals(
+      tokenAddress,
+      chain as any
+    )
+    await dynamodb.put({
+      PK,
+      SK: 0,
+      timestamp,
+      price,
+      symbol: coinData.symbol ?? coin.symbol,
+      decimals: Number(tokenDecimals.output)
+    })
+    await dynamodb.put({
+      PK,
+      SK: timestamp,
+      price
+    })
+  })
 }
 
 const step = 50;

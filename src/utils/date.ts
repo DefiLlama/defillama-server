@@ -20,3 +20,7 @@ export function getDay(timestamp: number | undefined): string {
   var dt = new Date(timestamp * 1000);
   return dt.toDateString()
 }
+
+export function toUNIXTimestamp(ms:number){
+  return Math.round(ms/1000);
+}

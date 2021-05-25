@@ -24,7 +24,7 @@ const dynamodb = {
   delete: (
     params: Omit<AWS.DynamoDB.DocumentClient.DeleteItemInput, "TableName">
   ) => client.delete({ TableName, ...params }).promise(),
-  batchWrite: (items: AWS.DynamoDB.DocumentClient.BatchWriteItemRequestMap[]) =>
+  batchWrite: (items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]) =>
     client
       .batchWrite({
         RequestItems: {

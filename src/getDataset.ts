@@ -55,16 +55,17 @@ const handler = async (
         });
     }
     const [usd, usdTokens, tokens] = await Promise.all([getHistoricalValues(dailyTvl(protocolData.id)), getHistoricalValues(dailyUsdTokensTvl(protocolData.id)), getHistoricalValues(dailyTokensTvl(protocolData.id))])
-    const header = ['Date', 'TVL (USD)']
+    const header = ['Date', 'Timestamp', 'TVL (USD)']
     buildHeader(header, usdTokens as Tokens, true)
     buildHeader(header, tokens as Tokens, false)
     const rows = [header]
     for (const usdTvl of usd!) {
         const newRow = new Array(header.length).fill('-');
-        const date = new Date(usdTvl.SK);
+        const date = new Date(usdTvl.SK*1000);
         const formattedDate = `${pad(date.getDate())}/${pad(date.getMonth()+1)}/${date.getFullYear()}`
         newRow[0] = formattedDate;
-        newRow[1] = usdTvl.tvl;
+        newRow[1] = usdTvl.SK;
+        newRow[2] = usdTvl.tvl;
         addToRow(header, newRow, usdTvl.SK, usdTokens as Tokens, true)
         addToRow(header, newRow, usdTvl.SK, tokens as Tokens, false)
         rows.push(newRow)

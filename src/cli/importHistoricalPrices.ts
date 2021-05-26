@@ -34,14 +34,16 @@ async function main() {
         ]);
         await iterateOverPlatforms(coinData, coin, async (PK) => {
             console.log('\t', PK)
+            const writeRequests = []
             for (let i = 0; i < prices.length; i += batchWriteStep) {
                 const items = prices.slice(i, i + batchWriteStep).map(price => ({
                     SK: toUNIXTimestamp(price[0]),
                     PK,
                     price: price[1]
                 }))
-                await dynamodb.batchWrite(items)
+                writeRequests.push(dynamodb.batchWrite(items))
             }
+            await Promise.all(writeRequests)
         })
     }
 }

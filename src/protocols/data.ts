@@ -2509,7 +2509,7 @@ export default [
     description:
       "WePiggy is an open source, non-custodial crypto asset lending market protocol.\r\n",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/AAH4Qi9v_400x400.jpg`,
+    logo: `${baseIconsUrl}/wepiggy.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

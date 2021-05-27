@@ -436,7 +436,7 @@ export default [
     audit_note: null,
     gecko_id: "xdai-stake",
     cmcId: "5601",
-    category: "Layer2",
+    category: "Chain",
     chains: ["Ethereum", "Binance"],
     module: "xdai/index.js",
     twitter: "xdaichain",

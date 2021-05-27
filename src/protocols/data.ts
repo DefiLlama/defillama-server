@@ -4081,4 +4081,23 @@ export default [
     module: "youswap/index.js",
     twitter: "YouSwap_Global",
   },
+  {
+    id: "328",
+    name: "SteakBank Finance",
+    address: "bsc:0xbb53fcab7a3616c5be33b9c0af612f0462b01734",
+    symbol: "SBF",
+    url: "https://steakbank.finance/",
+    description:
+      'Liquid staking for BNB',
+    chain: "Binance",
+    logo: `${baseIconsUrl}/steakbank.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "steakbank-finance",
+    cmcId: "9953",
+    category: "Staking",
+    chains: ["Binance"],
+    module: "steakbank/index.js",
+    twitter: "SteakBank",
+  },
 ] as Protocol[];

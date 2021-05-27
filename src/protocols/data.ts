@@ -1638,7 +1638,7 @@ export default [
     audit_note: null,
     gecko_id: "fantom",
     cmcId: null,
-    category: "Chains",
+    category: "Chain",
     chains: ["Fantom"],
     module: "fantom.js",
     twitter: "FantomFDN",

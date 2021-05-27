@@ -4062,4 +4062,23 @@ export default [
     module: "beefy/index.js",
     twitter: "beefyfinance",
   },
+  {
+    id: "327",
+    name: "YouSwap",
+    address: "heco:0x9364e119ad76e0346126afcbdf5c9f0189500cc5",
+    symbol: "YOU",
+    url: "https://www.youswap.com/",
+    description:
+      'AMM',
+    chain: "Multi-Chain",
+    logo: `${baseIconsUrl}/youswap.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: "10070",
+    category: "Dexes",
+    chains: ["Binance", "Ethereum", "Heco"],
+    module: "youswap/index.js",
+    twitter: "YouSwap_Global",
+  },
 ] as Protocol[];

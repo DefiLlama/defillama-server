@@ -4091,7 +4091,7 @@ export default [
       'Liquid staking for BNB',
     chain: "Binance",
     logo: `${baseIconsUrl}/steakbank.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "steakbank-finance",
     cmcId: "9953",

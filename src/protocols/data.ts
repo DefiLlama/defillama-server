@@ -1209,6 +1209,7 @@ export default [
     module: "indexcoop/index.js",
     twitter: "indexcoop",
   },
+  /*
   {
     id: "173",
     name: "Badger DAO",
@@ -1228,6 +1229,7 @@ export default [
     module: "badgerdao.js",
     twitter: "BadgerDAO",
   },
+  */
   {
     id: "174",
     name: "BT.Finance",

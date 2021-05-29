@@ -4100,4 +4100,23 @@ export default [
     module: "steakbank/index.js",
     twitter: "SteakBank",
   },
+  {
+    id: "329",
+    name: "Sovryn",
+    address: "rsk:0xEfC78FC7D48B64958315949279bA181C2114abbD",
+    symbol: "SOV",
+    url: "https://www.sovryn.app/",
+    description:
+      'Sovryn is a non-custodial and permission-less smart contract based system for bitcoin lending, borrowing and margin trading.',
+    chain: "RSK",
+    logo: `${baseIconsUrl}/sovryn.svg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: "8669",
+    category: "Dexes",
+    chains: ["RSK"],
+    module: "sovryn.js",
+    twitter: "SovrynBTC",
+  },
 ] as Protocol[];

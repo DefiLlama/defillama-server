@@ -1317,7 +1317,7 @@ export default [
     audit_note: null,
     gecko_id: "defichain",
     cmcId: null,
-    category: "Chain",
+    category: "Dexes",
     chains: ["DefiChain"],
     module: "defichain.js",
     twitter: "defichain",

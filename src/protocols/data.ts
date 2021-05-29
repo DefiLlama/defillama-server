@@ -288,7 +288,7 @@ export default [
     cmcId: "6193",
     category: "Lending",
     chains: ["Ethereum"],
-    module: "cream.js",
+    module: "cream/index.js",
     twitter: "CreamdotFinance",
   },
   {
@@ -4118,5 +4118,24 @@ export default [
     chains: ["RSK"],
     module: "sovryn.js",
     twitter: "SovrynBTC",
+  },
+  {
+    id: "330",
+    name: "Aquarius Finance",
+    address: "fantom:0x0f7ADb77B6334B9B5A3c4f78aAa073eA1D915bF6",
+    symbol: "AQU",
+    url: "https://aquarius.fi/",
+    description:
+      'Algorithmic stablecoin',
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/aquarius.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Minting",
+    chains: ["Fantom"],
+    module: "aquarius/index.js",
+    twitter: "Aquarius__Fi",
   },
 ] as Protocol[];

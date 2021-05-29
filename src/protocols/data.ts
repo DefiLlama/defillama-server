@@ -3836,8 +3836,8 @@ export default [
   {
     id: "315",
     name: "SolFarm",
-    address: "-",
-    symbol: null,
+    address: "TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
+    symbol: "TULIP",
     url: "https://solfarm.io",
     description:
       "The Efficient Solana Yield Aggregator",
@@ -3845,7 +3845,7 @@ export default [
     logo: `${baseIconsUrl}/solfarm.svg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "solfarm",
     cmcId: null,
     category: "Yield",
     chains: ["Solana"],

@@ -4148,7 +4148,7 @@ export default [
       'Money On Chain is a self-contained DeFi protocol (a stablecoin, HODL token, leveraging mechanism, and more) which empowers Bitcoiners to improve performance of their assets while also retaining full control of their private keys.',
     chain: "RSK",
     logo: `${baseIconsUrl}/moneyonchain.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

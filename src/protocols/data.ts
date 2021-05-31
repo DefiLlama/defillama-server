@@ -4138,4 +4138,23 @@ export default [
     module: "aquarius/index.js",
     twitter: "Aquarius__Fi",
   },
+  {
+    id: "331",
+    name: "MoneyOnChain",
+    address: "rsk:0x9AC7fE28967B30E3A4e6e03286d715b42B453D10",
+    symbol: "MOC",
+    url: "https://moneyonchain.com/",
+    description:
+      'Money On Chain is a self-contained DeFi protocol (a stablecoin, HODL token, leveraging mechanism, and more) which empowers Bitcoiners to improve performance of their assets while also retaining full control of their private keys.',
+    chain: "RSK",
+    logo: `${baseIconsUrl}/moneyonchain.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Minting",
+    chains: ["RSK"],
+    module: "moneyonchain.js",
+    twitter: "moneyonchainok",
+  },
 ] as Protocol[];

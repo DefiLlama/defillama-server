@@ -586,7 +586,7 @@ export default [
     logo: `${baseIconsUrl}/p1ecyvxG_400x400.jpg`,
     audits: "3",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "thorchain",
     cmcId: null,
     category: "Dexes",
     chains: ["Binance"],

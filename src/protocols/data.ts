@@ -3248,6 +3248,7 @@ export default [
     module: "orca/index.js",
     twitter: "orca_so",
   },
+  /*
   {
     id: "284",
     name: "Serum Swap",
@@ -3266,6 +3267,7 @@ export default [
     module: "serum-amm.js",
     twitter: "ProjectSerum",
   },
+  */
   {
     id: "285",
     name: "Opyn",

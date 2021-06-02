@@ -3492,6 +3492,7 @@ export default [
     module: "zookeeper.js",
     twitter: "ZooFarming",
   },
+  /*
   {
     id: "297",
     name: "Deus",
@@ -3511,6 +3512,7 @@ export default [
     module: "deus.js",
     twitter: null,
   },
+  */
   {
     id: "298",
     name: "Hyper Finance",

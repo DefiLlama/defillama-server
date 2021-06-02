@@ -1697,7 +1697,7 @@ export default [
     cmcId: null,
     category: "Payments",
     chains: ["Ethereum"],
-    module: "sablier.js",
+    module: "sablier/index.js",
     twitter: "SablierHQ",
   },
   {

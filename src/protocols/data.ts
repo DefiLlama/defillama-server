@@ -4157,6 +4157,7 @@ export default [
     module: "moneyonchain.js",
     twitter: "moneyonchainok",
   },
+  /*
   {
     id: "332",
     name: "Bao Finance",
@@ -4176,4 +4177,5 @@ export default [
     module: "bao/index.js",
     twitter: "BaoFinance",
   },
+  */
 ] as Protocol[];

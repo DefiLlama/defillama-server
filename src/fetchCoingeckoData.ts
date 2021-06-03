@@ -65,8 +65,8 @@ const handler = async (event: any, context:AWSLambda.Context) => {
   clearInterval(timer);
   if (rejected.length > 0) {
     if (depth >= 2) {
-      console.error(rejected)
-      throw new Error("Unprocessed coins")
+      console.error("Unprocessed coins", rejected)
+      return
     } else {
       await sleep(Math.max(context.getRemainingTimeInMillis()-10e3, 0)) // Wait until there's 10 seconds left
       await invokeLambda(`defillama-prod-fetchCoingeckoData`, {

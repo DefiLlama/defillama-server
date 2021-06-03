@@ -9,7 +9,7 @@ const platformMap = {
     'wanchain': 'wan',
     'fantom': 'fantom',
     'xdai': 'xdai',
-    'okex-chain': 'okex',
+    'okex-chain': 'okexchain',
     "huobi-token": 'heco'
 } as StringObject
 

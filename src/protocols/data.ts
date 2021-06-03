@@ -3645,7 +3645,6 @@ export default [
     module: "flamingo.js",
     twitter: "FlamingoFinance",
   },
-  /*
   {
     id: "305",
     name: "Uniswap v3",
@@ -3659,13 +3658,12 @@ export default [
     audits: "2",
     audit_note: null,
     gecko_id: null,
-    cmcId: "1348",
+    cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
     module: "uniswapv3/index.js",
     twitter: "Uniswap",
   },
-  */
   {
     id: "306",
     name: "Quickswap",
@@ -4255,5 +4253,24 @@ export default [
     chains: ["Sifchain"],
     module: "sifchain.js",
     twitter: "sifchain",
+  },
+  {
+    id: "337",
+    name: "Gambit Protocol",
+    address: "bsc:0x99e92123eb77bc8f999316f622e5222498438784",
+    symbol: "GMT",
+    url: "https://gambit.financial/",
+    description:
+      'Building a better leverage platform through interest-generating stablecoins. On Gambit, there is no slippage to enter and exit a position. Liquidations only occur through Chainlink price updates so the platform does not have sudden wicks from cascading liquidations.',
+    chain: "Binance",
+    logo: `${baseIconsUrl}/gambit.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "gambit",
+    cmcId: "9203",
+    category: "Dexes",
+    chains: ["Binance"],
+    module: "gambit-finance/index.js",
+    twitter: "GambitProtocol",
   },
 ] as Protocol[];

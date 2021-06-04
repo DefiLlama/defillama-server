@@ -3276,7 +3276,7 @@ export default [
     url: "https://www.opyn.co/",
     description: "Options market",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/opyn.png`,
+    logo: `${baseIconsUrl}/opyn2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

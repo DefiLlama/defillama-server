@@ -4406,4 +4406,23 @@ export default [
     module: "zkswap/index.js",
     twitter: "ZKSwapOfficial",
   },
+  {
+    id: "345",
+    name: "Alpaca Finance",
+    address: "bsc:0x8f0528ce5ef7b51152a59745befdd91d97091d2f",
+    symbol: "ALPACA",
+    url: "https://www.alpacafinance.org/",
+    description:
+      'The 1st leveraged yield farming protocol on BSC',
+    chain: "Binance",
+    logo: `${baseIconsUrl}/alpaca.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "alpaca-finance",
+    cmcId: "8707",
+    category: "Yield",
+    chains: ["Binance"],
+    module: "alpacafinance/index.js",
+    twitter: "AlpacaFinance",
+  },
 ] as Protocol[];

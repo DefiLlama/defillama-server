@@ -4401,7 +4401,7 @@ export default [
     audit_note: null,
     gecko_id: "zkswap",
     cmcId: "8202",
-    category: "Dexes",
+    category: "Chain",
     chains: ["Ethereum"],
     module: "zkswap/index.js",
     twitter: "ZKSwapOfficial",

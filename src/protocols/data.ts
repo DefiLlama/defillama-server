@@ -544,7 +544,7 @@ export default [
     url: "https://www.kava.io/",
     description:
       "Kava.io is the first cross-chain DeFi hub providing applications and services to the worlds largest cryptocurrencies.",
-    chain: "Multi-Chain",
+    chain: "Kava",
     logo: `${baseIconsUrl}/ECfmsFee_400x400.png`,
     audits: null,
     audit_note: null,

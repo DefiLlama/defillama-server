@@ -11,6 +11,16 @@ import {
 import sluggify from "./utils/sluggify";
 import { normalizeChain } from './utils/normalizeChain'
 
+function normalizeEthereum(balances:{
+  [symbol:string]:number
+}){
+  if(balances['ethereum']){
+    balances['WETH'] = (balances['WETH'] ?? 0) + balances['ethereum']
+    delete balances['ethereum']
+  }
+  return balances
+}
+
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
@@ -39,11 +49,11 @@ const handler = async (
     })).filter(item => item.totalLiquidityUSD !== undefined);
     container.tokensInUsd = (await historicalUsdTokenTvl)?.map((item) => ({
       date: item.SK,
-      tokens: item[normalizedChain],
+      tokens: normalizeEthereum(item[normalizedChain]),
     })).filter(item => item.tokens !== undefined);
     container.tokens = (await historicalTokenTvl)?.map((item) => ({
       date: item.SK,
-      tokens: item[normalizedChain],
+      tokens: normalizeEthereum(item[normalizedChain]),
     })).filter(item => item.tokens !== undefined);
     if (container.tvl !== undefined && container.tvl.length > 0) {
       const lastItem = (await lastHourlyRecord);

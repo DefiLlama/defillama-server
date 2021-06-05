@@ -250,7 +250,7 @@ export default [
     gecko_id: "sushi",
     cmcId: "6758",
     category: "Dexes",
-    chains: ["Ethereum", "Polygon"],
+    chains: ["Ethereum", "Polygon", "Fantom", "Binance", "xDai", "Heco"],
     module: "sushiswap/index.js",
     twitter: "SushiSwap",
   },

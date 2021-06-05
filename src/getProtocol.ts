@@ -14,7 +14,7 @@ import { normalizeChain } from './utils/normalizeChain'
 function normalizeEthereum(balances:{
   [symbol:string]:number
 }){
-  if(balances['ethereum']){
+  if(balances?.ethereum !== undefined){
     balances['WETH'] = (balances['WETH'] ?? 0) + balances['ethereum']
     delete balances['ethereum']
   }

@@ -140,6 +140,7 @@ export default [
     module: "yearn/index.js", // TODO: Fix latest
     twitter: "iearnfinance",
   },
+  /*
   {
     id: "114",
     name: "Compound",
@@ -159,6 +160,7 @@ export default [
     module: "compound/index.js",
     twitter: "compoundfinance",
   },
+  */
   {
     id: "115",
     name: "Synthetix",

@@ -2541,7 +2541,7 @@ export default [
   {
     id: "246",
     name: "Pangolin",
-    address: "0x60781C2586D68229fde47564546784ab3fACA982 ",
+    address: "avax:0x60781C2586D68229fde47564546784ab3fACA982",
     symbol: "PNG",
     url: "https://pangolin.exchange",
     description: "Pangolin is a community-driven DEX that runs on Avalanche. ",

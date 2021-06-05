@@ -4465,4 +4465,23 @@ export default [
     module: "abracadabra/index.js",
     twitter: "MIM_Spell",
   },
+  {
+    id: "348",
+    name: "FilDA",
+    address: "heco:0xe36ffd17b2661eb57144ceaef942d95295e637f0",
+    symbol: "FILDA",
+    url: "https://filda.io/",
+    description:
+      'Lending market',
+    chain: "Heco",
+    logo: `${baseIconsUrl}/filda.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: "filda",
+    cmcId: "8426",
+    category: "Lending",
+    chains: ["Heco"],
+    module: "filda/index.js",
+    twitter: "FilDAFinance",
+  },
 ] as Protocol[];

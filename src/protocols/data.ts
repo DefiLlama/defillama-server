@@ -4446,4 +4446,23 @@ export default [
     module: "yieldly/index.js",
     twitter: "yieldlyfinance",
   },
+  {
+    id: "347",
+    name: "Abracadabra",
+    address: "0x090185f2135308bad17527004364ebcc2d37e5f6",
+    symbol: "SPELL",
+    url: "https://abracadabra.money/",
+    description:
+      'Abracadabra.money is a spell book that allows users to produce magic internet money ($MIM) which is a stable coin that you can swap for any other traditional stable coin.',
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/mimspell.svg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "spell-token",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "abracadabra/index.js",
+    twitter: "MIM_Spell",
+  },
 ] as Protocol[];

@@ -4427,4 +4427,23 @@ export default [
     module: "alpacafinance/index.js",
     twitter: "AlpacaFinance",
   },
+  {
+    id: "346",
+    name: "Yieldly",
+    address: "algorand:226701642",
+    symbol: "YLDY",
+    url: "https://yieldly.finance/",
+    description:
+      'Yieldly is a suite of DeFi apps on the Algorand blockchain, including no-loss prize games, multi-asset staking, and cross-chain swapping.',
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/yieldly.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Algorand"],
+    module: "yieldly/index.js",
+    twitter: "yieldlyfinance",
+  },
 ] as Protocol[];

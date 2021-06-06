@@ -7,3 +7,11 @@ export function normalizeChain(chain:string){
     }
     return normalizedChain
 }
+
+export function getDisplayChain(chains:string[]){
+    if(chains.length>1){
+        return "Multi-Chain"
+    } else {
+        return chains[0]
+    }
+}

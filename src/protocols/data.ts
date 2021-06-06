@@ -1851,11 +1851,11 @@ export default [
   {
     id: "209",
     name: "Autofarm",
-    address: "0xa184088a740c695e156f91f5cc086a06bb78b827",
+    address: "bsc:0xa184088a740c695e156f91f5cc086a06bb78b827",
     symbol: "AUTO",
     url: "https://autofarm.network/",
     description:
-      "The Autofarm ecosystem is comprised of 3 main products; firstly, a cross-chain yield optimizer which automates yield farming for users, a DEX aggregator (AutoSwap) that provides users' with the best swap rates and an intelligent portfolio manager/ tracker (farmfolio). Vaults are live on both Binance Smart Chain (BSC) and Huobi ECO chain (HECO) with the other products set to go cross-chain soon.",
+      "The Autofarm ecosystem is a one-stop DeFi suite for all users. Autofarm aggregate yield opportunities using vaults and best swap rates using a DEX aggregator (AutoSwap). In addition, other products such as AutoAnalytics, AutoTrade & AutoPortfolio are set to go live later in 2021. The platform is currently live BSC, HECO and Polygon, with more chains to be introduced soon.",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/wz6Vh6VM_400x400.png`,
     audits: "2",
@@ -1863,7 +1863,7 @@ export default [
     gecko_id: "auto",
     cmcId: "8387",
     category: "Yield",
-    chains: ["Binance"],
+    chains: ["Binance", "Heco", "Polygon"],
     module: "autofarm.js",
     twitter: "autofarmnetwork",
   },

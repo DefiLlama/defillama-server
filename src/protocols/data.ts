@@ -3198,8 +3198,8 @@ export default [
   {
     id: "281",
     name: "Ribbon Finance",
-    address: "-",
-    symbol: "-",
+    address: "0x6123b0049f904d730db3c36a31167d9d4121fa6b",
+    symbol: "RBN",
     url: "https://www.ribbon.finance/",
     description: "Structured products protocol",
     chain: "Ethereum",

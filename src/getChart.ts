@@ -26,7 +26,7 @@ const handler = async (
         },
         KeyConditionExpression: "PK = :pk",
       });
-      if (historicalTvl.Items === undefined) {
+      if (historicalTvl.Items === undefined || historicalTvl.Items.length < 1) {
         return undefined
       }
       const lastTimestamp = getClosestDayStartTimestamp(historicalTvl.Items[historicalTvl.Items.length - 1].SK)

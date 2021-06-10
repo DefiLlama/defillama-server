@@ -105,6 +105,13 @@ export async function storeTvl(
       await runBeforeStore()
     }
     try {
+      await storeNewTvl(
+        protocol,
+        unixTimestamp,
+        usdTvls,
+        storePreviousData
+      ); // Checks circuit breakers
+
       const storeTokensAction = storeNewTokensValueLocked(
         protocol,
         unixTimestamp,
@@ -121,17 +128,10 @@ export async function storeTvl(
         dailyUsdTokensTvl,
         storePreviousData
       );
-      const storeTvlAction = storeNewTvl(
-        protocol,
-        unixTimestamp,
-        usdTvls,
-        storePreviousData
-      );
 
       await Promise.all([
         storeTokensAction,
         storeUsdTokensAction,
-        storeTvlAction,
       ]);
     } catch (e) {
       console.error(protocol.name, e);

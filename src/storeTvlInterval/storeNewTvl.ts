@@ -40,6 +40,9 @@ export default async function (
       `TVL for ${protocol.name} has grown way too much in the last hour (${lastHourlyTVL} to ${tvl.tvl})`,
       protocol.name
     );
+    if(lastHourlyTVL * 5 < tvl.tvl){
+      throw new Error(`TVL for ${protocol.name} has 5x within one hour, disabling it`)
+    }
   }
 
   await dynamodb.put({

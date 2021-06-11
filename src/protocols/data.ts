@@ -45,7 +45,7 @@ export default [
     chains: ["Ethereum"],
     module: "uniswap/index.js",
     twitter: "Uniswap",
-    audits: ["https://github.com/Uniswap/uniswap-v3-core/tree/main/audits", "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits", "https://github.com/ConsenSys/Uniswap-audit-report-2018-12"],
+    audit_links: ["https://github.com/Uniswap/uniswap-v3-core/tree/main/audits", "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits", "https://github.com/ConsenSys/Uniswap-audit-report-2018-12"],
   },
   {
     id: "2",
@@ -65,7 +65,7 @@ export default [
     chains: ["Ethereum"],
     module: "wbtc.js",
     twitter: "WrappedBTC",
-    audits: ["https://wbtc.network/dashboard/audit"],
+    audit_links: ["https://wbtc.network/dashboard/audit"],
   },
   {
     id: "3",
@@ -85,7 +85,7 @@ export default [
     chains: ["Ethereum", "Polygon", "Fantom"],
     module: "curve.js",
     twitter: "CurveFinance",
-    audits: ["https://curve.fi/audits"],
+    audit_links: ["https://curve.fi/audits"],
   },
   {
     id: "111",
@@ -105,7 +105,7 @@ export default [
     chains: ["Ethereum", "Polygon"],
     module: "aave.js",
     twitter: "AaveAave",
-    audits: ["https://aave.com/security"],
+    audit_links: ["https://aave.com/security"],
   },
   {
     id: "112",
@@ -124,7 +124,7 @@ export default [
     chains: ["Ethereum"],
     module: "harvest.js",
     twitter: "harvest_finance",
-    audits: ["https://github.com/harvest-finance/harvest/tree/master/audits"],
+    audit_links: ["https://github.com/harvest-finance/harvest/tree/master/audits"],
   },
   {
     id: "113",
@@ -144,7 +144,7 @@ export default [
     chains: ["Ethereum"],
     module: "yearn/index.js", // TODO: Fix latest
     twitter: "iearnfinance",
-    audits: ["https://github.com/yearn/yearn-audits"],
+    audit_links: ["https://github.com/yearn/yearn-audits"],
   },
   {
     id: "114",
@@ -164,7 +164,7 @@ export default [
     chains: ["Ethereum"],
     module: "compound/index.js",
     twitter: "compoundfinance",
-    audits: ["https://compound.finance/docs/security"],
+    audit_links: ["https://compound.finance/docs/security"],
   },
   {
     id: "115",
@@ -184,7 +184,7 @@ export default [
     chains: ["Ethereum"],
     module: "synthetix/index.js",
     twitter: "synthetix_io",
-    audits: ["https://docs.synthetix.io/contracts/audits/"],
+    audit_links: ["https://docs.synthetix.io/contracts/audits/"],
   },
   {
     id: "116",
@@ -204,7 +204,7 @@ export default [
     chains: ["Ethereum"],
     module: "balancer/index.js",
     twitter: "BalancerLabs",
-    audits: ["https://docs.balancer.fi/core-concepts/security/audits"],
+    audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
   },
   {
     id: "117",
@@ -224,7 +224,7 @@ export default [
     chains: ["Ethereum", "Binance"],
     module: "ren/index.js",
     twitter: "renprotocol",
-    audits: ["https://github.com/renproject/ren/wiki/Audits"],
+    audit_links: ["https://github.com/renproject/ren/wiki/Audits"],
   },
   {
     id: "118",
@@ -244,7 +244,7 @@ export default [
     chains: ["Ethereum"],
     module: "maker/index.js",
     twitter: "MakerDAO",
-    audits: ["https://security.makerdao.com/"],
+    audit_links: ["https://security.makerdao.com/"],
   },
   {
     id: "119",
@@ -264,7 +264,7 @@ export default [
     chains: ["Ethereum", "Polygon", "Fantom", "Binance", "xDai", "Heco"],
     module: "sushiswap/index.js",
     twitter: "SushiSwap",
-    audits: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf"],
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf"],
     forkedFrom: ["UniSwap"],
   },
   {
@@ -285,7 +285,7 @@ export default [
     chains: ["Ethereum"],
     module: "instadapp.js",
     twitter: "Instadapp",
-    audits: ["https://github.com/Instadapp/dsa-contracts/blob/master/audits/v1_PeckShield_Mar_2020.pdf"],
+    audit_links: ["https://github.com/Instadapp/dsa-contracts/blob/master/audits/v1_PeckShield_Mar_2020.pdf"],
   },
   {
     id: "121",
@@ -304,7 +304,7 @@ export default [
     chains: ["Ethereum", "Binance", "Fantom"],
     module: "cream/index.js",
     twitter: "CreamdotFinance",
-    audits: ["https://docs.cream.finance/audit-report"],
+    audit_links: ["https://docs.cream.finance/audit-report"],
     forkedFrom: ["Compound Finance"],
   },
   {
@@ -325,7 +325,7 @@ export default [
     chains: ["Ethereum"],
     module: "nexus/index.js",
     twitter: "NexusMutual",
-    audits: ["https://nexusmutual.gitbook.io/docs/helpful-resources/audits-and-security"],
+    audit_links: ["https://nexusmutual.gitbook.io/docs/helpful-resources/audits-and-security"],
   },
   {
     id: "123",
@@ -345,7 +345,7 @@ export default [
     chains: ["Ethereum", "Binance"],
     module: "dforce/index.js",
     twitter: "dForcenet",
-    audits: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
+    audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
     forkedFrom: ["Compound"],
   },
   {
@@ -365,7 +365,7 @@ export default [
     chains: ["Ethereum"],
     module: "keep.js",
     twitter: null,
-    audits: ["https://consensys.net/diligence/audits/2020/02/thesis-tbtc-and-keep/"],
+    audit_links: ["https://consensys.net/diligence/audits/2020/02/thesis-tbtc-and-keep/"],
   },
   {
     id: "125",
@@ -385,7 +385,7 @@ export default [
     chains: ["Ethereum"],
     module: "mstable/index.js",
     twitter: "mstable_",
-    audits: ["https://docs.mstable.org/protocol/security"],
+    audit_links: ["https://docs.mstable.org/protocol/security"],
   },
   {
     id: "126",
@@ -404,7 +404,7 @@ export default [
     chains: ["Ethereum"],
     module: "loopring/index.js",
     twitter: "loopringorg",
-    audits: ["https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf"],
+    audit_links: ["https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf"],
   },
   {
     id: "127",
@@ -500,7 +500,7 @@ export default [
     chains: ["Ethereum"],
     module: "barnbridge/index.js",
     twitter: "Barn_Bridge",
-    audits: ["https://docs.barnbridge.com/beginners-guide-to-smart-yield#is-it-secure-to-invest-in-smart-yield"],
+    audit_links: ["https://docs.barnbridge.com/beginners-guide-to-smart-yield#is-it-secure-to-invest-in-smart-yield"],
   },
   {
     id: "132",
@@ -520,7 +520,7 @@ export default [
     chains: ["Ethereum"],
     module: "hbtc.js",
     twitter: "HBTC_official",
-    audits: ["https://www.htokens.finance/static/pdf/audit-report-en.pdf"],
+    audit_links: ["https://www.htokens.finance/static/pdf/audit-report-en.pdf"],
   },
   {
     id: "133",
@@ -559,7 +559,7 @@ export default [
     chains: ["Ethereum"],
     module: "pickle.js",
     twitter: "picklefinance",
-    audits: ["https://docs.pickle.finance/faqs/security"],
+    audit_links: ["https://docs.pickle.finance/faqs/security"],
   },
   {
     id: "135",
@@ -579,7 +579,7 @@ export default [
     chains: ["Kava"],
     module: "kava.js",
     twitter: "kava_labs",
-    audits: ["https://www.certik.org/projects/kava"],
+    audit_links: ["https://www.certik.org/projects/kava"],
   },
   {
     id: "136",
@@ -599,7 +599,7 @@ export default [
     chains: ["Ethereum"],
     module: "rari.js",
     twitter: "RariCapital",
-    audits: ["https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7"],
+    audit_links: ["https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7"],
   },
   {
     id: "137",
@@ -619,7 +619,7 @@ export default [
     chains: ["Thorchain"],
     module: "thorchain.js",
     twitter: "THORChain",
-    audits: ["https://www.certik.org/projects/thorchain"],
+    audit_links: ["https://www.certik.org/projects/thorchain"],
   },
   {
     id: "138",
@@ -677,7 +677,7 @@ export default [
     chains: ["Kava"],
     module: "hard.js",
     twitter: "hard_protocol",
-    audits: ["https://www.certik.org/projects/hard"],
+    audit_links: ["https://www.certik.org/projects/hard"],
   },
   {
     id: "141",
@@ -696,7 +696,7 @@ export default [
     chains: ["Ethereum"],
     module: "uma/index.js",
     twitter: "UMAprotocol",
-    audits: ["https://blog.openzeppelin.com/uma-audit-phase-2/"],
+    audit_links: ["https://blog.openzeppelin.com/uma-audit-phase-2/"],
   },
   {
     id: "142",
@@ -734,7 +734,7 @@ export default [
     chains: ["Ethereum"],
     module: "flexa.js",
     twitter: "amptoken",
-    audits: ["https://consensys.net/diligence/audits/2020/06/amp","https://github.com/trailofbits/publications/blob/master/reviews/amp.pdf"],
+    audit_links: ["https://consensys.net/diligence/audits/2020/06/amp","https://github.com/trailofbits/publications/blob/master/reviews/amp.pdf"],
   },
   {
     id: "144",
@@ -754,7 +754,7 @@ export default [
     chains: ["Ethereum"],
     module: "dydx/index.js",
     twitter: "dydxprotocol",
-    audits: ["https://docs.dydx.exchange/#independent-audits"],
+    audit_links: ["https://docs.dydx.exchange/#independent-audits"],
   },
   {
     id: "145",
@@ -792,7 +792,7 @@ export default [
     chains: ["Ethereum", "Binance"],
     module: "dodo/index.js",
     twitter: "BreederDodo",
-    audits: ["https://github.com/DODOEX/docs/blob/master/docs/audit.md"],
+    audit_links: ["https://github.com/DODOEX/docs/blob/master/docs/audit.md"],
   },
   {
     id: "148",
@@ -811,7 +811,7 @@ export default [
     chains: ["Ethereum"],
     module: "tornado-cash.js",
     twitter: "TornadoCash",
-    audits: ["https://tornado.cash/#faq"],
+    audit_links: ["https://tornado.cash/#faq"],
   },
   {
     id: "149",
@@ -831,7 +831,7 @@ export default [
     chains: ["Ethereum"],
     module: "bprotocol/index.js",
     twitter: "bprotocoleth",
-    audits: ["https://app.bprotocol.org/risk"],
+    audit_links: ["https://app.bprotocol.org/risk"],
   },
   {
     id: "150",
@@ -851,7 +851,7 @@ export default [
     chains: ["Ethereum"],
     module: "idle.js",
     twitter: "idlefinance",
-    audits: ["https://certificate.quantstamp.com/full/idle-finance"],
+    audit_links: ["https://certificate.quantstamp.com/full/idle-finance"],
   },
   {
     id: "151",
@@ -1019,7 +1019,7 @@ export default [
     chains: ["Ethereum", "Binance"],
     module: "alpha-homora/index.js",
     twitter: "AlphaFinanceLab",
-    audits: ["https://blog.openzeppelin.com/alpha-homora-v2/"],
+    audit_links: ["https://blog.openzeppelin.com/alpha-homora-v2/"],
   },
   {
     id: "161",
@@ -1039,7 +1039,7 @@ export default [
     chains: ["Ethereum"],
     module: "boringdao.js",
     twitter: "TheBoringDAO",
-    audits: ["https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf"],
+    audit_links: ["https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf"],
   },
   {
     id: "162",
@@ -1059,7 +1059,7 @@ export default [
     chains: ["Ethereum"],
     module: "bancor/index.js",
     twitter: "Bancor",
-    audits: ["https://docs.bancor.network/ethereum-contracts/security"],
+    audit_links: ["https://docs.bancor.network/ethereum-contracts/security"],
   },
   {
     id: "163",
@@ -1079,7 +1079,7 @@ export default [
     chains: ["Ethereum", "Binance", "OKExChain"],
     module: "fortube/index.js",
     twitter: "ForTubeFi",
-    audits: ["https://for.tube/security"],
+    audit_links: ["https://for.tube/security"],
   },
   {
     id: "164",
@@ -1136,7 +1136,7 @@ export default [
     chains: ["Ethereum"],
     module: "truefi/index.js",
     twitter: "TrustToken",
-    audits: ["https://github.com/trusttoken/audits/tree/master/TrueFi"],
+    audit_links: ["https://github.com/trusttoken/audits/tree/master/TrueFi"],
   },
   {
     id: "167",
@@ -1269,7 +1269,7 @@ export default [
     chains: ["Ethereum"],
     module: "badgerdao.js",
     twitter: "BadgerDAO",
-    audits: ["https://badger.finance/wp-content/uploads/2021/01/HAECHI-AUDIT-BadgerDAO-Smart-Contract-Audit-Report-1.pdf"],
+    audit_links: ["https://badger.finance/wp-content/uploads/2021/01/HAECHI-AUDIT-BadgerDAO-Smart-Contract-Audit-Report-1.pdf"],
   },
   {
     id: "174",
@@ -1345,7 +1345,7 @@ export default [
     chains: ["Ethereum"],
     module: "defisaver.js",
     twitter: "DefiSaver",
-    audits: ["https://consensys.net/diligence/audits/2021/03/defi-saver/"],
+    audit_links: ["https://consensys.net/diligence/audits/2021/03/defi-saver/"],
   },
   {
     id: "178",
@@ -1365,7 +1365,7 @@ export default [
     chains: ["DefiChain"],
     module: "defichain.js",
     twitter: "defichain",
-    audits: ["https://defichain.com/security/"],
+    audit_links: ["https://defichain.com/security/"],
   },
   {
     id: "179",
@@ -1425,7 +1425,7 @@ export default [
     chains: ["Ethereum"],
     module: "mantradao.js",
     twitter: "MANTRADAO",
-    audits: ["https://www.slowmist.com/en/security-audit-certificate.html?id=1193264f67af7c2bb840306b82eff6218471cf4fbed79a7d48d6a01a93030e35"],
+    audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=1193264f67af7c2bb840306b82eff6218471cf4fbed79a7d48d6a01a93030e35"],
   },
   {
     id: "182",
@@ -1445,7 +1445,7 @@ export default [
     chains: ["Ethereum", "Terra"],
     module: "lido/index.js",
     twitter: "LidoFinance",
-    audits: ["https://github.com/lidofinance/audits"],
+    audit_links: ["https://github.com/lidofinance/audits"],
   },
   {
     id: "183",
@@ -1464,7 +1464,7 @@ export default [
     chains: ["Ontology"],
     module: "wing.js",
     twitter: "Wing_Finance",
-    audits: ["https://docs.wing.finance/#audits"],
+    audit_links: ["https://docs.wing.finance/#audits"],
   },
   {
     id: "184",
@@ -1559,7 +1559,7 @@ export default [
     chains: ["Ethereum"],
     module: "1inch.js",
     twitter: "1inchNetwork",
-    audits: ["https://help.1inch.io/en/articles/4585088-how-secure-is-1inch"],
+    audit_links: ["https://help.1inch.io/en/articles/4585088-how-secure-is-1inch"],
   },
   {
     id: "190",
@@ -1635,7 +1635,7 @@ export default [
     chains: ["Ethereum"],
     module: "unit.js",
     twitter: "unitprotocol",
-    audits: ["https://github.com/unitprotocol/protocol_docs"],
+    audit_links: ["https://github.com/unitprotocol/protocol_docs"],
   },
   {
     id: "194",
@@ -1654,7 +1654,7 @@ export default [
     chains: ["Binance"],
     module: "pancake-swap.js",
     twitter: "PancakeSwap",
-    audits: ["https://docs.pancakeswap.finance/#is-it-safe"],
+    audit_links: ["https://docs.pancakeswap.finance/#is-it-safe"],
     forkedFrom: ["UniSwap"],
   },
   {
@@ -1713,7 +1713,7 @@ export default [
     chains: ["Ethereum"],
     module: "bzx.js",
     twitter: "bZxHQ",
-    audits: ["https://bzx.network/security"],
+    audit_links: ["https://bzx.network/security"],
   },
   /*
   {
@@ -1752,7 +1752,7 @@ export default [
     chains: ["Ethereum"],
     module: "sablier/index.js",
     twitter: "SablierHQ",
-    audits: ["https://certificate.quantstamp.com/full/sablier"],
+    audit_links: ["https://certificate.quantstamp.com/full/sablier"],
   },
   {
     id: "200",
@@ -1791,7 +1791,7 @@ export default [
     chains: ["Ethereum"],
     module: "saddle/index.js",
     twitter: "saddlefinance",
-    audits: ["https://github.com/saddle-finance/saddle-audits"],
+    audit_links: ["https://github.com/saddle-finance/saddle-audits"],
     forkedFrom: ["Curve Finance"],
   },
   {
@@ -1830,7 +1830,7 @@ export default [
     chains: ["Ethereum"],
     module: "alchemix.js",
     twitter: "AlchemixFi",
-    audits: ["https://alchemix.fi/a208baf6ca7e0d6b0116461f05e27cd9.pdf"],
+    audit_links: ["https://alchemix.fi/a208baf6ca7e0d6b0116461f05e27cd9.pdf"],
   },
   {
     id: "205",
@@ -1885,7 +1885,7 @@ export default [
     chains: ["Ethereum"],
     module: "unslashed.js",
     twitter: "UnslashedF",
-    audits: ["https://documentation.unslashed.finance/risks-and-security/audits"],
+    audit_links: ["https://documentation.unslashed.finance/risks-and-security/audits"],
   },
   {
     id: "208",
@@ -1905,7 +1905,7 @@ export default [
     chains: ["Binance"],
     module: "acryptos.js",
     twitter: "acryptosdao",
-    audits: ["https://docs.acryptos.com/security-and-risks#audits"],
+    audit_links: ["https://docs.acryptos.com/security-and-risks#audits"],
   },
   {
     id: "209",
@@ -1925,7 +1925,7 @@ export default [
     chains: ["Binance", "Heco", "Polygon"],
     module: "autofarm.js",
     twitter: "autofarmnetwork",
-    audits: ["https://www.certik.org/projects/autofarm"],
+    audit_links: ["https://www.certik.org/projects/autofarm"],
     forkedFrom: ["Yearn Finance"],
   },
   {
@@ -1946,7 +1946,7 @@ export default [
     chains: ["Ethereum"],
     module: "yaxis.js",
     twitter: "yaxis_project",
-    audits: ["https://github.com/yaxis-project/metavault/tree/main/audits"],
+    audit_links: ["https://github.com/yaxis-project/metavault/tree/main/audits"],
   },
   {
     id: "211",
@@ -1985,7 +1985,7 @@ export default [
     chains: ["Binance"],
     module: "venus.js",
     twitter: "VenusProtocol",
-    audits: ["https://www.certik.org/projects/swipe"],
+    audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound","MakerDAO"],
   },
   {
@@ -2005,7 +2005,7 @@ export default [
     chains: ["Ethereum"],
     module: "onx.js",
     twitter: "OnXFinance",
-    audits: ["https://onx-finance.gitbook.io/docs/audits-and-contracts"],
+    audit_links: ["https://onx-finance.gitbook.io/docs/audits-and-contracts"],
   },
   {
     id: "214",
@@ -2134,7 +2134,7 @@ export default [
     chains: ["Ethereum"],
     module: "vesper/index.js",
     twitter: "VesperFi",
-    audits: ["https://github.com/vesperfi/doc/tree/main/audit"],
+    audit_links: ["https://github.com/vesperfi/doc/tree/main/audit"],
   },
   {
     id: "221",
@@ -2154,7 +2154,7 @@ export default [
     chains: ["Ethereum"],
     module: "defi-swap/index.js",
     twitter: "cryptocom",
-    audits: ["https://crypto.com/defi/swap-protocol-audit.pdf"],
+    audit_links: ["https://crypto.com/defi/swap-protocol-audit.pdf"],
     forkedFrom: ["UniSwap"],
   },
   {
@@ -2381,7 +2381,7 @@ export default [
     chains: ["Ethereum"],
     module: "metronome/index.js",
     twitter: "MET_Token",
-    audits: ["https://github.com/autonomoussoftware/metronome-audits"],
+    audit_links: ["https://github.com/autonomoussoftware/metronome-audits"],
   },
   {
     id: "234",
@@ -2475,7 +2475,7 @@ export default [
     chains: ["Binance"],
     module: "ellipsis.js",
     twitter: "Ellipsisfi",
-    audits: ["https://github.com/ellipsis-finance/ellipsis-audits/blob/master/010421_Hacken_Ellipsis_SC_Audit_Report.pdf"],
+    audit_links: ["https://github.com/ellipsis-finance/ellipsis-audits/blob/master/010421_Hacken_Ellipsis_SC_Audit_Report.pdf"],
     forkedFrom: ["Curve Finance"],
   },
   {
@@ -2496,7 +2496,7 @@ export default [
     chains: ["Ethereum"],
     module: "pooltogether/index.js",
     twitter: "PoolTogether_",
-    audits: ["https://docs.pooltogether.com/security/audits-and-testing"],
+    audit_links: ["https://docs.pooltogether.com/security/audits-and-testing"],
   },
   {
     id: "240",
@@ -2571,7 +2571,7 @@ export default [
     chains: ["Ethereum"],
     module: "flamincome.js",
     twitter: "flamincome",
-    audits: ["https://github.com/flamincome/audits"],
+    audit_links: ["https://github.com/flamincome/audits"],
   },
   {
     id: "244",
@@ -2591,7 +2591,7 @@ export default [
     chains: ["Ethereum", "OKExChain", "Binance"],
     module: "wepiggy.js",
     twitter: "wepiggydotcom",
-    audits: ["https://github.com/WePiggy/wepiggy-contracts/tree/master/docs/audits"],
+    audit_links: ["https://github.com/WePiggy/wepiggy-contracts/tree/master/docs/audits"],
   },
   {
     id: "245",
@@ -2784,7 +2784,7 @@ export default [
     chains: ["Binance"],
     module: "bunny/index.js",
     twitter: "PancakeBunnyFin",
-    audits: ["https://github.com/PancakeBunny-finance/Bunny/blob/main/audits/%5BHAECHI%20AUDIT%5D%20PancakeBunny%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf"],
+    audit_links: ["https://github.com/PancakeBunny-finance/Bunny/blob/main/audits/%5BHAECHI%20AUDIT%5D%20PancakeBunny%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf"],
   },
   {
     id: "255",
@@ -2804,7 +2804,7 @@ export default [
     chains: ["Ethereum"],
     module: "fei/index.js",
     twitter: "feiprotocol",
-    audits: ["https://docs.fei.money/audit"],
+    audit_links: ["https://docs.fei.money/audit"],
   },
   {
     id: "256",
@@ -2899,7 +2899,7 @@ export default [
     chains: ["Terra", "Ethereum"],
     module: "mirror/index.js",
     twitter: "mirror_protocol",
-    audits: ["https://docsend.com/view/p4es2dgvwadamgqg"],
+    audit_links: ["https://docsend.com/view/p4es2dgvwadamgqg"],
   },
   {
     id: "261",
@@ -2994,7 +2994,7 @@ export default [
     chains: ["Ethereum"],
     module: "reflexer/index.js",
     twitter: "reflexerfinance",
-    audits: ["https://reflexer.finance/about/"],
+    audit_links: ["https://reflexer.finance/about/"],
     forkedFrom: ["Dai"]
   },
   {
@@ -3015,7 +3015,7 @@ export default [
     chains: ["Ethereum"],
     module: "set-protocol/index.js",
     twitter: "SetProtocol",
-    audits: ["https://www.tokensets.com/security"],
+    audit_links: ["https://www.tokensets.com/security"],
   },
   {
     id: "267",
@@ -3091,7 +3091,7 @@ export default [
     chains: ["Ethereum"],
     module: "liquity/index.js",
     twitter: "LiquityProtocol",
-    audits: ["https://github.com/trailofbits/publications/blob/master/reviews/Liquity.pdf","https://www.coinspect.com/liquity-audit/"],
+    audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/Liquity.pdf","https://www.coinspect.com/liquity-audit/"],
   },
   {
     id: "271",
@@ -3223,7 +3223,7 @@ export default [
     chains: ["Ethereum"],
     module: "stakewise/index.js",
     twitter: "stakewise_io",
-    audits: ["https://github.com/stakewise/contracts/tree/master/audits"],
+    audit_links: ["https://github.com/stakewise/contracts/tree/master/audits"],
   },
   {
     id: "278",
@@ -3242,7 +3242,7 @@ export default [
     chains: ["Ethereum"],
     module: "ankr/index.js",
     twitter: "ankr",
-    audits: ["https://assets.ankr.com/files/stkr_smart_contract_auditing_report.pdf"],
+    audit_links: ["https://assets.ankr.com/files/stkr_smart_contract_auditing_report.pdf"],
   },
   {
     id: "279",
@@ -3261,7 +3261,7 @@ export default [
     chains: ["Ethereum"],
     module: "stakehound/index.js",
     twitter: "stakedTokens",
-    audits: ["https://stakehound.com/wp-content/uploads/2020/12/StakeHound-Quantstamp-audit-report.pdf"],
+    audit_links: ["https://stakehound.com/wp-content/uploads/2020/12/StakeHound-Quantstamp-audit-report.pdf"],
   },
   {
     id: "280",
@@ -3486,7 +3486,7 @@ export default [
     chains: ["Ethereum"],
     module: "integral/index.js",
     twitter: "ProfessorJEY",
-    audits: ["https://docs.integral.link/library/audit-reports"],
+    audit_links: ["https://docs.integral.link/library/audit-reports"],
   },
   {
     id: "292",
@@ -3542,7 +3542,7 @@ export default [
     chains: ["Terra"],
     module: "anchor/index.js",
     twitter: "terra_money",
-    audits: ["https://www.certik.org/projects/terra"],
+    audit_links: ["https://www.certik.org/projects/terra"],
   },
   {
     id: "295",
@@ -3677,7 +3677,7 @@ export default [
     chains: ["Binance"],
     module: "nerve/index.js",
     twitter: "NerveFinance",
-    audits: ["https://docs.nerve.fi/fundamentals/audits-and-security"],
+    audit_links: ["https://docs.nerve.fi/fundamentals/audits-and-security"],
   },
   {
     id: "302",
@@ -3735,7 +3735,7 @@ export default [
     chains: ["NEO"],
     module: "flamingo.js",
     twitter: "FlamingoFinance",
-    audits: ["https://github.com/flamingo-finance/flamingo-audit"],
+    audit_links: ["https://github.com/flamingo-finance/flamingo-audit"],
   },
   {
     id: "305",
@@ -3774,7 +3774,7 @@ export default [
     chains: ["Polygon"],
     module: "quickswap2/index.js",
     twitter: "QuickswapDEX",
-    audits: ["https://contractsecurity.io/quick-audit-report/"],
+    audit_links: ["https://contractsecurity.io/quick-audit-report/"],
     forkedFrom: ["UniSwap"],
   },
   {
@@ -3795,7 +3795,7 @@ export default [
     chains: ["Binance"],
     module: "wault.js",
     twitter: "Wault_Finance",
-    audits: ["https://docs.wault.finance/resources/transparency"],
+    audit_links: ["https://docs.wault.finance/resources/transparency"],
   },
   {
     id: "308",
@@ -3853,7 +3853,7 @@ export default [
     chains: ["Binance"],
     module: "belt/index.js",
     twitter: "BELT_Finance",
-    audits: ["https://github.com/BeltFi/belt-contract/tree/main/audit"],
+    audit_links: ["https://github.com/BeltFi/belt-contract/tree/main/audit"],
   },
   {
     id: "311",
@@ -4026,7 +4026,7 @@ export default [
     chains: ["Ethereum"],
     module: "convex/index.js",
     twitter: "ConvexFinance",
-    audits: ["https://github.com/convex-eth/platform/blob/main/audit/Convex%20Platform%20Security%20Audit%20Report.pdf"],
+    audit_links: ["https://github.com/convex-eth/platform/blob/main/audit/Convex%20Platform%20Security%20Audit%20Report.pdf"],
   },
   {
     id: "320",
@@ -4046,7 +4046,7 @@ export default [
     chains: ["Heco"],
     module: "depth/index.js",
     twitter: "DepthFi",
-    audits: ["https://docs.depth.fi/audit"],
+    audit_links: ["https://docs.depth.fi/audit"],
   },
   // 321 reserved for deprecated version of pancakeswap
   {
@@ -4124,7 +4124,7 @@ export default [
     chains: ["Ethereum"],
     module: "unicly/index.js",
     twitter: "uniclyNFT",
-    audits: ["https://github.com/uniclyNFT/Resources/blob/main/Unicly%20Security%20Audit.pdf"],
+    audit_links: ["https://github.com/uniclyNFT/Resources/blob/main/Unicly%20Security%20Audit.pdf"],
     forkedFrom: ["SushiSwap"],
   },
   {
@@ -4164,7 +4164,7 @@ export default [
     chains: ["Binance", "Polygon", "Avalanche", "Heco", "Fantom"],
     module: "beefy/index.js",
     twitter: "beefyfinance",
-    audits: ["https://github.com/beefyfinance/beefy-audits"]
+    audit_links: ["https://github.com/beefyfinance/beefy-audits"]
   },
   {
     id: "327",
@@ -4222,7 +4222,7 @@ export default [
     chains: ["RSK"],
     module: "sovryn.js",
     twitter: "SovrynBTC",
-    audits: ["https://www.sovryn.app/library"]
+    audit_links: ["https://www.sovryn.app/library"]
   },
   {
     id: "330",
@@ -4299,7 +4299,7 @@ export default [
     chains: ["PolyNetwork"],
     module: "o3swap.js",
     twitter: "O3_Labs",
-    audits: ["https://certik-public-assets.s3.amazonaws.com/CertiK+Security+Assessment+for+O3+Swap.pdf"]
+    audit_links: ["https://certik-public-assets.s3.amazonaws.com/CertiK+Security+Assessment+for+O3+Swap.pdf"]
   },
   {
     id: "334",
@@ -4319,7 +4319,7 @@ export default [
     chains: ["Binance", "Heco"],
     module: "mdex/index.js",
     twitter: "Mdextech",
-    audits: ["https://mdex.com/slowmist_bsc.pdf","https://mdex.com/fairyproof_bsc.pdf","https://mdex.com/certik_bsc.pdf"]
+    audit_links: ["https://mdex.com/slowmist_bsc.pdf","https://mdex.com/fairyproof_bsc.pdf","https://mdex.com/certik_bsc.pdf"]
   },
   {
     id: "335",
@@ -4529,7 +4529,7 @@ export default [
     chains: ["Binance"],
     module: "alpacafinance/index.js",
     twitter: "AlpacaFinance",
-    audits: ["https://github.com/alpaca-finance/bsc-alpaca-contract/tree/main/audits"]
+    audit_links: ["https://github.com/alpaca-finance/bsc-alpaca-contract/tree/main/audits"]
   },
   {
     id: "346",
@@ -4587,7 +4587,7 @@ export default [
     chains: ["Heco"],
     module: "filda/index.js",
     twitter: "FilDAFinance",
-    audits: ["https://www.slowmist.com/en/security-audit-certificate.html?id=c6eb91a0f506aac62c334eb909a37f95e236987d3b3089c9ff902e6c39f16389","https://docs.filda.io/zhong-wen/dong-tai-geng-xin/2021112-geng-xin-update#filda-passed-the-security-audit-of-knownsec"]
+    audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=c6eb91a0f506aac62c334eb909a37f95e236987d3b3089c9ff902e6c39f16389","https://docs.filda.io/zhong-wen/dong-tai-geng-xin/2021112-geng-xin-update#filda-passed-the-security-audit-of-knownsec"]
   },
   {
     id: "349",
@@ -4740,7 +4740,7 @@ export default [
     chains: ["Binance"],
     module: "dopplefinance/index.js",
     twitter: "dopplefi",
-    audits: ["https://dopple.gitbook.io/dopple-finance/certik-audit"]
+    audit_links: ["https://dopple.gitbook.io/dopple-finance/certik-audit"]
   },
   {
     id: "357",

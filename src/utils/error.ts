@@ -8,7 +8,7 @@ export function reportError(message: string, protocolName: string) {
   Sentry.AWSLambda.captureException(error, scope);
 }
 
-export function reportErrorObject(error: Error, tag:string, value: string) {
+export function reportErrorObject(error: Error, tag: string, value: string) {
   const scope = new Sentry.Scope();
   scope.setTag(tag, value);
   Sentry.AWSLambda.captureException(error, scope);

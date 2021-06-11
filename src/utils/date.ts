@@ -15,12 +15,12 @@ export function getTimestampAtStartOfDay(timestamp: number) {
 
 export function getDay(timestamp: number | undefined): string {
   if (timestamp == undefined) {
-    return 'none';
+    return "none";
   }
   var dt = new Date(timestamp * 1000);
-  return dt.toDateString()
+  return dt.toDateString();
 }
 
-export function toUNIXTimestamp(ms:number){
-  return Math.round(ms/1000);
+export function toUNIXTimestamp(ms: number) {
+  return Math.round(ms / 1000);
 }

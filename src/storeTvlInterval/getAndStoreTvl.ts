@@ -11,7 +11,7 @@ import {
   dailyTokensTvl,
   dailyUsdTokensTvl,
 } from "../utils/getLastRecord";
-import computeTVL from './computeTVL'
+import computeTVL from "./computeTVL";
 
 export async function storeTvl(
   unixTimestamp: number,
@@ -44,8 +44,8 @@ export async function storeTvl(
           const container =
             chain === "tvl" || chain === "fetch" ? module : value;
           const storedKey = chain === "fetch" ? "tvl" : chain;
-          if (typeof container !== 'object' || container === null) {
-            return
+          if (typeof container !== "object" || container === null) {
+            return;
           }
           if (container.tvl) {
             const tvlBalances = await container.tvl(
@@ -53,8 +53,12 @@ export async function storeTvl(
               ethBlock,
               chainBlocks
             );
-            const isStandard = Object.entries(tvlBalances).every(balance => balance[0].includes('0x') && typeof balance[1] === 'string') && useCurrentPrices;
-            let tvlPromise: ReturnType<typeof util.computeTVL>
+            const isStandard =
+              Object.entries(tvlBalances).every(
+                (balance) =>
+                  balance[0].includes("0x") && typeof balance[1] === "string"
+              ) && useCurrentPrices;
+            let tvlPromise: ReturnType<typeof util.computeTVL>;
             if (isStandard) {
               tvlPromise = computeTVL(tvlBalances);
             } else {
@@ -102,15 +106,10 @@ export async function storeTvl(
     }
 
     if (runBeforeStore !== undefined) {
-      await runBeforeStore()
+      await runBeforeStore();
     }
     try {
-      await storeNewTvl(
-        protocol,
-        unixTimestamp,
-        usdTvls,
-        storePreviousData
-      ); // Checks circuit breakers
+      await storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData); // Checks circuit breakers
 
       const storeTokensAction = storeNewTokensValueLocked(
         protocol,
@@ -129,10 +128,7 @@ export async function storeTvl(
         storePreviousData
       );
 
-      await Promise.all([
-        storeTokensAction,
-        storeUsdTokensAction,
-      ]);
+      await Promise.all([storeTokensAction, storeUsdTokensAction]);
     } catch (e) {
       console.error(protocol.name, e);
       const scope = new Sentry.Scope();

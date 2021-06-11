@@ -45,7 +45,11 @@ export default [
     chains: ["Ethereum"],
     module: "uniswap/index.js",
     twitter: "Uniswap",
-    audit_links: ["https://github.com/Uniswap/uniswap-v3-core/tree/main/audits", "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits", "https://github.com/ConsenSys/Uniswap-audit-report-2018-12"],
+    audit_links: [
+      "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",
+      "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits",
+      "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
+    ],
   },
   {
     id: "2",
@@ -124,7 +128,9 @@ export default [
     chains: ["Ethereum"],
     module: "harvest.js",
     twitter: "harvest_finance",
-    audit_links: ["https://github.com/harvest-finance/harvest/tree/master/audits"],
+    audit_links: [
+      "https://github.com/harvest-finance/harvest/tree/master/audits",
+    ],
   },
   {
     id: "113",
@@ -264,7 +270,9 @@ export default [
     chains: ["Ethereum", "Polygon", "Fantom", "Binance", "xDai", "Heco"],
     module: "sushiswap/index.js",
     twitter: "SushiSwap",
-    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf"],
+    audit_links: [
+      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf",
+    ],
     forkedFrom: ["UniSwap"],
   },
   {
@@ -285,7 +293,9 @@ export default [
     chains: ["Ethereum"],
     module: "instadapp.js",
     twitter: "Instadapp",
-    audit_links: ["https://github.com/Instadapp/dsa-contracts/blob/master/audits/v1_PeckShield_Mar_2020.pdf"],
+    audit_links: [
+      "https://github.com/Instadapp/dsa-contracts/blob/master/audits/v1_PeckShield_Mar_2020.pdf",
+    ],
   },
   {
     id: "121",
@@ -325,7 +335,9 @@ export default [
     chains: ["Ethereum"],
     module: "nexus/index.js",
     twitter: "NexusMutual",
-    audit_links: ["https://nexusmutual.gitbook.io/docs/helpful-resources/audits-and-security"],
+    audit_links: [
+      "https://nexusmutual.gitbook.io/docs/helpful-resources/audits-and-security",
+    ],
   },
   {
     id: "123",
@@ -345,7 +357,9 @@ export default [
     chains: ["Ethereum", "Binance"],
     module: "dforce/index.js",
     twitter: "dForcenet",
-    audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
+    audit_links: [
+      "https://github.com/dforce-network/documents/tree/master/audit_report/Lending",
+    ],
     forkedFrom: ["Compound"],
   },
   {
@@ -365,7 +379,9 @@ export default [
     chains: ["Ethereum"],
     module: "keep.js",
     twitter: null,
-    audit_links: ["https://consensys.net/diligence/audits/2020/02/thesis-tbtc-and-keep/"],
+    audit_links: [
+      "https://consensys.net/diligence/audits/2020/02/thesis-tbtc-and-keep/",
+    ],
   },
   {
     id: "125",
@@ -404,7 +420,9 @@ export default [
     chains: ["Ethereum"],
     module: "loopring/index.js",
     twitter: "loopringorg",
-    audit_links: ["https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf"],
+    audit_links: [
+      "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
+    ],
   },
   {
     id: "127",
@@ -500,7 +518,9 @@ export default [
     chains: ["Ethereum"],
     module: "barnbridge/index.js",
     twitter: "Barn_Bridge",
-    audit_links: ["https://docs.barnbridge.com/beginners-guide-to-smart-yield#is-it-secure-to-invest-in-smart-yield"],
+    audit_links: [
+      "https://docs.barnbridge.com/beginners-guide-to-smart-yield#is-it-secure-to-invest-in-smart-yield",
+    ],
   },
   {
     id: "132",
@@ -599,7 +619,9 @@ export default [
     chains: ["Ethereum"],
     module: "rari.js",
     twitter: "RariCapital",
-    audit_links: ["https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7"],
+    audit_links: [
+      "https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7",
+    ],
   },
   {
     id: "137",
@@ -729,12 +751,15 @@ export default [
     audits: "2",
     audit_note: null,
     gecko_id: "amp-token",
-    cmcId: "6945" ,
+    cmcId: "6945",
     category: null,
     chains: ["Ethereum"],
     module: "flexa.js",
     twitter: "amptoken",
-    audit_links: ["https://consensys.net/diligence/audits/2020/06/amp","https://github.com/trailofbits/publications/blob/master/reviews/amp.pdf"],
+    audit_links: [
+      "https://consensys.net/diligence/audits/2020/06/amp",
+      "https://github.com/trailofbits/publications/blob/master/reviews/amp.pdf",
+    ],
   },
   {
     id: "144",
@@ -1039,7 +1064,9 @@ export default [
     chains: ["Ethereum"],
     module: "boringdao.js",
     twitter: "TheBoringDAO",
-    audit_links: ["https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf"],
+    audit_links: [
+      "https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf",
+    ],
   },
   {
     id: "162",
@@ -1249,7 +1276,7 @@ export default [
     chains: ["Ethereum"],
     module: "indexcoop/index.js",
     twitter: "indexcoop",
-    forkedFrom: ["UniSwap", "Compound Finance","Set Protocol"],
+    forkedFrom: ["UniSwap", "Compound Finance", "Set Protocol"],
   },
   {
     id: "173",
@@ -1269,7 +1296,9 @@ export default [
     chains: ["Ethereum"],
     module: "badgerdao.js",
     twitter: "BadgerDAO",
-    audit_links: ["https://badger.finance/wp-content/uploads/2021/01/HAECHI-AUDIT-BadgerDAO-Smart-Contract-Audit-Report-1.pdf"],
+    audit_links: [
+      "https://badger.finance/wp-content/uploads/2021/01/HAECHI-AUDIT-BadgerDAO-Smart-Contract-Audit-Report-1.pdf",
+    ],
   },
   {
     id: "174",
@@ -1425,7 +1454,9 @@ export default [
     chains: ["Ethereum"],
     module: "mantradao.js",
     twitter: "MANTRADAO",
-    audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=1193264f67af7c2bb840306b82eff6218471cf4fbed79a7d48d6a01a93030e35"],
+    audit_links: [
+      "https://www.slowmist.com/en/security-audit-certificate.html?id=1193264f67af7c2bb840306b82eff6218471cf4fbed79a7d48d6a01a93030e35",
+    ],
   },
   {
     id: "182",
@@ -1559,7 +1590,9 @@ export default [
     chains: ["Ethereum"],
     module: "1inch.js",
     twitter: "1inchNetwork",
-    audit_links: ["https://help.1inch.io/en/articles/4585088-how-secure-is-1inch"],
+    audit_links: [
+      "https://help.1inch.io/en/articles/4585088-how-secure-is-1inch",
+    ],
   },
   {
     id: "190",
@@ -1663,8 +1696,7 @@ export default [
     address: "0x20c36f062a31865bed8a5b1e512d9a1a20aa333a",
     symbol: "DFD",
     url: "https://dusd.finance/",
-    description:
-      "DefiDollar is a Multichain DeFi Protocol Lab",
+    description: "DefiDollar is a Multichain DeFi Protocol Lab",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/defidollar.svg`,
     audits: "2",
@@ -1885,7 +1917,9 @@ export default [
     chains: ["Ethereum"],
     module: "unslashed.js",
     twitter: "UnslashedF",
-    audit_links: ["https://documentation.unslashed.finance/risks-and-security/audits"],
+    audit_links: [
+      "https://documentation.unslashed.finance/risks-and-security/audits",
+    ],
   },
   {
     id: "208",
@@ -1946,7 +1980,9 @@ export default [
     chains: ["Ethereum"],
     module: "yaxis.js",
     twitter: "yaxis_project",
-    audit_links: ["https://github.com/yaxis-project/metavault/tree/main/audits"],
+    audit_links: [
+      "https://github.com/yaxis-project/metavault/tree/main/audits",
+    ],
   },
   {
     id: "211",
@@ -1986,7 +2022,7 @@ export default [
     module: "venus.js",
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
-    forkedFrom: ["Compound","MakerDAO"],
+    forkedFrom: ["Compound", "MakerDAO"],
   },
   {
     id: "213",
@@ -2475,7 +2511,9 @@ export default [
     chains: ["Binance"],
     module: "ellipsis.js",
     twitter: "Ellipsisfi",
-    audit_links: ["https://github.com/ellipsis-finance/ellipsis-audits/blob/master/010421_Hacken_Ellipsis_SC_Audit_Report.pdf"],
+    audit_links: [
+      "https://github.com/ellipsis-finance/ellipsis-audits/blob/master/010421_Hacken_Ellipsis_SC_Audit_Report.pdf",
+    ],
     forkedFrom: ["Curve Finance"],
   },
   {
@@ -2591,7 +2629,9 @@ export default [
     chains: ["Ethereum", "OKExChain", "Binance"],
     module: "wepiggy.js",
     twitter: "wepiggydotcom",
-    audit_links: ["https://github.com/WePiggy/wepiggy-contracts/tree/master/docs/audits"],
+    audit_links: [
+      "https://github.com/WePiggy/wepiggy-contracts/tree/master/docs/audits",
+    ],
   },
   {
     id: "245",
@@ -2630,7 +2670,6 @@ export default [
     module: "pangolin/index.js",
     twitter: "pangolindex",
     forkedFrom: ["UniSwap"],
-      
   },
   {
     id: "247",
@@ -2784,7 +2823,9 @@ export default [
     chains: ["Binance"],
     module: "bunny/index.js",
     twitter: "PancakeBunnyFin",
-    audit_links: ["https://github.com/PancakeBunny-finance/Bunny/blob/main/audits/%5BHAECHI%20AUDIT%5D%20PancakeBunny%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf"],
+    audit_links: [
+      "https://github.com/PancakeBunny-finance/Bunny/blob/main/audits/%5BHAECHI%20AUDIT%5D%20PancakeBunny%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf",
+    ],
   },
   {
     id: "255",
@@ -2995,7 +3036,7 @@ export default [
     module: "reflexer/index.js",
     twitter: "reflexerfinance",
     audit_links: ["https://reflexer.finance/about/"],
-    forkedFrom: ["Dai"]
+    forkedFrom: ["Dai"],
   },
   {
     id: "266",
@@ -3091,7 +3132,10 @@ export default [
     chains: ["Ethereum"],
     module: "liquity/index.js",
     twitter: "LiquityProtocol",
-    audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/Liquity.pdf","https://www.coinspect.com/liquity-audit/"],
+    audit_links: [
+      "https://github.com/trailofbits/publications/blob/master/reviews/Liquity.pdf",
+      "https://www.coinspect.com/liquity-audit/",
+    ],
   },
   {
     id: "271",
@@ -3242,7 +3286,9 @@ export default [
     chains: ["Ethereum"],
     module: "ankr/index.js",
     twitter: "ankr",
-    audit_links: ["https://assets.ankr.com/files/stkr_smart_contract_auditing_report.pdf"],
+    audit_links: [
+      "https://assets.ankr.com/files/stkr_smart_contract_auditing_report.pdf",
+    ],
   },
   {
     id: "279",
@@ -3261,7 +3307,9 @@ export default [
     chains: ["Ethereum"],
     module: "stakehound/index.js",
     twitter: "stakedTokens",
-    audit_links: ["https://stakehound.com/wp-content/uploads/2020/12/StakeHound-Quantstamp-audit-report.pdf"],
+    audit_links: [
+      "https://stakehound.com/wp-content/uploads/2020/12/StakeHound-Quantstamp-audit-report.pdf",
+    ],
   },
   {
     id: "280",
@@ -3685,8 +3733,7 @@ export default [
     address: "fantom:0x841fad6eae12c286d1fd18d1d525dffa75c7effe",
     symbol: "BOO",
     url: "https://spookyswap.finance/",
-    description:
-      "Automated Market Maker.",
+    description: "Automated Market Maker.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/spooky.jpg`,
     audits: "3",
@@ -3704,8 +3751,7 @@ export default [
     address: null,
     symbol: "ZWAP",
     url: "https://zilswap.io/swap",
-    description:
-      "Decentralised exchange for ZRC2 tokens on Zilliqa.",
+    description: "Decentralised exchange for ZRC2 tokens on Zilliqa.",
     chain: "Zilliqa",
     logo: `${baseIconsUrl}/zilswap.png`,
     audits: "2",
@@ -3723,8 +3769,7 @@ export default [
     address: null,
     symbol: "FLM",
     url: "https://flamingo.finance/",
-    description:
-      "An Interoperable Full-Stack DeFi Protocol on Neo",
+    description: "An Interoperable Full-Stack DeFi Protocol on Neo",
     chain: "NEO",
     logo: `${baseIconsUrl}/flamingo.jpg`,
     audits: "2",
@@ -3743,8 +3788,7 @@ export default [
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
     url: "https://uniswap.org/",
-    description:
-      "AMM with concentrated liquidity positions",
+    description: "AMM with concentrated liquidity positions",
     chain: "Ethereum",
     logo: null,
     audits: "2",
@@ -3762,8 +3806,7 @@ export default [
     address: "0x6c28aef8977c9b773996d0e8376d2ee379446f2f",
     symbol: "QUICK",
     url: "https://quickswap.exchange/",
-    description:
-      "AMM",
+    description: "AMM",
     chain: "Polygon",
     logo: `${baseIconsUrl}/quickswap.jpg`,
     audits: "3",
@@ -3783,8 +3826,7 @@ export default [
     address: "bsc:0xa9c41a46a6b3531d28d5c32f6633dd2ff05dfb90",
     symbol: "WEX",
     url: "https://wault.finance/",
-    description:
-      "Yield products",
+    description: "Yield products",
     chain: "Binance",
     logo: `${baseIconsUrl}/wault.jpg`,
     audits: "0",
@@ -3803,8 +3845,7 @@ export default [
     address: "0x2aeccb42482cc64e087b6d2e5da39f5a7a7001f8",
     symbol: "RULER",
     url: "https://rulerprotocol.com/",
-    description:
-      "No-liquidation lending protocol",
+    description: "No-liquidation lending protocol",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ruler.jpg`,
     audits: "2",
@@ -3841,8 +3882,7 @@ export default [
     address: "bsc:0xe0e514c71282b6f4e823703a39374cf58dc3ea4f",
     symbol: "BELT",
     url: "https://belt.fi/",
-    description:
-      "Yield aggregator + AMM",
+    description: "Yield aggregator + AMM",
     chain: "Binance",
     logo: `${baseIconsUrl}/belt.png`,
     audits: "2",
@@ -3861,8 +3901,7 @@ export default [
     address: "fantom:0x5cc61a78f164885776aa610fb0fe1257df78e59b",
     symbol: "SPIRIT",
     url: "https://app.spiritswap.finance/#/",
-    description:
-      "AMM",
+    description: "AMM",
     chain: "Fantom",
     logo: `${baseIconsUrl}/spirit.jpg`,
     audits: "3",
@@ -3938,8 +3977,7 @@ export default [
     address: "TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
     symbol: "TULIP",
     url: "https://solfarm.io",
-    description:
-      "The Efficient Solana Yield Aggregator",
+    description: "The Efficient Solana Yield Aggregator",
     chain: "Solana",
     logo: `${baseIconsUrl}/solfarm.svg`,
     audits: "0",
@@ -3976,8 +4014,7 @@ export default [
     address: "-",
     symbol: null,
     url: "https://hyperjump.fi/home-ftm.html",
-    description:
-      "AMM",
+    description: "AMM",
     chain: "Fantom",
     logo: `${baseIconsUrl}/hyperjump.jpg`,
     audits: "3",
@@ -3995,8 +4032,7 @@ export default [
     address: "0x9695e0114e12c0d3a3636fab5a18e6b737529023",
     symbol: "DFYN",
     url: "https://www.dfyn.network/",
-    description:
-      "AMM",
+    description: "AMM",
     chain: "Polygon",
     logo: `${baseIconsUrl}/dfyn.jpg`,
     audits: "3",
@@ -4026,7 +4062,9 @@ export default [
     chains: ["Ethereum"],
     module: "convex/index.js",
     twitter: "ConvexFinance",
-    audit_links: ["https://github.com/convex-eth/platform/blob/main/audit/Convex%20Platform%20Security%20Audit%20Report.pdf"],
+    audit_links: [
+      "https://github.com/convex-eth/platform/blob/main/audit/Convex%20Platform%20Security%20Audit%20Report.pdf",
+    ],
   },
   {
     id: "320",
@@ -4124,7 +4162,9 @@ export default [
     chains: ["Ethereum"],
     module: "unicly/index.js",
     twitter: "uniclyNFT",
-    audit_links: ["https://github.com/uniclyNFT/Resources/blob/main/Unicly%20Security%20Audit.pdf"],
+    audit_links: [
+      "https://github.com/uniclyNFT/Resources/blob/main/Unicly%20Security%20Audit.pdf",
+    ],
     forkedFrom: ["SushiSwap"],
   },
   {
@@ -4153,7 +4193,7 @@ export default [
     symbol: "BIFI",
     url: "https://app.beefy.finance",
     description:
-      'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings. Through a set of investment strategies secured and enforced by smart contracts, Beefy Finance automatically maximizes the user rewards from various liquidity pools (LPs),‌ ‌automated market making (AMM) projects,‌ ‌and‌ ‌other yield‌ farming ‌opportunities in the DeFi ecosystem.',
+      "Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings. Through a set of investment strategies secured and enforced by smart contracts, Beefy Finance automatically maximizes the user rewards from various liquidity pools (LPs),‌ ‌automated market making (AMM) projects,‌ ‌and‌ ‌other yield‌ farming ‌opportunities in the DeFi ecosystem.",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/beefy.png`,
     audits: "2",
@@ -4164,7 +4204,7 @@ export default [
     chains: ["Binance", "Polygon", "Avalanche", "Heco", "Fantom"],
     module: "beefy/index.js",
     twitter: "beefyfinance",
-    audit_links: ["https://github.com/beefyfinance/beefy-audits"]
+    audit_links: ["https://github.com/beefyfinance/beefy-audits"],
   },
   {
     id: "327",
@@ -4172,8 +4212,7 @@ export default [
     address: "heco:0x9364e119ad76e0346126afcbdf5c9f0189500cc5",
     symbol: "YOU",
     url: "https://www.youswap.com/",
-    description:
-      'AMM',
+    description: "AMM",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/youswap.jpg`,
     audits: "3",
@@ -4191,8 +4230,7 @@ export default [
     address: "bsc:0xbb53fcab7a3616c5be33b9c0af612f0462b01734",
     symbol: "SBF",
     url: "https://steakbank.finance/",
-    description:
-      'Liquid staking for BNB',
+    description: "Liquid staking for BNB",
     chain: "Binance",
     logo: `${baseIconsUrl}/steakbank.jpg`,
     audits: "2",
@@ -4211,7 +4249,7 @@ export default [
     symbol: "SOV",
     url: "https://www.sovryn.app/",
     description:
-      'Sovryn is a non-custodial and permission-less smart contract based system for bitcoin lending, borrowing and margin trading.',
+      "Sovryn is a non-custodial and permission-less smart contract based system for bitcoin lending, borrowing and margin trading.",
     chain: "RSK",
     logo: `${baseIconsUrl}/sovryn.svg`,
     audits: "2",
@@ -4222,7 +4260,7 @@ export default [
     chains: ["RSK"],
     module: "sovryn.js",
     twitter: "SovrynBTC",
-    audit_links: ["https://www.sovryn.app/library"]
+    audit_links: ["https://www.sovryn.app/library"],
   },
   {
     id: "330",
@@ -4231,7 +4269,7 @@ export default [
     symbol: "AQU",
     url: "https://aquarius.fi/",
     description:
-      'Aquarius is a decentralized borrowing protocol with interest-free loans, high capital efficiency. we expect Aquarius to be the next MakerDao in the Fantom.',
+      "Aquarius is a decentralized borrowing protocol with interest-free loans, high capital efficiency. we expect Aquarius to be the next MakerDao in the Fantom.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/aquarius.jpg`,
     audits: "3",
@@ -4250,7 +4288,7 @@ export default [
     symbol: "MOC",
     url: "https://moneyonchain.com/",
     description:
-      'Money On Chain is a self-contained DeFi protocol (a stablecoin, HODL token, leveraging mechanism, and more) which empowers Bitcoiners to improve performance of their assets while also retaining full control of their private keys.',
+      "Money On Chain is a self-contained DeFi protocol (a stablecoin, HODL token, leveraging mechanism, and more) which empowers Bitcoiners to improve performance of their assets while also retaining full control of their private keys.",
     chain: "RSK",
     logo: `${baseIconsUrl}/moneyonchain.jpg`,
     audits: "2",
@@ -4269,7 +4307,7 @@ export default [
     symbol: "BAO",
     url: "https://www.bao.finance/",
     description:
-      'Bao Finance is like a combination of SNX and Aave, but use LP tokens for collateral. Rather than re-invent the wheel, Bao will create new features for existing DeFi protocols. The BAO token acts as a governance token for the fully community run project. It is also backed by the insurance fund where all Bao fees go.',
+      "Bao Finance is like a combination of SNX and Aave, but use LP tokens for collateral. Rather than re-invent the wheel, Bao will create new features for existing DeFi protocols. The BAO token acts as a governance token for the fully community run project. It is also backed by the insurance fund where all Bao fees go.",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/bao.png`,
     audits: "0",
@@ -4287,8 +4325,7 @@ export default [
     address: "0xee9801669c6138e84bd50deb500827b776777d28",
     symbol: "O3",
     url: "https://o3swap.com/",
-    description:
-      'Multi-chain bridge',
+    description: "Multi-chain bridge",
     chain: "PolyNetwork",
     logo: `${baseIconsUrl}/o3.jpg`,
     audits: "0",
@@ -4299,7 +4336,9 @@ export default [
     chains: ["PolyNetwork"],
     module: "o3swap.js",
     twitter: "O3_Labs",
-    audit_links: ["https://certik-public-assets.s3.amazonaws.com/CertiK+Security+Assessment+for+O3+Swap.pdf"]
+    audit_links: [
+      "https://certik-public-assets.s3.amazonaws.com/CertiK+Security+Assessment+for+O3+Swap.pdf",
+    ],
   },
   {
     id: "334",
@@ -4307,8 +4346,7 @@ export default [
     address: "heco:0x25d2e80cb6b86881fd7e07dd263fb79f4abe033c",
     symbol: "MDX",
     url: "https://mdex.com/",
-    description:
-      'AMM',
+    description: "AMM",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/mdex.png`,
     audits: "0",
@@ -4319,7 +4357,11 @@ export default [
     chains: ["Binance", "Heco"],
     module: "mdex/index.js",
     twitter: "Mdextech",
-    audit_links: ["https://mdex.com/slowmist_bsc.pdf","https://mdex.com/fairyproof_bsc.pdf","https://mdex.com/certik_bsc.pdf"]
+    audit_links: [
+      "https://mdex.com/slowmist_bsc.pdf",
+      "https://mdex.com/fairyproof_bsc.pdf",
+      "https://mdex.com/certik_bsc.pdf",
+    ],
   },
   {
     id: "335",
@@ -4328,7 +4370,7 @@ export default [
     symbol: "FLASH",
     url: "https://flashstake.io/",
     description:
-      'Flashstaking introduces the concept of locking money today and earning money from the future - the time travel of money. All done in a decentralized, instantaneous, and permissionless manner.',
+      "Flashstaking introduces the concept of locking money today and earning money from the future - the time travel of money. All done in a decentralized, instantaneous, and permissionless manner.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/flashstake.png`,
     audits: "2",
@@ -4346,8 +4388,7 @@ export default [
     address: "0x07bac35846e5ed502aa91adf6a9e7aa210f2dcbe",
     symbol: "EROWAN",
     url: "https://sifchain.finance/",
-    description:
-      'The world’s first omni-chain decentralized exchange.',
+    description: "The world’s first omni-chain decentralized exchange.",
     chain: "Sifchain",
     logo: `${baseIconsUrl}/sifchain.png`,
     audits: "2",
@@ -4366,7 +4407,7 @@ export default [
     symbol: "GMT",
     url: "https://gambit.financial/",
     description:
-      'Building a better leverage platform through interest-generating stablecoins. On Gambit, there is no slippage to enter and exit a position. Liquidations only occur through Chainlink price updates so the platform does not have sudden wicks from cascading liquidations.',
+      "Building a better leverage platform through interest-generating stablecoins. On Gambit, there is no slippage to enter and exit a position. Liquidations only occur through Chainlink price updates so the platform does not have sudden wicks from cascading liquidations.",
     chain: "Binance",
     logo: `${baseIconsUrl}/gambit.png`,
     audits: "2",
@@ -4385,7 +4426,7 @@ export default [
     symbol: "INV",
     url: "https://inverse.finance/",
     description:
-      'DeFi Summer was just the beginning. Meet Inverse, part of the new wave of decentralized banking & finance. From a capital-efficient money market, to tokenized synthetic assets, legacy finance is about to be invaded.',
+      "DeFi Summer was just the beginning. Meet Inverse, part of the new wave of decentralized banking & finance. From a capital-efficient money market, to tokenized synthetic assets, legacy finance is about to be invaded.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/inverse.jpg`,
     audits: "0",
@@ -4403,8 +4444,7 @@ export default [
     address: "0xab37e1358b639fd877f015027bb62d3ddaa7557e",
     symbol: "LIEN",
     url: "https://lien.finance/",
-    description:
-      'A protocol for creating Options and Stablecoins out of ETH',
+    description: "A protocol for creating Options and Stablecoins out of ETH",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lien.jpg`,
     audits: "0",
@@ -4423,7 +4463,7 @@ export default [
     symbol: "OHM",
     url: "https://olympusdao.finance/",
     description:
-      '$OHM is a floating algorithmic currency that promotes stability and predictability without a peg.',
+      "$OHM is a floating algorithmic currency that promotes stability and predictability without a peg.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/olympus.jpg`,
     audits: "0",
@@ -4441,8 +4481,7 @@ export default [
     address: "0x20945ca1df56d237fd40036d47e866c7dccd2114",
     symbol: "NSURE",
     url: "https://nsure.network/",
-    description:
-      'Open Insurance Platform for Open Finance',
+    description: "Open Insurance Platform for Open Finance",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/nsure.jpg`,
     audits: "0",
@@ -4461,7 +4500,7 @@ export default [
     symbol: "COMFI",
     url: "https://compli.fi/",
     description:
-      'Decentralised derivatives. No defaults, no margin calls, no liquidations.',
+      "Decentralised derivatives. No defaults, no margin calls, no liquidations.",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/complifi.jpg`,
     audits: "2",
@@ -4480,7 +4519,7 @@ export default [
     symbol: "IMX",
     url: "https://impermax.finance/",
     description:
-      'Impermax is a DeFi ecosystem that enables liquidity providers to leverage their LP tokens',
+      "Impermax is a DeFi ecosystem that enables liquidity providers to leverage their LP tokens",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/impermax.jpg`,
     audits: "0",
@@ -4498,8 +4537,7 @@ export default [
     address: "0xe4815ae53b124e7263f08dcdbbb757d41ed658c6",
     symbol: "ZKS",
     url: "https://zks.org/en",
-    description:
-      'ZKSwap is a ZK-Rollups based layer-2 DEX with AMM model.',
+    description: "ZKSwap is a ZK-Rollups based layer-2 DEX with AMM model.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/zkswap.jpg`,
     audits: "0",
@@ -4517,8 +4555,7 @@ export default [
     address: "bsc:0x8f0528ce5ef7b51152a59745befdd91d97091d2f",
     symbol: "ALPACA",
     url: "https://www.alpacafinance.org/",
-    description:
-      'The 1st leveraged yield farming protocol on BSC',
+    description: "The 1st leveraged yield farming protocol on BSC",
     chain: "Binance",
     logo: `${baseIconsUrl}/alpaca.jpg`,
     audits: "0",
@@ -4529,7 +4566,9 @@ export default [
     chains: ["Binance"],
     module: "alpacafinance/index.js",
     twitter: "AlpacaFinance",
-    audit_links: ["https://github.com/alpaca-finance/bsc-alpaca-contract/tree/main/audits"]
+    audit_links: [
+      "https://github.com/alpaca-finance/bsc-alpaca-contract/tree/main/audits",
+    ],
   },
   {
     id: "346",
@@ -4538,7 +4577,7 @@ export default [
     symbol: "YLDY",
     url: "https://yieldly.finance/",
     description:
-      'Yieldly is a suite of DeFi apps on the Algorand blockchain, including no-loss prize games, multi-asset staking, and cross-chain swapping.',
+      "Yieldly is a suite of DeFi apps on the Algorand blockchain, including no-loss prize games, multi-asset staking, and cross-chain swapping.",
     chain: "Algorand",
     logo: `${baseIconsUrl}/yieldly.png`,
     audits: "2",
@@ -4557,7 +4596,7 @@ export default [
     symbol: "SPELL",
     url: "https://abracadabra.money/",
     description:
-      'Abracadabra.money is a spell book that allows users to produce magic internet money ($MIM) which is a stable coin that you can swap for any other traditional stable coin.',
+      "Abracadabra.money is a spell book that allows users to produce magic internet money ($MIM) which is a stable coin that you can swap for any other traditional stable coin.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mimspell.svg`,
     audits: "0",
@@ -4575,8 +4614,7 @@ export default [
     address: "heco:0xe36ffd17b2661eb57144ceaef942d95295e637f0",
     symbol: "FILDA",
     url: "https://filda.io/",
-    description:
-      'Lending market',
+    description: "Lending market",
     chain: "Heco",
     logo: `${baseIconsUrl}/filda.jpg`,
     audits: "3",
@@ -4587,7 +4625,10 @@ export default [
     chains: ["Heco"],
     module: "filda/index.js",
     twitter: "FilDAFinance",
-    audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=c6eb91a0f506aac62c334eb909a37f95e236987d3b3089c9ff902e6c39f16389","https://docs.filda.io/zhong-wen/dong-tai-geng-xin/2021112-geng-xin-update#filda-passed-the-security-audit-of-knownsec"]
+    audit_links: [
+      "https://www.slowmist.com/en/security-audit-certificate.html?id=c6eb91a0f506aac62c334eb909a37f95e236987d3b3089c9ff902e6c39f16389",
+      "https://docs.filda.io/zhong-wen/dong-tai-geng-xin/2021112-geng-xin-update#filda-passed-the-security-audit-of-knownsec",
+    ],
   },
   {
     id: "349",
@@ -4595,8 +4636,7 @@ export default [
     address: "0xe28b3b32b6c345a34ff64674606124dd5aceca30",
     symbol: "INJ",
     url: "https://injectiveprotocol.com/",
-    description:
-      'Access limitless DeFi markets with zero barriers.',
+    description: "Access limitless DeFi markets with zero barriers.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/injective.jpg`,
     audits: "0",
@@ -4615,7 +4655,7 @@ export default [
     symbol: "GOVI",
     url: "https://cvi.finance/",
     description:
-      'CVI is a Market Fear Index for the Crypto Space - a new DeFi Primitive',
+      "CVI is a Market Fear Index for the Crypto Space - a new DeFi Primitive",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cvi.png`,
     audits: "0",
@@ -4634,7 +4674,7 @@ export default [
     symbol: "GFI",
     url: "https://gravityfinance.io/",
     description:
-      'Gravity Finance is a DeFi platform. Its Governance Token has a true intrinsic value (backed by bitcoin) that employs deflationary tokenomics.',
+      "Gravity Finance is a DeFi platform. Its Governance Token has a true intrinsic value (backed by bitcoin) that employs deflationary tokenomics.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/gravity.png`,
     audits: "0",
@@ -4653,7 +4693,7 @@ export default [
     symbol: "IRON",
     url: "https://iron.finance/",
     description:
-      'Building a multi-chain partial-collateralized algorithmic stablecoin ecosystem.',
+      "Building a multi-chain partial-collateralized algorithmic stablecoin ecosystem.",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/iron.jpg`,
     audits: "0",
@@ -4671,8 +4711,7 @@ export default [
     address: "0x1337def16f9b486faed0293eb623dc8395dfe46a",
     symbol: "ARMOR",
     url: "https://armor.fi/",
-    description:
-      'Insurance',
+    description: "Insurance",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/armor.png`,
     audits: "0",
@@ -4691,7 +4730,7 @@ export default [
     symbol: "INSUR",
     url: "https://www.insurace.io",
     description:
-      'InsurAce is a leading decentralised insurance protocol, providing reliable, robust and secure insurance services to DeFi users, allowing them to secure their investment funds against various risks. Being the 1st in the industry to offer cross-chain portfolio-based covers, InsurAce enables users to get unbeatable low premium. Users can also get sustainable investment returns through InsurAce’s investment portal and gain rewards though the mining program. InsurAce has a live product launched on Ethereum in April 2021 and have built a full-spectrum cross-chain insurance product line, covering protocols, CEX and IDO platform running on Ethereum, Solana, BSC, Heco, Polygon, Fantom and more in the future.',
+      "InsurAce is a leading decentralised insurance protocol, providing reliable, robust and secure insurance services to DeFi users, allowing them to secure their investment funds against various risks. Being the 1st in the industry to offer cross-chain portfolio-based covers, InsurAce enables users to get unbeatable low premium. Users can also get sustainable investment returns through InsurAce’s investment portal and gain rewards though the mining program. InsurAce has a live product launched on Ethereum in April 2021 and have built a full-spectrum cross-chain insurance product line, covering protocols, CEX and IDO platform running on Ethereum, Solana, BSC, Heco, Polygon, Fantom and more in the future.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/InsurAceLogo.svg`,
     audits: "2",
@@ -4710,7 +4749,7 @@ export default [
     symbol: "VISR",
     url: "https://www.visor.finance/",
     description:
-      'Liquidity provisioning and active liquidity management on Uni V3 via utilisation of NFT Smart Vaults',
+      "Liquidity provisioning and active liquidity management on Uni V3 via utilisation of NFT Smart Vaults",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/visor.webp`,
     audits: "0",
@@ -4728,8 +4767,7 @@ export default [
     address: "bsc:0x844fa82f1e54824655470970f7004dd90546bb28",
     symbol: "DOP",
     url: "https://dopple.finance/",
-    description:
-      'Stablecoin DeFi Ecosystem on #BSC',
+    description: "Stablecoin DeFi Ecosystem on #BSC",
     chain: "Binance",
     logo: `${baseIconsUrl}/dopple.jpg`,
     audits: "0",
@@ -4740,7 +4778,7 @@ export default [
     chains: ["Binance"],
     module: "dopplefinance/index.js",
     twitter: "dopplefi",
-    audit_links: ["https://dopple.gitbook.io/dopple-finance/certik-audit"]
+    audit_links: ["https://dopple.gitbook.io/dopple-finance/certik-audit"],
   },
   {
     id: "357",
@@ -4749,7 +4787,7 @@ export default [
     symbol: "MALT",
     url: "https://malt.money/",
     description:
-      'Malt is a yield farmable, incentive-centric algorithmic stable coin.',
+      "Malt is a yield farmable, incentive-centric algorithmic stable coin.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/malt.png`,
     audits: "0",

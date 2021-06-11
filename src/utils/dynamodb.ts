@@ -38,7 +38,7 @@ const dynamodb = {
         RequestItems: {
           [TableName]: {
             Keys: keys,
-          }
+          },
         },
       })
       .promise(),
@@ -47,10 +47,12 @@ const dynamodb = {
 export default dynamodb;
 
 export function getHistoricalValues(pk: string) {
-  return dynamodb.query({
-    ExpressionAttributeValues: {
-      ":pk": pk,
-    },
-    KeyConditionExpression: "PK = :pk",
-  }).then(result => result.Items);
+  return dynamodb
+    .query({
+      ExpressionAttributeValues: {
+        ":pk": pk,
+      },
+      KeyConditionExpression: "PK = :pk",
+    })
+    .then((result) => result.Items);
 }

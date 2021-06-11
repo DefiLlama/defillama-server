@@ -1,7 +1,11 @@
-require('dotenv').config();
+require("dotenv").config();
 import dynamodb from "../utils/dynamodb";
 import { getProtocol, getBlocksRetry } from "./utils";
-import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
+import {
+  dailyTokensTvl,
+  dailyTvl,
+  dailyUsdTokensTvl,
+} from "../utils/getLastRecord";
 import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import {
@@ -19,22 +23,29 @@ async function getFirstDate(dailyTvls: any) {
   );
 }
 
-type DailyItems = (DocumentClient.ItemList | undefined)[]
+type DailyItems = (DocumentClient.ItemList | undefined)[];
 async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
   for (const items of dailyItems) {
-    const itemsOnSameDay = items?.filter(item => getClosestDayStartTimestamp(item.SK) === timestamp) ?? []
+    const itemsOnSameDay =
+      items?.filter(
+        (item) => getClosestDayStartTimestamp(item.SK) === timestamp
+      ) ?? [];
     for (const item of itemsOnSameDay) {
       await dynamodb.delete({
         Key: {
           PK: item.PK,
-          SK: item.SK
-        }
-      })
+          SK: item.SK,
+        },
+      });
     }
   }
 }
 
-async function getAndStore(timestamp: number, protocol: Protocol, dailyItems:DailyItems) {
+async function getAndStore(
+  timestamp: number,
+  protocol: Protocol,
+  dailyItems: DailyItems
+) {
   const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp);
   const tvl = await storeTvl(
     timestamp,
@@ -47,21 +58,25 @@ async function getAndStore(timestamp: number, protocol: Protocol, dailyItems:Dai
     false,
     false,
     true,
-    ()=>deleteItemsOnSameDay(dailyItems, timestamp)
+    () => deleteItemsOnSameDay(dailyItems, timestamp)
   );
   if (tvl === 0) {
-    throw new Error(`Returned 0 TVL at timestamp ${timestamp} (eth block ${ethereumBlock})`)
+    throw new Error(
+      `Returned 0 TVL at timestamp ${timestamp} (eth block ${ethereumBlock})`
+    );
   }
-  console.log(timestamp, new Date(timestamp*1000).toDateString(), tvl);
+  console.log(timestamp, new Date(timestamp * 1000).toDateString(), tvl);
 }
 
 function getDailyItems(pk: string) {
-  return dynamodb.query({
-    ExpressionAttributeValues: {
-      ":pk": pk,
-    },
-    KeyConditionExpression: "PK = :pk",
-  }).then(res => res.Items);
+  return dynamodb
+    .query({
+      ExpressionAttributeValues: {
+        ":pk": pk,
+      },
+      KeyConditionExpression: "PK = :pk",
+    })
+    .then((res) => res.Items);
 }
 
 const batchSize = 2;
@@ -70,12 +85,12 @@ const main = async () => {
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );
-  const dailyTvls = await getDailyItems(dailyTvl(protocol.id))
-  const dailyTokens = await getDailyItems(dailyTokensTvl(protocol.id))
-  const dailyUsdTokens = await getDailyItems(dailyUsdTokensTvl(protocol.id))
-  const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens]
+  const dailyTvls = await getDailyItems(dailyTvl(protocol.id));
+  const dailyTokens = await getDailyItems(dailyTokensTvl(protocol.id));
+  const dailyUsdTokens = await getDailyItems(dailyUsdTokensTvl(protocol.id));
+  const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens];
   const start = adapter.start ?? 0;
-  const now = Math.round(Date.now() / 1000)
+  const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(now);
   if (timestamp > now) {
     timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);

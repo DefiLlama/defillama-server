@@ -14,7 +14,7 @@ export default [
     gecko_id: "uniswap",
     cmcId: "7083",
     category: "Dexes",
-    tvlFunction: ()=>1,
+    tvlFunction: () => 1,
   },
   {
     id: "111",
@@ -31,6 +31,6 @@ export default [
     gecko_id: "aave",
     cmcId: "7278",
     category: "Lending",
-    tvlFunction: ()=>2,
+    tvlFunction: () => 2,
   },
 ];

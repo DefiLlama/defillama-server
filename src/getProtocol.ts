@@ -9,16 +9,14 @@ import {
   dailyTokensTvl,
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-import { normalizeChain } from './utils/normalizeChain'
+import { normalizeChain } from "./utils/normalizeChain";
 
-function normalizeEthereum(balances:{
-  [symbol:string]:number
-}){
-  if(balances?.ethereum !== undefined){
-    balances['WETH'] = (balances['WETH'] ?? 0) + balances['ethereum']
-    delete balances['ethereum']
+function normalizeEthereum(balances: { [symbol: string]: number }) {
+  if (balances?.ethereum !== undefined) {
+    balances["WETH"] = (balances["WETH"] ?? 0) + balances["ethereum"];
+    delete balances["ethereum"];
   }
-  return balances
+  return balances;
 }
 
 const handler = async (
@@ -34,45 +32,57 @@ const handler = async (
     });
   }
   const lastHourlyRecord = getLastRecord(hourlyTvl(protocolData.id));
-  const historicalUsdTvl = getHistoricalValues(dailyTvl(protocolData.id))
-  const historicalUsdTokenTvl = getHistoricalValues(dailyUsdTokensTvl(protocolData.id))
-  const historicalTokenTvl = getHistoricalValues(dailyTokensTvl(protocolData.id))
+  const historicalUsdTvl = getHistoricalValues(dailyTvl(protocolData.id));
+  const historicalUsdTokenTvl = getHistoricalValues(
+    dailyUsdTokensTvl(protocolData.id)
+  );
+  const historicalTokenTvl = getHistoricalValues(
+    dailyTokensTvl(protocolData.id)
+  );
   let response = protocolData as any;
-  response.chainTvls = {}
-  await Promise.all(protocolData.chains.concat(['tvl']).map(async chain => {
-    const normalizedChain = normalizeChain(chain)
-    const container = {} as any
+  response.chainTvls = {};
+  await Promise.all(
+    protocolData.chains.concat(["tvl"]).map(async (chain) => {
+      const normalizedChain = normalizeChain(chain);
+      const container = {} as any;
 
-    container.tvl = (await historicalUsdTvl)?.map((item) => ({
-      date: item.SK,
-      totalLiquidityUSD: item[normalizedChain],
-    })).filter(item => item.totalLiquidityUSD !== undefined);
-    container.tokensInUsd = (await historicalUsdTokenTvl)?.map((item) => ({
-      date: item.SK,
-      tokens: normalizeEthereum(item[normalizedChain]),
-    })).filter(item => item.tokens !== undefined);
-    container.tokens = (await historicalTokenTvl)?.map((item) => ({
-      date: item.SK,
-      tokens: normalizeEthereum(item[normalizedChain]),
-    })).filter(item => item.tokens !== undefined);
-    if (container.tvl !== undefined && container.tvl.length > 0) {
-      const lastItem = (await lastHourlyRecord);
-      if (lastItem?.[normalizedChain] !== undefined) {
-        container.tvl[container.tvl.length - 1] = {
-          date: lastItem.SK,
-          totalLiquidityUSD: lastItem[normalizedChain],
-        };
+      container.tvl = (await historicalUsdTvl)
+        ?.map((item) => ({
+          date: item.SK,
+          totalLiquidityUSD: item[normalizedChain],
+        }))
+        .filter((item) => item.totalLiquidityUSD !== undefined);
+      container.tokensInUsd = (await historicalUsdTokenTvl)
+        ?.map((item) => ({
+          date: item.SK,
+          tokens: normalizeEthereum(item[normalizedChain]),
+        }))
+        .filter((item) => item.tokens !== undefined);
+      container.tokens = (await historicalTokenTvl)
+        ?.map((item) => ({
+          date: item.SK,
+          tokens: normalizeEthereum(item[normalizedChain]),
+        }))
+        .filter((item) => item.tokens !== undefined);
+      if (container.tvl !== undefined && container.tvl.length > 0) {
+        const lastItem = await lastHourlyRecord;
+        if (lastItem?.[normalizedChain] !== undefined) {
+          container.tvl[container.tvl.length - 1] = {
+            date: lastItem.SK,
+            totalLiquidityUSD: lastItem[normalizedChain],
+          };
+        }
+        if (chain === "tvl") {
+          response = {
+            ...response,
+            ...container,
+          };
+        } else {
+          response.chainTvls[chain] = container;
+        }
       }
-      if(chain ==='tvl'){
-        response={
-          ...response,
-          ...container
-        };
-      } else {
-        response.chainTvls[chain] = container;
-      }
-    }
-  }))
+    })
+  );
 
   return successResponse(response, 10 * 60); // 10 mins cache
 };

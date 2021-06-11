@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils";
 import protocols from "./protocols/data";
 import dynamodb from "./utils/dynamodb";
 import { getClosestDayStartTimestamp } from "./date/getClosestDayStartTimestamp";
-import {normalizeChain} from './utils/normalizeChain'
+import { normalizeChain } from "./utils/normalizeChain";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -17,7 +17,12 @@ const handler = async (
       if (protocol.name === "Uniswap v3" || protocol.category === "Chain") {
         return undefined;
       }
-      if (chain !== undefined && !protocol.chains.map(protocolChain => protocolChain.toLowerCase()).includes(chain)) {
+      if (
+        chain !== undefined &&
+        !protocol.chains
+          .map((protocolChain) => protocolChain.toLowerCase())
+          .includes(chain)
+      ) {
         return undefined;
       }
       const historicalTvl = await dynamodb.query({
@@ -27,37 +32,39 @@ const handler = async (
         KeyConditionExpression: "PK = :pk",
       });
       if (historicalTvl.Items === undefined || historicalTvl.Items.length < 1) {
-        return undefined
+        return undefined;
       }
-      const lastTimestamp = getClosestDayStartTimestamp(historicalTvl.Items[historicalTvl.Items.length - 1].SK)
-      lastDailyTimestamp = Math.max(lastDailyTimestamp, lastTimestamp)
+      const lastTimestamp = getClosestDayStartTimestamp(
+        historicalTvl.Items[historicalTvl.Items.length - 1].SK
+      );
+      lastDailyTimestamp = Math.max(lastDailyTimestamp, lastTimestamp);
       return {
         protocol,
-        historicalTvl: historicalTvl.Items
-      }
+        historicalTvl: historicalTvl.Items,
+      };
     })
   );
-  historicalProtocolTvls.forEach((protocolTvl)=>{
-    if(protocolTvl === undefined){
-      return
+  historicalProtocolTvls.forEach((protocolTvl) => {
+    if (protocolTvl === undefined) {
+      return;
     }
-    const {historicalTvl, protocol} = protocolTvl;
-    const lastTvl = historicalTvl[historicalTvl.length-1];
-    if(lastTvl.SK !== lastDailyTimestamp){
+    const { historicalTvl, protocol } = protocolTvl;
+    const lastTvl = historicalTvl[historicalTvl.length - 1];
+    if (lastTvl.SK !== lastDailyTimestamp) {
       historicalTvl.push({
         ...lastTvl,
-        SK: lastDailyTimestamp
-      })
+        SK: lastDailyTimestamp,
+      });
     }
     historicalTvl.forEach((item) => {
       const timestamp = getClosestDayStartTimestamp(item.SK);
-      let itemTvl:number;
-      if(chain === undefined){
+      let itemTvl: number;
+      if (chain === undefined) {
         itemTvl = item.tvl;
       } else {
-        itemTvl = item[normalizeChain(chain)]
-        if(itemTvl === undefined){
-          if(chain === protocol.chain.toLowerCase()){
+        itemTvl = item[normalizeChain(chain)];
+        if (itemTvl === undefined) {
+          if (chain === protocol.chain.toLowerCase()) {
             itemTvl = item.tvl;
           } else {
             return;
@@ -66,9 +73,9 @@ const handler = async (
       }
       sumDailyTvls[timestamp] = itemTvl + (sumDailyTvls[timestamp] ?? 0);
     });
-  })
+  });
   let minTimestamp = 1603757978;
-  if(chain !== undefined && chain !== "ethereum") {
+  if (chain !== undefined && chain !== "ethereum") {
     minTimestamp = 1612837719;
   }
   Object.keys(sumDailyTvls).forEach((timestamp) => {

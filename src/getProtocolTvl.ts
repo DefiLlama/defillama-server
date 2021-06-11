@@ -1,9 +1,6 @@
 import { successResponse, wrap, IResponse, errorResponse } from "./utils";
 import protocols from "./protocols/data";
-import {
-  getLastRecord,
-  hourlyTvl,
-} from "./utils/getLastRecord";
+import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 
 const handler = async (
@@ -19,7 +16,7 @@ const handler = async (
     });
   }
   const lastHourlyRecord = await getLastRecord(hourlyTvl(protocolData.id));
-  if(lastHourlyRecord === undefined){
+  if (lastHourlyRecord === undefined) {
     return errorResponse({
       message: "Protocol has no recorded TVL",
     });

@@ -4636,4 +4636,23 @@ export default [
     module: "dopplefinance/index.js",
     twitter: "dopplefi",
   },
+  {
+    id: "357",
+    name: "Malt Money",
+    address: "polygon:0x1c40ac03aacaf5f85808674e526e9c26309db92f",
+    symbol: "MALT",
+    url: "https://malt.money/",
+    description:
+      'Malt is a yield farmable, incentive-centric algorithmic stable coin.',
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/malt.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "malt-stablecoin",
+    cmcId: null,
+    category: "Minting",
+    chains: ["Polygon"],
+    module: "malt-money/index.js",
+    twitter: "MaltProtocol",
+  },
 ] as Protocol[];

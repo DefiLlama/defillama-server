@@ -66,7 +66,7 @@ function getDailyItems(pk: string) {
 
 const batchSize = 2;
 const main = async () => {
-  const protocol = getProtocol("MakerDao");
+  const protocol = getProtocol("malt money");
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );

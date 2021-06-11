@@ -10,6 +10,7 @@ import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
 import { tvlsObject } from "../types";
+import { humanizeNumber } from '@defillama/sdk/build/computeTVL/humanizeNumber'
 
 export default async function (
   protocol: Protocol,
@@ -35,13 +36,16 @@ export default async function (
   );
 
   const lastHourlyTVL = (await lastHourlyTVLRecord).tvl;
-  if (lastHourlyTVL * 2 < tvl.tvl && lastHourlyTVL !== 0) {
-    reportError(
-      `TVL for ${protocol.name} has grown way too much in the last hour (${lastHourlyTVL} to ${tvl.tvl})`,
-      protocol.name
-    );
-    if(lastHourlyTVL * 5 < tvl.tvl){
-      throw new Error(`TVL for ${protocol.name} has 5x within one hour, disabling it`)
+  if (storePreviousData && lastHourlyTVL * 2 < tvl.tvl && lastHourlyTVL !== 0) {
+    const lastWeeklyTVL = await lastWeeklyTVLRecord
+    const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(tvl.tvl)}`
+    if (lastWeeklyTVL.SK !== undefined && lastHourlyTVL * 5 < tvl.tvl && lastWeeklyTVL.tvl * 5 < tvl.tvl) {
+      throw new Error(`TVL for ${protocol.name} has 5x (${change}) within one hour, disabling it`)
+    } else {
+      reportError(
+        `TVL for ${protocol.name} has >2x (${change})`,
+        protocol.name
+      );
     }
   }
 
@@ -51,10 +55,10 @@ export default async function (
     ...tvl,
     ...(storePreviousData
       ? {
-          tvlPrev1Hour: lastHourlyTVL,
-          tvlPrev1Day: (await lastDailyTVLRecord).tvl,
-          tvlPrev1Week: (await lastWeeklyTVLRecord).tvl,
-        }
+        tvlPrev1Hour: lastHourlyTVL,
+        tvlPrev1Day: (await lastDailyTVLRecord).tvl,
+        tvlPrev1Week: (await lastWeeklyTVLRecord).tvl,
+      }
       : {}),
   });
   if (getDay((await lastDailyTVLRecord)?.SK) !== getDay(unixTimestamp)) {

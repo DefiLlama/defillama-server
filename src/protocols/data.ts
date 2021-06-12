@@ -4818,4 +4818,23 @@ export default [
     module: "parrot.js",
     twitter: "gopartyparrot",
   },
+  {
+    id: "359",
+    name: "Frax",
+    address: "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+    symbol: "FXS",
+    url: "https://frax.finance/",
+    description:
+      "Inventors of the fractional stablecoin. $FRAX is the 1st stablecoin with parts backed & parts algorithmic",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/frax.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "frax-share",
+    cmcId: "6953",
+    category: "Minting",
+    chains: ["Ethereum"],
+    module: "fraxfinance/index.js",
+    twitter: "fraxfinance",
+  },
 ] as Protocol[];

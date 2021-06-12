@@ -4799,4 +4799,23 @@ export default [
     module: "malt-money/index.js",
     twitter: "MaltProtocol",
   },
+  {
+    id: "358",
+    name: "Parrot Protocol",
+    address: null,
+    symbol: "PAI",
+    url: "https://partyparrot.finance/vaults/",
+    description:
+      "Stablecoin",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/parrot.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Minting",
+    chains: ["Solana"],
+    module: "parrot.js",
+    twitter: "gopartyparrot",
+  },
 ] as Protocol[];

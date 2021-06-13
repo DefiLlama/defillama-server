@@ -4564,7 +4564,7 @@ export default [
     cmcId: "8707",
     category: "Yield",
     chains: ["Binance"],
-    module: "alpacafinance/index.js",
+    module: "alpaca-finance/index.js",
     twitter: "AlpacaFinance",
     audit_links: [
       "https://github.com/alpaca-finance/bsc-alpaca-contract/tree/main/audits",

@@ -4395,7 +4395,7 @@ export default [
     audit_note: null,
     gecko_id: "sifchain",
     cmcId: "8541",
-    category: "Chain",
+    category: "Dexes",
     chains: ["Sifchain"],
     module: "sifchain.js",
     twitter: "sifchain",

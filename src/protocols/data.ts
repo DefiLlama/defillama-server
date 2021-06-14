@@ -2531,7 +2531,7 @@ export default [
     gecko_id: "pooltogether",
     cmcId: "8508",
     category: "Others",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Polygon"],
     module: "pooltogether/index.js",
     twitter: "PoolTogether_",
     audit_links: ["https://docs.pooltogether.com/security/audits-and-testing"],
@@ -4895,6 +4895,26 @@ export default [
     chains: ["xDai"],
     module: "perp/index.js",
     twitter: "perpprotocol",
+    audit_links: []
+  },
+  {
+    id: "363",
+    name: "xDollar",
+    address: "polygon:0x3Dc7B06dD0B1f08ef9AcBbD2564f8605b4868EEA",
+    symbol: "XDO",
+    url: "https://www.xdollar.fi/",
+    description:
+      "xDollar is cross-chain collateral based stablecoin lending platform with zero interest fee, 110% low collateral ratio and fully redeemable xUSD plus DAO governance and multi-collateral vault system.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/xdollar.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "xdollar",
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon"],
+    module: "xdollar-finance/index.js",
+    twitter: "xDollarFi",
     audit_links: []
   },
 ] as Protocol[];

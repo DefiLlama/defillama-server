@@ -4877,4 +4877,24 @@ export default [
     twitter: "WhiteheartDeFi",
     audit_links: []
   },
+  {
+    id: "362",
+    name: "Perpetual Protocol",
+    address: "0xbc396689893d065f41bc2c6ecbee5e0085233447",
+    symbol: "PERP",
+    url: "https://perp.exchange/",
+    description:
+      "Decentralized Perpetual Contracts for Every Asset.",
+    chain: "Multi-Chain",
+    logo: `${baseIconsUrl}/perp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "perpetual-protocol",
+    cmcId: "1301",
+    category: "Dexes",
+    chains: ["xDai"],
+    module: "perp/index.js",
+    twitter: "perpprotocol",
+    audit_links: []
+  },
 ] as Protocol[];

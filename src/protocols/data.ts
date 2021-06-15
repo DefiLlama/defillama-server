@@ -4911,7 +4911,7 @@ export default [
     audit_note: null,
     gecko_id: "xdollar",
     cmcId: null,
-    category: "Lending",
+    category: "Minting",
     chains: ["Polygon"],
     module: "xdollar-finance/index.js",
     twitter: "xDollarFi",

@@ -220,7 +220,7 @@ export default [
     url: "https://renproject.io/",
     description:
       "An open protocol providing access to inter-blockchain liquidity for all decentralized applications. Bring BTC, BCH and ZEC to your Ethereum app.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/ren.png`,
     audits: "2",
     audit_note: null,
@@ -689,7 +689,7 @@ export default [
     url: "https://hard.kava.io/",
     description:
       "Cross-chain money market. Lend, borrow, and earn with your crypto.\r\n",
-    chain: "Multi-Chain",
+    chain: "Kava",
     logo: `${baseIconsUrl}/qv-OI4YK_400x400.png`,
     audits: null,
     audit_note: null,
@@ -1949,7 +1949,7 @@ export default [
     url: "https://autofarm.network/",
     description:
       "The Autofarm ecosystem is a one-stop DeFi suite for all users. Autofarm aggregate yield opportunities using vaults and best swap rates using a DEX aggregator (AutoSwap). In addition, other products such as AutoAnalytics, AutoTrade & AutoPortfolio are set to go live later in 2021. The platform is currently live BSC, HECO and Polygon, with more chains to be introduced soon.",
-    chain: "Multi-Chain",
+    chain: "Binance",
     logo: `${baseIconsUrl}/wz6Vh6VM_400x400.png`,
     audits: "2",
     audit_note: null,
@@ -3202,7 +3202,7 @@ export default [
     url: "https://avax.olive.cash",
     description:
       "OliveCash is a cross chain Yield Farming project running on Binance Smart Chain Avalanche chain.",
-    chain: "Multi-Chain",
+    chain: "Avalanche",
     logo: `${baseIconsUrl}/olive.png`,
     audits: "0",
     audit_note: null,
@@ -3447,7 +3447,7 @@ export default [
     symbol: "ZERO",
     url: "https://www.0.exchange/",
     description: "The world's first Multi-DEX platform",
-    chain: "Multi-Chain",
+    chain: "Avalanche",
     logo: `${baseIconsUrl}/zerodex.jpg`,
     audits: "0",
     audit_note: null,

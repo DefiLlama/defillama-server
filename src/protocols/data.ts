@@ -4917,4 +4917,24 @@ export default [
     twitter: "xDollarFi",
     audit_links: []
   },
+  {
+    id: "364",
+    name: "Volmex",
+    address: null,
+    symbol: "-",
+    url: "https://volmex.finance/",
+    description:
+      "Tokenized volatility protocol built on Ethereum",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/volmex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Assets",
+    chains: ["Ethereum"],
+    module: "volmex/index.js",
+    twitter: "volmexfinance",
+    audit_links: ["https://docs.volmex.finance/security/audits"]
+  },
 ] as Protocol[];

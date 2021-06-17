@@ -4783,6 +4783,7 @@ export default [
     module: "gravity-finance/index.js",
     twitter: "Gravity_Finance",
   },
+  /*
   {
     id: "352",
     name: "Iron Finance",
@@ -4804,6 +4805,7 @@ export default [
     audit_links: ["https://docs.iron.finance/bsc/audits", "https://docs.iron.finance/iron-finance-on-polygon/audit"],
     forkedFrom: ["FRAX"],
   },
+  */
   {
     id: "353",
     name: "Armor",
@@ -4831,7 +4833,7 @@ export default [
     description:
       "InsurAce is a leading decentralised insurance protocol, providing reliable, robust and secure insurance services to DeFi users, allowing them to secure their investment funds against various risks. Being the 1st in the industry to offer cross-chain portfolio-based covers, InsurAce enables users to get unbeatable low premium. Users can also get sustainable investment returns through InsurAce’s investment portal and gain rewards though the mining program. InsurAce has a live product launched on Ethereum in April 2021 and have built a full-spectrum cross-chain insurance product line, covering protocols, CEX and IDO platform running on Ethereum, Solana, BSC, Heco, Polygon, Fantom and more in the future.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/InsurAceLogo.svg`,
+    logo: `${baseIconsUrl}/insurace.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "insurace",

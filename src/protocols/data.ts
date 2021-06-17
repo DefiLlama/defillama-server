@@ -4686,6 +4686,7 @@ export default [
     module: "gravity-finance/index.js",
     twitter: "Gravity_Finance",
   },
+  /*
   {
     id: "352",
     name: "Iron Finance",
@@ -4705,6 +4706,7 @@ export default [
     module: "ironfinance/index.js",
     twitter: "IronFinance",
   },
+  */
   {
     id: "353",
     name: "Armor",

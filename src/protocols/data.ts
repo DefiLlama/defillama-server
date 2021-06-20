@@ -5127,4 +5127,44 @@ export default [
     twitter: "pinkmoonfinance",
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/PinkSwap%20Token%20Full%20Smart%20Contract%20Security%20Audit.pdf"]
   },
+  {
+    id: "368",
+    name: "Channels Finance",
+    address: "heco:0x1e6395E6B059fc97a4ddA925b6c5ebf19E05c69f",
+    symbol: "CAN",
+    url: "https://channels.finance",
+    description:
+      "Channels.finance is the first fully decentralized lending platform on Heco, focusing on user asset security. The first release supports LP mortgage lending and LP vault pool. It currently supports 15 mainstream currencies and 6 (Mdex) LP asset mortgage lending . The platform's token CAN has also been listed on Huobi Exchange on April 21. As a leading lending product on Heco, Channels has always performed well in asset security, user experience and mining revenue, and valued product experience and user interests.",
+    chain: "Heco",
+    logo: `${baseIconsUrl}/channels.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "channels",
+    cmcId: "1384",
+    category: "Lending",
+    chains: ["Heco"],
+    module: "channels/index.js",
+    twitter: "ChannelsFinance",
+    audit_links: ["https://attest.im/attestation/searchResult?qurey=4c533d00766c4b2a9761fad5da78b56f", "https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MSgvIS2RfKE66pfkI81%2F-MUv-RfymyB6PvCRlnwz%2F-MUv1a71AjJ6p3Bgz5ui%2FChannels-Audit-Report-030321(1).pdf?alt=media&token=1af91ea6-d3d0-4ba3-8784-5dce6a907930"]
+  },
+  {
+    id: "369",
+    name: "YFDAI",
+    address: "0xf4CD3d3Fda8d7Fd6C5a500203e38640A70Bf9577",
+    symbol: "YFDAI",
+    url: "https://yfdai.finance/",
+    description:
+      "Bridging the Worlds of Traditional Finance and Decentralised Networks",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yfdai.svg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "yfdai-finance",
+    cmcId: "6938",
+    category: "Others",
+    chains: ["Ethereum"],
+    module: "yfdai/index.js",
+    twitter: "YfdaiF",
+    audit_links: ["https://attest.im/attestation/searchResult?qurey=4c533d00766c4b2a9761fad5da78b56f", "https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MSgvIS2RfKE66pfkI81%2F-MUv-RfymyB6PvCRlnwz%2F-MUv1a71AjJ6p3Bgz5ui%2FChannels-Audit-Report-030321(1).pdf?alt=media&token=1af91ea6-d3d0-4ba3-8784-5dce6a907930"]
+  },
 ] as Protocol[];

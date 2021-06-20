@@ -3871,6 +3871,7 @@ export default [
     module: "uniswapv3/index.js",
     twitter: "Uniswap",
   },
+  /*
   {
     id: "306",
     name: "Quickswap",
@@ -3891,6 +3892,7 @@ export default [
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
     forkedFrom: ["UniSwap"],
   },
+  */
   {
     id: "307",
     name: "Wault",

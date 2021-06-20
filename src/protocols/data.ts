@@ -565,6 +565,7 @@ export default [
     chains: ["Ethereum"],
     module: "shell.js",
     twitter: "ShellProtocol",
+    audit_links: ["https://consensys.net/diligence/audits/2020/06/shell-protocol/"],
   },
   {
     id: "134",
@@ -945,6 +946,7 @@ export default [
     chains: ["Ethereum"],
     module: "cofix.js",
     twitter: "CoFiXProtocol",
+    audit_links: ["https://github.com/Computable-Finance/CoFiX/tree/master/security_audit"],
   },
   {
     id: "155",
@@ -1019,6 +1021,7 @@ export default [
     chains: ["Ethereum"],
     module: "dracula.js",
     twitter: "DraculaProtocol",
+    audit_links: ["https://solidity.finance/audits/Dracula/"],
   },
   {
     id: "159",
@@ -3053,6 +3056,7 @@ export default [
     chains: ["Ethereum"],
     module: "primitive/index.js",
     twitter: "PrimitiveFi",
+    audit_links: ["https://docs.primitive.finance/traders/trader-risks#have-your-contracts-been-audited"],
   },
   {
     id: "263",
@@ -3072,6 +3076,7 @@ export default [
     chains: ["Ethereum"],
     module: "qian/index.js",
     twitter: null,
+    audit_links: ["https://qian.finance/PeckShield-Audit-Report-QIAN2-v1.0.pdf"],
   },
   {
     id: "264",
@@ -3091,6 +3096,7 @@ export default [
     chains: ["Ethereum"],
     module: "ray/index.js",
     twitter: null,
+    audit_links: ["https://staked.gitbook.io/staked/ray/security"],
   },
   {
     id: "265",
@@ -3171,6 +3177,7 @@ export default [
     chains: ["Ethereum"],
     module: "unitrade/index.js",
     twitter: "UniTradeApp",
+    audit_links: ["https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20%20Unitrade%20%5B06.10.2020%5D.pdf"],
   },
   {
     id: "269",
@@ -3780,6 +3787,7 @@ export default [
     chains: ["xDai"],
     module: "levinswap/index.js",
     twitter: "levinswap",
+    forkedFrom: ["UniSwap"],
   },
   {
     id: "300",
@@ -4492,6 +4500,7 @@ export default [
     chains: ["Ethereum"],
     module: "flashstake/index.js",
     twitter: "flashstake",
+    audit_links: ["https://t.co/ngdoQ1FYv1?amp=1"],
   },
   {
     id: "336",

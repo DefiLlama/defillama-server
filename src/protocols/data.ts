@@ -19,7 +19,7 @@ export interface Protocol {
   twitter: string;
 }
 
-/* Audits:
+/* Audits: Please follow this agenda
 0 -> No audits
 1 -> Part of this protocol may be unaudited
 2 -> Yes

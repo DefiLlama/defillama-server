@@ -19,7 +19,7 @@ export interface Protocol {
   twitter: string;
 }
 
-/* Audits:
+/* Audits: Please follow this agenda
 0 -> No audits
 1 -> Part of this protocol may be unaudited
 2 -> Yes
@@ -3904,6 +3904,7 @@ export default [
     module: "uniswapv3/index.js",
     twitter: "Uniswap",
   },
+  /*
   {
     id: "306",
     name: "Quickswap",
@@ -3924,6 +3925,7 @@ export default [
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
     forkedFrom: ["UniSwap"],
   },
+  */
   {
     id: "307",
     name: "Wault",
@@ -4197,6 +4199,7 @@ export default [
     audit_links: ["https://docs.depth.fi/audit"],
   },
   // 321 reserved for deprecated version of pancakeswap
+/*
   {
     id: "321",
     name: "Ram Protocol",
@@ -4216,6 +4219,7 @@ export default [
     module: "ram.js",
     twitter: null,
   },
+*/
   {
     id: "322",
     name: "Yogi Finance",

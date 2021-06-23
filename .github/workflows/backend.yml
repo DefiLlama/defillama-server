@@ -32,6 +32,7 @@ jobs:
         node-version: '12.x'
     - run: npm ci
     - run: git submodule update --init --recursive
+    - run: cd DefiLlama-Adapters && git pull
     - name: Deploy infrastructure stack
       run: npm run deploy:prod
       env:

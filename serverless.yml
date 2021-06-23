@@ -120,6 +120,12 @@ functions:
       - http:
           path: dataset/{protocol}
           method: get
+  hourly:
+    handler: src/getHourlyData.default
+    events:
+      - http:
+          path: hourly/{protocol}
+          method: get
   corsPreflight:
     handler: src/corsPreflight.default
     events:

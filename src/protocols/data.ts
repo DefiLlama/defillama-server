@@ -5178,7 +5178,6 @@ export default [
     twitter: "YfdaiF",
     audit_links: ["https://attest.im/attestation/searchResult?qurey=4c533d00766c4b2a9761fad5da78b56f", "https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MSgvIS2RfKE66pfkI81%2F-MUv-RfymyB6PvCRlnwz%2F-MUv1a71AjJ6p3Bgz5ui%2FChannels-Audit-Report-030321(1).pdf?alt=media&token=1af91ea6-d3d0-4ba3-8784-5dce6a907930"]
   },
-  /*
   {
     id: "370",
     name: "Merlin",
@@ -5187,17 +5186,18 @@ export default [
     url: "https://www.merlinlab.com/farm",
     description: "Merlin is an auto-compounding yield aggregator with an ecosystem optimized to focus on safe and sustainable maximum yield return.",
     chain: "Binance",
-    logo: null,
+    logo: `${baseIconsUrl}/MerlinLab.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "merlin",
     cmcId: "9853",
     category: "Yield",
     chains: ["Binance"],
-    module: string,
+    module: "merlinlab/index.js",
     twitter: "MerlinLab_",
     audit_links: ["https://merlinlab.gitbook.io/merlin/security-and-risks"],
   },
+  /*
   {
     id: "371",
     name: "KokomoSwap",

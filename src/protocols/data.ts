@@ -2721,7 +2721,6 @@ export default [
     module: "scrt.js",
     twitter: "SecretNetwork",
   },
-  /*
   {
     id: "246",
     name: "Pangolin",
@@ -2741,7 +2740,6 @@ export default [
     twitter: "pangolindex",
     forkedFrom: ["UniSwap"],
   },
-  */
   {
     id: "247",
     name: "Jarvis Network",

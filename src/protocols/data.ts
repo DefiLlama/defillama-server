@@ -5180,4 +5180,118 @@ export default [
     twitter: "YfdaiF",
     audit_links: ["https://attest.im/attestation/searchResult?qurey=4c533d00766c4b2a9761fad5da78b56f", "https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MSgvIS2RfKE66pfkI81%2F-MUv-RfymyB6PvCRlnwz%2F-MUv1a71AjJ6p3Bgz5ui%2FChannels-Audit-Report-030321(1).pdf?alt=media&token=1af91ea6-d3d0-4ba3-8784-5dce6a907930"]
   },
+  {
+    id: "370",
+    name: "Merlin",
+    address: "0xDA360309C59CB8C434b28A91b823344a96444278",
+    symbol: "MERL",
+    url: "https://www.merlinlab.com/farm",
+    description: "Merlin is an auto-compounding yield aggregator with an ecosystem optimized to focus on safe and sustainable maximum yield return.",
+    chain: "Binance",
+    logo: null | string;
+    audits: "2",
+    audit_note: null,
+    gecko_id: "merlin",
+    cmcId: "9853",
+    category: "Yield",
+    chains: ["Binance"],
+    module: string;
+    twitter: "MerlinLab_",
+    audit_links: ["https://merlinlab.gitbook.io/merlin/security-and-risks"],
+  },
+  {
+    id: "371",
+    name: "KokomoSwap",
+    address: "0x9a7B87651C6C93cedb831B2B3b5549142a813Cfe",
+    symbol: "KOKOMO",
+    url: "https://kokomoswap.io/#/",
+    description: "KokomoSwap is a Binance Smart Chain based AMM (automated market maker) DEX(decentralized exchange) designed to facilitate the seamless transaction of crypto assets in a fun-filled and profitable manner.",
+    chain: "Binance",
+    logo: null | string;
+    audits: "2",
+    audit_note: null;
+    gecko_id: string;
+    cmcId: string;
+    category: "Dexes",
+    chains: ["Binance"],
+    module: string;
+    twitter: "KokomoSwap",
+    audit_links: ["https://docs.kokomoswap.io/risk-and-security-1/audit"],
+  },
+  {
+    id: "372",
+    name: "Rabbit Finance",
+    address: "0x95a1199eba84ac5f19546519e287d43d2f0e1b41",
+    symbol: "RABBIT",
+    url: "https://www.rabbitfinance.io/earn",
+    description: "Rabbit Finance is a cross-chain excess lending protocol, which can help users deposit and obtain more interest and help liquidity farmers obtain higher income through high as 9x leverage.",
+    chain: "Binance",
+    logo: null | string;
+    audits: "2",
+    audit_note: null;
+    gecko_id: "rabbit-finance",
+    cmcId: "10178",
+    category: "Lending",
+    chains: ["Binance"];
+    module: string;
+    twitter: "FinanceRabbit",
+    audit_links: ["https://rabbitfinance.gitbook.io/homepage/resources/audit-report"],
+  },
+  {
+    id: "373",
+    name: "BiSwap",
+    address: "0x965f527d9159dce6288a2219db51fc6eef120dd1",
+    symbol: "BSW",
+    url: "https://biswap.org/",
+    description: "Biswap is the first decentralized exchange platform on the market with a three-type referral system and the lowest platform transaction fees (0.1%).",
+    chain: "Binance",
+    logo: null | string;
+    audits: "2",
+    audit_note: null;
+    gecko_id: string;
+    cmcId: string;
+    category: "Dexes",
+    chains: ["Binance"],
+    module: string;
+    twitter: "Biswap_Dex",
+    audit_links: ["https://www.certik.org/projects/biswap"],
+  },
+  {
+    id: "374",
+    name: "Kine Finance",
+    address: "0xbfa9df9ed8805e657d0feab5d186c6a567752d7f",
+    symbol: "KINE",
+    url: "https://kine.finance/",
+    description: "Kine establishes general purpose liquidity pools backed by a customizable portfolio of digital assets. The liquidity pool allows traders to open and close derivatives positions according to trusted price feeds, avoiding the need of counterparties.",
+    chain: "Binance",
+    logo: null | string;
+    audits: "1",
+    audit_note: null;
+    gecko_id: "kine-protocol",
+    cmcId: "8790",
+    category: "Yield",
+    chains: ["Binance", "Ethereum"],
+    module: string;
+    twitter: "KineProtocol",
+    audit_links: ["https://docs.kine.io/audit/peckshield"],
+  },
+  {
+    id: "375",
+    name: "Nerve Network",
+    address: "0xf0e406c49c63abf358030a299c0e00118c4c6ba5",
+    symbol: "NVT",
+    url: "https://nerve.network/",
+    description: "Nerve is a decentralized digital asset service network based on the NULS micro-services framework, which uses the NULS ChainBox to develop a blockchain cross-chain interaction protocol.",
+    chain: "NULS",
+    logo: null | string;
+    audits: "2",
+    audit_note: null;
+    gecko_id: "nervenetwork",
+    cmcId: "5906",
+    category: "Dexes",
+    chains: ["Binance", "Ethereum",],
+    module: string;
+    twitter: "nerve_network",
+    audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=097a33b2e955a56af85e80b13ff82a3ad20fea83871769b5c58d024b5e774164"],
+  },
 ] as Protocol[];

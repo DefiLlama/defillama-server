@@ -565,6 +565,7 @@ export default [
     chains: ["Ethereum"],
     module: "shell.js",
     twitter: "ShellProtocol",
+    audit_links: ["https://consensys.net/diligence/audits/2020/06/shell-protocol/"],
   },
   {
     id: "134",
@@ -686,6 +687,8 @@ export default [
     chains: ["Ethereum"],
     module: "snowswap/index.js",
     twitter: "snow_swap",
+    audit_links: ["https://hackmd.io/@9GUQpanJRF6cloQ0fwyPFw/r1_ctUuqv"],
+    forkedFrom: ["CurveFinance", "UniSwap"],
   },
   {
     id: "140",
@@ -943,6 +946,7 @@ export default [
     chains: ["Ethereum"],
     module: "cofix.js",
     twitter: "CoFiXProtocol",
+    audit_links: ["https://github.com/Computable-Finance/CoFiX/tree/master/security_audit"],
   },
   {
     id: "155",
@@ -1017,6 +1021,7 @@ export default [
     chains: ["Ethereum"],
     module: "dracula.js",
     twitter: "DraculaProtocol",
+    audit_links: ["https://solidity.finance/audits/Dracula/"],
   },
   {
     id: "159",
@@ -1036,6 +1041,7 @@ export default [
     chains: ["Ethereum"],
     module: "growth-defi.js",
     twitter: "GrowthDefi",
+    audit_links: ["https://consensys.net/diligence/audits/2020/12/growth-defi-v1/"],
   },
   {
     id: "160",
@@ -1156,6 +1162,7 @@ export default [
     chains: ["Ethereum"],
     module: "cover.js",
     twitter: "CoverProtocol",
+    audit_links: ["https://github.com/CoverProtocol/cover-security/tree/master/audits"],
   },
   {
     id: "166",
@@ -1215,6 +1222,7 @@ export default [
     chains: ["Ethereum"],
     module: "dev.js",
     twitter: "devprtcl",
+    audit_links: ["https://github.com/dev-protocol/protocol/blob/main/docs/audit-report__quantstamp--sept-15-2020.pdf"],
   },
   {
     id: "169",
@@ -1234,6 +1242,7 @@ export default [
     chains: ["Ethereum"],
     module: "basis-cash.js",
     twitter: "BasisCash",
+    audit_links: ["https://github.com/basisdollar/basisdollar-protocol#audit"],
   },
   {
     id: "170",
@@ -1253,6 +1262,7 @@ export default [
     chains: ["Ethereum", "Binance", "Wanchain"],
     module: "finnexus/index.js",
     twitter: "fin_nexus",
+    audit_links: ["https://github.com/Phoenix-Finance/Pdfs/blob/master/PeckShield-Audit-FinnexusOptionsV1.0.pdf"],
   },
   {
     id: "171",
@@ -1332,6 +1342,7 @@ export default [
     chains: ["Ethereum"],
     module: "bt-finance.js",
     twitter: "btdotfinance",
+    audit_links: ["https://github.com/btdotfinance/bt-finance/tree/master/audits"],
   },
   {
     id: "175",
@@ -1350,6 +1361,7 @@ export default [
     chains: ["Ethereum"],
     module: "n3rd.js",
     twitter: "nerdfinance1",
+    forkedFrom: ["cVault"],
   },
   {
     id: "176",
@@ -1430,6 +1442,7 @@ export default [
     chains: ["Ethereum"],
     module: "linkswap.js",
     twitter: null,
+    audit_links: ["https://certificate.quantstamp.com/full/linkswap"],
   },
   /*
   {
@@ -1653,6 +1666,7 @@ export default [
     chains: ["Ethereum"],
     module: "opium.js",
     twitter: "Opium_Network",
+    audit_links: ["https://blog.smartdec.net/opium-smart-contracts-security-analysis-4c1857cfd93f"],
   },
   {
     id: "192",
@@ -1868,6 +1882,7 @@ export default [
     chains: ["Ethereum"],
     module: "siren.js",
     twitter: "sirenprotocol",
+    audit_links: ["https://docs.sirenmarkets.com/faq-general/for-users#is-the-siren-protocol-safe"],
   },
   {
     id: "204",
@@ -2149,6 +2164,7 @@ export default [
     chains: ["Ethereum", "Polygon", "xDai", "Binance"],
     module: "connext/index.js",
     twitter: "ConnextNetwork",
+    audit_links: ["https://drive.google.com/file/d/1l42vxzHwLXrKU10v3FutG2DWthU43vB8/view"],
   },
   {
     id: "218",
@@ -2248,6 +2264,7 @@ export default [
     chains: ["Ethereum"],
     module: "definer/index.js",
     twitter: "DeFinerOrg",
+    audit_links: ["https://docs.definer.org/"],
   },
   {
     id: "223",
@@ -2443,6 +2460,7 @@ export default [
     chains: ["Ethereum"],
     module: "mcdex/index.js",
     twitter: "MonteCarloDEX",
+    audit_links: ["https://blog.openzeppelin.com/?s=MCDEX"],
   },
   {
     id: "233",
@@ -2501,6 +2519,7 @@ export default [
     chains: ["Ethereum"],
     module: "peakdefi/index.js",
     twitter: "PEAKDEFI",
+    audit_links: ["https://certificate.quantstamp.com/full/peakdefi"],
   },
   {
     id: "236",
@@ -2750,7 +2769,7 @@ export default [
     description: "Your portal for cross-chain yield ",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/Z9CnMRH0_400x400.png`,
-    audits: "3",
+    audits: "0",
     audit_note: null,
     gecko_id: "force-dao",
     cmcId: "9112",
@@ -2758,6 +2777,7 @@ export default [
     chains: ["Ethereum"],
     module: "forcedao/index.js",
     twitter: "force_dao",
+    forkedFrom: ["xSushi"],
   },
   {
     id: "249",
@@ -2936,6 +2956,7 @@ export default [
     chains: ["Ethereum"],
     module: "xdefi/xdefi.js",
     twitter: "xdeilab",
+    audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=7b91209f526407299aee5f99688b62fb2c337a4316a6b305719a9e3cd5442348", "https://www.certik.org/projects/xdefi"],
   },
   {
     id: "258",
@@ -2976,6 +2997,8 @@ export default [
     chains: ["Avalanche"],
     module: "snowball/index.js",
     twitter: "throwsnowballs",
+    forkedFrom: ["picklefinance", "saddlefinance"],
+
   },
   {
     id: "260",
@@ -3033,6 +3056,7 @@ export default [
     chains: ["Ethereum"],
     module: "primitive/index.js",
     twitter: "PrimitiveFi",
+    audit_links: ["https://docs.primitive.finance/traders/trader-risks#have-your-contracts-been-audited"],
   },
   {
     id: "263",
@@ -3052,6 +3076,7 @@ export default [
     chains: ["Ethereum"],
     module: "qian/index.js",
     twitter: null,
+    audit_links: ["https://qian.finance/PeckShield-Audit-Report-QIAN2-v1.0.pdf"],
   },
   {
     id: "264",
@@ -3071,6 +3096,7 @@ export default [
     chains: ["Ethereum"],
     module: "ray/index.js",
     twitter: null,
+    audit_links: ["https://staked.gitbook.io/staked/ray/security"],
   },
   {
     id: "265",
@@ -3131,6 +3157,7 @@ export default [
     chains: ["Ethereum"],
     module: "sfinance/index.js",
     twitter: "SFinanceEx",
+    audit_links: ["https://s.finance/risks"],
   },
   {
     id: "268",
@@ -3150,6 +3177,7 @@ export default [
     chains: ["Ethereum"],
     module: "unitrade/index.js",
     twitter: "UniTradeApp",
+    audit_links: ["https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20%20Unitrade%20%5B06.10.2020%5D.pdf"],
   },
   {
     id: "269",
@@ -3168,6 +3196,8 @@ export default [
     chains: ["Ethereum"],
     module: "yfii/index.js",
     twitter: "DfiMoney",
+    audit_links: ["https://github.com/yfii/audit"],
+    forkedFrom: ["YFI"],
   },
   {
     id: "270",
@@ -3270,6 +3300,7 @@ export default [
     chains: ["Avalanche"],
     module: "olivecash/index.js",
     twitter: "OliveCashBsc",
+    audit_links: ["https://olive-cash.gitbook.io/olive-cash/bsc-1/audit-1"],
   },
   {
     id: "275",
@@ -3521,6 +3552,7 @@ export default [
     chains: ["Avalanche"],
     module: "zerodex/index.js",
     twitter: "OfficialZeroDEX",
+    forkedFrom: ["UniSwap", "SushiSwap"],
   },
   /*
   {
@@ -3755,6 +3787,7 @@ export default [
     chains: ["xDai"],
     module: "levinswap/index.js",
     twitter: "levinswap",
+    forkedFrom: ["UniSwap"],
   },
   {
     id: "300",
@@ -4469,6 +4502,7 @@ export default [
     chains: ["Ethereum"],
     module: "flashstake/index.js",
     twitter: "flashstake",
+    audit_links: ["https://t.co/ngdoQ1FYv1?amp=1"],
   },
   {
     id: "336",
@@ -4547,6 +4581,7 @@ export default [
     chains: ["Ethereum"],
     module: "lien/index.js",
     twitter: "LienFinance",
+    audit_links: ["https://lien.finance/risk"],
   },
   {
     id: "340",
@@ -5061,7 +5096,7 @@ export default [
     chains: ["Ethereum"],
     module: "charmfinance/index.js",
     twitter: "CharmFinance",
-    audit_links: []
+    audit_links: ["https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Charm%20Finance%20%5B27.10.2020%5D.pdf"],
   },
   {
     id: "366",
@@ -5142,5 +5177,119 @@ export default [
     module: "yfdai/index.js",
     twitter: "YfdaiF",
     audit_links: ["https://attest.im/attestation/searchResult?qurey=4c533d00766c4b2a9761fad5da78b56f", "https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MSgvIS2RfKE66pfkI81%2F-MUv-RfymyB6PvCRlnwz%2F-MUv1a71AjJ6p3Bgz5ui%2FChannels-Audit-Report-030321(1).pdf?alt=media&token=1af91ea6-d3d0-4ba3-8784-5dce6a907930"]
+  },
+  {
+    id: "370",
+    name: "Merlin",
+    address: "0xDA360309C59CB8C434b28A91b823344a96444278",
+    symbol: "MERL",
+    url: "https://www.merlinlab.com/farm",
+    description: "Merlin is an auto-compounding yield aggregator with an ecosystem optimized to focus on safe and sustainable maximum yield return.",
+    chain: "Binance",
+    logo: null | string;
+    audits: "2",
+    audit_note: null,
+    gecko_id: "merlin",
+    cmcId: "9853",
+    category: "Yield",
+    chains: ["Binance"],
+    module: string;
+    twitter: "MerlinLab_",
+    audit_links: ["https://merlinlab.gitbook.io/merlin/security-and-risks"],
+  },
+  {
+    id: "371",
+    name: "KokomoSwap",
+    address: "0x9a7B87651C6C93cedb831B2B3b5549142a813Cfe",
+    symbol: "KOKOMO",
+    url: "https://kokomoswap.io/#/",
+    description: "KokomoSwap is a Binance Smart Chain based AMM (automated market maker) DEX(decentralized exchange) designed to facilitate the seamless transaction of crypto assets in a fun-filled and profitable manner.",
+    chain: "Binance",
+    logo: null | string;
+    audits: "2",
+    audit_note: null;
+    gecko_id: string;
+    cmcId: string;
+    category: "Dexes",
+    chains: ["Binance"],
+    module: string;
+    twitter: "KokomoSwap",
+    audit_links: ["https://docs.kokomoswap.io/risk-and-security-1/audit"],
+  },
+  {
+    id: "372",
+    name: "Rabbit Finance",
+    address: "0x95a1199eba84ac5f19546519e287d43d2f0e1b41",
+    symbol: "RABBIT",
+    url: "https://www.rabbitfinance.io/earn",
+    description: "Rabbit Finance is a cross-chain excess lending protocol, which can help users deposit and obtain more interest and help liquidity farmers obtain higher income through high as 9x leverage.",
+    chain: "Binance",
+    logo: null | string;
+    audits: "2",
+    audit_note: null;
+    gecko_id: "rabbit-finance",
+    cmcId: "10178",
+    category: "Lending",
+    chains: ["Binance"];
+    module: string;
+    twitter: "FinanceRabbit",
+    audit_links: ["https://rabbitfinance.gitbook.io/homepage/resources/audit-report"],
+  },
+  {
+    id: "373",
+    name: "BiSwap",
+    address: "0x965f527d9159dce6288a2219db51fc6eef120dd1",
+    symbol: "BSW",
+    url: "https://biswap.org/",
+    description: "Biswap is the first decentralized exchange platform on the market with a three-type referral system and the lowest platform transaction fees (0.1%).",
+    chain: "Binance",
+    logo: null | string;
+    audits: "2",
+    audit_note: null;
+    gecko_id: string;
+    cmcId: string;
+    category: "Dexes",
+    chains: ["Binance"],
+    module: string;
+    twitter: "Biswap_Dex",
+    audit_links: ["https://www.certik.org/projects/biswap"],
+  },
+  {
+    id: "374",
+    name: "Kine Finance",
+    address: "0xbfa9df9ed8805e657d0feab5d186c6a567752d7f",
+    symbol: "KINE",
+    url: "https://kine.finance/",
+    description: "Kine establishes general purpose liquidity pools backed by a customizable portfolio of digital assets. The liquidity pool allows traders to open and close derivatives positions according to trusted price feeds, avoiding the need of counterparties.",
+    chain: "Binance",
+    logo: null | string;
+    audits: "1",
+    audit_note: null;
+    gecko_id: "kine-protocol",
+    cmcId: "8790",
+    category: "Yield",
+    chains: ["Binance", "Ethereum"],
+    module: string;
+    twitter: "KineProtocol",
+    audit_links: ["https://docs.kine.io/audit/peckshield"],
+  },
+  {
+    id: "375",
+    name: "Nerve Network",
+    address: "0xf0e406c49c63abf358030a299c0e00118c4c6ba5",
+    symbol: "NVT",
+    url: "https://nerve.network/",
+    description: "Nerve is a decentralized digital asset service network based on the NULS micro-services framework, which uses the NULS ChainBox to develop a blockchain cross-chain interaction protocol.",
+    chain: "NULS",
+    logo: null | string;
+    audits: "2",
+    audit_note: null;
+    gecko_id: "nervenetwork",
+    cmcId: "5906",
+    category: "Dexes",
+    chains: ["Binance", "Ethereum",],
+    module: string;
+    twitter: "nerve_network",
+    audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=097a33b2e955a56af85e80b13ff82a3ad20fea83871769b5c58d024b5e774164"],
   },
 ] as Protocol[];

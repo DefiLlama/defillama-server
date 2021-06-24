@@ -5330,4 +5330,23 @@ export default [
     module: "ethernity/index.js",
     twitter: "EthernityChain",
   },
+  {
+    id: "378",
+    name: "MakiSwap",
+    address: "0x5fad6fbba4bba686ba9b8052cf0bd51699f38b93",
+    symbol: "MAKI",
+    url: "https://makiswap.com",
+    description: "Makiswap is an automated market maker (AMM). You can think of an AMM as a primitive robotic market maker that is always willing to quote prices between two assets according to a simple pricing algorithm. Makiswap can be farmed that can be found on the "rewards" section on this page.",
+    chain: "Heco",
+    logo: `${baseIconsUrl}/makiswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "makiswap",
+    cmcId: "10232",
+    category: "Dexes",
+    chains: ["Heco"];
+    module: "makiswap/index.js",
+    twitter: "MakiSwap",
+    audit_links: "https://www.certik.org/projects/makiswap",
+  }
 ] as Protocol[];

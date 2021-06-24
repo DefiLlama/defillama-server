@@ -5344,7 +5344,7 @@ export default [
     gecko_id: "makiswap",
     cmcId: "10232",
     category: "Dexes",
-    chains: ["Heco"];
+    chains: ["Heco"],
     module: "makiswap/index.js",
     twitter: "MakiSwap",
     audit_links: "https://www.certik.org/projects/makiswap",

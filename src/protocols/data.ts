@@ -5347,6 +5347,6 @@ export default [
     chains: ["Heco"],
     module: "makiswap/index.js",
     twitter: "MakiSwap",
-    audit_links: "https://www.certik.org/projects/makiswap",
+    audit_links: ["https://www.certik.org/projects/makiswap"],
   },
 ] as Protocol[];

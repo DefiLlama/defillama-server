@@ -17,7 +17,7 @@ const handler = async (_event: any) => {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                content: message
+                content: "```\n"+message+"\n```" // Put it into a code block to prevent the format from getting messed up
               })
             }
         )

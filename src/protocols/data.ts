@@ -5336,7 +5336,7 @@ export default [
     address: "0x5fad6fbba4bba686ba9b8052cf0bd51699f38b93",
     symbol: "MAKI",
     url: "https://makiswap.com",
-    description: "Makiswap is an automated market maker (AMM). You can think of an AMM as a primitive robotic market maker that is always willing to quote prices between two assets according to a simple pricing algorithm. Makiswap can be farmed that can be found on the "rewards" section on this page.",
+    description: "Makiswap is an automated market maker (AMM). You can think of an AMM as a primitive robotic market maker that is always willing to quote prices between two assets according to a simple pricing algorithm. Makiswap can be farmed that can be found on the 'rewards' section on this page.",
     chain: "Heco",
     logo: `${baseIconsUrl}/makiswap.jpg`,
     audits: "2",

@@ -2,7 +2,7 @@ import { wrapScheduledLambda } from "./utils/wrap";
 import protocols from "./protocols/data";
 import invokeLambda from "./utils/invokeLambda";
 
-const step = 25;
+const step = 10;
 const handler = async () => {
   for (let i = 0; i < protocols.length; i += step) {
     const event = {

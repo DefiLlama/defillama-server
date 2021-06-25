@@ -11,3 +11,20 @@ export type TokensValueLocked = {
 export type tvlsObject<T> = {
   [chain: string]: T;
 };
+
+const chains = [
+  'Ethereum',
+  'Binance',
+  'Polygon',
+  'Avalanche',
+  'Terra',
+  'xDai',
+  'Solana',
+  'Fantom',
+  'Heco',
+  'OKExChain',
+  'Wanchain',
+  'Harmony'
+] as const;
+
+export type chains = typeof chains[number];

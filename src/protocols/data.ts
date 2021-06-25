@@ -1,4 +1,5 @@
 import { baseIconsUrl } from "../constants";
+import { chains } from '../types';
 
 export interface Protocol {
   id: string;
@@ -14,9 +15,29 @@ export interface Protocol {
   gecko_id: string;
   cmcId: string;
   category: string;
-  chains: string[];
+  chains: chains[];
   module: string;
   twitter: string;
+  audit_links: string[];
+  slug: string;
+  tvl: number;
+  chainTvls: {
+    Ethereum?: number;
+    Binance?: number;
+    Polygon?: number;
+    Avalanche?: number;
+    Terra?: number;
+    xDai?: number;
+    Solana?: number;
+    Fantom?: number;
+    Heco?: number;
+    OKExChain?: number;
+    Wanchain?: number;
+    Harmony?: number;
+  };
+  change_1h: number;
+  change_1d: number;
+  change_7d: number;
 }
 
 /* Audits: Please follow this agenda

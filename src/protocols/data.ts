@@ -4919,6 +4919,7 @@ export default [
     twitter: "dopplefi",
     audit_links: ["https://dopple.gitbook.io/dopple-finance/certik-audit"],
   },
+  /*
   {
     id: "357",
     name: "Malt Money",
@@ -4938,6 +4939,7 @@ export default [
     module: "malt-money/index.js",
     twitter: "MaltProtocol",
   },
+  */
   {
     id: "358",
     name: "Parrot Protocol",

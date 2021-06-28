@@ -1968,7 +1968,7 @@ export default [
   {
     id: "208",
     name: "ACryptoS",
-    address: null,
+    address: "bsc:0x4197c6ef3879a08cd51e5560da5064b773aa1d29",
     symbol: "ACS",
     url: "https://app.acryptos.com/",
     description:
@@ -2054,7 +2054,7 @@ export default [
   {
     id: "212",
     name: "Venus",
-    address: "0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+    address: "bsc:0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
     symbol: "XVS",
     url: "https://venus.io/",
     description:
@@ -2564,7 +2564,7 @@ export default [
   {
     id: "238",
     name: "Ellipsis Finance",
-    address: "0xA7f552078dcC247C2684336020c03648500C6d9F",
+    address: "bsc:0xA7f552078dcC247C2684336020c03648500C6d9F",
     symbol: "EPS",
     url: "https://ellipsis.finance/",
     description: "Secure low-slippage stable swapping on BSC.",
@@ -3907,7 +3907,7 @@ export default [
   {
     id: "306",
     name: "Quickswap",
-    address: "0x6c28aef8977c9b773996d0e8376d2ee379446f2f",
+    address: "polygon:0x6c28aef8977c9b773996d0e8376d2ee379446f2f",
     symbol: "QUICK",
     url: "https://quickswap.exchange/",
     description: "AMM",

@@ -5183,7 +5183,7 @@ export default [
   {
     id: "370",
     name: "Merlin",
-    address: "0xDA360309C59CB8C434b28A91b823344a96444278",
+    address: "bsc:0xDA360309C59CB8C434b28A91b823344a96444278",
     symbol: "MERL",
     url: "https://www.merlinlab.com/farm",
     description: "Merlin is an auto-compounding yield aggregator with an ecosystem optimized to focus on safe and sustainable maximum yield return.",
@@ -5202,7 +5202,7 @@ export default [
   {
     id: "371",
     name: "KokomoSwap",
-    address: "0x9a7B87651C6C93cedb831B2B3b5549142a813Cfe",
+    address: "bsc:0x9a7B87651C6C93cedb831B2B3b5549142a813Cfe",
     symbol: "KOKOMO",
     url: "https://kokomoswap.io/#/",
     description: "KokomoSwap is a Binance Smart Chain based AMM (automated market maker) DEX(decentralized exchange) designed to facilitate the seamless transaction of crypto assets in a fun-filled and profitable manner.",
@@ -5221,7 +5221,7 @@ export default [
   {
     id: "372",
     name: "Rabbit Finance",
-    address: "0x95a1199eba84ac5f19546519e287d43d2f0e1b41",
+    address: "bsc:0x95a1199eba84ac5f19546519e287d43d2f0e1b41",
     symbol: "RABBIT",
     url: "https://www.rabbitfinance.io/earn",
     description: "Rabbit Finance is a cross-chain excess lending protocol, which can help users deposit and obtain more interest and help liquidity farmers obtain higher income through high as 9x leverage.",
@@ -5240,7 +5240,7 @@ export default [
   {
     id: "373",
     name: "BiSwap",
-    address: "0x965f527d9159dce6288a2219db51fc6eef120dd1",
+    address: "bsc:0x965f527d9159dce6288a2219db51fc6eef120dd1",
     symbol: "BSW",
     url: "https://biswap.org/",
     description: "Biswap is the first decentralized exchange platform on the market with a three-type referral system and the lowest platform transaction fees (0.1%).",
@@ -5259,7 +5259,7 @@ export default [
   {
     id: "374",
     name: "Kine Finance",
-    address: "0xbfa9df9ed8805e657d0feab5d186c6a567752d7f",
+    address: "bsc:0xbfa9df9ed8805e657d0feab5d186c6a567752d7f",
     symbol: "KINE",
     url: "https://kine.finance/",
     description: "Kine establishes general purpose liquidity pools backed by a customizable portfolio of digital assets. The liquidity pool allows traders to open and close derivatives positions according to trusted price feeds, avoiding the need of counterparties.",
@@ -5278,7 +5278,7 @@ export default [
   {
     id: "375",
     name: "Nerve Network",
-    address: "0xf0e406c49c63abf358030a299c0e00118c4c6ba5",
+    address: "bsc:0xf0e406c49c63abf358030a299c0e00118c4c6ba5",
     symbol: "NVT",
     url: "https://nerve.network/",
     description: "Nerve is a decentralized digital asset service network based on the NULS micro-services framework, which uses the NULS ChainBox to develop a blockchain cross-chain interaction protocol.",
@@ -5297,7 +5297,7 @@ export default [
   {
     id: "376",
     name: "Tomb Finance",
-    address: "0x6c021ae822bea943b2e66552bde1d2696a53fbb7",
+    address: "fantom:0x6c021ae822bea943b2e66552bde1d2696a53fbb7",
     symbol: "TOMB",
     url: "https://tomb.finance/",
     description: "The first algorithmic stablecoin on Fantom Opera, pegged to the price of 1 FTM via seigniorage.",
@@ -5333,7 +5333,7 @@ export default [
   {
     id: "378",
     name: "MakiSwap",
-    address: "0x5fad6fbba4bba686ba9b8052cf0bd51699f38b93",
+    address: "heco:0x5fad6fbba4bba686ba9b8052cf0bd51699f38b93",
     symbol: "MAKI",
     url: "https://makiswap.com",
     description: "Makiswap is an automated market maker (AMM). You can think of an AMM as a primitive robotic market maker that is always willing to quote prices between two assets according to a simple pricing algorithm. Makiswap can be farmed that can be found on the 'rewards' section on this page.",
@@ -5371,7 +5371,7 @@ export default [
   {
     id: "380",
     name: "LendHub",
-    address: "0x8f67854497218043e1f72908ffe38d0ed7f24721",
+    address: "heco:0x8f67854497218043e1f72908ffe38d0ed7f24721",
     symbol: "LHB",
     url: "https://www.lendhub.org",
     description: "LendHub is a decentralized lending platform based on the Huobi Ecological Chain. It supports pledged lending of multiple currencies on the Heco chain. Users can obtain incentive token LHB rewards by borrowing on LendHub. LHB will serve as the hub of the LendHub platform, and realize the mutual accommodation and value transfer between Huobi ecological assets through pledged lending that supports the mutual accommodation of assets on the Huobi ecological chain.",
@@ -5446,7 +5446,7 @@ export default [
   {
     id: "384",
     name: "Firebird",
-    address: "0xd78c475133731cd54dadcb430f7aae4f03c1e660",
+    address: "polygon:0xd78c475133731cd54dadcb430f7aae4f03c1e660",
     symbol: "HOPE",
     url: "https://app.firebird.finance/one-pool",
     description: "Firebird is a one-stop DeFi platform that aims to revolutionize DeFi services by meeting all your DeFi needs.",

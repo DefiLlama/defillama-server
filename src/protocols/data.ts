@@ -5470,7 +5470,7 @@ export default [
     url: "https://mercurial.finance/",
     description: "Mercurial is building the infrastructure for stable and pegged assets for Solana.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/mercurial.jpg`,
+    logo: `${baseIconsUrl}/mercurial.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "mercurial",

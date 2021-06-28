@@ -1907,7 +1907,7 @@ export default [
   {
     id: "205",
     name: "Goose Finance",
-    address: "-",
+    address: "bsc:0xf952fc3ca7325cc27d15885d37117676d25bfda6",
     symbol: "EGG",
     url: "https://www.goosedefi.com/",
     description: "2nd generation yield farming on binance smart chain",
@@ -3656,8 +3656,8 @@ export default [
   {
     id: "293",
     name: "Lydia",
-    address: null,
-    symbol: "-",
+    address: "avax:0x4c9b4e1ac6f24cde3660d5e4ef1ebf77c710c084",
+    symbol: "LYD",
     url: "https://www.lydia.finance/",
     description: "AMM",
     chain: "Avalanche",

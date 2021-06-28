@@ -107,7 +107,7 @@ export default [
     cmcId: "7278",
     category: "Lending",
     chains: ["Ethereum", "Polygon"],
-    module: "aave.js",
+    module: "aave/index.js",
     twitter: "AaveAave",
     audit_links: ["https://aave.com/security"],
   },

@@ -5401,7 +5401,7 @@ export default [
     gecko_id: "premia",
     cmcId: "8476",
     category: "Options",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Binance"],
     module: "premia/index.js",
     twitter: "PremiaFinance",
     audit_links: ["https://solidity.finance/audits/Premia/"],
@@ -5429,7 +5429,7 @@ export default [
     id: "383",
     name: "Osmosis",
     address: "-",
-    symbol: "OSMO"
+    symbol: "OSMO",
     url: "https://osmosis.zone/",
     description: "Osmosis is an advanced automated market maker (AMM) protocol that allows developers to build customized AMMs with sovereign liquidity pools.",
     chain: "Osmosis",
@@ -5440,7 +5440,7 @@ export default [
     cmcId: null,
     category: "Dexes",
     chains: ["Osmosis"],
-    module: "osmosis/index.js",
+    module: "osmosis.js",
     twitter: "osmosiszone",
   },
   {

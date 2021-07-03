@@ -86,7 +86,7 @@ export default [
     gecko_id: "curve-dao-token",
     cmcId: "6538",
     category: "Dexes",
-    chains: ["Ethereum", "Polygon", "Fantom"],
+    chains: ["Ethereum", "Polygon", "Fantom", "xDai"],
     module: "curve.js",
     twitter: "CurveFinance",
     audit_links: ["https://curve.fi/audits"],
@@ -4979,6 +4979,7 @@ export default [
     twitter: "fraxfinance",
     audit_links: ["https://www.certik.org/projects/fraxfinance"],
   },
+/*
   {
     id: "360",
     name: "Antimatter",
@@ -4999,6 +5000,7 @@ export default [
     twitter: "antimatterdefi",
     audit_links: ["https://github.com/antimatter-finance/antimatter-finance.github.io/blob/main/audit_en.pdf"]
   },
+*/
   {
     id: "361",
     name: "Whiteheart",

@@ -4979,6 +4979,7 @@ export default [
     twitter: "fraxfinance",
     audit_links: ["https://www.certik.org/projects/fraxfinance"],
   },
+/*
   {
     id: "360",
     name: "Antimatter",
@@ -4999,6 +5000,7 @@ export default [
     twitter: "antimatterdefi",
     audit_links: ["https://github.com/antimatter-finance/antimatter-finance.github.io/blob/main/audit_en.pdf"]
   },
+*/
   {
     id: "361",
     name: "Whiteheart",

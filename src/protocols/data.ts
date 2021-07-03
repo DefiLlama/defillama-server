@@ -5484,7 +5484,7 @@ export default [
     id: "386",
     name: "PolyQuity",
     address: "polygon:0x5a3064CbDCCF428ae907796cF6aD5a664CD7F3d8",
-    symbol: "PQY",
+    symbol: "PYQ",
     url: "https://polyquity.org",
     description: "PolyQuity is a decentralized borrowing protocol that allows you to draw interest-free loans against Matic used as collateral. Loans are paid out in PUSD (a USD pegged stablecoin) and need to maintain a minimum collateral ratio of 110%. In addition to the collateral, the loans are secured by a Stability Pool containing PUSD and by fellow borrowers collectively acting as guarantors of last resort. Learn more about these mechanisms in our documentation.",
     chain: "Polygon",

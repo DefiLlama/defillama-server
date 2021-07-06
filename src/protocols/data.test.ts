@@ -19,6 +19,7 @@ test("all the chains on the adapter are listed on the protocol", async () => {
       if (
         key !== "fetch" &&
         key !== "tvl" &&
+        key !== "staking" &&
         key !== "default" &&
         typeof module[key] === "object" &&
         module[key] !== null

@@ -4040,6 +4040,7 @@ export default [
     twitter: "StackerVentures",
     audit_links: ["https://docs.stacker.vc/docs-stacker-ventures/audits/active-yield-fund-audit-report", "https://docs.stacker.vc/docs-stacker-ventures/audits/smart-contract-audit-report"],
   },
+  /*
   {
     id: "313",
     name: "ViperSwap",
@@ -4060,6 +4061,7 @@ export default [
     twitter: null,
     forkedFrom: ["UniSwap", "SushiSwap", "Bao"],
   },
+  */
   {
     id: "314",
     name: "Gondola Finance",

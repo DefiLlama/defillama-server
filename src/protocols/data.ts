@@ -50,6 +50,7 @@ export default [
       "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits",
       "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
     ],
+    oracles: ["Uniswap"],
   },
   {
     id: "2",
@@ -70,6 +71,7 @@ export default [
     module: "wbtc.js",
     twitter: "WrappedBTC",
     audit_links: ["https://wbtc.network/dashboard/audit"],
+    oracles: ["Chainlink"],
   },
   {
     id: "3",
@@ -90,6 +92,7 @@ export default [
     module: "curve.js",
     twitter: "CurveFinance",
     audit_links: ["https://curve.fi/audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "111",
@@ -110,6 +113,7 @@ export default [
     module: "aave/index.js",
     twitter: "AaveAave",
     audit_links: ["https://aave.com/security"],
+    oracles: ["Chainlink"],
   },
   {
     id: "112",
@@ -171,6 +175,7 @@ export default [
     module: "compound/index.js",
     twitter: "compoundfinance",
     audit_links: ["https://compound.finance/docs/security"],
+    oracles: ["Chainlink"],
   },
   {
     id: "115",
@@ -191,6 +196,7 @@ export default [
     module: "synthetix/index.js",
     twitter: "synthetix_io",
     audit_links: ["https://docs.synthetix.io/contracts/audits/"],
+    oracles: ["Chainlink"],
   },
   {
     id: "116",
@@ -207,7 +213,7 @@ export default [
     gecko_id: "balancer",
     cmcId: "5728",
     category: "Dexes",
-    chains: ["Ethereum", "Polygon"],
+    chains: ["Ethereum"],
     module: "balancer/index.js",
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
@@ -231,6 +237,7 @@ export default [
     module: "ren/index.js",
     twitter: "renprotocol",
     audit_links: ["https://github.com/renproject/ren/wiki/Audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "118",
@@ -251,6 +258,7 @@ export default [
     module: "maker/index.js",
     twitter: "MakerDAO",
     audit_links: ["https://security.makerdao.com/"],
+    oracles: ["Maker"],
   },
   {
     id: "119",
@@ -274,6 +282,7 @@ export default [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf",
     ],
     forkedFrom: ["UniSwap"],
+    oracles: ["Chainlink"],
   },
   {
     id: "120",
@@ -311,11 +320,12 @@ export default [
     gecko_id: "cream-2",
     cmcId: "6193",
     category: "Lending",
-    chains: ["Ethereum", "Binance", "Fantom", "Polygon"],
+    chains: ["Ethereum", "Binance", "Fantom"],
     module: "cream/index.js",
     twitter: "CreamdotFinance",
     audit_links: ["https://docs.cream.finance/audit-report"],
     forkedFrom: ["Compound Finance"],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "122",
@@ -338,6 +348,7 @@ export default [
     audit_links: [
       "https://nexusmutual.gitbook.io/docs/helpful-resources/audits-and-security",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "123",
@@ -361,6 +372,7 @@ export default [
       "https://github.com/dforce-network/documents/tree/master/audit_report/Lending",
     ],
     forkedFrom: ["Compound"],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "124",
@@ -423,6 +435,7 @@ export default [
     audit_links: [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
     ],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "127",
@@ -443,6 +456,7 @@ export default [
     module: "kyber/index.js",
     twitter: "KyberNetwork",
     audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "128",
@@ -526,6 +540,7 @@ export default [
     audit_links: [
       "https://docs.barnbridge.com/beginners-guide-to-smart-yield#is-it-secure-to-invest-in-smart-yield",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "132",
@@ -606,6 +621,7 @@ export default [
     module: "kava.js",
     twitter: "kava_labs",
     audit_links: ["https://www.certik.org/projects/kava"],
+    oracles: ["Chainlink"],
   },
   {
     id: "136",
@@ -628,6 +644,7 @@ export default [
     audit_links: [
       "https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "137",
@@ -668,6 +685,7 @@ export default [
     module: "hakka.js",
     twitter: "hakkafinance",
     audit_links: ["https://github.com/hakkafinance/audit-reports"],
+    oracles: ["Chainlink"],
   },
   {
     id: "139",
@@ -689,6 +707,7 @@ export default [
     twitter: "snow_swap",
     audit_links: ["https://hackmd.io/@9GUQpanJRF6cloQ0fwyPFw/r1_ctUuqv"],
     forkedFrom: ["CurveFinance", "UniSwap"],
+    oracles: ["Chainlink"],
   },
   {
     id: "140",
@@ -709,6 +728,7 @@ export default [
     module: "hard.js",
     twitter: "hard_protocol",
     audit_links: ["https://www.certik.org/projects/hard"],
+    oracles: ["Chainlink"],
   },
   {
     id: "141",
@@ -771,6 +791,7 @@ export default [
       "https://consensys.net/diligence/audits/2020/06/amp",
       "https://github.com/trailofbits/publications/blob/master/reviews/amp.pdf",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "144",
@@ -791,6 +812,7 @@ export default [
     module: "dydx/index.js",
     twitter: "dydxprotocol",
     audit_links: ["https://docs.dydx.exchange/#independent-audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "145",
@@ -829,6 +851,7 @@ export default [
     module: "dodo/index.js",
     twitter: "BreederDodo",
     audit_links: ["https://github.com/DODOEX/docs/blob/master/docs/audit.md"],
+    oracles: ["Chainlink"],
   },
   {
     id: "148",
@@ -848,6 +871,7 @@ export default [
     module: "tornado-cash.js",
     twitter: "TornadoCash",
     audit_links: ["https://tornado.cash/#faq"],
+    oracles: ["Chainlink"],
   },
   {
     id: "149",
@@ -868,6 +892,7 @@ export default [
     module: "bprotocol/index.js",
     twitter: "bprotocoleth",
     audit_links: ["https://app.bprotocol.org/risk"],
+    oracles: ["Chainlink"],
   },
   {
     id: "150",
@@ -928,6 +953,7 @@ export default [
     module: "augur/index.js",
     twitter: "AugurProject",
     audit_links: ["https://github.com/AugurProject/augur-audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "153",
@@ -1062,6 +1088,7 @@ export default [
     module: "alpha-homora/index.js",
     twitter: "AlphaFinanceLab",
     audit_links: ["https://blog.openzeppelin.com/alpha-homora-v2/"],
+    oracles: ["Band"],
   },
   {
     id: "161",
@@ -1084,6 +1111,7 @@ export default [
     audit_links: [
       "https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "162",
@@ -1104,6 +1132,7 @@ export default [
     module: "bancor/index.js",
     twitter: "Bancor",
     audit_links: ["https://docs.bancor.network/ethereum-contracts/security"],
+    oracles: ["Chainlink"],
   },
   {
     id: "163",
@@ -1144,6 +1173,7 @@ export default [
     module: "valuedefi.js",
     twitter: "value_defi",
     audit_links: ["https://valuedefi.io/audit"],
+    oracles: ["Chainlink"],
   },
   {
     id: "165",
@@ -1263,6 +1293,7 @@ export default [
     module: "finnexus/index.js",
     twitter: "fin_nexus",
     audit_links: ["https://github.com/Phoenix-Finance/Pdfs/blob/master/PeckShield-Audit-FinnexusOptionsV1.0.pdf"],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "171",
@@ -1323,6 +1354,7 @@ export default [
     audit_links: [
       "https://badger.finance/wp-content/uploads/2021/01/HAECHI-AUDIT-BadgerDAO-Smart-Contract-Audit-Report-1.pdf",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "174",
@@ -1383,6 +1415,7 @@ export default [
     twitter: "MushroomsFinan1",
     audit_links: ["https://github.com/mushroomsforest/deployment/blob/main/security.md"],
     forkedFrom: ["Yearn"],
+    oracles: ["Chainlink"],
   },
   {
     id: "177",
@@ -1486,6 +1519,7 @@ export default [
     audit_links: [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=1193264f67af7c2bb840306b82eff6218471cf4fbed79a7d48d6a01a93030e35",
     ],
+    oracles: ["Band"],
   },
   {
     id: "182",
@@ -1525,6 +1559,7 @@ export default [
     module: "wing.js",
     twitter: "Wing_Finance",
     audit_links: ["https://docs.wing.finance/#audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "184",
@@ -1545,6 +1580,7 @@ export default [
     module: "fuse.js",
     twitter: "Fuse_network",
     audit_links: ["https://github.com/fuseio/fuse-network/blob/master/audits/zokyo.pdf"],
+    oracles: ["Chainlink"],
   },
   {
     id: "186",
@@ -1628,6 +1664,7 @@ export default [
     audit_links: [
       "https://help.1inch.io/en/articles/4585088-how-secure-is-1inch",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "190",
@@ -1726,6 +1763,7 @@ export default [
     twitter: "PancakeSwap",
     audit_links: ["https://docs.pancakeswap.finance/#is-it-safe"],
     forkedFrom: ["UniSwap"],
+    oracles: ["Chainlink"],
   },
   {
     id: "195",
@@ -1745,6 +1783,7 @@ export default [
     module: "defidollar/index.js",
     twitter: "defidollar",
     audit_links: ["https://docs.dusd.finance/audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "196",
@@ -1784,6 +1823,7 @@ export default [
     module: "bzx.js",
     twitter: "bZxHQ",
     audit_links: ["https://bzx.network/security"],
+    oracles: ["Chainlink"],
   },
   /*
   {
@@ -1903,6 +1943,7 @@ export default [
     module: "alchemix.js",
     twitter: "AlchemixFi",
     audit_links: ["https://alchemix.fi/a208baf6ca7e0d6b0116461f05e27cd9.pdf"],
+    oracles: ["Chainlink"],
   },
   {
     id: "205",
@@ -2071,6 +2112,7 @@ export default [
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound", "MakerDAO"],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "213",
@@ -2146,6 +2188,7 @@ export default [
     module: "auctus/index.js",
     twitter: "AuctusOptions",
     audit_links: ["https://docs.auctus.org/security#audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "217",
@@ -2224,6 +2267,7 @@ export default [
     module: "vesper/index.js",
     twitter: "VesperFi",
     audit_links: ["https://github.com/vesperfi/doc/tree/main/audit"],
+    oracles: ["Chainlink"],
   },
   {
     id: "221",
@@ -2265,6 +2309,7 @@ export default [
     module: "definer/index.js",
     twitter: "DeFinerOrg",
     audit_links: ["https://docs.definer.org/"],
+    oracles: ["Chainlink"],
   },
   {
     id: "223",
@@ -2323,6 +2368,7 @@ export default [
     module: "enzyme/index.js",
     twitter: "enzymefinance",
     audit_links: ["https://audit.enzyme.finance/"],
+    oracles: ["Chainlink"],
   },
   {
     id: "226",
@@ -2384,6 +2430,7 @@ export default [
     module: "futureswap/index.js",
     twitter: "futureswapx",
     audit_links: ["https://docs.futureswap.com/protocol/audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "229",
@@ -2461,6 +2508,7 @@ export default [
     module: "mcdex/index.js",
     twitter: "MonteCarloDEX",
     audit_links: ["https://blog.openzeppelin.com/?s=MCDEX"],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "233",
@@ -2560,6 +2608,7 @@ export default [
     module: "swipeswap.js",
     twitter: "Swipe",
     audit_links: ["https://www.certik.org/projects/swipe"],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "238",
@@ -2602,6 +2651,7 @@ export default [
     module: "pooltogether/index.js",
     twitter: "PoolTogether_",
     audit_links: ["https://docs.pooltogether.com/security/audits-and-testing"],
+    oracles: ["Chainlink"],
   },
   {
     id: "240",
@@ -2695,12 +2745,13 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum", "OKExChain", "Binance", "Polygon"],
+    chains: ["Ethereum", "OKExChain", "Binance"],
     module: "wepiggy.js",
     twitter: "wepiggydotcom",
     audit_links: [
       "https://github.com/WePiggy/wepiggy-contracts/tree/master/docs/audits",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "245",
@@ -2759,6 +2810,7 @@ export default [
     module: "jarvis/index.js",
     twitter: "Jarvis_Network",
     audit_links: ["https://drive.google.com/file/d/1PdmrOKDV-udArVJu6E2rKUsCm9gPuN2p/view"],
+    oracles: ["Chainlink"],
   },
   {
     id: "248",
@@ -2899,6 +2951,7 @@ export default [
     audit_links: [
       "https://github.com/PancakeBunny-finance/Bunny/blob/main/audits/%5BHAECHI%20AUDIT%5D%20PancakeBunny%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "255",
@@ -2919,6 +2972,7 @@ export default [
     module: "fei/index.js",
     twitter: "feiprotocol",
     audit_links: ["https://docs.fei.money/audit"],
+    oracles: ["Chainlink"],
   },
   {
     id: "256",
@@ -3019,6 +3073,7 @@ export default [
     module: "mirror/index.js",
     twitter: "mirror_protocol",
     audit_links: ["https://docsend.com/view/p4es2dgvwadamgqg"],
+    oracles: ["Band"],
   },
   {
     id: "261",
@@ -3118,6 +3173,7 @@ export default [
     twitter: "reflexerfinance",
     audit_links: ["https://reflexer.finance/about/"],
     forkedFrom: ["Dai"],
+    oracles: ["Chainlink"],
   },
   {
     id: "266",
@@ -3138,6 +3194,7 @@ export default [
     module: "set-protocol/index.js",
     twitter: "SetProtocol",
     audit_links: ["https://www.tokensets.com/security"],
+    oracles: ["Chainlink"],
   },
   {
     id: "267",
@@ -3221,6 +3278,7 @@ export default [
       "https://github.com/trailofbits/publications/blob/master/reviews/Liquity.pdf",
       "https://www.coinspect.com/liquity-audit/",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "271",
@@ -3261,6 +3319,7 @@ export default [
     module: "cryptex/index.js",
     twitter: "CryptexFinance",
     audit_links: ["https://cryptex.finance/Cryptex_-_Final_Report.pdf"],
+    oracles: ["Chainlink"],
   },
   {
     id: "273",
@@ -3339,6 +3398,7 @@ export default [
     module: "stafi/index.js",
     twitter: "StaFi_Protocol",
     audit_links: ["https://github.com/stafiprotocol/stafi-bootstrap/tree/master/audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "277",
@@ -3516,6 +3576,7 @@ export default [
     module: "opyn/index.js",
     twitter: "opyn_",
     audit_links: ["https://opyn.gitbook.io/opyn/get-started/security#audits"],
+    oracles: ["Chainlink"],
   },
   {
     id: "286",
@@ -3553,6 +3614,7 @@ export default [
     module: "zerodex/index.js",
     twitter: "OfficialZeroDEX",
     forkedFrom: ["UniSwap", "SushiSwap"],
+    oracles: ["Chainlink"],
   },
   /*
   {
@@ -3961,6 +4023,7 @@ export default [
     module: "ruler/index.js",
     twitter: "RulerProtocol",
     audit_links: ["https://docs.rulerprotocol.com/security"],
+    oracles: ["Chainlink"],
   },
   {
     id: "309",
@@ -4584,6 +4647,7 @@ export default [
     module: "lien/index.js",
     twitter: "LienFinance",
     audit_links: ["https://lien.finance/risk"],
+    oracles: ["Chainlink"],
   },
   {
     id: "340",
@@ -4622,6 +4686,7 @@ export default [
     chains: ["Ethereum"],
     module: "nsure/index.js",
     twitter: "Nsure_network",
+    oracles: ["Chainlink"],
   },
   {
     id: "342",
@@ -4721,6 +4786,7 @@ export default [
     module: "yieldly/index.js",
     twitter: "yieldlyfinance",
     audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/Algorand%20Smart%20Contract%20Audit/Yieldly_Finance_Lottery_Algorand_Smart_Contract_Halborn_v1_1.pdf"],
+    oracles: ["Chainlink"],
   },
   {
     id: "347",
@@ -4762,6 +4828,7 @@ export default [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=c6eb91a0f506aac62c334eb909a37f95e236987d3b3089c9ff902e6c39f16389",
       "https://docs.filda.io/zhong-wen/dong-tai-geng-xin/2021112-geng-xin-update#filda-passed-the-security-audit-of-knownsec",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "349",
@@ -4782,6 +4849,7 @@ export default [
     twitter: "InjectiveLabs",
     audit_links: ["https://www.certik.org/projects/injectiveprotocol"],
     forkedFrom: ["UMAprotocol"],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "350",
@@ -4802,6 +4870,7 @@ export default [
     module: "cvi/index.js",
     twitter: "official_CVI",
     audit_links: ["https://cvi.finance/files/usdt-audit.pdf", "https://cvi.finance/files/eth-audit.pdf"],
+    oracles: ["Chainlink"],
   },
   {
     id: "351",
@@ -5043,6 +5112,7 @@ export default [
     module: "perp/index.js",
     twitter: "perpprotocol",
     audit_links: ["https://docs.perp.fi/library/audit-report"],
+    oracles: ["Chainlink"],
   },
   {
     id: "363",
@@ -5202,6 +5272,7 @@ export default [
     module: "merlinlab/index.js",
     twitter: "MerlinLab_",
     audit_links: ["https://merlinlab.gitbook.io/merlin/security-and-risks"],
+    oracles: ["Chainlink"],
   },
   {
     id: "371",
@@ -5333,6 +5404,7 @@ export default [
     chains: ["Ethereum"],
     module: "ethernity/index.js",
     twitter: "EthernityChain",
+    oracles: ["Chainlink"],
   },
   {
     id: "378",
@@ -5371,6 +5443,7 @@ export default [
     module: "cardstarter/index.js",
     twitter: "CardStarter",
     audit_links: ["https://t.me/Cardstarter/115433"],
+    oracles: ["Chainlink"],
   },
   {
     id: "380",
@@ -5390,6 +5463,7 @@ export default [
     module: "lendhub/index.js",
     twitter: "LendHubDefi",
     audit_links: ["https://www.lendhub.org/report/LendHubAuditReport.pdf", "https://www.lendhub.org/report/LendHubreport-020821.pdf", "https://www.lendhub.org/report/LendHubAuditReport2.pdf"],
+    oracles: ["Chainlink"],
   },
   {
     id: "381",
@@ -5481,7 +5555,7 @@ export default [
     cmcId: "9549",
     category: "Dexes",
     chains: ["Solana"],
-    module: "mercurial.js",
+    module: "mercurial/index.js",
     twitter: "MercurialFi",
   },
   {

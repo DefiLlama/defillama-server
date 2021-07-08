@@ -2945,7 +2945,7 @@ export default [
     gecko_id: "pancake-bunny",
     cmcId: "7791",
     category: "Yield",
-    chains: ["Binance"],
+    chains: ["Binance", "Polygon"],
     module: "bunny/index.js",
     twitter: "PancakeBunnyFin",
     audit_links: [

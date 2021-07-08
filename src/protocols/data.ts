@@ -5632,4 +5632,23 @@ export default [
     twitter: "AdamantVault",
     audit_links: ["https://adamantfinance.gitbook.io/adamant-finance/audits"],
   },
+  {
+    id: "390",
+    name: "Qilin",
+    address: "-",
+    symbol: "QI",
+    url: "https://qilin.fi/",
+    description: "Qilin is a decentralized volatility protocol that provides the ability to long volalitity of any crypto asset.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/qilin.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "qilin/index.js",
+    twitter: "QilinProtocol",
+    audit_links: ["https://github.com/CodexDao/QiLin/tree/main/audit"],
+  }
 ] as Protocol[];

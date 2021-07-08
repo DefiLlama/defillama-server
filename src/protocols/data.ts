@@ -5539,7 +5539,8 @@ export default [
     chains: ["Polygon"],
     module: "firebird/index.js",
     twitter: "FinanceFirebird",
-    audit_links: ["https://docs.firebird.finance/security-safu/audits"],
+    audit_links: ["https://docs.firebird.finance/security-safu/audits",
+                  "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Firebird-Swap-v1.0.pdf"],
   },
   {
     id: "385",

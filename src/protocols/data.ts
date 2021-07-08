@@ -5124,7 +5124,7 @@ export default [
       "xDollar is cross-chain collateral based stablecoin lending platform with zero interest fee, 110% low collateral ratio and fully redeemable xUSD plus DAO governance and multi-collateral vault system.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/xdollar.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "xdollar",
     cmcId: null,
@@ -5132,7 +5132,8 @@ export default [
     chains: ["Polygon"],
     module: "xdollar-finance/index.js",
     twitter: "xDollarFi",
-    forkedFrom: ["LiquityProtocol"],
+    audit_links: ["https://github.com/xDollar-Finance/xDollar-contracts/blob/main/xDollar%20-%20Smart%20Contract%20Audit%20v210624.pdf"],
+    forkedFrom: ["LiquityProtocol"],  
   },
   {
     id: "364",

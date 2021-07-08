@@ -76,7 +76,11 @@ export async function storeTvl(
             tokensBalances[storedKey] = tvlResults.tokenBalances;
             usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
           } else if (container.fetch) {
-            usdTvls[storedKey] = Number(await container.fetch());
+            usdTvls[storedKey] = Number(await container.fetch(
+              unixTimestamp,
+              ethBlock,
+              chainBlocks
+            ));
           } else {
             return;
           }

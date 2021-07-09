@@ -79,9 +79,9 @@ function getDailyItems(pk: string) {
     .then((res) => res.Items);
 }
 
-const batchSize = 2;
+const batchSize = 3;
 const main = async () => {
-  const protocol = getProtocol("malt money");
+  const protocol = getProtocol("aave");
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );
@@ -97,7 +97,7 @@ const main = async () => {
   }
   setInterval(() => {
     releaseCoingeckoLock();
-  }, 1e3);
+  }, 1.5e3);
   while (timestamp > start) {
     const batchedActions = [];
     for (let i = 0; i < batchSize && timestamp > start; i++) {

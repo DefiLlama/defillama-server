@@ -5745,7 +5745,7 @@ export default [
     cmcId: null,
     category: "Dexes",
     chains: ["Fantom"],
-    module: "wakafinance/index.js",
+    module: "wakafinance.js",
     twitter: "WakaFinance",
     audit_links: ["https://waka-finance-2.gitbook.io/waka-finance/documentation/audit"],
   },
@@ -5790,7 +5790,7 @@ export default [
   {
     id: "398",
     name: "ApeSwap",
-    address: "0x603c7f932ed1fc6575303d8fb018fdcbb0f39a95",
+    address: "bsc:0x603c7f932ed1fc6575303d8fb018fdcbb0f39a95",
     symbol: "BANANA",
     url: "https://apeswap.finance",
     description: "Built by DeFi apes, for DeFi apes. ApeSwap is a decentralized exchange (DEX) on Binance Smart Chain and Polygon. Users are incentivized to pool liquidity on ApeSwap through yield farming to earn the native currency, $BANANA. Additionally, apes can use their earned $BANANA to stake and earn other tokens and unlock exclusive features",

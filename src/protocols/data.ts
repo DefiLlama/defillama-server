@@ -5653,6 +5653,7 @@ export default [
     twitter: "QilinProtocol",
     audit_links: ["https://github.com/CodexDao/QiLin/tree/main/audit"],
   },
+  /*
   {
     id: "391",
     name: "PantherSwap",
@@ -5690,7 +5691,7 @@ export default [
     module: "wardenswap/index.js",
     twitter: "WardenSwap",
     audit_links: ["https://www.certik.org/projects/wardenswap"],
-  },
+  },*/
   {
     id: "393",
     name: "APY.Finance",

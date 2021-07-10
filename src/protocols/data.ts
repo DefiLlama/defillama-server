@@ -5809,7 +5809,7 @@ export default [
   },
   {
     id: "399",
-    name: "Gysr",
+    name: "Geyser",
     address: "0xbEa98c05eEAe2f3bC8c3565Db7551Eb738c8CCAb",
     symbol: "GYSR",
     url: "https://www.gysr.io",

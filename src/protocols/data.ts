@@ -5845,4 +5845,22 @@ export default [
     module: "amun/index.js",
     twitter: "amuntokens",
   },
+  {
+    id: "401",
+    name: "ApeRocket",
+    address: "0xe486a69e432fdc29622bf00315f6b34c99b45e80",
+    symbol: "SPACE",
+    url: "https://aperocket.finance",
+    description: "ApeRocket Finance is a suite of products in Decentralized Finance (DeFi) that provides yield optimization strategies through the Binance Smart Chain, using ApeSwap liquidity.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/aperocket.jpg`,
+    audits: "0",
+    audit_note: null;
+    gecko_id: "space-token",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Binance","Polygon"],
+    module: "aperocket/index.js",
+    twitter: "ApeRocketFi",
+  },
 ] as Protocol[];

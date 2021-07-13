@@ -3962,7 +3962,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Optimism"],
     module: "uniswapv3/index.js",
     twitter: "Uniswap",
   },

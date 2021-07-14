@@ -5960,7 +5960,7 @@ export default [
   },*/
   {
     id: "407",
-    name: "Mars Project",
+    name: "Mars Poolin",
     address: "0x66C0DDEd8433c9EA86C8cf91237B14e10b4d70B7",
     symbol: "MARS",
     url: "https://mars.poolin.fi",
@@ -5975,5 +5975,24 @@ export default [
     chains: ["Ethereum"],
     module: "marspoolin/index.js",
     twitter: "MarsProject2020",
+  },
+  {
+    id: "408",
+    name: "JetFuel Finance",
+    address: "bsc:0x2090c8295769791ab7a3cf1cc6e0aa19f35e441a",
+    symbol: "FUEL",
+    url: "https://jetfuel.finance",
+    description: "Jetfuel Finance is an all in one defi protocol with yield optimization at Jetfuel.Finance, credit/lending at Fortress, transactional tax/auto liquidity/passive yield token GFORCE, Automated Market Maker called Jetswap as well as a staking platform.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/jetfuel.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "fuel-token",
+    cmcId: "8659",
+    category: "Yield",
+    chains: ["Binance","Polygon"],
+    module: "jetfuelfinance/index.js",
+    twitter: "Jetfuelfinance",
+    audit_links: ["https://jetfuel.finance/audits"],
   },
 ] as Protocol[];

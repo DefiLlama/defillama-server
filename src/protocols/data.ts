@@ -5958,4 +5958,22 @@ export default [
     twitter: "element_fi",
     audit_links: ["https://docs.element.fi/developers/bug-bounty-programs#b93e"],
   },*/
+  {
+    id: "407",
+    name: "Mars Project",
+    address: "0x66C0DDEd8433c9EA86C8cf91237B14e10b4d70B7",
+    symbol: "MARS",
+    url: "https://mars.poolin.fi",
+    description: "Mars is the first Ethereum-based, decentralized standardized hashrate protocol. Mars Project combines standardized hashrate product and liquidity mining together, packing PoW mining into an on-chain protocol.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/marspoolin.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "mars",
+    cmcId: "8253",
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "marspoolin/index.js",
+    twitter: "MarsProject2020",
+  },
 ] as Protocol[];

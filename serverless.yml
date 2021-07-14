@@ -6,7 +6,7 @@ package:
 provider:
   name: aws
   runtime: nodejs14.x
-  memorySize: 128
+  memorySize: 250
   region: eu-central-1
   endpointType: REGIONAL # Set to regional because the api gateway will be behind a cloudfront distribution
   stage: dev # Default to dev if no stage is specified
@@ -137,6 +137,7 @@ functions:
   storeTvlInterval:
     handler: src/storeTvlInterval.default
     timeout: 900
+    memorySize: 512
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     events:

@@ -192,7 +192,7 @@ export default [
     gecko_id: "havven",
     cmcId: "2586",
     category: "Dexes",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Optimism"],
     module: "synthetix/index.js",
     twitter: "synthetix_io",
     audit_links: ["https://docs.synthetix.io/contracts/audits/"],

@@ -116,6 +116,12 @@ functions:
       - http:
           path: tvl/{protocol}
           method: get
+  coins:
+    handler: src/getCoins.default
+    events:
+      - http:
+          path: coins
+          method: get
   dataset:
     handler: src/getDataset.default
     events:

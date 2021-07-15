@@ -91,6 +91,7 @@ functions:
           method: any
   chart:
     handler: src/getChart.default
+    timeout: 60
     events:
       - http:
           path: charts

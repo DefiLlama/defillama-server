@@ -7,7 +7,7 @@ const client = new AWS.DynamoDB.DocumentClient({
     region: "local",
   }),
 });
-const TableName = process.env.tableName ?? "test-table";
+export const TableName = "prod-table";
 
 const dynamodb = {
   get: (params: Omit<AWS.DynamoDB.DocumentClient.GetItemInput, "TableName">) =>

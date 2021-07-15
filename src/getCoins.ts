@@ -1,16 +1,28 @@
 import { successResponse, wrap, IResponse } from "./utils";
-import dynamodb from "./utils/dynamodb";
+import dynamodb, {TableName} from "./utils/dynamodb";
 
+const step = 100; // Max 100 items per batchGet
 const handler = async (
-  _event: AWSLambda.APIGatewayEvent
+  event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const coins = await dynamodb.get({
-    Key: {
-      PK: "coingeckoCoins",
-      SK: 0,
-    }
-  })
-  return successResponse(coins.Item?.coins, 10 * 60); // 10 mins cache
+  const requestedCoins = JSON.parse(event.body!).coins
+  const requests = []
+  for (let i = 0; i < requestedCoins.length; i += step) {
+    requests.push(dynamodb.batchGet(
+      requestedCoins.slice(i, i+step).map((coin:string)=>({
+        PK: `asset#${coin}`,
+        SK: 0
+      }))
+    ).then(items=>items.Responses![TableName]))
+  }
+  const returnedCoins = (await Promise.all(requests)).reduce((acc, coins)=>acc.concat(coins.map(coin=>({
+    "decimals": coin.decimals,
+    coin: coin.PK.substr("asset#".length),
+    "price": coin.price,
+    "symbol": coin.symbol,
+    "timestamp": coin.timestamp
+  }))), [])
+  return successResponse(returnedCoins);
 };
 
 export default wrap(handler);

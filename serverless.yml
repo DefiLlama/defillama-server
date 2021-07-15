@@ -118,10 +118,11 @@ functions:
           method: get
   coins:
     handler: src/getCoins.default
+    timeout: 60
     events:
       - http:
           path: coins
-          method: get
+          method: post
   dataset:
     handler: src/getDataset.default
     events:
@@ -157,7 +158,6 @@ functions:
     timeout: 900
   triggerFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.default
-    timeout: 60
     events:
       - schedule: rate(1 hour)
 

@@ -157,6 +157,7 @@ functions:
     timeout: 900
   triggerFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.default
+    timeout: 60
     events:
       - schedule: rate(1 hour)
 

@@ -6087,7 +6087,7 @@ export default [
     cmcId: null,
     category: "Yield",
     chains: ["Terra"],
-    module: "spec/index.js",
+    module: "specfinance.js",
     twitter: "SpecProtocol",
   },
 ] as Protocol[];

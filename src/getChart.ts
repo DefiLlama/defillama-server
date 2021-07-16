@@ -74,17 +74,6 @@ const handler = async (
       sumDailyTvls[timestamp] = itemTvl + (sumDailyTvls[timestamp] ?? 0);
     });
   });
-  /*
-  let minTimestamp = 1603757978;
-  if (chain !== undefined && chain !== "ethereum") {
-    minTimestamp = 1612837719;
-  }
-  Object.keys(sumDailyTvls).forEach((timestamp) => {
-    if (Number(timestamp) < minTimestamp) {
-      delete sumDailyTvls[Number(timestamp)];
-    }
-  });
-  */
 
   const response = Object.entries(sumDailyTvls).map(([timestamp, tvl]) => ({
     date: timestamp,

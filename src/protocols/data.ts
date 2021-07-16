@@ -4891,7 +4891,6 @@ export default [
     module: "gravity-finance/index.js",
     twitter: "Gravity_Finance",
   },
-  /*
   {
     id: "352",
     name: "Iron Finance",
@@ -4913,7 +4912,6 @@ export default [
     audit_links: ["https://docs.iron.finance/bsc/audits", "https://docs.iron.finance/iron-finance-on-polygon/audit"],
     forkedFrom: ["FRAX"],
   },
-  */
   {
     id: "353",
     name: "Armor",

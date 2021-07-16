@@ -6141,7 +6141,7 @@ export default [
     cmcId: "9757",
     category: "IDO",
     chains: ["Heco"],
-    module: "westarter/index.js",
+    module: "westater/index.js",
     twitter: "westarter_org",
     audit_links: ["https://www.westarter.org/static/media/Security%20Assessment%20for%20WeStarter%20-%20Starter.4901202a.pdf"],
   },

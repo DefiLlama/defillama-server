@@ -11,7 +11,7 @@ type Balances = {
 export default async function (balances: { [address: string]: string }) {
   const eth = balances[ethereumAddress];
   if (eth !== undefined) {
-    balances[weth] = new BigNumber(balances[weth] ?? 0).plus(eth).toFixed();
+    balances[weth] = new BigNumber(balances[weth] ?? 0).plus(eth).toFixed(0);
     delete balances[eth];
   }
   const PKsToTokens = {} as { [t: string]: string[] };

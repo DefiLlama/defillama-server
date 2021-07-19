@@ -42,18 +42,22 @@ const handler = async (
       message: "Protocol is not in our database",
     });
   }
-  const [lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord, historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
+  const [lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord, historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, module] = await Promise.all([
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
     getHistoricalValues(dailyTvl(protocolData.id)),
     getHistoricalValues(dailyUsdTokensTvl(protocolData.id)),
     getHistoricalValues(dailyTokensTvl(protocolData.id)),
+    import(`../DefiLlama-Adapters/projects/${protocolData.module}`)
   ]);
   replaceLast(historicalUsdTvl, lastUsdHourlyRecord)
   replaceLast(historicalUsdTokenTvl, lastUsdTokenHourlyRecord)
   replaceLast(historicalTokenTvl, lastTokenHourlyRecord)
   let response = protocolData as any;
+  if(module.methodology !== undefined){
+    response.methodology = module.methodology;
+  }
   response.chainTvls = {};
   protocolData.chains.concat(["tvl"]).map(async (chain) => {
     const normalizedChain = normalizeChain(chain);

@@ -152,6 +152,7 @@ functions:
       - schedule: rate(1 hour)
   notifyOutdated:
     handler: src/notifyOutdated.default
+    timeout: 60
     events:
       - schedule: rate(3 hours)
   fetchCoingeckoData:

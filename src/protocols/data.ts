@@ -6166,11 +6166,11 @@ export default [
   {
     id: "418",
     name: "MoonFarm",
-    address: "0xB46049c79D77fF1D555a67835FbA6978536581Af",
+    address: "bsc:0xb46049c79d77ff1d555a67835fba6978536581af",
     symbol: "MFO",
     url: "https://moonfarm.finance",
     description: "MoonFarm is a DeFi and Centralized Finance (CeFi) hybrid yield farming aggregator. It provides the best of both worlds, offering all the cost-effectiveness, easy access, transparency and rapidity of DeFi yield farming, in addition to offering the security associated with a centralized financial ecosystem. Moon Farm optimises Yield Farming interest (APY/ APR) and provides users with the abilities to choose what farms they want to use or the system will automatically determine the best farming strategies using the yield optimization engine.",
-    chain: "Ethereum",
+    chain: "Binance",
     logo: `${baseIconsUrl}/moonfarm.png`,
     audits: "2",
     audit_note: null,

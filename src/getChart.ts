@@ -41,6 +41,7 @@ const handler = async (
       return {
         protocol,
         historicalTvl: historicalTvl.Items,
+        lastTimestamp
       };
     })
   );
@@ -48,9 +49,9 @@ const handler = async (
     if (protocolTvl === undefined) {
       return;
     }
-    const { historicalTvl, protocol } = protocolTvl;
+    const { historicalTvl, protocol, lastTimestamp } = protocolTvl;
     const lastTvl = historicalTvl[historicalTvl.length - 1];
-    if (lastTvl.SK !== lastDailyTimestamp) {
+    if (lastTimestamp !== lastDailyTimestamp && (lastDailyTimestamp-lastTimestamp) < (2*24*3600)) {
       historicalTvl.push({
         ...lastTvl,
         SK: lastDailyTimestamp,

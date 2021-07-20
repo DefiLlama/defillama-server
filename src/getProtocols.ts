@@ -53,8 +53,10 @@ const handler = async (
             lastHourlyRecord.tvl
           ),
         } as any;
-        if(lastHourlyRecord.staking !== undefined){
-          dataToReturn.staking = lastHourlyRecord.staking
+        for (let extraData of ["staking", "pool2"]) {
+          if (lastHourlyRecord[extraData] !== undefined) {
+            dataToReturn[extraData] = lastHourlyRecord[extraData]
+          }
         }
         return dataToReturn
       })

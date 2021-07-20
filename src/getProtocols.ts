@@ -34,7 +34,7 @@ const handler = async (
             chainTvls[chain] = chainTvl;
           }
         });
-        return {
+        const dataToReturn = {
           ...protocol,
           slug: sluggify(protocol),
           tvl: lastHourlyRecord.tvl,
@@ -52,7 +52,11 @@ const handler = async (
             lastHourlyRecord.tvlPrev1Week,
             lastHourlyRecord.tvl
           ),
-        };
+        } as any;
+        if(lastHourlyRecord.staking !== undefined){
+          dataToReturn.staking = lastHourlyRecord.staking
+        }
+        return dataToReturn
       })
     )
   ).filter((protocol) => protocol !== null);

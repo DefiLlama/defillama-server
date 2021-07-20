@@ -59,7 +59,7 @@ const handler = async (
     response.methodology = module.methodology;
   }
   response.chainTvls = {};
-  protocolData.chains.concat(["tvl"]).map(async (chain) => {
+  protocolData.chains.concat(["tvl", "staking"]).map(async (chain) => {
     const normalizedChain = normalizeChain(chain);
     const container = {} as any;
 

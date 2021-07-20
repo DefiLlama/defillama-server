@@ -6275,5 +6275,6 @@ export default [
     module: "deri/index.js",
     twitter: "DeriProtocol",
     audit_links: ["https://docs.deri.finance/code-audits"],
+    oracles: ["Chainlink"],
   },
 ] as Protocol[];

@@ -6177,7 +6177,7 @@ export default [
     gecko_id: "moonfarm-finance",
     cmcId: null,
     category: "Yield",
-    chains: ["Heco","Binance","Polygon"],
+    chains: ["Ethereum","Binance","Polygon"],
     module: "moonfarm.js",
     twitter: "MoonfarmFinance",
     audit_links: ["https://moonfarmfinance.medium.com/moonfarm-finances-security-auditted-and-certified-by-the-arcadia-group-810c4f24c051"],

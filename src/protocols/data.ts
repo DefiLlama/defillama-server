@@ -4960,7 +4960,7 @@ export default [
       "Liquidity provisioning and active liquidity management on Uni V3 via utilisation of NFT Smart Vaults",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/visor.webp`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "visor",
     cmcId: "9170",
@@ -4968,6 +4968,7 @@ export default [
     chains: ["Ethereum"],
     module: "visor/index.js",
     twitter: "visorfinance",
+    audit_links: ["https://github.com/VisorFinance/hypervisor/blob/master/REP-Hypervisor-2021-07-07.pdf"]
   },
   {
     id: "356",

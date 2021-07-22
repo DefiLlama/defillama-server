@@ -4948,7 +4948,7 @@ export default [
     chains: ["Ethereum", "Binance"],
     module: "insurace/index.js",
     twitter: "insur_ace",
-    audit_links: ["https://files.insurace.io/public/security/InsurAce-DeFi%20Smart%20Contract%20Security%20Audit%20Report.pdf"],
+    audit_links: ["https://files.insurace.io/public/security/InsurAce-DeFi%20Smart%20Contract%20Security%20Audit%20Report.pdf", "https://files.insurace.io/public/security/InsurAcePeckShieldAuditReport.pdf"],
   },
   {
     id: "355",

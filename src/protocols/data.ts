@@ -6343,7 +6343,7 @@ export default [
     url: "https://www.ousd.com",
     description: "Origin Dollar (OUSD) is a new stablecoin that was initially launched on the Ethereum network. Its design is superior to existing stablecoins because OUSD captures competitive yields while being passively held in wallets.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/origin-logo.png`,
+    logo: `${baseIconsUrl}/ousd.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "origin-dollar",

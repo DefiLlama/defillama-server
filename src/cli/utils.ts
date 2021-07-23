@@ -15,7 +15,7 @@ export async function getBlocksRetry(timestamp: number) {
   for (let i = 0; i < 10; i++) {
     try {
       return await getBlocks(timestamp);
-    } catch (e) {}
+    } catch (e) {console.log(e)}
   }
-  throw new Error(`rekt at ${timestamp}`);
+  throw new Error(`Couldn't get the block numbers at timestamp ${timestamp}`);
 }

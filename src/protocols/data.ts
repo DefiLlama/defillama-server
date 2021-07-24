@@ -1920,7 +1920,7 @@ export default [
     cmcId: "8701",
     category: "Options",
     chains: ["Ethereum"],
-    module: "siren.js",
+    module: "siren/index.js",
     twitter: "sirenprotocol",
     audit_links: ["https://docs.sirenmarkets.com/faq-general/for-users#is-the-siren-protocol-safe"],
   },

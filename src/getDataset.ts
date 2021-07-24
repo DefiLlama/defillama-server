@@ -62,7 +62,9 @@ const handler = async (
     protocolName.length - ".csv".length
   );
   let protocols: typeof allProtocols;
-  if (protocolName === 'all') {
+  if(!isNaN(Number(protocolName))){
+    protocols = allProtocols.slice(0, Number(protocolName))
+  } else if (protocolName === 'all') {
     protocols = allProtocols
   } else {
     const protocolData = allProtocols.find(
@@ -136,6 +138,7 @@ const handler = async (
     rows.push(row.join(','))
   }
 
+  console.log('a')
   const response: IResponse = {
     statusCode: 200,
     body: rows.join("\n"),
@@ -144,6 +147,7 @@ const handler = async (
       "Content-Disposition": `attachment; filename="${protocolName}.csv`,
     },
   };
+  console.log('good')
   return response;
 };
 

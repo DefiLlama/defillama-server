@@ -1007,7 +1007,7 @@ export default [
     cmcId: "7602",
     category: "Staking",
     chains: ["Ethereum"],
-    module: "zlot.js",
+    module: "zlot/index.js",
     twitter: "zLOTFinance",
   },
   {

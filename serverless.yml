@@ -152,6 +152,12 @@ functions:
     handler: src/triggerStoreTvls.default
     events:
       - schedule: rate(1 hour)
+  storeDataset:
+    handler: src/storeCsvDataset.default
+    timeout: 900
+    memorySize: 3000
+    events:
+      - schedule: rate(1 day)
   notifyOutdated:
     handler: src/notifyOutdated.default
     timeout: 60

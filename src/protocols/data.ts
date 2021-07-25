@@ -5149,7 +5149,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Assets",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Polygon"],
     module: "volmex/index.js",
     twitter: "volmexfinance",
     audit_links: ["https://docs.volmex.finance/security/audits"]

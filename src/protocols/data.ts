@@ -6302,7 +6302,7 @@ export default [
     address: "bsc:0x20de22029ab63cf9A7Cf5fEB2b737Ca1eE4c82A6",
     symbol: "CHESS",
     url: "https://tranchess.com",
-    description: "Tranchess is a tokenized asset management & derivatives trading protocol",
+    description: "Tranchess Protocol is a tokenized asset management and derivatives trading protocol. Inspired by tranches fund that caters investors with different risk appetite, Tranchess aims to provide different risk/return matrix out of a single main fund that tracks a specific underlying asset",
     chain: "Binance",
     logo: `${baseIconsUrl}/tranchess.png`,
     audits: "2",

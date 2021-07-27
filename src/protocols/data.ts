@@ -1295,6 +1295,7 @@ export default [
     audit_links: ["https://github.com/Phoenix-Finance/Pdfs/blob/master/PeckShield-Audit-FinnexusOptionsV1.0.pdf"],
     oracles: ["Chainlink","Band"],
   },
+  /*
   {
     id: "171",
     name: "SynLev",
@@ -1313,6 +1314,7 @@ export default [
     module: "synlev.js",
     twitter: null,
   },
+  */
   {
     id: "172",
     name: "Index Coop",

@@ -6166,6 +6166,7 @@ export default [
     chains: ["Solana"],
     module: "solyard.js",
     twitter: "SolyardFinance",
+    audit_links: ["https://github.com/SolyardFinance/Audit/blob/master/SlowMistAuditReport-SolYard.pdf"],
   },
   {
     id: "418",

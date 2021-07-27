@@ -4727,6 +4727,7 @@ export default [
     module: "impermax/index.js",
     twitter: "ImpermaxFinance",
     audit_links: ["https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/tree/main/audit"],
+    oracles: ["Chainlink"],
   },
   {
     id: "344",

@@ -2304,7 +2304,7 @@ export default [
     audit_note: null,
     gecko_id: "definer",
     cmcId: "7225",
-    category: "Yield",
+    category: "Lending",
     chains: ["Ethereum"],
     module: "definer/index.js",
     twitter: "DeFinerOrg",

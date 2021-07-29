@@ -3158,8 +3158,8 @@ export default [
   {
     id: "265",
     name: "Reflexer",
-    address: "0x03ab458634910aad20ef5f1c8ee96f1d6ac54919",
-    symbol: "RAI",
+    address: "0x6243d8cea23066d098a15582d81a598b4e8391f4",
+    symbol: "FLX",
     url: "https://reflexer.finance/",
     description:
       "A decentralized, stable and non pegged currency made for the digital economy",
@@ -3167,8 +3167,8 @@ export default [
     logo: `${baseIconsUrl}/EAfYdwgd_400x400.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "rai",
-    cmcId: "8525",
+    gecko_id: "reflexer-ungovernance-token",
+    cmcId: "9493",
     category: "Assets",
     chains: ["Ethereum"],
     module: "reflexer/index.js",

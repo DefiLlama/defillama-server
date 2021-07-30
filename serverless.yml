@@ -53,7 +53,7 @@ provider:
       Action:
         - 's3:ListBucket'
         - 's3:*Object*'
-      Resource: 'arn:aws:s3:::defillama-datasets'
+      Resource: '*'
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     #BSC_RPC: ${file(./env.js):BSC_RPC}

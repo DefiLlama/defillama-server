@@ -49,6 +49,12 @@ provider:
       Action:
         - 'lambda:InvokeFunction'
       Resource: '*'
+    - Effect: 'Allow'
+      Action:
+        - 's3:ListBucket'
+        - 's3:GetObject'
+        - 's3:PutObject'
+      Resource: 'arn:aws:s3:::defillama-datasets'
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     #BSC_RPC: ${file(./env.js):BSC_RPC}

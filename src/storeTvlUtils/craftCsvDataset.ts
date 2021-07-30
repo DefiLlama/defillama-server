@@ -54,7 +54,7 @@ type Grid = {
 export default async function(protocols:Protocol[]){
   const timeToColumn = {} as Grid;
   const grid = {} as Grid;
-  grid[0] = [undefined, 'Category', 'Chain', 'Category', 'Token'];
+  grid[0] = [undefined, undefined, undefined, undefined]
   grid[1] = ['Date']
   grid[2] = ['Timestamp']
   let nextRowNumber = 3;
@@ -104,10 +104,10 @@ export default async function(protocols:Protocol[]){
   const maxColumn = (grid[0] as any).length + timestamps.length
   // Doing it this way instead of constructing a giant string to improve efficiency
   const rows = []  as String[]
-  for(let i=0; i<nextRowNumber; i++){
+  for(let i=0; i<maxColumn; i++){
     let row = []
-    for(let j=0; j<maxColumn; j++){
-      const cell = grid[i][j]
+    for(let j=0; j<nextRowNumber; j++){
+      const cell = grid[j][i]
       row.push(cell ?? "")
     }
     rows.push(row.join(','))

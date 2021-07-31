@@ -6532,4 +6532,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "WitSwap",
     audit_links: ["https://github.com/witswap/contracts/blob/master/eWit_Security_Audit_Report_Final_Mainnet.pdf"],
   },
+  {
+    id: "437",
+    name: "Guard(Helmet)",
+    address: "polygon:0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8",
+    symbol: "GUARD",
+    url: "https://www.guard.insure",
+    description: `Guard.insure is a peer-to-peer (P2P) price-shield insurance protocol launched on Binance Smart Chain (BSC) fistly with the form of helmet.insure and now multi-chained to support Polygon net with the aim to redefine option trading with user-friendly insurance policy wrapping.
+
+    Guard allows users to create an insurance policy for any crypto asset in the market, protecting DeFi users against the risk of price fluctuations. Policy trading on Guard is market-oriented without complex mathematics. There are two kinds of policy which could be involved in mining: SHORT Tokens and LONG tokens.`,
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/guard.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "helmet-insure",
+    cmcId: "8265",
+    category: "Insurance",
+    chains: ["Polygon","Binance"],
+    module: "helmetinsure/index.js",
+    twitter: "Helmet_insure",
+    audit_links: ["https://www.certik.org/projects/helmet"],
+  },
 ] as Protocol[];

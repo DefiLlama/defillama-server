@@ -20,7 +20,7 @@ const handler = async (
     });
   }
 
-  const csv = await craftCsvDataset([protocolData])
+  const csv = await craftCsvDataset([protocolData], true)
 
   const response: IResponse = {
     statusCode: 200,

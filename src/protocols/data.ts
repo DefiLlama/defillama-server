@@ -6542,7 +6542,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 
     Guard allows users to create an insurance policy for any crypto asset in the market, protecting DeFi users against the risk of price fluctuations. Policy trading on Guard is market-oriented without complex mathematics. There are two kinds of policy which could be involved in mining: SHORT Tokens and LONG tokens.`,
     chain: "Polygon",
-    logo: `${baseIconsUrl}/guard.png`,
+    logo: `${baseIconsUrl}/gurad.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "helmet-insure",

@@ -6517,9 +6517,9 @@ export default [
     address: "0x56ee175fe37cd461486ce3c3166e0cafccd9843f",
     symbol: "eWIT",
     url: "https://witswap.com/",
-    description: "The Witnet network is a decentralized blockchain-agnostic oracle that is true to the censorship resistant nature of blockchains. It runs on its own blockchain using the WIT coin as its native currency. A bridge has been built to handle data requests from the Ethereum blockchain. Bridges from othher networks are planned in the future.
+    description: `The Witnet network is a decentralized blockchain-agnostic oracle that is true to the censorship resistant nature of blockchains. It runs on its own blockchain using the WIT coin as its native currency. A bridge has been built to handle data requests from the Ethereum blockchain. Bridges from othher networks are planned in the future.
 
-The eWIT token is a custodial, wrapped version of the Witnet coin managed by the WitSwap plaform. The token is minted by the WitSwap team whenever someone wants to convert WIT coins to eWIT tokens and kept in custody. A user on the Ethereum network can also opt to swap his eWIT tokens back to WIT coins. The intent of this token is to allow decentralized trading on Ethereum DEXs and, in the future, to pay independent bridge operators with it if they choose to accept it.",
+The eWIT token is a custodial, wrapped version of the Witnet coin managed by the WitSwap plaform. The token is minted by the WitSwap team whenever someone wants to convert WIT coins to eWIT tokens and kept in custody. A user on the Ethereum network can also opt to swap his eWIT tokens back to WIT coins. The intent of this token is to allow decentralized trading on Ethereum DEXs and, in the future, to pay independent bridge operators with it if they choose to accept it.`,
     chain: "Witnet",
     logo: `${baseIconsUrl}/witswap.jpg`,
     audits: "2",
@@ -6530,6 +6530,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "witswap/index.js",
     twitter: "WitSwap",
-    audit_links: [https://github.com/witswap/contracts/blob/master/eWit_Security_Audit_Report_Final_Mainnet.pdf],
+    audit_links: ["https://github.com/witswap/contracts/blob/master/eWit_Security_Audit_Report_Final_Mainnet.pdf"],
   },
 ] as Protocol[];

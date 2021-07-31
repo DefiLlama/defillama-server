@@ -6360,7 +6360,7 @@ export default [
   },
   {
     id: "428",
-    name: "Dino Swap",
+    name: "DinoSwap",
     address: "polygon:0xaa9654becca45b5bdfa5ac646c939c62b527d394",
     symbol: "DINO",
     url: "https://dinoswap.exchange",

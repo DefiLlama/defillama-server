@@ -58,6 +58,9 @@ const handler = async (
   if(module.methodology !== undefined){
     response.methodology = module.methodology;
   }
+  if(module.misrepresentedTokens !== undefined){
+    response.misrepresentedTokens = true;
+  }
   response.chainTvls = {};
   protocolData.chains.concat(["tvl", "staking", "pool2"]).map(async (chain) => {
     const normalizedChain = normalizeChain(chain);

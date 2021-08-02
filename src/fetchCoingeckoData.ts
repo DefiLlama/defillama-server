@@ -26,6 +26,9 @@ async function retryCoingeckoRequest(id: string) {
 async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
   const coinData = await retryCoingeckoRequest(coin.id);
   const price = coinData?.market_data?.current_price?.usd;
+  const mcap = coinData?.market_data?.market_cap?.usd;
+  const fdv = coinData?.market_data?.fully_diluted_valuation?.usd;
+  const symbol = coinData.symbol ?? coin.symbol;
   if (typeof price !== "number") {
     console.error(`Couldn't get data for ${coin.id}`);
     rejected.push(coin);
@@ -42,7 +45,7 @@ async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
         SK: 0,
         timestamp,
         price,
-        symbol: coinData.symbol ?? coin.symbol,
+        symbol,
         decimals: Number(tokenDecimals.output),
       });
       await dynamodb.put({
@@ -52,6 +55,15 @@ async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
       });
     }
   );
+  await dynamodb.put({
+    PK: `asset#${coin.id}`,
+    SK: 0,
+    timestamp,
+    price,
+    symbol,
+    mcap,
+    fdv
+  });
 }
 
 const step = 50;

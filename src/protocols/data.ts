@@ -1295,7 +1295,6 @@ export default [
     audit_links: ["https://github.com/Phoenix-Finance/Pdfs/blob/master/PeckShield-Audit-FinnexusOptionsV1.0.pdf"],
     oracles: ["Chainlink","Band"],
   },
-  /*
   {
     id: "171",
     name: "SynLev",
@@ -1314,7 +1313,6 @@ export default [
     module: "synlev.js",
     twitter: null,
   },
-  */
   {
     id: "172",
     name: "Index Coop",
@@ -4105,7 +4103,6 @@ export default [
     twitter: "StackerVentures",
     audit_links: ["https://docs.stacker.vc/docs-stacker-ventures/audits/active-yield-fund-audit-report", "https://docs.stacker.vc/docs-stacker-ventures/audits/smart-contract-audit-report"],
   },
-  /*
   {
     id: "313",
     name: "ViperSwap",
@@ -4126,7 +4123,6 @@ export default [
     twitter: null,
     forkedFrom: ["UniSwap", "SushiSwap", "Bao"],
   },
-  */
   {
     id: "314",
     name: "Gondola Finance",

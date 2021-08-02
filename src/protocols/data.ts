@@ -3538,7 +3538,6 @@ export default [
     module: "orca/index.js",
     twitter: "orca_so",
   },
-  /*
   {
     id: "284",
     name: "Serum Swap",
@@ -3554,10 +3553,9 @@ export default [
     cmcId: "1204",
     category: "Dexes",
     chains: ["Solana"],
-    module: "serum-amm.js",
+    module: "serum-swap/index.js",
     twitter: "ProjectSerum",
   },
-  */
   {
     id: "285",
     name: "Opyn",

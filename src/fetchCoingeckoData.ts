@@ -55,14 +55,21 @@ async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
       });
     }
   );
-  await dynamodb.put({
+  const coingeckoItem = {
     PK: `asset#${coin.id}`,
-    SK: 0,
-    timestamp,
     price,
-    symbol,
     mcap,
     fdv
+  }
+  await dynamodb.put({
+    ...coingeckoItem,
+    SK: 0,
+    timestamp,
+    symbol
+  });
+  await dynamodb.put({
+    ...coingeckoItem,
+    SK: timestamp
   });
 }
 

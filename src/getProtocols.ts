@@ -3,6 +3,7 @@ import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import { normalizeChain, getDisplayChain } from "./utils/normalizeChain";
+import dynamodb from "./utils/dynamodb";
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -56,6 +57,18 @@ const handler = async (
         for (let extraData of ["staking", "pool2"]) {
           if (lastHourlyRecord[extraData] !== undefined) {
             dataToReturn[extraData] = lastHourlyRecord[extraData]
+          }
+        }
+        if (typeof protocol.gecko_id === "string") {
+          const coingeckoData = await dynamodb.get({
+            Key:{
+              PK: `asset#${protocol.gecko_id}`,
+              SK: 0
+            }
+          })
+          if(coingeckoData.Item !== undefined){
+            dataToReturn.fdv = coingeckoData.Item.fdv;
+            dataToReturn.mcap = coingeckoData.Item.mcap;
           }
         }
         return dataToReturn

@@ -2680,7 +2680,7 @@ export default [
     description:
       "PowerPool is a decentralized protocol for automatically managed token portfolios, and smart indices",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/kw0NiP0c_400x400.jpg`,
+    logo: `${baseIconsUrl}/powerpool.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "power-index-pool-token",

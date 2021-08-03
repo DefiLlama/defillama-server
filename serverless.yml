@@ -106,6 +106,7 @@ functions:
           method: get
   protocols:
     handler: src/getProtocols.default
+    timeout: 12
     events:
       - http:
           path: protocols

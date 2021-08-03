@@ -16,6 +16,19 @@ export function getPercentChange(previous: number, current: number) {
 const handler = async (
   _event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
+  const coinMarketsPromises = []
+  for (let i = 0; i < protocols.length; i += 100) {
+    coinMarketsPromises.push(dynamodb.batchGet(protocols.slice(i, i+100)
+      .filter(protocol => typeof protocol.gecko_id === "string")
+      .map(protocol => ({
+        PK: `asset#${protocol.gecko_id}`,
+        SK: 0
+      }))))
+  }
+  const coinMarkets = Promise.all(coinMarketsPromises).then(results=>results.reduce((p, c)=>{
+    c.Responses!['prod-table'].forEach(t=>p[t.PK]=t);
+    return p
+  }, {} as any))
   const response = (
     await Promise.all(
       protocols.map(async (protocol) => {
@@ -60,15 +73,10 @@ const handler = async (
           }
         }
         if (typeof protocol.gecko_id === "string") {
-          const coingeckoData = await dynamodb.get({
-            Key:{
-              PK: `asset#${protocol.gecko_id}`,
-              SK: 0
-            }
-          })
-          if(coingeckoData.Item !== undefined){
-            dataToReturn.fdv = coingeckoData.Item.fdv;
-            dataToReturn.mcap = coingeckoData.Item.mcap;
+          const coingeckoData = (await coinMarkets)[`asset#${protocol.gecko_id}`]
+          if (coingeckoData !== undefined) {
+            dataToReturn.fdv = coingeckoData.fdv;
+            dataToReturn.mcap = coingeckoData.mcap;
           }
         }
         return dataToReturn

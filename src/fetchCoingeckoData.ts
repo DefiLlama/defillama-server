@@ -28,7 +28,7 @@ async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
   const price = coinData?.market_data?.current_price?.usd;
   const mcap = coinData?.market_data?.market_cap?.usd;
   const fdv = coinData?.market_data?.fully_diluted_valuation?.usd;
-  const symbol = coinData.symbol ?? coin.symbol;
+  const symbol = coinData?.symbol ?? coin.symbol;
   if (typeof price !== "number") {
     console.error(`Couldn't get data for ${coin.id}`);
     rejected.push(coin);

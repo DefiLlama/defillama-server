@@ -6663,7 +6663,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "444",
-    name: "PolyDEX(by Cryption)",
+    name: "PolyDEX-Cryption Network",
     address: "polygon:0xd1e6354fb05bf72a8909266203dab80947dceccf",
     symbol: "CNT",
     url: "https://www.polydex.org",

@@ -19,7 +19,7 @@ export interface Protocol {
   twitter: string;
 }
 
-/* Audits: Please follow this agenda
+/* Audits: Please follow this legend
 0 -> No audits
 1 -> Part of this protocol may be unaudited
 2 -> Yes
@@ -6698,5 +6698,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "cobraswap/index.js",
     twitter: "VenomDAO",
+  },
+  {
+    id: "446",
+    name: "MiningTycoon",
+    address: "heco:0x8b70512b5248e7c1f0f6996e2fde2e952708c4c9",
+    symbol: "NT",
+    url: "https://nextype.finance",
+    description: "NEXTYPE is an integrated application ecosystem among game, NFT and DeFi that can be cross-chain (cross platform), which will create a more efficient and free NFT asset swapping protocol for the blockchain world, and provide users with high-quality multiform Dapps based on games + DeFi, games + NFT synthesis, and NFT + DeFi.",
+    chain: "Heco",
+    logo: `${baseIconsUrl}/miningtycoon.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "nextype-finance",
+    cmcId: "10742",
+    category: "Minting",
+    chains: ["Heco"],
+    module: "miningtycoon/index.js",
+    twitter: "NEXTYPE1",
+    audit_links: ["https://www.certik.org/projects/nextype"],
   },
 ] as Protocol[];

@@ -6631,7 +6631,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://universe.xyz",
     description: "Universe XYZ - The NFT Universe Built on Ethereum. Launch your own community-driven NFT universe baked with social tools, media services, and distribution - underpinned by the native $XYZ token.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/universe.png`,
+    logo: `${baseIconsUrl}/universe.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "universe-xyz",

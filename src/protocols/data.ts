@@ -3917,7 +3917,7 @@ export default [
     url: "https://zilswap.io/swap",
     description: "Decentralised exchange for ZRC2 tokens on Zilliqa.",
     chain: "Zilliqa",
-    logo: `${baseIconsUrl}/zilswap.png`,
+    logo: `${baseIconsUrl}/zilswap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "zilswap",

@@ -6745,7 +6745,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://balanced.network",
     description: "Balanced is a decentralized finance platform designed for ease of use. Swap assets on the ICON blockchain, and get paid Balance Tokens (BALN) to borrow assets or supply liquidity. BALN holders have the power to vote on platform changes and earn network fees.",
     chain: "Icon",
-    logo: `${baseIconsUrl}/balanced.svg`,
+    logo: `${baseIconsUrl}/balanced.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

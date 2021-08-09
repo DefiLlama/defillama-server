@@ -172,7 +172,7 @@ export default [
     cmcId: "5692",
     category: "Lending",
     chains: ["Ethereum"],
-    module: "compound/index.js",
+    module: "compound-onchain/index.js",
     twitter: "compoundfinance",
     audit_links: ["https://compound.finance/docs/security"],
     oracles: ["Chainlink"],

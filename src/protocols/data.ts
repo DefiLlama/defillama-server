@@ -339,7 +339,7 @@ export default [
     logo: null,
     audits: null,
     audit_note: null,
-    gecko_id: "nexus",
+    gecko_id: "nxm",
     cmcId: "1103",
     category: "Insurance",
     chains: ["Ethereum"],

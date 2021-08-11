@@ -1,4 +1,7 @@
 require("dotenv").config();
+const protocolToRefill = "hop protocol"
+const latestDate = 1625612400; // undefined -> start from today, number => start from that unix timestamp
+
 import dynamodb from "../utils/dynamodb";
 import { getProtocol, getBlocksRetry } from "./utils";
 import {
@@ -81,7 +84,7 @@ function getDailyItems(pk: string) {
 
 const batchSize = 3;
 const main = async () => {
-  const protocol = getProtocol("aave");
+  const protocol = getProtocol(protocolToRefill);
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );
@@ -91,7 +94,7 @@ const main = async () => {
   const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens];
   const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000);
-  let timestamp = getClosestDayStartTimestamp(now);
+  let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
   if (timestamp > now) {
     timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
   }

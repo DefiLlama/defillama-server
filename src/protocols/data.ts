@@ -6796,7 +6796,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "451",
-    name: "Karura DEX",
+    name: "Karura Swap",
     address: "-",
     symbol: "-",
     url: "https://acala.network/karura",
@@ -6814,7 +6814,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "452",
-    name: "Karura Lending",
+    name: "Karura Dollar (kUSD)",
     address: "-",
     symbol: "-",
     url: "https://acala.network/karura",

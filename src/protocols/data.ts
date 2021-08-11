@@ -6857,7 +6857,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://back.finance",
     description: "Back is a decentralized smart contract for leveraged borrowing and lending.",
     chain: "Heco",
-    logo: `${baseIconsUrl}/backfinance.png`,
+    logo: `${baseIconsUrl}/backfinance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "back-finance",

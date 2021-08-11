@@ -56,7 +56,7 @@ provider:
       Resource: '*'
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
-    BSC_RPC: ${file(./env.js):BSC_RPC}
+    #BSC_RPC: ${file(./env.js):BSC_RPC}
     POLYGON_RPC: ${file(./env.js):POLYGON_RPC}
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
     DEFILLAMA_SDK_MUTED: true

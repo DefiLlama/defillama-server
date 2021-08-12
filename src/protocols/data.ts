@@ -1785,6 +1785,7 @@ export default [
     audit_links: ["https://docs.dusd.finance/audits"],
     oracles: ["Chainlink"],
   },
+  /*
   {
     id: "196",
     name: "Fantom",
@@ -1804,6 +1805,7 @@ export default [
     module: "fantom.js",
     twitter: "FantomFDN",
   },
+  */
   {
     id: "197",
     name: "bZx",

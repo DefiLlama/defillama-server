@@ -3315,7 +3315,7 @@ export default [
     audits: "2",
     audit_note: null,
     gecko_id: "cryptex-finance",
-    cmcId: "8731",
+    cmcId: "10368 ",
     category: "Indexes",
     chains: ["Ethereum"],
     module: "cryptex/index.js",

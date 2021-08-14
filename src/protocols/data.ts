@@ -6948,7 +6948,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0x8a6f3BF52A26a21531514E23016eEAe8Ba7e7018",
     symbol: "MXX",
     url: "https://multiplier.finance",
-    description: "Multi-Chain (Lend) is an algorithmic money market system designed to bring secure and unique lending and borrowing opportunities like flash loans onto the Binance Smart Chain.",
+    description: "Multiplier is an algorithmic money market system designed to bring secure and unique lending and borrowing opportunities like flash loans onto the Binance Smart Chain.",
     chain: "Binance",
     logo: `${baseIconsUrl}/multiplier.jpg`,
     audits: "2",

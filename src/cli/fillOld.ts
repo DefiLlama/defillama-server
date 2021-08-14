@@ -1,6 +1,6 @@
 require("dotenv").config();
-const protocolToRefill = "hop protocol"
-const latestDate = 1625612400; // undefined -> start from today, number => start from that unix timestamp
+const protocolToRefill = "Loopring"
+const latestDate = 1623196800; // undefined -> start from today, number => start from that unix timestamp
 
 import dynamodb from "../utils/dynamodb";
 import { getProtocol, getBlocksRetry } from "./utils";

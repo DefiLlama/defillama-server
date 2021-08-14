@@ -8,9 +8,7 @@ import {
   releaseCoingeckoLock,
 } from "../storeTvlUtils/coingeckoLocks";
 import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
-
-const date = (timestamp: number) =>
-  "\t" + new Date(timestamp * 1000).toDateString();
+import {date} from './utils'
 
 const projectsToRefill: string[] = [];
 const notify = false;

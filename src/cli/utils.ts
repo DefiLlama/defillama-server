@@ -19,3 +19,6 @@ export async function getBlocksRetry(timestamp: number) {
   }
   throw new Error(`Couldn't get the block numbers at timestamp ${timestamp}`);
 }
+
+export const date = (timestamp: number) =>
+  "\t" + new Date(timestamp * 1000).toDateString();

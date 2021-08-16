@@ -6951,7 +6951,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://multiplier.finance",
     description: "Multiplier is an algorithmic money market system designed to bring secure and unique lending and borrowing opportunities like flash loans onto the Binance Smart Chain.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/multiplier.jpg`,
+    logo: `${baseIconsUrl}/mxx.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "multiplier",

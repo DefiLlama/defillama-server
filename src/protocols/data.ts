@@ -2301,7 +2301,7 @@ export default [
     description:
       "DeFiner empowers users to embrace the new digital economy and unlock instant value from their crypto assets through earning, lending, and borrowing.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/GsXovABD_400x400.jpg`,
+    logo: `${baseIconsUrl}/definer.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "definer",

@@ -7053,7 +7053,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
-    module: "betafinance/index.js"
+    module: "betafinance/index.js",
     twitter: "beta_finance",
     audit_links: ["https://betafinance.gitbook.io/betafinance/security-and-audits"],
   },

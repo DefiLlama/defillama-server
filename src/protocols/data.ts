@@ -7069,7 +7069,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "0",
     audit_note: null,
     gecko_id: "lixir-protocol",
-    cmcId: string,
+    cmcId: null,
     category: "Yield",
     chains: ["Ethereum"],
     module: "lixir/index.js",

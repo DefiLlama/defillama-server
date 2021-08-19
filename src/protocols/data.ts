@@ -7021,7 +7021,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "463",
-    name: "Gro Protocol",
+    name: "Gro",
     address: "-",
     symbol: "-",
     url: "https://www.gro.xyz",

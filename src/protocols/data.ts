@@ -7038,4 +7038,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "groprotocol",
     audit_links: ["https://docs.gro.xyz/gro-docs/how-it-works/security-and-audits/audits"],
   },
+  {
+    id: "464",
+    name: "Beta Finance",
+    address: "-",
+    symbol: "-",
+    url: "https://betafinance.org",
+    description: "Beta Finance is the permissionless money market for borrowing, lending, and shorting crypto assets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/betafinance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "betafinance/index.js"
+    twitter: "beta_finance",
+    audit_links: ["https://betafinance.gitbook.io/betafinance/security-and-audits"],
+  },
 ] as Protocol[];

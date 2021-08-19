@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js";
-import dynamodb from "../utils/dynamodb";
+import dynamodb, {TableName} from "../utils/dynamodb";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
@@ -37,7 +37,7 @@ export default async function (balances: { [address: string]: string }) {
     readRequests.push(
       dynamodb
         .batchGet(readKeys.slice(i, i + 100))
-        .then((r) => r.Responses?.[process.env.tableName!])
+        .then((r) => r.Responses?.[TableName])
     );
   }
   const tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)));

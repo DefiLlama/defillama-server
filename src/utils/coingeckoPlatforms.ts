@@ -1,3 +1,5 @@
+//import {chainToCoingeckoId} from "@defillama/sdk/build/computeTVL/index"
+// Object.entries(chainToCoingeckoId).reduce((o, i)=>{o[i[1]]=i[0]; return o}, {})
 interface StringObject {
   [id: string]: string | undefined;
 }

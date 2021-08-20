@@ -6841,7 +6841,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Wild is a permissionless lending protocol featuring isolated lending pairs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/wildcredit.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "wild-credit",
     cmcId: "10998",
@@ -6849,6 +6849,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "wildcredit/index.js",
     twitter: "WildCredit",
+    audit_links: ["https://code423n4.com/reports/2021-07-wildcredit/"],
     oracles: ["Chainlink"],
   },
   {

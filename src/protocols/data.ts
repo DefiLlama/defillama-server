@@ -7151,4 +7151,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "portfinance/index.js",
     twitter: "port_finance",
   },
+  /*
+  {
+    id: "470",
+    name: "Mensa Protocol",
+    address: "ftm:0x6B77d8B9be440FcbfE72CB4104d98bBd7cF91B14",
+    symbol: "MENSA",
+    url: "https://www.mensapro.com",
+    description: "Mensa Protocol is a decentralized lending platform based on Fantom chain, which aims to provide platform users with a decentralized and secure market to obtain loans and earn interest.",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/mensa.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Fantom"],
+    module: "mensa/index.js",
+    twitter: "MensaPro",
+    audit_links: "https://docs.mensapro.com/risk-control/audit-reports",
+  },*/
 ] as Protocol[];

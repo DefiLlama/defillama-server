@@ -6472,8 +6472,8 @@ export default [
   {
     id: "434",
     name: "Tarot",
-    address: "fantom:-",
-    symbol: "-",
+    address: "fantom:0xc5e2b037d30a390e62180970b3aa4e91868764cd",
+    symbol: "TAROT",
     url: "https://www.tarot.to",
     description: "Protocol users can deposit LP tokens in Tarot Vaults and receive Vault Tokens. The deposited LP tokens are then farmed and earned rewards are automatically converted to additional LP tokens and reinvested.",
     chain: "Fantom",

@@ -7244,4 +7244,22 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "canary/index.js",
     twitter: "CanaryDex"
   },
+  {
+    id: "475",
+    name: "Yield Yak",
+    address: "avax:0x59414b3089ce2af0010e7523dea7e2b35d776ec7",
+    symbol: "YAK",
+    url: "https://yieldyak.com",
+    description: "Yield Yak is an easy-to-use tool to earn more yield from defi farming on the Avalanche network.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/yieldyak.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "yield-yak",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Avalanche"],
+    module: "yieldyak/index.js",
+    twitter: "yieldyak_",
+  },
 ] as Protocol[];

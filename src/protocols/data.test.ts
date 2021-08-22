@@ -27,6 +27,7 @@ test("all the chains on the adapter are listed on the protocol", async () => {
         key !== "tvl" &&
         key !== "staking" &&
         key !== "pool2" &&
+        key !== "treasury" &&
         key !== "default" &&
         typeof module[key] === "object" &&
         module[key] !== null

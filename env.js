@@ -7,5 +7,6 @@ module.exports = {
     ARBITRUM_RPC: process.env.ARBITRUM_RPC,
     OPTIMISM_RPC: process.env.OPTIMISM_RPC,
     XDAI_RPC: process.env.XDAI_RPC,
+    HARMONY_RPC: process.env.HARMONY_RPC,
     OUTDATED_WEBHOOK: process.env.OUTDATED_WEBHOOK
 }

@@ -19,13 +19,12 @@ type ProtocolDataProcessor = (
 
 export default async function iterateProtocols(
   processor: ProtocolDataProcessor,
-  start: number,
-  end: number
+  protocolIndexes:number[]
 ) {
   const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlocks();
   const knownTokenPrices = {};
-  const actions = protocols
-    .slice(start, end)
+  const actions = protocolIndexes
+    .map(idx=>protocols[idx])
     .map((protocol) =>
       processor(
         timestamp,

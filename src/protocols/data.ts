@@ -930,7 +930,7 @@ export default [
     cmcId: "1057",
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "deversifi.js",
+    module: "deversifi/index.js",
     twitter: "deversifi",
     audit_links: ["https://www.deversifi.com/audit"],
   },

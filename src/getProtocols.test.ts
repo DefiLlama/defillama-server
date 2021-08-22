@@ -4,7 +4,7 @@ import storeTvls from "./storeTvlInterval/storeTvls";
 jest.mock("./protocols/data");
 
 test("snapshots of responses", async () => {
-  await storeTvls(0, 10);
+  await storeTvls([0,1,2,3,4,5]);
   expect(
     await (getProtocols({} as any) as Promise<any>).then((b) =>
       getBody(b).map((a: any) => {

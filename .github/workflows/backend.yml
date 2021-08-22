@@ -39,6 +39,10 @@ jobs:
         ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
         POLYGON_RPC: ${{ secrets.POLYGON_RPC }}
         BSC_RPC: ${{ secrets.BSC_RPC }}
+        FANTOM_RPC: ${{ secrets.FANTOM_RPC }}
+        ARBITRUM_RPC: ${{ secrets.ARBITRUM_RPC }}
+        OPTIMISM_RPC: ${{ secrets.OPTIMISM_RPC }}
+        XDAI_RPC: ${{ secrets.XDAI_RPC }}
         OUTDATED_WEBHOOK: ${{ secrets.OUTDATED_WEBHOOK }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

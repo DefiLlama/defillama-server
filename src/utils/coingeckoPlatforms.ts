@@ -13,6 +13,8 @@ const platformMap = {
   xdai: "xdai",
   "okex-chain": "okexchain",
   "huobi-token": "heco",
+  "harmony-shard-0":"harmony",
+  "kucoin-community-chain": "kcc"
 } as StringObject;
 
 export interface Coin {

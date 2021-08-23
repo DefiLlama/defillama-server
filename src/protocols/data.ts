@@ -4946,7 +4946,7 @@ export default [
     category: "Insurance",
     chains: ["Ethereum", "Binance"],
     module: "insurace/index.js",
-    twitter: "insur_ace",
+    twitter: "InsurAce_io",
     audit_links: ["https://files.insurace.io/public/security/InsurAce-DeFi%20Smart%20Contract%20Security%20Audit%20Report.pdf", "https://files.insurace.io/public/security/InsurAcePeckShieldAuditReport.pdf"],
   },
   {

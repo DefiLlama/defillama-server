@@ -7308,7 +7308,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://yape.exchange",
     description: "Yapeswap is an Automated Market Maker that enables liquidity providers to earn additional yield by investing idle token reserves from liquidity pools into yield farming and aggregator services hosted by Yearn Finance. The protocol is maintained by independent developers and governed by veYAPE holders.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/yapeswap.png`,
+    logo: `${baseIconsUrl}/yapeswap2.png`,
     audits: "3",
     audit_note: null,
     gecko_id: null,

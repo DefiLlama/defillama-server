@@ -7345,7 +7345,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://kuswap.finance",
     description: "KuSwap is the first decentralized trading platform on the KCC network to offer the lowest platform transaction fees (0.1 percent), with fees refunded in KUS, our native currency.",
     chain: "Kucoin",
-    logo: `${baseIconsUrl}/kuswap.png`,
+    logo: `${baseIconsUrl}/kuswap2.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "kuswap",

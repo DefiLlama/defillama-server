@@ -5799,7 +5799,7 @@ export default [
     audit_note: null,
     gecko_id: "apeswap-finance",
     cmcId: "8497",
-    category: "Yield",
+    category: "Dexes",
     chains: ["Binance","Polygon"],
     module: "apeswap/index.js",
     twitter: "ape_swap",

@@ -3080,7 +3080,7 @@ export default [
   {
     id: "261",
     name: "Cometh",
-    address: "0x9C78EE466D6Cb57A4d01Fd887D2b5dFb2D46288f",
+    address: "polygon:0x9c78ee466d6cb57a4d01fd887d2b5dfb2d46288f",
     symbol: "MUST",
     url: "https://www.cometh.io/",
     description: "DeFi powered space game with yield generating NFT ",

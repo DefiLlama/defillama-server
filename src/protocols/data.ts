@@ -3969,7 +3969,7 @@ export default [
   {
     id: "306",
     name: "Quickswap",
-    address: "polygon:0x6c28aef8977c9b773996d0e8376d2ee379446f2f",
+    address: "polygon:0x831753dd7087cac61ab5644b308642cc1c33dc13",
     symbol: "QUICK",
     url: "https://quickswap.exchange/",
     description: "AMM",

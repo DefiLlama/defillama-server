@@ -4893,7 +4893,7 @@ export default [
   {
     id: "352",
     name: "Iron Finance",
-    address: "bsc:0x7b65b489fe53fce1f6548db886c08ad73111ddd8",
+    address: "polygon:0x4a81f8796e0c6ad4877a51c86693b0de8093f2ef",
     symbol: "IRON",
     url: "https://iron.finance/",
     description:

@@ -4202,7 +4202,7 @@ export default [
   {
     id: "318",
     name: "Dfyn Network",
-    address: "0x9695e0114e12c0d3a3636fab5a18e6b737529023",
+    address: "polygon:0xc168e40227e4ebd8c1cae80f7a55a4f0e6d66c97",
     symbol: "DFYN",
     url: "https://www.dfyn.network/",
     description: "AMM",

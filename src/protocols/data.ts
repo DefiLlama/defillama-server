@@ -2911,7 +2911,6 @@ export default [
     module: "scrt.js",
     twitter: "SecretNetwork",
   },
-  /*
   {
     id: "253",
     name: "BiFi",
@@ -2931,7 +2930,6 @@ export default [
     module: "bifi/index.js",
     twitter: "BIFROSTio",
   },
-  */
   {
     id: "254",
     name: "Bunny",

@@ -3979,7 +3979,7 @@ export default [
     cmcId: "1293",
     category: "Dexes",
     chains: ["Polygon"],
-    module: "quickswap2/index.js",
+    module: "quickswap/index.js",
     twitter: "QuickswapDEX",
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
     forkedFrom: ["UniSwap"],

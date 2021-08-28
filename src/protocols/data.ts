@@ -7149,7 +7149,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "portfinance/index.js",
     twitter: "port_finance",
   },
-  /*
   {
     id: "470",
     name: "Mensa Protocol",
@@ -7168,7 +7167,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mensa/index.js",
     twitter: "MensaPro",
     audit_links: "https://docs.mensapro.com/risk-control/audit-reports",
-  },*/
+  },
   {
     id: "471",
     name: "Complus Network",

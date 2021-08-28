@@ -11,7 +11,7 @@
     "serve": "sls offline",
     "test": "jest",
     "test:watch": "jest --watch",
-    "postinstall": "cp patches/geturl.js node_modules/@ethersproject/providers/node_modules/@ethersproject/web/lib.esm/geturl.js",
+    "postinstall": "cp patches/geturl.js node_modules/@defillama/sdk/node_modules/@ethersproject/web/lib.esm/geturl.js",
     "build": "sls webpack"
   },
   "devDependencies": {
@@ -56,7 +56,7 @@
     "axios": "^0.21.0",
     "bignumber.js": "^9.0.1",
     "dotenv": "^8.2.0",
-    "ethers": "^5.1.0",
+    "ethers": "^5.4.6",
     "graph-results-pager": "^1.0.3",
     "graphql": "^15.3.0",
     "graphql-request": "^3.2.0",

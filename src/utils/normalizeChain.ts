@@ -4,6 +4,8 @@ export function normalizeChain(chain: string) {
     return "bsc";
   } else if (normalizedChain === "wanchain") {
     return "wan";
+  } else if(normalizedChain === "kucoin"){
+    return "kcc"
   }
   return normalizedChain;
 }

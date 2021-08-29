@@ -213,7 +213,7 @@ export default [
     gecko_id: "balancer",
     cmcId: "5728",
     category: "Dexes",
-    chains: ["Ethereum", "Polygon"],
+    chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "balancer/index.js",
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
@@ -493,7 +493,7 @@ export default [
     gecko_id: null,//"xdai-stake",
     cmcId: null,//"5601",
     category: "Chain",
-    chains: ["Ethereum", "Binance"],
+    chains: ["Ethereum"],
     module: "xdai/index.js",
     twitter: "xdaichain",
   },
@@ -2926,7 +2926,7 @@ export default [
     gecko_id: "bifi",
     cmcId: "8132",
     category: "Lending",
-    chains: ["Ethereum", "Binance"],
+    chains: ["Ethereum", "Binance", "Bitcoin"],
     module: "bifi/index.js",
     twitter: "BIFROSTio",
   },
@@ -6500,7 +6500,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Ethereum","Polygon","xDai"],
+    chains: ["Ethereum","Polygon","xDai", "Optimism"],
     module: "hop",
     twitter: "HopProtocol",
     audit_links: ["https://docs.hop.exchange/faq#are-hop-contracts-audited"],
@@ -7593,6 +7593,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "financegrim",
     audit_links: ["https://solidity.finance/audits/GrimVault/"],
   },
+  /*
   {
     id: "494",
     name: "JustLend",
@@ -7611,4 +7612,5 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "justlend/index.js",
     twitter: "DeFi_JUST",
   },
+  */
 ] as Protocol[];

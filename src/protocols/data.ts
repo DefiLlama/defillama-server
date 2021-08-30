@@ -474,7 +474,7 @@ export default [
     cmcId: "6929",
     category: "Options",
     chains: ["Ethereum"],
-    module: "hegic.js",
+    module: "hegic/index.js",
     twitter: "HegicOptions",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hegic-v1.0.pdf"],
   },

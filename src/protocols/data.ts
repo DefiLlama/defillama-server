@@ -7632,7 +7632,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "fi_heco",
     audit_links: ["https://hfi.one/slowmist.pdf"],
   },
-  /*
   {
     id: "496",
     name: "Orion Protocol",
@@ -7651,5 +7650,5 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "orionprotocol/index.js",
     twitter: "orion_protocol",
     audit_links: ["https://www.certik.org/projects/orionprotocol"],
-  },*/
+  },
 ] as Protocol[];

@@ -7613,4 +7613,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DeFi_JUST",
   },
   */
+  {
+    id: "495",
+    name: "HFI.one",
+    address: "heco:0x98fc3b60ed4a504f588342a53746405e355f9347",
+    symbol: "HFI",
+    url: "https://hfi.one/#/en",
+    description: "HFI.one is a decentralized aggregate mining platform based on the Huobi ecological chain HECO.",
+    chain: "Heco",
+    logo: `${baseIconsUrl}/hecofi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "hecofi",
+    cmcId: "8540",
+    category: "Yield",
+    chains: ["Heco"],
+    module: "hfione/index.js",
+    twitter: "fi_heco",
+    audit_links: ["https://hfi.one/slowmist.pdf"],
+  },
 ] as Protocol[];

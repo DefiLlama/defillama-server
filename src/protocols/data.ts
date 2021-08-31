@@ -7707,4 +7707,22 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "PolycatFinance",
     audit_links: ["https://docs.polycat.finance/security#audit"],
   },
+  {
+    id: "500",
+    name: "StakeSteak",
+    address: "fantom:0x05848B832E872d9eDd84AC5718D58f21fD9c9649",
+    symbol: "STEAK",
+    url: "https://stakesteak.com",
+    description: "The first Fantom-native, interest-bearing Stable Coin: iFUSD",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/stakesteak.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Fantom"],
+    module: "stakesteak/index.js",
+    twitter: "stake_steak",
+  }
 ] as Protocol[];

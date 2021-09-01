@@ -36,15 +36,22 @@ export default async function (
   );
 
   const lastHourlyTVL = (await lastHourlyTVLRecord).tvl;
-  if (storePreviousData && lastHourlyTVL * 2 < tvl.tvl && lastHourlyTVL !== 0) {
-    const lastWeeklyTVL = await lastWeeklyTVLRecord;
+  if (storePreviousData && lastHourlyTVL * 2 < tvl.tvl && lastHourlyTVL !== 0) { 
     const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
       tvl.tvl
     )}`;
+    let tvlToCompareAgainst = await lastWeeklyTVLRecord;
+    if(tvlToCompareAgainst.SK === undefined ){
+      tvlToCompareAgainst = await lastDailyTVLRecord;
+      if(tvlToCompareAgainst.SK === undefined ){
+        tvlToCompareAgainst = {
+          tvl: 10e9 // 10bil
+        }
+      }
+    }
     if (
-      lastWeeklyTVL.SK !== undefined &&
       lastHourlyTVL * 5 < tvl.tvl &&
-      lastWeeklyTVL.tvl * 5 < tvl.tvl
+      tvlToCompareAgainst.tvl * 5 < tvl.tvl
     ) {
       throw new Error(
         `TVL for ${protocol.name} has 5x (${change}) within one hour, disabling it`

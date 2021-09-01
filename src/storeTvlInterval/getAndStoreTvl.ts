@@ -94,6 +94,9 @@ export async function storeTvl(
           }
         })
       );
+      if(usdTvls.tvl === 0 && protocol.name === "Tarot"){
+        throw new Error("Tarot TVL is not 0")
+      }
     } catch (e) {
       if (i >= maxRetries - 1) {
         console.error(protocol.name, e);

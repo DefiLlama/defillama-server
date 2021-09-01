@@ -2008,6 +2008,7 @@ export default [
       "https://documentation.unslashed.finance/risks-and-security/audits",
     ],
   },
+  /*
   {
     id: "208",
     name: "ACryptoS",
@@ -2028,6 +2029,7 @@ export default [
     twitter: "acryptosdao",
     audit_links: ["https://docs.acryptos.com/security-and-risks#audits"],
   },
+  */
   {
     id: "209",
     name: "Autofarm",

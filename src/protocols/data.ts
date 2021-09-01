@@ -3891,6 +3891,7 @@ export default [
     twitter: "NerveFinance",
     audit_links: ["https://docs.nerve.fi/fundamentals/audits-and-security"],
   },
+  /*
   {
     id: "302",
     name: "SpookySwap",
@@ -3910,7 +3911,7 @@ export default [
     twitter: "SpookySwap",
     audit_links: ["https://www.certik.org/projects/spookyswap"],
     forkedFrom: ["UniSwap"],
-  },
+  },*/
   {
     id: "303",
     name: "ZilSwap",

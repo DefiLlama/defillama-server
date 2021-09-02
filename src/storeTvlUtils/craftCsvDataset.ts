@@ -6,12 +6,13 @@ import {
   dailyTokensTvl,
 } from "../utils/getLastRecord";
 import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
+import { normalizeChain } from "../utils/normalizeChain";
 
 function pad(s: number) {
   return s < 10 ? "0" + s : s;
 }
 
-function normalizeChain(chain:string){
+function normalizeChainTotal(chain:string){
   return chain==='tvl'?'Total':chain
 }
 
@@ -29,7 +30,7 @@ function addTokenRows(historicalTokenTvls: AWS.DynamoDB.DocumentClient.ItemList 
         return acc;
       }, new Set<string>()) as Set<string>
       allTokens.forEach(token => {
-        grid[nextRowNumber] = [protocol.name, protocol.category, normalizeChain(chain), rowName, token]
+        grid[nextRowNumber] = [protocol.name, protocol.category, normalizeChainTotal(chain), rowName, token]
         // TODO: Optimize this
         historicalTokenTvls.forEach(historicalTvl => {
           const timestamp = getClosestDayStartTimestamp(historicalTvl.SK);
@@ -43,6 +44,16 @@ function addTokenRows(historicalTokenTvls: AWS.DynamoDB.DocumentClient.ItemList 
     })
   }
   return nextRowNumber
+}
+
+function addBasicChain(historicalItems:AWS.DynamoDB.DocumentClient.ItemList | undefined, basicChain:string){
+  const chain = normalizeChain(basicChain)
+  historicalItems?.forEach(item=>{
+    if(item[chain] === undefined){
+      item[chain] = item.tvl
+    }
+  })
+  return historicalItems
 }
 
 type Grid = {
@@ -67,7 +78,8 @@ export default async function(protocols:Protocol[], vertical = false){
       getHistoricalValues(dailyTvl(protocol.id)),
       getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
       getHistoricalValues(dailyTokensTvl(protocol.id)),
-    ]);
+    ]).then(results=>results.map(r=>addBasicChain(r, protocol.chain)));
+
     if (usd === undefined || usd.length === 0) {
       return
     }
@@ -76,7 +88,7 @@ export default async function(protocols:Protocol[], vertical = false){
       if (chain === 'PK' || chain === 'SK') {
         return
       }
-      grid[nextRowNumber] = [protocol.name, protocol.category, normalizeChain(chain), 'TVL']
+      grid[nextRowNumber] = [protocol.name, protocol.category, normalizeChainTotal(chain), 'TVL']
       usd.forEach(historicalTvl => {
         const timestamp = getClosestDayStartTimestamp(historicalTvl.SK);
         if (timeToColumn[timestamp] === undefined) {

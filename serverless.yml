@@ -149,6 +149,12 @@ functions:
       - http:
           path: hourly/{protocol}
           method: get
+  nftCollections:
+    handler: src/getNftCollections.default
+    events:
+      - http:
+          path: nft/collections
+          method: get
   corsPreflight:
     handler: src/corsPreflight.default
     events:

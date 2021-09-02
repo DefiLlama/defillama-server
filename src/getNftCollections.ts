@@ -1,16 +1,13 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import ddb from "./utils/dynamodb";
 import collections from "./nfts/collections"
+import { getLastRecord } from "./utils/getLastRecord";
 
 const handler = async (
   _event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const collectionData = (await Promise.all(collections.map(async col=>{
-      const item = await ddb.get({
-          Key:{
-              PK: `nfts#${col.id}`
-          }
-      }).then(r=>r.Item)
+      const item = await getLastRecord(`nfts#${col.id}`)
       if(item === undefined){
           return null
       }

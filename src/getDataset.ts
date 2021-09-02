@@ -26,8 +26,8 @@ const handler = async (
     statusCode: 200,
     body: csv,
     headers: {
-      "Content-Type": "application/octet-stream",
-      //"Content-Disposition": `attachment; filename="${protocolName}.csv`,
+      "Content-Type": "text/csv",
+      "Content-Disposition": `attachment; filename="${protocolName}.csv`,
     },
   };
   return response;

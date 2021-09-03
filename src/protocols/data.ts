@@ -7811,7 +7811,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://acala.network/karura",
     description: "Stake your KSM for LKSM to earn rewards without sacrificing liquidity. LKSM is unlocked and ready to trade, take out collateralized loans, and provide liquidity for additional yield.",
     chain: "Karura",
-    logo: `${baseIconsUrl}/karura.png`,
+    logo: `${baseIconsUrl}/karura.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

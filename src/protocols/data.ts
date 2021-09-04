@@ -6795,6 +6795,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "scream/index.js",
     twitter: "Screamdotsh",
+    oracles: ["Chainlink"],
   },
   {
     id: "451",

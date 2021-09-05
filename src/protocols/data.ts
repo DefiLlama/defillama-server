@@ -8043,7 +8043,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://kolibri.finance",
     description: "Kolibri is an Tezos based stablecoin built on Collateralized Debt Positions (CDPs) known as Ovens. Kolibri uses CDPs (referred to as an Oven) to collateralize a soft pegged USD-stable value asset, kUSD.",
     chain: "Tezos",
-    logo: `${baseIconsUrl}/kolibri.svg`,
+    logo: `${baseIconsUrl}/kolibri.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

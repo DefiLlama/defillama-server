@@ -7478,7 +7478,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/sunny.svg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "sunny-aggregator",
     cmcId: null,
     category: "Yield",
     chains: ["Solana"],

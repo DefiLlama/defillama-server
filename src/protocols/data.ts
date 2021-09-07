@@ -3585,7 +3585,7 @@ export default [
     url: "https://mango.markets",
     description: "DEX for leverage trading",
     chain: "Solana",
-    logo: `${baseIconsUrl}/mango.jpg`,
+    logo: `${baseIconsUrl}/mango.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "mango-markets",

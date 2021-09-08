@@ -3789,6 +3789,7 @@ export default [
     chains: ["Wanchain"],
     module: "zookeeper.js",
     twitter: "ZooFarming",
+    audit_links: ["https://github.com/ZooFarming/Audit"],
   },
   /*
   {

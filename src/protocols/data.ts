@@ -1536,7 +1536,7 @@ export default [
     gecko_id: "lido-dao",
     cmcId: "8000",
     category: "Staking",
-    chains: ["Ethereum", "Terra"],
+    chains: ["Ethereum", "Terra", "Solana"],
     module: "lido/index.js",
     twitter: "LidoFinance",
     audit_links: ["https://github.com/lidofinance/audits"],

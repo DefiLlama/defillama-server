@@ -4905,7 +4905,7 @@ export default [
     gecko_id: "iron-stablecoin",
     cmcId: null,
     category: "Assets",
-    chains: ["Polygon"], // Used to have binance but not anymore
+    chains: ["Polygon","Avalanche"], // Used to have binance but not anymore
     module: "ironfinance/index.js",
     twitter: "IronFinance",
     audit_links: ["https://docs.iron.finance/bsc/audits", "https://docs.iron.finance/iron-finance-on-polygon/audit"],

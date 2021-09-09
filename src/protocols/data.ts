@@ -8321,4 +8321,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kuufinance/index.js",
     twitter: "KuuFinance",
   },
+  {
+    id: "532",
+    name: "Twindex",
+    address: "bsc:0x41171d5770c4c68686d1af042ada88a45b02f82b",
+    symbol: "TWX",
+    url: "https://twindex.com/#/swap",
+    description: "Twindex enables the trading of synthetic assets pegged to real-world prices in the most accessible way with its unique mechanism.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/twindex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Binance"],
+    module: "twindex/index.js",
+    twitter: "twindexcom",
+    oracles: ["Chainlink"],
+  }
 ] as Protocol[];

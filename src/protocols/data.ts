@@ -2507,7 +2507,7 @@ export default [
     gecko_id: "mcdex",
     cmcId: "5956",
     category: "Dexes",
-    chains: ["Ethereum"],
+    chains: ["Arbitrum"],
     module: "mcdex/index.js",
     twitter: "MonteCarloDEX",
     audit_links: ["https://blog.openzeppelin.com/?s=MCDEX"],

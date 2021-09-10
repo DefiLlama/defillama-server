@@ -2650,7 +2650,7 @@ export default [
     gecko_id: "pooltogether",
     cmcId: "8508",
     category: "Others",
-    chains: ["Ethereum", "Polygon"],
+    chains: ["Ethereum", "Polygon", "Celo"],
     module: "pooltogether/index.js",
     twitter: "PoolTogether_",
     audit_links: ["https://docs.pooltogether.com/security/audits-and-testing"],
@@ -4905,7 +4905,7 @@ export default [
     gecko_id: "iron-stablecoin",
     cmcId: null,
     category: "Assets",
-    chains: ["Polygon","Avalanche"], // Used to have binance but not anymore
+    chains: ["Polygon","Avalanche", "Fantom"], // Used to have binance but not anymore
     module: "ironfinance/index.js",
     twitter: "IronFinance",
     audit_links: ["https://docs.iron.finance/bsc/audits", "https://docs.iron.finance/iron-finance-on-polygon/audit"],

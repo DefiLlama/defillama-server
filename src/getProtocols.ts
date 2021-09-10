@@ -82,7 +82,7 @@ const handler = async (
         return dataToReturn
       })
     )
-  ).filter((protocol) => protocol !== null).sort((a,b)=>a.tvl-b.tvl);
+  ).filter((protocol) => protocol !== null).sort((a,b)=>b.tvl-a.tvl);
   return successResponse(response, 10 * 60); // 10 mins cache
 };
 

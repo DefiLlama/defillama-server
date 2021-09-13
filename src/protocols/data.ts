@@ -3532,7 +3532,7 @@ export default [
     logo: `${baseIconsUrl}/orca.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "orca",
     cmcId: null,
     category: "Dexes",
     chains: ["Solana"],

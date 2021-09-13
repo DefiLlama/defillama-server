@@ -5364,7 +5364,7 @@ export default [
     gecko_id: "nervenetwork",
     cmcId: "5906",
     category: "Dexes",
-    chains: ["Binance"],
+    chains: ["Nuls"],
     module: "nervenetwork.js",
     twitter: "nerve_network",
     audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=097a33b2e955a56af85e80b13ff82a3ad20fea83871769b5c58d024b5e774164"],

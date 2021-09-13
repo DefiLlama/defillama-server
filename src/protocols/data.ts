@@ -8477,7 +8477,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://swap.moonswap.in/#/swap",
     description: "The first truly decentralized DEX on Moonriver network.",
     chain: "Moonriver",
-    logo: `${baseIconsUrl}/moonswap.png`,
+    logo: `${baseIconsUrl}/moonswap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

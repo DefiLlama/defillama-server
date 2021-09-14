@@ -8511,7 +8511,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "NewDex",
     address: "bsc:0x996f56299a5b7c4f825a44886e07dafc4660b794",
     symbol: "DEX",
-    url: "https://bsc.newdex.io",
+    url: "https://newdex.io",
     description: 'Newdex is committed to taking advantage of the composability of DeFi to aggregate the depth of DEX in multiple chains, develop the aggregated DEX with "best depth, best price and best experience", provide users with good decentralized trading experience, and become multi-chain DEX trading entry.',
     chain: "Binance",
     logo: `${baseIconsUrl}/newdex.png`,

@@ -8506,4 +8506,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "reffinance.js",
     twitter: "finance_ref",
   },
+  {
+    id: "542",
+    name: "NewDex",
+    address: "bsc:0x996f56299a5b7c4f825a44886e07dafc4660b794",
+    symbol: "DEX",
+    url: "https://bsc.newdex.io",
+    description: 'Newdex is committed to taking advantage of the composability of DeFi to aggregate the depth of DEX in multiple chains, develop the aggregated DEX with "best depth, best price and best experience", provide users with good decentralized trading experience, and become multi-chain DEX trading entry.',
+    chain: "Binance",
+    logo: `${baseIconsUrl}/newdex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "newdex-token",
+    cmcId: "702",
+    category: "Dexes",
+    chains: ["Binance","EOS"],
+    module: "newdex/index.js",
+    twitter: "NewdexOfficial",
+    audit_links: ["https://support.newdex.net/hc/en-us/articles/4406436034189-PeckShield-Security-Audit-Report"]
+  },
 ] as Protocol[];

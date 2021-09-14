@@ -3357,7 +3357,7 @@ export default [
     gecko_id: "olivecash",
     cmcId: null,
     category: "Yield",
-    chains: ["Avalanche"],
+    chains: ["Avalanche","Binance","Fantom"],
     module: "olivecash/index.js",
     twitter: "OliveCashBsc",
     audit_links: ["https://olive-cash.gitbook.io/olive-cash/bsc-1/audit-1"],

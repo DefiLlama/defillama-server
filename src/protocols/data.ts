@@ -8540,7 +8540,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "9437",
     category: "Dexes",
     chains: ["OKExChain"],
-    module: "cherryswap.js",
+    module: "cherryswap/index.js",
     twitter: "CherryswapNet",
     audit_links: ["https://docs.cherryswap.net/noneag","https://docs.cherryswap.net/knownsec",
                   "https://docs.cherryswap.net/certik"],

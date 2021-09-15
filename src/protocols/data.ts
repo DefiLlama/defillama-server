@@ -4260,7 +4260,6 @@ export default [
     audit_links: ["https://docs.depth.fi/audit"],
   },
   // 321 reserved for deprecated version of pancakeswap
-/*
   {
     id: "321",
     name: "Ram Protocol",
@@ -4280,7 +4279,6 @@ export default [
     module: "ram.js",
     twitter: null,
   },
-*/
   {
     id: "322",
     name: "Yogi Finance",

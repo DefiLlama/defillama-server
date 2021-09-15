@@ -8405,7 +8405,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Larix is the ultimate lending gateway on Solana",
     chain: "Solana",
     logo: `${baseIconsUrl}/larix.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -8413,6 +8413,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "larix.js",
     twitter: "ProjectLarix",
+    audit_links: ["https://docs.projectlarix.com/how-to-prove/audit"],
   },
   {
     id: "537",

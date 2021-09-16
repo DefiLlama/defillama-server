@@ -913,6 +913,7 @@ export default [
     module: "idle.js",
     twitter: "idlefinance",
     audit_links: ["https://certificate.quantstamp.com/full/idle-finance"],
+    oracles: ["Chainlink"],
   },
   {
     id: "151",
@@ -1028,6 +1029,7 @@ export default [
     module: "88mph/index.js",
     twitter: "88mphapp",
     audit_links: ["https://docs.88mph.app/main-products/security-and-audits#is-88mph-audited"],
+    oracles: ["Chainlink"],
   },
   {
     id: "158",
@@ -1068,6 +1070,7 @@ export default [
     module: "growth-defi.js",
     twitter: "GrowthDefi",
     audit_links: ["https://consensys.net/diligence/audits/2020/12/growth-defi-v1/"],
+    oracles: ["Chainlink"],
   },
   {
     id: "160",
@@ -4216,6 +4219,7 @@ export default [
     chains: ["Polygon"],
     module: "dfyn/index.js",
     twitter: "_Dfyn",
+    oracles: ["Chainlink"],
   },
   {
     id: "319",
@@ -5046,6 +5050,7 @@ export default [
     module: "fraxfinance/index.js",
     twitter: "fraxfinance",
     audit_links: ["https://www.certik.org/projects/fraxfinance"],
+    oracles: ["Chainlink"],
   },
 /*
   {
@@ -5422,6 +5427,7 @@ export default [
     module: "makiswap/index.js",
     twitter: "MakiSwap",
     audit_links: ["https://www.certik.org/projects/makiswap"],
+    oracles: ["Chainlink"],
   },
   {
     id: "379",
@@ -7784,6 +7790,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "lyra/index.js",
     twitter: "lyrafinance",
     audit_links: ["https://github.com/lyra-finance/lyra-protocol/tree/master/audits/v1"],
+    oracles: ["Chainlink"],
   },
   {
     id: "504",

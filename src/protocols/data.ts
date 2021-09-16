@@ -6203,7 +6203,7 @@ export default [
   {
     id: "420",
     name: "Elk",
-    address: "polygon:0xE1C8f3d529BEa8E3fA1FAC5B416335a2f998EE1C",
+    address: "polygon:0xE1C110E1B1b4A1deD0cAf3E42BfBdbB7b5d7cE1C",
     symbol: "ELK",
     url: "https://elk.finance",
     description: "Elk Finance is a decentralized network for cross-chain liquidity. The Elk ecosystem will make it seamless for anyone to exchange cryptocurrencies. Our motto is Any chain, anytime, anywhere.",

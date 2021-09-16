@@ -1528,7 +1528,7 @@ export default [
     symbol: "LDO",
     url: "https://www.lido.fi/",
     description:
-      "Stake your ETH with Lido and receive liquid stETH with daily rewards.",
+      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana & Terra.",
     chain: "Multi-Chain",
     logo: `${baseIconsUrl}/pGDedFg0_400x400.png`,
     audits: "2",

@@ -1,3 +1,4 @@
+require("dotenv").config();
 import protocols from "../protocols/data";
 import dynamodb from "../utils/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";

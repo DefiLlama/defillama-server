@@ -57,10 +57,10 @@ export async function storeTvl(
               Object.entries(tvlBalances).every(
                 (balance) =>
                   balance[0].includes("0x") && typeof balance[1] === "string"
-              ) && useCurrentPrices;
+              );
             let tvlPromise: ReturnType<typeof util.computeTVL>;
             if (isStandard) {
-              tvlPromise = computeTVL(tvlBalances);
+              tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp);
             } else {
               tvlPromise = util.computeTVL(
                 tvlBalances,

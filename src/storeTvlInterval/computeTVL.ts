@@ -1,5 +1,6 @@
 import BigNumber from "bignumber.js";
-import dynamodb, {TableName} from "../utils/dynamodb";
+import dynamodb, { TableName } from "../utils/dynamodb";
+import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
@@ -8,7 +9,7 @@ type Balances = {
   [symbol: string]: number;
 };
 
-export default async function (balances: { [address: string]: string }) {
+export default async function (balances: { [address: string]: string }, timestamp: "now" | number) {
   const eth = balances[ethereumAddress];
   if (eth !== undefined) {
     balances[weth] = new BigNumber(balances[weth] ?? 0).plus(eth).toFixed(0);
@@ -40,11 +41,24 @@ export default async function (balances: { [address: string]: string }) {
         .then((r) => r.Responses?.[TableName])
     );
   }
-  const tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)));
+  let tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)));
+  if (timestamp !== "now") {
+    const historicalPrices = await Promise.all(readKeys.map(key=>getTVLOfRecordClosestToTimestamp(key.PK, timestamp)))
+    tokenData = historicalPrices.map(t=>{
+      const current = tokenData.find(current=>current.PK===t.PK)
+      return {
+      timestamp: t.SK,
+      price: t.price,
+      decimals: current?.decimals,
+      symbol: current?.symbol,
+      PK: t.PK,
+      }
+    }).filter(t=>t.timestamp !== undefined && t.decimals !== undefined)
+  }
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
   const usdTokenBalances = {} as Balances;
-  const now = Math.round(Date.now() / 1000);
+  const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
   tokenData.forEach((response) => {
     if (Math.abs(response.timestamp - now) < DAY) {
       PKsToTokens[response.PK].forEach((address) => {

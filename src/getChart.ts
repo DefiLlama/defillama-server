@@ -72,7 +72,11 @@ const handler = async (
           }
         }
       }
-      sumDailyTvls[timestamp] = itemTvl + (sumDailyTvls[timestamp] ?? 0);
+      if(typeof itemTvl === 'number' && !Number.isNaN(itemTvl)){
+        sumDailyTvls[timestamp] = itemTvl + (sumDailyTvls[timestamp] ?? 0);
+      } else {
+        console.log("itemTvl is NaN", itemTvl, item, protocol, lastTimestamp, historicalTvl)
+      }
     });
   });
 

@@ -1,5 +1,5 @@
 const db = require("../imported-db/defillama-db.json");
-import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
+import { getClosestDayStartTimestamp } from "../utils/date";
 import {
   client,
   dateToUNIXTimestamp,

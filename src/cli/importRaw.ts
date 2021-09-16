@@ -6,7 +6,7 @@ import {
   getDailyTxs,
 } from "./dynamodb";
 import { getProtocol } from "./utils";
-import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
+import { getClosestDayStartTimestamp } from "../utils/date";
 
 const data = [
   [1998754293.55132, "2021-04-16"],

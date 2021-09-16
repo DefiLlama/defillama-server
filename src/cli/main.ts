@@ -3,7 +3,7 @@ import protocols from "../protocols/data";
 import { ethers } from "ethers";
 const db = require("../../imported-db/defillama-db.json");
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
+import { getClosestDayStartTimestamp } from "../utils/date";
 
 AWS.config.update({ region: "eu-central-1" });
 const client = new AWS.DynamoDB.DocumentClient();

@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import protocols from "./protocols/data";
 import dynamodb from "./utils/dynamodb";
-import { getClosestDayStartTimestamp } from "./date/getClosestDayStartTimestamp";
+import { getClosestDayStartTimestamp } from "./utils/date";
 import { normalizeChain } from "./utils/normalizeChain";
 
 const handler = async (

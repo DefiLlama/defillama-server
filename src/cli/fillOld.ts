@@ -9,7 +9,7 @@ import {
   dailyTvl,
   dailyUsdTokensTvl,
 } from "../utils/getLastRecord";
-import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
+import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import {
   getCoingeckoLock,

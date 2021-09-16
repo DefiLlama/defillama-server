@@ -1,6 +1,6 @@
 import protocols from "../protocols/data";
 import dynamodb from "../utils/dynamodb";
-import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
+import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import { getBlocksRetry } from "./utils";
 import {

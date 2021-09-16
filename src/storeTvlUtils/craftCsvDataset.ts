@@ -5,7 +5,7 @@ import {
   dailyUsdTokensTvl,
   dailyTokensTvl,
 } from "../utils/getLastRecord";
-import { getClosestDayStartTimestamp } from "../date/getClosestDayStartTimestamp";
+import { getClosestDayStartTimestamp } from "../utils/date";
 import { normalizeChain } from "../utils/normalizeChain";
 
 function pad(s: number) {

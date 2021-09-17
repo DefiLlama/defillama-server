@@ -8787,7 +8787,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "harmony:0x72cb10c6bfa5624dd07ef608027e366bd690048f",
     symbol: "JEWEL",
     url: "https://www.defikingdoms.com",
-    description: "harmony:0x72cb10c6bfa5624dd07ef608027e366bd690048f",
+    description: "DeFi Kingdoms is a game, a DEX, a liquidity pool opportunity, a market of rare utility driven NFTs, and it all plays out seamlessly in the incredibly nostalgic form of fantasy pixel art.",
     chain: "Harmony",
     logo: `${baseIconsUrl}/defikingdoms.png`,
     audits: "0",

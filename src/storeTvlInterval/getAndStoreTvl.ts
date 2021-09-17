@@ -94,6 +94,9 @@ export async function storeTvl(
           }
         })
       );
+      if(typeof usdTvls.tvl !== "number"){
+        throw new Error("Project doesn't have total tvl")
+      }
       if(usdTvls.tvl === 0 && protocol.name === "Tarot"){
         throw new Error("Tarot TVL is not 0")
       }

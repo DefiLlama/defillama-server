@@ -4,7 +4,7 @@ import { normalizeChain } from "../utils/normalizeChain";
 const fs = require("fs");
 
 async function importProtocol(protocol:Protocol){
-  if(protocol.name.startsWith('Karura ')){
+  if(protocol.name.startsWith('Karura ') || protocol.name === "Genshiro"){
     return {}
   } else {
     return import(`../../DefiLlama-Adapters/projects/${protocol.module}`);

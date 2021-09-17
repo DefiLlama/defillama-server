@@ -8819,7 +8819,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "558",
-    name: "Magicland",
+    name: "Magic Land",
     address: "arbitrum:0x2c852D3334188BE136bFC540EF2bB8C37b590BAD",
     symbol: "MAGIC",
     url: "https://magicland.fi",

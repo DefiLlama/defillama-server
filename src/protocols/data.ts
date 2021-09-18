@@ -8818,7 +8818,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "metapool.js",
     twitter: "meta_pool",
   },
-  /*
   {
     id: "558",
     name: "Magic Land",
@@ -8837,7 +8836,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "magicland/index.js",
     twitter: "0xMagicland",
   },
-  */
   {
     id: "559",
     name: "Dapp Account DAO",

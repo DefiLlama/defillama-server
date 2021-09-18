@@ -100,6 +100,9 @@ export async function storeTvl(
       if(usdTvls.tvl === 0 && protocol.name === "Tarot"){
         throw new Error("Tarot TVL is not 0")
       }
+      if(usdTvls.tvl>100e9){
+        throw new Error(`TVL of ${protocol.name} is over 100bn`)
+      }
     } catch (e) {
       if (i >= maxRetries - 1) {
         console.error(protocol.name, e);
@@ -110,9 +113,6 @@ export async function storeTvl(
       } else {
         continue;
       }
-    }
-    if(usdTvls.tvl>100e9){
-      throw new Error(`TVL of ${protocol.name} is over 100bn`)
     }
     if (breakIfTvlIsZero && usdTvls.tvl === 0) {
       return 0;

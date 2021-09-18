@@ -4799,7 +4799,7 @@ export default [
       "Abracadabra.money is a spell book that allows users to produce magic internet money ($MIM) which is a stable coin that you can swap for any other traditional stable coin.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mimspell.svg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "spell-token",
     cmcId: null,
@@ -4807,6 +4807,7 @@ export default [
     chains: ["Ethereum", "Avalanche", "Arbitrum", "Fantom"],
     module: "abracadabra/api.js",
     twitter: "MIM_Spell",
+    audit_links: ["https://www.certora.com/pubs/SushiBentoboxFeb2021.pdf"]
   },
   {
     id: "348",

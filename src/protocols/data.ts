@@ -9014,7 +9014,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://scientix.finance",
     description: "Future-yield-backed Synthetic Token. Interest-free, Self-repaying and Liquidation-free Loans. Your collateral earns you yields in the background",
     chain: "Binance",
-    logo: `${baseIconsUrl}/scientix.png`,
+    logo: `${baseIconsUrl}/scientix.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "scientix",

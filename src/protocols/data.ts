@@ -4804,8 +4804,8 @@ export default [
     gecko_id: "spell-token",
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum"],
-    module: "abracadabra/index.js",
+    chains: ["Ethereum", "Avalanche", "Arbitrum", "Fantom"],
+    module: "abracadabra/api.js",
     twitter: "MIM_Spell",
   },
   {

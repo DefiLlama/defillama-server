@@ -365,7 +365,7 @@ export default [
     gecko_id: "dforce-token",
     cmcId: "4758",
     category: "Lending",
-    chains: ["Ethereum", "Binance"],
+    chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "dforce/index.js",
     twitter: "dForcenet",
     audit_links: [
@@ -452,7 +452,7 @@ export default [
     gecko_id: "kyber-network",
     cmcId: "404",
     category: "Dexes",
-    chains: ["Ethereum", "Polygon", "Binance"],
+    chains: ["Ethereum", "Polygon", "Binance", "Avalanche"],
     module: "kyber/index.js",
     twitter: "KyberNetwork",
     audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],

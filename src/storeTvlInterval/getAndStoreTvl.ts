@@ -111,6 +111,9 @@ export async function storeTvl(
         continue;
       }
     }
+    if(usdTvls.tvl>100e9){
+      throw new Error(`TVL of ${protocol.name} is over 100bn`)
+    }
     if (breakIfTvlIsZero && usdTvls.tvl === 0) {
       return 0;
     }

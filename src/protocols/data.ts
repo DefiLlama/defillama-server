@@ -6507,7 +6507,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Ethereum","Polygon","xDai", "Optimism"],
+    chains: ["Ethereum","Polygon","xDai", "Optimism", "Arbitrum"],
     module: "hop",
     twitter: "HopProtocol",
     audit_links: ["https://docs.hop.exchange/faq#are-hop-contracts-audited"],

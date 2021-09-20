@@ -111,6 +111,7 @@ export async function storeTvl(
         Sentry.AWSLambda.captureException(e, scope);
         return;
       } else {
+        console.error(protocol.name, e);
         continue;
       }
     }

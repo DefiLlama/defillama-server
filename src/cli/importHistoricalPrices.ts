@@ -25,7 +25,7 @@ async function main() {
       "Timestamp difference is higher than 90 days, it needs to be lower in order to get hourly rates"
     );
   }
-  setTimer(1000);
+  setTimer(1500);
   const coins = (await coingeckoRequest(
     "https://api.coingecko.com/api/v3/coins/list"
   )) as Coin[];

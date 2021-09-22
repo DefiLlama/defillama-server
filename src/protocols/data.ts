@@ -7740,7 +7740,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Robo-Vault",
     address: "-",
     symbol: "-",
-    url: "robo-vault.com",
+    url: "https://www.robo-vault.com",
     description: "Single asset automated yield generation",
     chain: "Fantom",
     logo: `${baseIconsUrl}/robovault.png`,

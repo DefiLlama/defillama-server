@@ -477,6 +477,7 @@ export default [
     module: "hegic/index.js",
     twitter: "HegicOptions",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hegic-v1.0.pdf"],
+    oracles: ["Chainlink"]
   },
   {
     id: "129",
@@ -1091,7 +1092,7 @@ export default [
     module: "alpha-homora/index.js",
     twitter: "AlphaFinanceLab",
     audit_links: ["https://blog.openzeppelin.com/alpha-homora-v2/"],
-    oracles: ["Band"],
+    oracles: ["Chainlink","Band"],
   },
   {
     id: "161",
@@ -1216,6 +1217,7 @@ export default [
     module: "truefi/index.js",
     twitter: "TrustToken",
     audit_links: ["https://github.com/trusttoken/audits/tree/master/TrueFi"],
+    oracles: ["Chainlink"],
   },
   {
     id: "167",
@@ -1707,6 +1709,7 @@ export default [
     module: "opium.js",
     twitter: "Opium_Network",
     audit_links: ["https://blog.smartdec.net/opium-smart-contracts-security-analysis-4c1857cfd93f"],
+    oracles: ["Chainlink"]
   },
   {
     id: "192",
@@ -1746,6 +1749,7 @@ export default [
     module: "unit.js",
     twitter: "unitprotocol",
     audit_links: ["https://github.com/unitprotocol/protocol_docs"],
+    oracles: ["Chainlink"]
   },
   {
     id: "194",
@@ -4767,6 +4771,7 @@ export default [
     audit_links: [
       "https://github.com/alpaca-finance/bsc-alpaca-contract/tree/main/audits",
     ],
+    oracles: ["Chainlink"]
   },
   {
     id: "346",
@@ -7660,6 +7665,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "orionprotocol/index.js",
     twitter: "orion_protocol",
     audit_links: ["https://www.certik.org/projects/orionprotocol"],
+    oracles: ["Chainlink"]
   },
   {
     id: "497",

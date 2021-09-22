@@ -3667,7 +3667,7 @@ export default [
     description:
       "A third-generation yield farming project building on Avalanche",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/penguin.jpg`,
+    logo: `${baseIconsUrl}/pefi.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "penguin-finance",

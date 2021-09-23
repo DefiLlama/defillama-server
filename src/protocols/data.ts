@@ -9227,7 +9227,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "iTrust Finance creates mutually beneficial relationships between stakers and insurance protocols by maximising rewards and growing cover capacity for all participants of the DAO, and the wider DeFi community.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/itrust.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "itrust-governance-token",
     cmcId: "11652",
@@ -9235,6 +9235,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "iTrustfinance/index.js",
     twitter: "iTrustFinance",
+    audit_links: ["https://assets.website-files.com/5f99eb79d508ca853be5f2e8/60fd80c015025a7033cf6ede_iTrust.pdf"]
   },
   {
     id: "580",

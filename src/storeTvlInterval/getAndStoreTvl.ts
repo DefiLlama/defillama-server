@@ -53,13 +53,8 @@ export async function storeTvl(
               ethBlock,
               chainBlocks
             );
-            const isStandard =
-              Object.entries(tvlBalances).every(
-                (balance) =>
-                  balance[0].includes("0x") && typeof balance[1] === "string"
-              );
             let tvlPromise: ReturnType<typeof util.computeTVL>;
-            if (isStandard) {
+            if (useCurrentPrices || unixTimestamp > 1626000000) { // July 11
               tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp);
             } else {
               tvlPromise = util.computeTVL(

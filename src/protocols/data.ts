@@ -9318,8 +9318,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "584",
     name: "1Swap",
-    address: "-",
-    symbol: "-",
+    address: "moonriver:0x3516a7588C2E6FFA66C9507eF51853eb85d76e5B",
+    symbol: "1SWAP",
     url: "https://1swap.fi",
     description: "Stableswap DEX on Moonriver",
     chain: "Moonriver",

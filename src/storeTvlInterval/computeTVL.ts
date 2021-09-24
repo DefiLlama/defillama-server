@@ -18,9 +18,8 @@ export default async function (balances: { [address: string]: string }, timestam
   const PKsToTokens = {} as { [t: string]: string[] };
   const readKeys = Object.keys(balances)
     .map((address) => {
-      const PK = `asset#${
-        address.startsWith("0x") ? "ethereum:" : ""
-      }${address.toLowerCase()}`;
+      const PK = `asset#${address.startsWith("0x") ? "ethereum:" : ""
+        }${address.toLowerCase()}`;
       if (PKsToTokens[PK] === undefined) {
         PKsToTokens[PK] = [address];
         return {
@@ -43,17 +42,17 @@ export default async function (balances: { [address: string]: string }, timestam
   }
   let tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)));
   if (timestamp !== "now") {
-    const historicalPrices = await Promise.all(readKeys.map(key=>getTVLOfRecordClosestToTimestamp(key.PK, timestamp)))
-    tokenData = historicalPrices.map(t=>{
-      const current = tokenData.find(current=>current.PK===t.PK)
+    const historicalPrices = await Promise.all(readKeys.map(key => getTVLOfRecordClosestToTimestamp(key.PK, timestamp)))
+    tokenData = historicalPrices.map(t => {
+      const current = tokenData.find(current => current.PK === t.PK)
       return {
-      timestamp: t.SK,
-      price: t.price,
-      decimals: current?.decimals,
-      symbol: current?.symbol,
-      PK: t.PK,
+        timestamp: t.SK,
+        price: t.price,
+        decimals: current?.decimals,
+        symbol: current?.symbol,
+        PK: t.PK,
       }
-    }).filter(t=>t.timestamp !== undefined && t.decimals !== undefined)
+    }).filter(t => t.timestamp !== undefined && t.decimals !== undefined)
   }
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
@@ -64,9 +63,16 @@ export default async function (balances: { [address: string]: string }, timestam
       PKsToTokens[response.PK].forEach((address) => {
         const balance = balances[address];
         const { price, decimals } = response;
-        const symbol = (response.symbol as string).toUpperCase();
-        const amount = new BigNumber(balance).div(10 ** decimals).toNumber();
-        const usdAmount = amount * price;
+        let symbol:string, amount:number, usdAmount:number;
+        if (response.PK.includes(':')) {
+          symbol = (response.symbol as string).toUpperCase();
+          amount = new BigNumber(balance).div(10 ** decimals).toNumber();
+          usdAmount = amount * price;
+        } else {
+          symbol = response.PK.slice('asset#'.length);
+          amount = Number(balance);
+          usdAmount = amount * price;
+        }
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
         usdTvl += usdAmount;

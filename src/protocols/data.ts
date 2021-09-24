@@ -1558,7 +1558,7 @@ export default [
     gecko_id: "wing-finance",
     cmcId: "7048",
     category: "Lending",
-    chains: ["Ontology"],
+    chains: ["Ontology", "Ethereum", "OKExChain"],
     module: "wing.js",
     twitter: "Wing_Finance",
     audit_links: ["https://docs.wing.finance/#audits"],

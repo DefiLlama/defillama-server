@@ -7713,7 +7713,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "10134",
     category: "Dexes",
     chains: ["Polygon"],
-    module: "polycat/index.js",
+    module: "polycat/v2.js",
     twitter: "PolycatFinance",
     audit_links: ["https://docs.polycat.finance/security#audit"],
   },

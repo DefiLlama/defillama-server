@@ -9399,7 +9399,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://www.mobius.money",
     description: "A cross-chain stableswap protocol built on Celo.",
     chain: "Celo",
-    logo: `${baseIconsUrl}/maple.png`,
+    logo: `${baseIconsUrl}/mobius.png`,
     audits: "3",
     audit_note: null,
     gecko_id: "mobius-money",

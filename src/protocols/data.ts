@@ -9420,7 +9420,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "The Strike App enables users access to a fully decentralized money market powered on Ethereum 24/7/365 with a user-interface, api, or smart contracts.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/strike.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "strike",
     cmcId: "8911",
@@ -9428,6 +9428,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "strike/index.js",
     twitter: "StrikeFinance",
+    audit_links: ["https://www.certik.org/projects/strikefinance"],
     forkedFrom: ["Compound"],
   },
   {

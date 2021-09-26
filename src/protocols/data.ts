@@ -639,7 +639,7 @@ export default [
     cmcId: "7486",
     category: "Yield",
     chains: ["Ethereum"],
-    module: "rari.js",
+    module: "rari/onchain.js",
     twitter: "RariCapital",
     audit_links: [
       "https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7",
@@ -868,7 +868,7 @@ export default [
     cmcId: "8049",
     category: "Services",
     chains: ["Ethereum"],
-    module: "tornado-cash.js",
+    module: "tornado/index.js",
     twitter: "TornadoCash",
     audit_links: ["https://tornado.cash/#faq"],
     oracles: ["Chainlink"],

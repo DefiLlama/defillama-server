@@ -6083,7 +6083,7 @@ export default [
     description: "The First and Innovative yield optimizer on Terra Ecosystem, auto-compound and auto-stake your Mirror and Anchor farm rewards.",
     chain: "Terra",
     logo: `${baseIconsUrl}/spec.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "spectrum-token",
     cmcId: "11460",
@@ -6091,6 +6091,7 @@ export default [
     chains: ["Terra"],
     module: "specfinance.js",
     twitter: "SpecProtocol",
+    audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Spectrum_Protocol_CosmWasm_Smart_Contract_Security_Audit_Halborn_Report_v1_1.pdf"],
   },
   {
     id: "414",

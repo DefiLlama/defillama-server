@@ -9447,7 +9447,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Arbitrum"],
     module: "parrotegg/index.js",
-    twitter: "parrotdefi",
+    twitter: "Parrotdefi1",
     forkedFrom: ["Goose", "PolyPup"],
   },
   {

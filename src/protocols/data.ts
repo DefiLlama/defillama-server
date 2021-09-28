@@ -9651,7 +9651,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Warp Finance is an open-source protocol on Ethereum that is creating a novel use case for unused Liquidity Provider (LP) tokens by allowing them to be used as collateral for borrowing",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/warp.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "warp-finance",
     cmcId: "8439",
@@ -9659,6 +9659,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "warp/index.js",
     twitter: "warpfinance",
+    audit_links: ["https://github.com/warp-finance/warpv2/blob/c0d26e0b1a74dccbe042aae65cc964f0d391630a/audits/Trail%20of%20Bits%20Second%20Audit%20Warp%20Finance.pdf"],
   },
   {
     id: "602",

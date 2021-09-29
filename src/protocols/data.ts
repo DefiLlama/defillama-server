@@ -359,7 +359,7 @@ export default [
     description:
       "dForce network is an ecosystem of protocols aiming to be a full stack solution for DeFi.",
     chain: "Multi-Chain",
-    logo: null,
+    logo: `${baseIconsUrl}/DF.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: "dforce-token",

@@ -9946,7 +9946,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "amyfinance/index.js",
     twitter: "amyfinance",
   },
-  /*
   {
     id: "617",
     name: "Bogged Finance",
@@ -9966,7 +9965,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "boggedfinance",
     audit_links: ["https://static.bogged.finance/audit.pdf"],
   },
-  */
   {
     id: "618",
     name: "Kava Swap",
@@ -10023,5 +10021,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "francium.js",
     twitter: "Francium_Defi",
     oracles: ["Pyth"],
+  },
+  {
+    id: "621",
+    name: "Trava Finance",
+    address: "bsc:0x0391be54e72f7e001f6bbc331777710b4f2999ef",
+    symbol: "TRAVA",
+    url: "https://trava.finance",
+    description: "TRAVA is the world's first decentralized lending marketplace. TRAVA performs blockchain data analysis to optimize pool parameters, calculate credit score, and thus increases profit and decreases risks for all users.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/trava.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "trava-finance",
+    cmcId: "11209",
+    category: "Lending",
+    chains: ["Binance"],
+    module: "trava/index.js",
+    twitter: "trava_finance",
+    audit_links: ["https://hacken.io/audits/#trava_finance", "https://www.certik.org/projects/trava"],
+    oracles: ["Chainlink", "OraiChain"],
   },
 ] as Protocol[];

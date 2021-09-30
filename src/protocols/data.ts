@@ -9946,6 +9946,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "amyfinance/index.js",
     twitter: "amyfinance",
   },
+  /*
   {
     id: "617",
     name: "Bogged Finance",
@@ -9965,6 +9966,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "boggedfinance",
     audit_links: ["https://static.bogged.finance/audit.pdf"],
   },
+  */
   {
     id: "618",
     name: "Kava Swap",

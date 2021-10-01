@@ -4257,7 +4257,7 @@ export default [
     gecko_id: "depth-token",
     cmcId: "9164",
     category: "Dexes",
-    chains: ["Heco"],
+    chains: ["Heco", "Binance"],
     module: "depth/index.js",
     twitter: "DepthFi",
     audit_links: ["https://docs.depth.fi/audit"],

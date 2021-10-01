@@ -10026,6 +10026,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Francium_Defi",
     oracles: ["Pyth"],
   },
+  /*
   {
     id: "621",
     name: "Trava Finance",
@@ -10046,6 +10047,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://hacken.io/audits/#trava_finance", "https://www.certik.org/projects/trava"],
     oracles: ["Chainlink", "OraiChain"],
   },
+  */
   {
     id: "622",
     name: "Clipper",

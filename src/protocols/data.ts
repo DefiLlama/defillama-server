@@ -9797,6 +9797,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Arbitrum"],
     module: "cap/index.js",
     twitter: "CapDotFinance",
+    oracles: ["Chainlink"],
   },
   {
     id: "609",
@@ -10004,6 +10005,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "VeeFinance",
     audit_links: ["https://vee.finance/home#contract"],
     forkedFrom: ["Compound"],
+    oracles: ["Chainlink"],
   },
   {
     id: "620",
@@ -10173,5 +10175,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "float-capital/index.js",
     twitter: "float_capital",
     audit_links: ["https://code423n4.com/reports/2021-08-floatcapital"],
+    oracles: ["Chainlink"],
   },
 ] as Protocol[];

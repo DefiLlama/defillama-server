@@ -9938,7 +9938,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Amy Finance is a Layer 2 based & LP-friendly Lending Protocol.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/amyfinance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -9946,6 +9946,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Arbitrum"],
     module: "amyfinance/index.js",
     twitter: "amyfinance",
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Amy-v1.0.pdf"],
   },
   {
     id: "617",

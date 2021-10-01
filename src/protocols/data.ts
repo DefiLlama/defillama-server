@@ -7745,7 +7745,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Single asset automated yield generation",
     chain: "Fantom",
     logo: `${baseIconsUrl}/robovault.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -7754,6 +7754,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "robovault/index.js",
     twitter: "robo_vault",
     oracles: ["Band"],
+    audit_links: ["https://docs.robo-vault.com/robovault/security"],
   },
   {
     id: "502",

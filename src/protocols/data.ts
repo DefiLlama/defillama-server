@@ -817,7 +817,7 @@ export default [
   {
     id: "145",
     name: "Serum",
-    address: null,
+    address: "solana:-",
     symbol: "SRM",
     url: "https://projectserum.com/",
     description:
@@ -3546,7 +3546,7 @@ export default [
   {
     id: "284",
     name: "Serum Swap",
-    address: null,
+    address: "solana:-",
     symbol: "SRM",
     url: "https://swap.projectserum.com/",
     description: "AMM",

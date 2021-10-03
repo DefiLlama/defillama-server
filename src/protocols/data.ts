@@ -8124,7 +8124,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "521",
     name: "Pizza",
-    address: "eos:pizzatotoken",
+    address: "eos:PIZZA",
     symbol: "PIZZA",
     url: "https://pizza.finance",
     description: "Pizza Finance is a decentralized EOS-based lending platform.",
@@ -8636,7 +8636,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "548",
     name: "DeFis Network",
-    address: "eos:minedfstoken",
+    address: "eos:DFS",
     symbol: "DFS",
     url: "https://defis.network",
     description: "DeFis Network is the most decentralized finance network built on EOSIO that aggregates all valuable DeFi-protocols.",
@@ -8656,7 +8656,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "549",
     name: "Vigor",
-    address: "eos:vig111111111",
+    address: "eos:VIG",
     symbol: "VIG",
     url: "https://vigor.ai",
     description: "Vigor protocol is an institutional grade financial engineering DeFi lending platform delivering autonomous price discovery between crypto lenders and borrowers.",
@@ -8843,7 +8843,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "559",
     name: "Dapp Account DAO",
-    address: "eos:dadtoken1111",
+    address: "eos:DAD",
     symbol: "DAD",
     url: "https://superdad.finance",
     description: "DAPP Account DAO is a cross-chain DeFi platform that utilizes DAO governance to launch and manage best DeFi strategies to maximize profits for token holders.",
@@ -9823,7 +9823,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "610",
     name: "eCurve",
-    address: "eos:ecurvetoken1/ECRV",
+    address: "eos:ECRV",
     symbol: "ECRV",
     url: "https://ecurve.finance",
     description: "eCurve is an exchange liquidity pool on EOS, designed for extremely efficient stablecoin trading and low risk, supplemental fee income for liquidity providers, without an opportunity cost.",

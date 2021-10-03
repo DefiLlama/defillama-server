@@ -115,7 +115,9 @@ export async function storeTvl(
       }
     }
     if (breakIfTvlIsZero && Object.values(usdTvls).reduce((total, value)=>total+value) === 0) {
-      return 0;
+      throw new Error(
+        `Returned 0 TVL at timestamp ${unixTimestamp}`
+      );
     }
 
     if (runBeforeStore !== undefined) {

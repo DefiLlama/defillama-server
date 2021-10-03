@@ -1,6 +1,7 @@
 require("dotenv").config();
-const protocolToRefill = "ApeSwap"
-const latestDate = 1627603200; // undefined -> start from today, number => start from that unix timestamp
+const protocolToRefill = "popsicle finance"
+const latestDate = undefined; // undefined -> start from today, number => start from that unix timestamp
+const batchSize = 1; // how many days to fill in parallel
 
 import dynamodb from "../utils/dynamodb";
 import { getProtocol, getBlocksRetry } from "./utils";
@@ -63,11 +64,6 @@ async function getAndStore(
     true,
     () => deleteItemsOnSameDay(dailyItems, timestamp)
   );
-  if (tvl === 0) {
-    throw new Error(
-      `Returned 0 TVL at timestamp ${timestamp} (eth block ${ethereumBlock})`
-    );
-  }
   console.log(timestamp, new Date(timestamp * 1000).toDateString(), tvl);
 }
 
@@ -82,7 +78,6 @@ function getDailyItems(pk: string) {
     .then((res) => res.Items);
 }
 
-const batchSize = 3;
 const main = async () => {
   const protocol = getProtocol(protocolToRefill);
   const adapter = await import(

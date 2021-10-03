@@ -114,7 +114,7 @@ export async function storeTvl(
         continue;
       }
     }
-    if (breakIfTvlIsZero && usdTvls.tvl === 0) {
+    if (breakIfTvlIsZero && Object.values(usdTvls).reduce((total, value)=>total+value) === 0) {
       return 0;
     }
 

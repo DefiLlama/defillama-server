@@ -10096,7 +10096,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Paladin is a decentralized, non-custodial governance lending protocol where users can either loan the voting power in their governance token, or borrow some voting power.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/paladin.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -10104,6 +10104,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "paladinfinance/index.js",
     twitter: "Paladin_vote",
+    audit_links: ["https://github.com/pessimistic-io/audits/blob/914e35fdfc879451a61d2a3969f3be839b8c808f/Paladin%20Security%20Analysis%20by%20Pessimistic.pdf"]
   },
   {
     id: "625",

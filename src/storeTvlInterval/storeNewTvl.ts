@@ -78,10 +78,10 @@ export default async function (
   let tvlPrev1Week = (await lastWeeklyTVLRecord).tvl
   const dayDailyTvl = (await dayDailyTvlRecord).tvl
   const weekDailyTvl = (await weekDailyTvlRecord).tvl
-  if(tvlPrev1Day !== 0 && dayDailyTvl !== 0 && (tvlPrev1Day * 2) > dayDailyTvl){
+  if(tvlPrev1Day !== 0 && dayDailyTvl !== 0 && tvlPrev1Day > (dayDailyTvl*2)){
     tvlPrev1Day = 0;
   }
-  if(tvlPrev1Week !== 0 && weekDailyTvl !== 0 && (tvlPrev1Week * 2) > weekDailyTvl){
+  if(tvlPrev1Week !== 0 && weekDailyTvl !== 0 && tvlPrev1Week > (weekDailyTvl*2)){
     tvlPrev1Week = 0;
   }
 

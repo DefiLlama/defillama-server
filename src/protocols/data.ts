@@ -10331,4 +10331,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "thekeep3r",
     audit_links: ["https://github.com/keep3r-network/keep3r.network/tree/master/audits"],
   },
+  {
+    id: "637",
+    name: "SYNC Network",
+    address: "0xB6ff96B8A8d214544Ca0dBc9B33f7AD6503eFD32",
+    symbol: "SYNC",
+    url: "https://syncbond.com/",
+    description: "SYNC is an ERC-20 cryptocurrency and NFT financial primitive that ‘bonds,’ or locks Uniswap liquidity pairs against SYNC tokens to make a tradeable ERC-721’s (NFTs) called a ‘CryptoBond.’",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/syncbond_large.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "sync-network",
+    cmcId: "7812",
+    category: "Staking",
+    chains: ["Ethereum"],
+    module: "syncnetwork/index.js",
+    twitter: "SYNCToken",
+    audit_links: ["https://blog.coinfabrik.com/cbond-smart-contract-audit/"]
+  },
 ] as Protocol[];

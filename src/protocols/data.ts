@@ -109,7 +109,7 @@ export default [
     gecko_id: "aave",
     cmcId: "7278",
     category: "Lending",
-    chains: ["Ethereum", "Polygon"],
+    chains: ["Ethereum", "Polygon", "Avalanche"],
     module: "aave/index.js",
     twitter: "AaveAave",
     audit_links: ["https://aave.com/security"],

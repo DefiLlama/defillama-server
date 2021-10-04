@@ -3,14 +3,15 @@ import { secondsBetweenCallsExtra } from "../utils/date";
 
 export default function getTVLOfRecordClosestToTimestamp(
   PK: string,
-  timestamp: number
+  timestamp: number,
+  searchWidth: number = secondsBetweenCallsExtra
 ) {
   return dynamodb
     .query({
       ExpressionAttributeValues: {
         ":pk": PK,
-        ":begin": timestamp - secondsBetweenCallsExtra,
-        ":end": timestamp + secondsBetweenCallsExtra,
+        ":begin": timestamp - searchWidth,
+        ":end": timestamp + searchWidth,
       },
       KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end",
     })

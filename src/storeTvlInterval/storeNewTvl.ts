@@ -34,6 +34,17 @@ export default async function (
     hourlyPK,
     unixTimestamp - secondsInWeek
   );
+  const dailyPK = dailyTvl(protocol.id);
+  const dayDailyTvlRecord = getTVLOfRecordClosestToTimestamp(
+    dailyPK,
+    unixTimestamp - secondsInDay,
+    secondsInDay
+  );
+  const weekDailyTvlRecord = getTVLOfRecordClosestToTimestamp(
+    dailyPK,
+    unixTimestamp - secondsInWeek,
+    secondsInDay
+  );
 
   const lastHourlyTVL = (await lastHourlyTVLRecord).tvl;
   if (storePreviousData && lastHourlyTVL * 2 < tvl.tvl && lastHourlyTVL !== 0) { 
@@ -63,6 +74,16 @@ export default async function (
       );
     }
   }
+  let tvlPrev1Day =  (await lastDailyTVLRecord).tvl
+  let tvlPrev1Week = (await lastWeeklyTVLRecord).tvl
+  const dayDailyTvl = (await dayDailyTvlRecord).tvl
+  const weekDailyTvl = (await weekDailyTvlRecord).tvl
+  if(tvlPrev1Day !== 0 && dayDailyTvl !== 0 && (tvlPrev1Day * 2) > dayDailyTvl){
+    tvlPrev1Day = 0;
+  }
+  if(tvlPrev1Week !== 0 && weekDailyTvl !== 0 && (tvlPrev1Week * 2) > weekDailyTvl){
+    tvlPrev1Week = 0;
+  }
 
   await dynamodb.put({
     PK: hourlyPK,
@@ -71,8 +92,8 @@ export default async function (
     ...(storePreviousData
       ? {
           tvlPrev1Hour: lastHourlyTVL,
-          tvlPrev1Day: (await lastDailyTVLRecord).tvl,
-          tvlPrev1Week: (await lastWeeklyTVLRecord).tvl,
+          tvlPrev1Day,
+          tvlPrev1Week,
         }
       : {}),
   });

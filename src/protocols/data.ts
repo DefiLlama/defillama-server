@@ -9935,7 +9935,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "616",
     name: "Amy Finance",
-    address: "arbitrum:0x3abcca0b837ce28a4b2447add3ca7ee69df0ef24",
+    address: "arbitrum:0x8Fbd420956FDD301f4493500fd0BCaAa80f2389C",
     symbol: "AMY",
     url: "https://amy.finance",
     description: "Amy Finance is a Layer 2 based & LP-friendly Lending Protocol.",

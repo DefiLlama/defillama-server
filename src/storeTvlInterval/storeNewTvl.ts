@@ -97,7 +97,13 @@ export default async function (
         }
       : {}),
   });
-  if (getDay((await lastDailyTVLRecord)?.SK) !== getDay(unixTimestamp)) {
+
+  const closestDailyRecord = await getTVLOfRecordClosestToTimestamp(
+    dailyPK,
+    unixTimestamp,
+    secondsInDay*1.5
+  );
+  if (getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp)) {
     // First write of the day
     await dynamodb.put({
       PK: dailyTvl(protocol.id),

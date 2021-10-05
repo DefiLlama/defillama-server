@@ -30,12 +30,13 @@ const handler = async (
       return collectionData.Items?.reduce((mktCapPerDay, dataItem) => {
         return {
           ...mktCapPerDay,
-          [getClosestDayStartTimestamp(dataItem.SK)]: dataItem.marketCapUsd,
+          [getClosestDayStartTimestamp(dataItem.SK)]: dataItem.marketCapUsd ?? 0,
         }
       }, {})
     })
   ))
-  .filter(collectionData => collectionData !== undefined && collectionData.length > 0)
+  .filter(collectionData => collectionData !== undefined)
+
   const sumDailyMarketCaps = dailyCollectionMarketCaps.reduce((sumDailyMarketCap, collectionDailyMarketCaps) => {
     Object.entries(collectionDailyMarketCaps).forEach(([key, value]) => {
       sumDailyMarketCap[key] = (sumDailyMarketCap[key] ?? 0) + value
@@ -45,8 +46,9 @@ const handler = async (
 
   const response = Object.entries(sumDailyMarketCaps).map(([timestamp, mktCap]) => ({
     date: timestamp,
-    totalMarketCapUsd: mktCap,
-  }));
+    totalMarketCapUSD: mktCap,
+  }))
+  .filter((dailyMarketCap: any) => dailyMarketCap.totalMarketCapUSD > 0)
   return successResponse(response, 10 * 60); // 10 mins cache
 }
 

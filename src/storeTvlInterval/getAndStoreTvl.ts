@@ -77,6 +77,7 @@ async function getTvl(
           `TVL of ${protocol.name} is not a number, instead it is ${usdTvls[storedKey]}`
         );
       }
+      return
     } catch (e) {
       if (i >= maxRetries - 1) {
         throw e

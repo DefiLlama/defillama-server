@@ -1,10 +1,23 @@
-export default [
+enum Blockchain {
+    Ethereum = 'ethereum'
+}
+export interface NFTCollection {
+    id: string,
+    contract: string,
+    item: string,
+    name: string,
+    logo: string,
+    chain: Blockchain,
+}
+
+const nftCollections: NFTCollection[] = [
     {
         id: "crypto-punks",
         contract: "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
         item: "4402",
         name: "CryptoPunks",
-        logo: "https://lh3.googleusercontent.com/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE=s120"
+        logo: "https://lh3.googleusercontent.com/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE=s120",
+        chain: Blockchain.Ethereum,
     }, 
     {
         id: "bayc",
@@ -12,6 +25,7 @@ export default [
         item: "5212",
         name: "BAYC",
         logo: "https://lh3.googleusercontent.com/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "loot",
@@ -19,6 +33,7 @@ export default [
         item: "2771",
         name: "Loot",
         logo: "https://lh3.googleusercontent.com/g-NFUWjS4IGgym8PHBxyhg5-G_B4x-IHgPKRkxo00JQFE3LOd-95yU2uhrokITVmV7KHEav6OMfAhfJ4roC5hwP-0tI9dMRd9wQLdw=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "mayc",
@@ -26,6 +41,7 @@ export default [
         item: "22182",
         name: "MAYC",
         logo: "https://lh3.googleusercontent.com/lHexKRMpw-aoSyB1WdFBff5yfANLReFxHzt1DOj_sg7mS14yARpuvYcUtsyyx-Nkpk6WTcUPFoG53VnLJezYi8hAs0OxNZwlw6Y-dmI=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "art-blocks-curated",
@@ -33,6 +49,7 @@ export default [
         item: "74000274",
         name: "Art Blocks Curated",
         logo: "https://lh3.googleusercontent.com/GwnosrkaneKGEkWySxvTSzZ5bEUjWkRuQzLSNfrpgy2-gxYjoR3m5PohLT9Fzy0p1tohajZ1g-LFfF_ZLnS1GqlPNHPUaKUbDhbf=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "meebits",
@@ -40,6 +57,7 @@ export default [
         item: "7708",
         name: "Meebits",
         logo: "https://lh3.googleusercontent.com/d784iHHbqQFVH1XYD6HoT4u3y_Fsu_9FZUltWjnOzoYv7qqB5dLUqpGyHBd8Gq3h4mykK5Enj8pxqOUorgD2PfIWcVj9ugvu8l0=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "cool-cats",
@@ -47,6 +65,7 @@ export default [
         item: "5847",
         name: "Cool Cats",
         logo: "https://lh3.googleusercontent.com/LIov33kogXOK4XZd2ESj29sqm_Hww5JSdO7AFn5wjt8xgnJJ0UpNV9yITqxra3s_LMEW1AnnrgOVB_hDpjJRA1uF4skI5Sdi_9rULi8=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "0n1-force",
@@ -54,6 +73,7 @@ export default [
         item: "3789",
         name: "0N1 Force",
         logo: "https://lh3.googleusercontent.com/7gOej3SUvqALR-qkqL_ApAt97SpUKQOZQe88p8jPjeiDDcqITesbAdsLcWlsIg8oh7SRrTpUPfPlm12lb4xDahgP2h32pQQYCsuOM_s=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "pudgy-penguins",
@@ -61,6 +81,7 @@ export default [
         item: "7373",
         name: "Pudgy Penguins",
         logo: "https://lh3.googleusercontent.com/bcCd1TfusKK6wWjmshwmizmY9j7An3pp9kxopMxfIt-_I8WFnSIK-5gevOduoYK4Qpq2e3DyXgROKNfkP396W5ViEYXhxoyAZG3s_vY=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "parallel-alpha",
@@ -68,6 +89,7 @@ export default [
         item: "10089",
         name: "Parallel Alpha",
         logo: "https://lh3.googleusercontent.com/nxaymgd9aJIzLXb0r3oLO0VCMFi0Zex1ubTmEYekEKwOVq1YijOULDeT1qCjk71OTsQW47zmvZ2ZuycXorgu6WA6Wosc6CiOuVnAXGk=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "cryp-toadz",
@@ -75,6 +97,7 @@ export default [
         item: "1683",
         name: "CrypToadz",
         logo: "https://lh3.googleusercontent.com/iofetZEyiEIGcNyJKpbOafb_efJyeo7QOYnTog8qcQJhqoBU-Vu9l3lXidZhXOAdu6dj4fzWW6BZDU5vLseC-K03rMMu-_j2LvwcbHo=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "creature-world-nft",
@@ -82,6 +105,7 @@ export default [
         item: "4952",
         name: "Creature World NFT",
         logo: "https://lh3.googleusercontent.com/PkMdNUr4UsEq5RLvAm721Ja5QGAijunAVDMz0hfRuyHQn853TRQzKL4aTFBgWPoy-nWlYA3hXzAm7flCmKn7Z9p2HN0GJxAtAixB4g=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "sup-ducks",
@@ -89,6 +113,7 @@ export default [
         item: "5536",
         name: "SupDucks",
         logo: "https://lh3.googleusercontent.com/WNd3NNCiOAkD3rUNCau9qXDPQsnH3ZA8PcDMhlsfLnK6J1vSNpJnPFCjA-_l03LbCxwAYC1Mj8IcRQch7YMTDLnn_c-jAQ03RWRdEw=s120",
+        chain: Blockchain.Ethereum,
     },
     {
         id: "sorare",
@@ -96,5 +121,8 @@ export default [
         item: "93413048755406577872706166263267868455781906435673030502405621390756186649773",
         name: "Sorare",
         logo: "https://lh3.googleusercontent.com/gj47nmAR3valkmpVbwamiuTJfWEWSCyVeORdjM6DRWrZ1o8WaqBxFXmpBrzZnGoWaPwq1Y0jiXRrBLbnLcawAp92=s120",
+        chain: Blockchain.Ethereum,
     },
 ]
+
+export default nftCollections

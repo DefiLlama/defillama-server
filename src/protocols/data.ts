@@ -10250,7 +10250,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/farmersonly.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "farmers-only",
     cmcId: null,
     category: "Yield",
     chains: ["Harmony"],

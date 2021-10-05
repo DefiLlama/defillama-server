@@ -127,7 +127,7 @@ export async function storeTvl(
         if (typeof value !== "object" || value === null) {
           return;
         }
-        return Promise.all(Object.entries(module).map(async ([tvlType, tvlFunction])=>{
+        return Promise.all(Object.entries(value).map(async ([tvlType, tvlFunction])=>{
           if(typeof tvlFunction !== "function"){
             return
           }

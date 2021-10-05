@@ -155,6 +155,16 @@ functions:
       - http:
           path: nft/collections
           method: get
+  nftChart:
+    handler: src/getNftChart.default
+    timeout: 60
+    events:
+      - http:
+          path: nft/charts
+          method: get
+      - http:
+          path: nft/charts/{chain}
+          method: get
   corsPreflight:
     handler: src/corsPreflight.default
     events:

@@ -48,6 +48,12 @@ const handler = async (
             chainTvls[chain] = chainTvl;
           }
         });
+        if(protocol.chains.length === 1){
+          const chain = normalizeChain(protocol.chains[0])
+          if(chainTvls[chain] === undefined){
+            chainTvls[chain] = lastHourlyRecord.tvl
+          }
+        }
         const dataToReturn = {
           ...protocol,
           slug: sluggify(protocol),

@@ -62,6 +62,7 @@ const handler = async (
     response.misrepresentedTokens = true;
   }
   response.chainTvls = {};
+
   protocolData.chains.concat(["tvl", "staking", "pool2"]).map(async (chain) => {
     const normalizedChain = normalizeChain(chain);
     const container = {} as any;
@@ -90,6 +91,12 @@ const handler = async (
           ...response,
           ...container,
         };
+        if(protocolData.chains.length === 1){
+          const singleChain = normalizeChain(protocolData.chains[0])
+          if(response.chainTvls[singleChain] === undefined){
+            response.chainTvls[singleChain] = container
+          }
+        }
       } else {
         response.chainTvls[chain] = container;
       }

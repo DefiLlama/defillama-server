@@ -8776,7 +8776,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Genshiro is a cross-chain protocol that helps users seamlessly earn yield, borrow, and trade on margin. Using asset portfolios instead of single collateral vaults",
     chain: "Kusama",
     logo: `${baseIconsUrl}/genshiro.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "genshiro",
     cmcId: "10278",
@@ -8784,6 +8784,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Kusama"],
     module: "genshiro/index.js",
     twitter: "GenshiroDeFi",
+    audit_links: ["https://drive.google.com/file/d/1HBF2h71Wgs0bUqlmftulp81dgFTPTfUm/view"],
     oracles: ["Band","Bluzelle","Internal"],
   },
   {

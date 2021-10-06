@@ -10436,7 +10436,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Bumper Finance is the first product on the market to offer efficient, flexible, cost effective, easy-to-use, and guaranteed protection against volatility",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bumper.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "bumper",
     cmcId: null,
@@ -10444,5 +10444,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "bumper/index.js",
     twitter: "bumperfinance",
+    audit_links: ["https://drive.google.com/file/d/1MT75ifDmiV2hAg9nVJfVjzWr4UrNO6fU/view"],
   },
 ] as Protocol[];

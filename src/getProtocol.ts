@@ -92,7 +92,7 @@ const handler = async (
           ...container,
         };
         if(protocolData.chains.length === 1){
-          const singleChain = normalizeChain(protocolData.chains[0])
+          const singleChain = protocolData.chains[0]
           if(response.chainTvls[singleChain] === undefined){
             response.chainTvls[singleChain] = container
           }

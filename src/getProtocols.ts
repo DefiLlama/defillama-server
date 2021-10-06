@@ -49,7 +49,7 @@ const handler = async (
           }
         });
         if(protocol.chains.length === 1){
-          const chain = normalizeChain(protocol.chains[0])
+          const chain = protocol.chains[0]
           if(chainTvls[chain] === undefined){
             chainTvls[chain] = lastHourlyRecord.tvl
           }

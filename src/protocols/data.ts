@@ -4542,7 +4542,7 @@ export default [
     cmcId: "8335",
     category: "Dexes",
     chains: ["Binance", "Heco"],
-    module: "mdex/index.js",
+    module: "mdex/subgraphs.js",
     twitter: "Mdextech",
     audit_links: [
       "https://mdex.com/slowmist_bsc.pdf",

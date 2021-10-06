@@ -10210,7 +10210,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Huckleberry is a brand-new kind of community driven AMM crosschain DEX ",
     chain: "Moonriver",
     logo: `${baseIconsUrl}/huckleberry.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -10218,6 +10218,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "huckleberry/index.js",
     twitter: "HuckleberryDEX",
+    audit_links: ["https://github.com/HuckleberryDex/huckleberry-contracts/blob/main/Smart%20contract%20security%20audit%20report-Huckleberry.pdf"],
     forkedFrom: ["Uniswap"],
   },
   {

@@ -3673,7 +3673,7 @@ export default [
     audit_note: null,
     gecko_id: "penguin-finance",
     cmcId: "10818",
-    category: "Dexes",
+    category: "Yield",
     chains: ["Avalanche"],
     module: "penguin/index.js",
     twitter: "penguin_defi",

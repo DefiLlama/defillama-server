@@ -89,6 +89,17 @@ async function getTvl(
   }
 }
 
+function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObject<TokensValueLocked>){
+  if(balancesObject[key] === undefined){
+    balancesObject[key] = {}
+    storedKeys.map(keyToMerge=>{
+      Object.entries(balancesObject[keyToMerge]).forEach((balance) => {
+        util.sumSingleBalance(balancesObject[key], balance[0], balance[1]);
+      });
+    })
+  }
+}
+
 export async function storeTvl(
   unixTimestamp: number,
   ethBlock: number,
@@ -103,48 +114,67 @@ export async function storeTvl(
   runBeforeStore?: () => Promise<void>
 ) {
 
-  let usdTvls: tvlsObject<number> = {};
-  let tokensBalances: tvlsObject<TokensValueLocked> = {};
-  let usdTokenBalances: tvlsObject<TokensValueLocked> = {};
+  const usdTvls: tvlsObject<number> = {};
+  const tokensBalances: tvlsObject<TokensValueLocked> = {};
+  const usdTokenBalances: tvlsObject<TokensValueLocked> = {};
+  const chainTvlsToAdd: {
+    [name: string]: string[]
+  } = {}
   try {
     const module = await import(
       `../../DefiLlama-Adapters/projects/${protocol.module}`
     );
-    let mainTvlIsFetch: boolean;
-    if (module.tvl) {
-      mainTvlIsFetch = false
-    } else if (module.fetch) {
-      mainTvlIsFetch = true
-    } else {
-      throw new Error("Protocol doesn't have a tvl/fetch export")
+    let tvlPromises = Object.entries(module).map(async ([chain, value]) => {
+      if (chain === "default") {
+        return;
+      }
+      if (typeof value !== "object" || value === null) {
+        return;
+      }
+      return Promise.all(Object.entries(value).map(async ([tvlType, tvlFunction]) => {
+        if (typeof tvlFunction !== "function") {
+          return
+        }
+        let storedKey = `${chain}-${tvlType}`
+        let tvlFunctionIsFetch = false;
+        if (tvlType === "tvl") {
+          storedKey = chain
+        } else if (tvlType === "fetch") {
+          storedKey = chain
+          tvlFunctionIsFetch = true
+        }
+        await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
+          usdTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, knownTokenPrices, getCoingeckoLock)
+        let keyToAddChainBalances = tvlType;
+        if(tvlType === "tvl" || tvlType === "fetch"){
+          keyToAddChainBalances = "tvl"
+        }
+        if(chainTvlsToAdd[keyToAddChainBalances] === undefined){
+          chainTvlsToAdd[keyToAddChainBalances] = [storedKey]
+        } else {
+          chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
+        }
+      }))
+    })
+    if (module.tvl || module.fetch) {
+      let mainTvlIsFetch: boolean;
+      if (module.tvl) {
+        mainTvlIsFetch = false
+      } else {
+        mainTvlIsFetch = true
+      }
+      const mainTvlPromise = getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
+        usdTokenBalances, mainTvlIsFetch ? module.fetch : module.tvl, mainTvlIsFetch, 'tvl', maxRetries, knownTokenPrices, getCoingeckoLock)
+      tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
     }
-    const mainTvlPromise = getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances, 
-      usdTokenBalances, mainTvlIsFetch?module.fetch:module.tvl, mainTvlIsFetch, 'tvl', maxRetries, knownTokenPrices, getCoingeckoLock)
-    await Promise.all(
-      Object.entries(module).map(async ([chain, value]) => {
-        if (chain === "default") {
-          return;
-        }
-        if (typeof value !== "object" || value === null) {
-          return;
-        }
-        return Promise.all(Object.entries(value).map(async ([tvlType, tvlFunction])=>{
-          if(typeof tvlFunction !== "function"){
-            return
-          }
-          let storedKey = `${chain}-${tvlType}`
-          let tvlFunctionIsFetch = false;
-          if(tvlType === "tvl"){
-            storedKey = chain
-          } else if(tvlType === "fetch"){
-            storedKey = chain
-            tvlFunctionIsFetch = true
-          }
-          await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances, 
-            usdTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, knownTokenPrices, getCoingeckoLock)
-        }))
-      }).concat([mainTvlPromise as Promise<any>])
-    );
+    await Promise.all(tvlPromises)
+    Object.entries(chainTvlsToAdd).map(([tvlType, storedKeys])=>{
+      if(usdTvls[tvlType]===undefined){
+        usdTvls[tvlType] = storedKeys.reduce((total, key)=>total+usdTvls[key], 0)
+        mergeBalances(tvlType, storedKeys, tokensBalances)
+        mergeBalances(tvlType, storedKeys, usdTokenBalances)
+      }
+    })
     if (typeof usdTvls.tvl !== "number") {
       throw new Error("Project doesn't have total tvl")
     }

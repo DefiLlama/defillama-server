@@ -8796,7 +8796,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "DeFi Kingdoms is a game, a DEX, a liquidity pool opportunity, a market of rare utility driven NFTs, and it all plays out seamlessly in the incredibly nostalgic form of fantasy pixel art.",
     chain: "Harmony",
     logo: `${baseIconsUrl}/defikingdoms.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -8804,6 +8804,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "defikingdoms/index.js",
     twitter: "DefiKingdoms",
+    audit_links: ['https://solidity.finance/audits/DefiKingdoms/'],
   },
   {
     id: "557",

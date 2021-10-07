@@ -1,9 +1,10 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import protocols from "./protocols/data";
 import dynamodb from "./utils/dynamodb";
-import {getLastRecord, hourlyTvl} from './utils/getLastRecord'
+import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getClosestDayStartTimestamp } from "./utils/date";
 import { normalizeChain } from "./utils/normalizeChain";
+import { secondsInHour } from './utils/date'
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -26,19 +27,20 @@ const handler = async (
       ) {
         return undefined;
       }
-      const [historicalTvl, lastTvl] = await Promise.all([dynamodb.query({
-        ExpressionAttributeValues: {
-          ":pk": `dailyTvl#${protocol.id}`,
-        },
-        KeyConditionExpression: "PK = :pk",
-      }),
-      getLastRecord(hourlyTvl(protocol.id))
+      const [historicalTvl, lastTvl] = await Promise.all([
+        dynamodb.query({
+          ExpressionAttributeValues: {
+            ":pk": `dailyTvl#${protocol.id}`,
+          },
+          KeyConditionExpression: "PK = :pk",
+        }),
+        getLastRecord(hourlyTvl(protocol.id))
       ]);
       if (historicalTvl.Items === undefined || historicalTvl.Items.length < 1) {
         return undefined;
       }
       const lastDailyItem = historicalTvl.Items[historicalTvl.Items.length - 1]
-      if(lastTvl !== undefined && lastTvl.SK>lastDailyItem.SK){
+      if (lastTvl !== undefined && lastTvl.SK > lastDailyItem.SK && (lastDailyItem.SK + secondsInHour * 25) > lastTvl.SK) {
         lastTvl.SK = lastDailyItem.SK
         historicalTvl.Items[historicalTvl.Items.length - 1] = lastTvl
       }
@@ -59,7 +61,7 @@ const handler = async (
     }
     const { historicalTvl, protocol, lastTimestamp } = protocolTvl;
     const lastTvl = historicalTvl[historicalTvl.length - 1];
-    if (lastTimestamp !== lastDailyTimestamp && (lastDailyTimestamp-lastTimestamp) < (2*24*3600)) {
+    if (lastTimestamp !== lastDailyTimestamp && (lastDailyTimestamp - lastTimestamp) < (2 * 24 * 3600)) {
       historicalTvl.push({
         ...lastTvl,
         SK: lastDailyTimestamp,
@@ -80,7 +82,7 @@ const handler = async (
           }
         }
       }
-      if(typeof itemTvl === 'number' && !Number.isNaN(itemTvl)){
+      if (typeof itemTvl === 'number' && !Number.isNaN(itemTvl)) {
         sumDailyTvls[timestamp] = itemTvl + (sumDailyTvls[timestamp] ?? 0);
       } else {
         console.log("itemTvl is NaN", itemTvl, item, protocol, lastTimestamp, historicalTvl)

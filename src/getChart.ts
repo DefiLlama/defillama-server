@@ -37,7 +37,9 @@ const handler = async (
       if (historicalTvl.Items === undefined || historicalTvl.Items.length < 1) {
         return undefined;
       }
-      if(lastTvl !== undefined && lastTvl.SK>historicalTvl.Items[historicalTvl.Items.length - 1].SK){
+      const lastDailyItem = historicalTvl.Items[historicalTvl.Items.length - 1]
+      if(lastTvl !== undefined && lastTvl.SK>lastDailyItem.SK){
+        lastTvl.SK = lastDailyItem.SK
         historicalTvl.Items[historicalTvl.Items.length - 1] = lastTvl
       }
       const lastTimestamp = getClosestDayStartTimestamp(

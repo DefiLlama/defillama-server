@@ -1,6 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import protocols from "./protocols/data";
 import dynamodb from "./utils/dynamodb";
+import {getLastRecord, hourlyTvl} from './utils/getLastRecord'
 import { getClosestDayStartTimestamp } from "./utils/date";
 import { normalizeChain } from "./utils/normalizeChain";
 
@@ -25,14 +26,19 @@ const handler = async (
       ) {
         return undefined;
       }
-      const historicalTvl = await dynamodb.query({
+      const [historicalTvl, lastTvl] = await Promise.all([dynamodb.query({
         ExpressionAttributeValues: {
           ":pk": `dailyTvl#${protocol.id}`,
         },
         KeyConditionExpression: "PK = :pk",
-      });
+      }),
+      getLastRecord(hourlyTvl(protocol.id))
+      ]);
       if (historicalTvl.Items === undefined || historicalTvl.Items.length < 1) {
         return undefined;
+      }
+      if(lastTvl !== undefined && lastTvl.SK>historicalTvl.Items[historicalTvl.Items.length - 1].SK){
+        historicalTvl.Items[historicalTvl.Items.length - 1] = lastTvl
       }
       const lastTimestamp = getClosestDayStartTimestamp(
         historicalTvl.Items[historicalTvl.Items.length - 1].SK

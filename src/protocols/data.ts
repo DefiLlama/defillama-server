@@ -9353,7 +9353,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "ice-token",
     cmcId: "9073",
     category: "Yield",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Fantom", "Binance"],
     module: "popsicle/index.js",
     twitter: "PopsicleFinance",
     audit_links: ["https://docs.popsicle.finance/reports/our-audits"],

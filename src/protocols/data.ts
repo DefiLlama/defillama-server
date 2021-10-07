@@ -2654,7 +2654,7 @@ export default [
     gecko_id: "pooltogether",
     cmcId: "8508",
     category: "Others",
-    chains: ["Ethereum", "Polygon", "Celo"],
+    chains: ["Ethereum", "Polygon", "Celo", "Binance"],
     module: "pooltogether/index.js",
     twitter: "PoolTogether_",
     audit_links: ["https://docs.pooltogether.com/security/audits-and-testing"],

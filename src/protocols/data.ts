@@ -10419,7 +10419,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Sorbet Finance is Gelato Network’s 'feature playground' which automates trading actions on decentralized exchanges.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sorbetfinance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "gelato",
     cmcId: "7229",
@@ -10427,6 +10427,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "sorbetfinance/index.js",
     twitter: "gelatonetwork",
+    audit_links: ["https://www.certik.org/projects/gelato", "https://drive.google.com/file/d/1aTmVdENDTt7-Rbr9Nxx8DLqy8BE0ZLew/view?usp=sharing"]
   },
   {
     id: "642",

@@ -703,7 +703,7 @@ export default [
     cmcId: "7367",
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "snowswap/index.js",
+    module: "snowswap.js",
     twitter: "snow_swap",
     audit_links: ["https://hackmd.io/@9GUQpanJRF6cloQ0fwyPFw/r1_ctUuqv"],
     forkedFrom: ["CurveFinance", "UniSwap"],

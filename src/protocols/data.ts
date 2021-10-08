@@ -10489,7 +10489,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "645",
     name: "LatteSwap",
-    address: "bsc:0x8D78C2ff1fB4FBA08c7691Dfeac7bB425a91c81A",
+    address: "bsc:0xa269a9942086f5f87930499dc8317ccc9df2b6cb",
     symbol: "LATTE",
     url: "https://app.latteswap.com",
     description: "A caffeine-filled, NFT-integrated DEX platform on Binance Smart Chain",

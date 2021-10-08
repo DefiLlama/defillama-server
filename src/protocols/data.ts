@@ -5941,7 +5941,6 @@ export default [
     twitter: "tokenlon",
     audit_links: ["https://github.com/consenlabs/tokenlon-security/blob/master/audits/PeckShield-Audit-TokenlonV5-v1.0rc.pdf"],
   },
-  /*
   {
     id: "406",
     name: "Element Finance",
@@ -5960,7 +5959,7 @@ export default [
     module: "elementfi/element.js",
     twitter: "element_fi",
     audit_links: ["https://docs.element.fi/developers/bug-bounty-programs#b93e"],
-  },*/
+  },
   {
     id: "407",
     name: "Mars Poolin",

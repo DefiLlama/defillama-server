@@ -10191,7 +10191,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Cozy is an open-source protocol for automated and trust-minimized Protection Markets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cozy.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -10199,6 +10199,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "cozy/index.js",
     twitter: "cozyfinance",
+    audit_links: ["https://www.cozy.finance/audits/quantstamp.pdf", "https://www.cozy.finance/audits/peckshield.pdf"],
   },
   {
     id: "630",

@@ -16,7 +16,7 @@ const handler = async (
   let lastDailyTimestamp = 0;
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {
-      if (protocol.category === "Chain") {
+      if (protocol.category === "Chain" || protocol.name === "AnySwap") {
         return undefined;
       }
       if (

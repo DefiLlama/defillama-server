@@ -1516,7 +1516,7 @@ export default [
     gecko_id: "mantra-dao",
     cmcId: "6536",
     category: null,
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Binance", "Polygon"],
     module: "mantradao.js",
     twitter: "MANTRADAO",
     audit_links: [

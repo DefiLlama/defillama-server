@@ -10414,7 +10414,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0x15b7c0c907e4C6b9AdaAaabC300C08991D6CEA05",
     symbol: "GEL",
     url: "https://www.gelato.network",
-    description: "Sorbet Finance is Gelato Network’s 'feature playground' which automates trading actions on decentralized exchanges.",
+    description: "G-UNI, an automated liquidity provision ERC-20 for Uniswap v3, powered by Gelato Network",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sorbetfinance.png`,
     audits: "2",

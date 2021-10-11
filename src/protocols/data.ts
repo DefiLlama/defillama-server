@@ -286,7 +286,7 @@ export default [
   },
   {
     id: "120",
-    name: "InstaDApp",
+    name: "Instadapp",
     address: "0x6f40d4a6237c257fff2db00fa0510deeecd303eb",
     symbol: "INST",
     url: "https://instadapp.io/",

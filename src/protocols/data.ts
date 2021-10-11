@@ -6470,7 +6470,7 @@ export default [
     cmcId: "8478",
     category: "Yield",
     chains: ["Ethereum"],
-    module: "daoventues/index.js",
+    module: "daoventures/index.js",
     twitter: "VenturesDao",
     audit_links: ["https://github.com/daoventures/dao-audits"],
   },

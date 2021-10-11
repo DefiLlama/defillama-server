@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils";
 import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-import { normalizeChain, getDisplayChain } from "./utils/normalizeChain";
+import { getChainDisplayName, getDisplayChain } from "./utils/normalizeChain";
 import dynamodb from "./utils/dynamodb";
 
 export function getPercentChange(previous: number, current: number) {
@@ -41,24 +41,30 @@ const handler = async (
         const chainTvls = {} as {
           [chain: string]: number;
         };
-        protocol.chains.forEach((chain) => {
-          const normalizedChain = normalizeChain(chain);
-          const chainTvl = lastHourlyRecord[normalizedChain];
-          if (chainTvl !== undefined) {
-            chainTvls[chain] = chainTvl;
+        const chains:string[] = [];
+        Object.entries(lastHourlyRecord).forEach(([chain, chainTvl]) => {
+          if(['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week'].includes(chain)){
+            return
+          }
+          const chainDisplayName = getChainDisplayName(chain);
+          chainTvls[chainDisplayName] = chainTvl;
+          if(!chain.includes('-') && !['staking', 'treasury', 'pool2', 'masterchef'].includes(chain)){
+            chains.push(chainDisplayName)
           }
         });
-        if(protocol.chains.length === 1){
-          const chain = protocol.chains[0]
+        if(Object.keys(chainTvls).length === 0){
+          const chain = protocol.chain
           if(chainTvls[chain] === undefined){
             chainTvls[chain] = lastHourlyRecord.tvl
           }
+          chains.push(chain)
         }
         const dataToReturn = {
           ...protocol,
           slug: sluggify(protocol),
           tvl: lastHourlyRecord.tvl,
           chainTvls,
+          chains,
           chain: getDisplayChain(protocol.chains),
           change_1h: getPercentChange(
             lastHourlyRecord.tvlPrev1Hour,

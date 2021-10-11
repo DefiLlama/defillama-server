@@ -5361,7 +5361,7 @@ export default [
     symbol: "NVT",
     url: "https://nerve.network/",
     description: "Nerve is a decentralized digital asset service network based on the NULS micro-services framework, which uses the NULS ChainBox to develop a blockchain cross-chain interaction protocol.",
-    chain: "NULS",
+    chain: "Nuls",
     logo: `${baseIconsUrl}/nervenetwork.jpg`,
     audits: "2",
     audit_note: null,

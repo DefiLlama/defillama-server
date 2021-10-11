@@ -10807,7 +10807,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "662",
     name: "Artemis Protocol",
-    address: "0xd74433b187cf0ba998ad9be3486b929c76815215",
+    address: "harmony:0xd74433b187cf0ba998ad9be3486b929c76815215",
     symbol: "MIS",
     url: "https://app.artemisprotocol.one/",
     description: "Artemis is a multi-product DeFi Protocol built to incubate and bootstrap Harmony-based projects and ideas.",

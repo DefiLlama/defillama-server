@@ -10820,6 +10820,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Harmony"],
     module: "artemis/index.js",
-    twitter: "https://twitter.com/ArtemisProtoco1",
+    twitter: "ArtemisProtoco1",
   },
 ] as Protocol[];

@@ -10,6 +10,8 @@ export function normalizeChain(chain: string) {
   return normalizedChain;
 }
 
+export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
+
 export function getChainDisplayName(normalizedChain:string){
   switch(normalizedChain){
     case "bsc":

@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils";
 import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-import { getChainDisplayName, getDisplayChain } from "./utils/normalizeChain";
+import { getChainDisplayName, getDisplayChain, nonChains } from "./utils/normalizeChain";
 import dynamodb from "./utils/dynamodb";
 
 export function getPercentChange(previous: number, current: number) {
@@ -43,7 +43,7 @@ const handler = async (
         };
         const chains:string[] = [];
         Object.entries(lastHourlyRecord).forEach(([chain, chainTvl]) => {
-          if(['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week'].includes(chain)){
+          if(nonChains.includes(chain)){
             return
           }
           const chainDisplayName = getChainDisplayName(chain);
@@ -52,7 +52,7 @@ const handler = async (
             chains.push(chainDisplayName)
           }
         });
-        if(Object.keys(chainTvls).length === 0){
+        if(chains.length === 0){
           const chain = protocol.chain
           if(chainTvls[chain] === undefined){
             chainTvls[chain] = lastHourlyRecord.tvl

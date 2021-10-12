@@ -9815,7 +9815,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "banano",
     cmcId: "4704",
     category: "Yield",
-    chains: ["Polygon"],
+    chains: ["Polygon", "Binance"],
     module: "banano/index.js",
     twitter: "bananocoin",
     forkedFrom: ["Nano"],

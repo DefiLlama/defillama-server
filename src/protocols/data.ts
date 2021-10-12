@@ -10879,7 +10879,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Staking",
     chains: ["Binance", "Fantom", "Avalanche", "Polygon"],
-    module: "mmultichainMiner.js",
+    module: "multichainMiner.js",
     twitter: "multichainminer",
     listedAt: 1634038934,
   },

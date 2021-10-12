@@ -10784,11 +10784,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "dopex/index.js",
     twitter: "dopex_io",
   },
+  /*
   {
     id: "661",
     name: "MochiFi",
-    address: "0x31d4eb09a216e181ec8a43ce79226a487d6f0ba9",
-    symbol: "USDM",
+    address: null,
+    symbol: "-",
     url: "https://mochi.fi",
     description: "Mochi puts your NFTs and long-tail assets to work as collateral while maintaining exposure to their long-term value. An autonomously governed protocol, Mochi bridges the gap between NFTs and DeFi to pioneer a new way to maximize the utility of emerging digital assets.",
     chain: "Ethereum",
@@ -10804,6 +10805,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.mochi.fi/audits"],
     oracles: ["Chainlink", "Custom CSSR"],
   },
+  */
   {
     id: "662",
     name: "Artemis Protocol",

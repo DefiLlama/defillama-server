@@ -10517,7 +10517,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "unifi-protocol-dao",
     cmcId: "1412",
     category: "Dexes",
-    chains: ["Ethereum", "Binance", "Polygon", "Tron", "Icon", "Harmony"],
+    chains: ["Ethereum", "Binance", "Polygon", "Tron", "Icon", "Harmony", "Ontology"],
     module: "unifi-protocol/index.js",
     twitter: "unifiprotocol",
     audit_links: ["https://drive.google.com/file/d/10Qdqj-ry4OhsQX3SesSRc1nEsNZ8UFkD/view",

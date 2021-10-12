@@ -4656,7 +4656,7 @@ export default [
     symbol: "OHM",
     url: "https://olympusdao.finance/",
     description:
-      "$OHM is a floating algorithmic currency that promotes stability and predictability without a peg.",
+      "$OHM is a decentralized reserve currency that remains unbound by a peg.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/olympus.jpg`,
     audits: "0",

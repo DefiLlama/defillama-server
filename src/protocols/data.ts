@@ -88,7 +88,7 @@ export default [
     gecko_id: "curve-dao-token",
     cmcId: "6538",
     category: "Dexes",
-    chains: ["Ethereum", "Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche"],
+    chains: ["Ethereum", "Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche", "Harmony"],
     module: "curve.js",
     twitter: "CurveFinance",
     audit_links: ["https://curve.fi/audits"],

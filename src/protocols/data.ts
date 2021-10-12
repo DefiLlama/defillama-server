@@ -10840,6 +10840,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "podsfinance/index.js",
     twitter: "PodsFinance",
     audit_links: ["https://docs.pods.finance/security/audits"],
+    listedAt: 1634027456,
   },
   {
     id: "664",
@@ -10859,5 +10860,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "oakfarm.js",
     twitter: "OakFarm_io",
     audit_links: ["https://oakfarm.io/certik.pdf"],
+    listedAt: 1634028339,
   },
 ] as Protocol[];

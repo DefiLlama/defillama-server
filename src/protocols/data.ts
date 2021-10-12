@@ -5349,7 +5349,7 @@ export default [
     gecko_id: "kine-protocol",
     cmcId: "8790",
     category: "Yield",
-    chains: ["Binance", "Ethereum"],
+    chains: ["Binance", "Ethereum", "Polygon"],
     module: "kinefinance/index.js",
     twitter: "KineProtocol",
     audit_links: ["https://docs.kine.io/audit/peckshield"],

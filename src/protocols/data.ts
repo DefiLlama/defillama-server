@@ -10724,7 +10724,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "synapse-2",
     cmcId: "12147",
     category: "Dexes",
-    chains: ["Ethereum", "Binance", "Avalanche", "Arbitrum", "Polygon"],
+    chains: ["Ethereum", "Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
     module: "synapse/index.js",
     twitter: "SynapseProtocol",
   },

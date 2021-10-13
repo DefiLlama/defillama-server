@@ -8376,7 +8376,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Thales platform is bringing binary options to Ethereum for users to hedge and speculate on the prices of crypto assets, commodities, equities, equity indices, and proprietary crypto indices.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/thales.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "thales",
     cmcId: "11973",
@@ -8384,6 +8384,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "thales/index.js",
     twitter: "thalesmarket",
+    audit_links: ["https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit"],
   },
   {
     id: "535",

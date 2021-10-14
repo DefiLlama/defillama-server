@@ -10943,7 +10943,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Avalanche", "HPB", "Fantom", "Ethereum", "Harmony", "GoChain", "Polygon", "Tomochain", "ETC", "Binance", "Songbird", "Kucoin", "EWT", "Heco", "OKExChain", "RSK", "xDai", "Moonriver", "Celo", "Arbitrum", "Arbitrum XDai"],
+    chains: ["Avalanche", "HPB", "Fantom", "Ethereum", "Harmony", "GoChain", "Polygon", "Tomochain", "EthereumClassic", "Binance", "Songbird", "Kucoin", "EnergyWeb", "Heco", "OKExChain", "RSK", "xDai", "Moonriver", "Celo", "Arbitrum", "Arbitrum XDai"],
     module: "swapcat/index.js",
     twitter: null,
     listedAt: 1634223504,

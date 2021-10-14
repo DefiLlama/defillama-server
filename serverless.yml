@@ -137,6 +137,7 @@ functions:
           method: post
   chains:
     handler: src/getChains.default
+    timeout: 60
     events:
       - http:
           path: chains

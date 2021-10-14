@@ -11,7 +11,7 @@ import {
   hourlyTokensTvl,
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-import { normalizeChain } from "./utils/normalizeChain";
+import { nonChains, getChainDisplayName, chainMap } from "./utils/normalizeChain";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (balances?.ethereum !== undefined) {
@@ -62,9 +62,18 @@ const handler = async (
     response.misrepresentedTokens = true;
   }
   response.chainTvls = {};
+  const chains:string[] = []
+  response.chains = chains
 
-  protocolData.chains.concat(["tvl", "staking", "pool2"]).map(async (chain) => {
-    const normalizedChain = normalizeChain(chain);
+  Object.keys(lastUsdHourlyRecord!).map((chain) => {
+    if(nonChains.includes(chain) && chain !== "tvl"){
+      return
+    }
+    const normalizedChain = chain;
+    const displayChainName = getChainDisplayName(chain)
+    if(chainMap[displayChainName]){
+      chains.push(displayChainName)
+    }
     const container = {} as any;
 
     container.tvl = historicalUsdTvl
@@ -91,17 +100,20 @@ const handler = async (
           ...response,
           ...container,
         };
-        if(protocolData.chains.length === 1){
-          const singleChain = protocolData.chains[0]
-          if(response.chainTvls[singleChain] === undefined){
-            response.chainTvls[singleChain] = container
-          }
-        }
       } else {
-        response.chainTvls[chain] = container;
+        response.chainTvls[displayChainName] = container;
       }
     }
   })
+  const singleChain = getChainDisplayName(protocolData.chain)
+  if(response.chainTvls[singleChain] === undefined){
+    chains.push(singleChain)
+    response.chainTvls[singleChain] = {
+      tvl: response.tvl,
+      tokensInUsd: response.tokensInUsd,
+      tokens: response.tokens
+    }
+  }
 
   return successResponse(response, 10 * 60); // 10 mins cache
 };

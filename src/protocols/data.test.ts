@@ -1,6 +1,6 @@
 import protocols, {Protocol} from "./data";
 import { baseIconsUrl } from "../constants";
-import { normalizeChain } from "../utils/normalizeChain";
+import { normalizeChain, chainMap, getChainDisplayName } from "../utils/normalizeChain";
 const fs = require("fs");
 
 async function importProtocol(protocol:Protocol){
@@ -14,6 +14,26 @@ async function importProtocol(protocol:Protocol){
 test("all the dynamic imports work", async () => {
   for (const protocol of protocols) {
     await importProtocol(protocol)
+  }
+});
+
+const ignored = ['default', 'staking', 'pool2', 'treasury']
+test("all chains are on chainMap", async () => {
+  for (const protocol of protocols) {
+    const module = await importProtocol(protocol)
+    Object.entries(module).map(entry=>{
+      if(!ignored.includes(entry[0]) && typeof entry[1] === "object" && Object.values(entry[1] as any)){
+        const chain = getChainDisplayName(entry[0])
+       if(chainMap[chain] !== true){
+         throw new Error(`${chain} should be on chainMap`)
+       }
+      }
+    })
+    protocol.chains.concat(protocol.chain).map(chain=>{
+      if(chainMap[chain] !== true && chain !== "Multi-Chain"){
+        throw new Error(`${chain} should be on chainMap`)
+      }
+    })
   }
 });
 

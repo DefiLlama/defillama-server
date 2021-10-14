@@ -4291,7 +4291,7 @@ export default [
     url: "https://yogi.fi",
     description:
       "Automated portfolio manager, liquidity provider, and price sensor. Optimized for Polygon & BSC.",
-    chain: "MultiChain",
+    chain: "Multi-Chain",
     logo: `${baseIconsUrl}/yogi.svg`,
     audits: "0",
     audit_note: null,
@@ -4374,7 +4374,7 @@ export default [
     url: "https://app.beefy.finance",
     description:
       "Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings. Through a set of investment strategies secured and enforced by smart contracts, Beefy Finance automatically maximizes the user rewards from various liquidity pools (LPs),‌ ‌automated market making (AMM) projects,‌ ‌and‌ ‌other yield‌ farming ‌opportunities in the DeFi ecosystem.",
-    chain: "Multi-Chain",
+    chain: "Binance",
     logo: `${baseIconsUrl}/beefy.png`,
     audits: "2",
     audit_note: null,
@@ -4493,7 +4493,7 @@ export default [
     url: "https://www.bao.finance/",
     description:
       "Bao Finance is like a combination of SNX and Aave, but use LP tokens for collateral. Rather than re-invent the wheel, Bao will create new features for existing DeFi protocols. The BAO token acts as a governance token for the fully community run project. It is also backed by the insurance fund where all Bao fees go.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/bao.png`,
     audits: "0",
     audit_note: null,
@@ -4533,7 +4533,7 @@ export default [
     symbol: "MDX",
     url: "https://mdex.com/",
     description: "AMM",
-    chain: "Multi-Chain",
+    chain: "Heco",
     logo: `${baseIconsUrl}/mdex.png`,
     audits: "0",
     audit_note: null,
@@ -4696,7 +4696,7 @@ export default [
     url: "https://compli.fi/",
     description:
       "Decentralised derivatives. No defaults, no margin calls, no liquidations.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/complifi.jpg`,
     audits: "2",
     audit_note: null,

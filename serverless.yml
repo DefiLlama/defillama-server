@@ -135,6 +135,12 @@ functions:
       - http:
           path: coins
           method: post
+  chains:
+    handler: src/getChains.default
+    events:
+      - http:
+          path: chains
+          method: get
   dataset:
     handler: src/getDataset.default
     timeout: 900

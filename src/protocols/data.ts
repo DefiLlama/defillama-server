@@ -8898,6 +8898,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "AlitaFinance",
     audit_links: ["https://www.certik.org/projects/alitafinance"],
   },
+  /*
   {
     id: "562",
     name: "Crystl Finance",
@@ -8918,7 +8919,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://polycrystal.gitbook.io/polycrystal-finance/security/audits"],
     oracles: ["ApeSwap's Polygon Subgraph"],
     forkedFrom: ["PancakeSwap"],
+    listedAt: 1634207334,
   },
+  */
   {
     id: "563",
     name: "Timewarp",
@@ -10905,5 +10908,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "orcadao/index.js",
     twitter: "OrcaDAO",
     listedAt: 1634100536,
+  },
+  {
+    id: "667",
+    name: "Mars Ecosystem",
+    address: "bsc:0x7859b01bbf675d67da8cd128a50d155cd881b576",
+    symbol: "XMS",
+    url: "https://marsecosystem.com/home",
+    description: "Mars Ecosystem is a new decentralized stablecoin paradigm, it integrates the creation and use of stablecoin into the same system. Mars Ecosystem consists of three parts: Mars Treasury, Mars Stablecoin and Mars DeFi protocols, which together form a positive feedback loop. Mars stablecoin is price-stable, capital-efficient, scalable and decentralized. The goal of Mars Ecosystem is to build the central bank and reserve currency of the DeFi world.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/marsecosystem.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "mars-ecosystem-token",
+    cmcId: "10030",
+    category: "Assets",
+    chains: ["Binance"],
+    module: "marsecosystem/index.js",
+    twitter: "MarsEcosystem",
+    audit_links: ["https://www.certik.org/projects/marsecosystem"],
+    listedAt: 1634207654,
   },
 ] as Protocol[];

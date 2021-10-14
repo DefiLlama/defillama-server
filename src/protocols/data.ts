@@ -9550,9 +9550,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "596",
-    name: "Flux",
+    name: "Flux Protocol",
     address: "okex:0xd0C6821aba4FCC65e8f1542589e64BAe9dE11228",
-    symbol: "FLUXK",
+    symbol: "FLUX",
     url: "https://flux.01.finance",
     description: "Flux Protocol is a borderless lending protocol, where low transaction fees and cross-chain interoperability are reality!",
     chain: "OKExChain",

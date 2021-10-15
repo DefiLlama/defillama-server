@@ -4149,10 +4149,10 @@ export default [
   },
   {
     id: "315",
-    name: "SolFarm",
+    name: "Tulip Protocol",
     address: "TuLipcqtGVXP9XR62wM8WWCm6a9vhLs7T1uoWBk6FDs",
     symbol: "TULIP",
-    url: "https://solfarm.io",
+    url: "https://tulip.garden/",
     description: "The Efficient Solana Yield Aggregator",
     chain: "Solana",
     logo: `${baseIconsUrl}/solfarm.svg`,
@@ -4163,7 +4163,7 @@ export default [
     category: "Yield",
     chains: ["Solana"],
     module: "solfarm.js",
-    twitter: "Solfarmio",
+    twitter: "TulipProtocol",
   },
   {
     id: "316",

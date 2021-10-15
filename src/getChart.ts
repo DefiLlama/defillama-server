@@ -13,29 +13,27 @@ const handler = async (
   const sumDailyTvls = {} as {
     [timestamp: number]: number | undefined;
   };
+  const normalizedChain = chain === undefined?undefined: normalizeChain(chain)
   let lastDailyTimestamp = 0;
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {
       if (protocol.category === "Chain" || protocol.name === "AnySwap") {
         return undefined;
       }
+      const lastTvl = await getLastRecord(hourlyTvl(protocol.id))
       if (
-        chain !== undefined &&
-        !protocol.chains
-          .map((protocolChain) => protocolChain.toLowerCase())
-          .includes(chain)
+        normalizedChain !== undefined &&
+        lastTvl?.[normalizedChain] === undefined &&
+        protocol.chain.toLowerCase() !== chain
       ) {
         return undefined;
       }
-      const [historicalTvl, lastTvl] = await Promise.all([
-        dynamodb.query({
+      const historicalTvl = await dynamodb.query({
           ExpressionAttributeValues: {
             ":pk": `dailyTvl#${protocol.id}`,
           },
           KeyConditionExpression: "PK = :pk",
-        }),
-        getLastRecord(hourlyTvl(protocol.id))
-      ]);
+      })
       if (historicalTvl.Items === undefined || historicalTvl.Items.length < 1) {
         return undefined;
       }
@@ -59,12 +57,13 @@ const handler = async (
     if (protocolTvl === undefined) {
       return;
     }
-    const { historicalTvl, protocol, lastTimestamp } = protocolTvl;
+    let { historicalTvl, protocol, lastTimestamp } = protocolTvl;
     const lastTvl = historicalTvl[historicalTvl.length - 1];
-    if (lastTimestamp !== lastDailyTimestamp && (lastDailyTimestamp - lastTimestamp) < (2 * 24 * 3600)) {
+    while (lastTimestamp < lastDailyTimestamp) {
+      lastTimestamp = getClosestDayStartTimestamp(lastTimestamp+24*secondsInHour)
       historicalTvl.push({
         ...lastTvl,
-        SK: lastDailyTimestamp,
+        SK: lastTimestamp,
       });
     }
     historicalTvl.forEach((item) => {

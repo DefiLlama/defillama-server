@@ -25,7 +25,6 @@ test("all chains are on chainMap", async () => {
       if(!ignored.includes(entry[0]) && typeof entry[1] === "object" && Object.values(entry[1] as any)){
         const chain = getChainDisplayName(entry[0])
        if(chainCoingeckoIds[chain] === undefined){
-         console.log(protocol)
          throw new Error(`${chain} should be on chainMap`)
        }
       }

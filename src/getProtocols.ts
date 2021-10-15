@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils";
 import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-import { getChainDisplayName, getDisplayChain, nonChains } from "./utils/normalizeChain";
+import { getChainDisplayName, getDisplayChain, nonChains, chainCoingeckoIds } from "./utils/normalizeChain";
 import dynamodb from "./utils/dynamodb";
 
 export function getPercentChange(previous: number, current: number) {
@@ -48,7 +48,7 @@ const handler = async (
           }
           const chainDisplayName = getChainDisplayName(chain);
           chainTvls[chainDisplayName] = chainTvl;
-          if(!chain.includes('-') && !['staking', 'treasury', 'pool2', 'masterchef'].includes(chain)){
+          if(chainCoingeckoIds[chainDisplayName] !== undefined){
             chains.push(chainDisplayName)
           }
         });

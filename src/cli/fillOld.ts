@@ -1,5 +1,5 @@
 require("dotenv").config();
-const protocolToRefill = "popsicle finance"
+const protocolToRefill = "Anchor"
 const latestDate = undefined; // undefined -> start from today, number => start from that unix timestamp
 const batchSize = 1; // how many days to fill in parallel
 

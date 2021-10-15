@@ -10781,7 +10781,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Dopex is a maximum liquidity and minimal exposure options protocol",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dopex.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "dopex",
     cmcId: "11188",
@@ -10789,8 +10789,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Arbitrum"],
     module: "dopex/index.js",
     twitter: "dopex_io",
+    audit_links: ["https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Dopex%20%5B21.06.2021%5D.pdf",
+                  "https://solidity.finance/audits/Dopex/"],
   },
-  /*
   {
     id: "661",
     name: "MochiFi",
@@ -10811,7 +10812,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.mochi.fi/audits"],
     oracles: ["Chainlink", "Custom CSSR"],
   },
-  */
   {
     id: "662",
     name: "Artemis Protocol",

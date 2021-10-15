@@ -1529,7 +1529,7 @@ export default [
     name: "Lido",
     address: "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
     symbol: "LDO",
-    url: "https://www.lido.fi/",
+    url: "https://lido.fi/",
     description:
       "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana & Terra.",
     chain: "Multi-Chain",

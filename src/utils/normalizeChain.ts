@@ -15,203 +15,278 @@ export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvl
 export const chainCoingeckoIds = {
   "Ethereum": {
     geckoId: "ethereum",
-    symbol: "ETH"
+    symbol: "ETH",
+    cmcId: "1027",
   },
   "Arbitrum": {
     geckoId: null,
-    symbol: null
+    symbol: null,
+    cmcId: "11841",
   },
   "Palm": {
     geckoId: null,
-    symbol: null
+    symbol: null,
+    cmdId: null,
   },
   "Optimism": {
     geckoId: null,
-    symbol: null
+    symbol: null,
+    cmdId: null,
   },
   "Stacks": {
-    geckoId: null,
-    symbol: null
+    geckoId: "blockstack",
+    symbol: "STX",
+    cmdId: "4847",
   },
   "PolyNetwork": {
     geckoId: null,
-    symbol: null
+    symbol: null,
+    cmdId: null,
   },
   "Conflux": {
-    geckoId: null,
-    symbol: null
+    geckoId: "conflux-token",
+    symbol: "CFX",
+    cmdId: "7334",
   },
   "Nuls": {
-    geckoId: null,
-    symbol: null
+    geckoId: "nuls",
+    symbol: "NULS",
+    cmdId: "2092",
   },
   "Witnet": {
     geckoId: null,
-    symbol: null
+    symbol: null,
+    cmdId: null,
   },
   "Binance": {
     geckoId: "binancecoin",
-    symbol: "BNB"
+    symbol: "BNB",
+    cmdId: "1839",
   },
   "Avalanche": {
     geckoId: "avalanche-2",
-    symbol: "AVAX"
+    symbol: "AVAX",
+    cmdId: "5805",
   },
   "Solana": {
     geckoId: "solana",
-    symbol: "SOL"
+    symbol: "SOL",
+    cmdId: "5426",
   },
   "Polygon": {
     geckoId: "matic-network",
-    symbol: "MATIC"
+    symbol: "MATIC",
+    cmdId: "3890",
   },
   "Terra": {
     geckoId: "terra-luna",
-    symbol: "LUNA"
+    symbol: "LUNA",
+    cmdId: "4172",
   },
   "Fantom": {
     geckoId: "fantom",
-    symbol: "FTM"
+    symbol: "FTM",
+    cmdId: "3513",
   },
   "xDai": {
     geckoId: "xdai-stake",
-    symbol: "STAKE"
+    symbol: "STAKE",
+    cmdId: "5601",
   },
   "Heco": {
     geckoId: "huobi-token",
-    symbol: "HT"
+    symbol: "HT",
+    cmdId: "2502",
   },
   "Kava": {
     geckoId: "kava",
-    symbol: "KAVA"
+    symbol: "KAVA",
+    cmdId: "4846",
   },
   "OKExChain": {
     geckoId: "okexchain",
-    symbol: "OKT"
+    symbol: "OKT",
+    cmdId: "8267",
   },
   "Wanchain": {
     geckoId: "wanchain",
-    symbol: "WAN"
+    symbol: "WAN",
+    cmdId: "2606",
   },
   "DefiChain": {
     geckoId: "defichain",
-    symbol: "DFI"
+    symbol: "DFI",
+    cmdId: "5804",
   },
   "Ontology": {
     geckoId: "ontology",
-    symbol: "ONT"
+    symbol: "ONT",
+    cmdId: "2566",
   },
   "Bitcoin": {
     geckoId: "bitcoin",
-    symbol: "BTC"
+    symbol: "BTC",
+    cmdId: "1",
   },
   "Energi": {
     geckoId: "energi",
-    symbol: "NRG"
+    symbol: "NRG",
+    cmdId: "3218",
   },
   "Secret": {
     geckoId: "secret",
-    symbol: "SCRT"
+    symbol: "SCRT",
+    cmdId: "5604",
   },
   "Zilliqa": {
     geckoId: "zilliqa",
-    symbol: "ZIL"
+    symbol: "ZIL",
+    cmdId: "2469",
   },
   "NEO": {
     geckoId: "neo",
-    symbol: "NEO"
+    symbol: "NEO",
+    cmdId: "1376",
   },
   "Harmony": {
     geckoId: "harmony",
-    symbol: "ONE"
+    symbol: "ONE",
+    cmdId: "3945",
   },
   "RSK": {
     geckoId: "rootstock",
-    symbol: "RBTC"
+    symbol: "RBTC",
+    cmdId: "3626",
   },
   "Sifchain": {
     geckoId: "sifchain",
-    symbol: "EROWAN"
+    symbol: "EROWAN",
+    cmdId: "8541",
   },
   "Algorand": {
     geckoId: "algorand",
-    symbol: "ALGO"
+    symbol: "ALGO",
+    cmdId: "4030",
   },
   "Osmosis": {
     geckoId: "osmosis",
-    symbol: "OSMO"
+    symbol: "OSMO",
+    cmdId: "12220",
   },
   "Thorchain": {
     geckoId: "thorchain",
-    symbol: "RUNE"
+    symbol: "RUNE",
+    cmdId: "4157",
   },
   "Tron": {
     geckoId: "tron",
-    symbol: "TRON"
+    symbol: "TRON",
+    cmdId: "1958",
   },
   "Icon": {
     geckoId: "icon",
-    symbol: "ICX"
+    symbol: "ICX",
+    cmdId: "2099",
   },
   "Tezos": {
     geckoId: "tezos",
-    symbol: "XTZ"
+    symbol: "XTZ",
+    cmdId: "2011",
   },
   "Celo": {
     geckoId: "celo",
-    symbol: "CELO"
+    symbol: "CELO",
+    cmdId: "5567",
   },
   "Kucoin": {
     geckoId: "kucoin-shares",
-    symbol: "KCS"
+    symbol: "KCS",
+    cmdId: "2087",
   },
   "Karura": {
     geckoId: "karura",
-    symbol: "KAR"
+    symbol: "KAR",
+    cmdId: "10042",
   },
   "Moonriver": {
     geckoId: "moonriver",
-    symbol: "MOVR"
+    symbol: "MOVR",
+    cmdId: "9285",
   },
   "Waves": {
     geckoId: "waves",
-    symbol: "WAVES"
+    symbol: "WAVES",
+    cmdId: "1274",
   },
   "Klaytn": {
     geckoId: "klay-token",
-    symbol: "KLAY"
+    symbol: "KLAY",
+    cmdId: "4256",
   },
   "IoTeX": {
     geckoId: "iotex",
-    symbol: "IOTX"
+    symbol: "IOTX",
+    cmdId: "2777",
   },
   "Ultra": {
     geckoId: "ultra",
-    symbol: "UOS"
+    symbol: "UOS",
+    cmdId: "4189",
   },
   "Kusama": {
     geckoId: "kusama",
-    symbol: "KSM"
+    symbol: "KSM",
+    cmdId: "5034",
   },
   "Telos": {
     geckoId: "telos",
-    symbol: "TLOS"
+    symbol: "TLOS",
+    cmdId: "4660",
   },
   "ThunderCore": {
     geckoId: "thunder-token",
-    symbol: "TT"
+    symbol: "TT",
+    cmdId: "3930",
   },
   "Lamden": {
     geckoId: "lamden",
-    symbol: "TAU"
+    symbol: "TAU",
+    cmdId: "2337",
   },
   "Near": {
     geckoId: "near",
-    symbol: "NEAR"
+    symbol: "NEAR",
+    cmdId: "6535",
   },
   "EOS": {
     geckoId: "eos",
-    symbol: "EOS"
+    symbol: "EOS",
+    cmdId: "1765",
+  },
+  "Songbird": {
+      geckoId: "songbird",
+      symbol: "SGB",
+      cmdId: "12186",
+  },
+  "EnergyWeb": {
+      geckoId: "energy-web-token",
+      symbol: "EWT",
+      cmdId: "5268",
+  },
+  "HPB": {
+      geckoId: "high-performance-blockchain",
+      symbol: "HPB",
+      cmdId: "2345",
+  },
+  "GoChain": {
+      geckoId: "gochain",
+      symbol: "GO",
+      cmdId: "2861",
+  },
+  "TomoChain": {
+      geckoId: "tomochain",
+      symbol: "TOMO",
+      cmdId: "2570",
   },
 } as {
   [chain: string]: {

@@ -34,6 +34,7 @@ const handler = async (
     gecko_id: chainCoingeckoIds[chainName]?.geckoId ?? null,
     tvl: chainTvl,
     tokenSymbol: chainCoingeckoIds[chainName]?.symbol ?? null,
+    cmcId: chainCoingeckoIds[chainName]?.cmcId ?? null,
     name: chainName
   }))
 

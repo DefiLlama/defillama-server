@@ -11,7 +11,7 @@ import {
   hourlyTokensTvl,
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-import { nonChains, getChainDisplayName, chainMap } from "./utils/normalizeChain";
+import { nonChains, getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (balances?.ethereum !== undefined) {
@@ -71,7 +71,7 @@ const handler = async (
     }
     const normalizedChain = chain;
     const displayChainName = getChainDisplayName(chain)
-    if(chainMap[displayChainName]){
+    if(chainCoingeckoIds[displayChainName]){
       chains.push(displayChainName)
     }
     const container = {} as any;

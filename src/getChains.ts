@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils";
 import protocols from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getChainDisplayName, chainMap, chainCoingeckoIds } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";
 import { secondsInHour } from './utils/date'
 
 const handler = async (
@@ -20,7 +20,7 @@ const handler = async (
       let chainsAdded = 0
       Object.entries(lastTvl).forEach(([chain, chainTvl])=>{
           const chainName = getChainDisplayName(chain)
-          if(chainMap[chainName]!== true){
+          if(chainCoingeckoIds[chainName] === undefined){
               return
           }
           chainTvls[chainName] = (chainTvls[chainName] ?? 0) + chainTvl

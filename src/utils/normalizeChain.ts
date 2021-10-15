@@ -324,6 +324,14 @@ export function getChainDisplayName(normalizedChain: string) {
       return "IoTeX"
     case "thundercore":
       return "ThunderCore"
+    case "hpb":
+      return "HPB"
+    case "energyweb":
+      return "EnergyWeb"
+    case "gochain":
+      return "GoChain"
+    case "tomochain":
+      return "TomoChain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

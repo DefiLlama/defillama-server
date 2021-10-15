@@ -8899,7 +8899,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "AlitaFinance",
     audit_links: ["https://www.certik.org/projects/alitafinance"],
   },
-  /*
   {
     id: "562",
     name: "Crystl Finance",
@@ -8922,7 +8921,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["PancakeSwap"],
     listedAt: 1634207334,
   },
-  */
   {
     id: "563",
     name: "Timewarp",

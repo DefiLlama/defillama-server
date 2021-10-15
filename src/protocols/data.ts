@@ -2347,7 +2347,7 @@ export default [
       "Empowering anyone to mint, trade and redeem non-custodial oracle-less tokenized portfolios.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/8PSknVU3_400x400.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "dextf",
     cmcId: "8691",
@@ -2355,6 +2355,7 @@ export default [
     chains: ["Ethereum"],
     module: "dextf/index.js",
     twitter: "dextfprotocol",
+    audit_links: ["https://docs.dextf.com/documentation/introduction/security-assessment-report"],
   },
   {
     id: "225",

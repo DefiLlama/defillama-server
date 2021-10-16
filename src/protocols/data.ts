@@ -1572,7 +1572,7 @@ export default [
     url: "https://fuse.io/",
     description:
       "Bringing the power of open-source money to millions globally. ",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/s-SdhVYj_400x400.jpg`,
     audits: "2",
     audit_note: null,

@@ -1578,7 +1578,7 @@ export default [
     audit_note: null,
     gecko_id: "fuse-network-token",
     cmcId: "5634",
-    category: "Payments",
+    category: "Chain",
     chains: ["Ethereum"],
     module: "fuse.js",
     twitter: "Fuse_network",

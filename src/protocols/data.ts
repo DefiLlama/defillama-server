@@ -8112,7 +8112,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Youves is a decentralised, non-custodial and self-governed platform for the creation and management of synthetic assets. Minters of synthetic assets earn a passive income in YOU, the governance token on Youves.",
     chain: "Tezos",
     logo: `${baseIconsUrl}/youves.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -8120,6 +8120,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Tezos"],
     module: "youves/index.js",
     twitter: "youves_com",
+    audit_links: ["https://github.com/youves-com/youves-smart-contract/blob/main/audits/09212021-LeastAuthority-TezosFoundationSyntheticAssetPlatformSmartContractsFinalAuditReport.pdf"],
     oracles: ["Ubinetic"],
   },
   {

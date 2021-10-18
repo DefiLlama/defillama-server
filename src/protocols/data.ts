@@ -4522,7 +4522,7 @@ export default [
     gecko_id: "o3-swap",
     cmcId: "9588",
     category: "Dexes",
-    chains: ["PolyNetwork"],
+    chains: ["PolyNetwork", "Ethereum", "Binance", "Heco", "Polygon", "Arbitrum"],
     module: "o3swap.js",
     twitter: "O3_Labs",
     audit_links: [

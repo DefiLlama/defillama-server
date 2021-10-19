@@ -11218,7 +11218,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "BaconDAO",
     address: "bsc:0x0615dbba33fe61a31c7ed131bda6655ed76748b1",
     symbol: "BACON",
-    url: "https://bacondao.com/",
+    url: "https://app.bacondao.com/",
     description: "BaconDAO (BACON) is a Decentralized Autonomous Organization (DAO) for collaborative learning and investing in Cryptocurrencies. The mission of the organization is to create the largest and most knowledgeable Crypto community, harnessing its group knowledge to help members learn and profit from Cryptocurrencies.",
     chain: "Binance",
     logo: `${baseIconsUrl}/bacondao.png`,

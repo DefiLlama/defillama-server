@@ -11248,7 +11248,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Dexes",
     chains: ["GoChain"],
-    module: "goswap/index.js",
+    module: "GoSwap/index.js",
     twitter: "goswapper",
     listedAt: 1634580919,
   },

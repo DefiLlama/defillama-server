@@ -2038,7 +2038,7 @@ export default [
     symbol: "AUTO",
     url: "https://autofarm.network/",
     description:
-      "The Autofarm ecosystem is a one-stop DeFi suite for all users. Autofarm aggregate yield opportunities using vaults and best swap rates using a DEX aggregator (AutoSwap). In addition, other products such as AutoAnalytics, AutoTrade & AutoPortfolio are set to go live later in 2021. The platform is currently live on BSC, HECO, Polygon, Avalanche & Fantom, with more chains to be introduced soon.",
+      "The Autofarm ecosystem is a one-stop DeFi suite for all users. Autofarm aggregate yield opportunities using vaults and best swap rates using a DEX aggregator (AutoSwap). In addition, other products such as AutoAnalytics, AutoTrade & AutoPortfolio are set to go live later in 2021. The platform is currently live on BSC, HECO, Polygon, Avalanche, Fantom & Moonriver, with more chains to be introduced soon.",
     chain: "Binance",
     logo: `${baseIconsUrl}/wz6Vh6VM_400x400.png`,
     audits: "2",

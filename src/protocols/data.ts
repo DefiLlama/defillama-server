@@ -7803,7 +7803,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Mento",
     address: "-",
     symbol: "-",
-    url: "https://celo.org",
+    url: "https://mento.finance",
     description: "Mento is an automated market maker (AMM) type of decentralized exchange that’s native to the Celo platform. It’s responsible for helping the Celo Dollar (cUSD) maintain its peg to the USD.",
     chain: "Celo",
     logo: `${baseIconsUrl}/mentologo.png`,

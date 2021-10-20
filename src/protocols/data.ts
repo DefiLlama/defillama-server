@@ -11335,7 +11335,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0xe94b97b6b43639e238c851a7e693f50033efd75c",
     symbol: "RNBW",
     url: "https://www.halodao.com/",
-    description: "HaloDAO connects traditional and decentralised finance by providing the decentralised infrastructure for next generation payments and settlement. We begin with the core money legos of Swap, Lend/Borrow, supported by Yield.",
+    description: "HaloDAO connects traditional and decentralised finance by providing the decentralised infrastructure for next generation payments and settlement.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/halodao.png`,
     audits: "2",

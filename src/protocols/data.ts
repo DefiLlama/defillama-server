@@ -5224,7 +5224,7 @@ export default [
   {
     id: "368",
     name: "Channels Finance",
-    address: "heco:0x1e6395E6B059fc97a4ddA925b6c5ebf19E05c69f",
+    address: "bsc:0xdE9a73272BC2F28189CE3c243e36FaFDA2485212",
     symbol: "CAN",
     url: "https://channels.finance",
     description:

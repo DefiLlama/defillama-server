@@ -11369,7 +11369,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1634737786,
   },
   {
-    id: "670",
+    id: "690",
     name: "JustSwap",
     address: "tron:TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9",
     symbol: "JST",
@@ -11389,7 +11389,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1634757407,
   },
   {
-    id: "671",
+    id: "691",
     name: "JustStables",
     address: "tron:TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT",
     symbol: "USDJ",

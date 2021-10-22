@@ -17,7 +17,7 @@ const handler = async (
   let lastDailyTimestamp = 0;
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {
-      if (protocol.category === "Chain" || protocol.name === "AnySwap") {
+      if (protocol.category === "Chain" || protocol.name === "AnySwap" || protocol.category === "Bridge") {
         return undefined;
       }
       const lastTvl = await getLastRecord(hourlyTvl(protocol.id))

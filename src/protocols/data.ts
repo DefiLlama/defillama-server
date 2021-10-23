@@ -11558,7 +11558,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "POLLY",
     url: "https://www.pollyfinance.com/",
     description: `Polly Finance allows users to create their own "nests" (a token that represents a basket of underlying tokens) to manage diverse assets, purchase them easily, and automate their farming.`,
-    chain: "polygon", 
+    chain: "Polygon", 
     logo: `${baseIconsUrl}/polly.png`,
     audits: "0",
     audit_note: null,

@@ -11567,7 +11567,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Indexes",
     chains: ["Polygon"],
     module: "pollyfinance/index.js",
-    twitter: null,
+    twitter: "thebaoman",
     forkedFrom: ["Bao Finance"],
     listedAt: 1634972259,
   },

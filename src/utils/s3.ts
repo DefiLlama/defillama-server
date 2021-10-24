@@ -7,7 +7,7 @@ function next21Minutedate() {
   const dt = new Date()
   dt.setHours(dt.getHours() + 1);
   dt.setMinutes(21)
-  return dt.toUTCString()
+  return dt
 }
 
 export async function store(filename: string, body: string | Readable | Buffer, hourlyCache = false, extraOptions: any = {}) {

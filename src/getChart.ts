@@ -6,10 +6,7 @@ import { getClosestDayStartTimestamp } from "./utils/date";
 import { normalizeChain } from "./utils/normalizeChain";
 import { secondsInHour } from './utils/date'
 
-const handler = async (
-  event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
-  const chain = event.pathParameters?.chain?.toLowerCase();
+export async function craftChartsResponse(chain:string|undefined){
   const sumDailyTvls = {} as {
     [timestamp: number]: number | undefined;
   };
@@ -93,6 +90,14 @@ const handler = async (
     date: timestamp,
     totalLiquidityUSD: tvl,
   }));
+  return response
+}
+
+const handler = async (
+  event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
+  const chain = event.pathParameters?.chain?.toLowerCase();
+  const response = await craftChartsResponse(chain);
   return successResponse(response, 10 * 60); // 10 mins cache
 };
 

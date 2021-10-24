@@ -159,7 +159,7 @@ functions:
   storeCharts:
     handler: src/storeGetCharts.default
     timeout: 60
-    memorySize: 400
+    memorySize: 2000
     events:
       - schedule: cron(20 * * * ? *)
   hourly:

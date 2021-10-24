@@ -10,11 +10,7 @@ const handler = async (_event: any) => {
     [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
   })
   
-  await store('protocols', compressedRespone, {
-    CacheControl: `max-age=${10*60}`, // 10 minutes
-    ContentEncoding: 'br',
-    ContentType: "application/json"
-  })
+  await store('protocols', compressedRespone, true)
 };
 
 export default wrapScheduledLambda(handler);

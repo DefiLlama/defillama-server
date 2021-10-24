@@ -8,7 +8,7 @@
     "deploy:prod": "export NODE_ENV=prod && npm run deploy:env",
     "deploy": "npm run deploy:dev",
     "format": "prettier --write \"src/**/*.ts\"",
-    "serve": "sls offline",
+    "serve": "node --max-old-space-size=8192 node_modules/serverless/bin/serverless offline start",
     "test": "jest",
     "test:watch": "jest --watch",
     "postinstall": "cp patches/geturl.js node_modules/@ethersproject/providers/node_modules/@ethersproject/web/lib.esm/geturl.js",

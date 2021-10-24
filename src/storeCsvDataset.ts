@@ -1,16 +1,11 @@
 import allProtocols from "./protocols/data";
 import craftCsvDataset from './storeTvlUtils/craftCsvDataset'
 import { wrapScheduledLambda } from "./utils/wrap";
-import aws from 'aws-sdk'
+import { store } from "./utils/s3";
 
 const handler = async (_event: any) => {
   const csv = await craftCsvDataset(allProtocols, false);
-  await new aws.S3().putObject({
-    Bucket: 'defillama-datasets',
-    Key: 'all.csv',
-    Body: csv,
-    ACL: "public-read"
-  }).promise()
+  await store('all.csv', csv);
 };
 
 export default wrapScheduledLambda(handler);

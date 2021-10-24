@@ -150,6 +150,12 @@ functions:
       - http:
           path: dataset/{protocol}
           method: get
+  storeProtocols:
+    handler: src/storeGetProtocols.default
+    timeout: 12
+    memorySize: 3000
+    events:
+      - schedule: cron(20 * * * ? *)
   hourly:
     handler: src/getHourlyData.default
     events:
@@ -185,7 +191,7 @@ functions:
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     events:
-      - schedule: rate(1 hour)
+      - schedule: cron(0 * * * ? *)
   storeDataset:
     handler: src/storeCsvDataset.default
     timeout: 900
@@ -203,7 +209,7 @@ functions:
   triggerFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.default
     events:
-      - schedule: rate(1 hour)
+      - schedule: cron(50 * * * ? *)
 
 resources:
   # CORS for api gateway errors

@@ -3,7 +3,7 @@ import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import { getChainDisplayName, getDisplayChain, nonChains, chainCoingeckoIds } from "./utils/normalizeChain";
-import dynamodb from "./utils/dynamodb";
+import dynamodb, { TableName } from "./utils/dynamodb";
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -13,9 +13,7 @@ export function getPercentChange(previous: number, current: number) {
   return change;
 }
 
-const handler = async (
-  _event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
+export async function craftProtocolsResponse(){
   const coinMarketsPromises = []
   for (let i = 0; i < protocols.length; i += 100) {
     coinMarketsPromises.push(dynamodb.batchGet(protocols.slice(i, i+100)
@@ -26,7 +24,7 @@ const handler = async (
       }))))
   }
   const coinMarkets = Promise.all(coinMarketsPromises).then(results=>results.reduce((p, c)=>{
-    c.Responses!['prod-table'].forEach(t=>p[t.PK]=t);
+    c.Responses![TableName].forEach(t=>p[t.PK]=t);
     return p
   }, {} as any))
   const response = (
@@ -95,6 +93,13 @@ const handler = async (
       })
     )
   ).filter((protocol) => protocol !== null).sort((a,b)=>b.tvl-a.tvl);
+  return response
+}
+
+const handler = async (
+  _event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
+  const response = await craftProtocolsResponse()
   return successResponse(response, 10 * 60); // 10 mins cache
 };
 

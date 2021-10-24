@@ -152,12 +152,12 @@ functions:
           method: get
   storeProtocols:
     handler: src/storeGetProtocols.default
-    timeout: 12
+    timeout: 60
     events:
       - schedule: cron(20 * * * ? *)
   storeCharts:
     handler: src/storeGetCharts.default
-    timeout: 30
+    timeout: 60
     memorySize: 400
     events:
       - schedule: cron(20 * * * ? *)

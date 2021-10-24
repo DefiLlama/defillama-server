@@ -9869,8 +9869,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "612",
     name: "Vires Finance",
-    address: "-",
-    symbol: "-",
+    address: "waves:DSbbhLsSTeDg5Lsiufk2Aneh3DjVqJuPr2M9uU1gwy5p",
+    symbol: "VIRES",
     url: "https://vires.finance",
     description: "Vires.finance is is a decentralized non-custodial liquidity protocol based on Waves Blockchain, where users, wallets and dapps can participate as depositors or borrowers.",
     chain: "Waves",

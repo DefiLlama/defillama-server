@@ -109,27 +109,4 @@ const handler = async (_event: any) => {
   }))
 }
 
-
-/*
-// Can be optimized by splitting into lambdas
-const handler = async (_event: any) => {
-  const chains = ([undefined] as (string | undefined)[]).concat(Object.keys(chainCoingeckoIds)).slice(0, 2)
-  await Promise.all(chains.map(async chainName => {
-    const normalizedChain = chainName?.toLowerCase()
-    const response = JSON.stringify(await craftChartsResponse(normalizedChain))
-
-    const compressedRespone = await promisify(brotliCompress)(response, {
-      [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
-      [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
-    })
-
-    await store("chains/" + (normalizedChain ?? 'total'), compressedRespone, {
-      CacheControl: `max-age=${10 * 60}`, // 10 minutes
-      ContentEncoding: 'br',
-      ContentType: "application/json"
-    })
-  }))
-};
-*/
-
 export default wrapScheduledLambda(handler);

@@ -61,7 +61,7 @@ export default [
     description:
       "Wrapped Bitcoin (WBTC) is the first ERC20 token backed 1:1 with Bitcoin.\r\nCompletely transparent. 100% verifiable. Community led.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/d2T9nXpn_400x400.png`,
+    logo: `${baseIconsUrl}/wbtc.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "wrapped-bitcoin",
@@ -145,7 +145,7 @@ export default [
     description:
       "Yearn.finance is an aggregator service for decentralized finance (DeFi) investors, using automation to allow them to maximize profits from yield farming.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/X8fdf5p-_400x400.png`,
+    logo: `${baseIconsUrl}/yearn.png`,
     audits: "1",
     audit_note: null,
     gecko_id: "yearn-finance",
@@ -248,7 +248,7 @@ export default [
     description:
       "Builders of Dai, a digital currency that can be used by anyone, anywhere.\r\n",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/zacb-9pN_400x400.jpg`,
+    logo: `${baseIconsUrl}/makerdao.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "maker",
@@ -269,7 +269,7 @@ export default [
     description:
       "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/jwiN1Fd2_400x400.jpg`,
+    logo: `${baseIconsUrl}/sushiswap.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: "sushi",
@@ -571,7 +571,7 @@ export default [
     description:
       "Deposit your stablecoins into our liquidity pool and receive shells, a natively liquid, diversified and yield bearing asset.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/FR750pnZ_400x400.jpg`,
+    logo: `${baseIconsUrl}/shellprotocol.jpg`,
     audits: null,
     audit_note: null,
     gecko_id: null,
@@ -591,7 +591,7 @@ export default [
     description:
       "The Pickle protocol uses farming incentives, vaults, and governance to bring stablecoins closer to their pegs.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/439Roxx3_400x400.jpg`,
+    logo: `${baseIconsUrl}/pickle.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: "pickle-finance",
@@ -611,7 +611,7 @@ export default [
     description:
       "Kava.io is the first cross-chain DeFi hub providing applications and services to the worlds largest cryptocurrencies.",
     chain: "Kava",
-    logo: `${baseIconsUrl}/ECfmsFee_400x400.png`,
+    logo: `${baseIconsUrl}/kava.png`,
     audits: null,
     audit_note: null,
     gecko_id: "kava",
@@ -632,7 +632,7 @@ export default [
     description:
       "Rari Capital aims to deliver the best yield to all users with various risk tolerances. Easy, sustainable and built for the future.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ZyleKD4B_400x400.jpg`,
+    logo: `${baseIconsUrl}/raricapital.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "rari-governance-token",
@@ -655,7 +655,7 @@ export default [
     description:
       "THORChain's bepswap",
     chain: "Binance",
-    logo: `${baseIconsUrl}/p1ecyvxG_400x400.jpg`,
+    logo: `${baseIconsUrl}/bepswap.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: null,
@@ -696,7 +696,7 @@ export default [
     description:
       "SnowSwap is designed for low slippage stablecoin swaps and is based on Curve's AMM.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/oWZl3IYr_400x400.jpg`,
+    logo: `${baseIconsUrl}/snowswap.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: "snowswap",
@@ -718,7 +718,7 @@ export default [
     description:
       "Cross-chain money market. Lend, borrow, and earn with your crypto.\r\n",
     chain: "Kava",
-    logo: `${baseIconsUrl}/qv-OI4YK_400x400.png`,
+    logo: `${baseIconsUrl}/kavalend.png`,
     audits: null,
     audit_note: null,
     gecko_id: "kava-lend",
@@ -802,7 +802,7 @@ export default [
     description:
       "The most powerful open trading platform for crypto assets. Margin trade, borrow, and lend cryptocurrency.\r\n",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/-m722G1f_400x400.jpg`,
+    logo: `${baseIconsUrl}/dydx.jpg`,
     audits: null,
     audit_note: null,
     gecko_id: "dydx",
@@ -823,7 +823,7 @@ export default [
     description:
       "Serum is a decentralized exchange (DEX) and ecosystem that brings unprecedented speed and low transaction costs to decentralized finance.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/9yyO0Klj_400x400.jpg`,
+    logo: `${baseIconsUrl}/serum.jpg`,
     audits: null,
     audit_note: null,
     gecko_id: "serum",
@@ -841,7 +841,7 @@ export default [
     url: "https://dodoex.io/",
     description: "Trade crypto assets with market-leading liquidity",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/wG29L0wM_400x400.png`,
+    logo: `${baseIconsUrl}/dodo.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "dodo",

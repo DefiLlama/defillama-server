@@ -34,6 +34,7 @@ const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const protocolName = event.pathParameters?.protocol?.toLowerCase();
+  console.log(protocolName)
   const protocolData = protocols.find(
     (prot) => sluggify(prot) === protocolName
   );

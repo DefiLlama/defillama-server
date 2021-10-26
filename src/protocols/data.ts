@@ -11730,6 +11730,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap"],
     listedAt: 1635108394,
   },
+  /*
   {
     id: "708",
     name: "Tron Staking Governance",
@@ -11750,4 +11751,5 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://tron.network/static/doc/TRON_Protocol_Final_Security_Audit_Report.pdf"],
     listedAt: 1635108818,
   },
+  */
 ] as Protocol[];

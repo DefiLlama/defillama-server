@@ -944,7 +944,7 @@ export default [
     description:
       "A transparent exchange with no limit on what you can bet on, no max limits on the amount you can bet and no rollover requirements.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/augur.png.png`,
+    logo: `${baseIconsUrl}/augur.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "augur",
@@ -9335,7 +9335,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://1swap.fi",
     description: "Stableswap DEX on Moonriver",
     chain: "Moonriver",
-    logo: `${baseIconsUrl}/1swap.png`,
+    logo: `${baseIconsUrl}/1swap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

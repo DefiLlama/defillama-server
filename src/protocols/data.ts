@@ -924,7 +924,7 @@ export default [
     description:
       "DeversiFi gives traders ​the edge​ in fast moving decentralised finance (DeFi) markets by allowing them to ​trade at lightning speed​ and ​with deep aggregated liquidity​, directly from their privately owned cryptocurrency wallet.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/deversifi.jpg.jpg`,
+    logo: `${baseIconsUrl}/deversifi.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "dvf",

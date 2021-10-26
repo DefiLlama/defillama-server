@@ -293,6 +293,21 @@ export const chainCoingeckoIds = {
     symbol: "FSN",
     cmcId: "2530",
   },
+  "KardiaChain": {
+    geckoId: "kardiachain",
+    symbol: "KAI",
+    cmcId: "5453",
+  },
+  "Fuse": {
+    geckoId: "fuse-network-token",
+    symbol: "FUSE",
+    cmcId: "5634",
+  },
+  "Sora": {
+    geckoId: "sora",
+    symbol: "XOR",
+    cmcId: "5802",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -339,6 +354,12 @@ export function getChainDisplayName(normalizedChain: string) {
       return "TomoChain"
     case "fusion":
       return "Fusion"
+    case "kardiachain":
+      return "KardiaChain"
+    case "fuse":
+      return "Fuse"
+    case "sora":
+      return "Sora"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -551,7 +551,7 @@ export default [
     description:
       "HBTC token aims to promote the growth of the decentralized marketplace by injecting Bitcoin (BTC), the largest and most liquid asset, into the decentralized finance (DeFi) eco-system.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/hbtc.png`,
+    logo: `${baseIconsUrl}/hbtc.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "huobi-btc",
@@ -1508,7 +1508,7 @@ export default [
     symbol: "OM",
     url: "https://mantradao.com",
     description:
-      "Mantra DAO leverages the wisdom of the crowd to give financial control back to the people to grow wealth together.",
+      "MANTRA DAO leverages the wisdom of the crowd to give financial control back to the people to grow wealth together.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mantra-dao.jpg`,
     audits: "2",

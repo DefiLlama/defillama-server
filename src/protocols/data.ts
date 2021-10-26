@@ -11599,7 +11599,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://behodler.io",
     description: "Efficient, low cost, single sided Automated Market Maker (AMM) with a universal liquidity token, $SCX. Offering lower impermanent loss than traditional AMMs, and shining as a wholesaler of yield strategies, for half the gas of alternative options.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/beholder.png`,
+    logo: `${baseIconsUrl}/beholder.svg`,
     audits: "0",
     audit_note: null,
     gecko_id: "beholder",

@@ -10,7 +10,7 @@ function next21Minutedate() {
   return dt
 }
 
-export async function store(filename: string, body: string | Readable | Buffer, hourlyCache = false, extraOptions: any = {}) {
+export async function store(filename: string, body: string | Readable | Buffer, hourlyCache = false, compressed = true) {
   await new aws.S3().upload({
     Bucket: datasetBucket,
     Key: filename,
@@ -18,9 +18,10 @@ export async function store(filename: string, body: string | Readable | Buffer, 
     ACL: "public-read",
     ...(hourlyCache && {
       Expires: next21Minutedate(),
-      ContentEncoding: 'br',
+      ...(compressed && {
+        ContentEncoding: 'br',
+      }),
       ContentType: "application/json"
     }),
-    ...extraOptions
   }).promise()
 }

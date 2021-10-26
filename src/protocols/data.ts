@@ -11617,7 +11617,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "fantom:0x593ab53baffaf1e821845cf7080428366f030a9c",
     symbol: "COFFIN",
     url: "https://coffin.finance",
-    description: "Efficient, low cost, single sided Automated Market Maker (AMM) with a universal liquidity token, $SCX. Offering lower impermanent loss than traditional AMMs, and shining as a wholesaler of yield strategies, for half the gas of alternative options.",
+    description: "The protocol is partial collateralized stable token project. It's using FTM as collateral instead of USDC. So it's true decentralized! Cuz of using FTM as collateral, collateral ratio is volatile. It means the protocol and investors believe Fantom Opera potential! $COFFIN $CoUSD.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/coffin-finance.png`,
     audits: "2",

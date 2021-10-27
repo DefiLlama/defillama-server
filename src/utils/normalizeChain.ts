@@ -293,7 +293,7 @@ export const chainCoingeckoIds = {
     symbol: "FSN",
     cmcId: "2530",
   },
-  "KardiaChain": {
+  "Kardia": {
     geckoId: "kardiachain",
     symbol: "KAI",
     cmcId: "5453",
@@ -354,8 +354,8 @@ export function getChainDisplayName(normalizedChain: string) {
       return "TomoChain"
     case "fusion":
       return "Fusion"
-    case "kardiachain":
-      return "KardiaChain"
+    case "kardia":
+      return "Kardia"
     case "fuse":
       return "Fuse"
     case "sora":

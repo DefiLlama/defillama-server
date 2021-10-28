@@ -358,7 +358,7 @@ export default [
     url: "https://dforce.network/",
     description:
       "dForce network is an ecosystem of protocols aiming to be a full stack solution for DeFi.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/DF.svg`,
     audits: "2",
     audit_note: null,
@@ -1165,7 +1165,7 @@ export default [
     url: "https://valuedefi.io/",
     description:
       "The Value DeFi protocol is a platform and suite of products that aim to bring fairness, true value, and innovation to Decentralized Finance.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/valuedefi.jpg`,
     audits: "2",
     audit_note: null,
@@ -1285,7 +1285,7 @@ export default [
     url: "https://finnexus.io/",
     description:
       "FinNexus Options makes it easy to buy and exercise BTC, ETH, BNB, LINK, SNX, MKR, WAN options with pooled liquidity in a secure and decentralized way on Ethereum, BSC & Wanchain.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/finnexus.jpg`,
     audits: "2",
     audit_note: null,
@@ -1532,7 +1532,7 @@ export default [
     url: "https://lido.fi/",
     description:
       "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana & Terra.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/lido.png`,
     audits: "2",
     audit_note: null,
@@ -1797,7 +1797,7 @@ export default [
     url: "https://fantom.foundation/",
     description:
       "Fantom is a fast, high-throughput open-source smart contract platform for digital assets and dApps.",
-    chain: "Multi-Chain",
+    chain: "Fantom",
     logo: `${baseIconsUrl}/fantom.png`,
     audits: "2",
     audit_note: null,
@@ -2746,7 +2746,7 @@ export default [
     url: "https://www.wepiggy.com/",
     description:
       "WePiggy is an open source, non-custodial crypto asset lending market protocol.\r\n",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/wepiggy.png`,
     audits: "2",
     audit_note: null,
@@ -2926,7 +2926,7 @@ export default [
     url: "https://bifi.finance/",
     description:
       "BiFi (abbreviation of Bifrost Finance) is the decentralized finance platform built on Bifrost, the universal multichain middleware.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/bifi.jpg`,
     audits: "2",
     audit_note: null,
@@ -3337,7 +3337,7 @@ export default [
     url: "http://acoconut.fi/",
     description:
       "ACoconut provides the first cross-chain yield aggregator for BTC DeFi users. ACoconut v2 consists of two open protocols: BTC+ and acBTC. BTC+ is a liquidity and yield aggregator that optimizes and distributes yield on individual chain. acBTC is a decentralized bridge that carries BTC across chains.",
-    chain: "Multi-Chain",
+    chain: "Binance",
     logo: `${baseIconsUrl}/acoconut.png`,
     audits: "2",
     audit_note: null,
@@ -3631,7 +3631,7 @@ export default [
     url: "https://prosper.so/",
     description:
       "PROSPER is a short-term non-custodial prediction & hedging platform based on the Binance Smart Chain.",
-    chain: "Multi-Chain",
+    chain: "Binance",
     logo: `${baseIconsUrl}/prosper.jpg`,
     audits: "0",
     audit_note: null,
@@ -3708,7 +3708,7 @@ export default [
     url: "https://swapr.eth.link/#/swap",
     description:
       "A governance-enabled automated-market maker with adjustable fees, made by DXdao.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/swapr.svg`,
     audits: "2",
     audit_note: null,
@@ -3806,7 +3806,7 @@ export default [
     url: "https://deus.finance/",
     description:
       "Transpose any digitally verifiable asset securely onto the blockchain. DEUS lets you trade real-world assets and derivatives, like stocks and commodities, directly on the Ethereum blockchain.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/deus.jpg`,
     audits: "2",
     audit_note: null,
@@ -4294,7 +4294,7 @@ export default [
     url: "https://yogi.fi",
     description:
       "Automated portfolio manager, liquidity provider, and price sensor. Optimized for Polygon & BSC.",
-    chain: "Multi-Chain",
+    chain: "Binance",
     logo: `${baseIconsUrl}/yogi-finance.svg`,
     audits: "0",
     audit_note: null,
@@ -4396,7 +4396,7 @@ export default [
     symbol: "YOU",
     url: "https://www.youswap.com/",
     description: "AMM",
-    chain: "Multi-Chain",
+    chain: "Heco",
     logo: `${baseIconsUrl}/youswap.jpg`,
     audits: "3",
     audit_note: null,
@@ -4600,7 +4600,7 @@ export default [
     url: "https://gmx.io/",
     description:
       "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
-    chain: "Multi-Chain",
+    chain: "Binance",
     logo: `${baseIconsUrl}/gmx.png`,
     audits: "2",
     audit_note: null,
@@ -4904,7 +4904,7 @@ export default [
     url: "https://iron.finance/",
     description:
       "Building a multi-chain partial-collateralized algorithmic stablecoin ecosystem.",
-    chain: "Multi-Chain",
+    chain: "Polygon",
     logo: `${baseIconsUrl}/iron-finance.jpg`,
     audits: "0",
     audit_note: null,
@@ -5107,7 +5107,7 @@ export default [
     url: "https://perp.exchange/",
     description:
       "Decentralized Perpetual Contracts for Every Asset.",
-    chain: "Multi-Chain",
+    chain: "xDai",
     logo: `${baseIconsUrl}/perpetual-protocol.jpg`,
     audits: "2",
     audit_note: null,

@@ -480,7 +480,7 @@ export default [
   },
   {
     id: "129",
-    name: "xDAI Stake",
+    name: "xDAI Stake Bridge",
     address: "0x0Ae055097C6d159879521C384F1D2123D1f195e6",
     symbol: "STAKE",
     url: "https://xdaichain.com/ ",
@@ -1080,7 +1080,7 @@ export default [
     url: "https://alphafinance.io/",
     description:
       "Alpha Finance Lab is an ecosystem of cross-chain DeFi products that focus on capturing unaddressed demand in an innovative and user friendly way. Alpha Homora, the first product, is a leveraged yield farming and leveraged liquidity providing protocol where ETH lenders can earn high lending interest rate and leveraged yield farmers/liquidity providers can increase the APY.",
-    chain: "Multi-Chain",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/alpha-finance.png`,
     audits: "2",
     audit_note: null,
@@ -2663,7 +2663,7 @@ export default [
   },
   {
     id: "240",
-    name: "Polygon",
+    name: "Polygon Bridge & Staking",
     address: "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
     symbol: "MATIC",
     url: "https://polygon.technology/",
@@ -3760,7 +3760,7 @@ export default [
   },
   {
     id: "295",
-    name: "Stacks",
+    name: "Stacks Staking",
     address: "-",
     symbol: "STX",
     url: "https://stacks.co",

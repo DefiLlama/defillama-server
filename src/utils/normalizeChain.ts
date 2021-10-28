@@ -303,7 +303,7 @@ export const chainCoingeckoIds = {
     symbol: "FUSE",
     cmcId: "5634",
   },
-  "Sora": {
+  "SORA": {
     geckoId: "sora",
     symbol: "XOR",
     cmcId: "5802",
@@ -359,7 +359,7 @@ export function getChainDisplayName(normalizedChain: string) {
     case "fuse":
       return "Fuse"
     case "sora":
-      return "Sora"
+      return "SORA"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

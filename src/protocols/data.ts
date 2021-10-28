@@ -2691,7 +2691,7 @@ export default [
     logo: `${baseIconsUrl}/powerpool.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "power-index-pool-token",
+    gecko_id: "concentrated-voting-power",
     cmcId: "7368",
     category: "Indexes",
     chains: ["Ethereum", "Binance"],

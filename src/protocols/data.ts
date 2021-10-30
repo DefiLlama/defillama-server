@@ -11691,7 +11691,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "706",
-    name: "YSL",
+    name: "YSL.IO",
     address: "bsc:0x64d3638a7d8747eee7bd5d402cc5f5bd00dc27dc",
     symbol: "SYSL",
     url: "https://ysl.io",

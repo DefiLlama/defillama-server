@@ -1325,7 +1325,7 @@ export default [
     description:
       "Index Coop creates and maintains the world's best crypto index products.\r\n\r\nAll index products are always fully collateralized.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/index-coop.jpg`,
+    logo: `${baseIconsUrl}/index-coop.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "index-cooperative",

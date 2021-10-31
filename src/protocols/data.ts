@@ -6219,7 +6219,7 @@ export default [
     description: "Elk Finance is a decentralized network for cross-chain liquidity. The Elk ecosystem will make it seamless for anyone to exchange cryptocurrencies. Our motto is Any chain, anytime, anywhere.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/elk.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "elk-finance",
     cmcId: "10095",
@@ -6227,6 +6227,7 @@ export default [
     chains: ["Polygon","Avalanche","Fantom", "xDai", "Binance", "Heco"],
     module: "elkfinance/index.js",
     twitter: "elk_finance",
+    audit_links: ["https://blog.hashex.org/elk-finance-smart-contracts-audit-report-a18deaa5890b"],
   },
   {
     id: "421",

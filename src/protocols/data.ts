@@ -7608,12 +7608,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "financegrim",
     audit_links: ["https://solidity.finance/audits/GrimVault/"],
   },
-  /*
   {
     id: "494",
     name: "JustLend",
-    address: "-",
-    symbol: "-",
+    address: "tron:TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9",
+    symbol: "JST",
     url: "https://justlend.just.network",
     description: "JustLend is a TRON-powered coin market protocol aimed at establishing fund pools whose interest rates are determined by an algorithm based on the supply and demand of TRON assets.",
     chain: "Tron",
@@ -7624,10 +7623,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Lending",
     chains: ["Tron"],
-    module: "justlend/index.js",
+    module: "justlend.js",
     twitter: "DeFi_JUST",
   },
-  */
   {
     id: "495",
     name: "HFIone",

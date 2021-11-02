@@ -405,7 +405,7 @@ export default [
       "mStable unites stablecoins, lending and swapping into one standard.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mstable.png`,
-    audits: null,
+    audits: "2",
     audit_note: null,
     gecko_id: "meta",
     cmcId: "5748",
@@ -413,7 +413,7 @@ export default [
     chains: ["Ethereum", "Polygon"],
     module: "mstable/index.js",
     twitter: "mstable_",
-    audit_links: ["https://docs.mstable.org/protocol/security"],
+    audit_links: ["https://developers.mstable.org/security/security-audits"],
   },
   {
     id: "126",

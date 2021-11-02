@@ -12667,4 +12667,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "RealTPlatform",
     listedAt: 1635878880,
   },
+  /*
+  {
+    id: "754",
+    name: "BossSwap",
+    address: "harmony:0xE7bBE0E193FdFe95d2858F5C46d036065f8F735c",
+    symbol: "BOSS",
+    url: "https://www.bossswap.finance",
+    description: "pending",
+    chain: "Harmony",
+    logo: `${baseIconsUrl}/bossswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Harmony"],
+    module: "pending",
+    twitter: "BossSwapFinance",
+    forkedFrom: ["Uniswap"],
+  },
+  */
 ] as Protocol[];

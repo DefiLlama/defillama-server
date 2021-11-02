@@ -5490,7 +5490,7 @@ export default [
     chains: ["Ethereum", "Binance"],
     module: "premia/index.js",
     twitter: "PremiaFinance",
-    audit_links: ["https://solidity.finance/audits/Premia/"],
+    audit_links: ["https://solidity.finance/audits/Premia", "https://hacken.io/audits/#solidstate", "https://hacken.io/audits/#premia_finance"],
   },
   {
     id: "382",

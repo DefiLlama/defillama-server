@@ -12637,7 +12637,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Nexus removes the complexity of advanced yield farming strategies to deliver optimized, sustainable yield for users",
     chain: "Terra",
     logo: `${baseIconsUrl}/fractional-art.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "nexus-governance-token",
     cmcId: null,
@@ -12645,6 +12645,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Terra"],
     module: "nexus-protocol/index.js",
     twitter: "NexusProtocol",
+    audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Nexus_Protocol_CosmWasm_Smart_Contract_Security_Audit_Report_Halborn%20v1.1.pdf"],
     listedAt: 1635878160,
   },
   {

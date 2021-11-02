@@ -12410,7 +12410,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://vaulty.fi",
     description: "Automatic Yield Optimizer with lowest fees",
     chain: "Binance",
-    logo: `${baseIconsUrl}/elephantdex.png`,
+    logo: `${baseIconsUrl}/vaulty-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "vaulty-token",

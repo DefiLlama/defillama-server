@@ -308,6 +308,11 @@ export const chainCoingeckoIds = {
     symbol: "XOR",
     cmcId: "5802",
   },
+  "smartBCH": {
+    geckoId: "bitcoin-cash",
+    symbol: "BCH",
+    cmcId: "1831",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,

@@ -12616,7 +12616,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://zerotwohm.finance",
     description: "ZeroTwOhm is the first decentralized reserve currency protocol natively built on the Arbitrum One Network.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/fractional-art.jpg`,
+    logo: `${baseIconsUrl}/zerotwoohm.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "zerotwohm",

@@ -3962,7 +3962,7 @@ export default [
     url: "https://uniswap.org/",
     description: "AMM with concentrated liquidity positions",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/uniswap-v3.png`,
+    logo: `${baseIconsUrl}/uniswap.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

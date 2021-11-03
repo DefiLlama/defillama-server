@@ -1,22 +1,9 @@
-//import {chainToCoingeckoId} from "@defillama/sdk/build/computeTVL/index"
-// Object.entries(chainToCoingeckoId).reduce((o, i)=>{o[i[1]]=i[0]; return o}, {})
+import {chainToCoingeckoId} from "@defillama/sdk/build/computeTVL/index"
+
 interface StringObject {
   [id: string]: string | undefined;
 }
-const platformMap = {
-  "binance-smart-chain": "bsc",
-  ethereum: "ethereum",
-  "polygon-pos": "polygon",
-  avalanche: "avax",
-  wanchain: "wan",
-  fantom: "fantom",
-  xdai: "xdai",
-  "okex-chain": "okexchain",
-  "huobi-token": "heco",
-  "harmony-shard-0":"harmony",
-  "kucoin-community-chain": "kcc",
-  "arbitrum-one": "arbitrum",
-} as StringObject;
+export const platformMap = Object.entries(chainToCoingeckoId).reduce((o:any, i)=>{o[i[1]]=i[0]; return o}, {}) as StringObject;
 
 export interface Coin {
   id: string;

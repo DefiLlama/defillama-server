@@ -12714,7 +12714,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://app.angle.money",
   description: "Angle is the first over-collateralized, decentralized and capital-efficient stablecoin protocol. It offers full convertibility between stable assets and collateral at oracle value: you can swap 1 of collateral against 1 of stablecoin and conversely. This makes the protocol both capital efficient and highly liquid.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/angle.jgp`,
+  logo: `${baseIconsUrl}/angle.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: "angle-protocol",

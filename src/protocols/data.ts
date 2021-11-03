@@ -12667,14 +12667,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "RealTPlatform",
     listedAt: 1635878880,
   },
-  /*
   {
     id: "754",
     name: "BossSwap",
     address: "harmony:0xE7bBE0E193FdFe95d2858F5C46d036065f8F735c",
     symbol: "BOSS",
     url: "https://www.bossswap.finance",
-    description: "pending",
+    description: "Boss Swap Finance is an unique DEX launching on the Harmony Protocol. We’ve taken some of our favorite features from other projects and added them together to make BOSS swap with some BOSS unique style.",
     chain: "Harmony",
     logo: `${baseIconsUrl}/bossswap.png`,
     audits: "0",
@@ -12683,10 +12682,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Dexes",
     chains: ["Harmony"],
-    module: "pending",
+    module: "boss-swap/index.js",
     twitter: "BossSwapFinance",
     forkedFrom: ["Uniswap"],
-  },*/
+    listedAt: 1635966094
+  },
   {
   id: "755",
   name: "Arrow",
@@ -12747,4 +12747,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   oracles: ["Coingecko"],
   listedAt: 1635963794,
 },
+{
+  id: "758",
+  name: "Spartacus",
+  address: "fantom:0x5602df4a94eb6c680190accfa2a475621e0ddbdc",
+  symbol: "SPA",
+  url: "https://spartacus.finance/#/",
+  description: "Decentralized multi-chain reserve currency.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/spartacus.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "spartacus",
+  cmcId: "13748",
+  category: "Assets",
+  chains: ["Fantom"],
+  module: "spartacus/index.js",
+  twitter: "Spartacus_Fi",
+  forkedFrom: ["Olympus DAO"],
+  listedAt: 1635966336,
+}
 ] as Protocol[];

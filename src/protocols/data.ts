@@ -6435,7 +6435,7 @@ export default [
     cmcId: "10529",
     category: "Dexes",
     chains: ["Tron"],
-    module: "sunSwap/index.js",
+    module: "sun/index.js",
     twitter: "defi_sunio",
     audit_links: ["https://sun.io/docs/slowmist_audit_report_en_sun.pdf"],
   },

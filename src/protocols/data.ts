@@ -12686,6 +12686,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "pending",
     twitter: "BossSwapFinance",
     forkedFrom: ["Uniswap"],
-  },
-  */
+  },*/
+  {
+  id: "755",
+  name: "Arrow",
+  address: null,
+  symbol: "-",
+  url: "https://arrowprotocol.com",
+  description: "Arrow allows individuals, protocols, and DAOs on Solana to launch staking derivatives which redirect yield to a different address.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/arrow.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Solana"],
+  module: "arrow/index.js",
+  twitter: "ArrowProtocol",
+  listedAt: 1635961535,
+},
 ] as Protocol[];

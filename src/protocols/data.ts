@@ -12636,7 +12636,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://nexusprotocol.app",
     description: "Nexus removes the complexity of advanced yield farming strategies to deliver optimized, sustainable yield for users",
     chain: "Terra",
-    logo: `${baseIconsUrl}/fractional-art.jpg`,
+    logo: `${baseIconsUrl}/nexus-protocol.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "nexus-governance-token",

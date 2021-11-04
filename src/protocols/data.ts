@@ -12782,7 +12782,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Dexes",
   chains: ["Harmony"],
-  module: "Index.js",
+  module: "eggtartswap/index.js",
   twitter: "EggTartSwap",
   forkedFrom: "Uniswap",
   listedAt: 1635981448,

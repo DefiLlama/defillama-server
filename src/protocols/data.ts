@@ -12796,7 +12796,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Apricot is a next-gen lending protocol that supports leveraged yield farming on Solana. Our mission is to help users maximize yield while protecting their downsides.",
   chain: "Solana",
   logo: `${baseIconsUrl}/apricot-finance.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,

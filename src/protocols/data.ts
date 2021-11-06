@@ -11652,6 +11652,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "goldfinch_fi",
     listedAt: 1635105023,
   },
+  /*
   {
     id: "704",
     name: "Chainge Finance",
@@ -11671,6 +11672,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "FinanceChainge",
     listedAt: 1635106127,
   },
+  */
   {
     id: "705",
     name: "TTswap",
@@ -13016,5 +13018,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     "https://rugdoc.io/project/polygonfarm/",
   ],
   listedAt: 1636147585,
+},
+{
+  id: "791",
+  name: "Sencha",
+  address: null,
+  symbol: "-",
+  url: "https://sencha.so",
+  description: "Sencha is the easiest place to discover and trade new crypto assets on Solana",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/sencha.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Solana"],
+  module: "sencha/index.js",
+  twitter: "SenchaDEX",
+  listedAt: 1636176482,
 },
 ] as Protocol[];

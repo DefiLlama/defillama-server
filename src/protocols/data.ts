@@ -12885,7 +12885,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Dexes",
   chains: ["Aurora"],
-  module: "projects/trisolaris.js",
+  module: "trisolaris.js",
   twitter: "trisolarislabs",
   forkedFrom: ["Uniswap"],
   listedAt: 1636045437,

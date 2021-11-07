@@ -13086,7 +13086,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://oolongswap.com/#/",
   description: "As the liquidity hub of Boba Network, OolongSwap is a DEX that is...well, not satisfied with being just an ordinary, everyday DEX. We don't want to be just another AMM, we want the best of both worlds: safe, smooth while also being fun, revolutionary, and most importantly, irreplaceable!",
   chain: "Boba",
-  logo: `${baseIconsUrl}/cashio.png`,
+  logo: `${baseIconsUrl}/oolongswap.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

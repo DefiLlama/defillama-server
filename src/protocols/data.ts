@@ -3954,6 +3954,7 @@ export default [
     twitter: "FlamingoFinance",
     audit_links: ["https://github.com/flamingo-finance/flamingo-audit"],
   },
+/*
   {
     id: "305",
     name: "Uniswap v3",
@@ -3972,6 +3973,7 @@ export default [
     module: "uniswapv3/index.js",
     twitter: "Uniswap",
   },
+*/
   {
     id: "306",
     name: "Quickswap",

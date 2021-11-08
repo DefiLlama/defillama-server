@@ -6226,7 +6226,7 @@ export default [
     gecko_id: "elk-finance",
     cmcId: "10095",
     category: "Dexes",
-    chains: ["Polygon","Avalanche","Fantom", "xDai", "Binance", "Heco"],
+    chains: ["Polygon","Avalanche","Fantom", "xDai", "Binance", "Heco", "Moonriver", "Harmony", "Hoo", "Esc", "Kucoin", "OKExChain"],
     module: "elkfinance/index.js",
     twitter: "elk_finance",
     audit_links: ["https://blog.hashex.org/elk-finance-smart-contracts-audit-report-a18deaa5890b"],

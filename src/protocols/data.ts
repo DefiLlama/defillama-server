@@ -11655,7 +11655,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "goldfinch_fi",
     listedAt: 1635105023,
   },
-  /*
   {
     id: "704",
     name: "Chainge Finance",
@@ -11665,17 +11664,18 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Chainge is a DeFi app running on the Fusion blockchain that empowers people from all corners of the world to become their own digital bank",
     chain: "Fusion",
     logo: `${baseIconsUrl}/chainge-finance.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "chainge-finance",
-    cmcId: "1460",
+    cmcId: "9071",
     category: "Dexes",
-    chains: ["Fusion"],
-    module: "chainge/index.js ",
+    chains: ["Fusion", "Tron", "Ethereum", "Binance", "Heco", "Polygon", "OKExChain", "Avalanche", "Arbitrum"],
+    module: "chainge.js ",
     twitter: "FinanceChainge",
+    audit_links: ["https://www.certik.org/projects/chaingefinance"],
+    forkedFrom: ["Uniswap"],
     listedAt: 1635106127,
   },
-  */
   {
     id: "705",
     name: "TTswap",

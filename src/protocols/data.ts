@@ -10913,6 +10913,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "orcadao/index.js",
     twitter: "OrcaDAO",
+    audit_links: ["https://paladinsec.co/projects/orcadao"],
     listedAt: 1634100536,
   },
   {

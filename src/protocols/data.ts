@@ -5879,7 +5879,7 @@ export default [
     url: "https://hunny.finance",
     description: "Hunny aims to provide users the easiest way to join the bandwagon of the DeFi world, built on top of PancakeSwap, giving you the tastiest CAKEs topped with HUNNY. We support the underlying DeFi technology and ecosystem to compound user yields through the Binance Smart Chain (BSC)",
     chain: "Binance",
-    logo: `${baseIconsUrl}/pancake-hunny.png`,
+    logo: `${baseIconsUrl}/hunny-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "pancake-hunny",

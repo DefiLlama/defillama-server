@@ -11670,7 +11670,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "9071",
     category: "Dexes",
     chains: ["Fusion", "Tron", "Ethereum", "Binance", "Heco", "Polygon", "OKExChain", "Avalanche", "Arbitrum"],
-    module: "chainge.js ",
+    module: "chainge.js",
     twitter: "FinanceChainge",
     audit_links: ["https://www.certik.org/projects/chaingefinance"],
     forkedFrom: ["Uniswap"],

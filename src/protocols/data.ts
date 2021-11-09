@@ -13457,6 +13457,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "Empire_DEX",
   listedAt: 1636439712,
 },
+/*
 {
   id: "813",
   name: "Votium",
@@ -13476,6 +13477,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "VotiumProtocol",
   listedAt: 1636440491,
 },
+*/
 {
   id: "814",
   name: "Loop Finance",

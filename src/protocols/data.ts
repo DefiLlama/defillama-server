@@ -5873,11 +5873,11 @@ export default [
   },
   {
     id: "402",
-    name: "Pancake Hunny",
+    name: "Hunny Finance",
     address: "bsc:0x565b72163f17849832A692A3c5928cc502f46D69",
     symbol: "HUNNY",
-    url: "https://pancakehunny.finance",
-    description: "PancakeHunny aims to provide users the easiest way to join the bandwagon of the DeFi world, built on top of PancakeSwap, giving you the tastiest CAKEs topped with HUNNY. We support the underlying DeFi technology and ecosystem to compound user yields through the Binance Smart Chain (BSC)",
+    url: "https://hunny.finance",
+    description: "Hunny aims to provide users the easiest way to join the bandwagon of the DeFi world, built on top of PancakeSwap, giving you the tastiest CAKEs topped with HUNNY. We support the underlying DeFi technology and ecosystem to compound user yields through the Binance Smart Chain (BSC)",
     chain: "Binance",
     logo: `${baseIconsUrl}/pancake-hunny.png`,
     audits: "2",
@@ -5887,7 +5887,7 @@ export default [
     category: "Yield",
     chains: ["Binance"],
     module: "hunnyfinance/index.js",
-    twitter: "PancakeHunny",
+    twitter: "HunnyFinance",
     audit_links: ["https://www.certik.org/projects/pancakehunny"],
   },
   {

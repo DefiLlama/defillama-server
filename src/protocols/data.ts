@@ -11663,7 +11663,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://www.chainge.finance",
     description: "Chainge is a DeFi app running on the Fusion blockchain that empowers people from all corners of the world to become their own digital bank",
     chain: "Fusion",
-    logo: `${baseIconsUrl}/chainge-finance.jpg`,
+    logo: `${baseIconsUrl}/chainge-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "chainge-finance",

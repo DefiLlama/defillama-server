@@ -24,6 +24,7 @@ const handler = async (
               return
           }
           chainTvls[chainName] = (chainTvls[chainName] ?? 0) + chainTvl
+          chainsAdded += 1;
       })
       if(chainsAdded === 0){
         chainTvls[protocol.chain] = (chainTvls[protocol.chain] ?? 0) + lastTvl.tvl

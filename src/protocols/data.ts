@@ -13060,6 +13060,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "pinyottas",
   listedAt: 1636177842,
 },
+/*
 {
   id: "793",
   name: "Cashio",
@@ -13079,6 +13080,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "cashioapp",
   listedAt: 1636191361,
 },
+*/
 {
   id: "794",
   name: "OolongSwap",

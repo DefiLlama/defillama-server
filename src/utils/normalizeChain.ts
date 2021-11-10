@@ -313,6 +313,21 @@ export const chainCoingeckoIds = {
     symbol: "BCH",
     cmcId: "1831",
   },
+  "Elastos": {
+    geckoId: "elastos",
+    symbol: "ELA",
+    cmcId: "2492",
+  },
+  "Hoo": {
+    geckoId: "hoo-token",
+    symbol: "HOO",
+    cmcId: "7543",
+  },
+  "Cronos": {
+    geckoId: "crypto-com-chain",
+    symbol: "CRO",
+    cmcId: "3635",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -367,6 +382,12 @@ export function getChainDisplayName(normalizedChain: string) {
       return "SORA"
     case "smartbch":
       return "smartBCH"
+    case "elastos":
+      return "Elastos"
+    case "hoo":
+      return "Hoo"
+    case "cronos":
+      return "Cronos"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -13775,5 +13775,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "crodexapp",
   forkedFrom: ["Uniswap"],
   listedAt:
+},
+{
+  id: "829",
+  name: "Standard Protocol",
+  address: "shiden:0x0f933Dc137D21cA519ae4C7E93f87a4C8EF365Ef",
+  symbol: "STND",
+  url: "https://standard.tech",
+  description: "Decentralized Exchange (DEX) and Yield Farming protocol on Shiden Network",
+  chain: "Shiden",
+  logo: `${baseIconsUrl}/standard-protocol.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "standard-protocol",
+  cmcId: "9251",
+  category: "Dexes",
+  chains: ["Shiden"],
+  module: "standard-tech/index.js",
+  twitter: "standarddefi",
+  forkedFrom: ["Uniswap", "SushiSwap"],
+  listedAt:
 },*/
 ] as Protocol[];

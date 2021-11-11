@@ -13796,4 +13796,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Uniswap", "SushiSwap"],
   listedAt:
 },*/
+{
+  id: "830",
+  name: "Revest Finance",
+  address: "0x120a3879da835a5af037bb2d1456bebd6b54d4ba",
+  symbol: "RVST",
+  url: "https://revest.finance",
+  description: "The Revest Protocol pioneers a revolutionary new use of NFTs as financial tools. Individual and project level users can deposit any ERC20 into our interactive FNFTs and set custom unlocking conditions (time, value, or contract based). This high level of composability fills many of the massive gaps in the crypto landscape ranging from something as simple as new KPI based token vesting for launching dev teams to truly game changing implications for derivative and borrowing/lending platforms",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/revest-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "revest-finance",
+  cmcId: "12230",
+  category: "Assets",
+  chains: ["Ethereum"],
+  module: "revest/index.js",
+  twitter: "RevestFinance",
+  audit_links: ["https://solidity.finance/audits/Revest"],
+  oracles: ["Chainlink", "TWAP"],
+  listedAt: 1636669757,
+},
 ] as Protocol[];

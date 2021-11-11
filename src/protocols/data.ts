@@ -13610,7 +13610,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "doki-doki-finance",
   cmcId: "7376",
   category: "Yield",
-  chains: ["Ethereum"],
+  chains: ["Ethereum", "Polygon"],
   module: "dokidoki/index.js",
   twitter: "dokidokifinance",
   audit_links: ["https://defiyield.app/audit-database/defiyield/doki_doki_finance"],

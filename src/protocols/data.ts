@@ -13216,7 +13216,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "Dexes",
   chains: ["zkSync"],
   module: "zigzag/index.js",
-  twitter: null,
+  twitter: "ZigZagExchange",
   listedAt: 1636305888,
 },
 {

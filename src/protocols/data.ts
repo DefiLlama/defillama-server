@@ -13605,7 +13605,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Doki Doki is a gamified marketplace platform that combines NFTs, Gachapon Machines, & yield-farming.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/dokidoki.svg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "doki-doki-finance",
   cmcId: "7376",
@@ -13613,6 +13613,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum"],
   module: "dokidoki/index.js",
   twitter: "dokidokifinance",
+  audit_links: ["https://defiyield.app/audit-database/defiyield/doki_doki_finance"],
   listedAt: 1636475962,
 },
 {

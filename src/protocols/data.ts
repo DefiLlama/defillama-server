@@ -13755,7 +13755,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_links: ["https://github.com/celer-network/layer2-finance-v2-contracts/tree/main/audit"],
   listedAt: 1636631447,
 },
-/*
 {
   id: "828",
   name: "Crodex",
@@ -13774,7 +13773,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "crodex/index.js",
   twitter: "crodexapp",
   forkedFrom: ["Uniswap"],
-  listedAt:
+  listedAt: 1636671573,
 },
 {
   id: "829",
@@ -13794,8 +13793,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "standard-tech/index.js",
   twitter: "standarddefi",
   forkedFrom: ["Uniswap", "SushiSwap"],
-  listedAt:
-},*/
+  listedAt: 1636671594,
+},
 {
   id: "830",
   name: "Revest Finance",

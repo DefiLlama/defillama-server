@@ -101,7 +101,7 @@ const handler = async (_event: any) => {
       [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
       [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
     })
-    const filename = chain === "total"? "lite/charts": `lite/charts/${getChainDisplayName(chain)}`
+    const filename = chain === "total"? "lite/charts": `lite/charts/${chain}`
     await store(filename, compressedRespone, true)
   }))
 }

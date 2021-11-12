@@ -1,5 +1,5 @@
 require("dotenv").config();
-const protocolToFill = "Karura dex"
+const protocolToFill = "lixir"
 
 import { getProtocol, getBlocksRetry } from "./utils";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";

@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils";
 import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-import { getChainDisplayName, getDisplayChain, nonChains, chainCoingeckoIds } from "./utils/normalizeChain";
+import { getChainDisplayName, getDisplayChain, nonChains, chainCoingeckoIds, extraSections } from "./utils/normalizeChain";
 import dynamodb, { TableName } from "./utils/dynamodb";
 
 export function getPercentChange(previous: number, current: number) {
@@ -55,6 +55,12 @@ export async function craftProtocolsResponse(){
           if(chainTvls[chain] === undefined){
             chainTvls[chain] = lastHourlyRecord.tvl
           }
+          extraSections.forEach(section=>{
+            const chainSectionName = `${chain}-${section}`
+            if(chainTvls[section] !== undefined && chainTvls[chainSectionName] === undefined){
+              chainTvls[chainSectionName] = chainTvls[section]
+            }
+          })
           chains.push(chain)
         }
         const dataToReturn = {

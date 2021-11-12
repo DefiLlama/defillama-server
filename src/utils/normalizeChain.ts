@@ -336,8 +336,10 @@ export const chainCoingeckoIds = {
   }
 }
 
+export const extraSections = ["staking", "pool2", "offers"]
+
 export function getChainDisplayName(normalizedChain: string):string {
-  if(["staking", "pool2", "offers"].includes(normalizedChain)){
+  if(extraSections.includes(normalizedChain)){
     return normalizedChain
   }
   if(normalizedChain.includes('-')){

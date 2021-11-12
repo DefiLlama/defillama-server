@@ -62,6 +62,9 @@ const handler = async (
   if(module.misrepresentedTokens !== undefined){
     response.misrepresentedTokens = true;
   }
+  if(module.hallmarks !== undefined){
+    response.hallmarks = module.hallmarks;
+  }
   response.chainTvls = {};
   const chains:string[] = []
   response.chains = chains

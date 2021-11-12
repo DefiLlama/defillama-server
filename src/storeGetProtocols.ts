@@ -14,7 +14,7 @@ const handler = async (_event: any) => {
     chainTvls: protocol.chainTvls,
     "change_1d": protocol["change_1d"],
     "change_7d": protocol["change_7d"],
-    mcaptvl: protocol.mcap? null: protocol.tvl/protocol.mcap,
+    mcaptvl: protocol.mcap? undefined: protocol.mcap/protocol.tvl,
   }))
   const compressedRespone = brotliCompressSync(JSON.stringify(trimmedResponse), {
     [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,

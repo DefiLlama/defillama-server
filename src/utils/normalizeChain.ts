@@ -336,7 +336,13 @@ export const chainCoingeckoIds = {
   }
 }
 
-export function getChainDisplayName(normalizedChain: string) {
+export function getChainDisplayName(normalizedChain: string):string {
+  if(["staking", "pool2", "offers"].includes(normalizedChain)){
+    return normalizedChain
+  }
+  if(normalizedChain.includes('-')){
+    return normalizedChain.split('-').map(chain=>getChainDisplayName(chain)).join('-')
+  }
   switch (normalizedChain) {
     case "bsc":
       return "Binance"

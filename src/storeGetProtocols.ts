@@ -4,15 +4,24 @@ import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from 'zlib'
 
 const handler = async (_event: any) => {
-  const response = JSON.stringify(await craftProtocolsResponse())
-  /*
-  const compressedRespone = brotliCompressSync(response, {
+  const response = await craftProtocolsResponse()
+  const trimmedResponse = response.map(protocol=>({
+    name: protocol.name,
+    symbol: protocol.symbol,
+    "category": protocol.category,
+    "chains": protocol.chains,
+    tvl: protocol.tvl,
+    chainTvls: protocol.chainTvls,
+    "change_1d": protocol["change_1d"],
+    "change_7d": protocol["change_7d"],
+    mcaptvl: protocol.mcap? null: protocol.tvl/protocol.mcap,
+  }))
+  const compressedRespone = brotliCompressSync(JSON.stringify(trimmedResponse), {
     [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
     [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
   })
-  */
   
-  await store('protocols', response, true, false)
+  await store('lite/protocols', compressedRespone, true)
 };
 
 export default wrapScheduledLambda(handler);

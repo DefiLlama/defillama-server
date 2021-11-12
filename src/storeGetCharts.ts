@@ -101,8 +101,8 @@ const handler = async (_event: any) => {
       [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
       [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
     })
-    const filenames = chain === "total"? ["charts"]: [`charts/${chain.toLowerCase()}`, `charts/${chain}`]
-    await Promise.all(filenames.map(filename=>store(filename, compressedRespone, true)))
+    const filename = chain === "total"? "lite/charts": `lite/charts/${chain.toLowerCase()}`
+    await store(filename, compressedRespone, true)
   }))
 }
 

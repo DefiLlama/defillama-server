@@ -13819,7 +13819,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "831",
-  name: "VVS Finace",
+  name: "VVS Finance",
   address: "cronos:0x2D03bECE6747ADC00E1a131BBA1469C15fD11e03",
   symbol: "VVS",
   url: "https://vvs.finance",

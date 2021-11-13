@@ -13825,7 +13825,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://vvs.finance",
   description: "VVS is designed to be the simplest DeFi platform for users to swap tokens, earn high yields, and most importantly have fun!",
   chain: "Cronos",
-  logo: `${baseIconsUrl}/vvs-finance.jpg`,
+  logo: `${baseIconsUrl}/vvs-finance.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "vvs-finance",

@@ -13443,7 +13443,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "812",
-  name: "Empire DEX",
+  name: "EmpireDEX",
   address: null,
   symbol: "-",
   url: "https://app.empiredex.org/farm",

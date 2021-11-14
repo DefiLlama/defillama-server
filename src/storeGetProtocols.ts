@@ -27,21 +27,20 @@ const handler = async (_event: any) => {
 
   await store('lite/protocols', compressedRespone, true)
   const chains = {} as { [chain: string]: number }
-  trimmedResponse.forEach(p => p.chains.forEach((c: string) => {
-    chains[c] = (chains[c] ?? 0) + p.chainTvls[c]
-  }))
-
   const protocolCategoriesSet = new Set()
-  trimmedResponse.forEach(({category}) => {
-    protocolCategoriesSet.add(category)
+  trimmedResponse.forEach(p => {
+    protocolCategoriesSet.add(p.category)
+    p.chains.forEach((c: string) => {
+      chains[c] = (chains[c] ?? 0) + p.chainTvls[c]
+    })
   })
 
-  const compressedV2Respone = compress(JSON.stringify({
+  const compressedV2Response = compress(JSON.stringify({
     protocols: trimmedResponse,
     chains: ["All"].concat(Object.entries(chains).sort((a,b)=>b[1]-a[1]).map(c=>c[0])),
     protocolCategories: [...protocolCategoriesSet].filter((category) => category)
   }))
-  await store('lite/protocols2', compressedV2Respone, true)
+  await store('lite/protocols2', compressedV2Response, true)
 };
 
 export default wrapScheduledLambda(handler);

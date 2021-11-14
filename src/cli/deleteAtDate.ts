@@ -3,7 +3,7 @@ import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRec
 import { getProtocol } from "./utils";
 
 async function main() {
-  const protocol = getProtocol('pancakeswap')
+  const protocol = getProtocol('Cashio')
   for(const tvlFunc of [dailyTokensTvl, dailyTvl, dailyUsdTokensTvl]){
     const data = await dynamodb.query({
       ExpressionAttributeValues: {
@@ -12,7 +12,7 @@ async function main() {
       KeyConditionExpression: "PK = :pk",
     });
     for (const d of data.Items ?? []) {
-      if (d.SK < 1619388000) {
+      if (d.SK < 1636848000) {
         await dynamodb.delete({
           Key: {
             PK: d.PK,

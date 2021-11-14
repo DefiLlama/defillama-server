@@ -30,9 +30,16 @@ const handler = async (_event: any) => {
   trimmedResponse.forEach(p => p.chains.forEach((c: string) => {
     chains[c] = (chains[c] ?? 0) + p.chainTvls[c]
   }))
+
+  const protocolCategoriesSet = new Set()
+  trimmedResponse.forEach(({category}) => {
+    protocolCategoriesSet.add(category)
+  })
+
   const compressedV2Respone = compress(JSON.stringify({
     protocols: trimmedResponse,
-    chains: ["All"].concat(Object.entries(chains).sort((a,b)=>b[1]-a[1]).map(c=>c[0]))
+    chains: ["All"].concat(Object.entries(chains).sort((a,b)=>b[1]-a[1]).map(c=>c[0])),
+    protocolCategories: [...protocolCategoriesSet].filter((category) => category)
   }))
   await store('lite/protocols2', compressedV2Respone, true)
 };

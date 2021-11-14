@@ -13779,7 +13779,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 {
   id: "829",
   name: "Standard Protocol",
-  address: "shiden:0x0f933Dc137D21cA519ae4C7E93f87a4C8EF365Ef",
+  address: "shiden:0x722377A047e89CA735f09Eb7CccAb780943c4CB4",
   symbol: "STND",
   url: "https://standard.tech",
   description: "Decentralized Exchange (DEX) and Yield Farming protocol on Shiden Network",

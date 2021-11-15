@@ -22,12 +22,13 @@ const handler = async (_event: any) => {
     change_1d: protocol["change_1d"],
     change_7d: protocol["change_7d"],
     mcaptvl: protocol.mcap ? protocol.mcap / protocol.tvl : undefined,
+    listedAt: protocol.listedAt,
   }));
   const compressedRespone = compress(JSON.stringify(trimmedResponse));
 
   await store("lite/protocols", compressedRespone, true);
 
-  const noChainResponse = trimmedResponse.filter(p=>p.category !== "Chain")
+  const noChainResponse = trimmedResponse.filter((p) => p.category !== "Chain");
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet = new Set();
   noChainResponse.forEach((p) => {

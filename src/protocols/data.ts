@@ -12877,8 +12877,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 {
   id: "784",
   name: "Trisolaris",
-  address: null,
-  symbol: "-",
+  address: "aurora:0xFa94348467f64D5A457F75F8bc40495D33c65aBB",
+  symbol: "TRI",
   url: "https://www.trisolaris.io/#/swap",
   description: "Trisolaris is #1 Dex on the Aurora engine, an EVM compatible blockchain running in the near ecosystem.",
   chain: "Aurora",

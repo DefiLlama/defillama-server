@@ -6785,7 +6785,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "qi-dao",
     cmcId: "10237",
     category: "Lending",
-    chains: ["Polygon"],
+    chains: ["Polygon", "Fantom", "Avalanche"],
     module: "qidao/index.js",
     twitter: "QiDaoProtocol",
     audit_links: ["https://docs.mai.finance/risks/security#has-the-project-been-audited"],

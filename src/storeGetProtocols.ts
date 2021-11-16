@@ -13,16 +13,17 @@ function compress(data: string) {
 const handler = async (_event: any) => {
   const response = await craftProtocolsResponse();
   const trimmedResponse = response.map((protocol) => ({
-    name: protocol.name,
-    symbol: protocol.symbol,
     category: protocol.category,
     chains: protocol.chains,
-    tvl: protocol.tvl,
     chainTvls: protocol.chainTvls,
     change_1d: protocol["change_1d"],
     change_7d: protocol["change_7d"],
-    mcaptvl: protocol.mcap ? protocol.mcap / protocol.tvl : undefined,
     listedAt: protocol.listedAt,
+    mcap: protocol.mcap,
+    mcaptvl: protocol.mcap ? protocol.mcap / protocol.tvl : undefined,
+    name: protocol.name,
+    symbol: protocol.symbol,
+    tvl: protocol.tvl,
   }));
   const compressedRespone = compress(JSON.stringify(trimmedResponse));
 

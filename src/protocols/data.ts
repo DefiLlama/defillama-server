@@ -1091,7 +1091,7 @@ export default [
     module: "alpha-homora/index.js",
     twitter: "AlphaFinanceLab",
     audit_links: ["https://blog.openzeppelin.com/alpha-homora-v2/"],
-    oracles: ["Band"],
+    oracles: ["Band", "Chainlink"],
   },
   {
     id: "161",
@@ -2117,7 +2117,7 @@ export default [
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound", "MakerDAO"],
-    oracles: ["Chainlink","Band"],
+    oracles: ["Chainlink"],
   },
   {
     id: "213",

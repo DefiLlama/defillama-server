@@ -8751,7 +8751,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "annex",
     cmcId: "11583",
     category: "Lending",
-    chains: ["Binance"],
+    chains: ["Binance", "Cronos"],
     module: "annex.js",
     twitter: "AnnexFinance",
     audit_links: ["https://www.certik.org/projects/annex"],

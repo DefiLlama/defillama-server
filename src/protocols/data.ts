@@ -13227,7 +13227,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Celer cBridge is a multi-chain network that enables instant, low-cost and ANY-to-ANY value transfers within and across different blockchains, such as Ethereum and Polkadot, and different layer-2 scaling solutions on top, such as Optimistic Rollup, ZK Rollup and sidechains",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/cbridge.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -13235,6 +13235,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum", "Binance", "Arbitrum", "Polygon", "xDai", "OKExChain", "Avalanche", "Optimism", "Fantom", "Heco"],
   module: "celerbridge/index.js",
   twitter: "CelerNetwork",
+  audit_links: ["https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/REP-cBridge-v2-2021-11-17.pdf",
+                "https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/PeckShield-Audit-Report-SGNv2-v1.0.pdf",
+                "https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/SlowMist%20Audit%20Report%20-%20SGN.pdf"
+  ],
   listedAt: 1636307154,
 },
 {

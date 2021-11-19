@@ -8,5 +8,6 @@ module.exports = {
     OPTIMISM_RPC: process.env.OPTIMISM_RPC,
     XDAI_RPC: process.env.XDAI_RPC,
     HARMONY_RPC: process.env.HARMONY_RPC,
-    OUTDATED_WEBHOOK: process.env.OUTDATED_WEBHOOK
+    OUTDATED_WEBHOOK: process.env.OUTDATED_WEBHOOK,
+    SPIKE_WEBHOOK: process.env.SPIKE_WEBHOOK,
 }

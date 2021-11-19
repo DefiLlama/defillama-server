@@ -11,6 +11,7 @@ import { reportError } from "../utils/error";
 import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
 import { tvlsObject } from "../types";
 import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+import { sendMessage } from "../utils/discord";
 
 export default async function (
   protocol: Protocol,
@@ -64,8 +65,10 @@ export default async function (
       lastHourlyTVL * 5 < tvl.tvl &&
       tvlToCompareAgainst.tvl * 5 < tvl.tvl
     ) {
+      const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour, disabling it`
+      await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
       throw new Error(
-        `TVL for ${protocol.name} has 5x (${change}) within one hour, disabling it`
+        errorMessage
       );
     } else {
       reportError(

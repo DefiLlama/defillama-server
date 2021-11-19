@@ -64,6 +64,7 @@ provider:
     XDAI_RPC: ${file(./env.js):XDAI_RPC}
     HARMONY_RPC: ${file(./env.js):HARMONY_RPC}
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
+    SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}

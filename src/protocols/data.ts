@@ -14396,7 +14396,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "859",
-  name: "Snowdog DAO",
+  name: "Snowdog",
   address: "avax:0xde9e52f1838951e4d2bb6c59723b003c353979b6",
   symbol: "SDOG",
   url: "https://www.snowdogdao.com",

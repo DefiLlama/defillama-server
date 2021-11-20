@@ -343,6 +343,11 @@ export const chainCoingeckoIds = {
     symbol: "EGLD",
     cmcId: "6892",
   },
+  "Stellar": {
+    geckoId: "stellar",
+    symbol: "XLM",
+    cmcId: "512",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -417,6 +422,8 @@ export function getChainDisplayName(normalizedChain: string):string {
       return "ZYX"
     case "elrond":
       return "Elrond"
+    case "stellar":
+      return "Stellar"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

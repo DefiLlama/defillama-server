@@ -14492,6 +14492,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_links: ["https://hacken.io/wp-content/uploads/2021/10/Yoshi_22102021SCAudit_Report_2.pdf"],
   listedAt: 1637346402,
 },
+/*
 {
   id: "864",
   name: "Wrapped BNB",
@@ -14512,6 +14513,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["BinanceChain BEPs"],
   listedAt: 1637348348,
 },
+*/
 {
   id: "865",
   name: "Seeder Finance",

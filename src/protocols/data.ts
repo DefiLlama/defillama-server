@@ -14926,4 +14926,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Uniswap"],
   listedAt: 1637418466
 },
+{
+  id: "886",
+  name: "Position Exchange",
+  address: "bsc:0x5CA42204cDaa70d5c773946e69dE942b85CA6706",
+  symbol: "POSI",
+  url: "https://app.position.exchange/",
+  description: "Position Exchange is a Decentralized Trading Protocol, powered by a vAMM and operating on Binance Smart Chain initially, aiming to bridge the gap between people and the cryptocurrency markets and enhance trading experiences.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/positionexchange.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "position-token",
+  cmcId: "11234",
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "positionexchange/index.js",
+  twitter: "PositionEx",
+  audit_links: ["https://www.certik.org/projects/positionexchange"],
+  listedAt: 1637451430
+},
 ] as Protocol[];

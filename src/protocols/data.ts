@@ -14946,4 +14946,22 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_links: ["https://www.certik.org/projects/positionexchange"],
   listedAt: 1637451430
 },
+{
+  id: "887",
+  name: "SwapperChan",
+  address: "boba:0xb5cb0975716a4aa6438d3fa02364886e13fd678c",
+  symbol: "EAIFU",
+  url: "https://swapperchan.com/swap",
+  description: "A DEX haven for Simps to unite in the world of crypto.",
+  chain: "Boba",
+  logo: `${baseIconsUrl}/swapperchan.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  module: "swapperchan/index.js",
+  twitter: "SwapperChan",
+  listedAt: 1637511326
+},
 ] as Protocol[];

@@ -120,6 +120,7 @@ functions:
   protocol:
     handler: src/getProtocol.default
     timeout: 60
+    memorySize: 3000
     events:
       - http:
           path: protocol/{protocol}

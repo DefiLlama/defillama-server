@@ -10031,7 +10031,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Francium is a DeFi yield strategy Platform on Solana, providing leveraged/hedged farming, DeFi strategies & on-chain trading strategies. Francium also help users to build their own yield strategy through strategy dev toolbox. Granted by Solana & Serum.",
     chain: "Solana",
     logo: `${baseIconsUrl}/francium.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -10039,6 +10039,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "francium.js",
     twitter: "Francium_Defi",
+    audit_links:["https://www.certik.org/projects/francium"],
     oracles: ["Pyth"],
   },
   {
@@ -14986,5 +14987,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
                 "https://www.certik.org/projects/revault"
   ],
   listedAt: 1637556774,
+  },
+  {
+    id: "889",
+    name: "EightDAO",
+    address: "harmony:0xcda2fdeee5c382e401c04dc929e53ababf6c8109",
+    symbol: "EIGHT",
+    chains: ["Harmony"],
+    url: "https://app.8ight.finance/#/dashboard",
+    description: "Ohm fork",
+    chain: "Harmony",
+    logo: `${baseIconsUrl}/eightdao.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Assets",
+    module: "eight/index.js",
+    twitter: "8ight_finance",
+    listedAt: 1637560657
   },
 ] as Protocol[];

@@ -122,7 +122,7 @@ const handler = async (
     delete response.tokensInUsd;
     delete response.tokens;
     delete response.chainTvls.Ethereum.tokensInUsd;
-    delete response.tokens;
+    delete response.chainTvls.Ethereum.tokens;
   }
 
   return successResponse(response, 10 * 60); // 10 mins cache

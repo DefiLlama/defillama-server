@@ -11385,7 +11385,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://sunswap.com/#/home",
     description: "SUNSwap is a TRON-based decentralized trading protocol for automated liquidity provision and an open financial market accessible to all.",
     chain: "Tron",
-    logo: `${baseIconsUrl}/sunswap.png`,
+    logo: `${baseIconsUrl}/sunswap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "just",
@@ -14966,7 +14966,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "888",
-  name: "Renvault",
+  name: "Revault",
   address: "bsc:0x4fdd92bd67acf0676bfc45ab7168b3996f7b4a3b",
   symbol: "REVA",
   url: "https://www.revault.network/",

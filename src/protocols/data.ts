@@ -14965,4 +14965,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "SwapperChan",
   listedAt: 1637511326
 },
+{
+  id: "888",
+  name: "Renvault",
+  address: "bsc:0x4fdd92bd67acf0676bfc45ab7168b3996f7b4a3b",
+  symbol: "REVA",
+  url: "https://www.revault.network/",
+  description: "Renvault aims to become the Google search of Defi. Revault was born to solve the two major pains in Defi - finding the right place (including risk) to invest your assets, and maintaining that position to always be on optimum.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/renvault.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "revault-network",
+  cmcId: "12754",
+  category: "Yield",
+  chains: ["Binance"],
+  module: "renvault/index.js",
+  twitter: "revaultnetwork",
+  audit_links: ["https://paladinsec.co/projects/revault-network/",
+                "https://www.certik.org/projects/revault"
+  ],
+  listedAt: 1637556774,
+  },
 ] as Protocol[];

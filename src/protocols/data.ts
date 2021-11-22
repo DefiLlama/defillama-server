@@ -13406,7 +13406,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 {
   id: "810",
   name: "Zenlink",
-  address: "moonriver:0x3E6E965713FefA6baf414194eFcb6fb45fD12B10",
+  address: "moonriver:0x0f47ba9d9Bde3442b42175e51d6A367928A1173B",
   symbol: "ZLK",
   url: "https://zenlink.pro",
   description: "Zenlink is a cross-chain DEX protocol based on Polkadot.",

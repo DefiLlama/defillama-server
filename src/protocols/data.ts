@@ -1648,14 +1648,14 @@ export default [
   },
   {
     id: "189",
-    name: "1inch",
+    name: "1inch Network",
     address: "0x111111111117dc0aa78b770fa6a738034120c302",
     symbol: "1INCH",
-    url: "https://1inch.exchange/",
+    url: "https://1inch.io",
     description:
-      "1inch offers the best rates by discovering the most efficient swapping routes across all leading DEXes.",
+      "The 1inch Network unites decentralized protocols whose synergy enables the most lucrative, fastest and protected operations in the DeFi space.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/1inch.jpg`,
+    logo: `${baseIconsUrl}/1inch-network.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "1inch",

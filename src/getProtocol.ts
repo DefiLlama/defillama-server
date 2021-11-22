@@ -118,6 +118,12 @@ const handler = async (
       tokens: response.tokens
     }
   }
+  if(protocolData.name==="Set Protocol"){
+    delete response.tokensInUsd;
+    delete response.tokens;
+    delete response.chainTvls.Ethereum.tokensInUsd;
+    delete response.tokens;
+  }
 
   return successResponse(response, 10 * 60); // 10 mins cache
 };

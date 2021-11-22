@@ -380,6 +380,8 @@ export function getChainDisplayName(normalizedChain: string):string {
       return "OKExChain"
     case "defichain":
       return "DefiChain"
+    case "stacks":
+      return "Stacks"
     case "polynetwork":
       return "PolyNetwork"
     case "eos":

@@ -15007,4 +15007,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "8ight_finance",
     listedAt: 1637560657
   },
+  {
+    id: "890",
+    name: "Oh Finance",
+    address: "0x16ba8efe847ebdfef99d399902ec29397d403c30",
+    symbol: "OH",
+    url: "https://oh.finance",
+    description: "Oh! Finance is a decentralized, yield-generation protocol that offers optimized strategies to do more with your DeFi Dollar. Oh! Finance aggregates strategies from trusted DeFi protocols under a tokenized Yield Index, allowing depositors to gain exposure to multiple protocols with a single, gas-efficient transaction.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/oh-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "oh-finance",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Avalanche", "Ethereum"],
+    module: "oh-finance.js",
+    twitter: "OhFinanceDefi",
+    audit_links: ["https://assets.oh.finance/OhFinance_Halborn_Audit.pdf", "https://assets.oh.finance/OhFinance_ArmorLabs_Audit.pdf"],
+  },
 ] as Protocol[];

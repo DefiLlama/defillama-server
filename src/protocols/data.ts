@@ -14835,7 +14835,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://sohm.finance",
   description: "SOHM is a hybrid of SafeMoon and OHM, a decentralized financial reserve protocol that provides compounding interest through its community-owned and protected treasury.",
   chain: "Binance",
-  logo: `${baseIconsUrl}/marshmallowdefi.png`,
+  logo: `${baseIconsUrl}/safeohm.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: "safe-ohm",

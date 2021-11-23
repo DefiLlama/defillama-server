@@ -312,7 +312,7 @@ export default [
     address: "0x2ba592F78dB6436527729929AAf6c908497cB200",
     symbol: "CREAM",
     url: "https://cream.finance/",
-    description: null,
+    description: "Money markets, liquid staking and protocol-to-protocol lending",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cream-finance.png`,
     audits: "3",

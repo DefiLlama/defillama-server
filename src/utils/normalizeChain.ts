@@ -348,6 +348,11 @@ export const chainCoingeckoIds = {
     symbol: "XLM",
     cmcId: "512",
   },
+  "Boba": {
+    geckoId: "boba-network",
+    symbol: "BOBA",
+    cmcId: "14556",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,

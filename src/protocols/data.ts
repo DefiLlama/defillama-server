@@ -15034,7 +15034,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://onedao.finance",
     description: "The Decentralized Reserve Currency from The Light.",
     chain: "Harmony",
-    logo: `${baseIconsUrl}/oh-finance.jpg`,
+    logo: `${baseIconsUrl}/onedao-finance.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "onedao-finance",

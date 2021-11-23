@@ -12079,7 +12079,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "11794",
     category: "Minting",
     chains: ["Arbitrum"],
-    module: "handle-fi.js",
+    module: "handlefi/index.js",
     twitter: "handle_fi",
     oracles: ["Chainlink"],
     audit_links: ["https://drive.google.com/file/d/1WMbvtLCA07z5Jlg9k4tV76x8yDWV66-Z/view"],

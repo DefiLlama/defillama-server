@@ -15021,7 +15021,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Yield",
     chains: ["Avalanche", "Ethereum"],
-    module: "oh-finance.js",
+    module: "oh-finance/index.js",
     twitter: "OhFinanceDefi",
     audit_links: ["https://assets.oh.finance/OhFinance_Halborn_Audit.pdf", "https://assets.oh.finance/OhFinance_ArmorLabs_Audit.pdf"],
     listedAt: 1637587886,

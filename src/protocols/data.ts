@@ -15404,7 +15404,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://kronosdao.finance",
     description: "A decentralized reserve currency protocol empowering the system for growth and wealth creation.",
     chain: "Klaytn",
-    logo: `${baseIconsUrl}/knit-finance.png`,
+    logo: `${baseIconsUrl}/kronos-dao.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

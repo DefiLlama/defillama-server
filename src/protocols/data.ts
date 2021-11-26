@@ -4159,7 +4159,7 @@ export default [
     url: "https://tulip.garden/",
     description: "The Efficient Solana Yield Aggregator",
     chain: "Solana",
-    logo: `${baseIconsUrl}/tulip-protocol.svg`,
+    logo: `${baseIconsUrl}/tulip-protocol.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "solfarm",

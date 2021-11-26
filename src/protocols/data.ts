@@ -15582,4 +15582,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1637892027,
   },
+  {
+    id: "918",
+    name: "Klondike Finance"
+    address: "0xbf15797bb5e47f6fb094a4abdb2cfc43f77179ef",
+    symbol: "KLONX",
+    url: "https://klondike.finance",
+    description: "Algorithmic synthetics platform",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/klondike-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "klondike-finance-v2",
+    cmcId: "8892",
+    category: "Assets",
+    chains: ["Ethereum"],
+    module: "klondike/index.js",
+    twitter: "KlondikeFinance",
+    listedAt: 1637892596,
+  },
 ] as Protocol[];

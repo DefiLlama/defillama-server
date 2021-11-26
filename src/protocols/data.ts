@@ -12143,7 +12143,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "12827",
     category: "Yield",
     chains: ["Fantom"],
-    module: "scarecrow-raven/index.js",
+    module: "scarecrow/index.js",
     twitter: "scarecrowdefi",
     audit_links: ["https://app.scarecrow.fi/audits/Solidproof.pdf"],
     listedAt: 1635540063, 

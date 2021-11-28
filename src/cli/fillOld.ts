@@ -83,6 +83,9 @@ const main = async () => {
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );
+if(adapter.timetravel !== undefined){
+  throw new Error("Adapter doesn't support refilling");
+}
   const dailyTvls = await getDailyItems(dailyTvl(protocol.id));
   const dailyTokens = await getDailyItems(dailyTokensTvl(protocol.id));
   const dailyUsdTokens = await getDailyItems(dailyUsdTokensTvl(protocol.id));

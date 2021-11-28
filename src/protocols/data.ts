@@ -15782,5 +15782,5 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "PIDAOFinance" , 
     forkedFrom: "Olympus DAO" ,
     listedAt: 1638126989 ,
-  }
+  },
 ] as Protocol[];

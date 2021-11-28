@@ -15746,7 +15746,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "926",
     name: "Metaversepro" ,
-    address: "0x0a2046C7fAa5a5F2b38C0599dEB4310AB781CC83" ,
+    address: "bsc:0x0a2046C7fAa5a5F2b38C0599dEB4310AB781CC83" ,
     symbol: "META" ,
     url: "https://app.metaverse.pro" ,
     description: "MetaversePRO is the Metaversal Reserve System and $Meta will be the Metaversal Reserve Currency",

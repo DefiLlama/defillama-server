@@ -68,7 +68,7 @@ export async function craftProtocolsResponse(){
           slug: sluggify(protocol),
           tvl: lastHourlyRecord.tvl,
           chainTvls,
-          chains,
+          chains: chains.sort((b, a) => (chainTvls[b] - chainTvls[a])),
           chain: getDisplayChain(protocol.chains),
           change_1h: getPercentChange(
             lastHourlyRecord.tvlPrev1Hour,

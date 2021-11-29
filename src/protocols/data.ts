@@ -15785,7 +15785,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "928",
-    name: "Fortress DAO",
+    name: "Fortress",
     address: "avax:0xf6d46849db378ae01d93732585bec2c4480d1fd5",
     symbol: "FORT",
     url: "https://app.fortressdao.finance",

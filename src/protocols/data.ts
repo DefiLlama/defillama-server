@@ -13769,7 +13769,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Crodex is a decentralized exchange (DEX), providing liquidity and enabling peer-to-peer transactions on Cronos.",
   chain: "Cronos",
   logo: `${baseIconsUrl}/crodex.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -13778,6 +13778,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "crodex/index.js",
   twitter: "crodexapp",
   forkedFrom: ["Uniswap"],
+  audit_links: ["https://hacken.io/audits/#crodex"] ,
   listedAt: 1636671573,
 },
 {

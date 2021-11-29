@@ -15886,24 +15886,5 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/XensaFi/xensa-audits"],
     listedAt: 1638134542,
   },
-  {
-    id: "933",
-    name: "Nidhi-Dao" ,
-    address: "Polygon:0x057E0bd9B797f9Eeeb8307B35DbC8c12E534c41E" ,
-    symbol: "GURU" ,
-    url: "https://www.nidhidao.finance" ,
-    description: "Nidhi is building a decentralized community-owned currency, with the vision of creating wealth and abundance for all.",
-    chain: "Polygon",
-    logo: `${baseIconsUrl}/nidhidao.jpg` ,
-    audits: "0" , 
-    audit_note: null ,
-    gecko_id: "nidhi-dao" ,
-    cmcId:  "15074" ,
-    category: "Assets" ,
-    chains: ["Polygon"] ,
-    module: "nidhi-dao/index.js" ,
-    twitter: "NidhiDAO" ,
-    forkedFrom: ["Olympus Dao"], 
-    listedAt: 1638135181 ,
-  } 
-] as Protocol[];
+  
+  ] as Protocol[];

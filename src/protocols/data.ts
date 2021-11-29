@@ -15974,7 +15974,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "The first high interest blockchain certificate of deposit.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hex.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "hex",
     cmcId: "5015",
@@ -15982,6 +15982,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "hex/index.js",
     twitter: "HEXcrypto",
+    audit_links: 
+      [
+        "https://hex.com/docs/HEX-Security-Audit-by-CoinFabrik-DEC2019.pdf",
+        "https://hex.com/docs/HEX%20Economics%20Audit%20by%20CoinFabrik.pdf"
+      ],
     listedAt: 1638193942,
   },
   {
@@ -16063,5 +16068,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "unipower/index.js",
     twitter: "UniPowerToken",
     listedAt: 1638212710,
+  },
+  {
+    id: "942",
+    name: "KnightSwap Finance",
+    address: "bsc:0xD23811058Eb6e7967D9a00dc3886E75610c4AbBa",
+    symbol: "KNIGHT",
+    url: "https://knightswap.financial",
+    description: "Trade, Earn, & Raid To Stack Your Riches While Securely Storing Them Within Our Castle Vaults",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/soda-protocol.png` ,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    module: "knightswap/index.js",
+    twitter: "WIZARD_BSC",
+    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/November/KnightSwap.pdf"],
+    forkedFrom: ["Uniswap"],
+    listedAt: 1638214443,
   },
 ] as Protocol[];

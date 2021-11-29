@@ -16024,4 +16024,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638200165,
   },
+  {
+    id: "940",
+    name: "Soda Protocol",
+    address: null ,
+    symbol: "-",
+    url:"https://sodaprotocol.com/" ,
+    description: "A Smart Lending Protocol with Credit System",
+    chain: "Solana" ,
+    logo:`${baseIconsUrl}/soda-protocol.png` ,
+    audits:"2" ,
+    audit_note: null,
+    gecko_id: null ,
+    cmcId: null ,
+    category: "Lending" ,
+    chains: ["Solana"] ,
+    module: "soda-protocol/index.js" ,
+    twitter: "SodaProtocol" ,
+    audit_links: ["https://www.certik.com/projects/sodaprotocol"] ,
+    oracles: ["Chainlink" , "Pyth" , "Switchboard"] ,
+    listedAt: 1638211002
+
+  }
 ] as Protocol[];

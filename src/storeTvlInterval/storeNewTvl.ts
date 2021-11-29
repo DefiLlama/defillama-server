@@ -71,10 +71,12 @@ export default async function (
         errorMessage
       );
     } else {
+      const errorMessage = `TVL for ${protocol.name} has >2x (${change})`
       reportError(
-        `TVL for ${protocol.name} has >2x (${change})`,
+        errorMessage,
         protocol.name
       );
+      await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
     }
   }
   let tvlPrev1Day =  (await lastDailyTVLRecord).tvl

@@ -16043,7 +16043,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SodaProtocol" ,
     audit_links: ["https://www.certik.com/projects/sodaprotocol"] ,
     oracles: ["Chainlink" , "Pyth" , "Switchboard"] ,
-    listedAt: 1638211002
-
-  }
+    listedAt: 1638211002,
+  },
+  {
+    id: "941",
+    name: "UniPower",
+    address: "0xF2f9A7e93f845b3ce154EfbeB64fB9346FCCE509",
+    symbol: "POWER",
+    url: "https://unipower.network",
+    description: "UniPower is the first experimental PoL (Proof of Liquidity) token - powered by the uniswap dex",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/soda-protocol.png` ,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "unipower",
+    cmcId: "5660",
+    category: "Staking",
+    chains: ["Polygon", "Ethereum"],
+    module: "unipower/index.js",
+    twitter: "UniPowerToken",
+    listedAt: 1638212710,
+  },
 ] as Protocol[];

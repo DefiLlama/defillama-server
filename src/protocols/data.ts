@@ -13778,6 +13778,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "crodex/index.js",
   twitter: "crodexapp",
   forkedFrom: ["Uniswap"],
+  audit_links: ["https://hacken.io/audits/#crodex"],
   listedAt: 1636671573,
 },
 {

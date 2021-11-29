@@ -2055,11 +2055,11 @@ export default [
   {
     id: "210",
     name: "yAxis",
-    address: "0xb1dc9124c395c1e97773ab855d66e879f053a289",
-    symbol: "YAX",
+    address: "0x0ada190c81b814548ddc2f6adc4a689ce7c1fe73",
+    symbol: "YAXIS",
     url: "https://www.yaxis.io",
     description:
-      "yAxis MetaVault v2 is an aggregator of yield aggregators, allowing crypto holders to earn interest on their assets through a versatile, multi-strategy vault.",
+      "yAxis v3 is a meta yield aggregator allowing users to earn interest on digital assets like ETH, stablecoins, LINK and BTC through the Canonical Vaults. Governance allows YAXIS holders to boost their personal yield and vote to further increase vault yields",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/yaxis.jpg`,
     audits: "2",

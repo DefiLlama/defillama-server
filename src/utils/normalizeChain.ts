@@ -358,6 +358,16 @@ export const chainCoingeckoIds = {
     symbol: "BOBA",
     cmcId: "14556",
   },
+  "Metis": {
+    geckoId: "metis-token",
+    symbol: "METIS",
+    cmcId: "9640",
+  },
+  "Ubiq": {
+    geckoId: "ubiq",
+    symbol: "UBQ",
+    cmcId: "588",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -438,6 +448,10 @@ export function getChainDisplayName(normalizedChain: string):string {
       return "Stellar"
     case "shiden":
       return "Shiden"
+    case "metis":
+      return "Metis"
+    case "ubiq":
+      return "Ubiq"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

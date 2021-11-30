@@ -16110,4 +16110,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap"],
     listedAt: 1638297195,
   },
+  {
+    id: "944" ,
+    name: "Platypus-finance" ,
+    address: null ,
+    symbol: "-" ,
+    url: "https://platypus.finance" ,
+    description: "Platypus is a noble stableswap protocol." ,
+    chain: "Avax" ,
+    logo: `${baseIconsUrl}/platypus.png` ,
+    audits: "0" ,
+    audit_note: null ,
+    gecko_id: null ,
+    cmcId: null ,
+    category: "Dexes" ,
+    chains: ["Avax"] ,
+    module: "platypus-finance/index.js" ,
+    twitter: "Platypusdefi" ,
+    listedAt: 1638299790
+  }
 ] as Protocol[];

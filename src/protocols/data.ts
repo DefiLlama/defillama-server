@@ -15997,7 +15997,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://bitbtc.money/#/",
     description: "BitANT is a MEME platform token of the BitBTC Protocol project.",
     chain: "Optimism",
-    logo: `${baseIconsUrl}/bitant.jpg`,
+    logo: `${baseIconsUrl}/bitant.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "bitant",

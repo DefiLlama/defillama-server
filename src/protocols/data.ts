@@ -15489,7 +15489,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/defrost.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "defrost-finance",
     cmcId: null,
     category: "Minting",
     chains: ["Avalanche"],

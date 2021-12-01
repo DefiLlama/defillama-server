@@ -16116,7 +16116,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: null ,
     symbol: "-" ,
     url: "https://platypus.finance" ,
-    description: "Platypus is a noble stableswap protocol." ,
+    description: "Platypus finance is a novel open-liquidity stableswap protocol that aims to remove blockchain divergence." ,
     chain: "Avalanche" ,
     logo: `${baseIconsUrl}/platypus.png` ,
     audits: "0" ,
@@ -16128,5 +16128,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "platypus-finance/index.js" ,
     twitter: "Platypusdefi" ,
     listedAt: 1638299790
+  },
+  {
+    id: "945" ,
+    name: "Jade-Protocol" ,
+    address: "bsc:0x7ad7242A99F21aa543F9650A56D141C57e4F6081" ,
+    symbol: "JADE" ,
+    url: "https://jadeprotocol.io/" ,
+    description: "Jade Protocol is a decentralized reserve currency platform on Binance Smart Chain" ,
+    chain: "Binance" ,
+    logo: `${baseIconsUrl}/jade-protocol.jpg` ,
+    audits: "0" ,
+    audit_note: null ,
+    gecko_id: "jade-protocol" ,
+    cmcId: "14938" ,
+    category: "Assets" ,
+    chains: ["Binance"] ,
+    module: "jade-protocol/index.js" ,
+    twitter: "JadeProtocol" ,
+    listedAt: 1638309367,
   }
 ] as Protocol[];

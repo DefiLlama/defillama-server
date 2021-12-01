@@ -16235,5 +16235,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"] , 
     module: "/lobis.js" ,
     twitter: "LobisHQ" ,
+    listedAt: 1638366199 ,
   }
 ] as Protocol[];

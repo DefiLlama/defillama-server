@@ -16192,5 +16192,30 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   
   ] ,
     listedAt: 1638358117 ,
-  }
+  },
+  {
+    id: "948",
+    name: "MonoX",
+    address: "0x2920f7d6134f4669343e70122ca9b8f19ef8fa5d",
+    symbol: "MONO",
+    url: "https://monox.finance/",
+    description: "MonoX is a new DeFi protocol using a single token design for liquidity pools (instead of using pool pairs). This is made possible by grouping deposited tokens into a virtual pair with the vCASH stablecoin.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/monox.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "monox",
+    cmcId: "1509",
+    category: "Dexes",
+    chains: ["Ethereum, Polygon"],
+    module: "monox/index.js",
+    twitter: "MonoXFinance",
+    audit_links: [
+      "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/MonoX_Smart_Contract_Security_Audit_Report_Halborn_v1_1.pdf?hss_channel=lcp-28871137",
+      "https://drive.google.com/file/d/1nFS62QDifV4B8Mjo9Pj_rJ4fUujeVfq_/view?usp=sharing",
+      "https://drive.google.com/file/d/1WtlRAAfBF4HyQcUHKSJtT6MD7-mPN5Vz/view?usp=sharing",
+      "https://drive.google.com/file/d/1V2GRFZYIXPY3omYndR0N_NgnDM9LM_3B/view?usp=sharing"
+    ],
+    listedAt: 1638360205,
+  },
 ] as Protocol[];

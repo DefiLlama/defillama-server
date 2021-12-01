@@ -16112,7 +16112,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "944" ,
-    name: "Platypus-finance" ,
+    name: "Platypus Finance" ,
     address: null ,
     symbol: "-" ,
     url: "https://platypus.finance" ,

@@ -16218,4 +16218,22 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1638360205,
   },
+  {
+    id: "949" ,
+    name: "Lobis" ,
+    address: "eth:0xdec41db0c33f3f6f3cb615449c311ba22d418a8d" ,
+    symbol: "LOBI" ,
+    url: "https://www.lobis.finance" ,
+    description: "Lobis is an Approved Olympus fork (oh yes) specialized to ensure that OlympusDAO can participate in DeFi governance. The OHMies heard our voice and joined our cause." ,
+    chain: "Ethereum" ,
+    logo: `${baseIconsUrl}/lobis.jpg`,
+    audits: "0" ,
+    audit_note: null ,
+    gecko_id: "lobis" ,
+    cmcId: "15093" ,
+    category: "Assets" ,
+    chains: ["Ethereum"] , 
+    module: "/lobis.js" ,
+    twitter: "LobisHQ" ,
+  }
 ] as Protocol[];

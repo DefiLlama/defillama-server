@@ -16116,7 +16116,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: null ,
     symbol: "-" ,
     url: "https://platypus.finance" ,
-    description: "Platypus is a noble stableswap protocol." ,
+    description: "Platypus finance is a novel open-liquidity stableswap protocol that aims to remove blockchain divergence." ,
     chain: "Avalanche" ,
     logo: `${baseIconsUrl}/platypus.png` ,
     audits: "0" ,

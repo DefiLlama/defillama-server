@@ -16085,7 +16085,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Binance"],
     module: "knightswap/index.js",
-    twitter: "WIZARD_BSC",
+    twitter: "KnightEcosystem",
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/November/KnightSwap.pdf"],
     forkedFrom: ["Uniswap"],
     listedAt: 1638214443,

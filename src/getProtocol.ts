@@ -68,8 +68,10 @@ const handler = async (
   response.chainTvls = {};
   const chains:string[] = []
   response.chains = chains
+  const currentChainTvls: {[chain:string]:number} = {};
+  response.currentChainTvls = currentChainTvls;
 
-  Object.keys(lastUsdHourlyRecord!).map((chain) => {
+  Object.entries(lastUsdHourlyRecord!).map(([chain, chainTvl]) => {
     if(nonChains.includes(chain) && chain !== "tvl"){
       return
     }
@@ -77,6 +79,9 @@ const handler = async (
     const displayChainName = getChainDisplayName(chain)
     if(chainCoingeckoIds[displayChainName]){
       chains.push(displayChainName)
+    }
+    if(chain !== "tvl"){
+      currentChainTvls[displayChainName] = chainTvl;
     }
     const container = {} as any;
 

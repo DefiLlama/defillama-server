@@ -12489,7 +12489,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Tranquil Finance is the first algorithmic money market protocol on Harmony. Tranquil enables users to lend and borrow assets permissionlessly on a blockchain with very fast and cheap transactions.",
     chain: "Harmony",
     logo: `${baseIconsUrl}/tranq.svg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "tranquil-finance",
     cmcId: null,
@@ -12499,6 +12499,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "tranquil_fi",
     oracles: ["TWAP"],
     forkedFrom: ["Compound"],
+    audit_links: ["https://www.certik.com/projects/tranquil-finance"],
     listedAt: 1635819874,
   },
   {

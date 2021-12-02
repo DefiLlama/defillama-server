@@ -378,6 +378,11 @@ export const chainCoingeckoIds = {
     symbol: "EVER",
     cmcId: "7505",
   },
+  "VeChain": {
+    geckoId: "vechain",
+    symbol: "VET",
+    cmcId: "3077",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -466,6 +471,8 @@ export function getChainDisplayName(normalizedChain: string):string {
       return "Mixin"
     case "everscale":
       return "Everscale"
+    case "vechain":
+      return "VeChain"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -12492,7 +12492,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "2",
     audit_note: null,
     gecko_id: "tranquil-finance",
-    cmcId: null,
+    cmcId: "14653",
     category: "Lending",
     chains: ["Harmony"],
     module: "tranquil/index.js",

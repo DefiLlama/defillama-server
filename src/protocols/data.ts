@@ -16403,4 +16403,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits_link: ["https://flamedefi.io/images/functori-flamedefi-dex-report-2.1.pdf"] ,
     listedAt: 1638377772 ,
   },
+  {
+    id: "958" ,
+    name: "Ester Finance" ,
+    address: "fantom:0x181f3f22c9a751e2ce673498a03e1fdfc0ebbfb6" ,
+    symbol: "EST" ,
+    url: "https://ester.finance" ,
+    description: "Ester is the first native yield farming optimizer on Fantom network.",
+    chain: "Fantom" ,
+    logo: `${baseIconsUrl}/esterfinance.png`,
+    audits: "0" ,
+    audit_note: null ,
+    gecko_id: "ester-finance" ,
+    cmcId: null ,
+    category: "Yield" ,
+    chains: ["Fantom"] ,
+    module: "ester/index.js" ,
+    twitter: "EsterFinance" ,
+    listed_at: 1638458112 ,
+  }
 ] as Protocol[];

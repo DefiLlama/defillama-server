@@ -910,7 +910,7 @@ export default [
     cmcId: "7841",
     category: "Yield",
     chains: ["Ethereum"],
-    module: "idle.js",
+    module: "idle/index.js",
     twitter: "idlefinance",
     audit_links: ["https://certificate.quantstamp.com/full/idle-finance"],
     oracles: ["Chainlink"],

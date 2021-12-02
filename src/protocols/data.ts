@@ -16420,7 +16420,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"] ,
     module: "ester/index.js" ,
     twitter: "EsterFinance" ,
-    listed_at: 1638458112 ,
+    listedAt: 1638458112 ,
   },
   {
     id: "959" ,
@@ -16439,7 +16439,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "BSC"] ,
     module: "alpacacity/index.js" ,
     twitter: "CityAlpaca" ,
-    listed_at: 1638460518 ,
+    listedAt: 1638460518 ,
   },
   {
     id: "960" ,
@@ -16458,7 +16458,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["SmartBCH"] ,
     module: "1bch/index.js" ,
     twitter: "1BCHOfficial" ,
-    listed_at: 1638461835 ,
+    listedAt: 1638461835 ,
   },
   {
     id: "961" ,
@@ -16477,7 +16477,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"] ,
     module: "fantOHM.js" ,
     twitter: "FantohmDAO" ,
-    listed_at: 1638463469 ,
+    listedAt: 1638463469 ,
   },
   {
     id: "962" ,
@@ -16496,7 +16496,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"] ,
     module: "retreeb.js" ,
     twitter: "retreeb_io" ,
-    listed_at: 1638464179 ,
+    listedAt: 1638464179 ,
   },
   {
     id: "963" ,
@@ -16515,7 +16515,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["VeChain"] ,
     module: "vexchange/index.js" ,
     twitter: "VexchangeIO" ,
-    listed_at: 1638464939 ,
+    listedAt: 1638464939 ,
   },
   {
     id: "964" ,
@@ -16534,6 +16534,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"] ,
     module: "nemesis-dao/index.js" ,
     twitter: "nemesis_dao" ,
-    listed_at: 1638483973 ,
-  }
+    listedAt: 1638483973 ,
+  },
 ] as Protocol[];

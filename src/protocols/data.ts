@@ -12999,7 +12999,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: null,
   cmcId: null,
   category: "Lending",
-  chains: ["Fuse", "Lending"],
+  chains: ["Binance", "Fantom"],
   module: "olafinance/index.js",
   twitter: "ola_finance",
   audit_links: ["https://olafinance.gitbook.io/ola-finance/audit-reports/solidified-and-zk-labs"],

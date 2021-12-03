@@ -16614,5 +16614,28 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "zai.js" ,
     twitter: "zaifinance" ,
     listedAt: 1638563610 ,
-  }
+  },
+  {
+    id: "969" ,
+    name: "DeHive" ,
+    address: "0x62dc4817588d53a056cbbd18231d91ffccd34b2a" ,
+    symbol: "DHV" ,
+    url: "https://dehive.finance" ,
+    description: "DeHive is a multi-chain asset management protocol that provides smart asset management of tokenized portfolios." ,
+    chain: "Ethereum" ,
+    logo: `${baseIconsUrl}/dehive.png` ,
+    audits: "2" ,
+    audit_note: null ,
+    gecko_id: "dehive" ,
+    cmcId: "8867" ,
+    category: "Indexes" ,
+    chains: ["Ethereum" , "Polygon" , "Binance"] ,
+    module: "dehive/index.js" ,
+    twitter: "dehive_finance" ,
+    audit_links: [
+      "https://github.com/DeHive-finance/dehive-audits/blob/main/DeHive-Hacken-Audit.pdf" ,
+      "https://github.com/DeHive-finance/dehive-audits/blob/main/DeHive-Zokyo-Audit.pdf" 
+      ] ,
+    listedAt: 1638565180 ,
+  }, 
 ] as Protocol[];

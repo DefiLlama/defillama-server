@@ -16596,4 +16596,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BabylonFinance",
     listedAt: 1638501613,
   },
+  {
+    id: "968" ,
+    name: "Zai Finance" ,
+    address: "0x9d1233cc46795e94029fda81aaadc1455d510f15" ,
+    symbol: "ZAI" ,
+    url: "https://zaiprotocol.finance/" ,
+    description: "Zero Collateral Dai (ZAI) is a hybrid synthetic-algorithmic stablecoin, using a self-stabilizing elastic supply mechanism." ,
+    chain: "Ethereum" ,
+    logo: `${baseIconsUrl}/zai-finance.jpg` ,
+    audits: "0" ,
+    audit_note: null ,
+    gecko_id: "zero-collateral-dai" ,
+    cmcId: null ,
+    category: "Minting" ,
+    chains: ["Ethereum"] ,
+    module: "zai.js" ,
+    twitter: "zaifinance" ,
+    listedAt: 1638563610 ,
+  }
 ] as Protocol[];

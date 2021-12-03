@@ -1096,8 +1096,8 @@ export default [
   {
     id: "161",
     name: "BoringDAO",
-    address: "0x3c9d6c1c73b31c837832c72e04d3152f051fc1a9",
-    symbol: "BOR",
+    address: "0xbc19712feb3a26080ebf6f2f7849b417fdd792ca",
+    symbol: "BORING",
     url: "https://www.boringdao.com/",
     description:
       "BoringDAO is a decentralized bridge that connects all blockchain assets, we offer users a safe way to maximize their utilization rate of crypto assets.",

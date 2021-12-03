@@ -16624,7 +16624,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "DeHive is a multi-chain asset management protocol that provides smart asset management of tokenized portfolios." ,
     chain: "Ethereum" ,
     logo: `${baseIconsUrl}/dehive.png` ,
-    audits: "0" ,
+    audits: "2" ,
     audit_note: null ,
     gecko_id: "dehive" ,
     cmcId: "8867" ,
@@ -16632,6 +16632,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum" , "Polygon" , "Binance"] ,
     module: "dehive/index.js" ,
     twitter: "dehive_finance" ,
+    audit_links: [
+      "https://github.com/DeHive-finance/dehive-audits/blob/main/DeHive-Hacken-Audit.pdf" ,
+      "https://github.com/DeHive-finance/dehive-audits/blob/main/DeHive-Zokyo-Audit.pdf" 
+      ] ,
     listedAt: 1638565180 ,
-  }
+  }, 
 ] as Protocol[];

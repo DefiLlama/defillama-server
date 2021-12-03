@@ -152,6 +152,13 @@ functions:
       - http:
           path: dataset/{protocol}
           method: get
+  rawProtocols:
+    handler: src/getRawProtocols.default
+    timeout: 10
+    events:
+      - http:
+          path: rawprotocols
+          method: get
   storeProtocols:
     handler: src/storeGetProtocols.default
     timeout: 60

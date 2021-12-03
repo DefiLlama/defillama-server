@@ -434,6 +434,8 @@ export function getChainDisplayName(normalizedChain: string):string {
       return "IoTeX"
     case "thundercore":
       return "ThunderCore"
+    case "telos"
+      return "Telos"
     case "hpb":
       return "HPB"
     case "energyweb":

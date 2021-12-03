@@ -16138,7 +16138,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "945" ,
-    name: "Jade-Protocol" ,
+    name: "Jade Protocol" ,
     address: "bsc:0x7ad7242A99F21aa543F9650A56D141C57e4F6081" ,
     symbol: "JADE" ,
     url: "https://jadeprotocol.io/" ,

@@ -2195,7 +2195,6 @@ export default [
     audit_links: ["https://docs.auctus.org/security#audits"],
     oracles: ["Chainlink"],
   },
-  /*
   {
     id: "217",
     name: "Connext",
@@ -2215,7 +2214,6 @@ export default [
     twitter: "ConnextNetwork",
     audit_links: ["https://drive.google.com/file/d/1l42vxzHwLXrKU10v3FutG2DWthU43vB8/view"],
   },
-  */
   {
     id: "218",
     name: "cVault Finance",

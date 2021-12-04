@@ -16657,4 +16657,28 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DriftProtocol",
     listedAt: 1638568951,
   },
+  {
+    id: "971",
+    name: "NFTb",
+    address: "bsc:0xde3dbbe30cfa9f437b293294d1fd64b26045c71a",
+    symbol: "NFTB",
+    url: "https://nftb.io",
+    description: "Complete Multi-Chain NFT & DeFi Platform for Communities: Premium NFT Marketplace, Farming/Staking, Launchpad",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/nftb.jpg` ,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "nftb",
+    cmcId: "9545",
+    category: "Yield",
+    chains: ["Binance"],
+    module: "nftb/index.js",
+    twitter: "nftbmarket",
+    audit_links: 
+    [
+      "https://nftb.io/[NFTB_07072021]_SC_Audit_Report.pdf", 
+      "https://blog.nftb.io/audit-results-hacken-cd636cb01feb"
+    ],
+  listedAt: 1638580947,
+  },
 ] as Protocol[];

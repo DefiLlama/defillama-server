@@ -5,28 +5,6 @@ on:
     branches: [ master ]
     
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Get Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - run: npm ci
-    - run: git submodule update --init --recursive
-    - run: npm run build
-      env:
-        ETHEREUM_RPC: ETHEREUM_RPC
-        POLYGON_RPC: POLYGON_RPC
-        BSC_RPC: BSC_RPC
-        FANTOM_RPC: FANTOM_RPC
-        ARBITRUM_RPC: ARBITRUM_RPC
-        OPTIMISM_RPC: OPTIMISM_RPC
-        XDAI_RPC: XDAI_RPC
-        HARMONY_RPC: HARMONY_RPC
-        OUTDATED_WEBHOOK: OUTDATED_WEBHOOK
-        SPIKE_WEBHOOK: SPIKE_WEBHOOK
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest

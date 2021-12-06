@@ -16845,7 +16845,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "WannaSwap",
     address: "0x7faA64Faf54750a2E3eE621166635fEAF406Ab22",
     symbol: "WANNA",
-    url: "https://app.partyswap.io",
+    url: "https://wannaswap.finance",
     description: "WannaSwap is the Liquidity Central built on NEAR's Aurora EVM",
     chain: "Aurora",
     logo: `${baseIconsUrl}/wannaswap.jpg` ,

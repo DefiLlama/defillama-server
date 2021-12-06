@@ -84,6 +84,18 @@ test("no id is repeated", async () => {
   }
 });
 
+test("no coingeckoId is repeated", async () => {
+  const ids = [];
+  for (const protocol of protocols) {
+    const id = protocol.gecko_id
+    if(typeof id === "string"){
+      expect(ids).not.toContain(id);
+      ids.push(id);
+    }
+  }
+});
+
+
 test("icon exists", async () => {
   for (const protocol of protocols) {
     const icon = protocol.logo?.substr(baseIconsUrl.length + 1);

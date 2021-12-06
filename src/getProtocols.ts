@@ -8,6 +8,7 @@ import {
   nonChains,
   chainCoingeckoIds,
   extraSections,
+  transformNewChainName
 } from "./utils/normalizeChain";
 import dynamodb, { TableName } from "./utils/dynamodb";
 
@@ -19,7 +20,7 @@ export function getPercentChange(previous: number, current: number) {
   return change;
 }
 
-export async function craftProtocolsResponse() {
+export async function craftProtocolsResponse(useNewChainNames: boolean) {
   const coinMarketsPromises = [];
   for (let i = 0; i < protocols.length; i += 100) {
     coinMarketsPromises.push(
@@ -57,14 +58,14 @@ export async function craftProtocolsResponse() {
           if (nonChains.includes(chain)) {
             return;
           }
-          const chainDisplayName = getChainDisplayName(chain);
+          const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
           chainTvls[chainDisplayName] = chainTvl;
           if (chainCoingeckoIds[chainDisplayName] !== undefined) {
             chains.push(chainDisplayName);
           }
         });
         if (chains.length === 0) {
-          const chain = protocol.chain;
+          const chain = useNewChainNames?transformNewChainName(protocol.chain) : protocol.chain;
           if (chainTvls[chain] === undefined) {
             chainTvls[chain] = lastHourlyRecord.tvl;
           }
@@ -85,7 +86,7 @@ export async function craftProtocolsResponse() {
           tvl: lastHourlyRecord.tvl,
           chainTvls,
           chains: chains.sort((a, b) => chainTvls[b] - chainTvls[a]),
-          chain: getDisplayChain(protocol.chains),
+          chain: getDisplayChain(chains),
           change_1h: getPercentChange(
             lastHourlyRecord.tvlPrev1Hour,
             lastHourlyRecord.tvl
@@ -125,7 +126,7 @@ export async function craftProtocolsResponse() {
 const handler = async (
   _event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const response = await craftProtocolsResponse();
+  const response = await craftProtocolsResponse(false);
   return successResponse(response, 10 * 60); // 10 mins cache
 };
 

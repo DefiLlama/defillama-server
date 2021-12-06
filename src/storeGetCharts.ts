@@ -2,7 +2,7 @@ import protocols from "./protocols/data";
 import dynamodb from "./utils/dynamodb";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getClosestDayStartTimestamp } from "./utils/date";
-import { getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompress } from 'zlib'
@@ -80,14 +80,14 @@ const handler = async (_event: any) => {
       sum(sumDailyTvls, "total", timestamp, item.tvl)
       let numChains = 0;
       Object.entries(item).forEach(([chain, tvl])=>{
-        const chainName = getChainDisplayName(chain)
+        const chainName = getChainDisplayName(chain, true)
         if(chainCoingeckoIds[chainName] !== undefined){
           sum(sumDailyTvls, chainName, timestamp, tvl)
           numChains += 1;
         }
       })
       if(numChains === 0){
-        sum(sumDailyTvls, protocol.chain, timestamp, item.tvl)
+        sum(sumDailyTvls, transformNewChainName(protocol.chain), timestamp, item.tvl)
       }
     });
   });

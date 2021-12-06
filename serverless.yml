@@ -124,6 +124,13 @@ functions:
       - http:
           path: protocol/{protocol}
           method: get
+  updatedProtocol:
+    handler: src/getUpdatedProtocol.default
+    timeout: 60
+    events:
+      - http:
+          path: updatedProtocol/{protocol}
+          method: get
   protocolTvl:
     handler: src/getProtocolTvl.default
     events:

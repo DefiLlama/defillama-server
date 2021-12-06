@@ -11,7 +11,7 @@ import {
   hourlyTokensTvl,
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-import { nonChains, getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";
+import { nonChains, getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (balances?.ethereum !== undefined) {
@@ -30,10 +30,8 @@ function replaceLast(historical: HistoricalTvls, last: HourlyTvl) {
   }
 }
 
-const handler = async (
-  event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
-  const protocolName = event.pathParameters?.protocol?.toLowerCase();
+export async function craftProtocolResponse(rawProtocolName:string|undefined, useNewChainNames: boolean){
+  const protocolName = rawProtocolName?.toLowerCase();
   console.log(protocolName)
   const protocolData = protocols.find(
     (prot) => sluggify(prot) === protocolName
@@ -76,7 +74,7 @@ const handler = async (
       return
     }
     const normalizedChain = chain;
-    const displayChainName = getChainDisplayName(chain)
+    const displayChainName = getChainDisplayName(chain, useNewChainNames)
     if(chainCoingeckoIds[displayChainName]){
       chains.push(displayChainName)
     }
@@ -114,7 +112,7 @@ const handler = async (
       }
     }
   })
-  const singleChain = getChainDisplayName(protocolData.chain)
+  const singleChain = transformNewChainName(protocolData.chain)
   if(response.chainTvls[singleChain] === undefined){
     chains.push(singleChain)
     response.chainTvls[singleChain] = {
@@ -130,6 +128,13 @@ const handler = async (
     delete response.chainTvls.Ethereum.tokens;
   }
 
+  return response
+}
+
+const handler = async (
+  event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
+  const response = await craftProtocolResponse(event.pathParameters?.protocol, false)
   return successResponse(response, 10 * 60); // 10 mins cache
 };
 

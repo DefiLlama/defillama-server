@@ -63,6 +63,11 @@ export const chainCoingeckoIds = {
     symbol: "BNB",
     cmcId: "1839",
   },
+  "BSC": {
+    geckoId: "binancecoin",
+    symbol: "BNB",
+    cmcId: "1839",
+  },
   "Avalanche": {
     geckoId: "avalanche-2",
     symbol: "AVAX",
@@ -403,16 +408,25 @@ export const chainCoingeckoIds = {
 
 export const extraSections = ["staking", "pool2", "offers"]
 
-export function getChainDisplayName(normalizedChain: string):string {
+export function transformNewChainName(chain:string){
+  switch (chain) {
+    case "Binance":
+      return "BSC"
+    default:
+      return chain
+  }
+}
+
+export function getChainDisplayName(normalizedChain: string, useNewChainNames: boolean):string {
   if(extraSections.includes(normalizedChain)){
     return normalizedChain
   }
   if(normalizedChain.includes('-')){
-    return normalizedChain.split('-').map(chain=>getChainDisplayName(chain)).join('-')
+    return normalizedChain.split('-').map(chain=>getChainDisplayName(chain, useNewChainNames)).join('-')
   }
   switch (normalizedChain) {
     case "bsc":
-      return "Binance"
+      return useNewChainNames?"BSC":"Binance"
     case "wan":
       return "Wanchain"
     case "kcc":

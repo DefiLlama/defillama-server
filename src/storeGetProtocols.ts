@@ -2,6 +2,9 @@ import { craftProtocolsResponse } from "./getProtocols";
 import { wrapScheduledLambda } from "./utils/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from "zlib";
+import {
+  getChainDisplayName,
+} from "./utils/normalizeChain";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -11,7 +14,7 @@ function compress(data: string) {
 }
 
 const handler = async (_event: any) => {
-  const response = await craftProtocolsResponse();
+  const response = await craftProtocolsResponse(true);
   const trimmedResponse = response.map((protocol) => ({
     category: protocol.category,
     chains: protocol.chains,

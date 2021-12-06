@@ -8418,7 +8418,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "solana:Lrxqnh6ZHKbGy3dcrCED43nsoLkM1LTzU2jRfWe8qUC",
     symbol: "LARIX",
     url: "https://projectlarix.com",
-    description: "Larix is the ultimate lending gateway on Solana",
+    description: "The first Metaverse based Finance Protocol on Solana.",
     chain: "Solana",
     logo: `${baseIconsUrl}/larix.jpg`,
     audits: "2",

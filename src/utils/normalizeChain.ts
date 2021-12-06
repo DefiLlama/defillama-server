@@ -409,7 +409,6 @@ export const chainCoingeckoIds = {
 export const extraSections = ["staking", "pool2", "offers"]
 
 export function transformNewChainName(chain:string){
-  return chain
   switch (chain) {
     case "Binance":
       return "BSC"
@@ -427,7 +426,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
   }
   switch (normalizedChain) {
     case "bsc":
-      return "Binance"
+      return useNewChainNames?"BSC":"Binance"
     case "wan":
       return "Wanchain"
     case "kcc":

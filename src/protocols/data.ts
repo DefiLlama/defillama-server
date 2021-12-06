@@ -13791,7 +13791,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: "shiden:0x722377A047e89CA735f09Eb7CccAb780943c4CB4",
   symbol: "STND",
   url: "https://standard.tech",
-  description: "Standard Protocol is the first Collateralized Rebasable Stablecoin (CRS) protocol for synthetic assets that will operate across multichain ecosystems, with our in-built DEX as a market maker to ensure capital-efficient liquidation process and stability of our stablecoin MeterUSD ($USM). It is also a recipient of the Shiden Network Builders Program Grant, Polygon #DefiForAll Fund and Polkadot Web3 Foundation Grant. Standard Protocol strives to innovate as the next-generation digital asset and prides itself on its global community growth approach",
+  description: "Standard Protocol is the first Collateralized Rebasable Stablecoin (CRS) protocol for synthetic assets that aims to operate across multichain ecosystems. Started from Polkadot  ecosystem, we are now available on Ethereum, Metis and Shiden Network, expanding into Avalanche and Polygon by the end of 2021",
   chain: "Shiden",
   logo: `${baseIconsUrl}/standard-protocol.jpg`,
   audits: "0",

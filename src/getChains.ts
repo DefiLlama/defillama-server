@@ -19,7 +19,7 @@ const handler = async (
       }
       let chainsAdded = 0
       Object.entries(lastTvl).forEach(([chain, chainTvl])=>{
-          const chainName = getChainDisplayName(chain)
+          const chainName = getChainDisplayName(chain, false)
           if(chainCoingeckoIds[chainName] === undefined){
               return
           }

@@ -23,7 +23,7 @@ test("all chains are on chainMap", async () => {
     const module = await importProtocol(protocol)
     Object.entries(module).map(entry=>{
       if(!ignored.includes(entry[0]) && typeof entry[1] === "object" && Object.values(entry[1] as any)){
-        const chain = getChainDisplayName(entry[0])
+        const chain = getChainDisplayName(entry[0], false)
        if(chainCoingeckoIds[chain] === undefined){
          throw new Error(`${chain} should be on chainMap`)
        }

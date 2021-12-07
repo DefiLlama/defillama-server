@@ -2940,6 +2940,7 @@ export default [
       "https://github.com/bifrost-platform/BIFI/blob/master/docs/ENG/(ENG)_BiFi_Token_Hexlant_EN.pdf",
       "https://github.com/bifrost-platform/BIFI/blob/master/docs/ENG/(ENG)_BiFrost_BTC_Extension_CertiK.pdf",
     ],
+    oracles: ["Chainlink", "SushiSwap"],
   },
   {
     id: "254",

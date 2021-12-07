@@ -12202,7 +12202,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Exodia",
     address: "fantom:0x3b57f3feaaf1e8254ec680275ee6e7727c7413c7",
     symbol: "EXOD",
-    url: "https://www.exodia.finance",
+    url: "https://exodia.fi/",
     description: "$EXOD is a decentralized reserve currency that remains unbound by a peg.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/exodia.png`,

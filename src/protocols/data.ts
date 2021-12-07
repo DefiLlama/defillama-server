@@ -2915,7 +2915,6 @@ export default [
     module: "scrt.js",
     twitter: "SecretNetwork",
   },
-/*
   {
     id: "253",
     name: "BiFi",
@@ -2931,11 +2930,17 @@ export default [
     gecko_id: "bifi",
     cmcId: "8132",
     category: "Lending",
-    chains: ["Ethereum", "Binance", "Bitcoin"],
+    chains: ["Ethereum", "Binance", "Bitcoin", "Klaytn"],
     module: "bifi/index.js",
     twitter: "BIFROSTio",
+    audit_links:[
+      "https://github.com/bifrost-platform/BiFi-X/blob/main/docs/bifrost_bifix_audit.pdf",
+      "https://github.com/bifrost-platform/BIFI/blob/master/docs/ENG/(ENG)_BiFi_BIFROST_Extension_Theori.pdf",
+      "https://github.com/bifrost-platform/BIFI/blob/master/docs/ENG/(ENG)_BiFi_Lending_Sooho_EN_Public.pdf",
+      "https://github.com/bifrost-platform/BIFI/blob/master/docs/ENG/(ENG)_BiFi_Token_Hexlant_EN.pdf",
+      "https://github.com/bifrost-platform/BIFI/blob/master/docs/ENG/(ENG)_BiFrost_BTC_Extension_CertiK.pdf",
+    ],
   },
-*/
   {
     id: "254",
     name: "Bunny",
@@ -17065,7 +17070,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "midasdao.js",
     twitter: "Midas_DAO",
-    forkedFrom: "OHM",
+    forkedFrom: ["Olympus DAO"],
     listedAt: 1638897038,
   },
 ] as Protocol[];

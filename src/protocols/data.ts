@@ -89,7 +89,7 @@ export default [
     cmcId: "6538",
     category: "Dexes",
     chains: ["Ethereum", "Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche", "Harmony"],
-    module: "curve.js",
+    module: "curve/index.js",
     twitter: "CurveFinance",
     audit_links: ["https://curve.fi/audits"],
     oracles: ["Chainlink"],
@@ -2631,7 +2631,7 @@ export default [
     cmcId: "8938",
     category: "Dexes",
     chains: ["Binance"],
-    module: "ellipsis.js",
+    module: "ellipsis/index.js",
     twitter: "Ellipsisfi",
     audit_links: [
       "https://github.com/ellipsis-finance/ellipsis-audits/blob/master/010421_Hacken_Ellipsis_SC_Audit_Report.pdf",

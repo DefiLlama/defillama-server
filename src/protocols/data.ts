@@ -16343,7 +16343,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Lending",
     chains: ["Telos"],
-    module: "telosrex.js",
+    module: "telosRex.js",
     twitter: "EOSauthority",
     listedAt: 1638411637,
   },

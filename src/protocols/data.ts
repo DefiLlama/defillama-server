@@ -14443,7 +14443,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: "13106",
   category: "Yield",
   chains: ["Binance", "Polygon", "Harmony", "Fantom", "Avax"],
-  module: "cougar/index.js",
+  module: "cougarswap/index.js",
   twitter: "cougarswap",
   audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/CougarSwap.pdf"],
   listedAt: 1637344672,

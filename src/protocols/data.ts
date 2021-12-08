@@ -16998,7 +16998,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Vaporwave",
     address: "aurora:0x2451dB68DeD81900C4F16ae1af597E9658689734",
     symbol: "VWAVE",
-    url: "www.vaporwave.farm",
+    url: "https://www.vaporwave.farm",
     description: "Vaporwave Finance is a yield optimizer on the Aurora blockchain.",
     chain: "Aurora",
     logo: `${baseIconsUrl}/vaporwave.png`,

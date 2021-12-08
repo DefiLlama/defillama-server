@@ -10181,7 +10181,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "628",
     name: "Float Capital",
-    address: "polygon:-",
+    address: "polygon:0x01309A1Ec476871760D9Ea454628500BCcc1E011",
     symbol: "FLT",
     url: "https://float.capital",
     description: "Float is a novel protocol, creating an efficient synthetic asset marketplace, governed entirely by code, allowing anyone around the world to get involved.",
@@ -10192,7 +10192,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Polygon"],
+    chains: ["Polygon" , "Avalanche"],
     module: "float-capital/index.js",
     twitter: "float_capital",
     audit_links: ["https://code423n4.com/reports/2021-08-floatcapital"],

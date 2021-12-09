@@ -408,6 +408,46 @@ export const chainCoingeckoIds = {
     symbol: "VLX",
     cmcId: "4747",
   },
+  "Polkadot": {
+    geckoId: "polkadot",
+    symbol: "DOT",
+    cmcId: "6636",
+  },
+  "Cosmos": {
+    geckoId: "cosmos",
+    symbol: "ATOM",
+    cmcId: "3794",
+  },
+  "EthereumClassic": {
+    geckoId: "ethereum-classic",
+    symbol: "ETC",
+    cmcId: "1321",
+  },
+  "Sora": {
+    geckoId: "sora",
+    symbol: "XOR",
+    cmcId: "5802",
+  },
+  "Aurora": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+  },
+  "Ronin": {
+    geckoId: null,
+    symbol: "RON",
+    cmcId: null,
+  },
+  "zkSync": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+  },
+  "SmartBCH": {
+    geckoId: "bitcoin-cash",
+    symbol: "BCH",
+    cmcId: "1831",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -515,6 +555,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Velas"
     case "ethereumclassic":
       return "EthereumClassic"
+    case "zksync":
+      return "zkSync"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

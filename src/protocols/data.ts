@@ -26,6 +26,14 @@ export interface Protocol {
 3 -> This protocol is a fork of an existing audited protocol
 */
 
+/*
+`chain` is the first chain of a protocol we tracked at defillama,
+  so if a protocol launches on Ethereum and we start tracking it there, and then it launches on polygon and
+  we start tracking it on both polygon and ethereum, then `chain` should be set to `Ethereum`.
+
+`chains` is not used by the current code, but good to fill it out because it is used in our test to detect errors
+*/
+
 export default [
   {
     id: "1",
@@ -10962,7 +10970,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Avalanche", "HPB", "Fantom", "Ethereum", "Harmony", "GoChain", "Polygon", "Tomochain", "EthereumClassic", "Binance", "Songbird", "Kucoin", "EnergyWeb", "Heco", "OKExChain", "RSK", "xDai", "Moonriver", "Celo", "Arbitrum"],
+    chains: ["Avalanche", "HPB", "Fantom", "Ethereum", "Harmony", "GoChain", "Polygon", "TomoChain", "EthereumClassic", "Binance", "Songbird", "Kucoin", "EnergyWeb", "Heco", "OKExChain", "RSK", "xDai", "Moonriver", "Celo", "Arbitrum"],
     module: "swapcat/index.js",
     twitter: null,
     listedAt: 1634223504,
@@ -11742,7 +11750,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "lua-token",
     cmcId: "7216",
     category: "Dexes",
-    chains: ["Ethereum", "Tomochain"],
+    chains: ["Ethereum", "TomoChain"],
     module: "luaswap/index.js",
     twitter: "LuaSwap",
     audit_links: ["https://github.com/tomochain/luaswap-core/tree/master/audit"],
@@ -12941,7 +12949,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "bagel",
   cmcId: "10547",
   category: "Yield",
-  chains: ["TWAP"],
+  chains: ["Binance"],
   module: "bagel-finance/index.js",
   twitter: "BagelsFinance",
   audit_links: ["https://www.certik.org/projects/bagelsfinance"],
@@ -14442,7 +14450,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "cougar-token",
   cmcId: "13106",
   category: "Yield",
-  chains: ["Binance", "Polygon", "Harmony", "Fantom", "Avax"],
+  chains: ["Binance", "Polygon", "Harmony", "Fantom", "Avalanche"],
   module: "cougarswap/index.js",
   twitter: "cougarswap",
   audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/CougarSwap.pdf"],
@@ -16219,7 +16227,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "monox",
     cmcId: "1509",
     category: "Dexes",
-    chains: ["Ethereum, Polygon"],
+    chains: ["Ethereum", "Polygon"],
     module: "monox/index.js",
     twitter: "MonoXFinance",
     audit_links: [

@@ -159,12 +159,12 @@ functions:
       - http:
           path: dataset/{protocol}
           method: get
-  rawProtocols:
-    handler: src/getRawProtocols.default
+  config:
+    handler: src/getConfig.default
     timeout: 10
     events:
       - http:
-          path: rawprotocols
+          path: config
           method: get
   storeProtocols:
     handler: src/storeGetProtocols.default

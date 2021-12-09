@@ -18,7 +18,7 @@ export function addToChains(chains:string[], chainDisplayName:string){
     chains.push(chainDisplayName);
   } else if(chainDisplayName.includes('-')){
     const chainName = chainDisplayName.split('-')[0]
-    addToChains(chains, chainDisplayName)
+    addToChains(chains, chainName)
   }
 }
 

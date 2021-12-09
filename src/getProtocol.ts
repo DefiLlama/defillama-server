@@ -113,7 +113,7 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
     }
   })
   const singleChain = transformNewChainName(protocolData.chain)
-  if(response.chainTvls[singleChain] === undefined){
+  if(response.chainTvls[singleChain] === undefined && response.chains.length === 0){
     chains.push(singleChain)
     response.chainTvls[singleChain] = {
       tvl: response.tvl,

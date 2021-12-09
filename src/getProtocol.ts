@@ -11,7 +11,7 @@ import {
   hourlyTokensTvl,
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
-import { nonChains, getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
+import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./utils/normalizeChain";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (balances?.ethereum !== undefined) {
@@ -75,9 +75,7 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
     }
     const normalizedChain = chain;
     const displayChainName = getChainDisplayName(chain, useNewChainNames)
-    if(chainCoingeckoIds[displayChainName]){
-      chains.push(displayChainName)
-    }
+    addToChains(chains, displayChainName);
     if(chain !== "tvl"){
       currentChainTvls[displayChainName] = chainTvl;
     }

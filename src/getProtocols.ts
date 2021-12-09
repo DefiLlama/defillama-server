@@ -6,7 +6,7 @@ import {
   getChainDisplayName,
   getDisplayChain,
   nonChains,
-  chainCoingeckoIds,
+  addToChains,
   extraSections,
   transformNewChainName
 } from "./utils/normalizeChain";
@@ -60,9 +60,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
           }
           const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
           chainTvls[chainDisplayName] = chainTvl;
-          if (chainCoingeckoIds[chainDisplayName] !== undefined) {
-            chains.push(chainDisplayName);
-          }
+          addToChains(chains, chainDisplayName);
         });
         if (chains.length === 0) {
           const chain = useNewChainNames?transformNewChainName(protocol.chain) : protocol.chain;

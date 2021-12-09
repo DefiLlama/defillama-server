@@ -5,6 +5,19 @@ on:
     branches: [ master ]
     
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: npm ci
+    - run: git submodule update --init --recursive
+    - run: cd DefiLlama-Adapters && git checkout main && git pull
+    - name: Run tests
+      run: npm t data
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest

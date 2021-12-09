@@ -1,13 +1,14 @@
+const normalizedChainReplacements = {
+  "binance":"bsc",
+  "wanchain": "wan",
+  "kucoin": "kcc",
+} as {
+  [chain:string]:string
+}
+
 export function normalizeChain(chain: string) {
   let normalizedChain = chain.toLowerCase();
-  if (normalizedChain === "binance") {
-    return "bsc";
-  } else if (normalizedChain === "wanchain") {
-    return "wan";
-  } else if (normalizedChain === "kucoin") {
-    return "kcc"
-  }
-  return normalizedChain;
+  return normalizedChainReplacements[normalizedChain] ?? normalizedChain;
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -512,6 +513,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "XDC"
     case "velas":
       return "Velas"
+    case "ethereumclassic":
+      return "EthereumClassic"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

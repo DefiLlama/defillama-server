@@ -119,7 +119,7 @@ export const chainCoingeckoIds = {
     cmcId: "4846",
   },
   "OKExChain": {
-    geckoId: "okexchain",
+    geckoId: "oec-token",
     symbol: "OKT",
     cmcId: "8267",
   },

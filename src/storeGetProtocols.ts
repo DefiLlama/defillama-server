@@ -2,9 +2,6 @@ import { craftProtocolsResponse } from "./getProtocols";
 import { wrapScheduledLambda } from "./utils/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from "zlib";
-import {
-  getChainDisplayName,
-} from "./utils/normalizeChain";
 
 function compress(data: string) {
   return brotliCompressSync(data, {

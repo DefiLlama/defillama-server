@@ -14,7 +14,7 @@ export function normalizeChain(chain: string) {
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
 
 export function addToChains(chains:string[], chainDisplayName:string){
-  if (chainCoingeckoIds[chainDisplayName] !== undefined) {
+  if (chainCoingeckoIds[chainDisplayName] !== undefined && !chains.includes(chainDisplayName)) {
     chains.push(chainDisplayName);
   } else if(chainDisplayName.includes('-')){
     const chainName = chainDisplayName.split('-')[0]

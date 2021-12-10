@@ -1819,12 +1819,12 @@ export default [
   */
   {
     id: "197",
-    name: "bZx",
+    name: "Ooki",
     address: "0x56d811088235F11C8920698a204A5010a788f4b3",
     symbol: "BZRX",
-    url: "https://bzx.network/",
+    url: "https://hello.ooki.com",
     description:
-      "Build applications that empower lenders, borrowers, and traders with the most flexible decentralized finance protocol on Ethereum.",
+      "Ooki is a flexible decentralized finance protocol for margin trading, borrowing, lending and staking on multiple blockchains.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bzx.png`,
     audits: "2",
@@ -1834,7 +1834,7 @@ export default [
     category: "Lending",
     chains: ["Ethereum"],
     module: "bzx.js",
-    twitter: "bZxHQ",
+    twitter: "OokiTrade",
     audit_links: ["https://bzx.network/security"],
     oracles: ["Chainlink"],
   },

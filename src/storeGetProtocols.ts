@@ -35,7 +35,7 @@ const handler = async (_event: any) => {
   noChainResponse.forEach((p) => {
     protocolCategoriesSet.add(p.category);
     p.chains.forEach((c: string) => {
-      chains[c] = (chains[c] ?? 0) + p.chainTvls[c];
+      chains[c] = (chains[c] ?? 0) + (p.chainTvls[c] || 0);
     });
   });
 

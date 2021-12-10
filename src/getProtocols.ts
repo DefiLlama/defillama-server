@@ -8,7 +8,7 @@ import {
   nonChains,
   addToChains,
   extraSections,
-  transformNewChainName
+  transformNewChainName,
 } from "./utils/normalizeChain";
 import dynamodb, { TableName } from "./utils/dynamodb";
 
@@ -63,7 +63,9 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
           addToChains(chains, chainDisplayName);
         });
         if (chains.length === 0) {
-          const chain = useNewChainNames?transformNewChainName(protocol.chain) : protocol.chain;
+          const chain = useNewChainNames
+            ? transformNewChainName(protocol.chain)
+            : protocol.chain;
           if (chainTvls[chain] === undefined) {
             chainTvls[chain] = lastHourlyRecord.tvl;
           }
@@ -76,7 +78,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
               chainTvls[chainSectionName] = chainTvls[section];
             }
           });
-          chains.push(chain);
+          chains.push(getChainDisplayName(chain, useNewChainNames));
         }
         const dataToReturn = {
           ...protocol,

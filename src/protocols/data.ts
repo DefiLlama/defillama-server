@@ -2352,7 +2352,7 @@ export default [
     description:
       "Empowering anyone to mint, trade and redeem non-custodial oracle-less tokenized portfolios.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/domani-finance.png`,
+    logo: `${baseIconsUrl}/domani-protocol.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "dextf",
@@ -2360,7 +2360,7 @@ export default [
     category: "Minting",
     chains: ["Ethereum"],
     module: "dextf/index.js",
-    twitter: "dextfprotocol",
+    twitter: "DomaniProtocol",
     audit_links: ["https://docs.dextf.com/documentation/introduction/security-assessment-report"],
   },
   {

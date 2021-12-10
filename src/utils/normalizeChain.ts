@@ -448,6 +448,11 @@ export const chainCoingeckoIds = {
     symbol: "BCH",
     cmcId: "1831",
   },
+  "Godwoken": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -557,6 +562,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "EthereumClassic"
     case "zksync":
       return "zkSync"
+    case "godwoken":
+      return "Godwoken"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

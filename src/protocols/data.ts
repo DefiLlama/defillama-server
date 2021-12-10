@@ -1826,7 +1826,7 @@ export default [
     description:
       "Ooki is a flexible decentralized finance protocol for margin trading, borrowing, lending and staking on multiple blockchains.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bzx.png`,
+    logo: `${baseIconsUrl}/ooki.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "bzx-protocol",

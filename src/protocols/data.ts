@@ -2345,14 +2345,14 @@ export default [
   },
   {
     id: "224",
-    name: "DEXTF Protocol",
+    name: "Domani Protocol",
     address: "0x5f64ab1544d28732f0a24f4713c2c8ec0da089f0",
     symbol: "DEXTF",
-    url: "https://dextf.com/",
+    url: "https://domani.finance/",
     description:
       "Empowering anyone to mint, trade and redeem non-custodial oracle-less tokenized portfolios.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/dextf-protocol.jpg`,
+    logo: `${baseIconsUrl}/domani-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "dextf",

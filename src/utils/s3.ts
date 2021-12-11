@@ -25,3 +25,14 @@ export async function store(filename: string, body: string | Readable | Buffer, 
     }),
   }).promise()
 }
+
+export async function storeDataset(filename: string, body: string) {
+  await new aws.S3().upload({
+    Bucket: datasetBucket,
+    Key: `temp/${filename}`,
+    Body: body,
+    ACL: "public-read",
+    ContentType: "text/csv"
+  }).promise()
+}
+

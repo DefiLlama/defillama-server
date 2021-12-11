@@ -1,5 +1,5 @@
 require("dotenv").config();
-const protocolToFill = "lixir"
+const protocolToFill = "connext"
 
 import { getProtocol, getBlocksRetry } from "./utils";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";

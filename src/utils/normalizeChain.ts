@@ -453,6 +453,11 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
   },
+  "Callisto": {
+    geckoId: "callisto",
+    symbol: "CLO",
+    cmcId: "2757",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -564,6 +569,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "zkSync"
     case "godwoken":
       return "Godwoken"
+    case "callisto":
+      return "Callisto"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

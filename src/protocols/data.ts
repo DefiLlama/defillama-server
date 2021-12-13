@@ -3029,7 +3029,7 @@ export default [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "xdefi/xdefi.js",
-    twitter: "xdeilab",
+    twitter: "xdefilab",
     audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=7b91209f526407299aee5f99688b62fb2c337a4316a6b305719a9e3cd5442348", "https://www.certik.org/projects/xdefi"],
   },
   {

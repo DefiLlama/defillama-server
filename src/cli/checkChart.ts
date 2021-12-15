@@ -9,9 +9,9 @@ import {
   releaseCoingeckoLock,
 } from "../storeTvlUtils/coingeckoLocks";
 import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
-import {date} from './utils'
+import { date } from './utils'
 
-const projectsToRefill: string[] = [];
+const projectsToRefill: string[] = ["AAVE"];
 const notify = false;
 const deleteRepeated = true;
 const extrapolate = false;
@@ -35,33 +35,37 @@ async function main() {
         });
         if (historicalTvl.Items !== undefined && historicalTvl.Items.length > 0) {
           const items = historicalTvl.Items;
-          let lastItemDate = getClosestDayStartTimestamp(items[0].SK);
-          for (let i = 1; i < items.length; i++) {
+          let lastItemDate = getClosestDayStartTimestamp(items[items.length - 1].SK);
+          for (let i = items.length - 2; i >= 0; i--) {
             const item = items[i];
             const timestamp = getClosestDayStartTimestamp(item.SK);
-            const diff = timestamp - lastItemDate;
+            const diff = lastItemDate - timestamp;
             const under = diff < secondsInDay * 0.5;
             const over = diff > secondsInDay * 1.5;
+            const protocolIsSelected = projectsToRefill.includes(protocol.name)
             if ((over || under) && notify) {
-              console.log(
-                protocol.name.padEnd(19, " "),
-                diff / secondsInDay,
-                date(timestamp),
-                date(lastItemDate)
-              );
+              if (projectsToRefill.length === 0 || protocolIsSelected) {
+                console.log(
+                  protocol.name.padEnd(19, " "),
+                  diff / secondsInDay,
+                  date(timestamp),
+                  date(lastItemDate)
+                );
+              }
             }
-            if (over && projectsToRefill.includes(protocol.name)) {
+            if (!notify && over && protocolIsSelected) {
               let nextTimestamp = lastItemDate;
               do {
                 nextTimestamp = getClosestDayStartTimestamp(
-                  nextTimestamp + secondsInDay
+                  nextTimestamp - secondsInDay
                 );
                 let tvl;
                 if (extrapolate) {
-                  const totalTimeDiff = item.SK - items[i - 1].SK;
+                  throw new Error("Extrapolation is bad, removign this error if you want to continue anyway")
+                  const totalTimeDiff = items[i + 1].SK - item.SK;
                   tvl =
-                    (item.tvl * (nextTimestamp - items[i - 1].SK) +
-                      items[i - 1].tvl * (item.SK - nextTimestamp)) /
+                    (item.tvl * (items[i + 1].SK - nextTimestamp) +
+                      items[i + 1].tvl * (nextTimestamp - item.SK)) /
                     totalTimeDiff;
                   await dynamodb.put({
                     PK: tvlPrefix(protocol.id),
@@ -86,7 +90,7 @@ async function main() {
                   );
                 }
                 console.log(protocol.name, date(nextTimestamp), tvl);
-              } while (nextTimestamp < timestamp);
+              } while (nextTimestamp > timestamp);
             }
             if (under && deleteRepeated) {
               console.log("Delete", protocol.name, timestamp);

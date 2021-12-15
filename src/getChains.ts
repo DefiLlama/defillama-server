@@ -2,11 +2,8 @@ import { successResponse, wrap, IResponse } from "./utils";
 import protocols from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";
-import { secondsInHour } from './utils/date'
 
-const handler = async (
-  _event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
+export async function craftChainsResponse(){
   const chainTvls = {} as {[chain:string]:number}
   await Promise.all(
     protocols.map(async (protocol) => {
@@ -38,7 +35,13 @@ const handler = async (
     cmcId: chainCoingeckoIds[chainName]?.cmcId ?? null,
     name: chainName
   }))
+  return chainData
+}
 
+const handler = async (
+  _event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
+  const chainData = await craftChainsResponse()
   return successResponse(chainData, 10 * 60); // 10 mins cache
 };
 

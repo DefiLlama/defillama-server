@@ -11,6 +11,7 @@ import {
   transformNewChainName,
 } from "./utils/normalizeChain";
 import dynamodb, { TableName } from "./utils/dynamodb";
+import {craftChainsResponse} from "./getChains"
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -124,9 +125,13 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
 }
 
 const handler = async (
-  _event: AWSLambda.APIGatewayEvent
+  event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const response = await craftProtocolsResponse(false);
+  let response = await craftProtocolsResponse(false);
+  if(event.queryStringParameters?.includeChains === "true"){
+    const chainData = await craftChainsResponse()
+    response = [...response, ...chainData]
+  }
   return successResponse(response, 10 * 60); // 10 mins cache
 };
 

@@ -41,7 +41,7 @@ Resources:
           - OPTIONS
           MinTTL: 0
           ForwardedValues:
-            QueryString: 'false'
+            QueryString: 'true'
             Cookies:
               Forward: none
           DefaultTTL: 0

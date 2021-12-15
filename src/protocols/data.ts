@@ -15384,7 +15384,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://chronoswap.org",
     description: "Chronoswap is one the very first decentralized exchange (DEX) on Cronos Blockchain focused on offering a premier trading experience.",
     chain: "Cronos",
-    logo: `${baseIconsUrl}/chronoswap.jpg`,
+    logo: `${baseIconsUrl}/chronoswap.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

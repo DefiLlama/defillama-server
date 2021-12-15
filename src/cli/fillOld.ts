@@ -21,12 +21,6 @@ import { DocumentClient } from "aws-sdk/clients/dynamodb";
 
 const secondsInDay = 24 * 3600;
 
-async function getFirstDate(dailyTvls: any) {
-  return getClosestDayStartTimestamp(
-    dailyTvls.Items![0].SK ?? Math.round(Date.now() / 1000)
-  );
-}
-
 type DailyItems = (DocumentClient.ItemList | undefined)[];
 async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
   for (const items of dailyItems) {
@@ -83,9 +77,9 @@ const main = async () => {
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`
   );
-if(adapter.timetravel === false){
-  throw new Error("Adapter doesn't support refilling");
-}
+  if (adapter.timetravel === false) {
+    throw new Error("Adapter doesn't support refilling");
+  }
   const dailyTvls = await getDailyItems(dailyTvl(protocol.id));
   const dailyTokens = await getDailyItems(dailyTokensTvl(protocol.id));
   const dailyUsdTokens = await getDailyItems(dailyUsdTokensTvl(protocol.id));

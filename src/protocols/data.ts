@@ -17806,7 +17806,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1028",
-  name: "MM.Finance",
+  name: "MM Finance",
   address: "cronos:0x97749c9B61F878a880DfE312d2594AE07AEd7656",
   symbol: "MMF",
   url: "https://mm.finance",

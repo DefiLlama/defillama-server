@@ -10,4 +10,5 @@ module.exports = {
     HARMONY_RPC: process.env.HARMONY_RPC,
     OUTDATED_WEBHOOK: process.env.OUTDATED_WEBHOOK,
     SPIKE_WEBHOOK: process.env.SPIKE_WEBHOOK,
+    CLOUDWATCH_WEBHOOK_URL: process.env.CLOUDWATCH_WEBHOOK_URL,
 }

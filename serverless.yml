@@ -65,6 +65,7 @@ provider:
     HARMONY_RPC: ${file(./env.js):HARMONY_RPC}
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
+    CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -232,6 +233,9 @@ functions:
     handler: src/triggerFetchCoingeckoData.default
     events:
       - schedule: cron(50 * * * ? *)
+  sendDiscordMessage:
+    handler: src/sendDiscordMessage.default
+    timeout: 900
 
 resources:
   # CORS for api gateway errors

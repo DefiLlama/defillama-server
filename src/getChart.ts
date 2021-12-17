@@ -6,7 +6,7 @@ import { getClosestDayStartTimestamp } from "./utils/date";
 import { normalizeChain } from "./utils/normalizeChain";
 import { secondsInHour } from './utils/date'
 
-export async function craftChartsResponse(chain:string|undefined){
+async function craftChartsResponse(chain:string|undefined){
   const sumDailyTvls = {} as {
     [timestamp: number]: number | undefined;
   };

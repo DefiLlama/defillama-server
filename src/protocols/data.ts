@@ -17869,7 +17869,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   symbol: "PNDA",
   url: "https://www.pandaswap.xyz/#/",
   description: "Panda is the first franchise from Bao Finance's multi chain empire and sets foot in the Binance Smart Chain (BSC).",
-  chain: "Bsc",
+  chain: "Binance",
   logo: `${baseIconsUrl}/pandaswap.png`, 
   audits: "0",
   audit_note: null ,

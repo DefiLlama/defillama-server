@@ -64,16 +64,17 @@ const handler = async (
   let lastRow = 1;
   const protocolToRow = {
     'Total': lastRow
-  } as {[chain:string]:number}
+  } as {[protocol:string]:number}
+  grid[1]=["Total"]
   timestamps.forEach((t, i)=>{
-    grid[i+1]=[];
-    Object.entries(sumDailyTvls[Number(t)]).forEach(([chain, tvl])=>{
-      let row = protocolToRow[chain]
+    Object.entries(sumDailyTvls[Number(t)]).forEach(([protocol, tvl])=>{
+      let row = protocolToRow[protocol]
       if(row === undefined){
         row = ++lastRow;
-        protocolToRow[chain]=lastRow;
+        protocolToRow[protocol]=lastRow;
+        grid[lastRow]=[protocol];
       }
-      grid[i+1][row]=String(tvl)
+      grid[row][i+1]=String(tvl)
     })
   })
   const csv = grid.map(r=>r.join(',')).join('\n')

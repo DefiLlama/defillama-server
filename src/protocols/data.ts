@@ -18066,7 +18066,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://www.numbersprotocol.io",
   description: "A decentralised photo network, for creating community, value, and trust in digital media.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/mfinance.png`,
+  logo: `${baseIconsUrl}/numbers-protocol.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: "numbers-protocol",

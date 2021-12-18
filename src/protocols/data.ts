@@ -17585,6 +17585,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "aztecnetwork",
   listedAt: 1639389670,
 },
+/*
 {
   id: "1017",
   name: "XDEFI Wallet",
@@ -17605,6 +17606,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_links: ["https://xdefi-io.medium.com/kudelski-architecture-and-code-review-2021-530d79f1f2f8"],
   listedAt: 1639390916,
 },
+*/
 {
   id: "1018",
   name: "Gains Network",

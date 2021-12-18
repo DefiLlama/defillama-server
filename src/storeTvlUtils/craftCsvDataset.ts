@@ -5,12 +5,8 @@ import {
   dailyUsdTokensTvl,
   dailyTokensTvl,
 } from "../utils/getLastRecord";
-import { getClosestDayStartTimestamp } from "../utils/date";
+import { formatTimestampAsDate, getClosestDayStartTimestamp } from "../utils/date";
 import { normalizeChain } from "../utils/normalizeChain";
-
-function pad(s: number) {
-  return s < 10 ? "0" + s : s;
-}
 
 function normalizeChainTotal(chain:string){
   return chain==='tvl'?'Total':chain
@@ -105,10 +101,7 @@ export default async function(protocols:Protocol[], vertical = false){
 
   const timestamps = Object.keys(timeToColumn);
   timestamps.sort().forEach((timestamp, index) => {
-    const date = new Date(Number(timestamp) * 1000);
-    const formattedDate = `${pad(date.getDate())}/${pad(
-      date.getMonth() + 1
-    )}/${date.getFullYear()}`;
+    const formattedDate = formatTimestampAsDate(timestamp)
     const columnNumber = index + (grid[0] as any).length
     grid[1][columnNumber] = formattedDate
     grid[2][columnNumber] = timestamp

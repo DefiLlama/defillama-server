@@ -160,6 +160,14 @@ functions:
       - http:
           path: dataset/{protocol}
           method: get
+  simpleDataset:
+    handler: src/getSimpleChainDataset.default
+    timeout: 900
+    memorySize: 3000
+    events:
+      - http:
+          path: simpleChainDataset/{chain}
+          method: get
   config:
     handler: src/getConfig.default
     timeout: 10

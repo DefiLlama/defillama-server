@@ -15,7 +15,7 @@ export function getCurrentUnixTimestamp() {
 export function getTimestampAtStartOfDay(timestamp: number) {
   const dt = new Date(timestamp * 1000);
   dt.setHours(0, 0, 0, 0);
-  return toUNIXTimestamp(dt.getTime()-(dt.getTimezoneOffset()*6e4));
+  return toUNIXTimestamp(dt.getTime() - (dt.getTimezoneOffset() * 6e4));
 }
 
 export function getDay(timestamp: number | undefined): string {
@@ -40,4 +40,15 @@ export function getClosestDayStartTimestamp(timestamp: number) {
   } else {
     return nextDayTimestamp;
   }
+}
+
+function pad(s: number) {
+  return s < 10 ? "0" + s : s;
+}
+
+export function formatTimestampAsDate(timestamp: string) {
+  const date = new Date(Number(timestamp) * 1000);
+  return `${pad(date.getDate())}/${pad(
+    date.getMonth() + 1
+  )}/${date.getFullYear()}`;
 }

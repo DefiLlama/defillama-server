@@ -1,13 +1,12 @@
 import protocols from "./protocols/data";
 import dynamodb from "./utils/dynamodb";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getClosestDayStartTimestamp } from "./utils/date";
+import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompress } from 'zlib'
 import { promisify } from 'util'
-import { secondsInHour } from './utils/date'
 
 function sum(sumDailyTvls:SumDailyTvls, chain:string, timestamp: number, itemTvl:number){
   if(sumDailyTvls[chain] === undefined){
@@ -26,8 +25,7 @@ interface SumDailyTvls {
 }
 }
 
-const handler = async (_event: any) => {
-  const sumDailyTvls = {} as SumDailyTvls
+export async function getHistoricalTvlForAllProtocols(){
   let lastDailyTimestamp = 0;
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {
@@ -62,6 +60,16 @@ const handler = async (_event: any) => {
       };
     })
   );
+  return {
+    lastDailyTimestamp,
+    historicalProtocolTvls
+  }
+}
+
+const handler = async (_event: any) => {
+  const sumDailyTvls = {} as SumDailyTvls
+  
+  const {historicalProtocolTvls, lastDailyTimestamp} = await getHistoricalTvlForAllProtocols();
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (protocolTvl === undefined) {
       return;

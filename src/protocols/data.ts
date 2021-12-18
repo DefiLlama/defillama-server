@@ -18127,7 +18127,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Stader offers the most convenient & safest way to maximize your returns on staking.",
   chain: "Terra",
   logo: `${baseIconsUrl}/stader.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "stader",
   cmcId: null,

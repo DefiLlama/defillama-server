@@ -17908,7 +17908,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://www.oneswap.net",
   description: "A fully decentralized exchange protocol on Smart Contract, with permission-free token listing and automated market making.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/oneswap/index.js`,
+  logo: `${baseIconsUrl}/oneswap.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: "oneswap-dao-token",

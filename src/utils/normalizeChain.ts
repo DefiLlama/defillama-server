@@ -463,6 +463,11 @@ export const chainCoingeckoIds = {
     symbol: "CET",
     cmcId: "2941",
   },
+  "XDC": {
+    geckoId: "xdce-crowd-sale",
+    symbol: "XDC",
+    cmcId: "2634",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -578,6 +583,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Callisto"
     case "csc":
       return "CSC"
+    case "xdc":
+      return "XDC"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

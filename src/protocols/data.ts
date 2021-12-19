@@ -18283,4 +18283,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Olympus DAO"],
   listedAt: 1639899342,
 },
+{
+  id: "1052",
+  name: "Astroport",
+  address: null,
+  symbol: "-",
+  url: "https://lockdrop.astroport.fi",
+  description: "A meta AMM. Built on Terra. $ASTRO tokens are NOT live yet" ,
+  chain: "Terra",
+  logo: `${baseIconsUrl}/astroport.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "astroport",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Terra"] ,
+  module: "astroport/index.js",
+  twitter: "astroport_fi",
+  listedAt: 1639915230
+},
 ] as Protocol[];

@@ -40,14 +40,15 @@ const handler = async (
       const prefix = chainToBeUsed === null ? "" : `${chainToBeUsed}-`;
       let dayTvl = 0;
       Object.entries(item).forEach(([chain, tvl]) => {
-        if(chain.startsWith(prefix)){
-          const sectionName = chain.slice(prefix.length)
+        const chainName = getChainDisplayName(chain, true);
+        if(chainName.startsWith(prefix)){
+          const sectionName = chainName.slice(prefix.length)
           if(params[sectionName] === "true"){
             dayTvl += tvl;
             return
           }
         }
-        if((chainToBeUsed === null && chain === "tvl") || chainToBeUsed === getChainDisplayName(chain, true)){
+        if((chainToBeUsed === null && chain === "tvl") || chainToBeUsed === chainName){
           dayTvl += tvl;
         }
       })

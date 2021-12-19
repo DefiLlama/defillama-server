@@ -18326,4 +18326,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
                ],
   listedAt: 1639945104
 },
+{
+  id: "1054",
+  name: "Chain Port",
+  address: null,
+  symbol: "-",
+  url: "https://app.chainport.io",
+  description: "ChainPort is a next-gen blockchain secure bridge that lets you hop across various blockchains at a click " ,
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/chainport.png`, 
+  audits: "0",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: null,
+  category: "Assets",
+  chains: ["Ethereum" , "Binance" , "Polygon" , "Avalanche" , "Fuse"] ,
+  module: "chainport/index.js",
+  twitter: "chain_port",
+  listedAt: 1639946121
+},
 ] as Protocol[];

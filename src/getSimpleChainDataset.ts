@@ -79,6 +79,9 @@ const handler = async (
       grid[row][i+1]=String(tvl)
     })
   })
+  if(grid.length<=2){
+    return errorResponse({message: "No chain with that name exists"})
+  }
   const csv = grid.map(r=>r.join(',')).join('\n')
   const filename = `chain-dataset-${rawChain}.csv`
   await storeDataset(filename, csv)

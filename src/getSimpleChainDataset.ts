@@ -1,6 +1,6 @@
 import { wrap, IResponse, errorResponse } from "./utils";
 import { storeDataset } from "./utils/s3";
-import { getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
 import { getHistoricalTvlForAllProtocols } from './storeGetCharts'
 import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 
@@ -8,7 +8,7 @@ const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const rawChain = event.pathParameters!.chain!;
-  const globalChain = rawChain === "all" ? null : getChainDisplayName(rawChain, true)
+  const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain, true)
   const params = event.queryStringParameters ?? {};
 
   const sumDailyTvls = {} as {
@@ -34,7 +34,7 @@ const handler = async (
     historicalTvl.forEach((item) => {
       let chainToBeUsed = globalChain;
       const itemHasChains = Object.keys(item).some(chain=>chainCoingeckoIds[getChainDisplayName(chain, true)] !== undefined)
-      if(itemHasChains){
+      if(!itemHasChains && transformNewChainName(protocol.chain) === globalChain){
         chainToBeUsed = null
       }
       const prefix = chainToBeUsed === null ? "" : `${chainToBeUsed}-`;

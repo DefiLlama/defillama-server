@@ -25,9 +25,6 @@ const handler = async (_event: any) => {
     symbol: protocol.symbol,
     tvl: protocol.tvl,
   }));
-  const compressedRespone = compress(JSON.stringify(trimmedResponse));
-
-  await store("lite/protocols", compressedRespone, true);
 
   const noChainResponse = trimmedResponse.filter((p) => p.category !== "Chain");
   const chains = {} as { [chain: string]: number };

@@ -18302,4 +18302,28 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "astroport_fi",
   listedAt: 1639915230
 },
+{
+  id: "1053",
+  name: "MooniSwap",
+  address: null,
+  symbol: "-",
+  url: "https://mooniswap.exchange/#/swap",
+  description: "Next gen. AMM protocol by 1inch! Redistributes earnings to liquidity providers, capitalizes on user slippages and protects traders from front-running attacks." ,
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/mooniswap.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: "1102",
+  category: "Dexes",
+  chains: ["Ethereum"] ,
+  module: "mooniswap/index.js",
+  twitter: "mooniswap",
+  audit_links: [
+                "https://dapp.org.uk/reports/mooniswap.html",
+                "https://mooniswap.exchange/docs/mooniswap-audit-report-2.pdf" ,
+                "https://mooniswap.exchange/docs/mooniswap-audit-report-3.pdf"
+               ],
+  listedAt: 1639945104
+},
 ] as Protocol[];

@@ -9480,13 +9480,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "591",
-    name: "AnySwap",
-    address: "0xf99d58e463a2e07e5692127302c20a191861b4d6",
-    symbol: "ANY",
+    name: "Multichain",
+    address: "0x9Fb9a33956351cf4fa040f65A13b835A3C8764E3",
+    symbol: "MULTI",
     url: "https://anyswap.exchange",
-    description: "Anyswap is a trustless MPC protocol to cross-chain any assets and data between any chain.",
+    description: "Cross-Chain Router Protocol (CRP), envisioned to be the ultimate router for Web3.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/anyswap.svg`,
+    logo: `${baseIconsUrl}/multichain.jpg`, 
     audits: "2",
     audit_note: null,
     gecko_id: "anyswap",
@@ -9494,6 +9494,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Assets",
     chains: ["Ethereum", "Binance", "OKExChain", "xDai", "Heco", "Polygon", "Fantom", "Kucoin", "Moonriver", "Arbitrum", "Avalanche", "Harmony"],
     module: "anyswap/index.js",
+    audit_links:[
+                  "https://github.com/anyswap/Anyswap-Audit/blob/master/TrailOfBits/Anyswap-CrossChain-Bridge-TrailofBits-Audit-Final%20Report.pdf",
+                  "https://github.com/anyswap/Anyswap-Audit/blob/master/SlowMist/AnySwap%20CrossChain-Bridge%20Security%20Audit%20Report.pdf",
+                  "https://github.com/anyswap/Anyswap-Audit/blob/master/SlowMist/Anyswap%20Smart%20Contract%20Security%20Audit.pdf",
+                  "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Travala-AnyswapV5ERC20-v1.0.pdf"
+                ],
     twitter: "AnyswapNetwork",
   },
   {

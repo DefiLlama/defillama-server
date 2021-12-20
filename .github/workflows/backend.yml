@@ -3,7 +3,7 @@ name: Backend
 on:
   push:
     branches: [ master ]
-  repository_dispatch
+  repository_dispatch:
     
 jobs:
   test:

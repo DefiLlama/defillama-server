@@ -18647,6 +18647,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Optimism"],
   module: "optinyan/index.js",
   twitter: "optinyanxyz",
+  forkedFrom: ["ArbiNyan"] ,
   listedAt: 1640090956
 },
 ] as Protocol[];

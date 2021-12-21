@@ -18630,4 +18630,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   ],
   listedAt: 1640086003,
 },
+{
+  id: "1069",
+  name: "OptiNyan",
+  address: "optimism:0xA807D4Bc69b050b8D0c99542cf93903C2EFe8b4c",
+  symbol: "NYAN",
+  url: "https://optinyan.xyz",
+  description: "Fair launch token on Optimism. Not related to any other token. Not related to ZipSwap.",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/optinyan.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: null ,
+  category: "Yield",
+  chains: ["Optimism"],
+  module: "optinyan/index.js",
+  twitter: "optinyanxyz",
+  listedAt: 1640090956
+},
 ] as Protocol[];

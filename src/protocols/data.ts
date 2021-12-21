@@ -18650,4 +18650,28 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["ArbiNyan"] ,
   listedAt: 1640090956
 },
+{
+  id: "1071",
+  name: "Polkamarkets",
+  address: "0xd478161c952357f05f0292b56012cd8457f1cfbf",
+  symbol: "POLK",
+  url: "https://www.polkamarkets.com",
+  description: "Polkamarkets is an Autonomous Prediction Market Protocol built for cross-chain information exchange and trading, where users take positions on outcomes of real-world events in a decentralized and interoperable platform, running on EVM.",
+  chain: "Moonriver",
+  logo: `${baseIconsUrl}/polkamarkets.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "polkamarkets",
+  cmcId: "8579",
+  category: "Options",
+  chains: ["Moonriver"],
+  module: "polkamarkets/index.js",
+  twitter: "polkamarkets",
+  audit_links: [
+    "https://www.certik.com/projects/polkamarkets",
+    "https://hacken.io/wp-content/uploads/2021/10/Polkamarkets_06102021SCAudit_Report_2.pdf",
+    "https://drive.google.com/file/u/3/d/121EaqOJPGuxhXeRWIGe4KHiWxTA8OO0P/view?usp=sharing",
+  ],
+  listedAt: 1640096152,
+},
 ] as Protocol[];

@@ -18651,6 +18651,27 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   listedAt: 1640090956
 },
 {
+  id: "1070",
+  name: "Nacho Finance",
+  address: "polygon:0xcD86152047e800d67BDf00A4c635A8B6C0e5C4c2",
+  symbol: "NACHO",
+  url: "https://nachoxyz.com/",
+  description: "The NACHO token serves as the backbone of a rapidly growing ecosystem aimed at bringing high APRs to ETH holders on the Polygon Network",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/nacho-finance.jpg`,
+  audits: "2", 
+  audit_note: null,
+  gecko_id: "nacho-finance" ,
+  cmcId: null ,
+  category: "Yield",
+  chains: ["Polygon"],
+  module: "nacho-finance/index.js",
+  twitter: "nacho_finance",
+  forkedFrom: ["Tomb Finance"] ,
+  audit_links: ["https://rugdoc.io/project/nachoxyz"] ,
+  listedAt: 1640096151
+},
+{
   id: "1071",
   name: "Polkamarkets",
   address: "0xd478161c952357f05f0292b56012cd8457f1cfbf",

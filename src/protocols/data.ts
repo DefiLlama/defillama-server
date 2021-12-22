@@ -1820,8 +1820,8 @@ export default [
   {
     id: "197",
     name: "Ooki",
-    address: "0x56d811088235F11C8920698a204A5010a788f4b3",
-    symbol: "BZRX",
+    address: "0x0De05F6447ab4D22c8827449EE4bA2D5C288379B",
+    symbol: "OOKI",
     url: "https://hello.ooki.com",
     description:
       "Ooki is a flexible decentralized finance protocol for margin trading, borrowing, lending and staking on multiple blockchains.",
@@ -1829,7 +1829,7 @@ export default [
     logo: `${baseIconsUrl}/ooki.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "bzx-protocol",
+    gecko_id: "ooki",
     cmcId: "5810",
     category: "Lending",
     chains: ["Ethereum"],

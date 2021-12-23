@@ -1572,6 +1572,7 @@ export default [
     audit_links: ["https://docs.wing.finance/#audits"],
     oracles: ["Chainlink"],
   },
+  /*
   {
     id: "184",
     name: "Fuse",
@@ -1593,6 +1594,7 @@ export default [
     audit_links: ["https://github.com/fuseio/fuse-network/blob/master/audits/zokyo.pdf"],
     oracles: ["Chainlink"],
   },
+  */
   {
     id: "186",
     name: "WanSwap Dex",

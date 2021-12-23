@@ -2747,7 +2747,7 @@ export default [
   {
     id: "244",
     name: "WePiggy",
-    address: "0x4C78015679FabE22F6e02Ce8102AFbF7d93794eA",
+    address: "0x6f620ec89b8479e97a6985792d0c64f237566746",
     symbol: "WPC",
     url: "https://www.wepiggy.com/",
     description:

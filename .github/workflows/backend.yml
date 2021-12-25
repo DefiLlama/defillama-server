@@ -14,6 +14,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
+    - run: cd defi
     - run: npm ci
     - run: git submodule update --init --recursive
     - run: cd DefiLlama-Adapters && git checkout main && git pull
@@ -29,6 +30,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
+    - run: cd defi
     - run: npm ci
     - run: git submodule update --init --recursive
     - run: cd DefiLlama-Adapters && git checkout main && git pull

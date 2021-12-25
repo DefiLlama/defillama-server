@@ -4,7 +4,7 @@ import { util, api } from "@defillama/sdk";
 import {
   releaseCoingeckoLock,
   getCoingeckoLock,
-} from "../storeTvlUtils/coingeckoLocks";
+} from "../utils/shared/coingeckoLocks";
 
 async function main() {
   const protocol = getProtocol("Yearn Finance");

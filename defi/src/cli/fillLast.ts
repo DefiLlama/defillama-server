@@ -6,7 +6,7 @@ import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import {
   getCoingeckoLock,
   releaseCoingeckoLock,
-} from "../storeTvlUtils/coingeckoLocks";
+} from "../utils/shared/coingeckoLocks";
 const main = async () => {
   const protocol = getProtocol(protocolToFill);
   const now = Math.round(Date.now() / 1000);

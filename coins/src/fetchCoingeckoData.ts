@@ -1,10 +1,10 @@
 import fetch from "node-fetch";
-import { wrapScheduledLambda } from "./utils/wrap";
-import { getCoingeckoLock, setTimer } from "./utils/coingeckoLocks";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
+import { getCoingeckoLock, setTimer } from "./utils/shared/coingeckoLocks";
 import ddb, { cgPK, batchWrite, batchGet } from "./utils/dynamodb";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
-import invokeLambda from "./utils/invokeLambda";
-import sleep from "./utils/sleep";
+import invokeLambda from "./utils/shared/invokeLambda";
+import sleep from "./utils/shared/sleep";
 import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 

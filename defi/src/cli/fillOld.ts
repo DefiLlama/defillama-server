@@ -15,7 +15,7 @@ import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import {
   getCoingeckoLock,
   releaseCoingeckoLock,
-} from "../storeTvlUtils/coingeckoLocks";
+} from "../utils/shared/coingeckoLocks";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 

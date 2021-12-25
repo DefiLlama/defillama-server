@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { getCoingeckoLock, setTimer } from "./storeTvlUtils/coingeckoLocks";
+import { getCoingeckoLock, setTimer } from "./utils/shared/coingeckoLocks";
 import dynamodb from "./utils/shared/dynamodb";
 import { decimals } from "@defillama/sdk/build/erc20";
 import invokeLambda from "./utils/shared/invokeLambda";

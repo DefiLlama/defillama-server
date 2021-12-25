@@ -1,4 +1,4 @@
-import parseRequestBody from "../parseRequestBody";
+import parseRequestBody from "./parseRequestBody";
 
 test("invalid json body is rejected", () => {
   expect(() => {

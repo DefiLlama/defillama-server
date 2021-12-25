@@ -7,7 +7,7 @@ import { getBlocksRetry } from "./utils";
 import {
   getCoingeckoLock,
   releaseCoingeckoLock,
-} from "../storeTvlUtils/coingeckoLocks";
+} from "../utils/shared/coingeckoLocks";
 import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { date } from './utils'
 

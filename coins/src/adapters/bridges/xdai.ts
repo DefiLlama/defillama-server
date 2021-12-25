@@ -1,5 +1,5 @@
 import { fetch, formatExtraTokens } from "../utils"
-
+/*
 const bridgeContract = "0xf6A78083ca3e2a662D6dd1703c939c8aCE2e268d";
 const abiXdaiBridgeAbi = {
   type: "function",
@@ -41,7 +41,7 @@ export default async function bridge() {
       // return result.output;
     };
   }
-
+*/
   /*
         if (
         address.toLowerCase() === "0x44fa8e6f47987339850636f88629646662444217" ||

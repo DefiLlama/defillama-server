@@ -1,5 +1,5 @@
 import { fetch, formatExtraTokens } from "../utils"
-
+/*
 export default async function bridge() {
     const tokenlist = await fetch(
             "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json"
@@ -25,3 +25,4 @@ export default async function bridge() {
     }
     return balances;
 }
+*/

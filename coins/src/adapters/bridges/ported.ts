@@ -1,4 +1,5 @@
 
+/*
 async function transformOkexAddress() {
   const okexBridge = (
     await utils.fetchURL(
@@ -126,3 +127,4 @@ module.exports = {
   fixHarmonyBalances,
   transformIotexAddress,
 };
+*/

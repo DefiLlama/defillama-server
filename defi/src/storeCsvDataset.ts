@@ -1,6 +1,6 @@
 import allProtocols from "./protocols/data";
 import craftCsvDataset from './storeTvlUtils/craftCsvDataset'
-import { wrapScheduledLambda } from "./utils/wrap";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 
 const handler = async (_event: any) => {

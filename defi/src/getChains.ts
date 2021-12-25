@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse } from "./utils";
+import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";

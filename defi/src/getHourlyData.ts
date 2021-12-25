@@ -1,5 +1,5 @@
-import { successResponse, wrap, IResponse, errorResponse } from "./utils";
-import { getHistoricalValues } from "./utils/dynamodb";
+import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
+import { getHistoricalValues } from "./utils/shared/dynamodb";
 import protocols from "./protocols/data";
 import {
   hourlyTvl,

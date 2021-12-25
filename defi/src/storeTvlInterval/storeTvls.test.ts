@@ -1,5 +1,5 @@
 import storeTvls from "./storeTvls";
-import ddb from "../utils/dynamodb";
+import ddb from "../utils/shared/dynamodb";
 
 describe("storeRates", () => {
   test("works properly", async () => {

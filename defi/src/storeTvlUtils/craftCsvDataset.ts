@@ -1,4 +1,4 @@
-import { getHistoricalValues } from "../utils/dynamodb";
+import { getHistoricalValues } from "../utils/shared/dynamodb";
 import { Protocol } from "../protocols/data";
 import {
   dailyTvl,

@@ -1,6 +1,6 @@
-import { wrapScheduledLambda } from "./utils/wrap";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
-import invokeLambda from "./utils/invokeLambda";
+import invokeLambda from "./utils/shared/invokeLambda";
 
 const step = 500;
 const handler = async () => {

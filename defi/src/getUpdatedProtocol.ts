@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse } from "./utils";
+import { successResponse, wrap, IResponse } from "./utils/shared";
 import { craftProtocolResponse } from './getProtocol'
 
 const handler = async (

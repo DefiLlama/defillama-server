@@ -1,4 +1,4 @@
-import dynamodb from "../utils/dynamodb";
+import dynamodb from "../utils/shared/dynamodb";
 import { dailyTokensTvl } from "../utils/getLastRecord";
 import protocols from "../protocols/data";
 

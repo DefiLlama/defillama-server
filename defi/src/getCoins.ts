@@ -1,5 +1,5 @@
-import { successResponse, wrap, IResponse } from "./utils";
-import dynamodb, {TableName} from "./utils/dynamodb";
+import { successResponse, wrap, IResponse } from "./utils/shared";
+import dynamodb, {TableName} from "./utils/shared/dynamodb";
 
 const step = 100; // Max 100 items per batchGet
 const handler = async (

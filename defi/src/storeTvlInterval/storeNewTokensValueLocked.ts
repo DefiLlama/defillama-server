@@ -1,4 +1,4 @@
-import dynamodb from "../utils/dynamodb";
+import dynamodb from "../utils/shared/dynamodb";
 import { Protocol } from "../protocols/data";
 import {
   getDay,

@@ -1,7 +1,7 @@
 const protocolName = "sushiswap"
 const chainToDelete = "okexchain"
 
-import dynamodb from "../utils/dynamodb";
+import dynamodb from "../utils/shared/dynamodb";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";
 

@@ -1,6 +1,6 @@
-import { successResponse, wrap, IResponse } from "./utils";
+import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols from "./protocols/data";
-import dynamodb from "./utils/dynamodb";
+import dynamodb from "./utils/shared/dynamodb";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getClosestDayStartTimestamp } from "./utils/date";
 import { normalizeChain } from "./utils/normalizeChain";

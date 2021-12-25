@@ -1,11 +1,11 @@
 import fetch from "node-fetch";
-import { wrapScheduledLambda } from "./utils/wrap";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { getCoingeckoLock, setTimer } from "./storeTvlUtils/coingeckoLocks";
-import dynamodb from "./utils/dynamodb";
+import dynamodb from "./utils/shared/dynamodb";
 import { decimals } from "@defillama/sdk/build/erc20";
-import invokeLambda from "./utils/invokeLambda";
-import sleep from "./utils/sleep";
-import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
+import invokeLambda from "./utils/shared/invokeLambda";
+import sleep from "./utils/shared/sleep";
+import { Coin, iterateOverPlatforms } from "./utils/shared/coingeckoPlatforms";
 
 const retries = 3;
 async function retryCoingeckoRequest(id: string) {

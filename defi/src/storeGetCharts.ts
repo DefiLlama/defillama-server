@@ -1,9 +1,9 @@
 import protocols from "./protocols/data";
-import dynamodb from "./utils/dynamodb";
+import dynamodb from "./utils/shared/dynamodb";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
-import { wrapScheduledLambda } from "./utils/wrap";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompress } from 'zlib'
 import { promisify } from 'util'

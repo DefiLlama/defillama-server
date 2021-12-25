@@ -1,6 +1,6 @@
-import { wrapScheduledLambda } from "./utils/wrap";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
-import invokeLambda from "./utils/invokeLambda";
+import invokeLambda from "./utils/shared/invokeLambda";
 
 function shuffleArray(array:number[]) {
   for (let i = array.length - 1; i > 0; i--) {

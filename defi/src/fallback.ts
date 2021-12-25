@@ -1,4 +1,4 @@
-import { IResponse, wrap, errorResponse } from "./utils";
+import { IResponse, wrap, errorResponse } from "./utils/shared";
 
 const handler = async (
   _event: AWSLambda.APIGatewayEvent

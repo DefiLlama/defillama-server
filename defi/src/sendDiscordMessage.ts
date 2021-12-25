@@ -1,4 +1,4 @@
-import { wrapScheduledLambda } from "./utils/wrap";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
 
 function parse_service_event(event: any, service = 'Service') {

@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse } from "./utils";
+import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols, { Protocol } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
@@ -10,7 +10,7 @@ import {
   extraSections,
   transformNewChainName,
 } from "./utils/normalizeChain";
-import dynamodb, { TableName } from "./utils/dynamodb";
+import dynamodb, { TableName } from "./utils/shared/dynamodb";
 import {craftChainsResponse} from "./getChains"
 
 export function getPercentChange(previous: number, current: number) {

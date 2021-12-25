@@ -1,6 +1,6 @@
 require("dotenv").config();
 import protocols from "../protocols/data";
-import dynamodb from "../utils/dynamodb";
+import dynamodb from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import { getBlocksRetry } from "./utils";

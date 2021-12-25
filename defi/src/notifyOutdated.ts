@@ -1,5 +1,5 @@
 import findOutdated from './utils/findOutdated'
-import { wrapScheduledLambda } from "./utils/wrap";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 import {sendMessage} from "./utils/discord"
 
 const maxDrift = 4 * 3600; // Max 4 updates missed

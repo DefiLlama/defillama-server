@@ -3,7 +3,7 @@ const protocolToRefill = "Uniswap"
 const latestDate = undefined; // undefined -> start from today, number => start from that unix timestamp
 const batchSize = 1; // how many days to fill in parallel
 
-import dynamodb from "../utils/dynamodb";
+import dynamodb from "../utils/shared/dynamodb";
 import { getProtocol, getBlocksRetry } from "./utils";
 import {
   dailyTokensTvl,

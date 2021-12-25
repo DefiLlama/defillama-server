@@ -1,5 +1,5 @@
 import protocols from "../protocols/data";
-import dynamodb from "../utils/dynamodb";
+import dynamodb from "../utils/shared/dynamodb";
 import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import {date} from './utils'
 

@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse, errorResponse } from "./utils";
+import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";

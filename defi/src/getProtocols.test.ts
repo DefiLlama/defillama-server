@@ -1,5 +1,5 @@
 import getProtocols, { getPercentChange } from "./getProtocols";
-import { getBody } from "./utils/lambda-response";
+import { getBody } from "./utils/shared/lambda-response";
 import storeTvls from "./storeTvlInterval/storeTvls";
 jest.mock("./protocols/data");
 

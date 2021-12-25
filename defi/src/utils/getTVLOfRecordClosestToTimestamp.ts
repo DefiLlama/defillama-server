@@ -1,4 +1,4 @@
-import dynamodb from "../utils/dynamodb";
+import dynamodb from "./shared/dynamodb";
 import { secondsBetweenCallsExtra } from "../utils/date";
 
 export default function getTVLOfRecordClosestToTimestamp(

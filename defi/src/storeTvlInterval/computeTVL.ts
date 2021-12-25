@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js";
-import dynamodb, { TableName } from "../utils/dynamodb";
+import dynamodb, { TableName } from "../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";

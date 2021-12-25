@@ -1,4 +1,4 @@
-import { wrap, IResponse, errorResponse } from "./utils";
+import { wrap, IResponse, errorResponse } from "./utils/shared";
 import { storeDataset } from "./utils/s3";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
 import { getHistoricalTvlForAllProtocols } from './storeGetCharts'

@@ -1,6 +1,6 @@
 const protocolName = "anchor"
 
-import dynamodb from "../utils/dynamodb";
+import dynamodb from "../utils/shared/dynamodb";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";
 import { getClosestDayStartTimestamp } from "../utils/date";

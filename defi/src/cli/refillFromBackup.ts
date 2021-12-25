@@ -1,7 +1,7 @@
 const protocolName = "anchor"
 const TableName = "anchor-terra"; // backup table
 
-import dynamodb from "../utils/dynamodb";
+import dynamodb from "../utils/shared/dynamodb";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";
 import AWS from "aws-sdk";

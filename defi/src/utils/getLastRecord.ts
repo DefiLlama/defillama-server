@@ -1,4 +1,4 @@
-import dynamodb from "./dynamodb";
+import dynamodb from "./shared/dynamodb";
 
 export function getLastRecord(PK: string) {
   return dynamodb

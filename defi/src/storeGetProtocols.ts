@@ -1,5 +1,5 @@
 import { craftProtocolsResponse } from "./getProtocols";
-import { wrapScheduledLambda } from "./utils/wrap";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from "zlib";
 

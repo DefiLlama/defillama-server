@@ -10,7 +10,20 @@ defaults:
     working-directory: defi
     
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      defi: ${{ steps.filter.outputs.defi }}
+    steps:
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          defi:
+            - 'defi/**'
   test:
+    needs: changes
+    if: ${{ needs.changes.outputs.defi == 'true' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -26,6 +39,8 @@ jobs:
       env:
         ETHEREUM_RPC: ETHEREUM_RPC
   deploy:
+    needs: changes
+    if: ${{ needs.changes.outputs.defi == 'true' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

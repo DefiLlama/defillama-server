@@ -9,8 +9,20 @@ defaults:
     working-directory: coins
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      coins: ${{ steps.filter.outputs.coins }}
+    steps:
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          coins:
+            - 'coins/**'
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: changes
+    if: ${{ needs.changes.outputs.coins == 'true' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

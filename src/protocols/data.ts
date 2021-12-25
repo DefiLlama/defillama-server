@@ -18343,7 +18343,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "ChainPort is a next-gen blockchain secure bridge that lets you hop across various blockchains at a click " ,
   chain: "Ethereum",
   logo: `${baseIconsUrl}/chainport.png`, 
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null ,
   cmcId: null,
@@ -18351,6 +18351,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum"] ,
   module: "chainport/index.js",
   twitter: "chain_port",
+  audit_links: ["https://www.certik.com/projects/chainport"],
   listedAt: 1639946121
 },
 {

@@ -28,6 +28,7 @@ module.exports = {
     ],
   },
   resolve: {
+    symlinks: false,
     extensions: ['.ts', '.js', '.json'],
     alias: {
       'bignumber.js$': 'bignumber.js/bignumber.js',

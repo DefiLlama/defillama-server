@@ -1,0 +1,7 @@
+- xJOE
+- qiAVAX, crTokens, tokens from comp forks
+- aTokens on other chains
+- uniswap/sushiswap LPs
+- yTokens
+- curve lps
+- 

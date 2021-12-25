@@ -1,0 +1,27 @@
+name: Backend
+
+on:
+  push:
+    branches: [ master ]
+
+defaults:
+  run:
+    working-directory: coins
+
+jobs:
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - run: npm ci
+    - name: Deploy infrastructure stack
+      run: npm run deploy:prod
+      env:
+        ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

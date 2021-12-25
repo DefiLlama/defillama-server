@@ -1,5 +1,5 @@
 import { chainToCoingeckoId } from "@defillama/sdk/build/computeTVL/index";
-import ddb from "./dynamodb";
+import ddb from "./shared/dynamodb";
 
 interface StringObject {
   [id: string]: string | undefined;

@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import { toUNIXTimestamp, getCurrentUnixTimestamp } from "../utils/date";
-import { cgPK, batchWrite } from "../utils/dynamodb";
+import { batchWrite } from "../utils/shared/dynamodb";
+import { cgPK } from "../utils/keys";
 import { Coin } from "../utils/coingeckoPlatforms";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
 

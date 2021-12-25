@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import dynamodb, { TableName } from "./utils/dynamodb";
+import dynamodb, { TableName } from "./utils/shared/dynamodb";
 import parseRequestBody from "./utils/shared/parseRequestBody";
 
 const step = 100; // Max 100 items per batchGet

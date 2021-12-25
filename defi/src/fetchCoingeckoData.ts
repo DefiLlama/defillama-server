@@ -5,7 +5,7 @@ import dynamodb from "./utils/shared/dynamodb";
 import { decimals } from "@defillama/sdk/build/erc20";
 import invokeLambda from "./utils/shared/invokeLambda";
 import sleep from "./utils/shared/sleep";
-import { Coin, iterateOverPlatforms } from "./utils/shared/coingeckoPlatforms";
+import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 
 const retries = 3;
 async function retryCoingeckoRequest(id: string) {

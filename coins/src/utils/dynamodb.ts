@@ -1,5 +1,5 @@
 import AWS from "aws-sdk";
-import sleep from './sleep'
+import sleep from './shared/sleep'
 
 const client = new AWS.DynamoDB.DocumentClient({
   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {

@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { toUNIXTimestamp } from "../utils/date";
 import dynamodb from "../utils/shared/dynamodb";
-import { iterateOverPlatforms, Coin } from "../utils/shared/coingeckoPlatforms";
+import { iterateOverPlatforms, Coin } from "../utils/coingeckoPlatforms";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
 
 async function coingeckoRequest(url: string) {

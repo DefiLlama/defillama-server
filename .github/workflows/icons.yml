@@ -13,5 +13,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .defi//icons
+        publish_dir: ./defi/icons
         cname: icons.llama.fi

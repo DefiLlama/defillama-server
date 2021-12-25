@@ -1,1 +1,1 @@
-../defi/src/corsPreflight.ts
+../../defi/src/corsPreflight.ts

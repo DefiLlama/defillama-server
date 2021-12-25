@@ -1,1 +1,1 @@
-../defi/src/fallback.ts
+../../defi/src/fallback.ts

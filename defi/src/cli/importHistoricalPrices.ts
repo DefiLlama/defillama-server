@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { toUNIXTimestamp } from "../utils/date";
-import dynamodb from "../utils/shared/dynamodb";
+import dynamodb, {batchWrite} from "../utils/shared/dynamodb";
 import { iterateOverPlatforms, Coin } from "../utils/coingeckoPlatforms";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
 
@@ -23,18 +23,11 @@ const startingCoinIndex = 0;
 
 async function storePrices(PK: string, prices:PriceRange) {
   console.log("\t", PK);
-  const writeRequests = [];
-  for (let i = 0; i < prices.length; i += batchWriteStep) {
-    const items = prices.slice(i, i + batchWriteStep).map((price) => ({
-      SK: toUNIXTimestamp(price[0]),
-      PK,
-      price: price[1],
-    }));
-    const timestamps = items.map(t=>t.SK);
-    const nonDuplicatedItems = items.filter((item, index)=>timestamps.slice(0, index).indexOf(item.SK) === -1)
-    writeRequests.push(dynamodb.batchWrite(nonDuplicatedItems));
-  }
-  await Promise.all(writeRequests);
+  await batchWrite(prices.map((price) => ({
+    SK: toUNIXTimestamp(price[0]),
+    PK,
+    price: price[1],
+  })), true)
 }
 
 async function main() {

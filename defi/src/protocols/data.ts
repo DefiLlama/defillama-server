@@ -16471,7 +16471,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Creating a more complete Smartbch DEX and DeFi experience together.",
     chain: "SmartBCH" ,
     logo: `${baseIconsUrl}/1bch.jpg`,
-    audits: "0" ,
+    audits: "2" ,
     audit_note: null ,
     gecko_id: null ,
     cmcId: null ,
@@ -16479,6 +16479,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["SmartBCH"] ,
     module: "1bch/index.js" ,
     twitter: "1BCHOfficial" ,
+    audit_links: ["https://github.com/interfinetwork/smart-contract-audits/blob/main/1BCH_AuditReport_InterFi.pdf"],
     listedAt: 1638461835 ,
   },
   {

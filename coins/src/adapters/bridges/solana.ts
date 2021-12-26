@@ -14,10 +14,9 @@ interface Token {
 }
 
 export default async function bridge() {
-    const tokenlist = await fetch(
+    const tokenlist = (await fetch(
         "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json"
-    ).then(r => r.json())
-        .then(r => r.data.tokens) as Token[];
+    )).tokens as Token[];
     return tokenlist.map(token => {
         const coingeckoId = token.extensions?.coingeckoId;
         if(coingeckoId === undefined){

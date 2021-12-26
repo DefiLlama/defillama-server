@@ -5,7 +5,7 @@ export default async function bridge() {
         await fetch(
             "https://api.binance.org/bridge/api/v2/tokens?walletNetwork="
         )
-    ).data.data.tokens as any[];
+    ).data.tokens as any[];
 
     return binanceBridge.filter(token => token.ethContractAddress !== "").map(token=>({
         from: `bsc:${token.bscContractAddress}`,

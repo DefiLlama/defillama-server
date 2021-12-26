@@ -7,13 +7,13 @@ export default async function bridge() {
         ),
         fetch(
             "https://raw.githubusercontent.com/ava-labs/avalanche-bridge-resources/main/avalanche_contract_address.json"
-        ).then((r) => Object.entries(r.data)),
+        ).then((r) => Object.entries(r)),
         fetch(
             "https://raw.githubusercontent.com/ava-labs/avalanche-bridge-resources/main/token_list.json"
         ),
     ]);
 
-    const oldTokens = formatExtraTokens("avax", bridgeTokensOld.data.map((token: any) => [
+    const oldTokens = formatExtraTokens("avax", bridgeTokensOld.map((token: any) => [
         token["Avalanche Token Address"],
         "ethereum:" + token["Ethereum Token Address"],
         token["Avalanche Token Symbol"],
@@ -21,7 +21,7 @@ export default async function bridge() {
     ]));
     const newTokens = bridgeTokensNew.map(newBridgeToken => {
         const tokenName = newBridgeToken[0].split(".")[0];
-        const tokenData = bridgeTokenDetails.data[tokenName];
+        const tokenData = bridgeTokenDetails[tokenName];
         if (tokenData.nativeNetwork !== "ethereum") {
             return null
         }

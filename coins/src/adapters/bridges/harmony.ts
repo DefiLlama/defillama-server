@@ -8,7 +8,7 @@ const networkToIdentifier = {
 export default async function bridge() {
     const bridge = (
         await fetch("https://be4.bridge.hmny.io/tokens/?page=0&size=1000")
-    ).data.content as any[];
+    ).content as any[];
 
     return bridge.map(token => {
         const chain = networkToIdentifier[token.network];

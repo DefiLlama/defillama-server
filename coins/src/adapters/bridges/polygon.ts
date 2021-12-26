@@ -8,9 +8,8 @@ const PlasmaMappedTokenList =
 export default async function bridge() {
     const posTokens = await fetch(PoSMappedTokenList);
     const plasmaTokens = await fetch(PlasmaMappedTokenList);
-    const tokens = posTokens.data.tokens
-        .concat(plasmaTokens.data.tokens);
-
+    const tokens = posTokens.tokens
+        .concat(plasmaTokens.tokens);
 
     return tokens.map((token: any) => {
         const polygonAddress = token.childToken.toLowerCase()

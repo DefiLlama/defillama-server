@@ -28,14 +28,14 @@ const chainIdToSlug={
 export default async function bridge() {
     const multichainTokens = (
         await fetch("https://netapi.anyswap.net/bridge/v2/info")
-    ).data.bridgeList as any[];
+    ).bridgeList as any[];
 
     return multichainTokens.map(token=>{
         const destinationChain = chainIdToSlug[token.chainId];
         const originChain = chainIdToSlug[token.srcChainId]
         let srcToken = token.srcToken ?? ""
         if(destinationChain === undefined || originChain === undefined){
-            console.log(`Can't find chain`, token)
+            //console.log(`Can't find chain`, token)
             return null
         }
         if(!srcToken.includes("0x")){

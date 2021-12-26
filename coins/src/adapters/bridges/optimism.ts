@@ -3,7 +3,7 @@ import {fetch, formatExtraTokens} from "../utils"
 export default async function bridge() {
     const bridge = (
         await fetch("https://static.optimism.io/optimism.tokenlist.json")
-    ).data.tokens as any[];
+    ).tokens as any[];
 
     const ethUrlMap = bridge.filter(token => token.chainId === 1).reduce((all, token) => {
         all[token.logoURI] = token;

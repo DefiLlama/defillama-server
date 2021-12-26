@@ -1,5 +1,4 @@
-import { fetch } from "../../utils"
-import erc20 from "@defillama/sdk/build/erc20";
+import { fetch, getAllInfo } from "../../utils"
 
 const PoSMappedTokenList =
     "https://api.bridge.matic.network/api/tokens/pos/erc20";
@@ -20,16 +19,7 @@ export default async function bridge() {
         return {
             from,
             to,
-            getAllInfo: async()=>{
-                const decimals = await erc20.decimals(polygonAddress, "polygon")
-                const symbol = await erc20.symbol(polygonAddress, "polygon")
-                return {
-                    from,
-                    to,
-                    decimals: Number(decimals.output),
-                    symbol: symbol.output
-                }
-            }
+            getAllInfo: getAllInfo(polygonAddress, 'polygon', to)
         }
     })
 }

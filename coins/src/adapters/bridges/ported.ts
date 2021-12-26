@@ -82,49 +82,4 @@ async function transformKccAddress() {
   };
 }
 
-const chainTransforms = {
-  celo: transformCeloAddress,
-  fantom: transformFantomAddress,
-  bsc: transformBscAddress,
-  polygon: transformPolygonAddress,
-  xdai: transformXdaiAddress,
-  avax: transformAvaxAddress,
-  heco: transformHecoAddress,
-  harmony: transformHarmonyAddress,
-  optimism: transformOptimismAddress,
-  moonriver: transformMoonriverAddress,
-  okex: transformOkexAddress,
-  kcc: transformKccAddress,
-  arbitrum: transformArbitrumAddress,
-  iotex: transformIotexAddress,
-};
-async function getChainTransform(chain) {
-  if (chain === "ethereum") {
-    return (id) => id;
-  }
-  if (chainTransforms[chain] !== undefined) {
-    return chainTransforms[chain]();
-  }
-  return (addr) => `${chain}:${addr}`;
-}
-
-module.exports = {
-  getChainTransform,
-  transformCeloAddress,
-  transformFantomAddress,
-  transformBscAddress,
-  transformPolygonAddress,
-  transformXdaiAddress,
-  transformAvaxAddress,
-  transformHecoAddress,
-  transformHarmonyAddress,
-  transformOptimismAddress,
-  transformMoonriverAddress,
-  fixAvaxBalances,
-  transformOkexAddress,
-  transformKccAddress,
-  transformArbitrumAddress,
-  fixHarmonyBalances,
-  transformIotexAddress,
-};
 */

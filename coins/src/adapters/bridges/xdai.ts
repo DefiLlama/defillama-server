@@ -1,5 +1,5 @@
 import {getLatestBlock, getLogs} from "@defillama/sdk/build/util/index"
-import { getAllInfo } from "../../utils"
+import { getAllInfo } from "../utils"
 
 const logToAddress = (log:string)=>`0x${log.substr(26, 40)}`
 

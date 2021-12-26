@@ -1,4 +1,4 @@
-import { fetch, getAllInfo } from "../../utils"
+import { fetch, getAllInfo } from "../utils"
 
 const PoSMappedTokenList =
     "https://api.bridge.matic.network/api/tokens/pos/erc20";

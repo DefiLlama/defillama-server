@@ -1,4 +1,4 @@
-import { fetch, formatExtraTokens } from "../../utils"
+import { fetch, formatExtraTokens } from "../utils"
 
 export default async function bridge() {
     const [bridgeTokensOld, bridgeTokensNew, bridgeTokenDetails] = await Promise.all([

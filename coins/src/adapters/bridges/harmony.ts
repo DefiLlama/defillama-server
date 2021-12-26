@@ -1,4 +1,4 @@
-import {fetch, formatExtraTokens} from "../../utils"
+import {fetch, formatExtraTokens} from "../utils"
 
 const networkToIdentifier = {
     "ETHEREUM": "ethereum",

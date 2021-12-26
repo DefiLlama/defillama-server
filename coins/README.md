@@ -19,3 +19,8 @@ npm run serve
 
 ## Deploy
 Just push your changes to the `master` branch.
+
+## Run scripts
+```bash
+export AWS_REGION="eu-central-1" && export tableName="prod-coins-table" && npx ts-node src/cli/writebridges.ts
+```

@@ -4,7 +4,7 @@ const isLowerCase = (str: string) => expect(str.toLowerCase()).toBe(str)
 
 function checkAddress(address: string, canBeCoingecko:boolean) {
     expect(typeof address).toBe('string')
-    if (address.includes("#") && canBeCoingecko) {
+    if (canBeCoingecko && address.includes("#")) {
         expect(address.startsWith("coingecko#")).toBe(true)
         const cgId = address.split("#")[1]
         if(cgId !== "gatetokenGT"){

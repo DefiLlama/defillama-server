@@ -46,15 +46,66 @@ function normalizeBridgeResults(bridge: Bridge) {
 }
 export const bridges = [anyswap, arbitrum, avax, bsc, fantom, gasTokens, harmony, optimism, polygon, solana, xdai].map(normalizeBridgeResults) as Bridge[]
 
-import { overwrites } from './overwrites'
+import ddb, { batchGet } from '../../utils/shared/dynamodb'
+import { getCurrentUnixTimestamp } from '../../utils/date'
 
-async function storeTokens() {
-/*
-- make all addresses lowercase
-- redirect when we encounter redirect
-- handle gecko# properly
-- check if already exists
-- handle getAllInfo
-- handle overwrites
-*/
+const craftToPK = (to: string) => to.includes("#") ? to : `asset#${to}`
+
+async function storeTokensOfBridge(bridge: Bridge) {
+    const tokens = await bridge();
+    const alreadyLinked = (await batchGet(tokens.map(t => ({
+        PK: `asset#${t.from}`,
+        SK: 0
+    })))).reduce((all, record) => {
+        all[record.PK.substr("asset#".length)] = true;
+        return all
+    }, {})
+    const unlisted = tokens.filter(t => alreadyLinked[t.from] !== true)
+    const toAddressToRecord = {} as { [PK: string]: string }
+    const toRecords = await batchGet(unlisted.map(t => ({
+        PK: craftToPK(t.to),
+        SK: 0
+    })))
+    await Promise.all(toRecords.map(async record => {
+        const toPK = record.PK
+        if (record.price) {
+            toAddressToRecord[toPK] = toPK
+        } else if (record.redirect) {
+            const redirectedRecord = await ddb.get({
+                PK: record.redirect,
+                SK: 0
+            })
+            if (redirectedRecord.Item?.price) {
+                toAddressToRecord[toPK] = redirectedRecord.Item.PK
+            }
+        }
+    }))
+    await Promise.all(unlisted.map(async token => {
+        const toPK = craftToPK(token.to);
+        const finalPK = toAddressToRecord[toPK]
+        if (finalPK === undefined) {
+            return null
+        }
+        let decimals: number, symbol: string;
+        if("getAllInfo" in token){
+            const newToken = await token.getAllInfo()
+            decimals = newToken.decimals;
+            symbol = newToken.symbol;
+        } else {
+            decimals = token.decimals;
+            symbol = token.symbol;
+        }
+        const timestamp = getCurrentUnixTimestamp()
+        await ddb.put({
+            PK: `asset#${token.from}`,
+            SK: 0,
+            created: timestamp,
+            decimals,
+            symbol,
+            redirect: finalPK,
+        })
+    }))
+}
+export async function storeTokens() {
+    await Promise.all(bridges.map(storeTokensOfBridge));
 }

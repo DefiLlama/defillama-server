@@ -76,21 +76,25 @@ async function underlyingBatchWrite(items: any[], retryCount: number, failOnErro
   }
 }
 
+function removeDuplicateKeys(items:AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]){
+  return items.filter((item, index) =>
+  // Could be optimized to O(nlogn) but not worth it
+  items
+    .slice(0, index)
+    .every(
+      (checkedItem) =>
+        !(checkedItem.PK === item.PK && checkedItem.SK === item.SK)
+    )
+);
+}
+
 const batchWriteStep = 25; // Max items written at once are 25
 // IMPORTANT: Duplicated items will be pruned
 export async function batchWrite(items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[], failOnError: boolean) {
   const writeRequests = [];
   for (let i = 0; i < items.length; i += batchWriteStep) {
     const itemsToWrite = items.slice(i, i + batchWriteStep);
-    const nonDuplicatedItems = itemsToWrite.filter((item, index) =>
-      // Could be optimized to O(nlogn) but not worth it
-      itemsToWrite
-        .slice(0, index)
-        .every(
-          (checkedItem) =>
-            !(checkedItem.PK === item.PK && checkedItem.SK === item.SK)
-        )
-    );
+    const nonDuplicatedItems = removeDuplicateKeys(itemsToWrite)
     writeRequests.push(underlyingBatchWrite(
       nonDuplicatedItems.map((item) => ({ PutRequest: { Item: item } })),
       0,
@@ -106,7 +110,7 @@ export function batchGet(keys: { PK: string; SK: number }[]) {
   for (let i = 0; i < keys.length; i += batchGetStep) {
     requests.push(
       dynamodb
-        .batchGet(keys.slice(i, i + batchGetStep))
+        .batchGet(removeDuplicateKeys(keys.slice(i, i + batchGetStep)))
         .then((items) => items.Responses![TableName])
     );
   }

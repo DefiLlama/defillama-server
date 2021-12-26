@@ -1,7 +1,9 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
 import invokeLambda from "./utils/shared/invokeLambda";
+import { storeTokens } from "./adapters/bridges";
 
+const hourlyLambda = `coins-prod-fetchHourlyCoingeckoData`
 const step = 500;
 const handler = (lambdaFunctioName:string)=> async () => {
   const coins = await fetch(
@@ -14,7 +16,10 @@ const handler = (lambdaFunctioName:string)=> async () => {
     };
     await invokeLambda(lambdaFunctioName, event);
   }
+  if(lambdaFunctioName === hourlyLambda){
+    await storeTokens()
+  }
 };
 
 export const triggerNewFetches = wrapScheduledLambda(handler(`coins-prod-fetchCoingeckoData`));
-export const triggerHourlyFetches = wrapScheduledLambda(handler(`coins-prod-fetchHourlyCoingeckoData`));
+export const triggerHourlyFetches = wrapScheduledLambda(handler(hourlyLambda));

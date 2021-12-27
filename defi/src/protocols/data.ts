@@ -19106,7 +19106,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://afraswap.io",
   description: "AfraSwap provides a secure and easy way to swap tokens on BSC while providing the best prices by aggregating multiple different AMM's.",
   chain: "Binance",
-  logo: `${baseIconsUrl}/zodiacdao.png`,
+  logo: `${baseIconsUrl}/afraswap.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

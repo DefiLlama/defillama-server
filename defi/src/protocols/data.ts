@@ -19132,7 +19132,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "superfarm",
   cmcId: "8290",
   category: "Yield",
-  chains: ["Ethereum", "Binance", "Polygon"],
+  chains: ["Ethereum"],
   module: "superfarm/index.js",
   twitter: "SuperFarmDAO",
   listedAt:1640518619,

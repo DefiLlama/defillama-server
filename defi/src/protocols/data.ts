@@ -4973,14 +4973,14 @@ export default [
   },
   {
     id: "355",
-    name: "Gamma Strategies",
+    name: "Gamma",
     address: "0x6bea7cfef803d1e3d5f7c0103f7ded065644e197",
     symbol: "GAMMA",
     url: "https://www.gammastrategies.org",
     description:
       "Liquidity provisioning and active liquidity management on Uni V3 via utilisation of NFT Smart Vaults",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/gamma-strategies.jpg`,
+    logo: `${baseIconsUrl}/gamma.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: "gamma-strategies",

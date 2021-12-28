@@ -19829,5 +19829,28 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     "https://github.com/solidproof/kyc-certificates/blob/main/KYC_Certificate_Calcifer_%26_Howls_Castle.png"
   ],
   listedAt: 1640719202,
-}
+},
+{
+  id: "1129",
+  name: "BlackBird Finance",
+  address: "cronos:0x9A3d8759174f2540985aC83D957c8772293F8646",
+  symbol: "BIRD",
+  url: "https://croblackbird.finance/",
+  description: "BlackBird Finance, a new Defi protocol powered by Cronos Network to offer exciting features to the Defi community of Cronos to earn better yields and profits.",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/blackbird-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Cronos"],
+  module: "blackbird-finance/index.js",
+  twitter: "BlackBirdFIn",
+  audit_links: [
+    "https://rugdoc.io/project/black-bird-finance/",
+    "https://jagosafer.io/croblackbird"
+  ],
+  listedAt ,
+},
 ] as Protocol[];

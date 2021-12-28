@@ -19807,4 +19807,27 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "ZeusFinanceCro",
   listedAt: 1640718828,
 },
+{
+  id: "1128",
+  name: "KawaiiSwap",
+  address: "bsc:0x9e236b43D779B385c3279820e322ABAE249D3405",
+  symbol: "CALCIFIRE",
+  url: "https://www.kawaiiswap.finance/",
+  description: "KawaiiSwap enrichs traditional yield farming experience with gamification features.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/kawaiiswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Binance"],
+  module: "kawaiiswap-finance/index.js",
+  twitter: "kawaiiswap",
+  audit_links: [
+    "https://github.com/solidproof/smart-contract-audits/blob/main/SmartContract_Audit_Solidproof_Calcifire.pdf",
+    "https://github.com/solidproof/kyc-certificates/blob/main/KYC_Certificate_Calcifer_%26_Howls_Castle.png"
+  ],
+  listedAt: 1640719202,
+}
 ] as Protocol[];

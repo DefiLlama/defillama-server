@@ -19942,4 +19942,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   ],
   listedAt: 1640733119,
 },
+{
+  id: "1134",
+  name: "DuckyDeFi",
+  address: "cronos:0xFD71FC52D34eD1Cfc8363e5528285B12b6b942c2",
+  symbol: "DEGG",
+  url: "https://duckydefi.com/",
+  description: "The first fair launch DEX on Cronos Chain.",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/duckydefi.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Cronos"],
+  module: "duckydefi/index.js",
+  twitter: "DuckyDeFi",
+  audit_links: [
+    "https://rugdoc.io/project/duckydefi-exchange/"
+  ],
+  listedAt: 1640733460,
+},
 ] as Protocol[];

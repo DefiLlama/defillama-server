@@ -19920,4 +19920,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   ],
   listedAt: 1640732720,
 },
+{
+  id: "1133",
+  name: "Ice Colony",
+  address: "polygon:0x6ad1eEdDf1b1019494E6F78377d264BB2518db6F",
+  symbol: "ICE",
+  url: "https://www.icecolony.com/",
+  description: "Ice Colony is a yield farming project with layers. The project aims to adapt the models of successful projects and build new features on them.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/ice-colony.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Polygon"],
+  module: "ice-colony/index.js",
+  twitter: "IceColony",
+  audit_links: [
+    "https://paladinsec.co/projects/ice-colony/"
+  ],
+  listedAt: 1640733119,
+},
 ] as Protocol[];

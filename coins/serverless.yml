@@ -95,7 +95,7 @@ functions:
     timeout: 60
     events:
       - http:
-          path: now
+          path: prices
           method: post
   corsPreflight:
     handler: src/corsPreflight.default

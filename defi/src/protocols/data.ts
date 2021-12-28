@@ -19898,4 +19898,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   ],
   listedAt: 1640732399,
 },
+{
+  id: "1132",
+  name: "Genesys",
+  address: "fantom:0xf8b234a1ce59991006930de8b0525f9013982746",
+  symbol: "DNA",
+  url: "https://genesys.app/",
+  description: "Genesys is a new decentralized yield farming project running on Fantom Opera. Built upon proven features and logic to generate solid yields and passive income.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/genesys.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "dna-genesys",
+  cmcId: null,
+  category: "Yield",
+  chains: ["Fantom"],
+  module: "genesys/index.js",
+  twitter: "Genesys_ftm",
+  audit_links: [
+    "https://paladinsec.co/projects/genesys/"
+  ],
+  listedAt: 1640732720,
+},
 ] as Protocol[];

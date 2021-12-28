@@ -22,5 +22,5 @@ Just push your changes to the `master` branch.
 
 ## Cli
 ```
-export AWS_REGION="eu-central-1" && npx ts-node src/cli/fillOld.ts
+export AWS_REGION="eu-central-1" && export tableName="prod-table" && npx ts-node src/cli/fillOld.ts
 ```

@@ -1,10 +1,10 @@
-import dynamodb from "./shared/dynamodb";
-import { secondsBetweenCallsExtra } from "../utils/date";
+import dynamodb from "./dynamodb";
+import { secondsBetweenCallsExtra } from "../date";
 
 export default function getTVLOfRecordClosestToTimestamp(
   PK: string,
   timestamp: number,
-  searchWidth: number = secondsBetweenCallsExtra
+  searchWidth: number
 ) {
   return dynamodb
     .query({
@@ -19,7 +19,6 @@ export default function getTVLOfRecordClosestToTimestamp(
       if (records.Items == undefined || records.Items.length == 0) {
         return {
           SK: undefined,
-          tvl: 0,
         };
       }
       let closest = records.Items[0];

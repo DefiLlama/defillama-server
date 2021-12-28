@@ -4,7 +4,7 @@ import dynamodb from "../utils/shared/dynamodb";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";
 import { getClosestDayStartTimestamp } from "../utils/date";
-import getTVLOfRecordClosestToTimestamp from "../utils/getTVLOfRecordClosestToTimestamp";
+import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
 
 const secondsInDay = 24 * 3600;
 

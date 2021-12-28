@@ -19790,7 +19790,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1127",
-  name: "Zeu$ Finance",
+  name: "Zeus Finance",
   address: "cronos:0x813658e307fA4DAF9B25e7CE1dE3b40012CA2B74",
   symbol: "ZEU$",
   url: "https://www.zeusfinance.app/",

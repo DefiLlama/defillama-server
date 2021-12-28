@@ -19964,4 +19964,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   ],
   listedAt: 1640733460,
 },
+{
+  id: "1135",
+  name: "Meowswap",
+  address: "bsc:0xE8658B07c555E9604329A6a0A82FF6D9c6F68D2F",
+  symbol: "MEOW",
+  url: "https://meowswap.net/",
+  description: "DEX and farming on BSC",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/meowswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "meowswap",
+  cmcId: null,
+  category: "Yield",
+  chains: ["Binance"],
+  module: "meowswap/index.js",
+  twitter: "meowswap",
+  audit_links: [
+    "https://www.certik.org/projects/meowswap"
+  ],
+  listedAt: 1640733854,
+},
 ] as Protocol[];

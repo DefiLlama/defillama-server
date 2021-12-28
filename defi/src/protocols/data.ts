@@ -2758,7 +2758,7 @@ export default [
     logo: `${baseIconsUrl}/wepiggy.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "wepiggy-coin",
     cmcId: null,
     category: "Lending",
     chains: ["Ethereum", "OKExChain", "Binance", "Polygon", "Heco", "Arbitrum"],

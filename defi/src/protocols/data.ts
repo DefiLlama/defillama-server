@@ -19851,6 +19851,28 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     "https://rugdoc.io/project/black-bird-finance/",
     "https://jagosafer.io/croblackbird"
   ],
-  listedAt 1640731523,
+  listedAt: 1640731523,
+},
+{
+  id: "1130",
+  name: "Buffaloswap",
+  address: "bsc:0x10a49f1fc8c604ea7f1c49bcc6ab2a8e58e77ea5",
+  symbol: "BUFF",
+  url: "https://www.buffaloswap.org/",
+  description: "Safe, Fair & Transparent Yield Farming Optimizer on BSC",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/buffaloswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "buffalo-swap",
+  cmcId: null,
+  category: "Yield",
+  chains: ["Binance"],
+  module: "buffaloswap/index.js",
+  twitter: "BuffaloswapDex",
+  audit_links: [
+    "https://github.com/solidproof/smart-contract-audits/blob/main/SmartContract_Audit_Solidproof_BuffaloToken.pdf"
+  ],
+  listedAt: 1640731950,
 },
 ] as Protocol[];

@@ -19896,6 +19896,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     "https://rugdoc.io/project/cyber-dog-financv/",
     "https://jagosafer.io/cyberdog"
   ],
-  listedAt: ,
+  listedAt: 1640732399,
 },
 ] as Protocol[];

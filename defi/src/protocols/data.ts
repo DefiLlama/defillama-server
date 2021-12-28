@@ -19875,4 +19875,27 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   ],
   listedAt: 1640731950,
 },
+{
+  id: "1131",
+  name: "Cyber Dog",
+  address: "cronos:0x7a6a832eB5F58245F7d75eD980cED849D69A98FD",
+  symbol: "CBRDOG",
+  url: "https://cyberdog.finance/",
+  description: "Cyberdog offers features like vaults, incentive pools, NFT marketplace, layers in order to create much more utility to the community.",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/cyber-dog.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Cronos"],
+  module: "cyberdog-finance/index.js",
+  twitter: "cyberdogdefi",
+  audit_links: [
+    "https://rugdoc.io/project/cyber-dog-financv/",
+    "https://jagosafer.io/cyberdog"
+  ],
+  listedAt: ,
+},
 ] as Protocol[];

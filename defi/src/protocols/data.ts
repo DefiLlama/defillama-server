@@ -19851,6 +19851,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     "https://rugdoc.io/project/black-bird-finance/",
     "https://jagosafer.io/croblackbird"
   ],
-  listedAt ,
+  listedAt 1640731523,
 },
 ] as Protocol[];

@@ -55,8 +55,6 @@ function lambdaResponse({
 
 export function errorResponse(body: {
   message: string;
-  field?: string;
-  fatal?: boolean;
 }) {
   const errorParams = {
     statusCode: 400,

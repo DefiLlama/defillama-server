@@ -20177,7 +20177,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "The perfect fren to FTM community. Meme coin with use cases.",
   chain: "Fantom",
   logo: `${baseIconsUrl}/ftm-frens.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -20185,6 +20185,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Fantom"],
   module: "ftm-frens/index.js",
   twitter: "FTMFrens",
+  audit_links: ["https://rugdoc.io/project/ftm-frens/"],
   listedAt: 1640800879,
 },
 ] as Protocol[];

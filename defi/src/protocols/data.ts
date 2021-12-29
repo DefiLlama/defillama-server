@@ -18338,7 +18338,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1054",
-  name: "Chain Port",
+  name: "ChainPort",
   address: null,
   symbol: "-",
   url: "https://app.chainport.io",
@@ -19481,7 +19481,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "WisteriaSwap is a new DeFi 2.0 (PVC) model that combines two models: a system in which the protocol can secure its own liquidity, and a system in which inflation can be controlled by continuously burning tokens.",
   chain: "Binance",
   logo: `${baseIconsUrl}/wisteriaswap.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "wisteria-swap",
   cmcId: "16289",
@@ -19489,6 +19489,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Binance"],
   module: "wisteriaswap/index.js",
   twitter: "robiniaswap",
+  audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/December/Wisteria%20Swap.pdf"],
   listedAt: 1640631213,
 },
 {

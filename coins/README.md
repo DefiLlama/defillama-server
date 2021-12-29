@@ -1,4 +1,4 @@
-# defillama-server
+# Coins server
 
 ## Setup
 ```bash

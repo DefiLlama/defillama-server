@@ -20487,6 +20487,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "baker-guild-finance/index.js",
   twitter: "BakerGuild",
   audit_links: ["https://paladinsec.co/projects/bakerguild/"],
-  listedAt: ,
+  listedAt: 1640903066,
 },
 ] as Protocol[];

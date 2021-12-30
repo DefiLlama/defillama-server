@@ -106,6 +106,13 @@ functions:
       - http:
           path: prices
           method: post
+  block:
+    handler: src/getBlock.default
+    timeout: 60
+    events:
+      - http:
+          path: block/{chain}/{timestamp}
+          method: get
   corsPreflight:
     handler: src/corsPreflight.default
     events:

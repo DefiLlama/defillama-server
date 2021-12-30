@@ -20356,7 +20356,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://www.socialswap.io",
   description: "Socialswap is a decentralized exchange on tron blockchain",
   chain: "Tron",
-  logo: `${baseIconsUrl}/socialswap.png`,
+  logo: `${baseIconsUrl}/socialswap.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

@@ -20110,7 +20110,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1142",
-  name: "MMO Finance",
+  name: "MMO Optimizer",
   address: "cronos:0x50c0C5bda591bc7e89A342A3eD672FB59b3C46a7",
   symbol: "MMO",
   url: "https://vaults.mm.finance/vault",

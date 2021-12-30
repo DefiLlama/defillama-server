@@ -20364,7 +20364,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "Dexes",
   chains: ["Tron"],
   module: "socialswap/index.js",
-  twitter: null,
+  twitter: "Socialswapdefi",
   audit_links: [
     "https://turingpoint.de/en/security-assessments/certificate/smart_contract_audit_socialswapio-d27a325bc6/",
     "https://www.certik.com/projects/socialswap",

@@ -19724,7 +19724,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Yield",
   chains: ["Cronos", "Polygon", "Fantom"],
-  module: "salem/index.js ",
+  module: "salem/index.js",
   twitter: "SalemFinance",
   audit_links: ["https://paladinsec.co/projects/salem-finance/"],
   listedAt: 1640717105,

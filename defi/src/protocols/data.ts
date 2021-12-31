@@ -20587,6 +20587,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "swing-dao/index.js",
   twitter: "SwingDAOO",
   forkedFrom: ["Olympus DAO"],
-  listedAt: ,
+  listedAt: 1640937090,
 },
 ] as Protocol[];

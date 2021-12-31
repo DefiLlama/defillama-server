@@ -18,6 +18,21 @@ export function getTimestampAtStartOfDay(timestamp: number) {
   return toUNIXTimestamp(dt.getTime() - dt.getTimezoneOffset() * 6e4);
 }
 
+export const getTimestampAtStartOfHour = (timestamp: number) => {
+  const date = new Date(timestamp * 1000);
+  var date_utc = Date.UTC(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate(),
+    date.getUTCHours(),
+    date.getUTCMinutes(),
+    date.getUTCSeconds()
+  );
+  var startOfDay = Number(new Date(date_utc));
+  var timestamp = startOfDay / 1000;
+  return Math.floor(timestamp / 3600) * 3600;
+};
+
 export function getDay(timestamp: number | undefined): string {
   if (timestamp == undefined) {
     return "none";
@@ -41,36 +56,6 @@ export function getClosestDayStartTimestamp(timestamp: number) {
     return nextDayTimestamp;
   }
 }
-
-export const getStartOfDayTimestamp = (timestamp: number) => {
-  const date = new Date(timestamp * 1000);
-  var date_utc = Date.UTC(
-    date.getUTCFullYear(),
-    date.getUTCMonth(),
-    date.getUTCDate(),
-    date.getUTCHours(),
-    date.getUTCMinutes(),
-    date.getUTCSeconds()
-  );
-  var startOfDay = Number(new Date(date_utc));
-  var timestamp = startOfDay / 1000;
-  return Math.floor(timestamp / 86400) * 86400;
-};
-
-export const getStartOfHourTimestamp = (timestamp: number) => {
-  const date = new Date(timestamp * 1000);
-  var date_utc = Date.UTC(
-    date.getUTCFullYear(),
-    date.getUTCMonth(),
-    date.getUTCDate(),
-    date.getUTCHours(),
-    date.getUTCMinutes(),
-    date.getUTCSeconds()
-  );
-  var startOfDay = Number(new Date(date_utc));
-  var timestamp = startOfDay / 1000;
-  return Math.floor(timestamp / 3600) * 3600;
-};
 
 function pad(s: number) {
   return s < 10 ? "0" + s : s;

@@ -1,13 +1,26 @@
-import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
+import {
+  getChainBlocks,
+  chainsForBlocks,
+} from "@defillama/sdk/build/computeTVL/blocks";
 import * as Sentry from "@sentry/serverless";
 
 // import { wrapScheduledLambda } from "../utils/shared/wrap";
-import { getStartOfHourTimestamp } from "../utils/date";
+import {
+  getTimestampAtStartOfHour,
+  getTimestampAtStartOfDay,
+} from "../utils/date";
+import { hourlyDexVolumeDb } from "../utils/shared/dynamodb";
 import dexVolumes from "../protocols/dexVolumes";
 
 export const handler = async (event: any) => {
-  const hourUnix = getStartOfHourTimestamp(Date.now() / 1000);
-  const { timestamp, chainBlocks } = await getCurrentBlocks();
+  const currentTimestamp = Date.now() / 1000;
+  const hourlyTimestamp = getTimestampAtStartOfHour(currentTimestamp);
+  const prevHourlyTimestamp = hourlyTimestamp - 3600;
+  const dailyTimestamp = getTimestampAtStartOfDay(currentTimestamp);
+  const chainBlocks = await getChainBlocks(hourlyTimestamp, [
+    "ethereum",
+    ...chainsForBlocks,
+  ]);
 
   event.protocolIndexes.map(async (index: number) => {
     const { id, name, module } = dexVolumes[index];
@@ -21,9 +34,12 @@ export const handler = async (event: any) => {
         let ecosystemFetchResult;
 
         try {
-          ecosystemFetchResult = await ecosystemFetch(timestamp, chainBlocks);
+          ecosystemFetchResult = await ecosystemFetch(
+            hourlyTimestamp,
+            chainBlocks
+          );
         } catch (e) {
-          const errorName = `${name}-${ecosystem}-${timestamp}`;
+          const errorName = `${name}-${ecosystem}-${hourlyTimestamp}`;
           console.error(errorName, e);
           const scope = new Sentry.Scope();
           scope.setTag("dex-volume", errorName);
@@ -34,6 +50,15 @@ export const handler = async (event: any) => {
         return { [ecosystem]: ecosystemFetchResult };
       }
     );
+
+    let lastUpdatedData;
+
+    // if start of new day, compare to yesterday's daily, if not compare to todays
+    if (hourlyTimestamp === dailyTimestamp) {
+      // how to query dynamo
+    } else {
+      lastUpdatedData = hourlyDexVolumeDb.query({});
+    }
 
     const protocolVolumes = (await Promise.all(ecosystemFetches)).reduce(
       (acc, volume) => ({ ...acc, ...volume }),

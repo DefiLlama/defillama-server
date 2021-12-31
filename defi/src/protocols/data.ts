@@ -1448,6 +1448,7 @@ export default [
     twitter: "DefiSaver",
     audit_links: ["https://consensys.net/diligence/audits/2021/03/defi-saver/"],
   },
+  /*
   {
     id: "178",
     name: "DefiChain",
@@ -1468,6 +1469,7 @@ export default [
     twitter: "defichain",
     audit_links: ["https://defichain.com/security/"],
   },
+  */
   {
     id: "179",
     name: "Varen",

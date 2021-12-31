@@ -18302,7 +18302,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "The meta AMM of Terra",
   chain: "Terra",
   logo: `${baseIconsUrl}/astroport.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "astroport",
   cmcId: null,
@@ -18310,6 +18310,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Terra"] ,
   module: "astroport/index.js",
   twitter: "astroport_fi",
+  audit_links: ["https://github.com/astroport-fi/astro-audits"],
   listedAt: 1639915230
 },
 {

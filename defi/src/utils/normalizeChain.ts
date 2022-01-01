@@ -468,6 +468,11 @@ export const chainCoingeckoIds = {
     symbol: "ERG",
     cmcId: "1555",
   },
+  "Cardano": {
+    geckoId: "cardano",
+    symbol: "ADA",
+    cmcId: "2010",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,

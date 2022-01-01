@@ -20506,7 +20506,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "niifi",
   cmcId: "9825" ,
   category: "Dexes",
-  chains:["Nahmii", "Ethereum"],
+  chains:["Nahmii"],
   module: "niifi.js",
   twitter: "NiiFiDAO",
   forkedFrom: ["Uniswap"],

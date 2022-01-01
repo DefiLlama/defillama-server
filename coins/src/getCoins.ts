@@ -4,7 +4,14 @@ import parseRequestBody from "./utils/shared/parseRequestBody";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 
 function cutStartWord(text: string, startWord: string) {
-  return text.substr(startWord.length)
+  return text.slice(startWord.length)
+}
+
+function lowercaseAddress(coin:string){
+  if(coin.startsWith("solana:")){
+    return coin
+  }
+  return coin.toLowerCase()
 }
 
 const DAY = 3600*24;
@@ -16,7 +23,7 @@ const handler = async (
   const requestedCoins = body.coins;
   const timestampRequested = body.timestamp
   const coins = await batchGet(requestedCoins.map((coin: string) => ({
-    PK: coin.startsWith("coingecko:") ? `coingecko#${cutStartWord(coin, "coingecko:")}` : `asset#${coin}`,
+    PK: coin.startsWith("coingecko:") ? `coingecko#${cutStartWord(coin, "coingecko:")}` : `asset#${lowercaseAddress(coin)}`,
     SK: 0,
   })));
   const response = {} as {

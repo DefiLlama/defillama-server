@@ -31,7 +31,7 @@ export const chainCoingeckoIds = {
   "Arbitrum": {
     geckoId: null,
     symbol: null,
-    cmcId: "11841",
+    cmcId: null,
   },
   "Palm": {
     geckoId: null,
@@ -472,6 +472,16 @@ export const chainCoingeckoIds = {
     geckoId: "cardano",
     symbol: "ADA",
     cmcId: "2010",
+  },
+  "Liquidchain": {
+    geckoId: "liquidchain",
+    symbol: "XLC",
+    cmcId: null,
+  },
+  "Nahmii": {
+    geckoId: "nahmii",
+    symbol: "NII",
+    cmcId: "4865",
   },
 } as {
   [chain: string]: {

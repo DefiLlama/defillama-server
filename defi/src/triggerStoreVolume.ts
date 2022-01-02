@@ -11,6 +11,7 @@ function shuffleArray(array: number[]) {
 
 const step = 10;
 const handler = async () => {
+  // TODO separate those that need to be called on the hour and those using graphs with timestamp
   const protocolIndexes = Array.from(Array(dexVolumes.length).keys());
   shuffleArray(protocolIndexes);
   for (let i = 0; i < dexVolumes.length; i += step) {

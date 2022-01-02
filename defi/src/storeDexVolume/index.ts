@@ -1,15 +1,23 @@
 import {
-  getChainBlocks,
   chainsForBlocks,
+  getChainBlocks,
 } from "@defillama/sdk/build/computeTVL/blocks";
+import BigNumber from "bignumber.js";
+
 import * as Sentry from "@sentry/serverless";
 
 // import { wrapScheduledLambda } from "../utils/shared/wrap";
 import {
-  getTimestampAtStartOfHour,
   getTimestampAtStartOfDay,
+  getTimestampAtStartOfHour,
 } from "../utils/date";
-import { hourlyDexVolumeDb } from "../utils/shared/dynamodb";
+import {
+  dailyDexVolumeDb,
+  hourlyDexVolumeDb,
+  monthlyDexVolumeDb,
+  getHourlyDexVolumeRecord,
+  hourlyVolume,
+} from "../utils/dexVolumeRecords";
 import dexVolumes from "../protocols/dexVolumes";
 
 export const handler = async (event: any) => {
@@ -44,21 +52,12 @@ export const handler = async (event: any) => {
           const scope = new Sentry.Scope();
           scope.setTag("dex-volume", errorName);
           Sentry.AWSLambda.captureException(e, scope);
-          return;
+          throw e;
         }
 
         return { [ecosystem]: ecosystemFetchResult };
       }
     );
-
-    let lastUpdatedData;
-
-    // if start of new day, compare to yesterday's daily, if not compare to todays
-    if (hourlyTimestamp === dailyTimestamp) {
-      // how to query dynamo
-    } else {
-      lastUpdatedData = hourlyDexVolumeDb.query({});
-    }
 
     const protocolVolumes = (await Promise.all(ecosystemFetches)).reduce(
       (acc, volume) => ({ ...acc, ...volume }),
@@ -67,7 +66,95 @@ export const handler = async (event: any) => {
 
     console.log(protocolVolumes, "protocolVolumes");
 
-    // assuming there is prev hour
+    let lastUpdatedData = await getHourlyDexVolumeRecord(
+      hourlyVolume(id),
+      `${prevHourlyTimestamp}`
+    );
+
+    // Marks this hourly's volume as inaccurate
+    let invalidPrevHour = !!lastUpdatedData;
+
+    const summedHourlyVolumes: {
+      totalVolume: BigNumber;
+      dailyVolume: BigNumber;
+      hourlyVolume: BigNumber;
+    } = {
+      totalVolume: new BigNumber(0),
+      dailyVolume: new BigNumber(0),
+      hourlyVolume: new BigNumber(0),
+    };
+
+    const newEcosystemHourlyVolumes: {
+      [x: string]: {
+        [y: string]: BigNumber;
+      };
+    } = {};
+
+    // Calc all ecosystem total, daily, hourly volumes and sum them
+    Object.entries(protocolVolumes).map(([ecosystem, ecosystemVolume]) => {
+      const { totalVolume, dailyVolume, hourlyVolume } = ecosystemVolume;
+
+      const validTotalVolume = typeof totalVolume !== "undefined";
+      const validDailyVolume = typeof dailyVolume !== "undefined";
+      const validHourlyVolume = typeof hourlyVolume !== "undefined";
+
+      newEcosystemHourlyVolumes[ecosystem] = {};
+
+      // Calculate TotalVolume, if no daily or hourly calc them too
+      if (validTotalVolume) {
+        const bigNumberTotalVol = new BigNumber(totalVolume);
+        newEcosystemHourlyVolumes[ecosystem].totalVolume = bigNumberTotalVol;
+        summedHourlyVolumes.totalVolume =
+          summedHourlyVolumes.totalVolume.plus(bigNumberTotalVol);
+
+        if (!validDailyVolume) {
+          let calcDailyVolume = bigNumberTotalVol.minus(
+            new BigNumber(lastUpdatedData?.totalVolume || 0)
+          );
+          newEcosystemHourlyVolumes[ecosystem].dailyVolume = calcDailyVolume;
+          summedHourlyVolumes.dailyVolume =
+            summedHourlyVolumes.dailyVolume.plus(calcDailyVolume);
+        }
+
+        if (!validHourlyVolume) {
+          let calcHourlyVolume = bigNumberTotalVol.minus(
+            new BigNumber(lastUpdatedData?.totalVolume || 0)
+          );
+          newEcosystemHourlyVolumes[ecosystem].hourlyVolume = calcHourlyVolume;
+          summedHourlyVolumes.hourlyVolume.plus(calcHourlyVolume);
+        }
+      }
+
+      // Calc daily, if no hourly and total, calc hourly
+      if (validDailyVolume) {
+        const bigNumberDailyVol = new BigNumber(dailyVolume);
+        newEcosystemHourlyVolumes[ecosystem].dailyVolume = bigNumberDailyVol;
+        summedHourlyVolumes.dailyVolume = bigNumberDailyVol;
+
+        if (!validHourlyVolume && !validTotalVolume) {
+          if (hourlyTimestamp === dailyTimestamp) {
+            newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
+              bigNumberDailyVol;
+            summedHourlyVolumes.hourlyVolume.plus(bigNumberDailyVol);
+          } else {
+            let calcHourlyVolume = bigNumberDailyVol.minus(
+              new BigNumber(lastUpdatedData?.dailyVolume || 0)
+            );
+            newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
+              calcHourlyVolume;
+            summedHourlyVolumes.hourlyVolume.plus(calcHourlyVolume);
+          }
+        }
+      }
+
+      if (validHourlyVolume) {
+        const bigNumberHourlyVol = new BigNumber(hourlyVolume);
+        newEcosystemHourlyVolumes[ecosystem].hourlyVolume = bigNumberHourlyVol;
+        summedHourlyVolumes.hourlyVolume.plus(bigNumberHourlyVol);
+      }
+    });
+
+    console.log(summedHourlyVolumes, newEcosystemHourlyVolumes);
 
     try {
     } catch (e) {

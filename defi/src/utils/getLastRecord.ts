@@ -23,6 +23,3 @@ export const dailyTokensTvl = (protocolId: string) =>
   `dailyTokensTvl#${protocolId}`;
 export const dailyUsdTokensTvl = (protocolId: string) =>
   `dailyUsdTokensTvl#${protocolId}`;
-export const hourlyVolume = (protocolId: string) =>
-  `hourlyVolume#${protocolId}`;
-export const dailyVolume = (protocolId: string) => `dailyVolume#${protocolId}`;

@@ -17163,7 +17163,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://drops.co",
     description: "Get more value from your NFT & DeFi assets",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/drops.jpg`,
+    logo: `${baseIconsUrl}/drops.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "drops-ownership-power",

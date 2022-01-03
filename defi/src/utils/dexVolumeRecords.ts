@@ -46,23 +46,37 @@ export const hourlyDexVolumeDb = createDynamoDbApi("dev-hourly-dex-volume");
 export const dailyDexVolumeDb = createDynamoDbApi("dev-daily-dex-volume");
 export const monthlyDexVolumeDb = createDynamoDbApi("dev-monthly-dex-volume");
 
-export function getHourlyDexVolumeRecord(PK: string, SK: string | number) {
-  return hourlyDexVolumeDb
-    .query({
-      ExpressionAttributeValues: {
-        ":pk": PK,
-        ":sk": SK,
-      },
-      KeyConditionExpression: "PK = :pk and SK = :sk",
-    })
-    .then((res) => res.Items?.[0])
-    .catch((e) => {
-      console.error(e);
-    });
-}
-
-export const hourlyVolume = (protocolId: string) =>
+export const getDexVolumeRecord =
+  (db: any, pkHelper: any) =>
+  (protocolId: string, timestamp: string | number) =>
+    db
+      .query({
+        ExpressionAttributeValues: {
+          ":pk": pkHelper(protocolId),
+          ":sk": timestamp,
+        },
+        KeyConditionExpression: "PK = :pk and SK = :sk",
+      })
+      .then((res: any) => res.Items?.[0])
+      .catch((e: any) => {
+        console.error(e);
+      });
+export const hourlyVolumePk = (protocolId: string | number) =>
   `hourlyVolume#${protocolId}`;
-export const dailyVolume = (protocolId: string) => `dailyVolume#${protocolId}`;
-export const monthlyVolume = (protocolId: string) =>
+export const dailyVolumePk = (protocolId: string | number) =>
   `dailyVolume#${protocolId}`;
+export const monthlyVolumePk = (protocolId: string | number) =>
+  `dailyVolume#${protocolId}`;
+
+export const getHourlyDexVolumeRecord = getDexVolumeRecord(
+  hourlyDexVolumeDb,
+  hourlyVolumePk
+);
+export const getDailyDexVolumeRecord = getDexVolumeRecord(
+  hourlyDexVolumeDb,
+  dailyVolumePk
+);
+export const getMonthlyDexVolumeRecord = getDexVolumeRecord(
+  hourlyDexVolumeDb,
+  monthlyVolumePk
+);

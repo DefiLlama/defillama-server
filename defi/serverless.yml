@@ -66,6 +66,7 @@ provider:
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
+    EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}

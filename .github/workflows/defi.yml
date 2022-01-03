@@ -68,3 +68,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         SPIKE_WEBHOOK: ${{ secrets.SPIKE_WEBHOOK }}
         CLOUDWATCH_WEBHOOK_URL: ${{ secrets.CLOUDWATCH_WEBHOOK_URL }}
+        EULER_MONGODB_APIKEY: ${{ secrets.EULER_MONGODB_APIKEY }}

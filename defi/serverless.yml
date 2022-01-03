@@ -154,7 +154,7 @@ functions:
           method: get
   dataset:
     handler: src/getDataset.default
-    timeout: 9000
+    timeout: 900
     memorySize: 10240
     events:
       - http:

@@ -2,18 +2,21 @@ import protocols from "./protocols/data";
 import dynamodb from "./utils/shared/dynamodb";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
-import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompress } from 'zlib'
 import { promisify } from 'util'
 
-function sum(sumDailyTvls:SumDailyTvls, chain:string, timestamp: number, itemTvl:number){
+function sum(sumDailyTvls:SumDailyTvls, chain:string, tvlSection:string, timestamp: number, itemTvl:number){
   if(sumDailyTvls[chain] === undefined){
     sumDailyTvls[chain] = {}
   }
+  if(sumDailyTvls[chain][tvlSection] === undefined){
+    sumDailyTvls[chain][tvlSection] = {}
+  }
   if (typeof itemTvl === 'number' && !Number.isNaN(itemTvl)) {
-    sumDailyTvls[chain][timestamp] = itemTvl + (sumDailyTvls[chain][timestamp] ?? 0);
+    sumDailyTvls[chain][tvlSection][timestamp] = itemTvl + (sumDailyTvls[chain][tvlSection][timestamp] ?? 0);
   } else {
     console.log("itemTvl is NaN", itemTvl, chain, timestamp)
   }
@@ -21,7 +24,9 @@ function sum(sumDailyTvls:SumDailyTvls, chain:string, timestamp: number, itemTvl
 
 interface SumDailyTvls {
 [chain:string]:{
-  [timestamp: number]: number | undefined;
+  [tvlSection:string]:{
+    [timestamp: number]: number | undefined;
+  }
 }
 }
 
@@ -66,6 +71,8 @@ export async function getHistoricalTvlForAllProtocols(){
   }
 }
 
+const isLowercase = (str:string)=>str.toLowerCase()===str
+
 const handler = async (_event: any) => {
   const sumDailyTvls = {} as SumDailyTvls
   
@@ -85,26 +92,30 @@ const handler = async (_event: any) => {
     }
     historicalTvl.forEach((item) => {
       const timestamp = getClosestDayStartTimestamp(item.SK);
-      sum(sumDailyTvls, "total", timestamp, item.tvl)
-      let numChains = 0;
+      sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl)
+      let hasAtLeastOneChain = false;
       Object.entries(item).forEach(([chain, tvl])=>{
-        const chainName = getChainDisplayName(chain, true)
+        const formattedChainName = getChainDisplayName(chain, true)
+        if(extraSections.includes(formattedChainName)){
+          sum(sumDailyTvls, "total", formattedChainName, timestamp, tvl)
+          return
+        }
+        const [chainName, tvlSection] = formattedChainName.includes("-")?formattedChainName.split('-'):[formattedChainName, "tvl"];
         if(chainCoingeckoIds[chainName] !== undefined){
-          sum(sumDailyTvls, chainName, timestamp, tvl)
-          numChains += 1;
+          sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl)
+          hasAtLeastOneChain = true;
         }
       })
-      if(numChains === 0){
-        sum(sumDailyTvls, transformNewChainName(protocol.chain), timestamp, item.tvl)
+      if(hasAtLeastOneChain === false){
+        sum(sumDailyTvls, transformNewChainName(protocol.chain), "tvl", timestamp, item.tvl)
       }
     });
   });
 
   await Promise.all(Object.entries(sumDailyTvls).map(async ([chain, chainDailyTvls])=>{
-    const chainResponse = Object.entries(chainDailyTvls).map(([timestamp, tvl]) => ({
-      date: timestamp,
-      totalLiquidityUSD: tvl,
-    }));
+    const chainResponse = Object.fromEntries(Object.entries(chainDailyTvls).map(
+      ([section, tvls])=>[section, Object.entries(tvls)]
+    ))
     const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
       [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
       [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,

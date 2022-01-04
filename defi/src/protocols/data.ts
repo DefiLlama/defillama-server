@@ -20938,7 +20938,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://www.euler.finance",
   description: "Permissionless crypto lending markets are almost here. Euler is a non-custodial protocol on Ethereum that allows users to lend and borrow almost any crypto asset",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/chargedefi.png`,
+  logo: `${baseIconsUrl}/euler.svg`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

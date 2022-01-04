@@ -9730,7 +9730,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Socean is a stake pool for the Solana blockchain. Users deposit their SOL and receive a SOCN token. The SOCN token can also be used in a variety of DeFi applications to earn extra returns.",
     chain: "Solana",
     logo: `${baseIconsUrl}/socean.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -9739,6 +9739,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "socean/socean.js",
     twitter: "SoceanFinance",
     forkedFrom: ["Solana Program Library"],
+    audit_links: [
+      "http://solana.com/SolanaNeodymeStakePoolAudit.pdf",
+      "http://solana.com/SolanaQuantstampStakePoolAudit.pdf",
+      "http://solana.com/SolanaKudelskiStakePoolAudit.pdf",
+    ],
   },
   {
     id: "604",

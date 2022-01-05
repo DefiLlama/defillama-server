@@ -17260,7 +17260,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/luxor-money.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "luxor",
     cmcId: null,
     category: "Assets",
     chains: ["Fantom"],

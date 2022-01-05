@@ -45,38 +45,37 @@ const createDynamoDbApi = (TableName: string) => ({
 export const hourlyDexVolumeDb = createDynamoDbApi("dev-hourly-dex-volume");
 export const dailyDexVolumeDb = createDynamoDbApi("dev-daily-dex-volume");
 export const monthlyDexVolumeDb = createDynamoDbApi("dev-monthly-dex-volume");
+export const dexVolumeInfoDb = createDynamoDbApi("dev-dex-volume");
 
-export const getDexVolumeRecord =
-  (db: any, pkHelper: any) =>
-  (protocolId: string, timestamp: string | number) =>
-    db
-      .query({
-        ExpressionAttributeValues: {
-          ":pk": pkHelper(protocolId),
-          ":sk": timestamp,
-        },
-        KeyConditionExpression: "PK = :pk and SK = :sk",
-      })
-      .then((res: any) => res.Items?.[0])
-      .catch((e: any) => {
-        console.error(e);
-      });
-export const hourlyVolumePk = (protocolId: string | number) =>
-  `hourlyVolume#${protocolId}`;
-export const dailyVolumePk = (protocolId: string | number) =>
-  `dailyVolume#${protocolId}`;
-export const monthlyVolumePk = (protocolId: string | number) =>
-  `dailyVolume#${protocolId}`;
+export const getTimeDexVolumeRecord = (db: any) => (id: number, unix: number) =>
+  db
+    .query({
+      ExpressionAttributeValues: {
+        ":id": id,
+        ":unix": unix,
+      },
+      KeyConditionExpression: "id = :id and unix = :unix",
+    })
+    .then((res: any) => res.Items?.[0])
+    .catch((e: any) => {
+      console.error(e);
+    });
 
-export const getHourlyDexVolumeRecord = getDexVolumeRecord(
-  hourlyDexVolumeDb,
-  hourlyVolumePk
-);
-export const getDailyDexVolumeRecord = getDexVolumeRecord(
-  hourlyDexVolumeDb,
-  dailyVolumePk
-);
-export const getMonthlyDexVolumeRecord = getDexVolumeRecord(
-  hourlyDexVolumeDb,
-  monthlyVolumePk
-);
+export const getDexVolumeRecord = (id: number) =>
+  dexVolumeInfoDb
+    .query({
+      ExpressionAttributeValues: {
+        ":id": id,
+      },
+      KeyConditionExpression: "id = :id",
+    })
+    .then((res: any) => res.Items?.[0])
+    .catch((e: any) => {
+      console.error(e);
+    });
+
+export const getHourlyDexVolumeRecord =
+  getTimeDexVolumeRecord(hourlyDexVolumeDb);
+export const getDailyDexVolumeRecord = getTimeDexVolumeRecord(dailyDexVolumeDb);
+export const getMonthlyDexVolumeRecord =
+  getTimeDexVolumeRecord(monthlyDexVolumeDb);

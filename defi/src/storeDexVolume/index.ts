@@ -18,19 +18,23 @@ import {
   monthlyDexVolumeDb,
   getHourlyDexVolumeRecord,
   getMonthlyDexVolumeRecord,
-  hourlyVolumePk,
-  dailyVolumePk,
-  monthlyVolumePk,
+  getDexVolumeRecord,
 } from "../utils/dexVolumeRecords";
 import dexVolumes from "../protocols/dexVolumes";
 
+// Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
+
 export const handler = async (event: any) => {
   const currentTimestamp = Date.now() / 1000;
-  const hourlyTimestamp = getTimestampAtStartOfHour(currentTimestamp);
-  const prevHourlyTimestamp = hourlyTimestamp - 3600;
+  const fetchCurrentHourTimestamp = getTimestampAtStartOfHour(currentTimestamp);
+  const savedHourTimestamp = fetchCurrentHourTimestamp - 3600;
+  const prevHourlyTimestamp = savedHourTimestamp - 3600;
   const dailyTimestamp = getTimestampAtStartOfDay(currentTimestamp);
-  const monthlyTimestamp = getTimestampAtStartOfMonth(currentTimestamp);
-  const chainBlocks = await getChainBlocks(hourlyTimestamp, [
+  const startOfDay = fetchCurrentHourTimestamp === dailyTimestamp;
+  const startNewDailyVolume = savedHourTimestamp === dailyTimestamp;
+  // if 12:00 am on first day of month add the current calculated volume to prev month
+  const monthlyTimestamp = getTimestampAtStartOfMonth(currentTimestamp - 3600);
+  const chainBlocks = await getChainBlocks(fetchCurrentHourTimestamp, [
     "ethereum",
     ...chainsForBlocks,
   ]);
@@ -48,11 +52,11 @@ export const handler = async (event: any) => {
 
         try {
           ecosystemFetchResult = await ecosystemFetch(
-            hourlyTimestamp,
+            fetchCurrentHourTimestamp,
             chainBlocks
           );
         } catch (e) {
-          const errorName = `fetch-${name}-${ecosystem}-${hourlyTimestamp}`;
+          const errorName = `fetch-${name}-${ecosystem}-${fetchCurrentHourTimestamp}`;
           const scope = new Sentry.Scope();
           scope.setTag("dex-volume", errorName);
           Sentry.AWSLambda.captureException(e, scope);
@@ -71,10 +75,11 @@ export const handler = async (event: any) => {
     console.log(protocolVolumes, "protocolVolumes");
 
     const getPrevRecords = await Promise.all([
-      getHourlyDexVolumeRecord(id, `${prevHourlyTimestamp}`),
-      getMonthlyDexVolumeRecord(id, `${monthlyTimestamp}`),
+      getHourlyDexVolumeRecord(id, prevHourlyTimestamp),
+      getMonthlyDexVolumeRecord(id, monthlyTimestamp),
+      getDexVolumeRecord(id),
     ]).catch((e) => {
-      const errorName = `fetch-prevdata-${name}-${hourlyTimestamp}`;
+      const errorName = `fetch-prevdata-${name}-${fetchCurrentHourTimestamp}`;
       const scope = new Sentry.Scope();
       scope.setTag("dex-volume", errorName);
       Sentry.AWSLambda.captureException(e, scope);
@@ -83,6 +88,8 @@ export const handler = async (event: any) => {
 
     const lastUpdatedData = getPrevRecords[0];
     const monthlyData = getPrevRecords[1];
+    const dexGeneralData = getPrevRecords[2];
+    const { backfilledTotalVolume } = dexGeneralData;
 
     // Marks this hourly's volume as inaccurate
     const validPrevHour = !!lastUpdatedData;
@@ -90,6 +97,7 @@ export const handler = async (event: any) => {
     let sumTotalVolume = new BigNumber(0);
     let sumDailyVolume = new BigNumber(0);
     let sumHourlyVolume = new BigNumber(0);
+    let sumMonthlyVolume = new BigNumber(monthlyData?.monthlyVolume || 0);
 
     const newEcosystemHourlyVolumes: {
       [x: string]: {
@@ -109,6 +117,16 @@ export const handler = async (event: any) => {
       };
     } = {};
 
+    const newEcosystemMonthlyVolumes: {
+      [x: string]: {
+        [y: string]: string;
+      };
+    } = {};
+
+    // let validTotalVolume = true;
+    // let validDailyVolume = true;
+    // let validHourlyVolume = true;
+
     // Calc all ecosystem total, daily, hourly volumes and sum them
     Object.entries(protocolVolumes).map(([ecosystem, ecosystemVolume]) => {
       const { totalVolume, dailyVolume, hourlyVolume } = ecosystemVolume;
@@ -118,6 +136,9 @@ export const handler = async (event: any) => {
       const validHourlyVolume = typeof hourlyVolume !== "undefined";
 
       newEcosystemHourlyVolumes[ecosystem] = {};
+      newEcosystemDailyVolumes[ecosystem] = {};
+      newEcosystemMonthlyVolumes[ecosystem] = {};
+      newEcosystemTotalVolumes[ecosystem] = {};
 
       // Calculate TotalVolume, if no daily or hourly calc them too
       if (validTotalVolume) {
@@ -126,10 +147,32 @@ export const handler = async (event: any) => {
           bigNumberTotalVol.toString();
         sumTotalVolume = sumTotalVolume.plus(bigNumberTotalVol);
 
-        if (!validDailyVolume) {
-          let calcDailyVolume = bigNumberTotalVol.minus(
-            new BigNumber(lastUpdatedData?.totalVolume || 0)
-          );
+        const totalVolDiff = bigNumberTotalVol.minus(
+          new BigNumber(
+            lastUpdatedData?.ecosystems?.[ecosystem]?.totalVolume || 0
+          )
+        );
+
+        // Assumes previous data is correct, need to either ensure backfill has prev hour, if api make sure to lock in dex-volume and release once an hourly has been recorded
+        if (validPrevHour) {
+          newEcosystemMonthlyVolumes[ecosystem].monthlyVolume = new BigNumber(
+            monthlyData?.ecosystems?.[ecosystem]?.monthlyVolume || 0
+          )
+            .plus(totalVolDiff)
+            .toString();
+          sumMonthlyVolume = sumMonthlyVolume.plus(totalVolDiff);
+        }
+
+        if (!validDailyVolume || startNewDailyVolume) {
+          let calcDailyVolume = totalVolDiff;
+          if (prevHourlyTimestamp !== dailyTimestamp) {
+            calcDailyVolume = calcDailyVolume.plus(
+              new BigNumber(
+                lastUpdatedData?.ecosystems?.[ecosystem]?.dailyVolume
+              )
+            );
+          }
+
           newEcosystemDailyVolumes[ecosystem].dailyVolume =
             calcDailyVolume.toString();
           sumDailyVolume = sumDailyVolume.plus(calcDailyVolume);
@@ -137,7 +180,9 @@ export const handler = async (event: any) => {
 
         if (!validHourlyVolume) {
           let calcHourlyVolume = bigNumberTotalVol.minus(
-            new BigNumber(lastUpdatedData?.totalVolume || 0)
+            new BigNumber(
+              lastUpdatedData?.ecosystems?.[ecosystem]?.totalVolume || 0
+            )
           );
           newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
             calcHourlyVolume.toString();
@@ -152,15 +197,35 @@ export const handler = async (event: any) => {
           bigNumberDailyVol.toString();
         sumDailyVolume = bigNumberDailyVol;
 
+        const dailyVolDiff = bigNumberDailyVol.minus(
+          new BigNumber(
+            lastUpdatedData?.ecosystems?.[ecosystem]?.dailyVolume || 0
+          )
+        );
+
+        if (!validTotalVolume && validPrevHour) {
+          newEcosystemMonthlyVolumes[ecosystem].monthlyVolume = new BigNumber(
+            monthlyData?.ecosystems?.[ecosystem]?.monthlyVolume || 0
+          )
+            .plus(dailyVolDiff)
+            .toString();
+          sumMonthlyVolume = sumMonthlyVolume.plus(dailyVolDiff);
+        }
+
         if (!validHourlyVolume && !validTotalVolume) {
-          if (hourlyTimestamp === dailyTimestamp) {
+          if (startOfDay) {
             newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
               bigNumberDailyVol.toString();
             sumHourlyVolume.plus(bigNumberDailyVol);
+
+            // if (backfilledTotalVolume && validPrevHour) {
+            //   const current
+            //   newEcosystemTotalVolumes[ecosystem].totalVolume =
+            //     bigNumberDailyVol.toString();
+            //   sumTotalVolume = sumTotalVolume.plus(bigNumberTotalVol);
+            // }
           } else {
-            let calcHourlyVolume = bigNumberDailyVol.minus(
-              new BigNumber(lastUpdatedData?.dailyVolume || 0)
-            );
+            let calcHourlyVolume = dailyVolDiff;
             newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
               calcHourlyVolume.toString();
             sumHourlyVolume.plus(calcHourlyVolume);
@@ -173,53 +238,80 @@ export const handler = async (event: any) => {
         newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
           bigNumberHourlyVol.toString();
         sumHourlyVolume.plus(bigNumberHourlyVol);
+
+        if (!validTotalVolume && !validDailyVolume) {
+          newEcosystemMonthlyVolumes[ecosystem].monthlyVolume = new BigNumber(
+            monthlyData?.ecosystems?.[ecosystem]?.[monthlyVolume] || 0
+          )
+            .plus(bigNumberHourlyVol)
+            .toString();
+          sumMonthlyVolume = sumMonthlyVolume.plus(bigNumberHourlyVol);
+        }
       }
     });
 
     const totalVolume = sumTotalVolume.toString();
     const dailyVolume = sumDailyVolume.toString();
     const hourlyVolume = sumHourlyVolume.toString();
+    const monthlyVolume = sumMonthlyVolume.toString();
+
+    const hourlyEcosystemVolumes = Object.keys(
+      newEcosystemHourlyVolumes
+    ).reduce((acc: any, curr) => {
+      acc[curr] = {
+        hourlyVolume: newEcosystemHourlyVolumes[curr].hourlyVolume,
+        dailyVolume: newEcosystemDailyVolumes[curr].dailyVolume,
+        totalVolume: newEcosystemTotalVolumes[curr].totalVolume,
+      };
+      return acc;
+    }, {});
+
+    const dailyEcosystemVolumes = Object.keys(newEcosystemDailyVolumes).reduce(
+      (acc: any, curr) => {
+        acc[curr] = {
+          dailyVolume: newEcosystemDailyVolumes[curr].dailyVolume,
+          totalVolume: newEcosystemTotalVolumes[curr].totalVolume,
+        };
+        return acc;
+      },
+      {}
+    );
+
+    const monthlyEcosystemVolumes = Object.keys(
+      newEcosystemMonthlyVolumes
+    ).reduce((acc: any, curr) => {
+      acc[curr] = {
+        monthlyVolume: newEcosystemMonthlyVolumes[curr].monthlyVolume,
+        totalVolume: newEcosystemTotalVolumes[curr].totalVolume,
+      };
+      return acc;
+    }, {});
 
     hourlyDexVolumeDb.put({
-      PK: hourlyVolumePk(id),
-      SK: `${hourlyTimestamp}`,
+      id,
+      unix: savedHourTimestamp,
       hourlyVolume,
       dailyVolume,
       totalVolume,
       validPrevHour,
+      ecosystems: hourlyEcosystemVolumes,
     });
 
     dailyDexVolumeDb.put({
-      PK: dailyVolumePk(id),
-      SK: `${dailyTimestamp}`,
+      id,
+      unix: dailyTimestamp,
       dailyVolume,
       totalVolume,
+      ecosystems: dailyEcosystemVolumes,
     });
 
     monthlyDexVolumeDb.put({
-      PK: monthlyVolumePk(id),
-      SK: `${monthlyTimestamp}`,
+      id,
+      unix: monthlyTimestamp,
+      monthlyVolume,
       totalVolume,
-      ...newEcosystemHourlyVolumes,
+      ecosystems: monthlyEcosystemVolumes,
     });
-
-    // update hourly daily and monthly
-
-    console.log(newEcosystemHourlyVolumes);
-
-    try {
-    } catch (e) {
-      console.error(name, e);
-      const scope = new Sentry.Scope();
-      scope.setTag("protocol", name);
-      Sentry.AWSLambda.captureException(e, scope);
-      return;
-    }
-
-    // store hourly
-    // store daily
-
-    // store monthly
   });
 };
 

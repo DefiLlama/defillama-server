@@ -6,7 +6,7 @@ export interface Dex {
 
 export default [
   {
-    id: "468",
+    id: 468,
     name: "Trader Joe",
     module: "traderjoe",
   },

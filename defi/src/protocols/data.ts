@@ -1997,7 +1997,7 @@ export default [
     cmcId: "8599",
     category: "Yield",
     chains: ["Ethereum"],
-    module: "xtoken.js",
+    module: "xtoken/index.js",
     twitter: "xtokenmarket",
     audit_links: ["https://docs.xtoken.market/misc/untitled-1#is-synlev-audited"],
     forkedFrom: ["Synthetix", "PieDAO"],

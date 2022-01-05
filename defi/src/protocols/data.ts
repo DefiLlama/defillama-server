@@ -4625,7 +4625,7 @@ export default [
     gecko_id: "gmx",
     cmcId: "11857",
     category: "Dexes",
-    chains: ["Binance", "Arbitrum"],
+    chains: ["Avalanche", "Arbitrum"],
     module: "gmx/index.js",
     twitter: "GMX_IO",
     audit_links: ["https://github.com/xvi10/gambit-contracts/tree/master/audits"],

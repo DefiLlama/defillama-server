@@ -218,6 +218,11 @@ export const chainCoingeckoIds = {
     symbol: "KCS",
     cmcId: "2087",
   },
+  "KCC": {
+    geckoId: "kucoin-shares",
+    symbol: "KCS",
+    cmcId: "2087",
+  },
   "Karura": {
     geckoId: "karura",
     symbol: "KAR",

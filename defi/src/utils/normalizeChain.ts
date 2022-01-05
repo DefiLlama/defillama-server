@@ -497,6 +497,8 @@ export function transformNewChainName(chain:string){
   switch (chain) {
     case "Binance":
       return "BSC"
+    case "Kucoin":
+      return "KCC"
     default:
       return chain
   }
@@ -515,7 +517,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "wan":
       return "Wanchain"
     case "kcc":
-      return "Kucoin"
+      return useNewChainNames?"KCC":"Kucoin"
     case "xdai":
       return "xDai"
     case "avax":

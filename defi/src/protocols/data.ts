@@ -2080,7 +2080,7 @@ export default [
     cmcId: "7222",
     category: "Yield",
     chains: ["Ethereum"],
-    module: "yaxis.js",
+    module: "yaxis/yaxis.js",
     twitter: "yaxis_project",
     audit_links: [
       "https://github.com/yaxis-project/metavault/tree/main/audits",

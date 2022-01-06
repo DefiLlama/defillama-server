@@ -21110,7 +21110,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://app.katana.so",
   description: "Katana is a yield generation protocol on Solana designed to generate sustainable yield from automated option strategies.",
   chain: "Solana",
-  logo: `${baseIconsUrl}/magnet-dao.png`,
+  logo: `${baseIconsUrl}/katana.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

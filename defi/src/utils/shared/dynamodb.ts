@@ -10,7 +10,7 @@ const client = new AWS.DynamoDB.DocumentClient({
 });
 export const TableName = process.env.tableName!;
 
-const createDynamoDbApi = (TableName: string) => ({
+const dynamodb = {
   get: (
     key: AWS.DynamoDB.DocumentClient.Key,
     params?: Omit<AWS.DynamoDB.DocumentClient.GetItemInput, "TableName">
@@ -38,14 +38,8 @@ const createDynamoDbApi = (TableName: string) => ({
       })
       .promise(),
   scan: () => client.scan({ TableName }).promise(),
-});
-
-const dynamodb = createDynamoDbApi(TableName);
+};
 export default dynamodb;
-
-export const dailyDexVolumeDb = createDynamoDbApi("dev-daily-dex-volume");
-export const monthlyDexVolumeDb = createDynamoDbApi("dev-monthly-dex-volume");
-export const hourlyDexVolumeDb = createDynamoDbApi("dev-hourly-dex-volume");
 
 export function getHistoricalValues(pk: string) {
   return dynamodb

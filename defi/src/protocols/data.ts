@@ -597,9 +597,9 @@ export default [
     symbol: "PICKLE",
     url: "https://pickle.finance/",
     description:
-      "The Pickle protocol uses farming incentives, vaults, and governance to bring stablecoins closer to their pegs.",
+      "Pickle Finance is a yield aggregator, auto-compounding users LP positions saving them time and money. The governance token PICKLE can be staked as DILL, to earn a share of the protocols revenues and boost users farm APY",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/pickle.jpg`,
+    logo: `${baseIconsUrl}/pickle.svg`,
     audits: "3",
     audit_note: null,
     gecko_id: "pickle-finance",

@@ -4137,7 +4137,7 @@ export default [
       "ViperSwap is Harmony's leading DEX. Building on top of Harmony's 2-second finality and insanely low fees it's one of the fastest and cheapest DEXes to use.",
     chain: "Harmony",
     logo: `${baseIconsUrl}/viperswap.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "viper",
     cmcId: "8850",
@@ -4145,6 +4145,7 @@ export default [
     chains: ["Harmony"],
     module: "viperswap/index.js",
     twitter: "VenomDAO",
+    audit_links: ["https://solidity.finance/audits/ViperSwap/"] ,
     forkedFrom: ["UniSwap", "SushiSwap", "Bao"],
   },
   {

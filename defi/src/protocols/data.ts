@@ -9230,7 +9230,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "allbridge",
     cmcId: "12212" ,
     category: "Assets",
-    chains: ["Celo" , "Ethereum" , "Polygon" , "Binance" , "Heco" , "Fantom" , "Avalanche" , "Aurora" , "Solana" , "Terra"],
+    chains: ["Celo" , "Ethereum" , "Polygon" , "Binance" , "Heco" , "Fantom" , "Avalanche" , "Solana" , "Terra"],
     module: "allbridge/index.js",
     audit_links: ["https://hacken.io/audits/#allbridge"] ,  
     twitter: "Allbridge_io",

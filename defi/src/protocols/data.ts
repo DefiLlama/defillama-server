@@ -21606,7 +21606,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://farmhero.io",
   description: "FarmHero is a novel protocol that mixes NFT, gaming and DEFI concepts.",
   chain: "Binance",
-  logo: `${baseIconsUrl}/ovr.png`,
+  logo: `${baseIconsUrl}/farm-hero.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

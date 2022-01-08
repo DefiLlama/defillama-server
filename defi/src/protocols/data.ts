@@ -21546,7 +21546,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://oceanprotocol.com",
   description: "Ocean Protocol unlocks the value of data. Data owners and consumers use Ocean Market app to publish, discover, and consume data in a secure, privacy-preserving fashion. OCEAN holders stake liquidity to data pools. Ocean datatokens wrap data services as industry-standard ERC20 tokens.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/ocean-protocol.svg`,
+  logo: `${baseIconsUrl}/ocean-protocol.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: "ocean-protocol",

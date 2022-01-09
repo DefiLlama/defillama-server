@@ -3688,7 +3688,7 @@ export default [
       "A third-generation yield farming project building on Avalanche",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/penguin-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "penguin-finance",
     cmcId: "10818",
@@ -3696,6 +3696,7 @@ export default [
     chains: ["Avalanche"],
     module: "penguin/index.js",
     twitter: "penguin_defi",
+    audit_links: ["https://www.certik.com/projects/penguinfinance"],
   },
   {
     id: "291",

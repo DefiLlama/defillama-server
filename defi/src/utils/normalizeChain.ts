@@ -488,6 +488,11 @@ export const chainCoingeckoIds = {
     symbol: "NII",
     cmcId: "4865",
   },
+  "Parallel": {
+    geckoId: null,
+    symbol: "PARA",
+    cmcId: null,
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -607,6 +612,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "CSC"
     case "ergo":
       return "Ergo"
+    case "parallel":
+      return "Parallel"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

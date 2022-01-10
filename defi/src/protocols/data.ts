@@ -21624,7 +21624,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1217",
-  name: "Parallel Finance",
+  name: "Parallel Liquid-Staking",
   address: null ,
   symbol: "-",
   url: "https://parallel.fi",
@@ -21636,7 +21636,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: null ,
   cmcId: null,
   category: "Lending",
-  chains: ["Polkadot"],
+  chains: ["Parallel"],
   module: "parallel.js",
   twitter: "ParallelFi",
   listedAt: 1641749944,

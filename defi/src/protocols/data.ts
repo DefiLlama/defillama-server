@@ -18874,7 +18874,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["CSC"] ,
   module: "ifpool/index.js",
   twitter: "if_networks" ,
-  oracles: ["ChainLink"] ,
+  oracles: ["Chainlink"] ,
   audit_links: ["https://github.com/IFWallet/ifpool_staking/blob/main/audits/IFPool%20Security%20Assessment.pdf"] ,
   listedAt: 1640179280 ,
 },

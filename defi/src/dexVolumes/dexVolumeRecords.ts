@@ -2,6 +2,8 @@ require("dotenv").config({ path: __dirname + "/../../.env" });
 
 import AWS from "aws-sdk";
 
+import { HourlyEcosystemRecord } from "./dexVolume.types";
+
 const client = new AWS.DynamoDB.DocumentClient({
   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
     endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
@@ -79,3 +81,20 @@ export const getHourlyDexVolumeRecord =
 export const getDailyDexVolumeRecord = getTimeDexVolumeRecord(dailyDexVolumeDb);
 export const getMonthlyDexVolumeRecord =
   getTimeDexVolumeRecord(monthlyDexVolumeDb);
+
+export const putHourlyDexVolumeRecord = ({
+  id,
+  unix,
+  hourlyVolume,
+  dailyVolume,
+  totalVolume,
+  ecosystems,
+}: HourlyEcosystemRecord) =>
+  hourlyDexVolumeDb.put({
+    id,
+    unix,
+    hourlyVolume,
+    dailyVolume,
+    totalVolume,
+    ecosystems,
+  });

@@ -11,7 +11,7 @@ import {
   getTimestampAtStartOfDay,
   getTimestampAtStartOfHour,
   getTimestampAtStartOfMonth,
-} from "../utils/date";
+} from "../../utils/date";
 import {
   dailyDexVolumeDb,
   hourlyDexVolumeDb,
@@ -19,8 +19,8 @@ import {
   getHourlyDexVolumeRecord,
   getMonthlyDexVolumeRecord,
   getDexVolumeRecord,
-} from "../utils/dexVolumeRecords";
-import dexVolumes from "../protocols/dexVolumes";
+} from "../dexVolumeRecords";
+import dexVolumes from "../../protocols/dexVolumes";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 

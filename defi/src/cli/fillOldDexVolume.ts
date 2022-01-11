@@ -216,6 +216,10 @@ const fillOldDexVolume = async (id: number) => {
     });
   }
 
+  // TODO calc hourly volume
+
+  // TODO calc monthly volume
+
   // TODO unlock dex-volume at end to allow hourly CRON
 };
 

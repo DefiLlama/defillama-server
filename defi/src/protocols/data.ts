@@ -17391,7 +17391,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "upfi.js",
     twitter: "upfi_network",
     audit_links: ["https://www.rdauditors.com/wp-content/uploads/2021/11/UPFI-Network-Smart-Contract-Security-Report.pdf"],
-    oracles: ["Pyth Network"],
+    oracles: ["Pyth"],
     listedAt: 1639176180,
   },
   {

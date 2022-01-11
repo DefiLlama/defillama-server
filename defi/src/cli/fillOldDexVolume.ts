@@ -1,83 +1,153 @@
-import { getDexVolumeRecord } from "../utils/dexVolumeRecords";
+import BigNumber from "bignumber.js";
+
+import {
+  getDexVolumeRecord,
+  dailyDexVolumeDb,
+} from "../dexVolumes/dexVolumeRecords";
+import { reportDexVolumeError, PUT_DAILY_VOLUME_ERROR } from "../utils/error";
 import { getTimestampAtStartOfHour } from "../utils/date";
-import { getChainBlocksRetry, Ecosystem } from "./utils";
+import { getChainBlocksRetry } from "./utils";
+
+import {
+  TimestampBlock,
+  TimestampVolumes,
+  EcosystemVolumes,
+  ChainBlocks,
+  FetchResult,
+  Ecosystem,
+} from "../../src/dexVolumes/dexVolume.types";
 
 import * as dexAdapters from "../../DefiLlama-Adapters/dexVolumes";
 
 const HOUR = 3600;
+const DAY = HOUR * 24;
 
-const getAllBlocksFromStart = async (start: number, ecosystem: Ecosystem) => {
+type Fetch = (timestamp: number, chainBlocks: ChainBlocks) => FetchResult;
+
+const getBlocksFromStart = async (start: number, ecosystem: Ecosystem) => {
   const currentTimestamp = getTimestampAtStartOfHour(Date.now() / 1000);
 
   const blocks = [];
+  // TODO optimize by storing all blocks in db for one query
 
-  for (
-    let timestamp = start;
-    timestamp <= currentTimestamp;
-    timestamp += HOUR
-  ) {
+  // Get everyday up to today
+  for (let timestamp = start; timestamp <= currentTimestamp; timestamp += DAY) {
     blocks.push(getChainBlocksRetry(timestamp, ecosystem));
   }
 
+  // Get last 25 hours
+  for (let i = 0; i < 25; i++) {
+    blocks.push(getChainBlocksRetry(currentTimestamp - HOUR * i, ecosystem));
+  }
+
+  // TODO add error report
   const allBlocksRes = await Promise.all(blocks);
 
-  return allBlocksRes.reduce((acc: { [x: string]: number }, curr) => {
+  return allBlocksRes.reduce((acc: TimestampBlock, curr) => {
     acc[curr.inputTimestamp] = curr.block;
     return acc;
   }, {});
 };
 
-const fetchAllFromStart = async ({
+const getVolumesFromStart = async ({
+  blocks,
+  ecosystem,
   fetch,
   start,
-  allFetches,
-  ecosystemFetchIndex,
-  ecosystem,
 }: {
-  fetch: any;
-  start: number | any;
-  allFetches: any;
-  ecosystemFetchIndex: any;
+  blocks: TimestampBlock;
   ecosystem: Ecosystem;
+  fetch: Fetch;
+  start: number;
 }) => {
-  const startTimestamp = typeof start === "number" ? start : await start();
   const currentTimestamp = getTimestampAtStartOfHour(Date.now() / 1000);
 
-  const blocks = getAllBlocksFromStart(startTimestamp, ecosystem);
+  const volumes = [];
 
-  for (
-    let timestamp = startTimestamp;
-    timestamp <= currentTimestamp;
-    timestamp += HOUR
-  ) {}
+  // Get everyday up to today
+  for (let timestamp = start; timestamp <= currentTimestamp; timestamp += DAY) {
+    const chainBlocks = { [ecosystem]: blocks[timestamp] };
+    volumes.push(fetch(timestamp, chainBlocks));
+  }
+
+  // Get last 25 hours
+  for (let i = 0; i < 25; i++) {
+    const timestamp = currentTimestamp - HOUR * i;
+    const chainBlocks = { [ecosystem]: blocks[timestamp] };
+    volumes.push(fetch(timestamp, chainBlocks));
+  }
+
+  // TODO add error report
+  const allVolumeRes = await Promise.all(volumes);
+
+  return allVolumeRes.reduce((acc: TimestampVolumes, curr: FetchResult) => {
+    const { dailyVolume, timestamp, totalVolume } = curr;
+    acc[timestamp] = {
+      totalVolume,
+      dailyVolume,
+    };
+    return acc;
+  }, {});
 };
 
-const fillProtocolDexVolume = async (protocolId: number) => {
+const fetchEcosystemsFromStart = async ({
+  ecosystem,
+  fetch,
+  start,
+}: {
+  ecosystem: Ecosystem;
+  fetch: Fetch;
+  start: number | any;
+}) => {
+  const startTimestamp = typeof start === "number" ? start : await start();
+
+  // TODO add error report
+  const blocks = await getBlocksFromStart(startTimestamp, ecosystem);
+  const volumes = await getVolumesFromStart({
+    blocks,
+    ecosystem,
+    fetch,
+    start: startTimestamp,
+  });
+  return {
+    ecosystem,
+    volumes,
+    startTimestamp,
+  };
+};
+
+const fetchAllEcosystemsFromStart = async (id: number) => {
   const {
-    id,
     name,
     module: dexModule,
   }: {
-    id: number;
     name: string;
     module: keyof typeof dexAdapters;
-  } = await getDexVolumeRecord(protocolId);
+  } = await getDexVolumeRecord(id);
 
-  const { volume }: any = dexAdapters[dexModule];
+  // TODO handle breakdown
+  const { volume, breakdown }: any = dexAdapters[dexModule];
 
-  const ecosystems = Object.keys(volume);
+  const ecosystems: any[] = Object.keys(volume);
 
-  const ecosystemFetchIndex = {};
-
-  const allFetches = [];
-
-  ecosystems.forEach((ecosystem) => {
-    // TODO add customBackfill
-    const { fetch, start } = volume[ecosystem];
-  });
-
-  const allDates = {};
+  return (
+    await Promise.all(
+      ecosystems.map((ecosystem: Ecosystem) => {
+        // TODO add customBackfill
+        const { fetch, start } = volume[ecosystem];
+        return fetchEcosystemsFromStart({ ecosystem, fetch, start });
+      })
+    )
+  ).reduce(
+    (
+      acc: {
+        [x: string]: { volumes: TimestampVolumes; startTimestamp: number };
+      },
+      { ecosystem, volumes, startTimestamp }
+    ) => {
+      acc[ecosystem] = { volumes, startTimestamp };
+      return acc;
+    },
+    {}
+  );
 };
-
-// TODO fill multiple protocols
-// TODO fill All protocols

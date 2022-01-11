@@ -151,3 +151,73 @@ const fetchAllEcosystemsFromStart = async (id: number) => {
     {}
   );
 };
+
+const calcDailyVolume = (
+  currDayTotalVolume: string,
+  nextDayTotalVolume: string
+) => ({
+  totalVolume: nextDayTotalVolume,
+  dailyVolume: new BigNumber(nextDayTotalVolume)
+    .minus(new BigNumber(currDayTotalVolume))
+    .toString(),
+});
+
+const fillOldDexVolume = async (id: number) => {
+  const ecosystemVolumes = await fetchAllEcosystemsFromStart(id);
+  const ecosystems = Object.keys(ecosystemVolumes);
+  const currentTimestamp = getTimestampAtStartOfHour(Date.now() / 1000);
+
+  const earliestTimestamp = ecosystems.reduce(
+    (acc, curr) =>
+      acc > ecosystemVolumes[curr].startTimestamp
+        ? ecosystemVolumes[curr].startTimestamp
+        : acc,
+    Number.MAX_SAFE_INTEGER
+  );
+
+  // Calculate every day daily until today
+  for (
+    let timestamp = earliestTimestamp;
+    timestamp < currentTimestamp;
+    timestamp += DAY
+  ) {
+    const totalSumVolume = new BigNumber(0);
+    const dailySumVolume = new BigNumber(0);
+    const dailyEcosystemVolumes: EcosystemVolumes = {};
+    ecosystems.forEach((ecosystem) => {
+      const { volumes } = ecosystemVolumes[ecosystem];
+      const currDayTotalVolume = volumes[timestamp]?.totalVolume;
+      const nextDayTotalVolume = volumes[timestamp + DAY]?.totalVolume;
+      if (
+        currDayTotalVolume !== undefined &&
+        nextDayTotalVolume !== undefined
+      ) {
+        const { dailyVolume, totalVolume } = calcDailyVolume(
+          currDayTotalVolume,
+          nextDayTotalVolume
+        );
+
+        dailySumVolume.plus(new BigNumber(dailyVolume));
+        totalSumVolume.plus(new BigNumber(totalVolume));
+
+        dailyEcosystemVolumes[ecosystem] = {
+          dailyVolume,
+          totalVolume,
+        };
+      }
+    });
+
+    dailyDexVolumeDb.put({
+      id,
+      unix: timestamp,
+      dailyVolume: dailySumVolume.toString(),
+      totalVolume: totalSumVolume.toString(),
+      ecosystems: dailyEcosystemVolumes,
+    });
+  }
+
+  // TODO unlock dex-volume at end to allow hourly CRON
+};
+
+// TODO fill multiple protocols
+// TODO fill All protocols

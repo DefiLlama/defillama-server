@@ -493,6 +493,26 @@ export const chainCoingeckoIds = {
     symbol: "PARA",
     cmcId: null,
   },
+  "Meter": {
+    geckoId: "meter",
+    symbol: "MTRG",
+    cmcId: "5919",
+  },
+  "Emerald": {
+    geckoId: "oasis-network",
+    symbol: "ROSE",
+    cmcId: "7653",
+  },
+  "Theta": {
+    geckoId: "theta-token",
+    symbol: "THETA",
+    cmcId: "2416",
+  },
+  "Syscoin": {
+    geckoId: "syscoin",
+    symbol: "SYS",
+    cmcId: "541",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -614,6 +634,15 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Ergo"
     case "parallel":
       return "Parallel"
+    case "emerald":
+      return "Emerald"
+    case "theta":
+      return "Theta"
+    case "meter":
+      return "Meter"
+    case "syscoin":
+      return "Syscoin"
+      
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

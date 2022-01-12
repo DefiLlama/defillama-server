@@ -11560,7 +11560,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0xFF75CEd57419bcaEBe5F05254983b013B0646eF5",
     symbol: "COOK",
     url: "https://www.cook.finance",
-    description: "Cook is a platform that brings together the world of decentralized finance and offers it up as a carefully curated menu of indexes.",
+    description: "Cook Finance is a transparent and flexible DeFi Index platform. This two sided platform is suited to a diverse range of users to make it easy to select from a menu of indexes across multiple chains. At the same time on the other side of the platform, index creators can utilize tools to create virtually any imaginable strategy and easily offer it up to the Cook community.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cook-finance.jpg`,
     audits: "2",

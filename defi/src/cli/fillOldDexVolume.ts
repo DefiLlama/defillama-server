@@ -1,20 +1,28 @@
 import BigNumber from "bignumber.js";
 
 import {
-  getDexVolumeRecord,
   dailyDexVolumeDb,
+  getDexVolumeRecord,
+  putHourlyDexVolumeRecord,
 } from "../dexVolumes/dexVolumeRecords";
-import { reportDexVolumeError, PUT_DAILY_VOLUME_ERROR } from "../utils/error";
-import { getTimestampAtStartOfHour } from "../utils/date";
+import { PUT_DAILY_VOLUME_ERROR, reportDexVolumeError } from "../utils/error";
+import {
+  calcIsNewDay,
+  getTimestampAtStartOfHour,
+  getTimestampAtStartOfDayUTC,
+} from "../utils/date";
 import { getChainBlocksRetry } from "./utils";
 
 import {
+  AllEcosystemVolumes,
+  ChainBlocks,
+  DailyEcosystemVolumes,
+  Ecosystem,
+  FetchResult,
+  HourlyEcosystemVolumes,
+  HourlyVolumes,
   TimestampBlock,
   TimestampVolumes,
-  EcosystemVolumes,
-  ChainBlocks,
-  FetchResult,
-  Ecosystem,
 } from "../../src/dexVolumes/dexVolume.types";
 
 import * as dexAdapters from "../../DefiLlama-Adapters/dexVolumes";
@@ -109,6 +117,7 @@ const fetchEcosystemsFromStart = async ({
     fetch,
     start: startTimestamp,
   });
+
   return {
     ecosystem,
     volumes,
@@ -116,7 +125,9 @@ const fetchEcosystemsFromStart = async ({
   };
 };
 
-const fetchAllEcosystemsFromStart = async (id: number) => {
+const fetchAllEcosystemsFromStart = async (
+  id: number
+): Promise<AllEcosystemVolumes> => {
   const {
     name,
     module: dexModule,
@@ -162,58 +173,123 @@ const calcDailyVolume = (
     .toString(),
 });
 
+const calcHourlyVolume = ({
+  ecosystems,
+  timestamp,
+  allEcosystemVolumes,
+}: {
+  ecosystems: string[];
+  timestamp: number;
+  allEcosystemVolumes: AllEcosystemVolumes;
+}) => {
+  const prevTimestamp = timestamp - HOUR;
+  const startDayofPrev = getTimestampAtStartOfDayUTC(prevTimestamp);
+
+  const dailySumVolume = new BigNumber(0);
+  const hourlySumVolume = new BigNumber(0);
+  const totalSumVolume = new BigNumber(0);
+  const hourlyEcosystemVolumes: HourlyEcosystemVolumes = {};
+
+  ecosystems.forEach((ecosystem) => {
+    const { volumes } = allEcosystemVolumes[ecosystem];
+
+    const { totalVolume: currTotalVolume } = volumes[timestamp];
+    const { totalVolume: prevTotalVolume } = volumes[prevTimestamp];
+
+    const { totalVolume: prevDayTotalVolume } = volumes[startDayofPrev];
+
+    // Calc values given totalVolume
+    if (currTotalVolume && prevTotalVolume && prevDayTotalVolume) {
+      const bigNumCurrTotalVol = new BigNumber(currTotalVolume);
+      const bigNumPrevTotalVol = new BigNumber(prevTotalVolume);
+      const bigNumPrevDayTotalVol = new BigNumber(prevDayTotalVolume);
+
+      const bigNumDailyVolume = bigNumCurrTotalVol.minus(bigNumPrevDayTotalVol);
+      const bigNumHourlyVolume = bigNumCurrTotalVol.minus(bigNumPrevTotalVol);
+
+      dailySumVolume.plus(bigNumDailyVolume);
+      hourlySumVolume.plus(bigNumHourlyVolume);
+      totalSumVolume.plus(bigNumCurrTotalVol);
+
+      hourlyEcosystemVolumes[ecosystem] = {
+        dailyVolume: bigNumDailyVolume.toString(),
+        hourlyVolume: bigNumHourlyVolume.toString(),
+        totalVolume: currTotalVolume,
+      };
+    }
+  });
+
+  return {
+    dailyVolume: dailySumVolume.toString(),
+    hourlyVolume: hourlySumVolume.toString(),
+    totalVolume: totalSumVolume.toString(),
+    ecosystems: hourlyEcosystemVolumes,
+  };
+};
+
 const fillOldDexVolume = async (id: number) => {
-  const ecosystemVolumes = await fetchAllEcosystemsFromStart(id);
-  const ecosystems = Object.keys(ecosystemVolumes);
+  const allEcosystemVolumes = await fetchAllEcosystemsFromStart(id);
+  const ecosystems = Object.keys(allEcosystemVolumes);
   const currentTimestamp = getTimestampAtStartOfHour(Date.now() / 1000);
 
   const earliestTimestamp = ecosystems.reduce(
     (acc, curr) =>
-      acc > ecosystemVolumes[curr].startTimestamp
-        ? ecosystemVolumes[curr].startTimestamp
+      acc > allEcosystemVolumes[curr].startTimestamp
+        ? allEcosystemVolumes[curr].startTimestamp
         : acc,
     Number.MAX_SAFE_INTEGER
   );
 
   // Calculate every day daily until today
-  for (
-    let timestamp = earliestTimestamp;
-    timestamp < currentTimestamp;
-    timestamp += DAY
-  ) {
-    const totalSumVolume = new BigNumber(0);
-    const dailySumVolume = new BigNumber(0);
-    const dailyEcosystemVolumes: EcosystemVolumes = {};
-    ecosystems.forEach((ecosystem) => {
-      const { volumes } = ecosystemVolumes[ecosystem];
-      const currDayTotalVolume = volumes[timestamp]?.totalVolume;
-      const nextDayTotalVolume = volumes[timestamp + DAY]?.totalVolume;
-      if (
-        currDayTotalVolume !== undefined &&
-        nextDayTotalVolume !== undefined
-      ) {
-        const { dailyVolume, totalVolume } = calcDailyVolume(
-          currDayTotalVolume,
-          nextDayTotalVolume
-        );
+  // for (
+  //   let timestamp = earliestTimestamp;
+  //   timestamp < currentTimestamp;
+  //   timestamp += DAY
+  // ) {
+  //   const totalSumVolume = new BigNumber(0);
+  //   const dailySumVolume = new BigNumber(0);
+  //   const dailyEcosystemVolumes: DailyEcosystemVolumes = {};
 
-        dailySumVolume.plus(new BigNumber(dailyVolume));
-        totalSumVolume.plus(new BigNumber(totalVolume));
+  //   const allDbWrites = [];
 
-        dailyEcosystemVolumes[ecosystem] = {
-          dailyVolume,
-          totalVolume,
-        };
-      }
-    });
+  //   ecosystems.forEach((ecosystem) => {
+  //     const { volumes } = allEcosystemVolumes[ecosystem];
+  //     const currDayTotalVolume = volumes[timestamp]?.totalVolume;
+  //     const nextDayTotalVolume = volumes[timestamp + DAY]?.totalVolume;
+  //     if (
+  //       currDayTotalVolume !== undefined &&
+  //       nextDayTotalVolume !== undefined
+  //     ) {
+  //       const { dailyVolume, totalVolume } = calcDailyVolume(
+  //         currDayTotalVolume,
+  //         nextDayTotalVolume
+  //       );
 
-    dailyDexVolumeDb.put({
-      id,
-      unix: timestamp,
-      dailyVolume: dailySumVolume.toString(),
-      totalVolume: totalSumVolume.toString(),
-      ecosystems: dailyEcosystemVolumes,
-    });
+  //       dailySumVolume.plus(new BigNumber(dailyVolume));
+  //       totalSumVolume.plus(new BigNumber(totalVolume));
+
+  //       dailyEcosystemVolumes[ecosystem] = {
+  //         dailyVolume,
+  //         totalVolume,
+  //       };
+  //     }
+  //   });
+
+  //   allDbWrites.push(
+  //     dailyDexVolumeDb.put({
+  //       id,
+  //       unix: timestamp,
+  //       dailyVolume: dailySumVolume.toString(),
+  //       totalVolume: totalSumVolume.toString(),
+  //       ecosystems: dailyEcosystemVolumes,
+  //     })
+  //   );
+  // }
+
+  for (let i = 0; i < 24; i++) {
+    const timestamp = currentTimestamp - HOUR * i;
+
+    putHourlyDexVolumeRecord();
   }
 
   // TODO calc hourly volume

@@ -18,6 +18,25 @@ export function getTimestampAtStartOfDay(timestamp: number) {
   return toUNIXTimestamp(dt.getTime() - dt.getTimezoneOffset() * 6e4);
 }
 
+export const getTimestampAtStartOfDayUTC = (timestamp: number) => {
+  const date = new Date(timestamp * 1000);
+  var date_utc = Date.UTC(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate(),
+    date.getUTCHours(),
+    date.getUTCMinutes(),
+    date.getUTCSeconds()
+  );
+  var startOfDay = Number(new Date(date_utc));
+  var timestamp = startOfDay / 1000;
+  return Math.floor(timestamp / 86400) * 86400;
+};
+
+export function calcIsNewDay(timestamp: number) {
+  return timestamp % 86400 === 0;
+}
+
 export const getTimestampAtStartOfHour = (timestamp: number) => {
   const date = new Date(timestamp * 1000);
   var date_utc = Date.UTC(

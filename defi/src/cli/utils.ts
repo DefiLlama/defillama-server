@@ -42,5 +42,3 @@ export async function getChainBlocksRetry(timestamp: number, chain: Ecosystem) {
 
 export const date = (timestamp: number) =>
   "\t" + new Date(timestamp * 1000).toDateString();
-
-getChainBlocksRetry(1641784113, "ethereum");

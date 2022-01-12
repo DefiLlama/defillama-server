@@ -7,6 +7,10 @@ export type Volumes = {
   totalVolume: string;
 };
 
+export interface HourlyVolumes extends Volumes {
+  hourlyVolume: string;
+}
+
 export type TimestampBlock = {
   [x: string]: number;
 };
@@ -15,12 +19,23 @@ export type TimestampVolumes = {
   [x: string]: Volumes;
 };
 
-export type EcosystemVolumes = {
+export type DailyEcosystemVolumes = {
   [x: string]: Volumes;
+};
+
+export type HourlyEcosystemVolumes = {
+  [x: string]: HourlyVolumes;
 };
 
 export type ChainBlocks = {
   [x: string]: number;
+};
+
+export type AllEcosystemVolumes = {
+  [x: string]: {
+    volumes: TimestampVolumes;
+    startTimestamp: number;
+  };
 };
 
 export type FetchResult = Volumes & { timestamp: number; block: number };

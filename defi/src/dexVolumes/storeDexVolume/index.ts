@@ -8,7 +8,7 @@ import * as Sentry from "@sentry/serverless";
 
 // import { wrapScheduledLambda } from "../utils/shared/wrap";
 import {
-  getTimestampAtStartOfDay,
+  getTimestampAtStartOfDayUTC,
   getTimestampAtStartOfHour,
   getTimestampAtStartOfMonth,
 } from "../../utils/date";
@@ -29,7 +29,7 @@ export const handler = async (event: any) => {
   const fetchCurrentHourTimestamp = getTimestampAtStartOfHour(currentTimestamp);
   const savedHourTimestamp = fetchCurrentHourTimestamp - 3600;
   const prevHourlyTimestamp = savedHourTimestamp - 3600;
-  const dailyTimestamp = getTimestampAtStartOfDay(currentTimestamp);
+  const dailyTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
   const startOfDay = fetchCurrentHourTimestamp === dailyTimestamp;
   const startNewDailyVolume = savedHourTimestamp === dailyTimestamp;
   // if 12:00 am on first day of month add the current calculated volume to prev month

@@ -498,7 +498,7 @@ export const chainCoingeckoIds = {
     symbol: "MTRG",
     cmcId: "5919",
   },
-  "Emerald": {
+  "Oasis": {
     geckoId: "oasis-network",
     symbol: "ROSE",
     cmcId: "7653",
@@ -634,8 +634,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Ergo"
     case "parallel":
       return "Parallel"
-    case "emerald":
-      return "Emerald"
+    case "oasis":
+      return "Oasis"
     case "theta":
       return "Theta"
     case "meter":

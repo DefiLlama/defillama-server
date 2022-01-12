@@ -9500,7 +9500,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "anyswap",
     cmcId: "5892",
     category: "Bridge",
-    chains: ["Ethereum", "Binance", "OKExChain", "xDai", "Heco", "Polygon", "Fantom", "Kucoin", "Moonriver", "Arbitrum", "Avalanche", "Harmony"],
+    chains: ["Ethereum", "Binance", "OKExChain", "xDai", "Heco", "Polygon", "Fantom", "Kucoin", "Moonriver", "Arbitrum", "Avalanche", "Harmony", "Syscoin"],
     module: "anyswap/index.js",
     audit_links:[
                   "https://github.com/anyswap/Anyswap-Audit/blob/master/TrailOfBits/Anyswap-CrossChain-Bridge-TrailofBits-Audit-Final%20Report.pdf",

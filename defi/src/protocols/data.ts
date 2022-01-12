@@ -21953,7 +21953,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chain: "Fantom",
   logo: `${baseIconsUrl}/creditum.png`,
   audits: "0",
-  audit_note: null,
+  audit_note: "2",
   gecko_id: null,
   cmcId: null,
   category: "Minting",
@@ -21961,6 +21961,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "creditum/index.js",
   twitter: "RevenantFinance",
   listedAt: 1641878060,
+  audit_links: ["https://github.com/revenant-finance/creditum-audit"],
 },
 {
   id: "1234",

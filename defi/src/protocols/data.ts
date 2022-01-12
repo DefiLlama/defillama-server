@@ -4565,7 +4565,7 @@ export default [
     category: "Dexes",
     chains: ["Binance", "Heco"],
     module: "mdex/subgraphs.js",
-    twitter: "Mdextech",
+    twitter: "Mdexswap",
     audit_links: [
       "https://mdex.com/slowmist_bsc.pdf",
       "https://mdex.com/fairyproof_bsc.pdf",

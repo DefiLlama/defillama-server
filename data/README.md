@@ -1,4 +1,4 @@
-# Coins server
+# Data server
 
 ## Setup
 ```bash

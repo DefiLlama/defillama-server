@@ -20847,6 +20847,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Olypmpus DAO"],
   listedAt: 1641173125,
 },
+/*
 {
   id: "1178",
   name: "Necc",
@@ -20867,6 +20868,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   oracles: ["Flux"],
   listedAt: 1641175410,
 },
+*/
 {
   id: "1179",
   name: "ExinSwap",

@@ -16516,7 +16516,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "14063" ,
     category: "Assets" ,
     chains: ["Fantom"] ,
-    module: "fantOHM.js" ,
+    module: "fantOHM/index.js" ,
     twitter: "FantohmDAO" ,
     listedAt: 1638463469 ,
   },

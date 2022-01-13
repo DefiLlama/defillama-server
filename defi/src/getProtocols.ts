@@ -12,6 +12,7 @@ import {
 } from "./utils/normalizeChain";
 import dynamodb, { TableName } from "./utils/shared/dynamodb";
 import {craftChainsResponse} from "./getChains"
+import { getTvlChange } from "./utils/getTvlChange";
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -46,6 +47,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
     await Promise.all(
       protocols.map(async (protocol) => {
         const lastHourlyRecord = await getLastRecord(hourlyTvl(protocol.id));
+        const chainTvlsChange = await getTvlChange(protocol.id)
         if (lastHourlyRecord === undefined) {
           return null;
         }
@@ -100,6 +102,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
             lastHourlyRecord.tvlPrev1Week,
             lastHourlyRecord.tvl
           ),
+          chainTvlsChange
         } as any;
         for (let extraData of ["staking", "pool2"]) {
           if (lastHourlyRecord[extraData] !== undefined) {

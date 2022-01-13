@@ -22374,7 +22374,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: null,
   symbol: "-",
   url: "https://www.xdao.app/",
-  description: "XDAO - MultiChain DAO Ecosystem Built For Decentralized Future",
+  description: "XDAO - MultiChain DAO Ecosystem Built For Decentralized Future, XDAO is the fastest framework to create and manage decentralized autonomous organizations",
   chain: "Binance",
   logo: `${baseIconsUrl}/xdao.jpg`,
   audits: "2",

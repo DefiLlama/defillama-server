@@ -22233,7 +22233,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1247",
-  name: "Spartan",
+  name: "SolFire",
   address: "solana:AfXLBfMZd32pN6QauazHCd7diEWoBgw1GNUALDw3suVZ",
   symbol: "FIRE",
   url: "http://solfire.finance",

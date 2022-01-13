@@ -22374,7 +22374,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: null,
   symbol: "-",
   url: "https://www.xdao.app/",
-  description: "HakuSwap is a crypto world for users to trade, earn, and game. It is the premier choice for projects on Avalanche with features including AMM, NFT, and GameFi.",
+  description: "XDAO - MultiChain DAO Ecosystem Built For Decentralized Future",
   chain: "Binance",
   logo: `${baseIconsUrl}/xdao.jpg`,
   audits: "2",

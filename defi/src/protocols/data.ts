@@ -22626,7 +22626,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1267",
-  name: "OpenDAO",
+  name: "The Open DAO SOS",
   address: "0x3b484b82567a09e2588A13D54D032153f0c0aEe0",
   symbol: "SOS",
   url: "https://www.theopendao.com/#sos",

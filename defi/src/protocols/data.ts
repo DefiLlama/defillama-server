@@ -22453,7 +22453,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 {
   id: "1258",
   name: "FlareFarm",
-  address: "0x0D94e59332732D18CF3a3D457A8886A2AE29eA1B",
+  address: "songbird:0x0D94e59332732D18CF3a3D457A8886A2AE29eA1B",
   symbol: "SFIN",
   url: "https://xff.flr.finance",
   description: "FlareFarm is the ecosystem's yield farming and fair launch distribution platform (launchpad) for new projects entering the Flare Network and/or Flare Finance Ecosystem.",

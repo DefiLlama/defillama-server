@@ -21624,7 +21624,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1217",
-  name: "Parallel Liquid-Staking",
+  name: "Parallel Liquid Crowdloan",
   address: null ,
   symbol: "-",
   url: "https://parallel.fi",

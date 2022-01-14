@@ -1,6 +1,5 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols, { Protocol } from "./protocols/data";
-import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import {
   getChainDisplayName,
@@ -46,9 +45,8 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
   const response = (
     await Promise.all(
       protocols.map(async (protocol) => {
-        const lastHourlyRecord = await getLastRecord(hourlyTvl(protocol.id));
         const chainTvlsChange = await getTvlChange(protocol.id)
-        if (lastHourlyRecord === undefined) {
+        if (!chainTvlsChange || !chainTvlsChange['tvl']) {
           return null;
         }
         const returnedProtocol: Partial<Protocol> = { ...protocol };
@@ -57,12 +55,12 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
           [chain: string]: number;
         };
         const chains: string[] = [];
-        Object.entries(lastHourlyRecord).forEach(([chain, chainTvl]) => {
+        Object.entries(chainTvlsChange).forEach(([chain, chainTvl]) => {
           if (nonChains.includes(chain)) {
             return;
           }
           const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
-          chainTvls[chainDisplayName] = chainTvl;
+          chainTvls[chainDisplayName] = chainTvl['tvl'] || 0;
           addToChains(chains, chainDisplayName);
         });
         if (chains.length === 0) {
@@ -70,7 +68,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
             ? transformNewChainName(protocol.chain)
             : protocol.chain;
           if (chainTvls[chain] === undefined) {
-            chainTvls[chain] = lastHourlyRecord.tvl;
+            chainTvls[chain] = chainTvlsChange[chain] ? chainTvlsChange[chain]['tvl'] : 0;
           }
           extraSections.forEach((section) => {
             const chainSectionName = `${chain}-${section}`;
@@ -86,27 +84,18 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
         const dataToReturn = {
           ...protocol,
           slug: sluggify(protocol),
-          tvl: lastHourlyRecord.tvl,
+          tvl: chainTvlsChange['tvl']['tvl'],
           chainTvls,
           chains: chains.sort((a, b) => chainTvls[b] - chainTvls[a]),
           chain: getDisplayChain(chains),
-          change_1h: getPercentChange(
-            lastHourlyRecord.tvlPrev1Hour,
-            lastHourlyRecord.tvl
-          ),
-          change_1d: getPercentChange(
-            lastHourlyRecord.tvlPrev1Day,
-            lastHourlyRecord.tvl
-          ),
-          change_7d: getPercentChange(
-            lastHourlyRecord.tvlPrev1Week,
-            lastHourlyRecord.tvl
-          ),
+          change_1d: chainTvlsChange['tvl']['change_1d'],
+          change_7d: chainTvlsChange['tvl']['change_7d'],
+          change_1m: chainTvlsChange['tvl']['change_1m'],
           chainTvlsChange
         } as any;
         for (let extraData of ["staking", "pool2"]) {
-          if (lastHourlyRecord[extraData] !== undefined) {
-            dataToReturn[extraData] = lastHourlyRecord[extraData];
+          if (chainTvlsChange[extraData] !== undefined) {
+            dataToReturn[extraData] = chainTvlsChange[extraData];
           }
         }
         if (typeof protocol.gecko_id === "string") {

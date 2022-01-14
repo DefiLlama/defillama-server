@@ -1,6 +1,6 @@
 import dynamodb from "./dynamodb";
 
-export default function getTVLOfRecordClosestToTimestamp(
+export default async function getTVLOfRecordClosestToTimestamp(
   PK: string,
   timestamp: number,
   searchWidth: number

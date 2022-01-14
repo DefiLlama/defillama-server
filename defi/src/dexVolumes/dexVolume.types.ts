@@ -51,19 +51,18 @@ export type TotalVolume = string;
 export type Id = number;
 export type Unix = number;
 
+export type HourlyVolumesResult = {
+  dailyVolume: DailyVolume;
+  hourlyVolume: HourlyVolume;
+  totalVolume: TotalVolume;
+  ecosystems: HourlyEcosystemVolumes;
+};
+
 export type HourlyEcosystemRecord = {
-  [x: string]: {
-    Id: Id;
-    Unix: Unix;
-    DailyVolume: DailyVolume;
-    HourlyVolume: HourlyVolume;
-    TotalVolume: TotalVolume;
-    ecosystems: {
-      [x: string]: {
-        DailyVolume: DailyVolume;
-        HourlyVolume: HourlyVolume;
-        TotalVolume: TotalVolume;
-      };
-    };
-  };
+  id: Id;
+  unix: Unix;
+  dailyVolume: DailyVolume;
+  hourlyVolume: HourlyVolume;
+  totalVolume: TotalVolume;
+  ecosystems: HourlyEcosystemVolumes;
 };

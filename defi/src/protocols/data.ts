@@ -6266,6 +6266,7 @@ export default [
     chains: ["Fantom"],
     module: "paintswap/index.js",
     twitter: "paint_swap",
+    audit_links: ["https://solidity.finance/audits/PaintSwap/"]
   },
   // {
   //   id: "422",

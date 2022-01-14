@@ -22569,7 +22569,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1264",
-  name: "SmartDEX",
+  name: "SmartDEXBCH",
   address: "smartbch:0x47c259DFe165Cef3e429C9B66bf9ce9dc3e68aC2",
   symbol: "DSMART",
   url: "https://smartdex.cash/",

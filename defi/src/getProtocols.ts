@@ -48,6 +48,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
       protocols.map(async (protocol) => {
         const lastHourlyRecord = await getLastRecord(hourlyTvl(protocol.id));
         const chainTvlsChange = await getTvlChange(protocol.id)
+
         if (lastHourlyRecord === undefined) {
           return null;
         }

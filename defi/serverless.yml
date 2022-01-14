@@ -113,7 +113,8 @@ functions:
           method: get
   protocols:
     handler: src/getProtocols.default
-    timeout: 60
+    timeout: 90
+    memorySize: 2000
     events:
       - http:
           path: protocols

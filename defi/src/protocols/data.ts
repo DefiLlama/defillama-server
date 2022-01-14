@@ -16366,7 +16366,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "954",
-    name: "EOSAuthority REX",
+    name: "REX Staking",
     address: "",
     symbol: "-",
     url: "https://eosauthority.com/rex",

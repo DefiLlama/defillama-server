@@ -1905,7 +1905,7 @@ export default [
     id: "202",
     name: "Saddle Finance",
     address: "-",
-    symbol: "-",
+    symbol: "SDL",
     url: "https://saddle.finance/",
     description:
       "Saddle is an automated market maker for pegged value crypto assets.",

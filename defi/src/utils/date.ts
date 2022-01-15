@@ -58,6 +58,12 @@ export const getTimestampAtStartOfMonth = (timestamp: number) => {
   return firstDay.valueOf() / 1000;
 };
 
+export const getTimestampAtStartOfNextMonth = (timestamp: number) => {
+  const date = new Date(timestamp * 1000);
+  const firstDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+  return firstDay.valueOf() / 1000;
+};
+
 export function getDay(timestamp: number | undefined): string {
   if (timestamp == undefined) {
     return "none";

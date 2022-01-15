@@ -10,6 +10,8 @@ import {
   calcIsNewDay,
   getTimestampAtStartOfHour,
   getTimestampAtStartOfDayUTC,
+  getTimestampAtStartOfMonth,
+  getTimestampAtStartOfNextMonth,
 } from "../utils/date";
 import { getChainBlocksRetry } from "./utils";
 
@@ -20,8 +22,8 @@ import {
   Ecosystem,
   FetchResult,
   HourlyEcosystemVolumes,
-  HourlyVolumes,
   HourlyVolumesResult,
+  MonthlyEcosystemVolumes,
   TimestampBlock,
   TimestampVolumes,
 } from "../../src/dexVolumes/dexVolume.types";
@@ -33,20 +35,22 @@ const DAY = HOUR * 24;
 
 type Fetch = (timestamp: number, chainBlocks: ChainBlocks) => FetchResult;
 
-const getBlocksFromStart = async (start: number, ecosystem: Ecosystem) => {
-  const currentTimestamp = getTimestampAtStartOfHour(Date.now() / 1000);
-
+const getBlocksFromStart = async (
+  start: number,
+  ecosystem: Ecosystem,
+  end: number
+) => {
   const blocks = [];
   // TODO optimize by storing all blocks in db for one query
 
   // Get everyday up to today
-  for (let timestamp = start; timestamp <= currentTimestamp; timestamp += DAY) {
+  for (let timestamp = start; timestamp <= end; timestamp += DAY) {
     blocks.push(getChainBlocksRetry(timestamp, ecosystem));
   }
 
   // Get last 25 hours
   for (let i = 0; i < 25; i++) {
-    blocks.push(getChainBlocksRetry(currentTimestamp - HOUR * i, ecosystem));
+    blocks.push(getChainBlocksRetry(end - HOUR * i, ecosystem));
   }
 
   // TODO add error report
@@ -63,25 +67,25 @@ const getVolumesFromStart = async ({
   ecosystem,
   fetch,
   start,
+  end,
 }: {
   blocks: TimestampBlock;
   ecosystem: Ecosystem;
   fetch: Fetch;
   start: number;
+  end: number;
 }) => {
-  const currentTimestamp = getTimestampAtStartOfHour(Date.now() / 1000);
-
   const volumes = [];
 
   // Get everyday up to today
-  for (let timestamp = start; timestamp <= currentTimestamp; timestamp += DAY) {
+  for (let timestamp = start; timestamp <= end; timestamp += DAY) {
     const chainBlocks = { [ecosystem]: blocks[timestamp] };
     volumes.push(fetch(timestamp, chainBlocks));
   }
 
   // Get last 25 hours
   for (let i = 0; i < 25; i++) {
-    const timestamp = currentTimestamp - HOUR * i;
+    const timestamp = end - HOUR * i;
     const chainBlocks = { [ecosystem]: blocks[timestamp] };
     volumes.push(fetch(timestamp, chainBlocks));
   }
@@ -103,20 +107,23 @@ const fetchEcosystemsFromStart = async ({
   ecosystem,
   fetch,
   start,
+  end,
 }: {
   ecosystem: Ecosystem;
   fetch: Fetch;
   start: number | any;
+  end: number;
 }) => {
   const startTimestamp = typeof start === "number" ? start : await start();
 
   // TODO add error report
-  const blocks = await getBlocksFromStart(startTimestamp, ecosystem);
+  const blocks = await getBlocksFromStart(startTimestamp, ecosystem, end);
   const volumes = await getVolumesFromStart({
     blocks,
     ecosystem,
     fetch,
     start: startTimestamp,
+    end,
   });
 
   return {
@@ -127,7 +134,8 @@ const fetchEcosystemsFromStart = async ({
 };
 
 const fetchAllEcosystemsFromStart = async (
-  id: number
+  id: number,
+  end: number
 ): Promise<AllEcosystemVolumes> => {
   const {
     name,
@@ -147,7 +155,7 @@ const fetchAllEcosystemsFromStart = async (
       ecosystems.map((ecosystem: Ecosystem) => {
         // TODO add customBackfill
         const { fetch, start } = volume[ecosystem];
-        return fetchEcosystemsFromStart({ ecosystem, fetch, start });
+        return fetchEcosystemsFromStart({ ecosystem, fetch, start, end });
       })
     )
   ).reduce(
@@ -168,10 +176,12 @@ const calcDailyVolume = ({
   allEcosystemVolumes,
   ecosystemNames,
   timestamp,
+  end,
 }: {
   allEcosystemVolumes: AllEcosystemVolumes;
   ecosystemNames: string[];
   timestamp: number;
+  end: number;
 }) => {
   const dailySumVolume = new BigNumber(0);
   const totalSumVolume = new BigNumber(0);
@@ -180,7 +190,16 @@ const calcDailyVolume = ({
   ecosystemNames.forEach((ecosystem) => {
     const { volumes } = allEcosystemVolumes[ecosystem];
     const currTotalVolume = volumes[timestamp]?.totalVolume;
-    const nextTotalVolume = volumes[timestamp + DAY]?.totalVolume;
+    if (
+      volumes[timestamp] &&
+      !volumes[timestamp + DAY] &&
+      end - timestamp > DAY
+    ) {
+      throw new Error(`Missing data on ${timestamp + DAY} for ${ecosystem}`);
+    }
+    // Next day volume or up to current timestamp
+    const nextTotalVolume =
+      volumes[timestamp + DAY]?.totalVolume || volumes[end]?.totalVolume;
 
     if (currTotalVolume !== undefined && nextTotalVolume !== undefined) {
       const bigNumCurrTotalVol = new BigNumber(currTotalVolume);
@@ -258,10 +277,66 @@ const calcHourlyVolume = ({
   };
 };
 
+const calcMonthlyVolume = ({
+  allEcosystemVolumes,
+  ecosystemNames,
+  timestamp,
+  end,
+}: {
+  allEcosystemVolumes: AllEcosystemVolumes;
+  ecosystemNames: string[];
+  timestamp: number;
+  end: number;
+}) => {
+  const monthlySumVolume = new BigNumber(0);
+  const totalSumVolume = new BigNumber(0);
+  const monthlyEcosystemVolumes: MonthlyEcosystemVolumes = {};
+
+  ecosystemNames.forEach((ecosystem) => {
+    const { volumes } = allEcosystemVolumes[ecosystem];
+
+    const startMonthTimestamp = getTimestampAtStartOfMonth(timestamp);
+    // For current month up to current hour
+    const nextTimestamp =
+      getTimestampAtStartOfNextMonth(timestamp) > end
+        ? end
+        : getTimestampAtStartOfNextMonth(timestamp);
+
+    // For first instance when contract did not launch at first of month
+    const currTotalVolume =
+      volumes[startMonthTimestamp]?.totalVolume ||
+      volumes[timestamp]?.totalVolume;
+    const nextTotalVolume = volumes[nextTimestamp]?.totalVolume;
+
+    if (currTotalVolume !== undefined && nextTotalVolume !== undefined) {
+      const bigNumCurrTotalVol = new BigNumber(currTotalVolume);
+      const bigNumNextTotalVol = new BigNumber(nextTotalVolume);
+      const bigNumMonthlyVolume = bigNumNextTotalVol.minus(bigNumCurrTotalVol);
+
+      monthlySumVolume.plus(bigNumMonthlyVolume);
+      totalSumVolume.plus(bigNumCurrTotalVol);
+
+      monthlyEcosystemVolumes[ecosystem] = {
+        monthlyVolume: bigNumMonthlyVolume.toString(),
+        totalVolume: currTotalVolume,
+      };
+    }
+  });
+
+  return {
+    monthlyVolume: monthlySumVolume.toString(),
+    totalVolume: totalSumVolume.toString(),
+    ecosystems: monthlyEcosystemVolumes,
+  };
+};
+
 const fillOldDexVolume = async (id: number) => {
-  const allEcosystemVolumes = await fetchAllEcosystemsFromStart(id);
-  const ecosystemNames = Object.keys(allEcosystemVolumes);
   const currentTimestamp = getTimestampAtStartOfHour(Date.now() / 1000);
+  const allEcosystemVolumes = await fetchAllEcosystemsFromStart(
+    id,
+    currentTimestamp
+  );
+  const ecosystemNames = Object.keys(allEcosystemVolumes);
 
   const earliestTimestamp = ecosystemNames.reduce(
     (acc, curr) =>
@@ -273,7 +348,6 @@ const fillOldDexVolume = async (id: number) => {
 
   const allDbWrites = [];
 
-  // Calculate every day daily until today
   for (
     let timestamp = getTimestampAtStartOfDayUTC(earliestTimestamp);
     timestamp < currentTimestamp;
@@ -283,12 +357,12 @@ const fillOldDexVolume = async (id: number) => {
       allEcosystemVolumes,
       ecosystemNames,
       timestamp,
+      end: currentTimestamp,
     });
 
     allDbWrites.push(
       dailyDexVolumeDb.put({
         id,
-        // Save
         unix: timestamp - DAY,
         dailyVolume,
         totalVolume,
@@ -315,7 +389,26 @@ const fillOldDexVolume = async (id: number) => {
     );
   }
 
-  // TODO calc monthly volume
+  let monthlyVolTimestamp = earliestTimestamp;
+  while (monthlyVolTimestamp < currentTimestamp) {
+    const { monthlyVolume, totalVolume, ecosystems } = calcMonthlyVolume({
+      allEcosystemVolumes,
+      ecosystemNames,
+      timestamp: monthlyVolTimestamp,
+      end: currentTimestamp,
+    });
+
+    allDbWrites.push(
+      dailyDexVolumeDb.put({
+        id,
+        unix: getTimestampAtStartOfMonth(monthlyVolTimestamp),
+        monthlyVolume,
+        totalVolume,
+        ecosystems,
+      })
+    );
+    monthlyVolTimestamp = getTimestampAtStartOfNextMonth(monthlyVolTimestamp);
+  }
 
   // TODO unlock dex-volume at end to allow hourly CRON
 };

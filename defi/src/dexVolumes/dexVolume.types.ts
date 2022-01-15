@@ -11,6 +11,11 @@ export interface HourlyVolumes extends Volumes {
   hourlyVolume: string;
 }
 
+export type MonthlyVolumes = {
+  monthlyVolume: string;
+  totalVolume: string;
+};
+
 export type TimestampBlock = {
   [x: string]: number;
 };
@@ -25,6 +30,10 @@ export type DailyEcosystemVolumes = {
 
 export type HourlyEcosystemVolumes = {
   [x: string]: HourlyVolumes;
+};
+
+export type MonthlyEcosystemVolumes = {
+  [x: string]: MonthlyVolumes;
 };
 
 export type ChainBlocks = {

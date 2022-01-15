@@ -104,6 +104,7 @@ functions:
   chart:
     handler: src/getChart.default
     timeout: 60
+    memorySize: 2000
     events:
       - http:
           path: charts

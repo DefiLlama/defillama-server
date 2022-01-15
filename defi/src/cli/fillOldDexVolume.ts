@@ -1,9 +1,10 @@
 import BigNumber from "bignumber.js";
 
 import {
-  dailyDexVolumeDb,
   getDexVolumeRecord,
+  putDailyDexVolumeRecord,
   putHourlyDexVolumeRecord,
+  putMonthlyDexVolumeRecord,
 } from "../dexVolumes/dexVolumeRecords";
 import { PUT_DAILY_VOLUME_ERROR, reportDexVolumeError } from "../utils/error";
 import {
@@ -361,7 +362,7 @@ const fillOldDexVolume = async (id: number) => {
     });
 
     allDbWrites.push(
-      dailyDexVolumeDb.put({
+      putDailyDexVolumeRecord({
         id,
         unix: timestamp - DAY,
         dailyVolume,
@@ -399,7 +400,7 @@ const fillOldDexVolume = async (id: number) => {
     });
 
     allDbWrites.push(
-      dailyDexVolumeDb.put({
+      putMonthlyDexVolumeRecord({
         id,
         unix: getTimestampAtStartOfMonth(monthlyVolTimestamp),
         monthlyVolume,

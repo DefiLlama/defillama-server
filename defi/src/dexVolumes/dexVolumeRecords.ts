@@ -2,7 +2,12 @@ require("dotenv").config({ path: __dirname + "/../../.env" });
 
 import AWS from "aws-sdk";
 
-import { HourlyEcosystemRecord } from "./dexVolume.types";
+import {
+  DailyEcosystemRecord,
+  DexVolumeInfo,
+  HourlyEcosystemRecord,
+  MonthlyEcosystemRecord,
+} from "./dexVolume.types";
 
 const client = new AWS.DynamoDB.DocumentClient({
   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
@@ -82,6 +87,21 @@ export const getDailyDexVolumeRecord = getTimeDexVolumeRecord(dailyDexVolumeDb);
 export const getMonthlyDexVolumeRecord =
   getTimeDexVolumeRecord(monthlyDexVolumeDb);
 
+export const putDailyDexVolumeRecord = ({
+  id,
+  unix,
+  dailyVolume,
+  totalVolume,
+  ecosystems,
+}: DailyEcosystemRecord) =>
+  hourlyDexVolumeDb.put({
+    id,
+    unix,
+    dailyVolume,
+    totalVolume,
+    ecosystems,
+  });
+
 export const putHourlyDexVolumeRecord = ({
   id,
   unix,
@@ -98,3 +118,40 @@ export const putHourlyDexVolumeRecord = ({
     totalVolume,
     ecosystems,
   });
+
+export const putMonthlyDexVolumeRecord = ({
+  id,
+  unix,
+  monthlyVolume,
+  totalVolume,
+  ecosystems,
+}: MonthlyEcosystemRecord) =>
+  hourlyDexVolumeDb.put({
+    id,
+    unix,
+    monthlyVolume,
+    totalVolume,
+    ecosystems,
+  });
+
+export const putDexVolumeInfo = ({
+  id,
+  module,
+  name,
+  backfilled,
+}: DexVolumeInfo) =>
+  dexVolumeInfoDb.put({
+    id,
+    module,
+    name,
+    backfilled,
+  });
+
+export const updateDexVolumeBackfilled = (id: number) => {
+  dexVolumeInfoDb.update({
+    Key: { id },
+    UpdateExpression: "set #backfill = :b",
+    ExpressionAttributeNames: { "#backfill": "backfill" },
+    ExpressionAttributeValues: { ":b": true },
+  });
+};

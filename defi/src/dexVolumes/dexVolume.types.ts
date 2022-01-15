@@ -60,6 +60,14 @@ export type TotalVolume = string;
 export type Id = number;
 export type Unix = number;
 
+export type DailyEcosystemRecord = {
+  id: Id;
+  unix: Unix;
+  dailyVolume: DailyVolume;
+  totalVolume: TotalVolume;
+  ecosystems: DailyEcosystemVolumes;
+};
+
 export type HourlyVolumesResult = {
   dailyVolume: DailyVolume;
   hourlyVolume: HourlyVolume;
@@ -74,4 +82,19 @@ export type HourlyEcosystemRecord = {
   hourlyVolume: HourlyVolume;
   totalVolume: TotalVolume;
   ecosystems: HourlyEcosystemVolumes;
+};
+
+export type MonthlyEcosystemRecord = {
+  id: Id;
+  unix: Unix;
+  monthlyVolume: HourlyVolume;
+  totalVolume: TotalVolume;
+  ecosystems: MonthlyEcosystemVolumes;
+};
+
+export type DexVolumeInfo = {
+  id: number;
+  module: string;
+  name: string;
+  backfilled: boolean;
 };

@@ -21,6 +21,7 @@ const handler = async (_event: any) => {
       chainTvls: protocol.chainTvls,
       change_1d: protocol["change_1d"],
       change_7d: protocol["change_7d"],
+      change_1m: chainTvlsChange['tvl']?.['change_1m'] ?? null,
       listedAt: protocol.listedAt,
       mcap: protocol.mcap,
       name: protocol.name,

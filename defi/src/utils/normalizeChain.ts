@@ -513,6 +513,11 @@ export const chainCoingeckoIds = {
     symbol: "SYS",
     cmcId: "541",
   },
+  "Moonbeam": {
+    geckoId: "moonbeam",
+    symbol: "GLMR",
+    cmcId: "6836",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -642,6 +647,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Meter"
     case "syscoin":
       return "Syscoin"
+    case "moonbeam":
+      return "Moonbeam"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

@@ -20461,7 +20461,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Unite Finance is the first Tomb Finance inspired Seigniorage running on Harmony",
   chain: "Harmony",
   logo: `${baseIconsUrl}/unite-finance.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "unite",
   cmcId: null,
@@ -20470,6 +20470,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "unite-finance/index.js",
   twitter: "finance_unite",
   forkedFrom: ["Tomb Finance"],
+  audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/unite-finance/Unite-Finance_final-audit-report.pdf"] ,
   listedAt: 1640898313,
 },
 {

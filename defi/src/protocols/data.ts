@@ -10294,7 +10294,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Harmony yield farm and yield aggregator with auto-compounding vaults.",
     chain: "Harmony",
     logo: `${baseIconsUrl}/farmersonly.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "farmers-only",
     cmcId: null,
@@ -10302,6 +10302,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "farmersonly/index.js",
     twitter: "FarmersOnlyFi",
+    audit_links: ["https://rugdoc.io/project/farmersonly/"] ,
   },
   {
     id: "633",

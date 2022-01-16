@@ -12724,7 +12724,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Boss Swap Finance is an unique DEX launching on the Harmony Protocol. We’ve taken some of our favorite features from other projects and added them together to make BOSS swap with some BOSS unique style.",
     chain: "Harmony",
     logo: `${baseIconsUrl}/bossswap.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -12733,6 +12733,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "boss-swap/index.js",
     twitter: "BossSwapFinance",
     forkedFrom: ["Uniswap"],
+    audit_links: ["https://www.bossswap.finance/audit"] ,
     listedAt: 1635966094
   },
   {

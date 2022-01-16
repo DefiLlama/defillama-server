@@ -2,7 +2,7 @@ import { craftProtocolsResponse } from "./getProtocols";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from "zlib";
-import { getTvlChange } from "./utils/getTvlChange";
+import { getProtocolTvl, ProtocolTvls } from "./utils/getProtocolTvl";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -14,20 +14,22 @@ function compress(data: string) {
 const handler = async (_event: any) => {
   const response = await craftProtocolsResponse(true);
   const trimmedResponse = await Promise.all(response.map(async (protocol) => {
-    const chainTvlsChange = await getTvlChange(protocol.id)
+  const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol.id, true)
     return {
       category: protocol.category,
       chains: protocol.chains,
       chainTvls: protocol.chainTvls,
-      change_1d: protocol["change_1d"],
-      change_7d: protocol["change_7d"],
-      change_1m: chainTvlsChange['tvl']?.['change_1m'] ?? null,
+      change_1d: protocol.change_1d,
+      change_7d: protocol.change_7d,
       listedAt: protocol.listedAt,
       mcap: protocol.mcap,
       name: protocol.name,
       symbol: protocol.symbol,
       tvl: protocol.tvl,
-      chainTvlsChange
+      tvlPrevDay: protocolTvls.tvlPrevDay,
+      tvlPrevWeek: protocolTvls.tvlPrevWeek,
+      tvlPrevMonth: protocolTvls.tvlPrevMonth,
+      chainTvls2: protocolTvls.chainTvls
     }
   }));
 

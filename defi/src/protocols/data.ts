@@ -16376,7 +16376,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://eosauthority.com/rex",
     description: "REX is short for “Resource Exchange” and is a marketplace that allows for the risk-free leasing of network resources (CPU & Network)",
     chain: "Telos",
-    logo: `${baseIconsUrl}/eosauthority-rex.jpg`,
+    logo: `${baseIconsUrl}/rex-staking.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

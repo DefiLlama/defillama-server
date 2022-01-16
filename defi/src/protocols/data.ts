@@ -9492,7 +9492,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Multichain",
     address: "0x9Fb9a33956351cf4fa040f65A13b835A3C8764E3",
     symbol: "MULTI",
-    url: "https://anyswap.exchange",
+    url: "https://multichain.org/",
     description: "Cross-Chain Router Protocol (CRP), envisioned to be the ultimate router for Web3.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/multichain.jpg`, 
@@ -9509,7 +9509,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
                   "https://github.com/anyswap/Anyswap-Audit/blob/master/SlowMist/Anyswap%20Smart%20Contract%20Security%20Audit.pdf",
                   "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Travala-AnyswapV5ERC20-v1.0.pdf"
                 ],
-    twitter: "AnyswapNetwork",
+    twitter: "MultichainOrg",
   },
   {
     id: "592",

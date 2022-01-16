@@ -1,4 +1,3 @@
-import { getPercentChange } from "../getProtocols";
 import { secondsInDay, secondsInHour, secondsInWeek } from "./date";
 import {getLastRecord, hourlyTvl } from "./getLastRecord"
 import { getChainDisplayName, nonChains } from "./normalizeChain";
@@ -15,13 +14,13 @@ type ChainTvls = {
 
 export type ProtocolTvls = {
     tvl: number | null,
-    change_1d: number | null,
-    change_7d: number | null,
-    change_1m: number | null,
+    tvlPrevDay: number | null,
+    tvlPrevWeek: number | null,
+    tvlPrevMonth: number | null,
     chainTvls: ChainTvls
 }
 
-export async function getTvlChange(protocolId: string, useNewChainNames: boolean): Promise<ProtocolTvls> {
+export async function getProtocolTvl(protocolId: string, useNewChainNames: boolean): Promise<ProtocolTvls> {
     const now = Math.round(Date.now() / 1000)
     const lastRecord = await getLastRecord(hourlyTvl(protocolId))
     const previousDayRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInDay, secondsInHour)
@@ -29,9 +28,9 @@ export async function getTvlChange(protocolId: string, useNewChainNames: boolean
     const previousMonthRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInWeek * 4, secondsInDay)
     const chainTvls: ChainTvls = {}
     let tvl: number | null = null;
-    let change_1d: number | null = null;
-    let change_7d: number | null = null;
-    let change_1m: number | null = null;
+    let tvlPrevDay: number | null = null;
+    let tvlPrevWeek: number | null = null;
+    let tvlPrevMonth: number | null = null;
     if (lastRecord && previousDayRecord?.SK && previousWeekRecord?.SK && previousMonthRecord?.SK) {
         Object.entries(lastRecord).forEach(([chain, chainTvl]) => {
             if (chain !== 'tvl' && nonChains.includes(chain)) {
@@ -45,22 +44,20 @@ export async function getTvlChange(protocolId: string, useNewChainNames: boolean
             if (previousDayTvl && previousWeekTvl && previousMonthTvl) {
                 if (chain === 'tvl') {
                     tvl = chainTvl
-                    const previousMonthTvl = chain ? previousMonthRecord[chain] : null
-                    change_1d = getPercentChange(previousDayTvl, chainTvl)
-                    change_7d = getPercentChange(previousWeekTvl, chainTvl)
-                    change_1m = getPercentChange(previousMonthTvl, chainTvl)
+                    tvlPrevDay = previousDayTvl
+                    tvlPrevWeek = previousWeekTvl
+                    tvlPrevMonth = previousMonthTvl
                 } else {
-                    const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
-                    chainTvls[chainDisplayName] = chainTvl;
-                    chainTvls[chain] = {
-                        'tvl': chainTvl,
-                        'tvlPrevDay': previousDayTvl,
-                        'tvlPrevWeek': previousWeekTvl,
-                        'tvlPrevMonth': previousWeekTvl,
-                    }
+                    const chainDisplayName = getChainDisplayName(chain, useNewChainNames)
+                    chainTvls[chainDisplayName] = {
+                    'tvl': chainTvl,
+                    'tvlPrevDay': previousDayTvl,
+                    'tvlPrevWeek': previousWeekTvl,
+                    'tvlPrevMonth': previousMonthTvl,
+                };
                 }
             }
         })
     }
-    return {tvl, change_1d, change_7d, change_1m, chainTvls}
+    return {tvl, tvlPrevDay, tvlPrevWeek, tvlPrevMonth, chainTvls}
 }

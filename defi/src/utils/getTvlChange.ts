@@ -1,39 +1,38 @@
 import { getPercentChange } from "../getProtocols";
 import { secondsInDay, secondsInHour, secondsInWeek } from "./date";
 import {getLastRecord, hourlyTvl } from "./getLastRecord"
-import { nonChains } from "./normalizeChain";
+import { getChainDisplayName, nonChains } from "./normalizeChain";
 import getTVLOfRecordClosestToTimestamp from "./shared/getRecordClosestToTimestamp";
 
 type ChainTvls = {
     [key: string]: {
-        'change_1d': number | null,
-        'change_7d': number | null,
-        'change_1m': number | null
+        'tvl': number | null,
+        'tvlPrevDay': number | null,
+        'tvlPrevWeek': number | null,
+        'tvlPrevMonth': number | null
     }
 }
 
-export type ProtocolTvlsChange = {
+export type ProtocolTvls = {
+    tvl: number | null,
     change_1d: number | null,
     change_7d: number | null,
     change_1m: number | null,
-    chainTvlsChange: ChainTvls
+    chainTvls: ChainTvls
 }
 
-export async function getTvlChange(protocolId: string): Promise<ProtocolTvlsChange> {
+export async function getTvlChange(protocolId: string, useNewChainNames: boolean): Promise<ProtocolTvls> {
     const now = Math.round(Date.now() / 1000)
     const lastRecord = await getLastRecord(hourlyTvl(protocolId))
     const previousDayRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInDay, secondsInHour)
     const previousWeekRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInWeek, secondsInDay)
     const previousMonthRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInWeek * 4, secondsInDay)
-    const chainTvlsChange: ChainTvls = {}
+    const chainTvls: ChainTvls = {}
+    let tvl: number | null = null;
     let change_1d: number | null = null;
     let change_7d: number | null = null;
     let change_1m: number | null = null;
     if (lastRecord && previousDayRecord?.SK && previousWeekRecord?.SK && previousMonthRecord?.SK) {
-        const defaultTvl = lastRecord.tvl || 0
-        const oneDayDefaultTvl = previousDayRecord.tvl || 0
-        const oneWeekDefaultTvl = previousWeekRecord.tvl || 0
-        const oneMonthDefaultTvl = previousMonthRecord.tvl || 0
         Object.entries(lastRecord).forEach(([chain, chainTvl]) => {
             if (chain !== 'tvl' && nonChains.includes(chain)) {
                 return;
@@ -45,22 +44,23 @@ export async function getTvlChange(protocolId: string): Promise<ProtocolTvlsChan
 
             if (previousDayTvl && previousWeekTvl && previousMonthTvl) {
                 if (chain === 'tvl') {
+                    tvl = chainTvl
                     const previousMonthTvl = chain ? previousMonthRecord[chain] : null
                     change_1d = getPercentChange(previousDayTvl, chainTvl)
                     change_7d = getPercentChange(previousWeekTvl, chainTvl)
                     change_1m = getPercentChange(previousMonthTvl, chainTvl)
                 } else {
-                    chainTvlsChange[chain] = {
-                        'change_1d': null,
-                        'change_7d': null,
-                        'change_1m': null,
+                    const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
+                    chainTvls[chainDisplayName] = chainTvl;
+                    chainTvls[chain] = {
+                        'tvl': chainTvl,
+                        'tvlPrevDay': previousDayTvl,
+                        'tvlPrevWeek': previousWeekTvl,
+                        'tvlPrevMonth': previousWeekTvl,
                     }
-                    chainTvlsChange[chain]['change_1d'] = getPercentChange(oneDayDefaultTvl + previousDayTvl, defaultTvl + chainTvl)
-                    chainTvlsChange[chain]['change_7d'] = getPercentChange(oneWeekDefaultTvl + previousWeekTvl, defaultTvl + chainTvl)
-                    chainTvlsChange[chain]['change_1m'] = getPercentChange(oneMonthDefaultTvl + previousMonthTvl, defaultTvl + chainTvl)
                 }
             }
         })
     }
-    return {change_1d, change_7d, change_1m, chainTvlsChange}
+    return {tvl, change_1d, change_7d, change_1m, chainTvls}
 }

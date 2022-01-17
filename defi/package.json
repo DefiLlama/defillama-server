@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "deploy:env": "sls deploy --stage $NODE_ENV --compile-concurrency 3",
+    "deploy:env": "sls deploy --stage $NODE_ENV --compile-concurrency 1",
     "deploy:dev": "export NODE_ENV=dev && npm run deploy:env",
     "deploy:prod": "export NODE_ENV=prod && npm run deploy:env",
     "deploy": "npm run deploy:dev",

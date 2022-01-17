@@ -31,7 +31,7 @@ jobs:
     - name: Get Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '16.x'
+        node-version: '15.5.1'
     - run: npm ci
     - run: git submodule update --init --recursive
     - run: cd DefiLlama-Adapters && git checkout main && git pull
@@ -48,7 +48,7 @@ jobs:
     - name: Get Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '16.x'
+        node-version: '15.5.1'
     - run: npm ci
     - run: git submodule update --init --recursive
     - run: cd DefiLlama-Adapters && git checkout main && git pull

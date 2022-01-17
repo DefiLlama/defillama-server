@@ -16171,7 +16171,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Platypus finance is a novel open-liquidity stableswap protocol that aims to remove blockchain divergence." ,
     chain: "Avalanche" ,
     logo: `${baseIconsUrl}/platypus.png` ,
-    audits: "0" ,
+    audits: "2" ,
     audit_note: null ,
     gecko_id: "platypus-finance" ,
     cmcId: null ,
@@ -16179,6 +16179,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"] ,
     module: "platypus-finance/index.js" ,
     twitter: "Platypusdefi" ,
+    audit_links: ["https://omniscia.io/platypus-finance-core-implementation/","https://hacken.io/audits/#platypus_finance"],
     listedAt: 1638299790
   },
   {

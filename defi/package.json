@@ -35,7 +35,7 @@
     "serverless": "^2.31.0",
     "serverless-offline": "^7.0.0",
     "serverless-prune-plugin": "^1.4.4",
-    "serverless-webpack-fixed": "^5.3.2",
+    "serverless-webpack-fixed": "^5.3.3",
     "ts-jest": "^26.5.4",
     "ts-loader": "^8.0.18",
     "ts-node": "^9.1.1",

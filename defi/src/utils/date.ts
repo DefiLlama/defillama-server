@@ -33,6 +33,16 @@ export const getTimestampAtStartOfDayUTC = (timestamp: number) => {
   return Math.floor(timestamp / 86400) * 86400;
 };
 
+export const getTimestampAtStartOfNextDayUTC = (timestamp: number) => {
+  const date = new Date(timestamp * 1000);
+  var date_utc = Date.UTC(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate() + 1
+  );
+  return date_utc / 1000;
+};
+
 export function calcIsNewDay(timestamp: number) {
   return timestamp % 86400 === 0;
 }
@@ -54,13 +64,13 @@ export const getTimestampAtStartOfHour = (timestamp: number) => {
 
 export const getTimestampAtStartOfMonth = (timestamp: number) => {
   const date = new Date(timestamp * 1000);
-  const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  const firstDay = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1);
   return firstDay.valueOf() / 1000;
 };
 
 export const getTimestampAtStartOfNextMonth = (timestamp: number) => {
   const date = new Date(timestamp * 1000);
-  const firstDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+  const firstDay = Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 1);
   return firstDay.valueOf() / 1000;
 };
 

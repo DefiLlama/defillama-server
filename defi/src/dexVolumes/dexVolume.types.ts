@@ -47,7 +47,7 @@ export type AllEcosystemVolumes = {
   };
 };
 
-export type FetchResult = Volumes & { timestamp: number; block: number };
+export type FetchResult = Volumes & { timestamp: number };
 
 export type Fetch = (
   timestamp: number,

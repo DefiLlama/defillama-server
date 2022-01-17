@@ -49,10 +49,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '16.x'
-    - run: npm ls -prod -json -depth=1
     - run: npm ci
     - run: git submodule update --init --recursive
     - run: cd DefiLlama-Adapters && git checkout main && git pull
+    - run: npm ls -prod -json -depth=1
     - name: Deploy infrastructure stack
       run: npm run deploy:prod
       env:

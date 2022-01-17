@@ -18,7 +18,7 @@ npm run serve
 ```
 
 ## Deploy
-Just push your changes to the `master` branch.  
+Just push your changes to the `master` branch. 
 
 ## Cli
 ```

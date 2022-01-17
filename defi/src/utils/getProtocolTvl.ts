@@ -20,7 +20,7 @@ export type ProtocolTvls = {
     chainTvls: ChainTvls
 }
 
-export async function getProtocolTvl(protocolId: string, useNewChainNames: boolean): Promise<ProtocolTvls> {
+export async function getProtocolTvl(protocolId: string, useNewChainNames: boolean, protocolChains: string[]): Promise<ProtocolTvls> {
     const now = Math.round(Date.now() / 1000)
     const lastRecord = await getLastRecord(hourlyTvl(protocolId))
     const previousDayRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInDay, secondsInDay)
@@ -52,6 +52,11 @@ export async function getProtocolTvl(protocolId: string, useNewChainNames: boole
                 };
             }        
         })
+        if(Object.keys(chainTvls).length === 0){
+            chainTvls[protocolChains[0]]={
+                tvl, tvlPrevDay, tvlPrevWeek, tvlPrevMonth
+            }
+        }
     }
     return {tvl, tvlPrevDay, tvlPrevWeek, tvlPrevMonth, chainTvls}
 }

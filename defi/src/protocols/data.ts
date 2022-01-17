@@ -22733,7 +22733,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1272",
-  name: "ioTube ",
+  name: "ioTube",
   address: "polygon:0x300211def2a644b036a9bdd3e58159bb2074d388",
   symbol: "CIOTX",
   url: "https://iotube.org",

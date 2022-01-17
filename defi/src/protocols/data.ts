@@ -21773,6 +21773,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Olympus DAO"],
   listedAt: 1641837565,
 },
+/*
 {
   id: "1224",
   name: "Traverse",
@@ -21793,6 +21794,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Olympus DAO"],
   listedAt: 1641840706,
 },
+*/
 {
   id: "1225",
   name: "VoltSwap",

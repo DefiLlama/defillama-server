@@ -22945,7 +22945,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://rubic.exchange",
   description: "Rubic is the Multi-Chain Swaps protocol that enables users to complete swaps between 10,500+ assets on Ethereum, Binance Smart Chain, Polygon, Avalanche, Moonriver, Fantom, Solana and Harmony in 1 click.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/rubic.svg`,
+  logo: `${baseIconsUrl}/rubic.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "rubic",

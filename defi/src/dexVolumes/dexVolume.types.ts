@@ -21,7 +21,9 @@ export type TimestampBlock = {
 };
 
 export type TimestampVolumes = {
-  [x: string]: Volumes;
+  [x: string]: {
+    totalVolume: string;
+  };
 };
 
 export type DailyEcosystemVolumes = {
@@ -47,7 +49,12 @@ export type AllEcosystemVolumes = {
   };
 };
 
-export type FetchResult = Volumes & { timestamp: number };
+export type FetchResult = {
+  block?: number;
+  dailyVolume?: string;
+  totalVolume: string;
+  timestamp: number;
+};
 
 export type Fetch = (
   timestamp: number,

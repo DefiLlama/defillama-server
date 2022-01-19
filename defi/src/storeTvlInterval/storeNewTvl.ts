@@ -96,6 +96,16 @@ export default async function (
       await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
     }
   }
+
+  const lastHourlyTVLObject = await lastHourlyTVLRecord;
+  await Promise.all(Object.entries(tvl).map(async ([sectionName, sectionTvl])=>{
+    if(sectionTvl===0 && lastHourlyTVLObject[sectionName] !== 0){
+      await sendMessage(
+        `TVL for ${protocol.name} has dropped to 0 on key ${sectionName} (previous TVL was ${lastHourlyTVLObject[sectionName]})`,
+      process.env.DROPS_WEBHOOK!)
+    }
+  }))
+
   let tvlPrev1Day =  (await lastDailyTVLRecord).tvl
   let tvlPrev1Week = (await lastWeeklyTVLRecord).tvl
   const dayDailyTvl = (await dayDailyTvlRecord).tvl

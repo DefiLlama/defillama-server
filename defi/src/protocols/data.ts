@@ -23032,7 +23032,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Dexes",
   chains: ["Telos"],
-  module: "omnidex.js",
+  module: "omnidex/index.js",
   twitter: "OmniDex1",
   forkedFrom: ["Uniswap"],
   listedAt: 1642579561,

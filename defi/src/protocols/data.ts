@@ -23000,8 +23000,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 {
   id: "1285",
   name: "Alphadex",
-  address: null,
-  symbol: "-",
+  address: "0x8E7Cd893D8f371051a39aA65976Bca22d7b02A60",
+  symbol: "ROAR",
   url: "https://alphadex.io",
   description: "The Ultimate Cross-Chain AMM, Incubator and NFT Launchpad powered by #Moonriver",
   chain: "Moonriver",

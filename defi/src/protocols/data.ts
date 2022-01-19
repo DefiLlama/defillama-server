@@ -23105,7 +23105,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Grape Finance is an algorithimic stable coin protocol pegged 1:1 to MIM on Avalanche.",
   chain: "Avalanche",
   logo: `${baseIconsUrl}/grape-finance.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "grape-finance",
   cmcId: "17420",
@@ -23114,6 +23114,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "grape-finance/index.js",
   twitter: "grape_finance",
   forkedFrom: ["Tomb Finance"],
+  audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/grape-finance/Grape-Finance_final-audit-report_1642499628626.pdf"],
   listedAt: 1642625568,
 },
 ] as Protocol[];

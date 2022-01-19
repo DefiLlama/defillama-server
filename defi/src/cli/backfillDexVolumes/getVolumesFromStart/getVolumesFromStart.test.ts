@@ -1,10 +1,9 @@
-import { getVolumesFromStart } from "./";
+import getVolumesFromStart from "./";
 
 import {
   dailyTimestampFrom1641081600To1642291200,
   past25TimestampsFrom1642370400,
-  past6TimestampsFrom1641013200,
-} from "./fixtures";
+} from "../fixtures";
 
 describe("getVolumesFromStart", () => {
   const ecosystem = "ethereum";

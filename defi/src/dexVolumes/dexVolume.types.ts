@@ -59,7 +59,7 @@ export type FetchResult = {
 export type Fetch = (
   timestamp: number,
   chainBlocks: ChainBlocks
-) => FetchResult;
+) => Promise<FetchResult>;
 
 export type DailyVolume = string;
 export type HourlyVolume = string;

@@ -1,14 +1,14 @@
-import { getBlocksFromStart } from "./";
+import getBlocksFromStart from "./";
 import {
   dailyTimestampFrom1641081600To1642291200,
   past25TimestampsFrom1641088800,
   past25TimestampsFrom1641081600,
   past6TimestampsFrom1641013200,
-} from "./fixtures";
-import { getChainBlocksRetry } from "../utils";
+} from "../fixtures";
+import { getChainBlocksRetry } from "../../utils";
 
-jest.mock("../utils", () => {
-  const originalModule = jest.requireActual("../utils");
+jest.mock("../../utils", () => {
+  const originalModule = jest.requireActual("../../utils");
 
   return {
     __esModule: true,

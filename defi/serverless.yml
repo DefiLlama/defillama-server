@@ -240,6 +240,6 @@ resources:
   - ${file(resources/api-cloudfront-distribution.yml)}
 
 plugins:
-  - serverless-webpack
+  - serverless-webpack-fixed
   - serverless-offline
   - serverless-prune-plugin

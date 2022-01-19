@@ -1,4 +1,4 @@
-const slsw = require('serverless-webpack');
+const slsw = require('serverless-webpack-fixed');
 const path = require('path');
 
 module.exports = {

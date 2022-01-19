@@ -14,22 +14,19 @@ function compress(data: string) {
 const handler = async (_event: any) => {
   const response = await craftProtocolsResponse(true);
   const trimmedResponse = await Promise.all(response.map(async (protocol) => {
-  const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol.id, true)
+  const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol.id, true, protocol.chains)
     return {
       category: protocol.category,
       chains: protocol.chains,
-      chainTvls: protocol.chainTvls,
-      change_1d: protocol.change_1d,
-      change_7d: protocol.change_7d,
       listedAt: protocol.listedAt,
       mcap: protocol.mcap,
       name: protocol.name,
       symbol: protocol.symbol,
-      tvl: protocol.tvl,
+      tvl: protocolTvls.tvl,
       tvlPrevDay: protocolTvls.tvlPrevDay,
       tvlPrevWeek: protocolTvls.tvlPrevWeek,
       tvlPrevMonth: protocolTvls.tvlPrevMonth,
-      chainTvls2: protocolTvls.chainTvls
+      chainTvls: protocolTvls.chainTvls
     }
   }));
 
@@ -39,7 +36,7 @@ const handler = async (_event: any) => {
   noChainResponse.forEach((p) => {
     protocolCategoriesSet.add(p.category);
     p.chains.forEach((c: string) => {
-      chains[c] = (chains[c] ?? 0) + (p.chainTvls[c] || 0);
+      chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
     });
   });
 

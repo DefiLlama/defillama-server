@@ -1,4 +1,4 @@
-import { secondsInDay, secondsInHour, secondsInWeek } from "./date";
+import { secondsInDay, secondsInWeek } from "./date";
 import {getLastRecord, hourlyTvl } from "./getLastRecord"
 import { getChainDisplayName, nonChains } from "./normalizeChain";
 import getTVLOfRecordClosestToTimestamp from "./shared/getRecordClosestToTimestamp";
@@ -20,10 +20,10 @@ export type ProtocolTvls = {
     chainTvls: ChainTvls
 }
 
-export async function getProtocolTvl(protocolId: string, useNewChainNames: boolean): Promise<ProtocolTvls> {
+export async function getProtocolTvl(protocolId: string, useNewChainNames: boolean, protocolChains: string[]): Promise<ProtocolTvls> {
     const now = Math.round(Date.now() / 1000)
     const lastRecord = await getLastRecord(hourlyTvl(protocolId))
-    const previousDayRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInDay, secondsInHour)
+    const previousDayRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInDay, secondsInDay)
     const previousWeekRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInWeek, secondsInDay)
     const previousMonthRecord = await getTVLOfRecordClosestToTimestamp(hourlyTvl(protocolId), now - secondsInWeek * 4, secondsInDay)
     const chainTvls: ChainTvls = {}
@@ -31,33 +31,32 @@ export async function getProtocolTvl(protocolId: string, useNewChainNames: boole
     let tvlPrevDay: number | null = null;
     let tvlPrevWeek: number | null = null;
     let tvlPrevMonth: number | null = null;
-    if (lastRecord && previousDayRecord?.SK && previousWeekRecord?.SK && previousMonthRecord?.SK) {
+    if (lastRecord) {
         Object.entries(lastRecord).forEach(([chain, chainTvl]) => {
             if (chain !== 'tvl' && nonChains.includes(chain)) {
                 return;
             }
-
-            const previousDayTvl = chain ? previousDayRecord[chain] : null
-            const previousWeekTvl = chain ? previousWeekRecord[chain] : null
-            const previousMonthTvl = chain ? previousMonthRecord[chain] : null
-
-            if (previousDayTvl && previousWeekTvl && previousMonthTvl) {
-                if (chain === 'tvl') {
-                    tvl = chainTvl
-                    tvlPrevDay = previousDayTvl
-                    tvlPrevWeek = previousWeekTvl
-                    tvlPrevMonth = previousMonthTvl
-                } else {
-                    const chainDisplayName = getChainDisplayName(chain, useNewChainNames)
-                    chainTvls[chainDisplayName] = {
+        
+            if (chain === 'tvl') {
+                tvl = chainTvl
+                tvlPrevDay = previousDayRecord[chain] || null
+                tvlPrevWeek = previousWeekRecord[chain] || null
+                tvlPrevMonth = previousMonthRecord[chain] || null
+            } else {
+                const chainDisplayName = getChainDisplayName(chain, useNewChainNames)
+                chainTvls[chainDisplayName] = {
                     'tvl': chainTvl,
-                    'tvlPrevDay': previousDayTvl,
-                    'tvlPrevWeek': previousWeekTvl,
-                    'tvlPrevMonth': previousMonthTvl,
+                    'tvlPrevDay': previousDayRecord[chain] || null,
+                    'tvlPrevWeek': previousWeekRecord[chain] || null,
+                    'tvlPrevMonth': previousMonthRecord[chain] || null,
                 };
-                }
-            }
+            }        
         })
+        if(Object.keys(chainTvls).length === 0){
+            chainTvls[protocolChains[0]]={
+                tvl, tvlPrevDay, tvlPrevWeek, tvlPrevMonth
+            }
+        }
     }
     return {tvl, tvlPrevDay, tvlPrevWeek, tvlPrevMonth, chainTvls}
 }

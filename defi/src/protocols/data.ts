@@ -10214,7 +10214,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "polygon:0x01309A1Ec476871760D9Ea454628500BCcc1E011",
     symbol: "FLT",
     url: "https://float.capital",
-    description: "Float is a novel protocol, creating an efficient synthetic asset marketplace, governed entirely by code, allowing anyone around the world to get involved.",
+    description: "Float DAO is a novel protocol, creating an efficient magic internet asset marketplace, governed entirely by code, allowing anyone around the world to get involved.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/float-capital.png`,
     audits: "2",

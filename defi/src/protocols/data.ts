@@ -22920,7 +22920,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 {
   id: "1281",
   name: "veDAO",
-  address: "0x911da02c1232a3c3e1418b834a311921143b04d7",
+  address: "fantom:0x911da02c1232a3c3e1418b834a311921143b04d7",
   symbol: "WeVE",
   url: "https://www.vedao.io/",
   description: "A masterchef",
@@ -22928,7 +22928,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   logo: `${baseIconsUrl}/vedao.jpg`,
   audits: "3",
   audit_note: null,
-  gecko_id: null,
+  gecko_id: "vedao",
   cmcId: null,
   category: "Farm",
   chains: ["Fantom"],

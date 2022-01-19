@@ -140,6 +140,7 @@ export const chainCoingeckoIds = {
     geckoId: "wanchain",
     symbol: "WAN",
     cmcId: "2606",
+    categories: ["EVM"],
   },
   "DefiChain": {
     geckoId: "defichain",
@@ -253,6 +254,7 @@ export const chainCoingeckoIds = {
     geckoId: "moonriver",
     symbol: "MOVR",
     cmcId: "9285",
+    categories: ["EVM", "Parachain"],
   },
   "Waves": {
     geckoId: "waves",
@@ -263,6 +265,7 @@ export const chainCoingeckoIds = {
     geckoId: "klay-token",
     symbol: "KLAY",
     cmcId: "4256",
+    categories: ["EVM"],
   },
   "IoTeX": {
     geckoId: "iotex",
@@ -284,6 +287,7 @@ export const chainCoingeckoIds = {
     geckoId: 'shiden',
     symbol: 'SDN',
     cmcId: '11451',
+    categories: ["EVM"],
   },
   "Telos": {
     geckoId: "telos",
@@ -295,6 +299,7 @@ export const chainCoingeckoIds = {
     geckoId: "thunder-token",
     symbol: "TT",
     cmcId: "3930",
+    categories: ["EVM"],
   },
   "Lamden": {
     geckoId: "lamden",
@@ -339,16 +344,19 @@ export const chainCoingeckoIds = {
       geckoId: "tomochain",
       symbol: "TOMO",
       cmcId: "2570",
+      categories: ["EVM"],
   },
   "Fusion": {
     geckoId: "fsn",
     symbol: "FSN",
     cmcId: "2530",
+    categories: ["EVM"],
   },
   "Kardia": {
     geckoId: "kardiachain",
     symbol: "KAI",
     cmcId: "5453",
+    categories: ["EVM"],
   },
   "Fuse": {
     geckoId: "fuse-network-token",
@@ -371,11 +379,13 @@ export const chainCoingeckoIds = {
     geckoId: "elastos",
     symbol: "ELA",
     cmcId: "2492",
+    categories: ["EVM"],
   },
   "Hoo": {
     geckoId: "hoo-token",
     symbol: "HOO",
     cmcId: "7543",
+    categories: ["EVM"],
   },
   "Cronos": {
     geckoId: "crypto-com-chain",
@@ -392,6 +402,7 @@ export const chainCoingeckoIds = {
     geckoId: "zyx",
     symbol: "ZYX",
     cmcId: "6131",
+    categories: ["EVM"],
   },
   "Elrond": {
     geckoId: "elrond-erd-2",
@@ -419,6 +430,7 @@ export const chainCoingeckoIds = {
     geckoId: "ubiq",
     symbol: "UBQ",
     cmcId: "588",
+    categories: ["EVM"],
   },
   "Mixin": {
     geckoId: "mixin",
@@ -444,6 +456,7 @@ export const chainCoingeckoIds = {
     geckoId: "velas",
     symbol: "VLX",
     cmcId: "4747",
+    categories: ["EVM"],
   },
   "Polkadot": {
     geckoId: "polkadot",
@@ -482,6 +495,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    categories: ["Rollup"],
   },
   "SmartBCH": {
     geckoId: "bitcoin-cash",
@@ -499,11 +513,13 @@ export const chainCoingeckoIds = {
     geckoId: "callisto",
     symbol: "CLO",
     cmcId: "2757",
+    categories: ["EVM"],
   },
   "CSC": {
     geckoId: "coinex-token",
     symbol: "CET",
     cmcId: "2941",
+    categories: ["EVM"],
   },
   "Ergo": {
     geckoId: "ergo",
@@ -519,6 +535,7 @@ export const chainCoingeckoIds = {
     geckoId: "liquidchain",
     symbol: "XLC",
     cmcId: null,
+    categories: ["EVM"],
   },
   "Nahmii": {
     geckoId: "nahmii",
@@ -535,21 +552,25 @@ export const chainCoingeckoIds = {
     geckoId: "meter",
     symbol: "MTRG",
     cmcId: "5919",
+    categories: ["EVM"],
   },
   "Oasis": {
     geckoId: "oasis-network",
     symbol: "ROSE",
     cmcId: "7653",
+    categories: ["EVM"],
   },
   "Theta": {
     geckoId: "theta-token",
     symbol: "THETA",
     cmcId: "2416",
+    categories: ["EVM"],
   },
   "Syscoin": {
     geckoId: "syscoin",
     symbol: "SYS",
     cmcId: "541",
+    categories: ["EVM"],
   },
   "Moonbeam": {
     geckoId: "moonbeam",

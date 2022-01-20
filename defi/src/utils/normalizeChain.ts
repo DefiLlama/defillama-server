@@ -581,8 +581,7 @@ export const chainCoingeckoIds = {
     geckoId: "moonbeam",
     symbol: "GLMR",
     cmcId: "6836",
-    categories: ["EVM"],
-    categories: ["Parachain"],
+    categories: ["EVM", "Parachain"],
     parent: ["Polkadot"],
   },
 } as {

@@ -99,9 +99,10 @@ export default async function (
 
   const lastHourlyTVLObject = await lastHourlyTVLRecord;
   await Promise.all(Object.entries(tvl).map(async ([sectionName, sectionTvl])=>{
-    if(sectionTvl===0 && lastHourlyTVLObject[sectionName] !== 0){
+    const prevTvl = lastHourlyTVLObject[sectionName]
+    if(sectionTvl===0 && prevTvl !== 0 && prevTvl !== undefined){
       await sendMessage(
-        `TVL for ${protocol.name} has dropped to 0 on key ${sectionName} (previous TVL was ${lastHourlyTVLObject[sectionName]})`,
+        `TVL for ${protocol.name} has dropped to 0 on key "${sectionName}" (previous TVL was ${prevTvl})`,
       process.env.DROPS_WEBHOOK!)
     }
   }))

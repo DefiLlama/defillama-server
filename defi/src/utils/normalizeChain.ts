@@ -592,7 +592,7 @@ export const chainCoingeckoIds = {
   }
 }
 
-export const extraSections = ["staking", "pool2", "offers", "borrowed"]
+export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef"]
 
 export function transformNewChainName(chain:string){
   switch (chain) {

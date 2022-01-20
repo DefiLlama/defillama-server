@@ -115,10 +115,10 @@ export const chainCoingeckoIds = {
     cmcId: "3513",
     categories: ["EVM"],
   },
-  "xDai": {
-    geckoId: "xdai-stake",
-    symbol: "STAKE",
-    cmcId: "5601",
+  "Gnosis": {
+    geckoId: "gnosis",
+    symbol: "GNO",
+    cmcId: "1659",
     categories: ["EVM"],
   },
   "Heco": {
@@ -620,7 +620,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kcc":
       return useNewChainNames?"KCC":"Kucoin"
     case "xdai":
-      return "xDai"
+      return "Gnosis"
     case "avax":
       return "Avalanche"
     case "okexchain":

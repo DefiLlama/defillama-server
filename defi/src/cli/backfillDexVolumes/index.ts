@@ -6,223 +6,69 @@ import {
   putHourlyDexVolumeRecord,
   putMonthlyDexVolumeRecord,
 } from "../../dexVolumes/dexVolumeRecords";
+
 import {
   DAY,
   HOUR,
-  calcIsNewDay,
   getTimestampAtStartOfHour,
   getTimestampAtStartOfDayUTC,
-  getTimestampAtStartOfNextDayUTC,
   getTimestampAtStartOfMonth,
   getTimestampAtStartOfNextMonth,
 } from "../../utils/date";
-import { getChainBlocksRetry } from "../utils";
 
 export { default as getBlocksFromStart } from "./getBlocksFromStart";
 export { default as getVolumesFromStart } from "./getVolumesFromStart";
 export { default as fetchEcosystemsFromStart } from "./fetchEcosystemsFromStart";
-import fetchEcosystemsFromStart from "./fetchEcosystemsFromStart";
+export { default as fetchAllEcosystemsFromStart } from "./fetchAllEcosystemsFromStart";
+import fetchAllEcosystemsFromStart from "./fetchAllEcosystemsFromStart";
 
 import {
   AllEcosystemVolumes,
   DailyEcosystemVolumes,
-  Ecosystem,
-  Fetch,
-  FetchResult,
   HourlyEcosystemVolumes,
   HourlyVolumesResult,
   MonthlyEcosystemVolumes,
-  TimestampBlock,
-  TimestampVolumes,
 } from "../../../src/dexVolumes/dexVolume.types";
-
-import * as dexAdapters from "../../../DefiLlama-Adapters/dexVolumes";
 
 export const MAX_HOURS = 25;
 
-// export const getBlocksFromStart = async (
-//   start: number,
-//   ecosystem: Ecosystem,
+// const fetchAllEcosystemsFromStart = async (
+//   id: number,
 //   end: number
-// ) => {
-//   const blocks = [];
-//   // TODO optimize by storing all blocks in db for one query
+// ): Promise<AllEcosystemVolumes> => {
+//   const {
+//     module: dexModule,
+//   }: {
+//     name: string;
+//     module: keyof typeof dexAdapters;
+//   } = await getDexVolumeRecord(id);
 
-//   let dailyTimestamp = start;
-//   // Get everyday up to end
-//   while (dailyTimestamp < end) {
-//     blocks.push(getChainBlocksRetry(dailyTimestamp, ecosystem));
+//   // TODO handle breakdown
+//   const { volume, breakdown }: any = dexAdapters[dexModule];
 
-//     dailyTimestamp = getTimestampAtStartOfNextDayUTC(dailyTimestamp);
-//   }
+//   const ecosystems: any[] = Object.keys(volume);
 
-//   // Get up to last 25 hours
-//   const recentHours =
-//     end - start >= HOUR * MAX_HOURS ? MAX_HOURS : (end - start) / HOUR + 1;
-
-//   for (let i = 0; i < recentHours; i++) {
-//     blocks.push(getChainBlocksRetry(end - HOUR * i, ecosystem));
-//   }
-
-//   // TODO add error report
-//   const allBlocksRes = await Promise.all(blocks);
-
-//   return allBlocksRes.reduce((acc: TimestampBlock, curr) => {
-//     acc[curr.inputTimestamp] = curr.block;
-//     return acc;
-//   }, {});
-// };
-
-// export const getVolumesFromStart = async ({
-//   blocks,
-//   ecosystem,
-//   fetch,
-//   start,
-//   end,
-// }: {
-//   blocks: TimestampBlock;
-//   ecosystem: Ecosystem;
-//   fetch: Fetch;
-//   start: number;
-//   end: number;
-// }) => {
-//   const volumes = [];
-
-//   // Get everyday up to today
-//   let dailyTimestamp = start;
-//   while (dailyTimestamp < end) {
-//     const chainBlocks = { [ecosystem]: blocks[dailyTimestamp] };
-//     volumes.push(fetch(dailyTimestamp, chainBlocks));
-
-//     dailyTimestamp = getTimestampAtStartOfNextDayUTC(dailyTimestamp);
-//   }
-
-//   // Get last 25 hours
-//   const recentHours =
-//     end - start >= HOUR * MAX_HOURS ? MAX_HOURS : (end - start) / HOUR + 1;
-
-//   for (let i = 0; i < recentHours; i++) {
-//     const timestamp = end - HOUR * i;
-//     const chainBlocks = { [ecosystem]: blocks[timestamp] };
-//     volumes.push(fetch(timestamp, chainBlocks));
-//   }
-
-//   const allVolumeRes = await Promise.all(volumes);
-
-//   const allVolumes = allVolumeRes.reduce(
-//     (acc: TimestampVolumes, curr: FetchResult) => {
-//       const { timestamp, totalVolume } = curr;
-//       acc[timestamp] = {
-//         totalVolume,
-//       };
+//   return (
+//     await Promise.all(
+//       ecosystems.map((ecosystem: Ecosystem) => {
+//         // TODO add customBackfill
+//         const { fetch, start } = volume[ecosystem];
+//         return fetchEcosystemsFromStart({ ecosystem, fetch, start, end });
+//       })
+//     )
+//   ).reduce(
+//     (
+//       acc: {
+//         [x: string]: { volumes: TimestampVolumes; startTimestamp: number };
+//       },
+//       { ecosystem, volumes, startTimestamp }
+//     ) => {
+//       acc[ecosystem] = { volumes, startTimestamp };
 //       return acc;
 //     },
 //     {}
 //   );
-
-//   // Add initial volume as 0 for today or prev day if starts at 12:00 as buffer for starts
-//   // Volume didn't start at beginning of day so need a buffer to calc next - start for daily
-//   const isNewDay = calcIsNewDay(start);
-//   const startHasVolume = Number(allVolumes[start]?.totalVolume) > 0;
-//   const startTimestamp = isNewDay
-//     ? getTimestampAtStartOfDayUTC(start - DAY)
-//     : getTimestampAtStartOfDayUTC(start);
-//   if (
-//     startHasVolume ||
-//     (!isNewDay &&
-//       Number(allVolumes[getTimestampAtStartOfNextDayUTC(start)]?.totalVolume) >
-//         0)
-//   ) {
-//     allVolumes[startTimestamp] = {
-//       totalVolume: "0",
-//     };
-
-//     // Add padded hour for same reasoning if less than 25 timestamps
-//     if (startHasVolume && end - start < HOUR * MAX_HOURS) {
-//       allVolumes[start - HOUR] = {
-//         totalVolume: "0",
-//       };
-//     }
-
-//     return {
-//       allVolumes,
-//       startTimestamp,
-//     };
-//   }
-
-//   return {
-//     allVolumes,
-//     startTimestamp: start,
-//   };
 // };
-
-// export const fetchEcosystemsFromStart = async ({
-//   ecosystem,
-//   fetch,
-//   start,
-//   end,
-// }: {
-//   ecosystem: Ecosystem;
-//   fetch: Fetch;
-//   start: number | any;
-//   end: number;
-// }) => {
-//   const startTimestamp = typeof start === "number" ? start : await start();
-
-//   const blocks = await getBlocksFromStart(startTimestamp, ecosystem, end);
-//   const { allVolumes, startTimestamp: updatedStartTimestamp } =
-//     await getVolumesFromStart({
-//       blocks,
-//       ecosystem,
-//       fetch,
-//       start: startTimestamp,
-//       end,
-//     });
-
-//   return {
-//     ecosystem,
-//     volumes: allVolumes,
-//     startTimestamp: updatedStartTimestamp,
-//   };
-// };
-
-const fetchAllEcosystemsFromStart = async (
-  id: number,
-  end: number
-): Promise<AllEcosystemVolumes> => {
-  const {
-    module: dexModule,
-  }: {
-    name: string;
-    module: keyof typeof dexAdapters;
-  } = await getDexVolumeRecord(id);
-
-  // TODO handle breakdown
-  const { volume, breakdown }: any = dexAdapters[dexModule];
-
-  const ecosystems: any[] = Object.keys(volume);
-
-  return (
-    await Promise.all(
-      ecosystems.map((ecosystem: Ecosystem) => {
-        // TODO add customBackfill
-        const { fetch, start } = volume[ecosystem];
-        return fetchEcosystemsFromStart({ ecosystem, fetch, start, end });
-      })
-    )
-  ).reduce(
-    (
-      acc: {
-        [x: string]: { volumes: TimestampVolumes; startTimestamp: number };
-      },
-      { ecosystem, volumes, startTimestamp }
-    ) => {
-      acc[ecosystem] = { volumes, startTimestamp };
-      return acc;
-    },
-    {}
-  );
-};
 
 const calcDailyVolume = ({
   allEcosystemVolumes,

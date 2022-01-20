@@ -121,3 +121,40 @@ export const getVolumesFromStartResult = {
   },
   startTimestamp: 1640995200,
 };
+
+export const fetchEcosystemsFromStartResult = {
+  ecosystem: "ethereum",
+  volumes: getVolumesFromStartResult.allVolumes,
+  startTimestamp: getVolumesFromStartResult.startTimestamp,
+};
+
+export const traderJoeVolumeAdapter = {
+  volume: {
+    avalanche: {
+      fetch: () => {},
+      start: () => {},
+    },
+    llama: {
+      fetch: () => {},
+      start: () => {},
+    },
+  },
+};
+
+export const uniswapVolumeAdapter = {
+  volume: {
+    ethereum: {
+      fetch: () => {},
+      start: () => {},
+    },
+    llama: {
+      fetch: () => {},
+      start: () => {},
+    },
+  },
+};
+
+export const dexVolumeAdapters = {
+  traderjoe: traderJoeVolumeAdapter,
+  uniswap: uniswapVolumeAdapter,
+};

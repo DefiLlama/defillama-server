@@ -4552,7 +4552,7 @@ export default [
   {
     id: "334",
     name: "MDEX",
-    address: "heco:0x25d2e80cb6b86881fd7e07dd263fb79f4abe033c",
+    address: "bsc:0x9c65ab58d8d978db963e63f2bfb7121627e3a739",
     symbol: "MDX",
     url: "https://mdex.com/",
     description: "AMM",
@@ -8903,7 +8903,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Assets",
+    category: "Yield",
     chains: ["Ethereum","Polygon"],
     module: "btcpx.js",
     twitter: "BTC_proxy",

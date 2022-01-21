@@ -4,7 +4,7 @@ import { craftProtocolResponse } from './getProtocol'
 const handler = async (
     event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-    const response = await craftProtocolResponse(event.pathParameters?.protocol, true)
+    const response = await craftProtocolResponse(event.pathParameters?.protocol, true, false)
     return successResponse(response, 10 * 60); // 10 mins cache
 };
 

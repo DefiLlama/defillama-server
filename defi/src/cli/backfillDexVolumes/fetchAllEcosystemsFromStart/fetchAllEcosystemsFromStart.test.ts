@@ -5,7 +5,7 @@ import { getDexVolumeRecord } from "../../../dexVolumes/dexVolumeRecords";
 
 import {
   fetchEcosystemsFromStartResult,
-  getVolumesFromStartResult,
+  fetchAllEcosystemsFromStartResult,
 } from "../fixtures";
 
 import { ChainBlocks } from "../../../dexVolumes/dexVolume.types";
@@ -88,16 +88,7 @@ describe("fetchAllEcosystemsFromStart", () => {
       expect(getDexVolumeRecord).toHaveBeenCalled();
       expect(fetchEcosystemsFromStart).toHaveBeenCalledTimes(2);
 
-      expect(result).toEqual({
-        avalanche: {
-          volumes: getVolumesFromStartResult.allVolumes,
-          startTimestamp: getVolumesFromStartResult.startTimestamp,
-        },
-        llama: {
-          volumes: getVolumesFromStartResult.allVolumes,
-          startTimestamp: getVolumesFromStartResult.startTimestamp,
-        },
-      });
+      expect(result).toEqual(fetchAllEcosystemsFromStartResult);
     });
   });
 });

@@ -61,6 +61,13 @@ export type Fetch = (
   chainBlocks: ChainBlocks
 ) => Promise<FetchResult>;
 
+export type VolumeAdapter = {
+  [x: string]: {
+    start: number | any;
+    fetch: Fetch;
+  };
+};
+
 export type DailyVolume = string;
 export type HourlyVolume = string;
 export type TotalVolume = string;

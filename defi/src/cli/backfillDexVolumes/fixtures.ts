@@ -158,3 +158,14 @@ export const dexVolumeAdapters = {
   traderjoe: traderJoeVolumeAdapter,
   uniswap: uniswapVolumeAdapter,
 };
+
+export const fetchAllEcosystemsFromStartResult = {
+  avalanche: {
+    volumes: getVolumesFromStartResult.allVolumes,
+    startTimestamp: getVolumesFromStartResult.startTimestamp,
+  },
+  llama: {
+    volumes: getVolumesFromStartResult.allVolumes,
+    startTimestamp: getVolumesFromStartResult.startTimestamp,
+  },
+};

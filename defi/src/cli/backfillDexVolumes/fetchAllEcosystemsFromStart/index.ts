@@ -8,22 +8,13 @@ import {
   AllEcosystemVolumes,
   Ecosystem,
   TimestampVolumes,
+  VolumeAdapter,
 } from "../../../../src/dexVolumes/dexVolume.types";
 
 const fetchAllEcosystemsFromStart = async (
-  id: number,
+  volume: VolumeAdapter,
   end: number
 ): Promise<AllEcosystemVolumes> => {
-  const {
-    module: dexModule,
-  }: {
-    name: string;
-    module: keyof typeof dexAdapters;
-  } = await getDexVolumeRecord(id);
-
-  // TODO handle breakdown
-  const { volume, breakdown }: any = dexAdapters[dexModule];
-
   const ecosystems: any[] = Object.keys(volume);
 
   return (

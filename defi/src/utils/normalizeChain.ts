@@ -74,12 +74,6 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
   },
-  "Binance": {
-    geckoId: "binancecoin",
-    symbol: "BNB",
-    cmcId: "1839",
-    categories: ["EVM"],
-  },
   "BSC": {
     geckoId: "binancecoin",
     symbol: "BNB",
@@ -233,12 +227,6 @@ export const chainCoingeckoIds = {
     geckoId: "celo",
     symbol: "CELO",
     cmcId: "5567",
-    categories: ["EVM"],
-  },
-  "Kucoin": {
-    geckoId: "kucoin-shares",
-    symbol: "KCS",
-    cmcId: "2087",
     categories: ["EVM"],
   },
   "KCC": {
@@ -591,6 +579,9 @@ export const chainCoingeckoIds = {
     cmcId: string | null,
   }
 }
+chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
+chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
+chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef"]
 
@@ -600,6 +591,8 @@ export function transformNewChainName(chain:string){
       return "BSC"
     case "Kucoin":
       return "KCC"
+    case "xDai":
+      return "Gnosis"
     default:
       return chain
   }
@@ -620,7 +613,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kcc":
       return useNewChainNames?"KCC":"Kucoin"
     case "xdai":
-      return "Gnosis"
+      return useNewChainNames?"Gnosis":"xDai"
     case "avax":
       return "Avalanche"
     case "okexchain":

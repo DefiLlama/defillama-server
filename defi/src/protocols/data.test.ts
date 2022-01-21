@@ -1,6 +1,6 @@
 import protocols, {Protocol} from "./data";
 import { baseIconsUrl } from "../constants";
-import { normalizeChain, chainCoingeckoIds, getChainDisplayName } from "../utils/normalizeChain";
+import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
 const fs = require("fs");
 
 async function importProtocol(protocol:Protocol){
@@ -22,14 +22,15 @@ test("all chains are on chainMap", async () => {
   for (const protocol of protocols) {
     const module = await importProtocol(protocol)
     Object.entries(module).map(entry=>{
-      if(!ignored.includes(entry[0]) && typeof entry[1] === "object" && Object.values(entry[1] as any)){
-        const chain = getChainDisplayName(entry[0], false)
+      if(!ignored.includes(entry[0]) && typeof entry[1] === "object"){
+        const chain = getChainDisplayName(entry[0], true)
        if(chainCoingeckoIds[chain] === undefined){
          throw new Error(`${chain} (found in ${protocol.name}) should be on chainMap`)
        }
       }
     })
-    protocol.chains.concat(protocol.chain).map(chain=>{
+    protocol.chains.concat(protocol.chain).map(chainRaw=>{
+      const chain = transformNewChainName(chainRaw)
       if(chainCoingeckoIds[chain] === undefined && chain !== "Multi-Chain"){
         throw new Error(`${chain} (found in ${protocol.name}) should be on chainMap`)
       }

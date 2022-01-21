@@ -23370,7 +23370,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Lending",
   chains: ["Ethereum", "Fantom", "Avalanche"],
-  module: "ib/index.js",
+  module: "ironbank/index.js",
   twitter: "ibdotxyz",
   audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/CREAMSummary.pdf"],
   forkedFrom: [],

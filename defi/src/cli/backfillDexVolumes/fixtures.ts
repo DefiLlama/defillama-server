@@ -1,3 +1,5 @@
+import { ChainBlocks } from "../../dexVolumes/dexVolume.types";
+
 export const dailyTimestampFrom1641081600To1642291200 = [
   1641081600, 1641168000, 1641254400, 1641340800, 1641427200, 1641513600,
   1641600000, 1641686400, 1641772800, 1641859200, 1641945600, 1642032000,
@@ -128,15 +130,25 @@ export const fetchEcosystemsFromStartResult = {
   startTimestamp: getVolumesFromStartResult.startTimestamp,
 };
 
+export const adapterFetch = async (
+  _timestamp: number,
+  _chainBlocks: ChainBlocks
+) => ({
+  block: 1,
+  dailyVolume: "0",
+  totalVolume: "0",
+  timestamp: 1,
+});
+
 export const traderJoeVolumeAdapter = {
   volume: {
     avalanche: {
-      fetch: () => {},
-      start: () => {},
+      fetch: adapterFetch,
+      start: adapterFetch,
     },
     llama: {
-      fetch: () => {},
-      start: () => {},
+      fetch: adapterFetch,
+      start: adapterFetch,
     },
   },
 };
@@ -144,12 +156,12 @@ export const traderJoeVolumeAdapter = {
 export const uniswapVolumeAdapter = {
   volume: {
     ethereum: {
-      fetch: () => {},
-      start: () => {},
+      fetch: adapterFetch,
+      start: adapterFetch,
     },
     llama: {
-      fetch: () => {},
-      start: () => {},
+      fetch: adapterFetch,
+      start: adapterFetch,
     },
   },
 };

@@ -328,7 +328,7 @@ export default [
     gecko_id: "cream-2",
     cmcId: "6193",
     category: "Lending",
-    chains: ["Ethereum", "Binance", "Fantom", "Polygon"],
+    chains: ["Ethereum", "Binance", "Polygon"],
     module: "cream/index.js",
     twitter: "CreamdotFinance",
     audit_links: ["https://docs.cream.finance/audit-report"],

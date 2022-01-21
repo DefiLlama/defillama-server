@@ -99,7 +99,7 @@ const getVolumesFromStart = async ({
     const { dailyVolume, timestamp, totalVolume } = curr;
     acc[timestamp] = {
       totalVolume,
-      dailyVolume,
+      //dailyVolume,
     };
     return acc;
   }, {});

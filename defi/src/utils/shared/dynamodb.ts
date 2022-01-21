@@ -1,5 +1,5 @@
 import AWS from "aws-sdk";
-import sleep from './sleep';
+import sleep from "./sleep";
 
 const client = new AWS.DynamoDB.DocumentClient({
   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
@@ -53,7 +53,11 @@ export function getHistoricalValues(pk: string) {
 }
 
 const maxWriteRetries = 6; // Total wait time if all requests fail ~= 1.2s
-async function underlyingBatchWrite(items: any[], retryCount: number, failOnError: boolean): Promise<void> {
+async function underlyingBatchWrite(
+  items: any[],
+  retryCount: number,
+  failOnError: boolean
+): Promise<void> {
   const output = await client
     .batchWrite({
       RequestItems: {
@@ -65,41 +69,48 @@ async function underlyingBatchWrite(items: any[], retryCount: number, failOnErro
   if (unprocessed.length > 0) {
     // Retry algo
     if (retryCount < maxWriteRetries) {
-      const wait = (2 ** retryCount) * 10
-      const jitter = Math.random()*wait - wait/2;
+      const wait = 2 ** retryCount * 10;
+      const jitter = Math.random() * wait - wait / 2;
       await sleep(wait + jitter);
       return underlyingBatchWrite(unprocessed, retryCount + 1, failOnError);
     } else if (failOnError) {
-      console.log("throttled", output?.UnprocessedItems)
-      throw new Error("Write requests throttled")
+      console.log("throttled", output?.UnprocessedItems);
+      throw new Error("Write requests throttled");
     }
   }
 }
 
-function removeDuplicateKeys(items:AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]){
+function removeDuplicateKeys(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]
+) {
   return items.filter((item, index) =>
-  // Could be optimized to O(nlogn) but not worth it
-  items
-    .slice(0, index)
-    .every(
-      (checkedItem) =>
-        !(checkedItem.PK === item.PK && checkedItem.SK === item.SK)
-    )
-);
+    // Could be optimized to O(nlogn) but not worth it
+    items
+      .slice(0, index)
+      .every(
+        (checkedItem) =>
+          !(checkedItem.PK === item.PK && checkedItem.SK === item.SK)
+      )
+  );
 }
 
 const batchWriteStep = 25; // Max items written at once are 25
 // IMPORTANT: Duplicated items will be pruned
-export async function batchWrite(items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[], failOnError: boolean) {
+export async function batchWrite(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  failOnError: boolean
+) {
   const writeRequests = [];
   for (let i = 0; i < items.length; i += batchWriteStep) {
     const itemsToWrite = items.slice(i, i + batchWriteStep);
-    const nonDuplicatedItems = removeDuplicateKeys(itemsToWrite)
-    writeRequests.push(underlyingBatchWrite(
-      nonDuplicatedItems.map((item) => ({ PutRequest: { Item: item } })),
-      0,
-      failOnError
-    ));
+    const nonDuplicatedItems = removeDuplicateKeys(itemsToWrite);
+    writeRequests.push(
+      underlyingBatchWrite(
+        nonDuplicatedItems.map((item) => ({ PutRequest: { Item: item } })),
+        0,
+        failOnError
+      )
+    );
   }
   await Promise.all(writeRequests);
 }

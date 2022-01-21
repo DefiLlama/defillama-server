@@ -23184,7 +23184,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   symbol: "HADES",
   url: "https://hades.money/",
   description: "First algorithmic token pegged to $METIS on the Andromeda network.",
-  chain: "Andromeda",
+  chain: "Metis",
   logo: `${baseIconsUrl}/hades-money.png`,
   audits: "0",
   audit_note: null,

@@ -22104,7 +22104,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "YuzuSwap is a decentralized exchange on the Oasis Emerald paratime that includes incentives like liquidity & and trade mining",
   chain: "Oasis",
   logo: `${baseIconsUrl}/yuzuswap.jpg`,
-  audits: "0",
+  audits: "1",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -22114,6 +22114,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "Yuzu_Swap",
   forkedFrom: ["Uniswap"],
   listedAt: 1641941821,
+  audit_links: ["https://app.yuzu-swap.com/PeckShield-Audit-Report-YuzuSwap-v1.0_final.pdf"]
 },
 {
   id: "1241",

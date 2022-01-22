@@ -9299,8 +9299,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "581",
     name: "Morpheus Swap",
-    address: "fantom:0x0789fF5bA37f72ABC4D561D00648acaDC897b32d",
-    symbol: "MORPH",
+    address: "fantom:0xB66b5D38E183De42F21e92aBcAF3c712dd5d6286",
+    symbol: "PILLS",
     url: "https://morpheusswap.finance",
     description: "Morpheus Swap is a decentralized exchange that's powered by Fantom Opera. By staking our core token, PILLS, users are entitled to a percentage of all protocol revenue, paid out in other tokens.",
     chain: "Fantom",

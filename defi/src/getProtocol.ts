@@ -30,7 +30,7 @@ function replaceLast(historical: HistoricalTvls, last: HourlyTvl) {
   }
 }
 
-export async function craftProtocolResponse(rawProtocolName:string|undefined, useNewChainNames: boolean){
+export async function craftProtocolResponse(rawProtocolName:string|undefined, useNewChainNames: boolean, useHourlyData: boolean){
   const protocolName = rawProtocolName?.toLowerCase();
   console.log(protocolName)
   const protocolData = protocols.find(
@@ -45,14 +45,16 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
-    getHistoricalValues(dailyTvl(protocolData.id)),
-    getHistoricalValues(dailyUsdTokensTvl(protocolData.id)),
-    getHistoricalValues(dailyTokensTvl(protocolData.id)),
+    getHistoricalValues((useHourlyData?hourlyTvl:dailyTvl)(protocolData.id)),
+    getHistoricalValues((useHourlyData?hourlyUsdTokensTvl:dailyUsdTokensTvl)(protocolData.id)),
+    getHistoricalValues((useHourlyData?hourlyTokensTvl:dailyTokensTvl)(protocolData.id)),
     import(`../DefiLlama-Adapters/projects/${protocolData.module}`)
   ]);
-  replaceLast(historicalUsdTvl, lastUsdHourlyRecord)
-  replaceLast(historicalUsdTokenTvl, lastUsdTokenHourlyRecord)
-  replaceLast(historicalTokenTvl, lastTokenHourlyRecord)
+  if(!useHourlyData){
+    replaceLast(historicalUsdTvl, lastUsdHourlyRecord)
+    replaceLast(historicalUsdTokenTvl, lastUsdTokenHourlyRecord)
+    replaceLast(historicalTokenTvl, lastTokenHourlyRecord)
+  }
   let response = protocolData as any;
   if(module.methodology !== undefined){
     response.methodology = module.methodology;
@@ -132,7 +134,7 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const response = await craftProtocolResponse(event.pathParameters?.protocol, false)
+  const response = await craftProtocolResponse(event.pathParameters?.protocol, false, false)
   return successResponse(response, 10 * 60); // 10 mins cache
 };
 

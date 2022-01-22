@@ -5,6 +5,7 @@ import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getClosestDayStartTimestamp } from "./utils/date";
 import { normalizeChain } from "./utils/normalizeChain";
 import { secondsInHour } from './utils/date'
+import { excludeProtocolInCharts } from "./storeGetCharts";
 
 async function craftChartsResponse(chain:string|undefined){
   const sumDailyTvls = {} as {
@@ -14,7 +15,7 @@ async function craftChartsResponse(chain:string|undefined){
   let lastDailyTimestamp = 0;
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {
-      if (protocol.category === "Chain" || protocol.name === "AnySwap" || protocol.category === "Bridge") {
+      if(excludeProtocolInCharts(protocol)){
         return undefined;
       }
       const lastTvl = await getLastRecord(hourlyTvl(protocol.id))

@@ -2,12 +2,13 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";
+import { excludeProtocolInCharts } from "./storeGetCharts";
 
 export async function craftChainsResponse(){
   const chainTvls = {} as {[chain:string]:number}
   await Promise.all(
     protocols.map(async (protocol) => {
-      if (protocol.category === "Chain" || protocol.name === "AnySwap") {
+      if(excludeProtocolInCharts(protocol)){
         return undefined;
       }
       const lastTvl = await getLastRecord(hourlyTvl(protocol.id))
@@ -24,7 +25,8 @@ export async function craftChainsResponse(){
           chainsAdded += 1;
       })
       if(chainsAdded === 0){
-        chainTvls[protocol.chain] = (chainTvls[protocol.chain] ?? 0) + lastTvl.tvl
+        const chainName = protocol.chain
+        chainTvls[chainName] = (chainTvls[chainName] ?? 0) + lastTvl.tvl
       }
     })
   );

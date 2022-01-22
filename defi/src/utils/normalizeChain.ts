@@ -34,7 +34,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM", "Rollup"],
-    parent: "Ethereum",
+    parent: ["Ethereum"],
   },
   "Palm": {
     geckoId: null,
@@ -47,7 +47,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM", "Rollup"],
-    parent: "Ethereum",
+    parent: ["Ethereum"],
   },
   "Stacks": {
     geckoId: "blockstack",
@@ -73,12 +73,6 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-  },
-  "Binance": {
-    geckoId: "binancecoin",
-    symbol: "BNB",
-    cmcId: "1839",
-    categories: ["EVM"],
   },
   "BSC": {
     geckoId: "binancecoin",
@@ -143,6 +137,7 @@ export const chainCoingeckoIds = {
     geckoId: "wanchain",
     symbol: "WAN",
     cmcId: "2606",
+    categories: ["EVM"],
   },
   "DefiChain": {
     geckoId: "defichain",
@@ -235,12 +230,6 @@ export const chainCoingeckoIds = {
     cmcId: "5567",
     categories: ["EVM"],
   },
-  "Kucoin": {
-    geckoId: "kucoin-shares",
-    symbol: "KCS",
-    cmcId: "2087",
-    categories: ["EVM"],
-  },
   "KCC": {
     geckoId: "kucoin-shares",
     symbol: "KCS",
@@ -258,7 +247,7 @@ export const chainCoingeckoIds = {
     geckoId: "moonriver",
     symbol: "MOVR",
     cmcId: "9285",
-    categories: ["Parachain"],
+    categories: ["EVM", "Parachain"],
     parent: ["Kusama"],
   },
   "Waves": {
@@ -270,6 +259,7 @@ export const chainCoingeckoIds = {
     geckoId: "klay-token",
     symbol: "KLAY",
     cmcId: "4256",
+    categories: ["EVM"],
   },
   "IoTeX": {
     geckoId: "iotex",
@@ -291,7 +281,7 @@ export const chainCoingeckoIds = {
     geckoId: 'shiden',
     symbol: 'SDN',
     cmcId: '11451',
-    categories: ["Parachain"],
+    categories: ["EVM", "Parachain"],
     parent: ["Kusama"],
   },
   "Telos": {
@@ -304,6 +294,7 @@ export const chainCoingeckoIds = {
     geckoId: "thunder-token",
     symbol: "TT",
     cmcId: "3930",
+    categories: ["EVM"],
   },
   "Lamden": {
     geckoId: "lamden",
@@ -349,16 +340,19 @@ export const chainCoingeckoIds = {
       geckoId: "tomochain",
       symbol: "TOMO",
       cmcId: "2570",
+      categories: ["EVM"],
   },
   "Fusion": {
     geckoId: "fsn",
     symbol: "FSN",
     cmcId: "2530",
+    categories: ["EVM"],
   },
   "Kardia": {
     geckoId: "kardiachain",
     symbol: "KAI",
     cmcId: "5453",
+    categories: ["EVM"],
   },
   "Fuse": {
     geckoId: "fuse-network-token",
@@ -501,6 +495,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    categories: ["Rollup"],
   },
   "SmartBCH": {
     geckoId: "bitcoin-cash",
@@ -566,16 +561,19 @@ export const chainCoingeckoIds = {
     geckoId: "oasis-network",
     symbol: "ROSE",
     cmcId: "7653",
+    categories: ["EVM"],
   },
   "Theta": {
     geckoId: "theta-token",
     symbol: "THETA",
     cmcId: "2416",
+    categories: ["EVM"],
   },
   "Syscoin": {
     geckoId: "syscoin",
     symbol: "SYS",
     cmcId: "541",
+    categories: ["EVM"],
   },
   "Moonbeam": {
     geckoId: "moonbeam",
@@ -591,6 +589,9 @@ export const chainCoingeckoIds = {
     cmcId: string | null,
   }
 }
+chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
+chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
+chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef"]
 
@@ -600,6 +601,8 @@ export function transformNewChainName(chain:string){
       return "BSC"
     case "Kucoin":
       return "KCC"
+    case "xDai":
+      return "Gnosis"
     default:
       return chain
   }
@@ -620,7 +623,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kcc":
       return useNewChainNames?"KCC":"Kucoin"
     case "xdai":
-      return "Gnosis"
+      return useNewChainNames?"Gnosis":"xDai"
     case "avax":
       return "Avalanche"
     case "okexchain":

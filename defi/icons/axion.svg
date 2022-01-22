@@ -1,0 +1,34 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 93.2 92.4" style="enable-background:new 0 0 93.2 92.4;" xml:space="preserve">
+<style type="text/css">
+    .st0{fill:url(#SVGID_1_);}
+    .st1{fill:url(#SVGID_2_);}
+    .st2{fill:#2E3690;}
+    .st3{fill:#2BACE2;}
+    .st4{fill:#FFFFFF;}
+</style>
+<g>
+<g>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-1412.1584" y1="-1441.0503" x2="-1456.152" y2="-1468.1238" gradientTransform="matrix(0 -1 -1 0 -1398.7611 -1396.9028)">
+<stop offset="0" style="stop-color:#2BACE2" />
+<stop offset="1" style="stop-color:#FFFFFF" />
+</linearGradient>
+<path class="st0" d="M77.4,13.8v21.5c0,1.5-0.6,2.9-1.6,3.8l-7.5,6.9v0L48.9,63.8c-1.4,1.3-3.3,1.3-4.7,0L24.9,46.1l15-13.7l5.5,5
+            c0.8,0.7,1.8,0.7,2.6,0l5.5-5l15-13.7v0l6.8-6.3C76.1,11.6,77.4,12.4,77.4,13.8z" />
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-1417.2777" y1="-1421.2325" x2="-1440.291" y2="-1458.7557" gradientTransform="matrix(0 -1 -1 0 -1398.7611 -1396.9028)">
+<stop offset="0" style="stop-color:#2BACE2" />
+<stop offset="1" style="stop-color:#2E3690" />
+</linearGradient>
+<path class="st1" d="M68.3,18.7l-15,13.7l-5.5-5c-0.8-0.7-1.8-0.7-2.6,0l-5.5,5l-15,13.7v0l-6.7,6.2L18,52.3
+            c-0.9,0.9-2.3,0-2.3-1.4V29.4c0-1.5,0.6-2.9,1.6-3.8l7.5-6.9L44.2,1c1.4-1.3,3.3-1.3,4.7,0L68.3,18.7z" />
+<polygon class="st2" points="68.3,18.7 53.3,32.4 66.5,17         " />
+<polygon class="st3" points="24.9,46.1 39.9,32.4 26.7,47.7         " />
+</g>
+<g>
+<path class="st4" d="M5.2,92.4v-2.1h2l-2-5.2l-2.8,7.2H0L4.1,82h2.1l4.1,10.4H5.2z" />
+<path class="st4" d="M24.6,87.2L20.7,82h2.6l2.6,3.5l2.6-3.5h2.6l-3.9,5.2l3.9,5.2h-2.6l-2.6-3.5l-2.6,3.5h-2.6L24.6,87.2z" />
+<path class="st4" d="M47.6,82v10.4h-2.1V82H47.6z" />
+<path class="st4" d="M62.1,92.4V82h10.4v10.4H62.1z M70.4,90.3v-6.2h-6.2v6.2H70.4z" />
+<path class="st4" d="M82.8,92.4V82h2.1l6.2,7.3V82h2.1v10.4h-2.1l-6.2-7.1v7.1H82.8z" />
+</g>
+</g>
+</svg>

@@ -1,4 +1,4 @@
-import protocols from "./protocols/data";
+import protocols, {Protocol} from "./protocols/data";
 import dynamodb from "./utils/shared/dynamodb";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
@@ -30,11 +30,15 @@ interface SumDailyTvls {
 }
 }
 
+export function excludeProtocolInCharts(protocol:Protocol){
+  return protocol.category === "Chain" || protocol.name === "AnySwap" || protocol.category === "Bridge"
+}
+
 export async function getHistoricalTvlForAllProtocols(){
   let lastDailyTimestamp = 0;
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {
-      if (protocol.category === "Chain" || protocol.name === "AnySwap" || protocol.category === "Bridge") {
+      if (excludeProtocolInCharts(protocol)) {
         return undefined;
       }
       const [lastTvl, historicalTvl] = await Promise.all([

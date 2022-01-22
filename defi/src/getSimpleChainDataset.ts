@@ -55,7 +55,7 @@ const handler = async (
       if (dayTvl !== 0) {
         const timestamp = getClosestDayStartTimestamp(item.SK);
         if (sumDailyTvls[timestamp] === undefined) { sumDailyTvls[timestamp] = {} }
-        if (sumDailyTvls[timestamp]!.total === undefined) { sumDailyTvls[timestamp].Total = 0 }
+        if (sumDailyTvls[timestamp]!.Total === undefined) { sumDailyTvls[timestamp].Total = 0 }
         sumDailyTvls[timestamp][protocol.name] = dayTvl;
         sumDailyTvls[timestamp].Total += dayTvl;
       }

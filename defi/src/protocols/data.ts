@@ -23291,7 +23291,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "Options",
   chains: ["Fantom"],
   module: "ftmguru/index.js",
-  twitter: "FTMGuruNetwork",
+  twitter: "FTM1337",
   oracles: ["Band"],
   listedAt: 1642725601,
 },

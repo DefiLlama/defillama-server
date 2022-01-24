@@ -43,8 +43,10 @@ export default async function findOutdated(maxDrift: number) {
       return
     }
     const module = await import(`../../DefiLlama-Adapters/projects/${protocol.module}`)
-    const refillable = !(module.fetch || module.timetravel === false)
-    outdated.push([protocol.name, text, refillable])
+    if(protocol.chain === "Fantom" || module.fantom !== undefined){
+      const refillable = !(module.fetch || module.timetravel === false)
+      outdated.push([protocol.name, text, refillable])
+    }
   }))
   if (outdated.length === 0) {
     return null

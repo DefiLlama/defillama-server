@@ -462,7 +462,7 @@ export const chainCoingeckoIds = {
     symbol: "DOT",
     cmcId: "6636",
   },
-  "Cosmos": {
+  "CosmosHub": {
     geckoId: "cosmos",
     symbol: "ATOM",
     cmcId: "3794",
@@ -592,6 +592,7 @@ export const chainCoingeckoIds = {
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
 chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
 chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
+chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef"]
 
@@ -603,6 +604,8 @@ export function transformNewChainName(chain:string){
       return "KCC"
     case "xDai":
       return "Gnosis"
+    case "Cosmos":
+      return "CosmosHub"
     default:
       return chain
   }
@@ -624,6 +627,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames?"KCC":"Kucoin"
     case "xdai":
       return useNewChainNames?"Gnosis":"xDai"
+    case "cosmos":
+      return useNewChainNames?"CosmosHub":"Cosmos"
     case "avax":
       return "Avalanche"
     case "okexchain":

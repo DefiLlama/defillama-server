@@ -23541,7 +23541,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1312",
-  name: "Epsylon",
+  name: "Epsylon Finance",
   address: null,
   symbol: "-",
   url: "https://www.epsylon.finance/",

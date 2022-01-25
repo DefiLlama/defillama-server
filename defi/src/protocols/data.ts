@@ -14348,7 +14348,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://maiar.exchange",
   description: "Maiar Exchange is a DEX AMM running on the Elrond Network. It is built by the same team that has built the Elrond blockchain.",
   chain: "Elrond",
-  logo: `${baseIconsUrl}/maiar-exchange.jpg`,
+  logo: `${baseIconsUrl}/maiar-exchange.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

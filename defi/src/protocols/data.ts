@@ -18323,7 +18323,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   name: "Astroport",
   address: null,
   symbol: "-",
-  url: "https://lockdrop.astroport.fi",
+  url: "https://astroport.fi",
   description: "The meta AMM of Terra",
   chain: "Terra",
   logo: `${baseIconsUrl}/astroport.jpg`,

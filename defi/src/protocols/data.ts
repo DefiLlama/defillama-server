@@ -4982,7 +4982,7 @@ export default [
     symbol: "GAMMA",
     url: "https://www.gammastrategies.org",
     description:
-      "Liquidity provisioning and active liquidity management on Uni V3 via utilisation of NFT Smart Vaults",
+      "Access active liquidity management on Uniswap v3. Gamma has developed a protocol, a management infrastructure, and a variety of strategies used by managers and market makers.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gamma.svg`,
     audits: "2",

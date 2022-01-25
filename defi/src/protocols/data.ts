@@ -12580,7 +12580,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "747",
     name: "MuesliSwap",
-    address: "smartbch:0xc8E09AEdB3c949a875e1FD571dC4b3E48FB221f0",
+    address: "cardano:8a1cfae21368b8bebbbed9800fec304e95cce39a2a57dc35e2e3ebaa.MILK",
     symbol: "MILK",
     url: "https://muesliswap.com",
     description: "MuesliSwap is a new decentralized exchange (DEX) operating on the Smart Bitcoin Cash blockchain",

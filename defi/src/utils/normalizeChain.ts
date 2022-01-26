@@ -416,12 +416,14 @@ export const chainCoingeckoIds = {
     symbol: "BOBA",
     cmcId: "14556",
     categories: ["EVM", "Rollup"],
+    parent: "Ethereum"
   },
   "Metis": {
     geckoId: "metis-token",
     symbol: "METIS",
     cmcId: "9640",
     categories: ["EVM", "Rollup"],
+    parent: "Ethereum",
   },
   "Ubiq": {
     geckoId: "ubiq",
@@ -496,6 +498,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["Rollup"],
+    parent: "Ethereum"
   },
   "SmartBCH": {
     geckoId: "bitcoin-cash",
@@ -543,6 +546,7 @@ export const chainCoingeckoIds = {
     symbol: "NII",
     cmcId: "4865",
     categories: ["EVM", "Rollup"],
+    parent: "Ethereum"
   },
   "Parallel": {
     geckoId: null,

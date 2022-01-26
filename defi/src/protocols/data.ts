@@ -22738,8 +22738,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 {
   id: "1272",
   name: "ioTube",
-  address: "polygon:0x300211def2a644b036a9bdd3e58159bb2074d388",
-  symbol: "CIOTX",
+  address: null,
+  symbol: "-",
   url: "https://iotube.org",
   description: "ioTube is the decentralized bridge for connecting Ethereum, Binance Smart Chain, Polygon (Matic), and IoTeX. ioTube enables bi-directional exchange of tokens between IoTeX, Ethereum, Binance Smart Chain, and now Polygon!",
   chain: "Polygon",

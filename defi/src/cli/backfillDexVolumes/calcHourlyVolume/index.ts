@@ -8,6 +8,13 @@ import {
   HourlyVolumesResult,
 } from "../../../../src/dexVolumes/dexVolume.types";
 
+export const createMissingHourError = (
+  ecosystem: string,
+  timestamp: number
+) => {
+  throw new Error(`Missing data on ${timestamp} for ${ecosystem}`);
+};
+
 const calcHourlyVolume = ({
   allEcosystemVolumes,
   ecosystemNames,
@@ -19,16 +26,20 @@ const calcHourlyVolume = ({
 }): HourlyVolumesResult => {
   const prevTimestamp = timestamp - HOUR;
 
-  const dailySumVolume = new BigNumber(0);
-  const hourlySumVolume = new BigNumber(0);
-  const totalSumVolume = new BigNumber(0);
+  let dailySumVolume = new BigNumber(0);
+  let hourlySumVolume = new BigNumber(0);
+  let totalSumVolume = new BigNumber(0);
   const hourlyEcosystemVolumes: HourlyEcosystemVolumes = {};
 
   ecosystemNames.forEach((ecosystem) => {
     const { volumes } = allEcosystemVolumes[ecosystem];
 
-    const currTotalVolume = volumes[timestamp].totalVolume;
-    const prevTotalVolume = volumes[prevTimestamp].totalVolume;
+    if (volumes[timestamp] && !volumes[prevTimestamp]) {
+      createMissingHourError(ecosystem, prevTimestamp);
+    }
+
+    const currTotalVolume = volumes[timestamp]?.totalVolume;
+    const prevTotalVolume = volumes[prevTimestamp]?.totalVolume;
 
     // Calc values given totalVolume
     if (currTotalVolume && prevTotalVolume) {
@@ -40,9 +51,9 @@ const calcHourlyVolume = ({
       const bigNumDailyVolume = bigNumCurrTotalVol.minus(bigNumStartDayVol);
       const bigNumHourlyVolume = bigNumCurrTotalVol.minus(bigNumPrevTotalVol);
 
-      dailySumVolume.plus(bigNumDailyVolume);
-      hourlySumVolume.plus(bigNumHourlyVolume);
-      totalSumVolume.plus(bigNumCurrTotalVol);
+      dailySumVolume = dailySumVolume.plus(bigNumDailyVolume);
+      hourlySumVolume = hourlySumVolume.plus(bigNumHourlyVolume);
+      totalSumVolume = totalSumVolume.plus(bigNumCurrTotalVol);
 
       hourlyEcosystemVolumes[ecosystem] = {
         dailyVolume: bigNumDailyVolume.toString(),

@@ -135,7 +135,7 @@ describe("calcDailyVolume", () => {
       }).toEqual(result);
     });
 
-    it("Throws error when next day timestamp is missing and is not last d ay", async () => {
+    it("Throws error when next day timestamp is missing and is not last day", async () => {
       const timestamp = startTimestamp;
       const end = 1641088800; // 2/1/22 2:00
 

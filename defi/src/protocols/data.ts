@@ -2903,7 +2903,7 @@ export default [
     gecko_id: "mimo-parallel-governance-token",
     cmcId: "10831",
     category: "Lending",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Polygon", "Fantom"],
     module: "mimo/index.js",
     twitter: "mimodefi",
     audit_links: ["https://certificate.quantstamp.com/full/ten-x-titan"],

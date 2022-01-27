@@ -22456,7 +22456,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "Yield",
   chains: ["Ethereum", "Binance", "Polygon"],
   module: "crosschainbridge/index.js",
-  twitter: "TixlOrg",
+  twitter: "CCB_Bridge",
   audit_links: ["https://drive.google.com/file/d/1cei3INZN9lAjclgOYdnSj1_rULqMLXlC/view"],
   listedAt: 1642142431,
 },

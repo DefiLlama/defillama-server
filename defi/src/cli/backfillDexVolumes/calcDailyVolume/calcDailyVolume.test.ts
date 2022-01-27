@@ -157,7 +157,7 @@ describe("calcDailyVolume", () => {
           timestamp,
           end,
         });
-      }).toThrow(`Missing data on ${timestamp + DAY} for avalanche`);
+      }).toThrow(`Missing day data on ${timestamp + DAY} for avalanche`);
     });
   });
 });

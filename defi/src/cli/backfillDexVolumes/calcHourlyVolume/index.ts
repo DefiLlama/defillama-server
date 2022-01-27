@@ -12,7 +12,7 @@ export const createMissingHourError = (
   ecosystem: string,
   timestamp: number
 ) => {
-  throw new Error(`Missing data on ${timestamp} for ${ecosystem}`);
+  throw new Error(`Missing hourly data on ${timestamp} for ${ecosystem}`);
 };
 
 const calcHourlyVolume = ({
@@ -42,7 +42,7 @@ const calcHourlyVolume = ({
     const prevTotalVolume = volumes[prevTimestamp]?.totalVolume;
 
     // Calc values given totalVolume
-    if (currTotalVolume && prevTotalVolume) {
+    if (currTotalVolume !== undefined && prevTotalVolume !== undefined) {
       const bigNumCurrTotalVol = new BigNumber(currTotalVolume);
       const bigNumPrevTotalVol = new BigNumber(prevTotalVolume);
       const bigNumStartDayVol = new BigNumber(

@@ -94,7 +94,7 @@ describe("calcHourlyVolume", () => {
           ecosystemNames: ["avalanche", "llama"],
           timestamp,
         });
-      }).toThrow(`Missing data on ${timestamp - HOUR} for avalanche`);
+      }).toThrow(`Missing hourly data on ${timestamp - HOUR} for avalanche`);
     });
   });
 });

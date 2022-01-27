@@ -23638,4 +23638,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Tomb Finance"],
   listedAt: 1643310364,
 },
+{
+  id: "1317",
+  name: "UniverseFTM",
+  address: "fantom:0xf346362004540F714a45c6E80c719767e087a649",
+  symbol: "UNIVERSE",
+  url: "https://www.universe-swap.com",
+  description: "Universe, a new Stable DeFi Token on #Fantom Network which helps investors to protect their funds! Our main focus is to deliver a safe, stable farm with a strong and active community! This is a place where people can join together to earn passive income on their favorite cryptocurrencies!",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/universeftm.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Fantom"],
+  module: "universeftm/index.js",
+  twitter: "universe_ftm",
+  listedAt: 1643314901,
+}
 ] as Protocol[];

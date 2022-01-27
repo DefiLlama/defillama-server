@@ -23635,6 +23635,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Fantom"],
   module: "specter-finance/index.js",
   twitter: "specter_finance",
+  forkedFrom: ["Tomb Finance"],
   listedAt: 1643310364,
 },
 ] as Protocol[];

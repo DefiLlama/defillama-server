@@ -20,10 +20,12 @@ const calcAllVolumes = async ({
   currentTimestamp,
   id,
   volumeAdapter,
+  breakdown = "main",
 }: {
   currentTimestamp: number;
   id: number;
   volumeAdapter: VolumeAdapter;
+  breakdown?: string;
 }) => {
   const allEcosystemVolumes = await fetchAllEcosystemsFromStart(
     volumeAdapter,
@@ -61,7 +63,9 @@ const calcAllVolumes = async ({
       unix: timestamp,
       dailyVolume,
       totalVolume,
-      ecosystems,
+      breakdown: {
+        [breakdown]: ecosystems,
+      },
     };
   }
 
@@ -84,7 +88,9 @@ const calcAllVolumes = async ({
       dailyVolume,
       hourlyVolume,
       totalVolume,
-      ecosystems,
+      breakdown: {
+        [breakdown]: ecosystems,
+      },
     };
   }
 
@@ -104,7 +110,9 @@ const calcAllVolumes = async ({
       unix,
       monthlyVolume,
       totalVolume,
-      ecosystems,
+      breakdown: {
+        [breakdown]: ecosystems,
+      },
     };
     monthlyVolTimestamp = getTimestampAtStartOfNextMonth(monthlyVolTimestamp);
   }

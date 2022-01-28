@@ -70,7 +70,7 @@ const backfillDexVolumes = async (id: number) => {
   // TODO unlock dex-volume at end to allow hourly CRON
 };
 
-backfillDexVolumes(468);
+// backfillDexVolumes(468);
 
 // TODO fill multiple protocols
 // TODO fill All protocols

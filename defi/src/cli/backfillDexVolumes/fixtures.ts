@@ -1252,3 +1252,25 @@ export const minHourlyVolumes = {
     },
   },
 };
+
+export const monthlyVolumes = {
+  "1638316800": {
+    id: 468,
+    unix: 1638316800,
+    monthlyVolume: "2678400",
+    totalVolume: "1640995200",
+    ecosystems: {
+      llama: { monthlyVolume: "2678400", totalVolume: "1640995200" },
+    },
+  },
+  "1640995200": {
+    id: 468,
+    unix: 1640995200,
+    monthlyVolume: "1645365600",
+    totalVolume: "3286360800",
+    ecosystems: {
+      ngmi: { monthlyVolume: "1643180400", totalVolume: "1643180400" },
+      llama: { monthlyVolume: "2185200", totalVolume: "1643180400" },
+    },
+  },
+};

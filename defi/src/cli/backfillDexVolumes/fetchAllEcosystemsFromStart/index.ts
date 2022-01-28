@@ -12,16 +12,16 @@ import {
 } from "../../../../src/dexVolumes/dexVolume.types";
 
 const fetchAllEcosystemsFromStart = async (
-  volume: VolumeAdapter,
+  volumeAdapter: VolumeAdapter,
   end: number
 ): Promise<AllEcosystemVolumes> => {
-  const ecosystems: any[] = Object.keys(volume);
+  const ecosystems: any[] = Object.keys(volumeAdapter);
 
   return (
     await Promise.all(
       ecosystems.map((ecosystem: Ecosystem) => {
         // TODO add customBackfill
-        const { fetch, start } = volume[ecosystem];
+        const { fetch, start } = volumeAdapter[ecosystem];
         return fetchEcosystemsFromStart({ ecosystem, fetch, start, end });
       })
     )

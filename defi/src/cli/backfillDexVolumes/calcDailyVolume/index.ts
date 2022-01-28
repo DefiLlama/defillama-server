@@ -11,7 +11,7 @@ export const createMissingDayError = (
   ecosystem: string,
   nextDayTimestamp: number
 ) => {
-  throw new Error(`Missing data on ${nextDayTimestamp} for ${ecosystem}`);
+  throw new Error(`Missing day data on ${nextDayTimestamp} for ${ecosystem}`);
 };
 
 const calcDailyVolume = ({

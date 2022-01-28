@@ -7455,7 +7455,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://marinade.finance",
     description: "The easiest way to stake Solana - liquid staking",
     chain: "Solana",
-    logo: `${baseIconsUrl}/marinade-finance.png`,
+    logo: `${baseIconsUrl}/marinade-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "marinade-finance",

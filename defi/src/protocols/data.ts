@@ -21235,7 +21235,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   name: "Sentre",
   address: "solana:SENBBKVCM7homnf5RX9zqpf1GFe935hnbU4uVzY1Y6M",
   symbol: "SNTR",
-  url: "https://app.sentre.io/welcome",
+  url: "https://hub.sentre.io/welcome",
   description: "An on-chain AMM powering the evolution of DeFi.",
   chain: "Solana",
   logo: `${baseIconsUrl}/sentre.png`,

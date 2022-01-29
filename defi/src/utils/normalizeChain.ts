@@ -590,7 +590,7 @@ export const chainCoingeckoIds = {
     geckoId: "astar",
     symbol: "ASTR",
     cmcId: "12885",
-    categories: ["Parachain"],
+    categories: ["EVM", "Parachain"],
     parent: "Polkadot",
   },
 } as {

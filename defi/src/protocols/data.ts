@@ -5155,7 +5155,7 @@ export default [
     gecko_id: "xdollar",
     cmcId: null,
     category: "Minting",
-    chains: ["Polygon", "Avalanche"],
+    chains: ["IoTeX"],
     module: "xdollar-finance/index.js",
     twitter: "xDollarFi",
     audit_links: ["https://github.com/xDollar-Finance/xDollar-contracts/blob/main/xDollar%20-%20Smart%20Contract%20Audit%20v210624.pdf"],

@@ -25,6 +25,13 @@ export async function getBlocksRetry(timestamp: number) {
   throw new Error(`Couldn't get the block numbers at timestamp ${timestamp}`);
 }
 
+export async function getEthBlock(timestamp: number) {
+  return {
+    ethereumBlock: (await lookupBlock(timestamp, {chain:"ethereum"})).block,
+    chainBlocks: {}
+  }
+}
+
 export async function getChainBlocksRetry(timestamp: number, chain: Ecosystem) {
   for (let i = 0; i < 10; i++) {
     try {

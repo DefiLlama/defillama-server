@@ -16,6 +16,7 @@ const handler = (lambdaFunctioName:string)=> async () => {
     };
     await invokeLambda(lambdaFunctioName, event);
   }
+  console.log(lambdaFunctioName)
   if(lambdaFunctioName === hourlyLambda){
     await storeTokens()
   }

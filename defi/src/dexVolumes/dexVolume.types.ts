@@ -118,3 +118,7 @@ export type DexVolumeInfo = {
   name: string;
   backfilled: boolean;
 };
+
+export type BreakdownDailyEcosystemRecord = {
+  [x: string]: DailyEcosystemRecord;
+};

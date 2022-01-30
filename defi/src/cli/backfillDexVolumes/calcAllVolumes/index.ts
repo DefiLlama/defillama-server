@@ -20,7 +20,7 @@ const calcAllVolumes = async ({
   currentTimestamp,
   id,
   volumeAdapter,
-  breakdown = "main",
+  breakdown = "total",
 }: {
   currentTimestamp: number;
   id: number;

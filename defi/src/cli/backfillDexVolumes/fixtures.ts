@@ -1444,3 +1444,88 @@ export const monthlyVolumes = {
     },
   },
 };
+
+export const minDailyBreakdownVolume1 = {
+  "1638316800": {
+    id: 468,
+    unix: 1638316800,
+    dailyVolume: "86400",
+    totalVolume: "1638403200",
+    breakdown: {
+      alpacaV1: { llama: { dailyVolume: "86400", totalVolume: "1638403200" } },
+    },
+  },
+  "1638403200": {
+    id: 468,
+    unix: 1638403200,
+    dailyVolume: "86400",
+    totalVolume: "1638489600",
+    breakdown: {
+      alpacaV1: { llama: { dailyVolume: "86400", totalVolume: "1638489600" } },
+    },
+  },
+};
+
+export const minDailyBreakdownVolume2 = {
+  "1638403200": {
+    id: 468,
+    unix: 1638403200,
+    dailyVolume: "172800",
+    totalVolume: "3276979200",
+    breakdown: {
+      alpacaV2: {
+        ngmi: { dailyVolume: "86400", totalVolume: "1638489600" },
+        llama: { dailyVolume: "86400", totalVolume: "1638489600" },
+      },
+    },
+  },
+  "1638489600": {
+    id: 468,
+    unix: 1638489600,
+    dailyVolume: "86400",
+    totalVolume: "1638576000",
+    breakdown: {
+      alpacaV2: { llama: { dailyVolume: "86400", totalVolume: "1638576000" } },
+    },
+  },
+};
+
+export const calcAllDailyBreakdownVolumeResult = {
+  "1638316800": {
+    id: 468,
+    unix: 1638316800,
+    dailyVolume: "86400",
+    totalVolume: "1638403200",
+    breakdown: {
+      total: { llama: { dailyVolume: "86400", totalVolume: "1638403200" } },
+      alpacaV1: { llama: { dailyVolume: "86400", totalVolume: "1638403200" } },
+    },
+  },
+  "1638403200": {
+    id: 468,
+    unix: 1638403200,
+    dailyVolume: "259200",
+    totalVolume: "4915468800",
+    breakdown: {
+      total: {
+        ngmi: { dailyVolume: "86400", totalVolume: "1638489600" },
+        llama: { dailyVolume: "172800", totalVolume: "3276979200" },
+      },
+      alpacaV1: { llama: { dailyVolume: "86400", totalVolume: "1638489600" } },
+      alpacaV2: {
+        ngmi: { dailyVolume: "86400", totalVolume: "1638489600" },
+        llama: { dailyVolume: "86400", totalVolume: "1638489600" },
+      },
+    },
+  },
+  "1638489600": {
+    id: 468,
+    unix: 1638489600,
+    dailyVolume: "86400",
+    totalVolume: "1638576000",
+    breakdown: {
+      total: { llama: { dailyVolume: "86400", totalVolume: "1638576000" } },
+      alpacaV2: { llama: { dailyVolume: "86400", totalVolume: "1638576000" } },
+    },
+  },
+};

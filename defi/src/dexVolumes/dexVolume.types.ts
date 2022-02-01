@@ -122,3 +122,7 @@ export type DexVolumeInfo = {
 export type BreakdownDailyEcosystemRecord = {
   [x: string]: DailyEcosystemRecord;
 };
+
+export type BreakdownHourlyEcosystemRecord = {
+  [x: string]: HourlyEcosystemRecord;
+};

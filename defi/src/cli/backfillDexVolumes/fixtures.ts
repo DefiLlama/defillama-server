@@ -1398,6 +1398,25 @@ export const minHourlyVolumes = {
       },
     },
   },
+};
+
+export const minHourlyVolumes2 = {
+  "1643173200": {
+    id: 468,
+    unix: 1643173200,
+    hourlyVolume: "3600",
+    dailyVolume: "21600",
+    totalVolume: "1643176800",
+    breakdown: {
+      alpacaV2: {
+        llama: {
+          dailyVolume: "21600",
+          hourlyVolume: "3600",
+          totalVolume: "1643176800",
+        },
+      },
+    },
+  },
   "1643176800": {
     id: 468,
     unix: 1643176800,
@@ -1405,12 +1424,7 @@ export const minHourlyVolumes = {
     dailyVolume: "50400",
     totalVolume: "3286360800",
     breakdown: {
-      main: {
-        ngmi: {
-          dailyVolume: "25200",
-          hourlyVolume: "3600",
-          totalVolume: "1643180400",
-        },
+      alpacaV2: {
         llama: {
           dailyVolume: "25200",
           hourlyVolume: "3600",
@@ -1526,6 +1540,105 @@ export const calcAllDailyBreakdownVolumeResult = {
     breakdown: {
       total: { llama: { dailyVolume: "86400", totalVolume: "1638576000" } },
       alpacaV2: { llama: { dailyVolume: "86400", totalVolume: "1638576000" } },
+    },
+  },
+};
+
+export const calcAllHourlyBreakdownVolumeResult = {
+  "1643169600": {
+    id: 468,
+    unix: 1643169600,
+    hourlyVolume: "7200",
+    dailyVolume: "36000",
+    totalVolume: "3286346400",
+    breakdown: {
+      total: {
+        ngmi: {
+          dailyVolume: "18000",
+          hourlyVolume: "3600",
+          totalVolume: "1643173200",
+        },
+        llama: {
+          dailyVolume: "18000",
+          hourlyVolume: "3600",
+          totalVolume: "1643173200",
+        },
+      },
+      main: {
+        ngmi: {
+          dailyVolume: "18000",
+          hourlyVolume: "3600",
+          totalVolume: "1643173200",
+        },
+        llama: {
+          dailyVolume: "18000",
+          hourlyVolume: "3600",
+          totalVolume: "1643173200",
+        },
+      },
+    },
+  },
+  "1643173200": {
+    id: 468,
+    unix: 1643173200,
+    hourlyVolume: "10800",
+    dailyVolume: "64800",
+    totalVolume: "4929530400",
+    breakdown: {
+      total: {
+        ngmi: {
+          dailyVolume: "21600",
+          hourlyVolume: "3600",
+          totalVolume: "1643176800",
+        },
+        llama: {
+          dailyVolume: "43200",
+          hourlyVolume: "7200",
+          totalVolume: "3286353600",
+        },
+      },
+      alpacaV2: {
+        llama: {
+          dailyVolume: "21600",
+          hourlyVolume: "3600",
+          totalVolume: "1643176800",
+        },
+      },
+      main: {
+        ngmi: {
+          dailyVolume: "21600",
+          hourlyVolume: "3600",
+          totalVolume: "1643176800",
+        },
+        llama: {
+          dailyVolume: "21600",
+          hourlyVolume: "3600",
+          totalVolume: "1643176800",
+        },
+      },
+    },
+  },
+  "1643176800": {
+    id: 468,
+    unix: 1643176800,
+    hourlyVolume: "7200",
+    dailyVolume: "50400",
+    totalVolume: "3286360800",
+    breakdown: {
+      total: {
+        llama: {
+          dailyVolume: "25200",
+          hourlyVolume: "3600",
+          totalVolume: "1643180400",
+        },
+      },
+      alpacaV2: {
+        llama: {
+          dailyVolume: "25200",
+          hourlyVolume: "3600",
+          totalVolume: "1643180400",
+        },
+      },
     },
   },
 };

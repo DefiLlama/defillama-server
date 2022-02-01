@@ -97,6 +97,7 @@ const calcAllDailyBreakdownVolume = async ({
       }
     });
 
+    // Assumes that there is data for every day up to current
     result[dailyTimestamp] = {
       id,
       unix: dailyTimestamp,

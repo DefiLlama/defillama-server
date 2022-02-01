@@ -1642,3 +1642,107 @@ export const calcAllHourlyBreakdownVolumeResult = {
     },
   },
 };
+
+export const minMonthlyBreakdownVolumes1 = {
+  "1638316800": {
+    id: 468,
+    unix: 1638316800,
+    monthlyVolume: "2678400",
+    totalVolume: "1640995200",
+    breakdown: {
+      alpacaV1: {
+        llama: { monthlyVolume: "2678400", totalVolume: "1640995200" },
+      },
+    },
+  },
+  "1640995200": {
+    id: 468,
+    unix: 1640995200,
+    monthlyVolume: "2678400",
+    totalVolume: "1643673600",
+    breakdown: {
+      alpacaV1: {
+        llama: { monthlyVolume: "2678400", totalVolume: "1643673600" },
+      },
+    },
+  },
+};
+
+export const minMonthlyBreakdownVolumes2 = {
+  "1640995200": {
+    id: 468,
+    unix: 1640995200,
+    monthlyVolume: "5356800",
+    totalVolume: "3287347200",
+    breakdown: {
+      alpacaV2: {
+        ngmi: { monthlyVolume: "2678400", totalVolume: "1643673600" },
+        llama: { monthlyVolume: "2678400", totalVolume: "1643673600" },
+      },
+    },
+  },
+  "1643673600": {
+    id: 468,
+    unix: 1643673600,
+    monthlyVolume: "4838400",
+    totalVolume: "3292185600",
+    breakdown: {
+      alpacaV2: {
+        ngmi: { monthlyVolume: "2419200", totalVolume: "1646092800" },
+        llama: { monthlyVolume: "2419200", totalVolume: "1646092800" },
+      },
+    },
+  },
+};
+
+export const calcAllMonthlyBreakdownVolumeResult = {
+  "1638316800": {
+    id: 468,
+    unix: 1638316800,
+    monthlyVolume: "2678400",
+    totalVolume: "1640995200",
+    breakdown: {
+      total: {
+        llama: { monthlyVolume: "2678400", totalVolume: "1640995200" },
+      },
+      alpacaV1: {
+        llama: { monthlyVolume: "2678400", totalVolume: "1640995200" },
+      },
+    },
+  },
+  "1640995200": {
+    id: 468,
+    unix: 1640995200,
+    monthlyVolume: "8035200",
+    totalVolume: "4931020800",
+    breakdown: {
+      total: {
+        ngmi: { monthlyVolume: "2678400", totalVolume: "1643673600" },
+        llama: { monthlyVolume: "5356800", totalVolume: "3287347200" },
+      },
+      alpacaV1: {
+        llama: { monthlyVolume: "2678400", totalVolume: "1643673600" },
+      },
+      alpacaV2: {
+        ngmi: { monthlyVolume: "2678400", totalVolume: "1643673600" },
+        llama: { monthlyVolume: "2678400", totalVolume: "1643673600" },
+      },
+    },
+  },
+  "1643673600": {
+    id: 468,
+    unix: 1643673600,
+    monthlyVolume: "4838400",
+    totalVolume: "3292185600",
+    breakdown: {
+      total: {
+        ngmi: { monthlyVolume: "2419200", totalVolume: "1646092800" },
+        llama: { monthlyVolume: "2419200", totalVolume: "1646092800" },
+      },
+      alpacaV2: {
+        ngmi: { monthlyVolume: "2419200", totalVolume: "1646092800" },
+        llama: { monthlyVolume: "2419200", totalVolume: "1646092800" },
+      },
+    },
+  },
+};

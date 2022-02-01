@@ -126,3 +126,7 @@ export type BreakdownDailyEcosystemRecord = {
 export type BreakdownHourlyEcosystemRecord = {
   [x: string]: HourlyEcosystemRecord;
 };
+
+export type BreakdownMonthlyEcosystemRecord = {
+  [x: string]: MonthlyEcosystemRecord;
+};

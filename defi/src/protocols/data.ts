@@ -24082,8 +24082,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: "0x0b38210ea11411557c13457d4da7dc6ea731b88a",
   symbol: "API3",
   url: "https://api3.eth.link/#/",
-  description: "The Web3 API Economy: Create trustless applications that interact with Web APIs
-Connect Smart Contracts to Real-World Data. API3 is leading the movement from legacy third-party oracle networks to first-party oracle solutions that deliver more security, efficiency, regulatory compliance, and simplicity",
+  description: "The Web3 API Economy: Create trustless applications that interact with Web APIs to connect Smart Contracts to Real-World Data. API3 is leading the movement from legacy third-party oracle networks to first-party oracle solutions that deliver more security, efficiency, regulatory compliance, and simplicity",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/api3.jpg`,
   audits: "0",

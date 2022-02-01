@@ -49,6 +49,7 @@ describe("calcAllVolumes", () => {
       volumeAdapter,
       id,
       currentTimestamp,
+      breakdown: "main",
     });
 
     expect(result.earliestTimestamp).toEqual(start);
@@ -60,6 +61,7 @@ describe("calcAllVolumes", () => {
         volumeAdapter,
         id,
         currentTimestamp,
+        breakdown: "main",
       });
 
       expect(result.dailyVolumes).toEqual(dailyVolumes);
@@ -72,6 +74,7 @@ describe("calcAllVolumes", () => {
         volumeAdapter,
         id,
         currentTimestamp,
+        breakdown: "main",
       });
 
       expect(result.monthlyVolumes).toEqual(monthlyVolumes);
@@ -84,6 +87,7 @@ describe("calcAllVolumes", () => {
         volumeAdapter,
         id,
         currentTimestamp,
+        breakdown: "main",
       });
 
       expect(result.hourlyVolumes).toEqual(hourlyVolumes);
@@ -102,6 +106,7 @@ describe("calcAllVolumes", () => {
         volumeAdapter,
         id,
         currentTimestamp,
+        breakdown: "main",
       });
 
       expect(result.hourlyVolumes).toEqual(minHourlyVolumes);

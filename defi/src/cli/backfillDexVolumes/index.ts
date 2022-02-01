@@ -41,31 +41,32 @@ const backfillDexVolumes = async (id: number) => {
 
   const allDbWrites = [];
 
-  // if (volumeAdapter) {
-  const { dailyVolumes, hourlyVolumes, monthlyVolumes } = await calcAllVolumes({
-    currentTimestamp,
-    id,
-    volumeAdapter,
-  });
+  if (volumeAdapter) {
+    const { dailyVolumes, hourlyVolumes, monthlyVolumes } =
+      await calcAllVolumes({
+        currentTimestamp,
+        id,
+        volumeAdapter,
+      });
 
-  //   Object.values(dailyVolumes).forEach(
-  //     (dailyEcosystemRecord: DailyEcosystemRecord) => {
-  //       allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
-  //     }
-  //   );
+    Object.values(dailyVolumes).forEach(
+      (dailyEcosystemRecord: DailyEcosystemRecord) => {
+        allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
+      }
+    );
 
-  //   Object.values(hourlyVolumes).forEach(
-  //     (hourlyEcosystemRecord: HourlyEcosystemRecord) => {
-  //       allDbWrites.push(putHourlyDexVolumeRecord(hourlyEcosystemRecord));
-  //     }
-  //   );
+    Object.values(hourlyVolumes).forEach(
+      (hourlyEcosystemRecord: HourlyEcosystemRecord) => {
+        allDbWrites.push(putHourlyDexVolumeRecord(hourlyEcosystemRecord));
+      }
+    );
 
-  //   Object.values(monthlyVolumes).forEach(
-  //     (monthlyEcosystemRecord: MonthlyEcosystemRecord) => {
-  //       allDbWrites.push(putMonthlyDexVolumeRecord(monthlyEcosystemRecord));
-  //     }
-  //   );
-  // }
+    Object.values(monthlyVolumes).forEach(
+      (monthlyEcosystemRecord: MonthlyEcosystemRecord) => {
+        allDbWrites.push(putMonthlyDexVolumeRecord(monthlyEcosystemRecord));
+      }
+    );
+  }
 
   // TODO unlock dex-volume at end to allow hourly CRON
 };

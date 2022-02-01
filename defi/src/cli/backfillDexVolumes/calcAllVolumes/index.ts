@@ -16,14 +16,17 @@ import {
   VolumeAdapter,
 } from "../../../../src/dexVolumes/dexVolume.types";
 
+// Won't work if one of the ecosystem volumes stops reporting totalVolume up to current date. Ex: protocol must keep reporting its totalVolume til current date even if its not active.
 const calcAllVolumes = async ({
   currentTimestamp,
   id,
   volumeAdapter,
+  breakdown = "total",
 }: {
   currentTimestamp: number;
   id: number;
   volumeAdapter: VolumeAdapter;
+  breakdown?: string;
 }) => {
   const allEcosystemVolumes = await fetchAllEcosystemsFromStart(
     volumeAdapter,
@@ -61,7 +64,9 @@ const calcAllVolumes = async ({
       unix: timestamp,
       dailyVolume,
       totalVolume,
-      ecosystems,
+      breakdown: {
+        [breakdown]: ecosystems,
+      },
     };
   }
 
@@ -84,7 +89,9 @@ const calcAllVolumes = async ({
       dailyVolume,
       hourlyVolume,
       totalVolume,
-      ecosystems,
+      breakdown: {
+        [breakdown]: ecosystems,
+      },
     };
   }
 
@@ -104,7 +111,9 @@ const calcAllVolumes = async ({
       unix,
       monthlyVolume,
       totalVolume,
-      ecosystems,
+      breakdown: {
+        [breakdown]: ecosystems,
+      },
     };
     monthlyVolTimestamp = getTimestampAtStartOfNextMonth(monthlyVolTimestamp);
   }

@@ -79,7 +79,9 @@ export type DailyEcosystemRecord = {
   unix: Unix;
   dailyVolume: DailyVolume;
   totalVolume: TotalVolume;
-  ecosystems: DailyEcosystemVolumes;
+  breakdown: {
+    [x: string]: DailyEcosystemVolumes;
+  };
 };
 
 export type HourlyVolumesResult = {
@@ -95,7 +97,9 @@ export type HourlyEcosystemRecord = {
   dailyVolume: DailyVolume;
   hourlyVolume: HourlyVolume;
   totalVolume: TotalVolume;
-  ecosystems: HourlyEcosystemVolumes;
+  breakdown: {
+    [x: string]: HourlyEcosystemVolumes;
+  };
 };
 
 export type MonthlyEcosystemRecord = {
@@ -103,7 +107,9 @@ export type MonthlyEcosystemRecord = {
   unix: Unix;
   monthlyVolume: HourlyVolume;
   totalVolume: TotalVolume;
-  ecosystems: MonthlyEcosystemVolumes;
+  breakdown: {
+    [x: string]: MonthlyEcosystemVolumes;
+  };
 };
 
 export type DexVolumeInfo = {
@@ -111,4 +117,16 @@ export type DexVolumeInfo = {
   module: string;
   name: string;
   backfilled: boolean;
+};
+
+export type BreakdownDailyEcosystemRecord = {
+  [x: string]: DailyEcosystemRecord;
+};
+
+export type BreakdownHourlyEcosystemRecord = {
+  [x: string]: HourlyEcosystemRecord;
+};
+
+export type BreakdownMonthlyEcosystemRecord = {
+  [x: string]: MonthlyEcosystemRecord;
 };

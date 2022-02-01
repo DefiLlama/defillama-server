@@ -92,14 +92,14 @@ export const putDailyDexVolumeRecord = ({
   unix,
   dailyVolume,
   totalVolume,
-  ecosystems,
+  breakdown,
 }: DailyEcosystemRecord) =>
   hourlyDexVolumeDb.put({
     id,
     unix,
     dailyVolume,
     totalVolume,
-    ecosystems,
+    breakdown,
   });
 
 export const putHourlyDexVolumeRecord = ({
@@ -108,7 +108,7 @@ export const putHourlyDexVolumeRecord = ({
   hourlyVolume,
   dailyVolume,
   totalVolume,
-  ecosystems,
+  breakdown,
 }: HourlyEcosystemRecord) =>
   hourlyDexVolumeDb.put({
     id,
@@ -116,7 +116,7 @@ export const putHourlyDexVolumeRecord = ({
     hourlyVolume,
     dailyVolume,
     totalVolume,
-    ecosystems,
+    breakdown,
   });
 
 export const putMonthlyDexVolumeRecord = ({
@@ -124,14 +124,14 @@ export const putMonthlyDexVolumeRecord = ({
   unix,
   monthlyVolume,
   totalVolume,
-  ecosystems,
+  breakdown,
 }: MonthlyEcosystemRecord) =>
   hourlyDexVolumeDb.put({
     id,
     unix,
     monthlyVolume,
     totalVolume,
-    ecosystems,
+    breakdown,
   });
 
 export const putDexVolumeInfo = ({

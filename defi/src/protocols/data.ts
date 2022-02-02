@@ -24085,7 +24085,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "The Web3 API Economy: Create trustless applications that interact with Web APIs to connect Smart Contracts to Real-World Data. API3 is leading the movement from legacy third-party oracle networks to first-party oracle solutions that deliver more security, efficiency, regulatory compliance, and simplicity",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/api3.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "api3",
   cmcId: "7737" ,
@@ -24093,7 +24093,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum"],
   module: "api3/index.js",
   twitter: "API3DAO",
-  listedAt: 1643713220 ,
+  audit_links: ["https://github.com/api3dao/api3-dao/tree/main/reports"],
+  listedAt: 1643713220,
 },
 {
   id: "1340",

@@ -24351,4 +24351,27 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Beefy Finance"],
   listedAt: 1643865773,
 },
+{
+  id: "1353",
+  name: "Kalmy App",
+  address: "bsc:0x4BA0057f784858a48fe351445C672FF2a3d43515",
+  symbol: "KALM",
+  url: "https://kalmy.app",
+  description: "Kalmy.APP is a DeFi hub. Farming, lending, swaps, NFTs - the goal is to have it all and more.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/kalmy.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "kalmar",
+  cmcId: "10099",
+  category: "Yield",
+  chains: ["Binance"],
+  module: "kalmy-app/index.js",
+  twitter: "kalmar_io",
+  audit_links: [
+    "https://hacken.io/wp-content/uploads/2021/06/Kalmar_08062021SC-Audit_Report.pdf",
+    "https://hacken.io/wp-content/uploads/2021/04/03042021_Kalmar_SC_Audit_Report.pdf"
+  ],
+  listedAt: 1643866432,
+},
 ] as Protocol[];

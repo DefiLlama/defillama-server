@@ -24132,7 +24132,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "Dexes" ,
   chains: ["Stacks"],
   module: "cryptomate.js",
-  twitter: "CryptoMate_def",
+  twitter: "CryptoMate_defi",
   listedAt: 1643802716 ,
 },
 {

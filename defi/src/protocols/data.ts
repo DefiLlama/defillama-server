@@ -11817,7 +11817,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Staking",
     chains: ["Ethereum"],
-    module: "pstake.js",
+    module: "pstake/index.js",
     twitter: "pStakeFinance",
     audit_links: ["https://consensys.net/diligence/audits/private/61fqr5mouh4oq8/", "https://github.com/persistenceOne/pStake-auditReports"],
     listedAt: 1635248310,

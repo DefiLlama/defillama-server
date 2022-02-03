@@ -593,6 +593,13 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Parachain"],
     parent: "Polkadot",
   },
+  "Curio": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: "Skale",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -736,6 +743,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Moonbeam"
     case "astar":
       return "Astar"
+    case "curio":
+      return "Curio"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

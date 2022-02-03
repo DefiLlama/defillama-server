@@ -121,11 +121,14 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
       tokens: response.tokens
     }
   }
-  if(protocolData.name==="Set Protocol"){
+  const dataLength = JSON.stringify(response).length
+  if(dataLength > 6e6){
     delete response.tokensInUsd;
     delete response.tokens;
-    delete response.chainTvls.Ethereum.tokensInUsd;
-    delete response.chainTvls.Ethereum.tokens;
+    Object.keys(response.chainTvls).forEach(chain=>{
+      delete response.chainTvls[chain].tokensInUsd;
+      delete response.chainTvls[chain].tokens;
+    })
   }
 
   return response

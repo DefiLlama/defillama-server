@@ -5143,8 +5143,8 @@ export default [
   {
     id: "363",
     name: "xDollar",
-    address: "polygon:0x3Dc7B06dD0B1f08ef9AcBbD2564f8605b4868EEA",
-    symbol: "XDO",
+    address: "iotex:0x375488f097176507e39b9653b88fdc52cde736bf",
+    symbol: "SPACE",
     url: "https://www.xdollar.fi/",
     description:
       "xDollar is cross-chain collateral based stablecoin lending platform with zero interest fee, 110% low collateral ratio and fully redeemable xUSD plus DAO governance and multi-collateral vault system.",

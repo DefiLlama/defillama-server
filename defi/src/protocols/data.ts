@@ -1239,7 +1239,7 @@ export default [
     audit_note: null,
     gecko_id: "piedao-dough-v2",
     cmcId: "7284",
-    category: "Services",
+    category: "Indexes",
     chains: ["Ethereum"],
     module: "piedao/index.js",
     twitter: "PieDAO_Defi",

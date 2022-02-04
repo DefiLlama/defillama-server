@@ -16175,12 +16175,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "2" ,
     audit_note: null ,
     gecko_id: "platypus-finance" ,
-    cmcId: null ,
+    cmcId: "16231" ,
     category: "Dexes" ,
     chains: ["Avalanche"] ,
     module: "platypus-finance/index.js" ,
     twitter: "Platypusdefi" ,
-    audit_links: ["https://omniscia.io/platypus-finance-core-implementation/","https://hacken.io/audits/#platypus_finance"],
+    audit_links: ["https://omniscia.io/platypus-finance-core-implementation/","https://hacken.io/audits/#platypus_finance", "https://omniscia.io/platypus-finance-governance-staking/"],
     listedAt: 1638299790
   },
   {

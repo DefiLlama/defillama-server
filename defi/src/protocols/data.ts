@@ -4403,7 +4403,7 @@ export default [
     audit_note: null,
     gecko_id: "beefy-finance",
     cmcId: "7311",
-    category: "Yield",
+    category: "Yield Aggregator",
     chains: ["Binance", "Polygon", "Avalanche", "Heco", "Fantom", "Harmony", "Arbitrum"],
     module: "beefy/index.js",
     twitter: "beefyfinance",

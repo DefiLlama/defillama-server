@@ -10431,7 +10431,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "enterdao",
     cmcId: "12228",
-    category: "Farming",
+    category: "Services",
     chains: ["Ethereum"],
     module: "enterdao/index.js",
     twitter: "EnterDao",

@@ -7,6 +7,7 @@ import {
   putDailyDexVolumeRecord,
   putHourlyDexVolumeRecord,
   putMonthlyDexVolumeRecord,
+  updateLockDexVolumeRecord,
 } from "../../dexVolumes/dexVolumeRecords";
 
 import { getTimestampAtStartOfHour } from "../../utils/date";
@@ -33,15 +34,29 @@ import {
 
 export const MAX_HOURS = 25;
 
+/*
+  WARNING: Will replace all monthly,daily, last 24 hours records
+
+  Edge cases:
+   - Do not run before the hour and cron job, might miss the current hour CRON job
+   - If volume adapter depends on subgraph, do not run exactly on the hour as the chain block may not be ready yet
+*/
+
 const backfillDexVolumes = async (id: number) => {
   const currentTimestamp = getTimestampAtStartOfHour(Date.now() / 1000);
 
   const {
     module: dexModule,
+    locked,
   }: {
     name: string;
     module: keyof typeof dexAdapters;
+    locked: boolean;
   } = await getDexVolumeRecord(id);
+
+  if (!locked) {
+    await updateLockDexVolumeRecord(id, true);
+  }
 
   const {
     volume: volumeAdapter,
@@ -61,10 +76,6 @@ const backfillDexVolumes = async (id: number) => {
         id,
         volumeAdapter,
       });
-
-    console.log(dailyVolumes, "dailyVolumes");
-    console.log(hourlyVolumes, "hourlyVolumes");
-    console.log(monthlyVolumes, "monthlyVolumes");
 
     Object.values(dailyVolumes).forEach(
       (dailyEcosystemRecord: DailyEcosystemRecord) => {
@@ -160,9 +171,9 @@ const backfillDexVolumes = async (id: number) => {
     });
   }
 
-  await Promise.all(allDbWrites).catch((e) => {
-    console.log(e);
-  });
+  await Promise.all(allDbWrites);
+
+  await updateLockDexVolumeRecord(id, false);
   console.log("done");
 
   // TODO unlock dex-volume at end to allow hourly CRON

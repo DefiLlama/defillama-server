@@ -81,6 +81,17 @@ export const getDexVolumeRecord = (id: number) =>
       console.error(e);
     });
 
+export const updateLockDexVolumeRecord = (id: number, locked: boolean) =>
+  dexVolumeInfoDb.update({
+    Key: {
+      id,
+    },
+    UpdateExpression: "set locked = :locked",
+    ExpressionAttributeValues: {
+      ":locked": locked,
+    },
+  });
+
 export const getHourlyDexVolumeRecord =
   getTimeDexVolumeRecord(hourlyDexVolumeDb);
 export const getDailyDexVolumeRecord = getTimeDexVolumeRecord(dailyDexVolumeDb);
@@ -94,7 +105,7 @@ export const putDailyDexVolumeRecord = ({
   totalVolume,
   breakdown,
 }: DailyEcosystemRecord) =>
-  hourlyDexVolumeDb.put({
+  dailyDexVolumeDb.put({
     id,
     unix,
     dailyVolume,
@@ -126,7 +137,7 @@ export const putMonthlyDexVolumeRecord = ({
   totalVolume,
   breakdown,
 }: MonthlyEcosystemRecord) =>
-  hourlyDexVolumeDb.put({
+  monthlyDexVolumeDb.put({
     id,
     unix,
     monthlyVolume,

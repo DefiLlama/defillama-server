@@ -7166,7 +7166,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Avalanche"],
     module: "traderjoe/index.js",
-    audit_links: ["https://docs.traderjoexyz.com/main/audits/dex"],
+    audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
     twitter: "traderjoe_xyz",
   },
   {

@@ -11492,7 +11492,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "MoneyStream",
+    category: "Payments",
     chains: ["Polygon", "xDai"],
     module: "superfluid.js",
     twitter: "Superfluid_HQ",

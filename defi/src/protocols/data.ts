@@ -4646,7 +4646,7 @@ export default [
     audit_note: null,
     gecko_id: "inverse-finance",
     cmcId: "8720",
-    category: "Lending",
+    category: "CDP",
     chains: ["Ethereum"],
     module: "inverse/index.js",
     twitter: "InverseFinance",

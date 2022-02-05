@@ -10972,7 +10972,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "mars-ecosystem-token",
     cmcId: "10030",
-    category: "Algo-Stables",
+    category: "CDP",
     chains: ["Binance"],
     module: "marsecosystem/index.js",
     twitter: "MarsEcosystem",

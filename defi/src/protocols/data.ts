@@ -7278,11 +7278,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "canary",
     cmcId: "10555",
-    category: "Dexes",
+    category: "Yield Aggregator",
     chains: ["Avalanche"],
     module: "canary/index.js",
     twitter: "CanaryDex",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap", "Sushiswap"],
   },
   {
     id: "475",

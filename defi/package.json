@@ -5,7 +5,7 @@
   "scripts": {
     "deploy:env": "sls deploy --stage $NODE_ENV",
     "deploy:dev": "export NODE_ENV=dev && npm run deploy:env",
-    "deploy:prod": "export NODE_ENV=prod && npm run deploy:env",
+    "deploy:prod": "export NODE_OPTIONS=--max-old-space-size=6144 && export NODE_ENV=prod && npm run deploy:env",
     "deploy": "npm run deploy:dev",
     "format": "prettier --write \"src/**/*.ts\"",
     "serve": "node --max-old-space-size=8192 node_modules/serverless/bin/serverless offline start",

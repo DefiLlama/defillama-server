@@ -18,7 +18,7 @@ export interface Protocol {
   chains: string[];
   module: string;
   twitter: string;
-  language?: string;
+  language: string;
 }
 
 /* Audits: Please follow this legend
@@ -24621,5 +24621,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   language: "Solidity",
   audit_links: ["https://www.certik.com/projects/ethalend"],
   listedAt: 1644188153,
+},
+{
+  id: "1366",
+  name: "Hotfriescoin",
+  address: "bsc:0x849741B79bc1618b46CF9ec600E94E771DEde601",
+  symbol: "HFC",
+  url: "https://www.hotfriescoin.com/",
+  description: "The team at Hotfriescoin built a new Asset Class called Stable Progressive Coin that has all the characteristics of a currency that is a true medium of exchange and strong store of value.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/hotfriescoin.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Reserve Currency",
+  chains: ["Binance"],
+  module: "hotfries/index.js",
+  twitter: "hotfriescoin",
+  language: "Solidity",
+  listedAt: 1644190943,
 },
 ] as Protocol[];

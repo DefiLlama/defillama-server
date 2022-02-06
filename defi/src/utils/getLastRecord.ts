@@ -18,8 +18,12 @@ export const hourlyTokensTvl = (protocolId: string) =>
   `hourlyTokensTvl#${protocolId}`;
 export const hourlyUsdTokensTvl = (protocolId: string) =>
   `hourlyUsdTokensTvl#${protocolId}`;
+export const hourlyRawTokensTvl = (protocolId: string) =>
+  `hourlyRawTokensTvl#${protocolId}`;
 export const dailyTvl = (protocolId: string) => `dailyTvl#${protocolId}`;
 export const dailyTokensTvl = (protocolId: string) =>
   `dailyTokensTvl#${protocolId}`;
 export const dailyUsdTokensTvl = (protocolId: string) =>
   `dailyUsdTokensTvl#${protocolId}`;
+export const dailyRawTokensTvl = (protocolId: string) =>
+  `dailyRawTokensTvl#${protocolId}`;

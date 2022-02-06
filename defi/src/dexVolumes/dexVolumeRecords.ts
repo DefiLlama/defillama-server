@@ -4,7 +4,7 @@ import AWS from "aws-sdk";
 
 import {
   DailyEcosystemRecord,
-  DexVolumeInfo,
+  DexVolumeMetaRecord,
   HourlyEcosystemRecord,
   MonthlyEcosystemRecord,
 } from "./dexVolume.types";
@@ -52,7 +52,7 @@ const createDynamoDbApi = (TableName: string) => ({
 export const hourlyDexVolumeDb = createDynamoDbApi("dev-hourly-dex-volume");
 export const dailyDexVolumeDb = createDynamoDbApi("dev-daily-dex-volume");
 export const monthlyDexVolumeDb = createDynamoDbApi("dev-monthly-dex-volume");
-export const dexVolumeInfoDb = createDynamoDbApi("dev-dex-volume");
+export const DexVolumeMetaDb = createDynamoDbApi("dev-dex-volume");
 
 export const getTimeDexVolumeRecord = (db: any) => (id: number, unix: number) =>
   db
@@ -68,21 +68,33 @@ export const getTimeDexVolumeRecord = (db: any) => (id: number, unix: number) =>
       console.error(e);
     });
 
-export const getDexVolumeRecord = (id: number) =>
-  dexVolumeInfoDb
-    .query({
-      ExpressionAttributeValues: {
-        ":id": id,
-      },
-      KeyConditionExpression: "id = :id",
-    })
+export const putDexVolumeMetaRecord = ({
+  id,
+  locked = true,
+  module,
+  name,
+}: DexVolumeMetaRecord) =>
+  DexVolumeMetaDb.put({
+    id,
+    locked,
+    module,
+    name,
+  });
+
+export const getDexVolumeMetaRecord = (id: number) =>
+  DexVolumeMetaDb.query({
+    ExpressionAttributeValues: {
+      ":id": id,
+    },
+    KeyConditionExpression: "id = :id",
+  })
     .then((res: any) => res.Items?.[0])
     .catch((e: any) => {
       console.error(e);
     });
 
 export const updateLockDexVolumeRecord = (id: number, locked: boolean) =>
-  dexVolumeInfoDb.update({
+  DexVolumeMetaDb.update({
     Key: {
       id,
     },
@@ -145,21 +157,8 @@ export const putMonthlyDexVolumeRecord = ({
     breakdown,
   });
 
-export const putDexVolumeInfo = ({
-  id,
-  module,
-  name,
-  backfilled,
-}: DexVolumeInfo) =>
-  dexVolumeInfoDb.put({
-    id,
-    module,
-    name,
-    backfilled,
-  });
-
 export const updateDexVolumeBackfilled = (id: number) => {
-  dexVolumeInfoDb.update({
+  DexVolumeMetaDb.update({
     Key: { id },
     UpdateExpression: "set #backfill = :b",
     ExpressionAttributeNames: { "#backfill": "backfill" },

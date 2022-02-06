@@ -105,7 +105,7 @@ describe("calcAllVolumes", () => {
       const result = await calcAllVolumes({
         volumeAdapter,
         id,
-        currentTimestamp,
+        currentTimestamp: 1643176800,
         breakdown: "main",
       });
 

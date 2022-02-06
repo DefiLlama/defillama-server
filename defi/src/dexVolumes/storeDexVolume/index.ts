@@ -18,7 +18,7 @@ import {
   monthlyDexVolumeDb,
   getHourlyDexVolumeRecord,
   getMonthlyDexVolumeRecord,
-  getDexVolumeRecord,
+  getDexVolumeMetaRecord,
 } from "../dexVolumeRecords";
 import dexVolumes from "../../protocols/dexVolumes";
 
@@ -77,7 +77,7 @@ export const handler = async (event: any) => {
     const getPrevRecords = await Promise.all([
       getHourlyDexVolumeRecord(id, prevHourlyTimestamp),
       getMonthlyDexVolumeRecord(id, monthlyTimestamp),
-      getDexVolumeRecord(id),
+      getDexVolumeMetaRecord(id),
     ]).catch((e) => {
       const errorName = `fetch-prevdata-${name}-${fetchCurrentHourTimestamp}`;
       const scope = new Sentry.Scope();

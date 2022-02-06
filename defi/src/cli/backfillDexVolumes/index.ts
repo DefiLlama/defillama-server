@@ -3,7 +3,7 @@ import { DynamoDB, AWSError } from "aws-sdk";
 import { PromiseResult } from "aws-sdk/lib/request";
 
 import {
-  getDexVolumeRecord,
+  getDexVolumeMetaRecord,
   putDailyDexVolumeRecord,
   putHourlyDexVolumeRecord,
   putMonthlyDexVolumeRecord,
@@ -52,7 +52,7 @@ const backfillDexVolumes = async (id: number) => {
     name: string;
     module: keyof typeof dexAdapters;
     locked: boolean;
-  } = await getDexVolumeRecord(id);
+  } = await getDexVolumeMetaRecord(id);
 
   if (!locked) {
     await updateLockDexVolumeRecord(id, true);

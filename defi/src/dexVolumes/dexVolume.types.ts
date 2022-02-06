@@ -112,11 +112,11 @@ export type MonthlyEcosystemRecord = {
   };
 };
 
-export type DexVolumeInfo = {
+export type DexVolumeMetaRecord = {
   id: number;
   module: string;
   name: string;
-  backfilled: boolean;
+  locked?: boolean;
 };
 
 export type BreakdownDailyEcosystemRecord = {

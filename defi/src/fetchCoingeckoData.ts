@@ -25,6 +25,9 @@ async function retryCoingeckoRequest(id: string) {
 
 async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
   const coinData = await retryCoingeckoRequest(coin.id);
+  if(coin.id === "decentraweb"){
+    return
+  }
   const price = coinData?.market_data?.current_price?.usd;
   const mcap = coinData?.market_data?.market_cap?.usd;
   const fdv = coinData?.market_data?.fully_diluted_valuation?.usd;

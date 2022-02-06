@@ -57,9 +57,9 @@ const handler = async (
         if(extraSections.includes(formattedChainName) || formattedChainName.includes("-")){
           return
         }
-        hasAtLeastOneChain = true;
         const lang = defaultLang(formattedChainName)
         if(lang !== undefined){
+          hasAtLeastOneChain = true;
           sum(sumDailyTvls, lang, timestamp, tvl);
         }
       })

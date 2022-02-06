@@ -1,3 +1,4 @@
+import { solidityKeccak256 } from "ethers/lib/utils";
 import { baseIconsUrl } from "../constants";
 
 export interface Protocol {
@@ -24599,5 +24600,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "narwhalswap",
   forkedFrom: ["Uniswap"],
   listedAt: 1644153456,
+},
+{
+  id: "1365",
+  name: "ETHA Lend",
+  address: "0x59e9261255644c411afdd00bd89162d09d862e38",
+  symbol: "ETHA",
+  url: "https://www.ethalend.org",
+  description: "The agnostic #DeFi yield optimizer.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/ethalend.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "etha-lend",
+  cmcId: "8709",
+  category: "Yield",
+  chains: ["Polygon"],
+  module: "ethalend/index.js",
+  twitter: "ethalend",
+  language: "Solidity",
+  audit_links: ["https://www.certik.com/projects/ethalend"],
+  listedAt: 1644188153,
 },
 ] as Protocol[];

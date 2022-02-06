@@ -17,6 +17,7 @@ export interface Protocol {
   chains: string[];
   module: string;
   twitter: string;
+  language?: string;
 }
 
 /* Audits: Please follow this legend
@@ -101,6 +102,7 @@ export default [
     twitter: "CurveFinance",
     audit_links: ["https://curve.fi/audits"],
     oracles: ["Chainlink"],
+    language: "Vyper",
   },
   {
     id: "111",
@@ -163,6 +165,7 @@ export default [
     module: "yearn/index.js", // TODO: Fix latest
     twitter: "iearnfinance",
     audit_links: ["https://github.com/yearn/yearn-audits"],
+    language: "Vyper",
   },
   {
     id: "114",

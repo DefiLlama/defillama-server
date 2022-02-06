@@ -611,6 +611,7 @@ export const chainCoingeckoIds = {
     geckoId: string | null,
     symbol: string | null,
     cmcId: string | null,
+    categories?: string[],
   }
 }
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]

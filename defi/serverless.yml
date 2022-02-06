@@ -156,6 +156,14 @@ functions:
       - http:
           path: chains
           method: get
+  langs:
+    handler: src/getLangs.default
+    timeout: 600
+    memorySize: 2000
+    events:
+      - http:
+          path: langs
+          method: get
   dataset:
     handler: src/getDataset.default
     timeout: 900

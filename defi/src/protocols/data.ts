@@ -24521,7 +24521,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   symbol: "QAO",
   url: "https://www.qao.io",
   description: "QAO: QualiFied. Autonomous. Organization. is a decentralized governance protocol for smart assets. QAO is a purpose-built solution for community-management of Rarechain. QAO is used to stake and vote in order to receive fees generated from Rarechain's API including also Rareswap and Rarepool, as well other Reward Sources built by QAO community. It's main function is to vote for the system's parameters and management decisions.",
-  chain: "Ethreum",
+  chain: "Ethereum",
   logo: `${baseIconsUrl}/qao.jpg`,
   audits: "2",
   audit_note: null,

@@ -1840,7 +1840,7 @@ export default [
     cmcId: "5810",
     category: "Lending",
     chains: ["Ethereum"],
-    module: "bzx.js",
+    module: "ooki.js",
     twitter: "OokiTrade",
     audit_links: ["https://bzx.network/security"],
     oracles: ["Chainlink"],

@@ -4,16 +4,16 @@ import { getHistoricalTvlForAllProtocols } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 
 interface SumDailyTvls {
-  [lang:string]:{
-    [timestamp: number]: number | undefined;
+  [timestamp: number]:{
+    [lang:string]: number | undefined;
   }
 }
 
 function sum(total:SumDailyTvls, lang:string, time:number, tvl:number){
-    if(total[lang] === undefined){
-        total[lang] = {}
+    if(total[time] === undefined){
+        total[time] = {}
     }
-    total[lang][time]=(total[lang][time] ?? 0) + tvl
+    total[time][lang]=(total[time][lang] ?? 0) + tvl
 }
 
 function defaultLang(chainName:string){

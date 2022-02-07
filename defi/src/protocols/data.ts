@@ -4934,7 +4934,7 @@ export default [
     audit_note: null,
     gecko_id: "iron-stablecoin",
     cmcId: null,
-    category: "Algo-Stables",
+    category: "CDP",
     chains: ["Polygon","Avalanche", "Fantom"], // Used to have binance but not anymore
     module: "ironfinance/index.js",
     twitter: "IronFinance",
@@ -18763,7 +18763,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "kitty-finance",
   cmcId: "15948",
-  category: "Yield",
+  category: "Algo-Stables",
   chains: ["Avalanche", "Polygon"],
   module: "kittyfinance/index.js",
   twitter: "KittyAVAX",

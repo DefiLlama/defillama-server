@@ -24691,7 +24691,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://velhalla.io",
   description: "Velhalla - The Velas MetaVerse  Viking mythology meets a hyper-futuristic universe.",
   chain: "Velas",
-  logo: `${baseIconsUrl}/velhella.jpg`,
+  logo: `${baseIconsUrl}/velhalla.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: "velhalla",

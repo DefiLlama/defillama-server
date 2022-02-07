@@ -824,6 +824,7 @@ export default [
     twitter: "dydxprotocol",
     audit_links: ["https://docs.dydx.exchange/#independent-audits"],
     oracles: ["Chainlink"],
+    language: "Cairo",
   },
   {
     id: "145",
@@ -945,6 +946,7 @@ export default [
     module: "deversifi/index.js",
     twitter: "deversifi",
     audit_links: ["https://www.deversifi.com/audit"],
+    language: "Cairo",
   },
   {
     id: "152",

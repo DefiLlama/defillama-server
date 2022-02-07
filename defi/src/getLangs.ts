@@ -16,13 +16,27 @@ function sum(total:SumDailyTvls, lang:string, time:number, tvl:number){
     total[time][lang]=(total[time][lang] ?? 0) + tvl
 }
 
+const chainToLang = {
+  "Solana": "Rust",
+  "Terra": "Rust",
+  "Tron": "Solidity",
+  "Bitcoin": "Bitcoin Script",
+  "NEO": "C#",
+  "Cardano": "Haskell",
+  "Lamden": "Python",
+  "Waves": "Ride",
+  "Elrond": "Rust",
+} as {
+  [chain:string]:string|undefined
+}
+
 function defaultLang(chainName:string){
     const chain = chainCoingeckoIds[chainName];
     if(chain === undefined){ return undefined }
     if(chain.categories?.includes("EVM")){
         return "Solidity"
     }
-    return undefined
+    return chainToLang[chainName]
 }
 
 const handler = async (

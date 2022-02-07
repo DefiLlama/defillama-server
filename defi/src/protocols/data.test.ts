@@ -3,8 +3,9 @@ import { baseIconsUrl } from "../constants";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
 const fs = require("fs");
 
+const protocolsThatCantBeImported = ["Genshiro", "Shiden dApp Staking", "Astar dApps Staking"]
 async function importProtocol(protocol:Protocol){
-  if(protocol.name.startsWith('Karura ') || protocol.name === "Genshiro"){
+  if(protocol.name.startsWith('Karura ') || protocolsThatCantBeImported.includes(protocol.name)){
     return {}
   } else {
     return import(`../../DefiLlama-Adapters/projects/${protocol.module}`);

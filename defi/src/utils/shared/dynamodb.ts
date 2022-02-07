@@ -41,15 +41,24 @@ const dynamodb = {
 };
 export default dynamodb;
 
-export function getHistoricalValues(pk: string) {
-  return dynamodb
-    .query({
-      ExpressionAttributeValues: {
-        ":pk": pk,
-      },
-      KeyConditionExpression: "PK = :pk",
-    })
-    .then((result) => result.Items);
+export async function getHistoricalValues(pk: string) {
+  let items = [] as any[]
+  let lastKey = -1;
+  do {
+    const result = await dynamodb
+      .query({
+        ExpressionAttributeValues: {
+          ":pk": pk,
+          ":sk": lastKey
+        },
+        KeyConditionExpression: "PK = :pk AND SK > :sk",
+      })
+      lastKey = result.LastEvaluatedKey?.SK
+      if(result.Items !== undefined){
+        items = items.concat(result.Items)
+      }
+  } while (lastKey !== undefined)
+  return items
 }
 
 const maxWriteRetries = 6; // Total wait time if all requests fail ~= 1.2s

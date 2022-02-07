@@ -8,8 +8,10 @@ import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
 import {
   hourlyTokensTvl,
   hourlyUsdTokensTvl,
+  hourlyRawTokensTvl,
   dailyTokensTvl,
   dailyUsdTokensTvl,
+  dailyRawTokensTvl,
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 
@@ -26,6 +28,7 @@ async function getTvl(
   usdTvls: tvlsObject<number>,
   tokensBalances: tvlsObject<TokensValueLocked>,
   usdTokenBalances: tvlsObject<TokensValueLocked>,
+  rawTokenBalances: tvlsObject<TokensValueLocked>,
   tvlFunction: any,
   isFetchFunction: boolean,
   storedKey: string,
@@ -62,6 +65,7 @@ async function getTvl(
         usdTvls[storedKey] = tvlResults.usdTvl;
         tokensBalances[storedKey] = tvlResults.tokenBalances;
         usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
+        rawTokenBalances[storedKey] = tvlBalances;
       } else {
         usdTvls[storedKey] = Number(await tvlFunction(
           unixTimestamp,
@@ -117,6 +121,7 @@ export async function storeTvl(
   const usdTvls: tvlsObject<number> = {};
   const tokensBalances: tvlsObject<TokensValueLocked> = {};
   const usdTokenBalances: tvlsObject<TokensValueLocked> = {};
+  const rawTokenBalances: tvlsObject<TokensValueLocked> = {};
   const chainTvlsToAdd: {
     [name: string]: string[]
   } = {}
@@ -144,7 +149,7 @@ export async function storeTvl(
           tvlFunctionIsFetch = true
         }
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-          usdTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, knownTokenPrices, getCoingeckoLock)
+          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, knownTokenPrices, getCoingeckoLock)
         let keyToAddChainBalances = tvlType;
         if(tvlType === "tvl" || tvlType === "fetch"){
           keyToAddChainBalances = "tvl"
@@ -164,7 +169,7 @@ export async function storeTvl(
         mainTvlIsFetch = true
       }
       const mainTvlPromise = getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-        usdTokenBalances, mainTvlIsFetch ? module.fetch : module.tvl, mainTvlIsFetch, 'tvl', maxRetries, knownTokenPrices, getCoingeckoLock)
+        usdTokenBalances, rawTokenBalances, mainTvlIsFetch ? module.fetch : module.tvl, mainTvlIsFetch, 'tvl', maxRetries, knownTokenPrices, getCoingeckoLock)
       tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
     }
     await Promise.all(tvlPromises)
@@ -173,6 +178,7 @@ export async function storeTvl(
         usdTvls[tvlType] = storedKeys.reduce((total, key)=>total+usdTvls[key], 0)
         mergeBalances(tvlType, storedKeys, tokensBalances)
         mergeBalances(tvlType, storedKeys, usdTokenBalances)
+        mergeBalances(tvlType, storedKeys, rawTokenBalances)
       }
     })
     if (typeof usdTvls.tvl !== "number") {
@@ -217,8 +223,15 @@ export async function storeTvl(
       hourlyUsdTokensTvl,
       dailyUsdTokensTvl
     );
+    const storeRawTokensAction = storeNewTokensValueLocked(
+      protocol,
+      unixTimestamp,
+      rawTokenBalances,
+      hourlyRawTokensTvl,
+      dailyRawTokensTvl
+    );
 
-    await Promise.all([storeTokensAction, storeUsdTokensAction]);
+    await Promise.all([storeTokensAction, storeUsdTokensAction, storeRawTokensAction]);
   } catch (e) {
     console.error(protocol.name, e);
     const scope = new Sentry.Scope();

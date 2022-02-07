@@ -1,6 +1,6 @@
 import protocols, {Protocol} from "./protocols/data";
-import dynamodb from "./utils/shared/dynamodb";
-import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
+import dynamodb, {getHistoricalValues} from "./utils/shared/dynamodb";
+import { dailyTvl, getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
@@ -43,28 +43,25 @@ export async function getHistoricalTvlForAllProtocols(){
       }
       const [lastTvl, historicalTvl] = await Promise.all([
         getLastRecord(hourlyTvl(protocol.id)),
-        dynamodb.query({
-          ExpressionAttributeValues: {
-            ":pk": `dailyTvl#${protocol.id}`,
-          },
-          KeyConditionExpression: "PK = :pk",
-        })
+        getHistoricalValues(dailyTvl(protocol.id))
       ])
-      if (historicalTvl.Items === undefined || historicalTvl.Items.length < 1) {
+      if (historicalTvl.length < 1) {
         return undefined;
       }
-      const lastDailyItem = historicalTvl.Items[historicalTvl.Items.length - 1]
+      const lastDailyItem = historicalTvl[historicalTvl.length - 1]
       if (lastTvl !== undefined && lastTvl.SK > lastDailyItem.SK && (lastDailyItem.SK + secondsInHour * 25) > lastTvl.SK) {
         lastTvl.SK = lastDailyItem.SK
-        historicalTvl.Items[historicalTvl.Items.length - 1] = lastTvl
+        historicalTvl[historicalTvl.length - 1] = lastTvl
       }
       const lastTimestamp = getClosestDayStartTimestamp(
-        historicalTvl.Items[historicalTvl.Items.length - 1].SK
+        historicalTvl[historicalTvl.length - 1].SK
       );
       lastDailyTimestamp = Math.max(lastDailyTimestamp, lastTimestamp);
       return {
         protocol,
-        historicalTvl: historicalTvl.Items,
+        historicalTvl: historicalTvl as {
+          [section:string]:any
+        }[],
         lastTimestamp
       };
     })
@@ -74,8 +71,6 @@ export async function getHistoricalTvlForAllProtocols(){
     historicalProtocolTvls
   }
 }
-
-const isLowercase = (str:string)=>str.toLowerCase()===str
 
 const handler = async (_event: any) => {
   const sumDailyTvls = {} as SumDailyTvls

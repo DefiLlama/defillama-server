@@ -10,7 +10,7 @@ const handler = async (_event: any) => {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
   if (message !== null) {
     if(message.length >= 5000){
-      await sendMessage(`${llamaRole} everything is broken REEEE`, webhookUrl)
+      await sendMessage(`${llamaRole} everything is broken REEEE`, webhookUrl, false)
     }
     await sendMessage(message, webhookUrl)
   }

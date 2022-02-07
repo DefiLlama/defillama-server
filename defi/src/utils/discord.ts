@@ -1,7 +1,7 @@
 import fetch from "node-fetch"
 
-export async function sendMessage(message: string, webhookUrl:string) {
-    const formattedMessage = "```\n" + message + "\n```" // Put it into a code block to prevent the format from getting messed up
+export async function sendMessage(message: string, webhookUrl:string, formatted = true) {
+    const formattedMessage = formatted? "```\n" + message + "\n```" : message; // Put it into a code block to prevent the format from getting messed up
     if(formattedMessage.length >= 2000){
       const lines = message.split('\n')
       if(lines.length <= 2){

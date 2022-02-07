@@ -416,12 +416,14 @@ export const chainCoingeckoIds = {
     symbol: "BOBA",
     cmcId: "14556",
     categories: ["EVM", "Rollup"],
+    parent: "Ethereum"
   },
   "Metis": {
     geckoId: "metis-token",
     symbol: "METIS",
     cmcId: "9640",
     categories: ["EVM", "Rollup"],
+    parent: "Ethereum",
   },
   "Ubiq": {
     geckoId: "ubiq",
@@ -462,7 +464,7 @@ export const chainCoingeckoIds = {
     symbol: "DOT",
     cmcId: "6636",
   },
-  "Cosmos": {
+  "CosmosHub": {
     geckoId: "cosmos",
     symbol: "ATOM",
     cmcId: "3794",
@@ -496,6 +498,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["Rollup"],
+    parent: "Ethereum"
   },
   "SmartBCH": {
     geckoId: "bitcoin-cash",
@@ -543,6 +546,7 @@ export const chainCoingeckoIds = {
     symbol: "NII",
     cmcId: "4865",
     categories: ["EVM", "Rollup"],
+    parent: "Ethereum"
   },
   "Parallel": {
     geckoId: null,
@@ -582,16 +586,38 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Parachain"],
     parent: "Polkadot",
   },
+  "Astar": {
+    geckoId: "astar",
+    symbol: "ASTR",
+    cmcId: "12885",
+    categories: ["EVM", "Parachain"],
+    parent: "Polkadot",
+  },
+  "Curio": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: "Skale",
+  },
+  "SKALE": {
+    geckoId: "skale",
+    symbol: "SKL",
+    cmcId: "5691",
+    categories: ["EVM"],
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
     symbol: string | null,
     cmcId: string | null,
+    categories?: string[],
   }
 }
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
 chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
 chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
+chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef"]
 
@@ -603,6 +629,8 @@ export function transformNewChainName(chain:string){
       return "KCC"
     case "xDai":
       return "Gnosis"
+    case "Cosmos":
+      return "CosmosHub"
     default:
       return chain
   }
@@ -624,6 +652,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames?"KCC":"Kucoin"
     case "xdai":
       return useNewChainNames?"Gnosis":"xDai"
+    case "cosmos":
+      return useNewChainNames?"CosmosHub":"Cosmos"
     case "avax":
       return "Avalanche"
     case "okexchain":
@@ -718,6 +748,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Syscoin"
     case "moonbeam":
       return "Moonbeam"
+    case "astar":
+      return "Astar"
+    case "curio":
+      return "Curio"
+    case "skale":
+      return "SKALE"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

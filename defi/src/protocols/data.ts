@@ -1,4 +1,3 @@
-import { solidityKeccak256 } from "ethers/lib/utils";
 import { baseIconsUrl } from "../constants";
 
 export interface Protocol {

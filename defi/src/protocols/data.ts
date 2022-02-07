@@ -5413,7 +5413,7 @@ export default [
     audit_note: null,
     gecko_id: "tomb",
     cmcId: null,
-    category: "Yield",
+    category: "Algo-Stables",
     chains: ["Fantom"],
     module: "tomb/index.js",
     twitter: "tombfinance",

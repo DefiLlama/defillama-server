@@ -2,6 +2,7 @@ import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
 import { getHistoricalTvlForAllProtocols } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
+import type {Protocol} from "./protocols/data"
 
 interface SumDailyTvls {
   [timestamp: number]:{
@@ -48,12 +49,9 @@ function defaultLang(chainName:string){
     return chainToLang[chainName]
 }
 
-const handler = async (
-    _event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
-  const sumDailyTvls = {} as SumDailyTvls
-  const languageProtocols = {} as LanguageProtocols
-  
+export type TvlItem = {[section: string]: any;}
+
+export async function processProtocols(processor: (timestamp: number, tvlItem: TvlItem, protocol:Protocol)=>Promise<void>){
   const {historicalProtocolTvls, lastDailyTimestamp} = await getHistoricalTvlForAllProtocols();
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (protocolTvl === undefined) {
@@ -68,33 +66,46 @@ const handler = async (
         SK: lastTimestamp,
       });
     }
-    let language = protocol.language
     historicalTvl.forEach((item) => {
       const timestamp = getClosestDayStartTimestamp(item.SK);
-      if(language !== undefined){
-        sum(sumDailyTvls, language, timestamp, item.tvl, languageProtocols, protocol.name);
-        return
-      }
-      let hasAtLeastOneChain = false;
-      Object.entries(item).forEach(([chain, tvl])=>{
-        const formattedChainName = getChainDisplayName(chain, true)
-        if(extraSections.includes(formattedChainName) || formattedChainName.includes("-")){
-          return
-        }
-        const lang = defaultLang(formattedChainName)
-        if(lang !== undefined){
-          hasAtLeastOneChain = true;
-          sum(sumDailyTvls, lang, timestamp, tvl, languageProtocols, protocol.name);
-        }
-      })
-      if(hasAtLeastOneChain === false){
-        const lang = defaultLang(transformNewChainName(protocol.chain))
-        if(lang !== undefined){
-            sum(sumDailyTvls, lang, timestamp, item.tvl, languageProtocols, protocol.name);
-        }
-      }
+      processor(timestamp, item, protocol)
     });
   });
+
+}
+
+const handler = async (
+    _event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
+  const sumDailyTvls = {} as SumDailyTvls
+  const languageProtocols = {} as LanguageProtocols
+  
+  await processProtocols(async (timestamp: number, item: TvlItem, protocol:Protocol)=>{
+    let language = protocol.language;
+    if(language !== undefined){
+      sum(sumDailyTvls, language, timestamp, item.tvl, languageProtocols, protocol.name);
+      return
+    }
+    let hasAtLeastOneChain = false;
+    Object.entries(item).forEach(([chain, tvl])=>{
+      const formattedChainName = getChainDisplayName(chain, true)
+      if(extraSections.includes(formattedChainName) || formattedChainName.includes("-")){
+        return
+      }
+      const lang = defaultLang(formattedChainName)
+      if(lang !== undefined){
+        hasAtLeastOneChain = true;
+        sum(sumDailyTvls, lang, timestamp, tvl, languageProtocols, protocol.name);
+      }
+    })
+    if(hasAtLeastOneChain === false){
+      const lang = defaultLang(transformNewChainName(protocol.chain))
+      if(lang !== undefined){
+          sum(sumDailyTvls, lang, timestamp, item.tvl, languageProtocols, protocol.name);
+      }
+    }
+  })
+  
   return successResponse({
     chart: sumDailyTvls,
     protocols: Object.fromEntries(Object.entries(languageProtocols).map(c=>[c[0], Array.from(c[1])])) ,

@@ -3,13 +3,6 @@ import { lookupBlock } from "@defillama/sdk/build/util/index";
 import protocols from "../protocols/data";
 import pThrottle from "../utils/pThrottle";
 
-const throttle = pThrottle({
-  limit: 100,
-  interval: 1050,
-});
-
-const throttleLookupBlock = throttle(lookupBlock);
-
 import { Ecosystem } from "../dexVolumes/dexVolume.types";
 
 export function getProtocol(name: string) {
@@ -33,7 +26,21 @@ export async function getBlocksRetry(timestamp: number) {
   throw new Error(`Couldn't get the block numbers at timestamp ${timestamp}`);
 }
 
-export async function getChainBlocksRetry(timestamp: number, chain: Ecosystem) {
+export async function getChainBlocksRetry(
+  timestamp: number,
+  chain: Ecosystem,
+  limit = 1000
+) {
+  const throttle = pThrottle({
+    limit,
+    interval: 60000,
+  });
+
+  const throttleLookupBlock: (
+    timestamp: number,
+    { chain }: { chain: Ecosystem }
+  ) => Promise<{ block: number; timestamp: number }> = throttle(lookupBlock);
+
   for (let i = 0; i < 10; i++) {
     try {
       const res: { block: number; timestamp: number } =

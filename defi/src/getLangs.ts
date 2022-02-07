@@ -1,6 +1,6 @@
 import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
-import { getHistoricalTvlForAllProtocols } from "./storeGetCharts";
+import { processProtocols, TvlItem } from "./storeGetCharts";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import type {Protocol} from "./protocols/data"
 
@@ -47,31 +47,6 @@ function defaultLang(chainName:string){
         return "Solidity"
     }
     return chainToLang[chainName]
-}
-
-export type TvlItem = {[section: string]: any;}
-
-export async function processProtocols(processor: (timestamp: number, tvlItem: TvlItem, protocol:Protocol)=>Promise<void>){
-  const {historicalProtocolTvls, lastDailyTimestamp} = await getHistoricalTvlForAllProtocols();
-  historicalProtocolTvls.forEach((protocolTvl) => {
-    if (protocolTvl === undefined) {
-      return;
-    }
-    let { historicalTvl, protocol, lastTimestamp } = protocolTvl;
-    const lastTvl = historicalTvl[historicalTvl.length - 1];
-    while (lastTimestamp < lastDailyTimestamp) {
-      lastTimestamp = getClosestDayStartTimestamp(lastTimestamp + 24 * secondsInHour)
-      historicalTvl.push({
-        ...lastTvl,
-        SK: lastTimestamp,
-      });
-    }
-    historicalTvl.forEach((item) => {
-      const timestamp = getClosestDayStartTimestamp(item.SK);
-      processor(timestamp, item, protocol)
-    });
-  });
-
 }
 
 const handler = async (

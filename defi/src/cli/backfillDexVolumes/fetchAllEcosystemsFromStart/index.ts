@@ -9,13 +9,15 @@ const throttle = pThrottle({
 import {
   AllEcosystemVolumes,
   Ecosystem,
+  EcosystemTimestampBlocks,
   TimestampVolumes,
   VolumeAdapter,
 } from "../../../../src/dexVolumes/dexVolume.types";
 
 const fetchAllEcosystemsFromStart = async (
   volumeAdapter: VolumeAdapter,
-  end: number
+  end: number,
+  ecosystemBlocks?: EcosystemTimestampBlocks
 ): Promise<AllEcosystemVolumes> => {
   const ecosystems: any[] = Object.keys(volumeAdapter);
 
@@ -25,12 +27,13 @@ const fetchAllEcosystemsFromStart = async (
         // TODO add customBackfill
         const { fetch, start } = volumeAdapter[ecosystem];
         const throttleFetch = throttle(fetch);
-
+        const blocks = ecosystemBlocks?.[ecosystem];
         return fetchEcosystemsFromStart({
           ecosystem,
           fetch: throttleFetch,
           start,
           end,
+          blocks,
         });
       })
     )

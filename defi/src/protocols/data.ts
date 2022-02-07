@@ -10877,7 +10877,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "artemis",
     cmcId: null,
-    category: "Yield",
+    category: "Launchpad",
     chains: ["Harmony"],
     module: "artemis/index.js",
     audit_links: ["https://paladinsec.co/projects/artemis-ifo/"] ,

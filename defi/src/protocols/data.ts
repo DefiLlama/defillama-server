@@ -15,6 +15,7 @@ export interface Protocol {
   cmcId: string;
   category: string;
   chains: string[];
+  oracles: string[];
   module: string;
   twitter: string;
   language?: string;

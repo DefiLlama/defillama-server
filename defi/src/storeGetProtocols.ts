@@ -33,18 +33,16 @@ const handler = async (_event: any) => {
 
   const noChainResponse = trimmedResponse.filter((p) => p.category !== "Chain");
   const chains = {} as { [chain: string]: number };
-  const oracles: string[] = []
+  const oracles = new Set();
   const protocolCategoriesSet = new Set();
   noChainResponse.forEach((p) => {
     protocolCategoriesSet.add(p.category);
     p.chains.forEach((c: string) => {
       chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
     });
-    p.oracles.forEach((o: string) => {
-      if (!oracles.includes(o)) {
-        oracles.push(o)
-      }
-    });
+    p.oracles?.forEach((o: string) => {
+      oracles.add(o)
+    })
   });
 
   const compressedV2Response = compress(
@@ -56,7 +54,9 @@ const handler = async (_event: any) => {
       protocolCategories: [...protocolCategoriesSet].filter(
         (category) => category
       ),
-      oracles: oracles,
+      oracles: [...oracles].filter(
+        (category) => category
+      ),
     })
   );
   await store("lite/protocols2", compressedV2Response, true);

@@ -21568,7 +21568,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "ocean-protocol",
   cmcId: "3911",
-  category: "Service",
+  category: "Services",
   chains: ["Ethereum", "Binance", "Polygon", "Moonriver"],
   module: "ocean-protocol/index.js",
   twitter: "oceanprotocol",

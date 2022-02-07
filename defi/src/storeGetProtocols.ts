@@ -40,9 +40,11 @@ const handler = async (_event: any) => {
     p.chains.forEach((c: string) => {
       chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
     });
-    p.oracles?.forEach((o: string) => {
-      oracles.add(o)
-    })
+    if (p.oracles) {
+      p.oracles.forEach((o: string) => {
+        oracles.add(o)
+      })
+    }
   });
 
   const compressedV2Response = compress(
@@ -55,7 +57,7 @@ const handler = async (_event: any) => {
         (category) => category
       ),
       oracles: [...oracles].filter(
-        (category) => category
+        (oracle) => oracle
       ),
     })
   );

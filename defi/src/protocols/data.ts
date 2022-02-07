@@ -18,7 +18,7 @@ export interface Protocol {
   chains: string[];
   module: string;
   twitter: string;
-  language: string;
+  language?: string;
 }
 
 /* Audits: Please follow this legend

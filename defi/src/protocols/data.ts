@@ -23137,7 +23137,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Lending",
   chains: ["Metis"],
-  module: "agora.js",
+  module: "agora/index.js",
   twitter: "AgoraDefi",
   audit_links: ["https://agora-defi.notion.site/Contracts-Audits-a0a0058d0fd0450bab43ffe9d1db9f5e#b233bb933bc84084aa9ab56244764a98"],
   forkedFrom: ["Compound"],

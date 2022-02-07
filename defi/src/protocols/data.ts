@@ -1835,7 +1835,7 @@ export default [
     description:
       "Ooki is a flexible decentralized finance protocol for margin trading, borrowing, lending and staking on multiple blockchains.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ooki.png`,
+    logo: `${baseIconsUrl}/ooki.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "ooki",
@@ -1844,7 +1844,7 @@ export default [
     chains: ["Ethereum"],
     module: "ooki/index.js",
     twitter: "OokiTrade",
-    audit_links: ["https://bzx.network/security"],
+    audit_links: ["https://docs.ooki.com/developers/audits"],
     oracles: ["Chainlink"],
   },
   /*
@@ -24695,7 +24695,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audits: "0",
   audit_note: null,
   gecko_id: "velhalla",
-  cmcId: "13250",
+  cmcId: "13250", 
   category: "Gaming",
   chains: ["Velas"],
   module: "velhalla.js",

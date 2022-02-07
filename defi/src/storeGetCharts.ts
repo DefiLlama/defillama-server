@@ -72,9 +72,9 @@ export async function getHistoricalTvlForAllProtocols(){
   }
 }
 
-const handler = async (_event: any) => {
-  const sumDailyTvls = {} as SumDailyTvls
-  
+export type TvlItem = {[section: string]: any;}
+
+export async function processProtocols(processor: (timestamp: number, tvlItem: TvlItem, protocol:Protocol)=>Promise<void>){
   const {historicalProtocolTvls, lastDailyTimestamp} = await getHistoricalTvlForAllProtocols();
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (protocolTvl === undefined) {
@@ -91,7 +91,16 @@ const handler = async (_event: any) => {
     }
     historicalTvl.forEach((item) => {
       const timestamp = getClosestDayStartTimestamp(item.SK);
-      sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl)
+      processor(timestamp, item, protocol)
+    });
+  });
+}
+
+const handler = async (_event: any) => {
+  const sumDailyTvls = {} as SumDailyTvls
+  
+  await processProtocols(async (timestamp: number, item: TvlItem, protocol:Protocol)=>{
+    sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl)
       let hasAtLeastOneChain = false;
       Object.entries(item).forEach(([chain, tvl])=>{
         const formattedChainName = getChainDisplayName(chain, true)
@@ -108,8 +117,7 @@ const handler = async (_event: any) => {
       if(hasAtLeastOneChain === false){
         sum(sumDailyTvls, transformNewChainName(protocol.chain), "tvl", timestamp, item.tvl)
       }
-    });
-  });
+  })
 
   await Promise.all(Object.entries(sumDailyTvls).map(async ([chain, chainDailyTvls])=>{
     const chainResponse = Object.fromEntries(Object.entries(chainDailyTvls).map(

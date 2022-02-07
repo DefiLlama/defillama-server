@@ -44,7 +44,7 @@ const handler = async (_event: any) => {
       if (!oracles.includes(o)) {
         oracles.push(o)
       }
-    })
+    });
   });
 
   const compressedV2Response = compress(
@@ -56,7 +56,7 @@ const handler = async (_event: any) => {
       protocolCategories: [...protocolCategoriesSet].filter(
         (category) => category
       ),
-      oracles
+      oracles: oracles,
     })
   );
   await store("lite/protocols2", compressedV2Response, true);

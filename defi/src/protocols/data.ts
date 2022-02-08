@@ -24630,7 +24630,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: "bsc:0x849741B79bc1618b46CF9ec600E94E771DEde601",
   symbol: "HFC",
   url: "https://www.hotfriescoin.com/",
-  description: "The team at Hotfriescoin built a new Asset Class called Stable Progressive Coin that has all the characteristics of a currency that is a true medium of exchange and strong store of value.",
+  description: "A new Asset Class called Stable Progressive Coin. We aim to be the World's Most Powerful Reserve and Store of Value Currency.",
   chain: "Binance",
   logo: `${baseIconsUrl}/hotfriescoin.jpg`,
   audits: "0",

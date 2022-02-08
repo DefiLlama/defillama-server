@@ -123,7 +123,7 @@ functions:
           method: get
   protocol:
     handler: src/getProtocol.default
-    timeout: 60
+    timeout: 120
     memorySize: 2000
     events:
       - http:
@@ -131,7 +131,8 @@ functions:
           method: get
   updatedProtocol:
     handler: src/getUpdatedProtocol.default
-    timeout: 60
+    timeout: 120
+    memorySize: 2000
     events:
       - http:
           path: updatedProtocol/{protocol}
@@ -145,6 +146,7 @@ functions:
   coins:
     handler: src/getCoins.default
     timeout: 60
+    memorySize: 2000
     events:
       - http:
           path: coins
@@ -152,6 +154,7 @@ functions:
   chains:
     handler: src/getChains.default
     timeout: 60
+    memorySize: 2000
     events:
       - http:
           path: chains
@@ -201,6 +204,7 @@ functions:
       - schedule: cron(20 * * * ? *)
   hourly:
     handler: src/getHourlyData.default
+    memorySize: 2000
     events:
       - http:
           path: hourly/{protocol}

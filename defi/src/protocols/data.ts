@@ -568,7 +568,7 @@ export default [
     audit_note: null,
     gecko_id: "huobi-btc",
     cmcId: "478",
-    category: "Cross Chain",
+    category: "Bridge",
     chains: ["Ethereum"],
     module: "hbtc.js",
     twitter: "HBTC_official",

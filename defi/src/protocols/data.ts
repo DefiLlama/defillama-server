@@ -2804,7 +2804,7 @@ export default [
     url: "https://pangolin.exchange",
     description: "Pangolin is a community-driven DEX that runs on Avalanche. ",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/pangolin.jpg`,
+    logo: `${baseIconsUrl}/pangolin.png`,
     audits: "3",
     audit_note: null,
     gecko_id: "pangolin",

@@ -76,7 +76,7 @@ export default [
     audit_note: null,
     gecko_id: "wrapped-bitcoin",
     cmcId: "3717",
-    category: "Cross Chain",
+    category: "Bridge",
     chains: ["Ethereum"],
     module: "wbtc.js",
     twitter: "WrappedBTC",

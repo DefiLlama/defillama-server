@@ -6308,7 +6308,7 @@ export default [
     audit_note: null,
     gecko_id: "deri-protocol",
     cmcId: "8424",
-    category: "Minting",
+    category: "Derivatives",
     chains: ["Binance","Polygon"],
     module: "deri/index.js",
     twitter: "DeriProtocol",

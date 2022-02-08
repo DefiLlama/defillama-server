@@ -1364,7 +1364,7 @@ export default [
     audit_note: null,
     gecko_id: "badger-dao",
     cmcId: "7859",
-    category: "Bridge",
+    category: "Yield Aggregator",
     chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "badgerdao.js",
     twitter: "Yield Aggregator",

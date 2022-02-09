@@ -24783,7 +24783,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: "8603",
   category: "Options",
   chains: ["Ethereum", "Binance", "Avalanche", "Arbitrum"],
-  module: "antimatter/index.js",
+  module: "antimatterDAO/index.js",
   twitter: "antimatterdefi",
   audit_links: ["https://docs.antimatter.finance/developers/auditing-report"],
   listedAt: 1644433965,

@@ -14,6 +14,7 @@ import {
   dailyRawTokensTvl,
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
+import BigNumber from "bignumber.js";
 
 type ChainBlocks = {
   [chain: string]: number;
@@ -65,7 +66,21 @@ async function getTvl(
         usdTvls[storedKey] = tvlResults.usdTvl;
         tokensBalances[storedKey] = tvlResults.tokenBalances;
         usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
-        rawTokenBalances[storedKey] = tvlBalances;
+        if(isStandard){
+          rawTokenBalances[storedKey] = tvlBalances;
+        } else {
+          const normalizedBalances = {} as any;
+          for (const [name, balance] of Object.entries(tvlBalances as any)) {
+            if (typeof balance === "object") {
+              normalizedBalances[
+                name
+              ] = new BigNumber(balance as any).toNumber(); // Some adapters return a BigNumber from bignumber.js so the results must be normalized
+            } else {
+              normalizedBalances[name] = balance
+            }
+          }
+          rawTokenBalances[storedKey] = normalizedBalances;
+        }
       } else {
         usdTvls[storedKey] = Number(await tvlFunction(
           unixTimestamp,

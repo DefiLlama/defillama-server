@@ -13901,7 +13901,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://hectordao.com",
   description: "Hector is a decentralized storage protocol based on the HEC token – collateralized and backed by the Hector DAO. HEC will be the reserve currency on/of Fantom.",
   chain: "Fantom",
-  logo: `${baseIconsUrl}/hector-dao.png`,
+  logo: `${baseIconsUrl}/hector-finance.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: "hector-dao",

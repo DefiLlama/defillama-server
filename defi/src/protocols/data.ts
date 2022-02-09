@@ -6434,7 +6434,7 @@ export default [
     id: "430",
     name: "Acumen",
     address: "solana:-",
-    symbol: "ACMN",
+    symbol: "ACM",
     url: "https://acumen.network",
     description: "The Acumen protocol is an autonomous, non-custodial interest rate protocol native to the Solana blockchain that uses algorithmically set interest rates to enable open financial applications.",
     chain: "Solana",

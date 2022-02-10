@@ -24990,6 +24990,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   id: "1383",
   name: "Platinum Finance",
   address: "fantom:0xDf15d33875AcF462a8746BF99396F6cCD50E0fFe",
+  symbol: "PLAT",
   url: "https://platinumfi.app/",
   description: "PLAT is an algorithmic token that serves as the backbone of a rapidly growing ecosystem aimed towards bringing liquidity and new use cases to the Fantom Network.",
   chain: "Fantom",

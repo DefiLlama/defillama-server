@@ -20,12 +20,15 @@ export { default as fetchEcosystemsFromStart } from "./fetchEcosystemsFromStart"
 export { default as getBlocksFromStart } from "./getBlocksFromStart";
 export { default as getVolumesFromStart } from "./getVolumesFromStart";
 
+import getBlocksFromStart from "./getBlocksFromStart";
 import calcAllVolumes from "./calcAllVolumes";
 import calcAllDailyBreakdownVolume from "./calcAllDailyBreakdownVolume";
 import calcAllHourlyBreakdownVolume from "./calcAllHourlyBreakdownVolume";
 import calcAllMonthlyBreakdownVolume from "./calcAllMonthlyBreakdownVolume";
 
 import {
+  Ecosystem,
+  EcosystemTimestampBlocks,
   DailyEcosystemRecord,
   HourlyEcosystemRecord,
   MonthlyEcosystemRecord,
@@ -113,62 +116,128 @@ const backfillDexVolumes = async (id: number) => {
       breakdown: string;
     }[] = [];
 
-    await Promise.all(
-      Object.entries(breakdownAdapter).map(
-        async ([breakdown, volumeAdapter]) => {
-          const { dailyVolumes, hourlyVolumes, monthlyVolumes } =
-            await calcAllVolumes({ currentTimestamp, id, volumeAdapter });
+    // Convert all async start fetches to numbers by calling them
+    const adapterWithStarts: { [x: string]: VolumeAdapter } =
+      Object.fromEntries(
+        await Promise.all(
+          Object.entries(breakdownAdapter).map(async ([product, adapter]) => {
+            const volumeAdapters = Object.fromEntries(
+              await Promise.all(
+                Object.entries(adapter).map(
+                  async ([ecosystem, { start, fetch }]) => {
+                    return [
+                      ecosystem,
+                      {
+                        start:
+                          typeof start === "number" ? start : await start(),
+                        fetch,
+                      },
+                    ];
+                  }
+                )
+              )
+            );
+            return [product, volumeAdapters];
+          })
+        )
+      );
 
-          breakdownDailyVolumes.push({
-            dailyVolumes,
-            earliestTimestamp: currentTimestamp,
-            breakdown,
-          });
+    const allEcosystemStarts: { [x: string]: number } = Object.values(
+      adapterWithStarts
+    ).reduce((acc: { [x: string]: number }, curr) => {
+      Object.entries(curr).forEach(([ecosystem, { start }]) => {
+        acc[ecosystem] = Math.min(
+          acc[ecosystem] || Number.MAX_SAFE_INTEGER,
+          start
+        );
+      });
+      return acc;
+    }, {});
 
-          breakdownHourlyVolumes.push({
-            hourlyVolumes,
-            earliestTimestamp: currentTimestamp,
-            breakdown,
-          });
+    console.log(allEcosystemStarts, "allEcosystemStarts");
 
-          breakdownMonthlyVolumes.push({
-            monthlyVolumes,
-            earliestTimestamp: currentTimestamp,
-            breakdown,
-          });
-        }
-      )
-    );
+    const limit = Math.floor(100 / Object.values(allEcosystemStarts).length);
 
-    Object.values(
-      calcAllDailyBreakdownVolume({
-        breakdownDailyVolumes,
-        currentTimestamp,
-        id,
-      })
-    ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
-      allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
-    });
+    // const ecosystemBlocks: EcosystemTimestampBlocks = Object.fromEntries(
+    //   await Promise.all(
+    //     Object.entries(allEcosystemStarts).map(
+    //       // TODO Fix all adapter types first before typing
+    //       async ([ecosystem, start]: [any, number]) => {
+    //         const res = await getBlocksFromStart(
+    //           start,
+    //           ecosystem,
+    //           currentTimestamp,
+    //           limit
+    //         );
+    //         return [ecosystem, res];
+    //       }
+    //     )
+    //   )
+    // );
 
-    Object.values(
-      calcAllHourlyBreakdownVolume({
-        breakdownHourlyVolumes,
-        currentTimestamp,
-        id,
-      })
-    ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
-      allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
-    });
+    // console.log(JSON.stringify(ecosystemBlocks), "ecosystemBlocks");
 
-    Object.values(
-      calcAllMonthlyBreakdownVolume({
-        breakdownMonthlyVolumes,
-        currentTimestamp,
-        id,
-      })
-    ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
-      allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
-    });
+    // await Promise.all(
+    //   Object.entries(breakdownAdapter).map(
+    //     async ([breakdown, volumeAdapter]) => {
+    //       const { dailyVolumes, hourlyVolumes, monthlyVolumes } =
+    //         await calcAllVolumes({
+    //           currentTimestamp,
+    //           id,
+    //           volumeAdapter,
+    //           ecosystemBlocks,
+    //         });
+
+    //       breakdownDailyVolumes.push({
+    //         dailyVolumes,
+    //         earliestTimestamp: currentTimestamp,
+    //         breakdown,
+    //       });
+
+    //       breakdownHourlyVolumes.push({
+    //         hourlyVolumes,
+    //         earliestTimestamp: currentTimestamp,
+    //         breakdown,
+    //       });
+
+    //       breakdownMonthlyVolumes.push({
+    //         monthlyVolumes,
+    //         earliestTimestamp: currentTimestamp,
+    //         breakdown,
+    //       });
+    //     }
+    //   )
+    // );
+
+    // Object.values(
+    //   calcAllDailyBreakdownVolume({
+    //     breakdownDailyVolumes,
+    //     currentTimestamp,
+    //     id,
+    //   })
+    // ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
+    //   allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
+    // });
+
+    // Object.values(
+    //   calcAllHourlyBreakdownVolume({
+    //     breakdownHourlyVolumes,
+    //     currentTimestamp,
+    //     id,
+    //   })
+    // ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
+    //   allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
+    // });
+
+    // Object.values(
+    //   calcAllMonthlyBreakdownVolume({
+    //     breakdownMonthlyVolumes,
+    //     currentTimestamp,
+    //     id,
+    //   })
+    // ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
+    //   allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
+    // });
   }
 
   await Promise.all(allDbWrites);
@@ -179,9 +248,44 @@ const backfillDexVolumes = async (id: number) => {
   // TODO unlock dex-volume at end to allow hourly CRON
 };
 
-// backfillDexVolumes(468).catch((e) => {
-//   console.log(e);
-// });
+backfillDexVolumes(1).catch((e) => {
+  console.log(e);
+});
+
+const blocks = async () => {
+  // const res = getBlocksFromStart(
+  //   1640044800,
+  //   "polygon",
+  //   Date.now() / 1000,
+  //   100
+  // ).then((res) => {
+  //   console.log(res);
+  // });
+
+  const res1 = await getBlocksFromStart(
+    1541116800,
+    "ethereum",
+    Date.now() / 1000,
+    100
+  ).then((res) => {
+    console.log(res);
+  });
+
+  // const res2 = getBlocksFromStart(
+  //   1630454400,
+  //   "arbitrum",
+  //   Date.now() / 1000,
+  //   100
+  // ).then((res) => {
+  //   console.log(res);
+  // });
+
+  // const ress = await Promise.all([res, res1, res2]);
+
+  console.log(res1, "all done");
+};
+
+// blocks();
 
 // TODO fill multiple protocols
 // TODO fill All protocols

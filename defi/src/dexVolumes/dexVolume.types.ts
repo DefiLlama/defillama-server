@@ -16,8 +16,12 @@ export type MonthlyVolumes = {
   totalVolume: string;
 };
 
-export type TimestampBlock = {
+export type TimestampBlocks = {
   [x: string]: number;
+};
+
+export type EcosystemTimestampBlocks = {
+  [x: string]: TimestampBlocks;
 };
 
 export type TimestampVolumes = {

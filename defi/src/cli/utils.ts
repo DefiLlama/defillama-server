@@ -43,10 +43,7 @@ export async function getChainBlocksRetry(
     interval: 60000,
   });
 
-  const throttleLookupBlock: (
-    timestamp: number,
-    { chain }: { chain: Ecosystem }
-  ) => Promise<{ block: number; timestamp: number }> = throttle(lookupBlock);
+  const throttleLookupBlock: any = throttle(lookupBlock);
 
   for (let i = 0; i < 10; i++) {
     try {

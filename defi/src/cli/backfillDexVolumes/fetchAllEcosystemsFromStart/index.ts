@@ -26,7 +26,7 @@ const fetchAllEcosystemsFromStart = async (
       ecosystems.map((ecosystem: Ecosystem) => {
         // TODO add customBackfill
         const { fetch, start } = volumeAdapter[ecosystem];
-        const throttleFetch = throttle(fetch);
+        const throttleFetch: any = throttle(fetch);
         const blocks = ecosystemBlocks?.[ecosystem];
         return fetchEcosystemsFromStart({
           ecosystem,

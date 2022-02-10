@@ -15607,7 +15607,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Optimism"],
     module: "pika.js",
     twitter: "PikaProtocol",
-    audit_links: ["https://www.certik.com/projects/pikaprotocol"],
+    audit_links: ["https://www.certik.com/projects/pikaprotocol", "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-PikaPerpV2-v1.0.pdf"],
     oracles: ["Chainlink"],
     listedAt: 1637890789,
   },

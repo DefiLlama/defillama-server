@@ -16,6 +16,7 @@ export interface Protocol {
   category: string;
   chains: string[];
   oracles: string[];
+  forkedFrom: string[];
   module: string;
   twitter: string;
   language?: string;

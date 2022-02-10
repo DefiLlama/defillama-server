@@ -24946,7 +24946,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://brightunion.io",
   description: "DeFi coverage aggregator",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/minimax.png`,
+  logo: `${baseIconsUrl}/bright-union.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "bright-union",

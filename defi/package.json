@@ -55,6 +55,7 @@
     "@sentry/serverless": "^6.2.3",
     "@sentry/tracing": "^6.2.3",
     "@solana/web3.js": "^1.30.2",
+    "@terra-money/terra.js": "^3.0.7",
     "@vechain/connex-driver": "^2.0.7",
     "@vechain/connex-framework": "^2.0.7",
     "algosdk": "^1.12.0",

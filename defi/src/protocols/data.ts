@@ -18181,6 +18181,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_links:[
     "https://staderlabs-docs.s3.amazonaws.com/audits/terra/Cryptonics_Audit_Report_Terra_V1.pdf",
     "https://kp5hfcaxs2prkdoscwibtrbjjddvoov3huhezsxknanxfaucm76a.arweave.net/U_pyiBeWnxUN0hWQGcQpSMdXOrs9DkzK6mgbcoKCZ_w",
+   "https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Stader_Labs_LunaX_Contrracts_CosmWasm_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf",
    ],
   listedAt: 1639811716,
 },

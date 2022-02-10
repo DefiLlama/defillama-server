@@ -12842,7 +12842,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Harmony"],
   module: "eggtartswap/index.js",
   twitter: "EggTartSwap",
-  forkedFrom: "Uniswap",
+  forkedFrom: ["Uniswap"],
   listedAt: 1635981448,
 },
 {

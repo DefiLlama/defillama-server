@@ -53,13 +53,17 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
   const forkedProtocols = {} as ForkedProtocols;
 
   await processProtocols(async (timestamp: number, item: TvlItem, protocol: Protocol) => {
-    let forks = protocol.forkedFrom;
-    if (forks) {
-      forks.forEach((fork) => {
-        sum(sumDailyTvls, fork, timestamp, item, forkedProtocols, protocol.name);
-      });
+    try {
+      let forks = protocol.forkedFrom;
 
-      return;
+      if (forks) {
+        forks.forEach((fork) => {
+          sum(sumDailyTvls, fork, timestamp, item, forkedProtocols, protocol.name);
+        });
+        return;
+      }
+    } catch (error) {
+      console.log(protocol.name, error);
     }
   });
 

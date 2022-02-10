@@ -53,13 +53,17 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
   const oracleProtocols = {} as OracleProtocols;
 
   await processProtocols(async (timestamp: number, item: TvlItem, protocol: Protocol) => {
-    let oracles = protocol.oracles;
-    if (oracles) {
-      oracles.forEach((oracle) => {
-        sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol.name);
-      });
+    try {
+      let oracles = protocol.oracles;
+      if (oracles) {
+        oracles.forEach((oracle) => {
+          sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol.name);
+        });
 
-      return;
+        return;
+      }
+    } catch (error) {
+      console.log(protocol.name, error);
     }
   });
 

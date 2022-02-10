@@ -21155,7 +21155,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "polkaex",
   cmcId: null,
   category: "Dexes",
-  chains: ["Ethereum", "Shiden", "Binance", "Polygon"],
+  chains: ["Ethereum", "Shiden", "Binance", "Polygon", "Astar"],
   module: "polkaex/index.js",
   twitter: "PolkaExOfficial",
   audit_links: ["https://www.certik.com/projects/polkaex"],

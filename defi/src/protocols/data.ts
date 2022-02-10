@@ -9581,7 +9581,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0xc834fa996fa3bec7aad3693af486ae53d8aa8b50",
     symbol: "CONV",
     url: "https://conv.finance",
-    description: "Convergence is a new age protocol allowing both retail and enterprise users to swap between real-world assets and blockchain-based DeFi utility tokens seamlessly",
+    description: "Convergence Finance is a cross-chain AMM and launchpad that aims to make private markets public while enabling cross-chain compatibility to maximize liquidity across different chains so users can interact with private-sale token projects and transact beyond the ERC20 standard.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/convergence.jpg`,
     audits: "2",

@@ -459,7 +459,7 @@ export default [
     description:
       "Kyber Network is connecting the fragmented tokenized world by enabling instant and seamless transactions between platforms, ecosystems.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/kyber.png`,
+    logo: `${baseIconsUrl}/kyberswap.png`,
     audits: null,
     audit_note: null,
     gecko_id: "kyber-network",

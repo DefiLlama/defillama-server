@@ -781,7 +781,7 @@ export default [
     module: "swerve.js",
     twitter: "SwerveFinance",
     audit_links: ["https://github.com/crypticlabs/swerve-audit-report/blob/master/Swerve%20Finance%20Audit%20-%20by%20Cryptic%20Labs%20v3.pdf"],
-    forkedFrom: ["CurveFinance"]
+    forkedFrom: ["Curve"]
   },
   {
     id: "143",
@@ -4154,7 +4154,7 @@ export default [
     module: "viperswap/index.js",
     twitter: "VenomDAO",
     audit_links: ["https://solidity.finance/audits/ViperSwap/"] ,
-    forkedFrom: ["Uniswap", "SushiSwap", "Bao"],
+    forkedFrom: ["Uniswap", "SushiSwap", "Bao Finance"],
   },
   {
     id: "314",
@@ -8251,7 +8251,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "cyclefinance/index.js",
     twitter: "CycleProtocol",
-    forkedFrom: ["Synthetix","Beefy","YieldYak","Yearn Finance"],
+    forkedFrom: ["Synthetix", "Beefy Finance", "YieldYak", "Yearn Finance"],
   },
   {
     id: "526",
@@ -8515,7 +8515,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Arbitrum"],
     module: "carbon/index.js",
     twitter: "carbonfi_io",
-    forkedFrom: ["arbiNYAN"],
+    forkedFrom: ["ArbiNYAN"],
   },
   {
     id: "540",
@@ -9494,7 +9494,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Arbitrum"],
     module: "parrotegg/index.js",
     twitter: "Parrotdefi1",
-    forkedFrom: ["Goose", "PolyPup"],
+    forkedFrom: ["Goose Finance", "PolyPup"],
   },
   {
     id: "591",
@@ -11145,7 +11145,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "darkmatter/index.js",
     twitter: "darkmatterdefi",
-    forkedFrom: ["Goose"],
+    forkedFrom: ["Goose Finance"],
     listedAt: 1634342862,
   },
   {
@@ -11847,7 +11847,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "squid-defi/index.js",
     twitter: "SquidDeFi",
-    forkedFrom: ["Goose"],
+    forkedFrom: ["Goose Finance"],
     listedAt: 1635249537,
   },
   {
@@ -12110,7 +12110,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "PotluckProtocol",
     audit_links: ["https://dessertswap.finance/audits/Potluck%20BSC-FTM%20audit%2011437133.pdf"],
     oracles: ["Internal"],
-    forkedFrom: ["Pantherswap", "PancakeSwap"],
+    forkedFrom: ["PantherSwap", "PancakeSwap"],
     listedAt: 1635465731,
   },
   {
@@ -13690,7 +13690,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Fantom"],
   module: "undeadfinance/index.js",
   twitter: "FinanceUndead",
-  forkedFrom: ["Polypup"],
+  forkedFrom: ["PolyPup"],
   listedAt: 1636485547,
 },
 {
@@ -20582,7 +20582,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "trickortreat/index.js",
   twitter: "tricktreatfarm",
   audit_links: ["https://github.com/solidproof/smart-contract-audits/blob/main/SmartContract_Audit_Solidproof_TrickOrTreat.pdf"],
-  forkedFrom: ["Goose"],
+  forkedFrom: ["Goose Finance"],
   listedAt: 1640909035,
 },
 {
@@ -23484,7 +23484,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Fantom"],
   module: "frog-nation-farm/index.js",
   twitter: "frognation_farm",
-  forkedFrom: ["Goose"],
+  forkedFrom: ["Goose Finance"],
   listedAt: 1642809400,
 },
 {
@@ -23887,7 +23887,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "astralfarm/index.js",
   twitter: "Astral_FTM",
   oracles: ["SpookySwap"],
-  forkedFrom: ["Goose"],
+  forkedFrom: ["Goose Finance"],
   listedAt: 1643481742,
 },
 {
@@ -24829,7 +24829,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "animal-farm/index.js",
   twitter: "DRIPcommunity",
   language: "Solidity",
-  forkedFrom: ["Panther"],
+  forkedFrom: ["PantherSwap"],
   listedAt: 1644437338,
 },
 {

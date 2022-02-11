@@ -25234,7 +25234,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Fantom"],
   oracles: [],
   forkedFrom: [],
-  module: "projects/mymine/index.js",
+  module: "mymine/index.js",
   twitter: "defi_waterfall",
   language: "Solidity",
   listedAt: 1644554424,

@@ -61,7 +61,7 @@ export default [
       "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits",
       "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
     ],
-    oracles: ["Uniswap"],
+    oracles: [],
   },
   {
     id: "2",
@@ -23744,7 +23744,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Harmony"],
   module: "comfymoney/index.js",
   twitter: "VenomDAO",
-  oracles: ["6 hour Uniswap TWAP Oracle"],
+  oracles: ["TWAP"],
   forkedFrom: ["Tomb Finance"],
   listedAt: 1643326847,
 },

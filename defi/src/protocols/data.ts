@@ -12500,7 +12500,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "furucombo/index.js",
     twitter: "furucombo",
     audit_links: ["https://docs.furucombo.app/audit"],
-    oracles: ["CoinGecko"],
+    oracles: ["Coingecko"],
     listedAt: 1635804510,    
   },
   {
@@ -17062,7 +17062,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "vaporwave.js",
     twitter: "vwavefinance",
     audit_links: ["https://paladinsec.co/projects/vaporwave-finance"],
-    oracles: ["TWAP", "Fork of Beefy API", "fetching AMM data and Coingecko data"],
+    oracles: ["TWAP", "Fork of Beefy API"],
     forkedFrom: ["Beefy Finance"],
     listedAt: 1638881757,
   },

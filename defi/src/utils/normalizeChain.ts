@@ -2,6 +2,7 @@ const normalizedChainReplacements = {
   "binance":"bsc",
   "wanchain": "wan",
   "kucoin": "kcc",
+  "xdai": "gnosis",
 } as {
   [chain:string]:string
 }

@@ -6983,7 +6983,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "solend/index.js",
     twitter: "solendprotocol",
-    audit_links: ["https://github.com/solendprotocol/solana-program-library/tree/master/token-lending/audit"]
+    audit_links: ["https://github.com/solendprotocol/solana-program-library/tree/master/token-lending/audit"],
+    oracles: ["Pyth"]
   },
   {
     id: "459",
@@ -24441,7 +24442,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "hubble/index.js",
   twitter: "HubbleProtocol",
   audit_links: ["https://hubble-markets.gitbook.io/hubble-protocol-official-docs/documentation/security-audits"],
-  oracles: ["Pyth Network"],
+  oracles: ["Pyth"],
   listedAt: 1643884771,
 },
 {

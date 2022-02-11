@@ -606,6 +606,12 @@ export const chainCoingeckoIds = {
     cmcId: "5691",
     categories: ["EVM"],
   },
+  "Bittorrent": {
+    geckoId: "bittorrent",
+    symbol: "BTT",
+    cmcId: "16086",
+    categories: ["EVM"],
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -754,6 +760,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Curio"
     case "skale":
       return "SKALE"
+    case "bittorrent":
+      return "Bittorrent"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

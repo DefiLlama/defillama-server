@@ -23351,7 +23351,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: null,
   symbol: "SUNDAE",
   url: "https://www.sundaeswap.finance/",
-  description: "AMM",
+  description: "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
   chain: "Cardano",
   logo: `${baseIconsUrl}/sundaeswap.jpg`,
   audits: "2",

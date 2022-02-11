@@ -1,7 +1,7 @@
 import protocols, {Protocol} from "./protocols/data";
 import dynamodb, {getHistoricalValues} from "./utils/shared/dynamodb";
 import { dailyTvl, getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
+import { DAY, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
@@ -89,9 +89,15 @@ export async function processProtocols(processor: (timestamp: number, tvlItem: T
         SK: lastTimestamp,
       });
     }
+    let last = getClosestDayStartTimestamp(historicalTvl[0].SK);
     historicalTvl.forEach((item) => {
       const timestamp = getClosestDayStartTimestamp(item.SK);
+      while((timestamp - last) > (1.5* DAY)){
+        last = getClosestDayStartTimestamp(last + DAY);
+        processor(last, item, protocol)
+      }
       processor(timestamp, item, protocol)
+      last = timestamp;
     });
   });
 }

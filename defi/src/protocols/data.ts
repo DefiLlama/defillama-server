@@ -1350,7 +1350,6 @@ export default [
     chains: ["Ethereum"],
     module: "indexcoop/index.js",
     twitter: "indexcoop",
-    forkedFrom: ["Set Protocol"],
   },
   {
     id: "173",
@@ -3083,7 +3082,7 @@ export default [
     chains: ["Avalanche"],
     module: "snowball/index.js",
     twitter: "throwsnowballs",
-    forkedFrom: ["Pickle", "Saddle Finance"],
+    forkedFrom: ["Pickle", "Curve"],
 
   },
   {
@@ -4176,7 +4175,7 @@ export default [
     chains: ["Avalanche"],
     module: "gdl/index.js",
     twitter: "gondola_finance",
-    forkedFrom: ["Saddle Finance"],
+    forkedFrom: ["Curve"],
   },
   {
     id: "315",
@@ -4885,7 +4884,6 @@ export default [
     module: "injective/index.js",
     twitter: "InjectiveLabs",
     audit_links: ["https://www.certik.org/projects/injectiveprotocol"],
-    forkedFrom: ["UMAprotocol"],
     oracles: ["Chainlink","Band"],
   },
   {
@@ -9397,7 +9395,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "1swap/index.js",
     twitter: "1swapfi",
-    forkedFrom: ["Saddle Finance"],
+    forkedFrom: ["Curve"],
   },
   {
     id: "585",
@@ -14207,7 +14205,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Avalanche"],
   module: "axial/index.js",
   twitter: "AxialDeFi",
-  forkedFrom: ["Saddle Finance"],
+  forkedFrom: ["Curve"],
   listedAt: 1637031735,
 },
 {

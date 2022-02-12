@@ -1,0 +1,1 @@
+../../../defi/src/utils/coingeckoPlatforms.test.ts

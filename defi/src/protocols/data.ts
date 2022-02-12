@@ -3782,6 +3782,7 @@ export default [
     module: "anchor/index.js",
     twitter: "anchor_protocol",
     audit_links: ["https://docs.anchorprotocol.com/security#audits"],
+    oracles: ["Chainlink", "Internal"],
   },
   {
     id: "295",
@@ -7162,6 +7163,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BenqiFinance",
     audit_links: ["https://docs.benqi.fi/risks#audits"],
     oracles: ["Chainlink"],
+    forkedFrom: ["Compound"],
   },
   {
     id: "468",

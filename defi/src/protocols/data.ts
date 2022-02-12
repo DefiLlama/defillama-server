@@ -12110,7 +12110,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "PotluckProtocol",
     audit_links: ["https://dessertswap.finance/audits/Potluck%20BSC-FTM%20audit%2011437133.pdf"],
     oracles: ["Internal"],
-    forkedFrom: ["PantherSwap", "PancakeSwap"],
+    forkedFrom: ["PantherSwap", "Uniswap"],
     listedAt: 1635465731,
   },
   {

@@ -3204,7 +3204,6 @@ export default [
     module: "reflexer/index.js",
     twitter: "reflexerfinance",
     audit_links: ["https://reflexer.finance/about/"],
-    forkedFrom: ["Dai"],
     oracles: ["Chainlink"],
   },
   {
@@ -3921,6 +3920,7 @@ export default [
     module: "nerve/index.js",
     twitter: "NerveFinance",
     audit_links: ["https://docs.nerve.fi/fundamentals/audits-and-security"],
+    forkedFrom: ["Curve"]
   },
   {
     id: "302",
@@ -4114,7 +4114,7 @@ export default [
     module: "spiritswap/index.js",
     twitter: "Spirit_Swap",
     audit_links: ["https://github.com/Layer3Org/spiritswap-core/blob/main/SpiritSwap-Core%20Security%20Audit%20Report.pdf"],
-    forkedFrom: ["Quickswap"]
+    forkedFrom: ["Uniswap"]
   },
   {
     id: "312",
@@ -9457,7 +9457,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Celo"],
     module: "mobius/index.js",
     twitter: "MobiusMoney",
-    forkedFrom: ["Nerve Finance"],
+    forkedFrom: ["Curve"],
   },
   {
     id: "589",
@@ -9753,7 +9753,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "socean/socean.js",
     twitter: "SoceanFinance",
-    forkedFrom: ["Solana Program Library"],
     audit_links: [
       "http://solana.com/SolanaNeodymeStakePoolAudit.pdf",
       "http://solana.com/SolanaQuantstampStakePoolAudit.pdf",
@@ -10528,6 +10527,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://solidity.finance/audits/GeistProtocol/",
     ],
     oracles: ["Chainlink"],
+    forkedFrom: ["Aave"],
   },
   {
     id: "644",
@@ -12113,7 +12113,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "PotluckProtocol",
     audit_links: ["https://dessertswap.finance/audits/Potluck%20BSC-FTM%20audit%2011437133.pdf"],
     oracles: ["Internal"],
-    forkedFrom: ["PantherSwap", "Uniswap"],
+    forkedFrom: ["Uniswap"],
     listedAt: 1635465731,
   },
   {
@@ -12459,7 +12459,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "elephantdex/index.js",
     twitter: "elephant_dex",
     oracles: ["Chainlink"],
-    forkedFrom: ["ViperSwap"],
+    forkedFrom: ["Uniswap"],
     listedAt: 1635803086,
   },
   {
@@ -14185,7 +14185,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Avalanche"],
   module: "axial/index.js",
   twitter: "AxialDeFi",
-  forkedFrom: ["Saddle Finance", "Trader Joe"],
+  forkedFrom: ["Saddle Finance"],
   listedAt: 1637031735,
 },
 {
@@ -20842,7 +20842,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "tropicalfinance/index.js",
   twitter: "tropicalfi_",
   audit_links: ["https://tropical.finance/audit.pdf"],
-  forkedFrom: ["ApeSwap"],
+  forkedFrom: ["Uniswap"],
   listedAt: 1641171227,
 },
 {
@@ -21104,7 +21104,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Cronos"],
   module: "mimas-finance/index.js",
   twitter: "mimas_fi",
-  forkedFrom: ["Compound", "Tranquil"],
+  forkedFrom: ["Compound"],
   listedAt: 1641305977,
 },
 {
@@ -24546,7 +24546,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "QAOdotio",
   audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/Rarechain.pdf"],
   oracles: ["Chainlink", "Internal"],
-  forkedFrom: ["Custom solidity contracts"],
   listedAt: 1644122822,
 },
 {
@@ -24833,7 +24832,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "animal-farm/index.js",
   twitter: "DRIPcommunity",
   language: "Solidity",
-  forkedFrom: ["PantherSwap"],
+  forkedFrom: ["Sushiswap"],
   listedAt: 1644437338,
 },
 {
@@ -24855,7 +24854,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "saharaexchange/index.js",
   twitter: "SaharaDex",
   language: "Solidity",
-  forkedFrom: ["ViperSwap"],
+  forkedFrom: ["Uniswap"],
   listedAt: 1644440454,
 },
 {

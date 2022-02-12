@@ -8419,7 +8419,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0x03e173ad8d1581a4802d3b532ace27a62c5b81dc",
     symbol: "THALES",
     url: "https://thales.market",
-    description: "Thales platform is bringing binary options to Ethereum for users to hedge and speculate on the prices of crypto assets, commodities, equities, equity indices, and proprietary crypto indices.",
+    description: "Thales is an Ethereum protocol that allows the creation of peer-to-peer parimutuel markets that anyone can join. This building block is the foundation of novel on-chain initiatives, from a platform for AMM-based positional markets to immersive gamified experiences, and much more.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/thales.png`,
     audits: "2",

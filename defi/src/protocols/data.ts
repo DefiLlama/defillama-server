@@ -2779,6 +2779,7 @@ export default [
       "https://github.com/WePiggy/wepiggy-contracts/tree/master/docs/audits",
     ],
     oracles: ["Chainlink"],
+    forkedFrom: ["Compound"]
   },
   {
     id: "245",
@@ -4315,6 +4316,7 @@ export default [
     chains: ["ThunderCore"],
     module: "ram.js",
     twitter: null,
+    forkedFrom: ["Compound"]
   },
   {
     id: "322",
@@ -5271,6 +5273,7 @@ export default [
     chains: ["Heco", "Binance", "Arbitrum"],
     module: "channels/index.js",
     twitter: "ChannelsFinance",
+    forkedFrom: ["Compound"],
     audit_links: ["https://attest.im/attestation/searchResult?qurey=4c533d00766c4b2a9761fad5da78b56f", "https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MSgvIS2RfKE66pfkI81%2F-MUv-RfymyB6PvCRlnwz%2F-MUv1a71AjJ6p3Bgz5ui%2FChannels-Audit-Report-030321(1).pdf?alt=media&token=1af91ea6-d3d0-4ba3-8784-5dce6a907930"]
   },
   {
@@ -5505,6 +5508,7 @@ export default [
     twitter: "LendHubDefi",
     audit_links: ["https://www.lendhub.org/report/LendHubAuditReport.pdf", "https://www.lendhub.org/report/LendHubreport-020821.pdf", "https://www.lendhub.org/report/LendHubAuditReport2.pdf"],
     oracles: ["Chainlink"],
+    forkedFrom: ["Compound"]
   },
   {
     id: "381",
@@ -7519,6 +7523,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "unfederalreserve/index.js",
     twitter: "Unfederalreser1",
+    forkedFrom: ["Compound"],
     audit_links: ["https://lending-docs.unfederalreserve.com/docs/security/#security-audits"],
   },
   {
@@ -7575,6 +7580,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Celo"],
     module: "moola/index.js",
     twitter: "Moola_Market",
+    forkedFrom: ["Compound"],
     audit_links: ["https://drive.google.com/file/d/1qd1h0dujnp4Xxrl68ZTIMzbt4aXzMWY7/view"],
   },
   {
@@ -10265,6 +10271,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "cozy/index.js",
     twitter: "cozyfinance",
     audit_links: ["https://www.cozy.finance/audits/quantstamp.pdf", "https://www.cozy.finance/audits/peckshield.pdf"],
+    forkedFrom: ["Compound"],
   },
   {
     id: "630",
@@ -10284,7 +10291,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "huckleberry/index.js",
     twitter: "HuckleberryDEX",
     audit_links: ["https://github.com/HuckleberryDex/huckleberry-contracts/blob/main/Smart%20contract%20security%20audit%20report-Huckleberry.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap", "Compound"],
   },
   {
     id: "631",
@@ -14218,7 +14225,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "klend/index.js",
   twitter: "oklend4",
   audit_links: ["https://github.com/klend-lab/klend-protocol/blob/main/slowmist.pdf"],
-  forkedFrom: ["Compound", "Aave"],
+  forkedFrom: ["Compound"],
   listedAt: 1637033021,
 },
 {
@@ -17704,6 +17711,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "opendaoprotocol",
   audit_links: ["https://opendao.gitbook.io/transparency/audits"],
   listedAt: 1639418306,
+  forkedFrom: ["Compound"]
 },
 {
   id: "1020",
@@ -23399,7 +23407,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "ironbank/index.js",
   twitter: "ibdotxyz",
   audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/CREAMSummary.pdf"],
-  forkedFrom: [],
+  forkedFrom: ["Compound"],
   listedAt: 1642768849,
   oracles: ["Chainlink"],
 },

@@ -1253,7 +1253,6 @@ export default [
     module: "piedao/index.js",
     twitter: "PieDAO_Defi",
     audit_links: ["https://docs.piedao.org/technical/audits"],
-    forkedFrom: ["Balancer"],
   },
   {
     id: "168",
@@ -1665,7 +1664,6 @@ export default [
     module: "indexed/index.js",
     twitter: "ndxfi",
     audit_links: ["https://docs.indexed.finance/protocol/security"],
-    forkedFrom: ["Balancer"],
   },
   {
     id: "189",
@@ -4337,6 +4335,7 @@ export default [
     module: "yogi/index.js",
     twitter: "yogi_finance",
     audit_links: ["https://docs.yogi.fi/core-concepts/security/audits"],
+    forkedFrom: ["Balancer"],
   },
   {
     id: "323",
@@ -4538,7 +4537,7 @@ export default [
     chains: ["xDai", "Ethereum"],
     module: "bao/index.js",
     twitter: "BaoFinance",
-    forkedFrom: ["Synthetix", "Balancer"],
+    forkedFrom: ["Synthetix"],
   },
   {
     id: "333",
@@ -4623,7 +4622,6 @@ export default [
     module: "sifchain.js",
     twitter: "sifchain",
     audit_links: ["https://drive.google.com/drive/u/1/folders/1kkjdpNuRmTjaiIKA6CQISavCvj4Awpbc"],
-    forkedFrom: ["Balancer"],
   },
   {
     id: "337",
@@ -5622,6 +5620,7 @@ export default [
     module: "polyquity/index.js",
     twitter: "polyquity_org",
     audit_links: ["https://github.com/PolyQuity/audits/tree/main"],
+    forkedFrom: ["Liquity"]
   },
   {
     id: "387",
@@ -12340,6 +12339,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "stabilize_fi",
     oracles: ["Chainlink"],
     listedAt: 1635796872,
+    forkedFrom: ["Liquity"]
   },
   {
     id: "734",
@@ -12440,6 +12440,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DefiHalal",
     oracles: ["Chainlink"],
     listedAt: 1635801672,
+    forkedFrom: ["Liquity"],
   },
   {
     id: "739",
@@ -17926,11 +17927,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Synthetics",
+  category: "CDP",
   chains: ["Avalanche", "Fantom", "Binance"],
   module: "topshelf/index.js",
   twitter: "TopShelfFinance",
   listedAt: 1639732995,
+  forkedFrom: ["Liquity"],
 },
 {
   id: "1031",

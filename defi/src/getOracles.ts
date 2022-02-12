@@ -57,7 +57,14 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
       let oracles = protocol.oracles;
       if (oracles) {
         oracles.forEach((oracle) => {
-          sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol.name);
+          
+          let newOracleName = oracle
+          
+          if(oracle.toLowerCase() == "internal" ){
+            newOracleName += "_" + protocol.name
+          }
+
+          sum(sumDailyTvls, newOracleName, timestamp, item, oracleProtocols, protocol.name);
         });
 
         return;

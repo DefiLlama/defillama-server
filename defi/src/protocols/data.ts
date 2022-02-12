@@ -10527,6 +10527,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Geist-v1.0.pdf",
       "https://solidity.finance/audits/GeistProtocol/",
     ],
+    oracles: ["Chainlink"],
   },
   {
     id: "644",
@@ -13415,7 +13416,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "blizzfinance/index.js",
   twitter: "BlizzFinance",
   oracles: ["Chainlink"],
-  forkedFrom: ["Geist", "Aave"],
+  forkedFrom: ["Aave"],
   listedAt: 1636390733,
 },
 {

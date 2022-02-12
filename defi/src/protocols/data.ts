@@ -2006,7 +2006,6 @@ export default [
     module: "xtoken/index.js",
     twitter: "xtokenmarket",
     audit_links: ["https://docs.xtoken.market/misc/untitled-1#is-synlev-audited"],
-    forkedFrom: ["Synthetix", "PieDAO"],
   },
   {
     id: "207",
@@ -4155,7 +4154,7 @@ export default [
     module: "viperswap/index.js",
     twitter: "VenomDAO",
     audit_links: ["https://solidity.finance/audits/ViperSwap/"] ,
-    forkedFrom: ["Uniswap", "Bao Finance"],
+    forkedFrom: ["Uniswap"],
   },
   {
     id: "314",
@@ -4536,7 +4535,6 @@ export default [
     chains: ["xDai", "Ethereum"],
     module: "bao/index.js",
     twitter: "BaoFinance",
-    forkedFrom: ["Synthetix"],
   },
   {
     id: "333",
@@ -6551,6 +6549,7 @@ export default [
     module: "hop",
     twitter: "HopProtocol",
     audit_links: ["https://docs.hop.exchange/faq#are-hop-contracts-audited"],
+    forkedFrom: ["Curve"],
   },
   {
     id: "436",
@@ -8265,7 +8264,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "cyclefinance/index.js",
     twitter: "CycleProtocol",
-    forkedFrom: ["Synthetix", "Beefy Finance", "YieldYak", "Yearn Finance"],
+    forkedFrom: ["Yearn Finance"],
   },
   {
     id: "526",
@@ -8625,7 +8624,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "soulswap/index.js",
     twitter: "SoulSwapFinance",
-    forkedFrom: ["Uniswap", "Synthetix", "Yam"],
+    forkedFrom: ["Uniswap"],
   },
   {
     id: "545",
@@ -10808,6 +10807,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
     module: "synapse/index.js",
     twitter: "SynapseProtocol",
+    forkedFrom: ["Curve"],
   },
   {
     id: "658",
@@ -13772,7 +13772,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Harmony"],
   module: "euphoria/index.js",
   twitter: "EuphoriaMoney",
-  forkedFrom: ["Wonderland", "Olympus DAO"],
+  forkedFrom: ["Olympus DAO"],
   listedAt: 1636592925,
 },
 {
@@ -15119,7 +15119,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "onedaofinance/index.js",
     twitter: "onedao_finance",
-    forkedFrom: ["Wonderland", "Olympus DAO"],
+    forkedFrom: ["Olympus DAO"],
     listedAt: 1637587915,
   },
   {
@@ -16979,7 +16979,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "vikings/index.js",
     twitter: "VikingsFinance",
-    forkedFrom: ["Wonderland"],
+    forkedFrom: ["Olympus DAO"],
     listedAt: 1638721025 ,
   },
   {
@@ -16999,7 +16999,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "galaxygoggle/index.js",
     twitter: "GalaxyGoggleDAO",
-    forkedFrom: ["Wonderland"],
+    forkedFrom: ["Olympus DAO"],
     listedAt: 1638809285 ,
   },
   {
@@ -22808,7 +22808,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Avalanche"],
   module: "cleopatradao.js",
   twitter: "Cleopatra_DAO",
-  forkedFrom: ["Wonderland"],
+  forkedFrom: ["Olympus DAO"],
   listedAt: 1642404036,
 },
 {
@@ -24901,7 +24901,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "maia-dao/index.js",
   twitter: "MaiaDAOMetis",
   language: "Solidity",
-  forkedFrom: ["Wonderland"],
+  forkedFrom: ["Olympus DAO"],
   listedAt: 1644441697,
 },
 {

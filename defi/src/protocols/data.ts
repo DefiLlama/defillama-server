@@ -25328,7 +25328,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "1Beam is building a decentralised application ecosystem on the Moonbeam Ecosystem.",
   chain: "Moonbeam",
   logo: `${baseIconsUrl}/1beam.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -25339,6 +25339,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "1beam/index.js",
   twitter: "1beamio",
   language: "Solidity",
+  audit_links: ["https://docs.1beam.io/audit"],
   listedAt: 1644597493,
 },
 {

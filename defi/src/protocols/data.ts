@@ -6845,6 +6845,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "scream/index.js",
     twitter: "Screamdotsh",
     oracles: ["Chainlink"],
+    forkedFrom: ["Compound"]
   },
   {
     id: "451",
@@ -7187,7 +7188,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "traderjoe/index.js",
     audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
     twitter: "traderjoe_xyz",
-    forkedFrom:["Uniswap"]
+    forkedFrom:["Uniswap", "Compound"]
   },
   {
     id: "469",
@@ -12583,6 +12584,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "13121",
     category: "Lending",
     chains: ["Binance"],
+    forkedFrom: ["Compound"],
     module: "atlantisloans/index.js",
     twitter: "atlantis_loans",
     listedAt: 1635820333,
@@ -13636,6 +13638,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "FinanceCow",
   audit_links: ["https://docs.cashcow.finance/cash-cow-audit-report"],
   listedAt: 1636444434,
+  forkedFrom: ["Compound"],
 },
 {
   id: "818",
@@ -17967,6 +17970,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "percent/index.js",
   twitter: "PercentFinance",
   listedAt: 1639774643 ,
+  forkedFrom: ["Compound"]
 },
 {
   id: "1033",
@@ -21947,6 +21951,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "WelnanceWorld",
   audit_links: ["https://app.inspex.co/library/welnance#?scope=welnance-lending"],
   listedAt: 1641875259,
+  forkedFrom: ["Compound"]
 },
 {
   id: "1231",

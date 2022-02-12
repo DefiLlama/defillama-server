@@ -2136,7 +2136,7 @@ export default [
     module: "venus.js",
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
-    forkedFrom: ["Compound", "MakerDAO"],
+    forkedFrom: ["Compound"],
     oracles: ["Chainlink"],
   },
   {

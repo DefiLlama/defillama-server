@@ -25484,7 +25484,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1401",
-  name: "Moonwell DEFI",
+  name: "Moonwell",
   address: null,
   symbol: "-",
   url: "https://moonwell.fi",

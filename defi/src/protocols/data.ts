@@ -23421,7 +23421,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "starstream/index.js",
   twitter: "starstreamfin",
   audit_links: ["https://docs.starstream.finance/contracts#audits"],
-  forkedFrom: ["Yearn Finance", "Reaper"],
+  forkedFrom: ["Yearn Finance"],
   listedAt: 1642726193,
 },
 {

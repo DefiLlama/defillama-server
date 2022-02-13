@@ -2732,7 +2732,7 @@ export default [
     chains: ["Energi"],
     module: "energiswap.js",
     twitter: "Energicrypto",
-    forkedFrom: ["Dash"],
+    forkedFrom: ["Uniswap"],
   },
   {
     id: "243",
@@ -2853,7 +2853,6 @@ export default [
     chains: ["Ethereum"],
     module: "forcedao/index.js",
     twitter: "force_dao",
-    forkedFrom: ["xSushi"],
   },
   {
     id: "249",
@@ -5125,7 +5124,6 @@ export default [
     module: "whiteheart/index.js",
     twitter: "WhiteheartDeFi",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Whiteheart-v1.0.pdf"],
-    forkedFrom: ["Hegic"],
   },
   {
     id: "362",
@@ -5805,6 +5803,7 @@ export default [
     chains: ["Polygon"],
     module: "polydex/index.js",
     twitter: "polydexfi",
+    forkedFrom: ["Uniswap"],
     audit_links: ["https://github.com/polydex-fi/polydex-swap-core/blob/5fdd6b85550235800cd980ccb8fab9bd5247a7af/PolydexSwap.pdf"],
   },
   {
@@ -15408,7 +15407,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tangoswap/index.js",
     twitter: "TangoSwapCash",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/tangoswap/TangoSwap_final-audit.pdf"],
-    forkedFrom: ["MistSwap", "Uniswap"],
+    forkedFrom: ["Uniswap"],
     listedAt: 1637729126,
   },
   {
@@ -17107,7 +17106,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kryptodex/index.js",
     twitter: "KryptoDex",
     audit_links: ["https://github.com/polydex-fi/polydex-swap-core/blob/5fdd6b85550235800cd980ccb8fab9bd5247a7af/PolydexSwap.pdf"],
-    forkedFrom: ["PolyDEX"],
+    forkedFrom: ["Uniswap"],
     listedAt: 1638882307,
   },
   {
@@ -18434,7 +18433,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum"],
   module: "fiatdao/index.js",
   twitter: "fiatdao",
-  forkedFrom: ["BarnBridge"],
   listedAt: 1639957923,
 },
 {
@@ -21767,7 +21765,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "argano_io",
   audit_links: ["https://github.com/Tibereum/obelisk-audits/blob/main/Argano.pdf"],
   oracles: ["Chainlink", "TWAP"],
-  forkedFrom: ["Iron Finance"],
+  forkedFrom: ["Frax"],
   listedAt: 1641764731,
 },
 {
@@ -24052,7 +24050,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Binance"],
   module: "shiroswap/index.js",
   twitter: "ShiroTokens",
-  forkedFrom: ["ShibaSwap"],
+  forkedFrom: ["Uniswap"],
   listedAt: 1643486991,
 },
 {
@@ -24445,12 +24443,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Yield",
+  category: "Farm",
   chains: ["Fantom"],
   module: "knightsfantom/index.js",
   twitter: "knightsoffantom",
   audit_links: ["https://knights-fantom.gitbook.io/knights-of-fantom/tokenomics/security-and-safety"],
-  forkedFrom: ["Xmas Past"],
+  forkedFrom: ["Sushiswap"],
   listedAt: 1643883431,
 },
 {

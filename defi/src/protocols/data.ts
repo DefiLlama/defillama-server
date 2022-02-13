@@ -10299,7 +10299,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "cozy/index.js",
     twitter: "cozyfinance",
     audit_links: ["https://www.cozy.finance/audits/quantstamp.pdf", "https://www.cozy.finance/audits/peckshield.pdf"],
-    forkedFrom: ["Compound"],
+    forkedFrom: ["Compound"], // quite different in purpose but still most code is from compound
   },
   {
     id: "630",

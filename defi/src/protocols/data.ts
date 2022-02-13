@@ -9181,7 +9181,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "liqee/index.js",
     twitter: "liqeeio",
     oracles: ["Chainlink"],
-    forkedFrom: ["dForce"],
+    forkedFrom: ["Compound"],
   },
   {
     id: "574",
@@ -11643,7 +11643,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "pollyfinance/index.js",
     twitter: "thebaoman",
-    forkedFrom: ["Bao Finance"],
     listedAt: 1634972259,
   },
   {

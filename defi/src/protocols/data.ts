@@ -13237,11 +13237,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Dexes",
+  category: "Reserve Currency",
   chains: ["Boba"],
   module: "senpai/index.js",
   twitter: "senpaiswap",
-  forkedFrom: ["Uniswap"],
+  forkedFrom: ["Olympus DAO", "Uniswap"],
   listedAt: 1636194738,
 },
 {
@@ -15135,6 +15135,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Reserve Currency",
     module: "eight/index.js",
     twitter: "8ight_finance",
+    forkedFrom: ["Olympus DAO"],
     listedAt: 1637560657
   },
   {
@@ -16288,6 +16289,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"] ,
     module: "jade-protocol/index.js" ,
     twitter: "JadeProtocol" ,
+    forkedFrom: ["Olympus DAO"],
     listedAt: 1638309367,
   },
   {
@@ -16377,6 +16379,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"] , 
     module: "lobis.js" ,
     twitter: "LobisHQ" ,
+    forkedFrom: ["Olympus DAO"],
     listedAt: 1638366199 ,
   },
   {
@@ -18389,10 +18392,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "leaguedao-governance-token",
   cmcId: "14131",
-  category: "Services",
+  category: "Reserve Currency",
   chains: ["Ethereum"],
   module: "leaguedao/index.js",
   twitter: "LeagueDAO",
+  forkedFrom: ["Olympus DAO"],
   listedAt: 1639895243,
 },
 {
@@ -19213,7 +19217,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "zodiacdao",
   cmcId: "16450",
-  category: "Yield",
+  category: "Reserve Currency",
   chains: ["Binance"],
   module: "zodiac/index.js",
   twitter: "ZodiacDAO_BEP20",
@@ -19632,6 +19636,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Binance"],
   module: "asgard-dao/index.js",
   twitter: "Asgarddao_",
+  forkedFrom: ["Olympus DAO"],
   listedAt: 1640640695 ,
 },
 {
@@ -19651,6 +19656,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Polygon"],
   module: "mama-dao/index.js",
   twitter: "OfficialMamaDAO",
+  forkedFrom: ["Olympus DAO"],
   listedAt: 1640641579 ,
 },
 {
@@ -19670,6 +19676,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Avalanche"],
   module: "pirate-dao/index.js",
   twitter: "DAOPirate",
+  forkedFrom: ["Olympus DAO"],
   listedAt: 1640642417 ,
 },
 {

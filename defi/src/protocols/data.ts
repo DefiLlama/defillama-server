@@ -4846,6 +4846,7 @@ export default [
     chains: ["Ethereum", "Avalanche", "Arbitrum", "Fantom"],
     module: "abracadabra/api.js",
     twitter: "MIM_Spell",
+    oracles: ["Chainlink"],
     audit_links: ["https://www.certora.com/pubs/SushiBentoboxFeb2021.pdf"]
   },
   {

@@ -11410,6 +11410,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "tesseract/index.js",
     twitter: "tesseract_fi",
+    forkedFrom:["Yearn Finance"],
     listedAt: 1634673391,
   },
   {

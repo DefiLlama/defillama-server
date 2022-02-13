@@ -120,7 +120,8 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
       tokensInUsd: response.tokensInUsd,
       tokens: response.tokens
     }
-  } else if(response.chainTvls[singleChain].tvl.length < response.tvl.length) {
+  }
+  if(response.chainTvls[singleChain] !== undefined && response.chainTvls[singleChain].tvl.length < response.tvl.length) {
     const singleChainTvls = response.chainTvls[singleChain].tvl;
     const first = singleChainTvls[0].date;
     response.chainTvls[singleChain].tvl = response.tvl.filter((t:any)=>t.date < first).concat(singleChainTvls)

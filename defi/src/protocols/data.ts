@@ -1,27 +1,8 @@
 import { baseIconsUrl } from "../constants";
+import type {Protocol} from './types'
+import data2 from './data2'
 
-export interface Protocol {
-  id: string;
-  name: string;
-  address: string;
-  symbol: string;
-  url: string;
-  description: string;
-  chain: string;
-  logo: null | string;
-  audits: null | "0" | "1" | "2" | "3";
-  audit_note: null;
-  gecko_id: string;
-  cmcId: string;
-  category: string;
-  chains: string[];
-  oracles: string[];
-  forkedFrom: string[];
-  module: string;
-  twitter: string;
-  language?: string;
-}
-
+export type {Protocol};
 /* Audits: Please follow this legend
 0 -> No audits
 1 -> Part of this protocol may be unaudited
@@ -37,7 +18,7 @@ export interface Protocol {
 `chains` is not used by the current code, but good to fill it out because it is used in our test to detect errors
 */
 
-export default [
+export default ([
   {
     id: "1",
     name: "Uniswap",
@@ -25678,52 +25659,4 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_links: ["https://github.com/towerfinance/tower-v2-solidity/blob/main/audit/Tower_Finance_Smart_Contract_Audit_-_Final_Report.pdf"],
   listedAt: 1644868459,
 },
-{
-  id: "1410",
-  name: "Cropper",
-  address: "solana:DubwWZNWiNGMMeeQHPnMATNj77YZPZSAz2WVR5WjLJqz",
-  symbol: "CRP",
-  url: "https://cropper.finance",
-  description: "Cropper is an automated market maker (AMM) built on the Solana blockchain which enable lightning-fast trades, shared liquidity and new features for earning yield.",
-  chain: "Solana",
-  logo: `${baseIconsUrl}/cropper.png`,
-  audits: "2",
-  audit_note: null,
-  gecko_id: "cropperfinance",
-  cmcId: "11387",
-  category: "Dexes",
-  chains: ["Solana"],
-  oracles: [],
-  forkedFrom: [],
-  module: "cropper.js",
-  twitter: "CropperFinance",
-  audit_links: [
-    "https://github.com/HalbornSecurity/PublicReports/blob/master/Solana%20Program%20Audit/Cropper_Finance_Farm_Solana_Program_Security_Audit_Report_Halborn_Final.pdf",
-    "https://github.com/HalbornSecurity/PublicReports/blob/master/Solana%20Program%20Audit/Cropper_Finance_AMM_Program_Security_Audit_Report_Halborn_Final.pdf",
-  ],
-  listedAt: 1644868660,
-},
-{
-  id: "1411",
-  name: "Manarium",
-  address: "bsc:0xc80a0a55caf6a7bfb4ee22f9380c4077312c4a35",
-  symbol: "ARI",
-  url: "https://www.manarium.com",
-  description: "Manarium is a unique blockchain gaming platform with play to earn games.",
-  chain: "Binance",
-  logo: `${baseIconsUrl}/manarium.png`,
-  audits: "2",
-  audit_note: null,
-  gecko_id: "manarium",
-  cmcId: "16474",
-  category: "Gaming",
-  chains: ["Binance"],
-  oracles: [],
-  forkedFrom: [],
-  module: "manarium/index.js",
-  twitter: "manarium_gg",
-  audit_links: ["https://github.com/solidproof/smart-contract-audits/blob/main/SmartContract_Audit_Solidproof_Manarium.pdf"],
-  listedAt: 1644868847,
-},
-
-] as Protocol[];
+] as Protocol[]).concat(data2) ;

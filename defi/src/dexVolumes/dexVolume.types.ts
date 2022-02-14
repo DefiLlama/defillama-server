@@ -72,6 +72,10 @@ export type VolumeAdapter = {
   };
 };
 
+export type BreakdownAdapter = {
+  [x: string]: VolumeAdapter 
+}
+
 export type DailyVolume = string;
 export type HourlyVolume = string;
 export type TotalVolume = string;

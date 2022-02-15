@@ -1133,7 +1133,6 @@ export default ([
     module: "bancor/index.js",
     twitter: "Bancor",
     audit_links: ["https://docs.bancor.network/ethereum-contracts/security"],
-    oracles: ["Chainlink"],
   },
   {
     id: "163",

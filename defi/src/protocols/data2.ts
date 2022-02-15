@@ -1,6 +1,42 @@
 import type {Protocol} from './types'
 import { baseIconsUrl } from "../constants";
+/*
+{
+  id: string;
+  name: string;
+  address: string;
+  symbol: string;
+  url: string;
+  description: string;
+  chain: string;
+  logo: null | string;
+  audits: null | "0" | "1" | "2" | "3";
+  audit_note: null;
+  gecko_id: string;
+  cmcId: string;
+  category: string;
+  chains: string[];
+  oracles: string[];
+  forkedFrom: string[];
+  module: string;
+  twitter: string;
+  language?: string;
+},
+*/
+/* Audits: Please follow this legend
+0 -> No audits
+1 -> Part of this protocol may be unaudited
+2 -> Yes
+3 -> This protocol is a fork of an existing audited protocol
+*/
 
+/*
+`chain` is the first chain of a protocol we tracked at defillama,
+  so if a protocol launches on Ethereum and we start tracking it there, and then it launches on polygon and
+  we start tracking it on both polygon and ethereum, then `chain` should be set to `Ethereum`.
+
+`chains` is not used by the current code, but good to fill it out because it is used in our test to detect errors
+*/
 export default [
 {
     id: "1410",
@@ -69,5 +105,27 @@ export default [
     module: "crema.js",
     twitter: "Crema_Finance",
     listedAt: 1644868985,
+  },
+  {
+    id: "1413",
+    name: "Savannah Finance",
+    address: "cronos:0x654bAc3eC77d6dB497892478f854cF6e8245DcA9",
+    symbol: "SVN",
+    url: "https://svn.finance",
+    description: "The first and also largest algorithmic stablecoin platform on Cronos. $SVN is pegged to the price of 1 MMF via seigniorage.",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/savannah-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Cronos"],
+    oracles: [],
+    forkedFrom: ["Tomb Finance"],
+    module: "svn/index.js",
+    twitter: "MMFcrypto",
+    audit_links: ["https://mmfinance.gitbook.io/docs/audit"],
+    listedAt: 1644884068,
   },
 ] as Protocol[]

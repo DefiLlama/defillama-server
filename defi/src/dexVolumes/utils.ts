@@ -1,25 +1,43 @@
-import fetch from "node-fetch"
+import fetch from "node-fetch";
 
-import {BreakdownAdapter, VolumeAdapter} from './dexVolume.types'
+import { BreakdownAdapter, VolumeAdapter } from "./dexVolume.types";
 
-export const getEcosystemBlocks = (ecosystem: string, timestamp: number) => fetch(`https://coins.llama.fi/block/${ecosystem}/${timestamp}`)
+export const getEcosystemBlocks = (ecosystem: string, timestamp: number) =>
+  fetch(`https://coins.llama.fi/block/${ecosystem}/${timestamp}`).then((res) =>
+    res.json()
+  );
+export const getAllEcosystemBlocks = async (
+  breakdown: BreakdownAdapter,
+  timestamp: number
+) => {
+  const allEcosystems = getAllBreakdownEcosystems(breakdown);
 
-export const getAllEcosystemBlocks = async (breakdown: BreakdownAdapter, timestamp: number) => {
-  const allEcosystems = getAllBreakdownEcosystems(breakdown)
-  
-  const chainBlocks = (await Promise.all( allEcosystems.map( async (ecosystem) => ({ ecosystem: await  getEcosystemBlocks(ecosystem, timestamp)} )))).reduce((acc, curr) => ({...acc, ...curr}) , {})
-  return chainBlocks
-}
+  const chainBlocks = (
+    await Promise.all(
+      allEcosystems.map(async (ecosystem) => ({
+        ecosystem: await getEcosystemBlocks(ecosystem, timestamp),
+      }))
+    )
+  ).reduce((acc, curr) => ({ ...acc, ...curr }), {});
+  return chainBlocks;
+};
 
-export const getAllVolumeBlocks = () => {}
+export const getAllVolumeBlocks = () => {};
 
-export const getVolumeEcosystems = (volume: VolumeAdapter) => Object.keys(volume)
+export const getVolumeEcosystems = (volume: VolumeAdapter) =>
+  Object.keys(volume);
 
-export const getAllBreakdownEcosystems = (breakdown: BreakdownAdapter): string[] => {
-  const uniqueEcosystems = new Set<string>()
-  Object.values(breakdown).forEach((volume) => { getVolumeEcosystems(volume).forEach((ecosystem) =>  uniqueEcosystems.add(ecosystem))  })
-  return [...uniqueEcosystems]
-}
+export const getAllBreakdownEcosystems = (
+  breakdown: BreakdownAdapter
+): string[] => {
+  const uniqueEcosystems = new Set<string>();
+  Object.values(breakdown).forEach((volume) => {
+    getVolumeEcosystems(volume).forEach((ecosystem) =>
+      uniqueEcosystems.add(ecosystem)
+    );
+  });
+  return [...uniqueEcosystems];
+};
 
 // v1: {
 //   [ETHEREUM]: {

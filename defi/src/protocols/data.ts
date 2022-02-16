@@ -20178,7 +20178,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "tethys/index.js",
   twitter: "tethysfinance",
   audit_links: ["https://defisecurity.io/dist/files/tethys_finance_security_audit_report_1.0.pdf"],
-  forkedFrom: ["Uniswap"],
+  forkedFrom: ["Uniswap", "Impermax"],
   listedAt: 1640746550,
 },
 {

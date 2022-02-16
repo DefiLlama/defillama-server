@@ -241,7 +241,7 @@ export default [
     address: null,
     symbol: "-",
     url: "https://babelfish.money",
-    description: "BabelFish Money replicates the flow to serve as a decentralized and chain-agnostic stablecoin aggregator and distributor. It feeds on stablecoins, absorbing all liquidity and excreting the yield to deploy it as protection.",
+    description: "BabelFish is a multi-chain aggregator and distributor of stablecoins",
     chain: "RSK",
     logo: `${baseIconsUrl}/babelfish.png`,
     audits: "0",

@@ -10734,7 +10734,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "emiswap",
     cmcId: "11153",
     category: "Dexes",
-    chains: ["Ethereum", "Kucoin"],
+    chains: ["Ethereum", "Kucoin", "Polygon"],
     module: "emiswap/index.js",
     twitter: "EmiSwap",
     forkedFrom: ["Uniswap"],

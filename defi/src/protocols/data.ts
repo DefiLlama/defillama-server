@@ -25447,7 +25447,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: "oasis:0x6a977d5f48D57eF125C98469D511Ef4E0cE44E10",
   symbol: "LIZ",
   url: "https://lizard.exchange",
-  description: "New Dex on Oasis, we are contributing with the Oasis network comunity to implement new features on the network, we are implement the IEP 1598 and we are working in new features like graph and info for improve the qualitiy of projects.",
+  description: "Lizard Exchange is the first DEX in Oasis Emerald Paratime to contribute with full exchange analytics, taxed token implementation and EIP support with the objective to welcome new builders and users alike.",
   chain: "Oasis",
   logo: `${baseIconsUrl}/lizard-exchange.png`,
   audits: "3",

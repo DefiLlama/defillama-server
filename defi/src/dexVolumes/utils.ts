@@ -39,6 +39,51 @@ export const getAllBreakdownEcosystems = (
   return [...uniqueEcosystems];
 };
 
+export const convertVolumeNumericStart = async (
+  volume: VolumeAdapter
+): Promise<VolumeAdapter> =>
+  Object.fromEntries(
+    await Promise.all(
+      Object.entries(volume).map(async ([ecosystem, { start, fetch }]) => {
+        return [
+          ecosystem,
+          {
+            start: typeof start === "number" ? start : await start(),
+            fetch,
+          },
+        ];
+      })
+    )
+  );
+
+export const convertBreakdownNumericStart = async (
+  breakdown: BreakdownAdapter
+): Promise<BreakdownAdapter> =>
+  Object.fromEntries(
+    await Promise.all(
+      Object.entries(breakdown).map(async ([product, adapter]) => {
+        const volumeAdapters = await convertVolumeNumericStart(adapter);
+        return [product, volumeAdapters];
+      })
+    )
+  );
+
+export const allBreakdownEcosystemStarts = async (
+  breakdownWithNumericStart: BreakdownAdapter
+) =>
+  Object.values(breakdownWithNumericStart).reduce(
+    (acc: { [x: string]: number }, curr) => {
+      Object.entries(curr).forEach(([ecosystem, { start }]) => {
+        acc[ecosystem] = Math.min(
+          acc[ecosystem] || Number.MAX_SAFE_INTEGER,
+          start
+        );
+      });
+      return acc;
+    },
+    {}
+  );
+
 // v1: {
 //   [ETHEREUM]: {
 //     fetch: v1Graph(ETHEREUM),

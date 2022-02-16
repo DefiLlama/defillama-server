@@ -1,7 +1,7 @@
 import protocols, {Protocol} from "./protocols/data";
 import dynamodb, {getHistoricalValues} from "./utils/shared/dynamodb";
 import { dailyTvl, getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
+import { DAY, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
@@ -72,9 +72,9 @@ export async function getHistoricalTvlForAllProtocols(){
   }
 }
 
-const handler = async (_event: any) => {
-  const sumDailyTvls = {} as SumDailyTvls
-  
+export type TvlItem = {[section: string]: any;}
+
+export async function processProtocols(processor: (timestamp: number, tvlItem: TvlItem, protocol:Protocol)=>Promise<void>){
   const {historicalProtocolTvls, lastDailyTimestamp} = await getHistoricalTvlForAllProtocols();
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (protocolTvl === undefined) {
@@ -89,9 +89,24 @@ const handler = async (_event: any) => {
         SK: lastTimestamp,
       });
     }
+    let last = getClosestDayStartTimestamp(historicalTvl[0].SK);
     historicalTvl.forEach((item) => {
       const timestamp = getClosestDayStartTimestamp(item.SK);
-      sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl)
+      while((timestamp - last) > (1.5* DAY)){
+        last = getClosestDayStartTimestamp(last + DAY);
+        processor(last, item, protocol)
+      }
+      processor(timestamp, item, protocol)
+      last = timestamp;
+    });
+  });
+}
+
+const handler = async (_event: any) => {
+  const sumDailyTvls = {} as SumDailyTvls
+  
+  await processProtocols(async (timestamp: number, item: TvlItem, protocol:Protocol)=>{
+    sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl)
       let hasAtLeastOneChain = false;
       Object.entries(item).forEach(([chain, tvl])=>{
         const formattedChainName = getChainDisplayName(chain, true)
@@ -108,8 +123,7 @@ const handler = async (_event: any) => {
       if(hasAtLeastOneChain === false){
         sum(sumDailyTvls, transformNewChainName(protocol.chain), "tvl", timestamp, item.tvl)
       }
-    });
-  });
+  })
 
   await Promise.all(Object.entries(sumDailyTvls).map(async ([chain, chainDailyTvls])=>{
     const chainResponse = Object.fromEntries(Object.entries(chainDailyTvls).map(

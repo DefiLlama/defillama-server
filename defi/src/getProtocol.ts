@@ -121,6 +121,11 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
       tokens: response.tokens
     }
   }
+  if(response.chainTvls[singleChain] !== undefined && response.chainTvls[singleChain].tvl.length < response.tvl.length) {
+    const singleChainTvls = response.chainTvls[singleChain].tvl;
+    const first = singleChainTvls[0].date;
+    response.chainTvls[singleChain].tvl = response.tvl.filter((t:any)=>t.date < first).concat(singleChainTvls)
+  }
   const dataLength = JSON.stringify(response).length
   if(dataLength > 6e6){
     delete response.tokensInUsd;

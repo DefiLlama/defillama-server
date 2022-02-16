@@ -13,38 +13,35 @@ function compress(data: string) {
 
 const handler = async (_event: any) => {
   const response = await craftProtocolsResponse(true);
-  const trimmedResponse = await Promise.all(response.map(async (protocol) => {
-  const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol.id, true, protocol.chains)
-    return {
-      category: protocol.category,
-      chains: protocol.chains,
-      oracles: protocol.oracles,
-      listedAt: protocol.listedAt,
-      mcap: protocol.mcap,
-      name: protocol.name,
-      symbol: protocol.symbol,
-      tvl: protocolTvls.tvl,
-      tvlPrevDay: protocolTvls.tvlPrevDay,
-      tvlPrevWeek: protocolTvls.tvlPrevWeek,
-      tvlPrevMonth: protocolTvls.tvlPrevMonth,
-      chainTvls: protocolTvls.chainTvls
-    }
-  }));
+  const trimmedResponse = await Promise.all(
+    response.map(async (protocol) => {
+      const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol.id, true, protocol.chains);
+      return {
+        category: protocol.category,
+        chains: protocol.chains,
+        oracles: protocol.oracles,
+        forkedFrom: protocol.forkedFrom,
+        listedAt: protocol.listedAt,
+        mcap: protocol.mcap,
+        name: protocol.name,
+        symbol: protocol.symbol,
+        tvl: protocolTvls.tvl,
+        tvlPrevDay: protocolTvls.tvlPrevDay,
+        tvlPrevWeek: protocolTvls.tvlPrevWeek,
+        tvlPrevMonth: protocolTvls.tvlPrevMonth,
+        chainTvls: protocolTvls.chainTvls,
+      };
+    })
+  );
 
   const noChainResponse = trimmedResponse.filter((p) => p.category !== "Chain");
   const chains = {} as { [chain: string]: number };
-  const oracles: string[] = []
   const protocolCategoriesSet = new Set();
   noChainResponse.forEach((p) => {
     protocolCategoriesSet.add(p.category);
     p.chains.forEach((c: string) => {
       chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
     });
-    p.oracles.forEach((o: string) => {
-      if (!oracles.includes(o)) {
-        oracles.push(o)
-      }
-    })
   });
 
   const compressedV2Response = compress(
@@ -53,10 +50,7 @@ const handler = async (_event: any) => {
       chains: Object.entries(chains)
         .sort((a, b) => b[1] - a[1])
         .map((c) => c[0]),
-      protocolCategories: [...protocolCategoriesSet].filter(
-        (category) => category
-      ),
-      oracles
+      protocolCategories: [...protocolCategoriesSet].filter((category) => category),
     })
   );
   await store("lite/protocols2", compressedV2Response, true);

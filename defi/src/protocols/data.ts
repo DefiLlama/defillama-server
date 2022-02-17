@@ -3324,7 +3324,7 @@ export default ([
     gecko_id: "cryptex-finance",
     cmcId: "10368 ",
     category: "Indexes",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Optimism"],
     module: "cryptex/index.js",
     twitter: "CryptexFinance",
     audit_links: ["https://cryptex.finance/Cryptex_-_Final_Report.pdf", "https://certificate.quantstamp.com/full/cryptex"],

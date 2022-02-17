@@ -16,8 +16,12 @@ export type MonthlyVolumes = {
   totalVolume: string;
 };
 
-export type TimestampBlock = {
+export type TimestampBlocks = {
   [x: string]: number;
+};
+
+export type EcosystemTimestampBlocks = {
+  [x: string]: TimestampBlocks;
 };
 
 export type TimestampVolumes = {
@@ -68,6 +72,10 @@ export type VolumeAdapter = {
   };
 };
 
+export type BreakdownAdapter = {
+  [x: string]: VolumeAdapter 
+}
+
 export type DailyVolume = string;
 export type HourlyVolume = string;
 export type TotalVolume = string;
@@ -112,11 +120,11 @@ export type MonthlyEcosystemRecord = {
   };
 };
 
-export type DexVolumeInfo = {
+export type DexVolumeMetaRecord = {
   id: number;
   module: string;
   name: string;
-  backfilled: boolean;
+  locked?: boolean;
 };
 
 export type BreakdownDailyEcosystemRecord = {

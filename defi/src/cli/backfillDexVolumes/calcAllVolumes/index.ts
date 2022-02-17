@@ -10,6 +10,7 @@ import { fetchAllEcosystemsFromStart } from "../";
 import { calcDailyVolume, calcHourlyVolume, calcMonthlyVolume } from "../";
 
 import {
+  EcosystemTimestampBlocks,
   DailyEcosystemRecord,
   HourlyEcosystemRecord,
   MonthlyEcosystemRecord,
@@ -22,15 +23,21 @@ const calcAllVolumes = async ({
   id,
   volumeAdapter,
   breakdown = "total",
+  ecosystemBlocks,
+  throttleFetchCount = 1,
 }: {
   currentTimestamp: number;
   id: number;
   volumeAdapter: VolumeAdapter;
   breakdown?: string;
+  ecosystemBlocks?: EcosystemTimestampBlocks;
+  throttleFetchCount?: number;
 }) => {
   const allEcosystemVolumes = await fetchAllEcosystemsFromStart(
     volumeAdapter,
-    currentTimestamp
+    currentTimestamp,
+    ecosystemBlocks,
+    throttleFetchCount
   );
   const ecosystemNames = Object.keys(allEcosystemVolumes);
 

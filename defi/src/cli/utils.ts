@@ -1,6 +1,8 @@
 import { getBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import { lookupBlock } from "@defillama/sdk/build/util/index";
+import { getEcosystemBlocks } from "../dexVolumes/utils";
 import protocols from "../protocols/data";
+import pThrottle from "../utils/pThrottle";
 
 import { Ecosystem } from "../dexVolumes/dexVolume.types";
 
@@ -27,17 +29,30 @@ export async function getBlocksRetry(timestamp: number) {
 
 export async function getEthBlock(timestamp: number) {
   return {
-    ethereumBlock: (await lookupBlock(timestamp, {chain:"ethereum"})).block,
-    chainBlocks: {}
-  }
+    ethereumBlock: (await lookupBlock(timestamp, { chain: "ethereum" })).block,
+    chainBlocks: {},
+  };
 }
 
-export async function getChainBlocksRetry(timestamp: number, chain: Ecosystem) {
+export async function getChainBlocksRetry(
+  timestamp: number,
+  chain: Ecosystem,
+  limit = 1000
+) {
+  const throttle = pThrottle({
+    limit,
+    interval: 60000,
+  });
+
+  const throttleGetEcosystemBlock: any = throttle(getEcosystemBlocks);
+
   for (let i = 0; i < 10; i++) {
     try {
-      const res = await lookupBlock(timestamp, { chain });
+      const res: { height: number; timestamp: number } =
+        await throttleGetEcosystemBlock(chain, timestamp);
       return {
-        ...res,
+        block: res.height,
+        timestamp: res.timestamp,
         inputTimestamp: timestamp,
       };
     } catch (e) {

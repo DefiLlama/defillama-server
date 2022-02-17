@@ -10,7 +10,7 @@ import {
   BreakdownMonthlyEcosystemRecord,
 } from "../../../../src/dexVolumes/dexVolume.types";
 
-const calcAllMonthlyBreakdownVolume = async ({
+const calcAllMonthlyBreakdownVolume = ({
   breakdownMonthlyVolumes,
   currentTimestamp,
   id,

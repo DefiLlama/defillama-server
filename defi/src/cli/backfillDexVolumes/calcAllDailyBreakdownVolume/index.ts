@@ -7,7 +7,7 @@ import {
   BreakdownDailyEcosystemRecord,
 } from "../../../../src/dexVolumes/dexVolume.types";
 
-const calcAllDailyBreakdownVolume = async ({
+const calcAllDailyBreakdownVolume = ({
   breakdownDailyVolumes,
   currentTimestamp,
   id,

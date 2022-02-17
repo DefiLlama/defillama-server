@@ -17,9 +17,10 @@
     "noEmit": false,
     "jsx": "preserve",
     "allowJs": true,
+    "noImplicitThis": false,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
-    "lib":["ES2019"]
+    "lib": ["ES2019"]
   },
   "include": ["src"],
   "exclude": ["src/setupTestEnv.js"]

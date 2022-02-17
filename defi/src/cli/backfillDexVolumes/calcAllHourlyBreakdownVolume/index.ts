@@ -7,7 +7,7 @@ import {
   BreakdownHourlyEcosystemRecord,
 } from "../../../../src/dexVolumes/dexVolume.types";
 
-const calcAllHourlyBreakdownVolume = async ({
+const calcAllHourlyBreakdownVolume = ({
   breakdownHourlyVolumes,
   currentTimestamp,
   id,

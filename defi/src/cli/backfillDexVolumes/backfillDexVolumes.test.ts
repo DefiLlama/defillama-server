@@ -1,4 +1,4 @@
-import { getDexVolumeRecord } from "../../dexVolumes/dexVolumeRecords";
+import { getDexVolumeMetaRecord } from "../../dexVolumes/dexVolumeRecords";
 
 const traderjoeId = 1;
 const traderjoe = { module: "traderjoe" };
@@ -11,12 +11,12 @@ jest.mock("../../dexVolumes/dexVolumeRecords", () => {
   return {
     __esModule: true,
     ...originalModule,
-    getDexVolumeRecord: jest.fn(() => traderjoe),
+    getDexVolumeMetaRecord: jest.fn(() => traderjoe),
   };
 });
 
-test("getDexVolumeRecord", async () => {
-  const mockedGetDexVolumeRecord = getDexVolumeRecord(traderjoeId);
-  expect(mockedGetDexVolumeRecord).toEqual(traderjoe);
-  expect(getDexVolumeRecord).toHaveBeenCalled();
+test("getDexVolumeMetaRecord", async () => {
+  const mockedgetDexVolumeMetaRecord = getDexVolumeMetaRecord(traderjoeId);
+  expect(mockedgetDexVolumeMetaRecord).toEqual(traderjoe);
+  expect(getDexVolumeMetaRecord).toHaveBeenCalled();
 });

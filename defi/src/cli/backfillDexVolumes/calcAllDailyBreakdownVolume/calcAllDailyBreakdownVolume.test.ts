@@ -25,7 +25,7 @@ describe("calcAllDailyBreakdownVolume", () => {
         breakdown: "alpacaV2",
       };
 
-      const result = await calcAllDailyBreakdownVolume({
+      const result = calcAllDailyBreakdownVolume({
         breakdownDailyVolumes: [breakdownDailyVolumes1, breakdownDailyVolumes2],
         currentTimestamp,
         id,

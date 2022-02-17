@@ -11,7 +11,7 @@ import {
   Ecosystem,
   Fetch,
   FetchResult,
-  TimestampBlock,
+  TimestampBlocks,
   TimestampVolumes,
 } from "../../../../src/dexVolumes/dexVolume.types";
 
@@ -22,7 +22,7 @@ const getVolumesFromStart = async ({
   start,
   end,
 }: {
-  blocks: TimestampBlock;
+  blocks: TimestampBlocks;
   ecosystem: Ecosystem;
   fetch: Fetch;
   start: number;

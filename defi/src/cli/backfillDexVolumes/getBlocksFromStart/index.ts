@@ -4,13 +4,14 @@ import { MAX_HOURS } from "../";
 
 import {
   Ecosystem,
-  TimestampBlock,
+  TimestampBlocks,
 } from "../../../../src/dexVolumes/dexVolume.types";
 
 const getBlocksFromStart = async (
   start: number,
   ecosystem: Ecosystem,
-  end: number
+  end: number,
+  limit?: number
 ) => {
   const blocks = [];
   // TODO optimize by storing all blocks in db for one query
@@ -18,7 +19,7 @@ const getBlocksFromStart = async (
   let dailyTimestamp = start;
   // Get everyday up to end
   while (dailyTimestamp < end) {
-    blocks.push(getChainBlocksRetry(dailyTimestamp, ecosystem));
+    blocks.push(getChainBlocksRetry(dailyTimestamp, ecosystem, limit));
 
     dailyTimestamp = getTimestampAtStartOfNextDayUTC(dailyTimestamp);
   }
@@ -34,7 +35,7 @@ const getBlocksFromStart = async (
   // TODO add error report
   const allBlocksRes = await Promise.all(blocks);
 
-  return allBlocksRes.reduce((acc: TimestampBlock, curr) => {
+  return allBlocksRes.reduce((acc: TimestampBlocks, curr) => {
     acc[curr.inputTimestamp] = curr.block;
     return acc;
   }, {});

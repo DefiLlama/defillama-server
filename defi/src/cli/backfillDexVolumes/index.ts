@@ -164,6 +164,7 @@ const backfillDexVolumes = async (id: number) => {
               volumeAdapter,
               ecosystemBlocks,
               throttleFetchCount,
+              breakdown,
             });
 
             breakdownDailyVolumes.push({
@@ -227,6 +228,10 @@ const backfillDexVolumes = async (id: number) => {
   await updateLockDexVolumeRecord(id, false);
   console.log("done");
 };
+
+backfillDexVolumes(1).catch((e) => {
+  console.log(e);
+});
 
 // TODO fill multiple protocols
 // TODO fill All protocols

@@ -4233,7 +4233,7 @@ export default ([
     chains: ["Polygon"],
     module: "dfyn/index.js",
     twitter: "_Dfyn",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "DIA"],
     forkedFrom: ["Uniswap"],
   },
   {
@@ -4871,7 +4871,7 @@ export default ([
     module: "injective/index.js",
     twitter: "InjectiveLabs",
     audit_links: ["https://www.certik.org/projects/injectiveprotocol"],
-    oracles: ["Chainlink","Band"],
+    oracles: ["Chainlink","Band", "DIA"],
   },
   {
     id: "350",
@@ -13100,7 +13100,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "ola_finance",
   audit_links: ["https://olafinance.gitbook.io/ola-finance/audit-reports/solidified-and-zk-labs"],
   forkedFrom: ["Compound"],
-  oracles: ["Internal"],
+  oracles: ["Internal", "DIA"],
   listedAt: 1636144662,
 },
 {
@@ -13906,6 +13906,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "standard-tech/index.js",
   twitter: "standarddefi",
   forkedFrom: ["Uniswap"],
+  oracles: ["DIA", "Internal"],
   listedAt: 1636671594,
 },
 {
@@ -15508,7 +15509,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "knitfinance/index.js",
     twitter: "KnitFinance",
     audit_links: ["https://www.certik.com/projects/knitfinance"],
-    oracles: ["Internal"],
+    oracles: ["Internal", "DIA"],
     listedAt: 1637799515,
   },
   {
@@ -17473,7 +17474,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "upfi.js",
     twitter: "upfi_network",
     audit_links: ["https://www.rdauditors.com/wp-content/uploads/2021/11/UPFI-Network-Smart-Contract-Security-Report.pdf"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "DIA"],
     listedAt: 1639176180,
   },
   {
@@ -18943,6 +18944,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum" , "Binance"] ,
   module: "polkastarter/index.js",
   twitter: "polkastarter" ,
+  oracles: ["DIA"],
   listedAt: 1640177869 ,
 },
 {
@@ -20879,6 +20881,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "auroraswap/index.js",
   twitter: "AuroraSwap",
   forkedFrom: ["Uniswap"],
+  oracles: ["DIA"],
   listedAt: 1641071171,
 },
 {
@@ -21281,6 +21284,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Arbitrum"],
   module: "sperax/index.js",
   twitter: "SperaxUSD",
+  oracles: ["DIA"],
   listedAt: 1641400651,
 },
 {
@@ -21926,6 +21930,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Near"],
   module: "oin-finance/index.js",
   twitter: "FinanceOin",
+  oracles: ["DIA"],
   audit_links: ["https://oin-finance.gitbook.io/925/misc.-resources/documentation#oindao-v3-audits"],
   listedAt: 1641873083,
 },

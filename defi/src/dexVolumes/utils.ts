@@ -84,6 +84,11 @@ export const allBreakdownEcosystemStarts = async (
     {}
   );
 
+export const calcNumBreakdownFetches = (breakdown: BreakdownAdapter) =>
+  Object.values(breakdown).reduce((acc: number, curr) => {
+    return acc + Object.keys(curr).length;
+  }, 0);
+
 // v1: {
 //   [ETHEREUM]: {
 //     fetch: v1Graph(ETHEREUM),

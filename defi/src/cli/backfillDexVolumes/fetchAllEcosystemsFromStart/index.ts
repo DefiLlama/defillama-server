@@ -1,11 +1,6 @@
 import { fetchEcosystemsFromStart } from "../";
 import pThrottle from "../../../utils/pThrottle";
 
-const throttle = pThrottle({
-  limit: 100,
-  interval: 1050,
-});
-
 import {
   AllEcosystemVolumes,
   Ecosystem,
@@ -17,9 +12,15 @@ import {
 const fetchAllEcosystemsFromStart = async (
   volumeAdapter: VolumeAdapter,
   end: number,
-  ecosystemBlocks?: EcosystemTimestampBlocks
+  ecosystemBlocks?: EcosystemTimestampBlocks,
+  throttleFetchCount = 1
 ): Promise<AllEcosystemVolumes> => {
   const ecosystems: any[] = Object.keys(volumeAdapter);
+
+  const throttle = pThrottle({
+    limit: 100 / throttleFetchCount,
+    interval: 1050,
+  });
 
   return (
     await Promise.all(

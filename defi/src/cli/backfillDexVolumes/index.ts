@@ -1,8 +1,6 @@
 import * as dexAdapters from "../../../DefiLlama-Adapters/dexVolumes";
 import { DynamoDB, AWSError } from "aws-sdk";
 import { PromiseResult } from "aws-sdk/lib/request";
-import fs from "fs";
-import path from "path";
 
 import {
   getDexVolumeMetaRecord,
@@ -16,6 +14,7 @@ import { getTimestampAtStartOfHour } from "../../utils/date";
 import {
   convertBreakdownNumericStart,
   allBreakdownEcosystemStarts,
+  calcNumBreakdownFetches,
 } from "../../dexVolumes/utils";
 
 export { default as calcDailyVolume } from "./calcDailyVolume";
@@ -123,15 +122,6 @@ const backfillDexVolumes = async (id: number) => {
       breakdown: string;
     }[] = [];
 
-    let writtenBlocks = false;
-
-    // const;
-
-    try {
-    } catch (e) {
-      console.log("No local ecosystem blocks found, fetching through api");
-    }
-
     // Convert all async start fetches to numbers by calling them
     const adapterWithStarts = await convertBreakdownNumericStart(
       breakdownAdapter
@@ -141,107 +131,104 @@ const backfillDexVolumes = async (id: number) => {
       adapterWithStarts
     );
 
-    // const ecosystemBlocks: EcosystemTimestampBlocks = Object.fromEntries(
-    //   await Promise.all(
-    //     Object.entries(allEcosystemStarts).map(
-    //       // TODO Fix all adapter types first before typing
-    //       async ([ecosystem, start]: [any, number]) => {
-    //         const res = await getBlocksFromStart(
-    //           start,
-    //           ecosystem,
-    //           currentTimestamp
-    //         );
-    //         return [ecosystem, res];
-    //       }
-    //     )
-    //   )
-    // );
+    const ecosystemBlocks: EcosystemTimestampBlocks = Object.fromEntries(
+      await Promise.all(
+        Object.entries(allEcosystemStarts).map(
+          // TODO Fix all adapter types first before typing
+          async ([ecosystem, start]: [any, number]) => {
+            const res = await getBlocksFromStart(
+              start,
+              ecosystem,
+              currentTimestamp
+            );
+            return [ecosystem, res];
+          }
+        )
+      )
+    );
 
-    //   fs.writeFileSync(
-    //     path.join(__dirname, `backfillFiles/${dexModule}/blocks.ts`),
-    //     JSON.stringify(ecosystemBlocks)
-    //   );
-    //   console.log(JSON.stringify(ecosystemBlocks), "ecosystemBlocks");
+    const throttleFetchCount = calcNumBreakdownFetches(breakdownAdapter);
 
-    //   try {
-    //     await Promise.all(
-    //       Object.entries(breakdownAdapter).map(
-    //         async ([breakdown, volumeAdapter]) => {
-    //           const {
-    //             dailyVolumes,
-    //             hourlyVolumes,
-    //             monthlyVolumes,
-    //             earliestTimestamp,
-    //           } = await calcAllVolumes({
-    //             currentTimestamp,
-    //             id,
-    //             volumeAdapter,
-    //             ecosystemBlocks,
-    //           });
+    try {
+      await Promise.all(
+        Object.entries(breakdownAdapter).map(
+          async ([breakdown, volumeAdapter]) => {
+            const {
+              dailyVolumes,
+              hourlyVolumes,
+              monthlyVolumes,
+              earliestTimestamp,
+            } = await calcAllVolumes({
+              currentTimestamp,
+              id,
+              volumeAdapter,
+              ecosystemBlocks,
+              throttleFetchCount,
+            });
 
-    //           breakdownDailyVolumes.push({
-    //             dailyVolumes,
-    //             earliestTimestamp,
-    //             breakdown,
-    //           });
+            breakdownDailyVolumes.push({
+              dailyVolumes,
+              earliestTimestamp,
+              breakdown,
+            });
 
-    //           breakdownHourlyVolumes.push({
-    //             hourlyVolumes,
-    //             earliestTimestamp,
-    //             breakdown,
-    //           });
+            breakdownHourlyVolumes.push({
+              hourlyVolumes,
+              earliestTimestamp,
+              breakdown,
+            });
 
-    //           breakdownMonthlyVolumes.push({
-    //             monthlyVolumes,
-    //             earliestTimestamp,
-    //             breakdown,
-    //           });
-    //         }
-    //       )
-    //     );
-    //   } catch (e) {
-    //     console.log("calc all volumes failed");
-    //     console.log(e);
-    //   }
+            breakdownMonthlyVolumes.push({
+              monthlyVolumes,
+              earliestTimestamp,
+              breakdown,
+            });
+          }
+        )
+      );
+    } catch (e) {
+      console.log("calc all volumes failed");
+      console.log(e);
+    }
 
-    //   console.log(breakdownDailyVolumes, "breakdownDailyVolumes");
+    console.log(breakdownDailyVolumes, "breakdownDailyVolumes");
 
-    //   Object.values(
-    //     calcAllDailyBreakdownVolume({
-    //       breakdownDailyVolumes,
-    //       currentTimestamp,
-    //       id,
-    //     })
-    //   ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
-    //     allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
-    //   });
+    Object.values(
+      calcAllDailyBreakdownVolume({
+        breakdownDailyVolumes,
+        currentTimestamp,
+        id,
+      })
+    ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
+      allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
+    });
 
-    //   Object.values(
-    //     calcAllHourlyBreakdownVolume({
-    //       breakdownHourlyVolumes,
-    //       currentTimestamp,
-    //       id,
-    //     })
-    //   ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
-    //     allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
-    //   });
+    Object.values(
+      calcAllHourlyBreakdownVolume({
+        breakdownHourlyVolumes,
+        currentTimestamp,
+        id,
+      })
+    ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
+      allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
+    });
 
-    //   console.log(allDbWrites, "allDbWrites");
+    console.log(allDbWrites, "allDbWrites");
 
-    //   Object.values(
-    //     calcAllMonthlyBreakdownVolume({
-    //       breakdownMonthlyVolumes,
-    //       currentTimestamp,
-    //       id,
-    //     })
-    //   ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
-    //     allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
-    //   });
-    // }
+    Object.values(
+      calcAllMonthlyBreakdownVolume({
+        breakdownMonthlyVolumes,
+        currentTimestamp,
+        id,
+      })
+    ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
+      allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
+    });
   }
-  // await Promise.all(allDbWrites);
 
-  // await updateLockDexVolumeRecord(id, false);
+  await Promise.all(allDbWrites);
+
+  await updateLockDexVolumeRecord(id, false);
   console.log("done");
 };
 

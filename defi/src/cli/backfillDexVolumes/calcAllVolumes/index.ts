@@ -24,17 +24,20 @@ const calcAllVolumes = async ({
   volumeAdapter,
   breakdown = "total",
   ecosystemBlocks,
+  throttleFetchCount = 1,
 }: {
   currentTimestamp: number;
   id: number;
   volumeAdapter: VolumeAdapter;
   breakdown?: string;
   ecosystemBlocks?: EcosystemTimestampBlocks;
+  throttleFetchCount?: number;
 }) => {
   const allEcosystemVolumes = await fetchAllEcosystemsFromStart(
     volumeAdapter,
     currentTimestamp,
-    ecosystemBlocks
+    ecosystemBlocks,
+    throttleFetchCount
   );
   const ecosystemNames = Object.keys(allEcosystemVolumes);
 

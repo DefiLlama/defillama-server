@@ -309,7 +309,7 @@ export default [
     description: "The First Global Education Games Metaverse",
     chain: "Binance",
     logo: `${baseIconsUrl}/winkyverse.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "the-winkyverse",
     cmcId: "16652",
@@ -319,6 +319,7 @@ export default [
     forkedFrom: [],
     module: "winkyverse/index.js",
     twitter: "thewinkies1",
+    audit_links: ["https://docsend.com/view/v9fk2ajkksjd9xcz"],
     listedAt: 1645036853,
   },
   {

@@ -304,7 +304,7 @@ export default [
     id: "1422",
     name: "Winkyverse",
     address: "bsc:0xb160A5F19ebccd8E0549549327e43DDd1D023526",
-    symbol: "WINK",
+    symbol: "WNK",
     url: "https://getwinkies.com",
     description: "The First Global Education Games Metaverse",
     chain: "Binance",

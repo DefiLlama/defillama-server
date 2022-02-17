@@ -25,7 +25,7 @@ describe("calcAllMonthlyBreakdownVolume", () => {
         breakdown: "alpacaV2",
       };
 
-      const result = await calcAllMonthlyBreakdownVolume({
+      const result = calcAllMonthlyBreakdownVolume({
         breakdownMonthlyVolumes: [
           breakdownMonthlyVolumes1,
           breakdownMonthlyVolumes2,

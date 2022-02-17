@@ -22,7 +22,7 @@ describe("calcAllHourlyBreakdownVolume", () => {
         breakdown: "alpacaV2",
       };
 
-      const result = await calcAllHourlyBreakdownVolume({
+      const result = calcAllHourlyBreakdownVolume({
         breakdownHourlyVolumes: [
           breakdownHourlyVolumes1,
           breakdownHourlyVolumes2,

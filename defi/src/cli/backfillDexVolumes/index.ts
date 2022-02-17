@@ -191,8 +191,6 @@ const backfillDexVolumes = async (id: number) => {
       console.log(e);
     }
 
-    console.log(breakdownDailyVolumes, "breakdownDailyVolumes");
-
     Object.values(
       calcAllDailyBreakdownVolume({
         breakdownDailyVolumes,
@@ -209,11 +207,9 @@ const backfillDexVolumes = async (id: number) => {
         currentTimestamp,
         id,
       })
-    ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
-      allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
+    ).forEach((hourlyEcosystemRecord: HourlyEcosystemRecord) => {
+      allDbWrites.push(putHourlyDexVolumeRecord(hourlyEcosystemRecord));
     });
-
-    console.log(allDbWrites, "allDbWrites");
 
     Object.values(
       calcAllMonthlyBreakdownVolume({
@@ -221,8 +217,8 @@ const backfillDexVolumes = async (id: number) => {
         currentTimestamp,
         id,
       })
-    ).forEach((dailyEcosystemRecord: DailyEcosystemRecord) => {
-      allDbWrites.push(putDailyDexVolumeRecord(dailyEcosystemRecord));
+    ).forEach((monthlyEcosystemRecord: MonthlyEcosystemRecord) => {
+      allDbWrites.push(putMonthlyDexVolumeRecord(monthlyEcosystemRecord));
     });
   }
 
@@ -231,45 +227,6 @@ const backfillDexVolumes = async (id: number) => {
   await updateLockDexVolumeRecord(id, false);
   console.log("done");
 };
-
-backfillDexVolumes(1).catch((e) => {
-  console.log(e);
-});
-
-// const blocks = async () => {
-//   // const res = getBlocksFromStart(
-//   //   1640044800,
-//   //   "polygon",
-//   //   Date.now() / 1000,
-//   //   100
-//   // ).then((res) => {
-//   //   console.log(res);
-//   // });
-
-//   const res1 = await getBlocksFromStart(
-//     1541116800,
-//     "ethereum",
-//     Date.now() / 1000,
-//     100
-//   ).then((res) => {
-//     console.log(res);
-//   });
-
-//   // const res2 = getBlocksFromStart(
-//   //   1630454400,
-//   //   "arbitrum",
-//   //   Date.now() / 1000,
-//   //   100
-//   // ).then((res) => {
-//   //   console.log(res);
-//   // });
-
-//   // const ress = await Promise.all([res, res1, res2]);
-
-//   console.log(res1, "all done");
-// };
-
-// blocks();
 
 // TODO fill multiple protocols
 // TODO fill All protocols

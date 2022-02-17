@@ -18,7 +18,7 @@ const fetchAllEcosystemsFromStart = async (
   const ecosystems: any[] = Object.keys(volumeAdapter);
 
   const throttle = pThrottle({
-    limit: 100 / throttleFetchCount,
+    limit: Math.floor(99 / throttleFetchCount),
     interval: 1050,
   });
 

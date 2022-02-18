@@ -6,6 +6,7 @@ import {
   secondsInDay,
   secondsInWeek,
   secondsBetweenCallsExtra,
+  HOUR,
 } from "../utils/date";
 import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
@@ -64,7 +65,8 @@ export default async function (
     secondsInDay
   );
 
-  const lastHourlyTVL = (await lastHourlyTVLRecord).tvl;
+  const lastHourlyTVLObject = await lastHourlyTVLRecord;
+  const lastHourlyTVL = lastHourlyTVLObject.tvl;
   if (storePreviousData && lastHourlyTVL * 2 < tvl.tvl && lastHourlyTVL !== 0) { 
     const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
       tvl.tvl
@@ -79,6 +81,7 @@ export default async function (
       }
     }
     if (
+      Math.abs(lastHourlyTVLObject.SK - unixTimestamp) < (5 * HOUR) &&
       lastHourlyTVL * 5 < tvl.tvl &&
       tvlToCompareAgainst.tvl * 5 < tvl.tvl
     ) {
@@ -98,7 +101,6 @@ export default async function (
   }
 
   if (storePreviousData) {
-    const lastHourlyTVLObject = await lastHourlyTVLRecord;
     await Promise.all(Object.entries(tvl).map(async ([sectionName, sectionTvl]) => {
       const prevTvl = lastHourlyTVLObject[sectionName]
       if (sectionTvl === 0 && prevTvl !== 0 && prevTvl !== undefined) {

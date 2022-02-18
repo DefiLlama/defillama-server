@@ -1391,7 +1391,7 @@ export default ([
     chains: ["Ethereum"],
     module: "n3rd.js",
     twitter: "nerdfinance1",
-    forkedFrom: ["cVault"],
+    forkedFrom: ["cVault Finance"],
   },
   {
     id: "176",
@@ -2249,7 +2249,6 @@ export default ([
     module: "ddex/index.js",
     twitter: "ddexio2018",
     audit_links: ["https://github.com/HydroProtocol/audit-reports/blob/master/2.0/hydro_audit_report_2019_14_en_1_0.pdf"],
-    forkedFrom: ["0x"],
   },
   {
     id: "220",
@@ -6537,7 +6536,7 @@ export default ([
     chains: ["Fantom"],
     module: "tarot/index.js",
     twitter: "TarotFinance",
-    forkedFrom: ["Impermax"],
+    forkedFrom: ["Impermax Finance"],
   },
   {
     id: "435",
@@ -9534,7 +9533,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Arbitrum"],
     module: "parrotegg/index.js",
     twitter: "Parrotdefi1",
-    forkedFrom: ["Goose Finance", "PolyPup"],
+    forkedFrom: ["Goose Finance"],
   },
   {
     id: "591",
@@ -9912,7 +9911,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon", "Binance"],
     module: "banano/index.js",
     twitter: "bananocoin",
-    forkedFrom: ["Nano"],
   },
   {
     id: "610",
@@ -13752,7 +13750,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Fantom"],
   module: "undeadfinance/index.js",
   twitter: "FinanceUndead",
-  forkedFrom: ["PolyPup"],
   listedAt: 1636485547,
 },
 {
@@ -20190,7 +20187,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "tethys/index.js",
   twitter: "tethysfinance",
   audit_links: ["https://defisecurity.io/dist/files/tethys_finance_security_audit_report_1.0.pdf"],
-  forkedFrom: ["Uniswap", "Impermax"],
+  forkedFrom: ["Uniswap", "Impermax Finance"],
   listedAt: 1640746550,
 },
 {
@@ -23027,7 +23024,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "tornadocore/index.js",
   twitter: "tornadofinance",
   audit_links: ["https://tornado.finance/bsc/TCORE-audit.pdf"],
-  forkedFrom: ["cVault"],
+  forkedFrom: ["cVault Finance"],
   listedAt: 1642457577,
 },
 {

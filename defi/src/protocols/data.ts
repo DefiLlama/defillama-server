@@ -25457,7 +25457,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1400",
-  name: "Lizard Exchange",
+  name: "Lizard",
   address: "oasis:0x6a977d5f48D57eF125C98469D511Ef4E0cE44E10",
   symbol: "LIZ",
   url: "https://lizard.exchange",

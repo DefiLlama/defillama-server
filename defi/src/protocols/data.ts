@@ -24560,7 +24560,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "ADAX is an automated liquidity protocol that facilitates trades within the Cardano ecosystem in a completely decentralized and non-custodial way.",
   chain: "Cardano",
   logo: `${baseIconsUrl}/adax-pro.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "adax",
   cmcId: "10833",
@@ -24568,6 +24568,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Cardano"],
   module: "adaxPro/index.js",
   twitter: "adax_pro",
+  audit_links: ["https://www.btblock.io/post/btblock-completes-cardano-smart-contract-review-for-adax"],
   listedAt: 1643889165,
 },
 {

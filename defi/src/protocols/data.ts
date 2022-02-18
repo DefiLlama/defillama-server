@@ -16599,6 +16599,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"] ,
     module: "fantOHM/index.js" ,
     twitter: "FantohmDAO" ,
+    forkedFrom: ["Olympus DAO"],
     listedAt: 1638463469 ,
   },
   {

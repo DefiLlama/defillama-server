@@ -12918,7 +12918,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Solana"],
   module: "apricot.js",
   twitter: "ApricotFinance",
-  oracles: ["Pyth"],
   listedAt: 1636003606,
 },
 {

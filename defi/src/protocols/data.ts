@@ -3602,6 +3602,7 @@ export default ([
     chains: ["Solana"],
     module: "mango-markets/index.js",
     twitter: "mangomarkets",
+    oracles: ["Pyth"],
   },
   {
     id: "287",
@@ -4176,6 +4177,7 @@ export default ([
     chains: ["Solana"],
     module: "solfarm.js",
     twitter: "TulipProtocol",
+    oracles: ["Pyth"],
   },
   {
     id: "316",
@@ -6458,6 +6460,7 @@ export default ([
     chains: ["Solana"],
     module: "acumen/index.js",
     twitter: "acumenofficial",
+    oracles: ["Pyth"],
   },
   {
     id: "431",
@@ -7210,6 +7213,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "portfinance/index.js",
     twitter: "port_finance",
+    oracles: ["Pyth"],
   },
   {
     id: "470",
@@ -8492,6 +8496,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "larix.js",
     twitter: "ProjectLarix",
     audit_links: ["https://docs.projectlarix.com/how-to-prove/audit"],
+    oracles: ["Pyth"],
   },
   {
     id: "537",
@@ -10641,6 +10646,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "jetprotocol.js",
     twitter: "JetProtocol",
+    oracles: ["Pyth"],
   },
   {
     id: "648",
@@ -12914,6 +12920,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Solana"],
   module: "apricot.js",
   twitter: "ApricotFinance",
+  oracles: ["Pyth"],
   listedAt: 1636003606,
 },
 {
@@ -16779,6 +16786,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "drift.js",
     twitter: "DriftProtocol",
+    oracles: ["Pyth"],
     listedAt: 1638568951,
   },
   {
@@ -18621,6 +18629,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Solana"],
   module: "chest-finance/index.js",
   twitter: "chestfinance",
+  oracles: ["Pyth"],
   listedAt: 1640040907 ,
 },
 {
@@ -20645,6 +20654,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Solana"] ,
   module: "friktion/index.js" ,
   twitter: "friktion_labs" ,
+  oracles: ["Pyth"],
   listedAt: 1640906003 ,
 },
 {
@@ -21226,6 +21236,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Solana"],
   module: "katana/index.js",
   twitter: "Katana_HQ",
+  oracles: ["Pyth"],
   listedAt: 1641359167,
 },
 {

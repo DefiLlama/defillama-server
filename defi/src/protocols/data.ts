@@ -16467,7 +16467,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "955",
-    name: "RomeDAO",
+    name: "Houses of Rome",
     address: "moonriver:0x4a436073552044d5f2f49b176853ad3ad473d9d6",
     symbol: "ROME",
     url: "https://romedao.finance",

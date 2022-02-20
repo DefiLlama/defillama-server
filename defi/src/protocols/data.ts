@@ -16473,7 +16473,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://romedao.finance",
     description: "Assembling the great houses to build the reserve currency of Kusama & Polkadot.",
     chain: "Moonriver",
-    logo: `${baseIconsUrl}/romedao.jpg`,
+    logo: `${baseIconsUrl}/houses-of-rome.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "rome",

@@ -365,7 +365,7 @@ export default ([
     audit_links: [
       "https://github.com/dforce-network/documents/tree/master/audit_report/Lending",
     ],
-    forkedFrom: ["Compound"],
+    forkedFrom: [],
     oracles: ["Chainlink","Band"],
   },
   {

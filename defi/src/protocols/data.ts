@@ -702,7 +702,7 @@ export default ([
     module: "snowswap.js",
     twitter: "snow_swap",
     audit_links: ["https://hackmd.io/@9GUQpanJRF6cloQ0fwyPFw/r1_ctUuqv"],
-    forkedFrom: ["Curve", "Uniswap"],
+    forkedFrom: ["Saddle Finance","Uniswap"],
     oracles: ["Chainlink"],
   },
   {
@@ -1906,7 +1906,7 @@ export default ([
     module: "saddle/index.js",
     twitter: "saddlefinance",
     audit_links: ["https://github.com/saddle-finance/saddle-audits"],
-    forkedFrom: ["Curve"],
+    forkedFrom: [],
   },
   {
     id: "203",
@@ -3059,7 +3059,7 @@ export default ([
     chains: ["Avalanche"],
     module: "snowball/index.js",
     twitter: "throwsnowballs",
-    forkedFrom: ["Pickle", "Curve"],
+    forkedFrom: ["Pickle", "Saddle Finance"],
 
   },
   {
@@ -3902,7 +3902,7 @@ export default ([
     module: "nerve/index.js",
     twitter: "NerveFinance",
     audit_links: ["https://docs.nerve.fi/fundamentals/audits-and-security"],
-    forkedFrom: ["Curve"]
+    forkedFrom: ["Saddle Finance"]
   },
   {
     id: "302",
@@ -4157,7 +4157,7 @@ export default ([
     chains: ["Avalanche"],
     module: "gdl/index.js",
     twitter: "gondola_finance",
-    forkedFrom: ["Curve"],
+    forkedFrom: ["Saddle Finance"],
   },
   {
     id: "315",
@@ -6556,7 +6556,7 @@ export default ([
     module: "hop",
     twitter: "HopProtocol",
     audit_links: ["https://docs.hop.exchange/faq#are-hop-contracts-audited"],
-    forkedFrom: ["Curve"],
+    forkedFrom: ["Saddle Finance"],
   },
   {
     id: "436",
@@ -9418,7 +9418,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "1swap/index.js",
     twitter: "1swapfi",
-    forkedFrom: ["Curve"],
+    forkedFrom: ["Saddle Finance"],
   },
   {
     id: "585",
@@ -9494,7 +9494,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Celo"],
     module: "mobius/index.js",
     twitter: "MobiusMoney",
-    forkedFrom: ["Curve"],
+    forkedFrom: ["Saddle Finance"],
   },
   {
     id: "589",
@@ -10834,7 +10834,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
     module: "synapse/index.js",
     twitter: "SynapseProtocol",
-    forkedFrom: ["Curve"],
+    forkedFrom: ["Saddle Finance"],
   },
   {
     id: "658",
@@ -13847,7 +13847,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "minmax-finance/index.js",
   twitter: "minmaxfinance",
   oracles: [],
-  forkedFrom: ["Curve"],
+  forkedFrom: ["Saddle Finance"],
   listedAt: 1636629439,
 },
 {
@@ -14240,7 +14240,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Avalanche"],
   module: "axial/index.js",
   twitter: "AxialDeFi",
-  forkedFrom: ["Curve"],
+  forkedFrom: ["Saddle Finance"],
   listedAt: 1637031735,
 },
 {

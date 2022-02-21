@@ -724,4 +724,29 @@ export default [
     twitter: "PeelDefi",
     listedAt: 1645395923,
   },
+  {
+    id: "1442",
+    name: "Kyrios Finance",
+    address: "fantom:0xdbf8a44f447cf6fa300fa84c2aac381724b0c6dd",
+    symbol: "KYRIOS",
+    url: "https://kyrios.finance/",
+    description: "Yield Farming Protocol on Fantom",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/kyrios-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Fantom"],
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [
+      "https://github.com/solidproof/projects/blob/main/Kyrios%20Finance/SmartContract_Audit_Solidproof_Kyrios_Finance.pdf",
+      "https://531035661-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhccNVLK8kuMkleYXpAJW%2Fuploads%2FCosEw4NkBoipdEtd883t%2FSmartContract_Audit_Solidproof_Kyrios_Finance.pdf?alt=media&token=78b83a6b-db33-4d51-88f4-346fbbd2467e"
+    ],
+    module: "kyrios/index.js",
+    twitter: "KyriosFinance",
+    listedAt: 1645429975,
+  }
 ] as Protocol[]

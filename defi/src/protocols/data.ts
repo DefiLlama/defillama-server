@@ -6532,7 +6532,7 @@ export default ([
     audit_note: null,
     gecko_id: "tarot",
     cmcId: "11409",
-    category: "Yield",
+    category: "Lending",
     chains: ["Fantom"],
     module: "tarot/index.js",
     twitter: "TarotFinance",

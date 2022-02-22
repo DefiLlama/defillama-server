@@ -21284,7 +21284,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Sperax's USDs strikes a dynamic balance between collateralization and algorithmic-stability, unleashing the stablecoin's capital efficiency",
   chain: "Arbitrum",
   logo: `${baseIconsUrl}/sperax-usd.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "sperax",
   cmcId: "6715",
@@ -21293,6 +21293,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "sperax/index.js",
   twitter: "SperaxUSD",
   oracles: ["DIA"],
+  audit_links: ["https://github.com/Sperax/Audit_Reports"],
   listedAt: 1641400651,
 },
 {

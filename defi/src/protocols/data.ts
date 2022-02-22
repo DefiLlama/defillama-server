@@ -10742,7 +10742,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "emiswap/index.js",
     twitter: "EmiSwap",
     forkedFrom: ["Uniswap"],
-    audit_links: ["https://hacken.io/wp-content/uploads/2021/02/18022021_Emiswap_SC_Audit_Report.pdf", "https://emiswap.com/docs/12072021_Emiswap_SC_Audit_Report_V2.pdf"],
+    audit_links: ["https://emiswap.com/docs/06042021_Emiswap_SC_Audit_Report.pdf", "https://emiswap.com/docs/12072021_Emiswap_SC_Audit_Report_V2.pdf"],
   },
   {
     id: "653",

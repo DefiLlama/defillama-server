@@ -169,7 +169,7 @@ export default ([
     module: "compound-onchain/index.js",
     twitter: "compoundfinance",
     audit_links: ["https://compound.finance/docs/security"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "TWAP"],
   },
   {
     id: "115",
@@ -5072,7 +5072,7 @@ export default ([
     module: "fraxfinance/index.js",
     twitter: "fraxfinance",
     audit_links: ["https://www.certik.org/projects/fraxfinance"],
-    oracles: ["Chainlink", "TWAP"],
+    oracles: ["Chainlink"],
   },
 /*
   {

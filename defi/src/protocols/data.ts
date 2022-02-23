@@ -494,14 +494,14 @@ export default ([
   },
   {
     id: "130",
-    name: "imToken",
+    name: "The Tokenized Bitcoin",
     address: "0x3212b29E33587A00FB1C83346f5dBFA69A458923",
     symbol: "imBTC",
-    url: "https://token.im/",
+    url: "https://tokenlon.im/imbtc",
     description:
       "imToken is an easy and secure digital wallet trusted by millions",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/imtoken.png`,
+    logo: `${baseIconsUrl}/the-tokenized-bitcoin.png`,
     audits: null,
     audit_note: null,
     gecko_id: "imbtc",
@@ -509,7 +509,7 @@ export default ([
     category: "Services",
     chains: ["Ethereum"],
     module: "imbtc.js",
-    twitter: "imTokenOfficial",
+    twitter: "tokenlon",
     audit_links: ["https://cure53.de/pentest-report_imtoken.pdf",
                   "https://drive.google.com/file/d/1o7byxnZbhl8PkWpYHnWtxDgUp_cpPO73/view"
                  ],

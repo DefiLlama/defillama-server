@@ -1069,7 +1069,7 @@ export default [
     gecko_id: "organix",
     cmcId: null ,
     category: "Synthetics",
-    chains: ["EOS", "BSC"],
+    chains: ["EOS"],
     oracles: [],
     forkedFrom: [],
     module: "ogx/index.js",

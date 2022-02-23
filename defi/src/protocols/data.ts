@@ -1917,7 +1917,7 @@ export default ([
     url: "https://sirenmarkets.com/",
     description: "Decentralized option markets on Ethereum.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/siren.jpg`,
+    logo: `${baseIconsUrl}/siren.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: "siren",

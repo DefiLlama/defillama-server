@@ -849,7 +849,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Ethereum", "Polygon", "Binance", "Arbitrum", "Avax"],
+    chains: ["Ethereum", "Polygon", "Binance", "Arbitrum", "Avalanche"],
     oracles: [],
     forkedFrom: [],
     module: "hashflow/index.js",

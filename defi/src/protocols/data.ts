@@ -21422,7 +21422,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Zunami Protocol is the DAO that works with stablecoins and solves the main issues of current yield-farming protocols by streamlining interaction with DeFi, making it easier and cheaper while increasing profitability by differentiating and rebalancing users' funds",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/zunami-protocol.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,

@@ -619,6 +619,11 @@ export const chainCoingeckoIds = {
     categories: ["Parachain", "EVM"],
     parent: "Kusama",
   },
+  "Wax": {
+    geckoId: "wax",
+    symbol: "WAKP",
+    cmcId: "2300",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -771,6 +776,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Bittorrent"
     case "genshiro":
       return "Genshiro"
+    case "wax":
+      return "Wax"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

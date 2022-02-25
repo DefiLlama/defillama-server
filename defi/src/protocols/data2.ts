@@ -1322,6 +1322,7 @@ export default [
     twitter: "pact_fi",
     listedAt: 1645731534,
   },
+/*
   {
     id: "1469",
     name: "AlgoFi",
@@ -1344,6 +1345,7 @@ export default [
     audit_links: ["https://docs.algofi.org/security/audit"],
     listedAt: 1645731636
   },
+*/
   {
     id: "1470",
     name: "Nereus Finance",

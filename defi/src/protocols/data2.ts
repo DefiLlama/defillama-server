@@ -1014,8 +1014,8 @@ export default [
   {
     id: "1455",
     name: "ClaimSwap",
-    address: null,
-    symbol: "-",
+    address: "klaytn:0xcf87f94fd8f6b6f0b479771f10df672f99eada63",
+    symbol: "CLA",
     url: "https://claimswap.org/",
     description: "Swap, earn, and claim on the decentralized, community driven platform",
     chain: "Klaytn",
@@ -1027,10 +1027,11 @@ export default [
     category: "Dexes",
     chains: ["Klaytn"],
     oracles: [],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["SushiSwap"],
     module: "claimswap/index.js",
     twitter: "claimswap",
     language: "Solidity",
+    audit_links: ["https://github.com/claimswap/claimswap-audit"] ,
     listedAt: 1645643108,
   },
   {

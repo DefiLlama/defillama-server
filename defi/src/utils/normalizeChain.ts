@@ -621,7 +621,7 @@ export const chainCoingeckoIds = {
   },
   "Wax": {
     geckoId: "wax",
-    symbol: "WAX",
+    symbol: "WAXP",
     cmcId: "2300",
   },
 } as {

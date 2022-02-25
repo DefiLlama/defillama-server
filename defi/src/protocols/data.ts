@@ -7936,7 +7936,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "defibox",
     cmcId: "6960",
     category: "Dexes",
-    chains: ["EOS","Binance"],
+    chains: ["EOS","Binance", "Wax"],
     module: "defibox/index.js",
     twitter: "DefiboxOfficial",
     audit_links: ["https://support.defibox.cc/hc/en-us/articles/900006609803-PeckShield-Smart-Contract-Security-Audit-Report",

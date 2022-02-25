@@ -1529,7 +1529,7 @@ export default ([
     symbol: "LDO",
     url: "https://lido.fi/",
     description:
-      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana & Terra.",
+      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana, Terra & Kusama.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lido.png`,
     audits: "2",

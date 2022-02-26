@@ -1476,7 +1476,7 @@ export default [
     symbol: "WILC",
     url: "https://wilc.finance",
     description: "Wrapped ILCOIN (WILC) is an ERC-20 token that is tradable directly with ILCOIN asset at a 1:1 ratio. WILC allow the development of the Decentralized Cloud Blockchain (DCB) smart contracts system that stores large amounts of data in a decentralized way and can be used on DEXs for DeFi yield farming",
-    chain: "Ethreum",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/wrapped-ilcoin.png`,
     audits: "0",
     audit_note: null,

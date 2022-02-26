@@ -1431,7 +1431,7 @@ export default [
     id: "1474",
     name: "AtomicHub",
     address: null,
-    symbol: null,
+    symbol: "-",
     url: "https://eos.atomichub.io",
     description: "AtomicHub is a one stop solution for creating, trading, buying and selling NFTs that is already used by millions of loyal users.",
     chain: "EOS",

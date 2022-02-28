@@ -238,6 +238,7 @@ functions:
     memorySize: 512
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
+    timeout: 900
     events:
       - schedule: cron(0 * * * ? *)
   storeDataset:

@@ -108,7 +108,7 @@ export default [
   },
   {
     id: "1413",
-    name: "Savannah Finance",
+    name: "Savanna Finance",
     address: "cronos:0x654bAc3eC77d6dB497892478f854cF6e8245DcA9",
     symbol: "SVN",
     url: "https://svn.finance",

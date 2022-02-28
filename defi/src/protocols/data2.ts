@@ -1585,7 +1585,7 @@ export default [
     url: "https://2doge.finance/",
     description: "2Doge Finance is the second token in the ecosystem of $FDOGE Finance which is a combination of algorithmics stablecoin on Fantom Opera network and meme token favored by Shiba Inus worldwide.",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/2doge.jpg`,
+    logo: `${baseIconsUrl}/2doge-finance.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

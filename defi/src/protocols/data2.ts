@@ -1579,7 +1579,7 @@ export default [
   },
   {
     id: "1481",
-    name: "FDoge Finance",
+    name: "2Doge Finance",
     address: null ,
     symbol: "-" ,
     url: "https://2doge.finance/",

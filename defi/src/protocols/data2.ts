@@ -1650,7 +1650,7 @@ export default [
     description: "Bastille De La Bouje is the third layer of the Bouje Finance ecosystem bringing a solid APR Reset concept back in, focusing on safety and sustainability of our users, furthermore having a Dynamic APR structure to maximise and bring the highest yields to our users.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/bastilledelabouje.png`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

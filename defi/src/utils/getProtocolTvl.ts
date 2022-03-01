@@ -71,10 +71,10 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
 
           if (isDoubleCount && !extraSections.includes(chainDisplayName) && !chainDisplayName.includes("-")) {
             chainTvls[`${chainDisplayName}-doublecounted`] = {
-              tvl,
-              tvlPrevDay,
-              tvlPrevWeek,
-              tvlPrevMonth,
+              tvl: chainTvl,
+              tvlPrevDay: previousDayRecord[chain] || null,
+              tvlPrevWeek: previousWeekRecord[chain] || null,
+              tvlPrevMonth: previousMonthRecord[chain] || null,
             };
           }
         }

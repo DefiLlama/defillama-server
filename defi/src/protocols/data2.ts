@@ -1784,7 +1784,7 @@ export default [
     url: "https://www.demodyfi.com",
     description: "Demodyfi is able to build a next-generation DEX that extends its DeFi product line into a single-source, cross-chain market. The ability to do both pools and cross-chain swaps, powered by the Polkadot ecosystem, can provide higher throughput for faster and cheaper transactions while remaining connected to the Ethereum Network and other blockchains for liquidity.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/dolphinswap.png`,
+    logo: `${baseIconsUrl}/demodyfi.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "demodyfi",

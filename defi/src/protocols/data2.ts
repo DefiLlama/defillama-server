@@ -1759,7 +1759,7 @@ export default [
     address: "eos:DOP-eos-dop.efi",
     symbol: "DOP",
     url: "https://dolphinswap.io",
-    description: "",
+    description: "DolphinSwap supports multiple proportional market-making mechanisms",
     chain: "EOS",
     logo: `${baseIconsUrl}/dolphinswap.png`,
     audits: "2",

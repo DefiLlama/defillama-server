@@ -11,8 +11,7 @@ import {
   transformNewChainName,
 } from "./utils/normalizeChain";
 import dynamodb, { TableName } from "./utils/shared/dynamodb";
-import {craftChainsResponse} from "./getChains"
-import { getProtocolTvl } from "./utils/getProtocolTvl";
+import { craftChainsResponse } from "./getChains";
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -47,7 +46,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
     await Promise.all(
       protocols.map(async (protocol) => {
         const lastHourlyRecord = await getLastRecord(hourlyTvl(protocol.id));
-        const ll = await getProtocolTvl(protocol, true)
+
         if (lastHourlyRecord === undefined) {
           return null;
         }
@@ -66,18 +65,13 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
           addToChains(chains, chainDisplayName);
         });
         if (chains.length === 0) {
-          const chain = useNewChainNames
-            ? transformNewChainName(protocol.chain)
-            : protocol.chain;
+          const chain = useNewChainNames ? transformNewChainName(protocol.chain) : protocol.chain;
           if (chainTvls[chain] === undefined) {
             chainTvls[chain] = lastHourlyRecord.tvl;
           }
           extraSections.forEach((section) => {
             const chainSectionName = `${chain}-${section}`;
-            if (
-              chainTvls[section] !== undefined &&
-              chainTvls[chainSectionName] === undefined
-            ) {
+            if (chainTvls[section] !== undefined && chainTvls[chainSectionName] === undefined) {
               chainTvls[chainSectionName] = chainTvls[section];
             }
           });
@@ -90,18 +84,9 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
           chainTvls,
           chains: chains.sort((a, b) => chainTvls[b] - chainTvls[a]),
           chain: getDisplayChain(chains),
-          change_1h: getPercentChange(
-            lastHourlyRecord.tvlPrev1Hour,
-            lastHourlyRecord.tvl
-          ),
-          change_1d: getPercentChange(
-            lastHourlyRecord.tvlPrev1Day,
-            lastHourlyRecord.tvl
-          ),
-          change_7d: getPercentChange(
-            lastHourlyRecord.tvlPrev1Week,
-            lastHourlyRecord.tvl
-          )
+          change_1h: getPercentChange(lastHourlyRecord.tvlPrev1Hour, lastHourlyRecord.tvl),
+          change_1d: getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl),
+          change_7d: getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl),
         } as any;
         for (let extraData of ["staking", "pool2"]) {
           if (lastHourlyRecord[extraData] !== undefined) {
@@ -109,9 +94,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
           }
         }
         if (typeof protocol.gecko_id === "string") {
-          const coingeckoData = (await coinMarkets)[
-            `asset#${protocol.gecko_id}`
-          ];
+          const coingeckoData = (await coinMarkets)[`asset#${protocol.gecko_id}`];
           if (coingeckoData !== undefined) {
             dataToReturn.fdv = coingeckoData.fdv;
             dataToReturn.mcap = coingeckoData.mcap;
@@ -126,13 +109,11 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
   return response;
 }
 
-const handler = async (
-  event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
+const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   let response = await craftProtocolsResponse(false);
-  if(event.queryStringParameters?.includeChains === "true"){
-    const chainData = await craftChainsResponse()
-    response = [...response, ...chainData]
+  if (event.queryStringParameters?.includeChains === "true") {
+    const chainData = await craftChainsResponse();
+    response = [...response, ...chainData];
   }
   return successResponse(response, 10 * 60); // 10 mins cache
 };

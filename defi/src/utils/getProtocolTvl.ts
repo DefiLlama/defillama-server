@@ -22,72 +22,76 @@ export type ProtocolTvls = {
 };
 
 export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNames: boolean): Promise<ProtocolTvls> {
-  const now = Math.round(Date.now() / 1000);
-  const [lastRecord, previousDayRecord, previousWeekRecord, previousMonthRecord, module] = await Promise.all([
-    getLastRecord(hourlyTvl(protocol.id)),
-    getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), now - secondsInDay, secondsInDay),
-    getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), now - secondsInWeek, secondsInDay),
-    getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), now - secondsInWeek * 4, secondsInDay),
-    import(`../../DefiLlama-Adapters/projects/${protocol.module}`),
-  ]);
-
   const chainTvls: ChainTvls = {};
   let tvl: number | null = null;
   let tvlPrevDay: number | null = null;
   let tvlPrevWeek: number | null = null;
   let tvlPrevMonth: number | null = null;
 
-  const isDoubleCount = module.doublecounted || protocol.category === "Yield Aggregator";
+  try {
+    const now = Math.round(Date.now() / 1000);
+    const [lastRecord, previousDayRecord, previousWeekRecord, previousMonthRecord, module] = await Promise.all([
+      getLastRecord(hourlyTvl(protocol.id)),
+      getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), now - secondsInDay, secondsInDay),
+      getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), now - secondsInWeek, secondsInDay),
+      getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), now - secondsInWeek * 4, secondsInDay),
+      import(`../../DefiLlama-Adapters/projects/${protocol.module}`),
+    ]);
 
-  if (lastRecord) {
-    Object.entries(lastRecord).forEach(([chain, chainTvl]) => {
-      if (chain !== "tvl" && nonChains.includes(chain)) {
-        return;
-      }
+    const isDoubleCount = module.doublecounted || protocol.category === "Yield Aggregator";
 
-      if (chain === "tvl") {
-        tvl = chainTvl;
-        tvlPrevDay = previousDayRecord[chain] || null;
-        tvlPrevWeek = previousWeekRecord[chain] || null;
-        tvlPrevMonth = previousMonthRecord[chain] || null;
-
-        if (isDoubleCount) {
-          chainTvls["doublecounted"] = {
-            tvl,
-            tvlPrevDay,
-            tvlPrevWeek,
-            tvlPrevMonth,
-          };
+    if (lastRecord) {
+      Object.entries(lastRecord).forEach(([chain, chainTvl]) => {
+        if (chain !== "tvl" && nonChains.includes(chain)) {
+          return;
         }
-      } else {
-        const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
-        chainTvls[chainDisplayName] = {
-          tvl: chainTvl,
-          tvlPrevDay: previousDayRecord[chain] || null,
-          tvlPrevWeek: previousWeekRecord[chain] || null,
-          tvlPrevMonth: previousMonthRecord[chain] || null,
+
+        if (chain === "tvl") {
+          tvl = chainTvl;
+          tvlPrevDay = previousDayRecord[chain] || null;
+          tvlPrevWeek = previousWeekRecord[chain] || null;
+          tvlPrevMonth = previousMonthRecord[chain] || null;
+
+          if (isDoubleCount) {
+            chainTvls["doublecounted"] = {
+              tvl,
+              tvlPrevDay,
+              tvlPrevWeek,
+              tvlPrevMonth,
+            };
+          }
+        } else {
+          const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
+          chainTvls[chainDisplayName] = {
+            tvl: chainTvl,
+            tvlPrevDay: previousDayRecord[chain] || null,
+            tvlPrevWeek: previousWeekRecord[chain] || null,
+            tvlPrevMonth: previousMonthRecord[chain] || null,
+          };
+
+          if (isDoubleCount && !extraSections.includes(chainDisplayName) && !chainDisplayName.includes("-")) {
+            chainTvls[`${chainDisplayName}-doublecounted`] = {
+              tvl,
+              tvlPrevDay,
+              tvlPrevWeek,
+              tvlPrevMonth,
+            };
+          }
+        }
+      });
+
+      if (Object.keys(chainTvls).length === 0) {
+        chainTvls[protocol.chains[0]] = {
+          tvl,
+          tvlPrevDay,
+          tvlPrevWeek,
+          tvlPrevMonth,
         };
-
-        if (isDoubleCount && !extraSections.includes(chainDisplayName) && !chainDisplayName.includes("-")) {
-          chainTvls[`${chainDisplayName}-doublecounted`] = {
-            tvl,
-            tvlPrevDay,
-            tvlPrevWeek,
-            tvlPrevMonth,
-          };
-        }
       }
-    });
-
-    if (Object.keys(chainTvls).length === 0) {
-      chainTvls[protocol.chains[0]] = {
-        tvl,
-        tvlPrevDay,
-        tvlPrevWeek,
-        tvlPrevMonth,
-      };
     }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    return { tvl, tvlPrevDay, tvlPrevWeek, tvlPrevMonth, chainTvls };
   }
-
-  return { tvl, tvlPrevDay, tvlPrevWeek, tvlPrevMonth, chainTvls };
 }

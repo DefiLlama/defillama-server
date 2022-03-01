@@ -1,7 +1,7 @@
 import { Protocol } from "../protocols/data";
 import { secondsInDay, secondsInWeek } from "./date";
 import { getLastRecord, hourlyTvl } from "./getLastRecord";
-import { getChainDisplayName, nonChains } from "./normalizeChain";
+import { extraSections, getChainDisplayName, nonChains } from "./normalizeChain";
 import getTVLOfRecordClosestToTimestamp from "./shared/getRecordClosestToTimestamp";
 
 type ChainTvls = {
@@ -37,6 +37,8 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
   let tvlPrevWeek: number | null = null;
   let tvlPrevMonth: number | null = null;
 
+  const isDoubleCount = module.doublecounted || protocol.category === "Yield Aggregator";
+
   if (lastRecord) {
     Object.entries(lastRecord).forEach(([chain, chainTvl]) => {
       if (chain !== "tvl" && nonChains.includes(chain)) {
@@ -48,6 +50,15 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
         tvlPrevDay = previousDayRecord[chain] || null;
         tvlPrevWeek = previousWeekRecord[chain] || null;
         tvlPrevMonth = previousMonthRecord[chain] || null;
+
+        if (isDoubleCount) {
+          chainTvls["doublecounted"] = {
+            tvl,
+            tvlPrevDay,
+            tvlPrevWeek,
+            tvlPrevMonth,
+          };
+        }
       } else {
         const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
         chainTvls[chainDisplayName] = {
@@ -56,17 +67,17 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
           tvlPrevWeek: previousWeekRecord[chain] || null,
           tvlPrevMonth: previousMonthRecord[chain] || null,
         };
+
+        if (isDoubleCount && !extraSections.includes(chainDisplayName) && !chainDisplayName.includes("-")) {
+          chainTvls[`${chainDisplayName}-doublecounted`] = {
+            tvl,
+            tvlPrevDay,
+            tvlPrevWeek,
+            tvlPrevMonth,
+          };
+        }
       }
     });
-
-    if (module.doublecounted || protocol.category === "Yield Aggregator") {
-      chainTvls["doublecounted"] = {
-        tvl,
-        tvlPrevDay,
-        tvlPrevWeek,
-        tvlPrevMonth,
-      };
-    }
 
     if (Object.keys(chainTvls).length === 0) {
       chainTvls[protocol.chains[0]] = {
@@ -77,6 +88,6 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
       };
     }
   }
-  
+
   return { tvl, tvlPrevDay, tvlPrevWeek, tvlPrevMonth, chainTvls };
 }

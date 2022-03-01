@@ -12,6 +12,7 @@ import {
 } from "./utils/normalizeChain";
 import dynamodb, { TableName } from "./utils/shared/dynamodb";
 import {craftChainsResponse} from "./getChains"
+import { getProtocolTvl } from "./utils/getProtocolTvl";
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -46,6 +47,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
     await Promise.all(
       protocols.map(async (protocol) => {
         const lastHourlyRecord = await getLastRecord(hourlyTvl(protocol.id));
+        const ll = await getProtocolTvl(protocol, true)
         if (lastHourlyRecord === undefined) {
           return null;
         }

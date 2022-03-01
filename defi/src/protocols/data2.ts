@@ -1700,7 +1700,7 @@ export default [
     chains: ["Oasis"],
     oracles: ["Band"],
     forkedFrom: ["Compound"],
-    module: "fountain-protocol",
+    module: "Fountain-Protocol/index.js",
     twitter: "fountainprot",
     listedAt: 1646137364 ,
   },

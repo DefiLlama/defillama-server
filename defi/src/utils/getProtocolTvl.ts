@@ -80,7 +80,8 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
         }
       });
 
-      if (Object.keys(chainTvls).length === 0) {
+      const chainsLength = Object.keys(chainTvls).length
+      if (chainsLength === 0 || (chainsLength === 1 && chainTvls["doublecounted"] !== undefined)) {
         chainTvls[protocol.chains[0]] = {
           tvl,
           tvlPrevDay,

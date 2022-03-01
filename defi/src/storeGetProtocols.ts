@@ -15,7 +15,7 @@ const handler = async (_event: any) => {
   const response = await craftProtocolsResponse(true);
   const trimmedResponse = await Promise.all(
     response.map(async (protocol) => {
-      const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol.id, true, protocol.chains);
+      const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol, true);
       return {
         category: protocol.category,
         chains: protocol.chains,

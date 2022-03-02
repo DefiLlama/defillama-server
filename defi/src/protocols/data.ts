@@ -19548,6 +19548,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Indexes",
   chains: ["Ethereum"],
+  oracles: ["Chainlink"],
   module: "gearbox/index.js",
   twitter: "GearboxProtocol",
   audit_links: ["https://github.com/Gearbox-protocol/gearbox-contracts/tree/master/audits"],

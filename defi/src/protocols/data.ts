@@ -4562,7 +4562,7 @@ export default ([
     category: "Dexes",
     chains: ["Binance", "Heco"],
     module: "mdex/index.js",
-    twitter: "Mdexswap",
+    twitter: "Mdextech",
     audit_links: [
       "https://mdex.com/slowmist_bsc.pdf",
       "https://mdex.com/fairyproof_bsc.pdf",

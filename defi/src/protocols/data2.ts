@@ -1911,7 +1911,7 @@ export default [
     url: "https://grave.finance/#/",
     description: "Grave is an algorithmic stable coin protocol pegged to the price of 0.1 AVAX.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/minswap.png`,
+    logo: `${baseIconsUrl}/grave-finance.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -1932,7 +1932,7 @@ export default [
     url: "https://starlay.finance",
     description: "Starlay Finance is the first lending protocol backed by Astar Network.",
     chain: "Astar",
-    logo: `${baseIconsUrl}/minswap.png`,
+    logo: `${baseIconsUrl}/starlay-finance.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -1944,6 +1944,5 @@ export default [
     module: "starlay/index.js",
     twitter: "starlay_fi",
     listedAt: 1646202072,
->>>>>>> f24b8f20 (add icons and new listings)
   },
 ] as Protocol[]

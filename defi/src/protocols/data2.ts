@@ -1692,7 +1692,7 @@ export default [
     description: "Fountain Protocol is a lending platform powered by Oasis. The protocol enables users to experience high capital efficiency one-stop management of DeFi assets. Taking advantage of the extremely efficient and low-cost Oasis Network.",
     chain: "Oasis",
     logo: `${baseIconsUrl}/fountain-protocol.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -1702,6 +1702,7 @@ export default [
     forkedFrom: ["Compound"],
     module: "Fountain-Protocol/index.js",
     twitter: "fountainprot",
+    audit_links: ["https://github.com/dev-fountain/fountain-protocol-audit"],
     listedAt: 1646137364 ,
   },
   {

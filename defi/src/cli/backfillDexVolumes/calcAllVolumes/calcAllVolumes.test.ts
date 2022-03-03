@@ -8,7 +8,9 @@ import {
   monthlyVolumes,
 } from "../fixtures";
 
-import { volume } from "../../../../DefiLlama-Adapters/dexVolumes/traderjoe";
+import adapter from "../../../../DefiLlama-Adapters/dexVolumes/traderjoe";
+
+const { volume } = adapter;
 
 import { fetchAllEcosystemsFromStart } from "../";
 

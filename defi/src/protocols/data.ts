@@ -7491,7 +7491,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/marinade-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "marinade-finance",
+    gecko_id: "marinade",
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Solana"],

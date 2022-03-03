@@ -1969,7 +1969,7 @@ export default [
   },
   {
     id: "1499",
-    name: "Llavafall",
+    name: "Lavafall",
     address: "fantom:0x7A0Ac775d290A7a3016f153d757Fbc3c4De62488",
     symbol: "Lavafall",
     url: "https://lava.defiwaterfall.com",

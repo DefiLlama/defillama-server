@@ -1268,7 +1268,7 @@ export default [
     description: "Next Gen DeFi on Bitcoin via Stacks. Building Financial Infrastructure on Bitcoin through Stacks",
     chain: "Stacks",
     logo: `${baseIconsUrl}/alex.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -1278,6 +1278,7 @@ export default [
     forkedFrom: [],
     module: "alexlab/index.js",
     twitter: "alexgoBtc",
+    audit_links: ["https://www.alexgo.io/#Security"],
     listedAt: 1645731214,
   },
   {

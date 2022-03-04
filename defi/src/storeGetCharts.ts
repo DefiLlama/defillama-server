@@ -128,9 +128,6 @@ const handler = async (_event: any) => {
       const formattedChainName = getChainDisplayName(chain, true);
       if (extraSections.includes(formattedChainName)) {
         sum(sumDailyTvls, "total", formattedChainName, timestamp, tvl);
-        if (protocol.doublecounted) {
-          sum(sumDailyTvls, "total", `${formattedChainName}-doublecounted`, timestamp, tvl);
-        }
         return;
       }
       const [chainName, tvlSection] = formattedChainName.includes("-")
@@ -138,6 +135,9 @@ const handler = async (_event: any) => {
         : [formattedChainName, "tvl"];
       if (chainCoingeckoIds[chainName] !== undefined) {
         sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl);
+        if (protocol.doublecounted) {
+          sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
+        }
         hasAtLeastOneChain = true;
       }
     });

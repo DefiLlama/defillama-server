@@ -1311,7 +1311,7 @@ export default [
     description: "Pact is a decentralised Automated Market Maker (AMM) built on the Algorand protocol, offering deep liquidity and low transaction fees.",
     chain: "Algorand",
     logo: `${baseIconsUrl}/pact.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

@@ -12612,7 +12612,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Atlantis is a decentralised money market that enables users to borrow and supply digital assets to the protocol within a non-custodial environment directly within the Binance Smart Chain",
     chain: "Binance",
     logo: `${baseIconsUrl}/atlantis-loans.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "atlantis-loans",
     cmcId: "13121",
@@ -12621,6 +12621,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Compound"],
     module: "atlantisloans/index.js",
     twitter: "atlantis_loans",
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Atlantis-v1.0.pdf"],
     listedAt: 1635820333,
   },
   {

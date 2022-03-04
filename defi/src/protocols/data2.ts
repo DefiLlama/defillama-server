@@ -1321,6 +1321,7 @@ export default [
     forkedFrom: [],
     module: "pactfi.js",
     twitter: "pact_fi",
+    audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Pact_Fi.pdf"],
     listedAt: 1645731534,
   },
   {

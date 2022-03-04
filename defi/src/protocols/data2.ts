@@ -2188,7 +2188,7 @@ export default [
     symbol: "SOLD",
     url: "https://solanax.org",
     description: "SOLANAX is a decentralized and non-custodial automated liquidity mechanism supporting trades within the Solana ecosystem",
-    chain: "Solanax",
+    chain: "Solana",
     logo: `${baseIconsUrl}/solanax.png`,
     audits: "0",
     audit_note: null,

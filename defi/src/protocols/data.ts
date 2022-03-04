@@ -15496,7 +15496,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "chronoswap/index.js",
     twitter: "CyborgSwapDEX",
     forkedFrom: ["Uniswap"],
-    audit_links: ["https://www.certik.com/projects/chronoswap"],
+    audit_links: [
+      "https://www.certik.com/projects/chronoswap", 
+      "https://github.com/Tech-Audit/Smart-Contract-Audits/blob/main/TECHAUDIT_CHRONOSWAP.pdf"
+    ],
     listedAt: 1637714110,
   },
   {

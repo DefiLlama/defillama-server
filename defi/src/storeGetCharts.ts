@@ -128,6 +128,9 @@ const handler = async (_event: any) => {
       const formattedChainName = getChainDisplayName(chain, true);
       if (extraSections.includes(formattedChainName)) {
         sum(sumDailyTvls, "total", formattedChainName, timestamp, tvl);
+        if (protocol.doublecounted) {
+          sum(sumDailyTvls, "total", `${formattedChainName}-doublecounted`, timestamp, tvl);
+        }
         return;
       }
       const [chainName, tvlSection] = formattedChainName.includes("-")

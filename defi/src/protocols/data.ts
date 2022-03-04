@@ -12653,7 +12653,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "MuesliSwap is a new decentralized exchange (DEX) operating on the Smart Bitcoin Cash blockchain",
     chain: "smartBCH",
     logo: `${baseIconsUrl}/muesliswap.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -12662,6 +12662,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "muesliswap/index.js",
     twitter: "MuesliSwapTeam",
     forkedFrom: ["Uniswap"],
+    audit_links: ["https://github.com/mlabs-haskell/audit"],
     listedAt: 1635842482,
   },
   {

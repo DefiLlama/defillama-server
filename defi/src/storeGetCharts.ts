@@ -48,7 +48,7 @@ export async function getHistoricalTvlForAllProtocols() {
       const [lastTvl, historicalTvl, module] = await Promise.all([
         getLastRecord(hourlyTvl(protocol.id)),
         getHistoricalValues(dailyTvl(protocol.id)),
-        import(`../../DefiLlama-Adapters/projects/${protocol.module}`),
+        import(`../DefiLlama-Adapters/projects/${protocol.module}`),
       ]);
       if (historicalTvl.length < 1) {
         return undefined;

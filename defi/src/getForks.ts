@@ -1,6 +1,5 @@
-import { processProtocols, TvlItem } from './storeGetCharts';
+import { IProtocol, processProtocols, TvlItem } from './storeGetCharts';
 import { successResponse, wrap, IResponse } from './utils/shared';
-import type { Protocol } from './protocols/data';
 import { extraSections } from './utils/normalizeChain';
 
 interface SumDailyTvls {
@@ -25,7 +24,7 @@ function sum(
   time: number,
   item: Item = {},
   forkedProtocols: ForkedProtocols,
-  protocol: string
+  protocol: IProtocol
 ) {
   if (total[time] === undefined) {
     total[time] = {};
@@ -40,25 +39,29 @@ function sum(
     }
   }
 
+  if (protocol.doublecounted) {
+    data.doublecounted = (data.doublecounted || 0) + item.tvl;
+  }
+
   total[time][fork] = data;
 
   if (forkedProtocols[fork] == undefined) {
     forkedProtocols[fork] = new Set();
   }
-  forkedProtocols[fork].add(protocol);
+  forkedProtocols[fork].add(protocol.name);
 }
 
 const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   const sumDailyTvls = {} as SumDailyTvls;
   const forkedProtocols = {} as ForkedProtocols;
 
-  await processProtocols(async (timestamp: number, item: TvlItem, protocol: Protocol) => {
+  await processProtocols(async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
     try {
       let forks = protocol.forkedFrom;
 
       if (forks) {
         forks.forEach((fork) => {
-          sum(sumDailyTvls, fork, timestamp, item, forkedProtocols, protocol.name);
+          sum(sumDailyTvls, fork, timestamp, item, forkedProtocols, protocol);
         });
         return;
       }

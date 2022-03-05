@@ -30,7 +30,7 @@ interface SumDailyTvls {
   };
 }
 
-interface IProtocol extends Protocol {
+export interface IProtocol extends Protocol {
   doublecounted: boolean;
 }
 

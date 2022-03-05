@@ -1,7 +1,6 @@
-import { processProtocols, TvlItem } from './storeGetCharts';
-import { successResponse, wrap, IResponse } from './utils/shared';
-import type { Protocol } from './protocols/data';
-import { extraSections } from './utils/normalizeChain';
+import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
+import { successResponse, wrap, IResponse } from "./utils/shared";
+import { extraSections } from "./utils/normalizeChain";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -25,19 +24,22 @@ function sum(
   time: number,
   item: Item = {},
   oracleProtocols: OracleProtocols,
-  protocol: string
+  protocol: IProtocol
 ) {
   if (total[time] === undefined) {
     total[time] = {};
   }
-
   const data = total[time][oracle] || {};
 
   for (const i in item) {
-    const section: string = i.includes('-') ? i.split('-')[1] : i;
-    if (section === 'tvl' || extraSections.includes(section)) {
+    const section: string = i.includes("-") ? i.split("-")[1] : i;
+    if (section === "tvl" || extraSections.includes(section)) {
       data[section] = (data[section] || 0) + item[section];
     }
+  }
+
+  if (protocol.doublecounted) {
+    data.doublecounted = (data.doublecounted || 0) + item.tvl;
   }
 
   total[time][oracle] = data;
@@ -45,19 +47,19 @@ function sum(
   if (oracleProtocols[oracle] == undefined) {
     oracleProtocols[oracle] = new Set();
   }
-  oracleProtocols[oracle].add(protocol);
+  oracleProtocols[oracle].add(protocol.name);
 }
 
 const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   const sumDailyTvls = {} as SumDailyTvls;
   const oracleProtocols = {} as OracleProtocols;
 
-  await processProtocols(async (timestamp: number, item: TvlItem, protocol: Protocol) => {
+  await processProtocols(async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
     try {
       let oracles = protocol.oracles;
       if (oracles) {
         oracles.forEach((oracle) => {
-          sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol.name);
+          sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol);
         });
 
         return;

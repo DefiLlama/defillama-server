@@ -62,6 +62,7 @@ export default [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solana%20Program%20Audit/Cropper_Finance_AMM_Program_Security_Audit_Report_Halborn_Final.pdf",
     ],
     listedAt: 1644868660,
+    openSource: false
   },
   {
     id: "1411",
@@ -105,6 +106,7 @@ export default [
     module: "crema.js",
     twitter: "Crema_Finance",
     listedAt: 1644868985,
+    openSource: false
   },
   {
     id: "1413",
@@ -1055,6 +1057,7 @@ export default [
     twitter: "SolheroFi",
     language: [],
     listedAt: 1645643109,
+    openSource: false
   },
   {
     id: "1457",
@@ -1862,6 +1865,7 @@ export default [
     module: "goblingold.js",
     twitter: "goblingold_fi",
     listedAt: 1646175619,
+    openSource: false
   },
   {
     id: "1494",

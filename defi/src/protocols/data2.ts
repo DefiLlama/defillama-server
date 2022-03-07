@@ -273,7 +273,7 @@ export default [
     audit_note: null,
     gecko_id: "arable-protocol",
     cmcId: null,
-    category: "Yield",
+    category: "Synthetics",
     chains: ["Avalanche"],
     oracles: [],
     forkedFrom: [],

@@ -10791,7 +10791,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audits: "3",
     audit_note: null,
     gecko_id: "beethoven-x",
-    cmcId: null,
+    cmcId: "13244",
     category: "Dexes",
     chains: ["Fantom"],
     module: "beethovenx/index.js",

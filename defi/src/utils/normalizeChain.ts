@@ -28,6 +28,7 @@ export const chainCoingeckoIds = {
     symbol: "ETH",
     cmcId: "1027",
     categories: ["EVM"],
+    chainId: 1,
   },
   "Arbitrum": {
     geckoId: null,
@@ -35,12 +36,14 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: "Ethereum",
+    chainId: 42161,
   },
   "Palm": {
     geckoId: null,
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
+    chainId: 11297108109,
   },
   "Optimism": {
     geckoId: null,
@@ -48,6 +51,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: "Ethereum",
+    chainId: 10,
   },
   "Stacks": {
     geckoId: "blockstack",
@@ -79,12 +83,14 @@ export const chainCoingeckoIds = {
     symbol: "BNB",
     cmcId: "1839",
     categories: ["EVM"],
+    chainId: 56,
   },
   "Avalanche": {
     geckoId: "avalanche-2",
     symbol: "AVAX",
     cmcId: "5805",
     categories: ["EVM"],
+    chainId: 43114,
   },
   "Solana": {
     geckoId: "solana",
@@ -96,6 +102,7 @@ export const chainCoingeckoIds = {
     symbol: "MATIC",
     cmcId: "3890",
     categories: ["EVM"],
+    chainId: 137,
   },
   "Terra": {
     geckoId: "terra-luna",
@@ -108,18 +115,28 @@ export const chainCoingeckoIds = {
     symbol: "FTM",
     cmcId: "3513",
     categories: ["EVM"],
+    chainId: 250,
   },
   "Gnosis": {
     geckoId: "gnosis",
     symbol: "GNO",
     cmcId: "1659",
     categories: ["EVM"],
+    chainId: 100,
+  },
+  "XdaiArb": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 200,
   },
   "Heco": {
     geckoId: "huobi-token",
     symbol: "HT",
     cmcId: "2502",
     categories: ["EVM"],
+    chainId: 128,
   },
   "Kava": {
     geckoId: "kava",
@@ -132,12 +149,14 @@ export const chainCoingeckoIds = {
     symbol: "OKT",
     cmcId: "8267",
     categories: ["EVM"],
+    chainId: 66,
   },
   "Wanchain": {
     geckoId: "wanchain",
     symbol: "WAN",
     cmcId: "2606",
     categories: ["EVM"],
+    chainId: 888,
   },
   "DefiChain": {
     geckoId: "defichain",
@@ -158,6 +177,8 @@ export const chainCoingeckoIds = {
     geckoId: "energi",
     symbol: "NRG",
     cmcId: "3218",
+    categories: ["EVM"],
+    chainId: 39797,
   },
   "Secret": {
     geckoId: "secret",
@@ -179,12 +200,14 @@ export const chainCoingeckoIds = {
     symbol: "ONE",
     cmcId: "3945",
     categories: ["EVM"],
+    chainId: 1666600000,
   },
   "RSK": {
     geckoId: "rootstock",
     symbol: "RBTC",
     cmcId: "3626",
     categories: ["EVM"],
+    chainId: 30,
   },
   "Sifchain": {
     geckoId: "sifchain",
@@ -229,12 +252,14 @@ export const chainCoingeckoIds = {
     symbol: "CELO",
     cmcId: "5567",
     categories: ["EVM"],
+    chainId: 42220,
   },
   "KCC": {
     geckoId: "kucoin-shares",
     symbol: "KCS",
     cmcId: "2087",
     categories: ["EVM"],
+    chainId: 321,
   },
   "Karura": {
     geckoId: "karura",
@@ -249,6 +274,7 @@ export const chainCoingeckoIds = {
     cmcId: "9285",
     categories: ["EVM", "Parachain"],
     parent: "Kusama",
+    chainId: 1285,
   },
   "Waves": {
     geckoId: "waves",
@@ -260,12 +286,14 @@ export const chainCoingeckoIds = {
     symbol: "KLAY",
     cmcId: "4256",
     categories: ["EVM"],
+    chainId: 8217,
   },
   "IoTeX": {
     geckoId: "iotex",
     symbol: "IOTX",
     cmcId: "2777",
     categories: ["EVM"],
+    chainId: 4689,
   },
   "Ultra": {
     geckoId: "ultra",
@@ -283,18 +311,21 @@ export const chainCoingeckoIds = {
     cmcId: '11451',
     categories: ["EVM", "Parachain"],
     parent: "Kusama",
+    chainId: 336,
   },
   "Telos": {
     geckoId: "telos",
     symbol: "TLOS",
     cmcId: "4660",
     categories: ["EVM"],
+    chainId: 40,
   },
   "ThunderCore": {
     geckoId: "thunder-token",
     symbol: "TT",
     cmcId: "3930",
     categories: ["EVM"],
+    chainId: 108,
   },
   "Lamden": {
     geckoId: "lamden",
@@ -316,6 +347,7 @@ export const chainCoingeckoIds = {
       symbol: "SGB",
       cmcId: "12186",
       categories: ["EVM"],
+      chainId: 19,
   },
   "EnergyWeb": {
       geckoId: "energy-web-token",
@@ -323,42 +355,49 @@ export const chainCoingeckoIds = {
       cmcId: "5268",
       categories: ["EVM", "Parachain"],
       parent: ["Polkadot"],
+      chainId: 246,
   },
   "HPB": {
       geckoId: "high-performance-blockchain",
       symbol: "HPB",
       cmcId: "2345",
       categories: ["EVM"],
+      chainId: 269,
   },
   "GoChain": {
       geckoId: "gochain",
       symbol: "GO",
       cmcId: "2861",
       categories: ["EVM"],
+      chainId: 60,
   },
   "TomoChain": {
       geckoId: "tomochain",
       symbol: "TOMO",
       cmcId: "2570",
       categories: ["EVM"],
+      chainId: 88,
   },
   "Fusion": {
     geckoId: "fsn",
     symbol: "FSN",
     cmcId: "2530",
     categories: ["EVM"],
+    chainId: 32659,
   },
   "Kardia": {
     geckoId: "kardiachain",
     symbol: "KAI",
     cmcId: "5453",
     categories: ["EVM"],
+    chainId: 0,
   },
   "Fuse": {
     geckoId: "fuse-network-token",
     symbol: "FUSE",
     cmcId: "5634",
     categories: ["EVM"],
+    chainId: 122,
   },
   "SORA": {
     geckoId: "sora",
@@ -370,36 +409,42 @@ export const chainCoingeckoIds = {
     symbol: "BCH",
     cmcId: "1831",
     categories: ["EVM"],
+    chainId: 10000,
   },
   "Elastos": {
     geckoId: "elastos",
     symbol: "ELA",
     cmcId: "2492",
     categories: ["EVM"],
+    chainId: 20,
   },
   "Hoo": {
     geckoId: "hoo-token",
     symbol: "HOO",
     cmcId: "7543",
     categories: ["EVM"],
+    chainId: 70,
   },
   "Cronos": {
     geckoId: "crypto-com-chain",
     symbol: "CRO",
     cmcId: "3635",
     categories: ["EVM"],
+    chainId: 25,
   },
   "Polis": {
     geckoId: "polis",
     symbol: "POLIS",
     cmcId: "2359",
     categories: ["EVM"],
+    chainId: 333999,
   },
   "ZYX": {
     geckoId: "zyx",
     symbol: "ZYX",
     cmcId: "6131",
     categories: ["EVM"],
+    chainId: 55,
   },
   "Elrond": {
     geckoId: "elrond-erd-2",
@@ -416,7 +461,8 @@ export const chainCoingeckoIds = {
     symbol: "BOBA",
     cmcId: "14556",
     categories: ["EVM", "Rollup"],
-    parent: "Ethereum"
+    parent: "Ethereum",
+    chainId: 288,
   },
   "Metis": {
     geckoId: "metis-token",
@@ -424,18 +470,19 @@ export const chainCoingeckoIds = {
     cmcId: "9640",
     categories: ["EVM", "Rollup"],
     parent: "Ethereum",
+    chainId: 1088,
   },
   "Ubiq": {
     geckoId: "ubiq",
     symbol: "UBQ",
     cmcId: "588",
     categories: ["EVM"],
+    chainId: 8,
   },
   "Mixin": {
     geckoId: "mixin",
     symbol: "XIN",
     cmcId: "2349",
-    categories: ["EVM"],
   },
   "Everscale": {
     geckoId: "everscale",
@@ -451,13 +498,13 @@ export const chainCoingeckoIds = {
     geckoId: "xdce-crowd-sale",
     symbol: "XDC",
     cmcId: "2634",
-    categories: ["EVM"],
   },
   "Velas": {
     geckoId: "velas",
     symbol: "VLX",
     cmcId: "4747",
     categories: ["EVM"],
+    chainId: 106,
   },
   "Polkadot": {
     geckoId: "polkadot",
@@ -474,6 +521,7 @@ export const chainCoingeckoIds = {
     symbol: "ETC",
     cmcId: "1321",
     categories: ["EVM"],
+    chainId: 61,
   },
   "Sora": {
     geckoId: "sora",
@@ -486,25 +534,28 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
     parent: "Near",
+    chainId: 1313161554,
   },
   "Ronin": {
     geckoId: null,
     symbol: "RON",
     cmcId: null,
     categories: ["EVM"],
+    chainId: 2020,
   },
   "zkSync": {
     geckoId: null,
     symbol: null,
     cmcId: null,
     categories: ["Rollup"],
-    parent: "Ethereum"
+    parent: "Ethereum",
   },
   "SmartBCH": {
     geckoId: "bitcoin-cash",
     symbol: "BCH",
     cmcId: "1831",
     categories: ["EVM"],
+    chainId: 10000,
   },
   "Godwoken": {
     geckoId: null,
@@ -512,18 +563,21 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
     parent: "Nervos",
+    chainId: 71394,
   },
   "Callisto": {
     geckoId: "callisto",
     symbol: "CLO",
     cmcId: "2757",
     categories: ["EVM"],
+    chainId: 820,
   },
   "CSC": {
     geckoId: "coinex-token",
     symbol: "CET",
     cmcId: "2941",
     categories: ["EVM"],
+    chainId: 52,
   },
   "Ergo": {
     geckoId: "ergo",
@@ -540,13 +594,15 @@ export const chainCoingeckoIds = {
     symbol: "XLC",
     cmcId: null,
     categories: ["EVM"],
+    chainId: 5050,
   },
   "Nahmii": {
     geckoId: "nahmii",
     symbol: "NII",
     cmcId: "4865",
     categories: ["EVM", "Rollup"],
-    parent: "Ethereum"
+    parent: "Ethereum",
+    chainId: 5551,
   },
   "Parallel": {
     geckoId: null,
@@ -560,24 +616,28 @@ export const chainCoingeckoIds = {
     symbol: "MTRG",
     cmcId: "5919",
     categories: ["EVM"],
+    chainId: 82,
   },
   "Oasis": {
     geckoId: "oasis-network",
     symbol: "ROSE",
     cmcId: "7653",
     categories: ["EVM"],
+    chainId: 42262,
   },
   "Theta": {
     geckoId: "theta-token",
     symbol: "THETA",
     cmcId: "2416",
     categories: ["EVM"],
+    chainId: 361,
   },
   "Syscoin": {
     geckoId: "syscoin",
     symbol: "SYS",
     cmcId: "541",
     categories: ["EVM"],
+    chainId: 57,
   },
   "Moonbeam": {
     geckoId: "moonbeam",
@@ -585,6 +645,7 @@ export const chainCoingeckoIds = {
     cmcId: "6836",
     categories: ["EVM", "Parachain"],
     parent: "Polkadot",
+    chainId: 1284,
   },
   "Astar": {
     geckoId: "astar",
@@ -592,6 +653,7 @@ export const chainCoingeckoIds = {
     cmcId: "12885",
     categories: ["EVM", "Parachain"],
     parent: "Polkadot",
+    chainId: 592,
   },
   "Curio": {
     geckoId: null,
@@ -599,6 +661,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
     parent: "Skale",
+    chainId: 836542336838601,
   },
   "SKALE": {
     geckoId: "skale",
@@ -611,6 +674,7 @@ export const chainCoingeckoIds = {
     symbol: "BTT",
     cmcId: "16086",
     categories: ["EVM"],
+    chainId: 199,
   },
   "Genshiro": {
     geckoId: "genshiro",
@@ -629,6 +693,7 @@ export const chainCoingeckoIds = {
     symbol: "EVMOS",
     cmcId: null,
     categories: ["EVM", "Cosmos"],
+    chainId: 9001,
   },
 } as {
   [chain: string]: {
@@ -680,6 +745,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames?"CosmosHub":"Cosmos"
     case "avax":
       return "Avalanche"
+    case "xdaiarb":
+      return "XdaiArb"
     case "okexchain":
       return "OKExChain"
     case "defichain":

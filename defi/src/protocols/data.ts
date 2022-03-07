@@ -2700,7 +2700,7 @@ export default ([
     name: "Energiswap",
     address: "0x1416946162b1c2c871a73b07e932d2fb6c932069",
     symbol: "NRG",
-    url: "https://www.energiswap.org",
+    url: "https://www.energiswap.exchange",
     description:
       "A fully decentralized protocol for automated liquidity provision on Energi.",
     chain: "Energi",

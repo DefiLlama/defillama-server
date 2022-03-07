@@ -10790,7 +10790,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/beethoven-x.png`,
     audits: "3",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "beethoven-x",
     cmcId: null,
     category: "Dexes",
     chains: ["Fantom"],

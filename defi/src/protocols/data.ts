@@ -16745,7 +16745,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Babylon is a community-led asset management protocol that enables users to invest in DeFi together. It's built on the Ethereum network and it's non-custodial, transparent, permission-less, and governed by the community. Babylonians can create investment communities (called 'Gardens') and invite people to deposit capital. Members participate in the garden by joining the telegram chat, suggesting investment Strategies and voting on Strategies. Members receive rewards based on their contributions.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/babylon-finance.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "babylon-finance",
     cmcId: "14228",
@@ -16753,6 +16753,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "babylon-finance/index.js",
     twitter: "BabylonFinance",
+    audit_links: ["https://github.com/babylon-finance/security/tree/main/audits/20210413_Consensys"] ,
     listedAt: 1638501613,
   },
   {

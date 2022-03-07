@@ -3312,7 +3312,7 @@ export default ([
   },
   {
     id: "272",
-    name: "Cryptex",
+    name: "Cryptex Finance",
     address: "0x321C2fE4446C7c963dc41Dd58879AF648838f98D",
     symbol: "CTX",
     url: "https://cryptex.finance/",
@@ -3326,7 +3326,7 @@ export default ([
     cmcId: "10368 ",
     category: "Indexes",
     chains: ["Ethereum", "Optimism"],
-    module: "cryptex/index.js",
+    module: "cryptex-finance/index.js",
     twitter: "CryptexFinance",
     audit_links: ["https://cryptex.finance/Cryptex_-_Final_Report.pdf", "https://certificate.quantstamp.com/full/cryptex"],
     oracles: ["Chainlink"],

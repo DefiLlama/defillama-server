@@ -2363,7 +2363,7 @@ export default [
     url: "https://domination.finance",
     description: "The world's first DEX for dominance trading.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/rhea-dao.png`,
+    logo: `${baseIconsUrl}/domination-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

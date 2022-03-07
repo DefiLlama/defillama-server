@@ -6561,7 +6561,7 @@ export default ([
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Cross Chain",
     chains: ["Ethereum","Polygon","xDai", "Optimism", "Arbitrum"],
     module: "hop",
     twitter: "HopProtocol",

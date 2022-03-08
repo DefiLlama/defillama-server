@@ -265,7 +265,7 @@ export default [
     name: "Arable Protocol",
     address: "avax:0x00ee200df31b869a321b10400da10b561f3ee60d",
     symbol: "ACRE",
-    url: "https://app.arablefi.com/#/",
+    url: "https://arable.finance",
     description: "World’s First Synthetic Farming Protocol.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/arable-protocol.png`,

@@ -1357,7 +1357,7 @@ export default [
     description: "Nereus is a decentralised, non-custodial liquidity market protocol in which users can participate as depositors or borrowers.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/nereus-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "wirex",
     cmcId: "4090",
@@ -1367,6 +1367,7 @@ export default [
     forkedFrom: [],
     module: "nereus/index.js",
     twitter: "nereusfinance",
+    audit_links: ["https://docs.nereus.finance/nereus-protocol/security-audit"],
     listedAt: 1645753082,
   },
   {

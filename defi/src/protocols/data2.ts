@@ -2450,7 +2450,7 @@ export default [
     symbol: "HZN",
     description: "Horizon Protocol facilitates the on-chain trading of synthetic assets that represent the real economy. Seeks to provide exposure to real-world assets risk/return profiles via smart contracts on the binance smart chain.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/paraluni.png`,
+    logo: `${baseIconsUrl}/horizon-protocol.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "horizon-protocol",

@@ -3319,7 +3319,7 @@ export default ([
     description:
       "Cryptex is focused on building innovative, open-source financial solutions for the global Crypto community. Using Ethereum’s smart contract system, Cryptex is able to create decentralized financial solutions such as Total Crypto Market Cap Token, TCAP and many others.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/cryptex.jpg`,
+    logo: `${baseIconsUrl}/cryptex-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "cryptex-finance",

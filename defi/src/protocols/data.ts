@@ -22057,7 +22057,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "welnance-finance",
   cmcId: "12328",
-  category: "Lending",
+  //category: "Lending",
+  category: "Chain", // DISABLED
   chains: ["Binance"],
   module: "welnance/index.js",
   twitter: "WelnanceWorld",

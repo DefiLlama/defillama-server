@@ -2400,7 +2400,6 @@ export default [
     audit_links: [],
     listedAt: 1646686350,
   },
-  /*
   {
     id: "1519",
     name: "CryptEx Locker",
@@ -2415,14 +2414,13 @@ export default [
     gecko_id: "cryptex",
     cmcId: "8731",
     category: "Staking",
-    chains: ["Binance", "Polygon", "Avalanche", "xDai", "Fantom", "Cronos", "Aurora", "Moonriver"],
+    chains: ["Binance"],
     oracles: [],
     forkedFrom: [],
     module: "cryptex/index.js",
     twitter: "ExLocker",
-    listedAt: 1646688074,
+    listedAt: 1646855948,
   },
-  */
   {
     id: "1520",
     name: "Paraluni",

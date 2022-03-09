@@ -2400,6 +2400,7 @@ export default [
     audit_links: [],
     listedAt: 1646686350,
   },
+  /*
   {
     id: "1519",
     name: "CryptEx Locker",
@@ -2421,6 +2422,7 @@ export default [
     twitter: "ExLocker",
     listedAt: 1646688074,
   },
+  */
   {
     id: "1520",
     name: "Paraluni",

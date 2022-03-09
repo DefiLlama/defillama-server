@@ -17868,7 +17868,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Overnight is a DeFi protocol behind USD+, a yield generating stablecoin with daily profit payout.",
   chain: "Polygon",
   logo: `${baseIconsUrl}/overnight.jpg`,
-  audits: "0",
+  audits: "1",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -17876,6 +17876,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Polygon"],
   module: "ovnstable.js",
   twitter: "ovnstable",
+  audit_links: ["https://github.com/ovnstable/ovnstable-app/blob/master/audits/hacken_2022-02-03.pdf"],
   listedAt: 1639428732,
 },
 {

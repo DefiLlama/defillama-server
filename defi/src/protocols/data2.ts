@@ -2371,7 +2371,7 @@ export default [
     cmcId: null,
     category: "Synthetics",
     chains: ["Ethereum", "Polygon", "Boba"],
-    oracles: [],
+    oracles: ["UMA"],
     forkedFrom: [],
     module: "domfi/index.js",
     twitter: "dominationfi",

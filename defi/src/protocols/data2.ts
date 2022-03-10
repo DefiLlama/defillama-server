@@ -2448,6 +2448,7 @@ export default [
     name: "Horizon Protocol",
     address: "bsc:0xc0eff7749b125444953ef89682201fb8c6a917cd",
     symbol: "HZN",
+    url: "https://horizonprotocol.com/",
     description: "Horizon Protocol facilitates the on-chain trading of synthetic assets that represent the real economy. Seeks to provide exposure to real-world assets risk/return profiles via smart contracts on the binance smart chain.",
     chain: "Binance",
     logo: `${baseIconsUrl}/horizon-protocol.png`,

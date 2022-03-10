@@ -2026,7 +2026,7 @@ export default [
     description: "Cross-chain transfers",
     chain: "Everscale",
     logo: `${baseIconsUrl}/octus-bridge.png`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -2036,6 +2036,7 @@ export default [
     forkedFrom: [],
     module: "tonbridge.js",
     twitter: "Broxus",
+    audit_links: ["https://everscale.nil.foundation/report.pdf"],
     listedAt: 1646333180,
   },
   {

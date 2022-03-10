@@ -2537,7 +2537,7 @@ export default [
     description: "Vector allows users to boost their Platypus and stablecoin staking even if they don't own any PTP",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/vector-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "vector-finance",
     cmcId: "18418",
@@ -2547,6 +2547,7 @@ export default [
     forkedFrom: [],
     module: "vector/index.js",
     twitter: "vector_fi",
+    audit_links: ["https://omniscia.io/vector-finance-core-protocol/"],
     listedAt: 1646854535,
   },
   {

@@ -611,7 +611,7 @@ export default ([
     audit_note: null,
     gecko_id: "kava",
     cmcId: "4846",
-    category: "Lending",
+    category: "CDP",
     chains: ["Kava"],
     module: "kava.js",
     twitter: "kava_labs",

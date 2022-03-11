@@ -2621,7 +2621,7 @@ export default [
     id: "1529",
     name: "Gamblefi",
     address: "cronos:0xD465b6B4937D768075414D413e981Af0b49349Cc",
-    symbol: "BDX",
+    symbol: "BETIFY",
     url: "https://gamblefi.io/",
     description: "GambleFi is a Rebasing DAO protocol that features various external services meant to increase the protocol's treasury and redistribute dividends to users.",
     chain: "Cronos",

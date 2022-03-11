@@ -13352,6 +13352,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "ZigZagExchange",
   listedAt: 1636305888,
 },
+/*
 {
   id: "801",
   name: "cBridge",
@@ -13375,6 +13376,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   ],
   listedAt: 1636307154,
 },
+*/
 {
   id: "802",
   name: "SquidDao",

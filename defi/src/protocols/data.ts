@@ -17397,7 +17397,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1000",
-    name: "Brinc",
+    name: "Brinc Finance",
     address: "arbitrum:0xB5de3f06aF62D8428a8BF7b4400Ea42aD2E0bc53",
     symbol: "BRC",
     url: "https://brinc.fi",

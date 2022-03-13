@@ -2890,7 +2890,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Solana", "Ethereum", "BSC", "Terra", "Polygon", "Avalanche", "Oasis"],
+    chains: [ "Ethereum", "BSC", "Terra", "Polygon", "Avalanche", "Fantom"],
     oracles: [],
     forkedFrom: [],
     module: "wormhole/index.js",

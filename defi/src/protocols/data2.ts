@@ -119,7 +119,7 @@ export default [
     logo: `${baseIconsUrl}/savannah-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "savanna",
     cmcId: null,
     category: "Algo-Stables",
     chains: ["Cronos"],

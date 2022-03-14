@@ -8712,7 +8712,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "pnetwork",
     cmcId: "5794",
-    category: "Staking",
+    category: "Cross Chain",
     chains: ["Ethereum","EOS","Ultra","Telos","xDai","Binance","Polygon"],
     module: "pnetwork.js",
     twitter: "pNetworkDeFi",

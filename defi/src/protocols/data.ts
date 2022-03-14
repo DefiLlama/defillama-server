@@ -16754,7 +16754,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "babylon-finance/index.js",
     twitter: "BabylonFinance",
-    audit_links: ["https://github.com/babylon-finance/security/tree/main/audits/20210413_Consensys"] ,
+    audit_links: ["https://github.com/babylon-finance/security/tree/main/audits"] ,
     listedAt: 1638501613,
   },
   {

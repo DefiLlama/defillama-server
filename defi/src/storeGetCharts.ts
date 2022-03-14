@@ -54,7 +54,7 @@ export async function getHistoricalTvlForAllProtocols() {
         return undefined;
       }
 
-      const doublecounted = module.doublecounted || protocol.category === "Yield Aggregator";
+      const doublecounted = module.doublecounted || protocol.category === "Yield Aggregator" || protocol.category === "Yield";
       let protocolData = { ...protocol, doublecounted };
 
       const lastDailyItem = historicalTvl[historicalTvl.length - 1];

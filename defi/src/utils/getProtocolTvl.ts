@@ -38,7 +38,7 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
       import(`../../DefiLlama-Adapters/projects/${protocol.module}`),
     ]);
 
-    const isDoubleCount = module.doublecounted || protocol.category === "Yield Aggregator";
+    const isDoubleCount = module.doublecounted || protocol.category === "Yield Aggregator" || protocol.category === "Yield";
 
     if (lastRecord) {
       Object.entries(lastRecord).forEach(([chain, chainTvl]) => {

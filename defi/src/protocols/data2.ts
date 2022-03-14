@@ -2885,7 +2885,7 @@ export default [
     description: "Wormhole is a generic cross-chain messaging protocol.",
     chain: "Solana",
     logo: `${baseIconsUrl}/wormhole.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

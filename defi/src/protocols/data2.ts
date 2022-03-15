@@ -3045,4 +3045,26 @@ export default [
     twitter: "Chaotic_Finance",
     listedAt: 1647374644
   },
+  {
+    id: "1549",
+    name: "Babena",
+    address: "kadena:-",
+    symbol: "BABE",
+    url: "https://babena.finance",
+    description: "Certificate of Deposit on the Kadena blockchain",
+    chain: "Kadena",
+    logo: `${baseIconsUrl}/chaotic-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Kadena"],
+    oracles: [],
+    forkedFrom: [],
+    module: "babena/index.js",
+    twitter: "BabenaFinance",
+    language: "Pact",
+    listedAt: 1647387814
+  },
 ] as Protocol[]

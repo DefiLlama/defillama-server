@@ -700,6 +700,11 @@ export const chainCoingeckoIds = {
     symbol: "XPR",
     cmcId: "5350",
   },
+  "Kadena": {
+    geckoId: "kadena",
+    symbol: "KDA",
+    cmcId: "5647",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -860,6 +865,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Evmos"
     case "proton":
       return "Proton"
+    case "kadena":
+      return "Kadena"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

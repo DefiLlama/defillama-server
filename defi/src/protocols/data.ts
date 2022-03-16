@@ -16441,7 +16441,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "952",
-    name: "FlatCube",
+    name: "FlatQube",
     address: null,
     symbol: "-",
     url: "https://tonswap.io/swap",
@@ -16455,7 +16455,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Everscale"],
     module: "tonswap/index.js",
-    twitter: "Broxus",
+    twitter: "FlatQube",
     audit_links: ["https://github.com/broxus/ton-dex/tree/master/audits"],
     listedAt: 1638389104,
   },

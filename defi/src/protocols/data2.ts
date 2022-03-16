@@ -2035,7 +2035,7 @@ export default [
     oracles: [],
     forkedFrom: [],
     module: "tonbridge.js",
-    twitter: "Broxus",
+    twitter: "OctusBridge",
     audit_links: ["https://everscale.nil.foundation/report.pdf"],
     listedAt: 1646333180,
   },

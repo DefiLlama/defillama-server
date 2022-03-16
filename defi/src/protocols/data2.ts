@@ -2793,10 +2793,10 @@ export default [
   {
     id: "1537",
     name: "Solrise Finance",
-    address: "-",
-    symbol: "-",
+    address: "solana:SLRSSpSLUTP7okbCUBYStWCo1vUgyt775faPqz8HUMr",
+    symbol: "SLRS",
     url: "https://solrise.finance/",
-    description: "Decentralized, trust-minimized investment funds on Solana.",
+    description: "A fully decentralized fund management and investment protocol. Choose a fund to invest in, or create your own with just a few clicks.",
     chain: "Solana",
     logo: `${baseIconsUrl}/solrise-finance.png`,
     audits: "0",

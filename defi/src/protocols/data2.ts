@@ -3075,7 +3075,7 @@ export default [
     url: "https://metf.finance/#/",
     description: "MM ETF is the first decentralized ETF protocol that runs on METF token. The DTF term is thus coined by our team as the DEX Traded Fund, being the first of its kind.",
     chain: "Cronos",
-    logo: `${baseIconsUrl}/chaotic-finance.png`,
+    logo: `${baseIconsUrl}/metf-finance.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "mad-meerkat-etf",

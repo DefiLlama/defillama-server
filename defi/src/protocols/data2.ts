@@ -2383,7 +2383,7 @@ export default [
     id: "1518",
     name: "Bastion",
     address: "-",
-    symbol: "-",
+    symbol: "BSTN",
     url: "https://app.bastionprotocol.com/",
     description: "Decentralized lending on Aurora",
     chain: "Aurora",

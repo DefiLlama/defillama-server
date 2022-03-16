@@ -3026,7 +3026,7 @@ export default [
   },
   {
     id: "1548",
-    name: "Chaotic Exchange",
+    name: "Chaotic Finance",
     address: "moonriver:0xf4c6850B6e3288E81Be542909b76865a0BdF9585",
     symbol: "CHAOS",
     url: "https://chaotic.finance/",

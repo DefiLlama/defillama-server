@@ -3147,7 +3147,7 @@ export default [
     chains: ["Binance"],
     oracles: [],
     forkedFrom: [],
-    module: "angel-protocol/index.js",
+    module: "baksdao/index.js",
     twitter: "BaksDao",
     listedAt: 1647396396
   },

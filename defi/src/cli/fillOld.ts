@@ -73,6 +73,9 @@ function getDailyItems(pk: string) {
 }
 
 const main = async () => {
+  if(process.env.HISTORICAL !== "true"){
+    throw new Error(`You must set HISTORICAL="true" in your .env`)
+  }
   const protocol = getProtocol(protocolToRefill);
   const adapter = await import(
     `../../DefiLlama-Adapters/projects/${protocol.module}`

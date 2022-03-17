@@ -18,6 +18,9 @@ const extrapolate = false;
 
 const secondsInDay = 86400;
 async function main() {
+  if(process.env.HISTORICAL !== "true"){
+    throw new Error(`You must set HISTORICAL="true" in your .env`)
+  }
   if (projectsToRefill.length > 0) {
     setInterval(() => {
       releaseCoingeckoLock();

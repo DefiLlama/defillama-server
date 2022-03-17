@@ -2885,7 +2885,7 @@ export default [
     description: "Wormhole is a generic cross-chain messaging protocol.",
     chain: "Solana",
     logo: `${baseIconsUrl}/wormhole.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -2895,6 +2895,7 @@ export default [
     forkedFrom: [],
     module: "wormhole.js",
     twitter: "wormholecrypto",
+    audit_links: ["https://github.com/certusone/wormhole/blob/dev.v2/audits/2021-01-10_neodyme.pdf"] ,
     listedAt: 1647148275,
   },
   // {

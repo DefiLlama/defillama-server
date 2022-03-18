@@ -1888,7 +1888,7 @@ export default [
     forkedFrom: [],
     module: "minswap/index.js",
     twitter: "MinswapDEX",
-    audit_links: ["https://github.com/minswap/contracts"],
+    audit_links: ["https://github.com/minswap/contracts#audit-report"],
     listedAt: 1646175638,
   },
   {

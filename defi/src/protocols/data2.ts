@@ -1813,7 +1813,7 @@ export default [
     description: "Access cross-chain opportunities on the World's Leading Blockchains using Relay's simple, fast, and secure bridge",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/relaychain.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "relay-token",
     cmcId: "11317",
@@ -1823,6 +1823,7 @@ export default [
     forkedFrom: [],
     module: "relayChain/index.js",
     twitter: "relay_chain",
+    audit_links: ["https://consensys.net/diligence/audits/private/adash47d-chainbridge/"],
     listedAt: 1646164456,
   },
   {

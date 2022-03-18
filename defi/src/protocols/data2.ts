@@ -1878,7 +1878,7 @@ export default [
     description: "Minswap aims to be the best liquidity provider on the market by integrating the best asset pool models from across the DEX ecosystem into one protocol.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/minswap.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -1888,6 +1888,7 @@ export default [
     forkedFrom: [],
     module: "minswap/index.js",
     twitter: "MinswapDEX",
+    audit_links: ["https://github.com/minswap/contracts"],
     listedAt: 1646175638,
   },
   {

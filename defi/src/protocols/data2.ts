@@ -3100,7 +3100,7 @@ export default [
     description: "An economical, easy to use platform to bid on discounted, at-risk collateral on Terra with the click of a button.",
     chain: "Terra",
     logo: `${baseIconsUrl}/kujira.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -3110,6 +3110,7 @@ export default [
     forkedFrom: [],
     module: "kijura/index.js",
     twitter: "TeamKujira",
+    audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/Kujira/OrcaQueue/Kujira%20-%20Orca%20Queue%20-%20Audit%20Report%201.0.pdf"],
     listedAt: 1647396317,
   },
   {

@@ -1,8 +1,8 @@
-import { Protocol } from "../protocols/data";
-import { secondsInDay, secondsInWeek } from "./date";
-import { getLastRecord, hourlyTvl } from "./getLastRecord";
-import { extraSections, getChainDisplayName, nonChains } from "./normalizeChain";
-import getTVLOfRecordClosestToTimestamp from "./shared/getRecordClosestToTimestamp";
+import { Protocol } from '../protocols/data';
+import { secondsInDay, secondsInWeek } from './date';
+import { getLastRecord, hourlyTvl } from './getLastRecord';
+import { extraSections, getChainDisplayName, nonChains } from './normalizeChain';
+import getTVLOfRecordClosestToTimestamp from './shared/getRecordClosestToTimestamp';
 
 type ChainTvls = {
   [key: string]: {
@@ -38,22 +38,23 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
       import(`../../DefiLlama-Adapters/projects/${protocol.module}`),
     ]);
 
-    const isDoubleCount = module.doublecounted || protocol.category === "Yield Aggregator" || protocol.category === "Yield";
+    const isDoubleCount =
+      module.doublecounted || protocol.category === 'Yield Aggregator' || protocol.category === 'Yield';
 
     if (lastRecord) {
       Object.entries(lastRecord).forEach(([chain, chainTvl]) => {
-        if (chain !== "tvl" && nonChains.includes(chain)) {
+        if (chain !== 'tvl' && nonChains.includes(chain)) {
           return;
         }
 
-        if (chain === "tvl") {
+        if (chain === 'tvl') {
           tvl = chainTvl;
           tvlPrevDay = previousDayRecord[chain] || null;
           tvlPrevWeek = previousWeekRecord[chain] || null;
           tvlPrevMonth = previousMonthRecord[chain] || null;
 
           if (isDoubleCount) {
-            chainTvls["doublecounted"] = {
+            chainTvls['doublecounted'] = {
               tvl,
               tvlPrevDay,
               tvlPrevWeek,
@@ -69,7 +70,7 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
             tvlPrevMonth: previousMonthRecord[chain] || null,
           };
 
-          if (isDoubleCount && !extraSections.includes(chainDisplayName) && !chainDisplayName.includes("-")) {
+          if (isDoubleCount && !extraSections.includes(chainDisplayName) && !chainDisplayName.includes('-')) {
             chainTvls[`${chainDisplayName}-doublecounted`] = {
               tvl: chainTvl,
               tvlPrevDay: previousDayRecord[chain] || null,
@@ -80,14 +81,18 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
         }
       });
 
-      const chainsLength = Object.keys(chainTvls).length
-      if (chainsLength === 0 || (chainsLength === 1 && chainTvls["doublecounted"] !== undefined)) {
+      const chainsLength = Object.keys(chainTvls).length;
+      if (chainsLength === 0 || (chainsLength === 1 && chainTvls['doublecounted'] !== undefined)) {
         chainTvls[protocol.chains[0]] = {
           tvl,
           tvlPrevDay,
           tvlPrevWeek,
           tvlPrevMonth,
         };
+
+        if (chainTvls['doublecounted']) {
+          chainTvls[`${protocol.chains[0]}-doublecounted`] = { ...chainTvls['doublecounted'] };
+        }
       }
     }
   } catch (error) {

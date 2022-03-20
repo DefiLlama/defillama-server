@@ -1,12 +1,12 @@
-import protocols, { Protocol } from "./protocols/data";
-import { getHistoricalValues } from "./utils/shared/dynamodb";
-import { dailyTvl, getLastRecord, hourlyTvl } from "./utils/getLastRecord";
-import { DAY, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
-import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
-import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { store } from "./utils/s3";
-import { constants, brotliCompress } from "zlib";
-import { promisify } from "util";
+import protocols, { Protocol } from './protocols/data';
+import { getHistoricalValues } from './utils/shared/dynamodb';
+import { dailyTvl, getLastRecord, hourlyTvl } from './utils/getLastRecord';
+import { DAY, getClosestDayStartTimestamp, secondsInHour } from './utils/date';
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from './utils/normalizeChain';
+import { wrapScheduledLambda } from './utils/shared/wrap';
+import { store } from './utils/s3';
+import { constants, brotliCompress } from 'zlib';
+import { promisify } from 'util';
 
 function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {
@@ -15,10 +15,10 @@ function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, time
   if (sumDailyTvls[chain][tvlSection] === undefined) {
     sumDailyTvls[chain][tvlSection] = {};
   }
-  if (typeof itemTvl === "number" && !Number.isNaN(itemTvl)) {
+  if (typeof itemTvl === 'number' && !Number.isNaN(itemTvl)) {
     sumDailyTvls[chain][tvlSection][timestamp] = itemTvl + (sumDailyTvls[chain][tvlSection][timestamp] ?? 0);
   } else {
-    console.log("itemTvl is NaN", itemTvl, chain, timestamp);
+    console.log('itemTvl is NaN', itemTvl, chain, timestamp);
   }
 }
 
@@ -35,7 +35,7 @@ export interface IProtocol extends Protocol {
 }
 
 export function excludeProtocolInCharts(protocol: Protocol) {
-  return protocol.category === "Chain" || protocol.name === "AnySwap" || protocol.category === "Bridge";
+  return protocol.category === 'Chain' || protocol.name === 'AnySwap' || protocol.category === 'Bridge';
 }
 
 export async function getHistoricalTvlForAllProtocols() {
@@ -54,7 +54,8 @@ export async function getHistoricalTvlForAllProtocols() {
         return undefined;
       }
 
-      const doublecounted = module.doublecounted || protocol.category === "Yield Aggregator" || protocol.category === "Yield";
+      const doublecounted =
+        module.doublecounted || protocol.category === 'Yield Aggregator' || protocol.category === 'Yield';
       let protocolData = { ...protocol, doublecounted };
 
       const lastDailyItem = historicalTvl[historicalTvl.length - 1];
@@ -119,30 +120,34 @@ const handler = async (_event: any) => {
   const sumDailyTvls = {} as SumDailyTvls;
 
   await processProtocols(async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
-    sum(sumDailyTvls, "total", "tvl", timestamp, item.tvl);
+    sum(sumDailyTvls, 'total', 'tvl', timestamp, item.tvl);
     if (protocol.doublecounted) {
-      sum(sumDailyTvls, "total", "doublecounted", timestamp, item.tvl);
+      sum(sumDailyTvls, 'total', 'doublecounted', timestamp, item.tvl);
     }
     let hasAtLeastOneChain = false;
     Object.entries(item).forEach(([chain, tvl]) => {
       const formattedChainName = getChainDisplayName(chain, true);
       if (extraSections.includes(formattedChainName)) {
-        sum(sumDailyTvls, "total", formattedChainName, timestamp, tvl);
+        sum(sumDailyTvls, 'total', formattedChainName, timestamp, tvl);
         return;
       }
-      const [chainName, tvlSection] = formattedChainName.includes("-")
-        ? formattedChainName.split("-")
-        : [formattedChainName, "tvl"];
+      const [chainName, tvlSection] = formattedChainName.includes('-')
+        ? formattedChainName.split('-')
+        : [formattedChainName, 'tvl'];
       if (chainCoingeckoIds[chainName] !== undefined) {
         sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl);
         if (protocol.doublecounted) {
-          sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
+          sum(sumDailyTvls, chainName, 'doublecounted', timestamp, tvl);
         }
         hasAtLeastOneChain = true;
       }
     });
     if (hasAtLeastOneChain === false) {
-      sum(sumDailyTvls, transformNewChainName(protocol.chain), "tvl", timestamp, item.tvl);
+      const chainName = transformNewChainName(protocol.chain);
+      sum(sumDailyTvls, chainName, 'tvl', timestamp, item.tvl);
+      if (protocol.doublecounted) {
+        sum(sumDailyTvls, chainName, 'doublecounted', timestamp, item.tvl);
+      }
     }
   });
 
@@ -155,7 +160,7 @@ const handler = async (_event: any) => {
         [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
         [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
       });
-      const filename = chain === "total" ? "lite/charts" : `lite/charts/${chain}`;
+      const filename = chain === 'total' ? 'lite/charts' : `lite/charts/${chain}`;
       await store(filename, compressedRespone, true);
     })
   );

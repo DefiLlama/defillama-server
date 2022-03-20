@@ -1073,7 +1073,7 @@ export default ([
   },
   {
     id: "160",
-    name: "Alpha Finance",
+    name: "Homora",
     address: "0xa1faa113cbe53436df28ff0aee54275c13b40975",
     symbol: "ALPHA",
     url: "https://alphafinance.io/",
@@ -1085,7 +1085,7 @@ export default ([
     audit_note: null,
     gecko_id: "alpha-finance",
     cmcId: "7232",
-    category: "Yield Aggregator",
+    category: "Yield",
     chains: ["Ethereum", "Binance"],
     module: "alpha-homora/index.js",
     twitter: "AlphaFinanceLab",

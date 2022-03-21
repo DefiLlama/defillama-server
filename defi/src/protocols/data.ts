@@ -634,7 +634,7 @@ export default ([
     cmcId: "7486",
     category: "Yield Aggregator",
     chains: ["Ethereum"],
-    module: "rari/onchain.js",
+    module: "rari/index.js",
     twitter: "RariCapital",
     audit_links: [
       "https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7",
@@ -2066,7 +2066,7 @@ export default ([
     cmcId: "7222",
     category: "Yield Aggregator",
     chains: ["Ethereum"],
-    module: "yaxis/yaxis.js",
+    module: "yaxis/index.js",
     twitter: "yaxis_project",
     audit_links: [
       "https://github.com/yaxis-project/metavault/tree/main/audits",
@@ -3018,7 +3018,7 @@ export default ([
     cmcId: "9087",
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "xdefi/xdefi.js",
+    module: "xdefi/index.js",
     twitter: "xdefilab",
     audit_links: ["https://www.slowmist.com/en/security-audit-certificate.html?id=7b91209f526407299aee5f99688b62fb2c337a4316a6b305719a9e3cd5442348", "https://www.certik.org/projects/xdefi"],
   },
@@ -6000,7 +6000,7 @@ export default ([
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum"],
-    module: "elementfi/element.js",
+    module: "elementfi/index.js",
     twitter: "element_fi",
     audit_links: ["https://docs.element.fi/developers/bug-bounty-programs#b93e"],
   },
@@ -9805,7 +9805,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Staking",
     chains: ["Solana"],
-    module: "socean/socean.js",
+    module: "socean/index.js",
     twitter: "SoceanFinance",
     audit_links: [
       "http://solana.com/SolanaNeodymeStakePoolAudit.pdf",
@@ -17144,7 +17144,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "13111",
     category: "Yield",
     chains: ["Binance", "Avalanche"],
-    module: "HoneyFarm/Index.js",
+    module: "HoneyFarm/index.js",
     twitter: "HoneyFarmFi",
     audit_links: 
     [
@@ -17635,7 +17635,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "15794" ,
     category: "Reserve Currency",
     chains: ["Avalanche"],
-    module: "papa-dao/Index.js",
+    module: "papa-dao/index.js",
     twitter: "PapaDAOofficial",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639330608,

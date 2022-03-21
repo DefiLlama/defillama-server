@@ -15495,7 +15495,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "impossible-finance",
     cmcId: "10932",
-    category: "Dexes",
+    category: "Launchpad",
     chains: ["Binance"],
     module: "impossiblefi/index.js",
     twitter: "impossiblefi",

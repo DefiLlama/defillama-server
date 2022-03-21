@@ -52,6 +52,7 @@
     "@port.finance/port-sdk": "^0.1.42",
     "@project-serum/anchor": "^0.18.2",
     "@project-serum/serum": "^0.13.33",
+    "@pythnetwork/client": "^2.6.1",
     "@sentry/serverless": "^6.2.3",
     "@sentry/tracing": "^6.2.3",
     "@solana/web3.js": "^1.30.2",

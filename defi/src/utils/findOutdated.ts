@@ -1,6 +1,7 @@
 import { hourlyTvl, getLastRecord } from "./getLastRecord";
 import protocols from "../protocols/data";
 import { toUNIXTimestamp } from "./date";
+import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 
 function humanizeTimeDifference(timeDelta: number) {
   const hours = (timeDelta) / 3600
@@ -11,34 +12,45 @@ function humanizeTimeDifference(timeDelta: number) {
   }
 }
 
-function printOutdated(outdated: [string, string | number, boolean][], maxLengthProtocolName: number, now:number) {
+type InfoProtocol = {
+  time: number,
+  tvl: number
+} | null
+
+function printOutdated(outdated: [string, InfoProtocol, boolean][], maxLengthProtocolName: number, now:number) {
   return outdated.sort((a, b) => {
-    if (typeof a[1] === "string") {
+    if (a[1] === null) {
       return 1
-    } else if (typeof b[1] === "string") {
+    } else if (b[1] === null) {
       return -1
+    } else {
+      return a[1].time - b[1].time
     }
-    return a[1] - b[1]
   }).map(line => {
     line[0] = line[0].padEnd(maxLengthProtocolName);
-    if (typeof line[1] === 'number') {
-      line[1] = `Last update: ${new Date(line[1] * 1000).toDateString()} ${humanizeTimeDifference(now - line[1])}`
+    let text: string
+    if (line[1] === null) {
+      text = "No TVL"
+    } else {
+      text = `Last update: ${new Date(line[1].time * 1000).toDateString()} ${humanizeTimeDifference(now - line[1].time)} - ${humanizeNumber(line[1].tvl)}`
     }
-    const text = line.slice(0, 2).join(' - ')
-    return text;
+    return `${line[0]} - ${text}`;
   }).join('\n')
 }
 
 export default async function findOutdated(maxDrift: number) {
   const now = toUNIXTimestamp(Date.now());
-  const outdated = [] as [string, string | number, boolean][];
+  const outdated = [] as [string, InfoProtocol, boolean][];
   await Promise.all(protocols.map(async protocol => {
     const item = await getLastRecord(hourlyTvl(protocol.id));
-    let text: string;
+    let text: InfoProtocol;
     if (item === undefined) {
-      text = "No TVL"
+      text = null
     } else if (item.SK < (now - maxDrift)) {
-      text = item.SK
+      text = {
+        time: item.SK,
+        tvl: item.tvl
+      }
     } else {
       return
     }

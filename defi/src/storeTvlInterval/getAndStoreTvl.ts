@@ -15,6 +15,7 @@ import {
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
+import { importAdapter } from "../utils/importAdapter";
 
 type ChainBlocks = {
   [chain: string]: number;
@@ -141,9 +142,7 @@ export async function storeTvl(
     [name: string]: string[]
   } = {}
   try {
-    const module = await import(
-      `../../DefiLlama-Adapters/projects/${protocol.module}`
-    );
+    const module = await importAdapter(protocol)
     let tvlPromises = Object.entries(module).map(async ([chain, value]) => {
       if (chain === "default") {
         return;

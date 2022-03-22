@@ -12,6 +12,7 @@ import {
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./utils/normalizeChain";
+import { importAdapter } from "./utils/importAdapter";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (balances?.ethereum !== undefined) {
@@ -48,7 +49,7 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
     getHistoricalValues((useHourlyData?hourlyTvl:dailyTvl)(protocolData.id)),
     getHistoricalValues((useHourlyData?hourlyUsdTokensTvl:dailyUsdTokensTvl)(protocolData.id)),
     getHistoricalValues((useHourlyData?hourlyTokensTvl:dailyTokensTvl)(protocolData.id)),
-    import(`../DefiLlama-Adapters/projects/${protocolData.module}`)
+    importAdapter(protocolData)
   ]);
   if(!useHourlyData){
     replaceLast(historicalUsdTvl, lastUsdHourlyRecord)

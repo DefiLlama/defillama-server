@@ -18,6 +18,7 @@ import {
 } from "../utils/shared/coingeckoLocks";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
+import { importAdapter } from "../utils/importAdapter";
 
 const secondsInDay = 24 * 3600;
 
@@ -77,9 +78,7 @@ const main = async () => {
     throw new Error(`You must set HISTORICAL="true" in your .env`)
   }
   const protocol = getProtocol(protocolToRefill);
-  const adapter = await import(
-    `../../DefiLlama-Adapters/projects/${protocol.module}`
-  );
+  const adapter = await importAdapter(protocol);
   if (adapter.timetravel === false) {
     throw new Error("Adapter doesn't support refilling");
   }

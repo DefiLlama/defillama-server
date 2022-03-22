@@ -7,6 +7,7 @@ import { wrapScheduledLambda } from './utils/shared/wrap';
 import { store } from './utils/s3';
 import { constants, brotliCompress } from 'zlib';
 import { promisify } from 'util';
+import { importAdapter } from './utils/importAdapter';
 
 function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {
@@ -48,7 +49,7 @@ export async function getHistoricalTvlForAllProtocols() {
       const [lastTvl, historicalTvl, module] = await Promise.all([
         getLastRecord(hourlyTvl(protocol.id)),
         getHistoricalValues(dailyTvl(protocol.id)),
-        import(`../DefiLlama-Adapters/projects/${protocol.module}`),
+        importAdapter(protocol),
       ]);
       if (historicalTvl.length < 1) {
         return undefined;

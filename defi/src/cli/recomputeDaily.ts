@@ -5,12 +5,11 @@ import {
   releaseCoingeckoLock,
   getCoingeckoLock,
 } from "../utils/shared/coingeckoLocks";
+import { importAdapter } from "../utils/importAdapter";
 
 async function main() {
   const protocol = getProtocol("Yearn Finance");
-  const adapter = await import(
-    `../../DefiLlama-Adapters/projects/${protocol.module}`
-  );
+  const adapter = await importAdapter(protocol);
   const PK = `${dailyPrefix}#${protocol.id}`;
   const dailyTxs = await getDailyTxs(protocol.id);
   setInterval(() => {

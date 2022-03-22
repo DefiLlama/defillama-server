@@ -2,6 +2,7 @@ import { hourlyTvl, getLastRecord } from "./getLastRecord";
 import protocols from "../protocols/data";
 import { toUNIXTimestamp } from "./date";
 import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+import { importAdapter } from "./importAdapter";
 
 function humanizeTimeDifference(timeDelta: number) {
   const hours = (timeDelta) / 3600
@@ -54,7 +55,7 @@ export default async function findOutdated(maxDrift: number) {
     } else {
       return
     }
-    const module = await import(`../../DefiLlama-Adapters/projects/${protocol.module}`)
+    const module = await importAdapter(protocol)
     const refillable = !(module.fetch || module.timetravel === false)
     outdated.push([protocol.name, text, refillable])
   }))

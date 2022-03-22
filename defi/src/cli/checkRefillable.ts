@@ -3,6 +3,7 @@ const protocolToRefill = "Uniswap"
 
 import { getProtocol, getBlocksRetry } from "./utils";
 import { getClosestDayStartTimestamp } from "../utils/date";
+import { importAdapter } from "../utils/importAdapter";
 
 const secondsInDay = 24 * 3600;
 
@@ -16,9 +17,7 @@ async function calcTvl(
 
 const main = async () => {
   const protocol = getProtocol(protocolToRefill);
-  const adapter = await import(
-    `../../DefiLlama-Adapters/projects/${protocol.module}`
-  );
+  const adapter = await importAdapter(protocol);
   if(adapter.timetravel !== undefined){
     throw new Error("Adapter doesn't support refilling");
   }

@@ -1,6 +1,7 @@
 import { Protocol } from '../protocols/data';
 import { secondsInDay, secondsInWeek } from './date';
 import { getLastRecord, hourlyTvl } from './getLastRecord';
+import { importAdapter } from './importAdapter';
 import { extraSections, getChainDisplayName, nonChains } from './normalizeChain';
 import getTVLOfRecordClosestToTimestamp from './shared/getRecordClosestToTimestamp';
 
@@ -35,7 +36,7 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
       getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), now - secondsInDay, secondsInDay),
       getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), now - secondsInWeek, secondsInDay),
       getTVLOfRecordClosestToTimestamp(hourlyTvl(protocol.id), now - secondsInWeek * 4, secondsInDay),
-      import(`../../DefiLlama-Adapters/projects/${protocol.module}`),
+      importAdapter(protocol),
     ]);
 
     const isDoubleCount =

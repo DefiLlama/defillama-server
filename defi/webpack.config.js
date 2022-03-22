@@ -10,6 +10,8 @@ function isNotBinary(x) {
 const nodeModules = utils.readDir(modulesDir).filter(isNotBinary);
 */
 
+const ext = nodeExternals()
+
 module.exports = {
   entry: slsw.lib.entries,
   target: 'node',
@@ -42,7 +44,23 @@ module.exports = {
       }
     ],
   },
-  externals: [nodeExternals()],
+  externals: [(...args) => {
+    const [arg1, arg2, arg3] = args;
+    let context = arg1;
+    let request = arg2;
+    let callback = arg3;
+    // in case of webpack 5
+    if (arg1 && arg1.context && arg1.request) {
+      context = arg1.context;
+      request = arg1.request;
+      callback = arg2;
+    }
+    if(context.includes("@defillama/adapters/projects")){
+      callback(null, "commonjs" + ' ' + request);
+      return;
+    }
+    return ext(...args);
+  }],
   resolve: {
     extensions: ['.ts', '.js', '.json'],
     alias: {

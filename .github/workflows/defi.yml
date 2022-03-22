@@ -52,7 +52,6 @@ jobs:
         node-version: '15.5.1'
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
-    - run: npm ls -prod -json -depth=1
     - name: Deploy infrastructure stack
       run: npm run deploy:prod
       env:

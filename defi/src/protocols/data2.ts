@@ -3536,7 +3536,7 @@ export default [
     url: "https://stargate.finance/",
     description: "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi. With Stargate, users & dApps can transfer native assets cross-chain while accessing the protocol’s unified liquidity pools with instant guaranteed finality.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/stargatefinance.png`,
+    logo: `${baseIconsUrl}/stargate.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "stargate-finance",

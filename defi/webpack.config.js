@@ -1,5 +1,14 @@
 const slsw = require('serverless-webpack-fixed');
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
+
+/*
+const binaryDirs = ['.bin'];
+function isNotBinary(x) {
+  return !utils.contains(binaryDirs, x);
+}
+const nodeModules = utils.readDir(modulesDir).filter(isNotBinary);
+*/
 
 module.exports = {
   entry: slsw.lib.entries,
@@ -11,12 +20,18 @@ module.exports = {
         test: /\.ts$/,
         use: 'ts-loader',
         include: path.resolve(__dirname, "src"),
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /DefiLlama-Adapters/
+        ],
       },
       {
         test: /\.js$/,
         include: __dirname,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /DefiLlama-Adapters/
+        ],
         use: {
           loader: 'babel-loader',
         },
@@ -27,6 +42,7 @@ module.exports = {
       }
     ],
   },
+  externals: [nodeExternals()],
   resolve: {
     extensions: ['.ts', '.js', '.json'],
     alias: {

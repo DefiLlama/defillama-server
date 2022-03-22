@@ -77,47 +77,7 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   webpack:
     webpackConfig: ./webpack.config.js
-    includeModules:
-      forceExclude:
-        - "@polkadot/types"
-      forceInclude:
-        - "@acala-network/api"
-        - "@connext/nxtp-contracts"
-        - "@connext/nxtp-utils"
-        - "@defillama/adapters"
-        - "@defillama/sdk"
-        - "@makerdao/multicall"
-        - "@polkadot/api"
-        - "@port.finance/port-sdk"
-        - "@project-serum/anchor"
-        - "@project-serum/serum"
-        - "@pythnetwork/client"
-        - "@sentry/serverless"
-        - "@sentry/tracing"
-        - "@solana/web3.js"
-        - "@terra-money/terra.js"
-        - "@vechain/connex-driver"
-        - "@vechain/connex-framework"
-        - "algosdk"
-        - "async-retry"
-        - "atob"
-        - "axios"
-        - "axios-rate-limit"
-        - "bignumber.js"
-        - "borsh"
-        - "caver-js"
-        - "dotenv"
-        - "ethers"
-        - "graph-results-pager"
-        - "graphql"
-        - "graphql-request"
-        - "node-fetch"
-        - "node-html-parser"
-        - "pact-lang-api"
-        - "papaparse"
-        - "tronweb"
-        - "underscore"
-        - "web3"
+    includeModules: true
     packager: "npm"
     excludeFiles: src/**/*.test.ts
   prune:

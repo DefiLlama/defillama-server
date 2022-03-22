@@ -3493,7 +3493,7 @@ export default [
     url: "https://swim.io/",
     description: "Swim is a multi-chain AMM for native assets, designed to make bridging as easy as possible.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/swim.png`,
+    logo: `${baseIconsUrl}/swim-protocol.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

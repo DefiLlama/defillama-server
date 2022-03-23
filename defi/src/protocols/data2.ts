@@ -3607,7 +3607,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Staking",
-    chains: [],
+    chains: ["Vite"],
     oracles: [],
     forkedFrom: [],
     module: "viva/index.js",

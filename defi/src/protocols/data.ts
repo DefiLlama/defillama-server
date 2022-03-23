@@ -2894,6 +2894,7 @@ export default ([
     twitter: "mimodefi",
     audit_links: ["https://certificate.quantstamp.com/full/ten-x-titan"],
   },
+  /* repeated
   {
     id: "252",
     name: "Secret Bridge",
@@ -2913,6 +2914,7 @@ export default ([
     module: "scrt.js",
     twitter: "SecretNetwork",
   },
+  */
   {
     id: "253",
     name: "BiFi",
@@ -20855,25 +20857,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "MetaReserveDAO",
   forkedFrom: ["Olympus DAO"],
   listedAt: 1641061623,
-},
-{
-  id: "1171",
-  name: "Goblin",
-  address: "fantom:0x81570aB82533cbd5DB529d29596180eF688c52ba",
-  symbol: "GBN",
-  url: "https://thegoblin.money",
-  description: "DeFi Yield Farming on Fantom",
-  chain: "Fantom",
-  logo: `${baseIconsUrl}/goblin.png`,
-  audits: "0",
-  audit_note: null,
-  gecko_id: null,
-  cmcId: null,
-  category: "Yield",
-  chains: ["Fantom"],
-  module: "goblin/index.js",
-  twitter: "GoblinFTM",
-  listedAt: 1641068800,
 },
 {
   id: "1172",

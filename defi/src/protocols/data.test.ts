@@ -1,7 +1,6 @@
 import protocols, {Protocol} from "./data";
 import { baseIconsUrl } from "../constants";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
-import { importAdapter } from "../utils/imports/importAdapter";
 const fs = require("fs");
 
 const protocolsThatCantBeImported = ["Genshiro", "Shiden dApp Staking", "Astar dApps Staking"]
@@ -9,7 +8,7 @@ async function importProtocol(protocol:Protocol){
   if(protocol.name.startsWith('Karura ') || protocolsThatCantBeImported.includes(protocol.name)){
     return {}
   } else {
-    return importAdapter(protocol);
+    return import("@defillama/adapters/projects/"+protocol.module);
   }
 }
 

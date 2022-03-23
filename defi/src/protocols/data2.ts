@@ -3384,7 +3384,7 @@ export default [
     url: "https://www.philetairus-socius.com/",
     description: "The latest Yield Farm on Fantom (FTM) with APRs Reset System which helps investors to protect their funds as we provide a transparent environment so that users can use our services worry-free and helps to bring in stable passive income by staking! ",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/philetairussocius.jpg`,
+    logo: `${baseIconsUrl}/philetairus-socius.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -253,6 +253,7 @@ functions:
   notifyOutdated:
     handler: src/notifyOutdated.default
     timeout: 900
+    memorySize: 1024
     events:
       - schedule: rate(1 hour)
   fetchCoingeckoData:

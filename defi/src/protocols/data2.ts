@@ -3590,6 +3590,7 @@ export default [
     forkedFrom: [],
     module: "vitex/index.js",
     twitter: "ViteXExchange",
+    language: "Solidity++",
     listedAt: 1648005741,
   },
   {
@@ -3611,6 +3612,7 @@ export default [
     forkedFrom: [],
     module: "viva/index.js",
     twitter: "VivaStakingPool",
+    language: "Solidity++",
     listedAt: 1648005896,
   },
 ] as Protocol[]

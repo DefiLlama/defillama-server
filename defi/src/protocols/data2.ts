@@ -1286,7 +1286,7 @@ export default [
   },
   {
     id: "1467",
-    name: "Farmton",
+    name: "Farmtom",
     address: "fantom:0x4243cCC302A98B577678d87A53c75593199315A3",
     symbol: "FRTM",
     url: "https://farmtom.com",

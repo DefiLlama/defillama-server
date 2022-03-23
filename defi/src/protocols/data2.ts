@@ -1055,7 +1055,6 @@ export default [
     forkedFrom: [],
     module: "solhero/index.js",
     twitter: "SolheroFi",
-    language: [],
     listedAt: 1645643109,
     openSource: false
   },
@@ -1078,7 +1077,6 @@ export default [
     forkedFrom: [],
     module: "ogx/index.js",
     twitter: "OrganixProtocol",
-    language: [],
     listedAt: 1645643109,
   },
   {

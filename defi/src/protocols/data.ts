@@ -15052,7 +15052,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "885",
-  name: "FlareX",
+  name: "FLRX",
   address: "songbird:0x72D932019AE098A6368E6676E16169D112E7720A",
   symbol: "EXFI",
   url: "https://xfx.flr.finance",
@@ -15066,7 +15066,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "Dexes",
   chains: ["Songbird"],
   module: "flarex/index.js",
-  twitter: "FlareFinance",
+  twitter: "flrfinance",
   forkedFrom: ["Uniswap"],
   listedAt: 1637418466
 },
@@ -15611,7 +15611,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "912",
-    name: "FlareLoans",
+    name: "FLRLoans",
     address: null,
     symbol: "-",
     url: "https://xfl.flr.finance",
@@ -15625,7 +15625,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "CDP",
     chains: ["Songbird"],
     module: "flare-loans/index.js",
-    twitter: "FlareFinance",
+    twitter: "flrfinance",
     forkedFrom: ["Liquity"],
     listedAt: 1637821444,
   },
@@ -22619,7 +22619,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1258",
-  name: "FlareFarm",
+  name: "FLRFarm",
   address: "songbird:0x0D94e59332732D18CF3a3D457A8886A2AE29eA1B",
   symbol: "SFIN",
   url: "https://xff.flr.finance",
@@ -22633,7 +22633,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "Launchpad",
   chains: ["Songbird"],
   module: "flarefarm/index.js",
-  twitter: "FlareFinance",
+  twitter: "flrfinance",
   listedAt: 1642143222,
 },
 {

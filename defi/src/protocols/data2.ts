@@ -2027,7 +2027,7 @@ export default [
     url: "https://octusbridge.io/bridge",
     description: "Cross-chain transfers",
     chain: "Everscale",
-    logo: `${baseIconsUrl}/octus-bridge.png`,
+    logo: `${baseIconsUrl}/octus-bridge.jpg`,
     audits: "1",
     audit_note: null,
     gecko_id: null,

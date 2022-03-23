@@ -79,6 +79,7 @@ custom:
   esbuild:
     bundle: true
     minify: false
+    concurrency: 4
     # for debugging
     #keepOutputDirectory: true
   prune:

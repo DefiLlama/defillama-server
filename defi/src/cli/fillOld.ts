@@ -18,7 +18,7 @@ import {
 } from "../utils/shared/coingeckoLocks";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
-import { importAdapter } from "../utils/importAdapter";
+import { importAdapter } from "../utils/imports/importAdapter";
 
 const secondsInDay = 24 * 3600;
 

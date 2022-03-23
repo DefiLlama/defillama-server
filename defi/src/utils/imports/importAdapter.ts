@@ -1,4 +1,4 @@
-import { Protocol } from "../protocols/types";
+import { Protocol } from "../../protocols/types";
 
 export function importAdapter(protocol:Protocol){
     return import(

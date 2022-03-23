@@ -5,7 +5,7 @@ import {
   releaseCoingeckoLock,
   getCoingeckoLock,
 } from "../utils/shared/coingeckoLocks";
-import { importAdapter } from "../utils/importAdapter";
+import { importAdapter } from "../utils/imports/importAdapter";
 
 async function main() {
   const protocol = getProtocol("Yearn Finance");

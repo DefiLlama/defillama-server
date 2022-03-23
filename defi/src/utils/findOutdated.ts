@@ -2,7 +2,7 @@ import { hourlyTvl, getLastRecord } from "./getLastRecord";
 import protocols from "../protocols/data";
 import { toUNIXTimestamp } from "./date";
 import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
-import { importAdapter } from "./importAdapter";
+import { importAdapter } from "./imports/importAdapter";
 
 function humanizeTimeDifference(timeDelta: number) {
   const hours = (timeDelta) / 3600

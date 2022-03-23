@@ -3,7 +3,7 @@ const protocolToRefill = "Uniswap"
 
 import { getProtocol, getBlocksRetry } from "./utils";
 import { getClosestDayStartTimestamp } from "../utils/date";
-import { importAdapter } from "../utils/importAdapter";
+import { importAdapter } from "../utils/imports/importAdapter";
 
 const secondsInDay = 24 * 3600;
 

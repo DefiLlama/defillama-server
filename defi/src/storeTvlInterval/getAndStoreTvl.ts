@@ -15,7 +15,7 @@ import {
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
-import { importAdapter } from "../utils/importAdapter";
+import { importAdapter } from "../utils/imports/importAdapter";
 
 type ChainBlocks = {
   [chain: string]: number;

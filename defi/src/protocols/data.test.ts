@@ -1,7 +1,7 @@
 import protocols, {Protocol} from "./data";
 import { baseIconsUrl } from "../constants";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
-import { importAdapter } from "../utils/importAdapter";
+import { importAdapter } from "../utils/imports/importAdapter";
 const fs = require("fs");
 
 const protocolsThatCantBeImported = ["Genshiro", "Shiden dApp Staking", "Astar dApps Staking"]

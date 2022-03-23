@@ -32,7 +32,7 @@ jobs:
     - name: Get Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '15.5.1'
+        node-version: '14'
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Run tests
@@ -49,7 +49,7 @@ jobs:
     - name: Get Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: '15.5.1'
+        node-version: '14'
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Deploy infrastructure stack

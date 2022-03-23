@@ -5,3 +5,5 @@ node_modules
 imported-db
 docker
 .DS_Store
+.esbuild
+src/utils/imports/adapters.ts

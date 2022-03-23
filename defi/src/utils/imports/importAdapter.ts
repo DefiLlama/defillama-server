@@ -1,7 +1,6 @@
 import { Protocol } from "../../protocols/types";
+import adapters from "./adapters"
 
 export function importAdapter(protocol:Protocol){
-    return import(
-        `@defillama/adapters/projects/${protocol.module}`
-    )
+    return (adapters as any)[protocol.module]
 }

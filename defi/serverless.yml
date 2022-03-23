@@ -2,6 +2,7 @@ service: defillama
 
 package:
   individually: true
+  excludeDevDependencies: true
 
 provider:
   name: aws
@@ -66,7 +67,7 @@ provider:
     KLAYTN_RPC: "https://public-node-api.klaytnapi.com/v1/cypress"
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
-    CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
+    #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
     DROPS_WEBHOOK: ${file(./env.js):DROPS_WEBHOOK}
     EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     DEFILLAMA_SDK_MUTED: true
@@ -75,11 +76,11 @@ provider:
 
 custom:
   stage: ${opt:stage, self:provider.stage}
-  webpack:
-    webpackConfig: ./webpack.config.js
-    includeModules: true
-    packager: "npm"
-    excludeFiles: src/**/*.test.ts
+  esbuild:
+    bundle: true
+    minify: false
+    # for debugging
+    #keepOutputDirectory: true
   prune:
     automatic: true
     number: 5 # Number of versions to keep
@@ -273,6 +274,6 @@ resources:
   - ${file(resources/api-cloudfront-distribution.yml)}
 
 plugins:
-  - serverless-webpack-fixed
+  - serverless-esbuild
   - serverless-offline
   - serverless-prune-plugin

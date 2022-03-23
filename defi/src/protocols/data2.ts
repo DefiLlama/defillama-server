@@ -2033,7 +2033,7 @@ export default [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Everscale"],
+    chains: ["Everscale", "Ethereum", "Fantom", "BSC", "Polygon"],
     oracles: [],
     forkedFrom: [],
     module: "tonbridge.js",

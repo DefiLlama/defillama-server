@@ -3348,7 +3348,7 @@ export default [
     oracles: [],
     forkedFrom: ["Uniswap"],
     module: "pankuku/index.js",
-    twitter: "kuku_token",
+    twitter: "pankukuofficial",
     listedAt: 1647666879,
   },
   {

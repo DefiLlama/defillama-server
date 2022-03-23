@@ -77,6 +77,14 @@ test("no coingeckoId is repeated", async () => {
   }
 });
 
+test("no module repeated", async () => {
+  const ids = [];
+  for (const protocol of protocols) {
+    const script = protocol.module
+    expect(ids).not.toContain(script);
+    ids.push(script);
+  }
+});
 
 test("icon exists", async () => {
   for (const protocol of protocols) {

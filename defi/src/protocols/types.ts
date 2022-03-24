@@ -20,4 +20,5 @@ export interface Protocol {
     language?: string;
     audit_links?: string[];
     listedAt?: number;
+    openSource?: boolean;
   }

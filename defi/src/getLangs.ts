@@ -14,11 +14,15 @@ interface LanguageProtocols {
   [lang:string]: Set<string>
 }
 
+function sumBasic(total:SumDailyTvls, lang:string, time:number, tvl:number){
+  if(total[time] === undefined){
+      total[time] = {}
+  }
+  total[time][lang]=(total[time][lang] ?? 0) + tvl
+}
+
 function sum(total:SumDailyTvls, lang:string, time:number, tvl:number, languageProtocols:LanguageProtocols, protocol:string){
-    if(total[time] === undefined){
-        total[time] = {}
-    }
-    total[time][lang]=(total[time][lang] ?? 0) + tvl
+  sumBasic(total, lang, time, tvl)
 
     if(languageProtocols[lang] == undefined){
       languageProtocols[lang] = new Set()
@@ -54,12 +58,20 @@ const handler = async (
 ): Promise<IResponse> => {
   const sumDailyTvls = {} as SumDailyTvls
   const languageProtocols = {} as LanguageProtocols
+  const sumDailySolanaOpenSourceTvls = {} as SumDailyTvls
   
   await processProtocols(async (timestamp: number, item: TvlItem, protocol:Protocol)=>{
-    let language = protocol.language;
+    const language = protocol.language;
     if(language !== undefined){
       sum(sumDailyTvls, language, timestamp, item.tvl, languageProtocols, protocol.name);
-      return
+    }
+    const addData = (lang:string, timestamp: number, tvl: number, chain:string)=>{
+      if(language === undefined){
+        sum(sumDailyTvls, lang, timestamp, tvl, languageProtocols, protocol.name);
+      }
+      if(chain.toLowerCase() === "solana"){
+        sumBasic(sumDailySolanaOpenSourceTvls, (protocol.openSource ?? true)?"opensource":"closedsource", timestamp, tvl)
+      }
     }
     let hasAtLeastOneChain = false;
     Object.entries(item).forEach(([chain, tvl])=>{
@@ -70,20 +82,22 @@ const handler = async (
       const lang = defaultLang(formattedChainName)
       if(lang !== undefined){
         hasAtLeastOneChain = true;
-        sum(sumDailyTvls, lang, timestamp, tvl, languageProtocols, protocol.name);
+        addData(lang, timestamp, tvl, chain)
       }
     })
     if(hasAtLeastOneChain === false){
-      const lang = defaultLang(transformNewChainName(protocol.chain))
+      const chain = transformNewChainName(protocol.chain)
+      const lang = defaultLang(chain)
       if(lang !== undefined){
-          sum(sumDailyTvls, lang, timestamp, item.tvl, languageProtocols, protocol.name);
+        addData(lang, timestamp, item.tvl, chain)
       }
     }
   })
   
   return successResponse({
     chart: sumDailyTvls,
-    protocols: Object.fromEntries(Object.entries(languageProtocols).map(c=>[c[0], Array.from(c[1])])) ,
+    protocols: Object.fromEntries(Object.entries(languageProtocols).map(c=>[c[0], Array.from(c[1])])),
+    sumDailySolanaOpenSourceTvls
   }, 10 * 60); // 10 mins cache
 }
   

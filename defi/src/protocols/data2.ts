@@ -1280,6 +1280,7 @@ export default [
     module: "alexlab/index.js",
     twitter: "alexgoBtc",
     audit_links: ["https://www.alexgo.io/#Security"],
+    language: "Clarity",
     listedAt: 1645731214,
   },
   {
@@ -2853,6 +2854,7 @@ export default [
     forkedFrom: [],
     module: "citycoins/index.js",
     twitter: "mineCityCoins",
+    language: "Clarity",
     listedAt: 1647046627,
   },
   {

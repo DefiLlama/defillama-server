@@ -3516,7 +3516,7 @@ export default [
     description: "Enabling A Safe and Secure Open Lending Cross-chain, NFT Lending and Insurance",
     chain: "Binance",
     logo: `${baseIconsUrl}/rikkei-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "rikkei-finance",
     cmcId: "10676",
@@ -3526,6 +3526,7 @@ export default [
     forkedFrom: ["Compound"],
     module: "rikkei-finance/index.js",
     twitter: "RikkeiFinance" ,
+    audit_links: ["https://hacken.io/audits/#rikkei"],
     listedAt: 1647974345,
   },
   {

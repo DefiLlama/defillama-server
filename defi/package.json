@@ -14,7 +14,10 @@
     "postinstall": "cp patches/chainweb.js node_modules/chainweb/src/chainweb.js",
     "prebuild": "npx ts-node src/cli/buildRequires.ts",
     "pretest": "npm run prebuild",
-    "build": "sls package"
+    "build": "sls package",
+    "updateAdapters": "cd DefiLlama-Adapters && git pull",
+    "fillOld": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillOld.ts",
+    "fillLast": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillLast.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",

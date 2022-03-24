@@ -20,7 +20,14 @@ npm run serve
 ## Deploy
 Just push your changes to the `master` branch.
 
-## Cli
+## Filling data
 ```
-export AWS_REGION="eu-central-1" && export tableName="prod-table" && npx ts-node src/cli/fillOld.ts
+npm run updateAdapters # fetch latest adapters
+npm run fillOld # fill old historical data
+npm run fillLast # fill latest data point
+```
+
+If you run into the error `Error: Cannot find module '[...]'` then run:
+```
+npm run prebuild
 ```

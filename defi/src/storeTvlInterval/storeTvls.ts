@@ -3,6 +3,7 @@ import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import { getCoingeckoLock, releaseCoingeckoLock } from "../utils/shared/coingeckoLocks";
 import { TokenPrices } from "../types";
 import protocols from "../protocols/data";
+import { importAdapter } from "../utils/imports/importAdapter";
 
 const maxRetries = 1;
 
@@ -13,17 +14,19 @@ async function iterateProtocols(
   const knownTokenPrices = {} as TokenPrices;
   const actions = protocolIndexes
     .map(idx=>protocols[idx])
-    .map((protocol) =>
-      storeTvl(
+    .map((protocol) =>{
+      const adapterModule = importAdapter(protocol)
+      return storeTvl(
         timestamp,
         ethereumBlock,
         chainBlocks,
         protocol,
+        adapterModule,
         knownTokenPrices,
         maxRetries,
         getCoingeckoLock
       )
-    );
+    });
   const timer = setInterval(() => {
     // Rate limit is 100 calls/min for coingecko's API
     // So we'll release one every 0.6 seconds to match it

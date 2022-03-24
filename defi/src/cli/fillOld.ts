@@ -18,7 +18,7 @@ import {
 } from "../utils/shared/coingeckoLocks";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
-import { importAdapter } from "../utils/imports/importAdapter";
+import { importAdapter } from "./utils/importAdapter";
 
 const secondsInDay = 24 * 3600;
 
@@ -46,11 +46,13 @@ async function getAndStore(
   dailyItems: DailyItems
 ) {
   const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp);
+  const adapterModule = await importAdapter(protocol)
   const tvl = await storeTvl(
     timestamp,
     ethereumBlock,
     chainBlocks,
     protocol,
+    adapterModule,
     {},
     4,
     getCoingeckoLock,

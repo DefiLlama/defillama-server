@@ -10,6 +10,7 @@ import {
 } from "../utils/shared/coingeckoLocks";
 import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { date } from './utils'
+import { importAdapter } from "./utils/importAdapter";
 
 const projectsToRefill: string[] = ["AAVE"];
 const notify = false;
@@ -79,11 +80,13 @@ async function main() {
                   const { ethereumBlock, chainBlocks } = await getBlocksRetry(
                     nextTimestamp
                   );
+                  const adapterModule = await importAdapter(protocol)
                   tvl = await storeTvl(
                     nextTimestamp,
                     ethereumBlock,
                     chainBlocks,
                     protocol,
+                    adapterModule,
                     {},
                     4,
                     getCoingeckoLock,

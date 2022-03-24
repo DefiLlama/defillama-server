@@ -15,7 +15,6 @@ import {
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
-import { importAdapter } from "../utils/imports/importAdapter";
 
 type ChainBlocks = {
   [chain: string]: number;
@@ -125,6 +124,7 @@ export async function storeTvl(
   ethBlock: number,
   chainBlocks: ChainBlocks,
   protocol: Protocol,
+  module: any,
   knownTokenPrices?: TokenPrices,
   maxRetries: number = 1,
   getCoingeckoLock?: () => Promise<unknown>,
@@ -142,7 +142,6 @@ export async function storeTvl(
     [name: string]: string[]
   } = {}
   try {
-    const module = await importAdapter(protocol)
     let tvlPromises = Object.entries(module).map(async ([chain, value]) => {
       if (chain === "default") {
         return;

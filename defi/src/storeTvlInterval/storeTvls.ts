@@ -5,7 +5,7 @@ import { TokenPrices } from "../types";
 import protocols from "../protocols/data";
 import { importAdapter } from "../utils/imports/importAdapter";
 
-const maxRetries = 1;
+const maxRetries = 4;
 
 async function iterateProtocols(
   protocolIndexes:number[]

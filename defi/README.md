@@ -22,9 +22,16 @@ Just push your changes to the `master` branch.
 
 ## Filling data
 ```
-npm run updateAdapters # fetch latest adapters
-npm run fillOld # fill old historical data
-npm run fillLast # fill latest data point
+# fetch latest adapters (important to run this before any refilling commands)
+npm run updateAdapters
+
+# fill old historical data
+npm run fillOld aave # start refilling aave from now and 1 at a time
+npm run fillOld aave 1648098107 # start refilling aave from 1648098107 going backwards 1 at a time
+npm run fillOld aave now 4 # start refilling aave from now going backwards 4 at a time
+
+# fill latest data point
+npm run fillLast aave
 ```
 
 If you run into the error `Error: Cannot find module '[...]'` then run:

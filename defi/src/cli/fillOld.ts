@@ -1,7 +1,4 @@
 require("dotenv").config();
-const protocolToRefill = "Uniswap"
-const latestDate = undefined; // undefined -> start from today, number => start from that unix timestamp
-const batchSize = 1; // how many days to fill in parallel
 
 import dynamodb from "../utils/shared/dynamodb";
 import { getProtocol, getBlocksRetry } from "./utils";
@@ -76,6 +73,9 @@ function getDailyItems(pk: string) {
 }
 
 const main = async () => {
+  const protocolToRefill = process.argv[2]
+  const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
+  const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel
   if(process.env.HISTORICAL !== "true"){
     throw new Error(`You must set HISTORICAL="true" in your .env`)
   }

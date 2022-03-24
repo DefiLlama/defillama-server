@@ -1,5 +1,4 @@
 require("dotenv").config();
-const protocolToFill = "aave"
 
 import { getProtocol, getBlocksRetry } from "./utils";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
@@ -10,6 +9,7 @@ import {
 import { importAdapter } from "./utils/importAdapter";
 
 const main = async () => {
+  const protocolToFill = process.argv[2]
   const protocol = getProtocol(protocolToFill);
   const now = Math.round(Date.now() / 1000);
 

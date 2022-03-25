@@ -1840,7 +1840,7 @@ export default [
     cmcId: null,
     category: "Lending",
     chains: ["Aurora"],
-    oracles: ["Internal"],
+    oracles: ["Flux"],
     forkedFrom: ["Compound"],
     module: "aurigami.js",
     twitter: "aurigami_PLY",

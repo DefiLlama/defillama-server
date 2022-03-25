@@ -25707,7 +25707,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Algo-Stables",
   chains: ["Polygon"],
-  oracles: ["Firebird TWAP", "Chainlink"],
+  oracles: ["TWAP", "Chainlink"],
   forkedFrom: [],
   module: "tower-finance/index.js",
   twitter: "tower_finance",

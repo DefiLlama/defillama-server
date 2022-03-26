@@ -831,7 +831,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "velas":
       return "Velas"
     case "ethclassic":
-      return "EthereumClassic"
+      return "EthClassic"
     case "zksync":
       return "zkSync"
     case "godwoken":

@@ -516,7 +516,7 @@ export const chainCoingeckoIds = {
     symbol: "ATOM",
     cmcId: "3794",
   },
-  "EthClassic": {
+  "EthereumClassic": {
     geckoId: "ethereum-classic",
     symbol: "ETC",
     cmcId: "1321",
@@ -830,8 +830,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "XDC"
     case "velas":
       return "Velas"
-    case "ethclassic":
-      return "EthClassic"
+    case "ethereumclassic":
+      return "EthereumClassic"
     case "zksync":
       return "zkSync"
     case "godwoken":

@@ -20808,7 +20808,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://www.thegoblin.money/",
   description:"DeFi Yield Farming on Fantom ",
   chain: "Fantom",
-  logo: `${baseIconsUrl}/goblin.jpg`,
+  logo: `${baseIconsUrl}/goblin-ftm.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

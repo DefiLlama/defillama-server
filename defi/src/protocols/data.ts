@@ -4990,7 +4990,7 @@ export default ([
     description:
       "Access active liquidity management on Uniswap v3. Gamma has developed a protocol, a management infrastructure, and a variety of strategies used by managers and market makers.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/gamma.svg`,
+    logo: `${baseIconsUrl}/gamma.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "gamma-strategies",
@@ -5317,7 +5317,7 @@ export default ([
     url: "https://kokomoswap.io/#/",
     description: "KokomoSwap is a Binance Smart Chain based AMM (automated market maker) DEX(decentralized exchange) designed to facilitate the seamless transaction of crypto assets in a fun-filled and profitable manner.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/Kokomoswap.jpg`,
+    logo: `${baseIconsUrl}/kokomoswap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "kokomo-token",

@@ -529,9 +529,9 @@ export const chainCoingeckoIds = {
     cmcId: "5802",
   },
   "Aurora": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "aurora-near",
+    symbol: "AURORA",
+    cmcId: "14803",
     categories: ["EVM"],
     parent: "Near",
     chainId: 1313161554,

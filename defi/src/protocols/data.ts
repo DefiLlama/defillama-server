@@ -1541,6 +1541,7 @@ export default ([
     module: "lido/index.js",
     twitter: "LidoFinance",
     audit_links: ["https://github.com/lidofinance/audits"],
+    openSource: true,
   },
   {
     id: "183",
@@ -3086,6 +3087,7 @@ export default ([
     twitter: "mirror_protocol",
     audit_links: ["https://docsend.com/view/p4es2dgvwadamgqg"],
     oracles: ["Band"],
+    openSource: true,
   },
   {
     id: "261",
@@ -3770,6 +3772,7 @@ export default ([
     twitter: "anchor_protocol",
     audit_links: ["https://docs.anchorprotocol.com/security#audits"],
     oracles: ["Chainlink", "Internal"],
+    openSource: true,
   },
   {
     id: "295",
@@ -6141,6 +6144,7 @@ export default ([
     module: "specfinance.js",
     twitter: "SpecProtocol",
     audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Spectrum_Protocol_CosmWasm_Smart_Contract_Security_Audit_Halborn_Report_v1_1.pdf"],
+    openSource: true,
   },
   {
     id: "414",
@@ -6669,6 +6673,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "LoTerra_LOTA",
     audit_links: ["https://docs.loterra.io/loterra/resources/security-audit#security-audit-report"],
     oracles: ["Terrand"],
+    openSource: true,
   },
   {
     id: "441",
@@ -6688,6 +6693,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "pylon/index.js",
     twitter: "pylon_protocol",
     audit_links: ["https://docs.pylon.money/security#audits"],
+    openSource: true,
   },
   {
     id: "442",
@@ -7649,6 +7655,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Terra"],
     module: "terraswap/index.js",
     twitter: "terraswap_io",
+    openSource: true,
   },
   {
     id: "492",
@@ -8076,7 +8083,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0x727f064a78dc734d33eec18d5370aef32ffd46e4",
     symbol: "ORION",
     url: "https://orion.money",
-    description: "Orion Money’s vision is to become a cross-chain stablecoin bank providing seamless and frictionless stablecoin saving, lending, and spending.",
+    description: "Orion Money's vision is to become a cross-chain stablecoin bank providing seamless and frictionless stablecoin saving, lending, and spending.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/orion-money.jpg`,
     audits: "2",
@@ -8682,7 +8689,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Terra"],
     module: "apollodao/index.js",
     twitter: "ApolloDAO",
-    audit_links: ["https://github.com/oak-security/audit-reports/blob/master/Apollo/2021-08-18%20Audit%20Report%20-%20Apollo.pdf"]
+    audit_links: ["https://github.com/oak-security/audit-reports/blob/master/Apollo/2021-08-18%20Audit%20Report%20-%20Apollo.pdf"],
+    openSource: false,
   },
   {
     id: "546",
@@ -12788,6 +12796,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "NexusProtocol",
     audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Nexus_Protocol_CosmWasm_Smart_Contract_Security_Audit_Report_Halborn%20v1.1.pdf"],
     listedAt: 1635878160,
+    openSource: true,
   },
   {
     id: "753",
@@ -17943,6 +17952,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "starterra.js",
   twitter: "StarTerra_io",
   audit_links: ["https://github.com/auditmos/audits/blob/main/2021_08_21_STARTERRA.pdf"],
+  openSource: true,
   listedAt: 1639533957,
 },
 {
@@ -18307,6 +18317,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
    "https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Stader_Labs_LunaX_Contrracts_CosmWasm_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf",
    ],
   listedAt: 1639811716,
+  openSource: true,
 },
 {
   id: "1045",
@@ -18467,7 +18478,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "astroport/index.js",
   twitter: "astroport_fi",
   audit_links: ["https://github.com/astroport-fi/astro-audits"],
+  openSource: true,
   listedAt: 1639915230
+  
 },
 {
   id: "1053",
@@ -20211,6 +20224,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "valkyrie/index.js",
   twitter: "valkyrie_money",
   audit_links: ["https://docs.valkyrieprotocol.com/security#audits"],
+  openSource: true,
   listedAt: 1640738674,
 },
 {

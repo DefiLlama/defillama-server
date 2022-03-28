@@ -881,6 +881,7 @@ export default [
       "https://github.com/oak-security/audit-reports/blob/master/WhiteWhale/Audit%20Report%20-%20White%20Whale.pdf",
       "https://www.certik.com/projects/white-whale",
     ],
+    openSource: true,
     listedAt: 1645555485,
   },
   {
@@ -1258,6 +1259,7 @@ export default [
     module: "prism/index.js",
     twitter: "prism_protocol",
     audit_links: ["https://github.com/oak-security/audit-reports/blob/master/Prism/2022-01-20%20Audit%20Report%20-%20Prism%20v1.0.pdf"],
+    openSource: true,
     listedAt: 1645730868,
   },
   {
@@ -1515,6 +1517,7 @@ export default [
     module: "edgeprotocol.js",
     twitter: "EdgeProtocol",
     audit_links: ["https://docs.edgeprotocol.io/overview/extras/security"],
+    openSource: false,
     listedAt: 1645900975,
   },
   {
@@ -2529,6 +2532,7 @@ export default [
     module: "mars/index.js",
     twitter: "mars_protocol",
     audit_links: ["https://github.com/mars-protocol/mars-audits"],  
+    openSource: true,
     listedAt: 1646854377,
   },
   {
@@ -3111,6 +3115,7 @@ export default [
     module: "kijura/index.js",
     twitter: "TeamKujira",
     audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/Kujira/OrcaQueue/Kujira%20-%20Orca%20Queue%20-%20Audit%20Report%201.0.pdf"],
+    openSource: false,
     listedAt: 1647396317,
   },
   {
@@ -3132,6 +3137,7 @@ export default [
     forkedFrom: [],
     module: "angel-protocol/index.js",
     twitter: "angelprotocol",
+    openSource: false,
     listedAt: 1647396334
   },
   {

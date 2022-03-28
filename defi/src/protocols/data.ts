@@ -13170,6 +13170,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   ],
   listedAt: 1636147585,
 },
+/*
 {
   id: "791",
   name: "Sencha",
@@ -13189,6 +13190,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "SenchaDEX",
   listedAt: 1636176482,
 },
+*/
 {
   id: "792",
   name: "Pinyottas",

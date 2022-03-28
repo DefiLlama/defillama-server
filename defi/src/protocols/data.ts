@@ -435,7 +435,7 @@ export default ([
   {
     id: "127",
     name: "KyberSwap",
-    address: "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
+    address: "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
     symbol: "KNC",
     url: "https://kyber.network/",
     description:

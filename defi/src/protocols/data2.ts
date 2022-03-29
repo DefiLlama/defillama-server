@@ -2394,7 +2394,7 @@ export default [
     logo: `${baseIconsUrl}/bastion.svg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "bastion-protocol",
     cmcId: null,
     category: "Lending",
     chains: ["Aurora"],

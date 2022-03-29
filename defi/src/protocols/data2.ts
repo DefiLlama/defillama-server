@@ -3830,7 +3830,7 @@ export default [
     url: "https://valasfinance.com/",
     description: "Valas is a decentralised non-custodial liquidity market protocol where users can participate as depositors or borrowers.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/valas-finance.jpg`,
+    logo: `${baseIconsUrl}/valas-finance.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

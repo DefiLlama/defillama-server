@@ -3149,7 +3149,7 @@ export default [
     description: "BaksDAO is a DeFi platform where you can get a perpetual loan secured by cryptocurrencies or get high payback in the currency of an asset by depositing.",
     chain: "Binance",
     logo: `${baseIconsUrl}/baksdao.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "baksdao",
     cmcId: "18603",
@@ -3159,6 +3159,7 @@ export default [
     forkedFrom: [],
     module: "baksdao/index.js",
     twitter: "BaksDao",
+    audit_links: ["https://github.com/solidproof/smart-contract-audits/blob/main/SmartContract_Audit_Solidproof_BaksDao.pdf"] ,
     listedAt: 1647396396
   },
   {

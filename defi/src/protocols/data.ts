@@ -24290,7 +24290,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "CryptoMate is a decentralized ecosystem and an AI guide for the people who don't know how to access and benefit from the Crypto Economy.",
   chain: "Stacks",
   logo: `${baseIconsUrl}/cryptomate.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null ,
   cmcId: null ,
@@ -24299,6 +24299,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "cryptomate.js",
   twitter: "CryptoMate_defi",
   language: "Clarity",
+  audit_links: ["https://source-of-clarity.com/protocols/crytomate-swapper"],
   listedAt: 1643802716 ,
 },
 {

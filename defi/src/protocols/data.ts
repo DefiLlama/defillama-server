@@ -23184,7 +23184,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   name: "OmniDex",
   address: "telos:0xd2504a02fABd7E546e41aD39597c377cA8B0E1Df",
   symbol: "CHARM",
-  url: "https://home.omnidex.finance",
+  url: "https://omnidex.finance",
   description: `OmniDex is an automated market-making (AMM) decentralized exchange. Swap, Farm and earn rewards on the first native DEX built on the Telos EVM!`,
   chain: "Telos",
   logo: `${baseIconsUrl}/omnidex.jpg`,

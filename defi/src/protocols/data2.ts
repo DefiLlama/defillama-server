@@ -3843,6 +3843,7 @@ export default [
     twitter: "ValasFinance",
     oracles: ["Chainlink"],
     forkedFrom: ["Aave"],
+    listedAt: 1648568438
  },
  {
   id: "1585",

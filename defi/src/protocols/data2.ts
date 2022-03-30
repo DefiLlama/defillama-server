@@ -3995,4 +3995,30 @@ export default [
   audit_links: ["https://occamx.gitbook.io/occamx-faq/audits"],
   listedAt: 1648599278
 },
+{
+  id: "1592",
+  name: "Strips Finance",
+  address: "arbitrum:0x97872EAfd79940C7b24f7BCc1EADb1457347ADc9",
+  symbol: "STRP",
+  url: "https://strips.finance",
+  description: "Strips Finance is an interest rate derivatives platform.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/strips-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "strips-finance",
+  cmcId: "11848",
+  category: "Derivatives",
+  chains: ["Arbitrum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "strips/index.js",
+  twitter: "StripsFinance",
+  audit_links: [
+    "https://drive.google.com/file/d/1IWnOCgC5bLF_CDiX_7afFwJnmHLVNsnN/view?usp=sharing",
+    "https://drive.google.com/file/d/1S3NyvTDvtItQXVwfE-npiTc7FPZwQtkt/view?usp=sharing",
+    "https://drive.google.com/file/d/1a4ffLDqKm8MZIPB1cEHwwkndGhiECfMh/view?usp=sharing"
+  ],
+  listedAt: 1648667303
+},
 ] as Protocol[]

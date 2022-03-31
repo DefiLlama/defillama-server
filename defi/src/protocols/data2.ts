@@ -1104,13 +1104,13 @@ export default [
   },
   {
     id: "1459",
-    name: "Elysia",
+    name: "ELYFI",
     address: "0x4da34f8264cb33a5c9f17081b9ef5ff6091116f4",
     symbol: "ELFI",
     url: "https://www.elyfi.world/en",
-    description: "ELYFI is the lending protocol that lends cryptocurrency using asset tokens minted in ELYSIA as collateral.",
+    description: "ELYFI is the lending protocol that lends cryptocurrency using asset tokens minted in ELYFI as collateral.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/elysia.png`,
+    logo: `${baseIconsUrl}/elyfi.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "elyfi",
@@ -1122,7 +1122,7 @@ export default [
     module: "elysia/index.js",
     twitter: "Elysia_HQ",
     audit_links: [
-      "https://www.certik.com/projects/elysia",
+      "https://www.certik.com/projects/elyfi",
       "https://github.com/elysia-dev/elyfi-token/tree/main/audit"
     ],
     listedAt: 1645646372,

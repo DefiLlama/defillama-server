@@ -528,7 +528,7 @@ export default ([
     audit_note: null,
     gecko_id: "barnbridge",
     cmcId: "7440",
-    category: "Derivatives",
+    category: "Yield Aggregator",
     chains: ["Ethereum", "Polygon", "Avalanche"],
     module: "barnbridge/index.js",
     twitter: "Barn_Bridge",

@@ -3979,7 +3979,7 @@ export default [
   address: null,
   symbol: "-",
   url: "https://occam-x.fi",
-  description: "OccamX is an high-throughput AMM DEX tailor made for Cardano native tokens and more",
+  description: "OccamX is a next-generation high-throughput AMM DEX tailored for Cardano Native Tokens (CNTs) and much more.",
   chain: "Milkomeda",
   logo: `${baseIconsUrl}/occamx.png`,
   audits: "2",

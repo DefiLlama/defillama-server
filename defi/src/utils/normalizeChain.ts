@@ -717,6 +717,14 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 2001,
   },
+  "DFK": {
+    geckoId: "defi-kingdoms",
+    symbol: "JEWEL",
+    cmcId: "12319",
+    categories: ["EVM"],
+    parent: "Avalanche",
+    chainId: 53935,
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -883,6 +891,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Vite"
     case "milkomeda":
       return "Milkomeda"
+    case "dfk":
+      return "DFK"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

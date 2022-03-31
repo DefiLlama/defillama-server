@@ -13125,6 +13125,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
                 "https://consensys.net/diligence/audits/2021/03/bridge-mutual/"],
   listedAt:1636133245,
 },
+/*
 {
   id: "789",
   name: "Ola Finance",
@@ -13147,6 +13148,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   oracles: ["Internal", "DIA"],
   listedAt: 1636144662,
 },
+*/
 {
   id: "790",
   name: "PolygonFarm Finance",

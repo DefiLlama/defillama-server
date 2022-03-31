@@ -1108,7 +1108,7 @@ export default ([
     cmcId: "7509",
     category: "Cross Chain",
     chains: ["Ethereum"],
-    module: "boringdao.js",
+    module: "boringdao/index.js",
     twitter: "TheBoringDAO",
     audit_links: [
       "https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf",

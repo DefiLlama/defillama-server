@@ -803,7 +803,7 @@ export default ([
     audits: null,
     audit_note: null,
     gecko_id: "dydx",
-    cmcId: "516",
+    cmcId: "11156",
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "dydx/index.js",

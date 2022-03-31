@@ -3815,7 +3815,7 @@ export default [
     audit_note: null,
     gecko_id: "axl-inu",
     cmcId: "15853",
-    category: "Yield",
+    category: "Launchpad",
     chains: ["Ethereum", "Binance"],
     oracles: [],
     forkedFrom: [],

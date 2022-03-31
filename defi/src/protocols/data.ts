@@ -23256,6 +23256,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "beamswap/index.js",
   twitter: "Beamswapio",
   audit_links: ["https://docs.beamswap.io/contracts/audit"],
+  oracles: ["DIA"],
   forkedFrom: ["Uniswap"],
   listedAt: 1642599283,
 },

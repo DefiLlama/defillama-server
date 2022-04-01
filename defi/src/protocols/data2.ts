@@ -4163,7 +4163,7 @@ export default [
   gecko_id: null,
   cmcId: null,
   category: "Lending",
-  chains: ["Ethereum"],
+  chains: ["Optimism"],
   oracles: [],
   forkedFrom: [],
   module: "aave/v3.js",

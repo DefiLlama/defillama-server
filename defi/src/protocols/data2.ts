@@ -4263,7 +4263,7 @@ export default [
   address: "",
   symbol: "ANTEX",
   url: "https://antex.org",
-  description: "",
+  description: "Antex provides the foundational building layers for a new digital economy with following products: stable-coin, crypto/fiat, DEX, launchpad, lock liquidity and lock token and connecting crypto to the real world.",
   chain: "Binance",
   logo: `${baseIconsUrl}/antex.png`,
   audits: "2",

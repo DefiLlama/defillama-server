@@ -1048,7 +1048,7 @@ export default [
     logo: `${baseIconsUrl}/solhero.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "solhero",
     cmcId: "18189" ,
     category: "Yield",
     chains: ["Solana"],

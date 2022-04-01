@@ -62,7 +62,7 @@ export default async function(protocols:Protocol[], vertical = false){
   const timeToColumn = {} as Grid;
   const grid = {} as Grid;
   if(vertical === true){
-    grid[0] = [undefined, undefined, undefined, undefined]
+    grid[0] = [undefined, undefined, undefined, undefined, undefined]
   } else {
     grid[0] = [undefined, 'Category', 'Chain', 'Category', 'Token'];
   }

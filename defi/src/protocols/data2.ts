@@ -4113,7 +4113,7 @@ export default [
   address: "ergo:d71693c49a84fbbecd4908c94813b46514b18b67a99952dc1e6e4791556de413",
   symbol: "ERGOPAD",
   url: "https://ergopad.io/",
-  description: "",
+  description: "Ergopad is a token launch and fundraising platform, built on the Ergo blockchain, giving anyone holding Ergopad a chance to participate on the ground floor with Ergo Token IDO‘s. Ergopad is not only a decentralized launch platform, it also includes a staking platform as well as a dashboard which displays a portfolio for all assets held on the Ergo blockchain.",
   chain: "Ergo",
   logo: `${baseIconsUrl}/ergopad.png`,
   audits: "0",

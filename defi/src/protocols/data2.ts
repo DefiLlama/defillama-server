@@ -4156,7 +4156,7 @@ export default [
   symbol: "AAVE",
   url: "https://aave.com",
   description: "Earn interest, borrow assets, and build applications",
-  chain: "Ethereum",
+  chain: "Optimism",
   logo: `${baseIconsUrl}/aave-v3.png`,
   audits: "2",
   audit_note: null,

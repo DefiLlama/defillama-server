@@ -722,7 +722,6 @@ export const chainCoingeckoIds = {
     symbol: "JEWEL",
     cmcId: "12319",
     categories: ["EVM"],
-    parent: "Avalanche",
     chainId: 53935,
   },
 } as {

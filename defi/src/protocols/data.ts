@@ -5843,7 +5843,7 @@ export default ([
     address: "bsc:0x603c7f932ed1fc6575303d8fb018fdcbb0f39a95",
     symbol: "BANANA",
     url: "https://apeswap.finance",
-    description: "Built by DeFi apes, for DeFi apes. ApeSwap is a decentralized exchange (DEX) on Binance Smart Chain and Polygon. Users are incentivized to pool liquidity on ApeSwap through yield farming to earn the native currency, $BANANA. Additionally, apes can use their earned $BANANA to stake and earn other tokens and unlock exclusive features",
+    description: "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
     chain: "Binance",
     logo: `${baseIconsUrl}/apeswap.svg`,
     audits: "2",

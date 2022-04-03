@@ -1661,7 +1661,7 @@ export default [
     audits: "1",
     audit_note: null,
     gecko_id: "bastille-de-la-bouje",
-    cmcId: null,
+    cmcId: "18511",
     category: "Yield",
     chains: ["Fantom"],
     oracles: [],

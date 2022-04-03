@@ -137,7 +137,7 @@ const handler = async (_event: any) => {
         : [formattedChainName, 'tvl'];
       if (chainCoingeckoIds[chainName] !== undefined) {
         sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl);
-        if (protocol.doublecounted) {
+        if (protocol?.doublecounted && tvlSection === 'tvl') {
           sum(sumDailyTvls, chainName, 'doublecounted', timestamp, tvl);
         }
         hasAtLeastOneChain = true;

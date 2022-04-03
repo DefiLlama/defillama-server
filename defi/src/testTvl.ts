@@ -137,7 +137,7 @@ const handler1 = async (_event: any) => {
         : [formattedChainName, 'tvl'];
       if (chainCoingeckoIds[chainName] !== undefined) {
         sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl);
-        if (protocol?.doublecounted) {
+        if (protocol?.doublecounted && tvlSection === 'tvl') {
           sum(sumDailyTvls, chainName, 'doublecounted', timestamp, tvl);
         }
         hasAtLeastOneChain = true;
@@ -180,7 +180,7 @@ const handler1 = async (_event: any) => {
   // storeGetCharts response filter
   const data: any = {};
 
-  Object.entries(sumDailyTvls['Algorand']).map(([ch, ts]) => {
+  Object.entries(sumDailyTvls['Fantom']).map(([ch, ts]) => {
     const final = Object.entries(ts);
     data[ch] = final[final.length - 1];
   });
@@ -189,14 +189,14 @@ const handler1 = async (_event: any) => {
   const list = trimmedResponse
     .filter((p) => p.category !== 'Chain')
     .filter((p) => {
-      return p.chains.includes('Algorand') && p.category !== 'Bridge';
+      return p.chains.includes('Fantom') && p.category !== 'Bridge';
     });
   
   const pTotals: any = {};
 
   list.forEach((item) => {
     Object.entries(item.chainTvls).map(([chain, values]) => {
-      if (chain.includes('Algorand')) {
+      if (chain.includes('Fantom')) {
         pTotals[chain] = (pTotals[chain] || 0) + values.tvl;
       }
     });

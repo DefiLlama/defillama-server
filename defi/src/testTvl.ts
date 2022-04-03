@@ -117,6 +117,7 @@ export async function processProtocols(
 }
 
 const handler1 = async (_event: any) => {
+  // storeGetCharts
   const sumDailyTvls = {} as SumDailyTvls;
 
   await processProtocols(async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
@@ -151,6 +152,7 @@ const handler1 = async (_event: any) => {
     }
   });
 
+  // storeGetProtocols
   const protocols = await craftProtocolsResponse(true);
   const trimmedResponse = await Promise.all(
     protocols.map(async (protocol) => {
@@ -172,13 +174,10 @@ const handler1 = async (_event: any) => {
       };
     })
   );
+  
 
-  const list = trimmedResponse
-    .filter((p) => p.category !== 'Chain')
-    .filter((p) => {
-      return p.chains.includes('Algorand') && p.category !== 'Bridge';
-    });
-
+  // Filter data based on chain you want to test
+  // storeGetCharts response filter
   const data: any = {};
 
   Object.entries(sumDailyTvls['Algorand']).map(([ch, ts]) => {
@@ -186,6 +185,13 @@ const handler1 = async (_event: any) => {
     data[ch] = final[final.length - 1];
   });
 
+  // storeGetProtocols response filter
+  const list = trimmedResponse
+    .filter((p) => p.category !== 'Chain')
+    .filter((p) => {
+      return p.chains.includes('Algorand') && p.category !== 'Bridge';
+    });
+  
   const pTotals: any = {};
 
   list.forEach((item) => {

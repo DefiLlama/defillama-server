@@ -187,6 +187,14 @@ functions:
       - http:
           path: forks
           method: get
+  testTvl:
+    handler: src/testTvl.default
+    timeout: 600
+    memorySize: 2000
+    events:
+      - http:
+          path: testTvl
+          method: get
   dataset:
     handler: src/getDataset.default
     timeout: 900

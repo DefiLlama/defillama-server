@@ -3394,7 +3394,7 @@ export default [
     logo: `${baseIconsUrl}/philetairus-socius.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "philetairus-socius",
     cmcId: null,
     category: "Dexes",
     chains: ["Fantom"],

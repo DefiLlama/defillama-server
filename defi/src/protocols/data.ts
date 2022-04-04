@@ -16646,15 +16646,19 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Community-owned DeFi infrastructure for more stability in the world.",
     chain: "Fantom" ,
     logo: `${baseIconsUrl}/fantohm.jpg`,
-    audits: "0" ,
+    audits: "2" ,
     audit_note: null ,
     gecko_id: "fantohm" ,
     cmcId: "14063" ,
     category: "Reserve Currency" ,
-    chains: ["Fantom"] ,
+    chains: ["Fantom", "Moonriver", "Binance", "Ethereum" ] ,
     module: "fantOHM/index.js" ,
     twitter: "FantohmDAO" ,
     forkedFrom: ["Olympus DAO"],
+    audit_links: [
+      "https://github.com/fantohm-dev/fantohm-contracts/blob/main/audit/FantOHM_DAO_Spadetech.io_Audit_Nov_2021.pdf" ,
+      "https://github.com/fantohm-dev/fantohm-contracts/blob/main/audit/Fantohm%20USD%20Full%20Smart%20Contract%20Security%20Audit.pdf"
+    ],
     listedAt: 1638463469 ,
   },
   {

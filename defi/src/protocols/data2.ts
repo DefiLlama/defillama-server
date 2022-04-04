@@ -4338,7 +4338,7 @@ export default [
   chains: ["Milkomeda"],
   oracles: [],
   forkedFrom: ["Goose Finance"],
-  module: "milko-farm/index.js",
+  module: "milko-farm.js",
   twitter: "milko_farm",
   listedAt: 1649072088,
 },

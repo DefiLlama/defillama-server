@@ -82,8 +82,6 @@ custom:
     bundle: true
     minify: false
     concurrency: 4
-    external:
-      - chartjs-node-canvas
     # for debugging
     #keepOutputDirectory: true
   prune:

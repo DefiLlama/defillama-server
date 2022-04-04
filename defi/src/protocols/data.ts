@@ -11336,7 +11336,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0x4c11249814f11b9346808179cf06e71ac328c1b5",
     symbol: "ORAI",
     url: "https://orai.io",
-    description: "Oraichain is the world’s first AI-powered oracle and ecosystem for blockchains. Beyond data oracles, Oraichain aims to become the first AI Layer 1 in the Blockchain sphere with a complete AI ecosystem, serving as a foundational layer for the creation of a new generation of smart contracts and Dapps. With AI as the cornerstone, Oraichain has developed many essential and innovative products and services including AI price feeds, fully on-chain VRF, Data Hub, AI Marketplace with 100+ AI APIs, AI-based NFT generation and NFT copyright protection, Royalty Protocol, AI-powered Yield Aggregator Platform, and Cosmwasm IDE.",
+    description: "Oraichain is the world's first AI-powered oracle and ecosystem for blockchains. Beyond data oracles, Oraichain aims to become the first AI Layer 1 in the Blockchain sphere with a complete AI ecosystem, serving as a foundational layer for the creation of a new generation of smart contracts and Dapps. With AI as the cornerstone, Oraichain has developed many essential and innovative products and services including AI price feeds, fully on-chain VRF, Data Hub, AI Marketplace with 100+ AI APIs, AI-based NFT generation and NFT copyright protection, Royalty Protocol, AI-powered Yield Aggregator Platform, and Cosmwasm IDE.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/oraichain.png`,
     audits: "2",

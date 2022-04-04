@@ -54,6 +54,8 @@
     "@sentry/serverless": "^6.2.3",
     "@sentry/tracing": "^6.2.3",
     "bignumber.js": "^9.0.1",
+    "chart.js": "^3.7.1",
+    "chartjs-node-canvas": "^4.1.6",
     "dotenv": "^8.2.0",
     "ethers": "^5.4.6",
     "node-fetch": "^2.6.1"

@@ -71,3 +71,5 @@ jobs:
         CLOUDWATCH_WEBHOOK_URL: ${{ secrets.CLOUDWATCH_WEBHOOK_URL }}
         DROPS_WEBHOOK: ${{ secrets.DROPS_WEBHOOK }}
         EULER_MONGODB_APIKEY: ${{ secrets.EULER_MONGODB_APIKEY }}
+        FATHOM_SECRET: ${{ secrets.FATHOM_SECRET }}
+        DAILY_GROWTH_WEBHOOK: ${{ secrets.DAILY_GROWTH_WEBHOOK }}

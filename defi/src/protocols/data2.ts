@@ -3549,7 +3549,7 @@ export default [
     audit_note: null,
     gecko_id: "stargate-finance",
     cmcId: "18934",
-    category: "Bridge",
+    category: "Cross Chain",
     chains: ["Ethereum", "Binance", "Polygon", "Arbitrum", "Optimism", "Fantom", "Avalanche"],
     oracles: [],
     forkedFrom: [],

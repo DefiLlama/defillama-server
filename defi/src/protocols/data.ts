@@ -2439,9 +2439,9 @@ export default ([
   },
   {
     id: "229",
-    name: "Gnosis",
+    name: "Gnosis Protocol v1",
     address: "0x6810e776880c02933d47db1b9fc05908e5386b96",
-    symbol: "GNO",
+    symbol: "-",
     url: "https://gnosis.io/",
     description:
       "Gnosis builds new market mechanisms for decentralized finance.",
@@ -2449,8 +2449,8 @@ export default ([
     logo: `${baseIconsUrl}/gnosis.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "gnosis",
-    cmcId: "1659",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
     module: "gnosis/index.js",

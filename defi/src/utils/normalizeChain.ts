@@ -35,7 +35,10 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM", "Rollup"],
-    parent: "Ethereum",
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 42161,
   },
   "Palm": {
@@ -50,7 +53,10 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM", "Rollup"],
-    parent: "Ethereum",
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 10,
   },
   "Stacks": {
@@ -207,6 +213,10 @@ export const chainCoingeckoIds = {
     symbol: "RBTC",
     cmcId: "3626",
     categories: ["EVM"],
+    parent: {
+      chain: "Bitcoin",
+      types: ["gas"]
+    },
     chainId: 30,
   },
   "Sifchain": {
@@ -266,14 +276,20 @@ export const chainCoingeckoIds = {
     symbol: "KAR",
     cmcId: "10042",
     categories: ["Parachain"],
-    parent: "Kusama",
+    parent: {
+      chain: "Kusama",
+      types: ["parachain"]
+    },
   },
   "Moonriver": {
     geckoId: "moonriver",
     symbol: "MOVR",
     cmcId: "9285",
     categories: ["EVM", "Parachain"],
-    parent: "Kusama",
+    parent: {
+      chain: "Kusama",
+      types: ["parachain"]
+    },
     chainId: 1285,
   },
   "Waves": {
@@ -310,7 +326,10 @@ export const chainCoingeckoIds = {
     symbol: 'SDN',
     cmcId: '11451',
     categories: ["EVM", "Parachain"],
-    parent: "Kusama",
+    parent: {
+      chain: "Kusama",
+      types: ["parachain"]
+    },
     chainId: 336,
   },
   "Telos": {
@@ -354,7 +373,10 @@ export const chainCoingeckoIds = {
       symbol: "EWT",
       cmcId: "5268",
       categories: ["EVM", "Parachain"],
-      parent: ["Polkadot"],
+      parent: {
+        chain: "Polkadot",
+        types: ["parachain"]
+      },
       chainId: 246,
   },
   "HPB": {
@@ -461,7 +483,10 @@ export const chainCoingeckoIds = {
     symbol: "BOBA",
     cmcId: "14556",
     categories: ["EVM", "Rollup"],
-    parent: "Ethereum",
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 288,
   },
   "Metis": {
@@ -469,7 +494,10 @@ export const chainCoingeckoIds = {
     symbol: "METIS",
     cmcId: "9640",
     categories: ["EVM", "Rollup"],
-    parent: "Ethereum",
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 1088,
   },
   "Ubiq": {
@@ -533,7 +561,10 @@ export const chainCoingeckoIds = {
     symbol: "AURORA",
     cmcId: "14803",
     categories: ["EVM"],
-    parent: "Near",
+    parent: {
+      chain: "Near",
+      types: ["emulator", "gas"]
+    },
     chainId: 1313161554,
   },
   "Ronin": {
@@ -548,7 +579,10 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["Rollup"],
-    parent: "Ethereum",
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
   },
   "SmartBCH": {
     geckoId: "bitcoin-cash",
@@ -562,7 +596,10 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
-    parent: "Nervos",
+    parent: {
+      chain: "Nervos",
+      types: ["emulator", "gas"]
+    },
     chainId: 71394,
   },
   "Callisto": {
@@ -601,7 +638,10 @@ export const chainCoingeckoIds = {
     symbol: "NII",
     cmcId: "4865",
     categories: ["EVM", "Rollup"],
-    parent: "Ethereum",
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 5551,
   },
   "Parallel": {
@@ -609,7 +649,10 @@ export const chainCoingeckoIds = {
     symbol: "PARA",
     cmcId: null,
     categories: ["Parachain"],
-    parent: "Polkadot",
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
   },
   "Meter": {
     geckoId: "meter",
@@ -644,7 +687,10 @@ export const chainCoingeckoIds = {
     symbol: "GLMR",
     cmcId: "6836",
     categories: ["EVM", "Parachain"],
-    parent: "Polkadot",
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
     chainId: 1284,
   },
   "Astar": {
@@ -652,7 +698,10 @@ export const chainCoingeckoIds = {
     symbol: "ASTR",
     cmcId: "12885",
     categories: ["EVM", "Parachain"],
-    parent: "Polkadot",
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
     chainId: 592,
   },
   "Curio": {
@@ -660,7 +709,10 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
-    parent: "Skale",
+    parent: {
+      chain: "SKALE",
+      types: ["skale"]
+    },
     chainId: 836542336838601,
   },
   "SKALE": {
@@ -681,7 +733,10 @@ export const chainCoingeckoIds = {
     symbol: "GENS",
     cmcId: "10278",
     categories: ["Parachain", "EVM"],
-    parent: "Kusama",
+    parent: {
+      chain: "Kusama",
+      types: ["parachain"]
+    },
   },
   "Wax": {
     geckoId: "wax",
@@ -715,6 +770,10 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
+    parent: {
+      chain: "Cardano",
+      types: ["gas"]
+    },
     chainId: 2001,
   },
   "DFK": {
@@ -722,6 +781,10 @@ export const chainCoingeckoIds = {
     symbol: "JEWEL",
     cmcId: "12319",
     categories: ["EVM"],
+    parent: {
+      chain: "Avalanche",
+      types: ["subnet"]
+    },
     chainId: 53935,
   },
 } as {
@@ -730,6 +793,11 @@ export const chainCoingeckoIds = {
     symbol: string | null,
     cmcId: string | null,
     categories?: string[],
+    chainId?: number,
+    parent?: {
+      chain: string,
+      types: string[]
+    }
   }
 }
 chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]

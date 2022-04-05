@@ -4443,7 +4443,7 @@ export default [
   audit_note: null,
   gecko_id: "concave",
   cmcId: null,
-  category: "Reserve Currencies",
+  category: "Services",
   chains: ["Ethereum"],
   oracles: [],
   forkedFrom: [],

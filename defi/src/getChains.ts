@@ -35,7 +35,8 @@ export async function craftChainsResponse(){
     tvl: chainTvl,
     tokenSymbol: chainCoingeckoIds[chainName]?.symbol ?? null,
     cmcId: chainCoingeckoIds[chainName]?.cmcId ?? null,
-    name: chainName
+    name: chainName,
+    chainId: chainCoingeckoIds[chainName]?.chainId ?? null,
   }))
   return chainData
 }

@@ -4481,7 +4481,7 @@ export default [
   url: "https://www.0vix.com",
   description: "0VIX is an open-source lending and borrowing protocol enhanced with veTokenomics",
   chain: "Polygon",
-  logo: `${baseIconsUrl}/ovix.png`,
+  logo: `${baseIconsUrl}/0vix.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

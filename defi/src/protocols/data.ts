@@ -1078,7 +1078,7 @@ export default ([
     symbol: "ALPHA",
     url: "https://alphafinance.io/",
     description:
-      "Alpha Finance Lab is an ecosystem of cross-chain DeFi products that focus on capturing unaddressed demand in an innovative and user friendly way. Alpha Homora, the first product, is a leveraged yield farming and leveraged liquidity providing protocol where ETH lenders can earn high lending interest rate and leveraged yield farmers/liquidity providers can increase the APY.",
+      "Homora is the first flagship product incubated under Alpha Venture DAO (previously Alpha Finance Lab) deployed on the Ethereum network in October, 2020. It is the largest multi-chain lending and leveraged yield farming protocol. Homora V2 is currently available on Ethereum, Avalanche, Fantom, and more coming soon.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/homora.png`,
     audits: "2",
@@ -1088,7 +1088,7 @@ export default ([
     category: "Yield",
     chains: ["Ethereum", "Binance"],
     module: "alpha-homora/index.js",
-    twitter: "AlphaFinanceLab",
+    twitter: "Alpha_HomoraV2",
     audit_links: ["https://blog.openzeppelin.com/alpha-homora-v2/"],
     oracles: ["Band", "Chainlink"],
   },

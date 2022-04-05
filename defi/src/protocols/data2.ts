@@ -4537,4 +4537,25 @@ export default [
   twitter: "RadioShack",
   listedAt: 1649156839
 },
+{
+  id: "1617",
+  name: "Revuto",
+  address: "cardano:asset14cvkz63kgtstwplh0n6hx52ezk0egg4ffehqmj",
+  symbol: "REVU",
+  url: "https://revuto.com",
+  description: "Block, Snooze, or Approve any subscription payment with Revuto Virtual Debit Cards to protect your money",
+  chain: "Cardano",
+  logo: `${baseIconsUrl}/revuto.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "revuto",
+  cmcId: "12173",
+  category: "Services",
+  chains: ["Cardano"],
+  oracles: [],
+  forkedFrom: [],
+  module: "revuto.js",
+  twitter: "get_revuto",
+  listedAt: 1649179249
+},
 ] as Protocol[]

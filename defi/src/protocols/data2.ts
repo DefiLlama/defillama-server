@@ -4433,7 +4433,7 @@ export default [
 {
   id: "1612",
   name: "Concave",
-  address: "0xdea1fc87b6f4536e852aea73aeb8f4ac0cf843c3",
+  address: "0x000000007a58f5f58e697e51ab0357bc9e260a04",
   symbol: "CNV",
   url: "https://concave.lol",
   description: "Concave is a community-driven, product and investment organization that aims to bring value to stakers through the development of innovative DeFi products and active treasury management.",

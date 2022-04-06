@@ -10536,13 +10536,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "641",
-    name: "G-UNI",
+    name: "Arrakis Finance",
     address: "0x15b7c0c907e4C6b9AdaAaabC300C08991D6CEA05",
     symbol: "GEL",
     url: "https://www.gelato.network",
-    description: "G-UNI, an automated liquidity provision ERC-20 for Uniswap v3, powered by Gelato Network",
+    description: "Arrakis Finance, an automated liquidity provision ERC-20 for Uniswap v3, powered by Gelato Network",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/g-uni.png`,
+    logo: `${baseIconsUrl}/arrakis-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "gelato",
@@ -10550,7 +10550,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Ethereum"],
     module: "sorbetfinance/index.js",
-    twitter: "gelatonetwork",
+    twitter: "ArrakisFinance",
     audit_links: ["https://www.certik.org/projects/gelato", "https://drive.google.com/file/d/1aTmVdENDTt7-Rbr9Nxx8DLqy8BE0ZLew/view?usp=sharing"]
   },
   {

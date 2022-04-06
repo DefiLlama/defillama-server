@@ -1057,7 +1057,7 @@ export default ([
     symbol: "GRO",
     url: "https://growthdefi.com/",
     description:
-      "gToken holders can benefit from the positive effects of compounded interest, high liquidity and a share of arbitragers profit without suffering from impermanent loss.",
+      "Growth DeFi provides an advanced suite of products to blockchain protocols and investors, helping to increase their capital efficiency.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/growth-defi.png`,
     audits: "2",

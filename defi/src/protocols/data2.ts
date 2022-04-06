@@ -2834,7 +2834,7 @@ export default [
     chains: ["Terra"],
     oracles: [],
     forkedFrom: [],
-    module: "risk-harbor-ozone/index.js",
+    module: "risk-harbor/index.js",
     twitter: "riskharbor",
     audit_links: ["https://docs.riskharbor.com/contracts/security-audits"],
     listedAt: 1647046245,

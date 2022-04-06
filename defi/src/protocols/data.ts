@@ -16655,6 +16655,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "fantOHM/index.js" ,
     twitter: "FantohmDAO" ,
     forkedFrom: ["Olympus DAO"],
+    oracles: ["DIA"],
     audit_links: [
       "https://github.com/fantohm-dev/fantohm-contracts/blob/main/audit/FantOHM_DAO_Spadetech.io_Audit_Nov_2021.pdf" ,
       "https://github.com/fantohm-dev/fantohm-contracts/blob/main/audit/Fantohm%20USD%20Full%20Smart%20Contract%20Security%20Audit.pdf"

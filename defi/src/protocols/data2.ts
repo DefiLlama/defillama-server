@@ -4687,4 +4687,25 @@ export default [
   audit_links: ["https://rugdoc.io/project/troy-defi"],
   listedAt: 1649319546
 },
+{
+  id: "1624",
+  name: "Ambire Wallet",
+  address: "0x88800092ff476844f74dc2fc427974bbee2794ae",
+  symbol: "WALLET",
+  url: "https://www.ambire.com",
+  description: "The First Non-Custodial DeFi Wallet with Email Authentication, Available on Ethereum, Avalanche, Polygon, Fantom, BSC, Moonbeam & more.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/troydefi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "ambire-wallet",
+  cmcId: "17722",
+  category: "Services",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "ambire-wallet/index.js",
+  twitter: "AmbireWallet",
+  listedAt: 1649359983
+},
 ] as Protocol[]

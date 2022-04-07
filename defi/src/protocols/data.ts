@@ -15834,6 +15834,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://drive.google.com/file/d/1OpTWnZmhKu04kKYgFx89Nrh2Y68mhlv_/view",
       "https://drive.google.com/file/d/1v78FH681imjrnXzjc4Ci_F4bW8oI19q5/view",
       "https://drive.google.com/file/d/17qQwtqSe6uqLKfKYgLQHGc4GyImVx3iM/view",
+      "https://drive.google.com/file/d/17AwrRDy7Fh8wEjOIAQr3R-oqLWeYC_DD/view",
+      "https://drive.google.com/file/d/1OPanooD8QD13kOx210QTz19RyS8yTj80/view",
     ],
     listedAt: 1637977412,
   },

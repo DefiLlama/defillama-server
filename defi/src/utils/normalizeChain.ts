@@ -802,6 +802,8 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    categories: ["EVM"],
+    chainId: 55555,
   },
 } as {
   [chain: string]: {

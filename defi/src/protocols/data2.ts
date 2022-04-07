@@ -4695,7 +4695,7 @@ export default [
   url: "https://www.ambire.com",
   description: "The First Non-Custodial DeFi Wallet with Email Authentication, Available on Ethereum, Avalanche, Polygon, Fantom, BSC, Moonbeam & more.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/troydefi.png`,
+  logo: `${baseIconsUrl}/ambire-wallet.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "ambire-wallet",

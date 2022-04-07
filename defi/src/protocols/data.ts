@@ -3810,7 +3810,7 @@ export default ([
     category: "Yield",
     chains: ["Wanchain"],
     module: "zookeeper.js",
-    twitter: "ZooFarming",
+    twitter: "ZooEcosystem",
     audit_links: ["https://github.com/ZooFarming/Audit"],
   },
   /*

@@ -787,6 +787,17 @@ export const chainCoingeckoIds = {
     },
     chainId: 53935,
   },
+  "Clover": {
+    geckoId: "clover-finance",
+    symbol: "CLV",
+    cmcId: "8384",
+    categories: ["EVM", "Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+    chainId: 1024,
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -960,6 +971,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Milkomeda"
     case "dfk":
       return "DFK"
+    case "clover":
+      return "Clover"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

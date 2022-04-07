@@ -798,6 +798,11 @@ export const chainCoingeckoIds = {
     },
     chainId: 1024,
   },
+  "REI": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -973,6 +978,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "DFK"
     case "clover":
       return "Clover"
+    case "rei":
+      return "REI"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

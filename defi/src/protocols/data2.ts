@@ -4751,4 +4751,26 @@ export default [
   audit_links: ["https://github.com/solidproof/projects/tree/main/AstroWar"] ,
   listedAt: 1649420834
 },
+{
+  id: "1627",
+  name: "LendFlare",
+  address: "0xB620Be8a1949AA9532e6a3510132864EF9Bc3F82",
+  symbol: "LFT",
+  url: "https://lendflare.finance",
+  description: "Lendflare is a decentralized borrowing platform on Ethereum blockchain that allows Curve LP holders (the borrowers) to draw fixed-rate, fixed term and high LTV loans against Curve LP used as collateral, with no concerns for assets being liquidated due to price fluctuation. Loans are paid out through Lendflare from Compound platform. Liquidity providers (the lenders) who deposit loan liquidity through Lendflare on Compound platform will receive one of the highest interest rate compared to other current lending platforms.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/lendflare.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "lend-flare-dao-token" ,
+  cmcId: "19189",
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "lendflare/index.js",
+  twitter: "LendFlareOffic",
+  audit_links: ["https://www.certik.com/projects/lend-flare"] ,
+  listedAt: 1649423978
+},
 ] as Protocol[]

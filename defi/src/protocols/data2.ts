@@ -4729,4 +4729,26 @@ export default [
   twitter: "Daruma_DAO",
   listedAt: 1649413261
 },
+{
+  id: "1626",
+  name: "Astrowar Finance",
+  address: "harmony:0xda612f124daddb1bedcd6ade8d103a891cde65bb",
+  symbol: "AWAR",
+  url: "https://www.astrowar.finance/",
+  description: "Astrowar is an intergalactic metaverse gamefi on the Harmony Blockchain combined with future universe background. In the Astrowar universe, the user can become planet lords and develop their territory targeting environment, technology and many others perspective. The ultimate goal for all the starlords is to create a grandiose interstellar civilization era.",
+  chain: "Harmony",
+  logo: `${baseIconsUrl}/astrowar-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Harmony"],
+  oracles: ["TWAP"],
+  forkedFrom: [],
+  module: "astrowar-finance",
+  twitter: "AstrowarFi",
+  audit_links: ["https://github.com/solidproof/projects/tree/main/AstroWar"] ,
+  listedAt: 1649420834
+},
 ] as Protocol[]

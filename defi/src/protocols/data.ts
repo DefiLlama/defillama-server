@@ -7703,7 +7703,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "JustLend is a TRON-powered coin market protocol aimed at establishing fund pools whose interest rates are determined by an algorithm based on the supply and demand of TRON assets.",
     chain: "Tron",
     logo: `${baseIconsUrl}/justlend.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "just",
     cmcId: "5488",
@@ -7712,6 +7712,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "justlend.js",
     twitter: "DeFi_JUST",
     oracles: ["WINkLink"],
+    audit_links: ["https://www.justlend.link/docs/justlend_audit_en.pdf"],
   },
   {
     id: "495",

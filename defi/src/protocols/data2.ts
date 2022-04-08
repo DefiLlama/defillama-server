@@ -4708,4 +4708,25 @@ export default [
   twitter: "AmbireWallet",
   listedAt: 1649359983
 },
+{
+  id: "1625",
+  name: "DarumaDAO",
+  address: "godwoken:0x81E60A955DC8c4d25535C358fcFE979351d102B5",
+  symbol: "DRM",
+  url: "https://www.daruma.money/",
+  description: "DarumaDAO is the first decentralized reserve currency protocol built on the Nervos blockchain, inspired by OlympusDAO. We aim to bring the innovative DeFi money design to the most promising blockchain networks.",
+  chain: "Godwoken",
+  logo: `${baseIconsUrl}/darumadao.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: null,
+  category: "Reserve Currency",
+  chains: ["Godwoken"],
+  oracles: ["TWAP"],
+  forkedFrom: ["Olympus DAO"],
+  module: "darumadao/index.js",
+  twitter: "Daruma_DAO",
+  listedAt: 1649413261
+},
 ] as Protocol[]

@@ -7692,7 +7692,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "grim/index.js",
     twitter: "financegrim",
-    audit_links: ["https://solidity.finance/audits/GrimVault/"],
+    audit_links: [
+      "https://solidity.finance/audits/GrimVault/",
+      "https://www.certik.com/projects/grim-finance"
+    ],
   },
   {
     id: "494",

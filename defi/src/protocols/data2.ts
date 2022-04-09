@@ -3192,7 +3192,7 @@ export default [
     description: "DarkNess Finance is the first multi-fractional-algorithmic stablecoin with stablecoins DEX on Cronos Chain",
     chain: "Cronos",
     logo: `${baseIconsUrl}/darkness.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "darkness-share",
     cmcId: null,
@@ -3202,6 +3202,7 @@ export default [
     forkedFrom: ["Balancer"],
     module: "darkness/index.js",
     twitter: "DarkCryptoFi",
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-DarkNess-Dollar-v1.0.pdf"],
     listedAt: 1647396455
   },
   {

@@ -40,7 +40,7 @@ export async function getProtocolTvl(protocol: Readonly<Protocol>, useNewChainNa
     ]);
 
     const isDoubleCount =
-      module.doublecounted || protocol.category === 'Yield Aggregator' || protocol.category === 'Yield';
+      module.doublecounted ?? (protocol.category === 'Yield Aggregator' || protocol.category === 'Yield');
 
     if (lastRecord) {
       Object.entries(lastRecord).forEach(([chain, chainTvl]) => {

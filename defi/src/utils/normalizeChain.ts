@@ -805,6 +805,13 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 55555,
   },
+  "Crab": {
+    geckoId: "darwinia-crab-network",
+    symbol: "CRAB",
+    cmcId: "9243",
+    categories: ["EVM"],
+    chainId: 44,
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -982,6 +989,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Clover"
     case "rei":
       return "REI"
+    case "crab":
+      return "Crab"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

@@ -4466,7 +4466,7 @@ export default [
   gecko_id: null,
   cmcId: null,
   category: "Indexes",
-  chains: ["Avalanche", "Binance", "Polygon"],
+  chains: ["Ethereum", "Avalanche", "Binance", "Polygon"],
   oracles: [],
   forkedFrom: [],
   module: "nested/index.js",

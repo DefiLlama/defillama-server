@@ -4866,4 +4866,25 @@ export default [
   audit_links: ["https://github.com/chain/chain-token/blob/main/XCN-token-Certik-Audit-2022-03-06.pdf"],
   listedAt: 1649671541
 },
+{
+  id: "1632",
+  name: "SMBSwap",
+  address: "bsc:0x7a364484303B38Bce7B0ab60a20DA8F2F4370129",
+  symbol: "SELF",
+  url: "https://smbswap.finance/",
+  description: "AMM on bsc",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/smbswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null ,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "smbswap/index.js",
+  twitter: "smbswap",
+  listedAt: 1649672617
+},
 ] as Protocol[]

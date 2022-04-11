@@ -25083,7 +25083,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "An innovative fork of tomb.finance, pegged to the price of 1 TOMB via seigniorage.",
   chain: "Fantom",
   logo: `${baseIconsUrl}/based-finance.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "based-finance",
   cmcId: "17954",
@@ -25094,6 +25094,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "BasedFinance_io",
   language: "Solidity",
   forkedFrom: ["Tomb Finance"],
+  audit_links: ["https://github.com/Tibereum/obelisk-audits/blob/main/Based.pdf"] ,
   listedAt: 1644443064,
 },
 {

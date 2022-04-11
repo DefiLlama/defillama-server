@@ -4844,4 +4844,26 @@ export default [
   twitter: "YieldHubFinance",
   listedAt: 1649526698
 },
+{
+  id: "1631",
+  name: "Chain",
+  address: "0xA2cd3D43c775978A96BdBf12d733D5A1ED94fb18",
+  symbol: "XCN",
+  url: "https://gov.chain.xyz/",
+  description: "Chain is a cloud blockchain protocol that enables organizations to build better financial services from the ground up powered by Sequence and Chain Core.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/chain.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "Chain-2",
+  cmcId: "18679" ,
+  category: "Staking",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "chainxyz/index.js",
+  twitter: "Chain",
+  audit_links: ["https://github.com/chain/chain-token/blob/main/XCN-token-Certik-Audit-2022-03-06.pdf"],
+  listedAt: 1649671541
+},
 ] as Protocol[]

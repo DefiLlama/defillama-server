@@ -4887,4 +4887,25 @@ export default [
   twitter: "smbswap",
   listedAt: 1649672617
 },
+{
+  id: "1633",
+  name: "BencuFi",
+  address: null,
+  symbol: "-",
+  url: "https://bencu.fi/",
+  description: "Bencu finance is is a decentralized non-custodial liquidity protocol based on Metis Blockchain, where users, wallets and dapps can participate as depositors or borrowers.",
+  chain: "Metis",
+  logo: `${baseIconsUrl}/bencufi.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null ,
+  category: "Lending",
+  chains: ["Metis"],
+  oracles: [],
+  forkedFrom: [],
+  module: "bencu/index.js",
+  twitter: "BencuFi",
+  listedAt: 1649674184
+},
 ] as Protocol[]

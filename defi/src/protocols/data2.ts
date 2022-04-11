@@ -4874,7 +4874,7 @@ export default [
   url: "https://smbswap.finance/",
   description: "AMM on bsc",
   chain: "Binance",
-  logo: `${baseIconsUrl}/smbswap.jpg`,
+  logo: `${baseIconsUrl}/smbswap.jpeg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

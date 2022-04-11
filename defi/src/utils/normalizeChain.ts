@@ -812,6 +812,11 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 44,
   },
+  "Hbar": {
+    geckoId: "hedera-hashgraph",
+    symbol: "HBAR",
+    cmcId: "4642",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,

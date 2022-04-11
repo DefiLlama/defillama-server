@@ -5017,7 +5017,7 @@ export default [
   chains: ["Binance"],
   oracles: ["TWAP"],
   forkedFrom: [],
-  module: "dddxswap/index.js",
+  module: "dddx.js",
   twitter: "DDDX_io",
   audit_links: ["https://www.certik.com/projects/dddx-io"] ,
   listedAt: 1649686454

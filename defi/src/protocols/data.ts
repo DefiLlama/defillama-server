@@ -4912,18 +4912,23 @@ export default ([
     address: "polygon:0x874e178a2f3f3f9d34db862453cd756e7eab0381",
     symbol: "GFI",
     url: "https://gravityfinance.io/",
-    description:
-      "Gravity Finance is a DeFi platform. Its Governance Token has a true intrinsic value (backed by bitcoin) that employs deflationary tokenomics.",
+    description: "Gravity Finance is a DeFi platform, consisting of a Decentralised Exchange, Yield Farms, Auto-Compounding Vaults, an IDO Launchpad and Automated Investment Strategies called Silos. Gravity Admin Fees are paid to Governance Token Holders as ETH and BTC.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/gravity-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "gravity-finance",
     cmcId: "10324",
     category: "Dexes",
     chains: ["Polygon"],
     module: "gravity-finance/index.js",
+    forkedFrom: ["Uniswap"],
     twitter: "Gravity_Finance",
+    audit_links: [ 
+                    "https://github.com/Tibereum/obelisk-audits/blob/main/Gravity.pdf" ,
+                    "https://github.com/JorgeRodriguezsec/CTDsec/blob/main/Audits/Cybersecurity_Audit_CTDSEC_Gravity_v4.pdf" ,
+                 ]
+    
   },
   {
     id: "352",

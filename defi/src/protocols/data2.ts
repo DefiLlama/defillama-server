@@ -5129,7 +5129,7 @@ export default [
   chains: ["Binance"],
   oracles: [],
   forkedFrom: ["Uniswap"],
-  module: "champagneswap/index.ts",
+  module: "champagne-swap.js",
   twitter: "champagnedefi",
   listedAt: 1649793174
 },

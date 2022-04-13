@@ -5230,6 +5230,7 @@ export default ([
     cmcId: "8666",
     category: "Dexes",
     chains: ["Ethereum"],
+    forkedFrom: ["Shell Protocol"],
     module: "dfx/index.js",
     twitter: "DFXFinance",
     audit_links: ["https://github.com/dfx-finance/protocol/blob/main/audits/2021-05-03-Trail_of_Bits.pdf"]
@@ -25728,7 +25729,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "Dexes",
   chains: ["Metis"],
   oracles: [],
-  forkedFrom: ["DFX Finance"],
+  forkedFrom: ["Shell Protocol"],
   module: "drachma/index.js",
   twitter: "drachmadefi",
   audit_links: ["https://drachma-defi.notion.site/Contracts-Audits-1ef408de14fa4c619feddb99abbddffc"],

@@ -17369,6 +17369,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "OCP/index.js",
     twitter: "omnic_pro",
+    forkedFrom: ["Shell Protocol"],
     audit_links: ["https://github.com/Quillhash/Audit_Reports/blob/master/OmniOracle%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
     listedAt: 1638998697,
   },

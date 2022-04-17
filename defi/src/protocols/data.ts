@@ -13666,7 +13666,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Dexes",
   chains: ["Terra"],
-  module: "loopFinance/index.js",
+  module: "loop-finance/index.js",
   twitter: "loop_finance",
   audit_links: ["https://docs.loop.markets/loop-finance/decentralized-exchange/audits"],
   listedAt: 1636441315,

@@ -3698,7 +3698,7 @@ export default ([
     address: "0xd502f487e1841fdc805130e13eae80c61186bc98",
     symbol: "ITGR",
     url: "https://integral.link/",
-    description: "The last exchange",
+    description: "Integral is a new DeFi primitive that efficiently executes large orders. Its latest product, SIZE, is a OTC-style decentralized exchange. With built-in TWAP execution, SIZE enables DAOs and whales to trade with 0 price impact at any order size.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/integral.jpg`,
     audits: "2",

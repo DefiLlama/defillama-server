@@ -5460,7 +5460,7 @@ export default [
   url: "https://www.sirius.finance",
   description: "The first cross-chain stablecoin amm & LP center on Astarnetwork",
   chain: "Astar",
-  logo: `${baseIconsUrl}/steak.png`,
+  logo: `${baseIconsUrl}/sirius-finance.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "sirius-finance",

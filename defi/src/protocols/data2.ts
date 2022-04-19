@@ -5568,4 +5568,25 @@ export default [
   twitter: null,
   listedAt: 1650364599
 },
+{
+  id: "1664",
+  name: "LlamaPay",
+  address: null,
+  symbol: "-",
+  url: "https://llamapay.io",
+  description: "LlamaPay is a multi-chain protocol that allows you to automate transactions and stream them by the second. The recipients can withdraw these funds at any time. This eliminates the need for manual transactions",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/llamapay.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Payments",
+  chains: ["Avalanche"],
+  oracles: [],
+  forkedFrom: [],
+  module: "llamapay/index.js",
+  twitter: "llamapay_io",
+  listedAt: 1650367042
+},
 ] as Protocol[]

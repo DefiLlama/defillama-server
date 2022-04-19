@@ -5589,4 +5589,26 @@ export default [
   twitter: "llamapay_io",
   listedAt: 1650367042
 },
+{
+  id: "1665",
+  name: "Blueshift",
+  address: "milkomeda:0x8c008BBA2Dd56b99f4A6aB276bE3a478cB075F0C",
+  symbol: "BLUES",
+  url: "https://blueshift.fi/",
+  description: "Blueshift is a decentralized exchange and a new-generation crypto asset management protocol based on liquidity portfolios with high capital efficiency and low impermanent loss.",
+  chain: "Milkomeda",
+  logo: `${baseIconsUrl}/blueshift.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "blueshift",
+  cmcId: "19595",
+  category: "Dexes",
+  chains: ["Milkomeda"],
+  oracles: [],
+  forkedFrom: [],
+  module: "blueshift/index.js",
+  twitter: "blueshiftfi",
+  audit_links: ["https://www.certik.com/projects/blueshift"] ,
+  listedAt: 1650384287
+},
 ] as Protocol[]

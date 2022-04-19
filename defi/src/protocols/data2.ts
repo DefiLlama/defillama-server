@@ -5452,4 +5452,26 @@ export default [
   audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/St4k3h0us3/St4k3h0us3%20-%20Steak%20Contracts%20Audit%20Review%20-%20%20v1.0.pdf"],
   listedAt: 1650320654
 },
+{
+  id: "1659",
+  name: "Sirius Finance",
+  address: "astar:0x9448610696659de8F72e1831d392214aE1ca4838",
+  symbol: "SRS",
+  url: "https://www.sirius.finance",
+  description: "The first cross-chain stablecoin amm & LP center on Astarnetwork",
+  chain: "Astar",
+  logo: `${baseIconsUrl}/steak.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "sirius-finance",
+  cmcId: "19492",
+  category: "Dexes",
+  chains: ["Astar"],
+  oracles: [],
+  forkedFrom: ["Curve"],
+  module: "sirius-finance/index.js",
+  twitter: "Sirius_Finance",
+  audit_links: ["https://github.com/SiriusFinance/siriusfinance-contract/blob/main/audit/PeckShield-Audit-Report-SiriusFinance-v1.0.pdf"],
+  listedAt: 1650333957
+},
 ] as Protocol[]

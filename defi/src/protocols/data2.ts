@@ -5545,4 +5545,25 @@ export default [
   ],
   listedAt: 1650358633
 },
+{
+  id: "1663",
+  name: "ThunderPOKT",
+  address: null,
+  symbol: "-",
+  url: "https://thunderpokt.fi",
+  description: "tPOKT is a liquid staking solution that allows you to stake any amount of pokt and start earning rewards",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/thunderpokt.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "thunderpokt/index.js",
+  twitter: null,
+  listedAt: 1650364599
+},
 ] as Protocol[]

@@ -5044,6 +5044,7 @@ export default [
   audit_links: ["https://github.com/HodlTreeProtocol/stableFlashloan/blob/master/audits/Certik.pdf"] ,
   listedAt: 1649686454
 },
+/*
 {
   id: "1640",
   name: "Eklipse Finance",
@@ -5065,6 +5066,7 @@ export default [
   twitter: "eklipseFinance",
   listedAt: 1649713407
 },
+*/
 {
   id: "1641",
   name: "EPNS",

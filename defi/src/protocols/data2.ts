@@ -5192,7 +5192,7 @@ export default [
   chains: ["Godwoken"],
   oracles: [],
   forkedFrom: [],
-  module: "stablekoi.js",
+  module: "stablekoi/index.js",
   twitter: "stablekoi",
   listedAt: 1649878607,
 },

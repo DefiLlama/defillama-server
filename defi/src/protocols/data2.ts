@@ -5474,4 +5474,26 @@ export default [
   audit_links: ["https://github.com/SiriusFinance/siriusfinance-contract/blob/main/audit/PeckShield-Audit-Report-SiriusFinance-v1.0.pdf"],
   listedAt: 1650333957
 },
+{
+  id: "1660",
+  name: "Swappi",
+  address: "conflux:0x22f41abf77905f50df398f21213290597e7414dd",
+  symbol: "PPI",
+  url: "https://app.swappi.io",
+  description: "Swappi is an automated market maker (AMM) based decentralized exchange (DEX) deployed on Conflux Network.",
+  chain: "Conflux",
+  logo: `${baseIconsUrl}/swappi.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "swappi",
+  cmcId: "19544",
+  category: "Dexes",
+  chains: ["Conflux"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "swappi/index.js",
+  twitter: "SwappiDEX",
+  audit_links: ["https://drive.google.com/file/d/1zj08NuUuMAO-bikOBvPOsOnPcTC5rdHx/view?usp=sharing"],
+  listedAt: 1650350091
+},
 ] as Protocol[]

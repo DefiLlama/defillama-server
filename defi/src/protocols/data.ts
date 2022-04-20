@@ -16847,7 +16847,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Drift brings on-chain, cross-margined perpetual futures to Solana. Making futures DEXs the best way to trade.",
     chain: "Solana",
     logo: `${baseIconsUrl}/drift.jpg` ,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -16856,6 +16856,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "drift.js",
     twitter: "DriftProtocol",
     oracles: ["Pyth"],
+    audit_links: ["https://github.com/Zellic/publications/blob/master/Drift%20Protocol%20Audit%20Report.pdf"],
     listedAt: 1638568951,
   },
   {

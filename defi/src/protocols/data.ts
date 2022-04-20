@@ -439,7 +439,7 @@ export default ([
     symbol: "KNC",
     url: "https://kyber.network/",
     description:
-      "Kyber Network is connecting the fragmented tokenized world by enabling instant and seamless transactions between platforms, ecosystems.",
+      "KyberSwap is both a decentralized exchange (DEX) aggregator and a liquidity source with capital-efficient liquidity pools that earns fees for liquidity providers",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/kyberswap.png`,
     audits: null,

@@ -2994,7 +2994,7 @@ export default [
     name: "Burrow",
     address: null,
     symbol: "-",
-    url: "https://beta.burrow.cash",
+    url: "https://app.burrow.cash/#/deposit",
     description: "Burrow is a decentralized, non-custodial pool-based interest rates platform that enables users to supply assets to earn interest, and to borrow against them to unlock liquidity. Burrow is similar in nature to Aave, Compound, and other pool-based protocols. Burrow runs natively on the NEAR blockchain, a layer 1, proof-of-stake, sharded blockchain with a WebAssembly runtime. The Burrow protocol's smart contracts are written in Rust.",
     chain: "Near",
     logo: `${baseIconsUrl}/burrow.png`,

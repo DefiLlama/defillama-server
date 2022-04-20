@@ -5677,4 +5677,26 @@ export default [
   twitter: "milky_dex",
   listedAt: 1650458739
 },
+{
+  id: "1669",
+  name: "TokensFarm",
+  address: null,
+  symbol: "-",
+  url: "https://tokensfarm.com",
+  description: "Multichain Farm-As-A-Service provider offering off-the-shelf farms for projects and a yield farming one-stop shop for crypto holders.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/tokensfarm.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Ethereum", "Binance", "Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "tokensfarm/index.js",
+  twitter: "TokensFarm",
+  audit_links: ["https://www.certik.com/projects/tokensfarm"] ,
+  listedAt: 1650460802
+},
 ] as Protocol[]

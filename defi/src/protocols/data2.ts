@@ -1944,7 +1944,7 @@ export default [
     description: "Starlay Finance is the first lending protocol backed by Astar Network.",
     chain: "Astar",
     logo: `${baseIconsUrl}/starlay-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -1954,6 +1954,7 @@ export default [
     forkedFrom: ["Aave"],
     module: "starlay/index.js",
     twitter: "starlay_fi",
+    audit_links: ["https://github.com/starlay-finance/starlay-protocol/blob/dev/audit/Certik-starlay-04-14-2022.pdf"],
     listedAt: 1646202072,
   },
   {

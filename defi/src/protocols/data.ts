@@ -3113,7 +3113,7 @@ export default ([
     name: "Primitive",
     address: "-",
     symbol: "-",
-    url: "https://primitive.finance/",
+    url: "https://primitive.xyz/",
     description: `Primitive built the Replicating Market Maker ("RMM") protocol, an oracle-free solution to scalable and efficient on-chain derivatives.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/primitive.jpg`,

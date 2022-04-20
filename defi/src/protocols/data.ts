@@ -21227,7 +21227,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 {
   id: "1188",
   name: "EverRise",
-  address: "0x0cD022ddE27169b20895e0e2B2B8A33B25e63579",
+  address: "0xC17c30e98541188614dF99239cABD40280810cA3",
   symbol: "RISE",
   url: "https://www.everrise.com",
   description: "EverRise is a blockchain technology company that offers bridging and security solutions across blockchains through an ecosystem of decentralized applications.",
@@ -21241,7 +21241,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum", "Binance", "Polygon"],
   module: "everrise/index.js",
   twitter: "EverRise",
-  audit_links: ["https://www.certik.com/projects/everrise"],
+  audit_links: ["https://www.certik.com/projects/everrise","https://github.com/chainsulting/Smart-Contract-Security-Audits/tree/master/EverRise"],
   oracles: ["Chainlink"],
   listedAt: 1641256925,
 },

@@ -4740,7 +4740,7 @@ export default [
   description: "Astrowar is an intergalactic metaverse gamefi on the Harmony Blockchain combined with future universe background. In the Astrowar universe, the user can become planet lords and develop their territory targeting environment, technology and many others perspective. The ultimate goal for all the starlords is to create a grandiose interstellar civilization era.",
   chain: "Harmony",
   logo: `${baseIconsUrl}/astrowar-finance.png`,
-  audits: "2",
+  audits: "1",
   audit_note: null,
   gecko_id: null ,
   cmcId: null,

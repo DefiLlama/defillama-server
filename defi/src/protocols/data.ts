@@ -3125,7 +3125,7 @@ export default ([
     chains: ["Ethereum"],
     module: "primitive/index.js",
     twitter: "PrimitiveFi",
-    audit_links: ["https://docs.primitive.finance/traders/trader-risks#have-your-contracts-been-audited"],
+    audit_links: ["https://library.primitive.xyz/technical/security/audits"],
   },
   {
     id: "263",

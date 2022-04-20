@@ -5611,4 +5611,26 @@ export default [
   audit_links: ["https://www.certik.com/projects/blueshift"] ,
   listedAt: 1650384287
 },
+{
+  id: "1666",
+  name: "Nord Finance",
+  address: "0x6e9730EcFfBed43fD876A264C982e254ef05a0DE",
+  symbol: "NORD",
+  url: "https://nordfinance.io",
+  description: "Nord Finance is a Decentralized Financial Ecosystem designed to simplify DeFi investing by bringing key features of traditional finance to the DeFi ecosystem. Nord Finance is built on Ethereum Network. Multichain interoperability of Nord Finance powers a plethora of financial primitives, which constitute Savings, Advisory, Loans against crypto assets, Investment and Fund management. Nord Finance is creating innovative ways for everyone to generate wealth with Blockchain Technology.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/blueshift.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "nord-finance",
+  cmcId: "8143",
+  category: "Yield Aggregator",
+  chains: ["Ethereum", "Polygon", "Avalanche"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "nord-finance/index.js",
+  twitter: "Nord_Finance",
+  audit_links: ["https://docs.nordfinance.io/security-audits/security-audits"],
+  listedAt: 1650437930
+},
 ] as Protocol[]

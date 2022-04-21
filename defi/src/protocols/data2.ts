@@ -5781,4 +5781,25 @@ export default [
   twitter: null,
   listedAt: 1650583619
 },
+{
+  id: "1674",
+  name: "Lemuria Finance",
+  address: "milkomeda:0xd17c6218DfDA8e2A53cF8525E78fD09985CF9423",
+  symbol: "LEMUR",
+  url: "https://www.lemuria.finance/#/milkomeda",
+  description: "Lemuria Finance is the first native yield optimizer on Milkomeda. They offer competitively low fees and mythological APYs.",
+  chain: "Milkomeda",
+  logo: `${baseIconsUrl}/lemuria-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Milkomeda"],
+  oracles: ["TWAP"],
+  forkedFrom: ["Beefy Finance"],
+  module: "lemuriafinance.js",
+  twitter: "LemuriaFinance",
+  listedAt: 1650583830
+},
 ] as Protocol[]

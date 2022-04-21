@@ -824,6 +824,11 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 2152,
   },
+  "Hydra": {
+    geckoId: "hydra",
+    symbol: "HYDRA",
+    cmcId: "8245",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -1007,6 +1012,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Hedera"
     case "findora":
       return "Findora"
+    case "hydra":
+      return "Hydra"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

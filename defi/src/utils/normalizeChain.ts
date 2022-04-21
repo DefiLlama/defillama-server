@@ -817,6 +817,13 @@ export const chainCoingeckoIds = {
     symbol: "HBAR",
     cmcId: "4642",
   },
+  "Findora": {
+    geckoId: "findora",
+    symbol: "FRA",
+    cmcId: "4249",
+    categories: ["EVM"],
+    chainId: 2152,
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -998,6 +1005,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Crab"
     case "hedera":
       return "Hedera"
+    case "findora":
+      return "Findora"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

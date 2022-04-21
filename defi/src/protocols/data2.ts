@@ -5525,7 +5525,11 @@ export default [
   address: "avax:0x77777777777d4554c39223C354A05825b2E8Faa3",
   symbol: "YETI",
   url: "https://yeti.finance",
-  description: "Yeti Finance is a cutting edge decentralized borrowing protocol built on Avalanche that allows users to borrow up to 11x against base assets like WETH, staked assets like Liquid AVAX, LP tokens - and 21x on yield-bearing stablecoins, all at a 0% interest rate. Users retain all farming and staking rewards when these assets are deposited onto Yeti Finance’s platform, opening up numerous leveraged farming strategies. Yeti Finance also offers cross-margining, something the majority of borrowing protocols don't have. In simple terms, users on Yeti Finance can open up a borrowing position on their entire portfolio instead of just a single asset. Cross-margining makes borrowing against volatile assets much safer as multiple assets can serve as collateral for your loan instead of just one, greatly reducing the risk of liquidations due to asset volatility and flash crashes. Unlock deep liquidity, borrow at the lowest collateral ratios, and borrow against your entire portfolio to gain better protection against liquidations. Yeti Finance is a quantum leap forward in the borrowing landscape and will unlock tens of billions of dollars in new liquidity on Avalanche.",
+  description: "Yeti Finance is a cutting-edge, decentralized borrowing protocol on Avalanche that allows users to borrow up to 21x against their portfolio of LP tokens, staked assets like sJOE and sAVAX, and yield-bearing stablecoins for 0% interest.
+
+Yeti Finance offers cross-margining across all collaterals and auto-compounds farming yields on deposited assets.
+
+Borrowers on Yeti Finance mint YUSD, a hard-pegged and fully decentralized stablecoin.",
   chain: "Avalanche",
   logo: `${baseIconsUrl}/yeti-finance.png`,
   audits: "2",

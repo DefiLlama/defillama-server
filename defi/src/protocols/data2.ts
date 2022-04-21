@@ -5760,4 +5760,25 @@ export default [
   twitter: "tarinaexchange",
   listedAt: 1650569983
 },
+{
+  id: "1673",
+  name: "Hydradex",
+  address: null,
+  symbol: "-",
+  url: "https://hydradex.org/#/swap",
+  description: "Hydra DEX is the native decentralized exchange of Hydra chain",
+  chain: "Hydra",
+  logo: `${baseIconsUrl}/hydradex.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Hydra"],
+  oracles: [],
+  forkedFrom: [],
+  module: "hydradex.js",
+  twitter: null,
+  listedAt: 1650583619
+},
 ] as Protocol[]

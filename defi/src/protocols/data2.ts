@@ -5845,4 +5845,25 @@ export default [
   audit_links: ["https://drive.google.com/file/d/1S2hbszHiFQfB7ANRmq_na0wk5O7BCXmj/view"] ,
   listedAt: 1650619780
 },
+{
+  id: "1677",
+  name: "Timeswap",
+  address: null,
+  symbol: "-",
+  url: "https://timeswap.io",
+  description: "Timeswap is the first fully permissionless, oracle-less, non-liquidatable, fixed maturity lending & borrowing protocol.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/timeswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "timeswap/index.js",
+  twitter: "TimeswapLabs",
+  listedAt: 1650665129
+},
 ] as Protocol[]

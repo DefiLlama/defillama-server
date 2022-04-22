@@ -13397,7 +13397,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "celer-network",
   cmcId: "3814",
-  category: "Cross Chain",
+  category: "Bridge",
   chains: ["Ethereum", "Binance", "Arbitrum", "Polygon", "xDai", "OKExChain", "Avalanche", "Optimism", "Fantom", "Heco"],
   module: "celerbridge/index.js",
   twitter: "CelerNetwork",

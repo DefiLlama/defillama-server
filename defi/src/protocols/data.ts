@@ -976,11 +976,11 @@ export default ([
   },
   {
     id: "155",
-    name: "KeeperDAO",
+    name: "Rook",
     address: "0xfA5047c9c78B8877af97BDcb85Db743fD7313d4a",
     symbol: "ROOK",
-    url: "https://keeperdao.com/",
-    description: "KeeperDAO is an on-chain liquidity underwriter for DeFi.",
+    url: "https://www.rook.fi/",
+    description: "Rook is an open settlement protocol that leverages the world’s best algorithmic strategists to maximize the value of every transaction.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/keeperdao.jpg`,
     audits: "2",
@@ -990,7 +990,7 @@ export default ([
     category: "Dexes",
     chains: ["Ethereum"],
     module: "keeper-dao/index.js",
-    twitter: "Keeper_DAO",
+    twitter: "rook",
   },
   {
     id: "156",

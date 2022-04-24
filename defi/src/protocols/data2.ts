@@ -5866,4 +5866,25 @@ export default [
   twitter: "TimeswapLabs",
   listedAt: 1650665129
 },
+{
+  id: "1678",
+  name: "Printer Financial",
+  address: null,
+  symbol: "-",
+  url: "https://printer.financial",
+  description: "Printer Financial is an EVM native cross-chain protocol that lets you transfer value seamlessly across chains and pays interest for providing liquidity. Rather than being pegged to a native token, PAPER is free to travel across all available chains at zero cost to you. No fee, no charge, no tax. Just the freedom to take your PAPER with you wherever you go in the blockchain.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/printer-financial.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Fantom", "Binance", "Avalanche", "Cronos", "Polygon", "Harmony"],
+  oracles: [],
+  forkedFrom: [],
+  module: "printerfinancial/index.js",
+  twitter: "FinancePrinter",
+  listedAt: 1650765585
+},
 ] as Protocol[]

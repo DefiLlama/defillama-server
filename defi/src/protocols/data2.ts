@@ -5778,7 +5778,7 @@ export default [
   oracles: [],
   forkedFrom: [],
   module: "hydradex.js",
-  twitter: null,
+  twitter: "hydra_chain",
   listedAt: 1650583619
 },
 {

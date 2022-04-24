@@ -5887,4 +5887,23 @@ export default [
   twitter: "FinancePrinter",
   listedAt: 1650765585
 },
+{
+id: "1679",
+name: "Dot Dot Finance",
+address: "bsc:0x84c97300a190676a19D1E13115629A11f8482Bd1",
+symbol: "DDD",
+url: "https://dotdot.finance/",
+description: "A yield aggregator for Ellipsis Finance on BNB Smart Chain.",
+chain: "Binance",
+logo: `${baseIconsUrl}/dotdot.jpg`,
+audits: "0",
+audit_note: null,
+gecko_id: null,
+cmcId: null,
+category: "Yield",
+chains: ["Binance"],
+module: "dotdot/index.js",
+twitter: "DotDotDotFi",
+listedAt: 1650804679
+}, 
 ] as Protocol[]

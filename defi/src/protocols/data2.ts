@@ -6161,11 +6161,33 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "good-ghosting/index.js",
   twitter: "goodghosting",
-  links_audits:[
+  audit_links:[
                   "https://certificate.quantstamp.com/full/good-ghosting-core-files-audit" ,
                   "https://github.com/Good-Ghosting/goodghosting-protocol-v0/blob/master/docs/audits/dedaub-good-ghosting-core-files-audit.pdf" ,
                   "https://github.com/Good-Ghosting/goodghosting-protocol-v0/blob/master/docs/audits/ackee-good-ghosting-core-files-audit.pdf" ,
   ], 
   listedAt: 1650999421
+},
+{
+  id: "1692",
+  name: "Sienna Network",
+  address: "secret:secret1rgm2m5t530tdzyd99775n6vzumxa5luxcllml4",
+  symbol: "SIENNA",
+  url: "https://sienna.network",
+  description: "Sienna Network is a cross-chain, privacy-first decentralized finance protocol built on Secret Network, that enables trust-less financial instruments, such as trading and lending with complete privacy for multiple blockchain ecosystems.",
+  chain: "Secret",
+  logo: `${baseIconsUrl}/sienna-network.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "sienna",
+  cmcId: "9388",
+  category: "Privacy",
+  chains: ["Secret"],
+  oracles: ["Band"],
+  forkedFrom: [],
+  module: "sienna/index.js",
+  twitter: "sienna_network",
+  audit_links: ["https://sienna.network/audits"], 
+  listedAt: 1651009772
 },
 ] as Protocol[]

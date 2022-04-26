@@ -6141,4 +6141,25 @@ listedAt: 1650804679
   twitter: "ZombieNetworkfi",
   listedAt: 1650988125
 },
+{
+  id: "1691",
+  name: "GoodGhosting",
+  address: null,
+  symbol: "-",
+  url: "https://goodghosting.com/#/",
+  description: "GoodGhosting is a decentralized social savings app that combines game design elements with goal-based saving.",
+  chain: "Celo",
+  logo: `${baseIconsUrl}/goodghosting.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Gaming",
+  chains: ["Celo", "Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "good-ghosting/index.js",
+  twitter: "goodghosting",
+  listedAt: 1650999421
+},
 ] as Protocol[]

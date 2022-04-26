@@ -6065,7 +6065,7 @@ listedAt: 1650804679
   description: "DeFi fixed-term / fixed-interest loans for the borrowers. DeFi personal fixed income funds for the lenders",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/smartcredit.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "smartcredit-token",
   cmcId: "7596",
@@ -6075,6 +6075,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "smartcredit.js",
   twitter: "smartcredit_io",
+  audit_links: "https://github.com/pessimistic-io/audits/blob/ca048cb8eaba4f7959fb83c1c6f5cb4803c85718/SmartCredit%20Security%20Analysis%20by%20Pessimistic.pdf",
   listedAt: 1650970238
 },
 {

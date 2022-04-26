@@ -21254,7 +21254,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Mimas Finance is an algorithmic money market and liquid staking protocol on the Cronos blockchain.",
   chain: "Cronos",
   logo: `${baseIconsUrl}/mimas-finance.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "mimas",
   cmcId: null,
@@ -21263,6 +21263,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "mimas-finance/index.js",
   twitter: "mimas_fi",
   forkedFrom: ["Compound"],
+  audit_links: ["https://www.certik.com/projects/mimas-finance"],
   listedAt: 1641305977,
 },
 {

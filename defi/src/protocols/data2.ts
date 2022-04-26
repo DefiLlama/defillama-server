@@ -6151,7 +6151,7 @@ listedAt: 1650804679
   description: "GoodGhosting is a decentralized social savings app that combines game design elements with goal-based saving.",
   chain: "Celo",
   logo: `${baseIconsUrl}/goodghosting.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -6161,6 +6161,11 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "good-ghosting/index.js",
   twitter: "goodghosting",
+  links_audits:[
+                  "https://certificate.quantstamp.com/full/good-ghosting-core-files-audit" ,
+                  "https://github.com/Good-Ghosting/goodghosting-protocol-v0/blob/master/docs/audits/dedaub-good-ghosting-core-files-audit.pdf" ,
+                  "https://github.com/Good-Ghosting/goodghosting-protocol-v0/blob/master/docs/audits/ackee-good-ghosting-core-files-audit.pdf" ,
+  ], 
   listedAt: 1650999421
 },
 ] as Protocol[]

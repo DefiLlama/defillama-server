@@ -1987,7 +1987,7 @@ export default ([
     chains: ["Ethereum"],
     module: "xtoken/index.js",
     twitter: "xtokenterminal",
-    audit_links: ["https://github.com/xtokenmarket/terminal-mining/tree/master/audits],
+    audit_links: ["https://github.com/xtokenmarket/terminal-mining/tree/master/audits"],
   },
   {
     id: "207",

@@ -6495,4 +6495,25 @@ listedAt: 1650804679
   twitter: "vortexAMM",
   listedAt: 1651168503
 },
+{
+  id: "1707",
+  name: "CLever",
+  address: "0xf05e58fCeA29ab4dA01A495140B349F8410Ba904" ,
+  symbol: "clev-CVX",
+  url: "https://clever.aladdin.club/",
+  description: "CLever is a leverage system for CVX holders that allows them to multiply their bribe and reward income by up to ~2x, while automating harvesting and swapping into CVX.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/clever.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "clever/index.js",
+  twitter: "0xC_Lever",
+  listedAt: 1651168503
+},
 ] as Protocol[]

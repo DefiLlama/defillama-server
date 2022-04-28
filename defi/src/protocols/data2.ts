@@ -2901,7 +2901,7 @@ export default [
   oracles: [],
   forkedFrom: [],
   module: "wormhole.js",
-  twitter: "wormholecrypto",
+  twitter: "portalbridge_",
   audit_links: ["https://github.com/certusone/wormhole/blob/dev.v2/audits/2021-01-10_neodyme.pdf"] ,
   listedAt: 1647148275,
 },

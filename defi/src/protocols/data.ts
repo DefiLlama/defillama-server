@@ -2070,7 +2070,7 @@ export default ([
     module: "yaxis/index.js",
     twitter: "yaxis_project",
     audit_links: [
-      "https://github.com/yaxis-project/metavault/tree/main/audits",
+      "https://github.com/yaxis-project/SushiSwap/tree/main/audits",
     ],
   },
   {
@@ -19762,7 +19762,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Tectonic is a cross-chain money market for earning passive yield and accessing instant backed loans",
   chain: "Cronos",
   logo: `${baseIconsUrl}/tectonic.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "tectonic" ,
   cmcId: "16430" ,
@@ -19771,6 +19771,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "tectonic/index.js",
   twitter: "TectonicFi",
   forkedFrom: ["Compound"] ,
+  audit_links: ["https://tectonic.gitbook.io/docs/developer/smart-contracts-and-security"],
   listedAt: 1640643322 ,
 },
 {

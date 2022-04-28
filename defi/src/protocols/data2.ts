@@ -6286,7 +6286,7 @@ listedAt: 1650804679
   description: "The Diffusion protocol is a Uniswap V2 fork deployed on Evmos, a Cosmos EVM-based bockchain",
   chain: "Evmos",
   logo: `${baseIconsUrl}/diffusion-finance.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -6296,6 +6296,7 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   module: "diffusionfi/index.js",
   twitter: "diffusion_fi",
+  audit_links: ["https://drive.google.com/file/d/1PuSwxtkBJFA4VPIls1HfygOQ5U_FDY0a/view"],
   listedAt: 1651127432
 },
 {

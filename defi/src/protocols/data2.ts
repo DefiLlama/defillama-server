@@ -6275,7 +6275,7 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   module: "cronus/index.js",
   twitter: "CronusFinance",
-  listedAt: 1651127317
+  listedAt: 1651127318
 },
 {
   id: "1697",

@@ -280,6 +280,14 @@ functions:
     handler: src/growthReport.daily
     events:
       - schedule: cron(01 0 * * ? *)
+  tokenlist:
+    handler: src/getTokenList.default
+    timeout: 900
+    memorySize: 1024
+    events:
+      - http:
+          path: tokenlist/{chain}
+          method: get
 
 resources:
   # CORS for api gateway errors

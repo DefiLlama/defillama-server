@@ -6408,7 +6408,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Pancakeswap"],
   module: "agsfinance/index.js",
-  twitter: "AGSFinance",
+  twitter: "AGSFinance_",
   listedAt: 1651168503
 },
 {

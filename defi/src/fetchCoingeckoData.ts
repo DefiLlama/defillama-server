@@ -74,6 +74,20 @@ async function getAndStoreCoin(coin: Coin, rejected: Coin[]) {
     ...coingeckoItem,
     SK: timestamp
   });
+  try{
+    const logo = coinData?.image?.thumb;
+    const logoKeys = {
+      PK: `cgLogo#${coin.id}`,
+      SK:0
+    }
+    const logoData = await dynamodb.get(logoKeys)
+    if(logoData.Item === undefined){
+      await dynamodb.put({
+        ...logoKeys,
+        thumb: logo
+      });
+    }
+  } catch(e){}
 }
 
 const step = 50;

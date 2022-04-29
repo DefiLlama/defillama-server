@@ -6539,4 +6539,25 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/astriddao"] ,
   listedAt: 1651225407
 },
+{
+  id: "1709",
+  name: "IoTeX Monster Go",
+  address: "iotex:0x1bc8547e3716680117d7ba26dcf07f2ed9162cd0",
+  symbol: "MTGO",
+  url: "https://www.iotexmonstergo.com",
+  description: "Monster go is a game that combines real data to capture and cultivate monster fighting (players with iotex pebble can capture rare element monsters)",
+  chain: "IoTeX",
+  logo: `${baseIconsUrl}/iotex-monster-go.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "iotex-monster-go",
+  cmcId: "19374",
+  category: "Gaming",
+  chains: ["IoTeX"],
+  oracles: [],
+  forkedFrom: [],
+  module: "mtgo/index.js",
+  twitter: "iotex_monstergo",
+  listedAt: 1651272789
+},
 ] as Protocol[]

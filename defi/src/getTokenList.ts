@@ -12,7 +12,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
             [platform: string]: string
         }
     }[];
-    const filteredCoins = cgCoins
+    const filteredCoins = await Promise.all(cgCoins
         .filter(coin => coin.platforms[chain] !== undefined)
         .map(async coin => {
             const logo = await dynamodb.get({
@@ -26,7 +26,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
                 //decimals: 18,
                 logoURI: logo.Item?.thumb,
             }
-        });
+        }));
 
     return successResponse(
         {

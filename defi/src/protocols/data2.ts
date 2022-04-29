@@ -5581,7 +5581,7 @@ export default [
   gecko_id: null,
   cmcId: null,
   category: "Payments",
-  chains: ["Avalanche"],
+  chains: ["Avalanche", "Arbitrum", "Binance", "Fantom", "Ethereum", "Optimism", "Polygon", "xDai"],
   oracles: [],
   forkedFrom: [],
   module: "llamapay/index.js",

@@ -13,7 +13,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
         }
     }[];
     const filteredCoins = await Promise.all(cgCoins
-        .filter(coin => coin.platforms[chain] !== undefined)
+        .filter(coin => coin.platforms[chain] !== undefined && coin.platforms[chain] !== "")
         .map(async coin => {
             const logo = await dynamodb.get({
                 PK: `cgLogo#${coin.id}`,

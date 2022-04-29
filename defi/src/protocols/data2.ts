@@ -6364,7 +6364,8 @@ listedAt: 1650804679
   twitter: "WombatExchange",
   audit_links: [
     "https://hacken.io/audits/#wombat_exchange",
-    "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Wombat-v1.0.pdf"
+    "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Wombat-v1.0.pdf" ,
+    "https://www.wombat.exchange/zokyo_wombat_audit_report.pdf" ,
   ],
   listedAt: 1651148250
 },
@@ -6515,5 +6516,27 @@ listedAt: 1650804679
   module: "clever/index.js",
   twitter: "0xC_Lever",
   listedAt: 1651168503
+},
+{
+  id: "1708",
+  name: "AstridDAO",
+  address: "astar:0x5271D85CE4241b310C0B34b7C2f1f036686A6d7C",
+  symbol: "ATID",
+  url: "https://www.astriddao.xyz/",
+  description: "AstridDAO is a decentralized money market and multi-collateral stablecoin protocol built on Astar and for the Polkadot ecosystem, which allows users to borrow $BAI, a stablecoin hard-pegged to USD, against risk assets at 0% interest and minimum collateral ratio.",
+  chain: "Astar",
+  logo: `${baseIconsUrl}/astriddao.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Astar"],
+  oracles: ["DIA"],
+  forkedFrom: [],
+  module: "astriddao/index.js",
+  twitter: "AstridDAO",
+  audit_links: ["https://www.certik.com/projects/astriddao"] ,
+  listedAt: 1651225407
 },
 ] as Protocol[]

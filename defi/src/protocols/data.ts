@@ -23253,7 +23253,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://viamover.com",
   description: "Mover helps you earn the highest and safest yield on your digital assets with our automatic portfolio management system. You can also send, receive and swap 30000+ digital assets on Ethereum.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/moverdao.jpg`,
+  logo: `${baseIconsUrl}/mover.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "holyheld-2",

@@ -6560,4 +6560,25 @@ listedAt: 1650804679
   twitter: "iotex_monstergo",
   listedAt: 1651272789
 },
+{
+  id: "1710",
+  name: "Fenrir Finance",
+  address: "bsc:0xA919C7eDeAb294DD15939c443BCacA1FA1a1850f",
+  symbol: "FNR",
+  url: "https://app.fenrirfinance.com/dashboard",
+  description: "Lend and Borrow on BNB Chain",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/fenrir-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: ["Compound"],
+  module: "fenrirfinance/index.js",
+  twitter: "FenrirFi",
+  listedAt: 1651375509
+},
 ] as Protocol[]

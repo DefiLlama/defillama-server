@@ -281,13 +281,11 @@ functions:
     events:
       - schedule: cron(01 0 * * ? *)
   tokenlist:
-    handler: src/getTokenList.default
+    handler: src/storeTokenList.default
     timeout: 900
     memorySize: 1024
     events:
-      - http:
-          path: tokenlist/{chain}
-          method: get
+      - schedule: cron(20 * * * ? *)
 
 resources:
   # CORS for api gateway errors

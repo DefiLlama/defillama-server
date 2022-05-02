@@ -6587,7 +6587,7 @@ listedAt: 1650804679
   address: "0xbc138bD20C98186CC0342C8e380953aF0cb48BA8",
   symbol: "CNDL",
   url: "https://candlelabs.org/",
-  description: "Lend and Borrow on BNB Chain",
+  description: "Building a scaleable, zero-fee network for the best",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/candle.png`,
   audits: "0",

@@ -6645,4 +6645,26 @@ listedAt: 1650804679
   audit_links: ["https://linktr.ee/duetaudit"] ,
   listedAt: 1651486174
 },
+{
+  id: "1714",
+  name: "0x NODES",
+  address: "0xaaca86b876ca011844b5798eca7a67591a9743c8",
+  symbol: "BIOS",
+  url: "https://0xnodes.io/",
+  description: "0xNODES is a modularized cross chain yield aggregation protocol utilizing collateralized assets through synthetic swaps.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/0x-nodes.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "bios",
+  cmcId: "10139",
+  category: "Yield Aggregator",
+  chains: ["Ethereum", "Binance", "Polygon", "Fantom", "Avalanche"] ,
+  oracles: ["Coingecko"],
+  forkedFrom: [],
+  module: "0x_nodes/index.js",
+  twitter: "0x_nodes",
+  audit_links: ["https://github.com/0xNODES/_audits/tree/main/Halborn"],
+  listedAt: 1651514582
+},
 ] as Protocol[]

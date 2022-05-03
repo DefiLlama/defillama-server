@@ -836,6 +836,16 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 32520,
   },
+  "Reef": {
+    geckoId: "reef-finance",
+    symbol: "REEF",
+    cmcId: "6951",
+    categories: ["EVM", "Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -1023,6 +1033,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Hydra"
     case "bitgert":
       return "BitGert"
+    case "reef":
+      return "Reef"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

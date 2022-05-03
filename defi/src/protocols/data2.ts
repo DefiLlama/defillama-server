@@ -6786,7 +6786,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Algo-Stable",
+  category: "CDP",
   chains: ["Klaytn"],
   oracles: ["TWAP"],
   forkedFrom: [],

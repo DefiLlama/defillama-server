@@ -6795,4 +6795,25 @@ listedAt: 1650804679
   audit_links: ["https://drive.google.com/file/d/1juiAw53yiC2cyfvl3z8CSysxP1Aky_lJ/view?usp=sharing"] ,
   listedAt: 1651606811
 },
+{
+  id: "1721",
+  name: "KronosDAO",
+  address: "bsc:0xbeC68a941feCC79E57762e258fd1490F29235D75",
+  symbol: "KRONOS",
+  url: "https://kronosdao.ai/",
+  description: "Kronos DAO is the next evolution of the reserve currency protocol. Nodes, Kronoscharger, Kronospad, Swap, Farms and Pools.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/kronosdao.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Reserve Currency",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "kronosdao/index.js",
+  twitter: "dao_kronos",
+  listedAt: 1651609392
+},
 ] as Protocol[]

@@ -12,7 +12,7 @@ import {
 } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./utils/normalizeChain";
-import { importAdapter } from "./utils/imports/importAdapter";
+import { importAdapter } from "./utils/imports/importAdapterJSON";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (balances?.ethereum !== undefined) {

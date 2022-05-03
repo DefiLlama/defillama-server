@@ -7,3 +7,4 @@ docker
 .DS_Store
 .esbuild
 src/utils/imports/adapters.ts
+src/utils/imports/adapters.json

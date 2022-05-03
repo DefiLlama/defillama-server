@@ -1,7 +1,7 @@
 import { Protocol } from '../protocols/data';
 import { secondsInDay, secondsInWeek } from './date';
 import { getLastRecord, hourlyTvl } from './getLastRecord';
-import { importAdapter } from './imports/importAdapter';
+import { importAdapter } from './imports/importAdapterJSON';
 import { extraSections, getChainDisplayName, nonChains } from './normalizeChain';
 import getTVLOfRecordClosestToTimestamp from './shared/getRecordClosestToTimestamp';
 

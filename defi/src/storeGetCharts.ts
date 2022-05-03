@@ -7,7 +7,7 @@ import { wrapScheduledLambda } from './utils/shared/wrap';
 import { store } from './utils/s3';
 import { constants, brotliCompress } from 'zlib';
 import { promisify } from 'util';
-import { importAdapter } from './utils/imports/importAdapter';
+import { importAdapter } from './utils/imports/importAdapterJSON';
 
 function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {

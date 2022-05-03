@@ -6,7 +6,7 @@ import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSec
 import { IResponse, successResponse, wrap } from './utils/shared';
 import { craftProtocolsResponse } from './getProtocols';
 import { getProtocolTvl, ProtocolTvls } from './utils/getProtocolTvl';
-import { importAdapter } from './utils/imports/importAdapter';
+import { importAdapter } from './utils/imports/importAdapterJSON';
 
 function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {

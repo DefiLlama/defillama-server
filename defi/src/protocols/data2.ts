@@ -6758,7 +6758,7 @@ listedAt: 1650804679
   address: "astar:0x3BFcAE71e7d5ebC1e18313CeCEbCaD8239aA386c",
   symbol: "ibASTR",
   url: "https://www.adaotop.com/",
-  description: "Kokoa Finance is a cryptoasset-backed stablecoin platform, providing interest-free loans and low-risk savings products, native on Klaytn network.",
+  description: "A-DAO will be based on dApp staking of Astar Network. Users will get some of the developer rewards while participating and gaining basic rewards.",
   chain: "Astar",
   logo: `${baseIconsUrl}/adao.png`,
   audits: "0",

@@ -2891,7 +2891,7 @@ export default [
   url: "https://portalbridge.com",
   description: "A token bridge built on Wormhole.",
   chain: "Solana",
-  logo: `${baseIconsUrl}/wormhole.png`,
+  logo: `${baseIconsUrl}/portal.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

@@ -128,7 +128,7 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
     response.chainTvls[singleChain].tvl = response.tvl.filter((t:any)=>t.date < first).concat(singleChainTvls)
   }
   const dataLength = JSON.stringify(response).length
-  if(dataLength > 6e6){
+  if(dataLength >= 5.9e6){
     delete response.tokensInUsd;
     delete response.tokens;
     Object.keys(response.chainTvls).forEach(chain=>{

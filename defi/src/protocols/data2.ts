@@ -7067,7 +7067,7 @@ listedAt: 1650804679
   chains: ["SmartBCH"],
   oracles: [],
   forkedFrom: [],
-  module: "versedex/index.js",
+  module: "lns/index.js",
   twitter: "bchdomains",
   audit_links: ["https://github.com/bitcoin-portal/bitcoincom-solidity-swap/blob/trunk/audits/Bitcoin.com_final-audit-report.pdf"],
   language: 1651771580,

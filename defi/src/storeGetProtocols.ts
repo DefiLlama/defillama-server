@@ -39,9 +39,11 @@ const handler = async (_event: any) => {
   const protocolCategoriesSet = new Set();
   noChainResponse.forEach((p) => {
     protocolCategoriesSet.add(p.category);
-    p.chains.forEach((c: string) => {
-      chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
-    });
+    if (p.category !== "Bridge") {
+      p.chains.forEach((c: string) => {
+        chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
+      });
+    }
   });
 
   const compressedV2Response = compress(

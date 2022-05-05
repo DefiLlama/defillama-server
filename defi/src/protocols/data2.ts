@@ -7089,7 +7089,7 @@ listedAt: 1650804679
   chains: ["Binance"],
   oracles: "",
   forkedFrom: ["Goose Finance"],
-  module: "lns/index.js",
+  module: "ketchupfinance/index.js",
   twitter: "KetchupFinance",
   listedAt: 1651771785
 },

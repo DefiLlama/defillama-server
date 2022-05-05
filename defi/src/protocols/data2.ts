@@ -6943,4 +6943,25 @@ listedAt: 1650804679
   audit_links: ["https://drive.google.com/file/d/1R6fK9fzvH8Td2ow0jrwosD2pqHfANvPP/view?usp=sharing"], 
   listedAt: 1651695169
 },
+{
+  id: "1728",
+  name: "Astarnova",
+  address: "moonbeam:-",
+  symbol: "NOVA",
+  url: "https://astarnova.io",
+  description: "Astarnova is a DeFI protocol implementing a DEX, Farms and yield optimizers on Astar network",
+  chain: "NOVA",
+  logo: `${baseIconsUrl}/astarnova.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Astar"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "astarnova/index.js",
+  twitter: "Astarnovaio",
+  listedAt: 1651730840
+},
 ] as Protocol[]

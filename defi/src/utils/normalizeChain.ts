@@ -829,6 +829,7 @@ export const chainCoingeckoIds = {
     symbol: "HYDRA",
     cmcId: "8245",
   },
+  /*
   "BitGert": {
     geckoId: "bitrise-token",
     symbol: "BRISE",
@@ -846,6 +847,7 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
   },
+  */
 } as {
   [chain: string]: {
     geckoId: string | null,

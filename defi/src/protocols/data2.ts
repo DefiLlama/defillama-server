@@ -1,5 +1,6 @@
 import type {Protocol} from './types'
 import { baseIconsUrl } from "../constants";
+import { isNull } from 'util';
 /*
 {
   id: string;
@@ -7026,5 +7027,70 @@ listedAt: 1650804679
   module: "honkswap/index.js",
   twitter: "World_of_Honk",
   listedAt: 1651751901
+},
+{
+  id: "1732",
+  name: "Verse",
+  address: null,
+  symbol: "-",
+  url: "https://verse.bitcoin.com",
+  description: "Verse DEX by Bitcoin.com enables permissionless trading via your Web3 wallet. Currently this is only available on smartBCH, but more networks are coming soon and support for Ethereum will launch following completion of the Verse token sale. Sign up to get notified at getverse.com!",
+  chain: "SmartBCH",
+  logo: `${baseIconsUrl}/verse.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["SmartBCH"],
+  oracles: [],
+  forkedFrom: [],
+  module: "versedex/index.js",
+  twitter: "BitcoinCom",
+  audit_links: ["https://github.com/bitcoin-portal/bitcoincom-solidity-swap/blob/trunk/audits/Bitcoin.com_final-audit-report.pdf"],
+  listedAt: 1651771447
+},
+{
+  id: "1733",
+  name: "LNS",
+  address: "smartbch:0x35b3Ee79E1A7775cE0c11Bd8cd416630E07B0d6f",
+  symbol: "LNS",
+  url: "https://bch.domains",
+  description: "LNS is ENS on smartBCH. Learn more: http://bch.domains",
+  chain: "SmartBCH",
+  logo: `${baseIconsUrl}/lns.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["SmartBCH"],
+  oracles: [],
+  forkedFrom: [],
+  module: "versedex/index.js",
+  twitter: "bchdomains",
+  audit_links: ["https://github.com/bitcoin-portal/bitcoincom-solidity-swap/blob/trunk/audits/Bitcoin.com_final-audit-report.pdf"],
+  language: 1651771580,
+},
+{
+  id: "1734",
+  name: "Ketchup Finance",
+  address: "bsc:0x5D266f324Eb3DD753fF828fA45d80F09D7C75dff",
+  symbol: "KETCHUP",
+  url: "https://ketchup.finance",
+  description: "Yield Farm on BSC",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/ketchup-finance.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Binance"],
+  oracles: "",
+  forkedFrom: ["Goose Finance"],
+  module: "lns/index.js",
+  twitter: "KetchupFinance",
+  listedAt: 1651771785
 },
 ] as Protocol[]

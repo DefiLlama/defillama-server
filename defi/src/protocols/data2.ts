@@ -6950,7 +6950,7 @@ listedAt: 1650804679
   symbol: "NOVA",
   url: "https://astarnova.io",
   description: "Astarnova is a DeFI protocol implementing a DEX, Farms and yield optimizers on Astar network",
-  chain: "NOVA",
+  chain: "Astar",
   logo: `${baseIconsUrl}/astarnova.png`,
   audits: "0",
   audit_note: null,

@@ -3509,7 +3509,7 @@ export default [
   gecko_id: null,
   cmcId: null,
   category: "Cross Chain",
-  chains: ["Solana" , "Ethereum" , "Binance"],
+  chains: ["Solana" ],
   oracles: [],
   forkedFrom: [],
   module: "swim/index.js",

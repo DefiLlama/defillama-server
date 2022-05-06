@@ -5431,6 +5431,7 @@ export default ([
     chains: ["Fantom"],
     module: "tomb/index.js",
     twitter: "tombfinance",
+    oracles: ["DIA"]
   },
   {
     id: "377",

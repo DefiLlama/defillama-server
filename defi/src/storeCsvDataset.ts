@@ -4,7 +4,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 
 const handler = async (_event: any) => {
-  const csv = await craftCsvDataset(allProtocols, false);
+  const csv = await craftCsvDataset(allProtocols, false, true);
   await store('all.csv', csv);
 };
 

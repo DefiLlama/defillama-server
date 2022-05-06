@@ -7,6 +7,7 @@ import {
 } from "../utils/getLastRecord";
 import { formatTimestampAsDate, getClosestDayStartTimestamp } from "../utils/date";
 import { normalizeChain } from "../utils/normalizeChain";
+import {PassThrough} from "stream"
 
 function normalizeChainTotal(chain:string){
   return chain==='tvl'?'Total':chain
@@ -58,7 +59,7 @@ type Grid = {
   }
 };
 
-export default async function(protocols:Protocol[], vertical = false){
+export default async function(protocols:Protocol[], vertical = false, stream = false){
   const timeToColumn = {} as Grid;
   const grid = {} as Grid;
   if(vertical === true){
@@ -121,6 +122,12 @@ export default async function(protocols:Protocol[], vertical = false){
     }
     rows.push(row.join(','))
   }
-
-  return rows.join("\n")
+  if(stream){
+    const stream = new PassThrough()
+    rows.map(r=>stream.push(r+"\n"))
+    stream.end()
+    return stream
+  } else {
+    return rows.join("\n")
+  }
 };

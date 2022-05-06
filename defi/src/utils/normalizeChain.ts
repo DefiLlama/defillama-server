@@ -846,6 +846,13 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
   },
+  "Candle": {
+    geckoId: "candle",
+    symbol: "CNDL",
+    cmcId: "18327",
+    categories: ["EVM"],
+    chainId: 534,
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,

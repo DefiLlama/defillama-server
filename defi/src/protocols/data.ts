@@ -1945,7 +1945,7 @@ export default ([
     cmcId: "8613",
     category: "Synthetics",
     chains: ["Ethereum" , "Fantom"],
-    module: "alchemix.js",
+    module: "alchemix/index.js",
     twitter: "AlchemixFi",
     audit_links: ["https://alchemix.fi/a208baf6ca7e0d6b0116461f05e27cd9.pdf"],
     oracles: [],

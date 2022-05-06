@@ -5141,7 +5141,7 @@ export default ([
     description:
       "Decentralized Perpetual Contracts for Every Asset.",
     chain: "xDai",
-    logo: `${baseIconsUrl}/perpetual-protocol.jpg`,
+    logo: `${baseIconsUrl}/perpetual-protocol.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "perpetual-protocol",

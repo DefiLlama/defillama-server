@@ -7243,7 +7243,7 @@ listedAt: 1650804679
   category: "Lending",
   chains: ["Astar"],
   oracles: [],
-  forkedFrom: [],
+  forkedFrom: ["Balancer"],
   module: "starbank/index.js",
   twitter: "StarbankFinance", 
   audit_links: ["https://github.com/starbank-finance/starbank-contract/tree/main/audits"],

@@ -7398,4 +7398,25 @@ listedAt: 1650804679
   twitter: "MoneyMurica",
   listedAt: 1652026141
 },
+{
+  id: "1749",
+  name: "PandaLand",
+  address: "smartbch:0x288B6Ca2eFCF39C9B68052B0088A0cB3f3D3B5f2",
+  symbol: "PDA",
+  url: "https://pandaland.cash",
+  description: "Pandaland is a blockchain game interactive platform based on SmartBCH. It starts with games and will gradually expand to NFT exchanges, NFT staking, DEX, and more.",
+  chain: "smartBCH",
+  logo: `${baseIconsUrl}/pandaland.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Gaming",
+  chains: ["smartBCH"],
+  oracles: [],
+  forkedFrom: [],
+  module: "pandaland/index.js",
+  twitter: "PandaLandBCH",
+  listedAt: 1652043443
+},
 ] as Protocol[]

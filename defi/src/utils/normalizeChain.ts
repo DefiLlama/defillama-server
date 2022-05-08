@@ -853,6 +853,16 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 534,
   },
+  "Bifrost": {
+    geckoId: "bifrost-native-coin",
+    symbol: "BNC",
+    cmcId: "8705",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Kusama",
+      types: ["parachain"]
+    },
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -1044,6 +1054,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Reef"
     case "candle":
       return "Candle"
+    case "bifrost":
+      return "Bifrost"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

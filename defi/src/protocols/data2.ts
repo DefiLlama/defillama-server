@@ -7419,4 +7419,25 @@ listedAt: 1650804679
   twitter: "PandaLandBCH",
   listedAt: 1652043443
 },
+{
+  id: "1750",
+  name: "CryptoSwap",
+  address: "bsc:0xcC4b3EA1F25c8772D390dA1DB507832aBE4a9740",
+  symbol: "CST",
+  url: "https://cryptoswapdex.com",
+  description: "The hottest new AMM on BSC! Earn CST through yield farming, then stake it in Csyrup Pools to earn more tokens. Swap, stake, and earn",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/cryptoswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: ["Chainlink"],
+  forkedFrom: ["PancakeSwap"],
+  module: "cryptoswap/index.js",
+  twitter: "CryptoDevelopm3",
+  listedAt: 1652088099
+},
 ] as Protocol[]

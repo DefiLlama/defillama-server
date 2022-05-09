@@ -3,9 +3,9 @@ import { baseIconsUrl } from "../constants";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
 const fs = require("fs");
 
-const protocolsThatCantBeImported = ["Genshiro", "Shiden dApp Staking", "Astar dApps Staking"]
+const protocolsThatCantBeImported:string[] = []
 async function importProtocol(protocol:Protocol){
-  if(protocol.name.startsWith('Karura ') || protocolsThatCantBeImported.includes(protocol.name)){
+  if(protocolsThatCantBeImported.includes(protocol.name)){
     return {}
   } else {
     return import("@defillama/adapters/projects/"+protocol.module);

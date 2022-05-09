@@ -12,9 +12,7 @@ SentryTracing.addExtensionMethods();
 Sentry.AWSLambda.init({
   dsn:
     "https://d5738d8b071c404a9423cd670b66d227@o555782.ingest.sentry.io/5685887",
-  tracesSampler: (_samplingContext: SamplingContext) => {
-    return 0;
-  },
+  sampleRate: 0,
   environment: process.env.stage,
 });
 

@@ -5922,7 +5922,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Algo-Stables",
   chains: ["Astar"],
-  oracles: ["TWAP"],
+  oracles: ["DIA"],
   forkedFrom: [],
   module: "orcus/index.js",
   twitter: "Orcus_Finance",

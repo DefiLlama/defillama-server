@@ -2391,7 +2391,7 @@ export default [
   address: "-",
   symbol: "BSTN",
   url: "https://app.bastionprotocol.com/",
-  description: "Decentralized lending on Aurora",
+  description: "The Liquidity Foundation of Aurora. Stableswap and Lending.",
   chain: "Aurora",
   logo: `${baseIconsUrl}/bastion.svg`,
   audits: "0",

@@ -7466,7 +7466,7 @@ listedAt: 1650804679
   name: "Spool Protocol",
   address: "0x40803cea2b2a32bda1be61d3604af6a814e70976",
   symbol: "SPOOL",
-  url: "https://cryptoswapdex.com",
+  url: "https://www.spool.fi",
   description: "Spool Protocol serves as DeFi middleware, that allows users to participate in a subset of yield generating protocols in a risk diversified, automatically managed, and efficient fashion.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/spool-protocol.png`,

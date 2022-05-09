@@ -1,6 +1,5 @@
 import AWS from "aws-sdk";
 import protocols from "../protocols/data";
-import { ethers } from "ethers";
 const db = require("../../imported-db/defillama-db.json");
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import { getClosestDayStartTimestamp } from "../utils/date";
@@ -113,18 +112,4 @@ async function fillDailyGaps() {
         .promise();
     }
   }
-}
-
-async function updateProtocolTvl(protocolName: string) {
-  const provider = new ethers.providers.AlchemyProvider(
-    "mainnet",
-    process.env.ALCHEMY_API
-  );
-  const lastBlockNumber = await provider.getBlockNumber();
-  const protocol = protocols.find((p) => p.name === protocolName);
-  if (protocol === undefined) {
-    throw new Error("REEEEEE!");
-  }
-  const block = await provider.getBlock(lastBlockNumber - 10);
-  await storeTvl(block.timestamp, block.number, {}, protocol);
 }

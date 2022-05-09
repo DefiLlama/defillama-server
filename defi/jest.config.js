@@ -8,4 +8,7 @@ module.exports = {
   },
   preset: "jest-dynalite",
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!@polkadot|@babel/runtime/helpers/esm/)'
+  ]
 };

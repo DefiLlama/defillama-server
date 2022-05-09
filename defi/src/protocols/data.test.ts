@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const protocolsThatCantBeImported:string[] = []
 async function importProtocol(protocol:Protocol){
-  if(protocolsThatCantBeImported.includes(protocol.name)){
+  if(protocol.name.startsWith('Karura ') || protocolsThatCantBeImported.includes(protocol.name)){
     return {}
   } else {
     return import("@defillama/adapters/projects/"+protocol.module);

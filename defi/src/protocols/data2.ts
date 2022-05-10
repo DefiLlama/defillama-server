@@ -7535,4 +7535,25 @@ listedAt: 1650804679
   audit_links: ["https://github.com/catsluck/catsluck/blob/main/audit/Catsluck_final-audit-report.pdf"],
   listedAt: 1652206255
 },
+{
+  id: "1755",
+  name: "Spartacus Exchange",
+  address: "fantom:0x5602df4A94eB6C680190ACCFA2A475621E0ddBdc",
+  symbol: "SPA",
+  url: "https://app.spartacus.exchange",
+  description: "Spartacus Exchange is a decentralized exchange that is designed for everyone with low fees for both correlated and volatile assets.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/spartacus.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom"],
+  oracles: [],
+  forkedFrom: ["Solidly"],
+  module: "spartacus-exchange/index.js",
+  twitter: "Spartacus_Fi",
+  listedAt: 1652209030
+},
 ] as Protocol[]

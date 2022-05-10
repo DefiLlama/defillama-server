@@ -7513,4 +7513,26 @@ listedAt: 1650804679
   twitter: "olympus_fi",
   listedAt: 1652187035
 },
+{
+  id: "1754",
+  name: "CatsLuck",
+  address: "smartbch:0x659F04F36e90143fCaC202D4BC36C699C078fC98",
+  symbol: "CLK",
+  url: "https://catsluck.com",
+  description: "CatsLuck is a prediction market platform allowing everyone to bet on events, play the lottery and more.",
+  chain: "smartBCH",
+  logo: `${baseIconsUrl}/catsluck.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["smartBCH"],
+  oracles: [],
+  forkedFrom: [],
+  module: "catsluck/index.js",
+  twitter: "CashCatsBCH",
+  audit_links: ["https://github.com/catsluck/catsluck/blob/main/audit/Catsluck_final-audit-report.pdf"],
+  listedAt: 1652206255
+},
 ] as Protocol[]

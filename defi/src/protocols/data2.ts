@@ -7538,8 +7538,8 @@ listedAt: 1650804679
 {
   id: "1755",
   name: "Spartacus Exchange",
-  address: "fantom:0x5602df4A94eB6C680190ACCFA2A475621E0ddBdc",
-  symbol: "SPA",
+  address: null,
+  symbol: "-",
   url: "https://app.spartacus.exchange",
   description: "Spartacus Exchange is a decentralized exchange that is designed for everyone with low fees for both correlated and volatile assets.",
   chain: "Fantom",

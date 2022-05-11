@@ -23225,6 +23225,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Telos"],
   module: "omnidex/index.js",
   twitter: "OmniDex1",
+  oracles: ["DIA"],
   forkedFrom: ["Uniswap"],
   listedAt: 1642579561,
 },

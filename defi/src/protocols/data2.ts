@@ -3349,7 +3349,7 @@ export default [
   description: "a Hyper Deflationary Token and AMM styled Dex running on BNB Chain",
   chain: "Binance",
   logo: `${baseIconsUrl}/pankuku.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -3359,6 +3359,7 @@ export default [
   forkedFrom: ["Uniswap"],
   module: "pankuku/index.js",
   twitter: "pankukuofficial",
+  audit_links: ["https://pankuku.gitbook.io/kuku_wiki/knowledge-center/security/audits/contract-audits"],
   listedAt: 1647666879,
 },
 {

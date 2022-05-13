@@ -7662,4 +7662,29 @@ listedAt: 1650804679
   twitter: "COTInetwork",
   listedAt: 1652356625
 },
+{
+  id: "1761",
+  name: "OliveDAO",
+  address: null,
+  symbol: "-",
+  url: "https://olivedao.finance",
+  description: "First Lossless Liquidity Mining Protocol on Polygon, become an LP with no impermanence loss and earn rewards to direct liquidity across protocols as a liquidity director.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/olivedao.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Polygon"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "olivedao/index.js",
+  twitter: "Olive_DAO",
+  audit_links: [
+                  "https://omniscia.io/olive-liquidity-protocol",
+                  "https://docs.olivedao.finance/technical-overview/audits/peckshield-audit-report",
+                ],
+  listedAt: 1652439344
+},
 ] as Protocol[]

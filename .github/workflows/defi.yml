@@ -66,6 +66,7 @@ jobs:
         MOONRIVER_RPC: ${{ secrets.MOONRIVER_RPC }}
         CRONOS_RPC: ${{ secrets.CRONOS_RPC }}
         OUTDATED_WEBHOOK: ${{ secrets.OUTDATED_WEBHOOK }}
+        HOURLY_OUTDATED_WEBHOOK: ${{ secrets.HOURLY_OUTDATED_WEBHOOK }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         SPIKE_WEBHOOK: ${{ secrets.SPIKE_WEBHOOK }}

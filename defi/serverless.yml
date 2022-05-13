@@ -67,6 +67,7 @@ provider:
     CRONOS_RPC: ${file(./env.js):CRONOS_RPC}
     KLAYTN_RPC: "https://public-node-api.klaytnapi.com/v1/cypress"
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
+    HOURLY_OUTDATED_WEBHOOK:  ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
     DROPS_WEBHOOK: ${file(./env.js):DROPS_WEBHOOK}

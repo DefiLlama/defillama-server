@@ -1,4 +1,4 @@
-import findOutdated, { getOutdated } from './utils/findOutdated'
+import findOutdated, { buildOutdatedMessage, getOutdated } from './utils/findOutdated'
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import {sendMessage} from "./utils/discord"
 
@@ -7,8 +7,9 @@ const llamaRole = "<@&849669546448388107>"
 
 const handler = async (_event: any) => {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
-  const outdated = await getOutdated(3600); // 1hr
-  await sendMessage(`${outdated.length} adapters haven't updated their data in the last hour`, webhookUrl, false)
+  const hourlyOutdated = await getOutdated(3600); // 1hr
+  await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last hour`, webhookUrl, false)
+  await sendMessage(buildOutdatedMessage(hourlyOutdated) ?? "No protocols are outdated", process.env.HOURLY_OUTDATED_WEBHOOK!)
   const message = await findOutdated(maxDrift)
   if (message !== null) {
     if(message.length >= 8000){

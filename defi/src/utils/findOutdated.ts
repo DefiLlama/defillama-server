@@ -62,9 +62,8 @@ export async function getOutdated(maxDrift: number){
   return outdated
 }
 
-export default async function findOutdated(maxDrift: number) {
+export function buildOutdatedMessage(outdated: [string, InfoProtocol, boolean][]){
   const now = toUNIXTimestamp(Date.now());
-  const outdated = await getOutdated(maxDrift);
   if (outdated.length === 0) {
     return null
   }
@@ -74,4 +73,9 @@ ${printOutdated(outdated.filter(p => p[2]), maxLengthProtocolName, now)}
 
 CAN'T BE REFILLED (needs fixing asap)
 ${printOutdated(outdated.filter(p => !p[2]), maxLengthProtocolName, now)}`
+}
+
+export default async function findOutdated(maxDrift: number) {
+  const outdated = await getOutdated(maxDrift);
+  return buildOutdatedMessage(outdated)
 }

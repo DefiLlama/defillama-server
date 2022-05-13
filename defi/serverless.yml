@@ -64,6 +64,7 @@ provider:
     XDAI_RPC: ${file(./env.js):XDAI_RPC}
     HARMONY_RPC: ${file(./env.js):HARMONY_RPC}
     MOONRIVER_RPC: ${file(./env.js):MOONRIVER_RPC}
+    CRONOS_RPC: ${file(./env.js):CRONOS_RPC}
     KLAYTN_RPC: "https://public-node-api.klaytnapi.com/v1/cypress"
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}

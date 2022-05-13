@@ -7637,7 +7637,7 @@ listedAt: 1650804679
   chains: ["Evmos"],
   oracles: [],
   forkedFrom: ["Uniswap"],
-  module: "spaceswap/index.js",
+  module: "spacefi/index.js",
   twitter: "spacefi_io",
   listedAt: 1652356517
 },

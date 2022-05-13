@@ -9,7 +9,7 @@ const handler = async (_event: any) => {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
   const outdated = await getOutdated(3600); // 1hr
   if(outdated.length > 100){
-    await sendMessage(`${llamaRole} more than 100 adapters haven't updated their data in the last hour`, webhookUrl, false)
+    await sendMessage(`${llamaRole} ${outdated.length} adapters haven't updated their data in the last hour`, webhookUrl, false)
   }
   const message = await findOutdated(maxDrift)
   if (message !== null) {

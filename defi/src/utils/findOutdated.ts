@@ -39,7 +39,7 @@ function printOutdated(outdated: [string, InfoProtocol, boolean][], maxLengthPro
   }).join('\n')
 }
 
-export default async function findOutdated(maxDrift: number) {
+export async function getOutdated(maxDrift: number){
   const now = toUNIXTimestamp(Date.now());
   const outdated = [] as [string, InfoProtocol, boolean][];
   await Promise.all(protocols.map(async protocol => {
@@ -59,6 +59,12 @@ export default async function findOutdated(maxDrift: number) {
     const refillable = !(module.fetch || module.timetravel === false)
     outdated.push([protocol.name, text, refillable])
   }))
+  return outdated
+}
+
+export default async function findOutdated(maxDrift: number) {
+  const now = toUNIXTimestamp(Date.now());
+  const outdated = await getOutdated(maxDrift);
   if (outdated.length === 0) {
     return null
   }

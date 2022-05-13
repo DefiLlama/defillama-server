@@ -40,7 +40,7 @@ jobs:
       env:
         ETHEREUM_RPC: ETHEREUM_RPC
   deploy:
-    needs: changes
+    needs: test
     if: ${{ needs.changes.outputs.defi == 'true' }}
     runs-on: ubuntu-latest
     steps:

@@ -972,6 +972,7 @@ export default ([
     chains: ["Ethereum"],
     module: "cofix.js",
     twitter: "CoFiXProtocol",
+    oracles: ["Nest"],
     audit_links: ["https://github.com/Computable-Finance/CoFiX/tree/master/security_audit"],
   },
   {
@@ -25302,7 +25303,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: "9660",
   category: "CDP",
   chains: ["Ethereum"],
-  oracles: [],
+  oracles: ["Nest"],
   module: "parasset/index.js",
   twitter: "Parasset2021",
   language: "Solidity",

@@ -112,7 +112,7 @@ async function getTvl(
         let writeClient = influxClient.getWriteApi(org, bucket, 'ns')
 
         let point = new Point('protocolError')
-          .tag('protocol', 'protocol.name')
+          .tag('protocol', protocol.name)
           .stringField("error", String(e))
 
         writeClient.writePoint(point)

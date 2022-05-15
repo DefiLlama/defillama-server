@@ -7643,7 +7643,7 @@ listedAt: 1650804679
 },
 {
   id: "1760",
-  name: "cotiTreasury",
+  name: " COTI Treasury",
   address: null,
   symbol: "-",
   url: "https://treasury-app.coti.io",

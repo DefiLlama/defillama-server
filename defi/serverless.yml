@@ -70,6 +70,7 @@ provider:
     HOURLY_OUTDATED_WEBHOOK:  ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
+    INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
     DROPS_WEBHOOK: ${file(./env.js):DROPS_WEBHOOK}
     EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}

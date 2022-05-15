@@ -20,4 +20,5 @@ module.exports = {
     EULER_MONGODB_APIKEY: process.env.EULER_MONGODB_APIKEY,
     FATHOM_SECRET: process.env.FATHOM_SECRET,
     DAILY_GROWTH_WEBHOOK: process.env.DAILY_GROWTH_WEBHOOK,
+    INFLUXDB_TOKEN: process.env.INFLUXDB_TOKEN,
 }

@@ -15,6 +15,12 @@ import {
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
+import {InfluxDB, Point} from '@influxdata/influxdb-client'
+
+const token = process.env.INFLUXDB_TOKEN
+const url = 'https://eu-central-1-1.aws.cloud2.influxdata.com'
+
+const influxClient = new InfluxDB({url, token})
 
 type ChainBlocks = {
   [chain: string]: number;
@@ -101,7 +107,16 @@ async function getTvl(
       if (i >= maxRetries - 1) {
         throw e
       } else {
-        console.error(protocol.name, e);
+        let org = `0xngmi+influxdb@protonmail.com`
+        let bucket = `test-errors`
+        let writeClient = influxClient.getWriteApi(org, bucket, 'ns')
+
+        let point = new Point('protocolError')
+          .tag('protocol', 'protocol.name')
+          .stringField("error", String(e))
+
+        writeClient.writePoint(point)
+        writeClient.flush()
         continue;
       }
     }

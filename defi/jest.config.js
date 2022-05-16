@@ -10,5 +10,11 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'json', 'node'],
   transformIgnorePatterns: [
     '/node_modules/(?!@polkadot|@babel/runtime/helpers/esm/)'
-  ]
+  ],
+  globals: {
+    "ts-jest": {
+      isolatedModules: true,
+      // diagnostics: false,
+    }
+  }
 };

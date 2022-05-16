@@ -7729,4 +7729,25 @@ listedAt: 1650804679
   twitter: "know83046157",
   listedAt: 1652695610
 },
+{
+  id: "1764",
+  name: "AmesDefi",
+  address: "bsc:0xb9e05b4c168b56f73940980ae6ef366354357009",
+  symbol: "AMES",
+  url: "https://www.ames-defi.app",
+  description: "BUSD pegged algorithmic stablecoin ecosystem running on BNB Chain.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/amesdefi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "amethyst",
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Binance"],
+  oracles: ["TWAP"],
+  forkedFrom: ["Tomb Finance"],
+  module: "amesdefi/index.js",
+  twitter: "ames_defi",
+  listedAt: 1652732749
+},
 ] as Protocol[]

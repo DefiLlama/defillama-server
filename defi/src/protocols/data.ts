@@ -14417,7 +14417,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "nest",
   cmcId: "5841",
-  category: "Yield",
+  category: "Oracle",
   chains: ["Ethereum"],
   module: "nest/index.js",
   twitter: "nest_protocol",

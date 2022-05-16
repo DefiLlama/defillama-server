@@ -6129,7 +6129,7 @@ export default ([
     cmcId: "4157",
     category: "Dexes",
     chains: ["Thorchain"],
-    module: "thorchain.js",
+    module: "thorchain/index.js",
     twitter: "THORChain",
     audit_links: ["https://www.certik.org/projects/thorchain"],
   },

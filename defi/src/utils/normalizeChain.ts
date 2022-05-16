@@ -885,6 +885,21 @@ export const chainCoingeckoIds = {
     symbol: "COTI",
     cmcId: "3992",
   },
+  "Bitcoincash": {
+    geckoId: "bitcoin-cash",
+    symbol: "BCH",
+    cmcId: "1831",
+  },
+  "Litecoin": {
+    geckoId: "coti",
+    symbol: "LTC",
+    cmcId: "2",
+  },
+  "Doge": {
+    geckoId: "coti",
+    symbol: "DOGE",
+    cmcId: "74",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -1084,6 +1099,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LAChain"
     case "coti":
       return "Coti"
+    case "bitcoincash":
+      return "Bitcoincash"
+    case "litcoin":
+      return "Litecoin"
+    case "doge":
+      return "Doge"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

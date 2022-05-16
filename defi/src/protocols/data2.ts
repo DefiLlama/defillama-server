@@ -7708,4 +7708,25 @@ listedAt: 1650804679
   twitter: "finance_elf",
   listedAt: 1652620717
 },
+{
+  id: "1763",
+  name: "Know-To-Earn",
+  address: "iotex:0x515343ed04b054d098a0c15cbd7f98b0250d0b38",
+  symbol: "KNOW",
+  url: "https://www.knowtoearn.io",
+  description: "The world's largest decentralized blockchain knowledge base, Blockchain Knowledge Academy",
+  chain: "IoTeX",
+  logo: `${baseIconsUrl}/know-to-earn.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["IoTeX"],
+  oracles: [],
+  forkedFrom: [],
+  module: "know-to-earn.js",
+  twitter: "know83046157",
+  listedAt: 1652695610
+},
 ] as Protocol[]

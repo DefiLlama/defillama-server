@@ -12906,7 +12906,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Yield",
   chains: ["Ethereum"],
-  module: "brahmafi-aastra/index.js",
+  module: "brahmafi/index.js",
   twitter: "BrahmaFi",
   oracles: ["Coingecko"],
   listedAt: 1635963794,

@@ -7646,7 +7646,7 @@ listedAt: 1650804679
   name: "COTI Treasury",
   address: null,
   symbol: "-",
-  url: "https://treasury-app.coti.io",
+  url: "https://treasury.coti.io",
   description: "COTI's Treasury is an algorithmic and decentralized pool of $COTI where users can deposit $COTI and be rewarded for their participation.",
   chain: "Coti",
   logo: `${baseIconsUrl}/coti-treasury.png`,

@@ -128,15 +128,20 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
     const first = singleChainTvls[0].date;
     response.chainTvls[singleChain].tvl = response.tvl.filter((t:any)=>t.date < first).concat(singleChainTvls)
   }
+
+  return response
+}
+
+export async function wrapResponseOrRedirect(response: any){
   const jsonData = JSON.stringify(response)
   const dataLength = jsonData.length
   if(dataLength >= 5.8e6){
-    const filename = `protocol-${protocolName}.json`;
+    const filename = `protocol-${response.name}.json`;
     await storeDataset(filename, jsonData, "application/json")
 
     return buildRedirect(filename);
   } else {
-    return response
+    return successResponse(response, 10 * 60); // 10 mins cache
   }
 }
 
@@ -144,7 +149,8 @@ const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const response = await craftProtocolResponse(event.pathParameters?.protocol, false, false)
-  return successResponse(response, 10 * 60); // 10 mins cache
+
+  return wrapResponseOrRedirect(response);
 };
 
 export default wrap(handler);

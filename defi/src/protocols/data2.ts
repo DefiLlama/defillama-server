@@ -7750,4 +7750,26 @@ listedAt: 1650804679
   twitter: "ames_defi",
   listedAt: 1652732749
 },
+{
+  id: "1765",
+  name: "UniCrypt",
+  address: "0xadb2437e6f65682b85f814fbc12fec0508a7b1d0",
+  symbol: "UNCX",
+  url: "https://unicrypt.network",
+  description: "Unicrypt is a one-stop shop with everything you need to launch and maintain a sustainable and secure protocol. Generate and secure the initial liquidity, lock your tokens with vesting lockers and create farms with customisable rewards.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/unicrypt.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "unicrypt-2",
+  cmcId: "7664",
+  category: "Services",
+  chains: ["Ethereum", "Polygon", "Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "unicrypt/index.js",
+  twitter: "UNCX_token",
+  audit_links: ["https://github.com/chainsulting/Smart-Contract-Security-Audits/tree/master/Unicrypt", "https://www.certik.com/projects/unicrypt"],
+  listedAt: 1652762212
+},
 ] as Protocol[]

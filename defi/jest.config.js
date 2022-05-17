@@ -11,6 +11,10 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/(?!@polkadot|@babel/runtime/helpers/esm/)'
   ],
+  detectOpenHandles: true,
+  forceExit: true,
+  cacheDirectory: '.jest-cache',
+  testEnvironment: "node",
   globals: {
     "ts-jest": {
       isolatedModules: true,

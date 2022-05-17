@@ -9,7 +9,7 @@
     "deploy": "npm run deploy:dev",
     "format": "prettier --write \"src/**/*.ts\"",
     "serve": "node --max-old-space-size=8192 node_modules/serverless/bin/serverless offline start",
-    "test": "jest --detectOpenHandles --forceExit",
+    "test": "jest",
     "test:watch": "jest --watch",
     "postinstall": "cp patches/chainweb.js node_modules/chainweb/src/chainweb.js",
     "prebuild": "npx ts-node src/cli/buildRequires.ts",

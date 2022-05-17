@@ -17529,7 +17529,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Community-driven Avalanche ecosystem accelerator",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/colony.svg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "colony",
     cmcId: "12785",
@@ -17538,6 +17538,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "colony/index.js",
     twitter: "Colonylab",
     listedAt: 1639173502,
+    audit_links: ['https://omniscia.io/colony-lab-staking-v2/manual-review'],
   },
   {
     id: "1005",

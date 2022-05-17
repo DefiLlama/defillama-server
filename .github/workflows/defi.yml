@@ -38,15 +38,11 @@ jobs:
       with:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
     - name: Get jest cache
       uses: actions/cache@v3
       with:
         path: .jest-cache
-        key: ${{ runner.os }}-jest-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-jest-
+        key: ${{ runner.os }}-jest
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Run tests

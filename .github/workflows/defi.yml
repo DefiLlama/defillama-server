@@ -33,6 +33,20 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14'
+    - name: Get npm cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Get jest cache
+      uses: actions/cache@v3
+      with:
+        path: .jest-cache
+        key: ${{ runner.os }}-jest-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-jest-
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Run tests
@@ -50,6 +64,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14'
+    - name: Get npm cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Deploy infrastructure stack

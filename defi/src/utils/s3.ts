@@ -26,13 +26,23 @@ export async function store(filename: string, body: string | Readable | Buffer, 
   }).promise()
 }
 
-export async function storeDataset(filename: string, body: string) {
+export async function storeDataset(filename: string, body: string | Readable, contentType = "text/csv") {
   await new aws.S3().upload({
     Bucket: datasetBucket,
     Key: `temp/${filename}`,
     Body: body,
     ACL: "public-read",
-    ContentType: "text/csv"
+    ContentType: contentType
   }).promise()
+}
+
+export function buildRedirect(filename:string){
+  return {
+    statusCode: 307,
+    body: "",
+    headers: {
+      "Location": `https://defillama-datasets.s3.eu-central-1.amazonaws.com/temp/${filename}`,
+    },
+  }
 }
 

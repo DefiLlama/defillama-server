@@ -13,6 +13,7 @@ import {
 import sluggify from "./utils/sluggify";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./utils/normalizeChain";
 import { importAdapter } from "./utils/imports/importAdapter";
+import { storeDataset, buildRedirect } from "./utils/s3";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (balances?.ethereum !== undefined) {
@@ -127,17 +128,16 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
     const first = singleChainTvls[0].date;
     response.chainTvls[singleChain].tvl = response.tvl.filter((t:any)=>t.date < first).concat(singleChainTvls)
   }
-  const dataLength = JSON.stringify(response).length
-  if(dataLength >= 5.9e6){
-    delete response.tokensInUsd;
-    delete response.tokens;
-    Object.keys(response.chainTvls).forEach(chain=>{
-      delete response.chainTvls[chain].tokensInUsd;
-      delete response.chainTvls[chain].tokens;
-    })
-  }
+  const jsonData = JSON.stringify(response)
+  const dataLength = jsonData.length
+  if(dataLength >= 5.8e6){
+    const filename = `protocol-${protocolName}.json`;
+    await storeDataset(filename, jsonData, "application/json")
 
-  return response
+    return buildRedirect(filename);
+  } else {
+    return response
+  }
 }
 
 const handler = async (

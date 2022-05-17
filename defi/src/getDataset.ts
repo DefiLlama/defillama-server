@@ -2,7 +2,7 @@ import { wrap, IResponse, errorResponse } from "./utils/shared";
 import allProtocols from "./protocols/data";
 import sluggify from "./utils/sluggify";
 import craftCsvDataset from './storeTvlUtils/craftCsvDataset'
-import { storeDataset } from "./utils/s3";
+import { storeDataset, buildRedirect } from "./utils/s3";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -25,14 +25,7 @@ const handler = async (
   const filename = `${protocolName}.csv`
   await storeDataset(filename, csv)
 
-  const response: IResponse = {
-    statusCode: 307,
-    body: "",
-    headers: {
-      "Location": `https://defillama-datasets.s3.eu-central-1.amazonaws.com/temp/${filename}`,
-    },
-  };
-  return response;
+  return buildRedirect(filename);
 };
 
 export default wrap(handler);

@@ -13,6 +13,8 @@ module.exports = {
   ],
   detectOpenHandles: true,
   forceExit: true,
+  maxWorkers: 1,
+  ci: false,
   cacheDirectory: '.jest-cache',
   testEnvironment: "node",
   globals: {

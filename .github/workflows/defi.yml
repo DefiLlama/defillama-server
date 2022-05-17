@@ -33,6 +33,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14'
+    - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
     - name: Get npm cache
       uses: actions/cache@v3
       with:
@@ -42,7 +43,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: .jest-cache
-        key: ${{ runner.os }}-jest
+        key: ${{ runner.os }}-jest-${{ env.TODAY }}
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Run tests
@@ -65,8 +66,6 @@ jobs:
       with:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Deploy infrastructure stack

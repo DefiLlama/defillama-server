@@ -7772,4 +7772,25 @@ listedAt: 1650804679
   audit_links: ["https://github.com/chainsulting/Smart-Contract-Security-Audits/tree/master/Unicrypt", "https://www.certik.com/projects/unicrypt"],
   listedAt: 1652762212
 },
+{
+  id: "1766",
+  name: "Koyo Finance",
+  address: null,
+  symbol: "-",
+  url: "https://koyo.finance",
+  description: "Protocol running on Boba Network, inspired by Curve Finance",
+  chain: "Boba",
+  logo: `${baseIconsUrl}/koyo-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Boba"],
+  oracles: [],
+  forkedFrom: ["Curve"],
+  module: "koyo/index.js",
+  twitter: "KoyoFinance",
+  listedAt: 1652809510
+},
 ] as Protocol[]

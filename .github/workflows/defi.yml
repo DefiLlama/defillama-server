@@ -71,7 +71,8 @@ jobs:
       uses: actions/cache@v3
       with:
         path: .serverless
-        key: ${{ runner.os }}-serverless1-${{ env.TODAY }}
+        key: ${{ runner.os }}-serverless-${{ env.TODAY }}
+    - run: ls -la .serverless
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Deploy infrastructure stack
@@ -99,3 +100,5 @@ jobs:
         FATHOM_SECRET: ${{ secrets.FATHOM_SECRET }}
         DAILY_GROWTH_WEBHOOK: ${{ secrets.DAILY_GROWTH_WEBHOOK }}
     - run: ls -la
+    - run: ls -la .serverless
+    - run: pwd

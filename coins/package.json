@@ -35,8 +35,8 @@
   "dependencies": {
     "@defillama/sdk": "^2.3.34",
     "@ethersproject/bignumber": "^5.5.0",
-    "@sentry/serverless": "6.2.3",
-    "@sentry/tracing": "6.2.3",
+    "@sentry/serverless": "^6.19.7",
+    "@sentry/tracing": "^6.19.7",
     "@supercharge/promise-pool": "^2.1.0",
     "dotenv": "^8.6.0",
     "ethers": "^5.4.6",

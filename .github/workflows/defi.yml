@@ -42,14 +42,22 @@ jobs:
     - name: Get jest cache
       uses: actions/cache@v3
       with:
-        path: .jest-cache
+        path: /tmp/jest-cache
         key: ${{ runner.os }}-jest-${{ env.TODAY }}
+    - name: Get serverless cache
+      uses: actions/cache@v3
+      with:
+        path: .serverless
+        key: ${{ runner.os }}-serverless-${{ env.TODAY }}
     - run: npm ci
+    - run: ./node_modules/jest/bin/jest.js --config=jest.config.js --show-config
+    - run: ls -la
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Run tests
       run: npm t data
       env:
         ETHEREUM_RPC: ETHEREUM_RPC
+    - run: ls -la /tmp/jest-cache
   deploy:
     needs: test
     if: ${{ needs.changes.outputs.defi == 'true' }}

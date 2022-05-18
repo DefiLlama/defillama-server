@@ -1,1 +1,4 @@
-../defi/.gitignore
+node_modules
+.env
+.serverless
+.esbuild

@@ -70,11 +70,10 @@ provider:
 
 custom:
   stage: ${opt:stage, self:provider.stage}
-  webpack:
-    webpackConfig: ./webpack.config.js
-    includeModules: true
-    packager: 'npm'
-    excludeFiles: src/**/*.test.ts
+  esbuild:
+    bundle: true
+    minify: false
+    concurrency: 4
   prune:
     automatic: true
     number: 5 # Number of versions to keep
@@ -105,6 +104,13 @@ functions:
     events:
       - http:
           path: prices
+          method: post
+  coinPrices:
+    handler: src/getCoinPrices.default
+    timeout: 60
+    events:
+      - http:
+          path: coin/timestamps
           method: post
   block:
     handler: src/getBlock.default
@@ -143,6 +149,6 @@ resources:
   - ${file(resources/api-cloudfront-distribution.yml)}
 
 plugins:
-  - serverless-webpack
+  - serverless-esbuild
   - serverless-offline
   - serverless-prune-plugin

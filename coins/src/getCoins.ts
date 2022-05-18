@@ -2,19 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import ddb, { batchGet } from "./utils/shared/dynamodb";
 import parseRequestBody from "./utils/shared/parseRequestBody";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
-
-function cutStartWord(text: string, startWord: string) {
-  return text.slice(startWord.length)
-}
-
-function lowercaseAddress(coin:string){
-  if(coin.startsWith("solana:")){
-    return coin
-  }
-  return coin.toLowerCase()
-}
-
-const DAY = 3600*24;
+import { coinToPK, DAY, PKToCoin } from "./utils/processCoin";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -23,7 +11,7 @@ const handler = async (
   const requestedCoins = body.coins;
   const timestampRequested = body.timestamp
   const coins = await batchGet(requestedCoins.map((coin: string) => ({
-    PK: coin.startsWith("coingecko:") ? `coingecko#${cutStartWord(coin, "coingecko:")}` : `asset#${lowercaseAddress(coin)}`,
+    PK: coinToPK(coin),
     SK: 0,
   })));
   const response = {} as {
@@ -35,9 +23,7 @@ const handler = async (
     }
   }
   await Promise.all(coins.map(async coin => {
-    const coinName = coin.PK.startsWith("asset#") ?
-      cutStartWord(coin.PK, "asset#") :
-      `coingecko:${cutStartWord(coin.PK, "coingecko#")}`;
+    const coinName = PKToCoin(coin.PK);
     const formattedCoin = {
       decimals: coin.decimals,
       price: coin.price,

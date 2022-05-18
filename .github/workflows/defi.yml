@@ -69,9 +69,9 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
     - name: Get serverless cache
       uses: actions/cache@v3
-      with:
+      with: # for some reason, caching does not work with relative path
         path: /home/runner/work/defillama-server/defillama-server/defi/.serverless
-        key: ${{ runner.os }}-serverless1-${{ env.TODAY }}
+        key: ${{ runner.os }}-serverless-${{ env.TODAY }}
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Deploy infrastructure stack
@@ -98,6 +98,3 @@ jobs:
         INFLUXDB_TOKEN: ${{ secrets.INFLUXDB_TOKEN }}
         FATHOM_SECRET: ${{ secrets.FATHOM_SECRET }}
         DAILY_GROWTH_WEBHOOK: ${{ secrets.DAILY_GROWTH_WEBHOOK }}
-    - run: ls -la
-    - run: ls -la .serverless
-    - run: pwd

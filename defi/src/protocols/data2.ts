@@ -7793,4 +7793,25 @@ listedAt: 1650804679
   twitter: "KoyoFinance",
   listedAt: 1652809510
 },
+{
+  id: "1767",
+  name: "xWeowns",
+  address: "lachain:0xaBA0Bb586335B938a7a817A900017D891268d32c",
+  symbol: "XWEOWNS",
+  url: "https://xweowns.com",
+  description: "WEOWNS is a digital currency for all humanity. It’s designed to benefit African nations and the world as a whole. The WEOWN system includes Weownomy, an alternative social media platform that will give stakeholders full control over their content and their own space on the internet. WEOWNS is Africa’s first truly viable answer to Bitcoin or other cryptocurrencies like Ethereum.",
+  chain: "LAChain",
+  logo: `${baseIconsUrl}/xweowns.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["LAChain"],
+  oracles: [],
+  forkedFrom: [],
+  module: "xWeowns/index.js",
+  twitter: "Weownomy1",
+  listedAt: 1652843301
+},
 ] as Protocol[]

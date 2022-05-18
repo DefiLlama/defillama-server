@@ -44,11 +44,6 @@ jobs:
       with:
         path: /tmp/jest-cache
         key: ${{ runner.os }}-jest-${{ env.TODAY }}
-    - name: Get serverless cache
-      uses: actions/cache@v3
-      with:
-        path: .serverless
-        key: ${{ runner.os }}-serverless-${{ env.TODAY }}
     - run: npm ci
     - run: ./node_modules/jest/bin/jest.js --config=jest.config.js --show-config
     - run: ls -la
@@ -69,11 +64,17 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14'
+    - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
     - name: Get npm cache
       uses: actions/cache@v3
       with:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    - name: Get serverless cache
+      uses: actions/cache@v3
+      with:
+        path: .serverless
+        key: ${{ runner.os }}-serverless-${{ env.TODAY }}
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Deploy infrastructure stack

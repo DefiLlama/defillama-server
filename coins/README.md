@@ -7,7 +7,7 @@ aws configure
 
 ## Development
 ```bash
-npm run build # Build with webpack & check for type errors
+npm run build # Build with esbuild & check for type errors
 npm test # Run tests
 npm run format # Format code
 ```

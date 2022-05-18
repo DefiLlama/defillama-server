@@ -15,7 +15,7 @@ module.exports = {
   forceExit: true,
   maxWorkers: 1,
   ci: false,
-  cacheDirectory: '.jest-cache',
+  cacheDirectory: '/tmp/jest-cache',
   testEnvironment: "node",
   globals: {
     "ts-jest": {

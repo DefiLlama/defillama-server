@@ -70,9 +70,8 @@ jobs:
     - name: Get serverless cache
       uses: actions/cache@v3
       with:
-        path: .serverless
-        key: ${{ runner.os }}-serverless-${{ env.TODAY }}
-    - run: ls -la .serverless
+        path: /home/runner/work/defillama-server/defillama-server/defi/.serverless
+        key: ${{ runner.os }}-serverless1-${{ env.TODAY }}
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Deploy infrastructure stack

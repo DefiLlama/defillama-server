@@ -34,11 +34,6 @@ jobs:
       with:
         node-version: '14'
     - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
-    - name: Get npm cache
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
     - name: Get jest cache
       uses: actions/cache@v3
       with:
@@ -61,17 +56,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14'
-    - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
-    - name: Get npm cache
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    - name: Get serverless cache
-      uses: actions/cache@v3
-      with: # for some reason, caching does not work with relative path
-        path: /home/runner/work/defillama-server/defillama-server/defi/.serverless
-        key: ${{ runner.os }}-serverless-${{ env.TODAY }}
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Deploy infrastructure stack

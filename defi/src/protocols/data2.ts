@@ -7870,7 +7870,7 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "Liquid Staking",
-  chains: ["Ethereum", "Polygon"],
+  chains: ["Ethereum"],
   oracles: [],
   forkedFrom: [],
   module: "claystack/index.js",

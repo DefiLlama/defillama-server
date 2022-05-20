@@ -7562,7 +7562,7 @@ listedAt: 1650804679
   name: "Dystopia",
   address: "polygon:0x39aB6574c289c3Ae4d88500eEc792AB5B947A5Eb",
   symbol: "DYST",
-  url: null,
+  url: "https://www.dystopia.exchange",
   description: "A reimagined, community-oriented ve(3,3) dex on Polygon",
   chain: "Polygon",
   logo: `${baseIconsUrl}/dystopia.png`,

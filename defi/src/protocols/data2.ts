@@ -5862,7 +5862,7 @@ export default [
   description: "Timeswap is the first fully permissionless, oracle-less, non-liquidatable, fixed maturity lending & borrowing protocol.",
   chain: "Polygon",
   logo: `${baseIconsUrl}/timeswap.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -5872,6 +5872,7 @@ export default [
   forkedFrom: [],
   module: "timeswap/index.js",
   twitter: "TimeswapLabs",
+  audit_links: ['https://code4rena.com/reports/2022-03-timeswap/'],
   listedAt: 1650665129
 },
 {

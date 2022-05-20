@@ -7964,4 +7964,26 @@ listedAt: 1650804679
   audit_links: ["https://audit.solidgrp.io/audits/BlitzLabs", "https://solidity.finance/audits/BlitzToken/"],
   listedAt: 1652990124
 },
+{
+  id: "1775",
+  name: "EcoDeFi",
+  address: "bsc:0x0985205D53D575CB07Dd4Fba216034dc614eab55",
+  symbol: "ESG",
+  url: "https://ecodefi.net",
+  description: "The ESG Protocol is an Binance smart contract for supplying or borrowing assets. Through the eToken contracts, accounts on the blockchain supply capital (BNB or BEP-20 tokens) to receive eTokens or borrow assets from the protocol (holding other assets as collateral). The ESG eToken contracts track these balances and algorithmically set interest rates for borrowers.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/ecodefi.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Binance"],
+  oracles: ["Chainlink"],
+  forkedFrom: ["Compound"],
+  module: "ecodefi/index.js",
+  twitter: "ESG_Financial",
+  audit_links: ["https://www.certik.com/projects/esg-financial"], 
+  listedAt: 1653037836
+},
 ] as Protocol[]

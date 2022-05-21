@@ -8030,4 +8030,25 @@ listedAt: 1650804679
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Pandora-v1.0.pdf"], 
   listedAt: 1653092453
 },
+{
+  id: "1778",
+  name: "Oswap",
+  address: null,
+  symbol: "-",
+  url: "https://oswap.io",
+  description: "A fully decentralized protocol for automated liquidity provision on Obyte.",
+  chain: "Obyte",
+  logo: `${baseIconsUrl}/oswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "byteball",
+  cmcId: "1492",
+  category: "Dexes",
+  chains: ["Obyte"],
+  oracles: [],
+  forkedFrom: [],
+  module: "oswap/index.js",
+  twitter: "ObyteOrg",
+  listedAt: 1653131107
+},
 ] as Protocol[]

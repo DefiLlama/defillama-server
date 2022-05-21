@@ -8003,7 +8003,7 @@ listedAt: 1650804679
   chains: ["Binance", "Fuse", "Celo"],
   oracles: [],
   forkedFrom: [],
-  module: "infinitypad/index.js ",
+  module: "infinitypad/index.js",
   twitter: "RealinfinityPad",
   audit_links: ["https://www.certik.com/projects/esg-financial"], 
   listedAt: 1653092333

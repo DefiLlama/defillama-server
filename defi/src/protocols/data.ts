@@ -8809,7 +8809,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://solarbeam.io/exchange/swap",
     description: "Solarbeam is a decentralized exchange, providing liquidity and enabling peer-to-peer transactions on the Moonriver Network.",
     chain: "Moonriver",
-    logo: `${baseIconsUrl}/solarbeam.jpg`,
+    logo: `${baseIconsUrl}/solarbeam.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "solarbeam",

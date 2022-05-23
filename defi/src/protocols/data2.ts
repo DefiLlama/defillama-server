@@ -5872,7 +5872,7 @@ export default [
   forkedFrom: [],
   module: "timeswap/index.js",
   twitter: "TimeswapLabs",
-  audit_links: ['https://code4rena.com/reports/2022-03-timeswap/'],
+  audit_links: ['https://code4rena.com/reports/2022-03-timeswap'],
   listedAt: 1650665129
 },
 {

@@ -8095,4 +8095,26 @@ listedAt: 1650804679
   twitter: "coslend",
   listedAt: 1653409255
 },
+{
+  id: "1781",
+  name: "SteakHut",
+  address: "avax:0xb279f8DD152B99Ec1D84A489D32c35bC0C7F5674",
+  symbol: "STEAK",
+  url: "https://www.steakhut.finance",
+  description: "Providing boosted Trader Joe liquidity pools and returning the profits to the Herd.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/steakhut.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Avalanche"],
+  oracles: [],
+  forkedFrom: [],
+  module: "steakHut/index.js",
+  twitter: "steakhut_fi",
+  audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
+  listedAt: 1653410101
+},
 ] as Protocol[]

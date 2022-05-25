@@ -8117,4 +8117,25 @@ listedAt: 1650804679
   audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
   listedAt: 1653410101
 },
+{
+  id: "1782",
+  name: "MilkyWay",
+  address: "milkomeda:0x45BAd91afFDdcd71D4DbE66Afa0CF27363aa8780",
+  symbol: "mWAY",
+  url: "https://milkyway.sh",
+  description: "MilkyWay is Milkomeda's first native lending protocol! Supply and borrow all your favourite tokens!",
+  chain: "Milkomeda",
+  logo: `${baseIconsUrl}/steakhut.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Milkomeda"],
+  oracles: ["Internal"],
+  forkedFrom: ["Compound"],
+  module: "milkyway/index.js",
+  twitter: "AeliaProtocol",
+  listedAt: 1653493003
+},
 ] as Protocol[]

@@ -614,7 +614,7 @@ export default ([
     category: "CDP",
     chains: ["Kava"],
     module: "kava.js",
-    twitter: "kava_labs",
+    twitter: "kava_platform",
     audit_links: ["https://www.certik.org/projects/kava"],
     oracles: ["Chainlink"],
   },

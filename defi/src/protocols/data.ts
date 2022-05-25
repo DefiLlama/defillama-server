@@ -3617,7 +3617,7 @@ export default ([
     name: "0.exchange",
     address: "0xf0939011a9bb95c3b791f0cb546377ed2693a574",
     symbol: "ZERO",
-    url: "https://www.0.exchange/",
+    url: "https://app.0.exchange/",
     description: "The world's first Multi-DEX platform",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/0.exchange.jpg`,

@@ -8159,4 +8159,25 @@ listedAt: 1650804679
   twitter: null,
   listedAt: 1653493500
 },
+{
+  id: "1784",
+  name: "Tenderize",
+  address: null,
+  symbol: "-",
+  url: "https://tenderize.me",
+  description: "Connecting Web3 with DeFi through Liquid Staking.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/tenderize.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Ethereum", "Arbitrum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "tenderize/index.js",
+  twitter: "tenderize_me",
+  listedAt: 1653590791
+},
 ] as Protocol[]

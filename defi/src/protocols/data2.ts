@@ -8178,6 +8178,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "tenderize/index.js",
   twitter: "tenderize_me",
+  audit_links: ["https://hacken.io/audits/#tenderize"],
   listedAt: 1653590791
 },
 {
@@ -8199,6 +8200,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "VersaGames/index.js",
   twitter: "VersaGamesHQ",
+  audit_links: ["https://paladinsec.co/projects/versagames/"],
   listedAt: 1653591854
 },
 {
@@ -8220,6 +8222,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "credix/index.js",
   twitter: "Credix_finance",
+  audit_links: ["https://www.certik.com/projects/credix"],
   listedAt: 1653591974
 },
 ] as Protocol[]

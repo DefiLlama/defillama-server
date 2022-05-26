@@ -6691,7 +6691,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["Metis"],
-  oracles: [],
+  oracles: ["DIA"],
   forkedFrom: ["Platypus Finance"],
   module: "hummus/index.js",
   twitter: "hummusdefi",

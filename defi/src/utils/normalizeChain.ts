@@ -873,7 +873,7 @@ export const chainCoingeckoIds = {
       types: ["Independent"]
     },
   },
-  "LAChain": {
+  "Lachain": {
     geckoId: "latoken",
     symbol: "LA",
     cmcId: "2090",
@@ -1101,7 +1101,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "stafi":
       return "Stafi"
     case "lachain":
-      return "LAChain"
+      return "Lachain"
     case "coti":
       return "Coti"
     case "bitcoincash":

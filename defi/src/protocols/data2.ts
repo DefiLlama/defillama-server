@@ -8246,4 +8246,26 @@ listedAt: 1650804679
   twitter: "DiamondProtocol",
   listedAt: 1653626563
 },
+{
+  id: "1788",
+  name: "Invariant",
+  address: null,
+  symbol: "-",
+  url: "https://invariant.app",
+  description: "Invariant is the revolutionary AMM DEX with concentrated liquidity built on Solana that prioritizes capital efficiency, permissionless, and composability.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/invariant.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Solana"],
+  oracles: [],
+  forkedFrom: [],
+  module: "invariant/index.js",
+  twitter: "invariant_labs",
+  audit_links: ["https://invariant.app/audit.pdf"],
+  listedAt: 1653656978
+},
 ] as Protocol[]

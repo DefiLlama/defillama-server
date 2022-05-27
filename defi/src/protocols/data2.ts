@@ -8225,4 +8225,25 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/credix"],
   listedAt: 1653591974
 },
+{
+  id: "1787",
+  name: "Diamond Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://dmo.finance",
+  description: "Diamond is a modular vault protocol where #DeFi strategists can build and deploy on-chain strategies without writing code.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/diamond-protocol.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "diamond/index.js",
+  twitter: "DiamondProtocol",
+  listedAt: 1653626563
+},
 ] as Protocol[]

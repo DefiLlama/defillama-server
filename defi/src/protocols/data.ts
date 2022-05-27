@@ -23779,6 +23779,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Olympus DAO"],
   listedAt: 1643090739, 
 },
+/*
 {
   id: "1314",
   name: "Shiden dApp Staking",
@@ -23799,6 +23800,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_links: ["https://certificate.quantstamp.com/view/a-star-network-staking"],
   listedAt: 1643128783,
 },
+*/
 {
   id: "1315",
   name: "NeoBurger",

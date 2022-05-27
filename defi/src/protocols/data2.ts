@@ -8268,4 +8268,26 @@ listedAt: 1650804679
   audit_links: ["https://invariant.app/audit.pdf"],
   listedAt: 1653656978
 },
+{
+  id: "1789",
+  name: "Gale",
+  address: "bsc:0x627E86E9eC832b59018Bf91456599e752288Aa97",
+  symbol: "GALE",
+  url: "https://gale.network",
+  description: "GALE is a high yield sustainable deflationary compounding daily ROI platform on the BSC and Cronos network that pays you 1.2% interest daily with a daily compounding yield upto 7,778%",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/gale.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "gale-network",
+  cmcId: "19371",
+  category: "Staking",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "gale/index.js",
+  twitter: "GaleNetwork",
+  audit_links: ["https://github.com/solidproof/projects/blob/main/Gale/SmartContract_Audit_Solidproof_GaleToken.pdf"],
+  listedAt: 1653656978
+},
 ] as Protocol[]

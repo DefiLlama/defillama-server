@@ -18,12 +18,14 @@ import BigNumber from "bignumber.js";
 import mysql from 'mysql2/promise';
 import { getCurrentUnixTimestamp } from "../utils/date";
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
   host: 'error-logs.cluster-cz3l9ki794cf.eu-central-1.rds.amazonaws.com',
   port: 3306,
   user: 'admin',
   database: 'content',
-  password: process.env.INFLUXDB_TOKEN
+  password: process.env.INFLUXDB_TOKEN,
+  waitForConnections: true,
+  connectionLimit: 10,
 });
 
 // Error table
@@ -115,7 +117,8 @@ async function getTvl(
         throw e
       } else {
         const currentTime = getCurrentUnixTimestamp()
-        connection.then(c=>c.execute('INSERT INTO `errors` VALUES (?, ?, ?)', [currentTime, protocol.name, String(e)]));
+        connection.execute('INSERT INTO `errors` VALUES (?, ?, ?)', [currentTime, protocol.name, String(e)])
+          .catch(e=>console.log("mysql error", e));
         continue;
       }
     }

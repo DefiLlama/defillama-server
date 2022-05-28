@@ -8290,4 +8290,26 @@ listedAt: 1650804679
   audit_links: ["https://github.com/solidproof/projects/blob/main/Gale/SmartContract_Audit_Solidproof_GaleToken.pdf"],
   listedAt: 1653656978
 },
+{
+  id: "1790",
+  name: "i4i Finance",
+  address: "klaytn:0xcd670d77f3dcab82d43dff9bd2c4b87339fb3560",
+  symbol: "EYE",
+  url: "https://i4i.finance",
+  description: "i4i Finance is a 2nd generation DEX protocol, with the lowest slippage and fees made possible through self-implemented Stable Swaps and Crypto Pools",
+  chain: "Klaytn",
+  logo: `${baseIconsUrl}/i4i-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Klaytn"],
+  oracles: ["TWAP"],
+  forkedFrom: ["Curve"],
+  module: "i4i-finance/index.js",
+  twitter: null,
+  audit_links: ["https://drive.google.com/file/d/1I0HnU8Rs88HHqBC6Y3aUcEKTPZfVTAZD/view"],
+  listedAt: 1653727694
+},
 ] as Protocol[]

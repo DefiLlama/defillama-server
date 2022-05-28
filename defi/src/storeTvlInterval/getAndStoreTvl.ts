@@ -15,12 +15,19 @@ import {
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
-import {InfluxDB, Point} from '@influxdata/influxdb-client'
+import mysql from 'mysql2/promise';
+import { getCurrentUnixTimestamp } from "../utils/date";
 
-const token = process.env.INFLUXDB_TOKEN
-const url = 'https://eu-central-1-1.aws.cloud2.influxdata.com'
+const connection = mysql.createConnection({
+  host: 'error-logs.cluster-cz3l9ki794cf.eu-central-1.rds.amazonaws.com',
+  port: 3306,
+  user: 'admin',
+  database: 'content',
+  password: process.env.INFLUXDB_TOKEN
+});
 
-const influxClient = new InfluxDB({url, token})
+// Error table
+// CREATE TABLE errors (time INT, protocol VARCHAR(200), error TEXT, PRIMARY KEY(time, protocol), INDEX `idx_time` (`time` ASC) VISIBLE);
 
 type ChainBlocks = {
   [chain: string]: number;
@@ -107,16 +114,8 @@ async function getTvl(
       if (i >= maxRetries - 1) {
         throw e
       } else {
-        let org = `0xngmi+influxdb@protonmail.com`
-        let bucket = `test-errors`
-        let writeClient = influxClient.getWriteApi(org, bucket, 'ns')
-
-        let point = new Point('protocolError')
-          .tag('protocol', protocol.name)
-          .stringField("error", String(e))
-
-        writeClient.writePoint(point)
-        writeClient.flush()
+        const currentTime = getCurrentUnixTimestamp()
+        connection.then(c=>c.execute('INSERT INTO `errors` VALUES (?, ?, ?)', [currentTime, protocol.name, String(e)]));
         continue;
       }
     }

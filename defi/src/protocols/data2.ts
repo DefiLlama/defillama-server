@@ -5618,6 +5618,7 @@ export default [
   audit_links: ["https://www.certik.com/projects/blueshift"] ,
   listedAt: 1650384287
 },
+/*
 {
   id: "1666",
   name: "Nord Finance",
@@ -5640,6 +5641,7 @@ export default [
   audit_links: ["https://docs.nordfinance.io/security-audits/security-audits"],
   listedAt: 1650437930
 },
+*/
 {
   id: "1667",
   name: "Solv Protocol",
@@ -8310,6 +8312,6 @@ listedAt: 1650804679
   module: "i4i-finance/index.js",
   twitter: null,
   audit_links: ["https://drive.google.com/file/d/1I0HnU8Rs88HHqBC6Y3aUcEKTPZfVTAZD/view"],
-  listedAt: 1653727694
+  listedAt: 1653727694  
 },
 ] as Protocol[]

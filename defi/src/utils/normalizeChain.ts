@@ -798,7 +798,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 1024,
   },
-  "REInetwork": {
+  "REI": {
     geckoId: "rei-network",
     symbol: "REI",
     cmcId: "19819",
@@ -905,7 +905,7 @@ export const chainCoingeckoIds = {
     symbol: "GBYTE",
     cmcId: "1492",
   },
-  "REI": {
+  "REIchain": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -1119,8 +1119,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Doge"
     case "obyte":
       return "Obyte"
-    case "rei":
-      return "REI"
+    case "reichain":
+      return "REIchain"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

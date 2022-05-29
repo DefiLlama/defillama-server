@@ -798,12 +798,12 @@ export const chainCoingeckoIds = {
     },
     chainId: 1024,
   },
-  "REI": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+  "REInetwork": {
+    geckoId: "rei-network",
+    symbol: "REI",
+    cmcId: "19819",
     categories: ["EVM"],
-    chainId: 55555,
+    chainId: 47805,
   },
   "Crab": {
     geckoId: "darwinia-crab-network",
@@ -904,6 +904,13 @@ export const chainCoingeckoIds = {
     geckoId: "byteball",
     symbol: "GBYTE",
     cmcId: "1492",
+  },
+  "REI": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 55555,
   },
 } as {
   [chain: string]: {
@@ -1080,8 +1087,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "DFK"
     case "clover":
       return "Clover"
-    case "rei":
-      return "REI"
+    case "reinetwork":
+      return "REInetwork"
     case "crab":
       return "Crab"
     case "hedera":
@@ -1112,6 +1119,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Doge"
     case "obyte":
       return "Obyte"
+    case "rei":
+      return "REI"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

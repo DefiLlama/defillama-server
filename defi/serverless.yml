@@ -298,6 +298,14 @@ functions:
       - http:
           path: missedUpdates/{timestamp}
           method: get
+  outdated:
+    handler: src/stats/getOutdated.default
+    timeout: 900
+    memorySize: 10240
+    events:
+      - http:
+          path: outdated
+          method: get
 
 resources:
   # CORS for api gateway errors

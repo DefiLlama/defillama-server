@@ -292,7 +292,8 @@ functions:
       - schedule: cron(20 * * * ? *)
   missedUpdates:
     handler: src/stats/getMissedUpdates.default
-    memorySize: 2000
+    timeout: 900
+    memorySize: 10240
     events:
       - http:
           path: missedUpdates/{timestamp}

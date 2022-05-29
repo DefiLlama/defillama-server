@@ -7,7 +7,7 @@ const llamaRole = "<@&849669546448388107>"
 
 const handler = async (_event: any) => {
   const webhookUrl = process.env.OUTDATED_WEBHOOK!
-  const hourlyOutdated = await getOutdated(3600); // 1hr
+  const hourlyOutdated = await getOutdated((60+20)*60); // 1hr
   await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last hour`, webhookUrl, false)
   await sendMessage(buildOutdatedMessage(hourlyOutdated) ?? "No protocols are outdated", process.env.HOURLY_OUTDATED_WEBHOOK!)
   const message = await findOutdated(maxDrift)

@@ -31,7 +31,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
       })
       */
       result.Items?.forEach(item=>{
-        if((item.SK - lastTimestamp) > (60+20)*3600){ // max drift is one update getting stored at x:00 and next at x+1:15, so max difference will be <1:20
+        if((item.SK - lastTimestamp) > (60+20)*60){ // max drift is one update getting stored at x:00 and next at x+1:15, so max difference will be <1:20
           totalSkippedHourlyUpdates += Math.round((item.SK - lastTimestamp)/3600) - 1
         }
         if((item.tvl/lastTvl) < threshold || (lastTvl/item.tvl) < threshold){

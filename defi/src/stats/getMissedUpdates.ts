@@ -32,12 +32,12 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
         }
         lastTimestamp = item.SK;
         lastTvl = item.tvl;
-        return {
-          name: protocol.name,
-          totalSkippedHourlyUpdates,
-          hourlyDrasticChanges,
-        }
       })
+      return {
+        name: protocol.name,
+        totalSkippedHourlyUpdates,
+        hourlyDrasticChanges,
+      }
     })
   )).filter(p=>p!==null);
   return successResponse(response, 10 * 60); // 10 mins cache

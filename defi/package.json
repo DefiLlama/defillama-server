@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "deploy:env": "npm run prebuild && sls deploy --stage $NODE_ENV --enforce-hash-update",
+    "deploy:env": "npm run prebuild && sls deploy --stage $NODE_ENV",
     "deploy:dev": "export NODE_ENV=dev && npm run deploy:env",
     "deploy:prod": "export NODE_OPTIONS=--max-old-space-size=6144 && export NODE_ENV=prod && npm run deploy:env",
     "deploy": "npm run deploy:dev",

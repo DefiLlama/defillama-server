@@ -48,7 +48,6 @@
     "@sentry/tracing": "^6.19.7",
     "bignumber.js": "^9.0.1",
     "dotenv": "^16.0.1",
-    "electron": "^19.0.0",
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.1"
   }

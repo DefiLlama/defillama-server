@@ -1087,8 +1087,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "DFK"
     case "clover":
       return "Clover"
-    case "reinetwork":
-      return "REInetwork"
+    case "rei":
+      return "REI"
     case "crab":
       return "Crab"
     case "hedera":

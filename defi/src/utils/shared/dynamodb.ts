@@ -53,10 +53,10 @@ export async function getHistoricalValues(pk: string) {
         },
         KeyConditionExpression: "PK = :pk AND SK > :sk",
       })
-      lastKey = result.LastEvaluatedKey?.SK
-      if(result.Items !== undefined){
-        items = items.concat(result.Items)
-      }
+    lastKey = result.LastEvaluatedKey?.SK
+    if (result.Items !== undefined) {
+      items = items.concat(result.Items)
+    }
   } while (lastKey !== undefined)
   return items
 }

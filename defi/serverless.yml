@@ -290,6 +290,13 @@ functions:
     memorySize: 1024
     events:
       - schedule: cron(20 * * * ? *)
+  missedUpdates:
+    handler: src/stats/getMissedUpdates.default
+    memorySize: 2000
+    events:
+      - http:
+          path: missedUpdates/{timestamp}
+          method: get
 
 resources:
   # CORS for api gateway errors

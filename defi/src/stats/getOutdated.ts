@@ -11,7 +11,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     const now = getCurrentUnixTimestamp();
     const outdated = [] as [string, number, boolean][];
     const outdatedByLength = {} as {[lengthOutdated:number]:number}
-    for(let i = 0; i<=maxOutdated; i++){
+    for(let i = 1; i<=maxOutdated; i++){
         outdatedByLength[i]=0;
     }
 

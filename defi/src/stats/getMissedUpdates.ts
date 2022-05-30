@@ -5,19 +5,18 @@ import dynamodb from "../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 
 function getRangeOutOfUpdateTime(timestamp:number){
-  let minTimestamp = timestamp;
-  const timestampDate = new Date(timestamp*1000)
-  if(timestampDate.getMinutes() < 20){
-    timestampDate.setMinutes(59)
-    minTimestamp = toUNIXTimestamp(timestampDate.getTime())
-  }
+  const minTimestampDate = new Date(timestamp*1000)
+  const minTimestamp = toUNIXTimestamp(minTimestampDate.getTime())
+
   let maxTimestamp = getCurrentUnixTimestamp()
   const maxTimestampDate = new Date(maxTimestamp*1000)
   if(maxTimestampDate.getMinutes() < 20){
-    maxTimestampDate.setMinutes(59)
-    maxTimestamp = toUNIXTimestamp(maxTimestampDate.getTime()) - 3600;
+    maxTimestampDate.setHours(maxTimestampDate.getHours() - 1)
   }
-  const hourlyUpdatesInRange = Math.ceil((maxTimestamp-minTimestamp)/3600)
+  maxTimestampDate.setMinutes(20)
+  maxTimestamp = toUNIXTimestamp(maxTimestampDate.getTime());
+
+  const hourlyUpdatesInRange = Math.round((maxTimestamp-minTimestamp)/3600)
   return {minTimestamp, maxTimestamp, hourlyUpdatesInRange}
 }
 

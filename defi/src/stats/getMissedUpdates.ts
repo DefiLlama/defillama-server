@@ -2,19 +2,19 @@ import { successResponse, wrap, IResponse } from "../utils/shared";
 import protocols from "../protocols/data";
 import { hourlyTvl } from "../utils/getLastRecord";
 import dynamodb from "../utils/shared/dynamodb";
-import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
+import { toUNIXTimestamp } from "../utils/date";
 
 function getRangeOutOfUpdateTime(timestamp:number){
   const minTimestampDate = new Date(timestamp*1000)
+  minTimestampDate.setMinutes(20);
   const minTimestamp = toUNIXTimestamp(minTimestampDate.getTime())
 
-  let maxTimestamp = getCurrentUnixTimestamp()
-  const maxTimestampDate = new Date(maxTimestamp*1000)
+  const maxTimestampDate = new Date()
   if(maxTimestampDate.getMinutes() < 20){
     maxTimestampDate.setHours(maxTimestampDate.getHours() - 1)
   }
   maxTimestampDate.setMinutes(20)
-  maxTimestamp = toUNIXTimestamp(maxTimestampDate.getTime());
+  const maxTimestamp = toUNIXTimestamp(maxTimestampDate.getTime());
 
   const hourlyUpdatesInRange = Math.round((maxTimestamp-minTimestamp)/3600)
   return {minTimestamp, maxTimestamp, hourlyUpdatesInRange}
@@ -46,19 +46,19 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
       let totalSkippedHourlyUpdates = 0, hourlyDrasticChanges = 0;
       let lastTvl = result.Items[0].tvl;
       let lastTimestamp = result.Items[0].SK;
-      result.Items?.forEach(item=>{
+      result.Items?.forEach((item, index)=>{
         if((item.SK - lastTimestamp) > (60+20)*60){ // max drift is one update getting stored at x:00 and next at x+1:15, so max difference will be <1:20
           totalSkippedHourlyUpdates += Math.round((item.SK - lastTimestamp)/3600) - 1
         }
         if((item.tvl/lastTvl) < threshold || (lastTvl/item.tvl) < threshold){
           hourlyDrasticChanges += 1;
         }
+        if(item.SK > minTimestamp && item.SK < maxTimestamp && ((item.SK - lastTimestamp) > 35*60 || index === 0)){ // To avoid double updates in same hour
+          countUpdatesAllProtocols++;
+        }
         maxHourlyChange = Math.max(maxHourlyChange, item.tvl/lastTvl, lastTvl/item.tvl)
         lastTimestamp = item.SK;
         lastTvl = item.tvl;
-        if(item.SK > minTimestamp && item.SK < maxTimestamp){
-          countUpdatesAllProtocols++;
-        }
       })
       if(totalSkippedHourlyUpdates>0){
         protocolsWithMissedUpdates++;

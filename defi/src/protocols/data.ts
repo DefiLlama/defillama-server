@@ -437,7 +437,7 @@ export default ([
     name: "KyberSwap",
     address: "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
     symbol: "KNC",
-    url: "https://kyber.network/",
+    url: "https://kyberswap.com/#/swap",
     description:
       "KyberSwap is both a decentralized exchange (DEX) aggregator and a liquidity source with capital-efficient liquidity pools that earns fees for liquidity providers",
     chain: "Ethereum",

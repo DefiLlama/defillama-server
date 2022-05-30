@@ -21,7 +21,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
             const module = importAdapter(protocol)
             const refillable = !(module.fetch || module.timetravel === false)
             outdated.push([protocol.name, now - item.SK, refillable])
-            const timeOutdated = Math.min(Math.round((now - item.SK)/3600) - 1, maxOutdated)
+            const timeOutdated = Math.min(Math.round((now - item.SK)/3600), maxOutdated)
             outdatedByLength[timeOutdated] += 1;
         }
     }))
@@ -32,6 +32,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
         totalProtocols,
         percentOutdated,
         outdatedByLength,
+        outdatedByLengthArray: Object.entries(outdatedByLength),
         outdatedByLengthPercent: Object.fromEntries(Object.entries(outdatedByLength).map(([l, o])=>[l, o/totalProtocols]))
     }, 10 * 60); // 10 mins cache
 };

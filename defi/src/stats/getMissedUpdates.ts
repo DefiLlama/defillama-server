@@ -17,7 +17,7 @@ function getRangeOutOfUpdateTime(timestamp:number){
     maxTimestampDate.setMinutes(59)
     maxTimestamp = toUNIXTimestamp(maxTimestampDate.getTime()) - 3600;
   }
-  const hourlyUpdatesInRange = Math.floor((maxTimestamp-minTimestamp)/3600)
+  const hourlyUpdatesInRange = Math.ceil((maxTimestamp-minTimestamp)/3600)
   return {minTimestamp, maxTimestamp, hourlyUpdatesInRange}
 }
 

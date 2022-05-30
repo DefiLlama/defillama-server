@@ -13402,7 +13402,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "celer-network",
   cmcId: "3814",
   category: "Bridge",
-  chains: ["Ethereum", "Binance", "Arbitrum", "Polygon", "xDai", "OKExChain", "Avalanche", "Optimism", "Fantom", "Heco", "Conflux", "Boba", "Harmony", "Aurora", "Milkomeda", "Moonbeam", "Oasis", "Moonriver", "Metis", "Shiden", "Celo", "Syscoin"],
+  chains: ["Ethereum", "Binance", "Arbitrum", "Polygon", "xDai", "OKExChain", "Avalanche", "Optimism", "Fantom", "Heco", "Boba", "Harmony", "Aurora", "Milkomeda", "Moonbeam", "Oasis", "Moonriver", "Metis", "Shiden", "Celo", "Syscoin"],
   module: "celerbridge/index.js",
   twitter: "CelerNetwork",
   audit_links: ["https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/REP-cBridge-v2-2021-11-17.pdf",

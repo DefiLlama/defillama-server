@@ -3555,7 +3555,7 @@ export default [
   description: "Stargate is a fully composable liquidity transport protocol that lives at the heart of Omnichain DeFi. With Stargate, users & dApps can transfer native assets cross-chain while accessing the protocol’s unified liquidity pools with instant guaranteed finality.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/stargate.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "stargate-finance",
   cmcId: "18934",
@@ -3564,7 +3564,8 @@ export default [
   oracles: [],
   forkedFrom: [],
   module: "stargatefinance/index.js",
-  twitter: "StargateFinance" ,
+  twitter: "StargateFinance",
+  audit_links: ["https://github.com/stargate-protocol/stargate/tree/main/audit"],
   listedAt: 1647975344,
 },
 {

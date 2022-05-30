@@ -8314,4 +8314,25 @@ listedAt: 1650804679
   audit_links: ["https://drive.google.com/file/d/1I0HnU8Rs88HHqBC6Y3aUcEKTPZfVTAZD/view"],
   listedAt: 1653727694  
 },
+{
+  id: "1791",
+  name: "Popcorn",
+  address: "0xd0cd466b34a24fcb2f87676278af2005ca8a78c4",
+  symbol: "POP",
+  url: "https://popcorndao.finance",
+  description: "Popcorn is where DeFi and Social impact collide. Our fees fund environmental, open source, and educational initiatives.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/popcorn.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "popcorn",
+  cmcId: "13920",
+  category: "Yield",
+  chains: ["Ethereum", "Binance", "Polygon", "Arbitrum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "popcorn/index.js",
+  twitter: "Popcorn_DAO",
+  listedAt: 1653901963
+},
 ] as Protocol[]

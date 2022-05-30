@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@defillama/adapters": "file:./DefiLlama-Adapters",
-    "@defillama/sdk": "^2.3.66",
+    "@defillama/sdk": "^2.3.67",
     "@sentry/serverless": "^6.19.7",
     "@sentry/tracing": "^6.19.7",
     "bignumber.js": "^9.0.1",

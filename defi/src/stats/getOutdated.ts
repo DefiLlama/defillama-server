@@ -11,7 +11,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     const now = getCurrentUnixTimestamp();
     const outdated = [] as [string, number, boolean][];
     const outdatedByLength = {} as {[lengthOutdated:number]:number}
-    for(let i = 0; i<maxOutdated; i++){
+    for(let i = 0; i<=maxOutdated; i++){
         outdatedByLength[i]=0;
     }
 
@@ -21,7 +21,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
             const module = importAdapter(protocol)
             const refillable = !(module.fetch || module.timetravel === false)
             outdated.push([protocol.name, now - item.SK, refillable])
-            const timeOutdated = Math.max(Math.round((now - item.SK)/3600) - 1, maxOutdated)
+            const timeOutdated = Math.min(Math.round((now - item.SK)/3600) - 1, maxOutdated)
             outdatedByLength[timeOutdated] += 1;
         }
     }))

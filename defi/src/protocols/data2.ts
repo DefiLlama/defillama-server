@@ -8335,4 +8335,26 @@ listedAt: 1650804679
   twitter: "Popcorn_DAO",
   listedAt: 1653901963
 },
+{
+  id: "1792",
+  name: "Foodcourt",
+  address: "reichain:0xbC09220a8e461880DBE5517ecF53bC1b12cAa05D",
+  symbol: "COUPON",
+  url: "https://reix.foodcourt.finance",
+  description: "Foodcourt is DEX on REI chain that enable KUMA stable yield farming.",
+  chain: "Reichain",
+  logo: `${baseIconsUrl}/foodcourt.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Reichain", "Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "foodcourt/index.js",
+  twitter: "FoodcourtF",
+  audit_links: ["https://app.inspex.co/library/foodcourt#?scope=foodcourt-amm-farm-wrappedtokens"],
+  listedAt: 1653938314
+},
 ] as Protocol[]

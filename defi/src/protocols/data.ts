@@ -19013,7 +19013,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Bring.Finance is a decentralized cross-chain staking platform. ",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/bring.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "bring-finance",
   cmcId: null,
@@ -19021,6 +19021,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum" , "Binance"] ,
   module: "bring/index.js",
   twitter: "BringFinance" ,
+  audit_links: ["https://hacken.io/audits/#bring_finance"],
   listedAt: 1640177167 ,
 },
 {

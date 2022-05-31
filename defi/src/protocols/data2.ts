@@ -7675,7 +7675,7 @@ listedAt: 1650804679
   description: "First Lossless Liquidity Mining Protocol on Polygon, become an LP with no impermanence loss and earn rewards to direct liquidity across protocols as a liquidity director.",
   chain: "Polygon",
   logo: `${baseIconsUrl}/olivedao.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -7687,7 +7687,7 @@ listedAt: 1650804679
   twitter: "Olive_DAO",
   audit_links: [
                   "https://omniscia.io/olive-liquidity-protocol",
-                  "https://docs.olivedao.finance/technical-overview/audits/peckshield-audit-report",
+                  "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-OliveDAO-v1.0.pdf",
                 ],
   listedAt: 1652439344
 },

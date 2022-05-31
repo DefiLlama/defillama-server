@@ -8321,10 +8321,13 @@ listedAt: 1650804679
   address: "0xd0cd466b34a24fcb2f87676278af2005ca8a78c4",
   symbol: "POP",
   url: "https://popcorndao.finance",
-  description: "Popcorn is where DeFi and Social impact collide. Our fees fund environmental, open source, and educational initiatives.",
+  description: `Popcorn is where DeFi and Social impact collide. 
+    Earn high yield on your cryptoassets while creating real world impact. 
+    Popcorn's products fund environmental, open source, and educational initiatives.`,
   chain: "Ethereum",
   logo: `${baseIconsUrl}/popcorn.png`,
-  audits: "0",
+  audits: "2",
+  audit_links: ["https://assets.website-files.com/5f99eb79d508ca853be5f2e8/61b21474b7a1746d889f599d_Popcorn%20SC%20Audit.pdf"],
   audit_note: null,
   gecko_id: "popcorn",
   cmcId: "13920",

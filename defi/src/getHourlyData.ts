@@ -6,7 +6,7 @@ import { craftProtocolResponse, wrapResponseOrRedirect } from './getProtocol'
 const handler = async (
     event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-    const response = await craftProtocolResponse(event.pathParameters?.protocol, true, true)
+    const response = await craftProtocolResponse(event.pathParameters!.protocol!.split("%20").join("-"), true, true)
     return wrapResponseOrRedirect(response);
 };
 

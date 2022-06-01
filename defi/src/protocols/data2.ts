@@ -8437,7 +8437,7 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "Bridge",
-  chains: ["Ethereum", "Polygon", "Avalanche", "Fantom", "Binance", "Arbitrum", "Optimism", "Heco", "Zilliqa", "Ontology", "NEO", "Boba", "Oasis", "carbon"],
+  chains: ["Ethereum", "Polygon", "Avalanche", "Fantom", "Binance", "Arbitrum", "Optimism", "Heco", "Zilliqa", "Ontology", "NEO", "Boba", "Oasis", "Carbon"],
   oracles: [], 
   forkedFrom: [],
   module: "polynetwork/index.js",

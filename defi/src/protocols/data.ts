@@ -5886,11 +5886,11 @@ export default ([
   },
   {
     id: "400",
-    name: "Amun Tokens",
+    name: "Amun",
     address: "-",
     symbol: "DFI,DMX",
     url: "https://tokens.amun.com",
-    description: "Amun’s Index tokens are composed of the top eight DeFi tokens in the Ethereum ecosystem by market capitalization for (DFI) and on price momentum for (DMX). Amun's provides investors with exposure to protocols that provide trading, lending and borrowing, yield farming, data oracles, insurance, prediction markets, synthetic assets and stable coins. The index’s components are equally weighted and rebalanced monthly. Holders own fractions of the underlying tokens, which can be redeemed by burning the index token.",
+    description: "Amun is a leading provider of index tokens across multiple blockchains, enabling token holders to gain broad exposures to different smart contract platforms and DeFi sectors. The indexes are rebalanced regularly, and token holders own fractions of the underlying constituents. Our index tokens can be redeemed by burning the token on our platform to receive the underlying tokens.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/amun-tokens.png`,
     audits: "2",

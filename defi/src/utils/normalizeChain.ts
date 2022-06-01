@@ -919,6 +919,26 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 58,
   },
+  "Carbon": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+  },
+  "Neo3": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+  },
+  "Pallete": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+  },
+  "Bytomsidechain": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -1130,6 +1150,14 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "REIchain"
     case "ontology_evm":
       return "OntologyEVM"
+    case "carbon":
+      return "Carbon"
+    case "neo3":
+      return "Neo3"
+    case "palette":
+      return "Pallete"
+    case "bytomsidechain":
+      return "Bytomsidechain"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

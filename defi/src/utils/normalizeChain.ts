@@ -920,9 +920,10 @@ export const chainCoingeckoIds = {
     chainId: 58,
   },
   "Carbon": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "switcheo",
+    symbol: "SWTH",
+    cmcId: "2620",
+    categories: ["Cosmos"],
   },
   "Neo3": {
     geckoId: null,
@@ -930,14 +931,16 @@ export const chainCoingeckoIds = {
     cmcId: null,
   },
   "Pallete": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "palette",
+    symbol: "PLT",
+    cmcId: "16272",
+    categories: ["EVM"],
   },
   "Bytomsidechain": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "bytom",
+    symbol: "BTM",
+    cmcId: "1866",
+    categories: ["EVM"],
   },
 } as {
   [chain: string]: {

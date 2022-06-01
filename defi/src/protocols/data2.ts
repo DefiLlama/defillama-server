@@ -6715,7 +6715,7 @@ listedAt: 1650804679
   cmcId: "17907",
   category: "CDP",
   chains: ["Avalanche"] ,
-  oracles: ["Chainlink", "Band", "API3", "TWAP"] ,
+  oracles: [] ,
   forkedFrom: ["Abracadabra"],
   module: "northpole/index.js",
   twitter: "NorthPole_money",

@@ -25127,7 +25127,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: null,
   symbol: "-",
   url: "https://www.minimax.finance",
-  description: "Minimax.finance is an aggregator of staking and yield farming opportunities with stop loss and take profit.",
+  description: "Multi-chain yield aggregators hub with blazing-fast UI. Vaults from major blockchains, DEXs, and aggregators with advanced trading features.",
   chain: "Binance",
   logo: `${baseIconsUrl}/minimax.png`,
   audits: "2",

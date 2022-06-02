@@ -5862,7 +5862,7 @@ export default ([
     module: "apeswap/index.js",
     forkedFrom: ["Uniswap"],
     twitter: "ape_swap",
-    audit_links: "https://apeswap.gitbook.io/apeswap-finance/security/audits",
+    audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
   },
   {
     id: "399",
@@ -7087,7 +7087,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "planet-finance/index.js",
     twitter: "planet_finance",
-    audit_links: "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Planet_Finance_Smart_Contract_Security_Audit_Halborn_v1_1.pdf",
+    audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Planet_Finance_Smart_Contract_Security_Audit_Halborn_v1_1.pdf"],
   },
   {
     id: "462",
@@ -7260,7 +7260,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "mensa/index.js",
     twitter: "MensaPro",
-    audit_links: "https://docs.mensapro.com/risk-control/audit-reports",
+    audit_links: ["https://docs.mensapro.com/risk-control/audit-reports"],
   },
   {
     id: "471",

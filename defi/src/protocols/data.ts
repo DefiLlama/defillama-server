@@ -10286,7 +10286,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Mean Finance is an open protocol that enables users (or protocols) to Dollar Cost Average (DCA) any ERC20 into any ERC20 with their preferred period frequency, without sacrificing decentralization or giving up personal information to any centralized parties.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mean-finance.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

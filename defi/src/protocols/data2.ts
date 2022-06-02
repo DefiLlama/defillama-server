@@ -4493,7 +4493,7 @@ export default [
   description: "0VIX is an open-source lending and borrowing protocol enhanced with veTokenomics",
   chain: "Polygon",
   logo: `${baseIconsUrl}/0vix.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -4503,6 +4503,10 @@ export default [
   forkedFrom: ["Compound"],
   module: "0vix/index.js",
   twitter: "0vixProtocol",
+  audit_links: [
+    "https://assets.website-files.com/622a09bc809cd190f58b7b15/627cd4450f5eb2df769b4ac1_PeckShield-Audit-Report-0VIX-v1.0.pdf",
+    "https://assets.website-files.com/622a09bc809cd190f58b7b15/627a5d6eea14146296b3261b_0VIX_Audit_Report_by_WatchPug.pdf"
+  ],
   listedAt: 1649156430
 },
 {

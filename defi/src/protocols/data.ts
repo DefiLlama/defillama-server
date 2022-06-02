@@ -5888,7 +5888,7 @@ export default ([
     id: "400",
     name: "Amun",
     address: "-",
-    symbol: "DFI,DMX",
+    symbol: "DFI,PECO,SOLI",
     url: "https://tokens.amun.com",
     description: "Amun is a leading provider of index tokens across multiple blockchains, enabling token holders to gain broad exposures to different smart contract platforms and DeFi sectors. The indexes are rebalanced regularly, and token holders own fractions of the underlying constituents. Our index tokens can be redeemed by burning the token on our platform to receive the underlying tokens.",
     chain: "Ethereum",

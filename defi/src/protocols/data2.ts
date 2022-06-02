@@ -8488,4 +8488,25 @@ listedAt: 1650804679
   audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/TerraFormer/TerraFormer%20-%20Staking%20-%20Audit%20Test%20Report%20v1.0.pdf"],
   listedAt: 1654136062
 },
+{
+  id: "1799",
+  name: "Velodrome",
+  address: "optimism:0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
+  symbol: "VELO",
+  url: "https://app.velodrome.finance",
+  description: "A revolutionary new AMM based on Solidly launched on Optimism.",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/velodrome.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "velodrome-finance",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Optimism"],
+  oracles: [],
+  forkedFrom: ["Solidly"],
+  module: "velodrome/index.js",
+  twitter: "VelodromeFi",
+  listedAt: 1654194517
+},
 ] as Protocol[]

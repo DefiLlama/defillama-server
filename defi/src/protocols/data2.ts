@@ -8466,4 +8466,26 @@ listedAt: 1650804679
   twitter: "StronghandsDev",
   listedAt: 1654083965
 },
+{
+  id: "1798",
+  name: "TFM",
+  address: null,
+  symbol: "-",
+  url: "tfm/index.js",
+  description: "DEX/ NFT Aggregator/ AMM",
+  chain: "Terra",
+  logo: `${baseIconsUrl}/tfm.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Terra"],
+  oracles: [],
+  forkedFrom: ["Terraswap"],
+  module: "tfm/index.js",
+  twitter: "tfm_com",
+  audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/TerraFormer/TerraFormer%20-%20Staking%20-%20Audit%20Test%20Report%20v1.0.pdf"],
+  listedAt: 1654136062
+},
 ] as Protocol[]

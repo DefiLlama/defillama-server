@@ -8557,4 +8557,25 @@ listedAt: 1650804679
   twitter: "MetavaultTRADE",
   listedAt: 1654203519
 },
+{
+  id: "1802",
+  name: "Bomb Finance",
+  address: "fantom:0x8503eb4A136bDBeB323E37Aa6e0FA0C772228378",
+  symbol: "BOMB",
+  url: "https://app.fbomb.finance",
+  description: "Bombswap is an AMM on the Fantom Opera network.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/bomb-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom"],
+  oracles: [],
+  forkedFrom: ["SpookySwap"],
+  module: "BombFinance/index.js",
+  twitter: "fBombOpera",
+  listedAt: 1654270497
+},
 ] as Protocol[]

@@ -5901,7 +5901,7 @@ export default ([
     chains: ["Ethereum", "Polygon", "Solana"],
     module: "amun/index.js",
     audit_links: ["https://www.certik.com/projects/amunag"],
-    twitter: "amuntokens",
+    twitter: "amun",
   },
   {
     id: "401",

@@ -4540,7 +4540,7 @@ export default [
   description: "Uniswap fork",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/radioshack.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -4550,6 +4550,7 @@ export default [
   forkedFrom: ["Uniswap"],
   module: "radioshack/index.js",
   twitter: "RadioShack",
+  audit_links: ["https://www.certik.com/projects/radioshack"],
   listedAt: 1649156839
 },
 {

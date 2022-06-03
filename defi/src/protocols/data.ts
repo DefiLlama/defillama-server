@@ -10271,7 +10271,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "reserve-rights-token",
     cmcId: "3964",
-    category: "Algo-Stables",
+    category: "CDP",
     chains: ["Ethereum"],
     module: "reserve/index.js",
     twitter: "reserveprotocol",

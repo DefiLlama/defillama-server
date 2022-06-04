@@ -8579,4 +8579,25 @@ listedAt: 1650804679
   twitter: "fBombOpera",
   listedAt: 1654270497
 },
+{
+  id: "1803",
+  name: "Gaur Money",
+  address: "cronos:0x046cb616d7a52173e4Da9efF1BFd590550aa3228",
+  symbol: "GAUR",
+  url: "https://gaur.money",
+  description: "Gaur Money is pegged to the price movenment of ETH at 1000 to 1 ratio.",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/gaur-money.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "gaur-money",
+  cmcId: "17188",
+  category: "Algo-Stables",
+  chains: ["Cronos"],
+  oracles: [],
+  forkedFrom: ["Tomb Finance"],
+  module: "gaur/index.js",
+  twitter: "GaurMoney",
+  listedAt: 1654342193
+},
 ] as Protocol[]

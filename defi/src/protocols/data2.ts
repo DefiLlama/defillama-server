@@ -7615,7 +7615,7 @@ listedAt: 1650804679
   description: "The protocol is designed to expand and contract supply similar to the way central banks trade fiscal debt to stabilize purchasing power, without any rebases or collateral risk.",
   chain: "Cronos",
   logo: `${baseIconsUrl}/toxicdeer-finance.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -7625,6 +7625,7 @@ listedAt: 1650804679
   forkedFrom: ["Tomb Finance"],
   module: "toxicdeer/index.js",
   twitter: "ToxicDeerFi",
+  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-ToxicDeer-v1.0.pdf"],
   listedAt: 1652356378
 },
 {

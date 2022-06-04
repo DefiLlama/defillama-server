@@ -14717,7 +14717,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Reverse is a yield generating and community-led treasury protocol featuring rebasing yields and protocol-owned liquidity",
   chain: "Harmony",
   logo: `${baseIconsUrl}/reverse.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "reverse-protocol",
   cmcId: "null",
@@ -14726,6 +14726,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "reverse/index.js",
   twitter: "RVRSProtocol",
   forkedFrom: ["Olympus DAO"],
+  audit_links: ["https://paladinsec.co/projects/reverse-protocol/"],
   listedAt: 1637351714,
 },
 {

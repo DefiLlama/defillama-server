@@ -20,7 +20,13 @@ function normalizeEthereum(balances: { [symbol: string]: number }) {
     balances["WETH"] = (balances["WETH"] ?? 0) + balances["ethereum"];
     delete balances["ethereum"];
   }
-  return balances;
+  const formattedBalances: { [symbol: string]: number } = {}
+
+  for (const b in balances) {
+      formattedBalances[b] = Number(balances[b].toFixed(5))
+  }
+
+  return formattedBalances;
 }
 
 type HistoricalTvls = AWS.DynamoDB.DocumentClient.ItemList | undefined

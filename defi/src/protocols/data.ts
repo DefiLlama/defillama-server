@@ -22075,7 +22075,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "LooksRare is the community-first NFT marketplace with rewards for participating. Buy NFTs (or sell 'em) to earn rewards.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/looksrare.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "looksrare",
   cmcId: "17081",
@@ -22083,6 +22083,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum"],
   module: "looks-rare/index.js",
   twitter: "LooksRareNFT",
+  audit_links: [
+                "https://github.com/trailofbits/publications/blob/master/reviews/LooksRare.pdf",
+                "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-LooksRare-v1.0.pdf",
+                "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-LooksRare-AggregatorFeeSharing-v1.0.pdf",
+  ],
   listedAt: 1641874709,
 },
 {

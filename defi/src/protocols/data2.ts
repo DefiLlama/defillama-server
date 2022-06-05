@@ -8602,4 +8602,25 @@ listedAt: 1650804679
   twitter: "GaurMoney",
   listedAt: 1654342193
 },
+{
+  id: "1804",
+  name: "Zeta",
+  address: null,
+  symbol: "-",
+  url: "https://www.zeta.markets",
+  description: "Zeta Markets is the premier derivatives protocol on Solana.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/zeta.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Options",
+  chains: ["Solana"],
+  oracles: [],
+  forkedFrom: [],
+  module: "zeta/index.js",
+  twitter: "ZetaMarkets",
+  listedAt: 1654452112
+},
 ] as Protocol[]

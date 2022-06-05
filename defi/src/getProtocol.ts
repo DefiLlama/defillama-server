@@ -26,7 +26,7 @@ function normalizeEthereum(balances: { [symbol: string]: number }) {
       formattedBalances[b] = Number(balances[b].toFixed(5))
   }
 
-  return formattedBalances;
+  return balances && formattedBalances;
 }
 
 type HistoricalTvls = AWS.DynamoDB.DocumentClient.ItemList | undefined

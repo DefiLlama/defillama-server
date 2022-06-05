@@ -7947,7 +7947,9 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "benddao/index.js",
   twitter: "BendDAO",
-  audit_links: ["https://www.certik.com/projects/bend-dao"],
+  audit_links: ["https://www.certik.com/projects/bend-dao",
+                "https://www.verilog.solutions/audits/BendDAO",
+],
   listedAt: 1652990010
 },
 {

@@ -3919,7 +3919,7 @@ export default ([
     name: "SpookySwap",
     address: "fantom:0x841fad6eae12c286d1fd18d1d525dffa75c7effe",
     symbol: "BOO",
-    url: "https://spookyswap.finance/",
+    url: "https://spooky.fi/#/",
     description: "Automated Market Maker.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/spookyswap.jpg`,

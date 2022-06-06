@@ -8623,4 +8623,25 @@ listedAt: 1650804679
   twitter: "ZetaMarkets",
   listedAt: 1654452112
 },
+{
+  id: "1805",
+  name: "Mole",
+  address: "avax:0x2a1d12B6a84999aeAc82579F730e8Df9875092F0",
+  symbol: "MOLE",
+  url: "https://mole.fi",
+  description: "Mole is a DeFi protocol provided leveraged yield farming, hedge fund and savings.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/mole.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Avalanche"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "mole/index.js",
+  twitter: "moledefi",
+  listedAt: 1654491423
+},
 ] as Protocol[]

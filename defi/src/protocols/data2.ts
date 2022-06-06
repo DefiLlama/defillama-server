@@ -8644,4 +8644,26 @@ listedAt: 1650804679
   twitter: "moledefi",
   listedAt: 1654491423
 },
+{
+  id: "1806",
+  name: "Phuture",
+  address: "0xE1Fc4455f62a6E89476f1072530C20CF1A0622dA",
+  symbol: "PHTR",
+  url: "https://www.phuture.finance",
+  description: "Phuture is a decentralised crypto index platform that simplifies investments through automated, themed index funds on Ethereum.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/phuture.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "phuture",
+  cmcId: "9423",
+  category: "Indexes",
+  chains: ["Ethereum"],
+  oracles: ["Chainlink", "TWAP"],
+  forkedFrom: [],
+  module: "phuture/index.js",
+  twitter: "phuture_finance",
+  audit_links: ["https://www.certik.com/projects/phuture"],
+  listedAt: 1654508924
+},
 ] as Protocol[]

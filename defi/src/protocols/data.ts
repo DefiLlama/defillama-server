@@ -5138,7 +5138,7 @@ export default ([
     name: "Perpetual Protocol",
     address: "0xbc396689893d065f41bc2c6ecbee5e0085233447",
     symbol: "PERP",
-    url: "https://perp.exchange/",
+    url: "https://app.perp.com",
     description:
       "Decentralized Perpetual Contracts for Every Asset.",
     chain: "xDai",

@@ -5549,7 +5549,7 @@ export default [
   category: "CDP",
   chains: ["Avalanche"],
   oracles: ["Chainlink"],
-  forkedFrom: [],
+  forkedFrom: ["Liquity"],
   module: "yetiFinance/index.js",
   twitter: "YetiFinance",
   audit_links: [

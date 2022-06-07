@@ -8731,4 +8731,25 @@ listedAt: 1650804679
   twitter: "PenroseDeFi",
   listedAt: 1654600878
 },
+{
+  id: "1810",
+  name: "Zinax DAO",
+  address: "bsc:0xFf3Aa0D4874C3BD5AdcBB94254005ff19f798AcB",
+  symbol: "ZINAX",
+  url: "https://zinax.org",
+  description: " ZinaX DAO is a fixed deposit bank, built on the blockchain. ZinaX provides high yield savings and mining DeFi pools for crypto enthusiasts.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/zinax-dao.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "zinaxdao/index.js",
+  twitter: "zinaxtoken",
+  listedAt: 1654622081
+},
 ] as Protocol[]

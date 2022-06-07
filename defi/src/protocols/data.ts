@@ -10385,7 +10385,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://www.foxswap.one",
     description: "Harmony yield farm and yield aggregator with auto-compounding vaults.",
     chain: "Harmony",
-    logo: `${baseIconsUrl}/foxswap.png`,
+    logo: `${baseIconsUrl}/foxswap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "farmers-only",

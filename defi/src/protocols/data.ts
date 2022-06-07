@@ -21893,11 +21893,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "killswitch",
   cmcId: "14361",
   category: "Yield Aggregator",
-  chains: ["Binance", "Kucoin"],
+  chains: ["Binance", "Kucoin", "Aurora"],
   module: "killswitch/index.js",
   twitter: "KillSwitch_Defi",
   audit_links: ["https://service.inspex.co/@inspex/rJctqA80u"],
-  oracles: ["Chainlink"],
+  oracles: ["Chainlink", "Nest"],
   listedAt: 1641764117,
 },
 {

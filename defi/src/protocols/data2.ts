@@ -8710,4 +8710,25 @@ listedAt: 1650804679
   audit_links: ["https://solidity.finance/audits/AXIA"],
   listedAt: 1654600878
 },
+{
+  id: "1809",
+  name: "Penrose",
+  address: "polygon:0x2c5ba816da67ce34029fc4a9cc7545d207abf945",
+  symbol: "vAMM-WMATIC/PEN",
+  url: "https://www.penrose.money",
+  description: "A yield optimizer for Dystopia - Penrose is to Dystopia what Convex is to Curve - with a twist.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/penrose.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: ["0xDAO"],
+  module: "penrose/index.js",
+  twitter: "PenroseDeFi",
+  listedAt: 1654600878
+},
 ] as Protocol[]

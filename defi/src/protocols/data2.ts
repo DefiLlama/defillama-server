@@ -8688,4 +8688,26 @@ listedAt: 1650804679
   twitter: "pinkecosystem",
   listedAt: 1654537684
 },
+{
+  id: "1808",
+  name: "Axia Protocol",
+  address: "0x793786e2dd4cc492ed366a94b88a3ff9ba5e7546",
+  symbol: "AXIAv3",
+  url: "https://axiaprotocol.io",
+  description: "Axia Protocol aims to empower crypto investors to take their finances into their own hands through the use of crypto index funds.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/axia-protocol.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "axia",
+  cmcId: "7474",
+  category: "Indexes",
+  chains: ["Ethereum", "Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "AxiaProtocol/index.js",
+  twitter: "axiaprotocol",
+  audit_links: ["https://solidity.finance/audits/AXIA"],
+  listedAt: 1654600878
+},
 ] as Protocol[]

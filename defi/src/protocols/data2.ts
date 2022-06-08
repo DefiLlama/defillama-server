@@ -1838,7 +1838,7 @@ export default [
   description: "MultiPLY with Aurigami, the noncustodial lending and borrowing haven on Aurora",
   chain: "Aurora",
   logo: `${baseIconsUrl}/aurigami.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "aurigami",
   cmcId: "19268",
@@ -1848,6 +1848,7 @@ export default [
   forkedFrom: ["Compound"],
   module: "aurigami.js",
   twitter: "aurigami_PLY",
+  audit_links: ["https://github.com/Aurigami-Finance/aurigami-smart-contracts/blob/main/docs/Aurigami_Finance_Audit_Report_by_WatchPug.pdf"],
   listedAt: 1646168827,
 },
 {

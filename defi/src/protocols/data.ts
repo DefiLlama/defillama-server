@@ -169,7 +169,7 @@ export default ([
     module: "compound-onchain/index.js",
     twitter: "compoundfinance",
     audit_links: ["https://compound.finance/docs/security"],
-    oracles: ["Chainlink", "TWAP"],
+    oracles: ["Chainlink"],
   },
   {
     id: "115",

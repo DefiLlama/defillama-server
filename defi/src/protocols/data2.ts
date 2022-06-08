@@ -2315,7 +2315,7 @@ export default [
   cmcId: null,
   category: "Lending",
   chains: ["Fantom"],
-  oracles: ["Chainlink", "Band"],
+  oracles: ["Chainlink"],
   forkedFrom: ["Aave"],
   module: "the-granary/index.js",
   twitter: "GranaryFinance",

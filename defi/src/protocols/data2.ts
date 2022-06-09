@@ -8816,4 +8816,25 @@ listedAt: 1650804679
   twitter: "spin_fi",
   listedAt: 1654771434
 },
+{
+  id: "1814",
+  name: "Option Dance",
+  address: null,
+  symbol: "-",
+  url: "https://option.dance",
+  description: "OptionDance is a decentralized platform for users to trade options in simplified strategies.",
+  chain: "Mixin",
+  logo: `${baseIconsUrl}/option-dance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Options",
+  chains: ["Mixin"],
+  oracles: [],
+  forkedFrom: [],
+  module: "optiondance/index.js",
+  twitter: "OptionDance",
+  listedAt: 1654779311
+},
 ] as Protocol[]

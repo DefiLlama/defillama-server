@@ -112,7 +112,7 @@ export const chainCoingeckoIds = {
   },
   "Terra": {
     geckoId: "terra-luna",
-    symbol: "LUNA",
+    symbol: "LUNC",
     cmcId: "4172",
     categories: ["Cosmos"],
   },
@@ -947,6 +947,12 @@ export const chainCoingeckoIds = {
     symbol: "STC",
     cmcId: "10202",
   },
+  "Terra2": {
+    geckoId: "terra-luna-2",
+    symbol: "LUNA",
+    cmcId: "20314",
+    categories: ["Cosmos"],
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -1168,6 +1174,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Bytomsidechain"
     case "starcoin":
       return "Starcoin"
+    case "terra2":
+      return "Terra2"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

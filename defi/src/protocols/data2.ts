@@ -8392,11 +8392,11 @@ listedAt: 1650804679
 },
 {
   id: "1794",
-  name: "Ostable Curve",
+  name: "Ostable",
   address: null,
   symbol: "-",
   url: "https://ostable.org",
-  description: "Ostable Curve is part of the Ostable advanced stable coin platform. It locks in GBYTEs (the native asset) as reserve and issues interest and growth tokens in exchange.",
+  description: "Ostable is an advanced stable coin platform powered by bonding curves. It is a collection of autonomous agents that interact with each other to offer various financial products to investors such as interest tokens, stablecoins and stability fund shares.",
   chain: "Obyte",
   logo: `${baseIconsUrl}/ostable-curve.png`,
   audits: "0",
@@ -8407,7 +8407,7 @@ listedAt: 1650804679
   chains: ["Obyte"],
   oracles: [],
   forkedFrom: [],
-  module: "ostable-curve/index.js",
+  module: "ostable/index.js",
   twitter: "ObyteOrg",
   listedAt: 1653984585
 },

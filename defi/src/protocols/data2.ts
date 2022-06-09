@@ -8837,4 +8837,26 @@ listedAt: 1650804679
   twitter: "OptionDance",
   listedAt: 1654779311
 },
+{
+  id: "1815",
+  name: "The Story of Draco",
+  address: "fantom:0x01D3569eEdD1Dd32A698CAB22386d0F110d6b548",
+  symbol: "DRACO",
+  url: "https://dracodefi.com",
+  description: "The most stable Yield Farm / DeFi (AMM) on Fantom for the best farmers",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/the-story-of-draco.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Fantom"],
+  oracles: [],
+  forkedFrom: ["Goose Finance"],
+  module: "draco-story/index.js",
+  twitter: "dracodefi",
+  audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/The%20Story%20of%20Draco/The%20Story%20of%20Draco.pd"],
+  listedAt: 1654799729
+},
 ] as Protocol[]

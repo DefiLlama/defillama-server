@@ -8398,7 +8398,7 @@ listedAt: 1650804679
   url: "https://ostable.org",
   description: "Ostable is an advanced stable coin platform powered by bonding curves. It is a collection of autonomous agents that interact with each other to offer various financial products to investors such as interest tokens, stablecoins and stability fund shares.",
   chain: "Obyte",
-  logo: `${baseIconsUrl}/ostable-curve.png`,
+  logo: `${baseIconsUrl}/ostable.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

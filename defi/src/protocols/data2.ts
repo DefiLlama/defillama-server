@@ -8917,7 +8917,7 @@ listedAt: 1650804679
   category: "Algo-Stable",
   chains: ["Cronos"],
   oracles: ["TWAP"],
-  forkedFrom: ["ToxicDeer Finance"],
+  forkedFrom: ["Tomb Finance"],
   module: "dinopool/index.js",
   twitter: "ToxicDeerFi",
   listedAt: 1654943165

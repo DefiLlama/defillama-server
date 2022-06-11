@@ -8901,4 +8901,25 @@ listedAt: 1650804679
   twitter: "jupiter_swap",
   listedAt: 1654869440
 },
+{
+  id: "1818",
+  name: "DinoPool",
+  address: "cronos:0x7091002B330D8054cb8584e5057451Ba983b975E",
+  symbol: "DINOP",
+  url: "https://dinopool.finance",
+  description: "The first DEER algorithmic pegged token and a special DEER birthday gift for the community with the mission of contributing value to the Ecosystem.",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/dinopool.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stable",
+  chains: ["Cronos"],
+  oracles: ["TWAP"],
+  forkedFrom: ["ToxicDeer Finance"],
+  module: "dinopool/index.js",
+  twitter: "ToxicDeerFi",
+  listedAt: 1654943165
+},
 ] as Protocol[]

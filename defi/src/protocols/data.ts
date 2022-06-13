@@ -3709,7 +3709,7 @@ export default ([
     category: "Dexes",
     chains: ["Ethereum"],
     module: "integral/index.js",
-    twitter: "ProfessorJEY",
+    twitter: "IntegralHQ",
     audit_links: ["https://docs.integral.link/library/audit-reports"],
   },
   {

@@ -8944,4 +8944,26 @@ listedAt: 1650804679
   audit_links: ["https://github.com/solidproof/projects/blob/main/Crown%20Finance/SmartContract_Audit_Solidproof_Crown%20Finance.pdf"],
   listedAt: 1655070947
 },
+{
+  id: "1820",
+  name: "Unipilot",
+  address: "0x37c997b35c619c21323f3518b9357914e8b99525",
+  symbol: "PILOT",
+  url: "https://unipilot.io",
+  description: "Pilot protocol is a concentrated liquidity manager (CLM) that is built with the aim to facilitate the liquidity providers in terms of managing their liquidity efficiently.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/unipilot.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "unipilot",
+  cmcId: "11113",
+  category: "Yield",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "unipilot/index.js",
+  twitter: "unipilot_io",
+  audit_links: ["https://github.com/Unipilot/unipilot-audits"],
+  listedAt: 1655152786
+},
 ] as Protocol[]

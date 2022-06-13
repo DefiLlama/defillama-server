@@ -207,23 +207,23 @@ export default [
       },
       q_and_a: null
     },
-    {
-      id: "12",
-      formattedName: "Ramin Erfani",
-      akaNames: null,
-      profile_pic: `ramin_erfani.png`,  
-      anon: false,
-      associatedProtocols: ["SushiSwap"],
-      associatedChains: null,
-      twitter: "chillichelli",
-      telegram: null,
-      website: null,
-      bio: null,
-      roles: {
-        "Core-developer": ["SushiSwap"]
-      },
-      q_and_a: null
-    },
+    // {
+    //   id: "12",
+    //   formattedName: "Ramin Erfani",
+    //   akaNames: null,
+    //   profile_pic: `ramin_erfani.png`,  
+    //   anon: false,
+    //   associatedProtocols: ["SushiSwap"],
+    //   associatedChains: null,
+    //   twitter: "chillichelli",
+    //   telegram: null,
+    //   website: null,
+    //   bio: null,
+    //   roles: {
+    //     "Core-developer": ["SushiSwap"]
+    //   },
+    //   q_and_a: null
+    // },
     {
       id: "13",
       formattedName: "Matthew Lilley",

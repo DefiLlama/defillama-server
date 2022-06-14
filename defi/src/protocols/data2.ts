@@ -856,7 +856,7 @@ export default [
   oracles: [],
   forkedFrom: [],
   module: "hashflow/index.js",
-  twitter: "hashflownetwork",
+  twitter: "hashflow",
   listedAt: 1645555257,
 },
 {

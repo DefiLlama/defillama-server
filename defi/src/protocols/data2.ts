@@ -8992,7 +8992,7 @@ listedAt: 1650804679
   name: "MyTrade",
   address: "polygon:0x4535E52cdF3AB787B379b7b72B5990767E6747E4",
   symbol: "MYT",
-  url: "https://astarfarm.com",
+  url: "https://www.mytrade.org",
   description: "Next Generation DEX, Not Just a Swap.",
   chain: "Polygon",
   logo: `${baseIconsUrl}/mytrade.png`,

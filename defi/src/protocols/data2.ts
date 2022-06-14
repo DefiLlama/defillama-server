@@ -7915,7 +7915,7 @@ listedAt: 1650804679
   address: "bsc:0x78F5d389F5CDCcFc41594aBaB4B0Ed02F31398b3",
   symbol: "APX",
   url: "https://www.apollox.com/en/APX",
-  description: "The world's first centralized and decentralized (CEX-DEX) hybrid crypto exchange that offers trading of Bitcoin, Ethereum and other major cryptocurrencies.",
+  description: "ApolloX Finance is a decentralized crypto trading exchange. Unlike the common Automated Market Makers model (AMM) which is adopted by other decentralized exchanges, ApolloX Finance adopts the order book model, which supports both spot and futures trading. By using off-chain order books and on-chain settlement, its protocol aims to create an efficient, fair and trustless financial market that is not controlled by any centralized organization.",
   chain: "Binance",
   logo: `${baseIconsUrl}/apollox.png`,
   audits: "0",

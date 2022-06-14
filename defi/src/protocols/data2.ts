@@ -8318,7 +8318,7 @@ listedAt: 1650804679
   chains: ["Klaytn"],
   oracles: ["TWAP"],
   forkedFrom: ["Curve"],
-  module: "i4i-finance/index.js",
+  module: "kokonut-swap/index.js",
   twitter: null,
   audit_links: ["https://drive.google.com/file/d/1I0HnU8Rs88HHqBC6Y3aUcEKTPZfVTAZD/view"],
   listedAt: 1653727694  

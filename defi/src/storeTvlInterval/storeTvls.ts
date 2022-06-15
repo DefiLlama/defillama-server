@@ -11,6 +11,7 @@ async function iterateProtocols(
   protocolIndexes:number[]
 ) {
   const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlocks();
+  console.log("blocks", chainBlocks)
   const knownTokenPrices = {} as TokenPrices;
   const actions = protocolIndexes
     .map(idx=>protocols[idx])

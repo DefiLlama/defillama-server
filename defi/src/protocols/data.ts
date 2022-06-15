@@ -899,9 +899,9 @@ export default ([
     symbol: "IDLE",
     url: "https://idle.finance",
     description:
-      "Choose your strategy and earn the yield you deserve without worry about finding the best option, either if you want to optimize returns or risks.",
+      "Idle is a decentralized protocol and set of products that aim to unlock the power of decentralized finance as a one-stop source of yield. It allows users to algorithmically optimize their digital asset allocation across leading DeFi protocols, whether they want to maximize it or keep tabs on their risk/return profile.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/idle-finance.png`,
+    logo: `${baseIconsUrl}/idle-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "idle",
@@ -910,7 +910,7 @@ export default ([
     chains: ["Ethereum"],
     module: "idle/index.js",
     twitter: "idlefinance",
-    audit_links: ["https://certificate.quantstamp.com/full/idle-finance"],
+    audit_links: ["https://docs.idle.finance/developers/security/audits"],
     oracles: ["Chainlink"],
   },
   {

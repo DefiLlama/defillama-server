@@ -10,6 +10,7 @@ const maxRetries = 4;
 async function iterateProtocols(
   protocolIndexes:number[]
 ) {
+  console.log("preblocks")
   const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlocks();
   console.log("blocks", chainBlocks)
   const knownTokenPrices = {} as TokenPrices;

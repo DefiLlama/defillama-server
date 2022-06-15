@@ -9085,7 +9085,7 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/everlend.png`,
   audits: "0",
   audit_note: null,
-  gecko_id: "swapsicle-pops",
+  gecko_id: null,
   cmcId: null,
   category: "Lending",
   chains: ["Solana"],

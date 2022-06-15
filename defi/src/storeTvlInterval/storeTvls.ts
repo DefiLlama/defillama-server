@@ -1,5 +1,5 @@
 import { storeTvl } from "./getAndStoreTvl";
-import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
+import { getCurrentBlocks } from "./blocks";
 import { getCoingeckoLock, releaseCoingeckoLock } from "../utils/shared/coingeckoLocks";
 import { TokenPrices } from "../types";
 import protocols from "../protocols/data";

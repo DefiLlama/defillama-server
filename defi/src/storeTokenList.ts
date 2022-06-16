@@ -21,7 +21,7 @@ const handler = async () => {
         "arbitrum-one",
         "binance-smart-chain",
         "xdai",
-        "meter,
+        "meter
     ].map(async chain => {
         const chainCoins = (await Promise.all(cgCoins
             .filter(coin => coin.platforms[chain] !== undefined && coin.platforms[chain] !== "")

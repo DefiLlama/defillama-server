@@ -953,6 +953,16 @@ export const chainCoingeckoIds = {
     cmcId: "20314",
     categories: ["Cosmos"],
   },
+  "SXnetwork": {
+    geckoId: "sx-network",
+    symbol: "SX",
+    cmcId: "8377",
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Matic",
+      types: ["L2", "gas"]
+    },
+},
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -1176,6 +1186,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Starcoin"
     case "terra2":
       return "Terra2"
+    case "sxnetwork":
+      return "SXnetwork"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

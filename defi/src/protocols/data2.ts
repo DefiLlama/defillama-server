@@ -9117,4 +9117,25 @@ listedAt: 1650804679
   audit_links: ["https://etherauthority.io/sahara-dao-protocol-smart-contract-audit"],
   listedAt: 1655464683
 },
+{
+  id: "1828",
+  name: "SharkSwap",
+  address: "0xa0cb58e7f783fce0f4042c790ea3045c48cd51e8",
+  symbol: "SHARK",
+  url: "https://sharkswap.xyz",
+  description: "SharkSwap is a decentralized trading platform on the SX network.",
+  chain: "SXnetwork",
+  logo: `${baseIconsUrl}/sharkswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "shark",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["SXnetwork"],
+  oracles: [],
+  forkedFrom: ["SushiSwap"],
+  module: "sharkswap/index.js",
+  twitter: "SharkSwap_xyz",
+  listedAt: 1655466324
+},
 ] as Protocol[]

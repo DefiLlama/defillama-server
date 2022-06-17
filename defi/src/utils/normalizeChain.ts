@@ -959,7 +959,7 @@ export const chainCoingeckoIds = {
     cmcId: "8377",
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "Matic",
+      chain: "Polygon",
       types: ["L2", "gas"]
     },
 },

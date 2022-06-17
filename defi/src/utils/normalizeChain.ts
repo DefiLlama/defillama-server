@@ -1186,7 +1186,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Starcoin"
     case "terra2":
       return "Terra2"
-    case "sxnetwork":
+    case "sx":
       return "SXnetwork"
       
     default:

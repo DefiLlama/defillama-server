@@ -9103,7 +9103,7 @@ listedAt: 1650804679
   url: "https://saharadao.finance",
   description: "Fractional-Algorithmic Synthetic Token pegged to the value of 1 MMF & 1 MUSD on Cronos Chain.",
   chain: "Cronos",
-  logo: `${baseIconsUrl}/saharadao.png`,
+  logo: `${baseIconsUrl}/saharadao.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: "saharadao",

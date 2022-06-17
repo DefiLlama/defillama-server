@@ -13987,7 +13987,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "revest-finance",
   cmcId: "12230",
   category: "NFT Lending",
-  chains: ["Ethereum"],
+  chains: ["Ethereum", "Avalanche", "Polygon", "Fantom"],
   module: "revest/index.js",
   twitter: "RevestFinance",
   audit_links: ["https://solidity.finance/audits/Revest"],

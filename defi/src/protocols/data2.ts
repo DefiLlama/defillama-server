@@ -4357,8 +4357,8 @@ export default [
 {
   id: "1608",
   name: "Kagla Finance",
-  address: null ,
-  symbol: "-",
+  address: "astar:0x257f1a047948f73158DaDd03eB84b34498bCDc60" ,
+  symbol: "KGL",
   url: "https://kagla.finance",
   description: "The biggest native stable swap on Astar Network boosting.",
   chain: "Astar",

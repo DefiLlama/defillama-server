@@ -9095,4 +9095,26 @@ listedAt: 1650804679
   twitter: "EverlendFinance",
   listedAt: 1655289558
 },
+{
+  id: "1827",
+  name: "SaharaDAO",
+  address: "cronos:0xc9b23289c60783649aa327732fccec2f5d0ac466",
+  symbol: "MNG",
+  url: "https://saharadao.finance",
+  description: "Fractional-Algorithmic Synthetic Token pegged to the value of 1 MMF & 1 MUSD on Cronos Chain.",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/saharadao.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "saharadao",
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Cronos"],
+  oracles: ["Chainlink"],
+  forkedFrom: ["Fantasm"],
+  module: "saharadao/index.js",
+  twitter: "SaharaDao",
+  audit_links: ["https://etherauthority.io/sahara-dao-protocol-smart-contract-audit"],
+  listedAt: 1655464683
+},
 ] as Protocol[]

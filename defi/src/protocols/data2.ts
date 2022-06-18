@@ -9272,8 +9272,8 @@ listedAt: 1650804679
 {
   id: "1835",
   name: "Tangent",
-  address: "icon:cx785d504f44b5d2c8dac04c5a1ecd75f18ee57d16",
-  symbol: "FIN",
+  address: null,
+  symbol: "-",
   url: "https://tangent.bar",
   description: "Tangent is an advanced automated market maker (AMM) style DEX launched on Hedera.",
   chain: "Hedera",

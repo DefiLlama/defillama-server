@@ -9312,4 +9312,25 @@ listedAt: 1650804679
   twitter: "Investin_pro",
   listedAt: 1655548694
 },
+{
+  id: "1837",
+  name: "VAX",
+  address: null,
+  symbol: "-",
+  url: "https://vax.mtv.guru",
+  description: "Decentralized Fund Management Protocol, enabling anyone to invest or start hedge funds in a trustless and secure environment on leading blockchains.",
+  chain: "MultiVAC",
+  logo: `${baseIconsUrl}/vax.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["MultiVAC"],
+  oracles: [],
+  forkedFrom: ["Swapr"],
+  module: "VAX/index.js",
+  twitter: "FTM1337",
+  listedAt: 1655561386
+},
 ] as Protocol[]

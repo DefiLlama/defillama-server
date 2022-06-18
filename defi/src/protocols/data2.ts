@@ -9378,4 +9378,26 @@ listedAt: 1650804679
   audit_links: ["https://aave.com/security"],
   listedAt: 1655586107
 },
+{
+  id: "1840",
+  name: "Sushiswap Kashi",
+  address: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+  symbol: "SUSHI",
+  url: "https://sushi.com",
+  description: "Lend and borrow assets in Kashi isolated risk markets.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/sushiswap-kashi.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: ["Chainlink"],
+  forkedFrom: ["Uniswap"],
+  module: "sushiswap-kashi/index.js",
+  twitter: "SushiSwap",
+  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf",],
+  listedAt: 1655586107
+},
 ] as Protocol[]

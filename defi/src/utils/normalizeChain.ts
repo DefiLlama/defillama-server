@@ -979,6 +979,11 @@ export const chainCoingeckoIds = {
     symbol: "ORE",
     cmcId: "12743",
   },
+  "LBRY": {
+    geckoId: "lbry-credits",
+    symbol: "LBC",
+    cmcId: "1298",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -1210,6 +1215,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "MultiVAC"
     case "ore":
       return "ORE"
+    case "lbry":
+      return "LBRY"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

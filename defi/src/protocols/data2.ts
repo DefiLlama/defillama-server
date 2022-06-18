@@ -9278,7 +9278,7 @@ listedAt: 1650804679
   url: "https://tangent.bar",
   description: "Tangent is an advanced automated market maker (AMM) style DEX launched on Hedera.",
   chain: "Hedera",
-  logo: `${baseIconsUrl}/tangent.jpg`,
+  logo: `${baseIconsUrl}/tangent.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

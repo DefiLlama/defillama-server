@@ -9318,7 +9318,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://vax.mtv.guru",
-  description: "Decentralized Fund Management Protocol, enabling anyone to invest or start hedge funds in a trustless and secure environment on leading blockchains.",
+  description: "Fee-Revenue governable DEX with targeted trade-fee adjustments, suitable even as StableSwap with 0.075% ultra-low fee, modeled using inspiration from 1inch, DXDao, Solidly, Sushi & UniswapV3 contracts.",
   chain: "MultiVAC",
   logo: `${baseIconsUrl}/vax.png`,
   audits: "0",

@@ -9356,4 +9356,26 @@ listedAt: 1650804679
   audit_links: ["https://aave.com/security"],
   listedAt: 1655586107
 },
+{
+  id: "1839",
+  name: "Aave Arc",
+  address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+  symbol: "AAVE",
+  url: "https://aave.com",
+  description: "Aave Arc is a DeFi liquidity market designed to be compliant with AML regulations, with all participating institutions required to undergo Know Your Customer (KYC) verification.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/aave-arc.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "aave-arc/index.js",
+  twitter: "AaveAave",
+  audit_links: ["https://aave.com/security"],
+  listedAt: 1655586107
+},
 ] as Protocol[]

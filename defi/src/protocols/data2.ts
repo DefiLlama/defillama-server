@@ -9334,4 +9334,26 @@ listedAt: 1650804679
   twitter: "FTM1337",
   listedAt: 1655561386
 },
+{
+  id: "1838",
+  name: "AAVE V1",
+  address: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+  symbol: "AAVE",
+  url: "https://aave.com",
+  description: "Earn interest, borrow assets, and build applications",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/aave-v1.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "aave-v1/index.js",
+  twitter: "AaveAave",
+  audit_links: ["https://aave.com/security"],
+  listedAt: 1655586107
+},
 ] as Protocol[]

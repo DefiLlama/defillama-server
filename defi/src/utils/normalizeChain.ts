@@ -962,6 +962,12 @@ export const chainCoingeckoIds = {
       chain: "Polygon",
       types: ["L2", "gas"]
     },
+    "Echelon": {
+      geckoId: "echelon",
+      symbol: "ECH",
+      cmcId: "20047",
+      categories: ["EVM", "Cosmos"],
+    },
 },
 } as {
   [chain: string]: {
@@ -1188,6 +1194,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Terra2"
     case "sx":
       return "SXnetwork"
+    case "echelon":
+      return "Echelon"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

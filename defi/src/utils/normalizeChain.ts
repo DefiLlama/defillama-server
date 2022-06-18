@@ -968,6 +968,11 @@ export const chainCoingeckoIds = {
       cmcId: "20047",
       categories: ["EVM", "Cosmos"],
     },
+    "MultiVAC": {
+      geckoId: "multivac",
+      symbol: "MTV",
+      cmcId: "3853",
+    },
 },
 } as {
   [chain: string]: {
@@ -1196,7 +1201,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "SXnetwork"
     case "echelon":
       return "Echelon"
-      
+    case "multivac":
+      return "MultiVAC"
+
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -1,9 +1,9 @@
 const normalizedChainReplacements = {
-  "binance":"bsc",
+  "binance": "bsc",
   "wanchain": "wan",
   "kucoin": "kcc",
 } as {
-  [chain:string]:string
+  [chain: string]: string
 }
 
 export function normalizeChain(chain: string) {
@@ -13,10 +13,10 @@ export function normalizeChain(chain: string) {
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
 
-export function addToChains(chains:string[], chainDisplayName:string){
+export function addToChains(chains: string[], chainDisplayName: string) {
   if (chainCoingeckoIds[chainDisplayName] !== undefined && !chains.includes(chainDisplayName)) {
     chains.push(chainDisplayName);
-  } else if(chainDisplayName.includes('-')){
+  } else if (chainDisplayName.includes('-')) {
     const chainName = chainDisplayName.split('-')[0]
     addToChains(chains, chainName)
   }
@@ -362,43 +362,43 @@ export const chainCoingeckoIds = {
     cmcId: "1765",
   },
   "Songbird": {
-      geckoId: "songbird",
-      symbol: "SGB",
-      cmcId: "12186",
-      categories: ["EVM"],
-      chainId: 19,
+    geckoId: "songbird",
+    symbol: "SGB",
+    cmcId: "12186",
+    categories: ["EVM"],
+    chainId: 19,
   },
   "EnergyWeb": {
-      geckoId: "energy-web-token",
-      symbol: "EWT",
-      cmcId: "5268",
-      categories: ["EVM", "Parachain"],
-      parent: {
-        chain: "Polkadot",
-        types: ["parachain"]
-      },
-      chainId: 246,
+    geckoId: "energy-web-token",
+    symbol: "EWT",
+    cmcId: "5268",
+    categories: ["EVM", "Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+    chainId: 246,
   },
   "HPB": {
-      geckoId: "high-performance-blockchain",
-      symbol: "HPB",
-      cmcId: "2345",
-      categories: ["EVM"],
-      chainId: 269,
+    geckoId: "high-performance-blockchain",
+    symbol: "HPB",
+    cmcId: "2345",
+    categories: ["EVM"],
+    chainId: 269,
   },
   "GoChain": {
-      geckoId: "gochain",
-      symbol: "GO",
-      cmcId: "2861",
-      categories: ["EVM"],
-      chainId: 60,
+    geckoId: "gochain",
+    symbol: "GO",
+    cmcId: "2861",
+    categories: ["EVM"],
+    chainId: 60,
   },
   "TomoChain": {
-      geckoId: "tomochain",
-      symbol: "TOMO",
-      cmcId: "2570",
-      categories: ["EVM"],
-      chainId: 88,
+    geckoId: "tomochain",
+    symbol: "TOMO",
+    cmcId: "2570",
+    categories: ["EVM"],
+    chainId: 88,
   },
   "Fusion": {
     geckoId: "fsn",
@@ -863,7 +863,7 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
   },
-    "Stafi": {
+  "Stafi": {
     geckoId: "stafi",
     symbol: "FIS",
     cmcId: "5882",
@@ -962,18 +962,18 @@ export const chainCoingeckoIds = {
       chain: "Polygon",
       types: ["L2", "gas"]
     },
-    "Echelon": {
-      geckoId: "echelon",
-      symbol: "ECH",
-      cmcId: "20047",
-      categories: ["EVM", "Cosmos"],
-    },
-    "MultiVAC": {
-      geckoId: "multivac",
-      symbol: "MTV",
-      cmcId: "3853",
-    },
-},
+  },
+  "Echelon": {
+    geckoId: "echelon",
+    symbol: "ECH",
+    cmcId: "20047",
+    categories: ["EVM", "Cosmos"],
+  },
+  "MultiVAC": {
+    geckoId: "multivac",
+    symbol: "MTV",
+    cmcId: "3853",
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -994,7 +994,7 @@ chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef"]
 
-export function transformNewChainName(chain:string){
+export function transformNewChainName(chain: string) {
   switch (chain) {
     case "Binance":
       return "BSC"
@@ -1009,24 +1009,24 @@ export function transformNewChainName(chain:string){
   }
 }
 
-export function getChainDisplayName(normalizedChain: string, useNewChainNames: boolean):string {
-  if(extraSections.includes(normalizedChain)){
+export function getChainDisplayName(normalizedChain: string, useNewChainNames: boolean): string {
+  if (extraSections.includes(normalizedChain)) {
     return normalizedChain
   }
-  if(normalizedChain.includes('-')){
-    return normalizedChain.split('-').map(chain=>getChainDisplayName(chain, useNewChainNames)).join('-')
+  if (normalizedChain.includes('-')) {
+    return normalizedChain.split('-').map(chain => getChainDisplayName(chain, useNewChainNames)).join('-')
   }
   switch (normalizedChain) {
     case "bsc":
-      return useNewChainNames?"BSC":"Binance"
+      return useNewChainNames ? "BSC" : "Binance"
     case "wan":
       return "Wanchain"
     case "kcc":
-      return useNewChainNames?"KCC":"Kucoin"
+      return useNewChainNames ? "KCC" : "Kucoin"
     case "xdai":
-      return useNewChainNames?"Gnosis":"xDai"
+      return useNewChainNames ? "Gnosis" : "xDai"
     case "cosmos":
-      return useNewChainNames?"CosmosHub":"Cosmos"
+      return useNewChainNames ? "CosmosHub" : "Cosmos"
     case "avax":
       return "Avalanche"
     case "xdaiarb":

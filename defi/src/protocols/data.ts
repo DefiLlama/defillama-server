@@ -9855,8 +9855,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "sherlock/index.js",
     twitter: "Sherlock_DeFi",
-    audit_links: ["https://certificate.quantstamp.com/full/sherlock", 
-                  "https://code423n4.com/reports/2021-07-sherlock/"],
+    audit_links: ["https://github.com/sherlock-protocol/sherlock-v2-core/tree/main/audits"],
   },
   {
     id: "605",

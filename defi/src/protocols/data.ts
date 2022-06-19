@@ -1908,7 +1908,7 @@ export default ([
     chains: ["Ethereum"],
     module: "saddle/index.js",
     twitter: "saddlefinance",
-    audit_links: ["https://github.com/saddle-finance/saddle-audits"],
+    audit_links: ["https://github.com/saddle-finance/saddle-audits/blob/master/10-29-2020_Certik.pdf", "https://blog.openzeppelin.com/saddle-contracts-audit", "https://github.com/saddle-finance/saddle-audits/blob/master/12-09-2020_Quantstamp.pdf"],
     forkedFrom: [],
   },
   {

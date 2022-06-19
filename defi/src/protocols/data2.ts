@@ -9400,4 +9400,25 @@ listedAt: 1650804679
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf",],
   listedAt: 1655586107
 },
+{
+  id: "1841",
+  name: "Ratio Finance",
+  address: "solana:ratioMVg27rSZbSvBopUvsdrGUzeALUfFma61mpxc8J",
+  symbol: "RATIO",
+  url: "https://ratio.finance",
+  description: "Ratio Finance is a Collateralized Debt Position platform that allows investors to extend the capabilities of their liquidity provisioning efforts by locking their assets into safe & secure vaults, minting USDr (Ratio Finance’s dynamically risk-adjusted stablecoin), and utilizing USDr within the Solana ecosystem.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/ratio-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "ratio-finance",
+  cmcId: "18048",
+  category: "CDP",
+  chains: ["Solana"],
+  oracles: ["Coingecko"],
+  forkedFrom: [],
+  module: "ratio-finance/index.js",
+  twitter: "RatioFinance",
+  listedAt: 1655652176
+},
 ] as Protocol[]

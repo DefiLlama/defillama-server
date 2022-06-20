@@ -9424,7 +9424,7 @@ listedAt: 1650804679
 {
   id: "1842",
   name: "Kasava Dex",
-  address: "",
+  address: null,
   symbol: "-",
   url: "https://kasavadex.com",
   description: "Kasava dex is an automated market-making (AMM) decentralized exchange for the KAVA Ethereum Co Chain.",

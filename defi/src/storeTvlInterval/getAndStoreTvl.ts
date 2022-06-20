@@ -65,7 +65,7 @@ async function getTvl(
             balance[0].includes("0x") && typeof balance[1] === "string"
         ); // Can't use stored prices because coingecko has undocumented aliases which we realy on (eg: busd -> binance-usd)
         let tvlPromise: ReturnType<typeof util.computeTVL>;
-        if (isStandard && (useCurrentPrices || unixTimestamp > 1626000000)) { // July 11
+        if (useCurrentPrices || unixTimestamp > 1626000000) { // July 11
           tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp);
         } else {
           tvlPromise = util.computeTVL(
@@ -116,9 +116,11 @@ async function getTvl(
       if (i >= maxRetries - 1) {
         throw e
       } else {
-        const currentTime = getCurrentUnixTimestamp()
-        connection.execute('INSERT INTO `errors` VALUES (?, ?, ?)', [currentTime, protocol.name, String(e)])
-          .catch(e=>console.log("mysql error", e));
+        if(useCurrentPrices === true){
+          const currentTime = getCurrentUnixTimestamp()
+          connection.execute('INSERT INTO `errors` VALUES (?, ?, ?)', [currentTime, protocol.name, String(e)])
+            .catch(e => console.log("mysql error", e));
+        }
         continue;
       }
     }

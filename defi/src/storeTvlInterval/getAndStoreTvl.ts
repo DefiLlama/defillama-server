@@ -65,7 +65,7 @@ async function getTvl(
             balance[0].includes("0x") && typeof balance[1] === "string"
         ); // Can't use stored prices because coingecko has undocumented aliases which we realy on (eg: busd -> binance-usd)
         let tvlPromise: ReturnType<typeof util.computeTVL>;
-        if (useCurrentPrices || unixTimestamp > 1626000000) { // July 11
+        if (isStandard && (useCurrentPrices || unixTimestamp > 1626000000)) { // July 11
           tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp);
         } else {
           tvlPromise = util.computeTVL(

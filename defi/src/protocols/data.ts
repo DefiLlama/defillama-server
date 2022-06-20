@@ -18420,7 +18420,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Merit circle is creating a DAO that develops opportunities to earn through play for people who want to help build the metaverse.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/merit-circle.png`,
-  audit: "2",
+  audits: "2",
   audit_note: null,
   gecko_id: "merit-circle",
   cmcId: "13523",

@@ -38,6 +38,18 @@ function replaceLast(historical: HistoricalTvls, last: HourlyTvl) {
   }
 }
 
+function selectChainFromItem(item: any, normalizedChain:string){
+  let altChainName = undefined;
+  if(normalizedChain === "avax"){
+    altChainName="avalanche"
+  } else if (normalizedChain === "avalanche"){
+    altChainName="avax"
+  } else {
+    return item[normalizedChain]
+  }
+  return item[normalizedChain] ?? item[altChainName]
+}
+
 export async function craftProtocolResponse(rawProtocolName:string|undefined, useNewChainNames: boolean, useHourlyData: boolean){
   const protocolName = rawProtocolName?.toLowerCase();
   console.log(protocolName)
@@ -94,19 +106,19 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
     container.tvl = historicalUsdTvl
       ?.map((item) => ({
         date: item.SK,
-        totalLiquidityUSD: item[normalizedChain],
+        totalLiquidityUSD: selectChainFromItem(item, normalizedChain),
       }))
       .filter((item) => item.totalLiquidityUSD !== undefined);
     container.tokensInUsd = historicalUsdTokenTvl
       ?.map((item) => ({
         date: item.SK,
-        tokens: normalizeEthereum(item[normalizedChain]),
+        tokens: normalizeEthereum(selectChainFromItem(item, normalizedChain)),
       }))
       .filter((item) => item.tokens !== undefined);
     container.tokens = historicalTokenTvl
       ?.map((item) => ({
         date: item.SK,
-        tokens: normalizeEthereum(item[normalizedChain]),
+        tokens: normalizeEthereum(selectChainFromItem(item, normalizedChain)),
       }))
       .filter((item) => item.tokens !== undefined);
     if (container.tvl !== undefined && container.tvl.length > 0) {

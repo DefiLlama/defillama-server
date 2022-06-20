@@ -9421,4 +9421,25 @@ listedAt: 1650804679
   twitter: "RatioFinance",
   listedAt: 1655652176
 },
+{
+  id: "1842",
+  name: "Kasava Dex",
+  address: "",
+  symbol: "-",
+  url: "https://kasavadex.com",
+  description: "Kasava dex is an automated market-making (AMM) decentralized exchange for the KAVA Ethereum Co Chain.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kasava-dex.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Kava"],
+  oracles: ["TWAP"],
+  forkedFrom: ["Uniswap"],
+  module: "kasavadex/index.js",
+  twitter: "Kasava_dex",
+  listedAt: 1655735911
+},
 ] as Protocol[]

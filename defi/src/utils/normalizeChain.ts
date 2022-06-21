@@ -748,7 +748,7 @@ export const chainCoingeckoIds = {
     symbol: "EVMOS",
     cmcId: null,
     categories: ["EVM", "Cosmos"],
-    chainId: 9001,
+    chainId: "9001",
   },
   "Proton": {
     geckoId: "proton",

@@ -9443,4 +9443,25 @@ listedAt: 1650804679
   twitter: "Kasava_dex",
   listedAt: 1655735911
 },
+{
+  id: "1843",
+  name: "Kavacave",
+  address: null,
+  symbol: "-",
+  url: "https://www.kavacave.app",
+  description: "A Unique Way To earn higher APR on your returns without any deposit fee on Kava.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kavacave.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Kava"],
+  oracles: [],
+  forkedFrom: ["PancakeSwap"],
+  module: "kavacave/index.js",
+  twitter: "kavacave",
+  listedAt: 1655800202
+},
 ] as Protocol[]

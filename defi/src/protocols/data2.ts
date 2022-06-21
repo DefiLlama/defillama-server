@@ -6024,7 +6024,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Liquid Staking",
+  category: "Options",
   chains: ["Solana"],
   oracles: ["Pyth"],
   forkedFrom: [],

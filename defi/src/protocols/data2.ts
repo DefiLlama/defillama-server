@@ -9594,4 +9594,25 @@ listedAt: 1650804679
   audit_links: ["https://github.com/AcalaNetwork/Acala/tree/master/audit"],
   listedAt: 1655893703
 },
+{
+  id:"1850",
+  name: "Union Finance",
+  address: "0x5Dfe42eEA70a3e6f93EE54eD9C321aF07A85535C",
+  symbol: "UNION",
+  url: "https://union.finance",
+  description: "A decentralized protocol for permissionless credit.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/union-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum", "Arbitrum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "union-finance/index.js",
+  twitter: "unionprotocol",
+  listedAt: 1655894184
+},
 ] as Protocol[]

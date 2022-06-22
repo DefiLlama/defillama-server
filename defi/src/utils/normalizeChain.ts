@@ -989,6 +989,16 @@ export const chainCoingeckoIds = {
     symbol: "RVN",
     cmcId: "2577",
   },
+  "Acala": {
+    geckoId: "acala",
+    symbol: "ACA",
+    cmcId: "6756",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
 } as {
   [chain: string]: {
     geckoId: string | null,
@@ -1224,6 +1234,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LBRY"
     case "rvn":
       return "Ravencoin"
+    case "acala":
+      return "Acala"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

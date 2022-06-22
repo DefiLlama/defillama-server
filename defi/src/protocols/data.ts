@@ -9897,7 +9897,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "607",
     name: "Hundred Finance",
-    address: "hundredfinance.jpg",
+    address: "0x10010078a54396f62c96df8532dc2b4847d47ed3",
     symbol: "HND",
     url: "https://hundred.finance",
     description: "Hundred Finance is the successor to Percent Finance, a community owned fork of Compound Finance using Chainlink oracles.",

@@ -9547,6 +9547,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "acala-dex/index.js",
   twitter: "AcalaNetwork",
+  audit_links: ["https://github.com/AcalaNetwork/Acala/tree/master/audit"],
   listedAt: 1655893567
 },
 {
@@ -9568,6 +9569,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "acala-lending/index.js",
   twitter: "AcalaNetwork",
+  audit_links: ["https://github.com/AcalaNetwork/Acala/tree/master/audit"],
   listedAt: 1655893651
 },
 {
@@ -9589,6 +9591,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "acala-staking/index.js",
   twitter: "AcalaNetwork",
+  audit_links: ["https://github.com/AcalaNetwork/Acala/tree/master/audit"],
   listedAt: 1655893703
 },
 ] as Protocol[]

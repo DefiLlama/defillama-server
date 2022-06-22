@@ -998,17 +998,17 @@ export const chainCoingeckoIds = {
       chain: "Polkadot",
       types: ["parachain"]
     },
-  },
-} as {
-  [chain: string]: {
-    geckoId: string | null,
-    symbol: string | null,
-    cmcId: string | null,
-    categories?: string[],
-    chainId?: number,
-    parent?: {
-      chain: string,
-      types: string[]
+  } as unknown as {
+    [chain: string]: {
+      geckoId: string | null,
+      symbol: string | null,
+      cmcId: string | null,
+      categories?: string[],
+      chainId?: number,
+      parent?: {
+        chain: string,
+        types: string[]
+      }
     }
   }
 }
@@ -1248,4 +1248,11 @@ export function getDisplayChain(chains: string[]) {
   } else {
     return chains[0];
   }
+}
+function transformNewChainName(chain: any, string: any) {
+  throw new Error("Function not implemented.");
+}
+
+function chain(chain: any, string: any) {
+  throw new Error("Function not implemented.");
 }

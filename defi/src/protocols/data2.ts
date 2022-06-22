@@ -9552,9 +9552,9 @@ listedAt: 1650804679
 },
 {
   id: "1848",
-  name: "Acala Dollar (aUSD)",
+  name: "Acala Dollar",
   address: "acala:-",
-  symbol: "ACA",
+  symbol: "aUSD",
   url: "https://apps.acala.network/vault",
   description: "The Acala USD (aUSD) stablecoin protocol enables a decentralized, cross-chain stable currency that serves as the native stablecoin of the Polkadot and Kusama ecosystem",
   chain: "Acala",

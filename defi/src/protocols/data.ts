@@ -1146,7 +1146,7 @@ export default ([
       "Based on The Force Protocol, ForTube is committed to providing decentralized lending services for cryptoasset enthusiasts around the world.\r\n",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/fortube.jpg`,
-    audits: "4",
+    audits: "2",
     audit_note: null,
     gecko_id: "force-protocol",
     cmcId: "4118",

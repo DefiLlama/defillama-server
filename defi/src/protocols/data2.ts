@@ -9507,4 +9507,25 @@ listedAt: 1650804679
   audit_links: ["https://drive.google.com/file/d/1kJkVsFuK0GAysk1yOVe_Hwu6eFI39L--/view"],
   listedAt: 1655839251
 },
+{
+  id: "1846",
+  name: "KefirSwap",
+  address: "kava:0xf5E547C683f5d72D6A463542d3e2cC13C5470D71",
+  symbol: "KEFIR",
+  url: "https://kefirswap.net",
+  description: "Decentralized community driven exchange built on KAVA EVM blockchain. Sustainable yield farming (pool staking and kefir solo staking) on KAVA’s Ethereum Co-Chain platform.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kefirswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Kava"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "kefirswap/index.js",
+  twitter: "kefirswap",
+  listedAt: 1655890471
+},
 ] as Protocol[]

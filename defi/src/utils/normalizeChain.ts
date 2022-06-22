@@ -996,19 +996,19 @@ export const chainCoingeckoIds = {
     categories: ["Parachain"],
     parent: {
       chain: "Polkadot",
-      types: ["parachain"]
-    },
-  } as unknown as {
-    [chain: string]: {
-      geckoId: string | null,
-      symbol: string | null,
-      cmcId: string | null,
-      categories?: string[],
-      chainId?: number,
-      parent?: {
-        chain: string,
-        types: string[]
-      }
+      types: ["Parachain"]
+    }
+  }
+} as unknown as {
+  [chain: string]: {
+    geckoId: string | null,
+    symbol: string | null,
+    cmcId: string | null,
+    categories?: string[],
+    chainId?: number,
+    parent?: {
+      chain: string,
+      types: string[]
     }
   }
 }
@@ -1234,8 +1234,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LBRY"
     case "rvn":
       return "Ravencoin"
-    case "acala":
-      return "Acala"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
@@ -1248,11 +1246,4 @@ export function getDisplayChain(chains: string[]) {
   } else {
     return chains[0];
   }
-}
-function transformNewChainName(chain: any, string: any) {
-  throw new Error("Function not implemented.");
-}
-
-function chain(chain: any, string: any) {
-  throw new Error("Function not implemented.");
 }

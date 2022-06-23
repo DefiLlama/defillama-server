@@ -9637,4 +9637,25 @@ listedAt: 1650804679
   audit_links: ["https://drive.google.com/file/d/1RTwAYuPBmQCVrmor-iZ9dFAGlCkdMtdR/view?usp=sharing"],
   listedAt: 1655973909
 },
+{
+  id: "1852",
+  name: "Gardens DAO",
+  address: null,
+  symbol: "-",
+  url: "https://gardensdao.eth.limo/#/home",
+  description: "Based on the 1hive model, Gardens is a framework for a new kind of DAO - a composable, sufficiently decentralized, and self-improving system, limited only by your community's collective imagination.",
+  chain: "xDai",
+  logo: `${baseIconsUrl}/gardensdao.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["xDai"],
+  oracles: [],
+  forkedFrom: [],
+  module: "gardensdao/index.js",
+  twitter: "gardensdao",
+  listedAt: 1655988523
+},
 ] as Protocol[]

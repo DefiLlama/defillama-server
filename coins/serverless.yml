@@ -64,6 +64,7 @@ provider:
     OPTIMISM_RPC: ${file(./env.js):OPTIMISM_RPC}
     XDAI_RPC: ${file(./env.js):XDAI_RPC}
     HARMONY_RPC: ${file(./env.js):HARMONY_RPC}
+    SOLANA_RPC: ${file(./env.js):SOLANA_RPC}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}

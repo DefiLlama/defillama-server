@@ -9615,4 +9615,26 @@ listedAt: 1650804679
   twitter: "unionprotocol",
   listedAt: 1655894184
 },
+{
+  id: "1851",
+  name: "InsureDAO",
+  address: "0xd83ae04c9ed29d6d3e6bf720c71bc7beb424393e",
+  symbol: "INSURE",
+  url: "https://www.insuredao.fi",
+  description: "What makes InsureDAO different is our ability to handle everything from creating and selling insurance, to managing surplus funds. We enable DeFi protocols to easily provide full-featured insurance services to users, whilst ensuring maximum returns for our underwriters.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/insuredao.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "insuredao",
+  cmcId: "18357",
+  category: "Insurance",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "insuredao/index.js",
+  twitter: "insuredao",
+  audit_links: ["https://drive.google.com/file/d/1RTwAYuPBmQCVrmor-iZ9dFAGlCkdMtdR/view?usp=sharing"],
+  listedAt: 1655973909
+},
 ] as Protocol[]

@@ -8864,10 +8864,10 @@ listedAt: 1650804679
 {
   id: "1816",
   name: "Ruby Finance",
-  address: "kava:0xa2c535EBF7A48572F61F9273E8dBF61a0A79610D",
+  address: "kava:0xCa7350Ed65c2fC90A9DBF2D15C75E80EA91aB1c1",
   symbol: "RUBY",
   url: "https://www.ruby-finance.com",
-  description: "Rubi Finance is the first innovative algorithmic token pegged to $KAVA running on KAVA network.",
+  description: "Ruby Finance is the first innovative algorithmic token pegged to $KAVA running on KAVA network.",
   chain: "Kava",
   logo: `${baseIconsUrl}/ruby-finance.png`,
   audits: "0",

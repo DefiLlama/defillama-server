@@ -4549,7 +4549,7 @@ export default ([
     gecko_id: "o3-swap",
     cmcId: "9588",
     category: "Dexes",
-    chains: ["Ethereum", "Binance", "Heco", "Polygon", "Arbitrum"],
+    chains: ["Ethereum", "Binance","Polygon", "Arbitrum"],
     module: "o3swap.js",
     twitter: "O3_Labs",
     audit_links: [

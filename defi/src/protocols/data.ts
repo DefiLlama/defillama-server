@@ -25589,7 +25589,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://moonwell.fi",
   description: "Moonwell is an open lending and borrowing DeFi protocol on Moonbeam & Moonriver.",
   chain: "Moonriver",
-  logo: `${baseIconsUrl}/moonwell-defi.png`,
+  logo: `${baseIconsUrl}/moonwell-apollo.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "moonwell",

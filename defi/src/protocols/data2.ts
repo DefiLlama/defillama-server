@@ -9666,7 +9666,7 @@ listedAt: 1650804679
   url: "https://moonwell.fi",
   description: "Moonwell is an open lending and borrowing DeFi protocol on Moonbeam & Moonriver.",
   chain: "Moonbeam",
-  logo: `${baseIconsUrl}/moonwell-defi.png`,
+  logo: `${baseIconsUrl}/moonwell-artemis.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "moonwell-artemis",

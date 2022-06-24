@@ -25583,7 +25583,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1401",
-  name: "Moonwell",
+  name: "Moonwell Apollo",
   address: "moonriver:0xbb8d88bcd9749636bc4d2be22aac4bb3b01a58f1",
   symbol: "MFAM",
   url: "https://moonwell.fi",

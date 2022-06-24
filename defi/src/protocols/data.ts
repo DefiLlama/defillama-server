@@ -710,7 +710,7 @@ export default ([
     name: "Kava Lend",
     address: "-",
     symbol: "HARD",
-    url: "https://kava.io/lend",
+    url: "https://app.kava.io/lend",
     description:
       "Cross-chain money market. Lend, borrow, and earn with your crypto.\r\n",
     chain: "Kava",
@@ -10108,7 +10108,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Kava Swap",
     address: "-",
     symbol: "SWP",
-    url: "https://www.kava.io/swap",
+    url: "https://app.kava.io/swap/pools",
     description: "Kava Swap is a cross-chain Autonomous Market Making (AMM) application designed to provide an efficient and safe way to swap natively between the world's largest cryptocurrency assets",
     chain: "Kava",
     logo: `${baseIconsUrl}/kava-swap.jpg`,

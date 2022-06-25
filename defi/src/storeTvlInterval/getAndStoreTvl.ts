@@ -15,22 +15,15 @@ import {
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
-import mysql from 'mysql2/promise';
+import {executeAndIgnoreErrors} from "./errorDb"
 import { getCurrentUnixTimestamp } from "../utils/date";
 
-const connection = mysql.createPool({
-  host: 'error-logs.cluster-cz3l9ki794cf.eu-central-1.rds.amazonaws.com',
-  port: 3306,
-  user: 'admin',
-  database: 'content',
-  password: process.env.INFLUXDB_TOKEN,
-  waitForConnections: true,
-  connectionLimit: 10,
-});
-
-// Error table
-// CREATE TABLE errors (time INT, protocol VARCHAR(200), error TEXT, PRIMARY KEY(time, protocol), INDEX `idx_time` (`time` ASC) VISIBLE);
-// CREATE TABLE errors2 (time INT, protocol VARCHAR(200), error TEXT, storedKey VARCHAR(200), chain VARCHAR(200), PRIMARY KEY(time, protocol, storedKey), INDEX `idx_time` (`time` ASC) VISIBLE);
+function insertOnDb(useCurrentPrices:boolean, query:string, params:(string|number)[], storedKey:string){
+  if(useCurrentPrices === true){
+    const currentTime = getCurrentUnixTimestamp()
+    executeAndIgnoreErrors(query, [currentTime, ...params, storedKey, storedKey.split("-")[0]])
+  }
+}
 
 type ChainBlocks = {
   [chain: string]: number;
@@ -117,11 +110,7 @@ async function getTvl(
       if (i >= maxRetries - 1) {
         throw e
       } else {
-        if(useCurrentPrices === true){
-          const currentTime = getCurrentUnixTimestamp()
-          connection.execute('INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [currentTime, protocol.name, String(e), storedKey, storedKey.split("-")[0]])
-            .catch(e => console.log("mysql error", e));
-        }
+        insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], storedKey)
         continue;
       }
     }
@@ -153,6 +142,7 @@ export async function storeTvl(
   breakIfTvlIsZero: boolean = false,
   runBeforeStore?: () => Promise<void>
 ) {
+  const adapterStartTimestamp = getCurrentUnixTimestamp()
 
   const usdTvls: tvlsObject<number> = {};
   const tokensBalances: tvlsObject<TokensValueLocked> = {};
@@ -181,6 +171,7 @@ export async function storeTvl(
           storedKey = chain
           tvlFunctionIsFetch = true
         }
+        const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
           usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, knownTokenPrices, getCoingeckoLock)
         let keyToAddChainBalances = tvlType;
@@ -192,6 +183,8 @@ export async function storeTvl(
         } else {
           chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
         }
+        const currentTime = getCurrentUnixTimestamp()
+        insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, currentTime - startTimestamp], storedKey)
       }))
     })
     if (module.tvl || module.fetch) {
@@ -273,5 +266,6 @@ export async function storeTvl(
     return;
   }
 
+  insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all")
   return usdTvls.tvl;
 }

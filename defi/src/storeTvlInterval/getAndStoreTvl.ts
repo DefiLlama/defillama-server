@@ -30,6 +30,7 @@ const connection = mysql.createPool({
 
 // Error table
 // CREATE TABLE errors (time INT, protocol VARCHAR(200), error TEXT, PRIMARY KEY(time, protocol), INDEX `idx_time` (`time` ASC) VISIBLE);
+// CREATE TABLE errors2 (time INT, protocol VARCHAR(200), error TEXT, storedKey VARCHAR(200), chain VARCHAR(200), PRIMARY KEY(time, protocol, storedKey), INDEX `idx_time` (`time` ASC) VISIBLE);
 
 type ChainBlocks = {
   [chain: string]: number;
@@ -118,7 +119,7 @@ async function getTvl(
       } else {
         if(useCurrentPrices === true){
           const currentTime = getCurrentUnixTimestamp()
-          connection.execute('INSERT INTO `errors` VALUES (?, ?, ?)', [currentTime, protocol.name, String(e)])
+          connection.execute('INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [currentTime, protocol.name, String(e), storedKey, storedKey.split("-")[0]])
             .catch(e => console.log("mysql error", e));
         }
         continue;

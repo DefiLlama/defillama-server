@@ -13,7 +13,7 @@ const connection = mysql.createPool({
   database: 'content',
   password: process.env.INFLUXDB_TOKEN,
   waitForConnections: true,
-  connectionLimit: 10,
+  connectionLimit: 1,
 });
 
 export function executeAndIgnoreErrors(sql: string, values: any){

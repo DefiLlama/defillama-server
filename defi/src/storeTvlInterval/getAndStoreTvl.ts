@@ -266,6 +266,6 @@ export async function storeTvl(
     return;
   }
 
-  insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 0.1)
+  insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 1)
   return usdTvls.tvl;
 }

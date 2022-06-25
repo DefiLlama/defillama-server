@@ -10,6 +10,7 @@ module.exports = {
     OPTIMISM_RPC: process.env.OPTIMISM_RPC,
     XDAI_RPC: process.env.XDAI_RPC,
     HARMONY_RPC: process.env.HARMONY_RPC,
+    SOLANA_RPC: process.env.SOLANA_RPC,
     CRONOS_RPC: process.env.CRONOS_RPC,
     MOONRIVER_RPC: process.env.MOONRIVER_RPC,
     OUTDATED_WEBHOOK: process.env.OUTDATED_WEBHOOK,

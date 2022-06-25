@@ -18,8 +18,8 @@ import BigNumber from "bignumber.js";
 import {executeAndIgnoreErrors} from "./errorDb"
 import { getCurrentUnixTimestamp } from "../utils/date";
 
-function insertOnDb(useCurrentPrices:boolean, query:string, params:(string|number)[], storedKey:string){
-  if(useCurrentPrices === true){
+function insertOnDb(useCurrentPrices:boolean, query:string, params:(string|number)[], storedKey:string, probabilitySampling: number = 1){
+  if(useCurrentPrices === true && Math.random() <= probabilitySampling){
     const currentTime = getCurrentUnixTimestamp()
     executeAndIgnoreErrors(query, [currentTime, ...params, storedKey, storedKey.split("-")[0]])
   }
@@ -184,7 +184,7 @@ export async function storeTvl(
           chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
         }
         const currentTime = getCurrentUnixTimestamp()
-        insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, currentTime - startTimestamp], storedKey)
+        insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, currentTime - startTimestamp], storedKey, 0.05)
       }))
     })
     if (module.tvl || module.fetch) {
@@ -266,6 +266,6 @@ export async function storeTvl(
     return;
   }
 
-  insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all")
+  insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 0.1)
   return usdTvls.tvl;
 }

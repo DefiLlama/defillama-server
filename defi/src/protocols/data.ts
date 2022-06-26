@@ -18568,7 +18568,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Fiat Protocol allows users to collateralize fixed income assets and mint FIAT with high loan-to-value ratios and low origination fees.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/fiat-dao.png`,
-  audits: "0",
+  audits: "2",
+  audit_links: [
+    "https://github.com/fiatdao/security/blob/234b220b5e837e5fd4f5ef1c8f0e7a59a5ce2ba3/audits/2022-01/Coinspect%20-%20Smart%20Contract%20Audit%20-%20FIATDAO%20-%20FIAT%20Protocol%20-%20v220406.pdf",
+    "https://github.com/fiatdao/security/blob/234b220b5e837e5fd4f5ef1c8f0e7a59a5ce2ba3/audits/2022-02/Coinspect%20-%20Smart%20Contract%20Audit%20-%20FIATDAO%20-%20Vaults%20and%20Actions%20-%20v220406.pdf",
+    "https://github.com/fiatdao/security/blob/234b220b5e837e5fd4f5ef1c8f0e7a59a5ce2ba3/audits/2022-03/Dedaub%20-%20FIAT%20DAO%20Delphi%20Audit%2C%20Feb'22.pdf"
+  ],
   audit_note: null,
   gecko_id: "fiat-dao-token",
   cmcId: null,

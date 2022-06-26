@@ -996,8 +996,8 @@ export const chainCoingeckoIds = {
     categories: ["Parachain"],
     parent: {
       chain: "Polkadot",
-      types: ["Parachain"]
-    }
+      types: ["parachain"]
+    },
   }
 } as unknown as {
   [chain: string]: {

@@ -9727,4 +9727,26 @@ listedAt: 1650804679
   audit_links: ["https://docs.klap.finance/useful-info/audit"],
   listedAt: 1656139895
 },
+{
+  id: "1856",
+  name: "Fractal Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://www.fractalprotocol.org",
+  description: "Fractal is an omni-chain fixed yield protocol. Users deposit stablecoins from any chain (EVM for now) and get diversified yield exposure from all chains.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/fractal-protocol.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "fractal-protocol/index.js",
+  twitter: "fractal_usdf",
+  audit_links: ["https://docs.google.com/viewerng/viewer?url=https://fractalprotocol.s3.amazonaws.com/Fractal%2BAudit%2BReport.pdf"],
+  listedAt: 1656323700
+},
 ] as Protocol[]

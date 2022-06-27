@@ -9749,4 +9749,25 @@ listedAt: 1650804679
   audit_links: ["https://docs.google.com/viewerng/viewer?url=https://fractalprotocol.s3.amazonaws.com/Fractal%2BAudit%2BReport.pdf"],
   listedAt: 1656323700
 },
+{
+  id: "1857",
+  name: "FATExFi",
+  address: "polygon:0x4853365bC81f8270D902076892e13F27c27e7266",
+  symbol: "FATE",
+  url: "https://fatex.io",
+  description: "A payment protocol for FxD, a fiat & FX payments protocol & store-of-value reserve token that finishes what BTC started.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/fatexfi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: ["Uniswap", "Sushiswap"],
+  module: "fatex/index.js",
+  twitter: "FATExDAO",
+  listedAt: 1656337948
+},
 ] as Protocol[]

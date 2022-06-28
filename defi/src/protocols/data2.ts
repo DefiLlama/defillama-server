@@ -9792,4 +9792,25 @@ listedAt: 1650804679
   audit_links: ["https://github.com/HashEx/public_audits/blob/master/Fringe%20Finance/Fringe%20Finance.pdf"],
   listedAt: 1656379167
 },
+{
+  id: "1859",
+  name: "AuraSwap",
+  address: "polygon:0x1b7805e2829fd7D194DCc3078a4199b13c77E467",
+  symbol: "AURA",
+  url: "https://auraswap.finance",
+  description: "AuraSwap is an AMM decentralized exchange and Yield Farming on Polygon with near-zero gas fees. At the heart of AURA is the driving force of the ecosystem.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/auraswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: "1098",
+  category: "Dexes",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "auraswap/index.js",
+  twitter: "AuraSwapDEX",
+  listedAt: 1656409099
+},
 ] as Protocol[]

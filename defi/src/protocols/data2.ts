@@ -9813,4 +9813,25 @@ listedAt: 1650804679
   twitter: "AuraSwapDEX",
   listedAt: 1656409099
 },
+{
+  id: "1860",
+  name: "Eris Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://www.erisprotocol.com",
+  description: "Liquid Staking and Arbitrage Protocol",
+  chain: "Terra2",
+  logo: `${baseIconsUrl}/eris-protocol.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Terra2"],
+  oracles: [],
+  forkedFrom: [],
+  module: "eris-protocol/index.js",
+  twitter: "eris_protocol",
+  listedAt: 1656429295
+},
 ] as Protocol[]

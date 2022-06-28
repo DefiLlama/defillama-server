@@ -9770,4 +9770,26 @@ listedAt: 1650804679
   twitter: "FATExDAO",
   listedAt: 1656337948
 },
+{
+  id: "1858",
+  name: "Fringe",
+  address: "0xC9fE6E1C76210bE83DC1B5b20ec7FD010B0b1D15",
+  symbol: "FRIN",
+  url: "https://fringe.fi",
+  description: "A safe place for you to invest and borrow against your holdings. Fast, easily and on your own terms.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/fringe.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "fringe-finance",
+  cmcId: "17456",
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "fringe/index.js",
+  twitter: "fringefinance",
+  audit_links: ["https://github.com/HashEx/public_audits/blob/master/Fringe%20Finance/Fringe%20Finance.pdf"],
+  listedAt: 1656379167
+},
 ] as Protocol[]

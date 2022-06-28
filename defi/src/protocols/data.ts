@@ -12884,7 +12884,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "angle-protocol",
   cmcId: "12761",
-  category: "Lending",
+  category: "CDP",
   chains: ["Ethereum"],
   module: "angle/index.js",
   twitter: "AngleProtocol",

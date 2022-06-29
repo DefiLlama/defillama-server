@@ -9873,7 +9873,7 @@ listedAt: 1650804679
   chains: ["Velas"],
   oracles: [],
   forkedFrom: ["MakerDao"],
-  module: "projects/velaro/index.js",
+  module: "velaro/index.js",
   twitter: "VeleroDAO",
   audit_links: ["https://uploads-ssl.webflow.com/6182e85a5a4402f6f59cf04d/61c606df98ac893a6bcebcc0_%5BVeleroFinance_22122021%5DReport.pdf"],
   listedAt: 1656496979

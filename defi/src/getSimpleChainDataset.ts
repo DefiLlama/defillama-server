@@ -7,7 +7,7 @@ import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } fro
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const rawChain = event.pathParameters!.chain!;
+  const rawChain = decodeURI(event.pathParameters!.chain!);
   const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain, true)
   const params = event.queryStringParameters ?? {};
 

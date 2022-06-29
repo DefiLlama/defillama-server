@@ -25464,7 +25464,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "ArthSwap is the No.1 decentralized exchange with the largest community on Astar Network. It has very high APY and simple UI, quite easy to use.",
   chain: "Astar",
   logo: `${baseIconsUrl}/arthswap.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -25475,6 +25475,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "arthswap/index.js",
   twitter: "arthswap",
   language: "Solidity",
+  audit_links: ["https://certificate.quantstamp.com/full/arth-swap"],
   listedAt: 1644594055,
 },
 {

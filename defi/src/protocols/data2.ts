@@ -6284,7 +6284,7 @@ listedAt: 1650804679
   description: "Cronus Finance is an AMM decentralised exchange (DEX) built on Evmos",
   chain: "Evmos",
   logo: `${baseIconsUrl}/cronus-finance.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -6294,6 +6294,7 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   module: "cronus/index.js",
   twitter: "CronusFinance",
+  audit_links: ["https://notion.verilog.solutions/audit/cronus_finance"],
   listedAt: 1651127318
 },
 {

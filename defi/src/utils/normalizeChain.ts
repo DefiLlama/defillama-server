@@ -110,7 +110,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 137,
   },
-  "Terra": {
+  "Terra Classic": {
     geckoId: "terra-luna",
     symbol: "LUNC",
     cmcId: "4172",
@@ -1016,6 +1016,7 @@ chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
 chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
 chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
+chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef"]
 
@@ -1029,6 +1030,8 @@ export function transformNewChainName(chain: string) {
       return "Gnosis"
     case "Cosmos":
       return "CosmosHub"
+    case "Terra":
+      return "Terra Classic"
     default:
       return chain
   }
@@ -1052,6 +1055,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Gnosis" : "xDai"
     case "cosmos":
       return useNewChainNames ? "CosmosHub" : "Cosmos"
+    case "terra":
+      return useNewChainNames ? "Terra Classic" : "Terra"
     case "avax":
       return "Avalanche"
     case "xdaiarb":

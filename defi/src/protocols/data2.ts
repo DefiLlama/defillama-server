@@ -9899,4 +9899,26 @@ listedAt: 1650804679
   twitter: "TokenCeres",
   listedAt: 1656496979
 },
+{
+  id: "1864",
+  name: "Team Finance",
+  address: null,
+  symbol: "-",
+  url: "https://www.team.finance",
+  description: "TeamFinance is a decentralized application that allows blockchain projects to lock their ERC20 coins and LP Liquidity tokens in a non-custodial, time-released smart contract vault. ",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/team-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Launchpad",
+  chains: ["Ethereum", "Binance", "Polygon", "Avalanche"],
+  oracles: [],
+  forkedFrom: [],
+  module: "team-finance/index.js",
+  twitter: "TeamFinance",
+  audit_links: ["https://www.team.finance/file/audit.pdf"],
+  listedAt: 1656506800
+},
 ] as Protocol[]

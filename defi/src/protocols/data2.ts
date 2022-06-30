@@ -7780,7 +7780,7 @@ listedAt: 1650804679
   chains: ["Ethereum", "Polygon", "Binance"],
   oracles: [],
   forkedFrom: [],
-  module: "unicrypt/index.js",
+  module: "unicrypt/api.js",
   twitter: "UNCX_token",
   audit_links: ["https://github.com/chainsulting/Smart-Contract-Security-Audits/tree/master/Unicrypt", "https://www.certik.com/projects/unicrypt"],
   listedAt: 1652762212
@@ -8688,7 +8688,7 @@ listedAt: 1650804679
   chains: ["Binance"],
   oracles: [],
   forkedFrom: [],
-  module: "pinksale/index.js",
+  module: "pinksale/api.js",
   twitter: "pinkecosystem",
   listedAt: 1654537684
 },
@@ -9916,7 +9916,7 @@ listedAt: 1650804679
   chains: ["Ethereum", "Binance", "Polygon", "Avalanche"],
   oracles: [],
   forkedFrom: [],
-  module: "team-finance/index.js",
+  module: "team-finance/api.js",
   twitter: "TeamFinance",
   audit_links: ["https://www.team.finance/file/audit.pdf"],
   listedAt: 1656506800
@@ -9960,7 +9960,7 @@ listedAt: 1650804679
   chains: ["Avalanche", "Polygon", "Cronos", "Kava"],
   oracles: [],
   forkedFrom: [],
-  module: "dexpad/index.js",
+  module: "dexpad/api.js",
   twitter: "DexPad",
   listedAt: 1656584149
 },

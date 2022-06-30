@@ -9921,4 +9921,26 @@ listedAt: 1650804679
   audit_links: ["https://www.team.finance/file/audit.pdf"],
   listedAt: 1656506800
 },
+{
+  id: "1865",
+  name: "Oracle Swap",
+  address: "songbird:0xD7565b16b65376e2Ddb6c71E7971c7185A7Ff3Ff",
+  symbol: "ORACLE",
+  url: "https://www.oracleswap.io",
+  description: "Decentralized exchange on the Songbird Network.",
+  chain: "Songbird",
+  logo: `${baseIconsUrl}/oracle-swap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Songbird"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "oracleswap/index.js",
+  twitter: "Oracle_Swap",
+  audit_links: ["https://solidity.finance/audits/OracleSwap/"],
+  listedAt: 1656554164
+},
 ] as Protocol[]

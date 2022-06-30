@@ -9964,4 +9964,26 @@ listedAt: 1650804679
   twitter: "DexPad",
   listedAt: 1656584149
 },
+{
+  id: "1867",
+  name: "Sonic",
+  address: "icp:-",
+  symbol: "XTC",
+  url: "https://sonic.ooo",
+  description: "Swap tokens, earn fees as a liquidity provider, and build on the Internet Computer's Automated Market Maker (AMM)",
+  chain: "ICP",
+  logo: `${baseIconsUrl}/sonic.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["ICP"],
+  oracles: [],
+  forkedFrom: [],
+  module: "sonicooo/index.js",
+  twitter: "sonic_ooo",
+  language: "Motoko",
+  listedAt: 1656622132
+},
 ] as Protocol[]

@@ -1000,7 +1000,7 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
   },
-  "Internet Computer": {
+  "ICP": {
     geckoId: "internet-computer",
     symbol: "ICP",
     cmcId: "8916",
@@ -1248,7 +1248,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "acala":
       return "Acala"
     case "icp":
-      return "Internet Computer"
+      return "ICP"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

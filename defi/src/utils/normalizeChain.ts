@@ -999,7 +999,12 @@ export const chainCoingeckoIds = {
       chain: "Polkadot",
       types: ["parachain"]
     },
-  }
+  },
+  "Internet Computer": {
+    geckoId: "internet-computer",
+    symbol: "ICP",
+    cmcId: "8916",
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1240,7 +1245,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LBRY"
     case "rvn":
       return "Ravencoin"
-
+    case "acala":
+      return "Acala"
+    case "icp":
+      return "Internet Computer"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -9917,7 +9917,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   module: "team-finance/index.js",
-  twitter: "TeamFinance",
+  twitter: "TeamFinance_",
   audit_links: ["https://www.team.finance/file/audit.pdf"],
   listedAt: 1656506800
 },

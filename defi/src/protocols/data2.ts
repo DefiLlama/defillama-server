@@ -9943,4 +9943,25 @@ listedAt: 1650804679
   audit_links: ["https://solidity.finance/audits/OracleSwap/"],
   listedAt: 1656554164
 },
+{
+  id: "1866",
+  name: "DexPad",
+  address: "avax:0xe0c41ff9a7032de445771e12c14868cbe061c993",
+  symbol: "DxP",
+  url: "https://dexpad.io",
+  description: "DexPad is a No-Code Platform for ERC-20 Tokens on multiple EVM-compatible chains. Mint, Lock, Airdrop or Presale your token without any coding knowledge require.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/dexpad.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "dexpad",
+  cmcId: null,
+  category: "Services",
+  chains: ["Avalanche", "Polygon", "Cronos", "Kava"],
+  oracles: [],
+  forkedFrom: [],
+  module: "dexpad/index.js",
+  twitter: "DexPad",
+  listedAt: 1656584149
+},
 ] as Protocol[]

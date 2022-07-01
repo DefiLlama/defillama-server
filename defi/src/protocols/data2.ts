@@ -10010,7 +10010,7 @@ listedAt: 1650804679
 },
 {
   id: "1869",
-  name: "Omni Protocol ",
+  name: "Omni Protocol",
   address: null,
   symbol: "-",
   url: "https://omniprotocol.xyz",

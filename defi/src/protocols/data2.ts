@@ -10051,4 +10051,26 @@ listedAt: 1650804679
   audit_links: ["https://solidity.finance/audits/Strategyx"],
   listedAt: 1656665210
 },
+{
+  id: "1871",
+  name: "HunnySwap",
+  address: "avax:0xf9430aD8da4af7fb4091C57FE523af1236FF5b2C",
+  symbol: "XOXO",
+  url: "https://hunnyswap.com",
+  description: "AMM style DEX and Farming on Avalanche",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/hunnyswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Avalanche"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "hunnyswap/index.js",
+  twitter: "hunnyswap",
+  audit_links: ["https://www.certik.com/projects/hunny-swap"],
+  listedAt: 1656716851
+},
 ] as Protocol[]

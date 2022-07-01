@@ -4548,7 +4548,7 @@ export default ([
     audit_note: null,
     gecko_id: "o3-swap",
     cmcId: "9588",
-    category: "Dexes",
+    category: "Cross Chain",
     chains: ["Ethereum", "Binance","Polygon", "Arbitrum"],
     module: "o3swap.js",
     twitter: "O3_Labs",

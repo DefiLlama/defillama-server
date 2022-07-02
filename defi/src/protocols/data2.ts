@@ -6525,7 +6525,7 @@ listedAt: 1650804679
   description: "CLever is a leverage system for CVX holders that allows them to multiply their bribe and reward income by up to ~2x, while automating harvesting and swapping into CVX.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/clever.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null ,
   cmcId: null,
@@ -6535,6 +6535,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "clever/index.js",
   twitter: "0xC_Lever",
+  audit_links: ["https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_CLever_Report_v1.1.pdf"] ,
   listedAt: 1651168503
 },
 {

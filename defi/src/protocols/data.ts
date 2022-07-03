@@ -2021,7 +2021,7 @@ export default ([
       "Advanced Crypto Strategies, Yield Optimizer and StableSwap on BSC.",
     chain: "Binance",
     logo: `${baseIconsUrl}/acryptos.jpg`,
-    audits: "6",
+    audits: "2",
     audit_note: null,
     gecko_id: "acryptos",
     cmcId: "7844",

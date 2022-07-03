@@ -10160,4 +10160,26 @@ listedAt: 1650804679
   audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/atlendis-audit-report.pdf"],
   listedAt: 1656855449
 },
+{
+  id: "1876",
+  name: "VeRocket",
+  address: null,
+  symbol: "-",
+  url: "https://app.verocket.com",
+  description: "VeRocket is a DEX on VeChain founded in 2021.",
+  chain: "VeChain",
+  logo: `${baseIconsUrl}/verocket.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["VeChain"],
+  oracles: [],
+  forkedFrom: ["Uniswap V2"],
+  module: "veRocket/index.js",
+  twitter: "VeRocket",
+  audit_links: ["https://github.com/VeRocket/uni-v2/blob/53a2856fa58ea2021edab9a7b968a7626a28f41a/PeckShield-Audit-Report-VeRocket-v1.0.pdf"],
+  listedAt: 1656882929
+},
 ] as Protocol[]

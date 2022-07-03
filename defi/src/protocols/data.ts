@@ -2027,7 +2027,7 @@ export default ([
     cmcId: "7844",
     category: "Yield Aggregator",
     chains: ["Binance"],
-    module: "acryptos.js",
+    module: "acryptos/index.js",
     twitter: "acryptosdao",
     audit_links: ["https://docs.acryptos.com/security-and-risks#audits"],
   },

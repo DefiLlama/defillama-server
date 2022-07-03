@@ -10138,4 +10138,26 @@ listedAt: 1650804679
   twitter: "lendingpond_ada",
   listedAt: 1656755511
 },
+{
+  id: "1875",
+  name: "Atlendis",
+  address: null,
+  symbol: "-",
+  url: "https://app.atlendis.io",
+  description: "Atlendis is a capital-efficient DeFi lending protocol that enables crypto loans without collateral.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/atlendis.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "atlendis/index.js",
+  twitter: "AtlendisLabs",
+  audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/atlendis-audit-report.pdf"],
+  listedAt: 1656855449
+},
 ] as Protocol[]

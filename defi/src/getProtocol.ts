@@ -77,7 +77,7 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
   }
   let response = protocolData as any;
 
-  response.otherProtocols = protocolData.symbol !== "-" ? protocols.filter(p => p.symbol === protocolData.symbol)?.map(p => p.name) : []
+  response.otherProtocols = protocolData.symbol !== "-" && protocolData.symbol !== "CAKE" ? protocols.filter(p => p.symbol === protocolData.symbol)?.map(p => p.name) : []
 
   if(module.methodology !== undefined){
     response.methodology = module.methodology;

@@ -10229,4 +10229,26 @@ listedAt: 1650804679
   audit_links: ["https://github.com/ApeX-Protocol/core/blob/master/docs/audit_report.pdf"],
   listedAt: 1656934904
 },
+{
+  id: "1879",
+  name: "Acala LCDOT",
+  address: "acala:-",
+  symbol: "ACA",
+  url: "https://apps.acala.network",
+  description: "Liquid Crowdloans",
+  chain: "Acala",
+  logo: `${baseIconsUrl}/acala-lcdot.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Acala"],
+  oracles: [],
+  forkedFrom: [],
+  module: "acala-lcdot/index.js",
+  twitter: "AcalaNetwork",
+  audit_links: ["https://github.com/AcalaNetwork/Acala/tree/master/audit"],
+  listedAt: 1656965707
+},
 ] as Protocol[]

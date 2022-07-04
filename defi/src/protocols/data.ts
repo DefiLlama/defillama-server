@@ -24127,7 +24127,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null,
   category: "Launchpad",
   chains: ["Binance"],
-  module: "deeplock/index.js",
+  module: "deeplock/api.js",
   twitter: "deeplockio",
   listedAt: 1643486270,
 },

@@ -1005,6 +1005,13 @@ export const chainCoingeckoIds = {
     symbol: "ICP",
     cmcId: "8916",
   },
+  "Nova": {
+    geckoId: "supernova",
+    symbol: "SNT",
+    cmcId: "15399",
+    categories: ["EVM"],
+    chainId: 87,
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1249,6 +1256,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Acala"
     case "icp":
       return "ICP"
+    case "nova":
+      return "Nova"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -10182,4 +10182,29 @@ listedAt: 1650804679
   audit_links: ["https://github.com/VeRocket/uni-v2/blob/53a2856fa58ea2021edab9a7b968a7626a28f41a/PeckShield-Audit-Report-VeRocket-v1.0.pdf"],
   listedAt: 1656882929
 },
+{
+  id: "1877",
+  name: "Fusion Dex",
+  address: null,
+  symbol: "-",
+  url: "https://fusion.novanetwork.io",
+  description: "A fully decentralized protocol for automated liquidity provision on Fantom and Nova.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/fusion-dex.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom", "Nova"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "fusion/index.js",
+  twitter: "NovaFinOfficial",
+  audit_links: [
+                 "https://docs.novanetwork.io/fusion/features/farms-and-lp-mining",
+                 "https://docs.novanetwork.io/fusion/features/staking-and-saving#call-staking",
+               ],
+  listedAt: 1656926181
+},
 ] as Protocol[]

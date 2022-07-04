@@ -8689,7 +8689,7 @@ listedAt: 1650804679
   chains: ["Binance"],
   oracles: [],
   forkedFrom: [],
-  module: "pinksale/index.js",
+  module: "pinksale/api.js",
   twitter: "pinkecosystem",
   listedAt: 1654537684
 },

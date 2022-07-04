@@ -10190,7 +10190,7 @@ listedAt: 1650804679
   url: "https://fusion.novanetwork.io",
   description: "A fully decentralized protocol for automated liquidity provision on Fantom and Nova.",
   chain: "Fantom",
-  logo: `${baseIconsUrl}/fusion-dex.jpg`,
+  logo: `${baseIconsUrl}/fusion-dex.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

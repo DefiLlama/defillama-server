@@ -10207,4 +10207,26 @@ listedAt: 1650804679
                ],
   listedAt: 1656926181
 },
+{
+  id: "1878",
+  name: "ApeX Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://app.apex.exchange/trade",
+  description: "ApeX, an innovative derivatives protocol to provide Web3 users with a supreme derivatives trading experience.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/apex-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "apex-token-2",
+  cmcId: "19843",
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  oracles: ["TWAP"],
+  forkedFrom: [],
+  module: "apex/index.js",
+  twitter: "OfficialApeXdex",
+  audit_links: ["https://github.com/ApeX-Protocol/core/blob/master/docs/audit_report.pdf"],
+  listedAt: 1656934904
+},
 ] as Protocol[]

@@ -431,6 +431,7 @@ export default [
   audit_links: ["https://docs.benqi.fi/resources/risks#audits"],
   twitter: "BenqiFinance",
   listedAt: 1645133212,
+  parentProtocol: "Benqi"
 },
 {
   id: "1428",
@@ -4182,7 +4183,8 @@ export default [
   module: "aave/v3.js",
   twitter: "AaveAave",
   audit_links: ["https://aave.com/security"],
-  listedAt: 1648776877
+  listedAt: 1648776877,
+  parentProtocol: "AAVE"
 },
 {
   id: "1600",
@@ -9357,7 +9359,8 @@ listedAt: 1650804679
   module: "aave-v1/index.js",
   twitter: "AaveAave",
   audit_links: ["https://aave.com/security"],
-  listedAt: 1655586107
+  listedAt: 1655586107,
+  parentProtocol: "AAVE"
 },
 {
   id: "1839",
@@ -9379,7 +9382,8 @@ listedAt: 1650804679
   module: "aave-arc/index.js",
   twitter: "AaveAave",
   audit_links: ["https://aave.com/security"],
-  listedAt: 1655586107
+  listedAt: 1655586107,
+  parentProtocol: "AAVE"
 },
 {
   id: "1840",
@@ -9401,7 +9405,8 @@ listedAt: 1650804679
   module: "sushiswap-kashi/index.js",
   twitter: "SushiSwap",
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf",],
-  listedAt: 1655586107
+  listedAt: 1655586107,
+  parentProtocol: "SushiSwap"
 },
 {
   id: "1841",

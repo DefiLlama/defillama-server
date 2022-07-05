@@ -10281,4 +10281,26 @@ listedAt: 1650804679
                ],
   listedAt: 1657038997
 },
+{
+  id: "1881",
+  name: "Toros",
+  address: null,
+  symbol: "-",
+  url: "https://toros.finance",
+  description: "Toros Finance is a platform which provides automated Dynamic Vaults with various investment strategies.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/toros.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Indexes",
+  chains: ["Polygon", "Optimism"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "toros/index.js",
+  twitter: "torosfinance",
+  audit_links: ["https://www.certik.com/projects/dhedge"],
+  listedAt: 1657055333
+},
 ] as Protocol[]

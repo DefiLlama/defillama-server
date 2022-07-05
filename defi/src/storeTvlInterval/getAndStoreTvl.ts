@@ -221,6 +221,7 @@ export async function storeTvl(
     const scope = new Sentry.Scope();
     scope.setTag("protocol", protocol.name);
     Sentry.AWSLambda.captureException(e, scope);
+    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "aggregate")
     return;
   }
   if (breakIfTvlIsZero && Object.values(usdTvls).reduce((total, value) => total + value) === 0) {
@@ -263,6 +264,7 @@ export async function storeTvl(
     const scope = new Sentry.Scope();
     scope.setTag("protocol", protocol.name);
     Sentry.AWSLambda.captureException(e, scope);
+    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "store")
     return;
   }
 

@@ -8981,7 +8981,7 @@ listedAt: 1650804679
   description: "Astar Farm is a defi & gamefi Dapps works on Astar network.",
   chain: "Astar",
   logo: `${baseIconsUrl}/astarfarm.jpg`,
-  audits: "0",
+  audits: "1",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -8991,6 +8991,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "astarfarm/index.js",
   twitter: "AstarFarm",
+  audit_links: ["https://app.gitbook.com/s/GcFuzD35Csw8XaIbghDA/information/security-and-audits"],
   listedAt: 1655205337
 },
 // {

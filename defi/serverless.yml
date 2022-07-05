@@ -231,6 +231,12 @@ functions:
     memorySize: 3000
     events:
       - schedule: cron(20 * * * ? *)
+  storeProtocols2:
+    handler: src/storeGetProtocols2.default
+    timeout: 60
+    memorySize: 3000
+    events:
+      - schedule: cron(20 * * * ? *)
   storeCharts:
     handler: src/storeGetCharts.default
     timeout: 60

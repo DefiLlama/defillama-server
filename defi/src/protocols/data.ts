@@ -6505,7 +6505,7 @@ export default ([
     module: "sun/index.js",
     twitter: "defi_sunio",
     audit_links: ["https://sun.io/docs/slowmist_audit_report_en_sun.pdf"],
-    parentProtocol: "SUNSwap"
+    parentProtocol: "SUN.io"
   },
   {
     id: "432",
@@ -11544,7 +11544,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DeFi_JUST",
     audit_links: ["https://justswap.io/docs/audit-report_cn.pdf"],
     listedAt: 1634757407,
-    parentProtocol: "SUNSwap"
+    parentProtocol: "SUN.io"
   },
   {
     id: "691",

@@ -14,7 +14,7 @@ export interface Protocol {
     category: string;
     chains: string[];
     oracles: string[];
-    forkedFrom: string[];
+    forkedFrom?: string[];
     module: string;
     twitter: string;
     language?: string;
@@ -22,4 +22,19 @@ export interface Protocol {
     listedAt?: number;
     openSource?: boolean;
     parentProtocol?: string
+  }
+
+  export interface IParentProtocol {
+    id: string;
+    name: string;
+    url: string;
+    description: string;
+    logo: string;
+    chains: string[];
+    gecko_id: string;
+    cmcId: string;
+    categories?: string[];
+    twitter: string;
+    oracles?: string[];
+    forkedFrom?: string[];
   }

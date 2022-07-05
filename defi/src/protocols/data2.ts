@@ -10256,4 +10256,29 @@ listedAt: 1650804679
   audit_links: ["https://github.com/AcalaNetwork/Acala/tree/master/audit"],
   listedAt: 1656965707
 },
+{
+  id: "1880",
+  name: "Minto",
+  address: "heco:0x410a56541bD912F9B60943fcB344f1E3D6F09567",
+  symbol: "BTCMT",
+  url: "https://minto.finance",
+  description: "Minto tokenizes mining power and allows mining Bitcoin by staking BTCMT token.",
+  chain: "Heco",
+  logo: `${baseIconsUrl}/minto.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "minto",
+  cmcId: "16363",
+  category: "Yield",
+  chains: ["Heco", "Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "minto/index.js",
+  twitter: "BTCMTOfficial",
+  audit_links: [
+                 "https://hacken.io/wp-content/uploads/2021/10/MintoAuditReport.pdf",
+                 "https://mywish.io/audit/MINTO.pdf",
+               ],
+  listedAt: 1657038997
+},
 ] as Protocol[]

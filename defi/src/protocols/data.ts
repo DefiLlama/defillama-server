@@ -12922,7 +12922,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   name: "Spartacus",
   address: "fantom:0x5602df4a94eb6c680190accfa2a475621e0ddbdc",
   symbol: "SPA",
-  url: "https://spartacus.finance/#/",
+  url: "https://app.spartacus.finance/",
   description: "Decentralized multi-chain reserve currency.",
   chain: "Fantom",
   logo: `${baseIconsUrl}/spartacus.jpg`,

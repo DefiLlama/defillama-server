@@ -10335,7 +10335,7 @@ listedAt: 1650804679
   url: "https://izumi.finance/trade/swap",
   description: "A next-generation DEX on BNB Chain to maximize capital efficiency with the innovative Discretized-Liquidity-AMM model",
   chain: "Binance",
-  logo: `${baseIconsUrl}/izumi-swap.png`,
+  logo: `${baseIconsUrl}/iziswap.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

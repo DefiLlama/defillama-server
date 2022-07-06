@@ -1,5 +1,5 @@
 import { getPairPrices } from "../adapters/lps/uniswap/uniswap";
-import { getTokenPrices } from "../adapters/yield/yearn/yearnV2";
+import { getTokenPrices } from "../adapters/lps/curve/curve";
 async function main() {
   //   await getPairPrices(
   //     "bsc",

@@ -97,17 +97,6 @@ async function getUsdValues(
       price: (t.output * underlyingPrice) / 10 ** decimals,
       decimals: decimals
     };
-    // return JSON.stringify({
-    //   PK: {
-    //     S: `asset#${chain}:${t.input.target.toLowerCase()}`
-    //   },
-    //   price: {
-    //     N: (t.output * underlyingPrice) / 10 ** decimals
-    //   },
-    //   SK: {
-    //     N: Date.now()
-    //   }
-    // });
   });
 
   return usdValues.filter((v) => Object.keys(v).length !== 0);

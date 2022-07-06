@@ -21019,6 +21019,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Uniswap"],
   listedAt: 1641171227,
 },
+/*
 {
   id: "1177",
   name: "Whale Loans",

@@ -10304,4 +10304,26 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/dhedge"],
   listedAt: 1657055333
 },
+{
+  id: "1882",
+  name: "Ferro",
+  address: "cronos:0x39bC1e38c842C60775Ce37566D03B41A7A66C782",
+  symbol: "FER",
+  url: "https://ferroprotocol.com",
+  description: "a stableswap AMM protocol on Cronos",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/ferro.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "ferro",
+  cmcId: "20716",
+  category: "Dexes",
+  chains: ["Cronos"],
+  oracles: [],
+  forkedFrom: ["Saddle Finance"],
+  module: "ferro/index.js",
+  twitter: "FerroProtocol",
+  audit_links: ["https://docs.ferroprotocol.com/extras/security"],
+  listedAt: 1657092342
+},
 ] as Protocol[]

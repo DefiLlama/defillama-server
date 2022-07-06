@@ -3388,6 +3388,7 @@ export default [
     "https://docsend.com/view/2bif3vfinpv657mh"
  ],
   listedAt: 1647667685,
+  parentProtocol: "iZUMi Finance"
 },
 {
   id: "1564",

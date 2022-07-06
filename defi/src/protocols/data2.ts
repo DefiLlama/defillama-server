@@ -10329,7 +10329,7 @@ listedAt: 1650804679
 },
 {
   id: "1883",
-  name: "iZUMi Swap",
+  name: "iziSwap",
   address: null,
   symbol: "-",
   url: "https://izumi.finance/trade/swap",

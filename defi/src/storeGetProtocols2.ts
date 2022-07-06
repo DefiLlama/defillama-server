@@ -32,6 +32,7 @@ const handler = async (_event: any) => {
         tvlPrevWeek: protocolTvls.tvlPrevWeek,
         tvlPrevMonth: protocolTvls.tvlPrevMonth,
         chainTvls: protocolTvls.chainTvls,
+        parentProtocol: protocol.parentProtocol
       };
     })
   );

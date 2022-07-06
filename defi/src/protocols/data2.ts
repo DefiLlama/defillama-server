@@ -10374,4 +10374,25 @@ listedAt: 1650804679
   twitter: "WhaleLoans",
   listedAt: 1657105361
 },
+{
+  id: "1885",
+  name: "Capsa",
+  address: "-",
+  symbol: "-",
+  url: "https://capsa.finance/",
+  description: "On-chain crypto hedge fund. Hold $CAPSA to get a market-neutral performance.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/capsa.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "",
+  twitter: "CapsaFinance",
+  listedAt: 1657105361
+},
 ] as Protocol[]

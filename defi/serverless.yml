@@ -55,6 +55,11 @@ provider:
         - "s3:ListBucket"
         - "s3:*Object*"
       Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "secretsmanager:GetSecretValue"
+      Resource:
+        - "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     BSC_RPC: ${file(./env.js):BSC_RPC}
@@ -105,6 +110,9 @@ custom:
   domain: ${self:custom.domainMap.${self:custom.stage}.domain}
   certificateArn: ${self:custom.domainMap.${self:custom.stage}.certificateArn}
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
+  datadog:
+    site: datadoghq.eu
+    apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
 
 functions:
   fallback:
@@ -326,3 +334,4 @@ plugins:
   - serverless-esbuild
   - serverless-offline
   - serverless-prune-plugin
+  - serverless-plugin-datadog

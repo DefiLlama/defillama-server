@@ -4,8 +4,6 @@ import {
 } from "@defillama/sdk/build/computeTVL/blocks";
 import BigNumber from "bignumber.js";
 
-import * as Sentry from "@sentry/serverless";
-
 // import { wrapScheduledLambda } from "../utils/shared/wrap";
 import {
   getTimestampAtStartOfDayUTC,
@@ -57,9 +55,7 @@ export const handler = async (event: any) => {
           );
         } catch (e) {
           const errorName = `fetch-${name}-${ecosystem}-${fetchCurrentHourTimestamp}`;
-          const scope = new Sentry.Scope();
-          scope.setTag("dex-volume", errorName);
-          Sentry.AWSLambda.captureException(e, scope);
+          console.error("dex-volume", errorName, e);
           throw e;
         }
 
@@ -80,9 +76,7 @@ export const handler = async (event: any) => {
       getDexVolumeMetaRecord(id),
     ]).catch((e) => {
       const errorName = `fetch-prevdata-${name}-${fetchCurrentHourTimestamp}`;
-      const scope = new Sentry.Scope();
-      scope.setTag("dex-volume", errorName);
-      Sentry.AWSLambda.captureException(e, scope);
+      console.error("dex-volume", errorName, e);
       throw e;
     });
 

@@ -2,7 +2,6 @@ import { TokenPrices } from "../types";
 import { Protocol } from "../protocols/data";
 import { util } from "@defillama/sdk";
 import storeNewTvl from "./storeNewTvl";
-import * as Sentry from "@sentry/serverless";
 import { TokensValueLocked, tvlsObject } from "../types";
 import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
 import {
@@ -218,9 +217,6 @@ export async function storeTvl(
     }
   } catch (e) {
     console.error(protocol.name, e);
-    const scope = new Sentry.Scope();
-    scope.setTag("protocol", protocol.name);
-    Sentry.AWSLambda.captureException(e, scope);
     insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "aggregate")
     return;
   }
@@ -261,9 +257,6 @@ export async function storeTvl(
     await Promise.all([storeTokensAction, storeUsdTokensAction, storeRawTokensAction]);
   } catch (e) {
     console.error(protocol.name, e);
-    const scope = new Sentry.Scope();
-    scope.setTag("protocol", protocol.name);
-    Sentry.AWSLambda.captureException(e, scope);
     insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "store")
     return;
   }

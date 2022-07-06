@@ -1,20 +1,4 @@
-import * as Sentry from "@sentry/serverless";
-import * as SentryTracing from "@sentry/tracing";
 import { IResponse, credentialsCorsHeaders } from "./lambda-response";
-
-interface SamplingContext {
-  parentSampled: undefined;
-  transactionContext: { name: string; op: string };
-}
-
-// See https://github.com/getsentry/sentry-javascript/issues/2984#issuecomment-748077304
-SentryTracing.addExtensionMethods();
-Sentry.AWSLambda.init({
-  dsn:
-    "https://d5738d8b071c404a9423cd670b66d227@o555782.ingest.sentry.io/5685887",
-  sampleRate: 0,
-  environment: process.env.stage,
-});
 
 type Event =
   | AWSLambda.APIGatewayEvent
@@ -44,7 +28,7 @@ function wrap(
       },
     }));
   };
-  return Sentry.AWSLambda.wrapHandler(handler);
+  return handler;
 }
 
 export default wrap;
@@ -56,5 +40,5 @@ export function wrapScheduledLambda(
   context?: any,
   callback?: any
 ) => Promise<void | undefined> | void {
-  return Sentry.AWSLambda.wrapHandler(lambdaFunc);
+  return lambdaFunc;
 }

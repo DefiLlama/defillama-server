@@ -10326,4 +10326,29 @@ listedAt: 1650804679
   audit_links: ["https://docs.ferroprotocol.com/extras/security"],
   listedAt: 1657092342
 },
+{
+  id: "1883",
+  name: "iZUMi Swap",
+  address: null,
+  symbol: "-",
+  url: "https://izumi.finance/trade/swap",
+  description: "A next-generation DEX on BNB Chain to maximize capital efficiency with the innovative Discretized-Liquidity-AMM model",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/izumi-swap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "izumi-iziswap/index.js",
+  twitter: "izumi_Finance",
+  audit_links: [
+                 "https://docsend.com/view/ura947u6ck3urpqb",
+                 "https://docsend.com/view/2bif3vfinpv657mh",
+               ],
+  listedAt: 1657098632
+},
 ] as Protocol[]

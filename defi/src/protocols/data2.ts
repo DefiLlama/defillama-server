@@ -10353,4 +10353,25 @@ listedAt: 1650804679
   listedAt: 1657098632,
   parentProtocol: "iZUMi Finance"
 },
+{
+  id: "1884",
+  name: "WhaleSwap",
+  address: "binance:0xDDed222297B3d08DAFDAc8f65eeB799B2674C78F",
+  symbol: "POD",
+  url: "https://whaleswap.finance",
+  description: "A next-generation DEX on BNB Chain to maximize capital efficiency with the innovative Discretized-Liquidity-AMM model",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/whaleswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "whaleswap/index.js",
+  twitter: "WhaleLoans",
+  listedAt: 1657105361
+},
 ] as Protocol[]

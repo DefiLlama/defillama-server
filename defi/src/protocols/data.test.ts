@@ -18,7 +18,7 @@ test("all the dynamic imports work", async () => {
   }
 });
 
-const ignored = ['default', 'staking', 'pool2', 'treasury', "hallmarks", "borrowed"]
+const ignored = ['default', 'staking', 'pool2', 'treasury', "hallmarks", "borrowed", "ownTokens"]
 test("all chains are on chainMap", async () => {
   for (const protocol of protocols) {
     const module = await importProtocol(protocol)

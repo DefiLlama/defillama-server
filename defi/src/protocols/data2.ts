@@ -10349,6 +10349,7 @@ listedAt: 1650804679
                  "https://docsend.com/view/ura947u6ck3urpqb",
                  "https://docsend.com/view/2bif3vfinpv657mh",
                ],
-  listedAt: 1657098632
+  listedAt: 1657098632,
+  parentProtocol: "iZUMi Finance"
 },
 ] as Protocol[]

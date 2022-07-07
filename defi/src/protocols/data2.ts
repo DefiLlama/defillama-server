@@ -10374,4 +10374,26 @@ listedAt: 1650804679
   twitter: "WhaleLoans",
   listedAt: 1657105361
 },
+{
+  id: "1885",
+  name: "XY Finance",
+  address: "0x77777777772cf0455fb38ee0e75f38034dfa50deXY",
+  symbol: "ZY",
+  url: "https://xy.finance",
+  description: "XY Finance is One-Stop Cross-Chain Swap Aggregator for DeFi & Metaverse.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/xy-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "xy-finance",
+  cmcId: "16013",
+  category: "Bridge",
+  chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Arbitrum", "Optimism", "Cronos", "KCC", "ThunderCore", "Astar", "Moonriver" ],
+  oracles: [],
+  forkedFrom: [],
+  module: "xy-finance/index.js",
+  twitter: "xyfinance",
+  audit_links: ["https://docs.xy.finance/getting-started/security"],
+  listedAt: 1657208486
+},
 ] as Protocol[]

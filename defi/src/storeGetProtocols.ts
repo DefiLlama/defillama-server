@@ -3,6 +3,8 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from "zlib";
 import { getProtocolTvl, ProtocolTvls } from "./utils/getProtocolTvl";
+import parentProtocolsList from "./protocols/parentProtocols";
+import { IParentProtocol } from "./protocols/types";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -30,6 +32,7 @@ const handler = async (_event: any) => {
         tvlPrevWeek: protocolTvls.tvlPrevWeek,
         tvlPrevMonth: protocolTvls.tvlPrevMonth,
         chainTvls: protocolTvls.chainTvls,
+        parentProtocol: protocol.parentProtocol
       };
     })
   );
@@ -46,13 +49,30 @@ const handler = async (_event: any) => {
     }
   });
 
+  const parentProtocols: IParentProtocol[] = parentProtocolsList.map(
+    (parent) => {
+      const chains: Set<string> = new Set();
+      const children = response.filter(
+        (protocol) => protocol.parentProtocol === parent.id
+      );
+      children.forEach((child) => {
+        child.chains?.forEach((chain: string) => chains.add(chain));
+      });
+
+      return { ...parent, chains: Array.from(chains) };
+    }
+  );
+
   const compressedV2Response = compress(
     JSON.stringify({
       protocols: noChainResponse,
       chains: Object.entries(chains)
         .sort((a, b) => b[1] - a[1])
         .map((c) => c[0]),
-      protocolCategories: [...protocolCategoriesSet].filter((category) => category),
+      protocolCategories: [...protocolCategoriesSet].filter(
+        (category) => category
+      ),
+      parentProtocols
     })
   );
   await store("lite/protocols2", compressedV2Response, true);

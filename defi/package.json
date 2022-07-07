@@ -42,6 +42,11 @@
     "ts-node": "^10.8.0",
     "typescript": "^4.7.2"
   },
+  "overrides": {
+    "serverless-offline": {
+      "got": "11.8.5"
+    }
+  },
   "dependencies": {
     "@defillama/adapters": "file:./DefiLlama-Adapters",
     "@defillama/sdk": "^2.3.76",

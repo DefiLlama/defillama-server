@@ -8,13 +8,6 @@ import {
 import { TokensValueLocked, tvlsObject } from "../types";
 import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
 
-function extractTvl(item: any | undefined) {
-  if (item?.SK === undefined || typeof item?.tvl !== "object") {
-    return {};
-  } else {
-    return item.tvl;
-  }
-}
 type PKconverted = (id: string) => string;
 
 export default async (

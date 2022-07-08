@@ -1031,7 +1031,7 @@ chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 
-export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef"]
+export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury"]
 
 export function transformNewChainName(chain: string) {
   switch (chain) {

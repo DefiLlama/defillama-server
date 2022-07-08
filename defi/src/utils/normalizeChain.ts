@@ -1012,6 +1012,16 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 87,
   },
+  "Kintsugi": {
+    geckoId: "kintsugi",
+    symbol: "KINT",
+    cmcId: "13675",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Kusama",
+      types: ["parachain"]
+    },
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1258,6 +1268,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "ICP"
     case "nova":
       return "Nova"
+    case "kintsugi":
+      return "Kintsugi"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

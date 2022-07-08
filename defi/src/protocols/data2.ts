@@ -10404,7 +10404,7 @@ listedAt: 1650804679
   url: "https://kintsugi.interlay.io",
   description: "Radically open #Bitcoin on Kusama Network, canary network of @interlayHQ",
   chain: "Kintsugi",
-  logo: `${baseIconsUrl}/kintusgi.png`,
+  logo: `${baseIconsUrl}/kintsugi.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "kintsugi",

@@ -2,12 +2,21 @@
 
 ### Table
 
-| PK (S)        | SK (S)          |
-| ------------- | --------------- |
-| dex#{id}#dv   | {unixTimestamp} |
+| PK (S)                        | SK (N)          |
+| ----------------------------- | --------------- |
+| {chain}#dv#dex#{id}           | {unixTimestamp} |
+| {chain}#dv#dex#{id}#{version} | {unixTimestamp} |
 
 dv = daily volume
 
-#### DEX ids
+### DEX ids
 
 Taken from `protocols/data` matching DEX category
+
+### Run locally DEX functions
+
+Store all DEX volumes
+
+```
+ts-node src/dexVolumes/cli/runStoreDexVolume.ts
+```

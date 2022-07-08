@@ -17546,6 +17546,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639173502,
     audit_links: ['https://omniscia.io/colony-lab-staking-v2/manual-review'],
   },
+/*
   {
     id: "1005",
     name: "UPFI Network",
@@ -17568,6 +17569,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1639176180,
     openSource: false
   },
+*/
   {
     id: "1006",
     name: "Thorstarter",

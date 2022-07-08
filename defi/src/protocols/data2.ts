@@ -10396,4 +10396,25 @@ listedAt: 1650804679
   audit_links: ["https://docs.xy.finance/getting-started/security"],
   listedAt: 1657208486
 },
+{
+  id: "1886",
+  name: "Kintsugi",
+  address: "kintsugi:-",
+  symbol: "KINT",
+  url: "https://kintsugi.interlay.io",
+  description: "Radically open #Bitcoin on Kusama Network, canary network of @interlayHQ",
+  chain: "Kintsugi",
+  logo: `${baseIconsUrl}/kintusgi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "kintsugi",
+  cmcId: "13675",
+  category: "Cross Chain",
+  chains: ["Kintsugi"],
+  oracles: [],
+  forkedFrom: [],
+  module: "kintsugi/index.js",
+  twitter: "kintsugi_btc",
+  listedAt: 1657264095
+},
 ] as Protocol[]

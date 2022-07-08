@@ -10417,4 +10417,26 @@ listedAt: 1650804679
   twitter: "kintsugi_btc",
   listedAt: 1657264095
 },
+{
+  id: "1887",
+  name: "Avault",
+  address: null,
+  symbol: "-",
+  url: "https://www.avault.network",
+  description: "The Best Yield Aggregator on ASTR Network.",
+  chain: "Astar",
+  logo: `${baseIconsUrl}/avault.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Astar"],
+  oracles: [],
+  forkedFrom: [],
+  module: "avault/index.js",
+  twitter: "Avault_Astar",
+  audit_links: ["https://co-go.gitbook.io/avault"],
+  listedAt: 1657291702
+},
 ] as Protocol[]

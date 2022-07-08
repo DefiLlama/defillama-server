@@ -10330,8 +10330,8 @@ listedAt: 1650804679
 {
   id: "1883",
   name: "iziSwap",
-  address: null,
-  symbol: "-",
+  address: "0x9ad37205d608B8b219e6a2573f922094CEc5c200",
+  symbol: "IZI",
   url: "https://izumi.finance/trade/swap",
   description: "A next-generation DEX on BNB Chain to maximize capital efficiency with the innovative Discretized-Liquidity-AMM model",
   chain: "Binance",

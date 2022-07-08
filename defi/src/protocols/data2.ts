@@ -10378,7 +10378,7 @@ listedAt: 1650804679
   id: "1885",
   name: "XY Finance",
   address: "0x77777777772cf0455fb38ee0e75f38034dfa50deXY",
-  symbol: "ZY",
+  symbol: "XY",
   url: "https://xy.finance",
   description: "XY Finance is One-Stop Cross-Chain Swap Aggregator for DeFi & Metaverse.",
   chain: "Ethereum",

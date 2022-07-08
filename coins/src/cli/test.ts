@@ -1,5 +1,7 @@
 import { getPairPrices } from "../adapters/lps/uniswap/uniswap";
-import { getTokenPrices } from "../adapters/lps/curve/curve";
+import { getTokenPrices as curve } from "../adapters/lps/curve/curve";
+import { getTokenPrices as yearn } from "../adapters/yield/yearn/yearnV2";
+import { getTokenPrices as aave } from "../adapters/moneyMarkets/aave/aaveV2";
 async function main() {
   //   await getPairPrices(
   //     "bsc",
@@ -7,7 +9,11 @@ async function main() {
   //     "https://bsc.streamingfast.io/subgraphs/name/pancakeswap/exchange-v2"
   //   );
 
-  await getTokenPrices("ethereum");
+  await Promise.all([
+    curve("ethereum")
+    //aave("ethereum"),
+    //yearn("ethereum")
+  ]);
 }
 main();
 // ts-node coins/src/cli/test.ts

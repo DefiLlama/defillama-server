@@ -1,4 +1,12 @@
 {
+  "lp_token": {
+    "name": "lp_token",
+    "outputs": [{ "type": "address", "name": "" }],
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "gas": 2291
+  },
   "get_registry": {
     "name": "get_registry",
     "outputs": [

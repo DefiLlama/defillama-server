@@ -149,18 +149,22 @@ export async function getTokenPrices(chain: string) {
   //   queryString.concat(`}}}]}`);
   // }
 
-  await batchWrite(
-    usdValues.map((v) => ({
-      SK: Date.now(),
-      PK: v.address,
-      price: v.price
-    })),
-    true
-  );
+  await Promise.all([
+    batchWrite(
+      usdValues.map((v) => ({
+        SK: Date.now(),
+        PK: `asset#${chain}:${v.address}`,
+        price: v.price
+      })),
+      true
+    ),
+    batchWrite(
+      usdValues.map((v) => ({
+        SK: 0,
+        PK: `asset#${chain}:${v.address}`,
+        price: v.price
+      })),
+      true
+    )
+  ]);
 }
-
-async function main() {
-  await getTokenPrices("ethereum");
-  console.log("a");
-}
-main();

@@ -1277,7 +1277,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Nova"
     case "kintsugi":
       return "Kintsugi"
-    case "clv":
+    case "CLV":
       return "CLV"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

@@ -10439,4 +10439,25 @@ listedAt: 1650804679
   audit_links: ["https://co-go.gitbook.io/avault"],
   listedAt: 1657291702
 },
+{
+  id: "1888",
+  name: "Frozen Walrus Finance",
+  address: "avax:0x395908aeb53d33a9b8ac35e148e9805d34a555d3",
+  symbol: "WLRS",
+  url: "https://frozenwalrus.finance",
+  description: "Frozen Walrus is a seigniorage protocol at it's core built with sustainable yields to last with community support. We are expanding our ecosystem into avenues that allow users utility with our tokens to give them constant value through GameFi and TradeFi mechanics.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/frozen-walrus-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "walrus",
+  cmcId: "20464",
+  category: "Algo-Stables",
+  chains: ["Avalanche"],
+  oracles: [],
+  forkedFrom: ["Tomb Finance"],
+  module: "frozen-walrus/index.js",
+  twitter: "WalrusFinance",
+  listedAt: 1657364601
+},
 ] as Protocol[]

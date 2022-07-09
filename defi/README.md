@@ -38,3 +38,8 @@ If you run into the error `Error: Cannot find module '[...]'` then run:
 ```
 npm run prebuild
 ```
+
+Run general scripts:
+```
+export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/<script>
+```

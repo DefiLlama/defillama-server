@@ -162,6 +162,12 @@ functions:
       - http:
           path: tvl/{protocol}
           method: get
+  smolConfig:
+    handler: src/getSmolConfig.default
+    events:
+      - http:
+          path: config/smol/{protocol}
+          method: get
   coins:
     handler: src/getCoins.default
     timeout: 60

@@ -10183,7 +10183,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["VeChain"],
   oracles: [],
-  forkedFrom: ["Uniswap V2"],
+  forkedFrom: ["Uniswap"],
   module: "veRocket/index.js",
   twitter: "VeRocket",
   audit_links: ["https://github.com/VeRocket/uni-v2/blob/53a2856fa58ea2021edab9a7b968a7626a28f41a/PeckShield-Audit-Report-VeRocket-v1.0.pdf"],

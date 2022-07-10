@@ -22,7 +22,7 @@ export const getAllEcosystemBlocks = async (
   return chainBlocks;
 };
 
-export const getAllVolumeBlocks = () => {};
+export const getAllVolumeBlocks = () => { };
 
 export const getVolumeEcosystems = (volume: VolumeAdapter) =>
   Object.keys(volume);
@@ -125,3 +125,9 @@ export const calcNumBreakdownFetches = (breakdown: BreakdownAdapter) =>
 //         )
 //       )
 //     );
+
+
+export async function handleAdapterError(e: Error) {
+  // TODO: handle error properly
+  console.error(e)
+}

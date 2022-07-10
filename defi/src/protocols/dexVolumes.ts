@@ -6,8 +6,8 @@ export interface Dex {
 
 export default [
   {
-    id: 468,
-    name: "Trader Joe",
-    module: "traderjoe",
+    id: 1,
+    name: "Uniswap",
+    module: "uniswap",
   },
 ];

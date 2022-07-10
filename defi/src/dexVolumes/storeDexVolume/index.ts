@@ -4,7 +4,7 @@ import {
 } from "@defillama/sdk/build/computeTVL/blocks";
 import BigNumber from "bignumber.js";
 
-// import { wrapScheduledLambda } from "../utils/shared/wrap";
+import { wrapScheduledLambda } from "../../utils/shared/wrap";
 import {
   getTimestampAtStartOfDayUTC,
   getTimestampAtStartOfHour,
@@ -19,12 +19,87 @@ import {
   getDexVolumeMetaRecord,
 } from "../dexVolumeRecords";
 import dexVolumes from "../../protocols/dexVolumes";
+import { ChainBlocks, DexAdapter, VolumeAdapter } from "../../../DefiLlama-Adapters/dexVolumes/dexVolume.type";
+import { Chain } from "@defillama/sdk/build/general";
+import { handleAdapterError } from "../utils";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
-export const handler = async (event: any) => {
-  const currentTimestamp = Date.now() / 1000;
+interface IHandlerEvent {
+  protocolIndexes: number[]
+  timestamp?: number
+}
+
+export const handler = async (event: IHandlerEvent) => {
+  // Timestamp to query, defaults current timestamp
+  const currentTimestamp = event.timestamp || Date.now() / 1000;
+  // Get clean hour
   const fetchCurrentHourTimestamp = getTimestampAtStartOfHour(currentTimestamp);
+  // Get closest block to clean hour
+
+  // TODO: generate from modules
+  const uniswapChains: Chain[] = ["ethereum", "arbitrum", "polygon", "optimism"]
+  const chainBlocks = await getChainBlocks(fetchCurrentHourTimestamp, uniswapChains);
+
+  interface IRunAdapterResult {
+    chain: string,
+    dailyVolume: number,
+    version?: string,
+  }
+  async function runAdapter(volumeAdapter: VolumeAdapter) {
+    const chains = Object.keys(volumeAdapter)
+    return Promise.all(chains.map((chain) => volumeAdapter[chain].fetch(currentTimestamp, chainBlocks).then(result => ({ chain, result })).catch(handleAdapterError)))
+  }
+
+  // TODO: change for allSettled
+  const volumeResponses = await Promise.all(event.protocolIndexes.map(async protocolIndex => {
+    // Get DEX info
+    const { id, name, module } = dexVolumes[protocolIndex];
+    console.log("starting", id, name, module, "adapter!")
+
+    // Import DEX adapter
+    const dexAdapter: DexAdapter = (await import(
+      `../../../DefiLlama-Adapters/dexVolumes/${module}`)
+    ).default;
+
+    // Retrieve daily volumes
+    let dailyVolumes: IRunAdapterResult[] = []
+    if ("volume" in dexAdapter) {
+      const volumes = await runAdapter(dexAdapter.volume)
+      for (const volume of volumes) {
+        if (volume && volume.result.dailyVolume)
+          dailyVolumes.push({
+            chain: volume.chain,
+            dailyVolume: +volume.result.dailyVolume
+          })
+      }
+    } else if ("breakdown" in dexAdapter) {
+      const dexBreakDownAdapter = dexAdapter.breakdown
+      const volumeAdapters = Object.entries(dexBreakDownAdapter)
+      for (const [version, volumeAdapter] of volumeAdapters) {
+        const volumes = await runAdapter(volumeAdapter)
+        for (const volume of volumes) {
+          if (volume && volume.result.dailyVolume) {
+            dailyVolumes.push({
+              chain: volume.chain,
+              dailyVolume: +volume.result.dailyVolume,
+              version
+            })
+          }
+        }
+      }
+    } else console.error("Invalid adapter")
+
+    for (const dailyVolume of dailyVolumes) {
+      console.log(dailyVolume)
+    }
+
+  }))
+
+  // TODO: check if all adapters were success
+  console.log(volumeResponses)
+  return
+  /////////////////////
   const savedHourTimestamp = fetchCurrentHourTimestamp - 3600;
   const prevHourlyTimestamp = savedHourTimestamp - 3600;
   const dailyTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
@@ -32,19 +107,17 @@ export const handler = async (event: any) => {
   const startNewDailyVolume = savedHourTimestamp === dailyTimestamp;
   // if 12:00 am on first day of month add the current calculated volume to prev month
   const monthlyTimestamp = getTimestampAtStartOfMonth(currentTimestamp - 3600);
-  const chainBlocks = await getChainBlocks(fetchCurrentHourTimestamp, [
-    "ethereum",
-    ...chainsForBlocks,
-  ]);
-
-  event.protocolIndexes.map(async (index: number) => {
+  /////////////////////
+  event.protocolIndexes.forEach(async (index: number) => {
     const { id, name, module } = dexVolumes[index];
-
-    const dexVolumeAdapter = await import(
-      `../../DefiLlama-Adapters/dexVolumes/${module}`
-    );
-
-    const ecosystemFetches = Object.entries(dexVolumeAdapter.volume).map(
+    console.log("dex data:", id, name, module)
+    const dexVolumeAdapter = (await import(
+      `../../../DefiLlama-Adapters/dexVolumes/${module}`)
+    ).default;
+    console.log("dexVolumeAdapter", dexVolumeAdapter)
+    const r = dexVolumeAdapter.volume.fetch
+    console.log("result fetch", typeof r, dexVolumeAdapter.volume)
+    const ecosystemFetches = Object.entries(dexVolumeAdapter.volume.fetch).map(
       async ([ecosystem, ecosystemFetch]: [string, any]) => {
         let ecosystemFetchResult;
 
@@ -79,6 +152,8 @@ export const handler = async (event: any) => {
       console.error("dex-volume", errorName, e);
       throw e;
     });
+
+    console.log(getPrevRecords)
 
     const lastUpdatedData = getPrevRecords[0];
     const monthlyData = getPrevRecords[1];
@@ -309,6 +384,4 @@ export const handler = async (event: any) => {
   });
 };
 
-// export default wrapScheduledLambda(handler);
-
-handler({ protocolIndexes: [0] });
+export default wrapScheduledLambda(handler);

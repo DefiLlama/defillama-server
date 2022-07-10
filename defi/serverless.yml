@@ -239,6 +239,13 @@ functions:
       - http:
           path: config
           method: get
+  yieldsConfig:
+    handler: src/getYieldsConfig.default
+    timeout: 30
+    events:
+      - http:
+          path: config/yields
+          method: get
   storeProtocols:
     handler: src/storeGetProtocols.default
     timeout: 60

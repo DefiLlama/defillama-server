@@ -1,7 +1,4 @@
-import {
-  chainsForBlocks,
-  getChainBlocks,
-} from "@defillama/sdk/build/computeTVL/blocks";
+import { getChainBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import BigNumber from "bignumber.js";
 
 import { wrapScheduledLambda } from "../../utils/shared/wrap";
@@ -19,15 +16,22 @@ import {
   getDexVolumeMetaRecord,
 } from "../dexVolumeRecords";
 import dexVolumes from "../../protocols/dexVolumes";
-import { ChainBlocks, DexAdapter, VolumeAdapter } from "../../../DefiLlama-Adapters/dexVolumes/dexVolume.type";
+import { DexAdapter, VolumeAdapter } from "../../../DefiLlama-Adapters/dexVolumes/dexVolume.type";
 import { Chain } from "@defillama/sdk/build/general";
 import { handleAdapterError } from "../utils";
+import { storeVolume, Volume, VolumeType } from "../data/volume";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
 interface IHandlerEvent {
   protocolIndexes: number[]
   timestamp?: number
+}
+
+export interface IRecordVolumeData {
+  [chain: string]: {
+    [protocolVersion: string]: number | undefined,
+  }
 }
 
 export const handler = async (event: IHandlerEvent) => {
@@ -41,11 +45,6 @@ export const handler = async (event: IHandlerEvent) => {
   const uniswapChains: Chain[] = ["ethereum", "arbitrum", "polygon", "optimism"]
   const chainBlocks = await getChainBlocks(fetchCurrentHourTimestamp, uniswapChains);
 
-  interface IRunAdapterResult {
-    chain: string,
-    dailyVolume: number,
-    version?: string,
-  }
   async function runAdapter(volumeAdapter: VolumeAdapter) {
     const chains = Object.keys(volumeAdapter)
     return Promise.all(chains.map((chain) => volumeAdapter[chain].fetch(currentTimestamp, chainBlocks).then(result => ({ chain, result })).catch(handleAdapterError)))
@@ -55,7 +54,6 @@ export const handler = async (event: IHandlerEvent) => {
   const volumeResponses = await Promise.all(event.protocolIndexes.map(async protocolIndex => {
     // Get DEX info
     const { id, name, module } = dexVolumes[protocolIndex];
-    console.log("starting", id, name, module, "adapter!")
 
     // Import DEX adapter
     const dexAdapter: DexAdapter = (await import(
@@ -63,14 +61,15 @@ export const handler = async (event: IHandlerEvent) => {
     ).default;
 
     // Retrieve daily volumes
-    let dailyVolumes: IRunAdapterResult[] = []
+    let rawDailyVolumes: IRecordVolumeData[] = []
     if ("volume" in dexAdapter) {
       const volumes = await runAdapter(dexAdapter.volume)
       for (const volume of volumes) {
         if (volume && volume.result.dailyVolume)
-          dailyVolumes.push({
-            chain: volume.chain,
-            dailyVolume: +volume.result.dailyVolume
+          rawDailyVolumes.push({
+            [volume.chain]: {
+              [module]: +volume.result.dailyVolume
+            },
           })
       }
     } else if ("breakdown" in dexAdapter) {
@@ -80,20 +79,26 @@ export const handler = async (event: IHandlerEvent) => {
         const volumes = await runAdapter(volumeAdapter)
         for (const volume of volumes) {
           if (volume && volume.result.dailyVolume) {
-            dailyVolumes.push({
-              chain: volume.chain,
-              dailyVolume: +volume.result.dailyVolume,
-              version
+            rawDailyVolumes.push({
+              [volume.chain]: {
+                [version]: +volume.result.dailyVolume
+              },
             })
           }
         }
       }
     } else console.error("Invalid adapter")
+    const dailyVolumes = rawDailyVolumes.reduce((acc, current: IRecordVolumeData) => {
+      const chain = Object.keys(current)[0]
+      acc[chain] = {
+        ...acc[chain],
+        ...current[chain]
+      }
+      return acc
+    }, {} as IRecordVolumeData)
 
-    for (const dailyVolume of dailyVolumes) {
-      console.log(dailyVolume)
-    }
-
+    const v = new Volume(VolumeType.dailyVolume, id, fetchCurrentHourTimestamp, dailyVolumes)
+    await storeVolume(v)
   }))
 
   // TODO: check if all adapters were success

@@ -42,7 +42,7 @@ jobs:
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Run tests
-      run: npm t data
+      run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
       env:
         ETHEREUM_RPC: ETHEREUM_RPC
     - name: Deploy infrastructure stack

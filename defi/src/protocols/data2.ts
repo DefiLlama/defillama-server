@@ -10460,4 +10460,26 @@ listedAt: 1650804679
   twitter: "WalrusFinance",
   listedAt: 1657364601
 },
+{
+  id: "1889",
+  name: "Zest Protocol",
+  address: "fantom:0x2C26617034C840C9412CD67aE0Fc68A6755D00BF",
+  symbol: "ZSP",
+  url: "https://zestprotocol.fi",
+  description: "Earn zesty yields without impermanent loss on your favourite blue-chip assets. Harness the power of synthetic assets - backed by collateral, that don't lose their peg",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/frozen-walrus-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "zest-synthetic-protocol",
+  cmcId: null,
+  category: "Synthetics",
+  chains: ["Fantom"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "zest-protocol/index.js",
+  twitter: "ProtocolZest",
+  audit_links: ["https://aegisaudits.com/audits/pdf/Zest-Protocol-Audit.pdf"],
+  listedAt: 1657490481
+},
 ] as Protocol[]

@@ -10468,7 +10468,7 @@ listedAt: 1650804679
   url: "https://zestprotocol.fi",
   description: "Earn zesty yields without impermanent loss on your favourite blue-chip assets. Harness the power of synthetic assets - backed by collateral, that don't lose their peg",
   chain: "Fantom",
-  logo: `${baseIconsUrl}/frozen-walrus-finance.png`,
+  logo: `${baseIconsUrl}/zest-protocol.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "zest-synthetic-protocol",

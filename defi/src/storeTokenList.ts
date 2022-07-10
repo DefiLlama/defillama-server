@@ -20,7 +20,7 @@ const handler = async () => {
     })))).reduce((all, logo) => ({
         ...all,
         [logo.PK]: logo.thumb
-    }))
+    }), {})
     await Promise.all([
         "avalanche",
         "polygon-pos",

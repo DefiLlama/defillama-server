@@ -1,9 +1,12 @@
 const abi = require("./abi.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import { batchGet, batchWrite } from "../../../utils/shared/dynamodb";
-const wrappedGasTokens: { [key: string]: any } = {
-  ethereum: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-};
+import { wrappedGasTokens } from "../../utils/gasTokens";
+import {
+  addToDBWritesList,
+  getTokenAndRedirectData
+} from "../../utils/database";
+import { getTokenInfo } from "../../utils/erc20";
 
 async function getcTokens(chain: string, comptroller: string) {
   const markets = (
@@ -40,41 +43,11 @@ async function getcTokens(chain: string, comptroller: string) {
 
   return cTokenData;
 }
-async function getTokenData(chain: string, cTokens: any) {
-  return await Promise.all([
-    multiCall({
-      calls: cTokens.map((c: any) => ({
-        target: c.address
-      })),
-      abi: "erc20:decimals",
-      chain: chain as any
-    }),
-    multiCall({
-      calls: cTokens.map((c: any) => ({
-        target: c.address
-      })),
-      abi: "erc20:symbol",
-      chain: chain as any
-    }),
-    multiCall({
-      calls: cTokens.map((c: any) => ({
-        target: c.address
-      })),
-      abi: abi.exchangeRateStored,
-      chain: chain as any
-    }),
-    multiCall({
-      calls: cTokens.map((c: any) => ({
-        target: c.underlying
-      })),
-      abi: "erc20:decimals",
-      chain: chain as any
-    })
-  ]);
-}
+
 export async function getTokenPrices(chain: string, comptroller: string) {
   const cTokens = await getcTokens(chain, comptroller);
 
+  // replace this logic with our helper function
   const underlyingPrices = await batchGet(
     cTokens.map((v: any) => ({
       PK: `asset#${chain}:${v.underlying}`,
@@ -94,13 +67,30 @@ export async function getTokenPrices(chain: string, comptroller: string) {
   const unknownTokens = [];
   const [
     redirectResults,
-    [
-      { output: decimals },
-      { output: symbols },
-      { output: exchangeRates },
-      { output: underlyingDecimals }
-    ]
-  ] = await Promise.all([batchGet(redirects), getTokenData(chain, cTokens)]);
+    tokenInfo,
+    { output: underlyingDecimals },
+    { output: exchangeRates }
+  ] = await Promise.all([
+    batchGet(redirects),
+    getTokenInfo(
+      chain,
+      cTokens.map((c: any) => c.address)
+    ),
+    multiCall({
+      calls: cTokens.map((c: any) => ({
+        target: c.underlying
+      })),
+      abi: "erc20:decimals",
+      chain: chain as any
+    }),
+    multiCall({
+      calls: cTokens.map((c: any) => ({
+        target: c.address
+      })),
+      abi: abi.exchangeRateStored,
+      chain: chain as any
+    })
+  ]);
 
   const prices: any[] = [];
   cTokens.map((t: any, i: number) => {
@@ -128,23 +118,18 @@ export async function getTokenPrices(chain: string, comptroller: string) {
   });
 
   let writes: any[] = [];
+
   prices.map((p: any) => {
-    const i = decimals.map((d: any) => d.input.target).indexOf(p.address);
-    writes.push(
-      {
-        decimals: Number(decimals[i].output),
-        PK: `asset#${chain}:${cTokens[i].address}`,
-        SK: Date.now(),
-        symbol: symbols[i].output,
-        price: p.price / 10 ** (10 + Number(underlyingDecimals[i].output))
-      },
-      {
-        decimals: Number(decimals[i].output),
-        PK: `asset#${chain}:${cTokens[i].address}`,
-        SK: 0,
-        symbol: symbols[i].output,
-        price: p.price / 10 ** (10 + Number(underlyingDecimals[i].output))
-      }
+    const i = tokenInfo.decimals
+      .map((d: any) => d.input.target)
+      .indexOf(p.address);
+    addToDBWritesList(
+      writes,
+      chain,
+      cTokens[i].address,
+      p.price / 10 ** (10 + Number(underlyingDecimals[i].output)),
+      tokenInfo.decimals[i].output,
+      tokenInfo.symbols[i].output
     );
   });
 

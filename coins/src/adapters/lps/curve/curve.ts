@@ -1,29 +1,18 @@
 const abi = require("./abi.json");
 const contracts = require("./contracts.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
-import { getBalance } from "@defillama/sdk/build/eth/index";
 import { batchGet, batchWrite } from "../../../utils/shared/dynamodb";
+import { getGasTokenBalance } from "../../utils/gasTokens";
+import { result, multicall } from "../../utils/sdkInterfaces";
+import { getTokenInfo } from "../../utils/erc20";
+import { addToDBWritesList } from "../../utils/database";
+import { listUnknownTokens } from "../../utils/erc20";
 
-const gasTokenDummyAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 const registryIds = {
   stableswap: 0,
   stableFactory: 3,
   crypto: 5,
   cryptoFactory: 6
-};
-interface result {
-  success: boolean;
-  input: {
-    target: string;
-  };
-  output: any;
-}
-interface multicall {
-  target: string;
-  params: string[];
-}
-const wrappedGasTokens: { [key: string]: any } = {
-  ethereum: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
 };
 async function getPools(chain: string) {
   const registries = (
@@ -107,28 +96,6 @@ function aggregateBalanceCalls(coins: string[], nCoins: string[], pool: any) {
   );
   return calls;
 }
-async function getGasTokenBalances(chain: string, pool: any, balances: any) {
-  const gasTokenBalance = (
-    await getBalance({
-      target: pool.output,
-      chain: chain as any
-    })
-  ).output;
-  balances.push({
-    input: {
-      target: wrappedGasTokens[chain] || null,
-      params: [pool.output]
-    },
-    output: gasTokenBalance,
-    success: true
-  });
-
-  balances = balances.filter(
-    (b: any) => b.input.target != gasTokenDummyAddress
-  );
-
-  return balances;
-}
 async function poolBalances(chain: string, pool: any, registry: string) {
   const [{ output: nCoins }, { output: coins }] = await Promise.all([
     call({
@@ -155,14 +122,7 @@ async function poolBalances(chain: string, pool: any, registry: string) {
     })
   ).output;
 
-  if (
-    balances.map((b) => b.input.target).includes(wrappedGasTokens[chain]) ||
-    balances.map((b) => b.input.target).includes(gasTokenDummyAddress)
-  ) {
-    balances = await getGasTokenBalances(chain, pool, balances);
-  }
-
-  return balances;
+  return await getGasTokenBalance(chain, pool, balances);
 }
 async function PoolToToken(chain: string, pool: any) {
   pool = pool.output.toLowerCase();
@@ -252,30 +212,6 @@ async function PoolToToken(chain: string, pool: any) {
   }
   return token;
 }
-async function tokenInfo(chain: string, target: string) {
-  try {
-    return await Promise.all([
-      call({
-        target,
-        chain: chain as any,
-        abi: "erc20:totalSupply"
-      }),
-      call({
-        target,
-        chain: chain as any,
-        abi: "erc20:decimals"
-      }),
-      call({
-        target,
-        abi: "erc20:symbol",
-        chain: chain as any
-      })
-    ]);
-  } catch {
-    console.log(`trouble fetching supply, decimals, symbol for ${target}`);
-    return [];
-  }
-}
 async function getUnderlyingPrices(balances: any, chain: string) {
   const underlyingPrices = await batchGet(
     balances.map((b: result) => ({
@@ -293,6 +229,7 @@ async function getUnderlyingPrices(balances: any, chain: string) {
   }
   const redirectResults = await batchGet(redirects);
 
+  // replace this above with our new helper f
   const poolComponents = balances.map((b: any) => {
     try {
       let underlyingPrice: any = underlyingPrices.filter((p) =>
@@ -328,12 +265,9 @@ export async function getTokenPrices(chain: string) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry]).slice(7)) {
       const token: string = await PoolToToken(chain, pool);
-      const [
-        balances,
-        [{ output: supply }, { output: decimals }, { output: symbol }]
-      ] = await Promise.all([
+      const [balances, tokenInfo] = await Promise.all([
         poolBalances(chain, pool, registry),
-        tokenInfo(chain, token)
+        getTokenInfo(chain, [token])
       ]);
 
       const poolTokens: any[] = await getUnderlyingPrices(balances, chain);
@@ -345,44 +279,18 @@ export async function getTokenPrices(chain: string) {
         0
       );
 
-      writes.push(
-        ...[
-          {
-            SK: Date.now(),
-            PK: `asset#${chain}:${token}`,
-            price: (poolValue * 10 ** decimals) / supply,
-            symbol,
-            decimals: Number(decimals)
-          },
-          {
-            SK: 0,
-            PK: `asset#${chain}:${token}`,
-            price: (poolValue * 10 ** decimals) / supply,
-            symbol,
-            decimals: Number(decimals)
-          }
-        ]
+      addToDBWritesList(
+        writes,
+        chain,
+        token,
+        (poolValue * 10 ** tokenInfo.decimals[0].output) /
+          tokenInfo.supplies[0].output,
+        tokenInfo.decimals[0].output,
+        tokenInfo.symbols[0].output
       );
     }
   }
 
   await listUnknownTokens(chain, unknownTokens);
   await batchWrite(writes, true);
-}
-async function listUnknownTokens(chain: string, unknownTokens: string[]) {
-  unknownTokens = unknownTokens.reduce(function (a: string[], b) {
-    if (a.indexOf(b) == -1) a.push(b);
-    return a;
-  }, []);
-  const unknownSymbols = (
-    await multiCall({
-      calls: unknownTokens.map((t) => ({
-        target: t
-      })),
-      abi: "erc20:symbol",
-      chain: chain as any
-    })
-  ).output.map((o) => o.output);
-  unknownTokens = unknownTokens.map((t, i) => `${unknownSymbols[i]}-${t}`);
-  console.log(unknownTokens);
 }

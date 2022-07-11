@@ -2,6 +2,8 @@ const abi = require("./abi.json");
 const contracts = require("./contracts.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import { batchGet, batchWrite } from "../../../utils/shared/dynamodb";
+import { addToDBWritesList } from "../../utils/database";
+import { getTokenInfo } from "../../utils/erc20";
 
 async function getReserveData(chain: string) {
   const addressProvider = (
@@ -36,59 +38,34 @@ async function getReserveData(chain: string) {
     })
   ).output;
 }
-async function getTokenData(chain: string, reserveData: any) {
-  return await Promise.all([
+
+export async function getTokenPrices(chain: string) {
+  const reserveData = await getReserveData(chain);
+  const [underlyingRedirects, tokenInfo] = await Promise.all([
     batchGet(
       reserveData.map((r: any) => ({
         PK: `asset#${chain}:${r.input.params[0].toLowerCase()}`,
         SK: 0
       }))
     ),
-    multiCall({
-      calls: reserveData.map((r: any) => ({
-        target: r.output.aTokenAddress
-      })),
-      abi: "erc20:decimals",
-      chain: chain as any
-    }),
-    multiCall({
-      calls: reserveData.map((r: any) => ({
-        target: r.output.aTokenAddress
-      })),
-      abi: "erc20:symbol",
-      chain: chain as any
-    })
+    getTokenInfo(
+      chain,
+      reserveData.map((r: any) => r.output.aTokenAddress)
+    )
   ]);
-}
-export async function getTokenPrices(chain: string) {
-  const reserveData = await getReserveData(chain);
-  const [
-    underlyingRedirects,
-    { output: decimals },
-    { output: symbols }
-  ] = await getTokenData(chain, reserveData);
 
   let writes: any[] = [];
   reserveData.map((r, i) =>
-    writes.push(
-      {
-        redirect: underlyingRedirects.filter((u) =>
-          u.PK.includes(r.input.params[0].toLowerCase())
-        )[0].redirect,
-        decimals: decimals[i].output,
-        PK: `asset#${chain}:${r.output.aTokenAddress.toLowerCase()}`,
-        SK: Date.now(),
-        symbol: symbols[i].output
-      },
-      {
-        redirect: underlyingRedirects.filter((u) =>
-          u.PK.includes(r.input.params[0].toLowerCase())
-        )[0].redirect,
-        decimals: decimals[i].output,
-        PK: `asset#${chain}:${r.output.aTokenAddress.toLowerCase()}`,
-        SK: 0,
-        symbol: symbols[i].output
-      }
+    addToDBWritesList(
+      writes,
+      chain,
+      r.output.aTokenAddress.toLowerCase(),
+      undefined,
+      tokenInfo.decimals[i].output,
+      tokenInfo.symbols[i].output,
+      underlyingRedirects.filter((u) =>
+        u.PK.includes(r.input.params[0].toLowerCase())
+      )[0].redirect
     )
   );
 

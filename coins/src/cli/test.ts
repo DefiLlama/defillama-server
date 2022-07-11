@@ -11,9 +11,10 @@ async function main() {
 
   await Promise.all([
     curve("ethereum")
-    //aave("ethereum"),
+    //aave("ethereum")
     //yearn("ethereum")
   ]);
 }
 main();
 // ts-node coins/src/cli/test.ts
+// asset#ethereum:0x04bc0ab673d88ae9dbc9da2380cb6b79c4bca9ae

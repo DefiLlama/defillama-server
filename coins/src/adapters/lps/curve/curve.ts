@@ -256,18 +256,23 @@ async function tokenInfo(chain: string, target: string) {
   try {
     return await Promise.all([
       call({
-        target: target as any,
+        target,
         chain: chain as any,
         abi: "erc20:totalSupply"
       }),
       call({
-        target: target as any,
+        target,
         chain: chain as any,
         abi: "erc20:decimals"
+      }),
+      call({
+        target,
+        abi: "erc20:symbol",
+        chain: chain as any
       })
     ]);
   } catch {
-    console.log(`trouble fetching supply & decimals for ${target}`);
+    console.log(`trouble fetching supply, decimals, symbol for ${target}`);
     return [];
   }
 }
@@ -288,97 +293,81 @@ async function getUnderlyingPrices(balances: any, chain: string) {
   }
   const redirectResults = await batchGet(redirects);
 
-  balances.map((b: any) => {
-    const underlyingPrice: any = underlyingPrices.filter((p) =>
-      p.PK.includes(b.input.target.toLowerCase())
-    )[0];
-    let price;
-    if (underlyingPrice.redirect) {
-      let a = underlyingPrice.redirect;
-      let b = redirectResults.filter((p) => p.PK == underlyingPrice.redirect);
-      let c = b[0];
-      let d = c.price;
-      price = redirectResults.filter((p) => p.PK == underlyingPrice.redirect)[0]
-        .price;
-    } else {
-      price = underlyingPrice.price;
-    }
-
-    return {
-      balance: b.output / 10 ** underlyingPrice.decimals,
-      price
-    };
-  });
-  // THIS BLOCK DOES NOT WORK YET
-  return balances.map((b: any) => {
-    let underlyingPrice: any = underlyingPrices.filter((p) =>
-      p.PK.includes(b.input.target.toLowerCase())
-    )[0];
-    let redirect: any;
-    if (underlyingPrice.redirect) {
-      redirect = redirectResults.filter(
-        (p) => p.symbol == underlyingPrice.PK.includes()
+  const poolComponents = balances.map((b: any) => {
+    try {
+      let underlyingPrice: any = underlyingPrices.filter((p) =>
+        p.PK.includes(b.input.target.toLowerCase())
       )[0];
+
+      let price;
+      if ("redirect" in underlyingPrice) {
+        price = redirectResults.filter(
+          (p) => p.PK == underlyingPrice.redirect
+        )[0].price;
+      } else {
+        price = underlyingPrice.price;
+      }
+
+      return {
+        balance: b.output / 10 ** underlyingPrice.decimals,
+        price
+      };
+    } catch {
+      unknownTokens.push(b.input.target.toLowerCase());
     }
-    return {
-      balance: b.output / 10 ** underlyingPrice.decimals,
-      price: redirect.price
-    };
   });
-  // THIS BLOCK DOES NOT WORK YET
+
+  return poolComponents;
 }
+let unknownTokens: string[] = [];
 export async function getTokenPrices(chain: string) {
   const poolList = await getPools(chain);
   const writes: any = [];
 
-  let unknownTokens: string[] = [];
   for (let registry of ["stableswap", "crypto"]) {
     //Object.keys(poolList)) {
-    for (let pool of Object.values(poolList[registry])) {
+    for (let pool of Object.values(poolList[registry]).slice(7)) {
       const token: string = await PoolToToken(chain, pool);
       const [
         balances,
-        [{ output: supply }, { output: decimals }]
+        [{ output: supply }, { output: decimals }, { output: symbol }]
       ] = await Promise.all([
         poolBalances(chain, pool, registry),
         tokenInfo(chain, token)
       ]);
 
-      let poolTokens: any[] = [];
-      try {
-        poolTokens = await getUnderlyingPrices(balances, chain);
-      } catch (e) {
-        console.log(e);
+      const poolTokens: any[] = await getUnderlyingPrices(balances, chain);
+      if (poolTokens.includes(undefined)) {
+        continue;
       }
-      try {
-        const poolValue: number = poolTokens.reduce(
-          (p, c) => p + c.balance * c.price,
-          0
-        );
+      const poolValue: number = poolTokens.reduce(
+        (p, c) => p + c.balance * c.price,
+        0
+      );
 
-        writes.push({
-          SK: Date.now(),
-          PK: `asset#${chain}:${token}`,
-          price: (poolValue * 10 ** decimals) / supply
-        });
-      } catch (e) {
-        unknownTokens.push(
-          ...balances.map((b: any) => b.input.target.toLowerCase())
-        );
-      }
+      writes.push(
+        ...[
+          {
+            SK: Date.now(),
+            PK: `asset#${chain}:${token}`,
+            price: (poolValue * 10 ** decimals) / supply,
+            symbol,
+            decimals: Number(decimals)
+          },
+          {
+            SK: 0,
+            PK: `asset#${chain}:${token}`,
+            price: (poolValue * 10 ** decimals) / supply,
+            symbol,
+            decimals: Number(decimals)
+          }
+        ]
+      );
     }
   }
 
-  console.log("check writes");
   await listUnknownTokens(chain, unknownTokens);
-
-  await Promise.all([
-    batchWrite(writes, true),
-    batchWrite(
-      writes.map((w: any) => w.SK == 0),
-      true
-    )
-  ]);
+  await batchWrite(writes, true);
 }
 async function listUnknownTokens(chain: string, unknownTokens: string[]) {
   unknownTokens = unknownTokens.reduce(function (a: string[], b) {

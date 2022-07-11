@@ -44,21 +44,29 @@ async function getTokenData(chain: string, reserveData: any) {
         SK: 0
       }))
     ),
-    await multiCall({
+    multiCall({
       calls: reserveData.map((r: any) => ({
         target: r.output.aTokenAddress
       })),
       abi: "erc20:decimals",
+      chain: chain as any
+    }),
+    multiCall({
+      calls: reserveData.map((r: any) => ({
+        target: r.output.aTokenAddress
+      })),
+      abi: "erc20:symbol",
       chain: chain as any
     })
   ]);
 }
 export async function getTokenPrices(chain: string) {
   const reserveData = await getReserveData(chain);
-  const [underlyingRedirects, { output: decimals }] = await getTokenData(
-    chain,
-    reserveData
-  );
+  const [
+    underlyingRedirects,
+    { output: decimals },
+    { output: symbols }
+  ] = await getTokenData(chain, reserveData);
 
   let writes: any[] = [];
   reserveData.map((r, i) =>
@@ -69,7 +77,8 @@ export async function getTokenPrices(chain: string) {
         )[0].redirect,
         decimals: decimals[i].output,
         PK: `asset#${chain}:${r.output.aTokenAddress.toLowerCase()}`,
-        SK: Date.now()
+        SK: Date.now(),
+        symbol: symbols[i].output
       },
       {
         redirect: underlyingRedirects.filter((u) =>
@@ -77,7 +86,8 @@ export async function getTokenPrices(chain: string) {
         )[0].redirect,
         decimals: decimals[i].output,
         PK: `asset#${chain}:${r.output.aTokenAddress.toLowerCase()}`,
-        SK: 0
+        SK: 0,
+        symbol: symbols[i].output
       }
     )
   );

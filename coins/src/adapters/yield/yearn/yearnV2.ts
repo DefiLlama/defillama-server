@@ -7,6 +7,20 @@ const chains: object = {
   arbitrum: 42161,
   fantom: 250
 };
+const manualVaults = [
+  "0x04bC0Ab673d88aE9dbC9DA2380cB6B79C4BCa9aE", // yBUSD
+  "0xE6354ed5bC4b393a5Aad09f21c46E101e692d447", // yUSDT
+  "0x26EA744E5B887E5205727f55dFBE8685e3b21951", // yUSDC
+  "0xC2cB1040220768554cf699b0d863A3cd4324ce32", // yDAI
+  "0x99d1fa417f94dcd62bfe781a1213c092a47041bc", // ycDAI
+  "0x9777d7e2b60bb01759d0e2f8be2095df444cb07e", // ycUSDC
+  "0x1be5d71f2da660bfdee8012ddc58d024448a0a59", // ycUSDT
+  "0x16de59092dae5ccf4a1e6439d611fd0653f0bd01", // yDAI
+  "0xd6ad7a6750a7593e092a9b218d66c0a814a3436e", // yUSDC
+  "0x83f798e925bcd4017eb265844fddabb448f1707d", // yUSDT
+  "0x73a052500105205d34daf004eab301916da8190f" // yTUSD
+];
+
 interface tokenKeys {
   symbol: string;
   address: string;
@@ -72,8 +86,7 @@ async function getUsdValues(
   pricePerShares: multiCallResults,
   vaults: any[],
   underlyingPrices: any[],
-  redirectResults: any[],
-  chain: string
+  redirectResults: any[]
 ) {
   let usdValues = pricePerShares.output.map((t) => {
     const selectedVaults = vaults.filter(
@@ -93,13 +106,41 @@ async function getUsdValues(
     const decimals = resolveDecimals(t.output, 0);
 
     return {
-      address: `asset#${chain}:${t.input.target.toLowerCase()}`,
+      address: t.input.target.toLowerCase(),
       price: (t.output * underlyingPrice) / 10 ** decimals,
-      decimals: decimals
+      decimals: decimals,
+      symbol: selectedVaults[0].symbol
     };
   });
 
   return usdValues.filter((v) => Object.keys(v).length !== 0);
+}
+async function pushMoreVaults(chain: string, vaults: any) {
+  const [{ output: tokens }, { output: symbols }] = await Promise.all([
+    multiCall({
+      abi: abi.token,
+      chain: chain as any,
+      calls: manualVaults.map((v) => ({
+        target: v
+      }))
+    }),
+    multiCall({
+      abi: "erc20:symbol",
+      chain: chain as any,
+      calls: manualVaults.map((v) => ({
+        target: v
+      }))
+    })
+  ]);
+
+  const vaultInfo = manualVaults.map((v, i) => ({
+    address: v,
+    token: {
+      address: tokens[i].output
+    },
+    symbol: symbols[i].output
+  }));
+  vaults.push(...vaultInfo);
 }
 export async function getTokenPrices(chain: string) {
   let vaults = (
@@ -109,6 +150,8 @@ export async function getTokenPrices(chain: string) {
       }/vaults/all`
     )
   ).data;
+  // 135
+  await pushMoreVaults(chain, vaults);
 
   const underlyingPrices = await batchGet(
     vaults.map((v: vaultKeys) => ({
@@ -135,26 +178,17 @@ export async function getTokenPrices(chain: string) {
     pricePerShares,
     vaults,
     underlyingPrices,
-    redirectResults,
-    chain
+    redirectResults
   );
-
-  //.map((v) => v || {});
-  // const sendThis: PutItemInputAttributeMap[] = usdValues.map((v) => ({
-  //   "prod-coins-table": v
-  // }));
-  // let queryString: AttributeValue = `{"prod-coins-table": [{"PutRequest": {"Item": {`;
-  // for (let i = 0; i < usdValues.length; i++) {
-  //   queryString = queryString.concat(usdValues[i] || "");
-  //   queryString.concat(`}}}]}`);
-  // }
 
   await Promise.all([
     batchWrite(
       usdValues.map((v) => ({
         SK: Date.now(),
         PK: `asset#${chain}:${v.address}`,
-        price: v.price
+        price: v.price,
+        symbol: v.symbol,
+        decimals: v.decimals
       })),
       true
     ),
@@ -162,7 +196,9 @@ export async function getTokenPrices(chain: string) {
       usdValues.map((v) => ({
         SK: 0,
         PK: `asset#${chain}:${v.address}`,
-        price: v.price
+        price: v.price,
+        symbol: v.symbol,
+        decimals: v.decimals
       })),
       true
     )

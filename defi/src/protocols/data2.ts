@@ -5455,7 +5455,7 @@ export default [
   name: "Steak",
   address: "terra:terra1rl4zyexjphwgx6v3ytyljkkc4mrje2pyznaclv",
   symbol: "STEAK",
-  url: null,
+  url: 'https://steak.club',
   description: "Liquid staking protocol for the @Cosmos",
   chain: "Terra",
   logo: `${baseIconsUrl}/steak.png`,

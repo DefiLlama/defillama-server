@@ -1,24 +1,43 @@
 const abi = require("./abi.json");
-const contracts = require("./contracts.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import { batchGet, batchWrite } from "../../../utils/shared/dynamodb";
-import axios from "axios";
+const wrappedGasTokens: { [key: string]: any } = {
+  ethereum: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+};
 
-// change this function to hit the comptroller directly and get a list of markets
-async function getcTokens() {
-  let cTokenData = (
-    await axios.get(`https://api.compound.finance/api/v2/ctoken`)
-  ).data.cToken.map((t: any) => ({
-    symbol: t.symbol,
-    underlying: t.underlying_address, //.toLowerCase(),
-    address: t.token_address.toLowerCase()
+async function getcTokens(chain: string, comptroller: string) {
+  const markets = (
+    await call({
+      target: comptroller,
+      abi: abi.getAllMarkets,
+      chain: chain as any
+    })
+  ).output;
+  const [{ output: symbols }, { output: underlyings }] = await Promise.all([
+    multiCall({
+      calls: markets.map((m: any) => ({
+        target: m
+      })),
+      abi: "erc20:symbol",
+      chain: chain as any
+    }),
+    multiCall({
+      calls: markets.map((m: any) => ({
+        target: m
+      })),
+      abi: abi.underlying,
+      chain: chain as any
+    })
+  ]);
+  let cTokenData = markets.map((m: any, i: number) => ({
+    symbol: symbols[i].output,
+    underlying:
+      underlyings[i].output != null
+        ? underlyings[i].output.toLowerCase()
+        : wrappedGasTokens[chain],
+    address: m.toLowerCase()
   }));
 
-  const cETHIndex = cTokenData
-    .map((t: any) => t.address)
-    .indexOf("0x4ddc2d193948926d02f9b1fe9e1daa0718270ed5");
-  cTokenData[cETHIndex].underlying ==
-    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
   return cTokenData;
 }
 async function getTokenData(chain: string, cTokens: any) {
@@ -53,8 +72,8 @@ async function getTokenData(chain: string, cTokens: any) {
     })
   ]);
 }
-export async function getTokenPrices(chain: string) {
-  const cTokens = await getcTokens();
+export async function getTokenPrices(chain: string, comptroller: string) {
+  const cTokens = await getcTokens(chain, comptroller);
 
   const underlyingPrices = await batchGet(
     cTokens.map((v: any) => ({

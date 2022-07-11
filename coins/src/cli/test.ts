@@ -14,7 +14,7 @@ async function main() {
     //curve("ethereum")
     //aave("ethereum")
     //yearn("ethereum")
-    compound("ethereum")
+    compound("ethereum", "0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B")
   ]);
 }
 main();

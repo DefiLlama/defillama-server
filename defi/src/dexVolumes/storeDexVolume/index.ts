@@ -1,7 +1,7 @@
 import { getChainBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 
 import { wrapScheduledLambda } from "../../utils/shared/wrap";
-import { getTimestampAtStartOfHour } from "../../utils/date";
+import { getTimestampAtStartOfDayUTC } from "../../utils/date";
 import volumeAdapters from "../dexAdapters";
 import { DexAdapter, VolumeAdapter } from "../../../DefiLlama-Adapters/dexVolumes/dexVolume.type";
 import { Chain } from "@defillama/sdk/build/general";
@@ -24,8 +24,8 @@ export interface IRecordVolumeData {
 export const handler = async (event: IHandlerEvent) => {
   // Timestamp to query, defaults current timestamp
   const currentTimestamp = event.timestamp || Date.now() / 1000;
-  // Get clean hour
-  const fetchCurrentHourTimestamp = getTimestampAtStartOfHour(currentTimestamp);
+  // Get clean day
+  const fetchCurrentHourTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
   // Get closest block to clean hour
 
   // TODO: generate from modules

@@ -2,6 +2,7 @@ import { getPairPrices } from "../adapters/lps/uniswap/uniswap";
 import { getTokenPrices as curve } from "../adapters/lps/curve/curve";
 import { getTokenPrices as yearn } from "../adapters/yield/yearn/yearnV2";
 import { getTokenPrices as aave } from "../adapters/moneyMarkets/aave/aaveV2";
+import { getTokenPrices as compound } from "../adapters/moneyMarkets/compound/compound";
 async function main() {
   //   await getPairPrices(
   //     "bsc",
@@ -10,9 +11,10 @@ async function main() {
   //   );
 
   await Promise.all([
-    curve("ethereum")
+    //curve("ethereum")
     //aave("ethereum")
     //yearn("ethereum")
+    compound("ethereum")
   ]);
 }
 main();

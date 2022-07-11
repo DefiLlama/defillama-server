@@ -10,11 +10,11 @@ export enum VolumeType {
 export class Volume extends Item {
     data: IRecordVolumeData
     type: VolumeType
-    dexId: number
+    dexId: string
     timestamp: number
     version: string | undefined
 
-    constructor(type: VolumeType, dexId: number, timestamp: number, data: IRecordVolumeData) {
+    constructor(type: VolumeType, dexId: string, timestamp: number, data: IRecordVolumeData) {
         super()
         this.data = data
         this.type = type
@@ -27,7 +27,7 @@ export class Volume extends Item {
         if (!item.PK || !item.SK) throw new Error("Bad item!")
         // PK=dv#dex#{id}
         // TODO: update dynamodb types with correct sdk
-        const dexId = +(item.PK as string).split("#")[2]
+        const dexId = (item.PK as string).split("#")[2]
         const recordType = (item.PK as string).split("#")[0] as VolumeType
         const body = item
         const timestamp = +item.SK
@@ -64,7 +64,7 @@ export const storeVolume = async (volume: Volume): Promise<Volume> => {
     }
 }
 
-export const getVolume = async (dex: number, type: VolumeType): Promise<Volume[]> => {
+export const getVolume = async (dex: string, type: VolumeType): Promise<Volume[]> => {
     // Creating dummy object to get the correct key
     const volume = new Volume(type, dex, null!, null!)
 

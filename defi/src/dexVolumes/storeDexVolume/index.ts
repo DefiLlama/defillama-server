@@ -15,7 +15,7 @@ import {
   getMonthlyDexVolumeRecord,
   getDexVolumeMetaRecord,
 } from "../dexVolumeRecords";
-import dexVolumes from "../../protocols/dexVolumes";
+import volumeAdapters from "../dexAdapters";
 import { DexAdapter, VolumeAdapter } from "../../../DefiLlama-Adapters/dexVolumes/dexVolume.type";
 import { Chain } from "@defillama/sdk/build/general";
 import { handleAdapterError } from "../utils";
@@ -53,11 +53,11 @@ export const handler = async (event: IHandlerEvent) => {
   // TODO: change for allSettled
   const volumeResponses = await Promise.all(event.protocolIndexes.map(async protocolIndex => {
     // Get DEX info
-    const { id, name, module } = dexVolumes[protocolIndex];
+    const { id, volumeAdapter } = volumeAdapters[protocolIndex];
 
     // Import DEX adapter
     const dexAdapter: DexAdapter = (await import(
-      `../../../DefiLlama-Adapters/dexVolumes/${module}`)
+      `../../../DefiLlama-Adapters/dexVolumes/${volumeAdapter}`)
     ).default;
 
     // Retrieve daily volumes
@@ -68,7 +68,7 @@ export const handler = async (event: IHandlerEvent) => {
         if (volume && volume.result.dailyVolume)
           rawDailyVolumes.push({
             [volume.chain]: {
-              [module]: +volume.result.dailyVolume
+              [volumeAdapter]: +volume.result.dailyVolume
             },
           })
       }
@@ -114,7 +114,7 @@ export const handler = async (event: IHandlerEvent) => {
   const monthlyTimestamp = getTimestampAtStartOfMonth(currentTimestamp - 3600);
   /////////////////////
   event.protocolIndexes.forEach(async (index: number) => {
-    const { id, name, module } = dexVolumes[index];
+    const { id, name, module } = volumeAdapters[index];
     console.log("dex data:", id, name, module)
     const dexVolumeAdapter = (await import(
       `../../../DefiLlama-Adapters/dexVolumes/${module}`)

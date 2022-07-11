@@ -1537,7 +1537,7 @@ export default [
   cmcId: "10006",
   category: "Reserve Currency",
   chains: ["Fantom"],
-  oracles: [],
+  oracles: ["DIA"],
   forkedFrom: [],
   module: "gton.js",
   twitter: "GtonCapital",

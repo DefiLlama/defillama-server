@@ -38,7 +38,7 @@ const handler = async (_event: any) => {
         };
       })
     )
-  ).filter((p) => p.category !== "Chain" && p.category !== "Bridge");
+  ).filter((p) => p.category !== "Chain");
 
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet = new Set();

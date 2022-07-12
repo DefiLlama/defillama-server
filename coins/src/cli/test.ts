@@ -11,12 +11,11 @@ async function main() {
   //   );
 
   await Promise.all([
-    //curve("ethereum")
-    //aave("ethereum")
+    curve("ethereum")
+    //aave("ethereum", "0x52D306e36E3B6B02c153d0266ff0f85d18BCD413")
     //yearn("ethereum")
-    compound("ethereum", "0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B")
+    //compound("ethereum", "0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B")
   ]);
 }
 main();
 // ts-node coins/src/cli/test.ts
-// asset#ethereum:0x04bc0ab673d88ae9dbc9da2380cb6b79c4bca9ae

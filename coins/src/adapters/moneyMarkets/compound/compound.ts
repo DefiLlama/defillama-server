@@ -1,15 +1,23 @@
 const abi = require("./abi.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
-import { batchGet, batchWrite } from "../../../utils/shared/dynamodb";
+import { batchWrite } from "../../../utils/shared/dynamodb";
 import { wrappedGasTokens } from "../../utils/gasTokens";
 import {
   addToDBWritesList,
   getTokenAndRedirectData
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
+import { write, read, price } from "../../utils/dbInterfaces";
+import { result } from "../../utils/sdkInterfaces";
+
+interface cToken {
+  symbol: string;
+  address: string;
+  underlying: string;
+}
 
 async function getcTokens(chain: string, comptroller: string) {
-  const markets = (
+  const markets: string[] = (
     await call({
       target: comptroller,
       abi: abi.getAllMarkets,
@@ -18,21 +26,21 @@ async function getcTokens(chain: string, comptroller: string) {
   ).output;
   const [{ output: symbols }, { output: underlyings }] = await Promise.all([
     multiCall({
-      calls: markets.map((m: any) => ({
+      calls: markets.map((m: string) => ({
         target: m
       })),
       abi: "erc20:symbol",
       chain: chain as any
     }),
     multiCall({
-      calls: markets.map((m: any) => ({
+      calls: markets.map((m: string) => ({
         target: m
       })),
       abi: abi.underlying,
       chain: chain as any
     })
   ]);
-  let cTokenData = markets.map((m: any, i: number) => ({
+  let cTokenData = markets.map((m: string, i: number) => ({
     symbol: symbols[i].output,
     underlying:
       underlyings[i].output != null
@@ -45,46 +53,31 @@ async function getcTokens(chain: string, comptroller: string) {
 }
 
 export async function getTokenPrices(chain: string, comptroller: string) {
-  const cTokens = await getcTokens(chain, comptroller);
+  const cTokens: cToken[] = await getcTokens(chain, comptroller);
 
-  // replace this logic with our helper function
-  const underlyingPrices = await batchGet(
-    cTokens.map((v: any) => ({
-      PK: `asset#${chain}:${v.underlying}`,
-      SK: 0
-    }))
+  const coinsData: read[] = await getTokenAndRedirectData(
+    cTokens.map((c: cToken) => c.underlying),
+    chain
   );
 
-  const redirects = [];
-  for (let i = 0; i < underlyingPrices.length; i++) {
-    if (!("redirect" in underlyingPrices[i])) continue;
-    redirects.push({
-      PK: underlyingPrices[i].redirect,
-      SK: 0
-    });
-  }
-
-  const unknownTokens = [];
   const [
-    redirectResults,
     tokenInfo,
     { output: underlyingDecimals },
     { output: exchangeRates }
   ] = await Promise.all([
-    batchGet(redirects),
     getTokenInfo(
       chain,
-      cTokens.map((c: any) => c.address)
+      cTokens.map((c: cToken) => c.address)
     ),
     multiCall({
-      calls: cTokens.map((c: any) => ({
+      calls: cTokens.map((c: cToken) => ({
         target: c.underlying
       })),
       abi: "erc20:decimals",
       chain: chain as any
     }),
     multiCall({
-      calls: cTokens.map((c: any) => ({
+      calls: cTokens.map((c: cToken) => ({
         target: c.address
       })),
       abi: abi.exchangeRateStored,
@@ -92,21 +85,18 @@ export async function getTokenPrices(chain: string, comptroller: string) {
     })
   ]);
 
-  const prices: any[] = [];
-  cTokens.map((t: any, i: number) => {
+  const unknownTokens = [];
+  const prices: price[] = [];
+
+  cTokens.map((t: cToken, i: number) => {
     try {
-      let underlyingPrice = underlyingPrices.filter((p) =>
-        p.PK.includes(t.underlying)
+      const coinData: read = coinsData.filter((c: read) =>
+        c.dbEntry.PK.includes(t.underlying)
       )[0];
-      let price: number;
-      if (underlyingPrice && "redirect" in underlyingPrice) {
-        const redirectResult = redirectResults.filter(
-          (r) => underlyingPrice.redirect == r.PK
-        )[0];
-        price = redirectResult.price;
-      } else {
-        price = underlyingPrice.price;
-      }
+      let price: number =
+        coinData.redirect.length != 0
+          ? coinData.redirect[0].price
+          : coinData.dbEntry.price;
 
       prices.push({
         address: t.address,
@@ -117,11 +107,11 @@ export async function getTokenPrices(chain: string, comptroller: string) {
     }
   });
 
-  let writes: any[] = [];
+  let writes: write[] = [];
 
-  prices.map((p: any) => {
+  prices.map((p: price) => {
     const i = tokenInfo.decimals
-      .map((d: any) => d.input.target)
+      .map((d: result) => d.input.target)
       .indexOf(p.address);
     addToDBWritesList(
       writes,

@@ -1,14 +1,15 @@
 const abi = require("./abi.json");
-const contracts = require("./contracts.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import { batchGet, batchWrite } from "../../../utils/shared/dynamodb";
 import { addToDBWritesList } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
+import { write } from "../../utils/dbInterfaces";
+import { result } from "../../utils/sdkInterfaces";
 
-async function getReserveData(chain: string) {
+async function getReserveData(chain: string, registry: string) {
   const addressProvider = (
     await call({
-      target: "0x52D306e36E3B6B02c153d0266ff0f85d18BCD413",
+      target: registry,
       chain: chain as any,
       abi: abi.getAddressesProviderList
     })
@@ -39,22 +40,22 @@ async function getReserveData(chain: string) {
   ).output;
 }
 
-export async function getTokenPrices(chain: string) {
-  const reserveData = await getReserveData(chain);
+export async function getTokenPrices(chain: string, registry: string) {
+  const reserveData: result[] = await getReserveData(chain, registry);
   const [underlyingRedirects, tokenInfo] = await Promise.all([
     batchGet(
-      reserveData.map((r: any) => ({
+      reserveData.map((r: result) => ({
         PK: `asset#${chain}:${r.input.params[0].toLowerCase()}`,
         SK: 0
       }))
     ),
     getTokenInfo(
       chain,
-      reserveData.map((r: any) => r.output.aTokenAddress)
+      reserveData.map((r: result) => r.output.aTokenAddress)
     )
   ]);
 
-  let writes: any[] = [];
+  let writes: write[] = [];
   reserveData.map((r, i) =>
     addToDBWritesList(
       writes,

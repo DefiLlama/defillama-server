@@ -1,21 +1,13 @@
-import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
-
-interface write {
-  SK: number;
-  PK: string;
-  price: number | undefined;
-  symbol: string;
-  decimals: number;
-  redirect: string | undefined;
-}
+import { batchGet } from "../../utils/shared/dynamodb";
+import { write, dbEntry, redirect, dbQuery } from "./dbInterfaces";
 export async function getTokenAndRedirectData(tokens: string[], chain: string) {
-  const dbEntries = await batchGet(
+  const dbEntries: dbEntry[] = await batchGet(
     tokens.map((t: string) => ({
       PK: `asset#${chain}:${t}`,
       SK: 0
     }))
   );
-  const redirects = [];
+  const redirects: dbQuery[] = [];
   for (let i = 0; i < dbEntries.length; i++) {
     if (!("redirect" in dbEntries[i])) continue;
     redirects.push({
@@ -23,13 +15,11 @@ export async function getTokenAndRedirectData(tokens: string[], chain: string) {
       SK: 0
     });
   }
-  const redirectResults = await batchGet(redirects);
+  const redirectResults: redirect[] = await batchGet(redirects);
 
   return dbEntries.map((d) => ({
     dbEntry: d,
-    redirect: d.redirect
-      ? redirectResults.filter((r) => r.PK == d.redirect)[0]
-      : undefined
+    redirect: redirectResults.filter((r) => r.PK == d.redirect)
   }));
 }
 export function addToDBWritesList(

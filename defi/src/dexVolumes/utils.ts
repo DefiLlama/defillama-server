@@ -127,7 +127,15 @@ export const calcNumBreakdownFetches = (breakdown: BreakdownAdapter) =>
 //     );
 
 
-export async function handleAdapterError(e: Error) {
+export interface IAdapterInfo {
+  id: string
+  chain: string
+  timestamp: number
+  version?: string
+}
+
+export async function handleAdapterError(e: Error, adapterInfo?: IAdapterInfo) {
   // TODO: handle error properly
+  console.error(adapterInfo)
   console.error(e)
 }

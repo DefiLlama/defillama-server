@@ -10,22 +10,7 @@ import {  getLastRecord,
     hourlyTokensTvl, } from "./getLastRecord";
 import { importAdapter } from "./imports/importAdapter";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./normalizeChain";
-
-interface ICurrentChainTvls {
-    [chain:string]:number
-}
-
-interface IProtocolResponse extends Protocol {
-    otherProtocols?: Array<string>
-    methodology?: string
-    misrepresentedTokens?: boolean
-    hallmarks?: [number, string]
-    chainTvls: any;
-    currentChainTvls: ICurrentChainTvls;
-    tvl: {date: number, totalLiquidityUSD: number}[];
-    tokensInUsd?: Array<{date: number, tokens: {string: number}}>;
-    tokens?: Array<{date: number, tokens: {string: number}}>;
-}
+import type { IProtocolResponse } from "../types";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
     if (balances?.ethereum !== undefined) {

@@ -4,7 +4,7 @@ import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from "zlib";
 import { getProtocolTvl, ProtocolTvls } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
-import { IParentProtocol } from "./protocols/types";
+import type { IParentProtocol } from "./protocols/types";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -15,32 +15,34 @@ function compress(data: string) {
 
 const handler = async (_event: any) => {
   const response = await craftProtocolsResponse(true);
-  const trimmedResponse = await Promise.all(
-    response.map(async (protocol) => {
-      const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol, true);
-      return {
-        category: protocol.category,
-        chains: protocol.chains,
-        oracles: protocol.oracles,
-        forkedFrom: protocol.forkedFrom,
-        listedAt: protocol.listedAt,
-        mcap: protocol.mcap,
-        name: protocol.name,
-        symbol: protocol.symbol,
-        tvl: protocolTvls.tvl,
-        tvlPrevDay: protocolTvls.tvlPrevDay,
-        tvlPrevWeek: protocolTvls.tvlPrevWeek,
-        tvlPrevMonth: protocolTvls.tvlPrevMonth,
-        chainTvls: protocolTvls.chainTvls,
-        parentProtocol: protocol.parentProtocol
-      };
-    })
-  );
 
-  const noChainResponse = trimmedResponse.filter((p) => p.category !== "Chain");
+  const trimmedResponse = (
+    await Promise.all(
+      response.map(async (protocol) => {
+        const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol, true);
+        return {
+          category: protocol.category,
+          chains: protocol.chains,
+          oracles: protocol.oracles,
+          forkedFrom: protocol.forkedFrom,
+          listedAt: protocol.listedAt,
+          mcap: protocol.mcap,
+          name: protocol.name,
+          symbol: protocol.symbol,
+          tvl: protocolTvls.tvl,
+          tvlPrevDay: protocolTvls.tvlPrevDay,
+          tvlPrevWeek: protocolTvls.tvlPrevWeek,
+          tvlPrevMonth: protocolTvls.tvlPrevMonth,
+          chainTvls: protocolTvls.chainTvls,
+          parentProtocol: protocol.parentProtocol,
+        };
+      })
+    )
+  ).filter((p) => p.category !== "Chain" && p.category !== "Bridge");
+
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet = new Set();
-  noChainResponse.forEach((p) => {
+  trimmedResponse.forEach((p) => {
     protocolCategoriesSet.add(p.category);
     if (p.category !== "Bridge") {
       p.chains.forEach((c: string) => {
@@ -65,14 +67,14 @@ const handler = async (_event: any) => {
 
   const compressedV2Response = compress(
     JSON.stringify({
-      protocols: noChainResponse,
+      protocols: trimmedResponse,
       chains: Object.entries(chains)
         .sort((a, b) => b[1] - a[1])
         .map((c) => c[0]),
       protocolCategories: [...protocolCategoriesSet].filter(
         (category) => category
       ),
-      parentProtocols
+      parentProtocols,
     })
   );
   await store("lite/protocols2", compressedV2Response, true);

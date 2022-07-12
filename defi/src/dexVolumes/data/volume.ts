@@ -76,7 +76,6 @@ export const getVolume = async (dex: string, type: VolumeType): Promise<Volume[]
                 ":pk": volume.pk,
             }
         })
-        console.log("items", resp, volume.pk)
         if (!resp.Items) throw Error("No items found")
         return resp.Items.map(Volume.fromItem)
     } catch (error) {

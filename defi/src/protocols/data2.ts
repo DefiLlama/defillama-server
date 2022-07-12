@@ -10479,6 +10479,31 @@ listedAt: 1650804679
   audit_links: ["https://aegisaudits.com/audits/pdf/Zest-Protocol-Audit.pdf"],
   listedAt: 1657490481
 },
+{
+  id: "1890",
+  name: "Algodex",
+  address: "algorand:724480511",
+  symbol: "ALGX",
+  url: "https://app.algodex.com/about",
+  description: "Algodex is a decentralized exchange with the order book and funds completely on the Algorand blockchain. It uses smart contracts and escrows to hold limit orders, and facilitates peer-to-peer trading of all Algorand assets. On the platform, users maintain control over the price they choose to transact at.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/algodex.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "algodex",
+  cmcId: "20132",
+  category: "Dexes",
+  chains: ["Algorand"],
+  oracles: [],
+  forkedFrom: [],
+  module: "algodex.js",
+  twitter: "AlgodexOfficial",
+  audit_links: [
+                  "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algodex_Jan.pdf",
+                  "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algodex_Dec.pdf",
+               ],
+  listedAt: 1657637208
+},
 ]
 
 

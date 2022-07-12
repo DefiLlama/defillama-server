@@ -788,7 +788,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 53935,
   },
-  "Clover": {
+  "CLV": {
     geckoId: "clover-finance",
     symbol: "CLV",
     cmcId: "8384",
@@ -1200,8 +1200,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Milkomeda"
     case "dfk":
       return "DFK"
-    case "clover":
-      return "Clover"
+    case "clv":
+      return "CLV"
     case "rei":
       return "REI"
     case "crab":

@@ -97,7 +97,7 @@ custom:
   prune:
     automatic: true
     number: 5 # Number of versions to keep
-  tableName: prod-table
+  tableName: ${self:custom.stage}-table
   domainMap:
     prod:
       domain: api.llama.fi
@@ -280,6 +280,19 @@ functions:
     timeout: 900
     events:
       - schedule: cron(0 * * * ? *)
+  storeVolume:
+    handler: src/dexVolumes/storeDexVolume/index.default
+    timeout: 900
+    memorySize: 512
+    events:
+      - http:
+          path: testtest
+          method: get
+  triggerStoreVolume:
+    handler: src/triggerStoreVolume.default
+    timeout: 900
+    events:
+      - schedule: rate(1 hour)
   storeDataset:
     handler: src/storeCsvDataset.default
     timeout: 900

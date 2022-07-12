@@ -1,314 +1,108 @@
-import {
-  chainsForBlocks,
-  getChainBlocks,
-} from "@defillama/sdk/build/computeTVL/blocks";
-import BigNumber from "bignumber.js";
+import { getChainBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 
-// import { wrapScheduledLambda } from "../utils/shared/wrap";
-import {
-  getTimestampAtStartOfDayUTC,
-  getTimestampAtStartOfHour,
-  getTimestampAtStartOfMonth,
-} from "../../utils/date";
-import {
-  dailyDexVolumeDb,
-  hourlyDexVolumeDb,
-  monthlyDexVolumeDb,
-  getHourlyDexVolumeRecord,
-  getMonthlyDexVolumeRecord,
-  getDexVolumeMetaRecord,
-} from "../dexVolumeRecords";
-import dexVolumes from "../../protocols/dexVolumes";
+import { wrapScheduledLambda } from "../../utils/shared/wrap";
+import { getTimestampAtStartOfDayUTC } from "../../utils/date";
+import volumeAdapters from "../dexAdapters";
+import { DexAdapter, VolumeAdapter } from "../../../DefiLlama-Adapters/dexVolumes/dexVolume.type";
+import { handleAdapterError } from "../utils";
+import { storeVolume, Volume, VolumeType } from "../data/volume";
+import getAllChainsFromDexAdapters from "../utils/getAllChainsFromDexAdapters";
+import canGetBlock from "../utils/canGetBlock";
+import allSettled from 'promise.allsettled'
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
-export const handler = async (event: any) => {
-  const currentTimestamp = Date.now() / 1000;
-  const fetchCurrentHourTimestamp = getTimestampAtStartOfHour(currentTimestamp);
-  const savedHourTimestamp = fetchCurrentHourTimestamp - 3600;
-  const prevHourlyTimestamp = savedHourTimestamp - 3600;
-  const dailyTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
-  const startOfDay = fetchCurrentHourTimestamp === dailyTimestamp;
-  const startNewDailyVolume = savedHourTimestamp === dailyTimestamp;
-  // if 12:00 am on first day of month add the current calculated volume to prev month
-  const monthlyTimestamp = getTimestampAtStartOfMonth(currentTimestamp - 3600);
-  const chainBlocks = await getChainBlocks(fetchCurrentHourTimestamp, [
-    "ethereum",
-    ...chainsForBlocks,
-  ]);
+interface IHandlerEvent {
+  protocolIndexes: number[]
+  timestamp?: number
+}
 
-  event.protocolIndexes.map(async (index: number) => {
-    const { id, name, module } = dexVolumes[index];
+export interface IRecordVolumeData {
+  [chain: string]: {
+    [protocolVersion: string]: number | undefined,
+  }
+}
 
-    const dexVolumeAdapter = await import(
-      `../../DefiLlama-Adapters/dexVolumes/${module}`
-    );
+export const handler = async (event: IHandlerEvent) => {
+  // Timestamp to query, defaults current timestamp
+  const currentTimestamp = event.timestamp || Date.now() / 1000;
+  // Get clean day
+  const fetchCurrentHourTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
 
-    const ecosystemFetches = Object.entries(dexVolumeAdapter.volume).map(
-      async ([ecosystem, ecosystemFetch]: [string, any]) => {
-        let ecosystemFetchResult;
+  // Get closest block to clean day. Only for EVM compatible ones.
+  const allChains = getAllChainsFromDexAdapters().filter(canGetBlock)
+  const chainBlocks = await getChainBlocks(currentTimestamp, allChains);
 
-        try {
-          ecosystemFetchResult = await ecosystemFetch(
-            fetchCurrentHourTimestamp,
-            chainBlocks
-          );
-        } catch (e) {
-          const errorName = `fetch-${name}-${ecosystem}-${fetchCurrentHourTimestamp}`;
-          console.error("dex-volume", errorName, e);
-          throw e;
-        }
+  async function runAdapter(volumeAdapter: VolumeAdapter, id: string, version?: string) {
+    const chains = Object.keys(volumeAdapter)
+    return allSettled(chains.map((chain) => volumeAdapter[chain].fetch(currentTimestamp, chainBlocks).then(result => ({ chain, result })).catch((e)=>handleAdapterError(e, {
+      id,
+      chain,
+      version,
+      timestamp: currentTimestamp
+    }))))
+  }
 
-        return { [ecosystem]: ecosystemFetchResult };
+  // TODO: change for allSettled
+  const volumeResponses = await Promise.all(event.protocolIndexes.map(async protocolIndex => {
+    // Get DEX info
+    const { id, volumeAdapter } = volumeAdapters[protocolIndex];
+
+    // Import DEX adapter
+    const dexAdapter: DexAdapter = (await import(
+      `../../../DefiLlama-Adapters/dexVolumes/${volumeAdapter}`)
+    ).default;
+
+    // Retrieve daily volumes
+    let rawDailyVolumes: IRecordVolumeData[] = []
+    if ("volume" in dexAdapter) {
+      const runAdapterRes = await runAdapter(dexAdapter.volume, id)
+      // TODO: process rejected promises
+      const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
+      for (const volume of volumes) {
+        if (volume && volume.result.dailyVolume)
+          rawDailyVolumes.push({
+            [volume.chain]: {
+              [volumeAdapter]: +volume.result.dailyVolume
+            },
+          })
       }
-    );
-
-    const protocolVolumes = (await Promise.all(ecosystemFetches)).reduce(
-      (acc, volume) => ({ ...acc, ...volume }),
-      {}
-    );
-
-    console.log(protocolVolumes, "protocolVolumes");
-
-    const getPrevRecords = await Promise.all([
-      getHourlyDexVolumeRecord(id, prevHourlyTimestamp),
-      getMonthlyDexVolumeRecord(id, monthlyTimestamp),
-      getDexVolumeMetaRecord(id),
-    ]).catch((e) => {
-      const errorName = `fetch-prevdata-${name}-${fetchCurrentHourTimestamp}`;
-      console.error("dex-volume", errorName, e);
-      throw e;
-    });
-
-    const lastUpdatedData = getPrevRecords[0];
-    const monthlyData = getPrevRecords[1];
-    const dexGeneralData = getPrevRecords[2];
-    const { backfilledTotalVolume } = dexGeneralData;
-
-    // Marks this hourly's volume as inaccurate
-    const validPrevHour = !!lastUpdatedData;
-
-    let sumTotalVolume = new BigNumber(0);
-    let sumDailyVolume = new BigNumber(0);
-    let sumHourlyVolume = new BigNumber(0);
-    let sumMonthlyVolume = new BigNumber(monthlyData?.monthlyVolume || 0);
-
-    const newEcosystemHourlyVolumes: {
-      [x: string]: {
-        [y: string]: string;
-      };
-    } = {};
-
-    const newEcosystemDailyVolumes: {
-      [x: string]: {
-        [y: string]: string;
-      };
-    } = {};
-
-    const newEcosystemTotalVolumes: {
-      [x: string]: {
-        [y: string]: string;
-      };
-    } = {};
-
-    const newEcosystemMonthlyVolumes: {
-      [x: string]: {
-        [y: string]: string;
-      };
-    } = {};
-
-    // let validTotalVolume = true;
-    // let validDailyVolume = true;
-    // let validHourlyVolume = true;
-
-    // Calc all ecosystem total, daily, hourly volumes and sum them
-    Object.entries(protocolVolumes).map(([ecosystem, ecosystemVolume]) => {
-      const { totalVolume, dailyVolume, hourlyVolume } = ecosystemVolume;
-
-      const validTotalVolume = typeof totalVolume !== "undefined";
-      const validDailyVolume = typeof dailyVolume !== "undefined";
-      const validHourlyVolume = typeof hourlyVolume !== "undefined";
-
-      newEcosystemHourlyVolumes[ecosystem] = {};
-      newEcosystemDailyVolumes[ecosystem] = {};
-      newEcosystemMonthlyVolumes[ecosystem] = {};
-      newEcosystemTotalVolumes[ecosystem] = {};
-
-      // Calculate TotalVolume, if no daily or hourly calc them too
-      if (validTotalVolume) {
-        const bigNumberTotalVol = new BigNumber(totalVolume);
-        newEcosystemTotalVolumes[ecosystem].totalVolume =
-          bigNumberTotalVol.toString();
-        sumTotalVolume = sumTotalVolume.plus(bigNumberTotalVol);
-
-        const totalVolDiff = bigNumberTotalVol.minus(
-          new BigNumber(
-            lastUpdatedData?.ecosystems?.[ecosystem]?.totalVolume || 0
-          )
-        );
-
-        // Assumes previous data is correct, need to either ensure backfill has prev hour, if api make sure to lock in dex-volume and release once an hourly has been recorded
-        if (validPrevHour) {
-          newEcosystemMonthlyVolumes[ecosystem].monthlyVolume = new BigNumber(
-            monthlyData?.ecosystems?.[ecosystem]?.monthlyVolume || 0
-          )
-            .plus(totalVolDiff)
-            .toString();
-          sumMonthlyVolume = sumMonthlyVolume.plus(totalVolDiff);
-        }
-
-        if (!validDailyVolume || startNewDailyVolume) {
-          let calcDailyVolume = totalVolDiff;
-          if (prevHourlyTimestamp !== dailyTimestamp) {
-            calcDailyVolume = calcDailyVolume.plus(
-              new BigNumber(
-                lastUpdatedData?.ecosystems?.[ecosystem]?.dailyVolume
-              )
-            );
-          }
-
-          newEcosystemDailyVolumes[ecosystem].dailyVolume =
-            calcDailyVolume.toString();
-          sumDailyVolume = sumDailyVolume.plus(calcDailyVolume);
-        }
-
-        if (!validHourlyVolume) {
-          let calcHourlyVolume = bigNumberTotalVol.minus(
-            new BigNumber(
-              lastUpdatedData?.ecosystems?.[ecosystem]?.totalVolume || 0
-            )
-          );
-          newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
-            calcHourlyVolume.toString();
-          sumHourlyVolume.plus(calcHourlyVolume);
-        }
-      }
-
-      // Calc daily, if no hourly and total, calc hourly
-      if (validDailyVolume) {
-        const bigNumberDailyVol = new BigNumber(dailyVolume);
-        newEcosystemDailyVolumes[ecosystem].dailyVolume =
-          bigNumberDailyVol.toString();
-        sumDailyVolume = bigNumberDailyVol;
-
-        const dailyVolDiff = bigNumberDailyVol.minus(
-          new BigNumber(
-            lastUpdatedData?.ecosystems?.[ecosystem]?.dailyVolume || 0
-          )
-        );
-
-        if (!validTotalVolume && validPrevHour) {
-          newEcosystemMonthlyVolumes[ecosystem].monthlyVolume = new BigNumber(
-            monthlyData?.ecosystems?.[ecosystem]?.monthlyVolume || 0
-          )
-            .plus(dailyVolDiff)
-            .toString();
-          sumMonthlyVolume = sumMonthlyVolume.plus(dailyVolDiff);
-        }
-
-        if (!validHourlyVolume && !validTotalVolume) {
-          if (startOfDay) {
-            newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
-              bigNumberDailyVol.toString();
-            sumHourlyVolume.plus(bigNumberDailyVol);
-
-            // if (backfilledTotalVolume && validPrevHour) {
-            //   const current
-            //   newEcosystemTotalVolumes[ecosystem].totalVolume =
-            //     bigNumberDailyVol.toString();
-            //   sumTotalVolume = sumTotalVolume.plus(bigNumberTotalVol);
-            // }
-          } else {
-            let calcHourlyVolume = dailyVolDiff;
-            newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
-              calcHourlyVolume.toString();
-            sumHourlyVolume.plus(calcHourlyVolume);
+    } else if ("breakdown" in dexAdapter) {
+      const dexBreakDownAdapter = dexAdapter.breakdown
+      const volumeAdapters = Object.entries(dexBreakDownAdapter)
+      for (const [version, volumeAdapter] of volumeAdapters) {
+        const runAdapterRes = await runAdapter(volumeAdapter, id, version)
+        // TODO: process rejected promises
+        const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
+        for (const volume of volumes) {
+          if (volume && volume.result.dailyVolume) {
+            rawDailyVolumes.push({
+              [volume.chain]: {
+                [version]: +volume.result.dailyVolume
+              },
+            })
           }
         }
       }
-
-      if (validHourlyVolume) {
-        const bigNumberHourlyVol = new BigNumber(hourlyVolume);
-        newEcosystemHourlyVolumes[ecosystem].hourlyVolume =
-          bigNumberHourlyVol.toString();
-        sumHourlyVolume.plus(bigNumberHourlyVol);
-
-        if (!validTotalVolume && !validDailyVolume) {
-          newEcosystemMonthlyVolumes[ecosystem].monthlyVolume = new BigNumber(
-            monthlyData?.ecosystems?.[ecosystem]?.[monthlyVolume] || 0
-          )
-            .plus(bigNumberHourlyVol)
-            .toString();
-          sumMonthlyVolume = sumMonthlyVolume.plus(bigNumberHourlyVol);
-        }
+    } else console.error("Invalid adapter")
+    const dailyVolumes = rawDailyVolumes.reduce((acc, current: IRecordVolumeData) => {
+      const chain = Object.keys(current)[0]
+      acc[chain] = {
+        ...acc[chain],
+        ...current[chain]
       }
-    });
+      return acc
+    }, {} as IRecordVolumeData)
 
-    const totalVolume = sumTotalVolume.toString();
-    const dailyVolume = sumDailyVolume.toString();
-    const hourlyVolume = sumHourlyVolume.toString();
-    const monthlyVolume = sumMonthlyVolume.toString();
+    const v = new Volume(VolumeType.dailyVolume, id, fetchCurrentHourTimestamp, dailyVolumes)
+    console.log("Retrieved", v, v.keys())
+    await storeVolume(v)
+    console.log("Stored", v.keys())
+  }))
 
-    const hourlyEcosystemVolumes = Object.keys(
-      newEcosystemHourlyVolumes
-    ).reduce((acc: any, curr) => {
-      acc[curr] = {
-        hourlyVolume: newEcosystemHourlyVolumes[curr].hourlyVolume,
-        dailyVolume: newEcosystemDailyVolumes[curr].dailyVolume,
-        totalVolume: newEcosystemTotalVolumes[curr].totalVolume,
-      };
-      return acc;
-    }, {});
-
-    const dailyEcosystemVolumes = Object.keys(newEcosystemDailyVolumes).reduce(
-      (acc: any, curr) => {
-        acc[curr] = {
-          dailyVolume: newEcosystemDailyVolumes[curr].dailyVolume,
-          totalVolume: newEcosystemTotalVolumes[curr].totalVolume,
-        };
-        return acc;
-      },
-      {}
-    );
-
-    const monthlyEcosystemVolumes = Object.keys(
-      newEcosystemMonthlyVolumes
-    ).reduce((acc: any, curr) => {
-      acc[curr] = {
-        monthlyVolume: newEcosystemMonthlyVolumes[curr].monthlyVolume,
-        totalVolume: newEcosystemTotalVolumes[curr].totalVolume,
-      };
-      return acc;
-    }, {});
-
-    hourlyDexVolumeDb.put({
-      id,
-      unix: savedHourTimestamp,
-      hourlyVolume,
-      dailyVolume,
-      totalVolume,
-      validPrevHour,
-      ecosystems: hourlyEcosystemVolumes,
-    });
-
-    dailyDexVolumeDb.put({
-      id,
-      unix: dailyTimestamp,
-      dailyVolume,
-      totalVolume,
-      ecosystems: dailyEcosystemVolumes,
-    });
-
-    monthlyDexVolumeDb.put({
-      id,
-      unix: monthlyTimestamp,
-      monthlyVolume,
-      totalVolume,
-      ecosystems: monthlyEcosystemVolumes,
-    });
-  });
+  // TODO: check if all adapters were success
+  console.log(volumeResponses)
+  return
 };
 
-// export default wrapScheduledLambda(handler);
-
-handler({ protocolIndexes: [0] });
+export default wrapScheduledLambda(handler);

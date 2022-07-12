@@ -12902,10 +12902,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: null,
   symbol: "-",
   url: "https://www.brahma.fi",
-  description: "Brahma increases the GDP of DeFi by building easy-to-invest vaults, which abstract the underlying complexity of primitives and give a systematic, risk-adjusted way to capture yield.",
+  description: "Brahma manages interactions and risk with multiple chains, dApps and instruments in a fully transparent and composable way, so you can earn yield, hedge and deploy capital in an efficient manner.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/brahma.jpg`,
-  audits: "0",
+  audits: "1",
+  audit_links: [
+    "https://github.com/Brahma-fi/brahma-security/tree/master/audits"
+  ],
   audit_note: null,
   gecko_id: null,
   cmcId: null,

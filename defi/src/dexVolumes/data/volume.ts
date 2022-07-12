@@ -70,6 +70,7 @@ export const getVolume = async (dex: string, type: VolumeType): Promise<Volume[]
 
     try {
         const resp = await dynamodb.query({
+            // TODO: Change for upsert like
             KeyConditionExpression: "PK = :pk",
             ExpressionAttributeValues: {
                 ":pk": volume.pk,

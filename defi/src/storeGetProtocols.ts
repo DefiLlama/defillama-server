@@ -2,9 +2,10 @@ import { craftProtocolsResponse } from "./getProtocols";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from "zlib";
-import { getProtocolTvl, ProtocolTvls } from "./utils/getProtocolTvl";
+import { getProtocolTvl } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
+import type { LiteProtocol, ProtocolTvls } from "./types";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -16,7 +17,7 @@ function compress(data: string) {
 const handler = async (_event: any) => {
   const response = await craftProtocolsResponse(true);
 
-  const trimmedResponse = (
+  const trimmedResponse: LiteProtocol[] = (
     await Promise.all(
       response.map(async (protocol) => {
         const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol, true);
@@ -41,7 +42,8 @@ const handler = async (_event: any) => {
   ).filter((p) => p.category !== "Chain");
 
   const chains = {} as { [chain: string]: number };
-  const protocolCategoriesSet = new Set();
+  const protocolCategoriesSet: Set<string> = new Set();
+  
   trimmedResponse.forEach((p) => {
     protocolCategoriesSet.add(p.category);
     if (p.category !== "Bridge") {

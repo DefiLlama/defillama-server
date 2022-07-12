@@ -26,6 +26,28 @@ interface IChainTvl {
   };
 }
 
+interface ItvlsWithChangesByChain {
+  [key: string]: {
+    tvl: number | null;
+    tvlPrevDay: number | null;
+    tvlPrevWeek: number | null;
+    tvlPrevMonth: number | null;
+  };
+};
+
+export interface ITvlsByChain {
+  [chain: string]: number;
+}
+
+
+export interface ProtocolTvls {
+  tvl: number | null;
+  tvlPrevDay: number | null;
+  tvlPrevWeek: number | null;
+  tvlPrevMonth: number | null;
+  chainTvls: ItvlsWithChangesByChain;
+};
+
 export interface IProtocolResponse extends Protocol {
   otherProtocols?: Array<string>;
   methodology?: string;
@@ -38,20 +60,8 @@ export interface IProtocolResponse extends Protocol {
   tokens?: Array<{ date: number; tokens: { string: number } }>;
 }
 
-export interface ITvlsByChain {
-  [chain: string]: number;
-}
 
-// export interface ITvlsByChain {
-//   [chain: string]: {
-//     tvl: number | null;
-//     tvlPrevDay: number | null;
-//     tvlPrevWeek: number | null;
-//     tvlPrevMonth: number | null;
-//   };
-// }
-
-export interface ILiteProtocol
+export interface IProtocol
   extends Omit<IProtocolResponse, "tvl" | "currentChainTvls" | "chainTvls"> {
   slug: string;
   tvl: number;
@@ -62,11 +72,22 @@ export interface ILiteProtocol
   change_7d: number | null;
   mcap?: number;
   fdv?: number;
-  staking?: number
-  pool2?: number
-  
+  staking?: number;
+  pool2?: number;
 }
 
+export type LiteProtocol = Pick<
+    IProtocol,
+    | "category"
+    | "chains"
+    | "oracles"
+    | "forkedFrom"
+    | "listedAt"
+    | "mcap"
+    | "name"
+    | "symbol"
+    | "parentProtocol"
+  > & ProtocolTvls
 
 export interface IChain {
   gecko_id?: string | null;

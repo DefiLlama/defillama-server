@@ -12,7 +12,7 @@ import {
 } from "./utils/normalizeChain";
 import dynamodb, { TableName } from "./utils/shared/dynamodb";
 import { craftChainsResponse } from "./getChains";
-import type { ILiteProtocol, IChain, ITvlsByChain } from "./types";
+import type { IProtocol, IChain, ITvlsByChain } from "./types";
 
 export function getPercentChange(previous: number, current: number) {
   const change = (current / previous) * 100 - 100;
@@ -87,7 +87,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
           chains.push(getChainDisplayName(chain, useNewChainNames));
         }
 
-        const dataToReturn: ILiteProtocol = {
+        const dataToReturn: IProtocol = {
           ...protocol,
           slug: sluggify(protocol),
           tvl: lastHourlyRecord.tvl,
@@ -131,7 +131,7 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
     )
   )
     .filter((protocol) => protocol !== null)
-    .sort((a, b) => b!.tvl - a!.tvl) as ILiteProtocol[];
+    .sort((a, b) => b!.tvl - a!.tvl) as IProtocol[];
     
   return response;
 }
@@ -146,7 +146,7 @@ const handler = async (
       ? await craftChainsResponse()
       : [];
 
-  const response: Array<ILiteProtocol | IChain> = [...protocols, ...chainData];
+  const response: Array<IProtocol | IChain> = [...protocols, ...chainData];
 
   return successResponse(response, 10 * 60); // 10 mins cache
 };

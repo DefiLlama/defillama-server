@@ -18,7 +18,7 @@ export type {Protocol};
 `chains` is not used by the current code, but good to fill it out because it is used in our test to detect errors
 */
 
-export default ([
+const data: Protocol[] = [
   {
     id: "1",
     name: "Uniswap",
@@ -15038,7 +15038,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Lumenswap is a decentralized exchange built on the Stellar network that allows you to swap and trade assets using a friendly, minimal interface.",
   chain: "Stellar",
   logo: `${baseIconsUrl}/lumenswap.jpg`,
-  audit: "0",
+  audits: "0",
   audit_note: null,
   gecko_id: "lumenswap",
   cmcId: "11678",
@@ -16599,7 +16599,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Tezos"] ,
     module: "flamedefi/index.js" ,
     twitter: "FlameDeFi" ,
-    audits_link: ["https://flamedefi.io/images/functori-flamedefi-dex-report-2.1.pdf"] ,
+    audit_links: ["https://flamedefi.io/images/functori-flamedefi-dex-report-2.1.pdf"],
     listedAt: 1638377772 ,
   },
   {
@@ -19481,7 +19481,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Building a VC DAO using staking and bonding. A decentralized cross chain VC.",
   chain: "Avalanche",
   logo: `${baseIconsUrl}/valhalladao.png`,
-  audit: "0",
+  audits: "0",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -19501,7 +19501,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "SecureDAO is the decentralized reserve currency protocol available on the Fantom Network based on the SCR token.",
   chain: "Fantom",
   logo: `${baseIconsUrl}/securedao.png`,
-  audit: "0",
+  audits: "0",
   audit_note: null,
   gecko_id: "secure",
   cmcId: "17085",
@@ -25722,7 +25722,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "Dexes",
   chains: ["Fantom"],
   oracles: [],
-  forkedFrom: "-",
   module: "solidly/index.js",
   twitter: "solidlyexchange",
   language: "Solidity",
@@ -25773,4 +25772,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 //   audit_links: ["https://github.com/towerfinance/tower-v2-solidity/blob/main/audit/Tower_Finance_Smart_Contract_Audit_-_Final_Report.pdf"],
 //   listedAt: 1644868459,
 // },
-] as Protocol[]).concat(data2) ;
+]
+
+
+export default data.concat(data2)

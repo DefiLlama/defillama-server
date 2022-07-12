@@ -1,24 +1,24 @@
 export interface Protocol {
     id: string;
     name: string;
-    address: string;
+    address: string | null;
     symbol: string;
     url: string;
-    description: string;
+    description: string | null;
     chain: string;
-    logo: null | string;
-    audits: null | "0" | "1" | "2" | "3";
-    audit_note: null;
-    gecko_id: string;
-    cmcId: string;
+    logo: string | null;
+    audits?: string | null;
+    audit_note?: string | null;
+    gecko_id: string | null;
+    cmcId: string | null;
     category: string;
-    chains: string[];
-    oracles: string[];
-    forkedFrom?: string[];
+    chains: Array<string>;
+    oracles?: Array<string>;
+    forkedFrom?: Array<string>;
     module: string;
-    twitter: string;
+    twitter?: string | null;
     language?: string;
-    audit_links?: string[];
+    audit_links?: Array<string>;
     listedAt?: number;
     openSource?: boolean;
     parentProtocol?: string
@@ -30,11 +30,11 @@ export interface Protocol {
     url: string;
     description: string;
     logo: string;
-    chains: string[];
+    chains: Array<string>;
     gecko_id: string;
     cmcId: string;
-    categories?: string[];
+    categories?: Array<string>;
     twitter: string;
-    oracles?: string[];
-    forkedFrom?: string[];
+    oracles?: Array<string>;
+    forkedFrom?: Array<string>;
   }

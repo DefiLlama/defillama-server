@@ -1,6 +1,5 @@
 import type {Protocol} from './types'
 import { baseIconsUrl } from "../constants";
-import { isNull } from 'util';
 /*
 {
   id: string;
@@ -38,7 +37,7 @@ import { isNull } from 'util';
 
 `chains` is not used by the current code, but good to fill it out because it is used in our test to detect errors
 */
-export default [
+const data2: Protocol[] =  [
 {
   id: "1410",
   name: "Cropper",
@@ -7092,8 +7091,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "lns/index.js",
   twitter: "bchdomains",
-  audit_links: ["https://github.com/bitcoin-portal/bitcoincom-solidity-swap/blob/trunk/audits/Bitcoin.com_final-audit-report.pdf"],
-  language: 1651771580,
+  audit_links: ["https://github.com/bitcoin-portal/bitcoincom-solidity-swap/blob/trunk/audits/Bitcoin.com_final-audit-report.pdf"]
 },
 {
   id: "1734",
@@ -7110,7 +7108,6 @@ listedAt: 1650804679
   cmcId: null,
   category: "Yield",
   chains: ["Binance"],
-  oracles: "",
   forkedFrom: ["Goose Finance"],
   module: "ketchupfinance/index.js",
   twitter: "KetchupFinance",
@@ -10482,4 +10479,7 @@ listedAt: 1650804679
   audit_links: ["https://aegisaudits.com/audits/pdf/Zest-Protocol-Audit.pdf"],
   listedAt: 1657490481
 },
-] as Protocol[]
+]
+
+
+export default data2;

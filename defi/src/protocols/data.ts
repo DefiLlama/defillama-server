@@ -12905,9 +12905,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Brahma manages interactions and risk with multiple chains, dApps and instruments in a fully transparent and composable way, so you can earn yield, hedge and deploy capital in an efficient manner.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/brahma.jpg`,
-  audits: "1",
+  audits: "2",
   audit_links: [
-    "https://github.com/Brahma-fi/brahma-security/tree/master/audits"
+    "https://github.com/Brahma-fi/brahma-security/blob/master/audits/brahma-fi-audit-2022-05-consensys.pdf",
+    "https://github.com/Brahma-fi/brahma-security/blob/master/audits/brahma-fi-audit-2022-05-zellic.pdf"
   ],
   audit_note: null,
   gecko_id: null,

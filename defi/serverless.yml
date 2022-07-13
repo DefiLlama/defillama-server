@@ -284,10 +284,6 @@ functions:
     handler: src/dexVolumes/storeDexVolume/index.default
     timeout: 900
     memorySize: 512
-    events:
-      - http:
-          path: testtest
-          method: get
   triggerStoreVolume:
     handler: src/triggerStoreVolume.default
     timeout: 900

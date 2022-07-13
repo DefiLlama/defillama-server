@@ -10512,7 +10512,7 @@ listedAt: 1650804679
   url: "https://www.blur.finance",
   description: "Blur Finance is a revolutionary and user-friendly Yield Aggregator built For Binance Smart Chain",
   chain: "Binance",
-  logo: `${baseIconsUrl}/blur-finance`,
+  logo: `${baseIconsUrl}/blur-finance.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "blur-finance",

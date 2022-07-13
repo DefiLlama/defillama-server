@@ -96,7 +96,7 @@ const data: Protocol[] = [
     description:
       "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/aave.png`,
+    logo: `${baseIconsUrl}/aave-v2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "aave",

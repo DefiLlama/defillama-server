@@ -206,5 +206,13 @@ export default async function craftParentProtocol(
     tvl: formattedTvl,
   };
 
+  const jsonData = JSON.stringify(response)
+  const dataLength = jsonData.length
+
+  if(dataLength >= 5.8e6){
+    response.tokens = null
+    response.tokensInUsd = null
+  }
+
   return response;
 }

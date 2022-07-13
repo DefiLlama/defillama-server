@@ -6,8 +6,6 @@ import craftProtocol from "./utils/craftProtocol";
 import parentProtocols from "./protocols/parentProtocols";
 import craftParentProtocol from "./utils/craftParentProtocol";
 
-
-
 export async function craftProtocolResponse(rawProtocolName:string|undefined, useNewChainNames: boolean, useHourlyData: boolean){
   const protocolName = rawProtocolName?.toLowerCase();
 

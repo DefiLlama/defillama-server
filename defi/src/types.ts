@@ -59,8 +59,8 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   chainTvls: IChainTvl;
   currentChainTvls: ICurrentChainTvls;
   tvl: { date: number; totalLiquidityUSD: number }[];
-  tokensInUsd?: Array<{ date: number; tokens: { [token: string]: number } }>;
-  tokens?: Array<{ date: number; tokens: { [token: string]: number } }>;
+  tokensInUsd?: Array<{ date: number; tokens: { [token: string]: number } }> | null;
+  tokens?: Array<{ date: number; tokens: { [token: string]: number } }> | null;
 }
 
 export interface IProtocol

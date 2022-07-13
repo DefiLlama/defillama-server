@@ -7194,7 +7194,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://benqi.fi",
     description: "BENQI is a non-custodial liquidity market protocol, built on Avalanche. The protocol enables users to effortlessly lend, borrow, and earn interest with their digital assets.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/benqi.jpg`,
+    logo: `${baseIconsUrl}/benqi-lending.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "benqi",

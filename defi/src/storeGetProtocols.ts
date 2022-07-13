@@ -30,6 +30,7 @@ const handler = async (_event: any) => {
           mcap: protocol.mcap,
           name: protocol.name,
           symbol: protocol.symbol,
+          logo: protocol.logo,
           tvl: protocolTvls.tvl,
           tvlPrevDay: protocolTvls.tvlPrevDay,
           tvlPrevWeek: protocolTvls.tvlPrevWeek,

@@ -4839,7 +4839,10 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "humble/index.js",
   twitter: "HumbleDefi",
-  audit_links: ["https://f.hubspotusercontent40.net/hubfs/21135646/Reach - Security Review for HumbleSwap Smart Contract v1.0.pdf"],
+  audit_links: [
+    "https://f.hubspotusercontent40.net/hubfs/21135646/Reach - Security Review for HumbleSwap Smart Contract v1.0.pdf",
+    "https://drive.google.com/file/d/1H9wEHbkzzR-vazSF3kThUfF2zuynf097/view",
+  ],
   listedAt: 1649526558
 },
 {

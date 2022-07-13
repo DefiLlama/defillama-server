@@ -1005,7 +1005,7 @@ export const chainCoingeckoIds = {
     symbol: "ICP",
     cmcId: "8916",
   },
-  "Nova Network": {
+  "Nova": {
     geckoId: "supernova",
     symbol: "SNT",
     cmcId: "15399",
@@ -1040,6 +1040,7 @@ chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
 chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
+chainCoingeckoIds["Nova Network"] = chainCoingeckoIds["Nova"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury"]
 
@@ -1055,6 +1056,8 @@ export function transformNewChainName(chain: string) {
       return "CosmosHub"
     case "Terra":
       return "Terra Classic"
+    case "Nova":
+      return "Nova Network"
     default:
       return chain
   }
@@ -1267,7 +1270,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "icp":
       return "ICP"
     case "nova":
-      return "Nova Network"
+      return "Nova"
     case "kintsugi":
       return "Kintsugi"
     default:

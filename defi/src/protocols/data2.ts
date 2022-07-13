@@ -10200,7 +10200,7 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "Dexes",
-  chains: ["Fantom", "Nova Network"],
+  chains: ["Fantom", "Nova"],
   oracles: [],
   forkedFrom: ["Uniswap"],
   module: "fusion/index.js",

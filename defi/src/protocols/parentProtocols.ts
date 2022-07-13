@@ -2,7 +2,7 @@ import { baseIconsUrl } from "../constants";
 import type { IParentProtocol } from "./types";
 
 /*
-    leave `chains` and `category` as an empty array as we fill them based on their child protocols chains and category in api response
+    leave `chains` and `category` as an empty array because we fill them based on their child protocols chains and category in api response
 */
 
 const parentProtocols: IParentProtocol[] = [
@@ -51,7 +51,7 @@ const parentProtocols: IParentProtocol[] = [
     logo: `${baseIconsUrl}/benqi.jpg`,
     gecko_id: "benqi",
     cmcId: "9288",
-    chains: ["Avalanche"],
+    chains: [],
     twitter: "BenqiFinance",
   },
 ];

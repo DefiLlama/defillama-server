@@ -1,4 +1,4 @@
-import dexVolumes from "../../../DefiLlama-Adapters/dexVolumes";
+import dexVolumes from "@defillama/adapters/dexVolumes";
 import data from "../../protocols/data";
 /**
  * Using data from protocols since its more complete

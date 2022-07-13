@@ -3,7 +3,7 @@ import { getChainBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import { wrapScheduledLambda } from "../../utils/shared/wrap";
 import { getTimestampAtStartOfDayUTC } from "../../utils/date";
 import volumeAdapters from "../dexAdapters";
-import { DexAdapter, VolumeAdapter } from "../../../DefiLlama-Adapters/dexVolumes/dexVolume.type";
+import { DexAdapter, VolumeAdapter } from "@defillama/adapters/dexVolumes/dexVolume.type";
 import { handleAdapterError } from "../utils";
 import { storeVolume, Volume, VolumeType } from "../data/volume";
 import getAllChainsFromDexAdapters from "../utils/getAllChainsFromDexAdapters";
@@ -50,7 +50,7 @@ export const handler = async (event: IHandlerEvent) => {
 
     // Import DEX adapter
     const dexAdapter: DexAdapter = (await import(
-      `../../../DefiLlama-Adapters/dexVolumes/${volumeAdapter}`)
+      `@defillama/adapters/dexVolumes/${volumeAdapter}`)
     ).default;
 
     // Retrieve daily volumes

@@ -1,5 +1,5 @@
 import { Chain } from "@defillama/sdk/build/general";
-import dexVolumes from "../../../DefiLlama-Adapters/dexVolumes";
+import dexVolumes from "@defillama/adapters/dexVolumes";
 
 const getAllChainsFromDexAdapters = Object.values(dexVolumes).reduce((acc, dexAdapter) => {
     if ("volume" in dexAdapter) {

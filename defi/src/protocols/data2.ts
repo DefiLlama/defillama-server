@@ -10512,7 +10512,7 @@ listedAt: 1650804679
   url: "https://www.blur.finance",
   description: "Blur Finance is a revolutionary and user-friendly Yield Aggregator built For Binance Smart Chain",
   chain: "Binance",
-  logo: `${baseIconsUrl}/algodex.png`,
+  logo: `${baseIconsUrl}/blur-finance`,
   audits: "2",
   audit_note: null,
   gecko_id: "blur-finance",
@@ -10525,6 +10525,28 @@ listedAt: 1650804679
   twitter: "Blur_Finance",
   audit_links: ["https://github.com/solidproof/projects/tree/main/BlurFinance"],
   listedAt: 1657699961
+},
+{
+  id: "1892",
+  name: "Azuro",
+  address: null,
+  symbol: "-",
+  url: "https://azuro.org",
+  description: "The base layer for decentralized betting. Build your own betting app powered by Azuro's feed of priced, liquid markets",
+  chain: "xDai",
+  logo: `${baseIconsUrl}/azuro.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["xDai"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "azuro/index.js",
+  twitter: "azuroprotocol",
+  audit_links: ["https://github.com/Azuro-protocol/Bug-Bounty/tree/main/audit-reports"],
+  listedAt: 1657701519
 }
 ]
 

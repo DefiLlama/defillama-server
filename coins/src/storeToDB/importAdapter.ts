@@ -1,4 +1,3 @@
-//import { Protocol } from "../../../defi/src/protocols/types";
 import adapters from "./adapters";
 
 export function importAdapter(protocol: any) {

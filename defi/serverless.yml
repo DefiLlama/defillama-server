@@ -97,7 +97,7 @@ custom:
   prune:
     automatic: true
     number: 5 # Number of versions to keep
-  tableName: ${self:custom.stage}-table
+  tableName: prod-table
   domainMap:
     prod:
       domain: api.llama.fi

@@ -10504,6 +10504,28 @@ listedAt: 1650804679
                ],
   listedAt: 1657637208
 },
+{
+  id: "1891",
+  name: "Blur Finance",
+  address: "bsc:0x4165084A6e5388ce53c9D9892f904a2712Dd943A",
+  symbol: "BLR",
+  url: "https://www.blur.finance",
+  description: "Blur Finance is a revolutionary and user-friendly Yield Aggregator built For Binance Smart Chain",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/algodex.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "blur-finance",
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "blur-finance/index.js",
+  twitter: "Blur_Finance",
+  audit_links: ["https://github.com/solidproof/projects/tree/main/BlurFinance"],
+  listedAt: 1657699961
+}
 ]
 
 

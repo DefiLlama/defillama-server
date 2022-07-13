@@ -10629,7 +10629,7 @@ listedAt: 1650804679
   gecko_id: "justmoney-2",
   cmcId: "19946",
   category: "Dexes",
-  chains: ["Binance", "Tron", "Polygon", "Bittorrent"],
+  chains: ["Binance", "Tron", "Polygon"],
   oracles: [],
   forkedFrom: [],
   module: "justmoney/index.js",

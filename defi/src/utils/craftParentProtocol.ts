@@ -144,7 +144,7 @@ export default async function craftParentProtocol(
     _todaysTokens.forEach(([token, value]) => (_tokensData[token] = value));
 
     return {
-      date: Number(Date),
+      date: Number(date),
       tokens: _tokensData,
     };
   });

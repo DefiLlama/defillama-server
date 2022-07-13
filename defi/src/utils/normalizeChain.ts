@@ -1267,7 +1267,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "icp":
       return "ICP"
     case "nova":
-      return "Nova"
+      return "Nova Network"
     case "kintsugi":
       return "Kintsugi"
     default:

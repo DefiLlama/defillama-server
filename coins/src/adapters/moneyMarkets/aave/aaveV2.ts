@@ -40,7 +40,7 @@ async function getReserveData(chain: string, registry: string) {
   ).output;
 }
 
-export async function getTokenPrices(chain: string, registry: string) {
+async function getTokenPrices(chain: string, registry: string) {
   const reserveData: result[] = await getReserveData(chain, registry);
   const [underlyingRedirects, tokenInfo] = await Promise.all([
     batchGet(
@@ -72,3 +72,7 @@ export async function getTokenPrices(chain: string, registry: string) {
 
   await batchWrite(writes, true);
 }
+export default getTokenPrices(
+  "ethereum",
+  "0x52D306e36E3B6B02c153d0266ff0f85d18BCD413"
+);

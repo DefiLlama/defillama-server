@@ -5,7 +5,7 @@ import { constants, brotliCompressSync } from "zlib";
 import { getProtocolTvl } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
-import type { LiteProtocol, ProtocolTvls } from "./types";
+import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -19,7 +19,7 @@ const handler = async (_event: any) => {
 
   const trimmedResponse: LiteProtocol[] = (
     await Promise.all(
-      response.map(async (protocol) => {
+      response.map(async (protocol: IProtocol) => {
         const protocolTvls: ProtocolTvls = await getProtocolTvl(protocol, true);
         return {
           category: protocol.category,
@@ -45,6 +45,8 @@ const handler = async (_event: any) => {
   const protocolCategoriesSet: Set<string> = new Set();
   
   trimmedResponse.forEach((p) => {
+    if (!p.category) return;
+    
     protocolCategoriesSet.add(p.category);
     if (p.category !== "Bridge") {
       p.chains.forEach((c: string) => {

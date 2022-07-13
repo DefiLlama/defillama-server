@@ -7188,7 +7188,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "467",
-    name: "Benqi",
+    name: "Benqi Lending",
     address: "avax:0x8729438eb15e2c8b576fcc6aecda6a148776c0f5",
     symbol: "QI",
     url: "https://benqi.fi",

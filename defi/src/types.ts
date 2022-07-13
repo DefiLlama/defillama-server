@@ -66,7 +66,9 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
 }
 
 export interface IProtocol
-  extends Omit<IProtocolResponse, "tvl" | "currentChainTvls" | "chainTvls"> {
+  extends Omit<IProtocolResponse, "tvl" | "currentChainTvls" | "chainTvls" | "symbol" | "module"> {
+  symbol: string;
+  module: string;
   slug: string;
   tvl: number;
   chain: string;

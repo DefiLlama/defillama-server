@@ -11,6 +11,7 @@ import {  getLastRecord,
 import { importAdapter } from "./imports/importAdapter";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./normalizeChain";
 import type { IProtocolResponse } from "../types";
+import parentProtocols from "../protocols/parentProtocols";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
     if (balances?.ethereum !== undefined) {
@@ -67,8 +68,15 @@ export default async function craftProtocol(protocolData: Protocol, useNewChainN
       }
     
       let response: IProtocolResponse = {...protocolData, chains: [], currentChainTvls: {}, chainTvls: {}, tvl: []};
+
+
+      const childProtocols = protocolData.parentProtocol ? protocols.filter(p => p.parentProtocol === protocolData.parentProtocol)?.map(p => p.name) : []
+
+      const parentName = parentProtocols.find(p => p.id === protocolData.parentProtocol)?.name ?? null
     
-      response.otherProtocols = protocolData.parentProtocol ? protocols.filter(p => p.parentProtocol === protocolData.parentProtocol)?.map(p => p.name) : []
+      if (childProtocols.length > 0 && parentName) {
+        response.otherProtocols = [parentName, ...childProtocols]
+      }
     
       if(module.methodology !== undefined){
         response.methodology = module.methodology;

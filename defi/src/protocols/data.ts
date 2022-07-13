@@ -264,7 +264,7 @@ const data: Protocol[] = [
     description:
       "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/sushi.jpg`,
+    logo: `${baseIconsUrl}/sushiswap.png`,
     audits: "3",
     audit_note: null,
     gecko_id: "sushi",
@@ -6495,7 +6495,7 @@ const data: Protocol[] = [
     url: "https://sun.io",
     description: "First integrated platform for stablecoin swap, stake-mining, and self-governance on TRON",
     chain: "Tron",
-    logo: `${baseIconsUrl}/sun.jpg`,
+    logo: `${baseIconsUrl}/sun-io.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "sun-token",

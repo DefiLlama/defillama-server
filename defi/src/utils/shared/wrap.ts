@@ -40,5 +40,8 @@ export function wrapScheduledLambda(
   context?: any,
   callback?: any
 ) => Promise<void | undefined> | void {
+  if(process.env.stage !== "prod"){
+    return ()=>{console.log("This lambda is getting ignored, stage is not prod")}
+  }
   return lambdaFunc;
 }

@@ -1005,7 +1005,7 @@ export const chainCoingeckoIds = {
     symbol: "ICP",
     cmcId: "8916",
   },
-  "Nova": {
+  "Nova Network": {
     geckoId: "supernova",
     symbol: "SNT",
     cmcId: "15399",

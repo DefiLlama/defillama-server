@@ -14,19 +14,19 @@ export type tvlsObject<T> = {
   [chain: string]: T;
 };
 
-interface ICurrentChainTvls {
+export interface ICurrentChainTvls {
   [chain: string]: number;
 }
 
-interface IChainTvl {
-  [type: string]: {
-    tvl: { date: number; totalLiquidityUSD: number }[];
+export interface IChainTvl {
+  [chain: string]: {
+    tvl: Array<{ date: number; totalLiquidityUSD: number }>;
     tokensInUsd?: Array<{ date: number; tokens: { [token: string]: number } }>;
     tokens?: Array<{ date: number; tokens: { [token: string]: number } }>;
   };
 }
 
-interface ItvlsWithChangesByChain {
+export interface ITvlsWithChangesByChain {
   [key: string]: {
     tvl: number | null;
     tvlPrevDay: number | null;
@@ -45,21 +45,23 @@ export interface ProtocolTvls {
   tvlPrevDay: number | null;
   tvlPrevWeek: number | null;
   tvlPrevMonth: number | null;
-  chainTvls: ItvlsWithChangesByChain;
+  chainTvls: ITvlsWithChangesByChain;
 };
 
-export interface IProtocolResponse extends Protocol {
+export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "module"> {
+  symbol?: string;
+  chain?: string;
+  module?: string;
   otherProtocols?: Array<string>;
   methodology?: string;
   misrepresentedTokens?: boolean;
-  hallmarks?: [number, string];
+  hallmarks?: [number, string][];
   chainTvls: IChainTvl;
   currentChainTvls: ICurrentChainTvls;
   tvl: { date: number; totalLiquidityUSD: number }[];
-  tokensInUsd?: Array<{ date: number; tokens: { string: number } }>;
-  tokens?: Array<{ date: number; tokens: { string: number } }>;
+  tokensInUsd?: Array<{ date: number; tokens: { [token: string]: number } }>;
+  tokens?: Array<{ date: number; tokens: { [token: string]: number } }>;
 }
-
 
 export interface IProtocol
   extends Omit<IProtocolResponse, "tvl" | "currentChainTvls" | "chainTvls"> {

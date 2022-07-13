@@ -3,6 +3,8 @@ import protocols from "./protocols/data";
 import sluggify from "./utils/sluggify";
 import { storeDataset, buildRedirect } from "./utils/s3";
 import craftProtocol from "./utils/craftProtocol";
+import parentProtocols from "./protocols/parentProtocols";
+import craftParentProtocol from "./utils/craftParentProtocol";
 
 
 
@@ -12,6 +14,18 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
   const protocolData = protocols.find(
     (prot) => sluggify(prot) === protocolName
   );
+
+  if (!protocolData) {
+    const parentProtocol = parentProtocols.find(parent => parent.name.toLowerCase() === protocolName)
+
+    if (!parentProtocol) {
+      return errorResponse({
+        message: "Protocol is not in our database",
+      });
+    }
+
+    return craftParentProtocol(parentProtocol, useNewChainNames, useHourlyData)
+  }
 
   if (protocolData === undefined) {
     return errorResponse({

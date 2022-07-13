@@ -80,7 +80,7 @@ export default async function craftProtocol(protocolData: Protocol, useNewChainN
         response.hallmarks = module.hallmarks;
       }
     
-      Object.entries(lastUsdHourlyRecord!).map(([chain, chainTvl]) => {
+      lastUsdHourlyRecord && Object.entries(lastUsdHourlyRecord!).forEach(([chain, chainTvl]) => {
         if(nonChains.includes(chain) && chain !== "tvl"){
           return
         }
@@ -123,6 +123,7 @@ export default async function craftProtocol(protocolData: Protocol, useNewChainN
       })
       
       const singleChain = transformNewChainName(protocolData.chain)
+
       if(response.chainTvls[singleChain] === undefined && response.chains.length === 0){
         response.chains.push(singleChain)
         response.chainTvls[singleChain] = {
@@ -131,6 +132,7 @@ export default async function craftProtocol(protocolData: Protocol, useNewChainN
           tokens: response.tokens
         }
       }
+
       if(response.chainTvls[singleChain] !== undefined && response.chainTvls[singleChain].tvl.length < response.tvl.length) {
         const singleChainTvls = response.chainTvls[singleChain].tvl;
         const first = singleChainTvls[0].date;

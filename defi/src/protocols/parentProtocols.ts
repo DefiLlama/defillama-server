@@ -20,7 +20,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "SushiSwap",
-    name: "SushiSwap",
+    name: "Sushi",
     url: "https://sushi.com/",
     description:
       "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
@@ -32,7 +32,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "SUN.io",
-    name: "SUN.io",
+    name: "SUN",
     url: "https://sun.io",
     description:
       "First integrated platform for stablecoin swap, stake-mining, and self-governance on TRON",

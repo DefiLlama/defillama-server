@@ -1,5 +1,5 @@
 import { Protocol } from "../protocols/data";
-import type { TvlsByChain, ProtocolTvls } from "../types";
+import type { ITvlsWithChangesByChain, ProtocolTvls } from "../types";
 import { secondsInDay, secondsInWeek } from "./date";
 import { getLastRecord, hourlyTvl } from "./getLastRecord";
 import { importAdapter } from "./imports/importAdapter";
@@ -14,7 +14,7 @@ export async function getProtocolTvl(
   protocol: Readonly<Protocol>,
   useNewChainNames: boolean
 ): Promise<ProtocolTvls> {
-  const chainTvls: TvlsByChain = {};
+  const chainTvls: ITvlsWithChangesByChain = {};
   let tvl: number | null = null;
   let tvlPrevDay: number | null = null;
   let tvlPrevWeek: number | null = null;

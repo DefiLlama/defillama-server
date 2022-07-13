@@ -1,7 +1,7 @@
 export interface Protocol {
     id: string;
     name: string;
-    address: string | null;
+    address?: string | null;
     symbol: string;
     url: string;
     description: string | null;
@@ -11,7 +11,7 @@ export interface Protocol {
     audit_note?: string | null;
     gecko_id: string | null;
     cmcId: string | null;
-    category: string;
+    category?: string;
     chains: Array<string>;
     oracles?: Array<string>;
     forkedFrom?: Array<string>;

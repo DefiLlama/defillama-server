@@ -11,6 +11,8 @@ export type {Protocol};
 */
 
 /*
+READ THIS!
+
 `chain` is the first chain of a protocol we tracked at defillama,
   so if a protocol launches on Ethereum and we start tracking it there, and then it launches on polygon and
   we start tracking it on both polygon and ethereum, then `chain` should be set to `Ethereum`.

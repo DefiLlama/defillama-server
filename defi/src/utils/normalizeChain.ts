@@ -3,6 +3,7 @@ const normalizedChainReplacements = {
   "wanchain": "wan",
   "kucoin": "kcc",
   "terra classic": "terra",
+  "nova": "nova network"
 } as {
   [chain: string]: string
 }
@@ -1005,7 +1006,7 @@ export const chainCoingeckoIds = {
     symbol: "ICP",
     cmcId: "8916",
   },
-  "Nova": {
+  "Nova Network": {
     geckoId: "supernova",
     symbol: "SNT",
     cmcId: "15399",
@@ -1089,6 +1090,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "CosmosHub" : "Cosmos"
     case "terra":
       return useNewChainNames ? "Terra Classic" : "Terra"
+    case "nova":
+      return useNewChainNames ? "Nova Network" : "Nova"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -1275,8 +1278,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Acala"
     case "icp":
       return "ICP"
-    case "nova":
-      return "Nova"
     case "kintsugi":
       return "Kintsugi"
     case "filecoin":

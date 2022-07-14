@@ -22247,6 +22247,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "defi_waterfall",
   audit_links: ["https://paladinsec.co/projects/waterfall-finance/"] ,
   listedAt: 1641934055 ,
+  parentProtocol: "Waterfall Finance"
 },
 {
   id: "1237",
@@ -25190,6 +25191,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   language: "Solidity",
   audit_links: ["https://paladinsec.co/projects/waterfall-finance/"],
   listedAt: 1644448582,
+  parentProtocol: "Waterfall Finance"
 },
 {
   id: "1383",

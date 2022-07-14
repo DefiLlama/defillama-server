@@ -10677,7 +10677,8 @@ listedAt: 1650804679
   forkedFrom: ["Tomb Finance"],
   module: "waterfall-wtf-finance/index.js",
   twitter: "defi_waterfall",
-  listedAt: 1657791449
+  listedAt: 1657791449,
+  parentProtocol: "Waterfall Finance"
 }
 ]
 

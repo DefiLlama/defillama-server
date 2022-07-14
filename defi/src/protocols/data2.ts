@@ -2827,7 +2827,7 @@ const data2: Protocol[] =  [
   symbol: "-",
   url: "https://www.riskharbor.com/",
   description: "Risk Harbor is a risk management marketplace for decentralized finance (DeFi) that utilizes a completely automated, transparent, and impartial invariant detection mechanism to secure liquidity providers and stakers against smart contract risks, hacks, and attacks.",
-  chain: "Terra2",
+  chain: "Terra",
   logo: `${baseIconsUrl}/risk-harbor.png`,
   audits: "2",
   audit_note: null,

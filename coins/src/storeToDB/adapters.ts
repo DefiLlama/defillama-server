@@ -1,3 +1,3 @@
 export default {
-  aave: require("../adapters/moneyMarkets/aave/aaveV2.ts")
+  aave: require("../adapters/moneyMarkets/aave/aave.ts")
 };

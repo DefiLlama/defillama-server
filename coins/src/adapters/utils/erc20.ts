@@ -1,10 +1,7 @@
 import { call, multiCall } from "@defillama/sdk/build/abi/index";
+import { requery } from "./sdk";
 export async function getTokenInfo(chain: string, targets: string[]) {
-  const [
-    { output: supplies },
-    { output: decimals },
-    { output: symbols }
-  ] = await Promise.all([
+  const [supplies, decimals, symbols] = await Promise.all([
     multiCall({
       calls: targets.map((target: string) => ({
         target
@@ -27,10 +24,17 @@ export async function getTokenInfo(chain: string, targets: string[]) {
       chain: chain as any
     })
   ]);
+
+  await Promise.all([
+    requery(supplies, chain, "erc20:totalSupply"),
+    requery(decimals, chain, "erc20:decimals"),
+    requery(symbols, chain, "erc20:symbol")
+  ]);
+
   return {
-    supplies,
-    decimals,
-    symbols
+    supplies: supplies.output,
+    decimals: decimals.output,
+    symbols: symbols.output
   };
 }
 export async function listUnknownTokens(
@@ -51,5 +55,6 @@ export async function listUnknownTokens(
     })
   ).output.map((o) => o.output);
   unknownTokens = unknownTokens.map((t, i) => `${unknownSymbols[i]}-${t}`);
+  console.log(chain);
   console.log(unknownTokens);
 }

@@ -10707,7 +10707,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://tapioprotocol.io/",
-  description: "A synthetic asset protocol designed to enable maximum efficiency for uniform assets on Acala.",
+  description: "A synthetic asset protocol designed to enable maximum efficiency for uniform assets on Polkadot.",
   chain: "Acala",
   logo: `${baseIconsUrl}/tapio-protocol.png`,
   audits: "0",

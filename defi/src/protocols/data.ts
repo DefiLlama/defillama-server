@@ -13626,7 +13626,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   name: "EmpireDEX",
   address: "bsc:0xc83859c413a6ba5ca1620cd876c7e33a232c1c34",
   symbol: "EMPIRE",
-  url: "https://app.empiredex.org/farm",
+  url: "https://ecc.capital/swap",
   description: "#EmpireDEX is a Multi-Chain DEX Protocol",
   chain: "Binance",
   logo: `${baseIconsUrl}/empire-dex.jpg`,

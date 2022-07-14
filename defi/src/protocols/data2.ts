@@ -10679,6 +10679,27 @@ listedAt: 1650804679
   twitter: "defi_waterfall",
   listedAt: 1657791449,
   parentProtocol: "Waterfall Finance"
+},
+{
+  id: "1899",
+  name: "Taiga Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://www.taigaprotocol.io",
+  description: "A synthetic asset protocol designed to enable maximum efficiency for uniform assets on Kusama.",
+  chain: "Karura",
+  logo: `${baseIconsUrl}/taiga-protocol.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Synthetics",
+  chains: ["Karura"],
+  oracles: [],
+  forkedFrom: [],
+  module: "taiga/index.js",
+  twitter: "TaigaProtocol",
+  listedAt: 1657807133
 }
 ]
 

@@ -10657,6 +10657,27 @@ listedAt: 1650804679
   twitter: "UpliftDao",
   audit_links: ["https://app.uplift.io/docs/Audit.pdf"],
   listedAt: 1657718229
+},
+{
+  id: "1898",
+  name: "Waterfall WTF",
+  address: "bsc:0x1811b7eD3B613805A9a4B4b1B80C99d58Af32576",
+  symbol: "WTF",
+  url: "https://wtf.defiwaterfall.com",
+  description: "The most innovative eco-system",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/waterfall-wtf.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: ["Tomb Finance"],
+  module: "waterfall-wtf-finance/index.js",
+  twitter: "defi_waterfall",
+  listedAt: 1657791449
 }
 ]
 

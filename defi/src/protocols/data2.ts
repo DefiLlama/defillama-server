@@ -10700,6 +10700,27 @@ listedAt: 1650804679
   module: "taiga/index.js",
   twitter: "TaigaProtocol",
   listedAt: 1657807133
+},
+{
+  id: "1900",
+  name: "Tapio Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://tapioprotocol.io/",
+  description: "A synthetic asset protocol designed to enable maximum efficiency for uniform assets on Acala.",
+  chain: "Acala",
+  logo: `${baseIconsUrl}/tapio-protocol.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Synthetics",
+  chains: ["Acala"],
+  oracles: [],
+  forkedFrom: [],
+  module: "tapio/index.js",
+  twitter: "TapioProtocol",
+  listedAt: 1657825354
 }
 ]
 

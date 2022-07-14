@@ -1046,7 +1046,7 @@ chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
 chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
-chainCoingeckoIds["Nova Network"] = chainCoingeckoIds["Nova"]
+chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury"]
 

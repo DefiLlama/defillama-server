@@ -9,7 +9,6 @@ import { storeVolume, Volume, VolumeType } from "../data/volume";
 import getAllChainsFromDexAdapters from "../utils/getAllChainsFromDexAdapters";
 import canGetBlock from "../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
-import { importVolumeAdapter } from "../../utils/imports/importAdapter";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
@@ -36,7 +35,7 @@ export const handler = async (event: IHandlerEvent) => {
 
   async function runAdapter(volumeAdapter: VolumeAdapter, id: string, version?: string) {
     const chains = Object.keys(volumeAdapter)
-    return allSettled(chains.map((chain) => volumeAdapter[chain].fetch(currentTimestamp, chainBlocks).then(result => ({ chain, result })).catch((e) => handleAdapterError(e, {
+    return allSettled(chains.map((chain) => volumeAdapter[chain].fetch(currentTimestamp, chainBlocks).then(result => ({ chain, result })).catch((e)=>handleAdapterError(e, {
       id,
       chain,
       version,
@@ -50,7 +49,9 @@ export const handler = async (event: IHandlerEvent) => {
     const { id, volumeAdapter } = volumeAdapters[protocolIndex];
 
     // Import DEX adapter
-    const dexAdapter: DexAdapter = (await importVolumeAdapter(volumeAdapters[protocolIndex])).default;
+    const dexAdapter: DexAdapter = (await import(
+      `@defillama/adapters/dexVolumes/${volumeAdapter}`)
+    ).default;
 
     // Retrieve daily volumes
     let rawDailyVolumes: IRecordVolumeData[] = []

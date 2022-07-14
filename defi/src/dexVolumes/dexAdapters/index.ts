@@ -1,15 +1,19 @@
-import dexVolumes from "@defillama/adapters/dexVolumes";
-import data from "../../protocols/data";
+import dexVolumes from "../../../DefiLlama-Adapters/dexVolumes";
+import data, { Protocol } from "../../protocols/data";
 /**
  * Using data from protocols since its more complete
  */
+
+export interface Dex extends Protocol {
+    volumeAdapter: string
+}
 
 // Obtaining all dex protocols
 const dexes = data.filter(d => d.category === "Dexes")
 // Getting list of all volume adapters
 const dexAdaptersKeys = Object.keys(dexVolumes).map(k => k.toLowerCase())
 // Adding data to dex objects
-const dexData = dexAdaptersKeys.map(adapterKey => {
+const dexData: Dex[] = dexAdaptersKeys.map(adapterKey => {
     const dexFoundInProtocols = dexes.find(dexP =>
         dexP.name.toLowerCase()?.includes(adapterKey)
         || dexP.gecko_id?.includes(adapterKey)

@@ -10739,7 +10739,7 @@ listedAt: 1650804679
   chains: ["Ethereum","Binance", "Polygon", "Avalanche", "Fantom", "Heco", "OKExChain", "Kucoin", "Arbitrum", "xDai", "Harmony", "Celo", "Cronos", "Moonriver", "SmartBCH", "Milkomeda"],
   oracles: [],
   forkedFrom: [],
-  module: "dxsale/index.js",
+  module: "dxsale/api.js",
   audit_links: ["https://www.certik.org/projects/dxsale"],
   twitter: "dxsale",
   listedAt: 1657847483

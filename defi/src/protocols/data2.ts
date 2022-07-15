@@ -1276,7 +1276,7 @@ const data2: Protocol[] =  [
   audit_note: null,
   gecko_id: "alex",
   cmcId: null,
-  category: "DeFi",
+  category: "Dexes",
   chains: ["Stacks"],
   oracles: [],
   forkedFrom: [],

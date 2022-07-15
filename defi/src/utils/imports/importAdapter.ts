@@ -1,4 +1,4 @@
-import { volumeAdapterPrefix } from "../../cli/buildRequires";
+import { volumeAdapterPrefix } from "../../dexVolumes/constants";
 import { Dex } from "../../dexVolumes/dexAdapters";
 import { Protocol } from "../../protocols/types";
 import adapters from "./adapters"

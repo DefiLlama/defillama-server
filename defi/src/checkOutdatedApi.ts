@@ -13,28 +13,29 @@ const urls = [
 
     // API
     "https://api.llama.fi/protocols",
-    "https://api.llama.fi/protocol/Lido", // a
+    "https://api.llama.fi/protocol/Lido", // multiple
+    "https://api.llama.fi/updatedProtocol/Lido", // multiple
     "https://api.llama.fi/charts",
-    "https://api.llama.fi/charts/Ethereum", // a
-    "https://api.llama.fi/tvl/Lido", // a
+    "https://api.llama.fi/charts/Ethereum", // multiple
+    "https://api.llama.fi/tvl/Lido", // multiple
     "https://api.llama.fi/chains",
 
     // Stablecoins
     "https://stablecoins.llama.fi/stablecoins",
     "https://stablecoins.llama.fi/stablecoincharts/all",
-    "https://stablecoins.llama.fi/stablecoincharts/Ethereum", // a
-    "https://stablecoins.llama.fi/stablecoin/tether", // a
+    "https://stablecoins.llama.fi/stablecoincharts/Ethereum", // multiple
+    "https://stablecoins.llama.fi/stablecoin/tether", // multiple
     "https://stablecoins.llama.fi/stablecoinchains",
     "https://stablecoins.llama.fi/stablecoinprices",
 
     // Yields
     "https://yields.llama.fi/pools",
-    "https://yields.llama.fi/chart/0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8", // a
+    "https://yields.llama.fi/chart/0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8", // multiple
 
     // Internal
     "https://api.llama.fi/lite/protocols2",
     "https://api.llama.fi/lite/charts",
-    "https://api.llama.fi/lite/charts/Ethereum", // a
+    "https://api.llama.fi/lite/charts/Ethereum", // multiple
 ]
 
 const alert= (message:string)=>sendMessage(message, process.env.MONITOR_WEBHOOK!)
@@ -59,7 +60,7 @@ const handler = async () => {
             alert(`${url} failed`)
         }
     }))
-
+    // TODO: test a random sample of endpoints market with `multiple`
 };
 
 export default wrapScheduledLambda(handler);

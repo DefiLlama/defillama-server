@@ -8550,11 +8550,11 @@ listedAt: 1650804679
 },
 {
   id: "1801",
-  name: "Metavault Trade",
+  name: "Metavault.Trade",
   address: "polygon:0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7",
   symbol: "MVX",
   url: "https://metavault.trade",
-  description: "Metavault Trade is a decentralised spot and perpetual exchange with low swap fees and zero price impact trades. Trading is backed by a multi-asset pool which is in turn supported by liquidity providers. Liquidity providers receive rewards from swap fees, market making, rebalancing and leverage trading. MVX uses Chainlink oracles and TWAP pricing from large-volume decentralized exchanges for dynamic pricing",
+  description: "Metavault.Trade is a new kind of Decentralised Exchange, designed to provide a large range of trading features and very deep liquidity on many large cap crypto assets. Traders can use it in two ways: Spot trading, with swaps and limit orders. Perpetual futures trading with up to 30x leverage on short and long positions. Metavault.Trade aims to become the go-to solution for traders who want to stay in control of their funds at all times without sharing their personal data.",
   chain: "Polygon",
   logo: `${baseIconsUrl}/metavault-trade.png`,
   audits: "0",

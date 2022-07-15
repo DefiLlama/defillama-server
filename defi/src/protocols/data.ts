@@ -2620,6 +2620,7 @@ const data: Protocol[] = [
     audit_links: ["https://www.certik.org/projects/swipe"],
     oracles: ["Chainlink","Band"],
   },
+  /*
   {
     id: "238",
     name: "Ellipsis Finance",
@@ -2642,6 +2643,7 @@ const data: Protocol[] = [
     ],
     forkedFrom: ["Curve"],
   },
+  */
   {
     id: "239",
     name: "PoolTogether",

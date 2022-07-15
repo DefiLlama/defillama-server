@@ -142,7 +142,9 @@ functions:
     handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
     timeout: 900
   storeDefiCoins:
-    handler: src/storeCoins.storeCoins
+    handler: src/storeCoins.default
+    events:
+      - schedule: cron(0 * * * ? *) # Hourly
 
 resources:
   # CORS for api gateway errors

@@ -1,17 +1,5 @@
-import { importAdapter } from "./storeToDB/importAdapter";
-import protocols from "./storeToDB/data";
+import adapters from "./adapters";
 
-async function iterateProtocols(protocolIndexes: number[]) {
-  const actions = protocolIndexes
-    .map((idx) => protocols[idx])
-    .map((protocol) => {
-      importAdapter(protocol);
-    });
-
-  await Promise.all(actions);
-}
-
-export default async (protocolIndexes: number[]) => {
-  console.log(protocolIndexes);
-  await iterateProtocols(protocolIndexes);
-};
+export default function runAll() {
+  Promise.all(Object.values(adapters).map((a) => a.default()));
+} // ts-node coins/src/storeCoins.ts

@@ -49,7 +49,7 @@ export const handler = async (event: IHandlerEvent) => {
     const { id, volumeAdapter } = volumeAdapters[protocolIndex];
 
     // Import DEX adapter
-    const dexAdapter: DexAdapter = (await import(
+    const dexAdapter: DexAdapter = (await require(
       `@defillama/adapters/dexVolumes/${volumeAdapter}`)
     ).default;
 
@@ -84,7 +84,10 @@ export const handler = async (event: IHandlerEvent) => {
           }
         }
       }
-    } else console.error("Invalid adapter")
+    } else {
+      console.error("Invalid adapter")
+      throw new Error("Invalid adapter")
+    }
     const dailyVolumes = rawDailyVolumes.reduce((acc, current: IRecordVolumeData) => {
       const chain = Object.keys(current)[0]
       acc[chain] = {

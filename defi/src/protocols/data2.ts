@@ -10721,7 +10721,29 @@ listedAt: 1650804679
   module: "tapio/index.js",
   twitter: "TapioProtocol",
   listedAt: 1657825354
-}
+},
+{
+  id: "1901",
+  name: "DxSale",
+  address: "0xF063fE1aB7a291c5d06a86e14730b00BF24cB589",
+  symbol: "DX",
+  url: "https://dx.app",
+  description: "With currently 16 supported chains, Dx is the biggest IDO Launchpad in the crypto space. As a truly decentralized token management platform, we aim for a low-barrier approach to launching your project. Instead of a steep learning curve and cumbersome interfaces, our platform will provide all the necessary tools to create and launch your project with no prior coding skills required. Of course, you can also use our platform if you're just here to invest in a project you deem interesting. This will be the first decision you will face",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/tapio-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "dxsale-network",
+  cmcId: "6742",
+  category: "Launchpad",
+  chains: ["Etherum","Binance", "Polygon", "Avalanche", "Fantom", "Heco", "OKeXChain", "Kucoin", "Arbitrum", "xDai", "Harmony", "Celo", "Cronos", "Moonriver", "SmartBCH", "Milkomeda"],
+  oracles: [],
+  forkedFrom: [],
+  module: "dxsale/index.js",
+  audit_links: ["https://www.certik.org/projects/dxsale"],
+  twitter: "dxsale",
+  listedAt: 1657847483
+},
 ]
 
 

@@ -70,3 +70,4 @@ jobs:
         INFLUXDB_TOKEN: ${{ secrets.INFLUXDB_TOKEN }}
         FATHOM_SECRET: ${{ secrets.FATHOM_SECRET }}
         DAILY_GROWTH_WEBHOOK: ${{ secrets.DAILY_GROWTH_WEBHOOK }}
+        MONITOR_WEBHOOK: ${{ secrets.MONITOR_WEBHOOK }}

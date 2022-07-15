@@ -22,4 +22,5 @@ module.exports = {
     FATHOM_SECRET: process.env.FATHOM_SECRET,
     DAILY_GROWTH_WEBHOOK: process.env.DAILY_GROWTH_WEBHOOK,
     INFLUXDB_TOKEN: process.env.INFLUXDB_TOKEN,
+    MONITOR_WEBHOOK: process.env.MONITOR_WEBHOOK,
 }

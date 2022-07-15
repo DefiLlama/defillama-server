@@ -82,6 +82,7 @@ provider:
     EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
     DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
+    MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -297,6 +298,12 @@ functions:
       - schedule: rate(1 day)
   notifyOutdated:
     handler: src/notifyOutdated.default
+    timeout: 900
+    memorySize: 1024
+    events:
+      - schedule: rate(1 hour)
+  notifyOutdatedApi:
+    handler: src/checkOutdatedApi.default
     timeout: 900
     memorySize: 1024
     events:

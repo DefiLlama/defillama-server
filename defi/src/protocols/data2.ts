@@ -1266,7 +1266,7 @@ const data2: Protocol[] =  [
 {
   id: "1466",
   name: "ALEX",
-  address: "stacks:-",
+  address: "stacks:SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9",
   symbol: "ALEX",
   url: "https://www.alexgo.io",
   description: "Next Gen DeFi on Bitcoin via Stacks. Building Financial Infrastructure on Bitcoin through Stacks",

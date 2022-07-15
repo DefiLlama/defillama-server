@@ -1,9 +1,7 @@
 import protocols from "../protocols/data";
 import {writeFileSync} from "fs"
 import volumeAdapters from "../dexVolumes/dexAdapters";
-
-// Added to avoid duplicate keys with tvl adapters
-export const volumeAdapterPrefix = "volume-"
+import { volumeAdapterPrefix } from "../dexVolumes/constants";
 
 const volumeAdaptersImports = volumeAdapters.map(p=>`"${volumeAdapterPrefix}${p.volumeAdapter}": require("@defillama/adapters/dexVolumes/${p.volumeAdapter}"),`)
 

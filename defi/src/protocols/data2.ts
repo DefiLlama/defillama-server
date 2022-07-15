@@ -10744,6 +10744,49 @@ listedAt: 1650804679
   twitter: "dxsale",
   listedAt: 1657847483
 },
+{
+  id: "1902",
+  name: "StarSwap",
+  address: "astar:0x8489f4554790F5A103F2B0398537eAEe68B73884",
+  symbol: "STAR",
+  url: "https://starswap.net",
+  description: "StarSwap is the first DEX (native to Astar Network) with NFT Governance",
+  chain: "Astar",
+  logo: `${baseIconsUrl}/starswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Astar"],
+  oracles: [],
+  forkedFrom: [],
+  module: "starswap/index.js",
+  twitter: "StarSwap",
+  listedAt: 1657923075
+},
+{
+  id: "1903",
+  name: "Vovo Finance",
+  address: null,
+  symbol: "-",
+  url: "https://vovo.finance",
+  description: "Structured products with various risk-returns and payoff structures through packaged financial instruments",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/vovo-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Arbitrum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "vovo/index.js",
+  twitter: "VovoFinance",
+  audit_links: ["https://github.com/VovoFinance/VovoProducts/tree/main/audits"],
+  listedAt: 1657923445
+}
 ]
 
 

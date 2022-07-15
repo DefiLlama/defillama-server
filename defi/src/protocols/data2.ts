@@ -10730,7 +10730,7 @@ listedAt: 1650804679
   url: "https://dx.app",
   description: "With currently 16 supported chains, Dx is the biggest IDO Launchpad in the crypto space. As a truly decentralized token management platform, we aim for a low-barrier approach to launching your project. Instead of a steep learning curve and cumbersome interfaces, our platform will provide all the necessary tools to create and launch your project with no prior coding skills required. Of course, you can also use our platform if you're just here to invest in a project you deem interesting. This will be the first decision you will face",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/tapio-protocol.png`,
+  logo: `${baseIconsUrl}/dxsale.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "dxsale-network",

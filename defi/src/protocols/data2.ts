@@ -10736,7 +10736,7 @@ listedAt: 1650804679
   gecko_id: "dxsale-network",
   cmcId: "6742",
   category: "Launchpad",
-  chains: ["Etherum","Binance", "Polygon", "Avalanche", "Fantom", "Heco", "OKeXChain", "Kucoin", "Arbitrum", "xDai", "Harmony", "Celo", "Cronos", "Moonriver", "SmartBCH", "Milkomeda"],
+  chains: ["Ethereum","Binance", "Polygon", "Avalanche", "Fantom", "Heco", "OKExChain", "Kucoin", "Arbitrum", "xDai", "Harmony", "Celo", "Cronos", "Moonriver", "SmartBCH", "Milkomeda"],
   oracles: [],
   forkedFrom: [],
   module: "dxsale/index.js",

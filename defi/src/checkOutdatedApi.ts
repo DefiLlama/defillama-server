@@ -48,11 +48,14 @@ const handler = async () => {
             const res = await axios.get(url)
             const age = res.headers.age
             if(age && Number(age) > 3600){
-                alert(`${url}'s age is ${age}, higher than 3600`)
+                alert(`${url} was last updated ${(Number(age)/3600).toFixed(2)} hours ago`)
             } else {
                 const lastModified = res.headers["last-modified"]
-                if(lastModified && (new Date().getTime() - new Date(lastModified).getTime()) > 3600e3){
-                    alert(`${url} was modified over 1 hour ago (${lastModified})`)
+                if(lastModified){
+                    const timeDiff = (new Date().getTime() - new Date(lastModified).getTime()) / 1e3
+                    if(timeDiff > 3600){
+                        alert(`${url} was last modified ${(timeDiff/3600).toFixed(2)} hours ago (${lastModified})`)
+                    }
                 }
             }
             responses[url] = res.data;

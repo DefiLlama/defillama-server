@@ -20349,7 +20349,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://vaults.mm.finance/vault",
   description: "MM Optimizer aims to provide users the easiest way to join the bandwagon of the DeFi world, built on top of MM Finance, giving you the tastiest MMFs topped with MMOs.",
   chain: "Cronos",
-  logo: `${baseIconsUrl}/mmo-finance.png`,
+  logo: `${baseIconsUrl}/mm-optimizer.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "mad-meerkat-optimizer",

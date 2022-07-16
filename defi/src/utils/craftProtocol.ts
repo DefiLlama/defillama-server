@@ -21,7 +21,12 @@ function normalizeEthereum(balances: { [symbol: string]: number }) {
     const formattedBalances: { [symbol: string]: number } = {}
   
     for (const b in balances) {
-        formattedBalances[b] = Number(balances[b].toFixed(5))
+        if (typeof typeof balances[b] === 'string') {
+          formattedBalances[b] = Number(Number(balances[b]).toFixed(5))
+        } else {
+          formattedBalances[b] = Number(balances[b].toFixed(5))
+        }
+    
     }
   
     return balances && formattedBalances;

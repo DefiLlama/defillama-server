@@ -10786,6 +10786,27 @@ listedAt: 1650804679
   twitter: "VovoFinance",
   audit_links: ["https://github.com/VovoFinance/VovoProducts/tree/main/audits"],
   listedAt: 1657923445
+},
+{
+  id: "1904",
+  name: "MMO Finance",
+  address: null,
+  symbol: "-",
+  url: "https://mmo.finance",
+  description: "MMO Finance is a decentralized pool based NFT lending platform.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/mmo-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Lending",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "mmofinance/index.js",
+  twitter: "mmo_finance",
+  listedAt: 1657965742
 }
 ]
 

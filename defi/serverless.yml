@@ -307,7 +307,7 @@ functions:
     timeout: 900
     memorySize: 1024
     events:
-      - schedule: rate(1 hour)
+      - schedule: cron(*/30 * * * ? *)
   fetchCoingeckoData:
     handler: src/fetchCoingeckoData.default
     timeout: 900

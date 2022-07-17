@@ -185,6 +185,14 @@ functions:
       - http:
           path: chains
           method: get
+  chains2:
+    handler: src/getFormattedChains.default
+    timeout: 60
+    memorySize: 2000
+    events:
+      - http:
+          path: chains2/{category}
+          method: get
   langs:
     handler: src/getLangs.default
     timeout: 600

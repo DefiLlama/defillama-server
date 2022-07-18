@@ -10807,6 +10807,27 @@ listedAt: 1650804679
   module: "mmo/index.js",
   twitter: "mmo_finance",
   listedAt: 1657965742
+},
+{
+  id: "1905",
+  name: "Bitgert",
+  address: "bsc:0x8fff93e810a2edaafc326edee51071da9d398e83",
+  symbol: "BRISE",
+  url: "https://bitgert.com",
+  description: "The Zero-Cost Gas Fee Blockchain",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/bitgert.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "bitrise-token",
+  cmcId: "11079",
+  category: "Staking",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "bitgert/index.js",
+  twitter: "bitgertbrise",
+  listedAt: 1658135993
 }
 ]
 

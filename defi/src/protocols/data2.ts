@@ -1274,7 +1274,7 @@ const data2: Protocol[] =  [
   logo: `${baseIconsUrl}/alex.png`,
   audits: "2",
   audit_note: null,
-  gecko_id: "alex",
+  gecko_id: null,
   cmcId: null,
   category: "Dexes",
   chains: ["Stacks"],

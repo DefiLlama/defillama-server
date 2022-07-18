@@ -17871,7 +17871,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: "15568",
   gecko_id: "arkadiko-protocol",
   cmcId: null,
-  category: "Algo-Stables",
+  category: "CDP",
   chains: ["Stacks"],
   module: "arkadiko.js",
   twitter: "ArkadikoFinance",

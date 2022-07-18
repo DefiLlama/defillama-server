@@ -10804,7 +10804,7 @@ listedAt: 1650804679
   chains: ["Ethereum"],
   oracles: [],
   forkedFrom: [],
-  module: "mmofinance/index.js",
+  module: "mmo/index.js",
   twitter: "mmo_finance",
   listedAt: 1657965742
 }

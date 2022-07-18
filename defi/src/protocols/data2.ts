@@ -10828,6 +10828,27 @@ listedAt: 1650804679
   module: "bitgert/index.js",
   twitter: "bitgertbrise",
   listedAt: 1658135993
+},
+{
+  id: "1906",
+  name: "Increment Finance",
+  address: null,
+  symbol: "-",
+  url: "https://increment.fi",
+  description: "One-stop DeFi Platform on Flow Blockchain. Deposit, earn, borrow, trade. Boost and leverage more liquidity and yield for Fungible Tokens on Flow",
+  chain: "Flow",
+  logo: `${baseIconsUrl}/increment-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Flow"],
+  oracles: [],
+  forkedFrom: [],
+  module: "increment-lending/index.js",
+  twitter: "incrementfi",
+  listedAt: 1658135993
 }
 ]
 

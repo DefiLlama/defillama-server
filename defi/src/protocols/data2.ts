@@ -10894,7 +10894,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Uniswap"],
   module: "MultiSwap/index.js",
-  twitter: "incrementfi",
+  twitter: "openbisea",
   listedAt: 1658151359
 }
 ]

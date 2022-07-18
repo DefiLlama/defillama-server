@@ -31,8 +31,8 @@ export interface Protocol {
     description: string;
     logo: string;
     chains: Array<string>;
-    gecko_id: string;
-    cmcId: string;
+    gecko_id: string | null;
+    cmcId: string | null;
     categories?: Array<string>;
     twitter: string;
     oracles?: Array<string>;

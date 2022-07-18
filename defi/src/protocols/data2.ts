@@ -10851,7 +10851,8 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "increment-lending/index.js",
   twitter: "incrementfi",
-  listedAt: 1658135993
+  listedAt: 1658135993,
+  parentProtocol: "incrementFinance"
 },
 {
   id: "1907",
@@ -10872,7 +10873,8 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   module: "increment-swap/index.js",
   twitter: "incrementfi",
-  listedAt: 1658135993
+  listedAt: 1658135993,
+  parentProtocol: "incrementFinance"
 },
 {
   id: "1908",

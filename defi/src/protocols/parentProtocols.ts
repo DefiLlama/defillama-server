@@ -54,6 +54,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BenqiFinance",
   },
+  {
+    id: "incrementFinance",
+    name: "Increment Finance",
+    url: "https://increment.fi",
+    description:
+      "Increment Finance, One-stop DeFi Platform on Flow Blockchain.",
+    logo: `${baseIconsUrl}/benqi-lending.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "incrementfi",
+  }
 ];
 
 export default parentProtocols;

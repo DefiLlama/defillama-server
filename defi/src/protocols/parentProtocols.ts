@@ -60,7 +60,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://increment.fi",
     description:
       "Increment Finance, One-stop DeFi Platform on Flow Blockchain.",
-    logo: `${baseIconsUrl}/increment-lending.jpg`,
+    logo: `${baseIconsUrl}/increment-lending.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

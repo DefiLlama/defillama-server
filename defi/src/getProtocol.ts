@@ -5,6 +5,7 @@ import { storeDataset, buildRedirect } from "./utils/s3";
 import craftProtocol from "./utils/craftProtocol";
 import parentProtocols from "./protocols/parentProtocols";
 import craftParentProtocol from "./utils/craftParentProtocol";
+import standardizeProtocolName from "./utils/standardizeProtocolName";
 
 export async function craftProtocolResponse(rawProtocolName:string|undefined, useNewChainNames: boolean, useHourlyData: boolean){
   const protocolName = rawProtocolName?.toLowerCase();
@@ -14,7 +15,7 @@ export async function craftProtocolResponse(rawProtocolName:string|undefined, us
   );
 
   if (!protocolData) {
-    const parentProtocol = parentProtocols.find(parent => parent.name.toLowerCase() === protocolName)
+    const parentProtocol = parentProtocols.find(parent => parent.name.toLowerCase() === standardizeProtocolName(protocolName))
 
     if (!parentProtocol) {
       return errorResponse({

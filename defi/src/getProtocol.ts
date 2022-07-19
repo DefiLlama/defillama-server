@@ -7,7 +7,7 @@ import parentProtocols from "./protocols/parentProtocols";
 import craftParentProtocol from "./utils/craftParentProtocol";
 import standardizeProtocolName from "./utils/standardizeProtocolName";
 
-export async function craftProtocolResponse(rawProtocolName:string|undefined, useNewChainNames: boolean, useHourlyData: boolean){
+export async function craftProtocolResponse(rawProtocolName: string|undefined, useNewChainNames: boolean, useHourlyData: boolean){
   const protocolName = rawProtocolName?.toLowerCase();
 
   const protocolData = protocols.find(

@@ -10898,6 +10898,48 @@ listedAt: 1650804679
   module: "MultiSwap/index.js",
   twitter: "openbisea",
   listedAt: 1658151359
+},
+{
+  id: "1909",
+  name: "onAVAX",
+  address: "avax:0xB12CA34C83607D6Ba0e7E6886D800cfb35045c21",
+  symbol: "OVX",
+  url: "https://onavax.com",
+  description: "onAVAX is a Decentralised Exchange built to bridge XRPL-native assets to the EVM-compatible blockchain and subsequently increase liquidity through DEFI.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/onavax.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Avalanche"],
+  oracles: [],
+  forkedFrom: [],
+  module: "onavax/index.js",
+  twitter: "onAVAX",
+  listedAt: 1658226204
+},
+{
+  id: "1910",
+  name: "ShiftDollar",
+  address: "cronos:0x4f9bd6be8455ee2b3c7ff76bbb885e6654797137",
+  symbol: "SHIFT",
+  url: "https://www.shiftdollar.finance",
+  description: "The SHIFT is designed to expand contract supply similar to the way central banks trade fiscal debt to stabilize purchasing power, without any rebates or collateral risk.",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/shiftdollar.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Cronos"],
+  oracles: [],
+  forkedFrom: ["Tomb Finance"],
+  module: "shiftdollar/index.js",
+  twitter: "shift_dollar",
+  listedAt: 1658226204
 }
 ]
 

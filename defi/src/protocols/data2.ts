@@ -3104,7 +3104,7 @@ const data2: Protocol[] =  [
   address: null,
   symbol: "-",
   url: "https://kujira.app",
-  description: "An economical, easy to use platform to bid on discounted, at-risk collateral on Terra with the click of a button.",
+  description: "The Cosmos Layer 1 platform for community selected projects creating true value.",
   chain: "Terra",
   logo: `${baseIconsUrl}/kujira.png`,
   audits: "2",

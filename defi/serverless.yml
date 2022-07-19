@@ -297,7 +297,7 @@ functions:
     handler: src/triggerStoreVolume.default
     timeout: 900
     events:
-      - schedule: rate(1 hour)
+      - schedule: rate(24 hour)
   storeDataset:
     handler: src/storeCsvDataset.default
     timeout: 900

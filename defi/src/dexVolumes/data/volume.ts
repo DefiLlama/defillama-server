@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk"
 import dynamodb from "../../utils/shared/dynamodb"
-import type { IRecordVolumeData } from "../storeDexVolume"
+import type { IRecordVolumeData } from "../handlers/storeDexVolume"
 import { Item } from "./base"
 
 export enum VolumeType {

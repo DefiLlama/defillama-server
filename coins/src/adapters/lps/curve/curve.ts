@@ -245,7 +245,7 @@ async function getUnderlyingPrices(balances: any, chain: string) {
   return poolComponents;
 }
 let unknownTokens: string[] = [];
-export async function getTokenPrices(chain: string) {
+export default async function getTokenPrices(chain: string) {
   const poolList = await getPools(chain);
   const writes: write[] = [];
 
@@ -280,5 +280,5 @@ export async function getTokenPrices(chain: string) {
   }
 
   await listUnknownTokens(chain, unknownTokens);
-  await batchWrite(writes, true);
+  return writes;
 }

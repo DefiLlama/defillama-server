@@ -52,7 +52,10 @@ async function getcTokens(chain: string, comptroller: string) {
   return cTokenData;
 }
 
-export async function getTokenPrices(chain: string, comptroller: string) {
+export default async function getTokenPrices(
+  chain: string,
+  comptroller: string
+) {
   const cTokens: cToken[] = await getcTokens(chain, comptroller);
 
   const coinsData: read[] = await getTokenAndRedirectData(
@@ -123,5 +126,5 @@ export async function getTokenPrices(chain: string, comptroller: string) {
     );
   });
 
-  await batchWrite(writes, true);
+  return writes;
 }

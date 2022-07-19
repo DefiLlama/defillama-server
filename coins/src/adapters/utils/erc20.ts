@@ -37,6 +37,82 @@ export async function getTokenInfo(chain: string, targets: string[]) {
     symbols: symbols.output
   };
 }
+interface lp {
+  address: string;
+  primaryUnderlying: string;
+  secondaryUnderlying: string;
+}
+export async function getLPInfo(chain: string, targets: lp[]) {
+  const [
+    supplies,
+    lpDecimals,
+    underlyingDecimals,
+    symbolAs,
+    symbolBs,
+    lpSymbol
+  ] = await Promise.all([
+    multiCall({
+      calls: targets.map((target: lp) => ({
+        target: target.address
+      })),
+      chain: chain as any,
+      abi: "erc20:totalSupply"
+    }),
+    multiCall({
+      calls: targets.map((target: lp) => ({
+        target: target.address
+      })),
+      chain: chain as any,
+      abi: "erc20:decimals"
+    }),
+    multiCall({
+      calls: targets.map((target: lp) => ({
+        target: target.primaryUnderlying
+      })),
+      chain: chain as any,
+      abi: "erc20:decimals"
+    }),
+    multiCall({
+      calls: targets.map((target: lp) => ({
+        target: target.secondaryUnderlying
+      })),
+      abi: "erc20:symbol",
+      chain: chain as any
+    }),
+    multiCall({
+      calls: targets.map((target: lp) => ({
+        target: target.primaryUnderlying
+      })),
+      abi: "erc20:symbol",
+      chain: chain as any
+    }),
+    multiCall({
+      calls: targets.map((target: lp) => ({
+        target: target.address
+      })),
+      abi: "erc20:symbol",
+      chain: chain as any
+    })
+  ]);
+
+  await Promise.all([
+    requery(supplies, chain, "erc20:totalSupply"),
+    requery(lpDecimals, chain, "erc20:decimals"),
+    requery(underlyingDecimals, chain, "erc20:decimals"),
+    requery(symbolAs, chain, "erc20:symbol"),
+    requery(symbolBs, chain, "erc20:symbol"),
+    requery(lpSymbol, chain, "erc20:symbol")
+  ]);
+
+  return {
+    supplies: supplies.output,
+    lpDecimals: lpDecimals.output,
+    underlyingDecimals: underlyingDecimals.output,
+    symbolAs: symbolAs.output,
+    symbolBs: symbolBs.output,
+    lpSymbol: lpSymbol.output
+  };
+}
 export async function listUnknownTokens(
   chain: string,
   unknownTokens: string[]

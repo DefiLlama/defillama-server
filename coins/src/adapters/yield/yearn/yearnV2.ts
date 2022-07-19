@@ -132,7 +132,7 @@ async function pushMoreVaults(chain: string, vaults: vaultKeys[]) {
   }));
   vaults.push(...vaultInfo);
 }
-export async function getTokenPrices(chain: string) {
+export default async function getTokenPrices(chain: string) {
   let vaults: vaultKeys[] = (
     await axios.get(
       `https://api.yearn.finance/v1/chains/${
@@ -160,5 +160,5 @@ export async function getTokenPrices(chain: string) {
   usdValues.map((v) => {
     addToDBWritesList(writes, chain, v.address, v.price, v.decimal, v.symbol);
   });
-  await batchWrite(writes, true);
+  return writes;
 }

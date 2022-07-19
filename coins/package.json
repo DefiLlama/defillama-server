@@ -39,7 +39,7 @@
     "@sentry/tracing": "^6.19.7",
     "@supercharge/promise-pool": "^2.1.0",
     "dotenv": "^8.6.0",
-    "ethers": "^5.4.6",
+    "ethers": "^5.6.9",
     "node-fetch": "^2.6.1"
   }
 }

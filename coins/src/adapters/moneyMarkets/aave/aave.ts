@@ -1,6 +1,6 @@
 const abi = require("./abi.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
-import { batchGet, batchWrite } from "../../../utils/shared/dynamodb";
+import { batchGet } from "../../../utils/shared/dynamodb";
 import { addToDBWritesList } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { write } from "../../utils/dbInterfaces";
@@ -85,5 +85,5 @@ export default async function getTokenPrices(
   });
 
   await listUnknownTokens(chain, unknownTokens);
-  await batchWrite(writes, true);
+  return writes;
 }

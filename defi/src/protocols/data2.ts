@@ -10940,6 +10940,28 @@ listedAt: 1650804679
   module: "shiftdollar/index.js",
   twitter: "shift_dollar",
   listedAt: 1658226204
+},
+{
+  id: "1911",
+  name: "BetSwirl",
+  address: "polygon:0x9246a5f10a79a5a939b0c2a75a3ad196aafdb43b",
+  symbol: "BETS",
+  url: "https://www.betswirl.com",
+  description: "BetSwirl aims to be the decentralized gambling platform: provably fair, non-custodial, licensed, trustless and community driven.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/betswirl.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: "18453",
+  category: "Prediction Market",
+  chains: ["Polygon", "Binance", "Avalanche"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "betswirl/index.js",
+  twitter: "BetSwirl",
+  audit_links: ["https://github.com/BetSwirl/Smart-Contracts/tree/v2/audits"],
+  listedAt: 1658236552
 }
 ]
 

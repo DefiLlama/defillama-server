@@ -10962,7 +10962,29 @@ listedAt: 1650804679
   twitter: "BetSwirl",
   audit_links: ["https://github.com/BetSwirl/Smart-Contracts/tree/v2/audits"],
   listedAt: 1658236552
-}
+},
+{
+  id: "1912",
+  name: "OortSwap",
+  address: "rei:0x3d1bbd0ec9af25e8f12383d9f6a6bbfa6dfef06f",
+  symbol: "OORT",
+  url: "https://www.oortswap.org/home",
+  description: "Oortswap is an Automated Market Maker (AMM) on REI Network",
+  chain: "REI",
+  logo: `${baseIconsUrl}/oortswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["REI"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "oortswap/index.js",
+  twitter: "OortSwap",
+  audit_links: ["https://github.com/LunaraySec/Report/blob/main/OortSwap%20Smart%20Contract%20Security%20Audit%20Report.pdf"],
+  listedAt: 1658294809
+},
 ]
 
 

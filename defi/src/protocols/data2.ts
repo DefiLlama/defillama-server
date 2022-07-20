@@ -11026,6 +11026,27 @@ listedAt: 1650804679
   audit_links: ["https://kuiper.gitbook.io/kuiper-docs/audits"],
   twitter: "TrustSwap",
 },
+{
+  id: "1915",
+  name: "Nava finance",
+  address: "rei:0x46D741b89102815710efeA3051291E64Ff49C228",
+  symbol: "NAVA",
+  url: "https://nava.finance",
+  description: "NAVA.FINANCE, home to the first algorithmic token pegged to $REI on the REI network.",
+  chain: "REI",
+  logo: `${baseIconsUrl}/nava-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["REI"],
+  oracles: [],
+  forkedFrom: ["Tomb Finance"],
+  module: "pony/index.js",
+  twitter: "navafinance",
+  listedAt: 1658332788
+},
 ]
 
 

@@ -10985,6 +10985,26 @@ listedAt: 1650804679
   audit_links: ["https://github.com/LunaraySec/Report/blob/main/OortSwap%20Smart%20Contract%20Security%20Audit%20Report.pdf"],
   listedAt: 1658294809
 },
+{
+  id: "1913",
+  name: "TrustSwap",
+  address: "0xcc4304a31d09258b0029ea7fe63d032f52e44efe",
+  symbol: "SWAP",
+  url: "https://trustswap.com/",
+  description: "TrustSwap is building foundational layers in the rapidly-emerging decentralized finance landscape with services like SmartLocks, Mint, Launchpad, Swappable (NFT interface), Farming as a Service, and Vesting as a Service",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/trustswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "trustswap",
+  cmcId: "5829",
+  category: "Services",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "trustswap/index.js",
+  twitter: "TrustSwap",
+},
 ]
 
 

@@ -11005,6 +11005,27 @@ listedAt: 1650804679
   module: "trustswap/index.js",
   twitter: "TrustSwap",
 },
+{
+  id: "1914",
+  name: "Pony Finance",
+  address: "0x0D97Fee619d955509e54B046c9992B6E9F5B0630",
+  symbol: "PONY",
+  url: "https://ponyfinance.xyz",
+  description: "PONY Index is a multi-chain stable coin index composed of multiple fully-collateralized stable coin vault tokens.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/pony-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "pony-index",
+  cmcId: null,
+  category: "Indexes",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "trustswap/index.js",
+  audit_links: ["https://kuiper.gitbook.io/kuiper-docs/audits"],
+  twitter: "TrustSwap",
+},
 ]
 
 

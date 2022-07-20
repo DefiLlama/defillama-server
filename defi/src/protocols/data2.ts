@@ -11014,7 +11014,7 @@ listedAt: 1650804679
   description: "PONY Index is a multi-chain stable coin index composed of multiple fully-collateralized stable coin vault tokens.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/pony-finance.jpg`,
-  audits: "2",
+  audits: "3",
   audit_note: null,
   gecko_id: "pony-index",
   cmcId: null,

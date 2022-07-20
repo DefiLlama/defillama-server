@@ -1534,7 +1534,7 @@ const data: Protocol[] = [
     symbol: "LDO",
     url: "https://lido.fi/",
     description:
-      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana, Terra & Kusama.",
+      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana, Terra, Kusama & Polkadot.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lido.png`,
     audits: "2",
@@ -1542,7 +1542,7 @@ const data: Protocol[] = [
     gecko_id: "lido-dao",
     cmcId: "8000",
     category: "Liquid Staking",
-    chains: ["Ethereum", "Terra", "Solana"],
+    chains: ["Ethereum", "Terra", "Solana", "Moonriver", "Moonbeam"],
     module: "lido/index.js",
     twitter: "LidoFinance",
     audit_links: ["https://github.com/lidofinance/audits"],

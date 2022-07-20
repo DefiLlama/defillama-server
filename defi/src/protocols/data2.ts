@@ -11024,7 +11024,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "pony/index.js",
   audit_links: ["https://kuiper.gitbook.io/kuiper-docs/audits"],
-  twitter: "TrustSwap",
+  twitter: "PonyFinance",
   listedAt: 1658298409
 },
 {

@@ -11022,7 +11022,7 @@ listedAt: 1650804679
   chains: ["Ethereum"],
   oracles: [],
   forkedFrom: [],
-  module: "trustswap/index.js",
+  module: "pony/index.js",
   audit_links: ["https://kuiper.gitbook.io/kuiper-docs/audits"],
   twitter: "TrustSwap",
 },

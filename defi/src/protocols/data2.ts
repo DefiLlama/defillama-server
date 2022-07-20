@@ -11044,7 +11044,7 @@ listedAt: 1650804679
   chains: ["REI"],
   oracles: [],
   forkedFrom: ["Tomb Finance"],
-  module: "pony/index.js",
+  module: "nava-finance/index.js",
   twitter: "navafinance",
   listedAt: 1658332788
 },

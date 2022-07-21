@@ -12,32 +12,27 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         (prot) => sluggify(prot) === dexName
     );
     if (!dexData) throw new Error("DEX data not found!")
-
-    const dexsResults = await allSettled(volumeAdapters.map(async (adapter) => {
-        try {
-            const volume = await getVolume(adapter.id, VolumeType.dailyVolume, "ALL")
-            // This check is made to infer Volume type instead of Volume[] type
-            if (volume instanceof Volume) throw new Error("Wrong volume queried")
-            return {
-                ...adapter,
-                volumeHistory: volume.map(v => ({
-                    dailyVolume: v.data,
-                    timestamp: v.sk
-                }))
-            }
-        } catch (error) {
-            return {
-                ...adapter,
-                volumeHistory: null
-            }
+    let dexDataResponse = {}
+    try {
+        const volume = await getVolume(dexData.id, VolumeType.dailyVolume, "ALL")
+        // This check is made to infer Volume type instead of Volume[] type
+        if (volume instanceof Volume) throw new Error("Wrong volume queried")
+        dexDataResponse = {
+            ...dexData,
+            volumeHistory: volume.map(v => ({
+                dailyVolume: v.data,
+                timestamp: v.sk
+            }))
         }
-    }))
-    const rejectedDexs = dexsResults.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
-    rejectedDexs.forEach(console.error)
-    const dexs = dexsResults.filter(d => d.status === 'fulfilled').map(fd => fd.status === "fulfilled" ? fd.value : undefined)
-    console.log(dexs);
+    } catch (error) {
+        console.error(error)
+        dexDataResponse = {
+            ...dexData,
+            volumeHistory: null
+        }
+    }
 
-    return successResponse({ dexs }, 10 * 60); // 10 mins cache
+    return successResponse(dexDataResponse, 10 * 60); // 10 mins cache
 };
 
 export default wrap(handler);

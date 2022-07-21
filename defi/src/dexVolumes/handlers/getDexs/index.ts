@@ -7,13 +7,14 @@ export const handler = async (): Promise<IResponse> => {
     const dexsResults = await allSettled(volumeAdapters.map(async (adapter) => {
         try {
             const volume = await getVolume(adapter.id, VolumeType.dailyVolume, "LAST")
-            // This check is made to infer Volume type instead of Volume[] type
+            // This check is made to infer Volume[] type instead of Volume type
             if (volume instanceof Array) throw new Error("Wrong volume queried")
             return {
                 ...adapter,
                 last24hVolume: volume.data
             }
         } catch (error) {
+            console.error(error)
             return {
                 ...adapter,
                 last24hVolume: null

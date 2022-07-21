@@ -1,12 +1,17 @@
 const abi = require("./abi.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
-import { batchGet, batchWrite } from "../../../utils/shared/dynamodb";
+import { batchGet } from "../../../utils/shared/dynamodb";
 import { addToDBWritesList } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { write } from "../../utils/dbInterfaces";
 import { result } from "../../utils/sdkInterfaces";
+import { listUnknownTokens } from "../../utils/erc20";
 
-async function getReserveData(chain: string, registry: string) {
+async function getReserveData(
+  chain: string,
+  registry: string,
+  version: string
+) {
   const addressProvider = (
     await call({
       target: registry,
@@ -18,7 +23,7 @@ async function getReserveData(chain: string, registry: string) {
     await call({
       target: addressProvider[0],
       chain: chain as any,
-      abi: abi.getLendingPool
+      abi: abi.getPool[version.toLowerCase()]
     })
   ).output;
   const reservesList = (
@@ -34,14 +39,19 @@ async function getReserveData(chain: string, registry: string) {
         target: lendingPool,
         params: [r]
       })),
-      abi: abi.getReserveData,
+      abi: abi.getReserveData[version.toLowerCase()],
       chain: chain as any
     })
   ).output;
 }
+let unknownTokens: string[] = [];
 
-async function getTokenPrices(chain: string, registry: string) {
-  const reserveData: result[] = await getReserveData(chain, registry);
+export default async function getTokenPrices(
+  chain: string,
+  registry: string,
+  version: string
+) {
+  const reserveData: result[] = await getReserveData(chain, registry, version);
   const [underlyingRedirects, tokenInfo] = await Promise.all([
     batchGet(
       reserveData.map((r: result) => ({
@@ -56,23 +66,24 @@ async function getTokenPrices(chain: string, registry: string) {
   ]);
 
   let writes: write[] = [];
-  reserveData.map((r, i) =>
-    addToDBWritesList(
-      writes,
-      chain,
-      r.output.aTokenAddress.toLowerCase(),
-      undefined,
-      tokenInfo.decimals[i].output,
-      tokenInfo.symbols[i].output,
-      underlyingRedirects.filter((u) =>
-        u.PK.includes(r.input.params[0].toLowerCase())
-      )[0].redirect
-    )
-  );
+  reserveData.map((r, i) => {
+    try {
+      addToDBWritesList(
+        writes,
+        chain,
+        r.output.aTokenAddress.toLowerCase(),
+        undefined,
+        tokenInfo.decimals[i].output,
+        tokenInfo.symbols[i].output,
+        underlyingRedirects.filter((u) =>
+          u.PK.includes(r.input.params[0].toLowerCase())
+        )[0].redirect
+      );
+    } catch {
+      unknownTokens.push(r.input.params[0].toLowerCase());
+    }
+  });
 
-  await batchWrite(writes, true);
+  await listUnknownTokens(chain, unknownTokens);
+  return writes;
 }
-export default getTokenPrices(
-  "ethereum",
-  "0x52D306e36E3B6B02c153d0266ff0f85d18BCD413"
-);

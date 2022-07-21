@@ -1,31 +1,13 @@
-import { storeCoin } from "./storeCoin";
-import {
-  getCoingeckoLock,
-  releaseCoingeckoLock
-} from "../src/utils/shared/coingeckoLocks";
-import protocols from "./protocols/data";
-import { importAdapter } from "./protocols/importAdapter";
+import adapters from "./adapters/index";
+import { batchWrite } from "./utils/shared/dynamodb";
 
-const maxRetries = 4;
-
-async function iterateProtocols(protocolIndexes: number[]) {
-  const actions = protocolIndexes
-    .map((idx) => protocols[idx])
-    .map((protocol) => {
-      const adapterModule = importAdapter(protocol);
-      console.log("a");
-      //return storeCoin(adapterModule, getCoingeckoLock);
-    });
-  const timer = setInterval(() => {
-    // Rate limit is 100 calls/min for coingecko's API
-    // So we'll release one every 0.6 seconds to match it
-    releaseCoingeckoLock();
-  }, 600);
-  await Promise.all(actions);
-  clearInterval(timer);
-  return;
-}
-
-export default async (protocolIndexes: number[]) => {
-  await iterateProtocols(protocolIndexes);
-};
+export default async function runAll() {
+  for (let adapter of Object.entries(adapters)) {
+    let results = await adapter[1][adapter[0]]();
+    if (Array.isArray(results[0])) {
+      results = results.reduce((p: any, c: any) => [...p, ...c], []);
+    }
+    batchWrite(results, true);
+  }
+} // ts-node coins/src/storeCoins.ts
+//runAll();

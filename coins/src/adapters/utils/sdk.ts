@@ -4,7 +4,7 @@ import { multiCall } from "@defillama/sdk/build/abi/index";
 export async function requery(
   resultsRaw: multiCallResults,
   chain: string,
-  abi: object
+  abi: string | any
 ) {
   const results = resultsRaw.output;
   if (results.some((r: result) => !r.success)) {

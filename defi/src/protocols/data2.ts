@@ -11063,7 +11063,7 @@ listedAt: 1650804679
   cmcId: "20239",
   category: "CDP",
   chains: ["Solana"],
-  oracles: [],
+  oracles: ["Pyth", "Chainlink", "Switchboard"],
   forkedFrom: [],
   module: "hedge/index.js",
   twitter: "HedgeLabs",

@@ -7,28 +7,25 @@ export async function getTokenInfo(chain: string, targets: string[]) {
         target
       })),
       chain: chain as any,
-      abi: "erc20:totalSupply"
+      abi: "erc20:totalSupply",
+      requery: true
     }),
     multiCall({
       calls: targets.map((target: string) => ({
         target
       })),
       chain: chain as any,
-      abi: "erc20:decimals"
+      abi: "erc20:decimals",
+      requery: true
     }),
     multiCall({
       calls: targets.map((target: string) => ({
         target
       })),
       abi: "erc20:symbol",
-      chain: chain as any
+      chain: chain as any,
+      requery: true
     })
-  ]);
-
-  await Promise.all([
-    requery(supplies, chain, "erc20:totalSupply"),
-    requery(decimals, chain, "erc20:decimals"),
-    requery(symbols, chain, "erc20:symbol")
   ]);
 
   return {
@@ -56,52 +53,49 @@ export async function getLPInfo(chain: string, targets: lp[]) {
         target: target.address
       })),
       chain: chain as any,
-      abi: "erc20:totalSupply"
+      abi: "erc20:totalSupply",
+      requery: true
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
         target: target.address
       })),
       chain: chain as any,
-      abi: "erc20:decimals"
+      abi: "erc20:decimals",
+      requery: true
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
         target: target.primaryUnderlying
       })),
       chain: chain as any,
-      abi: "erc20:decimals"
+      abi: "erc20:decimals",
+      requery: true
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
         target: target.secondaryUnderlying
       })),
       abi: "erc20:symbol",
-      chain: chain as any
+      chain: chain as any,
+      requery: true
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
         target: target.primaryUnderlying
       })),
       abi: "erc20:symbol",
-      chain: chain as any
+      chain: chain as any,
+      requery: true
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
         target: target.address
       })),
       abi: "erc20:symbol",
-      chain: chain as any
+      chain: chain as any,
+      requery: true
     })
-  ]);
-
-  await Promise.all([
-    requery(supplies, chain, "erc20:totalSupply"),
-    requery(lpDecimals, chain, "erc20:decimals"),
-    requery(underlyingDecimals, chain, "erc20:decimals"),
-    requery(symbolAs, chain, "erc20:symbol"),
-    requery(symbolBs, chain, "erc20:symbol"),
-    requery(lpSymbol, chain, "erc20:symbol")
   ]);
 
   return {

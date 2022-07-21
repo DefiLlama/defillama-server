@@ -27,10 +27,10 @@ async function fetchUniV2Markets(chain: string, factory: string) {
     calls: pairNums.map((num) => ({
       target: factory,
       params: [num]
-    }))
+    })),
+    requery: true
   });
 
-  await requery(pairs, chain, abi.allPairs);
   return pairs.output.map((result) => result.output.toLowerCase());
 }
 async function fetchUniV2MarketsFromSubgraph(subgraph: string) {
@@ -69,26 +69,26 @@ async function fetchUniV2MarketData(chain: string, pairAddresses: string[]) {
       chain: chain as any,
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
-      }))
+      })),
+      requery: true
     }),
     multiCall({
       abi: abi.token1,
       chain: chain as any,
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
-      }))
+      })),
+      requery: true
     }),
     multiCall({
       abi: abi.getReserves,
       chain: chain as any,
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
-      }))
+      })),
+      requery: true
     })
   ]);
-  await requery(token0s, chain, abi.token0);
-  await requery(token1s, chain, abi.token1);
-  await requery(reserves, chain, abi.getReserves);
 
   return [token0s, token1s, reserves];
 }

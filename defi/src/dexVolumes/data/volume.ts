@@ -65,20 +65,21 @@ export const storeVolume = async (volume: Volume): Promise<Volume> => {
     }
 }
 
-export const getVolume = async (dex: string, type: VolumeType): Promise<Volume[]> => {
+export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LAST" = "ALL"): Promise<Volume[] | Volume> => {
     // Creating dummy object to get the correct key
     const volume = new Volume(type, dex, null!, null!)
-
     try {
         const resp = await dynamodb.query({
             // TODO: Change for upsert like
             KeyConditionExpression: "PK = :pk",
             ExpressionAttributeValues: {
                 ":pk": volume.pk,
-            }
+            },
+            Limit: mode === "LAST" ? 1 : undefined,
+            ScanIndexForward: mode === "LAST" ? false : undefined
         })
-        if (!resp.Items) throw Error("No items found")
-        return resp.Items.map(Volume.fromItem)
+        if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${volume.pk}`)
+        return mode === "LAST" ? Volume.fromItem(resp.Items[0]) : resp.Items.map(Volume.fromItem)
     } catch (error) {
         throw error
     }

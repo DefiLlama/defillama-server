@@ -10187,7 +10187,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "trava/index.js",
     twitter: "trava_finance",
     audit_links: ["https://hacken.io/audits/#trava_finance", "https://www.certik.org/projects/trava"],
-    oracles: ["Chainlink", "OraiChain"],
+    oracles: ["Chainlink"],
   },
   {
     id: "622",

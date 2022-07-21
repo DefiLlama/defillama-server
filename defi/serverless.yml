@@ -290,14 +290,30 @@ functions:
     events:
       - schedule: cron(0 * * * ? *)
   storeVolume:
-    handler: src/dexVolumes/storeDexVolume/index.default
+    handler: src/dexVolumes/handlers/storeDexVolume/index.default
     timeout: 900
     memorySize: 512
+  getDexs:
+    handler: src/dexVolumes/handlers/getDexs/index.default
+    timeout: 90
+    memorySize: 2000
+    events:
+      - http:
+          path: dexs
+          method: get
+  getDex:
+    handler: src/dexVolumes/handlers/getDexVolume/index.default
+    timeout: 90
+    memorySize: 2000
+    events:
+      - http:
+          path: dex/{dex}
+          method: get
   triggerStoreVolume:
     handler: src/triggerStoreVolume.default
     timeout: 900
     events:
-      - schedule: rate(1 hour)
+      - schedule: rate(1 day)
   storeDataset:
     handler: src/storeCsvDataset.default
     timeout: 900

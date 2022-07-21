@@ -1,5 +1,5 @@
 import "./setup.ts"
-import { handler } from "../storeDexVolume";
+import { handler } from "../handlers/storeDexVolume";
 
 handler({
     protocolIndexes: [0]

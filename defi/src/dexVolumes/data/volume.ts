@@ -12,7 +12,6 @@ export class Volume extends Item {
     type: VolumeType
     dexId: string
     timestamp: number
-    version: string | undefined
 
     constructor(type: VolumeType, dexId: string, timestamp: number, data: IRecordVolumeData) {
         super()
@@ -29,11 +28,11 @@ export class Volume extends Item {
         // TODO: update dynamodb types with correct sdk
         const dexId = (item.PK as string).split("#")[2]
         const recordType = (item.PK as string).split("#")[0] as VolumeType
-        const body = item
+        const body = item as IRecordVolumeData
         const timestamp = +item.SK
         delete body.PK;
         delete body.SK;
-        return new Volume(recordType, dexId, timestamp, body as IRecordVolumeData)
+        return new Volume(recordType, dexId, timestamp, body)
     }
 
     get pk(): string {
@@ -55,14 +54,28 @@ export class Volume extends Item {
 export const storeVolume = async (volume: Volume): Promise<Volume> => {
     if (Object.entries(volume.data).length === 0) throw new Error("Can't store empty volume")
     try {
-        await dynamodb.put(
-            volume.toItem(),
-            { ConditionExpression: 'attribute_not_exists(SK)' } // To avoid update existing entry. TODO: change
-        )
+        await dynamodb.update({
+            Key: volume.keys(),
+            UpdateExpression: createUpdateExpressionFromObj(volume.data),
+            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(volume.data)
+        }) // Upsert like
         return volume
     } catch (error) {
         throw error
     }
+}
+
+function createUpdateExpressionFromObj(obj: IRecordVolumeData): string {
+    return `set ${Object.keys(obj).map(field => `${field}=:${field}`).join(',')}`
+}
+
+function createExpressionAttributeValuesFromObj(obj: IRecordVolumeData): Record<string, unknown> {
+    return Object.entries(obj).reduce((acc, [key, value]) => {
+        return {
+            ...acc,
+            [`:${key}`]: value
+        }
+    }, {} as Record<string, unknown>)
 }
 
 export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LAST" = "ALL"): Promise<Volume[] | Volume> => {

@@ -11048,6 +11048,27 @@ listedAt: 1650804679
   twitter: "navafinance",
   listedAt: 1658332788
 },
+{
+  id: "1916",
+  name: "Hedge",
+  address: "solana:5PmpMzWjraf3kSsGEKtqdUsCoLhptg4yriZ17LKKdBBy",
+  symbol: "HDG",
+  url: "https://www.hedge.so",
+  description: "Hedge offers 0% interest loans on Solana in form of our CDP stablecoin",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/hedge.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "hedge-protocol",
+  cmcId: "20239",
+  category: "CDP",
+  chains: ["Solana"],
+  oracles: [],
+  forkedFrom: [],
+  module: "hedge/index.js",
+  twitter: "HedgeLabs",
+  listedAt: 1658387691
+},
 ]
 
 

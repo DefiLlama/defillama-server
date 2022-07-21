@@ -11069,6 +11069,27 @@ listedAt: 1650804679
   twitter: "HedgeLabs",
   listedAt: 1658387691
 },
+{
+  id: "1917",
+  name: "SudoSwap",
+  address: null,
+  symbol: "-",
+  url: "https://sudoswap.xyz",
+  description: "The sudoswap AMM is a minimal, gas-efficient AMM protocol for facilitating NFT (ERC721s) to token (ETH or ERC20) swaps using customizable bonding curves",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/sudoswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "sudoswap/index.js",
+  twitter: "sudoswap",
+  listedAt: 1658388571
+},
 ]
 
 

@@ -26,7 +26,10 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
                 }))
             }
         } catch (error) {
-            return adapter
+            return {
+                ...adapter,
+                volumeHistory: null
+            }
         }
     }))
     const rejectedDexs = dexsResults.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)

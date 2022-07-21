@@ -14,7 +14,10 @@ export const handler = async (): Promise<IResponse> => {
                 last24hVolume: volume.data
             }
         } catch (error) {
-            return adapter
+            return {
+                ...adapter,
+                last24hVolume: null
+            }
         }
     }))
     const rejectedDexs = dexsResults.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)

@@ -8082,7 +8082,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "tezos:KT193D4vozYnhGJQVtw7CoxxqphqUEEwK6Vb",
     symbol: "QUIPU",
     url: "https://quipuswap.com",
-    description: "QuipuSwap is an open-source protocol that provides an interface for the seamless decentralized exchange of Tezos-based tokens and XTZ. Liquidity providers are able to earn both from swap fees and baker rewards, using benefits provided by the Tezos protocol such as liquid XTZ delegation.",
+    description: "QuipuSwap is an open-source protocol that provides an interface for the seamless decentralized exchange of Tezos-based Tokens, stable swap with dividends, and farming features. Liquidity providers may earn fees from trading, baking rewards, or receive rewards from staking tokens on farms. QuipuSwap smart contracts were developed by the MadFish Team and audited by Least Authority and  Runtime Verification companies.",
     chain: "Tezos",
     logo: `${baseIconsUrl}/quipuswap.png`,
     audits: "2",
@@ -8093,7 +8093,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Tezos"],
     module: "quipuswap/index.js",
     twitter: "QuipuSwap",
-    audit_links: ["https://leastauthority.com/static/publications/LeastAuthority_Tezos_Foundation_QuipuSwap_Smart_Contracts_Final_Audit_Report.pdf"],
+    audit_links: ["https://leastauthority.com/static/publications/LeastAuthority_Tezos_Foundation_QuipuSwap_Smart_Contracts_Final_Audit_Report.pdf"],["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/quipuswap-stableswap.pdf"],
   },
   {
     id: "514",

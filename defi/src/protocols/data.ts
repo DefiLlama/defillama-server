@@ -4737,7 +4737,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "complifi",
     cmcId: "9609",
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Ethereum", "Polygon"],
     module: "complifi/index.js",
     twitter: "CompliFi_Pro",

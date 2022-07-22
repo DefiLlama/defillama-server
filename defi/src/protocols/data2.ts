@@ -11110,6 +11110,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "aura-finance/index.js",
   twitter: "sudoswap",
+  audit_links: ["https://github.com/aurafinance/aura-contracts/tree/main/audits"],
   listedAt: 1658511775
 },
 ]

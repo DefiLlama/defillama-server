@@ -11054,10 +11054,10 @@ listedAt: 1650804679
   address: "solana:5PmpMzWjraf3kSsGEKtqdUsCoLhptg4yriZ17LKKdBBy",
   symbol: "HDG",
   url: "https://www.hedge.so",
-  description: "Hedge offers 0% interest loans on Solana in form of our CDP stablecoin",
+  description: "Hedge offers 0% interest loans on Solana in form of our CDP stablecoin $USH with the lowest collateral ratios available on Solana",
   chain: "Solana",
   logo: `${baseIconsUrl}/hedge.png`,
-  audits: "2",
+  audits: "3",
   audit_note: null,
   gecko_id: "hedge-protocol",
   cmcId: "20239",
@@ -11067,6 +11067,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "hedge/index.js",
   twitter: "HedgeLabs",
+  audit_links: ["https://docs.hedge.so/protocol-overview/security"],
   listedAt: 1658387691
 },
 {

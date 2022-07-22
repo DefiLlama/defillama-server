@@ -11057,7 +11057,7 @@ listedAt: 1650804679
   description: "Hedge offers 0% interest loans on Solana in form of our CDP stablecoin",
   chain: "Solana",
   logo: `${baseIconsUrl}/hedge.png`,
-  audits: "2",
+  audits: "3",
   audit_note: null,
   gecko_id: "hedge-protocol",
   cmcId: "20239",
@@ -11067,6 +11067,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "hedge/index.js",
   twitter: "HedgeLabs",
+  audit_links: "https://docs.hedge.so/protocol-overview/security"
   listedAt: 1658387691
 },
 {

@@ -11057,7 +11057,7 @@ listedAt: 1650804679
   description: "Hedge offers 0% interest loans on Solana in form of our CDP stablecoin $USH with the lowest collateral ratios available on Solana",
   chain: "Solana",
   logo: `${baseIconsUrl}/hedge.png`,
-  audits: "3",
+  audits: "2",
   audit_note: null,
   gecko_id: "hedge-protocol",
   cmcId: "20239",

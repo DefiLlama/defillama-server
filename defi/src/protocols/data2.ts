@@ -11067,7 +11067,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "hedge/index.js",
   twitter: "HedgeLabs",
-  audit_links: "https://docs.hedge.so/protocol-overview/security"
+  audit_links: ["https://docs.hedge.so/protocol-overview/security"],
   listedAt: 1658387691
 },
 {

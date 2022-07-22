@@ -1,8 +1,13 @@
-import allSettled from "promise.allsettled";
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import sluggify from "../../../utils/sluggify";
 import { getVolume, Volume, VolumeType } from "../../data/volume";
 import volumeAdapters from "../../dexAdapters";
+import { IRecordVolumeData } from "../storeDexVolume";
+
+export interface VolumeHistoryItem {
+    dailyVolume: IRecordVolumeData;
+    timestamp: number;
+}
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
     const dexName = event.pathParameters?.dex?.toLowerCase()
@@ -19,7 +24,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         if (volume instanceof Volume) throw new Error("Wrong volume queried")
         dexDataResponse = {
             ...dexData,
-            volumeHistory: volume.map(v => ({
+            volumeHistory: volume.map<VolumeHistoryItem>(v => ({
                 dailyVolume: v.data,
                 timestamp: v.sk
             }))

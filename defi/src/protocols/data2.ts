@@ -11096,7 +11096,7 @@ listedAt: 1650804679
   name: "Aura",
   address: "0xc0c293ce456ff0ed870add98a0828dd4d2903dbf",
   symbol: "AURA",
-  url: "https://aura.finance/",
+  url: "https://aura.finance",
   description: "Aura Finance is a protocol built on top of the Balancer system to provide maximum incentives to Balancer liquidity providers and BAL stakers (into veBAL) through social aggregation of BAL deposits and Aura's native token.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/aura.png`,
@@ -11112,6 +11112,28 @@ listedAt: 1650804679
   twitter: "sudoswap",
   audit_links: ["https://github.com/aurafinance/aura-contracts/tree/main/audits"],
   listedAt: 1658511775
+},
+{
+  id: "1919",
+  name: "ElasticSwap",
+  address: "avax:0x75739a693459f33B1FBcC02099eea3eBCF150cBe",
+  symbol: "TIC",
+  url: "https://elasticswap.org",
+  description: "An all new AMM focused on elastic supply tokens",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/elasticswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "elasticswap",
+  cmcId: "18922",
+  category: "Dexes",
+  chains: ["Avalanche", "Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "elasticswap/index.js",
+  twitter: "ElasticSwap",
+  audit_links: ["https://code4rena.com/reports/2022-01-elasticswap/"],
+  listedAt: 1658519505
 },
 ]
 

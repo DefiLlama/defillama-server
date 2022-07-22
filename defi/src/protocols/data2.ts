@@ -11091,6 +11091,27 @@ listedAt: 1650804679
   twitter: "sudoswap",
   listedAt: 1658388571
 },
+{
+  id: "1918",
+  name: "Aura",
+  address: "0xc0c293ce456ff0ed870add98a0828dd4d2903dbf",
+  symbol: "AURA",
+  url: "https://aura.finance/",
+  description: "Aura Finance is a protocol built on top of the Balancer system to provide maximum incentives to Balancer liquidity providers and BAL stakers (into veBAL) through social aggregation of BAL deposits and Aura's native token.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/aura.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "aura-finance",
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "aura-finance/index.js",
+  twitter: "sudoswap",
+  listedAt: 1658511775
+},
 ]
 
 

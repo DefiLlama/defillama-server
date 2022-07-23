@@ -1,3 +1,4 @@
+import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet } from "../../utils/shared/dynamodb";
 import { write, dbEntry, redirect, dbQuery } from "./dbInterfaces";
 export async function getTokenAndRedirectData(tokens: string[], chain: string) {
@@ -34,7 +35,7 @@ export function addToDBWritesList(
   writes.push(
     ...[
       {
-        SK: Date.now(),
+        SK: getCurrentUnixTimestamp(),
         PK: `asset#${chain}:${token}`,
         price,
         symbol,
@@ -47,7 +48,10 @@ export function addToDBWritesList(
         price,
         symbol,
         decimals,
-        redirect
+        redirect,
+        ...(price !== undefined?{
+          timestamp: getCurrentUnixTimestamp()
+        }:{})
       }
     ]
   );

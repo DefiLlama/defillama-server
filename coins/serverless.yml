@@ -67,7 +67,6 @@ provider:
     SOLANA_RPC: ${file(./env.js):SOLANA_RPC}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
-    AWS_REGION: ${self:custom.region}
     stage: ${self:custom.stage}
 
 custom:

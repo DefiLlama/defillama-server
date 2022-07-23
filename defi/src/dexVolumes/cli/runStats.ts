@@ -8,5 +8,5 @@ import { handler } from "../handlers/stats";
         }
     } as unknown as AWSLambda.APIGatewayEvent)
     const jr = JSON.parse(result.body)
-    console.log(jr[jr.length - 1])
+    console.log(jr.find((jri: any) => jri.timestamp === 1657843200))
 })()

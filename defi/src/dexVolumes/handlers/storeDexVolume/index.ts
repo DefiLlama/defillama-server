@@ -27,7 +27,7 @@ export const handler = async (event: IHandlerEvent) => {
   // Timestamp to query, defaults current timestamp - 10 min
   const currentTimestamp = event.timestamp || (Date.now() - 1000 * 60 * 10) / 1000;
   // Get clean day
-  const fetchCurrentHourTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
+  const fetchCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
 
   // Get closest block to clean day. Only for EVM compatible ones.
   const allChains = getAllChainsFromDexAdapters().filter(canGetBlock)
@@ -92,7 +92,7 @@ export const handler = async (event: IHandlerEvent) => {
       return acc
     }, {} as IRecordVolumeData)
 
-    await storeVolume(new Volume(VolumeType.dailyVolume, id, fetchCurrentHourTimestamp, dailyVolumes))
+    await storeVolume(new Volume(VolumeType.dailyVolume, id, fetchCurrentDayTimestamp, dailyVolumes))
   }))
 
   // TODO: do something

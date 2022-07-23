@@ -35,7 +35,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         return {
             timestamp: date,
             recorded: volumeHistory.find(
-                vh => vh.timestamp === date && !Object.values(vh.dailyVolume).find(
+                vh => getTimestampAtStartOfDayUTC(vh.timestamp) === date && !Object.values(vh.dailyVolume).find(
                     chainObj => Object.values(chainObj).includes("error")
                 )
             ) ? true : false
@@ -48,8 +48,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
 function getDataPoints() {
     const dataPoints = []
     for (let day = 1; day <= 365; day++) {
-        const currTimestamp = new Date(monitorDate.getTime() + DAY_IN_MILISECONDS * day)
-        console.log("get", getTimestampAtStartOfDayUTC(currTimestamp.getTime()), "got", currTimestamp.getTime())
+        const currTimestamp = new Date((monitorDate.getTime() + DAY_IN_MILISECONDS * day) / 1000)
         const start = getTimestampAtStartOfDayUTC(currTimestamp.getTime())
         dataPoints.push(start)
     }

@@ -44,7 +44,7 @@ function storeCoinData(
   idToSymbol: IdToSymbol
 ) {
   return batchWrite(
-    Object.entries(coinData).map(([cgId, data]: [string, any]) => ({
+    Object.entries(coinData).filter(c=>c[1]?.usd !== undefined).map(([cgId, data]) => ({
       PK: cgPK(cgId),
       SK: 0,
       price: data.usd,
@@ -65,7 +65,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     10
   );
   const idToSymbol = {} as IdToSymbol;
-  const returnedCoins = new Set(coinIds);
+  const returnedCoins = new Set(Object.keys(coinData));
   coins.forEach((coin) => {
     if (!returnedCoins.has(coin.id)) {
       console.error(`Couldn't get data for ${coin.id}`);
@@ -78,6 +78,9 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   await Promise.all(
     coins.map((coin) =>
       iterateOverPlatforms(coin, async (PK, tokenAddress, chain) => {
+        if(coinData[coin.id]?.usd === undefined){
+          return
+        }
         const tokenDecimals = await decimals(tokenAddress, chain as any);
         const tokenSymbol = await symbol(tokenAddress, chain as any);
         await ddb.put({

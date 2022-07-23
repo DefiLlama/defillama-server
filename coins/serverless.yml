@@ -143,6 +143,8 @@ functions:
     timeout: 900
   storeDefiCoins:
     handler: src/storeCoins.default
+    timeout: 900
+    memorySize: 500
     events:
       - schedule: cron(0 * * * ? *) # Hourly
 

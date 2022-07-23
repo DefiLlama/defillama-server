@@ -1,7 +1,7 @@
 import BigNumber from "bignumber.js";
-import dynamodb, { TableName } from "../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
 import {secondsBetweenCallsExtra} from '../utils/date'
+import fetch from "node-fetch";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
@@ -14,36 +14,43 @@ export default async function (balances: { [address: string]: string }, timestam
   const eth = balances[ethereumAddress];
   if (eth !== undefined) {
     balances[weth] = new BigNumber(balances[weth] ?? 0).plus(eth).toFixed(0);
-    delete balances[eth];
+    delete balances[ethereumAddress];
   }
   const PKsToTokens = {} as { [t: string]: string[] };
   const readKeys = Object.keys(balances)
     .map((address) => {
-      const PK = `asset#${address.startsWith("0x") ? "ethereum:" : ""
+      const PK = `${timestamp === "now"?"":"asset#"}${address.startsWith("0x") ? "ethereum:" : ""
         }${address.toLowerCase()}`;
       if (PKsToTokens[PK] === undefined) {
         PKsToTokens[PK] = [address];
-        return {
-          PK,
-          SK: 0,
-        };
+        return PK;
       } else {
         PKsToTokens[PK].push(address);
         return undefined;
       }
     })
-    .filter((item) => item !== undefined) as any[];
+    .filter((item) => item !== undefined) as string[];
   const readRequests = [];
   for (let i = 0; i < readKeys.length; i += 100) {
     readRequests.push(
-      dynamodb
-        .batchGet(readKeys.slice(i, i + 100))
-        .then((r) => r.Responses?.[TableName])
+      fetch("https://coins.llama.fi/prices", {
+        method: "POST",
+        body: JSON.stringify({
+          "coins": readKeys.slice(i, i + 100)
+        })
+      }).then((r) => r.json()).then(r=>{
+        return Object.entries(r.coins).map(
+        ([PK, value])=>({
+          ...(value as any),
+          PK
+        })
+      )
+    })
     );
   }
   let tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)));
   if (timestamp !== "now") {
-    const historicalPrices = await Promise.all(readKeys.map(key => getTVLOfRecordClosestToTimestamp(key.PK, timestamp, secondsBetweenCallsExtra)))
+    const historicalPrices = await Promise.all(readKeys.map(key => getTVLOfRecordClosestToTimestamp(key, timestamp, secondsBetweenCallsExtra)))
     tokenData = historicalPrices.map(t => {
       const current = tokenData.find(current => current.PK === t.PK)
       return {

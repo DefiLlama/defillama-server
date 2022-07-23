@@ -11079,7 +11079,7 @@ listedAt: 1650804679
   description: "The sudoswap AMM is a minimal, gas-efficient AMM protocol for facilitating NFT (ERC721s) to token (ETH or ERC20) swaps using customizable bonding curves",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/sudoswap.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -11088,6 +11088,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   module: "sudoswap/index.js",
+  audit_links: ["https://github.com/sudoswap/audits"],
   twitter: "sudoswap",
   listedAt: 1658388571
 },

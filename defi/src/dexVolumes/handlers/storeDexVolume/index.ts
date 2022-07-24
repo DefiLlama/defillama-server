@@ -43,56 +43,61 @@ export const handler = async (event: IHandlerEvent) => {
     // Get DEX info
     const { id, volumeAdapter } = volumeAdapters[protocolIndex];
 
-    // Import DEX adapter
-    const dexAdapter: DexAdapter = (await importVolumeAdapter(volumeAdapters[protocolIndex])).default;
+    try {
+      // Import DEX adapter
+      const dexAdapter: DexAdapter = (await importVolumeAdapter(volumeAdapters[protocolIndex])).default;
 
-    // Retrieve daily volumes
-    let rawDailyVolumes: IRecordVolumeData[] = []
-    if ("volume" in dexAdapter) {
-      const runAdapterRes = await runAdapter(dexAdapter.volume)
-      const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
-      for (const volume of volumes) {
-        if (volume && volume.result.dailyVolume)
-          rawDailyVolumes.push({
-            [volume.chain]: {
-              [volumeAdapter]: +volume.result.dailyVolume
-            },
-          })
-      }
-      const volumesRejected: IAllSettledRejection[] = runAdapterRes.filter(rar => rar.status === 'rejected').map(r => r.status === "rejected" && r.reason) as IAllSettledRejection[]
-      processRejectedPromises(volumesRejected, rawDailyVolumes)
-    } else if ("breakdown" in dexAdapter) {
-      const dexBreakDownAdapter = dexAdapter.breakdown
-      const volumeAdapters = Object.entries(dexBreakDownAdapter)
-      for (const [version, volumeAdapter] of volumeAdapters) {
-        const runAdapterRes = await runAdapter(volumeAdapter)
+      // Retrieve daily volumes
+      let rawDailyVolumes: IRecordVolumeData[] = []
+      if ("volume" in dexAdapter) {
+        const runAdapterRes = await runAdapter(dexAdapter.volume)
         const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
         for (const volume of volumes) {
-          if (volume && volume.result.dailyVolume) {
+          if (volume && volume.result.dailyVolume)
             rawDailyVolumes.push({
               [volume.chain]: {
-                [version]: +volume.result.dailyVolume
+                [volumeAdapter]: +volume.result.dailyVolume
               },
             })
-          }
         }
         const volumesRejected: IAllSettledRejection[] = runAdapterRes.filter(rar => rar.status === 'rejected').map(r => r.status === "rejected" && r.reason) as IAllSettledRejection[]
         processRejectedPromises(volumesRejected, rawDailyVolumes)
+      } else if ("breakdown" in dexAdapter) {
+        const dexBreakDownAdapter = dexAdapter.breakdown
+        const volumeAdapters = Object.entries(dexBreakDownAdapter)
+        for (const [version, volumeAdapter] of volumeAdapters) {
+          const runAdapterRes = await runAdapter(volumeAdapter)
+          const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
+          for (const volume of volumes) {
+            if (volume && volume.result.dailyVolume) {
+              rawDailyVolumes.push({
+                [volume.chain]: {
+                  [version]: +volume.result.dailyVolume
+                },
+              })
+            }
+          }
+          const volumesRejected: IAllSettledRejection[] = runAdapterRes.filter(rar => rar.status === 'rejected').map(r => r.status === "rejected" && r.reason) as IAllSettledRejection[]
+          processRejectedPromises(volumesRejected, rawDailyVolumes)
+        }
+      } else {
+        console.error("Invalid adapter")
+        throw new Error("Invalid adapter")
       }
-    } else {
-      console.error("Invalid adapter")
-      throw new Error("Invalid adapter")
-    }
-    const dailyVolumes = rawDailyVolumes.reduce((acc, current: IRecordVolumeData) => {
-      const chain = Object.keys(current)[0]
-      acc[chain] = {
-        ...acc[chain],
-        ...current[chain]
-      }
-      return acc
-    }, {} as IRecordVolumeData)
+      const dailyVolumes = rawDailyVolumes.reduce((acc, current: IRecordVolumeData) => {
+        const chain = Object.keys(current)[0]
+        acc[chain] = {
+          ...acc[chain],
+          ...current[chain]
+        }
+        return acc
+      }, {} as IRecordVolumeData)
 
-    await storeVolume(new Volume(VolumeType.dailyVolume, id, fetchCurrentDayTimestamp, dailyVolumes))
+      await storeVolume(new Volume(VolumeType.dailyVolume, id, fetchCurrentDayTimestamp, dailyVolumes))
+    }
+    catch (error) {
+      console.error(`DEXERROR:${volumeAdapter}: ${JSON.stringify(error)}`)
+    }
   }))
 
   // TODO: do something

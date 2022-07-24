@@ -1,5 +1,5 @@
 import "./setup.ts"
-import { handler } from "../handlers/stats";
+import { handler } from "../handlers/getStats";
 
 (async () => {
     const result = await handler({

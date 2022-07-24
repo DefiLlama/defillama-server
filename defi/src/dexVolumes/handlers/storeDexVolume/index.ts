@@ -2,8 +2,7 @@ import { getChainBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import volumeAdapters from "../../dexAdapters";
-import { ChainBlocks, DexAdapter, VolumeAdapter } from "@defillama/adapters/dexVolumes/dexVolume.type";
-import { handleAdapterError } from "../../utils";
+import { DexAdapter, VolumeAdapter } from "@defillama/adapters/dexVolumes/dexVolume.type";
 import { storeVolume, Volume, VolumeType } from "../../data/volume";
 import getAllChainsFromDexAdapters from "../../utils/getAllChainsFromDexAdapters";
 import canGetBlock from "../../utils/canGetBlock";
@@ -110,6 +109,7 @@ interface IAllSettledRejection {
 }
 function processRejectedPromises(volumesRejected: IAllSettledRejection[], rawDailyVolumes: IRecordVolumeData[]) {
   for (const rejVolumes of volumesRejected) {
+    console.error(`Rejected volume: ${JSON.stringify(rejVolumes)}`)
     if (rejVolumes)
       rawDailyVolumes.push({
         [rejVolumes.chain]: {

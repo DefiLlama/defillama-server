@@ -2,5 +2,5 @@ import "./setup.ts"
 import { handler } from "../handlers/storeDexVolume";
 
 handler({
-    protocolIndexes: [0]
+    protocolIndexes: [19]
 })

@@ -6882,7 +6882,7 @@ listedAt: 1650804679
   forkedFrom: ["Titano Finance"],
   module: "KungFuu-Finance/index.js",
   twitter: "kungfuu_fi",
-  listedAt: 1651691930
+  listedAt: 1651691931
 },
 {
   id: "1724",
@@ -6903,7 +6903,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "ampere/index.js",
   twitter: "Amperefuse",
-  listedAt: 1651691930
+  listedAt: 1651691932
 },
 {
   id: "1725",
@@ -7335,7 +7335,7 @@ listedAt: 1650804679
   module: "earnmos/index.js",
   twitter: "Earnmos1",
   audit_links: ["https://3892427214-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FviPnUCiaiKUbFaMxBOAq%2Fuploads%2FNjZrK9WotVHgBUZnTKbZ%2Fblocksec_earnmos_v1.0_signed.pdf?alt=media&token=d35bf1bc-2dbf-41c7-af2e-4ff8af4dddee"],
-  listedAt: 1652007650
+  listedAt: 1652007651
 },
 {
   id: "1745",
@@ -7356,7 +7356,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "joystickclub/index.js",
   twitter: "joystickclub",
-  listedAt: 1652007650
+  listedAt: 1652007652
 },
 {
   id: "1746",
@@ -7398,7 +7398,7 @@ listedAt: 1650804679
   forkedFrom: ["Tomb Finance", "Defi Kingdoms"],
   module: "gametheory/index.js",
   twitter: "GameTheoryTech",
-  listedAt: 1652026141
+  listedAt: 1652026142
 },
 {
   id: "1748",
@@ -7419,7 +7419,7 @@ listedAt: 1650804679
   forkedFrom: ["Tomb Finance"],
   module: "murica.js",
   twitter: "MoneyMurica",
-  listedAt: 1652026141
+  listedAt: 1652026143
 },
 {
   id: "1749",

@@ -81,6 +81,25 @@ export function successResponse(
   });
 }
 
+export function cache20MinResponse(
+  json: IJSON,
+) {
+  const date = new Date();
+  date.setMinutes(20);
+  if (date < new Date()) { // we are past the :20 mark, roll over to next hour
+    date.setHours(date.getHours() + 1)
+  }
+
+  return lambdaResponse({
+    body: json,
+    statusCode: 200,
+    allowCORS: true,
+    headers: {
+      "Expires": date.toUTCString(),
+    },
+  });
+}
+
 export function corsSuccessResponse(json: IJSON) {
   return lambdaResponse({
     body: json,

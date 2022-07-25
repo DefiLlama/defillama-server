@@ -6,7 +6,7 @@ package:
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   lambdaHashingVersion: 20201221
   memorySize: 250
   region: eu-central-1
@@ -55,6 +55,11 @@ provider:
         - "s3:ListBucket"
         - "s3:*Object*"
       Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "secretsmanager:GetSecretValue"
+      Resource:
+        - "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     BSC_RPC: ${file(./env.js):BSC_RPC}
@@ -64,6 +69,7 @@ provider:
     OPTIMISM_RPC: ${file(./env.js):OPTIMISM_RPC}
     XDAI_RPC: ${file(./env.js):XDAI_RPC}
     HARMONY_RPC: ${file(./env.js):HARMONY_RPC}
+    SOLANA_RPC: ${file(./env.js):SOLANA_RPC}
     MOONRIVER_RPC: ${file(./env.js):MOONRIVER_RPC}
     CRONOS_RPC: ${file(./env.js):CRONOS_RPC}
     KLAYTN_RPC: "https://public-node-api.klaytnapi.com/v1/cypress"
@@ -76,6 +82,7 @@ provider:
     EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
     DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
+    MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -104,6 +111,9 @@ custom:
   domain: ${self:custom.domainMap.${self:custom.stage}.domain}
   certificateArn: ${self:custom.domainMap.${self:custom.stage}.certificateArn}
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
+  datadog:
+    site: datadoghq.eu
+    apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
 
 functions:
   fallback:
@@ -153,6 +163,12 @@ functions:
       - http:
           path: tvl/{protocol}
           method: get
+  smolConfig:
+    handler: src/getSmolConfig.default
+    events:
+      - http:
+          path: config/smol/{protocol}
+          method: get
   coins:
     handler: src/getCoins.default
     timeout: 60
@@ -168,6 +184,14 @@ functions:
     events:
       - http:
           path: chains
+          method: get
+  chains2:
+    handler: src/getFormattedChains.default
+    timeout: 60
+    memorySize: 2000
+    events:
+      - http:
+          path: chains2/{category}
           method: get
   langs:
     handler: src/getLangs.default
@@ -224,6 +248,13 @@ functions:
       - http:
           path: config
           method: get
+  yieldsConfig:
+    handler: src/getYieldsConfig.default
+    timeout: 30
+    events:
+      - http:
+          path: config/yields
+          method: get
   storeProtocols:
     handler: src/storeGetProtocols.default
     timeout: 60
@@ -258,6 +289,39 @@ functions:
     timeout: 900
     events:
       - schedule: cron(0 * * * ? *)
+  storeVolume:
+    handler: src/dexVolumes/handlers/storeDexVolume/index.default
+    timeout: 900
+    memorySize: 512
+  getDexs:
+    handler: src/dexVolumes/handlers/getDexs/index.default
+    timeout: 90
+    memorySize: 2000
+    events:
+      - http:
+          path: dexs
+          method: get
+  getDex:
+    handler: src/dexVolumes/handlers/getDexVolume/index.default
+    timeout: 90
+    memorySize: 2000
+    events:
+      - http:
+          path: dex/{dex}
+          method: get
+  triggerStoreVolume:
+    handler: src/triggerStoreVolume.default
+    timeout: 900
+    events:
+      - schedule: rate(1 day)
+  getStats:
+    handler: src/dexVolumes/handlers/getStats/index.default
+    timeout: 90
+    memorySize: 2000
+    events:
+      - http:
+          path: dex/{dex}/stats
+          method: get
   storeDataset:
     handler: src/storeCsvDataset.default
     timeout: 900
@@ -270,6 +334,12 @@ functions:
     memorySize: 1024
     events:
       - schedule: rate(1 hour)
+  notifyOutdatedApi:
+    handler: src/checkOutdatedApi.default
+    timeout: 900
+    memorySize: 1024
+    events:
+      - schedule: cron(*/30 * * * ? *)
   fetchCoingeckoData:
     handler: src/fetchCoingeckoData.default
     timeout: 900
@@ -319,3 +389,4 @@ plugins:
   - serverless-esbuild
   - serverless-offline
   - serverless-prune-plugin
+  - serverless-plugin-datadog

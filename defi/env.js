@@ -10,6 +10,7 @@ module.exports = {
     OPTIMISM_RPC: process.env.OPTIMISM_RPC,
     XDAI_RPC: process.env.XDAI_RPC,
     HARMONY_RPC: process.env.HARMONY_RPC,
+    SOLANA_RPC: process.env.SOLANA_RPC,
     CRONOS_RPC: process.env.CRONOS_RPC,
     MOONRIVER_RPC: process.env.MOONRIVER_RPC,
     OUTDATED_WEBHOOK: process.env.OUTDATED_WEBHOOK,
@@ -21,4 +22,5 @@ module.exports = {
     FATHOM_SECRET: process.env.FATHOM_SECRET,
     DAILY_GROWTH_WEBHOOK: process.env.DAILY_GROWTH_WEBHOOK,
     INFLUXDB_TOKEN: process.env.INFLUXDB_TOKEN,
+    MONITOR_WEBHOOK: process.env.MONITOR_WEBHOOK,
 }

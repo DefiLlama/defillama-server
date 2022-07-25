@@ -4,19 +4,26 @@ import { getCoingeckoLock, releaseCoingeckoLock } from "../utils/shared/coingeck
 import { TokenPrices } from "../types";
 import protocols from "../protocols/data";
 import { importAdapter } from "../utils/imports/importAdapter";
+import { executeAndIgnoreErrors } from "./errorDb";
+import { getCurrentUnixTimestamp } from "../utils/date";
 
 const maxRetries = 4;
+const millisecondsBeforeLambdaEnd = 30e3; // 30s
 
-async function iterateProtocols(
-  protocolIndexes:number[]
-) {
-  console.log("preblocks")
+export default async (protocolIndexes:number[], getRemainingTimeInMillis:()=>number) => {
+  const blocksTimeout = setTimeout(()=>
+    executeAndIgnoreErrors('INSERT INTO `timeouts` VALUES (?, ?)', [getCurrentUnixTimestamp(), "blocks"]),
+    getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
   const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlocks();
-  console.log("blocks", chainBlocks)
+  clearTimeout(blocksTimeout)
+  
   const knownTokenPrices = {} as TokenPrices;
   const actions = protocolIndexes
     .map(idx=>protocols[idx])
     .map((protocol) =>{
+      const protocolTimeout = setTimeout(()=>
+        executeAndIgnoreErrors('INSERT INTO `timeouts` VALUES (?, ?)', [getCurrentUnixTimestamp(), protocol.name]),
+        getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
       const adapterModule = importAdapter(protocol)
       return storeTvl(
         timestamp,
@@ -27,7 +34,7 @@ async function iterateProtocols(
         knownTokenPrices,
         maxRetries,
         getCoingeckoLock
-      )
+      ).then(()=>clearTimeout(protocolTimeout))
     });
   const timer = setInterval(() => {
     // Rate limit is 100 calls/min for coingecko's API
@@ -37,8 +44,4 @@ async function iterateProtocols(
   await Promise.all(actions);
   clearInterval(timer);
   return;
-}
-
-export default async (protocolIndexes:number[]) => {
-  await iterateProtocols(protocolIndexes);
 };

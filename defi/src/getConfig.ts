@@ -8,7 +8,7 @@ const handler = async (
   return successResponse({
     protocols,
     chainCoingeckoIds
-  });
+  }, 30*60);
 };
 
 export default wrap(handler);

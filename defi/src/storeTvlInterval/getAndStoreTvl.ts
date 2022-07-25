@@ -2,7 +2,6 @@ import { TokenPrices } from "../types";
 import { Protocol } from "../protocols/data";
 import { util } from "@defillama/sdk";
 import storeNewTvl from "./storeNewTvl";
-import * as Sentry from "@sentry/serverless";
 import { TokensValueLocked, tvlsObject } from "../types";
 import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
 import {
@@ -15,21 +14,15 @@ import {
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
-import mysql from 'mysql2/promise';
+import {executeAndIgnoreErrors} from "./errorDb"
 import { getCurrentUnixTimestamp } from "../utils/date";
 
-const connection = mysql.createPool({
-  host: 'error-logs.cluster-cz3l9ki794cf.eu-central-1.rds.amazonaws.com',
-  port: 3306,
-  user: 'admin',
-  database: 'content',
-  password: process.env.INFLUXDB_TOKEN,
-  waitForConnections: true,
-  connectionLimit: 10,
-});
-
-// Error table
-// CREATE TABLE errors (time INT, protocol VARCHAR(200), error TEXT, PRIMARY KEY(time, protocol), INDEX `idx_time` (`time` ASC) VISIBLE);
+function insertOnDb(useCurrentPrices:boolean, query:string, params:(string|number)[], storedKey:string, probabilitySampling: number = 1){
+  if(useCurrentPrices === true && Math.random() <= probabilitySampling){
+    const currentTime = getCurrentUnixTimestamp()
+    executeAndIgnoreErrors(query, [currentTime, ...params, storedKey, storedKey.split("-")[0]])
+  }
+}
 
 type ChainBlocks = {
   [chain: string]: number;
@@ -116,11 +109,7 @@ async function getTvl(
       if (i >= maxRetries - 1) {
         throw e
       } else {
-        if(useCurrentPrices === true){
-          const currentTime = getCurrentUnixTimestamp()
-          connection.execute('INSERT INTO `errors` VALUES (?, ?, ?)', [currentTime, protocol.name, String(e)])
-            .catch(e => console.log("mysql error", e));
-        }
+        insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], storedKey)
         continue;
       }
     }
@@ -152,6 +141,7 @@ export async function storeTvl(
   breakIfTvlIsZero: boolean = false,
   runBeforeStore?: () => Promise<void>
 ) {
+  const adapterStartTimestamp = getCurrentUnixTimestamp()
 
   const usdTvls: tvlsObject<number> = {};
   const tokensBalances: tvlsObject<TokensValueLocked> = {};
@@ -180,6 +170,7 @@ export async function storeTvl(
           storedKey = chain
           tvlFunctionIsFetch = true
         }
+        const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
           usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, knownTokenPrices, getCoingeckoLock)
         let keyToAddChainBalances = tvlType;
@@ -191,6 +182,8 @@ export async function storeTvl(
         } else {
           chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
         }
+        const currentTime = getCurrentUnixTimestamp()
+        insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, currentTime - startTimestamp], storedKey, 0.05)
       }))
     })
     if (module.tvl || module.fetch) {
@@ -224,9 +217,7 @@ export async function storeTvl(
     }
   } catch (e) {
     console.error(protocol.name, e);
-    const scope = new Sentry.Scope();
-    scope.setTag("protocol", protocol.name);
-    Sentry.AWSLambda.captureException(e, scope);
+    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "aggregate")
     return;
   }
   if (breakIfTvlIsZero && Object.values(usdTvls).reduce((total, value) => total + value) === 0) {
@@ -266,11 +257,10 @@ export async function storeTvl(
     await Promise.all([storeTokensAction, storeUsdTokensAction, storeRawTokensAction]);
   } catch (e) {
     console.error(protocol.name, e);
-    const scope = new Sentry.Scope();
-    scope.setTag("protocol", protocol.name);
-    Sentry.AWSLambda.captureException(e, scope);
+    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "store")
     return;
   }
 
+  insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 1)
   return usdTvls.tvl;
 }

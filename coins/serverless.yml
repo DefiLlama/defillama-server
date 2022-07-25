@@ -64,9 +64,9 @@ provider:
     OPTIMISM_RPC: ${file(./env.js):OPTIMISM_RPC}
     XDAI_RPC: ${file(./env.js):XDAI_RPC}
     HARMONY_RPC: ${file(./env.js):HARMONY_RPC}
+    SOLANA_RPC: ${file(./env.js):SOLANA_RPC}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
-    AWS_REGION: ${self:custom.region}
     stage: ${self:custom.stage}
 
 custom:
@@ -143,6 +143,8 @@ functions:
     timeout: 900
   storeDefiCoins:
     handler: src/storeCoins.default
+    timeout: 900
+    memorySize: 500
     events:
       - schedule: cron(0 * * * ? *) # Hourly
 

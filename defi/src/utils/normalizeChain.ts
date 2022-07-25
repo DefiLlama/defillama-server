@@ -2,6 +2,8 @@ const normalizedChainReplacements = {
   "binance": "bsc",
   "wanchain": "wan",
   "kucoin": "kcc",
+  "terra classic": "terra",
+  "nova network": "nova"
 } as {
   [chain: string]: string
 }
@@ -110,7 +112,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 137,
   },
-  "Terra": {
+  "Terra Classic": {
     geckoId: "terra-luna",
     symbol: "LUNC",
     cmcId: "4172",
@@ -787,7 +789,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 53935,
   },
-  "Clover": {
+  "CLV": {
     geckoId: "clover-finance",
     symbol: "CLV",
     cmcId: "8384",
@@ -996,9 +998,48 @@ export const chainCoingeckoIds = {
     categories: ["Parachain"],
     parent: {
       chain: "Polkadot",
-      types: ["Parachain"]
-    }
-  }
+      types: ["parachain"]
+    },
+  },
+  "ICP": {
+    geckoId: "internet-computer",
+    symbol: "ICP",
+    cmcId: "8916",
+  },
+  "Nova Network": {
+    geckoId: "supernova",
+    symbol: "SNT",
+    cmcId: "15399",
+    categories: ["EVM"],
+    chainId: 87,
+  },
+  "Kintsugi": {
+    geckoId: "kintsugi",
+    symbol: "KINT",
+    cmcId: "13675",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Kusama",
+      types: ["parachain"]
+    },
+  },
+  "Filecoin": {
+    geckoId: "filecoin",
+    symbol: "FIL",
+    cmcId: "2280",
+    categories: ["EVM"],
+  },
+  "Flow": {
+    geckoId: "flow",
+    symbol: "FLOW",
+    cmcId: "4558",
+  },
+  "Kujira": {
+    geckoId: "kujira",
+    symbol: "KUJI",
+    cmcId: "15185",
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1016,8 +1057,10 @@ chainCoingeckoIds["xDai"] = chainCoingeckoIds["Gnosis"]
 chainCoingeckoIds["Binance"] = chainCoingeckoIds["BSC"]
 chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
+chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
+chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
 
-export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef"]
+export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury"]
 
 export function transformNewChainName(chain: string) {
   switch (chain) {
@@ -1029,6 +1072,10 @@ export function transformNewChainName(chain: string) {
       return "Gnosis"
     case "Cosmos":
       return "CosmosHub"
+    case "Terra":
+      return "Terra Classic"
+    case "Nova":
+      return "Nova Network"
     default:
       return chain
   }
@@ -1052,6 +1099,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Gnosis" : "xDai"
     case "cosmos":
       return useNewChainNames ? "CosmosHub" : "Cosmos"
+    case "terra":
+      return useNewChainNames ? "Terra Classic" : "Terra"
+    case "nova":
+      return useNewChainNames ? "Nova Network" : "Nova Network"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -1172,8 +1223,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Milkomeda"
     case "dfk":
       return "DFK"
-    case "clover":
-      return "Clover"
+    case "clv":
+      return "CLV"
     case "rei":
       return "REI"
     case "crab":
@@ -1234,7 +1285,18 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "LBRY"
     case "rvn":
       return "Ravencoin"
-
+    case "acala":
+      return "Acala"
+    case "icp":
+      return "ICP"
+    case "kintsugi":
+      return "Kintsugi"
+    case "filecoin":
+      return "Filecoin"
+    case "flow":
+      return "Flow"
+    case "kujira":
+      return "Kujira"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

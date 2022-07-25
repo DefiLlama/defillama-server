@@ -14,6 +14,7 @@ import getRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimes
 import { tvlsObject } from "../types";
 import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 import { sendMessage } from "../utils/discord";
+import { extraSections } from "../utils/normalizeChain";
 
 async function getTVLOfRecordClosestToTimestamp(
   PK: string,
@@ -27,6 +28,10 @@ async function getTVLOfRecordClosestToTimestamp(
       }
     }
     return record
+}
+
+function calculateTVLWithAllExtraSections(tvl: tvlsObject<number>) {
+  return extraSections.reduce((sum, option) => sum + (tvl[option] ?? 0), tvl.tvl)
 }
 
 export default async function (
@@ -66,37 +71,40 @@ export default async function (
   );
 
   const lastHourlyTVLObject = await lastHourlyTVLRecord;
-  const lastHourlyTVL = lastHourlyTVLObject.tvl;
-  if (storePreviousData && lastHourlyTVL * 2 < tvl.tvl && lastHourlyTVL !== 0) { 
-    const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
-      tvl.tvl
-    )}`;
-    let tvlToCompareAgainst = await lastWeeklyTVLRecord;
-    if(tvlToCompareAgainst.SK === undefined ){
-      tvlToCompareAgainst = await lastDailyTVLRecord;
-      if(tvlToCompareAgainst.SK === undefined ){
-        tvlToCompareAgainst = {
-          tvl: 10e9 // 10bil
+  {
+    const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
+    const currentTvl = calculateTVLWithAllExtraSections(tvl)
+    if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {
+      const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
+        currentTvl
+      )}`;
+      let tvlToCompareAgainst = await lastWeeklyTVLRecord;
+      if (tvlToCompareAgainst.SK === undefined) {
+        tvlToCompareAgainst = await lastDailyTVLRecord;
+        if (tvlToCompareAgainst.SK === undefined) {
+          tvlToCompareAgainst = {
+            tvl: 10e9 // 10bil
+          }
         }
       }
-    }
-    if (
-      Math.abs(lastHourlyTVLObject.SK - unixTimestamp) < (5 * HOUR) &&
-      lastHourlyTVL * 5 < tvl.tvl &&
-      tvlToCompareAgainst.tvl * 5 < tvl.tvl
-    ) {
-      const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour, disabling it`
-      await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
-      throw new Error(
-        errorMessage
-      );
-    } else {
-      const errorMessage = `TVL for ${protocol.name} has >2x (${change})`
-      reportError(
-        errorMessage,
-        protocol.name
-      );
-      await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+      if (
+        Math.abs(lastHourlyTVLObject.SK - unixTimestamp) < (5 * HOUR) &&
+        lastHourlyTVL * 5 < currentTvl &&
+        calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl
+      ) {
+        const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour, disabling it`
+        await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+        throw new Error(
+          errorMessage
+        );
+      } else {
+        const errorMessage = `TVL for ${protocol.name} has >2x (${change})`
+        reportError(
+          errorMessage,
+          protocol.name
+        );
+        await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
+      }
     }
   }
 
@@ -128,7 +136,7 @@ export default async function (
     ...tvl,
     ...(storePreviousData
       ? {
-          tvlPrev1Hour: lastHourlyTVL,
+          tvlPrev1Hour: lastHourlyTVLObject.tvl,
           tvlPrev1Day,
           tvlPrev1Week,
         }

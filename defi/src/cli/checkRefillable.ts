@@ -28,8 +28,8 @@ const main = async () => {
   }
   const yesterday = timestamp - secondsInDay;
   const [bal1, bal2] = await Promise.all([
-    calcTvl(timestamp, module),
-    calcTvl(yesterday, module),
+    calcTvl(timestamp, volumeAdapter),
+    calcTvl(yesterday, volumeAdapter),
   ])
   console.log(bal1, bal2)
 };

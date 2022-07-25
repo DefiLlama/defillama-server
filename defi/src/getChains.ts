@@ -3,6 +3,7 @@ import protocols from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
 import { getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";
 import { excludeProtocolInCharts } from "./storeGetCharts";
+import { IChain } from "./types";
 
 export async function craftChainsResponse(){
   const chainTvls = {} as {[chain:string]:number}
@@ -30,7 +31,7 @@ export async function craftChainsResponse(){
       }
     })
   );
-  const chainData = Object.entries(chainTvls).map(([chainName, chainTvl])=>({
+  const chainData: IChain[] = Object.entries(chainTvls).map(([chainName, chainTvl])=>({
     gecko_id: chainCoingeckoIds[chainName]?.geckoId ?? null,
     tvl: chainTvl,
     tokenSymbol: chainCoingeckoIds[chainName]?.symbol ?? null,

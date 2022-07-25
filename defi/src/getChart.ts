@@ -11,7 +11,7 @@ async function craftChartsResponse(chain:string|undefined){
   const sumDailyTvls = {} as {
     [timestamp: number]: number | undefined;
   };
-  const normalizedChain = chain === undefined?undefined: normalizeChain(chain)
+  const normalizedChain = chain === undefined?undefined: normalizeChain(decodeURI(chain))
   let lastDailyTimestamp = 0;
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {

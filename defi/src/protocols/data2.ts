@@ -11222,6 +11222,27 @@ listedAt: 1650804679
   twitter: "LIQUIDITFINANCE",
   listedAt: 1658739795
 },
+{
+  id: "1924",
+  name: "Pods Yield",
+  address: null,
+  symbol: "-",
+  url: "https://yield.pods.finance",
+  description: "Change the way you earn. Tap into low-risk protected vaults to make more with less overhead. Starting with ETH and options.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/pods-yield.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "pods-yield/index.js",
+  twitter: "PodsFinance",
+  listedAt: 1658752292
+},
 ]
 
 

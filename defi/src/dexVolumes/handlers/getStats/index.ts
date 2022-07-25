@@ -32,13 +32,15 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     }
 
     const response = getDataPoints().map((date) => {
+        const item = volumeHistory.find(
+            vh => getTimestampAtStartOfDayUTC(vh.timestamp) === date && Object.values(vh.dailyVolume).find(
+                chainObj => Object.keys(chainObj).includes("error")
+            )
+        )
         return {
             timestamp: date,
-            recorded: volumeHistory.find(
-                vh => getTimestampAtStartOfDayUTC(vh.timestamp) === date && !Object.values(vh.dailyVolume).find(
-                    chainObj => Object.values(chainObj).includes("error")
-                )
-            ) ? true : false
+            recorded: !item ? true : false,
+            error: item ? Object.values(item.dailyVolume).map(value => JSON.stringify(value)).join("") : null
         }
     })
 

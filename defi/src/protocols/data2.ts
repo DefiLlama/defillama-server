@@ -11136,6 +11136,27 @@ listedAt: 1650804679
   audit_links: ["https://code4rena.com/reports/2022-01-elasticswap/"],
   listedAt: 1658519505
 },
+{
+  id: "1920",
+  name: "OrderNChaos",
+  address: "avax:0xCd17D12dfD16051b5d2895E4dFC72AfD82DBB529",
+  symbol: "CHAOS",
+  url: "https://ordernchaos.finance/",
+  description: "OrderNChaos(ONC) is a twin system of algorithmic stable coins. ONC produces the $CHAOS token: an algorithmic metastable token that serves as a store of wealth. And it produces the $ORDER token: a decentralized superstable store of value.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/ordernchaos.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Avalanche"],
+  oracles: [],
+  forkedFrom: [],
+  module: "ordernchaos/index.js",
+  twitter: "ordernchaos_fi",
+  listedAt: 1658736615
+},
 ]
 
 

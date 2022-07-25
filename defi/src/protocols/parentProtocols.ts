@@ -65,6 +65,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "incrementfi",
+  },
+  {
+    id: "podsFinance",
+    name: "Pods",
+    url: "https://www.pods.finance/",
+    description:
+      "Buliding DeFi, Strategies, primitives and tooling. Welcome to Pods.",
+    logo: `${baseIconsUrl}/pods-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PodsFinance",
   }
 ];
 

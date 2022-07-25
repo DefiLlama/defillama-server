@@ -11008,6 +11008,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.pods.finance/security/audits"],
     oracles: ["Chainlink"],
     listedAt: 1634027456,
+    parentProtocol: "podsFinance"
   },
   {
     id: "664",

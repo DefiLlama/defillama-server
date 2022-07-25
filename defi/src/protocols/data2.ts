@@ -11266,6 +11266,28 @@ listedAt: 1650804679
   audit_links: ["https://medium.com/midas-capital/audit-with-zellic-29b63f1be25a"],
   listedAt: 1658754928,
 },
+{
+  id: "1925",
+  name: "Octane Finance",
+  address: "bsc:0x5416AB2B4B5a40F740B67a83dc5939591B5c08BE",
+  symbol: "OCTANE",
+  url: "https://octane.finance",
+  description: "The most powerful decentralized limit orders on Binance Smart Chain.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/octane-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Binance"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "octane/index.js",
+  twitter: "octane_finance",
+  audit_links: ["https://www.certik.com/projects/octanefinance"],
+  listedAt: 1658758018,
+},
 ]
 
 

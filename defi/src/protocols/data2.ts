@@ -11209,7 +11209,7 @@ listedAt: 1650804679
   url: "https://liquidityfinanc.com",
   description: "LFIswap is the first Dex with unique features like, Anti-rug protection with governance feature, Swap and Transfer, Token social details, orderbook, Clean and user-friendly UI to name a few.",
   chain: "Kava",
-  logo: `${baseIconsUrl}/lfiswap.jpg`,
+  logo: `${baseIconsUrl}/liquidity-finance.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

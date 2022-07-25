@@ -11157,6 +11157,28 @@ listedAt: 1650804679
   twitter: "ordernchaos_fi",
   listedAt: 1658736615
 },
+{
+  id: "1921",
+  name: "DogeClaw",
+  address: "okexchain:0x796294Cd49c81923391e869684Cf463646587133",
+  symbol: "CLAW",
+  url: "https://www.dogeclaw.games/",
+  description: "Dogeclaw is a play to earn Gamefi NFT platform on Okex chain",
+  chain: "OKExChain",
+  logo: `${baseIconsUrl}/dogeclaw.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Gaming",
+  chains: ["OKExChain"],
+  oracles: [],
+  forkedFrom: [],
+  module: "dogeclaw/index.js",
+  twitter: "RDogeclaw",
+  audit_links: ["https://github.com/solidproof/projects/blob/main/Claw%20Finance/SmartContract_Audit_Solidproof_ClawFinance.pdf"],
+  listedAt: 1658737535
+},
 ]
 
 

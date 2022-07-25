@@ -10853,7 +10853,8 @@ listedAt: 1650804679
   twitter: "incrementfi",
   audit_links: ["https://github.com/oak-security/audit-reports/tree/master/IncrementFi"],
   listedAt: 1658135993,
-  parentProtocol: "incrementFinance"
+  parentProtocol: "incrementFinance",
+  language: "Cadence"
 },
 {
   id: "1907",
@@ -10876,7 +10877,8 @@ listedAt: 1650804679
   twitter: "incrementfi",
   audit_links: ["https://github.com/oak-security/audit-reports/tree/master/IncrementFi"],
   listedAt: 1658135993,
-  parentProtocol: "incrementFinance"
+  parentProtocol: "incrementFinance",
+  language: "Cadence"
 },
 {
   id: "1908",

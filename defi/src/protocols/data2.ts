@@ -11241,7 +11241,8 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "pods-yield/index.js",
   twitter: "PodsFinance",
-  listedAt: 1658752292
+  listedAt: 1658752292,
+  parentProtocol: "podsFinance"
 },
 ]
 

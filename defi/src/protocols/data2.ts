@@ -11201,6 +11201,27 @@ listedAt: 1650804679
   audit_links: ["https://solidity.finance/audits/RadiantProtocol/"],
   listedAt: 1658739357
 },
+{
+  id: "1923",
+  name: "Liquidity Finance",
+  address: null,
+  symbol: "-",
+  url: "https://liquidityfinanc.com",
+  description: "LFIswap is the first Dex with unique features like, Anti-rug protection with governance feature, Swap and Transfer, Token social details, orderbook, Clean and user-friendly UI to name a few.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/lfiswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Kava"],
+  oracles: [],
+  forkedFrom: ["Pancakeswap"],
+  module: "LFIswap/index.js",
+  twitter: "LIQUIDITFINANCE",
+  listedAt: 1658739795
+},
 ]
 
 

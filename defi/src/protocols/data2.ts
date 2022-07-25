@@ -11179,6 +11179,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/solidproof/projects/blob/main/Claw%20Finance/SmartContract_Audit_Solidproof_ClawFinance.pdf"],
   listedAt: 1658737535
 },
+{
+  id: "1922",
+  name: "Radiant",
+  address: "arbitrum:0x0c4681e6c0235179ec3d4f4fc4df3d14fdd96017",
+  symbol: "RDNT",
+  url: "https://radiant.capital/#/markets",
+  description: "Radiant Capital is aiming to be an omnichain money market, where users can deposit any major asset on any major chain and borrow a variety of supported assets across multiple chains",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/radiant.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "radiant-capital",
+  cmcId: null,
+  category: "Lending",
+  chains: ["Arbitrum"],
+  oracles: ["Chainlink"],
+  forkedFrom: ["Aave"],
+  module: "radiant/index.js",
+  twitter: "RDNTCapital",
+  audit_links: ["https://solidity.finance/audits/RadiantProtocol/"],
+  listedAt: 1658739357
+},
 ]
 
 

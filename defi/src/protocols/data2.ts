@@ -11244,6 +11244,28 @@ listedAt: 1650804679
   listedAt: 1658752292,
   parentProtocol: "podsFinance"
 },
+{
+  id: "1925",
+  name: "Midas Capital",
+  address: null,
+  symbol: "-",
+  url: "https://midascapital.xyz/",
+  description: "Permissionless isolated lending pools for customizable creation of lending/borrowing markets.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/midas-capital.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Binance", "Moonbeam"],
+  oracles: ["Chainlink"],
+  forkedFrom: ["Rari Capital"],
+  module: "midas-capital/index.js",
+  twitter: "MidasCapitalxyz",
+  audit_links: ["https://medium.com/midas-capital/audit-with-zellic-29b63f1be25a"],
+  listedAt: 1658754928,
+},
 ]
 
 

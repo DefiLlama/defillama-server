@@ -26,7 +26,7 @@ const data: Protocol[] = [
     name: "Uniswap",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
-    url: "https://info.uniswap.org/",
+    url: "https://uniswap.org/",
     description:
       "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
     chain: "Ethereum",

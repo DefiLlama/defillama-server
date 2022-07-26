@@ -11361,7 +11361,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://app.bubbleswap.io",
-  description: ".",
+  description: "A fully decentralized protocol for automated liquidity provision on Hedera",
   chain: "Hedera",
   logo: `${baseIconsUrl}/bubbleswap.png`,
   audits: "2",

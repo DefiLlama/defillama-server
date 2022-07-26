@@ -8108,7 +8108,7 @@ listedAt: 1650804679
   category: "Lending",
   chains: ["Evmos"],
   oracles: ["Flux"],
-  forkedFrom: [],
+  forkedFrom: ["Compound"],
   module: "coslend/index.js",
   twitter: "coslend",
   listedAt: 1653409255
@@ -9055,7 +9055,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Avalanche"],
   oracles: [],
-  forkedFrom: [],
+  forkedFrom: ["Uniswap"],
   module: "swapsicle/index.js",
   twitter: "SwapsicIeDEX",
   audit_links: ["https://www.certik.com/projects/swapsicle"], 
@@ -9817,7 +9817,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Polygon"],
   oracles: [],
-  forkedFrom: [],
+  forkedFrom: ["Uniswap"],
   module: "auraswap/index.js",
   twitter: "AuraSwapDEX",
   listedAt: 1656409099
@@ -10010,7 +10010,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Kava"],
   oracles: ["TWAP"],
-  forkedFrom: [],
+  forkedFrom: ["Uniswap"],
   module: "surfswap/index.js",
   twitter: "SurfswapDEX",
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Beamswap-v1.0.pdf"],
@@ -10763,7 +10763,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Astar"],
   oracles: [],
-  forkedFrom: [],
+  forkedFrom: ["Uniswap"],
   module: "starswap/index.js",
   twitter: "StarSwap",
   listedAt: 1657923075
@@ -10917,7 +10917,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Avalanche"],
   oracles: [],
-  forkedFrom: [],
+  forkedFrom: ["Uniswap"],
   module: "onavax/index.js",
   twitter: "onAVAX",
   listedAt: 1658226204

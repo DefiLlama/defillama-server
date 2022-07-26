@@ -11355,6 +11355,28 @@ listedAt: 1650804679
   audit_links: ["https://drive.google.com/file/d/1DWRV7rb0fikVJeif41SEat4QlPeE2TFF/view"],
   listedAt: 1658824927,
 },
+{
+  id: "1930",
+  name: "Bubbleswap",
+  address: null,
+  symbol: "-",
+  url: "https://app.bubbleswap.io",
+  description: ".",
+  chain: "Hedera",
+  logo: `${baseIconsUrl}/bubbleswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Hedera"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "bubbleswap/index.js",
+  twitter: "bubbleswapio",
+  audit_links:["https://github.com/bubbleswapio/amm-v1/blob/main/audits/Bubbleswap%20-%20Report.pdf"],
+  listedAt: 1658849757,
+},
 ]
 
 

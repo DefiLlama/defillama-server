@@ -11290,6 +11290,28 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/octanefinance"],
   listedAt: 1658758018,
 },
+{
+  id: "1927",
+  name: "Mero",
+  address: null,
+  symbol: "-",
+  url: "https://mero.finance",
+  description: "Mero delegates liquidity to where it is the most efficient by deploying novel multi-utility liquidity pools, yield-farming strategies, off-chain bots (keepers), and customizable Actions",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/mero.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "mero/index.js",
+  twitter: "merofinance",
+  audit_links: ["https://docs.backd.fund/faq/risks-and-security"],
+  listedAt: 1658804851,
+},
 ]
 
 

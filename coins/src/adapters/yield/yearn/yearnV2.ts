@@ -1,6 +1,5 @@
 import { multiCall } from "@defillama/sdk/build/abi/index";
 import abi from "./abi.json";
-import { batchWrite } from "../../../utils/shared/dynamodb";
 import axios from "axios";
 import {
   addToDBWritesList,
@@ -9,6 +8,7 @@ import {
 import { multiCallResults } from "../../utils/sdkInterfaces";
 import { read, write } from "../../utils/dbInterfaces";
 import { requery } from "../../utils/sdk";
+import getBlock from "../../utils/block";
 const manualVaults = [
   "0x04bC0Ab673d88aE9dbC9DA2380cB6B79C4BCa9aE", // yBUSD
   "0xE6354ed5bC4b393a5Aad09f21c46E101e692d447", // yUSDT
@@ -48,16 +48,21 @@ function resolveDecimals(value: number, i: number) {
   if (value > 10) i = resolveDecimals(value / 10, i) + 1;
   return i;
 }
-async function getPricePerShare(vaults: vaultKeys[], chain: string) {
+async function getPricePerShare(
+  vaults: vaultKeys[],
+  chain: string,
+  block: number | undefined
+) {
   let pricePerShares: multiCallResults = await multiCall({
     abi: abi.pricePerShare,
     calls: vaults.map((v: vaultKeys) => ({
       target: v.address
     })),
-    chain: chain as any
+    chain: chain as any,
+    block
   });
-  await requery(pricePerShares, chain, abi.getPricePerFullShare);
-  await requery(pricePerShares, chain, abi.constantPricePerShare);
+  await requery(pricePerShares, chain, abi.getPricePerFullShare, block);
+  await requery(pricePerShares, chain, abi.constantPricePerShare, block);
   pricePerShares.output = pricePerShares.output.filter(
     (v) => v.success == true
   );
@@ -100,7 +105,11 @@ async function getUsdValues(
 
   return usdValues.filter((v) => v.address !== "fail");
 }
-async function pushMoreVaults(chain: string, vaults: vaultKeys[]) {
+async function pushMoreVaults(
+  chain: string,
+  vaults: vaultKeys[],
+  block: number | undefined
+) {
   const [
     { output: tokens },
     { output: symbols }
@@ -110,14 +119,16 @@ async function pushMoreVaults(chain: string, vaults: vaultKeys[]) {
       chain: chain as any,
       calls: manualVaults.map((v) => ({
         target: v
-      }))
+      })),
+      block
     }),
     multiCall({
       abi: "erc20:symbol",
       chain: chain as any,
       calls: manualVaults.map((v) => ({
         target: v
-      }))
+      })),
+      block
     })
   ]);
 
@@ -132,7 +143,12 @@ async function pushMoreVaults(chain: string, vaults: vaultKeys[]) {
   }));
   vaults.push(...vaultInfo);
 }
-export default async function getTokenPrices(chain: string) {
+export default async function getTokenPrices(
+  chain: string,
+  timestamp: number = 0
+) {
+  const block: number | undefined =
+    timestamp == 0 ? undefined : await getBlock(chain, timestamp);
   let vaults: vaultKeys[] = (
     await axios.get(
       `https://api.yearn.finance/v1/chains/${
@@ -141,14 +157,17 @@ export default async function getTokenPrices(chain: string) {
     )
   ).data;
   // 135
-  await pushMoreVaults(chain, vaults);
+  await pushMoreVaults(chain, vaults, block);
 
   const coinsData: read[] = await getTokenAndRedirectData(
     vaults.map((v: vaultKeys) => v.token.address.toLowerCase()),
-    chain
+    chain,
+    timestamp
   );
 
-  const [pricePerShares] = await Promise.all([getPricePerShare(vaults, chain)]);
+  const [pricePerShares] = await Promise.all([
+    getPricePerShare(vaults, chain, block)
+  ]);
 
   const usdValues: result[] = await getUsdValues(
     pricePerShares,

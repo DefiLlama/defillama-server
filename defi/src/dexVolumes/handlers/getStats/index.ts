@@ -1,6 +1,6 @@
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import sluggify from "../../../utils/sluggify";
+import { sluggifyString } from "../../../utils/sluggify";
 import { getVolume, Volume, VolumeType } from "../../data/volume";
 import volumeAdapters from "../../dexAdapters";
 import { VolumeHistoryItem } from "../getDexVolume";
@@ -14,7 +14,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     if (!dexName) throw new Error("Missing DEX name!")
 
     const dexData = volumeAdapters.find(
-        (prot) => sluggify(prot) === dexName
+        (prot) => sluggifyString(prot.volumeAdapter) === dexName
     );
     if (!dexData) throw new Error("DEX data not found!")
     let volumeHistory: VolumeHistoryItem[] = []

@@ -2894,7 +2894,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "mimo-parallel-governance-token",
     cmcId: "10831",
-    category: "Lending",
+    category: "CDP",
     chains: ["Ethereum", "Polygon", "Fantom"],
     module: "mimo/index.js",
     twitter: "mimodefi",

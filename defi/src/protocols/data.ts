@@ -4409,7 +4409,7 @@ const data: Protocol[] = [
     description:
       "Beefy is a Decentralized, Multichain Yield Optimizer platform that allows users to earn compound interest on crypto. Through a set of investment strategies secured and enforced by smart contracts, Beefy automatically maximizes rewards from various liquidity pools (LPs),‌ ‌automated market making (AMM) projects,‌ ‌and‌ ‌other yield‌ farming ‌opportunities in the DeFi ecosystem.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/beefy-finance.png`,
+    logo: `${baseIconsUrl}/beefy.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "beefy-finance",

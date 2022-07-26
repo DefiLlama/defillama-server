@@ -11162,7 +11162,7 @@ listedAt: 1650804679
 {
   id: "1921",
   name: "DogeClaw",
-  address: "okexchain:0x796294Cd49c81923391e869684Cf463646587133",
+  address: "okexchain:0xc2f1a8570361DAA6994936d1Dd397e1434F2E2B3",
   symbol: "CLAW",
   url: "https://www.dogeclaw.games/",
   description: "Dogeclaw is a play to earn Gamefi NFT platform on Okex chain",

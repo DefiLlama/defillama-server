@@ -64,6 +64,7 @@ async function getTokenAndRedirectDataHistorical(
       );
     })
   );
+
   // current origin entries
   const latestDbEntries: dbEntry[] = await batchGet(
     tokens.map((t: string) => ({
@@ -71,15 +72,18 @@ async function getTokenAndRedirectDataHistorical(
       SK: 0
     }))
   );
-  // redirects
+
+  // current redirects
   const redirects: dbQuery[] = latestDbEntries.map((d: dbEntry) => {
-    const i = tokens.indexOf(d.PK.substring(d.PK.indexOf(":") + 1));
-    if (!("redirect" in d) && timedDbEntries[i].SK == undefined) {
+    const selectedEntries: any[] = timedDbEntries.filter(
+      (t: any) => d.PK == t.PK
+    );
+    if (!("redirect" in d) && selectedEntries.length == 0) {
       return { PK: "not a token", SK: 0 };
+    } else if (selectedEntries.length == 0) {
+      return { PK: d.redirect, SK: timestamp };
     } else {
-      const PK =
-        timedDbEntries[i].SK == undefined ? d.redirect : timedDbEntries[i].SK;
-      return { PK, SK: timestamp };
+      return { PK: selectedEntries[0].PK, SK: timestamp };
     }
   });
 
@@ -92,18 +96,22 @@ async function getTokenAndRedirectDataHistorical(
       );
     })
   );
-  const allResults = timedRedirects.map((t: any) => {
-    const redirect = redirects.filter((r: dbQuery) => r.PK == t.PK)[0];
-    const i = redirects.indexOf(redirect);
-    let dbEntry = timedDbEntries[i];
-    if (i != -1) {
-      dbEntry["PK"] = tokens[i];
-    }
+
+  // aggregate
+  const allResults = timedRedirects.map((tr: any) => {
+    let dbEntry = timedDbEntries.filter((td: any) => tr.PK.includes(td.PK))[0];
+    const latestDbEntry = latestDbEntries.filter(
+      (ld: any) => tr.PK == ld.redirect
+    )[0];
+    if (dbEntry == undefined) dbEntry = { PK: latestDbEntry.PK };
+
     return {
-      dbEntry: dbEntry,
-      redirect: [t]
+      dbEntry,
+      redirect: [tr]
     };
   });
+
+  // remove faulty data and return
   const validResults: any[] = [];
   for (let i = 0; i < allResults.length; i++) {
     if (

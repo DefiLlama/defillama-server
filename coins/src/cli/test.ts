@@ -1,10 +1,16 @@
 import { PromiseResult } from "aws-sdk/lib/request";
 import { ScanOutput } from "aws-sdk/clients/dynamodb";
 import { AWSError } from "aws-sdk";
-import getTokenPrices from "../adapters/yield/yearn/yearnV2";
+import getTokenPrices from "../adapters/moneyMarkets/aave/aave";
 import dynamodb, { batchWrite } from "../utils/shared/dynamodb";
+const lastWeek = 1658357999;
 async function main() {
-  await getTokenPrices("ethereum", 1658357999);
+  await getTokenPrices(
+    "ethereum",
+    "0x52D306e36E3B6B02c153d0266ff0f85d18BCD413",
+    "v2",
+    lastWeek
+  );
   // "bsc",
   // "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
   // "https://bsc.streamingfast.io/subgraphs/name/pancakeswap/exchange-v2"

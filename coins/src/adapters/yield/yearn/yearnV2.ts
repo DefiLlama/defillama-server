@@ -147,8 +147,7 @@ export default async function getTokenPrices(
   chain: string,
   timestamp: number = 0
 ) {
-  const block: number | undefined =
-    timestamp == 0 ? undefined : await getBlock(chain, timestamp);
+  const block: number | undefined = await getBlock(chain, timestamp);
   let vaults: vaultKeys[] = (
     await axios.get(
       `https://api.yearn.finance/v1/chains/${

@@ -1,6 +1,10 @@
 import { call, multiCall } from "@defillama/sdk/build/abi/index";
 import { requery } from "./sdk";
-export async function getTokenInfo(chain: string, targets: string[]) {
+export async function getTokenInfo(
+  chain: string,
+  targets: string[],
+  block: number | undefined
+) {
   const [supplies, decimals, symbols] = await Promise.all([
     multiCall({
       calls: targets.map((target: string) => ({
@@ -8,7 +12,8 @@ export async function getTokenInfo(chain: string, targets: string[]) {
       })),
       chain: chain as any,
       abi: "erc20:totalSupply",
-      requery: true
+      requery: true,
+      block
     }),
     multiCall({
       calls: targets.map((target: string) => ({
@@ -16,7 +21,8 @@ export async function getTokenInfo(chain: string, targets: string[]) {
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery: true
+      requery: true,
+      block
     }),
     multiCall({
       calls: targets.map((target: string) => ({
@@ -24,7 +30,8 @@ export async function getTokenInfo(chain: string, targets: string[]) {
       })),
       abi: "erc20:symbol",
       chain: chain as any,
-      requery: true
+      requery: true,
+      block
     })
   ]);
 
@@ -39,7 +46,11 @@ interface lp {
   primaryUnderlying: string;
   secondaryUnderlying: string;
 }
-export async function getLPInfo(chain: string, targets: lp[]) {
+export async function getLPInfo(
+  chain: string,
+  targets: lp[],
+  block: number | undefined
+) {
   const [
     supplies,
     lpDecimals,
@@ -54,7 +65,8 @@ export async function getLPInfo(chain: string, targets: lp[]) {
       })),
       chain: chain as any,
       abi: "erc20:totalSupply",
-      requery: true
+      requery: true,
+      block
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
@@ -62,7 +74,8 @@ export async function getLPInfo(chain: string, targets: lp[]) {
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery: true
+      requery: true,
+      block
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
@@ -70,7 +83,8 @@ export async function getLPInfo(chain: string, targets: lp[]) {
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery: true
+      requery: true,
+      block
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
@@ -78,7 +92,8 @@ export async function getLPInfo(chain: string, targets: lp[]) {
       })),
       abi: "erc20:symbol",
       chain: chain as any,
-      requery: true
+      requery: true,
+      block
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
@@ -86,7 +101,8 @@ export async function getLPInfo(chain: string, targets: lp[]) {
       })),
       abi: "erc20:symbol",
       chain: chain as any,
-      requery: true
+      requery: true,
+      block
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
@@ -94,7 +110,8 @@ export async function getLPInfo(chain: string, targets: lp[]) {
       })),
       abi: "erc20:symbol",
       chain: chain as any,
-      requery: true
+      requery: true,
+      block
     })
   ]);
 
@@ -109,7 +126,8 @@ export async function getLPInfo(chain: string, targets: lp[]) {
 }
 export async function listUnknownTokens(
   chain: string,
-  unknownTokens: string[]
+  unknownTokens: string[],
+  block: number | undefined
 ) {
   unknownTokens = unknownTokens.reduce(function (a: string[], b) {
     if (a.indexOf(b) == -1) a.push(b);
@@ -121,7 +139,8 @@ export async function listUnknownTokens(
         target: t
       })),
       abi: "erc20:symbol",
-      chain: chain as any
+      chain: chain as any,
+      block
     })
   ).output.map((o) => o.output);
   unknownTokens = unknownTokens.map((t, i) => `${unknownSymbols[i]}-${t}`);

@@ -7,6 +7,7 @@ export async function getGasTokenBalance(
   chain: string,
   target: any,
   balances: any,
+  block: number | undefined,
   gasTokenDummyAddress: string = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
 ) {
   if (
@@ -19,7 +20,8 @@ export async function getGasTokenBalance(
   const gasTokenBalance = (
     await getBalance({
       target,
-      chain: chain as any
+      chain: chain as any,
+      block
     })
   ).output;
   balances.push({

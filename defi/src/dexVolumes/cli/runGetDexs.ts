@@ -3,5 +3,8 @@ import { handler } from "../handlers/getDexs";
 
 (async () => {
     const r = await handler()
-    console.log(JSON.parse(r.body).dexs[0])
+    const rr = JSON.parse(r.body)
+    console.log(rr.dexs[0])
+    delete rr['dexs']
+    console.log(rr)
 })()

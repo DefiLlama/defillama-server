@@ -10192,7 +10192,7 @@ listedAt: 1650804679
 {
   id: "1877",
   name: "Fusion Dex",
-  address: null,
+  address: "null",
   symbol: "-",
   url: "https://fusion.novanetwork.io",
   description: "A fully decentralized protocol for automated liquidity provision on Fantom and Nova.",
@@ -11398,6 +11398,27 @@ listedAt: 1650804679
   twitter: "homecoinfinance",
   audit_links:["https://files.baconcoin.finance/bacon-protocol-full-audit.pdf"],
   listedAt: 1658849757,
+},
+{
+  id: "1932",
+  name: "QuasarSwap",
+  address: "0x356c044B99e9378C1B28A1cAb2F95Cd65E877F33",
+  symbol: "QSR",
+  url: "https://quasarswap.xyz",
+  description: "First decentralized exchange on the Nova Network! Staking via Farms and Pools, and even NFT staking",
+  chain: "Nova Network",
+  logo: `${baseIconsUrl}/quasarswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Nova Network"],
+  oracles: [],
+  forkedFrom: ["Pancakeswap"],
+  module: "quasar-swap/index.js",
+  twitter: "SwapQuasar",
+  listedAt: 1658929561
 },
 ]
 

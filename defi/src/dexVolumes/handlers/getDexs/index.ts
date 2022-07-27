@@ -61,7 +61,7 @@ const calcnDChange = (volumes: Volume[], nDaysChange: number) => {
     const volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
     totalVolume += todaysVolume ? summAllVolumes(todaysVolume) : 0
     totalVolumeNd += volumeNd ? summAllVolumes(volumeNd) : 0
-    return (totalVolume - totalVolumeNd) / totalVolume * 100
+    return (totalVolume - totalVolumeNd) / totalVolumeNd * 100
 }
 
 const getSumAllDexsToday = (dexs: VolumeSummaryDex[]) => {
@@ -85,9 +85,9 @@ const getSumAllDexsToday = (dexs: VolumeSummaryDex[]) => {
     }
     return {
         totalVolume,
-        changeVolume1d: ((totalVolume - totalVolume1d) / totalVolume) * 100,
-        changeVolume7d: ((totalVolume - totalVolume7d) / totalVolume) * 100,
-        changeVolume30d: ((totalVolume - totalVolume30d) / totalVolume) * 100,
+        changeVolume1d: ((totalVolume - totalVolume1d) / totalVolume1d) * 100,
+        changeVolume7d: ((totalVolume - totalVolume7d) / totalVolume7d) * 100,
+        changeVolume30d: ((totalVolume - totalVolume30d) / totalVolume30d) * 100,
     }
 }
 

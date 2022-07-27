@@ -4,6 +4,7 @@ import { getVolume, Volume, VolumeType } from "../../data/volume"
 import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
+import { getDataPoints } from "../getStats";
 
 interface VolumeSummaryDex extends Dex {
     totalVolume24h: number | null
@@ -43,7 +44,11 @@ export const handler = async (): Promise<IResponse> => {
     rejectedDexs.forEach(console.error)
     const dexs = dexsResults.map(fd => fd.status === "fulfilled" ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
     const generalStats = getSumAllDexsToday(dexs)
-    return successResponse({ dexs: dexs.map(removeVolumesObject), ...generalStats }, 10 * 60); // 10 mins cache
+    return successResponse({
+        dexs: dexs.map(removeVolumesObject),
+        ...generalStats,
+        totalDataChart: generateAggregatedVolumesChartData(dexs)
+    }, 10 * 60); // 10 mins cache
 };
 
 const summAllVolumes = (breakdownVolumes: IRecordVolumeData) =>
@@ -89,6 +94,21 @@ const getSumAllDexsToday = (dexs: VolumeSummaryDex[]) => {
         changeVolume7d: ((totalVolume - totalVolume7d) / totalVolume7d) * 100,
         changeVolume30d: ((totalVolume - totalVolume30d) / totalVolume30d) * 100,
     }
+}
+
+const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]) => {
+    const chartData: [[string, number]] = [["0", 0]]
+    const dataPoints = getDataPoints()
+    for (const dataPoint of dataPoints) {
+        let total = 0
+        for (const dex of dexs) {
+            const volumeObj = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === dataPoint)?.data
+            total += volumeObj ? summAllVolumes(volumeObj) : 0
+        }
+        chartData.push([`${dataPoint}`, total])
+    }
+    chartData.shift()
+    return chartData
 }
 
 const removeVolumesObject = (dex: VolumeSummaryDex) => {

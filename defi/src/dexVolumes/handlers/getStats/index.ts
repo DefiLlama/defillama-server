@@ -46,7 +46,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     return successResponse(response, 10 * 60); // 10 mins cache
 };
 
-function getDataPoints() {
+export function getDataPoints() {
     const dataPoints = []
     for (let day = 1; day <= 365; day++) {
         const currTimestamp = new Date((monitorDate.getTime() + DAY_IN_MILISECONDS * day) / 1000)

@@ -45,9 +45,9 @@ export const handler = async (): Promise<IResponse> => {
     const dexs = dexsResults.map(fd => fd.status === "fulfilled" ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
     const generalStats = getSumAllDexsToday(dexs)
     return successResponse({
-        dexs: dexs.map(removeVolumesObject),
+        totalDataChart: generateAggregatedVolumesChartData(dexs),
         ...generalStats,
-        totalDataChart: generateAggregatedVolumesChartData(dexs)
+        dexs: dexs.map(removeVolumesObject),
     }, 10 * 60); // 10 mins cache
 };
 

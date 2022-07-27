@@ -6,5 +6,5 @@ import { handler } from "../handlers/getDexs";
     const rr = JSON.parse(r.body)
     console.log(rr.dexs[0])
     delete rr['dexs']
-    console.log(rr)
+    console.log(rr.totalDataChart.slice(-30))
 })()

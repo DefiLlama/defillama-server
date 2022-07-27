@@ -11420,6 +11420,28 @@ listedAt: 1650804679
   twitter: "SwapQuasar",
   listedAt: 1658929561
 },
+{
+  id: "1933",
+  name: "Timeless Finance",
+  address: null,
+  symbol: "-",
+  url: "https://timelessfi.com",
+  description: "Timeless is a yield market protocol that lets you boost, hedge, and trade yield",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/timeless-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "timeless/index.js",
+  twitter: "Timeless_Fi",
+  audit_links: ["https://github.com/spearbit/portfolio/blob/master/pdfs/Timeless-Spearbit-Security-Review.pdf"],
+  listedAt: 1658931496
+},
 ]
 
 

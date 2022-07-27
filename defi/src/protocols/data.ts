@@ -12022,7 +12022,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "0x34Ef2Cc892a88415e9f02b91BfA9c91fC0bE6bD4",
     symbol: "VOLT",
     url: "https://app.voltage.finance/",
-    description: "Built atop the powerful Fuse blockchain and ecosystem, Fuse.fi enables anyone to carry the power of DeFi in their pocket.",
+    description: "Built atop the powerful Fuse blockchain and ecosystem, Voltage enables anyone to carry the power of DeFi in their pocket.",
     chain: "Fuse",
     logo: `${baseIconsUrl}/voltage.png`,
     audits: "0",

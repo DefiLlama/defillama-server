@@ -11442,6 +11442,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/spearbit/portfolio/blob/master/pdfs/Timeless-Spearbit-Security-Review.pdf"],
   listedAt: 1658931496
 },
+{
+  id: "1934",
+  name: "ETCSwap",
+  address: null,
+  symbol: "-",
+  url: "https://etcswap.org/",
+  description: "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
+  chain: "EthereumClassic",
+  logo: `${baseIconsUrl}/etcswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthereumClassic"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "etcswap/index.js",
+  twitter: "EthClassicDAO",
+  listedAt: 1658953401
+},
 ]
 
 

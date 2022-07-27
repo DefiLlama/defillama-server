@@ -11402,7 +11402,7 @@ listedAt: 1650804679
 {
   id: "1932",
   name: "QuasarSwap",
-  address: "0x356c044B99e9378C1B28A1cAb2F95Cd65E877F33",
+  address: "nova:0x356c044B99e9378C1B28A1cAb2F95Cd65E877F33",
   symbol: "QSR",
   url: "https://quasarswap.xyz",
   description: "First decentralized exchange on the Nova Network! Staking via Farms and Pools, and even NFT staking",

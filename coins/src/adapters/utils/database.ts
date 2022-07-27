@@ -1,8 +1,8 @@
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
-import getBlock from "./block";
 import { write, dbEntry, redirect, dbQuery } from "./dbInterfaces";
+
 export async function getTokenAndRedirectData(
   tokens: string[],
   chain: string,
@@ -14,6 +14,7 @@ export async function getTokenAndRedirectData(
     return await getTokenAndRedirectDataHistorical(tokens, chain, timestamp);
   }
 }
+
 export function addToDBWritesList(
   writes: write[],
   chain: string,
@@ -21,33 +22,48 @@ export function addToDBWritesList(
   price: number | undefined,
   decimals: number,
   symbol: string,
+  timestamp: number,
   redirect: string | undefined = undefined
 ) {
-  writes.push(
-    ...[
-      {
-        SK: getCurrentUnixTimestamp(),
-        PK: `asset#${chain}:${token}`,
-        price,
-        symbol,
-        decimals,
-        redirect
-      },
-      {
-        SK: 0,
-        PK: `asset#${chain}:${token}`,
-        price,
-        symbol,
-        decimals,
-        redirect,
-        ...(price !== undefined
-          ? {
-              timestamp: getCurrentUnixTimestamp()
-            }
-          : {})
-      }
-    ]
-  );
+  if (timestamp == 0) {
+    writes.push(
+      ...[
+        {
+          SK: getCurrentUnixTimestamp(),
+          PK: `asset#${chain}:${token}`,
+          price,
+          symbol,
+          decimals,
+          redirect
+        },
+        {
+          SK: 0,
+          PK: `asset#${chain}:${token}`,
+          price,
+          symbol,
+          decimals,
+          redirect,
+          ...(price !== undefined
+            ? {
+                timestamp: getCurrentUnixTimestamp()
+              }
+            : {})
+        }
+      ]
+    );
+  } else {
+    if (timestamp > 10000000000 || timestamp < 1400000000) {
+      new Error("timestamp should be in unix seconds");
+    }
+    writes.push({
+      SK: timestamp,
+      PK: `asset#${chain}:${token}`,
+      price,
+      symbol,
+      decimals,
+      redirect
+    });
+  }
 }
 async function getTokenAndRedirectDataHistorical(
   tokens: string[],

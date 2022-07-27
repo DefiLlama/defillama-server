@@ -1,14 +1,9 @@
-import { PromiseResult } from "aws-sdk/lib/request";
-import { ScanOutput } from "aws-sdk/clients/dynamodb";
-import { AWSError } from "aws-sdk";
-import getTokenPrices from "../adapters/moneyMarkets/aave/aave";
-import dynamodb, { batchWrite } from "../utils/shared/dynamodb";
+import getTokenPrices from "../adapters/moneyMarkets/compound/compound";
 const lastWeek = 1658357999;
 async function main() {
   await getTokenPrices(
     "ethereum",
-    "0x52D306e36E3B6B02c153d0266ff0f85d18BCD413",
-    "v2",
+    "0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b",
     lastWeek
   );
   // "bsc",
@@ -16,62 +11,5 @@ async function main() {
   // "https://bsc.streamingfast.io/subgraphs/name/pancakeswap/exchange-v2"
 }
 main();
-async function hi() {
-  let results: any[] = [];
-  let data: PromiseResult<ScanOutput, AWSError> = await dynamodb.scan({
-    FilterExpression:
-      "(SK > :sk) OR (begins_with(PK,:pk) AND attribute_not_exists(price))",
-    ExpressionAttributeValues: {
-      ":sk": 1858760357,
-      ":pk": "coingecko#"
-    },
-    ProjectionExpression: "PK, SK"
-  });
-  while ("LastEvaluatedKey" in data) {
-    data = await dynamodb.scan({
-      FilterExpression:
-        "(SK > :sk) OR (begins_with(PK,:pk) AND attribute_not_exists(price))",
-      ExpressionAttributeValues: {
-        ":sk": 1858760357,
-        ":pk": "coingecko#"
-      },
-      ProjectionExpression: "PK, SK",
-      ExclusiveStartKey: data.LastEvaluatedKey
-    });
-    if (data.Items != undefined && data.Items.length > 0) {
-      results.push(...data.Items);
-    }
-  }
 
-  let a = await Promise.all(
-    results.map((r: any) =>
-      dynamodb.delete({
-        Key: { PK: r.PK, SK: r.SK }
-      })
-    )
-  );
-  console.log("a");
-  // const a = await Promise.all(data.map((d: any) => dynamodb.delete({
-  //   PK: d.PK,
-  //   SK: d.SK
-  // }))
-  // const data = await dynamodb.query({
-  //   ExpressionAttributeValues: {
-  //     ":sk": 1858760357,
-  //     ":pk": "asset"
-  //   },
-  //   KeyConditionExpression: "PK BEGINS_WITH :pk SK GT :sk"
-  // });
-  // for (const d of data.Items ?? []) {
-  //   if (d.tvl === undefined) {
-  //     await dynamodb.delete({
-  //       Key: {
-  //         PK: d.PK,
-  //         SK: d.SK
-  //       }
-  //     });
-  //   }
-  // }
-}
-//hi();
 // ts-node coins/src/cli/test.ts

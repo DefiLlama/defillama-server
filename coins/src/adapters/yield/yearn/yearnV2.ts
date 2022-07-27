@@ -176,7 +176,15 @@ export default async function getTokenPrices(
 
   let writes: write[] = [];
   usdValues.map((v) => {
-    addToDBWritesList(writes, chain, v.address, v.price, v.decimal, v.symbol);
+    addToDBWritesList(
+      writes,
+      chain,
+      v.address,
+      v.price,
+      v.decimal,
+      v.symbol,
+      timestamp
+    );
   });
   return writes;
 }

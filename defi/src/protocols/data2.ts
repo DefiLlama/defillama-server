@@ -11377,6 +11377,28 @@ listedAt: 1650804679
   audit_links:["https://github.com/bubbleswapio/amm-v1/blob/main/audits/Bubbleswap%20-%20Report.pdf"],
   listedAt: 1658849757,
 },
+{
+  id: "1931",
+  name: "HOME Coin",
+  address: "0xb8919522331C59f5C16bDfAA6A121a6E03A91F62",
+  symbol: "HOME",
+  url: "https://www.homecoin.finance",
+  description: "A StableCoin backed by U.S. Homes",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/home-coin.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "bacon-protocol-home",
+  cmcId: "20520",
+  category: "CDP",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "homecoin/index.js",
+  twitter: "homecoinfinance",
+  audit_links:["https://files.baconcoin.finance/bacon-protocol-full-audit.pdf"],
+  listedAt: 1658849757,
+},
 ]
 
 

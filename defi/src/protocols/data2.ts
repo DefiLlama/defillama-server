@@ -10192,7 +10192,7 @@ listedAt: 1650804679
 {
   id: "1877",
   name: "Fusion Dex",
-  address: "null",
+  address: null,
   symbol: "-",
   url: "https://fusion.novanetwork.io",
   description: "A fully decentralized protocol for automated liquidity provision on Fantom and Nova.",

@@ -1,11 +1,7 @@
 import { api } from "@defillama/sdk";
-import { getCurrentUnixTimestamp } from "./../../utils/date";
 
-export default async function getBlock(
-  chain: any,
-  timestamp: number
-) {
-  if (timestamp == 0) return undefined
+export default async function getBlock(chain: any, timestamp: number) {
+  if (timestamp == 0) return undefined;
   return api.util
     .lookupBlock(timestamp, { chain })
     .then((blockData) => blockData.block);

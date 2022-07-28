@@ -46,7 +46,6 @@ async function fetchUniV2MarketsFromSubgraph(
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
   for (let i = 0; i < 5; i++) {
-    // line 4: ${timestamp == 0 ? `` : `timestamp_lt: ${timestamp.toString()}`}
     const lpQuery = gql`
       query lps {
         pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,
@@ -139,8 +138,8 @@ async function findPriceableLPs(
         ? token0s.output[i].output.toLowerCase()
         : token1s.output[i].output.toLowerCase(),
       underlyingBalance: token1
-        ? reserves.output[i].output._reserve0
-        : reserves.output[i].output._reserve1
+        ? reserves.output[i].output._reserve1
+        : reserves.output[i].output._reserve0
     });
   }
   return priceableLPs;
@@ -204,12 +203,12 @@ export default async function getPairPrices(
         ? coinData.redirect[0].price
         : coinData.dbEntry.price;
 
-    const lpPrice: number =
-      (underlyingPrice *
-        2 *
-        l.underlyingBalance *
-        10 ** tokenInfo.underlyingDecimals[i].output) /
-      (tokenInfo.supplies[i].output * 10 ** tokenInfo.lpDecimals[i].output);
+    const supply =
+      tokenInfo.supplies[i].output / 10 ** tokenInfo.lpDecimals[i].output;
+    const value =
+      (underlyingPrice * 2 * l.underlyingBalance) /
+      10 ** tokenInfo.underlyingDecimals[i].output;
+    const lpPrice: number = value / supply;
 
     const symbol: string = `${tokenInfo.symbolAs[i].output}-${tokenInfo.symbolBs[i].output}-${tokenInfo.lpSymbol[i].output}`;
 

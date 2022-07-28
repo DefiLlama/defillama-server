@@ -11506,6 +11506,27 @@ listedAt: 1650804679
   twitter: "Securo_Finance",
   listedAt: 1659001664
 },
+{
+  id: "1937",
+  name: "Earnifty",
+  address: null,
+  symbol: "-",
+  url: "https://earnifty.xyz",
+  description: "Earnifty provides yield as a service to your favorite NFTs.",
+  chain: "Velas",
+  logo: `${baseIconsUrl}/earnifty.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Velas"],
+  oracles: [],
+  forkedFrom: ["Beefy"],
+  module: "earnifty/index.js",
+  twitter: "earnifty",
+  listedAt: 1659007182
+},
 ]
 
 

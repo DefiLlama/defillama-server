@@ -115,12 +115,18 @@ async function getTokenAndRedirectDataHistorical(
 
   // aggregate
   const allResults = timedRedirects.map((tr: any) => {
+    if (tr.PK == undefined) return { redirect: [{ SK: undefined }] };
     let dbEntry = timedDbEntries.filter((td: any) => tr.PK.includes(td.PK))[0];
     const latestDbEntry = latestDbEntries.filter(
       (ld: any) => tr.PK == ld.redirect
     )[0];
-    if (dbEntry == undefined) dbEntry = { PK: latestDbEntry.PK };
-
+    if (dbEntry == undefined) {
+      dbEntry = {
+        PK: latestDbEntry.PK,
+        decimals: latestDbEntry.decimals,
+        symbol: latestDbEntry.symbol
+      };
+    }
     return {
       dbEntry,
       redirect: [tr]

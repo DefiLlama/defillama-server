@@ -1,6 +1,5 @@
 const abi = require("./abi.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
-import { batchWrite } from "../../../utils/shared/dynamodb";
 import { wrappedGasTokens } from "../../utils/gasTokens";
 import {
   addToDBWritesList,
@@ -9,6 +8,7 @@ import {
 import { getTokenInfo } from "../../utils/erc20";
 import { write, read, price } from "../../utils/dbInterfaces";
 import { result } from "../../utils/sdkInterfaces";
+import getBlock from "../../utils/block";
 
 interface cToken {
   symbol: string;
@@ -16,12 +16,17 @@ interface cToken {
   underlying: string;
 }
 
-async function getcTokens(chain: string, comptroller: string) {
+async function getcTokens(
+  chain: string,
+  comptroller: string,
+  block: number | undefined
+) {
   const markets: string[] = (
     await call({
       target: comptroller,
       abi: abi.getAllMarkets,
-      chain: chain as any
+      chain: chain as any,
+      block
     })
   ).output;
   const [{ output: symbols }, { output: underlyings }] = await Promise.all([
@@ -30,14 +35,16 @@ async function getcTokens(chain: string, comptroller: string) {
         target: m
       })),
       abi: "erc20:symbol",
-      chain: chain as any
+      chain: chain as any,
+      block
     }),
     multiCall({
       calls: markets.map((m: string) => ({
         target: m
       })),
       abi: abi.underlying,
-      chain: chain as any
+      chain: chain as any,
+      block
     })
   ]);
   let cTokenData = markets.map((m: string, i: number) => ({
@@ -54,13 +61,17 @@ async function getcTokens(chain: string, comptroller: string) {
 
 export default async function getTokenPrices(
   chain: string,
-  comptroller: string
+  comptroller: string,
+  timestamp: number = 0
 ) {
-  const cTokens: cToken[] = await getcTokens(chain, comptroller);
+  const block: number | undefined = await getBlock(chain, timestamp);
+
+  const cTokens: cToken[] = await getcTokens(chain, comptroller, block);
 
   const coinsData: read[] = await getTokenAndRedirectData(
     cTokens.map((c: cToken) => c.underlying),
-    chain
+    chain,
+    timestamp
   );
 
   const [
@@ -70,21 +81,24 @@ export default async function getTokenPrices(
   ] = await Promise.all([
     getTokenInfo(
       chain,
-      cTokens.map((c: cToken) => c.address)
+      cTokens.map((c: cToken) => c.address),
+      block
     ),
     multiCall({
       calls: cTokens.map((c: cToken) => ({
         target: c.underlying
       })),
       abi: "erc20:decimals",
-      chain: chain as any
+      chain: chain as any,
+      block
     }),
     multiCall({
       calls: cTokens.map((c: cToken) => ({
         target: c.address
       })),
       abi: abi.exchangeRateStored,
-      chain: chain as any
+      chain: chain as any,
+      block
     })
   ]);
 
@@ -122,7 +136,8 @@ export default async function getTokenPrices(
       cTokens[i].address,
       p.price / 10 ** (10 + Number(underlyingDecimals[i].output)),
       tokenInfo.decimals[i].output,
-      tokenInfo.symbols[i].output
+      tokenInfo.symbols[i].output,
+      timestamp
     );
   });
 

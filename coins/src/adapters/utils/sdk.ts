@@ -4,7 +4,8 @@ import { multiCall } from "@defillama/sdk/build/abi/index";
 export async function requery(
   resultsRaw: multiCallResults,
   chain: string,
-  abi: string | any
+  abi: string | any,
+  block: number | undefined = undefined
 ) {
   const results = resultsRaw.output;
   if (results.some((r: result) => !r.success)) {
@@ -14,7 +15,8 @@ export async function requery(
     const newResults = await multiCall({
       abi,
       chain: chain as any,
-      calls: failed.map((f: any) => f[0].input)
+      calls: failed.map((f: any) => f[0].input),
+      block
     }).then(({ output }) => output);
     failed.forEach((f: any, i) => {
       results[f[1]] = newResults[i];

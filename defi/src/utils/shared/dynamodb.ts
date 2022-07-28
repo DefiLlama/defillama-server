@@ -5,8 +5,8 @@ const client = new AWS.DynamoDB.DocumentClient({
   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
     endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
     sslEnabled: false,
-    region: "local",
-  }),
+    region: "local"
+  })
 });
 export const TableName = process.env.tableName!;
 
@@ -32,33 +32,33 @@ const dynamodb = {
       .batchGet({
         RequestItems: {
           [TableName]: {
-            Keys: keys,
-          },
-        },
+            Keys: keys
+          }
+        }
       })
       .promise(),
-  scan: () => client.scan({ TableName }).promise(),
+  scan: (params: Omit<AWS.DynamoDB.DocumentClient.ScanInput, "TableName">) =>
+    client.scan({ TableName, ...params }).promise()
 };
 export default dynamodb;
 
 export async function getHistoricalValues(pk: string) {
-  let items = [] as any[]
+  let items = [] as any[];
   let lastKey = -1;
   do {
-    const result = await dynamodb
-      .query({
-        ExpressionAttributeValues: {
-          ":pk": pk,
-          ":sk": lastKey
-        },
-        KeyConditionExpression: "PK = :pk AND SK > :sk",
-      })
-    lastKey = result.LastEvaluatedKey?.SK
+    const result = await dynamodb.query({
+      ExpressionAttributeValues: {
+        ":pk": pk,
+        ":sk": lastKey
+      },
+      KeyConditionExpression: "PK = :pk AND SK > :sk"
+    });
+    lastKey = result.LastEvaluatedKey?.SK;
     if (result.Items !== undefined) {
-      items = items.concat(result.Items)
+      items = items.concat(result.Items);
     }
-  } while (lastKey !== undefined)
-  return items
+  } while (lastKey !== undefined);
+  return items;
 }
 
 const maxWriteRetries = 6; // Total wait time if all requests fail ~= 1.2s
@@ -70,8 +70,8 @@ async function underlyingBatchWrite(
   const output = await client
     .batchWrite({
       RequestItems: {
-        [TableName]: items,
-      },
+        [TableName]: items
+      }
     })
     .promise();
   const unprocessed = output.UnprocessedItems?.[TableName] ?? [];

@@ -11590,6 +11590,8 @@ listedAt: 1650804679
   forkedFrom: ["Compound"],
   twitter: "ape_swap",
   audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
+  parentProtocol: "ApeSwap",
+  listedAt: 1659048081
 },
 ]
 

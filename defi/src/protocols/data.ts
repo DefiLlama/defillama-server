@@ -5867,6 +5867,7 @@ const data: Protocol[] = [
     forkedFrom: ["Uniswap"],
     twitter: "ape_swap",
     audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
+    parentProtocol: "ApeSwap",
   },
   {
     id: "399",

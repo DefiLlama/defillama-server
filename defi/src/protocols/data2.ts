@@ -11527,6 +11527,28 @@ listedAt: 1650804679
   twitter: "earnifty",
   listedAt: 1659007182
 },
+{
+  id: "1938",
+  name: "MetalSwap",
+  address: "0x3E5D9D8a63CC8a88748f229999CF59487e90721e",
+  symbol: "XMT",
+  url: "https://metalswap.finance",
+  description: "MetalSwap is a decentralized platform that allows hedging swaps on financial markets with the aim of providing a coverage to those who work with commodities and an investment opportunity for those who contribute to increase the shared liquidity of the project.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/metalswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "metalswap",
+  cmcId: "15006",
+  category: "Derivatives",
+  chains: ["Ethereum", "Binance", "Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "metalswap/index.js",
+  twitter: "MetalSwapNet",
+  audit_links: ["https://www.certik.com/projects/metalswap"],
+  listedAt: 1659014862
+},
 ]
 
 

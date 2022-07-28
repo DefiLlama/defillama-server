@@ -11571,6 +11571,26 @@ listedAt: 1650804679
   audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/emp-money/EMP-Money_final-audit-report.pdf"],
   listedAt: 1659036327
 },
+{
+  id: "1940",
+  name: "ApeSwap Lending",
+  address: "bsc:0x603c7f932ed1fc6575303d8fb018fdcbb0f39a95",
+  symbol: "BANANA",
+  url: "https://apeswap.finance",
+  description: "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/apeswap-lending.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Binance"],
+  module: "apeswap-lending/index.js",
+  forkedFrom: ["Compound"],
+  twitter: "ape_swap",
+  audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
+},
 ]
 
 

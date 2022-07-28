@@ -11485,6 +11485,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/stakingkcs/skcs/blob/master/doc/blocsec-audit-report.pdf"],
   listedAt: 1658999970
 },
+{
+  id: "1936",
+  name: "Securo Finance",
+  address: null,
+  symbol: "-",
+  url: "https://securo.finance",
+  description: "Simplify crypto investing with DeFi indices Using all-in-1 dashboard and API integration",
+  chain: "Aurora",
+  logo: `${baseIconsUrl}/securo-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Indexes",
+  chains: ["Aurora", "Binance", "Avalanche", "Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "securofinance/index.js",
+  twitter: "Securo_Finance",
+  listedAt: 1659001664
+},
 ]
 
 

@@ -11549,6 +11549,28 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/metalswap"],
   listedAt: 1659014862
 },
+{
+  id: "1939",
+  name: "Emp Money",
+  address: "bsc:0x3b248CEfA87F836a4e6f6d6c9b42991b88Dc1d58",
+  symbol: "EMP",
+  url: "https://emp.money",
+  description: "EMP.Money is a revolutionary defi protocol that offers the first decentralized algorithmic coin on Binance Smartchain, pegged to the price of Ethereum via seigniorage at a rate of 4000 EMP: 1 ETH.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/emp-money.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "emp-money",
+  cmcId: "17633",
+  category: "Algo-Stables",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "emp-money/index.js",
+  twitter: "EmpMoneyBSC",
+  audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/emp-money/EMP-Money_final-audit-report.pdf"],
+  listedAt: 1659036327
+},
 ]
 
 

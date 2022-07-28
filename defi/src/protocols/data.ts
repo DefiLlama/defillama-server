@@ -17229,7 +17229,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "vwavefinance",
     audit_links: ["https://paladinsec.co/projects/vaporwave-finance"],
     oracles: ["TWAP"],
-    forkedFrom: ["Beefy Finance"],
+    forkedFrom: ["Beefy"],
     listedAt: 1638881757,
   },
   {
@@ -24561,7 +24561,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "astral.js",
   twitter: "AstralFinancial",
   oracles: ["TWAP"],
-  forkedFrom: ["Beefy Finance"],
+  forkedFrom: ["Beefy"],
   listedAt: 1643865773,
 },
 {

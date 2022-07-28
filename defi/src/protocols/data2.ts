@@ -8565,7 +8565,7 @@ listedAt: 1650804679
   chains: ["Polygon"],
   oracles: ["Chainlink"],
   forkedFrom: ["GMX"],
-  module: "metavault-trade/index.js",
+  module: "metavault.trade/index.js",
   twitter: "MetavaultTRADE",
   listedAt: 1654203519
 },

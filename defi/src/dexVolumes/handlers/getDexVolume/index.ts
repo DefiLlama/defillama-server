@@ -1,7 +1,9 @@
+import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import sluggify from "../../../utils/sluggify";
 import { getVolume, Volume, VolumeType } from "../../data/volume";
 import volumeAdapters from "../../dexAdapters";
+import { summAllVolumes } from "../../utils/volumeCalcs";
 import { IRecordVolumeData } from "../storeDexVolume";
 
 export interface VolumeHistoryItem {
@@ -22,18 +24,24 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         const volume = await getVolume(dexData.id, VolumeType.dailyVolume, "ALL")
         // This check is made to infer Volume type instead of Volume[] type
         if (volume instanceof Volume) throw new Error("Wrong volume queried")
+
+        const todaysTimestamp = getTimestampAtStartOfDayUTC((Date.now() - 1000 * 60 * 60 * 24) / 1000);
+        const todaysVolume = volume.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === todaysTimestamp)?.data
+
         dexDataResponse = {
             ...dexData,
             volumeHistory: volume.map<VolumeHistoryItem>(v => ({
                 dailyVolume: v.data,
                 timestamp: v.sk
-            }))
+            })),
+            total1dVolume: todaysVolume ? summAllVolumes(todaysVolume) : 0
         }
     } catch (error) {
         console.error(error)
         dexDataResponse = {
             ...dexData,
-            volumeHistory: null
+            volumeHistory: null,
+            total1dVolume: null,
         }
     }
 

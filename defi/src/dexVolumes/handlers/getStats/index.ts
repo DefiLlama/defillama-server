@@ -3,11 +3,8 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { sluggifyString } from "../../../utils/sluggify";
 import { getVolume, Volume, VolumeType } from "../../data/volume";
 import volumeAdapters from "../../dexAdapters";
+import getDataPoints from "../../utils/getDataPoints";
 import { VolumeHistoryItem } from "../getDexVolume";
-
-const monitorDate = new Date();
-monitorDate.setFullYear((new Date()).getFullYear() - 1)
-const DAY_IN_MILISECONDS = 86400000
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
     const dexName = event.pathParameters?.dex?.toLowerCase()
@@ -45,15 +42,5 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
 
     return successResponse(response, 10 * 60); // 10 mins cache
 };
-
-export function getDataPoints() {
-    const dataPoints = []
-    for (let day = 1; day <= 365; day++) {
-        const currTimestamp = new Date((monitorDate.getTime() + DAY_IN_MILISECONDS * day) / 1000)
-        const start = getTimestampAtStartOfDayUTC(currTimestamp.getTime())
-        dataPoints.push(start)
-    }
-    return dataPoints
-}
 
 export default wrap(handler);

@@ -2271,7 +2271,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "vesper-finance",
     cmcId: "8492",
-    category: "Yield",
+    category: "Yield Aggregator",
     chains: ["Ethereum"],
     module: "vesper/index.js",
     twitter: "VesperFi",

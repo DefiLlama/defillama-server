@@ -11463,6 +11463,28 @@ listedAt: 1650804679
   twitter: "EthClassicDAO",
   listedAt: 1658953401
 },
+{
+  id: "1935",
+  name: "sKCS",
+  address: null,
+  symbol: "-",
+  url: "https://skcs.io",
+  description: "Simplified and secure staking for KCS on KCC.",
+  chain: "KCC",
+  logo: `${baseIconsUrl}/skcs.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["KCC"],
+  oracles: [],
+  forkedFrom: [],
+  module: "skcs/index.js",
+  twitter: "sKCS_io",
+  audit_links: ["https://github.com/stakingkcs/skcs/blob/master/doc/blocsec-audit-report.pdf"],
+  listedAt: 1658999970
+},
 ]
 
 

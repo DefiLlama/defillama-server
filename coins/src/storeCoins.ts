@@ -1,5 +1,6 @@
 import adapters from "./adapters/index";
 import { batchWrite } from "./utils/shared/dynamodb";
+import { storePks, checkOutdated } from "./listCoins";
 
 export default async function runAll() {
   for (let adapter of Object.entries(adapters)) {
@@ -7,7 +8,9 @@ export default async function runAll() {
     if (Array.isArray(results[0])) {
       results = results.reduce((p: any, c: any) => [...p, ...c], []);
     }
+    storePks(results);
     batchWrite(results, true);
   }
+  checkOutdated();
 } // ts-node coins/src/storeCoins.ts
 //runAll();

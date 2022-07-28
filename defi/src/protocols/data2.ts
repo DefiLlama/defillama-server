@@ -5368,11 +5368,11 @@ const data2: Protocol[] =  [
 },
 {
   id: "1654",
-  name: "Scrub Finance",
+  name: "Scrub Money",
   address: "cronos:0x49fB98F9b4a3183Cd88e7a115144fdf00fa6fB95",
   symbol: "LION",
-  url: "https://scrub.finance",
-  description: "Scrub Finance is the first deflationary algorithmic token fork pegged to $SVN on the Cronos network with innovative new features.",
+  url: "https://scrub.money",
+  description: "Scrub Money is the first deflationary algorithmic token fork pegged to $USDC and $WBTC on the Cronos network with innovative new features.",
   chain: "Cronos",
   logo: `${baseIconsUrl}/scrub-finance.png`,
   audits: "2",
@@ -5385,7 +5385,7 @@ const data2: Protocol[] =  [
   forkedFrom: ["Tomb Finance"],
   module: "scrub/index.js",
   twitter: "ScrubFinance",
-  audit_links: ["https://scrub.finance/audit.pdf"] ,
+  audit_links: ["https://scrub.money/audit.pdf"] ,
   listedAt: 1650038462,
 },
 {

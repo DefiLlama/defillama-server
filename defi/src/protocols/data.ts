@@ -4800,7 +4800,7 @@ const data: Protocol[] = [
     module: "alpaca-finance/index.js",
     twitter: "AlpacaFinance",
     audit_links: [
-      "https://github.com/alpaca-finance/bsc-alpaca-contract/tree/main/audits",
+      "https://docs.alpacafinance.org/our-protocol-1/transparency",
     ],
   },
   {

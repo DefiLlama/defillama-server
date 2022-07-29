@@ -3,7 +3,7 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import sluggify from "../../../utils/sluggify";
 import { getVolume, Volume, VolumeType } from "../../data/volume";
 import volumeAdapters, { Dex } from "../../dexAdapters";
-import { summAllVolumes } from "../../utils/volumeCalcs";
+import { calcNdChange, summAllVolumes } from "../../utils/volumeCalcs";
 import { IRecordVolumeData } from "../storeDexVolume";
 
 export interface VolumeHistoryItem {
@@ -14,6 +14,7 @@ export interface VolumeHistoryItem {
 export interface IHandlerBodyResponse extends Dex {
     volumeHistory: VolumeHistoryItem[] | null
     total1dVolume: number | null
+    change1dVolume: number | null
 }
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
@@ -39,7 +40,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
                 dailyVolume: v.data,
                 timestamp: v.sk
             })),
-            total1dVolume: todaysVolume ? summAllVolumes(todaysVolume) : 0
+            total1dVolume: todaysVolume ? summAllVolumes(todaysVolume) : 0,
+            change1dVolume: calcNdChange(volume, 1)
         }
         dexDataResponse = ddr
     } catch (error) {
@@ -48,6 +50,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             ...dexData,
             volumeHistory: null,
             total1dVolume: null,
+            change1dVolume: null
         }
         dexDataResponse = ddr
     }

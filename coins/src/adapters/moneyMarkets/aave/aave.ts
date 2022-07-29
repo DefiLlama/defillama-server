@@ -1,14 +1,18 @@
 const abi = require("./abi.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
-import { batchGet } from "../../../utils/shared/dynamodb";
-import { addToDBWritesList } from "../../utils/database";
+import {
+  addToDBWritesList,
+  getTokenAndRedirectData
+} from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { write } from "../../utils/dbInterfaces";
 import { result } from "../../utils/sdkInterfaces";
 import { listUnknownTokens } from "../../utils/erc20";
+import getBlock from "../../utils/block";
 
 async function getReserveData(
   chain: string,
+  block: number | undefined,
   registry: string,
   version: string
 ) {
@@ -16,21 +20,24 @@ async function getReserveData(
     await call({
       target: registry,
       chain: chain as any,
-      abi: abi.getAddressesProviderList
+      abi: abi.getAddressesProviderList,
+      block
     })
   ).output;
   const lendingPool = (
     await call({
       target: addressProvider[0],
       chain: chain as any,
-      abi: abi.getPool[version.toLowerCase()]
+      abi: abi.getPool[version.toLowerCase()],
+      block
     })
   ).output;
   const reservesList = (
     await call({
       target: lendingPool,
       chain: chain as any,
-      abi: abi.getReservesList
+      abi: abi.getReservesList,
+      block
     })
   ).output;
   return (
@@ -40,7 +47,8 @@ async function getReserveData(
         params: [r]
       })),
       abi: abi.getReserveData[version.toLowerCase()],
-      chain: chain as any
+      chain: chain as any,
+      block
     })
   ).output;
 }
@@ -49,19 +57,29 @@ let unknownTokens: string[] = [];
 export default async function getTokenPrices(
   chain: string,
   registry: string,
-  version: string
+  version: string,
+  timestamp: number = 0
 ) {
-  const reserveData: result[] = await getReserveData(chain, registry, version);
+  const block: number | undefined = await getBlock(chain, timestamp);
+  const reserveData: result[] = await getReserveData(
+    chain,
+    block,
+    registry,
+    version
+  );
+
   const [underlyingRedirects, tokenInfo] = await Promise.all([
-    batchGet(
-      reserveData.map((r: result) => ({
-        PK: `asset#${chain}:${r.input.params[0].toLowerCase()}`,
-        SK: 0
-      }))
+    getTokenAndRedirectData(
+      reserveData.map((r: result) => {
+        return r.input.params[0].toLowerCase();
+      }),
+      chain,
+      timestamp
     ),
     getTokenInfo(
       chain,
-      reserveData.map((r: result) => r.output.aTokenAddress)
+      reserveData.map((r: result) => r.output.aTokenAddress),
+      block
     )
   ]);
 
@@ -75,15 +93,16 @@ export default async function getTokenPrices(
         undefined,
         tokenInfo.decimals[i].output,
         tokenInfo.symbols[i].output,
+        timestamp,
         underlyingRedirects.filter((u) =>
-          u.PK.includes(r.input.params[0].toLowerCase())
-        )[0].redirect
+          u.dbEntry.PK.includes(r.input.params[0].toLowerCase())
+        )[0].redirect[0].PK
       );
     } catch {
       unknownTokens.push(r.input.params[0].toLowerCase());
     }
   });
 
-  await listUnknownTokens(chain, unknownTokens);
+  await listUnknownTokens(chain, unknownTokens, block);
   return writes;
 }

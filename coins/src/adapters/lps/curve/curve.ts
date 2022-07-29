@@ -1,7 +1,7 @@
 const abi = require("./abi.json");
 const contracts = require("./contracts.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
-import { batchWrite } from "../../../utils/shared/dynamodb";
+import getBlock from "../../utils/block";
 import { getGasTokenBalance } from "../../utils/gasTokens";
 import { result, multicall } from "../../utils/sdkInterfaces";
 import { getTokenInfo } from "../../utils/erc20";
@@ -17,7 +17,7 @@ const registryIds = {
   crypto: 5,
   cryptoFactory: 6
 };
-async function getPools(chain: string) {
+async function getPools(chain: string, block: number | undefined) {
   const registries: string[] = (
     await multiCall({
       chain: chain as any,
@@ -25,7 +25,8 @@ async function getPools(chain: string) {
         params: r,
         target: contracts[chain].addressProvider
       })),
-      abi: abi.get_id_info
+      abi: abi.get_id_info,
+      block
     })
   ).output.map((r: any) => r.output.addr);
 
@@ -35,7 +36,8 @@ async function getPools(chain: string) {
       calls: registries.map((r: string) => ({
         target: r
       })),
-      abi: abi.pool_count
+      abi: abi.pool_count,
+      block
     })
   ).output;
 
@@ -48,7 +50,8 @@ async function getPools(chain: string) {
           params: [n]
         })),
         chain: chain as any,
-        abi: abi.pool_list
+        abi: abi.pool_list,
+        block
       })
     ).output;
   }
@@ -99,19 +102,26 @@ function aggregateBalanceCalls(coins: string[], nCoins: string[], pool: any) {
   );
   return calls;
 }
-async function poolBalances(chain: string, pool: any, registry: string) {
+async function poolBalances(
+  chain: string,
+  pool: any,
+  registry: string,
+  block: number | undefined
+) {
   const [{ output: nCoins }, { output: coins }] = await Promise.all([
     call({
       target: pool.input.target,
       params: [pool.output],
       chain: chain as any,
-      abi: abi.get_n_coins[registry]
+      abi: abi.get_n_coins[registry],
+      block
     }),
     call({
       target: pool.input.target,
       params: [pool.output],
       chain: chain as any,
-      abi: abi.get_coins[registry]
+      abi: abi.get_coins[registry],
+      block
     })
   ]);
 
@@ -121,13 +131,18 @@ async function poolBalances(chain: string, pool: any, registry: string) {
     await multiCall({
       calls: calls as any,
       chain: chain as any,
-      abi: "erc20:balanceOf"
+      abi: "erc20:balanceOf",
+      block
     })
   ).output;
 
-  return await getGasTokenBalance(chain, pool.output, balances);
+  return await getGasTokenBalance(chain, pool.output, balances, block);
 }
-async function PoolToToken(chain: string, pool: any) {
+async function PoolToToken(
+  chain: string,
+  pool: any,
+  block: number | undefined
+) {
   pool = pool.output.toLowerCase();
   let token: string;
 
@@ -136,7 +151,8 @@ async function PoolToToken(chain: string, pool: any) {
       await call({
         target: pool,
         abi: abi.lp_token,
-        chain: chain as any
+        chain: chain as any,
+        block
       })
     ).output.toLowerCase();
   } catch {
@@ -215,10 +231,15 @@ async function PoolToToken(chain: string, pool: any) {
   }
   return token;
 }
-async function getUnderlyingPrices(balances: any, chain: string) {
+async function getUnderlyingPrices(
+  balances: any,
+  chain: string,
+  timestamp: number
+) {
   const coinsData: read[] = await getTokenAndRedirectData(
     balances.map((r: result) => r.input.target.toLowerCase()),
-    chain
+    chain,
+    timestamp
   );
 
   // replace this above with our new helper f
@@ -245,20 +266,28 @@ async function getUnderlyingPrices(balances: any, chain: string) {
   return poolComponents;
 }
 let unknownTokens: string[] = [];
-export default async function getTokenPrices(chain: string) {
-  const poolList = await getPools(chain);
+export default async function getTokenPrices(
+  chain: string,
+  timestamp: number = 0
+) {
+  const block: number | undefined = await getBlock(chain, timestamp);
+  const poolList = await getPools(chain, block);
   const writes: write[] = [];
 
   for (let registry of ["stableswap", "crypto"]) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
-      const token: string = await PoolToToken(chain, pool);
+      const token: string = await PoolToToken(chain, pool, block);
       const [balances, tokenInfo] = await Promise.all([
-        poolBalances(chain, pool, registry),
-        getTokenInfo(chain, [token])
+        poolBalances(chain, pool, registry, block),
+        getTokenInfo(chain, [token], block)
       ]);
 
-      const poolTokens: any[] = await getUnderlyingPrices(balances, chain);
+      const poolTokens: any[] = await getUnderlyingPrices(
+        balances,
+        chain,
+        timestamp
+      );
       if (poolTokens.includes(undefined)) {
         continue;
       }
@@ -274,11 +303,12 @@ export default async function getTokenPrices(chain: string) {
         (poolValue * 10 ** tokenInfo.decimals[0].output) /
           tokenInfo.supplies[0].output,
         tokenInfo.decimals[0].output,
-        tokenInfo.symbols[0].output
+        tokenInfo.symbols[0].output,
+        timestamp
       );
     }
   }
 
-  await listUnknownTokens(chain, unknownTokens);
+  await listUnknownTokens(chain, unknownTokens, block);
   return writes;
 }

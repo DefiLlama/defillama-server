@@ -7,15 +7,20 @@ import {
 import { getLPInfo } from "../../utils/erc20";
 import { write, read } from "../../utils/dbInterfaces";
 import { multiCallResults } from "../../utils/sdkInterfaces";
-import { requery } from "../../utils/sdk";
 import { request, gql } from "graphql-request";
+import getBlock from "../../utils/block";
 
-async function fetchUniV2Markets(chain: string, factory: string) {
+async function fetchUniV2Markets(
+  chain: string,
+  factory: string,
+  block: number | undefined
+) {
   let pairsLength: string = (
     await call({
       target: factory,
       chain: chain as any,
-      abi: abi.allPairsLength
+      abi: abi.allPairsLength,
+      block
     })
   ).output;
 
@@ -28,38 +33,43 @@ async function fetchUniV2Markets(chain: string, factory: string) {
       target: factory,
       params: [num]
     })),
+    block,
     requery: true
   });
 
   return pairs.output.map((result) => result.output.toLowerCase());
 }
-async function fetchUniV2MarketsFromSubgraph(subgraph: string) {
+async function fetchUniV2MarketsFromSubgraph(
+  subgraph: string,
+  timestamp: number
+) {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
   for (let i = 0; i < 5; i++) {
     const lpQuery = gql`
       query lps {
-        pairs(first: 1000, orderBy: reserveUSD, orderDirection: desc ${
-          i == 0
-            ? ``
-            : `,         
-          where: {
-            reserveUSD_lt: ${reservereThreshold}
-          }`
+        pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,
+          where: {${i == 0 ? `` : `volumeUSD_lt: ${reservereThreshold}`}
+          ${timestamp == 0 ? `` : `timestamp_lt: ${timestamp.toString()}`}
         }) {
           id
-          reserveUSD
+          volumeUSD
         }
       }`;
     const result = (await request(subgraph, lpQuery)).pairs;
-    reservereThreshold = result[999].reserveUSD;
+    if (result.length < 1000) i = 5;
+    reservereThreshold = result[result.length - 1].volumeUSD;
     addresses.push(
       ...(await request(subgraph, lpQuery)).pairs.map((p: any) => p.id)
     );
   }
   return addresses;
 }
-async function fetchUniV2MarketData(chain: string, pairAddresses: string[]) {
+async function fetchUniV2MarketData(
+  chain: string,
+  pairAddresses: string[],
+  block: number | undefined
+) {
   let token0s: multiCallResults;
   let token1s: multiCallResults;
   let reserves: multiCallResults;
@@ -70,6 +80,7 @@ async function fetchUniV2MarketData(chain: string, pairAddresses: string[]) {
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
       })),
+      block,
       requery: true
     }),
     multiCall({
@@ -78,6 +89,7 @@ async function fetchUniV2MarketData(chain: string, pairAddresses: string[]) {
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
       })),
+      block,
       requery: true
     }),
     multiCall({
@@ -86,6 +98,7 @@ async function fetchUniV2MarketData(chain: string, pairAddresses: string[]) {
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
       })),
+      block,
       requery: true
     })
   ]);
@@ -125,8 +138,8 @@ async function findPriceableLPs(
         ? token0s.output[i].output.toLowerCase()
         : token1s.output[i].output.toLowerCase(),
       underlyingBalance: token1
-        ? reserves.output[i].output._reserve0
-        : reserves.output[i].output._reserve1
+        ? reserves.output[i].output._reserve1
+        : reserves.output[i].output._reserve0
     });
   }
   return priceableLPs;
@@ -134,6 +147,7 @@ async function findPriceableLPs(
 export default async function getPairPrices(
   chain: string,
   factory: string,
+  timestamp: number = 0,
   subgraph: string | undefined = undefined
 ) {
   let token0s;
@@ -141,17 +155,19 @@ export default async function getPairPrices(
   let reserves;
   let pairAddresses: string[];
 
+  const block: number | undefined = await getBlock(chain, timestamp);
   if (chain == "bsc" && subgraph == undefined) {
     return;
   } else if (chain == "bsc" && subgraph != undefined) {
-    pairAddresses = await fetchUniV2MarketsFromSubgraph(subgraph);
+    pairAddresses = await fetchUniV2MarketsFromSubgraph(subgraph, timestamp);
   } else {
-    pairAddresses = await fetchUniV2Markets(chain, factory);
+    pairAddresses = await fetchUniV2Markets(chain, factory, block);
   }
 
   [token0s, token1s, reserves] = await fetchUniV2MarketData(
     chain,
-    pairAddresses
+    pairAddresses,
+    block
   );
 
   const underlyingTokens = [
@@ -174,7 +190,7 @@ export default async function getPairPrices(
     tokenPrices
   );
 
-  const tokenInfo = await getLPInfo(chain, priceableLPs);
+  const tokenInfo = await getLPInfo(chain, priceableLPs, block);
 
   const writes: write[] = [];
   priceableLPs.map((l: any, i: number) => {
@@ -187,14 +203,15 @@ export default async function getPairPrices(
         ? coinData.redirect[0].price
         : coinData.dbEntry.price;
 
-    const lpPrice: number =
-      (underlyingPrice *
-        2 *
-        l.underlyingBalance *
-        10 ** tokenInfo.underlyingDecimals[i].output) /
-      (tokenInfo.supplies[i].output * 10 ** tokenInfo.lpDecimals[i].output);
+    const supply =
+      tokenInfo.supplies[i].output / 10 ** tokenInfo.lpDecimals[i].output;
+    const value =
+      (underlyingPrice * 2 * l.underlyingBalance) /
+      10 ** tokenInfo.underlyingDecimals[i].output;
+    const lpPrice: number = value / supply;
 
     const symbol: string = `${tokenInfo.symbolAs[i].output}-${tokenInfo.symbolBs[i].output}-${tokenInfo.lpSymbol[i].output}`;
+
     if (symbol.includes("null")) return;
     addToDBWritesList(
       writes,
@@ -202,7 +219,8 @@ export default async function getPairPrices(
       l.address,
       lpPrice,
       tokenInfo.lpDecimals[i].output,
-      symbol
+      symbol,
+      timestamp
     );
   });
 

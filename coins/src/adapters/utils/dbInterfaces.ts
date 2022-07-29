@@ -16,6 +16,7 @@ export interface dbEntry {
   redirect: string;
   price: number;
   decimals: number;
+  symbol: string;
 }
 export interface read {
   dbEntry: dbEntry;

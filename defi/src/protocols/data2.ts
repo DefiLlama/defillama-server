@@ -11601,7 +11601,7 @@ listedAt: 1650804679
   url: "https://www.lago.finance/",
   description: "The Lago Bridge is the first bridge built on the Kadena blockchain. It is bi-directional and supports wrapping ERC-20 tokens to Kadena.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/apeswap-lending.png`,
+  logo: `${baseIconsUrl}/lago-bridge.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

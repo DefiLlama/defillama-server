@@ -11593,6 +11593,26 @@ listedAt: 1650804679
   parentProtocol: "ApeSwap",
   listedAt: 1659048081
 },
+{
+  id: "1941",
+  name: "Lago Bridge",
+  address: null,
+  symbol: "-",
+  url: "https://www.lago.finance/",
+  description: "The Lago Bridge is the first bridge built on the Kadena blockchain. It is bi-directional and supports wrapping ERC-20 tokens to Kadena.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/apeswap-lending.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Ethereum"],
+  module: "lagobridge/index.js",
+  forkedFrom: [],
+  twitter: "lagofinance",
+  listedAt: 1659126091
+},
 ]
 
 

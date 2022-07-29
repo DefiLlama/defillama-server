@@ -19,7 +19,6 @@ import {
 } from "./normalizeChain";
 import type { IProtocolResponse } from "../types";
 import parentProtocols from "../protocols/parentProtocols";
-import storeNewTokensValueLocked from "../storeTvlInterval/storeNewTokensValueLocked";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (balances?.ethereum !== undefined) {
@@ -136,16 +135,18 @@ export default async function craftProtocol(
       const displayChainName = getChainDisplayName(chain, useNewChainNames);
       addToChains(response.chains, displayChainName);
       if (chain !== "tvl") {
-        response.currentChainTvls[displayChainName] = chainTvl ? Number(chainTvl.toFixed(5)) : 0;
+        response.currentChainTvls[displayChainName] = chainTvl
+          ? Number(chainTvl.toFixed(5))
+          : 0;
       }
       const container = {} as any;
 
       container.tvl = historicalUsdTvl
         ?.map((item) => ({
           date: item.SK,
-          totalLiquidityUSD: selectChainFromItem(item, chain)
-            ? Number(selectChainFromItem(item, chain).toFixed(5))
-            : null,
+          totalLiquidityUSD:
+            selectChainFromItem(item, chain) &&
+            Number(selectChainFromItem(item, chain).toFixed(5)),
         }))
         .filter(
           (item) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD
@@ -172,7 +173,7 @@ export default async function craftProtocol(
             ...container,
           };
         } else {
-          response.chainTvls[displayChainName] = container;
+          response.chainTvls[displayChainName] = { ...container };
         }
       }
     });

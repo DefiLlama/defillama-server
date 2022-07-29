@@ -126,7 +126,7 @@ const data: Protocol[] = [
     cmcId: "6859",
     category: "Yield Aggregator",
     chains: ["Ethereum", "Binance", "Polygon"],
-    module: "harvest.js",
+    module: "harvest/api.js",
     twitter: "harvest_finance",
     audit_links: [
       "https://github.com/harvest-finance/harvest/tree/master/audits",

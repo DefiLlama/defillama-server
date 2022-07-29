@@ -18,7 +18,7 @@ interface IHandlerEvent {
 
 export interface IRecordVolumeData {
   [chain: string]: {
-    [protocolVersion: string]: number | undefined | string,
+    [protocolVersion: string]: number | string,
   }
 }
 

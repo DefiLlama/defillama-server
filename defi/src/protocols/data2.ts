@@ -5799,7 +5799,7 @@ const data2: Protocol[] =  [
   chains: ["Hydra"],
   oracles: [],
   forkedFrom: [],
-  module: "hydradex.js",
+  module: "hydradex/api.js",
   twitter: "hydra_chain",
   listedAt: 1650583619
 },

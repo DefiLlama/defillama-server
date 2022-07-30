@@ -11,6 +11,6 @@ export default async function runAll() {
     storePks(results);
     batchWrite(results, true);
   }
-  checkOutdated();
+  //checkOutdated();
 } // ts-node coins/src/storeCoins.ts
 //runAll();

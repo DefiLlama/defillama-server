@@ -11,7 +11,7 @@ const summAllVolumes = (breakdownVolumes: IRecordVolumeData) =>
         , 0)
 
 const getSumAllDexsToday = (dexs: VolumeSummaryDex[]) => {
-    const todaysTimestamp = getTimestampAtStartOfDayUTC((Date.now() - 1000 * 60 * 60 * 24) / 1000);
+    const todaysTimestamp = getTimestampAtStartOfDayUTC(Date.now() / 1000);
     const timestamp1d = (new Date(todaysTimestamp * 1000)).setDate((new Date(todaysTimestamp * 1000).getDate() - 1)) / 1000
     const timestamp7d = (new Date(todaysTimestamp * 1000)).setDate((new Date(todaysTimestamp * 1000).getDate() - 7)) / 1000
     const timestamp30d = (new Date(todaysTimestamp * 1000)).setDate((new Date(todaysTimestamp * 1000).getDate() - 30)) / 1000

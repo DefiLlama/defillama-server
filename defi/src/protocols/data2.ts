@@ -11613,6 +11613,26 @@ listedAt: 1650804679
   twitter: "lagofinance",
   listedAt: 1659126091
 },
+{
+  id: "1942",
+  name: "Moon Swap",
+  address: "0x68a3637ba6e75c0f66b61a42639c4e9fcd3d4824",
+  symbol: "MOON",
+  url: "https://moonswap.fi",
+  description: "MoonSwap: High speed,0 GAS AMM DEX Based on Ethereum and Conflux.",
+  chain: "Conflux",
+  logo: `${baseIconsUrl}/moon-swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "moonswap",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Conflux"],
+  module: "moon-swap/index.js",
+  forkedFrom: ["Uniswap"],
+  twitter: "imMoonSwap",
+  listedAt: 1659175114
+},
 ]
 
 

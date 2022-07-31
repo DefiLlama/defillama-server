@@ -220,7 +220,8 @@ export default async function getPairPrices(
       lpPrice,
       tokenInfo.lpDecimals[i].output,
       symbol,
-      timestamp
+      timestamp,
+      "uniswap"
     );
   });
 

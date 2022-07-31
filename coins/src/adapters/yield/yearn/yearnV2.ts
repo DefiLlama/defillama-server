@@ -183,7 +183,8 @@ export default async function getTokenPrices(
       v.price,
       v.decimal,
       v.symbol,
-      timestamp
+      timestamp,
+      "yearnV2"
     );
   });
   return writes;

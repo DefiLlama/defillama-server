@@ -5,6 +5,7 @@ export interface write {
   symbol: string;
   decimals: number;
   redirect: string | undefined;
+  adapter: string;
 }
 export interface dbQuery {
   PK: string;

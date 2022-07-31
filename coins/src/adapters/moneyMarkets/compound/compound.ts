@@ -137,7 +137,8 @@ export default async function getTokenPrices(
       p.price / 10 ** (10 + Number(underlyingDecimals[i].output)),
       tokenInfo.decimals[i].output,
       tokenInfo.symbols[i].output,
-      timestamp
+      timestamp,
+      "compound"
     );
   });
 

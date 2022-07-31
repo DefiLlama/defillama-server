@@ -23,6 +23,7 @@ export function addToDBWritesList(
   decimals: number,
   symbol: string,
   timestamp: number,
+  adapter: string,
   redirect: string | undefined = undefined
 ) {
   if (timestamp == 0) {
@@ -34,7 +35,8 @@ export function addToDBWritesList(
           price,
           symbol,
           decimals,
-          redirect
+          redirect,
+          adapter
         },
         {
           SK: 0,
@@ -47,7 +49,8 @@ export function addToDBWritesList(
             ? {
                 timestamp: getCurrentUnixTimestamp()
               }
-            : {})
+            : {}),
+          adapter
         }
       ]
     );
@@ -61,7 +64,8 @@ export function addToDBWritesList(
       price,
       symbol,
       decimals,
-      redirect
+      redirect,
+      adapter
     });
   }
 }

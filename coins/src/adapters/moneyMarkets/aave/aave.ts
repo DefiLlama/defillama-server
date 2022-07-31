@@ -94,6 +94,7 @@ export default async function getTokenPrices(
         tokenInfo.decimals[i].output,
         tokenInfo.symbols[i].output,
         timestamp,
+        "aave",
         underlyingRedirects.filter((u) =>
           u.dbEntry.PK.includes(r.input.params[0].toLowerCase())
         )[0].redirect[0].PK

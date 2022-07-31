@@ -8,9 +8,9 @@ export default async function runAll() {
     if (Array.isArray(results[0])) {
       results = results.reduce((p: any, c: any) => [...p, ...c], []);
     }
-    storePks(results);
-    batchWrite(results, true);
+    //storePks(results);
+    await batchWrite(results, true);
   }
-  checkOutdated();
+  //checkOutdated();
 } // ts-node coins/src/storeCoins.ts
-//runAll();
+runAll();

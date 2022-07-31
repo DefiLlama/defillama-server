@@ -304,7 +304,8 @@ export default async function getTokenPrices(
           tokenInfo.supplies[0].output,
         tokenInfo.decimals[0].output,
         tokenInfo.symbols[0].output,
-        timestamp
+        timestamp,
+        "curve"
       );
     }
   }

@@ -35,8 +35,7 @@ export function addToDBWritesList(
           price,
           symbol,
           decimals,
-          redirect,
-          adapter
+          redirect
         },
         {
           SK: 0,
@@ -64,8 +63,7 @@ export function addToDBWritesList(
       price,
       symbol,
       decimals,
-      redirect,
-      adapter
+      redirect
     });
   }
 }

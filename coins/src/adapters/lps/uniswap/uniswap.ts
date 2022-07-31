@@ -147,8 +147,8 @@ async function findPriceableLPs(
 export default async function getPairPrices(
   chain: string,
   factory: string,
-  timestamp: number = 0,
-  subgraph: string | undefined = undefined
+  subgraph: string | undefined = undefined,
+  timestamp: number = 0
 ) {
   let token0s;
   let token1s;

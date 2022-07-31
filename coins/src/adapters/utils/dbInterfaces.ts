@@ -1,11 +1,11 @@
 export interface write {
   SK: number;
   PK: string;
-  price: number | undefined;
+  price?: number;
   symbol: string;
   decimals: number;
-  redirect: string | undefined;
-  adapter: string;
+  redirect?: string;
+  adapter?: string;
 }
 export interface dbQuery {
   PK: string;

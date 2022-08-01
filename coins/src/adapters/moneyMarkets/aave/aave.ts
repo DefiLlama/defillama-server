@@ -58,7 +58,7 @@ export default async function getTokenPrices(
   chain: string,
   registry: string,
   version: string,
-  timestamp: number = 0
+  timestamp: number
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const reserveData: result[] = await getReserveData(

@@ -143,10 +143,7 @@ async function pushMoreVaults(
   }));
   vaults.push(...vaultInfo);
 }
-export default async function getTokenPrices(
-  chain: string,
-  timestamp: number = 0
-) {
+export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
   let vaults: vaultKeys[] = (
     await axios.get(

@@ -6,7 +6,7 @@ import { write, dbEntry, redirect, dbQuery } from "./dbInterfaces";
 export async function getTokenAndRedirectData(
   tokens: string[],
   chain: string,
-  timestamp: number = 0
+  timestamp: number
 ) {
   if (timestamp == 0) {
     return await getTokenAndRedirectDataCurrent(tokens, chain, timestamp);

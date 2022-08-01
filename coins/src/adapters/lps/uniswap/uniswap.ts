@@ -148,7 +148,7 @@ export default async function getPairPrices(
   chain: string,
   factory: string,
   subgraph: string | undefined = undefined,
-  timestamp: number = 0
+  timestamp: number
 ) {
   let token0s;
   let token1s;
@@ -179,7 +179,8 @@ export default async function getPairPrices(
 
   const tokenPrices = await getTokenAndRedirectData(
     Array.from(underlyingTokens),
-    chain
+    chain,
+    timestamp
   );
 
   const priceableLPs = await findPriceableLPs(

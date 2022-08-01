@@ -11633,6 +11633,26 @@ listedAt: 1650804679
   twitter: "imMoonSwap",
   listedAt: 1659175114
 },
+{
+  id: "1943",
+  name: "KordFi",
+  address: null,
+  symbol: "-",
+  url: "https://kord.fi/",
+  description: "Kord.Fi is a lending and levered farming DeFi protocol on Tezos",
+  chain: "Tezos",
+  logo: `${baseIconsUrl}/kordfi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Tezos"],
+  module: "kordfi/index.js",
+  forkedFrom: ["Uniswap"],
+  twitter: "kord_fi",
+  listedAt: 1659369461
+},
 ]
 
 

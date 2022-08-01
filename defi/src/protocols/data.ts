@@ -742,7 +742,7 @@ const data: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: "uma",
-    cmcId: "5617",
+    cmcId: null,
     category: "Synthetics",
     oracles: ["UMA"],
     chains: ["Ethereum"],

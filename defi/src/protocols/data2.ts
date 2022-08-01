@@ -3486,8 +3486,8 @@ const data2: Protocol[] =  [
 {
   id: "1568",
   name: "Kaddex",
-  address: null ,
-  symbol: "-",
+  address: "kadena:-" ,
+  symbol: "KDX",
   url: "https://kaddex.com/",
   description: "Kaddex the evolution of DeFi on Kadena.",
   chain: "Kadena",

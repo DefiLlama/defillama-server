@@ -1,6 +1,4 @@
 import BigNumber from "bignumber.js";
-import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
-import {secondsBetweenCallsExtra} from '../utils/date'
 import fetch from "node-fetch";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
@@ -19,8 +17,17 @@ export default async function (balances: { [address: string]: string }, timestam
   const PKsToTokens = {} as { [t: string]: string[] };
   const readKeys = Object.keys(balances)
     .map((address) => {
-      const PK = `${timestamp === "now"?"":"asset#"}${address.startsWith("0x") ? "ethereum:" : ""
-        }${address.toLowerCase()}`;
+      let prefix = "";
+      if(address.startsWith("0x")){
+        prefix = "ethereum:"
+      } else if(!address.includes(":")){
+        prefix = "coingecko:"
+      }
+      let normalizedAddress = address.toLowerCase()
+      if(address.startsWith("solana:")){
+        normalizedAddress = address
+      }
+      const PK = `${prefix}${normalizedAddress}`;
       if (PKsToTokens[PK] === undefined) {
         PKsToTokens[PK] = [address];
         return PK;
@@ -32,12 +39,16 @@ export default async function (balances: { [address: string]: string }, timestam
     .filter((item) => item !== undefined) as string[];
   const readRequests = [];
   for (let i = 0; i < readKeys.length; i += 100) {
+    const body = {
+      "coins": readKeys.slice(i, i + 100),
+    } as any
+    if(timestamp !== "now"){
+      body.timestamp = timestamp;
+    }
     readRequests.push(
       fetch("https://coins.llama.fi/prices", {
         method: "POST",
-        body: JSON.stringify({
-          "coins": readKeys.slice(i, i + 100)
-        })
+        body: JSON.stringify(body)
       }).then((r) => r.json()).then(r=>{
         return Object.entries(r.coins).map(
         ([PK, value])=>({
@@ -48,20 +59,7 @@ export default async function (balances: { [address: string]: string }, timestam
     })
     );
   }
-  let tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)));
-  if (timestamp !== "now") {
-    const historicalPrices = await Promise.all(readKeys.map(key => getTVLOfRecordClosestToTimestamp(key, timestamp, secondsBetweenCallsExtra)))
-    tokenData = historicalPrices.map(t => {
-      const current = tokenData.find(current => current.PK === t.PK)
-      return {
-        timestamp: t.SK,
-        price: t.price,
-        decimals: current?.decimals,
-        symbol: current?.symbol,
-        PK: t.PK,
-      }
-    }).filter(t => t.timestamp !== undefined && t.decimals !== undefined)
-  }
+  const tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)));
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
   const usdTokenBalances = {} as Balances;
@@ -71,16 +69,15 @@ export default async function (balances: { [address: string]: string }, timestam
       PKsToTokens[response.PK].forEach((address) => {
         const balance = balances[address];
         const { price, decimals } = response;
-        let symbol:string, amount:number, usdAmount:number;
-        if (response.PK.includes(':')) {
+        let symbol:string, amount:number;
+        if (response.PK.startsWith('coingecko:')) {
+          symbol = address;
+          amount = Number(balance);
+        } else {
           symbol = (response.symbol as string).toUpperCase();
           amount = new BigNumber(balance).div(10 ** decimals).toNumber();
-          usdAmount = amount * price;
-        } else {
-          symbol = response.PK.slice('asset#'.length);
-          amount = Number(balance);
-          usdAmount = amount * price;
         }
+        const usdAmount = amount * price;
         tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
         usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
         usdTvl += usdAmount;

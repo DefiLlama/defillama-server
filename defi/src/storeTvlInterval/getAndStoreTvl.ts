@@ -41,9 +41,7 @@ async function getTvl(
   tvlFunction: any,
   isFetchFunction: boolean,
   storedKey: string,
-  maxRetries: number,
-  knownTokenPrices?: TokenPrices,
-  getCoingeckoLock?: () => Promise<unknown>,
+  maxRetries: number
 ) {
   for (let i = 0; i < maxRetries; i++) {
     try {
@@ -54,22 +52,10 @@ async function getTvl(
           chainBlocks
         );
         const isStandard = Object.entries(tvlBalances).every(
-          (balance) =>
-            balance[0].includes("0x") && typeof balance[1] === "string"
+          (balance) => typeof balance[1] === "string"
         ); // Can't use stored prices because coingecko has undocumented aliases which we realy on (eg: busd -> binance-usd)
         let tvlPromise: ReturnType<typeof util.computeTVL>;
-        if (isStandard && (useCurrentPrices || unixTimestamp > 1626000000)) { // July 11
-          tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp);
-        } else {
-          tvlPromise = util.computeTVL(
-            tvlBalances,
-            useCurrentPrices ? "now" : unixTimestamp,
-            false,
-            knownTokenPrices,
-            getCoingeckoLock,
-            10
-          );
-        }
+        tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp);
         const tvlResults = await tvlPromise;
         usdTvls[storedKey] = tvlResults.usdTvl;
         tokensBalances[storedKey] = tvlResults.tokenBalances;
@@ -133,9 +119,9 @@ export async function storeTvl(
   chainBlocks: ChainBlocks,
   protocol: Protocol,
   module: any,
-  knownTokenPrices?: TokenPrices,
+  _knownTokenPrices?: TokenPrices, // TODO: remove unused
   maxRetries: number = 1,
-  getCoingeckoLock?: () => Promise<unknown>,
+  _getCoingeckoLock?: () => Promise<unknown>, // TODO: remove unused
   storePreviousData: boolean = true,
   useCurrentPrices: boolean = true,
   breakIfTvlIsZero: boolean = false,
@@ -172,7 +158,7 @@ export async function storeTvl(
         }
         const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, knownTokenPrices, getCoingeckoLock)
+          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries)
         let keyToAddChainBalances = tvlType;
         if(tvlType === "tvl" || tvlType === "fetch"){
           keyToAddChainBalances = "tvl"
@@ -194,7 +180,7 @@ export async function storeTvl(
         mainTvlIsFetch = true
       }
       const mainTvlPromise = getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-        usdTokenBalances, rawTokenBalances, mainTvlIsFetch ? module.fetch : module.tvl, mainTvlIsFetch, 'tvl', maxRetries, knownTokenPrices, getCoingeckoLock)
+        usdTokenBalances, rawTokenBalances, mainTvlIsFetch ? module.fetch : module.tvl, mainTvlIsFetch, 'tvl', maxRetries)
       tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
     }
     await Promise.all(tvlPromises)

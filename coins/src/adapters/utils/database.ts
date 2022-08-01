@@ -34,7 +34,7 @@ export function addToDBWritesList(
           PK: `asset#${chain}:${token}`,
           price,
           symbol,
-          decimals,
+          decimals: Number(decimals),
           redirect
         },
         {
@@ -42,7 +42,7 @@ export function addToDBWritesList(
           PK: `asset#${chain}:${token}`,
           price,
           symbol,
-          decimals,
+          decimals: Number(decimals),
           redirect,
           ...(price !== undefined
             ? {
@@ -62,7 +62,7 @@ export function addToDBWritesList(
       PK: `asset#${chain}:${token}`,
       price,
       symbol,
-      decimals,
+      decimals: Number(decimals),
       redirect
     });
   }

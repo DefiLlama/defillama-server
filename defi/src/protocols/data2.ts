@@ -11649,7 +11649,8 @@ listedAt: 1650804679
   category: "Yield",
   chains: ["Tezos"],
   module: "kordfi/index.js",
-  forkedFrom: ["Uniswap"],
+  oracles: ["Ubinetic"],
+  forkedFrom: [],
   twitter: "kord_fi",
   listedAt: 1659369461
 },

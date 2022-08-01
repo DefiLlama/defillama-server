@@ -603,9 +603,9 @@ const data: Protocol[] = [
   },
   {
     id: "135",
-    name: "Kava",
+    name: "Kava Mint",
     address: null,
-    symbol: "KAVA",
+    symbol: "-",
     url: "https://www.kava.io/",
     description:
       "Kava.io is the first cross-chain DeFi hub providing applications and services to the worlds largest cryptocurrencies.",
@@ -613,8 +613,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/kava.png`,
     audits: null,
     audit_note: null,
-    gecko_id: "kava",
-    cmcId: "4846",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Kava"],
     module: "kava.js",

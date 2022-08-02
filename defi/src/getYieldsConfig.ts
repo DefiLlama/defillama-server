@@ -14,7 +14,8 @@ const handler = async (
                 audit_links: p.audit_links,
                 url: p.url,
                 twitter: p.twitter,
-                category: p.category
+                category: p.category,
+                symbol: p.symbol,
             }
         }), {}),
     });

@@ -7,6 +7,7 @@ import {
   releaseCoingeckoLock,
 } from "../utils/shared/coingeckoLocks";
 import { importAdapter } from "./utils/importAdapter";
+import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
 
 const main = async () => {
   const protocolToFill = process.argv[2]
@@ -31,6 +32,6 @@ const main = async () => {
     true,
     true,
   );
-  console.log("TVL", tvl)
+  console.log("TVL", typeof tvl === "number" ? humanizeNumber(tvl):tvl)
 };
 main();

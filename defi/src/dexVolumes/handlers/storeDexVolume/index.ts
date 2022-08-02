@@ -18,9 +18,11 @@ interface IHandlerEvent {
 
 export interface IRecordVolumeData {
   [chain: string]: {
-    [protocolVersion: string]: number | undefined | string,
+    [protocolVersion: string]: number | string,
   }
 }
+
+const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
 
 export const handler = async (event: IHandlerEvent) => {
   // Timestamp to query, defaults current timestamp - 10 min
@@ -64,12 +66,12 @@ export const handler = async (event: IHandlerEvent) => {
             })
         }
         const volumesRejected: IAllSettledRejection[] = runAdapterRes.filter(rar => rar.status === 'rejected').map(r => r.status === "rejected" && r.reason) as IAllSettledRejection[]
-        processRejectedPromises(volumesRejected, rawDailyVolumes)
+        processRejectedPromises(volumesRejected, rawDailyVolumes, volumeAdapter)
       } else if ("breakdown" in dexAdapter) {
         const dexBreakDownAdapter = dexAdapter.breakdown
         const volumeAdapters = Object.entries(dexBreakDownAdapter)
-        for (const [version, volumeAdapter] of volumeAdapters) {
-          const runAdapterRes = await runAdapter(id, volumeAdapter)
+        for (const [version, volumeAdapterObj] of volumeAdapters) {
+          const runAdapterRes = await runAdapter(id, volumeAdapterObj)
           const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
           for (const volume of volumes) {
             if (volume && volume.result.dailyVolume) {
@@ -81,7 +83,7 @@ export const handler = async (event: IHandlerEvent) => {
             }
           }
           const volumesRejected: IAllSettledRejection[] = runAdapterRes.filter(rar => rar.status === 'rejected').map(r => r.status === "rejected" && r.reason) as IAllSettledRejection[]
-          processRejectedPromises(volumesRejected, rawDailyVolumes)
+          processRejectedPromises(volumesRejected, rawDailyVolumes, volumeAdapter)
         }
       } else {
         console.error("Invalid adapter")
@@ -99,7 +101,8 @@ export const handler = async (event: IHandlerEvent) => {
       await storeVolume(new Volume(VolumeType.dailyVolume, id, fetchCurrentDayTimestamp, dailyVolumes))
     }
     catch (error) {
-      console.error(`DEXERROR:${volumeAdapter}: ${JSON.stringify(error)}`)
+      const err = error as Error
+      console.error(`${STORE_DEX_VOLUME_ERROR}:${volumeAdapter}: ${err.message}`)
       console.error(error)
       throw error
     }
@@ -115,9 +118,9 @@ interface IAllSettledRejection {
   chain: string
   error: Error
 }
-function processRejectedPromises(volumesRejected: IAllSettledRejection[], rawDailyVolumes: IRecordVolumeData[]) {
+function processRejectedPromises(volumesRejected: IAllSettledRejection[], rawDailyVolumes: IRecordVolumeData[], dexName: string) {
   for (const rejVolumes of volumesRejected) {
-    console.error(`Rejected volume: ${JSON.stringify(rejVolumes)}\n ID: ${rejVolumes.id}\n TIMESTAMP: ${rejVolumes.timestamp}`)
+    console.error(`${STORE_DEX_VOLUME_ERROR}:${dexName}:Rejected volume: ${JSON.stringify(rejVolumes)}\n ID: ${rejVolumes.id}\n TIMESTAMP: ${rejVolumes.timestamp}`)
     if (rejVolumes)
       rawDailyVolumes.push({
         [rejVolumes.chain]: {

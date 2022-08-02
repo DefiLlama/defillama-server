@@ -45,5 +45,4 @@ async function main() {
     await runAll(timestamps[i]);
   }
 }
-//main();
-//runAll();
+runAll();

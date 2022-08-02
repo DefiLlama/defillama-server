@@ -30,8 +30,8 @@ const deleteOverlapping = async () => {
         TableName,
         Key: {
           PK,
-          SK,
-        },
+          SK
+        }
       })
       .promise();
     await client
@@ -40,8 +40,8 @@ const deleteOverlapping = async () => {
         Item: {
           PK,
           SK: newSK,
-          tvl,
-        },
+          tvl
+        }
       })
       .promise();
   }
@@ -56,8 +56,8 @@ const deleteAtTime = async () => {
         TableName,
         Key: {
           PK,
-          SK,
-        },
+          SK
+        }
       })
       .promise();
   }
@@ -65,15 +65,18 @@ const deleteAtTime = async () => {
 
 const searchInterval = 3600 * 5; // 5 hrs
 function getTVLOfRecordClosestToTimestamp(PK: string, timestamp: number) {
+  console.log("DEBUG");
+  console.log(timestamp);
+  console.log(searchInterval);
   return client
     .query({
       TableName,
       ExpressionAttributeValues: {
         ":pk": PK,
         ":begin": timestamp - searchInterval,
-        ":end": timestamp + searchInterval,
+        ":end": timestamp + searchInterval
       },
-      KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end",
+      KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end"
     })
     .promise()
     .then((records) => {
@@ -106,8 +109,8 @@ async function fillDailyGaps() {
           Item: {
             PK,
             SK: getClosestDayStartTimestamp(hourlyItem.SK),
-            tvl: hourlyItem.tvl,
-          },
+            tvl: hourlyItem.tvl
+          }
         })
         .promise();
     }

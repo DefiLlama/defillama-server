@@ -893,12 +893,12 @@ export const chainCoingeckoIds = {
     cmcId: "1831",
   },
   "Litecoin": {
-    geckoId: "coti",
+    geckoId: "litecoin",
     symbol: "LTC",
     cmcId: "2",
   },
   "Doge": {
-    geckoId: "coti",
+    geckoId: "dogecoin",
     symbol: "DOGE",
     cmcId: "74",
   },

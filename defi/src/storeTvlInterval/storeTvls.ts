@@ -1,11 +1,11 @@
 import { storeTvl } from "./getAndStoreTvl";
 import { getCurrentBlocks } from "./blocks";
 import { getCoingeckoLock, releaseCoingeckoLock } from "../utils/shared/coingeckoLocks";
-import { TokenPrices } from "../types";
 import protocols from "../protocols/data";
 import { importAdapter } from "../utils/imports/importAdapter";
 import { executeAndIgnoreErrors } from "./errorDb";
 import { getCurrentUnixTimestamp } from "../utils/date";
+import { storeStaleCoins, StaleCoins } from "./staleCoins";
 
 const maxRetries = 4;
 const millisecondsBeforeLambdaEnd = 30e3; // 30s
@@ -17,7 +17,7 @@ export default async (protocolIndexes:number[], getRemainingTimeInMillis:()=>num
   const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlocks();
   clearTimeout(blocksTimeout)
   
-  const knownTokenPrices = {} as TokenPrices;
+  const staleCoins: StaleCoins = {};
   const actions = protocolIndexes
     .map(idx=>protocols[idx])
     .map((protocol) =>{
@@ -31,9 +31,9 @@ export default async (protocolIndexes:number[], getRemainingTimeInMillis:()=>num
         chainBlocks,
         protocol,
         adapterModule,
-        knownTokenPrices,
+        staleCoins,
         maxRetries,
-        getCoingeckoLock
+        getCoingeckoLock,
       ).then(()=>clearTimeout(protocolTimeout))
     });
   const timer = setInterval(() => {
@@ -43,5 +43,6 @@ export default async (protocolIndexes:number[], getRemainingTimeInMillis:()=>num
   }, 600);
   await Promise.all(actions);
   clearInterval(timer);
+  await storeStaleCoins(staleCoins)
   return;
 };

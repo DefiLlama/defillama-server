@@ -65,6 +65,30 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "incrementfi",
+  },
+  {
+    id: "podsFinance",
+    name: "Pods",
+    url: "https://www.pods.finance/",
+    description:
+      "Buliding DeFi, Strategies, primitives and tooling. Welcome to Pods.",
+    logo: `${baseIconsUrl}/pods-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PodsFinance",
+  },
+  {
+    id: "ApeSwap",
+    name: "ApeSwap",
+    url: "https://apeswap.finance",
+    description:
+      "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way",
+    logo: `${baseIconsUrl}/apeswap.png`,
+    gecko_id: "apeswap-finance",
+    cmcId: "8497",
+    chains: [],
+    twitter: "ape_swap",
   }
 ];
 

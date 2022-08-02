@@ -7,7 +7,6 @@ export default function(){
 }
 
 async function runAll(timestamp:number) {
-  console.log("entering runAll()");
   let promises = Object.entries(adapters).map((a: any) => {
     return a[1][a[0]](timestamp);
     // .catch(

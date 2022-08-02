@@ -75,6 +75,7 @@ async function getTokenAndRedirectDataHistorical(
   // timestamped origin entries
   let timedDbEntries: any[] = await Promise.all(
     tokens.map((t: string) => {
+      console.log(`DEBUG C ${timestamp}`);
       return getTVLOfRecordClosestToTimestamp(
         `asset#${chain}:${t}`,
         timestamp,

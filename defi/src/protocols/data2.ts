@@ -11654,6 +11654,27 @@ listedAt: 1650804679
   twitter: "kord_fi",
   listedAt: 1659369461
 },
+{
+  id: "1944",
+  name: "Carthage DEX",
+  address: null,
+  symbol: "-",
+  url: "https://app.carthagedex.com",
+  description: "CarthageDEX is a fork of uniswap deployed on Candle.",
+  chain: "Candle",
+  logo: `${baseIconsUrl}/carthage-dex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Candle"],
+  module: "carthage/index.ts",
+  oracles: ["Chainlink"],
+  forkedFrom: ["Uniswap"],
+  twitter: "carthage_dex",
+  listedAt: 1659433923
+},
 ]
 
 

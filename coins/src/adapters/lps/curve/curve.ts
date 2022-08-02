@@ -271,6 +271,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const poolList = await getPools(chain, block);
   const writes: write[] = [];
 
+  let catches = 0;
   for (let registry of ["stableswap", "crypto"]) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
@@ -315,11 +316,12 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
           "curve"
         );
       } catch {
-        console.log(pool);
+        catches += 1;
+        //console.log(pool);
       }
     }
   }
-
+  console.log(`${catches} errored pools`);
   await listUnknownTokens(chain, unknownTokens, block);
   return writes;
 }

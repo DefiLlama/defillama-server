@@ -2,7 +2,8 @@ import adapters from "./adapters/index";
 import { batchWrite } from "./utils/shared/dynamodb";
 import { storePks, checkOutdated } from "./listCoins";
 console.log("entering storeCoins.ts");
-export default async function runAll(timestamp: number = 0) {
+export default async function runAll() {
+  const timestamp = 0;
   console.log("entering runAll()");
   let promises = Object.entries(adapters).map((a: any) => {
     return Promise.resolve(a[1][a[0]](timestamp));
@@ -32,6 +33,7 @@ export default async function runAll(timestamp: number = 0) {
   console.log(`written data for timestamp ${timestamp} to DB`);
 } // ts-node coins/src/storeCoins.ts
 
+/*
 async function main() {
   const timestamps = [
     // 1658962800,
@@ -52,3 +54,4 @@ async function main() {
   }
 }
 runAll();
+*/

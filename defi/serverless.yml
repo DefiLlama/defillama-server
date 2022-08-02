@@ -83,6 +83,7 @@ provider:
     FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
     DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
     MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
+    STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -340,6 +341,12 @@ functions:
     memorySize: 1024
     events:
       - schedule: cron(*/30 * * * ? *)
+  notifyStaleCoins:
+    handler: src/notifyStaleCoins.default
+    timeout: 900
+    memorySize: 1024
+    events:
+      - schedule: cron(30 * * * ? *)
   fetchCoingeckoData:
     handler: src/fetchCoingeckoData.default
     timeout: 900

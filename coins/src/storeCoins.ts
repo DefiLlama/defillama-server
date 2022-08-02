@@ -8,7 +8,7 @@ export default async function runAll() {
     if (Array.isArray(results[0])) {
       results = results.reduce((p: any, c: any) => [...p, ...c], []);
     }
-    await storePks(results);
+    //await storePks(results);
     await batchWrite(results, true);
   }))
   //checkOutdated();

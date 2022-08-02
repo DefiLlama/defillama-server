@@ -11669,7 +11669,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["Candle"],
-  module: "carthage/index.ts",
+  module: "carthage/index.js",
   oracles: ["Chainlink"],
   forkedFrom: ["Uniswap"],
   twitter: "carthage_dex",

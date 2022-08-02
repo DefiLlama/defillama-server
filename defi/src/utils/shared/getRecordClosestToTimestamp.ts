@@ -5,19 +5,23 @@ export default async function getTVLOfRecordClosestToTimestamp(
   timestamp: number,
   searchWidth: number
 ) {
+  console.log("DEBUG:");
+  console.log(timestamp);
+  console.log(searchWidth);
+  console.log(timestamp - searchWidth);
   return dynamodb
     .query({
       ExpressionAttributeValues: {
         ":pk": PK,
         ":begin": timestamp - searchWidth,
-        ":end": timestamp + searchWidth,
+        ":end": timestamp + searchWidth
       },
-      KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end",
+      KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end"
     })
     .then((records) => {
       if (records.Items == undefined || records.Items.length == 0) {
         return {
-          SK: undefined,
+          SK: undefined
         };
       }
       let closest = records.Items[0];

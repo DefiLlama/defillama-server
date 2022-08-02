@@ -37,10 +37,13 @@ async function main() {
     // 1659222000,
     // 1659265200,
     // 1659308400,
-    1659351600
+    // 1659351600
+    1659394800,
+    1659428583
   ];
   for (let i = 0; i < timestamps.length; i++) {
     await runAll(timestamps[i]);
   }
 }
 //main();
+//runAll();

@@ -5,13 +5,18 @@ console.log("entering storeCoins.ts");
 export default async function runAll(timestamp: number = 0) {
   console.log("entering runAll()");
   let promises = Object.entries(adapters).map((a: any) => {
-    return Promise.resolve(a[1][a[0]](timestamp)).catch(
-      () => `adapter for ${a[0]} has failed`
-    );
+    return Promise.resolve(a[1][a[0]](timestamp));
+    // .catch(
+    //   () => `adapter for ${a[0]} has failed`
+    // );
   });
   let results = await Promise.all(promises);
   for (let i = 0; i < results.length; i++) {
-    if (typeof results[i] == "string") new Error(results[i]);
+    if (typeof results[i] == "string") {
+      new Error(results[i]);
+    } else {
+      console.log(`${results[i].length} ${Object.keys(adapters)[i]} entries`);
+    }
   }
   results = results
     .filter((r: any) => r.length > 0 && typeof r != "string")
@@ -23,7 +28,7 @@ export default async function runAll(timestamp: number = 0) {
         return [...p, c];
       }
     }, []);
-  console.log("writing");
+  console.log(`writing ${results.length} results to DB`);
   await batchWrite(results, true);
   console.log(`written data for timestamp ${timestamp} to DB`);
 } // ts-node coins/src/storeCoins.ts

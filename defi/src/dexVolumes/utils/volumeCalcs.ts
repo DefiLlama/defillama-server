@@ -31,9 +31,9 @@ const getSumAllDexsToday = (dexs: VolumeSummaryDex[]) => {
     }
     return {
         totalVolume,
-        changeVolume1d: ((totalVolume - totalVolume1d) / totalVolume1d) * 100,
-        changeVolume7d: ((totalVolume - totalVolume7d) / totalVolume7d) * 100,
-        changeVolume30d: ((totalVolume - totalVolume30d) / totalVolume30d) * 100,
+        changeVolume1d: formatNdChangeNumber(((totalVolume - totalVolume1d) / totalVolume1d) * 100),
+        changeVolume7d: formatNdChangeNumber(((totalVolume - totalVolume7d) / totalVolume7d) * 100),
+        changeVolume30d: formatNdChangeNumber(((totalVolume - totalVolume30d) / totalVolume30d) * 100),
     }
 }
 
@@ -61,7 +61,15 @@ const calcNdChange = (volumes: Volume[], nDaysChange: number) => {
     const volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
     totalVolume += todaysVolume ? summAllVolumes(todaysVolume) : 0
     totalVolumeNd += volumeNd ? summAllVolumes(volumeNd) : 0
-    return (totalVolume - totalVolumeNd) / totalVolumeNd * 100
+    return formatNdChangeNumber((totalVolume - totalVolumeNd) / totalVolumeNd * 100)
+}
+
+const formatNdChangeNumber = (number: number) => {
+    if (number === Number.POSITIVE_INFINITY)
+        number = 100
+    if (number === Number.NEGATIVE_INFINITY)
+        number = -100
+    return Math.round((number + Number.EPSILON) * 100) / 100
 }
 
 export {

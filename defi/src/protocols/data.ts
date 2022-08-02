@@ -1897,7 +1897,7 @@ const data: Protocol[] = [
   {
     id: "202",
     name: "Saddle Finance",
-    address: "-",
+    address: "0xf1dc500fde233a4055e25e5bbf516372bc4f6871",
     symbol: "SDL",
     url: "https://saddle.finance/",
     description:

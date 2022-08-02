@@ -1,11 +1,14 @@
 import adapters from "./adapters/index";
 import { batchWrite } from "./utils/shared/dynamodb";
 import { storePks, checkOutdated } from "./listCoins";
-console.log("entering storeCoins.ts");
-export default async function runAll(timestamp: number = 0) {
-  console.log("entering runAll()");
+
+export default function(){
+  return runAll(0);
+}
+
+async function runAll(timestamp:number) {
   let promises = Object.entries(adapters).map((a: any) => {
-    return Promise.resolve(a[1][a[0]](timestamp));
+    return a[1][a[0]](timestamp);
     // .catch(
     //   () => `adapter for ${a[0]} has failed`
     // );
@@ -51,4 +54,3 @@ async function main() {
     await runAll(timestamps[i]);
   }
 }
-runAll();

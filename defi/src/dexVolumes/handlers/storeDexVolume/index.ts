@@ -25,8 +25,8 @@ export interface IRecordVolumeData {
 const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
 
 export const handler = async (event: IHandlerEvent) => {
-  // Timestamp to query, defaults current timestamp - 10 min
-  const currentTimestamp = event.timestamp || (Date.now() - 1000 * 60 * 10) / 1000;
+  // Timestamp to query, defaults current timestamp
+  const currentTimestamp = event.timestamp || (Date.now()) / 1000;
   // Get clean day
   const fetchCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
 

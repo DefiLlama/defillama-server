@@ -36,8 +36,13 @@ export function aave(timestamp: number = 0) {
     )
   ]);
 }
-export function geist() {
+export function geist(timestamp: number = 0) {
   return Promise.all([
-    getTokenPrices("fantom", "0x4CF8E50A5ac16731FA2D8D9591E195A285eCaA82", "v2")
+    getTokenPrices(
+      "fantom",
+      "0x4CF8E50A5ac16731FA2D8D9591E195A285eCaA82",
+      "v2",
+      timestamp
+    )
   ]);
 }

@@ -315,7 +315,6 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
           "curve"
         );
       } catch {
-        console.log("fuck off!!!");
         console.log(pool);
       }
     }

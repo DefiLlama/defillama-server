@@ -12,22 +12,21 @@ export default async function runAll(timestamp: number = 0) {
   });
   let results = await Promise.all(promises);
   for (let i = 0; i < results.length; i++) {
-    if (typeof results[i] == "string") {
-      new Error(results[i]);
-    } else {
-      console.log(`${results[i].length} ${Object.keys(adapters)[i]} entries`);
-    }
+    if (typeof results[i] == "string") new Error(results[i]);
   }
   results = results
     .filter((r: any) => r.length > 0 && typeof r != "string")
-    .reduce((p: any, c: any) => [...p, ...c], [])
-    .reduce((p: any, c: any) => {
-      if (Array.isArray(c)) {
-        return [...p, ...c];
-      } else {
-        return [...p, c];
-      }
-    }, []);
+    .reduce((p: any, c: any) => [...p, ...c], []);
+  for (let i = 0; i < results.length; i++) {
+    console.log(`${results[i].length} ${Object.keys(adapters)[i]} entries`);
+  }
+  results = results.reduce((p: any, c: any) => {
+    if (Array.isArray(c)) {
+      return [...p, ...c];
+    } else {
+      return [...p, c];
+    }
+  }, []);
   console.log(`writing ${results.length} results to DB`);
   await batchWrite(results, true);
   console.log(`written data for timestamp ${timestamp} to DB`);

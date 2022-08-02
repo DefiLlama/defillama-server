@@ -1,5 +1,6 @@
 import BigNumber from "bignumber.js";
 import fetch from "node-fetch";
+import { addStaleCoin, StaleCoins } from "./staleCoins";
 
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
@@ -8,7 +9,7 @@ type Balances = {
   [symbol: string]: number;
 };
 
-export default async function (balances: { [address: string]: string }, timestamp: "now" | number) {
+export default async function (balances: { [address: string]: string }, timestamp: "now" | number, staleCoins:StaleCoins) {
   const eth = balances[ethereumAddress];
   if (eth !== undefined) {
     balances[weth] = new BigNumber(balances[weth] ?? 0).plus(eth).toFixed(0);
@@ -65,6 +66,9 @@ export default async function (balances: { [address: string]: string }, timestam
   const usdTokenBalances = {} as Balances;
   const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
   tokenData.forEach((response) => {
+    if (Math.abs(response.timestamp - now) > DAY/4) {
+      addStaleCoin(staleCoins, response.PK, response.symbol, response.timestamp);
+    }
     if (Math.abs(response.timestamp - now) < DAY) {
       PKsToTokens[response.PK].forEach((address) => {
         const balance = balances[address];

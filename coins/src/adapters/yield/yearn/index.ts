@@ -1,5 +1,5 @@
 import getTokenPrices from "./yearnV2";
 
-export function yearn() {
-  return Promise.all([getTokenPrices("ethereum")]);
+export function yearn(timestamp: number = 0) {
+  return Promise.all([getTokenPrices("ethereum", timestamp)]);
 }

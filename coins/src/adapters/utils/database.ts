@@ -6,7 +6,7 @@ import { write, dbEntry, redirect, dbQuery } from "./dbInterfaces";
 export async function getTokenAndRedirectData(
   tokens: string[],
   chain: string,
-  timestamp: number = 0
+  timestamp: number
 ) {
   if (timestamp == 0) {
     return await getTokenAndRedirectDataCurrent(tokens, chain, timestamp);
@@ -23,6 +23,7 @@ export function addToDBWritesList(
   decimals: number,
   symbol: string,
   timestamp: number,
+  adapter: string,
   redirect: string | undefined = undefined
 ) {
   if (timestamp == 0) {
@@ -33,7 +34,7 @@ export function addToDBWritesList(
           PK: `asset#${chain}:${token}`,
           price,
           symbol,
-          decimals,
+          decimals: Number(decimals),
           redirect
         },
         {
@@ -41,13 +42,14 @@ export function addToDBWritesList(
           PK: `asset#${chain}:${token}`,
           price,
           symbol,
-          decimals,
+          decimals: Number(decimals),
           redirect,
           ...(price !== undefined
             ? {
                 timestamp: getCurrentUnixTimestamp()
               }
-            : {})
+            : {}),
+          adapter
         }
       ]
     );
@@ -60,7 +62,7 @@ export function addToDBWritesList(
       PK: `asset#${chain}:${token}`,
       price,
       symbol,
-      decimals,
+      decimals: Number(decimals),
       redirect
     });
   }

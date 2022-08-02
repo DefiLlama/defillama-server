@@ -266,10 +266,7 @@ async function getUnderlyingPrices(
   return poolComponents;
 }
 let unknownTokens: string[] = [];
-export default async function getTokenPrices(
-  chain: string,
-  timestamp: number = 0
-) {
+export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const poolList = await getPools(chain, block);
   const writes: write[] = [];
@@ -277,35 +274,49 @@ export default async function getTokenPrices(
   for (let registry of ["stableswap", "crypto"]) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
-      const token: string = await PoolToToken(chain, pool, block);
-      const [balances, tokenInfo] = await Promise.all([
-        poolBalances(chain, pool, registry, block),
-        getTokenInfo(chain, [token], block)
-      ]);
+      try {
+        const token: string = await PoolToToken(chain, pool, block);
+        const [balances, tokenInfo] = await Promise.all([
+          poolBalances(chain, pool, registry, block),
+          getTokenInfo(chain, [token], block)
+        ]);
 
-      const poolTokens: any[] = await getUnderlyingPrices(
-        balances,
-        chain,
-        timestamp
-      );
-      if (poolTokens.includes(undefined)) {
-        continue;
+        const poolTokens: any[] = await getUnderlyingPrices(
+          balances,
+          chain,
+          timestamp
+        );
+        if (poolTokens.includes(undefined)) {
+          continue;
+        }
+        const poolValue: number = poolTokens.reduce(
+          (p, c) => p + c.balance * c.price,
+          0
+        );
+
+        if (
+          isNaN(
+            (poolValue * 10 ** tokenInfo.decimals[0].output) /
+              tokenInfo.supplies[0].output
+          )
+        ) {
+          continue;
+        }
+
+        addToDBWritesList(
+          writes,
+          chain,
+          token,
+          (poolValue * 10 ** tokenInfo.decimals[0].output) /
+            tokenInfo.supplies[0].output,
+          tokenInfo.decimals[0].output,
+          tokenInfo.symbols[0].output,
+          timestamp,
+          "curve"
+        );
+      } catch {
+        console.log(pool);
       }
-      const poolValue: number = poolTokens.reduce(
-        (p, c) => p + c.balance * c.price,
-        0
-      );
-
-      addToDBWritesList(
-        writes,
-        chain,
-        token,
-        (poolValue * 10 ** tokenInfo.decimals[0].output) /
-          tokenInfo.supplies[0].output,
-        tokenInfo.decimals[0].output,
-        tokenInfo.symbols[0].output,
-        timestamp
-      );
     }
   }
 

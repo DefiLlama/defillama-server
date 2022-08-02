@@ -58,7 +58,7 @@ export default async function getTokenPrices(
   chain: string,
   registry: string,
   version: string,
-  timestamp: number = 0
+  timestamp: number
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const reserveData: result[] = await getReserveData(
@@ -94,6 +94,7 @@ export default async function getTokenPrices(
         tokenInfo.decimals[i].output,
         tokenInfo.symbols[i].output,
         timestamp,
+        "aave",
         underlyingRedirects.filter((u) =>
           u.dbEntry.PK.includes(r.input.params[0].toLowerCase())
         )[0].redirect[0].PK

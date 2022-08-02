@@ -62,7 +62,7 @@ async function getcTokens(
 export default async function getTokenPrices(
   chain: string,
   comptroller: string,
-  timestamp: number = 0
+  timestamp: number
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
 
@@ -137,7 +137,8 @@ export default async function getTokenPrices(
       p.price / 10 ** (10 + Number(underlyingDecimals[i].output)),
       tokenInfo.decimals[i].output,
       tokenInfo.symbols[i].output,
-      timestamp
+      timestamp,
+      "compound"
     );
   });
 

@@ -8,6 +8,7 @@ export async function getTokenAndRedirectData(
   chain: string,
   timestamp: number
 ) {
+  console.log("getTokenAndRedirectData", tokens, timestamp)
   if (timestamp == 0) {
     return await getTokenAndRedirectDataCurrent(tokens, chain, timestamp);
   } else {

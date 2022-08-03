@@ -11763,7 +11763,7 @@ listedAt: 1650804679
 },
 {
   id: "1949",
-  name: "CviFund",
+  name: "CivFund",
   address: "0x37fe0f067fa808ffbdd12891c0858532cfe7361d",
   symbol: "CVI",
   url: "https://civfund.org/",

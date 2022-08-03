@@ -11718,6 +11718,28 @@ listedAt: 1650804679
   audit_links: ["https://solidity.finance/audits/VacusFinance"],
   listedAt: 1659457779
 },
+{
+  id: "1947",
+  name: "Revert Compoundor",
+  address: null,
+  symbol: "-",
+  url: "https://revert.finance",
+  description: "Revert Compoundor is a protocol to automate compounding of liquidity provider fees for positions in Uniswap v3.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/revert-compoundor.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Ethereum", "Polygon", "Optimism", "Arbitrum"],
+  module: "revert-compoundor/index.js",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  twitter: "revertfinance",
+  audit_links: ["https://immunefi.com/bounty/revert"],
+  listedAt: 1659525571
+},
 ]
 
 

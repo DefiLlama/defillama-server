@@ -10227,7 +10227,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: "apex-token-2",
   cmcId: "19843",
-  category: "Dexes",
+  category: "Derivatives",
   chains: ["Arbitrum"],
   oracles: ["TWAP"],
   forkedFrom: [],

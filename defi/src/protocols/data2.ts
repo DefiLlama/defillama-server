@@ -11748,7 +11748,7 @@ listedAt: 1650804679
   url: "https://matterdefi.xyz",
   description: "Matter DeFi is a yield farming platform aimed to incentivize providing liquidity on SpicySwap. Users may stake SpicySwap LP Tokens to earn the protocol token MTTR.",
   chain: "Tezos",
-  logo: `${baseIconsUrl}/matterdefi.png`,
+  logo: `${baseIconsUrl}/matter-defi.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

@@ -8,9 +8,12 @@ export default function(){
 
 async function runAll(timestamp:number) {
   await Promise.all(Object.entries(adapters).map(async (a) => {
-    const results:any[] = await a[1][a[0]](timestamp);
-    console.log(results.flat())
-    await batchWrite(results.flat(), true);
+    try{
+      const results:any[] = await a[1][a[0]](timestamp);
+      await batchWrite(results.flat(), true);
+    } catch(e){
+      console.log("adapter failed", a[0], e)
+    }
   }))
 } // ts-node coins/src/storeCoins.ts
 

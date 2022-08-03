@@ -66,7 +66,7 @@ export default async function (balances: { [address: string]: string }, timestam
   const usdTokenBalances = {} as Balances;
   const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
   tokenData.forEach((response) => {
-    if (Math.abs(response.timestamp - now) > DAY/4) {
+    if (Math.abs(response.timestamp - now) > 3600*1.2) { // 1.2 hours
       addStaleCoin(staleCoins, response.PK, response.symbol, response.timestamp);
     }
     if (Math.abs(response.timestamp - now) < DAY) {

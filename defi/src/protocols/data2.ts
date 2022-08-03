@@ -11765,7 +11765,7 @@ listedAt: 1650804679
   id: "1949",
   name: "CivFund",
   address: "0x37fe0f067fa808ffbdd12891c0858532cfe7361d",
-  symbol: "CVI",
+  symbol: "CIV",
   url: "https://civfund.org/",
   description: "Civilization, The world's first zero-fee DeFi trading system, Audited, patent-pending technology: DeFi for everyone. Building towards a community-driven fund",
   chain: "Ethereum",

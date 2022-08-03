@@ -2,19 +2,21 @@ import adapters from "./adapters/index";
 import { batchWrite } from "./utils/shared/dynamodb";
 import { storePks, checkOutdated } from "./listCoins";
 
-export default function(){
+export default function () {
   return runAll(0);
 }
 
-async function runAll(timestamp:number) {
-  await Promise.all(Object.entries(adapters).map(async (a) => {
-    try{
-      const results:any[] = await a[1][a[0]](timestamp);
-      await batchWrite(results.flat(), true);
-    } catch(e){
-      console.log("adapter failed", a[0], e)
-    }
-  }))
+async function runAll(timestamp: number) {
+  await Promise.all(
+    Object.entries(adapters).map(async (a) => {
+      try {
+        const results: any[] = await a[1][a[0]](timestamp);
+        await batchWrite(results.flat(), true);
+      } catch (e) {
+        console.log("adapter failed", a[0], e);
+      }
+    })
+  );
 } // ts-node coins/src/storeCoins.ts
 
 async function main() {
@@ -36,3 +38,4 @@ async function main() {
     await runAll(timestamps[i]);
   }
 }
+runAll(0);

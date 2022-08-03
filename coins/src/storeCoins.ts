@@ -7,32 +7,14 @@ export default function(){
 }
 
 async function runAll(timestamp:number) {
-  let promises = Object.entries(adapters).map((a: any) => {
-    return a[1][a[0]](timestamp);
-    // .catch(
-    //   () => `adapter for ${a[0]} has failed`
-    // );
-  });
-  let results = await Promise.all(promises);
-  for (let i = 0; i < results.length; i++) {
-    if (typeof results[i] == "string") new Error(results[i]);
-  }
-  results = results
-    .filter((r: any) => r.length > 0 && typeof r != "string")
-    .reduce((p: any, c: any) => [...p, ...c], []);
-  for (let i = 0; i < results.length; i++) {
-    console.log(`${results[i].length} ${Object.keys(adapters)[i]} entries`);
-  }
-  results = results.reduce((p: any, c: any) => {
-    if (Array.isArray(c)) {
-      return [...p, ...c];
-    } else {
-      return [...p, c];
+  await Promise.all(Object.entries(adapters).map(async (a) => {
+    try{
+      const results:any[] = await a[1][a[0]](timestamp);
+      await batchWrite(results.flat(), true);
+    } catch(e){
+      console.log("adapter failed", a[0], e)
     }
-  }, []);
-  console.log(`writing ${results.length} results to DB`);
-  await batchWrite(results, true);
-  console.log(`written data for timestamp ${timestamp} to DB`);
+  }))
 } // ts-node coins/src/storeCoins.ts
 
 async function main() {

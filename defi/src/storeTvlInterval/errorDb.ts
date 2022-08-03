@@ -17,6 +17,10 @@ const connection = mysql.createPool({
   connectionLimit: 1,
 });
 
+export function execute(sql: string, values: any){
+  return connection.execute(sql, values)
+}
+
 export function executeAndIgnoreErrors(sql: string, values: any){
     return connection.execute(sql, values)
     .catch(e => console.log("mysql error", e));

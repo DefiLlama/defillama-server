@@ -11746,7 +11746,7 @@ listedAt: 1650804679
   address: "tezos:KT1K4jn23GonEmZot3pMGth7unnzZ6EaMVjY",
   symbol: "MTTR",
   url: "https://matterdefi.xyz",
-  description: "Matter DeFi is a yield farming platform aimed to incentivize providing liquidity on Spicyswap DEX. Users may stake SpicySwap LP Tokens to earn the protocol token MTTR. Matter DeFi's flagship feature is the contract-level automatic buyback and burn of the MTTR token. Automatic buyback ensures that there is lasting buy pressure for MTTR, leading to truly sustainable yields. All fees generated on staking and unstaking are used to buyback the MTTR token on SpicySwap.",
+  description: "Matter DeFi is a yield farming platform aimed to incentivize providing liquidity on the SpicySwap DEX. Users may stake SpicySwap LP Tokens to earn the protocol token MTTR. Matter DeFi's flagship feature is the contract-level automatic buyback and burn of the MTTR token. Automatic buyback ensures that there is lasting buy pressure for MTTR, leading to truly sustainable yields. All fees generated on staking and unstaking are used to buyback the MTTR token on SpicySwap.",
   chain: "Tezos",
   logo: `${baseIconsUrl}/matter-defi.png`,
   audits: "0",

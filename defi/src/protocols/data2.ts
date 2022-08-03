@@ -6644,7 +6644,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Evmos"],
   oracles: [],
-  forkedFrom: ["Sushiswap", "PancakeSwap"],
+  forkedFrom: ["SushiSwap", "PancakeSwap"],
   module: "evmoswap/index.js",
   twitter: "evmoswap",
   listedAt: 1651486174
@@ -9774,7 +9774,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Polygon"],
   oracles: [],
-  forkedFrom: ["Uniswap", "Sushiswap"],
+  forkedFrom: ["Uniswap", "SushiSwap"],
   module: "fatex/index.js",
   twitter: "FATExDAO",
   listedAt: 1656337948

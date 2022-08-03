@@ -10644,7 +10644,7 @@ listedAt: 1650804679
   name: "Uplift DAO",
   address: "bsc:0x513C3200F227ebB62e3B3d00B7a83779643a71CF",
   symbol: "LIFT",
-  url: "https://about.just.money",
+  url: "https://uplift.io",
   description: "Uplift IDO platform facilitates and fosters the growth of all projects in the Uplift ecosystem; connecting projects with stakeholders and connecting investors with best in class investment opportunities.",
   chain: "Binance",
   logo: `${baseIconsUrl}/uplift-dao.jpg`,

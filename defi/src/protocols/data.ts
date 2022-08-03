@@ -610,7 +610,7 @@ const data: Protocol[] = [
     description:
       "Kava.io is the first cross-chain DeFi hub providing applications and services to the worlds largest cryptocurrencies.",
     chain: "Kava",
-    logo: `${baseIconsUrl}/kava.png`,
+    logo: `${baseIconsUrl}/kava-mint.png`,
     audits: null,
     audit_note: null,
     gecko_id: null,

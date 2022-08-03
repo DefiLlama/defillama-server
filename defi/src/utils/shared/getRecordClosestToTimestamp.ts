@@ -5,9 +5,6 @@ export default async function getTVLOfRecordClosestToTimestamp(
   timestamp: number,
   searchWidth: number
 ) {
-  console.log("DEBUG B");
-  console.log(timestamp);
-  console.log(searchWidth);
   return dynamodb
     .query({
       ExpressionAttributeValues: {

@@ -38,4 +38,4 @@ async function main() {
     await runAll(timestamps[i]);
   }
 }
-runAll(0);
+//runAll(0);

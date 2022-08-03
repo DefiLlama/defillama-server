@@ -11740,6 +11740,27 @@ listedAt: 1650804679
   audit_links: ["https://immunefi.com/bounty/revert"],
   listedAt: 1659525571
 },
+{
+  id: "1948",
+  name: "Matter Defi",
+  address: "tezos:KT1K4jn23GonEmZot3pMGth7unnzZ6EaMVjY",
+  symbol: "MTTR",
+  url: "https://matterdefi.xyz",
+  description: "Matter DeFi is a yield farming platform aimed to incentivize providing liquidity on SpicySwap. Users may stake SpicySwap LP Tokens to earn the protocol token MTTR.",
+  chain: "Tezos",
+  logo: `${baseIconsUrl}/matterdefi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Tezos"],
+  module: "matterdefi/index.js",
+  oracles: [],
+  forkedFrom: [],
+  twitter: "matter_defi",
+  listedAt: 1659535300
+},
 ]
 
 

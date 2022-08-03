@@ -46,3 +46,23 @@ export function geist(timestamp: number = 0) {
     )
   ]);
 }
+export function radiant(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices(
+      "arbitrum",
+      "0x7BB843f889e3a0B307299c3B65e089bFfe9c0bE0",
+      "v2",
+      timestamp
+    )
+  ]);
+}
+export function klap(timestamp: number = 0) {
+  return Promise.all([
+    getTokenPrices(
+      "klaytn",
+      "0x969E4A05c2F3F3029048e7943274eC2E762497AB",
+      "v2",
+      timestamp
+    )
+  ]);
+}

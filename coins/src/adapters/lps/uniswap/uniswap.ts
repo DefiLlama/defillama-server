@@ -137,9 +137,15 @@ async function findPriceableLPs(
       secondaryUnderlying: token1
         ? token0s.output[i].output.toLowerCase()
         : token1s.output[i].output.toLowerCase(),
-      underlyingBalance: token1
+      primaryBalance: token1
         ? reserves.output[i].output._reserve1
-        : reserves.output[i].output._reserve0
+        : reserves.output[i].output._reserve0,
+      secondaryBalance: token1
+        ? reserves.output[i].output._reserve0
+        : reserves.output[i].output._reserve1,
+      bothTokensKnown:
+        pricedTokens.includes(token1s.output[i].output) &&
+        pricedTokens.includes(token1s.output[i].output)
     });
   }
   return priceableLPs;
@@ -204,11 +210,22 @@ export default async function getPairPrices(
         ? coinData.redirect[0].price
         : coinData.dbEntry.price;
 
+    if (!l.bothTokensKnown) {
+      getUnknownTokenPrices(
+        underlyingPrice,
+        tokenInfo,
+        l,
+        writes,
+        i,
+        chain,
+        timestamp
+      );
+    }
     const supply =
       tokenInfo.supplies[i].output / 10 ** tokenInfo.lpDecimals[i].output;
     const value =
-      (underlyingPrice * 2 * l.underlyingBalance) /
-      10 ** tokenInfo.underlyingDecimals[i].output;
+      (underlyingPrice * 2 * l.primaryBalance) /
+      10 ** tokenInfo.underlyingDecimalAs[i].output;
     const lpPrice: number = value / supply;
 
     const symbol: string = `${tokenInfo.symbolAs[i].output}-${tokenInfo.symbolBs[i].output}-${tokenInfo.lpSymbol[i].output}`;
@@ -222,9 +239,43 @@ export default async function getPairPrices(
       tokenInfo.lpDecimals[i].output,
       symbol,
       timestamp,
-      "uniswap"
+      "uniswap-LP"
     );
   });
 
   return writes;
+}
+function getUnknownTokenPrices(
+  underlyingPrice: number,
+  tokenInfo: any,
+  l: any,
+  writes: write[],
+  i: number,
+  chain: string,
+  timestamp: number,
+  threshold: number = 10 ** 6
+) {
+  const sideValue =
+    (underlyingPrice * l.primaryBalance) /
+    10 ** tokenInfo.underlyingDecimalAs[i].output;
+
+  if (sideValue < threshold) return;
+
+  const tokenValue =
+    (sideValue * 10 ** tokenInfo.underlyingDecimalBs[i].output) /
+    l.secondaryBalance;
+
+  const symbol: string = `${tokenInfo.symbolBs[i].output}`;
+
+  if (symbol.includes("null")) return;
+  addToDBWritesList(
+    writes,
+    chain,
+    l.address,
+    tokenValue,
+    tokenInfo.lpDecimals[i].output,
+    symbol,
+    timestamp,
+    "uniswap-unknown-token"
+  );
 }

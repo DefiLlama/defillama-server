@@ -16,3 +16,11 @@ export function pancakeswap(timestamp: number = 0) {
     timestamp
   );
 }
+export function traderJoe(timestamp: number = 0) {
+  return getTokenPrices(
+    "avax",
+    "0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10",
+    undefined,
+    timestamp
+  );
+}

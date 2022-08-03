@@ -65,9 +65,6 @@ const deleteAtTime = async () => {
 
 const searchInterval = 3600 * 5; // 5 hrs
 function getTVLOfRecordClosestToTimestamp(PK: string, timestamp: number) {
-  console.log("DEBUG A");
-  console.log(timestamp);
-  console.log(searchInterval);
   return client
     .query({
       TableName,

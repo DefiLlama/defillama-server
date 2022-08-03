@@ -6,5 +6,6 @@ export default {
   yearn: require("./yield/yearn/index"),
   curve: require("./lps/curve/index"),
   uniswap: require("./lps/uniswap/index"),
+  traderJoe: require("./lps/uniswap/index"),
   pancakeswap: require("./lps/uniswap/index")
 };

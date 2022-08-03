@@ -55,7 +55,8 @@ export async function getLPInfo(
     supplies,
     lpDecimals,
     lpSymbol,
-    underlyingDecimals,
+    underlyingDecimalAs,
+    underlyingDecimalBs,
     symbolAs,
     symbolBs
   ] = await Promise.all([
@@ -97,6 +98,15 @@ export async function getLPInfo(
     }),
     multiCall({
       calls: targets.map((target: lp) => ({
+        target: target.secondaryUnderlying
+      })),
+      chain: chain as any,
+      abi: "erc20:decimals",
+      requery: true,
+      block
+    }),
+    multiCall({
+      calls: targets.map((target: lp) => ({
         target: target.primaryUnderlying
       })),
       abi: "erc20:symbol",
@@ -117,7 +127,8 @@ export async function getLPInfo(
   return {
     supplies: supplies.output,
     lpDecimals: lpDecimals.output,
-    underlyingDecimals: underlyingDecimals.output,
+    underlyingDecimalAs: underlyingDecimalAs.output,
+    underlyingDecimalBs: underlyingDecimalBs.output,
     symbolAs: symbolAs.output,
     symbolBs: symbolBs.output,
     lpSymbol: lpSymbol.output

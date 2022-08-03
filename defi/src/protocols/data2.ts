@@ -11761,6 +11761,27 @@ listedAt: 1650804679
   twitter: "matter_defi",
   listedAt: 1659535300
 },
+{
+  id: "1949",
+  name: "CviFund",
+  address: "0x37fe0f067fa808ffbdd12891c0858532cfe7361d",
+  symbol: "CVI",
+  url: "https://civfund.org/",
+  description: "Civilization, The world's first zero-fee DeFi trading system, Audited, patent-pending technology: DeFi for everyone. Building towards a community-driven fund",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/civfund.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "civilization",
+  cmcId: "11345",
+  category: "Yield",
+  chains: ["Ethereum"],
+  module: "civfund/index.js",
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  twitter: "CivFund",
+  listedAt: 1659552597
+},
 ]
 
 

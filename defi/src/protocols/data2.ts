@@ -11868,6 +11868,27 @@ listedAt: 1650804679
   audit_links: ["https://docs.toucan.earth/protocol/resources/security"],
   listedAt: 1659621481
 },
+{
+  id: "1954",
+  name: "Metapoly",
+  address: null,
+  symbol: "-",
+  url: "https://www.metapoly.org",
+  description: "Metapoly is the Metaverse Land Bank where you can deposit your NFTs to borrow assets.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/metapoly.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Kava", "Ethereum"],
+  module: "metapoly/index.js",
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  twitter: "metapolyorg",
+  listedAt: 1659643530
+},
 ]
 
 

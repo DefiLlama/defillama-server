@@ -6,11 +6,11 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
-import { write, read, price } from "../../utils/dbInterfaces";
-import { result } from "../../utils/sdkInterfaces";
+import { Write, Read, Price } from "../../utils/dbInterfaces";
+import { Result } from "../../utils/sdkInterfaces";
 import getBlock from "../../utils/block";
 
-interface cToken {
+interface CToken {
   symbol: string;
   address: string;
   underlying: string;
@@ -66,10 +66,10 @@ export default async function getTokenPrices(
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
 
-  const cTokens: cToken[] = await getcTokens(chain, comptroller, block);
+  const cTokens: CToken[] = await getcTokens(chain, comptroller, block);
 
-  const coinsData: read[] = await getTokenAndRedirectData(
-    cTokens.map((c: cToken) => c.underlying),
+  const coinsData: Read[] = await getTokenAndRedirectData(
+    cTokens.map((c: CToken) => c.underlying),
     chain,
     timestamp
   );
@@ -81,11 +81,11 @@ export default async function getTokenPrices(
   ] = await Promise.all([
     getTokenInfo(
       chain,
-      cTokens.map((c: cToken) => c.address),
+      cTokens.map((c: CToken) => c.address),
       block
     ),
     multiCall({
-      calls: cTokens.map((c: cToken) => ({
+      calls: cTokens.map((c: CToken) => ({
         target: c.underlying
       })),
       abi: "erc20:decimals",
@@ -93,7 +93,7 @@ export default async function getTokenPrices(
       block
     }),
     multiCall({
-      calls: cTokens.map((c: cToken) => ({
+      calls: cTokens.map((c: CToken) => ({
         target: c.address
       })),
       abi: abi.exchangeRateStored,
@@ -103,11 +103,11 @@ export default async function getTokenPrices(
   ]);
 
   const unknownTokens = [];
-  const prices: price[] = [];
+  const prices: Price[] = [];
 
-  cTokens.map((t: cToken, i: number) => {
+  cTokens.map((t: CToken, i: number) => {
     try {
-      const coinData: read = coinsData.filter((c: read) =>
+      const coinData: Read = coinsData.filter((c: Read) =>
         c.dbEntry.PK.includes(t.underlying)
       )[0];
       let price: number =
@@ -124,11 +124,11 @@ export default async function getTokenPrices(
     }
   });
 
-  let writes: write[] = [];
+  let writes: Write[] = [];
 
-  prices.map((p: price) => {
+  prices.map((p: Price) => {
     const i = tokenInfo.decimals
-      .map((d: result) => d.input.target)
+      .map((d: Result) => d.input.target)
       .indexOf(p.address);
     addToDBWritesList(
       writes,
@@ -138,7 +138,8 @@ export default async function getTokenPrices(
       tokenInfo.decimals[i].output,
       tokenInfo.symbols[i].output,
       timestamp,
-      "compound"
+      "compound",
+      1
     );
   });
 

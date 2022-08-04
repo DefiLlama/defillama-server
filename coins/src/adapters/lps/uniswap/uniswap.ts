@@ -2,11 +2,12 @@ import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import abi from "./abi.json";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectData,
+  isConfidencePriority
 } from "../../utils/database";
 import { getLPInfo } from "../../utils/erc20";
-import { write, read } from "../../utils/dbInterfaces";
-import { multiCallResults } from "../../utils/sdkInterfaces";
+import { Write, Read } from "../../utils/dbInterfaces";
+import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
 
@@ -26,7 +27,7 @@ async function fetchUniV2Markets(
 
   const pairNums: number[] = Array.from(Array(Number(pairsLength)).keys());
 
-  const pairs: multiCallResults = await multiCall({
+  const pairs: MultiCallResults = await multiCall({
     abi: abi.allPairs,
     chain: chain as any,
     calls: pairNums.map((num) => ({
@@ -70,9 +71,9 @@ async function fetchUniV2MarketData(
   pairAddresses: string[],
   block: number | undefined
 ) {
-  let token0s: multiCallResults;
-  let token1s: multiCallResults;
-  let reserves: multiCallResults;
+  let token0s: MultiCallResults;
+  let token1s: MultiCallResults;
+  let reserves: MultiCallResults;
   [token0s, token1s, reserves] = await Promise.all([
     multiCall({
       abi: abi.token0,
@@ -107,10 +108,10 @@ async function fetchUniV2MarketData(
 }
 async function findPriceableLPs(
   pairAddresses: string[],
-  token0s: multiCallResults,
-  token1s: multiCallResults,
-  reserves: multiCallResults,
-  tokenPrices: read[]
+  token0s: MultiCallResults,
+  token1s: MultiCallResults,
+  reserves: MultiCallResults,
+  tokenPrices: Read[]
 ) {
   const priceableLPs: any = []; // lp : underlying
   for (let i = 0; i < pairAddresses.length; i++) {
@@ -124,28 +125,29 @@ async function findPriceableLPs(
       )
     )
       continue;
-    let token1 = false;
-    if (pricedTokens.includes(token1s.output[i].output)) {
-      token1 = true;
+
+    let token1Known = false;
+    if (pricedTokens.includes(token1s.output[i].output.toLowerCase())) {
+      token1Known = true;
     }
 
     priceableLPs.push({
       address: pairAddresses[i],
-      primaryUnderlying: token1
+      primaryUnderlying: token1Known
         ? token1s.output[i].output.toLowerCase()
         : token0s.output[i].output.toLowerCase(),
-      secondaryUnderlying: token1
+      secondaryUnderlying: token1Known
         ? token0s.output[i].output.toLowerCase()
         : token1s.output[i].output.toLowerCase(),
-      primaryBalance: token1
+      primaryBalance: token1Known
         ? reserves.output[i].output._reserve1
         : reserves.output[i].output._reserve0,
-      secondaryBalance: token1
+      secondaryBalance: token1Known
         ? reserves.output[i].output._reserve0
         : reserves.output[i].output._reserve1,
       bothTokensKnown:
-        pricedTokens.includes(token1s.output[i].output) &&
-        pricedTokens.includes(token1s.output[i].output)
+        pricedTokens.includes(token0s.output[i].output.toLowerCase()) &&
+        pricedTokens.includes(token1s.output[i].output.toLowerCase())
     });
   }
   return priceableLPs;
@@ -197,11 +199,31 @@ export default async function getPairPrices(
     tokenPrices
   );
 
-  const tokenInfo = await getLPInfo(chain, priceableLPs, block);
+  const tokenInfos: TokenInfos = await getLPInfo(chain, priceableLPs, block);
 
-  const writes: write[] = [];
-  priceableLPs.map((l: any, i: number) => {
-    const coinData: read = tokenPrices.filter((p: read) =>
+  const writes: Write[] = [];
+  // await unknownTokens(
+  //   writes,
+  //   chain,
+  //   timestamp,
+  //   priceableLPs,
+  //   tokenPrices,
+  //   tokenInfos
+  // );
+  await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
+
+  return writes;
+}
+async function lps(
+  writes: Write[],
+  chain: string,
+  timestamp: number,
+  priceableLPs: any[],
+  tokenPrices: any[],
+  tokenInfos: TokenInfos
+) {
+  priceableLPs.map(async (l: any, i: number) => {
+    const coinData: Read = tokenPrices.filter((p: Read) =>
       p.dbEntry.PK.includes(l.primaryUnderlying.toLowerCase())
     )[0];
 
@@ -210,25 +232,14 @@ export default async function getPairPrices(
         ? coinData.redirect[0].price
         : coinData.dbEntry.price;
 
-    if (!l.bothTokensKnown) {
-      getUnknownTokenPrices(
-        underlyingPrice,
-        tokenInfo,
-        l,
-        writes,
-        i,
-        chain,
-        timestamp
-      );
-    }
     const supply =
-      tokenInfo.supplies[i].output / 10 ** tokenInfo.lpDecimals[i].output;
+      tokenInfos.supplies[i].output / 10 ** tokenInfos.lpDecimals[i].output;
     const value =
       (underlyingPrice * 2 * l.primaryBalance) /
-      10 ** tokenInfo.underlyingDecimalAs[i].output;
+      10 ** tokenInfos.underlyingDecimalAs[i].output;
     const lpPrice: number = value / supply;
 
-    const symbol: string = `${tokenInfo.symbolAs[i].output}-${tokenInfo.symbolBs[i].output}-${tokenInfo.lpSymbol[i].output}`;
+    const symbol: string = `${tokenInfos.symbolAs[i].output}-${tokenInfos.symbolBs[i].output}-${tokenInfos.lpSymbol[i].output}`;
 
     if (symbol.includes("null")) return;
     addToDBWritesList(
@@ -236,46 +247,78 @@ export default async function getPairPrices(
       chain,
       l.address,
       lpPrice,
-      tokenInfo.lpDecimals[i].output,
+      tokenInfos.lpDecimals[i].output,
       symbol,
       timestamp,
-      "uniswap-LP"
+      "uniswap-LP",
+      1
     );
   });
-
-  return writes;
 }
-function getUnknownTokenPrices(
-  underlyingPrice: number,
-  tokenInfo: any,
-  l: any,
-  writes: write[],
-  i: number,
+async function unknownTokens(
+  writes: Write[],
   chain: string,
   timestamp: number,
-  threshold: number = 10 ** 6
+  priceableLPs: any[],
+  tokenPrices: any[],
+  tokenInfos: TokenInfos
 ) {
-  const sideValue =
-    (underlyingPrice * l.primaryBalance) /
-    10 ** tokenInfo.underlyingDecimalAs[i].output;
-
-  if (sideValue < threshold) return;
-
-  const tokenValue =
-    (sideValue * 10 ** tokenInfo.underlyingDecimalBs[i].output) /
-    l.secondaryBalance;
-
-  const symbol: string = `${tokenInfo.symbolBs[i].output}`;
-
-  if (symbol.includes("null")) return;
-  addToDBWritesList(
-    writes,
-    chain,
-    l.address,
-    tokenValue,
-    tokenInfo.lpDecimals[i].output,
-    symbol,
-    timestamp,
-    "uniswap-unknown-token"
+  const lpsWithUnknown = priceableLPs.filter(
+    (p: any) => p.bothTokensKnown == false
   );
+  let confidences = lpsWithUnknown.map((l: any) => {
+    const coinData: Read = tokenPrices.filter((p: Read) =>
+      p.dbEntry.PK.includes(l.primaryUnderlying.toLowerCase())
+    )[0];
+
+    const i = priceableLPs.indexOf(l);
+    let underlyingPrice: number =
+      coinData.redirect.length != 0
+        ? coinData.redirect[0].price
+        : coinData.dbEntry.price;
+
+    const sideValue =
+      (underlyingPrice * l.primaryBalance) /
+      10 ** tokenInfos.underlyingDecimalAs[i].output;
+
+    const tokenValue =
+      (sideValue * 10 ** tokenInfos.underlyingDecimalBs[i].output) /
+      l.secondaryBalance;
+
+    let confidence: number = (Math.log10(sideValue) - 4.5) / 2.75;
+    if (confidence < 0) confidence = 0;
+    if (confidence > 1) confidence = 1;
+
+    return { confidence, tokenValue };
+  });
+
+  const isPriority = await isConfidencePriority(
+    confidences.map((c: any) => c.confidence),
+    lpsWithUnknown.map((l: any) => l.secondaryUnderlying),
+    chain,
+    timestamp
+  );
+
+  lpsWithUnknown.map((l: any, i: number) => {
+    const j = priceableLPs.indexOf(l);
+    if (!isPriority[i] || confidences[i].confidence == 0) return;
+    addToDBWritesList(
+      writes,
+      chain,
+      l.secondaryUnderlying.toLowerCase(),
+      confidences[i].tokenValue,
+      tokenInfos.underlyingDecimalBs[j].output,
+      `${tokenInfos.symbolBs[j].output}`,
+      timestamp,
+      "uniswap-unknown-token",
+      confidences[i].confidence
+    );
+  });
 }
+getPairPrices(
+  "ethereum",
+  "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+  undefined,
+  0
+);
+// ts-node coins/src/adapters/lps/uniswap/uniswap.ts

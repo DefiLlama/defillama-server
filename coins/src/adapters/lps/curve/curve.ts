@@ -3,10 +3,10 @@ const contracts = require("./contracts.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import getBlock from "../../utils/block";
 import { getGasTokenBalance } from "../../utils/gasTokens";
-import { result, multicall } from "../../utils/sdkInterfaces";
+import { Result, Multicall } from "../../utils/sdkInterfaces";
 import { getTokenInfo } from "../../utils/erc20";
 import { listUnknownTokens } from "../../utils/erc20";
-import { write, read } from "../../utils/dbInterfaces";
+import { Write, Read } from "../../utils/dbInterfaces";
 import {
   addToDBWritesList,
   getTokenAndRedirectData
@@ -30,7 +30,7 @@ async function getPools(chain: string, block: number | undefined) {
     })
   ).output.map((r: any) => r.output.addr);
 
-  const poolCounts: result[] = (
+  const poolCounts: Result[] = (
     await multiCall({
       chain: chain as any,
       calls: registries.map((r: string) => ({
@@ -58,7 +58,7 @@ async function getPools(chain: string, block: number | undefined) {
 
   return pools;
 }
-function mapGaugeTokenBalances(calls: multicall[], chain: string) {
+function mapGaugeTokenBalances(calls: Multicall[], chain: string) {
   const mapping: any = {
     "0x1337bedc9d22ecbe766df105c9623922a27963ec": {
       to: "0x5b5cfe992adac0c9d48e05854b2d91c73a003858",
@@ -96,7 +96,7 @@ function mapGaugeTokenBalances(calls: multicall[], chain: string) {
   });
 }
 function aggregateBalanceCalls(coins: string[], nCoins: string[], pool: any) {
-  let calls: multicall[] = [];
+  let calls: Multicall[] = [];
   [...Array(Number(nCoins[0])).keys()].map((n) =>
     calls.push({ target: coins[n], params: [pool.output] })
   );
@@ -125,9 +125,9 @@ async function poolBalances(
     })
   ]);
 
-  let calls: multicall[] = aggregateBalanceCalls(coins, nCoins, pool);
+  let calls: Multicall[] = aggregateBalanceCalls(coins, nCoins, pool);
   calls = mapGaugeTokenBalances(calls, chain);
-  let balances: result[] = (
+  let balances: Result[] = (
     await multiCall({
       calls: calls as any,
       chain: chain as any,
@@ -236,8 +236,8 @@ async function getUnderlyingPrices(
   chain: string,
   timestamp: number
 ) {
-  const coinsData: read[] = await getTokenAndRedirectData(
-    balances.map((r: result) => r.input.target.toLowerCase()),
+  const coinsData: Read[] = await getTokenAndRedirectData(
+    balances.map((r: Result) => r.input.target.toLowerCase()),
     chain,
     timestamp
   );
@@ -245,7 +245,7 @@ async function getUnderlyingPrices(
   // replace this above with our new helper f
   const poolComponents = balances.map((b: any) => {
     try {
-      let coinData: read = coinsData.filter((c: read) =>
+      let coinData: Read = coinsData.filter((c: Read) =>
         c.dbEntry.PK.includes(b.input.target.toLowerCase())
       )[0];
 
@@ -269,7 +269,7 @@ let unknownTokens: string[] = [];
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const poolList = await getPools(chain, block);
-  const writes: write[] = [];
+  const writes: Write[] = [];
 
   for (let registry of ["stableswap", "crypto"]) {
     //Object.keys(poolList)) {
@@ -311,7 +311,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
         tokenInfo.decimals[0].output,
         tokenInfo.symbols[0].output,
         timestamp,
-        "curve"
+        "curve",
+        1
       );
     }
   }

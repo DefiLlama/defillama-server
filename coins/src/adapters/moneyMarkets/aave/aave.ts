@@ -5,8 +5,8 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
-import { write } from "../../utils/dbInterfaces";
-import { result } from "../../utils/sdkInterfaces";
+import { Write } from "../../utils/dbInterfaces";
+import { Result } from "../../utils/sdkInterfaces";
 import { listUnknownTokens } from "../../utils/erc20";
 import getBlock from "../../utils/block";
 
@@ -61,7 +61,7 @@ export default async function getTokenPrices(
   timestamp: number
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
-  const reserveData: result[] = await getReserveData(
+  const reserveData: Result[] = await getReserveData(
     chain,
     block,
     registry,
@@ -70,7 +70,7 @@ export default async function getTokenPrices(
 
   const [underlyingRedirects, tokenInfo] = await Promise.all([
     getTokenAndRedirectData(
-      reserveData.map((r: result) => {
+      reserveData.map((r: Result) => {
         return r.input.params[0].toLowerCase();
       }),
       chain,
@@ -78,12 +78,12 @@ export default async function getTokenPrices(
     ),
     getTokenInfo(
       chain,
-      reserveData.map((r: result) => r.output.aTokenAddress),
+      reserveData.map((r: Result) => r.output.aTokenAddress),
       block
     )
   ]);
 
-  let writes: write[] = [];
+  let writes: Write[] = [];
   reserveData.map((r, i) => {
     try {
       addToDBWritesList(
@@ -95,6 +95,7 @@ export default async function getTokenPrices(
         tokenInfo.symbols[i].output,
         timestamp,
         "aave",
+        1,
         underlyingRedirects.filter((u) =>
           u.dbEntry.PK.includes(r.input.params[0].toLowerCase())
         )[0].redirect[0].PK

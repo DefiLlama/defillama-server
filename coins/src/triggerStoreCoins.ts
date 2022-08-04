@@ -19,6 +19,6 @@ export default async function handler() {
     const event = {
       protocolIndexes: protocolIndexes.slice(i, i + step)
     };
-    await invokeLambda(`storeDefiCoins`, event);
+    await invokeLambda(`coins-prod-storeDefiCoins`, event);
   }
 }

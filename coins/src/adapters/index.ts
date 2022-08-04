@@ -5,7 +5,7 @@ export default {
   // klap: require("./moneyMarkets/aave/index"),
 
   compound: require("./moneyMarkets/compound/index"),
-  // venus: require("./moneyMarkets/compound/index"),
+  venus: require("./moneyMarkets/compound/index"),
   ironbank: require("./moneyMarkets/compound/index"),
   // benqi: require("./moneyMarkets/compound/index"),
   // traderjoe: require("./moneyMarkets/compound/index"),

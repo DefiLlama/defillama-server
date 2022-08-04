@@ -145,8 +145,13 @@ functions:
     handler: src/storeCoins.default
     timeout: 900
     memorySize: 10240
+  triggerStoreDefiCoins:
+    handler: src/triggerStoreCoins.default
+    timeout: 900
+    memorySize: 10240
     events:
       - schedule: cron(0 * * * ? *) # Hourly
+    
 
 resources:
   # CORS for api gateway errors

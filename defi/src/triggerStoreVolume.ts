@@ -13,7 +13,7 @@ function shuffleArray(array: any[]) {
 
 const STEP = 10;
 
-interface IHandlerEvent {
+export interface IHandlerEvent {
   backfill: Array<{
     dexNames: string[]
     timestamp: IStoreDexVolumeHandlerEvent['timestamp']

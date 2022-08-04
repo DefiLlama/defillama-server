@@ -141,6 +141,10 @@ functions:
   fetchHourlyCoingeckoData:
     handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
     timeout: 900
+  storeDefiCoins:
+    handler: src/storeCoins.default
+    timeout: 900
+    memorySize: 10240
   triggerStoreDefiCoins:
     handler: src/triggerStoreCoins.default
     timeout: 900

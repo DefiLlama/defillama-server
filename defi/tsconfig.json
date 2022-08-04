@@ -23,5 +23,5 @@
     "lib": ["ES2019"]
   },
   "include": ["src"],
-  "exclude": ["src/setupTestEnv.js"]
+  "exclude": ["src/setupTestEnv.js", "DefiLlama-Adapters/dexVolumes/**/*.js"]
 }

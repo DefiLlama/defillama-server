@@ -11,7 +11,7 @@ import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
-interface IHandlerEvent {
+export interface IHandlerEvent {
   protocolIndexes: number[]
   timestamp?: number
 }

@@ -11846,6 +11846,28 @@ listedAt: 1650804679
   twitter: "lofty_ai",
   listedAt: 1659609505
 },
+{
+  id: "1953",
+  name: "Toucan Protocol",
+  address: "polygon:0x2f800db0fdb5223b3c3f354886d907a671414a7f",
+  symbol: "BCT",
+  url: "https://toucan.earth",
+  description: "The protocol provides tools that allow anyone to bring carbon credits onto the blockchain to improve the carbon market and fuel web3 innovation. Unlocking more ideas, infrastructure and incentives to finance the world’s best climate projects.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/toucan-protocol.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "RWA",
+  chains: ["Polygon"],
+  module: "toucan-protocol/index.js",
+  oracles: [],
+  forkedFrom: [],
+  twitter: "ToucanProtocol",
+  audit_links: ["https://docs.toucan.earth/protocol/resources/security"],
+  listedAt: 1659621481
+},
 ]
 
 

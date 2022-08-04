@@ -610,7 +610,7 @@ const data: Protocol[] = [
     description:
       "Kava.io is the first cross-chain DeFi hub providing applications and services to the worlds largest cryptocurrencies.",
     chain: "Kava",
-    logo: `${baseIconsUrl}/kava.png`,
+    logo: `${baseIconsUrl}/kava-mint.png`,
     audits: null,
     audit_note: null,
     gecko_id: null,
@@ -4397,7 +4397,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Binance", "Harmony"],
     module: "mochiswap/index.js",
-    forkedFrom: ["Sushiswap"],
+    forkedFrom: ["SushiSwap"],
     twitter: "mochiswap",
   },
   {
@@ -17224,7 +17224,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield",
+    category: "Yield Aggregator",
     chains: ["Aurora"],
     module: "vaporwave.js",
     twitter: "vwavefinance",
@@ -24626,7 +24626,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "knightsfantom/index.js",
   twitter: "knightsoffantom",
   audit_links: ["https://knights-fantom.gitbook.io/knights-of-fantom/tokenomics/security-and-safety"],
-  forkedFrom: ["Sushiswap"],
+  forkedFrom: ["SushiSwap"],
   listedAt: 1643883431,
 },
 {
@@ -25036,7 +25036,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "animal-farm/index.js",
   twitter: "DRIPcommunity",
   language: "Solidity",
-  forkedFrom: ["Sushiswap"],
+  forkedFrom: ["SushiSwap"],
   listedAt: 1644437338,
 },
 {

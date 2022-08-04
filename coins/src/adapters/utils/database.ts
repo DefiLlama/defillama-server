@@ -1,7 +1,7 @@
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
-import { write, dbEntry, redirect, dbQuery } from "./dbInterfaces";
+import { Write, DbEntry, Redirect, DbQuery, Read } from "./dbInterfaces";
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -16,7 +16,7 @@ export async function getTokenAndRedirectData(
 }
 
 export function addToDBWritesList(
-  writes: write[],
+  writes: Write[],
   chain: string,
   token: string,
   price: number | undefined,
@@ -24,6 +24,7 @@ export function addToDBWritesList(
   symbol: string,
   timestamp: number,
   adapter: string,
+  confidence: number,
   redirect: string | undefined = undefined
 ) {
   if (timestamp == 0) {
@@ -35,7 +36,8 @@ export function addToDBWritesList(
           price,
           symbol,
           decimals: Number(decimals),
-          redirect
+          redirect,
+          confidence: Number(confidence)
         },
         {
           SK: 0,
@@ -49,7 +51,8 @@ export function addToDBWritesList(
                 timestamp: getCurrentUnixTimestamp()
               }
             : {}),
-          adapter
+          adapter,
+          confidence: Number(confidence)
         }
       ]
     );
@@ -63,7 +66,8 @@ export function addToDBWritesList(
       price,
       symbol,
       decimals: Number(decimals),
-      redirect
+      redirect,
+      confidence: Number(confidence)
     });
   }
 }
@@ -85,7 +89,7 @@ async function getTokenAndRedirectDataHistorical(
   );
 
   // current origin entries
-  const latestDbEntries: dbEntry[] = await batchGet(
+  const latestDbEntries: DbEntry[] = await batchGet(
     tokens.map((t: string) => ({
       PK: `asset#${chain}:${t}`,
       SK: 0
@@ -93,7 +97,7 @@ async function getTokenAndRedirectDataHistorical(
   );
 
   // current redirects
-  const redirects: dbQuery[] = latestDbEntries.map((d: dbEntry) => {
+  const redirects: DbQuery[] = latestDbEntries.map((d: DbEntry) => {
     const selectedEntries: any[] = timedDbEntries.filter(
       (t: any) => d.PK == t.PK
     );
@@ -107,7 +111,7 @@ async function getTokenAndRedirectDataHistorical(
   });
 
   let timedRedirects: any[] = await Promise.all(
-    redirects.map((r: dbQuery) => {
+    redirects.map((r: DbQuery) => {
       return getTVLOfRecordClosestToTimestamp(
         r.PK,
         r.SK,
@@ -154,13 +158,13 @@ async function getTokenAndRedirectDataCurrent(
   chain: string,
   timestamp: number
 ) {
-  const dbEntries: dbEntry[] = await batchGet(
+  const dbEntries: DbEntry[] = await batchGet(
     tokens.map((t: string) => ({
       PK: `asset#${chain}:${t}`,
       SK: timestamp
     }))
   );
-  const redirects: dbQuery[] = [];
+  const redirects: DbQuery[] = [];
   for (let i = 0; i < dbEntries.length; i++) {
     if (!("redirect" in dbEntries[i])) continue;
     redirects.push({
@@ -168,10 +172,28 @@ async function getTokenAndRedirectDataCurrent(
       SK: timestamp
     });
   }
-  const redirectResults: redirect[] = await batchGet(redirects);
+  const redirectResults: Redirect[] = await batchGet(redirects);
 
   return dbEntries.map((d) => ({
     dbEntry: d,
     redirect: redirectResults.filter((r) => r.PK == d.redirect)
   }));
+}
+export async function isConfidencePriority(
+  confidence: number[],
+  tokens: string[],
+  chain: string,
+  timestamp: number
+) {
+  const coinDatas = await getTokenAndRedirectData(tokens, chain, timestamp);
+  return tokens.map((t: string) => {
+    const coinData = coinDatas.filter((p: Read) =>
+      p.dbEntry.PK.includes(t.toLowerCase())
+    )[0];
+    if (coinData == undefined) return true;
+    if (!("dbEntry" in coinData)) return true;
+    if (!("confidence" in coinData.dbEntry)) return true;
+    if (coinData.dbEntry.confidence < confidence) return true;
+    return false;
+  });
 }

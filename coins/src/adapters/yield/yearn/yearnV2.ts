@@ -5,8 +5,8 @@ import {
   addToDBWritesList,
   getTokenAndRedirectData
 } from "../../utils/database";
-import { multiCallResults } from "../../utils/sdkInterfaces";
-import { read, write } from "../../utils/dbInterfaces";
+import { MultiCallResults } from "../../utils/sdkInterfaces";
+import { Read, Write } from "../../utils/dbInterfaces";
 import { requery } from "../../utils/sdk";
 import getBlock from "../../utils/block";
 const manualVaults = [
@@ -27,17 +27,17 @@ const chains: object = {
   arbitrum: 42161,
   fantom: 250
 };
-interface tokenKeys {
+interface TokenKeys {
   symbol: string;
   address: string;
 }
-interface vaultKeys {
+interface VaultKeys {
   symbol: string;
-  token: tokenKeys;
+  token: TokenKeys;
   address: string;
   type: string;
 }
-interface result {
+interface Result {
   address: string;
   price: number;
   decimal: number;
@@ -49,13 +49,13 @@ function resolveDecimals(value: number, i: number) {
   return i;
 }
 async function getPricePerShare(
-  vaults: vaultKeys[],
+  vaults: VaultKeys[],
   chain: string,
   block: number | undefined
 ) {
-  let pricePerShares: multiCallResults = await multiCall({
+  let pricePerShares: MultiCallResults = await multiCall({
     abi: abi.pricePerShare,
-    calls: vaults.map((v: vaultKeys) => ({
+    calls: vaults.map((v: VaultKeys) => ({
       target: v.address
     })),
     chain: chain as any,
@@ -69,16 +69,16 @@ async function getPricePerShare(
   return pricePerShares;
 }
 async function getUsdValues(
-  pricePerShares: multiCallResults,
-  vaults: vaultKeys[],
-  coinsData: read[]
+  pricePerShares: MultiCallResults,
+  vaults: VaultKeys[],
+  coinsData: Read[]
 ) {
   let usdValues = pricePerShares.output.map((t) => {
     const selectedVaults = vaults.filter(
-      (v: vaultKeys) => v.address.toLowerCase() == t.input.target.toLowerCase()
+      (v: VaultKeys) => v.address.toLowerCase() == t.input.target.toLowerCase()
     );
     const underlying = selectedVaults[0].token.address;
-    const coinData: read = coinsData.filter((c: read) =>
+    const coinData: Read = coinsData.filter((c: Read) =>
       c.dbEntry.PK.includes(underlying.toLowerCase())
     )[0];
     if (!coinData)
@@ -107,13 +107,13 @@ async function getUsdValues(
 }
 async function pushMoreVaults(
   chain: string,
-  vaults: vaultKeys[],
+  vaults: VaultKeys[],
   block: number | undefined
 ) {
   const [
     { output: tokens },
     { output: symbols }
-  ]: multiCallResults[] = await Promise.all([
+  ]: MultiCallResults[] = await Promise.all([
     multiCall({
       abi: abi.token,
       chain: chain as any,
@@ -132,7 +132,7 @@ async function pushMoreVaults(
     })
   ]);
 
-  const vaultInfo: vaultKeys[] = manualVaults.map((v: string, i: number) => ({
+  const vaultInfo: VaultKeys[] = manualVaults.map((v: string, i: number) => ({
     address: v,
     token: {
       address: tokens[i].output,
@@ -145,7 +145,7 @@ async function pushMoreVaults(
 }
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
-  let vaults: vaultKeys[] = (
+  let vaults: VaultKeys[] = (
     await axios.get(
       `https://api.yearn.finance/v1/chains/${
         chains[chain as keyof object]
@@ -155,8 +155,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   // 135
   await pushMoreVaults(chain, vaults, block);
 
-  const coinsData: read[] = await getTokenAndRedirectData(
-    vaults.map((v: vaultKeys) => v.token.address.toLowerCase()),
+  const coinsData: Read[] = await getTokenAndRedirectData(
+    vaults.map((v: VaultKeys) => v.token.address.toLowerCase()),
     chain,
     timestamp
   );
@@ -165,13 +165,13 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     getPricePerShare(vaults, chain, block)
   ]);
 
-  const usdValues: result[] = await getUsdValues(
+  const usdValues: Result[] = await getUsdValues(
     pricePerShares,
     vaults,
     coinsData
   );
 
-  let writes: write[] = [];
+  let writes: Write[] = [];
   usdValues.map((v) => {
     addToDBWritesList(
       writes,
@@ -181,7 +181,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       v.decimal,
       v.symbol,
       timestamp,
-      "yearnV2"
+      "yearnV2",
+      1
     );
   });
   return writes;

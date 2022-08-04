@@ -1,16 +1,16 @@
-import { result, multiCallResults } from "./sdkInterfaces";
+import { Result, MultiCallResults } from "./sdkInterfaces";
 import { multiCall } from "@defillama/sdk/build/abi/index";
 
 export async function requery(
-  resultsRaw: multiCallResults,
+  resultsRaw: MultiCallResults,
   chain: string,
   abi: string | any,
   block: number | undefined = undefined
 ) {
   const results = resultsRaw.output;
-  if (results.some((r: result) => !r.success)) {
+  if (results.some((r: Result) => !r.success)) {
     const failed = results
-      .map((r: result, i) => [r, i])
+      .map((r: Result, i) => [r, i])
       .filter((r: any) => !r[0].success);
     const newResults = await multiCall({
       abi,

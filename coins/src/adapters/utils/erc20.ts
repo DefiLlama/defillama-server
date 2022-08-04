@@ -41,14 +41,14 @@ export async function getTokenInfo(
     symbols: symbols.output
   };
 }
-interface lp {
+interface Lp {
   address: string;
   primaryUnderlying: string;
   secondaryUnderlying: string;
 }
 export async function getLPInfo(
   chain: string,
-  targets: lp[],
+  targets: Lp[],
   block: number | undefined
 ) {
   const [
@@ -61,7 +61,7 @@ export async function getLPInfo(
     symbolBs
   ] = await Promise.all([
     multiCall({
-      calls: targets.map((target: lp) => ({
+      calls: targets.map((target: Lp) => ({
         target: target.address
       })),
       chain: chain as any,
@@ -70,7 +70,7 @@ export async function getLPInfo(
       block
     }),
     multiCall({
-      calls: targets.map((target: lp) => ({
+      calls: targets.map((target: Lp) => ({
         target: target.address
       })),
       chain: chain as any,
@@ -79,7 +79,7 @@ export async function getLPInfo(
       block
     }),
     multiCall({
-      calls: targets.map((target: lp) => ({
+      calls: targets.map((target: Lp) => ({
         target: target.address
       })),
       abi: "erc20:symbol",
@@ -88,7 +88,7 @@ export async function getLPInfo(
       block
     }),
     multiCall({
-      calls: targets.map((target: lp) => ({
+      calls: targets.map((target: Lp) => ({
         target: target.primaryUnderlying
       })),
       chain: chain as any,
@@ -97,7 +97,7 @@ export async function getLPInfo(
       block
     }),
     multiCall({
-      calls: targets.map((target: lp) => ({
+      calls: targets.map((target: Lp) => ({
         target: target.secondaryUnderlying
       })),
       chain: chain as any,
@@ -106,7 +106,7 @@ export async function getLPInfo(
       block
     }),
     multiCall({
-      calls: targets.map((target: lp) => ({
+      calls: targets.map((target: Lp) => ({
         target: target.primaryUnderlying
       })),
       abi: "erc20:symbol",
@@ -114,7 +114,7 @@ export async function getLPInfo(
       block
     }),
     multiCall({
-      calls: targets.map((target: lp) => ({
+      calls: targets.map((target: Lp) => ({
         target: target.secondaryUnderlying
       })),
       abi: "erc20:symbol",

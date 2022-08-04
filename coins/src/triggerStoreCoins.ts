@@ -1,4 +1,3 @@
-import { wrapScheduledLambda } from "./utils/shared/wrap";
 import invokeLambda from "./utils/shared/invokeLambda";
 import adapters from "./adapters/index";
 
@@ -10,7 +9,7 @@ function shuffleArray(array: number[]) {
 }
 
 const step = 3;
-const handler = async () => {
+export default async function handler() {
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(
     Array(adaptersArray.length).keys()
@@ -22,6 +21,4 @@ const handler = async () => {
     };
     await invokeLambda(`defillama-prod-storeDefiCoins`, event);
   }
-};
-
-export default wrapScheduledLambda(handler);
+}

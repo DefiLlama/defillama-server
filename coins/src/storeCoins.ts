@@ -1,9 +1,8 @@
 import adapters from "./adapters/index";
 import { batchWrite } from "./utils/shared/dynamodb";
 import { storePks, checkOutdated } from "./listCoins";
-import { wrapScheduledLambda } from "./utils/shared/wrap";
 
-const handler = async (event: any) => {
+export default async function handler(event: any) {
   const a = Object.entries(adapters);
   const timestamp = 0;
   await Promise.all(
@@ -16,6 +15,4 @@ const handler = async (event: any) => {
       }
     })
   );
-}; // ts-node coins/src/storeCoins.ts
-
-export default wrapScheduledLambda(handler);
+} // ts-node coins/src/storeCoins.ts

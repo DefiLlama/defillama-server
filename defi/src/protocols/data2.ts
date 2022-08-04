@@ -11825,6 +11825,27 @@ listedAt: 1650804679
   twitter: "DoTOracle",
   listedAt: 1659607635
 },
+{
+  id: "1952",
+  name: "Lofty",
+  address: null,
+  symbol: "-",
+  url: "https://www.lofty.ai",
+  description: "Fractionalized real estate on Algorand.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/lofty.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Algorand"],
+  module: "lofty/index.js",
+  oracles: [],
+  forkedFrom: [],
+  twitter: "lofty_ai",
+  listedAt: 1659609505
+},
 ]
 
 

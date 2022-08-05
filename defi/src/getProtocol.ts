@@ -50,7 +50,8 @@ export async function craftProtocolResponse(
 export async function wrapResponseOrRedirect(response: any) {
   const jsonData = JSON.stringify(response);
   const dataLength = Buffer.byteLength(jsonData, "utf8");
-  if (dataLength >= 5.8e6) {
+  console.log(response.name, dataLength)
+  if (dataLength >= 5.5e6) {
     const filename = `protocol-${response.name}.json`;
     await storeDataset(filename, jsonData, "application/json");
 

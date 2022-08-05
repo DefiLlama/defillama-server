@@ -10,13 +10,7 @@ const handler = async (
     false
   );
 
-  const data = wrapResponseOrRedirect(response);
-
-  if (event.pathParameters?.protocol === "dodo") {
-    console.log(data);
-  }
-
-  return data;
+  return wrapResponseOrRedirect(response);
 };
 
 export default wrap(handler);

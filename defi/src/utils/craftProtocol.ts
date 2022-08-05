@@ -64,6 +64,9 @@ export default async function craftProtocol(
   useNewChainNames: boolean,
   useHourlyData: boolean
 ) {
+  if (protocolData.name === "DODO") {
+    console.log("DODO START");
+  }
   const [
     lastUsdHourlyRecord,
     lastUsdTokenHourlyRecord,
@@ -87,6 +90,17 @@ export default async function craftProtocol(
     ),
     importAdapter(protocolData),
   ]);
+
+  if (protocolData.name === "DODO") {
+    console.log("DODO", {
+      lastUsdHourlyRecord: lastUsdHourlyRecord ? true : false,
+      lastUsdTokenHourlyRecord: lastUsdTokenHourlyRecord ? true : false,
+      lastTokenHourlyRecord: lastTokenHourlyRecord ? true : false,
+      historicalUsdTvl: historicalUsdTvl ? true : false,
+      historicalTokenTvl: historicalTokenTvl ? true : false,
+      module: module ? true : false,
+    });
+  }
 
   if (!useHourlyData) {
     // replaceLast(historicalUsdTvl, lastUsdHourlyRecord);

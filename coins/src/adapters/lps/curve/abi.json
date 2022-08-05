@@ -4,8 +4,7 @@
     "outputs": [{ "type": "address", "name": "" }],
     "inputs": [],
     "stateMutability": "view",
-    "type": "function",
-    "gas": 2291
+    "type": "function"
   },
   "get_registry": {
     "name": "get_registry",
@@ -17,8 +16,7 @@
     ],
     "inputs": [],
     "stateMutability": "view",
-    "type": "function",
-    "gas": 1061
+    "type": "function"
   },
   "pool_list": {
     "stateMutability": "view",
@@ -35,8 +33,7 @@
         "name": "",
         "type": "address"
       }
-    ],
-    "gas": 2217
+    ]
   },
   "pool_count": {
     "stateMutability": "view",
@@ -48,8 +45,7 @@
         "name": "",
         "type": "uint256"
       }
-    ],
-    "gas": 2138
+    ]
   },
   "get_n_coins": {
     "stableswap": {
@@ -67,8 +63,7 @@
           "name": "",
           "type": "uint256[2]"
         }
-      ],
-      "gas": 1521
+      ]
     },
     "stableFactory": {
       "stateMutability": "view",
@@ -85,8 +80,7 @@
           "name": "",
           "type": "uint256"
         }
-      ],
-      "gas": 2699
+      ]
     },
     "crypto": {
       "stateMutability": "view",
@@ -103,8 +97,7 @@
           "name": "",
           "type": "uint256"
         }
-      ],
-      "gas": 2834
+      ]
     },
     "cryptoFactory": {
       "stateMutability": "view",
@@ -121,8 +114,7 @@
           "name": "",
           "type": "uint256"
         }
-      ],
-      "gas": 2834
+      ]
     }
   },
   "get_coins": {
@@ -141,8 +133,7 @@
           "name": "",
           "type": "address[8]"
         }
-      ],
-      "gas": 12102
+      ]
     },
     "stableFactory": {
       "stateMutability": "view",
@@ -159,8 +150,7 @@
           "name": "",
           "type": "address[4]"
         }
-      ],
-      "gas": 9164
+      ]
     },
     "crypto": {
       "stateMutability": "view",
@@ -177,8 +167,7 @@
           "name": "",
           "type": "address[8]"
         }
-      ],
-      "gas": 22975
+      ]
     },
     "cryptoFactory": {
       "stateMutability": "view",
@@ -229,7 +218,17 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  "get_dy": {
+    "stateMutability": "view",
     "type": "function",
-    "gas": 12168
+    "name": "get_dy",
+    "inputs": [
+      { "name": "i", "type": "int128" },
+      { "name": "j", "type": "int128" },
+      { "name": "dx", "type": "uint256" }
+    ],
+    "outputs": [{ "name": "", "type": "uint256" }]
   }
 }

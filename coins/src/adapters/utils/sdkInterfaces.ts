@@ -8,7 +8,7 @@ export interface Result {
 }
 export interface Multicall {
   target: string;
-  params: string[];
+  params: any[];
 }
 export interface MultiCallResults {
   output: Result[];

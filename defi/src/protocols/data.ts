@@ -811,7 +811,7 @@ const data: Protocol[] = [
     category: "Derivatives",
     chains: ["Ethereum"],
     module: "dydx/index.js",
-    twitter: "dydxprotocol",
+    twitter: "dYdX",
     audit_links: ["https://docs.dydx.exchange/#independent-audits"],
     oracles: ["Chainlink"],
     language: "Cairo",

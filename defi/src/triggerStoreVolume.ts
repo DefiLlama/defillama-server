@@ -23,6 +23,7 @@ export interface IHandlerEvent {
 const handler = async (event?: IHandlerEvent) => {
   // TODO separate those that need to be called on the hour and those using graphs with timestamp
   if (event?.backfill) {
+    console.info("Backfill event", event.backfill)
     for (const bf of event.backfill) {
       const protocolIndexes: IStoreDexVolumeHandlerEvent['protocolIndexes'] = []
       for (const dexName of bf.dexNames) {
@@ -46,7 +47,9 @@ const invokeLambdas = async (protocolIndexes: IStoreDexVolumeHandlerEvent['proto
       protocolIndexes: protocolIndexes.slice(i, i + STEP),
       timestamp
     };
-    await invokeLambda(`defillama-${process.env.stage}-storeVolume`, event);
+    console.info(`Storing volume: ${protocolIndexes} ${timestamp}`)
+    const result = await invokeLambda(`defillama-${process.env.stage}-storeVolume`, event);
+    console.log(result)
   }
 }
 

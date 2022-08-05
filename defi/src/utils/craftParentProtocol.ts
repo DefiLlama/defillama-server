@@ -255,7 +255,7 @@ export default async function craftParentProtocol(
   }
 
   if (childProtocolsTvls.length > 0) {
-    response.otherProtocols = childProtocolsTvls[0].otherProtocols
+    response.otherProtocols = childProtocolsTvls[0].otherProtocols;
   }
 
   return response;

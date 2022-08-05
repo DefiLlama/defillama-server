@@ -25,6 +25,7 @@ export interface IRecordVolumeData {
 const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
 
 export const handler = async (event: IHandlerEvent) => {
+  console.info(`Storing volumes for the following indexs ${event.protocolIndexes}`)
   // Timestamp to query, defaults current timestamp
   const currentTimestamp = event.timestamp || (Date.now()) / 1000;
   // Get clean day
@@ -38,6 +39,7 @@ export const handler = async (event: IHandlerEvent) => {
   const chainBlocks = await getChainBlocks(currentTimestamp, allChains);
 
   async function runAdapter(id: string, volumeAdapter: VolumeAdapter) {
+    console.log("Running adapter", id)
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
       .map((chain) => volumeAdapter[chain]
@@ -50,15 +52,17 @@ export const handler = async (event: IHandlerEvent) => {
   const volumeResponses = await Promise.all(event.protocolIndexes.map(async protocolIndex => {
     // Get DEX info
     const { id, volumeAdapter } = volumeAdapters[protocolIndex];
+    console.info(`Adapter found ${protocolIndex} ${id} ${volumeAdapter}`)
 
     try {
       // Import DEX adapter
       const dexAdapter: DexAdapter = (await importVolumeAdapter(volumeAdapters[protocolIndex])).default;
-
+      console.info("Improted OK")
       // Retrieve daily volumes
       let rawDailyVolumes: IRecordVolumeData[] = []
       if ("volume" in dexAdapter) {
         const runAdapterRes = await runAdapter(id, dexAdapter.volume)
+        console.log(runAdapterRes)
         const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
         for (const volume of volumes) {
           if (volume && volume.result.dailyVolume)
@@ -75,6 +79,7 @@ export const handler = async (event: IHandlerEvent) => {
         const volumeAdapters = Object.entries(dexBreakDownAdapter)
         for (const [version, volumeAdapterObj] of volumeAdapters) {
           const runAdapterRes = await runAdapter(id, volumeAdapterObj)
+          console.log(runAdapterRes)
           const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
           for (const volume of volumes) {
             if (volume && volume.result.dailyVolume) {
@@ -100,7 +105,7 @@ export const handler = async (event: IHandlerEvent) => {
         }
         return acc
       }, {} as IRecordVolumeData)
-
+      console.log("Daily volumes", dailyVolumes, id, fetchCurrentDayTimestamp)
       await storeVolume(new Volume(VolumeType.dailyVolume, id, fetchCurrentDayTimestamp, dailyVolumes))
     }
     catch (error) {

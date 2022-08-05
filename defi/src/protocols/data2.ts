@@ -11849,8 +11849,8 @@ listedAt: 1650804679
 {
   id: "1953",
   name: "Toucan Protocol",
-  address: "polygon:0x2f800db0fdb5223b3c3f354886d907a671414a7f",
-  symbol: "BCT",
+  address: null,
+  symbol: "-",
   url: "https://toucan.earth",
   description: "The protocol provides tools that allow anyone to bring carbon credits onto the blockchain to improve the carbon market and fuel web3 innovation. Unlocking more ideas, infrastructure and incentives to finance the world’s best climate projects.",
   chain: "Polygon",

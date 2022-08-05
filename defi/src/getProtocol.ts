@@ -53,6 +53,10 @@ const handler = async (
 ): Promise<IResponse> => {
   const response = await craftProtocolResponse(event.pathParameters?.protocol, false, false)
 
+  if (event.pathParameters?.protocol === "dodo") {
+    console.log("DODO", Object.keys(response));
+  }
+
   return wrapResponseOrRedirect(response);
 };
 

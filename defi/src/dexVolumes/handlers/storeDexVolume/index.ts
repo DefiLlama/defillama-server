@@ -4,7 +4,7 @@ import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import volumeAdapters from "../../dexAdapters";
 import { DexAdapter, VolumeAdapter } from "@defillama/adapters/dexVolumes/dexVolume.type";
 import { storeVolume, Volume, VolumeType } from "../../data/volume";
-import getAllChainsFromDexAdapters from "../../utils/getAllChainsFromDexAdapters";
+import getChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
@@ -31,7 +31,10 @@ export const handler = async (event: IHandlerEvent) => {
   const fetchCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
 
   // Get closest block to clean day. Only for EVM compatible ones.
-  const allChains = getAllChainsFromDexAdapters().filter(canGetBlock)
+  const allChains = getChainsFromDexAdapters(
+    event.protocolIndexes.map(index => volumeAdapters[index].volumeAdapter)
+  ).filter(canGetBlock)
+
   const chainBlocks = await getChainBlocks(currentTimestamp, allChains);
 
   async function runAdapter(id: string, volumeAdapter: VolumeAdapter) {

@@ -16,7 +16,7 @@ export default () => {
         // 'katana', 
         // 'klayswap', 
         // 'osmosis', 
-        // 'pancakeswap',
+        'pancakeswap',
         // 'quickswap', 
         // 'raydium', 
         // 'serum', 
@@ -40,7 +40,7 @@ export default () => {
     const event: ITriggerStoreVolumeEventHandler = {
         backfill: dates.map(date => ({
             dexNames: DEXS_LIST,
-            timestamp: date.getTime()
+            timestamp: date.getTime() / 1000
         }))
     }
 
@@ -53,8 +53,8 @@ export default () => {
 function ensureDirectoryExistence(filePath: string) {
     var dirname = path.dirname(filePath);
     if (fs.existsSync(dirname)) {
-      return true;
+        return true;
     }
     ensureDirectoryExistence(dirname);
     fs.mkdirSync(dirname);
-  }
+}

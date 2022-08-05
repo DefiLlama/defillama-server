@@ -11566,7 +11566,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "just-stablecoin",
     cmcId: "5446",
-    category: "Algo-Stables",
+    category: "CDP",
     chains: ["Tron"],
     module: "juststable/index.js",
     twitter: "DeFi_JUST",

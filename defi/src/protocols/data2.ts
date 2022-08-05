@@ -11906,7 +11906,7 @@ listedAt: 1650804679
   chains: ["Parallel"],
   module: "parallel-lending/index.js",
   twitter: "ParallelFi",
-  parentProtocol: "Parallel DeFi Super App",
+  parentProtocol: "Parallel",
 },
 {
   id: "1956",
@@ -11925,7 +11925,7 @@ listedAt: 1650804679
   chains: ["Parallel"],
   module: "parallelamm/index.js",
   twitter: "ParallelFi",
-  parentProtocol: "Parallel DeFi Super App",
+  parentProtocol: "Parallel",
 },
 {
   id: "1957",
@@ -11944,7 +11944,7 @@ listedAt: 1650804679
   chains: ["Parallel"],
   module: "parallel-stream/index.js",
   twitter: "ParallelFi",
-  parentProtocol: "Parallel DeFi Super App",
+  parentProtocol: "Parallel",
 },
 {
   id: "1958",
@@ -11963,7 +11963,7 @@ listedAt: 1650804679
   chains: ["Parallel"],
   module: "parallel-staking/index.js",
   twitter: "ParallelFi",
-  parentProtocol: "Parallel DeFi Super App",
+  parentProtocol: "Parallel",
 },
 ]
 

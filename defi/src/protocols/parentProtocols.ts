@@ -91,7 +91,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ape_swap",
   },
   {
-    id: "Parallel DeFi Super App",
+    id: "Parallel",
     name: "Parallel DeFi Super App",
     url: "https://parallel.fi",
     description:

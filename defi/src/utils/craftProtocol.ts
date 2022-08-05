@@ -91,17 +91,6 @@ export default async function craftProtocol(
     importAdapter(protocolData),
   ]);
 
-  if (protocolData.name === "DODO") {
-    console.log("DODO", {
-      lastUsdHourlyRecord: lastUsdHourlyRecord ? true : false,
-      lastUsdTokenHourlyRecord: lastUsdTokenHourlyRecord ? true : false,
-      lastTokenHourlyRecord: lastTokenHourlyRecord ? true : false,
-      historicalUsdTvl: historicalUsdTvl ? true : false,
-      historicalTokenTvl: historicalTokenTvl ? true : false,
-      module: module ? true : false,
-    });
-  }
-
   if (!useHourlyData) {
     // replaceLast(historicalUsdTvl, lastUsdHourlyRecord);
     historicalUsdTvl.push(lastUsdHourlyRecord);
@@ -141,6 +130,10 @@ export default async function craftProtocol(
   }
   if (module.hallmarks) {
     response.hallmarks = module.hallmarks;
+  }
+
+  if (protocolData.name === "DODO") {
+    console.log(1, Object.keys(response));
   }
 
   lastUsdHourlyRecord &&
@@ -195,6 +188,10 @@ export default async function craftProtocol(
       }
     });
 
+  if (protocolData.name === "DODO") {
+    console.log(2, Object.keys(response));
+  }
+
   const singleChain = transformNewChainName(protocolData.chain);
 
   if (
@@ -218,6 +215,10 @@ export default async function craftProtocol(
     response.chainTvls[singleChain].tvl = response.tvl
       .filter((t: any) => t.date < first)
       .concat(singleChainTvls);
+  }
+
+  if (protocolData.name === "DODO") {
+    console.log(3, Object.keys(response));
   }
 
   return response;

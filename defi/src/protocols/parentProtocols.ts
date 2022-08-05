@@ -89,6 +89,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8497",
     chains: [],
     twitter: "ape_swap",
+  },
+  {
+    id: "Parallel DeFi Super App",
+    name: "Parallel DeFi Super App",
+    url: "https://parallel.fi",
+    description:
+    "Parallel Finance is a Decentralized Money Market Protocol that offers lending, staking, and borrowing in the Polkadot ecosystem. Depositors can lend and stake simultaneously to earn double yield on their staked coins, and borrowers can collateralize to borrow.",
+    logo: `${baseIconsUrl}/parallel-defi-super-app.jpg`,
+    gecko_id: null ,
+    cmcId: null,
+    chains: [],
+    twitter: "ParallelFi",
   }
 ];
 

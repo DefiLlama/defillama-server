@@ -158,6 +158,14 @@ functions:
       - http:
           path: updatedProtocol/{protocol}
           method: get
+  debugProtocol:
+    handler: src/getUpdatedProtocol.default
+    timeout: 120
+    memorySize: 2000
+    events:
+      - http:
+          path: debugProtocol/{protocol}
+          method: get
   protocolTvl:
     handler: src/getProtocolTvl.default
     events:

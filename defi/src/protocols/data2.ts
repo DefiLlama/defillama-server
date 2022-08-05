@@ -2952,8 +2952,8 @@ const data2: Protocol[] =  [
 {
   id: "1544",
   name: "Concentrator",
-  address: null ,
-  symbol: "-",
+  address: "ethereum:0xb3Ad645dB386D7F6D753B2b9C3F4B853DA6890B8" ,
+  symbol: "CTR",
   url: "https://concentrator.aladdin.club/",
   description: "Aladdin concentrator is a platform that boosts rewards for Curve & Convex stakers and liquidity providers alike, all in a simple and easy to use interface.",
   chain: "Ethereum",

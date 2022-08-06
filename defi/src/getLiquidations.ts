@@ -2,16 +2,19 @@ import { wrap, IResponse, successResponse } from "./utils/shared";
 import { binResults } from "../DefiLlama-Adapters/liquidations/utils/binResults"
 
 const adapters = ["aave-v2", "compound", "euler", "liquity", "maker"]; // this can be automated instead
+const adapterModules = adapters.map(adapterName => ({
+  module: require(`../DefiLlama-Adapters/liquidations/${adapterName}/index`),
+  name: adapterName,
+}));
 
 const handler = async (
   _event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const data = await Promise.all(adapters.map(async adapterName => {
-    const adapter = require(`../DefiLlama-Adapters/liquidations/${adapterName}/index`)
-    const liqs = await adapter.ethereum.liquidations();
+  const data = await Promise.all(adapterModules.map(async adapter => {
+    const liqs = await adapter.module.ethereum.liquidations();
     const {bins} = await binResults(liqs)
     return {
-      protocol: adapterName,
+      protocol: adapter.name,
       bins
     }
   }))

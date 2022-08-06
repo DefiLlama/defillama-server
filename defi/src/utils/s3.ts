@@ -49,3 +49,4 @@ export function buildRedirect(filename:string, cache?:number){
   }
 }
 
+export const liquidationsFilename = `liquidations.json`;

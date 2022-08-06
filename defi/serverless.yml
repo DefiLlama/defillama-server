@@ -236,12 +236,15 @@ functions:
           method: get
   getLiquidations:
     handler: src/getLiquidations.default
-    timeout: 600
-    memorySize: 2000
+    timeout: 30
     events:
       - http:
           path: liquidations
           method: get
+  storeLiquidations:
+    handler: src/storeLiquidations.default
+    timeout: 900
+    memorySize: 2000
   dataset:
     handler: src/getDataset.default
     timeout: 900

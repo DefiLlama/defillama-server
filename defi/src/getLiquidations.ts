@@ -8,6 +8,7 @@ const handler = async (
   const data = await Promise.all(Object.entries(adaptersModules).map(async ([name, module]) => {
     const liqs = await module.ethereum.liquidations();
     const {bins} = await binResults(liqs)
+    console.log("done", name)
     return {
       protocol: name,
       bins

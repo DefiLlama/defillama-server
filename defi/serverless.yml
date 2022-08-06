@@ -234,6 +234,14 @@ functions:
       - http:
           path: testTvl
           method: get
+  getLiquidations:
+    handler: src/getLiquidations.default
+    timeout: 600
+    memorySize: 2000
+    events:
+      - http:
+          path: liquidations
+          method: get
   dataset:
     handler: src/getDataset.default
     timeout: 900

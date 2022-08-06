@@ -51,9 +51,9 @@ export const chainCoingeckoIds = {
     chainId: 11297108109,
   },
   "Optimism": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "optimism",
+    symbol: "OP",
+    cmcId: "11840",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",

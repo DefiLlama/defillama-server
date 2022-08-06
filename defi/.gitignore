@@ -8,5 +8,6 @@ docker
 .esbuild
 src/utils/imports/adapters.ts
 src/utils/imports/adapters_volumes.ts
+src/utils/imports/adapters_liquidations.ts
 .vscode
 src/dexVolumes/cli/backfillUtilities/output

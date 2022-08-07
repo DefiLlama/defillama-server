@@ -6,13 +6,17 @@ import { liquidationsFilename, storeDataset } from "./utils/s3";
 
 async function handler(){
   const time = getCurrentUnixTimestamp()
-  const data = await Promise.all(Object.entries(adaptersModules).map(async ([name, module]) => {
-    const liqs = await module.ethereum.liquidations();
-    const {bins} = await binResults(liqs)
-    console.log("done", name)
+  const data = await Promise.all(Object.entries(adaptersModules).map(async ([protocol, module]) => {
+    // too lazy to type this properly cuz issa already typed in adapters
+    const liqs : {[chain: string]: object[]} = {}
+    await Promise.all(Object.entries(module).map(async ([chain, liquidationsFunc])=> {
+      const liquidations = await liquidationsFunc()
+      liqs[chain] = liquidations
+    }));
+
     return {
-      protocol: name,
-      bins
+      protocol,
+      liqs,
     }
   }))
   

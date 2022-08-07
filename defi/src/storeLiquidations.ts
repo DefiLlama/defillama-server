@@ -10,7 +10,7 @@ async function handler(){
     // too lazy to type this properly cuz issa already typed in adapters
     const liqs : {[chain: string]: object[]} = {}
     await Promise.all(Object.entries(module).map(async ([chain, liquidationsFunc])=> {
-      const liquidations = await liquidationsFunc()
+      const liquidations = await liquidationsFunc.liquidations()
       liqs[chain] = liquidations
     }));
 

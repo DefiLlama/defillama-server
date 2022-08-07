@@ -31,12 +31,12 @@ const handler = async (event?: IHandlerEvent) => {
         if (dexIndex >= 0)
           protocolIndexes.push(dexIndex)
       }
-      invokeLambdas(protocolIndexes, bf.timestamp)
+      await invokeLambdas(protocolIndexes, bf.timestamp)
     }
   }
   else {
     const protocolIndexes = Array.from(Array(volumeAdapters.length).keys())
-    invokeLambdas(protocolIndexes)
+    await invokeLambdas(protocolIndexes)
   }
 };
 
@@ -48,8 +48,9 @@ const invokeLambdas = async (protocolIndexes: IStoreDexVolumeHandlerEvent['proto
       timestamp
     };
     console.info(`Storing volume: ${protocolIndexes} ${timestamp}`)
+    console.log("Lambda name", `defillama-${process.env.stage}-storeVolume`)
     const result = await invokeLambda(`defillama-${process.env.stage}-storeVolume`, event);
-    console.log(result)
+    console.log("Execution result", result)
   }
 }
 

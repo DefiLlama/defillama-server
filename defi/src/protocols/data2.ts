@@ -2904,7 +2904,7 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "wormhole.js",
   twitter: "portalbridge_",
-  audit_links: ["https://github.com/certusone/wormhole/blob/dev.v2/audits/2021-01-10_neodyme.pdf"] ,
+  audit_links: ["https://github.com/certusone/wormhole/blob/dev.v2/SECURITY.md"] ,
   listedAt: 1647148275,
 },
 // {

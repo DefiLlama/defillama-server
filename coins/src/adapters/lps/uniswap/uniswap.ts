@@ -202,14 +202,14 @@ export default async function getPairPrices(
   const tokenInfos: TokenInfos = await getLPInfo(chain, priceableLPs, block);
 
   const writes: Write[] = [];
-  // await unknownTokens(
-  //   writes,
-  //   chain,
-  //   timestamp,
-  //   priceableLPs,
-  //   tokenPrices,
-  //   tokenInfos
-  // );
+  await unknownTokens(
+    writes,
+    chain,
+    timestamp,
+    priceableLPs,
+    tokenPrices,
+    tokenInfos
+  );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
   return writes;

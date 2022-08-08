@@ -11965,6 +11965,28 @@ listedAt: 1650804679
   twitter: "ParallelFi",
   parentProtocol: "Parallel DeFi Super App",
 },
+{
+  id: "1959",
+  name: "Hubble Exchange",
+  address: null,
+  symbol: "-",
+  url: "https://hubble.exchange/",
+  description: "Hubble Exchange is decentralized Multi-collateral/Cross-Margin Perpetual Futures on Avalanche",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/hubble-exchange.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Avalanche"],
+  module: "hubble-exchange/index.js",
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  twitter: "HubbleExchange",
+  audit_links: ["https://docs.hubble.exchange/audit-reports"],
+  listedAt: 1659987915
+},
 ]
 
 

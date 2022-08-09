@@ -12029,6 +12029,28 @@ listedAt: 1650804679
   twitter: "Scallop_io",
   listedAt: 1660034149
 },
+{
+  id: "1962",
+  name: "SiO2 Finance",
+  address: "astar:0xcCA488aEEf7A1D5C633f877453784F025e7cF160",
+  symbol: "SiO2",
+  url: "http://www.sio2.finance",
+  description: "SiO2 Finance is the Astar-native lending hub supporting both EVM and WASM.",
+  chain: "Astar",
+  logo: `${baseIconsUrl}/sio2-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Astar"],
+  module: "projects/sio2/index.js",
+  oracles: ["DIA"],
+  forkedFrom: ["AAVE"],
+  twitter: "SiO2_Finance",
+  audit_links: ["https://github.com/SiO2-Finance/contracts/tree/main/audits"],
+  listedAt: 1660050871
+},
 ]
 
 

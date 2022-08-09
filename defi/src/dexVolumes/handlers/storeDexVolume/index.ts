@@ -42,6 +42,7 @@ export const handler = async (event: IHandlerEvent) => {
     console.log("Running adapter", id)
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
+      .filter((chain) => volumeAdapter[chain].start !== 0 && volumeAdapter[chain].start >= fetchCurrentDayTimestamp)
       .map((chain) => volumeAdapter[chain]
         .fetch(currentTimestamp, chainBlocks)
         .then(result => ({ chain, result }))

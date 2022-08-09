@@ -12044,7 +12044,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Lending",
   chains: ["Astar"],
-  module: "projects/sio2/index.js",
+  module: "sio2/index.js",
   oracles: ["DIA"],
   forkedFrom: ["AAVE"],
   twitter: "SiO2_Finance",

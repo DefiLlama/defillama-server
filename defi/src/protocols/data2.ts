@@ -12008,6 +12008,27 @@ listedAt: 1650804679
   twitter: "CryptoBlades",
   listedAt: 1660032267
 },
+{
+  id: "1961",
+  name: "Scallop",
+  address: null,
+  symbol: "-",
+  url: "https://scallop.io",
+  description: "Scallop is a diverse no-loss protocol on Solana, maximize the potential yield with no principal loss",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/scallop.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Solana"],
+  module: "scallop/index.js",
+  oracles: ['Switchboard', 'Pyth'],
+  forkedFrom: [],
+  twitter: "Scallop_io",
+  listedAt: 1660034149
+},
 ]
 
 

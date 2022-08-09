@@ -56,6 +56,30 @@ function storeCoinData(
   );
 }
 
+let solanaTokens: Promise<any>
+async function getSymbolAndDecimals(tokenAddress: string, chain:string){
+  if(chain === "solana"){
+    if(solanaTokens === undefined){
+      solanaTokens = fetch(
+        "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json"
+      ).then(r=>r.json())
+    }
+    const token = ((await solanaTokens).tokens as any[]).find(t=>t.address === tokenAddress)
+    if(token === undefined){
+      throw new Error(`Token ${chain}:${tokenAddress} not found in solana token list`)
+    }
+    return {
+      symbol: token.symbol,
+      decimals: Number(token.decimals)
+    }
+  } else {
+    return {
+      symbol: (await symbol(tokenAddress, chain as any)).output,
+      decimals: Number((await decimals(tokenAddress, chain as any)).output),
+    }
+  }
+}
+
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinIds = coins.map((c) => c.id);
   const coinData = await retryCoingeckoRequest(
@@ -81,14 +105,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         if(coinData[coin.id]?.usd === undefined){
           return
         }
-        const tokenDecimals = await decimals(tokenAddress, chain as any);
-        const tokenSymbol = await symbol(tokenAddress, chain as any);
+        const {decimals, symbol} = await getSymbolAndDecimals(tokenAddress, chain);
         await ddb.put({
           PK,
           SK: 0,
           created: timestamp,
-          decimals: Number(tokenDecimals.output),
-          symbol: tokenSymbol.output,
+          decimals: decimals,
+          symbol: symbol,
           redirect: cgPK(coin.id),
         });
       })

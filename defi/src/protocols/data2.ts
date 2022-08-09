@@ -12053,7 +12053,7 @@ listedAt: 1650804679
 },
 {
   id: "1963",
-  name: "Parallel Yield Account",
+  name: "Parallel Derivative Tokens",
   address: null ,
   symbol: "-",
   url: "https://parallel.fi",

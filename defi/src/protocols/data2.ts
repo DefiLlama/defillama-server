@@ -11987,6 +11987,27 @@ listedAt: 1650804679
   audit_links: ["https://docs.hubble.exchange/audit-reports"],
   listedAt: 1659987915
 },
+{
+  id: "1960",
+  name: "CryptoBlades",
+  address: "bsc:0x154a9f9cbd3449ad22fdae23044319d6ef2a1fab",
+  symbol: "SKILL",
+  url: "https://www.cryptoblades.io/",
+  description: "CryptoBlades is a play-to-earn NFT RPG developed by Riveted Games. The game revolves around the acquisition of legendary Blades and the powerful Heroes who wield them. Players may participate in combat using their assets to earn SKILL tokens. Assets are player-owned NFTs minted to the ERC-721 standard, and may be traded on the proprietary marketplace. CryptoBlades utilizes a play-to-earn model by distributing SKILL through gameplay, and giving value to player NFTs by increasing their use through future features.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/cryptoblades.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "cryptoblades",
+  cmcId: "9654",
+  category: "Gaming",
+  chains: ['Binance', 'Heco', 'OKExChain', 'Polygon', 'Avalanche', 'Aurora', 'Kava' ],
+  module: "cryptoblades/index.js",
+  oracles: [],
+  forkedFrom: [],
+  twitter: "CryptoBlades",
+  listedAt: 1660032267
+},
 ]
 
 

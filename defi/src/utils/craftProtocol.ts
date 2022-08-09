@@ -90,11 +90,13 @@ export default async function craftProtocol(
 
   if (!useHourlyData) {
     // replaceLast(historicalUsdTvl, lastUsdHourlyRecord);
-    historicalUsdTvl.push(lastUsdHourlyRecord);
     // replaceLast(historicalUsdTokenTvl, lastUsdTokenHourlyRecord);
-    historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
     // replaceLast(historicalTokenTvl, lastTokenHourlyRecord);
-    historicalTokenTvl.push(lastTokenHourlyRecord);
+
+    // check for falsy values and push lastHourlyRecord to dataset
+    lastUsdHourlyRecord && historicalUsdTvl.push(lastUsdHourlyRecord);
+    lastUsdTokenHourlyRecord && historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
+    lastTokenHourlyRecord && historicalTokenTvl.push(lastTokenHourlyRecord);
   }
 
   let response: IProtocolResponse = {

@@ -1180,6 +1180,7 @@ const data: Protocol[] = [
     twitter: "value_defi",
     audit_links: ["https://valuedefi.io/audit"],
     oracles: ["Chainlink"],
+    parentProtocol: "Value",
   },
   {
     id: "165",
@@ -9782,6 +9783,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "value_defi",
     audit_links: ["https://valuedefi.io/audit"],
     forkedFrom: ["Balancer"],
+    parentProtocol: "Value",
   },
   {
     id: "601",

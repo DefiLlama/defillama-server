@@ -101,6 +101,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "ParallelFi",
+  },
+  {
+    id: "Value",
+    name: "Value",
+    url: "https://valuedefi.io",
+    description:
+    "The Value DeFi protocol is a platform and suite of products that aim to bring fairness, true value, and innovation to Decentralized Finance.`",
+    logo: `${baseIconsUrl}/valuedefi.jpg`,
+    gecko_id: "value-liquidity" ,
+    cmcId: "1183",
+    chains: [],
+    twitter: "value_defi",
   }
 ];
 

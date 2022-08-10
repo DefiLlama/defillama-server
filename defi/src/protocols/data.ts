@@ -6277,7 +6277,7 @@ const data: Protocol[] = [
   {
     id: "420",
     name: "Elk",
-    address: "polygon:0xE1C110E1B1b4A1deD0cAf3E42BfBdbB7b5d7cE1C",
+    address: "polygon:0xeEeEEb57642040bE42185f49C52F7E9B38f8eeeE",
     symbol: "ELK",
     url: "https://elk.finance",
     description: "Elk Finance is a decentralized network for cross-chain liquidity. The Elk ecosystem will make it seamless for anyone to exchange cryptocurrencies. Our motto is Any chain, anytime, anywhere.",

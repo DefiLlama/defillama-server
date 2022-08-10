@@ -12072,6 +12072,27 @@ listedAt: 1650804679
   twitter: "MixSwapFinance",
   listedAt: 1660107807
 },
+{
+  id: "1964",
+  name: "Unbound",
+  address: "0x8db253a1943dddf1af9bcf8706ac9a0ce939d922",
+  symbol: "UNB",
+  url: "https://www.unbound.finance/",
+  description: "Unbound is a decentralized cross-chain liquidity protocol that is building the derivative layer of Automated Market Makers (AMM)",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/unbound.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "unbound-finance",
+  cmcId: "7846",
+  category: "Derivatives",
+  chains: ["Ethereum", "Polygon"],
+  module: "unbound/index.js",
+  oracles: [],
+  forkedFrom: [],
+  twitter: "unboundfinance",
+  listedAt: 1660121047
+},
 ]
 
 

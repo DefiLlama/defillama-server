@@ -12093,6 +12093,28 @@ listedAt: 1650804679
   twitter: "unboundfinance",
   listedAt: 1660121047
 },
+{
+  id: "1965",
+  name: "Drachma Exchange",
+  address: null,
+  symbol: "-",
+  url: "https://drachma.exchange",
+  description: "The most powerful integrated exchange protocol",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/drachma-exchange.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Solana"],
+  module: "drachma-exchange/index.js",
+  oracles: [],
+  forkedFrom: [],
+  twitter: "DrachmaExchange",
+  audit_links: ["https://github.com/solidproof/projects/blob/main/Drachma%20Exchange/SmartContract_Audit_Solidproof_DrachmaExchange.pdf"],
+  listedAt: 1660135625
+},
 ]
 
 

@@ -12051,6 +12051,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/SiO2-Finance/contracts/tree/main/audits"],
   listedAt: 1660050871
 },
+{
+  id: "1963",
+  name: "MixSwap Finance",
+  address: "bsc:0xb8b9e96e9576af04480ff26ee77d964b1996216e",
+  symbol: "MXS",
+  url: "https://mixswap.finance/",
+  description: "With MixSwap, you can stake your token assets to earn new tokens through Liquidity Mining on BSC Network",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/mixswap-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Binance"],
+  module: "mixswap/index.js",
+  oracles: [],
+  forkedFrom: ["Goose Finance"],
+  twitter: "MixSwapFinance",
+  listedAt: 1660107807
+},
 ]
 
 

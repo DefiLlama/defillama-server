@@ -178,6 +178,14 @@ const handler = async (_event: any) => {
         sum(sumDailyTvls, "total", "liquidstaking", timestamp, item.tvl);
       }
 
+      // if protocol is under liquid staking category and is double counted, track those values so we dont add tvl twice
+      if (
+        protocol.category?.toLowerCase() === "liquid staking" &&
+        protocol.doublecounted
+      ) {
+        sum(sumDailyTvls, "total", "dcAndLsOverlap", timestamp, item.tvl);
+      }
+
       let hasAtLeastOneChain = false;
 
       Object.entries(item).forEach(([chain, tvl]) => {
@@ -207,6 +215,13 @@ const handler = async (_event: any) => {
             sum(sumDailyTvls, chainName, "liquidstaking", timestamp, tvl);
           }
 
+          if (
+            protocol.category?.toLowerCase() === "liquid staking" &&
+            protocol.doublecounted
+          ) {
+            sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, tvl);
+          }
+
           //  if its a valid chain name, record that this protocol is on atleast more than one chain
           // reason to track this value is if a protocol is only on single chain, then it would only have 'tvl' in the above tvlSection value
           // and you want this protocol to appear on 'All Chains' page and its individual chain
@@ -225,6 +240,13 @@ const handler = async (_event: any) => {
         }
         if (protocol.category?.toLowerCase() === "liquid staking") {
           sum(sumDailyTvls, chainName, "liquidstaking", timestamp, item.tvl);
+        }
+
+        if (
+          protocol.category?.toLowerCase() === "liquid staking" &&
+          protocol.doublecounted
+        ) {
+          sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, item.tvl);
         }
       }
     }

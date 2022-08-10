@@ -211,7 +211,10 @@ const handler = async (_event: any) => {
           if (protocol?.doublecounted && tvlSection === "tvl") {
             sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
           }
-          if (protocol?.category?.toLowerCase() && tvlSection === "tvl") {
+          if (
+            protocol.category?.toLowerCase() === "liquid staking" &&
+            tvlSection === "tvl"
+          ) {
             sum(sumDailyTvls, chainName, "liquidstaking", timestamp, tvl);
           }
 

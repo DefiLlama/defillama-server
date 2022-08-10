@@ -1174,7 +1174,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null ,
-    category: "Dexes",
+    category: "Yield",
     chains: [ "Binance"],
     module: "valuedefi.js",
     twitter: "value_defi",

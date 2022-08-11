@@ -185,6 +185,7 @@ export async function isConfidencePriority(
   chain: string,
   timestamp: number
 ) {
+  if (timestamp == 0) timestamp == getCurrentUnixTimestamp();
   const coinDatas = await getTokenAndRedirectData(tokens, chain, timestamp);
   return tokens.map((t: string) => {
     const coinData = coinDatas.filter((p: Read) =>

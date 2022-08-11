@@ -261,10 +261,15 @@ async function getUnderlyingPrices(
           ? coinData.redirect[0].price
           : coinData.dbEntry.price;
 
+      let confidence: number =
+        coinData.redirect.length != 0
+          ? coinData.redirect[0].confidence
+          : coinData.dbEntry.confidence;
       return {
         balance: b.output / 10 ** coinData.dbEntry.decimals,
         price,
-        decimals: coinData.dbEntry.decimals
+        decimals: coinData.dbEntry.decimals,
+        confidence
       };
     } catch {
       unknownTokensList.push(b.input.target.toLowerCase());
@@ -280,7 +285,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const poolList = await getPools(chain, block);
   const writes: Write[] = [];
 
-  for (let registry of Object.keys(poolList)) {
+  for (let registry of ["crypto"]) {
+    //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
       try {
         const token: string = await PoolToToken(chain, pool, block);
@@ -318,6 +324,14 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
           continue;
         }
 
+        const confidence =
+          poolTokens
+            .map((p: any) => {
+              if (p.confidence == undefined) return 1;
+              return p.confidence;
+            })
+            .reduce((a, b) => a + b, 0) / poolTokens.length;
+
         addToDBWritesList(
           writes,
           chain,
@@ -328,7 +342,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
           tokenInfo.symbols[0].output,
           timestamp,
           "curve-LP",
-          1
+          confidence
         );
       } catch {
         console.log([pool].map((i: any) => i.output)[0]);
@@ -375,7 +389,7 @@ async function unknownTokens(
             target: unknownPoolList[i].address
           },
           {
-            params: [ts.known[0], t, rawQuantity.div(10)],
+            params: [ts.known[0], t, rawQuantity.div(usdSwapSize)],
             target: unknownPoolList[i].address
           }
         ];
@@ -406,10 +420,7 @@ async function unknownTokens(
 
   const prices = dys.output.map((d: Result, i: number) => {
     const decimals = unknownTokenInfos.decimals[Math.floor(i / 2)].output;
-    return (
-      (i % 2 == 0 ? usdSwapSize : usdSwapSize / 10) /
-      (d.output / 10 ** decimals)
-    );
+    return (i % 2 == 0 ? usdSwapSize : 1) / (d.output / 10 ** decimals);
   });
 
   unknownTokens.map((t: any, i: number) => {
@@ -430,4 +441,4 @@ async function unknownTokens(
   writes;
 }
 // ts-node coins/src/adapters/lps/curve/curve.ts
-getTokenPrices("ethereum", 0);
+//getTokenPrices("polygon", 0);

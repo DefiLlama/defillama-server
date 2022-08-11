@@ -10,7 +10,8 @@ import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 
 async function retryCoingeckoRequest(
-  url: string, retries: number
+  url: string,
+  retries: number
 ): Promise<CoingeckoResponse> {
   for (let i = 0; i < retries; i++) {
     await getCoingeckoLock();
@@ -19,7 +20,7 @@ async function retryCoingeckoRequest(
       return coinData;
     } catch (e) {
       if ((i + 1) % 3 === 0 && retries > 3) {
-        await sleep(10e3) // 10s
+        await sleep(10e3); // 10s
       }
       continue;
     }
@@ -44,14 +45,17 @@ function storeCoinData(
   idToSymbol: IdToSymbol
 ) {
   return batchWrite(
-    Object.entries(coinData).filter(c=>c[1]?.usd !== undefined).map(([cgId, data]) => ({
-      PK: cgPK(cgId),
-      SK: 0,
-      price: data.usd,
-      mcap: data.usd_market_cap,
-      timestamp,
-      symbol: idToSymbol[cgId].toUpperCase(),
-    })),
+    Object.entries(coinData)
+      .filter((c) => c[1]?.usd !== undefined)
+      .map(([cgId, data]) => ({
+        PK: cgPK(cgId),
+        SK: 0,
+        price: data.usd,
+        mcap: data.usd_market_cap,
+        timestamp,
+        symbol: idToSymbol[cgId].toUpperCase(),
+        confidence: 0.99
+      })),
     false
   );
 }
@@ -78,8 +82,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   await Promise.all(
     coins.map((coin) =>
       iterateOverPlatforms(coin, async (PK, tokenAddress, chain) => {
-        if(coinData[coin.id]?.usd === undefined){
-          return
+        if (coinData[coin.id]?.usd === undefined) {
+          return;
         }
         const tokenDecimals = await decimals(tokenAddress, chain as any);
         const tokenSymbol = await symbol(tokenAddress, chain as any);
@@ -90,6 +94,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           decimals: Number(tokenDecimals.output),
           symbol: tokenSymbol.output,
           redirect: cgPK(coin.id),
+          confidence: 0.99
         });
       })
     )
@@ -98,7 +103,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 
 const HOUR = 3600;
 async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
-  const toTimestamp = getCurrentUnixTimestamp()
+  const toTimestamp = getCurrentUnixTimestamp();
   const fromTimestamp = toTimestamp - 6 * HOUR;
   const coinData = await retryCoingeckoRequest(
     `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
@@ -107,32 +112,40 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
   if (!Array.isArray(coinData.prices)) {
     console.error(`Couldn't get data for ${coin.id}`);
     rejected.push(coin);
-    return
+    return;
   }
   const PK = cgPK(coin.id);
-  const prevWritenItems = await batchGet(coinData.prices.map((price) => ({
-    SK: toUNIXTimestamp(price[0]),
-    PK
-  })));
+  const prevWritenItems = await batchGet(
+    coinData.prices.map((price) => ({
+      SK: toUNIXTimestamp(price[0]),
+      PK
+    }))
+  );
   const writtenTimestamps = prevWritenItems.reduce((all, item) => {
     all[item.SK] = true;
-    return all
-  }, {})
+    return all;
+  }, {});
   await batchWrite(
-    coinData.prices.filter(price => {
-      const ts = toUNIXTimestamp(price[0])
-      return !writtenTimestamps[ts]
-    }).map((price) => ({
-      SK: toUNIXTimestamp(price[0]),
-      PK,
-      price: price[1],
-    })),
+    coinData.prices
+      .filter((price) => {
+        const ts = toUNIXTimestamp(price[0]);
+        return !writtenTimestamps[ts];
+      })
+      .map((price) => ({
+        SK: toUNIXTimestamp(price[0]),
+        PK,
+        price: price[1],
+        confidence: 0.99
+      })),
     false
-  )
+  );
 }
 
 const step = 50;
-const handler = (hourly: boolean) => async (event: any, _context: AWSLambda.Context) => {
+const handler = (hourly: boolean) => async (
+  event: any,
+  _context: AWSLambda.Context
+) => {
   const coins = event.coins as Coin[];
   const depth = event.depth as number;
   const rejected = [] as Coin[];
@@ -141,7 +154,9 @@ const handler = (hourly: boolean) => async (event: any, _context: AWSLambda.Cont
   if (hourly) {
     for (let i = 0; i < coins.length; i += step) {
       await Promise.all(
-        coins.slice(i, i + step).map((coin) => getAndStoreHourly(coin, rejected))
+        coins
+          .slice(i, i + step)
+          .map((coin) => getAndStoreHourly(coin, rejected))
       );
     }
   } else {
@@ -157,10 +172,15 @@ const handler = (hourly: boolean) => async (event: any, _context: AWSLambda.Cont
       return;
     } else {
       await sleep(10e3); // 10 seconds
-      await invokeLambda(hourly ? `coins-prod-fetchHourlyCoingeckoData` : `coins-prod-fetchCoingeckoData`, {
-        coins: rejected,
-        depth: depth + 1,
-      });
+      await invokeLambda(
+        hourly
+          ? `coins-prod-fetchHourlyCoingeckoData`
+          : `coins-prod-fetchCoingeckoData`,
+        {
+          coins: rejected,
+          depth: depth + 1
+        }
+      );
     }
   }
 };

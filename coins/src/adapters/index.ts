@@ -14,17 +14,17 @@ export default {
   cream: require("./moneyMarkets/compound/index"),
   scream: require("./moneyMarkets/compound/index"),
 
-  yearn: require("./yield/yearn/index"),
-  curve: require("./lps/curve/index"),
+  yearn: require("./yield/yearn/index")
+  // curve: require("./lps/curve/index"),
 
-  uniswap: require("./lps/uniswap/index"),
-  traderJoe: require("./lps/uniswap/index"),
-  vvsFinance: require("./lps/uniswap/index"),
-  quickswap: require("./lps/uniswap/index"),
-  biswap: require("./lps/uniswap/index"),
-  mmFinance: require("./lps/uniswap/index"),
-  trisolaris: require("./lps/uniswap/index"),
-  pangolin: require("./lps/uniswap/index"),
-  spiritswap: require("./lps/uniswap/index"),
-  pancakeswap: require("./lps/uniswap/index")
+  // uniswap: require("./lps/uniswap/index"),
+  // traderJoe: require("./lps/uniswap/index"),
+  // vvsFinance: require("./lps/uniswap/index"),
+  // quickswap: require("./lps/uniswap/index"),
+  // biswap: require("./lps/uniswap/index"),
+  // mmFinance: require("./lps/uniswap/index"),
+  // trisolaris: require("./lps/uniswap/index"),
+  // pangolin: require("./lps/uniswap/index"),
+  // spiritswap: require("./lps/uniswap/index"),
+  // pancakeswap: require("./lps/uniswap/index")
 };

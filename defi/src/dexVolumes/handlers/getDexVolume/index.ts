@@ -3,7 +3,7 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import sluggify from "../../../utils/sluggify";
 import { getVolume, Volume, VolumeType } from "../../data/volume";
 import volumeAdapters, { Dex } from "../../dexAdapters";
-import { calcNdChange, summAllVolumes } from "../../utils/volumeCalcs";
+import { calcNdChange, sumAllVolumes } from "../../utils/volumeCalcs";
 import { IRecordVolumeData } from "../storeDexVolume";
 
 export interface VolumeHistoryItem {
@@ -41,7 +41,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
                 dailyVolume: v.data,
                 timestamp: v.sk
             })),
-            total1dVolume: yesterdaysVolume ? summAllVolumes(yesterdaysVolume) : 0,
+            total1dVolume: yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
             change1dVolume: calcNdChange(volumes, 1)
         }
         dexDataResponse = ddr

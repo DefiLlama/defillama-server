@@ -5095,7 +5095,7 @@ const data2: Protocol[] =  [
   url: "https://epns.io",
   description: "The native communication layer of Web3. Send / receive multi-chain push notifications among dapps & users.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/epns.jpg`,
+  logo: `${baseIconsUrl}/epns.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "ethereum-push-notification-service",

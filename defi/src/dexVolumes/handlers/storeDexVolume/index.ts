@@ -28,8 +28,8 @@ export const handler = async (event: IHandlerEvent) => {
   console.info(`Storing volumes for the following indexs ${event.protocolIndexes}`)
   // Timestamp to query, defaults current timestamp
   const currentTimestamp = event.timestamp || (Date.now()) / 1000;
-  // Get clean day
-  const fetchCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
+  // Get clean day - 1 second (to get last day daily volume and last block of the day)
+  const fetchCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp) - 1
 
   // Get closest block to clean day. Only for EVM compatible ones.
   const allChains = getChainsFromDexAdapters(

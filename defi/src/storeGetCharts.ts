@@ -208,21 +208,21 @@ const handler = async (_event: any) => {
           sum(sumDailyTvls, chainName, tvlSection, timestamp, tvl);
 
           // doublecounted and liquidstaking === tvl on the chain, so check if tvlSection is not staking, pool2 etc
-          if (protocol?.doublecounted && tvlSection === "tvl") {
-            sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
-          }
-          if (
-            protocol.category?.toLowerCase() === "liquid staking" &&
-            tvlSection === "tvl"
-          ) {
-            sum(sumDailyTvls, chainName, "liquidstaking", timestamp, tvl);
-          }
 
-          if (
-            protocol.category?.toLowerCase() === "liquid staking" &&
-            protocol.doublecounted
-          ) {
-            sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, tvl);
+          if (tvlSection === "tvl") {
+            if (protocol?.doublecounted) {
+              sum(sumDailyTvls, chainName, "doublecounted", timestamp, tvl);
+            }
+            if (protocol.category?.toLowerCase() === "liquid staking") {
+              sum(sumDailyTvls, chainName, "liquidstaking", timestamp, tvl);
+            }
+
+            if (
+              protocol.category?.toLowerCase() === "liquid staking" &&
+              protocol.doublecounted
+            ) {
+              sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, tvl);
+            }
           }
 
           //  if its a valid chain name, record that this protocol is on atleast more than one chain

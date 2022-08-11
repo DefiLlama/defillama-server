@@ -38,28 +38,33 @@ const urls = [
     "https://api.llama.fi/lite/charts/Ethereum", // multiple
 ]
 
-const alert= (message:string)=>sendMessage(message, process.env.MONITOR_WEBHOOK!)
+const alert = (message: string) => sendMessage(message, process.env.MONITOR_WEBHOOK!)
+const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
 const handler = async () => {
     const responses = {} as any
     // Main urls
-    await Promise.all(urls.map(async url=>{
-        try{
+    await Promise.all(urls.map(async url => {
+        try {
             const res = await axios.get(url)
-            const age = res.headers.age
-            if(age && Number(age) > 3600){
-                alert(`${url} was last updated ${(Number(age)/3600).toFixed(2)} hours ago`)
+            const lastModified = res.headers["last-modified"]
+            if (lastModified) {
+                const timeDiff = (new Date().getTime() - new Date(lastModified).getTime()) / 1e3
+                if (timeDiff > 3600) {
+                    alert(`${url} was last modified ${(timeDiff / 3600).toFixed(2)} hours ago (${lastModified})`)
+                }
             } else {
-                const lastModified = res.headers["last-modified"]
-                if(lastModified){
-                    const timeDiff = (new Date().getTime() - new Date(lastModified).getTime()) / 1e3
-                    if(timeDiff > 3600){
-                        alert(`${url} was last modified ${(timeDiff/3600).toFixed(2)} hours ago (${lastModified})`)
+                const age = res.headers.age
+                if (age && Number(age) > 3600) {
+                    await sleep(5e3) // 5s -> allow page to regenerate if nobody has used it in last hour
+                    const newAge = (await axios.get(url)).headers.age
+                    if (newAge && Number(newAge) > 3600) {
+                        alert(`${url} was last updated ${(Number(newAge) / 3600).toFixed(2)} hours ago`)
                     }
                 }
             }
             responses[url] = res.data;
-        } catch(e){
+        } catch (e) {
             alert(`${url} failed`)
         }
     }))

@@ -5,7 +5,7 @@ export abstract class Item {
     public keys() {
         return {
             PK: this.pk,
-            SK: this.sk+1
+            SK: this.sk
         }
     }
 

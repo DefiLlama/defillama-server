@@ -28,6 +28,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         volumeHistory = []
     }
 
+    // TODO: change getDataPoints -> volumeHistory.map(itemDate)
     const response = getDataPoints().map((date) => {
         const itemDate = volumeHistory.find(vh => getTimestampAtStartOfDayUTC(vh.timestamp) === date)
         const itemWithError = itemDate ? Object.values(itemDate?.dailyVolume).find(

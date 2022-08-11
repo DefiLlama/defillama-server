@@ -10,8 +10,8 @@ const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 export default async () => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
-        // '1inch',
-        'balancer',
+        '1inch',
+        // 'balancer',
         // 'bancor',
         // 'champagneswap',
         // 'curve',
@@ -34,7 +34,7 @@ export default async () => {
 
     // Remember, it's new Date(year, monthIndex, day)
     let startTimestamp = new Date(2020, 0, 1).getTime()
-    // Looking for start time from adapter
+    // Looking for start time from adapter, if not found will default to the above
     const dex = volumeAdapters.find(dex => dex.volumeAdapter === DEXS_LIST[0])
     if (dex) {
         const dexAdapter: DexAdapter = (await importVolumeAdapter(dex)).default

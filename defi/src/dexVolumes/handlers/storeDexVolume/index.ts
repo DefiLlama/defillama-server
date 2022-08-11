@@ -8,6 +8,7 @@ import getChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
+import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
@@ -26,34 +27,38 @@ const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
 
 export const handler = async (event: IHandlerEvent) => {
   console.info(`Storing volumes for the following indexs ${event.protocolIndexes}`)
-  // Timestamp to query, defaults current timestamp
-  const currentTimestamp = event.timestamp || (Date.now()) / 1000;
-  // Get clean day - 1 second (to get last day daily volume and last block of the day)
-  const fetchCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp) - 1
+  // Timestamp to query, defaults current timestamp - 2 minutes delay
+  const currentTimestamp = event.timestamp || ((Date.now()) / 1000) - 60 * 2;
+  // Get clean day
+  const cleanCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
 
   // Get closest block to clean day. Only for EVM compatible ones.
   const allChains = getChainsFromDexAdapters(
     event.protocolIndexes.map(index => volumeAdapters[index].volumeAdapter)
   ).filter(canGetBlock)
 
-  const chainBlocks = await getChainBlocks(currentTimestamp, allChains);
+  const chainBlocks = await getChainBlocks(cleanCurrentDayTimestamp, allChains);
 
   async function runAdapter(id: string, volumeAdapter: VolumeAdapter) {
     console.log("Running adapter", id)
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
-      .filter((chain) => volumeAdapter[chain].start >= fetchCurrentDayTimestamp || volumeAdapter[chain].start === 0)
-      .map((chain) => {
+      .filter((chain) => volumeAdapter[chain].start >= cleanCurrentDayTimestamp || volumeAdapter[chain].start === 0)
+      .map(async (chain) => {
         const fetchFunction = volumeAdapter[chain].customBackfill ?? volumeAdapter[chain].fetch
-        return fetchFunction(currentTimestamp, chainBlocks)
-          .then(result => ({ chain, result }))
-          .catch(e => Promise.reject({ chain, error: e, id, timestamp: currentTimestamp }))
+        try {
+          // substract 1 second from cleanCurrentTimestamp to get total day volume at cleanCurrentTimestamp (if not we would get only daily volume at the moment this function is called)
+          const result = await fetchFunction(cleanCurrentDayTimestamp - 1, chainBlocks);
+          return ({ chain, result });
+        } catch (e) {
+          return await Promise.reject({ chain, error: e, id, timestamp: currentTimestamp });
+        }
       }
       ))
   }
 
   // TODO: change for allSettled
-  const volumeResponses = await Promise.all(event.protocolIndexes.map(async protocolIndex => {
+  await Promise.all(event.protocolIndexes.map(async protocolIndex => {
     // Get DEX info
     const { id, volumeAdapter } = volumeAdapters[protocolIndex];
     console.info(`Adapter found ${protocolIndex} ${id} ${volumeAdapter}`)
@@ -109,8 +114,8 @@ export const handler = async (event: IHandlerEvent) => {
         }
         return acc
       }, {} as IRecordVolumeData)
-      console.log("Daily volumes", dailyVolumes, id, fetchCurrentDayTimestamp)
-      await storeVolume(new Volume(VolumeType.dailyVolume, id, fetchCurrentDayTimestamp, dailyVolumes))
+      console.log("Daily volumes", dailyVolumes, id, cleanCurrentDayTimestamp)
+      await storeVolume(new Volume(VolumeType.dailyVolume, id, cleanCurrentDayTimestamp, dailyVolumes))
     }
     catch (error) {
       const err = error as Error

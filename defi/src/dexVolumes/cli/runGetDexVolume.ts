@@ -1,8 +1,13 @@
 import "./setup.ts"
 import { handler } from "../handlers/getDexVolume";
 
-handler({
-    pathParameters: {
-        dex: "uniswap"
-    }
-} as unknown as AWSLambda.APIGatewayEvent)
+(async () => {
+    const r = await handler({
+        pathParameters: {
+            dex: "1inch-network"
+        }
+    } as unknown as AWSLambda.APIGatewayEvent)
+    const d = JSON.parse(r.body)
+    delete d["volumeHistory"]
+console.log(d)
+})()

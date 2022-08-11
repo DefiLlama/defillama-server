@@ -43,7 +43,14 @@ export const handler = async (event: IHandlerEvent) => {
     console.log("Running adapter", id)
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
-      .filter((chain) => volumeAdapter[chain].start >= cleanCurrentDayTimestamp || volumeAdapter[chain].start === 0)
+      .filter(async (chain) => {
+        let start = 0
+        if (typeof volumeAdapter[chain].start === 'number')
+          start = 0
+        else
+          start = await volumeAdapter[chain].start()
+        return (start >= cleanCurrentDayTimestamp) || (start === 0)
+      })
       .map(async (chain) => {
         const fetchFunction = volumeAdapter[chain].customBackfill ?? volumeAdapter[chain].fetch
         try {

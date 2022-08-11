@@ -42,6 +42,17 @@ function sum(
     data.doublecounted = (data.doublecounted || 0) + item.tvl;
   }
 
+  if (protocol.category?.toLowerCase() === "liquid staking") {
+    data.liquidstaking = (data.liquidstaking || 0) + item.tvl;
+  }
+
+  if (
+    protocol.category?.toLowerCase() === "liquid staking" &&
+    protocol.doublecounted
+  ) {
+    data.dcAndLsOverlap = (data.dcAndLsOverlap || 0) + item.tvl;
+  }
+
   total[time][oracle] = data;
 
   if (oracleProtocols[oracle] == undefined) {
@@ -50,29 +61,42 @@ function sum(
   oracleProtocols[oracle].add(protocol.name);
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+const handler = async (
+  _event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
   const sumDailyTvls = {} as SumDailyTvls;
   const oracleProtocols = {} as OracleProtocols;
 
-  await processProtocols(async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
-    try {
-      let oracles = protocol.oracles;
-      if (oracles) {
-        oracles.forEach((oracle) => {
-          sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol);
-        });
+  await processProtocols(
+    async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+      try {
+        let oracles = protocol.oracles;
+        if (oracles) {
+          oracles.forEach((oracle) => {
+            sum(
+              sumDailyTvls,
+              oracle,
+              timestamp,
+              item,
+              oracleProtocols,
+              protocol
+            );
+          });
 
-        return;
+          return;
+        }
+      } catch (error) {
+        console.log(protocol.name, error);
       }
-    } catch (error) {
-      console.log(protocol.name, error);
     }
-  });
+  );
 
   return successResponse(
     {
       chart: sumDailyTvls,
-      oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
+      oracles: Object.fromEntries(
+        Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])
+      ),
     },
     10 * 60
   ); // 10 mins cache

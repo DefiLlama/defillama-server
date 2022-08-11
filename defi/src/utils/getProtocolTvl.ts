@@ -73,6 +73,27 @@ export async function getProtocolTvl(
               tvlPrevMonth,
             };
           }
+
+          if (protocol.category?.toLowerCase() === "liquid staking") {
+            chainTvls["liquidstaking"] = {
+              tvl,
+              tvlPrevDay,
+              tvlPrevWeek,
+              tvlPrevMonth,
+            };
+          }
+
+          if (
+            protocol.category?.toLowerCase() === "liquid staking" &&
+            isDoubleCount
+          ) {
+            chainTvls["dcAndLsOverlap"] = {
+              tvl,
+              tvlPrevDay,
+              tvlPrevWeek,
+              tvlPrevMonth,
+            };
+          }
         } else {
           const chainDisplayName = getChainDisplayName(chain, useNewChainNames);
           chainTvls[chainDisplayName] = {
@@ -83,25 +104,54 @@ export async function getProtocolTvl(
           };
 
           if (
-            isDoubleCount &&
             !extraSections.includes(chainDisplayName) &&
             !chainDisplayName.includes("-")
           ) {
-            chainTvls[`${chainDisplayName}-doublecounted`] = {
-              tvl: chainTvl,
-              tvlPrevDay: previousDayRecord[chain] || null,
-              tvlPrevWeek: previousWeekRecord[chain] || null,
-              tvlPrevMonth: previousMonthRecord[chain] || null,
-            };
+            if (isDoubleCount) {
+              chainTvls[`${chainDisplayName}-doublecounted`] = {
+                tvl: chainTvl,
+                tvlPrevDay: previousDayRecord[chain] || null,
+                tvlPrevWeek: previousWeekRecord[chain] || null,
+                tvlPrevMonth: previousMonthRecord[chain] || null,
+              };
+            }
+
+            if (protocol.category?.toLowerCase() === "liquid staking") {
+              chainTvls[`${chainDisplayName}-liquidstaking`] = {
+                tvl: chainTvl,
+                tvlPrevDay: previousDayRecord[chain] || null,
+                tvlPrevWeek: previousWeekRecord[chain] || null,
+                tvlPrevMonth: previousMonthRecord[chain] || null,
+              };
+            }
+
+            if (
+              protocol.category?.toLowerCase() === "liquid staking" &&
+              isDoubleCount
+            ) {
+              chainTvls[`${chainDisplayName}-dcAndLsOverlap`] = {
+                tvl: chainTvl,
+                tvlPrevDay: previousDayRecord[chain] || null,
+                tvlPrevWeek: previousWeekRecord[chain] || null,
+                tvlPrevMonth: previousMonthRecord[chain] || null,
+              };
+            }
           }
         }
       });
 
       const chainsLength = Object.keys(chainTvls).length;
-      if (
-        chainsLength === 0 ||
-        (chainsLength === 1 && chainTvls["doublecounted"] !== undefined)
-      ) {
+
+      let allTvlsAreAddl = false;
+
+      Object.keys(chainTvls).forEach((type) => {
+        allTvlsAreAddl =
+          type === "doublecounted" ||
+          type === "liquidstaking" ||
+          type === "dcAndLsOverlap";
+      });
+
+      if (chainsLength === 0 || (chainsLength <= 3 && allTvlsAreAddl)) {
         chainTvls[protocol.chains[0]] = {
           tvl,
           tvlPrevDay,
@@ -112,6 +162,16 @@ export async function getProtocolTvl(
         if (chainTvls["doublecounted"]) {
           chainTvls[`${protocol.chains[0]}-doublecounted`] = {
             ...chainTvls["doublecounted"],
+          };
+        }
+        if (chainTvls["liquidstaking"]) {
+          chainTvls[`${protocol.chains[0]}-liquidstaking`] = {
+            ...chainTvls["liquidstaking"],
+          };
+        }
+        if (chainTvls["dcAndLsOverlap"]) {
+          chainTvls[`${protocol.chains[0]}-dcAndLsOverlap`] = {
+            ...chainTvls["dcAndLsOverlap"],
           };
         }
       }

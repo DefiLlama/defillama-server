@@ -12137,6 +12137,28 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/mmfinance"],
   listedAt: 1660328599
 },
+{
+  id: "1967",
+  name: "PembRock Finance",
+  address: "token.pembrock.near",
+  symbol: "PEM",
+  url: "https://pembrock.finance",
+  description: "PembRock Finance is the first leveraged yield farming protocol built on the NEAR blockchain. Users can provide liquidity, farm with leverage, stake, and take governance decisions to secure the future of the platform, all on a fast, secure, cheap, and user-friendly blockchain.",
+  chain: "Near",
+  logo: `${baseIconsUrl}/pembrock-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "pembrock",
+  cmcId: "20405",
+  category: "Dexes",
+  chains: ["Near"],
+  module: "pembrock/index.js",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  twitter: "DrachmaExchange",
+  audit_links: ["https://github.com/PembROCK-Finance/audits/blob/main/2022-07-01%20BlockSec%20Security%20Audit%20Report%20for%20PembRock%20Contracts.pdf"],
+  listedAt: 1660329722
+},
 ]
 
 

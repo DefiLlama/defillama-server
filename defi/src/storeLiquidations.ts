@@ -1,7 +1,7 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import adaptersModules from "./utils/imports/adapters_liquidations";
 import { getCurrentUnixTimestamp } from "./utils/date";
-import { liquidationsFilename, storeDataset } from "./utils/s3";
+import { liquidationsFilename, storeDataset, storeLiqsDataset } from "./utils/s3";
 
 async function handler(){
   const time = getCurrentUnixTimestamp()
@@ -18,11 +18,13 @@ async function handler(){
       liqs,
     }
   }))
-  
-  await storeDataset(liquidationsFilename, JSON.stringify({
-    data,
-    time
-  }), "application/json");
+
+  const payload = JSON.stringify({data, time})
+
+  // temp/liquidations.json
+  await storeDataset(liquidationsFilename, payload, "application/json");
+  // liqs/461201.json (unix timestamp / 3600) for 1 hour cache. rewriting the file within the same hour
+  await storeLiqsDataset(time, payload, "application/json");
   return;
 }
 

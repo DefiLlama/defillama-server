@@ -4,9 +4,9 @@ import { handler } from "../handlers/getStats";
 (async () => {
     const result = await handler({
         pathParameters: {
-            dex: "quickswap"
+            dex: "1inch"
         }
     } as unknown as AWSLambda.APIGatewayEvent)
     const jr = JSON.parse(result.body)
-    console.log(jr.find((jri: any) => jri.timestamp === 1658620800))
+    console.log(JSON.stringify(jr, null, 2))
 })()

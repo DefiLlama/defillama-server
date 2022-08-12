@@ -12147,7 +12147,7 @@ listedAt: 1650804679
   description: "PembRock Finance is the first leveraged yield farming protocol built on the NEAR blockchain. Users can provide liquidity, farm with leverage, stake, and take governance decisions to secure the future of the platform, all on a fast, secure, cheap, and user-friendly blockchain.",
   chain: "Near",
   logo: `${baseIconsUrl}/pembrock-finance.png`,
-  audits: "2",
+  audits: "1",
   audit_note: null,
   gecko_id: "pembrock",
   cmcId: "20405",

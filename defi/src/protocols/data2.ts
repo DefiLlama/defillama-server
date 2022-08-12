@@ -12115,6 +12115,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/solidproof/projects/blob/main/Drachma%20Exchange/SmartContract_Audit_Solidproof_DrachmaExchange.pdf"],
   listedAt: 1660135625
 },
+{
+  id: "1966",
+  name: "MM Finance Polyogn",
+  address: "polygon:0x22a31bD4cB694433B6de19e0aCC2899E553e9481",
+  symbol: "MMF",
+  url: "https://polymm.finance/",
+  description: "Launchpad for the largest ecosystem on Cronos coming to Polygon!",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/mm-finance-polygon.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Polygon"],
+  module: "mm-finance-polygon/index.js",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  twitter: "DrachmaExchange",
+  audit_links: ["https://www.certik.com/projects/mmfinance"],
+  listedAt: 1660328599
+},
 ]
 
 

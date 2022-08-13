@@ -10,6 +10,10 @@ import { Write, Read } from "../../utils/dbInterfaces";
 import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
+import { utils, Contract, providers, BigNumber } from "ethers";
+import { ParamType } from "ethers/lib/utils";
+import { PromisePool } from "@supercharge/promise-pool";
+import { getCurrentUnixTimestamp } from "../../../utils/date";
 
 async function fetchUniV2Markets(
   chain: string,
@@ -25,6 +29,7 @@ async function fetchUniV2Markets(
     })
   ).output;
 
+  console.log(pairsLength);
   const pairNums: number[] = Array.from(Array(Number(pairsLength)).keys());
 
   const pairs: MultiCallResults = await multiCall({
@@ -147,7 +152,8 @@ async function findPriceableLPs(
         : reserves.output[i].output._reserve1,
       bothTokensKnown:
         pricedTokens.includes(token0s.output[i].output.toLowerCase()) &&
-        pricedTokens.includes(token1s.output[i].output.toLowerCase())
+        pricedTokens.includes(token1s.output[i].output.toLowerCase()),
+      token1Primary: token1Known
     });
   }
   return priceableLPs;
@@ -202,14 +208,14 @@ export default async function getPairPrices(
   const tokenInfos: TokenInfos = await getLPInfo(chain, priceableLPs, block);
 
   const writes: Write[] = [];
-  await unknownTokens(
-    writes,
-    chain,
-    timestamp,
-    priceableLPs,
-    tokenPrices,
-    tokenInfos
-  );
+  // await unknownTokens(
+  //   writes,
+  //   chain,
+  //   timestamp,
+  //   priceableLPs,
+  //   tokenPrices,
+  //   tokenInfos
+  // );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
   return writes;
@@ -241,6 +247,12 @@ async function lps(
 
     const symbol: string = `${tokenInfos.symbolAs[i].output}-${tokenInfos.symbolBs[i].output}-${tokenInfos.lpSymbol[i].output}`;
 
+    let confidence: number =
+      coinData.redirect.length != 0
+        ? coinData.redirect[0].confidence
+        : coinData.dbEntry.confidence;
+    if (confidence == undefined) confidence = 1;
+
     if (symbol.includes("null")) return;
     addToDBWritesList(
       writes,
@@ -251,7 +263,7 @@ async function lps(
       symbol,
       timestamp,
       "uniswap-LP",
-      1
+      confidence
     );
   });
 }
@@ -266,7 +278,7 @@ async function unknownTokens(
   const lpsWithUnknown = priceableLPs.filter(
     (p: any) => p.bothTokensKnown == false
   );
-  let confidences = lpsWithUnknown.map((l: any) => {
+  let tokenValues = lpsWithUnknown.map((l: any) => {
     const coinData: Read = tokenPrices.filter((p: Read) =>
       p.dbEntry.PK.includes(l.primaryUnderlying.toLowerCase())
     )[0];
@@ -285,15 +297,18 @@ async function unknownTokens(
       (sideValue * 10 ** tokenInfos.underlyingDecimalBs[i].output) /
       l.secondaryBalance;
 
-    let confidence: number = (Math.log10(sideValue) - 4.5) / 2.75;
-    if (confidence < 0) confidence = 0;
-    if (confidence > 1) confidence = 1;
-
-    return { confidence, tokenValue };
+    return tokenValue;
   });
 
+  const confidences = await getConfidenceScores(
+    lpsWithUnknown,
+    "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+    tokenValues,
+    tokenInfos
+  );
+
   const isPriority = await isConfidencePriority(
-    confidences.map((c: any) => c.confidence),
+    confidences,
     lpsWithUnknown.map((l: any) => l.secondaryUnderlying),
     chain,
     timestamp
@@ -301,24 +316,71 @@ async function unknownTokens(
 
   lpsWithUnknown.map((l: any, i: number) => {
     const j = priceableLPs.indexOf(l);
-    if (!isPriority[i] || confidences[i].confidence == 0) return;
+    if (!isPriority[i] || confidences[i] == 0) return;
     addToDBWritesList(
       writes,
       chain,
       l.secondaryUnderlying.toLowerCase(),
-      confidences[i].tokenValue,
+      tokenValues[i],
       tokenInfos.underlyingDecimalBs[j].output,
       `${tokenInfos.symbolBs[j].output}`,
       timestamp,
       "uniswap-unknown-token",
-      confidences[i].confidence
+      confidences[i]
     );
   });
 }
-getPairPrices(
-  "ethereum",
-  "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
-  undefined,
-  0
-);
+async function getConfidenceScores(
+  lpsWithUnknown: any[],
+  target: string,
+  tokenValues: any[],
+  tokenInfos: TokenInfos
+) {
+  const usdSwapSize = 5 * 10 ** 5;
+  const calls = lpsWithUnknown
+    .map((l: any, i: number) => {
+      if (
+        isNaN(
+          10 ** tokenInfos.underlyingDecimalBs[i].output /
+            tokenValues[i].toFixed()
+        )
+      )
+        return [];
+      // this just swaps 50k tokens cos I cant get the fuckin big numbers to work
+      let qty = BigNumber.from(tokenInfos.underlyingDecimalBs[i].output).mul(
+        usdSwapSize.toFixed()
+      );
+      return [
+        {
+          target,
+          params: [qty, l.primaryBalance, l.secondaryBalance] // should be qty, reserveIn, reserveOut
+        },
+        {
+          target,
+          params: [qty.div(100), l.primaryBalance, l.secondaryBalance]
+        }
+      ];
+    })
+    .flat()
+    .filter((c: any) => c != []);
+
+  let a = await multiCall({
+    abi: abi.getAmountIn,
+    chain: "ethereum",
+    calls
+  }); // a is quant out from 50k unit swap
+  let b = await multiCall({
+    abi: abi.getAmountOut,
+    chain: "ethereum",
+    calls: calls as any
+  }); // a is quant out from 50k unit swap
+
+  return [0, 1];
+}
+// getPairPrices(
+//   "ethereum",
+//   "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+//   undefined,
+//   0
+// );
 // ts-node coins/src/adapters/lps/uniswap/uniswap.ts

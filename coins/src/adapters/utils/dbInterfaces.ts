@@ -19,6 +19,7 @@ export interface DbEntry {
   price: number;
   decimals: number;
   symbol: string;
+  confidence: number;
 }
 export interface Read {
   dbEntry: DbEntry;

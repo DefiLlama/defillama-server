@@ -12118,7 +12118,7 @@ listedAt: 1650804679
 },
 {
   id: "1966",
-  name: "MM Finance Polyogn",
+  name: "MM Finance Polygon",
   address: "polygon:0x22a31bD4cB694433B6de19e0aCC2899E553e9481",
   symbol: "MMF",
   url: "https://polymm.finance/",

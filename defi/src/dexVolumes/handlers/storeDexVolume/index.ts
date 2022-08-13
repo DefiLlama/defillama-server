@@ -28,9 +28,10 @@ const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
 export const handler = async (event: IHandlerEvent) => {
   console.info(`Storing volumes for the following indexs ${event.protocolIndexes}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
-  const currentTimestamp = event.timestamp || ((Date.now()) / 1000) - 60 * 2;
+  const currentTimestamp = event.timestamp || (Date.now()) / 1000;
   // Get clean day
   const cleanCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
+  const cleanPreviousDayTimestamp = getTimestampAtStartOfDayUTC(cleanCurrentDayTimestamp - 1)
 
   // Get closest block to clean day. Only for EVM compatible ones.
   const allChains = getChainsFromDexAdapters(
@@ -44,12 +45,10 @@ export const handler = async (event: IHandlerEvent) => {
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
       .filter(async (chain) => {
-        let start = 0
-        if (typeof volumeAdapter[chain].start === 'number')
-          start = 0
-        else
-          start = await volumeAdapter[chain].start()
-        return (start >= cleanCurrentDayTimestamp) || (start === 0)
+        let start = volumeAdapter[chain].start
+        if (typeof start !== 'number')
+          start = await start()
+        return (start <= cleanPreviousDayTimestamp) || (start === 0)
       })
       .map(async (chain) => {
         const fetchFunction = volumeAdapter[chain].customBackfill ?? volumeAdapter[chain].fetch
@@ -58,7 +57,7 @@ export const handler = async (event: IHandlerEvent) => {
           const result = await fetchFunction(cleanCurrentDayTimestamp - 1, chainBlocks);
           return ({ chain, result });
         } catch (e) {
-          return await Promise.reject({ chain, error: e, id, timestamp: currentTimestamp });
+          return await Promise.reject({ chain, error: e, id, timestamp: cleanPreviousDayTimestamp });
         }
       }
       ))
@@ -121,8 +120,8 @@ export const handler = async (event: IHandlerEvent) => {
         }
         return acc
       }, {} as IRecordVolumeData)
-      console.log("Daily volumes", dailyVolumes, id, cleanCurrentDayTimestamp)
-      await storeVolume(new Volume(VolumeType.dailyVolume, id, cleanCurrentDayTimestamp, dailyVolumes))
+      console.log("Daily volumes", dailyVolumes, id, cleanPreviousDayTimestamp)
+      await storeVolume(new Volume(VolumeType.dailyVolume, id, cleanPreviousDayTimestamp, dailyVolumes))
     }
     catch (error) {
       const err = error as Error

@@ -3,6 +3,6 @@ import { handler } from "../handlers/storeDexVolume";
 import volumeAdapters from "../dexAdapters";
 
 handler({
-    protocolIndexes: [volumeAdapters.findIndex(va => va.id==='189')],
-    timestamp: 1660172400
+    protocolIndexes: [volumeAdapters.findIndex(va => va.id==='162')],
+    timestamp: 1639526400
 })

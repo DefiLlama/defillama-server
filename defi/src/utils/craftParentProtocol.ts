@@ -63,7 +63,7 @@ export default async function craftParentProtocol(
 
   const childProtocolsTvls = await Promise.all(
     childProtocols.map(
-      async (c) => await craftProtocol(c, useNewChainNames, useHourlyData)
+      async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, true)
     )
   );
 

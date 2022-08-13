@@ -62,7 +62,8 @@ function selectChainFromItem(item: any, normalizedChain: string) {
 export default async function craftProtocol(
   protocolData: Protocol,
   useNewChainNames: boolean,
-  useHourlyData: boolean
+  useHourlyData: boolean,
+  skipReplaceLast: boolean
 ) {
   const [
     lastUsdHourlyRecord,
@@ -88,14 +89,15 @@ export default async function craftProtocol(
     importAdapter(protocolData),
   ]);
 
-  if (!useHourlyData) {
+  if (!useHourlyData && !skipReplaceLast) {
     // replaceLast(historicalUsdTvl, lastUsdHourlyRecord);
     // replaceLast(historicalUsdTokenTvl, lastUsdTokenHourlyRecord);
     // replaceLast(historicalTokenTvl, lastTokenHourlyRecord);
 
     // check for falsy values and push lastHourlyRecord to dataset
     lastUsdHourlyRecord && historicalUsdTvl.push(lastUsdHourlyRecord);
-    lastUsdTokenHourlyRecord && historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
+    lastUsdTokenHourlyRecord &&
+      historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
     lastTokenHourlyRecord && historicalTokenTvl.push(lastTokenHourlyRecord);
   }
 

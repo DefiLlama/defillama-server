@@ -1,4 +1,5 @@
 require("dotenv").config()
+import { writeFileSync } from "fs";
 import adapters from "../adapters/index";
 import { batchWrite } from "../utils/shared/dynamodb";
 
@@ -15,6 +16,7 @@ async function main() {
     }
 
     const results: any[] = await adapter(timestamp);
+    writeFileSync("adapterResults.json", JSON.stringify(results))
     await batchWrite(results.flat(), true);
 }
 

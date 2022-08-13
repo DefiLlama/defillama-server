@@ -8,6 +8,5 @@ import { handler } from "../handlers/getDexVolume";
         }
     } as unknown as AWSLambda.APIGatewayEvent)
     const d = JSON.parse(r.body)
-    delete d["volumeHistory"]
-console.log(d)
+    console.log(JSON.stringify(d, null, 2))
 })()

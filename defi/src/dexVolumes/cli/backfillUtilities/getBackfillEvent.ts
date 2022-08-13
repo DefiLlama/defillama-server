@@ -10,9 +10,9 @@ const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 export default async () => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
-        '1inch',
+        // '1inch',
         // 'balancer',
-        // 'bancor',
+        'bancor',
         // 'champagneswap',
         // 'curve',
         // 'dodo',
@@ -32,22 +32,36 @@ export default async () => {
         // 'uniswap'
     ]
 
-    // Remember, it's new Date(year, monthIndex, day)
-    let startTimestamp = new Date(2020, 0, 1).getTime()
+    let startTimestamp = 0
     // Looking for start time from adapter, if not found will default to the above
     const dex = volumeAdapters.find(dex => dex.volumeAdapter === DEXS_LIST[0])
     if (dex) {
         const dexAdapter: DexAdapter = (await importVolumeAdapter(dex)).default
         if ("volume" in dexAdapter) {
-            const st = Object.values(dexAdapter.volume).reduce((acc, { start }) => start < acc ? start : acc, 0)
-            if (st > 0) startTimestamp = st * 1000
+            const st = await Object.values(dexAdapter.volume)
+                .reduce(async (accP, { start }) => {
+                    const acc = await accP
+                    let currstart = start
+                    if (typeof start !== "number") currstart = await start()
+                    return (typeof currstart === 'number' && currstart > acc && currstart !== 0) ? currstart : acc
+                }, Promise.resolve(0))
+            startTimestamp = st
         } else {
-            const st = Object.values(dexAdapter.breakdown).reduce((acc, dexAdapter) => {
-                const bst = Object.values(dexAdapter.volume).reduce((acc, { start }) => start < acc ? start : acc, 0)
+            const st = await Object.values(dexAdapter.breakdown).reduce(async (accP, dexAdapter) => {
+                const acc = await accP
+                const bst = await Object.values(dexAdapter).reduce(async (accP, { start }) => {
+                    const acc = await accP
+                    let currstart = start
+                    if (typeof start !== "number") currstart = await start()
+                    return (typeof currstart === 'number' && currstart > acc && currstart !== 0) ? currstart : acc
+                }, Promise.resolve(0))
+
                 return bst < acc ? bst : acc
-            }, 0)
-            if (st > 0) startTimestamp = st * 1000
+            }, Promise.resolve(0))
+            startTimestamp = st
         }
+        if (startTimestamp > 0) startTimestamp *= 1000
+        else startTimestamp = new Date(Date.UTC(2018, 0, 1)).getTime()
     }
     const startDate = new Date(startTimestamp)
     console.info("Starting timestamp", startTimestamp, "->", startDate)

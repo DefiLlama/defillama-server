@@ -97,3 +97,24 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
         throw error
     }
 }
+
+// REMOVES ALL VOLUMES, DO NOT USE!
+export const removeVolume = async (dex: string, type: VolumeType, ): Promise<boolean> => {
+    const removeVolumeQuery = async (volume: Volume) => {
+        console.log("Removing", volume.keys())
+        return dynamodb.delete({
+            // TODO: Change for upsert like
+            Key: volume.keys(),
+        })
+    }
+    try {
+        const allVolumes = await getVolume(dex, type, "ALL")
+        console.log(allVolumes)
+        if (!(allVolumes instanceof Array)) throw new Error("Unexpected error deleting volumes")
+        await Promise.all(allVolumes.map(volume => removeVolumeQuery(volume)))
+        return true
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+}

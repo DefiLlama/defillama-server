@@ -24015,7 +24015,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1325",
-  name: "Magik Finance",
+  name: "Magik Finance AlgoStable",
   address: "fantom:0x87a5c9b60a3aaf1064006fe64285018e50e0d020",
   symbol: "MAGIK",
   url: "https://magik.finance/",
@@ -24031,6 +24031,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "magik-finance/index.js",
   twitter: "MagikDotFinance",
   forkedFrom: ["Tomb Finance"],
+  parentProtocol: "Magik Finance",
   listedAt: 1643474952,
 },
 {

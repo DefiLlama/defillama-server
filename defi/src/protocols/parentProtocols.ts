@@ -113,6 +113,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "1183",
     chains: [],
     twitter: "value_defi",
+  },
+  {
+    id: "Magik Finance",
+    name: "Magik Finance",
+    url: "https://magik.finance/",
+    description:
+    "Yield Optimization as a Service and Algorithmic token pegged to $FTM on the Fantom Opera network.`",
+    logo: `${baseIconsUrl}/magik-finance.png`,
+    gecko_id: "magik",
+    cmcId: "17941",
+    chains: [],
+    twitter: "MagikDotFinance",
   }
 ];
 

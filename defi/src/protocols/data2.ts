@@ -12183,6 +12183,28 @@ listedAt: 1650804679
   parentProtocol: "Magik Finance",
   listedAt: 1660361151
 },
+{
+  id: "1969",
+  name: "Huckleberry Lending",
+  address: "moonriver:0x9A92B5EBf1F6F6f7d93696FCD44e5Cf75035A756",
+  symbol: "FINN",
+  url: "https://moonriver.huckleberry.finance/#/lend/dashboard",
+  description: "Huckleberry lendin' is a community driven lending platform built on Moonriver",
+  chain: "Moonriver",
+  logo: `${baseIconsUrl}/huckleberry-lending.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Moonriver"],
+  module: "huckleberry-lending/index.js",
+  twitter: "HuckleberryDEX",
+  audit_links: ["https://github.com/HuckleberryDex/huckleberry-contracts/blob/main/Smart%20contract%20security%20audit%20report-Huckleberry.pdf"],
+  forkedFrom: ["Compound"],
+  parentProtocol: "Huckleberry",
+  listedAt: 1660364257
+},
 ]
 
 

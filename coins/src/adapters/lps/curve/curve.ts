@@ -323,13 +323,13 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
           continue;
         }
 
-        const confidence =
-          poolTokens
-            .map((p: any) => {
-              if (p.confidence == undefined) return 1;
-              return p.confidence;
-            })
-            .reduce((a, b) => a + b, 0) / poolTokens.length;
+        // const confidence =
+        //   poolTokens
+        //     .map((p: any) => {
+        //       if (p.confidence == undefined) return 1;
+        //       return p.confidence;
+        //     })
+        //     .reduce((a, b) => a + b, 0) / poolTokens.length;
 
         addToDBWritesList(
           writes,
@@ -341,7 +341,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
           tokenInfo.symbols[0].output,
           timestamp,
           "curve-LP",
-          confidence
+          1 //confidence
         );
       } catch {
         console.log([pool].map((i: any) => i.output)[0]);

@@ -30,9 +30,7 @@ async function fetchUniV2Markets(
   ).output;
 
   console.log(pairsLength);
-  const pairNums: number[] = Array.from(
-    Array(Number(pairsLength)).keys()
-  ).slice(87000);
+  const pairNums: number[] = Array.from(Array(Number(pairsLength)).keys());
 
   const pairs: MultiCallResults = await multiCall({
     abi: abi.allPairs,
@@ -154,7 +152,8 @@ async function findPriceableLPs(
         : reserves.output[i].output._reserve1,
       bothTokensKnown:
         pricedTokens.includes(token0s.output[i].output.toLowerCase()) &&
-        pricedTokens.includes(token1s.output[i].output.toLowerCase())
+        pricedTokens.includes(token1s.output[i].output.toLowerCase()),
+      token1Primary: token1Known
     });
   }
   return priceableLPs;
@@ -209,14 +208,14 @@ export default async function getPairPrices(
   const tokenInfos: TokenInfos = await getLPInfo(chain, priceableLPs, block);
 
   const writes: Write[] = [];
-  await unknownTokens(
-    writes,
-    chain,
-    timestamp,
-    priceableLPs,
-    tokenPrices,
-    tokenInfos
-  );
+  // await unknownTokens(
+  //   writes,
+  //   chain,
+  //   timestamp,
+  //   priceableLPs,
+  //   tokenPrices,
+  //   tokenInfos
+  // );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
   return writes;
@@ -337,7 +336,6 @@ async function getConfidenceScores(
   tokenValues: any[],
   tokenInfos: TokenInfos
 ) {
-  const deadline = getCurrentUnixTimestamp() + 3600;
   const usdSwapSize = 5 * 10 ** 5;
   const calls = lpsWithUnknown
     .map((l: any, i: number) => {
@@ -348,207 +346,41 @@ async function getConfidenceScores(
         )
       )
         return [];
-      let qty = BigNumber.from("1");
-      try {
-        let qty = BigNumber.from(
-          (
-            (usdSwapSize * 10 ** tokenInfos.underlyingDecimalBs[i].output) /
-            tokenValues[i]
-          ).toFixed()
-        );
-        // let a = BigNumber.from(
-        //   (
-        //     usdSwapSize *
-        //     10 ** (2 * tokenInfos.underlyingDecimalBs[i].output)
-        //   ).toFixed()
-        // );
-
-        // let j = BigNumber.from(
-        //   (
-        //     tokenValues[i] *
-        //     10 ** tokenInfos.underlyingDecimalBs[i].output
-        //   ).toFixed()
-        // );
-        // qty = a.div(j);
-      } catch (e) {
-        console.log("here");
-      }
+      // this just swaps 50k tokens cos I cant get the fuckin big numbers to work
+      let qty = BigNumber.from(tokenInfos.underlyingDecimalBs[i].output).mul(
+        usdSwapSize.toFixed()
+      );
       return [
         {
           target,
-          params: [
-            qty,
-            0,
-            [l.address],
-            "0x0000E0Ca771e21bD00057F54A68C30D400000000",
-            deadline
-          ]
+          params: [qty, l.primaryBalance, l.secondaryBalance] // should be qty, reserveIn, reserveOut
         },
         {
           target,
-          params: [
-            qty.div(100),
-            0,
-            [l.address],
-            "0x0000E0Ca771e21bD00057F54A68C30D400000000",
-            deadline
-          ]
+          params: [qty.div(100), l.primaryBalance, l.secondaryBalance]
         }
       ];
     })
     .flat()
-    .filter((c: any) => c != []); // [amntIn, minOut, path, to, deadline]
-  let a = await multiCall2({
-    abi: {
-      inputs: [
-        { internalType: "uint256", name: "amountIn", type: "uint256" },
-        { internalType: "uint256", name: "amountOutMin", type: "uint256" },
-        { internalType: "address[]", name: "path", type: "address[]" },
-        { internalType: "address", name: "to", type: "address" },
-        { internalType: "uint256", name: "deadline", type: "uint256" }
-      ],
-      name: "swapExactTokensForTokens",
-      outputs: [
-        { internalType: "uint256[]", name: "amounts", type: "uint256[]" }
-      ],
-      stateMutability: "nonpayable",
-      type: "function"
-    },
+    .filter((c: any) => c != []);
+
+  let a = await multiCall({
+    abi: abi.getAmountIn,
     chain: "ethereum",
     calls
-  });
+  }); // a is quant out from 50k unit swap
+  let b = await multiCall({
+    abi: abi.getAmountOut,
+    chain: "ethereum",
+    calls: calls as any
+  }); // a is quant out from 50k unit swap
+
   return [0, 1];
-  // target router with a static multicall
 }
-getPairPrices(
-  "ethereum",
-  "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
-  undefined,
-  0
-);
+// getPairPrices(
+//   "ethereum",
+//   "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+//   undefined,
+//   0
+// );
 // ts-node coins/src/adapters/lps/uniswap/uniswap.ts
-
-type CallParams = string | number | (string | number)[] | undefined;
-function normalizeParams(params: CallParams): (string | number)[] {
-  if (params === undefined) {
-    return [];
-  } else if (typeof params === "object") {
-    return params;
-  } else {
-    return [params];
-  }
-}
-async function multiCall2(params: {
-  abi: string | any;
-  calls: {
-    target: string;
-    params?: any;
-  }[];
-  block?: number;
-  target?: string; // Used when calls.target is not provided
-  chain?: string;
-  requery?: boolean;
-}) {
-  const abi = params.abi;
-  const contractCalls = params.calls.map((call) => {
-    const callParams = normalizeParams(call.params);
-    return {
-      params: callParams,
-      contract: call.target ?? params.target
-    };
-  });
-  // Only a max of around 500 calls are supported by multicall, we have to split bigger batches
-  const chunkSize = 500;
-  const contractChunks = [];
-  for (let i = 0; i < contractCalls.length; i += chunkSize)
-    contractChunks.push(contractCalls.slice(i, i + chunkSize));
-
-  const { results, errors } = await PromisePool.for(contractChunks)
-    //.withConcurrency(20)
-    .process(async (calls, i) =>
-      makeMultiCall(abi, calls).then((calls) => [calls, i])
-    );
-
-  if (errors.length) throw errors[0];
-}
-async function makeMultiCall(
-  functionABI: any,
-  calls: {
-    contract: string;
-    params: any[];
-  }[]
-) {
-  let contractInterface: any = new utils.Interface([functionABI]);
-  let fd = Object.values(contractInterface.functions)[0];
-
-  const contractCalls = calls.map((call) => {
-    const data = contractInterface.encodeFunctionData(fd, call.params);
-    return {
-      to: call.contract,
-      data
-    };
-  });
-
-  const returnValues = await executeCalls(contractCalls);
-
-  return returnValues;
-}
-async function executeCalls(
-  contractCalls: {
-    to: string;
-    data: string;
-  }[]
-) {
-  try {
-    const multicallData = utils.defaultAbiCoder.encode(
-      [
-        ParamType.fromObject({
-          components: [
-            { name: "target", type: "address" },
-            { name: "callData", type: "bytes" }
-          ],
-          name: "data",
-          type: "tuple[]"
-        })
-      ],
-      [contractCalls.map((call) => [call.to, call.data])]
-    );
-    const address = "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441";
-    const provider = new providers.JsonRpcProvider(
-      "https://api.avax-test.network/ext/bc/C/rpc"
-    );
-    const abi = [
-      {
-        constant: false,
-        inputs: [
-          {
-            components: [
-              { name: "target", type: "address" },
-              { name: "callData", type: "bytes" }
-            ],
-            name: "calls",
-            type: "tuple[]"
-          }
-        ],
-        name: "aggregate",
-        outputs: [
-          { name: "blockNumber", type: "uint256" },
-          { name: "returnData", type: "bytes[]" }
-        ],
-        payable: false,
-        stateMutability: "nonpayable",
-        type: "function"
-      }
-    ];
-    let multicallInstance = new Contract(address, abi, provider);
-
-    // hERE
-
-    let result = await multicallInstance.callStatic.aggregate(multicallData);
-    return result;
-  } catch (e) {
-    if (!process.env.DEFILLAMA_SDK_MUTED) {
-      console.log("Multicall failed, defaulting to single transactions...");
-    }
-  }
-}

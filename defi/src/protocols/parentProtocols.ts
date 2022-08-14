@@ -141,7 +141,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "MM Finance",
     name: "MM Finance",
-    url: "https://mm.finance",
+    url: "https://linktr.ee/madmeerkat",
     description:
     "DeFi Ecosystem on Cronos and AMM on Polygon",
     logo: `${baseIconsUrl}/mm-finance.jpg`,

@@ -18030,7 +18030,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1028",
-  name: "MM Finance",
+  name: "MM Finance Cronos",
   address: "cronos:0x97749c9B61F878a880DfE312d2594AE07AEd7656",
   symbol: "MMF",
   url: "https://mm.finance",
@@ -18047,6 +18047,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Uniswap"],
   twitter: "MMFcrypto",
   audit_links: ["https://www.certik.com/projects/mmfinance"],
+  parentProtocol: "MM Finance",
   listedAt: 1639599260 ,
 },
 {
@@ -20367,6 +20368,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "mmo-finance/index.js",
   twitter: "MMFcrypto",
   forkedFrom: ["Bunny"],
+  parentProtocol: "MM Finance",
   listedAt: 1640798436,
 },
 {

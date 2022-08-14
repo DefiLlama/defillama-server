@@ -128,6 +128,7 @@ const data2: Protocol[] =  [
   module: "svn/index.js",
   twitter: "MMFcrypto",
   audit_links: ["https://mmfinance.gitbook.io/docs/audit"],
+  parentProtocol: "MM Finance",
   listedAt: 1644884068,
 },
 {
@@ -12136,6 +12137,7 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   twitter: "DrachmaExchange",
   audit_links: ["https://www.certik.com/projects/mmfinance"],
+  parentProtocol: "MM Finance",
   listedAt: 1660328599
 },
 {

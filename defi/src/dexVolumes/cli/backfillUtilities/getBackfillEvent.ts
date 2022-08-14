@@ -12,8 +12,8 @@ export default async () => {
     const DEXS_LIST: string[] = [
         // '1inch',
         // 'balancer',
-        'bancor',
-        // 'champagneswap',
+        // 'bancor',
+        'champagneswap',
         // 'curve',
         // 'dodo',
         // 'katana',

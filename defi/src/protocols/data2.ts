@@ -12127,7 +12127,7 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/mm-finance-polygon.png`,
   audits: "1",
   audit_note: null,
-  gecko_id: null,
+  gecko_id: "mmfinance-polygon",
   cmcId: null,
   category: "Dexes",
   chains: ["Polygon"],

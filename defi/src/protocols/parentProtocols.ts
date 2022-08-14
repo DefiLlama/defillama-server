@@ -137,6 +137,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "12922",
     chains: [],
     twitter: "HuckleberryDEX",
+  },
+  {
+    id: "MM Finance",
+    name: "MM Finance",
+    url: "https://mm.finance/",
+    description:
+    "Defi Ecosystem on Cronos and Polygon",
+    logo: `${baseIconsUrl}/mm-finance.jpg`,
+    gecko_id: "mmfinance",
+    cmcId: "1572",
+    chains: [],
+    twitter: "MMFcrypto",
   }
 ];
 

@@ -141,12 +141,12 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "MM Finance",
     name: "MM Finance",
-    url: "https://mm.finance/",
+    url: "https://mm.finance",
     description:
-    "Defi Ecosystem on Cronos and Polygon",
+    "DeFi Ecosystem on Cronos and AMM on Polygon",
     logo: `${baseIconsUrl}/mm-finance.jpg`,
-    gecko_id: "mmfinance",
-    cmcId: "1572",
+    gecko_id: null,
+    cmcId: null,
     chains: [],
     twitter: "MMFcrypto",
   }

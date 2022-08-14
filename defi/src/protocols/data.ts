@@ -10366,6 +10366,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "huckleberry/index.js",
     twitter: "HuckleberryDEX",
     audit_links: ["https://github.com/HuckleberryDex/huckleberry-contracts/blob/main/Smart%20contract%20security%20audit%20report-Huckleberry.pdf"],
+    parentProtocol: "Huckleberry",
     forkedFrom: ["Uniswap"],
   },
   {

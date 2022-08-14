@@ -12239,7 +12239,7 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/mm-stableswap.jpg`,
   audits: "0",
   audit_note: null,
-  gecko_id: "mmf-money",
+  gecko_id: null,
   cmcId: null,
   category: "Dexes",
   chains: ["Cronos"],

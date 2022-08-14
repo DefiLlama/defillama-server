@@ -11861,7 +11861,7 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "RWA",
-  chains: ["Polygon"],
+  chains: ["Polygon", "Celo"],
   module: "toucan-protocol/index.js",
   oracles: [],
   forkedFrom: [],

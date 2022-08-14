@@ -12233,7 +12233,7 @@ listedAt: 1650804679
   name: "MM Stableswap",
   address: "cronos:0x49ab7ca4d2cf6777c8c56c5e9edb7d1218ae1299",
   symbol: "BURROW",
-  url: "https://stable.mm.finance/3mm",
+  url: "https://stable.mm.finance/swap",
   description: "Allow you to provide collateral in the form of various interest bearing crypto assets like tUSDC, mmUSDT, aMMF and more to borrow $MUSD (Mad USD) which is a stable coin that you can swap for any other traditional stable coin",
   chain: "Cronos",
   logo: `${baseIconsUrl}/mm-stableswap.jpg `,

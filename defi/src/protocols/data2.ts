@@ -12228,6 +12228,27 @@ listedAt: 1650804679
   forkedFrom: ["Solidly"],
   listedAt: 1660475403
 },
+{
+  id: "1971",
+  name: "MM Stableswap",
+  address: "cronos:0x49ab7ca4d2cf6777c8c56c5e9edb7d1218ae1299",
+  symbol: "BURROW",
+  url: "https://mmf.money/",
+  description: "Allow you to provide collateral in the form of various interest bearing crypto assets like tUSDC, mmUSDT, aMMF and more to borrow $MUSD (Mad USD) which is a stable coin that you can swap for any other traditional stable coin",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/mm-stableswap.jpg `,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "mmf-money",
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Cronos"],
+  module: "mm-stableswap/index.js",
+  twitter: "MMFcrypto",
+  forkedFrom: ["Curve"],
+  parentProtocol: "MM Finance",
+  listedAt: 1660493037
+},
 ]
 
 

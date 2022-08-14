@@ -4,7 +4,8 @@ import type { IRecordVolumeData } from "../handlers/storeDexVolume"
 import { Item } from "./base"
 
 export enum VolumeType {
-    dailyVolume = "dv"
+    dailyVolume = "dv",
+    totalVolume = "tv"
 }
 
 export class Volume extends Item {
@@ -78,28 +79,34 @@ function createExpressionAttributeValuesFromObj(obj: IRecordVolumeData): Record<
     }, {} as Record<string, unknown>)
 }
 
-export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LAST" = "ALL"): Promise<Volume[] | Volume> => {
+export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number): Promise<Volume[] | Volume> => {
     // Creating dummy object to get the correct key
     const volume = new Volume(type, dex, null!, null!)
+    let keyConditionExpression = "PK = :pk"
+    const expressionAttributeValues: { [key: string]: any } = {
+        ":pk": volume.pk,
+    }
+    if (mode === 'TIMESTAMP') {
+        expressionAttributeValues[":sk"] = timestamp
+        keyConditionExpression = `${keyConditionExpression} and SK = :sk`
+    }
     try {
         const resp = await dynamodb.query({
             // TODO: Change for upsert like
-            KeyConditionExpression: "PK = :pk",
-            ExpressionAttributeValues: {
-                ":pk": volume.pk,
-            },
+            KeyConditionExpression: keyConditionExpression,
+            ExpressionAttributeValues: expressionAttributeValues,
             Limit: mode === "LAST" ? 1 : undefined,
             ScanIndexForward: mode === "LAST" ? false : undefined
         })
         if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${volume.pk}`)
-        return mode === "LAST" ? Volume.fromItem(resp.Items[0]) : resp.Items.map(Volume.fromItem)
+        return mode === "LAST" || mode === 'TIMESTAMP' ? Volume.fromItem(resp.Items[0]) : resp.Items.map(Volume.fromItem)
     } catch (error) {
         throw error
     }
 }
 
 // REMOVES ALL VOLUMES, DO NOT USE!
-export const removeVolume = async (dex: string, type: VolumeType, ): Promise<boolean> => {
+export const removeVolume = async (dex: string, type: VolumeType,): Promise<boolean> => {
     const removeVolumeQuery = async (volume: Volume) => {
         console.log("Removing", volume.keys())
         return dynamodb.delete({

@@ -12205,6 +12205,26 @@ listedAt: 1650804679
   parentProtocol: "Huckleberry",
   listedAt: 1660364257
 },
+{
+  id: "1970",
+  name: "Cone",
+  address: "bsc:0xA60205802E1B5C6EC1CAFA3cAcd49dFeECe05AC9",
+  symbol: "CONE",
+  url: "https://cone.exchange",
+  description: "Cone is a decentralized exchange that allows swaps at a low cost in swap fees and has a governance structure based on the ve(3,3) system",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/cone.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "cone/index.js",
+  twitter: "Coneswap",
+  forkedFrom: ["Solidly"],
+  listedAt: 1660475403
+},
 ]
 
 

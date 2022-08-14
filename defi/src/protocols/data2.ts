@@ -12231,10 +12231,10 @@ listedAt: 1650804679
 {
   id: "1971",
   name: "MM Stableswap",
-  address: "cronos:0x49ab7ca4d2cf6777c8c56c5e9edb7d1218ae1299",
-  symbol: "BURROW",
+  address: null,
+  symbol: "-",
   url: "https://stable.mm.finance/swap",
-  description: "Allow you to provide collateral in the form of various interest bearing crypto assets like tUSDC, mmUSDT, aMMF and more to borrow $MUSD (Mad USD) which is a stable coin that you can swap for any other traditional stable coin",
+  description: "Our stableswap allow users to swap their MUSD stable coins for USDT, DAI, or USDC. We will enable more stables once our liquidity is reached optimal level",
   chain: "Cronos",
   logo: `${baseIconsUrl}/mm-stableswap.jpg`,
   audits: "0",

@@ -3097,6 +3097,7 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "metf-finance/index.js",
   twitter: "MMFcrypto",
+  parentProtocol: "MM Finance",
   listedAt: 1647390824,
 },
 {

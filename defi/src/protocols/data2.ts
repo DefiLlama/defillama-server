@@ -12265,7 +12265,7 @@ listedAt: 1650804679
   cmcId: "10841",
   category: "Yield",
   chains: ["Binance", "Polygon", "Fantom", "Avalanche", "Kardia"],
-  module: "wspp/index.jss",
+  module: "wspp/index.js",
   twitter: "RoboWolf8",
   forkedFrom: [],
   oracles: [],

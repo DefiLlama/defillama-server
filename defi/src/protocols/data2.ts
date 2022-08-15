@@ -12250,6 +12250,48 @@ listedAt: 1650804679
   parentProtocol: "MM Finance",
   listedAt: 1660493037
 },
+{
+  id: "1972",
+  name: "Wolf Safe Poor People",
+  address: "bsc:0x46d502fac9aea7c5bc7b13c8ec9d02378c33d36f",
+  symbol: "WSPP",
+  url: "https://wolfsafepoorpeople.com",
+  description: "WolfSafePoorPeople is a NFT , Staking & Yield Farming Dapps.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/wolf-safe-poor-people.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "wolfsafepoorpeople",
+  cmcId: "10841",
+  category: "Yield",
+  chains: ["Binance", "Polygon", "Fantom", "Avalanche", "Kardia"],
+  module: "wspp/index.jss",
+  twitter: "RoboWolf8",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1660568006
+},
+{
+  id: "1973",
+  name: "Prophet",
+  address: null,
+  symbol: "-",
+  url: "https://prophet.ooo",
+  description: "Prophet is a decentralized prediction market on the Obyte ledger.",
+  chain: "Obyte",
+  logo: `${baseIconsUrl}/prophet.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["Obyte"],
+  module: "prophet/index.js",
+  twitter: "ObyteOrg",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1660568009
+},
 ]
 
 

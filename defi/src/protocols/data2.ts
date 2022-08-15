@@ -12264,7 +12264,7 @@ listedAt: 1650804679
   gecko_id: "wolfsafepoorpeople",
   cmcId: "10841",
   category: "Yield",
-  chains: ["Binance", "Polygon", "Fantom", "Avalanche", "Kardia"],
+  chains: ["Binance", "Polygon", "Avalanche", "Kardia"],
   module: "wspp/index.js",
   twitter: "RoboWolf8",
   forkedFrom: [],

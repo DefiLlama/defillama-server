@@ -12292,6 +12292,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1660568009
 },
+{
+  id: "1974",
+  name: "Counterstake",
+  address: null,
+  symbol: "-",
+  url: "https://counterstake.org",
+  description: "Counterstake is a permissionless and fully decentralized cross-chain bridge..",
+  chain: "Obyte",
+  logo: `${baseIconsUrl}/counterstake.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Cross Chain",
+  chains: ["Obyte"],
+  module: "counterstake/index.js",
+  twitter: "ObyteOrg",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1660571813
+},
 ]
 
 

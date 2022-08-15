@@ -198,3 +198,48 @@ export async function isConfidencePriority(
     return false;
   });
 }
+
+export function filterWritesWithLowConfidence(allWrites: Write[]) {
+  const filteredWrites: Write[] = [];
+  const checkedWrites: Write[] = [];
+
+  allWrites.map((w: Write) => {
+    let checkedWritesOfThisKind = checkedWrites.filter(
+      (x: Write) =>
+        x.PK == w.PK &&
+        (((x.SK < w.SK + 1000 || x.SK > w.SK + 1000) &&
+          w.SK != 0 &&
+          x.SK != 0) ||
+          (x.SK == 0 && w.SK == 0))
+    );
+
+    if (checkedWritesOfThisKind.length > 0) return;
+    checkedWrites.push(w);
+
+    let allWritesOfThisKind = allWrites.filter(
+      (x: Write) =>
+        x.PK == w.PK &&
+        (((x.SK < w.SK + 1000 || x.SK > w.SK + 1000) &&
+          w.SK != 0 &&
+          x.SK != 0) ||
+          (x.SK == 0 && w.SK == 0))
+    );
+
+    if (allWritesOfThisKind.length == 1) {
+      filteredWrites.push(allWritesOfThisKind[0]);
+      return;
+    } else {
+      const maxConfidence = Math.max.apply(
+        null,
+        allWritesOfThisKind.map((x: Write) => x.confidence)
+      );
+      filteredWrites.push(
+        allWritesOfThisKind.filter(
+          (x: Write) => x.confidence == maxConfidence
+        )[0]
+      );
+    }
+  });
+
+  return filteredWrites;
+}

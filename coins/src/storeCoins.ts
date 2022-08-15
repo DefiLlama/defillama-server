@@ -1,6 +1,6 @@
 import adapters from "./adapters/index";
 import { batchWrite } from "./utils/shared/dynamodb";
-import { storePks, checkOutdated } from "./listCoins";
+import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 
 export default async function handler(event: any) {
   const a = Object.entries(adapters);
@@ -9,7 +9,10 @@ export default async function handler(event: any) {
     event.protocolIndexes.map(async (i: any) => {
       try {
         const results: any[] = await a[i][1][a[i][0]](timestamp);
-        await batchWrite(results.flat(), true);
+        const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+          results.flat()
+        );
+        await batchWrite(resultsWithoutDuplicates, true);
       } catch (e) {
         console.log("adapter failed", a[i][0], e);
       }

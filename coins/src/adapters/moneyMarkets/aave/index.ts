@@ -66,3 +66,11 @@ export function klap(timestamp: number = 0) {
     )
   ]);
 }
+export function valas(timestamp: number = 0) {
+  return getTokenPrices(
+    "bsc",
+    "0x99E41A7F2Dd197187C8637D1D151Dc396261Bc14",
+    "v2",
+    timestamp
+  );
+}

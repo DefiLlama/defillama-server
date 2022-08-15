@@ -89,6 +89,66 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8497",
     chains: [],
     twitter: "ape_swap",
+  },
+  {
+    id: "Parallel DeFi Super App",
+    name: "Parallel DeFi Super App",
+    url: "https://parallel.fi",
+    description:
+    "Parallel Finance is a Decentralized Money Market Protocol that offers lending, staking, and borrowing in the Polkadot ecosystem. Depositors can lend and stake simultaneously to earn double yield on their staked coins, and borrowers can collateralize to borrow.",
+    logo: `${baseIconsUrl}/parallel-defi-super-app.jpg`,
+    gecko_id: null ,
+    cmcId: null,
+    chains: [],
+    twitter: "ParallelFi",
+  },
+  {
+    id: "Value",
+    name: "Value",
+    url: "https://valuedefi.io",
+    description:
+    "The Value DeFi protocol is a platform and suite of products that aim to bring fairness, true value, and innovation to Decentralized Finance.`",
+    logo: `${baseIconsUrl}/valuedefi.jpg`,
+    gecko_id: "value-liquidity" ,
+    cmcId: "1183",
+    chains: [],
+    twitter: "value_defi",
+  },
+  {
+    id: "Magik Finance",
+    name: "Magik Finance",
+    url: "https://magik.finance/",
+    description:
+    "Yield Optimization as a Service and Algorithmic token pegged to $FTM on the Fantom Opera network.",
+    logo: `${baseIconsUrl}/magik-finance.png`,
+    gecko_id: "magik",
+    cmcId: "17941",
+    chains: [],
+    twitter: "MagikDotFinance",
+  },
+  {
+    id: "Huckleberry",
+    name: "Huckleberry",
+    url: "https://www.huckleberry.finance/",
+    description:
+    "Huckleberry is a community driven AMM crosschain DEX and lendin' platform built on Moonriver and CLV.",
+    logo: `${baseIconsUrl}/huckleberry.png`,
+    gecko_id: "huckleberry",
+    cmcId: "12922",
+    chains: [],
+    twitter: "HuckleberryDEX",
+  },
+  {
+    id: "MM Finance",
+    name: "MM Finance",
+    url: "https://linktr.ee/madmeerkat",
+    description:
+    "DeFi Ecosystem on Cronos and AMM on Polygon",
+    logo: `${baseIconsUrl}/mm-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MMFcrypto",
   }
 ];
 

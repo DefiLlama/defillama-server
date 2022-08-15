@@ -14,8 +14,8 @@ export default {
   cream: require("./moneyMarkets/compound/index"),
   scream: require("./moneyMarkets/compound/index"),
 
-  yearn: require("./yield/yearn/index")
-  // curve: require("./lps/curve/index"),
+  yearn: require("./yield/yearn/index"),
+  curve: require("./lps/curve/index"),
 
   // uniswap: require("./lps/uniswap/index"),
   // traderJoe: require("./lps/uniswap/index"),

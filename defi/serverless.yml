@@ -158,6 +158,14 @@ functions:
       - http:
           path: updatedProtocol/{protocol}
           method: get
+  debugProtocol:
+    handler: src/getUpdatedProtocol.default
+    timeout: 120
+    memorySize: 2000
+    events:
+      - http:
+          path: debugProtocol/{protocol}
+          method: get
   protocolTvl:
     handler: src/getProtocolTvl.default
     events:
@@ -226,6 +234,17 @@ functions:
       - http:
           path: testTvl
           method: get
+  getLiquidations:
+    handler: src/getLiquidations.default
+    timeout: 30
+    events:
+      - http:
+          path: liquidations
+          method: get
+  storeLiquidations:
+    handler: src/storeLiquidations.default
+    timeout: 900
+    memorySize: 2000
   dataset:
     handler: src/getDataset.default
     timeout: 900
@@ -314,7 +333,7 @@ functions:
     handler: src/triggerStoreVolume.default
     timeout: 900
     events:
-      - schedule: rate(1 day)
+      - schedule: cron(01 0 * * ? *)
   getStats:
     handler: src/dexVolumes/handlers/getStats/index.default
     timeout: 90

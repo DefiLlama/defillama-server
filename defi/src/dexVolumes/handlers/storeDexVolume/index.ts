@@ -3,15 +3,16 @@ import { wrapScheduledLambda } from "../../../utils/shared/wrap";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import volumeAdapters from "../../dexAdapters";
 import { DexAdapter, VolumeAdapter } from "@defillama/adapters/dexVolumes/dexVolume.type";
-import { storeVolume, Volume, VolumeType } from "../../data/volume";
-import getAllChainsFromDexAdapters from "../../utils/getAllChainsFromDexAdapters";
+import { storeVolume, Volume, VolumeType, getVolume } from "../../data/volume";
+import getChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
+import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
-interface IHandlerEvent {
+export interface IHandlerEvent {
   protocolIndexes: number[]
   timestamp?: number
 }
@@ -25,37 +26,71 @@ export interface IRecordVolumeData {
 const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
 
 export const handler = async (event: IHandlerEvent) => {
-  // Timestamp to query, defaults current timestamp
+  console.info(`Storing volumes for the following indexs ${event.protocolIndexes}`)
+  // Timestamp to query, defaults current timestamp - 2 minutes delay
   const currentTimestamp = event.timestamp || (Date.now()) / 1000;
   // Get clean day
-  const fetchCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp);
+  const cleanCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
+  const cleanPreviousDayTimestamp = getTimestampAtStartOfDayUTC(cleanCurrentDayTimestamp - 1)
 
   // Get closest block to clean day. Only for EVM compatible ones.
-  const allChains = getAllChainsFromDexAdapters().filter(canGetBlock)
-  const chainBlocks = await getChainBlocks(currentTimestamp, allChains);
+  const allChains = getChainsFromDexAdapters(
+    event.protocolIndexes.map(index => volumeAdapters[index].volumeAdapter)
+  ).filter(canGetBlock)
 
-  async function runAdapter(id: string, volumeAdapter: VolumeAdapter) {
+  const chainBlocks = await getChainBlocks(cleanCurrentDayTimestamp, allChains);
+
+  async function runAdapter(id: string, volumeAdapter: VolumeAdapter, version: string) {
+    console.log("Running adapter", id)
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
-      .map((chain) => volumeAdapter[chain]
-        .fetch(currentTimestamp, chainBlocks)
-        .then(result => ({ chain, result }))
-        .catch(e => Promise.reject({ chain, error: e, id, timestamp: currentTimestamp }))))
+      .filter(async (chain) => {
+        let start = volumeAdapter[chain].start
+        if (typeof start !== 'number')
+          start = await start()
+        return (start <= cleanPreviousDayTimestamp) || (start === 0)
+      })
+      .map(async (chain) => {
+        const fetchFunction = volumeAdapter[chain].customBackfill ?? volumeAdapter[chain].fetch
+        try {
+          // substract 1 second from cleanCurrentTimestamp to get total day volume at cleanCurrentTimestamp (if not we would get only daily volume at the moment this function is called)
+          const result = await fetchFunction(cleanCurrentDayTimestamp - 1, chainBlocks);
+          if (result.totalVolume && !result.dailyVolume) {
+            try {
+              const totalVolumePrevDay = await getVolume(id, VolumeType.totalVolume, "TIMESTAMP", cleanPreviousDayTimestamp - 60 * 60 * 24)
+              console.log("Found ->", totalVolumePrevDay, cleanPreviousDayTimestamp - 60 * 60 * 24)
+              if (totalVolumePrevDay instanceof Array) throw new Error(`${STORE_DEX_VOLUME_ERROR}:${id}: Unexpected error getting previous day total volume`)
+              else {
+                result.dailyVolume = `${Number(result.totalVolume) - Number(totalVolumePrevDay.data[chain][version])}`
+              }
+            } catch (error) {
+              console.error(error, cleanPreviousDayTimestamp - 60 * 60 * 24)
+            }
+          }
+          return ({ chain, result });
+        } catch (e) {
+          return await Promise.reject({ chain, error: e, id, timestamp: cleanPreviousDayTimestamp });
+        }
+      }
+      ))
   }
 
   // TODO: change for allSettled
-  const volumeResponses = await Promise.all(event.protocolIndexes.map(async protocolIndex => {
+  await Promise.all(event.protocolIndexes.map(async protocolIndex => {
     // Get DEX info
     const { id, volumeAdapter } = volumeAdapters[protocolIndex];
+    console.info(`Adapter found ${protocolIndex} ${id} ${volumeAdapter}`)
 
     try {
       // Import DEX adapter
       const dexAdapter: DexAdapter = (await importVolumeAdapter(volumeAdapters[protocolIndex])).default;
-
+      console.info("Improted OK")
       // Retrieve daily volumes
       let rawDailyVolumes: IRecordVolumeData[] = []
+      let rawTotalVolumes: IRecordVolumeData[] = []
       if ("volume" in dexAdapter) {
-        const runAdapterRes = await runAdapter(id, dexAdapter.volume)
+        const runAdapterRes = await runAdapter(id, dexAdapter.volume, volumeAdapter)
+        console.log(JSON.stringify(runAdapterRes, null, 2))
         const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
         for (const volume of volumes) {
           if (volume && volume.result.dailyVolume)
@@ -64,26 +99,40 @@ export const handler = async (event: IHandlerEvent) => {
                 [volumeAdapter]: +volume.result.dailyVolume
               },
             })
+          if (volume && volume.result.totalVolume)
+            rawTotalVolumes.push({
+              [volume.chain]: {
+                [volumeAdapter]: +volume.result.totalVolume
+              },
+            })
         }
         const volumesRejected: IAllSettledRejection[] = runAdapterRes.filter(rar => rar.status === 'rejected').map(r => r.status === "rejected" && r.reason) as IAllSettledRejection[]
         processRejectedPromises(volumesRejected, rawDailyVolumes, volumeAdapter)
+        processRejectedPromises(volumesRejected, rawTotalVolumes, volumeAdapter)
       } else if ("breakdown" in dexAdapter) {
         const dexBreakDownAdapter = dexAdapter.breakdown
         const volumeAdapters = Object.entries(dexBreakDownAdapter)
         for (const [version, volumeAdapterObj] of volumeAdapters) {
-          const runAdapterRes = await runAdapter(id, volumeAdapterObj)
+          const runAdapterRes = await runAdapter(id, volumeAdapterObj, version)
+          console.log(JSON.stringify(runAdapterRes, null, 2))
           const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
           for (const volume of volumes) {
-            if (volume && volume.result.dailyVolume) {
+            if (volume && volume.result.dailyVolume)
               rawDailyVolumes.push({
                 [volume.chain]: {
                   [version]: +volume.result.dailyVolume
                 },
               })
-            }
+            if (volume && volume.result.totalVolume)
+              rawTotalVolumes.push({
+                [volume.chain]: {
+                  [version]: +volume.result.totalVolume
+                },
+              })
           }
           const volumesRejected: IAllSettledRejection[] = runAdapterRes.filter(rar => rar.status === 'rejected').map(r => r.status === "rejected" && r.reason) as IAllSettledRejection[]
           processRejectedPromises(volumesRejected, rawDailyVolumes, volumeAdapter)
+          processRejectedPromises(volumesRejected, rawTotalVolumes, volumeAdapter)
         }
       } else {
         console.error("Invalid adapter")
@@ -97,8 +146,33 @@ export const handler = async (event: IHandlerEvent) => {
         }
         return acc
       }, {} as IRecordVolumeData)
-
-      await storeVolume(new Volume(VolumeType.dailyVolume, id, fetchCurrentDayTimestamp, dailyVolumes))
+      const totalVolumes = rawTotalVolumes.reduce((acc, current: IRecordVolumeData) => {
+        const chain = Object.keys(current)[0]
+        acc[chain] = {
+          ...acc[chain],
+          ...current[chain]
+        }
+        return acc
+      }, {} as IRecordVolumeData)
+      console.log("Daily volumes", dailyVolumes, id, cleanPreviousDayTimestamp)
+      console.log("Total volumes", totalVolumes, id, cleanPreviousDayTimestamp)
+      // TODO: IMPROVE ERROR HANDLING
+      let error = undefined
+      try {
+        await storeVolume(new Volume(VolumeType.totalVolume, id, cleanPreviousDayTimestamp, totalVolumes))
+      } catch (e) {
+        const err = e as Error
+        console.error(`${STORE_DEX_VOLUME_ERROR}:${volumeAdapter}: ${err.message}`)
+        error = e
+      }
+      try {
+        await storeVolume(new Volume(VolumeType.dailyVolume, id, cleanPreviousDayTimestamp, dailyVolumes))
+      } catch (e) {
+        const err = e as Error
+        console.error(`${STORE_DEX_VOLUME_ERROR}:${volumeAdapter}: ${err.message}`)
+        error = e
+      }
+      if (error) throw error
     }
     catch (error) {
       const err = error as Error

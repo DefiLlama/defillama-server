@@ -1,7 +1,7 @@
 {
   "name": "defillama-server",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "deploy:env": "npm run prebuild && sls deploy --stage $NODE_ENV",
     "deploy:dev": "export NODE_ENV=dev && npm run deploy:env",
@@ -46,6 +46,7 @@
   "dependencies": {
     "@defillama/adapters": "file:./DefiLlama-Adapters",
     "@defillama/sdk": "^2.3.80",
+    "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",
     "dotenv": "^16.0.1",
     "mysql2": "^2.3.3",

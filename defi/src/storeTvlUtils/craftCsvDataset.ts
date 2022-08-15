@@ -49,6 +49,10 @@ function addBasicChain(historicalItems:AWS.DynamoDB.DocumentClient.ItemList | un
     if(item[chain] === undefined){
       item[chain] = item.tvl
     }
+    if(item["avax"] === undefined && item["avalanche"] !== undefined){
+      item["avax"] = item["avalanche"]
+      delete item["avalanche"]
+    }
   })
   return historicalItems
 }

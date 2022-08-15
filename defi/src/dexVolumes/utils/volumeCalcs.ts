@@ -1,33 +1,34 @@
 import { getTimestampAtStartOfDayUTC } from "../../utils/date";
 import { Volume } from "../data/volume";
 import { VolumeSummaryDex } from "../handlers/getDexs";
+import { ONE_DAY_IN_SECONDS } from "../handlers/getDexVolume";
 import { IRecordVolumeData } from "../handlers/storeDexVolume";
 import getDataPoints from "./getDataPoints";
 
-const summAllVolumes = (breakdownVolumes: IRecordVolumeData) =>
+const sumAllVolumes = (breakdownVolumes: IRecordVolumeData) =>
     Object.values(breakdownVolumes).reduce((acc, volume) =>
         acc + Object.values(volume)
             .reduce<number>((vacc, current) => typeof current === 'number' ? vacc + current : vacc, 0)
         , 0)
 
 const getSumAllDexsToday = (dexs: VolumeSummaryDex[]) => {
-    const todaysTimestamp = getTimestampAtStartOfDayUTC(Date.now() / 1000);
-    const timestamp1d = (new Date(todaysTimestamp * 1000)).setDate((new Date(todaysTimestamp * 1000).getDate() - 1)) / 1000
-    const timestamp7d = (new Date(todaysTimestamp * 1000)).setDate((new Date(todaysTimestamp * 1000).getDate() - 7)) / 1000
-    const timestamp30d = (new Date(todaysTimestamp * 1000)).setDate((new Date(todaysTimestamp * 1000).getDate() - 30)) / 1000
+    const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(Date.now() / 1000);
+    const timestamp1d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 1  // (new Date(yesterdaysTimestamp * 1000)).setDate((new Date(yesterdaysTimestamp * 1000).getDate() - 1)) / 1000
+    const timestamp7d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 7  // (new Date(yesterdaysTimestamp * 1000)).setDate((new Date(yesterdaysTimestamp * 1000).getDate() - 7)) / 1000
+    const timestamp30d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 30  // (new Date(yesterdaysTimestamp * 1000)).setDate((new Date(yesterdaysTimestamp * 1000).getDate() - 30)) / 1000
     let totalVolume = 0
     let totalVolume1d = 0
     let totalVolume7d = 0
     let totalVolume30d = 0
     for (const dex of dexs) {
-        const todaysVolume = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === todaysTimestamp)?.data
+        const yesterdaysVolume = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
         const volume1d = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
         const volume7d = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp7d)?.data
         const volume30d = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp30d)?.data
-        totalVolume += todaysVolume ? summAllVolumes(todaysVolume) : 0
-        totalVolume1d += volume1d ? summAllVolumes(volume1d) : 0
-        totalVolume7d += volume7d ? summAllVolumes(volume7d) : 0
-        totalVolume30d += volume30d ? summAllVolumes(volume30d) : 0
+        totalVolume += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0
+        totalVolume1d += volume1d ? sumAllVolumes(volume1d) : 0
+        totalVolume7d += volume7d ? sumAllVolumes(volume7d) : 0
+        totalVolume30d += volume30d ? sumAllVolumes(volume30d) : 0
     }
     return {
         totalVolume,
@@ -44,7 +45,7 @@ const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]) => {
         let total = 0
         for (const dex of dexs) {
             const volumeObj = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === dataPoint)?.data
-            total += volumeObj ? summAllVolumes(volumeObj) : 0
+            total += volumeObj ? sumAllVolumes(volumeObj) : 0
         }
         chartData.push([`${dataPoint}`, total])
     }
@@ -55,12 +56,12 @@ const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]) => {
 const calcNdChange = (volumes: Volume[], nDaysChange: number) => {
     let totalVolume = 0
     let totalVolumeNd = 0
-    const todaysTimestamp = getTimestampAtStartOfDayUTC((Date.now() - 1000 * 60 * 60 * 24) / 1000);
-    const timestamp1d = (new Date(todaysTimestamp * 1000)).setDate((new Date(todaysTimestamp * 1000).getDate() - nDaysChange)) / 1000
-    const todaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === todaysTimestamp)?.data
-    const volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
-    totalVolume += todaysVolume ? summAllVolumes(todaysVolume) : 0
-    totalVolumeNd += volumeNd ? summAllVolumes(volumeNd) : 0
+    const yesterdaysTimestamp = getTimestampAtStartOfDayUTC((Date.now() / 1000) - ONE_DAY_IN_SECONDS);
+    const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
+    const yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
+    const volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd)?.data
+    totalVolume += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0
+    totalVolumeNd += volumeNd ? sumAllVolumes(volumeNd) : 0
     return formatNdChangeNumber((totalVolume - totalVolumeNd) / totalVolumeNd * 100)
 }
 
@@ -73,7 +74,7 @@ const formatNdChangeNumber = (number: number) => {
 }
 
 export {
-    summAllVolumes,
+    sumAllVolumes,
     getSumAllDexsToday,
     generateAggregatedVolumesChartData,
     calcNdChange

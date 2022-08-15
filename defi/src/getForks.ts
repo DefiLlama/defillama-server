@@ -1,6 +1,6 @@
-import { IProtocol, processProtocols, TvlItem } from './storeGetCharts';
-import { successResponse, wrap, IResponse } from './utils/shared';
-import { extraSections } from './utils/normalizeChain';
+import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
+import { successResponse, wrap, IResponse } from "./utils/shared";
+import { extraSections } from "./utils/normalizeChain";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -33,14 +33,25 @@ function sum(
   const data = total[time][fork] || {};
 
   for (const i in item) {
-    const section: string = i.includes('-') ? i.split('-')[1] : i;
-    if (section === 'tvl' || extraSections.includes(section)) {
+    const section: string = i.includes("-") ? i.split("-")[1] : i;
+    if (section === "tvl" || extraSections.includes(section)) {
       data[section] = (data[section] || 0) + item[section];
     }
   }
 
   if (protocol.doublecounted) {
     data.doublecounted = (data.doublecounted || 0) + item.tvl;
+  }
+
+  if (protocol.category?.toLowerCase() === "liquid staking") {
+    data.liquidstaking = (data.liquidstaking || 0) + item.tvl;
+  }
+
+  if (
+    protocol.category?.toLowerCase() === "liquid staking" &&
+    protocol.doublecounted
+  ) {
+    data.dcAndLsOverlap = (data.dcAndLsOverlap || 0) + item.tvl;
   }
 
   total[time][fork] = data;
@@ -51,29 +62,35 @@ function sum(
   forkedProtocols[fork].add(protocol.name);
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+const handler = async (
+  _event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
   const sumDailyTvls = {} as SumDailyTvls;
   const forkedProtocols = {} as ForkedProtocols;
 
-  await processProtocols(async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
-    try {
-      let forks = protocol.forkedFrom;
+  await processProtocols(
+    async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+      try {
+        let forks = protocol.forkedFrom;
 
-      if (forks) {
-        forks.forEach((fork) => {
-          sum(sumDailyTvls, fork, timestamp, item, forkedProtocols, protocol);
-        });
-        return;
+        if (forks) {
+          forks.forEach((fork) => {
+            sum(sumDailyTvls, fork, timestamp, item, forkedProtocols, protocol);
+          });
+          return;
+        }
+      } catch (error) {
+        console.log(protocol.name, error);
       }
-    } catch (error) {
-      console.log(protocol.name, error);
     }
-  });
+  );
 
   return successResponse(
     {
       chart: sumDailyTvls,
-      forks: Object.fromEntries(Object.entries(forkedProtocols).map((c) => [c[0], Array.from(c[1])])),
+      forks: Object.fromEntries(
+        Object.entries(forkedProtocols).map((c) => [c[0], Array.from(c[1])])
+      ),
     },
     10 * 60
   ); // 10 mins cache

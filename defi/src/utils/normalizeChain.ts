@@ -51,9 +51,9 @@ export const chainCoingeckoIds = {
     chainId: 11297108109,
   },
   "Optimism": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "optimism",
+    symbol: "OP",
+    cmcId: "11840",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -1040,6 +1040,16 @@ export const chainCoingeckoIds = {
     cmcId: "15185",
     categories: ["Cosmos"],
   },
+  "Heiko": {
+    geckoId: null,
+    symbol: "HKO",
+    cmcId: null,
+    categories: ["Parachain"],
+    parent: {
+      chain: "Kusama",
+      types: ["parachain"]
+    }
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1297,6 +1307,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Flow"
     case "kujira":
       return "Kujira"
+    case "heiko":
+      return "Heiko"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

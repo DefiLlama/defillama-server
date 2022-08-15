@@ -36,13 +36,28 @@ export async function storeDataset(filename: string, body: string | Readable, co
   }).promise()
 }
 
-export function buildRedirect(filename:string){
+export async function storeLiqsDataset(time: number, body: string | Readable, contentType = "application/json") {
+  const hourId = Math.floor(time / 3600)
+  await new aws.S3().upload({
+    Bucket: datasetBucket,
+    Key: `liqs/${hourId}.json`,
+    Body: body,
+    ACL: "public-read",
+    ContentType: contentType
+  }).promise()
+}
+
+export function buildRedirect(filename:string, cache?:number){
   return {
     statusCode: 307,
     body: "",
     headers: {
       "Location": `https://defillama-datasets.s3.eu-central-1.amazonaws.com/temp/${filename}`,
+      ...(cache !== undefined? {
+        "Cache-Control" : `max-age=${cache}`
+      }:{})
     },
   }
 }
 
+export const liquidationsFilename = `liquidations.json`;

@@ -202,15 +202,17 @@ const formattedChains = async (category: string) => {
     .sort((a, b) => b.tvl - a.tvl);
 
   const tvlTypes = {
-    "tvl": "t",
-    "borrowed": "b",
-    "doublecounted": "d",
-    "pool2": "p",
-    "staking": "s",
+    tvl: "t",
+    borrowed: "b",
+    pool2: "p",
+    staking: "s",
+    doublecounted: "d",
+    liquidstaking: "l",
+    dcAndLsOverlap: "dl",
   } as {
-    [name:string]:string
-  }
-  const to2Digits = (n:number)=>Number(n.toFixed(2))
+    [name: string]: string;
+  };
+  const to2Digits = (n: number) => Number(n.toFixed(2));
 
   // format chains data to use in stacked area chart
   const stackedDataset = Object.entries(
@@ -223,9 +225,12 @@ const formattedChains = async (category: string) => {
             total[value[0]] = {};
           }
           const b = total[value[0]][chainName];
-          const compressedType = tvlTypes[tvlType]
-          if(compressedType !== undefined){
-            total[value[0]][chainName] = { ...b, [compressedType]: to2Digits(value[1]) };
+          const compressedType = tvlTypes[tvlType];
+          if (compressedType !== undefined) {
+            total[value[0]][chainName] = {
+              ...b,
+              [compressedType]: to2Digits(value[1]),
+            };
           }
         });
       });

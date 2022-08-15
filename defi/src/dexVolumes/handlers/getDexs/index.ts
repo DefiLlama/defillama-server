@@ -3,7 +3,7 @@ import volumeAdapters, { Dex } from "../../dexAdapters";
 import { getVolume, Volume, VolumeType } from "../../data/volume"
 import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
-import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, summAllVolumes } from "../../utils/volumeCalcs";
+import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, sumAllVolumes } from "../../utils/volumeCalcs";
 
 export interface VolumeSummaryDex extends Dex {
     totalVolume24h: number | null
@@ -14,17 +14,17 @@ export interface VolumeSummaryDex extends Dex {
 export const handler = async (): Promise<IResponse> => {
     const dexsResults = await allSettled(volumeAdapters.map<Promise<VolumeSummaryDex>>(async (adapter) => {
         try {
-            const volume = await getVolume(adapter.id, VolumeType.dailyVolume)
+            const volumes = await getVolume(adapter.id, VolumeType.dailyVolume)
             // This check is made to infer Volume[] type instead of Volume type
-            if (!(volume instanceof Array)) throw new Error("Wrong volume queried")
+            if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
             return {
                 ...adapter,
-                totalVolume24h: summAllVolumes(volume[volume.length - 1].data),
-                volume24hBreakdown: volume[volume.length - 1].data,
-                volumes: volume,
-                change_1d: calcNdChange(volume, 1),
-                change_7d: calcNdChange(volume, 7),
-                change_1m: calcNdChange(volume, 30)
+                totalVolume24h: sumAllVolumes(volumes[volumes.length - 1].data),
+                volume24hBreakdown: volumes[volumes.length - 1].data,
+                volumes: volumes,
+                change_1d: calcNdChange(volumes, 1),
+                change_7d: calcNdChange(volumes, 7),
+                change_1m: calcNdChange(volumes, 30)
             }
         } catch (error) {
             console.error(error)

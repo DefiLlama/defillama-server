@@ -1,9 +1,7 @@
-import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { sluggifyString } from "../../../utils/sluggify";
 import { getVolume, Volume, VolumeType } from "../../data/volume";
 import volumeAdapters from "../../dexAdapters";
-import getDataPoints from "../../utils/getDataPoints";
 import { VolumeHistoryItem } from "../getDexVolume";
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
@@ -28,13 +26,13 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         volumeHistory = []
     }
 
-    const response = getDataPoints().map((date) => {
-        const itemDate = volumeHistory.find(vh => getTimestampAtStartOfDayUTC(vh.timestamp) === date)
+    // TODO: change getDataPoints -> volumeHistory.map(itemDate)
+    const response = volumeHistory.map(itemDate => {
         const itemWithError = itemDate ? Object.values(itemDate?.dailyVolume).find(
             chainObj => Object.keys(chainObj).includes("error")
         ) : undefined
         return {
-            timestamp: date,
+            timestamp: itemDate.timestamp,
             recorded: !!itemDate && !itemWithError,
             error: itemWithError ? Object.values(itemWithError).map(value => JSON.stringify(value)).join("") : null,
         }

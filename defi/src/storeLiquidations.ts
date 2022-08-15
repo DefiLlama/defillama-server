@@ -52,6 +52,33 @@ const forceRevalidate = async (path: string) => {
   }
 };
 
-const LIQUIDATIONS_PATHS = ["ETH", "WBTC", "USDC", "DAI", "YFI", "UNI"].map((x) => `/liquidations/${x.toLowerCase()}`);
+const LIQUIDATIONS_PATHS = [
+  "ETH",
+  "WBTC",
+  "USDC",
+  "DAI",
+  // "USDT",
+  "YFI",
+  "COMP",
+  "UNI",
+  "BAT",
+  // "BUSD",
+  "CRV",
+  // "AMPL",
+  "LINK",
+  // "FRAX",
+  // "FEI",
+  "TUSD",
+  "AAVE",
+  "MKR",
+  "SUSHI",
+  "SNX",
+  "ZRX",
+  "ENJ",
+  "MANA",
+  "1INCH",
+  "REN",
+  // "RAI",
+].map((x) => `/liquidations/${x.toLowerCase()}`);
 
 export default wrapScheduledLambda(handler);

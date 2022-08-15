@@ -3,7 +3,7 @@ export default {
   geist: require("./moneyMarkets/aave/index"),
   radiant: require("./moneyMarkets/aave/index"),
   klap: require("./moneyMarkets/aave/index"),
-
+  valas: require("./moneyMarkets/aave/index"),
   compound: require("./moneyMarkets/compound/index"),
   venus: require("./moneyMarkets/compound/index"),
   ironbank: require("./moneyMarkets/compound/index"),
@@ -16,6 +16,8 @@ export default {
 
   yearn: require("./yield/yearn/index"),
   curve: require("./lps/curve/index"),
+
+  ankr: require("./liquidStaking/ankr/index")
 
   // uniswap: require("./lps/uniswap/index"),
   // traderJoe: require("./lps/uniswap/index"),

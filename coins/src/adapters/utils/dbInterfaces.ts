@@ -7,6 +7,7 @@ export interface Write {
   redirect?: string;
   adapter?: string;
   confidence: number;
+  timestamp?: number;
 }
 export interface DbQuery {
   PK: string;

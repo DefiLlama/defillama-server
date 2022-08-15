@@ -318,7 +318,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
           isNaN(
             (poolValue * 10 ** tokenInfo.decimals[0].output) /
               tokenInfo.supplies[0].output
-          )
+          ) ||
+          tokenInfo.supplies[0].output == 0
         ) {
           continue;
         }

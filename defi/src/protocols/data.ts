@@ -6639,7 +6639,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://www.tokemak.xyz",
     description: "Tokemak creates sustainable DeFi liquidity and capital efficient markets through a convenient decentralized market making protocol.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/tokemak.png`,
+    logo: `${baseIconsUrl}/tokemak.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "tokemak",

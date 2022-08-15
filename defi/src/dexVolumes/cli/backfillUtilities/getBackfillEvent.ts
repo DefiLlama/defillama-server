@@ -13,9 +13,9 @@ export default async () => {
         // '1inch',
         // 'balancer',
         // 'bancor',
-        'champagneswap',
+        // 'champagneswap',
         // 'curve',
-        // 'dodo',
+        'dodo',
         // 'katana',
         // 'klayswap',
         // 'osmosis',
@@ -43,8 +43,8 @@ export default async () => {
                     const acc = await accP
                     let currstart = start
                     if (typeof start !== "number") currstart = await start()
-                    return (typeof currstart === 'number' && currstart > acc && currstart !== 0) ? currstart : acc
-                }, Promise.resolve(0))
+                    return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
+                }, Promise.resolve(Date.now()/1000))
             startTimestamp = st
         } else {
             const st = await Object.values(dexAdapter.breakdown).reduce(async (accP, dexAdapter) => {
@@ -53,11 +53,11 @@ export default async () => {
                     const acc = await accP
                     let currstart = start
                     if (typeof start !== "number") currstart = await start()
-                    return (typeof currstart === 'number' && currstart > acc && currstart !== 0) ? currstart : acc
-                }, Promise.resolve(0))
+                    return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
+                }, Promise.resolve(Date.now()/1000))
 
                 return bst < acc ? bst : acc
-            }, Promise.resolve(0))
+            }, Promise.resolve(Date.now()/1000))
             startTimestamp = st
         }
         if (startTimestamp > 0) startTimestamp *= 1000

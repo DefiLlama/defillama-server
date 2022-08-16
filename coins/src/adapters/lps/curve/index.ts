@@ -4,7 +4,7 @@ export function curve(timestamp: number = 0) {
   return Promise.all([
     getTokenPrices("ethereum", timestamp),
     getTokenPrices("optimism", timestamp),
-    getTokenPrices("polygon", timestamp),
+    //getTokenPrices("polygon", timestamp),
     getTokenPrices("xdai", timestamp),
     getTokenPrices("avax", timestamp),
     getTokenPrices("fantom", timestamp),

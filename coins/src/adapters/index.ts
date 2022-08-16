@@ -15,7 +15,10 @@ export default {
   scream: require("./moneyMarkets/compound/index"),
 
   yearn: require("./yield/yearn/index"),
-  curve: require("./lps/curve/index"),
+  curve1: require("./lps/curve/index"),
+  curve2: require("./lps/curve/index"),
+  curve3: require("./lps/curve/index"),
+  curve4: require("./lps/curve/index"),
 
   ankr: require("./liquidStaking/ankr/index")
 

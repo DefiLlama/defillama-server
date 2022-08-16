@@ -12355,6 +12355,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1660612737
 },
+{
+  id: "1977",
+  name: "Doge Shrek",
+  address: null,
+  symbol: "-",
+  url: "https://dogeshrek.com",
+  description: "The official exchange from the swamp on dogechain.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/doge-shrek.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  module: "DogeShrek/index.js",
+  twitter: "DogeShrek",
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1660641972
+},
 ]
 
 

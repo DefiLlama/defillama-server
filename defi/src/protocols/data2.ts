@@ -12376,6 +12376,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1660641972
 },
+{
+  id: "1978",
+  name: "Bourbon Defi",
+  address: "dogechain:0x44aA2dfe660439E9a93483EC665Bf20dE62CEc2B",
+  symbol: "BOURBON",
+  url: "https://dogefarm.bourbondefi.com",
+  description: "Bourbon DeFi is now on DogeChain.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/bourbon-defi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  module: "bourbon/index.js",
+  twitter: "FinanceBourbon",
+  forkedFrom: ["PancakeSwap"],
+  oracles: [],
+  listedAt: 1660641979
+},
 ]
 
 

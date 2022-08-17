@@ -1138,7 +1138,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "bancor/index.js",
     twitter: "Bancor",
-    audit_links: ["https://docs.bancor.network/ethereum-contracts/security"],
+    audit_links: ["https://bancor-network.gitbook.io/v2.1/ethereum-contracts/security"],
   },
   {
     id: "163",

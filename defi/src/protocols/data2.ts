@@ -12484,6 +12484,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-XCarnival-v1.0.pdf"],
   listedAt: 1660731463
 },
+{
+  id: "1983",
+  name: "Cometa",
+  address: "algorand:712012773",
+  symbol: "META",
+  url: "https://cometa.farm",
+  description: "Liquidity hub on Algorand: Yield Farming, Liquidity-as-a-Service, DEX aggregator..",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/cometa.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Algorand"],
+  module: "cometa/index.js",
+  twitter: "CometaHub",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1660747620
+},
 ]
 
 

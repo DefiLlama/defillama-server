@@ -74,7 +74,7 @@ provider:
     CRONOS_RPC: ${file(./env.js):CRONOS_RPC}
     KLAYTN_RPC: "https://public-node-api.klaytnapi.com/v1/cypress"
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
-    HOURLY_OUTDATED_WEBHOOK:  ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
+    HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
     INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
@@ -84,6 +84,7 @@ provider:
     DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
     MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
+    REVALIDATE_SECRET: ${file(./env.js):REVALIDATE_SECRET}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -245,6 +246,9 @@ functions:
     handler: src/storeLiquidations.default
     timeout: 900
     memorySize: 2000
+    events:
+      # update latest every 20 minutes
+      - schedule: cron(0/20 * * * ? *)
   dataset:
     handler: src/getDataset.default
     timeout: 900

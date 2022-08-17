@@ -23167,7 +23167,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Uniswap"],
   listedAt: 1642528930,
 },
-/*
 {
   id: "1282",
   name: "Rubic",
@@ -23182,13 +23181,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "rubic",
   cmcId: "1393",
   category: "Cross Chain",
-  chains: ["Binance", "Ethereum", "Polygon", "Fantom", "Avalanche", "Harmony", "Aurora", "Moonriver", "Arbitrum"],
+  chains: ["Binance"],
   module: "rubic/index.js",
   twitter: "CryptoRubic",
   audit_links: ["https://www.certik.com/projects/rubic-finance", "https://rubic.exchange/assets/pdf/fairyproof.pdf"],
   listedAt: 1642536396,
 },
-*/
 {
   id: "1283",
   name: "Bent Finance",

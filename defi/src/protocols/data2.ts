@@ -12490,7 +12490,7 @@ listedAt: 1650804679
   address: "algorand:712012773",
   symbol: "META",
   url: "https://cometa.farm",
-  description: "Liquidity hub on Algorand: Yield Farming, Liquidity-as-a-Service, DEX aggregator..",
+  description: "Liquidity hub on Algorand: Yield Farming, Liquidity-as-a-Service, DEX aggregator.",
   chain: "Algorand",
   logo: `${baseIconsUrl}/cometa.png`,
   audits: "0",
@@ -12504,6 +12504,27 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1660747620
+},
+{
+  id: "1984",
+  name: "WanLend",
+  address: null,
+  symbol: "-",
+  url: "https://wanlend.finance/",
+  description: "WanLend is a decentralized financial management platform, users can deposit cryptos to gain interests, or borrow cryptos and pay interests",
+  chain: "Wanchain",
+  logo: `${baseIconsUrl}/wanlend.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Wanchain"],
+  module: "wanlend/index.js",
+  twitter: "WanLend",
+  forkedFrom: ["Compound"],
+  oracles: [],
+  listedAt: 1660764309
 },
 ]
 

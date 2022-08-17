@@ -13,7 +13,7 @@ writeFileSync("./src/utils/imports/adapters_volumes.ts",
     ${volumeAdapters.map(p => `"${p.volumeAdapter}": require("@defillama/adapters/dexVolumes/${p.volumeAdapter}"),`).join('\n')}
 }`)
 
-const excludeLiquidation = ["test.ts", "utils", "maker"]
+const excludeLiquidation = ["test.ts", "utils"]
 writeFileSync("./src/utils/imports/adapters_liquidations.ts",
     `export default {
     ${readdirSync("./DefiLlama-Adapters/liquidations").filter(f=>!excludeLiquidation.includes(f))

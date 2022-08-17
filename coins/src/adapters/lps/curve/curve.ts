@@ -291,7 +291,8 @@ async function unknownPools(
   poolList: any
 ) {
   //["cryptoFactory"]) {
-  for (let registry of Object.keys(poolList)) {
+  for (let registry of ["stableswap", "crypto"]) {
+    //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
       try {
         const token: string = await PoolToToken(chain, pool, block);

@@ -288,10 +288,11 @@ async function unknownPools(
   chain: string,
   block: number | undefined,
   timestamp: number,
-  poolList: any
+  poolList: any,
+  registries: string[]
 ) {
   //["cryptoFactory"]) {
-  for (let registry of ["stableswap", "crypto"]) {
+  for (let registry of registries) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
       try {
@@ -439,11 +440,15 @@ async function unknownTokens(
     );
   });
 }
-export default async function getTokenPrices(chain: string, timestamp: number) {
+export default async function getTokenPrices(
+  chain: string,
+  registries: string[],
+  timestamp: number
+) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const poolList = await getPools(chain, block);
 
-  await unknownPools(chain, block, timestamp, poolList);
+  await unknownPools(chain, block, timestamp, poolList, registries);
   //await listUnknownTokens(chain, unknownTokensList, block);
   //await unknownTokens(chain, block, writes, timestamp);
   return writes;

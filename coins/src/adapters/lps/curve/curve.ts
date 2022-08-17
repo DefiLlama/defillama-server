@@ -443,8 +443,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const poolList = await getPools(chain, block);
 
   await unknownPools(chain, block, timestamp, poolList);
-  await listUnknownTokens(chain, unknownTokensList, block);
-  await unknownTokens(chain, block, writes, timestamp);
+  //await listUnknownTokens(chain, unknownTokensList, block);
+  //await unknownTokens(chain, block, writes, timestamp);
   return writes;
 }
 // ts-node coins/src/adapters/lps/curve/curve.ts

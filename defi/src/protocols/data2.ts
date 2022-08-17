@@ -4228,7 +4228,7 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "wingriders/index.js",
   twitter: "wingriderscom",
-  audit_links: ["https://medium.com/@wingriderscom/audits-plaudits-and-writing-good-code-c954ae109b2e"],
+  audit_links: ["https://www.certik.com/projects/wingriders"],
   listedAt: 1648841191
 },
 {

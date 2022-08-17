@@ -12526,6 +12526,48 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1660764309
 },
+{
+  id: "1985",
+  name: "Canto Dex",
+  address: null,
+  symbol: "-",
+  url: "https://convert.canto.io",
+  description: "Dex on canto blockchain",
+  chain: "Canto",
+  logo: `${baseIconsUrl}/canto-dex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Canto"],
+  module: "canto-dex/index.js",
+  twitter: "CantoPublic",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1660767766
+},
+{
+  id: "1986",
+  name: "Canto Lending",
+  address: null,
+  symbol: "-",
+  url: "https://lending.canto.io",
+  description: "Lending on canto blockchain",
+  chain: "Canto",
+  logo: `${baseIconsUrl}/canto-lending.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Canto"],
+  module: "canto-lending/index.js",
+  twitter: "CantoPublic",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1660767769
+},
 ]
 
 

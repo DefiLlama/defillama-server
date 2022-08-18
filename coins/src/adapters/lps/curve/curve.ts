@@ -435,10 +435,6 @@ async function unknownTokens(
   prices.map((p: any, i: number) => {
     if (i % 2 == 0) return;
     if (prices[i] == Infinity || prices[i - 1] == Infinity) return;
-    let a = p / prices[i - 1];
-    if (isNaN(a)) {
-      console.log("here");
-    }
     addToDBWritesList(
       writes,
       chain,

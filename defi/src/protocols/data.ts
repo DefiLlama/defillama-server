@@ -1982,7 +1982,7 @@ const data: Protocol[] = [
     address: "0x7f3edcdd180dbe4819bd98fee8929b5cedb3adeb",
     symbol: "XTK",
     url: "https://app.xtokenterminal.io/",
-    description: "Passive, Efficient ERC20 Staking Strategies.",
+    description: "Permissionless Investment Bank",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/xtoken.png`,
     audits: "2",

@@ -41,8 +41,7 @@ export default async () => {
             const st = await Object.values(dexAdapter.volume)
                 .reduce(async (accP, { start }) => {
                     const acc = await accP
-                    let currstart = start
-                    if (typeof start !== "number") currstart = await start()
+                    const currstart = await start()
                     return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
                 }, Promise.resolve(Date.now()/1000))
             startTimestamp = st
@@ -51,8 +50,7 @@ export default async () => {
                 const acc = await accP
                 const bst = await Object.values(dexAdapter).reduce(async (accP, { start }) => {
                     const acc = await accP
-                    let currstart = start
-                    if (typeof start !== "number") currstart = await start()
+                    const currstart = await start()
                     return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
                 }, Promise.resolve(Date.now()/1000))
 

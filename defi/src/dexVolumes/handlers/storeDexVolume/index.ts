@@ -45,9 +45,7 @@ export const handler = async (event: IHandlerEvent) => {
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
       .filter(async (chain) => {
-        let start = volumeAdapter[chain].start
-        if (typeof start !== 'number')
-          start = await start()
+        const start = await volumeAdapter[chain].start()
         return (start <= cleanPreviousDayTimestamp) || (start === 0)
       })
       .map(async (chain) => {

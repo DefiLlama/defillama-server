@@ -51,3 +51,12 @@ export function curve8(timestamp: number = 0) {
     getTokenPrices("aurora", ["stableFactory", "cryptoFactory"], timestamp)
   ]);
 }
+//curve8();
+export async function ellipsis(timestamp: number = 0) {
+  return await getTokenPrices(
+    "bsc",
+    ["crypto", "stableswap", "stableFactory", "cryptoFactory"],
+    timestamp
+  );
+}
+//ellipsis();

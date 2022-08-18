@@ -123,5 +123,10 @@
     "gasTokenDummy": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
     "wrapped": "0x4244eb811d6e0ef302326675207a95113db4e1f8",
     "metapoolBases": {}
+  },
+  "bsc": {
+    "addressProvider": "0x31d236483a15f9b9dd60b36d4013d75e9dbf852b",
+    "gasTokenDummy": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "wrapped": "0x968f6f898a6df937fc1859b323ac2f14643e3fed"
   }
 }

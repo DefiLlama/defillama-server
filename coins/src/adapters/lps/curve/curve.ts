@@ -31,17 +31,25 @@ let unknownTokensList: string[] = [];
 let unknownPoolList: any[] = [];
 const writes: Write[] = [];
 async function getPools(chain: string, block: number | undefined) {
-  const registries: string[] = (
-    await multiCall({
-      chain: chain as any,
-      calls: Object.values(registryIds).map((r: number) => ({
-        params: r,
-        target: contracts[chain].addressProvider
-      })),
-      abi: abi.get_id_info,
-      block
-    })
-  ).output.map((r: any) => r.output.addr);
+  const registries: string[] =
+    chain == "bsc"
+      ? [
+          "0x266bb386252347b03c7b6eb37f950f476d7c3e63",
+          "0x0000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000",
+          "0x0000000000000000000000000000000000000000"
+        ]
+      : (
+          await multiCall({
+            chain: chain as any,
+            calls: Object.values(registryIds).map((r: number) => ({
+              params: r,
+              target: contracts[chain].addressProvider
+            })),
+            abi: abi.get_id_info,
+            block
+          })
+        ).output.map((r: any) => r.output.addr);
 
   const poolCounts: Result[] = (
     await multiCall({
@@ -450,7 +458,6 @@ export default async function getTokenPrices(
 
   await unknownPools(chain, block, timestamp, poolList, registries);
   //await listUnknownTokens(chain, unknownTokensList, block);
-  //await unknownTokens(chain, block, writes, timestamp);
+  await unknownTokens(chain, block, writes, timestamp);
   return writes;
 }
-// ts-node coins/src/adapters/lps/curve/curve.ts

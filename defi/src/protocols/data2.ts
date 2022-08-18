@@ -12617,7 +12617,7 @@ listedAt: 1650804679
   address: "arbitrum:0xC74fE4c715510Ec2F8C61d70D397B32043F55Abe",
   symbol: "MYC",
   url: "https://swaps.mycelium.xyz",
-  description: "Previous Tracer DAO. Trade with liquidity, leverage, low fees, Trade with Myceli",
+  description: "Previous Tracer DAO. Trade with liquidity, leverage, low fees.",
   chain: "Arbitrum",
   logo: `${baseIconsUrl}/mycelium.jpg`,
   audits: "0",
@@ -12627,7 +12627,7 @@ listedAt: 1650804679
   category: "Derivatives",
   chains: ["Arbitrum"],
   module: "mycelium/index.js",
-  twitter: "TracerDAO",
+  twitter: "mycelium_xyz",
   forkedFrom: ["GMX"],
   oracles: ["Chainlink"],
   listedAt: 1660821814

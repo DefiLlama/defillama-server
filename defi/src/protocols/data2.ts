@@ -12393,7 +12393,7 @@ listedAt: 1650804679
   chains: ["Dogechain"],
   module: "bourbon/index.js",
   twitter: "FinanceBourbon",
-  forkedFrom: ["PancakeSwap"],
+  forkedFrom: ["Uniswap"],
   oracles: [],
   listedAt: 1660641979
 },
@@ -12436,7 +12436,7 @@ listedAt: 1650804679
   chains: ["Dogechain"],
   module: "yodeswap/index.js",
   twitter: "Yodeswap",
-  forkedFrom: [],
+  forkedFrom: ["Uniswap"],
   oracles: [],
   listedAt: 1660728749
 },
@@ -12564,7 +12564,7 @@ listedAt: 1650804679
   chains: ["Canto"],
   module: "canto-lending/index.js",
   twitter: "CantoPublic",
-  forkedFrom: [],
+  forkedFrom: ["Compound"],
   oracles: [],
   listedAt: 1660767769
 },

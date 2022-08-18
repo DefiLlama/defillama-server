@@ -458,6 +458,6 @@ export default async function getTokenPrices(
 
   await unknownPools(chain, block, timestamp, poolList, registries);
   //await listUnknownTokens(chain, unknownTokensList, block);
-  //await unknownTokens(chain, block, writes, timestamp);
+  await unknownTokens(chain, block, writes, timestamp);
   return writes;
 }

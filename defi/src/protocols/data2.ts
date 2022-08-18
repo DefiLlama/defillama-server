@@ -12584,7 +12584,7 @@ listedAt: 1650804679
   chains: ["Klaytn"],
   module: "pangeaswap/index.js",
   twitter: "Pangea_Swap",
-  forkedFrom: ["SushiSwap"],
+  forkedFrom: ["Uniswap"],
   oracles: ["Witnet"],
   audit_links: ["https://github.com/pangea-protocol/pangea-core/blob/main/audits/%5BHAECHI%20AUDIT%5D%20Smart%20Contract%20Audit%20Reports%20for%20Pangea.pdf"],
   listedAt: 1660815952

@@ -6433,7 +6433,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Astar"],
   oracles: [],
-  forkedFrom: ["Pancakeswap"],
+  forkedFrom: ["PancakeSwap"],
   module: "agsfinance/index.js",
   twitter: "AGSFinance_",
   listedAt: 1651168503
@@ -7655,7 +7655,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Evmos"],
   oracles: [],
-  forkedFrom: ["Uniswap" , "Pancakeswap"],
+  forkedFrom: ["Uniswap" , "PancakeSwap"],
   module: "spacefi/index.js",
   twitter: "spacefi_io",
   listedAt: 1652356517
@@ -11221,7 +11221,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Kava"],
   oracles: [],
-  forkedFrom: ["Pancakeswap"],
+  forkedFrom: ["PancakeSwap"],
   module: "LFIswap/index.js",
   twitter: "LIQUIDITFINANCE",
   listedAt: 1658739795
@@ -11417,7 +11417,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Nova Network"],
   oracles: [],
-  forkedFrom: ["Pancakeswap"],
+  forkedFrom: ["PancakeSwap"],
   module: "quasar-swap/index.js",
   twitter: "SwapQuasar",
   listedAt: 1658929561

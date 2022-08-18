@@ -6232,7 +6232,7 @@ listedAt: 1650804679
   category: "Yield Aggregator",
   chains: ["Fantom"],
   oracles: ["Zapper.fi"],
-  forkedFrom: ["Yearn"],
+  forkedFrom: ["Yearn Finance"],
   module: "unbk/index.js",
   twitter: "UnbankedHQ",
   audit_links: ["https://www.certik.com/projects/unbanked"],

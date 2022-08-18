@@ -49,10 +49,10 @@ function replaceLast(historical: HistoricalTvls, last: HourlyTvl) {
 
 function selectChainFromItem(item: any, normalizedChain: string) {
   let altChainName = undefined;
-  if (normalizedChain === "avax") {
-    altChainName = "avalanche";
-  } else if (normalizedChain === "avalanche") {
-    altChainName = "avax";
+  if (normalizedChain.startsWith("avax")) {
+    altChainName = normalizedChain.replace("avax","avalanche");
+  } else if (normalizedChain.startsWith("avalanche")) {
+    altChainName = normalizedChain.replace("avalanche", "avax");
   } else {
     return item[normalizedChain];
   }

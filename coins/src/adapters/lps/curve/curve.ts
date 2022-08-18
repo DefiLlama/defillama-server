@@ -361,7 +361,7 @@ async function unknownPools(
           confidence
         );
       } catch {
-        console.log([pool].map((i: any) => i.output)[0]);
+        //console.log([pool].map((i: any) => i.output)[0]);
       }
     }
   }

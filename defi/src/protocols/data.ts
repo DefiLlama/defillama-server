@@ -141,7 +141,7 @@ const data: Protocol[] = [
     description:
       "Yearn.finance is an aggregator service for decentralized finance (DeFi) investors, using automation to allow them to maximize profits from yield farming.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/yearn-finance.png`,
+    logo: `${baseIconsUrl}/yearn-finance.jpg`,
     audits: "1",
     audit_note: null,
     gecko_id: "yearn-finance",

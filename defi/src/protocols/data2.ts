@@ -12441,7 +12441,7 @@ listedAt: 1650804679
 },
 {
   id: "1981",
-  name: "Orbit Chain",
+  name: "Orbit Bridge",
   address: "eth:0x662b67d00A13FAf93254714DD601F5Ed49Ef2F51",
   symbol: "ORC",
   url: "https://bridge.orbitchain.io",

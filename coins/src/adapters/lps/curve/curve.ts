@@ -315,7 +315,7 @@ async function unknownPools(
           chain,
           timestamp
         );
-        if (poolTokens.includes(undefined)) {
+        if (poolTokens.includes(undefined) || poolTokens.length == 0) {
           unknownPoolList.push({
             address: [pool].map((i: any) => i.output)[0],
             token,

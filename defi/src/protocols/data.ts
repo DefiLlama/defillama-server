@@ -1989,7 +1989,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "xtoken",
     cmcId: "8599",
-    category: "Yield",
+    category: "Services",
     chains: ["Ethereum"],
     module: "xtoken/index.js",
     twitter: "xtokenterminal",

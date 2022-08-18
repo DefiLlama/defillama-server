@@ -27,15 +27,9 @@ export function curve4(timestamp: number = 0) {
 }
 
 export function curve5(timestamp: number = 0) {
+  console.log("hii");
   return Promise.all([
-    getTokenPrices(
-      "ethereum",
-      [
-        //"stableFactory",
-        "cryptoFactory"
-      ],
-      timestamp
-    )
+    getTokenPrices("ethereum", ["stableFactory", "cryptoFactory"], timestamp)
   ]);
 }
 export function curve6(timestamp: number = 0) {

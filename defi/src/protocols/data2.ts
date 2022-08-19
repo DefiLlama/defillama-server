@@ -12760,6 +12760,33 @@ listedAt: 1650804679
   listedAt: 1660936922,
   parentProtocol: "Bancor"
 },
+{
+  id: "1996",
+  name: "Glitter Finance",
+  address: "algorand:607591690",
+  symbol: "XGLI",
+  url: "https://www.glitterfinance.org/",
+  description:
+    "Glitter Finance is a cross-chain, interoperability hub between the ecosystems of Algorand and Solana. More information can be found on glitterfinance.org",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/glitter-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "glitter-finance",
+  cmcId: "17310",
+  category: "Bridge",
+  chains: ["Solana", "Algorand"],
+  module: "glitter-finance/index.js",
+  twitter: "Bancor",
+  audit_links: [
+    "https://www.certik.com/projects/glitter-finance",
+    "https://www.rdauditors.com/wp-content/uploads/2022/06/Glitter-Finance-Penetration-and-Load-Testing-Summary-Report.pdf",
+    "https://www.dropbox.com/s/nqzsd88tw1h769z/certik_glitter_finance_algorand_audit.pdf?dl=0",
+    "https://www.dropbox.com/s/figklngtevy99go/certik_glitter_finance_algorand_addendum.pdf?dl=0",
+    "https://www.dropbox.com/s/7j8bjlmaxdp1apn/certik_glitter_finance_solana_audit.pdf?dl=0"
+  ],
+  listedAt: 1660945639,
+},
 ]
 
 

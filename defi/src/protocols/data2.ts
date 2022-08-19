@@ -12695,6 +12695,48 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1660878769
 },
+{
+  id: "1993",
+  name: "KibbleSwap",
+  address: "dogechain:0x1e1026ba0810e6391b0F86AFa8A9305c12713B66",
+  symbol: "KIB",
+  url: "https://kibbleswap.dog",
+  description: "KibbleSwap: The tastiest DEX on Dogechain. Such Farm. Much Stake. So Swap. Wow",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/kibbleswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "kibbleswap",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  module: "KibbleSwap/index.js",
+  twitter: "kibbleswap",
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1660935173
+},
+{
+  id: "1994",
+  name: "DogeMoney",
+  address: "dogechain:0x93C8a00416dD8AB9701fa15CA120160172039851",
+  symbol: "DOGEMONEY",
+  url: "https://app.dogmoney.money/",
+  description: "Trade, launch, stake, farm, invest, automate, build on the premier DeFi platform of DogeChain",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/dogemoney.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  module: "dogmoney/index.js",
+  twitter: "DogMoneySwap",
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1660935265
+},
 ]
 
 

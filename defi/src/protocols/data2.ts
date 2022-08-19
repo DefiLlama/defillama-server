@@ -12777,7 +12777,7 @@ listedAt: 1650804679
   category: "Bridge",
   chains: ["Solana", "Algorand"],
   module: "glitter-finance/index.js",
-  twitter: "Bancor",
+  twitter: "GlitterFinance",
   audit_links: [
     "https://www.certik.com/projects/glitter-finance",
     "https://www.rdauditors.com/wp-content/uploads/2022/06/Glitter-Finance-Penetration-and-Load-Testing-Summary-Report.pdf",
@@ -12786,6 +12786,30 @@ listedAt: 1650804679
     "https://www.dropbox.com/s/7j8bjlmaxdp1apn/certik_glitter_finance_solana_audit.pdf?dl=0"
   ],
   listedAt: 1660945639,
+},
+{
+  id: "1997",
+  name: "Morpho",
+  address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+  symbol: "MORPHO",
+  url: "https://www.morpho.xyz",
+  description:
+    "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/morpho.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "morpho/index.js",
+  twitter: "MorphoLabs",
+  oracles: ["TWAP"],
+  audit_links: [
+    "https://github.com/morpho-dao/morpho-core-v1/tree/main/audits"
+  ],
+  listedAt: 1660946171,
 },
 ]
 

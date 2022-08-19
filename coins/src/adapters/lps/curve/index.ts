@@ -1,11 +1,13 @@
 import getTokenPrices from "./curve";
 
 export function curve1(timestamp: number = 0) {
+  console.log("starting curve1");
   return Promise.all([
     getTokenPrices("ethereum", ["stableswap", "crypto"], timestamp)
   ]);
 }
 export function curve2(timestamp: number = 0) {
+  console.log("starting curve2");
   return Promise.all([
     getTokenPrices("optimism", ["stableswap", "crypto"], timestamp),
     // getTokenPrices("polygon", timestamp),
@@ -13,12 +15,14 @@ export function curve2(timestamp: number = 0) {
   ]);
 }
 export function curve3(timestamp: number = 0) {
+  console.log("starting curve3");
   return Promise.all([
     getTokenPrices("avax", ["stableswap", "crypto"], timestamp),
     getTokenPrices("fantom", ["stableswap", "crypto"], timestamp)
   ]);
 }
 export function curve4(timestamp: number = 0) {
+  console.log("starting curve4");
   return Promise.all([
     getTokenPrices("optimism", ["stableswap", "crypto"], timestamp),
     getTokenPrices("moonbeam", ["stableswap", "crypto"], timestamp),
@@ -27,12 +31,13 @@ export function curve4(timestamp: number = 0) {
 }
 
 export function curve5(timestamp: number = 0) {
-  console.log("hii");
+  console.log("starting curve5");
   return Promise.all([
     getTokenPrices("ethereum", ["stableFactory", "cryptoFactory"], timestamp)
   ]);
 }
 export function curve6(timestamp: number = 0) {
+  console.log("starting curve6");
   return Promise.all([
     getTokenPrices("optimism", ["stableFactory", "cryptoFactory"], timestamp),
     // getTokenPrices("polygon", timestamp),
@@ -40,12 +45,14 @@ export function curve6(timestamp: number = 0) {
   ]);
 }
 export function curve7(timestamp: number = 0) {
+  console.log("starting curve7");
   return Promise.all([
     getTokenPrices("avax", ["stableFactory", "cryptoFactory"], timestamp),
     getTokenPrices("fantom", ["stableFactory", "cryptoFactory"], timestamp)
   ]);
 }
 export function curve8(timestamp: number = 0) {
+  console.log("starting curve8");
   return Promise.all([
     getTokenPrices("optimism", ["stableFactory", "cryptoFactory"], timestamp),
     getTokenPrices("moonbeam", ["stableFactory", "cryptoFactory"], timestamp),
@@ -54,6 +61,7 @@ export function curve8(timestamp: number = 0) {
 }
 //curve8();
 export async function ellipsis(timestamp: number = 0) {
+  console.log("starting ellipsis");
   return await getTokenPrices(
     "bsc",
     ["crypto", "stableswap", "stableFactory", "cryptoFactory"],

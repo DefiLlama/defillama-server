@@ -1,6 +1,7 @@
 import getTokenPrices from "./compound";
 
 export function compound(timestamp: number = 0) {
+  console.log("starting compound");
   return Promise.all([
     getTokenPrices(
       "ethereum",
@@ -10,6 +11,7 @@ export function compound(timestamp: number = 0) {
   ]);
 }
 export function venus(timestamp: number = 0) {
+  console.log("starting venus");
   return Promise.all([
     getTokenPrices(
       "bsc",
@@ -19,6 +21,7 @@ export function venus(timestamp: number = 0) {
   ]);
 }
 export function ironbank(timestamp: number = 0) {
+  console.log("starting ironbank");
   return Promise.all([
     getTokenPrices(
       "ethereum",
@@ -28,6 +31,7 @@ export function ironbank(timestamp: number = 0) {
   ]);
 }
 export function benqi(timestamp: number = 0) {
+  console.log("starting benqi");
   return Promise.all([
     getTokenPrices(
       "avax",
@@ -37,6 +41,7 @@ export function benqi(timestamp: number = 0) {
   ]);
 }
 export function rari(timestamp: number = 0) {
+  console.log("starting rari");
   return Promise.all([
     getTokenPrices(
       "arbitrum",
@@ -46,6 +51,7 @@ export function rari(timestamp: number = 0) {
   ]);
 }
 export function cream(timestamp: number = 0) {
+  console.log("starting cream");
   return Promise.all([
     getTokenPrices(
       "arbitrum",
@@ -65,6 +71,7 @@ export function cream(timestamp: number = 0) {
   ]);
 }
 export function scream(timestamp: number = 0) {
+  console.log("starting scream");
   return Promise.all([
     getTokenPrices(
       "fantom",
@@ -74,6 +81,7 @@ export function scream(timestamp: number = 0) {
   ]);
 }
 export function aurigami(timestamp: number = 0) {
+  console.log("starting aurigami");
   return Promise.all([
     getTokenPrices(
       "aurora",
@@ -83,6 +91,7 @@ export function aurigami(timestamp: number = 0) {
   ]);
 }
 export function traderjoe(timestamp: number = 0) {
+  console.log("starting traderjoe");
   return Promise.all([
     getTokenPrices(
       "avax",

@@ -18,6 +18,7 @@ import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
 
 function insertOnDb(useCurrentPrices:boolean, query:string, params:(string|number)[], storedKey:string, probabilitySampling: number = 1){
+  if (process.env.LOCAL === 'true') return;
   if(useCurrentPrices === true && Math.random() <= probabilitySampling){
     const currentTime = getCurrentUnixTimestamp()
     executeAndIgnoreErrors(query, [currentTime, ...params, storedKey, storedKey.split("-")[0]])

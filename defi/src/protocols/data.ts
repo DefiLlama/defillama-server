@@ -11028,7 +11028,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["OKExChain", "Binance"],
+    chains: ["OKExChain"],
     module: "oakfarm.js",
     twitter: "OakFarm_io",
     audit_links: ["https://oakfarm.io/certik.pdf"],

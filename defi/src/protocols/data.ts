@@ -21178,6 +21178,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Ethereum"],
   module: "euler/index.js",
   twitter: "eulerfinance",
+  oracles: ["Chainlink"],
   audit_links: ["https://docs.euler.finance/security/smart-contract-audits"],
   listedAt: 1641231917,
 },

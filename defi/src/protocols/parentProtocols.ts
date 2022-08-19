@@ -149,6 +149,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "MMFcrypto",
+  },
+  {
+    id: "Mycelium",
+    name: "Mycelium",
+    url: "https://swaps.mycelium.xyz",
+    description:
+    "Trade with liquidity, leverage, low fees.",
+    logo: `${baseIconsUrl}/mycelium.jpg`,
+    gecko_id: "mycelium",
+    cmcId: "21437",
+    chains: [],
+    twitter: "mycelium_xyz",
   }
 ];
 

@@ -12183,6 +12183,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tracerdao/index.js",
     twitter: "TracerDAO",
     audit_links: ["https://tracer.finance/radar/sigma-prime-audit-response"],
+    parentProtocol: "Mycelium",
     listedAt: 1635464348,
   },
   {

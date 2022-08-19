@@ -12623,13 +12623,14 @@ listedAt: 1650804679
   audits: "0",
   audit_note: null,
   gecko_id: "mycelium",
-  cmcId: null,
+  cmcId: "21437",
   category: "Derivatives",
   chains: ["Arbitrum"],
   module: "mycelium/index.js",
   twitter: "mycelium_xyz",
   forkedFrom: ["GMX"],
   oracles: ["Chainlink"],
+  parentProtocol: "Mycelium",
   listedAt: 1660821814
 },
 {

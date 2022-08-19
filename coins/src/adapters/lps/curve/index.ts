@@ -9,7 +9,7 @@ export function curve1(timestamp: number = 0) {
 export function curve2(timestamp: number = 0) {
   console.log("starting curve2");
   return Promise.all([
-    getTokenPrices("optimism", ["stableswap", "crypto"], timestamp),
+    getTokenPrices("arbitrum", ["stableswap", "crypto"], timestamp),
     // getTokenPrices("polygon", timestamp),
     getTokenPrices("xdai", ["stableswap", "crypto"], timestamp)
   ]);
@@ -24,9 +24,9 @@ export function curve3(timestamp: number = 0) {
 export function curve4(timestamp: number = 0) {
   console.log("starting curve4");
   return Promise.all([
-    getTokenPrices("optimism", ["stableswap", "crypto"], timestamp),
     getTokenPrices("moonbeam", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("aurora", ["stableswap", "crypto"], timestamp)
+    getTokenPrices("aurora", ["stableswap", "crypto"], timestamp),
+    getTokenPrices("optimism", ["stableswap", "crypto"], timestamp)
   ]);
 }
 
@@ -39,7 +39,7 @@ export function curve5(timestamp: number = 0) {
 export function curve6(timestamp: number = 0) {
   console.log("starting curve6");
   return Promise.all([
-    getTokenPrices("optimism", ["stableFactory", "cryptoFactory"], timestamp),
+    getTokenPrices("arbitrum", ["stableFactory", "cryptoFactory"], timestamp),
     // getTokenPrices("polygon", timestamp),
     getTokenPrices("xdai", ["stableFactory", "cryptoFactory"], timestamp)
   ]);
@@ -54,9 +54,9 @@ export function curve7(timestamp: number = 0) {
 export function curve8(timestamp: number = 0) {
   console.log("starting curve8");
   return Promise.all([
-    getTokenPrices("optimism", ["stableFactory", "cryptoFactory"], timestamp),
     getTokenPrices("moonbeam", ["stableFactory", "cryptoFactory"], timestamp),
-    getTokenPrices("aurora", ["stableFactory", "cryptoFactory"], timestamp)
+    getTokenPrices("aurora", ["stableFactory", "cryptoFactory"], timestamp),
+    getTokenPrices("optimism", ["stableFactory", "cryptoFactory"], timestamp)
   ]);
 }
 //curve8();

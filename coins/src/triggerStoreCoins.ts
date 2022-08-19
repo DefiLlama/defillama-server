@@ -8,7 +8,7 @@ function shuffleArray(array: number[]) {
   }
 }
 
-const step = 3;
+const step = 1;
 export default async function handler() {
   const adaptersArray = Object.entries(adapters);
   const protocolIndexes: number[] = Array.from(

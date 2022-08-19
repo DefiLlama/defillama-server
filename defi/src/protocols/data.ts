@@ -1138,6 +1138,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "bancor/index.js",
     twitter: "Bancor",
+    parentProtocol: "Bancor",
     audit_links: ["https://bancor-network.gitbook.io/v2.1/ethereum-contracts/security"],
   },
   {

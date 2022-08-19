@@ -831,7 +831,7 @@ export const chainCoingeckoIds = {
     symbol: "HYDRA",
     cmcId: "8245",
   },
-  "BitGert": {
+  "Bitgert": {
     geckoId: "bitrise-token",
     symbol: "BRISE",
     cmcId: "11079",
@@ -1263,7 +1263,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "hydra":
       return "Hydra"
     case "bitgert":
-      return "BitGert"
+      return "Bitgert"
     case "reef":
       return "Reef"
     case "candle":

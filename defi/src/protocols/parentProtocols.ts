@@ -161,6 +161,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "21437",
     chains: [],
     twitter: "mycelium_xyz",
+  },
+  {
+    id: "Bancor",
+    name: "Bancor",
+    url: "https://app.bancor.network/",
+    description:
+    "Bancor is an on-chain liquidity protocol that enables automated, decentralized exchange on Ethereum and across blockchains.",
+    logo: `${baseIconsUrl}/bancor.png`,
+    gecko_id: "bancor",
+    cmcId: "1727",
+    chains: [],
+    twitter: "Bancor",
   }
 ];
 

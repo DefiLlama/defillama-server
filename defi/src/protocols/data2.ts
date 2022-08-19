@@ -9514,7 +9514,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Uniswap"],
   module: "orbitalswap/index.js",
-  twitter: "TYTANFI",
+  twitter: "OrbitalSS",
   audit_links: ["https://drive.google.com/file/d/1kJkVsFuK0GAysk1yOVe_Hwu6eFI39L--/view"],
   listedAt: 1655839251
 },

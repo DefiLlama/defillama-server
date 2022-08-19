@@ -1,6 +1,7 @@
 import getTokenPrices from "./aave";
 
 export function aave(timestamp: number = 0) {
+  console.log("starting aave");
   return Promise.all([
     getTokenPrices(
       "optimism",
@@ -37,6 +38,7 @@ export function aave(timestamp: number = 0) {
   ]);
 }
 export function geist(timestamp: number = 0) {
+  console.log("starting geist");
   return Promise.all([
     getTokenPrices(
       "fantom",
@@ -47,6 +49,7 @@ export function geist(timestamp: number = 0) {
   ]);
 }
 export function radiant(timestamp: number = 0) {
+  console.log("starting radiant");
   return Promise.all([
     getTokenPrices(
       "arbitrum",
@@ -57,6 +60,7 @@ export function radiant(timestamp: number = 0) {
   ]);
 }
 export function klap(timestamp: number = 0) {
+  console.log("starting klap");
   return Promise.all([
     getTokenPrices(
       "klaytn",
@@ -67,6 +71,7 @@ export function klap(timestamp: number = 0) {
   ]);
 }
 export function valas(timestamp: number = 0) {
+  console.log("starting valas");
   return getTokenPrices(
     "bsc",
     "0x99E41A7F2Dd197187C8637D1D151Dc396261Bc14",

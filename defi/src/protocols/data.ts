@@ -1122,7 +1122,7 @@ const data: Protocol[] = [
   },
   {
     id: "162",
-    name: "Bancor",
+    name: "Bancor V2.1",
     address: "0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
     symbol: "BNT",
     url: "https://app.bancor.network/",

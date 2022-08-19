@@ -18,10 +18,10 @@ export default {
   curve2: require("./lps/curve/index"),
   curve3: require("./lps/curve/index"),
   curve4: require("./lps/curve/index"),
-  curve5: require("./lps/curve/index"),
-  curve6: require("./lps/curve/index"),
-  curve7: require("./lps/curve/index"),
-  curve8: require("./lps/curve/index"),
+  // curve5: require("./lps/curve/index"),
+  // curve6: require("./lps/curve/index"),
+  // curve7: require("./lps/curve/index"),
+  // curve8: require("./lps/curve/index"),
 
   ankr: require("./liquidStaking/ankr/index")
 

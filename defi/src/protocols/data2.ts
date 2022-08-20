@@ -12810,6 +12810,27 @@ listedAt: 1650804679
   ],
   listedAt: 1660946171,
 },
+{
+  id: "1998",
+  name: "DogePup",
+  address: "dogechain:0x1b15b9446b9f632a78396a1680DAaE17f74Ce8d9",
+  symbol: "DOGEPUP",
+  url: "https://dogepup.dog",
+  description: "DogePup is a limited supply yield farm on Dogechain.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/dogepup.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "doge-pup-token",
+  cmcId: "21463",
+  category: "Yield",
+  chains: ["Dogechain"],
+  module: "dogepup/index.js",
+  twitter: "PolyPup1",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1661002522
+},
 ]
 
 

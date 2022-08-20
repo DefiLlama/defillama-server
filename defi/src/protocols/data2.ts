@@ -12718,9 +12718,9 @@ listedAt: 1650804679
 },
 {
   id: "1994",
-  name: "DogeMoney",
+  name: "DogMoney",
   address: "dogechain:0x93C8a00416dD8AB9701fa15CA120160172039851",
-  symbol: "DOGEMONEY",
+  symbol: "DOGMONEY",
   url: "https://app.dogmoney.money/",
   description: "Trade, launch, stake, farm, invest, automate, build on the premier DeFi platform of DogeChain",
   chain: "Dogechain",

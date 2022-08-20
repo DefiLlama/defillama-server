@@ -10431,7 +10431,7 @@ listedAt: 1650804679
   description: "The Best Yield Aggregator on ASTR Network.",
   chain: "Astar",
   logo: `${baseIconsUrl}/avault.jpg`,
-  audits: "2",
+  audits: "0",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -10441,7 +10441,6 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "avault/index.js",
   twitter: "Avault_Astar",
-  audit_links: ["https://co-go.gitbook.io/avault"],
   listedAt: 1657291702
 },
 {

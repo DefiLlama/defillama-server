@@ -17,6 +17,9 @@ export default {
     },
     "pancakeswap": {
         enabled: true
+    },
+    "raydium": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

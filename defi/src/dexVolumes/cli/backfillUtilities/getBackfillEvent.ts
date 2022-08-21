@@ -19,7 +19,7 @@ export default async () => {
         // 'katana',
         // 'klayswap',
         // 'osmosis',
-         'pancakeswap',
+        // 'pancakeswap',
         // 'quickswap', 
         // 'raydium', 
         // 'serum', 
@@ -29,7 +29,7 @@ export default async () => {
         // 'sushiswap', 
         // 'terraswap', 
         // 'traderjoe', 
-        // 'uniswap'
+        'uniswap'
     ]
 
     let startTimestamp = 0
@@ -43,7 +43,7 @@ export default async () => {
                     const acc = await accP
                     const currstart = await start()
                     return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
-                }, Promise.resolve(Date.now()/1000))
+                }, Promise.resolve(Date.now() / 1000))
             startTimestamp = st
         } else {
             const st = await Object.values(dexAdapter.breakdown).reduce(async (accP, dexAdapter) => {
@@ -52,10 +52,10 @@ export default async () => {
                     const acc = await accP
                     const currstart = await start()
                     return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
-                }, Promise.resolve(Date.now()/1000))
+                }, Promise.resolve(Date.now() / 1000))
 
                 return bst < acc ? bst : acc
-            }, Promise.resolve(Date.now()/1000))
+            }, Promise.resolve(Date.now() / 1000))
             startTimestamp = st
         }
         if (startTimestamp > 0) startTimestamp *= 1000

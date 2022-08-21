@@ -20,6 +20,9 @@ export default {
     },
     "raydium": {
         enabled: true
+    },
+    "uniswap": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

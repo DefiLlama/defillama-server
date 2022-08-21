@@ -12874,6 +12874,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1661022639
 },
+{
+  id: "2001",
+  name: "Demex",
+  address: null,
+  symbol: "-",
+  url: "https://app.dem.exchange/",
+  description:
+    "The first fully decentralized DEX that supports any type of financial market.",
+  chain: "Carbon",
+  logo: `${baseIconsUrl}/demex.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: "1240",
+  category: "Dexes",
+  chains: ["Carbon"],
+  module: "demex/index.js",
+  twitter: "demexchange",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1661118051
+},
 ]
 
 

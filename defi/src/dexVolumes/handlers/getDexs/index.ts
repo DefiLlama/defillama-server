@@ -4,6 +4,7 @@ import { getVolume, Volume, VolumeType } from "../../data/volume"
 import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
 import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, sumAllVolumes } from "../../utils/volumeCalcs";
+import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 
 export interface VolumeSummaryDex extends Dex {
     totalVolume24h: number | null
@@ -12,15 +13,17 @@ export interface VolumeSummaryDex extends Dex {
 }
 
 export const handler = async (): Promise<IResponse> => {
+    const prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - 1000 * 60 * 60 * 24) / 1000)
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
         try {
             const volumes = await getVolume(adapter.id, VolumeType.dailyVolume)
             // This check is made to infer Volume[] type instead of Volume type
             if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
+            const prevDayVolume = volumes.find(vol => vol.timestamp === prevDayTimestamp)
             return {
                 ...adapter,
-                totalVolume24h: sumAllVolumes(volumes[volumes.length - 1].data),
-                volume24hBreakdown: volumes[volumes.length - 1].data,
+                totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
+                volume24hBreakdown: prevDayVolume ? prevDayVolume.data : null,
                 volumes: volumes,
                 change_1d: calcNdChange(volumes, 1),
                 change_7d: calcNdChange(volumes, 7),

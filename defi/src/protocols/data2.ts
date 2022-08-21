@@ -4619,7 +4619,7 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "jpeg-d/index.js",
   twitter: "JPEGd_69",
-  audit_links: ["https://jpeg-d.gitbook.io/jpegd/other-links/audits"],
+  audit_links: ["https://docs.jpegd.io/other-links/audits"],
   listedAt: 1649284165
 },
 {

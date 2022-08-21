@@ -24,11 +24,12 @@ export interface IRecordVolumeData {
 }
 
 const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
+const LAMBDA_TIMESTAMP = (Date.now()) / 1000
 
 export const handler = async (event: IHandlerEvent) => {
   console.info(`Storing volumes for the following indexs ${event.protocolIndexes}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
-  const currentTimestamp = event.timestamp || (Date.now()) / 1000;
+  const currentTimestamp = event.timestamp || LAMBDA_TIMESTAMP;
   // Get clean day
   const cleanCurrentDayTimestamp = getTimestampAtStartOfDayUTC(currentTimestamp)
   const cleanPreviousDayTimestamp = getTimestampAtStartOfDayUTC(cleanCurrentDayTimestamp - 1)
@@ -148,7 +149,7 @@ export const handler = async (event: IHandlerEvent) => {
         const chain = Object.keys(current)[0]
         acc[chain] = {
           ...acc[chain],
-          ...current[chain]
+          ...current[chain],
         }
         return acc
       }, {} as IRecordVolumeData)
@@ -157,14 +158,14 @@ export const handler = async (event: IHandlerEvent) => {
       // TODO: IMPROVE ERROR HANDLING
       let error = undefined
       try {
-        await storeVolume(new Volume(VolumeType.totalVolume, id, cleanPreviousDayTimestamp, totalVolumes))
+        await storeVolume(new Volume(VolumeType.totalVolume, id, cleanPreviousDayTimestamp, totalVolumes), LAMBDA_TIMESTAMP)
       } catch (e) {
         const err = e as Error
         console.error(`${STORE_DEX_VOLUME_ERROR}:${volumeAdapter}: ${err.message}`)
         error = e
       }
       try {
-        await storeVolume(new Volume(VolumeType.dailyVolume, id, cleanPreviousDayTimestamp, dailyVolumes))
+        await storeVolume(new Volume(VolumeType.dailyVolume, id, cleanPreviousDayTimestamp, dailyVolumes), LAMBDA_TIMESTAMP)
       } catch (e) {
         const err = e as Error
         console.error(`${STORE_DEX_VOLUME_ERROR}:${volumeAdapter}: ${err.message}`)
@@ -198,6 +199,8 @@ function processRejectedPromises(volumesRejected: IAllSettledRejection[], rawDai
         [rejVolumes.chain]: {
           error: rejVolumes.error.message
         },
+        // @ts-ignore //TODO: fix
+        eventTimestamp: LAMBDA_TIMESTAMP
       })
   }
 }

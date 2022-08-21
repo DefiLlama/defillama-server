@@ -52,13 +52,18 @@ export class Volume extends Item {
     }
 }
 
-export const storeVolume = async (volume: Volume): Promise<Volume> => {
+export const storeVolume = async (volume: Volume, eventTimestamp: number): Promise<Volume> => {
     if (Object.entries(volume.data).length === 0) throw new Error(`${volume.type}: Can't store empty volume`)
+    const obj2Store:IRecordVolumeData = {
+        ...volume.data,
+        // @ts-ignore //TODO: fix
+        eventTimestamp
+    }
     try {
         await dynamodb.update({
             Key: volume.keys(),
-            UpdateExpression: createUpdateExpressionFromObj(volume.data),
-            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(volume.data)
+            UpdateExpression: createUpdateExpressionFromObj(obj2Store),
+            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2Store)
         }) // Upsert like
         return volume
     } catch (error) {

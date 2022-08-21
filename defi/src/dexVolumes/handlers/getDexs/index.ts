@@ -12,7 +12,7 @@ export interface VolumeSummaryDex extends Dex {
 }
 
 export const handler = async (): Promise<IResponse> => {
-    const dexsResults = await allSettled(volumeAdapters.map<Promise<VolumeSummaryDex>>(async (adapter) => {
+    const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
         try {
             const volumes = await getVolume(adapter.id, VolumeType.dailyVolume)
             // This check is made to infer Volume[] type instead of Volume type

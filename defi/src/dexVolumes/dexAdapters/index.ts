@@ -1,11 +1,14 @@
 import dexVolumes from "../../../DefiLlama-Adapters/dexVolumes";
 import data, { Protocol } from "../../protocols/data";
+import config from "./config"
+import type { IVolumesConfig } from "./config"
 /**
  * Using data from protocols since its more complete
  */
 
 export interface Dex extends Protocol {
     volumeAdapter: string
+    config?: IVolumesConfig
 }
 
 // Obtaining all dex protocols
@@ -21,7 +24,8 @@ const dexData: Dex[] = dexAdaptersKeys.map(adapterKey => {
     )
     if (dexFoundInProtocols) return {
         ...dexFoundInProtocols,
-        volumeAdapter: adapterKey
+        volumeAdapter: adapterKey,
+        config: config[adapterKey]
     }
     // TODO: Handle better errors
     console.error(`Missing info for ${adapterKey} DEX!`)

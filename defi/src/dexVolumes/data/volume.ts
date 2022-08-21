@@ -53,7 +53,7 @@ export class Volume extends Item {
 }
 
 export const storeVolume = async (volume: Volume): Promise<Volume> => {
-    if (Object.entries(volume.data).length === 0) throw new Error("Can't store empty volume")
+    if (Object.entries(volume.data).length === 0) throw new Error(`${volume.type}: Can't store empty volume`)
     try {
         await dynamodb.update({
             Key: volume.keys(),

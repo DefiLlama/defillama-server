@@ -23,6 +23,9 @@ export default {
     },
     "uniswap": {
         enabled: true
+    },
+    "traderjoe": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

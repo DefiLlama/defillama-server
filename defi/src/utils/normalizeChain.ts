@@ -166,6 +166,13 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 888,
   },
+  "Posichain": {
+    geckoId: "position-token",
+    symbol: "POSI",
+    cmcId: "11234",
+    categories: ["EVM"],
+    chainId: 900000,
+  },
   "DefiChain": {
     geckoId: "defichain",
     symbol: "DFI",
@@ -1326,6 +1333,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Kujira"
     case "heiko":
       return "Heiko"
+    case "posichain":
+      return "Posichain"
     case "dogechain":
         return "Dogechain"
       case "canto":

@@ -81,11 +81,6 @@ async function getPools(chain: string, block: number | undefined) {
 }
 function mapGaugeTokenBalances(calls: Multicall[], chain: string) {
   const mapping: any = {
-    "0x1337bedc9d22ecbe766df105c9623922a27963ec": {
-      to: "0x5b5cfe992adac0c9d48e05854b2d91c73a003858",
-      pools: [],
-      chains: ["avax"]
-    },
     "0x7f90122bf0700f9e7e1f688fe926940e8839f353": {
       to: "0xbF7E49483881C76487b0989CD7d9A8239B20CA41",
       pools: [],
@@ -167,7 +162,10 @@ async function PoolToToken(
   pool = pool.output.toLowerCase();
   let token: string;
 
-  const faultyPools: string[] = ["0x5633e00994896d0f472926050ecb32e38bef3e65"];
+  const faultyPools: string[] = [
+    "0x5633e00994896d0f472926050ecb32e38bef3e65",
+    "0xd0c855c092dbc41055a40297420bba0a6f46f8ad"
+  ];
   if (faultyPools.includes(pool)) {
     throw new Error(`pool at ${pool} is faulty some how`);
   }
@@ -257,7 +255,9 @@ async function PoolToToken(
       "0x960ea3e3c7fb317332d990873d354e18d7645590":
         "0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2",
       "0xa827a652ead76c6b0b3d19dba05452e06e25c27e":
-        "0x3dfe1324a0ee9d86337d06aeb829deb4528db9ca"
+        "0x3dfe1324a0ee9d86337d06aeb829deb4528db9ca",
+      "0xb755b949c126c04e0348dd881a5cf55d424742b2":
+        "0x1dab6560494b04473a0be3e7d83cf3fdf3a51828"
     };
     token = mapping[pool] ? mapping[pool] : pool;
   }
@@ -303,18 +303,25 @@ async function getUnderlyingPrices(
 
   return poolComponents;
 }
+let i = -1;
 async function unknownPools(
   chain: string,
   block: number | undefined,
   timestamp: number,
   poolList: any,
-  registries: string[]
+  registries: string[],
+  writes: Write[]
 ) {
   //["cryptoFactory"]) {
   for (let registry of registries) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
+      i++;
+      console.log(i);
       try {
+        if (i == 17) {
+          console.log("here");
+        }
         const token: string = await PoolToToken(chain, pool, block);
         const [balances, tokenInfo] = await Promise.all([
           poolBalances(chain, pool, registry, block),
@@ -466,8 +473,9 @@ export default async function getTokenPrices(
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const poolList = await getPools(chain, block);
+  const writes: Write[] = [];
 
-  await unknownPools(chain, block, timestamp, poolList, registries);
+  await unknownPools(chain, block, timestamp, poolList, registries, writes);
   //await listUnknownTokens(chain, unknownTokensList, block);
   await unknownTokens(chain, block, writes, timestamp);
   return writes;

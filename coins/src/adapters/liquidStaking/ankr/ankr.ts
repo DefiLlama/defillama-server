@@ -1,4 +1,3 @@
-import { batchWrite } from "../../../utils/shared/dynamodb";
 import { getCurrentUnixTimestamp } from "../../../utils/date";
 import { Write } from "../../utils/dbInterfaces";
 

@@ -303,7 +303,6 @@ async function getUnderlyingPrices(
 
   return poolComponents;
 }
-let i = 0;
 async function unknownPools(
   chain: string,
   block: number | undefined,

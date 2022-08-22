@@ -38,9 +38,9 @@ export function curve5(timestamp: number = 0) {
   console.log("starting curve5");
   return Promise.all([
     getTokenPrices("optimism", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("optimism", ["stableFactory", "cryptoFactory"], timestamp)
-    // getTokenPrices("polygon", timestamp),
-    // getTokenPrices("polygon", timestamp),
+    getTokenPrices("optimism", ["stableFactory", "cryptoFactory"], timestamp),
+    getTokenPrices("polygon", ["stableswap", "crypto"], timestamp)
+    // getTokenPrices("polygon", ["stableFactory", "cryptoFactory"], timestamp)
   ]);
 }
 export async function ellipsis(timestamp: number = 0) {

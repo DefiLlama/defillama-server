@@ -6,6 +6,13 @@
     "stateMutability": "view",
     "type": "function"
   },
+  "token": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "token",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address" }]
+  },
   "get_registry": {
     "name": "get_registry",
     "outputs": [

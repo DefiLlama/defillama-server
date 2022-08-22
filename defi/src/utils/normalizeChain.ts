@@ -3,7 +3,8 @@ const normalizedChainReplacements = {
   "wanchain": "wan",
   "kucoin": "kcc",
   "terra classic": "terra",
-  "nova network": "nova"
+  "nova network": "nova" ,
+  "godwokenv1" : "godwoken_v1"
 } as {
   [chain: string]: string
 }
@@ -1121,6 +1122,8 @@ export function transformNewChainName(chain: string) {
       return "Terra Classic"
     case "Nova":
       return "Nova Network"
+    case "godwoken_v1":
+      return "GodwokenV1"
     default:
       return chain
   }
@@ -1148,6 +1151,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Terra Classic" : "Terra"
     case "nova":
       return useNewChainNames ? "Nova Network" : "Nova Network"
+    case "godwoken_v1":
+      return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
     case "avax":
       return "Avalanche"
     case "xdaiarb":

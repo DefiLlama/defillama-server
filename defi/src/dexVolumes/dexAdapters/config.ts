@@ -26,6 +26,9 @@ export default {
     },
     "traderjoe": {
         enabled: true
+    },
+    "sushiswap": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

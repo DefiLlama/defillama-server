@@ -26,9 +26,9 @@ export default async () => {
         // 'soulswap', 
         // 'spiritswap', 
         // 'spookyswap', 
-        // 'sushiswap', 
+        'sushiswap', //enabled
         // 'terraswap', 
-         'traderjoe', // enabled
+        // 'traderjoe', //enabled
         // 'uniswap' //enabled
     ]
 

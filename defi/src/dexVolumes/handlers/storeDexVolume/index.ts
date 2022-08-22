@@ -25,7 +25,7 @@ export interface IRecordVolumeData {
 }
 
 const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
-const LAMBDA_TIMESTAMP = (Date.now()) / 1000
+const LAMBDA_TIMESTAMP = Math.trunc((Date.now()) / 1000)
 
 export const handler = async (event: IHandlerEvent) => {
   console.info(`Storing volumes for the following indexs ${event.protocolIndexes}`)

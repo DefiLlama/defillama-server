@@ -12961,6 +12961,26 @@ listedAt: 1650804679
   parentProtocol: "MM Finance",
   listedAt: 1661152341,
 },
+{
+  id: "2005",
+  name: "ExinPool",
+  address: null,
+  symbol: "-",
+  url: "https://support.exinpool.com/en",
+  description: "ExinPool is a staking platform of Exin in Mixin Network",
+  chain: "Mixin",
+  logo: `${baseIconsUrl}/exinpool.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Mixin"],
+  module: "exinpool/index.js",
+  twitter: null,
+  forkedFrom: [],
+  listedAt: 1661153137,
+},
 ]
 
 

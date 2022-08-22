@@ -6500,7 +6500,7 @@ const data: Protocol[] = [
     url: "https://sun.io",
     description: "First integrated platform for stablecoin swap, stake-mining, and self-governance on TRON",
     chain: "Tron",
-    logo: `${baseIconsUrl}/sun-io.png`,
+    logo: `${baseIconsUrl}/sun.io.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "sun-token",

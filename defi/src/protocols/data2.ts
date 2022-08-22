@@ -12995,7 +12995,7 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "Dexes",
-  chains: ["Godwoken_V1"],
+  chains: ["GodwokenV1"],
   module: "jioswap/index.js",
   twitter: "jioswap",
   forkedFrom: ["Saddle Finance"],

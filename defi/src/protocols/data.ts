@@ -20365,7 +20365,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "mad-meerkat-optimizer",
   cmcId: null,
-  category: "Yield",
+  category: "Yield Aggregator",
   chains: ["Cronos"],
   module: "mmo-finance/index.js",
   twitter: "MMFcrypto",

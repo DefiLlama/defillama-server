@@ -12940,6 +12940,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1661140139
 },
+{
+  id: "2004",
+  name: "MM Optimizer Polygon",
+  address: "polygon:0x859a50979fdB2A2fD8Ba1AdCC66977C6f6b1CD5B",
+  symbol: "MMO",
+  url: "https://vaults.polymm.finance/vault",
+  description: "MM Optimizer aims to provide users the easiest way to join the bandwagon of the DeFi world, built on top of MM Finance, giving you the tastiest MMFs topped with MMOs.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/mm-optimizer.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Polygon"],
+  module: "mmo-finance-polygon/index.js",
+  twitter: "MMFcrypto",
+  forkedFrom: ["Bunny"],
+  parentProtocol: "MM Finance",
+  listedAt: 1661152341,
+},
 ]
 
 

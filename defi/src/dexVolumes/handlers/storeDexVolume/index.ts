@@ -2,13 +2,14 @@ import { getChainBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import volumeAdapters from "../../dexAdapters";
-import { DexAdapter, VolumeAdapter } from "@defillama/adapters/dexVolumes/dexVolume.type";
+import { ChainBlocks, DexAdapter, VolumeAdapter } from "@defillama/adapters/dexVolumes/dexVolume.type";
 import { storeVolume, Volume, VolumeType, getVolume } from "../../data/volume";
 import getChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
 import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
+import { getBlock } from "@defillama/adapters/projects/helper/getBlock";
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
@@ -39,10 +40,16 @@ export const handler = async (event: IHandlerEvent) => {
     event.protocolIndexes.map(index => volumeAdapters[index].volumeAdapter)
   ).filter(canGetBlock)
 
-  const chainBlocks = await getChainBlocks(cleanCurrentDayTimestamp, allChains);
+  const chainBlocks: ChainBlocks = {};
+  await allSettled(
+    allChains.map(async (chain) => {
+      const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks)
+      chainBlocks[chain] = latestBlock
+    })
+  );
 
   async function runAdapter(id: string, volumeAdapter: VolumeAdapter, version: string) {
-    console.log("Running adapter", id)
+    console.log("Running adapter", id, version)
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
       .filter(async (chain) => {

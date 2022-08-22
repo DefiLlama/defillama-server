@@ -167,6 +167,11 @@ async function PoolToToken(
   pool = pool.output.toLowerCase();
   let token: string;
 
+  const faultyPools: string[] = ["0x5633e00994896d0f472926050ecb32e38bef3e65"];
+  if (faultyPools.includes(pool)) {
+    throw new Error(`pool at ${pool} is faulty some how`);
+  }
+
   try {
     token = (
       await call({
@@ -246,7 +251,13 @@ async function PoolToToken(
       "0x752ebeb79963cf0732e9c0fec72a49fd1defaeac":
         "0xcb08717451aae9ef950a2524e33b6dcaba60147b",
       "0xe84f5b1582ba325fdf9ce6b0c1f087ccfc924e54":
-        "0x70fc957eb90e37af82acdbd12675699797745f68"
+        "0x70fc957eb90e37af82acdbd12675699797745f68",
+      "0x3a1659ddcf2339be3aea159ca010979fb49155ff":
+        "0x58e57ca18b7a47112b877e31929798cd3d703b0f",
+      "0x960ea3e3c7fb317332d990873d354e18d7645590":
+        "0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2",
+      "0xa827a652ead76c6b0b3d19dba05452e06e25c27e":
+        "0x3dfe1324a0ee9d86337d06aeb829deb4528db9ca"
     };
     token = mapping[pool] ? mapping[pool] : pool;
   }
@@ -292,6 +303,7 @@ async function getUnderlyingPrices(
 
   return poolComponents;
 }
+let i = 0;
 async function unknownPools(
   chain: string,
   block: number | undefined,

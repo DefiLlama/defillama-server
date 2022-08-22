@@ -12892,9 +12892,53 @@ listedAt: 1650804679
   chains: ["Carbon"],
   module: "demex/index.js",
   twitter: "demexchange",
+  listedAt: 1661118051
+},
+{
+  id: "2002",
+  name: "CACHE.Gold",
+  address: "0xf5238462e7235c7b62811567e63dd17d12c2eaa0",
+  symbol: "CGT",
+  url: "https://cache.gold/",
+  description: "CACHE Gold tokens are fully compliant, public, transparent, redeemable gold-backed tokens",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/cache.gold.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "cache-gold",
+  cmcId: "5719",
+  category: "RWA",
+  chains: ["Ethereum"],
+  module: "cache-gold/index.js",
+  twitter: "cache_gold",
   forkedFrom: [],
   oracles: [],
-  listedAt: 1661118051
+  audit_links: [
+    "https://github.com/cache-token/docs/blob/master/CACHE_Gold_Audit_Zerotrust.pdf",
+    "https://github.com/cache-token/docs/blob/master/CACHE_Gold_CGT_Audit_Polygon_CertiK.pdf"
+  ],
+  listedAt: 1661139252
+},
+{
+  id: "2003",
+  name: "Fruits of Ryoshi",
+  address: "dogechain:0xa4F9877A08F7639df15D506eAFF92Ab5E78273cd",
+  symbol: "NONI",
+  url: "https://fruitsofryoshi.com",
+  description: "Yield farm on Dogechain",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/fruits-of-ryoshi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "farms-of-ryoshi",
+  cmcId: null,
+  category: "Farm",
+  chains: ["Dogechain"],
+  module: "ryoshi/index.js",
+  twitter: "FruitsofRyoshi",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1661140137
 },
 ]
 

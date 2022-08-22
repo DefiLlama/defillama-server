@@ -1074,6 +1074,17 @@ export const chainCoingeckoIds = {
         symbol: "XRP",
         cmcId: "52",
       },
+      "GodwokenV1": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: ["EVM"],
+        parent: {
+          chain: "Godwoken",
+          types: ["emulator", "gas"]
+        },
+        chainId: 71402,
+      },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1341,6 +1352,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
           return "Canto"
       case "ripple":
           return "Ripple"
+        case "godwokenv1":
+            return "GodwokenV1"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

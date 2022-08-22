@@ -312,7 +312,6 @@ async function getUnderlyingPrices(
 
   return poolComponents;
 }
-let i = -1;
 async function unknownPools(
   chain: string,
   block: number | undefined,
@@ -326,12 +325,7 @@ async function unknownPools(
   for (let registry of registries) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
-      i++;
-      console.log(i);
       try {
-        if (i == 5) {
-          console.log("here");
-        }
         const token: string = await PoolToToken(chain, pool, block);
         const [balances, tokenInfo] = await Promise.all([
           poolBalances(chain, pool, registry, block),

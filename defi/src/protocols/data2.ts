@@ -13001,6 +13001,32 @@ listedAt: 1650804679
   forkedFrom: ["Saddle Finance"],
   listedAt: 1661169623,
 },
+{
+  id: "2007",
+  name: "Optifi",
+  address: null,
+  symbol: "USDC",
+  url: "https://www.optifi.app/",
+  description: "OptiFi is an option DEX with portfolio margining and delta-neutral options market making vaults on Solana. The automatic options market maker (OMM) with a delta-neutral strategy allows all users to deposit USDC to generate yield while limiting delta risk by providing liquidity on OptiFi.",
+  chain: "Solana",
+  logo: "https://drive.google.com/file/d/16m0gIp-HTlPOKSnkm1gS024uaUDP2U72/view?usp=sharing",
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Options",
+  chains: ["Solana"],
+  oracles: [
+    "Pyth",
+    "Switchboard"
+  ],
+  module: "optifi/index.js",
+  forkedFrom: [],
+  twitter: "OptifiLabs",
+  audit_links: [
+    "https://optifi.gitbook.io/optifi/security/audit-report"
+  ]
+},
 ]
 
 

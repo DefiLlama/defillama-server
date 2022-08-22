@@ -12981,6 +12981,26 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1661153137,
 },
+{
+  id: "2006",
+  name: "JioSwap",
+  address: null,
+  symbol: "-",
+  url: "https://jioswap.finance",
+  description: "Jioswap is a cross-chain AMM protocol designed for trading stablecoins and tokenized crypto assets enabling low slippage and Interoperability between chains.",
+  chain: "GodwokenV1",
+  logo: `${baseIconsUrl}/jioswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["GodwokenV1"],
+  module: "jioswap/index.js",
+  twitter: "jioswap",
+  forkedFrom: ["Saddle Finance"],
+  listedAt: 1661169623,
+},
 ]
 
 

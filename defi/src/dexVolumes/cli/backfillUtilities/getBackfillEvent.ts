@@ -23,8 +23,8 @@ export default async () => {
         // 'quickswap', 
         // 'raydium', //backfilled
         // 'serum', 
-        // 'soulswap', 
-        // 'spiritswap', 
+        // 'soulswap', //backfilled
+        // 'spiritswap', //backfilled
         // 'spookyswap', //backfilled
         // 'sushiswap', //backfilled
         // 'terraswap', 

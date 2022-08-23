@@ -32,6 +32,12 @@ export default {
     },
     "spookyswap": {
         enabled: true
+    },
+    "spiritswap": {
+        enabled: true
+    },
+    "soulswap": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

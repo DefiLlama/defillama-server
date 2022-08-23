@@ -13065,6 +13065,27 @@ listedAt: 1650804679
   twitter: "H2O_data",
   listedAt: 1661212761
 },
+{
+  id: "2010",
+  name: "StarSwap Starcoin",
+  address: "0x8c109349c6bd91411d6bc962e080c4a3",
+  symbol: "STAR",
+  url: "https://starswap.xyz",
+  description: "AMM and yield farm on Starcoin.",
+  chain: "Starcoin",
+  logo: `${baseIconsUrl}/starswap-starcoin.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Starcoin"],
+  oracles: [],
+  forkedFrom: [],
+  module: "starswap-starcoin/index.js",
+  twitter: "StarswapEN",
+  listedAt: 1661252676
+},
 ]
 
 

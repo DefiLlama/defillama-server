@@ -13023,6 +13023,27 @@ listedAt: 1650804679
   audit_links: ["https://docs.grizzly.fi/audits#v1-audits"],
   listedAt: 1661205589
 },
+{
+  id: "2008",
+  name: "Forteswap",
+  address: null,
+  symbol: "-",
+  url: "https://forteswap.xyz/",
+  description: "AMM Dex on Canto",
+  chain: "Canto",
+  logo: `${baseIconsUrl}/forteswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Canto"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "canto-forte/index.js",
+  twitter: null,
+  listedAt: 1661212761
+},
 ]
 
 

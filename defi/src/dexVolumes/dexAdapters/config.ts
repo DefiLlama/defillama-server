@@ -29,6 +29,9 @@ export default {
     },
     "sushiswap": {
         enabled: true
+    },
+    "spookyswap": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

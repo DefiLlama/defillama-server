@@ -177,15 +177,15 @@ async function PoolToToken(
       })
     ).output.toLowerCase();
   } catch {
-    token = (
-      await call({
-        target: pool,
-        abi: abi.token,
-        chain: chain as any,
-        block
-      })
-    ).output.toLowerCase();
     try {
+      token = (
+        await call({
+          target: pool,
+          abi: abi.token,
+          chain: chain as any,
+          block
+        })
+      ).output.toLowerCase();
     } catch {
       const mapping: { [key: string]: any } = {
         // pool contract : token contract

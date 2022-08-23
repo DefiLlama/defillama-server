@@ -21590,7 +21590,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "The Boo Finance Protocol is pioneering DeFi 3.0 with optimized, competitive yield-farming and staking with deflationary NFTs and DAO on the Avalanche Network.",
   chain: "Avalanche",
   logo: `${baseIconsUrl}/boofinance.svg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "boo-finance",
   cmcId: "12272",
@@ -21599,6 +21599,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "boofinance/index.js",
   twitter: "Boo_Finance",
   oracles: ["TWAP"],
+  audit_links: ["https://www.certik.com/projects/boofinance"],
   listedAt: 1641511342,
 },
 {

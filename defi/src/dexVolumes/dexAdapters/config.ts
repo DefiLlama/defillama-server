@@ -38,6 +38,12 @@ export default {
     },
     "soulswap": {
         enabled: true
+    },
+    "klayswap": {
+        enabled: true
+    },
+    "osmosis": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

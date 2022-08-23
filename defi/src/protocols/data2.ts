@@ -13044,6 +13044,27 @@ listedAt: 1650804679
   twitter: null,
   listedAt: 1661212761
 },
+{
+  id: "2009",
+  name: "H2Odata",
+  address: "0xa5b947687163fe88c3e6af5b17ae69896f4abccf",
+  symbol: "PSDN",
+  url: "https://www.h2odata.xyz/",
+  description: "H2O is the first non-pegged stable asset for the Web3 Data Economy. Initially, it is backed by the OCEAN token but will also be backed by other next-generation data tokens. H2O serves as a medium of exchange and unit of account in data marketplaces",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/h2odata.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "poseidon-2",
+  cmcId: "19908",
+  category: "CDP",
+  chains: ["Ethereum"],
+  oracles: ["Chainlink", "TWAP", "Internal"],
+  forkedFrom: ["Reflexer"],
+  module: "h2odata/index.js",
+  twitter: "H2O_data",
+  listedAt: 1661212761
+},
 ]
 
 

@@ -3188,7 +3188,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "reflexer-ungovernance-token",
     cmcId: "9493",
-    category: "Algo-Stables",
+    category: "CDP",
     chains: ["Ethereum"],
     module: "reflexer/index.js",
     twitter: "reflexerfinance",

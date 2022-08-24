@@ -13168,7 +13168,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   module: "oceanone/index.js",
-  twitter: null,
+  twitter: "Mixin_OceanOne",
   audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report/OceanONE-Security-Audit-Report.md"],
   listedAt: 1661353825
 },

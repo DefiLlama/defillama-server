@@ -11,6 +11,13 @@ const sumAllVolumes = (breakdownVolumes: IRecordVolumeData) =>
             .reduce<number>((vacc, current) => typeof current === 'number' ? vacc + current : vacc, 0)
         , 0)
 
+export interface IGeneralStats {
+    totalVolume: number;
+    changeVolume1d: number;
+    changeVolume7d: number;
+    changeVolume30d: number;
+}
+
 const getSumAllDexsToday = (dexs: VolumeSummaryDex[]) => {
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(Date.now() / 1000) - ONE_DAY_IN_SECONDS;
     const timestamp1d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 1  // (new Date(yesterdaysTimestamp * 1000)).setDate((new Date(yesterdaysTimestamp * 1000).getDate() - 1)) / 1000
@@ -38,8 +45,10 @@ const getSumAllDexsToday = (dexs: VolumeSummaryDex[]) => {
     }
 }
 
-const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]) => {
-    const chartData: [[string, number]] = [["0", 0]]
+export type IChartData = [[string, number]]
+
+const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]): IChartData => {
+    const chartData: IChartData = [["0", 0]] // initial value is removed with a shift before returning, added so ts stops complaining
     const dataPoints = getDataPoints()
     for (const dataPoint of dataPoints) {
         let total = 0

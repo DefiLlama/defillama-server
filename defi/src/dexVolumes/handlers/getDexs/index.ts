@@ -3,8 +3,13 @@ import volumeAdapters, { Dex } from "../../dexAdapters";
 import { getVolume, Volume, VolumeType } from "../../data/volume"
 import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
-import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, sumAllVolumes } from "../../utils/volumeCalcs";
+import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
+
+export interface IGetDexsResponseBody extends IGeneralStats {
+    totalDataChart: IChartData,
+    dexs: Omit<VolumeSummaryDex, 'volumes'>[]
+}
 
 export interface VolumeSummaryDex extends Dex {
     totalVolume24h: number | null
@@ -50,7 +55,7 @@ export const handler = async (): Promise<IResponse> => {
         totalDataChart: generateAggregatedVolumesChartData(dexs),
         ...generalStats,
         dexs: dexs.map(removeVolumesObject),
-    }, 10 * 60); // 10 mins cache
+    } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
 
 const removeVolumesObject = (dex: VolumeSummaryDex) => {

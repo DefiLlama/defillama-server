@@ -28,7 +28,7 @@ const dexData: Dex[] = dexAdaptersKeys.map(adapterKey => {
         config: config[adapterKey]
     }
     // TODO: Handle better errors
-    console.error(`Missing info for ${adapterKey} DEX!`)
+    //console.error(`Missing info for ${adapterKey} DEX!`)
     return undefined
 }).filter(notUndefined);
 

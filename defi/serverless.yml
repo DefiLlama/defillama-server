@@ -86,6 +86,7 @@ provider:
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
     REVALIDATE_SECRET: ${file(./env.js):REVALIDATE_SECRET}
     DEFILLAMA_SDK_MUTED: true
+    PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
 

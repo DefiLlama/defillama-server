@@ -13150,6 +13150,28 @@ listedAt: 1650804679
   twitter: "KanvasTrade",
   listedAt: 1661297913
 },
+{
+  id: "2014",
+  name: "Oceanone",
+  address: null,
+  symbol: "-",
+  url: "https://ocean.one",
+  description: "Ocean ONE is a decentralized exchange built on Mixin Network, it's almost the first time that a decentralized exchange gain the same user experience as a centralized one.",
+  chain: "Mixin",
+  logo: `${baseIconsUrl}/oceanone.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Mixin"],
+  oracles: [],
+  forkedFrom: [],
+  module: "oceanone/index.js",
+  twitter: null,
+  audit_links: ["https://github.com/slowmist/Knowledge-Base/blob/master/open-report/OceanONE-Security-Audit-Report.md"],
+  listedAt: 1661353825
+},
 ]
 
 

@@ -121,22 +121,30 @@ async function poolBalances(
   registry: string,
   block: number | undefined
 ) {
-  const [{ output: nCoins }, { output: coins }] = await Promise.all([
-    call({
-      target: pool.input.target,
-      params: [pool.output],
-      chain: chain as any,
-      abi: abi.get_n_coins[registry],
-      block
-    }),
-    call({
+  let nCoins;
+  const coins = (
+    await call({
       target: pool.input.target,
       params: [pool.output],
       chain: chain as any,
       abi: abi.get_coins[registry],
       block
     })
-  ]);
+  ).output;
+
+  try {
+    nCoins = (
+      await call({
+        target: pool.input.target,
+        params: [pool.output],
+        chain: chain as any,
+        abi: abi.get_n_coins[registry],
+        block
+      })
+    ).output;
+  } catch {
+    nCoins = [coins.length];
+  }
 
   let calls: Multicall[] = aggregateBalanceCalls(coins, nCoins, pool);
   calls = mapGaugeTokenBalances(calls, chain);

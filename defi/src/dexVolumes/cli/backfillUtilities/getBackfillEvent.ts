@@ -11,13 +11,13 @@ export default async () => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
         // '1inch',
-        // 'curve', needs fixing
         // 'quickswap',
         // 'dodo', check spikes
-        // 'serum',
-        // 'terraswap', //backfilled, peding to check and enable
-        // 'osmosis', //backfilled
+        // 'curve', needs fixing
+        // 'terraswap', //backfilled, peding to check and enable ?
+        // 'serum', //backfilled (needs extra data?)
         // 'klayswap', //backfilled (needs extra data?)
+        // 'osmosis', //backfilled
         // 'balancer', //backfilled
         // 'bancor', //backfilled
         // 'champagneswap', //backfilled

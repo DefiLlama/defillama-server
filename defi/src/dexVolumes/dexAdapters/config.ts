@@ -44,6 +44,9 @@ export default {
     },
     "osmosis": {
         enabled: true
+    },
+    "serum": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

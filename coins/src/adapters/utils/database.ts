@@ -2,7 +2,7 @@ import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
 import { Write, DbEntry, Redirect, DbQuery, Read } from "./dbInterfaces";
-
+const confidenceThreshold: number = 0.4;
 export async function getTokenAndRedirectData(
   tokens: string[],
   chain: string,
@@ -226,8 +226,13 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     );
 
     if (allWritesOfThisKind.length == 1) {
-      filteredWrites.push(allWritesOfThisKind[0]);
-      return;
+      if (
+        "confidence" in allWritesOfThisKind[0] &&
+        allWritesOfThisKind[0].confidence > confidenceThreshold
+      ) {
+        filteredWrites.push(allWritesOfThisKind[0]);
+        return;
+      }
     } else {
       const maxConfidence = Math.max.apply(
         null,
@@ -235,7 +240,8 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
       );
       filteredWrites.push(
         allWritesOfThisKind.filter(
-          (x: Write) => x.confidence == maxConfidence
+          (x: Write) =>
+            x.confidence == maxConfidence && x.confidence > confidenceThreshold
         )[0]
       );
     }

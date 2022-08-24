@@ -13215,6 +13215,27 @@ listedAt: 1650804679
   twitter: null,
   listedAt: 1661362058
 },
+{
+  id: "2017",
+  name: "Dragonfruit Protocol",
+  address: "dogechain:0x2A3C691e08262aC2406aB9C3ee106C59Fff3E5ec",
+  symbol: "DFRUIT",
+  url: "https://dragonfruit.cash",
+  description: "Yield farming on Dogechain",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/dragonfruit-protocol.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: [],
+  module: "dragonfruit/index.js",
+  twitter: "DragonFruitCash",
+  listedAt: 1661383327
+},
 ]
 
 

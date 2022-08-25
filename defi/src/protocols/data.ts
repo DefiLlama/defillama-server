@@ -8306,7 +8306,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "ramp",
     cmcId: "7463",
-    category: "Lending",
+    category: "CDP",
     chains: ["Ethereum","Binance","Polygon"],
     module: "ramp/index.js",
     twitter: "RampDefi",

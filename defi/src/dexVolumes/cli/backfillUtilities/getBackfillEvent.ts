@@ -13,7 +13,8 @@ export default async () => {
         // '1inch',
         // 'quickswap',
         // 'dodo', check spikes
-        // 'curve', needs fixing
+        // 'uniswap' //backfilled
+        // 'curve', //enabled
         // 'terraswap', //backfilled, peding to check and enable ?
         // 'serum', //backfilled (needs extra data?)
         // 'klayswap', //backfilled (needs extra data?)
@@ -29,7 +30,6 @@ export default async () => {
         // 'spookyswap', //backfilled
         // 'sushiswap', //backfilled
         // 'traderjoe', //backfilled
-        // 'uniswap' //backfilled
     ]
 
     let startTimestamp = 0

@@ -47,6 +47,9 @@ export default {
     },
     "serum": {
         enabled: true
+    },
+    "curve": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

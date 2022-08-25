@@ -13257,6 +13257,48 @@ listedAt: 1650804679
   twitter: "AutoBarkYield",
   listedAt: 1661401601
 },
+{
+  id: "2019",
+  name: "BFly Finance",
+  address: null,
+  symbol: "-",
+  url: "https://fai.bfly.finance",
+  description: "Bfly is a lending platform based on algorithm-based stablecoin of the Starcoin chain.",
+  chain: "Starcoin",
+  logo: `${baseIconsUrl}/bfly-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Starcoin"],
+  oracles: [],
+  forkedFrom: [],
+  module: "bfly.js",
+  twitter: "BflyFinance",
+  listedAt: 1661433527
+},
+{
+  id: "2020",
+  name: "Silo Finance",
+  address: null,
+  symbol: "-",
+  url: "https://app.silo.finance",
+  description: "Silo Finance creates permissionless and risk-isolated lending markets.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/silo-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "silo/index.js",
+  twitter: "SiloFinance",
+  listedAt: 1661433529
+},
 ]
 
 

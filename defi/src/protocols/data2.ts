@@ -12823,7 +12823,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: "doge-pup-token",
   cmcId: "21463",
-  category: "Yield",
+  category: "Farm",
   chains: ["Dogechain"],
   module: "dogepup/index.js",
   twitter: "PolyPup1",

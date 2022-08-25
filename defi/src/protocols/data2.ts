@@ -13236,6 +13236,27 @@ listedAt: 1650804679
   twitter: "DragonFruitCash",
   listedAt: 1661383327
 },
+{
+  id: "2018",
+  name: "AutoBark",
+  address: null,
+  symbol: "-",
+  url: "http://www.autobark.lol",
+  description: "AutoBark is a Decentralized, Yield Optimizer on DogeChain that allows its users to earn compound interest on their crypto holdings. AutoBark earns you the highest APYs with safety and efficiency in mind.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/autobark.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: [],
+  module: "autobark/index.js",
+  twitter: "AutoBarkYield",
+  listedAt: 1661401601
+},
 ]
 
 

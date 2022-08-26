@@ -13299,6 +13299,55 @@ listedAt: 1650804679
   twitter: "SiloFinance",
   listedAt: 1661433529
 },
+{
+  id: "2021",
+  name: "Router Protocol",
+  address: "0x16ECCfDbb4eE1A85A33f3A9B21175Cd7Ae753dB4",
+  symbol: "ROUTE",
+  url: "https://www.routerprotocol.com/",
+  description: "Router Protocol is a cross-chain communication protocol, that can not only enable the transfer of assets but can also support the passing of arbitrary data across chains. Developers can leverage its infra to build diverse cross-chain applications with ease. Router Protocol has built an open-source developer tooling suite that includes a CrossTalk smart contract library, a NodeJS SDK, a cross-chain block explorer, and other tools to help with the continuous integration and development of cross-chain dApps.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/router-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "route",
+  cmcId: "8292",
+  category: "Cross Chain",
+  chains: ["Ethereum", "Polygon", "Binance", "Fantom", "Avalanche", "Arbitrum", "Optimism", "Aurora", "Harmony", "Cronos"],
+  oracles: [],
+  forkedFrom: [],
+  module: "routerprotocol/index.js",
+  twitter: "routerprotocol",
+  audit_links: [
+    "https://www.certik.com/projects/router", 
+    "https://2030736250-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2MOVWdZOYqYGCPk8rjiB%2Fuploads%2Fi6XLVeITHbGOpWc4ZNF3%2FRouter%20Protocol%20Bridge%20Contract%20Audit.pdf?alt=media&token=5dc1b2e7-1d9d-47c9-abf2-413f1cbb38c2", 
+    "https://2030736250-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2MOVWdZOYqYGCPk8rjiB%2Fuploads%2FF32FJ6GmvterrygKVJec%2FRouter%20Protocol%20GoLang%20Bridge%20Audit.pdf?alt=media&token=ef437a79-9f49-4a0a-ac5d-9b1768d8d783", 
+    "https://github.com/router-protocol/router-protocol-audit"
+  ],
+  listedAt: 1661480724
+},
+{
+  id: "2022",
+  name: "MetaStreet",
+  address: null,
+  symbol: "-",
+  url: "https://metastreet.xyz/",
+  description: "MetaStreet is a liquidity scaling protocol for NFT credit markets. MetaStreet's primary product is a capital vault that enables secondary market liquidity for NFT-backed notes. Participants can deposit capital in order to earn yield from diversified portfolios of NFT-backed notes",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/metastreet.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "metastreet/index.js",
+  twitter: "metastreetxyz",
+  audit_links: ["https://docs.metastreet.xyz/other/audits"],
+  listedAt: 1661481103
+},
 ]
 
 

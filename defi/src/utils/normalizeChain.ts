@@ -201,6 +201,7 @@ export const chainCoingeckoIds = {
     geckoId: "secret",
     symbol: "SCRT",
     cmcId: "5604",
+    categories: ["Cosmos"],
   },
   "Zilliqa": {
     geckoId: "zilliqa",

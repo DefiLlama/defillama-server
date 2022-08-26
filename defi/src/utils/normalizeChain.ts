@@ -1086,6 +1086,17 @@ export const chainCoingeckoIds = {
         },
         chainId: 71402,
       },
+      "Arbitrum Nova": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: ["EVM", "Rollup"],
+        parent: {
+          chain: "Ethereum",
+          types: ["L2", "gas"]
+        },
+        chainId: 42170,
+        },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1357,8 +1368,11 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
           return "Canto"
       case "ripple":
           return "Ripple"
-        case "godwokenv1":
-            return "GodwokenV1"
+      case "godwokenv1":
+          return "GodwokenV1"
+      case "arbitrum-nova":
+          return "Arbitrum Nova"
+
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

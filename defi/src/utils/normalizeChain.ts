@@ -4,7 +4,8 @@ const normalizedChainReplacements = {
   "kucoin": "kcc",
   "terra classic": "terra",
   "nova network": "nova" ,
-  "godwokenv1" : "godwoken_v1"
+  "godwokenv1" : "godwoken_v1",
+  "arbitrum-nova" : "arbitrum_nova"
 } as {
   [chain: string]: string
 }
@@ -1135,6 +1136,8 @@ export function transformNewChainName(chain: string) {
       return "Nova Network"
     case "godwoken_v1":
       return "GodwokenV1"
+    case "arbitrum_nova":
+      return "Arbitrum Nova"
     default:
       return chain
   }
@@ -1164,6 +1167,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Nova Network" : "Nova Network"
     case "godwoken_v1":
       return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
+    case "arbitrum_nova":
+      return useNewChainNames ? "Arbitrum Nova" : "Arbitrum Nova"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -1370,7 +1375,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
           return "Ripple"
       case "godwokenv1":
           return "GodwokenV1"
-      case "arbitrum-nova":
+      case "arbitrum_nova":
           return "Arbitrum Nova"
 
     default:

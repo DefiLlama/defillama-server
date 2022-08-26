@@ -5,7 +5,7 @@ const normalizedChainReplacements = {
   "terra classic": "terra",
   "nova network": "nova" ,
   "godwokenv1" : "godwoken_v1",
-  "arbitrum-nova" : "arbitrum_nova"
+  "arbitrum nova" : "arbitrum_nova"
 } as {
   [chain: string]: string
 }

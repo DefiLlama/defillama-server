@@ -13390,6 +13390,28 @@ listedAt: 1650804679
   twitter: "MoonsSwap",
   listedAt: 1661508169
 },
+{
+  id: "2025",
+  name: "stCELO",
+  address: "celo:0xC668583dcbDc9ae6FA3CE46462758188adfdfC24",
+  symbol: "stCELO",
+  url: "https://stcelo.xyz/",
+  description: "Liquid Staking on Celo.",
+  chain: "Celo",
+  logo: `${baseIconsUrl}/stcelo.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Celo"],
+  oracles: [],
+  forkedFrom: [],
+  module: "stCelo/index.js",
+  twitter: "cLabs",
+  audit_links: ["https://github.com/celo-org/staked-celo/tree/master/audit"],
+  listedAt: 1661525146
+},
 ]
 
 

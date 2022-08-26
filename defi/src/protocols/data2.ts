@@ -13348,6 +13348,48 @@ listedAt: 1650804679
   audit_links: ["https://docs.metastreet.xyz/other/audits"],
   listedAt: 1661481103
 },
+{
+  id: "2023",
+  name: "Arbswap",
+  address: null,
+  symbol: "-",
+  url: "https://arbswap.io/swap",
+  description: "The #1 AMM and DEX on Arbitrum Nova powered by #Arbitrum.",
+  chain: "Arbitrum Nova",
+  logo: `${baseIconsUrl}/arbswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum Nova"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "arbswap/index.js",
+  twitter: "ArbswapOfficial",
+  listedAt: 1661508167
+},
+{
+  id: "2024",
+  name: "RCPswap",
+  address: null,
+  symbol: "-",
+  url: "https://rcpswap.com/#/swap",
+  description: "The First Reddit Community Points Swap on Arbitrum Nova.",
+  chain: "Arbitrum Nova",
+  logo: `${baseIconsUrl}/rcpswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum Nova"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "rcpswap/index.js",
+  twitter: "MoonsSwap",
+  listedAt: 1661508169
+},
 ]
 
 

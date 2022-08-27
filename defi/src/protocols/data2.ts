@@ -13412,6 +13412,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/celo-org/staked-celo/tree/master/audit"],
   listedAt: 1661525146
 },
+{
+  id: "2026",
+  name: "Champion Finance",
+  address: "avax:0x59b18817ca9f4ad2dee6fbf30132df6aeb9d763d",
+  symbol: "AVIC",
+  url: "https://championfinance.io/",
+  description: "Champion Finance, the first multi-pegged elastic-algorithmic tokens on the Avalanche network.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/champion-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "victory",
+  cmcId: "21287",
+  category: "Algo-Stables",
+  chains: ["Avalanche"],
+  oracles: [],
+  forkedFrom: ["Tomb Finance"],
+  module: "championfinance/index.js",
+  twitter: "Champion_io",
+  audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Champion%20Finance/Champion%20Finance.pdf"],
+  listedAt: 1661585507
+},
 ]
 
 

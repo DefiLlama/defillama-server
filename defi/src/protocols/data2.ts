@@ -13434,6 +13434,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Champion%20Finance/Champion%20Finance.pdf"],
   listedAt: 1661585507
 },
+{
+  id: "2027",
+  name: "Energyfi",
+  address: "moonbeam:0xA423E7eEB60547d9C7b65005477b63ae7CE67E62",
+  symbol: "EFT",
+  url: "https://www.energyfi.io/",
+  description: "Energyfi is designing green and cost-effective Decentralized Finance by providing a complete set of DeFi features on Moonbeam.",
+  chain: "Moonbeam",
+  logo: `${baseIconsUrl}/energyfi.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "energyfi",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Moonbeam"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "projects/energyfi/index.js",
+  twitter: "Energyfi_io",
+  audit_links: ["https://docs.energyfi.io/security/audits"],
+  listedAt: 1661588621
+},
 ]
 
 

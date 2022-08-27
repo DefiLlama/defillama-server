@@ -13451,7 +13451,7 @@ listedAt: 1650804679
   chains: ["Moonbeam"],
   oracles: [],
   forkedFrom: ["Uniswap"],
-  module: "projects/energyfi/index.js",
+  module: "energyfi/index.js",
   twitter: "Energyfi_io",
   audit_links: ["https://docs.energyfi.io/security/audits"],
   listedAt: 1661588621

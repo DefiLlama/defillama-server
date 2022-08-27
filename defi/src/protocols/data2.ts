@@ -13249,7 +13249,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Yield",
+  category: "Yield Aggregator",
   chains: ["Dogechain"],
   oracles: [],
   forkedFrom: [],

@@ -13427,7 +13427,7 @@ listedAt: 1650804679
   cmcId: "21287",
   category: "Algo-Stables",
   chains: ["Avalanche"],
-  oracles: [],
+  oracles: ["TWAP"],
   forkedFrom: ["Tomb Finance"],
   module: "championfinance/index.js",
   twitter: "Champion_io",

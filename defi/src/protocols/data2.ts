@@ -13464,7 +13464,7 @@ listedAt: 1650804679
   url: "https://bifrost.finance",
   description: "BIfrost ((https://bifrost.finance) is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
   chain: "Bifrost",
-  logo: `${baseIconsUrl}/bifrost-dex.png`,
+  logo: `${baseIconsUrl}/bifrost-dex.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

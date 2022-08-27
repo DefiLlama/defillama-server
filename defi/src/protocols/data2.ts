@@ -13456,6 +13456,32 @@ listedAt: 1650804679
   audit_links: ["https://docs.energyfi.io/security/audits"],
   listedAt: 1661588621
 },
+{
+  id: "2028",
+  name: "Bifrost Dex",
+  address: "kusama:-",
+  symbol: "BNC",
+  url: "https://bifrost.finance",
+  description: "BIfrost ((https://bifrost.finance) is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
+  chain: "Bifrost",
+  logo: `${baseIconsUrl}/bifrost-dex.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Bifrost"],
+  oracles: [],
+  forkedFrom: [],
+  module: "bifrost-dex/index.js",
+  twitter: "bifrost_finance",
+  audit_links: [
+    "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
+    "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
+    "https://tokeninsight.com/zh/report/2558"
+  ],
+  listedAt: 1661595828
+},
 ]
 
 

@@ -13068,7 +13068,7 @@ listedAt: 1650804679
 {
   id: "2010",
   name: "Starswap Starcoin",
-  address: "0x8c109349c6bd91411d6bc962e080c4a3",
+  address: "starcoin:0x8c109349c6bd91411d6bc962e080c4a3::STAR::STAR",
   symbol: "STAR",
   url: "https://starswap.xyz",
   description: "AMM and yield farm on Starcoin.",

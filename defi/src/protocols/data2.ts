@@ -13547,6 +13547,27 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/tifi-token"],
   listedAt: 1661770843
 },
+{
+  id: "2032",
+  name: "UltronSwap",
+  address: "ultron:0x3a4F06431457de873B588846d139EC0d86275d54",
+  symbol: "ULX",
+  url: "https://ultronswap.com",
+  description: "Ultron Foundation is an EVM-compatible layer-1 blockchain system supported by Solidy Finance, with a fully functioning DeFi ecosystem that includes a native coin and dApps. The project was initiated in 2020 with a multi-cultural team of blockchain professionals developing internal products",
+  chain: "Ultron",
+  logo: `${baseIconsUrl}/ultronswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "ultron",
+  cmcId: "21524",
+  category: "Dexes",
+  chains: ["Ultron"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "ultronSwap/index.js",
+  twitter: "ultron_found",
+  listedAt: 1661783591
+},
 ]
 
 

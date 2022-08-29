@@ -13525,6 +13525,28 @@ listedAt: 1650804679
   twitter: "FinanceLiquid",
   listedAt: 1661767369
 },
+{
+  id: "2031",
+  name: "TiFi",
+  address: "bsc:0x17E65E6b9B166Fb8e7c59432F0db126711246BC0",
+  symbol: "TIFI",
+  url: "TiFi is the integrated finance ecosystem for Allverse. It bridges the metaverse and universe, and make Allverse NFT exchangeable and redeemable with real-world products. TiFi Bank is the DEX in the ecosystem that offers low cost and efficient way to trade with trusted crypto projects in Allverse.",
+  description: ".",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/tifi.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "tifi-token",
+  cmcId: "19476",
+  category: "CDP",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "tifi-bank/index.js",
+  twitter: "TiFiToken",
+  audit_links: ["https://www.certik.com/projects/tifi-token"],
+  listedAt: 1661770843
+},
 ]
 
 

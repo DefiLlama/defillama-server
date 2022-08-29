@@ -13576,7 +13576,7 @@ listedAt: 1650804679
   url: "https://interlay.io/",
   description: "A collaborative effort of pioneers around the globe working together on bringing Bitcoin to any blockchain. Invest, earn and pay with your Bitcoin on any blockchain. Radically open and secured by insurance",
   chain: "Interlay",
-  logo: `${baseIconsUrl}/kintsugi.png`,
+  logo: `${baseIconsUrl}/interlay.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "interlay",
@@ -13588,6 +13588,27 @@ listedAt: 1650804679
   module: "interlay/index.js",
   twitter: "InterlayHQ",
   listedAt: 1661801239
+},
+{
+  id: "2034",
+  name: "WTFDOGE",
+  address: "dogechain:0xeF7B2204B5c4DCe2b30600B89e1C11bb881f3564",
+  symbol: "WTFDOGE",
+  url: "https://doge.defiwaterfall.com/",
+  description: "Yield Farm on Dogechain",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/wtfdoge.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: [],
+  module: "wtfdoge-farm/index.js",
+  twitter: "defi_waterfall",
+  listedAt: 1661803273
 },
 ]
 

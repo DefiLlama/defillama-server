@@ -10750,11 +10750,11 @@ listedAt: 1650804679
 },
 {
   id: "1902",
-  name: "Starswap",
+  name: "StarSwap",
   address: "astar:0x8489f4554790F5A103F2B0398537eAEe68B73884",
   symbol: "STAR",
   url: "https://starswap.net",
-  description: "Starswap is the first DEX (native to Astar Network) with NFT Governance",
+  description: "StarSwap is the first DEX (native to Astar Network) with NFT Governance",
   chain: "Astar",
   logo: `${baseIconsUrl}/starswap.png`,
   audits: "0",
@@ -13067,7 +13067,7 @@ listedAt: 1650804679
 },
 {
   id: "2010",
-  name: "StarSwap Starcoin",
+  name: "Starswap Starcoin",
   address: "0x8c109349c6bd91411d6bc962e080c4a3",
   symbol: "STAR",
   url: "https://starswap.xyz",

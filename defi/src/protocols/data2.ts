@@ -13482,6 +13482,30 @@ listedAt: 1650804679
   ],
   listedAt: 1661595828
 },
+{
+  id: "2029",
+  name: "PolyWantsADoge",
+  address: "dogechain: 0x55BD2a3904C09547c3A5899704f1207eE61878Be",
+  symbol: "DOGIUM",
+  url: "https://lithium.dog",
+  description: "PolyWantsADoge is a yield farm and yield maximizer on the Dogecoin Network. It is a fork of the PolyWantsACracker codebase by the original team. Tokens can be swapped for Janis DEX presale credit.",
+  chain: "dogechain",
+  logo: `${baseIconsUrl}/dogium.svg`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["dogechain"],
+  oracles: [],
+  forkedFrom: [],
+  module: "dogium-farm/index.js",
+  twitter: "PolyWantsAFarm",
+  audit_links: [
+    "https://paladinsec.co/projects/PolyWantsACracker/"
+  ],
+  listedAt: 1661737613
+},
 ]
 
 

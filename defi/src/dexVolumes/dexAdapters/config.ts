@@ -50,6 +50,9 @@ export default {
     },
     "curve": {
         enabled: true
+    },
+    "1inch": {
+        enabled: false
     }
 } as {
     [name: string]: IVolumesConfig

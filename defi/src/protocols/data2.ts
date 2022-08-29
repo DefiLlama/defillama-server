@@ -13517,7 +13517,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "CDP",
+  category: "Yield",
   chains: ["Arbitrum"],
   oracles: [],
   forkedFrom: [],

@@ -10750,7 +10750,7 @@ listedAt: 1650804679
 },
 {
   id: "1902",
-  name: "StarSwap",
+  name: "Starswap",
   address: "astar:0x8489f4554790F5A103F2B0398537eAEe68B73884",
   symbol: "STAR",
   url: "https://starswap.net",

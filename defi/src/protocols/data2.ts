@@ -10754,7 +10754,7 @@ listedAt: 1650804679
   address: "astar:0x8489f4554790F5A103F2B0398537eAEe68B73884",
   symbol: "STAR",
   url: "https://starswap.net",
-  description: "StarSwap is the first DEX (native to Astar Network) with NFT Governance",
+  description: "Starswap is the first DEX (native to Astar Network) with NFT Governance",
   chain: "Astar",
   logo: `${baseIconsUrl}/starswap.png`,
   audits: "0",

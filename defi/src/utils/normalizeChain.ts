@@ -1065,47 +1065,57 @@ export const chainCoingeckoIds = {
     symbol: "DG",
     cmcId: null,
     categories: ["EVM"],
+  },
+  "Canto": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+    "Ripple": {
+      geckoId: "ripple",
+      symbol: "XRP",
+      cmcId: "52",
+  },
+  "GodwokenV1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Godwoken",
+      types: ["emulator", "gas"]
     },
-    "Canto": {
-      geckoId: null,
-      symbol: null,
-      cmcId: null,
-      categories: ["EVM"],
-      },
-      "Ripple": {
-        geckoId: "ripple",
-        symbol: "XRP",
-        cmcId: "52",
-      },
-      "GodwokenV1": {
-        geckoId: null,
-        symbol: null,
-        cmcId: null,
-        categories: ["EVM"],
-        parent: {
-          chain: "Godwoken",
-          types: ["emulator", "gas"]
-        },
-        chainId: 71402,
-      },
-      "Arbitrum Nova": {
-        geckoId: null,
-        symbol: null,
-        cmcId: null,
-        categories: ["EVM", "Rollup"],
-        parent: {
-          chain: "Ethereum",
-          types: ["L2", "gas"]
-        },
-        chainId: 42170,
-        },
-        "Ultron": {
-          geckoId: "ultron",
-          symbol: "ULX",
-          cmcId: "21524",
-          categories: ["EVM"],
-          chainId: 1231,
-        },
+    chainId: 71402,
+  },
+  "Arbitrum Nova": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 42170,
+  },
+  "Ultron": {
+    geckoId: "ultron",
+    symbol: "ULX",
+    cmcId: "21524",
+    categories: ["EVM"],
+    chainId: 1231,
+  },
+  "Interlay": {
+    geckoId: "interlay",
+    symbol: "INTR",
+    cmcId: "20366",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1376,17 +1386,20 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "posichain":
       return "Posichain"
     case "dogechain":
-        return "Dogechain"
-      case "canto":
-          return "Canto"
-      case "ripple":
-          return "Ripple"
-      case "godwokenv1":
-          return "GodwokenV1"
-      case "arbitrum_nova":
-          return "Arbitrum Nova"
-      case "ultron":
-          return "Ultron"
+      return "Dogechain"
+    case "canto":
+      return "Canto"
+    case "ripple":
+      return "Ripple"
+    case "godwokenv1":
+      return "GodwokenV1"
+    case "arbitrum_nova":
+      return "Arbitrum Nova"
+    case "ultron":
+      return "Ultron"
+    case "interlay":
+      return "Interlay"
+
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

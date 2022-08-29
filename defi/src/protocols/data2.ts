@@ -13568,6 +13568,27 @@ listedAt: 1650804679
   twitter: "ultron_found",
   listedAt: 1661783591
 },
+{
+  id: "2033",
+  name: "Interlay",
+  address: "interlay:-",
+  symbol: "INTR",
+  url: "https://interlay.io/",
+  description: "A collaborative effort of pioneers around the globe working together on bringing Bitcoin to any blockchain. Invest, earn and pay with your Bitcoin on any blockchain. Radically open and secured by insurance",
+  chain: "Interlay",
+  logo: `${baseIconsUrl}/kintsugi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "interlay",
+  cmcId: "20366",
+  category: "Cross Chain",
+  chains: ["Interlay"],
+  oracles: [],
+  forkedFrom: [],
+  module: "interlay/index.js",
+  twitter: "InterlayHQ",
+  listedAt: 1661801239
+},
 ]
 
 

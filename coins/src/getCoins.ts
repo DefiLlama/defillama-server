@@ -36,6 +36,9 @@ const handler = async (
           PK: coin.redirect,
           SK: 0
         })
+        if(redirectedCoin.Item === undefined){
+          return
+        }
         formattedCoin.price = redirectedCoin.Item?.price
         formattedCoin.timestamp = redirectedCoin.Item?.timestamp;
       } else {

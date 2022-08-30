@@ -24,7 +24,7 @@ const handler = async (
   }))
   return successResponse({
     coins: response
-  });
+  }, 3600); // 1 hour cache
 };
 
 export default wrap(handler);

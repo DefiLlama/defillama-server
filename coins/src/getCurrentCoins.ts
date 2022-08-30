@@ -38,8 +38,16 @@ const handler = async (
         })
     })
   }
+
+  // Coingecko price refreshes happen each 5 minutes, set expiration at the :00; :05, :10, :15... mark, with 20 seconds extra
+  const date = new Date()
+  const minutes = date.getMinutes()
+  date.setMinutes(minutes + 5 - (minutes%5))
+  date.setSeconds(20)
   return successResponse({
     coins: response
+  }, undefined, {
+    "Expires": date.toUTCString(),
   });
 };
 

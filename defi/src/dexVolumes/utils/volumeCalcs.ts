@@ -77,7 +77,7 @@ const calcNdChange = (volumes: Volume[], nDaysChange: number) => {
 const formatNdChangeNumber = (number: number) => {
     if (number === Number.POSITIVE_INFINITY)
         number = 100
-    if (number === Number.NEGATIVE_INFINITY)
+    else if (number === Number.NEGATIVE_INFINITY || Number.isNaN(number))
         number = -100
     return Math.round((number + Number.EPSILON) * 100) / 100
 }

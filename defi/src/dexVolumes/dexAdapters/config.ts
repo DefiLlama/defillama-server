@@ -53,6 +53,9 @@ export default {
     },
     "1inch": {
         enabled: false
+    },
+    "mooniswap": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

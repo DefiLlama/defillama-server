@@ -10,7 +10,7 @@ const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 export default async () => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
-        // '1inch',
+        // 'mooniswap',
         // 'quickswap',
         // 'dodo', check spikes
         // 'uniswap' //backfilled

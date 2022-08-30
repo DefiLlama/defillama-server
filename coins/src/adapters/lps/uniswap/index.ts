@@ -1,6 +1,7 @@
 import getTokenPrices from "./uniswap";
 
 export function uniswap(timestamp: number = 0) {
+  console.log("starting uniswap");
   return getTokenPrices(
     "ethereum",
     "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",

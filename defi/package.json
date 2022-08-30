@@ -12,6 +12,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "prebuild": "npx ts-node src/cli/buildRequires.ts",
+    "postinstall": "npm update @defillama/sdk",
     "pretest": "npm run prebuild",
     "build": "sls package",
     "updateAdapters": "cd DefiLlama-Adapters && git checkout main && git pull",

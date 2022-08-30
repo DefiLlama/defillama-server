@@ -18,7 +18,7 @@ export interface ICurrentChainTvls {
   [chain: string]: number;
 }
 
-export type ITokens = Array<{ date: number; tokens: { [token: string]: number } }> | null
+export type ITokens = Array<{ date: number; tokens: { [token: string]: number } }> | null;
 
 export interface IChainTvl {
   [chain: string]: {
@@ -35,12 +35,11 @@ export interface ITvlsWithChangesByChain {
     tvlPrevWeek: number | null;
     tvlPrevMonth: number | null;
   };
-};
+}
 
 export interface ITvlsByChain {
   [chain: string]: number;
 }
-
 
 export interface ProtocolTvls {
   tvl: number | null;
@@ -48,7 +47,7 @@ export interface ProtocolTvls {
   tvlPrevWeek: number | null;
   tvlPrevMonth: number | null;
   chainTvls: ITvlsWithChangesByChain;
-};
+}
 
 export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "module"> {
   symbol?: string;
@@ -83,17 +82,20 @@ export interface IProtocol
 }
 
 export type LiteProtocol = Pick<
-    IProtocol,
-    | "category"
-    | "chains"
-    | "oracles"
-    | "forkedFrom"
-    | "listedAt"
-    | "mcap"
-    | "name"
-    | "symbol"
-    | "parentProtocol"
-  > & ProtocolTvls
+  IProtocol,
+  | "category"
+  | "chains"
+  | "oracles"
+  | "forkedFrom"
+  | "listedAt"
+  | "mcap"
+  | "name"
+  | "symbol"
+  | "logo"
+  | "url"
+  | "parentProtocol"
+> &
+  ProtocolTvls;
 
 export interface IChain {
   gecko_id?: string | null;

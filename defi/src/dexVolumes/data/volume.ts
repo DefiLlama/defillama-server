@@ -54,7 +54,7 @@ export class Volume extends Item {
 
 export const storeVolume = async (volume: Volume, eventTimestamp: number): Promise<Volume> => {
     if (Object.entries(volume.data).length === 0) throw new Error(`${volume.type}: Can't store empty volume`)
-    const obj2Store:IRecordVolumeData = {
+    const obj2Store: IRecordVolumeData = {
         ...volume.data,
         // @ts-ignore //TODO: fix
         eventTimestamp
@@ -110,23 +110,24 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
     }
 }
 
-// REMOVES ALL VOLUMES, DO NOT USE!
+// TMP: REMOVES ALL VOLUMES, DO NOT USE!
 export const removeVolume = async (dex: string, type: VolumeType,): Promise<boolean> => {
-    const removeVolumeQuery = async (volume: Volume) => {
-        console.log("Removing", volume.keys())
-        return dynamodb.delete({
-            // TODO: Change for upsert like
-            Key: volume.keys(),
-        })
-    }
-    try {
-        const allVolumes = await getVolume(dex, type, "ALL")
-        console.log(allVolumes)
-        if (!(allVolumes instanceof Array)) throw new Error("Unexpected error deleting volumes")
-        await Promise.all(allVolumes.map(volume => removeVolumeQuery(volume)))
-        return true
-    } catch (error) {
-        console.log(error)
-        return false
-    }
+    /*     const removeVolumeQuery = async (volume: Volume) => {
+            console.log("Removing", volume.keys())
+            return dynamodb.delete({
+                Key: volume.keys(),
+            })
+        }
+        try {
+            const allVolumes = await getVolume(dex, type, "ALL")
+            console.log(allVolumes)
+            if (!(allVolumes instanceof Array)) throw new Error("Unexpected error deleting volumes")
+            await Promise.all(allVolumes.map(volume => removeVolumeQuery(volume)))
+            return true
+        } catch (error) {
+            console.log(error)
+            return false
+        } */
+    console.info(dex, type)
+    return Promise.resolve(false)
 }

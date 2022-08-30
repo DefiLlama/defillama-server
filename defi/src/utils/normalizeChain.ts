@@ -1122,6 +1122,12 @@ export const chainCoingeckoIds = {
     cmcId: "14299",
     categories: ["Cosmos"],
   },
+  "Tombchain": {
+    geckoId: "tomb",
+    symbol: "TOMB",
+    cmcId: "11495",
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1407,6 +1413,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Interlay"
     case "juno":
       return "Juno"
+    case "tombchain":
+      return "Tombchain"
 
 
     default:

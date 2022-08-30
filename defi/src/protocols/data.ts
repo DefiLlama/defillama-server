@@ -4096,7 +4096,7 @@ const data: Protocol[] = [
   },
   {
     id: "311",
-    name: "SpiritSwap",
+    name: "SpiritSwap AMM",
     address: "fantom:0x5cc61a78f164885776aa610fb0fe1257df78e59b",
     symbol: "SPIRIT",
     url: "https://app.spiritswap.finance/#/",
@@ -4105,14 +4105,15 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/spiritswap.jpg`,
     audits: "3",
     audit_note: null,
-    gecko_id: "spiritswap",
-    cmcId: "1359",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Fantom"],
     module: "spiritswap/index.js",
     twitter: "Spirit_Swap",
     audit_links: ["https://github.com/Layer3Org/spiritswap-core/blob/main/SpiritSwap-Core%20Security%20Audit%20Report.pdf"],
-    forkedFrom: ["Uniswap"]
+    forkedFrom: ["Uniswap"],
+    parentProtocol: "SpiritSwap"
   },
   {
     id: "312",

@@ -173,7 +173,19 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "1727",
     chains: [],
     twitter: "Bancor",
-  }
+  },
+  {
+    id: "SpiritSwap",
+    name: "SpiritSwap",
+    url: "https://app.spiritswap.finance/#/",
+    description:
+      "AMM and Lending protocol on Fantom",
+    logo: `${baseIconsUrl}/spiritswap.jpg`,
+    gecko_id: "spiritswap",
+    cmcId: "1359",
+    chains: [],
+    twitter: "Spirit_Swap",
+  },
 ];
 
 export default parentProtocols;

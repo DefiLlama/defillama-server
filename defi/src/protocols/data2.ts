@@ -13653,6 +13653,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SSAP-v1.0.pdf"],
   listedAt: 1661854029
 },
+{
+  id: "2037",
+  name: "SpiritSwap Lending",
+  address: "fantom:0x5cc61a78f164885776aa610fb0fe1257df78e59b",
+  symbol: "SPIRIT",
+  url: "https://app.ola.finance/networks/0x892701d128d63c9856A9Eb5d967982F78FD3F2AE/markets",
+  description: "Decentralised Lending platform",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/spiritswap.jpg`,
+  audits: "3",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Fantom"],
+  module: "spiritswap-lending/index.js",
+  twitter: "Spirit_Swap",
+  oracles: ["Internal"],
+  forkedFrom: ["Compound"],
+  parentProtocol: "SpiritSwap",
+  listedAt: 1661881491
+},
 ]
 
 

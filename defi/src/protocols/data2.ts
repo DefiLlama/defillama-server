@@ -13718,6 +13718,27 @@ listedAt: 1650804679
   twitter: "phissionfinance",
   listedAt: 1661888952
 },
+{
+  id: "2040",
+  name: "Lif3 Swap",
+  address: "tombchain:0x4200000000000000000000000000000000000108",
+  symbol: "LIF3",
+  url: "https://lif3.com/swap",
+  description: "AMM DEX on Tombchain",
+  chain: "Tombchain",
+  logo: `${baseIconsUrl}/lif3-swap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "lif3",
+  cmcId: "20611",
+  category: "Dexes",
+  chains: ["Tombchain"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "lif3-swap/index.js",
+  twitter: "Official_LIF3",
+  listedAt: 1661900824
+},
 ]
 
 

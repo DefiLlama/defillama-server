@@ -3,6 +3,7 @@ import { Write } from "../utils/dbInterfaces";
 import axios from "axios";
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
+import { multiCall } from "@defillama/sdk/build/abi";
 
 const tokens = {
   optimism: {
@@ -20,6 +21,32 @@ const tokens = {
     USD: "0x10a5f7d9d65bcc2734763444d4940a31b109275f"
   }
 };
+async function getProxies(
+  chain: string,
+  tokens: any,
+  block: number | undefined
+) {
+  return (
+    await multiCall({
+      abi: {
+        constant: true,
+        inputs: [],
+        name: "proxy",
+        outputs: [
+          { internalType: "contract Proxy", name: "", type: "address" }
+        ],
+        payable: false,
+        stateMutability: "view",
+        type: "function"
+      },
+      calls: tokens.map((target: string) => ({
+        target: target
+      })),
+      chain: chain as any,
+      block
+    })
+  ).output.map((r: any) => r.output);
+}
 export default async function getTokenPrices(timestamp: number = 0) {
   const writes: Write[] = [];
   const uniqueTickers: string[] = [];
@@ -43,16 +70,21 @@ export default async function getTokenPrices(timestamp: number = 0) {
     const tickers = Object.keys(addresses[1]);
     const tokens = Object.values(addresses[1]);
     const block = await getBlock(chain, timestamp);
-    const tokenInfos = await getTokenInfo(chain, tokens, block);
-    tokens.map((t: string, i: number) => {
-      if (!Object.keys(forexPrices).includes(tickers[i])) {
+
+    const [tokenInfos, tokenAddresses] = await Promise.all([
+      getTokenInfo(chain, tokens, block),
+      getProxies(chain, tokens, block)
+    ]);
+
+    tickers.map((t: string, i: number) => {
+      if (!Object.keys(forexPrices).includes(t)) {
         return;
       }
       addToDBWritesList(
         writes,
         chain,
-        t,
-        forexPrices[tickers[i]],
+        tokenAddresses[i].toLowerCase(),
+        forexPrices[t],
         tokenInfos.decimals[i].output,
         tokenInfos.symbols[i].output,
         timestamp,

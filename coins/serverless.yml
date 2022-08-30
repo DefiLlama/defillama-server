@@ -114,6 +114,20 @@ functions:
       - http:
           path: coin/timestamps
           method: post
+  currentCoinPrices:
+    handler: src/getCurrentCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: prices/current
+          method: get
+  historicalCoinPrices:
+    handler: src/getHistoricalCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: prices/historical/{timestamp}
+          method: get
   block:
     handler: src/getBlock.default
     timeout: 60

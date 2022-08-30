@@ -1,0 +1,30 @@
+import { successResponse, wrap, IResponse } from "./utils/shared";
+import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
+import { DAY } from "./utils/processCoin";
+import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
+
+const handler = async (
+  event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
+  const requestedCoins = (event.queryStringParameters?.coins?? "").split(',');
+  const timestampRequested = Number(event.pathParameters!.timestamp)
+  const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
+  const response = {} as CoinsResponse
+  await Promise.all(coins.map(async coin => {
+    const finalCoin = await getRecordClosestToTimestamp(coin.redirect ?? coin.PK, timestampRequested, DAY / 4);
+    if (finalCoin.SK === undefined) {
+        return
+    }
+    response[PKTransforms[coin.PK]] = {
+        decimals: coin.decimals,
+        symbol: coin.symbol,
+        price: finalCoin.price,
+        timestamp: finalCoin.SK,
+    };
+  }))
+  return successResponse({
+    coins: response
+  });
+};
+
+export default wrap(handler);

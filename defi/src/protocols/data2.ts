@@ -3919,7 +3919,7 @@ const data2: Protocol[] =  [
   category: "Dexes",
   chains: ["ThunderCore"],
   oracles: ["TWAP"],
-  forkedFrom: ["PancakeSwap"],
+  forkedFrom: ["Uniswap"],
   module: "laserswap/index.js",
   twitter: "Laser_Swap",
   listedAt: 1648568500 ,
@@ -6433,7 +6433,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Astar"],
   oracles: [],
-  forkedFrom: ["PancakeSwap"],
+  forkedFrom: ["Uniswap"],
   module: "agsfinance/index.js",
   twitter: "AGSFinance_",
   listedAt: 1651168503
@@ -7460,7 +7460,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Binance"],
   oracles: ["Chainlink"],
-  forkedFrom: ["PancakeSwap"],
+  forkedFrom: ["Uniswap"],
   module: "cryptoswap/index.js",
   twitter: "CryptoDevelopm3",
   listedAt: 1652088099
@@ -9035,7 +9035,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Binance"],
   oracles: [],
-  forkedFrom: ["PancakeSwap"],
+  forkedFrom: ["Uniswap"],
   module: "nomiswap/index.js",
   twitter: "Nomiswap",
   audit_links: ["https://www.certik.com/projects/nomiswap"],
@@ -11220,7 +11220,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Kava"],
   oracles: [],
-  forkedFrom: ["PancakeSwap"],
+  forkedFrom: ["Uniswap"],
   module: "LFIswap/index.js",
   twitter: "LIQUIDITFINANCE",
   listedAt: 1658739795
@@ -11416,7 +11416,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Nova Network"],
   oracles: [],
-  forkedFrom: ["PancakeSwap"],
+  forkedFrom: ["Uniswap"],
   module: "quasar-swap/index.js",
   twitter: "SwapQuasar",
   listedAt: 1658929561

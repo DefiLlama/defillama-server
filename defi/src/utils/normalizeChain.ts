@@ -1116,6 +1116,12 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
   },
+  "Juno": {
+    geckoId: "juno-network",
+    symbol: "JUNO",
+    cmcId: "14299",
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1399,6 +1405,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Ultron"
     case "interlay":
       return "Interlay"
+    case "juno":
+      return "Juno"
 
 
     default:

@@ -13574,7 +13574,7 @@ listedAt: 1650804679
   address: "interlay:-",
   symbol: "INTR",
   url: "https://interlay.io/",
-  description: "A collaborative effort of pioneers around the globe working together on bringing Bitcoin to any blockchain. Invest, earn and pay with your Bitcoin on any blockchain. Radically open and secured by insurance",
+  description: "Fully trustless and decentralized Bitcoin bridge and BTC DeFi hub",
   chain: "Interlay",
   logo: `${baseIconsUrl}/interlay.png`,
   audits: "0",

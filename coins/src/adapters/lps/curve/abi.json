@@ -1,4 +1,33 @@
 {
+  "gauges": {
+    "name": "gauges",
+    "outputs": [
+      {
+        "type": "address",
+        "name": ""
+      }
+    ],
+    "inputs": [
+      {
+        "type": "uint256",
+        "name": "arg0"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "n_gauges": {
+    "name": "n_gauges",
+    "outputs": [
+      {
+        "type": "int128",
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
   "lp_token": {
     "name": "lp_token",
     "outputs": [{ "type": "address", "name": "" }],

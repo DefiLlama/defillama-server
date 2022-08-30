@@ -1,9 +1,10 @@
-import { call, multiCall } from "@defillama/sdk/build/abi/index";
+import { multiCall } from "@defillama/sdk/build/abi/index";
 import { requery } from "./sdk";
 export async function getTokenInfo(
   chain: string,
   targets: string[],
-  block: number | undefined
+  block: number | undefined,
+  requery: boolean = true
 ) {
   const [supplies, decimals, symbols] = await Promise.all([
     multiCall({
@@ -12,7 +13,7 @@ export async function getTokenInfo(
       })),
       chain: chain as any,
       abi: "erc20:totalSupply",
-      requery: true,
+      requery,
       block
     }),
     multiCall({
@@ -21,7 +22,7 @@ export async function getTokenInfo(
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery: true,
+      requery,
       block
     }),
     multiCall({
@@ -30,7 +31,7 @@ export async function getTokenInfo(
       })),
       abi: "erc20:symbol",
       chain: chain as any,
-      requery: true,
+      requery,
       block
     })
   ]);

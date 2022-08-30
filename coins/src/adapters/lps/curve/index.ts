@@ -1,4 +1,5 @@
 import getTokenPrices from "./curve";
+import getGaugePrices from "./gauges";
 
 export function curve1(timestamp: number = 0) {
   console.log("starting curve1");
@@ -43,11 +44,15 @@ export function curve5(timestamp: number = 0) {
     getTokenPrices("polygon", ["stableFactory", "cryptoFactory"], timestamp)
   ]);
 }
-export async function ellipsis(timestamp: number = 0) {
+export function ellipsis(timestamp: number = 0) {
   console.log("starting ellipsis");
-  return await getTokenPrices(
+  return getTokenPrices(
     "bsc",
     ["crypto", "stableswap", "stableFactory", "cryptoFactory"],
     timestamp
   );
+}
+export function gauges(timestamp: number = 0) {
+  console.log("starting gauges");
+  return getGaugePrices("ethereum", timestamp);
 }

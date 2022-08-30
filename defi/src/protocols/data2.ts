@@ -13626,7 +13626,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Bitgert"],
   oracles: [],
-  forkedFrom: ["PancakeSwap"],
+  forkedFrom: ["Uniswap"],
   module: "bitgert-swap/index.js",
   twitter: "Evo_finances",
   listedAt: 1661854026

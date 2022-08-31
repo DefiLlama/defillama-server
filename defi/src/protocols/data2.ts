@@ -13867,6 +13867,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-BNPL-v1.0.pdf"],
   listedAt: 1661957302
 },
+{
+  id: "2046",
+  name: "Kumu Finance",
+  address: "klaytn:0xE764d24563a5931FC5F716A78BD558A9A1bff55D",
+  symbol: "KUMU",
+  url: "https://www.kumu.finance/",
+  description: "Finance is a stableswap AMM protocol that incorporates multi-strategy yield optimizing on Klaytn with low fees/slippage that also provides aggregation through vault compounding, lending,and yield generation for maximum returns.",
+  chain: "Klaytn",
+  logo: `${baseIconsUrl}/kumu-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Klaytn"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "kumu-finance/index.js",
+  twitter: "KumuFinance",
+  audit_links: ["https://github.com/solidproof/projects/tree/main/Kumu%20Finance"],
+  listedAt: 1661964331
+},
 ]
 
 

@@ -13760,6 +13760,27 @@ listedAt: 1650804679
   twitter: "MMFcrypto",
   listedAt: 1661937384
 },
+{
+  id: "2042",
+  name: "CantoSwap",
+  address: "canto:0x8b6e422f7eF6C5DCC0Ad0C3dEA66efaCBb2b78e3",
+  symbol: "Matrix",
+  url: "https://cantoswap.fi/#/swap",
+  description: "DEX on Canto network.",
+  chain: "Canto",
+  logo: `${baseIconsUrl}/cantoswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Canto"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "cantoswap/index.js",
+  twitter: "cantoswapfi",
+  listedAt: 1661944214
+},
 ]
 
 

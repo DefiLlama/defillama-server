@@ -14,8 +14,12 @@ async function handler() {
         const liqs: { [chain: string]: object[] } = {};
         await Promise.all(
           Object.entries(module).map(async ([chain, liquidationsFunc]: [string, any]) => {
-            const liquidations = await liquidationsFunc.liquidations();
-            liqs[chain] = liquidations;
+            try {
+              const liquidations = await liquidationsFunc.liquidations();
+              liqs[chain] = liquidations;
+            } catch (e) {
+              console.error(e);
+            }
           })
         );
 

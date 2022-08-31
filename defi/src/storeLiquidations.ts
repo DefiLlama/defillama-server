@@ -7,21 +7,23 @@ import { liquidationsFilename, storeDataset, storeLiqsDataset } from "./utils/s3
 async function handler() {
   const time = getCurrentUnixTimestamp();
   const data = await Promise.all(
-    Object.entries(adaptersModules).map(async ([protocol, module]) => {
-      // too lazy to type this properly cuz issa already typed in adapters
-      const liqs: { [chain: string]: object[] } = {};
-      await Promise.all(
-        Object.entries(module).map(async ([chain, liquidationsFunc]: [string, any]) => {
-          const liquidations = await liquidationsFunc.liquidations();
-          liqs[chain] = liquidations;
-        })
-      );
+    Object.entries(adaptersModules)
+      .filter(([protocol]) => protocol.toLowerCase() !== "compound")
+      .map(async ([protocol, module]) => {
+        // too lazy to type this properly cuz issa already typed in adapters
+        const liqs: { [chain: string]: object[] } = {};
+        await Promise.all(
+          Object.entries(module).map(async ([chain, liquidationsFunc]: [string, any]) => {
+            const liquidations = await liquidationsFunc.liquidations();
+            liqs[chain] = liquidations;
+          })
+        );
 
-      return {
-        protocol,
-        liqs,
-      };
-    })
+        return {
+          protocol,
+          liqs,
+        };
+      })
   );
 
   const payload = JSON.stringify({ data, time });

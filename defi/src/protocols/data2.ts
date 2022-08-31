@@ -13851,7 +13851,7 @@ listedAt: 1650804679
   address: "0x84d821f7fbdd595c4c4a50842913e6b1e07d7a53",
   symbol: "BNPL",
   url: "https://bnplpay.io",
-  description: ".",
+  description: "Collateralised and uncollateralised loans",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/bnpl-pay.jpg`,
   audits: "2",

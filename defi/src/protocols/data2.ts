@@ -13739,6 +13739,27 @@ listedAt: 1650804679
   twitter: "Official_LIF3",
   listedAt: 1661900824
 },
+{
+  id: "2041",
+  name: "Dawn Star Finance",
+  address: "polygon:0x095bc617b36ab227a379550633dfdcbf43f236f6",
+  symbol: "DSF",
+  url: "https://dawnstar.finance",
+  description: "The First Algorithmic Stablecoin on Polygon backed by real yields & pegged to the price of 1 MMF via seigniorage.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/dawn-star-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: ["Tomb Finance"],
+  module: "dawn-star-finance/index.js",
+  twitter: "MMFcrypto",
+  listedAt: 1661937384
+},
 ]
 
 

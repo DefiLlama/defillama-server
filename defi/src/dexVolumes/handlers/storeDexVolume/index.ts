@@ -43,7 +43,7 @@ export const handler = async (event: IHandlerEvent) => {
   const chainBlocks: ChainBlocks = {};
   await allSettled(
     allChains.map(async (chain) => {
-      const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks)
+      const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks).catch(e=>console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
       chainBlocks[chain] = latestBlock
     })
   );
@@ -82,7 +82,7 @@ export const handler = async (event: IHandlerEvent) => {
   }
 
   // TODO: change for allSettled
-  await Promise.all(event.protocolIndexes.map(async protocolIndex => {
+  const results = await allSettled(event.protocolIndexes.map(async protocolIndex => {
     // Get DEX info
     const { id, volumeAdapter } = volumeAdapters[protocolIndex];
     console.info(`Adapter found ${protocolIndex} ${id} ${volumeAdapter}`)
@@ -188,7 +188,7 @@ export const handler = async (event: IHandlerEvent) => {
     }
   }))
 
-  // TODO: do something
+  console.info("Execution result", JSON.stringify(results))
   return
 };
 

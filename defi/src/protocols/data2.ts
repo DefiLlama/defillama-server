@@ -13677,7 +13677,7 @@ listedAt: 1650804679
 },
 {
   id: "2038",
-  name: "Helio Money",
+  name: "Helio Protocol",
   address: "bsc:0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
   symbol: "HAY",
   url: "https://helio.money/",

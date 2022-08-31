@@ -1128,6 +1128,12 @@ export const chainCoingeckoIds = {
     cmcId: "11495",
     categories: ["EVM"],
   },
+  "Crescent": {
+    geckoId: "crescent-network",
+    symbol: "CRE",
+    cmcId: null,
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1415,6 +1421,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Juno"
     case "tombchain":
       return "Tombchain"
+    case "crescent":
+      return "Crescent"
 
 
     default:

@@ -13781,6 +13781,27 @@ listedAt: 1650804679
   twitter: "cantoswapfi",
   listedAt: 1661944214
 },
+{
+  id: "2043",
+  name: "Crescent Dex",
+  address: null,
+  symbol: "-",
+  url: "https://app.crescent.network",
+  description: "Crescent is an AMM / Orderbook Hybrid Decentralized Exchange that allows the smoothest method of trading inter-chain assets by the most cost-efficient and sustainable management of liquidity through Orderbook and Ranged liquidity.",
+  chain: "Crescent",
+  logo: `${baseIconsUrl}/crescent-dex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Crescent"],
+  oracles: [],
+  forkedFrom: [],
+  module: "crescent-dex/index.js",
+  twitter: "CrescentHub",
+  listedAt: 1661946962
+},
 ]
 
 

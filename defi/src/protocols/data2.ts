@@ -13889,6 +13889,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/solidproof/projects/tree/main/Kumu%20Finance"],
   listedAt: 1661964331
 },
+{
+  id: "2048",
+  name: "Eversol",
+  address: "solana:Hg35Vd8K3BS2pLB3xwC2WqQV8pmpCm3oNRGYP1PEpmCM",
+  symbol: "ESOL",
+  url: "https://eversol.one",
+  description: "Stake $SOL to numerous validators at once, get eSOL, and enjoy additional DeFi perks. Powered by everstake_pool.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/eversol.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "eversol-staked-sol",
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Solana"],
+  oracles: [],
+  forkedFrom: [],
+  module: "eversol.js",
+  twitter: "eversol_pool",
+  audit_links: ["https://github.com/everstake/solana-program-library/blob/master/stake-pool/docs/EverSOL%20SP%20Audit.pdf"],
+  listedAt: 1662040454
+},
 ]
 
 

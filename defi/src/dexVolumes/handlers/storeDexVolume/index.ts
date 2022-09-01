@@ -53,7 +53,7 @@ export const handler = async (event: IHandlerEvent) => {
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
       .filter(async (chain) => {
-        const start = await volumeAdapter[chain].start()
+        const start = await volumeAdapter[chain].start().catch(e=>console.error("Error getting start time", id, version, e.message))
         return (start <= cleanPreviousDayTimestamp) || (start === 0)
       })
       .map(async (chain) => {
@@ -81,7 +81,6 @@ export const handler = async (event: IHandlerEvent) => {
       ))
   }
 
-  // TODO: change for allSettled
   const results = await allSettled(event.protocolIndexes.map(async protocolIndex => {
     // Get DEX info
     const { id, volumeAdapter } = volumeAdapters[protocolIndex];

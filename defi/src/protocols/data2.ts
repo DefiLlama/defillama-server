@@ -13868,7 +13868,7 @@ listedAt: 1650804679
   listedAt: 1661957302
 },
 {
-  id: "2046",
+  id: "2047",
   name: "Kumu Finance",
   address: "klaytn:0xE764d24563a5931FC5F716A78BD558A9A1bff55D",
   symbol: "KUMU",

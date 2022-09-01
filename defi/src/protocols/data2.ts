@@ -13683,7 +13683,7 @@ listedAt: 1650804679
   url: "https://helio.money/",
   description: "Helio Protocol is an open-source liquidity protocol for borrowing and earning yield on HAY —a new BNB backed over-collateralized destablecoin. The protocol aims to position HAY as the leading decentralized destablecoin protocol in the BNB Chain ecosystem, by leveraging Proof-of- Stake (PoS) rewards, liquid staking and yield-bearing assets. Helio Protocol will operate as a DAO, where the community will govern the protocol’s treasury, revenue pool and future direction.",
   chain: "Binance",
-  logo: `${baseIconsUrl}/helio-money.png`,
+  logo: `${baseIconsUrl}/helio-protocol.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "helio-protocol-hay",

@@ -13895,7 +13895,7 @@ listedAt: 1650804679
   address: "solana:Hg35Vd8K3BS2pLB3xwC2WqQV8pmpCm3oNRGYP1PEpmCM",
   symbol: "ESOL",
   url: "https://eversol.one",
-  description: "Stake $SOL to numerous validators at once, get eSOL, and enjoy additional DeFi perks. Powered by everstake_pool.",
+  description: "Eversol is a Solana Stake Pool that promotes network decentralization. Eversol's main concept is to dedicate a percentage of the pool rewards to the Stake Pool's Treasury, to fund the co-marketing activities with prospective projects built on Solana. Unlike other stake pools, we will directly facilitate and boost the DeFi ecosystem by helping new apps and products come to be known! We will help with co-marketing activities, useful business contacts, technical expertise, and consider the project as a recipient of funding from Everstake Capital.",
   chain: "Solana",
   logo: `${baseIconsUrl}/eversol.jpg`,
   audits: "2",

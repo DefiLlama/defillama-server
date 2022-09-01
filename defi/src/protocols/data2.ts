@@ -13911,6 +13911,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/everstake/solana-program-library/blob/master/stake-pool/docs/EverSOL%20SP%20Audit.pdf"],
   listedAt: 1662040454
 },
+{
+  id: "2049",
+  name: "KLEX Finance",
+  address: null,
+  symbol: "-",
+  url: "https://klex.finance",
+  description: "KLEX is a protocol for programmable liquidity.",
+  chain: "Klaytn",
+  logo: `${baseIconsUrl}/klex-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Klaytn"],
+  oracles: [],
+  forkedFrom: ["Balancer"],
+  module: "klex/index.js",
+  twitter: "klexfinance",
+  audit_links: ["https://github.com/balancer-labs/balancer-v2-monorepo/tree/master/audits"],
+  listedAt: 1662044235
+},
 ]
 
 

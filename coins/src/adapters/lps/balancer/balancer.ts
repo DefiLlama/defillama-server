@@ -160,7 +160,7 @@ async function getTokenPrices(chain: string, timestamp: number) {
       v.decimals,
       v.symbol,
       timestamp,
-      "balancer",
+      "balancer-lp",
       0.9
     );
   });

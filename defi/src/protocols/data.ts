@@ -7084,7 +7084,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Planet",
     address: "bsc:0x72b7d61e8fc8cf971960dd9cfa59b8c829d91991",
     symbol: "AQUA",
-    url: "https://planetfinance.io",
+    url: "https://app.planet.finance/",
     description: "Planet is a decentralized financial protocol consisting of different planets, each their own application, designed to enable anyone to freely activate their capital.",
     chain: "Binance",
     logo: `${baseIconsUrl}/planet-finance.png`,

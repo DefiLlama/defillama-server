@@ -13955,6 +13955,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/solidproof/projects/tree/main/KlayLend"],
   listedAt: 1662124833
 },
+{
+  id: "2051",
+  name: "Logium",
+  address: null,
+  symbol: "-",
+  url: "https://logium.org",
+  description: "KLogium is the first decentralized platform that allows users to trade and bet on the price of any token available on Uniswap. By using Logium, users can long and short ERC-20 tokens with leverage.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/logium.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Ethereum"],
+  oracles: ["Uniswap"],
+  forkedFrom: [],
+  module: "logium/index.js",
+  twitter: "LogiumDEX",
+  audit_links: ["https://github.com/securing/reports/blob/main/Logium%20-%2020220428.pdf"],
+  listedAt: 1662125236
+},
 ]
 
 

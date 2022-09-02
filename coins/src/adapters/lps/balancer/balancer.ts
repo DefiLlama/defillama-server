@@ -12,7 +12,9 @@ import abi from "./abi.json";
 import { getTokenInfo } from "../../utils/erc20";
 const vault = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
 const subgraphNames: { [chain: string]: string } = {
-  ethereum: "balancer-v2"
+  ethereum: "balancer-v2",
+  arbitrum: "balancer-arbitrum-v2",
+  polygon: "balancer-polygon-v2"
 };
 async function getPoolIds(chain: string, timestamp: number) {
   return (
@@ -125,7 +127,7 @@ function getTokenValues(poolValues: object, poolInfos: any) {
   });
   return tokenValues;
 }
-async function getTokenPrices(chain: string, timestamp: number) {
+export default async function getTokenPrices(chain: string, timestamp: number) {
   let writes: Write[] = [];
   let poolIds: string[];
   let block: number | undefined;
@@ -167,5 +169,5 @@ async function getTokenPrices(chain: string, timestamp: number) {
 
   return writes;
 }
-getTokenPrices("ethereum", 0);
+getTokenPrices("arbitrum", 0);
 // ts-node coins/src/adapters/lps/balancer/balancer.ts

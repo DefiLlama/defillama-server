@@ -1,15 +1,13 @@
-import { getChainBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import volumeAdapters from "../../dexAdapters";
-import { ChainBlocks, DexAdapter, VolumeAdapter } from "@defillama/adapters/dexVolumes/dexVolume.type";
+import { ChainBlocks, VolumeAdapter, Adapter } from "@defillama/adapters/volumes/dexVolume.type";
 import { storeVolume, Volume, VolumeType, getVolume } from "../../data/volume";
 import getChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
-import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
-import { getBlock } from "@defillama/adapters/projects/helper/getBlock";
+const getBlock = require("@defillama/adapters/projects/helper/getBlock")
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
@@ -43,17 +41,17 @@ export const handler = async (event: IHandlerEvent) => {
   const chainBlocks: ChainBlocks = {};
   await allSettled(
     allChains.map(async (chain) => {
-      const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks).catch(e=>console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
+      const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
       chainBlocks[chain] = latestBlock
     })
   );
 
-  async function runAdapter(id: string, volumeAdapter: VolumeAdapter, version: string) {
+  async function runAdapter(id: string, volumeAdapter: Adapter, version: string) {
     console.log("Running adapter", id, version)
     const chains = Object.keys(volumeAdapter)
     return allSettled(chains
       .filter(async (chain) => {
-        const start = await volumeAdapter[chain].start().catch(e=>console.error("Error getting start time", id, version, e.message))
+        const start = await volumeAdapter[chain].start().catch(e => console.error("Error getting start time", id, version, e.message))
         return (start <= cleanPreviousDayTimestamp) || (start === 0)
       })
       .map(async (chain) => {
@@ -88,7 +86,7 @@ export const handler = async (event: IHandlerEvent) => {
 
     try {
       // Import DEX adapter
-      const dexAdapter: DexAdapter = (await importVolumeAdapter(volumeAdapters[protocolIndex])).default;
+      const dexAdapter: VolumeAdapter = (await importVolumeAdapter(volumeAdapters[protocolIndex])).default;
       console.info("Improted OK")
       // Retrieve daily volumes
       let rawDailyVolumes: IRecordVolumeData[] = []

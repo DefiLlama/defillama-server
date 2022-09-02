@@ -10,7 +10,7 @@ writeFileSync("./src/utils/imports/adapters.ts",
 
 writeFileSync("./src/utils/imports/adapters_volumes.ts",
     `export default {
-    ${volumeAdapters.map(p => `"${p.volumeAdapter}": require("@defillama/adapters/dexVolumes/${p.volumeAdapter}"),`).join('\n')}
+    ${volumeAdapters.map(p => `"${p.volumeAdapter}": require("@defillama/adapters/volumes/adapters/${p.volumeAdapter}"),`).join('\n')}
 }`)
 
 const excludeLiquidation = ["test.ts", "utils"]

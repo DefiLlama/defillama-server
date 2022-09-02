@@ -3,5 +3,5 @@ import { handler } from "../handlers/storeDexVolume";
 import volumeAdapters from "../dexAdapters";
 
 handler({
-    protocolIndexes: [17],
+    protocolIndexes: [volumeAdapters.findIndex(va => va.id==='1')],
 })

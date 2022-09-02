@@ -1,4 +1,4 @@
-import dexVolumes from "../../../DefiLlama-Adapters/dexVolumes";
+import dexVolumes from "../../../DefiLlama-Adapters/volumes";
 import data, { Protocol } from "../../protocols/data";
 import config from "./config"
 import type { IVolumesConfig } from "./config"

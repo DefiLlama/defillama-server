@@ -13998,6 +13998,27 @@ listedAt: 1650804679
   twitter: "JunoNetwork",
   listedAt: 1662131321
 },
+{
+  id: "2053",
+  name: "Cega",
+  address: null,
+  symbol: "-",
+  url: "https://app.cega.fi",
+  description: "Cega offers safer and transparent yield strategies as defi's first exotic options protocol.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/cega.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Options",
+  chains: ["Solana"],
+  oracles: [],
+  forkedFrom: [],
+  module: "cega/index.js",
+  twitter: "cega_fi",
+  listedAt: 1662140513
+},
 ]
 
 

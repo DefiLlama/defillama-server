@@ -13933,6 +13933,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/balancer-labs/balancer-v2-monorepo/tree/master/audits"],
   listedAt: 1662044235
 },
+{
+  id: "2050",
+  name: "Klaylend Finance",
+  address: "klaytn:0xb8c460aD6aC97797A57BDb08D7187b4710B4Fdf8",
+  symbol: "KLD",
+  url: "https://www.klaylend.finance/",
+  description: "KlayLend is a decentralized lending & borrowing protocol and staking platform running on Klaytn",
+  chain: "Klaytn",
+  logo: `${baseIconsUrl}/klaylend-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Klaytn"],
+  oracles: [],
+  forkedFrom: [],
+  module: "klaylend/index.js",
+  twitter: "klexfinance",
+  audit_links: ["https://github.com/solidproof/projects/tree/main/KlayLend"],
+  listedAt: 1662124833
+},
 ]
 
 

@@ -13977,6 +13977,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/securing/reports/blob/main/Logium%20-%2020220428.pdf"],
   listedAt: 1662125236
 },
+{
+  id: "2052",
+  name: "Junoswap",
+  address: "juno:-",
+  symbol: "RAW",
+  url: "https://www.junoswap.com/",
+  description: "JunoSwap is an interchain decentralized exchange focussed on CW-20 (CosmWasm) asset adoption. Built on the public permission-less Juno Network",
+  chain: "Juno",
+  logo: `${baseIconsUrl}/junoswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "junoswap-raw-dao",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Juno"],
+  oracles: [],
+  forkedFrom: [],
+  module: "junoswap/index.js",
+  twitter: "JunoNetwork",
+  listedAt: 1662131321
+},
 ]
 
 

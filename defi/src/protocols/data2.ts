@@ -13961,7 +13961,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://logium.org",
-  description: "KLogium is the first decentralized platform that allows users to trade and bet on the price of any token available on Uniswap. By using Logium, users can long and short ERC-20 tokens with leverage.",
+  description: "Logium is the first decentralized platform that allows users to trade and bet on the price of any token available on Uniswap. By using Logium, users can long and short ERC-20 tokens with leverage.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/logium.jpg`,
   audits: "2",

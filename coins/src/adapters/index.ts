@@ -24,6 +24,7 @@ export default {
   gauges: require("./lps/curve/index"),
   ankr: require("./liquidStaking/ankr/index"),
   synthetix: require("./other/index"),
+  glp: require("./other/index"),
   uniswap: require("./lps/uniswap/index")
   // traderJoe: require("./lps/uniswap/index"),
   // vvsFinance: require("./lps/uniswap/index"),

@@ -4,6 +4,7 @@ import axios from "axios";
 import { getTokenInfo } from "../utils/erc20";
 import getBlock from "../utils/block";
 import { multiCall } from "@defillama/sdk/build/abi";
+const abi = require("./abi.json");
 
 const tokens = {
   optimism: {
@@ -28,17 +29,7 @@ async function getProxies(
 ) {
   return (
     await multiCall({
-      abi: {
-        constant: true,
-        inputs: [],
-        name: "proxy",
-        outputs: [
-          { internalType: "contract Proxy", name: "", type: "address" }
-        ],
-        payable: false,
-        stateMutability: "view",
-        type: "function"
-      },
+      abi: abi.proxy,
       calls: tokens.map((target: string) => ({
         target: target
       })),

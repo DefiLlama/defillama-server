@@ -10219,8 +10219,8 @@ listedAt: 1650804679
 {
   id: "1878",
   name: "ApeX Protocol",
-  address: null,
-  symbol: "-",
+  address: "0x52a8845df664d76c69d2eea607cd793565af42b8",
+  symbol: "APEX",
   url: "https://app.apex.exchange/trade",
   description: "ApeX, an innovative derivatives protocol to provide Web3 users with a supreme derivatives trading experience.",
   chain: "Arbitrum",

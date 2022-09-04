@@ -14108,6 +14108,28 @@ listedAt: 1650804679
   twitter: "ElonSwapdog",
   listedAt: 1662283877
 },
+ {
+  id: "2058";
+  name: "Giveth";
+  address: "0x900dB999074d9277c5DA2A43F252D74366230DA0";
+  symbol: "GIV";
+  url: "https://giveth.io";
+  description: "Get rewarded for giving to for-good projects with zero added fees.";
+  chain: "Ethereum";
+  logo: `${baseIconsUrl}/manarium.png`;
+  audits: "2";
+  audit_note: null;
+  gecko_id: "giveth";
+  cmcId: "17207";
+  category: "Yield";
+  chains: ["Ethereum", "Gnosis"];
+  oracles: [];
+  forkedFrom: [];
+  module: "giveth/index.js";
+  twitter: "Givethio";
+  audit_links: ["https://github.com/lastperson/code-reviews/blob/main/Giveth%20GIVeconomy%20Contracts%20Code%20Review.pdf"],
+  openSource: true
+},
 ]
 
 

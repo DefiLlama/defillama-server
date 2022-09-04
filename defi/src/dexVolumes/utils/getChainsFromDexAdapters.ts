@@ -1,5 +1,5 @@
 import { Chain } from "@defillama/sdk/build/general";
-import dexVolumes from "@defillama/adapters/dexVolumes";
+import dexVolumes from "@defillama/adapters/volumes";
 
 const getAllChainsFromDexAdapters = (dexs2Filter: string[]) =>
     Object.entries(dexVolumes)

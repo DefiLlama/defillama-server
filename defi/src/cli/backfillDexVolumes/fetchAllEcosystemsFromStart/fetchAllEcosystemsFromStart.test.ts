@@ -42,7 +42,7 @@ test("fetchEcosystemsFromStart", async () => {
   expect(fetchEcosystemsFromStart).toHaveBeenCalled();
 });
 
-jest.mock("../../../../DefiLlama-Adapters/dexVolumes", () => {
+jest.mock("../../../../DefiLlama-Adapters/volumes", () => {
   const { dexVolumeAdapters } = jest.requireActual("../fixtures");
   return {
     ...dexVolumeAdapters,

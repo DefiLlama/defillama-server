@@ -20,9 +20,11 @@ export default {
   curve4: require("./lps/curve/index"),
   curve5: require("./lps/curve/index"),
   ellipsis: require("./lps/curve/index"),
+  balancer: require("./lps/balancer/index"),
   gauges: require("./lps/curve/index"),
   ankr: require("./liquidStaking/ankr/index"),
   synthetix: require("./other/index"),
+  glp: require("./other/index"),
   uniswap: require("./lps/uniswap/index")
   // traderJoe: require("./lps/uniswap/index"),
   // vvsFinance: require("./lps/uniswap/index"),

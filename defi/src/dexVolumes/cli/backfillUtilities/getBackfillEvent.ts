@@ -3,7 +3,7 @@ import fs, { writeFileSync } from "fs"
 import path from "path"
 import volumeAdapters from '../../dexAdapters'
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters"
-import { DexAdapter } from "@defillama/adapters/dexVolumes/dexVolume.type"
+import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
@@ -36,12 +36,12 @@ export default async () => {
     // Looking for start time from adapter, if not found will default to the above
     const dex = volumeAdapters.find(dex => dex.volumeAdapter === DEXS_LIST[0])
     if (dex) {
-        const dexAdapter: DexAdapter = (await importVolumeAdapter(dex)).default
+        const dexAdapter: VolumeAdapter = (await importVolumeAdapter(dex)).default
         if ("volume" in dexAdapter) {
             const st = await Object.values(dexAdapter.volume)
                 .reduce(async (accP, { start }) => {
                     const acc = await accP
-                    const currstart = await start()
+                    const currstart = await start().catch(() => 0)
                     return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
                 }, Promise.resolve(Date.now() / 1000))
             startTimestamp = st
@@ -50,7 +50,7 @@ export default async () => {
                 const acc = await accP
                 const bst = await Object.values(dexAdapter).reduce(async (accP, { start }) => {
                     const acc = await accP
-                    const currstart = await start()
+                    const currstart = await start().catch(() => 0)
                     return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
                 }, Promise.resolve(Date.now() / 1000))
 

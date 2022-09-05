@@ -14150,6 +14150,28 @@ listedAt: 1650804679
   twitter: "goatswapxyz",
   listedAt: 1662370314
 },
+{
+  id: "2060",
+  name: "FNDZ",
+  address: "bsc:0x7754c0584372D29510C019136220f91e25a8f706",
+  symbol: "FNDZ",
+  url: "https://fndz.io",
+  description: "FNDZ Protocol is an EVM-based protocol for a decentralized on-chain social trading platform. FNDZ makes copy trading simple by connecting users with an ecosystem of top performing cryptocurrency traders.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/fndz.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "fndz-token",
+  cmcId: "11452",
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "fndzdao/index.js",
+  twitter: "fndzDAO",
+  audit_links: ["https://github.com/FNDZdao/public/blob/main/FNDZ%20full%20platform%20%2B%20staking%20audit%2015%20June.pdf"],
+  listedAt: 1662384510
+},
 ]
 
 

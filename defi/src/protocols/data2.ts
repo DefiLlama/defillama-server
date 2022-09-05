@@ -7061,7 +7061,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://verse.bitcoin.com",
-  description: "Verse DEX by Bitcoin.com enables permissionless trading via your Web3 wallet. Currently this is only available on smartBCH, but more networks are coming soon and support for Ethereum will launch following completion of the Verse token sale. Sign up to get notified at getverse.com!",
+  description: "Verse DEX by Bitcoin.com enables permissionless trading via your Web3 wallet. Currently available on smartBCH & Ethereum, but more networks are coming soon. Sign up to get notified at getverse.com!",
   chain: "SmartBCH",
   logo: `${baseIconsUrl}/verse.png`,
   audits: "0",

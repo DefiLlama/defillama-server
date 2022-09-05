@@ -81,6 +81,43 @@ const formatNdChangeNumber = (number: number | null) => {
     return Math.round((number + Number.EPSILON) * 100) / 100
 }
 
+export const getSummaryByProtocolVersion = (volumes: Volume[], prevDayVolume?: Volume) => {
+    const raw = volumes.reduce((accVols, volume) => {
+        Object.entries(volume.data).forEach(([chain, protocolsData]) => {
+            const protocolNames = Object.keys(protocolsData)
+            if (protocolNames.length <= 1) return
+            for (const protocolName of protocolNames) {
+                if (accVols[protocolName]) {
+                    accVols[protocolName].push(new Volume(volume.type, volume.dexId, volume.timestamp, {
+                        [chain]: {
+                            [protocolName]: protocolsData[protocolName]
+                        }
+                    }))
+                }
+                else {
+                    accVols[protocolName] = [(new Volume(volume.type, volume.dexId, volume.timestamp, {
+                        [chain]: {
+                            [protocolName]: protocolsData[protocolName]
+                        }
+                    }))]
+                }
+            }
+        })
+        return accVols
+    }, {} as { [protocol: string]: Volume[] })
+    delete raw['error']
+    const summaryByProtocols = Object.entries(raw).reduce((acc, [protVersion, protVolumes]) => {
+        acc[protVersion] = {
+            totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
+            change_1d: calcNdChange(protVolumes, 1),
+            change_7d: calcNdChange(protVolumes, 7),
+            change_1m: calcNdChange(protVolumes, 30),
+        }
+        return acc
+    }, {} as NonNullable<VolumeSummaryDex['protocolVersions']>)
+    return Object.keys(summaryByProtocols).length > 1 ? summaryByProtocols : null
+}
+
 export {
     sumAllVolumes,
     getSumAllDexsToday,

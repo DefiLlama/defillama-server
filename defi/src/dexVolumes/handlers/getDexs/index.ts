@@ -3,8 +3,11 @@ import volumeAdapters, { Dex } from "../../dexAdapters";
 import { getVolume, Volume, VolumeType } from "../../data/volume"
 import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
-import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
+import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
+import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
+import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
+import getAllChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart: IChartData,
@@ -18,6 +21,14 @@ export interface VolumeSummaryDex extends Dex {
     change_1d: number | null
     change_7d: number | null
     change_1m: number | null
+    protocolVersions: {
+        [protVersion: string]: {
+            totalVolume24h: number | null
+            change_1d: number | null
+            change_7d: number | null
+            change_1m: number | null
+        }
+    } | null
 }
 
 export const handler = async (): Promise<IResponse> => {
@@ -35,7 +46,9 @@ export const handler = async (): Promise<IResponse> => {
                 volumes: volumes,
                 change_1d: calcNdChange(volumes, 1),
                 change_7d: calcNdChange(volumes, 7),
-                change_1m: calcNdChange(volumes, 30)
+                change_1m: calcNdChange(volumes, 30),
+                chains: getAllChainsFromDexAdapters([adapter.volumeAdapter]),
+                protocolVersions: getSummaryByProtocolVersion(volumes, prevDayVolume)
             }
         } catch (error) {
             console.error(error)
@@ -46,7 +59,8 @@ export const handler = async (): Promise<IResponse> => {
                 yesterdayTotalVolume: null,
                 change_1d: null,
                 change_7d: null,
-                change_1m: null
+                change_1m: null,
+                protocolVersions: null
             }
         }
     }))

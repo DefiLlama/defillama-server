@@ -14198,6 +14198,28 @@ listedAt: 1650804679
                ],
   listedAt: 1662389427
 },
+{
+  id: "2062",
+  name: "Kamino Finance",
+  address: null,
+  symbol: "-",
+  url: "https://app.kamino.finance/",
+  description: "Kamino is an automated liquidity solution, built on DEXs operating concentrated liquidity market makers (CLMMs).",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/kamino-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Solana"],
+  oracles: [],
+  forkedFrom: [],
+  module: "kamino/index.js",
+  twitter: "Kamino_Finance",
+  audit_links: ["https://smartstate.tech/reports/kamino-finance-report-27082022.html"],
+  listedAt: 1662391548
+},
 ]
 
 

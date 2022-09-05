@@ -247,5 +247,5 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     }
   });
 
-  return filteredWrites;
+  return filteredWrites.filter((f: Write) => f != undefined);
 }

@@ -14145,7 +14145,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Solana"],
   oracles: [],
-  forkedFrom: ["SudoSwap"],
+  forkedFrom: [], //sudoswap (on solana)
   module: "SweetSwap/index.js",
   twitter: "goatswapxyz",
   listedAt: 1662370314

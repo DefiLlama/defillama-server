@@ -63,22 +63,21 @@ const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]): IChartDat
 }
 
 const calcNdChange = (volumes: Volume[], nDaysChange: number) => {
-    let totalVolume = 0
-    let totalVolumeNd = 0
+    let totalVolume: number | null = 0
+    let totalVolumeNd: number | null = 0
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC((Date.now() / 1000) - ONE_DAY_IN_SECONDS);
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
     const yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
     const volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd)?.data
-    totalVolume += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0
-    totalVolumeNd += volumeNd ? sumAllVolumes(volumeNd) : 0
-    return formatNdChangeNumber((totalVolume - totalVolumeNd) / totalVolumeNd * 100)
+    totalVolume = yesterdaysVolume ? totalVolume + sumAllVolumes(yesterdaysVolume) : null
+    totalVolumeNd = volumeNd ? totalVolumeNd + sumAllVolumes(volumeNd) : null
+    const ndChange = totalVolume && totalVolumeNd ? (totalVolume - totalVolumeNd) / totalVolumeNd * 100 : null
+    return formatNdChangeNumber(ndChange)
 }
 
-const formatNdChangeNumber = (number: number) => {
-    if (number === Number.POSITIVE_INFINITY)
-        number = 100
-    else if (number === Number.NEGATIVE_INFINITY || Number.isNaN(number))
-        number = -100
+const formatNdChangeNumber = (number: number | null) => {
+    if (number === Number.POSITIVE_INFINITY || number === Number.NEGATIVE_INFINITY || Number.isNaN(number) || number === null)
+        return null
     return Math.round((number + Number.EPSILON) * 100) / 100
 }
 

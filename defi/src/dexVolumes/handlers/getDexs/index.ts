@@ -15,6 +15,9 @@ export interface VolumeSummaryDex extends Dex {
     totalVolume24h: number | null
     volume24hBreakdown: IRecordVolumeData | null
     volumes?: Volume[]
+    change_1d: number | null
+    change_7d: number | null
+    change_1m: number | null
 }
 
 export const handler = async (): Promise<IResponse> => {

@@ -14108,6 +14108,27 @@ listedAt: 1650804679
   twitter: "ElonSwapdog",
   listedAt: 1662283877
 },
+{
+  id: "2058",
+  name: "SweetSwap",
+  address: "dogechain:0x5d4B6528b9c8aB4cE15C69A014166e2884C6eaB3",
+  symbol: "Sweets",
+  url: "https://sweetswap.fi",
+  description: "Sweetest Swap On Dogechain",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/sweetswap.png`,
+  audits: "3",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "SweetSwap/index.js",
+  twitter: "sweetswapfi",
+  listedAt: 1662367337
+},
 ]
 
 

@@ -12,7 +12,9 @@ interface TokenListResponse {
   symbol: string;
 }
 
-export default async function getTokenPrices() {
+export default async function getTokenPrices(timestamp: number) {
+  // since its API we cant get historical data!!!
+  if (timestamp != 0) return [];
   const writes: Write[] = [];
   const [graphQlResponse, tokenListResponse] = await Promise.all([
     request(
@@ -54,5 +56,3 @@ export default async function getTokenPrices() {
 
   return writes;
 }
-getTokenPrices();
-// ts-node coins/src/adapters/markets/serum/serum.ts

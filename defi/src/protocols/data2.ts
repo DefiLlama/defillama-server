@@ -14172,6 +14172,32 @@ listedAt: 1650804679
   audit_links: ["https://github.com/FNDZdao/public/blob/main/FNDZ%20full%20platform%20%2B%20staking%20audit%2015%20June.pdf"],
   listedAt: 1662384510
 },
+{
+  id: "2061",
+  name: "PULI",
+  address: null,
+  symbol: "-",
+  url: "https://pulitoken.net",
+  description: "PULI is the native token for casual mobile gaming. The games provide crypto-based play-to-earn experiences as well as NFT integration on both iOS and Android mobile devices.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/puli.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "puli-inu",
+  cmcId: "17354",
+  category: "Gaming",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "puli/index.js",
+  twitter: "Puli_Token",
+  audit_links: [
+                 "https://www.certik.com/projects/puli-inu" ,
+                 "https://github.com/coinscope-co/audits/blob/main/puli/audit.pdf",
+                 "https://github.com/interfinetwork/smart-contract-audits/blob/audit-updates/PuliInu_0xAEf0a177c8c329CBC8508292Bb7E06c00786BBfC.pdf",
+               ],
+  listedAt: 1662389427
+},
 ]
 
 

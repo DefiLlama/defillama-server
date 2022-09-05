@@ -14146,7 +14146,7 @@ listedAt: 1650804679
   chains: ["Solana"],
   oracles: [],
   forkedFrom: [], //sudoswap (on solana)
-  module: "SweetSwap/index.js",
+  module: "goatswap/index.js",
   twitter: "goatswapxyz",
   listedAt: 1662370314
 },

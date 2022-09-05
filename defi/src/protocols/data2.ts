@@ -14129,6 +14129,27 @@ listedAt: 1650804679
   twitter: "sweetswapfi",
   listedAt: 1662367337
 },
+{
+  id: "2059",
+  name: "Goat Swap",
+  address: null,
+  symbol: "-",
+  url: "https://goatswap.xyz",
+  description: "solana's first decentralized NFT AMM. Currently in beta on mainnet",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/goat-swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Solana"],
+  oracles: [],
+  forkedFrom: ["SudoSwap"],
+  module: "SweetSwap/index.js",
+  twitter: "goatswapxyz",
+  listedAt: 1662370314
+},
 ]
 
 

@@ -14285,6 +14285,27 @@ listedAt: 1650804679
   twitter: "ChocoDoge_",
   listedAt: 1662470738
 },
+{
+  id: "2066",
+  name: "VanSwap",
+  address: "vision:VRbNprwjvBomKhvnhZq7Y33JRcrQJethpc",
+  symbol: "VAN",
+  url: "https://www.vanswap.org/#/home",
+  description: "DEX Built On Vision Network. Uses A “Defi + NFT” Paradigm, Which Isolates The Platform Token's Governance Utility From Its Governance System And Uses NFT To Power It",
+  chain: "Vision",
+  logo: `${baseIconsUrl}/vanswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Vision"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "vanswap/index.js",
+  twitter: "Van_Swap",
+  listedAt: 1662489763
+},
 ]
 
 

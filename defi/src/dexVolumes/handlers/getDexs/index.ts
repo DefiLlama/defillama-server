@@ -20,16 +20,12 @@ export interface VolumeSummaryDex extends Dex {
     change_7d: number | null
     change_1m: number | null
     protocolVersions: {
-        summary: {
-            [protVersion: string]: {
-                totalVolume24h: number | null
-                change_1d: number | null
-                change_7d: number | null
-                change_1m: number | null
-            }
-        } | null
-        chains: {
-            [protVersion: string]: string[]
+        [protVersion: string]: {
+            totalVolume24h: number | null
+            change_1d: number | null
+            change_7d: number | null
+            change_1m: number | null
+            chains: string[] | null
         } | null
     } | null
 }
@@ -42,6 +38,8 @@ export const handler = async (): Promise<IResponse> => {
             // This check is made to infer Volume[] type instead of Volume type
             if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
             const prevDayVolume = volumes.find(vol => vol.timestamp === prevDayTimestamp)
+            const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayVolume)
+            const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter)
             return {
                 ...adapter,
                 totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
@@ -50,10 +48,13 @@ export const handler = async (): Promise<IResponse> => {
                 change_1d: calcNdChange(volumes, 1),
                 change_7d: calcNdChange(volumes, 7),
                 change_1m: calcNdChange(volumes, 30),
-                protocolVersions: {
-                    summary: getSummaryByProtocolVersion(volumes, prevDayVolume),
-                    chains: getChainByProtocolVersion(adapter.volumeAdapter)
-                }
+                protocolVersions: protocolVersionsSummary ? Object.entries(protocolVersionsSummary).reduce((acc, [protName, summary]) => {
+                    acc[protName] = {
+                        ...summary,
+                        chains: chainsSummary ? chainsSummary[protName] : null
+                    }
+                    return acc
+                }, {} as NonNullable<VolumeSummaryDex['protocolVersions']>) : null
             }
         } catch (error) {
             console.error(error)

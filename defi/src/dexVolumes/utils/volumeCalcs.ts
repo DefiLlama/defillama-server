@@ -114,7 +114,15 @@ export const getSummaryByProtocolVersion = (volumes: Volume[], prevDayVolume?: V
             change_1m: calcNdChange(protVolumes, 30),
         }
         return acc
-    }, {} as NonNullable<NonNullable<VolumeSummaryDex['protocolVersions']>['summary']>)
+    }, {} as {
+        // TODO: improve types
+        [protV: string]: {
+            totalVolume24h: number | null
+            change_1d: number | null
+            change_7d: number | null
+            change_1m: number | null
+        }
+    })
     return Object.keys(summaryByProtocols).length > 1 ? summaryByProtocols : null
 }
 

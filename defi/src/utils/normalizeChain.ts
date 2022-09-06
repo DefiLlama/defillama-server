@@ -1134,6 +1134,12 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["Cosmos"],
   },
+  "Vision": {
+    geckoId: "vision-metaverse",
+    symbol: "VS",
+    cmcId: "19083",
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1423,7 +1429,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Tombchain"
     case "crescent":
       return "Crescent"
-
+    case "vision":
+      return "Vision"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

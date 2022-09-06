@@ -14268,7 +14268,7 @@ listedAt: 1650804679
   id: "2065",
   name: "Chocodoge",
   address: "dogechain:0x06AcD60e5B1CD9aB7E4beBfaA1233D3cCe97A08F",
-  symbol: "USDC",
+  symbol: "USCD",
   url: "https://chocodoge.dog",
   description: "The first seigniorage stablecoin on Dogechain.",
   chain: "Dogechain",

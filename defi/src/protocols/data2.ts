@@ -14282,7 +14282,7 @@ listedAt: 1650804679
   oracles: ["TWAP"],
   forkedFrom: ["Tomb Fiannce"],
   module: "chocodoge/index.js",
-  twitter: "chocodoge",
+  twitter: "ChocoDoge_",
   listedAt: 1662470738
 },
 ]

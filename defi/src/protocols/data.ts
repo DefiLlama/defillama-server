@@ -9425,7 +9425,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Smart Tests for Smart Contracts",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ante-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -9433,6 +9433,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "ante/index.js",
     twitter: "AnteFinance",
+    audit_links: ["https://docs.ante.finance/antev05/about/security#audits"],
     oracles: [],
   },
   // {

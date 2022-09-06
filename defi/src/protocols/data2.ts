@@ -14306,6 +14306,53 @@ listedAt: 1650804679
   twitter: "Van_Swap",
   listedAt: 1662489763
 },
+{
+  id: "2067",
+  name: "OpenSky Finance",
+  address: null,
+  symbol: "-",
+  url: "https://opensky.finance",
+  description: "The first integrated peer-to-pool and peer-to-peer NFT lending protocol built on top of aave.com",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/opensky-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Lending",
+  chains: ["Ethereum"],
+  oracles: ["Internal"],
+  forkedFrom: [],
+  module: "opensky/index.js",
+  audit_links: [
+    "https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-OpenSky-v1.0.pdf",
+    "https://www.certik.com/projects/opensky-finance"
+  ],
+  twitter: "OpenSkyFinance",
+  listedAt: 1662496565
+},
+{
+  id: "2068",
+  name: "Powaa Protocol",
+  address: "ethereum:0x14b14F83e94d81a0B2BD26E5a2D5343F9355fD12",
+  symbol: "POWAA",
+  url: "https://powaa.xyz/",
+  description: "Powaa protocol was built to swap all the obsolete assets on PoW Ethereum for ETHW after the upcoming Ethereum Merge towards PoS.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/powaa-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "powaa-protocol/index.js",
+  audit_links: ["https://app.inspex.co/library/powaa"],
+  twitter: "PowaaProtocol",
+  listedAt: 1662496715
+},
 ]
 
 

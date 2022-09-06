@@ -10375,7 +10375,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "631",
     name: "Beanstalk",
-    address: "0xdc59ac4fefa32293a95889dc396682858d52e5db",
+    address: "0xBEA0000029AD1c77D3d5D23Ba2D8893dB9d1Efab",
     symbol: "BEAN",
     url: "https://bean.money",
     description: "Beanstalk is a decentralized, credit-based algorithmic stablecoin protocol built on Ethereum.",

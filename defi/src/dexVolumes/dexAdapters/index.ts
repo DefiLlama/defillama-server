@@ -2,6 +2,7 @@ import dexVolumes from "../../../DefiLlama-Adapters/volumes";
 import data, { Protocol } from "../../protocols/data";
 import config from "./config"
 import type { IVolumesConfig } from "./config"
+import getAllChainsFromDexAdapters from "../utils/getChainsFromDexAdapters";
 /**
  * Using data from protocols since its more complete
  */
@@ -24,6 +25,10 @@ const dexData: Dex[] = dexAdaptersKeys.map(adapterKey => {
     )
     if (dexFoundInProtocols) return {
         ...dexFoundInProtocols,
+        chains: getAllChainsFromDexAdapters([adapterKey]).map(chain => {
+            const c = chain === 'avax' ? "avalanche" : chain
+            return c[0].toUpperCase() + c.slice(1)
+        }),
         volumeAdapter: adapterKey,
         config: config[adapterKey]
     }

@@ -3,8 +3,9 @@ import volumeAdapters, { Dex } from "../../dexAdapters";
 import { getVolume, Volume, VolumeType } from "../../data/volume"
 import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
-import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
+import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
+import { getChainByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart: IChartData,
@@ -15,6 +16,18 @@ export interface VolumeSummaryDex extends Dex {
     totalVolume24h: number | null
     volume24hBreakdown: IRecordVolumeData | null
     volumes?: Volume[]
+    change_1d: number | null
+    change_7d: number | null
+    change_1m: number | null
+    protocolVersions: {
+        [protVersion: string]: {
+            totalVolume24h: number | null
+            change_1d: number | null
+            change_7d: number | null
+            change_1m: number | null
+            chains: string[] | null
+        } | null
+    } | null
 }
 
 export const handler = async (): Promise<IResponse> => {
@@ -25,6 +38,8 @@ export const handler = async (): Promise<IResponse> => {
             // This check is made to infer Volume[] type instead of Volume type
             if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
             const prevDayVolume = volumes.find(vol => vol.timestamp === prevDayTimestamp)
+            const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayVolume)
+            const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter)
             return {
                 ...adapter,
                 totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
@@ -32,7 +47,14 @@ export const handler = async (): Promise<IResponse> => {
                 volumes: volumes,
                 change_1d: calcNdChange(volumes, 1),
                 change_7d: calcNdChange(volumes, 7),
-                change_1m: calcNdChange(volumes, 30)
+                change_1m: calcNdChange(volumes, 30),
+                protocolVersions: protocolVersionsSummary ? Object.entries(protocolVersionsSummary).reduce((acc, [protName, summary]) => {
+                    acc[protName] = {
+                        ...summary,
+                        chains: chainsSummary ? chainsSummary[protName] : null
+                    }
+                    return acc
+                }, {} as NonNullable<VolumeSummaryDex['protocolVersions']>) : null
             }
         } catch (error) {
             console.error(error)
@@ -43,7 +65,8 @@ export const handler = async (): Promise<IResponse> => {
                 yesterdayTotalVolume: null,
                 change_1d: null,
                 change_7d: null,
-                change_1m: null
+                change_1m: null,
+                protocolVersions: null
             }
         }
     }))

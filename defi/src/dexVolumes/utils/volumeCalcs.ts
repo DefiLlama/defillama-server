@@ -63,23 +63,67 @@ const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]): IChartDat
 }
 
 const calcNdChange = (volumes: Volume[], nDaysChange: number) => {
-    let totalVolume = 0
-    let totalVolumeNd = 0
+    let totalVolume: number | null = 0
+    let totalVolumeNd: number | null = 0
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC((Date.now() / 1000) - ONE_DAY_IN_SECONDS);
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
     const yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
     const volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd)?.data
-    totalVolume += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0
-    totalVolumeNd += volumeNd ? sumAllVolumes(volumeNd) : 0
-    return formatNdChangeNumber((totalVolume - totalVolumeNd) / totalVolumeNd * 100)
+    totalVolume = yesterdaysVolume ? totalVolume + sumAllVolumes(yesterdaysVolume) : null
+    totalVolumeNd = volumeNd ? totalVolumeNd + sumAllVolumes(volumeNd) : null
+    const ndChange = totalVolume && totalVolumeNd ? (totalVolume - totalVolumeNd) / totalVolumeNd * 100 : null
+    return formatNdChangeNumber(ndChange)
 }
 
-const formatNdChangeNumber = (number: number) => {
-    if (number === Number.POSITIVE_INFINITY)
-        number = 100
-    else if (number === Number.NEGATIVE_INFINITY || Number.isNaN(number))
-        number = -100
+const formatNdChangeNumber = (number: number | null) => {
+    if (number === Number.POSITIVE_INFINITY || number === Number.NEGATIVE_INFINITY || Number.isNaN(number) || number === null)
+        return null
     return Math.round((number + Number.EPSILON) * 100) / 100
+}
+
+export const getSummaryByProtocolVersion = (volumes: Volume[], prevDayVolume?: Volume) => {
+    const raw = volumes.reduce((accVols, volume) => {
+        Object.entries(volume.data).forEach(([chain, protocolsData]) => {
+            const protocolNames = Object.keys(protocolsData)
+            if (protocolNames.length <= 1) return
+            for (const protocolName of protocolNames) {
+                if (accVols[protocolName]) {
+                    accVols[protocolName].push(new Volume(volume.type, volume.dexId, volume.timestamp, {
+                        [chain]: {
+                            [protocolName]: protocolsData[protocolName]
+                        }
+                    }))
+                }
+                else {
+                    accVols[protocolName] = [(new Volume(volume.type, volume.dexId, volume.timestamp, {
+                        [chain]: {
+                            [protocolName]: protocolsData[protocolName]
+                        }
+                    }))]
+                }
+            }
+        })
+        return accVols
+    }, {} as { [protocol: string]: Volume[] })
+    delete raw['error']
+    const summaryByProtocols = Object.entries(raw).reduce((acc, [protVersion, protVolumes]) => {
+        acc[protVersion] = {
+            totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
+            change_1d: calcNdChange(protVolumes, 1),
+            change_7d: calcNdChange(protVolumes, 7),
+            change_1m: calcNdChange(protVolumes, 30),
+        }
+        return acc
+    }, {} as {
+        // TODO: improve types
+        [protV: string]: {
+            totalVolume24h: number | null
+            change_1d: number | null
+            change_7d: number | null
+            change_1m: number | null
+        }
+    })
+    return Object.keys(summaryByProtocols).length > 1 ? summaryByProtocols : null
 }
 
 export {

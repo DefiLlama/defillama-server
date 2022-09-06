@@ -10,7 +10,7 @@ export default {
         enabled: true
     },
     "champagneswap": {
-        enabled: true
+        enabled: false
     },
     "katana": {
         enabled: true

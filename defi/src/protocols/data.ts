@@ -3605,7 +3605,7 @@ const data: Protocol[] = [
     address: "solana:MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac",
     symbol: "MNGO",
     url: "https://mango.markets",
-    description: "Mango Markets is built on the Solana blockchain and utilises Serum DEX for spot margin trading while perpetual futures are traded on Mango Markets' own order book. Mango Markets is governed by MNGO token holders via the Mango DAO.",
+    description: "Decentralized spot margined, perpetual futures markets, borrowing and lending protocol on Solana. Permissionless, all on-chain and all markets are collateralised.",
     chain: "Solana",
     logo: `${baseIconsUrl}/mango-markets.png`,
     audits: "2",

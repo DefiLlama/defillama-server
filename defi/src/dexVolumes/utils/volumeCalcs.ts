@@ -5,10 +5,9 @@ import { ONE_DAY_IN_SECONDS } from "../handlers/getDexVolume";
 import { IRecordVolumeData } from "../handlers/storeDexVolume";
 import getDataPoints from "./getDataPoints";
 
-const sumAllVolumes = (breakdownVolumes: IRecordVolumeData) =>
+const sumAllVolumes = (breakdownVolumes: IRecordVolumeData, protVersion?: string) =>
     Object.values(breakdownVolumes).reduce((acc, volume) =>
-        acc + Object.values(volume)
-            .reduce<number>((vacc, current) => typeof current === 'number' ? vacc + current : vacc, 0)
+        acc + Object.entries(volume).filter(([protV, _]) => protVersion ? protV === protVersion : true).reduce<number>((vacc, [_key, current]) => typeof current === 'number' ? vacc + current : vacc, 0)
         , 0)
 
 export interface IGeneralStats {
@@ -81,7 +80,8 @@ const formatNdChangeNumber = (number: number | null) => {
     return Math.round((number + Number.EPSILON) * 100) / 100
 }
 
-export const getSummaryByProtocolVersion = (volumes: Volume[], prevDayVolume?: Volume) => {
+export const getSummaryByProtocolVersion = (volumes: Volume[], prevDayTimestamp: number) => {
+    const prevDayVolume = volumes.find(vol => vol.timestamp === prevDayTimestamp)
     const raw = volumes.reduce((accVols, volume) => {
         Object.entries(volume.data).forEach(([chain, protocolsData]) => {
             const protocolNames = Object.keys(protocolsData)
@@ -108,7 +108,7 @@ export const getSummaryByProtocolVersion = (volumes: Volume[], prevDayVolume?: V
     delete raw['error']
     const summaryByProtocols = Object.entries(raw).reduce((acc, [protVersion, protVolumes]) => {
         acc[protVersion] = {
-            totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
+            totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data, protVersion) : 0,
             change_1d: calcNdChange(protVolumes, 1),
             change_7d: calcNdChange(protVolumes, 7),
             change_1m: calcNdChange(protVolumes, 30),

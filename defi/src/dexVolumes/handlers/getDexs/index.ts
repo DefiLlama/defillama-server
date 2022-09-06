@@ -38,8 +38,8 @@ export const handler = async (): Promise<IResponse> => {
             // This check is made to infer Volume[] type instead of Volume type
             if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
             const prevDayVolume = volumes.find(vol => vol.timestamp === prevDayTimestamp)
-            const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayVolume)
             const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter)
+            const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayTimestamp)
             return {
                 ...adapter,
                 totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,

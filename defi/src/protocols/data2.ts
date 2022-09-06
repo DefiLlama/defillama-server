@@ -13585,7 +13585,7 @@ listedAt: 1650804679
   chains: ["Interlay"],
   oracles: [],
   forkedFrom: [],
-  module: "interlay/index.js",
+  module: "interlay-btc/index.js",
   twitter: "InterlayHQ",
   listedAt: 1661801239
 },

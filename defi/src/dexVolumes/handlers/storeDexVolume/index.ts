@@ -48,7 +48,7 @@ export const handler = async (event: IHandlerEvent) => {
 
   async function runAdapter(id: string, volumeAdapter: Adapter, version: string) {
     console.log("Running adapter", id, version)
-    const chains = Object.keys(volumeAdapter)
+    const chains = Object.keys(volumeAdapter).filter(chain => chain === "optimism")
     return allSettled(chains
       .filter(async (chain) => {
         const start = await volumeAdapter[chain].start().catch(e => console.error("Error getting start time", id, version, e.message))

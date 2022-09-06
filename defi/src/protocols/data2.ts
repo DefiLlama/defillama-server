@@ -14264,6 +14264,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/rociFi/docs"],
   listedAt: 1662456730
 },
+{
+  id: "2065",
+  name: "Chocodoge",
+  address: "dogechain:0x06AcD60e5B1CD9aB7E4beBfaA1233D3cCe97A08F",
+  symbol: "USDC",
+  url: "https://chocodoge.dog",
+  description: "The first seigniorage stablecoin on Dogechain.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/chocodoge.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Dogechain"],
+  oracles: ["TWAP"],
+  forkedFrom: ["Tomb Fiannce"],
+  module: "chocodoge/index.js",
+  twitter: "chocodoge",
+  listedAt: 1662470738
+},
 ]
 
 

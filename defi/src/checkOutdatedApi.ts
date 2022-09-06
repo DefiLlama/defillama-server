@@ -38,6 +38,11 @@ const urls = [
     "https://api.llama.fi/lite/charts/Ethereum", // multiple
 ]
 
+const maxAgeAllowed = {
+    "https://defillama.com/stablecoins": 3600*1.5,
+    "https://defillama.com/stablecoins/chains": 3600*1.5,
+} as { [url:string]: number}
+
 const alert = (message: string) => sendMessage(message, process.env.MONITOR_WEBHOOK!)
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
@@ -54,11 +59,12 @@ const handler = async () => {
                     alert(`${url} was last modified ${(timeDiff / 3600).toFixed(2)} hours ago (${lastModified})`)
                 }
             } else {
+                const maxAge = maxAgeAllowed[url] ?? 3600;
                 const age = res.headers.age
-                if (age && Number(age) > 3600) {
+                if (age && Number(age) > maxAge) {
                     await sleep(5e3) // 5s -> allow page to regenerate if nobody has used it in last hour
                     const newAge = (await axios.get(url)).headers.age
-                    if (newAge && Number(newAge) > 3600) {
+                    if (newAge && Number(newAge) > maxAge) {
                         alert(`${url} was last updated ${(Number(newAge) / 3600).toFixed(2)} hours ago`)
                     }
                 }

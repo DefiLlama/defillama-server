@@ -14355,7 +14355,7 @@ listedAt: 1650804679
   listedAt: 1662496715
 },
 {
-  id: "2033",
+  id: "2069",
   name: "Interlay Staking",
   address: "interlay:-",
   symbol: "INTR",
@@ -14377,7 +14377,7 @@ listedAt: 1650804679
   listedAt: 1662498604
 },
 {
-  id: "2033",
+  id: "2070",
   name: "Interlay Collateral",
   address: "interlay:-",
   symbol: "INTR",

@@ -5,9 +5,7 @@ import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
 import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
-import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
-import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
-import getAllChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
+import { getChainByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart: IChartData,
@@ -22,12 +20,17 @@ export interface VolumeSummaryDex extends Dex {
     change_7d: number | null
     change_1m: number | null
     protocolVersions: {
-        [protVersion: string]: {
-            totalVolume24h: number | null
-            change_1d: number | null
-            change_7d: number | null
-            change_1m: number | null
-        }
+        summary: {
+            [protVersion: string]: {
+                totalVolume24h: number | null
+                change_1d: number | null
+                change_7d: number | null
+                change_1m: number | null
+            }
+        } | null
+        chains: {
+            [protVersion: string]: string[]
+        } | null
     } | null
 }
 
@@ -47,8 +50,10 @@ export const handler = async (): Promise<IResponse> => {
                 change_1d: calcNdChange(volumes, 1),
                 change_7d: calcNdChange(volumes, 7),
                 change_1m: calcNdChange(volumes, 30),
-                chains: getAllChainsFromDexAdapters([adapter.volumeAdapter]),
-                protocolVersions: getSummaryByProtocolVersion(volumes, prevDayVolume)
+                protocolVersions: {
+                    summary: getSummaryByProtocolVersion(volumes, prevDayVolume),
+                    chains: getChainByProtocolVersion(adapter.volumeAdapter)
+                }
             }
         } catch (error) {
             console.error(error)

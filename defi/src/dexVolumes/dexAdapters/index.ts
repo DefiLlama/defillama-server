@@ -25,7 +25,10 @@ const dexData: Dex[] = dexAdaptersKeys.map(adapterKey => {
     )
     if (dexFoundInProtocols) return {
         ...dexFoundInProtocols,
-        chains: getAllChainsFromDexAdapters([adapterKey]).map(chain => chain[0].toUpperCase() + chain.slice(1)),
+        chains: getAllChainsFromDexAdapters([adapterKey]).map(chain => {
+            const c = chain === 'avax' ? "avalanche" : chain
+            return c[0].toUpperCase() + c.slice(1)
+        }),
         volumeAdapter: adapterKey,
         config: config[adapterKey]
     }

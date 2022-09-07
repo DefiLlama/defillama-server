@@ -11739,7 +11739,10 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Uniswap"],
   twitter: "revertfinance",
-  audit_links: ["https://immunefi.com/bounty/revert"],
+  audit_links: [
+    "https://immunefi.com/bounty/revert",
+    "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Revert-Compoundor-v1.0.pdf"
+  ],
   listedAt: 1659525571
 },
 {

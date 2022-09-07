@@ -6,9 +6,10 @@ import { IRecordVolumeData } from "../storeDexVolume";
 import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import getAllChainsFromDexAdapters, { formatChain, getChainByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
+import config from "../../dexAdapters/config";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
-    totalDataChart: IChartData,
+    totalDataChart?: IChartData,
     dexs: Omit<VolumeSummaryDex, 'volumes'>[]
 }
 
@@ -74,13 +75,34 @@ export const handler = async (): Promise<IResponse> => {
     const rejectedDexs = dexsResults.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
     rejectedDexs.forEach(console.error)
     const dexs = dexsResults.map(fd => fd.status === "fulfilled" ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
-    const generalStats = getSumAllDexsToday(dexs)
+    const generalStats = getSumAllDexsToday(dexs.map(substractSubsetVolumes))
     return successResponse({
         totalDataChart: generateAggregatedVolumesChartData(dexs),
         ...generalStats,
         dexs: dexs.map(removeVolumesObject),
     } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
+
+const substractSubsetVolumes = (dex: VolumeSummaryDex, _index: number, dexs: VolumeSummaryDex[]): VolumeSummaryDex => {
+    const includedVolume = config[dex.volumeAdapter].includedVolume
+    if (includedVolume && includedVolume.length > 0) {
+        const includedSummaries = dexs.filter(dex => includedVolume.includes(dex.volumeAdapter))
+        let computedSummary: VolumeSummaryDex = dex
+        for (const includedSummary of includedSummaries) {
+            const newSum = getSumAllDexsToday([computedSummary], includedSummary)
+            computedSummary = {
+                ...includedSummary,
+                totalVolume24h: newSum['totalVolume'],
+                change_1d: newSum['changeVolume1d'],
+                change_7d: newSum['changeVolume7d'],
+                change_1m: newSum['changeVolume30d'],
+            }
+        }
+        return computedSummary
+    }
+    else
+        return dex
+}
 
 const removeVolumesObject = (dex: VolumeSummaryDex) => {
     delete dex['volumes']

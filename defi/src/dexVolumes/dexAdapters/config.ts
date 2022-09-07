@@ -1,5 +1,6 @@
 export interface IVolumesConfig {
-    enabled: boolean
+    enabled?: boolean
+    includedVolume?: string[]
 }
 
 export default {
@@ -46,7 +47,8 @@ export default {
         enabled: true
     },
     "serum": {
-        enabled: true
+        enabled: true,
+        includedVolume: ["raydium"]
     },
     "curve": {
         enabled: true

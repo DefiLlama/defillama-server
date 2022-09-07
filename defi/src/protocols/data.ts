@@ -10390,7 +10390,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "bean/index.js",
     twitter: "BeanstalkFarms",
-    audit_links: ["https://omniscia.io/beanstalk-core-protocol"],
+    audit_links: [
+      "https://omniscia.io/beanstalk-core-protocol",
+      "https://4ra72bs63w2i5qo5nm4zpz2tpmzbenpibyhramhjkhog7mtfdvxq.arweave.net/5EH9Bl7dtI7B3Ws5l-dTezISNegODxAw6VHcb7JlHW8",
+      "https://2adxrezjguhnrdzzvzwmcc52v4kdhtpw3vjk4737dbsobmwo6c6q.arweave.net/0Ad4kyk1DtiPOa5swQu6rxQzzfbdUq5_fxhk4LLO8L0"
+    ],
     oracles: ["TWAP"],
   },
   {

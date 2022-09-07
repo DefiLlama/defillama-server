@@ -14398,6 +14398,28 @@ listedAt: 1650804679
   parentProtocol: "Interlay",
   listedAt: 1662498615
 },
+{
+  id: "2071",
+  name: "dAMM Finance",
+  address: null,
+  symbol: "-",
+  url: "https://damm.finance/",
+  description: "dAMM is an uncollateralized lending platform for any token with algorithmically determined interest rates",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/damm-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "damm-finance/index.js",
+  twitter: "dammfinance",
+  audit_links: ["https://docs.google.com/document/d/1ScxXxRSXsIYy-ERAYw4qC-L-GlvXuY1_M8FmxScZi3Q/edit"],
+  listedAt: 1662533692
+},
 ]
 
 

@@ -30,7 +30,7 @@ const urls = [
 
     // Yields
     "https://yields.llama.fi/pools",
-    "https://yields.llama.fi/chart/0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8", // multiple
+    "https://yields.llama.fi/chart/747c1d2a-c668-4682-b9f9-296708a3dd90", // multiple
 
     // Internal
     "https://api.llama.fi/lite/protocols2",

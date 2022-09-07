@@ -13,6 +13,7 @@ export default {
   aurigami: require("./moneyMarkets/compound/index"),
   cream: require("./moneyMarkets/compound/index"),
   scream: require("./moneyMarkets/compound/index"),
+  euler: require("./moneyMarkets/euler/index"),
   yearn: require("./yield/yearn/index"),
   curve1: require("./markets/curve/index"),
   curve2: require("./markets/curve/index"),
@@ -25,7 +26,8 @@ export default {
   ankr: require("./liquidStaking/ankr/index"),
   synthetix: require("./other/index"),
   glp: require("./other/index"),
-  uniswap: require("./markets/uniswap/index")
+  uniswap: require("./markets/uniswap/index"),
+  sushiswap: require("./markets/uniswap/index")
   // traderJoe: require("./markets/uniswap/index"),
   // vvsFinance: require("./markets/uniswap/index"),
   // quickswap: require("./markets/uniswap/index"),

@@ -9,6 +9,25 @@ export function uniswap(timestamp: number = 0) {
     timestamp
   );
 }
+export function sushiswap(timestamp: number = 0) {
+  const factoryAddress = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
+  return Promise.all([
+    getTokenPrices(
+      "ethereum",
+      "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac",
+      undefined,
+      timestamp
+    )
+    // getTokenPrices("polygon", factoryAddress, undefined, timestamp),
+    // getTokenPrices("arbitrum", factoryAddress, undefined, timestamp),
+    // getTokenPrices("avax", factoryAddress, undefined, timestamp),
+    // getTokenPrices("moonriver", factoryAddress, undefined, timestamp),
+    // getTokenPrices("fantom", factoryAddress, undefined, timestamp),
+    // getTokenPrices("bsc", factoryAddress, undefined, timestamp),
+    // getTokenPrices("xdai", factoryAddress, undefined, timestamp),
+    // getTokenPrices("harmony", factoryAddress, undefined, timestamp)
+  ]);
+}
 export function pancakeswap(timestamp: number = 0) {
   return getTokenPrices(
     "bsc",

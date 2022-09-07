@@ -10,10 +10,7 @@ import { Write, Read } from "../../utils/dbInterfaces";
 import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
-import { utils, Contract, providers, BigNumber } from "ethers";
-import { ParamType } from "ethers/lib/utils";
-import { PromisePool } from "@supercharge/promise-pool";
-import { getCurrentUnixTimestamp } from "../../../utils/date";
+import { BigNumber } from "ethers";
 
 async function fetchUniV2Markets(
   chain: string,

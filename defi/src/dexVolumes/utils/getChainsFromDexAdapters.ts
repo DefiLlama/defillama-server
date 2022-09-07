@@ -43,7 +43,7 @@ export const getChainByProtocolVersion = (adapterVolume: string) => {
     return chainsAcc
 }
 
-const formatChain = (chain: string) => {
+export const formatChain = (chain: string) => {
         const c = chain === 'avax' ? "avalanche" : chain
         return c[0].toUpperCase() + c.slice(1)
 }

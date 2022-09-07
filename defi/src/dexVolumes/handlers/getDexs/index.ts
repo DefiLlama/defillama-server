@@ -5,7 +5,7 @@ import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
 import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
-import { getChainByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
+import getAllChainsFromDexAdapters, { formatChain, getChainByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart: IChartData,
@@ -48,6 +48,7 @@ export const handler = async (): Promise<IResponse> => {
                 change_1d: calcNdChange(volumes, 1),
                 change_7d: calcNdChange(volumes, 7),
                 change_1m: calcNdChange(volumes, 30),
+                chains: getAllChainsFromDexAdapters([adapter.volumeAdapter]).map(formatChain),
                 protocolVersions: protocolVersionsSummary ? Object.entries(protocolVersionsSummary).reduce((acc, [protName, summary]) => {
                     acc[protName] = {
                         ...summary,

@@ -14414,7 +14414,7 @@ listedAt: 1650804679
   category: "Lending",
   chains: ["Ethereum"],
   oracles: [],
-  forkedFrom: [],
+  forkedFrom: ["Compound"],
   module: "damm-finance/index.js",
   twitter: "dammfinance",
   audit_links: ["https://docs.google.com/document/d/1ScxXxRSXsIYy-ERAYw4qC-L-GlvXuY1_M8FmxScZi3Q/edit"],

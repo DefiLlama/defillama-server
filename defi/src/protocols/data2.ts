@@ -14423,6 +14423,28 @@ listedAt: 1650804679
   audit_links: ["https://docs.google.com/document/d/1ScxXxRSXsIYy-ERAYw4qC-L-GlvXuY1_M8FmxScZi3Q/edit"],
   listedAt: 1662533692
 },
+{
+  id: "2072",
+  name: "Polyo Exchange",
+  address: null,
+  symbol: "-",
+  url: "https://polyo.exchange/",
+  description: "POLYO is the safest multichain #Stableswap with novel single-sided liquidity provision and low slippage",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/polyo-exchange.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "polyo-exchange/index.js",
+  twitter: "PolyOpt",
+  audit_links: ["https://github.com/AnalytixAudit/Solidity/blob/main/Audit_POLYO.pdf"],
+  listedAt: 1662538079
+},
 ]
 
 

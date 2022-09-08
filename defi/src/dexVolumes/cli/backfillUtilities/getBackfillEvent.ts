@@ -61,7 +61,10 @@ export default async () => {
         if (startTimestamp > 0) startTimestamp *= 1000
         else startTimestamp = new Date(Date.UTC(2018, 0, 1)).getTime()
     }
-    const startDate = new Date(startTimestamp)
+    // For specific ranges (remember months starts with 0)
+     const startDate = new Date(Date.UTC(2022, 7, 5))
+    // For new adapters
+    // const startDate = new Date(startTimestamp)
     console.info("Starting timestamp", startTimestamp, "->", startDate)
     const endDate = new Date()
     const dates: Date[] = []

@@ -5090,14 +5090,15 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/frax.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "frax-share",
-    cmcId: "6953",
+    gecko_id: null,
+    cmcId: null,
     category: "Algo-Stables",
     chains: ["Ethereum"],
     module: "fraxfinance/index.js",
     twitter: "fraxfinance",
     audit_links: ["https://www.certik.org/projects/fraxfinance"],
     oracles: ["Chainlink"],
+    parentProtocol: "Frax Finance"
   },
 /*
   {
@@ -9425,7 +9426,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Smart Tests for Smart Contracts",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ante-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -9433,6 +9434,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "ante/index.js",
     twitter: "AnteFinance",
+    audit_links: ["https://docs.ante.finance/antev05/about/security#audits"],
     oracles: [],
   },
   // {
@@ -10375,7 +10377,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "631",
     name: "Beanstalk",
-    address: "0xdc59ac4fefa32293a95889dc396682858d52e5db",
+    address: "0xBEA0000029AD1c77D3d5D23Ba2D8893dB9d1Efab",
     symbol: "BEAN",
     url: "https://bean.money",
     description: "Beanstalk is a decentralized, credit-based algorithmic stablecoin protocol built on Ethereum.",
@@ -10389,7 +10391,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "bean/index.js",
     twitter: "BeanstalkFarms",
-    audit_links: ["https://omniscia.io/beanstalk-core-protocol"],
+    audit_links: [
+      "https://omniscia.io/beanstalk-core-protocol",
+      "https://4ra72bs63w2i5qo5nm4zpz2tpmzbenpibyhramhjkhog7mtfdvxq.arweave.net/5EH9Bl7dtI7B3Ws5l-dTezISNegODxAw6VHcb7JlHW8",
+      "https://2adxrezjguhnrdzzvzwmcc52v4kdhtpw3vjk4737dbsobmwo6c6q.arweave.net/0Ad4kyk1DtiPOa5swQu6rxQzzfbdUq5_fxhk4LLO8L0"
+    ],
     oracles: ["TWAP"],
   },
   {
@@ -22434,7 +22440,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   name: "Proxy",
   address: "polygon:0xab3d689c22a2bb821f50a4ff0f21a7980dcb8591",
   symbol: "PRXY",
-  url: "https://prxy.fi",
+  url: "https://btcproxy.io/",
   description: "Proxy Finance (PRXY) offers a Bitcoin Yield Strategies utilizing DeFi 2.0 including (3,3) Staking, (1,1) Bonding and (2,2) Programs for other assets. The Proxy Finance network consists of BTCpx token which is a BTC Wrapper as well as the PRXY Governance Token",
   chain: "Polygon",
   logo: `${baseIconsUrl}/proxy.png`,

@@ -11,7 +11,20 @@ export interface VolumeHistoryItem {
     timestamp: number;
 }
 
-export interface IHandlerBodyResponse extends Dex {
+export interface IHandlerBodyResponse extends Pick<Dex,
+    "name"
+    | "logo"
+    | "address"
+    | "url"
+    | "description"
+    | "audits"
+    | "category"
+    | "twitter"
+    | "audit_links"
+    | "volumeAdapter"
+    | "forkedFrom"
+    | "gecko_id"
+> {
     volumeHistory: VolumeHistoryItem[] | null
     total1dVolume: number | null
     change1dVolume: number | null
@@ -36,7 +49,18 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         const yesterdaysTimestamp = (Date.now() / 1000) - ONE_DAY_IN_SECONDS;
         const yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === getTimestampAtStartOfDayUTC(yesterdaysTimestamp))?.data
         const ddr: IHandlerBodyResponse = {
-            ...dexData,
+            name: dexData.name,
+            logo: dexData.logo,
+            address: dexData.address,
+            url: dexData.url,
+            description: dexData.description,
+            audits: dexData.audits,
+            category: dexData.category,
+            twitter: dexData.twitter,
+            audit_links: dexData.audit_links,
+            volumeAdapter: dexData.volumeAdapter,
+            forkedFrom: dexData.forkedFrom,
+            gecko_id: dexData.gecko_id,
             volumeHistory: volumes.map<VolumeHistoryItem>(v => ({
                 dailyVolume: v.data,
                 timestamp: v.sk
@@ -48,7 +72,18 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     } catch (error) {
         console.error(error)
         const ddr: IHandlerBodyResponse = {
-            ...dexData,
+            name: dexData.name,
+            logo: dexData.logo,
+            address: dexData.address,
+            url: dexData.url,
+            description: dexData.description,
+            audits: dexData.audits,
+            category: dexData.category,
+            twitter: dexData.twitter,
+            audit_links: dexData.audit_links,
+            volumeAdapter: dexData.volumeAdapter,
+            forkedFrom: dexData.forkedFrom,
+            gecko_id: dexData.gecko_id,
             volumeHistory: null,
             total1dVolume: null,
             change1dVolume: null

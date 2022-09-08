@@ -186,6 +186,30 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Spirit_Swap",
   },
+  {
+    id: "Interlay",
+    name: "Interlay",
+    url: "https://interlay.io/",
+    description:
+      "Fully trustless and decentralized Bitcoin bridge and BTC DeFi hub",
+    logo: `${baseIconsUrl}/interlay.png`,
+    gecko_id: "interlay",
+    cmcId: "20366",
+    chains: [],
+    twitter: "InterlayHQ",
+  },
+  {
+    id: "Frax Finance",
+    name: "Frax Finance",
+    url: "https://frax.finance/",
+    description:
+      "Inventors of the fractional stablecoin. $FRAX is the 1st stablecoin with parts backed & parts algorithmic",
+    logo: `${baseIconsUrl}/frax.jpg`,
+    gecko_id: "frax-share",
+    cmcId: "6953",
+    chains: [],
+    twitter: "fraxfinance",
+  },
 ];
 
 export default parentProtocols;

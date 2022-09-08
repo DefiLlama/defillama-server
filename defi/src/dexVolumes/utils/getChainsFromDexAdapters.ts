@@ -31,7 +31,8 @@ export const getChainByProtocolVersion = (adapterVolume: string) => {
     } else if ("breakdown" in dexAdapter) {
         for (const [protVersion, brokenDownDex] of Object.entries(dexAdapter.breakdown)) {
             const chains = Object.keys(brokenDownDex) as Chain[]
-            for (const chain of chains) {
+            for (const c of chains) {
+                const chain = formatChain(c)
                 if (chainsAcc[protVersion]) {
                     if (!chainsAcc[protVersion].includes(chain)) chainsAcc[protVersion].push(chain)
                 }
@@ -40,6 +41,11 @@ export const getChainByProtocolVersion = (adapterVolume: string) => {
         }
     } else console.error("Invalid adapter")
     return chainsAcc
+}
+
+export const formatChain = (chain: string) => {
+        const c = chain === 'avax' ? "avalanche" : chain
+        return c[0].toUpperCase() + c.slice(1)
 }
 
 export default getAllChainsFromDexAdapters

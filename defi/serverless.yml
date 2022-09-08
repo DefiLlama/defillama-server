@@ -339,6 +339,11 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 0 * * ? *)
+  monitorDexResponse:
+    handler: src/monitorDexResponse.default
+    timeout: 900
+    events:
+      - schedule: rate(1 hour)
   getStats:
     handler: src/dexVolumes/handlers/getStats/index.default
     timeout: 90

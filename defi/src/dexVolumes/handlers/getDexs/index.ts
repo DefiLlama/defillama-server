@@ -13,9 +13,10 @@ export interface IGetDexsResponseBody extends IGeneralStats {
     dexs: Omit<VolumeSummaryDex, 'volumes'>[]
 }
 
-export interface VolumeSummaryDex extends Dex {
+export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
     totalVolume24h: number | null
     volume24hBreakdown: IRecordVolumeData | null
+    volumeAdapter?: Dex['volumeAdapter']
     volumes?: Volume[]
     change_1d: number | null
     change_7d: number | null
@@ -42,7 +43,8 @@ export const handler = async (): Promise<IResponse> => {
             const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter)
             const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayTimestamp)
             return {
-                ...adapter,
+                name: adapter.name,
+                volumeAdapter: adapter.volumeAdapter,
                 totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
                 volume24hBreakdown: prevDayVolume ? prevDayVolume.data : null,
                 volumes: volumes,
@@ -61,7 +63,8 @@ export const handler = async (): Promise<IResponse> => {
         } catch (error) {
             console.error(error)
             return {
-                ...adapter,
+                name: adapter.name,
+                volumeAdapter: adapter.volumeAdapter,
                 totalVolume24h: null,
                 volume24hBreakdown: null,
                 yesterdayTotalVolume: null,
@@ -84,9 +87,15 @@ export const handler = async (): Promise<IResponse> => {
 };
 
 const substractSubsetVolumes = (dex: VolumeSummaryDex, _index: number, dexs: VolumeSummaryDex[]): VolumeSummaryDex => {
-    const includedVolume = config[dex.volumeAdapter].includedVolume
+    const volumeAdapter = dex.volumeAdapter
+    if (!volumeAdapter) throw Error("No volumeAdapter found")
+    const includedVolume = config[volumeAdapter].includedVolume
     if (includedVolume && includedVolume.length > 0) {
-        const includedSummaries = dexs.filter(dex => includedVolume.includes(dex.volumeAdapter))
+        const includedSummaries = dexs.filter(dex => {
+            const volumeAdapter = dex.volumeAdapter
+            if (!volumeAdapter) throw Error("No volumeAdapter found")
+            includedVolume.includes(volumeAdapter)
+        })
         let computedSummary: VolumeSummaryDex = dex
         for (const includedSummary of includedSummaries) {
             const newSum = getSumAllDexsToday([computedSummary], includedSummary)
@@ -104,8 +113,11 @@ const substractSubsetVolumes = (dex: VolumeSummaryDex, _index: number, dexs: Vol
         return dex
 }
 
-const removeVolumesObject = (dex: VolumeSummaryDex) => {
+type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
+const removeVolumesObject = (dex: WithOptional<VolumeSummaryDex, 'volumeAdapter'>) => {
     delete dex['volumes']
+    delete dex['volumeAdapter']
     return dex
 }
 

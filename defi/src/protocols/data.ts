@@ -22439,7 +22439,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   name: "Proxy",
   address: "polygon:0xab3d689c22a2bb821f50a4ff0f21a7980dcb8591",
   symbol: "PRXY",
-  url: "https://prxy.fi",
+  url: "https://btcproxy.io/",
   description: "Proxy Finance (PRXY) offers a Bitcoin Yield Strategies utilizing DeFi 2.0 including (3,3) Staking, (1,1) Bonding and (2,2) Programs for other assets. The Proxy Finance network consists of BTCpx token which is a BTC Wrapper as well as the PRXY Governance Token",
   chain: "Polygon",
   logo: `${baseIconsUrl}/proxy.png`,

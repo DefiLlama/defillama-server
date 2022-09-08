@@ -8664,7 +8664,7 @@ listedAt: 1650804679
   description: "Phuture is a decentralised crypto index platform that simplifies investments through automated, themed index funds on Ethereum.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/phuture.png`,
-  audits: "3",
+  audits: "2",
   audit_note: null,
   gecko_id: "phuture",
   cmcId: "9423",

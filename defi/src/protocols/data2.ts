@@ -14526,7 +14526,7 @@ listedAt: 1650804679
   chains: ["Ethereum"],
   oracles: ["Chainlink"],
   forkedFrom: [],
-  module: "frax-lending/index.js",
+  module: "fraxlend/index.js",
   twitter: "fraxfinance",
   parentProtocol: "Frax Finance",
   listedAt: 1662603345

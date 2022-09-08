@@ -14531,6 +14531,28 @@ listedAt: 1650804679
   parentProtocol: "Frax Finance",
   listedAt: 1662603346
 },
+{
+  id: "2077",
+  name: "Corgi Finance",
+  address: "dogechain:0xA8Fc6EF0B48557596D4a75FF85a288A982606707",
+  symbol: "COG",
+  url: "https://www.corgi.finance",
+  description: "Corgi finance is a Yield Aggregator (Vault) that provides optimised yields for users.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/corgi-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: [],
+  module: "corgi/index.js",
+  twitter: "Corgifinance_",
+  audit_links: ["https://github.com/solidproof/projects/tree/main/Corgi_Finance"],
+  listedAt: 1662635941
+},
 ]
 
 

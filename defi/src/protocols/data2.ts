@@ -14529,7 +14529,7 @@ listedAt: 1650804679
   module: "fraxlend/index.js",
   twitter: "fraxfinance",
   parentProtocol: "Frax Finance",
-  listedAt: 1662603345
+  listedAt: 1662603346
 },
 ]
 

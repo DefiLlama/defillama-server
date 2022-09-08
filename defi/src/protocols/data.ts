@@ -5090,14 +5090,15 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/frax.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "frax-share",
-    cmcId: "6953",
+    gecko_id: null,
+    cmcId: null,
     category: "Algo-Stables",
     chains: ["Ethereum"],
     module: "fraxfinance/index.js",
     twitter: "fraxfinance",
     audit_links: ["https://www.certik.org/projects/fraxfinance"],
     oracles: ["Chainlink"],
+    parentProtocol: "Frax Finance"
   },
 /*
   {

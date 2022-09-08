@@ -198,6 +198,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "InterlayHQ",
   },
+  {
+    id: "Frax Finance",
+    name: "Frax Finance",
+    url: "https://frax.finance/",
+    description:
+      "Inventors of the fractional stablecoin. $FRAX is the 1st stablecoin with parts backed & parts algorithmic",
+    logo: `${baseIconsUrl}/frax.jpg`,
+    gecko_id: "frax-share",
+    cmcId: "6953",
+    chains: [],
+    twitter: "fraxfinance",
+  },
 ];
 
 export default parentProtocols;

@@ -1,5 +1,5 @@
 import { multiCall } from "@defillama/sdk/build/abi/index";
-import { requery } from "./sdk";
+import { requery as requeryF } from "./sdk";
 export async function getTokenInfo(
   chain: string,
   targets: string[],
@@ -50,12 +50,13 @@ interface Lp {
 export async function getLPInfo(
   chain: string,
   targets: Lp[],
-  block: number | undefined
+  block: number | undefined,
+  requery: boolean = true
 ) {
   const [
     supplies,
     lpDecimals,
-    lpSymbol,
+    lpSymbols,
     underlyingDecimalAs,
     underlyingDecimalBs,
     symbolAs,
@@ -67,7 +68,7 @@ export async function getLPInfo(
       })),
       chain: chain as any,
       abi: "erc20:totalSupply",
-      requery: true,
+      requery,
       block
     }),
     multiCall({
@@ -76,7 +77,7 @@ export async function getLPInfo(
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery: true,
+      requery,
       block
     }),
     multiCall({
@@ -85,7 +86,7 @@ export async function getLPInfo(
       })),
       abi: "erc20:symbol",
       chain: chain as any,
-      requery: true,
+      requery,
       block
     }),
     multiCall({
@@ -94,7 +95,7 @@ export async function getLPInfo(
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery: true,
+      requery,
       block
     }),
     multiCall({
@@ -103,7 +104,7 @@ export async function getLPInfo(
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery: true,
+      requery,
       block
     }),
     multiCall({
@@ -123,8 +124,15 @@ export async function getLPInfo(
       block
     })
   ]);
-  await requery(symbolBs, chain, "erc20:symbol", block);
-  await requery(symbolAs, chain, "erc20:symbol", block);
+  if (requery == false) {
+    await requeryF(supplies, chain, "erc20:totalSupply", block);
+    await requeryF(lpDecimals, chain, "erc20:decimals", block);
+    await requeryF(lpSymbols, chain, "erc20:symbol", block);
+    await requeryF(underlyingDecimalAs, chain, "erc20:decimals", block);
+    await requeryF(underlyingDecimalBs, chain, "erc20:decimals", block);
+    await requeryF(symbolBs, chain, "erc20:symbol", block);
+    await requeryF(symbolAs, chain, "erc20:symbol", block);
+  }
   return {
     supplies: supplies.output,
     lpDecimals: lpDecimals.output,
@@ -132,7 +140,7 @@ export async function getLPInfo(
     underlyingDecimalBs: underlyingDecimalBs.output,
     symbolAs: symbolAs.output,
     symbolBs: symbolBs.output,
-    lpSymbol: lpSymbol.output
+    lpSymbols: lpSymbols.output
   };
 }
 export async function listUnknownTokens(

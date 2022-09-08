@@ -26,7 +26,6 @@ async function fetchUniV2Markets(
     })
   ).output;
 
-  console.log(pairsLength);
   const pairNums: number[] = Array.from(Array(Number(pairsLength)).keys());
 
   const pairs: MultiCallResults = await multiCall({
@@ -202,7 +201,12 @@ export default async function getPairPrices(
     tokenPrices
   );
 
-  const tokenInfos: TokenInfos = await getLPInfo(chain, priceableLPs, block);
+  const tokenInfos: TokenInfos = await getLPInfo(
+    chain,
+    priceableLPs,
+    block,
+    false
+  );
 
   const writes: Write[] = [];
   // await unknownTokens(
@@ -226,6 +230,19 @@ async function lps(
   tokenInfos: TokenInfos
 ) {
   priceableLPs.map(async (l: any, i: number) => {
+    if (
+      [
+        tokenInfos.lpDecimals[i].output,
+        tokenInfos.lpSymbols[i].output,
+        tokenInfos.supplies[i].output,
+        tokenInfos.symbolAs[i].output,
+        tokenInfos.symbolBs[i].output,
+        tokenInfos.underlyingDecimalAs[i].output,
+        tokenInfos.underlyingDecimalBs[i].output
+      ].some((e) => e == null || e == undefined)
+    ) {
+      return;
+    }
     const coinData: Read = tokenPrices.filter((p: Read) =>
       p.dbEntry.PK.includes(l.primaryUnderlying.toLowerCase())
     )[0];
@@ -242,7 +259,7 @@ async function lps(
       10 ** tokenInfos.underlyingDecimalAs[i].output;
     const lpPrice: number = value / supply;
 
-    const symbol: string = `${tokenInfos.symbolAs[i].output}-${tokenInfos.symbolBs[i].output}-${tokenInfos.lpSymbol[i].output}`;
+    const symbol: string = `${tokenInfos.symbolAs[i].output}-${tokenInfos.symbolBs[i].output}-${tokenInfos.lpSymbols[i].output}`;
 
     let confidence: number =
       coinData.redirect.length != 0

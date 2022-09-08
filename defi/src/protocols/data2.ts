@@ -14511,7 +14511,7 @@ listedAt: 1650804679
 },
 {
   id: "2076",
-  name: "Frax Lending",
+  name: "Fraxlend",
   address: null,
   symbol: "-",
   url: "https://app.frax.finance/fraxlend/available-pairs",

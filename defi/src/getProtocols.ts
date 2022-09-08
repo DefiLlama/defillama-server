@@ -10,7 +10,7 @@ import {
   extraSections,
   transformNewChainName,
 } from "./utils/normalizeChain";
-import dynamodb, { TableName } from "./utils/shared/dynamodb";
+import { batchGet } from "./utils/shared/dynamodb";
 import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
 
@@ -23,27 +23,17 @@ export function getPercentChange(previous: number, current: number) {
 }
 
 export async function craftProtocolsResponse(useNewChainNames: boolean) {
-  const coinMarketsPromises = [];
-  for (let i = 0; i < protocols.length; i += 100) {
-    coinMarketsPromises.push(
-      dynamodb.batchGet(
-        protocols
-          .slice(i, i + 100)
-          .filter((protocol) => typeof protocol.gecko_id === "string")
-          .map((protocol) => ({
-            PK: `asset#${protocol.gecko_id}`,
-            SK: 0,
-          }))
-      )
-    );
-  }
-
-  const coinMarkets = Promise.all(coinMarketsPromises).then((results) =>
-    results.reduce((p, c) => {
-      c.Responses![TableName].forEach((t) => (p[t.PK] = t));
+  const coinMarkets = (await batchGet(
+    protocols
+    .filter((protocol) => typeof protocol.gecko_id === "string")
+    .map((protocol) => ({
+      PK: `asset#${protocol.gecko_id}`,
+      SK: 0,
+    }))))
+  .reduce((p, c) => {
+      p[c.PK] = c;
       return p;
-    }, {} as any)
-  );
+    }, {} as any);
 
   const response = (
     await Promise.all(

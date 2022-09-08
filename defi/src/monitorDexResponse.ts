@@ -35,7 +35,7 @@ const handler = async (event?: IHandlerEvent) => {
     }
   }
   else {
-    const protocolIndexes = [volumeAdapters.findIndex(va => va.volumeAdapter === 'bancor')]
+    const protocolIndexes = [volumeAdapters.findIndex(va => va.volumeAdapter === 'bancor'), volumeAdapters.findIndex(va => va.volumeAdapter === 'balancer')]
     await invokeLambdas(protocolIndexes)
   }
 };

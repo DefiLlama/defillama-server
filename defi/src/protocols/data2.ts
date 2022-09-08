@@ -14269,6 +14269,7 @@ listedAt: 1650804679
   listedAt: 1662456730
 },
 {
+  id: "2065",
   name: "Chocodoge",
   address: "dogechain:0x06AcD60e5B1CD9aB7E4beBfaA1233D3cCe97A08F",
   symbol: "USCD",
@@ -14566,13 +14567,13 @@ listedAt: 1650804679
   gecko_id: "giveth",
   cmcId: "17207",
   category: "Yield",
-  chains: ["Ethereum", "Gnosis"],
+  chains: ["Ethereum", "xDai"],
   oracles: [],
   forkedFrom: [],
   module: "giveth/index.js",
   twitter: "Givethio",
   audit_links: ["https://github.com/lastperson/code-reviews/blob/main/Giveth%20GIVeconomy%20Contracts%20Code%20Review.pdf"],
-  openSource: true
+  listedAt: 1662676779
 }
 ]
 

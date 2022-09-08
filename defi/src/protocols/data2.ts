@@ -9143,7 +9143,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["SXnetwork"],
   oracles: [],
-  forkedFrom: ["SushiSwap"],
+  forkedFrom: ["Uniswap"],
   module: "sharkswap/index.js",
   twitter: "SharkSwap_xyz",
   listedAt: 1655466324

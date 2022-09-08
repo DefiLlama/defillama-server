@@ -20,5 +20,5 @@ export interface TokenInfos {
   underlyingDecimalBs: Result[];
   symbolAs: Result[];
   symbolBs: Result[];
-  lpSymbol: Result[];
+  lpSymbols: Result[];
 }

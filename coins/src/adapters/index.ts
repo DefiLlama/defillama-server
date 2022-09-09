@@ -27,14 +27,14 @@ export default {
   synthetix: require("./other/index"),
   glp: require("./other/index"),
   uniswap: require("./markets/uniswap/index"),
-  sushiswap: require("./markets/uniswap/index")
-  // traderJoe: require("./markets/uniswap/index"),
-  // vvsFinance: require("./markets/uniswap/index"),
-  // quickswap: require("./markets/uniswap/index"),
-  // biswap: require("./markets/uniswap/index"),
-  // mmFinance: require("./markets/uniswap/index"),
-  // trisolaris: require("./markets/uniswap/index"),
-  // pangolin: require("./markets/uniswap/index"),
-  // spiritswap: require("./markets/uniswap/index"),
-  // pancakeswap: require("./markets/uniswap/index")
+  sushiswap: require("./markets/uniswap/index"),
+  traderJoe: require("./markets/uniswap/index"),
+  vvsFinance: require("./markets/uniswap/index"),
+  quickswap: require("./markets/uniswap/index"),
+  biswap: require("./markets/uniswap/index"),
+  mmFinance: require("./markets/uniswap/index"),
+  trisolaris: require("./markets/uniswap/index"),
+  pangolin: require("./markets/uniswap/index"),
+  spiritswap: require("./markets/uniswap/index"),
+  pancakeswap: require("./markets/uniswap/index")
 };

@@ -58,6 +58,9 @@ export default {
     },
     "mooniswap": {
         enabled: true
+    },
+    "dodo": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

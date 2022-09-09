@@ -33,8 +33,8 @@ export default {
   quickswap: require("./markets/uniswap/index"),
   biswap: require("./markets/uniswap/index"),
   mmFinance: require("./markets/uniswap/index"),
-  trisolaris: require("./markets/uniswap/index"),
-  pangolin: require("./markets/uniswap/index"),
+  //trisolaris: require("./markets/uniswap/index"),
+  //pangolin: require("./markets/uniswap/index"),
   spiritswap: require("./markets/uniswap/index"),
   pancakeswap: require("./markets/uniswap/index")
 };

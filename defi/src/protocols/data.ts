@@ -1536,7 +1536,7 @@ const data: Protocol[] = [
     symbol: "LDO",
     url: "https://lido.fi/",
     description:
-      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana, Terra, Kusama & Polkadot.",
+      "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana, Polygon, Terra, Kusama & Polkadot.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/lido.png`,
     audits: "2",

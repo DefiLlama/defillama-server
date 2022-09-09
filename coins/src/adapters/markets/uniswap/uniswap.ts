@@ -258,6 +258,7 @@ async function lps(
       (underlyingPrice * 2 * l.primaryBalance) /
       10 ** tokenInfos.underlyingDecimalAs[i].output;
     const lpPrice: number = value / supply;
+    if (isNaN(lpPrice)) return;
 
     const symbol: string = `${tokenInfos.symbolAs[i].output}-${tokenInfos.symbolBs[i].output}-${tokenInfos.lpSymbols[i].output}`;
 

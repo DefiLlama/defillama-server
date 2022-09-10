@@ -242,6 +242,7 @@ const data: Protocol[] = [
     address: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
     symbol: "MKR",
     url: "https://makerdao.com/",
+    referralUrl: "https://oasis.app/?ref=0x08a3c2A819E3de7ACa384c798269B3Ce1CD0e437",
     description:
       "Builders of Dai, a digital currency that can be used by anyone, anywhere.\r\n",
     chain: "Ethereum",
@@ -800,6 +801,7 @@ const data: Protocol[] = [
     address: "0x92d6c1e31e14520e676a687f0a93788b716beff5",
     symbol: "DYDX",
     url: "https://dydx.exchange/",
+    referralUrl: "https://dydx.exchange/r/NZPYBPNN",
     description:
       "The most powerful open trading platform for crypto assets. Margin trade, borrow, and lend cryptocurrency.\r\n",
     chain: "Ethereum",
@@ -1535,6 +1537,7 @@ const data: Protocol[] = [
     address: "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
     symbol: "LDO",
     url: "https://lido.fi/",
+    referralUrl: "https://stake.lido.fi/?ref=0x08a3c2A819E3de7ACa384c798269B3Ce1CD0e437",
     description:
       "Liquidity for staked assets. Daily rewards, no lock ups. Available for Ethereum, Solana, Polygon, Terra, Kusama & Polkadot.",
     chain: "Ethereum",
@@ -1659,6 +1662,7 @@ const data: Protocol[] = [
     address: "0x111111111117dc0aa78b770fa6a738034120c302",
     symbol: "1INCH",
     url: "https://1inch.io",
+    referralUrl: "https://app.1inch.io/#/r/0x71a15ac12ee91bf7c83d08506f3a3588143898b5",
     description:
       "The 1inch Network unites decentralized protocols whose synergy enables the most lucrative, fastest and protected operations in the DeFi space.",
     chain: "Ethereum",
@@ -4634,6 +4638,7 @@ const data: Protocol[] = [
     address: "arbitrum:0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
     symbol: "GMX",
     url: "https://gmx.io/",
+    referralUrl: "https://gmx.io/#/?ref=defillama",
     description:
       "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
     chain: "Binance",
@@ -5148,6 +5153,7 @@ const data: Protocol[] = [
     address: "0xbc396689893d065f41bc2c6ecbee5e0085233447",
     symbol: "PERP",
     url: "https://app.perp.com",
+    referralUrl: "https://app.perp.com?code=defillama",
     description:
       "Decentralized Perpetual Contracts for Every Asset.",
     chain: "xDai",

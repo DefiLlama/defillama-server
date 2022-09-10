@@ -8,7 +8,7 @@ export default {
         enabled: true
     },
     "bancor": {
-        enabled: true
+        enabled: false
     },
     "champagneswap": {
         enabled: false
@@ -60,7 +60,7 @@ export default {
         enabled: true
     },
     "dodo": {
-        enabled: true
+        enabled: false
     }
 } as {
     [name: string]: IVolumesConfig

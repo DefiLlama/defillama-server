@@ -32,6 +32,7 @@ const handler = async (_event: any) => {
           symbol: protocol.symbol,
           logo: protocol.logo,
           url: protocol.url,
+          referralUrl: protocol.referralUrl,
           tvl: protocolTvls.tvl,
           tvlPrevDay: protocolTvls.tvlPrevDay,
           tvlPrevWeek: protocolTvls.tvlPrevWeek,

@@ -11976,6 +11976,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://hubble.exchange/",
+  referralUrl: "https://app.hubble.exchange/referral?code=defillama",
   description: "Hubble Exchange is decentralized Multi-collateral/Cross-Margin Perpetual Futures on Avalanche",
   chain: "Avalanche",
   logo: `${baseIconsUrl}/hubble-exchange.png`,

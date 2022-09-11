@@ -54,7 +54,7 @@ export async function wrapResponseOrRedirect(response: any) {
     const filename = `protocol-${response.name}.json`;
     await storeDataset(filename, jsonData, "application/json");
 
-    return buildRedirect(filename);
+    return buildRedirect(filename, 10*60);
   } else {
     return successResponse(response, 10 * 60); // 10 mins cache
   }

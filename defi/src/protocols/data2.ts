@@ -13559,7 +13559,7 @@ listedAt: 1650804679
   address: "ultron:0x3a4F06431457de873B588846d139EC0d86275d54",
   symbol: "ULX",
   url: "https://ultronswap.com",
-  description: "Ultron Foundation is an EVM-compatible layer-1 blockchain system supported by Solidy Finance, with a fully functioning DeFi ecosystem that includes a native coin and dApps. The project was initiated in 2020 with a multi-cultural team of blockchain professionals developing internal products",
+  description: "Ultron Foundation is an EVM-compatible layer-1 blockchain system supported by Solidity Finance, with a fully functioning DeFi ecosystem that includes a native coin and dApps. The project was initiated in 2020 with a multi-cultural team of blockchain professionals developing internal products",
   chain: "Ultron",
   logo: `${baseIconsUrl}/ultronswap.png`,
   audits: "0",

@@ -6,11 +6,7 @@ import {
 } from "../../utils/database";
 import { getLPInfo } from "../../utils/erc20";
 import { Write, Read } from "../../utils/dbInterfaces";
-import {
-  MultiCallResults,
-  TokenInfos,
-  Result
-} from "../../utils/sdkInterfaces";
+import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
 import { BigNumber } from "ethers";
@@ -29,7 +25,7 @@ async function fetchUniV2Markets(
     })
   ).output;
 
-  const pairNums: number[] = Array.from(Array(Number(1000)).keys());
+  const pairNums: number[] = Array.from(Array(Number(pairsLength)).keys());
 
   const pairs: MultiCallResults = await multiCall({
     abi: abi.allPairs,
@@ -157,75 +153,6 @@ async function findPriceableLPs(
   }
   return priceableLPs;
 }
-export default async function getPairPrices(
-  chain: string,
-  factory: string,
-  router: string | undefined,
-  subgraph: string | undefined = undefined,
-  timestamp: number
-) {
-  let token0s;
-  let token1s;
-  let reserves;
-  let pairAddresses: string[];
-
-  const block: number | undefined = await getBlock(chain, timestamp);
-  if (chain == "bsc" && subgraph == undefined) {
-    return;
-  } else if (chain == "bsc" && subgraph != undefined) {
-    pairAddresses = await fetchUniV2MarketsFromSubgraph(subgraph, timestamp);
-  } else {
-    pairAddresses = await fetchUniV2Markets(chain, factory, block);
-  }
-
-  [token0s, token1s, reserves] = await fetchUniV2MarketData(
-    chain,
-    pairAddresses,
-    block
-  );
-
-  const underlyingTokens = [
-    ...new Set<string>([
-      ...token0s.output.map((t) => t.output.toLowerCase()),
-      ...token1s.output.map((t) => t.output.toLowerCase())
-    ])
-  ];
-
-  const tokenPrices = await getTokenAndRedirectData(
-    Array.from(underlyingTokens),
-    chain,
-    timestamp
-  );
-
-  const priceableLPs = await findPriceableLPs(
-    pairAddresses,
-    token0s,
-    token1s,
-    reserves,
-    tokenPrices
-  );
-
-  const tokenInfos: TokenInfos = await getLPInfo(
-    chain,
-    priceableLPs,
-    block,
-    false
-  );
-
-  const writes: Write[] = [];
-  await unknownTokens(
-    writes,
-    chain,
-    router,
-    timestamp,
-    priceableLPs,
-    tokenPrices,
-    tokenInfos
-  );
-  //await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
-
-  return writes;
-}
 async function lps(
   writes: Write[],
   chain: string,
@@ -305,24 +232,24 @@ async function unknownTokens(
       p.dbEntry.PK.includes(l.primaryUnderlying.toLowerCase())
     )[0];
 
-    const i = priceableLPs.indexOf(l);
+    const i: number = priceableLPs.indexOf(l);
     let underlyingPrice: number =
       coinData.redirect.length != 0
         ? coinData.redirect[0].price
         : coinData.dbEntry.price;
 
-    const sideValue =
+    const sideValue: number =
       (underlyingPrice * l.primaryBalance) /
       10 ** tokenInfos.underlyingDecimalAs[i].output;
 
-    const tokenValue =
+    const tokenValue: number =
       (sideValue * 10 ** tokenInfos.underlyingDecimalBs[i].output) /
       l.secondaryBalance;
 
     return tokenValue;
   });
 
-  const confidences = await getConfidenceScores(
+  const confidences: { [address: string]: number } = await getConfidenceScores(
     lpsWithUnknown,
     priceableLPs,
     router,
@@ -333,7 +260,7 @@ async function unknownTokens(
 
   lpsWithUnknown.map((l: any, i: number) => {
     if (isNaN(confidences[l.secondaryUnderlying.toLowerCase()])) return;
-    const j = priceableLPs.indexOf(l);
+    const j: number = priceableLPs.indexOf(l);
 
     addToDBWritesList(
       writes,
@@ -353,25 +280,28 @@ function translateQty(
   decimals: number,
   tokenValue: number
 ) {
-  const scientificNotation = (
+  const scientificNotation: string = (
     (usdSwapSize * 10 ** decimals) /
     tokenValue
   ).toString();
   if (scientificNotation.indexOf("e") == -1) {
     try {
-      const qty = BigNumber.from(parseInt(scientificNotation));
+      const qty: BigNumber = BigNumber.from(parseInt(scientificNotation));
       return qty;
     } catch {
       return;
     }
   }
-  const power = scientificNotation.substring(
+  const power: string = scientificNotation.substring(
     scientificNotation.indexOf("e") + 2
   );
-  const root = scientificNotation.substring(0, scientificNotation.indexOf("e"));
+  const root: string = scientificNotation.substring(
+    0,
+    scientificNotation.indexOf("e")
+  );
 
-  const zerosToAppend = parseInt(power) - root.length + 2;
-  let zerosString = "";
+  const zerosToAppend: number = parseInt(power) - root.length + 2;
+  let zerosString: string = "";
   for (let i = 0; i < zerosToAppend; i++) {
     zerosString = `${zerosString}0`;
   }
@@ -386,8 +316,8 @@ async function getConfidenceScores(
   tokenInfos: TokenInfos,
   chain: string
 ) {
-  const usdSwapSize = 5 * 10 ** 5;
-  const ratio = 10000;
+  const usdSwapSize: number = 5 * 10 ** 5;
+  const ratio: number = 10000;
   const calls = lpsWithUnknown
     .map((l: any, i: number) => {
       const j = priceableLPs.indexOf(l);
@@ -415,25 +345,89 @@ async function getConfidenceScores(
     })
     .flat();
 
-  const { output: swapResults } = await multiCall({
+  const { output: swapResults }: MultiCallResults = await multiCall({
     abi: abi.getAmountsOut,
     chain: chain as any,
     calls: calls as any
   });
 
-  const confidences: any = {};
+  const confidences: { [address: string]: number } = {};
   swapResults.map((r: any, i: number) => {
     if (i % 2 != 0) return;
-    const confidence = r.output[1] / (ratio * swapResults[i + 1].output[1]);
+    let confidence: number = 0;
+    try {
+      confidence = r.output[1] / (ratio * swapResults[i + 1].output[1]);
+    } catch {}
     confidences[r.input.params[1][0].toLowerCase()] = confidence;
   });
   return confidences;
 }
-// ts-node coins/src/adapters/markets/uniswap/uniswap.ts
-getPairPrices(
-  "ethereum",
-  "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
-  "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-  undefined,
-  0
-);
+export default async function getPairPrices(
+  chain: string,
+  factory: string,
+  router: string | undefined,
+  subgraph: string | undefined = undefined,
+  timestamp: number
+) {
+  let token0s;
+  let token1s;
+  let reserves;
+  let pairAddresses: string[];
+
+  const block: number | undefined = await getBlock(chain, timestamp);
+  if (chain == "bsc" && subgraph == undefined) {
+    return;
+  } else if (chain == "bsc" && subgraph != undefined) {
+    pairAddresses = await fetchUniV2MarketsFromSubgraph(subgraph, timestamp);
+  } else {
+    pairAddresses = await fetchUniV2Markets(chain, factory, block);
+  }
+
+  [token0s, token1s, reserves] = await fetchUniV2MarketData(
+    chain,
+    pairAddresses,
+    block
+  );
+
+  const underlyingTokens = [
+    ...new Set<string>([
+      ...token0s.output.map((t) => t.output.toLowerCase()),
+      ...token1s.output.map((t) => t.output.toLowerCase())
+    ])
+  ];
+
+  const tokenPrices = await getTokenAndRedirectData(
+    Array.from(underlyingTokens),
+    chain,
+    timestamp
+  );
+
+  const priceableLPs = await findPriceableLPs(
+    pairAddresses,
+    token0s,
+    token1s,
+    reserves,
+    tokenPrices
+  );
+
+  const tokenInfos: TokenInfos = await getLPInfo(
+    chain,
+    priceableLPs,
+    block,
+    false
+  );
+
+  const writes: Write[] = [];
+  await unknownTokens(
+    writes,
+    chain,
+    router,
+    timestamp,
+    priceableLPs,
+    tokenPrices,
+    tokenInfos
+  );
+  await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
+
+  return writes;
+}

@@ -60,7 +60,7 @@ export default {
         enabled: true
     },
     "dodo": {
-        enabled: false
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

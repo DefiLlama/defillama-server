@@ -7,6 +7,7 @@ import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, g
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import getAllChainsFromDexAdapters, { formatChain, getChainByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
 import config from "../../dexAdapters/config";
+import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart?: IChartData,
@@ -33,13 +34,25 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
 }
 
 export const handler = async (): Promise<IResponse> => {
-    const prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - 1000 * 60 * 60 * 24) / 1000)
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
         try {
+            let prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - 1000 * 60 * 60 * 24) / 1000)
             const volumes = await getVolume(adapter.id, VolumeType.dailyVolume)
             // This check is made to infer Volume[] type instead of Volume type
             if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
-            const prevDayVolume = volumes.find(vol => vol.timestamp === prevDayTimestamp)
+
+            // Return last available data. Ideally last day volume, if not, prevents 0 volume values until data is updated or fixed
+            const prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
+            if (prevDayTimestamp !== prevDayVolume.timestamp) console.error("Data not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp) // TODO: notify
+            
+            if (prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * 2) throw new Error(`${adapter.name} has 2 days old data... Not including in the response`) // TODO: notify
+            
+            prevDayTimestamp = prevDayVolume.timestamp
+
+
+            const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
+            if (change_1d && Math.abs(change_1d) > 95) throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`) // TODO: notify
+
             const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter)
             const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayTimestamp)
             return {
@@ -47,10 +60,10 @@ export const handler = async (): Promise<IResponse> => {
                 volumeAdapter: adapter.volumeAdapter,
                 totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
                 volume24hBreakdown: prevDayVolume ? prevDayVolume.data : null,
-                volumes: volumes,
-                change_1d: calcNdChange(volumes, 1),
-                change_7d: calcNdChange(volumes, 7),
-                change_1m: calcNdChange(volumes, 30),
+                volumes: volumes.map(removeEventTimestampAttribute),
+                change_1d: change_1d,
+                change_7d: calcNdChange(volumes, 7, prevDayTimestamp),
+                change_1m: calcNdChange(volumes, 30, prevDayTimestamp),
                 chains: getAllChainsFromDexAdapters([adapter.volumeAdapter]).map(formatChain),
                 protocolVersions: protocolVersionsSummary ? Object.entries(protocolVersionsSummary).reduce((acc, [protName, summary]) => {
                     acc[protName] = {
@@ -77,7 +90,7 @@ export const handler = async (): Promise<IResponse> => {
     }))
     const rejectedDexs = dexsResults.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
     rejectedDexs.forEach(console.error)
-    const dexs = dexsResults.map(fd => fd.status === "fulfilled" ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
+    const dexs = dexsResults.map(fd => fd.status === "fulfilled" && fd.value.totalVolume24h ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
     const generalStats = getSumAllDexsToday(dexs.map(substractSubsetVolumes))
     return successResponse({
         totalDataChart: generateAggregatedVolumesChartData(dexs),
@@ -119,6 +132,11 @@ const removeVolumesObject = (dex: WithOptional<VolumeSummaryDex, 'volumeAdapter'
     delete dex['volumes']
     delete dex['volumeAdapter']
     return dex
+}
+
+const removeEventTimestampAttribute = (v: Volume) => {
+    delete v.data['eventTimestamp']
+    return v
 }
 
 export default wrap(handler);

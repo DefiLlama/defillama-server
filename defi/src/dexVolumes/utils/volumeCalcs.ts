@@ -71,10 +71,10 @@ const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]): IChartDat
     return chartData
 }
 
-const calcNdChange = (volumes: Volume[], nDaysChange: number) => {
+const calcNdChange = (volumes: Volume[], nDaysChange: number, baseTimestamp?: number) => {
     let totalVolume: number | null = 0
     let totalVolumeNd: number | null = 0
-    const yesterdaysTimestamp = getTimestampAtStartOfDayUTC((Date.now() / 1000) - ONE_DAY_IN_SECONDS);
+    const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp ?? ((Date.now() / 1000) - ONE_DAY_IN_SECONDS));
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
     const yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
     const volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd)?.data

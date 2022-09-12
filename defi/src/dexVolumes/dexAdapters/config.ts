@@ -8,7 +8,7 @@ export default {
         enabled: true
     },
     "bancor": {
-        enabled: false
+        enabled: true
     },
     "champagneswap": {
         enabled: false

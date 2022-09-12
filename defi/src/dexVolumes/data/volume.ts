@@ -101,7 +101,7 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
             KeyConditionExpression: keyConditionExpression,
             ExpressionAttributeValues: expressionAttributeValues,
             Limit: mode === "LAST" ? 1 : undefined,
-            ScanIndexForward: mode === "LAST" ? false : undefined
+            ScanIndexForward: mode === "LAST" ? false : true
         })
         if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${volume.pk}`)
         return mode === "LAST" || mode === 'TIMESTAMP' ? Volume.fromItem(resp.Items[0]) : resp.Items.map(Volume.fromItem)

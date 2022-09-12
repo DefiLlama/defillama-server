@@ -46,8 +46,9 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         // This check is made to infer Volume type instead of Volume[] type
         if (volumes instanceof Volume) throw new Error("Wrong volume queried")
 
-        const yesterdaysTimestamp = (Date.now() / 1000) - ONE_DAY_IN_SECONDS;
-        const yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === getTimestampAtStartOfDayUTC(yesterdaysTimestamp))?.data
+        const yesterdaysVolumeObj = volumes[volumes.length - 1]
+        //const yesterdaysTimestamp = (Date.now() / 1000) - ONE_DAY_IN_SECONDS;
+        const yesterdaysVolume = yesterdaysVolumeObj.data // volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === getTimestampAtStartOfDayUTC(yesterdaysTimestamp))?.data
         const ddr: IHandlerBodyResponse = {
             name: dexData.name,
             logo: dexData.logo,
@@ -66,7 +67,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
                 timestamp: v.sk
             })),
             total1dVolume: yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
-            change1dVolume: calcNdChange(volumes, 1)
+            change1dVolume: calcNdChange(volumes, 1, yesterdaysVolumeObj.timestamp)
         }
         dexDataResponse = ddr
     } catch (error) {

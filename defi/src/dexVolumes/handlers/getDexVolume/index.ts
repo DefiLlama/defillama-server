@@ -34,6 +34,7 @@ export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
     const dexName = event.pathParameters?.dex?.toLowerCase()
+    const errors = event.queryStringParameters?.errors?.toLowerCase() === 'true'
     if (!dexName) throw new Error("Missing DEX name!")
 
     const dexData = volumeAdapters.find(
@@ -63,7 +64,20 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
             volumeHistory: volumes.map<VolumeHistoryItem>(v => ({
-                dailyVolume: v.data,
+                dailyVolume: errors
+                    ? v.data
+                    : Object.entries(v.data).reduce((acc, [chain, volume]) => {
+                        const entries = Object.entries(volume)
+                        if (entries.length === 1 && entries[0][0] === 'error' || chain === 'eventTimestamp') return acc
+                        acc[chain] = entries.reduce((pacc, [prot, value]) => {
+                            if (prot !== 'error' && typeof value === 'number')
+                                pacc[prot] = value
+                            return pacc
+                        }, {} as {
+                            [protocolVersion: string]: number,
+                        })
+                        return acc
+                    }, {} as IRecordVolumeData),
                 timestamp: v.sk
             })),
             total1dVolume: yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,

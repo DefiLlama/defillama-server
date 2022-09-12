@@ -4,10 +4,11 @@ import { getVolume, Volume, VolumeType } from "../../data/volume"
 import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
 import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
-import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
+import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import getAllChainsFromDexAdapters, { formatChain, getChainByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
 import config from "../../dexAdapters/config";
 import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
+import { sendDiscordAlert } from "../../utils/notify";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart?: IChartData,
@@ -43,15 +44,24 @@ export const handler = async (): Promise<IResponse> => {
 
             // Return last available data. Ideally last day volume, if not, prevents 0 volume values until data is updated or fixed
             const prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
-            if (prevDayTimestamp !== prevDayVolume.timestamp) console.error("Data not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp) // TODO: notify
-            
-            if (prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * 2) throw new Error(`${adapter.name} has 2 days old data... Not including in the response`) // TODO: notify
-            
+            if (prevDayTimestamp !== prevDayVolume.timestamp) {
+                await sendDiscordAlert(`Volume not updated\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
+                console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp)
+            }
+
+            if (prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * 2) {
+                await sendDiscordAlert(`${adapter.name} has 2 days old data... Not including in the response`)
+                throw new Error(`${adapter.name} has 2 days old data... Not including in the response`)
+            }
+
             prevDayTimestamp = prevDayVolume.timestamp
 
 
             const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
-            if (change_1d && Math.abs(change_1d) > 95) throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`) // TODO: notify
+            if (change_1d && Math.abs(change_1d) > 95) {
+                await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
+                throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
+            }
 
             const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter)
             const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayTimestamp)

@@ -2,12 +2,15 @@ import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import abi from "./abi.json";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData,
-  isConfidencePriority
+  getTokenAndRedirectData
 } from "../../utils/database";
 import { getLPInfo } from "../../utils/erc20";
 import { Write, Read } from "../../utils/dbInterfaces";
-import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
+import {
+  MultiCallResults,
+  TokenInfos,
+  Result
+} from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
 import { BigNumber } from "ethers";
@@ -26,7 +29,7 @@ async function fetchUniV2Markets(
     })
   ).output;
 
-  const pairNums: number[] = Array.from(Array(Number(pairsLength)).keys());
+  const pairNums: number[] = Array.from(Array(Number(1000)).keys());
 
   const pairs: MultiCallResults = await multiCall({
     abi: abi.allPairs,
@@ -157,6 +160,7 @@ async function findPriceableLPs(
 export default async function getPairPrices(
   chain: string,
   factory: string,
+  router: string | undefined,
   subgraph: string | undefined = undefined,
   timestamp: number
 ) {
@@ -209,15 +213,16 @@ export default async function getPairPrices(
   );
 
   const writes: Write[] = [];
-  // await unknownTokens(
-  //   writes,
-  //   chain,
-  //   timestamp,
-  //   priceableLPs,
-  //   tokenPrices,
-  //   tokenInfos
-  // );
-  await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
+  await unknownTokens(
+    writes,
+    chain,
+    router,
+    timestamp,
+    priceableLPs,
+    tokenPrices,
+    tokenInfos
+  );
+  //await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
   return writes;
 }
@@ -285,11 +290,13 @@ async function lps(
 async function unknownTokens(
   writes: Write[],
   chain: string,
+  router: string | undefined,
   timestamp: number,
   priceableLPs: any[],
   tokenPrices: any[],
   tokenInfos: TokenInfos
 ) {
+  if (router == undefined) return;
   const lpsWithUnknown = priceableLPs.filter(
     (p: any) => p.bothTokensKnown == false
   );
@@ -317,21 +324,17 @@ async function unknownTokens(
 
   const confidences = await getConfidenceScores(
     lpsWithUnknown,
-    "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+    priceableLPs,
+    router,
     tokenValues,
-    tokenInfos
-  );
-
-  const isPriority = await isConfidencePriority(
-    confidences,
-    lpsWithUnknown.map((l: any) => l.secondaryUnderlying),
-    chain,
-    timestamp
+    tokenInfos,
+    chain
   );
 
   lpsWithUnknown.map((l: any, i: number) => {
+    if (isNaN(confidences[l.secondaryUnderlying.toLowerCase()])) return;
     const j = priceableLPs.indexOf(l);
-    if (!isPriority[i] || confidences[i] == 0) return;
+
     addToDBWritesList(
       writes,
       chain,
@@ -341,61 +344,96 @@ async function unknownTokens(
       `${tokenInfos.symbolBs[j].output}`,
       timestamp,
       "uniswap-unknown-token",
-      confidences[i]
+      confidences[l.secondaryUnderlying.toLowerCase()]
     );
   });
 }
+function translateQty(
+  usdSwapSize: number,
+  decimals: number,
+  tokenValue: number
+) {
+  const scientificNotation = (
+    (usdSwapSize * 10 ** decimals) /
+    tokenValue
+  ).toString();
+  if (scientificNotation.indexOf("e") == -1) {
+    try {
+      const qty = BigNumber.from(parseInt(scientificNotation));
+      return qty;
+    } catch {
+      return;
+    }
+  }
+  const power = scientificNotation.substring(
+    scientificNotation.indexOf("e") + 2
+  );
+  const root = scientificNotation.substring(0, scientificNotation.indexOf("e"));
+
+  const zerosToAppend = parseInt(power) - root.length + 2;
+  let zerosString = "";
+  for (let i = 0; i < zerosToAppend; i++) {
+    zerosString = `${zerosString}0`;
+  }
+
+  return BigNumber.from(`${root.replace(/[.]/g, "")}${zerosString}`);
+}
 async function getConfidenceScores(
   lpsWithUnknown: any[],
+  priceableLPs: any[],
   target: string,
   tokenValues: any[],
-  tokenInfos: TokenInfos
+  tokenInfos: TokenInfos,
+  chain: string
 ) {
   const usdSwapSize = 5 * 10 ** 5;
+  const ratio = 10000;
   const calls = lpsWithUnknown
     .map((l: any, i: number) => {
-      if (
-        isNaN(
-          10 ** tokenInfos.underlyingDecimalBs[i].output /
-            tokenValues[i].toFixed()
-        )
-      )
-        return [];
-      // this just swaps 50k tokens cos I cant get the fuckin big numbers to work
-      let qty = BigNumber.from(tokenInfos.underlyingDecimalBs[i].output).mul(
-        usdSwapSize.toFixed()
+      const j = priceableLPs.indexOf(l);
+      const swapSize =
+        10 ** tokenInfos.underlyingDecimalBs[j].output /
+        tokenValues[i].toFixed();
+      if (isNaN(swapSize) || !isFinite(swapSize)) return [];
+
+      const qty: BigNumber | undefined = translateQty(
+        usdSwapSize,
+        tokenInfos.underlyingDecimalBs[j].output,
+        tokenValues[i]
       );
+      if (qty == undefined) return [];
       return [
         {
           target,
-          params: [qty, l.primaryBalance, l.secondaryBalance] // should be qty, reserveIn, reserveOut
+          params: [qty, [l.secondaryUnderlying, l.primaryUnderlying]]
         },
         {
           target,
-          params: [qty.div(100), l.primaryBalance, l.secondaryBalance]
+          params: [qty.div(ratio), [l.secondaryUnderlying, l.primaryUnderlying]]
         }
       ];
     })
-    .flat()
-    .filter((c: any) => c != []);
+    .flat();
 
-  let a = await multiCall({
-    abi: abi.getAmountIn,
-    chain: "ethereum",
-    calls
-  }); // a is quant out from 50k unit swap
-  let b = await multiCall({
-    abi: abi.getAmountOut,
-    chain: "ethereum",
+  const { output: swapResults } = await multiCall({
+    abi: abi.getAmountsOut,
+    chain: chain as any,
     calls: calls as any
-  }); // a is quant out from 50k unit swap
+  });
 
-  return [0, 1];
+  const confidences: any = {};
+  swapResults.map((r: any, i: number) => {
+    if (i % 2 != 0) return;
+    const confidence = r.output[1] / (ratio * swapResults[i + 1].output[1]);
+    confidences[r.input.params[1][0].toLowerCase()] = confidence;
+  });
+  return confidences;
 }
-// getPairPrices(
-//   "ethereum",
-//   "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
-//   undefined,
-//   0
-// );
-// ts-node coins/src/adapters/lps/uniswap/uniswap.ts
+// ts-node coins/src/adapters/markets/uniswap/uniswap.ts
+getPairPrices(
+  "ethereum",
+  "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+  "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+  undefined,
+  0
+);

@@ -179,26 +179,6 @@ async function getTokenAndRedirectDataCurrent(
     redirect: redirectResults.filter((r) => r.PK == d.redirect)
   }));
 }
-export async function isConfidencePriority(
-  confidence: number[],
-  tokens: string[],
-  chain: string,
-  timestamp: number
-) {
-  if (timestamp == 0) timestamp == getCurrentUnixTimestamp();
-  const coinDatas = await getTokenAndRedirectData(tokens, chain, timestamp);
-  return tokens.map((t: string) => {
-    const coinData = coinDatas.filter((p: Read) =>
-      p.dbEntry.PK.includes(t.toLowerCase())
-    )[0];
-    if (coinData == undefined) return true;
-    if (!("dbEntry" in coinData)) return true;
-    if (!("confidence" in coinData.dbEntry)) return true;
-    if (coinData.dbEntry.confidence < confidence) return true;
-    return false;
-  });
-}
-
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];

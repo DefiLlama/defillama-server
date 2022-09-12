@@ -14665,6 +14665,27 @@ listedAt: 1650804679
   audit_links: ["https://symphonyfi.gitbook.io/docs/audit"],
   listedAt: 1662981929
 },
+{
+  id: "2083",
+  name: "Pluto",
+  address: "waves:Ajso6nTTjptu2UHLx6hfSXVtHFtRBJCkKYd5SAyj7zf5",
+  symbol: "PLUTO",
+  url: "http://pluto.gold",
+  description: "Innovative reserve currency designed to be resistant to bear-markets. Each issued token is collateralized with a treasury controlled by mathematical parameters.",
+  chain: "Waves",
+  logo: `${baseIconsUrl}/pluto.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "pluto-pluto",
+  cmcId: null,
+  category: "Reserve Currency",
+  chains: ["Waves"],
+  oracles: ["Neutrino"], //Neutrino Oracle in the Waves Network
+  forkedFrom: [],
+  module: "pluto/index.js",
+  twitter: "whenPluto",
+  listedAt: 1662996198
+},
 ]
 
 

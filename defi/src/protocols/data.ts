@@ -12244,11 +12244,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "724",
-    name: "Handle Fi",
+    name: "handle.fi",
     address: "0xdb298285fe4c5410b05390ca80e8fbe9de1f259b",
     symbol: "FOREX",
     url: "https://handle.fi",
-    description: "handle.fi is a decentralised multi currency stablecoin protocol. The handle protocol allows users to create (borrow) multi-currency stablecoins; called fxTokens. fxTokens are collateral backed stablecoins representing, and soft pegged to, a range of currencies.",
+    description: "handle.fi is a decentralised multi-currency stablecoin protocol. The handle protocol allows users to borrow, swap and leverage trade multi-currency stablecoins called fxTokens; creating a global defi FX market. handle.fi stablecoins are called fxTokens and are collateral backed representing, and soft pegged to, a range of currencies.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/handle-fi.png`,
     audits: "2",

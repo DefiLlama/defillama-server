@@ -14577,7 +14577,50 @@ listedAt: 1650804679
   twitter: "Givethio",
   audit_links: ["https://github.com/lastperson/code-reviews/blob/main/Giveth%20GIVeconomy%20Contracts%20Code%20Review.pdf"],
   listedAt: 1662676779
-}
+},
+{
+  id: "2079",
+  name: "Inuswap",
+  address: "dogechain:0x3D84ce3Da6Ca29f8a1e87fAe44e2840F2C3cBE85",
+  symbol: "INU",
+  url: "https://inuswap.fi/",
+  description: "Inuswap aims to be the one-stop shop for decentralized trading on Dogechain.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/inuswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "inuswap/index.js",
+  twitter: "inuswapfi",
+  listedAt: 1662973229
+},
+{
+  id: "2080",
+  name: "Procyon",
+  address: "cronos:0xAd421C4F5F091f597361080d47B6f44ED44F155a",
+  symbol: "PCY",
+  url: "https://dex.procyon.finance",
+  description: "Best DeFi Yield On Cronos",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/procyon.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Cronos"],
+  oracles: [],
+  forkedFrom: [],
+  module: "procyon-finance/index.js",
+  twitter: "procyon_finance",
+  audit_links: ["https://spywolf.co/client/procyon"],
+  listedAt: 1662973513
+},
 ]
 
 

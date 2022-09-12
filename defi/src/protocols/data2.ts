@@ -14625,7 +14625,7 @@ listedAt: 1650804679
   id: "2081",
   name: "Wan Bridge",
   address: null,
-  symbol: "WAN",
+  symbol: "-",
   url: "https://bridge.wanchain.org",
   description: "Wanchain, the Wide Area Network chain, is the worlds premier decentralised blockchain interoperability solution.",
   chain: "Wanchain",

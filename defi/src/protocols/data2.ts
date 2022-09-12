@@ -14621,6 +14621,50 @@ listedAt: 1650804679
   audit_links: ["https://spywolf.co/client/procyon"],
   listedAt: 1662973513
 },
+{
+  id: "2081",
+  name: "Wan Bridge",
+  address: null,
+  symbol: "WAN",
+  url: "https://bridge.wanchain.org",
+  description: "Wanchain, the Wide Area Network chain, is the worlds premier decentralised blockchain interoperability solution.",
+  chain: "Wanchain",
+  logo: `${baseIconsUrl}/wan-bridge.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Wanchain", "Polygon", "Moonriver", "Avalanche", "Ethereum","Binance", "Moonbeam", "OKExChain", "CLV", "XDC"],
+  oracles: [], //Wanchain's own oracle
+  forkedFrom: [],
+  module: "wanbridge.js",
+  twitter: "wanchain_org",
+  audit_links: ["https://github.com/wanchain/Audits"],
+  listedAt: 1662981783
+},
+{
+  id: "2082",
+  name: "Symphony Finance",
+  address: null,
+  symbol: "-",
+  url: "https://symphony.finance",
+  description: "Symphony is a DEX designed to earn you maximum yield on limit orders and fill trades in real-time at the best prices.",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/symphony-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Optimism", "Polygon", "Avalanche"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "symphony/index.js",
+  twitter: "SymphonyFinance",
+  audit_links: ["https://symphonyfi.gitbook.io/docs/audit"],
+  listedAt: 1662981929
+},
 ]
 
 

@@ -32,7 +32,7 @@ export default async () => {
         // 'traderjoe', //backfilled
         // 'gmx',
         // 'velodrome', //backfilled
-        // 'woofi'
+        // 'woofi' //backfilled
     ]
 
     let startTimestamp = 0

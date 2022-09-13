@@ -37,12 +37,12 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
 export const handler = async (): Promise<IResponse> => {
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
         try {
-            let prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - 1000 * 60 * 60 * 24) / 1000)
             const volumes = await getVolume(adapter.id, VolumeType.dailyVolume)
             // This check is made to infer Volume[] type instead of Volume type
             if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
 
             // Return last available data. Ideally last day volume, if not, prevents 0 volume values until data is updated or fixed
+            let prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
             const prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
             if (prevDayTimestamp !== prevDayVolume.timestamp) {
                 // await sendDiscordAlert(`Volume not updated\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
@@ -51,14 +51,14 @@ export const handler = async (): Promise<IResponse> => {
 
             if (prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * 2) {
                 // await sendDiscordAlert(`${adapter.name} has 2 days old data... Not including in the response`)
-                throw new Error(`${adapter.name} has ${(1662940800-1662681600)/(60*60*24)} days old data... Not including in the response`)
+                throw new Error(`${adapter.name} has ${(1662940800 - 1662681600) / (60 * 60 * 24)} days old data... Not including in the response`)
             }
 
             prevDayTimestamp = prevDayVolume.timestamp
 
 
             const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
-            if (change_1d && Math.abs(change_1d) > 95) {
+            if (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000)) {
                 // await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
                 throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
             }

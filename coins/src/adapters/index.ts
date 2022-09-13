@@ -28,7 +28,7 @@ export default {
   glp: require("./other/index"),
   uniswap: require("./markets/uniswap/index"),
   sushiswap: require("./markets/uniswap/index"),
-  //traderJoe: require("./markets/uniswap/index"),
+  traderJoe: require("./markets/uniswap/index"),
   vvsFinance: require("./markets/uniswap/index"),
   quickswap: require("./markets/uniswap/index"),
   biswap: require("./markets/uniswap/index"),

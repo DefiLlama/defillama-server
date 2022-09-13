@@ -42,8 +42,8 @@ export function pancakeswap(timestamp: number = 0) {
   return getTokenPrices(
     "bsc",
     "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
-    "https://bsc.streamingfast.io/subgraphs/name/pancakeswap/exchange-v2",
     undefined,
+    "https://bsc.streamingfast.io/subgraphs/name/pancakeswap/exchange-v2",
     timestamp
   );
 }
@@ -53,7 +53,7 @@ export function traderJoe(timestamp: number = 0) {
     "avax",
     "0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10",
     undefined,
-    undefined,
+    "https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange",
     timestamp
   );
 }

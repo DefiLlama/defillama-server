@@ -2573,10 +2573,10 @@ const data2: Protocol[] =  [
   audit_note: null,
   gecko_id: "metavault",
   cmcId: "18702",
-  category: "Reserve Currency",
+  category: "Services",
   chains: ["Ethereum"],
   oracles: [],
-  forkedFrom: ["Olympus DAO"],
+  forkedFrom: [],
   module: "metavault/index.js",
   twitter: "MetavaultDAO",
   listedAt: 1646854791

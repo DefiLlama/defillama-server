@@ -73,6 +73,9 @@ export default {
     },
     "woofi": {
         enabled: true
+    },
+    "hashflow": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

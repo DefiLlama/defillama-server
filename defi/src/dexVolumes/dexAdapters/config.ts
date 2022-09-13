@@ -67,6 +67,9 @@ export default {
     },
     "gmx": {
         enabled: true
+    },
+    "quickswap": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

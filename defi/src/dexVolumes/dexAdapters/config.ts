@@ -61,6 +61,9 @@ export default {
     },
     "dodo": {
         enabled: true
+    },
+    "velodrome": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

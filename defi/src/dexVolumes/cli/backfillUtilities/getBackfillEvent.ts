@@ -10,7 +10,7 @@ const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 export default async () => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
-        // 'mooniswap',
+        // 'mooniswap', //backfilled
         // 'quickswap',
         // 'dodo', //check spikes
         // 'uniswap' //backfilled
@@ -30,6 +30,8 @@ export default async () => {
         // 'spookyswap', //backfilled
         // 'sushiswap', //backfilled
         // 'traderjoe', //backfilled
+        // 'gmx',
+        // 'velodrome' //backfilled
     ]
 
     let startTimestamp = 0
@@ -60,6 +62,8 @@ export default async () => {
         }
         if (startTimestamp > 0) startTimestamp *= 1000
         else startTimestamp = new Date(Date.UTC(2018, 0, 1)).getTime()
+    } else {
+        throw new Error(`No dex found with name ${DEXS_LIST[0]}`)
     }
     // For specific ranges (remember months starts with 0)
     // const startDate = new Date(Date.UTC(2022, 7, 5))

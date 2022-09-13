@@ -64,6 +64,9 @@ export default {
     },
     "velodrome": {
         enabled: true
+    },
+    "gmx": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

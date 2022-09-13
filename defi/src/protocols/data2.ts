@@ -14686,6 +14686,28 @@ listedAt: 1650804679
   twitter: "whenPluto",
   listedAt: 1662996198
 },
+{
+  id: "2084",
+  name: "Hectagon",
+  address: "bsc:0x343915085b919fbd4414F7046f903d194c6F60EE",
+  symbol: "HECTA",
+  url: "https://www.hectagon.finance",
+  description: "World's first DAO-governed Web3 Venture Capital funding platform for everyone - where retail investors can access to seed and private round in Web3 project.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/hectagon.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "hectagon",
+  cmcId: "21343",
+  category: "Reserve Currency",
+  chains: ["Staking"],
+  oracles: [],
+  forkedFrom: [],
+  module: "hectagon/index.js",
+  twitter: "HectagonFinance",
+  audit_links: ["https://github.com/DAudit/Smart-Contract-Audits/blob/main/audit_hectagon_20220803.pdf"],
+  listedAt: 1663070181
+},
 ]
 
 

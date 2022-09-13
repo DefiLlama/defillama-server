@@ -70,6 +70,9 @@ export default {
     },
     "quickswap": {
         enabled: true
+    },
+    "woofi": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

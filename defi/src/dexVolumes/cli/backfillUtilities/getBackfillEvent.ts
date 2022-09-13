@@ -31,7 +31,8 @@ export default async () => {
         // 'sushiswap', //backfilled
         // 'traderjoe', //backfilled
         // 'gmx',
-        // 'velodrome' //backfilled
+        // 'velodrome', //backfilled
+        // 'woofi'
     ]
 
     let startTimestamp = 0

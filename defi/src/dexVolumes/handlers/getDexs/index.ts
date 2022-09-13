@@ -51,7 +51,7 @@ export const handler = async (): Promise<IResponse> => {
 
             if (prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * 2) {
                 // await sendDiscordAlert(`${adapter.name} has 2 days old data... Not including in the response`)
-                throw new Error(`${adapter.name} has 2 days old data... Not including in the response`)
+                throw new Error(`${adapter.name} has ${(1662940800-1662681600)/(60*60*24)} days old data... Not including in the response`)
             }
 
             prevDayTimestamp = prevDayVolume.timestamp

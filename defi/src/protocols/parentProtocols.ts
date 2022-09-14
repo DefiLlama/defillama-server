@@ -212,7 +212,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "Compound",
-    name: "Compound",
+    name: "Compound Finance",
     url: "https://compound.finance/",
     description:
       "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",

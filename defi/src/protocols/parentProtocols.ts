@@ -222,6 +222,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "compoundfinance",
   },
+  {
+    id: "Algofi",
+    name: "Algofi",
+    url: "https://www.algofi.org/",
+    description:
+      "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
+    logo: `${baseIconsUrl}/algofi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "algofiorg",
+  },
 ];
 
 export default parentProtocols;

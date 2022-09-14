@@ -14775,6 +14775,28 @@ listedAt: 1650804679
   twitter: "CheeFinance",
   listedAt: 1663153491
 },
+{
+  id: "2088",
+  name: "Compound V3",
+  address: "0xc00e94cb662c3520282e6f5717214004a7f26888",
+  symbol: "COMP",
+  url: "https://v3-app.compound.finance/",
+  description: "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/compound-v3.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  module: "compound-v3/index.js",
+  twitter: "compoundfinance",
+  audit_links: ["https://compound.finance/docs/security"],
+  listedAt: 1663169029
+},
 ]
 
 

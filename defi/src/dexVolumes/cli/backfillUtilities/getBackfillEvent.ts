@@ -42,7 +42,7 @@ export default async (onlyMissing: boolean = false) => {
         // 'wardenswap', 
         // 'apeswap', 
         // 'kyberswap', 
-        // 'orca', 
+        // 'orca',
         // 'pangolin', 
         // 'ref-finance', 
         // 'saber', 
@@ -52,27 +52,28 @@ export default async (onlyMissing: boolean = false) => {
     let startTimestamp = 0
     // Looking for start time from adapter, if not found will default to the above
     const dex = volumeAdapters.find(dex => dex.volumeAdapter === DEXS_LIST[0])
+    const nowSTimestamp = Math.trunc((Date.now()) / 1000)
     if (dex) {
         const dexAdapter: VolumeAdapter = (await importVolumeAdapter(dex)).default
         if ("volume" in dexAdapter) {
             const st = await Object.values(dexAdapter.volume)
-                .reduce(async (accP, { start }) => {
+                .reduce(async (accP, { start, runAtCurrTime }) => {
                     const acc = await accP
-                    const currstart = await start().catch(() => 0)
+                    const currstart = runAtCurrTime ? nowSTimestamp + 2 : (await start().catch(() => nowSTimestamp))
                     return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
-                }, Promise.resolve(Date.now() / 1000))
+                }, Promise.resolve(nowSTimestamp + 1))
             startTimestamp = st
         } else {
             const st = await Object.values(dexAdapter.breakdown).reduce(async (accP, dexAdapter) => {
                 const acc = await accP
-                const bst = await Object.values(dexAdapter).reduce(async (accP, { start }) => {
+                const bst = await Object.values(dexAdapter).reduce(async (accP, { start, runAtCurrTime }) => {
                     const acc = await accP
-                    const currstart = await start().catch(() => 0)
+                    const currstart = runAtCurrTime ? nowSTimestamp + 2 : (await start().catch(() => nowSTimestamp))
                     return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
-                }, Promise.resolve(Date.now() / 1000))
+                }, Promise.resolve(nowSTimestamp + 1))
 
                 return bst < acc ? bst : acc
-            }, Promise.resolve(Date.now() / 1000))
+            }, Promise.resolve(nowSTimestamp + 1))
             startTimestamp = st
         }
         if (startTimestamp > 0) startTimestamp *= 1000
@@ -85,23 +86,22 @@ export default async (onlyMissing: boolean = false) => {
     // For new adapters
     const startDate = new Date(startTimestamp)
     console.info("Starting timestamp", startTimestamp, "->", startDate)
-    const endDate = new Date()
+    const endDate = new Date(nowSTimestamp * 1000)
     const dates: Date[] = []
     if (onlyMissing) {
-        console.log(process.env.tableName)
         const vols = await getVolume(dex.id, VolumeType.dailyVolume, "ALL")
         if (!(vols instanceof Array)) throw new Error("Incorrect volumes found")
-        const volTimestamps = vols.map(vol => [vol.timestamp, Object.values(vol.data).filter(data=>Object.keys(data).includes("error")).length>0]).filter(b=>b[1])
+        const volTimestamps = vols.map(vol => [vol.timestamp, Object.values(vol.data).filter(data => Object.keys(data).includes("error")).length > 0]).filter(b => b[1])
         const allTimestamps = getDataPoints(startTimestamp)
-        console.log("stats", allTimestamps.length, volTimestamps.length)
         for (const timest of allTimestamps) {
             if (volTimestamps.find(vt => timest === vt[0]))
                 dates.push(new Date(timest * 1000))
         }
     } else {
-        for (let dayInMilis = startDate.getTime(); dayInMilis <= endDate.getTime(); dayInMilis += DAY_IN_MILISECONDS) {
-            const date = new Date(dayInMilis)
-            dates.push(date)
+        let dayInMilis = startDate.getTime()
+        while (dayInMilis <= endDate.getTime()) {
+            dates.push(new Date(dayInMilis))
+            dayInMilis += DAY_IN_MILISECONDS
         }
     }
     const event: ITriggerStoreVolumeEventHandler = {

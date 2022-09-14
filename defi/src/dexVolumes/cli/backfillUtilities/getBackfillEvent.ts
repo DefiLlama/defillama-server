@@ -6,6 +6,7 @@ import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters"
 import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type"
 import { getVolume, VolumeType } from "../../data/volume"
 import getDataPoints from "../../utils/getDataPoints"
+import { getUniqStartOfTodayTimestamp } from "@defillama/adapters/volumes/helper/getUniSubgraphVolume"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
@@ -61,8 +62,8 @@ export default async (onlyMissing: boolean = false) => {
             const st = await Object.values(dexAdapter.volume)
                 .reduce(async (accP, { start, runAtCurrTime }) => {
                     const acc = await accP
-                    const currstart = runAtCurrTime ? nowSTimestamp + 2 : (await start().catch(() => nowSTimestamp))
-                    return (typeof currstart === 'number' && currstart < acc) ? currstart : acc
+                    const currstart = runAtCurrTime ? nowSTimestamp + 2 : +(await start().catch(() => nowSTimestamp))
+                    return (currstart && currstart < acc) ? currstart : acc
                 }, Promise.resolve(nowSTimestamp + 1))
             startTimestamp = st
         } else {
@@ -86,7 +87,7 @@ export default async (onlyMissing: boolean = false) => {
     // For specific ranges (remember months starts with 0)
     // const startDate = new Date(Date.UTC(2022, 7, 5))
     // For new adapters
-    const startDate = new Date(startTimestamp)
+    const startDate = new Date(getUniqStartOfTodayTimestamp(new Date(startTimestamp))*1000)
     console.info("Starting timestamp", startTimestamp, "->", startDate)
     const endDate = new Date(nowSTimestamp * 1000)
     const dates: Date[] = []

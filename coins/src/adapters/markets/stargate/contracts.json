@@ -1,0 +1,88 @@
+{
+  "ethereum": {
+    "usdc": {
+      "underlying": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "pool": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56"
+    },
+    "usdt": {
+      "underlying": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "pool": "0x38ea452219524bb87e18de1c24d3bb59510bd783"
+    },
+    "eth": {
+      "underlying": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c",
+      "pool": "0x101816545f6bd2b1076434b54383a1e633390a2e"
+    },
+    "sgeth": {
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "pool": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c"
+    }
+  },
+  "bsc": {
+    "busd": {
+      "underlying": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+      "pool": "0x98a5737749490856b401DB5Dc27F522fC314A4e1"
+    },
+    "usdt": {
+      "underlying": "0x55d398326f99059fF775485246999027B3197955",
+      "pool": "0x9aA83081AA06AF7208Dcc7A4cB72C94d057D2cda"
+    }
+  },
+  "avax": {
+    "usdc": {
+      "underlying": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+      "pool": "0x1205f31718499dBf1fCa446663B532Ef87481fe1"
+    },
+    "usdt": {
+      "underlying": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
+      "pool": "0x29e38769f23701A2e4A8Ef0492e19dA4604Be62c"
+    }
+  },
+  "polygon": {
+    "usdc": {
+      "underlying": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      "pool": "0x1205f31718499dBf1fCa446663B532Ef87481fe1"
+    },
+    "usdt": {
+      "underlying": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+      "pool": "0x29e38769f23701A2e4A8Ef0492e19dA4604Be62c"
+    }
+  },
+  "arbitrum": {
+    "usdc": {
+      "underlying": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+      "pool": "0x892785f33CdeE22A30AEF750F285E18c18040c3e"
+    },
+    "usdt": {
+      "underlying": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+      "pool": "0xB6CfcF89a7B22988bfC96632aC2A9D6daB60d641"
+    },
+    "eth": {
+      "underlying": "0x82cbecf39bee528b5476fe6d1550af59a9db6fc0",
+      "pool": "0x915A55e36A01285A14f05dE6e81ED9cE89772f8e"
+    },
+    "sgeth": {
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "pool": "0x82cbecf39bee528b5476fe6d1550af59a9db6fc0"
+    }
+  },
+  "optimism": {
+    "usdc": {
+      "underlying": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
+      "pool": "0xDecC0c09c3B5f6e92EF4184125D5648a66E35298"
+    },
+    "eth": {
+      "underlying": "0xb69c8cbcd90a39d8d3d3ccf0a3e968511c3856a0",
+      "pool": "0xd22363e3762cA7339569F3d33EADe20127D5F98C"
+    },
+    "sgeth": {
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "pool": "0xb69c8cbcd90a39d8d3d3ccf0a3e968511c3856a0"
+    }
+  },
+  "fantom": {
+    "usdc": {
+      "underlying": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      "pool": "0x12edeA9cd262006cC3C4E77c90d2CD2DD4b1eb97"
+    }
+  }
+}

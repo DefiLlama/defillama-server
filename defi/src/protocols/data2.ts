@@ -14708,6 +14708,52 @@ listedAt: 1650804679
   audit_links: ["https://github.com/DAudit/Smart-Contract-Audits/blob/main/audit_hectagon_20220803.pdf"],
   listedAt: 1663070181
 },
+{
+  id: "2085",
+  name: "BakedPotatoes",
+  address: null ,
+  symbol: "-",
+  url: "https://app.bakedpotatoes.dog",
+  description: "Earn up to 8% daily on your staked WDOGE and earn 12% referral rewards.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/bakedpotatoes.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: [],
+  module: "BakedPotatoes/index.js",
+  twitter: "BakedPotatoDoge",
+  listedAt: 1663144121
+},
+{
+  id: "2086",
+  name: "Rage Trade",
+  address: null,
+  symbol: "-",
+  url: "https://www.rage.trade/",
+  description: "The most liquid, composable, and omnichain ETH perp.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/rage-trade.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Arbitrum"],
+  oracles: ["Chainlink", "TWAP"],
+  forkedFrom: [],
+  module: "ragetrade/index.js",
+  twitter: "rage_trade",
+  audit_links: [
+                    "https://github.com/RageTrade/core/blob/159a94ca9fa75a7c1b3acf7191c2c87ebd746691/audits/quantstamp/audit.pdf",            
+                    "https://github.com/RageTrade/core/blob/159a94ca9fa75a7c1b3acf7191c2c87ebd746691/audits/cmichelio/audit.pdf",
+               ],
+  listedAt: 1663144131
+},
 ]
 
 

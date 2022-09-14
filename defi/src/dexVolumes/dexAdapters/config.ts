@@ -5,7 +5,7 @@ export interface IVolumesConfig {
 
 export default {
     "balancer": {
-        enabled: false
+        enabled: true
     },
     "bancor": {
         enabled: true

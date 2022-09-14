@@ -14795,6 +14795,7 @@ listedAt: 1650804679
   module: "compound-v3/index.js",
   twitter: "compoundfinance",
   audit_links: ["https://compound.finance/docs/security"],
+  parentProtocol: "Compound",
   listedAt: 1663169029
 },
 ]

@@ -173,7 +173,7 @@ const data: Protocol[] = [
     twitter: "compoundfinance",
     audit_links: ["https://compound.finance/docs/security"],
     oracles: ["Chainlink"],
-    parentProtocol: "Compound"
+    parentProtocol: "Compound Finance"
   },
   {
     id: "115",

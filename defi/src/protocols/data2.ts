@@ -14754,6 +14754,27 @@ listedAt: 1650804679
                ],
   listedAt: 1663144131
 },
+{
+  id: "2087",
+  name: "Chee Finance",
+  address: null ,
+  symbol: "-",
+  url: "https://www.chee.finance",
+  description: "Chee Finance is a web3 money market built on Celo, Meter.io, BNB Chain and Ethereum",
+  chain: "Celo",
+  logo: `${baseIconsUrl}/chee-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Celo", "Binance", "Meter"],
+  oracles: ["Chainlink"],
+  forkedFrom: ["Compound"],
+  module: "chee-finance/index.js",
+  twitter: "CheeFinance",
+  listedAt: 1663153491
+},
 ]
 
 

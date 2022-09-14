@@ -211,7 +211,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "fraxfinance",
   },
   {
-    id: "Compound",
+    id: "Compound Finance",
     name: "Compound Finance",
     url: "https://compound.finance/",
     description:

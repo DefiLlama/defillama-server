@@ -14798,6 +14798,48 @@ listedAt: 1650804679
   parentProtocol: "Compound Finance",
   listedAt: 1663169029
 },
+{
+  id: "2089",
+  name: "Roaring Lion",
+  address: "bsc:0x3CC9E655B6c4f530DFc1b1fC51CeEa65c6344716",
+  symbol: "LION",
+  url: "https://www.roaringlion.xyz",
+  description: "First balancer algo stabled pegged to $DAI via seigniorage built on BSC.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/roaring-lion.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: ["Tomb Finance"],
+  module: "roaring-lion/index.js",
+  twitter: "RoaringLionFi",
+  listedAt: 1663183931
+},
+{
+  id: "2090",
+  name: "Aequinox",
+  address: "bsc:0x0ddef12012ed645f12aeb1b845cb5ad61c7423f5",
+  symbol: "AEQ",
+  url: "https://www.aequinox.exchange/#/pools",
+  description: "Aequinox Dex is a community-driven decentralized exchange that supports multi-token and weighted pools on the Binance Smart Chain.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/aequinox.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "aequinox",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "aequinox/index.js",
+  twitter: "Aequinox_Dex",
+  listedAt: 1663183935
+},
 ]
 
 

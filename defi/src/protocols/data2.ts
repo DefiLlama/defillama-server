@@ -14841,7 +14841,7 @@ listedAt: 1650804679
   listedAt: 1663183935
 },
 {
-  id: "1087",
+  id: "2091",
   name: "Algofi Swap",
   address: null ,
   symbol: "-",
@@ -14860,7 +14860,7 @@ listedAt: 1650804679
   oracles: [],
   audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algofi.pdf"] ,
   parentProtocol: "Algofi",
-  listedAt: 1640301190
+  listedAt: 1663197511
 },
 ]
 

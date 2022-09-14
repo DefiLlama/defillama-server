@@ -4,10 +4,12 @@ import path from "path"
 import volumeAdapters from '../../dexAdapters'
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters"
 import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type"
+import { getVolume, VolumeType } from "../../data/volume"
+import getDataPoints from "../../utils/getDataPoints"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
-export default async () => {
+export default async (onlyMissing: boolean = false) => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
         // 'mooniswap', 
@@ -35,7 +37,7 @@ export default async () => {
         // 'velodrome', 
         // 'woofi', 
         // 'hashflow', 
-        // 'biswap', 
+        // 'biswap',
         // 'zipswap', 
         // 'wardenswap', 
         // 'apeswap', 
@@ -85,9 +87,22 @@ export default async () => {
     console.info("Starting timestamp", startTimestamp, "->", startDate)
     const endDate = new Date()
     const dates: Date[] = []
-    for (let dayInMilis = startDate.getTime(); dayInMilis <= endDate.getTime(); dayInMilis += DAY_IN_MILISECONDS) {
-        const date = new Date(dayInMilis)
-        dates.push(date)
+    if (onlyMissing) {
+        console.log(process.env.tableName)
+        const vols = await getVolume(dex.id, VolumeType.dailyVolume, "ALL")
+        if (!(vols instanceof Array)) throw new Error("Incorrect volumes found")
+        const volTimestamps = vols.map(vol => [vol.timestamp, Object.values(vol.data).filter(data=>Object.keys(data).includes("error")).length>0]).filter(b=>b[1])
+        const allTimestamps = getDataPoints(startTimestamp)
+        console.log("stats", allTimestamps.length, volTimestamps.length)
+        for (const timest of allTimestamps) {
+            if (volTimestamps.find(vt => timest === vt[0]))
+                dates.push(new Date(timest * 1000))
+        }
+    } else {
+        for (let dayInMilis = startDate.getTime(); dayInMilis <= endDate.getTime(); dayInMilis += DAY_IN_MILISECONDS) {
+            const date = new Date(dayInMilis)
+            dates.push(date)
+        }
     }
     const event: ITriggerStoreVolumeEventHandler = {
         backfill: dates.map(date => ({

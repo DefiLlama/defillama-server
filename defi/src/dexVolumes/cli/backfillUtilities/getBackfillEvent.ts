@@ -10,30 +10,41 @@ const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 export default async () => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
-        // 'mooniswap', //backfilled
-        // 'quickswap', //backfilled
-        // 'dodo', //check spikes
-        // 'uniswap' //backfilled
-        // 'curve', //enabled
-        // 'terraswap', //backfilled, peding to check and enable ?
-        // 'serum', //backfilled (needs extra data?)
-        // 'klayswap', //backfilled (needs extra data?)
-        // 'osmosis', //backfilled
-        // 'balancer', //backfilled
-        // 'bancor', //backfilled
-        // 'champagneswap', //backfilled
-        // 'katana', //backfilled
-        // 'pancakeswap', //backfilled
-        // 'raydium', //backfilled
-        // 'soulswap', //backfilled
-        // 'spiritswap', //backfilled
-        // 'spookyswap', //backfilled
-        // 'sushiswap', //backfilled
-        // 'traderjoe', //backfilled
-        // 'gmx',
-        // 'velodrome', //backfilled
-        // 'woofi' //backfilled
-        // 'hashflow' //backfilled
+        // 'mooniswap', 
+        // 'balancer', 
+        // 'bancor', 
+        // 'champagneswap', 
+        // 'curve', 
+        // 'dodo', 
+        // 'katana', 
+        // 'klayswap', 
+        // 'osmosis', 
+        // 'pancakeswap', 
+        // 'quickswap', 
+        // 'raydium', 
+        // 'saros', 
+        // 'serum', 
+        // 'soulswap', 
+        // 'spiritswap', 
+        // 'spookyswap', 
+        // 'sushiswap', 
+        // 'terraswap', 
+        // 'traderjoe', 
+        // 'uniswap', 
+        // 'gmx', 
+        // 'velodrome', 
+        // 'woofi', 
+        // 'hashflow', 
+        // 'biswap', 
+        // 'zipswap', 
+        // 'wardenswap', 
+        // 'apeswap', 
+        // 'kyberswap', 
+        // 'orca', 
+        // 'pangolin', 
+        // 'ref-finance', 
+        // 'saber', 
+        // 'solidly'       
     ]
 
     let startTimestamp = 0

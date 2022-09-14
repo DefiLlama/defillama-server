@@ -47,7 +47,8 @@ export default async (onlyMissing: boolean = false) => {
         // 'ref-finance', 
         // 'saber', 
         // 'solidly'       
-        // 'yoshi-exchange'
+        // 'yoshi-exchange',
+        // 'platypus'
     ]
 
     let startTimestamp = 0

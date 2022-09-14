@@ -100,6 +100,18 @@ export default {
     },
     "platypus": {
         enabled: true
+    },
+    "yoshi-exchange": {
+        enabled: true
+    },
+    "biswap": {
+        enabled: true
+    },
+    "apeswap": {
+        enabled: true
+    },
+    "pangolin": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

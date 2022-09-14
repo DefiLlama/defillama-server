@@ -76,6 +76,27 @@ export default {
     },
     "hashflow": {
         enabled: true
+    },
+    "zipswap": {
+        enabled: true
+    },
+    "wardenswap": {
+        enabled: true
+    },
+    "kyberswap": {
+        enabled: true
+    },
+    "ref-finance": {
+        enabled: true
+    },
+    "solidly": {
+        enabled: true
+    },
+    "orca": {
+        enabled: true
+    },
+    "saber": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

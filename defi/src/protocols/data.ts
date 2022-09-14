@@ -19246,10 +19246,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1087",
-  name: "Algofi",
+  name: "Algofi Lend",
   address: null ,
   symbol: "-",
-  url: "https://www.algofi.org/",
+  url: "https://app.algofi.org/lend",
   description:"Decentralized lending protocol and stablecoin built on Algorand",
   chain: "Algorand",
   logo: `${baseIconsUrl}/algofi.jpg`,
@@ -19262,7 +19262,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "algofi/index.js",
   twitter: "algofiorg",
   oracles: ["TWAP"],
-  audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algofi.pdf"] ,
+  audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algofi.pdf"],
+  parentProtocol: "Algofi",
   listedAt: 1640301190
 },
 {

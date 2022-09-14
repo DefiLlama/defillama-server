@@ -14840,6 +14840,28 @@ listedAt: 1650804679
   twitter: "Aequinox_Dex",
   listedAt: 1663183935
 },
+{
+  id: "1087",
+  name: "Algofi Swap",
+  address: null ,
+  symbol: "-",
+  url: "https://www.algofi.org/",
+  description:"Decentralized swap protocol built on Algorand",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/algofi.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: null ,
+  category: "Dexes",
+  chains: ["Algorand"],
+  module: "algofi-swap/index.js",
+  twitter: "algofiorg",
+  oracles: [],
+  audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algofi.pdf"] ,
+  parentProtocol: "Algofi",
+  listedAt: 1640301190
+},
 ]
 
 

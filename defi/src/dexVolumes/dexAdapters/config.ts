@@ -97,6 +97,9 @@ export default {
     },
     "saber": {
         enabled: true
+    },
+    "platypus": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

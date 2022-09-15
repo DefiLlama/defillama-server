@@ -2458,7 +2458,7 @@ const data: Protocol[] = [
     description:
       "Gnosis builds new market mechanisms for decentralized finance.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/gnosis.jpg`,
+    logo: `${baseIconsUrl}/gnosis-protocol-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

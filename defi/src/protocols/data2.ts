@@ -14882,6 +14882,7 @@ listedAt: 1650804679
   module: "pirex/index.js",
   twitter: "redactedcartel",
   audit_links: ["https://omniscia.io/pirex-multi-token-convex-wrapper"],
+  parentProtocol: "Redacted Cartel",
   listedAt: 1663257608
 },
 ]

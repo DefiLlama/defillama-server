@@ -18639,6 +18639,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "redactedcartel",
   forkedFrom: ["Olympus DAO"],
   listedAt: 1639972343,
+  parentProtocol: "Redacted Cartel",
 },
 {
   id: "1057",

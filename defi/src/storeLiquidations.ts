@@ -54,12 +54,6 @@ async function handler() {
 
   await storeLiqs("availability.json", JSON.stringify({ availability, time }));
 
-  const payload = JSON.stringify({ data, time });
-
-  // temp/liquidations.json
-  await storeDataset(liquidationsFilename, payload, "application/json");
-  // liqs/461201.json (unix timestamp / 3600) for 1 hour cache. rewriting the file within the same hour
-  await storeLiqsDataset(time, payload, "application/json");
   // revalidate the liquidations pages after the data is updated
   await Promise.all(LIQUIDATIONS_PATHS.map(forceRevalidate));
 

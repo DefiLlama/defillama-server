@@ -54,10 +54,11 @@ const getSumAllDexsToday = (dexs: VolumeSummaryDex[], dex2Substract?: VolumeSumm
     }
 }
 
-export type IChartData = [[string, number]]
+export type IChartData = [string, number][] // [timestamp, volume]
 
 const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]): IChartData => {
-    const chartData: IChartData = [["0", 0]] // initial value is removed with a shift before returning, added so ts stops complaining
+    // @ts-ignore
+    const chartData: IChartData = []
     const dataPoints = getDataPoints()
     for (const dataPoint of dataPoints) {
         let total = 0
@@ -67,7 +68,26 @@ const generateAggregatedVolumesChartData = (dexs: VolumeSummaryDex[]): IChartDat
         }
         chartData.push([`${dataPoint}`, total])
     }
-    chartData.shift()
+    return chartData
+}
+
+export type IChartDataByDex = Array<[string, {
+    [dex: string]: number
+}]> // [timestamp, {chain: volume}]
+
+const generateByDexVolumesChartData = (dexs: VolumeSummaryDex[]): IChartDataByDex => {
+    // @ts-ignore
+    const chartData: IChartDataByDex = []
+    const dataPoints = getDataPoints()
+    for (const dataPoint of dataPoints) {
+        const dayBreakDown: IChartDataByDex[0][1] = {}
+        for (const dex of dexs) {
+            const volumeObj = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === dataPoint)?.data
+            if (volumeObj)
+                dayBreakDown[dex.volumeAdapter] = sumAllVolumes(volumeObj)
+        }
+        chartData.push([`${dataPoint}`, dayBreakDown])
+    }
     return chartData
 }
 
@@ -140,5 +160,6 @@ export {
     sumAllVolumes,
     getSumAllDexsToday,
     generateAggregatedVolumesChartData,
+    generateByDexVolumesChartData,
     calcNdChange
 }

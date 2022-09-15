@@ -13,6 +13,7 @@ import { sendDiscordAlert } from "../../utils/notify";
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart: IChartDataByDex,
     dexs: Omit<VolumeSummaryDex, 'volumes'>[]
+    allChains: string[]
 }
 
 export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
@@ -23,6 +24,7 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
     change_1d: number | null
     change_7d: number | null
     change_1m: number | null
+    chains: string[] | null
     protocolVersions: {
         [protVersion: string]: {
             totalVolume24h: number | null
@@ -94,6 +96,7 @@ export const handler = async (): Promise<IResponse> => {
                 change_1d: null,
                 change_7d: null,
                 change_1m: null,
+                chains: null,
                 protocolVersions: null
             }
         }
@@ -106,6 +109,7 @@ export const handler = async (): Promise<IResponse> => {
         totalDataChart: generateByDexVolumesChartData(dexs),
         ...generalStats,
         dexs: dexs.map(removeVolumesObject),
+        allChains: getAllChainsUnique(dexs)
     } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
 
@@ -147,6 +151,13 @@ const removeVolumesObject = (dex: WithOptional<VolumeSummaryDex, 'volumeAdapter'
 const removeEventTimestampAttribute = (v: Volume) => {
     delete v.data['eventTimestamp']
     return v
+}
+
+const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
+    const allChainsNotUnique = dexs.reduce((acc, { chains }) => chains !== null ? acc.concat(...chains) : acc, [] as string[])
+    return allChainsNotUnique.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+    })
 }
 
 export default wrap(handler);

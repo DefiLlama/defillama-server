@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import adaptersModules from "./utils/imports/adapters_liquidations";
 import { getCurrentUnixTimestamp } from "./utils/date";
-import { liquidationsFilename, storeDataset, storeLiqs, storeLiqsDataset } from "./utils/s3";
+import { storeLiqs } from "./utils/s3";
 import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 
 async function handler() {

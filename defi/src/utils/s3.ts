@@ -45,19 +45,6 @@ export async function storeDataset(filename: string, body: string | Readable, co
     .promise();
 }
 
-export async function storeLiqsDataset(time: number, body: string | Readable, contentType = "application/json") {
-  const hourId = Math.floor(time / 3600 / 6) * 6;
-  await new aws.S3()
-    .upload({
-      Bucket: datasetBucket,
-      Key: `liqs/${hourId}.json`,
-      Body: body,
-      ACL: "public-read",
-      ContentType: contentType,
-    })
-    .promise();
-}
-
 export async function storeLiqs(filename: string, body: string | Readable, contentType = "application/json") {
   await new aws.S3()
     .upload({

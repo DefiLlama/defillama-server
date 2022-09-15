@@ -38,7 +38,8 @@ const handler = async (event?: IHandlerEvent) => {
     const protocolIndexes = [
       volumeAdapters.findIndex(va => va.volumeAdapter === 'bancor'),
       volumeAdapters.findIndex(va => va.volumeAdapter === 'balancer'),
-      volumeAdapters.findIndex(va => va.volumeAdapter === 'dodo')
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'dodo'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'hashflow')
     ]
     await invokeLambdas(protocolIndexes)
   }

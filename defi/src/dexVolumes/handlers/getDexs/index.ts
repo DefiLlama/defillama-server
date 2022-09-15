@@ -46,12 +46,12 @@ export const handler = async (): Promise<IResponse> => {
             const prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
             if (prevDayTimestamp !== prevDayVolume.timestamp) {
                 // await sendDiscordAlert(`Volume not updated\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
-                console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp)
+                console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
             }
 
             if (prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * 2) {
                 // await sendDiscordAlert(`${adapter.name} has 2 days old data... Not including in the response`)
-                throw new Error(`${adapter.name} has ${(1662940800 - 1662681600) / (60 * 60 * 24)} days old data... Not including in the response`)
+                throw new Error(`${adapter.name} has ${(1662940800 - 1662681600) / (60 * 60 * 24)} days old data... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 
             prevDayTimestamp = prevDayVolume.timestamp
@@ -60,7 +60,7 @@ export const handler = async (): Promise<IResponse> => {
             const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
             if (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000)) {
                 // await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
-                throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
+                throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 
             const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter)

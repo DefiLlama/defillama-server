@@ -234,6 +234,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "algofiorg",
   },
+  {
+    id: "Redacted Cartel",
+    name: "Redacted",
+    url: "https://redacted.finance",
+    description:
+      "The Redacted ecosystem is a product suite of smart contracts empowering on-chain liquidity, governance, and cash flow for DeFi protocols.",
+    logo: `${baseIconsUrl}/redacted.png`,
+    gecko_id: "redacted",
+    cmcId: "21324",
+    chains: [],
+    twitter: "redactedcartel",
+  },
 ];
 
 export default parentProtocols;

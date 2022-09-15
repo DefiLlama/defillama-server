@@ -46,9 +46,12 @@ async function handler() {
       positions,
       time,
     };
-    const _filename = symbol.toLowerCase() + "/" + hourId + ".json";
-    await storeLiqs(_filename, JSON.stringify(_payload));
+    const filename = symbol.toLowerCase() + "/" + hourId + ".json";
+    await storeLiqs(filename, JSON.stringify(_payload));
+    const latestFilename = symbol.toLowerCase() + "/latest.json";
+    await storeLiqs(latestFilename, JSON.stringify(_payload));
   }
+
   await storeLiqs("availability.json", JSON.stringify({ availability, time }));
 
   const payload = JSON.stringify({ data, time });

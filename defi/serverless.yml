@@ -237,13 +237,6 @@ functions:
       - http:
           path: testTvl
           method: get
-  getLiquidations:
-    handler: src/getLiquidations.default
-    timeout: 30
-    events:
-      - http:
-          path: liquidations
-          method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
     timeout: 900

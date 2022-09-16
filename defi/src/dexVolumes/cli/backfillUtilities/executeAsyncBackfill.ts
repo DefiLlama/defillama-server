@@ -1,13 +1,15 @@
 /* import fs from "fs" */
 import invokeLambda from "../../../utils/shared/invokeLambda";
 import path from "path"
+import { IHandlerEvent as ITriggerStoreVolumeEventHandler } from "../../../triggerStoreVolume"
 
 const EVENT_PATH = path.resolve(__dirname, "output", `backfill_event.json`);
 
-export default async () => {
+export default async (backfillEvent?: ITriggerStoreVolumeEventHandler) => {
     let event
     try {
-        event = require(EVENT_PATH)
+        if (backfillEvent) event = backfillEvent
+        else event = require(EVENT_PATH)
     } catch (error) {
         if (error instanceof Error)
             console.error(error.message)
@@ -21,7 +23,7 @@ export default async () => {
         return
     }
     console.info("Event found!")
-    console.info("Running lambda...")
+    console.info("Running lambda...", event)
     const result = (await invokeLambda(`defillama-prod-triggerStoreVolume`, event)) as { StatusCode: number, Payload: string }
     if (result.StatusCode === 202) console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
     else console.info(result)

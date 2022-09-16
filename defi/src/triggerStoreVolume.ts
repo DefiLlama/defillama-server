@@ -3,6 +3,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import volumeAdapters from "./dexVolumes/dexAdapters";
 import invokeLambda from "./utils/shared/invokeLambda";
 import type { IHandlerEvent as IStoreDexVolumeHandlerEvent } from './dexVolumes/handlers/storeDexVolume'
+import {handler as storeDexVolume} from "./dexVolumes/handlers/storeDexVolume";
 
 function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -20,7 +21,7 @@ export interface IHandlerEvent {
   }>
 }
 
-const handler = async (event?: IHandlerEvent) => {
+export const handler = async (event?: IHandlerEvent) => {
   // TODO separate those that need to be called on the hour and those using graphs with timestamp
   if (event?.backfill) {
     console.info("Backfill event", event.backfill)

@@ -1,4 +1,4 @@
-import dexVolumes from "../../../DefiLlama-Adapters/volumes";
+import dexVolumes from "@defillama/adapters/volumes";
 import data, { Protocol } from "../../protocols/data";
 import config from "./config"
 import type { IVolumesConfig } from "./config"
@@ -13,7 +13,7 @@ export interface Dex extends Protocol {
 }
 
 // Obtaining all dex protocols
-const dexes = data.filter(d => d.category === "Dexes")
+const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
 // Getting list of all volume adapters
 const dexAdaptersKeys = Object.keys(dexVolumes).map(k => k.toLowerCase())
 // Adding data to dex objects

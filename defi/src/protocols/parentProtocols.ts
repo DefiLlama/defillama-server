@@ -104,11 +104,11 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "Value",
-    name: "Value",
+    name: "Value Finance",
     url: "https://valuedefi.io",
     description:
     "The Value DeFi protocol is a platform and suite of products that aim to bring fairness, true value, and innovation to Decentralized Finance.`",
-    logo: `${baseIconsUrl}/valuedefi.jpg`,
+    logo: `${baseIconsUrl}/value finance.png`,
     gecko_id: "value-liquidity" ,
     cmcId: "1183",
     chains: [],
@@ -204,11 +204,47 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://frax.finance/",
     description:
       "Inventors of the fractional stablecoin. $FRAX is the 1st stablecoin with parts backed & parts algorithmic",
-    logo: `${baseIconsUrl}/frax.jpg`,
+    logo: `${baseIconsUrl}/frax finance.png`,
     gecko_id: "frax-share",
     cmcId: "6953",
     chains: [],
     twitter: "fraxfinance",
+  },
+  {
+    id: "Compound Finance",
+    name: "Compound Finance",
+    url: "https://compound.finance/",
+    description:
+      "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
+    logo: `${baseIconsUrl}/compound finance.jpg`,
+    gecko_id: "compound-governance-token",
+    cmcId: "5692",
+    chains: [],
+    twitter: "compoundfinance",
+  },
+  {
+    id: "Algofi",
+    name: "Algofi",
+    url: "https://www.algofi.org/",
+    description:
+      "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
+    logo: `${baseIconsUrl}/algofi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "algofiorg",
+  },
+  {
+    id: "Redacted Cartel",
+    name: "Redacted Cartel",
+    url: "https://redacted.finance",
+    description:
+      "The Redacted ecosystem is a product suite of smart contracts empowering on-chain liquidity, governance, and cash flow for DeFi protocols.",
+    logo: `${baseIconsUrl}/redacted cartel.png`,
+    gecko_id: "redacted",
+    cmcId: "21324",
+    chains: [],
+    twitter: "redactedcartel",
   },
 ];
 

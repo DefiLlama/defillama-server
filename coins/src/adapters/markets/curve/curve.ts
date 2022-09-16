@@ -17,6 +17,7 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import { BigNumber } from "ethers";
+import { requery } from "../../utils/sdk";
 interface TokenIndexes {
   known: number[];
   unknown: number[];
@@ -439,12 +440,15 @@ async function unknownTokens(
     .flat(2)
     .filter((c: any) => c != undefined);
 
-  const dys: MultiCallResults = await multiCall({
+  let dys: MultiCallResults = await multiCall({
     chain: chain as any,
     calls,
     abi: abi.get_dy,
     block
   });
+  await requery(dys, chain, abi.get_dy, block);
+  await requery(dys, chain, abi.get_dy2, block);
+  await requery(dys, chain, abi.get_dy2, block);
 
   const unknownTokens = dys.output
     .map((d: Result, i: number) => {

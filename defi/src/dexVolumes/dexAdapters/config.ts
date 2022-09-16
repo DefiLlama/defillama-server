@@ -61,6 +61,57 @@ export default {
     },
     "dodo": {
         enabled: true
+    },
+    "velodrome": {
+        enabled: true
+    },
+    "gmx": {
+        enabled: true
+    },
+    "quickswap": {
+        enabled: true
+    },
+    "woofi": {
+        enabled: true
+    },
+    "hashflow": {
+        enabled: true
+    },
+    "zipswap": {
+        enabled: true
+    },
+    "wardenswap": {
+        enabled: true
+    },
+    "kyberswap": {
+        enabled: true
+    },
+    "ref-finance": {
+        enabled: true
+    },
+    "solidly": {
+        enabled: true
+    },
+    "orca": {
+        enabled: true
+    },
+    "saber": {
+        enabled: true
+    },
+    "platypus": {
+        enabled: true
+    },
+    "yoshi-exchange": {
+        enabled: true
+    },
+    "biswap": {
+        enabled: true
+    },
+    "apeswap": {
+        enabled: true
+    },
+    "pangolin": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

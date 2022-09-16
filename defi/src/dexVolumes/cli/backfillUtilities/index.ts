@@ -1,7 +1,7 @@
+import "../setup.ts"
 import executeAsyncBackfill from "./executeAsyncBackfill"
 import getBackfillEvent from "./getBackfillEvent"
 import printDexsList from "./printDexsList"
-import "../setup.ts"
 
 enum RUNS {
     PRINT_DEXS_LIST,

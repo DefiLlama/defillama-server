@@ -266,5 +266,16 @@
       { "name": "dx", "type": "uint256" }
     ],
     "outputs": [{ "name": "", "type": "uint256" }]
+  },
+  "get_dy2": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "get_dy",
+    "inputs": [
+      { "name": "i", "type": "uint256" },
+      { "name": "j", "type": "uint256" },
+      { "name": "dx", "type": "uint256" }
+    ],
+    "outputs": [{ "name": "", "type": "uint256" }]
   }
 }

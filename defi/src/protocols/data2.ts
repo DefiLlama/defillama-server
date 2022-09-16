@@ -14943,7 +14943,7 @@ listedAt: 1650804679
   gecko_id: "ethichub",
   cmcId: "8442",
   category: "Lending",
-  chains: ["Ethereum", "xDai", "Celo"],
+  chains: ["Ethereum", "Celo"],
   oracles: [],
   forkedFrom: [],
   module: "ethichub/index.js",

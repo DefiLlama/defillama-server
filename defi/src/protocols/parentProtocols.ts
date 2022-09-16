@@ -103,7 +103,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ParallelFi",
   },
   {
-    id: "Value",
+    id: "Value Finance",
     name: "Value Finance",
     url: "https://valuedefi.io",
     description:

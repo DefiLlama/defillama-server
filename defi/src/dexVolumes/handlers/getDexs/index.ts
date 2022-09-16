@@ -58,7 +58,7 @@ export const handler = async (): Promise<IResponse> => {
 
 
             const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
-            if (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000)) {
+            if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000))) {
                 // await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
                 throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }

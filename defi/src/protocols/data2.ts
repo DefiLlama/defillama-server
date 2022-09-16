@@ -14907,6 +14907,53 @@ listedAt: 1650804679
   audit_links: ["https://solidity.finance/audits/ScarySwap"],
   listedAt: 1663317574
 },
+{
+  id: "2094",
+  name: "BoneSwap",
+  address: "dogechain:0x16d0046597b0E3B136CDBB4edEb956D04232A711",
+  symbol: "BONE",
+  url: "https://www.boneswap.dog/",
+  description: "BoneSwap is the fastest growing decentralized platform (DEX), automated market-making (AMM) on Dogechain Network",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/boneswap.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: ["SushiSwap"],
+  module: "BoneSwap/index.js",
+  twitter: "BoneSwapAMM",
+  audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_Bone_Token.pdf"],
+  listedAt: 1663348647
+},
+{
+  id: "2095",
+  name: "EthicHub",
+  address: "0xfd09911130e6930bf87f2b0554c44f400bd80d3e",
+  symbol: "ETHIX",
+  url: "https://ethichub.com",
+  description: "EthicHub is a ReFi protocol helping unbanked smallholders farmers break out of the circle of poverty. Through our platform, our community provides capital at low interest rates for the benefit of our farmers who use it to fund their cultivation projects",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ethichub.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "ethichub",
+  cmcId: "8442",
+  category: "Lending",
+  chains: ["Ethereum", "xDai", "Celo"],
+  oracles: [],
+  forkedFrom: [],
+  module: "ethichub/index.js",
+  twitter: "EthicHub",
+  audit_links: [
+    "https://gitlab.com/EthicHub/ethix-contracts/-/blob/master/audits/Red4Sec-EthicHub%20-%20Smart%20Contract%20Audit%20Report_v3.pdf", 
+    "https://gitlab.com/EthicHub/minimice/-/blob/main/audits/EthicHub%20-%20Smart%20Contract%20Audit%20Report%20Final.pdf"
+  ],
+  listedAt: 1663349441
+},
 ]
 
 

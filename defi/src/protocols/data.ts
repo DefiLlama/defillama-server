@@ -18622,16 +18622,16 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1056",
-  name: "Redacted",
+  name: "Redacted Protocol",
   address: "0xc55126051B22eBb829D00368f4B12Bde432de5Da",
   symbol: "BTRFLY",
   url: "https://www.redacted.finance",
-  description: "The Redacted ecosystem is a product suite of smart contracts empowering on-chain liquidity, governance, and cash flow for DeFi protocols.",
+  description: "The Redacted ecosystem is a product suite of smart contracts empowering on-chain liquidity, governance and cash flow for DeFi protocols.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/redacted-protocol.jpg`,
+  logo: `${baseIconsUrl}/redacted-cartel.png`,
   audits: "1",
   audit_note: null,
-  audit_linkes: [
+  audit_links: [
     "https://omniscia.io/reports/redacted-cartel-butterfly-token-v2/"
   ],
   gecko_id: "redacted",
@@ -18642,7 +18642,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "redactedcartel",
   listedAt: 1639972343,
   language: "Solidity",
-  parentProtocol: "Redacted Cartel",
+  parentProtocol: "Redacted",
 },
 {
   id: "1057",

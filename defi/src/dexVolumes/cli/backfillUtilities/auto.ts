@@ -13,11 +13,16 @@ const rl = readline.createInterface({
         process.exit(1)
     }
     const adapterName = process.argv[2]
-    const onlyMissing = process.argv[3] === '--onlyMissing'
+    const onlyMissing = process.argv[3] === 'onlyMissing'
     console.info(`Started backfilling for ${adapterName} adapter`)
     console.info(`Generating backfill event...`)
     const backfillEvent = await getBackfillEvent(adapterName, onlyMissing)
     console.info(`Backfill event generated!`)
+    if (backfillEvent.backfill.length<=0) {
+        console.info("Has been generated an empty event, nothing to backfill...")
+        rl.close();
+        return
+    }
     console.info(`${backfillEvent.backfill[0].dexNames[0].toUpperCase()} will be backfilled starting from ${formatTimestampAsDate(String(backfillEvent.backfill[0].timestamp!))}`)
     console.info(`${backfillEvent.backfill.length} days will be filled. If a chain is already available will be refilled.`)
     rl.question('Do you wish to continue? y/n\n', async function (yn) {

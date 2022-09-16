@@ -1,7 +1,7 @@
 /* import fs from "fs" */
-import invokeLambda from "../../../utils/shared/invokeLambda";
 import path from "path"
-import { IHandlerEvent as ITriggerStoreVolumeEventHandler } from "../../../triggerStoreVolume"
+import { IHandlerEvent as ITriggerStoreVolumeEventHandler, handler as handlerTriggerStoreVolume, runStoreDex } from "../../../triggerStoreVolume"
+import invokeLambda from "../../../utils/shared/invokeLambda";
 
 const EVENT_PATH = path.resolve(__dirname, "output", `backfill_event.json`);
 
@@ -23,10 +23,13 @@ export default async (backfillEvent?: ITriggerStoreVolumeEventHandler) => {
         return
     }
     console.info("Event found!")
-    console.info("Running lambda...", event)
-    const result = (await invokeLambda(`defillama-prod-triggerStoreVolume`, event)) as { StatusCode: number, Payload: string }
-    if (result.StatusCode === 202) console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
-    else console.info(result)
+    console.info("Running lambda...")
+    let result: any
+    if (process.env.runLocal === 'true')
+        result = await handlerTriggerStoreVolume(event)
+    else
+        result = (await invokeLambda(`defillama-prod-triggerStoreVolume`, event)) as { StatusCode: number, Payload: string }
+    console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
     /* console.info("Deleting event file...")
     fs.unlinkSync(EVENT_PATH)
     console.info("Event file deleted") */

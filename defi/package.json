@@ -19,7 +19,8 @@
     "fillOld": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillOld.ts",
     "fillLast": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillLast.ts",
     "deleteAtDate": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/deleteAtDate.ts",
-    "backfill-dex": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts"
+    "backfill-dex": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts",
+    "backfill-dex-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",

@@ -3,7 +3,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import volumeAdapters from "./dexVolumes/dexAdapters";
 import invokeLambda from "./utils/shared/invokeLambda";
 import type { IHandlerEvent as IStoreDexVolumeHandlerEvent } from './dexVolumes/handlers/storeDexVolume'
-import {handler as storeDexVolume} from "./dexVolumes/handlers/storeDexVolume";
+import { handler as storeDexVolume } from "./dexVolumes/handlers/storeDexVolume";
 
 function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -49,10 +49,13 @@ const invokeLambdas = async (protocolIndexes: IStoreDexVolumeHandlerEvent['proto
       timestamp
     };
     console.info(`Storing volume: ${protocolIndexes} ${timestamp}`)
-    console.log("Lambda name", `defillama-${process.env.stage}-storeVolume`)
-    const result = await invokeLambda(`defillama-${process.env.stage}-storeVolume`, event);
-    console.log("Execution result", result)
+    const storeFunction = process.env.runLocal === 'true' ? storeDexVolume : runStoreDex
+    // if (process.env.runLocal === 'true') await delay(1000)
+    await storeFunction(event);
   }
 }
+
+export const runStoreDex = async (e: IStoreDexVolumeHandlerEvent) => invokeLambda(`defillama-prod-storeVolume`, e)
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export default wrapScheduledLambda(handler);

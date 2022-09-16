@@ -53,7 +53,6 @@ const invokeLambdas = async (protocolIndexes: IStoreDexVolumeHandlerEvent['proto
       timestamp
     };
     console.info(`Storing volume: ${protocolIndexes} ${timestamp}`)
-    console.log("Lambda name", `defillama-${process.env.stage}-storeVolume`)
     const result = await invokeLambda(`defillama-${process.env.stage}-storeVolume`, event);
     console.log("Execution result", result)
   }

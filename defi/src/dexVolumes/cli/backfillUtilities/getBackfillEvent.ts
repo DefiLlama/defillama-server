@@ -10,7 +10,7 @@ import { getUniqStartOfTodayTimestamp } from "@defillama/adapters/volumes/helper
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
-export default async (adapter?:string, onlyMissing: boolean = false) => {
+export default async (adapter?: string, onlyMissing: boolean = false) => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
         // 'mooniswap', 
@@ -89,7 +89,7 @@ export default async (adapter?:string, onlyMissing: boolean = false) => {
     // For specific ranges (remember months starts with 0)
     // const startDate = new Date(Date.UTC(2022, 7, 5))
     // For new adapters
-    const startDate = new Date(getUniqStartOfTodayTimestamp(new Date(startTimestamp))*1000)
+    const startDate = new Date(getUniqStartOfTodayTimestamp(new Date(startTimestamp)) * 1000)
     console.info("Starting timestamp", startTimestamp, "->", startDate)
     const endDate = new Date(nowSTimestamp * 1000)
     const dates: Date[] = []
@@ -100,10 +100,13 @@ export default async (adapter?:string, onlyMissing: boolean = false) => {
         const allTimestamps = getDataPoints(startTimestamp)
         for (const timest of allTimestamps) {
             if (volTimestamps.find(vt => timest === vt[0]))
-                dates.push(new Date(timest * 1000))
+                dates.push(new Date(timest * 1000 + DAY_IN_MILISECONDS))
         }
     } else {
+        console.log(startDate,
+            endDate)
         let dayInMilis = startDate.getTime()
+        if (dayInMilis < getUniqStartOfTodayTimestamp(endDate))
         while (dayInMilis <= endDate.getTime()) {
             dates.push(new Date(dayInMilis))
             dayInMilis += DAY_IN_MILISECONDS

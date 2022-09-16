@@ -15,6 +15,7 @@ const handler = async (
             price: coin.price,
             symbol: coin.symbol,
             timestamp: coin.timestamp,
+            confidence: coin.confidence,
         }
     } else {
         coinsWithRedirect[coin.redirect] = [
@@ -33,6 +34,7 @@ const handler = async (
                 symbol: ogCoin.symbol,
                 price: redirectedCoin.price,
                 timestamp: redirectedCoin.timestamp,
+                confidence: redirectedCoin.confidence,
             }
         })
     })

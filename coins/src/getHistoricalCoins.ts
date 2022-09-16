@@ -20,6 +20,7 @@ const handler = async (
         symbol: coin.symbol,
         price: finalCoin.price,
         timestamp: finalCoin.SK,
+        confidence: finalCoin.confidence,
     };
   }))
   return successResponse({

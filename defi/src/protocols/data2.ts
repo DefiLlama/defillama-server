@@ -14885,6 +14885,28 @@ listedAt: 1650804679
   parentProtocol: "Redacted Cartel",
   listedAt: 1663257608
 },
+{
+  id: "2093",
+  name: "ScarySwap",
+  address: "fantom:0xa73d251d37040ade6e3eff71207901621c9c867a",
+  symbol: "PUMPKIN",
+  url: "https://app.scaryswap.com",
+  description: "ScarySwap is the first ever swapping dex offering completely zero fees swaps on certain pairs , users can currently swap FTM , WBNB , WETH with zero fees and more pairs will be added as the DEX grows. zero fees pairs are added by the core team of ScarySwap while other users can add pairs with the default 0.1% fees system",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/scaryswap.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "scaryswap/index.js",
+  twitter: "Scary_Swap",
+  audit_links: ["https://solidity.finance/audits/ScarySwap"],
+  listedAt: 1663317574
+},
 ]
 
 

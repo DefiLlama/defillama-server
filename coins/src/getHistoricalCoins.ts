@@ -6,7 +6,7 @@ import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const requestedCoins = (event.queryStringParameters?.coins?? "").split(',');
+  const requestedCoins = (event.pathParameters?.coins?? "").split(',');
   const timestampRequested = Number(event.pathParameters!.timestamp)
   const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
   const response = {} as CoinsResponse

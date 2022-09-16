@@ -1,11 +1,10 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
-import { coinToPK } from "./utils/processCoin";
 import { CoinsResponse, batchGetLatest, getBasicCoins } from "./utils/getCoinsUtils";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const requestedCoins = (event.queryStringParameters?.coins?? "").split(',');
+  const requestedCoins = (event.pathParameters?.coins?? "").split(',');
   const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
   const response = {} as CoinsResponse
   const coinsWithRedirect = {} as {[redirect:string]:any[]}

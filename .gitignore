@@ -1,0 +1,13 @@
+node_modules
+.webpack
+.env
+.serverless
+imported-db
+docker
+.DS_Store
+.esbuild
+src/utils/imports/adapters.ts
+src/utils/imports/adapters_volumes.ts
+src/utils/imports/adapters_liquidations.ts
+.vscode
+src/dexVolumes/cli/backfillUtilities/output

@@ -1,8 +1,5 @@
 service: defillama
 
-plugins:
-  - serverless-plugin-log-retention
-
 package:
   individually: true
   excludeDevDependencies: true
@@ -424,3 +421,4 @@ plugins:
   - serverless-offline
   - serverless-prune-plugin
   - serverless-plugin-datadog
+  - serverless-plugin-log-retention

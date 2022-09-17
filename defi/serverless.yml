@@ -1,5 +1,8 @@
 service: defillama
 
+plugins:
+  - serverless-plugin-log-retention
+
 package:
   individually: true
   excludeDevDependencies: true
@@ -118,6 +121,7 @@ custom:
   datadog:
     site: datadoghq.eu
     apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
+  logRetentionInDays: 30
 
 functions:
   fallback:

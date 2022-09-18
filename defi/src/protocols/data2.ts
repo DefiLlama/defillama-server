@@ -14954,6 +14954,27 @@ listedAt: 1650804679
   ],
   listedAt: 1663349441
 },
+{
+  id: "2096",
+  name: "SeaLightSwap",
+  address: "polygon:0x81966f1C3676D72BBF3E6ca08A8996C162976A97",
+  symbol: "SLC",
+  url: "https://sealightswap.org/#/swap",
+  description: "AMM DEX on Polygon",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/sealightswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "sealightswap/index.js",
+  twitter: "sealight_swap",
+  listedAt: 1663472819
+},
 ]
 
 

@@ -14975,6 +14975,27 @@ listedAt: 1650804679
   twitter: "sealight_swap",
   listedAt: 1663472819
 },
+{
+  id: "2097",
+  name: "Doge Compounder",
+  address: null,
+  symbol: "-",
+  url: "https://app.dogecompounder.dog",
+  description: "Yield Aggregator platform on DogeChain",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/doge-compounder.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: ["Beefy"],
+  module: "dogecompounder/index.js",
+  twitter: "DogeCompounder",
+  listedAt: 1663507175
+},
 ]
 
 

@@ -3,7 +3,7 @@ import volumeAdapters, { Dex } from "../../dexAdapters";
 import { getVolume, Volume, VolumeType } from "../../data/volume"
 import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
-import { calcNdChange, generateAggregatedVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
+import { calcNdChange, generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IChartDataByDex, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import getAllChainsFromDexAdapters, { formatChain, getChainByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
 import config from "../../dexAdapters/config";
@@ -11,18 +11,20 @@ import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
 import { sendDiscordAlert } from "../../utils/notify";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
-    totalDataChart?: IChartData,
+    totalDataChart: IChartDataByDex,
     dexs: Omit<VolumeSummaryDex, 'volumes'>[]
+    allChains: string[]
 }
 
 export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
     totalVolume24h: number | null
     volume24hBreakdown: IRecordVolumeData | null
-    volumeAdapter?: Dex['volumeAdapter']
+    volumeAdapter: Dex['volumeAdapter']
     volumes?: Volume[]
     change_1d: number | null
     change_7d: number | null
     change_1m: number | null
+    chains: string[] | null
     protocolVersions: {
         [protVersion: string]: {
             totalVolume24h: number | null
@@ -94,6 +96,7 @@ export const handler = async (): Promise<IResponse> => {
                 change_1d: null,
                 change_7d: null,
                 change_1m: null,
+                chains: null,
                 protocolVersions: null
             }
         }
@@ -103,9 +106,10 @@ export const handler = async (): Promise<IResponse> => {
     const dexs = dexsResults.map(fd => fd.status === "fulfilled" && fd.value.totalVolume24h ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
     const generalStats = getSumAllDexsToday(dexs.map(substractSubsetVolumes))
     return successResponse({
-        totalDataChart: generateAggregatedVolumesChartData(dexs),
+        totalDataChart: generateByDexVolumesChartData(dexs),
         ...generalStats,
         dexs: dexs.map(removeVolumesObject),
+        allChains: getAllChainsUnique(dexs)
     } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
 
@@ -147,6 +151,13 @@ const removeVolumesObject = (dex: WithOptional<VolumeSummaryDex, 'volumeAdapter'
 const removeEventTimestampAttribute = (v: Volume) => {
     delete v.data['eventTimestamp']
     return v
+}
+
+const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
+    const allChainsNotUnique = dexs.reduce((acc, { chains }) => chains !== null ? acc.concat(...chains) : acc, [] as string[])
+    return allChainsNotUnique.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+    })
 }
 
 export default wrap(handler);

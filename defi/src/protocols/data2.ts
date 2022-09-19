@@ -15041,6 +15041,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/okex/OKCSwap/tree/main/audits/oklink"],
   listedAt: 1663593914
 },
+{
+  id: "2100",
+  name: "Sense Finance",
+  address: null,
+  symbol: "-",
+  url: "https://sense.finance",
+  description: "Sense is an ecosystem platform, where teams can build and develop new fixed-income primitives for DeFi, such as bonds, yield-tokens, tranches, and yield curves.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/sense-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  oracles: ["TWAP"],
+  forkedFrom: [],
+  module: "sense/index.js",
+  twitter: "senseprotocol",
+  audit_links: ["https://github.com/sense-finance/sense-v1/tree/dev/audits"],
+  listedAt: 1663610668
+},
 ]
 
 

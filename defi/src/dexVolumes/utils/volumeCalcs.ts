@@ -1,6 +1,5 @@
 import { getTimestampAtStartOfDayUTC } from "../../utils/date";
 import { Volume } from "../data/volume";
-import config from "../dexAdapters/config";
 import { VolumeSummaryDex } from "../handlers/getDexs";
 import { ONE_DAY_IN_SECONDS } from "../handlers/getDexVolume";
 import { IRecordVolumeData } from "../handlers/storeDexVolume";
@@ -153,7 +152,7 @@ export const getSummaryByProtocolVersion = (volumes: Volume[], prevDayTimestamp:
             change_1m: number | null
         }
     })
-    return Object.keys(summaryByProtocols).length > 1 ? summaryByProtocols : null
+    return Object.keys(summaryByProtocols).length >= 1 ? summaryByProtocols : null
 }
 
 export {

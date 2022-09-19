@@ -50,6 +50,18 @@ export class Volume extends Item {
             ...this.data
         }
     }
+
+    getVolumeByChain(chain?: string): Volume | null {
+        if (chain !== undefined) {
+            if (!this.data[chain]) return null
+            return new Volume(this.type, this.dexId, this.timestamp, {
+                [chain]: this.data[chain]
+            })
+        }
+        const d = this.data
+        delete d['eventTimestamp']
+        return new Volume(this.type, this.dexId, this.timestamp, d)
+    }
 }
 
 export const storeVolume = async (volume: Volume, eventTimestamp: number): Promise<Volume> => {

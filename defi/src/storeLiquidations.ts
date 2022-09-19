@@ -4,22 +4,31 @@ import adaptersModules from "./utils/imports/adapters_liquidations";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { storeLiqs } from "./utils/s3";
 import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
+import { performance } from "perf_hooks";
 
 async function handler() {
   const time = getCurrentUnixTimestamp();
   const data = await Promise.all(
     Object.entries(adaptersModules).map(async ([protocol, module]) => {
+      const start = performance.now();
+      console.log(`Fetching ${protocol} data`);
       const liqs: { [chain: string]: Liq[] } = {};
       await Promise.all(
         Object.entries(module).map(async ([chain, liquidationsFunc]: [string, any]) => {
           try {
+            const _start = performance.now();
+            console.log(`Fetching ${protocol} data for ${chain}`);
             const liquidations = await liquidationsFunc.liquidations();
             liqs[chain] = liquidations;
+            const _end = performance.now();
+            console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
           } catch (e) {
             console.error(e);
           }
         })
       );
+      const end = performance.now();
+      console.log(`Fetched ${protocol} in ${((end - start) / 1000).toLocaleString()}s`);
 
       return {
         protocol,

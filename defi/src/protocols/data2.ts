@@ -15019,6 +15019,28 @@ listedAt: 1650804679
   audit_links: ["https://docs.muffin.fi/resources/audit-reports"],
   listedAt: 1663584198
 },
+{
+  id: "2099",
+  name: "OKCSwap",
+  address: null,
+  symbol: "-",
+  url: "https://www.okx.com/okc/swap",
+  description: "OKC Swap is the official AMM dex based on OKX Chain.",
+  chain: "OKExChain",
+  logo: `${baseIconsUrl}/okcswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["OKExChain"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "okcswap/index.js",
+  twitter: null,
+  audit_links: ["https://github.com/okex/OKCSwap/tree/main/audits/oklink"],
+  listedAt: 1663593914
+},
 ]
 
 

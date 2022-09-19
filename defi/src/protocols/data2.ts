@@ -14996,6 +14996,28 @@ listedAt: 1650804679
   twitter: "DogeCompounder",
   listedAt: 1663507175
 },
+{
+  id: "2098",
+  name: "Muffin",
+  address: null,
+  symbol: "-",
+  url: "https://muffin.fi/",
+  description: "AMM with concentrated liquidity + multiple fee tiers per pool + keeper-less limit orders.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/muffin.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "maffin/index.js",
+  twitter: "Muffin_fi",
+  audit_links: ["https://docs.muffin.fi/resources/audit-reports"],
+  listedAt: 1663584198
+},
 ]
 
 

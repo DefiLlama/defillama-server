@@ -1,6 +1,7 @@
 import { Chain } from "@defillama/sdk/build/general";
 import dexVolumes from "@defillama/adapters/volumes";
 import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
+import { CHAIN } from "@defillama/adapters/volumes/helper/chains";
 
 const getAllChainsFromDexAdapters = (dexs2Filter: string[]) =>
     Object.entries(dexVolumes)
@@ -47,6 +48,11 @@ export const getChainByProtocolVersion = (adapterVolume: string, chainFilter?: s
 export const formatChain = (chain: string) => {
     const c = chain === 'avax' ? "avalanche" : chain
     return c[0].toUpperCase() + c.slice(1)
+}
+
+export const formatChainKey = (chain: string) => {
+    if (chain==='avalanche') return CHAIN.AVAX
+    return chain.toLowerCase()
 }
 
 export default getAllChainsFromDexAdapters

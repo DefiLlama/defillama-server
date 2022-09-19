@@ -319,7 +319,7 @@ functions:
     memorySize: 2000
     events:
       - http:
-          path: dexs
+          path: dexs/{chain?}
           method: get
   getDex:
     handler: src/dexVolumes/handlers/getDexVolume/index.default

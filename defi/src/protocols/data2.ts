@@ -7648,7 +7648,7 @@ listedAt: 1650804679
   description: "SpaceFi is a cross-chain web3.0 platform, with DEX+Farm+NFT+Starter+Spacebase.",
   chain: "Evmos",
   logo: `${baseIconsUrl}/spacefi.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -7658,6 +7658,7 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap" , "PancakeSwap"],
   module: "spacefi/index.js",
   twitter: "spacefi_io",
+  audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/SpaceFi%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
   listedAt: 1652356517
 },
 {

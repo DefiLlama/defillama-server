@@ -22,7 +22,7 @@ const getAllChainsFromDexAdapters = (dexs2Filter: string[]) =>
         }, [] as Chain[])
 
 export const getChainByProtocolVersion = (adapterVolume: string) => {
-    const dexAdapter = (dexVolumes as { [volumeAdapter: string]: VolumeAdapter })[adapterVolume]
+    const dexAdapter = (dexVolumes as unknown as { [volumeAdapter: string]: VolumeAdapter })[adapterVolume]
     const chainsAcc: {
         [protVersion: string]: string[]
     } = {}

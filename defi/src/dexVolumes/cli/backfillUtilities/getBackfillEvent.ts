@@ -10,7 +10,7 @@ import { getUniqStartOfTodayTimestamp } from "@defillama/adapters/volumes/helper
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
-export default async (onlyMissing: boolean = false) => {
+export default async (adapter?: string, onlyMissing: boolean = false) => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
         // 'mooniswap', 
@@ -52,9 +52,11 @@ export default async (onlyMissing: boolean = false) => {
         // 'platypus'
     ]
 
+    const adapterName = adapter ?? DEXS_LIST[0]
+
     let startTimestamp = 0
     // Looking for start time from adapter, if not found will default to the above
-    const dex = volumeAdapters.find(dex => dex.volumeAdapter === DEXS_LIST[0])
+    const dex = volumeAdapters.find(dex => dex.volumeAdapter === (adapterName))
     const nowSTimestamp = Math.trunc((Date.now()) / 1000)
     if (dex) {
         const dexAdapter: VolumeAdapter = (await importVolumeAdapter(dex)).default
@@ -82,12 +84,12 @@ export default async (onlyMissing: boolean = false) => {
         if (startTimestamp > 0) startTimestamp *= 1000
         else startTimestamp = new Date(Date.UTC(2018, 0, 1)).getTime()
     } else {
-        throw new Error(`No dex found with name ${DEXS_LIST[0]}`)
+        throw new Error(`No dex found with name ${adapterName}`)
     }
     // For specific ranges (remember months starts with 0)
     // const startDate = new Date(Date.UTC(2022, 7, 5))
     // For new adapters
-    const startDate = new Date(getUniqStartOfTodayTimestamp(new Date(startTimestamp))*1000)
+    const startDate = new Date(getUniqStartOfTodayTimestamp(new Date(startTimestamp)) * 1000)
     console.info("Starting timestamp", startTimestamp, "->", startDate)
     const endDate = new Date(nowSTimestamp * 1000)
     const dates: Date[] = []
@@ -98,10 +100,13 @@ export default async (onlyMissing: boolean = false) => {
         const allTimestamps = getDataPoints(startTimestamp)
         for (const timest of allTimestamps) {
             if (volTimestamps.find(vt => timest === vt[0]))
-                dates.push(new Date(timest * 1000))
+                dates.push(new Date(timest * 1000 + DAY_IN_MILISECONDS))
         }
     } else {
+        console.log(startDate,
+            endDate)
         let dayInMilis = startDate.getTime()
+        if (dayInMilis < getUniqStartOfTodayTimestamp(endDate))
         while (dayInMilis <= endDate.getTime()) {
             dates.push(new Date(dayInMilis))
             dayInMilis += DAY_IN_MILISECONDS
@@ -109,7 +114,7 @@ export default async (onlyMissing: boolean = false) => {
     }
     const event: ITriggerStoreVolumeEventHandler = {
         backfill: dates.map(date => ({
-            dexNames: DEXS_LIST,
+            dexNames: [adapterName],
             timestamp: date.getTime() / 1000
         }))
     }
@@ -118,6 +123,7 @@ export default async (onlyMissing: boolean = false) => {
     ensureDirectoryExistence(eventFileLocation)
     writeFileSync(eventFileLocation, JSON.stringify(event, null, 2))
     console.log(`Event stored ${eventFileLocation}`)
+    return event
 }
 
 function ensureDirectoryExistence(filePath: string) {

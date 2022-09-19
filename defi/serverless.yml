@@ -118,6 +118,7 @@ custom:
   datadog:
     site: datadoghq.eu
     apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
+  logRetentionInDays: 30
 
 functions:
   fallback:
@@ -236,13 +237,6 @@ functions:
     events:
       - http:
           path: testTvl
-          method: get
-  getLiquidations:
-    handler: src/getLiquidations.default
-    timeout: 30
-    events:
-      - http:
-          path: liquidations
           method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
@@ -427,3 +421,4 @@ plugins:
   - serverless-offline
   - serverless-prune-plugin
   - serverless-plugin-datadog
+  - serverless-plugin-log-retention

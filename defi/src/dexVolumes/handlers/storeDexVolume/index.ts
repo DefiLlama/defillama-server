@@ -26,7 +26,7 @@ const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
 const LAMBDA_TIMESTAMP = Math.trunc((Date.now()) / 1000)
 
 export const handler = async (event: IHandlerEvent) => {
-  console.info(`Storing volumes for the following indexs ${event.protocolIndexes}`)
+  console.info(`**************************************Storing volumes for the following indexs ${event.protocolIndexes}**************************************`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
   const currentTimestamp = event.timestamp || LAMBDA_TIMESTAMP;
   // Get clean day
@@ -93,7 +93,6 @@ export const handler = async (event: IHandlerEvent) => {
       let rawTotalVolumes: IRecordVolumeData[] = []
       if ("volume" in dexAdapter) {
         const runAdapterRes = await runAdapter(id, dexAdapter.volume, volumeAdapter)
-        console.log(JSON.stringify(runAdapterRes, null, 2))
         const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
         for (const volume of volumes) {
           if (volume && volume.result.dailyVolume)
@@ -117,7 +116,6 @@ export const handler = async (event: IHandlerEvent) => {
         const volumeAdapters = Object.entries(dexBreakDownAdapter)
         for (const [version, volumeAdapterObj] of volumeAdapters) {
           const runAdapterRes = await runAdapter(id, volumeAdapterObj, version)
-          console.log(JSON.stringify(runAdapterRes, null, 2))
           const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
           for (const volume of volumes) {
             if (volume && volume.result.dailyVolume)
@@ -157,25 +155,28 @@ export const handler = async (event: IHandlerEvent) => {
         }
         return acc
       }, {} as IRecordVolumeData)
-      console.log("Daily volumes", dailyVolumes, id, cleanPreviousDayTimestamp)
-      console.log("Total volumes", totalVolumes, id, cleanPreviousDayTimestamp)
+
       // TODO: IMPROVE ERROR HANDLING
-      let error = undefined
       try {
-        await storeVolume(new Volume(VolumeType.totalVolume, id, cleanPreviousDayTimestamp, totalVolumes), LAMBDA_TIMESTAMP)
+        if (Object.entries(totalVolumes).length > 0) {
+          console.log("Daily volumes", dailyVolumes, id, cleanPreviousDayTimestamp)
+          await storeVolume(new Volume(VolumeType.totalVolume, id, cleanPreviousDayTimestamp, totalVolumes), LAMBDA_TIMESTAMP)
+        }
+        else console.info("Total volume not found")
       } catch (e) {
         const err = e as Error
-        console.error(`${STORE_DEX_VOLUME_ERROR}:${volumeAdapter}: ${err.message}`)
-        error = e
+        console.error(`${STORE_DEX_VOLUME_ERROR}totalVolume:${volumeAdapter}: ${err.message}`)
       }
       try {
-        await storeVolume(new Volume(VolumeType.dailyVolume, id, cleanPreviousDayTimestamp, dailyVolumes), LAMBDA_TIMESTAMP)
+        if (Object.entries(dailyVolumes).length > 0) {
+          console.log("Total volumes", totalVolumes, id, cleanPreviousDayTimestamp)
+          await storeVolume(new Volume(VolumeType.dailyVolume, id, cleanPreviousDayTimestamp, dailyVolumes), LAMBDA_TIMESTAMP)
+        }
+        else console.info("Daily volume not found")
       } catch (e) {
         const err = e as Error
-        console.error(`${STORE_DEX_VOLUME_ERROR}:${volumeAdapter}: ${err.message}`)
-        error = e
+        console.error(`${STORE_DEX_VOLUME_ERROR}dailyVolume:${volumeAdapter}: ${err.message}`)
       }
-      if (error) throw error
     }
     catch (error) {
       const err = error as Error

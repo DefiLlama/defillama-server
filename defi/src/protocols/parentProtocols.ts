@@ -103,12 +103,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ParallelFi",
   },
   {
-    id: "Value",
-    name: "Value",
+    id: "Value Finance",
+    name: "Value Finance",
     url: "https://valuedefi.io",
     description:
     "The Value DeFi protocol is a platform and suite of products that aim to bring fairness, true value, and innovation to Decentralized Finance.`",
-    logo: `${baseIconsUrl}/valuedefi.jpg`,
+    logo: `${baseIconsUrl}/value finance.png`,
     gecko_id: "value-liquidity" ,
     cmcId: "1183",
     chains: [],
@@ -233,6 +233,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "algofiorg",
+  },
+  {
+    id: "Redacted Cartel",
+    name: "Redacted Cartel",
+    url: "https://redacted.finance",
+    description:
+      "The Redacted ecosystem is a product suite of smart contracts empowering on-chain liquidity, governance, and cash flow for DeFi protocols.",
+    logo: `${baseIconsUrl}/redacted cartel.png`,
+    gecko_id: "redacted",
+    cmcId: "21324",
+    chains: [],
+    twitter: "redactedcartel",
   },
 ];
 

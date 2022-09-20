@@ -103,12 +103,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ParallelFi",
   },
   {
-    id: "Value",
-    name: "Value",
+    id: "Value Finance",
+    name: "Value Finance",
     url: "https://valuedefi.io",
     description:
     "The Value DeFi protocol is a platform and suite of products that aim to bring fairness, true value, and innovation to Decentralized Finance.`",
-    logo: `${baseIconsUrl}/valuedefi.jpg`,
+    logo: `${baseIconsUrl}/value finance.png`,
     gecko_id: "value-liquidity" ,
     cmcId: "1183",
     chains: [],
@@ -149,7 +149,103 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "MMFcrypto",
-  }
+  },
+  {
+    id: "Mycelium",
+    name: "Mycelium",
+    url: "https://swaps.mycelium.xyz",
+    description:
+    "Trade with liquidity, leverage, low fees.",
+    logo: `${baseIconsUrl}/mycelium.jpg`,
+    gecko_id: "mycelium",
+    cmcId: "21437",
+    chains: [],
+    twitter: "mycelium_xyz",
+  },
+  {
+    id: "Bancor",
+    name: "Bancor",
+    url: "https://app.bancor.network/",
+    description:
+    "Bancor is an on-chain liquidity protocol that enables automated, decentralized exchange on Ethereum and across blockchains.",
+    logo: `${baseIconsUrl}/bancor.png`,
+    gecko_id: "bancor",
+    cmcId: "1727",
+    chains: [],
+    twitter: "Bancor",
+  },
+  {
+    id: "SpiritSwap",
+    name: "SpiritSwap",
+    url: "https://app.spiritswap.finance/#/",
+    description:
+      "AMM and Lending protocol on Fantom",
+    logo: `${baseIconsUrl}/spiritswap.jpg`,
+    gecko_id: "spiritswap",
+    cmcId: "1359",
+    chains: [],
+    twitter: "Spirit_Swap",
+  },
+  {
+    id: "Interlay",
+    name: "Interlay",
+    url: "https://interlay.io/",
+    description:
+      "Fully trustless and decentralized Bitcoin bridge and BTC DeFi hub",
+    logo: `${baseIconsUrl}/interlay.png`,
+    gecko_id: "interlay",
+    cmcId: "20366",
+    chains: [],
+    twitter: "InterlayHQ",
+  },
+  {
+    id: "Frax Finance",
+    name: "Frax Finance",
+    url: "https://frax.finance/",
+    description:
+      "Inventors of the fractional stablecoin. $FRAX is the 1st stablecoin with parts backed & parts algorithmic",
+    logo: `${baseIconsUrl}/frax finance.png`,
+    gecko_id: "frax-share",
+    cmcId: "6953",
+    chains: [],
+    twitter: "fraxfinance",
+  },
+  {
+    id: "Compound Finance",
+    name: "Compound Finance",
+    url: "https://compound.finance/",
+    description:
+      "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
+    logo: `${baseIconsUrl}/compound finance.jpg`,
+    gecko_id: "compound-governance-token",
+    cmcId: "5692",
+    chains: [],
+    twitter: "compoundfinance",
+  },
+  {
+    id: "Algofi",
+    name: "Algofi",
+    url: "https://www.algofi.org/",
+    description:
+      "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
+    logo: `${baseIconsUrl}/algofi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "algofiorg",
+  },
+  {
+    id: "Redacted",
+    name: "Redacted",
+    url: "https://redacted.finance",
+    description:
+      "The Redacted ecosystem is a product suite of smart contracts empowering on-chain liquidity, governance, and cash flow for DeFi protocols.",
+    logo: `${baseIconsUrl}/redacted.png`,
+    gecko_id: "redacted",
+    cmcId: "21324",
+    chains: [],
+    twitter: "redactedcartel",
+  },
 ];
 
 export default parentProtocols;

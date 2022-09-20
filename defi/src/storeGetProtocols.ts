@@ -31,6 +31,8 @@ const handler = async (_event: any) => {
           name: protocol.name,
           symbol: protocol.symbol,
           logo: protocol.logo,
+          url: protocol.url,
+          referralUrl: protocol.referralUrl,
           tvl: protocolTvls.tvl,
           tvlPrevDay: protocolTvls.tvlPrevDay,
           tvlPrevWeek: protocolTvls.tvlPrevWeek,
@@ -44,10 +46,10 @@ const handler = async (_event: any) => {
 
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet: Set<string> = new Set();
-  
+
   trimmedResponse.forEach((p) => {
     if (!p.category) return;
-    
+
     protocolCategoriesSet.add(p.category);
     if (p.category !== "Bridge") {
       p.chains.forEach((c: string) => {
@@ -56,19 +58,15 @@ const handler = async (_event: any) => {
     }
   });
 
-  const parentProtocols: IParentProtocol[] = parentProtocolsList.map(
-    (parent) => {
-      const chains: Set<string> = new Set();
-      const children = response.filter(
-        (protocol) => protocol.parentProtocol === parent.id
-      );
-      children.forEach((child) => {
-        child.chains?.forEach((chain: string) => chains.add(chain));
-      });
+  const parentProtocols: IParentProtocol[] = parentProtocolsList.map((parent) => {
+    const chains: Set<string> = new Set();
+    const children = response.filter((protocol) => protocol.parentProtocol === parent.id);
+    children.forEach((child) => {
+      child.chains?.forEach((chain: string) => chains.add(chain));
+    });
 
-      return { ...parent, chains: Array.from(chains) };
-    }
-  );
+    return { ...parent, chains: Array.from(chains) };
+  });
 
   const compressedV2Response = compress(
     JSON.stringify({
@@ -76,9 +74,7 @@ const handler = async (_event: any) => {
       chains: Object.entries(chains)
         .sort((a, b) => b[1] - a[1])
         .map((c) => c[0]),
-      protocolCategories: [...protocolCategoriesSet].filter(
-        (category) => category
-      ),
+      protocolCategories: [...protocolCategoriesSet].filter((category) => category),
       parentProtocols,
     })
   );

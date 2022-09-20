@@ -1,6 +1,7 @@
 import { DynamoDB } from "aws-sdk"
 import dynamodb from "../../utils/shared/dynamodb"
 import type { IRecordVolumeData } from "../handlers/storeDexVolume"
+import { formatChain, formatChainKey } from "../utils/getChainsFromDexAdapters"
 import { Item } from "./base"
 
 export enum VolumeType {
@@ -50,15 +51,32 @@ export class Volume extends Item {
             ...this.data
         }
     }
+
+    getVolumeByChain(chain?: string): Volume | null {
+        if (chain !== undefined) {
+            if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
+            return new Volume(this.type, this.dexId, this.timestamp, {
+                [formatChainKey(chain)]: this.data[chain] ?? this.data[formatChainKey(chain)]
+            })
+        }
+        const d = this.data
+        delete d['eventTimestamp']
+        return new Volume(this.type, this.dexId, this.timestamp, d)
+    }
 }
 
-export const storeVolume = async (volume: Volume): Promise<Volume> => {
-    if (Object.entries(volume.data).length === 0) throw new Error("Can't store empty volume")
+export const storeVolume = async (volume: Volume, eventTimestamp: number): Promise<Volume> => {
+    if (Object.entries(volume.data).length === 0) throw new Error(`${volume.type}: Can't store empty volume`)
+    const obj2Store: IRecordVolumeData = {
+        ...volume.data,
+        // @ts-ignore //TODO: fix
+        eventTimestamp
+    }
     try {
         await dynamodb.update({
             Key: volume.keys(),
-            UpdateExpression: createUpdateExpressionFromObj(volume.data),
-            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(volume.data)
+            UpdateExpression: createUpdateExpressionFromObj(obj2Store),
+            ExpressionAttributeValues: createExpressionAttributeValuesFromObj(obj2Store)
         }) // Upsert like
         return volume
     } catch (error) {
@@ -96,7 +114,7 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
             KeyConditionExpression: keyConditionExpression,
             ExpressionAttributeValues: expressionAttributeValues,
             Limit: mode === "LAST" ? 1 : undefined,
-            ScanIndexForward: mode === "LAST" ? false : undefined
+            ScanIndexForward: mode === "LAST" ? false : true
         })
         if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${volume.pk}`)
         return mode === "LAST" || mode === 'TIMESTAMP' ? Volume.fromItem(resp.Items[0]) : resp.Items.map(Volume.fromItem)
@@ -105,23 +123,24 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
     }
 }
 
-// REMOVES ALL VOLUMES, DO NOT USE!
+// TMP: REMOVES ALL VOLUMES, DO NOT USE!
 export const removeVolume = async (dex: string, type: VolumeType,): Promise<boolean> => {
-    const removeVolumeQuery = async (volume: Volume) => {
-        console.log("Removing", volume.keys())
-        return dynamodb.delete({
-            // TODO: Change for upsert like
-            Key: volume.keys(),
-        })
-    }
-    try {
-        const allVolumes = await getVolume(dex, type, "ALL")
-        console.log(allVolumes)
-        if (!(allVolumes instanceof Array)) throw new Error("Unexpected error deleting volumes")
-        await Promise.all(allVolumes.map(volume => removeVolumeQuery(volume)))
-        return true
-    } catch (error) {
-        console.log(error)
-        return false
-    }
+    /*     const removeVolumeQuery = async (volume: Volume) => {
+            console.log("Removing", volume.keys())
+            return dynamodb.delete({
+                Key: volume.keys(),
+            })
+        }
+        try {
+            const allVolumes = await getVolume(dex, type, "ALL")
+            console.log(allVolumes)
+            if (!(allVolumes instanceof Array)) throw new Error("Unexpected error deleting volumes")
+            await Promise.all(allVolumes.map(volume => removeVolumeQuery(volume)))
+            return true
+        } catch (error) {
+            console.log(error)
+            return false
+        } */
+    console.info(dex, type)
+    return Promise.resolve(false)
 }

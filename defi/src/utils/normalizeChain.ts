@@ -3,7 +3,9 @@ const normalizedChainReplacements = {
   "wanchain": "wan",
   "kucoin": "kcc",
   "terra classic": "terra",
-  "nova network": "nova"
+  "nova network": "nova" ,
+  "godwokenv1" : "godwoken_v1",
+  "arbitrum nova" : "arbitrum_nova"
 } as {
   [chain: string]: string
 }
@@ -166,6 +168,13 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 888,
   },
+  "Posichain": {
+    geckoId: "position-token",
+    symbol: "POSI",
+    cmcId: "11234",
+    categories: ["EVM"],
+    chainId: 900000,
+  },
   "DefiChain": {
     geckoId: "defichain",
     symbol: "DFI",
@@ -192,6 +201,7 @@ export const chainCoingeckoIds = {
     geckoId: "secret",
     symbol: "SCRT",
     cmcId: "5604",
+    categories: ["Cosmos"],
   },
   "Zilliqa": {
     geckoId: "zilliqa",
@@ -831,7 +841,7 @@ export const chainCoingeckoIds = {
     symbol: "HYDRA",
     cmcId: "8245",
   },
-  "BitGert": {
+  "Bitgert": {
     geckoId: "bitrise-token",
     symbol: "BRISE",
     cmcId: "11079",
@@ -1055,13 +1065,81 @@ export const chainCoingeckoIds = {
     symbol: "DG",
     cmcId: null,
     categories: ["EVM"],
+  },
+  "Canto": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+    "Ripple": {
+      geckoId: "ripple",
+      symbol: "XRP",
+      cmcId: "52",
+  },
+  "GodwokenV1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    parent: {
+      chain: "Godwoken",
+      types: ["emulator", "gas"]
     },
-    "Canto": {
-      geckoId: null,
-      symbol: null,
-      cmcId: null,
-      categories: ["EVM"],
-      },
+    chainId: 71402,
+  },
+  "Arbitrum Nova": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainId: 42170,
+  },
+  "Ultron": {
+    geckoId: "ultron",
+    symbol: "ULX",
+    cmcId: "21524",
+    categories: ["EVM"],
+    chainId: 1231,
+  },
+  "Interlay": {
+    geckoId: "interlay",
+    symbol: "INTR",
+    cmcId: "20366",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
+  "Juno": {
+    geckoId: "juno-network",
+    symbol: "JUNO",
+    cmcId: "14299",
+    categories: ["Cosmos"],
+  },
+  "Tombchain": {
+    geckoId: "tomb",
+    symbol: "TOMB",
+    cmcId: "11495",
+    categories: ["EVM"],
+  },
+  "Crescent": {
+    geckoId: "crescent-network",
+    symbol: "CRE",
+    cmcId: null,
+    categories: ["Cosmos"],
+  },
+  "Vision": {
+    geckoId: "vision-metaverse",
+    symbol: "VS",
+    cmcId: "19083",
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1098,6 +1176,10 @@ export function transformNewChainName(chain: string) {
       return "Terra Classic"
     case "Nova":
       return "Nova Network"
+    case "godwoken_v1":
+      return "GodwokenV1"
+    case "arbitrum_nova":
+      return "Arbitrum Nova"
     default:
       return chain
   }
@@ -1125,6 +1207,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Terra Classic" : "Terra"
     case "nova":
       return useNewChainNames ? "Nova Network" : "Nova Network"
+    case "godwoken_v1":
+      return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
+    case "arbitrum_nova":
+      return useNewChainNames ? "Arbitrum Nova" : "Arbitrum Nova"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -1258,7 +1344,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "hydra":
       return "Hydra"
     case "bitgert":
-      return "BitGert"
+      return "Bitgert"
     case "reef":
       return "Reef"
     case "candle":
@@ -1321,10 +1407,31 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Kujira"
     case "heiko":
       return "Heiko"
+    case "posichain":
+      return "Posichain"
     case "dogechain":
-        return "Dogechain"
-      case "canto":
-          return "Canto"
+      return "Dogechain"
+    case "canto":
+      return "Canto"
+    case "ripple":
+      return "Ripple"
+    case "godwokenv1":
+      return "GodwokenV1"
+    case "arbitrum_nova":
+      return "Arbitrum Nova"
+    case "ultron":
+      return "Ultron"
+    case "interlay":
+      return "Interlay"
+    case "juno":
+      return "Juno"
+    case "tombchain":
+      return "Tombchain"
+    case "crescent":
+      return "Crescent"
+    case "vision":
+      return "Vision"
+
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

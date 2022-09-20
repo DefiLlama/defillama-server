@@ -1,7 +1,7 @@
+import "../setup.ts"
 import executeAsyncBackfill from "./executeAsyncBackfill"
 import getBackfillEvent from "./getBackfillEvent"
 import printDexsList from "./printDexsList"
-import "../setup.ts"
 
 enum RUNS {
     PRINT_DEXS_LIST,
@@ -9,7 +9,7 @@ enum RUNS {
     EXECUTE_ASYNC_BACKFILL
 }
 
-const RUN: RUNS = RUNS.EXECUTE_ASYNC_BACKFILL
+const RUN: RUNS = RUNS.GET_BACKFILL_EVENT
 
 switch (Number(RUN)) {
     case RUNS.PRINT_DEXS_LIST:

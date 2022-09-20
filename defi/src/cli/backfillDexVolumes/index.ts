@@ -1,4 +1,4 @@
-import * as dexAdapters from "../../../DefiLlama-Adapters/dexVolumes";
+import * as dexAdapters from "../../../DefiLlama-Adapters/volumes";
 import { DynamoDB, AWSError } from "aws-sdk";
 import { PromiseResult } from "aws-sdk/lib/request";
 

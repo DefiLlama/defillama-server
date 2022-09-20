@@ -21,7 +21,8 @@ export interface Protocol {
     audit_links?: Array<string>;
     listedAt?: number;
     openSource?: boolean;
-    parentProtocol?: string
+    parentProtocol?: string;
+    referralUrl?: string
   }
 
   export interface IParentProtocol {

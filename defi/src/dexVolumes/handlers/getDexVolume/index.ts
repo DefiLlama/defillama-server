@@ -11,7 +11,20 @@ export interface VolumeHistoryItem {
     timestamp: number;
 }
 
-export interface IHandlerBodyResponse extends Dex {
+export interface IHandlerBodyResponse extends Pick<Dex,
+    "name"
+    | "logo"
+    | "address"
+    | "url"
+    | "description"
+    | "audits"
+    | "category"
+    | "twitter"
+    | "audit_links"
+    | "volumeAdapter"
+    | "forkedFrom"
+    | "gecko_id"
+> {
     volumeHistory: VolumeHistoryItem[] | null
     total1dVolume: number | null
     change1dVolume: number | null
@@ -21,6 +34,7 @@ export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
     const dexName = event.pathParameters?.dex?.toLowerCase()
+    const errors = event.queryStringParameters?.errors?.toLowerCase() === 'true'
     if (!dexName) throw new Error("Missing DEX name!")
 
     const dexData = volumeAdapters.find(
@@ -33,22 +47,58 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         // This check is made to infer Volume type instead of Volume[] type
         if (volumes instanceof Volume) throw new Error("Wrong volume queried")
 
-        const yesterdaysTimestamp = (Date.now() / 1000) - ONE_DAY_IN_SECONDS;
-        const yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === getTimestampAtStartOfDayUTC(yesterdaysTimestamp))?.data
+        const yesterdaysVolumeObj = volumes[volumes.length - 1]
+        //const yesterdaysTimestamp = (Date.now() / 1000) - ONE_DAY_IN_SECONDS;
+        const yesterdaysVolume = yesterdaysVolumeObj.data // volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === getTimestampAtStartOfDayUTC(yesterdaysTimestamp))?.data
         const ddr: IHandlerBodyResponse = {
-            ...dexData,
+            name: dexData.name,
+            logo: dexData.logo,
+            address: dexData.address,
+            url: dexData.url,
+            description: dexData.description,
+            audits: dexData.audits,
+            category: dexData.category,
+            twitter: dexData.twitter,
+            audit_links: dexData.audit_links,
+            volumeAdapter: dexData.volumeAdapter,
+            forkedFrom: dexData.forkedFrom,
+            gecko_id: dexData.gecko_id,
             volumeHistory: volumes.map<VolumeHistoryItem>(v => ({
-                dailyVolume: v.data,
+                dailyVolume: errors
+                    ? v.data
+                    : Object.entries(v.data).reduce((acc, [chain, volume]) => {
+                        const entries = Object.entries(volume)
+                        if (entries.length === 1 && entries[0][0] === 'error' || chain === 'eventTimestamp') return acc
+                        acc[chain] = entries.reduce((pacc, [prot, value]) => {
+                            if (prot !== 'error' && typeof value === 'number')
+                                pacc[prot] = value
+                            return pacc
+                        }, {} as {
+                            [protocolVersion: string]: number,
+                        })
+                        return acc
+                    }, {} as IRecordVolumeData),
                 timestamp: v.sk
             })),
             total1dVolume: yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
-            change1dVolume: calcNdChange(volumes, 1)
+            change1dVolume: calcNdChange(volumes, 1, yesterdaysVolumeObj.timestamp)
         }
         dexDataResponse = ddr
     } catch (error) {
         console.error(error)
         const ddr: IHandlerBodyResponse = {
-            ...dexData,
+            name: dexData.name,
+            logo: dexData.logo,
+            address: dexData.address,
+            url: dexData.url,
+            description: dexData.description,
+            audits: dexData.audits,
+            category: dexData.category,
+            twitter: dexData.twitter,
+            audit_links: dexData.audit_links,
+            volumeAdapter: dexData.volumeAdapter,
+            forkedFrom: dexData.forkedFrom,
+            gecko_id: dexData.gecko_id,
             volumeHistory: null,
             total1dVolume: null,
             change1dVolume: null

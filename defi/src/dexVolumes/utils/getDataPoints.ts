@@ -1,16 +1,11 @@
-import { getTimestampAtStartOfDayUTC } from "../../utils/date"
-
-const monitorDate = new Date();
-monitorDate.setFullYear((new Date()).getFullYear() - 1)
 const DAY_IN_MILISECONDS = 86400000
 
-export const getDataPoints = () => {
+export const getDataPoints = (from: number = Date.UTC(2019, 9, 11)) => {
+    const monitorDate = from;
+    const limitTime = Date.now() - DAY_IN_MILISECONDS
     const dataPoints = []
-    for (let day = 1; day <= 365; day++) {
-        const currTimestamp = new Date((monitorDate.getTime() + DAY_IN_MILISECONDS * day) / 1000)
-        const start = getTimestampAtStartOfDayUTC(currTimestamp.getTime())
-        dataPoints.push(start)
-    }
+    for (let day = monitorDate; day <= limitTime; day += DAY_IN_MILISECONDS)
+        dataPoints.push(day / 1000)
     return dataPoints
 }
 

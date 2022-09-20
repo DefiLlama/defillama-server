@@ -83,9 +83,11 @@ provider:
     FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
     DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
     MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
+    VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
     REVALIDATE_SECRET: ${file(./env.js):REVALIDATE_SECRET}
     DEFILLAMA_SDK_MUTED: true
+    PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
 
@@ -116,6 +118,7 @@ custom:
   datadog:
     site: datadoghq.eu
     apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
+  logRetentionInDays: 30
 
 functions:
   fallback:
@@ -235,13 +238,6 @@ functions:
       - http:
           path: testTvl
           method: get
-  getLiquidations:
-    handler: src/getLiquidations.default
-    timeout: 30
-    events:
-      - http:
-          path: liquidations
-          method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
     timeout: 900
@@ -325,6 +321,14 @@ functions:
       - http:
           path: dexs
           method: get
+  getDexsChain:
+    handler: src/dexVolumes/handlers/getDexs/index.default
+    timeout: 90
+    memorySize: 2000
+    events:
+      - http:
+          path: dexs/{chain}
+          method: get
   getDex:
     handler: src/dexVolumes/handlers/getDexVolume/index.default
     timeout: 90
@@ -338,6 +342,11 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 0 * * ? *)
+  monitorDexResponse:
+    handler: src/monitorDexResponse.default
+    timeout: 900
+    events:
+      - schedule: rate(1 hour)
   getStats:
     handler: src/dexVolumes/handlers/getStats/index.default
     timeout: 90
@@ -420,3 +429,4 @@ plugins:
   - serverless-offline
   - serverless-prune-plugin
   - serverless-plugin-datadog
+  - serverless-plugin-log-retention

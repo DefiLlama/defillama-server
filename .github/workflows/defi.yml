@@ -39,7 +39,7 @@ jobs:
       with:
         path: /tmp/jest-cache
         key: ${{ runner.os }}-jest-${{ env.TODAY }}
-    - run: npm ci || npm i
+    - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - name: Run tests
       run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
@@ -73,3 +73,5 @@ jobs:
         MONITOR_WEBHOOK: ${{ secrets.MONITOR_WEBHOOK }}
         STALE_COINS_ADAPTERS_WEBHOOK: ${{ secrets.STALE_COINS_ADAPTERS_WEBHOOK }}
         REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
+        PROD_VYBE_API_KEY: ${{ secrets.PROD_VYBE_API_KEY }}
+        VOLUMES_WEBHOOK: ${{ secrets.VOLUMES_WEBHOOK }}

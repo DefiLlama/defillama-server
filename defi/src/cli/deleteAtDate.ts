@@ -1,25 +1,26 @@
 import dynamodb from "../utils/shared/dynamodb";
-import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
+import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, hourlyTvl } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";
 
 async function main() {
-  const protocol = getProtocol('Cashio')
-  for(const tvlFunc of [dailyTokensTvl, dailyTvl, dailyUsdTokensTvl]){
+  const protocol = getProtocol('Forteswap')
+  const deleteFrom = (+new Date('2022-08-21')) / 1000
+  for (const tvlFunc of [dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, hourlyTvl]) {
     const data = await dynamodb.query({
       ExpressionAttributeValues: {
         ":pk": tvlFunc(protocol.id),
       },
       KeyConditionExpression: "PK = :pk",
     });
-    for (const d of data.Items ?? []) {
-      if (d.SK < 1636848000) {
-        await dynamodb.delete({
-          Key: {
-            PK: d.PK,
-            SK: d.SK,
-          },
-        });
-      }
+    const items = (data.Items ?? []).filter(d => d.SK < deleteFrom)
+    console.log('have to delete ', items.length, ' items, table:', tvlFunc(protocol.id))
+    for (const d of items) {
+      await dynamodb.delete({
+        Key: {
+          PK: d.PK,
+          SK: d.SK,
+        },
+      });
     }
   }
 }

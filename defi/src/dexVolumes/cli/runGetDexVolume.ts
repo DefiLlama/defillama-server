@@ -4,9 +4,10 @@ import { handler } from "../handlers/getDexVolume";
 (async () => {
     const r = await handler({
         pathParameters: {
-            dex: "1inch-network"
+            dex: "kyberswap"
         }
     } as unknown as AWSLambda.APIGatewayEvent)
     const d = JSON.parse(r.body)
-    console.log(JSON.stringify(d, null, 2))
+    console.log(d.volumeHistory.length)
+    //console.log(JSON.stringify(d, null, 2))
 })()

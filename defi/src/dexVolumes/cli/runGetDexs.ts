@@ -1,10 +1,17 @@
 import "./setup.ts"
-import { handler } from "../handlers/getDexs";
+import { handler, IGetDexsResponseBody } from "../handlers/getDexs";
+import { APIGatewayProxyEvent } from "aws-lambda";
+
+const event = {
+    pathParameters: { chain: undefined }
+} as unknown as APIGatewayProxyEvent
 
 (async () => {
-    const r = await handler()
-    const rr = JSON.parse(r.body)
-    console.log(rr.changeVolume1d)
-    console.log(rr.changeVolume7d)
-    console.log(rr.changeVolume30d)
+    const r = await handler(event)
+    const rr = JSON.parse(r.body) as IGetDexsResponseBody
+    console.log(rr.dexs.map(d=>d.name))
+    /*     console.log("totalVolume", rr.totalVolume)
+        console.log("changeVolume1d", rr.changeVolume1d)
+        console.log("changeVolume7d", rr.changeVolume7d)
+        console.log("changeVolume30d", rr.changeVolume30d) */
 })()

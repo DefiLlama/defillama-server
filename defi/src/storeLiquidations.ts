@@ -2,20 +2,33 @@ import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import adaptersModules from "./utils/imports/adapters_liquidations";
 import { getCurrentUnixTimestamp } from "./utils/date";
-import { liquidationsFilename, storeDataset, storeLiqsDataset } from "./utils/s3";
+import { storeLiqs } from "./utils/s3";
+import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
+import { performance } from "perf_hooks";
 
 async function handler() {
   const time = getCurrentUnixTimestamp();
   const data = await Promise.all(
     Object.entries(adaptersModules).map(async ([protocol, module]) => {
-      // too lazy to type this properly cuz issa already typed in adapters
-      const liqs: { [chain: string]: object[] } = {};
+      const start = performance.now();
+      console.log(`Fetching ${protocol} data`);
+      const liqs: { [chain: string]: Liq[] } = {};
       await Promise.all(
         Object.entries(module).map(async ([chain, liquidationsFunc]: [string, any]) => {
-          const liquidations = await liquidationsFunc.liquidations();
-          liqs[chain] = liquidations;
+          try {
+            const _start = performance.now();
+            console.log(`Fetching ${protocol} data for ${chain}`);
+            const liquidations = await liquidationsFunc.liquidations();
+            liqs[chain] = liquidations;
+            const _end = performance.now();
+            console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
+          } catch (e) {
+            console.error(e);
+          }
         })
       );
+      const end = performance.now();
+      console.log(`Fetched ${protocol} in ${((end - start) / 1000).toLocaleString()}s`);
 
       return {
         protocol,
@@ -24,12 +37,32 @@ async function handler() {
     })
   );
 
-  const payload = JSON.stringify({ data, time });
+  const adapterData: { [protocol: string]: Liq[] } = data.reduce(
+    (acc, d) => ({ ...acc, [d.protocol]: Object.values(d.liqs).flat() }),
+    {}
+  );
 
-  // temp/liquidations.json
-  await storeDataset(liquidationsFilename, payload, "application/json");
-  // liqs/461201.json (unix timestamp / 3600) for 1 hour cache. rewriting the file within the same hour
-  await storeLiqsDataset(time, payload, "application/json");
+  // <symbol, {currentPrice: number; positions: Position[];}>
+  const allAggregated = await aggregateAssetAdapterData(adapterData);
+  const hourId = Math.floor(time / 3600 / 6) * 6;
+  const availability: { [symbol: string]: number } = {};
+  for (const [symbol, { currentPrice, positions }] of allAggregated) {
+    availability[symbol] = positions.length;
+
+    const _payload = {
+      symbol,
+      currentPrice,
+      positions,
+      time,
+    };
+    const filename = symbol.toLowerCase() + "/" + hourId + ".json";
+    await storeLiqs(filename, JSON.stringify(_payload));
+    const latestFilename = symbol.toLowerCase() + "/latest.json";
+    await storeLiqs(latestFilename, JSON.stringify(_payload));
+  }
+
+  await storeLiqs("availability.json", JSON.stringify({ availability, time }));
+
   // revalidate the liquidations pages after the data is updated
   await Promise.all(LIQUIDATIONS_PATHS.map(forceRevalidate));
 
@@ -55,30 +88,34 @@ const forceRevalidate = async (path: string) => {
 const LIQUIDATIONS_PATHS = [
   "ETH",
   "WBTC",
-  "USDC",
   "DAI",
-  // "USDT",
+  "SOL",
+  "USDC",
+  "WSTETH",
+  "STSOL",
+  "MSOL",
+  "USDT",
   "YFI",
+  "FTT",
   "COMP",
   "UNI",
   "BAT",
-  // "BUSD",
   "CRV",
-  // "AMPL",
   "LINK",
-  // "FRAX",
-  // "FEI",
   "TUSD",
   "AAVE",
   "MKR",
+  "AVAX",
+  "MATIC",
   "SUSHI",
   "SNX",
+  "JOE",
+  "MIM",
   "ZRX",
   "ENJ",
   "MANA",
   "1INCH",
   "REN",
-  // "RAI",
 ].map((x) => `/liquidations/${x.toLowerCase()}`);
 
 export default wrapScheduledLambda(handler);

@@ -112,6 +112,12 @@ export default {
     },
     "pangolin": {
         enabled: true
+    },
+    "minswap": {
+        enabled: true
+    },
+    "wingriders": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

@@ -3,10 +3,11 @@ import { coinToPK } from "./processCoin";
 
 export type CoinsResponse = {
   [coin: string]: {
-    decimals: number,
+    decimals?: number,
     price: number,
     timestamp: number,
     symbol: string,
+    confidence?: number,
   }
 }
 

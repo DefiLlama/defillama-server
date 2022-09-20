@@ -118,6 +118,7 @@ custom:
   datadog:
     site: datadoghq.eu
     apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
+  logRetentionInDays: 30
 
 functions:
   fallback:
@@ -320,6 +321,14 @@ functions:
       - http:
           path: dexs
           method: get
+  getDexsChain:
+    handler: src/dexVolumes/handlers/getDexs/index.default
+    timeout: 90
+    memorySize: 2000
+    events:
+      - http:
+          path: dexs/{chain}
+          method: get
   getDex:
     handler: src/dexVolumes/handlers/getDexVolume/index.default
     timeout: 90
@@ -328,6 +337,11 @@ functions:
       - http:
           path: dex/{dex}
           method: get
+  notifyDexStatus:
+    handler: src/notifyDexsStatus.default
+    timeout: 900
+    events:
+      - schedule: cron(01 0,13 * * ? *)
   triggerStoreVolume:
     handler: src/triggerStoreVolume.default
     timeout: 900
@@ -420,3 +434,4 @@ plugins:
   - serverless-offline
   - serverless-prune-plugin
   - serverless-plugin-datadog
+  - serverless-plugin-log-retention

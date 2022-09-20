@@ -1,6 +1,7 @@
 import { DynamoDB } from "aws-sdk"
 import dynamodb from "../../utils/shared/dynamodb"
 import type { IRecordVolumeData } from "../handlers/storeDexVolume"
+import { formatChain, formatChainKey } from "../utils/getChainsFromDexAdapters"
 import { Item } from "./base"
 
 export enum VolumeType {
@@ -49,6 +50,18 @@ export class Volume extends Item {
             ...this.keys(),
             ...this.data
         }
+    }
+
+    getVolumeByChain(chain?: string): Volume | null {
+        if (chain !== undefined) {
+            if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
+            return new Volume(this.type, this.dexId, this.timestamp, {
+                [formatChainKey(chain)]: this.data[chain] ?? this.data[formatChainKey(chain)]
+            })
+        }
+        const d = this.data
+        delete d['eventTimestamp']
+        return new Volume(this.type, this.dexId, this.timestamp, d)
     }
 }
 

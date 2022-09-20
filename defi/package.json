@@ -18,7 +18,10 @@
     "updateAdapters": "cd DefiLlama-Adapters && git checkout main && git pull",
     "fillOld": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillOld.ts",
     "fillLast": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillLast.ts",
-    "deleteAtDate": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/deleteAtDate.ts"
+    "deleteAtDate": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/deleteAtDate.ts",
+    "backfill-dex": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts",
+    "backfill-dex-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts",
+    "check-adapters": "npx ts-node src/dexVolumes/cli/checkNonEnabledDexs.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
@@ -39,6 +42,7 @@
     "serverless-esbuild": "^1.30.0",
     "serverless-offline": "^8.0.0",
     "serverless-plugin-datadog": "^5.3.0",
+    "serverless-plugin-log-retention": "^2.0.0",
     "serverless-prune-plugin": "^2.0.0",
     "ts-jest": "^28.0.3",
     "ts-loader": "^9.0.0",

@@ -14865,13 +14865,13 @@ listedAt: 1650804679
 },
 {
   id: "2092",
-  name: "Pirex",
-  address: "0xc55126051b22ebb829d00368f4b12bde432de5da",
-  symbol: "BTRFLY",
+  name: "Pirex Convex",
+  address: "0xbce0cf87f513102f22232436cca2ca49e815c3ac",
+  symbol: "pxCVX",
   url: "https://pirex.io/",
   description: "Pirex is a product by Redacted which creates liquid wrappers that allow for auto-compounding and the tokenization of future yield/vote events.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/pirex.png`,
+  logo: `${baseIconsUrl}/pirex-convex.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,
@@ -14883,7 +14883,7 @@ listedAt: 1650804679
   module: "pirex/index.js",
   twitter: "redactedcartel",
   audit_links: ["https://omniscia.io/pirex-multi-token-convex-wrapper"],
-  parentProtocol: "Redacted Cartel",
+  parentProtocol: "Redacted",
   listedAt: 1663257608
 },
 {

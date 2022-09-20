@@ -337,6 +337,11 @@ functions:
       - http:
           path: dex/{dex}
           method: get
+  notifyDexStatus:
+    handler: src/notifyDexsStatus.default
+    timeout: 900
+    events:
+      - schedule: cron(01 0,13 * * ? *)
   triggerStoreVolume:
     handler: src/triggerStoreVolume.default
     timeout: 900

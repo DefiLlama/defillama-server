@@ -37,7 +37,7 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
     } | null
 }
 
-export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const chainFilter = event.pathParameters?.chain?.toLowerCase()
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
         try {
@@ -56,12 +56,14 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             let prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
             const prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
             if (prevDayTimestamp !== prevDayVolume.timestamp) {
-                // await sendDiscordAlert(`Volume not updated\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
+                if (enableAlerts)
+                    await sendDiscordAlert(`Volume not updated\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
                 console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
             }
 
             if (prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * 2) {
-                // await sendDiscordAlert(`${adapter.name} has 2 days old data... Not including in the response`)
+                if (enableAlerts)
+                    await sendDiscordAlert(`${adapter.name} has 2 days old data... Not including in the response`)
                 throw new Error(`${adapter.name} has ${(1662940800 - 1662681600) / (60 * 60 * 24)} days old data... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 
@@ -70,7 +72,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
 
             const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
             if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000))) {
-                // await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
+                if (enableAlerts)
+                    await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
                 throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 

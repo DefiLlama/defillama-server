@@ -8,13 +8,7 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import abi from "./abi.json";
-import { requery } from "../../utils/sdk";
 
-const factories = [
-  "0x68c5f4374228BEEdFa078e77b5ed93C28a2f713E"
-  //"0xB0523f9F473812FB195Ee49BC7d2ab9873a98044",
-  //"0x7125B4211357d7C3a90F796c956c12c681146EbB"
-];
 function formWrites(
   underlyingBalances: Result[],
   coinsData: Read[],
@@ -22,45 +16,49 @@ function formWrites(
   chain: string,
   timestamp: number
 ) {
-  const lpTokenPrices = underlyingBalances.map((b: any) => {
-    let coinData: Read = coinsData.filter((c: Read) =>
-      c.dbEntry.PK.includes(b.input.target.toLowerCase())
-    )[0];
+  const lpTokenPrices = underlyingBalances
+    .map((b: any) => {
+      let coinData: Read = coinsData.filter((c: Read) =>
+        c.dbEntry.PK.includes(b.input.target.toLowerCase())
+      )[0];
 
-    let underlyingPrice: number =
-      coinData.redirect.length != 0
-        ? coinData.redirect[0].price
-        : coinData.dbEntry.price;
+      if (coinData == undefined) return;
 
-    let confidence: number =
-      coinData.redirect.length != 0
-        ? coinData.redirect[0].confidence
-        : coinData.dbEntry.confidence;
+      let underlyingPrice: number =
+        coinData.redirect.length != 0
+          ? coinData.redirect[0].price
+          : coinData.dbEntry.price;
 
-    const underlyingBalance = underlyingBalances.filter((t: any) =>
-      coinData.dbEntry.PK.includes(t.input.target.toLowerCase())
-    )[0];
-    const lpSupply =
-      lpTokenInfo.supplies[underlyingBalances.indexOf(underlyingBalance)]
-        .output;
+      let confidence: number =
+        coinData.redirect.length != 0
+          ? coinData.redirect[0].confidence
+          : coinData.dbEntry.confidence;
 
-    const lpDecimals =
-      lpTokenInfo.decimals[underlyingBalances.indexOf(underlyingBalance)]
-        .output;
-    const price =
-      ((underlyingPrice * underlyingBalance.output) / lpSupply) *
-      10 ** (coinData.dbEntry.decimals - lpDecimals);
+      const underlyingBalance = underlyingBalances.filter((t: any) =>
+        coinData.dbEntry.PK.includes(t.input.target.toLowerCase())
+      )[0];
+      const lpSupply =
+        lpTokenInfo.supplies[underlyingBalances.indexOf(underlyingBalance)]
+          .output;
 
-    return {
-      price,
-      decimals: coinData.dbEntry.decimals,
-      confidence,
-      address: b.input.params[0].toLowerCase(),
-      symbol:
-        lpTokenInfo.symbols[underlyingBalances.indexOf(underlyingBalance)]
-          .output
-    };
-  });
+      const lpDecimals =
+        lpTokenInfo.decimals[underlyingBalances.indexOf(underlyingBalance)]
+          .output;
+      const price =
+        ((underlyingPrice * underlyingBalance.output) / lpSupply) *
+        10 ** (coinData.dbEntry.decimals - lpDecimals);
+
+      return {
+        price,
+        decimals: coinData.dbEntry.decimals,
+        confidence,
+        address: b.input.params[0].toLowerCase(),
+        symbol:
+          lpTokenInfo.symbols[underlyingBalances.indexOf(underlyingBalance)]
+            .output
+      };
+    })
+    .filter((p: any) => p != undefined);
 
   const writes: Write[] = [];
   lpTokenPrices.map((p: any) =>
@@ -83,7 +81,8 @@ async function getTokensFromFactory(
   timestamp: number,
   block: number | undefined,
   chain: any,
-  factory: string
+  factory: string,
+  poolInfoAbi: any
 ) {
   let poolLength: number = (
     await call({
@@ -101,14 +100,11 @@ async function getTokensFromFactory(
       target: factory,
       params: p
     })),
-    abi: abi.poolInfo,
+    abi: poolInfoAbi,
     chain,
     block
   });
 
-  requery(rawPoolAddresses, chain, abi.poolInfo2, block);
-
-  // need to do other factories as well
   const poolAddresses: string[] = rawPoolAddresses.output.map(
     (p: any) => p.output.lpToken
   );
@@ -158,12 +154,17 @@ export async function getTokenPrices(timestamp: number) {
   const chain: any = "avax";
   const block: number | undefined = await getBlock("avax", timestamp);
   let writes: Write[] = [];
-  for (let factory of factories) {
+  for (let factory of Object.entries(abi.poolInfo)) {
+    console.log(writes.length);
     writes.push(
-      ...(await getTokensFromFactory(timestamp, block, chain, factory))
+      ...(await getTokensFromFactory(
+        timestamp,
+        block,
+        chain,
+        factory[0],
+        factory[1]
+      ))
     );
   }
   return writes;
 }
-getTokenPrices(0);
-// ts-node coins/src/adapters/markets/platypus/platypus.ts

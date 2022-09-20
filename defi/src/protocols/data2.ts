@@ -15151,6 +15151,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/swaap-labs/swaap-core-v1/tree/main/audits"],
   listedAt: 1663691569
 },
+{
+  id: "2105",
+  name: "Shipyard Finance",
+  address: null,
+  symbol: "-",
+  url: "https://www.shipyard.finance/",
+  description: "Shipyard aims to offer diversified barebones yield optimization to crypto native investors through pooled investment vehicles that distribute the cost of operating yield generation strategies (rebalancing, compounding, swapping, etc.) between the participants, resulting in higher yields and less management than an individual investment",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/shipyard-finance.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Arbitrum", "Avalanche", "Ethereum"],
+  oracles: ["Coingecko", "Uniswap"],
+  forkedFrom: ["Beefy"],
+  module: "shipyard-finance/index.js",
+  twitter: "ShipyardFinance",
+  audit_links: ["https://www.certik.com/projects/lakefront-finance"],
+  listedAt: 1663708941
+},
 ]
 
 

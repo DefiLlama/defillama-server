@@ -2,13 +2,15 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { DAY } from "./utils/processCoin";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
+import { findMissingCoins } from "./utils/shared/missingCoins";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins?? "").split(',');
   const timestampRequested = Number(event.pathParameters!.timestamp)
-  const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
+  const {PKTransforms, coins, pks} = await getBasicCoins(requestedCoins)
+  findMissingCoins(pks, coins)
   const response = {} as CoinsResponse
   await Promise.all(coins.map(async coin => {
     const finalCoin = await getRecordClosestToTimestamp(coin.redirect ?? coin.PK, timestampRequested, DAY / 4);

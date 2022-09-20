@@ -1,5 +1,6 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { CoinsResponse, batchGetLatest, getBasicCoins } from "./utils/getCoinsUtils";
+import { findMissingCoins } from "./utils/shared/missingCoins";
 
 const isFresh = (timestamp:number) => {
   const now = Date.now()/1e3;
@@ -10,7 +11,8 @@ const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins?? "").split(',');
-  const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
+  const {PKTransforms, coins, pks} = await getBasicCoins(requestedCoins)
+  findMissingCoins(pks, coins)
   const response = {} as CoinsResponse
   const coinsWithRedirect = {} as {[redirect:string]:any[]}
   coins.forEach(coin=>{

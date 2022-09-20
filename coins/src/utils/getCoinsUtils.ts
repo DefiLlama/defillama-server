@@ -25,5 +25,5 @@ export async function getBasicCoins(requestedCoins:string[]){
     pks.push(pk);
   })
   const coins = await batchGetLatest(pks)
-  return {coins, PKTransforms}
+  return {coins, PKTransforms, pks}
 }

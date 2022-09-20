@@ -65,12 +65,13 @@ const maxWriteRetries = 6; // Total wait time if all requests fail ~= 1.2s
 async function underlyingBatchWrite(
   items: any[],
   retryCount: number,
-  failOnError: boolean
+  failOnError: boolean,
+  tableName: string | undefined = TableName
 ): Promise<void> {
   const output = await client
     .batchWrite({
       RequestItems: {
-        [TableName]: items
+        [tableName]: items
       }
     })
     .promise();
@@ -107,7 +108,8 @@ const batchWriteStep = 25; // Max items written at once are 25
 // IMPORTANT: Duplicated items will be pruned
 export async function batchWrite(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-  failOnError: boolean
+  failOnError: boolean,
+  tableName: string | undefined = undefined
 ) {
   const writeRequests = [];
   for (let i = 0; i < items.length; i += batchWriteStep) {
@@ -117,7 +119,8 @@ export async function batchWrite(
       underlyingBatchWrite(
         nonDuplicatedItems.map((item) => ({ PutRequest: { Item: item } })),
         0,
-        failOnError
+        failOnError,
+        tableName
       )
     );
   }

@@ -29,7 +29,9 @@ export default async (backfillEvent?: ITriggerStoreVolumeEventHandler) => {
         result = await handlerTriggerStoreVolume(event)
     else
         result = (await invokeLambda(`defillama-prod-triggerStoreVolume`, event)) as { StatusCode: number, Payload: string }
-    console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
+
+    if (process.env.runLocal !== 'true')
+        console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
     /* console.info("Deleting event file...")
     fs.unlinkSync(EVENT_PATH)
     console.info("Event file deleted") */

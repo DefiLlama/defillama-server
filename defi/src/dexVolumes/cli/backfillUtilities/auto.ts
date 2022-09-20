@@ -30,10 +30,12 @@ const rl = readline.createInterface({
             await executeAsyncBackfill(backfillEvent)
             console.info(`Don't forget to enable the adapter to src/dexVolumes/dexAdapters/config.ts, bye llama🦙`)
             rl.close();
+            process.exit(0)
         }
         else {
             console.info("Backfill cancelled... bye llama🦙")
             rl.close();
+            process.exit(0)
         }
     });
 })()

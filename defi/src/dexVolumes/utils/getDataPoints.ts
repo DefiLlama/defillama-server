@@ -5,7 +5,7 @@ export const getDataPoints = (from: number = Date.UTC(2019, 9, 11)) => {
     const limitTime = Date.now() - DAY_IN_MILISECONDS
     const dataPoints = []
     for (let day = monitorDate; day <= limitTime; day += DAY_IN_MILISECONDS)
-        dataPoints.push(day / 1000)
+        dataPoints.push(Math.trunc(day / 1000))
     return dataPoints
 }
 

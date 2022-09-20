@@ -182,7 +182,7 @@ const removeVolumesObject = (dex: VolumeSummaryDex) => {
     return dex
 }
 
-const removeEventTimestampAttribute = (v: Volume) => {
+export const removeEventTimestampAttribute = (v: Volume) => {
     delete v.data['eventTimestamp']
     return v
 }

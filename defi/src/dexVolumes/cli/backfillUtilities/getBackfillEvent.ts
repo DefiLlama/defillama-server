@@ -11,7 +11,7 @@ import { removeEventTimestampAttribute } from "../../handlers/getDexs"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
-export default async (adapter?: string, onlyMissing: boolean = false) => {
+export default async (adapter?: string, onlyMissing: boolean | number = false) => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
         // 'mooniswap', 
@@ -54,6 +54,15 @@ export default async (adapter?: string, onlyMissing: boolean = false) => {
     ]
 
     const adapterName = adapter ?? DEXS_LIST[0]
+
+    let event: ITriggerStoreVolumeEventHandler | undefined
+    if (typeof onlyMissing === 'number')
+        event = {
+            backfill: [{
+                dexNames: [adapterName],
+                timestamp: onlyMissing
+            }]
+        }
 
     let startTimestamp = 0
     // Looking for start time from adapter, if not found will default to the above
@@ -128,12 +137,14 @@ export default async (adapter?: string, onlyMissing: boolean = false) => {
                 dayInMilis += DAY_IN_MILISECONDS
             }
     }
-    const event: ITriggerStoreVolumeEventHandler = {
-        backfill: dates.map(date => ({
-            dexNames: [adapterName],
-            timestamp: date.getTime() / 1000
-        }))
-    }
+
+    if (!event)
+        event = {
+            backfill: dates.map(date => ({
+                dexNames: [adapterName],
+                timestamp: date.getTime() / 1000
+            }))
+        }
 
     const eventFileLocation = path.resolve(__dirname, "output", `backfill_event.json`);
     ensureDirectoryExistence(eventFileLocation)

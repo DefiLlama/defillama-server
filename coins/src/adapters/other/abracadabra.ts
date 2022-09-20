@@ -8,7 +8,7 @@ const SPELLAddress: string = "0x090185f2135308bad17527004364ebcc2d37e5f6";
 const sSPELLAddress: string = "0x26fa3fffb6efe8c1e69103acb4044c26b9a106a9";
 const chain: any = "ethereum";
 
-export async function getTokenPrices(timestamp: number) {
+export default async function getTokenPrices(timestamp: number) {
   const writes: Write[] = [];
   let block: number | undefined = await getBlock(chain, timestamp);
 
@@ -54,5 +54,3 @@ export async function getTokenPrices(timestamp: number) {
 
   return writes;
 }
-getTokenPrices(0);
-// ts-node coins/src/adapters/other/abracadabra.ts

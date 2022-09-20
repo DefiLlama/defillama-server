@@ -150,7 +150,7 @@ async function getTokensFromFactory(
     timestamp
   );
 }
-export async function getTokenPrices(timestamp: number) {
+export default async function getTokenPrices(timestamp: number) {
   const chain: any = "avax";
   const block: number | undefined = await getBlock("avax", timestamp);
   let writes: Write[] = [];

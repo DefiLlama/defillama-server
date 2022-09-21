@@ -44,7 +44,7 @@ export default async function getTokenPrices(timestamp: number) {
     addToDBWritesList(
       writes,
       "solana",
-      p.tokenMint.toLowerCase(),
+      p.tokenMint,
       p.price,
       tokenMetaData.decimals,
       tokenMetaData.symbol,

@@ -32,7 +32,9 @@ export function addToDBWritesList(
       ...[
         {
           SK: getCurrentUnixTimestamp(),
-          PK: `asset#${chain}:${token.toLowerCase()}`,
+          PK: `asset#${chain}:${
+            chain == "solana" ? token : token.toLowerCase()
+          }`,
           price,
           symbol,
           decimals: Number(decimals),
@@ -41,7 +43,9 @@ export function addToDBWritesList(
         },
         {
           SK: 0,
-          PK: `asset#${chain}:${token.toLowerCase()}`,
+          PK: `asset#${chain}:${
+            chain == "solana" ? token : token.toLowerCase()
+          }`,
           price,
           symbol,
           decimals: Number(decimals),
@@ -62,7 +66,7 @@ export function addToDBWritesList(
     }
     writes.push({
       SK: timestamp,
-      PK: `asset#${chain}:${token.toLowerCase()}`,
+      PK: `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`,
       price,
       symbol,
       decimals: Number(decimals),

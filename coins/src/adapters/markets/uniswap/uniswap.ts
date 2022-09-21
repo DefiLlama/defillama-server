@@ -5,7 +5,7 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import { getLPInfo } from "../../utils/erc20";
-import { Write, Read } from "../../utils/dbInterfaces";
+import { Write, Read, CoinData } from "../../utils/dbInterfaces";
 import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
@@ -111,7 +111,7 @@ async function findPriceableLPs(
   token0s: MultiCallResults,
   token1s: MultiCallResults,
   reserves: MultiCallResults,
-  tokenPrices: Read[]
+  tokenPrices: CoinData[]
 ) {
   const priceableLPs: any = []; // lp : underlying
   for (let i = 0; i < pairAddresses.length; i++) {

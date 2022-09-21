@@ -6,6 +6,6 @@ const event = {
 } as unknown as APIGatewayProxyEvent
 
 export default async () => {
-    const response = await handler(event, undefined)
+    const response = await handler(event, true)
     console.log(JSON.parse(response.body) as IGetDexsResponseBody)
 }

@@ -2,7 +2,7 @@ import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import getBlock from "../../utils/block";
 import { Result, MultiCallResults } from "../../utils/sdkInterfaces";
 import { getTokenInfo } from "../../utils/erc20";
-import { Write, Read } from "../../utils/dbInterfaces";
+import { Write, CoinData } from "../../utils/dbInterfaces";
 import {
   addToDBWritesList,
   getTokenAndRedirectData
@@ -11,51 +11,30 @@ import abi from "./abi.json";
 
 function formWrites(
   underlyingBalances: Result[],
-  coinsData: Read[],
+  coinsData: CoinData[],
   lpTokenInfo: any,
   chain: string,
   timestamp: number
 ) {
-  const lpTokenPrices = underlyingBalances
-    .map((b: any) => {
-      let coinData: Read = coinsData.filter((c: Read) =>
-        c.dbEntry.PK.includes(b.input.target.toLowerCase())
+  const lpTokenPrices = coinsData
+    .map((c: CoinData) => {
+      const underlyingBalance = underlyingBalances.filter(
+        (t: any) => c.address == t.input.target.toLowerCase()
       )[0];
-
-      if (coinData == undefined) return;
-
-      let underlyingPrice: number =
-        coinData.redirect.length != 0
-          ? coinData.redirect[0].price
-          : coinData.dbEntry.price;
-
-      let confidence: number =
-        coinData.redirect.length != 0
-          ? coinData.redirect[0].confidence
-          : coinData.dbEntry.confidence;
-
-      const underlyingBalance = underlyingBalances.filter((t: any) =>
-        coinData.dbEntry.PK.includes(t.input.target.toLowerCase())
-      )[0];
-      const lpSupply =
-        lpTokenInfo.supplies[underlyingBalances.indexOf(underlyingBalance)]
-          .output;
-
-      const lpDecimals =
-        lpTokenInfo.decimals[underlyingBalances.indexOf(underlyingBalance)]
-          .output;
+      if (underlyingBalance == undefined) return;
+      const index = underlyingBalances.indexOf(underlyingBalance);
+      const lpSupply = lpTokenInfo.supplies[index].output;
+      const lpDecimals = lpTokenInfo.decimals[index].output;
       const price =
-        ((underlyingPrice * underlyingBalance.output) / lpSupply) *
-        10 ** (coinData.dbEntry.decimals - lpDecimals);
+        ((c.price * underlyingBalance.output) / lpSupply) *
+        10 ** (c.decimals - lpDecimals);
 
       return {
+        address: underlyingBalances[index].input.params[0].toLowerCase(),
         price,
-        decimals: coinData.dbEntry.decimals,
-        confidence,
-        address: b.input.params[0].toLowerCase(),
-        symbol:
-          lpTokenInfo.symbols[underlyingBalances.indexOf(underlyingBalance)]
-            .output
+        decimals: c.decimals,
+        symbol: lpTokenInfo.symbols[index].output,
+        confidence: c.confidence
       };
     })
     .filter((p: any) => p != undefined);
@@ -123,7 +102,7 @@ async function getTokensFromFactory(
     })
   ]);
 
-  let coinsData: Read[];
+  let coinsData: CoinData[];
   let underlyingBalances: Result[];
   [coinsData, { output: underlyingBalances }] = await Promise.all([
     getTokenAndRedirectData(
@@ -168,3 +147,5 @@ export default async function getTokenPrices(timestamp: number) {
   }
   return writes;
 }
+getTokenPrices(0);
+// ts-node coins/src/adapters/markets/platypus/platypus.ts

@@ -3,15 +3,9 @@ const contracts = require("./contracts.json");
 import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import getBlock from "../../utils/block";
 import { getGasTokenBalance } from "../../utils/gasTokens";
-import {
-  Result,
-  Multicall,
-  MultiCallResults,
-  TokenInfos
-} from "../../utils/sdkInterfaces";
+import { Result, Multicall, MultiCallResults } from "../../utils/sdkInterfaces";
 import { getTokenInfo } from "../../utils/erc20";
-import { listUnknownTokens } from "../../utils/erc20";
-import { Write, Read } from "../../utils/dbInterfaces";
+import { Write, CoinData } from "../../utils/dbInterfaces";
 import {
   addToDBWritesList,
   getTokenAndRedirectData
@@ -286,35 +280,28 @@ async function getUnderlyingPrices(
   timestamp: number,
   unknownTokensList: any[]
 ) {
-  const coinsData: Read[] = await getTokenAndRedirectData(
+  const coinsData: CoinData[] = await getTokenAndRedirectData(
     balances.map((r: Result) => r.input.target.toLowerCase()),
     chain,
     timestamp
   );
 
-  // replace this above with our new helper f
   const poolComponents = balances.map((b: any) => {
     try {
-      let coinData: Read = coinsData.filter((c: Read) =>
-        c.dbEntry.PK.includes(b.input.target.toLowerCase())
+      let coinData: CoinData = coinsData.filter(
+        (c: CoinData) => c.address == b.input.target.toLowerCase()
       )[0];
-
-      let price: number =
-        coinData.redirect.length != 0
-          ? coinData.redirect[0].price
-          : coinData.dbEntry.price;
-
-      let confidence: number =
-        coinData.redirect.length != 0
-          ? coinData.redirect[0].confidence
-          : coinData.dbEntry.confidence;
+      if (coinData == undefined) {
+        console.log("here");
+      }
       return {
-        balance: b.output / 10 ** coinData.dbEntry.decimals,
-        price,
-        decimals: coinData.dbEntry.decimals,
-        confidence
+        balance: b.output / 10 ** coinData.decimals,
+        price: coinData.price,
+        decimals: coinData.decimals,
+        confidence: coinData.confidence
       };
-    } catch {
+    } catch (e) {
+      let a = e;
       unknownTokensList.push(b.input.target.toLowerCase());
     }
   });
@@ -509,3 +496,5 @@ export default async function getTokenPrices(
   await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
   return writes;
 }
+getTokenPrices("ethereum", ["cryptoFactory"], 0);
+// ts-node coins/src/adapters/markets/curve/curve.ts

@@ -1,7 +1,14 @@
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
-import { Write, DbEntry, Redirect, DbQuery, Read } from "./dbInterfaces";
+import {
+  Write,
+  DbEntry,
+  Redirect,
+  DbQuery,
+  Read,
+  CoinData
+} from "./dbInterfaces";
 const confidenceThreshold: number = 0.4;
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -155,7 +162,7 @@ async function getTokenAndRedirectDataHistorical(
     }
   }
 
-  return validResults;
+  return aggregateTokenAndRedirectData(validResults);
 }
 async function getTokenAndRedirectDataCurrent(
   tokens: string[],
@@ -178,10 +185,11 @@ async function getTokenAndRedirectDataCurrent(
   }
   const redirectResults: Redirect[] = await batchGet(redirects);
 
-  return dbEntries.map((d) => ({
+  const reads: Read[] = dbEntries.map((d) => ({
     dbEntry: d,
     redirect: redirectResults.filter((r) => r.PK == d.redirect)
   }));
+  return aggregateTokenAndRedirectData(reads);
 }
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
   const filteredWrites: Write[] = [];
@@ -232,4 +240,36 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
   });
 
   return filteredWrites.filter((f: Write) => f != undefined);
+}
+function aggregateTokenAndRedirectData(reads: Read[]) {
+  const coinData: CoinData[] = reads.map((r: Read) => {
+    const addressIndex: number = r.dbEntry.PK.indexOf(":");
+    const chainIndex = r.dbEntry.PK.indexOf("#");
+
+    const confidence =
+      "confidence" in r.dbEntry
+        ? r.dbEntry.confidence
+        : r.redirect.length != 0 && "confidence" in r.redirect[0]
+        ? r.redirect[0].confidence
+        : undefined;
+
+    return {
+      chain:
+        addressIndex == -1
+          ? undefined
+          : r.dbEntry.PK.substring(chainIndex + 1, addressIndex),
+      address:
+        addressIndex == -1
+          ? r.dbEntry.PK
+          : r.dbEntry.PK.substring(addressIndex + 1),
+      decimals: r.dbEntry.decimals,
+      symbol: r.dbEntry.symbol,
+      price: r.redirect.length != 0 ? r.redirect[0].price : r.dbEntry.price,
+      timestamp: r.dbEntry.SK == 0 ? getCurrentUnixTimestamp() : r.dbEntry.SK,
+      redirect: r.redirect.length == 0 ? undefined : r.redirect[0].PK,
+      confidence
+    };
+  });
+
+  return coinData;
 }

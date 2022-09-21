@@ -4,35 +4,28 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
-import { Write, Read } from "../../utils/dbInterfaces";
+import { Write, CoinData } from "../../utils/dbInterfaces";
 import { Result } from "../../utils/sdkInterfaces";
 import getBlock from "../../utils/block";
 import contracts from "./contracts.json";
 import { getGasTokenBalance, wrappedGasTokens } from "../../utils/gasTokens";
 const gasTokenDummyAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
-async function processDbData(underlyingBalances: Result[], coinsData: Read[]) {
+async function processDbData(
+  underlyingBalances: Result[],
+  coinsData: CoinData[]
+) {
   return underlyingBalances.map((b: Result) => {
-    const coinData: Read = coinsData.filter((c: Read) =>
-      c.dbEntry.PK.includes(b.input.target.toLowerCase())
+    const coinData: CoinData = coinsData.filter(
+      (c: CoinData) => c.address == b.input.target.toLowerCase()
     )[0];
     if (coinData == undefined) return;
 
-    const price: number =
-      coinData.redirect.length != 0
-        ? coinData.redirect[0].price
-        : coinData.dbEntry.price;
-
-    const confidence: number =
-      coinData.redirect.length != 0
-        ? coinData.redirect[0].confidence
-        : coinData.dbEntry.confidence;
-
     return {
-      price,
-      decimals: coinData.dbEntry.decimals,
-      confidence,
-      PK: coinData.dbEntry.PK
+      price: coinData.price,
+      decimals: coinData.decimals,
+      confidence: coinData.confidence,
+      address: coinData.address
     };
   });
 }
@@ -49,12 +42,12 @@ function formWrites(
     if (d == undefined) return;
 
     const j = Object.values(pools).indexOf(
-      Object.values(pools).filter((p: any) =>
-        d.PK.includes(
-          p.underlying == gasTokenDummyAddress
+      Object.values(pools).filter(
+        (p: any) =>
+          d.address ==
+          (p.underlying == gasTokenDummyAddress
             ? wrappedGasTokens[chain]
-            : p.underlying
-        )
+            : p.underlying)
       )[0]
     );
     if (j == -1) return;
@@ -110,7 +103,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       )
   );
 
-  let coinsData: Read[] = await getTokenAndRedirectData(
+  let coinsData: CoinData[] = await getTokenAndRedirectData(
     Object.entries(pools).map((p: any) =>
       p[1].underlying == gasTokenDummyAddress
         ? wrappedGasTokens[chain]

@@ -35,3 +35,13 @@ export interface Price {
   address: string;
   price: number;
 }
+export interface CoinData {
+  chain: string | undefined;
+  address: string;
+  decimals: number;
+  symbol: string;
+  price: number;
+  timestamp: number;
+  redirect: string | undefined;
+  confidence: number | undefined;
+}

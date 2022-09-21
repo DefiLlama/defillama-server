@@ -15236,6 +15236,28 @@ listedAt: 1650804679
   twitter: "pegonetwork",
   listedAt: 1663772859
 },
+{
+  id: "2109",
+  name: "PYEswap",
+  address: "bsc:0xb4B486496469B3269c8907543706C377daAA4dD9",
+  symbol: "PYE",
+  url: "https://pyeswap.com/",
+  description: "The New Swap 2.0 Protocol",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/pyeswap.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "pyeswap/index.js",
+  twitter: "PyeEcosystem",
+  audit_links: ["https://solidity.finance/audits/PYESWAPV2"],
+  listedAt: 1663774420
+},
 ]
 
 

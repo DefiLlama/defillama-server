@@ -15194,6 +15194,27 @@ listedAt: 1650804679
   twitter: "HopSwapFinance",
   listedAt: 1663754952
 },
+{
+  id: "2107",
+  name: "MoonLift",
+  address: "bsc:0x9d7c580e0bc4ea441db96eebc7e1440d264bce51",
+  symbol: "MLTPX",
+  url: "https://dex.moonlift.capital/swap",
+  description: "MoonLift DEX on bsc",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/moonlift.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "moonlift",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "moonlift/index.js",
+  twitter: "MoonliftCapital",
+  listedAt: 1663772851
+},
 ]
 
 

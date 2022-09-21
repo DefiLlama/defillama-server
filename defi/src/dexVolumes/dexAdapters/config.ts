@@ -118,6 +118,12 @@ export default {
     },
     "wingriders": {
         enabled: true
+    },
+    "wombat-exchange": {
+        enabled: true
+    },
+    "dfyn": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

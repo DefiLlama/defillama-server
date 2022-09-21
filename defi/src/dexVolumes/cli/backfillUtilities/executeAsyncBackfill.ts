@@ -25,13 +25,17 @@ export default async (backfillEvent?: ITriggerStoreVolumeEventHandler) => {
     console.info("Event found!")
     console.info("Running lambda...")
     let result: any
-    if (process.env.runLocal === 'true')
-        result = await handlerTriggerStoreVolume(event)
-    else
-        result = (await invokeLambda(`defillama-prod-triggerStoreVolume`, event)) as { StatusCode: number, Payload: string }
+    try {
 
-    if (process.env.runLocal !== 'true')
-        console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
+        if (process.env.runLocal === 'true')
+            result = await handlerTriggerStoreVolume(event)
+        else
+            result = (await invokeLambda(`defillama-prod-triggerStoreVolume`, event)) as { StatusCode: number, Payload: string }
+        if (process.env.runLocal !== 'true')
+            console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
+        else console.log("Bye:)")
+    } catch (e) { (e: Error) => console.log(e) }
+
     /* console.info("Deleting event file...")
     fs.unlinkSync(EVENT_PATH)
     console.info("Event file deleted") */

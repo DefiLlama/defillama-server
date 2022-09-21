@@ -15258,6 +15258,27 @@ listedAt: 1650804679
   audit_links: ["https://solidity.finance/audits/PYESWAPV2"],
   listedAt: 1663774420
 },
+{
+  id: "2110",
+  name: "Ultron Staking Hub NFT",
+  address: "ultron:0x3a4F06431457de873B588846d139EC0d86275d54",
+  symbol: "ULX",
+  url: "https://ultron.foundation/stakingHubNft",
+  description: "The Staking Hub is an innovative digital asset growth instrument developed by the Ultron Foundation that enables users to receive daily APR returns in ULX coins. The predefined amount of ULX supply is destined for the Staking Hub rewards distribution according to the tokenomics.. Every user has registration and dashboard, with ability to mint NFT and stake it on the protocol for 5 years with vesting schedule. All liquidity is locked on a staking smart-contract and could be claimed at certain timelines",
+  chain: "Ultron",
+  logo: `${baseIconsUrl}/ultron-staking-hub-nft.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Ultron"],
+  oracles: [],
+  forkedFrom: [],
+  module: "ultronStakingHub/index.js",
+  twitter: "ultron_found",
+  listedAt: 1663775323
+},
 ]
 
 

@@ -15215,6 +15215,27 @@ listedAt: 1650804679
   twitter: "MoonliftCapital",
   listedAt: 1663772851
 },
+{
+  id: "2108",
+  name: "W3swap",
+  address: "bsc:0xc5db5afee4c55dfad5f2b8226c6ac882e6956a0a",
+  symbol: "OSK-DAO",
+  url: "https://w3swap.finance/",
+  description: "W3Swap DEX on bsc",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/w3swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "w3swap/index.js",
+  twitter: "pegonetwork",
+  listedAt: 1663772859
+},
 ]
 
 

@@ -15173,6 +15173,27 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/lakefront-finance"],
   listedAt: 1663708941
 },
+{
+  id: "2106",
+  name: "HopSwap",
+  address: "cronos:0xC912476268B365312eD60Ef2f23B4bce529bFB32",
+  symbol: "HOP",
+  url: "https://hopswap.finance/swap",
+  description: "HopSwap DEX on cronos",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/hopswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Cronos"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "hopswap/index.js",
+  twitter: "HopSwapFinance",
+  listedAt: 1663754952
+},
 ]
 
 

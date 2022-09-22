@@ -24,7 +24,7 @@ export default async function getTokenPrices(timestamp: number) {
     getTokenInfo(chain, [sSPELLAddress], block)
   ]);
 
-  const SPELLPrice: number = SPELLData[0].redirect[0].price;
+  const SPELLPrice: number = SPELLData[0].price;
   const price: number =
     (SPELLPrice * stakedBalance.output) / sSPELLInfo.supplies[0].output;
 

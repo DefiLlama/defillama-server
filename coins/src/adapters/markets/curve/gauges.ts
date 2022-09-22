@@ -5,7 +5,7 @@ import {
   addToDBWritesList,
   getTokenAndRedirectData
 } from "../../utils/database";
-import { Write, Read } from "../../utils/dbInterfaces";
+import { Write, CoinData } from "../../utils/dbInterfaces";
 import { getTokenInfo } from "../../utils/erc20";
 
 async function getGauges(chain: string, block: number | undefined) {
@@ -87,8 +87,8 @@ export default async function getTokenPrices(
   );
 
   successfulCallResults.map((c: any, i: number) => {
-    const dbEntries = tokenAndRedirectData.filter((e: Read) =>
-      e.dbEntry.PK.includes(c.lp.toLowerCase())
+    const dbEntries = tokenAndRedirectData.filter(
+      (e: CoinData) => e.address == c.lp.toLowerCase()
     );
     if (
       tokenInfos.symbols[i].output == null ||

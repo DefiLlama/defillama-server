@@ -5,7 +5,7 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import { getLPInfo } from "../../utils/erc20";
-import { Write, Read } from "../../utils/dbInterfaces";
+import { Write, Read, CoinData } from "../../utils/dbInterfaces";
 import { MultiCallResults, TokenInfos } from "../../utils/sdkInterfaces";
 import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
@@ -111,13 +111,11 @@ async function findPriceableLPs(
   token0s: MultiCallResults,
   token1s: MultiCallResults,
   reserves: MultiCallResults,
-  tokenPrices: Read[]
+  tokenPrices: CoinData[]
 ) {
   const priceableLPs: any = []; // lp : underlying
   for (let i = 0; i < pairAddresses.length; i++) {
-    const pricedTokens = tokenPrices.map((t) =>
-      t.dbEntry.PK.substring(t.dbEntry.PK.indexOf(":") + 1)
-    );
+    const pricedTokens = tokenPrices.map((t) => t.address);
     if (
       !pricedTokens.includes(
         token0s.output[i].output.toLowerCase() ||
@@ -158,7 +156,7 @@ async function lps(
   chain: string,
   timestamp: number,
   priceableLPs: any[],
-  tokenPrices: any[],
+  tokenPrices: CoinData[],
   tokenInfos: TokenInfos
 ) {
   priceableLPs.map(async (l: any, i: number) => {
@@ -175,19 +173,14 @@ async function lps(
     ) {
       return;
     }
-    const coinData: Read = tokenPrices.filter((p: Read) =>
-      p.dbEntry.PK.includes(l.primaryUnderlying.toLowerCase())
+    const coinData: CoinData = tokenPrices.filter(
+      (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
     )[0];
-
-    let underlyingPrice: number =
-      coinData.redirect.length != 0
-        ? coinData.redirect[0].price
-        : coinData.dbEntry.price;
 
     const supply =
       tokenInfos.supplies[i].output / 10 ** tokenInfos.lpDecimals[i].output;
     const value =
-      (underlyingPrice * 2 * l.primaryBalance) /
+      (coinData.price * 2 * l.primaryBalance) /
       10 ** tokenInfos.underlyingDecimalAs[i].output;
     const lpPrice: number = value / supply;
     if (isNaN(lpPrice)) return;
@@ -195,10 +188,7 @@ async function lps(
     const symbol: string = `${tokenInfos.symbolAs[i].output}-${tokenInfos.symbolBs[i].output}-${tokenInfos.lpSymbols[i].output}`;
 
     let confidence: number =
-      coinData.redirect.length != 0
-        ? coinData.redirect[0].confidence
-        : coinData.dbEntry.confidence;
-    if (confidence == undefined) confidence = 1;
+      coinData.confidence == undefined ? 1 : coinData.confidence;
 
     if (symbol.includes("null")) return;
     addToDBWritesList(
@@ -220,7 +210,7 @@ async function unknownTokens(
   router: string | undefined,
   timestamp: number,
   priceableLPs: any[],
-  tokenPrices: any[],
+  tokenPrices: CoinData[],
   tokenInfos: TokenInfos
 ) {
   if (router == undefined) return;
@@ -228,18 +218,14 @@ async function unknownTokens(
     (p: any) => p.bothTokensKnown == false
   );
   let tokenValues = lpsWithUnknown.map((l: any) => {
-    const coinData: Read = tokenPrices.filter((p: Read) =>
-      p.dbEntry.PK.includes(l.primaryUnderlying.toLowerCase())
+    const coinData: CoinData = tokenPrices.filter(
+      (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
     )[0];
 
     const i: number = priceableLPs.indexOf(l);
-    let underlyingPrice: number =
-      coinData.redirect.length != 0
-        ? coinData.redirect[0].price
-        : coinData.dbEntry.price;
 
     const sideValue: number =
-      (underlyingPrice * l.primaryBalance) /
+      (coinData.price * l.primaryBalance) /
       10 ** tokenInfos.underlyingDecimalAs[i].output;
 
     const tokenValue: number =
@@ -362,7 +348,7 @@ async function getConfidenceScores(
   });
   return confidences;
 }
-export default async function getPairPrices(
+export default async function getTokenPrices(
   chain: string,
   factory: string,
   router: string | undefined,

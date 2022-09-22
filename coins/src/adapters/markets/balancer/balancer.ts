@@ -4,7 +4,7 @@ import {
   addToDBWritesList,
   getTokenAndRedirectData
 } from "../../utils/database";
-import { Read, Write } from "../../utils/dbInterfaces";
+import { Write, CoinData } from "../../utils/dbInterfaces";
 import getBlock from "../../utils/block";
 import abi from "./abi.json";
 import { getTokenInfo } from "../../utils/erc20";
@@ -70,7 +70,7 @@ async function getPoolValues(
   poolIds: string[]
 ) {
   const uniqueTokens: string[] = findAllUniqueTokens(poolTokens);
-  const coinsData: Read[] = await getTokenAndRedirectData(
+  const coinsData: CoinData[] = await getTokenAndRedirectData(
     uniqueTokens,
     chain,
     timestamp
@@ -79,18 +79,15 @@ async function getPoolValues(
   poolTokens.map((p: any, i: number) => {
     poolTokenValues.push([]);
     p.tokens.map((t: string, j: number) => {
-      const tData = coinsData.filter((d: any) =>
-        d.dbEntry.PK.includes(t.toLowerCase())
+      const tData = coinsData.filter(
+        (d: any) => d.address == t.toLowerCase()
       )[0];
       if (tData == undefined) {
         poolTokenValues[i].push(undefined);
         return;
       }
-      const decimals = tData.dbEntry.decimals;
-      const price =
-        "price" in tData.dbEntry
-          ? tData.dbEntry.price
-          : tData.redirect[0].price;
+      const decimals = tData.decimals;
+      const price = tData.price;
       const tokenValue = (p.balances[j] * price) / 10 ** decimals;
       poolTokenValues[i].push(tokenValue);
     });

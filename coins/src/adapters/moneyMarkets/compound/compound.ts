@@ -6,7 +6,7 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
-import { Write, Read, Price } from "../../utils/dbInterfaces";
+import { Write, Price, CoinData } from "../../utils/dbInterfaces";
 import { Result } from "../../utils/sdkInterfaces";
 import getBlock from "../../utils/block";
 
@@ -68,7 +68,7 @@ export default async function getTokenPrices(
 
   const cTokens: CToken[] = await getcTokens(chain, comptroller, block);
 
-  const coinsData: Read[] = await getTokenAndRedirectData(
+  const coinsData: CoinData[] = await getTokenAndRedirectData(
     cTokens.map((c: CToken) => c.underlying),
     chain,
     timestamp
@@ -107,17 +107,13 @@ export default async function getTokenPrices(
 
   cTokens.map((t: CToken, i: number) => {
     try {
-      const coinData: Read = coinsData.filter((c: Read) =>
-        c.dbEntry.PK.includes(t.underlying)
+      const coinData: CoinData = coinsData.filter(
+        (c: CoinData) => c.address == t.underlying
       )[0];
-      let price: number =
-        coinData.redirect.length != 0
-          ? coinData.redirect[0].price
-          : coinData.dbEntry.price;
 
       prices.push({
         address: t.address,
-        price: price * exchangeRates[i].output
+        price: coinData.price * exchangeRates[i].output
       });
     } catch {
       unknownTokens.push(t.underlying);

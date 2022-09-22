@@ -15333,7 +15333,7 @@ listedAt: 1650804679
   url: "https://wojak.fi",
   description: "The newest DEX on Doge!",
   chain: "Dogechain",
-  logo: `${baseIconsUrl}/wojak-finance.png`,
+  logo: `${baseIconsUrl}/wojak-finance.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

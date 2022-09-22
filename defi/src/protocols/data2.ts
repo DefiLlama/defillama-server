@@ -15282,6 +15282,27 @@ listedAt: 1650804679
   twitter: "ultron_found",
   listedAt: 1663775323
 },
+{
+  id: "2111",
+  name: "UwU Lend",
+  address: "0x55C08ca52497e2f1534B59E2917BF524D4765257",
+  symbol: "UWU",
+  url: "https://www.uwulend.fi/",
+  description: "UwU Lend is a liquidity market that offers depositing and borrowing. Users earn interest on deposits and pay interest to borrow",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/uwu-lend.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: ["Aave"],
+  module: "uwulend/index.js",
+  twitter: "UwU_Lend",
+  listedAt: 1663811025
+}
 ]
 
 

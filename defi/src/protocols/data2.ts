@@ -15346,6 +15346,27 @@ listedAt: 1650804679
   twitter: "wojakfi",
   listedAt: 1663855849
 },
+{
+  id: "2114",
+  name: "NUDES",
+  address: "neo:0x340720c7107ef5721e44ed2ea8e314cce5c130fa",
+  symbol: "WOJK",
+  url: "https://nudes.army",
+  description: "There are 7.9 billion people on Earth. Every single one of us has a duty to send NUDES to one another. The NUDES token was minted by smart contract on the Neo N3 blockchain.",
+  chain: "NEO",
+  logo: `${baseIconsUrl}/nudes.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "nudes",
+  cmcId: "19350",
+  category: "Liquid Staking",
+  chains: ["NEO"],
+  oracles: [],
+  forkedFrom: [],
+  module: "nudes.js",
+  twitter: "SendnudesToken",
+  listedAt: 1663857059
+},
 ]
 
 

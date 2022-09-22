@@ -240,7 +240,7 @@ functions:
           method: get
   storeLiquidations:
     handler: src/storeLiquidations.default
-    timeout: 900
+    timeout: 1200
     memorySize: 2000
     events:
       # update latest every 20 minutes

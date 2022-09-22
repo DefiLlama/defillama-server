@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
@@ -9,12 +10,18 @@ import {
   Read,
   CoinData
 } from "./dbInterfaces";
+
 const confidenceThreshold: number = 0.4;
+const isTest = true;
+
 export async function getTokenAndRedirectData(
   tokens: string[],
   chain: string,
   timestamp: number
 ) {
+  if (isTest) {
+    return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
+  }
   if (timestamp == 0) {
     return await getTokenAndRedirectDataCurrent(tokens, chain, timestamp);
   } else {
@@ -81,6 +88,26 @@ export function addToDBWritesList(
       confidence: Number(confidence)
     });
   }
+}
+async function getTokenAndRedirectDataFromAPI(
+  tokens: string[],
+  chain: string,
+  timestamp: number
+) {
+  const burl = "https://coins.llama.fi/prices/";
+  const historical = timestamp == 0 ? "current/" : `historical/${timestamp}/`;
+  const coins = tokens
+    .reduce((p: string, c: string) => p + `${chain}:${c},`, "")
+    .slice(0, -1);
+  const tokenPrices = (await axios.get(`${burl}${historical}${coins}`)).data
+    .coins;
+  return Object.entries(tokenPrices).map((e: any) => {
+    const pk = e[0];
+    let data = e[1];
+    data.chain = pk.substring(0, pk.indexOf(":"));
+    data.address = pk.substring(pk.indexOf(":") + 1);
+    return data;
+  });
 }
 async function getTokenAndRedirectDataHistorical(
   tokens: string[],

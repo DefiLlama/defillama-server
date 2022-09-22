@@ -15302,7 +15302,50 @@ listedAt: 1650804679
   module: "uwulend/index.js",
   twitter: "UwU_Lend",
   listedAt: 1663811025
-}
+},
+{
+  id: "2112",
+  name: "Stake.ly",
+  address: "klaytn:0xF80F2b22932fCEC6189b9153aA18662b15CC9C00",
+  symbol: "stKLAY",
+  url: "https://stake.ly",
+  description: "Stake.ly is a liquid staking protocol on Klaytn.",
+  chain: "Klaytn",
+  logo: `${baseIconsUrl}/stake.ly.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Klaytn"],
+  oracles: [],
+  forkedFrom: [],
+  module: "stake-ly/index.js",
+  twitter: "stake_ly",
+  audit_links: ["https://github.com/stakely-protocol/audit/blob/main/report.pdf"],
+  listedAt: 1663855846
+},
+{
+  id: "2113",
+  name: "Wojak Finance",
+  address: "dogechain:0x570C41a71b5e2cb8FF4445184d7ff6f78A4DbcBD",
+  symbol: "WOJK",
+  url: "https://wojak.fi",
+  description: "The newest DEX on Doge!",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/wojak-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "wojakfinance/index.js",
+  twitter: "wojakfi",
+  listedAt: 1663855849
+},
 ]
 
 

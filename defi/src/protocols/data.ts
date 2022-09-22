@@ -4595,7 +4595,7 @@ const data: Protocol[] = [
   {
     id: "335",
     name: "Flashstake",
-    address: "0x20398ad62bb2d930646d45a6d4292baa0b860c1f",
+    address: "0xB1f1F47061A7Be15C69f378CB3f69423bD58F2F8",
     symbol: "FLASH",
     url: "https://flashstake.io/",
     description:
@@ -4604,7 +4604,7 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/flashstake.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "flash-stake",
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum"],

@@ -6,7 +6,7 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import { MultiCallResults } from "../../utils/sdkInterfaces";
-import { Read, Write } from "../../utils/dbInterfaces";
+import { CoinData, Write } from "../../utils/dbInterfaces";
 import { requery } from "../../utils/sdk";
 import getBlock from "../../utils/block";
 const manualVaults = [
@@ -71,15 +71,15 @@ async function getPricePerShare(
 async function getUsdValues(
   pricePerShares: MultiCallResults,
   vaults: VaultKeys[],
-  coinsData: Read[]
+  coinsData: CoinData[]
 ) {
   let usdValues = pricePerShares.output.map((t) => {
     const selectedVaults = vaults.filter(
       (v: VaultKeys) => v.address.toLowerCase() == t.input.target.toLowerCase()
     );
     const underlying = selectedVaults[0].token.address;
-    const coinData: Read = coinsData.filter((c: Read) =>
-      c.dbEntry.PK.includes(underlying.toLowerCase())
+    const coinData: CoinData = coinsData.filter(
+      (c: CoinData) => c.address == underlying.toLowerCase()
     )[0];
     if (!coinData)
       return {
@@ -89,15 +89,11 @@ async function getUsdValues(
         symbol: "fail"
       };
 
-    const underlyingPrice: number =
-      coinData.redirect.length != 0
-        ? coinData.redirect[0].price
-        : coinData.dbEntry.price;
     const decimal = resolveDecimals(t.output, 0);
 
     return {
       address: t.input.target.toLowerCase(),
-      price: (t.output * underlyingPrice) / 10 ** decimal,
+      price: (t.output * coinData.price) / 10 ** decimal,
       decimal,
       symbol: selectedVaults[0].symbol
     };
@@ -155,7 +151,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   // 135
   await pushMoreVaults(chain, vaults, block);
 
-  const coinsData: Read[] = await getTokenAndRedirectData(
+  const coinsData: CoinData[] = await getTokenAndRedirectData(
     vaults.map((v: VaultKeys) => v.token.address.toLowerCase()),
     chain,
     timestamp

@@ -5,7 +5,7 @@ import {
   getTokenAndRedirectData
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
-import { Write } from "../../utils/dbInterfaces";
+import { CoinData, Write } from "../../utils/dbInterfaces";
 import { Result } from "../../utils/sdkInterfaces";
 import { listUnknownTokens } from "../../utils/erc20";
 import getBlock from "../../utils/block";
@@ -85,24 +85,27 @@ export default async function getTokenPrices(
 
   let writes: Write[] = [];
   reserveData.map((r, i) => {
-    try {
-      addToDBWritesList(
-        writes,
-        chain,
-        r.output.aTokenAddress.toLowerCase(),
-        undefined,
-        tokenInfo.decimals[i].output,
-        tokenInfo.symbols[i].output,
-        timestamp,
-        "aave",
-        1,
-        underlyingRedirects.filter((u) =>
-          u.dbEntry.PK.includes(r.input.params[0].toLowerCase())
-        )[0].redirect[0].PK
-      );
-    } catch {
-      unknownTokens.push(r.input.params[0].toLowerCase());
-    }
+    const underlying: CoinData = underlyingRedirects.filter(
+      (u) => u.address == r.input.params[0].toLowerCase()
+    )[0];
+
+    const redirect =
+      underlying.redirect == undefined
+        ? `asset#${underlying.chain}:${underlying.address}`
+        : underlying.redirect;
+
+    addToDBWritesList(
+      writes,
+      chain,
+      r.output.aTokenAddress.toLowerCase(),
+      undefined,
+      tokenInfo.decimals[i].output,
+      tokenInfo.symbols[i].output,
+      timestamp,
+      "aave",
+      1,
+      redirect
+    );
   });
 
   await listUnknownTokens(chain, unknownTokens, block);

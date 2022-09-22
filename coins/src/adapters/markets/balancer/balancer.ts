@@ -166,5 +166,3 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   return writes;
 }
-getTokenPrices("ethereum", 0);
-// ts-node coins/src/adapters/markets/balancer/balancer.ts

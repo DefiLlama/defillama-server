@@ -291,17 +291,14 @@ async function getUnderlyingPrices(
       let coinData: CoinData = coinsData.filter(
         (c: CoinData) => c.address == b.input.target.toLowerCase()
       )[0];
-      if (coinData == undefined) {
-        console.log("here");
-      }
+
       return {
         balance: b.output / 10 ** coinData.decimals,
         price: coinData.price,
         decimals: coinData.decimals,
         confidence: coinData.confidence
       };
-    } catch (e) {
-      let a = e;
+    } catch {
       unknownTokensList.push(b.input.target.toLowerCase());
     }
   });
@@ -492,9 +489,7 @@ export default async function getTokenPrices(
     unknownPoolList,
     unknownTokensList
   );
-  //await listUnknownTokens(chain, unknownTokensList, block);
+
   await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
   return writes;
 }
-getTokenPrices("ethereum", ["cryptoFactory"], 0);
-// ts-node coins/src/adapters/markets/curve/curve.ts

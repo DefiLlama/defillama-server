@@ -2,7 +2,7 @@ import {
   addToDBWritesList,
   getTokenAndRedirectData
 } from "../../utils/database";
-import { Write, Read } from "../../utils/dbInterfaces";
+import { Write, CoinData } from "../../utils/dbInterfaces";
 import axios from "axios";
 import { multiCall } from "@defillama/sdk/build/abi";
 const abi = require("./abi.json");
@@ -43,28 +43,23 @@ async function fetchFromIpfs(chain: string) {
 }
 function formWrites(
   markets: Market[],
-  underlyingPrices: Read[],
+  underlyingPrices: CoinData[],
   rates: Result[],
   chain: string,
   timestamp: number
 ) {
   const writes: Write[] = [];
   markets.map((m: any) => {
-    const coinData: Read = underlyingPrices.filter((c: Read) =>
-      c.dbEntry.PK.includes(m.underlying.toLowerCase())
+    const coinData: CoinData = underlyingPrices.filter(
+      (c: CoinData) => c.address == m.underlying.toLowerCase()
     )[0];
 
     if (coinData == undefined) return;
-    const underlyingPrice: number =
-      coinData.redirect.length != 0
-        ? coinData.redirect[0].price
-        : coinData.dbEntry.price;
-
     const rate: Result = rates.filter(
       (r: Result) => r.input.target == m.address
     )[0];
     const eTokenPrice: number =
-      (underlyingPrice * rate.output) / 10 ** m.decimals;
+      (coinData.price * rate.output) / 10 ** m.decimals;
 
     if (eTokenPrice == 0) return;
 
@@ -94,7 +89,7 @@ export default async function getTokenPrices(
     await fetchFromIpfs(chain)
   ]);
 
-  let underlyingPrices: Read[];
+  let underlyingPrices: CoinData[];
   let rates: Result[];
   [underlyingPrices, { output: rates }] = await Promise.all([
     getTokenAndRedirectData(

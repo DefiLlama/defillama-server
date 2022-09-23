@@ -15413,7 +15413,49 @@ listedAt: 1650804679
   twitter: "0xProject",
   audit_links: ["https://docs.0x.org/developer-resources/audits"],
   listedAt: 1663922935
-}
+},
+{
+  id: "2117",
+  name: "DOOAR",
+  address: null,
+  symbol: "-",
+  url: "https://beta.dooar.com/swap",
+  description: ".",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/dooar.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "dooar/index.js",
+  twitter: "Dooarofficial",
+  listedAt: 1663940265
+},
+{
+  id: "2118",
+  name: "WinerySwap",
+  address: "bsc:0xe7eada32caf827d3ba8cb1074830d803c9bd48c3",
+  symbol: "CORK",
+  url: "https://winery.finance",
+  description: "An explosive innovation of all-in-one decentralized exchange",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/wineryswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "cork",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "winery-swap/index.js",
+  twitter: "WinerySwap",
+  listedAt: 1663940269
+},
 ]
 
 

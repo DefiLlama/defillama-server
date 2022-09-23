@@ -15350,7 +15350,7 @@ listedAt: 1650804679
   id: "2114",
   name: "NUDES",
   address: "neo:0x340720c7107ef5721e44ed2ea8e314cce5c130fa",
-  symbol: "WOJK",
+  symbol: "NUDES",
   url: "https://nudes.army",
   description: "There are 7.9 billion people on Earth. Every single one of us has a duty to send NUDES to one another. The NUDES token was minted by smart contract on the Neo N3 blockchain.",
   chain: "NEO",

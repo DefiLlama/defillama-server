@@ -15367,6 +15367,31 @@ listedAt: 1650804679
   twitter: "SendnudesToken",
   listedAt: 1663857059
 },
+{
+  id: "2115",
+  name: "Flashstake",
+  address: "0xB1f1F47061A7Be15C69f378CB3f69423bD58F2F8",
+  symbol: "FLASH",
+  url: "https://flashstake.io/",
+  description:
+    "The Flashstake protocol is a novel financial infrastructure that allows users to receive instant yield on deposited assets by locking up principal for a chosen duration. The protocol is made possible by Flash Strategies, which utilize underlying protocols such as AAVE, Yearn, etc. to generate yield. For more information visit the documentation: https://docs.flashstake.io/",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/flashstake.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "flash-stake",
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  module: "flashstake/index.js",
+  forkedFrom: [],
+  twitter: "flashstake",
+  audit_links: [
+    "https://docs.flashstake.io/security.html",
+    "https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-Flashstake-v1.0.pdf"
+  ],
+  listedAt: 1663898509
+},
 ]
 
 

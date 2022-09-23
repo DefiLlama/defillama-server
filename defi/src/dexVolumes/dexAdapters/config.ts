@@ -128,6 +128,9 @@ export default {
     "flamingo-finance": {
         enabled: true
     },
+    "0x": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

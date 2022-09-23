@@ -25,17 +25,13 @@ const dexData: Dex[] = dexAdaptersKeys.map(adapterKey => {
         || dexP.gecko_id?.includes(adapterKey)
         || dexP.module.split("/")[0]?.includes(adapterKey)
     )
-    if (dexFoundInProtocols) {
-        const ada: VolumeAdapter = (importVolumeAdapter({ volumeAdapter: adapterKey } as Dex)).default
-        if ("breakdown" in ada)
-            return {
-                ...dexFoundInProtocols,
-                name: Object.keys(ada.breakdown).length === 1 ? `${dexFoundInProtocols.name} (${Object.keys(ada.breakdown)[0]})` : dexFoundInProtocols.name,
-                chains: getAllChainsFromDexAdapters([adapterKey]),
-                volumeAdapter: adapterKey,
-                config: config[adapterKey]
-            }
-    }
+    if (dexFoundInProtocols) 
+        return {
+            ...dexFoundInProtocols,
+            chains: getAllChainsFromDexAdapters([adapterKey]),
+            volumeAdapter: adapterKey,
+            config: config[adapterKey]
+        }
     // TODO: Handle better errors
     //console.error(`Missing info for ${adapterKey} DEX!`)
     return undefined

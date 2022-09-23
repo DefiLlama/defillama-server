@@ -15392,6 +15392,28 @@ listedAt: 1650804679
   ],
   listedAt: 1663898509
 },
+{
+  id: "2116",
+  name: "0x",
+  address: "0xe41d2489571d322189246dafa5ebde1f4699f498",
+  symbol: "ZRX",
+  url: "https://www.0x.org/",
+  description:
+    "Open-source, decentralized exchange infrastructure that enables the exchange of tokenized assets on multiple blockchains.",
+  chain: "Ethereum",
+  logo: null,
+  audits: "",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Ethereum", "Polygon"],
+  module: "",
+  forkedFrom: [],
+  twitter: "0xProject",
+  audit_links: ["https://docs.0x.org/developer-resources/audits"],
+  listedAt: 1663922935
+}
 ]
 
 

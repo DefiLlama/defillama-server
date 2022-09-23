@@ -20,6 +20,7 @@ export interface IGetDexsResponseBody extends IGeneralStats {
 }
 
 export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
+    displayName: string | null
     totalVolume24h: number | null
     volume24hBreakdown: IRecordVolumeData | null
     volumeAdapter: Dex['volumeAdapter']
@@ -83,11 +84,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayTimestamp)
 
             const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
-            let name = adapter.name
+            let desplayName = adapter.name
             if ("breakdown" in ada)
-                name = Object.keys(ada.breakdown).length === 1 ? `${adapter.name} (${Object.keys(ada.breakdown)[0]})` : adapter.name
+                desplayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
             return {
-                name: name,
+                name: adapter.name,
+                displayName: desplayName,
                 volumeAdapter: adapter.volumeAdapter,
                 totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
                 volume24hBreakdown: prevDayVolume ? prevDayVolume.data : null,
@@ -109,6 +111,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             return {
                 name: adapter.name,
                 volumeAdapter: adapter.volumeAdapter,
+                displayName: null,
                 totalVolume24h: null,
                 volume24hBreakdown: null,
                 yesterdayTotalVolume: null,

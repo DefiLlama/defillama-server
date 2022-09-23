@@ -42,7 +42,7 @@ test("all chains are on chainMap", async () => {
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
     const module = await importProtocol(protocol)
-    const chains = protocol.chains.map((chain) => normalizeChain(chain));
+    const chains = protocol.module.includes("volumes/") ? Object.keys(module) : protocol.chains.map((chain) => normalizeChain(chain));
     if (chains.length > 1) {
       chains.forEach((chain) => {
         if (module[chain] === undefined) {

@@ -15408,7 +15408,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["Ethereum", "Polygon"],
-  module: "",
+  module: "../volumes/adapters/0x",
   forkedFrom: [],
   twitter: "0xProject",
   audit_links: ["https://docs.0x.org/developer-resources/audits"],

@@ -1,9 +1,7 @@
 import config from "../dexAdapters/config";
-import adapters from "@defillama/adapters/volumes"
+// import adapters from "@defillama/adapters/volumes"
 import { readdirSync } from 'fs'
 import path from "path";
-
-var absolutePath = path.resolve("Relative file path");
 
 const getDirectories = (source: string) =>
   readdirSync(source, { withFileTypes: true })

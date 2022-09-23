@@ -124,7 +124,10 @@ export default {
     },
     "dfyn": {
         enabled: true
-    }
+    },
+    "flamingo-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

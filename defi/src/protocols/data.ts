@@ -7870,7 +7870,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Yield Aggregator",
+    category: "Yield",
     chains: ["Fantom", "Avalanche", "Polygon"],
     module: "robovault/index.js",
     twitter: "robo_vault",

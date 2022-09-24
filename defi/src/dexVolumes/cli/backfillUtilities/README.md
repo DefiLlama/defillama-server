@@ -15,7 +15,7 @@
 > npm run backfill-dex <adaptername> <timestamp>
 ```
 
-The previous commands will run the backfill in the cloud. I you would like to run it locally you can use
+The previous commands will run the backfill in the cloud. If you would like to run it locally you can use
 ```
 > npm run backfill-dex-local <adaptername> [onlyMissing]
 ```

@@ -15521,6 +15521,27 @@ listedAt: 1650804679
   parentProtocol: "Frax Finance",
   listedAt: 1663946542
 },
+{
+  id: "2122",
+  name: "HipPoWSwap",
+  address: "ethpow:0x08AF02e0A2Ff52f26534c96bFba3aA1F38b26865",
+  symbol: "HSWAP",
+  url: "https://hippowswap.com/#/swap",
+  description: "HipPoWSwap is a decentralized exchange running on the Eth PoW chain",
+  chain: "EthPoW",
+  logo: `${baseIconsUrl}/hippowswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "hippowswap",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthPoW"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "hippowswap/index.js",
+  twitter: "HipPoWSwap",
+  listedAt: 1664038403
+},
 ]
 
 

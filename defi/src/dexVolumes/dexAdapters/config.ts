@@ -131,6 +131,78 @@ export default {
     "0x": {
         enabled: true
     },
+    "baryon": {
+        enabled: true
+    },
+    "cherryswap": {
+        enabled: true
+    },
+    "clipper": {
+        enabled: true
+    },
+    "cryptoswap": {
+        enabled: true
+    },
+    "ellipsis": {
+        enabled: true
+    },
+    "klex-finance": {
+        enabled: true
+    },
+    "koyo": {
+        enabled: true
+    },
+    "pyeswap": {
+        enabled: true
+    },
+    "smbswap": {
+        enabled: true
+    },
+    "sunswap": {
+        enabled: true
+    },
+    "whaleswap": {
+        enabled: true
+    },
+    "nomiswap": {
+        enabled: true
+    },
+    "fstswap": {
+        enabled: true
+    },
+    "beethoven-x": {
+        enabled: true
+    },
+    "defi-swap": {
+        enabled: true
+    },
+    "wanswap-dex": {
+        enabled: true
+    },
+    "solarbeam": {
+        enabled: true
+    },
+    "tomb-finance": {
+        enabled: true
+    },
+    "dfx-finance": {
+        enabled: true
+    },
+    "frax": {
+        enabled: true
+    },
+    "izumi-finance": {
+        enabled: true
+    },
+    "tinyman": {
+        enabled: true
+    },
+    "junoswap": {
+        enabled: true
+    },
+    "knightswap-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

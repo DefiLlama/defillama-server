@@ -15542,6 +15542,52 @@ listedAt: 1650804679
   twitter: "HipPoWSwap",
   listedAt: 1664038403
 },
+{
+  id: "2123",
+  name: "UniWswap",
+  address: "ethpow:0x2a0cf46ECaaEAD92487577e9b737Ec63B0208a33",
+  symbol: "UNIW",
+  url: "https://uniwswap.com/",
+  description: "UniWswap is the most advanced active project on chain, and are helping other projects join the ETHW ecosystem. We are also the only DEX Listed on DexScreener, and the biggest one by liquidity. Lowest trading fees on all the ethw chain.",
+  chain: "EthPoW",
+  logo: `${baseIconsUrl}/uniwswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthPoW"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "uniwswap/index.js",
+  twitter: "uniwswap",
+  audit_links: [
+    "https://coinsult.net/projects/uniwswap/",
+    "https://github.com/Coinsult/solidity/blob/main/UniWswapAudit.pdf"
+  ],
+  listedAt: 1664061499
+},
+{
+  id: "2124",
+  name: "PowSea",
+  address: "ethpow:0x681c4d35CeE7B2aa44FD1525cdFa042412A2ca61",
+  symbol: "SEA",
+  url: "https://powsea.finance/",
+  description: "The #1 NFT Marketplace and DEX on Ethereum PoW",
+  chain: "EthPoW",
+  logo: `${baseIconsUrl}/powsea.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthPoW"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "PowSea/index.js",
+  twitter: "powseafinance",
+  listedAt: 1664061587
+},
 ]
 
 

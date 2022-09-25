@@ -15588,6 +15588,27 @@ listedAt: 1650804679
   twitter: "powseafinance",
   listedAt: 1664061587
 },
+{
+  id: "2125",
+  name: "PoWSwap",
+  address: "ethpow:0x02Cc78362D8124A17d3F884Dbd7476c4ec534Cdb",
+  symbol: "POW",
+  url: "https://powswap.io/",
+  description: "Powswap is the first and largest DEX on ETHW. Swap tokens, farm to earn POW and stake POW to earn trading fees.",
+  chain: "EthPoW",
+  logo: `${baseIconsUrl}/powswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "powswap",
+  cmcId: "21930",
+  category: "Dexes",
+  chains: ["EthPoW"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "powswap/index.js",
+  twitter: "powswap_io",
+  listedAt: 1664129429
+},
 ]
 
 

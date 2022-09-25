@@ -168,7 +168,7 @@ export default {
         enabled: true
     },
     "fstswap": {
-        enabled: true
+        enabled: false
     },
     "beethoven-x": {
         enabled: true

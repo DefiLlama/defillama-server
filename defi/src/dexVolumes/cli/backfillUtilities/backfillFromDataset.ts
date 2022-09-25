@@ -21,7 +21,7 @@ interface IBackupData {
             const legacyVolume = backUp[t.toString()] ?? dataSet[t.toString()]
 
             const newProt = typeof volume === 'string' ? {
-                [protocolId]: volume
+                [protocolId]: +volume
             } : undefined
             //console.log(typeof legacyVolume, !newDaily[t.toString()])
             if (legacyVolume instanceof Volume && !newDaily[t.toString()] && legacyVolume.type === type) {
@@ -52,6 +52,7 @@ interface IBackupData {
         const entries = Object.values(backup)
         for (const volumeObj of entries) {
             if (typeof volumeObj === 'string') continue
+            console.log("Storing", volumeObj)
             await storeVolume(volumeObj, Date.now() / 1000)
         }
     }

@@ -3,6 +3,6 @@ import { removeVolume, VolumeType } from "../../data/volume"
 
 (async () => {
     console.log("Removing...")
-    const ok = await removeVolume("194", VolumeType.totalVolume)
+    const ok = await removeVolume("194", VolumeType.dailyVolume)
     console.log(ok)
 })()

@@ -3,13 +3,13 @@ import dexVolumes from "@defillama/adapters/volumes";
 import { DISABLED_ADAPTER_KEY, VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
 import { CHAIN } from "@defillama/adapters/volumes/helper/chains";
 
-const getAllChainsFromDexAdapters = (dexs2Filter: string[]) =>
+const getAllChainsFromDexAdapters = (dexs2Filter: string[], filter: boolean = true) =>
     Object.entries(dexVolumes)
         .filter(([key]) => dexs2Filter.includes(key))
         .map(([_, volume]) => volume)
         .reduce((acc, dexAdapter) => {
             if ("volume" in dexAdapter) {
-                const chains = (Object.keys(dexAdapter.volume)).filter(c => c !== DISABLED_ADAPTER_KEY) as Chain[]
+                const chains = (Object.keys(dexAdapter.volume)).filter(c => !filter || c !== DISABLED_ADAPTER_KEY) as Chain[]
                 for (const chain of chains)
                     if (!acc.includes(chain)) acc.push(chain)
             } else if ("breakdown" in dexAdapter) {
@@ -22,7 +22,9 @@ const getAllChainsFromDexAdapters = (dexs2Filter: string[]) =>
             return acc
         }, [] as Chain[])
 
-export const getChainByProtocolVersion = (adapterVolume: string, chainFilter?: string) => {
+export const isDisabled = (dex: string) => getAllChainsFromDexAdapters([dex], false).includes(DISABLED_ADAPTER_KEY as Chain)
+
+export const getChainByProtocolVersion = (adapterVolume: string, chainFilter?: string, filter: boolean = true) => {
     const dexAdapter = (dexVolumes as { [volumeAdapter: string]: VolumeAdapter })[adapterVolume]
     const chainsAcc: {
         [protVersion: string]: string[]
@@ -31,7 +33,7 @@ export const getChainByProtocolVersion = (adapterVolume: string, chainFilter?: s
         return null
     } else if ("breakdown" in dexAdapter) {
         for (const [protVersion, brokenDownDex] of Object.entries(dexAdapter.breakdown)) {
-            const chains = Object.keys(brokenDownDex).filter(c => c !== DISABLED_ADAPTER_KEY) as Chain[]
+            const chains = Object.keys(brokenDownDex).filter(c => (!filter || c !== DISABLED_ADAPTER_KEY)) as Chain[]
             for (const c of chains) {
                 const chain = formatChain(c)
                 if (chainFilter && chain !== formatChain(chainFilter)) continue
@@ -43,6 +45,12 @@ export const getChainByProtocolVersion = (adapterVolume: string, chainFilter?: s
         }
     } else console.error("Invalid adapter")
     return chainsAcc
+}
+
+export const isDisabledByProtocolVersion = (adapterVolume: string, chainFilter?: string, protV?: string) => {
+    const chs = getChainByProtocolVersion(adapterVolume, chainFilter, false)
+    if (!chs || !protV) return false
+    return chs[protV].includes(DISABLED_ADAPTER_KEY)
 }
 
 export const formatChain = (chain: string) => {

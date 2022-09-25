@@ -5,7 +5,7 @@ import allSettled from "promise.allsettled";
 import { IRecordVolumeData } from "../storeDexVolume";
 import { calcNdChange, generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IChartDataByDex, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date";
-import getAllChainsFromDexAdapters, { formatChain, getChainByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
+import getAllChainsFromDexAdapters, { formatChain, getChainByProtocolVersion, isDisabled, isDisabledByProtocolVersion } from "../../utils/getChainsFromDexAdapters";
 import config from "../../dexAdapters/config";
 import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
 import { sendDiscordAlert } from "../../utils/notify";
@@ -29,6 +29,7 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
     change_7d: number | null
     change_1m: number | null
     chains: string[] | null
+    disabled: boolean
     protocolVersions: {
         [protVersion: string]: {
             totalVolume24h: number | null
@@ -36,6 +37,7 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
             change_7d: number | null
             change_1m: number | null
             chains: string[] | null
+            disabled: boolean
         } | null
     } | null
 }
@@ -89,6 +91,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 desplayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
             return {
                 name: adapter.name,
+                disabled: isDisabled(adapter.volumeAdapter),
                 displayName: desplayName,
                 volumeAdapter: adapter.volumeAdapter,
                 totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
@@ -101,7 +104,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 protocolVersions: protocolVersionsSummary ? Object.entries(protocolVersionsSummary).reduce((acc, [protName, summary]) => {
                     acc[protName] = {
                         ...summary,
-                        chains: chainsSummary ? chainsSummary[protName] : null
+                        chains: chainsSummary ? chainsSummary[protName] : null,
+                        disabled: isDisabledByProtocolVersion(adapter.volumeAdapter, chainFilter, protName)
                     }
                     return acc
                 }, {} as NonNullable<VolumeSummaryDex['protocolVersions']>) : null
@@ -111,6 +115,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             return {
                 name: adapter.name,
                 volumeAdapter: adapter.volumeAdapter,
+                disabled: true,
                 displayName: null,
                 totalVolume24h: null,
                 volume24hBreakdown: null,

@@ -29,7 +29,7 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
     change_7d: number | null
     change_1m: number | null
     chains: string[] | null
-    disabled: boolean
+    disabled: boolean | null
     protocolVersions: {
         [protVersion: string]: {
             totalVolume24h: number | null
@@ -51,16 +51,16 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             displayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
 
         const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter, chainFilter)
+        let volumes = (await getVolume(adapter.id, VolumeType.dailyVolume))
+        // This check is made to infer Volume[] type instead of Volume type
+        if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
+
+        // Process only volumes with a specific chain
+        volumes = volumes.map(v => v.getVolumeByChain(chainFilter)).filter(v => {
+            return v !== null && Object.keys(v.data).length >= 1
+        }) as Volume[]
+
         try {
-            let volumes = (await getVolume(adapter.id, VolumeType.dailyVolume))
-            // This check is made to infer Volume[] type instead of Volume type
-            if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
-
-            // Process only volumes with a specific chain
-            volumes = volumes.map(v => v.getVolumeByChain(chainFilter)).filter(v => {
-                return v !== null && Object.keys(v.data).length >= 1
-            }) as Volume[]
-
             if (volumes.length === 0) throw new Error(`${adapter.name} has no volumes for chain ${chainFilter}`)
 
             // Return last available data. Ideally last day volume, if not, prevents 0 volume values until data is updated or fixed
@@ -115,7 +115,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             return {
                 name: adapter.name,
                 volumeAdapter: adapter.volumeAdapter,
-                disabled: true,
+                disabled: volumes.length > 0 ? true : null,
                 displayName: displayName,
                 totalVolume24h: null,
                 volume24hBreakdown: null,
@@ -130,7 +130,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     }))
     const rejectedDexs = dexsResults.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
     rejectedDexs.forEach(console.error)
-    const dexs = dexsResults.map(fd => fd.status === "fulfilled" && fd.value.name ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
+    const dexs = dexsResults.map(fd => fd.status === "fulfilled" && fd.value.disabled !== null ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
     const generalStats = getSumAllDexsToday(dexs.map(substractSubsetVolumes))
 
     let dexsResponse: IGetDexsResponseBody['dexs']

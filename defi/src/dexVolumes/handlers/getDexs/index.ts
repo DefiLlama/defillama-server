@@ -45,6 +45,12 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const chainFilter = event.pathParameters?.chain?.toLowerCase()
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
+        const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
+        let displayName = adapter.name
+        if ("breakdown" in ada)
+            displayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
+
+        const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter, chainFilter)
         try {
             let volumes = (await getVolume(adapter.id, VolumeType.dailyVolume))
             // This check is made to infer Volume[] type instead of Volume type
@@ -82,17 +88,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 
-            const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter, chainFilter)
             const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayTimestamp)
-
-            const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
-            let desplayName = adapter.name
-            if ("breakdown" in ada)
-                desplayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
             return {
                 name: adapter.name,
                 disabled: isDisabled(adapter.volumeAdapter),
-                displayName: desplayName,
+                displayName: displayName,
                 volumeAdapter: adapter.volumeAdapter,
                 totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
                 volume24hBreakdown: prevDayVolume ? prevDayVolume.data : null,
@@ -116,21 +116,21 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 name: adapter.name,
                 volumeAdapter: adapter.volumeAdapter,
                 disabled: true,
-                displayName: null,
+                displayName: displayName,
                 totalVolume24h: null,
                 volume24hBreakdown: null,
                 yesterdayTotalVolume: null,
                 change_1d: null,
                 change_7d: null,
                 change_1m: null,
-                chains: null,
+                chains: chainFilter ? [formatChain(chainFilter)] : getAllChainsFromDexAdapters([adapter.volumeAdapter]).map(formatChain),
                 protocolVersions: null
             }
         }
     }))
     const rejectedDexs = dexsResults.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
     rejectedDexs.forEach(console.error)
-    const dexs = dexsResults.map(fd => fd.status === "fulfilled" && fd.value.totalVolume24h ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
+    const dexs = dexsResults.map(fd => fd.status === "fulfilled" && fd.value.name ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
     const generalStats = getSumAllDexsToday(dexs.map(substractSubsetVolumes))
 
     let dexsResponse: IGetDexsResponseBody['dexs']

@@ -115,7 +115,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             return {
                 name: adapter.name,
                 volumeAdapter: adapter.volumeAdapter,
-                disabled: volumes.length > 0 ? true : null,
+                disabled: null, //volumes.length > 0 ? true : null,
                 displayName: displayName,
                 totalVolume24h: null,
                 volume24hBreakdown: null,

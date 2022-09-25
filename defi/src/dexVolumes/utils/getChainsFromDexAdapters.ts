@@ -1,6 +1,6 @@
 import { Chain } from "@defillama/sdk/build/general";
 import dexVolumes from "@defillama/adapters/volumes";
-import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
+import { DISABLED_ADAPTER_KEY, VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
 import { CHAIN } from "@defillama/adapters/volumes/helper/chains";
 
 const getAllChainsFromDexAdapters = (dexs2Filter: string[]) =>
@@ -9,12 +9,12 @@ const getAllChainsFromDexAdapters = (dexs2Filter: string[]) =>
         .map(([_, volume]) => volume)
         .reduce((acc, dexAdapter) => {
             if ("volume" in dexAdapter) {
-                const chains = Object.keys(dexAdapter.volume) as Chain[]
+                const chains = (Object.keys(dexAdapter.volume)).filter(c => c !== DISABLED_ADAPTER_KEY) as Chain[]
                 for (const chain of chains)
                     if (!acc.includes(chain)) acc.push(chain)
             } else if ("breakdown" in dexAdapter) {
                 for (const brokenDownDex of Object.values(dexAdapter.breakdown)) {
-                    const chains = Object.keys(brokenDownDex) as Chain[]
+                    const chains = Object.keys(brokenDownDex).filter(c => c !== DISABLED_ADAPTER_KEY) as Chain[]
                     for (const chain of chains)
                         if (!acc.includes(chain)) acc.push(chain)
                 }
@@ -31,10 +31,10 @@ export const getChainByProtocolVersion = (adapterVolume: string, chainFilter?: s
         return null
     } else if ("breakdown" in dexAdapter) {
         for (const [protVersion, brokenDownDex] of Object.entries(dexAdapter.breakdown)) {
-            const chains = Object.keys(brokenDownDex) as Chain[]
+            const chains = Object.keys(brokenDownDex).filter(c => c !== DISABLED_ADAPTER_KEY) as Chain[]
             for (const c of chains) {
                 const chain = formatChain(c)
-                if (chainFilter && chain!==formatChain(chainFilter)) continue
+                if (chainFilter && chain !== formatChain(chainFilter)) continue
                 if (chainsAcc[protVersion]) {
                     if (!chainsAcc[protVersion].includes(chain)) chainsAcc[protVersion].push(chain)
                 }
@@ -51,7 +51,7 @@ export const formatChain = (chain: string) => {
 }
 
 export const formatChainKey = (chain: string) => {
-    if (chain==='avalanche') return CHAIN.AVAX
+    if (chain === 'avalanche') return CHAIN.AVAX
     return chain.toLowerCase()
 }
 

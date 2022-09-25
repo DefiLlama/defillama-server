@@ -1,7 +1,7 @@
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import volumeAdapters from "../../dexAdapters";
-import { ChainBlocks, VolumeAdapter, Adapter } from "@defillama/adapters/volumes/dexVolume.type";
+import { ChainBlocks, VolumeAdapter, Adapter, DISABLED_ADAPTER_KEY } from "@defillama/adapters/volumes/dexVolume.type";
 import { storeVolume, Volume, VolumeType, getVolume } from "../../data/volume";
 import getChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
 import canGetBlock from "../../utils/canGetBlock";
@@ -50,7 +50,7 @@ export const handler = async (event: IHandlerEvent) => {
 
   async function runAdapter(id: string, volumeAdapter: Adapter, version: string) {
     console.log("Running adapter", id, version)
-    const chains = Object.keys(volumeAdapter)
+    const chains = Object.keys(volumeAdapter).filter(c => c !== DISABLED_ADAPTER_KEY)
     return allSettled(chains
       .filter(async (chain) => {
         const start = await volumeAdapter[chain].start().catch(e => console.error("Error getting start time", id, version, e.message))

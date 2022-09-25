@@ -116,7 +116,7 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
             Limit: mode === "LAST" ? 1 : undefined,
             ScanIndexForward: mode === "LAST" ? false : true
         })
-        if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${volume.pk}`)
+        if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${volume.pk}${timestamp ? ` at ${timestamp}` : ''}`)
         return mode === "LAST" || mode === 'TIMESTAMP' ? Volume.fromItem(resp.Items[0]) : resp.Items.map(Volume.fromItem)
     } catch (error) {
         throw error
@@ -125,7 +125,7 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
 
 // TMP: REMOVES ALL VOLUMES, DO NOT USE!
 export const removeVolume = async (dex: string, type: VolumeType,): Promise<boolean> => {
-    /* const removeVolumeQuery = async (volume: Volume) => {
+    const removeVolumeQuery = async (volume: Volume) => {
         console.log("Removing", volume.keys())
         return dynamodb.delete({
             Key: volume.keys(),
@@ -141,7 +141,7 @@ export const removeVolume = async (dex: string, type: VolumeType,): Promise<bool
     } catch (error) {
         console.log(error)
         return false
-    } */
-    console.info(dex, type)
-    return Promise.resolve(false)
+    }
+    /* console.info(dex, type)
+    return Promise.resolve(false) */
 }

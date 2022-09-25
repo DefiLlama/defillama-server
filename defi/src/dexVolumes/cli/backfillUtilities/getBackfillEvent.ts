@@ -132,7 +132,6 @@ export default async (adapter?: string, onlyMissing: boolean | number = false) =
         let dayInMilis = startDate.getTime()
         if (dayInMilis < getUniqStartOfTodayTimestamp(endDate) * 1000)
             while (dayInMilis <= endDate.getTime()) {
-                console.log("dates", dayInMilis)
                 dates.push(new Date(dayInMilis))
                 dayInMilis += DAY_IN_MILISECONDS
             }

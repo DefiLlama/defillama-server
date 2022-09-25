@@ -50,7 +50,7 @@ export const getChainByProtocolVersion = (adapterVolume: string, chainFilter?: s
 export const isDisabledByProtocolVersion = (adapterVolume: string, chainFilter?: string, protV?: string) => {
     const chs = getChainByProtocolVersion(adapterVolume, chainFilter, false)
     if (!chs || !protV) return false
-    return chs[protV].includes(DISABLED_ADAPTER_KEY)
+    return chs[protV] ? chs[protV].includes(DISABLED_ADAPTER_KEY) : true
 }
 
 export const formatChain = (chain: string) => {

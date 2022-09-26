@@ -188,7 +188,7 @@ export default {
     "dfx-finance": {
         enabled: true
     },
-    "fraxswap": {
+    "frax-swap": {
         enabled: true
     },
     "izumi-finance": {

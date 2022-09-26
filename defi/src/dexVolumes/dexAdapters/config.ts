@@ -233,6 +233,9 @@ export default {
     "carthage": {
         enabled: false
     },
+    "shibaswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

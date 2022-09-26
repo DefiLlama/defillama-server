@@ -5432,7 +5432,7 @@ const data: Protocol[] = [
   },
   {
     id: "376",
-    name: "Tomb Finance",
+    name: "Tomb",
     address: "fantom:0x6c021ae822bea943b2e66552bde1d2696a53fbb7",
     symbol: "TOMB",
     url: "https://tomb.finance/",
@@ -5441,12 +5441,13 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/tomb-finance.jpg`,
     audits: "3",
     audit_note: null,
-    gecko_id: "tomb",
-    cmcId: "11495",
+    gecko_id: null,
+    cmcId: null,
     category: "Algo-Stables",
     chains: ["Fantom"],
     module: "tomb/index.js",
     twitter: "tombfinance",
+    parentProtocol: "Tomb Finance",
     oracles: ["DIA"]
   },
   {

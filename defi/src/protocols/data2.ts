@@ -15674,6 +15674,26 @@ listedAt: 1650804679
   twitter: "CapricornFi",
   listedAt: 1664214397
 },
+{
+  id: "2129",
+  name: "Tomb Swap",
+  address: "fantom:0x6c021ae822bea943b2e66552bde1d2696a53fbb7",
+  symbol: "TOMB",
+  url: "https://tomb.finance/",
+  description: "TOMB is a crosschain algorithmic stablecoin, pegged to the price of 1 FTM via seigniorage.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/tomb-finance.jpg`,
+  audits: "3",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom"],
+  module: "tomb-swap/index.js",
+  twitter: "tombfinance",
+  parentProtocol: "Tomb Finance",
+  listedAt: 1664215603
+},
 ]
 
 

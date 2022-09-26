@@ -246,6 +246,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "redactedcartel",
   },
+  {
+    id: "Tomb Finance",
+    name: "Tomb Finance",
+    url: "https://tomb.finance/",
+    description:
+      "home to the first algorithmic token pegged to $FTM on the Fantom Opera network",
+    logo: `${baseIconsUrl}/tomb-finance.jpg`,
+    gecko_id: "tomb",
+    cmcId: "11495",
+    chains: [],
+    twitter: "tombfinance",
+  },
 ];
 
 export default parentProtocols;

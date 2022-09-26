@@ -24352,6 +24352,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Tomb Finance"],
   listedAt: 1643774924,
 },
+/* 
 {
   id: "1341",
   name: "CryptoMate",
@@ -24373,6 +24374,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_links: ["https://source-of-clarity.com/protocols/crytomate-swapper"],
   listedAt: 1643802716 ,
 },
+ */
 {
   id: "1342",
   name: "Croblanc",

@@ -182,7 +182,7 @@ export default {
     "solarbeam": {
         enabled: true
     },
-    "tomb-finance": {
+    "tomb-swap": {
         enabled: false
     },
     "dfx-finance": {

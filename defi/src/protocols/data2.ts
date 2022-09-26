@@ -15653,6 +15653,27 @@ listedAt: 1650804679
   twitter: "CowaiiTomb",
   listedAt: 1664190160
 },
+{
+  id: "2128",
+  name: "Capricorn Finance",
+  address: "cube:0x6f8a58be5497c82e129b31e1d9b7604ed9b59451",
+  symbol: "CORN",
+  url: "https://www.capricorn.finance/",
+  description: "Capricorn is an automated market maker (AMM) based decentralized exchange (DEX) for CUBE Chain.",
+  chain: "Cube",
+  logo: `${baseIconsUrl}/capricorn-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "capricorn",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Cube"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "capricorn/index.js",
+  twitter: "CapricornFi",
+  listedAt: 1664214397
+},
 ]
 
 

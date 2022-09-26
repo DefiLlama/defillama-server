@@ -183,7 +183,7 @@ export default {
         enabled: true
     },
     "tomb-swap": {
-        enabled: false
+        enabled: true
     },
     "dfx-finance": {
         enabled: true
@@ -236,6 +236,12 @@ export default {
     "shibaswap": {
         enabled: true
     },
+    "viperswap": {
+        enabled: true
+    },
+    "oolongswap": {
+        enabled: true
+    }
 } as {
     [name: string]: IVolumesConfig
 }

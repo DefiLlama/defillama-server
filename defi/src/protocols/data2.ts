@@ -15609,6 +15609,29 @@ listedAt: 1650804679
   twitter: "powswap_io",
   listedAt: 1664129429
 },
+
+{
+  id: "2126",
+  name: "Redemption",
+  address: null,
+  symbol: "-",
+  url: "https://www.redemption.fi",
+  description: "First DEX built around fixed farm rewards and universal inflation control.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/redemption.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom"],
+  oracles: ["TWAP"],
+  forkedFrom: ["Uniswap"],
+  module: "redemption/index.js",
+  twitter: "RedemptionPO",
+  audit_links: ["https://obeliskauditing.com/audits/redemption"],
+  listedAt: 1664183291
+},
 ]
 
 

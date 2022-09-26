@@ -11,7 +11,7 @@ export default {
         enabled: true
     },
     "champagneswap": {
-        enabled: false
+        enabled: true
     },
     "katana": {
         enabled: true
@@ -177,13 +177,13 @@ export default {
         enabled: true
     },
     "wanswap-dex": {
-        enabled: true
+        enabled: false
     },
     "solarbeam": {
         enabled: true
     },
     "tomb-finance": {
-        enabled: true
+        enabled: false
     },
     "dfx-finance": {
         enabled: true
@@ -202,6 +202,36 @@ export default {
     },
     "knightswap-finance": {
         enabled: true
+    },
+    "mdex": {
+        enabled: true
+    },
+    "meshswap": {
+        enabled: true
+    },
+    "mm-stableswap-polygon": {
+        enabled: true
+    },
+    "radioshack": {
+        enabled: true
+    },
+    "mojitoswap": {
+        enabled: true
+    },
+    "yieldfields": {
+        enabled: true
+    },
+    "terraswap": {
+        enabled: true
+    },
+    "saros": {
+        enabled: true
+    },
+    "vvs-finance": {
+        enabled: true
+    },
+    "carthage": {
+        enabled: false
     },
 } as {
     [name: string]: IVolumesConfig

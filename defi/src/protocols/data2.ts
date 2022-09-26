@@ -15632,6 +15632,27 @@ listedAt: 1650804679
   audit_links: ["https://obeliskauditing.com/audits/redemption"],
   listedAt: 1664183291
 },
+{
+  id: "2127",
+  name: "Cowaii Cash",
+  address: "dogechain:0xB483CbF402eF2B07060544e4aA4c5690fea32B12",
+  symbol: "COWAII",
+  url: "https://cowaii.cash",
+  description: "Cowaii Cash is the only vibratile token on the Dogechain.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/cowaii-cash.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Dogechain"],
+  oracles: ["TWAP"],
+  forkedFrom: ["Tomb Finance"],
+  module: "cowaii-cash/index.js",
+  twitter: "CowaiiTomb",
+  listedAt: 1664190160
+},
 ]
 
 

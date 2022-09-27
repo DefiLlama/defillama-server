@@ -10,9 +10,8 @@ export function uniswap(timestamp: number = 0) {
     timestamp
   );
 }
-export function sushiswap(timestamp: number = 0) {
-  console.log("starting sushiswap");
-  const factoryAddress = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
+export function sushiswap1(timestamp: number = 0) {
+  console.log("starting sushiswap1");
   return Promise.all([
     getTokenPrices(
       "ethereum",
@@ -20,7 +19,13 @@ export function sushiswap(timestamp: number = 0) {
       undefined,
       undefined,
       timestamp
-    ),
+    )
+  ]);
+}
+export function sushiswap2(timestamp: number = 0) {
+  console.log("starting sushiswap2");
+  const factoryAddress = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
+  return Promise.all([
     getTokenPrices("polygon", factoryAddress, undefined, undefined, timestamp),
     getTokenPrices("arbitrum", factoryAddress, undefined, undefined, timestamp),
     getTokenPrices("avax", factoryAddress, undefined, undefined, timestamp),

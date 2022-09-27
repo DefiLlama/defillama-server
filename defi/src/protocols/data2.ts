@@ -15662,7 +15662,7 @@ listedAt: 1650804679
   description: "Capricorn is an automated market maker (AMM) based decentralized exchange (DEX) for CUBE Chain.",
   chain: "Cube",
   logo: `${baseIconsUrl}/capricorn-finance.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "capricorn",
   cmcId: null,
@@ -15672,6 +15672,7 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   module: "capricorn/index.js",
   twitter: "CapricornFi",
+  audit_links: ["https://docs.capricorn.finance/audits"],
   listedAt: 1664214397
 },
 {

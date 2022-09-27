@@ -15694,6 +15694,27 @@ listedAt: 1650804679
   parentProtocol: "Tomb Finance",
   listedAt: 1664215603
 },
+{
+  id: "2130",
+  name: "Brainiac Finance",
+  address: "godwoken_v1:0x6BAEFB2F6ECFB912eb0b5791A691C0AF63aC6e85",
+  symbol: "BRN",
+  url: "https://brainiac.fi/",
+  description: "Brainiac Finance is Nervos Godwoken's first lending markets which allow users to borrow and lend assets to earn yield in a fully decentralized way. With Brainiac Finance you will be able to lend or borrow Godwoken assets like ETH, USDC, CKB & BNB to earn high APY",
+  chain: "GodwokenV1",
+  logo: `${baseIconsUrl}/brainiac-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["GodwokenV1"],
+  oracles: ["Band"],
+  forkedFrom: ["Compound"],
+  module: "brainiac/index.js",
+  twitter: "BrainiacFinance",
+  listedAt: 1664239275
+},
 ]
 
 

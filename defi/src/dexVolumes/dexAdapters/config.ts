@@ -241,6 +241,12 @@ export default {
     },
     "oolongswap": {
         enabled: true
+    },
+    "swapr": {
+        enabled: true
+    },
+    "cone": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

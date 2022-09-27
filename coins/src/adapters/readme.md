@@ -60,6 +60,9 @@ The last part of the adapter code to run is formWrites(). This function is used 
 
 To test the Euler adapter, we can add 
 ```js
-console.log(await getTokenPrices('ethereum', 0))
+async function main() {
+    console.log(await getTokenPrices('ethereum', 0))
+}
+main();
 ```
 on line 114, and in terminal, run 'ts-node coins/src/adapters/moneyMarkets/euler/euler.ts'. If the command successfully logs an array of database writes containing expected data, we're ready to make a PR!

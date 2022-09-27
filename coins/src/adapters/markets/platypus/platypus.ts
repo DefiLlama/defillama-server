@@ -134,7 +134,6 @@ export default async function getTokenPrices(timestamp: number) {
   const block: number | undefined = await getBlock("avax", timestamp);
   let writes: Write[] = [];
   for (let factory of Object.entries(abi.poolInfo)) {
-    console.log(writes.length);
     writes.push(
       ...(await getTokensFromFactory(
         timestamp,

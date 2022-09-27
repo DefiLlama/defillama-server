@@ -147,5 +147,3 @@ export default async function getTokenPrices(timestamp: number) {
   }
   return writes;
 }
-getTokenPrices(0);
-// ts-node coins/src/adapters/markets/platypus/platypus.ts

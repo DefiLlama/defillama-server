@@ -2,6 +2,7 @@ export default {
   aave: require("./moneyMarkets/aave/index"),
   geist: require("./moneyMarkets/aave/index"),
   radiant: require("./moneyMarkets/aave/index"),
+  uwulend: require("./moneyMarkets/aave/index"),
   //klap: require("./moneyMarkets/aave/index"),
   //valas: require("./moneyMarkets/aave/index"),
   compound: require("./moneyMarkets/compound/index"),

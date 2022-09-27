@@ -79,3 +79,12 @@ export function valas(timestamp: number = 0) {
     timestamp
   );
 }
+export function uwulend(timestamp: number = 0) {
+  console.log("starting UwULend");
+  return getTokenPrices(
+    "ethereum",
+    "0xaC538416BA7438c773F29cF58afdc542fDcABEd4",
+    "v2",
+    timestamp
+  );
+}

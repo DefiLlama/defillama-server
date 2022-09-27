@@ -42,6 +42,8 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
     } | null
 }
 
+const MAX_OUTDATED_DAYS = 3
+
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const chainFilter = event.pathParameters?.chain?.toLowerCase()
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
@@ -68,13 +70,13 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             const prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
             if (prevDayTimestamp !== prevDayVolume.timestamp) {
                 if (enableAlerts)
-                    await sendDiscordAlert(`Volume not updated\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
+                    await sendDiscordAlert(`Volume not updated (using old data...)\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
                 console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
             }
 
-            if (prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * 2) {
+            if (prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * MAX_OUTDATED_DAYS) {
                 if (enableAlerts)
-                    await sendDiscordAlert(`${adapter.name} has 2 days old data... Not including in the response`)
+                    await sendDiscordAlert(`${adapter.name} has ${MAX_OUTDATED_DAYS} days old data... Not including in the response`)
                 throw new Error(`${adapter.name} has ${(1662940800 - 1662681600) / (60 * 60 * 24)} days old data... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 

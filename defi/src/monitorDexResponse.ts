@@ -39,7 +39,13 @@ const handler = async (event?: IHandlerEvent) => {
       volumeAdapters.findIndex(va => va.volumeAdapter === 'bancor'),
       volumeAdapters.findIndex(va => va.volumeAdapter === 'balancer'),
       volumeAdapters.findIndex(va => va.volumeAdapter === 'dodo'),
-      volumeAdapters.findIndex(va => va.volumeAdapter === 'hashflow')
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'hashflow'),
+      // volumeAdapters.findIndex(va => va.volumeAdapter === 'wingriders')
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'wombat-exchange'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'nomiswap'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'sushiswap'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'minswap'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'mdex'),
     ]
     await invokeLambdas(protocolIndexes)
   }

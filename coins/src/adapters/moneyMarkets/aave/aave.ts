@@ -89,6 +89,8 @@ export default async function getTokenPrices(
       (u) => u.address == r.input.params[0].toLowerCase()
     )[0];
 
+    if (underlying == null) return;
+
     const redirect =
       underlying.redirect == undefined
         ? `asset#${underlying.chain}:${underlying.address}`

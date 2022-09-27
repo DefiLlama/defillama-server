@@ -1,3 +1,4 @@
+require("dotenv").config();
 import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet } from "../../utils/shared/dynamodb";
@@ -12,14 +13,13 @@ import {
 } from "./dbInterfaces";
 
 const confidenceThreshold: number = 0.4;
-const isTest = true;
 
 export async function getTokenAndRedirectData(
   tokens: string[],
   chain: string,
   timestamp: number
 ) {
-  if (isTest) {
+  if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
     return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
   }
   if (timestamp == 0) {

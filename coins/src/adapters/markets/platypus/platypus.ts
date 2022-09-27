@@ -134,7 +134,6 @@ export default async function getTokenPrices(timestamp: number) {
   const block: number | undefined = await getBlock("avax", timestamp);
   let writes: Write[] = [];
   for (let factory of Object.entries(abi.poolInfo)) {
-    console.log(writes.length);
     writes.push(
       ...(await getTokensFromFactory(
         timestamp,
@@ -147,5 +146,3 @@ export default async function getTokenPrices(timestamp: number) {
   }
   return writes;
 }
-getTokenPrices(0);
-// ts-node coins/src/adapters/markets/platypus/platypus.ts

@@ -80,9 +80,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
             prevDayTimestamp = prevDayVolume.timestamp
 
-
             const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
-            if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000))) {
+            if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000)) && change_1d!==null) {
                 if (enableAlerts)
                     await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
                 throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)

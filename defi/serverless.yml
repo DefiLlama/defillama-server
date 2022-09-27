@@ -342,7 +342,7 @@ functions:
     handler: src/notifyDexsStatus.default
     timeout: 900
     events:
-      - schedule: cron(01 0,13 * * ? *)
+      - schedule: cron(01 2,13 * * ? *)
   triggerStoreVolume:
     handler: src/triggerStoreVolume.default
     timeout: 900

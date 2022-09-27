@@ -71,7 +71,8 @@ async function getPricePerShare(
 async function getUsdValues(
   pricePerShares: MultiCallResults,
   vaults: VaultKeys[],
-  coinsData: CoinData[]
+  coinsData: CoinData[],
+  decimals: any
 ) {
   let usdValues = pricePerShares.output.map((t) => {
     const selectedVaults = vaults.filter(
@@ -88,12 +89,23 @@ async function getUsdValues(
         decimal: -1,
         symbol: "fail"
       };
+    const decimal = decimals.filter(
+      (c: any) =>
+        selectedVaults[0].address.toLowerCase() == c.input.target.toLowerCase()
+    )[0].output;
 
-    const decimal = resolveDecimals(t.output, 0);
-
+    if (decimal == undefined || decimal == null) {
+      return {
+        address: "fail",
+        price: -1,
+        decimal: -1,
+        symbol: "fail"
+      };
+    }
+    const PPSdecimal = resolveDecimals(t.output, 0);
     return {
       address: t.input.target.toLowerCase(),
-      price: (t.output * coinData.price) / 10 ** decimal,
+      price: (t.output * coinData.price) / 10 ** PPSdecimal,
       decimal,
       symbol: selectedVaults[0].symbol
     };
@@ -161,10 +173,20 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     getPricePerShare(vaults, chain, block)
   ]);
 
+  const decimals = await multiCall({
+    chain: chain as any,
+    calls: vaults.map((v: VaultKeys) => ({
+      target: v.address
+    })),
+    abi: "erc20:decimals"
+  });
+  requery(decimals, chain, "erc20:decimals", block);
+
   const usdValues: Result[] = await getUsdValues(
     pricePerShares,
     vaults,
-    coinsData
+    coinsData,
+    decimals.output
   );
 
   let writes: Write[] = [];

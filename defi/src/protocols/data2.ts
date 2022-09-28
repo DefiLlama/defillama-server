@@ -15737,6 +15737,28 @@ listedAt: 1650804679
   twitter: "kdex_app",
   listedAt: 1664327055
 },
+{
+  id: "2132",
+  name: "Geode",
+  address: null,
+  symbol: "-",
+  url: "https://www.geode.fi/",
+  description: "Protocol Owned Staking Derivatives. Revolutionizing the Liquid Staking while saving PoS chains from monopolization, boosting yields for all of DeFi and providing sustainable revenue to the Protocols. Available on Avalanche, launching on Ethereum",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/geode.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Avalanche"],
+  oracles: [],
+  forkedFrom: ["Saddle Finance"],
+  module: "geode/index.js",
+  twitter: "Geode_Finance",
+  audit_links: ["https://docs.geode.fi/more/audits"],
+  listedAt: 1664332565
+},
 ]
 
 export default data2;

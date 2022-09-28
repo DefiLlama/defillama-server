@@ -247,6 +247,12 @@ export default {
     },
     "cone": {
         enabled: true
+    },
+    "claimswap": {
+        enabled: true
+    },
+    "spartacus-exchange": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

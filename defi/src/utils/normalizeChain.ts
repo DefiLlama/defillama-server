@@ -1140,7 +1140,7 @@ export const chainCoingeckoIds = {
     cmcId: "19083",
     categories: ["EVM"],
   },
-  "EthPoW": {
+  "EthereumPoW": {
     geckoId: "ethereum-pow-iou",
     symbol: "ETHW",
     cmcId: "21296",
@@ -1445,7 +1445,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "vision":
       return "Vision"
     case "ethpow":
-      return "EthPoW"
+      return "EthereumPoW"
     case "cube":
       return "Cube"
 

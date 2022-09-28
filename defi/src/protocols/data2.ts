@@ -15759,6 +15759,27 @@ listedAt: 1650804679
   audit_links: ["https://docs.geode.fi/more/audits"],
   listedAt: 1664332565
 },
+{
+  id: "2133",
+  name: "VoltSwap V2",
+  address: "meter:0x8Df95e66Cb0eF38F91D2776DA3c921768982fBa0",
+  symbol: "VOLT",
+  url: "https://voltswap.finance",
+  description: "VoltSwap is the first major DEX in the Meter ecosystem. It is a completely community-driven project and was introduced by the Meter.io team to showcase the capabilities of the Meter blockchain.",
+  chain: "Meter",
+  logo: `${baseIconsUrl}/voltswap-v2.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Meter"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "voltswap-v2/index.js",
+  twitter: "Meter_IO",
+  listedAt: 1664359970
+},
 ]
 
 export default data2;

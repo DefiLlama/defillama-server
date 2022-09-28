@@ -132,3 +132,34 @@ export function spiritswap(timestamp: number = 0) {
     timestamp
   );
 }
+
+export function spookyswap(timestamp: number = 0) {
+  console.log("starting spookyswap");
+  return getTokenPrices(
+    "fantom",
+    "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "0xF491e7B69E4244ad4002BC14e878a34207E38c29",
+    undefined,
+    timestamp
+  );
+}
+export function tombswap(timestamp: number = 0) {
+  console.log("starting tombswap");
+  return getTokenPrices(
+    "fantom",
+    "0xE236f6890F1824fa0a7ffc39b1597A5A6077Cfe9",
+    undefined,
+    undefined,
+    timestamp
+  );
+}
+export function solidly(timestamp: number = 0) {
+  console.log("starting solidly");
+  return getTokenPrices(
+    "fantom",
+    "0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28",
+    undefined,
+    undefined,
+    timestamp
+  );
+}

@@ -15716,7 +15716,27 @@ listedAt: 1650804679
   twitter: "BrainiacFinance",
   listedAt: 1664239275
 },
+{
+  id: "2131",
+  name: "KDex",
+  address: "kava:0x836a8f50dEe12B6acca966e9861749eCf269D9d2",
+  symbol: "KDEX",
+  url: "https://kdex.app",
+  description: "The KDex is a Uniswap V2 fork deployed on Kava, a Cosmos EVM-based bockchain",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kdex.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Kava"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "kdex/index.js",
+  twitter: "kdex_app",
+  listedAt: 1664327055
+},
 ]
-
 
 export default data2;

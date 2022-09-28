@@ -41,5 +41,8 @@ export default {
   pangolin: require("./markets/uniswap/index"),
   spiritswap: require("./markets/uniswap/index"),
   pancakeswap: require("./markets/uniswap/index"),
+  spookyswap: require("./markets/uniswap/index"),
+  tombswap: require("./markets/uniswap/index"),
+  solidly: require("./markets/uniswap/index"),
   stargate: require("./markets/stargate/index")
 };

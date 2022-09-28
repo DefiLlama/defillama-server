@@ -41,7 +41,7 @@ export function curve5(timestamp: number = 0) {
     getTokenPrices("optimism", ["stableswap", "crypto"], timestamp),
     getTokenPrices("optimism", ["stableFactory", "cryptoFactory"], timestamp),
     getTokenPrices("polygon", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("polygon", ["stableFactory", "cryptoFactory"], timestamp)
+    getTokenPrices("polygon", ["cryptoFactory"], timestamp)
   ]);
 }
 export function ellipsis(timestamp: number = 0) {

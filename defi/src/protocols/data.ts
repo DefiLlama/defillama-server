@@ -1897,7 +1897,7 @@ const data: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "bella.js",
-    twitter: "BellaProtocool",
+    twitter: "BellaProtocol",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/bella_audit_report_2020_48_en_1_0.pdf"],
   },
   {

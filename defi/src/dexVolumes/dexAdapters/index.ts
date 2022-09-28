@@ -3,8 +3,6 @@ import data, { Protocol } from "../../protocols/data";
 import config from "./config"
 import type { IVolumesConfig } from "./config"
 import getAllChainsFromDexAdapters from "../utils/getChainsFromDexAdapters";
-import { importVolumeAdapter } from "../../utils/imports/importDexAdapters";
-import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
 /**
  * Using data from protocols since its more complete
  */

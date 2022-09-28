@@ -253,6 +253,9 @@ export default {
     },
     "spartacus-exchange": {
         enabled: true
+    },
+    "beamswap": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

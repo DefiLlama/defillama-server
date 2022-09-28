@@ -258,6 +258,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tombfinance",
   },
+  {
+    id: "Volt Finance",
+    name: "Volt Finance",
+    url: "https://voltswap.finance",
+    description:
+      "VoltSwap is the first major DEX in the Meter ecosystem",
+    logo: `${baseIconsUrl}/volt finance.png`,
+    gecko_id: "voltswap",
+    cmcId: "19160",
+    chains: [],
+    twitter: "Meter_IO",
+  },
 ];
 
 export default parentProtocols;

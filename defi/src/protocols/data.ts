@@ -22051,6 +22051,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "Meter_IO",
   oracles: [],
   listedAt: 1641871826,
+  parentProtocol: "Volt Finance",
 },
 {
   id: "1226",

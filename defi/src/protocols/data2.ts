@@ -15778,6 +15778,7 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   module: "voltswap-v2/index.js",
   twitter: "Meter_IO",
+  parentProtocol: "Volt Finance",
   listedAt: 1664359970
 },
 {

@@ -1032,7 +1032,7 @@ const data2: Protocol[] =  [
   category: "Dexes",
   chains: ["Klaytn"],
   oracles: [],
-  forkedFrom: ["SushiSwap"],
+  forkedFrom: ["Uniswap"],
   module: "claimswap/index.js",
   twitter: "claimswap",
   language: "Solidity",

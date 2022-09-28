@@ -15780,6 +15780,28 @@ listedAt: 1650804679
   twitter: "Meter_IO",
   listedAt: 1664359970
 },
+{
+  id: "2134",
+  name: "Lemma",
+  address: null,
+  symbol: "-",
+  url: "https://lemma.finance",
+  description: "Lemma is a decentralized finance (DeFi) protocol with two products:  leveraged basis trading vault and USDL, a stablecoin that is fully decentralized, 100% capital efficient and USD pegged. It also has a spot exchange that allows traders to swap spot assets using perpetual futures markets much deeper liquidity called LemmaSwap.",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/lemma.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Optimism"],
+  oracles: [],
+  forkedFrom: [],
+  module: "lemma/index.js",
+  twitter: "LemmaFinance",
+  audit_links: ["https://github.com/lemma-finance/audits/tree/main/audits"],
+  listedAt: 1664361294
+},
 ]
 
 export default data2;

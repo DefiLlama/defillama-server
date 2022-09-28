@@ -15803,6 +15803,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/lemma-finance/audits/tree/main/audits"],
   listedAt: 1664361294
 },
+{
+  id: "2135",
+  name: "Infy Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://infy.network",
+  description: "Infy is decentralized Lending and Renting Protocol for NFTs.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/infy-protocol.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Lending",
+  chains: ["Kava"],
+  oracles: [],
+  forkedFrom: [],
+  module: "infy/index.js",
+  twitter: "infy_protocol",
+  listedAt: 1664371329
+},
 ]
 
 export default data2;

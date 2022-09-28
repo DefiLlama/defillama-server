@@ -15824,6 +15824,27 @@ listedAt: 1650804679
   twitter: "infy_protocol",
   listedAt: 1664371329
 },
+{
+  id: "2136",
+  name: "Fliperino",
+  address: null,
+  symbol: "-",
+  url: "https://fliperino.xyz",
+  description: "A blockchain based coin flip game on ETHW. Flip a coin and double your bet or get assimilated by the contract.",
+  chain: "EthPoW",
+  logo: `${baseIconsUrl}/fliperino.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["EthPoW"],
+  oracles: [],
+  forkedFrom: [],
+  module: "Fliperino/index.js",
+  twitter: "Fliperino2",
+  listedAt: 1664382133
+},
 ]
 
 export default data2;

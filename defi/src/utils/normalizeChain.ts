@@ -1153,6 +1153,11 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 1818,
   },
+  "FunctionX": {
+    geckoId: "fx-coin",
+    symbol: "FX",
+    cmcId: "3884",
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1448,6 +1453,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "EthereumPoW"
     case "cube":
       return "Cube"
+    case "functionx":
+      return "FunctionX"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

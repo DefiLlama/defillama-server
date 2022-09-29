@@ -213,7 +213,7 @@ export default {
         enabled: true
     },
     "radioshack": {
-        enabled: false
+        enabled: true
     },
     "mojitoswap": {
         enabled: true

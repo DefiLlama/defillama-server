@@ -11,6 +11,7 @@ import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
 import { sendDiscordAlert } from "../../utils/notify";
 import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
+import removeErrors from "../../utils/removeErrors";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart: IChartData,

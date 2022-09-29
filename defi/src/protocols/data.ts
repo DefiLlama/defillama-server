@@ -282,7 +282,7 @@ const data: Protocol[] = [
     ],
     forkedFrom: ["Uniswap"],
     oracles: [], // chainlink for lending?
-    parentProtocol: "SushiSwap"
+    parentProtocol: "Sushi"
   },
   {
     id: "120",

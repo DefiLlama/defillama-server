@@ -15866,6 +15866,27 @@ listedAt: 1650804679
   twitter: "DeFi_Franc",
   listedAt: 1664485760
 },
+{
+  id: "2138",
+  name: "FX Swap",
+  address: "functionx:0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
+  symbol: "WFX",
+  url: "https://functionx.io/home",
+  description: "A scalable, open and decentralized ecosystem, enabling all to build entirely on and for the blockchain.",
+  chain: "FunctionX",
+  logo: `${baseIconsUrl}/fx-swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["FunctionX"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "fxswap/index.js",
+  twitter: "FUNCTIONX_IO",
+  listedAt: 1664487928
+},
 ]
 
 export default data2;

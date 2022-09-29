@@ -1157,6 +1157,7 @@ export const chainCoingeckoIds = {
     geckoId: "fx-coin",
     symbol: "FX",
     cmcId: "3884",
+    categories: ["EVM"],
   },
 } as unknown as {
   [chain: string]: {

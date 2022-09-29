@@ -9414,7 +9414,7 @@ listedAt: 1650804679
   twitter: "SushiSwap",
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf",],
   listedAt: 1655586107,
-  parentProtocol: "SushiSwap"
+  parentProtocol: "Sushi"
 },
 {
   id: "1841",

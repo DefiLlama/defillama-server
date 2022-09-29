@@ -1958,7 +1958,7 @@ const data: Protocol[] = [
     chains: ["Ethereum" , "Fantom"],
     module: "alchemix/index.js",
     twitter: "AlchemixFi",
-    audit_links: ["https://alchemix.fi/a208baf6ca7e0d6b0116461f05e27cd9.pdf"],
+    audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Alchemix_v2.pdf"],
     oracles: [],
   },
   {

@@ -19,7 +19,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AaveAave",
   },
   {
-    id: "SushiSwap",
+    id: "Sushi",
     name: "Sushi",
     url: "https://sushi.com/",
     description:

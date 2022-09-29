@@ -256,6 +256,15 @@ export default {
     },
     "beamswap": {
         enabled: true
+    },
+    "openleverage": {
+        enabled: true
+    },
+    "ubeswap": {
+        enabled: true
+    },
+    "mobius-money": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

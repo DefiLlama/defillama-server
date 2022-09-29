@@ -15845,6 +15845,27 @@ listedAt: 1650804679
   twitter: "Fliperino2",
   listedAt: 1664382133
 },
+{
+  id: "2137",
+  name: "DeFi Franc",
+  address: "0x045da4bFe02B320f4403674B3b7d121737727A36",
+  symbol: "DCHF",
+  url: "https://defifranc.com",
+  description: "DeFiFranc - the First Fully Decentralized Stablecoin Pegged to the Swiss Franc. ReDEFIning Stability.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/defi-franc.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Ethereum"],
+  oracles: ["Chainlink"],
+  forkedFrom: ["Liquity"],
+  module: "defifranc/index.js",
+  twitter: "DeFi_Franc",
+  listedAt: 1664485760
+},
 ]
 
 export default data2;

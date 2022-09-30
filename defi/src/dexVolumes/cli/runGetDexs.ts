@@ -3,7 +3,7 @@ import { handler, IGetDexsResponseBody } from "../handlers/getDexs";
 import { APIGatewayProxyEvent } from "aws-lambda";
 
 const event = {
-    pathParameters: { chain: "tron" }
+    pathParameters: { chain: "aurora" }
 } as unknown as APIGatewayProxyEvent
 
 (async () => {

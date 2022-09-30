@@ -70,7 +70,16 @@ export class Volume extends Item {
     }
 
     static isDataEmpty(data: IRecordVolumeData) {
-        return Object.values(data).filter(d => d !== undefined).length === 0
+        return Object.values(data)
+            .filter(d => d !== undefined
+                && (
+                    typeof d === 'object'
+                    && Object.values(d).filter(dv => {
+                        //console.log("deve", dv)
+                        return dv !== undefined
+                    }).length > 0
+                )
+            ).length === 0
     }
 }
 

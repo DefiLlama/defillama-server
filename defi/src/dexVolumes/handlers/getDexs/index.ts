@@ -43,7 +43,7 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
     } | null
 }
 
-const MAX_OUTDATED_DAYS = 3
+const MAX_OUTDATED_DAYS = 30
 
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const chainFilter = event.pathParameters?.chain?.toLowerCase()
@@ -81,10 +81,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             }
 
             prevDayTimestamp = prevDayVolume.timestamp
-            if (prevDayTime<prevDayTimestamp) prevDayTime = prevDayTimestamp
+
+            if (prevDayTime < prevDayTimestamp) prevDayTime = prevDayTimestamp
 
             const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
-            if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000)) && change_1d !== null) {
+            if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -99 || change_1d > 10000)) && change_1d !== null) {
                 if (enableAlerts)
                     await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
                 throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)

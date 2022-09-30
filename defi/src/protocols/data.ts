@@ -2905,6 +2905,7 @@ const data: Protocol[] = [
     module: "mimo/index.js",
     twitter: "mimodefi",
     audit_links: ["https://certificate.quantstamp.com/full/ten-x-titan"],
+    oracles: ["DIA"]
   },
   /* repeated
   {

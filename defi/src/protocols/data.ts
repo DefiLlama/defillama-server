@@ -2724,7 +2724,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Energi"],
     module: "energiswap.js",
-    twitter: "Energicrypto",
+    twitter: "energi",
     forkedFrom: ["Uniswap"],
   },
   {

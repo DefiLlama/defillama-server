@@ -268,7 +268,16 @@ export default {
     },
     "honeyswap": {
         enabled: true
-    }
+    },
+    "energiswap": {
+        enabled: true
+    },
+    "stellaswap": {
+        enabled: true
+    },
+    "wagyuswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

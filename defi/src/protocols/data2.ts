@@ -15909,6 +15909,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/PeggyJV/cellar-contracts/tree/main/audits"],
   listedAt: 1664536707
 },
+{
+  id: "2140",
+  name: "SWFT",
+  address: null,
+  symbol: "-",
+  url: "https://defi.swft.pro",
+  description: "SWFT is a cross-chain swap aggregator for DEX/CEX/NFT.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/swft.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Kava"],
+  oracles: [],
+  forkedFrom: [],
+  module: "allchainbridge/index.js",
+  twitter: "SWFTBridge",
+  listedAt: 1664544754
+},
 ]
 
 export default data2;

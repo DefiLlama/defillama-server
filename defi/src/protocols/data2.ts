@@ -15871,7 +15871,7 @@ listedAt: 1650804679
   name: "FX Swap",
   address: "functionx:0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
   symbol: "WFX",
-  url: "https://functionx.io/home",
+  url: "https://fx-swap.io/#/swap",
   description: "A scalable, open and decentralized ecosystem, enabling all to build entirely on and for the blockchain.",
   chain: "FunctionX",
   logo: `${baseIconsUrl}/fx-swap.jpg`,

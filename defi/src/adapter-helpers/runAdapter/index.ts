@@ -1,8 +1,11 @@
 import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
- // @ts-ignore: Unreachable code error
-import d from "@defillama/adapters/fees"
-console.log(d)
+import type { FeeAdapter } from "@defillama/fees-adapters/adapters.type"
 
-export default async (_adapter: VolumeAdapter) => {
-
+const runAdapter = async (adapter: VolumeAdapter | FeeAdapter) => {
+    console.log("adapter", adapter)
 }
+
+(async () => {
+    const adapter = (await import("@defillama/fees-adapters/fees/bitcoin")).default
+    console.log(await runAdapter(adapter))
+})()

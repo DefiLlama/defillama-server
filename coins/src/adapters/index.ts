@@ -29,6 +29,7 @@ export default {
   synthetix: require("./other/index"),
   glp: require("./other/index"),
   abracadabra: require("./other/index"),
+  sai: require("./other/index"),
   uniswap: require("./markets/uniswap/index"),
   sushiswap1: require("./markets/uniswap/index"),
   sushiswap2: require("./markets/uniswap/index"),

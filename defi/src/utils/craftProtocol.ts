@@ -84,27 +84,14 @@ export default async function craftProtocol(
     tvl: [],
   };
 
-  const childProtocols = protocolData.parentProtocol
-    ? protocols.filter((p) => p.parentProtocol === protocolData.parentProtocol)
+  const childProtocolsNames = protocolData.parentProtocol
+    ? protocols.filter((p) => p.parentProtocol === protocolData.parentProtocol).map((p) => p.name)
     : [];
 
   const parentName = parentProtocols.find((p) => p.id === protocolData.parentProtocol)?.name ?? null;
 
-  if (childProtocols.length > 0 && parentName) {
-    const childProtocolsNames = childProtocols.map((p) => p.name);
+  if (childProtocolsNames.length > 0 && parentName) {
     response.otherProtocols = [parentName, ...childProtocolsNames];
-
-    const childProtocolsData = await Promise.all(
-      childProtocols.map((childProtocolData) => importAdapter(childProtocolData))
-    );
-
-    // show all hallmarks of child protocols on parent protocols chart
-    response.hallmarks = [];
-    childProtocolsData
-      .filter((childModule) => childModule.hallmarks)
-      .forEach((m) => {
-        m.hallmarks.forEach((hallmark: [number, string]) => response.hallmarks?.push(hallmark));
-      });
   }
 
   if (module.methodology) {

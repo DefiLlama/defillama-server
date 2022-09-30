@@ -57,10 +57,11 @@ export class Volume extends Item {
         if (chain !== undefined) {
             if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
             const data = removeErrors(this.data)
-            if (Volume.isDataEmpty(data)) return null
-            return new Volume(this.type, this.dexId, this.timestamp, {
+            const newData = {
                 [formatChainKey(chain)]: data[chain] ?? data[formatChainKey(chain)]
-            })
+            }
+            if (Volume.isDataEmpty(newData)) return null
+            return new Volume(this.type, this.dexId, this.timestamp, newData)
         }
         const d = removeErrors(this.data)
         delete d['eventTimestamp']

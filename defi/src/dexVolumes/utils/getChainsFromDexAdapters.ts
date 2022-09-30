@@ -4,7 +4,7 @@ import { DISABLED_ADAPTER_KEY, VolumeAdapter } from "@defillama/adapters/volumes
 import { CHAIN } from "@defillama/adapters/volumes/helper/chains";
 
 const getAllChainsFromDexAdapters = (dexs2Filter: string[], filter: boolean = true) =>
-    Object.entries(dexVolumes)
+    Object.entries(dexVolumes as {[volumeName: string]: VolumeAdapter})
         .filter(([key]) => dexs2Filter.includes(key))
         .map(([_, volume]) => volume)
         .reduce((acc, dexAdapter) => {

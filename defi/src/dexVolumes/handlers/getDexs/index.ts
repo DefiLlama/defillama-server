@@ -47,6 +47,7 @@ const MAX_OUTDATED_DAYS = 3
 
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const chainFilter = event.pathParameters?.chain?.toLowerCase()
+    let prevDayTime = 0
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
         const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
         let displayName = adapter.name
@@ -80,6 +81,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             }
 
             prevDayTimestamp = prevDayVolume.timestamp
+            if (prevDayTime<prevDayTimestamp) prevDayTime = prevDayTimestamp
 
             const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
             if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000)) && change_1d !== null) {
@@ -131,7 +133,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const rejectedDexs = dexsResults.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
     rejectedDexs.forEach(console.error)
     const dexs = dexsResults.map(fd => fd.status === "fulfilled" && fd.value.disabled !== null ? fd.value : undefined).filter(d => d !== undefined) as VolumeSummaryDex[]
-    const generalStats = getSumAllDexsToday(dexs.map(substractSubsetVolumes))
+    const generalStats = getSumAllDexsToday(dexs.map(substractSubsetVolumes), undefined, prevDayTime)
 
     let dexsResponse: IGetDexsResponseBody['dexs']
     let totalDataChartResponse: IGetDexsResponseBody['totalDataChart']
@@ -164,7 +166,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
 
-const substractSubsetVolumes = (dex: VolumeSummaryDex, _index: number, dexs: VolumeSummaryDex[]): VolumeSummaryDex => {
+const substractSubsetVolumes = (dex: VolumeSummaryDex, _index: number, dexs: VolumeSummaryDex[], baseTimestamp?: number): VolumeSummaryDex => {
     const volumeAdapter = dex.volumeAdapter
     if (!volumeAdapter) throw Error("No volumeAdapter found")
     const includedVolume = config[volumeAdapter].includedVolume
@@ -176,7 +178,7 @@ const substractSubsetVolumes = (dex: VolumeSummaryDex, _index: number, dexs: Vol
         })
         let computedSummary: VolumeSummaryDex = dex
         for (const includedSummary of includedSummaries) {
-            const newSum = getSumAllDexsToday([computedSummary], includedSummary)
+            const newSum = getSumAllDexsToday([computedSummary], includedSummary, baseTimestamp)
             computedSummary = {
                 ...includedSummary,
                 totalVolume24h: newSum['totalVolume'],

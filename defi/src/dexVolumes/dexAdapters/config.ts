@@ -265,6 +265,9 @@ export default {
     },
     "mobius-money": {
         enabled: true
+    },
+    "honeyswap": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

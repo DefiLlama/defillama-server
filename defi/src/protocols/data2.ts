@@ -15887,6 +15887,28 @@ listedAt: 1650804679
   twitter: "FUNCTIONX_IO",
   listedAt: 1664487928
 },
+{
+  id: "2139",
+  name: "Sommelier",
+  address: "0xa670d7237398238de01267472c6f13e5b8010fd1",
+  symbol: "somm",
+  url: "https://www.sommelier.finance",
+  description: "Let algorithms manage your crypto portfolio. 24/7. Advanced strategies by financial and crypto markets experts available on the Sommelier marketplace.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/sommelier.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "sommelier",
+  cmcId: "18248",
+  category: "Yield Aggregator",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "sommelier/index.js",
+  twitter: "sommfinance",
+  audit_links: ["https://github.com/PeggyJV/cellar-contracts/tree/main/audits"],
+  listedAt: 1664536707
+},
 ]
 
 export default data2;

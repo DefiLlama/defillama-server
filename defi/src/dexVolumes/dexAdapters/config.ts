@@ -191,8 +191,8 @@ export default {
     "frax-swap": {
         enabled: true
     },
-    "izumi-finance": {
-        enabled: false
+    "iziswap": {
+        enabled: true
     },
     "tinyman": {
         enabled: true

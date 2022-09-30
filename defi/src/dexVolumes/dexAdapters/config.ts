@@ -192,7 +192,7 @@ export default {
         enabled: true
     },
     "izumi-finance": {
-        enabled: true
+        enabled: false
     },
     "tinyman": {
         enabled: true

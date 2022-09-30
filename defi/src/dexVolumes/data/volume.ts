@@ -53,17 +53,23 @@ export class Volume extends Item {
         }
     }
 
-    getVolumeByChain(chain?: string): Volume | null {
+    getCleanVolume(chain?: string): Volume | null {
         if (chain !== undefined) {
             if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
             const data = removeErrors(this.data)
+            if (Volume.isDataEmpty(data)) return null
             return new Volume(this.type, this.dexId, this.timestamp, {
                 [formatChainKey(chain)]: data[chain] ?? data[formatChainKey(chain)]
             })
         }
         const d = removeErrors(this.data)
         delete d['eventTimestamp']
+        if (Volume.isDataEmpty(d)) return null
         return new Volume(this.type, this.dexId, this.timestamp, d)
+    }
+
+    static isDataEmpty(data: IRecordVolumeData) {
+        return Object.values(data).filter(d => d !== undefined).length === 0
     }
 }
 

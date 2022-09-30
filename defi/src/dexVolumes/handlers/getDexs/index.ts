@@ -59,9 +59,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
 
         // Process only volumes with a specific chain
-        volumes = volumes.map(v => v.getVolumeByChain(chainFilter)).filter(v => {
-            return v !== null && Object.keys(v.data).length >= 1
-        }) as Volume[]
+        volumes = volumes.map(v => v.getCleanVolume(chainFilter)).filter(v => v !== null) as Volume[]
 
         try {
             if (volumes.length === 0) throw new Error(`${adapter.name} has no volumes for chain ${chainFilter}`)
@@ -84,7 +82,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             prevDayTimestamp = prevDayVolume.timestamp
 
             const change_1d = calcNdChange(volumes, 1, prevDayTimestamp)
-            if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000)) && change_1d!==null) {
+            if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -95 || change_1d > 10000)) && change_1d !== null) {
                 if (enableAlerts)
                     await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
                 throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)

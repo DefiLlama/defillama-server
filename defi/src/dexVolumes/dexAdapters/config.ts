@@ -278,6 +278,12 @@ export default {
     "wagyuswap": {
         enabled: true
     },
+    "dystopia": {
+        enabled: true
+    },
+    "glide-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

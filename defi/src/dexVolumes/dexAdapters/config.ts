@@ -284,6 +284,15 @@ export default {
     "glide-finance": {
         enabled: true
     },
+    "quipuswap": {
+        enabled: true
+    },
+    "netswap": {
+        enabled: true
+    },
+    "jupiter": {
+        enabled: true
+    }
 } as {
     [name: string]: IVolumesConfig
 }

@@ -15930,6 +15930,27 @@ listedAt: 1650804679
   twitter: "SWFTBridge",
   listedAt: 1664544754
 },
+{
+  id: "2141",
+  name: "Jupiter Aggregator",
+  address: null,
+  symbol: "-",
+  url: "https://jup.ag/",
+  description:
+    "The best swap aggregator & infrastructure for Solana -  powering best price, token selection and UX for all users and devs",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/jupiter-aggregator.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Solana"],
+  module: "../volumes/adapters/jupiter-aggregator",
+  forkedFrom: [],
+  twitter: "JupiterExchange",
+  listedAt: 1664608359
+},
 ]
 
 export default data2;

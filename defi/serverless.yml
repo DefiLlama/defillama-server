@@ -231,6 +231,14 @@ functions:
       - http:
           path: forks
           method: get
+  categories:
+    handler: src/getCategories.default
+    timeout: 600
+    memorySize: 2000
+    events:
+      - http:
+          path: categories
+          method: get
   testTvl:
     handler: src/testTvl.default
     timeout: 600

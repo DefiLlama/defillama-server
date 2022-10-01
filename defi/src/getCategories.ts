@@ -62,18 +62,20 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
   const sumDailyTvls = {} as SumDailyTvls;
   const categoryProtocols = {} as IProtocolsByCategory;
 
-  await processProtocols(async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
-    try {
-      let category = protocol.category;
-      if (category) {
-        sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocol);
-
-        return;
+  await processProtocols(
+    async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
+      try {
+        let category = protocol.category;
+        if (category) {
+          sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocol);
+          return;
+        }
+      } catch (error) {
+        console.log(protocol.name, error);
       }
-    } catch (error) {
-      console.log(protocol.name, error);
-    }
-  });
+    },
+    { includeBridge: true }
+  );
 
   return successResponse(
     {

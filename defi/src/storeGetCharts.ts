@@ -2,25 +2,14 @@ import protocols, { Protocol } from "./protocols/data";
 import { getHistoricalValues } from "./utils/shared/dynamodb";
 import { dailyTvl, getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import { DAY, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
-import {
-  getChainDisplayName,
-  chainCoingeckoIds,
-  transformNewChainName,
-  extraSections,
-} from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
 
-function sum(
-  sumDailyTvls: SumDailyTvls,
-  chain: string,
-  tvlSection: string,
-  timestamp: number,
-  itemTvl: number
-) {
+function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {
     sumDailyTvls[chain] = {};
   }
@@ -28,8 +17,7 @@ function sum(
     sumDailyTvls[chain][tvlSection] = {};
   }
   if (typeof itemTvl === "number" && !Number.isNaN(itemTvl)) {
-    sumDailyTvls[chain][tvlSection][timestamp] =
-      itemTvl + (sumDailyTvls[chain][tvlSection][timestamp] ?? 0);
+    sumDailyTvls[chain][tvlSection][timestamp] = itemTvl + (sumDailyTvls[chain][tvlSection][timestamp] ?? 0);
   } else {
     console.log("itemTvl is NaN", itemTvl, chain, timestamp);
   }
@@ -47,21 +35,27 @@ export interface IProtocol extends Protocol {
   doublecounted: boolean;
 }
 
-export function excludeProtocolInCharts(protocol: Protocol) {
-  return (
-    protocol.category === "Chain" ||
-    protocol.name === "AnySwap" ||
-    protocol.category === "Bridge"
-  );
+export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: boolean) {
+  let exclude = false;
+
+  if (protocol.category === "Chain") {
+    exclude = true;
+  }
+
+  if (!includeBridge) {
+    exclude = protocol.name === "AnySwap" || protocol.category === "Bridge";
+  }
+
+  return exclude;
 }
 
-export async function getHistoricalTvlForAllProtocols() {
+export async function getHistoricalTvlForAllProtocols(includeBridge: boolean) {
   // get last daily timestamp by checking out all protocols most recent tvl value
   let lastDailyTimestamp = 0;
 
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {
-      if (excludeProtocolInCharts(protocol)) {
+      if (excludeProtocolInCharts(protocol, includeBridge)) {
         return undefined;
       }
 
@@ -77,9 +71,7 @@ export async function getHistoricalTvlForAllProtocols() {
 
       // check if protocol is double counted
       const doublecounted =
-        module.doublecounted ??
-        (protocol.category === "Yield Aggregator" ||
-          protocol.category === "Yield");
+        module.doublecounted ?? (protocol.category === "Yield Aggregator" || protocol.category === "Yield");
 
       let protocolData = { ...protocol, doublecounted };
 
@@ -94,9 +86,7 @@ export async function getHistoricalTvlForAllProtocols() {
         historicalTvl[historicalTvl.length - 1] = lastTvl;
       }
 
-      const lastTimestamp = getClosestDayStartTimestamp(
-        historicalTvl[historicalTvl.length - 1].SK
-      );
+      const lastTimestamp = getClosestDayStartTimestamp(historicalTvl[historicalTvl.length - 1].SK);
 
       lastDailyTimestamp = Math.max(lastDailyTimestamp, lastTimestamp);
 
@@ -119,14 +109,10 @@ export async function getHistoricalTvlForAllProtocols() {
 export type TvlItem = { [section: string]: any };
 
 export async function processProtocols(
-  processor: (
-    timestamp: number,
-    tvlItem: TvlItem,
-    protocol: IProtocol
-  ) => Promise<void>
+  processor: (timestamp: number, tvlItem: TvlItem, protocol: IProtocol) => Promise<void>,
+  { includeBridge }: { includeBridge: boolean }
 ) {
-  const { historicalProtocolTvls, lastDailyTimestamp } =
-    await getHistoricalTvlForAllProtocols();
+  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(includeBridge);
 
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (protocolTvl === undefined) {
@@ -138,9 +124,7 @@ export async function processProtocols(
     const mostRecentTvl = historicalTvl[historicalTvl.length - 1];
     // check if protocol's most recent tvl value is lastDailyTimestamo of all protocols, if not update its latest tvl value timestamp to its closest day start time
     while (lastTimestamp < lastDailyTimestamp) {
-      lastTimestamp = getClosestDayStartTimestamp(
-        lastTimestamp + 24 * secondsInHour
-      );
+      lastTimestamp = getClosestDayStartTimestamp(lastTimestamp + 24 * secondsInHour);
       historicalTvl.push({
         ...mostRecentTvl,
         SK: lastTimestamp,
@@ -179,10 +163,7 @@ const handler = async (_event: any) => {
       }
 
       // if protocol is under liquid staking category and is double counted, track those values so we dont add tvl twice
-      if (
-        protocol.category?.toLowerCase() === "liquid staking" &&
-        protocol.doublecounted
-      ) {
+      if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
         sum(sumDailyTvls, "total", "dcAndLsOverlap", timestamp, item.tvl);
       }
 
@@ -217,10 +198,7 @@ const handler = async (_event: any) => {
               sum(sumDailyTvls, chainName, "liquidstaking", timestamp, tvl);
             }
 
-            if (
-              protocol.category?.toLowerCase() === "liquid staking" &&
-              protocol.doublecounted
-            ) {
+            if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
               sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, tvl);
             }
           }
@@ -245,33 +223,24 @@ const handler = async (_event: any) => {
           sum(sumDailyTvls, chainName, "liquidstaking", timestamp, item.tvl);
         }
 
-        if (
-          protocol.category?.toLowerCase() === "liquid staking" &&
-          protocol.doublecounted
-        ) {
+        if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
           sum(sumDailyTvls, chainName, "dcAndLsOverlap", timestamp, item.tvl);
         }
       }
-    }
+    },
+    { includeBridge: false }
   );
 
   await Promise.all(
     Object.entries(sumDailyTvls).map(async ([chain, chainDailyTvls]) => {
       const chainResponse = Object.fromEntries(
-        Object.entries(chainDailyTvls).map(([section, tvls]) => [
-          section,
-          Object.entries(tvls),
-        ])
+        Object.entries(chainDailyTvls).map(([section, tvls]) => [section, Object.entries(tvls)])
       );
-      const compressedRespone = await promisify(brotliCompress)(
-        JSON.stringify(chainResponse),
-        {
-          [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
-          [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
-        }
-      );
-      const filename =
-        chain === "total" ? "lite/charts" : `lite/charts/${chain}`;
+      const compressedRespone = await promisify(brotliCompress)(JSON.stringify(chainResponse), {
+        [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
+        [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
+      });
+      const filename = chain === "total" ? "lite/charts" : `lite/charts/${chain}`;
       await store(filename, compressedRespone, true);
     })
   );

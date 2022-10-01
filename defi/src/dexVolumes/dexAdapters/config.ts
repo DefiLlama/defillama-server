@@ -290,8 +290,8 @@ export default {
     "netswap": {
         enabled: true
     },
-    "jupiter": {
-        enabled: false
+    "jupiter-aggregator": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

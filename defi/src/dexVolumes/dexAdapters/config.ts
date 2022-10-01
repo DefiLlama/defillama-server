@@ -291,7 +291,7 @@ export default {
         enabled: true
     },
     "jupiter": {
-        enabled: true
+        enabled: false
     }
 } as {
     [name: string]: IVolumesConfig

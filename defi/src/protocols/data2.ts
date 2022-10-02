@@ -15951,6 +15951,27 @@ listedAt: 1650804679
   twitter: "JupiterExchange",
   listedAt: 1664608359
 },
+{
+  id: "2142",
+  name: "Sonne Finance",
+  address: "optimism:0x1db2466d9f5e10d7090e7152b68d62703a2245f0",
+  symbol: "SONNE",
+  url: "https://sonne.finance",
+  description: "Sonne Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless, open source and Optimistic protocol serving users on Optimism. Users can deposit their assets, use them as collateral and borrow against them",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/sonne-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "sonne-finance",
+  cmcId: "22001",
+  category: "Lending",
+  chains: ["Optimism"],
+  oracles: [],
+  forkedFrom: ["Compound"],
+  module: "sonne-finance/index.js",
+  twitter: "SonneFinance",
+  listedAt: 1664706279
+},
 ]
 
 export default data2;

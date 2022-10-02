@@ -2682,7 +2682,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "matic-network",
     cmcId: "3890",
-    category: "Chain",
+    category: "Bridge",
     chains: ["Polygon"],
     module: "polygon/index.js",
     twitter: "0xPolygon",

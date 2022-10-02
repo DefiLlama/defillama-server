@@ -292,6 +292,9 @@ export default {
     },
     "jupiter-aggregator": {
         enabled: true
+    },
+    "astroport": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

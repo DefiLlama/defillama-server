@@ -39,7 +39,7 @@ export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: bool
   let exclude = false;
 
   if (protocol.category === "Chain") {
-    exclude = true;
+    return true;
   }
 
   if (!includeBridge) {

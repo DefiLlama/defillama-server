@@ -15972,6 +15972,28 @@ listedAt: 1650804679
   twitter: "SonneFinance",
   listedAt: 1664706279
 },
+{
+  id: "2143",
+  name: "Zircon Gamma",
+  address: "moonriver:0x4545E94974AdACb82FC56BCf136B07943e152055",
+  symbol: "ZRG",
+  url: "https://zircon.finance",
+  description: "Zircon is a DEX protocol with a unique mechanism to provide liquidity with one token and with greatly reduced impermanent loss.",
+  chain: "Moonriver",
+  logo: `${baseIconsUrl}/zircon-gamma.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Moonriver"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "zircon-gamma/index.js",
+  twitter: "Zircon_Finance",
+  audit_links: ["https://github.com/Zircon-Finance/zircon-protocol-2/blob/master/audit/chaintroopers/Zircon_Protocol2_SecAssessment_report_v1.1.pdf"],
+  listedAt: 1664708213
+},
 ]
 
 export default data2;

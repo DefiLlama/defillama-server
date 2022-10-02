@@ -15903,7 +15903,7 @@ listedAt: 1650804679
   category: "Yield Aggregator",
   chains: ["Ethereum"],
   oracles: [],
-  forkedFrom: ["Uniswap"],
+  forkedFrom: [],
   module: "sommelier/index.js",
   twitter: "sommfinance",
   audit_links: ["https://github.com/PeggyJV/cellar-contracts/tree/main/audits"],

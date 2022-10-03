@@ -16015,6 +16015,31 @@ listedAt: 1650804679
   twitter: "DarkSwap_Fi",
   listedAt: 1664802719
 },
+{
+  id: "2145",
+  name: "XSwap Protocol",
+  address: "xdc:0x36726235dadbdb4658d33e62a249dca7c4b2bc68",
+  symbol: "XSP",
+  url: "https://app.xspswap.finance",
+  description: "XSwap Protocol is the 1st AMM on XDC Network powered by XDC.",
+  chain: "XDC",
+  logo: `${baseIconsUrl}/xswap-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "xswap-protocol",
+  cmcId: "14613",
+  category: "Dexes",
+  chains: ["XDC"],
+  oracles: [], //xUSDT WanChain bridge
+  forkedFrom: ["Uniswap"],
+  module: "xspswap/index.js",
+  twitter: "XSwapProtocol",
+  audit_links: [
+                 "https://github.com/XRC20-Swap/DEX-Audit/blob/main/DEX%20Audit%20Techrate.pdf",
+                 "https://www.certik.com/projects/xswap-protocol"
+               ],
+  listedAt: 1664803068
+},
 ]
 
 export default data2;

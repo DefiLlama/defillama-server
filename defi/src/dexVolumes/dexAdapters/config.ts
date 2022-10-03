@@ -298,6 +298,15 @@ export default {
     },
     "astroswap": {
         enabled: true
+    },
+    "tethys-finance": {
+        enabled: true
+    },
+    "mimo": {
+        enabled: true
+    },
+    "kaidex": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

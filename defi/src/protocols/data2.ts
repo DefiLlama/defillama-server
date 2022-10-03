@@ -15994,6 +15994,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/Zircon-Finance/zircon-protocol-2/blob/master/audit/chaintroopers/Zircon_Protocol2_SecAssessment_report_v1.1.pdf"],
   listedAt: 1664708213
 },
+{
+  id: "2144",
+  name: "DarkSwap",
+  address: "dogechain:0xF4413B0576048c39E8190C8680A1d6c4108e6C1E",
+  symbol: "DAS",
+  url: "https://www.darkswap.finance",
+  description: "Trade, Play, and Earn on the most progressive DEX Aggregator on Dogechain. Enjoy the lowest exchange fee and profitable features.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/darkswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "darkswap/index.js",
+  twitter: "DarkSwap_Fi",
+  listedAt: 1664802719
+},
 ]
 
 export default data2;

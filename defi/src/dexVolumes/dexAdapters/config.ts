@@ -295,6 +295,9 @@ export default {
     },
     "astroport": {
         enabled: true
+    },
+    "astroswap": {
+        enabled: true
     }
 } as {
     [name: string]: IVolumesConfig

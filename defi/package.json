@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@defillama/adapters": "file:./DefiLlama-Adapters",
+    "@defillama/fees-adapters": "file:./fees-adapters/src",
     "@defillama/sdk": "^2.3.80",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",

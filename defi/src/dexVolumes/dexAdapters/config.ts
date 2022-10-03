@@ -294,7 +294,7 @@ export default {
         enabled: true
     },
     "astroport": {
-        enabled: true
+        enabled: false
     },
     "astroswap": {
         enabled: true

@@ -9,9 +9,9 @@ interface IBackupData {
 }
 
 (async () => {
-    const dexId = "1052"
-    const protocolId = "astroport"
-    const chain = 'terra'
+    const dexId = "194"
+    const protocolId = "v1"
+    const chain = CHAIN.BSC
 
     const processData = (dataSet: IBackupData = {}, backUp: IBackupData = {}, _newDaily: IBackupData = {}, type: VolumeType) => {
         const newDaily: IBackupData = _newDaily
@@ -59,14 +59,14 @@ interface IBackupData {
 
     try {
         // get dataset data
-        const dataSet = path.resolve(process.cwd(), "./src/dexVolumes/cli/backfillUtilities/dataset/terra1_astroport_volume.csv");
+        const dataSet = path.resolve(process.cwd(), "./src/dexVolumes/cli/backfillUtilities/dataset/pancake-v1.data");
         const data = fs.readFileSync(dataSet, 'utf8');
-        const rawData = data.split('\n').slice(1).map(data => data.split(','));
+        const rawData = data.split('\n').map(data => data.split('\t'));
         const dataSetData = rawData.reduce((acc, current) => ({ ...acc, [new Date(current[0]).getTime() / 1000]: current[1] }), {} as IBackupData)
 
         // get stored data
-        const volumesDaily = await getVolume(dexId, VolumeType.dailyVolume, "ALL").catch(() => [] as Volume[])
-        const volumesTotal = await getVolume(dexId, VolumeType.totalVolume, "ALL").catch(() => [] as Volume[])
+        const volumesDaily = await getVolume(dexId, VolumeType.dailyVolume, "ALL")
+        const volumesTotal = await getVolume(dexId, VolumeType.totalVolume, "ALL")
         if (volumesDaily instanceof Volume || volumesTotal instanceof Volume) throw new Error("Wrong volume queried")
         const vDaily = volumesDaily.reduce((acc, current) => ({ ...acc, [current.timestamp]: current }), {} as IBackupData)
         const fromBackup = processData(dataSetData, vDaily, undefined, VolumeType.dailyVolume)
@@ -75,7 +75,6 @@ interface IBackupData {
         const fromBackupT = processData(undefined, vTotal, undefined, VolumeType.totalVolume)
         const allBackupT = processData(vTotal, undefined, fromBackupT, VolumeType.totalVolume)
         await storeBackup(allBackupD)
-        //await storeBackup(allBackupT)
 
 
     } catch (err) {

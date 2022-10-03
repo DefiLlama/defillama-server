@@ -16040,6 +16040,28 @@ listedAt: 1650804679
                ],
   listedAt: 1664803068
 },
+{
+  id: "2146",
+  name: "Sushiswap Furo",
+  address: null,
+  symbol: "-",
+  url: "https://www.sushi.com/furo",
+  description: "Earn, stream and automate your DAO salaries and token vesting with Furo.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/sushiswap-furo.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Payments",
+  chains: ["Ethereum", "Polygon", "Fantom", "Binance", "Optimism", "Harmony", "Moonbeam", "Moonriver"],
+  oracles: [], 
+  forkedFrom: ["Uniswap"],
+  module: "sushiswap-furo/index.js",
+  twitter: "SushiSwap",
+  parentProtocol: "Sushi",
+  listedAt: 1664808317
+},
 ]
 
 export default data2;

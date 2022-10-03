@@ -294,7 +294,7 @@ export default {
         enabled: true
     },
     "astroport": {
-        enabled: false
+        enabled: true
     },
     "tethys-finance": {
         enabled: true

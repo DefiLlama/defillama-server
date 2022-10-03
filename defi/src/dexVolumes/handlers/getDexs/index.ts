@@ -49,20 +49,20 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const chainFilter = event.pathParameters?.chain?.toLowerCase()
     let prevDayTime = 0
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
-        const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
         let displayName = adapter.name
-        if ("breakdown" in ada)
-            displayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
-
-        const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter, chainFilter)
-        let volumes = (await getVolume(adapter.id, VolumeType.dailyVolume))
-        // This check is made to infer Volume[] type instead of Volume type
-        if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
-
-        // Process only volumes with a specific chain
-        volumes = volumes.map(v => v.getCleanVolume(chainFilter)).filter(v => v !== null) as Volume[]
-
         try {
+            const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
+            if ("breakdown" in ada)
+                displayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
+
+            const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter, chainFilter)
+            let volumes = (await getVolume(adapter.id, VolumeType.dailyVolume))
+            // This check is made to infer Volume[] type instead of Volume type
+            if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
+
+            // Process only volumes with a specific chain
+            volumes = volumes.map(v => v.getCleanVolume(chainFilter)).filter(v => v !== null) as Volume[]
+
             if (volumes.length === 0) throw new Error(`${adapter.name} has no volumes for chain ${chainFilter}`)
 
             // Return last available data. Ideally last day volume, if not, prevents 0 volume values until data is updated or fixed
@@ -115,7 +115,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 }, {} as NonNullable<VolumeSummaryDex['protocolVersions']>) : null
             }
         } catch (error) {
-            console.error(error)
+            console.error("ADAPTER", adapter.name, error)
             return {
                 name: adapter.name,
                 volumeAdapter: adapter.volumeAdapter,

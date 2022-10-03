@@ -15408,7 +15408,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["Ethereum", "Polygon"],
-  module: "../volumes/adapters/0x",
+  module: "../volumes/adapters/0x",  // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
   forkedFrom: [],
   twitter: "0xProject",
   audit_links: ["https://docs.0x.org/developer-resources/audits"],
@@ -15946,7 +15946,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["Solana"],
-  module: "../volumes/adapters/jupiter-aggregator",
+  module: "../volumes/adapters/jupiter-aggregator", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
   forkedFrom: [],
   twitter: "JupiterExchange",
   listedAt: 1664608359

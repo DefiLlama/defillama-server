@@ -74,10 +74,7 @@ export class Volume extends Item {
             .filter(d => d !== undefined
                 && (
                     typeof d === 'object'
-                    && Object.values(d).filter(dv => {
-                        //console.log("deve", dv)
-                        return dv !== undefined
-                    }).length > 0
+                    && Object.values(d).filter(dv => dv !== undefined).length > 0
                 )
             ).length === 0
     }
@@ -143,23 +140,21 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
 
 // TMP: REMOVES ALL VOLUMES, DO NOT USE!
 export const removeVolume = async (dex: string, type: VolumeType,): Promise<boolean> => {
-    /*     const removeVolumeQuery = async (volume: Volume) => {
-            console.log("Removing", volume.keys())
-            return dynamodb.delete({
-                Key: volume.keys(),
-            })
-        }
-        try {
-            const allVolumes = await getVolume(dex, type, "ALL")
-            console.log(allVolumes)
-            if (!(allVolumes instanceof Array)) throw new Error("Unexpected error deleting volumes")
-            const cleanVols = allVolumes.filter(v => v.timestamp * 1000 <= Date.UTC(2020, 8, 7))
-            await Promise.all(cleanVols.map(volume => removeVolumeQuery(volume)))
-            return true
-        } catch (error) {
-            console.log(error)
-            return false
-        } */
-    console.info(dex, type)
-    return Promise.resolve(false)
+    const removeVolumeQuery = async (volume: Volume) => {
+        console.log("Removing", volume.keys())
+        return dynamodb.delete({
+            Key: volume.keys(),
+        })
+    }
+    try {
+        const allVolumes = await getVolume(dex, type, "ALL")
+        // console.log(allVolumes)
+        if (!(allVolumes instanceof Array)) throw new Error("Unexpected error deleting volumes")
+        const cleanVols = allVolumes// .filter(v => v.timestamp * 1000 <= Date.UTC(2020, 8, 7))
+        await Promise.all(cleanVols.map(volume => removeVolumeQuery(volume)))
+        return true
+    } catch (error) {
+        console.log(error)
+        return false
+    }
 }

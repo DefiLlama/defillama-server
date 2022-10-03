@@ -53,8 +53,6 @@ interface AveragedRecord {
                             if (volumeValue === value) {
                                 value = `Spike couldn't be averaged. Original value ${volumeValue}`
                             }
-                            if (value>MAX_SPIKE) console.log("MAAAAAAAAX SPIKE")
-                            if (value === volumeValue) console.log("same valueee noooo")
                             if (volume.data[chain][version] !== value) console.log(`Data changed for ${JSON.stringify(volume.keys())}, ${volume.data[chain][version]}, ${value}`)
                             console.log(prevValue, nextValue)
                         }
@@ -78,7 +76,7 @@ interface AveragedRecord {
                                     SK: `${oldItem.SK}#prev#${eventTimestamp}`
                                 } as DynamoDB.AttributeMap), Date.now() / 1000) */
                 const nv = new Volume(volume.type, volume.dexId, volume.timestamp, newVolume as IRecordVolumeData)
-                console.log("storing newww---", nv.keys(), newVolume)
+                console.log("Storing new", nv.keys(), newVolume)
                 await storeVolume(nv, eventTimestamp)
             }
         }

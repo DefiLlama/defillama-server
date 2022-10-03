@@ -1,6 +1,3 @@
 [submodule "DefiLlama-Adapters"]
 	path = defi/DefiLlama-Adapters
 	url = https://github.com/DefiLlama/DefiLlama-Adapters.git
-[submodule "defi/fees-adapters"]
-	path = defi/fees-adapters
-	url = https://github.com/DefiLlama/fees-adapters.git

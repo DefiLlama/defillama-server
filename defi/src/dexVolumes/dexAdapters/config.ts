@@ -307,7 +307,13 @@ export default {
     },
     "kaidex": {
         enabled: true
-    }
+    },
+    "lif3-swap": {
+        enabled: true
+    },
+    "swappi": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

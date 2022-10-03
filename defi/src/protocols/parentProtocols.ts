@@ -227,7 +227,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Algofi",
     url: "https://www.algofi.org/",
     description:
-      "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
+      "Algofi is the DeFi hub built on Algorand. Earn interest, borrow, swap and more on the Algofi lending protocol, DEX, and stablecoin. Further, access liquidity against your governance ALGOs through the Algofi Vault.",
     logo: `${baseIconsUrl}/algofi.jpg`,
     gecko_id: null,
     cmcId: null,

@@ -296,9 +296,6 @@ export default {
     "astroport": {
         enabled: false
     },
-    "astroswap": {
-        enabled: true
-    },
     "tethys-finance": {
         enabled: true
     },

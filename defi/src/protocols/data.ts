@@ -4762,7 +4762,7 @@ const data: Protocol[] = [
     description:
       "Impermax is a DeFi ecosystem that enables liquidity providers to leverage their LP tokens",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/impermax-finance.jpg`,
+    logo: `${baseIconsUrl}/impermax-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "impermax",

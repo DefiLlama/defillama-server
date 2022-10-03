@@ -14885,7 +14885,10 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "pirex/index.js",
   twitter: "redactedcartel",
-  audit_links: ["https://omniscia.io/pirex-multi-token-convex-wrapper"],
+  audit_links: [
+    "https://omniscia.io/pirex-multi-token-convex-wrapper",
+    "https://drive.google.com/file/d/151iyZSiFhHmdEaSu3w-3ba19NKaERexH/view"
+  ],
   parentProtocol: "Redacted",
   listedAt: 1663257608
 },

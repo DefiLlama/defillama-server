@@ -16016,7 +16016,7 @@ listedAt: 1650804679
   listedAt: 1664802719
 },
 {
-  id: "2144",
+  id: "2145",
   name: "XSwap Protocol",
   address: "xdc:0x36726235dadbdb4658d33e62a249dca7c4b2bc68",
   symbol: "XSP",

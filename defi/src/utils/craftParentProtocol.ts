@@ -52,7 +52,7 @@ export default async function craftParentProtocol(
   }
 
   const childProtocolsTvls = await Promise.all(
-    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, true))
+    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData))
   );
 
   const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls.reduce<ICombinedTvls>(

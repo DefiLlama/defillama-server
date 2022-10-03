@@ -1,9 +1,4 @@
-import {
-  successResponse,
-  wrap,
-  IResponse,
-  errorResponse,
-} from "./utils/shared";
+import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import sluggify from "./utils/sluggify";
 import { storeDataset, buildRedirect } from "./utils/s3";
@@ -19,14 +14,11 @@ export async function craftProtocolResponse(
 ) {
   const protocolName = rawProtocolName?.toLowerCase();
 
-  const protocolData = protocols.find(
-    (prot) => sluggify(prot) === protocolName
-  );
+  const protocolData = protocols.find((prot) => sluggify(prot) === protocolName);
 
   if (!protocolData) {
     const parentProtocol = parentProtocols.find(
-      (parent) =>
-        parent.name.toLowerCase() === standardizeProtocolName(protocolName)
+      (parent) => parent.name.toLowerCase() === standardizeProtocolName(protocolName)
     );
 
     if (!parentProtocol) {
@@ -54,20 +46,14 @@ export async function wrapResponseOrRedirect(response: any) {
     const filename = `protocol-${response.name}.json`;
     await storeDataset(filename, jsonData, "application/json");
 
-    return buildRedirect(filename, 10*60);
+    return buildRedirect(filename, 10 * 60);
   } else {
     return successResponse(response, 10 * 60); // 10 mins cache
   }
 }
 
-const handler = async (
-  event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
-  const response = await craftProtocolResponse(
-    event.pathParameters?.protocol,
-    false,
-    false
-  );
+const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+  const response = await craftProtocolResponse(event.pathParameters?.protocol, false, false);
 
   return wrapResponseOrRedirect(response);
 };

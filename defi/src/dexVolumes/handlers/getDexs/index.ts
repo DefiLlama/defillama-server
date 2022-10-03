@@ -67,7 +67,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
             // Return last available data. Ideally last day volume, if not, prevents 0 volume values until data is updated or fixed
             let prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
-            const prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
+            let prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
             if (prevDayTimestamp !== prevDayVolume.timestamp && !isDisabled(adapter.volumeAdapter)) {
                 if (enableAlerts)
                     await sendDiscordAlert(`Volume not updated (using old data...)\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
@@ -98,8 +98,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 disabled: isDisabled(adapter.volumeAdapter),
                 displayName: displayName,
                 volumeAdapter: adapter.volumeAdapter,
-                totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
-                volume24hBreakdown: prevDayVolume ? prevDayVolume.data : null,
+                totalVolume24h: !isDisabled(adapter.volumeAdapter) && prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
+                volume24hBreakdown: !isDisabled(adapter.volumeAdapter) && prevDayVolume ? prevDayVolume.data : null,
                 volumes: volumes.map(removeEventTimestampAttribute),
                 change_1d: change_1d,
                 change_7d: calcNdChange(volumes, 7, prevDayTimestamp),

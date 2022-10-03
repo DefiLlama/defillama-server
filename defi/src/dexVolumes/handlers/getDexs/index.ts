@@ -80,7 +80,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 throw new Error(`${adapter.name} has ${(1662940800 - 1662681600) / (60 * 60 * 24)} days old data... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 
-            prevDayTimestamp = prevDayVolume.timestamp
+            if (!isDisabled(adapter.volumeAdapter))
+                prevDayTimestamp = prevDayVolume.timestamp
 
             if (prevDayTime < prevDayTimestamp) prevDayTime = prevDayTimestamp
 

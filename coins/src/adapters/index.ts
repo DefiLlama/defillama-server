@@ -16,6 +16,7 @@ export default {
   scream: require("./moneyMarkets/compound/index"),
   euler: require("./moneyMarkets/euler/index"),
   yearn: require("./yield/yearn/index"),
+  alchemix: require("./yield/alchemix/index"),
   platypus: require("./markets/platypus/index"),
   curve1: require("./markets/curve/index"),
   curve2: require("./markets/curve/index"),

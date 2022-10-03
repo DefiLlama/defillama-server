@@ -2,6 +2,7 @@ import "./../setup.ts"
 import { getVolume, storeVolume, Volume, VolumeType } from "../../data/volume"
 import dexAdapters from '../../dexAdapters'
 import { IRecordVolumeData } from "../../handlers/storeDexVolume"
+import { formatTimestampAsDate } from "../../../utils/date"
 
 interface AveragedRecord {
     [key: string]: IRecordVolumeData | boolean | { [protocolVersion: string]: number | string } | undefined
@@ -10,8 +11,8 @@ interface AveragedRecord {
 (async () => {
     const eventTimestamp = Math.trunc((Date.now()) / 1000)
     const ONE_DAY_IN_SECONDS = 60 * 60 * 24
-    const MAX_SPIKE = 500000000
-    const DEX_NAME = 'dodo'
+    const MAX_SPIKE = 1000000000
+    const DEX_NAME = 'terraswap'
     console.log("Averaging...")
     const dex = dexAdapters.find(dex => dex.volumeAdapter === DEX_NAME)
     if (!dex) throw new Error(`Couldn´t find dex ${DEX_NAME}`)
@@ -53,8 +54,7 @@ interface AveragedRecord {
                             if (volumeValue === value) {
                                 value = `Spike couldn't be averaged. Original value ${volumeValue}`
                             }
-                            if (volume.data[chain][version] !== value) console.log(`Data changed for ${JSON.stringify(volume.keys())}, ${volume.data[chain][version]}, ${value}`)
-                            console.log(prevValue, nextValue)
+                            if (volume.data[chain][version] !== value) console.log(`Data changed for ${JSON.stringify(volume.keys().PK)} at ${formatTimestampAsDate(String(volume.timestamp))} with keys ${JSON.stringify(volume.keys())} \nOLD: ${volume.data[chain][version]}\nNEW: ${value}`)
                         }
                         return {
                             ...acc,

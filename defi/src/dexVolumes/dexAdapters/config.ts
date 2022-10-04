@@ -323,6 +323,9 @@ export default {
     "polycat": {
         enabled: true
     },
+     "voltswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

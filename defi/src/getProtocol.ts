@@ -36,7 +36,7 @@ export async function craftProtocolResponse(
     });
   }
 
-  return craftProtocol(protocolData, useNewChainNames, useHourlyData);
+  return craftProtocol(protocolData, useNewChainNames, useHourlyData, false);
 }
 
 export async function wrapResponseOrRedirect(response: any) {

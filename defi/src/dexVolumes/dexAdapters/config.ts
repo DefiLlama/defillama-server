@@ -311,6 +311,9 @@ export default {
     "swappi": {
         enabled: true
     },
+        "yodeswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

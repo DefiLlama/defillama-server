@@ -314,7 +314,7 @@ export default {
     "yodeswap": {
         enabled: true
     },
-    "defikingdoms": {
+    "defi-kingdoms": {
         enabled: true
     },
      "defiplaza": {

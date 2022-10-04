@@ -317,6 +317,12 @@ export default {
     "defikingdoms": {
         enabled: true
     },
+     "defiplaza": {
+        enabled: true
+    },
+    "polycat": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

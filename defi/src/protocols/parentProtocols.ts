@@ -270,6 +270,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Meter_IO",
   },
+  {
+    id: "Based Finance",
+    name: "Based Finance",
+    url: "https://next-gen.basedfinance.io/",
+    description:
+      "An innovative fork of tomb.finance, pegged to the price of 1 TOMB via seigniorage.",
+    logo: `${baseIconsUrl}/based finance.png`,
+    gecko_id: "based-finance",
+    cmcId: "17954",
+    chains: [],
+    twitter: "BasedDEFI",
+  },
 ];
 
 export default parentProtocols;

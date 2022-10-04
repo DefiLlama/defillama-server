@@ -16126,6 +16126,7 @@ listedAt: 1650804679
   forkedFrom: ["Tomb Finance"],
   module: "based-finance/basedV2.js",
   twitter: "BasedDEFI",
+  parentProtocol: "Based Finance",
   listedAt: 1664904106
 },
 ]

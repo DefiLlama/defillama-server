@@ -188,7 +188,29 @@ async function getTokenAndRedirectDataHistorical(
     }
   }
 
-  return aggregateTokenAndRedirectData(validResults);
+  const timestampedResults = aggregateTokenAndRedirectData(validResults);
+
+  if (timestampedResults.length < tokens.length) {
+    const returnedTokens = timestampedResults.map((t: any) => t.address);
+    const missingTokens: string[] = [];
+
+    tokens.map((t: any) => {
+      if (returnedTokens[t] == undefined) {
+        missingTokens.push(t);
+      }
+    });
+
+    const currentResults = await getTokenAndRedirectData(
+      missingTokens,
+      chain,
+      getCurrentUnixTimestamp()
+    );
+
+    if (currentResults.length > 0) {
+      // await currentResult.adapter()
+    }
+  }
+  return timestampedResults;
 }
 async function getTokenAndRedirectDataCurrent(
   tokens: string[],

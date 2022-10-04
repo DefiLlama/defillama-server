@@ -2,30 +2,58 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { DAY } from "./utils/processCoin";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
+import { getCurrentUnixTimestamp } from "./utils/date";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const requestedCoins = (event.pathParameters?.coins?? "").split(',');
-  const timestampRequested = Number(event.pathParameters!.timestamp)
-  const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
-  const response = {} as CoinsResponse
-  await Promise.all(coins.map(async coin => {
-    const finalCoin = await getRecordClosestToTimestamp(coin.redirect ?? coin.PK, timestampRequested, DAY / 4);
-    if (finalCoin.SK === undefined) {
-        return
-    }
-    response[PKTransforms[coin.PK]] = {
+  const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
+  const timestampRequested = Number(event.pathParameters!.timestamp);
+  const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
+  const response = {} as CoinsResponse;
+  await Promise.all(
+    coins.map(async (coin) => {
+      const finalCoin = await getRecordClosestToTimestamp(
+        coin.redirect ?? coin.PK,
+        timestampRequested,
+        DAY / 4
+      );
+      if (finalCoin.SK === undefined) {
+        const currentCoin = await getRecordClosestToTimestamp(
+          coin.redirect ?? coin.PK,
+          getCurrentUnixTimestamp(),
+          DAY / 4
+        );
+        if (currentCoin.SK == undefined) {
+          return;
+        }
+        // await currentCoin.adapter()
+      }
+      response[PKTransforms[coin.PK]] = {
         decimals: coin.decimals,
         symbol: coin.symbol,
         price: finalCoin.price,
         timestamp: finalCoin.SK,
-        confidence: finalCoin.confidence,
-    };
-  }))
-  return successResponse({
-    coins: response
-  }, 3600); // 1 hour cache
+        confidence: finalCoin.confidence
+      };
+    })
+  );
+  return successResponse(
+    {
+      coins: response
+    },
+    3600
+  ); // 1 hour cache
 };
 
 export default wrap(handler);
+
+// handler({
+//   pathParameters: {
+//     coins:
+//       "ethereum:0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8,ethereum:0x03403154afc09Ce8e44C3B185C82C6aD5f86b9ab",
+//     //"1664897509" //
+//     timestamp: "1656944730"
+//   }
+// });
+// ts-node coins/src/getHistoricalCoins.ts

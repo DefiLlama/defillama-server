@@ -16172,6 +16172,29 @@ listedAt: 1650804679
   audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
   parentProtocol: "Ribbon Finance"
 },
+{
+  id: "2152",
+  name: "Sushiswap Trident",
+  address: null,
+  symbol: "-",
+  url: "https://www.sushi.com/swap",
+  description: "TRIDENT 🔱 is a newly developed AMM and routing system from SushiSwap (Sushi).",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/sushiswap-trident.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Polygon", "Kava", "Metis", "Optimism"],
+  oracles: [], 
+  forkedFrom: [],
+  module: "sushiswap-trident/index.js",
+  twitter: "SushiSwap",
+  parentProtocol: "Sushi",
+  listedAt: 1664917476
+  
+},
 ]
 
 export default data2;

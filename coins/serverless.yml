@@ -64,6 +64,7 @@ provider:
     XDAI_RPC: ${file(./env.js):XDAI_RPC}
     HARMONY_RPC: ${file(./env.js):HARMONY_RPC}
     SOLANA_RPC: ${file(./env.js):SOLANA_RPC}
+    MISSING_COINS_DB_PWD: ${file(./env.js):MISSING_COINS_DB_PWD}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}

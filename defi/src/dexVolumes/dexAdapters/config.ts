@@ -311,7 +311,10 @@ export default {
     "swappi": {
         enabled: true
     },
-        "yodeswap": {
+    "yodeswap": {
+        enabled: true
+    },
+    "defikingdoms": {
         enabled: true
     },
 } as {

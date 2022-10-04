@@ -16370,7 +16370,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "bsc:0x7ad7242A99F21aa543F9650A56D141C57e4F6081" ,
     symbol: "JADE" ,
     url: "https://jadeprotocol.io/" ,
-    description: "Jade Protocol is a decentralized reserve currency platform on Binance Smart Chain" ,
+    description: "Jade Protocol is a community-governed investment collective with deals sourced and vetted by the $JADE Alpha Army" ,
     chain: "Binance" ,
     logo: `${baseIconsUrl}/jade-protocol.jpg` ,
     audits: "0" ,

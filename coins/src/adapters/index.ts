@@ -17,6 +17,7 @@ export default {
   euler: require("./moneyMarkets/euler/index"),
   yearn: require("./yield/yearn/index"),
   alchemix: require("./yield/alchemix/index"),
+  meanFinance: require("./yield/mean-finance/index"),
   platypus: require("./markets/platypus/index"),
   curve1: require("./markets/curve/index"),
   curve2: require("./markets/curve/index"),

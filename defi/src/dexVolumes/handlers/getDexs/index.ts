@@ -46,41 +46,43 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
 const MAX_OUTDATED_DAYS = 30
 
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
-    const chainFilter = event.pathParameters?.chain?.toLowerCase()
+    const pathChain = event.pathParameters?.chain?.toLowerCase()
+    const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
     let prevDayTime = 0
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
-        const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
         let displayName = adapter.name
-        if ("breakdown" in ada)
-            displayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
-
-        const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter, chainFilter)
-        let volumes = (await getVolume(adapter.id, VolumeType.dailyVolume))
-        // This check is made to infer Volume[] type instead of Volume type
-        if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
-
-        // Process only volumes with a specific chain
-        volumes = volumes.map(v => v.getCleanVolume(chainFilter)).filter(v => v !== null) as Volume[]
-
         try {
+            const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
+            if ("breakdown" in ada)
+                displayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
+
+            const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter, chainFilter)
+            let volumes = (await getVolume(adapter.id, VolumeType.dailyVolume))
+            // This check is made to infer Volume[] type instead of Volume type
+            if (!(volumes instanceof Array)) throw new Error("Wrong volume queried")
+
+            // Process only volumes with a specific chain
+            volumes = volumes.map(v => v.getCleanVolume(chainFilter)).filter(v => v !== null) as Volume[]
+
             if (volumes.length === 0) throw new Error(`${adapter.name} has no volumes for chain ${chainFilter}`)
 
             // Return last available data. Ideally last day volume, if not, prevents 0 volume values until data is updated or fixed
             let prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
-            const prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
+            let prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
             if (prevDayTimestamp !== prevDayVolume.timestamp && !isDisabled(adapter.volumeAdapter)) {
                 if (enableAlerts)
                     await sendDiscordAlert(`Volume not updated (using old data...)\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
-                console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
+                // console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
             }
 
             if ((prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * MAX_OUTDATED_DAYS) && !isDisabled(adapter.volumeAdapter)) {
                 if (enableAlerts)
                     await sendDiscordAlert(`${adapter.name} has ${MAX_OUTDATED_DAYS} days old data... Not including in the response`)
-                throw new Error(`${adapter.name} has ${(1662940800 - 1662681600) / (60 * 60 * 24)} days old data... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
+                throw new Error(`${adapter.name} has ${(Math.abs(prevDayVolume.timestamp - prevDayTimestamp)) / (60 * 60 * 24)} days old data... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 
-            prevDayTimestamp = prevDayVolume.timestamp
+            if (!isDisabled(adapter.volumeAdapter))
+                prevDayTimestamp = prevDayVolume.timestamp
 
             if (prevDayTime < prevDayTimestamp) prevDayTime = prevDayTimestamp
 
@@ -97,8 +99,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 disabled: isDisabled(adapter.volumeAdapter),
                 displayName: displayName,
                 volumeAdapter: adapter.volumeAdapter,
-                totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
-                volume24hBreakdown: prevDayVolume ? prevDayVolume.data : null,
+                totalVolume24h: !isDisabled(adapter.volumeAdapter) && prevDayVolume ? sumAllVolumes(prevDayVolume.data) : 0,
+                volume24hBreakdown: !isDisabled(adapter.volumeAdapter) && prevDayVolume ? prevDayVolume.data : null,
                 volumes: volumes.map(removeEventTimestampAttribute),
                 change_1d: change_1d,
                 change_7d: calcNdChange(volumes, 7, prevDayTimestamp),
@@ -114,7 +116,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 }, {} as NonNullable<VolumeSummaryDex['protocolVersions']>) : null
             }
         } catch (error) {
-            console.error(error)
+            // console.error("ADAPTER", adapter.name, error)
             return {
                 name: adapter.name,
                 volumeAdapter: adapter.volumeAdapter,
@@ -163,7 +165,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         ...generalStats,
         dexs: dexsResponse,
-        allChains: getAllChainsUnique(dexs)
+        allChains: getAllChainsUniqueString(getAllChainsFromDexAdapters(volumeAdapters.map(va=>va.volumeAdapter)))// getAllChainsUnique(dexs)
     } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
 
@@ -211,6 +213,12 @@ export const removeEventTimestampAttribute = (v: Volume) => {
 const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
     const allChainsNotUnique = dexs.reduce((acc, { chains }) => chains !== null ? acc.concat(...chains) : acc, [] as string[])
     return allChainsNotUnique.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+    })
+}
+
+const getAllChainsUniqueString = (chains: string[]) => {
+    return chains.filter((value, index, self) => {
         return self.indexOf(value) === index;
     })
 }

@@ -9,8 +9,8 @@ interface IBackupData {
 }
 
 (async () => {
-    const dexId = "1052"
-    const protocolId = "astroport"
+    const dexId = "491"
+    const protocolId = "terraswap"
     const chain = 'terra'
 
     const processData = (dataSet: IBackupData = {}, backUp: IBackupData = {}, _newDaily: IBackupData = {}, type: VolumeType) => {
@@ -59,7 +59,7 @@ interface IBackupData {
 
     try {
         // get dataset data
-        const dataSet = path.resolve(process.cwd(), "./src/dexVolumes/cli/backfillUtilities/dataset/terra1_astroport_volume.csv");
+        const dataSet = path.resolve(process.cwd(), "./src/dexVolumes/cli/backfillUtilities/dataset/terraswap_terra1.csv");
         const data = fs.readFileSync(dataSet, 'utf8');
         const rawData = data.split('\n').slice(1).map(data => data.split(','));
         const dataSetData = rawData.reduce((acc, current) => ({ ...acc, [new Date(current[0]).getTime() / 1000]: current[1] }), {} as IBackupData)
@@ -75,7 +75,7 @@ interface IBackupData {
         const fromBackupT = processData(undefined, vTotal, undefined, VolumeType.totalVolume)
         const allBackupT = processData(vTotal, undefined, fromBackupT, VolumeType.totalVolume)
         await storeBackup(allBackupD)
-        //await storeBackup(allBackupT)
+        // await storeBackup(allBackupT)
 
 
     } catch (err) {

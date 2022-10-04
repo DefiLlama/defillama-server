@@ -296,9 +296,36 @@ export default {
     "astroport": {
         enabled: true
     },
-    "astroswap": {
+    "tethys-finance": {
         enabled: true
-    }
+    },
+    "mimo": {
+        enabled: true
+    },
+    "kaidex": {
+        enabled: true
+    },
+    "lif3-swap": {
+        enabled: true
+    },
+    "swappi": {
+        enabled: true
+    },
+    "yodeswap": {
+        enabled: true
+    },
+    "defikingdoms": {
+        enabled: true
+    },
+     "defiplaza": {
+        enabled: true
+    },
+    "polycat": {
+        enabled: true
+    },
+     "voltswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

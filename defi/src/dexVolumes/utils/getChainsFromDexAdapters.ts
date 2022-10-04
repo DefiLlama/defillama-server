@@ -54,12 +54,15 @@ export const isDisabledByProtocolVersion = (adapterVolume: string, chainFilter?:
 }
 
 export const formatChain = (chain: string) => {
-    const c = chain === 'avax' ? "avalanche" : chain
+    let c = chain
+    if (chain === 'avax') c = "avalanche"
+    else if (chain === 'terra') c = 'terra classic'
     return c[0].toUpperCase() + c.slice(1)
 }
 
 export const formatChainKey = (chain: string) => {
     if (chain === 'avalanche') return CHAIN.AVAX
+    else if (chain === 'terra classic') return 'terra'
     return chain.toLowerCase()
 }
 

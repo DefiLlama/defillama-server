@@ -14026,7 +14026,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Options",
   chains: ["Solana"],
-  oracles: [],
+  oracles: ["Pyth"],
   forkedFrom: [],
   module: "cega/index.js",
   twitter: "cega_fi",

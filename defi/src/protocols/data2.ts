@@ -6125,6 +6125,7 @@ listedAt: 1650804679
   twitter: "0xPolysynth",
   listedAt: 1650988125
 },
+/*
 {
   id: "1689",
   name: "GARD",
@@ -6147,6 +6148,7 @@ listedAt: 1650804679
   audit_links: ["https://algogard.com/audits/GARD-March-2022-Vantage-Point-Audit.pdf", "https://algogard.com/audits/GARD-March-2022-Coinspect-Audit.pdf"],
   listedAt: 1650988125
 },
+*/
 {
   id: "1690",
   name: "Zombie Network",

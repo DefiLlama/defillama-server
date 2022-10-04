@@ -16062,6 +16062,28 @@ listedAt: 1650804679
   parentProtocol: "Sushi",
   listedAt: 1664808317
 },
+{
+  id: "2147",
+  name: "IPOR",
+  address: null,
+  symbol: "-",
+  url: "https://www.ipor.io",
+  description: "IPOR (Inter Protocol Over-block Rate) is a DeFi permissionless interest rate index used by IPOR Protocol (an interest rate derivative DEX). IPOR Protocol allows users to hedge their exposure by leveraging non-custodian on-chain interest rate swaps.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ipor.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: [],
+  oracles: [], 
+  forkedFrom: [],
+  module: "ipor/index.js",
+  twitter: "ipor_io",
+  audit_links: ["https://drive.google.com/file/d/1t5oRH8Cxux19Trl75qTEF3kxIpX717H7/view?usp=sharing"],
+  listedAt: 1664876804
+},
 ]
 
 export default data2;

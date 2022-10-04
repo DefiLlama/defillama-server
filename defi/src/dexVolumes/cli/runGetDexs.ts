@@ -3,13 +3,13 @@ import { handler, IGetDexsResponseBody } from "../handlers/getDexs";
 import { APIGatewayProxyEvent } from "aws-lambda";
 
 const event = {
-    pathParameters: { chain: undefined }
+    pathParameters: { chain: "Ethereum" }
 } as unknown as APIGatewayProxyEvent
 
 (async () => {
     const r = await handler(event)
     const rr = JSON.parse(r.body) as IGetDexsResponseBody
-    console.log(rr.dexs.find(d=>d.name==='Astroport'))
+    console.log(rr.allChains)
     /*     console.log("totalVolume", rr.totalVolume)
         console.log("changeVolume1d", rr.changeVolume1d)
         console.log("changeVolume7d", rr.changeVolume7d)

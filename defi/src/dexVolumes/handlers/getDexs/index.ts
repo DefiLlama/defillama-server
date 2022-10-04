@@ -165,7 +165,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         ...generalStats,
         dexs: dexsResponse,
-        allChains: getAllChainsUnique(dexs)
+        allChains: getAllChainsUniqueString(getAllChainsFromDexAdapters(volumeAdapters.map(va=>va.volumeAdapter)))// getAllChainsUnique(dexs)
     } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
 
@@ -213,6 +213,12 @@ export const removeEventTimestampAttribute = (v: Volume) => {
 const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
     const allChainsNotUnique = dexs.reduce((acc, { chains }) => chains !== null ? acc.concat(...chains) : acc, [] as string[])
     return allChainsNotUnique.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+    })
+}
+
+const getAllChainsUniqueString = (chains: string[]) => {
+    return chains.filter((value, index, self) => {
         return self.indexOf(value) === index;
     })
 }

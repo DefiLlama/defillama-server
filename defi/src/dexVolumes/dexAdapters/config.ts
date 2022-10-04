@@ -338,6 +338,15 @@ export default {
     "complus-network": {
         enabled: true
     },
+    "padswap": {
+        enabled: true
+    },
+    "sharkswap": {
+        enabled: true
+    },
+    "okcswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

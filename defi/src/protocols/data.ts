@@ -25157,6 +25157,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   language: "Solidity",
   forkedFrom: ["Tomb Finance"],
   audit_links: ["https://github.com/Tibereum/obelisk-audits/blob/main/Based.pdf"] ,
+  parentProtocol: "Based Finance",
   listedAt: 1644443064,
 },
 {

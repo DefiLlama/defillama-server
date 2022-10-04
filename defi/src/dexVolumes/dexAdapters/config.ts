@@ -323,7 +323,19 @@ export default {
     "polycat": {
         enabled: true
     },
-     "voltswap": {
+    "voltswap": {
+        enabled: true
+    },
+    "yokaiswap": {
+        enabled: true
+    },
+    "protofi": {
+        enabled: true
+    },
+    "voltage": {
+        enabled: true
+    },
+    "complus-network": {
         enabled: true
     },
 } as {

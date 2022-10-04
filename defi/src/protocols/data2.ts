@@ -16107,6 +16107,27 @@ listedAt: 1650804679
   twitter: "roketostream",
   listedAt: 1664898064
 },
+{
+  id: "2149",
+  name: "Based V2",
+  address: null,
+  symbol: "-",
+  url: "https://next-gen.basedfinance.io",
+  description: "An innovative fork of tomb.finance, pegged to the price of 1 TOMB via seigniorage",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/based-v2.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Fantom"],
+  oracles: [], 
+  forkedFrom: ["Tomb Finance"],
+  module: "based-finance/basedV2.js",
+  twitter: "BasedDEFI",
+  listedAt: 1664904106
+},
 ]
 
 export default data2;

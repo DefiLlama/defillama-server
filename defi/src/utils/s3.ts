@@ -57,6 +57,28 @@ export async function storeLiqs(filename: string, body: string | Readable, conte
     .promise();
 }
 
+export async function getCachedLiqs(protocol: string, chain: string) {
+  const data = await new aws.S3()
+    .getObject({
+      Bucket: datasetBucket,
+      Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
+    })
+    .promise();
+  return data.Body?.toString() ?? "";
+}
+
+export async function storeCachedLiqs(protocol: string, chain: string, body: string | Readable) {
+  await new aws.S3()
+    .upload({
+      Bucket: datasetBucket,
+      Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
+      Body: body,
+      ACL: "public-read",
+      ContentType: "application/json",
+    })
+    .promise();
+}
+
 export function buildRedirect(filename: string, cache?: number) {
   return {
     statusCode: 307,

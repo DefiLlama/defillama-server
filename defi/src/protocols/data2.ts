@@ -16053,7 +16053,7 @@ listedAt: 1650804679
   url: "https://www.sushi.com/furo",
   description: "Earn, stream and automate your DAO salaries and token vesting with Furo.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/sushiswap-furo.png`,
+  logo: `${baseIconsUrl}/sushi-furo.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

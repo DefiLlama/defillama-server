@@ -3508,7 +3508,7 @@ const data: Protocol[] = [
   },
   {
     id: "281",
-    name: "Ribbon Finance",
+    name: "Ribbon",
     address: "0x6123b0049f904d730db3c36a31167d9d4121fa6b",
     symbol: "RBN",
     url: "https://www.ribbon.finance/",
@@ -3517,13 +3517,14 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/ribbon-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "ribbon-finance",
-    cmcId: "12387",
+    gecko_id: null,
+    cmcId: null,
     category: "Options",
     chains: ["Ethereum"],
     module: "ribbon/index.js",
     twitter: "ribbonfinance",
     audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
+    parentProtocol: "Ribbon Finance"
   },
   {
     id: "282",

@@ -282,6 +282,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BasedDEFI",
   },
+  {
+    id: "Ribbon Finance",
+    name: "Ribbon Finance",
+    url: "https://www.ribbon.finance/",
+    description:
+      "Structured products protocol",
+    logo: `${baseIconsUrl}/ribbon-finance.png`,
+    gecko_id: "ribbon-finance",
+    cmcId: "12387",
+    chains: [],
+    twitter: "ribbonfinance",
+  },
 ];
 
 export default parentProtocols;

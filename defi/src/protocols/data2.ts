@@ -16132,6 +16132,46 @@ listedAt: 1650804679
   parentProtocol: "Based Finance",
   listedAt: 1664904106
 },
+{
+  id: "2150",
+  name: "Ribbon Earn",
+  address: "0x6123b0049f904d730db3c36a31167d9d4121fa6b",
+  symbol: "RBN",
+  url: "https://www.ribbon.finance/",
+  description: "Structured products protocol",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ribbon-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  module: "ribbon-earn/index.js",
+  twitter: "ribbonfinance",
+  audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
+  parentProtocol: "Ribbon Finance"
+},
+{
+  id: "2151",
+  name: "Ribbon Lend",
+  address: "0x6123b0049f904d730db3c36a31167d9d4121fa6b",
+  symbol: "RBN",
+  url: "https://www.ribbon.finance/",
+  description: "Structured products protocol",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ribbon-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "ribbon-lend/index.js",
+  twitter: "ribbonfinance",
+  audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
+  parentProtocol: "Ribbon Finance"
+},
 ]
 
 export default data2;

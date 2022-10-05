@@ -1,5 +1,5 @@
 import "./setup.ts"
-import { handler, IGetDexsResponseBody } from "../handlers/getDexs-copy";
+import { handler, IGetDexsResponseBody } from "../handlers/getDexs";
 import { APIGatewayProxyEvent } from "aws-lambda";
 
 const event = {

@@ -349,17 +349,6 @@ functions:
       - http:
           path: dexs/{chain}
           method: get
-  getDexsCopy:
-    handler: src/dexVolumes/handlers/getDexs-copy/index.default
-    timeout: 180 #tmp
-    memorySize: 2000
-    events:
-      - http:
-          path: dexsCopy
-          method: get
-      - http:
-          path: dexsCopy/{chain}
-          method: get
   getDex:
     handler: src/dexVolumes/handlers/getDexVolume/index.default
     timeout: 90

@@ -362,6 +362,12 @@ export default {
     "maiar-exchange": {
         enabled: true
     },
+    "defichain-dex": {
+        enabled: true
+    },
+    "planet": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

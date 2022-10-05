@@ -14293,7 +14293,7 @@ listedAt: 1650804679
   category: "Algo-Stables",
   chains: ["Dogechain"],
   oracles: ["TWAP"],
-  forkedFrom: ["Tomb Fiannce"],
+  forkedFrom: ["Tomb Finance"],
   module: "chocodoge/index.js",
   twitter: "ChocoDoge_",
   listedAt: 1662470738

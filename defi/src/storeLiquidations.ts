@@ -27,7 +27,13 @@ async function handler() {
               const _end = performance.now();
               console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
             } catch (e) {
-              console.log(`No external fetcher data for ${protocol}/${chain}`);
+              console.error(e);
+              try {
+                liqs[chain] = JSON.parse(await getCachedLiqs(protocol, chain));
+                console.log(`Using cached data for ${protocol}/${chain}`);
+              } catch (e) {
+                console.log(`No external fetcher data for ${protocol}/${chain}`);
+              }
             }
           })
         );

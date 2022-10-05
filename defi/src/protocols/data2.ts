@@ -16257,6 +16257,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/September_2022/Zootopia.pdf"],
   listedAt: 1664978120
 },
+{
+  id: "2156",
+  name: "EthwSwap",
+  address: null,
+  symbol: "-",
+  url: "https://www.ethwswap.finance",
+  description: "EthwSwap is your one-stop decentralized trading platform on the EthereumPoW Chain, The Orthodox POW Advocators Serving Ethereum.",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/ethwswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthereumPoW"],
+  oracles: [], 
+  forkedFrom: ["Uniswap"],
+  module: "ethwswap/index.js",
+  twitter: "ethw_swap",
+  listedAt: 1664986535
+},
 ]
 
 export default data2;

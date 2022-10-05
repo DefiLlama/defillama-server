@@ -47,7 +47,8 @@ const MAX_OUTDATED_DAYS = 30
 
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const pathChain = event.pathParameters?.chain?.toLowerCase()
-    const excludeCharts = event.queryStringParameters?.excludeCharts?.toLowerCase() === 'true'
+    const excludeTotalDataChart = event.queryStringParameters?.totalDataChart?.toLowerCase() === 'true'
+    const excludeTotalDataChartBreakdown = event.queryStringParameters?.totalDataChartBreakdown?.toLowerCase() === 'true'
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
     let prevDayTime = 0
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
@@ -148,12 +149,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartResponse = [] //generateByChainsChart(dexs)
         totalDataChartBreakdownResponse = [] //nothing 4 now
     } else if (chainFilter) {
-        totalDataChartResponse = excludeCharts ? [] : generateAggregatedVolumesChartData(dexs)
-        totalDataChartBreakdownResponse = excludeCharts ? [] : generateByDexVolumesChartData(dexs)
+        totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(dexs)
+        totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(dexs)
         dexsResponse = dexs.map(removeVolumesObject)
     } else {
-        totalDataChartResponse = excludeCharts ? [] : generateAggregatedVolumesChartData(dexs)
-        totalDataChartBreakdownResponse = excludeCharts ? [] : generateByDexVolumesChartData(dexs)
+        totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(dexs)
+        totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(dexs)
         dexsResponse = dexs.map(removeVolumesObject)
     }
 

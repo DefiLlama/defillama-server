@@ -4969,7 +4969,7 @@ const data2: Protocol[] =  [
   audit_note: null,
   gecko_id: "clearpool",
   cmcId: "12573" ,
-  category: "Lending",
+  category: "Uncollateralized Lending",
   chains: ["Ethereum"],
   oracles: [],
   forkedFrom: [],

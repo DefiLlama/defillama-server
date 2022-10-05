@@ -463,7 +463,7 @@ export const chainCoingeckoIds = {
     geckoId: "crypto-com-chain",
     symbol: "CRO",
     cmcId: "3635",
-    categories: ["EVM"],
+    categories: ["EVM", "Cosmos"],
     chainId: 25,
   },
   "Polis": {

@@ -47,8 +47,8 @@ const MAX_OUTDATED_DAYS = 30
 
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const pathChain = event.pathParameters?.chain?.toLowerCase()
-    const excludeTotalDataChart = event.queryStringParameters?.totalDataChart?.toLowerCase() === 'true'
-    const excludeTotalDataChartBreakdown = event.queryStringParameters?.totalDataChartBreakdown?.toLowerCase() === 'true'
+    const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
+    const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
     let prevDayTime = 0
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {

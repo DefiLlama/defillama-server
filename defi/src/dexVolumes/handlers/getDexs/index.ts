@@ -220,7 +220,7 @@ const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
 const getAllChainsUniqueString = (chains: string[]) => {
     return chains.filter((value, index, self) => {
         return self.indexOf(value) === index;
-    })
+    }).map(formatChain)
 }
 
 export default wrap(handler);

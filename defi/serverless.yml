@@ -215,6 +215,14 @@ functions:
       - http:
           path: langs
           method: get
+  raises:
+    handler: src/getRaises.default
+    timeout: 60
+    memorySize: 2000
+    events:
+      - http:
+          path: raises
+          method: get
   oracles:
     handler: src/getOracles.default
     timeout: 600
@@ -332,7 +340,7 @@ functions:
     memorySize: 512
   getDexs:
     handler: src/dexVolumes/handlers/getDexs/index.default
-    timeout: 90
+    timeout: 180 #tmp
     memorySize: 2000
     events:
       - http:

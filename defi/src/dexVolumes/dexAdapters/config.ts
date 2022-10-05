@@ -356,6 +356,18 @@ export default {
     "smartdex": {
         enabled: true
     },
+     "cometh": {
+        enabled: true
+    },
+    "maiar-exchange": {
+        enabled: true
+    },
+    "defichain-dex": {
+        enabled: true
+    },
+    "planet": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

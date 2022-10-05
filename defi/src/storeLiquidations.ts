@@ -2,10 +2,11 @@ import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import adaptersModules from "./utils/imports/adapters_liquidations";
 import { getCurrentUnixTimestamp } from "./utils/date";
-import { getCachedLiqs, storeCachedLiqs, storeLiqs } from "./utils/s3";
+import { getCachedLiqs, getExternalLiqs, storeCachedLiqs, storeLiqs } from "./utils/s3";
 import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 import { performance } from "perf_hooks";
-import { standaloneProtocols } from "./triggerFetchLiquidations";
+
+export const standaloneProtocols: string[] = ["venus"];
 
 async function handler() {
   const time = getCurrentUnixTimestamp();
@@ -18,8 +19,13 @@ async function handler() {
         await Promise.all(
           Object.entries(module).map(async ([chain]: [string, any]) => {
             try {
-              liqs[chain] = JSON.parse(await getCachedLiqs(protocol, chain));
+              const _start = performance.now();
               console.log(`Using external fetcher for ${protocol}/${chain}`);
+              const liquidations = await getExternalLiqs(protocol, chain);
+              liqs[chain] = liquidations;
+              await storeCachedLiqs(protocol, chain, JSON.stringify(liquidations));
+              const _end = performance.now();
+              console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
             } catch (e) {
               console.log(`No external fetcher data for ${protocol}/${chain}`);
             }

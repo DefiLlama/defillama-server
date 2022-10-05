@@ -212,17 +212,17 @@ export const removeEventTimestampAttribute = (v: Volume) => {
     return v
 }
 
-const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
+/* const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
     const allChainsNotUnique = dexs.reduce((acc, { chains }) => chains !== null ? acc.concat(...chains) : acc, [] as string[])
     return allChainsNotUnique.filter((value, index, self) => {
         return self.indexOf(value) === index;
     })
-}
+} */
 
 const getAllChainsUniqueString = (chains: string[]) => {
-    return chains.filter((value, index, self) => {
+    return chains.map(formatChain).filter((value, index, self) => {
         return self.indexOf(value) === index;
-    }).map(formatChain)
+    })
 }
 
 export default wrap(handler);

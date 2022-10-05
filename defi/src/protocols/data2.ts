@@ -16193,7 +16193,28 @@ listedAt: 1650804679
   twitter: "SushiSwap",
   parentProtocol: "Sushi",
   listedAt: 1664917476
-  
+},
+{
+  id: "2153",
+  name: "LUSD ChickenBonds",
+  address: "0xB9D7DdDca9a4AC480991865EfEf82E01273F79C3",
+  symbol: "bLUSD",
+  url: "https://www.chickenbonds.org",
+  description: "Chicken Bonds introduces a novel bonding mechanism which allows protocols to bootstrap liquidity at minimal cost and provides better user protection than existing bonding alternatives. The bonding mechanism can be applied to yield-bearing tokens. This is the initial version for LUSD.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/lusd-chickenbonds.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Ethereum"],
+  oracles: [], 
+  forkedFrom: [],
+  module: "lusd-chickenbonds/index.js",
+  twitter: "ChickenBonds",
+  audit_links: ["https://github.com/liquity/ChickenBond/tree/main/LUSDChickenBonds/audits"],
+  listedAt: 1664960232
 },
 ]
 

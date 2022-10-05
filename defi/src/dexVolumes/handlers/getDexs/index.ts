@@ -148,11 +148,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartBreakdownResponse = [] //nothing 4 now
     } else if (chainFilter) {
         totalDataChartResponse = generateAggregatedVolumesChartData(dexs)
-        totalDataChartBreakdownResponse = generateByDexVolumesChartData(dexs)
+        totalDataChartBreakdownResponse = [] //generateByDexVolumesChartData(dexs)
         dexsResponse = dexs.map(removeVolumesObject)
     } else {
         totalDataChartResponse = generateAggregatedVolumesChartData(dexs)
-        totalDataChartBreakdownResponse = generateByDexVolumesChartData(dexs)
+        totalDataChartBreakdownResponse = [] //generateByDexVolumesChartData(dexs)
         dexsResponse = dexs.map(removeVolumesObject)
     }
 

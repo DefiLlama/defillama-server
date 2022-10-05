@@ -356,6 +356,12 @@ export default {
     "smartdex": {
         enabled: true
     },
+     "cometh": {
+        enabled: true
+    },
+    "maiar-exchange": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

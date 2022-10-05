@@ -347,6 +347,15 @@ export default {
     "okcswap": {
         enabled: true
     },
+    "empiredex": {
+        enabled: true
+    },
+    "makiswap": {
+        enabled: true
+    },
+    "smartdex": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

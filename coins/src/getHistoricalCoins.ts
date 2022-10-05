@@ -2,6 +2,7 @@ import { successResponse, wrap, IResponse } from "./utils/shared";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { DAY } from "./utils/processCoin";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
+import { storeMissingCoins } from "./utils/missingCoins";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -23,6 +24,7 @@ const handler = async (
         confidence: finalCoin.confidence,
     };
   }))
+  await storeMissingCoins(requestedCoins, response, timestampRequested);
   return successResponse({
     coins: response
   }, 3600); // 1 hour cache

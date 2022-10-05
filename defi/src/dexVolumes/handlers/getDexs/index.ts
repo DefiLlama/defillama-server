@@ -46,6 +46,7 @@ export interface VolumeSummaryDex extends Pick<Dex, 'name'> {
 const MAX_OUTDATED_DAYS = 30
 
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
+    const includeCharts = event.queryStringParameters?.includeCharts?.toLowerCase() === 'true'
     const pathChain = event.pathParameters?.chain?.toLowerCase()
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
     let prevDayTime = 0
@@ -147,12 +148,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartResponse = [] //generateByChainsChart(dexs)
         totalDataChartBreakdownResponse = [] //nothing 4 now
     } else if (chainFilter) {
-        totalDataChartResponse = generateAggregatedVolumesChartData(dexs)
-        totalDataChartBreakdownResponse = generateByDexVolumesChartData(dexs)
+        totalDataChartResponse = includeCharts ? generateAggregatedVolumesChartData(dexs) : []
+        totalDataChartBreakdownResponse = includeCharts ? generateByDexVolumesChartData(dexs) : []
         dexsResponse = dexs.map(removeVolumesObject)
     } else {
-        totalDataChartResponse = generateAggregatedVolumesChartData(dexs)
-        totalDataChartBreakdownResponse = generateByDexVolumesChartData(dexs)
+        totalDataChartResponse = includeCharts ? generateAggregatedVolumesChartData(dexs) : []
+        totalDataChartBreakdownResponse = includeCharts ? generateByDexVolumesChartData(dexs) : []
         dexsResponse = dexs.map(removeVolumesObject)
     }
 
@@ -165,7 +166,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         ...generalStats,
         dexs: dexsResponse,
-        allChains: getAllChainsUniqueString(getAllChainsFromDexAdapters(volumeAdapters.map(va=>va.volumeAdapter)))// getAllChainsUnique(dexs)
+        allChains: getAllChainsUniqueString(getAllChainsFromDexAdapters(volumeAdapters.map(va => va.volumeAdapter)))// getAllChainsUnique(dexs)
     } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
 

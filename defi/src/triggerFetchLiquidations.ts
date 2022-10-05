@@ -1,9 +1,10 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import invokeLambda from "./utils/shared/invokeLambda";
 
+export const standaloneProtocols: string[] = ["venus"];
+
 const handler = async () => {
-  const protocols: string[] = ["venus"];
-  for (let protocol in protocols) {
+  for (let protocol in standaloneProtocols) {
     const event = {
       protocol,
     };

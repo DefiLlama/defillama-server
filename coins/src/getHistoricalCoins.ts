@@ -1,3 +1,4 @@
+require("dotenv").config();
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { DAY } from "./utils/processCoin";
@@ -19,15 +20,19 @@ const handler = async (
         DAY / 4
       );
       if (finalCoin.SK === undefined) {
-        const currentCoin = await getRecordClosestToTimestamp(
-          coin.redirect ?? coin.PK,
-          getCurrentUnixTimestamp(),
-          DAY / 4
-        );
-        if (currentCoin.SK == undefined) {
-          return;
-        }
-        // await currentCoin.adapter()
+        // if (process.env.DEFILLAMA_SDK_MUTED == "true") {
+        //   const currentCoin = await getRecordClosestToTimestamp(
+        //     coin.redirect ?? coin.PK,
+        //     getCurrentUnixTimestamp(),
+        //     DAY / 4
+        //   );
+        //   if (currentCoin.SK == undefined) {
+        //     return;
+        //   }
+        //   await currentCoin.adapter()
+        // } else {
+        return;
+        // }
       }
       response[PKTransforms[coin.PK]] = {
         decimals: coin.decimals,

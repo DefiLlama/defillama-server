@@ -1087,7 +1087,7 @@ const data: Protocol[] = [
     description:
       "Homora is the first flagship product incubated under Alpha Venture DAO (previously Alpha Finance Lab) deployed on the Ethereum network in October, 2020. It is the largest multi-chain lending and leveraged yield farming protocol. Homora V2 is currently available on Ethereum, Avalanche, Fantom, Optimism and more coming soon.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/homora.png`,
+    logo: `${baseIconsUrl}/homora-v2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "alpha-finance",

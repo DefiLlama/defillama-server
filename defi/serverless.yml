@@ -215,6 +215,14 @@ functions:
       - http:
           path: langs
           method: get
+  raises:
+    handler: src/getRaises.default
+    timeout: 60
+    memorySize: 2000
+    events:
+      - http:
+          path: raises
+          method: get
   oracles:
     handler: src/getOracles.default
     timeout: 600

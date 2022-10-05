@@ -4,7 +4,7 @@ import invokeLambda from "./utils/shared/invokeLambda";
 export const standaloneProtocols: string[] = ["venus"];
 
 const handler = async () => {
-  for (let protocol in standaloneProtocols) {
+  for (let protocol of standaloneProtocols) {
     const event = {
       protocol,
     };

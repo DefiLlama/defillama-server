@@ -5,20 +5,27 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import { getCachedLiqs, storeCachedLiqs, storeLiqs } from "./utils/s3";
 import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 import { performance } from "perf_hooks";
-
-const tempDisabledProtocol = ["venus"];
+import { standaloneProtocols } from "./triggerFetchLiquidations";
 
 async function handler() {
   const time = getCurrentUnixTimestamp();
   const data = await Promise.all(
-    Object.entries(adaptersModules)
-      .filter(([protocol]) => {
-        return !tempDisabledProtocol.includes(protocol);
-      })
-      .map(async ([protocol, module]) => {
-        const start = performance.now();
-        console.log(`Fetching ${protocol} data`);
-        const liqs: { [chain: string]: Liq[] } = {};
+    Object.entries(adaptersModules).map(async ([protocol, module]) => {
+      const start = performance.now();
+      console.log(`Fetching ${protocol} data`);
+      const liqs: { [chain: string]: Liq[] } = {};
+      if (standaloneProtocols.includes(protocol)) {
+        await Promise.all(
+          Object.entries(module).map(async ([chain]: [string, any]) => {
+            try {
+              liqs[chain] = JSON.parse(await getCachedLiqs(protocol, chain));
+              console.log(`Using external fetcher for ${protocol}/${chain}`);
+            } catch (e) {
+              console.log(`No external fetcher data for ${protocol}/${chain}`);
+            }
+          })
+        );
+      } else {
         await Promise.all(
           Object.entries(module).map(async ([chain, liquidationsFunc]: [string, any]) => {
             try {
@@ -40,14 +47,16 @@ async function handler() {
             }
           })
         );
-        const end = performance.now();
-        console.log(`Fetched ${protocol} in ${((end - start) / 1000).toLocaleString()}s`);
+      }
 
-        return {
-          protocol,
-          liqs,
-        };
-      })
+      const end = performance.now();
+      console.log(`Fetched ${protocol} in ${((end - start) / 1000).toLocaleString()}s`);
+
+      return {
+        protocol,
+        liqs,
+      };
+    })
   );
 
   const adapterData: { [protocol: string]: Liq[] } = data.reduce(
@@ -110,7 +119,6 @@ const LIQUIDATIONS_PATHS = [
   "USDT",
   "YFI",
   "FTT",
-  "COMP",
   "UNI",
   "BAT",
   "CRV",

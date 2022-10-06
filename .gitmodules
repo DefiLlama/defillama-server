@@ -1,3 +1,6 @@
 [submodule "DefiLlama-Adapters"]
 	path = defi/DefiLlama-Adapters
 	url = https://github.com/DefiLlama/DefiLlama-Adapters.git
+[submodule "defi/adapters"]
+	path = defi/adapters
+	url = https://github.com/DefiLlama/adapters.git

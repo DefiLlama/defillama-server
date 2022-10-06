@@ -8,17 +8,17 @@ const rl = readline.createInterface({
 });
 
 (async () => {
-    if (process.argv.length<3) {
+    if (process.argv.length < 3) {
         console.error(`Not enough args! Please, use\n> npm run backfill-dex <adapterName>\nor\n> npm run backfill-dex <adapterName> onlyMissing`)
         process.exit(1)
     }
     const adapterName = process.argv[2]
-    const onlyMissing = process.argv[3] === 'onlyMissing'
+    const onlyMissing = Number.isNaN(+process.argv[3]) ? process.argv[3] === 'onlyMissing' : +process.argv[3]
     console.info(`Started backfilling for ${adapterName} adapter`)
     console.info(`Generating backfill event...`)
     const backfillEvent = await getBackfillEvent(adapterName, onlyMissing)
     console.info(`Backfill event generated!`)
-    if (backfillEvent.backfill.length<=0) {
+    if (backfillEvent.backfill.length <= 0) {
         console.info("Has been generated an empty event, nothing to backfill...")
         rl.close();
         return
@@ -30,10 +30,12 @@ const rl = readline.createInterface({
             await executeAsyncBackfill(backfillEvent)
             console.info(`Don't forget to enable the adapter to src/dexVolumes/dexAdapters/config.ts, bye llama🦙`)
             rl.close();
+            process.exit(0)
         }
         else {
             console.info("Backfill cancelled... bye llama🦙")
             rl.close();
+            process.exit(0)
         }
     });
 })()

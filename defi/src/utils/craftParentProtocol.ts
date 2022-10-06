@@ -2,12 +2,7 @@ import type { IParentProtocol } from "../protocols/types";
 import protocols from "../protocols/data";
 import { errorResponse } from "./shared";
 import craftProtocol from "./craftProtocol";
-import {
-  IProtocolResponse,
-  ICurrentChainTvls,
-  IChainTvl,
-  ITokens,
-} from "../types";
+import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens } from "../types";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -48,137 +43,124 @@ export default async function craftParentProtocol(
   useNewChainNames: boolean,
   useHourlyData: boolean
 ) {
-  const childProtocols = protocols.filter(
-    (protocol) => protocol.parentProtocol === parentProtocol.id
-  );
+  const childProtocols = protocols.filter((protocol) => protocol.parentProtocol === parentProtocol.id);
 
-  if (
-    childProtocols.length < 1 ||
-    childProtocols.map((p) => p.name).includes(parentProtocol.name)
-  ) {
+  if (childProtocols.length < 1 || childProtocols.map((p) => p.name).includes(parentProtocol.name)) {
     return errorResponse({
       message: "Protocol is not in our database",
     });
   }
 
   const childProtocolsTvls = await Promise.all(
-    childProtocols.map(
-      async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, true)
-    )
+    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, true))
   );
 
-  const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } =
-    childProtocolsTvls.reduce<ICombinedTvls>(
-      (acc, curr) => {
-        // TOTAL TVL OF EACH CHAIN
-        for (const name in curr.currentChainTvls) {
-          acc.currentChainTvls = {
-            ...acc.currentChainTvls,
-            [name]:
-              (acc.currentChainTvls[name] || 0) + curr.currentChainTvls[name],
-          };
-        }
+  const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls.reduce<ICombinedTvls>(
+    (acc, curr) => {
+      // TOTAL TVL OF EACH CHAIN
+      for (const name in curr.currentChainTvls) {
+        acc.currentChainTvls = {
+          ...acc.currentChainTvls,
+          [name]: (acc.currentChainTvls[name] || 0) + curr.currentChainTvls[name],
+        };
+      }
 
-        // TVL, NO.OF TOKENS, TOKENS IN USD OF EACH CHAIN BY DATE
-        for (const chain in curr.chainTvls) {
-          // TVLS OF EACH CHAIN BY DATE
-          curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }) => {
-            if (!acc.chainTvls[chain]) {
-              acc.chainTvls[chain] = {
-                tvl: {},
-                tokensInUsd: {},
-                tokens: {},
-              };
-            }
-
-            acc.chainTvls[chain].tvl = {
-              ...acc.chainTvls[chain].tvl,
-              [date]: (acc.chainTvls[chain].tvl[date] || 0) + totalLiquidityUSD,
+      // TVL, NO.OF TOKENS, TOKENS IN USD OF EACH CHAIN BY DATE
+      for (const chain in curr.chainTvls) {
+        // TVLS OF EACH CHAIN BY DATE
+        curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }) => {
+          if (!acc.chainTvls[chain]) {
+            acc.chainTvls[chain] = {
+              tvl: {},
+              tokensInUsd: {},
+              tokens: {},
             };
-          });
+          }
 
-          // TOKENS IN USD OF EACH CHAIN BY DATE
-          curr.chainTvls[chain].tokensInUsd?.forEach(({ date, tokens }) => {
-            if (!acc.chainTvls[chain]) {
-              acc.chainTvls[chain] = {
-                tvl: {},
-                tokensInUsd: {},
-                tokens: {},
-              };
-            }
-
-            if (!acc.chainTvls[chain].tokensInUsd[date]) {
-              acc.chainTvls[chain].tokensInUsd[date] = {};
-            }
-
-            for (const token in tokens) {
-              acc.chainTvls[chain].tokensInUsd[date][token] =
-                (acc.chainTvls[chain].tokensInUsd[date][token] || 0) +
-                tokens[token];
-            }
-          });
-
-          // NO.OF TOKENS IN EACH CHAIN BY DATE
-          curr.chainTvls[chain].tokens?.forEach(({ date, tokens }) => {
-            if (!acc.chainTvls[chain]) {
-              acc.chainTvls[chain] = {
-                tvl: {},
-                tokensInUsd: {},
-                tokens: {},
-              };
-            }
-
-            if (!acc.chainTvls[chain].tokens[date]) {
-              acc.chainTvls[chain].tokens[date] = {};
-            }
-
-            for (const token in tokens) {
-              acc.chainTvls[chain].tokens[date][token] =
-                (acc.chainTvls[chain].tokens[date][token] || 0) + tokens[token];
-            }
-          });
-        }
-
-        if (curr.tokensInUsd) {
-          curr.tokensInUsd.forEach(({ date, tokens }) => {
-            Object.keys(tokens).forEach((token) => {
-              if (!acc.tokensInUsd[date]) {
-                acc.tokensInUsd[date] = {};
-              }
-
-              acc.tokensInUsd[date][token] =
-                (acc.tokensInUsd[date][token] || 0) + tokens[token];
-            });
-          });
-        }
-
-        if (curr.tokens) {
-          curr.tokens.forEach(({ date, tokens }) => {
-            Object.keys(tokens).forEach((token) => {
-              if (!acc.tokens[date]) {
-                acc.tokens[date] = {};
-              }
-
-              acc.tokens[date][token] =
-                (acc.tokens[date][token] || 0) + tokens[token];
-            });
-          });
-        }
-
-        curr.tvl.forEach(({ date, totalLiquidityUSD }) => {
-          acc.tvl[date] = (acc.tvl[date] || 0) + totalLiquidityUSD;
+          acc.chainTvls[chain].tvl = {
+            ...acc.chainTvls[chain].tvl,
+            [date]: (acc.chainTvls[chain].tvl[date] || 0) + totalLiquidityUSD,
+          };
         });
 
-        return acc;
-      },
-      {
-        currentChainTvls: {},
-        chainTvls: {},
-        tokens: {},
-        tokensInUsd: {},
-        tvl: {},
+        // TOKENS IN USD OF EACH CHAIN BY DATE
+        curr.chainTvls[chain].tokensInUsd?.forEach(({ date, tokens }) => {
+          if (!acc.chainTvls[chain]) {
+            acc.chainTvls[chain] = {
+              tvl: {},
+              tokensInUsd: {},
+              tokens: {},
+            };
+          }
+
+          if (!acc.chainTvls[chain].tokensInUsd[date]) {
+            acc.chainTvls[chain].tokensInUsd[date] = {};
+          }
+
+          for (const token in tokens) {
+            acc.chainTvls[chain].tokensInUsd[date][token] =
+              (acc.chainTvls[chain].tokensInUsd[date][token] || 0) + tokens[token];
+          }
+        });
+
+        // NO.OF TOKENS IN EACH CHAIN BY DATE
+        curr.chainTvls[chain].tokens?.forEach(({ date, tokens }) => {
+          if (!acc.chainTvls[chain]) {
+            acc.chainTvls[chain] = {
+              tvl: {},
+              tokensInUsd: {},
+              tokens: {},
+            };
+          }
+
+          if (!acc.chainTvls[chain].tokens[date]) {
+            acc.chainTvls[chain].tokens[date] = {};
+          }
+
+          for (const token in tokens) {
+            acc.chainTvls[chain].tokens[date][token] = (acc.chainTvls[chain].tokens[date][token] || 0) + tokens[token];
+          }
+        });
       }
-    );
+
+      if (curr.tokensInUsd) {
+        curr.tokensInUsd.forEach(({ date, tokens }) => {
+          Object.keys(tokens).forEach((token) => {
+            if (!acc.tokensInUsd[date]) {
+              acc.tokensInUsd[date] = {};
+            }
+
+            acc.tokensInUsd[date][token] = (acc.tokensInUsd[date][token] || 0) + tokens[token];
+          });
+        });
+      }
+
+      if (curr.tokens) {
+        curr.tokens.forEach(({ date, tokens }) => {
+          Object.keys(tokens).forEach((token) => {
+            if (!acc.tokens[date]) {
+              acc.tokens[date] = {};
+            }
+
+            acc.tokens[date][token] = (acc.tokens[date][token] || 0) + tokens[token];
+          });
+        });
+      }
+
+      curr.tvl.forEach(({ date, totalLiquidityUSD }) => {
+        acc.tvl[date] = (acc.tvl[date] || 0) + totalLiquidityUSD;
+      });
+
+      return acc;
+    },
+    {
+      currentChainTvls: {},
+      chainTvls: {},
+      tokens: {},
+      tokensInUsd: {},
+      tvl: {},
+    }
+  );
 
   //  FORMAT NO.OF TOKENS BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
   const formattedTokens: ITokens = [];
@@ -198,9 +180,10 @@ export default async function craftParentProtocol(
   //  FORMAT TVL, TOKENS, TOKENS IN USD BY DATE OF EACH CHAIN TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
   const formattedChainTvls: IChainTvl = {};
   for (const chain in chainTvls) {
-    const tvl = Object.entries(chainTvls[chain].tvl).map(
-      ([date, totalLiquidityUSD]) => ({ date: Number(date), totalLiquidityUSD })
-    );
+    const tvl = Object.entries(chainTvls[chain].tvl).map(([date, totalLiquidityUSD]) => ({
+      date: Number(date),
+      totalLiquidityUSD,
+    }));
 
     const tokens: ITokens = [];
     for (const date in chainTvls[chain].tokens) {
@@ -256,6 +239,16 @@ export default async function craftParentProtocol(
 
   if (childProtocolsTvls.length > 0) {
     response.otherProtocols = childProtocolsTvls[0].otherProtocols;
+
+    // show all hallmarks of child protocols on parent protocols chart
+    response.hallmarks = [];
+    childProtocolsTvls
+      .filter((childModule) => childModule.hallmarks)
+      .forEach((m) => {
+        m.hallmarks?.forEach((hallmark: [number, string]) => response.hallmarks?.push(hallmark));
+      });
+
+    response.hallmarks.sort((a, b) => a[0] - b[0]);
   }
 
   return response;

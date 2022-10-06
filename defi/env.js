@@ -27,4 +27,6 @@ module.exports = {
     REVALIDATE_SECRET: process.env.REVALIDATE_SECRET,
     PROD_VYBE_API_KEY: process.env.PROD_VYBE_API_KEY,
     VOLUMES_WEBHOOK: process.env.VOLUMES_WEBHOOK,
+    ZEROx_API_KEY: process.env.ZEROx_API_KEY,
+    MISSING_COINS_DB_PWD: process.env.MISSING_COINS_DB_PWD,
 }

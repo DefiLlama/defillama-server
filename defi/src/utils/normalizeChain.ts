@@ -463,7 +463,7 @@ export const chainCoingeckoIds = {
     geckoId: "crypto-com-chain",
     symbol: "CRO",
     cmcId: "3635",
-    categories: ["EVM"],
+    categories: ["EVM", "Cosmos"],
     chainId: 25,
   },
   "Polis": {
@@ -1140,6 +1140,25 @@ export const chainCoingeckoIds = {
     cmcId: "19083",
     categories: ["EVM"],
   },
+  "EthereumPoW": {
+    geckoId: "ethereum-pow-iou",
+    symbol: "ETHW",
+    cmcId: "21296",
+    categories: ["EVM"],
+  },
+  "Cube": {
+    geckoId: "cube-network",
+    symbol: "CUBE",
+    cmcId: "20519",
+    categories: ["EVM"],
+    chainId: 1818,
+  },
+  "FunctionX": {
+    geckoId: "fx-coin",
+    symbol: "FX",
+    cmcId: "3884",
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1160,7 +1179,7 @@ chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
 
-export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury"]
+export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury", "vesting"]
 
 export function transformNewChainName(chain: string) {
   switch (chain) {
@@ -1431,6 +1450,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Crescent"
     case "vision":
       return "Vision"
+    case "ethpow":
+      return "EthereumPoW"
+    case "cube":
+      return "Cube"
+    case "functionx":
+      return "FunctionX"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

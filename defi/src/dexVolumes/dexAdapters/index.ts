@@ -3,6 +3,7 @@ import data, { Protocol } from "../../protocols/data";
 import config from "./config"
 import type { IVolumesConfig } from "./config"
 import getAllChainsFromDexAdapters from "../utils/getChainsFromDexAdapters";
+import { sluggifyString } from "../../utils/sluggify";
 /**
  * Using data from protocols since its more complete
  */
@@ -20,15 +21,17 @@ const dexAdaptersKeys = Object.keys(dexVolumes).map(k => k.toLowerCase())
 const dexData: Dex[] = dexAdaptersKeys.map(adapterKey => {
     const dexFoundInProtocols = dexes.find(dexP =>
         dexP.name.toLowerCase()?.includes(adapterKey)
+        || sluggifyString(dexP.name)?.includes(adapterKey)
         || dexP.gecko_id?.includes(adapterKey)
         || dexP.module.split("/")[0]?.includes(adapterKey)
     )
-    if (dexFoundInProtocols) return {
-        ...dexFoundInProtocols,
-        chains: getAllChainsFromDexAdapters([adapterKey]),
-        volumeAdapter: adapterKey,
-        config: config[adapterKey]
-    }
+    if (dexFoundInProtocols) 
+        return {
+            ...dexFoundInProtocols,
+            chains: getAllChainsFromDexAdapters([adapterKey]),
+            volumeAdapter: adapterKey,
+            config: config[adapterKey]
+        }
     // TODO: Handle better errors
     //console.error(`Missing info for ${adapterKey} DEX!`)
     return undefined

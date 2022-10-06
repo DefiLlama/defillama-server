@@ -11,12 +11,7 @@ import {
   hourlyTokensTvl,
 } from "./getLastRecord";
 import { importAdapter } from "./imports/importAdapter";
-import {
-  nonChains,
-  getChainDisplayName,
-  transformNewChainName,
-  addToChains,
-} from "./normalizeChain";
+import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./normalizeChain";
 import type { IProtocolResponse } from "../types";
 import parentProtocols from "../protocols/parentProtocols";
 
@@ -38,19 +33,10 @@ function normalizeEthereum(balances: { [symbol: string]: number }) {
   return balances && formattedBalances;
 }
 
-type HistoricalTvls = AWS.DynamoDB.DocumentClient.ItemList | undefined;
-type HourlyTvl = AWS.DynamoDB.DocumentClient.AttributeMap | undefined;
-
-function replaceLast(historical: HistoricalTvls, last: HourlyTvl) {
-  if (historical !== undefined && last !== undefined) {
-    historical[historical.length - 1] = last;
-  }
-}
-
 function selectChainFromItem(item: any, normalizedChain: string) {
   let altChainName = undefined;
   if (normalizedChain.startsWith("avax")) {
-    altChainName = normalizedChain.replace("avax","avalanche");
+    altChainName = normalizedChain.replace("avax", "avalanche");
   } else if (normalizedChain.startsWith("avalanche")) {
     altChainName = normalizedChain.replace("avalanche", "avax");
   } else {
@@ -77,27 +63,16 @@ export default async function craftProtocol(
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
-    getHistoricalValues(
-      (useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)
-    ),
-    getHistoricalValues(
-      (useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)
-    ),
-    getHistoricalValues(
-      (useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)
-    ),
+    getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
+    getHistoricalValues((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)),
+    getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
     importAdapter(protocolData),
   ]);
 
   if (!useHourlyData && !skipReplaceLast) {
-    // replaceLast(historicalUsdTvl, lastUsdHourlyRecord);
-    // replaceLast(historicalUsdTokenTvl, lastUsdTokenHourlyRecord);
-    // replaceLast(historicalTokenTvl, lastTokenHourlyRecord);
-
     // check for falsy values and push lastHourlyRecord to dataset
     lastUsdHourlyRecord && historicalUsdTvl.push(lastUsdHourlyRecord);
-    lastUsdTokenHourlyRecord &&
-      historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
+    lastUsdTokenHourlyRecord && historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
     lastTokenHourlyRecord && historicalTokenTvl.push(lastTokenHourlyRecord);
   }
 
@@ -109,18 +84,14 @@ export default async function craftProtocol(
     tvl: [],
   };
 
-  const childProtocols = protocolData.parentProtocol
-    ? protocols
-        .filter((p) => p.parentProtocol === protocolData.parentProtocol)
-        ?.map((p) => p.name)
+  const childProtocolsNames = protocolData.parentProtocol
+    ? protocols.filter((p) => p.parentProtocol === protocolData.parentProtocol).map((p) => p.name)
     : [];
 
-  const parentName =
-    parentProtocols.find((p) => p.id === protocolData.parentProtocol)?.name ??
-    null;
+  const parentName = parentProtocols.find((p) => p.id === protocolData.parentProtocol)?.name ?? null;
 
-  if (childProtocols.length > 0 && parentName) {
-    response.otherProtocols = [parentName, ...childProtocols];
+  if (childProtocolsNames.length > 0 && parentName) {
+    response.otherProtocols = [parentName, ...childProtocolsNames];
   }
 
   if (module.methodology) {
@@ -133,6 +104,8 @@ export default async function craftProtocol(
     response.hallmarks = module.hallmarks;
   }
 
+  response.hallmarks?.sort((a, b) => a[0] - b[0]);
+
   lastUsdHourlyRecord &&
     Object.entries(lastUsdHourlyRecord!).forEach(([chain, chainTvl]) => {
       if (nonChains.includes(chain) && chain !== "tvl") {
@@ -142,22 +115,16 @@ export default async function craftProtocol(
       const displayChainName = getChainDisplayName(chain, useNewChainNames);
       addToChains(response.chains, displayChainName);
       if (chain !== "tvl") {
-        response.currentChainTvls[displayChainName] = chainTvl
-          ? Number(chainTvl.toFixed(5))
-          : 0;
+        response.currentChainTvls[displayChainName] = chainTvl ? Number(chainTvl.toFixed(5)) : 0;
       }
       const container = {} as any;
 
       container.tvl = historicalUsdTvl
         ?.map((item) => ({
           date: item.SK,
-          totalLiquidityUSD:
-            selectChainFromItem(item, chain) &&
-            Number(selectChainFromItem(item, chain).toFixed(5)),
+          totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
         }))
-        .filter(
-          (item) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD
-        );
+        .filter((item) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD);
 
       container.tokensInUsd = historicalUsdTokenTvl
         ?.map((item) => ({
@@ -187,10 +154,7 @@ export default async function craftProtocol(
 
   const singleChain = transformNewChainName(protocolData.chain);
 
-  if (
-    response.chainTvls[singleChain] === undefined &&
-    response.chains.length === 0
-  ) {
+  if (response.chainTvls[singleChain] === undefined && response.chains.length === 0) {
     response.chains.push(singleChain);
     response.chainTvls[singleChain] = {
       tvl: response.tvl,
@@ -205,9 +169,7 @@ export default async function craftProtocol(
   ) {
     const singleChainTvls = response.chainTvls[singleChain].tvl;
     const first = singleChainTvls[0].date;
-    response.chainTvls[singleChain].tvl = response.tvl
-      .filter((t: any) => t.date < first)
-      .concat(singleChainTvls);
+    response.chainTvls[singleChain].tvl = response.tvl.filter((t: any) => t.date < first).concat(singleChainTvls);
   }
 
   return response;

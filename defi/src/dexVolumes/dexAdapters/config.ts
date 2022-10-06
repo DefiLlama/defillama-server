@@ -11,7 +11,7 @@ export default {
         enabled: true
     },
     "champagneswap": {
-        enabled: false
+        enabled: true
     },
     "katana": {
         enabled: true
@@ -118,7 +118,268 @@ export default {
     },
     "wingriders": {
         enabled: true
-    }
+    },
+    "wombat-exchange": {
+        enabled: true
+    },
+    "dfyn": {
+        enabled: true
+    },
+    "flamingo-finance": {
+        enabled: true
+    },
+    "0x": {
+        enabled: true
+    },
+    "baryon": {
+        enabled: true
+    },
+    "cherryswap": {
+        enabled: true
+    },
+    "clipper": {
+        enabled: true
+    },
+    "cryptoswap": {
+        enabled: true
+    },
+    "ellipsis": {
+        enabled: true
+    },
+    "klex-finance": {
+        enabled: true
+    },
+    "koyo": {
+        enabled: true
+    },
+    "pyeswap": {
+        enabled: true
+    },
+    "smbswap": {
+        enabled: true
+    },
+    "sunswap": {
+        enabled: true
+    },
+    "whaleswap": {
+        enabled: true
+    },
+    "nomiswap": {
+        enabled: true
+    },
+    "fstswap": {
+        enabled: false
+    },
+    "beethoven-x": {
+        enabled: true
+    },
+    "defi-swap": {
+        enabled: true
+    },
+    "wanswap-dex": {
+        enabled: false
+    },
+    "solarbeam": {
+        enabled: true
+    },
+    "tomb-swap": {
+        enabled: true
+    },
+    "dfx-finance": {
+        enabled: true
+    },
+    "frax-swap": {
+        enabled: true
+    },
+    "iziswap": {
+        enabled: true
+    },
+    "tinyman": {
+        enabled: true
+    },
+    "junoswap": {
+        enabled: true
+    },
+    "knightswap-finance": {
+        enabled: true
+    },
+    "mdex": {
+        enabled: true
+    },
+    "meshswap": {
+        enabled: true
+    },
+    "mm-stableswap-polygon": {
+        enabled: true
+    },
+    "radioshack": {
+        enabled: true
+    },
+    "mojitoswap": {
+        enabled: true
+    },
+    "yieldfields": {
+        enabled: true
+    },
+    "terraswap": {
+        enabled: true
+    },
+    "saros": {
+        enabled: true
+    },
+    "vvs-finance": {
+        enabled: true
+    },
+    "carthage": {
+        enabled: false
+    },
+    "shibaswap": {
+        enabled: true
+    },
+    "viperswap": {
+        enabled: true
+    },
+    "oolongswap": {
+        enabled: true
+    },
+    "swapr": {
+        enabled: true
+    },
+    "cone": {
+        enabled: true
+    },
+    "claimswap": {
+        enabled: true
+    },
+    "spartacus-exchange": {
+        enabled: true
+    },
+    "beamswap": {
+        enabled: true
+    },
+    "openleverage": {
+        enabled: true
+    },
+    "ubeswap": {
+        enabled: true
+    },
+    "mobius-money": {
+        enabled: true
+    },
+    "honeyswap": {
+        enabled: true
+    },
+    "energiswap": {
+        enabled: true
+    },
+    "stellaswap": {
+        enabled: true
+    },
+    "wagyuswap": {
+        enabled: true
+    },
+    "dystopia": {
+        enabled: true
+    },
+    "glide-finance": {
+        enabled: true
+    },
+    "quipuswap": {
+        enabled: true
+    },
+    "netswap": {
+        enabled: true
+    },
+    "jupiter-aggregator": {
+        enabled: true
+    },
+    "astroport": {
+        enabled: true
+    },
+    "tethys-finance": {
+        enabled: true
+    },
+    "mimo": {
+        enabled: true
+    },
+    "kaidex": {
+        enabled: true
+    },
+    "lif3-swap": {
+        enabled: true
+    },
+    "swappi": {
+        enabled: true
+    },
+    "yodeswap": {
+        enabled: true
+    },
+    "defi-kingdoms": {
+        enabled: true
+    },
+     "defiplaza": {
+        enabled: true
+    },
+    "polycat": {
+        enabled: true
+    },
+    "voltswap": {
+        enabled: true
+    },
+    "yokaiswap": {
+        enabled: true
+    },
+    "protofi": {
+        enabled: true
+    },
+    "voltage": {
+        enabled: true
+    },
+    "complus-network": {
+        enabled: true
+    },
+    "padswap": {
+        enabled: true
+    },
+    "sharkswap": {
+        enabled: true
+    },
+    "okcswap": {
+        enabled: true
+    },
+    "empiredex": {
+        enabled: true
+    },
+    "makiswap": {
+        enabled: true
+    },
+    "smartdex": {
+        enabled: true
+    },
+     "cometh": {
+        enabled: true
+    },
+    "maiar-exchange": {
+        enabled: true
+    },
+    "defichain-dex": {
+        enabled: true
+    },
+    "blue-planet": {
+        enabled: true
+    },
+    "aldrin": {
+        enabled: true
+    },
+    "capricorn-finance": {
+        enabled: true
+    },
+    "alex": {
+        enabled: true
+    },
+    "step-exchange": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

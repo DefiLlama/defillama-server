@@ -1,5 +1,6 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { CoinsResponse, batchGetLatest, getBasicCoins } from "./utils/getCoinsUtils";
+import { storeMissingCoins } from "./utils/missingCoins";
 
 const isFresh = (timestamp:number) => {
   const now = Date.now()/1e3;
@@ -48,6 +49,7 @@ const handler = async (
         })
     })
   }
+  await storeMissingCoins(requestedCoins, response, 0);
 
   // Coingecko price refreshes happen each 5 minutes, set expiration at the :00; :05, :10, :15... mark, with 20 seconds extra
   const date = new Date()

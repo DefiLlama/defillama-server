@@ -2,6 +2,7 @@ import { DynamoDB } from "aws-sdk"
 import dynamodb from "../../utils/shared/dynamodb"
 import type { IRecordVolumeData } from "../handlers/storeDexVolume"
 import { formatChain, formatChainKey } from "../utils/getChainsFromDexAdapters"
+import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
 
 export enum VolumeType {
@@ -52,16 +53,30 @@ export class Volume extends Item {
         }
     }
 
-    getVolumeByChain(chain?: string): Volume | null {
+    getCleanVolume(chain?: string): Volume | null {
         if (chain !== undefined) {
             if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
-            return new Volume(this.type, this.dexId, this.timestamp, {
-                [formatChainKey(chain)]: this.data[chain] ?? this.data[formatChainKey(chain)]
-            })
+            const data = removeErrors(this.data)
+            const newData = {
+                [formatChainKey(chain)]: data[chain] ?? data[formatChainKey(chain)]
+            }
+            if (Volume.isDataEmpty(newData)) return null
+            return new Volume(this.type, this.dexId, this.timestamp, newData)
         }
-        const d = this.data
+        const d = removeErrors(this.data)
         delete d['eventTimestamp']
+        if (Volume.isDataEmpty(d)) return null
         return new Volume(this.type, this.dexId, this.timestamp, d)
+    }
+
+    static isDataEmpty(data: IRecordVolumeData) {
+        return Object.values(data)
+            .filter(d => d !== undefined
+                && (
+                    typeof d === 'object'
+                    && Object.values(d).filter(dv => dv !== undefined).length > 0
+                )
+            ).length === 0
     }
 }
 
@@ -116,7 +131,7 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
             Limit: mode === "LAST" ? 1 : undefined,
             ScanIndexForward: mode === "LAST" ? false : true
         })
-        if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${volume.pk}`)
+        if (!resp.Items || resp.Items.length === 0) throw Error(`No items found for ${volume.pk}${timestamp ? ` at ${timestamp}` : ''}`)
         return mode === "LAST" || mode === 'TIMESTAMP' ? Volume.fromItem(resp.Items[0]) : resp.Items.map(Volume.fromItem)
     } catch (error) {
         throw error
@@ -125,22 +140,23 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
 
 // TMP: REMOVES ALL VOLUMES, DO NOT USE!
 export const removeVolume = async (dex: string, type: VolumeType,): Promise<boolean> => {
-    /*     const removeVolumeQuery = async (volume: Volume) => {
-            console.log("Removing", volume.keys())
-            return dynamodb.delete({
-                Key: volume.keys(),
-            })
-        }
-        try {
-            const allVolumes = await getVolume(dex, type, "ALL")
-            console.log(allVolumes)
-            if (!(allVolumes instanceof Array)) throw new Error("Unexpected error deleting volumes")
-            await Promise.all(allVolumes.map(volume => removeVolumeQuery(volume)))
-            return true
-        } catch (error) {
-            console.log(error)
-            return false
-        } */
-    console.info(dex, type)
+    /* const removeVolumeQuery = async (volume: Volume) => {
+        console.log("Removing", volume.keys())
+        return dynamodb.delete({
+            Key: volume.keys(),
+        })
+    }
+    try {
+        const allVolumes = await getVolume(dex, type, "ALL")
+        // console.log(allVolumes)
+        if (!(allVolumes instanceof Array)) throw new Error("Unexpected error deleting volumes")
+        const cleanVols = allVolumes// .filter(v => v.timestamp * 1000 <= Date.UTC(2020, 8, 7))
+        await Promise.all(cleanVols.map(volume => removeVolumeQuery(volume)))
+        return true
+    } catch (error) {
+        console.log(error)
+        return false
+    } */
+    console.log(dex, type)
     return Promise.resolve(false)
 }

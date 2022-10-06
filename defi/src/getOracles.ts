@@ -46,10 +46,7 @@ function sum(
     data.liquidstaking = (data.liquidstaking || 0) + item.tvl;
   }
 
-  if (
-    protocol.category?.toLowerCase() === "liquid staking" &&
-    protocol.doublecounted
-  ) {
+  if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
     data.dcAndLsOverlap = (data.dcAndLsOverlap || 0) + item.tvl;
   }
 
@@ -61,9 +58,7 @@ function sum(
   oracleProtocols[oracle].add(protocol.name);
 }
 
-const handler = async (
-  _event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   const sumDailyTvls = {} as SumDailyTvls;
   const oracleProtocols = {} as OracleProtocols;
 
@@ -73,14 +68,7 @@ const handler = async (
         let oracles = protocol.oracles;
         if (oracles) {
           oracles.forEach((oracle) => {
-            sum(
-              sumDailyTvls,
-              oracle,
-              timestamp,
-              item,
-              oracleProtocols,
-              protocol
-            );
+            sum(sumDailyTvls, oracle, timestamp, item, oracleProtocols, protocol);
           });
 
           return;
@@ -88,15 +76,14 @@ const handler = async (
       } catch (error) {
         console.log(protocol.name, error);
       }
-    }
+    },
+    { includeBridge: false }
   );
 
   return successResponse(
     {
       chart: sumDailyTvls,
-      oracles: Object.fromEntries(
-        Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])
-      ),
+      oracles: Object.fromEntries(Object.entries(oracleProtocols).map((c) => [c[0], Array.from(c[1])])),
     },
     10 * 60
   ); // 10 mins cache

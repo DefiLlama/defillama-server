@@ -122,7 +122,7 @@ async function getTokenAndRedirectDataHistorical(
   let timedDbEntries: any[] = await Promise.all(
     tokens.map((t: string) => {
       return getTVLOfRecordClosestToTimestamp(
-        `asset#${chain}:${t}`,
+        `asset#${chain}:${t.toLowerCase()}`,
         timestamp,
         43200 // SEARCHES A 24 HOUR WINDOW
       );
@@ -132,7 +132,7 @@ async function getTokenAndRedirectDataHistorical(
   // current origin entries
   const latestDbEntries: DbEntry[] = await batchGet(
     tokens.map((t: string) => ({
-      PK: `asset#${chain}:${t}`,
+      PK: `asset#${chain}:${t.toLowerCase()}`,
       SK: 0
     }))
   );
@@ -223,7 +223,7 @@ async function getTokenAndRedirectDataCurrent(
 ) {
   const dbEntries: DbEntry[] = await batchGet(
     tokens.map((t: string) => ({
-      PK: `asset#${chain}:${t}`,
+      PK: `asset#${chain}:${t.toLowerCase()}`,
       SK: timestamp
     }))
   );

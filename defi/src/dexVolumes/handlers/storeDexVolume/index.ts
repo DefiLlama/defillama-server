@@ -1,13 +1,13 @@
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import volumeAdapters from "../../dexAdapters";
-import { ChainBlocks, VolumeAdapter, Adapter } from "@defillama/adapters/volumes/dexVolume.type";
+import { ChainBlocks, VolumeAdapter, Adapter, DISABLED_ADAPTER_KEY } from "@defillama/adapters/volumes/dexVolume.type";
 import { storeVolume, Volume, VolumeType, getVolume } from "../../data/volume";
 import getChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
-const getBlock = require("@defillama/adapters/projects/helper/getBlock")
+const { getBlock } = require("@defillama/adapters/projects/helper/getBlock")
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
@@ -41,14 +41,16 @@ export const handler = async (event: IHandlerEvent) => {
   const chainBlocks: ChainBlocks = {};
   await allSettled(
     allChains.map(async (chain) => {
-      const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
-      chainBlocks[chain] = latestBlock
+      try {
+        const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
+        chainBlocks[chain] = latestBlock
+      } catch (e) { console.log(e) }
     })
   );
 
   async function runAdapter(id: string, volumeAdapter: Adapter, version: string) {
     console.log("Running adapter", id, version)
-    const chains = Object.keys(volumeAdapter)
+    const chains = Object.keys(volumeAdapter).filter(c => c !== DISABLED_ADAPTER_KEY)
     return allSettled(chains
       .filter(async (chain) => {
         const start = await volumeAdapter[chain].start().catch(e => console.error("Error getting start time", id, version, e.message))
@@ -59,6 +61,8 @@ export const handler = async (event: IHandlerEvent) => {
         try {
           // substract 1 second from cleanCurrentTimestamp to get total day volume at cleanCurrentTimestamp (if not we would get only daily volume at the moment this function is called)
           const result = await fetchFunction(cleanCurrentDayTimestamp - 1, chainBlocks);
+          if (result.totalVolume && Number.isNaN(+result.totalVolume)) result.totalVolume = undefined
+          if (result.dailyVolume && Number.isNaN(+result.dailyVolume)) result.dailyVolume = undefined
           if (result.totalVolume && !result.dailyVolume) {
             try {
               const totalVolumePrevDay = await getVolume(id, VolumeType.totalVolume, "TIMESTAMP", cleanPreviousDayTimestamp - 60 * 60 * 24)

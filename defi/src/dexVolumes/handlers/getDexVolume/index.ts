@@ -3,6 +3,8 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import sluggify from "../../../utils/sluggify";
 import { getVolume, Volume, VolumeType } from "../../data/volume";
 import volumeAdapters, { Dex } from "../../dexAdapters";
+import { isDisabled } from "../../utils/getChainsFromDexAdapters";
+import removeErrors from "../../utils/removeErrors";
 import { calcNdChange, sumAllVolumes } from "../../utils/volumeCalcs";
 import { IRecordVolumeData } from "../storeDexVolume";
 
@@ -28,6 +30,7 @@ export interface IHandlerBodyResponse extends Pick<Dex,
     volumeHistory: VolumeHistoryItem[] | null
     total1dVolume: number | null
     change1dVolume: number | null
+    disabled: boolean | null
 }
 
 export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
@@ -51,6 +54,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         //const yesterdaysTimestamp = (Date.now() / 1000) - ONE_DAY_IN_SECONDS;
         const yesterdaysVolume = yesterdaysVolumeObj.data // volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === getTimestampAtStartOfDayUTC(yesterdaysTimestamp))?.data
         const ddr: IHandlerBodyResponse = {
+            disabled: isDisabled(dexData.volumeAdapter),
             name: dexData.name,
             logo: dexData.logo,
             address: dexData.address,
@@ -66,18 +70,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             volumeHistory: volumes.map<VolumeHistoryItem>(v => ({
                 dailyVolume: errors
                     ? v.data
-                    : Object.entries(v.data).reduce((acc, [chain, volume]) => {
-                        const entries = Object.entries(volume)
-                        if (entries.length === 1 && entries[0][0] === 'error' || chain === 'eventTimestamp') return acc
-                        acc[chain] = entries.reduce((pacc, [prot, value]) => {
-                            if (prot !== 'error' && typeof value === 'number')
-                                pacc[prot] = value
-                            return pacc
-                        }, {} as {
-                            [protocolVersion: string]: number,
-                        })
-                        return acc
-                    }, {} as IRecordVolumeData),
+                    : removeErrors(v.data),
                 timestamp: v.sk
             })),
             total1dVolume: yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
@@ -87,6 +80,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     } catch (error) {
         console.error(error)
         const ddr: IHandlerBodyResponse = {
+            disabled: isDisabled(dexData.volumeAdapter),
             name: dexData.name,
             logo: dexData.logo,
             address: dexData.address,

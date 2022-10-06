@@ -4,7 +4,7 @@ import { handler } from "../handlers/getDexVolume";
 (async () => {
     const r = await handler({
         pathParameters: {
-            dex: "kyberswap"
+            dex: "astroport"
         }
     } as unknown as AWSLambda.APIGatewayEvent)
     const d = JSON.parse(r.body)

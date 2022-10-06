@@ -19,7 +19,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AaveAave",
   },
   {
-    id: "SushiSwap",
+    id: "Sushi",
     name: "Sushi",
     url: "https://sushi.com/",
     description:
@@ -227,7 +227,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Algofi",
     url: "https://www.algofi.org/",
     description:
-      "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
+      "Algofi is the DeFi hub built on Algorand. Earn interest, borrow, swap and more on the Algofi lending protocol, DEX, and stablecoin. Further, access liquidity against your governance ALGOs through the Algofi Vault.",
     logo: `${baseIconsUrl}/algofi.jpg`,
     gecko_id: null,
     cmcId: null,
@@ -245,6 +245,66 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "21324",
     chains: [],
     twitter: "redactedcartel",
+  },
+  {
+    id: "Tomb Finance",
+    name: "Tomb Finance",
+    url: "https://tomb.finance/",
+    description:
+      "home to the first algorithmic token pegged to $FTM on the Fantom Opera network",
+    logo: `${baseIconsUrl}/tomb-finance.jpg`,
+    gecko_id: "tomb",
+    cmcId: "11495",
+    chains: [],
+    twitter: "tombfinance",
+  },
+  {
+    id: "Volt Finance",
+    name: "Volt Finance",
+    url: "https://voltswap.finance",
+    description:
+      "VoltSwap is the first major DEX in the Meter ecosystem",
+    logo: `${baseIconsUrl}/volt finance.png`,
+    gecko_id: "voltswap",
+    cmcId: "19160",
+    chains: [],
+    twitter: "Meter_IO",
+  },
+  {
+    id: "Based Finance",
+    name: "Based Finance",
+    url: "https://next-gen.basedfinance.io/",
+    description:
+      "An innovative fork of tomb.finance, pegged to the price of 1 TOMB via seigniorage.",
+    logo: `${baseIconsUrl}/based finance.png`,
+    gecko_id: "based-finance",
+    cmcId: "17954",
+    chains: [],
+    twitter: "BasedDEFI",
+  },
+  {
+    id: "Ribbon Finance",
+    name: "Ribbon Finance",
+    url: "https://www.ribbon.finance/",
+    description:
+      "Structured products protocol",
+    logo: `${baseIconsUrl}/ribbon-finance.png`,
+    gecko_id: "ribbon-finance",
+    cmcId: "12387",
+    chains: [],
+    twitter: "ribbonfinance",
+  },
+  {
+    id: "Planet Finance",
+    name: "Planet Finance",
+    url: "https://app.planet.finance/",
+    description:
+      "Planet is a decentralized financial protocol consisting of different planets, each their own application, designed to enable anyone to freely activate their capital.",
+    logo: `${baseIconsUrl}/planet-finance.png`,
+    gecko_id: "planet-finance",
+    cmcId: "10023",
+    chains: [],
+    twitter: "planet_finance",
   },
 ];
 

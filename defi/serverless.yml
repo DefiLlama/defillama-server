@@ -88,6 +88,7 @@ provider:
     REVALIDATE_SECRET: ${file(./env.js):REVALIDATE_SECRET}
     DEFILLAMA_SDK_MUTED: true
     PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
+    ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
 
@@ -214,6 +215,14 @@ functions:
       - http:
           path: langs
           method: get
+  raises:
+    handler: src/getRaises.default
+    timeout: 60
+    memorySize: 2000
+    events:
+      - http:
+          path: raises
+          method: get
   oracles:
     handler: src/getOracles.default
     timeout: 600
@@ -230,6 +239,14 @@ functions:
       - http:
           path: forks
           method: get
+  categories:
+    handler: src/getCategories.default
+    timeout: 600
+    memorySize: 2000
+    events:
+      - http:
+          path: categories
+          method: get
   testTvl:
     handler: src/testTvl.default
     timeout: 600
@@ -245,6 +262,14 @@ functions:
     events:
       # update latest every 20 minutes
       - schedule: cron(0/20 * * * ? *)
+  # fetchLiquidations:
+  #   handler: src/fetchLiquidations.default
+  #   timeout: 900
+  #   memorySize: 1000
+  # triggerFetchLiquidations:
+  #   handler: src/triggerFetchLiquidations.default
+  #   events:
+  #     - schedule: cron(40 * * * ? *)
   dataset:
     handler: src/getDataset.default
     timeout: 900
@@ -315,17 +340,12 @@ functions:
     memorySize: 512
   getDexs:
     handler: src/dexVolumes/handlers/getDexs/index.default
-    timeout: 90
+    timeout: 180 #tmp
     memorySize: 2000
     events:
       - http:
           path: dexs
           method: get
-  getDexsChain:
-    handler: src/dexVolumes/handlers/getDexs/index.default
-    timeout: 90
-    memorySize: 2000
-    events:
       - http:
           path: dexs/{chain}
           method: get
@@ -337,6 +357,11 @@ functions:
       - http:
           path: dex/{dex}
           method: get
+  notifyDexStatus:
+    handler: src/notifyDexsStatus.default
+    timeout: 900
+    events:
+      - schedule: cron(01 2,13 * * ? *)
   triggerStoreVolume:
     handler: src/triggerStoreVolume.default
     timeout: 900

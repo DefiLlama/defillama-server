@@ -47,10 +47,7 @@ function sum(
     data.liquidstaking = (data.liquidstaking || 0) + item.tvl;
   }
 
-  if (
-    protocol.category?.toLowerCase() === "liquid staking" &&
-    protocol.doublecounted
-  ) {
+  if (protocol.category?.toLowerCase() === "liquid staking" && protocol.doublecounted) {
     data.dcAndLsOverlap = (data.dcAndLsOverlap || 0) + item.tvl;
   }
 
@@ -62,9 +59,7 @@ function sum(
   forkedProtocols[fork].add(protocol.name);
 }
 
-const handler = async (
-  _event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
+const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   const sumDailyTvls = {} as SumDailyTvls;
   const forkedProtocols = {} as ForkedProtocols;
 
@@ -82,15 +77,14 @@ const handler = async (
       } catch (error) {
         console.log(protocol.name, error);
       }
-    }
+    },
+    { includeBridge: false }
   );
 
   return successResponse(
     {
       chart: sumDailyTvls,
-      forks: Object.fromEntries(
-        Object.entries(forkedProtocols).map((c) => [c[0], Array.from(c[1])])
-      ),
+      forks: Object.fromEntries(Object.entries(forkedProtocols).map((c) => [c[0], Array.from(c[1])])),
     },
     10 * 60
   ); // 10 mins cache

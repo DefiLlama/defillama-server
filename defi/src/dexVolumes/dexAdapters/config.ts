@@ -380,6 +380,12 @@ export default {
     "step-exchange": {
         enabled: true
     },
+     "pegasys": {
+        enabled: true
+    },
+    "crodex": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

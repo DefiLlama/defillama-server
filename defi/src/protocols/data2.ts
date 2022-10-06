@@ -16335,6 +16335,8 @@ listedAt: 1650804679
   chains: ["Solana"],
   module: "amulet-protocol/index.js",
   twitter: "AmuletProtocol",
+  oracles: [], 
+  forkedFrom: [],
   audit_links: ["https://files.amulet.org/public/AmuletGlobalMTRLabs.pdf"],
   listedAt: 1665048387
 },
@@ -16355,6 +16357,8 @@ listedAt: 1650804679
   chains: ["Binance"],
   module: "superbots/index.js",
   twitter: "SuperBots_Fi",
+  oracles: [], 
+  forkedFrom: [],
   audit_links: ["https://www.certik.com/projects/superbots"],
   listedAt: 1665048593
 },
@@ -16373,6 +16377,8 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["EthereumPoW"],
+  oracles: [], 
+  forkedFrom: ["Uniswap"],
   module: "powerswap/index.js",
   twitter: "PowerSwapPOW",
   listedAt: 1665052722

@@ -16457,7 +16457,7 @@ listedAt: 1650804679
   address: "0x34769d3e122c93547836addd3eb298035d68f1c3",
   symbol: "NUME",
   url: "https://numisme.io",
-  description: ".",
+  description: "The world first crypto bought directly with cash; bringing DeFi to consumers, and a store near you.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/numisme.png`,
   audits: "2",
@@ -16469,7 +16469,7 @@ listedAt: 1650804679
   oracles: [], 
   forkedFrom: [],
   module: "numisme/index.js",
-  twitter: "OctoPowswap",
+  twitter: "NUMISMEcoin",
   audit_links: [
                   "https://github.com/NumisMe/Frontend/blob/main/Haechi-V3.pdf",
                   "https://code423n4.com/reports/2021-09-yaxis",

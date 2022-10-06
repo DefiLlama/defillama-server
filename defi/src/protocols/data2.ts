@@ -16383,6 +16383,52 @@ listedAt: 1650804679
   twitter: "PowerSwapPOW",
   listedAt: 1665052722
 },
+{
+  id: "2162",
+  name: "Ease.org",
+  address: "0xEa5eDef1287AfDF9Eb8A46f9773AbFc10820c61c",
+  symbol: "EASE",
+  url: "https://main.powerswap.fi/swap",
+  description: "Ease is a decentralized coverage protocol that enables users to protect their DeFi tokens without a premium while earning compounding yield.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ease.org.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "ease",
+  cmcId: null,
+  category: "Insurance",
+  chains: ["Ethereum"],
+  oracles: [], 
+  forkedFrom: [],
+  module: "ease/index.js",
+  twitter: "EaseDeFi",
+  audit_links: [
+                 "https://github.com/EaseDeFi/Audits/blob/main/Dedaub_RCA_Audit.pdf",
+                 "https://github.com/EaseDeFi/gvToken/tree/main/audits"
+               ],
+  listedAt: 1665063478
+},
+{
+  id: "2163",
+  name: "OctoPow Finance",
+  address: "ethpow:0xa10168025488c35F877EA8599e91C4eE1EC23E4c",
+  symbol: "OTP",
+  url: "https://octopow.finance",
+  description: "OctoPow is the first and most advanced DEX & AMM on Ethereum PoW chain, supporting true Defi & NFT on the EthereumPoW network.",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/octopow-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthereumPoW"],
+  oracles: [], 
+  forkedFrom: ["Uniswap"],
+  module: "octopow/index.js",
+  twitter: "OctoPowswap",
+  listedAt: 1665063701
+},
 ]
 
 export default data2;

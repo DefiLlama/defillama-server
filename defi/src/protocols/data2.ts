@@ -16278,6 +16278,46 @@ listedAt: 1650804679
   twitter: "ethw_swap",
   listedAt: 1664986535
 },
+{
+  id: "2157",
+  name: "Green Planet",
+  address: "bsc:0x72b7d61e8fc8cf971960dd9cfa59b8c829d91991",
+  symbol: "AQUA",
+  url: "https://app.planet.finance/",
+  description: "Green Planet is an incentivized, non-custodial lending protocol for earning interest on deposits and borrowing assets.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/planet-finance.png`,
+  audits: "3",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Binance"],
+  module: "planet-green/index.js",
+  twitter: "planet_finance",
+  listedAt: 1665024124,
+  parentProtocol: "Planet Finance"
+},
+{
+  id: "2158",
+  name: "Blue Planet",
+  address: "bsc:0x72b7d61e8fc8cf971960dd9cfa59b8c829d91991",
+  symbol: "AQUA",
+  url: "https://app.planet.finance/",
+  description: "Green Planet is an incentivized, non-custodial lending protocol for earning interest on deposits and borrowing assets.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/planet-finance.png`,
+  audits: "3",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "planet-blue/index.js",
+  twitter: "planet_finance",
+  listedAt: 1665024139,
+  parentProtocol: "Planet Finance"
+},
 ]
 
 export default data2;

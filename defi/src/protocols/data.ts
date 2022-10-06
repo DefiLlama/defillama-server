@@ -7092,22 +7092,25 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "461",
-    name: "Planet",
+    name: "Planet Farm",
     address: "bsc:0x72b7d61e8fc8cf971960dd9cfa59b8c829d91991",
     symbol: "AQUA",
     url: "https://app.planet.finance/",
-    description: "Planet is a decentralized financial protocol consisting of different planets, each their own application, designed to enable anyone to freely activate their capital.",
+    description: "By staking in vaults, yielding interest in liquidity pools & swapping tokens anyone can take back their financial independence and free themselves of the legacy system.",
     chain: "Binance",
     logo: `${baseIconsUrl}/planet-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "planet-finance",
-    cmcId: "10023",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield",
     chains: ["Binance"],
     module: "planet-finance/index.js",
     twitter: "planet_finance",
-    audit_links: ["https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Planet_Finance_Smart_Contract_Security_Audit_Halborn_v1_1.pdf"],
+    audit_links: [
+      "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Planet_Finance_Smart_Contract_Security_Audit_Halborn_v1_1.pdf"
+    ],
+    parentProtocol: "Planet Finance"
   },
   {
     id: "462",

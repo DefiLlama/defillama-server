@@ -22,15 +22,11 @@ export async function getTokenAndRedirectData(
   if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
     return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
   }
-  if (timestamp == 0) {
-    return await getTokenAndRedirectDataCurrent(
-      tokens,
-      chain,
-      getCurrentUnixTimestamp()
-    );
-  } else {
-    return await getTokenAndRedirectDataHistorical(tokens, chain, timestamp);
-  }
+  return await getTokenAndRedirectDataDB(
+    tokens,
+    chain,
+    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp
+  );
 }
 
 export function addToDBWritesList(
@@ -113,7 +109,7 @@ async function getTokenAndRedirectDataFromAPI(
     return data;
   });
 }
-async function getTokenAndRedirectDataHistorical(
+async function getTokenAndRedirectDataDB(
   tokens: string[],
   chain: string,
   timestamp: number
@@ -216,33 +212,6 @@ async function getTokenAndRedirectDataHistorical(
   // }
   return timestampedResults;
 }
-async function getTokenAndRedirectDataCurrent(
-  tokens: string[],
-  chain: string,
-  timestamp: number
-) {
-  const dbEntries: DbEntry[] = await batchGet(
-    tokens.map((t: string) => ({
-      PK: `asset#${chain}:${t.toLowerCase()}`,
-      SK: timestamp
-    }))
-  );
-  const redirects: DbQuery[] = [];
-  for (let i = 0; i < dbEntries.length; i++) {
-    if (!("redirect" in dbEntries[i])) continue;
-    redirects.push({
-      PK: dbEntries[i].redirect,
-      SK: timestamp
-    });
-  }
-  const redirectResults: Redirect[] = await batchGet(redirects);
-
-  const reads: Read[] = dbEntries.map((d) => ({
-    dbEntry: d,
-    redirect: redirectResults.filter((r) => r.PK == d.redirect)
-  }));
-  return aggregateTokenAndRedirectData(reads);
-}
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
@@ -318,7 +287,10 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
       symbol: r.dbEntry.symbol,
       price: r.redirect.length != 0 ? r.redirect[0].price : r.dbEntry.price,
       timestamp: r.dbEntry.SK == 0 ? getCurrentUnixTimestamp() : r.dbEntry.SK,
-      redirect: r.redirect.length == 0 ? undefined : r.redirect[0].PK,
+      redirect:
+        r.redirect.length == 0 || r.redirect[0].PK == r.dbEntry.PK
+          ? undefined
+          : r.redirect[0].PK,
       confidence
     };
   });

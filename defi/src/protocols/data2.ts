@@ -16318,6 +16318,46 @@ listedAt: 1650804679
   listedAt: 1665024139,
   parentProtocol: "Planet Finance"
 },
+{
+  id: "2159",
+  name: "Amulet Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://amulet.org",
+  description: "Amulet Protocol (Amulet) is a decentralized risk protection protocol (RPP) built for Rust-based ecosystems, starting with the Solana blockchain. Amulet has designed an innovative and open risk protection model which not only effectively addresses the common challenges of existing decentralized RPPs, but also creates a new paradigm shift for the whole risk protection sector. Amulet's vision is to offer Simple, Reliable Cover for everyone in Web3",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/amulet-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Insurance",
+  chains: ["Solana"],
+  module: "amulet-protocol/index.js",
+  twitter: "AmuletProtocol",
+  audit_links: ["https://files.amulet.org/public/AmuletGlobalMTRLabs.pdf"],
+  listedAt: 1665048387
+},
+{
+  id: "2160",
+  name: "SuperBots",
+  address: "bsc:0xbbeb90cfb6fafa1f69aa130b7341089abeef5811",
+  symbol: "UBXT",
+  url: "https://superbots.finance",
+  description: "SuperBots offers decentralized trading solutions, via vaults in which users can deposit their capital and which will be traded on decentralized markets in a secure manner.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/superbots.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Binance"],
+  module: "superbots/index.js",
+  twitter: "SuperBots_Fi",
+  audit_links: ["https://www.certik.com/projects/superbots"],
+  listedAt: 1665048593
+},
 ]
 
 export default data2;

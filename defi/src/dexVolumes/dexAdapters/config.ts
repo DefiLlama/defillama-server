@@ -365,7 +365,7 @@ export default {
     "defichain-dex": {
         enabled: true
     },
-    "planet": {
+    "blue-planet": {
         enabled: true
     },
     "aldrin": {

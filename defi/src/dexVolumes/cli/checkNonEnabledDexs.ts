@@ -1,12 +1,6 @@
 import config from "../dexAdapters/config";
-// import adapters from "@defillama/adapters/volumes"
-import { readdirSync } from 'fs'
 import path from "path";
-
-const getDirectories = (source: string) =>
-  readdirSync(source, { withFileTypes: true })
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name)
+import getDirectories from "../utils/getDirectories";
 
 const enabledDEXs = Object.entries(config).reduce((acc, [dex, enabled]) => {
     if (enabled) acc.push(dex)

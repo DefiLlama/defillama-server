@@ -16358,6 +16358,25 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/superbots"],
   listedAt: 1665048593
 },
+{
+  id: "2161",
+  name: "PowerSwap",
+  address: null,
+  symbol: "-",
+  url: "https://main.powerswap.fi/swap",
+  description: "The unique 0 transaction fee DEX on ETHw | ERC-20 tokens with 0-swap-fees and farm ",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/powerswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthereumPoW"],
+  module: "powerswap/index.js",
+  twitter: "PowerSwapPOW",
+  listedAt: 1665052722
+},
 ]
 
 export default data2;

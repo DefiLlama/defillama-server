@@ -16429,6 +16429,54 @@ listedAt: 1650804679
   twitter: "OctoPowswap",
   listedAt: 1665063701
 },
+{
+  id: "2164",
+  name: "AlgoRai Finance",
+  address: null,
+  symbol: "-",
+  url: "https://algorai.finance",
+  description: "AlgoRai creates robust and transparent DeFi structured products on Algorand ecosystem. We provide users with a means to separate and harvest inherent volatility on their underlying assets through our option vault strategies.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/algorai-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Options",
+  chains: ["Algorand"], //Oracle used our own, Medianizer Contract ID on Algorand: 879224867
+  oracles: [], 
+  forkedFrom: [],
+  module: "algorai-finance/index.js",
+  twitter: "AlgoRai_finance",
+  audit_links: ["https://kudelskisecurity.com/wp-content/uploads/AlgoRai-Secure-Code-Review-Report-Public-Release.pdf"],
+  listedAt: 1665074987
+},
+{
+  id: "2165",
+  name: "NumisMe",
+  address: "0x34769d3e122c93547836addd3eb298035d68f1c3",
+  symbol: "NUME",
+  url: "https://numisme.io",
+  description: ".",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/numisme.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "numisme",
+  cmcId: "20339",
+  category: "Yield",
+  chains: ["Ethereum"],
+  oracles: [], 
+  forkedFrom: [],
+  module: "numisme/index.js",
+  twitter: "OctoPowswap",
+  audit_links: [
+                  "https://github.com/NumisMe/Frontend/blob/main/Haechi-V3.pdf",
+                  "https://code423n4.com/reports/2021-09-yaxis",
+                  "https://www.certik.com/projects/numisme?utm_source=CMC&utm_campaign=AuditByCertiKLink"
+               ],
+  listedAt: 1665074989
+},
 ]
 
 export default data2;

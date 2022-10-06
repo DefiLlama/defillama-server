@@ -392,6 +392,9 @@ export default {
     "babyswap": {
         enabled: true
     },
+    "lifinity": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

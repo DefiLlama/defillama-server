@@ -389,6 +389,9 @@ export default {
     "dexalot": {
         enabled: true
     },
+    "babyswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

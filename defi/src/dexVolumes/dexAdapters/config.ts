@@ -368,6 +368,9 @@ export default {
     "planet": {
         enabled: true
     },
+    "aldrin": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

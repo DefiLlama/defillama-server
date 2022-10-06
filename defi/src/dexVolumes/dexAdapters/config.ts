@@ -395,6 +395,9 @@ export default {
     "lifinity": {
         enabled: true
     },
+    "vanswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

@@ -371,6 +371,9 @@ export default {
     "aldrin": {
         enabled: true
     },
+    "capricorn-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

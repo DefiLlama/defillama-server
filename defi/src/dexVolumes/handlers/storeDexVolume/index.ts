@@ -7,6 +7,7 @@ import getChainsFromDexAdapters from "../../utils/getChainsFromDexAdapters";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
+import runAdapter from "./runAdapter";
 const { getBlock } = require("@defillama/adapters/projects/helper/getBlock")
 
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
@@ -22,7 +23,7 @@ export interface IRecordVolumeData {
   }
 }
 
-const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
+export const STORE_DEX_VOLUME_ERROR = "STORE_DEX_VOLUME_ERROR"
 const LAMBDA_TIMESTAMP = Math.trunc((Date.now()) / 1000)
 
 export const handler = async (event: IHandlerEvent) => {
@@ -48,41 +49,6 @@ export const handler = async (event: IHandlerEvent) => {
     })
   );
 
-  async function runAdapter(id: string, volumeAdapter: Adapter, version: string) {
-    console.log("Running adapter", id, version)
-    const chains = Object.keys(volumeAdapter).filter(c => c !== DISABLED_ADAPTER_KEY)
-    return allSettled(chains
-      .filter(async (chain) => {
-        const start = await volumeAdapter[chain].start().catch(e => console.error("Error getting start time", id, version, e.message))
-        return (start <= cleanPreviousDayTimestamp) || (start === 0)
-      })
-      .map(async (chain) => {
-        const fetchFunction = volumeAdapter[chain].customBackfill ?? volumeAdapter[chain].fetch
-        try {
-          // substract 1 second from cleanCurrentTimestamp to get total day volume at cleanCurrentTimestamp (if not we would get only daily volume at the moment this function is called)
-          const result = await fetchFunction(cleanCurrentDayTimestamp - 1, chainBlocks);
-          if (result.totalVolume && Number.isNaN(+result.totalVolume)) result.totalVolume = undefined
-          if (result.dailyVolume && Number.isNaN(+result.dailyVolume)) result.dailyVolume = undefined
-          if (result.totalVolume && !result.dailyVolume) {
-            try {
-              const totalVolumePrevDay = await getVolume(id, VolumeType.totalVolume, "TIMESTAMP", cleanPreviousDayTimestamp - 60 * 60 * 24)
-              console.log("Found ->", totalVolumePrevDay, cleanPreviousDayTimestamp - 60 * 60 * 24)
-              if (totalVolumePrevDay instanceof Array) throw new Error(`${STORE_DEX_VOLUME_ERROR}:${id}: Unexpected error getting previous day total volume`)
-              else {
-                result.dailyVolume = `${Number(result.totalVolume) - Number(totalVolumePrevDay.data[chain][version])}`
-              }
-            } catch (error) {
-              console.error(error, cleanPreviousDayTimestamp - 60 * 60 * 24)
-            }
-          }
-          return ({ chain, result });
-        } catch (e) {
-          return await Promise.reject({ chain, error: e, id, timestamp: cleanPreviousDayTimestamp });
-        }
-      }
-      ))
-  }
-
   const results = await allSettled(event.protocolIndexes.map(async protocolIndex => {
     // Get DEX info
     const { id, volumeAdapter } = volumeAdapters[protocolIndex];
@@ -96,19 +62,19 @@ export const handler = async (event: IHandlerEvent) => {
       let rawDailyVolumes: IRecordVolumeData[] = []
       let rawTotalVolumes: IRecordVolumeData[] = []
       if ("volume" in dexAdapter) {
-        const runAdapterRes = await runAdapter(id, dexAdapter.volume, volumeAdapter)
+        const runAdapterRes = await runAdapter(dexAdapter.volume, cleanCurrentDayTimestamp, chainBlocks)
         const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
         for (const volume of volumes) {
-          if (volume && volume.result.dailyVolume)
+          if (volume && volume.dailyVolume)
             rawDailyVolumes.push({
               [volume.chain]: {
-                [volumeAdapter]: +volume.result.dailyVolume
+                [volumeAdapter]: +volume.dailyVolume
               },
             })
-          if (volume && volume.result.totalVolume)
+          if (volume && volume.totalVolume)
             rawTotalVolumes.push({
               [volume.chain]: {
-                [volumeAdapter]: +volume.result.totalVolume
+                [volumeAdapter]: +volume.totalVolume
               },
             })
         }
@@ -119,19 +85,19 @@ export const handler = async (event: IHandlerEvent) => {
         const dexBreakDownAdapter = dexAdapter.breakdown
         const volumeAdapters = Object.entries(dexBreakDownAdapter)
         for (const [version, volumeAdapterObj] of volumeAdapters) {
-          const runAdapterRes = await runAdapter(id, volumeAdapterObj, version)
+          const runAdapterRes = await runAdapter(volumeAdapterObj, cleanCurrentDayTimestamp, chainBlocks)
           const volumes = runAdapterRes.filter(rar => rar.status === 'fulfilled').map(r => r.status === "fulfilled" && r.value)
           for (const volume of volumes) {
-            if (volume && volume.result.dailyVolume)
+            if (volume && volume.dailyVolume)
               rawDailyVolumes.push({
                 [volume.chain]: {
-                  [version]: +volume.result.dailyVolume
+                  [version]: +volume.dailyVolume
                 },
               })
-            if (volume && volume.result.totalVolume)
+            if (volume && volume.totalVolume)
               rawTotalVolumes.push({
                 [volume.chain]: {
-                  [version]: +volume.result.totalVolume
+                  [version]: +volume.totalVolume
                 },
               })
           }

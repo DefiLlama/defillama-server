@@ -386,6 +386,9 @@ export default {
     "crodex": {
         enabled: true
     },
+    "dexalot": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

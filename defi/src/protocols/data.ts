@@ -4757,8 +4757,8 @@ const data: Protocol[] = [
   {
     id: "343",
     name: "Impermax Finance",
-    address: "0x7b35ce522cb72e4077baeb96cb923a5529764a00",
-    symbol: "IMX",
+    address: "0xf655c8567e0f213e6c634cd2a68d992152161dc6",
+    symbol: "IBEX",
     url: "https://impermax.finance/",
     description:
       "Impermax is a DeFi ecosystem that enables liquidity providers to leverage their LP tokens",
@@ -4766,8 +4766,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/impermax-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "impermax",
-    cmcId: "9532",
+    gecko_id: "impermax-2",
+    cmcId: null,
     category: "Yield",
     chains: ["Ethereum","Polygon","Arbitrum"],
     module: "impermax/index.js",

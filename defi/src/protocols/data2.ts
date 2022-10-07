@@ -12798,14 +12798,14 @@ listedAt: 1650804679
 },
 {
   id: "1997",
-  name: "Morpho",
+  name: "Morpho Compound",
   address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
   symbol: "MORPHO",
   url: "https://www.morpho.xyz",
   description:
     "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/morpho.png`,
+  logo: `${baseIconsUrl}/morpho-compound.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

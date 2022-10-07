@@ -10706,7 +10706,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   module: "taiga/index.js",
-  twitter: "TaigaProtocol",
+  twitter: "TapioProtocol",
   listedAt: 1657807133
 },
 {

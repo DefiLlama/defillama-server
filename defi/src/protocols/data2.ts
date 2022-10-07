@@ -16281,12 +16281,12 @@ listedAt: 1650804679
 {
   id: "2157",
   name: "Green Planet",
-  address: "bsc:0x72b7d61e8fc8cf971960dd9cfa59b8c829d91991",
+  address: "bsc:0xb3cb6d2f8f2fde203a022201c81a96c167607f15",
   symbol: "AQUA",
   url: "https://app.planet.finance/",
   description: "Green Planet is an incentivized, non-custodial lending protocol for earning interest on deposits and borrowing assets.",
   chain: "Binance",
-  logo: `${baseIconsUrl}/planet-finance.png`,
+  logo: `${baseIconsUrl}/green-planet.png`,
   audits: "3",
   audit_note: null,
   gecko_id: null,
@@ -16296,26 +16296,6 @@ listedAt: 1650804679
   module: "planet-green/index.js",
   twitter: "planet_finance",
   listedAt: 1665024124,
-  parentProtocol: "Planet Finance"
-},
-{
-  id: "2158",
-  name: "Blue Planet",
-  address: "bsc:0x72b7d61e8fc8cf971960dd9cfa59b8c829d91991",
-  symbol: "AQUA",
-  url: "https://app.planet.finance/",
-  description: "Green Planet is an incentivized, non-custodial lending protocol for earning interest on deposits and borrowing assets.",
-  chain: "Binance",
-  logo: `${baseIconsUrl}/planet-finance.png`,
-  audits: "3",
-  audit_note: null,
-  gecko_id: null,
-  cmcId: null,
-  category: "Dexes",
-  chains: ["Binance"],
-  module: "planet-blue/index.js",
-  twitter: "planet_finance",
-  listedAt: 1665024139,
   parentProtocol: "Planet Finance"
 },
 {
@@ -16476,6 +16456,28 @@ listedAt: 1650804679
                   "https://www.certik.com/projects/numisme?utm_source=CMC&utm_campaign=AuditByCertiKLink"
                ],
   listedAt: 1665074989
+},
+{
+  id: "2165",
+  name: "Blue Planet",
+  address: "bsc:0x72b7d61e8fc8cf971960dd9cfa59b8c829d91991",
+  symbol: "AQUA",
+  url: "https://app.planet.finance/",
+  description: "By staking in vaults, yielding interest in liquidity pools & swapping tokens anyone can take back their financial independence and free themselves of the legacy system.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/blue-planet.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Binance"],
+  module: "planet-finance/index.js",
+  twitter: "planet_finance",
+  audit_links: [
+    "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Planet_Finance_Smart_Contract_Security_Audit_Halborn_v1_1.pdf"
+  ],
+  parentProtocol: "Planet Finance"
 },
 ]
 

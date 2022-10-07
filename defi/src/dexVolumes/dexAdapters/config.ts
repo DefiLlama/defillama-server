@@ -398,6 +398,9 @@ export default {
     "vanswap": {
         enabled: true
     },
+    "dao-maker": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

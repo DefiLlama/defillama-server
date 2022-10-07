@@ -16498,6 +16498,26 @@ listedAt: 1650804679
   twitter: "LfgSwap",
   listedAt: 1665165717
 },
+{
+  id: "2167",
+  name: "DAO Swap",
+  address: "0x0f51bb10119727a7e5ea3538074fb341f56b09ad",
+  symbol: "DAO",
+  url: "https://swap.daomaker.com/",
+  description: "AMM DEX on BSC",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/dao-maker.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "daomaker-swap/index.js",
+  twitter: "TheDaoMaker",
+  listedAt: 1665169761,
+  parentProtocol: "DAO Maker"
+},
 ]
 
 export default data2;

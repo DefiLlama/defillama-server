@@ -15869,10 +15869,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "921",
-    name: "DAO Maker",
+    name: "DAO Maker Vesting",
     address: "0x0f51bb10119727a7e5ea3538074fb341f56b09ad",
     symbol: "DAO",
-    url: "https://daomaker.com/vault",
+    url: "https://daomaker.com/farms-and-vestings",
     description: "DAO Maker creates growth technologies and funding frameworks for startups, while simultaneously reducing risks for investors.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dao-maker.jpg`,
@@ -15895,6 +15895,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://drive.google.com/file/d/1OPanooD8QD13kOx210QTz19RyS8yTj80/view",
     ],
     listedAt: 1637977412,
+    parentProtocol: "DAO Maker"
   },
   {
     id: "922",

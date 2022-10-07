@@ -306,6 +306,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "planet_finance",
   },
+  {
+    id: "DAO Maker",
+    name: "DAO Maker",
+    url: "https://daomaker.com/",
+    description:
+      "DAO Maker creates growth technologies and funding frameworks for startups, while simultaneously reducing risks for investors.",
+    logo: `${baseIconsUrl}/dao-maker.jpg`,
+    gecko_id: "dao-maker",
+    cmcId: "8420",
+    chains: [],
+    twitter: "TheDaoMaker",
+  },
 ];
 
 export default parentProtocols;

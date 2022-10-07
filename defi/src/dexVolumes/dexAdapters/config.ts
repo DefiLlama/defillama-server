@@ -398,7 +398,7 @@ export default {
     "vanswap": {
         enabled: true
     },
-    "dao-maker": {
+    "dao-swap": {
         enabled: true
     },
 } as {

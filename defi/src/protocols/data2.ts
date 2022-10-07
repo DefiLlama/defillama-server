@@ -16477,6 +16477,27 @@ listedAt: 1650804679
                ],
   listedAt: 1665074989
 },
+{
+  id: "2166",
+  name: "LFGSwap",
+  address: "ethpow:0xFd483e333cBe8fE7A418D9398d6BB81CC2B8e07B​",
+  symbol: "LFG",
+  url: "https://app.lfgswap.finance/swap",
+  description: "AMM DEX on EthereumPoW",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/lfgswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "lfgswap-finance",
+  cmcId: "21967",
+  category: "Dexes",
+  chains: ["EthereumPoW"], 
+  oracles: [], 
+  forkedFrom: ["Uniswap"],
+  module: "lfgswap/index.js",
+  twitter: "LfgSwap",
+  listedAt: 1665165717
+},
 ]
 
 export default data2;

@@ -295,12 +295,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ribbonfinance",
   },
   {
-    id: "Planet Finance",
-    name: "Planet Finance",
+    id: "Planet",
+    name: "Planet",
     url: "https://app.planet.finance/",
     description:
       "Planet is a decentralized financial protocol consisting of different planets, each their own application, designed to enable anyone to freely activate their capital.",
-    logo: `${baseIconsUrl}/planet-finance.png`,
+    logo: `${baseIconsUrl}/planet.png`,
     gecko_id: "planet-finance",
     cmcId: "10023",
     chains: [],

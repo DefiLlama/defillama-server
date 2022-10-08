@@ -16282,8 +16282,8 @@ listedAt: 1650804679
 {
   id: "2157",
   name: "Green Planet",
-  address: "bsc:0x72b7d61e8fc8cf971960dd9cfa59b8c829d91991",
-  symbol: "AQUA",
+  address: "bsc:0xb3cb6d2f8f2fde203a022201c81a96c167607f15",
+  symbol: "GAMMA",
   url: "https://app.planet.finance/",
   description: "Green Planet is an incentivized, non-custodial lending protocol for earning interest on deposits and borrowing assets.",
   chain: "Binance",

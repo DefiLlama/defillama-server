@@ -22,11 +22,11 @@ export async function getTokenAndRedirectData(
   if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
     return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
   }
-  return await getTokenAndRedirectDataDB(
-    tokens,
-    chain,
-    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp
-  );
+  if (timestamp == 0) {
+    return await getTokenAndRedirectDataCurrent(tokens, chain, 0);
+  } else {
+    return await getTokenAndRedirectDataDB(tokens, chain, timestamp);
+  }
 }
 
 export function addToDBWritesList(
@@ -108,6 +108,33 @@ async function getTokenAndRedirectDataFromAPI(
     data.address = pk.substring(pk.indexOf(":") + 1);
     return data;
   });
+}
+async function getTokenAndRedirectDataCurrent(
+  tokens: string[],
+  chain: string,
+  timestamp: number
+) {
+  const dbEntries: DbEntry[] = await batchGet(
+    tokens.map((t: string) => ({
+      PK: `asset#${chain}:${t.toLowerCase()}`,
+      SK: timestamp
+    }))
+  );
+  const redirects: DbQuery[] = [];
+  for (let i = 0; i < dbEntries.length; i++) {
+    if (!("redirect" in dbEntries[i])) continue;
+    redirects.push({
+      PK: dbEntries[i].redirect,
+      SK: timestamp
+    });
+  }
+  const redirectResults: Redirect[] = await batchGet(redirects);
+
+  const reads: Read[] = dbEntries.map((d) => ({
+    dbEntry: d,
+    redirect: redirectResults.filter((r) => r.PK == d.redirect)
+  }));
+  return aggregateTokenAndRedirectData(reads);
 }
 async function getTokenAndRedirectDataDB(
   tokens: string[],

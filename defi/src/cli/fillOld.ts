@@ -1,7 +1,8 @@
 require("dotenv").config();
 
 import dynamodb from "../utils/shared/dynamodb";
-import { getProtocol, getBlocksRetry } from "./utils";
+import { getProtocol, } from "./utils";
+import { getBlocksRetry } from "../storeTvlInterval/blocks";
 import {
   dailyTokensTvl,
   dailyTvl,
@@ -42,8 +43,8 @@ async function getAndStore(
   protocol: Protocol,
   dailyItems: DailyItems
 ) {
-  const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp);
   const adapterModule = await importAdapter(protocol)
+  const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp, { adapterModule });
   const tvl = await storeTvl(
     timestamp,
     ethereumBlock,

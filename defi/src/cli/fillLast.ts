@@ -1,6 +1,7 @@
 require("dotenv").config();
 
-import { getProtocol, getBlocksRetry } from "./utils";
+import { getProtocol, } from "./utils";
+import { getBlocksRetry } from "../storeTvlInterval/blocks";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import {
   getCoingeckoLock,
@@ -14,11 +15,11 @@ const main = async () => {
   const protocol = getProtocol(protocolToFill);
   const now = Math.round(Date.now() / 1000);
 
-  const { ethereumBlock, chainBlocks } = await getBlocksRetry(now);
+  const adapterModule = await importAdapter(protocol)
+  const { ethereumBlock, chainBlocks } = await getBlocksRetry(now, { adapterModule });
   setInterval(() => {
     releaseCoingeckoLock();
   }, 1.5e3);
-  const adapterModule = await importAdapter(protocol)
   const tvl = await storeTvl(
     now,
     ethereumBlock,

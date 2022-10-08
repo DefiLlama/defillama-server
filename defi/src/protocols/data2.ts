@@ -16287,7 +16287,7 @@ listedAt: 1650804679
   url: "https://app.planet.finance/",
   description: "Green Planet is an incentivized, non-custodial lending protocol for earning interest on deposits and borrowing assets.",
   chain: "Binance",
-  logo: `${baseIconsUrl}/planet-finance.png`,
+  logo: `${baseIconsUrl}/green-planet.png`,
   audits: "3",
   audit_note: null,
   gecko_id: null,

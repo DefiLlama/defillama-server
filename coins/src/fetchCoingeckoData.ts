@@ -54,33 +54,37 @@ function storeCoinData(
         mcap: data.usd_market_cap,
         timestamp,
         symbol: idToSymbol[cgId].toUpperCase(),
-        confidence: 1
+        confidence: 0.99
       })),
     false
   );
 }
 
-let solanaTokens: Promise<any>
-async function getSymbolAndDecimals(tokenAddress: string, chain:string){
-  if(chain === "solana"){
-    if(solanaTokens === undefined){
+let solanaTokens: Promise<any>;
+async function getSymbolAndDecimals(tokenAddress: string, chain: string) {
+  if (chain === "solana") {
+    if (solanaTokens === undefined) {
       solanaTokens = fetch(
         "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json"
-      ).then(r=>r.json())
+      ).then((r) => r.json());
     }
-    const token = ((await solanaTokens).tokens as any[]).find(t=>t.address === tokenAddress)
-    if(token === undefined){
-      throw new Error(`Token ${chain}:${tokenAddress} not found in solana token list`)
+    const token = ((await solanaTokens).tokens as any[]).find(
+      (t) => t.address === tokenAddress
+    );
+    if (token === undefined) {
+      throw new Error(
+        `Token ${chain}:${tokenAddress} not found in solana token list`
+      );
     }
     return {
       symbol: token.symbol,
       decimals: Number(token.decimals)
-    }
+    };
   } else {
     return {
       symbol: (await symbol(tokenAddress, chain as any)).output,
-      decimals: Number((await decimals(tokenAddress, chain as any)).output),
-    }
+      decimals: Number((await decimals(tokenAddress, chain as any)).output)
+    };
   }
 }
 
@@ -109,7 +113,10 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         if (coinData[coin.id]?.usd === undefined) {
           return;
         }
-        const {decimals, symbol} = await getSymbolAndDecimals(tokenAddress, chain);
+        const { decimals, symbol } = await getSymbolAndDecimals(
+          tokenAddress,
+          chain
+        );
         await ddb.put({
           PK,
           SK: 0,

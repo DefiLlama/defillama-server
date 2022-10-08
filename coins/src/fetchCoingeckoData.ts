@@ -54,7 +54,7 @@ function storeCoinData(
         mcap: data.usd_market_cap,
         timestamp,
         symbol: idToSymbol[cgId].toUpperCase(),
-        confidence: 0.99
+        confidence: 1
       })),
     false
   );

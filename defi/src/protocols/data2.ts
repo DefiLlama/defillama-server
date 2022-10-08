@@ -16544,6 +16544,31 @@ listedAt: 1650804679
   listedAt: 1665186810,
   parentProtocol: "Morpho"
 },
+{
+  id: "2169",
+  name: "BabyDogeSwap",
+  address: "bsc:0xc748673057861a797275CD8A068AbB95A902e8de",
+  symbol: "BabyDoge",
+  url: "https://babydogeswap.com",
+  description: "Meme of BSC hold, pet, love, & help save dogs! BSC Farms & Swap",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/babydogeswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "baby-doge-coin",
+  cmcId: "10407",
+  category: "Dexes",
+  chains: ["Binance"],
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  module: "babydogeswap/index.js",
+  twitter: "BabyDogeCoin",
+  audit_links: [
+                 "https://www.certik.com/projects/baby-doge-coin",
+                 "https://dessertswap.finance/audits/Baby%20Doge%20Coin%20(BabyDoge)%20BEP-20%20Audit%208332977.pdf"
+               ],
+  listedAt: 1665220470
+},
 ]
 
 export default data2;

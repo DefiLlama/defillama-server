@@ -12801,7 +12801,7 @@ listedAt: 1650804679
   name: "Morpho Compound",
   address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
   symbol: "MORPHO",
-  url: "https://www.morpho.xyz",
+  url: "https://compound.morpho.xyz/?network=mainnet",
   description:
     "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
   chain: "Ethereum",
@@ -12814,11 +12814,12 @@ listedAt: 1650804679
   chains: ["Ethereum"],
   module: "morpho/index.js",
   twitter: "MorphoLabs",
-  oracles: ["TWAP"],
+  oracles: ["Chainlink"],
   audit_links: [
-    "https://github.com/morpho-dao/morpho-core-v1/tree/main/audits"
+    "https://docs.morpho.xyz/resources/security-and-audits"
   ],
   listedAt: 1660946171,
+  parentProtocol: "Morpho"
 },
 {
   id: "1998",
@@ -16517,6 +16518,31 @@ listedAt: 1650804679
   twitter: "TheDaoMaker",
   listedAt: 1665169761,
   parentProtocol: "DAO Maker"
+},
+{
+  id: "2168",
+  name: "Morpho Aave",
+  address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+  symbol: "MORPHO",
+  url: "https://aave.morpho.xyz/?network=mainnet",
+  description:
+    "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/morpho.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "morpho-aave/index.js",
+  twitter: "MorphoLabs",
+  oracles: ["Chainlink"],
+  audit_links: [
+    "https://docs.morpho.xyz/resources/security-and-audits"
+  ],
+  listedAt: 1665186810,
+  parentProtocol: "Morpho"
 },
 ]
 

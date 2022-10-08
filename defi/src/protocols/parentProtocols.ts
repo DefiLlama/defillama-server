@@ -318,6 +318,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TheDaoMaker",
   },
+  {
+    id: "Morpho",
+    name: "Morpho",
+    url: "https://www.morpho.xyz",
+    description:
+      "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
+    logo: `${baseIconsUrl}/morpho.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MorphoLabs",
+  },
 ];
 
 export default parentProtocols;

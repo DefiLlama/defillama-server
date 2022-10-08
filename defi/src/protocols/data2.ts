@@ -16297,7 +16297,7 @@ listedAt: 1650804679
   module: "planet-green/index.js",
   twitter: "planet_finance",
   listedAt: 1665024124,
-  parentProtocol: "Planet Finance"
+  parentProtocol: "Planet"
 },
 {
   id: "2158",
@@ -16317,7 +16317,7 @@ listedAt: 1650804679
   module: "planet-blue/index.js",
   twitter: "planet_finance",
   listedAt: 1665024139,
-  parentProtocol: "Planet Finance"
+  parentProtocol: "Planet"
 },
 {
   id: "2159",

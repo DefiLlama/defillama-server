@@ -7110,7 +7110,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Planet_Finance_Smart_Contract_Security_Audit_Halborn_v1_1.pdf"
     ],
-    parentProtocol: "Planet Finance"
+    parentProtocol: "Planet"
   },
   {
     id: "462",

@@ -401,6 +401,12 @@ export default {
     "dao-swap": {
         enabled: true
     },
+    "jswap": {
+        enabled: true
+    },
+    "babydogeswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

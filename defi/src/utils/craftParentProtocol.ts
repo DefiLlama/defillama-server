@@ -221,6 +221,7 @@ export default async function craftParentProtocol(
     tokens: formattedTokens,
     tokensInUsd: formattedTokensInUsd,
     tvl: formattedTvl,
+    isParentProtocol: true,
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

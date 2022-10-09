@@ -380,6 +380,33 @@ export default {
     "step-exchange": {
         enabled: true
     },
+     "pegasys": {
+        enabled: true
+    },
+    "crodex": {
+        enabled: true
+    },
+    "dexalot": {
+        enabled: true
+    },
+    "babyswap": {
+        enabled: true
+    },
+    "lifinity": {
+        enabled: true
+    },
+    "vanswap": {
+        enabled: true
+    },
+    "dao-swap": {
+        enabled: true
+    },
+    "jswap": {
+        enabled: true
+    },
+    "babydogeswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

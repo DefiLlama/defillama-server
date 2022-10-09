@@ -4757,8 +4757,8 @@ const data: Protocol[] = [
   {
     id: "343",
     name: "Impermax Finance",
-    address: "0x7b35ce522cb72e4077baeb96cb923a5529764a00",
-    symbol: "IMX",
+    address: "0xf655c8567e0f213e6c634cd2a68d992152161dc6",
+    symbol: "IBEX",
     url: "https://impermax.finance/",
     description:
       "Impermax is a DeFi ecosystem that enables liquidity providers to leverage their LP tokens",
@@ -4766,8 +4766,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/impermax-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "impermax",
-    cmcId: "9532",
+    gecko_id: "impermax-2",
+    cmcId: null,
     category: "Yield",
     chains: ["Ethereum","Polygon","Arbitrum"],
     module: "impermax/index.js",
@@ -7110,7 +7110,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Planet_Finance_Smart_Contract_Security_Audit_Halborn_v1_1.pdf"
     ],
-    parentProtocol: "Planet Finance"
+    parentProtocol: "Planet"
   },
   {
     id: "462",
@@ -15869,10 +15869,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "921",
-    name: "DAO Maker",
+    name: "DAO Maker Vesting",
     address: "0x0f51bb10119727a7e5ea3538074fb341f56b09ad",
     symbol: "DAO",
-    url: "https://daomaker.com/vault",
+    url: "https://daomaker.com/farms-and-vestings",
     description: "DAO Maker creates growth technologies and funding frameworks for startups, while simultaneously reducing risks for investors.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dao-maker.jpg`,
@@ -15895,6 +15895,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://drive.google.com/file/d/1OPanooD8QD13kOx210QTz19RyS8yTj80/view",
     ],
     listedAt: 1637977412,
+    parentProtocol: "DAO Maker"
   },
   {
     id: "922",

@@ -2,7 +2,7 @@ import { getProvider } from "@defillama/sdk/build/general";
 import { lookupBlock } from "@defillama/sdk/build/util/index";
 import type { Chain } from "@defillama/sdk/build/general";
 
-const chainsForBlocks = ["avax", "bsc", "polygon", "xdai", "fantom", "arbitrum"] as Chain[];
+const chainsForBlocks = ["avax", "polygon", "xdai", "fantom", "arbitrum"] as Chain[];
 const blockRetries = 5;
 
 async function getChainBlocks(timestamp: number, chains: Chain[] = chainsForBlocks) {

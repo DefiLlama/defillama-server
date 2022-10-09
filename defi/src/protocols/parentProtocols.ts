@@ -295,16 +295,40 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ribbonfinance",
   },
   {
-    id: "Planet Finance",
-    name: "Planet Finance",
+    id: "Planet",
+    name: "Planet",
     url: "https://app.planet.finance/",
     description:
       "Planet is a decentralized financial protocol consisting of different planets, each their own application, designed to enable anyone to freely activate their capital.",
-    logo: `${baseIconsUrl}/planet-finance.png`,
+    logo: `${baseIconsUrl}/planet.png`,
     gecko_id: "planet-finance",
     cmcId: "10023",
     chains: [],
     twitter: "planet_finance",
+  },
+  {
+    id: "DAO Maker",
+    name: "DAO Maker",
+    url: "https://daomaker.com/",
+    description:
+      "DAO Maker creates growth technologies and funding frameworks for startups, while simultaneously reducing risks for investors.",
+    logo: `${baseIconsUrl}/dao-maker.jpg`,
+    gecko_id: "dao-maker",
+    cmcId: "8420",
+    chains: [],
+    twitter: "TheDaoMaker",
+  },
+  {
+    id: "Morpho",
+    name: "Morpho",
+    url: "https://www.morpho.xyz",
+    description:
+      "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
+    logo: `${baseIconsUrl}/morpho.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MorphoLabs",
   },
 ];
 

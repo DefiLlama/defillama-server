@@ -455,6 +455,8 @@ async function unknownTokens(
   prices.map((p: any, i: number) => {
     if (i % 2 == 0) return;
     if (prices[i] == Infinity || prices[i - 1] == Infinity) return;
+    let confidence = p / prices[i - 1];
+    if (confidence > 0.989) confidence = 0.989;
     addToDBWritesList(
       writes,
       chain,
@@ -464,7 +466,7 @@ async function unknownTokens(
       unknownTokenInfos.symbols[Math.floor(i / 2)].output,
       timestamp,
       "curve-unknown-token",
-      p / prices[i - 1]
+      confidence
     );
   });
 }

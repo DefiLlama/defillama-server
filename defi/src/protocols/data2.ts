@@ -16590,6 +16590,27 @@ listedAt: 1650804679
   twitter: "cakewswap",
   listedAt: 1665365073
 },
+{
+  id: "2171",
+  name: "OHMPOW",
+  address: "ethpow:0x27e921c7390aDBAE8D55b386b4413F231C547a8c",
+  symbol: "OHMW",
+  url: "https://ohmpow.com",
+  description: "The reserve currency of ETHPOW network.",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/ohmpow.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthereumPoW"], 
+  oracles: [], 
+  forkedFrom: ["Olympus DAO"],
+  module: "ohmw/index.js",
+  twitter: "OHMPOWOfficial",
+  listedAt: 1665393008
+},
 ]
 
 export default data2;

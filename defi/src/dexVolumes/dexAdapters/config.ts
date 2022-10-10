@@ -419,6 +419,15 @@ export default {
     "karura-swap": {
         enabled: true
     },
+    "sphynx": {
+        enabled: true
+    },
+    "kuswap": {
+        enabled: true
+    },
+    "paint-swap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

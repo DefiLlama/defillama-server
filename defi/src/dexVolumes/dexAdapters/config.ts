@@ -407,9 +407,6 @@ export default {
     "babydogeswap": {
         enabled: true
     },
-    "step-exchange": {
-        enabled: true
-    },
 } as {
     [name: string]: IVolumesConfig
 }

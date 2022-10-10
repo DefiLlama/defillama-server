@@ -433,11 +433,6 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 122,
   },
-  "SORA": {
-    geckoId: "sora",
-    symbol: "XOR",
-    cmcId: "5802",
-  },
   "smartBCH": {
     geckoId: "bitcoin-cash",
     symbol: "BCH",
@@ -1269,7 +1264,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "fuse":
       return "Fuse"
     case "sora":
-      return "SORA"
+      return "Sora"
     case "smartbch":
       return "smartBCH"
     case "elastos":

@@ -16570,7 +16570,7 @@ listedAt: 1650804679
   listedAt: 1665220470
 },
 {
-  id: "2166",
+  id: "2170",
   name: "CakeWSwap",
   address: "ethpow:0x8a521189BfEDf99b1Dc84BC21571cF8B799DbD4D",
   symbol: "CAKEW",

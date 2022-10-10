@@ -17954,7 +17954,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   name: "USD+",
   address: "polygon:0x236eeC6359fb44CCe8f97E99387aa7F8cd5cdE1f",
   symbol: "USD+",
-  url: "https://ovnstable.io",
+  url: "https://overnight.fi",
   description: "USD+ is USDC that pays yield daily via rebase. USD+ stablecoin can be instantly minted and redeemed to USDC 1:1. USD+ includes 3 components:1.Pegged to USDC 1:12.Yield generating 3.Insurance (soon)",
   chain: "Polygon",
   logo: `${baseIconsUrl}/usd+.png`,

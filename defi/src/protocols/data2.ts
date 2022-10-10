@@ -16569,6 +16569,27 @@ listedAt: 1650804679
                ],
   listedAt: 1665220470
 },
+{
+  id: "2166",
+  name: "CakeWSwap",
+  address: "ethpow:0x8a521189BfEDf99b1Dc84BC21571cF8B799DbD4D",
+  symbol: "CAKEW",
+  url: "https://cakewswap.finance/",
+  description: "CakeWSwap is a decentralized finance (DeFi) application that lets users exchange tokens while also providing liquidity through farming and earning fees. It's a decentralized exchange for transferring ERC20 tokens on EthereumPow first launched in October 2022. Users trade against a liquidity pool in CakeWSwap's automated market maker model and deposit funds into these pools in exchange for liquidity provider tokens, which are then used to fill the pools. These tokens can then be redeemed for a portion of the pool as well as a portion of the trading fees. Users can also farm additional tokens like CAKEW and CAKEW using CakeWSwap or put liquidity provider tokens on the farm and receive CAKEW as a reward.",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/cakewswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthereumPoW"], 
+  oracles: [], 
+  forkedFrom: ["Uniswap"],
+  module: "cakewwap/index.js",
+  twitter: "cakewswap",
+  listedAt: 1665365073
+},
 ]
 
 export default data2;

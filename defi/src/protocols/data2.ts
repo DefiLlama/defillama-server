@@ -16660,7 +16660,9 @@ listedAt: 1650804679
   forkedFrom: ["Compound"],
   module: "quickswap-lending/index.js",
   twitter: "QuickswapDEX",
-  listedAt: 1665495016
+  listedAt: 1665495016,
+  parentProtocol: "Quickswap"
+  
 },
 ]
 

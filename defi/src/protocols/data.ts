@@ -4023,6 +4023,8 @@ const data: Protocol[] = [
     twitter: "QuickswapDEX",
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
     forkedFrom: ["Uniswap"],
+    parentProtocol: "Quickswap"
+    
   },
   {
     id: "307",

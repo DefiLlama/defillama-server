@@ -190,7 +190,7 @@ async function lps(
     let confidence: number =
       coinData.confidence == undefined ? 1 : coinData.confidence;
 
-    if (symbol.includes("null")) return;
+    if (symbol.includes("null") || lpPrice == Infinity) return;
     addToDBWritesList(
       writes,
       chain,

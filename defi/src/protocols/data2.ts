@@ -16664,6 +16664,27 @@ listedAt: 1650804679
   parentProtocol: "Quickswap"
   
 },
+{
+  id: "2174",
+  name: "Dex Finance",
+  address: "bsc:0xf4914E6D97a75f014AcFcF4072f11be5CfFc4cA6",
+  symbol: "dexSHARE",
+  url: "https://www.dexfinance.com/",
+  description: "Dex Finance is a decentralized organization providing an ecosystem of sustainable investment vehicles. Our protocols are designed to empower users by simplifying the advanced trading strategies employed by experienced investors. Core products consist of the Dex Money Market, dexIRA, dexETF and dexVAULTS+ offering multi-layered investment portfolio management with the world's most advanced yield optimizer.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/dex-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "dexshare",
+  cmcId: "20282",
+  category: "Yield Aggregator",
+  chains: ["Binance"], 
+  oracles: [], 
+  forkedFrom: [],
+  module: "dexfinance/index.js",
+  twitter: "DexFinance",
+  audit_links: ["https://www.dexfinance.com/audits/"],
+  listedAt: 1665530503
+},
 ]
-
 export default data2;

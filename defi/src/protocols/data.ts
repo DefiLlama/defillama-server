@@ -4012,7 +4012,7 @@ const data: Protocol[] = [
     url: "https://quickswap.exchange/",
     description: "AMM",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/quickswap.jpg`,
+    logo: `${baseIconsUrl}/quickswap-dex.jpg`,
     audits: "3",
     audit_note: null,
     gecko_id: "quickswap",

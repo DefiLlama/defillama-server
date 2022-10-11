@@ -20969,7 +20969,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: "Trade on-chain, asset settled, American style options for $BTC & $ETH",
   chain: "Solana",
   logo: `${baseIconsUrl}/psyoptions.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "psyoptions",
   cmcId: "16896",
@@ -20977,6 +20977,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Solana"],
   module: "psyoptions/index.js",
   twitter: "PsyOptions",
+  audit_links: ["https://uploads-ssl.webflow.com/62c82c6d2ffe37f2356d8f28/62fd49a04b1b9b62fcf5786f_PUBLIC_RELEASE_PSYOPTIONS.pdf"],
   listedAt: 1641069495,
 },
 {

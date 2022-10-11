@@ -55,7 +55,7 @@
   "dependencies": {
     "@defillama/adapters": "file:./DefiLlama-Adapters",
     "@defillama/sdk": "^2.3.80",
-    "adapters": "file:adapters",
+    "@defillama/adaptors": "file:./adapters",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",
     "dotenv": "^16.0.1",

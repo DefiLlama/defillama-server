@@ -16615,6 +16615,32 @@ listedAt: 1650804679
   twitter: "OHMPOWOfficial",
   listedAt: 1665393008
 },
+{
+  id: "2172",
+  name: "Kleva Protocol",
+  address: "klaytn:0x5fff3a6c16c2208103f318f4713d4d90601a7313",
+  symbol: "KLEVA",
+  url: "https://kleva.io",
+  description: "KLEVA Protocol is the first Leveraged Yield Farming Protocol on KLAYTN, with aim to become the largest Lending Protocol for Leveraged Yield Farmers and Lenders.",
+  chain: "Klaytn",
+  logo: `${baseIconsUrl}/kleva-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Klaytn"], 
+  oracles: [], 
+  forkedFrom: ["Alpaca Finance"],
+  module: "kleva/index.js",
+  twitter: "KLEVA_Protocol",
+  audit_links: [
+                 "https://docs.kleva.io/audit-report/peckshield",
+                 "https://docs.kleva.io/audit-report/sooho",
+                 "https://docs.kleva.io/audit-report/scvsoft"
+               ],
+  listedAt: 1665493642
+},
 ]
 
 export default data2;

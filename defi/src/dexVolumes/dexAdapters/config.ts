@@ -428,6 +428,21 @@ export default {
     "paint-swap": {
         enabled: true
     },
+    "benswap": {
+        enabled: true
+    },
+    "surfswap": {
+        enabled: true
+    },
+    "bogged-finance": {
+        enabled: true
+    },
+    "jetswap": {
+        enabled: true
+    },
+    "saucerswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

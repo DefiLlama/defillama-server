@@ -190,7 +190,7 @@ async function lps(
     let confidence: number =
       coinData.confidence == undefined ? 1 : coinData.confidence;
 
-    if (symbol.includes("null")) return;
+    if (symbol.includes("null") || lpPrice == Infinity) return;
     addToDBWritesList(
       writes,
       chain,
@@ -415,5 +415,6 @@ export default async function getTokenPrices(
   );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
+  let a = writes.filter((w) => w.confidence == Infinity || w.price == Infinity);
   return writes;
 }

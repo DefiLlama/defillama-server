@@ -6440,7 +6440,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "origin-dollar-governance",
     cmcId: "20949",
-    category: "Algo-Stables",
+    category: "Yield Aggregator",
     chains: ["Ethereum"],
     module: "origindollar/index.js",
     twitter: "OriginProtocol",

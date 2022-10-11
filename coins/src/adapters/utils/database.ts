@@ -148,81 +148,90 @@ async function getTokenAndRedirectDataDB(
   chain: string,
   timestamp: number
 ) {
-  // timestamped origin entries
-  let timedDbEntries: any[] = await Promise.all(
-    tokens.map((t: string) => {
-      return getTVLOfRecordClosestToTimestamp(
-        `asset#${chain}:${t.toLowerCase()}`,
-        timestamp,
-        43200 // SEARCHES A 24 HOUR WINDOW
-      );
-    })
-  );
+  let allReads: Read[] = [];
+  const batchSize = 500;
 
-  // current origin entries
-  const latestDbEntries: DbEntry[] = await batchGet(
-    tokens.map((t: string) => ({
-      PK: `asset#${chain}:${t.toLowerCase()}`,
-      SK: 0
-    }))
-  );
-
-  // current redirects
-  const redirects: DbQuery[] = latestDbEntries.map((d: DbEntry) => {
-    const selectedEntries: any[] = timedDbEntries.filter(
-      (t: any) => d.PK == t.PK
+  for (let lower = 0; lower < tokens.length; lower += batchSize) {
+    const upper =
+      lower + batchSize > tokens.length ? tokens.length : lower + batchSize;
+    // timestamped origin entries
+    let timedDbEntries: any[] = await Promise.all(
+      tokens.slice(lower, upper).map((t: string) => {
+        return getTVLOfRecordClosestToTimestamp(
+          `asset#${chain}:${t.toLowerCase()}`,
+          timestamp,
+          43200 // SEARCHES A 24 HOUR WINDOW
+        );
+      })
     );
-    if (!("redirect" in d) && selectedEntries.length == 0) {
-      return { PK: "not a token", SK: 0 };
-    } else if (selectedEntries.length == 0) {
-      return { PK: d.redirect, SK: timestamp };
-    } else {
-      return { PK: selectedEntries[0].redirect, SK: timestamp };
-    }
-  });
 
-  let timedRedirects: any[] = await Promise.all(
-    redirects.map((r: DbQuery) => {
-      return getTVLOfRecordClosestToTimestamp(
-        r.PK,
-        r.SK,
-        43200 // SEARCHES A 24 HOUR WINDOW
+    // current origin entries
+    const latestDbEntries: DbEntry[] = await batchGet(
+      tokens.slice(lower, upper).map((t: string) => ({
+        PK: `asset#${chain}:${t.toLowerCase()}`,
+        SK: 0
+      }))
+    );
+
+    // current redirects
+    const redirects: DbQuery[] = latestDbEntries.map((d: DbEntry) => {
+      const selectedEntries: any[] = timedDbEntries.filter(
+        (t: any) => d.PK == t.PK
       );
-    })
-  );
+      if (selectedEntries.length == 0) {
+        return { PK: d.redirect, SK: timestamp };
+      } else {
+        return { PK: selectedEntries[0].redirect, SK: timestamp };
+      }
+    });
 
-  // aggregate
-  const allResults = timedRedirects.map((tr: any) => {
-    if (tr.PK == undefined) return { redirect: [{ SK: undefined }] };
-    let dbEntry = timedDbEntries.filter((td: any) => tr.PK.includes(td.PK))[0];
-    const latestDbEntry = latestDbEntries.filter(
-      (ld: any) => tr.PK == ld.redirect
-    )[0];
-    if (dbEntry == undefined) {
-      dbEntry = {
-        PK: latestDbEntry.PK,
-        decimals: latestDbEntry.decimals,
-        symbol: latestDbEntry.symbol
+    let timedRedirects: any[] = await Promise.all(
+      redirects.map((r: DbQuery) => {
+        if (r.PK == undefined) return;
+        return getTVLOfRecordClosestToTimestamp(
+          r.PK,
+          r.SK,
+          43200 // SEARCHES A 24 HOUR WINDOW
+        );
+      })
+    );
+
+    // aggregate
+    const allResults: Read[] = timedRedirects.map((tr: any) => {
+      if (tr == undefined || tr.PK == undefined)
+        return { dbEntry: undefined, redirect: [{ SK: undefined }] };
+      let dbEntry = timedDbEntries.filter((td: any) =>
+        tr.PK.includes(td.PK)
+      )[0];
+      const latestDbEntry = latestDbEntries.filter(
+        (ld: any) => tr.PK == ld.redirect
+      )[0];
+      if (dbEntry == undefined) {
+        dbEntry = {
+          PK: latestDbEntry.PK,
+          decimals: latestDbEntry.decimals,
+          symbol: latestDbEntry.symbol
+        };
+      }
+      return {
+        dbEntry,
+        redirect: [tr]
       };
-    }
-    return {
-      dbEntry,
-      redirect: [tr]
-    };
-  });
+    });
 
-  // remove faulty data and return
-  const validResults: any[] = [];
-  for (let i = 0; i < allResults.length; i++) {
-    if (
-      allResults[i].redirect[0].SK != undefined ||
-      allResults[i].dbEntry != undefined
-    ) {
-      validResults.push(allResults[i]);
+    // remove faulty data and return
+    const validResults: Read[] = [];
+    for (let i = 0; i < allResults.length; i++) {
+      if (
+        allResults[i].redirect[0].SK != undefined ||
+        allResults[i].dbEntry != undefined
+      ) {
+        validResults.push(allResults[i]);
+      }
     }
+    allReads.push(...validResults);
   }
-
-  const timestampedResults = aggregateTokenAndRedirectData(validResults);
+  const timestampedResults = aggregateTokenAndRedirectData(allReads);
 
   // if (timestampedResults.length < tokens.length) {
   //   const returnedTokens = timestampedResults.map((t: any) => t.address);

@@ -16384,7 +16384,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null ,
     gecko_id: "jade-protocol" ,
     cmcId: "14938" ,
-    category: "Reserve Currency" ,
+    category: "Staking" ,
     chains: ["Binance"] ,
     module: "jade-protocol/index.js" ,
     twitter: "JadeProtocol" ,

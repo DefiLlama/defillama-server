@@ -177,7 +177,7 @@ async function getTokenAndRedirectDataDB(
     } else if (selectedEntries.length == 0) {
       return { PK: d.redirect, SK: timestamp };
     } else {
-      return { PK: selectedEntries[0].PK, SK: timestamp };
+      return { PK: selectedEntries[0].redirect, SK: timestamp };
     }
   });
 

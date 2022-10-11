@@ -4006,7 +4006,7 @@ const data: Protocol[] = [
 */
   {
     id: "306",
-    name: "Quickswap",
+    name: "Quickswap Dex",
     address: "polygon:0x831753dd7087cac61ab5644b308642cc1c33dc13",
     symbol: "QUICK",
     url: "https://quickswap.exchange/",
@@ -4015,8 +4015,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/quickswap.jpg`,
     audits: "3",
     audit_note: null,
-    gecko_id: "quick",
-    cmcId: "8206",
+    gecko_id: "quickswap",
+    cmcId: "19966",
     category: "Dexes",
     chains: ["Polygon"],
     module: "quickswap/index.js",

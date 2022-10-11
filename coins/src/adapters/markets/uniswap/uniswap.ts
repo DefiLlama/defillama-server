@@ -415,6 +415,5 @@ export default async function getTokenPrices(
   );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
-  let a = writes.filter((w) => w.confidence == Infinity || w.price == Infinity);
   return writes;
 }

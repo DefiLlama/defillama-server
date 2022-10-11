@@ -443,6 +443,12 @@ export default {
     "saucerswap": {
         enabled: true
     },
+     "synthetify": {
+        enabled: true
+    },
+    "pandora": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

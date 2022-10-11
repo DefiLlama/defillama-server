@@ -387,7 +387,7 @@ export default {
         enabled: true
     },
     "dexalot": {
-        enabled: true
+        enabled: false
     },
     "babyswap": {
         enabled: true
@@ -405,6 +405,42 @@ export default {
         enabled: true
     },
     "babydogeswap": {
+        enabled: true
+    },
+    "wigoswap": {
+        enabled: true
+    },
+    "levinswap": {
+        enabled: true
+    },
+    "temple-dao": {
+        enabled: false
+    },
+    "karura-swap": {
+        enabled: true
+    },
+    "sphynx": {
+        enabled: true
+    },
+    "kuswap": {
+        enabled: true
+    },
+    "paint-swap": {
+        enabled: true
+    },
+    "benswap": {
+        enabled: true
+    },
+    "surfswap": {
+        enabled: true
+    },
+    "bogged-finance": {
+        enabled: true
+    },
+    "jetswap": {
+        enabled: true
+    },
+    "saucerswap": {
         enabled: true
     },
 } as {

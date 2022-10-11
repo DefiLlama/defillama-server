@@ -330,6 +330,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MorphoLabs",
   },
+  {
+    id: "Quickswap",
+    name: "Quickswap",
+    url: "https://quickswap.exchange",
+    description:
+      "QuickSwap is a next-gen DEX and Lending for DeFi.",
+    logo: `${baseIconsUrl}/quickswap.jpg`,
+    gecko_id: "quickswap",
+    cmcId: "19966",
+    chains: [],
+    twitter: "QuickswapDEX",
+  },
 ];
 
 export default parentProtocols;

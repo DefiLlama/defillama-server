@@ -343,6 +343,7 @@ async function getConfidenceScores(
     let confidence: number = 0;
     try {
       confidence = r.output[1] / (ratio * swapResults[i + 1].output[1]);
+      if (confidence > 0.989) confidence = 0.989;
     } catch {}
     confidences[r.input.params[1][0].toLowerCase()] = confidence;
   });

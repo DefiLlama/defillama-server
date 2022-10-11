@@ -16641,6 +16641,27 @@ listedAt: 1650804679
                ],
   listedAt: 1665493642
 },
+{
+  id: "2173",
+  name: "Quickswap Lend",
+  address: "polygon:0x831753dd7087cac61ab5644b308642cc1c33dc13",
+  symbol: "QUICK",
+  url: "https://quickswap.exchange/#/lend",
+  description: "With Quickswap Lend, you can maximize your yield, contribute to risk management and create unparalleled opportunities to make the most of DeFi",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/quickswap-lend.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Polygon"], 
+  oracles: [], 
+  forkedFrom: ["Compound"],
+  module: "quickswap-lending/index.js",
+  twitter: "QuickswapDEX",
+  listedAt: 1665495016
+},
 ]
 
 export default data2;

@@ -172,9 +172,7 @@ async function getTokenAndRedirectDataDB(
     const selectedEntries: any[] = timedDbEntries.filter(
       (t: any) => d.PK == t.PK
     );
-    if (!("redirect" in d) && selectedEntries.length == 0) {
-      return { PK: "not a token", SK: 0 };
-    } else if (selectedEntries.length == 0) {
+    if (selectedEntries.length == 0) {
       return { PK: d.redirect, SK: timestamp };
     } else {
       return { PK: selectedEntries[0].redirect, SK: timestamp };
@@ -183,6 +181,7 @@ async function getTokenAndRedirectDataDB(
 
   let timedRedirects: any[] = await Promise.all(
     redirects.map((r: DbQuery) => {
+      if (r.PK == undefined) return;
       return getTVLOfRecordClosestToTimestamp(
         r.PK,
         r.SK,
@@ -193,7 +192,8 @@ async function getTokenAndRedirectDataDB(
 
   // aggregate
   const allResults = timedRedirects.map((tr: any) => {
-    if (tr.PK == undefined) return { redirect: [{ SK: undefined }] };
+    if (tr == undefined || tr.PK == undefined)
+      return { redirect: [{ SK: undefined }] };
     let dbEntry = timedDbEntries.filter((td: any) => tr.PK.includes(td.PK))[0];
     const latestDbEntry = latestDbEntries.filter(
       (ld: any) => tr.PK == ld.redirect

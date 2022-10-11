@@ -9,8 +9,17 @@ type Balances = {
   [symbol: string]: number;
 };
 
+const confidenceThreshold = 0.5;
+const step = 50;
 export default async function (balances: { [address: string]: string }, timestamp: "now" | number, staleCoins:StaleCoins) {
+  staleCoins
   const eth = balances[ethereumAddress];
+
+  Object.keys(balances).map((k) => {
+    balances[k.toLowerCase()] = balances[k];
+    if (k.toLowerCase() != k) delete balances[k];
+  });
+
   if (eth !== undefined) {
     balances[weth] = new BigNumber(balances[weth] ?? 0).plus(eth).toFixed(0);
     delete balances[ethereumAddress];
@@ -38,58 +47,64 @@ export default async function (balances: { [address: string]: string }, timestam
       }
     })
     .filter((item) => item !== undefined) as string[];
+  
   const readRequests = [];
-  for (let i = 0; i < readKeys.length; i += 100) {
-    const body = {
-      "coins": readKeys.slice(i, i + 100),
-    } as any
-    if(timestamp !== "now"){
-      body.timestamp = timestamp;
-    }
+  const burl = "https://coins.llama.fi/prices/";
+  const historical =
+    timestamp == "now" ? "current/" : `historical/${timestamp}/`;
+
+  for (let i = 0; i < readKeys.length; i += step) {
+    const coins = readKeys
+      .slice(i, i + step)
+      .reduce((p, c) => p + `${c},`, "")
+      .slice(0, -1);
     readRequests.push(
-      fetch("https://coins.llama.fi/prices", {
-        method: "POST",
-        body: JSON.stringify(body)
-      }).then((r) => r.json()).then(r=>{
-        return Object.entries(r.coins).map(
-        ([PK, value])=>({
-          ...(value as any),
-          PK
-        })
+      fetch(`${burl}${historical}${coins}`, { method: "GET" }).then((r) =>
+        r.json()
       )
-    })
     );
   }
-  const tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)));
+  
+  const responses: any[] = await Promise.all(readRequests);
+  let tokenData = responses.map((g) => g.coins);
+
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
   const usdTokenBalances = {} as Balances;
-  const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
+
   tokenData.forEach((response) => {
-    if (Math.abs(response.timestamp - now) > 3600*1.2) { // 1.2 hours
-      addStaleCoin(staleCoins, response.PK, response.symbol, response.timestamp);
-    }
-    if (Math.abs(response.timestamp - now) < DAY) {
-      PKsToTokens[response.PK].forEach((address) => {
-        const balance = balances[address];
-        const { price, decimals } = response;
-        let symbol:string, amount:number;
-        if (response.PK.startsWith('coingecko:')) {
-          symbol = address;
-          amount = Number(balance);
-        } else {
-          symbol = (response.symbol as string).toUpperCase();
-          amount = new BigNumber(balance).div(10 ** decimals).toNumber();
-        }
-        const usdAmount = amount * price;
-        tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
-        usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
-        usdTvl += usdAmount;
-      });
-    } else {
-      console.error(`Data for ${response.PK} is stale`);
-    }
+    Object.keys(response).forEach((address) => {
+      const data = response[address];
+
+      const balance = parseInt(
+        balances[
+          address.startsWith("ethereum:")
+            ? address.substring(9)
+            : address.startsWith("coingecko:")
+            ? address.substring(10)
+            : address
+        ]
+      );
+
+      if (data == undefined) tokenBalances[`UNKNOWN (${address})`] = balance;
+      if ("confidence" in data && data.confidence < confidenceThreshold) return;
+
+      let amount, usdAmount;
+      if (address.startsWith("coingecko:")) {
+        amount = Number(balance);
+      } else {
+        amount = new BigNumber(balance).div(10 ** data.decimals).toNumber();
+      }
+
+      usdAmount = amount * data.price;
+
+      tokenBalances[data.symbol] = (tokenBalances[data.symbol] ?? 0) + amount;
+      usdTokenBalances[data.symbol] =
+        (usdTokenBalances[data.symbol] ?? 0) + usdAmount;
+      usdTvl += usdAmount;
+    });
   });
+
   return {
     usdTvl,
     tokenBalances,

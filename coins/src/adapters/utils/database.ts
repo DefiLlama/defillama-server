@@ -114,27 +114,34 @@ async function getTokenAndRedirectDataCurrent(
   chain: string,
   timestamp: number
 ) {
-  const dbEntries: DbEntry[] = await batchGet(
-    tokens.map((t: string) => ({
-      PK: `asset#${chain}:${t.toLowerCase()}`,
-      SK: timestamp
-    }))
-  );
-  const redirects: DbQuery[] = [];
-  for (let i = 0; i < dbEntries.length; i++) {
-    if (!("redirect" in dbEntries[i])) continue;
-    redirects.push({
-      PK: dbEntries[i].redirect,
-      SK: timestamp
-    });
-  }
-  const redirectResults: Redirect[] = await batchGet(redirects);
+  let allReads: Read[] = [];
+  const batchSize = 500;
+  for (let lower = 0; lower < tokens.length; lower += batchSize) {
+    const upper =
+      lower + batchSize > tokens.length ? tokens.length : lower + batchSize;
+    const dbEntries: DbEntry[] = await batchGet(
+      tokens.slice(lower, upper).map((t: string) => ({
+        PK: `asset#${chain}:${t.toLowerCase()}`,
+        SK: timestamp
+      }))
+    );
+    const redirects: DbQuery[] = [];
+    for (let i = 0; i < dbEntries.length; i++) {
+      if (!("redirect" in dbEntries[i])) continue;
+      redirects.push({
+        PK: dbEntries[i].redirect,
+        SK: timestamp
+      });
+    }
+    const redirectResults: Redirect[] = await batchGet(redirects);
 
-  const reads: Read[] = dbEntries.map((d) => ({
-    dbEntry: d,
-    redirect: redirectResults.filter((r) => r.PK == d.redirect)
-  }));
-  return aggregateTokenAndRedirectData(reads);
+    const reads: Read[] = dbEntries.map((d) => ({
+      dbEntry: d,
+      redirect: redirectResults.filter((r) => r.PK == d.redirect)
+    }));
+    allReads.push(...reads);
+  }
+  return aggregateTokenAndRedirectData(allReads);
 }
 async function getTokenAndRedirectDataDB(
   tokens: string[],

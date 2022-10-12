@@ -22,13 +22,12 @@ export async function getTokenAndRedirectData(
   if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
     return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
   }
-  if (timestamp == 0) {
-    return await getTokenAndRedirectDataCurrent(tokens, chain, 0);
-  } else {
-    return await getTokenAndRedirectDataDB(tokens, chain, timestamp);
-  }
+  return await getTokenAndRedirectDataDB(
+    tokens,
+    chain,
+    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp
+  );
 }
-
 export function addToDBWritesList(
   writes: Write[],
   chain: string,
@@ -109,40 +108,6 @@ async function getTokenAndRedirectDataFromAPI(
     return data;
   });
 }
-async function getTokenAndRedirectDataCurrent(
-  tokens: string[],
-  chain: string,
-  timestamp: number
-) {
-  let allReads: Read[] = [];
-  const batchSize = 500;
-  for (let lower = 0; lower < tokens.length; lower += batchSize) {
-    const upper =
-      lower + batchSize > tokens.length ? tokens.length : lower + batchSize;
-    const dbEntries: DbEntry[] = await batchGet(
-      tokens.slice(lower, upper).map((t: string) => ({
-        PK: `asset#${chain}:${t.toLowerCase()}`,
-        SK: timestamp
-      }))
-    );
-    const redirects: DbQuery[] = [];
-    for (let i = 0; i < dbEntries.length; i++) {
-      if (!("redirect" in dbEntries[i])) continue;
-      redirects.push({
-        PK: dbEntries[i].redirect,
-        SK: timestamp
-      });
-    }
-    const redirectResults: Redirect[] = await batchGet(redirects);
-
-    const reads: Read[] = dbEntries.map((d) => ({
-      dbEntry: d,
-      redirect: redirectResults.filter((r) => r.PK == d.redirect)
-    }));
-    allReads.push(...reads);
-  }
-  return aggregateTokenAndRedirectData(allReads);
-}
 async function getTokenAndRedirectDataDB(
   tokens: string[],
   chain: string,
@@ -165,7 +130,7 @@ async function getTokenAndRedirectDataDB(
       })
     );
 
-    // current origin entries
+    // current origin entries, for current redirects
     const latestDbEntries: DbEntry[] = await batchGet(
       tokens.slice(lower, upper).map((t: string) => ({
         PK: `asset#${chain}:${t.toLowerCase()}`,
@@ -173,18 +138,19 @@ async function getTokenAndRedirectDataDB(
       }))
     );
 
-    // current redirects
+    // current redirect links
     const redirects: DbQuery[] = latestDbEntries.map((d: DbEntry) => {
       const selectedEntries: any[] = timedDbEntries.filter(
         (t: any) => d.PK == t.PK
       );
       if (selectedEntries.length == 0) {
-        return { PK: d.redirect, SK: timestamp };
+        return { PK: d.redirect, SK: d.SK };
       } else {
-        return { PK: selectedEntries[0].redirect, SK: timestamp };
+        return { PK: selectedEntries[0].redirect, SK: selectedEntries[0].SK };
       }
     });
 
+    // timed redirect data
     let timedRedirects: any[] = await Promise.all(
       redirects.map((r: DbQuery) => {
         if (r.PK == undefined) return;
@@ -197,38 +163,11 @@ async function getTokenAndRedirectDataDB(
     );
 
     // aggregate
-    const allResults: Read[] = timedRedirects.map((tr: any) => {
-      if (tr == undefined || tr.PK == undefined)
-        return { dbEntry: undefined, redirect: [{ SK: undefined }] };
-      let dbEntry = timedDbEntries.filter((td: any) =>
-        tr.PK.includes(td.PK)
-      )[0];
-      const latestDbEntry = latestDbEntries.filter(
-        (ld: any) => tr.PK == ld.redirect
-      )[0];
-      if (dbEntry == undefined) {
-        dbEntry = {
-          PK: latestDbEntry.PK,
-          decimals: latestDbEntry.decimals,
-          symbol: latestDbEntry.symbol
-        };
-      }
-      return {
-        dbEntry,
-        redirect: [tr]
-      };
+    let validResults: Read[] = latestDbEntries.map((ld: DbEntry, i: number) => {
+      if (timedRedirects[i] == undefined) return { dbEntry: ld, redirect: [] };
+      return { dbEntry: ld, redirect: [timedRedirects[i]] };
     });
 
-    // remove faulty data and return
-    const validResults: Read[] = [];
-    for (let i = 0; i < allResults.length; i++) {
-      if (
-        allResults[i].redirect[0].SK != undefined ||
-        allResults[i].dbEntry != undefined
-      ) {
-        validResults.push(allResults[i]);
-      }
-    }
     allReads.push(...validResults);
   }
   const timestampedResults = aggregateTokenAndRedirectData(allReads);

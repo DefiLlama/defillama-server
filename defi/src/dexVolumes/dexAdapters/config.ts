@@ -458,6 +458,9 @@ export default {
     "photonswap-finance": {
         enabled: true
     },
+    "alita-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

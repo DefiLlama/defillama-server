@@ -16733,5 +16733,30 @@ listedAt: 1650804679
   audit_links: ["https://docsend.com/view/42a2ixu3ey6zu3nx"],
   listedAt: 1665568679
 },
+{
+  id: "2177",
+  name: "Fortress Loans",
+  address: "bsc:0x4437743ac02957068995c48e08465e0ee1769fbe",
+  symbol: "FTS",
+  url: "https://fortress.loans",
+  description: "Fortress Loans is a Decentralized Marketplace For Lenders And Borrowers With Borderless Stablecoins.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/fortress-loans.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "fortress",
+  cmcId: "9592",
+  category: "Lending",
+  chains: ["Binance"], 
+  oracles: ["Chainlink"], 
+  forkedFrom: ["Compound"],
+  module: "fortress-lending/index.js",
+  twitter: "Fortressloans",
+  audit_links: [
+                  "https://fortress.loans/audit_etherautherity.pdf",
+                  "https://fortress.loans/audit_hash0x.pdf"
+               ],
+  listedAt: 1665582346
+},
 ]
 export default data2;

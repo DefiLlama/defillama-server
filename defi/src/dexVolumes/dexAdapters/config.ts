@@ -414,7 +414,7 @@ export default {
         enabled: true
     },
     "temple-dao": {
-        enabled: false
+        enabled: true
     },
     "karura-swap": {
         enabled: true
@@ -447,9 +447,6 @@ export default {
         enabled: true
     },
     "pandora": {
-        enabled: true
-    },
-    "temple-dao": {
         enabled: true
     },
 } as {

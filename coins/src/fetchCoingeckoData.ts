@@ -80,11 +80,19 @@ async function getSymbolAndDecimals(tokenAddress: string, chain: string) {
       symbol: token.symbol,
       decimals: Number(token.decimals)
     };
+  } else if (!tokenAddress.startsWith(`0x`)) {
+    throw new Error(
+      `Token ${chain}:${tokenAddress} is not on solana or EVM so we cant get decimal data yet`
+    );
   } else {
-    return {
-      symbol: (await symbol(tokenAddress, chain as any)).output,
-      decimals: Number((await decimals(tokenAddress, chain as any)).output)
-    };
+    try {
+      return {
+        symbol: (await symbol(tokenAddress, chain as any)).output,
+        decimals: Number((await decimals(tokenAddress, chain as any)).output)
+      };
+    } catch (e) {
+      throw new Error(`Token ${chain}:${tokenAddress} is f'd`);
+    }
   }
 }
 

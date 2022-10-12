@@ -443,10 +443,16 @@ export default {
     "saucerswap": {
         enabled: true
     },
-     "synthetify": {
+    "synthetify": {
         enabled: true
     },
     "pandora": {
+        enabled: true
+    },
+    "paycash": {
+        enabled: true
+    },
+    "soy-finance": {
         enabled: true
     },
 } as {

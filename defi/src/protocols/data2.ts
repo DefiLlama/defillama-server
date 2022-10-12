@@ -8563,7 +8563,7 @@ listedAt: 1650804679
   description: "Metavault.Trade is a new kind of Decentralised Exchange, designed to provide a large range of trading features and very deep liquidity on many large cap crypto assets. Traders can use it in two ways: Spot trading, with swaps and limit orders. Perpetual futures trading with up to 30x leverage on short and long positions. Metavault.Trade aims to become the go-to solution for traders who want to stay in control of their funds at all times without sharing their personal data.",
   chain: "Polygon",
   logo: `${baseIconsUrl}/metavault.trade.png`,
-  audits: "0",
+  audits: "1",
   audit_note: null,
   gecko_id: "metavault-trade",
   cmcId: "19973",
@@ -8573,6 +8573,7 @@ listedAt: 1650804679
   forkedFrom: ["GMX"],
   module: "metavault.trade/index.js",
   twitter: "MetavaultTRADE",
+  audit_links: ["https://github.com/metavaultorg/trade-contracts/blob/main/Metavault.Trade_Full_Smart_Contract_Security_Audit.pdf"],
   listedAt: 1654203519
 },
 {

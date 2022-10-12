@@ -7232,7 +7232,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "468",
-    name: "Trader Joe",
+    name: "Trader Joe DEX",
     address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
     symbol: "JOE",
     url: "https://www.traderjoexyz.com",
@@ -7241,14 +7241,15 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/trader-joe.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "joe",
-    cmcId: "11396",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Avalanche"],
     module: "traderjoe/index.js",
     audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
     twitter: "traderjoe_xyz",
-    forkedFrom:["Uniswap", "Compound"]
+    forkedFrom:["Uniswap", "Compound"],
+    parentProtocol: "Trader Joe"
   },
   {
     id: "469",

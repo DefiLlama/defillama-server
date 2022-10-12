@@ -16779,5 +16779,27 @@ listedAt: 1650804679
   listedAt: 1665606253,
   parentProtocol: "Temple DAO"
 },
+{
+  id: "468",
+  name: "Trader Joe Lend",
+  address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
+  symbol: "JOE",
+  url: "https://traderjoexyz.com/lending",
+  description: "Trader Joe is your one-stop decentralized trading platform on the Avalanche network.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/trader-joe.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Avalanche"],
+  module: "traderjoe/index.js",
+  audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
+  twitter: "traderjoe_xyz",
+  forkedFrom:["Compound"],
+  parentProtocol: "Trader Joe",
+  listedAt: 1665614545
+},
 ]
 export default data2;

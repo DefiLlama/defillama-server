@@ -366,6 +366,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "templedao",
   },
+  {
+    id: "Trader Joe",
+    name: "Trader Joe",
+    url: "https://www.traderjoexyz.com",
+    description:
+      "Trader Joe is your one-stop decentralized trading platform on the Avalanche network.",
+    logo: `${baseIconsUrl}/trader-joe.png`,
+    gecko_id: "joe",
+    cmcId: "11396",
+    chains: [],
+    twitter: "traderjoe_xyz",
+  },
 ];
 
 export default parentProtocols;

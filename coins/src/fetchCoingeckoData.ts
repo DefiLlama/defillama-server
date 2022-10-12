@@ -82,7 +82,7 @@ async function getSymbolAndDecimals(tokenAddress: string, chain: string) {
     };
   } else if (!tokenAddress.startsWith(`0x`)) {
     throw new Error(
-      `Token ${chain}:${tokenAddress} is not on solana or EVM so we cant get decimal data yet`
+      `Token ${chain}:${tokenAddress} is not on solana or EVM so we cant get token data yet`
     );
   } else {
     try {
@@ -91,7 +91,9 @@ async function getSymbolAndDecimals(tokenAddress: string, chain: string) {
         decimals: Number((await decimals(tokenAddress, chain as any)).output)
       };
     } catch (e) {
-      throw new Error(`Token ${chain}:${tokenAddress} is f'd`);
+      throw new Error(
+        `ERC20 methods aren't working for token ${chain}:${tokenAddress}`
+      );
     }
   }
 }

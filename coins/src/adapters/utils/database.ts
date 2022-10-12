@@ -195,6 +195,7 @@ async function getTokenAndRedirectDataDB(
   return timestampedResults;
 }
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
+  if (allWrites.length < 2 && allWrites[0] == undefined) return [];
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
 

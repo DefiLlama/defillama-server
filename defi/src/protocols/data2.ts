@@ -3388,7 +3388,7 @@ const data2: Protocol[] =  [
     "https://docsend.com/view/2bif3vfinpv657mh"
  ],
   listedAt: 1647667685,
-  parentProtocol: "iZUMi Finance"
+  parentProtocol: "iZUMI Finance"
 },
 {
   id: "1564",
@@ -10358,7 +10358,7 @@ listedAt: 1650804679
                  "https://docsend.com/view/2bif3vfinpv657mh",
                ],
   listedAt: 1657098632,
-  parentProtocol: "iZUMi Finance"
+  parentProtocol: "iZUMI Finance"
 },
 {
   id: "1884",

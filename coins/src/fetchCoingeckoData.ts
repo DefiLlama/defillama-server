@@ -32,6 +32,7 @@ interface CoingeckoResponse {
   [cgId: string]: {
     usd: number;
     usd_market_cap: number;
+    last_updated_at: number;
   };
 }
 
@@ -54,6 +55,22 @@ function storeCoinData(
         mcap: data.usd_market_cap,
         timestamp,
         symbol: idToSymbol[cgId].toUpperCase(),
+        confidence: 0.99
+      })),
+    false
+  );
+}
+
+function storeHistoricalCoinData(
+  coinData: CoingeckoResponse,
+) {
+  return batchWrite(
+    Object.entries(coinData)
+      .filter((c) => c[1]?.usd !== undefined)
+      .map(([cgId, data]) => ({
+        SK: data.last_updated_at,
+        PK: cgPK(cgId),
+        price: data.usd,
         confidence: 0.99
       })),
     false
@@ -103,7 +120,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinData = await retryCoingeckoRequest(
     `https://api.coingecko.com/api/v3/simple/price?ids=${coinIds.join(
       ","
-    )}&vs_currencies=usd&include_market_cap=true`,
+    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true`,
     10
   );
   const idToSymbol = {} as IdToSymbol;
@@ -117,6 +134,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   });
   const timestamp = getCurrentUnixTimestamp();
   await storeCoinData(timestamp, coinData, idToSymbol);
+  await storeHistoricalCoinData(coinData);
   await Promise.all(
     coins.map((coin) =>
       iterateOverPlatforms(coin, async (PK, tokenAddress, chain) => {

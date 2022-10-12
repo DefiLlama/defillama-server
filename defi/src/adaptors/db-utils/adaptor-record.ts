@@ -13,10 +13,12 @@ export enum AdaptorRecordType {
     dailyRevenueRecord = "dr",
 }
 
+export interface IRecordAdapterRecordChainData {
+    [protocolVersion: string]: number | string,
+}
+
 export interface IRecordAdaptorRecordData {
-    [chain: string]: {
-        [protocolVersion: string]: number | string,
-    } | number
+    [chain: string]: IRecordAdapterRecordChainData | number
 }
 
 export interface RawRecordMap {

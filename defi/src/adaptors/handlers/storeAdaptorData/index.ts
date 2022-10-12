@@ -3,7 +3,7 @@ import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import { ChainBlocks, Adapter, AdapterType, BaseAdapter } from "@defillama/adaptors/adapters/types";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
-import runAdapter, { getFulfilledResults, getRejectedResults, IRunAdapterResponseFulfilled, IRunAdapterResponseRejected } from "@defillama/adaptors/adapters/utils/runAdapter";
+import runAdapter, {  } from "@defillama/adaptors/adapters/utils/runAdapter";
 import { getBlock } from "@defillama/adaptors/helpers/getBlock";
 import { ProtocolAdaptor } from "../../data/types";
 import { Chain } from "@defillama/sdk/build/general";
@@ -85,6 +85,7 @@ export const handler = async (event: IHandlerEvent) => {
         const fulfilledResults = getFulfilledResults(runAdapterRes)
         processFulfilledPromises(fulfilledResults, rawRecords, version, KEYS_TO_STORE)
         const rejectedResults = getRejectedResults(runAdapterRes)
+        // Make sure rejected ones are also included in rawRecords
         processRejectedPromises(rejectedResults, rawRecords, module, KEYS_TO_STORE)
       }
 

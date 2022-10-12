@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
+import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 
 import { calcNdChange, generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getSummaryByProtocolVersion, IChartData, IChartDataByDex, IGeneralStats, sumAllVolumes } from "../../utils/volumeCalcs";
@@ -60,7 +60,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const { importModule } = adaptorsData
 
     let prevDayTime = 0
-    const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled).map<Promise<ProtocolAdaptorSummary>>(async (adapter) => {
+    const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled && va.name === 'PancakeSwap').map<Promise<ProtocolAdaptorSummary>>(async (adapter) => {
         try {
             const moduleAdapter: Adapter = importModule(adapter.module).default
             const chainsSummary = getChainByProtocolVersion(moduleAdapter, chainFilter)
@@ -70,7 +70,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
 
             // Process only volumes with a specific chain
-            adaptorRecords = adaptorRecords.map(v => v.getCleanAdaptorRecord(chainFilter)).filter(v => v !== null) as AdaptorRecord[]
+            //adaptorRecords = adaptorRecords.map(v => v.getCleanAdaptorRecord(chainFilter)).filter(v => v !== null) as AdaptorRecord[]
 
             if (adaptorRecords.length === 0) throw new Error(`${adapter.name} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
 
@@ -78,40 +78,91 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
              * Inject data
              */
 
-            const firstDataTimestamp = adaptorRecords[0].timestamp
-            adaptorRecords.reduce((acc, adaptorRecord) => {
+            adaptorRecords = (adaptorRecords.reduce((acc, adaptorRecord, currentIndex, array) => {
                 const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter)
-                if (cleanRecord === null) return acc
-                acc.lastDataRecord = cleanRecord
-
+                const generatedData = {} as IRecordAdaptorRecordData
+                const timestamp = cleanRecord?.timestamp ?? acc.lastDataRecord.timestamp + ONE_DAY_IN_SECONDS
+                console.log("->", cleanRecord!==null?formatTimestampAsDate(String(cleanRecord.timestamp)) : `no date but ${formatTimestampAsDate(String(timestamp))}` )
+                adapter.chains.forEach(chain => {
+                    if (cleanRecord === null && !acc.lastDataRecord.data[chain]) {
+                        return
+                    }
+                    else if (cleanRecord !== null && cleanRecord.data[chain]) {
+                        generatedData[chain] = cleanRecord.data[chain]
+                        if (acc.lastDataRecord.timestamp != cleanRecord.timestamp)
+                            acc.lastDataRecord = cleanRecord
+                    }
+                    else {
+                        if (acc.nextDataRecord[chain])
+                        console.log("next->", formatTimestampAsDate(String(acc.nextDataRecord[chain].timestamp)))
+                        if (!acc.nextDataRecord[chain] || acc.nextDataRecord[chain].timestamp <= acc.lastDataRecord.timestamp) {
+                            for (let i = currentIndex; i < array.length; i++) {
+                                console.log("enters here")
+                                const cR = array[currentIndex + 1].getCleanAdaptorRecord(chainFilter)
+                                if (cR !== null) {
+                                    console.log("break", cR)
+                                    acc.nextDataRecord[chain] = cR
+                                    break
+                                }
+                            }
+                        }
+                        console.log("continues...")
+                        if (acc.lastDataRecord && acc.nextDataRecord) {
+                            console.log("hiii", acc.lastDataRecord, acc.nextDataRecord[chain])
+                            const nGaps = (acc.nextDataRecord[chain].timestamp - acc.lastDataRecord.timestamp) / ONE_DAY_IN_SECONDS
+                            generatedData[chain] = Object.entries(acc.lastDataRecord.data[chain]).reduce((ac, [protV, value]) => {
+                                const nextValue = acc.nextDataRecord[chain].data[chain]
+                                if (typeof nextValue === 'number') return ac
+                                ac[protV] = +value + ((+nextValue[protV] - +value) / nGaps)
+                                return ac
+                            }, {} as IRecordAdapterRecordChainData)
+                            console.log(generatedData)
+                        }
+                    }
+                })
+                const newGen = new AdaptorRecord(
+                    acc.lastDataRecord.type,
+                    acc.lastDataRecord.adaptorId,
+                    timestamp,
+                    generatedData
+                )
+                acc.lastDataRecord = newGen
+                acc.adaptorRecords.push(newGen)
                 return acc
-            }, {} as {
+            }, {
+                adaptorRecords: [] as AdaptorRecord[],
+                lastDataRecord: adaptorRecords[0],
+                nextDataRecord: {}
+            } as {
                 lastDataRecord: AdaptorRecord
-                nextDataRecord: AdaptorRecord
+                nextDataRecord: { [chain: string]: AdaptorRecord }
                 adaptorRecords: AdaptorRecord[]
-            })
+            })).adaptorRecords
 
             // End inject data
+            /* for (const v of adaptorRecords) {
+                console.log(formatTimestampAsDate(String(v.timestamp)), v.data)
+            } */
 
-            /*             // Return last available data. Ideally last day data, if not, prevents 0 volume values until data is updated or fixed
-                        let prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
-                        let prevDayVolume = adaptorRecords[adaptorRecords.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
-                        if (prevDayTimestamp !== prevDayVolume.timestamp && !adapter.disabled) {
-                            if (enableAlerts)
-                                await sendDiscordAlert(`Volume not updated (using old data...)\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
-                            // console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
-                        }
-            
-                        if ((prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * MAX_OUTDATED_DAYS) && !adapter.disabled) {
-                            if (enableAlerts)
-                                await sendDiscordAlert(`${adapter.name} has ${MAX_OUTDATED_DAYS} days old data... Not including in the response`)
-                            throw new Error(`${adapter.name} has ${(Math.abs(prevDayVolume.timestamp - prevDayTimestamp)) / (60 * 60 * 24)} days old data... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
-                        }
-            
-                        if (!adapter.disabled)
-                            prevDayTimestamp = prevDayVolume.timestamp
-            
-                        if (prevDayTime < prevDayTimestamp) prevDayTime = prevDayTimestamp */
+            // Return last available data. Ideally last day data, if not, prevents 0 volume values until data is updated or fixed
+            let prevDayTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
+            let prevDayVolume = adaptorRecords[adaptorRecords.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
+            if (prevDayTimestamp !== prevDayVolume.timestamp && !adapter.disabled) {
+                if (enableAlerts)
+                    await sendDiscordAlert(`Volume not updated (using old data...)\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
+                // console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
+            }
+
+            if ((prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * MAX_OUTDATED_DAYS) && !adapter.disabled) {
+                if (enableAlerts)
+                    await sendDiscordAlert(`${adapter.name} has ${MAX_OUTDATED_DAYS} days old data... Not including in the response`)
+                throw new Error(`${adapter.name} has ${(Math.abs(prevDayVolume.timestamp - prevDayTimestamp)) / (60 * 60 * 24)} days old data... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
+            }
+
+            if (!adapter.disabled)
+                prevDayTimestamp = prevDayVolume.timestamp
+
+            if (prevDayTime < prevDayTimestamp) prevDayTime = prevDayTimestamp
 
             const change_1d = calcNdChange(adaptorRecords, 1, prevDayTimestamp)
             if (adaptorRecords.length !== 1 && (!change_1d || change_1d && (change_1d < -99 || change_1d > 10000)) && change_1d !== null) {

@@ -449,6 +449,9 @@ export default {
     "pandora": {
         enabled: true
     },
+    "temple-dao": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

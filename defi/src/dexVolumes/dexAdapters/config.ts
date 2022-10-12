@@ -461,6 +461,9 @@ export default {
     "alita-finance": {
         enabled: true
     },
+    "unifi": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

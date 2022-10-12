@@ -342,6 +342,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "QuickswapDEX",
   },
+  {
+    id: "iZUMI Finance",
+    name: "iZUMI Finance",
+    url: "https://izumi.finance/home",
+    description:
+      "Liquidity Redefined - A multi-chain DeFi protocol providing One-Stop Liquidity as a Service (LaaS).",
+    logo: `${baseIconsUrl}/izumi finance.png`,
+    gecko_id: "izumi-finance",
+    cmcId: "16305",
+    chains: [],
+    twitter: "izumi_Finance",
+  },
 ];
 
 export default parentProtocols;

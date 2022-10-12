@@ -354,6 +354,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "izumi_Finance",
   },
+  {
+    id: "Temple DAO",
+    name: "Temple DAO",
+    url: "https://www.templedao.link",
+    description:
+      "The TempleDAO protocol aims to provide DeFi users with a safe haven where they can be sheltered from crypto market volatility while benefiting from a set of investment opportunities offering high yields and steady price appreciation",
+    logo: `${baseIconsUrl}/temple-dao.png`,
+    gecko_id: "temple",
+    cmcId: "16052",
+    chains: [],
+    twitter: "templedao",
+  },
 ];
 
 export default parentProtocols;

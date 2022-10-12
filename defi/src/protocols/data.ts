@@ -14930,7 +14930,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "875",
-  name: "Temple DAO",
+  name: "TempleDAO",
   address: "0x470ebf5f030ed85fc1ed4c2d36b9dd02e77cf1b7",
   symbol: "TEMPLE",
   url: "https://www.templedao.link",
@@ -14939,13 +14939,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   logo: `${baseIconsUrl}/temple-dao.png`,
   audits: "0",
   audit_note: null,
-  gecko_id: "temple",
-  cmcId: "16052",
+  gecko_id: null,
+  cmcId: null,
   category: "Reserve Currency",
   chains: ["Ethereum"],
   module: "templedao/index.js",
   twitter: "templedao",
   listedAt: 1637376751,
+  parentProtocol: "Temple DAO"
 },
 {
   id: "876",

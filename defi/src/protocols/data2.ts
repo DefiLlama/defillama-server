@@ -16759,5 +16759,25 @@ listedAt: 1650804679
                ],
   listedAt: 1665582346
 },
+{
+  id: "2178",
+  name: "TempleDAO Trade",
+  address: "0x470ebf5f030ed85fc1ed4c2d36b9dd02e77cf1b7",
+  symbol: "TEMPLE",
+  url: "https://templedao.link/dapp/trade",
+  description: "$TEMPLE can be purchased and sold from our own AMM under the Trade page",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/temple-dao.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Ethereum"],
+  module: "templedao-trade/index.js",
+  twitter: "templedao",
+  listedAt: 1665606253,
+  parentProtocol: "Temple DAO"
+},
 ]
 export default data2;

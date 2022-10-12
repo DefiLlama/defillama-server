@@ -22,11 +22,11 @@ export async function getTokenAndRedirectData(
   if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
     return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
   }
-  return await getTokenAndRedirectDataDB(
-    tokens,
-    chain,
-    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp
-  );
+  if (timestamp == 0) {
+    return await getTokenAndRedirectDataCurrent(tokens, chain, 0);
+  } else {
+    return await getTokenAndRedirectDataDB(tokens, chain, timestamp);
+  }
 }
 
 export function addToDBWritesList(

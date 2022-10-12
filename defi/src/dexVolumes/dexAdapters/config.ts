@@ -455,6 +455,9 @@ export default {
     "soy-finance": {
         enabled: true
     },
+    "photonswap-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

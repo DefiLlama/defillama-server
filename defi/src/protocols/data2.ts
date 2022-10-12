@@ -16794,7 +16794,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Lending",
   chains: ["Avalanche"],
-  module: "traderjoe/index.js",
+  module: "traderjoe-lend/index.js",
   audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
   twitter: "traderjoe_xyz",
   forkedFrom:["Compound"],

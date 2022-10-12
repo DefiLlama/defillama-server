@@ -464,6 +464,9 @@ export default {
     "unifi": {
         enabled: true
     },
+    "wineryswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

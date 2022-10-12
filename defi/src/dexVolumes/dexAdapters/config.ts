@@ -413,7 +413,7 @@ export default {
     "levinswap": {
         enabled: true
     },
-    "temple-dao": {
+    "templedao-trade": {
         enabled: true
     },
     "karura-swap": {

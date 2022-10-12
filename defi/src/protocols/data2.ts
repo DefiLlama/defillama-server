@@ -16780,7 +16780,7 @@ listedAt: 1650804679
   parentProtocol: "Temple DAO"
 },
 {
-  id: "468",
+  id: "2179",
   name: "Trader Joe Lend",
   address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
   symbol: "JOE",

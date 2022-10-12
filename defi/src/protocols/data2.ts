@@ -15407,7 +15407,7 @@ listedAt: 1650804679
     "Open-source, decentralized exchange infrastructure that enables the exchange of tokenized assets on multiple blockchains.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/0x.png`,
-  audits: "",
+  audits: "0",
   audit_note: null,
   gecko_id: null,
   cmcId: null,

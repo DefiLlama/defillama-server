@@ -2,7 +2,7 @@ import adapters from "./adapters/index";
 import { batchWrite } from "./utils/shared/dynamodb";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 
-const step = 5000;
+const step = 2000;
 export default async function handler(event: any) {
   const a = Object.entries(adapters);
   const timestamp = 0;

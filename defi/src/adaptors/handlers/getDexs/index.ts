@@ -12,6 +12,7 @@ import { Adapter, AdapterType } from "@defillama/adaptors/adapters/types";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import { IJSON, ProtocolAdaptor } from "../../data/types";
 import loadAdaptorsData from "../../data"
+import generateCleanRecords from "../helpers/generateCleanRecords";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart: IChartData,
@@ -60,7 +61,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const { importModule } = adaptorsData
 
     let prevDayTime = 0
-    const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled && va.name === 'PancakeSwap').map<Promise<ProtocolAdaptorSummary>>(async (adapter) => {
+    const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled && va.name === 'Uniswap').map<Promise<ProtocolAdaptorSummary>>(async (adapter) => {
         try {
             const moduleAdapter: Adapter = importModule(adapter.module).default
             const chainsSummary = getChainByProtocolVersion(moduleAdapter, chainFilter)
@@ -78,66 +79,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
              * Inject data
              */
 
-            adaptorRecords = (adaptorRecords.reduce((acc, adaptorRecord, currentIndex, array) => {
-                const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter)
-                const generatedData = {} as IRecordAdaptorRecordData
-                const timestamp = cleanRecord?.timestamp ?? acc.lastDataRecord.timestamp + ONE_DAY_IN_SECONDS
-                console.log("->", cleanRecord!==null?formatTimestampAsDate(String(cleanRecord.timestamp)) : `no date but ${formatTimestampAsDate(String(timestamp))}` )
-                adapter.chains.forEach(chain => {
-                    if (cleanRecord === null && !acc.lastDataRecord.data[chain]) {
-                        return
-                    }
-                    else if (cleanRecord !== null && cleanRecord.data[chain]) {
-                        generatedData[chain] = cleanRecord.data[chain]
-                        if (acc.lastDataRecord.timestamp != cleanRecord.timestamp)
-                            acc.lastDataRecord = cleanRecord
-                    }
-                    else {
-                        if (acc.nextDataRecord[chain])
-                        console.log("next->", formatTimestampAsDate(String(acc.nextDataRecord[chain].timestamp)))
-                        if (!acc.nextDataRecord[chain] || acc.nextDataRecord[chain].timestamp <= acc.lastDataRecord.timestamp) {
-                            for (let i = currentIndex; i < array.length; i++) {
-                                console.log("enters here")
-                                const cR = array[currentIndex + 1].getCleanAdaptorRecord(chainFilter)
-                                if (cR !== null) {
-                                    console.log("break", cR)
-                                    acc.nextDataRecord[chain] = cR
-                                    break
-                                }
-                            }
-                        }
-                        console.log("continues...")
-                        if (acc.lastDataRecord && acc.nextDataRecord) {
-                            console.log("hiii", acc.lastDataRecord, acc.nextDataRecord[chain])
-                            const nGaps = (acc.nextDataRecord[chain].timestamp - acc.lastDataRecord.timestamp) / ONE_DAY_IN_SECONDS
-                            generatedData[chain] = Object.entries(acc.lastDataRecord.data[chain]).reduce((ac, [protV, value]) => {
-                                const nextValue = acc.nextDataRecord[chain].data[chain]
-                                if (typeof nextValue === 'number') return ac
-                                ac[protV] = +value + ((+nextValue[protV] - +value) / nGaps)
-                                return ac
-                            }, {} as IRecordAdapterRecordChainData)
-                            console.log(generatedData)
-                        }
-                    }
-                })
-                const newGen = new AdaptorRecord(
-                    acc.lastDataRecord.type,
-                    acc.lastDataRecord.adaptorId,
-                    timestamp,
-                    generatedData
-                )
-                acc.lastDataRecord = newGen
-                acc.adaptorRecords.push(newGen)
-                return acc
-            }, {
-                adaptorRecords: [] as AdaptorRecord[],
-                lastDataRecord: adaptorRecords[0],
-                nextDataRecord: {}
-            } as {
-                lastDataRecord: AdaptorRecord
-                nextDataRecord: { [chain: string]: AdaptorRecord }
-                adaptorRecords: AdaptorRecord[]
-            })).adaptorRecords
+            console.log(adapter.chains, JSON.stringify(adaptorRecords.slice(0, 4)))
+            adaptorRecords = generateCleanRecords(adaptorRecords, adapter.chains, chainFilter)
 
             // End inject data
             /* for (const v of adaptorRecords) {

@@ -87,13 +87,17 @@ export class AdaptorRecord extends Item {
     }
 
     static isDataEmpty(data: IRecordAdaptorRecordData) {
-        return Object.values(data)
-            .filter(d => d !== undefined
-                && (
-                    typeof d === 'object'
-                    && Object.values(d).filter(dv => dv !== undefined).length > 0
-                )
-            ).length === 0
+        return Object.keys(Object.entries(data).reduce((acc, [chain, value]) => {
+            if (typeof value === 'number' || value === undefined) return acc
+            const valueNew = Object.entries(value).reduce((ac, [prot, val]) => {
+                if (!Number.isNaN(val))
+                    ac[prot] = val
+                return ac
+            }, {} as IRecordAdapterRecordChainData)
+            if (Object.keys(valueNew).length > 0)
+                acc[chain] = valueNew
+            return acc
+        }, {} as IRecordAdaptorRecordData)).length === 0
     }
 }
 

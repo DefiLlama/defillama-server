@@ -10,10 +10,10 @@ const event = {
 (async () => {
     const r = await handler(event)
     const rr = JSON.parse(r.body) as IGetDexsResponseBody
-/* 
+
     for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)
-    } */
+    }
     /*     console.log("totalVolume", rr.totalVolume)
         console.log("changeVolume1d", rr.changeVolume1d)
         console.log("changeVolume7d", rr.changeVolume7d)

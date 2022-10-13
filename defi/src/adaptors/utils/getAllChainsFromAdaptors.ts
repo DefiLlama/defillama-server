@@ -15,13 +15,23 @@ const getAllChainsFromAdaptors = (dexs2Filter: string[], imports_obj: IImportsMa
                 if (!acc.includes(chain)) acc.push(chain)
         } else if ("breakdown" in adaptor) {
             for (const brokenDownDex of Object.values(adaptor.breakdown)) {
-                const chains = Object.keys(brokenDownDex).filter(c => c !== DISABLED_ADAPTER_KEY) as Chain[]
+                const chains = Object.keys(brokenDownDex).filter(c => !filter || c !== DISABLED_ADAPTER_KEY) as Chain[]
                 for (const chain of chains)
                     if (!acc.includes(chain)) acc.push(chain)
             }
         } else console.error("Invalid adapterdd", adapterName, imports_obj[adapterName])
         return acc
     }, [] as Chain[])
+
+export const getAllProtocolsFromAdaptor = (adaptorModule: string, adaptor: Adapter) => {
+    if (!adaptor) return []
+    if ("adapter" in adaptor) {
+        return [adaptorModule]
+    } else if ("breakdown" in adaptor) {
+        return Object.keys(adaptor.breakdown).filter(c => c !== DISABLED_ADAPTER_KEY)
+    } else
+        throw new Error(`Invalid adapter ${adaptorModule}`)
+}
 
 export const isDisabled = (dex: string, imports_obj: IImportsMap) => getAllChainsFromAdaptors([dex], imports_obj, false).includes(DISABLED_ADAPTER_KEY as Chain)
 

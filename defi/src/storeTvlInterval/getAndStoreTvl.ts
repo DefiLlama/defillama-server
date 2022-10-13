@@ -16,6 +16,7 @@ import BigNumber from "bignumber.js";
 import {executeAndIgnoreErrors} from "./errorDb"
 import { getCurrentUnixTimestamp } from "../utils/date";
 import { StaleCoins } from "./staleCoins";
+import checkDroppedTokens from "./checkDroppedTokens";
 
 function insertOnDb(useCurrentPrices:boolean, query:string, params:(string|number)[], storedKey:string, probabilitySampling: number = 1){
   if (process.env.LOCAL === 'true') return;
@@ -219,6 +220,9 @@ export async function storeTvl(
   }
   try {
     await storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData); // Checks circuit breakers
+    if(storePreviousData){
+      await checkDroppedTokens(protocol, usdTokenBalances)
+    }
 
     const storeTokensAction = storeNewTokensValueLocked(
       protocol,

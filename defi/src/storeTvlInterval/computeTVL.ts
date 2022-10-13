@@ -67,7 +67,11 @@ export default async function (balances: { [address: string]: string }, timestam
   const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
   tokenData.forEach((response) => {
     if (Math.abs(response.timestamp - now) > 3600*1.2) { // 1.2 hours
-      addStaleCoin(staleCoins, response.PK, response.symbol, response.timestamp);
+      const tvlAffected = PKsToTokens[response.PK].reduce((sum, address)=>{
+        const tvlOfCoin = (Number(balances[address])/(10 ** response.decimals))*response.price
+        return sum + tvlOfCoin;
+      }, 0)
+      addStaleCoin(staleCoins, response.PK, response.symbol, response.timestamp, tvlAffected);
     }
     if (Math.abs(response.timestamp - now) < DAY) {
       PKsToTokens[response.PK].forEach((address) => {

@@ -39,9 +39,9 @@ export async function iterateOverPlatforms(
           PK,
           SK: 0,
         });
-        if (storedItem.Item === undefined) {
+        //if (storedItem.Item === undefined) {
           await iterator(PK, platforms[platform]!, chain);
-        }
+        //}
       } catch (e) {
         console.error(coin, platform, e);
       }

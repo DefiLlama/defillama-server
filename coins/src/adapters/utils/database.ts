@@ -42,35 +42,28 @@ export function addToDBWritesList(
 ) {
   confidence = confidence > 0.9 ? 0.9 : Number(confidence);
   if (timestamp == 0) {
-    writes.push(
-      ...[
-        {
-          SK: getCurrentUnixTimestamp(),
-          PK: `asset#${chain}:${
-            chain == "solana" ? token : token.toLowerCase()
-          }`,
-          price,
-          confidence
-        },
-        {
-          SK: 0,
-          PK: `asset#${chain}:${
-            chain == "solana" ? token : token.toLowerCase()
-          }`,
-          price,
-          symbol,
-          decimals: Number(decimals),
-          redirect,
-          ...(price !== undefined
-            ? {
-                timestamp: getCurrentUnixTimestamp()
-              }
-            : {}),
-          adapter,
-          confidence
-        }
-      ]
-    );
+    if (price != undefined)
+      writes.push({
+        SK: getCurrentUnixTimestamp(),
+        PK: `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`,
+        price,
+        confidence
+      });
+    writes.push({
+      SK: 0,
+      PK: `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`,
+      price,
+      symbol,
+      decimals: Number(decimals),
+      redirect,
+      ...(price !== undefined
+        ? {
+            timestamp: getCurrentUnixTimestamp()
+          }
+        : {}),
+      adapter,
+      confidence
+    });
   } else {
     if (timestamp > 10000000000 || timestamp < 1400000000) {
       new Error("timestamp should be in unix seconds");

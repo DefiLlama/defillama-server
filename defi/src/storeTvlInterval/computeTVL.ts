@@ -1,72 +1,80 @@
 import BigNumber from "bignumber.js";
 import fetch from "node-fetch";
-import { addStaleCoin, StaleCoins } from "./staleCoins";
-
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
-const DAY = 24 * 3600;
+
 type Balances = {
   [symbol: string]: number;
 };
 
-const confidenceThreshold = 0.5;
-const step = 50;
-export default async function (balances: { [address: string]: string }, timestamp: "now" | number, staleCoins:StaleCoins) {
-  staleCoins
-  const eth = balances[ethereumAddress];
+function normalizeBalances(balances: { [address: string]: string }) {
+  Object.keys(balances).map((key) => {
+    if (+balances[key] === 0) {
+      delete balances[key];
+      return;
+    }
 
-  Object.keys(balances).map((k) => {
-    balances[k.toLowerCase()] = balances[k];
-    if (k.toLowerCase() != k) delete balances[k];
+    const normalisedKey = key.startsWith("0x")
+      ? `ethereum:${key.toLowerCase()}`
+      : !key.includes(":")
+      ? `coingecko:${key.toLowerCase()}`
+      : key;
+
+    // sols case sensitive so no normalising
+    if (key == normalisedKey || key.startsWith("solana:")) return;
+
+    balances[normalisedKey] =
+      normalisedKey in balances
+        ? (Number(balances[normalisedKey]) + Number(balances[key])).toString()
+        : balances[key];
+
+    delete balances[key];
   });
 
+  const eth = balances[ethereumAddress];
   if (eth !== undefined) {
     balances[weth] = new BigNumber(balances[weth] ?? 0).plus(eth).toFixed(0);
     delete balances[ethereumAddress];
   }
-  const PKsToTokens = {} as { [t: string]: string[] };
-  const readKeys = Object.keys(balances)
-    .map((address) => {
-      let prefix = "";
-      if(address.startsWith("0x")){
-        prefix = "ethereum:"
-      } else if(!address.includes(":")){
-        prefix = "coingecko:"
-      }
-      let normalizedAddress = address.toLowerCase()
-      if(address.startsWith("solana:")){
-        normalizedAddress = address
-      }
-      const PK = `${prefix}${normalizedAddress}`;
-      if (PKsToTokens[PK] === undefined) {
-        PKsToTokens[PK] = [address];
-        return PK;
-      } else {
-        PKsToTokens[PK].push(address);
-        return undefined;
-      }
-    })
-    .filter((item) => item !== undefined) as string[];
-  
+
+  return balances;
+}
+
+async function fetchTokenData(
+  timestamp: "now" | number,
+  balances: { [address: string]: string }
+) {
   const readRequests = [];
   const burl = "https://coins.llama.fi/prices/";
   const historical =
     timestamp == "now" ? "current/" : `historical/${timestamp}/`;
 
-  for (let i = 0; i < readKeys.length; i += step) {
-    const coins = readKeys
+  for (let i = 0; i < Object.keys(balances).length; i += step) {
+    const coins = Object.keys(balances)
       .slice(i, i + step)
-      .reduce((p, c) => p + `${c},`, "")
-      .slice(0, -1);
+      .reduce((p, c) => p + `${c},`, "");
     readRequests.push(
       fetch(`${burl}${historical}${coins}`, { method: "GET" }).then((r) =>
         r.json()
       )
     );
   }
-  
+
   const responses: any[] = await Promise.all(readRequests);
-  let tokenData = responses.map((g) => g.coins);
+  return responses.map((g) => g.coins);
+}
+
+const confidenceThreshold = 0.5;
+const step = 40;
+export default async function (
+  balances: { [address: string]: string },
+  timestamp: "now" | number,
+  staleCoins: any
+) {
+  staleCoins; // can get rid of stalecoins type?
+  balances = normalizeBalances(balances);
+
+  const tokenData = await fetchTokenData(timestamp, balances);
 
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
@@ -75,39 +83,28 @@ export default async function (balances: { [address: string]: string }, timestam
   tokenData.forEach((response) => {
     Object.keys(response).forEach((address) => {
       const data = response[address];
+      const balance: BigNumber = new BigNumber(balances[address]);
 
-      const balance = parseInt(
-        balances[
-          address.startsWith("ethereum:")
-            ? address.substring(9)
-            : address.startsWith("coingecko:")
-            ? address.substring(10)
-            : address
-        ]
-      );
-
-      if (data == undefined) tokenBalances[`UNKNOWN (${address})`] = balance;
+      if (data == undefined)
+        tokenBalances[`UNKNOWN (${address})`] = balance.toNumber();
       if ("confidence" in data && data.confidence < confidenceThreshold) return;
 
-      let amount, usdAmount;
-      if (address.startsWith("coingecko:")) {
-        amount = Number(balance);
-      } else {
-        amount = new BigNumber(balance).div(10 ** data.decimals).toNumber();
-      }
+      const amount: BigNumber = address.startsWith("coingecko:")
+        ? balance
+        : balance.div(10 ** data.decimals);
+      const usdAmount: BigNumber = amount.times(data.price);
 
-      usdAmount = amount * data.price;
-
-      tokenBalances[data.symbol] = (tokenBalances[data.symbol] ?? 0) + amount;
+      tokenBalances[data.symbol] =
+        (tokenBalances[data.symbol] ?? 0) + amount.toNumber();
       usdTokenBalances[data.symbol] =
-        (usdTokenBalances[data.symbol] ?? 0) + usdAmount;
-      usdTvl += usdAmount;
+        (usdTokenBalances[data.symbol] ?? 0) + usdAmount.toNumber();
+      usdTvl += usdAmount.toNumber();
     });
   });
 
   return {
     usdTvl,
     tokenBalances,
-    usdTokenBalances,
+    usdTokenBalances
   };
 }

@@ -109,7 +109,7 @@ function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObjec
     balancesObject[key] = {}
     storedKeys.map(keyToMerge=>{
       Object.entries(balancesObject[keyToMerge]).forEach((balance) => {
-        util.sumSingleBalance(balancesObject[key], balance[0], balance[1]);
+        util.sumSingleBalance(balancesObject[key], balance[0], BigNumber(balance[1] || '0').toFixed(0));
       });
     })
   }

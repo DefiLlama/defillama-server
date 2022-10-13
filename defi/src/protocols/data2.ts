@@ -16822,5 +16822,26 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1665658301
 },
+{
+  id: "2181",
+  name: "Frigg.eco",
+  address: "0x90D53b872ce6421122B41a290aCdD22a5eD931bd",
+  symbol: "ATT",
+  url: "https://www.frigg.eco/",
+  description: "Frigg - Invest in a sustainable Future.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/frigg.eco.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "RWA",
+  chains: ["Ethereum"],
+  module: "frigg-eco/index.js",
+  twitter: "FriggEco",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1665676731
+},
 ]
 export default data2;

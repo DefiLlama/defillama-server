@@ -16801,5 +16801,26 @@ listedAt: 1650804679
   parentProtocol: "Trader Joe",
   listedAt: 1665614545
 },
+{
+  id: "2180",
+  name: "NEUY",
+  address: "polygon:0x62a872d9977Db171d9e213A5dc2b782e72ca0033",
+  symbol: "NEUY",
+  url: "https://finance.neuy.io",
+  description: "NEUY is an A.I. powered DeFi,The A.I. uses off chain data collection for analysis and on chain smart contracts to execute changes. Users can participate with NEUY network by Staking and earning high APY, using our Swapping aggregate app, becoming an A.I. contributor and earning NEUY or writing their own Swapping and Arbitrage bots.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/neuy.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "neuy",
+  cmcId: null,
+  category: "Staking",
+  chains: ["Polygon"],
+  module: "neuy/index.js",
+  twitter: "NeuyNodes",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1665658301
+},
 ]
 export default data2;

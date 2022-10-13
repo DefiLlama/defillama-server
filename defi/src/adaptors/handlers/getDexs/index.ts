@@ -80,7 +80,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
              */
 
             console.log(adapter.chains, JSON.stringify(adaptorRecords.slice(0, 4)))
-            adaptorRecords = generateCleanRecords(adaptorRecords, adapter.chains, chainFilter)
+            adaptorRecords = generateCleanRecords(adaptorRecords, adapter.chains, adapter.protocols, chainFilter)
 
             // End inject data
             /* for (const v of adaptorRecords) {

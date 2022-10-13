@@ -5,6 +5,7 @@ export interface ProtocolAdaptor extends Protocol {
     displayName: string
     config?: IConfig
     disabled: boolean
+    protocols: string[]
 }
 
 export interface IConfig {
@@ -14,10 +15,10 @@ export interface IConfig {
 
 
 export interface IJSON<T> {
-    [key:string]: T
+    [key: string]: T
 }
 
-export type AdaptorsConfig =IJSON<IConfig>
+export type AdaptorsConfig = IJSON<IConfig>
 
 export type AdaptorData = {
     default: ProtocolAdaptor[]

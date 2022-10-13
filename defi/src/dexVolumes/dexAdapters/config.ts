@@ -413,8 +413,8 @@ export default {
     "levinswap": {
         enabled: true
     },
-    "temple-dao": {
-        enabled: false
+    "templedao-trade": {
+        enabled: true
     },
     "karura-swap": {
         enabled: true
@@ -441,6 +441,42 @@ export default {
         enabled: true
     },
     "saucerswap": {
+        enabled: true
+    },
+    "synthetify": {
+        enabled: true
+    },
+    "pandora": {
+        enabled: true
+    },
+    "paycash": {
+        enabled: true
+    },
+    "soy-finance": {
+        enabled: true
+    },
+    "photonswap-finance": {
+        enabled: true
+    },
+    "alita-finance": {
+        enabled: true
+    },
+    "unifi": {
+        enabled: true
+    },
+    "wineryswap": {
+        enabled: true
+    },
+    "huckleberry": {
+        enabled: true
+    },
+    "hakuswap": {
+        enabled: true
+    },
+    "leonicornswap": {
+        enabled: true
+    },
+    "autoshark": {
         enabled: true
     },
 } as {

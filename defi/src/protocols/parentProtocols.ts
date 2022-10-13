@@ -342,6 +342,42 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "QuickswapDEX",
   },
+  {
+    id: "iZUMI Finance",
+    name: "iZUMI Finance",
+    url: "https://izumi.finance/home",
+    description:
+      "Liquidity Redefined - A multi-chain DeFi protocol providing One-Stop Liquidity as a Service (LaaS).",
+    logo: `${baseIconsUrl}/izumi finance.png`,
+    gecko_id: "izumi-finance",
+    cmcId: "16305",
+    chains: [],
+    twitter: "izumi_Finance",
+  },
+  {
+    id: "Temple DAO",
+    name: "Temple DAO",
+    url: "https://www.templedao.link",
+    description:
+      "The TempleDAO protocol aims to provide DeFi users with a safe haven where they can be sheltered from crypto market volatility while benefiting from a set of investment opportunities offering high yields and steady price appreciation",
+    logo: `${baseIconsUrl}/temple-dao.png`,
+    gecko_id: "temple",
+    cmcId: "16052",
+    chains: [],
+    twitter: "templedao",
+  },
+  {
+    id: "Trader Joe",
+    name: "Trader Joe",
+    url: "https://www.traderjoexyz.com",
+    description:
+      "Trader Joe is your one-stop decentralized trading platform on the Avalanche network.",
+    logo: `${baseIconsUrl}/trader-joe.png`,
+    gecko_id: "joe",
+    cmcId: "11396",
+    chains: [],
+    twitter: "traderjoe_xyz",
+  },
 ];
 
 export default parentProtocols;

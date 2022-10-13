@@ -2,6 +2,7 @@ import adapters from "./adapters/index";
 import { batchWrite } from "./utils/shared/dynamodb";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 
+const step = 2000;
 export default async function handler(event: any) {
   const a = Object.entries(adapters);
   const timestamp = 0;
@@ -12,7 +13,9 @@ export default async function handler(event: any) {
         const resultsWithoutDuplicates = filterWritesWithLowConfidence(
           results.flat()
         );
-        await batchWrite(resultsWithoutDuplicates, true);
+        for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
+          await batchWrite(resultsWithoutDuplicates.slice(i, i + step), true);
+        }
       } catch (e) {
         console.log("adapter failed", a[i][0], e);
       }
@@ -20,7 +23,7 @@ export default async function handler(event: any) {
   );
 } // ts-node coins/src/storeCoins.ts
 // async function main() {
-//   let a = { protocolIndexes: [13] };
+//   let a = { protocolIndexes: [0] };
 //   await handler(a);
 // }
 // main();

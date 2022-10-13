@@ -28,7 +28,6 @@ export async function getTokenAndRedirectData(
     timestamp == 0 ? getCurrentUnixTimestamp() : timestamp
   );
 }
-
 export function addToDBWritesList(
   writes: Write[],
   chain: string,
@@ -109,120 +108,69 @@ async function getTokenAndRedirectDataFromAPI(
     return data;
   });
 }
-async function getTokenAndRedirectDataCurrent(
+async function getTokenAndRedirectDataDB(
   tokens: string[],
   chain: string,
   timestamp: number
 ) {
   let allReads: Read[] = [];
   const batchSize = 500;
+
   for (let lower = 0; lower < tokens.length; lower += batchSize) {
     const upper =
       lower + batchSize > tokens.length ? tokens.length : lower + batchSize;
-    const dbEntries: DbEntry[] = await batchGet(
+    // timestamped origin entries
+    let timedDbEntries: any[] = await Promise.all(
+      tokens.slice(lower, upper).map((t: string) => {
+        return getTVLOfRecordClosestToTimestamp(
+          `asset#${chain}:${t.toLowerCase()}`,
+          timestamp,
+          43200 // SEARCHES A 24 HOUR WINDOW
+        );
+      })
+    );
+
+    // current origin entries, for current redirects
+    const latestDbEntries: DbEntry[] = await batchGet(
       tokens.slice(lower, upper).map((t: string) => ({
         PK: `asset#${chain}:${t.toLowerCase()}`,
-        SK: timestamp
+        SK: 0
       }))
     );
-    const redirects: DbQuery[] = [];
-    for (let i = 0; i < dbEntries.length; i++) {
-      if (!("redirect" in dbEntries[i])) continue;
-      redirects.push({
-        PK: dbEntries[i].redirect,
-        SK: timestamp
-      });
-    }
-    const redirectResults: Redirect[] = await batchGet(redirects);
 
-    const reads: Read[] = dbEntries.map((d) => ({
-      dbEntry: d,
-      redirect: redirectResults.filter((r) => r.PK == d.redirect)
-    }));
-    allReads.push(...reads);
-  }
-  return aggregateTokenAndRedirectData(allReads);
-}
-async function getTokenAndRedirectDataDB(
-  tokens: string[],
-  chain: string,
-  timestamp: number
-) {
-  // timestamped origin entries
-  let timedDbEntries: any[] = await Promise.all(
-    tokens.map((t: string) => {
-      return getTVLOfRecordClosestToTimestamp(
-        `asset#${chain}:${t.toLowerCase()}`,
-        timestamp,
-        43200 // SEARCHES A 24 HOUR WINDOW
+    // current redirect links
+    const redirects: DbQuery[] = latestDbEntries.map((d: DbEntry) => {
+      const selectedEntries: any[] = timedDbEntries.filter(
+        (t: any) => d.PK == t.PK
       );
-    })
-  );
+      if (selectedEntries.length == 0) {
+        return { PK: d.redirect, SK: d.SK };
+      } else {
+        return { PK: selectedEntries[0].redirect, SK: selectedEntries[0].SK };
+      }
+    });
 
-  // current origin entries
-  const latestDbEntries: DbEntry[] = await batchGet(
-    tokens.map((t: string) => ({
-      PK: `asset#${chain}:${t.toLowerCase()}`,
-      SK: 0
-    }))
-  );
-
-  // current redirects
-  const redirects: DbQuery[] = latestDbEntries.map((d: DbEntry) => {
-    const selectedEntries: any[] = timedDbEntries.filter(
-      (t: any) => d.PK == t.PK
+    // timed redirect data
+    let timedRedirects: any[] = await Promise.all(
+      redirects.map((r: DbQuery) => {
+        if (r.PK == undefined) return;
+        return getTVLOfRecordClosestToTimestamp(
+          r.PK,
+          r.SK,
+          43200 // SEARCHES A 24 HOUR WINDOW
+        );
+      })
     );
-    if (!("redirect" in d) && selectedEntries.length == 0) {
-      return { PK: "not a token", SK: 0 };
-    } else if (selectedEntries.length == 0) {
-      return { PK: d.redirect, SK: timestamp };
-    } else {
-      return { PK: selectedEntries[0].PK, SK: timestamp };
-    }
-  });
 
-  let timedRedirects: any[] = await Promise.all(
-    redirects.map((r: DbQuery) => {
-      return getTVLOfRecordClosestToTimestamp(
-        r.PK,
-        r.SK,
-        43200 // SEARCHES A 24 HOUR WINDOW
-      );
-    })
-  );
+    // aggregate
+    let validResults: Read[] = latestDbEntries.map((ld: DbEntry, i: number) => {
+      if (timedRedirects[i] == undefined) return { dbEntry: ld, redirect: [] };
+      return { dbEntry: ld, redirect: [timedRedirects[i]] };
+    });
 
-  // aggregate
-  const allResults = timedRedirects.map((tr: any) => {
-    if (tr.PK == undefined) return { redirect: [{ SK: undefined }] };
-    let dbEntry = timedDbEntries.filter((td: any) => tr.PK.includes(td.PK))[0];
-    const latestDbEntry = latestDbEntries.filter(
-      (ld: any) => tr.PK == ld.redirect
-    )[0];
-    if (dbEntry == undefined) {
-      dbEntry = {
-        PK: latestDbEntry.PK,
-        decimals: latestDbEntry.decimals,
-        symbol: latestDbEntry.symbol
-      };
-    }
-    return {
-      dbEntry,
-      redirect: [tr]
-    };
-  });
-
-  // remove faulty data and return
-  const validResults: any[] = [];
-  for (let i = 0; i < allResults.length; i++) {
-    if (
-      allResults[i].redirect[0].SK != undefined ||
-      allResults[i].dbEntry != undefined
-    ) {
-      validResults.push(allResults[i]);
-    }
+    allReads.push(...validResults);
   }
-
-  const timestampedResults = aggregateTokenAndRedirectData(validResults);
+  const timestampedResults = aggregateTokenAndRedirectData(allReads);
 
   // if (timestampedResults.length < tokens.length) {
   //   const returnedTokens = timestampedResults.map((t: any) => t.address);
@@ -247,6 +195,7 @@ async function getTokenAndRedirectDataDB(
   return timestampedResults;
 }
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
+  allWrites = allWrites.filter((w: Write) => w != undefined);
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
 
@@ -297,37 +246,43 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
   return filteredWrites.filter((f: Write) => f != undefined);
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {
-  const coinData: CoinData[] = reads.map((r: Read) => {
-    const addressIndex: number = r.dbEntry.PK.indexOf(":");
-    const chainIndex = r.dbEntry.PK.indexOf("#");
+  const coinData: CoinData[] = reads
+    .map((r: Read) => {
+      const addressIndex: number = r.dbEntry.PK.indexOf(":");
+      const chainIndex = r.dbEntry.PK.indexOf("#");
 
-    const confidence =
-      "confidence" in r.dbEntry
-        ? r.dbEntry.confidence
-        : r.redirect.length != 0 && "confidence" in r.redirect[0]
-        ? r.redirect[0].confidence
-        : undefined;
+      let price =
+        r.redirect.length != 0 ? r.redirect[0].price : r.dbEntry.price;
+      if (price == undefined) price = -1;
 
-    return {
-      chain:
-        addressIndex == -1
-          ? undefined
-          : r.dbEntry.PK.substring(chainIndex + 1, addressIndex),
-      address:
-        addressIndex == -1
-          ? r.dbEntry.PK
-          : r.dbEntry.PK.substring(addressIndex + 1),
-      decimals: r.dbEntry.decimals,
-      symbol: r.dbEntry.symbol,
-      price: r.redirect.length != 0 ? r.redirect[0].price : r.dbEntry.price,
-      timestamp: r.dbEntry.SK == 0 ? getCurrentUnixTimestamp() : r.dbEntry.SK,
-      redirect:
-        r.redirect.length == 0 || r.redirect[0].PK == r.dbEntry.PK
-          ? undefined
-          : r.redirect[0].PK,
-      confidence
-    };
-  });
+      const confidence =
+        "confidence" in r.dbEntry
+          ? r.dbEntry.confidence
+          : r.redirect.length != 0 && "confidence" in r.redirect[0]
+          ? r.redirect[0].confidence
+          : undefined;
+
+      return {
+        chain:
+          addressIndex == -1
+            ? undefined
+            : r.dbEntry.PK.substring(chainIndex + 1, addressIndex),
+        address:
+          addressIndex == -1
+            ? r.dbEntry.PK
+            : r.dbEntry.PK.substring(addressIndex + 1),
+        decimals: r.dbEntry.decimals,
+        symbol: r.dbEntry.symbol,
+        price,
+        timestamp: r.dbEntry.SK == 0 ? getCurrentUnixTimestamp() : r.dbEntry.SK,
+        redirect:
+          r.redirect.length == 0 || r.redirect[0].PK == r.dbEntry.PK
+            ? undefined
+            : r.redirect[0].PK,
+        confidence
+      };
+    })
+    .filter((d: CoinData) => d.price != -1);
 
   return coinData;
 }

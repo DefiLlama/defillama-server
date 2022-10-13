@@ -356,6 +356,7 @@ export default async function getTokenPrices(
   subgraph: string | undefined = undefined,
   timestamp: number
 ) {
+  router;
   let token0s;
   let token1s;
   let reserves;
@@ -405,15 +406,15 @@ export default async function getTokenPrices(
   );
 
   const writes: Write[] = [];
-  await unknownTokens(
-    writes,
-    chain,
-    router,
-    timestamp,
-    priceableLPs,
-    tokenPrices,
-    tokenInfos
-  );
+  // await unknownTokens(
+  //   writes,
+  //   chain,
+  //   router,
+  //   timestamp,
+  //   priceableLPs,
+  //   tokenPrices,
+  //   tokenInfos
+  // );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
   return writes;

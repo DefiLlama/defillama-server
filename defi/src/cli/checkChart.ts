@@ -12,7 +12,7 @@ import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRec
 import { date } from './utils'
 import { importAdapter } from "./utils/importAdapter";
 
-const projectsToRefill: string[] = ["AAVE"];
+const projectsToRefill: string[] = ["Trader Joe"];
 const notify = false;
 const deleteRepeated = true;
 const extrapolate = false;

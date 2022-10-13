@@ -49,7 +49,7 @@ interface Result {
 }
 
 function resolveDecimals(value: number, i: number) {
-  if (value > 10) i = resolveDecimals(value / 10, i) + 1;
+  if (value >= 10) i = resolveDecimals(value / 10, i) + 1;
   return i;
 }
 async function getPricePerShare(

@@ -41,6 +41,7 @@ test("all chains are on chainMap", async () => {
 
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
+    if (protocol.module === 'dummy.js') continue;
     const module = await importProtocol(protocol)
     const chains = protocol.module.includes("volumes/") ? Object.keys(module) : protocol.chains.map((chain) => normalizeChain(chain));
     if (chains.length > 1) {
@@ -119,6 +120,7 @@ test("no module repeated", async () => {
   const ids = [];
   for (const protocol of protocols) {
     const script = protocol.module
+    if (script === 'dummy.js') continue; // dummy.js is an exception
     expect(ids).not.toContain(script);
     ids.push(script);
   }

@@ -467,6 +467,18 @@ export default {
     "wineryswap": {
         enabled: true
     },
+    "huckleberry": {
+        enabled: true
+    },
+    "hakuswap": {
+        enabled: true
+    },
+    "leonicornswap": {
+        enabled: true
+    },
+    "autoshark": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

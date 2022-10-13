@@ -405,15 +405,15 @@ export default async function getTokenPrices(
   );
 
   const writes: Write[] = [];
-  await unknownTokens(
-    writes,
-    chain,
-    router,
-    timestamp,
-    priceableLPs,
-    tokenPrices,
-    tokenInfos
-  );
+  // await unknownTokens(
+  //   writes,
+  //   chain,
+  //   router,
+  //   timestamp,
+  //   priceableLPs,
+  //   tokenPrices,
+  //   tokenInfos
+  // );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
   return writes;

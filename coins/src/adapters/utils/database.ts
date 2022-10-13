@@ -246,37 +246,43 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
   return filteredWrites.filter((f: Write) => f != undefined);
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {
-  const coinData: CoinData[] = reads.map((r: Read) => {
-    const addressIndex: number = r.dbEntry.PK.indexOf(":");
-    const chainIndex = r.dbEntry.PK.indexOf("#");
+  const coinData: CoinData[] = reads
+    .map((r: Read) => {
+      const addressIndex: number = r.dbEntry.PK.indexOf(":");
+      const chainIndex = r.dbEntry.PK.indexOf("#");
 
-    const confidence =
-      "confidence" in r.dbEntry
-        ? r.dbEntry.confidence
-        : r.redirect.length != 0 && "confidence" in r.redirect[0]
-        ? r.redirect[0].confidence
-        : undefined;
+      let price =
+        r.redirect.length != 0 ? r.redirect[0].price : r.dbEntry.price;
+      if (price == undefined) price = -1;
 
-    return {
-      chain:
-        addressIndex == -1
-          ? undefined
-          : r.dbEntry.PK.substring(chainIndex + 1, addressIndex),
-      address:
-        addressIndex == -1
-          ? r.dbEntry.PK
-          : r.dbEntry.PK.substring(addressIndex + 1),
-      decimals: r.dbEntry.decimals,
-      symbol: r.dbEntry.symbol,
-      price: r.redirect.length != 0 ? r.redirect[0].price : r.dbEntry.price,
-      timestamp: r.dbEntry.SK == 0 ? getCurrentUnixTimestamp() : r.dbEntry.SK,
-      redirect:
-        r.redirect.length == 0 || r.redirect[0].PK == r.dbEntry.PK
-          ? undefined
-          : r.redirect[0].PK,
-      confidence
-    };
-  });
+      const confidence =
+        "confidence" in r.dbEntry
+          ? r.dbEntry.confidence
+          : r.redirect.length != 0 && "confidence" in r.redirect[0]
+          ? r.redirect[0].confidence
+          : undefined;
+
+      return {
+        chain:
+          addressIndex == -1
+            ? undefined
+            : r.dbEntry.PK.substring(chainIndex + 1, addressIndex),
+        address:
+          addressIndex == -1
+            ? r.dbEntry.PK
+            : r.dbEntry.PK.substring(addressIndex + 1),
+        decimals: r.dbEntry.decimals,
+        symbol: r.dbEntry.symbol,
+        price,
+        timestamp: r.dbEntry.SK == 0 ? getCurrentUnixTimestamp() : r.dbEntry.SK,
+        redirect:
+          r.redirect.length == 0 || r.redirect[0].PK == r.dbEntry.PK
+            ? undefined
+            : r.redirect[0].PK,
+        confidence
+      };
+    })
+    .filter((d: CoinData) => d.price != -1);
 
   return coinData;
 }

@@ -492,6 +492,6 @@ export default async function getTokenPrices(
     unknownTokensList
   );
 
-  await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
+  // await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
   return writes;
 }

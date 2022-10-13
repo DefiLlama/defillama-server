@@ -2,8 +2,8 @@ export interface Write {
   SK: number;
   PK: string;
   price?: number;
-  symbol: string;
-  decimals: number;
+  symbol?: string;
+  decimals?: number;
   redirect?: string;
   adapter?: string;
   confidence: number;

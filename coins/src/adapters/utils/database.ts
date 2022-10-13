@@ -40,6 +40,7 @@ export function addToDBWritesList(
   confidence: number,
   redirect: string | undefined = undefined
 ) {
+  confidence = confidence > 0.9 ? 0.9 : Number(confidence);
   if (timestamp == 0) {
     writes.push(
       ...[
@@ -49,10 +50,7 @@ export function addToDBWritesList(
             chain == "solana" ? token : token.toLowerCase()
           }`,
           price,
-          symbol,
-          decimals: Number(decimals),
-          redirect,
-          confidence: Number(confidence)
+          confidence
         },
         {
           SK: 0,
@@ -69,7 +67,7 @@ export function addToDBWritesList(
               }
             : {}),
           adapter,
-          confidence: Number(confidence)
+          confidence
         }
       ]
     );
@@ -81,10 +79,7 @@ export function addToDBWritesList(
       SK: timestamp,
       PK: `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`,
       price,
-      symbol,
-      decimals: Number(decimals),
-      redirect,
-      confidence: Number(confidence)
+      confidence
     });
   }
 }
@@ -113,7 +108,7 @@ async function getTokenAndRedirectDataDB(
   chain: string,
   timestamp: number
 ) {
-  let allReads: Read[] = [];
+  let allReads: any[] = [];
   const batchSize = 500;
 
   for (let lower = 0; lower < tokens.length; lower += batchSize) {
@@ -138,22 +133,16 @@ async function getTokenAndRedirectDataDB(
       }))
     );
 
-    // current redirect links
-    const redirects: DbQuery[] = latestDbEntries.map((d: DbEntry) => {
-      const selectedEntries: any[] = timedDbEntries.filter(
-        (t: any) => d.PK == t.PK
-      );
-      if (selectedEntries.length == 0) {
-        return { PK: d.redirect, SK: d.SK };
-      } else {
-        return { PK: selectedEntries[0].redirect, SK: selectedEntries[0].SK };
-      }
-    });
+    // current redirects
+    const redirects: DbQuery[] = latestDbEntries
+      .map((d: DbEntry) => {
+        if ("redirect" in d) return { PK: d.redirect, SK: timestamp };
+        return { PK: "not a token", SK: 0 };
+      })
+      .filter((d: DbQuery) => d.PK != "not a token");
 
-    // timed redirect data
     let timedRedirects: any[] = await Promise.all(
       redirects.map((r: DbQuery) => {
-        if (r.PK == undefined) return;
         return getTVLOfRecordClosestToTimestamp(
           r.PK,
           r.SK,
@@ -163,15 +152,70 @@ async function getTokenAndRedirectDataDB(
     );
 
     // aggregate
-    let validResults: Read[] = latestDbEntries.map((ld: DbEntry, i: number) => {
-      if (timedRedirects[i] == undefined) return { dbEntry: ld, redirect: [] };
-      return { dbEntry: ld, redirect: [timedRedirects[i]] };
-    });
+    const results = latestDbEntries
+      .map((latestDbEntry: any) => {
+        let timedDbEntry = timedDbEntries.filter(
+          (r: any) => r.PK == latestDbEntry.PK
+        )[0];
 
-    allReads.push(...validResults);
+        const addressIndex: number = latestDbEntry.PK.indexOf(":");
+        const chainIndex = latestDbEntry.PK.indexOf("#");
+
+        let confidence =
+          timedDbEntry != undefined && "confidence" in timedDbEntry
+            ? timedDbEntry.confidence
+            : undefined;
+
+        if ("redirect" in latestDbEntry) {
+          const redirect = timedRedirects.filter(
+            (r: any) => r.PK == latestDbEntry.redirect
+          )[0];
+
+          if (redirect == null) return undefined;
+          confidence =
+            confidence == undefined && "confidence" in redirect
+              ? redirect.confidence
+              : undefined;
+
+          return {
+            confidence,
+            price: redirect.price,
+            chain:
+              addressIndex == -1
+                ? undefined
+                : latestDbEntry.PK.substring(chainIndex + 1, addressIndex),
+            address:
+              addressIndex == -1
+                ? latestDbEntry.PK
+                : latestDbEntry.PK.substring(addressIndex + 1),
+            SK: timedDbEntry == undefined ? redirect.SK : timedDbEntry.SK,
+            decimals: latestDbEntry.decimals,
+            symbol: latestDbEntry.symbol,
+            redirect: latestDbEntry.redirect
+          };
+        } else {
+          if (timedDbEntry == undefined) return;
+          return {
+            confidence,
+            price: timedDbEntry.price,
+            chain:
+              addressIndex == -1
+                ? undefined
+                : latestDbEntry.PK.substring(chainIndex + 1, addressIndex),
+            address:
+              addressIndex == -1
+                ? latestDbEntry.PK
+                : latestDbEntry.PK.substring(addressIndex + 1),
+            SK: timedDbEntry.SK,
+            decimals: latestDbEntry.decimals,
+            symbol: latestDbEntry.symbol
+          };
+        }
+      })
+      .filter((r: any) => r != undefined);
+
+    allReads.push(...results);
   }
-  const timestampedResults = aggregateTokenAndRedirectData(allReads);
-
   // if (timestampedResults.length < tokens.length) {
   //   const returnedTokens = timestampedResults.map((t: any) => t.address);
   //   const missingTokens: string[] = [];
@@ -192,7 +236,7 @@ async function getTokenAndRedirectDataDB(
   //     await currentResult.adapter()
   //   }
   // }
-  return timestampedResults;
+  return allReads;
 }
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
   allWrites = allWrites.filter((w: Write) => w != undefined);
@@ -244,45 +288,4 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
   });
 
   return filteredWrites.filter((f: Write) => f != undefined);
-}
-function aggregateTokenAndRedirectData(reads: Read[]) {
-  const coinData: CoinData[] = reads
-    .map((r: Read) => {
-      const addressIndex: number = r.dbEntry.PK.indexOf(":");
-      const chainIndex = r.dbEntry.PK.indexOf("#");
-
-      let price =
-        r.redirect.length != 0 ? r.redirect[0].price : r.dbEntry.price;
-      if (price == undefined) price = -1;
-
-      const confidence =
-        "confidence" in r.dbEntry
-          ? r.dbEntry.confidence
-          : r.redirect.length != 0 && "confidence" in r.redirect[0]
-          ? r.redirect[0].confidence
-          : undefined;
-
-      return {
-        chain:
-          addressIndex == -1
-            ? undefined
-            : r.dbEntry.PK.substring(chainIndex + 1, addressIndex),
-        address:
-          addressIndex == -1
-            ? r.dbEntry.PK
-            : r.dbEntry.PK.substring(addressIndex + 1),
-        decimals: r.dbEntry.decimals,
-        symbol: r.dbEntry.symbol,
-        price,
-        timestamp: r.dbEntry.SK == 0 ? getCurrentUnixTimestamp() : r.dbEntry.SK,
-        redirect:
-          r.redirect.length == 0 || r.redirect[0].PK == r.dbEntry.PK
-            ? undefined
-            : r.redirect[0].PK,
-        confidence
-      };
-    })
-    .filter((d: CoinData) => d.price != -1);
-
-  return coinData;
 }

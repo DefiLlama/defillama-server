@@ -16843,5 +16843,26 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1665676731
 },
+{
+  id: "2182",
+  name: "DogePoW",
+  address: "ethpow:0x178582531538E781d20E0CdFcE9F4E548B3E7e2B",
+  symbol: "DogeW",
+  url: "http://dogepow.com/",
+  description: "DogePow is based on ETHEREUMPOW(ETHW). can only grow and accomplish its mission with YOUR help",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/dogepow.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "dogepow",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthereumPoW"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "dogepow/index.js",
+  twitter: "DogePOWethpow",
+  listedAt: 1665619177
+},
 ]
 export default data2;

@@ -74,10 +74,6 @@ export default async function (
   timestamp: "now" | number,
   staleCoins: StaleCoins
 ) {
-  balances = normalizeBalances(balances);
-
-  const tokenData = await fetchTokenData(timestamp, balances);
-
   const rawTokenBalances = {} as Balances;
   Object.keys(balances).map((key: string) => {
     sumSingleBalance(rawTokenBalances, key, balances[key]);
@@ -88,6 +84,8 @@ export default async function (
       addStaleCoin(staleCoins, key, 'TBC', 0);
     })
   })
+  balances = normalizeBalances(balances);
+  const tokenData = await fetchTokenData(timestamp, balances);
 
   let usdTvl = 0;
   const tokenBalances = {} as Balances;

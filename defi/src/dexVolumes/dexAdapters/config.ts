@@ -500,6 +500,9 @@ export default {
     "algofi": {
         enabled: false
     },
+    "elk": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

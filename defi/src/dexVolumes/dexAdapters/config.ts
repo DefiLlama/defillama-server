@@ -480,7 +480,7 @@ export default {
         enabled: true
     },
     "saddle-finance": {
-        enabled: true
+        enabled: false
     },
     "titano-swych": {
         enabled: true
@@ -492,13 +492,13 @@ export default {
         enabled: true
     },
     "humble-defi": {
-        enabled: true
+        enabled: false
     },
     "pact": {
-        enabled: true
+        enabled: false
     },
     "algofi": {
-        enabled: true
+        enabled: false
     },
 } as {
     [name: string]: IVolumesConfig

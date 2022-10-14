@@ -17,12 +17,11 @@ const subgraphNames: { [chain: string]: string } = {
 };
 
 async function getPoolIds(chain: string, timestamp: number) {
-  return (
-    await request(
-      `https://api.thegraph.com/subgraphs/name/balancer-labs/${
-        subgraphNames[chain] || chain
-      }`,
-      gql`
+  return (await request(
+    `https://api.thegraph.com/subgraphs/name/balancer-labs/${subgraphNames[
+      chain
+    ] || chain}`,
+    gql`
       query {
         pools (
             where: {
@@ -33,25 +32,22 @@ async function getPoolIds(chain: string, timestamp: number) {
         }
       }
     `
-    )
-  ).pools.map((p: any) => p.id);
+  )).pools.map((p: any) => p.id);
 }
 async function getPoolTokens(
   chain: string,
   block: number | undefined,
   poolIds: string[]
 ) {
-  return (
-    await multiCall({
-      abi: abi.getPoolTokens,
-      calls: poolIds.map((p: string) => ({
-        target: vault,
-        params: p
-      })),
-      chain: chain as any,
-      block
-    })
-  ).output.map((c: any) => c.output);
+  return (await multiCall({
+    abi: abi.getPoolTokens,
+    calls: poolIds.map((p: string) => ({
+      target: vault,
+      params: p
+    })),
+    chain: chain as any,
+    block
+  })).output.map((c: any) => c.output);
 }
 function findAllUniqueTokens(poolTokens: any[]) {
   const uniqueTokens: string[] = [];
@@ -79,16 +75,14 @@ async function getPoolValues(
   poolTokens.map((p: any, i: number) => {
     poolTokenValues.push([]);
     p.tokens.map((t: string, j: number) => {
-      const tData = coinsData.filter(
-        (d: any) => d.address == t.toLowerCase()
-      )[0];
+      const tData = coinsData.find((d: any) => d.address == t.toLowerCase());
       if (tData == undefined) {
         poolTokenValues[i].push(undefined);
         return;
       }
       const decimals = tData.decimals;
       const price = tData.price;
-      const tokenValue = (p.balances[j] * price) / 10 ** decimals;
+      const tokenValue = p.balances[j] * price / 10 ** decimals;
       poolTokenValues[i].push(tokenValue);
     });
   });
@@ -112,7 +106,7 @@ function getTokenValues(poolValues: object, poolInfos: any) {
 
     if (poolValue.length == 0) return;
     const price =
-      (poolValue[0][1] * 10 ** poolInfos.decimals[i].output) / s.output;
+      poolValue[0][1] * 10 ** poolInfos.decimals[i].output / s.output;
     if (isNaN(price)) return;
 
     tokenValues.push({

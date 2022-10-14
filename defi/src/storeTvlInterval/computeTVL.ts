@@ -1,5 +1,7 @@
 import BigNumber from "bignumber.js";
 import fetch from "node-fetch";
+import { sumSingleBalance } from "@defillama/sdk/build/generalUtil";
+import { addStaleCoin, StaleCoins } from "./staleCoins";
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
 
@@ -18,16 +20,17 @@ function normalizeBalances(balances: { [address: string]: string }) {
       ? `ethereum:${key.toLowerCase()}`
       : !key.includes(":")
       ? `coingecko:${key.toLowerCase()}`
-      : key;
+      : key.toLowerCase();
 
-    // sols case sensitive so no normalising
-    if (key == normalisedKey || key.startsWith("solana:")) return;
+    // sol amd tezos case sensitive so no normalising
+    if (
+      key == normalisedKey ||
+      key.startsWith("solana:") ||
+      key.startsWith("tezos:")
+    )
+      return;
 
-    balances[normalisedKey] =
-      normalisedKey in balances
-        ? (Number(balances[normalisedKey]) + Number(balances[key])).toString()
-        : balances[key];
-
+    sumSingleBalance(balances, normalisedKey, balances[key]);
     delete balances[key];
   });
 
@@ -52,7 +55,7 @@ async function fetchTokenData(
   for (let i = 0; i < Object.keys(balances).length; i += step) {
     const coins = Object.keys(balances)
       .slice(i, i + step)
-      .reduce((p, c) => p + `${c},`, "");
+      .join(",");
     readRequests.push(
       fetch(`${burl}${historical}${coins}`, { method: "GET" }).then((r) =>
         r.json()
@@ -69,12 +72,19 @@ const step = 40;
 export default async function (
   balances: { [address: string]: string },
   timestamp: "now" | number,
-  staleCoins: any
+  staleCoins: StaleCoins
 ) {
-  staleCoins; // can get rid of stalecoins type?
   balances = normalizeBalances(balances);
 
   const tokenData = await fetchTokenData(timestamp, balances);
+  Object.keys(balances).map((key: string) => {
+    tokenData.forEach((response) => {
+      if (key in response) return
+      // need to fix these final params
+      // whats the best way to fetch symbol, timestamp - is there a better option 
+      addStaleCoin(staleCoins, key, 'TBC', 0); 
+    })
+  })
 
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
@@ -85,8 +95,6 @@ export default async function (
       const data = response[address];
       const balance: BigNumber = new BigNumber(balances[address]);
 
-      if (data == undefined)
-        tokenBalances[`UNKNOWN (${address})`] = balance.toNumber();
       if ("confidence" in data && data.confidence < confidenceThreshold) return;
 
       const amount: BigNumber = address.startsWith("coingecko:")

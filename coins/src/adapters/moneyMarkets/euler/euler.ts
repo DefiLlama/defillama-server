@@ -20,19 +20,17 @@ const chainIds: { [chain: string]: number } = {
   ethereum: 1
 };
 async function fetchFromIpfs(chain: string) {
-  return (
-    await axios.get(
-      "https://gateway.ipfs.io/ipns/k51qzi5uqu5dhglpppd2ls4cc7mu34ik70ecsvfdyahjipjcuj03lw8iz8rvqm/EulerMarketViews.json",
-      {
-        headers: {
-          "sec-fetch-dest": "document",
-          "sec-fetch-mode": "navigate",
-          "sec-fetch-site": "none",
-          "sec-fetch-user": "?1"
-        }
+  return (await axios.get(
+    "https://gateway.ipfs.io/ipns/k51qzi5uqu5dhglpppd2ls4cc7mu34ik70ecsvfdyahjipjcuj03lw8iz8rvqm/EulerMarketViews.json",
+    {
+      headers: {
+        "sec-fetch-dest": "document",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
       }
-    )
-  ).data.markets
+    }
+  )).data.markets
     .filter((m: any) => m.chainId == chainIds[chain])
     .map((m: any) => ({
       address: m.eTokenAddr,
@@ -50,16 +48,17 @@ function formWrites(
 ) {
   const writes: Write[] = [];
   markets.map((m: any) => {
-    const coinData: CoinData = underlyingPrices.filter(
+    const coinData: CoinData | undefined = underlyingPrices.find(
       (c: CoinData) => c.address == m.underlying.toLowerCase()
-    )[0];
+    );
 
-    if (coinData == undefined) return;
-    const rate: Result = rates.filter(
+    const rate: Result | undefined = rates.find(
       (r: Result) => r.input.target == m.address
-    )[0];
-    const eTokenPrice: number =
-      (coinData.price * rate.output) / 10 ** m.decimals;
+    );
+
+    if (coinData == null || rate == null) return;
+
+    const eTokenPrice: number = coinData.price * rate.output / 10 ** m.decimals;
 
     if (eTokenPrice == 0) return;
 

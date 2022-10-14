@@ -18,15 +18,17 @@ function formWrites(
 ) {
   const lpTokenPrices = coinsData
     .map((c: CoinData) => {
-      const underlyingBalance = underlyingBalances.filter(
+      const underlyingBalance = underlyingBalances.find(
         (t: any) => c.address == t.input.target.toLowerCase()
-      )[0];
+      );
       if (underlyingBalance == undefined) return;
       const index = underlyingBalances.indexOf(underlyingBalance);
       const lpSupply = lpTokenInfo.supplies[index].output;
       const lpDecimals = lpTokenInfo.decimals[index].output;
       const price =
-        ((c.price * underlyingBalance.output) / lpSupply) *
+        c.price *
+        underlyingBalance.output /
+        lpSupply *
         10 ** (c.decimals - lpDecimals);
 
       return {
@@ -63,14 +65,12 @@ async function getTokensFromFactory(
   factory: string,
   poolInfoAbi: any
 ) {
-  let poolLength: number = (
-    await call({
-      target: factory,
-      abi: abi.poolLength,
-      chain,
-      block
-    })
-  ).output;
+  let poolLength: number = (await call({
+    target: factory,
+    abi: abi.poolLength,
+    chain,
+    block
+  })).output;
 
   const poolNums: number[] = Array.from(Array(Number(poolLength)).keys());
 

@@ -40,7 +40,7 @@ export function addToDBWritesList(
   confidence: number,
   redirect: string | undefined = undefined
 ) {
-  confidence = confidence > 0.9 ? 0.9 : Number(confidence);
+  confidence = Math.max(Number(confidence), 0.9);
   if (timestamp == 0) {
     if (price != undefined)
       writes.push({
@@ -143,28 +143,25 @@ async function getTokenAndRedirectDataDB(
         );
       })
     );
+    const timedRedirectsObj: { [PK: string]: any } = {};
+    timedRedirects.map((r: any) => (timedRedirectsObj[r.PK] = r));
 
     // aggregate
     const results = latestDbEntries
       .map((latestDbEntry: any) => {
-        let timedDbEntry = timedDbEntries.filter(
-          (r: any) => r.PK == latestDbEntry.PK
-        )[0];
+        let timedDbEntry = timedDbEntries.find(
+          (r: any) => r.PK == latestDbEntry.PK // npm run fillLast Curve
+        );
 
         const addressIndex: number = latestDbEntry.PK.indexOf(":");
         const chainIndex = latestDbEntry.PK.indexOf("#");
 
-        let confidence =
-          timedDbEntry != undefined && "confidence" in timedDbEntry
-            ? timedDbEntry.confidence
-            : undefined;
+        let confidence = timedDbEntry?.confidence;
 
         if ("redirect" in latestDbEntry) {
-          const redirect = timedRedirects.filter(
-            (r: any) => r.PK == latestDbEntry.redirect
-          )[0];
+          const redirect = timedRedirectsObj[latestDbEntry.redirect];
 
-          if (redirect == null) return undefined;
+          if (redirect == null || redirect.price == null) return undefined;
           confidence =
             confidence == undefined && "confidence" in redirect
               ? redirect.confidence
@@ -187,7 +184,7 @@ async function getTokenAndRedirectDataDB(
             redirect: latestDbEntry.redirect
           };
         } else {
-          if (timedDbEntry == undefined) return;
+          if (timedDbEntry == null || timedDbEntry.price == null) return;
           return {
             confidence,
             price: timedDbEntry.price,
@@ -209,26 +206,6 @@ async function getTokenAndRedirectDataDB(
 
     allReads.push(...results);
   }
-  // if (timestampedResults.length < tokens.length) {
-  //   const returnedTokens = timestampedResults.map((t: any) => t.address);
-  //   const missingTokens: string[] = [];
-
-  //   tokens.map((t: any) => {
-  //     if (returnedTokens[t] == undefined) {
-  //       missingTokens.push(t);
-  //     }
-  //   });
-
-  //   const currentResults = await getTokenAndRedirectData(
-  //     missingTokens,
-  //     chain,
-  //     getCurrentUnixTimestamp()
-  //   );
-
-  //   if (currentResults.length > 0) {
-  //     await currentResult.adapter()
-  //   }
-  // }
   return allReads;
 }
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
@@ -271,12 +248,11 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
         null,
         allWritesOfThisKind.map((x: Write) => x.confidence)
       );
-      filteredWrites.push(
-        allWritesOfThisKind.filter(
-          (x: Write) =>
-            x.confidence == maxConfidence && x.confidence > confidenceThreshold
-        )[0]
+      const chosenWrite = allWritesOfThisKind.find(
+        (x: Write) =>
+          x.confidence == maxConfidence && x.confidence > confidenceThreshold
       );
+      if (chosenWrite != null) filteredWrites.push(chosenWrite);
     }
   });
 

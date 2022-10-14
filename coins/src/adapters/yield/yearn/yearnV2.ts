@@ -67,9 +67,7 @@ async function getPricePerShare(
   });
   await requery(pricePerShares, chain, abi.getPricePerFullShare, block);
   await requery(pricePerShares, chain, abi.constantPricePerShare, block);
-  pricePerShares.output = pricePerShares.output.filter(
-    (v) => v.success == true
-  );
+  pricePerShares.output = pricePerShares.output.filter(v => v.success == true);
   return pricePerShares;
 }
 async function getUsdValues(
@@ -78,44 +76,40 @@ async function getUsdValues(
   coinsData: CoinData[],
   decimals: any
 ) {
-  let usdValues = pricePerShares.output.map((t) => {
-    const selectedVaults = vaults.filter(
+  const failObject = {
+    address: "fail",
+    price: -1,
+    decimal: -1,
+    symbol: "fail"
+  };
+  let usdValues = pricePerShares.output.map(t => {
+    const selectedVaults: VaultKeys | undefined = vaults.find(
       (v: VaultKeys) => v.address.toLowerCase() == t.input.target.toLowerCase()
     );
-    const underlying = selectedVaults[0].token.address;
-    const coinData: CoinData = coinsData.filter(
+    if (selectedVaults == null) return failObject;
+    const underlying = selectedVaults.token.address;
+    const coinData: CoinData | undefined = coinsData.find(
       (c: CoinData) => c.address == underlying.toLowerCase()
-    )[0];
-    if (!coinData)
-      return {
-        address: "fail",
-        price: -1,
-        decimal: -1,
-        symbol: "fail"
-      };
-    const decimal = decimals.filter(
+    );
+    if (!coinData) return failObject;
+    const decimal = decimals.find(
       (c: any) =>
-        selectedVaults[0].address.toLowerCase() == c.input.target.toLowerCase()
-    )[0].output;
+        selectedVaults.address.toLowerCase() == c.input.target.toLowerCase()
+    ).output;
 
     if (decimal == undefined || decimal == null) {
-      return {
-        address: "fail",
-        price: -1,
-        decimal: -1,
-        symbol: "fail"
-      };
+      return failObject;
     }
     const PPSdecimal = resolveDecimals(t.output, 0);
     return {
       address: t.input.target.toLowerCase(),
-      price: (t.output * coinData.price) / 10 ** PPSdecimal,
+      price: t.output * coinData.price / 10 ** PPSdecimal,
       decimal,
-      symbol: selectedVaults[0].symbol
+      symbol: selectedVaults.symbol
     };
   });
 
-  return usdValues.filter((v) => v.address !== "fail");
+  return usdValues.filter(v => v.address !== "fail");
 }
 async function pushMoreVaults(
   chain: string,
@@ -131,21 +125,21 @@ async function pushMoreVaults(
     multiCall({
       abi: abi.token,
       chain: chain as any,
-      calls: manualVaults[chain as keyof typeof manualVaults].map(
-        (v: string) => ({
-          target: v
-        })
-      ),
+      calls: manualVaults[
+        chain as keyof typeof manualVaults
+      ].map((v: string) => ({
+        target: v
+      })),
       block
     }),
     multiCall({
       abi: "erc20:symbol",
       chain: chain as any,
-      calls: manualVaults[chain as keyof typeof manualVaults].map(
-        (v: string) => ({
-          target: v
-        })
-      ),
+      calls: manualVaults[
+        chain as keyof typeof manualVaults
+      ].map((v: string) => ({
+        target: v
+      })),
       block
     })
   ]);
@@ -165,13 +159,11 @@ async function pushMoreVaults(
 }
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
-  let vaults: VaultKeys[] = (
-    await axios.get(
-      `https://api.yearn.finance/v1/chains/${
-        chains[chain as keyof object]
-      }/vaults/all`
-    )
-  ).data;
+  let vaults: VaultKeys[] = (await axios.get(
+    `https://api.yearn.finance/v1/chains/${chains[
+      chain as keyof object
+    ]}/vaults/all`
+  )).data;
   // 135
   await pushMoreVaults(chain, vaults, block);
 
@@ -202,7 +194,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   );
 
   let writes: Write[] = [];
-  usdValues.map((v) => {
+  usdValues.map(v => {
     addToDBWritesList(
       writes,
       chain,

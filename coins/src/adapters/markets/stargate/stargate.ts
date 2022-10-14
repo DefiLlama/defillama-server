@@ -104,10 +104,11 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   );
 
   let coinsData: CoinData[] = await getTokenAndRedirectData(
-    Object.entries(pools).map((p: any) =>
-      p[1].underlying == gasTokenDummyAddress
-        ? wrappedGasTokens[chain]
-        : p[1].underlying
+    Object.entries(pools).map(
+      (p: any) =>
+        p[1].underlying == gasTokenDummyAddress
+          ? wrappedGasTokens[chain]
+          : p[1].underlying
     ),
     chain,
     timestamp

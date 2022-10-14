@@ -3,7 +3,7 @@ import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import { ChainBlocks, Adapter, AdapterType, BaseAdapter } from "@defillama/adaptors/adapters/types";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
-import runAdapter, {  } from "@defillama/adaptors/adapters/utils/runAdapter";
+import runAdapter, { getFulfilledResults, getRejectedResults } from "@defillama/adaptors/adapters/utils/runAdapter";
 import { getBlock } from "@defillama/adaptors/helpers/getBlock";
 import { ProtocolAdaptor } from "../../data/types";
 import { Chain } from "@defillama/sdk/build/general";
@@ -30,7 +30,7 @@ export const handler = async (event: IHandlerEvent) => {
   const cleanPreviousDayTimestamp = getTimestampAtStartOfDayUTC(cleanCurrentDayTimestamp - 1)
 
   // Import data list to be used
-  const dataModule = await loadAdaptorsData(event.adaptorType)
+  const dataModule = loadAdaptorsData(event.adaptorType)
   const dataList = dataModule.default
   // Import some utils
   const { importModule, KEYS_TO_STORE } = dataModule

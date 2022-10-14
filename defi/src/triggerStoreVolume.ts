@@ -1,6 +1,6 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 // TODO pull dexVolumes from db
-import {adaptersDataVolumes} from "./dexVolumes/data";
+import volumeAdapters from "./dexVolumes/dexAdapters";
 import invokeLambda from "./utils/shared/invokeLambda";
 import type { IHandlerEvent as IStoreDexVolumeHandlerEvent } from './dexVolumes/handlers/storeDexVolume'
 import { handler as storeDexVolume } from "./dexVolumes/handlers/storeDexVolume";
@@ -28,7 +28,7 @@ export const handler = async (event?: IHandlerEvent) => {
     for (const bf of event.backfill) {
       const protocolIndexes: IStoreDexVolumeHandlerEvent['protocolIndexes'] = []
       for (const dexName of bf.dexNames) {
-        const dexIndex = adaptersDataVolumes.findIndex(va => va.volumeAdapter === dexName)
+        const dexIndex = volumeAdapters.findIndex(va => va.volumeAdapter === dexName)
         if (dexIndex >= 0)
           protocolIndexes.push(dexIndex)
       }
@@ -36,7 +36,7 @@ export const handler = async (event?: IHandlerEvent) => {
     }
   }
   else {
-    const protocolIndexes = Array.from(Array(adaptersDataVolumes.length).keys())
+    const protocolIndexes = Array.from(Array(volumeAdapters.length).keys())
     await invokeLambdas(protocolIndexes)
   }
 };

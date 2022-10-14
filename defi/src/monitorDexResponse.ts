@@ -1,6 +1,6 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 // TODO pull dexVolumes from db
-import { adaptersDataVolumes } from "./dexVolumes/data";
+import volumeAdapters from "./dexVolumes/dexAdapters";
 import invokeLambda from "./utils/shared/invokeLambda";
 import type { IHandlerEvent as IStoreDexVolumeHandlerEvent } from './dexVolumes/handlers/storeDexVolume'
 
@@ -27,7 +27,7 @@ const handler = async (event?: IHandlerEvent) => {
     for (const bf of event.backfill) {
       const protocolIndexes: IStoreDexVolumeHandlerEvent['protocolIndexes'] = []
       for (const dexName of bf.dexNames) {
-        const dexIndex = adaptersDataVolumes.findIndex(va => va.volumeAdapter === dexName)
+        const dexIndex = volumeAdapters.findIndex(va => va.volumeAdapter === dexName)
         if (dexIndex >= 0)
           protocolIndexes.push(dexIndex)
       }
@@ -36,16 +36,16 @@ const handler = async (event?: IHandlerEvent) => {
   }
   else {
     const protocolIndexes = [
-      adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'bancor'),
-      adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'balancer'),
-      adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'dodo'),
-      adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'hashflow'),
-      // adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'wingriders')
-      adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'wombat-exchange'),
-      adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'nomiswap'),
-      adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'sushiswap'),
-      adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'minswap'),
-      adaptersDataVolumes.findIndex(va => va.volumeAdapter === 'mdex'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'bancor'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'balancer'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'dodo'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'hashflow'),
+      // volumeAdapters.findIndex(va => va.volumeAdapter === 'wingriders')
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'wombat-exchange'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'nomiswap'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'sushiswap'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'minswap'),
+      volumeAdapters.findIndex(va => va.volumeAdapter === 'mdex'),
     ]
     await invokeLambdas(protocolIndexes)
   }

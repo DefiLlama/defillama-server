@@ -23628,7 +23628,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: "arbitrum:0x1A5B0aaF478bf1FDA7b934c76E7692D722982a6D",
   symbol: "BFR",
   url: "https://www.buffer.finance",
-  description: "Buffer is a decentralized peer to pool options trading platform. Where all options and predictions are minted as NFTs.",
+  description: "Buffer Finance is an exotic options trading platform built for trading price volatility and hedge risks while trading high leveraged positions. With Buffer you can get access to diverse markets in completely non-custodial way and all trades condenses to a simple question whether the price of the underlying will go up or down",
   chain: "Binance",
   logo: `${baseIconsUrl}/buffer-finance.png`,
   audits: "2",

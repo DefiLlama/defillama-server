@@ -503,6 +503,9 @@ export default {
     "elk": {
         enabled: true
     },
+    "luaswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

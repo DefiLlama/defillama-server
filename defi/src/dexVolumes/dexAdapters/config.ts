@@ -479,6 +479,27 @@ export default {
     "autoshark": {
         enabled: true
     },
+    "saddle-finance": {
+        enabled: true
+    },
+    "titano-swych": {
+        enabled: true
+    },
+    "stellarx": {
+        enabled: true
+    },
+    "ultronswap": {
+        enabled: true
+    },
+    "humble-defi": {
+        enabled: true
+    },
+    "pact": {
+        enabled: true
+    },
+    "algofi": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

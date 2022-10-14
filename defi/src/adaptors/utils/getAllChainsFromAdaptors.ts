@@ -4,7 +4,7 @@ import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/adaptors/adapters/type
 import { CHAIN } from "@defillama/adaptors/helpers/chains";
 import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
 import { IJSON, ProtocolAdaptor } from "../data/types";
-import { getStringArrUnique } from "../handlers/getDexs";
+import { getStringArrUnique } from "../handlers/getOverview";
 
 const getAllChainsFromAdaptors = (dexs2Filter: string[], imports_obj: IImportsMap, filter: boolean = true) =>
     getStringArrUnique(dexs2Filter.reduce((acc, adapterName) => {

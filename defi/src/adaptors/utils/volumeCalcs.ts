@@ -1,7 +1,7 @@
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../utils/date";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 import { AdaptorRecord, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
-import { IGeneralStats, ProtocolAdaptorSummary } from "../handlers/getDexs";
+import { IGeneralStats, ProtocolAdaptorSummary } from "../handlers/getOverview";
 import { ONE_DAY_IN_SECONDS } from "../handlers/getDexVolume";
 
 import getDataPoints from "./getDataPoints";

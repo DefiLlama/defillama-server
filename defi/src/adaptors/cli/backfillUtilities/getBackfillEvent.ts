@@ -7,7 +7,7 @@ import { Adapter } from "@defillama/adapors/adapters/types";
 import { getVolume, VolumeType } from "../../db-utils/volume"
 import getDataPoints from "../../utils/getDataPoints"
 import { getUniqStartOfTodayTimestamp } from "../../../../adapters/helpers/getUniSubgraphVolume"
-import { removeEventTimestampAttribute } from "../../handlers/getDexs"
+import { removeEventTimestampAttribute } from "../../handlers/getOverview"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 

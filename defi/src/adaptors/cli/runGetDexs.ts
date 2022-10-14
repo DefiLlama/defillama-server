@@ -1,5 +1,5 @@
 import "./setup.ts"
-import { handler, IGetDexsResponseBody } from "../handlers/getDexs";
+import { handler, IGetDexsResponseBody } from "../handlers/getOverview";
 import { APIGatewayProxyEvent } from "aws-lambda";
 import { formatTimestampAsDate } from "../../utils/date";
 

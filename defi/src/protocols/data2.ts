@@ -16843,5 +16843,26 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1665676731
 },
+{
+  id: "2182",
+  name: "Algomint",
+  address: "algorand:441139422",
+  symbol: "goMINT",
+  url: "https://gousd.algomint.io",
+  description: "Next generation blockchain infrastructure combining interoperability and liquidity consolidation.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/algomint.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Algorand"],
+  module: "algomint/index.js",
+  twitter: "Algomint_io",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1665742020
+},
 ]
 export default data2;

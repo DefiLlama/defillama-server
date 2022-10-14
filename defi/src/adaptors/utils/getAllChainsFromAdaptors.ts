@@ -1,13 +1,16 @@
-import { Chain } from "@defillama/sdk/build/general";
-import dexVolumes from "@defillama/adapters/volumes";
 import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/adaptors/adapters/types";
 import { CHAIN } from "@defillama/adaptors/helpers/chains";
 import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
 import { IJSON, ProtocolAdaptor } from "../data/types";
-import { getStringArrUnique } from "../handlers/getOverview";
 
-const getAllChainsFromAdaptors = (dexs2Filter: string[], imports_obj: IImportsMap, filter: boolean = true) =>
-    getStringArrUnique(dexs2Filter.reduce((acc, adapterName) => {
+export const getStringArrUnique = (arr: string[]) => {
+    return arr.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+    })
+}
+
+const getAllChainsFromAdaptors = (dexs2Filter: string[], imports_obj: IImportsMap, filter: boolean = true) => {
+    return getStringArrUnique(dexs2Filter.reduce((acc, adapterName) => {
         const adaptor = imports_obj[adapterName].default
         if (!adaptor) return acc
         if ("adapter" in adaptor) {
@@ -23,6 +26,7 @@ const getAllChainsFromAdaptors = (dexs2Filter: string[], imports_obj: IImportsMa
         } else console.error("Invalid adapter", adapterName, imports_obj[adapterName])
         return acc
     }, [] as string[]))
+}
 
 export const getAllProtocolsFromAdaptor = (adaptorModule: string, adaptor: Adapter) => {
     if (!adaptor) return []

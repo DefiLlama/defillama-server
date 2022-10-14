@@ -6,7 +6,7 @@ export interface ProtocolAdaptor extends Protocol {
     config?: IConfig
     disabled: boolean
     protocolsData: IJSON<{
-        chains: IJSON<string[]>
+        chains: string[]
         disabled: boolean
     }> | null
 }

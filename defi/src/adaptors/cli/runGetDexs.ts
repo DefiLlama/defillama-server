@@ -14,7 +14,7 @@ const event = {
     delete rr.totalDataChartBreakdown
     // @ts-ignore
     delete rr.totalDataChart
-    console.log(rr.dexs)
+    console.log(rr.dexs.find(d=>d.name==="Uniswap"))
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)
     } */

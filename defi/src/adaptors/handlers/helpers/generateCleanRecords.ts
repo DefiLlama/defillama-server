@@ -1,6 +1,6 @@
 import { formatTimestampAsDate } from "../../../utils/date"
 import { AdaptorRecord, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
-import { ONE_DAY_IN_SECONDS } from "../getDexVolume"
+import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 
 /**
  * Returns a normalized list of adaptor records.

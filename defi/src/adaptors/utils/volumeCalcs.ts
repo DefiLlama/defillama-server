@@ -2,7 +2,7 @@ import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../utils/
 import { IJSON, ProtocolAdaptor } from "../data/types";
 import { AdaptorRecord, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
 import { IGeneralStats, ProtocolAdaptorSummary } from "../handlers/getOverview";
-import { ONE_DAY_IN_SECONDS } from "../handlers/getDexVolume";
+import { ONE_DAY_IN_SECONDS } from "../handlers/getProtocol";
 
 import getDataPoints from "./getDataPoints";
 

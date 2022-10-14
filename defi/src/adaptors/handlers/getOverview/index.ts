@@ -1,18 +1,19 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record"
+import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 
 import { calcNdChange, generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getStatsByProtocolVersion, IChartData, IChartDataByDex, sumAllVolumes } from "../../utils/volumeCalcs";
-import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date";
+import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import { formatChain } from "../../utils/getAllChainsFromAdaptors";
 import config from "../../data/volumes/config";
-import { ONE_DAY_IN_SECONDS } from "../getDexVolume";
+import { ONE_DAY_IN_SECONDS } from "../getProtocol";
 import { sendDiscordAlert } from "../../utils/notify";
-import { Adapter, AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/adaptors/adapters/types";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import { IJSON, ProtocolAdaptor } from "../../data/types";
 import loadAdaptorsData from "../../data"
 import generateCleanRecords from "../helpers/generateCleanRecords";
+import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 
 export interface IGeneralStats {
     totalVolume24h: number | null;
@@ -46,16 +47,20 @@ export interface ProtocolAdaptorSummary extends Pick<ProtocolAdaptor,
     protocolsStats: ProtocolStats | null
 }
 
-type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)
+export type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)
 
-const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<string> = {
+export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<string> = {
     [AdapterType.VOLUME]: AdaptorRecordType.dailyVolumeRecord,
     [AdapterType.FEES]: AdaptorRecordType.dailyFeesRecord
 }
 
+// -> /overview/volumes
+// -> /overview/volumes/ethereum
+// -> /overview/fees/
+// -> /overview/fees/ethereum
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const pathChain = event.pathParameters?.chain?.toLowerCase()
-    const adaptorType = event.pathParameters?.type?.toLowerCase()
+    const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
     const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
     const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
@@ -63,82 +68,15 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!adaptorType) throw new Error("Missing parameter")
 
     // Import data list
-    const adaptorsData = (await loadAdaptorsData(adaptorType as AdapterType))
+    const adaptorsData = await loadAdaptorsData(adaptorType)
 
     const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled).map<Promise<ProtocolAdaptorSummary>>(async (adapter) => {
-        try {
-            // Get all records from db
-            let adaptorRecords = (await getAdaptorRecord(adapter.id, DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType] as AdaptorRecordType))
-
-            // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
-            if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
-
-            // Clean data by chain
-            adaptorRecords = generateCleanRecords(
-                adaptorRecords,
-                adapter.chains,
-                adapter.protocolsData ? Object.keys(adapter.protocolsData) : [adapter.module],
-                chainFilter
-            )
-            if (adaptorRecords.length === 0) throw new Error(`${adapter.name} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
-
-            // Calc stats with last available data
-            const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
-            const lastAvailableDataTimestamp = adaptorRecords[adaptorRecords.length - 1].timestamp
-            const stats = getStats(adapter, adaptorRecords, lastAvailableDataTimestamp)
-            const protocolVersions = getProtocolVersionStats(adapter, adaptorRecords, lastAvailableDataTimestamp)
-
-            // Check if data looks is valid. Not sure if this should be added
-            if (
-                adaptorRecords.length !== 1
-                && (
-                    !stats.change_1d
-                    || (stats.change_1d && (stats.change_1d < -99 || stats.change_1d > 10 * 100))
-                )
-            ) {
-                if (enableAlerts) //Move alert to error handler
-                    await sendDiscordAlert(`${adapter.name} has a daily change of ${stats.change_1d}, looks sus... Not including in the response`)
-                console.error(`${adapter.name} has a daily change of ${stats.change_1d}, looks sus... Not including in the response`)
-            }
-
-            // Populate last missing days with last available data
-            for (let i = lastAvailableDataTimestamp + ONE_DAY_IN_SECONDS; i <= yesterdaysCleanTimestamp; i += ONE_DAY_IN_SECONDS)
-                adaptorRecords.push(new AdaptorRecord(adaptorRecords[0].type, adaptorRecords[0].adaptorId, i, adaptorRecords[0].data))
-
-            return {
-                name: adapter.name,
-                disabled: adapter.disabled,
-                displayName: adapter.displayName,
-                module: adapter.module,
-                volumes: adaptorRecords,
-                change_1d: stats.change_1d,
-                change_7d: stats.change_7d,
-                change_1m: stats.change_1m,
-                totalVolume24h: stats.totalVolume24h,
-                volume24hBreakdown: stats.volume24hBreakdown,
-                chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains,
-                protocolsStats: protocolVersions
-
-            }
-        } catch (error) {
-            console.error("ADAPTER", adapter.name, error)
-            // TODO: handle better errors
-            return {
-                name: adapter.name,
-                module: adapter.module,
-                disabled: adapter.disabled,
-                displayName: adapter.displayName,
-                totalVolume24h: null,
-                volume24hBreakdown: null,
-                yesterdayTotalVolume: null,
-                change_1d: null,
-                volumes: null,
-                change_7d: null,
-                change_1m: null,
-                chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
-                protocolsStats: null
-            }
-        }
+        return generateProtocolAdaptorSummary(adapter, adaptorType, chainFilter, async (e) => {
+            console.error(e)
+            // TODO, move error handling to rejected promises
+            if (enableAlerts)
+                await sendDiscordAlert(e.message)
+        })
     }))
 
     // Handle rejected dexs
@@ -175,29 +113,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         ...generalStats,
     } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
-
-const getStats = (adapter: ProtocolAdaptor, adaptorRecords: AdaptorRecord[], baseTimestamp: number): IGeneralStats => {
-    return {
-        change_1d: calcNdChange(adaptorRecords, 1, baseTimestamp, true),
-        change_7d: calcNdChange(adaptorRecords, 7, baseTimestamp, true),
-        change_1m: calcNdChange(adaptorRecords, 30, baseTimestamp, true),
-        totalVolume24h: adapter.disabled ? null : sumAllVolumes(adaptorRecords[adaptorRecords.length - 1].data),
-        volume24hBreakdown: adapter.disabled ? null : adaptorRecords[adaptorRecords.length - 1].data
-    }
-}
-
-const getProtocolVersionStats = (adapterData: ProtocolAdaptor, adaptorRecords: AdaptorRecord[], baseTimestamp: number) => {
-    if (!adapterData.protocolsData) return null
-    const protocolVersionsStats = getStatsByProtocolVersion(adaptorRecords, baseTimestamp, adapterData.protocolsData)
-    return Object.entries(adapterData.protocolsData)
-        .reduce((acc, [protKey, data]) => ({
-            ...acc,
-            [protKey]: {
-                ...data,
-                ...protocolVersionsStats[protKey],
-            }
-        }), {} as ProtocolStats)
-}
 
 const substractSubsetVolumes = (dex: ProtocolAdaptorSummary, _index: number, dexs: ProtocolAdaptorSummary[], baseTimestamp?: number): ProtocolAdaptorSummary => {
     const volumeAdapter = dex.module
@@ -248,12 +163,6 @@ export const removeEventTimestampAttribute = (v: AdaptorRecord) => {
 
 export const getAllChainsUniqueString = (chains: string[]) => {
     return chains.map(formatChain).filter((value, index, self) => {
-        return self.indexOf(value) === index;
-    })
-}
-
-export const getStringArrUnique = (arr: string[]) => {
-    return arr.filter((value, index, self) => {
         return self.indexOf(value) === index;
     })
 }

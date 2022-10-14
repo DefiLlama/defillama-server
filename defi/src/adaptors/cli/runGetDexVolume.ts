@@ -1,5 +1,5 @@
 import "./setup.ts"
-import { handler } from "../handlers/getDexVolume";
+import { handler } from "../handlers/getProtocol";
 
 (async () => {
     const r = await handler({

@@ -1,14 +1,11 @@
-import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import sluggify from "../../../utils/sluggify";
 import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record";
-import { isDisabled } from "../../utils/getAllChainsFromAdaptors";
-import removeErrors from "../../utils/removeErrors";
-import { calcNdChange, sumAllVolumes } from "../../utils/volumeCalcs";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import loadAdaptorsData from "../../data"
 import { IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
+import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 
 export interface VolumeHistoryItem {
     dailyVolume: IRecordAdaptorRecordData;
@@ -31,7 +28,7 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
 > {
     volumeHistory: VolumeHistoryItem[] | null
     total1dVolume: number | null
-    change1dVolume: number | null
+    change_1d: number | null
 }
 
 export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
@@ -42,27 +39,27 @@ const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<string> = {
 }
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-    const dexName = event.pathParameters?.dex?.toLowerCase()
-    const adaptorType = event.pathParameters?.type?.toLowerCase()
-    const errors = event.queryStringParameters?.errors?.toLowerCase() === 'true'
-    if (!dexName || !adaptorType) throw new Error("Missing DEX name!")
+    const protocolName = event.pathParameters?.name?.toLowerCase()
+    const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
+    if (!protocolName || !adaptorType) throw new Error("Missing name or type")
 
-    const adaptorsData = (await loadAdaptorsData(adaptorType as AdapterType))
+    const adaptorsData = loadAdaptorsData(adaptorType)
     const dexData = adaptorsData.default.find(
-        (prot) => sluggify(prot) === dexName
+        (prot) => sluggify(prot) === protocolName
     );
     if (!dexData) throw new Error("DEX data not found!")
     let dexDataResponse = {}
     try {
-        const volumes = await getAdaptorRecord(dexData.id, DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType] as AdaptorRecordType, "ALL")
+        let volumes = await getAdaptorRecord(dexData.id, DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType] as AdaptorRecordType, "ALL")
+        volumes = volumes
         // This check is made to infer Volume type instead of Volume[] type
         if (volumes instanceof AdaptorRecord) throw new Error("Wrong volume queried")
 
-        const yesterdaysVolumeObj = volumes[volumes.length - 1]
-        //const yesterdaysTimestamp = (Date.now() / 1000) - ONE_DAY_IN_SECONDS;
-        const yesterdaysVolume = yesterdaysVolumeObj.data // volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === getTimestampAtStartOfDayUTC(yesterdaysTimestamp))?.data
-        const ddr: IHandlerBodyResponse = {
-            name: dexData.name,
+        const generatedSummary = await generateProtocolAdaptorSummary(dexData, adaptorType, undefined, undefined)
+
+        dexDataResponse = {
+            name: generatedSummary.name,
+            disabled: generatedSummary.disabled,
             logo: dexData.logo,
             address: dexData.address,
             url: dexData.url,
@@ -73,20 +70,13 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             audit_links: dexData.audit_links,
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
-            disabled: dexData.disabled,
-            volumeHistory: volumes.map<VolumeHistoryItem>(v => ({
-                dailyVolume: errors
-                    ? v.data
-                    : removeErrors(v.data),
-                timestamp: v.sk
-            })),
-            total1dVolume: yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
-            change1dVolume: calcNdChange(volumes, 1, yesterdaysVolumeObj.timestamp)
-        }
-        dexDataResponse = ddr
+            volumeHistory: formatChartHistory(generatedSummary.volumes),
+            total1dVolume: generatedSummary.totalVolume24h, // yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
+            change_1d: generatedSummary.change_1d // calcNdChange(volumes, 1, yesterdaysVolumeObj.timestamp)
+        } as IHandlerBodyResponse
     } catch (error) {
         console.error(error)
-        const ddr: IHandlerBodyResponse = {
+        dexDataResponse = {
             name: dexData.name,
             logo: dexData.logo,
             address: dexData.address,
@@ -101,12 +91,19 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             disabled: dexData.disabled,
             volumeHistory: null,
             total1dVolume: null,
-            change1dVolume: null
-        }
-        dexDataResponse = ddr
+            change_1d: null
+        } as IHandlerBodyResponse
     }
 
     return successResponse(dexDataResponse as IHandlerBodyResponse, 10 * 60); // 10 mins cache
 };
+
+const formatChartHistory = (volumes: AdaptorRecord[] | null) => {
+    if (volumes === null) return []
+    return volumes.map<VolumeHistoryItem>(v => ({
+        dailyVolume: v.data,
+        timestamp: v.sk
+    }))
+}
 
 export default wrap(handler);

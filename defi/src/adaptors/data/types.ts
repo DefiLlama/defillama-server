@@ -5,7 +5,10 @@ export interface ProtocolAdaptor extends Protocol {
     displayName: string
     config?: IConfig
     disabled: boolean
-    protocols: string[]
+    protocolsData: IJSON<{
+        chains: IJSON<string[]>
+        disabled: boolean
+    }> | null
 }
 
 export interface IConfig {

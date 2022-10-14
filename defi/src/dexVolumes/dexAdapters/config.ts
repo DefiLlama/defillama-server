@@ -480,7 +480,7 @@ export default {
         enabled: true
     },
     "saddle-finance": {
-        enabled: false
+        enabled: true
     },
     "titano-swych": {
         enabled: true
@@ -492,13 +492,13 @@ export default {
         enabled: true
     },
     "humble-defi": {
-        enabled: false
+        enabled: true
     },
     "pact": {
-        enabled: false
+        enabled: true
     },
     "algofi": {
-        enabled: false
+        enabled: true
     },
     "elk": {
         enabled: true

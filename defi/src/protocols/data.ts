@@ -17969,7 +17969,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   category: "CDP",
   chains: ["Polygon"],
   module: "ovnstable.js",
-  twitter: "ovnstable",
+  twitter: "overnight_fi",
   audit_links: ["https://github.com/ovnstable/ovnstable-app/blob/master/audits/hacken_2022-02-03.pdf"],
   listedAt: 1639428732,
 },

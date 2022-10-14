@@ -1,6 +1,7 @@
-import { getTimestampAtStartOfDayUTC } from "../../utils/date";
+import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../utils/date";
+import { IJSON, ProtocolAdaptor } from "../data/types";
 import { AdaptorRecord, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
-import { ProtocolAdaptorSummary } from "../handlers/getDexs";
+import { IGeneralStats, ProtocolAdaptorSummary } from "../handlers/getDexs";
 import { ONE_DAY_IN_SECONDS } from "../handlers/getDexVolume";
 
 import getDataPoints from "./getDataPoints";
@@ -19,18 +20,15 @@ const sumAllVolumes = (breakdownVolumes: IRecordAdaptorRecordData, protVersion?:
 }
 
 
-export interface IGeneralStats {
-    totalVolume: number;
-    changeVolume1d: number | null;
-    changeVolume7d: number | null;
-    changeVolume30d: number | null;
-}
-
-const getSumAllDexsToday = (dexs: ProtocolAdaptorSummary[], dex2Substract?: ProtocolAdaptorSummary, baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS): IGeneralStats => {
+const getSumAllDexsToday = (
+    dexs: ProtocolAdaptorSummary[],
+    dex2Substract?: ProtocolAdaptorSummary,
+    baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS
+): IGeneralStats => {
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp);
-    const timestamp1d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 1  // (new Date(yesterdaysTimestamp * 1000)).setDate((new Date(yesterdaysTimestamp * 1000).getDate() - 1)) / 1000
-    const timestamp7d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 7  // (new Date(yesterdaysTimestamp * 1000)).setDate((new Date(yesterdaysTimestamp * 1000).getDate() - 7)) / 1000
-    const timestamp30d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 30  // (new Date(yesterdaysTimestamp * 1000)).setDate((new Date(yesterdaysTimestamp * 1000).getDate() - 30)) / 1000
+    const timestamp1d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 1
+    const timestamp7d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 7
+    const timestamp30d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 30
     let totalVolume = 0
     let totalVolume1d = 0
     let totalVolume7d = 0
@@ -53,10 +51,11 @@ const getSumAllDexsToday = (dexs: ProtocolAdaptorSummary[], dex2Substract?: Prot
         totalVolume30d += volume30d ? sumAllVolumes(volume30d) - sumAllVolumes(dex2SubstractVolumes['totalVolume30d']) : 0
     }
     return {
-        totalVolume,
-        changeVolume1d: formatNdChangeNumber(((totalVolume - totalVolume1d) / totalVolume1d) * 100),
-        changeVolume7d: formatNdChangeNumber(((totalVolume - totalVolume7d) / totalVolume7d) * 100),
-        changeVolume30d: formatNdChangeNumber(((totalVolume - totalVolume30d) / totalVolume30d) * 100),
+        totalVolume24h: totalVolume,
+        change_1d: formatNdChangeNumber(((totalVolume - totalVolume1d) / totalVolume1d) * 100) ?? 0,
+        change_7d: formatNdChangeNumber(((totalVolume - totalVolume7d) / totalVolume7d) * 100) ?? 0,
+        change_1m: formatNdChangeNumber(((totalVolume - totalVolume30d) / totalVolume30d) * 100) ?? 0,
+        volume24hBreakdown: null
     }
 }
 
@@ -95,13 +94,28 @@ const generateByDexVolumesChartData = (dexs: ProtocolAdaptorSummary[]): IChartDa
     return chartData
 }
 
-const calcNdChange = (volumes: AdaptorRecord[], nDaysChange: number, baseTimestamp?: number) => {
+const calcNdChange = (volumes: AdaptorRecord[], nDaysChange: number, baseTimestamp?: number, extend?: boolean) => {
     let totalVolume: number | null = 0
     let totalVolumeNd: number | null = 0
-    const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp ?? ((Date.now() / 1000) - ONE_DAY_IN_SECONDS));
+    let yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp ?? ((Date.now() / 1000) - ONE_DAY_IN_SECONDS));
+    let yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
+    if (extend) {
+        if (!yesterdaysVolume)
+        for (let i = 1; i <= 3; i++) {
+            yesterdaysTimestamp = yesterdaysTimestamp - (i * ONE_DAY_IN_SECONDS)
+            yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
+            if (yesterdaysVolume) break
+        }
+    }
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
-    const yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
-    const volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd)?.data
+    let volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd)?.data
+    if (extend) {
+        if (!volumeNd)
+        for (let i = 1; i <= 3; i++) {
+            volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd - (i * ONE_DAY_IN_SECONDS))?.data
+            if (volumeNd) break
+        }
+    }
     totalVolume = yesterdaysVolume ? totalVolume + sumAllVolumes(yesterdaysVolume) : null
     totalVolumeNd = volumeNd ? totalVolumeNd + sumAllVolumes(volumeNd) : null
     const ndChange = totalVolume && totalVolumeNd ? (totalVolume - totalVolumeNd) / totalVolumeNd * 100 : null
@@ -114,51 +128,34 @@ const formatNdChangeNumber = (number: number | null) => {
     return Math.round((number + Number.EPSILON) * 100) / 100
 }
 
-export const getSummaryByProtocolVersion = (volumes: AdaptorRecord[], prevDayTimestamp: number) => {
-    const prevDayVolume = volumes.find(vol => vol.timestamp === prevDayTimestamp)
+export const getStatsByProtocolVersion = (volumes: AdaptorRecord[], prevDayTimestamp: number, protocolData: NonNullable<ProtocolAdaptor['protocolsData']>) => {
     const raw = volumes.reduce((accVols, volume) => {
-        Object.entries(volume.data).forEach(([chain, protocolsData]) => {
-            if (typeof protocolsData === 'number') return
+        for (const [chain, protocolsData] of Object.entries(volume.data)) {
+            if (typeof protocolsData === 'number') return accVols
             const protocolNames = Object.keys(protocolsData)
-            if (protocolNames.length <= 1) return
             for (const protocolName of protocolNames) {
-                if (accVols[protocolName]) {
-                    accVols[protocolName].push(new AdaptorRecord(volume.type, volume.adaptorId, volume.timestamp, {
-                        [chain]: {
-                            [protocolName]: protocolsData[protocolName]
-                        }
-                    }))
-                }
-                else {
-                    accVols[protocolName] = [(new AdaptorRecord(volume.type, volume.adaptorId, volume.timestamp, {
-                        [chain]: {
-                            [protocolName]: protocolsData[protocolName]
-                        }
-                    }))]
-                }
+                if (!accVols[protocolName]) accVols[protocolName] = []
+                accVols[protocolName].push(new AdaptorRecord(volume.type, volume.adaptorId, volume.timestamp, {
+                    [chain]: {
+                        [protocolName]: protocolsData[protocolName]
+                    }
+                }))
             }
-        })
+        }
         return accVols
-    }, {} as { [protocol: string]: AdaptorRecord[] })
-    delete raw['error']
+    }, {} as IJSON<AdaptorRecord[]>)
     const summaryByProtocols = Object.entries(raw).reduce((acc, [protVersion, protVolumes]) => {
+        const prevDayVolume = protVolumes.find(vol => vol.timestamp === prevDayTimestamp)
         acc[protVersion] = {
-            totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data, protVersion) : 0,
-            change_1d: calcNdChange(protVolumes, 1),
-            change_7d: calcNdChange(protVolumes, 7),
-            change_1m: calcNdChange(protVolumes, 30),
+            totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data, protVersion) : protocolData[protVersion].disabled ? null : 0,
+            change_1d: calcNdChange(protVolumes, 1, prevDayTimestamp),
+            change_7d: calcNdChange(protVolumes, 7, prevDayTimestamp),
+            change_1m: calcNdChange(protVolumes, 30, prevDayTimestamp),
+            volume24hBreakdown: null
         }
         return acc
-    }, {} as {
-        // TODO: improve types
-        [protV: string]: {
-            totalVolume24h: number | null
-            change_1d: number | null
-            change_7d: number | null
-            change_1m: number | null
-        }
-    })
-    return Object.keys(summaryByProtocols).length >= 1 ? summaryByProtocols : null
+    }, {} as IJSON<IGeneralStats>)
+    return summaryByProtocols
 }
 
 export {

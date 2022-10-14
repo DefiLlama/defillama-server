@@ -1,7 +1,7 @@
 import data from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
 import { sluggifyString } from "../../../utils/sluggify";
-import getAllChainsFromAdaptors, { getAllProtocolsFromAdaptor, isDisabled } from "../../utils/getAllChainsFromAdaptors";
+import getAllChainsFromAdaptors, { getAllProtocolsFromAdaptor, getChainByProtocolVersion, getProtocolsData, isDisabled } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { Adapter } from "@defillama/adaptors/adapters/types";
 
@@ -28,9 +28,9 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 module: adapterKey,
                 config: config[adapterKey],
                 chains: getAllChainsFromAdaptors([adapterKey], imports_obj),
-                protocols: getAllProtocolsFromAdaptor(adapterKey, imports_obj[adapterKey].default),
-                disabled: isDisabled(adapterKey, imports_obj),
-                displayName: getDisplayName(dexFoundInProtocols.name, imports_obj[adapterKey].default)
+                disabled: isDisabled(imports_obj[adapterKey].default),
+                displayName: getDisplayName(dexFoundInProtocols.name, imports_obj[adapterKey].default),
+                protocolsData: getProtocolsData(adapterKey, imports_obj[adapterKey].default)
             }
         // TODO: Handle better errors
         //console.error(`Missing info for ${adapterKey} DEX!`)

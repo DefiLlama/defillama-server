@@ -1,5 +1,5 @@
 import { formatTimestampAsDate } from "../../../utils/date"
-import { AdaptorRecord, IRecordAdapterRecordChainData, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
+import { AdaptorRecord, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
 import { ONE_DAY_IN_SECONDS } from "../getDexVolume"
 
 /**

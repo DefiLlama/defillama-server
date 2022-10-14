@@ -14969,7 +14969,7 @@ listedAt: 1650804679
   id: "2096",
   name: "SeaLightSwap",
   address: "polygon:0x81966f1C3676D72BBF3E6ca08A8996C162976A97",
-  symbol: "SLC",
+  symbol: "SEAS",
   url: "https://sealightswap.org/#/swap",
   description: "AMM DEX on Polygon",
   chain: "Polygon",

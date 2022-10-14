@@ -15923,10 +15923,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "923",
     name: "LeonicornSwap",
-    address: "bsc:0x2c8368f8f474ed9af49b87eac77061beb986c2f1",
-    symbol: "LEOS",
+    address: "bsc:0x27e873bee690c8e161813de3566e9e18a64b0381",
+    symbol: "LEON",
     url: "https://dex.leonicornswap.com/home",
-    description: "Advanced AMM with dual token model on BSC",
+    description: "Advanced Decentralized Ecosystem With a Reward Sharing Economy",
     chain: "Binance",
     logo: `${baseIconsUrl}/leonicornswap.jpg`,
     audits: "2",

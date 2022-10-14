@@ -77,12 +77,15 @@ export default async function (
   balances = normalizeBalances(balances);
 
   const tokenData = await fetchTokenData(timestamp, balances);
+
+  const rawTokenBalances = {} as Balances;
   Object.keys(balances).map((key: string) => {
+    sumSingleBalance(rawTokenBalances, key, balances[key]);
     tokenData.forEach((response) => {
       if (key in response) return
       // need to fix these final params
-      // whats the best way to fetch symbol, timestamp - is there a better option 
-      addStaleCoin(staleCoins, key, 'TBC', 0); 
+      // whats the best way to fetch symbol, timestamp - is there a better option
+      addStaleCoin(staleCoins, key, 'TBC', 0);
     })
   })
 
@@ -113,6 +116,7 @@ export default async function (
   return {
     usdTvl,
     tokenBalances,
-    usdTokenBalances
+    usdTokenBalances,
+    rawTokenBalances
   };
 }

@@ -6177,7 +6177,7 @@ listedAt: 1650804679
   description: "GoodGhosting is a decentralized social savings app that combines game design elements with goal-based saving.",
   chain: "Celo",
   logo: `${baseIconsUrl}/goodghosting.png`,
-  audits: "5",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,

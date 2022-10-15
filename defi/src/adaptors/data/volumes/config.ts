@@ -1,7 +1,4 @@
-export interface IVolumesConfig {
-    enabled?: boolean
-    includedVolume?: string[]
-}
+import { AdaptorsConfig } from "../types"
 
 export default {
     "balancer": {
@@ -480,7 +477,7 @@ export default {
         enabled: true
     },
     "saddle-finance": {
-        enabled: false
+        enabled: true
     },
     "titano-swych": {
         enabled: true
@@ -492,17 +489,18 @@ export default {
         enabled: true
     },
     "humble-defi": {
-        enabled: false
+        enabled: true
     },
     "pact": {
-        enabled: false
+        enabled: true
     },
     "algofi": {
-        enabled: false
+        enabled: true
     },
     "elk": {
         enabled: true
     },
-} as {
-    [name: string]: IVolumesConfig
-}
+    "luaswap": {
+        enabled: true
+    }
+} as AdaptorsConfig

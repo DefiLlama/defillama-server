@@ -16866,5 +16866,26 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1665742020
 },
+{
+  id: "2183",
+  name: "Ape Finance",
+  address: "0x4332f8A38f14BD3D8D1553aF27D7c7Ac6C27278D",
+  symbol: "APEFI",
+  url: "https://ape.fi",
+  description: "Ape Finance is building DeFi tools for metaverse dwellers, proud PFP owners, and digital collectible enthusiasts in all of us. We appreciate culture, art, and games. Ape Finance begins with the creation of the ApeUSD. ApeUSD is the stablecoin for the new, web3, metaverse world. Users can collateralize APE to mint ApeUSD. ApeUSD is a synthetic token that tracks the value of the USD, backed by APE. Our governance token is APEFI.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ape-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "ape-finance",
+  cmcId: "21209",
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "ape-fi/index.js",
+  twitter: "apedotfi",
+  forkedFrom:["Compound"],
+  oracles: ["Chainlink"],
+  listedAt: 1665830671
+},
 ]
 export default data2;

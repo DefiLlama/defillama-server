@@ -70,8 +70,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             audit_links: dexData.audit_links,
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
-            volumeHistory: formatChartHistory(generatedSummary.volumes),
-            total1dVolume: generatedSummary.totalVolume24h, // yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
+            volumeHistory: formatChartHistory(generatedSummary.records),
+            total1dVolume: generatedSummary.total24h, // yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
             change_1d: generatedSummary.change_1d // calcNdChange(volumes, 1, yesterdaysVolumeObj.timestamp)
         } as IHandlerBodyResponse
     } catch (error) {

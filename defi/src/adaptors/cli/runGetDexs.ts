@@ -1,5 +1,5 @@
 import "./setup.ts"
-import { handler, IGetDexsResponseBody } from "../handlers/getOverview";
+import { handler, IGetOverviewResponseBody } from "../handlers/getOverview";
 import { APIGatewayProxyEvent } from "aws-lambda";
 import { formatTimestampAsDate } from "../../utils/date";
 
@@ -13,7 +13,7 @@ const event = {
 
 (async () => {
     const r = await handler(event)
-    const rr = JSON.parse(r.body) as IGetDexsResponseBody
+    const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     // @ts-ignore
     delete rr.totalDataChartBreakdown
     // @ts-ignore

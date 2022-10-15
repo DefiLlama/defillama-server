@@ -4,11 +4,11 @@ import { ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
 import { calcNdChange, getStatsByProtocolVersion, sumAllVolumes } from "../../utils/volumeCalcs"
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGeneralStats, ProtocolStats } from "../getOverview"
+import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
 
-export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>) => {
+export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
     try {
         // Get all records from db
         let adaptorRecords = (await getAdaptorRecord(adapter.id, DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType] as AdaptorRecordType))
@@ -50,12 +50,13 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainF
             disabled: adapter.disabled,
             displayName: adapter.displayName,
             module: adapter.module,
-            volumes: adaptorRecords,
+            records: adaptorRecords,
             change_1d: stats.change_1d,
             change_7d: stats.change_7d,
             change_1m: stats.change_1m,
-            totalVolume24h: stats.totalVolume24h,
-            volume24hBreakdown: stats.volume24hBreakdown,
+            total24h: stats.total24h,
+            breakdown24h: stats.breakdown24h,
+            config: adapter.config,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains,
             protocolsStats: protocolVersions
 
@@ -68,11 +69,11 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainF
             module: adapter.module,
             disabled: adapter.disabled,
             displayName: adapter.displayName,
-            totalVolume24h: null,
-            volume24hBreakdown: null,
-            yesterdayTotalVolume: null,
+            config: adapter.config,
+            total24h: null,
+            breakdown24h: null,
             change_1d: null,
-            volumes: null,
+            records: null,
             change_7d: null,
             change_1m: null,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
@@ -87,8 +88,8 @@ const getStats = (adapter: ProtocolAdaptor, adaptorRecords: AdaptorRecord[], bas
         change_1d: calcNdChange(adaptorRecords, 1, baseTimestamp, true),
         change_7d: calcNdChange(adaptorRecords, 7, baseTimestamp, true),
         change_1m: calcNdChange(adaptorRecords, 30, baseTimestamp, true),
-        totalVolume24h: adapter.disabled ? null : sumAllVolumes(adaptorRecords[adaptorRecords.length - 1].data),
-        volume24hBreakdown: adapter.disabled ? null : adaptorRecords[adaptorRecords.length - 1].data
+        total24h: adapter.disabled ? null : sumAllVolumes(adaptorRecords[adaptorRecords.length - 1].data),
+        breakdown24h: adapter.disabled ? null : adaptorRecords[adaptorRecords.length - 1].data
     }
 }
 

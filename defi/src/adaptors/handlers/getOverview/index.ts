@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 
-import {  generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getStatsByProtocolVersion, IChartData, IChartDataByDex, sumAllVolumes } from "../../utils/volumeCalcs";
+import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getStatsByProtocolVersion, IChartData, IChartDataByDex, sumAllVolumes } from "../../utils/volumeCalcs";
 import { formatChain } from "../../utils/getAllChainsFromAdaptors";
 import config from "../../data/volumes/config";
 import { sendDiscordAlert } from "../../utils/notify";
@@ -13,35 +13,30 @@ import loadAdaptorsData from "../../data"
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 
 export interface IGeneralStats {
-    totalVolume24h: number | null;
+    total24h: number | null;
     change_1d: number | null;
     change_7d: number | null;
     change_1m: number | null;
-    volume24hBreakdown: IRecordAdaptorRecordData | null
+    breakdown24h: IRecordAdaptorRecordData | null
 }
 
-export type IGetDexsResponseBody = IGeneralStats & {
-    totalDataChart: IChartData,
-    totalDataChartBreakdown: IChartDataByDex,
-    dexs: Omit<ProtocolAdaptorSummary, 'volumes' | 'module'>[]
-    allChains: string[]
-}
-
-export interface ProtocolAdaptorSummary extends Pick<ProtocolAdaptor,
+export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     'name'
     | 'disabled'
     | 'displayName'
     | 'chains'
     | 'module'
-> {
-    totalVolume24h: number | null
-    volume24hBreakdown: IRecordAdaptorRecordData | null
-    volumes: AdaptorRecord[] | null
-    change_1d: number | null
-    change_7d: number | null
-    change_1m: number | null
-    chains: string[]
+    | 'config'
+> & {
     protocolsStats: ProtocolStats | null
+    records: AdaptorRecord[] | null
+} & IGeneralStats
+
+export type IGetOverviewResponseBody = IGeneralStats & {
+    totalDataChart: IChartData,
+    totalDataChartBreakdown: IChartDataByDex,
+    protocols: Omit<ProtocolAdaptorSummary, 'records' | 'module'>[]
+    allChains: string[]
 }
 
 export type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)
@@ -67,7 +62,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     // Import data list
     const adaptorsData = loadAdaptorsData(adaptorType)
 
-    const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled).map<Promise<ProtocolAdaptorSummary>>(async (adapter) => {
+    const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled).map(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, adaptorType, chainFilter, async (e) => {
             console.error(e)
             // TODO, move error handling to rejected promises
@@ -83,21 +78,21 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     rejectedDexs.forEach(console.error)
 
 
-    const okProtocols = results.map(fd => fd.status === "fulfilled" && fd.value.disabled !== null ? fd.value : undefined).filter(d => d !== undefined) as ProtocolAdaptorSummary[]
+    const okProtocols = results.map(fd => fd.status === "fulfilled" && fd.value.records !== null ? fd.value : undefined).filter(d => d !== undefined) as ProtocolAdaptorSummary[]
     const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes))
 
-    let dexsResponse: IGetDexsResponseBody['dexs']
-    let totalDataChartResponse: IGetDexsResponseBody['totalDataChart']
-    let totalDataChartBreakdownResponse: IGetDexsResponseBody['totalDataChartBreakdown']
+    let protocolsResponse: IGetOverviewResponseBody['protocols']
+    let totalDataChartResponse: IGetOverviewResponseBody['totalDataChart']
+    let totalDataChartBreakdownResponse: IGetOverviewResponseBody['totalDataChartBreakdown']
 
     if (chainFilter) {
         totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(okProtocols)
         totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
-        dexsResponse = okProtocols.map(removeVolumesObject)
+        protocolsResponse = okProtocols.map(removeVolumesObject)
     } else {
         totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(okProtocols)
         totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
-        dexsResponse = okProtocols.map(removeVolumesObject)
+        protocolsResponse = okProtocols.map(removeVolumesObject)
     }
 
     totalDataChartResponse = totalDataChartResponse.slice(totalDataChartResponse.findIndex(it => it[1] !== 0))
@@ -107,16 +102,14 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     return successResponse({
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
-        dexs: dexsResponse,
+        protocols: protocolsResponse,
         allChains: getAllChainsUniqueString(okProtocols.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
         ...generalStats,
-    } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
+    } as IGetOverviewResponseBody, 10 * 60); // 10 mins cache
 };
 
 const substractSubsetVolumes = (dex: ProtocolAdaptorSummary, _index: number, dexs: ProtocolAdaptorSummary[], baseTimestamp?: number): ProtocolAdaptorSummary => {
-    const volumeAdapter = dex.module
-    if (!volumeAdapter) throw Error("No volumeAdapter found")
-    const includedVolume = config[volumeAdapter].includedVolume
+    const includedVolume = dex.config?.includedVolume
     if (includedVolume && includedVolume.length > 0) {
         const includedSummaries = dexs.filter(dex => {
             const volumeAdapter = dex.module
@@ -128,7 +121,7 @@ const substractSubsetVolumes = (dex: ProtocolAdaptorSummary, _index: number, dex
             const newSum = getSumAllDexsToday([computedSummary], includedSummary, baseTimestamp)
             computedSummary = {
                 ...includedSummary,
-                totalVolume24h: newSum['totalVolume24h'],
+                total24h: newSum['total24h'],
                 change_1d: newSum['change_1d'],
                 change_7d: newSum['change_7d'],
                 change_1m: newSum['change_1m'],
@@ -142,9 +135,10 @@ const substractSubsetVolumes = (dex: ProtocolAdaptorSummary, _index: number, dex
 
 type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
-const removeVolumesObject = (dex: WithOptional<ProtocolAdaptorSummary, 'volumes' | 'module'>) => {
-    delete dex['volumes']
+const removeVolumesObject = (dex: WithOptional<ProtocolAdaptorSummary, 'records' | 'module' | 'config'>) => {
+    delete dex['records']
     delete dex['module']
+    delete dex['config']
     return dex
 }
 

@@ -36,26 +36,26 @@ const getSumAllDexsToday = (
     let dex2SubstractVolumes: any = {}
     for (const dex of dexs) {
         if (dex2Substract) {
-            dex2SubstractVolumes['totalVolume'] = dex2Substract.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
-            dex2SubstractVolumes['totalVolume1d'] = dex2Substract.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
-            dex2SubstractVolumes['totalVolume7d'] = dex2Substract.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp7d)?.data
-            dex2SubstractVolumes['totalVolume30d'] = dex2Substract.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp30d)?.data
+            dex2SubstractVolumes['totalVolume'] = dex2Substract.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
+            dex2SubstractVolumes['totalVolume1d'] = dex2Substract.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
+            dex2SubstractVolumes['totalVolume7d'] = dex2Substract.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp7d)?.data
+            dex2SubstractVolumes['totalVolume30d'] = dex2Substract.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp30d)?.data
         }
-        const yesterdaysVolume = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
-        const volume1d = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
-        const volume7d = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp7d)?.data
-        const volume30d = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp30d)?.data
+        const yesterdaysVolume = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
+        const volume1d = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
+        const volume7d = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp7d)?.data
+        const volume30d = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp30d)?.data
         totalVolume += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
         totalVolume1d += volume1d ? sumAllVolumes(volume1d) - sumAllVolumes(dex2SubstractVolumes['totalVolume1d']) : 0
         totalVolume7d += volume7d ? sumAllVolumes(volume7d) - sumAllVolumes(dex2SubstractVolumes['totalVolume7d']) : 0
         totalVolume30d += volume30d ? sumAllVolumes(volume30d) - sumAllVolumes(dex2SubstractVolumes['totalVolume30d']) : 0
     }
     return {
-        totalVolume24h: totalVolume,
+        total24h: totalVolume,
         change_1d: formatNdChangeNumber(((totalVolume - totalVolume1d) / totalVolume1d) * 100) ?? 0,
         change_7d: formatNdChangeNumber(((totalVolume - totalVolume7d) / totalVolume7d) * 100) ?? 0,
         change_1m: formatNdChangeNumber(((totalVolume - totalVolume30d) / totalVolume30d) * 100) ?? 0,
-        volume24hBreakdown: null
+        breakdown24h: null
     }
 }
 
@@ -67,7 +67,7 @@ const generateAggregatedVolumesChartData = (dexs: ProtocolAdaptorSummary[]): ICh
     for (const dataPoint of dataPoints) {
         let total = 0
         for (const dex of dexs) {
-            const volumeObj = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === dataPoint)?.data
+            const volumeObj = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === dataPoint)?.data
             total += volumeObj ? sumAllVolumes(volumeObj) : 0
         }
         chartData.push([`${dataPoint}`, total])
@@ -85,7 +85,7 @@ const generateByDexVolumesChartData = (dexs: ProtocolAdaptorSummary[]): IChartDa
     for (const dataPoint of dataPoints) {
         const dayBreakDown: IChartDataByDex[0][1] = {}
         for (const dex of dexs) {
-            const volumeObj = dex.volumes?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === dataPoint)?.data
+            const volumeObj = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === dataPoint)?.data
             if (volumeObj)
                 dayBreakDown[dex.module] = sumAllVolumes(volumeObj)
         }
@@ -147,11 +147,11 @@ export const getStatsByProtocolVersion = (volumes: AdaptorRecord[], prevDayTimes
     const summaryByProtocols = Object.entries(raw).reduce((acc, [protVersion, protVolumes]) => {
         const prevDayVolume = protVolumes.find(vol => vol.timestamp === prevDayTimestamp)
         acc[protVersion] = {
-            totalVolume24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data, protVersion) : protocolData[protVersion].disabled ? null : 0,
+            total24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data, protVersion) : protocolData[protVersion].disabled ? null : 0,
             change_1d: calcNdChange(protVolumes, 1, prevDayTimestamp),
             change_7d: calcNdChange(protVolumes, 7, prevDayTimestamp),
             change_1m: calcNdChange(protVolumes, 30, prevDayTimestamp),
-            volume24hBreakdown: null
+            breakdown24h: null
         }
         return acc
     }, {} as IJSON<IGeneralStats>)

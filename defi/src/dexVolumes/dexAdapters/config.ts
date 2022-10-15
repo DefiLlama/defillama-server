@@ -503,6 +503,15 @@ export default {
     "elk": {
         enabled: true
     },
+    "luaswap": {
+        enabled: true
+    },
+    "unicly": {
+        enabled: true
+    },
+    "crema-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

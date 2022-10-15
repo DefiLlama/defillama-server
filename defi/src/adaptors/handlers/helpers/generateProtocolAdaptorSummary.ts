@@ -12,10 +12,8 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainF
     try {
         // Get all records from db
         let adaptorRecords = (await getAdaptorRecord(adapter.id, DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType] as AdaptorRecordType))
-        console.log("adaptorRecords.length", adaptorRecords)
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
-        console.log("adaptorRecords.length", adaptorRecords.length)
 
         // Clean data by chain
         adaptorRecords = generateCleanRecords(
@@ -24,7 +22,6 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainF
             adapter.protocolsData ? Object.keys(adapter.protocolsData) : [adapter.module],
             chainFilter
         )
-        console.log("adaptorRecords.length", adaptorRecords.length)
         if (adaptorRecords.length === 0) throw new Error(`${adapter.name} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
 
         // Calc stats with last available data

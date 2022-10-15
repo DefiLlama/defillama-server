@@ -26,12 +26,12 @@ export function processFulfilledPromises(fulfilledResults: IRunAdapterResponseFu
 
 export const STORE_ERROR = "STORE_ERROR"
 export function processRejectedPromises(rejectedResults: IRunAdapterResponseRejected[], rawRecord: RawRecordMap, dexName: string, ATTRIBUTE_KEYS: IJSON<string>) {
-    for (const ATTRIBUTE of Object.keys(ATTRIBUTE_KEYS)) {
+    for (const [RECORD_TYPE, ATTRIBUTE] of Object.entries(ATTRIBUTE_KEYS)) {
         for (const result of rejectedResults) {
             console.error(`${STORE_ERROR}:${dexName}:Rejected: ${JSON.stringify(result)}\nTIMESTAMP: ${result.timestamp}`)
-            if (!rawRecord[ATTRIBUTE_KEYS[ATTRIBUTE]]) rawRecord[ATTRIBUTE_KEYS[ATTRIBUTE]] = {}
-            rawRecord[ATTRIBUTE_KEYS[ATTRIBUTE]] = {
-                ...rawRecord[ATTRIBUTE_KEYS[ATTRIBUTE]],
+            if (!rawRecord[RECORD_TYPE]) rawRecord[RECORD_TYPE] = {}
+            rawRecord[RECORD_TYPE] = {
+                ...rawRecord[RECORD_TYPE],
                 [result.chain]: {
                     error: result.error.message
                 }

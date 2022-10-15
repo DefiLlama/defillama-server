@@ -29,8 +29,7 @@ const rl = readline.createInterface({
     console.info(`${backfillEvent.backfill.length} days will be filled. If a chain is already available will be refilled.`)
     rl.question('Do you wish to continue? y/n\n', async function (yn) {
         if (yn.toLowerCase() === 'y') {
-            console.log("hehe")
-            // await executeAsyncBackfill(backfillEvent)
+            await executeAsyncBackfill(backfillEvent)
             console.info(`Don't forget to enable the adapter to src/dexVolumes/dexAdapters/config.ts, bye llama🦙`)
             rl.close();
             process.exit(0)

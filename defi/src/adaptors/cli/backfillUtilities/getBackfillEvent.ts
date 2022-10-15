@@ -1,4 +1,4 @@
-import { IHandlerEvent as ITriggerStoreVolumeEventHandler } from "../../../triggerStoreVolume"
+import { IHandlerEvent as ITriggerStoreVolumeEventHandler } from "../../triggerStoreVolume"
 import fs, { writeFileSync } from "fs"
 import path from "path"
 import loadAdaptorsData from "../../data"
@@ -57,8 +57,10 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
     const adapterName = adapter ?? DEXS_LIST[0]
 
     let event: ITriggerStoreVolumeEventHandler | undefined
+    console.log("onlyMISSING", onlyMissing)
     if (typeof onlyMissing === 'number')
         event = {
+            type: adaptorType,
             backfill: [{
                 dexNames: [adapterName],
                 timestamp: onlyMissing
@@ -107,22 +109,22 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
     console.info("Starting timestamp", startTimestamp, "->", startDate)
     const endDate = new Date(nowSTimestamp * 1000)
     const dates: Date[] = []
-    if (onlyMissing) {
+    if (onlyMissing && typeof onlyMissing==="boolean") {
         let volTimestamps = {} as IJSON<boolean>
-        for (const type of Object.keys(adaptorsData.KEYS_TO_STORE).slice(0,1)) {
-            console.log("LOOKING for TYPE", type)
+        for (const type of Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)) {
             let vols = (await getAdaptorRecord(adapterData.id, type as AdaptorRecordType, "ALL"))
             if (!(vols instanceof Array)) throw new Error("Incorrect volumes found")
             vols = vols.map(removeEventTimestampAttribute)
-            volTimestamps = (vols
+            volTimestamps = vols
                 .map<[number, boolean]>(vol => [
                     vol.timestamp,
                     Object.values(vol.data)
                         .filter(data => {
+                            if (Object.keys(data).includes("error") || vol.data === undefined)
                             return Object.keys(data).includes("error")
                                 || vol.data === undefined
                         }).length > 0
-                ]).filter(b => b[1]))
+                ]).filter(b => b[1])
                 .concat(getDataPoints(vols[vols.length - 1].timestamp * 1000).map(time => [time, true]))
                 .reduce((acc, [timestamp, hasAnErrorOrEmpty]) => {
                     acc[String(timestamp)] = acc[String(timestamp)] === true ? acc[String(timestamp)] : hasAnErrorOrEmpty
@@ -147,6 +149,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
 
     if (!event)
         event = {
+            type: adaptorType,
             backfill: dates.map(date => ({
                 dexNames: [adapterName],
                 timestamp: date.getTime() / 1000

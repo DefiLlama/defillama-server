@@ -1,3 +1,4 @@
+import { AdapterType } from "@defillama/adaptors/adapters/types"
 import "../setup.ts"
 import executeAsyncBackfill from "./executeAsyncBackfill"
 import getBackfillEvent from "./getBackfillEvent"
@@ -17,7 +18,7 @@ switch (Number(RUN)) {
         break
     case RUNS.GET_BACKFILL_EVENT:
         // Make sure to edit based on your needs!
-        getBackfillEvent()
+        getBackfillEvent("uniswap" , AdapterType.VOLUME, true)
         break
     case RUNS.EXECUTE_ASYNC_BACKFILL:
         executeAsyncBackfill()

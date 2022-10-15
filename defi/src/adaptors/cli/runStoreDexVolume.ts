@@ -5,6 +5,6 @@ import volumes from "../data/volumes";
 
 handler({
     protocolIndexes: [volumes?.findIndex(v=>v.name==='Uniswap')] ?? [2],
-    timestamp:1663459200,
+    timestamp:1541203200,
     adaptorType: AdapterType.VOLUME
 })

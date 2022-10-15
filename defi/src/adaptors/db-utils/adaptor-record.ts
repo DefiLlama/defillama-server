@@ -3,6 +3,7 @@ import dynamodb from "../../utils/shared/dynamodb"
 import { formatChain, formatChainKey } from "../utils/getAllChainsFromAdaptors"
 import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
+import { ProtocolType } from "@defillama/adaptors/adapters/types"
 
 export enum AdaptorRecordType {
     dailyVolumeRecord = "dv",
@@ -30,13 +31,15 @@ export class AdaptorRecord extends Item {
     type: AdaptorRecordType
     adaptorId: string
     timestamp: number
+    protocolType: ProtocolType
 
-    constructor(type: AdaptorRecordType, adaptorId: string, timestamp: number, data: IRecordAdaptorRecordData) {
+    constructor(type: AdaptorRecordType, adaptorId: string, timestamp: number, data: IRecordAdaptorRecordData, protocolType: ProtocolType = ProtocolType.PROTOCOL) {
         super()
         this.data = data
         this.type = type
         this.adaptorId = adaptorId
         this.timestamp = timestamp
+        this.protocolType = protocolType
     }
 
     static fromItem(item?: DynamoDB.AttributeMap): AdaptorRecord {
@@ -44,19 +47,20 @@ export class AdaptorRecord extends Item {
         if (!item.PK || !item.SK) throw new Error("Bad item!")
         // PK=dv#{dex}#{id} TODO: set dex?
         // TODO: update dynamodb types with correct sdk
-        const dexId = (item.PK as string).split("#")[2]
         const recordType = (item.PK as string).split("#")[0] as AdaptorRecordType
+        const protocolType = (item.PK as string).split("#")[1] as ProtocolType
+        const dexId = (item.PK as string).split("#")[2]
         const body = item as IRecordAdaptorRecordData
         const timestamp = +item.SK
         delete body.PK;
         delete body.SK;
-        return new AdaptorRecord(recordType, dexId, timestamp, body)
+        return new AdaptorRecord(recordType, dexId, timestamp, body, protocolType)
     }
 
     get pk(): string {
         if (this.type === AdaptorRecordType.dailyVolumeRecord || this.type === AdaptorRecordType.totalVolumeRecord)
             return `${this.type}#dex#${this.adaptorId}`
-        return `${this.type}#protocol#${this.adaptorId}`
+        return `${this.type}#${this.protocolType}#${this.adaptorId}`
     }
 
     get sk(): number {

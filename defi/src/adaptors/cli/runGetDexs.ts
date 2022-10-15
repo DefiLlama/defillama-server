@@ -4,7 +4,11 @@ import { APIGatewayProxyEvent } from "aws-lambda";
 import { formatTimestampAsDate } from "../../utils/date";
 
 const event = {
-    pathParameters: { chain: undefined, type: "volumes" }
+    pathParameters: { chain: undefined, type: "fees" },
+    queryStringParameters: {
+        excludeTotalDataChart: "true",
+        excludeTotalDataChartBreakdown: "true",
+    }
 } as unknown as APIGatewayProxyEvent
 
 (async () => {
@@ -14,7 +18,7 @@ const event = {
     delete rr.totalDataChartBreakdown
     // @ts-ignore
     delete rr.totalDataChart
-    console.log(rr.dexs.find(d=>d.name==="Uniswap"))
+    console.log(rr)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)
     } */

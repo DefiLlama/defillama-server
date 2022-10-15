@@ -1,6 +1,6 @@
 /* import fs from "fs" */
 import path from "path"
-import { IHandlerEvent as ITriggerStoreVolumeEventHandler, handler as handlerTriggerStoreVolume, runStoreDex } from "../../../triggerStoreVolume"
+import { IHandlerEvent as ITriggerStoreVolumeEventHandler, handler as handlerTriggerStoreVolume } from "../../triggerStoreVolume"
 import invokeLambda from "../../../utils/shared/invokeLambda";
 
 const EVENT_PATH = path.resolve(__dirname, "output", `backfill_event.json`);

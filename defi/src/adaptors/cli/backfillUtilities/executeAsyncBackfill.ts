@@ -31,6 +31,7 @@ export default async (backfillEvent?: ITriggerStoreVolumeEventHandler) => {
             result = await handlerTriggerStoreVolume(event)
         else
             result = (await invokeLambda(`defillama-prod-triggerStoreAdaptorData`, event)) as { StatusCode: number, Payload: string }
+        console.log(result)
         if (process.env.runLocal !== 'true')
             console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
         else console.log("Bye:)")

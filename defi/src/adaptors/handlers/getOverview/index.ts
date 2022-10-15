@@ -1,18 +1,15 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
+import { AdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 
-import { calcNdChange, generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getStatsByProtocolVersion, IChartData, IChartDataByDex, sumAllVolumes } from "../../utils/volumeCalcs";
-import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
+import {  generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getStatsByProtocolVersion, IChartData, IChartDataByDex, sumAllVolumes } from "../../utils/volumeCalcs";
 import { formatChain } from "../../utils/getAllChainsFromAdaptors";
 import config from "../../data/volumes/config";
-import { ONE_DAY_IN_SECONDS } from "../getProtocol";
 import { sendDiscordAlert } from "../../utils/notify";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import { IJSON, ProtocolAdaptor } from "../../data/types";
 import loadAdaptorsData from "../../data"
-import generateCleanRecords from "../helpers/generateCleanRecords";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 
 export interface IGeneralStats {
@@ -68,7 +65,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!adaptorType) throw new Error("Missing parameter")
 
     // Import data list
-    const adaptorsData = await loadAdaptorsData(adaptorType)
+    const adaptorsData = loadAdaptorsData(adaptorType)
 
     const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled).map<Promise<ProtocolAdaptorSummary>>(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, adaptorType, chainFilter, async (e) => {

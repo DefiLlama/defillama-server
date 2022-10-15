@@ -1,9 +1,9 @@
-import { wrapScheduledLambda } from "../utils/shared/wrap";
-import invokeLambda from "../utils/shared/invokeLambda";
-import type { IHandlerEvent as IStoreAdaptorDataHandlerEvent } from './handlers/storeAdaptorData'
-import { handler as storeAdaptorData } from "./handlers/storeAdaptorData";
+import { wrapScheduledLambda } from "../../utils/shared/wrap";
+import invokeLambda from "../../utils/shared/invokeLambda";
+import type { IHandlerEvent as IStoreAdaptorDataHandlerEvent } from './storeAdaptorData'
+import { handler as storeAdaptorData } from "./storeAdaptorData";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
-import data from "./data";
+import data from "../data";
 
 function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i > 0; i--) {

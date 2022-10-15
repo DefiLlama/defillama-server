@@ -1,4 +1,4 @@
-import { IHandlerEvent as ITriggerStoreVolumeEventHandler } from "../../triggerStoreAdaptorData"
+import { IHandlerEvent as ITriggerStoreVolumeEventHandler } from "../../handlers/triggerStoreAdaptorData"
 import fs, { writeFileSync } from "fs"
 import path from "path"
 import loadAdaptorsData from "../../data"

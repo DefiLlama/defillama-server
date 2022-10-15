@@ -1,4 +1,5 @@
 import protocols from "../protocols/data";
+import volumeAdapters from "../dexVolumes/dexAdapters";
 import { writeFileSync, readdirSync } from "fs"
 
 writeFileSync("./src/utils/imports/adapters.ts",
@@ -13,6 +14,11 @@ writeFileSync("./src/utils/imports/adapters_liquidations.ts",
         .map(f => `"${f}": require("@defillama/adapters/liquidations/${f}"),`).join('\n')}
 }`)
 
+
+writeFileSync("./src/utils/imports/adapters_volumes.ts",
+    `export default {
+    ${volumeAdapters.map(p => `"${p.volumeAdapter}": require("@defillama/adapters/volumes/adapters/${p.volumeAdapter}"),`).join('\n')}
+}`)
 
 // For adapters type adaptor
 function getDirectories(source: string) {
@@ -44,7 +50,7 @@ const importPaths = [
 
 for (const importPath of importPaths) {
     const paths_keys = getDirectories(`${importPath.baseFolderPath}/${importPath.folderPath}`).map(removeDotTs).filter(key => !importPath.excludeKeys.includes(key))
-    writeFileSync(`./src/utils/imports/adapters_${importPath.folderPath.replace("/", "_")}.ts`,
+    writeFileSync(`./src/utils/imports/${importPath.folderPath.replace("/", "_")}_adapters.ts`,
         `
         import { Adapter } from "@defillama/adaptors/adapters/types";
         export default {

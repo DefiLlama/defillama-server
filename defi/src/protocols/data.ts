@@ -10192,7 +10192,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "francium.js",
     twitter: "Francium_Defi",
     audit_links:["https://www.certik.org/projects/francium"],
-    oracles: [],
+    oracles: ["Pyth"],
     openSource: false
   },
   {

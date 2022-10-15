@@ -1,6 +1,6 @@
 /* import fs from "fs" */
 import path from "path"
-import { IHandlerEvent as ITriggerStoreVolumeEventHandler, handler as handlerTriggerStoreVolume } from "../../triggerStoreVolume"
+import { IHandlerEvent as ITriggerStoreVolumeEventHandler, handler as handlerTriggerStoreVolume } from "../../triggerStoreAdaptorData"
 import invokeLambda from "../../../utils/shared/invokeLambda";
 
 const EVENT_PATH = path.resolve(__dirname, "output", `backfill_event.json`);
@@ -30,7 +30,7 @@ export default async (backfillEvent?: ITriggerStoreVolumeEventHandler) => {
         if (process.env.runLocal === 'true')
             result = await handlerTriggerStoreVolume(event)
         else
-            result = (await invokeLambda(`defillama-prod-triggerStoreVolume`, event)) as { StatusCode: number, Payload: string }
+            result = (await invokeLambda(`defillama-prod-triggerStoreAdaptorData`, event)) as { StatusCode: number, Payload: string }
         if (process.env.runLocal !== 'true')
             console.info("Lambda invoked correctly, volumes are being stored in the ☁️")
         else console.log("Bye:)")

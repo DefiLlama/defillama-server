@@ -1,12 +1,12 @@
 import data from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
 import { sluggifyString } from "../../../utils/sluggify";
-import getAllChainsFromAdaptors, { getAllProtocolsFromAdaptor, getChainByProtocolVersion, getProtocolsData, isDisabled } from "../../utils/getAllChainsFromAdaptors";
+import getAllChainsFromAdaptors, { getProtocolsData, isDisabled } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { Adapter } from "@defillama/adaptors/adapters/types";
 
 // Obtaining all dex protocols
-const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
+// const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
 
 function notUndefined<T>(x: T | undefined): x is T {
     return x !== undefined;
@@ -16,7 +16,7 @@ export type IImportsMap = IJSON<{ default: Adapter }>
 
 export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdaptor[] =>
     Object.keys(imports_obj).map(adapterKey => {
-        const dexFoundInProtocols = dexes.find(dexP =>
+        const dexFoundInProtocols = data.find(dexP =>
             dexP.name.toLowerCase()?.includes(adapterKey)
             || sluggifyString(dexP.name)?.includes(adapterKey)
             || dexP.gecko_id?.includes(adapterKey)

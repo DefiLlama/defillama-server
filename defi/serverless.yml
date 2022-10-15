@@ -368,6 +368,10 @@ functions:
       - http:
           path: summary/{type}/{name}
           method: get
+  storeAdaptorData:
+    handler: src/adaptors/handlers/storeAdaptorData/index.default
+    timeout: 900
+    memorySize: 512
   getDex:
     handler: src/dexVolumes/handlers/getDexVolume/index.default
     timeout: 90

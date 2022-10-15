@@ -5,7 +5,6 @@ import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
 import runAdapter, { getFulfilledResults, getRejectedResults } from "@defillama/adaptors/adapters/utils/runAdapter";
 import { getBlock } from "@defillama/adaptors/helpers/getBlock";
-import { ProtocolAdaptor } from "../../data/types";
 import { Chain } from "@defillama/sdk/build/general";
 import { AdaptorRecord, AdaptorRecordType, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
 import { processFulfilledPromises, processRejectedPromises, STORE_ERROR } from "./helpers";
@@ -48,14 +47,12 @@ export const handler = async (event: IHandlerEvent) => {
     allChains.map(async (chain) => {
       try {
         console.log(cleanCurrentDayTimestamp, chain, chainBlocks)
-        const latestBlock = await getBlock(cleanCurrentDayTimestamp*1000, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
+        const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
         if (latestBlock)
           chainBlocks[chain] = latestBlock
       } catch (e) { console.log(e) }
     })
   );
-
-  console.log("chainss", chainBlocks)
 
   const results = await allSettled(event.protocolIndexes.map(async protocolIndex => {
     // Get adapter info

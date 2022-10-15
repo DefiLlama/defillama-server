@@ -1,4 +1,4 @@
-import { IHandlerEvent as ITriggerStoreVolumeEventHandler } from "../../triggerStoreVolume"
+import { IHandlerEvent as ITriggerStoreVolumeEventHandler } from "../../triggerStoreAdaptorData"
 import fs, { writeFileSync } from "fs"
 import path from "path"
 import loadAdaptorsData from "../../data"
@@ -69,7 +69,6 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
     let startTimestamp = 0
     // Looking for start time from adapter, if not found will default to the above
     const adaptorsData = loadAdaptorsData(adaptorType)
-    adaptorsData.KEYS_TO_STORE
     const adapterData = adaptorsData.default.find(adapter => adapter.module === (adapterName))
     const nowSTimestamp = Math.trunc((Date.now()) / 1000)
     if (adapterData) {
@@ -108,7 +107,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
     console.info("Starting timestamp", startTimestamp, "->", startDate)
     const endDate = new Date(nowSTimestamp * 1000)
     const dates: Date[] = []
-    if (onlyMissing && typeof onlyMissing==="boolean") {
+    if (onlyMissing && typeof onlyMissing === "boolean") {
         let volTimestamps = {} as IJSON<boolean>
         for (const type of Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)) {
             let vols = (await getAdaptorRecord(adapterData.id, type as AdaptorRecordType, "ALL"))
@@ -118,11 +117,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
                 .map<[number, boolean]>(vol => [
                     vol.timestamp,
                     Object.values(vol.data)
-                        .filter(data => {
-                            if (Object.keys(data).includes("error") || vol.data === undefined)
-                            return Object.keys(data).includes("error")
-                                || vol.data === undefined
-                        }).length > 0
+                        .filter(data => Object.keys(data).includes("error") || vol.data === undefined).length > 0
                 ]).filter(b => b[1])
                 .concat(getDataPoints(vols[vols.length - 1].timestamp * 1000).map(time => [time, true]))
                 .reduce((acc, [timestamp, hasAnErrorOrEmpty]) => {

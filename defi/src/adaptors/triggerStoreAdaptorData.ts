@@ -51,14 +51,14 @@ const invokeLambdas = async (protocolIndexes: IStoreAdaptorDataHandlerEvent['pro
       timestamp,
       adaptorType: adaptorType
     };
-    console.info(`Storing volume: ${protocolIndexes} ${timestamp}`)
-    const storeFunction = process.env.runLocal === 'true' ? storeAdaptorData : runStoreDex
+    console.info(`Storing adaptor data: ${protocolIndexes} ${timestamp} ${adaptorType}`)
+    const storeFunction = process.env.runLocal === 'true' ? storeAdaptorData : runStoreAdaptorData
     // if (process.env.runLocal === 'true') await delay(1000)
     await storeFunction(event);
   }
 }
 
-export const runStoreDex = async (e: IStoreAdaptorDataHandlerEvent) => invokeLambda(`defillama-prod-storeVolume`, e)
+export const runStoreAdaptorData = async (e: IStoreAdaptorDataHandlerEvent) => invokeLambda(`defillama-prod-storeAdaptorData`, e)
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export default wrapScheduledLambda(handler);

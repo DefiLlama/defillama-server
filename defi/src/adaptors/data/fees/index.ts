@@ -1,5 +1,5 @@
 import generateProtocolAdaptorsList from "../helpers/generateProtocolAdaptorsList";
-import fees_imports from "../../../utils/imports/adapters_fees"
+import fees_imports from "../../../utils/imports/fees_adapters"
 import config from "./config";
 import { AdaptorRecordType } from "../../db-utils/adaptor-record";
 

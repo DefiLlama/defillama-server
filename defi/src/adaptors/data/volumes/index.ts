@@ -1,5 +1,5 @@
 import generateProtocolAdaptorsList from "../helpers/generateProtocolAdaptorsList";
-import volume_imports from "../../../utils/imports/adapters_volumes"
+import volume_imports from "../../../utils/imports/volumes_adapters"
 import config from "./config";
 import { AdaptorRecordType } from "../../db-utils/adaptor-record";
 

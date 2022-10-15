@@ -57,7 +57,6 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
     const adapterName = adapter ?? DEXS_LIST[0]
 
     let event: ITriggerStoreVolumeEventHandler | undefined
-    console.log("onlyMISSING", onlyMissing)
     if (typeof onlyMissing === 'number')
         event = {
             type: adaptorType,

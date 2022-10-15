@@ -47,12 +47,15 @@ export const handler = async (event: IHandlerEvent) => {
   await allSettled(
     allChains.map(async (chain) => {
       try {
-        const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
+        console.log(cleanCurrentDayTimestamp, chain, chainBlocks)
+        const latestBlock = await getBlock(cleanCurrentDayTimestamp*1000, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
         if (latestBlock)
           chainBlocks[chain] = latestBlock
       } catch (e) { console.log(e) }
     })
   );
+
+  console.log("chainss", chainBlocks)
 
   const results = await allSettled(event.protocolIndexes.map(async protocolIndex => {
     // Get adapter info

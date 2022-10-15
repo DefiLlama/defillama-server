@@ -112,6 +112,7 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         eventTimestamp
     }
     try {
+        console.log("Storing", adaptorRecord.keys())
         await dynamodb.update({
             Key: adaptorRecord.keys(),
             UpdateExpression: createUpdateExpressionFromObj(obj2Store),

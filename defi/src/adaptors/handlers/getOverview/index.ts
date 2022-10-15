@@ -48,7 +48,7 @@ export type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[strin
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<string> = {
     [AdapterType.VOLUME]: AdaptorRecordType.dailyVolumeRecord,
-    [AdapterType.FEES]: AdaptorRecordType.dailyFeesRecord
+    [AdapterType.FEES]: AdaptorRecordType.totalFeesRecord
 }
 
 // -> /overview/volumes
@@ -75,6 +75,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 await sendDiscordAlert(e.message)
         })
     }))
+
+    console.log("results", results, adaptorsData.default.length)
 
     // Handle rejected dexs
     const rejectedDexs = results.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)

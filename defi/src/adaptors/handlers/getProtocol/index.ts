@@ -27,7 +27,7 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "disabled"
 > {
     volumeHistory: VolumeHistoryItem[] | null
-    total1dVolume: number | null
+    total24h: number | null
     change_1d: number | null
 }
 
@@ -71,7 +71,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
             volumeHistory: formatChartHistory(generatedSummary.records),
-            total1dVolume: generatedSummary.total24h, // yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
+            total24h: generatedSummary.total24h, // yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
             change_1d: generatedSummary.change_1d // calcNdChange(volumes, 1, yesterdaysVolumeObj.timestamp)
         } as IHandlerBodyResponse
     } catch (error) {
@@ -90,7 +90,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             gecko_id: dexData.gecko_id,
             disabled: dexData.disabled,
             volumeHistory: null,
-            total1dVolume: null,
+            total24h: null,
             change_1d: null
         } as IHandlerBodyResponse
     }

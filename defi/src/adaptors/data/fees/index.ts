@@ -8,10 +8,10 @@ export const importModule = (module: string) => fees_imports[module]
 
 // KEYS USED TO MAP ATTRIBUTE -> KEY IN DYNAMO
 export const KEYS_TO_STORE = {
-    [AdaptorRecordType.totalFeesRecord]: "totalFees",
-    [AdaptorRecordType.dailyFeesRecord]: "dailyFees",
-    [AdaptorRecordType.totalRevenueRecord]: "totalRevenue",
-    [AdaptorRecordType.dailyRevenueRecord]: "dailyRevenue"
+    [AdaptorRecordType.totalFees]: "totalFees",
+    [AdaptorRecordType.dailyFees]: "dailyFees",
+    [AdaptorRecordType.totalRevenue]: "totalRevenue",
+    [AdaptorRecordType.dailyRevenue]: "dailyRevenue"
 }
 
 export default generateProtocolAdaptorsList(fees_imports, config)

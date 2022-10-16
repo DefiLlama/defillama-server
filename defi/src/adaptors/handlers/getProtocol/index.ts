@@ -34,13 +34,14 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
 export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<string> = {
-    [AdapterType.VOLUME]: AdaptorRecordType.dailyVolumeRecord,
-    [AdapterType.FEES]: AdaptorRecordType.dailyFeesRecord
+    [AdapterType.VOLUME]: AdaptorRecordType.dailyVolume,
+    [AdapterType.FEES]: AdaptorRecordType.dailyFees
 }
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
     const protocolName = event.pathParameters?.name?.toLowerCase()
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
+    const dataType = event.queryStringParameters?.dataType?.toLowerCase() as AdaptorRecordType ?? DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     if (!protocolName || !adaptorType) throw new Error("Missing name or type")
 
     const adaptorsData = loadAdaptorsData(adaptorType)
@@ -50,12 +51,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     if (!dexData) throw new Error("DEX data not found!")
     let dexDataResponse = {}
     try {
-        let volumes = await getAdaptorRecord(dexData.id, DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType] as AdaptorRecordType, "ALL")
+        let volumes = await getAdaptorRecord(dexData.id, dataType, "ALL")
         volumes = volumes
         // This check is made to infer Volume type instead of Volume[] type
         if (volumes instanceof AdaptorRecord) throw new Error("Wrong volume queried")
 
-        const generatedSummary = await generateProtocolAdaptorSummary(dexData, adaptorType, undefined, undefined)
+        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType)
 
         dexDataResponse = {
             name: generatedSummary.name,

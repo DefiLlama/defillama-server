@@ -4,15 +4,18 @@ import { formatChain, formatChainKey } from "../utils/getAllChainsFromAdaptors"
 import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
 import { ProtocolType } from "@defillama/adaptors/adapters/types"
+import { IJSON } from "../data/types"
 
 export enum AdaptorRecordType {
-    dailyVolumeRecord = "dv",
-    totalVolumeRecord = "tv",
-    totalFeesRecord = "tf",
-    dailyFeesRecord = "df",
-    totalRevenueRecord = "tr",
-    dailyRevenueRecord = "dr",
+    dailyVolume = "dv",
+    totalVolume = "tv",
+    totalFees = "tf",
+    dailyFees = "df",
+    totalRevenue = "tr",
+    dailyRevenue = "dr",
 }
+
+export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as IJSON<AdaptorRecordType>)
 
 export interface IRecordAdapterRecordChainData {
     [protocolVersion: string]: number | string,
@@ -58,7 +61,7 @@ export class AdaptorRecord extends Item {
     }
 
     get pk(): string {
-        if (this.type === AdaptorRecordType.dailyVolumeRecord || this.type === AdaptorRecordType.totalVolumeRecord)
+        if (this.type === AdaptorRecordType.dailyVolume || this.type === AdaptorRecordType.totalVolume)
             return `${this.type}#dex#${this.adaptorId}`
         return `${this.type}#${this.protocolType}#${this.adaptorId}`
     }

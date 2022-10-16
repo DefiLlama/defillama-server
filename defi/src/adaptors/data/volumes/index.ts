@@ -8,8 +8,8 @@ export const importModule = (module: string) => volume_imports[module]
 
 // KEYS USED TO MAP ATTRIBUTE -> KEY IN DYNAMO
 export const KEYS_TO_STORE = {
-    [AdaptorRecordType.dailyVolumeRecord]: "dailyVolume",
-    [AdaptorRecordType.totalVolumeRecord]: "totalVolume"
+    [AdaptorRecordType.dailyVolume]: "dailyVolume",
+    [AdaptorRecordType.totalVolume]: "totalVolume"
 }
 
 export default generateProtocolAdaptorsList(volume_imports, config)

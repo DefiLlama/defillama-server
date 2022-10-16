@@ -49,7 +49,7 @@ const adaptorRecords = [...Array(30).keys()].map(index => {
 
         return d
     }
-    return new AdaptorRecord(AdaptorRecordType.dailyVolumeRecord, "1", Date.UTC(2022, 0, index + 1) / 1000, data(index + index % 7))
+    return new AdaptorRecord(AdaptorRecordType.dailyVolume, "1", Date.UTC(2022, 0, index + 1) / 1000, data(index + index % 7))
 })
 
 test("Generate clean records works as expected", async () => {

@@ -8,10 +8,10 @@ import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGeneralStats, ProtocolAdaptorSummary, P
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
 
-export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
+export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
     try {
         // Get all records from db
-        let adaptorRecords = (await getAdaptorRecord(adapter.id, DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType] as AdaptorRecordType))
+        let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorType)
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
 

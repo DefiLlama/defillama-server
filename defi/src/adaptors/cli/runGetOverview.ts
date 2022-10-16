@@ -9,6 +9,7 @@ const event = {
     queryStringParameters: {
         excludeTotalDataChart: "true",
         excludeTotalDataChartBreakdown: "true",
+        dataType: "totalVolume",
     }
 } as unknown as APIGatewayProxyEvent
 
@@ -21,7 +22,7 @@ const event = {
         delete rr.totalDataChartBreakdown
         // @ts-ignore
         delete rr.totalDataChart*/
-    console.log(rr.protocols.find(p => p.name === 'PancakeSwap'))
+    console.log(rr.protocols)
     console.log(endTime - startTime)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)

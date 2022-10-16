@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import { AdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
+import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 
 import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getStatsByProtocolVersion, IChartData, IChartDataByDex, sumAllVolumes } from "../../utils/volumeCalcs";
@@ -44,9 +44,9 @@ export type IGetOverviewResponseBody = IGeneralStats & {
 
 export type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)
 
-export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<string> = {
-    [AdapterType.VOLUME]: AdaptorRecordType.dailyVolumeRecord,
-    [AdapterType.FEES]: AdaptorRecordType.totalFeesRecord
+export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
+    [AdapterType.VOLUME]: AdaptorRecordType.dailyVolume,
+    [AdapterType.FEES]: AdaptorRecordType.totalFees
 }
 
 // -> /overview/volumes
@@ -58,6 +58,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
     const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
     const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
+    const rawDataType = event.queryStringParameters?.dataType
+    const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
 
     if (!adaptorType) throw new Error("Missing parameter")
@@ -66,7 +68,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const adaptorsData = loadAdaptorsData(adaptorType)
 
     const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled).map(async (adapter) => {
-        return generateProtocolAdaptorSummary(adapter, adaptorType, chainFilter, async (e) => {
+        return generateProtocolAdaptorSummary(adapter, dataType, chainFilter, async (e) => {
             console.error(e)
             // TODO, move error handling to rejected promises
             if (enableAlerts)

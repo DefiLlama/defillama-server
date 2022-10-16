@@ -1,6 +1,6 @@
 import { AdapterType } from "@defillama/adaptors/adapters/types"
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date"
-import { ProtocolAdaptor } from "../../data/types"
+import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
 import { calcNdChange, getStatsByProtocolVersion, sumAllVolumes } from "../../utils/volumeCalcs"
@@ -16,22 +16,26 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainF
         if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
 
         // Clean data by chain
-        adaptorRecords = generateCleanRecords(
+        const cleanRecords = generateCleanRecords(
             adaptorRecords,
             adapter.chains,
             adapter.protocolsData ? Object.keys(adapter.protocolsData) : [adapter.module],
             chainFilter
         )
+        adaptorRecords = cleanRecords.cleanRecordsArr
         if (adaptorRecords.length === 0) throw new Error(`${adapter.name} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
 
         // Calc stats with last available data
         const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
         const lastAvailableDataTimestamp = adaptorRecords[adaptorRecords.length - 1].timestamp
-        const stats = getStats(adapter, adaptorRecords, lastAvailableDataTimestamp)
-        const protocolVersions = getProtocolVersionStats(adapter, adaptorRecords, lastAvailableDataTimestamp, chainFilter)
+        const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap, lastAvailableDataTimestamp)
+        const protocolVersions =
+            adapter.protocolsData && Object.keys(adapter.protocolsData).length > 1
+                ? getProtocolVersionStats(adapter, adaptorRecords, lastAvailableDataTimestamp, chainFilter)
+                : null
 
         // Check if data looks is valid. Not sure if this should be added
-        if (
+        /* if (
             adaptorRecords.length !== 1
             && (
                 !stats.change_1d
@@ -39,7 +43,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainF
             )
         ) {
             if (onError) await onError(new Error(`${adapter.name} has a daily change of ${stats.change_1d}, looks sus...`))
-        }
+        } */
 
         // Populate last missing days with last available data
         for (let i = lastAvailableDataTimestamp + ONE_DAY_IN_SECONDS; i <= yesterdaysCleanTimestamp; i += ONE_DAY_IN_SECONDS)
@@ -51,6 +55,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainF
             displayName: adapter.displayName,
             module: adapter.module,
             records: adaptorRecords,
+            recordsMap: cleanRecords.cleanRecordsMap,
             change_1d: stats.change_1d,
             change_7d: stats.change_7d,
             change_1m: stats.change_1m,
@@ -74,6 +79,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainF
             breakdown24h: null,
             change_1d: null,
             records: null,
+            recordsMap: null,
             change_7d: null,
             change_1m: null,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
@@ -83,13 +89,13 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdapterType, chainF
 }
 
 
-const getStats = (adapter: ProtocolAdaptor, adaptorRecords: AdaptorRecord[], baseTimestamp: number): IGeneralStats => {
+const getStats = (adapter: ProtocolAdaptor, adaptorRecordsArr: AdaptorRecord[], adaptorRecordsMap: IJSON<AdaptorRecord>, baseTimestamp: number): IGeneralStats => {
     return {
-        change_1d: calcNdChange(adaptorRecords, 1, baseTimestamp, true),
-        change_7d: calcNdChange(adaptorRecords, 7, baseTimestamp, true),
-        change_1m: calcNdChange(adaptorRecords, 30, baseTimestamp, true),
-        total24h: adapter.disabled ? null : sumAllVolumes(adaptorRecords[adaptorRecords.length - 1].data),
-        breakdown24h: adapter.disabled ? null : adaptorRecords[adaptorRecords.length - 1].data
+        change_1d: calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true),
+        change_7d: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true),
+        change_1m: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true),
+        total24h: adapter.disabled ? null : sumAllVolumes(adaptorRecordsArr[adaptorRecordsArr.length - 1].data),
+        breakdown24h: adapter.disabled ? null : adaptorRecordsArr[adaptorRecordsArr.length - 1].data
     }
 }
 

@@ -1,4 +1,5 @@
 import { formatTimestampAsDate } from "../../../utils/date"
+import { IJSON } from "../../data/types"
 import { AdaptorRecord, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 
@@ -97,15 +98,21 @@ export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: st
         )
         acc.lastDataRecord = chains.reduce((acc, chain) => ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[]).reduce((acc, chainProt) => ({ ...acc, [chainProt]: newGen }), {})
         acc.adaptorRecords.push(newGen)
+        acc.recordsMap[String(newGen.timestamp)] = newGen
         return acc
     }, {
         adaptorRecords: [] as AdaptorRecord[],
         lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter) }), {}),
-        nextDataRecord: {}
+        nextDataRecord: {},
+        recordsMap: {}
     } as {
         lastDataRecord: { [chain: string]: AdaptorRecord | undefined }
         nextDataRecord: { [chainProt: string]: AdaptorRecord | undefined }
-        adaptorRecords: AdaptorRecord[]
+        adaptorRecords: AdaptorRecord[],
+        recordsMap: IJSON<AdaptorRecord> // Might be good idea to merge it with adaptorRecords list since its the same
     })
-    return processed.adaptorRecords
+    return {
+        cleanRecordsArr: processed.adaptorRecords,
+        cleanRecordsMap: processed.recordsMap
+    }
 }

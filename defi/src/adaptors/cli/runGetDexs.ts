@@ -2,23 +2,26 @@ import "./setup.ts"
 import { handler, IGetOverviewResponseBody } from "../handlers/getOverview";
 import { APIGatewayProxyEvent } from "aws-lambda";
 import { formatTimestampAsDate } from "../../utils/date";
+import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "fees" },
+    pathParameters: { chain: undefined, type: "volumes" },
     queryStringParameters: {
-        excludeTotalDataChart: "true",
-        excludeTotalDataChartBreakdown: "true",
+        /*         excludeTotalDataChart: "true",
+                excludeTotalDataChartBreakdown: "true", */
     }
 } as unknown as APIGatewayProxyEvent
 
 (async () => {
+    var startTime = performance.now()
     const r = await handler(event)
+    var endTime = performance.now()
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
-    // @ts-ignore
-    delete rr.totalDataChartBreakdown
-    // @ts-ignore
-    delete rr.totalDataChart
-    console.log(rr)
+    /*     // @ts-ignore
+        delete rr.totalDataChartBreakdown
+        // @ts-ignore
+        delete rr.totalDataChart*/
+    console.log(Object.keys(rr), endTime - startTime)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)
     } */

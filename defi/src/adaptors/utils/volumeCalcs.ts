@@ -61,13 +61,13 @@ const getSumAllDexsToday = (
 
 export type IChartData = [string, number][] // [timestamp, volume]
 
-const generateAggregatedVolumesChartData = (dexs: ProtocolAdaptorSummary[]): IChartData => {
+const generateAggregatedVolumesChartData = (protocols: ProtocolAdaptorSummary[]): IChartData => {
     const chartData: IChartData = []
     const dataPoints = getDataPoints()
     for (const dataPoint of dataPoints) {
         let total = 0
-        for (const dex of dexs) {
-            const volumeObj = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === dataPoint)?.data
+        for (const protocol of protocols) {
+            const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
             total += volumeObj ? sumAllVolumes(volumeObj) : 0
         }
         chartData.push([`${dataPoint}`, total])
@@ -79,42 +79,42 @@ export type IChartDataByDex = Array<[string, {
     [dex: string]: number
 }]> // [timestamp, {chain: volume}]
 
-const generateByDexVolumesChartData = (dexs: ProtocolAdaptorSummary[]): IChartDataByDex => {
+const generateByDexVolumesChartData = (protocols: ProtocolAdaptorSummary[]): IChartDataByDex => {
     const chartData: IChartDataByDex = []
     const dataPoints = getDataPoints()
     for (const dataPoint of dataPoints) {
         const dayBreakDown: IChartDataByDex[0][1] = {}
-        for (const dex of dexs) {
-            const volumeObj = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === dataPoint)?.data
+        for (const protocol of protocols) {
+            const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
             if (volumeObj)
-                dayBreakDown[dex.module] = sumAllVolumes(volumeObj)
+                dayBreakDown[protocol.module] = sumAllVolumes(volumeObj)
         }
         chartData.push([`${dataPoint}`, dayBreakDown])
     }
     return chartData
 }
 
-const calcNdChange = (volumes: AdaptorRecord[], nDaysChange: number, baseTimestamp?: number, extend?: boolean) => {
+const calcNdChange = (volumes: IJSON<AdaptorRecord>, nDaysChange: number, baseTimestamp?: number, extend?: boolean) => {
     let totalVolume: number | null = 0
     let totalVolumeNd: number | null = 0
     let yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp ?? ((Date.now() / 1000) - ONE_DAY_IN_SECONDS));
-    let yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
+    let yesterdaysVolume = volumes?.[String(yesterdaysTimestamp)]?.data
     if (extend) {
         if (!yesterdaysVolume)
-        for (let i = 1; i <= 3; i++) {
-            yesterdaysTimestamp = yesterdaysTimestamp - (i * ONE_DAY_IN_SECONDS)
-            yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
-            if (yesterdaysVolume) break
-        }
+            for (let i = 1; i <= 3; i++) {
+                yesterdaysTimestamp = yesterdaysTimestamp - (i * ONE_DAY_IN_SECONDS)
+                yesterdaysVolume = volumes?.[String(yesterdaysTimestamp)]?.data
+                if (yesterdaysVolume) break
+            }
     }
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
-    let volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd)?.data
+    let volumeNd = volumes?.[String(timestampNd)]?.data
     if (extend) {
         if (!volumeNd)
-        for (let i = 1; i <= 3; i++) {
-            volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd - (i * ONE_DAY_IN_SECONDS))?.data
-            if (volumeNd) break
-        }
+            for (let i = 1; i <= 3; i++) {
+                volumeNd = volumes?.[String(timestampNd - (i * ONE_DAY_IN_SECONDS))]?.data
+                if (volumeNd) break
+            }
     }
     totalVolume = yesterdaysVolume ? totalVolume + sumAllVolumes(yesterdaysVolume) : null
     totalVolumeNd = volumeNd ? totalVolumeNd + sumAllVolumes(volumeNd) : null
@@ -134,18 +134,18 @@ export const getStatsByProtocolVersion = (volumes: AdaptorRecord[], prevDayTimes
             if (typeof protocolsData === 'number') return accVols
             const protocolNames = Object.keys(protocolsData)
             for (const protocolName of protocolNames) {
-                if (!accVols[protocolName]) accVols[protocolName] = []
-                accVols[protocolName].push(new AdaptorRecord(volume.type, volume.adaptorId, volume.timestamp, {
+                if (!accVols[protocolName]) accVols[protocolName] = {}
+                accVols[protocolName][String(volume.timestamp)] = new AdaptorRecord(volume.type, volume.adaptorId, volume.timestamp, {
                     [chain]: {
                         [protocolName]: protocolsData[protocolName]
                     }
-                }))
+                })
             }
         }
         return accVols
-    }, {} as IJSON<AdaptorRecord[]>)
+    }, {} as IJSON<IJSON<AdaptorRecord>>)
     const summaryByProtocols = Object.entries(raw).reduce((acc, [protVersion, protVolumes]) => {
-        const prevDayVolume = protVolumes.find(vol => vol.timestamp === prevDayTimestamp)
+        const prevDayVolume = protVolumes[prevDayTimestamp]
         acc[protVersion] = {
             total24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data, protVersion) : protocolData[protVersion].disabled ? null : 0,
             change_1d: calcNdChange(protVolumes, 1, prevDayTimestamp),

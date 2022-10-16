@@ -30,12 +30,15 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
 > & {
     protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null
+    recordsMap: IJSON<AdaptorRecord> | null
 } & IGeneralStats
 
+type KeysToRemove = 'records' | 'module' | 'config' | 'recordsMap'
+type ProtocolsResponse = Omit<ProtocolAdaptorSummary, KeysToRemove>
 export type IGetOverviewResponseBody = IGeneralStats & {
     totalDataChart: IChartData,
     totalDataChartBreakdown: IChartDataByDex,
-    protocols: Omit<ProtocolAdaptorSummary, 'records' | 'module'>[]
+    protocols: ProtocolsResponse[]
     allChains: string[]
 }
 
@@ -70,8 +73,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 await sendDiscordAlert(e.message)
         })
     }))
-
-    console.log("results", results, adaptorsData.default.length)
 
     // Handle rejected dexs
     const rejectedDexs = results.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
@@ -135,11 +136,12 @@ const substractSubsetVolumes = (dex: ProtocolAdaptorSummary, _index: number, dex
 
 type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
-const removeVolumesObject = (dex: WithOptional<ProtocolAdaptorSummary, 'records' | 'module' | 'config'>) => {
-    delete dex['records']
-    delete dex['module']
-    delete dex['config']
-    return dex
+const removeVolumesObject = (protocol: WithOptional<ProtocolAdaptorSummary, KeysToRemove>): ProtocolsResponse => {
+    delete protocol['records']
+    delete protocol['module']
+    delete protocol['config']
+    delete protocol['recordsMap']
+    return protocol
 }
 
 export const removeEventTimestampAttribute = (v: AdaptorRecord) => {

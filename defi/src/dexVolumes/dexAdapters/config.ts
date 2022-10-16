@@ -480,7 +480,7 @@ export default {
         enabled: true
     },
     "saddle-finance": {
-        enabled: false
+        enabled: true
     },
     "titano-swych": {
         enabled: true

@@ -512,6 +512,9 @@ export default {
     "crema-finance": {
         enabled: true
     },
+    "icecreamswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

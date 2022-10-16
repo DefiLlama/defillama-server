@@ -1,10 +1,9 @@
-import { AdapterType } from "@defillama/adaptors/adapters/types"
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
 import { calcNdChange, getStatsByProtocolVersion, sumAllVolumes } from "../../utils/volumeCalcs"
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
+import { IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
 
@@ -54,6 +53,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
             disabled: adapter.disabled,
             displayName: adapter.displayName,
             module: adapter.module,
+            category: adapter.category,
             records: adaptorRecords,
             recordsMap: cleanRecords.cleanRecordsMap,
             change_1d: stats.change_1d,
@@ -75,6 +75,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
             disabled: adapter.disabled,
             displayName: adapter.displayName,
             config: adapter.config,
+            category: adapter.category,
             total24h: null,
             breakdown24h: null,
             change_1d: null,

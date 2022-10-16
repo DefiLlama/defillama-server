@@ -16887,5 +16887,25 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1665830671
 },
+{
+  id: "2184",
+  name: "handle-fi Perps",
+  address: "0xdb298285fe4c5410b05390ca80e8fbe9de1f259b",
+  symbol: "FOREX",
+  url: "https://app.handle.fi/trade",
+  description: "the global defi FX protocol. borrow, convert & trade multi-currency #stablecoins ",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/handle.fi-perps.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Arbitrum"],
+  module: "handlefi-fxpreps/index.js",
+  twitter: "handle_fi",
+  forkedFrom: ["GMX"],
+  listedAt: 1665919003
+},
 ]
 export default data2;

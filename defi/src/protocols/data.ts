@@ -3451,7 +3451,7 @@ const data: Protocol[] = [
     address: "0x8290333cef9e6d528dd5618fb97a76f268f3edd4",
     symbol: "ANKR",
     url: "https://www.ankr.com/",
-    description: "Liquid staking provider.",
+    description: "Liquid, secure, and easy to integrate staking infrastructure.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ankr.jpg`,
     audits: "2",
@@ -3459,7 +3459,7 @@ const data: Protocol[] = [
     gecko_id: "ankr",
     cmcId: "3783",
     category: "Liquid Staking",
-    chains: ["Ethereum"],
+    chains: ["Binance", "Polygon", "Avalanche", "Ethereum", "Gnosis", "Polkadot"],
     module: "ankr/index.js",
     twitter: "ankr",
     audit_links: [

@@ -135,8 +135,13 @@ export const getStatsByProtocolVersion = (volumes: AdaptorRecord[], prevDayTimes
             const protocolNames = Object.keys(protocolsData)
             for (const protocolName of protocolNames) {
                 if (!accVols[protocolName]) accVols[protocolName] = {}
+                const accData = accVols[protocolName][String(volume.timestamp)]?.data
+                let accChain = accData?.[chain]
+                if (typeof accChain === 'number') accChain = {}
                 accVols[protocolName][String(volume.timestamp)] = new AdaptorRecord(volume.type, volume.adaptorId, volume.timestamp, {
+                    ...accData,
                     [chain]: {
+                        ...accChain,
                         [protocolName]: protocolsData[protocolName]
                     }
                 })

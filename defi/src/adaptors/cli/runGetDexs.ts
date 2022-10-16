@@ -7,8 +7,8 @@ import { performance } from "perf_hooks";
 const event = {
     pathParameters: { chain: undefined, type: "volumes" },
     queryStringParameters: {
-        /*         excludeTotalDataChart: "true",
-                excludeTotalDataChartBreakdown: "true", */
+        excludeTotalDataChart: "true",
+        excludeTotalDataChartBreakdown: "true",
     }
 } as unknown as APIGatewayProxyEvent
 
@@ -21,7 +21,8 @@ const event = {
         delete rr.totalDataChartBreakdown
         // @ts-ignore
         delete rr.totalDataChart*/
-    console.log(Object.keys(rr), endTime - startTime)
+    console.log(rr.protocols.find(p => p.name === 'Balancer'))
+    console.log(endTime - startTime)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)
     } */

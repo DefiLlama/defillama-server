@@ -515,6 +515,9 @@ export default {
     "icecreamswap": {
         enabled: true
     },
+    "artic": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

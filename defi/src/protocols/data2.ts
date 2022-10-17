@@ -16965,7 +16965,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Dexes",
+  category: "Derivatives",
   chains: ["Arbitrum"],
   module: "dolomite/index.js",
   twitter: "Dolomite_io",
@@ -16973,6 +16973,27 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   audit_links: ["https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite_Protocol_V2_Report_EN.pdf"],
   listedAt: 1666000576
+},
+{
+  id: "2188",
+  name: "Real Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://www.realprotocol.xyz",
+  description: "0% interest borrowing USDW against ETHW",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/realprotocol.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["EthereumPoW"],
+  module: "RealProtocol/index.js",
+  twitter: "realprotocoleth",
+  forkedFrom: ["Liquity"],
+  oracles: [],
+  listedAt: 1666002405
 },
 ]
 export default data2;

@@ -2720,7 +2720,7 @@ const data2: Protocol[] =  [
   url: "https://lif3.exchange/",
   description: "LIFE is a reward and governance token integrating DeFi yield farming on the Fantom network. Earn yield from your ERC-20 tokens and LP tokens by staking and earning LIFE rewards.",
   chain: "Fantom",
-  logo: `${baseIconsUrl}/life.jpg`,
+  logo: `${baseIconsUrl}/life.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

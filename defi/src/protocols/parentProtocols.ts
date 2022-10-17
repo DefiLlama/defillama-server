@@ -378,6 +378,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "traderjoe_xyz",
   },
+  {
+    id: "handle finance",
+    name: "handle finance",
+    url: "https://handle.fi",
+    description:
+      "the global defi FX protocol. borrow, convert & trade multi-currency #stablecoins ",
+    logo: `${baseIconsUrl}/handle finance.jpg`,
+    gecko_id: "handle-fi",
+    cmcId: "11794",
+    chains: [],
+    twitter: "handle_fi",
+  },
 ];
 
 export default parentProtocols;

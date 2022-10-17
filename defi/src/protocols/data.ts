@@ -19279,11 +19279,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
 },
 {
   id: "1088",
-  name: "Spectrum",
+  name: "Spectrum Finance",
   address: null,
   symbol: "-",
   url: "https://spectrum.fi/",
-  description: "A non-custodial, decentralised exchange that allows a quick, effortless and secure transfer of liquidity between the Ergo and Cardano networks.",
+  description: "Spectrum Finance is an open-source cross-chain DEX",
   chain: "Ergo",
   logo: `${baseIconsUrl}/spectrum.png`,
   audits: "0",

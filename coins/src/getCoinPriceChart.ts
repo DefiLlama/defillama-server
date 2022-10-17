@@ -166,20 +166,3 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
-async function main() {
-  let event = {
-    pathParameters: {
-      span: "15",
-      period: "5000",
-      //start: "-100",
-      //end: "1666010187",
-      coins: "avax:0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7"
-      //searchWidth: "500"
-    }
-  };
-  let a = await handler(event);
-
-  return;
-}
-main();
-// ts-node coins/src/getCoinPriceChart.ts

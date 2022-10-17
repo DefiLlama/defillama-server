@@ -6,6 +6,7 @@ import loadAdaptorsData from "../../data"
 import { IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
+import { IChartData, sumAllVolumes } from "../../utils/volumeCalcs";
 
 export interface ChartItem {
     data: IRecordAdaptorRecordData;
@@ -27,7 +28,8 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "disabled"
     | "module"
 > {
-    chart: ChartItem[] | null
+    totalDataChart: IChartData | null
+    totalDataChartBreakdown: IChartData | null
     total24h: number | null
     change_1d: number | null
 }
@@ -72,7 +74,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             audit_links: dexData.audit_links,
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
-            chart: formatChartHistory(generatedSummary.records),
+            totalDataChart: generatedSummary.records?.map(record => ([record.timestamp, sumAllVolumes(record.data)])) ?? null,
+            totalDataChartBreakdown: generatedSummary.records?.map(record => ([record.timestamp, record.data])) ?? null,
             total24h: generatedSummary.total24h,
             change_1d: generatedSummary.change_1d,
             module: dexData.module
@@ -92,7 +95,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
             disabled: dexData.disabled,
-            chart: null,
+            totalDataChart: null,
+            totalDataChartBreakdown: null,
             total24h: null,
             change_1d: null
         } as IHandlerBodyResponse

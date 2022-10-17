@@ -7,3 +7,4 @@ docker
 .DS_Store
 .esbuild
 .vscode
+.idea

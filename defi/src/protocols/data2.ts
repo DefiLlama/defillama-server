@@ -16907,5 +16907,25 @@ listedAt: 1650804679
   forkedFrom: ["GMX"],
   listedAt: 1665919003
 },
+{
+  id: "2185",
+  name: "StableDoin",
+  address: "dogechain:0x507D8340B2A1fB72F5672E0a2AD28873a81e2339",
+  symbol: "DOIN",
+  url: "https://stabledoin.finance/",
+  description: "Low fee, low slippage and stablecoins LP staking on DogeChain",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/stabledoin.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  module: "stabledoin/index.js",
+  twitter: "StableDoin",
+  forkedFrom: ["Uniswap"],
+  listedAt: 1665967733
+},
 ]
 export default data2;

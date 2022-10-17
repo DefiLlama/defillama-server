@@ -524,6 +524,9 @@ export default {
     "morpheus-swap": {
         enabled: true
     },
+    "fairyswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

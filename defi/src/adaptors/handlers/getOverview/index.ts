@@ -1,10 +1,8 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
-
-import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, getStatsByProtocolVersion, IChartData, IChartDataByDex, sumAllVolumes } from "../../utils/volumeCalcs";
+import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, IChartData, IChartDataByDex } from "../../utils/volumeCalcs";
 import { formatChain } from "../../utils/getAllChainsFromAdaptors";
-import config from "../../data/volumes/config";
 import { sendDiscordAlert } from "../../utils/notify";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -89,15 +87,9 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     let totalDataChartResponse: IGetOverviewResponseBody['totalDataChart']
     let totalDataChartBreakdownResponse: IGetOverviewResponseBody['totalDataChartBreakdown']
 
-    if (chainFilter) {
-        totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(okProtocols)
-        totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
-        protocolsResponse = okProtocols.map(removeVolumesObject)
-    } else {
-        totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(okProtocols)
-        totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
-        protocolsResponse = okProtocols.map(removeVolumesObject)
-    }
+    totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(okProtocols)
+    totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
+    protocolsResponse = okProtocols.map(removeVolumesObject)
 
     totalDataChartResponse = totalDataChartResponse.slice(totalDataChartResponse.findIndex(it => it[1] !== 0))
     const sumBreakdownItem = (item: { [chain: string]: number }) => Object.values(item).reduce((acc, current) => acc += current, 0)

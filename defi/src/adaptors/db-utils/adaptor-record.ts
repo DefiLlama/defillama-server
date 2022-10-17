@@ -78,11 +78,11 @@ export class AdaptorRecord extends Item {
     }
 
     getCleanAdaptorRecord(chain?: string): AdaptorRecord | null {
+        // TODO: this can be more optimized!! and it should!
         if (chain !== undefined) {
             if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
-            const data = removeErrors(this.data)
             const newData = {
-                [formatChainKey(chain)]: data[chain] ?? data[formatChainKey(chain)]
+                [formatChainKey(chain)]: this.data[chain] ?? this.data[formatChainKey(chain)]
             }
             if (AdaptorRecord.isDataEmpty(newData)) return null
             return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newData)

@@ -7,8 +7,8 @@ import { IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 
-export interface VolumeHistoryItem {
-    dailyVolume: IRecordAdaptorRecordData;
+export interface ChartItem {
+    data: IRecordAdaptorRecordData;
     timestamp: number;
 }
 
@@ -25,8 +25,9 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "forkedFrom"
     | "gecko_id"
     | "disabled"
+    | "module"
 > {
-    volumeHistory: VolumeHistoryItem[] | null
+    chart: ChartItem[] | null
     total24h: number | null
     change_1d: number | null
 }
@@ -71,9 +72,10 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             audit_links: dexData.audit_links,
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
-            volumeHistory: formatChartHistory(generatedSummary.records),
-            total24h: generatedSummary.total24h, // yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) : 0,
-            change_1d: generatedSummary.change_1d // calcNdChange(volumes, 1, yesterdaysVolumeObj.timestamp)
+            chart: formatChartHistory(generatedSummary.records),
+            total24h: generatedSummary.total24h,
+            change_1d: generatedSummary.change_1d,
+            module: dexData.module
         } as IHandlerBodyResponse
     } catch (error) {
         console.error(error)
@@ -90,7 +92,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
             disabled: dexData.disabled,
-            volumeHistory: null,
+            chart: null,
             total24h: null,
             change_1d: null
         } as IHandlerBodyResponse
@@ -101,8 +103,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
 
 const formatChartHistory = (volumes: AdaptorRecord[] | null) => {
     if (volumes === null) return []
-    return volumes.map<VolumeHistoryItem>(v => ({
-        dailyVolume: v.data,
+    return volumes.map<ChartItem>(v => ({
+        data: v.data,
         timestamp: v.sk
     }))
 }

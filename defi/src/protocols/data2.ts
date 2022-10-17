@@ -2534,7 +2534,7 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "mars/index.js",
   twitter: "mars_protocol",
-  audit_links: ["https://github.com/mars-protocol/mars-audits"],  
+  audit_links: ["https://github.com/mars-protocol/mars-audits"],
   openSource: true,
   listedAt: 1646854377,
 },
@@ -2622,7 +2622,7 @@ const data2: Protocol[] =  [
   forkedFrom: ["Frax"],
   module: "blindex/index.js",
   twitter: "BlinDEXio",
-  audit_links: ["https://docs.blindex.io/smart-contracts/audits"] , 
+  audit_links: ["https://docs.blindex.io/smart-contracts/audits"] ,
   listedAt: 1646949250 ,
 },
 {
@@ -2643,7 +2643,7 @@ const data2: Protocol[] =  [
   oracles: [],
   forkedFrom: ["Wonderland"],
   module: "gamblefi/index.js",
-  twitter: "GambleFinance", 
+  twitter: "GambleFinance",
   listedAt: 1646949250 ,
 },
 {
@@ -2664,7 +2664,7 @@ const data2: Protocol[] =  [
   oracles: ["Chainlink"],
   forkedFrom: ["Uniswap"],
   module: "excalibur/index.js",
-  twitter: "ExcaliburDeFi", 
+  twitter: "ExcaliburDeFi",
   audit_links: ["https://paladinsec.co/projects/excalibur/"] ,
   listedAt: 1646949250 ,
 },
@@ -2686,7 +2686,7 @@ const data2: Protocol[] =  [
   oracles: ["Pyth"],
   forkedFrom: [],
   module: "01/index.js",
-  twitter: "01_exchange", 
+  twitter: "01_exchange",
   listedAt: 1646949250 ,
 },
 {
@@ -4814,9 +4814,9 @@ const data2: Protocol[] =  [
   module: "singularityDAO/index.js",
   twitter: "SingularityDao",
   audit_links: [
-    "https://docs.singularitydao.ai/audits/hacken-bsc-token-contract", 
-    "https://docs.singularitydao.ai/audits/hacken-launchpad", 
-    "https://docs.singularitydao.ai/audits/hacken-bonded-staking", 
+    "https://docs.singularitydao.ai/audits/hacken-bsc-token-contract",
+    "https://docs.singularitydao.ai/audits/hacken-launchpad",
+    "https://docs.singularitydao.ai/audits/hacken-bonded-staking",
     "https://www.certik.com/projects/singularitydao"
   ],
   listedAt: 1649526364
@@ -4952,7 +4952,7 @@ const data2: Protocol[] =  [
   twitter: "SolaceFi",
   audit_links: [
                  "https://solace.fi/static/media/Solace-Quantstamp-Report.44617837.pdf" ,
-                 "https://hacken.io/audits/#solace" 
+                 "https://hacken.io/audits/#solace"
                ] ,
   listedAt: 1649684026
 },
@@ -6192,8 +6192,8 @@ listedAt: 1650804679
                   "https://github.com/Good-Ghosting/goodghosting-protocol-v0/blob/master/docs/audits/dedaub-good-ghosting-core-files-audit.pdf" ,
                   "https://github.com/Good-Ghosting/goodghosting-protocol-v0/blob/master/docs/audits/ackee-good-ghosting-core-files-audit.pdf" ,
                   "https://github.com/Good-Ghosting/goodghosting-protocol-v1/blob/master/docs/audits/ackee-good-ghosting-curve-audit.pdf" ,
-                  "https://github.com/Good-Ghosting/https://github.com/Good-Ghosting/goodghosting-protocol-v2/blob/master/docs/audits/dedaub-goodghosting-v2-audit-june%20'22.pdf.pdf" ,   
-  ], 
+                  "https://github.com/Good-Ghosting/https://github.com/Good-Ghosting/goodghosting-protocol-v2/blob/master/docs/audits/dedaub-goodghosting-v2-audit-june%20'22.pdf.pdf" ,
+  ],
   listedAt: 1650999421
 },
 {
@@ -6215,7 +6215,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "sienna/index.js",
   twitter: "sienna_network",
-  audit_links: ["https://sienna.network/audits"], 
+  audit_links: ["https://sienna.network/audits"],
   listedAt: 1651009772
 },
 {
@@ -6462,7 +6462,7 @@ listedAt: 1650804679
   forkedFrom: ["BabySwap"],
   module: "yumiswap/index.js",
   twitter: "yumiswap",
-  audit_links: ["https://docs.yumiswap.com/products-and-features-guide/audit"] , 
+  audit_links: ["https://docs.yumiswap.com/products-and-features-guide/audit"] ,
   listedAt: 1651168503
 },
 {
@@ -6973,7 +6973,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "stakeeasy/index.js",
   twitter: "StakeEasy",
-  audit_links: ["https://drive.google.com/file/d/1R6fK9fzvH8Td2ow0jrwosD2pqHfANvPP/view?usp=sharing"], 
+  audit_links: ["https://drive.google.com/file/d/1R6fK9fzvH8Td2ow0jrwosD2pqHfANvPP/view?usp=sharing"],
   listedAt: 1651695169
 },
 {
@@ -7232,7 +7232,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "valerian/index.js",
   twitter: "valeriandefi",
-  audit_links: ["https://github.com/interfinetwork/smart-contract-audits/blob/audit-updates/Valerian_0xE1af4d744e2A66Cd07c474bED167960BE872fcD9.pdf"], 
+  audit_links: ["https://github.com/interfinetwork/smart-contract-audits/blob/audit-updates/Valerian_0xE1af4d744e2A66Cd07c474bED167960BE872fcD9.pdf"],
   listedAt: 1651826746
 },
 {
@@ -7254,7 +7254,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "linear.js",
   twitter: "LinearProtocol",
-  audit_links: ["https://github.com/linear-protocol/audits/blob/main/BlockSec%20-%20Security%20Audit%20Report%20for%20LiNEAR%20-%20202204.pdf"], 
+  audit_links: ["https://github.com/linear-protocol/audits/blob/main/BlockSec%20-%20Security%20Audit%20Report%20for%20LiNEAR%20-%20202204.pdf"],
   listedAt: 1651826746
 },
 {
@@ -7275,7 +7275,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Balancer"],
   module: "starbank/index.js",
-  twitter: "StarbankFinance", 
+  twitter: "StarbankFinance",
   audit_links: ["https://github.com/starbank-finance/starbank-contract/tree/main/audits"],
   listedAt: 1651867085
 },
@@ -7511,7 +7511,7 @@ listedAt: 1650804679
   module: "spool/index.js",
   twitter: "SpoolFi",
   audit_links: [
-                 "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Spool-v1.0.pdf", 
+                 "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Spool-v1.0.pdf",
                  "https://www.spool.fi/documents/ZokyoAudit.pdf",
                ],
   listedAt: 1652126730
@@ -8010,7 +8010,7 @@ listedAt: 1650804679
   forkedFrom: ["Compound"],
   module: "ecodefi/index.js",
   twitter: "ESG_Financial",
-  audit_links: ["https://www.certik.com/projects/esg-financial"], 
+  audit_links: ["https://www.certik.com/projects/esg-financial"],
   listedAt: 1653037836
 },
 {
@@ -8032,7 +8032,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "infinitypad/index.js",
   twitter: "RealinfinityPad",
-  audit_links: ["https://www.certik.com/projects/esg-financial"], 
+  audit_links: ["https://www.certik.com/projects/esg-financial"],
   listedAt: 1653092333
 },
 {
@@ -8054,7 +8054,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "pandora-digital/index.js",
   twitter: "Pandora_DEX",
-  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Pandora-v1.0.pdf"], 
+  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Pandora-v1.0.pdf"],
   listedAt: 1653092453
 },
 {
@@ -8336,7 +8336,7 @@ listedAt: 1650804679
   module: "kokonut-swap/index.js",
   twitter: null,
   audit_links: ["https://drive.google.com/file/d/1I0HnU8Rs88HHqBC6Y3aUcEKTPZfVTAZD/view"],
-  listedAt: 1653727694  
+  listedAt: 1653727694
 },
 {
   id: "1791",
@@ -8463,7 +8463,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Bridge",
   chains: ["Ethereum", "Polygon", "Avalanche", "Fantom", "Binance", "Arbitrum", "Optimism", "Heco", "Zilliqa", "Ontology", "NEO", "Boba", "Oasis", "Carbon"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "polynetwork/index.js",
   twitter: "PolyNetwork2",
@@ -9067,7 +9067,7 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   module: "swapsicle/index.js",
   twitter: "SwapsicIeDEX",
-  audit_links: ["https://www.certik.com/projects/swapsicle"], 
+  audit_links: ["https://www.certik.com/projects/swapsicle"],
   listedAt: 1655221773
 },
 {
@@ -13333,9 +13333,9 @@ listedAt: 1650804679
   module: "routerprotocol/index.js",
   twitter: "routerprotocol",
   audit_links: [
-    "https://www.certik.com/projects/router", 
-    "https://2030736250-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2MOVWdZOYqYGCPk8rjiB%2Fuploads%2Fi6XLVeITHbGOpWc4ZNF3%2FRouter%20Protocol%20Bridge%20Contract%20Audit.pdf?alt=media&token=5dc1b2e7-1d9d-47c9-abf2-413f1cbb38c2", 
-    "https://2030736250-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2MOVWdZOYqYGCPk8rjiB%2Fuploads%2FF32FJ6GmvterrygKVJec%2FRouter%20Protocol%20GoLang%20Bridge%20Audit.pdf?alt=media&token=ef437a79-9f49-4a0a-ac5d-9b1768d8d783", 
+    "https://www.certik.com/projects/router",
+    "https://2030736250-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2MOVWdZOYqYGCPk8rjiB%2Fuploads%2Fi6XLVeITHbGOpWc4ZNF3%2FRouter%20Protocol%20Bridge%20Contract%20Audit.pdf?alt=media&token=5dc1b2e7-1d9d-47c9-abf2-413f1cbb38c2",
+    "https://2030736250-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2MOVWdZOYqYGCPk8rjiB%2Fuploads%2FF32FJ6GmvterrygKVJec%2FRouter%20Protocol%20GoLang%20Bridge%20Audit.pdf?alt=media&token=ef437a79-9f49-4a0a-ac5d-9b1768d8d783",
     "https://github.com/router-protocol/router-protocol-audit"
   ],
   listedAt: 1661480724
@@ -14757,7 +14757,7 @@ listedAt: 1650804679
   module: "ragetrade/index.js",
   twitter: "rage_trade",
   audit_links: [
-                    "https://github.com/RageTrade/core/blob/159a94ca9fa75a7c1b3acf7191c2c87ebd746691/audits/quantstamp/audit.pdf",            
+                    "https://github.com/RageTrade/core/blob/159a94ca9fa75a7c1b3acf7191c2c87ebd746691/audits/quantstamp/audit.pdf",
                     "https://github.com/RageTrade/core/blob/159a94ca9fa75a7c1b3acf7191c2c87ebd746691/audits/cmichelio/audit.pdf",
                ],
   listedAt: 1663144131
@@ -14960,7 +14960,7 @@ listedAt: 1650804679
   module: "ethichub/index.js",
   twitter: "EthicHub",
   audit_links: [
-    "https://gitlab.com/EthicHub/ethix-contracts/-/blob/master/audits/Red4Sec-EthicHub%20-%20Smart%20Contract%20Audit%20Report_v3.pdf", 
+    "https://gitlab.com/EthicHub/ethix-contracts/-/blob/master/audits/Red4Sec-EthicHub%20-%20Smart%20Contract%20Audit%20Report_v3.pdf",
     "https://gitlab.com/EthicHub/minimice/-/blob/main/audits/EthicHub%20-%20Smart%20Contract%20Audit%20Report%20Final.pdf"
   ],
   listedAt: 1663349441
@@ -16062,7 +16062,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Payments",
   chains: ["Ethereum", "Polygon", "Fantom", "Binance", "Optimism", "Harmony", "Moonbeam", "Moonriver"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "sushiswap-furo/index.js",
   twitter: "SushiSwap",
@@ -16084,7 +16084,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Derivatives",
   chains: ["Ethereum"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "ipor/index.js",
   twitter: "ipor_io",
@@ -16106,7 +16106,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Payments",
   chains: ["Near"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "roketo/index.js",
   twitter: "roketostream",
@@ -16127,12 +16127,12 @@ listedAt: 1650804679
   cmcId: "21167",
   category: "Yield",
   chains: ["Fantom"],
-  oracles: ["Chainlink",], 
+  oracles: ["Chainlink",],
   forkedFrom: ["Based V1"],
   module: "based-finance/basedV2.js",
   twitter: "BasedDEFI",
   parentProtocol: "Based Finance",
-  audit_links: [ 
+  audit_links: [
                  "https://obeliskauditing.com/audits/based3",
                  "https://obeliskauditing.com/audits/based2"
                ],
@@ -16193,7 +16193,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["Polygon", "Kava", "Metis", "Optimism"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "sushiswap-trident/index.js",
   twitter: "SushiSwap",
@@ -16215,7 +16215,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Yield Aggregator",
   chains: ["Ethereum"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "lusd-chickenbonds/index.js",
   twitter: "ChickenBonds",
@@ -16237,7 +16237,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["Solana"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "lifinity/index.js",
   twitter: "Lifinity_io",
@@ -16258,7 +16258,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["Binance"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "zootopia-finance/index.js",
   twitter: "ZootopiaFinance",
@@ -16280,7 +16280,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["EthereumPoW"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: ["Uniswap"],
   module: "ethwswap/index.js",
   twitter: "ethw_swap",
@@ -16343,7 +16343,7 @@ listedAt: 1650804679
   chains: ["Solana"],
   module: "amulet-protocol/index.js",
   twitter: "AmuletProtocol",
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   audit_links: ["https://files.amulet.org/public/AmuletGlobalMTRLabs.pdf"],
   listedAt: 1665048387
@@ -16365,7 +16365,7 @@ listedAt: 1650804679
   chains: ["Binance"],
   module: "superbots/index.js",
   twitter: "SuperBots_Fi",
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   audit_links: ["https://www.certik.com/projects/superbots"],
   listedAt: 1665048593
@@ -16385,7 +16385,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["EthereumPoW"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: ["Uniswap"],
   module: "powerswap/index.js",
   twitter: "PowerSwapPOW",
@@ -16406,7 +16406,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Insurance",
   chains: ["Ethereum"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "ease/index.js",
   twitter: "EaseDeFi",
@@ -16431,7 +16431,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["EthereumPoW"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: ["Uniswap"],
   module: "octopow/index.js",
   twitter: "OctoPowswap",
@@ -16452,7 +16452,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Options",
   chains: ["Algorand"], //Oracle used our own, Medianizer Contract ID on Algorand: 879224867
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "algorai-finance/index.js",
   twitter: "AlgoRai_finance",
@@ -16474,7 +16474,7 @@ listedAt: 1650804679
   cmcId: "20339",
   category: "Yield",
   chains: ["Ethereum"],
-  oracles: [], 
+  oracles: [],
   forkedFrom: [],
   module: "numisme/index.js",
   twitter: "NUMISMEcoin",
@@ -16499,8 +16499,8 @@ listedAt: 1650804679
   gecko_id: "lfgswap-finance",
   cmcId: "21967",
   category: "Dexes",
-  chains: ["EthereumPoW"], 
-  oracles: [], 
+  chains: ["EthereumPoW"],
+  oracles: [],
   forkedFrom: ["Uniswap"],
   module: "lfgswap/index.js",
   twitter: "LfgSwap",
@@ -16590,8 +16590,8 @@ listedAt: 1650804679
   gecko_id: "cakewswap",
   cmcId: "22206",
   category: "Dexes",
-  chains: ["EthereumPoW"], 
-  oracles: [], 
+  chains: ["EthereumPoW"],
+  oracles: [],
   forkedFrom: ["Uniswap"],
   module: "cakewwap/index.js",
   twitter: "cakewswap",
@@ -16611,8 +16611,8 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "Dexes",
-  chains: ["EthereumPoW"], 
-  oracles: [], 
+  chains: ["EthereumPoW"],
+  oracles: [],
   forkedFrom: ["Olympus DAO"],
   module: "ohmw/index.js",
   twitter: "OHMPOWOfficial",
@@ -16632,8 +16632,8 @@ listedAt: 1650804679
   gecko_id: "kleva",
   cmcId: "21122",
   category: "Yield",
-  chains: ["Klaytn"], 
-  oracles: [], 
+  chains: ["Klaytn"],
+  oracles: [],
   forkedFrom: ["Alpaca Finance"],
   module: "kleva/index.js",
   twitter: "KLEVA_Protocol",
@@ -16658,14 +16658,14 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "Lending",
-  chains: ["Polygon"], 
-  oracles: [], 
+  chains: ["Polygon"],
+  oracles: [],
   forkedFrom: ["Compound"],
   module: "quickswap-lending/index.js",
   twitter: "QuickswapDEX",
   listedAt: 1665495016,
   parentProtocol: "Quickswap"
-  
+
 },
 {
   id: "2174",
@@ -16681,8 +16681,8 @@ listedAt: 1650804679
   gecko_id: "dexshare",
   cmcId: "20282",
   category: "Yield Aggregator",
-  chains: ["Binance"], 
-  oracles: [], 
+  chains: ["Binance"],
+  oracles: [],
   forkedFrom: [],
   module: "dexfinance/index.js",
   twitter: "DexFinance",
@@ -16703,8 +16703,8 @@ listedAt: 1650804679
   gecko_id: "goosefx",
   cmcId: "12898",
   category: "Dexes",
-  chains: ["Solana"], 
-  oracles: [], 
+  chains: ["Solana"],
+  oracles: [],
   forkedFrom: [],
   module: "goosefx/index.js",
   twitter: "GooseFX1",
@@ -16728,8 +16728,8 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "Dexes",
-  chains: ["Aurora"], 
-  oracles: [], 
+  chains: ["Aurora"],
+  oracles: [],
   forkedFrom: ["iziSwap"],
   module: "arctic/index.js",
   twitter: "Arctic_trade",
@@ -16750,8 +16750,8 @@ listedAt: 1650804679
   gecko_id: "fortress",
   cmcId: "9592",
   category: "Lending",
-  chains: ["Binance"], 
-  oracles: ["Chainlink"], 
+  chains: ["Binance"],
+  oracles: ["Chainlink"],
   forkedFrom: ["Compound"],
   module: "fortress-lending/index.js",
   twitter: "Fortressloans",
@@ -16948,7 +16948,7 @@ listedAt: 1650804679
   forkedFrom: ["Compound"],
   oracles: ["Chainlink"],
   audit_links: [
-                  "https://docs.usdfi.com/developers/audits", 
+                  "https://docs.usdfi.com/developers/audits",
                   "https://olafinance.gitbook.io/ola-finance/security-reports/audit-reports"
                ],
   listedAt: 1665999581
@@ -16966,7 +16966,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Derivatives",
+  category: "Lending",
   chains: ["Arbitrum"],
   module: "dolomite/index.js",
   twitter: "Dolomite_io",

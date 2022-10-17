@@ -16927,5 +16927,52 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   listedAt: 1665967733
 },
+{
+  id: "2186",
+  name: "USDFI Lending",
+  address: "bsc:0xE7Df6907120684add86f686E103282Ee5CD17b02",
+  symbol: "STABLE",
+  url: "https://lending.usdfi.com/usdlend",
+  description: "USDFI is a fully transparent decentralized stablecoin protocol collateralized by ecosystem revenues from its on-chain treasury, lending & AMM operations.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/usdfi-lending.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Binance"],
+  module: "usdfi-lending/index.js",
+  twitter: "stable_usdfi",
+  forkedFrom: ["Compound"],
+  oracles: ["Chainlink"],
+  audit_links: [
+                  "https://docs.usdfi.com/developers/audits", 
+                  "https://olafinance.gitbook.io/ola-finance/security-reports/audit-reports"
+               ],
+  listedAt: 1665999581
+},
+{
+  id: "2187",
+  name: "Dolomite",
+  address: null,
+  symbol: "-",
+  url: "https://dolomite.io",
+  description: "An immutable margin lending and advanced hedging protocol on Arbitrum that's built around capital efficiency.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/dolomite.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  module: "dolomite/index.js",
+  twitter: "Dolomite_io",
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  audit_links: ["https://github.com/dolomite-exchange/dolomite-margin/blob/master/docs/Dolomite_Protocol_V2_Report_EN.pdf"],
+  listedAt: 1666000576
+},
 ]
 export default data2;

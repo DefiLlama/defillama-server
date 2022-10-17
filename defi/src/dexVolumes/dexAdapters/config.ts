@@ -521,6 +521,9 @@ export default {
     "swapsicle": {
         enabled: true
     },
+    "morpheus-swap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

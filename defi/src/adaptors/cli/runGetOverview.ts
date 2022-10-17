@@ -5,10 +5,11 @@ import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "volumes" },
+    pathParameters: { chain: undefined, type: "fees" },
     queryStringParameters: {
         excludeTotalDataChart: "true",
         excludeTotalDataChartBreakdown: "true",
+        dataType: "dailyRevenue"
     }
 } as unknown as APIGatewayProxyEvent
 
@@ -20,8 +21,7 @@ const event = {
     /*     // @ts-ignore
         delete rr.totalDataChartBreakdown
         delete rr.totalDataChart*/
-    console.log(rr.totalDataChart.slice(-3))
-    console.log(rr.protocols.find(p=>p.name==='Uniswap'))
+    console.log(rr.protocols)
     console.log("Current run:", (endTime - startTime) / 1000)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)

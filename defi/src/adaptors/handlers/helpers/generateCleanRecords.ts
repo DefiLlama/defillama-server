@@ -41,7 +41,7 @@ export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: st
                 const chainData = cleanRecord.data[chain]
                 if (typeof chainData === 'number') return
                 const genChainData = generatedData[chain]
-                if (chainData[protocol] && !Number.isNaN(chainData[protocol])) {
+                if (!Number.isNaN(chainData[protocol])) {
                     generatedData[chain] = {
                         ...(typeof genChainData === "number" ? undefined : genChainData),
                         [protocol]: chainData[protocol]

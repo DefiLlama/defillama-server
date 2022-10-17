@@ -533,6 +533,9 @@ export default {
     "fx-swap": {
         enabled: true
     },
+    "pinkswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

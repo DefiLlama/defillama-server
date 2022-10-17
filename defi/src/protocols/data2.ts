@@ -16889,7 +16889,7 @@ listedAt: 1650804679
 },
 {
   id: "2184",
-  name: "handle-fi Perps",
+  name: "handle.fi Perps",
   address: "0xdb298285fe4c5410b05390ca80e8fbe9de1f259b",
   symbol: "FOREX",
   url: "https://app.handle.fi/trade",

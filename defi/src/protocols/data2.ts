@@ -8966,7 +8966,7 @@ listedAt: 1650804679
   address: "0x37c997b35c619c21323f3518b9357914e8b99525",
   symbol: "PILOT",
   url: "https://unipilot.io",
-  description: "Pilot protocol is a concentrated liquidity manager (CLM) that is built with the aim to facilitate the liquidity providers in terms of managing their liquidity efficiently.",
+  description: "Unipilot optimizes your Uniswap v3 liquidity, keeping it concentrated around the current trading price to maximize returns and minimize gas costs.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/unipilot.png`,
   audits: "2",

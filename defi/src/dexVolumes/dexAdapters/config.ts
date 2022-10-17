@@ -527,6 +527,9 @@ export default {
     "fairyswap": {
         enabled: true
     },
+    "moon-swap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

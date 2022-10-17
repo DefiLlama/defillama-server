@@ -530,6 +530,9 @@ export default {
     "moon-swap": {
         enabled: true
     },
+    "fx-swap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

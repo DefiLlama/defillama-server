@@ -46,7 +46,6 @@ export const handler = async (event: IHandlerEvent) => {
   await allSettled(
     allChains.map(async (chain) => {
       try {
-        console.log(cleanCurrentDayTimestamp, chain, chainBlocks)
         const latestBlock = await getBlock(cleanCurrentDayTimestamp, chain, chainBlocks).catch((e: any) => console.error(`${e.message}; ${cleanCurrentDayTimestamp}, ${chain}`))
         if (latestBlock)
           chainBlocks[chain] = latestBlock

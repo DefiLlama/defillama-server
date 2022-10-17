@@ -11,9 +11,12 @@ export function processFulfilledPromises(fulfilledResults: IRunAdapterResponseFu
             const value = result[ATTRIBUTE]
             if (value && result.chain) {
                 if (!rawRecord[RECORD_TYPE]) rawRecord[RECORD_TYPE] = {}
+                const recordChain = rawRecord[RECORD_TYPE][result.chain]
+                if (typeof recordChain === 'number') return
                 rawRecord[RECORD_TYPE] = {
                     ...rawRecord[RECORD_TYPE],
                     [result.chain]: {
+                        ...recordChain,
                         [module]: +value
                     }
                 }
@@ -30,9 +33,12 @@ export function processRejectedPromises(rejectedResults: IRunAdapterResponseReje
         for (const result of rejectedResults) {
             console.error(`${STORE_ERROR}:${dexName}:Rejected: ${JSON.stringify(result)}\nTIMESTAMP: ${result.timestamp}`)
             if (!rawRecord[RECORD_TYPE]) rawRecord[RECORD_TYPE] = {}
+            const recordChain = rawRecord[RECORD_TYPE][result.chain]
+            if (typeof recordChain === 'number') return
             rawRecord[RECORD_TYPE] = {
                 ...rawRecord[RECORD_TYPE],
                 [result.chain]: {
+                    ...recordChain,
                     error: result.error.message
                 }
             }

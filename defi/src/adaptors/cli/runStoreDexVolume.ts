@@ -1,10 +1,10 @@
 import "./setup.ts"
 import { handler } from "../handlers/storeAdaptorData";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
-import volumes from "../data/volumes";
+import fees from "../data/fees";
 
 handler({
-    protocolIndexes: [volumes?.findIndex(v=>v.name==='Uniswap')] ?? [2],
-    timestamp:1541203200,
-    adaptorType: AdapterType.VOLUME
+    protocolIndexes: [fees?.findIndex(v=>v.name==='Uniswap')],
+    timestamp:1665878400,
+    adaptorType: AdapterType.FEES
 })

@@ -12271,6 +12271,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     audit_links: ["https://drive.google.com/file/d/1WMbvtLCA07z5Jlg9k4tV76x8yDWV66-Z/view"],
     listedAt: 1635466605,
+    parentProtocol: "handle finance"
   },
   {
     id: "725",

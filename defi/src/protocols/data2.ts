@@ -16905,7 +16905,8 @@ listedAt: 1650804679
   module: "handlefi-fxpreps/index.js",
   twitter: "handle_fi",
   forkedFrom: ["GMX"],
-  listedAt: 1665919003
+  listedAt: 1665919003,
+  parentProtocol: "handle finance"
 },
 {
   id: "2185",

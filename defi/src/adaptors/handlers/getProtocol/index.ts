@@ -1,12 +1,13 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import sluggify from "../../../utils/sluggify";
-import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record";
+import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import loadAdaptorsData from "../../data"
 import { IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { IChartData, sumAllVolumes } from "../../utils/volumeCalcs";
+import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../getOverview";
 
 export interface ChartItem {
     data: IRecordAdaptorRecordData;
@@ -36,15 +37,11 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
 
 export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<string> = {
-    [AdapterType.VOLUME]: AdaptorRecordType.dailyVolume,
-    [AdapterType.FEES]: AdaptorRecordType.dailyFees
-}
-
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
     const protocolName = event.pathParameters?.name?.toLowerCase()
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
-    const dataType = event.queryStringParameters?.dataType?.toLowerCase() as AdaptorRecordType ?? DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
+    const rawDataType = event.queryStringParameters?.dataType
+    const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     if (!protocolName || !adaptorType) throw new Error("Missing name or type")
 
     const adaptorsData = loadAdaptorsData(adaptorType)

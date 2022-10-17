@@ -536,6 +536,9 @@ export default {
     "pinkswap": {
         enabled: true
     },
+    "spartan": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

@@ -65,8 +65,9 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     // Import data list
     const adaptorsData = loadAdaptorsData(adaptorType)
+    const allAdapters = adaptorsData.default.filter(va => va.config?.enabled)
 
-    const results = await allSettled(adaptorsData.default.filter(va => va.config?.enabled).map(async (adapter) => {
+    const results = await allSettled(allAdapters.map(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, dataType, chainFilter, async (e) => {
             console.error(e)
             // TODO, move error handling to rejected promises
@@ -99,7 +100,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: protocolsResponse,
-        allChains: getAllChainsUniqueString(okProtocols.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
+        allChains: getAllChainsUniqueString(allAdapters.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
         ...generalStats,
     } as IGetOverviewResponseBody, 10 * 60); // 10 mins cache
 };

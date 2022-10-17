@@ -62,7 +62,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
             total24h: stats.total24h,
             breakdown24h: stats.breakdown24h,
             config: adapter.config,
-            chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains,
+            chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolsStats: protocolVersions
 
         }
@@ -83,7 +83,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
             recordsMap: null,
             change_7d: null,
             change_1m: null,
-            chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains,
+            chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolsStats: null
         }
     }
@@ -108,7 +108,7 @@ const getProtocolVersionStats = (adapterData: ProtocolAdaptor, adaptorRecords: A
             ...acc,
             [protKey]: {
                 ...data,
-                chains: chainFilter ? [formatChain(chainFilter)] : data.chains,
+                chains: chainFilter ? [formatChain(chainFilter)] : data.chains.map(formatChain),
                 ...protocolVersionsStats[protKey],
             }
         }), {} as ProtocolStats)

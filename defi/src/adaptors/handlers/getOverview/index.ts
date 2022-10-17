@@ -100,7 +100,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: protocolsResponse,
-        allChains: getAllChainsUniqueString(allAdapters.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
+        allChains: getAllChainsUniqueString(okProtocols.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
         ...generalStats,
     } as IGetOverviewResponseBody, 10 * 60); // 10 mins cache
 };
@@ -140,13 +140,6 @@ export const removeEventTimestampAttribute = (v: AdaptorRecord) => {
     delete v.data['eventTimestamp']
     return v
 }
-
-/* const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
-    const allChainsNotUnique = dexs.reduce((acc, { chains }) => chains !== null ? acc.concat(...chains) : acc, [] as string[])
-    return allChainsNotUnique.filter((value, index, self) => {
-        return self.indexOf(value) === index;
-    })
-} */
 
 export const getAllChainsUniqueString = (chains: string[]) => {
     return chains.map(formatChain).filter((value, index, self) => {

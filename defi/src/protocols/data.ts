@@ -19285,7 +19285,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://spectrum.fi/",
   description: "Spectrum Finance is an open-source cross-chain DEX",
   chain: "Ergo",
-  logo: `${baseIconsUrl}/spectrum.png`,
+  logo: `${baseIconsUrl}/spectrum-finance.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

@@ -518,6 +518,9 @@ export default {
     "artic": {
         enabled: true
     },
+    "swapsicle": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

@@ -100,7 +100,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: protocolsResponse,
-        allChains: getAllChainsUniqueString(okProtocols.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
+        allChains: getAllChainsUniqueString(allAdapters.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
         ...generalStats,
     } as IGetOverviewResponseBody, 10 * 60); // 10 mins cache
 };

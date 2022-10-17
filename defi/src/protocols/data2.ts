@@ -16996,5 +16996,26 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666002405
 },
+{
+  id: "2189",
+  name: "ECHSWAP",
+  address: "echelon:0x4Df9da1037108Ed96c71FA77B85395cc21a86d60",
+  symbol: "ECS",
+  url: "https://echswap.finance/#/swap",
+  description: "The first decentralized exchange to hit the ECHELON Network.",
+  chain: "Echelon",
+  logo: `${baseIconsUrl}/echswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Echelon"],
+  module: "echswap/index.js",
+  twitter: null,
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1666021576
+},
 ]
 export default data2;

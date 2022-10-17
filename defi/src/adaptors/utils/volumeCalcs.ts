@@ -36,15 +36,15 @@ const getSumAllDexsToday = (
     let dex2SubstractVolumes: any = {}
     for (const dex of dexs) {
         if (dex2Substract) {
-            dex2SubstractVolumes['totalVolume'] = dex2Substract.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
-            dex2SubstractVolumes['totalVolume1d'] = dex2Substract.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
-            dex2SubstractVolumes['totalVolume7d'] = dex2Substract.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp7d)?.data
-            dex2SubstractVolumes['totalVolume30d'] = dex2Substract.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp30d)?.data
+            dex2SubstractVolumes['totalVolume'] = dex2Substract.recordsMap?.[String(yesterdaysTimestamp)]?.data
+            dex2SubstractVolumes['totalVolume1d'] = dex2Substract.recordsMap?.[String(timestamp1d)]?.data
+            dex2SubstractVolumes['totalVolume7d'] = dex2Substract.recordsMap?.[String(timestamp7d)]?.data
+            dex2SubstractVolumes['totalVolume30d'] = dex2Substract.recordsMap?.[String(timestamp30d)]?.data
         }
-        const yesterdaysVolume = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
-        const volume1d = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp1d)?.data
-        const volume7d = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp7d)?.data
-        const volume30d = dex.records?.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestamp30d)?.data
+        const yesterdaysVolume = dex.recordsMap?.[String(yesterdaysTimestamp)]?.data
+        const volume1d = dex.recordsMap?.[String(timestamp1d)]?.data
+        const volume7d = dex.recordsMap?.[String(timestamp7d)]?.data
+        const volume30d = dex.recordsMap?.[String(timestamp30d)]?.data
         totalVolume += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
         totalVolume1d += volume1d ? sumAllVolumes(volume1d) - sumAllVolumes(dex2SubstractVolumes['totalVolume1d']) : 0
         totalVolume7d += volume7d ? sumAllVolumes(volume7d) - sumAllVolumes(dex2SubstractVolumes['totalVolume7d']) : 0

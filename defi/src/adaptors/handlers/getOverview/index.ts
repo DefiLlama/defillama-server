@@ -108,11 +108,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 const substractSubsetVolumes = (dex: ProtocolAdaptorSummary, _index: number, dexs: ProtocolAdaptorSummary[], baseTimestamp?: number): ProtocolAdaptorSummary => {
     const includedVolume = dex.config?.includedVolume
     if (includedVolume && includedVolume.length > 0) {
-        const includedSummaries = dexs.filter(dex => {
-            const volumeAdapter = dex.module
-            if (!volumeAdapter) throw Error("No volumeAdapter found")
-            includedVolume.includes(volumeAdapter)
-        })
+        const includedSummaries = dexs.filter(dex => includedVolume.includes(dex.module))
         let computedSummary: ProtocolAdaptorSummary = dex
         for (const includedSummary of includedSummaries) {
             const newSum = getSumAllDexsToday([computedSummary], includedSummary, baseTimestamp)

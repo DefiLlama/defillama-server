@@ -7,8 +7,8 @@ import { performance } from "perf_hooks";
 const event = {
     pathParameters: { chain: undefined, type: "volumes" },
     queryStringParameters: {
-        excludeTotalDataChart: "true",/* 
-        excludeTotalDataChartBreakdown: "true", */
+        /* excludeTotalDataChart: "true", */
+        excludeTotalDataChartBreakdown: "true",
     }
 } as unknown as APIGatewayProxyEvent
 
@@ -20,9 +20,12 @@ const event = {
     /*     // @ts-ignore
         delete rr.totalDataChartBreakdown
         delete rr.totalDataChart*/
+    console.log(rr.totalDataChart.slice(-3))
+    // @ts-ignore
+    delete rr.totalDataChart
     // @ts-ignore
     delete rr.protocols
-    // console.log(rr)
+    console.log(rr)
     console.log("Current run:", (endTime - startTime) / 1000)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)

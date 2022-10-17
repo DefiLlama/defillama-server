@@ -16983,7 +16983,7 @@ listedAt: 1650804679
   url: "https://www.realprotocol.xyz",
   description: "0% interest borrowing USDW against ETHW",
   chain: "EthereumPoW",
-  logo: `${baseIconsUrl}/realprotocol.png`,
+  logo: `${baseIconsUrl}/real-protocol.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

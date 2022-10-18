@@ -539,6 +539,9 @@ export default {
     "spartan": {
         enabled: true
     },
+    "penguin": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

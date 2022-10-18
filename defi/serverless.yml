@@ -375,11 +375,7 @@ functions:
   triggerStoreAdaptorData:
     handler: src/adaptors/handlers/triggerStoreAdaptorData.default
     timeout: 900
-    events:
-      - schedule:
-          rate: rate(30 minute)
-          input:
-            type: fees
+    memorySize: 512
   getDex:
     handler: src/dexVolumes/handlers/getDexVolume/index.default
     timeout: 90

@@ -115,7 +115,7 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         eventTimestamp
     }
     try {
-        console.log("Storing", adaptorRecord.keys())
+        console.log("Storing", adaptorRecord)
         await dynamodb.update({
             Key: adaptorRecord.keys(),
             UpdateExpression: createUpdateExpressionFromObj(obj2Store),
@@ -140,9 +140,9 @@ function createExpressionAttributeValuesFromObj(obj: IRecordAdaptorRecordData): 
     }, {} as Record<string, unknown>)
 }
 
-export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number): Promise<AdaptorRecord[] | AdaptorRecord> => {
+export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, protocolType?: ProtocolType, mode: "ALL" | "LAST" | "TIMESTAMP" = "ALL", timestamp?: number): Promise<AdaptorRecord[] | AdaptorRecord> => {
     // Creating dummy object to get the correct key
-    const adaptorRecord = new AdaptorRecord(type, adaptorId, null!, null!)
+    const adaptorRecord = new AdaptorRecord(type, adaptorId, null!, null!, protocolType)
     let keyConditionExpression = "PK = :pk"
     const expressionAttributeValues: { [key: string]: any } = {
         ":pk": adaptorRecord.pk,

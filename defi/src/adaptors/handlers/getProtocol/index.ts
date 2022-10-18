@@ -51,7 +51,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     if (!dexData) throw new Error("DEX data not found!")
     let dexDataResponse = {}
     try {
-        let volumes = await getAdaptorRecord(dexData.id, dataType, "ALL")
+        let volumes = await getAdaptorRecord(dexData.id, dataType, dexData.protocolType, "ALL")
         volumes = volumes
         // This check is made to infer Volume type instead of Volume[] type
         if (volumes instanceof AdaptorRecord) throw new Error("Wrong volume queried")

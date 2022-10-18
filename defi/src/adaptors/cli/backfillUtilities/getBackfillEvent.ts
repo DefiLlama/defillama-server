@@ -9,6 +9,7 @@ import getDataPoints from "../../utils/getDataPoints"
 import { getUniqStartOfTodayTimestamp } from "../../../../adapters/helpers/getUniSubgraphVolume"
 import { removeEventTimestampAttribute } from "../../handlers/getOverview"
 import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { ONE_DAY_IN_SECONDS } from "../../handlers/getProtocol"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
@@ -62,7 +63,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
             type: adaptorType,
             backfill: [{
                 dexNames: [adapterName],
-                timestamp: onlyMissing
+                timestamp: onlyMissing + ONE_DAY_IN_SECONDS
             }]
         }
 
@@ -110,7 +111,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
     if (onlyMissing && typeof onlyMissing === "boolean") {
         let volTimestamps = {} as IJSON<boolean>
         for (const type of Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)) {
-            let vols = (await getAdaptorRecord(adapterData.id, type as AdaptorRecordType, "ALL"))
+            let vols = (await getAdaptorRecord(adapterData.id, type as AdaptorRecordType, adapterData.protocolType, "ALL"))
             if (!(vols instanceof Array)) throw new Error("Incorrect volumes found")
             vols = vols.map(removeEventTimestampAttribute)
             volTimestamps = vols

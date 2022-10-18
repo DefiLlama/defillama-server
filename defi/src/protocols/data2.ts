@@ -17069,7 +17069,7 @@ listedAt: 1650804679
   url: "https://plutusdao.io",
   description: "Plutus is an Arbitrum-native governance aggregator aiming to maximize users liquidity and rewards while simultaneously aggregating governance behind the PLS token. Plutus’ objective is to become the de-facto Layer 2 governance blackhole for projects with veTokens.",
   chain: "Arbitrum",
-  logo: `${baseIconsUrl}/plutosdao.jpg`,
+  logo: `${baseIconsUrl}/plutusdao.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: "plutusdao",

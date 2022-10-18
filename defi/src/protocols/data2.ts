@@ -17060,5 +17060,30 @@ listedAt: 1650804679
   twitter: "OmniDex1",
   listedAt: 1666095753
 },
+{
+  id: "2192",
+  name: "PlutusDAO",
+  address: "arbitrum:0x51318B7D00db7ACc4026C88c3952B66278B6A67F",
+  symbol: "PLS",
+  url: "https://plutusdao.io",
+  description: "Plutus is an Arbitrum-native governance aggregator aiming to maximize users liquidity and rewards while simultaneously aggregating governance behind the PLS token. Plutus’ objective is to become the de-facto Layer 2 governance blackhole for projects with veTokens.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/plutosdao.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "plutusdao",
+  cmcId: "19964",
+  category: "Yield",
+  chains: ["Arbitrum"],
+  module: "plutusDAO/index.js",
+  forkedFrom: [],
+  oracles: [],
+  twitter: "PlutusDAO_io",
+  audit_links: [
+                 "https://solidity.finance/audits/PlvGLP",
+                 "https://www.certik.com/projects/plutusdao"
+               ],
+  listedAt: 1666097177
+},
 ]
 export default data2;

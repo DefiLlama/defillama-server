@@ -27,6 +27,7 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'config'
     | 'category'
     | 'protocolType'
+    | 'logo'
 > & {
     protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null

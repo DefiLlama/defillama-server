@@ -16978,8 +16978,8 @@ listedAt: 1650804679
 {
   id: "2188",
   name: "Real Protocol",
-  address: null,
-  symbol: "-",
+  address: "ethpow:0x39618C912e22fAD4A9bd47037Cd1f88b69b029cc",
+  symbol: "REALP",
   url: "https://www.realprotocol.xyz",
   description: "0% interest borrowing USDW against ETHW",
   chain: "EthereumPoW",

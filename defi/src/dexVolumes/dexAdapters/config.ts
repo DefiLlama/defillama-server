@@ -545,6 +545,9 @@ export default {
     "vortex-protocol": {
         enabled: true
     },
+    "dinosaur-eggs": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

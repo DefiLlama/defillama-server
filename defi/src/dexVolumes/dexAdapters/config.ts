@@ -542,6 +542,9 @@ export default {
     "penguin": {
         enabled: true
     },
+    "vortex-protocol": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

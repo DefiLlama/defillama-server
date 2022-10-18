@@ -12196,7 +12196,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://pools.mycelium.xyz",
     description: "Previously Tracer Perpetual Pools. Build and trade with Mycelium Perpetuals and gain leveraged exposure to any market in the world.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/mycelium-perpetual-pools.png`,
+    logo: `${baseIconsUrl}/mycelium-perpetual-pools.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -11658,7 +11658,7 @@ listedAt: 1650804679
   category: "Yield",
   chains: ["Tezos"],
   module: "kordfi/index.js",
-  oracles: ["Ubinetic"],
+  oracles: ["Acurast"],
   forkedFrom: [],
   twitter: "kord_fi",
   listedAt: 1659369461
@@ -14492,7 +14492,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Lending",
   chains: ["Tezos"],
-  oracles: ["Harbinger", "Ubinetic"],
+  oracles: ["Harbinger", "Acurast"],
   forkedFrom: [],
   module: "yupana/index.js",
   twitter: "YupanaFinance",

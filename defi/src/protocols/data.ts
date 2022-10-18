@@ -8252,7 +8252,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "youves/index.js",
     twitter: "youves_com",
     audit_links: ["https://github.com/youves-com/youves-smart-contract/blob/main/audits/09212021-LeastAuthority-TezosFoundationSyntheticAssetPlatformSmartContractsFinalAuditReport.pdf"],
-    oracles: ["Ubinetic"],
+    oracles: ["Acurast"],
   },
   {
     id: "521",

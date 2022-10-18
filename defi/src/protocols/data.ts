@@ -5993,7 +5993,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "bxh",
     cmcId: null,
-    category: "Yield",
+    category: "Dexes",
     chains: ["Heco"],
     forkedFrom: ["Uniswap"],
     module: "bxh/index.js",

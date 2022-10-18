@@ -376,7 +376,7 @@ functions:
     handler: src/adaptors/handlers/triggerStoreAdaptorData.default
     timeout: 900
     events:
-      - schedule: rate(15 minutes)
+      - schedule: cron(01 0 * * ? *)
   getDex:
     handler: src/dexVolumes/handlers/getDexVolume/index.default
     timeout: 90

@@ -548,6 +548,9 @@ export default {
     "dinosaur-eggs": {
         enabled: true
     },
+    "mcdex": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

@@ -6,12 +6,12 @@ import { performance } from "perf_hooks";
     const start = performance.now()
     const r = await handler({
         pathParameters: {
-            name: "angle",
+            name: "bitcoin",
             type: "fees"
         },
-        queryStringParameters: {
+        /* queryStringParameters: {
             dataType: "dailyRevenue"
-        }
+        } */
     } as unknown as AWSLambda.APIGatewayEvent)
     const end = performance.now()
     const d = JSON.parse(r.body)

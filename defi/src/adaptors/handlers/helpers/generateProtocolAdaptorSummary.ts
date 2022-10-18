@@ -10,10 +10,10 @@ import generateCleanRecords from "./generateCleanRecords"
 export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
     try {
         // Get all records from db
-        let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorType)
+        let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorType, adapter.protocolType)
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
-
+        console.log(adaptorRecords, adapter.id, adaptorType)
         // Clean data by chain
         const cleanRecords = generateCleanRecords(
             adaptorRecords,

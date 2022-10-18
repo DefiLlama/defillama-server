@@ -9404,7 +9404,7 @@ listedAt: 1650804679
   url: "https://sushi.com",
   description: "Lend and borrow assets in Kashi isolated risk markets.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/sushiswap-kashi.png`,
+  logo: `${baseIconsUrl}/sushi-kashi.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,
@@ -16180,13 +16180,13 @@ listedAt: 1650804679
 },
 {
   id: "2152",
-  name: "Sushiswap Trident",
+  name: "Sushi Trident",
   address: null,
   symbol: "-",
   url: "https://www.sushi.com/swap",
   description: "TRIDENT 🔱 is a newly developed AMM and routing system from SushiSwap (Sushi).",
   chain: "Polygon",
-  logo: `${baseIconsUrl}/sushiswap-trident.png`,
+  logo: `${baseIconsUrl}/sushi-trident.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,
@@ -17019,6 +17019,28 @@ listedAt: 1650804679
 },
 {
   id: "2190",
+  name: "Sushi BentoBox",
+  address: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+  symbol: "SUSHI",
+  url: "https://www.sushi.com",
+  description: "BentoBox is a token vault that generates yield for the capital deposited into it, protocols can be built on top such as Kashi, Trident, Limit Order and Furo.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/sushi-bentobox.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum", "Fantom", "Avalanche", "Arbitrum", "Moonbeam", "Binance", "Optimism", "Polygon", "xDai"],
+  module: "sushiswap-bentobox/index.js",
+  forkedFrom: [],
+  oracles: [],
+  twitter: "SushiSwap",
+  parentProtocol: "Sushi",
+  listedAt: 1666088130
+},
+{
+  id: "2191",
   name: "Mycelium Staking",
   address: "arbitrum:0xC74fE4c715510Ec2F8C61d70D397B32043F55Abe",
   symbol: "MYC",
@@ -17037,6 +17059,6 @@ listedAt: 1650804679
   twitter: "mycelium_xyz",
   parentProtocol: "Mycelium",
   listedAt: 1666033154
-},
+ }
 ]
 export default data2;

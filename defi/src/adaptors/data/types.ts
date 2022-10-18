@@ -1,10 +1,11 @@
-import { Adapter } from "@defillama/adaptors/adapters/types"
+import { Adapter, ProtocolType } from "@defillama/adaptors/adapters/types"
 import { Protocol } from "../../protocols/types"
 
 export interface ProtocolAdaptor extends Protocol {
     displayName: string
     config?: IConfig
     disabled: boolean
+    protocolType?: ProtocolType
     protocolsData: IJSON<{
         chains: string[]
         disabled: boolean

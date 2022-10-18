@@ -17058,6 +17058,7 @@ listedAt: 1650804679
   forkedFrom: ["AAVE"],
   oracles: [],
   twitter: "OmniDex1",
+  parentProtocol: "Omnidex",
   listedAt: 1666095753
 },
 {

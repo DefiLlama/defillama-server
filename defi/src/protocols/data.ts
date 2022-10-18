@@ -23299,6 +23299,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "OmniDex1",
   oracles: ["DIA"],
   forkedFrom: ["Uniswap"],
+  parentProtocol: "Omnidex",
   listedAt: 1642579561,
 },
 {

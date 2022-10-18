@@ -291,7 +291,7 @@ export default {
         enabled: true
     },
     "jupiter-aggregator": {
-        enabled: true
+        enabled: false
     },
     "astroport": {
         enabled: true

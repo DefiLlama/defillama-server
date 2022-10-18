@@ -5,6 +5,7 @@ import getAllChainsFromAdaptors, { getProtocolsData, isDisabled } from "../../ut
 import { ProtocolAdaptor } from "../types";
 import { Adapter, ProtocolType } from "@defillama/adaptors/adapters/types";
 import { chainCoingeckoIds } from "../../../utils/normalizeChain"
+import { baseIconsUrl } from "../../../constants";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -13,7 +14,14 @@ function notUndefined<T>(x: T | undefined): x is T {
     return x !== undefined;
 }
 
-const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => ({ ...obj, name: key, id: obj.cmcId, gecko_id: obj.geckoId })) as unknown as Protocol[]
+const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => ({
+    ...obj,
+    name: key,
+    id: obj.cmcId,
+    gecko_id: obj.geckoId,
+    category: "Chain",
+    logo: `${baseIconsUrl}/${key.toLowerCase()}.png`
+})) as unknown as Protocol[]
 
 export type IImportsMap = IJSON<{ default: Adapter }>
 

@@ -17039,5 +17039,26 @@ listedAt: 1650804679
   parentProtocol: "Sushi",
   listedAt: 1666088130
 },
+{
+  id: "2191",
+  name: "Omnidex Lend",
+  address: "telos:0xd2504a02fABd7E546e41aD39597c377cA8B0E1Df",
+  symbol: "CHARM",
+  url: "https://lending.omnidex.finance/markets",
+  description: "Lending Protocol on Telos Network.",
+  chain: "Telos",
+  logo: `${baseIconsUrl}/omnidex-lend.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Telos"],
+  module: "omnidex-lend/index.js",
+  forkedFrom: ["AAVE"],
+  oracles: [],
+  twitter: "OmniDex1",
+  listedAt: 1666095753
+},
 ]
 export default data2;

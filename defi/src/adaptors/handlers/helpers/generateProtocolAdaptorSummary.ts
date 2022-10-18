@@ -1,3 +1,4 @@
+import { ProtocolType } from "@defillama/adaptors/adapters/types"
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord } from "../../db-utils/adaptor-record"
@@ -63,8 +64,8 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
             breakdown24h: stats.breakdown24h,
             config: adapter.config,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
-            protocolsStats: protocolVersions
-
+            protocolsStats: protocolVersions,
+            protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL
         }
     } catch (error) {
         // TODO: handle better errors
@@ -76,6 +77,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
             displayName: adapter.displayName,
             config: adapter.config,
             category: adapter.category,
+            protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
             total24h: null,
             breakdown24h: null,
             change_1d: null,

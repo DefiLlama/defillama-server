@@ -75,7 +75,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             totalDataChartBreakdown: generatedSummary.records?.map(record => ([record.timestamp, record.data])) ?? null,
             total24h: generatedSummary.total24h,
             change_1d: generatedSummary.change_1d,
-            module: dexData.module
+            module: dexData.module,
+            protocolType: generatedSummary.protocolType,
         } as IHandlerBodyResponse
     } catch (error) {
         console.error(error)

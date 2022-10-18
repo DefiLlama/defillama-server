@@ -23289,7 +23289,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   description: `OmniDex is an automated market-making (AMM) decentralized exchange. Swap, Farm and earn rewards on the first native DEX built on the Telos EVM!`,
   chain: "Telos",
   logo: `${baseIconsUrl}/omnidex.jpg`,
-  audits: "2",
+  audits: "0",
   audit_note: null,
   gecko_id: "omnidex",
   cmcId: null,

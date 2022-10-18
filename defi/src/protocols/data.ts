@@ -2888,7 +2888,7 @@ const data: Protocol[] = [
   },
   {
     id: "251",
-    name: "Mimo Defi",
+    name: "Mimo Protocol",
     address: "0x90b831fa3bebf58e9744a14d638e25b4ee06f9bc",
     symbol: "MIMO",
     url: "https://mimo.capital",

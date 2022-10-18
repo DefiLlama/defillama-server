@@ -551,6 +551,18 @@ export default {
     "mcdex": {
         enabled: true
     },
+    "mistswap": {
+        enabled: true
+    },
+    "bxh": {
+        enabled: true
+    },
+    "auraswap": {
+        enabled: true
+    },
+    "carbonswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

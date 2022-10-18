@@ -2306,7 +2306,7 @@ const data2: Protocol[] =  [
   address: null,
   symbol: "-",
   url: "https://granary.finance/",
-  description: "The Granary is a decentralized, user-driven borrowing and lending liquidity market inspired by AAVE.",
+  description: "Granary Finance is a decentralized, user-driven borrowing and lending liquidity market inspired by AAVE.",
   chain: "Fantom",
   logo: `${baseIconsUrl}/granary-finance.png`,
   audits: "0",

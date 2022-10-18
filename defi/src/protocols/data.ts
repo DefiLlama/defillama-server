@@ -2895,7 +2895,7 @@ const data: Protocol[] = [
     description:
       "The Mimo protocol is a decentralized price-stable token issuance protocol on the Ethereum blockchain",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mimo-defi.jpg`,
+    logo: `${baseIconsUrl}/mimo-protocol.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "mimo-parallel-governance-token",

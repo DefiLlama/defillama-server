@@ -20,7 +20,7 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => ({
     id: obj.cmcId,
     gecko_id: obj.geckoId,
     category: "Chain",
-    logo: `${baseIconsUrl}/chains/${key.toLowerCase()}.jpg`
+    logo: `${baseIconsUrl}/chains/rsz_${key.toLowerCase()}.jpg`
 })) as unknown as Protocol[]
 
 export type IImportsMap = IJSON<{ default: Adapter }>

@@ -9404,7 +9404,7 @@ listedAt: 1650804679
   url: "https://sushi.com",
   description: "Lend and borrow assets in Kashi isolated risk markets.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/sushiswap-kashi.png`,
+  logo: `${baseIconsUrl}/sushi-kashi.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

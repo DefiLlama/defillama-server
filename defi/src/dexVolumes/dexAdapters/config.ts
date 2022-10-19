@@ -569,6 +569,9 @@ export default {
     "gravity-finance": {
         enabled: true
     },
+    "4swap": {
+        enabled: false
+    },
 } as {
     [name: string]: IVolumesConfig
 }

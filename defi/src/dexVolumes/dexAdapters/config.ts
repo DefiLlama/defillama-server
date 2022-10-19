@@ -563,6 +563,18 @@ export default {
     "carbonswap": {
         enabled: true
     },
+    "pangeaswap": {
+        enabled: false
+    },
+    "gravity-finance": {
+        enabled: true
+    },
+    "4swap": {
+        enabled: false
+    },
+    "gravis": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

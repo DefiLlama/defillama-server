@@ -20,7 +20,7 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => ({
     id: obj.cmcId,
     gecko_id: obj.geckoId,
     category: "Chain",
-    logo: `${baseIconsUrl}/chains/rsz_${key.toLowerCase()}.jpg`
+    logo: `${baseIconsUrl}/chains/rsz_${getLogoKey(key)}.jpg`
 })) as unknown as Protocol[]
 
 export type IImportsMap = IJSON<{ default: Adapter }>
@@ -57,4 +57,9 @@ function getDisplayName(name: string, adapter: Adapter) {
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
         return `${Object.keys(adapter.breakdown)[0]}`
     return name
+}
+
+function getLogoKey (key: string) {
+    if (key.toLowerCase()==='bsc') return 'binance'
+    else return key.toLowerCase()
 }

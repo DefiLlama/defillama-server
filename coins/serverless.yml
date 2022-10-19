@@ -129,6 +129,13 @@ functions:
       - http:
           path: prices/historical/{timestamp}/{coins}
           method: get
+  coinPriceChart:
+    handler: src/getCoinPriceChart.default
+    timeout: 60
+    events:
+      - http:
+          path: chart/{coins}
+          method: get
   block:
     handler: src/getBlock.default
     timeout: 60

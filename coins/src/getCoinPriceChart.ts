@@ -74,17 +74,17 @@ function formParamsObject(event: any): QueryParams {
     let value;
     if (p == "period") {
       value = quantisePeriod(
-        event.pathParameters?.period?.toLowerCase() ?? "d"
+        event.queryStringParameters?.period?.toLowerCase() ?? "d"
       );
     } else if (p == "searchWidth") {
       value = quantisePeriod(
-        event.pathParameters?.searchWidth?.toLowerCase() ??
+        event.queryStringParameters?.searchWidth?.toLowerCase() ??
           (params.period / 10).toString()
       );
     } else if (p == "end") {
-      value = parseInt(event.pathParameters?.[p] ?? getCurrentUnixTimestamp());
+      value = parseInt(event.queryStringParameters?.[p] ?? getCurrentUnixTimestamp());
     } else {
-      value = parseInt(event.pathParameters?.[p] ?? "0");
+      value = parseInt(event.queryStringParameters?.[p] ?? "0");
     }
     params[p] = uintCheck(value, p);
   }

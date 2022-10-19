@@ -8,13 +8,8 @@ import {
 import { getBasicCoins } from "./utils/getCoinsUtils";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./utils/date";
+import { quantisePeriod, getTimestampsArray } from "./utils/timestampUtils";
 
-const letterToSeconds: { [symbol: string]: number } = {
-  w: 604800,
-  d: 86400,
-  h: 3600,
-  m: 60
-};
 type TimedPrice = {
   price: number;
   timestamp: number;
@@ -35,33 +30,6 @@ type QueryParams = {
   end: number;
   searchWidth: number;
 };
-function quantisePeriod(period: string): number {
-  let normalizedPeriod: number;
-  const normalized = Object.keys(letterToSeconds)
-    .map((s: string) => {
-      if (!period.includes(s)) return;
-      const numberPeriod = period.replace(new RegExp(`[${s}]`, "i"), "");
-      normalizedPeriod = Number(numberPeriod == "" ? 1 : numberPeriod);
-      return normalizedPeriod * letterToSeconds[s];
-    })
-    .find((t: any) => t != null);
-  if (normalized == null) return Number(period);
-  return normalized;
-}
-function getTimestampsArray(
-  origin: number,
-  workingForwards: boolean,
-  delta: number,
-  span: number
-): number[] {
-  const timestamps: number[] = [origin];
-  let timestamp: number = origin;
-  for (let i = 0; i < span; i++) {
-    timestamp = workingForwards ? timestamp + delta : timestamp - delta;
-    timestamps.push(timestamp);
-  }
-  return timestamps;
-}
 function uintCheck(value: any, name: string) {
   if (value < 0 || isNaN(value))
     return errorResponse({ message: `${name} must be uint` });

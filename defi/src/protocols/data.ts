@@ -21,31 +21,31 @@ READ THIS!
 */
 
 const data: Protocol[] = [
-  {
-    id: "1",
-    name: "Uniswap",
-    address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-    symbol: "UNI",
-    url: "https://uniswap.org/",
-    description:
-      "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/uniswap.png`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: "uniswap",
-    cmcId: "7083",
-    category: "Dexes",
-    chains: ["Ethereum"],
-    module: "uniswap/index.js",
-    twitter: "Uniswap",
-    audit_links: [
-      "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",
-      "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits",
-      "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
-    ],
-    oracles: [],
-  },
+ // {
+ //   id: "1",
+ //   name: "Uniswap",
+ //   address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+ //   symbol: "UNI",
+ //   url: "https://uniswap.org/",
+ //   description:
+ //     "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
+ //   chain: "Ethereum",
+ //  logo: `${baseIconsUrl}/uniswap.png`,
+ //   audits: "2",
+ //   audit_note: null,
+ //   gecko_id: "uniswap",
+ //   cmcId: "7083",
+ //   category: "Dexes",
+ //   chains: ["Ethereum"],
+ //   module: "uniswap/index.js",
+ //   twitter: "Uniswap",
+ //   audit_links: [
+ //     "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",
+ //     "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits",
+ //     "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
+ //   ],
+ //   oracles: [],
+ // },
   {
     id: "2",
     name: "WBTC",

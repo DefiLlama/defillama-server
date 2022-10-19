@@ -12579,7 +12579,7 @@ listedAt: 1650804679
 },
 {
   id: "1987",
-  name: "Pangea Swap",
+  name: "PangeaSwap",
   address: null,
   symbol: "-",
   url: "https://pangeaswap.com",

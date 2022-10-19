@@ -18,13 +18,21 @@ import sleep from "../../../utils/shared/sleep";
             console.info("Has been generated an empty event, nothing to backfill...")
             return
         }
-        console.info(`${backfillEvent.backfill[0].dexNames[0].toUpperCase()} will be backfilled starting from ${formatTimestampAsDate(String(backfillEvent.backfill[0].timestamp!))}`)
-        console.info(`${backfillEvent.backfill.length} days will be filled. If a chain is already available will be refilled.`)
-        await executeAsyncBackfill(backfillEvent)
-        console.info(`Don't forget to enable the adapter to src/dexVolumes/dexAdapters/config.ts, bye llama🦙`)
+        for (let i = 0; i < backfillEvent.backfill.length; i += 500) {
+            await sleep(1000 * 60 * 2)
+            const smallbackfillEvent = {
+                ...backfillEvent,
+                backfill: backfillEvent.backfill.slice(i, i + 500),
+            };
+            console.info(`${smallbackfillEvent.backfill[0].dexNames[0].toUpperCase()} will be backfilled starting from ${formatTimestampAsDate(String(smallbackfillEvent.backfill[0].timestamp!))}`)
+            console.info(`${smallbackfillEvent.backfill.length} days will be filled. If a chain is already available will be refilled.`)
+            await executeAsyncBackfill(smallbackfillEvent)
+            console.info(`Don't forget to enable the adapter to src/dexVolumes/dexAdapters/config.ts, bye llama🦙`)
+        }
     }
-    const adaptorsData = data(ADAPTER_TYPE)
-    for (const adapter of adaptorsData.default) {
+    const chains = ['doge', 'litecoin']
+    const adaptorsData = data(ADAPTER_TYPE).default.filter(ad=>chains.includes(ad.module))
+    for (const adapter of adaptorsData) {
         console.log("Sleeping for 2 minutes before launching next backfill", adapter.name)
         await sleep(1000 * 60 * 2)
         try {

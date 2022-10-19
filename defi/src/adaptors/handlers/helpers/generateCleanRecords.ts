@@ -16,7 +16,7 @@ export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: st
     // Process adaptors. Should be changed to process based on timestamps instead of stored records
     const processed = adaptorRecords.reduce((acc, adaptorRecord, currentIndex, array) => {
         // Let's work with a clean record
-        const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter)
+        const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
         // Here will be stored the normalized data
         const generatedData = {} as IRecordAdaptorRecordData
         // Get current timestamp we are working with
@@ -59,7 +59,7 @@ export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: st
                 acc.nextDataRecord[chainProt] = undefined
                 nextRecord = acc.nextDataRecord[chainProt]
                 for (let i = currentIndex; i < (array.length - 1); i++) {
-                    const cR = array[i + 1].getCleanAdaptorRecord(chainFilter)
+                    const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
                     const protDataChain = cR?.data[chain]
                     if (cR !== null && typeof protDataChain === 'object' && protDataChain[protocol]) {
                         acc.nextDataRecord[chainProt] = cR
@@ -102,7 +102,7 @@ export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: st
         return acc
     }, {
         adaptorRecords: [] as AdaptorRecord[],
-        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter) }), {}),
+        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains) }), {}),
         nextDataRecord: {},
         recordsMap: {}
     } as {

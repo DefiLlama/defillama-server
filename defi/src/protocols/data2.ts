@@ -17178,7 +17178,8 @@ listedAt: 1650804679
     "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
   ],
   oracles: [],
-  listedAt: 1666191149
+  listedAt: 1666191149,
+  parentProtocol: "Uniswap"
 },
 {
   id: "2197",
@@ -17204,7 +17205,8 @@ listedAt: 1650804679
     "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
   ],
   oracles: [],
-  listedAt: 1666191162
+  listedAt: 1666191162,
+  parentProtocol: "Uniswap"
 },
 {
   id: "2198",
@@ -17230,7 +17232,8 @@ listedAt: 1650804679
     "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
   ],
   oracles: [],
-  listedAt: 1666191475
+  listedAt: 1666191475,
+  parentProtocol: "Uniswap"
 },
 ]
 export default data2;

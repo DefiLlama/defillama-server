@@ -15,6 +15,7 @@ export interface ProtocolAdaptor extends Protocol {
 export interface IConfig {
     enabled?: boolean
     includedVolume?: string[]
+    startFrom?: number
 }
 
 

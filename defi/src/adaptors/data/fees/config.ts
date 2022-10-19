@@ -4,7 +4,8 @@ import { AdaptorsConfig } from "../types"
 
 export default {
     "aave": {
-        enabled: true
+        enabled: true,
+        startFrom: 1647648000
     },
     "angle": {
         enabled: true

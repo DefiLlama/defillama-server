@@ -14,6 +14,11 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
         let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorType, adapter.protocolType)
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
+
+        const startTimestamp = adapter.config?.startFrom
+        const startIndex = startTimestamp ? adaptorRecords.findIndex(ar => ar.timestamp === startTimestamp) : -1
+        adaptorRecords = adaptorRecords.slice(startIndex+1)
+
         // Clean data by chain
         const cleanRecords = generateCleanRecords(
             adaptorRecords,

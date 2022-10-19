@@ -6,7 +6,7 @@ import { performance } from "perf_hooks";
     const start = performance.now()
     const r = await handler({
         pathParameters: {
-            name: "bitcoin",
+            name: "aave-v2",
             type: "fees"
         },
         /* queryStringParameters: {
@@ -15,7 +15,7 @@ import { performance } from "perf_hooks";
     } as unknown as AWSLambda.APIGatewayEvent)
     const end = performance.now()
     const d = JSON.parse(r.body)
-    console.log(d)
+    console.log(d.totalDataChart.length)
     console.log((end - start) / 1000)
     //console.log(JSON.stringify(d, null, 2))
 })()

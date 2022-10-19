@@ -16346,6 +16346,7 @@ listedAt: 1650804679
   oracles: [], 
   forkedFrom: [],
   audit_links: ["https://files.amulet.org/public/AmuletGlobalMTRLabs.pdf"],
+  parentProtocol: "Amulet",
   listedAt: 1665048387
 },
 {
@@ -17106,6 +17107,7 @@ listedAt: 1650804679
   oracles: [],
   twitter: "AmuletProtocol",
   audit_links: ["https://files.amulet.org/public/AmuletGlobalMTRLabs.pdf"],
+  parentProtocol: "Amulet",
   listedAt: 1666174560
 },
 {

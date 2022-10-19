@@ -563,6 +563,9 @@ export default {
     "carbonswap": {
         enabled: true
     },
+    "pangeaswap": {
+        enabled: false
+    },
 } as {
     [name: string]: IVolumesConfig
 }

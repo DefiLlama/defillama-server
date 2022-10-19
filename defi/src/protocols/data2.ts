@@ -17132,5 +17132,27 @@ listedAt: 1650804679
   audit_links: ["https://kudelskisecurity.com/wp-content/uploads/PUBLIC_RELEASE_REDACTED_Kudelski_BelugaDex_SCR_2022_Retest_Report.pdf"],
   listedAt: 1666174631
 },
+{
+  id: "2195",
+  name: "Gravis Finance",
+  address: "bsc:0x190cec0657a02e9eab1c1df5d59f9139131cf539",
+  symbol: "GRVS",
+  url: "https://gswap.exchange",
+  description: "A complete tool set for basic income: DeFi - AMM DEX",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/gravis-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "gravis-finance",
+  cmcId: "19788",
+  category: "Dexes",
+  chains: ["Binance", "Polygon", "Heco"],
+  module: "gravis-finance/index.js",
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  twitter: "GravisFi",
+  audit_links: ["https://github.com/chainsulting/Smart-Contract-Security-Audits/blob/master/Gravis%20Finance/02_Smart%20Contract%20Audit_GravisFinance_Farm.pdf?network=56&gravisLanguage=en"],
+  listedAt: 1666189742
+},
 ]
 export default data2;

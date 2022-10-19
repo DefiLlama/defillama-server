@@ -291,7 +291,7 @@ export default {
         enabled: true
     },
     "jupiter-aggregator": {
-        enabled: true
+        enabled: false
     },
     "astroport": {
         enabled: true
@@ -549,6 +549,18 @@ export default {
         enabled: true
     },
     "mcdex": {
+        enabled: true
+    },
+    "mistswap": {
+        enabled: true
+    },
+    "bxh": {
+        enabled: true
+    },
+    "auraswap": {
+        enabled: true
+    },
+    "carbonswap": {
         enabled: true
     },
 } as {

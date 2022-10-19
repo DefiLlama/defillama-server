@@ -2,9 +2,13 @@ import protocols from "../protocols/data";
 import volumeAdapters from "../dexVolumes/dexAdapters";
 import { writeFileSync, readdirSync } from "fs"
 
+function getUnique(arry: string[]) {
+    return [...new Set(arry)]
+}
+
 writeFileSync("./src/utils/imports/adapters.ts",
     `export default {
-    ${protocols.map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`).join('\n')}
+    ${getUnique(protocols.map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
 }`)
 
 const excludeLiquidation = ["test.ts", "utils", "README.md"]

@@ -77,18 +77,17 @@ export class AdaptorRecord extends Item {
         }
     }
 
-    getCleanAdaptorRecord(chain?: string): AdaptorRecord | null {
-        // TODO: this can be more optimized!! and it should!
-        if (chain !== undefined) {
-            if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
-            const newData = {
-                [formatChainKey(chain)]: this.data[chain] ?? this.data[formatChainKey(chain)]
-            }
+    getCleanAdaptorRecord(chains?: string[]): AdaptorRecord | null {
+        if (chains !== undefined && chains.length > 0) {
+            //if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
+            const newData = chains.reduce((acc, chain) => {
+                acc[formatChainKey(chain)] = this.data[chain] ?? this.data[formatChainKey(chain)]
+                return acc
+            }, {} as IJSON<number | IRecordAdapterRecordChainData>)}
             if (AdaptorRecord.isDataEmpty(newData)) return null
             return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newData)
         }
         const d = removeErrors(this.data)
-        delete d['eventTimestamp']
         if (AdaptorRecord.isDataEmpty(d)) return null
         return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, d)
     }

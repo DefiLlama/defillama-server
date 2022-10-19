@@ -566,6 +566,9 @@ export default {
     "pangeaswap": {
         enabled: false
     },
+    "gravity-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

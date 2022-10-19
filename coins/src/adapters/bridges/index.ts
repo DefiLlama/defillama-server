@@ -47,17 +47,17 @@ function normalizeBridgeResults(bridge: Bridge) {
   };
 }
 export const bridges = [
-  anyswap,
-  arbitrum,
-  avax,
-  bsc,
-  fantom,
-  gasTokens,
-  harmony,
-  optimism,
-  polygon,
-  solana,
-  xdai
+  //anyswap,
+  //arbitrum,
+  // avax,
+  bsc
+  //   fantom,
+  //   gasTokens,
+  //   harmony,
+  //   optimism,
+  //   polygon,
+  //   solana,
+  //   xdai
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -80,7 +80,7 @@ async function storeTokensOfBridge(bridge: Bridge) {
     return all;
   }, {});
 
-  const unlisted = tokens.filter((t) => alreadyLinked[t.from] !== true);
+  const unlisted = tokens; //.filter((t) => alreadyLinked[t.from] !== true);
   const toAddressToRecord = {} as { [PK: string]: string };
   const redirectsNeeded: any[] = [];
   const redirectMap: { [redirect: string]: string } = {};
@@ -144,3 +144,5 @@ async function storeTokensOfBridge(bridge: Bridge) {
 export async function storeTokens() {
   await Promise.all(bridges.map(storeTokensOfBridge));
 }
+// ts-node coins/src/adapters/bridges/index.ts
+storeTokens();

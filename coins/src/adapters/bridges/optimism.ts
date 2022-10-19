@@ -1,7 +1,6 @@
-import { Token } from "./index";
 import {fetch, formatExtraTokens} from "../utils"
 
-export default async function bridge(): Promise<Token[]> {
+export default async function bridge() {
     const bridge = (
         await fetch("https://static.optimism.io/optimism.tokenlist.json")
     ).tokens as any[];
@@ -10,19 +9,19 @@ export default async function bridge(): Promise<Token[]> {
         all[token.logoURI] = token;
         return all;
     }, {})
-
-    const tokens: Token[]= []
-    bridge.filter(token => token.chainId === 10).map(optToken => {
+    const optimismTokens = bridge.filter(token => token.chainId === 10).map(optToken => {
         const ethToken = ethUrlMap[optToken.logoURI];
-        if (ethToken === undefined) return 
-        tokens.push({
+        if (ethToken === undefined) {
+            return null
+        }
+        return {
             from: `optimism:${optToken.address}`,
             to: `ethereum:${ethToken.address}`,
             symbol: optToken.symbol,
             decimals: optToken.decimals,
-        })
-    })
-    return [...tokens, ...extraTokens]
+        }
+    }).filter(t => t !== null).concat(extraTokens)
+    return optimismTokens
 }
 
 const extraTokens = formatExtraTokens("optimism", [

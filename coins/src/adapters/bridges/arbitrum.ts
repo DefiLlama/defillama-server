@@ -1,7 +1,6 @@
 import { fetch, formatExtraTokens } from "../utils";
-import { Token } from "./index";
 
-export default async function bridge(): Promise<Token[]> {
+export default async function bridge() {
   const bridge = (
     await fetch("https://bridge.arbitrum.io/token-list-42161.json")
   ).tokens as any[];

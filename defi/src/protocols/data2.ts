@@ -17102,7 +17102,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Liquid Staking",
   chains: ["Solana"],
-  module: "plutusDAO/index.js",
+  module: "amulet-liquidity-staking/index.js",
   forkedFrom: [],
   oracles: [],
   twitter: "AmuletProtocol",

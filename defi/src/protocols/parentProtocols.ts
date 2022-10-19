@@ -402,6 +402,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "OmniDex1",
   },
+  {
+    id: "Amulet",
+    name: "Amulet",
+    url: "https://amulet.org",
+    description:
+      "Amulet has designed an innovative and open risk protection model which not only effectively addresses the common challenges of existing decentralized RPPs, but also creates a new paradigm shift for the whole risk protection sector.",
+    logo: `${baseIconsUrl}/amulet.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AmuletProtocol",
+  },
 ];
 
 export default parentProtocols;

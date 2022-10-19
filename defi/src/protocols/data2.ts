@@ -17222,7 +17222,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Dexes",
   chains: ["Ethereum"],
-  module: "uniswap-v2/index.js",
+  module: "uniswap/index.js",
   twitter: "Uniswap",
   audit_links: [
     "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",

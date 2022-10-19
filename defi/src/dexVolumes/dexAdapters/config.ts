@@ -564,13 +564,13 @@ export default {
         enabled: true
     },
     "pangeaswap": {
-        enabled: false
+        enabled: true
     },
     "gravity-finance": {
         enabled: true
     },
     "4swap": {
-        enabled: false
+        enabled: true
     },
     "gravis": {
         enabled: true

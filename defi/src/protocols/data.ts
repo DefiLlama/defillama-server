@@ -23,14 +23,14 @@ READ THIS!
 const data: Protocol[] = [
   {
     id: "1",
-    name: "Uniswap",
+    name: "Uniswap V3",
     address: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     symbol: "UNI",
     url: "https://uniswap.org/",
     description:
       "A fully decentralized protocol for automated liquidity provision on Ethereum.\r\n",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/uniswap.png`,
+    logo: `${baseIconsUrl}/uniswap-v3.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "uniswap",

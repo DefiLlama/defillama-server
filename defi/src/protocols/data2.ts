@@ -17235,5 +17235,27 @@ listedAt: 1650804679
   listedAt: 1666191475,
   parentProtocol: "Uniswap"
 },
+{
+  id: "2199",
+  name: "HedgeFarm",
+  address: null,
+  symbol: "-",
+  url: "https://hedgefarm.finance",
+  description:
+    "HedgeFarm allows you to access crypto investment vaults that will suit your needs depending on what type of crypto assets you want to invest in and what type of risk you are ready to take for the performance you'll get.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/hedgefarm.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Avalanche"],
+  module: "hedgefarm/index.js",
+  twitter: "hedge_farm", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1666195534
+},
 ]
 export default data2;

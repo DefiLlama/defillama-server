@@ -572,6 +572,9 @@ export default {
     "4swap": {
         enabled: false
     },
+    "gravis": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

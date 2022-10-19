@@ -56,6 +56,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
 function getDisplayName(name: string, adapter: Adapter) {
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
         return `${Object.keys(adapter.breakdown)[0]}`
+    if (name === 'AAVE V2') return 'AAVE'
     return name
 }
 

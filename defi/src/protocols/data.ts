@@ -7964,7 +7964,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "506",
-    name: "Tetu",
+    name: "Tetu Earn",
     address: "polygon:0x255707b70bf90aa112006e1b07b9aea6de021424",
     symbol: "TETU",
     url: "http://tetu.io",
@@ -7973,8 +7973,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/tetu.svg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "tetu",
-    cmcId: "12452",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield",
     chains: ["Polygon"],
     module: "tetu/index.js",
@@ -7982,6 +7982,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.tetu.io/tetu-io/security/audits"],
     oracles: ["Internal"],
     forkedFrom: ["Harvest Finance"],
+    parentProtocol: "Tetu"
   },
   {
     id: "507",

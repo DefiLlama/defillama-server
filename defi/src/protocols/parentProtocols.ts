@@ -426,6 +426,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Uniswap",
   },
+  {
+    id: "Tetu",
+    name: "Tetu",
+    url: "http://tetu.io",
+    description:
+      "Tetu is a decentralized organization committed to providing a next generation yield aggregator to DeFi investors. The Tetu core team has deep industry knowledge building back-end international banking systems and development with leading global payment processing infrastructure.",
+    logo: `${baseIconsUrl}/tetu.svg`,
+    gecko_id: "tetu",
+    cmcId: "12452",
+    chains: [],
+    twitter: "tetu_io",
+  },
 ];
 
 export default parentProtocols;

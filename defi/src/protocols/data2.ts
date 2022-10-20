@@ -17325,5 +17325,27 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/prdt-finance"],
   listedAt: 1666274834
 },
+{
+  id: "506",
+  name: "Tetu Swap",
+  address: "polygon:0x255707b70bf90aa112006e1b07b9aea6de021424",
+  symbol: "TETU",
+  url: "http://tetu.io",
+  description: "Tetu is a decentralized organization committed to providing a next generation yield aggregator to DeFi investors. The Tetu core team has deep industry knowledge building back-end international banking systems and development with leading global payment processing infrastructure.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/tetu.svg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Polygon"],
+  module: "tetu-swap/index.js",
+  twitter: "tetu_io",
+  audit_links: ["https://docs.tetu.io/tetu-io/security/audits"],
+  oracles: ["Internal"],
+  forkedFrom: ["Uniswap"],
+  parentProtocol: "Tetu"
+},
 ]
 export default data2;

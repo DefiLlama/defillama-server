@@ -17257,5 +17257,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666195534
 },
+{
+  id: "2200",
+  name: "ION DAO",
+  address: null,
+  symbol: "ION",
+  url: "https://ion.wtf",
+  description:
+    "ION is the secondary native token on the Osmosis chain. Created by the Osmosis community, ION DAO is collectively discussing potential use cases as a brand new synthetics protocol to be developed.",
+  chain: "Osmosis",
+  logo: `${baseIconsUrl}/ion-dao.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "ion",
+  cmcId: null,
+  category: "Synthetics",
+  chains: ["Osmosis"],
+  module: "ion-dao/index.js",
+  twitter: "_IONDAO", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1666272262
+},
 ]
 export default data2;

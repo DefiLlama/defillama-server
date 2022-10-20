@@ -17279,5 +17279,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666272262
 },
+{
+  id: "2201",
+  name: "Bepro Network",
+  address: "0xcf3c8be2e2c42331da80ef210e9b1b307c03d36a",
+  symbol: "BEPRO",
+  url: "https://bepro.network",
+  description:
+    "Web3 bounty network for open-source development.",
+  chain: "Moonbeam",
+  logo: `${baseIconsUrl}/bepro-network.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "bepro-network",
+  cmcId: "5062",
+  category: "Services",
+  chains: ["Moonbeam", "Moonriver"],
+  module: "bepro/index.js",
+  twitter: "bepronet", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://hacken.io/audits/#bepro"],
+  listedAt: 1666273430
+},
 ]
 export default data2;

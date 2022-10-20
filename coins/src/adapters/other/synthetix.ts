@@ -19,7 +19,7 @@ const tokens = {
     GBP: "0xdc883b9d9ee16f74be08826e68df4c9d9d26e8bd",
     JPY: "0xe1cc2332852b2ac0da59a1f9d3051829f4ef3c1c",
     KRW: "0xdae6c79c46ab3b280ca28259000695529cbd1339",
-    USD: "0x10a5f7d9d65bcc2734763444d4940a31b109275f"
+    //USD: "0x10a5f7d9d65bcc2734763444d4940a31b109275f"
   }
 };
 async function getProxies(

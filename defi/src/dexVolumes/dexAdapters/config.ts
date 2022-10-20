@@ -291,7 +291,7 @@ export default {
         enabled: true
     },
     "jupiter-aggregator": {
-        enabled: true
+        enabled: false
     },
     "astroport": {
         enabled: true
@@ -477,6 +477,111 @@ export default {
         enabled: true
     },
     "autoshark": {
+        enabled: true
+    },
+    "saddle-finance": {
+        enabled: true
+    },
+    "titano-swych": {
+        enabled: true
+    },
+    "stellarx": {
+        enabled: true
+    },
+    "ultronswap": {
+        enabled: true
+    },
+    "humble-defi": {
+        enabled: true
+    },
+    "pact": {
+        enabled: true
+    },
+    "algofi": {
+        enabled: true
+    },
+    "elk": {
+        enabled: true
+    },
+    "luaswap": {
+        enabled: true
+    },
+    "unicly": {
+        enabled: true
+    },
+    "crema-finance": {
+        enabled: true
+    },
+    "icecreamswap": {
+        enabled: true
+    },
+    "artic": {
+        enabled: true
+    },
+    "swapsicle": {
+        enabled: true
+    },
+    "morpheus-swap": {
+        enabled: true
+    },
+    "fairyswap": {
+        enabled: true
+    },
+    "moon-swap": {
+        enabled: true
+    },
+    "fx-swap": {
+        enabled: true
+    },
+    "pinkswap": {
+        enabled: true
+    },
+    "spartan": {
+        enabled: true
+    },
+    "penguin": {
+        enabled: true
+    },
+    "vortex-protocol": {
+        enabled: true
+    },
+    "dinosaur-eggs": {
+        enabled: true
+    },
+    "mcdex": {
+        enabled: true
+    },
+    "mistswap": {
+        enabled: true
+    },
+    "bxh": {
+        enabled: true
+    },
+    "auraswap": {
+        enabled: true
+    },
+    "carbonswap": {
+        enabled: true
+    },
+    "pangea-swap": {
+        enabled: true
+    },
+    "gravity-finance": {
+        enabled: true
+    },
+    "4swap": {
+        enabled: false
+    },
+    "gravis": {
+        enabled: true
+    },
+    "bisq": {
+        enabled: true
+    },
+    "tetu": {
+        enabled: true
+    },
+    "muesliswap": {
         enabled: true
     },
 } as {

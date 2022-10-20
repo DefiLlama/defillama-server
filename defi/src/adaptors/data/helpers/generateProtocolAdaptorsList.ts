@@ -25,21 +25,23 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => ({
 
 export type IImportsMap = IJSON<{ default: Adapter }>
 
+// This could be much more efficient
 export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdaptor[] =>
     Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = data
         if (adapterObj.default?.protocolType === ProtocolType.CHAIN)
             list = chainData
         const dexFoundInProtocols = list.find(dexP => {
-            return dexP.name.toLowerCase()?.includes(adapterKey)
+            return (dexP.name.toLowerCase()?.includes(adapterKey)
                 || sluggifyString(dexP.name)?.includes(adapterKey)
                 || dexP.gecko_id?.includes(adapterKey)
-                || dexP.module?.split("/")[0]?.includes(adapterKey)
-        }
-        )
+                || dexP.module?.split("/")[0]?.includes(adapterKey)) && getBySpecificId(adapterKey, dexP.id)
+        })
         if (dexFoundInProtocols && imports_obj[adapterKey].default)
             return {
                 ...dexFoundInProtocols,
+                id: ID_MAP[dexFoundInProtocols.id]?.id ?? dexFoundInProtocols.id,
+                name: ID_MAP[dexFoundInProtocols.id]?.name ?? dexFoundInProtocols.name,
                 module: adapterKey,
                 config: config[adapterKey],
                 chains: getAllChainsFromAdaptors([adapterKey], imports_obj),
@@ -54,13 +56,32 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
     }).filter(notUndefined);
 
 function getDisplayName(name: string, adapter: Adapter) {
+    if (name === 'AAVE V3') return 'AAVE'
+    if (name === 'Uniswap V3') return 'Uniswap'
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
         return `${Object.keys(adapter.breakdown)[0]}`
-    if (name === 'AAVE V2') return 'AAVE'
     return name
 }
 
-function getLogoKey (key: string) {
-    if (key.toLowerCase()==='bsc') return 'binance'
+function getLogoKey(key: string) {
+    if (key.toLowerCase() === 'bsc') return 'binance'
     else return key.toLowerCase()
+}
+
+// This should be changed to be easier to mantain
+const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
+    "2198": {
+        id: "1",
+        name: "Uniswap"
+    },
+    "1599": {
+        id: "111",
+        name: "AAVE"
+    }
+}
+
+const getBySpecificId = (key: string, id: string) => {
+    if (key === 'uniswap') return id === "2198"
+    if (key === 'aave') return id === "1599"
+    return true
 }

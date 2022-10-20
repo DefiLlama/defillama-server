@@ -420,7 +420,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://uniswap.org/",
     description:
       "Swap, earn, and build on the leading decentralized crypto trading protocol.",
-    logo: `${baseIconsUrl}/uniswap.jpg`,
+    logo: `${baseIconsUrl}/uniswap.png`,
     gecko_id: "uniswap",
     cmcId: "7083",
     chains: [],

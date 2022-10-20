@@ -17302,5 +17302,28 @@ listedAt: 1650804679
   audit_links: ["https://hacken.io/audits/#bepro"],
   listedAt: 1666273430
 },
+{
+  id: "2201",
+  name: "PRDT",
+  address: null,
+  symbol: "-",
+  url: "https://prdt.finance",
+  description:
+    "Know where the Market is going? The First Fully Decentralized Cross-Chain Prediction Platform On The Binance Smart Chain and Polygon Network.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/prdt.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["Binance", "Polygon"],
+  module: "prdt/index.js",
+  twitter: "PRDT_Finance", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://www.certik.com/projects/prdt-finance"],
+  listedAt: 1666274834
+},
 ]
 export default data2;

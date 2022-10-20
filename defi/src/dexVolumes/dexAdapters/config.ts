@@ -578,6 +578,9 @@ export default {
     "bisq": {
         enabled: true
     },
+    "tetu": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

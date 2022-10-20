@@ -1223,8 +1223,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Nova Network" : "Nova Network"
     case "godwoken_v1":
       return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
-    case "arbitrum_nova":
-      return useNewChainNames ? "Arbitrum Nova" : "Arbitrum Nova"
     case "avax":
       return "Avalanche"
     case "xdaiarb":

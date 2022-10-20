@@ -349,6 +349,34 @@ functions:
       - http:
           path: dexs/{chain}
           method: get
+  getOverview:
+    handler: src/adaptors/handlers/getOverview/index.default
+    timeout: 180
+    memorySize: 2000
+    events:
+      - http:
+          path: overview/{type}
+          method: get
+      - http:
+          path: overview/{type}/{chain}
+          method: get
+  getProtocolSummary:
+    handler: src/adaptors/handlers/getProtocol/index.default
+    timeout: 180
+    memorySize: 2000
+    events:
+      - http:
+          path: summary/{type}/{name}
+          method: get
+  storeAdaptorData:
+    handler: src/adaptors/handlers/storeAdaptorData/index.default
+    timeout: 900
+    memorySize: 512
+  triggerStoreAdaptorData:
+    handler: src/adaptors/handlers/triggerStoreAdaptorData.default
+    timeout: 900
+    events:
+      - schedule: cron(01 0 * * ? *)
   getDex:
     handler: src/dexVolumes/handlers/getDexVolume/index.default
     timeout: 90

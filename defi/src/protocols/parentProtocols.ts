@@ -153,9 +153,9 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "Mycelium",
     name: "Mycelium",
-    url: "https://swaps.mycelium.xyz",
+    url: "https://mycelium.xyz",
     description:
-    "Trade with liquidity, leverage, low fees.",
+    "Previously Tracer DAO. Trade with liquidity, leverage and low fees.",
     logo: `${baseIconsUrl}/mycelium.jpg`,
     gecko_id: "mycelium",
     cmcId: "21437",
@@ -377,6 +377,54 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "11396",
     chains: [],
     twitter: "traderjoe_xyz",
+  },
+  {
+    id: "handle finance",
+    name: "handle finance",
+    url: "https://handle.fi",
+    description:
+      "the global defi FX protocol. borrow, convert & trade multi-currency #stablecoins.",
+    logo: `${baseIconsUrl}/handle finance.jpg`,
+    gecko_id: "handle-fi",
+    cmcId: "11794",
+    chains: [],
+    twitter: "handle_fi",
+  },
+  {
+    id: "Omnidex",
+    name: "Omnidex",
+    url: "https://omnidex.finance",
+    description:
+      "OmniDex is building a comprehensive decentralized trading platform on the Telos Blockchain.",
+    logo: `${baseIconsUrl}/omnidex.jpg`,
+    gecko_id: "omnidex",
+    cmcId: null,
+    chains: [],
+    twitter: "OmniDex1",
+  },
+  {
+    id: "Amulet",
+    name: "Amulet",
+    url: "https://amulet.org",
+    description:
+      "Amulet has designed an innovative and open risk protection model which not only effectively addresses the common challenges of existing decentralized RPPs, but also creates a new paradigm shift for the whole risk protection sector.",
+    logo: `${baseIconsUrl}/amulet.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AmuletProtocol",
+  },
+  {
+    id: "Uniswap",
+    name: "Uniswap",
+    url: "https://uniswap.org/",
+    description:
+      "Swap, earn, and build on the leading decentralized crypto trading protocol.",
+    logo: `${baseIconsUrl}/uniswap.png`,
+    gecko_id: "uniswap",
+    cmcId: "7083",
+    chains: [],
+    twitter: "Uniswap",
   },
 ];
 

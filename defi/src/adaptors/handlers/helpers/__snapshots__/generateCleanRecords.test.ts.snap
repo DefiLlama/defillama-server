@@ -1,0 +1,1751 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Generate clean records by chain works as expected 1`] = `
+Object {
+  "cleanRecordsArr": Array [
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 2,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641081600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 4,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641168000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 6,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641254400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641340800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.25,
+          "v2": 10,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641427200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.5,
+          "v2": 12,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641513600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.75,
+          "v2": 12.894736842105264,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641600000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 9,
+          "v2": 13.789473684210527,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641686400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 11,
+          "v2": 14.684210526315791,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641772800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 13,
+          "v2": 15.578947368421055,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641859200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 15,
+          "v2": 16.47368421052632,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641945600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 17,
+          "v2": 17.368421052631582,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642032000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 15.5,
+          "v2": 18.263157894736846,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642118400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 14,
+          "v2": 19.15789473684211,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642204800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 16,
+          "v2": 20.052631578947373,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642291200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 18,
+          "v2": 20.947368421052637,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642377600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 20,
+          "v2": 21.8421052631579,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642464000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 22,
+          "v2": 22.736842105263165,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642550400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 24,
+          "v2": 23.63157894736843,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642636800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 26,
+          "v2": 24.526315789473692,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642723200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 21,
+          "v2": 25.421052631578952,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642809600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 23,
+          "v2": 26.315789473684212,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642896000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 25,
+          "v2": 27.210526315789476,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642982400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 27,
+          "v2": 28.10526315789474,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643068800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 29,
+          "v2": 29,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643155200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 31,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643241600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 33,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643328000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 28,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643414400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 30,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643500800,
+      "type": "dv",
+    },
+  ],
+  "cleanRecordsMap": Object {
+    "1641081600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 2,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641081600,
+      "type": "dv",
+    },
+    "1641168000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 4,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641168000,
+      "type": "dv",
+    },
+    "1641254400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 6,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641254400,
+      "type": "dv",
+    },
+    "1641340800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641340800,
+      "type": "dv",
+    },
+    "1641427200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.25,
+          "v2": 10,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641427200,
+      "type": "dv",
+    },
+    "1641513600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.5,
+          "v2": 12,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641513600,
+      "type": "dv",
+    },
+    "1641600000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.75,
+          "v2": 12.894736842105264,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641600000,
+      "type": "dv",
+    },
+    "1641686400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 9,
+          "v2": 13.789473684210527,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641686400,
+      "type": "dv",
+    },
+    "1641772800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 11,
+          "v2": 14.684210526315791,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641772800,
+      "type": "dv",
+    },
+    "1641859200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 13,
+          "v2": 15.578947368421055,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641859200,
+      "type": "dv",
+    },
+    "1641945600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 15,
+          "v2": 16.47368421052632,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641945600,
+      "type": "dv",
+    },
+    "1642032000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 17,
+          "v2": 17.368421052631582,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642032000,
+      "type": "dv",
+    },
+    "1642118400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 15.5,
+          "v2": 18.263157894736846,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642118400,
+      "type": "dv",
+    },
+    "1642204800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 14,
+          "v2": 19.15789473684211,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642204800,
+      "type": "dv",
+    },
+    "1642291200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 16,
+          "v2": 20.052631578947373,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642291200,
+      "type": "dv",
+    },
+    "1642377600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 18,
+          "v2": 20.947368421052637,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642377600,
+      "type": "dv",
+    },
+    "1642464000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 20,
+          "v2": 21.8421052631579,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642464000,
+      "type": "dv",
+    },
+    "1642550400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 22,
+          "v2": 22.736842105263165,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642550400,
+      "type": "dv",
+    },
+    "1642636800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 24,
+          "v2": 23.63157894736843,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642636800,
+      "type": "dv",
+    },
+    "1642723200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 26,
+          "v2": 24.526315789473692,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642723200,
+      "type": "dv",
+    },
+    "1642809600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 21,
+          "v2": 25.421052631578952,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642809600,
+      "type": "dv",
+    },
+    "1642896000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 23,
+          "v2": 26.315789473684212,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642896000,
+      "type": "dv",
+    },
+    "1642982400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 25,
+          "v2": 27.210526315789476,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642982400,
+      "type": "dv",
+    },
+    "1643068800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 27,
+          "v2": 28.10526315789474,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643068800,
+      "type": "dv",
+    },
+    "1643155200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 29,
+          "v2": 29,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643155200,
+      "type": "dv",
+    },
+    "1643241600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 31,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643241600,
+      "type": "dv",
+    },
+    "1643328000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 33,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643328000,
+      "type": "dv",
+    },
+    "1643414400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 28,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643414400,
+      "type": "dv",
+    },
+    "1643500800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 30,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643500800,
+      "type": "dv",
+    },
+  },
+}
+`;
+
+exports[`Generate clean records works as expected 1`] = `
+Object {
+  "cleanRecordsArr": Array [
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 2,
+        },
+        "ethereum": Object {
+          "v1": 2,
+        },
+        "polygon": Object {
+          "v1": 2,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641081600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 4,
+        },
+        "ethereum": Object {
+          "v1": 4,
+        },
+        "polygon": Object {
+          "v1": 4,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641168000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 6,
+        },
+        "ethereum": Object {
+          "v1": 6,
+        },
+        "polygon": Object {
+          "v1": 6,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641254400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8,
+        },
+        "ethereum": Object {
+          "v1": 8,
+        },
+        "polygon": Object {
+          "v1": 8,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641340800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.25,
+          "v2": 10,
+        },
+        "ethereum": Object {
+          "v1": 8.25,
+        },
+        "polygon": Object {
+          "v1": 8.25,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641427200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.5,
+          "v2": 12,
+        },
+        "ethereum": Object {
+          "v1": 8.5,
+        },
+        "polygon": Object {
+          "v1": 8.5,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641513600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.75,
+          "v2": 12.894736842105264,
+        },
+        "ethereum": Object {
+          "v1": 8.75,
+        },
+        "polygon": Object {
+          "v1": 8.75,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641600000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 9,
+          "v2": 13.789473684210527,
+        },
+        "ethereum": Object {
+          "v1": 9,
+        },
+        "polygon": Object {
+          "v1": 9,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641686400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 11,
+          "v2": 14.684210526315791,
+        },
+        "ethereum": Object {
+          "v1": 11,
+        },
+        "polygon": Object {
+          "v1": 11,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641772800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 13,
+          "v2": 15.578947368421055,
+        },
+        "ethereum": Object {
+          "v1": 13,
+        },
+        "polygon": Object {
+          "v1": 13,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641859200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 15,
+          "v2": 16.47368421052632,
+        },
+        "ethereum": Object {
+          "v1": 15,
+        },
+        "polygon": Object {
+          "v1": 15,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641945600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 17,
+          "v2": 17.368421052631582,
+        },
+        "ethereum": Object {
+          "v1": 17,
+        },
+        "polygon": Object {
+          "v1": 17,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642032000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 15.5,
+          "v2": 18.263157894736846,
+        },
+        "ethereum": Object {
+          "v1": 15.5,
+        },
+        "polygon": Object {
+          "v1": 15.5,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642118400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 14,
+          "v2": 19.15789473684211,
+        },
+        "ethereum": Object {
+          "v1": 14,
+        },
+        "polygon": Object {
+          "v1": 14,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642204800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 16,
+          "v2": 20.052631578947373,
+        },
+        "ethereum": Object {
+          "v1": 16,
+        },
+        "polygon": Object {
+          "v1": 16,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642291200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 18,
+          "v2": 20.947368421052637,
+        },
+        "ethereum": Object {
+          "v1": 18,
+        },
+        "polygon": Object {
+          "v1": 18,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642377600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 20,
+          "v2": 21.8421052631579,
+        },
+        "ethereum": Object {
+          "v1": 20,
+        },
+        "polygon": Object {
+          "v1": 20,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642464000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 22,
+          "v2": 22.736842105263165,
+        },
+        "ethereum": Object {
+          "v1": 22,
+        },
+        "polygon": Object {
+          "v1": 22,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642550400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 24,
+          "v2": 23.63157894736843,
+        },
+        "ethereum": Object {
+          "v1": 24,
+        },
+        "polygon": Object {
+          "v1": 24,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642636800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 26,
+          "v2": 24.526315789473692,
+        },
+        "ethereum": Object {
+          "v1": 26,
+        },
+        "polygon": Object {
+          "v1": 26,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642723200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 21,
+          "v2": 25.421052631578952,
+        },
+        "ethereum": Object {
+          "v1": 21,
+        },
+        "polygon": Object {
+          "v1": 21,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642809600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 23,
+          "v2": 26.315789473684212,
+        },
+        "ethereum": Object {
+          "v1": 23,
+        },
+        "polygon": Object {
+          "v1": 23,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642896000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 25,
+          "v2": 27.210526315789476,
+        },
+        "ethereum": Object {
+          "v1": 25,
+        },
+        "polygon": Object {
+          "v1": 25,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642982400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 27,
+          "v2": 28.10526315789474,
+        },
+        "ethereum": Object {
+          "v1": 27,
+        },
+        "polygon": Object {
+          "v1": 27,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643068800,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 29,
+          "v2": 29,
+        },
+        "ethereum": Object {
+          "v1": 29,
+        },
+        "optimism": Object {
+          "v1": 547,
+        },
+        "polygon": Object {
+          "v1": 29,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643155200,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 31,
+        },
+        "ethereum": Object {
+          "v1": 31,
+        },
+        "optimism": Object {
+          "v1": 564.6666666666666,
+        },
+        "polygon": Object {
+          "v1": 31,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643241600,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 33,
+        },
+        "ethereum": Object {
+          "v1": 33,
+        },
+        "optimism": Object {
+          "v1": 582.3333333333333,
+        },
+        "polygon": Object {
+          "v1": 33,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643328000,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 28,
+        },
+        "ethereum": Object {
+          "v1": 28,
+        },
+        "optimism": Object {
+          "v1": 600,
+        },
+        "polygon": Object {
+          "v1": 28,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643414400,
+      "type": "dv",
+    },
+    AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 30,
+        },
+        "ethereum": Object {
+          "v1": 30,
+        },
+        "polygon": Object {
+          "v1": 30,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643500800,
+      "type": "dv",
+    },
+  ],
+  "cleanRecordsMap": Object {
+    "1641081600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 2,
+        },
+        "ethereum": Object {
+          "v1": 2,
+        },
+        "polygon": Object {
+          "v1": 2,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641081600,
+      "type": "dv",
+    },
+    "1641168000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 4,
+        },
+        "ethereum": Object {
+          "v1": 4,
+        },
+        "polygon": Object {
+          "v1": 4,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641168000,
+      "type": "dv",
+    },
+    "1641254400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 6,
+        },
+        "ethereum": Object {
+          "v1": 6,
+        },
+        "polygon": Object {
+          "v1": 6,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641254400,
+      "type": "dv",
+    },
+    "1641340800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8,
+        },
+        "ethereum": Object {
+          "v1": 8,
+        },
+        "polygon": Object {
+          "v1": 8,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641340800,
+      "type": "dv",
+    },
+    "1641427200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.25,
+          "v2": 10,
+        },
+        "ethereum": Object {
+          "v1": 8.25,
+        },
+        "polygon": Object {
+          "v1": 8.25,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641427200,
+      "type": "dv",
+    },
+    "1641513600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.5,
+          "v2": 12,
+        },
+        "ethereum": Object {
+          "v1": 8.5,
+        },
+        "polygon": Object {
+          "v1": 8.5,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641513600,
+      "type": "dv",
+    },
+    "1641600000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 8.75,
+          "v2": 12.894736842105264,
+        },
+        "ethereum": Object {
+          "v1": 8.75,
+        },
+        "polygon": Object {
+          "v1": 8.75,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641600000,
+      "type": "dv",
+    },
+    "1641686400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 9,
+          "v2": 13.789473684210527,
+        },
+        "ethereum": Object {
+          "v1": 9,
+        },
+        "polygon": Object {
+          "v1": 9,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641686400,
+      "type": "dv",
+    },
+    "1641772800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 11,
+          "v2": 14.684210526315791,
+        },
+        "ethereum": Object {
+          "v1": 11,
+        },
+        "polygon": Object {
+          "v1": 11,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641772800,
+      "type": "dv",
+    },
+    "1641859200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 13,
+          "v2": 15.578947368421055,
+        },
+        "ethereum": Object {
+          "v1": 13,
+        },
+        "polygon": Object {
+          "v1": 13,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641859200,
+      "type": "dv",
+    },
+    "1641945600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 15,
+          "v2": 16.47368421052632,
+        },
+        "ethereum": Object {
+          "v1": 15,
+        },
+        "polygon": Object {
+          "v1": 15,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1641945600,
+      "type": "dv",
+    },
+    "1642032000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 17,
+          "v2": 17.368421052631582,
+        },
+        "ethereum": Object {
+          "v1": 17,
+        },
+        "polygon": Object {
+          "v1": 17,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642032000,
+      "type": "dv",
+    },
+    "1642118400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 15.5,
+          "v2": 18.263157894736846,
+        },
+        "ethereum": Object {
+          "v1": 15.5,
+        },
+        "polygon": Object {
+          "v1": 15.5,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642118400,
+      "type": "dv",
+    },
+    "1642204800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 14,
+          "v2": 19.15789473684211,
+        },
+        "ethereum": Object {
+          "v1": 14,
+        },
+        "polygon": Object {
+          "v1": 14,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642204800,
+      "type": "dv",
+    },
+    "1642291200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 16,
+          "v2": 20.052631578947373,
+        },
+        "ethereum": Object {
+          "v1": 16,
+        },
+        "polygon": Object {
+          "v1": 16,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642291200,
+      "type": "dv",
+    },
+    "1642377600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 18,
+          "v2": 20.947368421052637,
+        },
+        "ethereum": Object {
+          "v1": 18,
+        },
+        "polygon": Object {
+          "v1": 18,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642377600,
+      "type": "dv",
+    },
+    "1642464000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 20,
+          "v2": 21.8421052631579,
+        },
+        "ethereum": Object {
+          "v1": 20,
+        },
+        "polygon": Object {
+          "v1": 20,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642464000,
+      "type": "dv",
+    },
+    "1642550400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 22,
+          "v2": 22.736842105263165,
+        },
+        "ethereum": Object {
+          "v1": 22,
+        },
+        "polygon": Object {
+          "v1": 22,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642550400,
+      "type": "dv",
+    },
+    "1642636800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 24,
+          "v2": 23.63157894736843,
+        },
+        "ethereum": Object {
+          "v1": 24,
+        },
+        "polygon": Object {
+          "v1": 24,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642636800,
+      "type": "dv",
+    },
+    "1642723200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 26,
+          "v2": 24.526315789473692,
+        },
+        "ethereum": Object {
+          "v1": 26,
+        },
+        "polygon": Object {
+          "v1": 26,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642723200,
+      "type": "dv",
+    },
+    "1642809600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 21,
+          "v2": 25.421052631578952,
+        },
+        "ethereum": Object {
+          "v1": 21,
+        },
+        "polygon": Object {
+          "v1": 21,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642809600,
+      "type": "dv",
+    },
+    "1642896000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 23,
+          "v2": 26.315789473684212,
+        },
+        "ethereum": Object {
+          "v1": 23,
+        },
+        "polygon": Object {
+          "v1": 23,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642896000,
+      "type": "dv",
+    },
+    "1642982400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 25,
+          "v2": 27.210526315789476,
+        },
+        "ethereum": Object {
+          "v1": 25,
+        },
+        "polygon": Object {
+          "v1": 25,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1642982400,
+      "type": "dv",
+    },
+    "1643068800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 27,
+          "v2": 28.10526315789474,
+        },
+        "ethereum": Object {
+          "v1": 27,
+        },
+        "polygon": Object {
+          "v1": 27,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643068800,
+      "type": "dv",
+    },
+    "1643155200": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 29,
+          "v2": 29,
+        },
+        "ethereum": Object {
+          "v1": 29,
+        },
+        "optimism": Object {
+          "v1": 547,
+        },
+        "polygon": Object {
+          "v1": 29,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643155200,
+      "type": "dv",
+    },
+    "1643241600": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 31,
+        },
+        "ethereum": Object {
+          "v1": 31,
+        },
+        "optimism": Object {
+          "v1": 564.6666666666666,
+        },
+        "polygon": Object {
+          "v1": 31,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643241600,
+      "type": "dv",
+    },
+    "1643328000": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 33,
+        },
+        "ethereum": Object {
+          "v1": 33,
+        },
+        "optimism": Object {
+          "v1": 582.3333333333333,
+        },
+        "polygon": Object {
+          "v1": 33,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643328000,
+      "type": "dv",
+    },
+    "1643414400": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 28,
+        },
+        "ethereum": Object {
+          "v1": 28,
+        },
+        "optimism": Object {
+          "v1": 600,
+        },
+        "polygon": Object {
+          "v1": 28,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643414400,
+      "type": "dv",
+    },
+    "1643500800": AdaptorRecord {
+      "adaptorId": "1",
+      "data": Object {
+        "arbitrum": Object {
+          "v1": 30,
+        },
+        "ethereum": Object {
+          "v1": 30,
+        },
+        "polygon": Object {
+          "v1": 30,
+        },
+      },
+      "protocolType": "protocol",
+      "timestamp": 1643500800,
+      "type": "dv",
+    },
+  },
+}
+`;

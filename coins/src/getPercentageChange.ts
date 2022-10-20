@@ -89,7 +89,9 @@ function calcPercentages(response: any, timestamps: number[]) {
 
   return results;
 }
-const handler = async (event: any): Promise<IResponse> => {
+const handler = async (
+  event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
   const params = formParamsObject(event);
   const timestamps = getTimestampsArray(
     params.timestamp,

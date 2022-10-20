@@ -98,7 +98,9 @@ async function fetchDBData(
   await Promise.all(promises);
   return response;
 }
-const handler = async (event: any): Promise<IResponse> => {
+const handler = async (
+  event: AWSLambda.APIGatewayEvent
+): Promise<IResponse> => {
   const params = formParamsObject(event);
   const paramError: any = Object.values(params).find(
     (p: any) => typeof p == "object" && p.length == undefined

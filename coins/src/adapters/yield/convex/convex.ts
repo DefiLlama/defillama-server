@@ -10,28 +10,27 @@ import {
 } from "../../utils/database";
 
 async function getPoolInfos(block: number | undefined, chain: any) {
-  const operator: string = (
-    await call({
-      target: "0x989aeb4d175e16225e39e87d0d97a3360524ad80",
-      chain,
-      block,
-      abi: abi.operator
-    })
-  ).output;
+  const operator: string = (await call({
+    target: "0x989aeb4d175e16225e39e87d0d97a3360524ad80",
+    chain,
+    block,
+    abi: abi.operator
+  })).output;
 
-  const poolLength: number = (
-    await call({ target: operator, chain, block, abi: abi.poolLength })
-  ).output;
+  const poolLength: number = (await call({
+    target: operator,
+    chain,
+    block,
+    abi: abi.poolLength
+  })).output;
   const poolIndexes: number[] = Array.from(Array(Number(poolLength)).keys());
 
-  return (
-    await multiCall({
-      calls: poolIndexes.map((p: number) => ({ target: operator, params: p })),
-      chain,
-      block,
-      abi: abi.poolInfo
-    })
-  ).output;
+  return (await multiCall({
+    calls: poolIndexes.map((p: number) => ({ target: operator, params: p })),
+    chain,
+    block,
+    abi: abi.poolInfo
+  })).output;
 }
 export default async function getTokenPrices(timestamp: number) {
   const chain: any = "ethereum";
@@ -56,9 +55,11 @@ export default async function getTokenPrices(timestamp: number) {
 
   const writes: Write[] = [];
   underlyingData.map((u: CoinData) => {
-    const poolInfo = poolInfos.filter(
+    const poolInfo: Result | undefined = poolInfos.find(
       (p: Result) => p.output.lptoken.toLowerCase() == u.address
-    )[0];
+    );
+    if (poolInfo == null) return;
+
     const tokenInfoIndex = poolInfos.indexOf(poolInfo);
 
     addToDBWritesList(

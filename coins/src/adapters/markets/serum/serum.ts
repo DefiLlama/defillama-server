@@ -37,9 +37,7 @@ export default async function getTokenPrices(timestamp: number) {
   const metadata: TokenListResponse[] = tokenListResponse.data.content;
 
   prices.map((p: GraphqlResponse) => {
-    const tokenMetaData = metadata.filter(
-      (m: any) => m.address == p.tokenMint
-    )[0];
+    const tokenMetaData = metadata.find((m: any) => m.address == p.tokenMint);
     if (tokenMetaData == undefined) return;
     addToDBWritesList(
       writes,

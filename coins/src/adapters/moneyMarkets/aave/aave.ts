@@ -16,41 +16,33 @@ async function getReserveData(
   registry: string,
   version: string
 ) {
-  const addressProvider = (
-    await call({
-      target: registry,
-      chain: chain as any,
-      abi: abi.getAddressesProviderList,
-      block
-    })
-  ).output;
-  const lendingPool = (
-    await call({
-      target: addressProvider[0],
-      chain: chain as any,
-      abi: abi.getPool[version.toLowerCase()],
-      block
-    })
-  ).output;
-  const reservesList = (
-    await call({
+  const addressProvider = (await call({
+    target: registry,
+    chain: chain as any,
+    abi: abi.getAddressesProviderList,
+    block
+  })).output;
+  const lendingPool = (await call({
+    target: addressProvider[0],
+    chain: chain as any,
+    abi: abi.getPool[version.toLowerCase()],
+    block
+  })).output;
+  const reservesList = (await call({
+    target: lendingPool,
+    chain: chain as any,
+    abi: abi.getReservesList,
+    block
+  })).output;
+  return (await multiCall({
+    calls: reservesList.map((r: string) => ({
       target: lendingPool,
-      chain: chain as any,
-      abi: abi.getReservesList,
-      block
-    })
-  ).output;
-  return (
-    await multiCall({
-      calls: reservesList.map((r: string) => ({
-        target: lendingPool,
-        params: [r]
-      })),
-      abi: abi.getReserveData[version.toLowerCase()],
-      chain: chain as any,
-      block
-    })
-  ).output;
+      params: [r]
+    })),
+    abi: abi.getReserveData[version.toLowerCase()],
+    chain: chain as any,
+    block
+  })).output;
 }
 let unknownTokens: string[] = [];
 
@@ -85,9 +77,9 @@ export default async function getTokenPrices(
 
   let writes: Write[] = [];
   reserveData.map((r, i) => {
-    const underlying: CoinData = underlyingRedirects.filter(
-      (u) => u.address == r.input.params[0].toLowerCase()
-    )[0];
+    const underlying: CoinData = underlyingRedirects.find(
+      u => u.address == r.input.params[0].toLowerCase()
+    );
 
     if (underlying == null) return;
 

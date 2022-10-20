@@ -9,7 +9,7 @@ import {
   hourlyRawTokensTvl,
   dailyTokensTvl,
   dailyUsdTokensTvl,
-  dailyRawTokensTvl,
+  dailyRawTokensTvl
 } from "../utils/getLastRecord";
 import computeTVL from "./computeTVL";
 import BigNumber from "bignumber.js";
@@ -38,7 +38,7 @@ async function getTvl(
   usdTvls: tvlsObject<number>,
   tokensBalances: tvlsObject<TokensValueLocked>,
   usdTokenBalances: tvlsObject<TokensValueLocked>,
-  rawTokenBalances: tvlsObject<TokensValueLocked>,
+  rawTokenBalances: tvlsObject<TokensValueLocked>,	
   tvlFunction: any,
   isFetchFunction: boolean,
   storedKey: string,
@@ -53,36 +53,19 @@ async function getTvl(
           ethBlock,
           chainBlocks
         );
-        const isStandard = Object.entries(tvlBalances).every(
-          (balance) => typeof balance[1] === "string"
-        ); // Can't use stored prices because coingecko has undocumented aliases which we realy on (eg: busd -> binance-usd)
         let tvlPromise: ReturnType<typeof util.computeTVL>;
         tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, staleCoins);
         const tvlResults = await tvlPromise;
+        rawTokenBalances[storedKey] = tvlResults.rawTokenBalances
         usdTvls[storedKey] = tvlResults.usdTvl;
         tokensBalances[storedKey] = tvlResults.tokenBalances;
         usdTokenBalances[storedKey] = tvlResults.usdTokenBalances;
-        if(isStandard){
-          rawTokenBalances[storedKey] = tvlBalances;
-        } else {
-          const normalizedBalances = {} as any;
-          for (const [name, balance] of Object.entries(tvlBalances as any)) {
-            if (typeof balance === "object") {
-              normalizedBalances[
-                name
-              ] = new BigNumber(balance as any).toNumber(); // Some adapters return a BigNumber from bignumber.js so the results must be normalized
-            } else {
-              normalizedBalances[name] = balance
-            }
-          }
-          rawTokenBalances[storedKey] = normalizedBalances;
-        }
       } else {
         usdTvls[storedKey] = Number(await tvlFunction(
           unixTimestamp,
           ethBlock,
           chainBlocks
-        ));
+          ));
       }
       if (
         typeof usdTvls[storedKey] !== "number" ||
@@ -97,7 +80,7 @@ async function getTvl(
       if (i >= maxRetries - 1) {
         throw e
       } else {
-        insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], storedKey)
+        //insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], storedKey)
         continue;
       }
     }
@@ -108,9 +91,9 @@ function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObjec
   if(balancesObject[key] === undefined){
     balancesObject[key] = {}
     storedKeys.map(keyToMerge=>{
-      Object.entries(balancesObject[keyToMerge]).forEach((balance) => {
-        util.sumSingleBalance(balancesObject[key], balance[0], balance[1]);
-      });
+        Object.entries(balancesObject[keyToMerge]).forEach((balance) => {
+          util.sumSingleBalance(balancesObject[key], balance[0], BigNumber(balance[1] || '0').toFixed(0));
+        });
     })
   }
 }
@@ -147,32 +130,32 @@ export async function storeTvl(
         return;
       }
       return Promise.all(Object.entries(value).map(async ([tvlType, tvlFunction]) => {
-        if (typeof tvlFunction !== "function") {
-          return
-        }
-        let storedKey = `${chain}-${tvlType}`
-        let tvlFunctionIsFetch = false;
-        if (tvlType === "tvl") {
-          storedKey = chain
-        } else if (tvlType === "fetch") {
-          storedKey = chain
-          tvlFunctionIsFetch = true
-        }
-        const startTimestamp = getCurrentUnixTimestamp()
-        await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins)
-        let keyToAddChainBalances = tvlType;
-        if(tvlType === "tvl" || tvlType === "fetch"){
-          keyToAddChainBalances = "tvl"
-        }
-        if(chainTvlsToAdd[keyToAddChainBalances] === undefined){
-          chainTvlsToAdd[keyToAddChainBalances] = [storedKey]
-        } else {
-          chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
-        }
-        const currentTime = getCurrentUnixTimestamp()
-        insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, currentTime - startTimestamp], storedKey, 0.05)
-      }))
+          if (typeof tvlFunction !== "function") {
+            return
+          }
+          let storedKey = `${chain}-${tvlType}`
+          let tvlFunctionIsFetch = false;
+          if (tvlType === "tvl") {
+            storedKey = chain
+          } else if (tvlType === "fetch") {
+            storedKey = chain
+            tvlFunctionIsFetch = true
+          }
+          const startTimestamp = getCurrentUnixTimestamp()
+          await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
+            usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins);
+          let keyToAddChainBalances = tvlType;
+          if(tvlType === "tvl" || tvlType === "fetch"){
+            keyToAddChainBalances = "tvl"
+          }
+          if(chainTvlsToAdd[keyToAddChainBalances] === undefined){
+            chainTvlsToAdd[keyToAddChainBalances] = [storedKey]
+          } else {
+            chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
+          }
+          const currentTime = getCurrentUnixTimestamp()
+          //insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, currentTime - startTimestamp], storedKey, 0.05)
+        }))
     })
     if (module.tvl || module.fetch) {
       let mainTvlIsFetch: boolean;
@@ -205,12 +188,12 @@ export async function storeTvl(
     }
   } catch (e) {
     console.error(protocol.name, e);
-    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "aggregate")
+    //insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "aggregate")
     return;
   }
   if (breakIfTvlIsZero && Object.values(usdTvls).reduce((total, value) => total + value) === 0) {
-    throw new Error(
-      `Returned 0 TVL at timestamp ${unixTimestamp}`
+      throw new Error(
+        `Returned 0 TVL at timestamp ${unixTimestamp}`
     );
   }
 
@@ -245,10 +228,10 @@ export async function storeTvl(
     await Promise.all([storeTokensAction, storeUsdTokensAction, storeRawTokensAction]);
   } catch (e) {
     console.error(protocol.name, e);
-    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "store")
+    //insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "store")
     return;
   }
 
-  insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 1)
+  //insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 1)
   return usdTvls.tvl;
 }

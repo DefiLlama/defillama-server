@@ -1,98 +1,140 @@
 import BigNumber from "bignumber.js";
 import fetch from "node-fetch";
+import { sumSingleBalance } from "@defillama/sdk/build/generalUtil";
+//import { normalizeBalances } from "@defillama/sdk/build/util/index";
 import { addStaleCoin, StaleCoins } from "./staleCoins";
-
+import { call } from "@defillama/sdk/build/abi";
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
-const DAY = 24 * 3600;
+
 type Balances = {
   [symbol: string]: number;
 };
 
-export default async function (balances: { [address: string]: string }, timestamp: "now" | number, staleCoins:StaleCoins) {
+function normalizeBalances(balances: { [address: string]: string }) {
+  Object.keys(balances).map((key) => {
+    if (+balances[key] === 0) {
+      delete balances[key];
+      return;
+    }
+
+    const normalisedKey = key.startsWith("0x")
+      ? `ethereum:${key.toLowerCase()}`
+      : !key.includes(":")
+      ? `coingecko:${key.toLowerCase()}`
+      : key.toLowerCase();
+
+    // sol amd tezos case sensitive so no normalising
+    if (
+      key == normalisedKey ||
+      key.startsWith("solana:") ||
+      key.startsWith("tezos:")
+    )
+      return;
+
+    sumSingleBalance(balances, normalisedKey, balances[key]);
+    delete balances[key];
+  });
+
   const eth = balances[ethereumAddress];
   if (eth !== undefined) {
     balances[weth] = new BigNumber(balances[weth] ?? 0).plus(eth).toFixed(0);
     delete balances[ethereumAddress];
   }
-  const PKsToTokens = {} as { [t: string]: string[] };
-  const readKeys = Object.keys(balances)
-    .map((address) => {
-      let prefix = "";
-      if(address.startsWith("0x")){
-        prefix = "ethereum:"
-      } else if(!address.includes(":")){
-        prefix = "coingecko:"
-      }
-      let normalizedAddress = address.toLowerCase()
-      if(address.startsWith("solana:")){
-        normalizedAddress = address
-      }
-      const PK = `${prefix}${normalizedAddress}`;
-      if (PKsToTokens[PK] === undefined) {
-        PKsToTokens[PK] = [address];
-        return PK;
-      } else {
-        PKsToTokens[PK].push(address);
-        return undefined;
-      }
-    })
-    .filter((item) => item !== undefined) as string[];
+
+  return balances;
+}
+
+async function fetchTokenData(
+  timestamp: "now" | number,
+  balances: { [address: string]: string }
+) {
   const readRequests = [];
-  for (let i = 0; i < readKeys.length; i += 100) {
-    const body = {
-      "coins": readKeys.slice(i, i + 100),
-    } as any
-    if(timestamp !== "now"){
-      body.timestamp = timestamp;
-    }
+  const burl = "https://coins.llama.fi/prices/";
+  const historical =
+    timestamp == "now" ? "current/" : `historical/${timestamp}/`;
+
+  for (let i = 0; i < Object.keys(balances).length; i += step) {
+    const coins = Object.keys(balances)
+      .slice(i, i + step)
+      .join(",");
     readRequests.push(
-      fetch("https://coins.llama.fi/prices", {
-        method: "POST",
-        body: JSON.stringify(body)
-      }).then((r) => r.json()).then(r=>{
-        return Object.entries(r.coins).map(
-        ([PK, value])=>({
-          ...(value as any),
-          PK
-        })
+      fetch(`${burl}${historical}${coins}`, { method: "GET" }).then((r) =>
+        r.json()
       )
-    })
     );
   }
-  const tokenData = ([] as any[]).concat(...(await Promise.all(readRequests)));
+
+  const responses: any[] = await Promise.all(readRequests);
+  return responses.map((g) => g.coins);
+}
+
+async function addToStaleCoins(staleCoins: StaleCoins, tokenId: string) {
+  const chain: any = tokenId.substring(0, tokenId.indexOf(":"));
+  const target: string = tokenId.substring(tokenId.indexOf(":") + 1);
+  let decimals: number = 0;
+  let symbol: string;
+  try {
+    [{ output: decimals }, { output: symbol }] = await Promise.all([
+      call({ target, abi: "erc20:decimals", chain }),
+      call({ target, abi: "erc20:symbol", chain })
+    ]);
+  } catch {
+    decimals = 0;
+    symbol = "NA";
+  }
+  addStaleCoin(staleCoins, tokenId, symbol, decimals);
+}
+
+const confidenceThreshold = 0.5;
+const step = 40;
+export default async function (
+  balances: { [address: string]: string },
+  timestamp: "now" | number,
+  staleCoins: StaleCoins
+) {
+  const rawTokenBalances = {} as Balances;
+  const normalBalances = normalizeBalances(balances);
+  const tokenData = await fetchTokenData(timestamp, balances);
+  const staleCoinPromises: Promise<void>[] = [];
+
+  Object.keys(balances).map((key: string) => {
+    sumSingleBalance(rawTokenBalances, key, balances[key]);
+    tokenData.forEach((response) => {
+      if (key in response) return;
+      staleCoinPromises.push(addToStaleCoins(staleCoins, key));
+    });
+  });
+
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
   const usdTokenBalances = {} as Balances;
-  const now = timestamp === "now" ? Math.round(Date.now() / 1000) : timestamp;
+
   tokenData.forEach((response) => {
-    if (Math.abs(response.timestamp - now) > 3600*1.2) { // 1.2 hours
-      addStaleCoin(staleCoins, response.PK, response.symbol, response.timestamp);
-    }
-    if (Math.abs(response.timestamp - now) < DAY) {
-      PKsToTokens[response.PK].forEach((address) => {
-        const balance = balances[address];
-        const { price, decimals } = response;
-        let symbol:string, amount:number;
-        if (response.PK.startsWith('coingecko:')) {
-          symbol = address;
-          amount = Number(balance);
-        } else {
-          symbol = (response.symbol as string).toUpperCase();
-          amount = new BigNumber(balance).div(10 ** decimals).toNumber();
-        }
-        const usdAmount = amount * price;
-        tokenBalances[symbol] = (tokenBalances[symbol] ?? 0) + amount;
-        usdTokenBalances[symbol] = (usdTokenBalances[symbol] ?? 0) + usdAmount;
-        usdTvl += usdAmount;
-      });
-    } else {
-      console.error(`Data for ${response.PK} is stale`);
-    }
+    Object.keys(response).forEach((address) => {
+      const data = response[address];
+      const balance: BigNumber = new BigNumber(normalBalances[address]);
+
+      if ("confidence" in data && data.confidence < confidenceThreshold) return;
+
+      const amount: BigNumber = address.startsWith("coingecko:")
+        ? balance
+        : balance.div(10 ** data.decimals);
+      const usdAmount: BigNumber = amount.times(data.price);
+
+      tokenBalances[data.symbol] =
+        (tokenBalances[data.symbol] ?? 0) + amount.toNumber();
+      usdTokenBalances[data.symbol] =
+        (usdTokenBalances[data.symbol] ?? 0) + usdAmount.toNumber();
+      usdTvl += usdAmount.toNumber();
+    });
   });
+
+  await Promise.all(staleCoinPromises);
   return {
     usdTvl,
     tokenBalances,
     usdTokenBalances,
+    rawTokenBalances
   };
 }

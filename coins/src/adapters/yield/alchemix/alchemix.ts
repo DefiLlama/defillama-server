@@ -49,22 +49,17 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
       chain,
       timestamp
     ),
-    getTokenInfo(
-      chain,
-      aTokens.map((t: Result) => t.output),
-      block,
-      true
-    )
+    getTokenInfo(chain, aTokens.map((t: Result) => t.output), block, true)
   ]);
 
   const writes: Write[] = [];
   aTokens.map((a: Result, i: number) => {
-    const underlyingInfo: CoinData = underlyingInfos.filter(
+    const underlyingInfo: CoinData | undefined = underlyingInfos.find(
       (i: CoinData) => i.address == a.output.toLowerCase()
-    )[0];
+    );
     if (underlyingInfo == null) return;
 
-    const price: number = (ratios[i].output * underlyingInfo.price) / 10 ** 18;
+    const price: number = ratios[i].output * underlyingInfo.price / 10 ** 18;
 
     addToDBWritesList(
       writes,

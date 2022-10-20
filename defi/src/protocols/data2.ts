@@ -17338,7 +17338,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Yield",
+  category: "Dexes",
   chains: ["Polygon"],
   module: "tetu-swap/index.js",
   twitter: "tetu_io",

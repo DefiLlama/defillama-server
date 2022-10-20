@@ -17242,7 +17242,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://hedgefarm.finance",
   description:
-    "Add test HedgeFarm allows you to access crypto investment vaults that will suit your needs depending on what type of crypto assets you want to invest in and what type of risk you are ready to take for the performance you'll get.",
+    "HedgeFarm allows you to access crypto investment vaults that will suit your needs depending on what type of crypto assets you want to invest in and what type of risk you are ready to take for the performance you'll get.",
   chain: "Avalanche",
   logo: `${baseIconsUrl}/hedgefarm.png`,
   audits: "0",

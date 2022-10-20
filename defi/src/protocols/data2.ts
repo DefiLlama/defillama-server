@@ -12585,7 +12585,7 @@ listedAt: 1650804679
   url: "https://pangeaswap.com",
   description: "The First Concentrated Liquidity DEX on Klaytn.",
   chain: "Klaytn",
-  logo: `${baseIconsUrl}/pangea-swap.png`,
+  logo: `${baseIconsUrl}/pangeaswap.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

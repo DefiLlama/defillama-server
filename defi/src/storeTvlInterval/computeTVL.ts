@@ -1,49 +1,13 @@
 import BigNumber from "bignumber.js";
 import fetch from "node-fetch";
 import { sumSingleBalance } from "@defillama/sdk/build/generalUtil";
-//import { normalizeBalances } from "@defillama/sdk/build/util/index";
+import { normalizeBalances } from "@defillama/sdk/build/util/index";
 import { addStaleCoin, StaleCoins } from "./staleCoins";
 import { call } from "@defillama/sdk/build/abi";
-const ethereumAddress = "0x0000000000000000000000000000000000000000";
-const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
 
 type Balances = {
   [symbol: string]: number;
 };
-
-function normalizeBalances(balances: { [address: string]: string }) {
-  Object.keys(balances).map((key) => {
-    if (+balances[key] === 0) {
-      delete balances[key];
-      return;
-    }
-
-    const normalisedKey = key.startsWith("0x")
-      ? `ethereum:${key.toLowerCase()}`
-      : !key.includes(":")
-      ? `coingecko:${key.toLowerCase()}`
-      : key.toLowerCase();
-
-    // sol amd tezos case sensitive so no normalising
-    if (
-      key == normalisedKey ||
-      key.startsWith("solana:") ||
-      key.startsWith("tezos:")
-    )
-      return;
-
-    sumSingleBalance(balances, normalisedKey, balances[key]);
-    delete balances[key];
-  });
-
-  const eth = balances[ethereumAddress];
-  if (eth !== undefined) {
-    balances[weth] = new BigNumber(balances[weth] ?? 0).plus(eth).toFixed(0);
-    delete balances[ethereumAddress];
-  }
-
-  return balances;
-}
 
 async function fetchTokenData(
   timestamp: "now" | number,

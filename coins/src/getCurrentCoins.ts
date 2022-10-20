@@ -15,7 +15,7 @@ const isFresh = (timestamp: number, searchWidth: number) => {
 const handler = async (event: any): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
   const searchWidth: number = quantisePeriod(
-    event.pathParameters?.searchWidth?.toLowerCase() ?? "d"
+    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "d"
   );
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
   const response = {} as CoinsResponse;

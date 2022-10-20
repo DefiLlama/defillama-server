@@ -17326,7 +17326,7 @@ listedAt: 1650804679
   listedAt: 1666274834
 },
 {
-  id: "506",
+  id: "2203",
   name: "Tetu Swap",
   address: "polygon:0x255707b70bf90aa112006e1b07b9aea6de021424",
   symbol: "TETU",

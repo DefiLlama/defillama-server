@@ -8817,7 +8817,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://spin.fi",
-  description: "Airdrop - Retrodrop is Coming. Spin is a DeFi derivatives infrastructure built on NEAR Protocol, a reliable and scalable L1 solution. The on-chain order book solution offered by Spin provides a CEX-competitive experience to DeFi users.",
+  description: "Spin is a DeFi derivatives infrastructure built on NEAR Protocol, a reliable and scalable L1 solution. The on-chain order book solution offered by Spin provides a CEX-competitive experience to DeFi users.",
   chain: "Near",
   logo: `${baseIconsUrl}/spin.png`,
   audits: "0",

@@ -1,7 +1,9 @@
 import BigNumber from "bignumber.js";
 import fetch from "node-fetch";
 import { sumSingleBalance } from "@defillama/sdk/build/generalUtil";
+//import { normalizeBalances } from "@defillama/sdk/build/util/index";
 import { addStaleCoin, StaleCoins } from "./staleCoins";
+import { call } from "@defillama/sdk/build/abi";
 const ethereumAddress = "0x0000000000000000000000000000000000000000";
 const weth = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
 
@@ -67,6 +69,23 @@ async function fetchTokenData(
   return responses.map((g) => g.coins);
 }
 
+async function addToStaleCoins(staleCoins: StaleCoins, tokenId: string) {
+  const chain: any = tokenId.substring(0, tokenId.indexOf(":"));
+  const target: string = tokenId.substring(tokenId.indexOf(":") + 1);
+  let decimals: number = 0;
+  let symbol: string;
+  try {
+    [{ output: decimals }, { output: symbol }] = await Promise.all([
+      call({ target, abi: "erc20:decimals", chain }),
+      call({ target, abi: "erc20:symbol", chain })
+    ]);
+  } catch {
+    decimals = 0;
+    symbol = "NA";
+  }
+  addStaleCoin(staleCoins, tokenId, symbol, decimals);
+}
+
 const confidenceThreshold = 0.5;
 const step = 40;
 export default async function (
@@ -75,17 +94,17 @@ export default async function (
   staleCoins: StaleCoins
 ) {
   const rawTokenBalances = {} as Balances;
+  const normalBalances = normalizeBalances(balances);
+  const tokenData = await fetchTokenData(timestamp, balances);
+  const staleCoinPromises: Promise<void>[] = [];
+
   Object.keys(balances).map((key: string) => {
     sumSingleBalance(rawTokenBalances, key, balances[key]);
     tokenData.forEach((response) => {
-      if (key in response) return
-      // need to fix these final params
-      // whats the best way to fetch symbol, timestamp - is there a better option
-      addStaleCoin(staleCoins, key, 'TBC', 0);
-    })
-  })
-  balances = normalizeBalances(balances);
-  const tokenData = await fetchTokenData(timestamp, balances);
+      if (key in response) return;
+      staleCoinPromises.push(addToStaleCoins(staleCoins, key));
+    });
+  });
 
   let usdTvl = 0;
   const tokenBalances = {} as Balances;
@@ -94,7 +113,7 @@ export default async function (
   tokenData.forEach((response) => {
     Object.keys(response).forEach((address) => {
       const data = response[address];
-      const balance: BigNumber = new BigNumber(balances[address]);
+      const balance: BigNumber = new BigNumber(normalBalances[address]);
 
       if ("confidence" in data && data.confidence < confidenceThreshold) return;
 
@@ -111,6 +130,7 @@ export default async function (
     });
   });
 
+  await Promise.all(staleCoinPromises);
   return {
     usdTvl,
     tokenBalances,

@@ -25,6 +25,7 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => ({
 
 export type IImportsMap = IJSON<{ default: Adapter }>
 
+// This could be much more efficient
 export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdaptor[] =>
     Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = data
@@ -35,11 +36,12 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 || sluggifyString(dexP.name)?.includes(adapterKey)
                 || dexP.gecko_id?.includes(adapterKey)
                 || dexP.module?.split("/")[0]?.includes(adapterKey)
-        }
-        )
+        })
         if (dexFoundInProtocols && imports_obj[adapterKey].default)
             return {
                 ...dexFoundInProtocols,
+                id: ID_MAP[dexFoundInProtocols.id]?.id ?? dexFoundInProtocols.id,
+                name: ID_MAP[dexFoundInProtocols.id]?.name ?? dexFoundInProtocols.name,
                 module: adapterKey,
                 config: config[adapterKey],
                 chains: getAllChainsFromAdaptors([adapterKey], imports_obj),
@@ -57,10 +59,23 @@ function getDisplayName(name: string, adapter: Adapter) {
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
         return `${Object.keys(adapter.breakdown)[0]}`
     if (name === 'AAVE V2') return 'AAVE'
+    if (name === 'Uniswap V1') return 'Uniswap'
     return name
 }
 
-function getLogoKey (key: string) {
-    if (key.toLowerCase()==='bsc') return 'binance'
+function getLogoKey(key: string) {
+    if (key.toLowerCase() === 'bsc') return 'binance'
     else return key.toLowerCase()
+}
+
+// This should be changed to be easier to mantain
+const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
+    "2198": {
+        id: "1",
+        name: "Uniswap"
+    },
+    "1599": {
+        id: "111",
+        name: "AAVE"
+    }
 }

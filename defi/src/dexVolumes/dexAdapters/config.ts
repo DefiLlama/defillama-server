@@ -575,6 +575,9 @@ export default {
     "gravis": {
         enabled: true
     },
+    "bisq": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

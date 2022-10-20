@@ -8817,7 +8817,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://spin.fi",
-  description: "Spin is a DeFi derivatives infrastructure built on NEAR Protocol, a reliable and scalable L1 solution. The on-chain order book solution offered by Spin provides a CEX-competitive experience to DeFi users.",
+  description: "Airdrop - Retrodrop is Coming. Spin is a DeFi derivatives infrastructure built on NEAR Protocol, a reliable and scalable L1 solution. The on-chain order book solution offered by Spin provides a CEX-competitive experience to DeFi users.",
   chain: "Near",
   logo: `${baseIconsUrl}/spin.png`,
   audits: "0",
@@ -14968,7 +14968,7 @@ listedAt: 1650804679
 {
   id: "2096",
   name: "SeaLightSwap",
-  address: "polygon:0xC299DFC5F65532dA6Df982f43935b3CF814081Cd",
+  address: "polygon:0x1e54Cf1E8006C82065ba89c57B243a82A369fa96",
   symbol: "SEAS",
   url: "https://sealightswap.org/#/swap",
   description: "AMM DEX on Polygon",

@@ -32,10 +32,10 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
         if (adapterObj.default?.protocolType === ProtocolType.CHAIN)
             list = chainData
         const dexFoundInProtocols = list.find(dexP => {
-            return dexP.name.toLowerCase()?.includes(adapterKey)
+            return (dexP.name.toLowerCase()?.includes(adapterKey)
                 || sluggifyString(dexP.name)?.includes(adapterKey)
                 || dexP.gecko_id?.includes(adapterKey)
-                || dexP.module?.split("/")[0]?.includes(adapterKey)
+                || dexP.module?.split("/")[0]?.includes(adapterKey)) && getBySpecificId(adapterKey, dexP.id)
         })
         if (dexFoundInProtocols && imports_obj[adapterKey].default)
             return {
@@ -56,10 +56,10 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
     }).filter(notUndefined);
 
 function getDisplayName(name: string, adapter: Adapter) {
+    if (name === 'AAVE V3') return 'AAVE'
+    if (name === 'Uniswap V3') return 'Uniswap'
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
         return `${Object.keys(adapter.breakdown)[0]}`
-    if (name === 'AAVE V2') return 'AAVE'
-    if (name === 'Uniswap V1') return 'Uniswap'
     return name
 }
 
@@ -78,4 +78,10 @@ const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
         id: "111",
         name: "AAVE"
     }
+}
+
+const getBySpecificId = (key: string, id: string) => {
+    if (key === 'uniswap') return id === "2198"
+    if (key === 'aave') return id === "1599"
+    return true
 }

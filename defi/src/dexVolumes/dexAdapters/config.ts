@@ -587,6 +587,9 @@ export default {
     "gin-finance": {
         enabled: true
     },
+    "ferro": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

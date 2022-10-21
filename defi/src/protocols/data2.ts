@@ -12579,7 +12579,7 @@ listedAt: 1650804679
 },
 {
   id: "1987",
-  name: "PangeaSwap",
+  name: "Pangea Swap",
   address: null,
   symbol: "-",
   url: "https://pangeaswap.com",
@@ -14968,7 +14968,7 @@ listedAt: 1650804679
 {
   id: "2096",
   name: "SeaLightSwap",
-  address: "polygon:0xC299DFC5F65532dA6Df982f43935b3CF814081Cd",
+  address: "polygon:0x1e54Cf1E8006C82065ba89c57B243a82A369fa96",
   symbol: "SEAS",
   url: "https://sealightswap.org/#/swap",
   description: "AMM DEX on Polygon",

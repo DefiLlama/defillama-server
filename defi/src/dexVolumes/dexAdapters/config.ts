@@ -590,6 +590,9 @@ export default {
     "ferro": {
         enabled: true
     },
+    "increment-swap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

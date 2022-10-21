@@ -17504,5 +17504,29 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666362910
 },
+{
+  id: "2211",
+  name: "Increment Liquid Staking",
+  address: null,
+  symbol: "-",
+  url: "https://app.increment.fi/staking",
+  description:
+    "Liquid Staking Protocol on Flow.",
+  chain: "Flow",
+  logo: `${baseIconsUrl}/increment-liquid-staking.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Flow"],
+  module: "increment-liquidStaking/index.js",
+  twitter: "IncrementFi", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://docs.increment.fi/protocols/liquid-staking/audits"],
+  parentProtocol: "incrementFinance",
+  listedAt: 1666369477
+},
 ]
 export default data2;

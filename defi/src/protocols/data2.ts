@@ -17482,5 +17482,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666349179
 },
+{
+  id: "2210",
+  name: "Liquid Swap",
+  address: null,
+  symbol: "-",
+  url: "https://liquidswap.com/",
+  description:
+    "Liquidswap is the first AMM on Aptos, the safest and most scalable L1 blockchain. The DEX runs on Aptos mainnet.",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/liquid-swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Aptos"],
+  module: "liquidswap-aptos/index.js",
+  twitter: "PontemNetwork", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1666362910
+},
 ]
 export default data2;

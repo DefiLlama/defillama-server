@@ -5,7 +5,7 @@ import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "fees" },
+    pathParameters: { chain: undefined, type: "derivatives" },
     queryStringParameters: {
         excludeTotalDataChart: "true",
         excludeTotalDataChartBreakdown: "true",
@@ -20,7 +20,7 @@ const event = {
     /*     // @ts-ignore
         delete rr.totalDataChartBreakdown
         delete rr.totalDataChart*/
-    console.log(rr.protocols.find(p=>p.name==='Bitcoin'))
+    console.log(rr.protocols.map(p=>p.displayName))
     console.log("Current run:", (endTime - startTime) / 1000)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)

@@ -50,6 +50,18 @@ const importPaths = [
         baseFolderPath: "./adapters",
         folderPath: "fees",
         excludeKeys: excludeKeys
+    },
+    {
+        basePackagePath: "@defillama/adaptors",
+        baseFolderPath: "./adapters",
+        folderPath: "aggregators",
+        excludeKeys: excludeKeys
+    },
+    {
+        basePackagePath: "@defillama/adaptors",
+        baseFolderPath: "./adapters",
+        folderPath: "derivatives",
+        excludeKeys: excludeKeys
     }
 ]
 

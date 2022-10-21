@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import sluggify from "../../../utils/sluggify";
+import sluggify, { sluggifyString } from "../../../utils/sluggify";
 import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import loadAdaptorsData from "../../data"
@@ -45,17 +45,13 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     if (!protocolName || !adaptorType) throw new Error("Missing name or type")
 
     const adaptorsData = loadAdaptorsData(adaptorType)
+    console.log(Object.keys(adaptorsData.default))
     const dexData = adaptorsData.default.find(
-        (prot) => sluggify(prot) === protocolName
+        (prot) => sluggify(prot) === protocolName || sluggifyString(prot.displayName) === protocolName
     );
     if (!dexData) throw new Error("DEX data not found!")
     let dexDataResponse = {}
     try {
-        let volumes = await getAdaptorRecord(dexData.id, dataType, dexData.protocolType, "ALL")
-        volumes = volumes
-        // This check is made to infer Volume type instead of Volume[] type
-        if (volumes instanceof AdaptorRecord) throw new Error("Wrong volume queried")
-
         const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType)
 
         dexDataResponse = {

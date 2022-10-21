@@ -64,6 +64,7 @@ provider:
     XDAI_RPC: ${file(./env.js):XDAI_RPC}
     HARMONY_RPC: ${file(./env.js):HARMONY_RPC}
     SOLANA_RPC: ${file(./env.js):SOLANA_RPC}
+    MISSING_COINS_DB_PWD: ${file(./env.js):MISSING_COINS_DB_PWD}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -121,12 +122,26 @@ functions:
       - http:
           path: prices/current/{coins}
           method: get
+  coinFirstTimestamp:
+    handler: src/getCoinFirstTimestamp.default
+    timeout: 60
+    events:
+      - http:
+          path: prices/first/{coins}
+          method: get
   historicalCoinPrices:
     handler: src/getHistoricalCoins.default
     timeout: 60
     events:
       - http:
           path: prices/historical/{timestamp}/{coins}
+          method: get
+  coinPriceChart:
+    handler: src/getCoinPriceChart.default
+    timeout: 60
+    events:
+      - http:
+          path: chart/{coins}
           method: get
   block:
     handler: src/getBlock.default

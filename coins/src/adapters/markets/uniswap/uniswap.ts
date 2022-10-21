@@ -190,7 +190,7 @@ async function lps(
     let confidence: number =
       coinData.confidence == undefined ? 1 : coinData.confidence;
 
-    if (symbol.includes("null")) return;
+    if (symbol.includes("null") || lpPrice == Infinity) return;
     addToDBWritesList(
       writes,
       chain,
@@ -343,6 +343,7 @@ async function getConfidenceScores(
     let confidence: number = 0;
     try {
       confidence = r.output[1] / (ratio * swapResults[i + 1].output[1]);
+      if (confidence > 0.989) confidence = 0.989;
     } catch {}
     confidences[r.input.params[1][0].toLowerCase()] = confidence;
   });
@@ -355,6 +356,7 @@ export default async function getTokenPrices(
   subgraph: string | undefined = undefined,
   timestamp: number
 ) {
+  router;
   let token0s;
   let token1s;
   let reserves;
@@ -404,15 +406,15 @@ export default async function getTokenPrices(
   );
 
   const writes: Write[] = [];
-  await unknownTokens(
-    writes,
-    chain,
-    router,
-    timestamp,
-    priceableLPs,
-    tokenPrices,
-    tokenInfos
-  );
+  // await unknownTokens(
+  //   writes,
+  //   chain,
+  //   router,
+  //   timestamp,
+  //   priceableLPs,
+  //   tokenPrices,
+  //   tokenInfos
+  // );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
   return writes;

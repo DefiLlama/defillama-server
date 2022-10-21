@@ -32,6 +32,7 @@ interface CoingeckoResponse {
   [cgId: string]: {
     usd: number;
     usd_market_cap: number;
+    last_updated_at: number;
   };
 }
 
@@ -60,26 +61,56 @@ function storeCoinData(
   );
 }
 
-let solanaTokens: Promise<any>
-async function getSymbolAndDecimals(tokenAddress: string, chain:string){
-  if(chain === "solana"){
-    if(solanaTokens === undefined){
+function storeHistoricalCoinData(
+  coinData: CoingeckoResponse,
+) {
+  return batchWrite(
+    Object.entries(coinData)
+      .filter((c) => c[1]?.usd !== undefined)
+      .map(([cgId, data]) => ({
+        SK: data.last_updated_at,
+        PK: cgPK(cgId),
+        price: data.usd,
+        confidence: 0.99
+      })),
+    false
+  );
+}
+
+let solanaTokens: Promise<any>;
+async function getSymbolAndDecimals(tokenAddress: string, chain: string) {
+  if (chain === "solana") {
+    if (solanaTokens === undefined) {
       solanaTokens = fetch(
         "https://cdn.jsdelivr.net/gh/solana-labs/token-list@main/src/tokens/solana.tokenlist.json"
-      ).then(r=>r.json())
+      ).then((r) => r.json());
     }
-    const token = ((await solanaTokens).tokens as any[]).find(t=>t.address === tokenAddress)
-    if(token === undefined){
-      throw new Error(`Token ${chain}:${tokenAddress} not found in solana token list`)
+    const token = ((await solanaTokens).tokens as any[]).find(
+      (t) => t.address === tokenAddress
+    );
+    if (token === undefined) {
+      throw new Error(
+        `Token ${chain}:${tokenAddress} not found in solana token list`
+      );
     }
     return {
       symbol: token.symbol,
       decimals: Number(token.decimals)
-    }
+    };
+  } else if (!tokenAddress.startsWith(`0x`)) {
+    throw new Error(
+      `Token ${chain}:${tokenAddress} is not on solana or EVM so we cant get token data yet`
+    );
   } else {
-    return {
-      symbol: (await symbol(tokenAddress, chain as any)).output,
-      decimals: Number((await decimals(tokenAddress, chain as any)).output),
+    try {
+      return {
+        symbol: (await symbol(tokenAddress, chain as any)).output,
+        decimals: Number((await decimals(tokenAddress, chain as any)).output)
+      };
+    } catch (e) {
+      throw new Error(
+        `ERC20 methods aren't working for token ${chain}:${tokenAddress}`
+      );
     }
   }
 }
@@ -89,7 +120,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinData = await retryCoingeckoRequest(
     `https://api.coingecko.com/api/v3/simple/price?ids=${coinIds.join(
       ","
-    )}&vs_currencies=usd&include_market_cap=true`,
+    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true`,
     10
   );
   const idToSymbol = {} as IdToSymbol;
@@ -103,13 +134,17 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   });
   const timestamp = getCurrentUnixTimestamp();
   await storeCoinData(timestamp, coinData, idToSymbol);
+  await storeHistoricalCoinData(coinData);
   await Promise.all(
     coins.map((coin) =>
       iterateOverPlatforms(coin, async (PK, tokenAddress, chain) => {
         if (coinData[coin.id]?.usd === undefined) {
           return;
         }
-        const {decimals, symbol} = await getSymbolAndDecimals(tokenAddress, chain);
+        const { decimals, symbol } = await getSymbolAndDecimals(
+          tokenAddress,
+          chain
+        );
         await ddb.put({
           PK,
           SK: 0,

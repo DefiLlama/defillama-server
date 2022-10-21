@@ -17528,5 +17528,28 @@ listedAt: 1650804679
   parentProtocol: "incrementFinance",
   listedAt: 1666369477
 },
+{
+  id: "2212",
+  name: "sTLOS Liquid Staking",
+  address: "telos:0xb4b01216a5bc8f1c8a33cd990a1239030e60c905",
+  symbol: "sTLOS",
+  url: "https://www.teloscan.io/staking",
+  description:
+    "sTLOS is the liquid staking protocol on the Telos EVM. This Protocol accounts for all Telos staked in the ERC4626 vault that issues sTLOS and delegates the received Telos to the native rewards staking program",
+  chain: "Telos",
+  logo: `${baseIconsUrl}/stlos-liquid-staking.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Telos"],
+  module: "stlos-liquid-staking/index.js",
+  twitter: "HelloTelos", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://sentnl.io/audits/telos_0"],
+  listedAt: 1666395145
+},
 ]
 export default data2;

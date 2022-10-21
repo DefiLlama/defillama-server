@@ -593,6 +593,9 @@ export default {
     "increment-swap": {
         enabled: true
     },
+    "chainge-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

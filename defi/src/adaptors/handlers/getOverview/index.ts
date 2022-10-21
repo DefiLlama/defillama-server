@@ -47,7 +47,9 @@ export type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[strin
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.VOLUME]: AdaptorRecordType.dailyVolume,
-    [AdapterType.FEES]: AdaptorRecordType.dailyFees
+    [AdapterType.FEES]: AdaptorRecordType.dailyFees,
+    [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
+    [AdapterType.DERIVATIVES]: AdaptorRecordType.dailyNotionalVolume,
 }
 
 // -> /overview/volumes

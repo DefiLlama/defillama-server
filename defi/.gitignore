@@ -12,6 +12,8 @@ src/utils/imports/adapters_fees.ts
 src/utils/imports/adapters_liquidations.ts
 src/utils/imports/fees_adapters.ts
 src/utils/imports/volumes_adapters.ts
+src/utils/imports/derivatives_adapters.ts
+src/utils/imports/aggregators_adapters.ts
 .vscode
 src/dexVolumes/cli/backfillUtilities/output
 src/adaptors/cli/backfillUtilities/output

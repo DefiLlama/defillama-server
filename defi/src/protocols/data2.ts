@@ -17409,6 +17409,7 @@ listedAt: 1650804679
   twitter: "ArgoUSD", 
   forkedFrom: [],
   oracles: [],
+  language: "Move",
   listedAt: 1666310264
 },
 {
@@ -17432,6 +17433,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   audit_links: ["https://github.com/ditto-research/audit/blob/main/ottersec-14-10-22/Ditto-Ottersec-Audit.pdf"],
+  language: "Move",
   listedAt: 1666310374
 },
 {
@@ -17455,6 +17457,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   audit_links: ["https://docs.tortuga.finance/product-docs/protocol/security-audits"],
+  language: "Move",
   listedAt: 1666310467
 },
 ]

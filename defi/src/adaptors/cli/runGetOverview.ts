@@ -20,7 +20,7 @@ const event = {
     /*     // @ts-ignore
         delete rr.totalDataChartBreakdown
         delete rr.totalDataChart*/
-    console.log(rr.protocols.map(p=>p.displayName))
+    console.log(rr.protocols.find(p=>p.name==='Bitcoin'))
     console.log("Current run:", (endTime - startTime) / 1000)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)

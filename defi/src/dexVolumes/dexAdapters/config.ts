@@ -563,7 +563,7 @@ export default {
     "carbonswap": {
         enabled: true
     },
-    "pangeaswap": {
+    "pangea-swap": {
         enabled: true
     },
     "gravity-finance": {
@@ -576,6 +576,12 @@ export default {
         enabled: true
     },
     "bisq": {
+        enabled: true
+    },
+    "tetu": {
+        enabled: true
+    },
+    "muesliswap": {
         enabled: true
     },
 } as {

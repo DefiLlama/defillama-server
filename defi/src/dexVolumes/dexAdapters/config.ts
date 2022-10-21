@@ -584,6 +584,9 @@ export default {
     "muesliswap": {
         enabled: true
     },
+    "gin-finance": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

@@ -16506,7 +16506,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "951",
-    name: "Pando",
+    name: "4Swap",
     address: null,
     symbol: "-",
     url: "https://pando.im",
@@ -16522,6 +16522,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "pando/index.js",
     twitter: "pando_im",
     audit_links: ["https://docs.pando.im/docs/security/audit-reports"],
+    parentProtocol: "Pando",
     listedAt: 1638382732,
   },
   {

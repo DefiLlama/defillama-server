@@ -570,7 +570,7 @@ export default {
         enabled: true
     },
     "4swap": {
-        enabled: false
+        enabled: true
     },
     "gravis": {
         enabled: true

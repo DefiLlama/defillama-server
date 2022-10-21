@@ -14425,7 +14425,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Lending",
+  category: "Undercollateralized Lending",
   chains: ["Ethereum"],
   oracles: [],
   forkedFrom: ["Compound"],

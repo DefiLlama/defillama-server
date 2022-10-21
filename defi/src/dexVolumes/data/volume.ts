@@ -140,7 +140,7 @@ export const getVolume = async (dex: string, type: VolumeType, mode: "ALL" | "LA
 
 // TMP: REMOVES ALL VOLUMES, DO NOT USE!
 export const removeVolume = async (dex: string, type: VolumeType,): Promise<boolean> => {
-    const removeVolumeQuery = async (volume: Volume) => {
+    /* const removeVolumeQuery = async (volume: Volume) => {
         console.log("Removing", volume.keys())
         return dynamodb.delete({
             Key: volume.keys(),
@@ -156,5 +156,7 @@ export const removeVolume = async (dex: string, type: VolumeType,): Promise<bool
     } catch (error) {
         console.log(error)
         return false
-    }
+    } */
+    console.log(dex, type)
+    return Promise.resolve(false)
 }

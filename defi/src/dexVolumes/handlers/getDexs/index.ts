@@ -47,6 +47,8 @@ const MAX_OUTDATED_DAYS = 30
 
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const pathChain = event.pathParameters?.chain?.toLowerCase()
+    const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
+    const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
     let prevDayTime = 0
     const dexsResults = await allSettled(volumeAdapters.filter(va => va.config?.enabled).map<Promise<VolumeSummaryDex>>(async (adapter) => {
@@ -73,6 +75,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 if (enableAlerts)
                     await sendDiscordAlert(`Volume not updated (using old data...)\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
                 // console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
+                volumes.push(new Volume(prevDayVolume.type, prevDayVolume.dexId, prevDayTimestamp, prevDayVolume.data))
             }
 
             if ((prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * MAX_OUTDATED_DAYS) && !isDisabled(adapter.volumeAdapter)) {
@@ -147,12 +150,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartResponse = [] //generateByChainsChart(dexs)
         totalDataChartBreakdownResponse = [] //nothing 4 now
     } else if (chainFilter) {
-        totalDataChartResponse = generateAggregatedVolumesChartData(dexs)
-        totalDataChartBreakdownResponse = generateByDexVolumesChartData(dexs)
+        totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(dexs)
+        totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(dexs)
         dexsResponse = dexs.map(removeVolumesObject)
     } else {
-        totalDataChartResponse = generateAggregatedVolumesChartData(dexs)
-        totalDataChartBreakdownResponse = generateByDexVolumesChartData(dexs)
+        totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(dexs)
+        totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(dexs)
         dexsResponse = dexs.map(removeVolumesObject)
     }
 
@@ -165,7 +168,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         ...generalStats,
         dexs: dexsResponse,
-        allChains: getAllChainsUniqueString(getAllChainsFromDexAdapters(volumeAdapters.map(va=>va.volumeAdapter)))// getAllChainsUnique(dexs)
+        allChains: getAllChainsUniqueString(getAllChainsFromDexAdapters(volumeAdapters.map(va => va.volumeAdapter)))// getAllChainsUnique(dexs)
     } as IGetDexsResponseBody, 10 * 60); // 10 mins cache
 };
 
@@ -210,15 +213,15 @@ export const removeEventTimestampAttribute = (v: Volume) => {
     return v
 }
 
-const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
+/* const getAllChainsUnique = (dexs: VolumeSummaryDex[]) => {
     const allChainsNotUnique = dexs.reduce((acc, { chains }) => chains !== null ? acc.concat(...chains) : acc, [] as string[])
     return allChainsNotUnique.filter((value, index, self) => {
         return self.indexOf(value) === index;
     })
-}
+} */
 
 const getAllChainsUniqueString = (chains: string[]) => {
-    return chains.filter((value, index, self) => {
+    return chains.map(formatChain).filter((value, index, self) => {
         return self.indexOf(value) === index;
     })
 }

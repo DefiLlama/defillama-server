@@ -1,4 +1,5 @@
 import aws from "aws-sdk";
+import axios from "axios";
 import type { Readable } from "stream";
 
 const datasetBucket = "defillama-datasets";
@@ -53,6 +54,33 @@ export async function storeLiqs(filename: string, body: string | Readable, conte
       Body: body,
       ACL: "public-read",
       ContentType: contentType,
+    })
+    .promise();
+}
+
+export async function getCachedLiqs(protocol: string, chain: string) {
+  const data = await new aws.S3()
+    .getObject({
+      Bucket: datasetBucket,
+      Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
+    })
+    .promise();
+  return data.Body?.toString() ?? "";
+}
+
+export async function getExternalLiqs(protocol: string, chain: string) {
+  const data = (await axios.get("https://liquidations-extra-9sja.onrender.com/" + protocol + "/" + chain)).data;
+  return data;
+}
+
+export async function storeCachedLiqs(protocol: string, chain: string, body: string | Readable) {
+  await new aws.S3()
+    .upload({
+      Bucket: datasetBucket,
+      Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
+      Body: body,
+      ACL: "public-read",
+      ContentType: "application/json",
     })
     .promise();
 }

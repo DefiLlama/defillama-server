@@ -433,11 +433,6 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 122,
   },
-  "SORA": {
-    geckoId: "sora",
-    symbol: "XOR",
-    cmcId: "5802",
-  },
   "smartBCH": {
     geckoId: "bitcoin-cash",
     symbol: "BCH",
@@ -463,7 +458,7 @@ export const chainCoingeckoIds = {
     geckoId: "crypto-com-chain",
     symbol: "CRO",
     cmcId: "3635",
-    categories: ["EVM"],
+    categories: ["EVM", "Cosmos"],
     chainId: 25,
   },
   "Polis": {
@@ -1159,6 +1154,11 @@ export const chainCoingeckoIds = {
     cmcId: "3884",
     categories: ["EVM"],
   },
+  "Aptos": {
+    geckoId: "aptos",
+    symbol: "APT",
+    cmcId: "21794",
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1179,7 +1179,7 @@ chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
 
-export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury"]
+export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury", "vesting"]
 
 export function transformNewChainName(chain: string) {
   switch (chain) {
@@ -1228,8 +1228,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Nova Network" : "Nova Network"
     case "godwoken_v1":
       return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
-    case "arbitrum_nova":
-      return useNewChainNames ? "Arbitrum Nova" : "Arbitrum Nova"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -1269,7 +1267,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "fuse":
       return "Fuse"
     case "sora":
-      return "SORA"
+      return "Sora"
     case "smartbch":
       return "smartBCH"
     case "elastos":
@@ -1456,6 +1454,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Cube"
     case "functionx":
       return "FunctionX"
+    case "aptos":
+        return "Aptos"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

@@ -205,6 +205,7 @@ const formattedChains = async (category: string) => {
     tvl: "t",
     borrowed: "b",
     pool2: "p",
+    vesting: "v",
     staking: "s",
     doublecounted: "d",
     liquidstaking: "l",

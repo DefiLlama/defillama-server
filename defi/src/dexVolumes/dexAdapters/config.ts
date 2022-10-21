@@ -291,7 +291,7 @@ export default {
         enabled: true
     },
     "jupiter-aggregator": {
-        enabled: true
+        enabled: false
     },
     "astroport": {
         enabled: true
@@ -314,7 +314,280 @@ export default {
     "yodeswap": {
         enabled: true
     },
-    "defikingdoms": {
+    "defi-kingdoms": {
+        enabled: true
+    },
+     "defiplaza": {
+        enabled: true
+    },
+    "polycat": {
+        enabled: true
+    },
+    "voltswap": {
+        enabled: true
+    },
+    "yokaiswap": {
+        enabled: true
+    },
+    "protofi": {
+        enabled: true
+    },
+    "voltage": {
+        enabled: true
+    },
+    "complus-network": {
+        enabled: true
+    },
+    "padswap": {
+        enabled: true
+    },
+    "sharkswap": {
+        enabled: true
+    },
+    "okcswap": {
+        enabled: true
+    },
+    "empiredex": {
+        enabled: true
+    },
+    "makiswap": {
+        enabled: true
+    },
+    "smartdex": {
+        enabled: true
+    },
+     "cometh": {
+        enabled: true
+    },
+    "maiar-exchange": {
+        enabled: true
+    },
+    "defichain-dex": {
+        enabled: true
+    },
+    "blue-planet": {
+        enabled: true
+    },
+    "aldrin": {
+        enabled: true
+    },
+    "capricorn-finance": {
+        enabled: true
+    },
+    "alex": {
+        enabled: true
+    },
+    "step-exchange": {
+        enabled: true
+    },
+     "pegasys": {
+        enabled: true
+    },
+    "crodex": {
+        enabled: true
+    },
+    "dexalot": {
+        enabled: false
+    },
+    "babyswap": {
+        enabled: true
+    },
+    "lifinity": {
+        enabled: true
+    },
+    "vanswap": {
+        enabled: true
+    },
+    "dao-swap": {
+        enabled: true
+    },
+    "jswap": {
+        enabled: true
+    },
+    "babydogeswap": {
+        enabled: true
+    },
+    "wigoswap": {
+        enabled: true
+    },
+    "levinswap": {
+        enabled: true
+    },
+    "templedao-trade": {
+        enabled: true
+    },
+    "karura-swap": {
+        enabled: true
+    },
+    "sphynx": {
+        enabled: true
+    },
+    "kuswap": {
+        enabled: true
+    },
+    "paint-swap": {
+        enabled: true
+    },
+    "benswap": {
+        enabled: true
+    },
+    "surfswap": {
+        enabled: true
+    },
+    "bogged-finance": {
+        enabled: true
+    },
+    "jetswap": {
+        enabled: true
+    },
+    "saucerswap": {
+        enabled: true
+    },
+    "synthetify": {
+        enabled: true
+    },
+    "pandora": {
+        enabled: true
+    },
+    "paycash": {
+        enabled: true
+    },
+    "soy-finance": {
+        enabled: true
+    },
+    "photonswap-finance": {
+        enabled: true
+    },
+    "alita-finance": {
+        enabled: true
+    },
+    "unifi": {
+        enabled: true
+    },
+    "wineryswap": {
+        enabled: true
+    },
+    "huckleberry": {
+        enabled: true
+    },
+    "hakuswap": {
+        enabled: true
+    },
+    "leonicornswap": {
+        enabled: true
+    },
+    "autoshark": {
+        enabled: true
+    },
+    "saddle-finance": {
+        enabled: true
+    },
+    "titano-swych": {
+        enabled: true
+    },
+    "stellarx": {
+        enabled: true
+    },
+    "ultronswap": {
+        enabled: true
+    },
+    "humble-defi": {
+        enabled: true
+    },
+    "pact": {
+        enabled: true
+    },
+    "algofi": {
+        enabled: true
+    },
+    "elk": {
+        enabled: true
+    },
+    "luaswap": {
+        enabled: true
+    },
+    "unicly": {
+        enabled: true
+    },
+    "crema-finance": {
+        enabled: true
+    },
+    "icecreamswap": {
+        enabled: true
+    },
+    "artic": {
+        enabled: true
+    },
+    "swapsicle": {
+        enabled: true
+    },
+    "morpheus-swap": {
+        enabled: true
+    },
+    "fairyswap": {
+        enabled: true
+    },
+    "moon-swap": {
+        enabled: true
+    },
+    "fx-swap": {
+        enabled: true
+    },
+    "pinkswap": {
+        enabled: true
+    },
+    "spartan": {
+        enabled: true
+    },
+    "penguin": {
+        enabled: true
+    },
+    "vortex-protocol": {
+        enabled: true
+    },
+    "dinosaur-eggs": {
+        enabled: true
+    },
+    "mcdex": {
+        enabled: true
+    },
+    "mistswap": {
+        enabled: true
+    },
+    "bxh": {
+        enabled: true
+    },
+    "auraswap": {
+        enabled: true
+    },
+    "carbonswap": {
+        enabled: true
+    },
+    "pangea-swap": {
+        enabled: true
+    },
+    "gravity-finance": {
+        enabled: true
+    },
+    "4swap": {
+        enabled: true
+    },
+    "gravis": {
+        enabled: true
+    },
+    "bisq": {
+        enabled: true
+    },
+    "tetu": {
+        enabled: true
+    },
+    "muesliswap": {
+        enabled: true
+    },
+    "gin-finance": {
+        enabled: true
+    },
+    "ferro": {
         enabled: true
     },
 } as {

@@ -4,7 +4,7 @@ import { DISABLED_ADAPTER_KEY, VolumeAdapter } from "@defillama/adapters/volumes
 import { CHAIN } from "@defillama/adapters/volumes/helper/chains";
 
 const getAllChainsFromDexAdapters = (dexs2Filter: string[], filter: boolean = true) =>
-    Object.entries(dexVolumes as {[volumeName: string]: VolumeAdapter})
+    Object.entries(dexVolumes as { [volumeName: string]: VolumeAdapter })
         .filter(([key]) => dexs2Filter.includes(key))
         .map(([_, volume]) => volume)
         .reduce((acc, dexAdapter) => {
@@ -53,16 +53,26 @@ export const isDisabledByProtocolVersion = (adapterVolume: string, chainFilter?:
     return chs[protV] ? chs[protV].includes(DISABLED_ADAPTER_KEY) : true
 }
 
-export const formatChain = (chain: string) => {
+/* export const formatChain = (chain: string) => {
     let c = chain
     if (chain === 'avax') c = "avalanche"
     else if (chain === 'terra') c = 'terra classic'
+    return c[0].toUpperCase() + c.slice(1)
+} */
+
+export const formatChain = (chain: string) => {
+    if (!chain) return chain
+    let c = chain.toLowerCase()
+    if (c === 'avax') return "Avalanche"
+    if (c === 'bsc') return c.toUpperCase()
+    if (c === 'xdai') return "xDai"
+    if (c === 'terra' || c === 'terra-classic') return "Terra Classic"
     return c[0].toUpperCase() + c.slice(1)
 }
 
 export const formatChainKey = (chain: string) => {
     if (chain === 'avalanche') return CHAIN.AVAX
-    else if (chain === 'terra classic') return 'terra'
+    if (chain === 'terra classic' || chain === 'terra-classic') return CHAIN.TERRA
     return chain.toLowerCase()
 }
 

@@ -62,6 +62,7 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   tvl: { date: number; totalLiquidityUSD: number }[];
   tokensInUsd?: ITokens;
   tokens?: ITokens;
+  isParentProtocol?: boolean;
 }
 
 export interface IProtocol

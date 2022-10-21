@@ -17408,7 +17408,7 @@ listedAt: 1650804679
   module: "argo/index.js",
   twitter: "ArgoUSD", 
   forkedFrom: [],
-  oracles: [],
+  oracles: ["Pyth"],
   language: "Move",
   listedAt: 1666310264
 },
@@ -17501,7 +17501,7 @@ listedAt: 1650804679
   module: "liquidswap-aptos/index.js",
   twitter: "PontemNetwork", 
   forkedFrom: [],
-  oracles: [],
+  oracles: ["Pyth"],
   listedAt: 1666362910
 },
 {

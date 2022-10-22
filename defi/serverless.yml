@@ -372,8 +372,8 @@ functions:
     handler: src/adaptors/handlers/storeAdaptorData/index.default
     timeout: 900
     memorySize: 512
-  triggerStoreAdaptorData:
-    handler: src/adaptors/handlers/triggerStoreAdaptorData.default
+  triggerStoreDataAllTypes:
+    handler: src/adaptors/handlers/triggerStoreDataAllTypes.default
     timeout: 900
     events:
       - schedule: cron(01 0 * * ? *)

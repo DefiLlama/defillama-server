@@ -55,7 +55,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
         return undefined
     }).filter(notUndefined);
 
-function getDisplayName(name: string, adapter: Adapter) {
+export function getDisplayName(name: string, adapter: Adapter) {
     if (name === 'AAVE V3') return 'AAVE'
     if (name === 'Uniswap V3') return 'Uniswap'
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
@@ -69,7 +69,7 @@ function getLogoKey(key: string) {
 }
 
 // This should be changed to be easier to mantain
-const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
+export const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
     "2198": {
         id: "1",
         name: "Uniswap"
@@ -80,7 +80,7 @@ const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
     }
 }
 
-const getBySpecificId = (key: string, id: string) => {
+export const getBySpecificId = (key: string, id: string) => {
     if (key === 'uniswap') return id === "2198"
     if (key === 'aave') return id === "1599"
     return true

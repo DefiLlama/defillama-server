@@ -12,6 +12,8 @@ import { sendDiscordAlert } from "../../utils/notify";
 import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
 import removeErrors from "../../utils/removeErrors";
+import { getDisplayName } from "../../../adaptors/data/helpers/generateProtocolAdaptorsList";
+import { Adapter } from "@defillama/adaptors/adapters/types";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart: IChartData,
@@ -55,8 +57,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         let displayName = adapter.name
         try {
             const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
-            if ("breakdown" in ada)
-                displayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
+            displayName = getDisplayName(adapter.name, ada as Adapter)
 
             const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter, chainFilter)
             let volumes = (await getVolume(adapter.id, VolumeType.dailyVolume))

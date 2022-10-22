@@ -17551,5 +17551,27 @@ listedAt: 1650804679
   audit_links: ["https://sentnl.io/audits/telos_0"],
   listedAt: 1666399113
 },
+{
+  id: "2213",
+  name: "AUX",
+  address: null,
+  symbol: "-",
+  url: "https://aux.exchange/",
+  description:
+    "AUX is the universal exchange. Our mission is to provide the best decentralized trading experience possible. Live on Aptos.",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/aux.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Aptos"],
+  module: "aux/index.js",
+  twitter: "AuxExchange", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1666452035
+},
 ]
 export default data2;

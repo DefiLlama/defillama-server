@@ -17549,7 +17549,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   audit_links: ["https://sentnl.io/audits/telos_0"],
-  listedAt: 1666395145
+  listedAt: 1666399113
 },
 ]
 export default data2;

@@ -16151,7 +16151,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Yield",
+  category: "Undercollateralized Lending",
   chains: ["Ethereum"],
   module: "ribbon-earn/index.js",
   twitter: "ribbonfinance",
@@ -17570,7 +17570,7 @@ listedAt: 1650804679
   module: "aux/index.js",
   twitter: "AuxExchange", 
   forkedFrom: [],
-  oracles: [],
+  oracles: ["Pyth"],
   listedAt: 1666452035
 },
 ]

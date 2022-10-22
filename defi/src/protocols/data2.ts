@@ -17484,7 +17484,7 @@ listedAt: 1650804679
 },
 {
   id: "2210",
-  name: "Liquid Swap",
+  name: "Liquidswap",
   address: null,
   symbol: "-",
   url: "https://liquidswap.com/",

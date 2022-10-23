@@ -212,7 +212,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       v.symbol,
       timestamp,
       "yearnV2",
-      1
+      0.9
     );
   });
   return writes;

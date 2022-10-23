@@ -8,7 +8,7 @@ export const importModule = (module: string) => incentives_imports[module]
 
 // KEYS USED TO MAP ATTRIBUTE -> KEY IN DYNAMO
 export const KEYS_TO_STORE = {
-    [AdaptorRecordType.tokenInventives]: "tokens"
+    [AdaptorRecordType.tokenIncentives]: "tokens"
 }
 
 export default generateProtocolAdaptorsList(incentives_imports, config)

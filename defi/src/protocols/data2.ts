@@ -17501,7 +17501,7 @@ listedAt: 1650804679
   module: "liquidswap-aptos/index.js",
   twitter: "PontemNetwork", 
   forkedFrom: [],
-  oracles: ["Pyth"],
+  oracles: [],
   listedAt: 1666362910
 },
 {

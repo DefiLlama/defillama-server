@@ -79,9 +79,9 @@ async function getPoolValues(
   poolTokens.map((p: any, i: number) => {
     poolTokenValues.push([]);
     p.tokens.map((t: string, j: number) => {
-      const tData = coinsData.filter(
+      const tData = coinsData.find(
         (d: any) => d.address == t.toLowerCase()
-      )[0];
+      );
       if (tData == undefined) {
         poolTokenValues[i].push(undefined);
         return;

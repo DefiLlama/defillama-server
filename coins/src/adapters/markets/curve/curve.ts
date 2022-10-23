@@ -288,10 +288,10 @@ async function getUnderlyingPrices(
 
   const poolComponents = balances.map((b: any) => {
     try {
-      let coinData: CoinData = coinsData.filter(
+      let coinData: CoinData | undefined = coinsData.find(
         (c: CoinData) => c.address == b.input.target.toLowerCase()
-      )[0];
-
+      );
+      if (coinData == undefined) throw new Error(`no coin data found`)
       return {
         balance: b.output / 10 ** coinData.decimals,
         price: coinData.price,
@@ -438,10 +438,10 @@ async function unknownTokens(
     .map((d: Result, i: number) => {
       if (i % 2 == 0) return;
       const index = d.input.params[1];
-      const poolInfo = unknownPoolList.filter(
+      const poolInfo = unknownPoolList.find(
         (p: any) => p.address == d.input.target
       );
-      return poolInfo[0].balances[index].input.target;
+      return poolInfo.balances[index].input.target;
     })
     .filter((c: any) => c != undefined);
 

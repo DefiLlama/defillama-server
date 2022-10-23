@@ -107,10 +107,10 @@ export default async function getTokenPrices(
 
   cTokens.map((t: CToken, i: number) => {
     try {
-      const coinData: CoinData = coinsData.filter(
+      const coinData: CoinData | undefined = coinsData.find(
         (c: CoinData) => c.address == t.underlying
-      )[0];
-
+      );
+      if (coinData == null) return
       prices.push({
         address: t.address,
         price: coinData.price * exchangeRates[i].output

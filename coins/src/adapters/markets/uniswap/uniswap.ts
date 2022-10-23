@@ -173,10 +173,10 @@ async function lps(
     ) {
       return;
     }
-    const coinData: CoinData = tokenPrices.filter(
+    const coinData: CoinData | undefined = tokenPrices.find(
       (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
-    )[0];
-
+    );
+    if (coinData == undefined) return 
     const supply =
       tokenInfos.supplies[i].output / 10 ** tokenInfos.lpDecimals[i].output;
     const value =
@@ -218,10 +218,10 @@ async function unknownTokens(
     (p: any) => p.bothTokensKnown == false
   );
   let tokenValues = lpsWithUnknown.map((l: any) => {
-    const coinData: CoinData = tokenPrices.filter(
+    const coinData: CoinData | undefined = tokenPrices.find(
       (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
-    )[0];
-
+    );
+    if (coinData == undefined) return 
     const i: number = priceableLPs.indexOf(l);
 
     const sideValue: number =

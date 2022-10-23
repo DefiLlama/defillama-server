@@ -56,9 +56,10 @@ export default async function getTokenPrices(timestamp: number) {
 
   const writes: Write[] = [];
   underlyingData.map((u: CoinData) => {
-    const poolInfo = poolInfos.filter(
+    const poolInfo: Result | undefined = poolInfos.find(
       (p: Result) => p.output.lptoken.toLowerCase() == u.address
-    )[0];
+    );
+    if (poolInfo == null) return;
     const tokenInfoIndex = poolInfos.indexOf(poolInfo);
 
     addToDBWritesList(

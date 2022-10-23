@@ -1,10 +1,10 @@
 import "./setup.ts"
 import { handler } from "../handlers/storeAdaptorData";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
-import fees from "../data/fees";
+import incentives from "../data/incentives";
 
 handler({
-    protocolIndexes: [fees?.findIndex(v=>v.name==='Bitcoin')],
+    protocolIndexes: [incentives?.findIndex(v=>v.name==='Bitcoin')],
     timestamp:1665878400,
-    adaptorType: AdapterType.FEES
+    adaptorType: AdapterType.INCENTIVES
 })

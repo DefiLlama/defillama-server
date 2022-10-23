@@ -17,7 +17,7 @@ export function processFulfilledPromises(fulfilledResults: IRunAdapterResponseFu
                     ...rawRecord[RECORD_TYPE],
                     [result.chain]: {
                         ...recordChain,
-                        [module]: +value
+                        [module]: typeof value === 'object' ? value : +value
                     }
                 }
             }

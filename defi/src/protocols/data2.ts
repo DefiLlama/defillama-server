@@ -17553,7 +17553,7 @@ listedAt: 1650804679
 },
 {
   id: "2213",
-  name: "AUX",
+  name: "AUX Exchange",
   address: null,
   symbol: "-",
   url: "https://aux.exchange/",

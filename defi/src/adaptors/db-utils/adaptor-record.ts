@@ -17,7 +17,7 @@ export enum AdaptorRecordType {
     totalNotionalVolume = "tnv",
     dailyPremiumVolume = "dpv",
     dailyNotionalVolume = "dnv",
-    tokenInventives = "ti",
+    tokenIncentives = "ti",
 }
 
 export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as IJSON<AdaptorRecordType>)

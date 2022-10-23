@@ -1159,6 +1159,13 @@ export const chainCoingeckoIds = {
     symbol: "APT",
     cmcId: "21794",
   },
+  "Kekchain": {
+    geckoId: "kekchain",
+    symbol: "KEK",
+    cmcId: "21606",
+    categories: ["EVM"],
+    chainId: 420420,
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1456,6 +1463,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "FunctionX"
     case "aptos":
         return "Aptos"
+    case "kekchain":
+        return "Kekchain"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

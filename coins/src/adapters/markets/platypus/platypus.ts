@@ -18,9 +18,9 @@ function formWrites(
 ) {
   const lpTokenPrices = coinsData
     .map((c: CoinData) => {
-      const underlyingBalance = underlyingBalances.filter(
+      const underlyingBalance = underlyingBalances.find(
         (t: any) => c.address == t.input.target.toLowerCase()
-      )[0];
+      );
       if (underlyingBalance == undefined) return;
       const index = underlyingBalances.indexOf(underlyingBalance);
       const lpSupply = lpTokenInfo.supplies[index].output;

@@ -17728,5 +17728,50 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666624359
 },
+{
+  id: "2221",
+  name: "Frax Ether",
+  address: "0x5E8422345238F34275888049021821E8E08CAa1f",
+  symbol: "frxETH",
+  url: "https://app.frax.finance/frxeth/mint",
+  description:
+    "Frax Ether is a liquid ETH staking derivative designed to uniquely leverage the Frax Finance ecosystem to maximize staking yield and smoothen the Ethereum staking process for a simplified, secure, and DeFi-native way to earn interest on ETH. ",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/frax-ether.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Ethereum"],
+  module: "frax-ETH/index.js",
+  twitter: "fraxfinance", 
+  forkedFrom: [],
+  oracles: [],
+  parentProtocol: "Frax Finance",
+  listedAt: 1666641678
+},
+{
+  id: "2222",
+  name: "Coinbase Wrapped Staked ETH",
+  address: "0xbe9895146f7af43049ca1c1ae358b0541ea49704",
+  symbol: "CBETH",
+  url: "https://www.coinbase.com/price/coinbase-wrapped-staked-eth",
+  description:
+    "Coinbase is allowing customers who stake ETH to receive an ERC20 utility token called Coinbase Wrapped Staked ETH (“cbETH”), which is a liquid representation of their staked-ETH.",
+  chain: "Velas",
+  logo: `${baseIconsUrl}/coinbase-wrapped-staked-eth.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "coinbase-wrapped-staked-eth",
+  cmcId: "21535",
+  category: "Liquid Staking",
+  chains: ["Ethereum"],
+  module: "cbETH/index.js",
+  twitter: "coinbase", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1666641682
+},
 ]
 export default data2;

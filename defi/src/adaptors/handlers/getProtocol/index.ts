@@ -29,6 +29,7 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "disabled"
     | "module"
     | "protocolsData"
+    | "chains"
 > {
     totalDataChart: IChartData | null
     totalDataChartBreakdown: IChartDataBreakdown | null
@@ -75,6 +76,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             module: dexData.module,
             protocolType: generatedSummary.protocolType,
             protocolsData: dexData.protocolsData,
+            chains: dexData.chains
         } as IHandlerBodyResponse
     } catch (error) {
         console.error(error)
@@ -91,11 +93,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
             disabled: dexData.disabled,
+            protocolsData: dexData.protocolsData,
+            chains: dexData.chains,
             totalDataChart: null,
             totalDataChartBreakdown: null,
             total24h: null,
             change_1d: null,
-            protocolsData: null
         } as IHandlerBodyResponse
     }
 

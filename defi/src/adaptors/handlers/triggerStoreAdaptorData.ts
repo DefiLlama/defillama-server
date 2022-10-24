@@ -23,7 +23,7 @@ export interface IHandlerEvent {
 }
 
 export const handler = async (event: IHandlerEvent) => {
-  const type = event.type ?? 'fees'
+  const type = event.type
   // TODO separate those that need to be called on the hour and those using graphs with timestamp
   const adaptorsData = data(type)
   if (event.backfill) {
@@ -38,9 +38,19 @@ export const handler = async (event: IHandlerEvent) => {
       await invokeLambdas(protocolIndexes, type, bf.timestamp)
     }
   }
-  else {
+  else if (type) {
     const protocolIndexes = Array.from(Array(adaptorsData.default.length).keys())
     await invokeLambdas(protocolIndexes, type)
+  }
+  else {
+    Promise.all(
+      [
+        AdapterType.FEES,
+        AdapterType.DERIVATIVES,
+        AdapterType.INCENTIVES,
+        AdapterType.AGGREGATORS
+      ].map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))
+    )
   }
 };
 

@@ -35,6 +35,7 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     totalDataChartBreakdown: IChartDataBreakdown | null
     total24h: number | null
     change_1d: number | null
+    totalAllTime: number | null
 }
 
 export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
@@ -72,6 +73,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             totalDataChart: generatedSummary.records?.map(record => ([record.timestamp, sumAllVolumes(record.data)])) ?? null,
             totalDataChartBreakdown: generatedSummary.records?.map(record => ([record.timestamp, record.data])) ?? null,
             total24h: generatedSummary.total24h,
+            totalAllTime: generatedSummary.totalAllTime,
             change_1d: generatedSummary.change_1d,
             module: dexData.module,
             protocolType: generatedSummary.protocolType,
@@ -98,6 +100,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             totalDataChart: null,
             totalDataChartBreakdown: null,
             total24h: null,
+            totalAllTime: null,
             change_1d: null,
         } as IHandlerBodyResponse
     }

@@ -32,6 +32,7 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null
     recordsMap: IJSON<AdaptorRecord> | null
+    totalAllTime: number | null
 } & IGeneralStats
 
 type KeysToRemove = 'records' | 'module' | 'config' | 'recordsMap'
@@ -51,6 +52,14 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
     [AdapterType.DERIVATIVES]: AdaptorRecordType.dailyNotionalVolume,
     [AdapterType.INCENTIVES]: AdaptorRecordType.tokenIncentives,
+}
+
+export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
+    [AdaptorRecordType.dailyVolume]: AdaptorRecordType.totalVolume,
+    [AdaptorRecordType.dailyFees]: AdaptorRecordType.totalFees,
+    [AdaptorRecordType.dailyNotionalVolume]: AdaptorRecordType.totalNotionalVolume,
+    [AdaptorRecordType.dailyPremiumVolume]: AdaptorRecordType.totalPremiumVolume,
+    [AdaptorRecordType.dailyRevenue]: AdaptorRecordType.totalRevenue,
 }
 
 // -> /overview/volumes

@@ -17639,5 +17639,49 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666535699
 },
+{
+  id: "2217",
+  name: "Y2R",
+  address: null,
+  symbol: "-",
+  url: "https://y2r.finance",
+  description:
+    "Y2R Finance is a DeFi Yield Optimizer project that helps users compound their LP tokens deposited in the canto lending market.",
+  chain: "Canto",
+  logo: `${baseIconsUrl}/y2r.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Canto"],
+  module: "y2r/index.js",
+  twitter: "Y2R_Finance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1666603787
+},
+{
+  id: "2218",
+  name: "AnimeSwap",
+  address: null,
+  symbol: "-",
+  url: "https://animeswap.org",
+  description:
+    "Swap, farm, and earn on the Aptos Sui.",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/animeswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Aptos"],
+  module: "animeswap/index.js",
+  twitter: "animeswap_org", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1666603789
+},
 ]
 export default data2;

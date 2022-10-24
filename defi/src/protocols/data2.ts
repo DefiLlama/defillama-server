@@ -17484,14 +17484,14 @@ listedAt: 1650804679
 },
 {
   id: "2210",
-  name: "Liquidswap",
+  name: "LiquidSwap",
   address: null,
   symbol: "-",
   url: "https://liquidswap.com/",
   description:
     "Liquidswap is the first AMM on Aptos, the safest and most scalable L1 blockchain. The DEX runs on Aptos mainnet.",
   chain: "Aptos",
-  logo: `${baseIconsUrl}/liquid-swap.jpg`,
+  logo: `${baseIconsUrl}/liquidswap.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

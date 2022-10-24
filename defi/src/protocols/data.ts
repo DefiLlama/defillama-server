@@ -11859,7 +11859,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "chainge.js",
     twitter: "FinanceChainge",
     audit_links: ["https://www.certik.org/projects/chaingefinance"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: [],
     listedAt: 1635106127,
   },
   {

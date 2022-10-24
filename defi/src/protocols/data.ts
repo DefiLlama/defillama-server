@@ -22641,7 +22641,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   listedAt: 1642109094 ,
   forkedFrom: ["Uniswap"],
 },
-/*
 {
   id: "1254",
   name: "XDAO",
@@ -22657,7 +22656,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   cmcId: null ,
   category: "Services" ,
   chains: ["Ethereum"],
-  module: "xdao.js",
+  module: "xdao/api.js",
   twitter: "xdaoapp",
   audit_links: [
                   "https://github.com/xdao-app/xdao-contracts/blob/master/audits/pessimistic/pessimistic.pdf" ,
@@ -22665,7 +22664,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
                ] ,
   listedAt: 1642109094 ,
 },
-*/
 {
   id: "1255",
   name: "Proof of Humanity",

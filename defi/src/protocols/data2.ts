@@ -17399,7 +17399,7 @@ listedAt: 1650804679
     "Argo is a lending protocol on Aptos that lets users collateral for minting and borrowing a dollar-pegged stablecoin USDA",
   chain: "Aptos",
   logo: `${baseIconsUrl}/argo.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -17410,6 +17410,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: ["Pyth"],
   language: "Move",
+  audit_links: ["https://docs.argo.fi/assets/files/argo_audit-43ec7be6d291130e1ae7793bec34fc3d.pdf"],
   listedAt: 1666310264
 },
 {

@@ -17683,5 +17683,50 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666603789
 },
+{
+  id: "2219",
+  name: "Vendor Finance",
+  address: null,
+  symbol: "-",
+  url: "https://vendor.finance",
+  description:
+    "Vendor Finance allows for permission-less, isolated, fixed-rate, fixed-term, and zero liquidation loan markets to be created. Lenders create fully customizable loans by setting all their own terms! Borrowers obtain non-liquidatable, fixed rate, and fixed terms loans.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/vendor-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Arbitrum"],
+  module: "vendor-finance/index.js",
+  twitter: "VendorFi", 
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  audit_links: ["https://omniscia.io/reports/vendor-finance-specialized-upgradeability-implementation"],
+  listedAt: 1666624353
+},
+{
+  id: "2220",
+  name: "Wavelength DAO",
+  address: null,
+  symbol: "-",
+  url: "https://wavelength.exchange",
+  description:
+    "Wavelength is the first of its kind on Velas. At the core of our project is a Decentralized Exchange (DEX) built on top of the Balancer V2 framework, which makes us the first next-generation Automated Market Maker (AMM) protocol on Velas!",
+  chain: "Velas",
+  logo: `${baseIconsUrl}/wavelength-dao.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Velas"],
+  module: "wavelength/index.js",
+  twitter: "Wavelength_DAO", 
+  forkedFrom: ["Balancer"],
+  oracles: [],
+  listedAt: 1666624359
+},
 ]
 export default data2;

@@ -6,8 +6,8 @@ import { performance } from "perf_hooks";
     const start = performance.now()
     const r = await handler({
         pathParameters: {
-            name: "aave",
-            type: "fees"
+            name: "uniswap",
+            type: "volumes"
         },
         /* queryStringParameters: {
             dataType: "dailyRevenue"
@@ -15,7 +15,9 @@ import { performance } from "perf_hooks";
     } as unknown as AWSLambda.APIGatewayEvent)
     const end = performance.now()
     const d = JSON.parse(r.body)
-    console.log(d.totalDataChart.length)
+    delete d['totalDataChart']
+    delete d['totalDataChartBreakdown']
+    console.log(d)
     console.log((end - start) / 1000)
     //console.log(JSON.stringify(d, null, 2))
 })()

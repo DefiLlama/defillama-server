@@ -374,9 +374,6 @@ export default {
     "capricorn-finance": {
         enabled: true
     },
-    "alex": {
-        enabled: true
-    },
     "step-exchange": {
         enabled: true
     },

@@ -4,7 +4,7 @@ import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
 import { calcNdChange, getStatsByProtocolVersion, sumAllVolumes } from "../../utils/volumeCalcs"
-import { IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
+import { ACCOMULATIVE_ADAPTOR_TYPE, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
 
@@ -12,12 +12,13 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
     try {
         // Get all records from db
         let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorType, adapter.protocolType)
+        const totalRecord = await getAdaptorRecord(adapter.id, ACCOMULATIVE_ADAPTOR_TYPE[adaptorType], adapter.protocolType, "LAST").catch(e => console.error(e)) as AdaptorRecord | undefined
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
 
         const startTimestamp = adapter.config?.startFrom
         const startIndex = startTimestamp ? adaptorRecords.findIndex(ar => ar.timestamp === startTimestamp) : -1
-        adaptorRecords = adaptorRecords.slice(startIndex+1)
+        adaptorRecords = adaptorRecords.slice(startIndex + 1)
 
         // Clean data by chain
         const cleanRecords = generateCleanRecords(
@@ -66,6 +67,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
             change_7d: stats.change_7d,
             change_1m: stats.change_1m,
             total24h: stats.total24h,
+            totalAllTime: totalRecord ? sumAllVolumes(totalRecord.data) : null,
             breakdown24h: stats.breakdown24h,
             config: adapter.config,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
@@ -85,6 +87,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
             logo: adapter.logo,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
             total24h: null,
+            totalAllTime: null,
             breakdown24h: null,
             change_1d: null,
             records: null,

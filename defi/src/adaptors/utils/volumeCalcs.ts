@@ -26,7 +26,6 @@ const sumObject = (acc: number, [_key, current]: [string, any]): number => {
         .reduce<number>((vacc, [_key, current]) => sumObject(vacc, [_key, current]), 0)
     }
     else {
-        console.log("else", current)
         return acc + Number(current)
     }
 }
@@ -72,6 +71,7 @@ const getSumAllDexsToday = (
 }
 
 export type IChartData = [string, number][] // [timestamp, volume]
+export type IChartDataBreakdown = Array<[number, { [protocol: string]: number | IJSON<number> }]>
 
 const generateAggregatedVolumesChartData = (protocols: ProtocolAdaptorSummary[]): IChartData => {
     const chartData: IChartData = []

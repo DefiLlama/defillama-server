@@ -6,7 +6,7 @@ import loadAdaptorsData from "../../data"
 import { IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/adaptors/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
-import { IChartData, sumAllVolumes } from "../../utils/volumeCalcs";
+import { IChartData, IChartDataBreakdown, sumAllVolumes } from "../../utils/volumeCalcs";
 import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../getOverview";
 
 export interface ChartItem {
@@ -28,9 +28,10 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "gecko_id"
     | "disabled"
     | "module"
+    | "protocolsData"
 > {
     totalDataChart: IChartData | null
-    totalDataChartBreakdown: IChartData | null
+    totalDataChartBreakdown: IChartDataBreakdown | null
     total24h: number | null
     change_1d: number | null
 }
@@ -73,6 +74,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             change_1d: generatedSummary.change_1d,
             module: dexData.module,
             protocolType: generatedSummary.protocolType,
+            protocolsData: dexData.protocolsData,
         } as IHandlerBodyResponse
     } catch (error) {
         console.error(error)
@@ -92,7 +94,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             totalDataChart: null,
             totalDataChartBreakdown: null,
             total24h: null,
-            change_1d: null
+            change_1d: null,
+            protocolsData: null
         } as IHandlerBodyResponse
     }
 

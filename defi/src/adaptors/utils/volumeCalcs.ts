@@ -13,10 +13,22 @@ const sumAllVolumes = (breakdownVolumes: IRecordAdaptorRecordData, protVersion?:
                 if (typeof volume === 'number') return acc
                 return acc + Object.entries(volume)
                     .filter(([protV, _]) => protVersion ? protV === protVersion : true)
-                    .reduce<number>((vacc, [_key, current]) => vacc + Number(current), 0)
+                    .reduce<number>(sumObject, 0)
             }, 0)
     }
     else return 0
+}
+
+const sumObject = (acc: number, [_key, current]: [string, any]): number => {
+    if (typeof current === 'object') {
+        return acc + Object.entries(current)
+        // .filter(([tokenSymbol, _]) => tokenSymbolFilter ? tokenSymbol === tokenSymbolFilter : true)
+        .reduce<number>((vacc, [_key, current]) => sumObject(vacc, [_key, current]), 0)
+    }
+    else {
+        console.log("else", current)
+        return acc + Number(current)
+    }
 }
 
 

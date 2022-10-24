@@ -571,7 +571,7 @@ const data: Protocol[] = [
     url: "https://www.shellprotocol.io/",
     description:
       "DeFi hub for users & builders. Breakthrough accounting architecture and AMM engine.",
-    chain: "Arbitrum",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/shell-protocol.jpg`,
     audits: null,
     audit_note: null,

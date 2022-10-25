@@ -5626,7 +5626,7 @@ const data2: Protocol[] =  [
   gecko_id: "blueshift",
   cmcId: "19595",
   category: "Dexes",
-  chains: ["Milkomeda"],
+  chains: ["Milkomeda", "Milkomeda Algorand"],
   oracles: [],
   forkedFrom: [],
   module: "blueshift/index.js",

@@ -76,7 +76,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             change_1d: generatedSummary.change_1d,
             module: dexData.module,
             protocolType: generatedSummary.protocolType,
-            protocolsData: dexData.protocolsData,
+            protocolsData: dexData.protocolsData && Object.keys(dexData.protocolsData).length > 1 ? dexData.protocolsData : null,
             chains: generatedSummary.chains
         } as IHandlerBodyResponse
     } catch (error) {

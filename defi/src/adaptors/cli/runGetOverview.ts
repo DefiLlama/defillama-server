@@ -5,11 +5,11 @@ import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "fees" },
-    queryStringParameters: {
+    pathParameters: { chain: undefined, type: "derivatives" },
+   /*  queryStringParameters: {
         excludeTotalDataChart: "true",
         excludeTotalDataChartBreakdown: "true",
-    }
+    } */
 } as unknown as APIGatewayProxyEvent
 
 (async () => {

@@ -62,10 +62,7 @@ export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdaptorRecordType.dailyRevenue]: AdaptorRecordType.totalRevenue,
 }
 
-// -> /overview/volumes
-// -> /overview/volumes/ethereum
-// -> /overview/fees/
-// -> /overview/fees/ethereum
+// -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const pathChain = event.pathParameters?.chain?.toLowerCase()
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
@@ -106,9 +103,15 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
     protocolsResponse = okProtocols.map(removeVolumesObject)
 
-    totalDataChartResponse = totalDataChartResponse.slice(totalDataChartResponse.findIndex(it => it[1] !== 0))
+    totalDataChartResponse = totalDataChartResponse.slice(
+        totalDataChartResponse.findIndex(it => it[1] !== 0),
+        -[...totalDataChartResponse].reverse().findIndex(it => it[1] !== 0)
+    )
     const sumBreakdownItem = (item: { [chain: string]: number }) => Object.values(item).reduce((acc, current) => acc += current, 0)
-    totalDataChartBreakdownResponse = totalDataChartBreakdownResponse.slice(totalDataChartBreakdownResponse.findIndex(it => sumBreakdownItem(it[1]) !== 0))
+    totalDataChartBreakdownResponse = totalDataChartBreakdownResponse.slice(
+        totalDataChartBreakdownResponse.findIndex(it => sumBreakdownItem(it[1]) !== 0),
+        -[...totalDataChartBreakdownResponse].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
+    )
 
     return successResponse({
         totalDataChart: totalDataChartResponse,

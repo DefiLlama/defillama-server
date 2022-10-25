@@ -772,7 +772,7 @@ export const chainCoingeckoIds = {
     symbol: "VITE",
     cmcId: "2937",
   },
-  "Milkomeda Cardano C1": {
+  "Milkomeda": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -783,7 +783,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 2001,
   },
-  "Milkomeda Algorand A1": {
+  "Milkomeda A1": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -1217,8 +1217,6 @@ export function transformNewChainName(chain: string) {
       return "GodwokenV1"
     case "arbitrum_nova":
       return "Arbitrum Nova"
-    case "Milkomeda":
-      return "Milkomeda Cardano C1"
     default:
       return chain
   }
@@ -1365,9 +1363,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "vite":
       return "Vite"
     case "milkomeda":
-      return useNewChainNames ? "Milkomeda Cardano C1" : "Milkomeda"
-    case "milkomeda_algorand":
-      return "Milkomeda Algorand A1"
+      return "Milkomeda"
+    case "milkomeda_a1":
+      return "Milkomeda A1"
     case "dfk":
       return "DFK"
     case "clv":

@@ -12,7 +12,9 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
     try {
         // Get all records from db
         let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorType, adapter.protocolType)
-        const totalRecord = await getAdaptorRecord(adapter.id, ACCOMULATIVE_ADAPTOR_TYPE[adaptorType], adapter.protocolType, "LAST").catch(e => console.error(e)) as AdaptorRecord | undefined
+        const totalRecord = ACCOMULATIVE_ADAPTOR_TYPE[adaptorType]
+            ? await getAdaptorRecord(adapter.id, ACCOMULATIVE_ADAPTOR_TYPE[adaptorType], adapter.protocolType, "LAST").catch(e => console.error(e)) as AdaptorRecord | undefined
+            : undefined
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
 

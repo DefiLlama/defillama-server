@@ -100,7 +100,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     // This could be avoided/optimized if moved to generateAggregatedVolumesChartData
     totalDataChartResponse = totalDataChartResponse.slice(
         totalDataChartResponse.findIndex(it => it[1] !== 0),
-        totalDataChartResponse.length - 1 - [...totalDataChartResponse].reverse().findIndex(it => it[1] !== 0)
+        totalDataChartResponse.length - [...totalDataChartResponse].reverse().findIndex(it => it[1] !== 0)
     )
     // This could be avoided/optimized if moved to generateByDexVolumesChartData
     const sumBreakdownItem = (item: { [chain: string]: number }) => Object.values(item).reduce((acc, current) => acc += current, 0)

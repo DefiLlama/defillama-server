@@ -5628,7 +5628,8 @@ const data: Protocol[] = [
     chains: ["Solana"],
     module: "mercurial.js",
     twitter: "MercurialFi",
-    openSource: false
+    openSource: false,
+    parentProtocol: "Mercurial Fi"
   },
   {
     id: "386",

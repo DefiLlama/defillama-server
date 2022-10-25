@@ -7069,7 +7069,7 @@ listedAt: 1650804679
   description: "Verse DEX by Bitcoin.com enables permissionless trading via your Web3 wallet, including the multichain Bitcoin.com Wallet. Trading is currently available on Ethereum and SmartBCH, but more chains are coming soon. Sign up at getverse.com to get notified.",
   chain: "SmartBCH",
   logo: `${baseIconsUrl}/verse.png`,
-  audits: "2",
+  audits: "1",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -7079,7 +7079,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "versedex/index.js",
   twitter: "BitcoinCom",
-  audit_links: ["https://github.com/bitcoin-portal/bitcoincom-solidity-swap/blob/trunk/audits/Bitcoin.com_final-audit-report.pdf", "https://github.com/0xGuard-com/audit-reports/blob/master/bitcoin.com/Bitcoin.com_final-audit-report.pdf"],
+  audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/bitcoin.com/Bitcoin.com_final-audit-report.pdf"],
   listedAt: 1651771447
 },
 {

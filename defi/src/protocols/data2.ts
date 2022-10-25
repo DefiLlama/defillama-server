@@ -17774,5 +17774,53 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666641682
 },
+{
+  id: "2223",
+  name: "Mercurial Vaults",
+  address: "solana:MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K",
+  symbol: "MER",
+  url: "https://vaults.mercurial.finance",
+  description:
+    "Get optimized yield for your assets automatically! We do the heavy lifting of moving funds to various lending pools with the highest yields, and readjusting the allocation every few minutes. This ensures that we will always get the most optimal yield for you.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/mercurical-vaults.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Solana"],
+  module: "mercurical-vaults/index.js",
+  twitter: "MercurialFi", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: [
+                  "https://drive.google.com/file/d/1CjdMl7LhJisnI1LTrAFt2Bvi5ahqq1yc/view",
+                  "https://drive.google.com/file/d/1cJ2ZH23yj9uO1otR2pLDQ1MP3OJm84IW/view"
+               ],
+  listedAt: 1666698713
+},
+{
+  id: "2224",
+  name: "Aptoswap",
+  address: null,
+  symbol: "-",
+  url: "https://aptoswap.net",
+  description:
+    "Swap platform on Aptos",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/aptoswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Aptos"],
+  module: "aptoswap/index.js",
+  twitter: "aptoswap_net", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1666698920
+},
 ]
 export default data2;

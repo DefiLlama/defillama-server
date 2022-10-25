@@ -27,6 +27,7 @@ export default {
   curve5: require("./markets/curve/index"),
   ellipsis: require("./markets/curve/index"),
   balancer: require("./markets/balancer/index"),
+  hop: require("./markets/hop/index"),
   gauges: require("./markets/curve/index"),
   ankr: require("./liquidStaking/ankr/index"),
   synthetix: require("./other/index"),

@@ -1,34 +1,96 @@
 import { multiCall } from "@defillama/sdk/build/abi";
 import getBlock from "../../utils/block";
-import addresses from "./addresses.json";
-import { Chain } from "@defillama/sdk/build/general";
 import { Result } from "./../../utils/sdkInterfaces";
-import { getTokenAndRedirectData } from "../../utils/database";
+import {
+  addToDBWritesList,
+  getTokenAndRedirectData
+} from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
+import { Write } from "../../utils/dbInterfaces";
+import abi from "./abi.json";
+import addresses from "./addresses.json";
 
-const abi = {
-  getVirtualPrice: {
-    inputs: [],
-    name: "getVirtualPrice",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-      }
-    ],
-    stateMutability: "view",
-    type: "function"
-  },
-  getToken: {
-    inputs: [{ internalType: "uint8", name: "index", type: "uint8" }],
-    name: "getToken",
-    outputs: [{ internalType: "contract IERC20", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function"
-  }
+type map = {
+  hToken: string;
+  underlying: string;
 };
-export default async function getTokenPrices(timestamp: number, chain: Chain) {
+async function getTokenAddressMap(
+  chain: any,
+  block: number | undefined,
+  virtualPrices: Result[]
+): Promise<map[]> {
+  let hTokenResults: Result[];
+  let underlyingResults: Result[];
+  [
+    { output: hTokenResults },
+    { output: underlyingResults }
+  ] = await Promise.all([
+    multiCall({
+      abi: abi.getToken,
+      calls: virtualPrices.map((r: Result) => ({
+        target: r.input.target,
+        params: [1]
+      })),
+      block,
+      chain
+    }),
+    multiCall({
+      abi: abi.getToken,
+      calls: virtualPrices.map((r: Result) => ({
+        target: r.input.target,
+        params: [0]
+      })),
+      block,
+      chain
+    })
+  ]);
+
+  const hTokenAddresses: string[] = hTokenResults.map((h) =>
+    h.output.toLowerCase()
+  );
+  const underlyingAddresses: string[] = underlyingResults.map((u) =>
+    u.output.toLowerCase()
+  );
+
+  return hTokenAddresses.map((hToken: string, i: number) => ({
+    hToken,
+    underlying: underlyingAddresses[i]
+  }));
+}
+function formWrites(
+  chain: any,
+  timestamp: number,
+  hTokenInfos: any,
+  virtualPrices: Result[],
+  addressMap: map[],
+  underlyingTokenInfos: any[]
+): Write[] {
+  const writes: Write[] = [];
+  addressMap.map((m: any, i: number) => {
+    if (Object.values(m).includes(null) || Number(virtualPrices[i].output) == 0)
+      return;
+    const underlyingInfo = underlyingTokenInfos.find(
+      (u) => u.address == m.underlying
+    );
+    if (underlyingInfo == null) return;
+    const price = (underlyingInfo.price * virtualPrices[i].output) / 10 ** 18;
+
+    addToDBWritesList(
+      writes,
+      chain,
+      m.hToken,
+      price,
+      hTokenInfos.decimals[i].output,
+      hTokenInfos.symbols[i].output,
+      timestamp,
+      "hop",
+      0.9
+    );
+  });
+
+  return writes;
+}
+export default async function getTokenPrices(timestamp: number, chain: any) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const calls: any[] = [];
 
@@ -43,27 +105,27 @@ export default async function getTokenPrices(timestamp: number, chain: Chain) {
     await multiCall({ abi: abi.getVirtualPrice, calls, block, chain })
   ).output.filter((r: Result) => r.success == true);
 
-  const hTokenAddresses: string[] = (
-    await multiCall({
-      abi: abi.getToken,
-      calls: virtualPrices.map((r: Result) => ({
-        target: r.input.target,
-        params: [0]
-      })),
-      block,
-      chain
-    })
-  ).output.map((r: Result) => r.output);
+  const addressMap = await getTokenAddressMap(chain, block, virtualPrices);
 
-  const underlyingTokenInfo = await getTokenAndRedirectData(
-    hTokenAddresses,
+  const [underlyingTokenInfos, hTokenInfos] = await Promise.all([
+    getTokenAndRedirectData(
+      addressMap.map((m) => m.underlying),
+      chain,
+      timestamp
+    ),
+    getTokenInfo(
+      chain,
+      addressMap.map((m) => m.hToken),
+      block
+    )
+  ]);
+
+  return formWrites(
     chain,
-    timestamp
+    timestamp,
+    hTokenInfos,
+    virtualPrices,
+    addressMap,
+    underlyingTokenInfos
   );
-
-  const hTokenInfo = await getTokenInfo(chain, hTokenAddresses, block);
-
-  return;
 }
-getTokenPrices(0, "polygon");
-// ts-node coins/src/adapters/markets/hop/hop.ts

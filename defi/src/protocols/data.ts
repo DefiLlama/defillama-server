@@ -11848,7 +11848,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "fusion:0xed0294dbd2a0e52a09c3f38a09f6e03de2c44fcf",
     symbol: "CHNG",
     url: "https://www.chainge.finance",
-    description: "Chainge is a DeFi app running on the Fusion blockchain that empowers people from all corners of the world to become their own digital bank",
+    description: "Chainge Finance stands as the most liquid cross-chain aggregated DEX with over 70bn in aggregated liquidity. The mobile app boasts over 20 integrated DEXs and 29 chains. From a cross-chain wallet and instant cross-chain roaming to decentralized earning solutions and smart escrow contracts, Chainge is an DeFi app powered and secured by the innovative Fusion DCRM tech",
     chain: "Fusion",
     logo: `${baseIconsUrl}/chainge-finance.png`,
     audits: "2",

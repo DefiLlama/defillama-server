@@ -105,12 +105,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     totalDataChartResponse = totalDataChartResponse.slice(
         totalDataChartResponse.findIndex(it => it[1] !== 0),
-        -[...totalDataChartResponse].reverse().findIndex(it => it[1] !== 0)
+        totalDataChartResponse.length - 1 - [...totalDataChartResponse].reverse().findIndex(it => it[1] !== 0)
     )
     const sumBreakdownItem = (item: { [chain: string]: number }) => Object.values(item).reduce((acc, current) => acc += current, 0)
     totalDataChartBreakdownResponse = totalDataChartBreakdownResponse.slice(
         totalDataChartBreakdownResponse.findIndex(it => sumBreakdownItem(it[1]) !== 0),
-        -[...totalDataChartBreakdownResponse].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
+        totalDataChartBreakdownResponse.length - 1 - [...totalDataChartBreakdownResponse].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
     )
 
     return successResponse({

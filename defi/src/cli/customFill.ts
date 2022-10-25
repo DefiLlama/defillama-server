@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 import dynamodb from "../utils/shared/dynamodb";
-import { getProtocol, getBlocksRetry } from "./utils";
+import { getProtocol, } from "./utils";
 import {
   dailyTokensTvl,
   dailyTvl,
@@ -16,8 +16,45 @@ import {
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapter } from "./utils/importAdapter";
+import { log } from '../../DefiLlama-Adapters/projects/helper/utils'
+import axios from 'axios'
 
 const secondsInDay = 24 * 3600;
+
+/// ---------------- Protocol specfic code ----------------- 
+
+const protocolToRefill = 'Portal'
+const updateOnlyMissing = false
+const fillBefore = dateInSec('2022-04-01')
+
+let data = {} as { [key:  number]: any }
+const adapterModule = {
+  misrepresentedTokens: true,
+  tvl: async (ts: number) => {
+    if (!data[ts]) throw new Error('Data not found for ' + ts)
+    return {
+      tether: data[ts]
+    }
+  }
+}
+
+async function fetchData() {
+  const { data: { DailyLocked } } = await axios.get('https://europe-west3-wormhole-315720.cloudfunctions.net/mainnet-notionaltvlcumulative?totalsOnly=true')
+  log(Object.entries(DailyLocked).length)
+  Object.entries(DailyLocked).reverse().forEach((i: any) => {
+    const date = i[0]
+    const tvl = i[1]['*']['*'].Notional
+    const timestamp = getClosestDayStartTimestamp(dateInSec(date))
+    if (timestamp > fillBefore) return;
+    if (!tvl) return;
+    data[timestamp] = tvl
+  })
+}
+// ---------------- Protocol specfic code ----------------- 
+
+function dateInSec(str: any) {
+  return (+new Date(str)) / 1000
+}
 
 type DailyItems = (DocumentClient.ItemList | undefined)[];
 async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
@@ -42,14 +79,8 @@ async function getAndStore(
   protocol: Protocol,
   dailyItems: DailyItems
 ) {
-  let ethereumBlock = 1e15, chainBlocks = {}
-  if (!process.env.SKIP_BLOCK_FETCH) {
-    const res = await getBlocksRetry(timestamp)
-    ethereumBlock = res.ethereumBlock
-    chainBlocks = res.chainBlocks
-  }
-
-  const adapterModule = await importAdapter(protocol)
+  let ethereumBlock = 1e15, chainBlocks = {} // we set ethereum block to absurd number and it will be ignored
+  // const adapterModule = await importAdapter(protocol)
   const tvl = await storeTvl(
     timestamp,
     ethereumBlock,
@@ -79,41 +110,28 @@ function getDailyItems(pk: string) {
 }
 
 const main = async () => {
-  const protocolToRefill = process.argv[2]
-  const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
-  const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel
-  if(process.env.HISTORICAL !== "true"){
-    throw new Error(`You must set HISTORICAL="true" in your .env`)
-  }
+  await fetchData()
+  const timestamps = Object.keys(data)
+  log('Total days to be filled: ', timestamps.length)
   const protocol = getProtocol(protocolToRefill);
-  const adapter = await importAdapter(protocol);
-  if (adapter.timetravel === false) {
-    throw new Error("Adapter doesn't support refilling");
-  }
   const dailyTvls = await getDailyItems(dailyTvl(protocol.id));
   const dailyTokens = await getDailyItems(dailyTokensTvl(protocol.id));
   const dailyUsdTokens = await getDailyItems(dailyUsdTokensTvl(protocol.id));
   const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens];
-  const start = adapter.start ?? 0;
-  const now = Math.round(Date.now() / 1000);
-  let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
-  if (timestamp > now) {
-    timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
-  }
+  
+  // dont overwrite existing data if it is present
+  if (updateOnlyMissing)
+    dailyTvls?.map(i => i.SK).forEach((i) => delete data[+i])
+
   setInterval(() => {
     releaseCoingeckoLock();
   }, 1.5e3);
-  while (timestamp > start) {
-    const batchedActions = [];
-    for (let i = 0; i < batchSize && timestamp > start; i++) {
-      batchedActions.push(getAndStore(timestamp, protocol, dailyItems));
-      timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
-    }
-    await Promise.all(batchedActions);
+
+  for (const timestamp of timestamps) {
+    await getAndStore(+timestamp, protocol, dailyItems)
   }
 };
 main().then(() => {
-  console.log('Done!!!')
+  log('Done!!!')
   process.exit(0)
 })
-

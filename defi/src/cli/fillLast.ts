@@ -34,4 +34,8 @@ const main = async () => {
   );
   console.log("TVL", typeof tvl === "number" ? humanizeNumber(tvl):tvl)
 };
-main();
+
+main().then(() => {
+  console.log('Done!!!')
+  process.exit(0)
+})

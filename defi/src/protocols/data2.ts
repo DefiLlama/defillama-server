@@ -7079,7 +7079,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "versedex/index.js",
   twitter: "BitcoinCom",
-  audit_links: ["https://github.com/bitcoin-portal/bitcoincom-solidity-swap/blob/trunk/audits/Bitcoin.com_final-audit-report.pdf", "https://github.com/0xGuard-com/audit-reports/blob/master/bitcoin.com/Bitcoin.com_final-audit-report.pdf"],
+  audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/bitcoin.com/Bitcoin.com_final-audit-report.pdf"],
   listedAt: 1651771447
 },
 {

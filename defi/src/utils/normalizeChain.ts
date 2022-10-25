@@ -783,6 +783,17 @@ export const chainCoingeckoIds = {
     },
     chainId: 2001,
   },
+  "Milkomeda Algorand": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Algorand",
+      types: ["gas"]
+    },
+    chainId: 2002,
+  },
   "DFK": {
     geckoId: "defi-kingdoms",
     symbol: "JEWEL",

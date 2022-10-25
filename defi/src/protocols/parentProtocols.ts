@@ -450,6 +450,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "pando_im",
   },
+  {
+    id: "Mercurial Fi",
+    name: "Mercurial Fi",
+    url: "https://www.mercurial.finance/about",
+    description:
+      "Building DeFi's first dynamic yield infrastructure on Solana",
+    logo: `${baseIconsUrl}/mercurial fi.jpg`,
+    gecko_id: "mercurial",
+    cmcId: "9549",
+    chains: [],
+    twitter: "MercurialFi",
+  },
 ];
 
 export default parentProtocols;

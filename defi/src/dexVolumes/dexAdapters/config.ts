@@ -177,7 +177,7 @@ export default {
         enabled: true
     },
     "wanswap-dex": {
-        enabled: false
+        enabled: true
     },
     "solarbeam": {
         enabled: true

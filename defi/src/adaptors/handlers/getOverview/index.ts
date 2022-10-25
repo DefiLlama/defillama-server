@@ -93,30 +93,30 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
 
     const okProtocols = results.map(fd => fd.status === "fulfilled" && fd.value.records !== null ? fd.value : undefined).filter(d => d !== undefined) as ProtocolAdaptorSummary[]
-    const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes))
 
-    let protocolsResponse: IGetOverviewResponseBody['protocols']
-    let totalDataChartResponse: IGetOverviewResponseBody['totalDataChart']
-    let totalDataChartBreakdownResponse: IGetOverviewResponseBody['totalDataChartBreakdown']
+    let totalDataChartResponse: IGetOverviewResponseBody['totalDataChart'] = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(okProtocols)
+    let totalDataChartBreakdownResponse: IGetOverviewResponseBody['totalDataChartBreakdown'] = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
 
-    totalDataChartResponse = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(okProtocols)
-    totalDataChartBreakdownResponse = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
-    protocolsResponse = okProtocols.map(removeVolumesObject)
-
+    // This could be avoided/optimized if moved to generateAggregatedVolumesChartData
     totalDataChartResponse = totalDataChartResponse.slice(
         totalDataChartResponse.findIndex(it => it[1] !== 0),
         totalDataChartResponse.length - 1 - [...totalDataChartResponse].reverse().findIndex(it => it[1] !== 0)
     )
+    // This could be avoided/optimized if moved to generateByDexVolumesChartData
     const sumBreakdownItem = (item: { [chain: string]: number }) => Object.values(item).reduce((acc, current) => acc += current, 0)
     totalDataChartBreakdownResponse = totalDataChartBreakdownResponse.slice(
         totalDataChartBreakdownResponse.findIndex(it => sumBreakdownItem(it[1]) !== 0),
-        totalDataChartBreakdownResponse.length - 1 - [...totalDataChartBreakdownResponse].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
+        totalDataChartBreakdownResponse.length - [...totalDataChartBreakdownResponse].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
     )
 
+    const baseRecord = totalDataChartResponse[totalDataChartResponse.length - 1]
+    const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined)
+
+    okProtocols.forEach(removeVolumesObject)
     return successResponse({
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
-        protocols: protocolsResponse,
+        protocols: okProtocols,
         allChains: getAllChainsUniqueString(allAdapters.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
         ...generalStats,
     } as IGetOverviewResponseBody, 10 * 60); // 10 mins cache

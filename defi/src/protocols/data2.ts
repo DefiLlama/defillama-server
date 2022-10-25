@@ -17781,9 +17781,9 @@ listedAt: 1650804679
   symbol: "MER",
   url: "https://vaults.mercurial.finance",
   description:
-    "Get optimized yield for your assets automatically! We do the heavy lifting of moving funds to various lending pools with the highest yields, and readjusting the allocation every few minutes. This ensures that we will always get the most optimal yield for you.",
+    "Mercurial Dynamic Yield Layer allows any protocol, including wallets, treasuries, and Automated Market Makers (AMMs), to build on top of this layer to generate more returns for their Liquidity Providers (LPs). The liquidity of any protocol built on this yield infra can be dynamically allocated to various lending platforms.",
   chain: "Solana",
-  logo: `${baseIconsUrl}/mercurical-vaults.jpg`,
+  logo: `${baseIconsUrl}/mercurial-vaults.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

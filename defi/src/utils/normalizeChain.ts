@@ -1468,7 +1468,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
         return "Aptos"
     case "kekchain":
         return "Kekchain"
-    case "milkomeda-a1":
+    case "milkomeda_a1":
           return "Milkomeda A1"
 
     default:

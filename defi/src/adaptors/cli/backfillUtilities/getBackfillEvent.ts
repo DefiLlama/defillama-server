@@ -119,8 +119,8 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
                     vol.timestamp,
                     Object.values(vol.data)
                         .filter(data => Object.keys(data).includes("error") || vol.data === undefined).length > 0
-                ]).filter(b => b[1])
-                .concat(getDataPoints(vols[vols.length - 1].timestamp * 1000).map(time => [time, true]))
+                ])
+                .concat(getDataPoints((vols[vols.length - 1].timestamp * 1000) + DAY_IN_MILISECONDS).map(time => [time, true]))
                 .reduce((acc, [timestamp, hasAnErrorOrEmpty]) => {
                     acc[String(timestamp)] = acc[String(timestamp)] === true ? acc[String(timestamp)] : hasAnErrorOrEmpty
                     return acc
@@ -129,7 +129,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
         //console.log("volTimestamps", volTimestamps)
         const allTimestamps = getDataPoints(startDate.getTime())
         for (const timest of allTimestamps) {
-            if (volTimestamps[timest] === true) {
+            if (volTimestamps[timest] === true || volTimestamps[timest] === undefined) {
                 dates.push(new Date(timest * 1000 + DAY_IN_MILISECONDS))
             }
         }

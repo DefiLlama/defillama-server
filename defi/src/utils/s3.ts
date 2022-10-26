@@ -90,7 +90,7 @@ export function buildRedirect(filename: string, cache?: number) {
     statusCode: 307,
     body: "",
     headers: {
-      Location: `https://defillama-datasets.s3.eu-central-1.amazonaws.com/temp/${filename}`,
+      Location: `https://test-defillama-datasets.s3.eu-central-1.amazonaws.com/temp/${filename}`,
       ...(cache !== undefined
         ? {
             "Cache-Control": `max-age=${cache}`,

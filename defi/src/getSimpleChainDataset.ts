@@ -91,7 +91,7 @@ const handler = async (
     statusCode: 307,
     body: "",
     headers: {
-      "Location": `https://defillama-datasets.s3.eu-central-1.amazonaws.com/temp/${filename}`,
+      "Location": `https://test-defillama-datasets.s3.eu-central-1.amazonaws.com/temp/${filename}`,
     },
   };
   return response;

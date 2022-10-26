@@ -10,7 +10,7 @@ export const hourlyPrefix = "hourlyTvl";
 export const dailyPrefix = "dailyTvl";
 
 export const dynamoPrefix = dailyPrefix;
-export const TableName = "prod-table";
+export const TableName = "staging-table";
 export const maxProtocolId = 300;
 
 export const getDailyTxs = (protocolId: string) =>

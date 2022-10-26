@@ -7261,7 +7261,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Port Finance is a decentralized Money Market protocol on Solana, aiming to provide a full suite of lending products including but not limited to: variable rate lending, fixed rate lending and interest rate swaps.",
     chain: "Solana",
     logo: `${baseIconsUrl}/port-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "port-finance",
     cmcId: "11220",
@@ -7269,6 +7269,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "portfinance/index.js",
     twitter: "port_finance",
+    audit_links: [
+                    "https://drive.google.com/file/d/16X4Su-zuxIxcCLbf7-dC2hQJdUW7oDaf/view?usp=sharing",
+                    "https://drive.google.com/file/d/1iRy6v6_CsJKXOBSk_6mg4kmqvBL-Aqlj/view?usp=sharing",
+                    "https://drive.google.com/file/d/1HHHveh99XGfvkyqBZWvzzdNMot2ETm9q/view?usp=sharing"
+    ],
     oracles: ["Pyth"],
   },
   {

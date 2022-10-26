@@ -772,7 +772,7 @@ export const chainCoingeckoIds = {
     symbol: "VITE",
     cmcId: "2937",
   },
-  "Milkomeda": {
+  "Milkomeda C1": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -1185,6 +1185,7 @@ chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
+chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury", "vesting"]
 
@@ -1206,6 +1207,8 @@ export function transformNewChainName(chain: string) {
       return "GodwokenV1"
     case "arbitrum_nova":
       return "Arbitrum Nova"
+    case "Milkomeda":
+        return "Milkomeda C1"
     default:
       return chain
   }
@@ -1352,7 +1355,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "vite":
       return "Vite"
     case "milkomeda":
-      return "Milkomeda"
+      return useNewChainNames ? "Milkomeda C1" : "Milkomeda"
     case "dfk":
       return "DFK"
     case "clv":
@@ -1465,6 +1468,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
         return "Aptos"
     case "kekchain":
         return "Kekchain"
+    case "milkomeda-a1":
+          return "Milkomeda A1"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

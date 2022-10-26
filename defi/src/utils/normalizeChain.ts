@@ -1166,6 +1166,17 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 420420,
   },
+  "Milkomeda A1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Algorand",
+      types: ["gas"]
+    },
+    chainId: 2002,
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,

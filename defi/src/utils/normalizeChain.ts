@@ -772,7 +772,7 @@ export const chainCoingeckoIds = {
     symbol: "VITE",
     cmcId: "2937",
   },
-  "Milkomeda": {
+  "Milkomeda C1": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -782,6 +782,17 @@ export const chainCoingeckoIds = {
       types: ["gas"]
     },
     chainId: 2001,
+  },
+  "Milkomeda A1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Algorand",
+      types: ["gas"]
+    },
+    chainId: 2002,
   },
   "DFK": {
     geckoId: "defi-kingdoms",
@@ -1185,6 +1196,7 @@ chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
+chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury", "vesting"]
 
@@ -1206,6 +1218,8 @@ export function transformNewChainName(chain: string) {
       return "GodwokenV1"
     case "arbitrum_nova":
       return "Arbitrum Nova"
+    case "Milkomeda":
+      return "Milkomeda C1"
     default:
       return chain
   }
@@ -1352,7 +1366,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "vite":
       return "Vite"
     case "milkomeda":
-      return "Milkomeda"
+      return useNewChainNames ? "Milkomeda C1" : "Milkomeda"
+    case "milkomeda_a1":
+      return "Milkomeda A1"
     case "dfk":
       return "DFK"
     case "clv":

@@ -17824,5 +17824,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666698920
 },
+{
+  id: "2225",
+  name: "AtoDEX",
+  address: "aptos:0x1d7a81a523f95a7c9bcaa90add9d9986976062c1d121daf547ac6902e19864f3",
+  symbol: "ADX",
+  url: "https://atodex.io",
+  description:
+    "The pioneer AggregatorDEX with REFERRAL mechanism represent in Aptos.Unlimited revenue stream from FarmingReferral and Retroactive.",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/atodex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Aptos"],
+  module: "atodex/index.js",
+  twitter: "AtodexOfficial", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1666776525
+},
 ]
 export default data2;

@@ -97,7 +97,7 @@ async function getTvl(
       if (i >= maxRetries - 1) {
         throw e
       } else {
-        insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], storedKey)
+        //insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], storedKey)
         continue;
       }
     }
@@ -171,7 +171,7 @@ export async function storeTvl(
           chainTvlsToAdd[keyToAddChainBalances].push(storedKey)
         }
         const currentTime = getCurrentUnixTimestamp()
-        insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, currentTime - startTimestamp], storedKey, 0.05)
+        //insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, currentTime - startTimestamp], storedKey, 0.05)
       }))
     })
     if (module.tvl || module.fetch) {
@@ -205,7 +205,7 @@ export async function storeTvl(
     }
   } catch (e) {
     console.error(protocol.name, e);
-    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "aggregate")
+    //insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "aggregate")
     return;
   }
   if (breakIfTvlIsZero && Object.values(usdTvls).reduce((total, value) => total + value) === 0) {
@@ -245,10 +245,10 @@ export async function storeTvl(
     await Promise.all([storeTokensAction, storeUsdTokensAction, storeRawTokensAction]);
   } catch (e) {
     console.error(protocol.name, e);
-    insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "store")
+    //insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "store")
     return;
   }
 
-  insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 1)
+  //insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 1)
   return usdTvls.tvl;
 }

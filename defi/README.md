@@ -41,7 +41,7 @@ npm run prebuild
 
 Run general scripts:
 ```
-export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/<script>
+export AWS_REGION='eu-central-1' && export tableName='staging-table' && npx ts-node src/<script>
 ```
 
 If you run into problems updating submodule

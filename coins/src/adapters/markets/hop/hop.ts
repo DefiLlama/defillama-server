@@ -11,30 +11,17 @@ import abi from "./abi.json";
 import addresses from "./addresses.json";
 
 type map = {
-  hToken: string;
+  lp: string;
   underlying: string;
 };
 async function getTokenAddressMap(
   chain: any,
   block: number | undefined,
-  virtualPrices: Result[]
+  virtualPrices: Result[],
+  addresses: any
 ): Promise<map[]> {
-  let hTokenResults: Result[];
-  let underlyingResults: Result[];
-  [
-    { output: hTokenResults },
-    { output: underlyingResults }
-  ] = await Promise.all([
-    multiCall({
-      abi: abi.getToken,
-      calls: virtualPrices.map((r: Result) => ({
-        target: r.input.target,
-        params: [1]
-      })),
-      block,
-      chain
-    }),
-    multiCall({
+  const underlyingResults: Result[] = (
+    await multiCall({
       abi: abi.getToken,
       calls: virtualPrices.map((r: Result) => ({
         target: r.input.target,
@@ -43,24 +30,17 @@ async function getTokenAddressMap(
       block,
       chain
     })
-  ]);
+  ).output;
 
-  const hTokenAddresses: string[] = hTokenResults.map((h) =>
-    h.output.toLowerCase()
-  );
-  const underlyingAddresses: string[] = underlyingResults.map((u) =>
-    u.output.toLowerCase()
-  );
-
-  return hTokenAddresses.map((hToken: string, i: number) => ({
-    hToken,
-    underlying: underlyingAddresses[i]
+  return underlyingResults.map((u: Result) => ({
+    lp: addresses.find((l: any) => u.input.target == l.target).lp.toLowerCase(),
+    underlying: u.output.toLowerCase()
   }));
 }
 function formWrites(
   chain: any,
   timestamp: number,
-  hTokenInfos: any,
+  lpInfos: any,
   virtualPrices: Result[],
   addressMap: map[],
   underlyingTokenInfos: any[]
@@ -78,10 +58,10 @@ function formWrites(
     addToDBWritesList(
       writes,
       chain,
-      m.hToken,
+      m.lp,
       price,
-      hTokenInfos.decimals[i].output,
-      hTokenInfos.symbols[i].output,
+      lpInfos.decimals[i].output,
+      lpInfos.symbols[i].output,
       timestamp,
       "hop",
       0.9
@@ -92,22 +72,37 @@ function formWrites(
 }
 export default async function getTokenPrices(timestamp: number, chain: any) {
   const block: number | undefined = await getBlock(chain, timestamp);
-  const calls: any[] = [];
+  const correspondingContracts: any[] = [];
 
   Object.keys(addresses.bridges).map((coin: string) => {
+    const indexingChain = chain == "xdai" ? "gnosis" : chain;
     const l2Chains = addresses.bridges[coin as keyof typeof addresses.bridges];
     const contracts: { [contract: string]: string | number } =
-      l2Chains[chain as keyof typeof l2Chains];
-    if (contracts != undefined) calls.push({ target: contracts.l2SaddleSwap });
+      l2Chains[indexingChain as keyof typeof l2Chains];
+    if (contracts != undefined)
+      correspondingContracts.push({
+        target: contracts.l2SaddleSwap,
+        lp: contracts.l2SaddleLpToken
+      });
   });
 
   const virtualPrices: Result[] = (
-    await multiCall({ abi: abi.getVirtualPrice, calls, block, chain })
+    await multiCall({
+      abi: abi.getVirtualPrice,
+      calls: correspondingContracts.map((c) => ({ target: c.target })),
+      block,
+      chain
+    })
   ).output.filter((r: Result) => r.success == true);
 
-  const addressMap = await getTokenAddressMap(chain, block, virtualPrices);
+  const addressMap = await getTokenAddressMap(
+    chain,
+    block,
+    virtualPrices,
+    correspondingContracts
+  );
 
-  const [underlyingTokenInfos, hTokenInfos] = await Promise.all([
+  const [underlyingTokenInfos, lpInfos] = await Promise.all([
     getTokenAndRedirectData(
       addressMap.map((m) => m.underlying),
       chain,
@@ -115,7 +110,7 @@ export default async function getTokenPrices(timestamp: number, chain: any) {
     ),
     getTokenInfo(
       chain,
-      addressMap.map((m) => m.hToken),
+      addressMap.map((m) => m.lp),
       block
     )
   ]);
@@ -123,7 +118,7 @@ export default async function getTokenPrices(timestamp: number, chain: any) {
   return formWrites(
     chain,
     timestamp,
-    hTokenInfos,
+    lpInfos,
     virtualPrices,
     addressMap,
     underlyingTokenInfos

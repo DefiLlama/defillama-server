@@ -127,7 +127,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
                 }, volTimestamps)
         }
         //console.log("volTimestamps", volTimestamps)
-        const allTimestamps = getDataPoints(startTimestamp)
+        const allTimestamps = getDataPoints(startDate.getTime())
         for (const timest of allTimestamps) {
             if (volTimestamps[timest] === true) {
                 dates.push(new Date(timest * 1000 + DAY_IN_MILISECONDS))

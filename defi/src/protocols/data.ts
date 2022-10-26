@@ -2981,8 +2981,8 @@ const data: Protocol[] = [
   {
     id: "255",
     name: "Fei Protocol",
-    address: "0x956f47f50a910163d8bf957cf5846d573e7f87ca",
-    symbol: "FEI",
+    address: "0xc7283b66eb1eb5fb86327f08e1b5816b0720212b",
+    symbol: "TRIBE",
     url: "https://fei.money/",
     description:
       "FEI uses a new kind of stablecoin mechanism called direct incentives. It is more capital efficient, has a fair distribution, and is fully decentralized. The protocol uses the value it controls to maintain liquid secondary markets.",
@@ -2990,8 +2990,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/fei-protocol.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "fei-protocol",
-    cmcId: "8642",
+    gecko_id: "tribe-2",
+    cmcId: "9025",
     category: "Algo-Stables",
     chains: ["Ethereum"],
     module: "fei/index.js",

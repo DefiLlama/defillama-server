@@ -17846,5 +17846,53 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666776525
 },
+{
+  id: "2226",
+  name: "Wombex Finance",
+  address: "bsc:0xa75d9ca2a0a1D547409D82e1B06618EC284A2CeD",
+  symbol: "WMX",
+  url: "https://wombex.finance",
+  description:
+    "Wombex boosts yield for liquidity providers and concentrates governance power across Wombat Exchange.Wombex combines the power of liquidity providers and WOM token holders, supercharging each other and accelerating long-term Wombat growth. For this purpose, Wombex accumulates veWOM and aggregates LPs deposits simultaneously.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/wombex-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "wombex",
+  cmcId: "22239",
+  category: "Yield",
+  chains: ["Binance"],
+  module: "wombex/index.js",
+  twitter: "WombexFinance", 
+  forkedFrom: ["Aura"],
+  oracles: [],
+  audit_links: [
+                 "https://github.com/wombex-finance/wombex-contracts/blob/main/audits/PeckShield-Audit-Report-Wombex-v1.0.pdf",
+                 "https://github.com/wombex-finance/wombex-contracts/blob/main/audits/SlowMist-Audit-Report-Wombex-Finance.pdf",
+               ],
+  listedAt: 1666803517
+},
+{
+  id: "2227",
+  name: "Stakerz",
+  address: null,
+  symbol: "-",
+  url: "https://app.stakerz.io",
+  description:
+    "Stakerz is a Decentralized, Multichain Yield Optimizer platform that allows users to earn compound interest on crypto with flat 3% performance fee and 0% withdrawal or deposit fees. Through a set of investment strategies secured and enforced by smart contracts, Stakerz automatically maximizes rewards from various liquidity pools (LPs),‌ ‌automated market making (AMM) projects,‌ ‌and‌ ‌other yield‌ farming ‌opportunities in the Defi ecosystem.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/stakerz.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Kava"],
+  module: "stakerz-io/index.js",
+  twitter: "stakerz_io", 
+  forkedFrom: ["Beefy"],
+  oracles: [],
+  listedAt: 1666803519
+},
 ]
 export default data2;

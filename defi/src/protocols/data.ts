@@ -17537,7 +17537,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1002",
     name: "YokaiSwap",
-    address: "godwoken:0xb02c930c2825a960a50ba4ab005e8264498b64a0",
+    address: "godwoken_v1:0x885fb612947ccF1C7611894Bd828D388b046fc24",
     symbol: "YOK",
     url: "https://www.yokaiswap.com",
     description: "YokaiSwap is a next generation interoperable, decentralized trading platform and the first to come from the Nervos network.",

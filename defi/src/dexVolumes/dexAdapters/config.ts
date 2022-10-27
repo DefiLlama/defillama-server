@@ -549,7 +549,7 @@ export default {
         enabled: true
     },
     "mcdex": {
-        enabled: true
+        enabled: false
     },
     "mistswap": {
         enabled: true

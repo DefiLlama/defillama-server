@@ -94,7 +94,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -99 || change_1d > 10000)) && change_1d !== null) {
                 if (enableAlerts)
                     await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
-                throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
+                // throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 
             const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayTimestamp)

@@ -365,7 +365,7 @@ export default async function getTokenPrices(
   const block: number | undefined = await getBlock(chain, timestamp);
   if (chain == "bsc" && subgraph == undefined) {
     return;
-  } else if (chain == "bsc" && subgraph != undefined) {
+  } else if (subgraph != undefined) {
     pairAddresses = await fetchUniV2MarketsFromSubgraph(subgraph, timestamp);
   } else {
     pairAddresses = await fetchUniV2Markets(chain, factory, block);

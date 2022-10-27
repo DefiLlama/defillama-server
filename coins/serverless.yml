@@ -143,6 +143,13 @@ functions:
       - http:
           path: chart/{coins}
           method: get
+  batchHistorical:
+    handler: src/getBatchHistoricalCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: batchHistorical
+          method: get
   coinPercentageChange:
     handler: src/getPercentageChange.default
     timeout: 60

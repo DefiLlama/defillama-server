@@ -19,7 +19,7 @@ export interface IGeneralStats {
     changeVolume30d: number | null;
 }
 
-const getSumAllDexsToday = (dexs: VolumeSummaryDex[], dex2Substract?: VolumeSummaryDex, baseTimestamp: number = (Date.now() / 1000)-ONE_DAY_IN_SECONDS): IGeneralStats => {
+const getSumAllDexsToday = (dexs: VolumeSummaryDex[], dex2Substract?: VolumeSummaryDex, baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS): IGeneralStats => {
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp);
     const timestamp1d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 1  // (new Date(yesterdaysTimestamp * 1000)).setDate((new Date(yesterdaysTimestamp * 1000).getDate() - 1)) / 1000
     const timestamp7d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 7  // (new Date(yesterdaysTimestamp * 1000)).setDate((new Date(yesterdaysTimestamp * 1000).getDate() - 7)) / 1000
@@ -93,10 +93,25 @@ const generateByDexVolumesChartData = (dexs: VolumeSummaryDex[]): IChartDataByDe
 const calcNdChange = (volumes: Volume[], nDaysChange: number, baseTimestamp?: number) => {
     let totalVolume: number | null = 0
     let totalVolumeNd: number | null = 0
-    const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp ?? ((Date.now() / 1000) - ONE_DAY_IN_SECONDS));
+    let yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp ?? ((Date.now() / 1000) - ONE_DAY_IN_SECONDS));
+    let yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
+
+    if (!yesterdaysVolume)
+        for (let i = 1; i <= 5; i++) {
+            yesterdaysTimestamp = yesterdaysTimestamp - (i * ONE_DAY_IN_SECONDS)
+            yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
+            if (yesterdaysVolume) break
+        }
+
     const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
-    const yesterdaysVolume = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === yesterdaysTimestamp)?.data
-    const volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd)?.data
+    let volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd)?.data
+
+    if (!volumeNd)
+        for (let i = 1; i <= 5; i++) {
+            volumeNd = volumes.find(v => getTimestampAtStartOfDayUTC(v.timestamp) === timestampNd - (i * ONE_DAY_IN_SECONDS))?.data
+            if (volumeNd) break
+        }
+
     totalVolume = yesterdaysVolume ? totalVolume + sumAllVolumes(yesterdaysVolume) : null
     totalVolumeNd = volumeNd ? totalVolumeNd + sumAllVolumes(volumeNd) : null
     const ndChange = totalVolume && totalVolumeNd ? (totalVolume - totalVolumeNd) / totalVolumeNd * 100 : null

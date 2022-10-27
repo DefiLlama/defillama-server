@@ -17894,5 +17894,50 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1666803519
 },
+{
+  id: "2228",
+  name: "Aries Markets",
+  address: null,
+  symbol: "-",
+  url: "https://ariesmarkets.xyz",
+  description:
+    "Aries Markets is a decentralised margin trading protocol on Aptos which allows users to borrow, lend, swap, and trade with margin via an on-chain order book with lightning speed.",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/aries-markets.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Aptos"],
+  module: "aries-markets/index.js",
+  twitter: "AriesMarkets", 
+  forkedFrom: [],
+  oracles: ["Switchboard", "Pyth"],
+  listedAt: 1666868387
+},
+{
+  id: "2229",
+  name: "Silo Protocol",
+  address: "algorand:137594422",
+  symbol: "HDL",
+  url: "https://www.silodefi.com",
+  description:
+    "Silo picks up where TEAL leaves off, providing next-gen DeFi vaults and strategies for the Algorand ecosystem. The Silo Protocol is built on decentralized vaults as a core primitive. Decentralized vaults allow for permissionless, trustless access to strategy-based DeFi instruments.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/silo-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Options",
+  chains: ["Algorand"],
+  module: "silodefi/index.js",
+  twitter: "silodefi", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://github.com/headline-design/silo-protocol/tree/main/smartContract_audits"],
+  listedAt: 1666868708
+},
 ]
 export default data2;

@@ -48,7 +48,7 @@ export const handler = async (event: IHandlerEvent) => {
     Promise.all(
       [
         AdapterType.FEES,
-        AdapterType.DERIVATIVES,
+        AdapterType.OPTIONS,
         AdapterType.INCENTIVES,
         AdapterType.AGGREGATORS
       ].map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))

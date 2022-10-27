@@ -1,10 +1,10 @@
 import generateProtocolAdaptorsList from "../helpers/generateProtocolAdaptorsList";
-import derivatives_imports from "../../../utils/imports/derivatives_adapters"
+import options_imports from "../../../utils/imports/options_adapters"
 import config from "./config";
 import { AdaptorRecordType } from "../../db-utils/adaptor-record";
 
 // TODO: needs to be optimized. Currently loads to memory all adaptors
-export const importModule = (module: string) => derivatives_imports[module]
+export const importModule = (module: string) => options_imports[module]
 
 // KEYS USED TO MAP ATTRIBUTE -> KEY IN DYNAMO
 export const KEYS_TO_STORE = {
@@ -14,4 +14,4 @@ export const KEYS_TO_STORE = {
     [AdaptorRecordType.dailyNotionalVolume]: "dailyNotionalVolume"
 }
 
-export default generateProtocolAdaptorsList(derivatives_imports, config)
+export default generateProtocolAdaptorsList(options_imports, config)

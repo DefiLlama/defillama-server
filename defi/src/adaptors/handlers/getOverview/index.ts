@@ -50,7 +50,7 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.VOLUME]: AdaptorRecordType.dailyVolume,
     [AdapterType.FEES]: AdaptorRecordType.dailyFees,
     [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
-    [AdapterType.DERIVATIVES]: AdaptorRecordType.dailyNotionalVolume,
+    [AdapterType.OPTIONS]: AdaptorRecordType.dailyNotionalVolume,
     [AdapterType.INCENTIVES]: AdaptorRecordType.tokenIncentives,
 }
 

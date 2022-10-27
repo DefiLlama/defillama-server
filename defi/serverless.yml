@@ -73,22 +73,7 @@ provider:
     MOONRIVER_RPC: ${file(./env.js):MOONRIVER_RPC}
     CRONOS_RPC: ${file(./env.js):CRONOS_RPC}
     KLAYTN_RPC: "https://public-node-api.klaytnapi.com/v1/cypress"
-    OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
-    HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
-    SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
-    #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
-    INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
-    DROPS_WEBHOOK: ${file(./env.js):DROPS_WEBHOOK}
-    EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
-    FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
-    DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
-    MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
-    VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
-    STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
-    REVALIDATE_SECRET: ${file(./env.js):REVALIDATE_SECRET}
     DEFILLAMA_SDK_MUTED: true
-    PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
-    ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
 

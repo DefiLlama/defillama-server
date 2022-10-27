@@ -17962,5 +17962,27 @@ listedAt: 1650804679
   audit_links: ["https://contractwolf.io/projects/paperdao"],
   listedAt: 1666881339
 },
+{
+  id: "2231",
+  name: "Tangible",
+  address: "polygon:0xb5DFABd7fF7F83BAB83995E72A52B97ABb7bcf63",
+  symbol: "USDR",
+  url: "https://www.tangible.store",
+  description:
+    "Tangible is an NFT marketplace for Real World Assets. Tangible is also the creator of Real USD, the first stablecoin backed by tokenized, yield-producing real estate.Rental income from Real USD’s backing is paid out to Real USD holders in the form of a daily rebase projected to range between 10 - 15% APY.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/tangible.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "tangible",
+  cmcId: "20271",
+  category: "RWA",
+  chains: ["Polygon"],
+  module: "tangible/index.js",
+  twitter: "tangibleDAO", 
+  forkedFrom: [],
+  oracles: ["Curve"],
+  listedAt: 1666883108
+},
 ]
 export default data2;

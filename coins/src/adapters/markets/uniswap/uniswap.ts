@@ -46,7 +46,7 @@ async function fetchUniV2MarketsFromSubgraph(
 ) {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
       query lps {
         pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,
@@ -58,8 +58,8 @@ async function fetchUniV2MarketsFromSubgraph(
         }
       }`;
     const result = (await request(subgraph, lpQuery)).pairs;
-    if (result.length < 1000) i = 5;
-    reservereThreshold = result[result.length - 1].volumeUSD;
+    if (result.length < 1000) i = 20;
+    reservereThreshold = result[Math.max(result.length - 1, 0)].volumeUSD;
     addresses.push(
       ...(await request(subgraph, lpQuery)).pairs.map((p: any) => p.id)
     );

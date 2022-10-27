@@ -152,7 +152,6 @@ type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 const removeVolumesObject = (protocol: WithOptional<ProtocolAdaptorSummary, KeysToRemove>): ProtocolsResponse => {
     delete protocol['records']
-    delete protocol['module']
     delete protocol['config']
     delete protocol['recordsMap']
     return protocol

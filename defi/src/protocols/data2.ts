@@ -17984,5 +17984,32 @@ listedAt: 1650804679
   oracles: ["Curve"],
   listedAt: 1666883108
 },
+{
+  id: "2232",
+  name: "Spherium",
+  address: "0x8a0cdfab62ed35b836dc0633482798421c81b3ec",
+  symbol: "SPHRI",
+  url: "https://spherium.finance",
+  description:
+    "Spherium Finance ecosystem offers a complete suite of financial services comprising a universal wallet, token swap platform, money markets, staking services, and cross-chain liquidity transfer. Spherium aims to function as a global financial service provider, extending fundamental financial services to the unbanked.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/spherium.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "spherium",
+  cmcId: "9869",
+  category: "Cross Chain",
+  chains: ["Ethereum", "Binance"],
+  module: "spherium/index.js",
+  twitter: "SpheriumFinance", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: [
+                  "https://github.com/Quillhash/Audit_Reports/blob/master/Spherium%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf",
+                  "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Spherium-v1.0.pdf",
+                  "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Spherium_Bridge_Smart_Contract_Security_Audit_Report_Halborn_v1_1.pdf",
+                ],
+  listedAt: 1666902242
+},
 ]
 export default data2;

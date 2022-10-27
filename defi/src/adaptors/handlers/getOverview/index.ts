@@ -69,6 +69,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
     const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
     const rawDataType = event.queryStringParameters?.dataType
+    const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
 
@@ -98,16 +99,20 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     let totalDataChartBreakdownResponse: IGetOverviewResponseBody['totalDataChartBreakdown'] = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
 
     // This could be avoided/optimized if moved to generateAggregatedVolumesChartData
-    totalDataChartResponse = totalDataChartResponse.slice(
-        totalDataChartResponse.findIndex(it => it[1] !== 0),
-        totalDataChartResponse.length - [...totalDataChartResponse].reverse().findIndex(it => it[1] !== 0)
-    )
+    if (!fullChart) {
+        totalDataChartResponse = totalDataChartResponse.slice(
+            totalDataChartResponse.findIndex(it => it[1] !== 0),
+            totalDataChartResponse.length - [...totalDataChartResponse].reverse().findIndex(it => it[1] !== 0)
+        )
+    }
     // This could be avoided/optimized if moved to generateByDexVolumesChartData
-    const sumBreakdownItem = (item: { [chain: string]: number }) => Object.values(item).reduce((acc, current) => acc += current, 0)
-    totalDataChartBreakdownResponse = totalDataChartBreakdownResponse.slice(
-        totalDataChartBreakdownResponse.findIndex(it => sumBreakdownItem(it[1]) !== 0),
-        totalDataChartBreakdownResponse.length - [...totalDataChartBreakdownResponse].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
-    )
+    if (!fullChart) {
+        const sumBreakdownItem = (item: { [chain: string]: number }) => Object.values(item).reduce((acc, current) => acc += current, 0)
+        totalDataChartBreakdownResponse = totalDataChartBreakdownResponse.slice(
+            totalDataChartBreakdownResponse.findIndex(it => sumBreakdownItem(it[1]) !== 0),
+            totalDataChartBreakdownResponse.length - [...totalDataChartBreakdownResponse].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
+        )
+    }
 
     const baseRecord = totalDataChartResponse[totalDataChartResponse.length - 1]
     const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined)

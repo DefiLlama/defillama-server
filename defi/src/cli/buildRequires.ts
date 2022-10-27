@@ -30,9 +30,10 @@ function getDirectories(source: string) {
         .map(dirent => dirent.name)
 }
 
+const extensions = ['ts', 'md', 'js']
 function removeDotTs(s: string) {
     const splitted = s.split('.')
-    if (splitted.length > 1)
+    if (splitted.length > 1 && extensions.includes(splitted[1]))
         splitted.pop()
     return splitted.join('.')
 }

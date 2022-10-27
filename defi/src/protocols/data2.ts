@@ -17939,5 +17939,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/headline-design/silo-protocol/tree/main/smartContract_audits"],
   listedAt: 1666868708
 },
+{
+  id: "2230",
+  name: "PaperDAO",
+  address: "ethpow:0xA2D59CdC396574Da0F0Bc97a3e883b9fB72f6b88",
+  symbol: "PPR",
+  url: "https://paperdao.money",
+  description:
+    "PaperDAO is a suite of products to kick start the ETH PoW ecosystem. We are PoW maximalists and do not buy into the energy usage rhetoric forwarded by PoS promoters. We have an opportunity to create a healthy DEFI ecosystem from scratch now that we have a clean starting point on an EVM compatible chain which does not have custodial assets such as USDC on it.",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/paperdao.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["EthereumPoW"],
+  module: "paperdao/index.js",
+  twitter: "paperdaomoney", 
+  forkedFrom: ["Compound"],
+  oracles: ["TWAP"],
+  audit_links: ["https://contractwolf.io/projects/paperdao"],
+  listedAt: 1666881339
+},
 ]
 export default data2;

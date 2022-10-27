@@ -12,7 +12,7 @@ src/utils/imports/adapters_fees.ts
 src/utils/imports/adapters_liquidations.ts
 src/utils/imports/fees_adapters.ts
 src/utils/imports/volumes_adapters.ts
-src/utils/imports/derivatives_adapters.ts
+src/utils/imports/options_adapters.ts
 src/utils/imports/aggregators_adapters.ts
 src/utils/imports/incentives_adapters.ts
 .vscode

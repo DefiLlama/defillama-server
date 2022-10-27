@@ -3,7 +3,7 @@ import { AdaptorData } from "./types";
 import volumes, { KEYS_TO_STORE as volumes_KEYS_TO_STORE, importModule as volumes_importModule } from "./volumes"
 import fees, { KEYS_TO_STORE as fees_KEYS_TO_STORE, importModule as fees_importModule } from "./fees"
 import aggregators, { KEYS_TO_STORE as aggregators_KEYS_TO_STORE, importModule as aggregators_importModule } from "./aggregators"
-import derivatives, { KEYS_TO_STORE as derivatives_KEYS_TO_STORE, importModule as derivatives_importModule } from "./derivatives"
+import options, { KEYS_TO_STORE as options_KEYS_TO_STORE, importModule as options_importModule } from "./options"
 import incentives, { KEYS_TO_STORE as incentives_KEYS_TO_STORE, importModule as incentives_importModule } from "./incentives"
 
 // It shouldn't import/return both at the same time for perfornace reasons but couldn't make work a dynamic import. needs to be improved:/
@@ -23,10 +23,10 @@ export default (adaptorType: AdapterType): AdaptorData => {
         KEYS_TO_STORE: aggregators_KEYS_TO_STORE,
         importModule: aggregators_importModule,
     }
-    if (adaptorType === AdapterType.DERIVATIVES) return {
-        default: derivatives,
-        KEYS_TO_STORE: derivatives_KEYS_TO_STORE,
-        importModule: derivatives_importModule,
+    if (adaptorType === AdapterType.OPTIONS) return {
+        default: options,
+        KEYS_TO_STORE: options_KEYS_TO_STORE,
+        importModule: options_importModule,
     }
     if (adaptorType === AdapterType.INCENTIVES) return {
         default: incentives,

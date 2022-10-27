@@ -46,7 +46,7 @@ async function fetchUniV2MarketsFromSubgraph(
 ) {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
       query lps {
         pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,
@@ -176,7 +176,7 @@ async function lps(
     const coinData: CoinData | undefined = tokenPrices.find(
       (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
     );
-    if (coinData == undefined) return 
+    if (coinData == undefined) return;
     const supply =
       tokenInfos.supplies[i].output / 10 ** tokenInfos.lpDecimals[i].output;
     const value =
@@ -221,7 +221,7 @@ async function unknownTokens(
     const coinData: CoinData | undefined = tokenPrices.find(
       (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
     );
-    if (coinData == undefined) return 
+    if (coinData == undefined) return;
     const i: number = priceableLPs.indexOf(l);
 
     const sideValue: number =

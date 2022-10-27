@@ -1177,6 +1177,17 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 420420,
   },
+  "Milkomeda A1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Algorand",
+      types: ["gas"]
+    },
+    chainId: 2002,
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1367,8 +1378,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Vite"
     case "milkomeda":
       return useNewChainNames ? "Milkomeda C1" : "Milkomeda"
-    case "milkomeda_a1":
-      return "Milkomeda A1"
     case "dfk":
       return "DFK"
     case "clv":
@@ -1481,6 +1490,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
         return "Aptos"
     case "kekchain":
         return "Kekchain"
+    case "milkomeda_a1":
+          return "Milkomeda A1"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

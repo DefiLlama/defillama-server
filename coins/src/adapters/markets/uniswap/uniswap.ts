@@ -46,7 +46,7 @@ async function fetchUniV2MarketsFromSubgraph(
 ) {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 5; i++) {
     const lpQuery = gql`
       query lps {
         pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,

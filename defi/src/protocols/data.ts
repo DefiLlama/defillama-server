@@ -4898,7 +4898,7 @@ const data: Protocol[] = [
     category: "Synthetics",
     chains: ["Ethereum"],
     module: "injective/index.js",
-    twitter: "InjectiveLabs",
+    twitter: "injective_",
     audit_links: ["https://www.certik.org/projects/injectiveprotocol"],
     oracles: ["Chainlink","Band", "DIA"],
   },

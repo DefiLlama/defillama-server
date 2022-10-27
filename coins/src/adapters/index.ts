@@ -35,6 +35,7 @@ export default {
   abracadabra: require("./other/index"),
   sai: require("./other/index"),
   pods: require("./other/index"),
+  distressed: require("./other/index"),
   uniswap: require("./markets/uniswap/index"),
   sushiswap1: require("./markets/uniswap/index"),
   sushiswap2: require("./markets/uniswap/index"),

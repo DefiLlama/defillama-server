@@ -16705,7 +16705,7 @@ listedAt: 1650804679
   cmcId: "12898",
   category: "Dexes",
   chains: ["Solana"], 
-  oracles: [], 
+  oracles: ["Pyth"], 
   forkedFrom: [],
   module: "goosefx/index.js",
   twitter: "GooseFX1",
@@ -17571,7 +17571,7 @@ listedAt: 1650804679
   module: "aux-exchange/index.js",
   twitter: "AuxExchange", 
   forkedFrom: [],
-  oracles: ["Pyth"],
+  oracles: [],
   listedAt: 1666452035
 },
 {
@@ -17913,7 +17913,7 @@ listedAt: 1650804679
   module: "aries-markets/index.js",
   twitter: "AriesMarkets", 
   forkedFrom: [],
-  oracles: ["Switchboard", "Pyth"],
+  oracles: ["Pyth", "Switchboard"],
   listedAt: 1666868387
 },
 {

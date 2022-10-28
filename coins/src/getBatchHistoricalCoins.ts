@@ -67,10 +67,8 @@ async function fetchDBData(
 }
 
 const handler = async (event: any): Promise<IResponse> => {
-  return successResponse({ coins: event.queryStringParameters ?? "hi" }, 0); // 1 hour cache
-  const coinQueries: string[] = Object.keys(
-    event.queryStringParameters?.coins ?? []
-  );
+  const coinsObj = JSON.parse(event.queryStringParameters?.coins ?? "{}");
+  const coinQueries: string[] = Object.keys(coinsObj);
   if (coinQueries.length == 0)
     return errorResponse({ message: "no coins queried" });
   const searchWidth: number = quantisePeriod(
@@ -90,22 +88,3 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
-
-// async function main() {
-//   const params = {
-//     queryStringParameters: {
-//       coins: {
-//         "avax:0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e": [
-//           1666876743,
-//           1666862343
-//         ],
-//         "coingecko:ethereum": [1666869543, 1666862343]
-//       }
-//       //searchWidth: 1200
-//     }
-//   };
-//   let a = await handler(params);
-//   return;
-// }
-// main();
-// ts-node coins/src/getBatchHistoricalCoins.ts

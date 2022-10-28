@@ -5112,7 +5112,7 @@ const data2: Protocol[] =  [
 },
 {
   id: "1642",
-  name: "Folks Finance",
+  name: "Folks Finance Lending",
   address: null,
   symbol: "-",
   url: "https://folks.finance/",
@@ -5134,6 +5134,7 @@ const data2: Protocol[] =  [
     "https://github.com/vantagepointreports/releases/blob/main/VPQ-20210652%20-%20Folks.Finance%20-%20Smart%20Contract%20Audit%20-%20Phase%201_Public_V1.0.pdf",
     "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Folks-Finance-Design-Review.pdf"
   ],
+  parentProtocol: "Folks Finance",
   listedAt: 1649792952
 },
 {
@@ -18059,6 +18060,33 @@ listedAt: 1650804679
                   "https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/blob/main/audit/CertiK%20Audit%20Report%20for%20impermax-x-uniswapv2-core.pdf"
                ],
   listedAt: 1666963642
+},
+{
+  id: "2235",
+  name: "Folks Finance gALGO",
+  address: null,
+  symbol: "-",
+  url: "https://folks.finance/",
+  description: "Liquid Staking protocol built on Algorand Blockchain.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/folks-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Algorand"],
+  oracles: [],
+  forkedFrom: [],
+  module: "folks-galgo/index.js",
+  twitter: "FolksFinance",
+  audit_links: [
+    "https://www.coinspect.com/doc/Coinspect%20-%20Smart%20Contract%20Audit%20-%20Folks%20Finance%20v220314.pdf",
+    "https://github.com/vantagepointreports/releases/blob/main/VPQ-20210652%20-%20Folks.Finance%20-%20Smart%20Contract%20Audit%20-%20Phase%201_Public_V1.0.pdf",
+    "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Folks-Finance-Design-Review.pdf"
+  ],
+  parentProtocol: "Folks Finance",
+  listedAt: 1666971574
 },
 ]
 export default data2;

@@ -462,6 +462,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MercurialFi",
   },
+  {
+    id: "Folks Finance",
+    name: "Folks Finance",
+    url: "https://folks.finance/",
+    description:
+    "Lending and borrowing protocol with innovative features and Liquid Staking built on Algorand Blockchain.",
+    logo: `${baseIconsUrl}/folks-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FolksFinance",
+  },
 ];
 
 export default parentProtocols;

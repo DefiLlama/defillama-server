@@ -87,9 +87,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
                 const acc = await accP
                 const bst = await Object.values(dexAdapter).reduce(async (accP, { start, runAtCurrTime }) => {
                     const acc = await accP
-                    console.log("currstart", "->>>", "before")
                     const currstart = runAtCurrTime ? nowSTimestamp + 2 : (await start().catch(() => nowSTimestamp))
-                    console.log("currstart", "->>>", currstart)
                     return (typeof currstart === 'number' && currstart < acc && currstart!==0) ? currstart : acc
                 }, Promise.resolve(nowSTimestamp + 1))
 
@@ -110,7 +108,6 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
     console.info("Starting timestamp", startTimestamp, "->", startDate)
     const endDate = new Date(nowSTimestamp * 1000)
     const dates: Date[] = []
-    console.log("StART date is!", startDate)
     if (onlyMissing && typeof onlyMissing === "boolean") {
         let volTimestamps = {} as IJSON<boolean>
         for (const type of Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)) {

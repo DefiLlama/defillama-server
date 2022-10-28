@@ -174,7 +174,7 @@ export default {
         enabled: true
     },
     "wanswap-dex": {
-        enabled: false
+        enabled: true
     },
     "solarbeam": {
         enabled: true
@@ -287,9 +287,6 @@ export default {
     "netswap": {
         enabled: true
     },
-    "jupiter-aggregator": {
-        enabled: true
-    },
     "astroport": {
         enabled: false
     },
@@ -314,7 +311,7 @@ export default {
     "defi-kingdoms": {
         enabled: true
     },
-     "defiplaza": {
+    "defiplaza": {
         enabled: true
     },
     "polycat": {
@@ -353,7 +350,7 @@ export default {
     "smartdex": {
         enabled: true
     },
-     "cometh": {
+    "cometh": {
         enabled: true
     },
     "maiar-exchange": {
@@ -377,7 +374,7 @@ export default {
     "step-exchange": {
         enabled: true
     },
-     "pegasys": {
+    "pegasys": {
         enabled: true
     },
     "crodex": {
@@ -502,5 +499,98 @@ export default {
     },
     "luaswap": {
         enabled: true
-    }
+    },
+    "unicly": {
+        enabled: true
+    },
+    "crema-finance": {
+        enabled: true
+    },
+    "icecreamswap": {
+        enabled: true
+    },
+    "artic": {
+        enabled: true
+    },
+    "swapsicle": {
+        enabled: true
+    },
+    "morpheus-swap": {
+        enabled: true
+    },
+    "fairyswap": {
+        enabled: true
+    },
+    "moon-swap": {
+        enabled: true
+    },
+    "fx-swap": {
+        enabled: true
+    },
+    "pinkswap": {
+        enabled: true
+    },
+    "spartan": {
+        enabled: true
+    },
+    "penguin": {
+        enabled: true
+    },
+    "vortex-protocol": {
+        enabled: true
+    },
+    "dinosaur-eggs": {
+        enabled: true
+    },
+    "mcdex": {
+        enabled: false
+    },
+    "mistswap": {
+        enabled: true
+    },
+    "bxh": {
+        enabled: true
+    },
+    "auraswap": {
+        enabled: true
+    },
+    "carbonswap": {
+        enabled: true
+    },
+    "pangea-swap": {
+        enabled: true
+    },
+    "gravity-finance": {
+        enabled: true
+    },
+    "4swap": {
+        enabled: true
+    },
+    "gravis": {
+        enabled: true
+    },
+    "bisq": {
+        enabled: true
+    },
+    "tetu": {
+        enabled: true
+    },
+    "muesliswap": {
+        enabled: true
+    },
+    "gin-finance": {
+        enabled: true
+    },
+    "ferro": {
+        enabled: true
+    },
+    "increment-swap": {
+        enabled: true
+    },
+    "chainge-finance": {
+        enabled: true
+    },
+    "minerswap": {
+        enabled: true
+    },
 } as AdaptorsConfig

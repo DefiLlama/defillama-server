@@ -43,7 +43,7 @@ const importPaths = [
     {
         basePackagePath: "@defillama/adaptors", // how is defined in package.json
         baseFolderPath: "./adapters", // path relative to current working directory -> `cd /defi`
-        folderPath: "volumes", // path relative to baseFolderPath
+        folderPath: "dexs", // path relative to baseFolderPath
         excludeKeys: excludeKeys
     },
     {

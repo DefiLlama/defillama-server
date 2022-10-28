@@ -6,8 +6,8 @@ import { performance } from "perf_hooks";
     const start = performance.now()
     const r = await handler({
         pathParameters: {
-            name: "lyra",
-            type: "derivatives"
+            name: "uniswap",
+            type: "dexs"
         },
         /* queryStringParameters: {
             dataType: "dailyRevenue"
@@ -15,6 +15,8 @@ import { performance } from "perf_hooks";
     } as unknown as AWSLambda.APIGatewayEvent)
     const end = performance.now()
     const d = JSON.parse(r.body)
+    console.log(d.totalDataChart.length)
+    console.log(d.totalDataChartBreakdown.length)
     delete d['totalDataChart']
     delete d['totalDataChartBreakdown']
     console.log(d)

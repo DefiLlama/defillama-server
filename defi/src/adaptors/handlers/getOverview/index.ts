@@ -47,7 +47,7 @@ export type IGetOverviewResponseBody = IGeneralStats & {
 export type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
-    [AdapterType.VOLUME]: AdaptorRecordType.dailyVolume,
+    [AdapterType.DEXS]: AdaptorRecordType.dailyVolume,
     [AdapterType.FEES]: AdaptorRecordType.dailyFees,
     [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
     [AdapterType.OPTIONS]: AdaptorRecordType.dailyNotionalVolume,

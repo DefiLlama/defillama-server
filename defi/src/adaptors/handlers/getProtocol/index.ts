@@ -48,6 +48,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     if (!protocolName || !adaptorType) throw new Error("Missing name or type")
 
     const adaptorsData = loadAdaptorsData(adaptorType)
+    console.log(adaptorType, adaptorsData.default.length)
     const dexData = adaptorsData.default.find(
         (prot) => sluggify(prot) === protocolName || sluggifyString(prot.displayName) === protocolName
     );

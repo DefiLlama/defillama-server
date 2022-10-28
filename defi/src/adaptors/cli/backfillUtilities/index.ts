@@ -18,7 +18,7 @@ switch (Number(RUN)) {
         break
     case RUNS.GET_BACKFILL_EVENT:
         // Make sure to edit based on your needs!
-        getBackfillEvent("uniswap" , AdapterType.VOLUME, true)
+        getBackfillEvent("uniswap" , AdapterType.DEXS, true)
         break
     case RUNS.EXECUTE_ASYNC_BACKFILL:
         executeAsyncBackfill()

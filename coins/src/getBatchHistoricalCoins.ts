@@ -9,7 +9,7 @@ import { quantisePeriod } from "./utils/timestampUtils";
 import { getBasicCoins } from "./utils/getCoinsUtils";
 
 async function fetchDBData(
-  event: any,
+  coinsObj: any,
   coins: any[],
   coinQueries: string[],
   PKTransforms: { [key: string]: string },
@@ -19,8 +19,7 @@ async function fetchDBData(
   const promises: Promise<any>[] = [];
 
   coinQueries.map(async (coinAddress) => {
-    const timestamps: number[] =
-      event.queryStringParameters?.coins[coinAddress as keyof typeof coins];
+    const timestamps: number[] = coinsObj[coinAddress as keyof typeof coins];
     if (isNaN(timestamps.length)) return;
     const coin = coins.find((c) =>
       c.PK.includes(
@@ -77,7 +76,7 @@ const handler = async (event: any): Promise<IResponse> => {
   const { PKTransforms, coins } = await getBasicCoins(coinQueries);
 
   const dbData = await fetchDBData(
-    event,
+    coinsObj,
     coins,
     coinQueries,
     PKTransforms,

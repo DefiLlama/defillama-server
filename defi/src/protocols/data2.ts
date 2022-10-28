@@ -18011,5 +18011,28 @@ listedAt: 1650804679
                 ],
   listedAt: 1666902242
 },
+{
+  id: "2233",
+  name: "MinerSwap",
+  address: "ethpow:0x5Ee9Cb7AEC566bccF3b24C6C96744972878292d3",
+  symbol: "MSP",
+  url: "https://minerswap.fi",
+  description:
+    "MinerSwap is the first hybrid StableSwap / Uniswap V2 DEX on EthereumPoW. Swap, farm, and stake tokens to earn MSP and earn additional yields.",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/minerswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["EthereumPoW"],
+  module: "minerswap/index.js",
+  twitter: "minerswapfi", 
+  forkedFrom: ["Solidly"],
+  oracles: [],
+  audit_links: ["https://github.com/interfinetwork/project-delivery-data/blob/main/Minerswap/MinerSwap_AuditReport_InterFi.pdf"],
+  listedAt: 1666952098
+},
 ]
 export default data2;

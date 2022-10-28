@@ -67,10 +67,7 @@ async function fetchDBData(
 }
 
 const handler = async (event: any): Promise<IResponse> => {
-  return successResponse(
-    { coins: event.queryStringParameters?.coins ?? [] },
-    3600
-  ); // 1 hour cache
+  return successResponse({ coins: event.queryStringParameters ?? "hi" }, 0); // 1 hour cache
   const coinQueries: string[] = Object.keys(
     event.queryStringParameters?.coins ?? []
   );

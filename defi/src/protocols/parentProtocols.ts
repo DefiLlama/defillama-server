@@ -462,6 +462,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MercurialFi",
   },
+/*
   {
     id: "Folks Finance",
     name: "Folks Finance",
@@ -474,6 +475,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FolksFinance",
   },
+*/
 ];
 
 export default parentProtocols;

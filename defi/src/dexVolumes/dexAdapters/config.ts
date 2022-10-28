@@ -596,6 +596,9 @@ export default {
     "chainge-finance": {
         enabled: true
     },
+    "minerswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

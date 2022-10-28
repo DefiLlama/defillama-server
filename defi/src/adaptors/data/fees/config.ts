@@ -106,4 +106,7 @@ export default {
     "woofi": {
         enabled: true
     },
+    "metavault.trade": {
+        enabled: true
+    }
 } as AdaptorsConfig

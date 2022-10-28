@@ -18034,5 +18034,31 @@ listedAt: 1650804679
   audit_links: ["https://github.com/interfinetwork/project-delivery-data/blob/main/Minerswap/MinerSwap_AuditReport_InterFi.pdf"],
   listedAt: 1666952098
 },
+{
+  id: "2234",
+  name: "Evolve",
+  address: null,
+  symbol: "-",
+  url: "https://www.evl.finance",
+  description:
+    "Evolve is a decentralized lending protocol that allows suppliers to earn farming rewards at high APRs without impermanent loss and allows borrowers to farm with leverage.",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/evolve.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Cronos"],
+  module: "evolve/index.js",
+  twitter: "evolutionxeco", 
+  forkedFrom: ["Tarot"],
+  oracles: ["TWAP"],
+  audit_links: [
+                  "https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/blob/main/audit/SC_impermax_core.pdf",
+                  "https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/blob/main/audit/CertiK%20Audit%20Report%20for%20impermax-x-uniswapv2-core.pdf"
+               ],
+  listedAt: 1666963642
+},
 ]
 export default data2;

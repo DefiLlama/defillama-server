@@ -1173,7 +1173,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Algorand",
-      types: ["gas"]
+      types: ["L2", "gas"]
     },
     chainId: 2002,
   },

@@ -219,7 +219,7 @@ export default {
         enabled: true
     },
     "terraswap": {
-        enabled: true
+        enabled: false
     },
     "saros": {
         enabled: true
@@ -291,7 +291,7 @@ export default {
         enabled: true
     },
     "astroport": {
-        enabled: true
+        enabled: false
     },
     "tethys-finance": {
         enabled: true

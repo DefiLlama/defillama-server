@@ -18090,5 +18090,28 @@ listedAt: 1650804679
   listedAt: 1666971574
 },
 */
+{
+  id: "2236",
+  name: "Yield Yak Staked Avax",
+  address: "axax:0xf7d9281e8e363584973f946201b82ba72c965d27",
+  symbol: "yyAVAX",
+  url: "https://yieldyak.com/liquid-staking",
+  description:
+    "Earn native yield for securing the Avalanche network without lockups.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/yield-yak-staked-avax.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "yield-yak-avax",
+  cmcId: "21775",
+  category: "Liquid Staking",
+  chains: ["Avalanche"],
+  module: "yieldyak-staked-avax/index.js",
+  twitter: "yieldyak_", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://docs.geode.fi/developers/audits"],
+  listedAt: 1667041431
+},
 ]
 export default data2;

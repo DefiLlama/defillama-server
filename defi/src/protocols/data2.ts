@@ -18137,5 +18137,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/axelarnetwork/audits"],
   listedAt: 1667045416
 },
+{
+  id: "2238",
+  name: "anetaBTC",
+  address: null,
+  symbol: "-",
+  url: "https://anetabtc.io",
+  description:
+    "AnetaBTC is a fully on-chain, decentralized protocol that allows Bitcoin to be directly wrapped on the Ergo and Cardano blockchains. AnetaBTC enables Bitcoin holders to unlock the value of their assets in a secure and efficient environment to provide yield, without selling any Bitcoin and without any third-party custodian involvement.",
+  chain: "Cardano",
+  logo: `${baseIconsUrl}/anetabtc.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Cardano", "Ergo"],
+  module: "anetabtc/index.js",
+  twitter: "anetaBTC", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://github.com/andrehafner/my.ergoport.dev/tree/main/aneta"],
+  listedAt: 1667056144
+},
 ]
 export default data2;

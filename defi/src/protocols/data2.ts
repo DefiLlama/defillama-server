@@ -18114,5 +18114,28 @@ listedAt: 1650804679
   parentProtocol: "Yield Yak",
   listedAt: 1667041431
 },
+{
+  id: "2237",
+  name: "Axelar",
+  address: "0x467719ad09025fcc6cf6f8311755809d45a5e5f3",
+  symbol: "AXL",
+  url: "https://axelar.network",
+  description:
+    "Axelar delivers secure cross-chain communication for Web3. Our infrastructure enables dApp users to interact with any asset or application, on any chain, with one click.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/axelar.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "axelar",
+  cmcId: "17799",
+  category: "Bridge",
+  chains: ["Ethereum"],
+  module: "alexar/index.js",
+  twitter: "axelarcore", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://github.com/axelarnetwork/audits"],
+  listedAt: 1667045416
+},
 ]
 export default data2;

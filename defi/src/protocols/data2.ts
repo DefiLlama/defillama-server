@@ -18160,5 +18160,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/andrehafner/my.ergoport.dev/tree/main/aneta"],
   listedAt: 1667056144
 },
+{
+  id: "2239",
+  name: "Quickswap V3",
+  address: "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
+  symbol: "QUICK",
+  url: "https://quickswap.exchange/",
+  description: "QuickSwap is a decentralized exchange that runs on Polygon Network to offer cheaper and faster transactions. Its automated market maker integrates upgradeable smart contracts on Ethereum and renders intermediaries obsolete. The exchange is based on open-source software and prioritizes decentralization, censorship resistance and security. It benefits from ultra-low gas prices compared to Ethereum, as well as fast and simple trading execution",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/quickswap-dex.jpg`,
+  audits: "3",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Polygon"],
+  module: "quickswap-v3/index.js",
+  twitter: "QuickswapDEX",
+  audit_links: ["https://contractsecurity.io/quick-audit-report/"],
+  forkedFrom: ["Uniswap"],
+  parentProtocol: "Quickswap",
+  listedAt: 1667063569
+},
 ]
 export default data2;

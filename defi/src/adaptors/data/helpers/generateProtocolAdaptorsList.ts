@@ -70,8 +70,8 @@ function getLogoKey(key: string) {
 
 // This should be changed to be easier to mantain
 export const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
-    "2198": {
-        id: "2196",
+    "2196": {
+        id: "1",
         name: "Uniswap"
     },
     "1599": {
@@ -81,7 +81,7 @@ export const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
 }
 
 export const getBySpecificId = (key: string, id: string) => {
-    if (key === 'uniswap') return id === "2198"
+    if (key === 'uniswap') return id === "2196"
     if (key === 'aave') return id === "1599"
     return true
 }

@@ -476,6 +476,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "FolksFinance",
   },
 */
+{
+  id: "Yield Yak",
+  name: "Yield Yak",
+  url: "https://yieldyak.com",
+  description:
+  "Yield Yak provides tools for DeFi users on Avalanche. Discover a huge selection of autocompounding farms and make your life easier.",
+  logo: `${baseIconsUrl}/yield yak.png`,
+  gecko_id: "yield-yak",
+  cmcId: "11415",
+  chains: [],
+  twitter: "yieldyak_",
+},
 ];
 
 export default parentProtocols;

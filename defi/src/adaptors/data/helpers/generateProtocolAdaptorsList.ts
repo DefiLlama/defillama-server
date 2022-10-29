@@ -71,7 +71,7 @@ function getLogoKey(key: string) {
 // This should be changed to be easier to mantain
 export const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
     "2198": {
-        id: "1",
+        id: "2196",
         name: "Uniswap"
     },
     "1599": {

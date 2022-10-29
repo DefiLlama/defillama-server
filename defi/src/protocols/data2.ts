@@ -11851,7 +11851,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Services",
+  category: "RWA",
   chains: ["Algorand"],
   module: "lofty/index.js",
   oracles: [],

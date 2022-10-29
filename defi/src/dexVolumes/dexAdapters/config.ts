@@ -599,6 +599,9 @@ export default {
     "minerswap": {
         enabled: true
     },
+    "wavelength-dao": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

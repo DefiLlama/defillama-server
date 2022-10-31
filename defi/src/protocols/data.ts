@@ -4427,7 +4427,7 @@ const data: Protocol[] = [
     gecko_id: "beefy-finance",
     cmcId: "7311",
     category: "Yield Aggregator",
-    chains: ["Binance", "Polygon", "Avalanche", "Heco", "Fantom", "Harmony", "Arbitrum", "Celo", "Moonriver", "Cronos", "f", "Metis", "Aurora", "Moonbeam", "Oasis", "Optimism"],
+    chains: ["Binance", "Polygon", "Avalanche", "Heco", "Fantom", "Harmony", "Arbitrum", "Celo", "Moonriver", "Cronos", "Fuse", "Metis", "Aurora", "Moonbeam", "Oasis", "Optimism"],
     module: "beefy/index.js",
     twitter: "beefyfinance",
     audit_links: ["https://github.com/beefyfinance/beefy-audits"],

@@ -1,5 +1,3 @@
-import { getBlocks } from "@defillama/sdk/build/computeTVL/blocks";
-import { lookupBlock } from "@defillama/sdk/build/util/index";
 import { getEcosystemBlocks } from "../dexVolumes/utils";
 import protocols from "../protocols/data";
 import pThrottle from "../utils/pThrottle";
@@ -14,24 +12,6 @@ export function getProtocol(name: string) {
     throw new Error("No protocol with that name");
   }
   return protocol;
-}
-
-export async function getBlocksRetry(timestamp: number) {
-  for (let i = 0; i < 10; i++) {
-    try {
-      return await getBlocks(timestamp);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-  throw new Error(`Couldn't get the block numbers at timestamp ${timestamp}`);
-}
-
-export async function getEthBlock(timestamp: number) {
-  return {
-    ethereumBlock: (await lookupBlock(timestamp, { chain: "ethereum" })).block,
-    chainBlocks: {},
-  };
 }
 
 export async function getChainBlocksRetry(

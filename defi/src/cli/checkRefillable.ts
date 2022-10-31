@@ -1,7 +1,8 @@
 require("dotenv").config();
 const protocolToRefill = "Uniswap"
 
-import { getProtocol, getBlocksRetry } from "./utils";
+import { getProtocol, } from "./utils";
+import { getBlocksRetry } from "../storeTvlInterval/blocks";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { importAdapter } from "../utils/imports/importAdapter";
 

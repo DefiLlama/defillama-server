@@ -46,7 +46,7 @@ async function fetchUniV2MarketsFromSubgraph(
 ) {
   let addresses: string[] = [];
   let reservereThreshold: number = 0;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
       query lps {
         pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,
@@ -58,8 +58,8 @@ async function fetchUniV2MarketsFromSubgraph(
         }
       }`;
     const result = (await request(subgraph, lpQuery)).pairs;
-    if (result.length < 1000) i = 5;
-    reservereThreshold = result[result.length - 1].volumeUSD;
+    if (result.length < 1000) i = 20;
+    reservereThreshold = result[Math.max(result.length - 1, 0)].volumeUSD;
     addresses.push(
       ...(await request(subgraph, lpQuery)).pairs.map((p: any) => p.id)
     );
@@ -173,10 +173,10 @@ async function lps(
     ) {
       return;
     }
-    const coinData: CoinData = tokenPrices.filter(
+    const coinData: CoinData | undefined = tokenPrices.find(
       (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
-    )[0];
-
+    );
+    if (coinData == undefined) return;
     const supply =
       tokenInfos.supplies[i].output / 10 ** tokenInfos.lpDecimals[i].output;
     const value =
@@ -190,7 +190,7 @@ async function lps(
     let confidence: number =
       coinData.confidence == undefined ? 1 : coinData.confidence;
 
-    if (symbol.includes("null")) return;
+    if (symbol.includes("null") || lpPrice == Infinity) return;
     addToDBWritesList(
       writes,
       chain,
@@ -218,10 +218,10 @@ async function unknownTokens(
     (p: any) => p.bothTokensKnown == false
   );
   let tokenValues = lpsWithUnknown.map((l: any) => {
-    const coinData: CoinData = tokenPrices.filter(
+    const coinData: CoinData | undefined = tokenPrices.find(
       (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
-    )[0];
-
+    );
+    if (coinData == undefined) return;
     const i: number = priceableLPs.indexOf(l);
 
     const sideValue: number =
@@ -343,6 +343,7 @@ async function getConfidenceScores(
     let confidence: number = 0;
     try {
       confidence = r.output[1] / (ratio * swapResults[i + 1].output[1]);
+      if (confidence > 0.989) confidence = 0.989;
     } catch {}
     confidences[r.input.params[1][0].toLowerCase()] = confidence;
   });
@@ -355,6 +356,7 @@ export default async function getTokenPrices(
   subgraph: string | undefined = undefined,
   timestamp: number
 ) {
+  router;
   let token0s;
   let token1s;
   let reserves;
@@ -363,7 +365,7 @@ export default async function getTokenPrices(
   const block: number | undefined = await getBlock(chain, timestamp);
   if (chain == "bsc" && subgraph == undefined) {
     return;
-  } else if (chain == "bsc" && subgraph != undefined) {
+  } else if (subgraph != undefined) {
     pairAddresses = await fetchUniV2MarketsFromSubgraph(subgraph, timestamp);
   } else {
     pairAddresses = await fetchUniV2Markets(chain, factory, block);
@@ -404,15 +406,15 @@ export default async function getTokenPrices(
   );
 
   const writes: Write[] = [];
-  await unknownTokens(
-    writes,
-    chain,
-    router,
-    timestamp,
-    priceableLPs,
-    tokenPrices,
-    tokenInfos
-  );
+  // await unknownTokens(
+  //   writes,
+  //   chain,
+  //   router,
+  //   timestamp,
+  //   priceableLPs,
+  //   tokenPrices,
+  //   tokenInfos
+  // );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
   return writes;

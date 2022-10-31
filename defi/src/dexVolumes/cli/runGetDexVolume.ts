@@ -4,10 +4,10 @@ import { handler } from "../handlers/getDexVolume";
 (async () => {
     const r = await handler({
         pathParameters: {
-            dex: "astroport"
+            dex: "uniswap"
         }
     } as unknown as AWSLambda.APIGatewayEvent)
     const d = JSON.parse(r.body)
-    console.log(d.volumeHistory.length)
+    console.log(d.displayName, d)
     //console.log(JSON.stringify(d, null, 2))
 })()

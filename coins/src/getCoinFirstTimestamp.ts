@@ -1,4 +1,3 @@
-require("dotenv").config();
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
 import getRecordEarliestTimestamp from "./utils/shared/getRecordEarliestTimestamp";
@@ -14,7 +13,7 @@ const handler = async (
       const finalCoin = await getRecordEarliestTimestamp(
         coin.redirect ?? coin.PK
       );
-      if (finalCoin.SK === undefined) {
+      if (finalCoin === undefined) {
         return;
       }
       response[PKTransforms[coin.PK]] = {

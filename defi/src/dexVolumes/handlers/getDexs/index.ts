@@ -12,6 +12,8 @@ import { sendDiscordAlert } from "../../utils/notify";
 import { VolumeAdapter } from "@defillama/adapters/volumes/dexVolume.type";
 import { importVolumeAdapter } from "../../../utils/imports/importDexAdapters";
 import removeErrors from "../../utils/removeErrors";
+import { getDisplayName } from "../../../adaptors/data/helpers/generateProtocolAdaptorsList";
+import { Adapter } from "@defillama/adaptors/adapters/types";
 
 export interface IGetDexsResponseBody extends IGeneralStats {
     totalDataChart: IChartData,
@@ -55,8 +57,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         let displayName = adapter.name
         try {
             const ada: VolumeAdapter = (await importVolumeAdapter(adapter)).default
-            if ("breakdown" in ada)
-                displayName = Object.keys(ada.breakdown).length === 1 ? `${Object.keys(ada.breakdown)[0]}` : adapter.name
+            displayName = getDisplayName(adapter.name, ada as Adapter)
 
             const chainsSummary = getChainByProtocolVersion(adapter.volumeAdapter, chainFilter)
             let volumes = (await getVolume(adapter.id, VolumeType.dailyVolume))
@@ -75,6 +76,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 if (enableAlerts)
                     await sendDiscordAlert(`Volume not updated (using old data...)\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
                 // console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
+                volumes.push(new Volume(prevDayVolume.type, prevDayVolume.dexId, prevDayTimestamp, prevDayVolume.data))
             }
 
             if ((prevDayTimestamp - prevDayVolume.timestamp >= ONE_DAY_IN_SECONDS * MAX_OUTDATED_DAYS) && !isDisabled(adapter.volumeAdapter)) {
@@ -92,7 +94,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             if (volumes.length !== 1 && (!change_1d || change_1d && (change_1d < -99 || change_1d > 10000)) && change_1d !== null) {
                 if (enableAlerts)
                     await sendDiscordAlert(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response`)
-                throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
+                // throw new Error(`${adapter.name} has a daily change of ${change_1d}, looks sus... Not including in the response\n${JSON.stringify(prevDayVolume)}`)
             }
 
             const protocolVersionsSummary = getSummaryByProtocolVersion(volumes, prevDayTimestamp)

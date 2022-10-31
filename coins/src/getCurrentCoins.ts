@@ -1,22 +1,26 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import { CoinsResponse, batchGetLatest, getBasicCoins } from "./utils/getCoinsUtils";
 import { storeMissingCoins } from "./utils/missingCoins";
+import { quantisePeriod } from "./utils/timestampUtils";
 
-const isFresh = (timestamp:number) => {
+const isFresh = (timestamp:number, searchWidth: number) => {
   const now = Date.now()/1e3;
-  return (now - timestamp) < (3600 * 24); //24h
+  return (now - timestamp) < searchWidth;
 }
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins?? "").split(',');
+  const searchWidth: number = quantisePeriod(
+    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "6h"
+  );
   const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
   const response = {} as CoinsResponse
   const coinsWithRedirect = {} as {[redirect:string]:any[]}
   coins.forEach(coin=>{
     if(coin.redirect === undefined){
-        if(isFresh(coin.timestamp)){
+        if(isFresh(coin.timestamp, searchWidth)){
           response[PKTransforms[coin.PK]] = {
               decimals: coin.decimals,
               price: coin.price,
@@ -37,7 +41,7 @@ const handler = async (
     const resolvedRedirectedCoins = await batchGetLatest(redirects)
     resolvedRedirectedCoins.forEach(redirectedCoin=>{
         coinsWithRedirect[redirectedCoin.PK].forEach(ogCoin=>{
-          if(isFresh(redirectedCoin.timestamp)){
+          if(isFresh(redirectedCoin.timestamp, searchWidth)){
             response[PKTransforms[ogCoin.PK]] = {
                 decimals: ogCoin.decimals,
                 symbol: ogCoin.symbol,

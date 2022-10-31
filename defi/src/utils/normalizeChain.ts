@@ -433,11 +433,6 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 122,
   },
-  "SORA": {
-    geckoId: "sora",
-    symbol: "XOR",
-    cmcId: "5802",
-  },
   "smartBCH": {
     geckoId: "bitcoin-cash",
     symbol: "BCH",
@@ -777,7 +772,7 @@ export const chainCoingeckoIds = {
     symbol: "VITE",
     cmcId: "2937",
   },
-  "Milkomeda": {
+  "Milkomeda C1": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -1159,6 +1154,29 @@ export const chainCoingeckoIds = {
     cmcId: "3884",
     categories: ["EVM"],
   },
+  "Aptos": {
+    geckoId: "aptos",
+    symbol: "APT",
+    cmcId: "21794",
+  },
+  "Kekchain": {
+    geckoId: "kekchain",
+    symbol: "KEK",
+    cmcId: "21606",
+    categories: ["EVM"],
+    chainId: 420420,
+  },
+  "Milkomeda A1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Algorand",
+      types: ["L2", "gas"]
+    },
+    chainId: 2002,
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1178,6 +1196,7 @@ chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
+chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury", "vesting"]
 
@@ -1199,6 +1218,8 @@ export function transformNewChainName(chain: string) {
       return "GodwokenV1"
     case "arbitrum_nova":
       return "Arbitrum Nova"
+    case "Milkomeda":
+        return "Milkomeda C1"
     default:
       return chain
   }
@@ -1228,8 +1249,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Nova Network" : "Nova Network"
     case "godwoken_v1":
       return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
-    case "arbitrum_nova":
-      return useNewChainNames ? "Arbitrum Nova" : "Arbitrum Nova"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -1269,7 +1288,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "fuse":
       return "Fuse"
     case "sora":
-      return "SORA"
+      return "Sora"
     case "smartbch":
       return "smartBCH"
     case "elastos":
@@ -1347,7 +1366,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "vite":
       return "Vite"
     case "milkomeda":
-      return "Milkomeda"
+      return useNewChainNames ? "Milkomeda C1" : "Milkomeda"
     case "dfk":
       return "DFK"
     case "clv":
@@ -1456,6 +1475,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Cube"
     case "functionx":
       return "FunctionX"
+    case "aptos":
+        return "Aptos"
+    case "kekchain":
+        return "Kekchain"
+    case "milkomeda_a1":
+          return "Milkomeda A1"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

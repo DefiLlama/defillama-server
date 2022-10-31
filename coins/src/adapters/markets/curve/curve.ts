@@ -288,10 +288,10 @@ async function getUnderlyingPrices(
 
   const poolComponents = balances.map((b: any) => {
     try {
-      let coinData: CoinData = coinsData.filter(
+      let coinData: CoinData | undefined = coinsData.find(
         (c: CoinData) => c.address == b.input.target.toLowerCase()
-      )[0];
-
+      );
+      if (coinData == undefined) throw new Error(`no coin data found`)
       return {
         balance: b.output / 10 ** coinData.decimals,
         price: coinData.price,
@@ -438,10 +438,10 @@ async function unknownTokens(
     .map((d: Result, i: number) => {
       if (i % 2 == 0) return;
       const index = d.input.params[1];
-      const poolInfo = unknownPoolList.filter(
+      const poolInfo = unknownPoolList.find(
         (p: any) => p.address == d.input.target
       );
-      return poolInfo[0].balances[index].input.target;
+      return poolInfo.balances[index].input.target;
     })
     .filter((c: any) => c != undefined);
 
@@ -455,6 +455,8 @@ async function unknownTokens(
   prices.map((p: any, i: number) => {
     if (i % 2 == 0) return;
     if (prices[i] == Infinity || prices[i - 1] == Infinity) return;
+    let confidence = p / prices[i - 1];
+    if (confidence > 0.989) confidence = 0.989;
     addToDBWritesList(
       writes,
       chain,
@@ -464,7 +466,7 @@ async function unknownTokens(
       unknownTokenInfos.symbols[Math.floor(i / 2)].output,
       timestamp,
       "curve-unknown-token",
-      p / prices[i - 1]
+      confidence
     );
   });
 }
@@ -490,6 +492,6 @@ export default async function getTokenPrices(
     unknownTokensList
   );
 
-  await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
+  // await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
   return writes;
 }

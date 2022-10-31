@@ -122,12 +122,40 @@ functions:
       - http:
           path: prices/current/{coins}
           method: get
+  coinFirstTimestamp:
+    handler: src/getCoinFirstTimestamp.default
+    timeout: 60
+    events:
+      - http:
+          path: prices/first/{coins}
+          method: get
   historicalCoinPrices:
     handler: src/getHistoricalCoins.default
     timeout: 60
     events:
       - http:
           path: prices/historical/{timestamp}/{coins}
+          method: get
+  coinPriceChart:
+    handler: src/getCoinPriceChart.default
+    timeout: 60
+    events:
+      - http:
+          path: chart/{coins}
+          method: get
+  batchHistorical:
+    handler: src/getBatchHistoricalCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: batchHistorical
+          method: get
+  coinPercentageChange:
+    handler: src/getPercentageChange.default
+    timeout: 60
+    events:
+      - http:
+          path: percentage/{coins}
           method: get
   block:
     handler: src/getBlock.default

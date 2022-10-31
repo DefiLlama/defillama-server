@@ -3,6 +3,7 @@ import glpAdapter from "./glp";
 import abraAdapter from "./abracadabra";
 import saiAdapter from "./sai";
 import podsAdapter from "./pods";
+import distressedAdapter from "./distressedAssets";
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
@@ -26,4 +27,8 @@ export function sai(timestamp: number = 0) {
 export function pods(timestamp: number = 0) {
   console.log("starting pods");
   return podsAdapter(timestamp);
+}
+export function distressed(timestamp: number = 0) {
+  console.log("starting distressed");
+  return distressedAdapter("harmony", timestamp);
 }

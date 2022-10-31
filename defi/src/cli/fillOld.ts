@@ -44,7 +44,13 @@ async function getAndStore(
   dailyItems: DailyItems
 ) {
   const adapterModule = await importAdapter(protocol)
-  const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp, { adapterModule });
+  let ethereumBlock = 1e15, chainBlocks = {}
+  if (!process.env.SKIP_BLOCK_FETCH) {
+    const res = await getBlocksRetry(timestamp, { adapterModule })
+    ethereumBlock = res.ethereumBlock
+    chainBlocks = res.chainBlocks
+  }
+
   const tvl = await storeTvl(
     timestamp,
     ethereumBlock,
@@ -107,4 +113,8 @@ const main = async () => {
     await Promise.all(batchedActions);
   }
 };
-main();
+main().then(() => {
+  console.log('Done!!!')
+  process.exit(0)
+})
+

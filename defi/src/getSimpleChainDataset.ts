@@ -17,7 +17,7 @@ const handler = async (
     }
   }
 
-  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols();
+  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(false);
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (protocolTvl === undefined) {
       return;
@@ -43,6 +43,9 @@ const handler = async (
         const chainName = getChainDisplayName(chain, true);
         if(chainName.startsWith(prefix)){
           const sectionName = chainName.slice(prefix.length)
+          if (sectionName === 'doublecounted' || sectionName === 'liquidstaking' || sectionName === 'dcAndLsOverlap') {
+            console.log(item, sectionName, tvl)
+          }
           if(params[sectionName] === "true"){
             dayTvl += tvl;
             return

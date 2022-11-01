@@ -60,17 +60,17 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
           dayTvl += tvl;
 
           if (protocol.doublecounted && params["doublecounted"] !== "true") {
-            // dayTvl -= tvl;
+            dayTvl -= tvl;
           }
 
           if (protocol.category?.toLowerCase() === "liquid staking" && params["liquidstaking"] !== "true") {
-            // dayTvl -= tvl;
+            dayTvl -= tvl;
           }
 
           // if protocol is both doublecounted and liquid staking, add tvl as we have subtracted it twice above
           if (protocol.doublecounted && protocol.category?.toLowerCase() === "liquid staking") {
             if (params["doublecounted"] !== "true" && params["liquidstaking"] !== "true") {
-              // dayTvl += tvl;
+              dayTvl += tvl;
             }
           }
         }
@@ -121,22 +121,12 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   }
 
   // convert data to csv format
-  const csv = grid.map((r) => r.join(",")).join("\n");
+  const csv = grid
+    .slice(0, 2)
+    .map((r) => r.join(","))
+    .join("\n");
 
-  const filename = `chain-dataset-${rawChain}.csv`;
-
-  // store to S3
-  await storeDataset(filename, csv);
-
-  const response: IResponse = {
-    statusCode: 307,
-    body: "",
-    headers: {
-      Location: `https://defillama-datasets.s3.eu-central-1.amazonaws.com/temp/${filename}`,
-    },
-  };
-
-  return response;
+  return { statusCode: 200, body: csv };
 };
 
 export default wrap(handler);

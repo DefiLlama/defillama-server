@@ -286,6 +286,14 @@ functions:
       - http:
           path: simpleChainDataset/{chain}
           method: get
+  totalChainDataset:
+    handler: src/getTotalChainDataset.default
+    timeout: 900
+    memorySize: 3000
+    events:
+      - http:
+          path: totalChainDataset/{chain}
+          method: get
   config:
     handler: src/getConfig.default
     timeout: 10

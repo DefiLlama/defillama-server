@@ -57,21 +57,24 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
         }
 
         if ((chainToBeUsed === null && chain === "tvl") || chainToBeUsed === chainName) {
-          dayTvl += tvl;
-
-          if (protocol.doublecounted && params["doublecounted"] !== "true") {
-            // dayTvl -= tvl;
-          }
-
-          if (protocol.category?.toLowerCase() === "liquid staking" && params["liquidstaking"] !== "true") {
-            // dayTvl -= tvl;
-          }
-
-          // if protocol is both doublecounted and liquid staking, add tvl as we have subtracted it twice above
-          if (protocol.doublecounted && protocol.category?.toLowerCase() === "liquid staking") {
-            if (params["doublecounted"] !== "true" && params["liquidstaking"] !== "true") {
-              // dayTvl += tvl;
+          if (protocol.doublecounted || protocol.category?.toLowerCase() === "liquid staking") {
+            if (protocol.doublecounted && params["doublecounted"] === "true") {
+              dayTvl += tvl;
             }
+
+            if (protocol.category?.toLowerCase() === "liquid staking" && params["liquidstaking"] === "true") {
+              dayTvl += tvl;
+            }
+            if (
+              protocol.doublecounted &&
+              protocol.category?.toLowerCase() === "liquid staking" &&
+              params["doublecounted"] === "true" &&
+              params["liquidstaking"] === "true"
+            ) {
+              dayTvl -= tvl;
+            }
+          } else {
+            dayTvl += tvl;
           }
         }
       });

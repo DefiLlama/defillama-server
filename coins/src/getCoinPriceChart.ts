@@ -104,6 +104,10 @@ const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const params = formParamsObject(event);
+  if (params.start != null && params.end != null)
+    return errorResponse({
+      message: "use either start or end parameter, not both"
+    });
   const paramError: any = Object.values(params).find(
     (p: any) => typeof p == "object" && p.length == undefined
   );

@@ -18246,7 +18246,7 @@ listedAt: 1650804679
 },
 {
   id: "2091",
-  name: "Algofi vALGO",
+  name: "Algofi liquid governace",
   address: null ,
   symbol: "-",
   url: "https://www.algofi.org/",

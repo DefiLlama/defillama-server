@@ -53,9 +53,12 @@ async function getTvl(
           ethBlock,
           chainBlocks
         );
+        Object.keys(tvlBalances).forEach((key) => {
+          if (+tvlBalances[key] === 0) delete tvlBalances[key]
+        })
         const isStandard = Object.entries(tvlBalances).every(
           (balance) => typeof balance[1] === "string"
-        ); // Can't use stored prices because coingecko has undocumented aliases which we realy on (eg: busd -> binance-usd)
+        ); // Can't use stored prices because coingecko has undocumented aliases which we rely on (eg: busd -> binance-usd)
         let tvlPromise: ReturnType<typeof util.computeTVL>;
         tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, staleCoins);
         const tvlResults = await tvlPromise;

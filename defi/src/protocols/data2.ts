@@ -17947,7 +17947,7 @@ listedAt: 1650804679
   symbol: "PPR",
   url: "https://paperdao.money",
   description:
-    "PaperDAO is a suite of products to kick start the ETH PoW ecosystem. We are PoW maximalists and do not buy into the energy usage rhetoric forwarded by PoS promoters. We have an opportunity to create a healthy DEFI ecosystem from scratch now that we have a clean starting point on an EVM compatible chain which does not have custodial assets such as USDC on it.",
+    "PaperDAO is the leading ETHW Lending Market & $USW Stablecoin Minter on EthereumPoW.",
   chain: "EthereumPoW",
   logo: `${baseIconsUrl}/paperdao.png`,
   audits: "2",
@@ -18181,6 +18181,27 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   parentProtocol: "Quickswap",
   listedAt: 1667063569
+},
+{
+  id: "2240",
+  name: "Peaky Finance",
+  address: null,
+  symbol: "-",
+  url: "https://peaky.finance",
+  description: "Peaky Finance is a DAO that powers a suite of protocols to solve some of the common pain points of Decentralised Finance.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/peaky-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Binance"],
+  module: "peaky-finance/index.js",
+  twitter: "peakyfinance",
+  forkedFrom: ["GMX"],
+  oracles: ["Chainlink"],
+  listedAt: 1667292908
 },
 ]
 export default data2;

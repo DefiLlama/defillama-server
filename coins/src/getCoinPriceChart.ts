@@ -103,11 +103,16 @@ async function fetchDBData(
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const params = formParamsObject(event);
-  if (params.start != null && params.end != null)
+  if (
+    event.queryStringParameters?.start != null &&
+    event.queryStringParameters?.end != null
+  ) {
     return errorResponse({
       message: "use either start or end parameter, not both"
     });
+  }
+  const params = formParamsObject(event);
+
   const paramError: any = Object.values(params).find(
     (p: any) => typeof p == "object" && p.length == undefined
   );

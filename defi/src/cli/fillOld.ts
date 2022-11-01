@@ -38,13 +38,17 @@ async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
   }
 }
 
+type ChainBlocks = {
+  [chain: string]: number;
+}
+
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
   dailyItems: DailyItems
 ) {
   const adapterModule = await importAdapter(protocol)
-  let ethereumBlock = 1e15, chainBlocks = {}
+  let ethereumBlock = 1e15, chainBlocks: ChainBlocks = {}
   if (!process.env.SKIP_BLOCK_FETCH) {
     const res = await getBlocksRetry(timestamp, { adapterModule })
     ethereumBlock = res.ethereumBlock
@@ -80,6 +84,7 @@ function getDailyItems(pk: string) {
 }
 
 const main = async () => {
+  console.log('DRY RUN: ', !!process.env.DRY_RUN)
   const protocolToRefill = process.argv[2]
   const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
   const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel

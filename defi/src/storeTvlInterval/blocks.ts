@@ -1,11 +1,20 @@
 import { getBlocks, getCurrentBlocks, } from "@defillama/sdk/build/computeTVL/blocks";
+import { Chain } from "@defillama/sdk/build/general";
 
 type blockObjects = {
-  chains?: string[] | undefined
+  chains?: Chain[] | undefined
   adapterModule?: any
 }
+type ChainBlocks = {
+  [chain: string]: number;
+}
 
-export async function getBlocksRetry(timestamp: number, options: blockObjects = {}) {
+type blockResponse = {
+  ethereumBlock: number
+  chainBlocks: ChainBlocks
+}
+
+export async function getBlocksRetry(timestamp: number, options: blockObjects = {}): Promise<blockResponse> {
   let { chains, adapterModule, } = options
   if (adapterModule) {
     chains = getChainlist(adapterModule)
@@ -18,7 +27,8 @@ export async function getEthBlock(timestamp: number) {
 }
 
 function getChainlist(adapterModule: any) {
-  return Object.keys(adapterModule).filter(item => typeof adapterModule[item] === 'object' && !Array.isArray(adapterModule[item]));
+  const res = Object.keys(adapterModule).filter(item => typeof adapterModule[item] === 'object' && !Array.isArray(adapterModule[item])) as Chain[]
+  return res.filter((i: string) => i !== 'default')
 }
 
 export async function getCurrentBlock(options: blockObjects = {}) {

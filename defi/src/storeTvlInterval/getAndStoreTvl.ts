@@ -221,31 +221,33 @@ export async function storeTvl(
     await runBeforeStore();
   }
   try {
-    await storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData); // Checks circuit breakers
+    if (!process.env.DRY_RUN) {
+      await storeNewTvl(protocol, unixTimestamp, usdTvls, storePreviousData); // Checks circuit breakers
 
-    const storeTokensAction = storeNewTokensValueLocked(
-      protocol,
-      unixTimestamp,
-      tokensBalances,
-      hourlyTokensTvl,
-      dailyTokensTvl
-    );
-    const storeUsdTokensAction = storeNewTokensValueLocked(
-      protocol,
-      unixTimestamp,
-      usdTokenBalances,
-      hourlyUsdTokensTvl,
-      dailyUsdTokensTvl
-    );
-    const storeRawTokensAction = storeNewTokensValueLocked(
-      protocol,
-      unixTimestamp,
-      rawTokenBalances,
-      hourlyRawTokensTvl,
-      dailyRawTokensTvl
-    );
+      const storeTokensAction = storeNewTokensValueLocked(
+        protocol,
+        unixTimestamp,
+        tokensBalances,
+        hourlyTokensTvl,
+        dailyTokensTvl
+      );
+      const storeUsdTokensAction = storeNewTokensValueLocked(
+        protocol,
+        unixTimestamp,
+        usdTokenBalances,
+        hourlyUsdTokensTvl,
+        dailyUsdTokensTvl
+      );
+      const storeRawTokensAction = storeNewTokensValueLocked(
+        protocol,
+        unixTimestamp,
+        rawTokenBalances,
+        hourlyRawTokensTvl,
+        dailyRawTokensTvl
+      );
 
-    await Promise.all([storeTokensAction, storeUsdTokensAction, storeRawTokensAction]);
+      await Promise.all([storeTokensAction, storeUsdTokensAction, storeRawTokensAction]);
+    }
   } catch (e) {
     console.error(protocol.name, e);
     insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "store")

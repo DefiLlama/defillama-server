@@ -1062,10 +1062,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "Canto": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
-    categories: ["EVM"],
+    geckoId: "canto",
+    symbol: "CANTO",
+    cmcId: "21516",
+    categories: ["EVM", "Cosmos"],
   },
     "Ripple": {
       geckoId: "ripple",

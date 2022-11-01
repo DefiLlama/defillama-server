@@ -18244,7 +18244,7 @@ listedAt: 1650804679
   audit_links: ["https://etherauthority.io/crolend-token-smart-contract-audit"],
   listedAt: 1667316046
 },
-{
+/* {
   id: "2243",
   name: "Algofi vALGO",
   address: null ,
@@ -18265,6 +18265,6 @@ listedAt: 1650804679
   audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algofi.pdf"] ,
   parentProtocol: "Algofi",
   listedAt: 1667329765
-},
+}, */
 ]
 export default data2;

@@ -18063,7 +18063,7 @@ listedAt: 1650804679
 },
 {
   id: "2235",
-  name: "Folks Finance gALGO",
+  name: "Algo Liquid Governace",
   address: null,
   symbol: "-",
   url: "https://folks.finance/",

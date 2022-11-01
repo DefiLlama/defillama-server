@@ -5112,7 +5112,7 @@ const data2: Protocol[] =  [
 },
 {
   id: "1642",
-  name: "Folks Finance",
+  name: "Folks Finance Lending",
   address: null,
   symbol: "-",
   url: "https://folks.finance/",
@@ -5134,7 +5134,7 @@ const data2: Protocol[] =  [
     "https://github.com/vantagepointreports/releases/blob/main/VPQ-20210652%20-%20Folks.Finance%20-%20Smart%20Contract%20Audit%20-%20Phase%201_Public_V1.0.pdf",
     "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Folks-Finance-Design-Review.pdf"
   ],
-  //parentProtocol: "Folks Finance",
+  parentProtocol: "Folks Finance",
   listedAt: 1649792952
 },
 {
@@ -18061,7 +18061,6 @@ listedAt: 1650804679
                ],
   listedAt: 1666963642
 },
-/*
 {
   id: "2235",
   name: "Folks Finance gALGO",
@@ -18089,7 +18088,6 @@ listedAt: 1650804679
   parentProtocol: "Folks Finance",
   listedAt: 1666971574
 },
-*/
 {
   id: "2236",
   name: "Yield Yak Staked Avax",
@@ -18245,6 +18243,28 @@ listedAt: 1650804679
   oracles: [],
   audit_links: ["https://etherauthority.io/crolend-token-smart-contract-audit"],
   listedAt: 1667316046
+},
+{
+  id: "2091",
+  name: "Algofi vALGO",
+  address: null ,
+  symbol: "-",
+  url: "https://www.algofi.org/",
+  description:"ALGO liquid staking protocol built on Algorand",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/algofi.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null ,
+  cmcId: null ,
+  category: "Liquid Staking",
+  chains: ["Algorand"],
+  module: "algofi-valgo/index.js",
+  twitter: "algofiorg",
+  oracles: [],
+  audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algofi.pdf"] ,
+  parentProtocol: "Algofi",
+  listedAt: 1667329765
 },
 ]
 export default data2;

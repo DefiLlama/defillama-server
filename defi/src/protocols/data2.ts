@@ -17947,7 +17947,7 @@ listedAt: 1650804679
   symbol: "PPR",
   url: "https://paperdao.money",
   description:
-    "PaperDAO is a suite of products to kick start the ETH PoW ecosystem. We are PoW maximalists and do not buy into the energy usage rhetoric forwarded by PoS promoters. We have an opportunity to create a healthy DEFI ecosystem from scratch now that we have a clean starting point on an EVM compatible chain which does not have custodial assets such as USDC on it.",
+    "PaperDAO is the leading ETHW Lending Market & $USW Stablecoin Minter on EthereumPoW.",
   chain: "EthereumPoW",
   logo: `${baseIconsUrl}/paperdao.png`,
   audits: "2",

@@ -18182,5 +18182,26 @@ listedAt: 1650804679
   parentProtocol: "Quickswap",
   listedAt: 1667063569
 },
+{
+  id: "2240",
+  name: "Peaky Finance",
+  address: null,
+  symbol: "-",
+  url: "https://peaky.finance",
+  description: "Peaky Finance is a DAO that powers a suite of protocols to solve some of the common pain points of Decentralised Finance.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/peaky-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Binance"],
+  module: "peaky-finance/index.js",
+  twitter: "peakyfinance",
+  forkedFrom: ["GMX"],
+  oracles: ["Chainlink"],
+  listedAt: 1667292908
+},
 ]
 export default data2;

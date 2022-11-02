@@ -2,7 +2,7 @@ import protocols, { Protocol } from "./protocols/data";
 import { getHistoricalValues } from "./utils/shared/dynamodb";
 import { dailyTvl, getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import { DAY, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
-import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections, isDoubleCounted } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompress } from "zlib";
@@ -70,8 +70,7 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean) {
       }
 
       // check if protocol is double counted
-      const doublecounted =
-        module.doublecounted ?? (protocol.category === "Yield Aggregator" || protocol.category === "Yield");
+      const doublecounted = isDoubleCounted(module.doublecounted, protocol.category);
 
       let protocolData = { ...protocol, doublecounted };
 

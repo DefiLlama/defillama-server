@@ -6,6 +6,7 @@ import { importAdapter } from "./imports/importAdapter";
 import {
   extraSections,
   getChainDisplayName,
+  isDoubleCounted,
   nonChains,
 } from "./normalizeChain";
 import getTVLOfRecordClosestToTimestamp from "./shared/getRecordClosestToTimestamp";
@@ -48,10 +49,7 @@ export async function getProtocolTvl(
       importAdapter(protocol),
     ]);
 
-    const isDoubleCount =
-      module.doublecounted ??
-      (protocol.category === "Yield Aggregator" ||
-        protocol.category === "Yield");
+    const isDoubleCount = isDoubleCounted(module.doublecounted, protocol.category);
 
     if (lastRecord) {
       Object.entries(lastRecord).forEach(([chain, chainTvl]) => {

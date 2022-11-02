@@ -2,7 +2,7 @@ import protocols, { Protocol } from './protocols/data';
 import { getHistoricalValues } from './utils/shared/dynamodb';
 import { dailyTvl, getLastRecord, hourlyTvl } from './utils/getLastRecord';
 import { DAY, getClosestDayStartTimestamp, secondsInHour } from './utils/date';
-import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from './utils/normalizeChain';
+import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections, isDoubleCounted } from './utils/normalizeChain';
 import { IResponse, successResponse, wrap } from './utils/shared';
 import { craftProtocolsResponse } from './getProtocols';
 import { getProtocolTvl, ProtocolTvls } from './utils/getProtocolTvl';
@@ -54,8 +54,7 @@ export async function getHistoricalTvlForAllProtocols() {
         return undefined;
       }
 
-      const doublecounted =
-      module.doublecounted ?? (protocol.category === 'Yield Aggregator' || protocol.category === 'Yield');
+      const doublecounted = isDoubleCounted(module.doublecounted, protocol.category);
       let protocolData = { ...protocol, doublecounted };
 
       const lastDailyItem = historicalTvl[historicalTvl.length - 1];

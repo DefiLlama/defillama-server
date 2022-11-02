@@ -18309,5 +18309,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1667390191
 },
+{
+  id: "2246",
+  name: "Hera Finance",
+  address: "metis:0x6F05709bc91Bad933346F9E159f0D3FdBc2c9DCE",
+  symbol: "HERA",
+  url: "https://staking.hera.finance",
+  description: "Hera directly connects AMM pools together no matter the provider and will find all direct/multihop routes between any two tokens on multichain.",
+  chain: "Metis",
+  logo: `${baseIconsUrl}/hera-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Metis"],
+  module: "herafinance/index.js",
+  twitter: "HeraAggregator",
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://docs.hera.finance/audits"],
+  listedAt: 1667403989
+},
 ]
 export default data2;

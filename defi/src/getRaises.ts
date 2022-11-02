@@ -29,6 +29,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     )
     .map((r) => ({
       date: new Date(r.fields["Date (DD/MM/YYYY, the correct way)"]).getTime() / 1000,
+      id: r.fields.id,
       name: r.fields["Company name (pls match names in defillama)"],
       round: r.fields["Round"] ?? null,
       amount: r.fields["Amount raised (millions)"] ?? null,

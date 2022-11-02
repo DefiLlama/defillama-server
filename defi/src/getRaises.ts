@@ -24,7 +24,6 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     .filter(
       (r) =>
         r.fields["Company name (pls match names in defillama)"] !== undefined &&
-        r.fields["Source (twitter/news links better because blogposts go down quite often)"] !== undefined &&
         r.fields["Date (DD/MM/YYYY, the correct way)"] !== undefined
     )
     .map((r) => ({
@@ -40,6 +39,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
       leadInvestors: r.fields["Lead Investor"] ?? [],
       otherInvestors: r.fields["Other investors"] ?? [],
       valuation: r.fields[VALUATION]?.endsWith("\n") ? r.fields[VALUATION].slice(-1) : r.fields[VALUATION] || null,
+      defillamaId: r.fields["DefiLlama Id"],
     }));
 
   return successResponse({

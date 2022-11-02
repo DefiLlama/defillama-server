@@ -602,6 +602,9 @@ export default {
     "wavelength-dao": {
         enabled: true
     },
+    "thorswap": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

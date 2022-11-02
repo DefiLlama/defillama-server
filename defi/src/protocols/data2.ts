@@ -18351,6 +18351,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   audit_links: ["https://dripcommunity.wiki/audits", "https://rugdoc.io/project/the-animal-farm"],
+  parentProtocol: "Animal Farm",
   listedAt: 1667408979
 },
 ]

@@ -25090,6 +25090,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   language: "Solidity",
   forkedFrom: ["SushiSwap"],
   listedAt: 1644437338,
+  parentProtocol: "Animal Farm"
 },
 {
   id: "1376",

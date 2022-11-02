@@ -486,6 +486,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "yieldyak_",
   },
+  {
+    id: "Animal Farm",
+    name: "Animal Farm",
+    url: "https://animalfarm.app",
+    description:
+    "Our vision is to make traditional finance tools, typically only reserved for the super wealthy, available to the anyone by using decentralized protocols which are not limited by the gatekeeping of centralized institutions. All of our products utilize trustless models that allow users to take full ownership of their personal finances. Lending and yield aggregating is the main focus of Animal Farm, but unlike other platforms Animal Farm is the only true decentralized ownership lending and yield aggregating platform.",
+    logo: `${baseIconsUrl}/animal farm.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "DRIPcommunity",
+  },
 ];
 
 export default parentProtocols;

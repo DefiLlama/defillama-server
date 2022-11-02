@@ -18331,5 +18331,27 @@ listedAt: 1650804679
   audit_links: ["https://docs.hera.finance/audits"],
   listedAt: 1667403989
 },
+{
+  id: "2247",
+  name: "Animal Farm V2",
+  address: "bsc:0x9a3321E1aCD3B9F6debEE5e042dD2411A1742002",
+  symbol: "AFP",
+  url: "https://defi.animalfarm.app/",
+  description: "Our vision is to make traditional finance tools, typically only reserved for the super wealthy, available to the anyone by using decentralized protocols which are not limited by the gatekeeping of centralized institutions. All of our products utilize trustless models that allow users to take full ownership of their personal finances. Lending and yield aggregating is the main focus of Animal Farm, but unlike other platforms Animal Farm is the only true decentralized ownership lending and yield aggregating platform.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/animal-farm-v2.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: "pigs-2",
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Binance"],
+  module: "animal-farm-dog/index.js",
+  twitter: "DRIPcommunity",
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://dripcommunity.wiki/audits", "https://rugdoc.io/project/the-animal-farm"],
+  listedAt: 1667408979
+},
 ]
 export default data2;

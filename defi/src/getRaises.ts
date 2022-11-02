@@ -29,7 +29,8 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     )
     .map((r) => ({
       date: new Date(r.fields["Date (DD/MM/YYYY, the correct way)"]).getTime() / 1000,
-      id: r.fields["ID"],
+      id: r.fields["Id"],
+      testKey: true,
       name: r.fields["Company name (pls match names in defillama)"],
       round: r.fields["Round"] ?? null,
       amount: r.fields["Amount raised (millions)"] ?? null,
@@ -41,12 +42,9 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
       valuation: r.fields[VALUATION]?.endsWith("\n") ? r.fields[VALUATION].slice(-1) : r.fields[VALUATION] || null,
     }));
 
-  return successResponse(
-    {
-      raises: formattedRaises,
-    },
-    10 * 60
-  ); // 10 mins cache
+  return successResponse({
+    raises: formattedRaises,
+  });
 };
 
 export default wrap(handler);

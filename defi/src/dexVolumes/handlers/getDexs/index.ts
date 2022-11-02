@@ -74,7 +74,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             let prevDayVolume = volumes[volumes.length - 1] //volumes.find(vol => vol.timestamp === prevDayTimestamp)
             if (prevDayTimestamp !== prevDayVolume.timestamp && !isDisabled(adapter.volumeAdapter)) {
                 if (enableAlerts)
-                    await sendDiscordAlert(`Volume not updated (using old data...)\nAdapter: ${adapter.name}\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
+                    await sendDiscordAlert(`Volume not updated (using old data...)\nAdapter: ${adapter.name} [id: ${adapter.id}]\n${formatTimestampAsDate(prevDayTimestamp.toString())} <- Report date\n${formatTimestampAsDate(prevDayVolume.timestamp.toString())} <- Last data found`)
                 // console.error("Volume not updated", adapter.name, prevDayTimestamp, prevDayVolume.timestamp, prevDayVolume)
                 volumes.push(new Volume(prevDayVolume.type, prevDayVolume.dexId, prevDayTimestamp, prevDayVolume.data))
             }

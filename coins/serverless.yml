@@ -108,6 +108,13 @@ functions:
       - http:
           path: prices
           method: post
+  mcaps:
+    handler: src/getMcaps.default
+    timeout: 60
+    events:
+      - http:
+          path: mcaps
+          method: post
   coinPrices:
     handler: src/getCoinPrices.default
     timeout: 60

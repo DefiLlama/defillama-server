@@ -38,6 +38,8 @@ interface ICombinedTvls {
   };
 }
 
+const SIX_HOURS = 6 * 60 * 60;
+
 export default async function craftParentProtocol(
   parentProtocol: IParentProtocol,
   useNewChainNames: boolean,
@@ -69,6 +71,8 @@ export default async function craftParentProtocol(
       for (const chain in curr.chainTvls) {
         // TVLS OF EACH CHAIN BY DATE
         curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }) => {
+          let nearestDate = date;
+
           if (!acc.chainTvls[chain]) {
             acc.chainTvls[chain] = {
               tvl: {},
@@ -79,12 +83,13 @@ export default async function craftParentProtocol(
 
           acc.chainTvls[chain].tvl = {
             ...acc.chainTvls[chain].tvl,
-            [date]: (acc.chainTvls[chain].tvl[date] || 0) + totalLiquidityUSD,
+            [nearestDate]: (acc.chainTvls[chain].tvl[nearestDate] || 0) + totalLiquidityUSD,
           };
         });
-
         // TOKENS IN USD OF EACH CHAIN BY DATE
         curr.chainTvls[chain].tokensInUsd?.forEach(({ date, tokens }) => {
+          let nearestDate = date;
+
           if (!acc.chainTvls[chain]) {
             acc.chainTvls[chain] = {
               tvl: {},
@@ -93,18 +98,19 @@ export default async function craftParentProtocol(
             };
           }
 
-          if (!acc.chainTvls[chain].tokensInUsd[date]) {
-            acc.chainTvls[chain].tokensInUsd[date] = {};
+          if (!acc.chainTvls[chain].tokensInUsd[nearestDate]) {
+            acc.chainTvls[chain].tokensInUsd[nearestDate] = {};
           }
 
           for (const token in tokens) {
-            acc.chainTvls[chain].tokensInUsd[date][token] =
-              (acc.chainTvls[chain].tokensInUsd[date][token] || 0) + tokens[token];
+            acc.chainTvls[chain].tokensInUsd[nearestDate][token] =
+              (acc.chainTvls[chain].tokensInUsd[nearestDate][token] || 0) + tokens[token];
           }
         });
-
         // NO.OF TOKENS IN EACH CHAIN BY DATE
         curr.chainTvls[chain].tokens?.forEach(({ date, tokens }) => {
+          let nearestDate = date;
+
           if (!acc.chainTvls[chain]) {
             acc.chainTvls[chain] = {
               tvl: {},
@@ -113,42 +119,75 @@ export default async function craftParentProtocol(
             };
           }
 
-          if (!acc.chainTvls[chain].tokens[date]) {
-            acc.chainTvls[chain].tokens[date] = {};
+          if (!acc.chainTvls[chain].tokens[nearestDate]) {
+            acc.chainTvls[chain].tokens[nearestDate] = {};
           }
 
           for (const token in tokens) {
-            acc.chainTvls[chain].tokens[date][token] = (acc.chainTvls[chain].tokens[date][token] || 0) + tokens[token];
+            acc.chainTvls[chain].tokens[nearestDate][token] =
+              (acc.chainTvls[chain].tokens[nearestDate][token] || 0) + tokens[token];
           }
         });
       }
 
       if (curr.tokensInUsd) {
         curr.tokensInUsd.forEach(({ date, tokens }) => {
+          let nearestDate = date;
+
+          // if (index > curr.tokensInUsd!.length - 3 && !acc.tokensInUsd[date]) {
+
+          //   for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
+          //     if (acc.tokensInUsd[i]) {
+          //       nearestDate = i;
+          //     }
+          //   }
+          // }
+
           Object.keys(tokens).forEach((token) => {
-            if (!acc.tokensInUsd[date]) {
-              acc.tokensInUsd[date] = {};
+            if (!acc.tokensInUsd[nearestDate]) {
+              acc.tokensInUsd[nearestDate] = {};
             }
 
-            acc.tokensInUsd[date][token] = (acc.tokensInUsd[date][token] || 0) + tokens[token];
+            acc.tokensInUsd[nearestDate][token] = (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
           });
         });
       }
 
       if (curr.tokens) {
         curr.tokens.forEach(({ date, tokens }) => {
+          let nearestDate = date;
+
+          // if (index > curr.tokens!.length - 3 && !acc.tokens[date]) {
+
+          //   for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
+          //     if (acc.tokens[i]) {
+          //       nearestDate = i;
+          //     }
+          //   }
+          // }
+
           Object.keys(tokens).forEach((token) => {
-            if (!acc.tokens[date]) {
-              acc.tokens[date] = {};
+            if (!acc.tokens[nearestDate]) {
+              acc.tokens[nearestDate] = {};
             }
 
-            acc.tokens[date][token] = (acc.tokens[date][token] || 0) + tokens[token];
+            acc.tokens[nearestDate][token] = (acc.tokens[nearestDate][token] || 0) + tokens[token];
           });
         });
       }
 
-      curr.tvl.forEach(({ date, totalLiquidityUSD }) => {
-        acc.tvl[date] = (acc.tvl[date] || 0) + totalLiquidityUSD;
+      curr.tvl.forEach(({ date, totalLiquidityUSD }, index) => {
+        let nearestDate = date;
+
+        if (index > curr.tvl.length - 3 && !acc.tvl[date]) {
+          for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
+            if (acc.tvl[i]) {
+              nearestDate = i;
+            }
+          }
+        }
+
+        acc.tvl[nearestDate] = (acc.tvl[nearestDate] || 0) + totalLiquidityUSD;
       });
 
       return acc;

@@ -4039,7 +4039,7 @@ const data2: Protocol[] =  [
 {
   id: "1593",
   name: "Sphere Finance",
-  address: "polygon:0x8D546026012bF75073d8A586f24A5d5ff75b9716",
+  address: "polygon:0x62f594339830b90ae4c084ae7d223ffafd9658a7",
   symbol: "SPHERE",
   url: "https://sphere.finance",
   description: "Sphere Finance is an innovative protocol that brings benefits and value to $SPHERE token holders through governance tokens acquisitions, slowly turning $SPHERE holders into proxy governance holders of various protocols as we aim to black hole governance tokens into our treasury.",

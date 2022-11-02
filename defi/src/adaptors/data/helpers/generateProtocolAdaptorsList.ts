@@ -56,8 +56,8 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
     }).filter(notUndefined);
 
 export function getDisplayName(name: string, adapter: Adapter) {
-    if (name === 'AAVE V3') return 'AAVE'
-    if (name === 'Uniswap V3') return 'Uniswap'
+    if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
+    if (name.split(' ')[0].includes('Uniswap')) return 'Uniswap'
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
         return `${Object.keys(adapter.breakdown)[0]}`
     return name

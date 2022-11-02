@@ -14,13 +14,13 @@ const event = {
 
 (async () => {
     var startTime = performance.now()
-    const r = 2//await handler(event)
+    const r = await handler(event)
     var endTime = performance.now()
-    //const rr = JSON.parse(r.body) as IGetOverviewResponseBody
+    const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     /*     // @ts-ignore
         delete rr.totalDataChartBreakdown
         delete rr.totalDataChart*/
-    //console.log(rr.protocols.map(proto=>[proto.name, proto.totalAllTime]))
+    console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('uniswap')).map(proto=>[proto.name, proto.totalAllTime]))
     console.log("Current run:", (endTime - startTime) / 1000)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)

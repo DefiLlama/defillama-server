@@ -5011,7 +5011,7 @@ const data: Protocol[] = [
     name: "Gamma",
     address: "0x6bea7cfef803d1e3d5f7c0103f7ded065644e197",
     symbol: "GAMMA",
-    url: "https://www.gammastrategies.org",
+    url: "https://www.gamma.xyz",
     description:
       "Access active liquidity management on Uniswap v3. Gamma has developed a protocol, a management infrastructure, and a variety of strategies used by managers and market makers.",
     chain: "Ethereum",
@@ -5024,7 +5024,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "visor/index.js",
     twitter: "GammaStrategies",
-    audit_links: ["https://github.com/VisorFinance/hypervisor/blob/master/REP-Hypervisor-2021-07-07.pdf"]
+    audit_links: ["https://github.com/GammaStrategies/hypervisor/blob/master/ConsenSys-Diligence-Audit-28-03-22.pdf", "https://github.com/GammaStrategies/hypervisor/blob/master/AE_Gamma_audit_09_03_22.pdf"]
   },
   {
     id: "356",

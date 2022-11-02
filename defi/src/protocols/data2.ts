@@ -18309,5 +18309,30 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1667390191
 },
+{
+  id: "2246",
+  name: "Hera Finance",
+  address: "metis:0x6F05709bc91Bad933346F9E159f0D3FdBc2c9DCE",
+  symbol: "HERA",
+  url: "https://hera.finance",
+  description: "Hera is multichain dex aggregator, offering the widest range of tokens and best route discovery between any token pair.",
+  chain: "Metis",
+  logo: `${baseIconsUrl}/hera-logo.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: "hera-finance",
+  cmcId: "19225",
+  category: "Dexes",
+  chains: ["Metis"],
+  oracles: [],
+  forkedFrom: [],
+  module: "herafinance/index.js",
+  twitter: "heraaggregator",
+  audit_links: [
+    "https://github.com/HashEx/public_audits/blob/master/Hera%20AggregatorV2/Hera%20AggregatorV2.pdf",
+  ],
+  openSource: false,
+  listedAt: 1651533290
+},
 ]
 export default data2;

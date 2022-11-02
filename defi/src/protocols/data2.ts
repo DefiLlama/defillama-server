@@ -18317,7 +18317,7 @@ listedAt: 1650804679
   url: "https://staking.hera.finance",
   description: "Hera is multichain dex aggregator, offering the widest range of tokens and best route discovery between any token pair. (Staking only)",
   chain: "Metis",
-  logo: `${baseIconsUrl}/hera-finance.jpg`,
+  logo: `${baseIconsUrl}/hera-finance.png`,
   audits: "1",
   audit_note: null,
   gecko_id: "hera-finance",

@@ -18302,7 +18302,7 @@ listedAt: 1650804679
   gecko_id: "starfish-finance",
   cmcId: "22002",
   category: "Services",
-  chains: ["Astar", "Ethereum"],
+  chains: ["Astar"],
   module: "starfish-finance/index.js",
   twitter: "Starfish_Fi",
   forkedFrom: [],

@@ -18266,5 +18266,48 @@ listedAt: 1650804679
   parentProtocol: "Algofi",
   listedAt: 1667329765
 }, */
+{
+  id: "2244",
+  name: "HeliSwap",
+  address: null,
+  symbol: "-",
+  url: "https://www.heliswap.io",
+  description: "The first DEX on the Hedera network supporting swaps between HTS, ERC20s and HBAR. Open-sourced, completely trustless and permissionless. Built on the Hedera Smart Contract Service with the aim to become the defacto AMM being a public good within the network.",
+  chain: "Hedera",
+  logo: `${baseIconsUrl}/heliswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Hedera"],
+  module: "heliswap/index.js",
+  twitter: "HeliSwap_DEX",
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  audit_links: ["https://github.com/LimeChain/HeliSwap-contracts/blob/main/audits/Halborn-august-2022.pdf"],
+  listedAt: 1667390065
+},
+{
+  id: "2245",
+  name: "Starfish Finance",
+  address: "astar: 0xEe8138B3bd03905cF84aFE10cCD0dCcb820eE08E",
+  symbol: "SEAN",
+  url: "https://app.starfish.finance",
+  description: "Starfish Finance is incubated by the Astar Network program. We are building the next generation multi-chain DeFi x NFT-Fi headquarters. Through gamification of user experience, Starfish Finance offers multi-asset swap, $DOT liquid staking and NFT-Fi on top of an enhanced Balancer V2 model to deepen the liquidity of crypto or NFT trading and financing.",
+  chain: "Astar",
+  logo: `${baseIconsUrl}/starfish-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "starfish-finance",
+  cmcId: "22002",
+  category: "Services",
+  chains: ["Astar", "Ethereum"],
+  module: "starfish-finance/index.js",
+  twitter: "Starfish_Fi",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1667390191
+},
 ]
 export default data2;

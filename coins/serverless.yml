@@ -115,6 +115,13 @@ functions:
       - http:
           path: mcaps
           method: post
+  chains:
+    handler: src/getChains.default
+    timeout: 60
+    events:
+      - http:
+          path: chains
+          method: get
   coinPrices:
     handler: src/getCoinPrices.default
     timeout: 60

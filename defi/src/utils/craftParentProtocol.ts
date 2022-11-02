@@ -70,7 +70,7 @@ export default async function craftParentProtocol(
       // TVL, NO.OF TOKENS, TOKENS IN USD OF EACH CHAIN BY DATE
       for (const chain in curr.chainTvls) {
         // TVLS OF EACH CHAIN BY DATE
-        curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }) => {
+        curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }, index) => {
           let nearestDate = date;
 
           if (!acc.chainTvls[chain]) {
@@ -81,13 +81,21 @@ export default async function craftParentProtocol(
             };
           }
 
+          if (index > curr.chainTvls[chain].tvl!.length - 3 && !acc.chainTvls[chain].tvl[date]) {
+            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
+              if (acc.chainTvls[chain].tvl[i]) {
+                nearestDate = i;
+              }
+            }
+          }
+
           acc.chainTvls[chain].tvl = {
             ...acc.chainTvls[chain].tvl,
             [nearestDate]: (acc.chainTvls[chain].tvl[nearestDate] || 0) + totalLiquidityUSD,
           };
         });
         // TOKENS IN USD OF EACH CHAIN BY DATE
-        curr.chainTvls[chain].tokensInUsd?.forEach(({ date, tokens }) => {
+        curr.chainTvls[chain].tokensInUsd?.forEach(({ date, tokens }, index) => {
           let nearestDate = date;
 
           if (!acc.chainTvls[chain]) {
@@ -96,6 +104,14 @@ export default async function craftParentProtocol(
               tokensInUsd: {},
               tokens: {},
             };
+          }
+
+          if (index > curr.chainTvls[chain].tokensInUsd!.length - 3 && !acc.chainTvls[chain].tokensInUsd[date]) {
+            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
+              if (acc.chainTvls[chain].tokensInUsd[i]) {
+                nearestDate = i;
+              }
+            }
           }
 
           if (!acc.chainTvls[chain].tokensInUsd[nearestDate]) {
@@ -108,7 +124,7 @@ export default async function craftParentProtocol(
           }
         });
         // NO.OF TOKENS IN EACH CHAIN BY DATE
-        curr.chainTvls[chain].tokens?.forEach(({ date, tokens }) => {
+        curr.chainTvls[chain].tokens?.forEach(({ date, tokens }, index) => {
           let nearestDate = date;
 
           if (!acc.chainTvls[chain]) {
@@ -117,6 +133,14 @@ export default async function craftParentProtocol(
               tokensInUsd: {},
               tokens: {},
             };
+          }
+
+          if (index > curr.chainTvls[chain].tokens!.length - 3 && !acc.chainTvls[chain].tokens[date]) {
+            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
+              if (acc.chainTvls[chain].tokens[i]) {
+                nearestDate = i;
+              }
+            }
           }
 
           if (!acc.chainTvls[chain].tokens[nearestDate]) {
@@ -131,17 +155,16 @@ export default async function craftParentProtocol(
       }
 
       if (curr.tokensInUsd) {
-        curr.tokensInUsd.forEach(({ date, tokens }) => {
+        curr.tokensInUsd.forEach(({ date, tokens }, index) => {
           let nearestDate = date;
 
-          // if (index > curr.tokensInUsd!.length - 3 && !acc.tokensInUsd[date]) {
-
-          //   for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
-          //     if (acc.tokensInUsd[i]) {
-          //       nearestDate = i;
-          //     }
-          //   }
-          // }
+          if (index > curr.tokensInUsd!.length - 3 && !acc.tokensInUsd[date]) {
+            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
+              if (acc.tokensInUsd[i]) {
+                nearestDate = i;
+              }
+            }
+          }
 
           Object.keys(tokens).forEach((token) => {
             if (!acc.tokensInUsd[nearestDate]) {
@@ -154,17 +177,16 @@ export default async function craftParentProtocol(
       }
 
       if (curr.tokens) {
-        curr.tokens.forEach(({ date, tokens }) => {
+        curr.tokens.forEach(({ date, tokens }, index) => {
           let nearestDate = date;
 
-          // if (index > curr.tokens!.length - 3 && !acc.tokens[date]) {
-
-          //   for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
-          //     if (acc.tokens[i]) {
-          //       nearestDate = i;
-          //     }
-          //   }
-          // }
+          if (index > curr.tokens!.length - 3 && !acc.tokens[date]) {
+            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
+              if (acc.tokens[i]) {
+                nearestDate = i;
+              }
+            }
+          }
 
           Object.keys(tokens).forEach((token) => {
             if (!acc.tokens[nearestDate]) {

@@ -23,8 +23,9 @@ const handler = async (_event: any) => {
 };
 
 async function checkBuildStatus(webhookUrl: string) {
-  const actionsApi = 'https://api.github.com/repos/DefiLlama/defillama-server/actions/runs?name=Defi'
-  const { data: { workflow_runs } } = await axios.get(actionsApi)
+  const actionsApi = 'https://api.github.com/repos/DefiLlama/defillama-server/actions/runs?per_page=100'
+  let { data: { workflow_runs } } = await axios.get(actionsApi)
+  workflow_runs = workflow_runs.filter((i: any) => i.name === 'Defi')
   let i = 0
   while(workflow_runs[i] && workflow_runs[i].conclusion !== 'success')  i++
   if (i > 2)

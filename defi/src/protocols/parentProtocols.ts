@@ -498,6 +498,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "DRIPcommunity",
   },
+  {
+    id: "Metavault",
+    name: "Metavault",
+    url: "https://metavault.org/",
+    description:
+    "Metavault is a blockchain-based, community governed investment platform and decentralized venture capital fund. It allows anyone to participate in the latest and most profitable DeFi projects and strategies and deploys a in-house development team for project incubation.",
+    logo: `${baseIconsUrl}/metavault.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MetavaultDAO",
+  },
 ];
 
 export default parentProtocols;

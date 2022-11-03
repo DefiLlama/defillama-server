@@ -4049,10 +4049,10 @@ const data2: Protocol[] =  [
   audit_note: null,
   gecko_id: "sphere-finance",
   cmcId: "18945",
-  category: "Reserve Currency",
+  category: "Yield",
   chains: ["Polygon"],
   oracles: [],
-  forkedFrom: ["Olympus DAO"],
+  forkedFrom: [],
   module: "sphere-finance/index.js",
   twitter: "SphereDeFi",
   listedAt: 1648668558

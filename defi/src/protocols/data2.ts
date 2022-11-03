@@ -2579,7 +2579,8 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "metavault/index.js",
   twitter: "MetavaultDAO",
-  listedAt: 1646854791
+  listedAt: 1646854791,
+  parentProtocol: "Metavault"
 },
 {
   id: "1527",
@@ -8577,7 +8578,8 @@ listedAt: 1650804679
   module: "metavault.trade/index.js",
   twitter: "MetavaultTRADE",
   audit_links: ["https://github.com/metavaultorg/trade-contracts/blob/main/Metavault.Trade_Full_Smart_Contract_Security_Audit.pdf"],
-  listedAt: 1654203519
+  listedAt: 1654203519,
+  parentProtocol: "Metavault"
 },
 {
   id: "1802",

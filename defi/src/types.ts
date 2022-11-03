@@ -49,6 +49,20 @@ export interface ProtocolTvls {
   chainTvls: ITvlsWithChangesByChain;
 }
 
+export interface IRaise {
+  date: number;
+  name: string;
+  amount: number;
+  round: string;
+  chains: Array<string>;
+  sector: string;
+  source: string;
+  valuation: number;
+  defillamaId?: number;
+  leadInvestors: Array<string>;
+  otherInvestors: Array<string>;
+}
+
 export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "module"> {
   symbol?: string;
   chain?: string;
@@ -63,6 +77,7 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   tokensInUsd?: ITokens;
   tokens?: ITokens;
   isParentProtocol?: boolean;
+  raises: Array<IRaise>;
 }
 
 export interface IProtocol

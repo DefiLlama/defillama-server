@@ -994,6 +994,7 @@ const data2: Protocol[] =  [
   language: "C++",
   listedAt: 1645579151,
 },
+/*
 {
   id: "1454",
   name: "Bullish",
@@ -1016,6 +1017,7 @@ const data2: Protocol[] =  [
   language: "C++",
   listedAt: 1645579286,
 },
+*/
 {
   id: "1455",
   name: "ClaimSwap",

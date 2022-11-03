@@ -18356,5 +18356,27 @@ listedAt: 1650804679
   parentProtocol: "Animal Farm",
   listedAt: 1667408979
 },
+{
+  id: "2248",
+  name: "Sculptor Finance",
+  address: "bsc:0xAd3E02e83b886543D1171FF446C130D52068C106",
+  symbol: "SCULPT",
+  url: "http://sculptor.finance",
+  description: "Sculptor is a decentralized lending protocol based on the success of Aave, combined with the fee-share model tokenomics of modern platforms. Depositors add liquidity to the market to earn, and borrow to sculpt their perfect portfolio.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/sculptor-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Binance"],
+  module: "sculptor-finance/index.js",
+  twitter: "SculptorFinance",
+  forkedFrom: ["AAVE"],
+  oracles: ["Chainlink"],
+  audit_links: ["https://paladinsec.co/projects/sculptor"],
+  listedAt: 1667491067
+},
 ]
 export default data2;

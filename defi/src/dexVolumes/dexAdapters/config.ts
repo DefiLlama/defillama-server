@@ -605,6 +605,10 @@ export default {
     "thorswap": {
         enabled: true
     },
+    "dexible": {
+        enabled: false
+    },
+
 } as {
     [name: string]: IVolumesConfig
 }

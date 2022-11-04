@@ -18380,5 +18380,48 @@ listedAt: 1650804679
   audit_links: ["https://paladinsec.co/projects/sculptor"],
   listedAt: 1667491067
 },
+{
+  id: "2249",
+  name: "Dexible",
+  address: null,
+  symbol: "-",
+  url: "https://dexible.io",
+  description:
+    " DeFi's execution management system. Dexible is a DEX aggregator that also provides algo and automated order types normally only seen in CeFi.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/dexible.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Ethereum", "Arbitrum", "Avalanche", "Binance", "Fantom", "Optimism", "Polygon"],
+  module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
+  forkedFrom: [],
+  twitter: "DexibleApp",
+  audit_links: ["https://github.com/BUIDLHub/dexible-contracts/blob/master/Audit%20Report%20-%20Dexible%20%5B16%20August%202021%5D.pdf"],
+  listedAt: 1667558693
+},
+{
+  id: "2250",
+  name: "Debets",
+  address: null,
+  symbol: "-",
+  url: "https://app.debets.org",
+  description: "Debets is a Decentralized & Permissionless, p2p (peer to pool) Web3 iGaming platform, where players bet against each other(Liquidity providers) instead of against a bookmaker.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/debets.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["Polygon"],
+  module: "debets/index.js",
+  twitter: "debets_org",
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  listedAt: 1667558698
+},
 ]
 export default data2;

@@ -1181,6 +1181,12 @@ export const chainCoingeckoIds = {
     },
     chainId: 2002,
   },
+  "Stride": {
+    geckoId: "stride",
+    symbol: "STRD",
+    cmcId: "21781",
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1480,11 +1486,13 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "functionx":
       return "FunctionX"
     case "aptos":
-        return "Aptos"
+      return "Aptos"
     case "kekchain":
-        return "Kekchain"
+      return "Kekchain"
     case "milkomeda_a1":
-          return "Milkomeda A1"
+      return "Milkomeda A1"
+    case "stride":
+      return "Stride"
 
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

@@ -55,11 +55,11 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
         return undefined
     }).filter(notUndefined);
 
-export function getDisplayName(name: string, adapter: Adapter) {
+export function getDisplayName(name: string, _adapter: Adapter) {
     if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
     if (name.split(' ')[0].includes('Uniswap')) return 'Uniswap'
-    if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
-        return `${Object.keys(adapter.breakdown)[0]}`
+    /* if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
+        return `${Object.keys(adapter.breakdown)[0]}` */
     return name
 }
 

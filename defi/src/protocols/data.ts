@@ -22648,6 +22648,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   listedAt: 1642109094 ,
   forkedFrom: ["Uniswap"],
 },
+/*
 {
   id: "1254",
   name: "XDAO",
@@ -22671,6 +22672,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
                ] ,
   listedAt: 1642109094 ,
 },
+*/
 {
   id: "1255",
   name: "Proof of Humanity",

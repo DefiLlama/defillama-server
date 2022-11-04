@@ -162,7 +162,7 @@ export const chainCoingeckoIds = {
     geckoId: "oec-token",
     symbol: "OKT",
     cmcId: "8267",
-    categories: ["EVM"],
+    categories: ["EVM", "Cosmos"],
     chainId: 66,
   },
   "Wanchain": {

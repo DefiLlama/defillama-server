@@ -593,4 +593,10 @@ export default {
     "minerswap": {
         enabled: true
     },
+    "wavelength-dao": {
+        enabled: true
+    },
+    "thorswap": {
+        enabled: true
+    }
 } as AdaptorsConfig

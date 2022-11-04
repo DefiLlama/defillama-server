@@ -1673,7 +1673,7 @@ const data: Protocol[] = [
     cmcId: "8104",
     category: "Dexes",
     chains: ["Ethereum"],
-    module: "1inch.js",
+    module: "1inch/api.js",
     twitter: "1inchNetwork",
     audit_links: [
       "https://help.1inch.io/en/articles/4585088-how-secure-is-1inch",

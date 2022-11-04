@@ -18423,5 +18423,28 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1667558698
 },
+{
+  id: "2251",
+  name: "Stride",
+  address: null,
+  symbol: "STRD",
+  url: "https://stride.zone/",
+  description:
+    "Stride is a protocol for multichain liquid staking in the Cosmos ecosystem",
+  chain: "Stride",
+  logo: `${baseIconsUrl}/stride.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "stride",
+  cmcId: "21781",
+  category: "Liquid Staking",
+  chains: ["Stride"],
+  module: "stride/index.js",
+  twitter: "stride_zone", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://github.com/Stride-Labs/audits"],
+  listedAt: 1667603619
+},
 ]
 export default data2;

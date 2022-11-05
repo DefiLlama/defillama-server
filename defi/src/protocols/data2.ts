@@ -6137,7 +6137,7 @@ listedAt: 1650804679
   url: "https://www.gard.money",
   description: "The GARD Protocol offers decentralized money and fixed-yield products for Algorand users. Users can leverage their assets held in collateralized debt positions to draw a stable line of credit in GARD, our stablecoin. To borrow GARD, users must supply collateral in excess of what is borrowed in the form of whitelisted assets such as ALGOs or ALGO derivatives. Once a user holds GARD they may earn interest by staking it, adding to specific liquidity pools, liquidating risky users, selling LP tokens to the protocol, or using GARD to buy other assets to increase leverage. If a user happens to borrow against any ALGOs they hold they’ll also be able to use their collateral to participate in Algorand’s governance system and still earn Algorand governance rewards.",
   chain: "Algorand",
-  logo: `${baseIconsUrl}/gard.png`,
+  logo: `${baseIconsUrl}/gard.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: "gard",

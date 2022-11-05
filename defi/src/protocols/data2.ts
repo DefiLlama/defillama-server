@@ -18468,5 +18468,27 @@ listedAt: 1650804679
   oracles: ["Internal"],
   listedAt: 1667617275
 },
+{
+  id: "2253",
+  name: "MetaTdex",
+  address: "bsc:0x445cC9518cF7bc7386A2e3aaF510650b0FB05f5F",
+  symbol: "TT",
+  url: "https://www.metatdex.com",
+  description:
+    "MetaTdex is a decentralized order matching trading platform",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/metatdex.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance", "Heco"],
+  module: "metatdex/index.js",
+  twitter: "MetaTdex", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1667649198
+},
 ]
 export default data2;

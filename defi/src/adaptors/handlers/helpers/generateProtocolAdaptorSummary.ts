@@ -54,7 +54,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
 
         // Populate last missing days with last available data
         for (let i = lastAvailableDataTimestamp + ONE_DAY_IN_SECONDS; i <= yesterdaysCleanTimestamp; i += ONE_DAY_IN_SECONDS)
-            adaptorRecords.push(new AdaptorRecord(adaptorRecords[0].type, adaptorRecords[0].adaptorId, i, adaptorRecords[adaptorRecords.length-1].data))
+            adaptorRecords.push(new AdaptorRecord(adaptorRecords[0].type, adaptorRecords[0].adaptorId, i, adaptorRecords[adaptorRecords.length - 1].data))
 
         return {
             name: adapter.name,

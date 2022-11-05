@@ -111,7 +111,8 @@ export const formatChain = (chain: string) => {
 export const formatChainKey = (chain: string) => {
     if (chain === 'avalanche') return CHAIN.AVAX
     if (chain === 'terra classic' || chain === 'terra-classic') return CHAIN.TERRA
-    return chain.toLowerCase()
+    if (chain.toLowerCase() === 'karura') return CHAIN.KARURA
+    return chain
 }
 
 export default getAllChainsFromAdaptors

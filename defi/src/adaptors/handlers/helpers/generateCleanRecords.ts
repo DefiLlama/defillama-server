@@ -85,8 +85,7 @@ export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: st
                     [protocol]: prevValue + ((nextValue - prevValue) / nGaps)
                 }
             }
-        }
-        )
+        })
 
         // Once we have generated correct data
         if (Object.keys(generatedData).length === 0) return acc

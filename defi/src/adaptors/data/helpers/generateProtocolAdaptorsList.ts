@@ -32,10 +32,10 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
         if (adapterObj.default?.protocolType === ProtocolType.CHAIN)
             list = chainData
         const dexFoundInProtocols = list.find(dexP => {
-            return (dexP.name.toLowerCase()?.includes(adapterKey)
+            return getBySpecificId(adapterKey, dexP.id) && (dexP.name.toLowerCase()?.includes(adapterKey)
                 || sluggifyString(dexP.name)?.includes(adapterKey)
                 || dexP.gecko_id?.includes(adapterKey)
-                || dexP.module?.split("/")[0]?.includes(adapterKey)) && getBySpecificId(adapterKey, dexP.id)
+                || dexP.module?.split("/")[0]?.includes(adapterKey))
         })
         if (dexFoundInProtocols && imports_obj[adapterKey].default)
             return {
@@ -51,7 +51,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 protocolType: adapterObj.default?.protocolType
             }
         // TODO: Handle better errors
-        //console.error(`Missing info for ${adapterKey} DEX!`)
+        console.error(`Missing info for ${adapterKey}`)
         return undefined
     }).filter(notUndefined);
 
@@ -83,5 +83,11 @@ export const ID_MAP: IJSON<{ id: string, name: string } | undefined> = {
 export const getBySpecificId = (key: string, id: string) => {
     if (key === 'uniswap') return id === "2196"
     if (key === 'aave') return id === "1599"
+    if (key === 'mimo') return id === "1241"
+    if (key === '0x') return id === "2116"
+    if (key === 'pact') return id === "541"
+    if (key === 'karura-swap') return id === "451"
+    if (key === 'algofi') return id === "2091"
+    if (key === 'penguin') return id === "1575"
     return true
 }

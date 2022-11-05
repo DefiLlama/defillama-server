@@ -18446,5 +18446,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/Stride-Labs/audits"],
   listedAt: 1667603619
 },
+{
+  id: "2252",
+  name: "Llamalend",
+  address: null,
+  symbol: "-",
+  url: "https://llamalend.com/",
+  description:
+    "Deposit NFTs and borrow ETH for small illiquid NFT collections that can't get into the main NFT lending markets",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/llamalend.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "llamalend/index.js",
+  twitter: "llamalend", 
+  forkedFrom: [],
+  oracles: ["Internal"],
+  listedAt: 1667617275
+},
 ]
 export default data2;

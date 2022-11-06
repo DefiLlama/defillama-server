@@ -539,7 +539,7 @@ const data: Protocol[] = [
     module: "barnbridge/index.js",
     twitter: "Barn_Bridge",
     audit_links: [
-      "https://docs.barnbridge.com/beginners-guide-to-smart-yield#is-it-secure-to-invest-in-smart-yield",
+      "https://github.com/BarnBridge/BarnBridge-PM/tree/master/audits",
     ],
     oracles: ["Chainlink"],
   },

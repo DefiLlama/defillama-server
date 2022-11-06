@@ -2520,7 +2520,7 @@ const data: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Arbitrum",  "Binance", "Avalanche", "Fantom"],
+    chains: ["Arbitrum",  "Binance", "Ethereum"],
     module: "mcdex/index.js",
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],

@@ -504,7 +504,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://metavault.org/",
     description:
     "Metavault is a blockchain-based, community governed investment platform and decentralized venture capital fund. It allows anyone to participate in the latest and most profitable DeFi projects and strategies and deploys a in-house development team for project incubation.",
-    logo: `${baseIconsUrl}/mux protocol.png`,
+    logo: `${baseIconsUrl}/metavault.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -516,7 +516,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://mux.network/",
     description:
     "MUX (Previously MCDEX),The first Multi-Chain native leveraged trading protocol,\r\nallowing zero price impact trading, up to 100x leverage, no counterparty risks for traders and an optimized on-chain trading experience",
-    logo: `${baseIconsUrl}/metavault.jpg`,
+    logo: `${baseIconsUrl}/mux protocol.png`,
     gecko_id: "mcdex",
     cmcId: "5956",
     chains: [],

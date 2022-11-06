@@ -1,5 +1,6 @@
 import type {Protocol} from './types'
 import { baseIconsUrl } from "../constants";
+import { listenerCount } from 'process';
 /*
 {
   id: string;
@@ -18460,7 +18461,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Lending",
+  category: "NFT Lending",
   chains: ["Ethereum"],
   module: "llamalend/index.js",
   twitter: "llamalend", 
@@ -18510,7 +18511,34 @@ listedAt: 1650804679
   twitter: "muxprotocol",
   audit_links: ["https://www.certik.com/projects/mux-protocol"],
   oracles: ["Chainlink"],
-  parentProtocol: "MUX Protocol"
+  parentProtocol: "MUX Protocol",
+  listedAt: 1667699921
+},
+{
+  id: "2255",
+  name: "NFTfi",
+  address: null,
+  symbol: "-",
+  url: "https://www.nftfi.com/",
+  description:
+    "NFT peer-to-peer lending protocol",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/nftfi.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Lending",
+  chains: ["Ethereum"],
+  module: "nftfi/index.js",
+  twitter: "NFTfi", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: [
+    "https://chainsecurity.com/security-audit/nftfi/",
+    "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/NFTfi_Ethereum_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf"
+  ],
+  listedAt: 1667699959
 },
 ]
 export default data2;

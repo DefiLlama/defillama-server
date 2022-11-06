@@ -18490,5 +18490,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1667649198
 },
+{
+  id: "2254",
+  name: "MUX",
+  address: "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42",
+  symbol: "MCB",
+  url: "https://mux.network/",
+  description:
+    "MUX (Previously MCDEX),The first Multi-Chain native leveraged trading protocol,\r\nallowing zero price impact trading, up to 100x leverage, no counterparty risks for traders and an optimized on-chain trading experience.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/mux protocol.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum",  "Binance", "Avalanche", "Fantom"],
+  module: "mux/index.js",
+  twitter: "muxprotocol",
+  audit_links: ["https://www.certik.com/projects/mux-protocol"],
+  oracles: ["Chainlink"],
+  parentProtocol: "MUX Protocol"
+},
 ]
 export default data2;

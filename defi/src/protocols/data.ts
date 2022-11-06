@@ -2517,14 +2517,15 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/mcdex.jpg`,
     audits: "1",
     audit_note: null,
-    gecko_id: "mcdex",
-    cmcId: "5956",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Arbitrum",  "Binance", "Avalanche", "Fantom"],
     module: "mcdex/index.js",
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],
     oracles: ["Chainlink"],
+    parentProtocol: "MUX Protocol"
   },
   {
     id: "233",

@@ -57,13 +57,14 @@
   },
   "dependencies": {
     "@defillama/adapters": "file:./DefiLlama-Adapters",
-    "@defillama/sdk": "^2.3.80",
     "@defillama/adaptors": "file:./adapters",
+    "@defillama/sdk": "^2.3.80",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",
     "dotenv": "^16.0.1",
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.1",
+    "postgres": "^3.3.1",
     "promise.allsettled": "^1.0.5"
   }
 }

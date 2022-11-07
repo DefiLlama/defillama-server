@@ -18493,7 +18493,7 @@ listedAt: 1650804679
 },
 {
   id: "2254",
-  name: "MUX",
+  name: "MUX Derivatives",
   address: "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42",
   symbol: "MCB",
   url: "https://mux.network/",

@@ -108,5 +108,23 @@ export default {
     },
     "metavault.trade": {
         enabled: true
+    },
+    "aurora": {
+        enabled: true
+    },
+    "celo": {
+        enabled: true
+    },
+    "optimism": {
+        enabled: true
+    },
+    "moonbeam": {
+        enabled: true
+    },
+    "moonriver": {
+        enabled: true
+    },
+    "tron": {
+        enabled: true
     }
 } as AdaptorsConfig

@@ -1,6 +1,7 @@
 import { formatTimestampAsDate } from "../../../utils/date"
 import { IJSON } from "../../data/types"
 import { AdaptorRecord, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
+import { formatChainKey } from "../../utils/getAllChainsFromAdaptors"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 
 /**
@@ -8,7 +9,9 @@ import { ONE_DAY_IN_SECONDS } from "../getProtocol"
  * If there's missing data it tries to average it based on previos/next available data.
  */
 
-export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: string[], chainFilter?: string) => {
+export default (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
+    const chains = chainsRaw.map(formatChainKey)
+    const chainFilter = chainFilterRaw ? formatChainKey(chainFilterRaw) : undefined
     // Get adaptor type for all records
     const type = adaptorRecords[0].type
     // Get adaptor id for all records

@@ -18540,5 +18540,27 @@ listedAt: 1650804679
   ],
   listedAt: 1667699959
 },
+{
+  id: "2256",
+  name: "OPX",
+  address: null,
+  symbol: "-",
+  url: "https://www.opx.finance/#/",
+  description: "OPX (Decentralized Spot & Perpetual Exchange) - the next DEX generation in  Optimizing Investment Efficiency & Leverage Trading.",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/opx.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Optimism"],
+  module: "opx/index.js",
+  twitter: "opxfinance",
+  forkedFrom: ["GMX"],
+  oracles: ["Flux"],
+  audit_links: ["https://github.com/opxfinance/opx-contracts/blob/caf9ef6d2695b45fc8182d2094c334951f7c525d/audits/Quantstamp_Audit_Report.pdf"],
+  listedAt: 1667792297
+},
 ]
 export default data2;

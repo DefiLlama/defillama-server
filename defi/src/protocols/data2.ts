@@ -18540,5 +18540,27 @@ listedAt: 1650804679
   ],
   listedAt: 1667699959
 },
+{
+  id: "2256",
+  name: "OPX Finance",
+  address: null,
+  symbol: "-",
+  url: "https://www.opx.finance/#/trade",
+  description:
+    "OPX (Decentralized Spot & Perpetual Exchange) - the next DEX generation in  Optimizing Investment Efficiency & Leverage Trading",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/opx-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Optimism"],
+  module: "opx/index.js",
+  twitter: "opxfinance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1667818926
+},
 ]
 export default data2;

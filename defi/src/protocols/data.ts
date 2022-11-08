@@ -535,11 +535,11 @@ const data: Protocol[] = [
     gecko_id: "barnbridge",
     cmcId: "7440",
     category: "Yield Aggregator",
-    chains: ["Ethereum", "Polygon", "Avalanche"],
+    chains: ["Ethereum", "Polygon", "Avalanche", "Optimism", "Binance", "Arbitrum"],
     module: "barnbridge/index.js",
     twitter: "Barn_Bridge",
     audit_links: [
-      "https://docs.barnbridge.com/beginners-guide-to-smart-yield#is-it-secure-to-invest-in-smart-yield",
+      "https://github.com/BarnBridge/BarnBridge-PM/tree/master/audits",
     ],
     oracles: ["Chainlink"],
   },

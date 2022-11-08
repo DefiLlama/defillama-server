@@ -126,5 +126,41 @@ export default {
     },
     "tron": {
         enabled: true
+    },
+    "arbitrum": {
+        enabled: true
+    },
+    "avax": {
+        enabled: true
+    },
+    "canto": {
+        enabled: true
+    },
+    "cardano": {
+        enabled: true
+    },
+    "cronos": {
+        enabled: true
+    },
+    "klaytn": {
+        enabled: true
+    },
+    "dodo": {
+        enabled: true
+    },
+    "fantom": {
+        enabled: true
+    },
+    "mixin": {
+        enabled: true
+    },
+    "polygon": {
+        enabled: true
+    },
+    "solana": {
+        enabled: true
+    },
+    "xdai": {
+        enabled: true
     }
 } as AdaptorsConfig

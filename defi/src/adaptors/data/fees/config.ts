@@ -152,7 +152,7 @@ export default {
         enabled: true
     },
     "mixin": {
-        enabled: true
+        enabled: false
     },
     "polygon": {
         enabled: true

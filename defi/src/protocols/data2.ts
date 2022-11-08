@@ -18585,5 +18585,26 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1667883657
 },
+{
+  id: "2258",
+  name: "Opensea",
+  address: null,
+  symbol: "-",
+  url: "https://opensea.io/",
+  description: "OpenSea is the world's first and largest web3 marketplace for NFTs and crypto collectibles.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/opensea.png`,
+  audits: "1",
+  audit_note: "OpenSea engaged Trail of Bits to audit the security of Seaport. From April 18th to May 12th 2022, a team of Trail of Bits consultants conducted a security review of Seaport. The audit did not uncover significant flaws that could result in the compromise of a smart contract, loss of funds, or unexpected behavior in the target system. Their full report is available here.",
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Ethereum"],
+  module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
+  forkedFrom: [],
+  twitter: "opensea",
+  audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/SeaportProtocol.pdf"],
+  listedAt: 1667934393
+}
 ]
 export default data2;

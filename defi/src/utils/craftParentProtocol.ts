@@ -2,7 +2,7 @@ import type { IParentProtocol } from "../protocols/types";
 import protocols from "../protocols/data";
 import { errorResponse } from "./shared";
 import craftProtocol from "./craftProtocol";
-import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens } from "../types";
+import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -38,8 +38,6 @@ interface ICombinedTvls {
   };
 }
 
-const SIX_HOURS = 6 * 60 * 60;
-
 export default async function craftParentProtocol(
   parentProtocol: IParentProtocol,
   useNewChainNames: boolean,
@@ -54,7 +52,7 @@ export default async function craftParentProtocol(
   }
 
   const childProtocolsTvls = await Promise.all(
-    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, true))
+    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, false))
   );
 
   const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls.reduce<ICombinedTvls>(
@@ -81,10 +79,18 @@ export default async function craftParentProtocol(
             };
           }
 
-          if (index > curr.chainTvls[chain].tvl!.length - 3 && !acc.chainTvls[chain].tvl[date]) {
-            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
-              if (acc.chainTvls[chain].tvl[i]) {
-                nearestDate = i;
+          if (index > curr.chainTvls[chain].tvl!.length - 2 && !acc.chainTvls[chain].tvl[date]) {
+            const prevDate = curr.chainTvls[chain].tvl[index - 1].date;
+
+            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              for (
+                let i = prevDate + 1;
+                i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
+                i++
+              ) {
+                if (acc.chainTvls[chain].tvl[i]) {
+                  nearestDate = i;
+                }
               }
             }
           }
@@ -94,7 +100,7 @@ export default async function craftParentProtocol(
             [nearestDate]: (acc.chainTvls[chain].tvl[nearestDate] || 0) + totalLiquidityUSD,
           };
         });
-        // TOKENS IN USD OF EACH CHAIN BY DATE
+        //   // TOKENS IN USD OF EACH CHAIN BY DATE
         curr.chainTvls[chain].tokensInUsd?.forEach(({ date, tokens }, index) => {
           let nearestDate = date;
 
@@ -106,10 +112,18 @@ export default async function craftParentProtocol(
             };
           }
 
-          if (index > curr.chainTvls[chain].tokensInUsd!.length - 3 && !acc.chainTvls[chain].tokensInUsd[date]) {
-            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
-              if (acc.chainTvls[chain].tokensInUsd[i]) {
-                nearestDate = i;
+          if (index > curr.chainTvls[chain].tokensInUsd!.length - 2 && !acc.chainTvls[chain].tokensInUsd[date]) {
+            const prevDate = curr.chainTvls[chain].tokensInUsd![index - 1].date;
+
+            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              for (
+                let i = prevDate + 1;
+                i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
+                i++
+              ) {
+                if (acc.chainTvls[chain].tokensInUsd[i]) {
+                  nearestDate = i;
+                }
               }
             }
           }
@@ -135,10 +149,18 @@ export default async function craftParentProtocol(
             };
           }
 
-          if (index > curr.chainTvls[chain].tokens!.length - 3 && !acc.chainTvls[chain].tokens[date]) {
-            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
-              if (acc.chainTvls[chain].tokens[i]) {
-                nearestDate = i;
+          if (index > curr.chainTvls[chain].tokens!.length - 2 && !acc.chainTvls[chain].tokens[date]) {
+            const prevDate = curr.chainTvls[chain].tokens![index - 1].date;
+
+            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              for (
+                let i = prevDate + 1;
+                i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
+                i++
+              ) {
+                if (acc.chainTvls[chain].tokens[i]) {
+                  nearestDate = i;
+                }
               }
             }
           }
@@ -158,10 +180,18 @@ export default async function craftParentProtocol(
         curr.tokensInUsd.forEach(({ date, tokens }, index) => {
           let nearestDate = date;
 
-          if (index > curr.tokensInUsd!.length - 3 && !acc.tokensInUsd[date]) {
-            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
-              if (acc.tokensInUsd[i]) {
-                nearestDate = i;
+          if (index > curr.tokensInUsd!.length - 2 && !acc.tokensInUsd[date]) {
+            const prevDate = curr.tokensInUsd![index - 1].date;
+
+            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              for (
+                let i = prevDate + 1;
+                i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
+                i++
+              ) {
+                if (acc.tokensInUsd[i]) {
+                  nearestDate = i;
+                }
               }
             }
           }
@@ -180,10 +210,18 @@ export default async function craftParentProtocol(
         curr.tokens.forEach(({ date, tokens }, index) => {
           let nearestDate = date;
 
-          if (index > curr.tokens!.length - 3 && !acc.tokens[date]) {
-            for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
-              if (acc.tokens[i]) {
-                nearestDate = i;
+          if (index > curr.tokens!.length - 2 && !acc.tokens[date]) {
+            const prevDate = curr.tokens![index - 1].date;
+
+            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              for (
+                let i = prevDate + 1;
+                i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
+                i++
+              ) {
+                if (acc.tokens[i]) {
+                  nearestDate = i;
+                }
               }
             }
           }
@@ -201,10 +239,19 @@ export default async function craftParentProtocol(
       curr.tvl.forEach(({ date, totalLiquidityUSD }, index) => {
         let nearestDate = date;
 
-        if (index > curr.tvl.length - 3 && !acc.tvl[date]) {
-          for (let i = date - SIX_HOURS; i <= date + SIX_HOURS; i++) {
-            if (acc.tvl[i]) {
-              nearestDate = i;
+        if (index > curr.tvl.length - 2 && !acc.tvl[date]) {
+          const prevDate = curr.tvl[index - 1].date;
+
+          // change latest timestamp only if prev value's timestamp is at UTC 00:00 and date is same as nearest date
+          if (new Date(prevDate * 1000).getUTCHours() === 0) {
+            for (
+              let i = prevDate + 1;
+              i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
+              i++
+            ) {
+              if (acc.tvl[i]) {
+                nearestDate = i;
+              }
             }
           }
         }
@@ -283,6 +330,10 @@ export default async function craftParentProtocol(
     tokensInUsd: formattedTokensInUsd,
     tvl: formattedTvl,
     isParentProtocol: true,
+    raises: childProtocolsTvls?.reduce((acc, curr) => {
+      acc = [...acc, ...(curr.raises || [])];
+      return acc;
+    }, [] as Array<IRaise>),
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

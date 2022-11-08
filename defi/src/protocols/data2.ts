@@ -11750,7 +11750,7 @@ listedAt: 1650804679
   chains: ["Ethereum", "Polygon", "Optimism", "Arbitrum"],
   module: "revert-compoundor/index.js",
   oracles: [],
-  forkedFrom: ["Uniswap"],
+  forkedFrom: [],
   twitter: "revertfinance",
   audit_links: [
     "https://immunefi.com/bounty/revert",

@@ -21805,6 +21805,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   forkedFrom: ["Olympus DAO"],
   listedAt: 1641586084,
 },
+/*
 {
   id: "1213",
   name: "Ocean Protocol",
@@ -21826,6 +21827,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   oracles: ["Chainlink"],
   listedAt: 1641595980,
 },
+*/
 {
   id: "1214",
   name: "Karma DAO",

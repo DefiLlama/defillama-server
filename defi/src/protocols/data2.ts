@@ -18562,5 +18562,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1667818926
 },
+{
+  id: "2256",
+  name: "BarnSwap",
+  address: null,
+  symbol: "-",
+  url: "https://barnswap.com/#/swap",
+  description:
+    "AMM DEX on MUUCHAIN",
+  chain: "MUUCHAIN",
+  logo: `${baseIconsUrl}/barnswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["MUUCHAIN"],
+  module: "barnswap/index.js",
+  twitter: "MuuInuOfficial", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1667883657
+},
 ]
 export default data2;

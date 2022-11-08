@@ -130,7 +130,7 @@ export default {
     "arbitrum": {
         enabled: true
     },
-    "avax": {
+    "avalanche": {
         enabled: true
     },
     "canto": {

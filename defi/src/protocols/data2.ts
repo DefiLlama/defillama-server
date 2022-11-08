@@ -18550,7 +18550,7 @@ listedAt: 1650804679
     "OPX (Decentralized Spot & Perpetual Exchange) - the next DEX generation in  Optimizing Investment Efficiency & Leverage Trading",
   chain: "Optimism",
   logo: `${baseIconsUrl}/opx-finance.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -18558,8 +18558,9 @@ listedAt: 1650804679
   chains: ["Optimism"],
   module: "opx/index.js",
   twitter: "opxfinance", 
-  forkedFrom: [],
-  oracles: [],
+  forkedFrom: ["GMX"],
+  oracles: ["Flux"],
+  audit_links: ["https://github.com/opxfinance/opx-contracts/blob/caf9ef6d2695b45fc8182d2094c334951f7c525d/audits/Quantstamp_Audit_Report.pdf"],
   listedAt: 1667818926
 },
 {

@@ -11,7 +11,7 @@
     "serve": "node --max-old-space-size=8192 node_modules/serverless/bin/serverless offline start",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prebuild": "npx ts-node src/cli/buildRequires.ts",
+    "prebuild": "ts-node --showConfig && npx ts-node src/cli/buildRequires.ts --project tsconfig.json",
     "postinstall": "npm update @defillama/sdk",
     "pretest": "npm run prebuild",
     "build": "sls package",

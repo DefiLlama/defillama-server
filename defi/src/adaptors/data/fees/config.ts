@@ -158,7 +158,7 @@ export default {
         enabled: true
     },
     "solana": {
-        enabled: true
+        enabled: false
     },
     "xdai": {
         enabled: true

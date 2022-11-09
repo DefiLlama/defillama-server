@@ -29,7 +29,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: git submodule update --init --recursive
-    - run: npm run update-submodules
     - name: Get Node.js
       uses: actions/setup-node@v1
       with:
@@ -42,6 +41,7 @@ jobs:
         key: ${{ runner.os }}-jest-${{ env.TODAY }}
     - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
+    - run: cd adapters && git checkout master && git pull
     - name: Run tests
       run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
       env:

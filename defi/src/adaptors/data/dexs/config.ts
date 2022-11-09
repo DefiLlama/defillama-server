@@ -598,5 +598,11 @@ export default {
     },
     "thorswap": {
         enabled: true
+    },
+    "dexible": {
+        enabled: true
+    },
+    "metatdex": {
+        enabled: true
     }
 } as AdaptorsConfig

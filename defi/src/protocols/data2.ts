@@ -18605,6 +18605,28 @@ listedAt: 1650804679
   twitter: "opensea",
   audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/SeaportProtocol.pdf"],
   listedAt: 1667934393
-}
+},
+{
+  id: "2259",
+  name: "Helix",
+  address: null,
+  symbol: "-",
+  url: "https://helixapp.com",
+  description:
+    "The premier decentralized crypto exchange. Trade unlimited cross-chain spot and futures markets.",
+  chain: "Injective",
+  logo: `${baseIconsUrl}/helix.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: "1551",
+  category: "Dexes",
+  chains: ["Injective"],
+  module: "injective-orderbook/index.js",
+  twitter: "HelixApp_", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668004664
+},
 ]
 export default data2;

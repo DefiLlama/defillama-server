@@ -4896,7 +4896,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "injective-protocol",
     cmcId: "7226",
-    category: "Synthetics",
+    category: "Bridge",
     chains: ["Ethereum"],
     module: "injective/index.js",
     twitter: "injective_",

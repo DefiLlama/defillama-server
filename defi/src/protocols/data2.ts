@@ -1157,7 +1157,7 @@ const data2: Protocol[] =  [
 {
   id: "1461",
   name: "WOOFi",
-  address: "bsc:0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
+  address: "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
   symbol: "WOO",
   url: "https://fi.woo.org",
   description: "WOOFi is a multichain DeFi platform which offers the best trade execution and lowest swap fee, opportunities to earn sustainable yields on crypto, and a high-efficiency solution for on-chain liquidity provision.",
@@ -1168,7 +1168,7 @@ const data2: Protocol[] =  [
   gecko_id: "woo-network",
   cmcId: "1289",
   category: "Dexes",
-  chains: ["Binance"],
+  chains: ["Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
   oracles: ["Chainlink"],
   forkedFrom: [],
   module: "woofi.js",

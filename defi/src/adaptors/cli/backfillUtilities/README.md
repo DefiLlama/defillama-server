@@ -20,7 +20,7 @@ The previous commands will run the backfill in the cloud. If you would like to r
 > npm run backfill-local <type> <adaptername> [onlyMissing]
 ```
 
-> If there's any kind of rate limit in the API I would recommend you to use the `backfill-local` script and add a delay in `src/triggerStoreVolume.ts` by uncommenting the line `53` (`if (process.env.runLocal === 'true') await delay(1000)`)
+> If there's any kind of rate limit in the API I would recommend you to use the `backfill-local` script and add a delay in `src/triggerStoreAdaptorData.ts` by uncommenting the line `69` (`if (process.env.runLocal === 'true') await delay(1000)`)
 
 - Finally, you should enable the protocol in `src/adaptor/data/<type>/config.ts`
 

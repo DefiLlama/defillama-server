@@ -29,6 +29,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: git submodule update --init --recursive
+    - run: npm run update-submodules
     - name: Get Node.js
       uses: actions/setup-node@v1
       with:

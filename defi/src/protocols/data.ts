@@ -4885,7 +4885,7 @@ const data: Protocol[] = [
   },
   {
     id: "349",
-    name: "Injective",
+    name: "Injective Bridge",
     address: "0xe28b3b32b6c345a34ff64674606124dd5aceca30",
     symbol: "INJ",
     url: "https://injective.com",

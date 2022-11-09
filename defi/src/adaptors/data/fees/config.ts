@@ -62,7 +62,7 @@ export default {
         enabled: true
     },
     "opensea": {
-        enabled: false
+        enabled: true
     },
     "osmosis": {
         enabled: true

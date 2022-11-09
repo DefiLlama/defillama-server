@@ -18628,5 +18628,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668004664
 },
+{
+  id: "2260",
+  name: "PolyCub",
+  address: "polygon:0x7cc15fef543f205bf21018f038f591c6bada941c",
+  symbol: "POLYCUB",
+  url: "https://polycub.com",
+  description:
+    "A DeFi 2.0 Yield Optimizing Platform.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/polycub.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "polycub",
+  cmcId: "18707",
+  category: "Yield",
+  chains: ["Polygon"],
+  module: "polycub/index.js",
+  twitter: "FinanceLeo", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://www.certik.com/projects/cubfinance"],
+  listedAt: 1668014137
+},
 ]
 export default data2;

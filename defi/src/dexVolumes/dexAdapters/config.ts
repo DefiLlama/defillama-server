@@ -608,7 +608,9 @@ export default {
     "dexible": {
         enabled: false
     },
-
+    "metatdex": {
+        enabled: true
+    },
 } as {
     [name: string]: IVolumesConfig
 }

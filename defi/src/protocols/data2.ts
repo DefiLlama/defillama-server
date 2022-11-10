@@ -18732,10 +18732,10 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://orderly.network",
   description:
-    "Orderly Network is a permissionless and modular protocol that brings high throughput, low latency, low fees, tight spreads and composability for DeFi buildersToken address and ticker.",
+    "Orderly Network is a permissionless and modular protocol that brings high throughput, low latency, low fees, tight spreads and composability for DeFi builders.",
   chain: "Near",
   logo: `${baseIconsUrl}/orderly-network.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -18745,6 +18745,7 @@ listedAt: 1650804679
   twitter: "OrderlyNetwork", 
   forkedFrom: [],
   oracles: [],
+  audit_links: ["https://www.certik.com/projects/orderly-network"],
   listedAt: 1668086145
 },
 {

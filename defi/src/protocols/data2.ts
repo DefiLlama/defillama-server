@@ -18651,5 +18651,53 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/cubfinance"],
   listedAt: 1668014137
 },
+{
+  id: "2261",
+  name: "Arbor Finance",
+  address: null,
+  symbol: "-",
+  url: "https://arbor.finance",
+  description:
+    "Arbor enables creditworthy DAOs to obtain fixed-rate financing using their project tokens as collateral.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/arbor-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "arbor-finance/index.js",
+  twitter: "arborfinance", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: [
+                  "https://github.com/alwaysbegrowing/arbor-contracts/blob/main/audits/previously-porter-finance-spearbit-audit.pdf",
+                  "https://github.com/alwaysbegrowing/arbor-contracts/blob/main/audits/previously-porter-finance-zellic-audit.pdf"
+              ],
+  listedAt: 1668080722
+},
+{
+  id: "2262",
+  name: "Kava Liquid",
+  address: null,
+  symbol: "-",
+  url: "https://app.kava.io/mint",
+  description:
+    "Kava Liquid is a liquid staking protocol where users can stake KAVA for bKAVA.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kava-liquid.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Kava"],
+  module: "kavaLiquid.js",
+  twitter: "kava_platform", 
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  listedAt: 1668080824
+},
 ]
 export default data2;

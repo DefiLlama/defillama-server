@@ -322,6 +322,7 @@ functions:
       - schedule: cron(20 * * * ? *)
   hourly:
     handler: src/getHourlyData.default
+    timeout: 120
     memorySize: 2000
     events:
       - http:

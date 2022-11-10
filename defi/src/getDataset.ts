@@ -6,7 +6,10 @@ import { storeDataset, buildRedirect } from "./utils/s3";
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   let protocolName = event.pathParameters?.protocol?.toLowerCase();
-  protocolName = protocolName?.substring(0, protocolName.length - ".csv".length);
+
+  if (protocolName?.endsWith(".csv")) {
+    protocolName = protocolName?.substring(0, protocolName.length - ".csv".length);
+  }
 
   const protocolData = allProtocols.find((prot) => sluggify(prot) === protocolName);
 
@@ -18,6 +21,11 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
 
   const csv = await craftCsvDataset([protocolData], true);
   const filename = `${protocolName}.csv`;
+
+  if (process.env.stage !== "prod") {
+    return { statusCode: 200, body: JSON.stringify(csv) };
+  }
+
   await storeDataset(filename, csv);
 
   return buildRedirect(filename);

@@ -162,5 +162,11 @@ export default {
     },
     "xdai": {
         enabled: true
+    },
+    "abracadabra": {
+        enabled: true
+    },
+    "liquity": {
+        enabled: true
     }
 } as AdaptorsConfig

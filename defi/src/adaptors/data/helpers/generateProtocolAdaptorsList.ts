@@ -14,14 +14,16 @@ function notUndefined<T>(x: T | undefined): x is T {
     return x !== undefined;
 }
 
-const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => ({
-    ...obj,
-    name: key,
-    id: obj.cmcId,
-    gecko_id: obj.geckoId,
-    category: "Chain",
-    logo: `${baseIconsUrl}/chains/rsz_${getLogoKey(key)}.jpg`
-})) as unknown as Protocol[]
+const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
+    return {
+        ...obj,
+        name: key,
+        id: obj.cmcId ?? obj.chainId,
+        gecko_id: obj.geckoId,
+        category: "Chain",
+        logo: `${baseIconsUrl}/chains/rsz_${getLogoKey(key)}.jpg`
+    }
+}) as unknown as Protocol[]
 
 export type IImportsMap = IJSON<{ default: Adapter }>
 

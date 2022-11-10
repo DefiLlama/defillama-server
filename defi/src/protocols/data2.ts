@@ -18699,5 +18699,53 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1668080824
 },
+{
+  id: "2263",
+  name: "Snowflake Exchange",
+  address: "polygon:0xE0f463832295ADf63eB6CA053413a3f9cd8bf685",
+  symbol: "SNOW",
+  url: "https://www.snowflake.exchange",
+  description:
+    "The Snowflake Exchange protocol is a next-gen single-side AMM (decentralized exchange) designed for exchanging stable cryptocurrencies (USDT, USDC, DAI, MAI) on the Polygon blockchain.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/snowflake-exchange.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Polygon"],
+  module: "snowflake/index.js",
+  twitter: "Snowflake_Defi", 
+  forkedFrom: ["Platypus Finance"],
+  oracles: ["Chainlink"],
+  audit_links: [
+                 "https://github.com/sokenteam/smart_contract_audits/blob/main/Snowflake(SNOW)%20Standard%20Smart%20Contract%20Audit.pdf",
+                 "https://github.com/Coinsult/solidity/blob/main/Coinsult_Snowflake_0xE0...f685_Audit.pdf"
+               ],
+  listedAt: 1668085784
+},
+{
+  id: "2264",
+  name: "Orderly Network",
+  address: null,
+  symbol: "-",
+  url: "https://orderly.network",
+  description:
+    "Orderly Network is a permissionless and modular protocol that brings high throughput, low latency, low fees, tight spreads and composability for DeFi buildersToken address and ticker.",
+  chain: "Near",
+  logo: `${baseIconsUrl}/orderly-network.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Near"],
+  module: "orderly-network/index.js",
+  twitter: "OrderlyNetwork", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668086145
+},
 ]
 export default data2;

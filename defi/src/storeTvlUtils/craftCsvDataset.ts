@@ -49,15 +49,16 @@ function addTokenRows(
 function addBasicChain(historicalItems: AWS.DynamoDB.DocumentClient.ItemList | undefined, basicChain: string) {
   const chain = normalizeChain(basicChain);
   historicalItems?.forEach((item) => {
-    if (item[chain] === undefined) {
-      item[chain] = item.tvl;
-    }
-    // Object.keys(item).forEach((key) => {
-    //   if (key.startsWith("avalanche")) {
-    //     item[key.replace("avalanche", "avax")] = item[key];
-    //     delete item[key];
-    //   }
-    // });
+    // if (!item[chain]) {
+    //   item[chain] = item.tvl;
+    // }
+
+    Object.keys(item).forEach((key) => {
+      if (key.startsWith("avax")) {
+        item[key.replace("avax", "avalanche")] = item[key];
+        delete item[key];
+      }
+    });
   });
   return historicalItems;
 }

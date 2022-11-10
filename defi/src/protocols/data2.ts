@@ -18747,5 +18747,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668086145
 },
+{
+  id: "2265",
+  name: "Bank of Chain",
+  address: null,
+  symbol: "-",
+  url: "https://bankofchain.io",
+  description:
+    "Planning to become the next generation of Decentralized Banking (DeB), Bank of Chain (BoC) is a Multichain Yield Optimizer that provides the best long-term investment with virtually no risk, where you can deposit your stablecoins and get a sustainable, low-risk return with an APY of around 10%.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bank-of-chain.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Ethereum"],
+  module: "bank-of-chain/index.js",
+  twitter: "bankofchain_dao", 
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  listedAt: 1668094972
+},
 ]
 export default data2;

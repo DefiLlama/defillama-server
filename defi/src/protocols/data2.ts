@@ -18686,7 +18686,7 @@ listedAt: 1650804679
   description:
     "Kava Liquid is a liquid staking protocol where users can stake KAVA for bKAVA.",
   chain: "Kava",
-  logo: `${baseIconsUrl}/kava-liquid.jpg`,
+  logo: `${baseIconsUrl}/kava-liquid.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

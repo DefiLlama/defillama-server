@@ -18770,5 +18770,49 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1668094972
 },
+{
+  id: "2266",
+  name: "Kava Earn",
+  address: null,
+  symbol: "-",
+  url: "https://app.kava.io/home",
+  description:
+    "Kava Earn is a yield optimizer protocol that redistributes tokens for higher yield.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kava-earn.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Kava"],
+  module: "kava-earn/index.js",
+  twitter: "kava_platform", 
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  listedAt: 1668111911
+},
+{
+  id: "2267",
+  name: "Kava Boost",
+  address: null,
+  symbol: "-",
+  url: "https://app.kava.io/home",
+  description:
+    "Kava Boost is a storage protocol that receives incentives for simply supplying.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kava-boost.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Kava"],
+  module: "kava-boost/index.js",
+  twitter: "kava_platform", 
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  listedAt: 1668111919
+},
 ]
 export default data2;

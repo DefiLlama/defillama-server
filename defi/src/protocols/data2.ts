@@ -18693,7 +18693,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Liquid Staking",
   chains: ["Kava"],
-  module: "kavaLiquid.js",
+  module: "kava-liquid/index.js",
   twitter: "kava_platform", 
   forkedFrom: [],
   oracles: ["Chainlink"],

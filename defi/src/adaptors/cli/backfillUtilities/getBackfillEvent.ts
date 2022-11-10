@@ -79,7 +79,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
                 .reduce(async (accP, { start, runAtCurrTime }) => {
                     const acc = await accP
                     const currstart = runAtCurrTime ? nowSTimestamp + 2 : +(await start().catch(() => nowSTimestamp))
-                    return (currstart && currstart < acc && currstart!==0) ? currstart : acc
+                    return (currstart && currstart < acc && currstart !== 0) ? currstart : acc
                 }, Promise.resolve(nowSTimestamp + 1))
             startTimestamp = st
         } else {
@@ -88,7 +88,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
                 const bst = await Object.values(dexAdapter).reduce(async (accP, { start, runAtCurrTime }) => {
                     const acc = await accP
                     const currstart = runAtCurrTime ? nowSTimestamp + 2 : (await start().catch(() => nowSTimestamp))
-                    return (typeof currstart === 'number' && currstart < acc && currstart!==0) ? currstart : acc
+                    return (typeof currstart === 'number' && currstart < acc && currstart !== 0) ? currstart : acc
                 }, Promise.resolve(nowSTimestamp + 1))
 
                 return bst < acc ? bst : acc
@@ -120,7 +120,7 @@ export default async (adapter: string, adaptorType: AdapterType, onlyMissing: bo
                     Object.values(vol.data)
                         .filter(data => Object.keys(data).includes("error") || vol.data === undefined).length > 0
                 ])
-                .concat(getDataPoints((vols[vols.length - 1].timestamp * 1000) + DAY_IN_MILISECONDS).map(time => [time, true]))
+                // .concat(getDataPoints((vols[vols.length - 1].timestamp * 1000) + DAY_IN_MILISECONDS).map(time => [time, true]))
                 .reduce((acc, [timestamp, hasAnErrorOrEmpty]) => {
                     acc[String(timestamp)] = acc[String(timestamp)] === true ? acc[String(timestamp)] : hasAnErrorOrEmpty
                     return acc

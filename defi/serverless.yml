@@ -89,6 +89,8 @@ provider:
     DEFILLAMA_SDK_MUTED: true
     PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
+    AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
+    INDEXER_DB: ${env:INDEXER_DB}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
 

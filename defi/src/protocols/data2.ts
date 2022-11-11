@@ -18836,5 +18836,27 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1668164419
 },
+{
+  id: "2269",
+  name: "Binance",
+  address: null,
+  symbol: "-",
+  url: "https://www.binance.com",
+  description:
+    "Binance is a cryptocurrency exchange which is the largest exchange in the world in terms of daily trading volume of cryptocurrencies",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/binance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Tron", "Bitcoin", "Binance"],
+  module: "binance/index.js",
+  twitter: "binance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668170565
+},
 ]
 export default data2;

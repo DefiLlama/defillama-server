@@ -44,7 +44,7 @@ export interface IProtocol extends Protocol {
 export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: boolean) {
   let exclude = false;
 
-  if (protocol.category === "Chain") {
+  if (protocol.category === "Chain" || protocol.category === "CEX" ) {
     return true;
   }
 

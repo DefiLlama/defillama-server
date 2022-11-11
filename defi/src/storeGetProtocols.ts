@@ -42,7 +42,7 @@ const handler = async (_event: any) => {
         };
       })
     )
-  ).filter((p) => p.category !== "Chain");
+  ).filter((p) => p.category !== "Chain" && p.category !== "CEX");
 
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet: Set<string> = new Set();
@@ -51,7 +51,7 @@ const handler = async (_event: any) => {
     if (!p.category) return;
 
     protocolCategoriesSet.add(p.category);
-    if (p.category !== "Bridge" && p.category !== "CEX") {
+    if (p.category !== "Bridge") {
       p.chains.forEach((c: string) => {
         chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
       });

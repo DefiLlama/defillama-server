@@ -18860,7 +18860,7 @@ listedAt: 1650804679
 },
 {
   id: "2270",
-  name: "Crypto.com",
+  name: "Crypto-com",
   address: null,
   symbol: "-",
   url: "https://crypto.com",
@@ -18879,6 +18879,29 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1668173255
+},
+{
+  id: "2271",
+  name: "Magpie",
+  address: "bsc:0xD06716E1Ff2E492Cc5034c2E81805562dd3b45fa",
+  symbol: "MGP",
+  url: "https://www.magpiexyz.io",
+  description:
+    "Magpie is a platform built on BNB Chain to boost yields for liquidity providers and governance token holders of veTokenomics protocols.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/magpie.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "magpie",
+  cmcId: "22391",
+  category: "Yield",
+  chains: ["Binance"],
+  module: "magpiexyz/index.js",
+  twitter: "magpiexyz_io", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Magpie-v1.1.pdf"],
+  listedAt: 1668185763
 },
 ]
 export default data2;

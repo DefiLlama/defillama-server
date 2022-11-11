@@ -5,6 +5,7 @@ export default {
         enabled: true
     },
     "dexible": {
-        enabled: true
+        enabled: true,
+        startFrom: 1630022400
     }
 } as AdaptorsConfig

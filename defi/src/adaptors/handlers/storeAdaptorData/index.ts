@@ -90,7 +90,8 @@ export const handler = async (event: IHandlerEvent) => {
 
       // Store records // TODO: Change to run in parallel
       for (const [recordType, record] of Object.entries(rawRecords)) {
-        await storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
+        console.log("Simulation:", event.adaptorType, recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType)
+        // await storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
       }
     }
     catch (error) {

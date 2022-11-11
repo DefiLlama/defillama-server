@@ -18858,5 +18858,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668170565
 },
+{
+  id: "2270",
+  name: "Crypto.com",
+  address: null,
+  symbol: "-",
+  url: "https://crypto.com",
+  description:
+    "The World Fastest Growing Crypto App.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/crypto-com.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin"],
+  module: "crypto-com/index.js",
+  twitter: "cryptocom", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668173255
+},
 ]
 export default data2;

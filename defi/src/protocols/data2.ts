@@ -18947,5 +18947,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668191855
 },
+{
+  id: "2274",
+  name: "Kucoin",
+  address: null,
+  symbol: "-",
+  url: "https://www.kucoin.com",
+  description:
+    "cex",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/kucoin.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin"],
+  module: "kucoin/index.js",
+  twitter: "kucoincom", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668191855
+},
 ]
 export default data2;

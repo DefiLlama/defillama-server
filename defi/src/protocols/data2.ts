@@ -18838,14 +18838,14 @@ listedAt: 1650804679
 },
 {
   id: "2269",
-  name: "Binance",
+  name: "Binance CEX",
   address: null,
   symbol: "-",
   url: "https://www.binance.com",
   description:
     "Binance is a cryptocurrency exchange which is the largest exchange in the world in terms of daily trading volume of cryptocurrencies",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/binance.jpg`,
+  logo: `${baseIconsUrl}/binance-cex.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

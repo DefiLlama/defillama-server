@@ -604,5 +604,8 @@ export default {
     },
     "metatdex": {
         enabled: true
+    },
+    "goosefx": {
+        enabled: true
     }
 } as AdaptorsConfig

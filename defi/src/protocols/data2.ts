@@ -18814,5 +18814,27 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1668111919
 },
+{
+  id: "2268",
+  name: "Optyfi",
+  address: null,
+  symbol: "-",
+  url: "https://opty.fi",
+  description:
+    "OptyFi is a powerful decentralized yield optimizer. OptyFi's ML and Quant algorithms monitor hundreds of yield strategies across Defi. User assets are automatically shifted to optimal strategies that meet user risk preferences.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/optyfi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Ethereum", "Polygon"],
+  module: "optyfi/index.js",
+  twitter: "optyfi", 
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  listedAt: 1668164419
+},
 ]
 export default data2;

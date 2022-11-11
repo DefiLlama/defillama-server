@@ -18969,5 +18969,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668191855
 },
+{
+  id: "2275",
+  name: "Bitfinex",
+  address: null,
+  symbol: "-",
+  url: "https://www.bitfinex.com",
+  description:
+    "Bitfinex facilitates a graphical trading experience with advanced charting functionality that allows traders to visualise orders, positions and price alerts",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bitfinex.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin"],
+  module: "bitfinex/index.js",
+  twitter: "bitfinex", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668201923
+},
 ]
 export default data2;

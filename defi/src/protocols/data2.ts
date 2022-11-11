@@ -18925,5 +18925,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668185769
 },
+{
+  id: "2273",
+  name: "Deribit",
+  address: null,
+  symbol: "-",
+  url: "https://www.deribit.com",
+  description:
+    "World's biggest Bitcoin and Ethereum Options Exchange and the most advanced crypto derivatives trading platform with up to 50x leverage on Crypto Futures.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/deribit.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin", "Solana"],
+  module: "deribit/index.js",
+  twitter: "DeribitExchange", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668191855
+},
 ]
 export default data2;

@@ -18956,7 +18956,7 @@ listedAt: 1650804679
   description:
     "cex",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/kucoin.png`,
+  logo: `${baseIconsUrl}/kucoin.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

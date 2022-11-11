@@ -18903,5 +18903,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Magpie-v1.1.pdf"],
   listedAt: 1668185763
 },
+{
+  id: "2272",
+  name: "OKX",
+  address: null,
+  symbol: "-",
+  url: "https://www.okx.com",
+  description:
+    "OKX, formerly known as OKEx, is a Seychelles-based cryptocurrency exchange and derivatives exchange that provides a platform for trading various instruments such as spot and derivative",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/okx.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin"],
+  module: "okex/index.js",
+  twitter: "okx", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668185769
+},
 ]
 export default data2;

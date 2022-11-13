@@ -30,7 +30,7 @@ export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, 
             chainFilter
         )
         adaptorRecords = cleanRecords.cleanRecordsArr
-        if (adaptorRecords.length === 0) throw new Error(`${adapter.name} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
+        if (adaptorRecords.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
 
         // Calc stats with last available data
         const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)

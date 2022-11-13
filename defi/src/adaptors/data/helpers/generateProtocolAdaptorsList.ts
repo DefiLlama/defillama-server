@@ -40,7 +40,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 || dexP.gecko_id?.includes(adapterKey)
                 || dexP.module?.split("/")[0]?.includes(adapterKey))
         })
-        if (dexFoundInProtocols && imports_obj[adapterKey].default)
+        if (dexFoundInProtocols && imports_obj[adapterKey].default) {
             return {
                 ...dexFoundInProtocols,
                 id: ID_MAP[dexFoundInProtocols.id]?.id ?? dexFoundInProtocols.id,
@@ -53,6 +53,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 protocolsData: getProtocolsData(adapterKey, imports_obj[adapterKey].default),
                 protocolType: adapterObj.default?.protocolType
             }
+        }
         // TODO: Handle better errors
         console.error(`Missing info for ${adapterKey}`)
         return undefined

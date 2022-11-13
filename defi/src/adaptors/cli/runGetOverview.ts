@@ -17,7 +17,7 @@ const event = {
     const r = await handler(event)
     var endTime = performance.now()
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
-    console.log(rr.protocols.length)
+    console.log(rr.protocols.map(p=>[p.name]))
     console.log("Current run:", (endTime - startTime) / 1000)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)

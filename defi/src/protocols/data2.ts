@@ -18991,5 +18991,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668201923
 },
+{
+  id: "2276",
+  name: "Huobi",
+  address: null,
+  symbol: "-",
+  url: "https://www.huobi.com",
+  description:
+    "Huobi Global is a world-leading cryptocurrency trading exchange.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/huobi.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin", "Tron"],
+  module: "huobi/index.js",
+  twitter: "HuobiGlobal", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668362612
+},
 ]
 export default data2;

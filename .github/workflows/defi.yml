@@ -75,6 +75,7 @@ jobs:
         STALE_COINS_ADAPTERS_WEBHOOK: ${{ secrets.STALE_COINS_ADAPTERS_WEBHOOK }}
         REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
         PROD_VYBE_API_KEY: ${{ secrets.PROD_VYBE_API_KEY }}
+        BIT_QUERY_API_KEY: ${{ secrets.BIT_QUERY_API_KEY }}
         VOLUMES_WEBHOOK: ${{ secrets.VOLUMES_WEBHOOK }}
         ZEROx_API_KEY: ${{ secrets.ZEROx_API_KEY }}
         INDEXER_DB: ${{ secrets.INDEXER_DB }}

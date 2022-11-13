@@ -19013,5 +19013,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668362612
 },
+{
+  id: "2277",
+  name: "Weld Finance",
+  address: null,
+  symbol: "-",
+  url: "https://weld.finance",
+  description:
+    " Liquid stacking protocol for all the assets produced by Knit finance and some other generic assets.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/weld-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Kava"],
+  module: "weldfinance/index.js",
+  twitter: "KnitFinance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668371791
+},
 ]
 export default data2;

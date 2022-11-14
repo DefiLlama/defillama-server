@@ -17697,7 +17697,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Reserve Currency",
     chains: ["Harmony"],
     module: "cheesedao/index.js",
-    twitter: "CheezDAO",
+    twitter: "CheeseGameAVAX",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639328374,
   },

@@ -6302,7 +6302,7 @@ const data: Protocol[] = [
   {
     id: "420",
     name: "Elk",
-    address: "polygon:0xeEeEEb57642040bE42185f49C52F7E9B38f8eeeE",
+    address: "0xeEeEEb57642040bE42185f49C52F7E9B38f8eeeE",
     symbol: "ELK",
     url: "https://elk.finance",
     description: "Elk Finance is building Web3 infrastructure for cross-chain value and data transfer via ElkNet - our decentralized bridge. Our motto is Any chain, anytime, anywhere.",
@@ -6313,7 +6313,7 @@ const data: Protocol[] = [
     gecko_id: "elk-finance",
     cmcId: "10095",
     category: "Dexes",
-    chains: ["Polygon","Avalanche","Fantom", "xDai", "Binance", "Heco", "Moonriver", "Harmony", "Hoo", "Elastos", "Kucoin", "OKExChain", "Telos", "Cronos", "Fuse", "IoTeX", "Ethereum", "Arbitrum", "Optimism", "Kava"],
+    chains: ["Polygon","Avalanche","Fantom", "xDai", "Binance", "Heco", "Moonriver", "Harmony", "Hoo", "Elastos", "Kucoin", "OKExChain", "Telos", "Cronos", "Fuse", "IoTeX", "Ethereum", "Arbitrum", "Optimism", "Kava", "BitTorrent"],
     module: "elkfinance/index.js",
     forkedFrom: ["Uniswap"],
     twitter: "elk_finance",

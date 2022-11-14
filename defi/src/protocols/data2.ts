@@ -1466,7 +1466,7 @@ const data2: Protocol[] =  [
   address: "0xb4d930279552397bba2ee473229f89ec245bc365",
   symbol: "MAHA",
   url: "https://mahadao.com",
-  description: "MahaDAO, which is releasing ARTH, a decentralized non-depreciating stablecoin, that is designed to appreciate over time against the US dollar (after accounting for inflation) while at the same time remaining relatively stable.",
+  description: "MahaDAO is a community focused DAO focused on building ARTH, a decentralized valuecoin that maintains the purchasing power of it's token. It is designed to appreciate against the US dollar (after accounting for inflation) in the long run whilst remaining relatively stable in the short run.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/mahadao.png`,
   audits: "2",

@@ -173,6 +173,6 @@ export default {
         enabled: true
     },
     "boba": {
-        enabled: true
+        enabled: false
     }
 } as AdaptorsConfig

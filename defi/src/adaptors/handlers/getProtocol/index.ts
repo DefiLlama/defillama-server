@@ -16,6 +16,7 @@ export interface ChartItem {
 
 export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     "name"
+    | "displayName"
     | "logo"
     | "address"
     | "url"
@@ -59,6 +60,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
 
         dexDataResponse = {
             name: generatedSummary.name,
+            displayName: generatedSummary.displayName,
             disabled: generatedSummary.disabled,
             logo: dexData.logo,
             address: dexData.address,
@@ -84,6 +86,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         console.error(error)
         dexDataResponse = {
             name: dexData.name,
+            displayName: dexData.displayName,
             logo: dexData.logo,
             address: dexData.address,
             url: dexData.url,

@@ -161,7 +161,7 @@ export default {
         enabled: true
     },
     "xdai": {
-        enabled: false
+        enabled: true
     },
     "abracadabra": {
         enabled: true

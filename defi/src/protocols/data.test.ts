@@ -109,7 +109,7 @@ test("no surprise category", async () => {
     'NFT Marketplace',
     'NFT Lending',
     'Gaming',
-    'Undercollateralized Lending',
+    'Uncollateralized Lending',
     'Exotic Options',
     'CEX',
     'Leveraged Farming',

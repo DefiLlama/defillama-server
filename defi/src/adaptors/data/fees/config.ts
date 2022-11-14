@@ -137,13 +137,13 @@ export default {
         enabled: true
     },
     "cardano": {
-        enabled: true
+        enabled: false
     },
     "cronos": {
         enabled: true
     },
     "klaytn": {
-        enabled: true
+        enabled: false
     },
     "dodo": {
         enabled: true
@@ -161,7 +161,7 @@ export default {
         enabled: true
     },
     "xdai": {
-        enabled: true
+        enabled: false
     },
     "abracadabra": {
         enabled: true

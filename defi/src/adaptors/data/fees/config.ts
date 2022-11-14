@@ -171,5 +171,8 @@ export default {
     },
     "geist-finance": {
         enabled: true
+    },
+    "boba": {
+        enabled: true
     }
 } as AdaptorsConfig

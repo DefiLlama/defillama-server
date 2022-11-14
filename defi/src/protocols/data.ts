@@ -15614,7 +15614,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1637714110,
   },
-/*   {
+  {
     id: "908",
     name: "Knit Finance",
     address: "0xEF53462838000184F35f7D991452e5f25110b207",
@@ -15634,7 +15634,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.com/projects/knitfinance"],
     oracles: ["Internal", "DIA"],
     listedAt: 1637799515,
-  }, */
+  },
   {
     id: "909",
     name: "Kronos DAO",

@@ -19035,5 +19035,31 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668371791
 },
+{
+  id: "2278",
+  name: "Quoll",
+  address: "bsc:0x08b450e4a48C04CDF6DB2bD4cf24057f7B9563fF",
+  symbol: "QUO",
+  url: "https://quoll.finance",
+  description:
+    "Quoll Finance is a yield booster and on-chain incubator. It leverages the veToken/boosted yield model adopted by Wombat Exchange to provide a boosted yield for LPs and extra reward to WOM holders with a tokenized version of veWOM, qWOM.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/quoll.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "quo",
+  cmcId: null,
+  category: "Yield",
+  chains: ["Binance"],
+  module: "quoll/index.js",
+  twitter: "QuollFinance", 
+  forkedFrom: ["Convex Finance"],
+  oracles: [],
+  audit_links: [
+"https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-QuollFinance-v1.0.pdf",
+"https://twitter.com/ZOKYO_io/status/1584544823062630400?s=20&t=SHVRNHNN_w49Q1bbDsI9uQ",
+],
+  listedAt: 1668436086
+},
 ]
 export default data2;

@@ -112,6 +112,7 @@ test("no surprise category", async () => {
     'Undercollateralized Lending',
     'Exotic Options',
     'CEX',
+    'Leveraged Farming',
   ]
   for (const protocol of protocols) {
     expect(whitelistedCategories).toContain(protocol.category);

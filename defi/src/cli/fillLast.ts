@@ -16,13 +16,14 @@ const main = async () => {
   const now = Math.round(Date.now() / 1000);
 
   const adapterModule = await importAdapter(protocol)
-  const { ethereumBlock, chainBlocks } = await getBlocksRetry(now, { adapterModule });
+  const ethereumBlock = undefined
+  const chainBlocks = {}
   setInterval(() => {
     releaseCoingeckoLock();
   }, 1.5e3);
   const tvl = await storeTvl(
     now,
-    ethereumBlock,
+    ethereumBlock as unknown as number,
     chainBlocks,
     protocol,
     adapterModule,

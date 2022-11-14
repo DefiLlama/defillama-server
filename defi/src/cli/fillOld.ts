@@ -48,7 +48,7 @@ async function getAndStore(
   dailyItems: DailyItems
 ) {
   const adapterModule = await importAdapter(protocol)
-  let ethereumBlock = 1e15, chainBlocks: ChainBlocks = {}
+  let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
   if (!process.env.SKIP_BLOCK_FETCH) {
     const res = await getBlocksRetry(timestamp, { adapterModule })
     ethereumBlock = res.ethereumBlock
@@ -57,7 +57,7 @@ async function getAndStore(
 
   const tvl = await storeTvl(
     timestamp,
-    ethereumBlock,
+    ethereumBlock as unknown as number,
     chainBlocks,
     protocol,
     adapterModule,

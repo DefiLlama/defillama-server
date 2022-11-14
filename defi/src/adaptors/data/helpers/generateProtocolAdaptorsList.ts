@@ -4,7 +4,7 @@ import { sluggifyString } from "../../../utils/sluggify";
 import getAllChainsFromAdaptors, { getProtocolsData, isDisabled } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { Adapter, ProtocolType } from "@defillama/adaptors/adapters/types";
-import { chainCoingeckoIds } from "../../../utils/normalizeChain"
+import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
 import { baseIconsUrl } from "../../../constants";
 
 // Obtaining all dex protocols
@@ -59,11 +59,12 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
         return undefined
     }).filter(notUndefined);
 
-export function getDisplayName(name: string, _adapter: Adapter) {
+export function getDisplayName(name: string, adapter: Adapter) {
     if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
     if (name.split(' ')[0].includes('Uniswap')) return 'Uniswap'
     /* if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
         return `${Object.keys(adapter.breakdown)[0]}` */
+    if (adapter.protocolType === ProtocolType.CHAIN) return getChainDisplayName(name.toLowerCase(), true)
     return name
 }
 
@@ -93,5 +94,6 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'karura-swap') return id === "451"
     if (key === 'algofi') return id === "2091"
     if (key === 'penguin') return id === "1575"
+    if (key === 'xdai') return id === "1659"
     return true
 }

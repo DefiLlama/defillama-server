@@ -168,5 +168,8 @@ export default {
     },
     "liquity": {
         enabled: true
+    },
+    "geist-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

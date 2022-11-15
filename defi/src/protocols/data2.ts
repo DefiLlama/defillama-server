@@ -19020,7 +19020,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://weld.finance",
   description:
-    " Liquid stacking protocol for all the assets produced by Knit finance and some other generic assets.",
+    "Liquid stacking protocol for all the assets produced by Knit finance and some other generic assets.",
   chain: "Kava",
   logo: `${baseIconsUrl}/weld-finance.png`,
   audits: "0",
@@ -19056,10 +19056,32 @@ listedAt: 1650804679
   forkedFrom: ["Convex Finance"],
   oracles: [],
   audit_links: [
-"https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-QuollFinance-v1.0.pdf",
-"https://twitter.com/ZOKYO_io/status/1584544823062630400?s=20&t=SHVRNHNN_w49Q1bbDsI9uQ",
-],
+         "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-QuollFinance-v1.0.pdf",
+         "https://twitter.com/ZOKYO_io/status/1584544823062630400?s=20&t=SHVRNHNN_w49Q1bbDsI9uQ",
+               ],
   listedAt: 1668436086
+},
+{
+  id: "2281",
+  name: "Sigmausd",
+  address: null,
+  symbol: "-",
+  url: "https://sigmausd.io",
+  description:
+    "AgeUSD is a novel crypto-backed algorithmic stablecoin protocol that has been created in joint partnership by the Ergo Foundation, EMURGO, and IOG on top of the Ergo Blockchain.",
+  chain: "Ergo",
+  logo: `${baseIconsUrl}/sigmausd.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Ergo"],
+  module: "sigmausd/index.js",
+  twitter: null, 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668512038
 },
 ]
 export default data2;

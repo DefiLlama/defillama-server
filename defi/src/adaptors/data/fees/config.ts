@@ -186,5 +186,8 @@ export default {
     },
     "honeyswap": {
         enabled: true
+    },
+    "solarbeam": {
+        enabled: true
     }
 } as AdaptorsConfig

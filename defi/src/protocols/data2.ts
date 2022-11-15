@@ -18114,7 +18114,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   audit_links: ["https://docs.geode.fi/developers/audits"],
-  parentProtocol: "Yield Yak",
+  // parentProtocol: "Yield Yak",
   listedAt: 1667041431
 },
 {

@@ -19135,7 +19135,7 @@ listedAt: 1650804679
   symbol: "WOO",
   url: "https://fi.woo.org/earn",
   description:
-    "WOOFi, built by WOO Network, offers the best trade execution and lowest swap fee, opportunities to earn sustainable yields on crypto, and a high-efficiency solution for on-chain liquidity provision.",
+    'WOOFi Earn provides "set-and-forget" yield generating strategies, where users can simply deposit into a vault and let the automated strategies do the rest',
   chain: "Binance",
   logo: `${baseIconsUrl}/woofi-earn.jpg`,
   audits: "0",

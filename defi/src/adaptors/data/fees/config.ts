@@ -177,5 +177,8 @@ export default {
     },
     "mojitoswap": {
         enabled: true
+    },
+    "mimo": {
+        enabled: true
     }
 } as AdaptorsConfig

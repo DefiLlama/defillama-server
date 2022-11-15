@@ -180,5 +180,8 @@ export default {
     },
     "mimo": {
         enabled: true
+    },
+    "junoswap": {
+        enabled: true
     }
 } as AdaptorsConfig

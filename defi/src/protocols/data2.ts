@@ -19083,5 +19083,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668512038
 },
+{
+  id: "2282",
+  name: "KSwap",
+  address: null,
+  symbol: "-",
+  url: "https://kswap.network",
+  description:
+    "AMM DEX with deep liquidity on Kava",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Kava"],
+  module: "kswap/index.js",
+  twitter: "_KSwap", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1668516202
+},
 ]
 export default data2;

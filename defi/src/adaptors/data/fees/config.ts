@@ -183,5 +183,8 @@ export default {
     },
     "junoswap": {
         enabled: true
+    },
+    "honeyswap": {
+        enabled: true
     }
 } as AdaptorsConfig

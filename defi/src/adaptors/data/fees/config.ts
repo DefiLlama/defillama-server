@@ -174,5 +174,8 @@ export default {
     },
     "boba": {
         enabled: false
+    },
+    "mojitoswap": {
+        enabled: true
     }
 } as AdaptorsConfig

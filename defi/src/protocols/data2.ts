@@ -19128,5 +19128,27 @@ listedAt: 1650804679
   audit_links: ["https://2688442826-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FdfX5W2ttoTF0UsavgZhT%2Fuploads%2FNiALqEGB39ep1N0BtMU2%2Fomniscia-report_1667586376.pdf?alt=media&token=71a2e19a-cbda-4cff-8625-761b2fcbea46"],
   listedAt: 1668523056
 },
+{
+  id: "2284",
+  name: "Woofi Earn",
+  address: "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
+  symbol: "WOO",
+  url: "https://fi.woo.org/earn",
+  description:
+    "WOOFi, built by WOO Network, offers the best trade execution and lowest swap fee, opportunities to earn sustainable yields on crypto, and a high-efficiency solution for on-chain liquidity provision.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/woofi-earn.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Binance", "Fantom", "Avalanche", "Polygon", "Arbitrum"],
+  module: "woofi-earn/index.js",
+  twitter: "WOOnetwork", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668524390
+},
 ]
 export default data2;

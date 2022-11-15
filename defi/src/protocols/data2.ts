@@ -19115,7 +19115,7 @@ listedAt: 1650804679
     "The 3xcalibur Protocol is a permissionless, liquidationless, oracleless liquidity marketplace, powered by Tri-AMM architecture to facilitate stableswaps, variable swaps and borrowing/lending.",
   chain: "Arbitrum",
   logo: `${baseIconsUrl}/3xcalibur.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "3xcalibur",
   cmcId: "22611",
@@ -19149,6 +19149,28 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1668524390
+},
+{
+  id: "2285",
+  name: "Sentiment",
+  address: null,
+  symbol: "-",
+  url: "https://www.sentiment.xyz",
+  description:
+    "Sentiment is a liquidity protocol Enabling Onchain Permissionless Undercollateralized Borrowing.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/sentiment.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Leveraged Farming",
+  chains: ["Arbitrum"],
+  module: "sentiment/index.js",
+  twitter: "sentimentxyz", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668540740
 },
 ]
 export default data2;

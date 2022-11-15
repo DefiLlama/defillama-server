@@ -19164,7 +19164,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Leveraged Farming",
+  category: "Uncollateralized Lending",
   chains: ["Arbitrum"],
   module: "sentiment/index.js",
   twitter: "sentimentxyz", 

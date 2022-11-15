@@ -607,5 +607,8 @@ export default {
     },
     "goosefx": {
         enabled: true
+    },
+    "3xcalibur": {
+        enabled: true
     }
 } as AdaptorsConfig

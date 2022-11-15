@@ -150,6 +150,13 @@ functions:
       - http:
           path: protocols
           method: get
+  dexAggregatorQuote:
+    handler: src/getDexAggregatorQuote.default
+    timeout: 90
+    events:
+      - http:
+          path: dexAggregatorQuote
+          method: get
   protocol:
     handler: src/getProtocol.default
     timeout: 120

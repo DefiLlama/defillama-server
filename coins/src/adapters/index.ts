@@ -34,7 +34,7 @@ export default {
   synthetix: require("./other/index"),
   glp: require("./other/index"),
   abracadabra: require("./other/index"),
-  sai: require("./other/index"),
+  unknownTokens: require("./other/index"),
   pods: require("./other/index"),
   distressed: require("./other/index"),
   uniswap: require("./markets/uniswap/index"),

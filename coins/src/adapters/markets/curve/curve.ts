@@ -291,7 +291,7 @@ async function getUnderlyingPrices(
       let coinData: CoinData | undefined = coinsData.find(
         (c: CoinData) => c.address == b.input.target.toLowerCase()
       );
-      if (coinData == undefined) throw new Error(`no coin data found`)
+      if (coinData == undefined) throw new Error(`no coin data found`);
       return {
         balance: b.output / 10 ** coinData.decimals,
         price: coinData.price,
@@ -492,6 +492,6 @@ export default async function getTokenPrices(
     unknownTokensList
   );
 
-  // await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
+  await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
   return writes;
 }

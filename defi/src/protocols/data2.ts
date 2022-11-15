@@ -19105,5 +19105,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668516202
 },
+{
+  id: "2283",
+  name: "3xcalibur",
+  address: "arbitrum:0xd2568acCD10A4C98e87c44E9920360031ad89fCB",
+  symbol: "XCAL",
+  url: "https://3xcalibur.com",
+  description:
+    "The 3xcalibur Protocol is a permissionless, liquidationless, oracleless liquidity marketplace, powered by Tri-AMM architecture to facilitate stableswaps, variable swaps and borrowing/lending.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/3xcalibur.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "3xcalibur",
+  cmcId: "22611",
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  module: "3xcalibur/index.js",
+  twitter: "3xcalibur69", 
+  forkedFrom: ["Solidly"],
+  oracles: [],
+  audit_links: ["https://2688442826-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FdfX5W2ttoTF0UsavgZhT%2Fuploads%2FNiALqEGB39ep1N0BtMU2%2Fomniscia-report_1667586376.pdf?alt=media&token=71a2e19a-cbda-4cff-8625-761b2fcbea46"],
+  listedAt: 1668523056
+},
 ]
 export default data2;

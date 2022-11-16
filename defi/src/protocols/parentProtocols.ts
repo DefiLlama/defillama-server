@@ -474,7 +474,6 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FolksFinance",
   },
-  /*
   {
     id: "Yield Yak",
     name: "Yield Yak",
@@ -487,7 +486,6 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "yieldyak_",
   },
-  */
   {
     id: "Animal Farm",
     name: "Animal Farm",

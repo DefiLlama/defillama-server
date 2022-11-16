@@ -7388,7 +7388,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "yieldyak/index.js",
     twitter: "yieldyak_",
-   // parentProtocol: "Yield Yak"
+    parentProtocol: "Yield Yak"
   },
   {
     id: "476",

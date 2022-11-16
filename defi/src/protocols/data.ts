@@ -7250,7 +7250,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "traderjoe/index.js",
     audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
     twitter: "traderjoe_xyz",
-    forkedFrom:["Uniswap", "Compound"],
+    forkedFrom:[],
     parentProtocol: "Trader Joe"
   },
   {

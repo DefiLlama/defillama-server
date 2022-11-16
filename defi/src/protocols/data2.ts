@@ -19225,5 +19225,27 @@ listedAt: 1650804679
   twitter: "THORSwap",
   listedAt: 1668600716
 },
+{
+  id: "2288",
+  name: "Trader Joe Liquidity Book",
+  address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
+  symbol: "JOE",
+  url: "https://www.traderjoexyz.com",
+  description: "Joe V2 is a decentralized exchange based on Liquidity Book, a novel AMM protocol",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/trader-joe.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Avalanche"],
+  module: "liquidity-book/index.js",
+  audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
+  twitter: "traderjoe_xyz",
+  forkedFrom:["Uniswap"],
+  parentProtocol: "Trader Joe",
+  listedAt: 1668638549
+},
 ]
 export default data2;

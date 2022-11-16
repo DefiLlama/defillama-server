@@ -1165,8 +1165,8 @@ const data2: Protocol[] =  [
   logo: `${baseIconsUrl}/woofi.png`,
   audits: "2",
   audit_note: null,
-  gecko_id: "woo-network",
-  cmcId: "1289",
+  gecko_id: null,
+  cmcId: null,
   category: "Dexes",
   chains: ["Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
   oracles: ["Chainlink"],
@@ -1175,6 +1175,7 @@ const data2: Protocol[] =  [
   twitter: "WOOnetwork",
   audit_links: ["https://www.certik.com/projects/woofiswap"],
   listedAt: 1645647756,
+  parentProtocol: "WOO Network"
 },
 {
   id: "1462",
@@ -19148,7 +19149,8 @@ listedAt: 1650804679
   twitter: "WOOnetwork", 
   forkedFrom: [],
   oracles: [],
-  listedAt: 1668524390
+  listedAt: 1668524390,
+  parentProtocol: "WOO Network"
 },
 {
   id: "2285",

@@ -524,6 +524,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "muxprotocol",
   },
+  {
+    id: "WOO Network",
+    name: "WOO Network",
+    url: "https://woo.org",
+    description:
+    "Bringing best-in-class liquidity to DeFi and CeFi.",
+    logo: `${baseIconsUrl}/woo network.jpg`,
+    gecko_id: "woo-network",
+    cmcId: "7501",
+    chains: [],
+    twitter: "WOOnetwork",
+  },
 ];
 
 export default parentProtocols;

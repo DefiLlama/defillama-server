@@ -19160,7 +19160,7 @@ listedAt: 1650804679
     "Sentiment is a liquidity protocol Enabling Onchain Permissionless Undercollateralized Borrowing.",
   chain: "Arbitrum",
   logo: `${baseIconsUrl}/sentiment.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -19170,6 +19170,13 @@ listedAt: 1650804679
   twitter: "sentimentxyz", 
   forkedFrom: [],
   oracles: [],
+  audit_links: [
+            "https://github.com/arbitraryexecution/publications/blob/main/assessments/Sentiment_Protocol_20220727.pdf",
+            "https://github.com/arbitraryexecution/publications/blob/main/assessments/Sentiment_Oracle_20220727.pdf",
+            "https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2022.10.18%20-%20Final%20-%20Sentiment%20Audit%20Report.pdf",
+            //insured by Sherlock for upto $10m
+            "https://github.com/sherlock-protocol/sherlock-reports/blob/main/coverage-agreements/Sentiment%20Coverage%20Agreement%20(Revised%202022.10.26).pdf",
+               ],
   listedAt: 1668540740
 },
 {
@@ -19194,5 +19201,6 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668595021
 },
+
 ]
 export default data2;

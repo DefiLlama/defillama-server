@@ -17911,7 +17911,7 @@ listedAt: 1650804679
     "Aries Markets is a decentralised margin trading protocol on Aptos which allows users to borrow, lend, swap, and trade with margin via an on-chain order book with lightning speed.",
   chain: "Aptos",
   logo: `${baseIconsUrl}/aries-markets.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -17921,6 +17921,7 @@ listedAt: 1650804679
   twitter: "AriesMarkets", 
   forkedFrom: [],
   oracles: ["Switchboard", "Pyth"],
+  audit_links: ["https://drive.google.com/file/d/1yyGcE3bT0D-5G_hwINMwF-4PgSzOKmz4/view"],
   listedAt: 1666868387
 },
 {

@@ -192,5 +192,8 @@ export default {
     },
     "spiritswap": {
         enabled: true
+    },
+    "apeswap": {
+        enabled: true
     }
 } as AdaptorsConfig

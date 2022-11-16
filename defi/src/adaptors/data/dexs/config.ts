@@ -610,5 +610,8 @@ export default {
     },
     "3xcalibur": {
         enabled: true
+    },
+    "kava-swap": {
+        enabled: true
     }
 } as AdaptorsConfig

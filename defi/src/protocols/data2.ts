@@ -19241,9 +19241,9 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Avalanche"],
   module: "liquidity-book/index.js",
-  audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
+  audit_links: ["https://docs.traderjoexyz.com/audits"],
   twitter: "traderjoe_xyz",
-  forkedFrom:["Uniswap"],
+  forkedFrom:[],
   parentProtocol: "Trader Joe",
   listedAt: 1668638549
 },

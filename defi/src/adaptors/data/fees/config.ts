@@ -189,5 +189,8 @@ export default {
     },
     "solarbeam": {
         enabled: true
+    },
+    "spiritswap": {
+        enabled: true
     }
 } as AdaptorsConfig

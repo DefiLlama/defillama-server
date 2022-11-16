@@ -19201,6 +19201,26 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668595021
 },
-
+{
+  id: "2287",
+  name: "THORSwap",
+  address: null,
+  symbol: "-",
+  url: "https://app.thorswap.finance/liquidity",
+  description:
+    "Earn native yield with THORChain Savers Vaults with no additional asset exposure or impermanent loss.",
+  chain: "Thorchain",
+  logo: `${baseIconsUrl}/thorswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Thorchain"],
+  module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
+  forkedFrom: [],
+  twitter: "THORSwap",
+  listedAt: 1668600716
+},
 ]
 export default data2;

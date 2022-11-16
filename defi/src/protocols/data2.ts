@@ -19172,5 +19172,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1668540740
 },
+{
+  id: "2286",
+  name: "Bybit",
+  address: null,
+  symbol: "-",
+  url: "https://www.bybit.com",
+  description:
+    "Crypto trading experience elevated. Buy, sell, trade BTC, altcoins & NFTs. Get access to the spot and futures market or stake your coins securely.",
+  chain: "Bitcoin",
+  logo: `${baseIconsUrl}/bybit.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Bitcoin", "Ethereum", "Binance", "Polygon", "Arbitrum"],
+  module: "bybit/index.js",
+  twitter: "Bybit_Official", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1668595021
+},
 ]
 export default data2;

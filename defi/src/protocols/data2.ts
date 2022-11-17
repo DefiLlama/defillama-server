@@ -19267,5 +19267,50 @@ listedAt: 1650804679
   forkedFrom:[],
   listedAt: 1668685096
 },
+{
+  id: "2290",
+  name: "GhostMarket",
+  address: "neo:0x9b049f1283515eef1d3f6ac610e1595ed25ca3e9",
+  symbol: "GM",
+  url: "https://ghostmarket.io",
+  description: "The world’s most powerful cross-chain NFT marketplace. Create, Sell, Discover and Buy BSC, NEO N3, Ethereum, Phantasma, Polygon and Avalanche digital collectibles.",
+  chain: "NEO",
+  logo: `${baseIconsUrl}/ghostmarket.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "ghostmarket",
+  cmcId: "17454",
+  category: "Liquid Staking",
+  chains: ["NEO"],
+  module: "ghostmarket.js",
+  twitter: "ghostmarketio",
+  forkedFrom:[],
+  listedAt: 1668700062
+},
+{
+  id: "2291",
+  name: "Voltz",
+  address: null,
+  symbol: "-",
+  url: "https://www.voltz.xyz",
+  description: "Voltz Protocol is a non-custodial Automated Market Maker for Interest Rate Swaps.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/voltz.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Ethereum"],
+  module: "voltz/index.js",
+  twitter: "voltz_xyz",
+  forkedFrom:[],
+  audit_links: [
+                  "https://certificate.quantstamp.com/full/voltz-protocol",
+                  "https://www.certik.com/projects/voltz",
+                  "https://github.com/abdk-consulting/audits/blob/main/voltz/ABDK_Voltz_Project1_v_1_0.pdf"
+               ],
+  listedAt: 1668700069
+},
 ]
 export default data2;

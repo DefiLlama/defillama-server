@@ -1929,7 +1929,7 @@ const data: Protocol[] = [
     url: "https://sirenmarkets.com/",
     description: "Decentralized option markets on Ethereum.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/siren.svg`,
+    logo: `${baseIconsUrl}/siren.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "siren",

@@ -19247,5 +19247,25 @@ listedAt: 1650804679
   parentProtocol: "Trader Joe",
   listedAt: 1668638549
 },
+{
+  id: "2289",
+  name: "Cetus",
+  address: null,
+  symbol: "-",
+  url: "https://www.cetus.zone",
+  description: "Cetus is a pioneer DEX and concentrated liquidity protocol focusing on Move-based ecosystems like Aptos and Sui. It works as a crucial part of the ecosystem infrastructure to satisfy the comprehensive needs of traders, LPs, upper applications and an increasing DeFi population.",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/cetus.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Aptos"],
+  module: "cetus/index.js",
+  twitter: "CetusProtocol",
+  forkedFrom:[],
+  listedAt: 1668685096
+},
 ]
 export default data2;

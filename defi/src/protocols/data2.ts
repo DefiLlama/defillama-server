@@ -19312,5 +19312,25 @@ listedAt: 1650804679
                ],
   listedAt: 1668700069
 },
+{
+  id: "2292",
+  name: "Cake DeFi",
+  address: null,
+  symbol: "-",
+  url: "https://www.cakedefi.com",
+  description: "World's Nr.1 CeDeFi platform for cashflow from bitcoin and other cryptocurrencies.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/cake-defi.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin"],
+  module: "cake-defi/index.js",
+  twitter: "cakedefi",
+  forkedFrom:[],
+  listedAt: 1668702402
+},
 ]
 export default data2;

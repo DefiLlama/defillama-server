@@ -19332,5 +19332,25 @@ listedAt: 1650804679
   forkedFrom:[],
   listedAt: 1668702402
 },
+{
+  id: "2293",
+  name: "Bitmex",
+  address: null,
+  symbol: "-",
+  url: "https://www.bitmex.com",
+  description: "BitMEX is a cryptocurrency exchange and derivative trading platform.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bitmex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin"],
+  module: "bitmex/index.js",
+  twitter: "BitMEX",
+  forkedFrom:[],
+  listedAt: 1668703052
+},
 ]
 export default data2;

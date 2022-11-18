@@ -5866,7 +5866,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "shibaswap/index.js",
-    twitter: "Shibtoken",
+    twitter: "ShibaSwapDEX",
     audit_links: ["https://www.certik.org/projects/shib"],
     forkedFrom: ["Uniswap"]
   },

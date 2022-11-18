@@ -1332,13 +1332,17 @@ const data: Protocol[] = [
       "Index Coop creates and maintains the world's best crypto index products.\r\n\r\nAll index products are always fully collateralized.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/index-coop.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "index-cooperative",
     cmcId: "7336",
     category: "Indexes",
     chains: ["Ethereum"],
     module: "indexcoop/index.js",
+    audit_links: [
+                    "https://docs.tokensets.com/protocol/security",
+                    "https://gist.github.com/bernard-wagner/8a96ae7b9746ba8394dc6c16202a6b64"
+                 ],
     twitter: "indexcoop",
   },
   {

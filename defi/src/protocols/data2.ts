@@ -12995,7 +12995,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Staking",
+  category: "Liquid Staking",
   chains: ["Mixin"],
   module: "exinpool/index.js",
   twitter: null,

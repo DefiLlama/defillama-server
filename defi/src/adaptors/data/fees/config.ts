@@ -201,5 +201,8 @@ export default {
     },
     "stellaswap": {
         enabled: true
+    },
+    "lifinity": {
+        enabled: true
     }
 } as AdaptorsConfig

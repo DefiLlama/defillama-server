@@ -204,5 +204,8 @@ export default {
     },
     "lifinity": {
         enabled: true
+    },
+    "shibaswap": {
+        enabled: true
     }
 } as AdaptorsConfig

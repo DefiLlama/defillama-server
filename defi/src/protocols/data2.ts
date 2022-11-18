@@ -19392,5 +19392,26 @@ listedAt: 1650804679
   forkedFrom:[],
   listedAt: 1668784560
 },
+{
+  id: "2296",
+  name: "Perp88",
+  address: null,
+  symbol: "-",
+  url: "https://perp88.com/",
+  description: "Perp88 is a Decentralized Perpetual & Spot Exchange operating on Polygon",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/perp88.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Polygon"],
+  module: "perp88/index.js",
+  twitter: "0xPerp88",
+  forkedFrom:[],
+  audit_links: ["https://docs.perp88.com/perp88-1/about-perp88/audits-and-contracts"],
+  listedAt: 1668805259
+},
 ]
 export default data2;

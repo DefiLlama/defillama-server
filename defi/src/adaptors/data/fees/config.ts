@@ -213,5 +213,8 @@ export default {
     },
     "mux": {
         enabled: true
+    },
+    "emdx": {
+        enabled: true
     }
 } as AdaptorsConfig

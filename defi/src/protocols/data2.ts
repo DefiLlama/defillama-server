@@ -19354,6 +19354,7 @@ listedAt: 1650804679
 },
 {
   id: "2294",
+<<<<<<< HEAD
   name: "Crypto Lottery",
   address: "csc:0x80b313Be000c42f1f123C7FBd74654544818Ba7c",
   symbol: "CL",
@@ -19434,5 +19435,26 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669029577
 },
+{
+  id: "2298",
+  name: "EMDX",
+  address: null,
+  symbol: "-",
+  url: "https://emdx.io/",
+  description: "EMDX is a decentralized derivative protocol with an in-house spot market, expanding risk hedging tools for traditional assets into the DeFi environment and allowing token listing “on demand” with “liquidity as a service” from the start.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/emdx.png`,
+  audits: '2',
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Avalanche"],
+  module: "emdx/index.js",
+  twitter: "emdx_io",
+  audit_links: [
+    "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf"
+  ]
+}
 ]
 export default data2;

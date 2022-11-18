@@ -19372,5 +19372,25 @@ listedAt: 1650804679
   forkedFrom:[],
   listedAt: 1668782160
 },
+{
+  id: "2295",
+  name: "Swissborg",
+  address: null,
+  symbol: "-",
+  url: "https://swissborg.com",
+  description: "Making crypto asset management accessible to everyone.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/swissborg.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin", "Near", "Solana", "Polkadot", "Cardano", "Hedera"],
+  module: "swissborg/index.js",
+  twitter: "swissborg",
+  forkedFrom:[],
+  listedAt: 1668784560
+},
 ]
 export default data2;

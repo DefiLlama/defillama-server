@@ -195,5 +195,8 @@ export default {
     },
     "apeswap": {
         enabled: true
+    },
+    "nomiswap": {
+        enabled: true
     }
 } as AdaptorsConfig

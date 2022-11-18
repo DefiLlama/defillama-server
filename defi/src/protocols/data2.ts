@@ -19354,7 +19354,6 @@ listedAt: 1650804679
 },
 {
   id: "2294",
-<<<<<<< HEAD
   name: "Crypto Lottery",
   address: "csc:0x80b313Be000c42f1f123C7FBd74654544818Ba7c",
   symbol: "CL",

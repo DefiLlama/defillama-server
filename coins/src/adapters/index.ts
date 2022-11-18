@@ -19,6 +19,7 @@ export default {
   convex: require("./yield/convex/index"),
   alchemix: require("./yield/alchemix/index"),
   meanFinance: require("./yield/mean-finance/index"),
+  misc4262: require("./yield/misc4262/index"),
   platypus: require("./markets/platypus/index"),
   curve1: require("./markets/curve/index"),
   curve2: require("./markets/curve/index"),

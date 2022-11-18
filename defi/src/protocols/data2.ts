@@ -19352,5 +19352,25 @@ listedAt: 1650804679
   forkedFrom:[],
   listedAt: 1668703052
 },
+{
+  id: "2294",
+  name: "Crypto Lottery",
+  address: "csc:0x80b313Be000c42f1f123C7FBd74654544818Ba7c",
+  symbol: "CL",
+  url: "https://cryptolottery.top",
+  description: "The Crypto Lottery is an honest and scalable lottery built on the blockchain technology for the million people around the world.",
+  chain: "CSC",
+  logo: `${baseIconsUrl}/crypto-lottery.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["CSC"],
+  module: "crypto-lottery/index.js",
+  twitter: "__cryptolottery",
+  forkedFrom:[],
+  listedAt: 1668782160
+},
 ]
 export default data2;

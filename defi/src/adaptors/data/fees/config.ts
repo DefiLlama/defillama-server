@@ -198,5 +198,8 @@ export default {
     },
     "nomiswap": {
         enabled: true
+    },
+    "stellaswap": {
+        enabled: true
     }
 } as AdaptorsConfig

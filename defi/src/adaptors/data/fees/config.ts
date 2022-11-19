@@ -207,5 +207,8 @@ export default {
     },
     "shibaswap": {
         enabled: true
+    },
+    "perp88": {
+        enabled: true
     }
 } as AdaptorsConfig

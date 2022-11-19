@@ -14,4 +14,6 @@ export const KEYS_TO_STORE = {
     [AdaptorRecordType.dailyRevenue]: "dailyRevenue"
 }
 
+export { default as config } from "./config";
+
 export default generateProtocolAdaptorsList(fees_imports, config)

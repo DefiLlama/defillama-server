@@ -3812,13 +3812,13 @@ const data2: Protocol[] =  [
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Synthetics",
-  chains: ["Terra"],
+  category: "Leveraged Farming",
+  chains: ["Avalanche", "Terra"],
   oracles: [],
   forkedFrom: [],
   module: "aperture/index.js",
   twitter: "ApertureFinance",
-  audit_links: ["https://github.com/oak-security/audit-reports/blob/929f636544a39d0425de090bd8ce01168ea12b67/Aperture/2022-03-08%20Audit%20Report%20-%20Aperture%20v1.0.pdf"],
+  audit_links: ["https://docs.aperture.finance/docs/transparency/security-audit"],
   listedAt: 1648463492
 },
 {

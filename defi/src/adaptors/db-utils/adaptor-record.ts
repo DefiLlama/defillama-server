@@ -9,8 +9,6 @@ import { IJSON } from "../data/types"
 export enum AdaptorRecordType {
     dailyVolume = "dv",
     totalVolume = "tv",
-    totalFees = "tf",
-    dailyFees = "df",
     totalRevenue = "tr",
     dailyRevenue = "dr",
     totalPremiumVolume = "tpv",
@@ -18,9 +16,23 @@ export enum AdaptorRecordType {
     dailyPremiumVolume = "dpv",
     dailyNotionalVolume = "dnv",
     tokenIncentives = "ti",
+    // fees & revenue
+    dailyFees = "df",
+    dailyUserFees = "duf",
+    dailySupplySideRevenue = "dssr",
+    dailyProtocolRevenue = "dpr",
+    dailyHoldersRevenue = "dhr",
+    dailyCreatorRevenue = "dcr",
+    totalFees = "tf",
+    totalUserFees = "tuf",
+    totalSupplySideRevenue = "tssr",
+    totalProtocolRevenue = "tpr",
+    totalHoldersRevenue = "thr",
+    totalCreatorRevenue = "tcr"
 }
 
 export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as IJSON<AdaptorRecordType>)
+export const AdaptorRecordTypeMapReverse = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {} as IJSON<string>)
 
 export interface IRecordAdapterRecordChainData {
     [protocolVersion: string]: number | string,

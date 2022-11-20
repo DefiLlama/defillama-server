@@ -5,6 +5,7 @@ import fees, { KEYS_TO_STORE as fees_KEYS_TO_STORE, importModule as fees_importM
 import aggregators, { KEYS_TO_STORE as aggregators_KEYS_TO_STORE, importModule as aggregators_importModule, config as aggregators_config } from "./aggregators"
 import options, { KEYS_TO_STORE as options_KEYS_TO_STORE, importModule as options_importModule, config as options_config } from "./options"
 import incentives, { KEYS_TO_STORE as incentives_KEYS_TO_STORE, importModule as incentives_importModule, config as incentives_config } from "./incentives"
+import protocols, { KEYS_TO_STORE as protocols_KEYS_TO_STORE, importModule as protocols_importModule, config as protocols_config } from "./protocols"
 
 // It shouldn't import/return both at the same time for performace reasons but couldn't make work a dynamic import. needs to be improved:/
 export default (adaptorType: AdapterType): AdaptorData => {
@@ -37,6 +38,13 @@ export default (adaptorType: AdapterType): AdaptorData => {
         KEYS_TO_STORE: incentives_KEYS_TO_STORE,
         importModule: incentives_importModule,
         config: incentives_config
+    }
+    // @ts-ignore
+    if (adaptorType === "protocols") return {
+        default: protocols,
+        KEYS_TO_STORE: protocols_KEYS_TO_STORE,
+        importModule: protocols_importModule,
+        config: protocols_config
     }
     else throw new Error(`Couldn't find data for ${adaptorType} type`)
 }

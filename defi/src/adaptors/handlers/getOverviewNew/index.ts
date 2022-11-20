@@ -81,8 +81,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const adapters2load: string[] = [adaptorType, "protocols"]
     const allAdapters: ProtocolAdaptor[] = []
     const protocolsList = Object.keys(loadAdaptorsData(adaptorType).config)
-    console.log("Initial data length", protocolsList.length)
-    console.log(protocolsList.filter(name=>name.includes("uniswap") || name.includes("pancakeswap")))
     const adaptersList: ProtocolAdaptor[] = []
 
     for (const type2load of adapters2load) {
@@ -98,11 +96,9 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         }
     }
 
-    console.log(adaptersList.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
-
     const results = await allSettled(adaptersList.map(async (adapter) => {
-        return generateProtocolAdaptorSummary(adapter, dataType, chainFilter, async (e) => {
-            //console.error(e)
+        return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
+            console.error(e)
             // TODO, move error handling to rejected promises
             if (enableAlerts)
                 await sendDiscordAlert(e.message)

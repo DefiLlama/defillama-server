@@ -56,7 +56,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     if (!dexData) throw new Error("DEX data not found!")
     let dexDataResponse = {}
     try {
-        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType)
+        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)
 
         dexDataResponse = {
             name: generatedSummary.name,

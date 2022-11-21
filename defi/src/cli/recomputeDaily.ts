@@ -1,6 +1,7 @@
 import { client, TableName, dailyPrefix, getDailyTxs } from "./dynamodb";
 import { getProtocol } from "./utils";
-import { util, api } from "@defillama/sdk";
+import { api } from "@defillama/sdk";
+import computeTVL from "../storeTvlInterval/computeTVL";
 import {
   releaseCoingeckoLock,
   getCoingeckoLock,
@@ -21,14 +22,10 @@ async function main() {
       console.log(SK, item.tvl);
       const { block } = await api.util.lookupBlock(SK);
       const balances = await adapter.tvl(SK, block);
-      const { usdTvl } = await util.computeTVL(
+      const { usdTvl } = await computeTVL(
         balances,
         SK,
-        true,
-        undefined,
-        getCoingeckoLock,
-        3
-      );
+        {});
       console.log("new tvl", SK, usdTvl);
       await client
         .update({

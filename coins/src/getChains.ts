@@ -1,4 +1,4 @@
-import { chainToCoingeckoId } from "@defillama/sdk/build/computeTVL/index";
+import chainToCoingeckoId from "../../common/chainToCoingeckoId";
 import { successResponse, wrap, IResponse } from "./utils/shared";
 
 const handler = async (): Promise<IResponse> => {

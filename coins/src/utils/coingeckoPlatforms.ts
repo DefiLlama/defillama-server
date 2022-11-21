@@ -1,4 +1,4 @@
-import { chainToCoingeckoId } from "@defillama/sdk/build/computeTVL/index";
+import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import ddb from "./shared/dynamodb";
 
 interface StringObject {

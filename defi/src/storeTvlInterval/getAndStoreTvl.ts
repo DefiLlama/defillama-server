@@ -59,7 +59,7 @@ async function getTvl(
         const isStandard = Object.entries(tvlBalances).every(
           (balance) => typeof balance[1] === "string"
         ); // Can't use stored prices because coingecko has undocumented aliases which we rely on (eg: busd -> binance-usd)
-        let tvlPromise: ReturnType<typeof util.computeTVL>;
+        let tvlPromise: ReturnType<any>;
         tvlPromise = computeTVL(tvlBalances, useCurrentPrices ? "now" : unixTimestamp, staleCoins);
         const tvlResults = await tvlPromise;
         usdTvls[storedKey] = tvlResults.usdTvl;

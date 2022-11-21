@@ -19475,6 +19475,28 @@ listedAt: 1650804679
     "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf"
   ],
   listedAt: 1669035629
+},
+{
+  id: "2300",
+  name: "STRX Finance",
+  address: "tron:TVGiaML3hJE7sv9NEEVjqLbF5DcXJgHSfy",
+  symbol: "SFI",
+  url: "https://strx.finance",
+  description: "STRX.FINANCE is a TRON Blockchain's liquid staking technology that unleashes TRX's real potential. Holders of TRX tokens can stake their tokens on the STRX.FINANCE platform to mint staked representation assets known as SFI Token. STRX.FINANCE freezes the underlying deposited TRX tokens with a group of Super Representatives. SFI Token, which represent the user's staked position, accumulate staking incentives in the background and may be used by users in DeFi to generate more income.",
+  chain: "Tron",
+  logo: `${baseIconsUrl}/strx-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Tron"],
+  module: "strxfinance/index.js",
+  twitter: "StrxFinance",
+  forkedFrom:[],
+  oracles: [],
+  audit_links: ["https://github.com/strxfinance/audits"],
+  listedAt: 1669060847
 }
 ]
 

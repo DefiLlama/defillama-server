@@ -126,8 +126,19 @@ export class AdaptorRecord extends Item {
 
 export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTimestamp: number): Promise<AdaptorRecord> => {
     if (Object.entries(adaptorRecord.data).length === 0) throw new Error(`${adaptorRecord.type}: Can't store empty adaptor record`)
+    const currentRecord = await getAdaptorRecord(adaptorRecord.adaptorId, adaptorRecord.type, adaptorRecord.protocolType, "TIMESTAMP", adaptorRecord.timestamp)
+    let currentData: IRecordAdaptorRecordData = {}
+    if (currentRecord instanceof AdaptorRecord) currentData = currentRecord.data
     const obj2Store: IRecordAdaptorRecordData = {
-        ...adaptorRecord.data,
+        ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
+            const currentChainValue = acc[chain]
+            if (typeof data === 'number' || typeof currentChainValue === 'number') return acc
+            acc[chain] = {
+                ...currentChainValue,
+                ...data
+            }
+            return acc
+        }, currentData),
         eventTimestamp
     }
     try {

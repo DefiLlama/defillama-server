@@ -219,5 +219,8 @@ export default {
     },
     "defi-swap": {
         enabled: true
+    },
+    "babydogeswap": {
+        enabled: true
     }
 } as AdaptorsConfig

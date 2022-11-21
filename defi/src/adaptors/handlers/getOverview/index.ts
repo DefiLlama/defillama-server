@@ -60,6 +60,24 @@ export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdaptorRecordType.dailyNotionalVolume]: AdaptorRecordType.totalNotionalVolume,
     [AdaptorRecordType.dailyPremiumVolume]: AdaptorRecordType.totalPremiumVolume,
     [AdaptorRecordType.dailyRevenue]: AdaptorRecordType.totalRevenue,
+    [AdaptorRecordType.dailyUserFees]: AdaptorRecordType.totalUserFees,
+    [AdaptorRecordType.dailyHoldersRevenue]: AdaptorRecordType.totalHoldersRevenue,
+    [AdaptorRecordType.dailyCreatorRevenue]: AdaptorRecordType.totalCreatorRevenue,
+    [AdaptorRecordType.dailySupplySideRevenue]: AdaptorRecordType.totalSupplySideRevenue,
+    [AdaptorRecordType.dailyProtocolRevenue]: AdaptorRecordType.totalProtocolRevenue,
+}
+
+export const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
+    [AdapterType.FEES]: [
+        AdaptorRecordType.dailyUserFees,
+        AdaptorRecordType.dailyHoldersRevenue,
+        AdaptorRecordType.dailyCreatorRevenue,
+        AdaptorRecordType.dailySupplySideRevenue,
+        AdaptorRecordType.dailyProtocolRevenue
+    ],
+    [AdapterType.OPTIONS]: [
+        AdaptorRecordType.dailyPremiumVolume
+    ]
 }
 
 // -> /overview/{type}/{chain}

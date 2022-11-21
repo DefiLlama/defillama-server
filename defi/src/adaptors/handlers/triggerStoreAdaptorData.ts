@@ -19,6 +19,9 @@ export interface IHandlerEvent {
   backfill: Array<{
     dexNames: string[]
     timestamp: IStoreAdaptorDataHandlerEvent['timestamp']
+    chain?: IStoreAdaptorDataHandlerEvent['chain']
+    adaptorRecordTypes?: IStoreAdaptorDataHandlerEvent['adaptorRecordTypes']
+    protocolVersion?: IStoreAdaptorDataHandlerEvent['protocolVersion']
   }>
 }
 

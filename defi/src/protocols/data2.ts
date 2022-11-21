@@ -19434,5 +19434,25 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669029577
 },
+{
+  id: "2298",
+  name: "Coinsquare",
+  address: null,
+  symbol: "-",
+  url: "https://coinsquare.com",
+  description: "The New Coinsquare is here. Securely buy, HODL, and trade Bitcoin, Ethereum, and more on Coinsquare, Canada’s home for digital currency.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/coinsquare.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin", "Ripple", "Solana", "Cardano","Avalanche"],
+  module: "coinsquare/index.js",
+  twitter: "Coinsquare",
+  forkedFrom:[],
+  listedAt: 1669033506
+},
 ]
 export default data2;

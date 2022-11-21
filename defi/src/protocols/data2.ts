@@ -19413,5 +19413,26 @@ listedAt: 1650804679
   audit_links: ["https://docs.perp88.com/perp88-1/about-perp88/audits-and-contracts"],
   listedAt: 1668805259
 },
+{
+  id: "2297",
+  name: "FairFi",
+  address: null,
+  symbol: "-",
+  url: "https://frfi.io",
+  description: "FairFi - makes Yield Farming transparent, safe and reliable. No mater on a bearish or bullish market. Mix strategies, leverage profits and mitigate your farming risks.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/fairfi.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Binance"],
+  module: "frfi/index.js",
+  twitter: "FairFi_",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1669029577
+},
 ]
 export default data2;

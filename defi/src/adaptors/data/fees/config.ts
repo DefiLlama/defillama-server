@@ -210,5 +210,8 @@ export default {
     },
     "perp88": {
         enabled: true
+    },
+    "mux": {
+        enabled: true
     }
 } as AdaptorsConfig

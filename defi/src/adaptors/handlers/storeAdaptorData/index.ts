@@ -6,7 +6,7 @@ import allSettled from 'promise.allsettled'
 import runAdapter, { getFulfilledResults, getRejectedResults } from "@defillama/adaptors/adapters/utils/runAdapter";
 import { getBlock } from "@defillama/adaptors/helpers/getBlock";
 import { Chain } from "@defillama/sdk/build/general";
-import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
+import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
 import { processFulfilledPromises, processRejectedPromises, STORE_ERROR } from "./helpers";
 import loadAdaptorsData from "../../data"
 import { IJSON } from "../../data/types";
@@ -26,6 +26,10 @@ const LAMBDA_TIMESTAMP = Math.trunc((Date.now()) / 1000)
 
 export const handler = async (event: IHandlerEvent) => {
   console.info(`*************Storing for the following indexs ${event.protocolIndexes} *************`)
+  console.info(`- chain: ${event.chain}`)
+  console.info(`- timestamp: ${event.timestamp}`)
+  console.info(`- adaptorRecordTypes: ${event.adaptorRecordTypes}`)
+  console.info(`- protocolVersion: ${event.protocolVersion}`)
   // Timestamp to query, defaults current timestamp - 2 minutes delay
   const currentTimestamp = event.timestamp || LAMBDA_TIMESTAMP;
   // Get clean day
@@ -42,7 +46,6 @@ export const handler = async (event: IHandlerEvent) => {
   const adaptorsList = event.protocolIndexes.map(index => dataList[index]).filter(p => p !== undefined)
 
   // Get closest block to clean day. Only for EVM compatible ones.
-  console.log("adaptorsList", adaptorsList)
   const allChains = event.chain ? [event.chain] : adaptorsList.reduce((acc, { chains }) => {
     acc.push(...chains as Chain[])
     return acc
@@ -90,7 +93,7 @@ export const handler = async (event: IHandlerEvent) => {
 
       // Run adapters // TODO: Change to run in parallel
       const FILTRED_KEYS_TO_STORE = event.adaptorRecordTypes?.reduce((acc, curr) => {
-        acc[AdaptorRecordTypeMapReverse[curr]] = curr
+        acc[AdaptorRecordTypeMap[curr]] = curr
         return acc
       }, {} as IJSON<string>) ?? KEYS_TO_STORE
       const rawRecords: RawRecordMap = {}
@@ -106,7 +109,7 @@ export const handler = async (event: IHandlerEvent) => {
       // Store records // TODO: Change to run in parallel
       for (const [recordType, record] of Object.entries(rawRecords)) {
         console.log(event.adaptorType, recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType)
-        // await storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
+        await storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
       }
     }
     catch (error) {

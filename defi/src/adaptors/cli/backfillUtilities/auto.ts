@@ -25,36 +25,33 @@ export interface ICliArgs {
     }
     const type = process.argv[2] as AdapterType
     const adapterName = process.argv[3]
-console.log(process.argv)
-    const cliArguments = process.argv.filter(arg => arg.includes("-")).reduce((acc, cliArg) => {
-        console.log(cliArg)
+    const cliArguments = process.argv.filter(arg => arg.includes("=")).reduce((acc, cliArg) => {
         const [rawArgumentName, value] = cliArg.split("=")
-        if (rawArgumentName === '--onlyMissing') {
+        if (rawArgumentName === 'onlyMissing') {
             if (value === 'true' || !value) acc.onlyMissing = true
             else acc['onlyMissing'] === false
         }
-        else if (rawArgumentName === '--chain') {
+        else if (rawArgumentName === 'chain') {
             if (value) acc.chain = value
-            else throw new Error("Please provide a value for ---chain")
+            else throw new Error("Please provide a value for chain=[chain]")
         }
-        else if (rawArgumentName === '--version') {
+        else if (rawArgumentName === 'version') {
             if (value) acc.version = value
-            else throw new Error("Please provide a value for ---version")
+            else throw new Error("Please provide a value for version=[version]")
         }
-        else if (rawArgumentName === '--timestamp') {
+        else if (rawArgumentName === 'timestamp') {
             if (!isNaN(+value)) acc.timestamp = +value
-            else throw new Error("Please provide a proper value for ---timestamp")
+            else throw new Error("Please provide a proper value for timestamp=[timestamp]")
         }
-        else if (rawArgumentName === '--recordType') {
+        else if (rawArgumentName === 'recordTypes') {
             const recordTypes = value?.split(",")
             if (recordTypes && recordTypes.length > 0) acc.recordTypes = recordTypes
-            else throw new Error("Please provide a value for ---recordType")
+            else throw new Error("Please provide a value for recordType=[recordType]")
         }
         return acc
     }, {
         onlyMissing: false
     } as ICliArgs)
-    console.log(cliArguments)
     console.info(`Started backfilling for ${adapterName} adapter`)
     console.info(`Generating backfill event...`)
     const backfillEvent = await getBackfillEvent(adapterName, type, cliArguments)

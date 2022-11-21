@@ -216,5 +216,8 @@ export default {
     },
     "emdx": {
         enabled: true
+    },
+    "defi-swap": {
+        enabled: true
     }
 } as AdaptorsConfig

@@ -19469,11 +19469,14 @@ listedAt: 1650804679
   cmcId: null,
   category: "Derivatives",
   chains: ["Avalanche"],
-  module: "emdx/index.js",
+  module: "dummy.js", // if tvl is added, feel fre to add the path here, adaptor paths are added when extracting protocols from this list (/src/adaptor/data/[type]/index.ts)
   twitter: "emdx_io",
   audit_links: [
     "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf"
   ]
 }
 ]
+
+// if adding a new protocol wich no tvl adapter exists, please add module as:
+// module: "dummy.js"
 export default data2;

@@ -19473,10 +19473,9 @@ listedAt: 1650804679
   twitter: "emdx_io",
   audit_links: [
     "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf"
-  ]
+  ],
+  listedAt: 1669035629
 }
 ]
 
-// if adding a new protocol wich no tvl adapter exists, please add module as:
-// module: "dummy.js"
 export default data2;

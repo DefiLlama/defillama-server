@@ -79,18 +79,16 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     // Import data list
     const adapters2load: string[] = [adaptorType, "protocols"]
-    const allAdapters: ProtocolAdaptor[] = []
     const protocolsList = Object.keys(loadAdaptorsData(adaptorType).config)
     const adaptersList: ProtocolAdaptor[] = []
-
     for (const type2load of adapters2load) {
         try {
             const adaptorsData = loadAdaptorsData(type2load as AdapterType)
-            allAdapters.push(...adaptorsData.default.filter(va => {
+            adaptorsData.default.forEach(va => {
                 if (va.config?.enabled && (!category || va.category?.toLowerCase() === category))
                     if (protocolsList.includes(va.module)) adaptersList.push(va)
                 return
-            }))
+            })
         } catch (error) {
             console.error(error)
         }
@@ -138,7 +136,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
-        allChains: getAllChainsUniqueString(allAdapters.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
+        allChains: getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
         ...generalStats,
     } as IGetOverviewResponseBody, 10 * 60); // 10 mins cache
 };

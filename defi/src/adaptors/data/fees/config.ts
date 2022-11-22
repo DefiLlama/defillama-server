@@ -222,5 +222,8 @@ export default {
     },
     "babydogeswap": {
         enabled: true
+    },
+    "stargate": {
+        enabled: true
     }
 } as AdaptorsConfig

@@ -19,7 +19,7 @@ export async function getQuote(
   to: string,
   amount: string,
   slippage: string,
-  userAddress: string
+  userAddress?: string
 ) {
   const gasPrice = await fetch(`https://app.odos.xyz/gas-prices/${chainMap[chain]}`).then((r) => r.json());
 
@@ -35,7 +35,7 @@ export async function getQuote(
       fromValues: [+amount],
       fromTokens: [from],
       toTokens: [to],
-      gasPrice: gasPrice.prices[0].fee,
+      gasPrice: gasPrice?.prices[0]?.fee || gasPrice.base_fee,
       lpBlacklist: [],
       chain: chainToId[chain],
       slippageAmount: +slippage,

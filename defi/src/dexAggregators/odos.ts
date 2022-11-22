@@ -4,12 +4,14 @@ export const chainToId = {
   ethereum: "ethereum",
   polygon: "polygon",
   arbitrum: "arbitrum",
+  optimism: "optimism",
 } as any;
 
 const chainMap = {
   ethereum: 1,
   polygon: 137,
   arbitrum: 42161,
+  optimism: 10,
 } as any;
 export const name = "Odos";
 

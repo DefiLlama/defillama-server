@@ -95,5 +95,6 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'algofi') return id === "2091"
     if (key === 'penguin') return id === "1575"
     if (key === 'xdai') return id === "1659"
+    if (key === 'stargate') return id === "1571"
     return true
 }

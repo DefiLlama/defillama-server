@@ -613,5 +613,8 @@ export default {
     },
     "kava-swap": {
         enabled: true
+    },
+    "emdx": {
+        enabled: true
     }
 } as AdaptorsConfig

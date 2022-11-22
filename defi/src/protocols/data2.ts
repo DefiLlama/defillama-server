@@ -19512,7 +19512,7 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "CEX",
-  chains: ["Binance", "Ethereum", "Ripple"],
+  chains: ["Bitcoin", "Ethereum", "Ripple"],
   module: "korbit/index.js",
   twitter: "Korbit_exchange",
   forkedFrom:[],

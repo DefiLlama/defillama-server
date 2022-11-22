@@ -225,5 +225,8 @@ export default {
     },
     "stargate": {
         enabled: true
+    },
+    "mm-stableswap-polygon": {
+        enabled: true
     }
 } as AdaptorsConfig

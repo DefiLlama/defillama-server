@@ -19519,6 +19519,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669113576
 },
+{
+  id: "2302",
+  name: "Goober",
+  address: "0x2275d4937b6bFd3c75823744d3EfBf6c3a8dE473",
+  symbol: "GBR",
+  url: "https://goober.xyz/",
+  description: "A special flavor of Uniswap V2 meets EIP-4626 to form a yield-optimized vault for Art Gobblers",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/goober.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  module: "goober/index.js",
+  twitter: "goober_xyz",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1669150621
+},
 ]
 
 export default data2;

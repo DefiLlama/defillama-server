@@ -1,34 +1,53 @@
-import fetch from "node-fetch"
+import fetch from "node-fetch";
 
 export const chainToId = {
-    ethereum: 'ethereum',
-    polygon: 'polygon',
-    arbitrum: 'arbitrum'
-} as any
+  ethereum: "ethereum",
+  polygon: "polygon",
+  arbitrum: "arbitrum",
+} as any;
 
-export const name = 'Odos'
+const chainMap = {
+  ethereum: 1,
+  polygon: 137,
+  arbitrum: 42161,
+} as any;
+export const name = "Odos";
 
-export async function getQuote(chain: string, from: string, to: string, amount: string) {
-	const data = await fetch('https://app.odos.xyz/request-path', {
-		method: 'POST',
-		body: JSON.stringify({
-			fromValues: [Number(amount) / 1e18], // fix
-			fromTokens: [from], // gas token 0x0000000000000000000000000000000000000000
-			toTokens: [to],
-			gasPrice: 159.4, // fix
-			lpBlacklist: [],
-			chain: chainToId[chain],
-			slippageAmount: 1,
-			walletAddress: null
-		}),
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	}).then((r) => r.json())
-	return {
-		amountReturned: data.netOutValue,
-		estimatedGas: data.gasEstimate,
-		tokenApprovalAddress: data.inputDests[0],
-		rawQuote: data
-	}
+export async function getQuote(
+  chain: string,
+  from: string,
+  to: string,
+  amount: string,
+  slippage: string,
+  userAddress: string
+) {
+  const gasPrice = await fetch(`https://app.odos.xyz/gas-prices/${chainMap[chain]}`).then((r) => r.json());
+
+  const data = await fetch("https://app.odos.xyz/request-path", {
+    headers: {
+      "content-type": "application/json",
+      "Referer": "https://app.odos.xyz/",
+      "Referrer-Policy": "strict-origin-when-cross-origin",
+      "User-Agent":
+        "Mozilla/5.0 (X11; Linux i686) AppleWebKit/5310 (KHTML, like Gecko) Chrome/36.0.846.0 Mobile Safari/5310",
+    },
+    body: JSON.stringify({
+      fromValues: [+amount],
+      fromTokens: [from],
+      toTokens: [to],
+      gasPrice: gasPrice.prices[0].fee,
+      lpBlacklist: [],
+      chain: chainToId[chain],
+      slippageAmount: +slippage,
+      walletAddress: userAddress,
+    }),
+    method: "POST",
+  }).then((res) => res.json());
+
+  return {
+    amountReturned: data.netOutValue,
+    estimatedGas: data.gasEstimate,
+    tokenApprovalAddress: data.inputDests[0],
+    rawQuote: data,
+  };
 }

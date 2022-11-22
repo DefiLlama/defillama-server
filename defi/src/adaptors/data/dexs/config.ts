@@ -616,5 +616,8 @@ export default {
     },
     "emdx": {
         enabled: true
+    },
+    "cetus": {
+        enabled: true
     }
 } as AdaptorsConfig

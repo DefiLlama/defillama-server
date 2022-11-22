@@ -19497,7 +19497,28 @@ listedAt: 1650804679
   oracles: [],
   audit_links: ["https://github.com/strxfinance/audits"],
   listedAt: 1669060847
-}
+},
+{
+  id: "2301",
+  name: "Korbit",
+  address: null,
+  symbol: "-",
+  url: "https://korbit.co.kr",
+  description: "Korbit is a cryptocurrency exchange that was founded in South Korea.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/korbit.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Binance", "Ethereum", "Ripple"],
+  module: "korbit/index.js",
+  twitter: "Korbit_exchange",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1669113576
+},
 ]
 
 export default data2;

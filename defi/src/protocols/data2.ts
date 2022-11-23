@@ -19583,6 +19583,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669204672
 },
+{
+  id: "2305",
+  name: "MaskEX",
+  address: null,
+  symbol: "-",
+  url: "https://www.maskex.com",
+  description: "MaskEX is the world's most secure and private cryptocurrency wallet and trading platform.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/maskex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Tron", "Binance"],
+  module: "maskex/index.js",
+  twitter: "MaskEXGlobal",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1669209266
+},
 ]
 
 export default data2;

@@ -18313,7 +18313,7 @@ listedAt: 1650804679
   module: "starfish-finance/index.js",
   twitter: "Starfish_Fi",
   forkedFrom: [],
-  oracles: [],
+  oracles: ["DIA"],
   listedAt: 1667390191
 },
 {

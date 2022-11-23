@@ -8,7 +8,7 @@ const event = {
     pathParameters: { chain: undefined, type: "fees" },
     queryStringParameters: {
         excludeTotalDataChart: "true",
-        excludeTotalDataChartBreakdown: "true",
+        excludeTotalDataChartBreakdown: "true"
     }
 } as unknown as APIGatewayProxyEvent
 
@@ -17,7 +17,10 @@ const event = {
     const r = await handler(event)
     var endTime = performance.now()
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
-    console.log(rr.protocols.filter(d=>d.name.toLowerCase().includes('xdai') || d.name.toLowerCase().includes('gnosis')).map(p=>[p.name, p.displayName]))
+    // console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('jupiter')))
+    console.log("length", rr.protocols.length)
+    console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
+    //console.log(rr.protocols[0])
     console.log("Current run:", (endTime - startTime) / 1000)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)

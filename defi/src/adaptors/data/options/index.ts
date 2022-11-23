@@ -14,4 +14,6 @@ export const KEYS_TO_STORE = {
     [AdaptorRecordType.dailyNotionalVolume]: "dailyNotionalVolume"
 }
 
+export { default as config } from "./config";
+
 export default generateProtocolAdaptorsList(options_imports, config)

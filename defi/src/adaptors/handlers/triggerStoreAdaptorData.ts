@@ -19,6 +19,9 @@ export interface IHandlerEvent {
   backfill: Array<{
     dexNames: string[]
     timestamp: IStoreAdaptorDataHandlerEvent['timestamp']
+    chain?: IStoreAdaptorDataHandlerEvent['chain']
+    adaptorRecordTypes?: IStoreAdaptorDataHandlerEvent['adaptorRecordTypes']
+    protocolVersion?: IStoreAdaptorDataHandlerEvent['protocolVersion']
   }>
 }
 
@@ -36,7 +39,7 @@ export const handler = async (event: IHandlerEvent) => {
         if (dexIndex >= 0)
           protocolIndexes.push(dexIndex)
       }
-      await invokeLambdas(protocolIndexes, type, bf.timestamp)
+      await invokeLambdas(protocolIndexes, type, bf.timestamp, bf.chain, bf.adaptorRecordTypes, bf.protocolVersion)
     }
   }
   else if (type) {
@@ -51,19 +54,30 @@ export const handler = async (event: IHandlerEvent) => {
         AdapterType.OPTIONS,
         AdapterType.INCENTIVES,
         AdapterType.AGGREGATORS,
-        AdapterType.DEXS
+        AdapterType.DEXS,
+        AdapterType.PROTOCOLS
       ].map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))
     )
   }
 };
 
-const invokeLambdas = async (protocolIndexes: IStoreAdaptorDataHandlerEvent['protocolIndexes'], adaptorType: AdapterType, timestamp?: IStoreAdaptorDataHandlerEvent['timestamp']) => {
+const invokeLambdas = async (
+  protocolIndexes: IStoreAdaptorDataHandlerEvent['protocolIndexes'],
+  adaptorType: AdapterType,
+  timestamp?: IStoreAdaptorDataHandlerEvent['timestamp'],
+  chain?: IStoreAdaptorDataHandlerEvent['chain'],
+  adaptorRecordTypes?: IStoreAdaptorDataHandlerEvent['adaptorRecordTypes'],
+  protocolVersion?: IStoreAdaptorDataHandlerEvent['protocolVersion']
+) => {
   shuffleArray(protocolIndexes);
   for (let i = 0; i < protocolIndexes.length; i += STEP) {
     const event = {
       protocolIndexes: protocolIndexes.slice(i, i + STEP),
       timestamp,
-      adaptorType: adaptorType
+      adaptorType: adaptorType,
+      chain,
+      adaptorRecordTypes,
+      protocolVersion
     };
     console.info(`Storing adaptor data: ${protocolIndexes} ${timestamp} ${adaptorType}`)
     const storeFunction = process.env.runLocal === 'true' ? storeAdaptorData : runStoreAdaptorData

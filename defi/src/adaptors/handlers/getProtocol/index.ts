@@ -48,15 +48,28 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     if (!protocolName || !adaptorType) throw new Error("Missing name or type")
 
-    const adaptorsData = loadAdaptorsData(adaptorType)
-    console.log(adaptorType, adaptorsData.default.length)
-    const dexData = adaptorsData.default.find(
-        (prot) => sluggify(prot) === protocolName || sluggifyString(prot.displayName) === protocolName
-    );
+
+    // Import data list
+    const adapters2load: string[] = [adaptorType, "protocols"]
+    const protocolsList = Object.keys(loadAdaptorsData(adaptorType).config)
+    let dexData: ProtocolAdaptor | undefined = undefined
+    for (const type2load of adapters2load) {
+        try {
+            const adaptorsData = loadAdaptorsData(type2load as AdapterType)
+            dexData = adaptorsData.default
+                .find(va =>
+                    protocolsList.includes(va.module)
+                    && (sluggify(va) === protocolName || sluggifyString(va.displayName) === protocolName))
+            if (dexData) break
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     if (!dexData) throw new Error("DEX data not found!")
     let dexDataResponse = {}
     try {
-        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType)
+        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)
 
         dexDataResponse = {
             name: generatedSummary.name,

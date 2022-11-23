@@ -29,5 +29,4 @@ export type AdaptorData = {
     default: ProtocolAdaptor[]
     importModule: (module: string) => { default: Adapter }
     KEYS_TO_STORE: IJSON<string>
-    config: IJSON<IConfig>
 }

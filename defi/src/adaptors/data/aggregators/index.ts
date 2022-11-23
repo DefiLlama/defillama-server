@@ -12,6 +12,4 @@ export const KEYS_TO_STORE = {
     [AdaptorRecordType.totalVolume]: "totalVolume"
 }
 
-export { default as config } from "./config";
-
 export default generateProtocolAdaptorsList(aggregators_imports, config)

@@ -1,33 +1,22 @@
-import { AdapterType, ProtocolType } from "@defillama/adaptors/adapters/types"
+import { ProtocolType } from "@defillama/adaptors/adapters/types"
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
-import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
+import { AdaptorRecord, AdaptorRecordType, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
 import { calcNdChange, getStatsByProtocolVersion, sumAllVolumes } from "../../utils/volumeCalcs"
-import { ACCOMULATIVE_ADAPTOR_TYPE, EXTRA_TYPES, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
+import { ACCOMULATIVE_ADAPTOR_TYPE, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
 
-export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
+export default async (adapter: ProtocolAdaptor, adaptorType: AdaptorRecordType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
     try {
         // Get all records from db
-        let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorRecordType, adapter.protocolType)
-        const rawTotalRecord = ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType]
-            ? await getAdaptorRecord(adapter.id, ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType], adapter.protocolType, "LAST").catch(e => console.error(e)) as AdaptorRecord | undefined
+        let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorType, adapter.protocolType)
+        const totalRecord = ACCOMULATIVE_ADAPTOR_TYPE[adaptorType]
+            ? await getAdaptorRecord(adapter.id, ACCOMULATIVE_ADAPTOR_TYPE[adaptorType], adapter.protocolType, "LAST").catch(e => console.error(e)) as AdaptorRecord | undefined
             : undefined
-        const totalRecord = rawTotalRecord?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
-
-        // Get extra revenue
-        const extraTypes: IJSON<number | null> = {}
-        for (const recordType of EXTRA_TYPES[adaptorType]) {
-            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "LAST").catch(e => console.error(e)) as AdaptorRecord | undefined
-            const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
-            if (AdaptorRecordTypeMapReverse[recordType])
-                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
-
-        }
 
         const startTimestamp = adapter.config?.startFrom
         const startIndex = startTimestamp ? adaptorRecords.findIndex(ar => ar.timestamp === startTimestamp) : -1
@@ -88,8 +77,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             config: adapter.config,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolsStats: protocolVersions,
-            protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
-            ...extraTypes
+            protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL
         }
     } catch (error) {
         // TODO: handle better errors

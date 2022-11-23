@@ -60,24 +60,6 @@ export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdaptorRecordType.dailyNotionalVolume]: AdaptorRecordType.totalNotionalVolume,
     [AdaptorRecordType.dailyPremiumVolume]: AdaptorRecordType.totalPremiumVolume,
     [AdaptorRecordType.dailyRevenue]: AdaptorRecordType.totalRevenue,
-    [AdaptorRecordType.dailyUserFees]: AdaptorRecordType.totalUserFees,
-    [AdaptorRecordType.dailyHoldersRevenue]: AdaptorRecordType.totalHoldersRevenue,
-    [AdaptorRecordType.dailyCreatorRevenue]: AdaptorRecordType.totalCreatorRevenue,
-    [AdaptorRecordType.dailySupplySideRevenue]: AdaptorRecordType.totalSupplySideRevenue,
-    [AdaptorRecordType.dailyProtocolRevenue]: AdaptorRecordType.totalProtocolRevenue,
-}
-
-export const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
-    [AdapterType.FEES]: [
-        AdaptorRecordType.dailyUserFees,
-        AdaptorRecordType.dailyHoldersRevenue,
-        AdaptorRecordType.dailyCreatorRevenue,
-        AdaptorRecordType.dailySupplySideRevenue,
-        AdaptorRecordType.dailyProtocolRevenue
-    ],
-    [AdapterType.OPTIONS]: [
-        AdaptorRecordType.dailyPremiumVolume
-    ]
 }
 
 // -> /overview/{type}/{chain}
@@ -87,8 +69,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
     const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
     const rawDataType = event.queryStringParameters?.dataType
-    const rawCategory = event.queryStringParameters?.category
-    const category = rawCategory === 'dexs' ? 'dexes' : rawCategory
     const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
@@ -96,24 +76,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!adaptorType) throw new Error("Missing parameter")
 
     // Import data list
-    const adapters2load: string[] = [adaptorType, "protocols"]
-    const protocolsList = Object.keys(loadAdaptorsData(adaptorType).config)
-    const adaptersList: ProtocolAdaptor[] = []
-    for (const type2load of adapters2load) {
-        try {
-            const adaptorsData = loadAdaptorsData(type2load as AdapterType)
-            adaptorsData.default.forEach(va => {
-                if (va.config?.enabled && (!category || va.category?.toLowerCase() === category))
-                    if (protocolsList.includes(va.module)) adaptersList.push(va)
-                return
-            })
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    const adaptorsData = loadAdaptorsData(adaptorType)
+    const allAdapters = adaptorsData.default.filter(va => va.config?.enabled)
 
-    const results = await allSettled(adaptersList.map(async (adapter) => {
-        return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
+    const results = await allSettled(allAdapters.map(async (adapter) => {
+        return generateProtocolAdaptorSummary(adapter, dataType, chainFilter, async (e) => {
             console.error(e)
             // TODO, move error handling to rejected promises
             if (enableAlerts)
@@ -154,7 +121,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
-        allChains: getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
+        allChains: getAllChainsUniqueString(allAdapters.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
         ...generalStats,
     } as IGetOverviewResponseBody, 10 * 60); // 10 mins cache
 };

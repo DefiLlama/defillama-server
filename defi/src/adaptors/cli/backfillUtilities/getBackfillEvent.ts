@@ -10,12 +10,10 @@ import { getUniqStartOfTodayTimestamp } from "../../../../adapters/helpers/getUn
 import { removeEventTimestampAttribute } from "../../handlers/getOverview"
 import { AdapterType } from "@defillama/adaptors/adapters/types";
 import { ONE_DAY_IN_SECONDS } from "../../handlers/getProtocol"
-import { ICliArgs } from "./auto"
-import { Chain } from "@defillama/sdk/build/general"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
-export default async (adapter: string, adaptorType: AdapterType, cliArguments: ICliArgs) => {
+export default async (adapter: string, adaptorType: AdapterType, onlyMissing: boolean | number = false) => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
         // 'mooniswap', 
@@ -60,15 +58,12 @@ export default async (adapter: string, adaptorType: AdapterType, cliArguments: I
     const adapterName = adapter ?? DEXS_LIST[0]
 
     let event: ITriggerStoreVolumeEventHandler | undefined
-    if (cliArguments.timestamp)
+    if (typeof onlyMissing === 'number')
         event = {
             type: adaptorType,
             backfill: [{
                 dexNames: [adapterName],
-                timestamp: cliArguments.timestamp + ONE_DAY_IN_SECONDS,
-                chain: cliArguments.chain as Chain,
-                adaptorRecordTypes: cliArguments.recordTypes,
-                protocolVersion: cliArguments.version,
+                timestamp: onlyMissing + ONE_DAY_IN_SECONDS
             }]
         }
 
@@ -113,7 +108,7 @@ export default async (adapter: string, adaptorType: AdapterType, cliArguments: I
     console.info("Starting timestamp", startTimestamp, "->", startDate)
     const endDate = new Date(nowSTimestamp * 1000)
     const dates: Date[] = []
-    if (cliArguments.onlyMissing) {
+    if (onlyMissing && typeof onlyMissing === "boolean") {
         let volTimestamps = {} as IJSON<boolean>
         for (const type of Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)) {
             let vols = (await getAdaptorRecord(adapterData.id, type as AdaptorRecordType, adapterData.protocolType, "ALL"))
@@ -152,10 +147,7 @@ export default async (adapter: string, adaptorType: AdapterType, cliArguments: I
             type: adaptorType,
             backfill: dates.map(date => ({
                 dexNames: [adapterName],
-                timestamp: date.getTime() / 1000,
-                chain: cliArguments.chain as Chain,
-                adaptorRecordTypes: cliArguments.recordTypes,
-                protocolVersion: cliArguments.version,
+                timestamp: date.getTime() / 1000
             }))
         }
 

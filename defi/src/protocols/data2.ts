@@ -19604,6 +19604,53 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669209266
 },
+{
+  id: "2306",
+  name: "Bored Candy City",
+  address: "cronos:0x06C04B0AD236e7Ca3B3189b1d049FE80109C7977",
+  symbol: "CANDY",
+  url: "https://candycity.finance/",
+  description: "Bored Candy City is not just a DEX. We are working on a complete Defi ecosystem around the $CANDY token",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/bored-candy-city.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Cronos"],
+  module: "candycity/index.js",
+  twitter: "BoredCandyCity",
+  forkedFrom:["Uniswap"],
+  audit_links: [
+    "https://www.certik.com/projects/bored-candy-city",
+    "https://phenix.finance/projects/candy-city/"
+  ],
+  oracles: [],
+  listedAt: 1669242451
+},
+{
+  id: "2307",
+  name: "Camelot",
+  address: "arbitrum:0x3d9907F9a368ad0a51Be60f7Da3b97cf940982D8",
+  symbol: "GRAIL",
+  url: "https://camelot.exchange/",
+  description: "Camelot is an ecosystem-focused and community-driven DEX built on Arbitrum. It has been built as a highly efficient and customizable protocol, allowing both builders and users to leverage our custom infrastructure for deep, sustainable, and adaptable liquidity. Camelot moves beyond the traditional design of DEXs to focus on offering a tailored approach that prioritises composability",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/camelot.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Arbitrum"],
+  module: "camelot/index.js",
+  twitter: "CamelotDEX",
+  forkedFrom:["Uniswap"],
+  audit_links: ["https://paladinsec.co/projects/camelot/"],
+  oracles: [],
+  listedAt: 1669242459
+},
 ]
 
 export default data2;

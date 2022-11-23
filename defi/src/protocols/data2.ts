@@ -19562,6 +19562,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Revert-v1.0.pdf"],
   listedAt: 1669202666
 },
+{
+  id: "2304",
+  name: "Bob",
+  address: "polygon:0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
+  symbol: "BOB",
+  url: "https://app.zkbob.com",
+  description: "BOB is a multi-chain, multi-collateral stable token enhanced with optional privacy features.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/bob.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "bob",
+  cmcId: "21882",
+  category: "Privacy",
+  chains: ["Polygon"],
+  module: "zkbob/index.js",
+  twitter: "zkBob_",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1669204672
+},
 ]
 
 export default data2;

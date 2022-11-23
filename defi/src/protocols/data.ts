@@ -7987,13 +7987,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Yield",
     chains: ["Polygon"],
     module: "tetu/index.js",
     twitter: "tetu_io",
     audit_links: ["https://docs.tetu.io/tetu-io/security/audits"],
     oracles: ["Internal"],
-    forkedFrom: ["Harvest Finance"],
+    forkedFrom: [],
     parentProtocol: "Tetu"
   },
   {

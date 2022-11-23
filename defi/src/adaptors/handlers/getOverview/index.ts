@@ -67,7 +67,7 @@ export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdaptorRecordType.dailyProtocolRevenue]: AdaptorRecordType.totalProtocolRevenue,
 }
 
-export const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
+const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     [AdapterType.FEES]: [
         AdaptorRecordType.dailyUserFees,
         AdaptorRecordType.dailyHoldersRevenue,
@@ -79,6 +79,8 @@ export const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailyPremiumVolume
     ]
 }
+
+export const getExtraTypes = (type: AdapterType) => EXTRA_TYPES[type] ?? []
 
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {

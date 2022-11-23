@@ -4,7 +4,7 @@ import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
 import { calcNdChange, getStatsByProtocolVersion, sumAllVolumes } from "../../utils/volumeCalcs"
-import { ACCOMULATIVE_ADAPTOR_TYPE, EXTRA_TYPES, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
+import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
 
@@ -21,7 +21,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
 
         // Get extra revenue
         const extraTypes: IJSON<number | null> = {}
-        for (const recordType of EXTRA_TYPES[adaptorType]) {
+        for (const recordType of getExtraTypes(adaptorType)) {
             const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "LAST").catch(e => console.error(e)) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
             if (AdaptorRecordTypeMapReverse[recordType])

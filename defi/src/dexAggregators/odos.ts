@@ -47,7 +47,7 @@ export async function getQuote(
   }).then((res) => res.json());
 
   return {
-    amountReturned: data.netOutValue,
+    amountReturned: data.outAmounts[0],
     estimatedGas: data.gasEstimate,
     tokenApprovalAddress: data.inputDests[0],
     rawQuote: data,

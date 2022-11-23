@@ -19374,11 +19374,11 @@ listedAt: 1650804679
 },
 {
   id: "2295",
-  name: "Swissborg",
+  name: "SwissBorg",
   address: null,
   symbol: "-",
   url: "https://swissborg.com",
-  description: "Making crypto asset management accessible to everyone.",
+  description: "Making crypto wealth management accessible to everyone.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/swissborg.png`,
   audits: "0",

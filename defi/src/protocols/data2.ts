@@ -19540,6 +19540,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669150621
 },
+{
+  id: "2303",
+  name: "Revert V3 Staker",
+  address: null,
+  symbol: "-",
+  url: "https://v3staker.revert.finance",
+  description: "Liquidity mining for Uniswap v3 that incentivizes sticky liquidity by distributing rewards that vest over time.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/revert-v3-staker.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Polygon"],
+  module: "revert-v3-staker/index.js",
+  twitter: "revertfinance",
+  forkedFrom:[],
+  oracles: [],
+  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Revert-v1.0.pdf"],
+  listedAt: 1669202666
+},
 ]
 
 export default data2;

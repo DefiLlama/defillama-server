@@ -6,18 +6,23 @@
 ```
 > npm run backfill <type> <adaptername>
 ```
-- Optionally you can backfill only missing days by running 
+- Optionally you can backfill using specific parameters 
 ```
-> npm run backfill <type> <adaptername> onlyMissing
+> npm run backfill <type> <adaptername> chain=<chain> version=<version> recordTypes=<recordTypes> timestamp=<timestamp> onlyMissing=<true|false>
+> npm run backfill dexs uniswap chain=ethereum version=v3 recordTypes=dailyVolume timestamp=1669075200
+> npm run backfill fees uniswap chain=ethereum version=v2 recordTypes=dailySupplySideRevenue,dailyUserFees
 ```
+
+> NOTE: for now `onlyMissing=true` only works for days with no data so it will won't be checking the specific record type, version or chain
+
 - You can also optionally backfill only a specific day by running 
 ```
-> npm run backfill <type> <adaptername> <timestamp>
+> npm run backfill <type> <adaptername> timestamp=<timestamp>
 ```
 
 The previous commands will run the backfill in the cloud. If you would like to run it locally you can use
 ```
-> npm run backfill-local <type> <adaptername> [onlyMissing]
+> npm run backfill-local <type> <adaptername>
 ```
 
 > If there's any kind of rate limit in the API I would recommend you to use the `backfill-local` script and add a delay in `src/triggerStoreAdaptorData.ts` by uncommenting the line `69` (`if (process.env.runLocal === 'true') await delay(1000)`)

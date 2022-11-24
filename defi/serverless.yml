@@ -165,6 +165,14 @@ functions:
       - http:
           path: protocol/{protocol}
           method: get
+  tokenProtocols:
+    handler: src/getTokenInProtocols.default
+    timeout: 120
+    memorySize: 2000
+    events:
+      - http:
+          path: tokenProtocols/{symbol}
+          method: get
   updatedProtocol:
     handler: src/getUpdatedProtocol.default
     timeout: 120

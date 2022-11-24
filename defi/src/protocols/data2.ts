@@ -19651,6 +19651,31 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669242459
 },
+{
+  id: "2308",
+  name: "Jito",
+  address: "solana:J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+  symbol: "JitoSOL",
+  url: "https://jito.network",
+  description: "MEV-Boosted Staking Rewards",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/jito.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "jito-staked-sol",
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Solana"],
+  module: "jito/index.js",
+  twitter: "jito_sol",
+  forkedFrom:["SPL Stake Pool"],
+  audit_links: [
+    "https://spl.solana.com/stake-pool#security-audits",
+    "https://2926710696-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Ffrb9MGTK6eZJlEQJyylq%2Fuploads%2F1jfEDpGcd5YlnHusbKYO%2FNeodymeJito.pdf"
+  ],
+  oracles: [],
+  listedAt: 1669265429
+},
 ]
 
 export default data2;

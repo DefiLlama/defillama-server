@@ -7,7 +7,7 @@ const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const symbol = decodeURI(event.pathParameters?.symbol ?? "");
-  const protocolsIncluded = await Promise.all(
+  const protocolsIncluded = (await Promise.all(
     protocols.map(async (protocol) => {
       const [lastTvl, module] = await Promise.all([
         getLastRecord(hourlyUsdTokensTvl(protocol.id)),
@@ -24,7 +24,7 @@ const handler = async (
         }
       }
     })
-  )
+  )).filter(r=>r !== null)
   return successResponse(protocolsIncluded, 10 * 60); // 10 mins cache
 };
 

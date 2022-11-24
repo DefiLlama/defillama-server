@@ -231,5 +231,8 @@ export default {
     },
     "elk": {
         enabled: true
+    },
+    "lyra": {
+        enabled: true
     }
 } as AdaptorsConfig

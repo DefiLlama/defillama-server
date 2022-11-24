@@ -228,5 +228,8 @@ export default {
     },
     "mm-stableswap-polygon": {
         enabled: true
+    },
+    "elk": {
+        enabled: true
     }
 } as AdaptorsConfig

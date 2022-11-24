@@ -479,7 +479,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 55,
   },
-  "Elrond": {
+  "MultiversX": {
     geckoId: "elrond-erd-2",
     symbol: "EGLD",
     cmcId: "6892",
@@ -1220,6 +1220,7 @@ chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
 chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
+chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury", "vesting"]
 
@@ -1243,6 +1244,8 @@ export function transformNewChainName(chain: string) {
       return "Arbitrum Nova"
     case "Milkomeda":
         return "Milkomeda C1"
+    case "Elrond":
+      return "MultiversX"
     default:
       return chain
   }
@@ -1272,6 +1275,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Nova Network" : "Nova Network"
     case "godwoken_v1":
       return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
+    case "elrond":
+      return useNewChainNames ? "MultiversX" : "Elrond"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -1324,8 +1329,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Polis"
     case "zyx":
       return "ZYX"
-    case "elrond":
-      return "Elrond"
     case "stellar":
       return "Stellar"
     case "shiden":

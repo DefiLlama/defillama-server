@@ -19570,7 +19570,7 @@ listedAt: 1650804679
   url: "https://app.zkbob.com",
   description: "A stablecoin-based zkprotocol designed for simplicity, privacy and utility.",
   chain: "Polygon",
-  logo: `${baseIconsUrl}/bob.png`,
+  logo: `${baseIconsUrl}/zkbob.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

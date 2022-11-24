@@ -2,7 +2,7 @@ import { formatTimestampAsDate } from "../../../utils/date"
 import executeAsyncBackfill from "./executeAsyncBackfill"
 import getBackfillEvent from "./getBackfillEvent"
 import readline from 'readline';
-import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { IJSON } from "../../data/types";
 
 const rl = readline.createInterface({

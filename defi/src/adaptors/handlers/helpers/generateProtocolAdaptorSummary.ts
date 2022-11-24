@@ -1,4 +1,4 @@
-import { AdapterType, ProtocolType } from "@defillama/adaptors/adapters/types"
+import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"

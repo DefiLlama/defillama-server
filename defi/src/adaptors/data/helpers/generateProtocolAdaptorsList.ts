@@ -3,7 +3,7 @@ import { AdaptorsConfig, IJSON } from "../types"
 import { sluggifyString } from "../../../utils/sluggify";
 import getAllChainsFromAdaptors, { getProtocolsData, isDisabled } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
-import { Adapter, ProtocolType } from "@defillama/adaptors/adapters/types";
+import { Adapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
 import { baseIconsUrl } from "../../../constants";
 

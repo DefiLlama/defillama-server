@@ -1,6 +1,6 @@
 import "./setup.ts"
 import { handler } from "../handlers/storeAdaptorData";
-import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import protocols from "../data/protocols";
 
 handler({

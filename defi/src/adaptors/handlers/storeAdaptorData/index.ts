@@ -1,10 +1,10 @@
 import { wrapScheduledLambda } from "../../../utils/shared/wrap";
 import { getTimestampAtStartOfDayUTC } from "../../../utils/date";
-import { ChainBlocks, Adapter, AdapterType, BaseAdapter } from "@defillama/adaptors/adapters/types";
+import { ChainBlocks, Adapter, AdapterType, BaseAdapter } from "@defillama/dimension-adapters/adapters/types";
 import canGetBlock from "../../utils/canGetBlock";
 import allSettled from 'promise.allsettled'
-import runAdapter, { getFulfilledResults, getRejectedResults } from "@defillama/adaptors/adapters/utils/runAdapter";
-import { getBlock } from "@defillama/adaptors/helpers/getBlock";
+import runAdapter, { getFulfilledResults, getRejectedResults } from "@defillama/dimension-adapters/adapters/utils/runAdapter";
+import { getBlock } from "@defillama/dimension-adapters/helpers/getBlock";
 import { Chain } from "@defillama/sdk/build/general";
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse, RawRecordMap, storeAdaptorRecord } from "../../db-utils/adaptor-record";
 import { processFulfilledPromises, processRejectedPromises, STORE_ERROR } from "./helpers";

@@ -3,7 +3,7 @@ import dynamodb from "../../utils/shared/dynamodb"
 import { formatChain, formatChainKey } from "../utils/getAllChainsFromAdaptors"
 import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
-import { ProtocolType } from "@defillama/adaptors/adapters/types"
+import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { IJSON } from "../data/types"
 
 export enum AdaptorRecordType {

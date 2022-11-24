@@ -19642,7 +19642,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "CEX",
+  category: "Dexes",
   chains: ["Arbitrum"],
   module: "camelot/index.js",
   twitter: "CamelotDEX",

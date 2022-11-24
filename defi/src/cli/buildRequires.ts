@@ -1,5 +1,4 @@
 import protocols from "../protocols/data";
-import volumeAdapters from "../dexVolumes/dexAdapters";
 import { writeFileSync, readdirSync } from "fs"
 
 function getUnique(arry: string[]) {
@@ -18,11 +17,6 @@ writeFileSync("./src/utils/imports/adapters_liquidations.ts",
         .map(f => `"${f}": require("@defillama/adapters/liquidations/${f}"),`).join('\n')}
 }`)
 
-
-writeFileSync("./src/utils/imports/adapters_volumes.ts",
-    `export default {
-    ${volumeAdapters.map(p => `"${p.volumeAdapter}": require("@defillama/adapters/volumes/adapters/${p.volumeAdapter}"),`).join('\n')}
-}`)
 
 // For adapters type adaptor
 function getDirectories(source: string) {

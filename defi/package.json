@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "@defillama/adapters": "file:./DefiLlama-Adapters",
+    "@defillama/dimension-adapters": "file:./dimension-adapters",
     "@defillama/sdk": "^3.0.1",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",

@@ -6,7 +6,7 @@ import { IJSON } from "../../data/types"
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 import { getAdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
 import getDataPoints from "../../utils/getDataPoints"
-import { getUniqStartOfTodayTimestamp } from "../../../../adapters/helpers/getUniSubgraphVolume"
+import { getUniqStartOfTodayTimestamp } from "@defillama/dimension-adapters/helpers/getUniSubgraphVolume"
 import { removeEventTimestampAttribute } from "../../handlers/getOverview"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { ONE_DAY_IN_SECONDS } from "../../handlers/getProtocol"

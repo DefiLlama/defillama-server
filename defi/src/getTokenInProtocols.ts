@@ -1,6 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import { getLastRecord, hourlyUsdTokensTvl } from "./utils/getLastRecord";
+import { importAdapter } from "./utils/imports/importAdapter";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent

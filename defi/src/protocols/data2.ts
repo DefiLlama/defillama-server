@@ -19676,6 +19676,30 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669265429
 },
+{
+  id: "2309",
+  name: "Indigo",
+  address: "cardano:asset1u8caujpkc0km4vlwxnd8f954lxphrc8l55ef3j",
+  symbol: "INDY",
+  url: "https://app.indigoprotocol.io/",
+  description: "Indigo is a decentralized non-custodial synthetic assets protocol built for Cardano",
+  chain: "Cardano",
+  logo: `${baseIconsUrl}/indigo.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "indigo-dao-governance-token",
+  cmcId: null,
+  category: "CDP",
+  chains: ["Cardano"],
+  module: "indigo/index.js",
+  twitter: "Indigo_protocol",
+  forkedFrom:[],
+  audit_links: [
+    "https://docs.indigoprotocol.io/readme/risks"
+  ],
+  oracles: ["Chainlink"],
+  listedAt: 1669327585
+},
 ]
 
 export default data2;

@@ -6,14 +6,14 @@ import { importAdapter } from "./utils/imports/importAdapter";
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const symbol = decodeURI(event.pathParameters?.symbol?.toLowerCase() ?? "");
+  const symbol = decodeURI(event.pathParameters?.symbol ?? "");
   const protocolsIncluded = await Promise.all(
     protocols.map(async (protocol) => {
       const [lastTvl, module] = await Promise.all([
         getLastRecord(hourlyUsdTokensTvl(protocol.id)),
         importAdapter(protocol),
       ]);
-      const amountUsd = lastTvl?.tvl[symbol]
+      const amountUsd = lastTvl?.tvl?.[symbol]
       if(amountUsd === undefined){
         return null
       } else {

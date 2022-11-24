@@ -3,12 +3,12 @@ import fs, { writeFileSync } from "fs"
 import path from "path"
 import loadAdaptorsData from "../../data"
 import { IJSON } from "../../data/types"
-import { Adapter } from "@defillama/adaptors/adapters/types";
+import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 import { getAdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
 import getDataPoints from "../../utils/getDataPoints"
 import { getUniqStartOfTodayTimestamp } from "../../../../adapters/helpers/getUniSubgraphVolume"
 import { removeEventTimestampAttribute } from "../../handlers/getOverview"
-import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { ONE_DAY_IN_SECONDS } from "../../handlers/getProtocol"
 import { ICliArgs } from "./auto"
 import { Chain } from "@defillama/sdk/build/general"

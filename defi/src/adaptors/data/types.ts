@@ -1,4 +1,4 @@
-import { Adapter, ProtocolType } from "@defillama/adaptors/adapters/types"
+import { Adapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { Protocol } from "../../protocols/types"
 
 export interface ProtocolAdaptor extends Protocol {

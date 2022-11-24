@@ -4,7 +4,7 @@ import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMa
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import loadAdaptorsData from "../../data"
 import { IJSON, ProtocolAdaptor } from "../../data/types";
-import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { IChartData, IChartDataBreakdown, sumAllVolumes } from "../../utils/volumeCalcs";
 import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../getOverview";

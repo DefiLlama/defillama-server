@@ -1,5 +1,5 @@
-import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/adaptors/adapters/types";
-import { CHAIN } from "@defillama/adaptors/helpers/chains";
+import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/dimension-adapters/adapters/types";
+import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 

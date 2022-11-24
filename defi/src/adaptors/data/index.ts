@@ -1,4 +1,4 @@
-import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { AdaptorData } from "./types";
 import dexs, { KEYS_TO_STORE as dexs_KEYS_TO_STORE, importModule as dexs_importModule, config as dexs_config } from "./dexs"
 import fees, { KEYS_TO_STORE as fees_KEYS_TO_STORE, importModule as fees_importModule, config as fees_config } from "./fees"

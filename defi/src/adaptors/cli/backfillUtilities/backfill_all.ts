@@ -2,7 +2,7 @@ import "../setup"
 import { formatTimestampAsDate } from "../../../utils/date"
 import executeAsyncBackfill from "./executeAsyncBackfill"
 import getBackfillEvent from "./getBackfillEvent"
-import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import data from "../../data";
 import sleep from "../../../utils/shared/sleep";
 

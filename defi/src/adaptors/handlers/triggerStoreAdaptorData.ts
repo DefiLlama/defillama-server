@@ -2,7 +2,7 @@ import { wrapScheduledLambda } from "../../utils/shared/wrap";
 import invokeLambda from "../../utils/shared/invokeLambda";
 import type { IHandlerEvent as IStoreAdaptorDataHandlerEvent } from './storeAdaptorData'
 import { handler as storeAdaptorData } from "./storeAdaptorData";
-import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import data from "../data";
 
 function shuffleArray(array: any[]) {

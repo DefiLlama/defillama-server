@@ -19724,6 +19724,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669379407
 },
+{
+  id: "2311",
+  name: "CoinDCX",
+  address: null,
+  symbol: "-",
+  url: "https://coindcx.com",
+  description: "1.3 Crore + Indians choose CoinDCX, India's most valued Crypto Investment App",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/coindcx.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin", "Cardano", "Tron", "Binance"],
+  module: "coindcx/index.js",
+  twitter: "CoinDCX",
+  forkedFrom:[],
+  audit_links: [],
+  oracles: [],
+  listedAt: 1669389751
+},
 ]
 
 export default data2;

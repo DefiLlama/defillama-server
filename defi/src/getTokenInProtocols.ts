@@ -19,7 +19,17 @@ const handler = async (
       if(typeof lastTvl?.tvl !== "object"){
         return null
       }
-      const amountUsd = Object.fromEntries(Object.entries(lastTvl.tvl).filter(([s, v])=>s.includes(symbol)))
+      const amountUsd = {} as any
+      let matches = 0
+      Object.entries(lastTvl.tvl).forEach(([s, v])=>{
+        if(s.includes(symbol)){
+          amountUsd[s] = v;
+          matches++;
+        }
+      })
+      if(matches === 0){
+        return null
+      }
       return {
           name: protocol.name,
           category: protocol.category,

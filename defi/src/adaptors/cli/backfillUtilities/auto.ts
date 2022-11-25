@@ -4,6 +4,7 @@ import getBackfillEvent from "./getBackfillEvent"
 import readline from 'readline';
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { IJSON } from "../../data/types";
+import { getStringArrUnique } from "../../utils/getAllChainsFromAdaptors";
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -61,7 +62,9 @@ export interface ICliArgs {
         rl.close();
         return
     }
-    console.info(`${backfillEvent.backfill[0].dexNames[0].toUpperCase()} will be backfilled starting from ${formatTimestampAsDate(String(backfillEvent.backfill[0].timestamp!))}`)
+    const uniqueModules2Backfill = getStringArrUnique([...backfillEvent.backfill.map(n=>n.dexNames).flat(1)])
+    console.info(uniqueModules2Backfill.length, "protocols will be backfilled")
+    console.info(`${uniqueModules2Backfill} will be backfilled starting from ${formatTimestampAsDate(String(backfillEvent.backfill[0].timestamp!))}`)
     console.info(`${backfillEvent.backfill.length} days will be filled. If a chain is already available will be refilled.`)
     console.info(`With the following parameters:\nChain: ${backfillEvent.backfill[0].chain}\nRecord types: ${backfillEvent.backfill[0].adaptorRecordTypes}\nVersion: ${backfillEvent.backfill[0].protocolVersion}`)
     rl.question('Do you wish to continue? y/n\n', async function (yn) {

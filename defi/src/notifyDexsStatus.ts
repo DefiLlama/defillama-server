@@ -1,4 +1,4 @@
-import { handler, IGetDexsResponseBody } from "./dexVolumes/handlers/getDexs";
+import { handler } from "./adaptors/handlers/getOverview";
 import { APIGatewayProxyEvent } from "aws-lambda";
 
 const event = {
@@ -7,5 +7,5 @@ const event = {
 
 export default async () => {
     const response = await handler(event, true)
-    console.log(JSON.parse(response.body) as IGetDexsResponseBody)
+    console.log(JSON.parse(response.body))
 }

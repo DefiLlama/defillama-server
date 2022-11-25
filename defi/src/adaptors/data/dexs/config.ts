@@ -622,5 +622,8 @@ export default {
     },
     "opx-finance": {
         enabled: true
+    },
+    "camelot": {
+        enabled: true
     }
 } as AdaptorsConfig

@@ -1201,9 +1201,9 @@ export const chainCoingeckoIds = {
     categories: ["Cosmos"],
   },
   "Step": {
-    geckoId: null,
-    symbol: "-",
-    cmcId: null,
+    geckoId: "stepex",
+    symbol: "SPEX",
+    cmcId: "21725",
     categories: ["EVM"],
   },
 } as unknown as {

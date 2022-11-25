@@ -19720,7 +19720,6 @@ listedAt: 1650804679
   module: "nbx/index.js",
   twitter: "nbxcom",
   forkedFrom:[],
-  audit_links: [],
   oracles: [],
   listedAt: 1669379407
 },
@@ -19742,9 +19741,29 @@ listedAt: 1650804679
   module: "coindcx/index.js",
   twitter: "CoinDCX",
   forkedFrom:[],
-  audit_links: [],
   oracles: [],
   listedAt: 1669389751
+},
+{
+  id: "2312",
+  name: "Step Exchange",
+  address: null,
+  symbol: "-",
+  url: "https://app.step.exchange",
+  description: "Dex on Step Network ",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/step-exchange.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "stepex",
+  cmcId: "21725",
+  category: "Dexes",
+  chains: ["Step"],
+  module: "step-exchange/index.js",
+  twitter: "StepApp_",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1669394107
 },
 ]
 

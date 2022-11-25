@@ -9733,7 +9733,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "flux-protocol",
     cmcId: "9837",
     category: "Lending",
-    chains: ["OKExChain", "Binance", "Heco", "Arbitrum", "Conflux", "Polygon"],
+    chains: ["OKExChain", "Binance", "Arbitrum", "Conflux", "Polygon"],
     module: "flux/index.js",
     twitter: "zero1_flux",
     audit_links: ["https://certik.org/projects/flux"],

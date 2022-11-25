@@ -19700,6 +19700,28 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1669327585
 },
+{
+  id: "2310",
+  name: "NBX",
+  address: null,
+  symbol: "-",
+  url: "https://nbx.com",
+  description: "NBX is a trusted Norwegian exchange, where you can buy and sell cryptocurrency easily and securely. Buy Bitcoin, Ethereum, Cardano and other tokens with card.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/nbx.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin", "Cardano"],
+  module: "nbx/index.js",
+  twitter: "nbxcom",
+  forkedFrom:[],
+  audit_links: [],
+  oracles: [],
+  listedAt: 1669379407
+},
 ]
 
 export default data2;

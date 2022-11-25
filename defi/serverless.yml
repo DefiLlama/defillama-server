@@ -418,13 +418,6 @@ functions:
     memorySize: 1024
     events:
       - schedule: cron(30 * * * ? *)
-  fetchCoingeckoData:
-    handler: src/fetchCoingeckoData.default
-    timeout: 900
-  triggerFetchCoingeckoData:
-    handler: src/triggerFetchCoingeckoData.default
-    events:
-      - schedule: cron(50 * * * ? *)
   sendDiscordMessage:
     handler: src/sendDiscordMessage.default
     timeout: 900

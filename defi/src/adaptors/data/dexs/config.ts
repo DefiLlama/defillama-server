@@ -619,5 +619,8 @@ export default {
     },
     "cetus": {
         enabled: true
+    },
+    "opx-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

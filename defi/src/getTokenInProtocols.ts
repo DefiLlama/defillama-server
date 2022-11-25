@@ -19,6 +19,7 @@ const handler = async (
       } else {
         return {
             name: protocol.name,
+            category: protocol.category,
             amountUsd,
             misrepresentedTokens: module.misrepresentedTokens
         }

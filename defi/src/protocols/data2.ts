@@ -11757,6 +11757,7 @@ listedAt: 1650804679
     "https://immunefi.com/bounty/revert",
     "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Revert-Compoundor-v1.0.pdf"
   ],
+  parentProtocol: "Revert",
   listedAt: 1659525571
 },
 {
@@ -19560,7 +19561,8 @@ listedAt: 1650804679
   forkedFrom:[],
   oracles: [],
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Revert-v1.0.pdf"],
-  listedAt: 1669202666
+  listedAt: 1669202666,
+  parentProtocol: "Revert"
 },
 {
   id: "2304",

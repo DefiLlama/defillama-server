@@ -534,6 +534,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "WOOnetwork",
   },
+  {
+    id: "Revert",
+    name: "Revert",
+    url: "https://revert.finance",
+    description:
+    "Actionable analytics for AMM liquidity providers.",
+    logo: `${baseIconsUrl}/revert.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "revertfinance",
+  },
 ];
 
 export default parentProtocols;

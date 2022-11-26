@@ -19765,6 +19765,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669394107
 },
+{
+  id: "2313",
+  name: "Firi",
+  address: null,
+  symbol: "-",
+  url: "https://firi.com",
+  description: "The largest crypto exchange in the Nordics.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/firi.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin", "Cardano", "Ripple", "Solana"],
+  module: "fire/index.js",
+  twitter: "firiapp",
+  forkedFrom:[],
+  oracles: [],
+  listedAt: 1669465526
+},
 ]
 
 export default data2;

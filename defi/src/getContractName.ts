@@ -5,7 +5,7 @@ const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const contract = event.pathParameters?.contract?.toLowerCase();
-  const name = await fetch(`https://api.etherscan.io/api?module=contract&action=getsourcecode&address=${contract}$&apikey=YourApiKeyToken`).then(r=>r.json())
+  const name = await fetch(`https://api.etherscan.io/api?module=contract&action=getsourcecode&address=${contract}&apikey=YourApiKeyToken`).then(r=>r.json())
   return successResponse({
     name: name.result[0].ContractName
   }, 3* 60 * 60); // 3h

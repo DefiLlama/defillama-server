@@ -157,6 +157,13 @@ functions:
       - http:
           path: dexAggregatorQuote
           method: get
+  contractName:
+    handler: src/getContractName.default
+    timeout: 90
+    events:
+      - http:
+          path: contractName/{contract}
+          method: get
   protocol:
     handler: src/getProtocol.default
     timeout: 120

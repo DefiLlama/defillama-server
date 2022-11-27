@@ -512,7 +512,7 @@ const data2: Protocol[] =  [
   audit_note: null,
   gecko_id: "x2y2",
   cmcId: "18106",
-  category: "Staking",
+  category: "NFT Lending",
   chains: ["Ethereum"],
   oracles: [],
   forkedFrom: [],

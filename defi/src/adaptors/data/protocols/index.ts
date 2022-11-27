@@ -4,7 +4,7 @@ import config from "./config";
 import { AdaptorRecordType, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record";
 
 // TODO: needs to be optimized. Currently loads to memory all adaptors
-export const importModule = (module: string) => protocols_imports[module]
+export const importModule = (module: string) => protocols_imports[module].module
 
 // KEYS USED TO MAP ATTRIBUTE -> KEY IN DYNAMO
 export const KEYS_TO_STORE = AdaptorRecordTypeMapReverse

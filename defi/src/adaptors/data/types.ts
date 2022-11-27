@@ -1,4 +1,5 @@
 import { Adapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
+import { IImportObj } from "../../cli/buildRequires"
 import { Protocol } from "../../protocols/types"
 
 export interface ProtocolAdaptor extends Protocol {
@@ -10,6 +11,7 @@ export interface ProtocolAdaptor extends Protocol {
         chains: string[]
         disabled: boolean
     }> | null
+    methodologyURL: string
 }
 
 export interface IConfig {
@@ -27,7 +29,7 @@ export type AdaptorsConfig = IJSON<IConfig>
 
 export type AdaptorData = {
     default: ProtocolAdaptor[]
-    importModule: (module: string) => { default: Adapter }
+    importModule: (module: string) => IImportObj['module']
     KEYS_TO_STORE: IJSON<string>
     config: IJSON<IConfig>
 }

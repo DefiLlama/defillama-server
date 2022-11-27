@@ -11,7 +11,7 @@ export const getStringArrUnique = (arr: string[]) => {
 
 const getAllChainsFromAdaptors = (dexs2Filter: string[], imports_obj: IImportsMap, filter: boolean = true) => {
     return getStringArrUnique(dexs2Filter.reduce((acc, adapterName) => {
-        const adaptor = imports_obj[adapterName].default
+        const adaptor = imports_obj[adapterName].module.default
         if (!adaptor) return acc
         if ("adapter" in adaptor) {
             const chains = Object.keys(adaptor.adapter).filter(c => !filter || c !== DISABLED_ADAPTER_KEY)
@@ -23,7 +23,7 @@ const getAllChainsFromAdaptors = (dexs2Filter: string[], imports_obj: IImportsMa
                 for (const chain of chains)
                     if (!acc.includes(chain)) acc.push(chain)
             }
-        } else console.error("Invalid adapter", adapterName, imports_obj[adapterName])
+        } else console.error("Invalid adapter", adapterName, imports_obj[adapterName].module)
         return acc
     }, [] as string[]))
 }

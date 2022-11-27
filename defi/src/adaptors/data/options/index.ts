@@ -4,7 +4,7 @@ import config from "./config";
 import { AdaptorRecordType } from "../../db-utils/adaptor-record";
 
 // TODO: needs to be optimized. Currently loads to memory all adaptors
-export const importModule = (module: string) => options_imports[module]
+export const importModule = (module: string) => options_imports[module].module
 
 // KEYS USED TO MAP ATTRIBUTE -> KEY IN DYNAMO
 export const KEYS_TO_STORE = {

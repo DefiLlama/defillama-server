@@ -89,6 +89,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolsStats: protocolVersions,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
+            methodologyURL: adapter.methodologyURL,
             ...extraTypes
         }
     } catch (error) {
@@ -103,6 +104,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             category: adapter.category,
             logo: adapter.logo,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
+            methodologyURL: adapter.methodologyURL,
             total24h: null,
             totalAllTime: null,
             breakdown24h: null,

@@ -1,7 +1,7 @@
 import data, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
 import { sluggifyString } from "../../../utils/sluggify";
-import getAllChainsFromAdaptors, { getProtocolsData, isDisabled } from "../../utils/getAllChainsFromAdaptors";
+import getAllChainsFromAdaptors, { getMethodologyData, getProtocolsData, isDisabled } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { Adapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
@@ -53,7 +53,8 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 displayName: getDisplayName(dexFoundInProtocols.name, imports_obj[adapterKey].module.default),
                 protocolsData: getProtocolsData(adapterKey, imports_obj[adapterKey].module.default),
                 protocolType: adapterObj.module.default?.protocolType,
-                methodologyURL: adapterObj.codePath
+                methodologyURL: adapterObj.codePath,
+                methodology: getMethodologyData(adapterKey, imports_obj[adapterKey].module.default),
             }
         }
         // TODO: Handle better errors

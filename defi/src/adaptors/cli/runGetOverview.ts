@@ -18,11 +18,11 @@ const event = {
     var endTime = performance.now()
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     // console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('jupiter')))
-    console.log(rr.protocols.map(p=>[p.name, p.methodologyURL]))
+    console.log(rr.protocols.map(p => [p.name, p.dailyUserFees, p.dailyHoldersRevenue, p.dailyCreatorRevenue, p.dailySupplySideRevenue, p.dailyProtocolRevenue, p.methodology]))
     console.log("length", rr.protocols.length)
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
     // console.log(rr.protocols[0])
-     console.log("Current run:", (endTime - startTime) / 1000)
+    console.log("Current run:", (endTime - startTime) / 1000)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)
     } */

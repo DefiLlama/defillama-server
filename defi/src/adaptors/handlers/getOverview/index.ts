@@ -29,12 +29,13 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'protocolType'
     | 'logo'
     | 'methodologyURL'
+    | 'methodology'
 > & {
     protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null
     recordsMap: IJSON<AdaptorRecord> | null
     totalAllTime: number | null
-} & IGeneralStats
+} & IGeneralStats & ExtraTypes
 
 type KeysToRemove = 'records' | 'module' | 'config' | 'recordsMap'
 type ProtocolsResponse = Omit<ProtocolAdaptorSummary, KeysToRemove>
@@ -43,6 +44,15 @@ export type IGetOverviewResponseBody = IGeneralStats & {
     totalDataChartBreakdown: IChartDataByDex,
     protocols: ProtocolsResponse[]
     allChains: string[]
+}
+
+type ExtraTypes = {
+    dailyUserFees?: number | null
+    dailyHoldersRevenue?: number | null
+    dailyCreatorRevenue?: number | null
+    dailySupplySideRevenue?: number | null
+    dailyProtocolRevenue?: number | null
+    dailyPremiumVolume?: number | null
 }
 
 export type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)

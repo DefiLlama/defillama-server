@@ -22,7 +22,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         // Get extra revenue
         const extraTypes: IJSON<number | null> = {}
         for (const recordType of getExtraTypes(adaptorType)) {
-            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "LAST").catch(e => console.error(e)) as AdaptorRecord | undefined
+            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "LAST").catch(_e => {}) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
             if (AdaptorRecordTypeMapReverse[recordType])
                 extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
@@ -90,6 +90,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             protocolsStats: protocolVersions,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
             methodologyURL: adapter.methodologyURL,
+            methodology: adapter.methodology,
             ...extraTypes
         }
     } catch (error) {

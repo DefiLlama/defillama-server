@@ -19833,7 +19833,7 @@ listedAt: 1650804679
 },
 {
   id: "2316",
-  name: "Meter Bridge",
+  name: "Meter Passport",
   address: null,
   symbol: "-",
   url: "https://passport.meter.io",

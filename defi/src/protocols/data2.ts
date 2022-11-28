@@ -19786,6 +19786,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669465526
 },
+{
+  id: "2314",
+  name: "Gate-io",
+  address: null,
+  symbol: "-",
+  url: "https://www.gate.io",
+  description:
+    "Leading cryptocurrency exchange with over 1400+ cryptocurrencies & stablecoins such as Bitcoi, Ethereum, Dogecoin",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/gate-io.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin", "Avalanche", "Ripple", "Arbitrum", "Optimism", "Solana", "Tron", "Polygon"],
+  module: "gate-io/index.js",
+  twitter: "gate_io", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1669634683
+},
 ]
 
 export default data2;

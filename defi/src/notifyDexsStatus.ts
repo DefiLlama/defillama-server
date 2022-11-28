@@ -2,7 +2,7 @@ import { handler } from "./adaptors/handlers/getOverview";
 import { APIGatewayProxyEvent } from "aws-lambda";
 
 const event = {
-    pathParameters: { chain: undefined }
+    pathParameters: { chain: undefined, type: "dexs" }
 } as unknown as APIGatewayProxyEvent
 
 export default async () => {

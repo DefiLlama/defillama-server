@@ -91,6 +91,23 @@ export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter): Pr
     }), {})
 }
 
+export const getMethodologyData = (adapterKey: string, moduleAdapter: Adapter): ProtocolAdaptor['methodology'] => {
+    if ('adapter' in moduleAdapter) {
+        const methodology = Object.values(moduleAdapter.adapter)[0].meta?.methodology
+        if (!methodology) return
+        return {
+            [adapterKey]: methodology
+        }
+    } else if ('breakdown' in moduleAdapter) {
+        return Object.keys(moduleAdapter.breakdown).reduce((acc, curr) => {
+            const methodology = Object.values(moduleAdapter.breakdown[curr])[0].meta?.methodology
+            if (!methodology) return acc
+            acc[curr] = methodology
+            return acc
+        }, {} as NonNullable<ProtocolAdaptor['methodology']>)
+    }
+}
+
 /* export const formatChain = (chain: string) => {
     let c = chain
     if (chain === 'avax') c = "avalanche"

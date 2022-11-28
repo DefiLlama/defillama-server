@@ -29,6 +29,7 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'protocolType'
     | 'logo'
     | 'methodologyURL'
+    | 'methodology'
 > & {
     protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null

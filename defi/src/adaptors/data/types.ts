@@ -1,4 +1,4 @@
-import { Adapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
+import { Adapter, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { IImportObj } from "../../cli/buildRequires"
 import { Protocol } from "../../protocols/types"
 
@@ -12,6 +12,7 @@ export interface ProtocolAdaptor extends Protocol {
         disabled: boolean
     }> | null
     methodologyURL: string
+    methodology?: IJSON<string | IJSON<string>>
 }
 
 export interface IConfig {

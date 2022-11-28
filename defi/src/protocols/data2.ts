@@ -13375,7 +13375,7 @@ listedAt: 1650804679
   name: "Arbswap",
   address: null,
   symbol: "-",
-  url: "https://arbswap.io/swap",
+  url: "https://arbswap.io/",
   description: "The #1 AMM and DEX on Arbitrum Nova powered by #Arbitrum.",
   chain: "Arbitrum Nova",
   logo: `${baseIconsUrl}/arbswap.jpg`,

@@ -130,7 +130,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             console.error(e)
             // TODO, move error handling to rejected promises
             if (enableAlerts)
-                await sendDiscordAlert(e.message)
+                await sendDiscordAlert(e.message).catch(e=> console.log("discord error", e))
         })
     }))
 

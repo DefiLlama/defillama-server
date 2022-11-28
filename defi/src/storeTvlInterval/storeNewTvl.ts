@@ -12,9 +12,11 @@ import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import getRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
 import { tvlsObject } from "../types";
-import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+import { util } from "@defillama/sdk";
 import { sendMessage } from "../utils/discord";
 import { extraSections } from "../utils/normalizeChain";
+
+const { humanizeNumber: { humanizeNumber, } } = util
 
 async function getTVLOfRecordClosestToTimestamp(
   PK: string,

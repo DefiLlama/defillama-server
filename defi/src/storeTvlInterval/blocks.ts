@@ -1,5 +1,7 @@
-import { getBlocks, getCurrentBlocks, } from "@defillama/sdk/build/computeTVL/blocks";
+import { util } from "@defillama/sdk";
 import { Chain } from "@defillama/sdk/build/general";
+
+const { blocks: { getBlocks, getCurrentBlocks, } } = util
 
 type blockObjects = {
   chains?: Chain[] | undefined

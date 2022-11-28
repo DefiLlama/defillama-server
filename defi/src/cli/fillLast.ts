@@ -1,14 +1,15 @@
 require("dotenv").config();
 
 import { getProtocol, } from "./utils";
-import { getBlocksRetry } from "../storeTvlInterval/blocks";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import {
   getCoingeckoLock,
   releaseCoingeckoLock,
 } from "../utils/shared/coingeckoLocks";
 import { importAdapter } from "./utils/importAdapter";
-import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+import { util } from "@defillama/sdk";
+
+const { humanizeNumber: { humanizeNumber} } = util
 
 const main = async () => {
   const protocolToFill = process.argv[2]

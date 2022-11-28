@@ -19808,6 +19808,51 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669634683
 },
+{
+  id: "2315",
+  name: "InVar Finance",
+  address: null,
+  symbol: "-",
+  url: "https://app.invar.finance",
+  description:
+    "InVar Finance envisions to build hybrid financial infrastructure and platform by bridging real economy into crypto space, first launched RWA tokenization world- InVaria2222, and bring fractionalized real estate NFT as novel investment vehicle.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/invar-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "RWA",
+  chains: ["Ethereum"],
+  module: "invar-finance/index.js",
+  twitter: "InVarFinance", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://github.com/HashEx/public_audits/blob/master/InVaria2222/InVaria2222.pdf"],
+  listedAt: 1669639785
+},
+{
+  id: "2316",
+  name: "Meter Bridge",
+  address: null,
+  symbol: "-",
+  url: "https://passport.meter.io",
+  description:
+    "Meter Passport is a decentralized multichain bridge for the Meter ecosystem. Currently, it uses 3/5 multisig contract to secure the assets deposited on different chains. The relayers are independent professional staking service providers including protofire, hashquark, infinitystones, Wetez and Meter team. The Meter chain is used as the relay chain for the relayers to validate and vote on crosschain asset transfers and messages.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/meter-bridge.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "meter",
+  cmcId: "5919",
+  category: "Bridge",
+  chains: ["Ethereum", ],
+  module: "meterBridge/index.js",
+  twitter: "Meter_IO", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1669640247
+},
 ]
 
 export default data2;

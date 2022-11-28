@@ -234,5 +234,8 @@ export default {
     },
     "lyra": {
         enabled: true
+    },
+    "radioshack": {
+        enabled: true
     }
 } as AdaptorsConfig

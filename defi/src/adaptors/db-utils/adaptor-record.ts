@@ -5,6 +5,7 @@ import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
 import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { IJSON } from "../data/types"
+import dynamoReservedKeywords from "./dynamo-reserved-keywords"
 
 export enum AdaptorRecordType {
     dailyVolume = "dv",
@@ -74,7 +75,11 @@ export class AdaptorRecord extends Item {
         const timestamp = +item.SK
         delete body.PK;
         delete body.SK;
-        return new AdaptorRecord(recordType, dexId, timestamp, body, protocolType)
+        const clean_body = Object.entries(body).reduce((acc, [key, value]) => {
+            acc[revertReservedKeyword(key)] = value
+            return acc
+        }, {} as IRecordAdaptorRecordData)
+        return new AdaptorRecord(recordType, dexId, timestamp, clean_body, protocolType)
     }
 
     get pk(): string {
@@ -133,7 +138,8 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
             const currentChainValue = acc[chain]
             if (typeof data === 'number' || typeof currentChainValue === 'number') return acc
-            acc[chain] = {
+            const clean_chain = replaceReservedKeyword(chain)
+            acc[clean_chain] = {
                 ...currentChainValue,
                 ...data
             }
@@ -152,6 +158,17 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
     } catch (error) {
         throw error
     }
+}
+
+const normalizeSuffix = "_key"
+function replaceReservedKeyword(key: string) {
+    if (dynamoReservedKeywords.includes(key.toUpperCase())) return `${key}${normalizeSuffix}`
+    return key
+}
+function revertReservedKeyword(key: string) {
+    if (key.includes(normalizeSuffix))
+        return key.slice(0, -normalizeSuffix.length)
+    return key
 }
 
 function createUpdateExpressionFromObj(obj: IRecordAdaptorRecordData): string {

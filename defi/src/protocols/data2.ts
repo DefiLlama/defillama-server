@@ -19989,6 +19989,29 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669735243
 },
+{
+  id: "2323",
+  name: "Lympo",
+  address: "polygon:0x503836c8c3a453c57f58cc99b070f2e78ec14fc0",
+  symbol: "SPORT",
+  url: "https://lympo.io",
+  description:
+    "The SPORT token was launched in 2022 and became the primary Lympo utility token to mint, stake and purchase sports collectibles (NFTs). The SPORT token is also the main currency of the Lympo Treasury, which will be governed by a Decentralized Autonomous Organization (DAO) made of Lympo community members.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/lympo.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "sport",
+  cmcId: null,
+  category: "Gaming",
+  chains: ["Polygon"],
+  module: "lympo/index.js",
+  twitter: "Lympo_io", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://www.fairyproof.com/report/Sport"],
+  listedAt: 1669741639
+},
 ]
 
 export default data2;

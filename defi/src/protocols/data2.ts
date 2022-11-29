@@ -19899,6 +19899,51 @@ listedAt: 1650804679
   audit_links: ["https://ledgerops.com/wp-content/uploads/2022/09/LedgerOps/_StablFi/_Rebase/_Audit.pdf"],
   listedAt: 1669728928
 },
+{
+  id: "2319",
+  name: "GMD Protocol",
+  address: "arbitrum:0x4945970EfeEc98D393b4b979b9bE265A3aE28A8B",
+  symbol: "GMD",
+  url: "https://gmdprotocol.com",
+  description:
+    "GMD Protocol is a yield optimizing and aggregating platform built on top of existing applications and GMD’s reserve token on Arbitrum. GMD employs delta-neutral or pseudo-delta-neutral strategies to aggregate yields from an index pool or an LP to its constituent individual assets, eliminating their risks of impermanent loss or exposure to unwanted assets.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/gmd-protocol.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "gmd-protocol",
+  cmcId: "22525",
+  category: "Yield Aggregator",
+  chains: ["Arbitrum"],
+  module: "gmd/index.js",
+  twitter: "GMDprotocol", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://solidity.finance/audits/GMDAOVault"],
+  listedAt: 1669732077
+},
+{
+  id: "2320",
+  name: "JOJO",
+  address: null,
+  symbol: "-",
+  url: "https://app.jojo.exchange/trade",
+  description:
+    "JOJO is a decentralized perpetual contract exchange based on an off-chain matching system.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/jojo.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "jojo/index.js",
+  twitter: "jojo_exchange", 
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  listedAt: 1669732079
+},
 ]
 
 export default data2;

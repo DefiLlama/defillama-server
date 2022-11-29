@@ -17410,7 +17410,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "drops-ownership-power",
     cmcId: "9675",
-    category: "Lending",
+    category: "NFT Lending",
     chains: ["Ethereum"],
     module: "drops/index.js",
     twitter: "dropsnft",

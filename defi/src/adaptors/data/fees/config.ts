@@ -237,5 +237,8 @@ export default {
     },
     "radioshack": {
         enabled: true
+    },
+    "valas-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

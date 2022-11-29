@@ -19944,6 +19944,29 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1669732079
 },
+{
+  id: "2321",
+  name: "2Pi Network",
+  address: null,
+  symbol: "-",
+  url: "https://2pi.network",
+  description:
+    "2Pi Network is an aggregator service for Fintech companies, using automation to allow them to maximize profits from yield farming.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/2pi-network.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Avalanche", "Binance", "Polygon", "Optimism"],
+  module: "2pi/index.js",
+  twitter: "2piNetwork", 
+  forkedFrom: [],
+  oracles: ["Chainlink", "TWAP"],
+  audit_links: ["https://github.com/2pinetwork/security/tree/master/audits"],
+  listedAt: 1669733991
+},
 ]
 
 export default data2;

@@ -19967,6 +19967,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/2pinetwork/security/tree/master/audits"],
   listedAt: 1669733991
 },
+{
+  id: "2322",
+  name: "OpenBook",
+  address: null,
+  symbol: "-",
+  url: "https://openserum.io",
+  description:
+    "OpenBook is a community-led fork of the Serum V3 program. The CLOB formerly known as Serum V3.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/openbook.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Solana"],
+  module: "openbook/index.js",
+  twitter: "openbookdex", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1669735243
+},
 ]
 
 export default data2;

@@ -21,11 +21,23 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
 
         // Get extra revenue
         const extraTypes: IJSON<number | null> = {}
+        const extraTypesByProtocolVersion: IJSON<IJSON<number | null>> = {}
         for (const recordType of getExtraTypes(adaptorType)) {
-            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "LAST").catch(_e => {}) as AdaptorRecord | undefined
+            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "LAST").catch(_e => { }) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
-            if (AdaptorRecordTypeMapReverse[recordType])
+            if (AdaptorRecordTypeMapReverse[recordType]) {
                 extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
+                if (adapter.module === 'uniswap')
+                    console.log("About to run but ", cleanRecord && Object.keys(adapter.protocolsData ?? {}).length > 1)
+                if (cleanRecord && Object.keys(adapter.protocolsData ?? {}).length > 1)
+                    Object.keys(adapter.protocolsData ?? {}).forEach(protVersion => {
+                        console.log("The extra ty", cleanRecord ? sumAllVolumes(cleanRecord.data, protVersion) : null)
+                        extraTypesByProtocolVersion[protVersion] = {
+                            ...extraTypesByProtocolVersion[protVersion],
+                            [AdaptorRecordTypeMapReverse[recordType]]: cleanRecord ? sumAllVolumes(cleanRecord.data, protVersion) : null
+                        }
+                    })
+            }
 
         }
 
@@ -49,7 +61,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap, lastAvailableDataTimestamp)
         const protocolVersions =
             adapter.protocolsData && Object.keys(adapter.protocolsData).length > 1
-                ? getProtocolVersionStats(adapter, adaptorRecords, lastAvailableDataTimestamp, chainFilter)
+                ? getProtocolVersionStats(adapter, adaptorRecords, lastAvailableDataTimestamp, chainFilter, extraTypesByProtocolVersion)
                 : null
 
         // Check if data looks is valid. Not sure if this should be added
@@ -131,7 +143,7 @@ const getStats = (adapter: ProtocolAdaptor, adaptorRecordsArr: AdaptorRecord[], 
     }
 }
 
-const getProtocolVersionStats = (adapterData: ProtocolAdaptor, adaptorRecords: AdaptorRecord[], baseTimestamp: number, chainFilter?: string) => {
+const getProtocolVersionStats = (adapterData: ProtocolAdaptor, adaptorRecords: AdaptorRecord[], baseTimestamp: number, chainFilter?: string, extraTypesByProtocolVersion?: IJSON<IJSON<number | null>>) => {
     if (!adapterData.protocolsData) return null
     const protocolVersionsStats = getStatsByProtocolVersion(adaptorRecords, baseTimestamp, adapterData.protocolsData)
     return Object.entries(adapterData.protocolsData)
@@ -141,6 +153,7 @@ const getProtocolVersionStats = (adapterData: ProtocolAdaptor, adaptorRecords: A
                 ...data,
                 chains: chainFilter ? [formatChain(chainFilter)] : data.chains.map(formatChain),
                 ...protocolVersionsStats[protKey],
+                ...(extraTypesByProtocolVersion?.[protKey] ?? {})
             }
         }), {} as ProtocolStats)
 }

@@ -19840,7 +19840,7 @@ listedAt: 1650804679
   description:
     "Meter Passport is a decentralized multichain bridge for the Meter ecosystem. Currently, it uses 3/5 multisig contract to secure the assets deposited on different chains. The relayers are independent professional staking service providers including protofire, hashquark, infinitystones, Wetez and Meter team. The Meter chain is used as the relay chain for the relayers to validate and vote on crosschain asset transfers and messages.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/meter-bridge.jpg`,
+  logo: `${baseIconsUrl}/meter-passport.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: "meter",

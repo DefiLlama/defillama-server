@@ -1,5 +1,5 @@
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
-import { getTimestampAtStartOfDayUTC } from "../../../utils/date"
+import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
@@ -63,6 +63,10 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             adapter.protocolsData && Object.keys(adapter.protocolsData).length > 1
                 ? getProtocolVersionStats(adapter, adaptorRecords, lastAvailableDataTimestamp, chainFilter, extraTypesByProtocolVersion)
                 : null
+
+        if (yesterdaysCleanTimestamp !== lastAvailableDataTimestamp) {
+            if (onError) onError(new Error(`${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated\nAdapter: ${adapter.name} [${adapter.id}]\n${formatTimestampAsDate(yesterdaysCleanTimestamp.toString())} <- Report date\n${formatTimestampAsDate(lastAvailableDataTimestamp.toString())} <- Last data found`))
+        }
 
         // Check if data looks is valid. Not sure if this should be added
         /* if (

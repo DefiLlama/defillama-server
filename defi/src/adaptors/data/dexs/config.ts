@@ -625,5 +625,8 @@ export default {
     },
     "camelot": {
         enabled: true
+    },
+    "openbook": {
+        enabled: true
     }
 } as AdaptorsConfig

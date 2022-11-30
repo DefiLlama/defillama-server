@@ -80,11 +80,12 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         } */
 
         // Populate last missing days with last available data
-        for (let i = lastAvailableDataTimestamp + ONE_DAY_IN_SECONDS; i <= yesterdaysCleanTimestamp; i += ONE_DAY_IN_SECONDS) {
-            const data = new AdaptorRecord(adaptorRecords[0].type, adaptorRecords[0].adaptorId, i, adaptorRecords[adaptorRecords.length - 1].data)
-            adaptorRecords.push(data)
-            cleanRecords.cleanRecordsMap[i] = data
-        }
+        if (!adapter.disabled)
+            for (let i = lastAvailableDataTimestamp + ONE_DAY_IN_SECONDS; i <= yesterdaysCleanTimestamp; i += ONE_DAY_IN_SECONDS) {
+                const data = new AdaptorRecord(adaptorRecords[0].type, adaptorRecords[0].adaptorId, i, adaptorRecords[adaptorRecords.length - 1].data)
+                adaptorRecords.push(data)
+                cleanRecords.cleanRecordsMap[i] = data
+            }
 
         return {
             name: adapter.name,

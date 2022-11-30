@@ -7,6 +7,7 @@ import { Adapter, ProtocolType } from "@defillama/dimension-adapters/adapters/ty
 import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
+import { getMethodologyByType } from "./methodology";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -54,7 +55,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 protocolsData: getProtocolsData(adapterKey, imports_obj[adapterKey].module.default),
                 protocolType: adapterObj.module.default?.protocolType,
                 methodologyURL: adapterObj.codePath,
-                methodology: getMethodologyData(adapterKey, imports_obj[adapterKey].module.default),
+                methodology: getMethodologyData(adapterKey, imports_obj[adapterKey].module.default) ?? getMethodologyByType(dexFoundInProtocols.category??'')
             }
         }
         // TODO: Handle better errors

@@ -81,31 +81,33 @@ export const getChainByProtocolVersion = (moduleAdapterName: string, moduleAdapt
 } */
 
 export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter): ProtocolAdaptor['protocolsData'] => {
+    let methodology: IJSON<ProtocolAdaptor['methodology']> | undefined = undefined
+    if ('breakdown' in moduleAdapter) {
+        methodology = Object.keys(moduleAdapter.breakdown).reduce((acc, curr) => {
+            const methodology = Object.values(moduleAdapter.breakdown[curr])[0].meta?.methodology
+            if (!methodology) return acc
+            acc[curr] = methodology
+            return acc
+        }, {} as IJSON<ProtocolAdaptor['methodology']>)
+    }
+    if (Object.keys(methodology??{}).length<=0) methodology = undefined
     const chainsByProt = getChainByProtocolVersion(adapterKey, moduleAdapter, undefined, false)
     const isDisabled = (protV: string) => chainsByProt[protV] ? chainsByProt[protV].includes(DISABLED_ADAPTER_KEY) : false
     return Object.entries(chainsByProt).reduce((acc, [prot, chains]) => ({
         ...acc, [prot]: {
             chains: chains.filter(c => c !== DISABLED_ADAPTER_KEY),
-            disabled: isDisabled(prot)
+            disabled: isDisabled(prot),
+            methodology: methodology?.[prot]
         }
     }), {})
 }
 
-export const getMethodologyData = (adapterKey: string, moduleAdapter: Adapter): ProtocolAdaptor['methodology'] => {
+export const getMethodologyData = (_adapterKey: string, moduleAdapter: Adapter): ProtocolAdaptor['methodology'] | undefined => {
     if ('adapter' in moduleAdapter) {
         const methodology = Object.values(moduleAdapter.adapter)[0].meta?.methodology
         if (!methodology) return
-        return {
-            [adapterKey]: methodology
-        }
-    } else if ('breakdown' in moduleAdapter) {
-        return Object.keys(moduleAdapter.breakdown).reduce((acc, curr) => {
-            const methodology = Object.values(moduleAdapter.breakdown[curr])[0].meta?.methodology
-            if (!methodology) return acc
-            acc[curr] = methodology
-            return acc
-        }, {} as NonNullable<ProtocolAdaptor['methodology']>)
-    }
+        return methodology
+    } else return undefined
 }
 
 /* export const formatChain = (chain: string) => {

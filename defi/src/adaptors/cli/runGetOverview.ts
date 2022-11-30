@@ -5,10 +5,10 @@ import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: "terra-classic", type: "dexs" },
+    pathParameters: { chain: undefined, type: "fees" },
     queryStringParameters: {
-/*         excludeTotalDataChart: "true",
-        excludeTotalDataChartBreakdown: "true" */
+        excludeTotalDataChart: "true",
+        excludeTotalDataChartBreakdown: "true"
     }
 } as unknown as APIGatewayProxyEvent
 
@@ -18,8 +18,8 @@ const event = {
     var endTime = performance.now()
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     // console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('jupiter')))
-    console.log(rr)
-    // console.log(rr.protocols.map(p => [p.name, JSON.stringify(p.protocolsStats, null, 2)]))
+    // console.log(rr)
+    console.log(rr.protocols.map(p => [p.name, JSON.stringify(p.methodology, null, 2)]))
     console.log("length", rr.protocols.length)
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
     // console.log(rr.protocols[0])

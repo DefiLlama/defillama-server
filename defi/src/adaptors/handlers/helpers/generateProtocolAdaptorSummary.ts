@@ -27,8 +27,6 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
             if (AdaptorRecordTypeMapReverse[recordType]) {
                 extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
-                if (adapter.module === 'uniswap')
-                    console.log("About to run but ", cleanRecord && Object.keys(adapter.protocolsData ?? {}).length > 1)
                 if (cleanRecord && Object.keys(adapter.protocolsData ?? {}).length > 1)
                     Object.keys(adapter.protocolsData ?? {}).forEach(protVersion => {
                         console.log("The extra ty", cleanRecord ? sumAllVolumes(cleanRecord.data, protVersion) : null)
@@ -148,7 +146,13 @@ const getStats = (adapter: ProtocolAdaptor, adaptorRecordsArr: AdaptorRecord[], 
     }
 }
 
-const getProtocolVersionStats = (adapterData: ProtocolAdaptor, adaptorRecords: AdaptorRecord[], baseTimestamp: number, chainFilter?: string, extraTypesByProtocolVersion?: IJSON<IJSON<number | null>>) => {
+const getProtocolVersionStats = (
+    adapterData: ProtocolAdaptor,
+    adaptorRecords: AdaptorRecord[],
+    baseTimestamp: number,
+    chainFilter?: string,
+    extraTypesByProtocolVersion?: IJSON<IJSON<number | null>>
+) => {
     if (!adapterData.protocolsData) return null
     const protocolVersionsStats = getStatsByProtocolVersion(adaptorRecords, baseTimestamp, adapterData.protocolsData)
     return Object.entries(adapterData.protocolsData)

@@ -212,13 +212,7 @@ export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordTyp
 
 // REMOVES ALL VOLUMES, DO NOT USE!
 export const removeAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, protocolType: ProtocolType): Promise<boolean> => {
-    /* const removeAdaptorRecordQuery = async (adaptorRecord: AdaptorRecord) => {
-        console.log("Removing", adaptorRecord.keys())
-        return dynamodb.delete({
-            Key: adaptorRecord.keys(),
-        })
-    }
-    try {
+    /* try {
         const allAdaptorRecords = await getAdaptorRecord(adaptorId, type, protocolType, "ALL")
         if (!(allAdaptorRecords instanceof Array)) throw new Error("Unexpected error deleting adaptor records")
         const cleanAdaptorRecs = allAdaptorRecords// .filter(v => v.timestamp * 1000 <= Date.UTC(2020, 8, 7))
@@ -230,4 +224,11 @@ export const removeAdaptorRecord = async (adaptorId: string, type: AdaptorRecord
     } */
     console.log(adaptorId, type, protocolType)
     return Promise.resolve(false)
+}
+
+export const removeAdaptorRecordQuery = async (adaptorRecord: AdaptorRecord) => {
+    console.log("Removing", adaptorRecord.keys())
+    return dynamodb.delete({
+        Key: adaptorRecord.keys(),
+    })
 }

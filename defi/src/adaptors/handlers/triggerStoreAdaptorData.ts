@@ -87,6 +87,6 @@ const invokeLambdas = async (
 }
 
 export const runStoreAdaptorData = async (e: IStoreAdaptorDataHandlerEvent) => invokeLambda(`defillama-prod-storeAdaptorData`, e)
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export default wrapScheduledLambda(handler);

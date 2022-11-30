@@ -240,5 +240,8 @@ export default {
     },
     "valas-finance": {
         enabled: true
+    },
+    "gains-network": {
+        enabled: true
     }
 } as AdaptorsConfig

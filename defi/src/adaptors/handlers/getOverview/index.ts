@@ -130,7 +130,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             console.error(e)
             // TODO, move error handling to rejected promises
             if (enableAlerts)
-                await sendDiscordAlert(e.message).catch(e=> console.log("discord error", e))
+                await sendDiscordAlert(e.message).catch(e => console.log("discord error", e))
         })
     }))
 
@@ -162,13 +162,19 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const baseRecord = totalDataChartResponse[totalDataChartResponse.length - 1]
     const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined)
 
+    const enableStats = okProtocols.filter(okp => !okp.disabled).length > 0
+
     okProtocols.forEach(removeVolumesObject)
     return successResponse({
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
         allChains: getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
-        ...generalStats,
+        total24h: enableStats ? generalStats.total24h : null,
+        change_1d: enableStats ? generalStats.change_1d : null,
+        change_7d: enableStats ? generalStats.change_7d : null,
+        change_1m: enableStats ? generalStats.change_1m : null,
+        breakdown24h: enableStats ? generalStats.breakdown24h : null
     } as IGetOverviewResponseBody, 10 * 60); // 10 mins cache
 };
 

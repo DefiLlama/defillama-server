@@ -20012,6 +20012,50 @@ listedAt: 1650804679
   audit_links: ["https://www.fairyproof.com/report/Sport"],
   listedAt: 1669741639
 },
+{
+  id: "2324",
+  name: "Jexchange",
+  address: "elrond:erd1hmfwpvsqn8ktzw3dqd0ltpcyfyasgv8mr9w0qecnmpexyp280y8q47ca9d",
+  symbol: "JEX",
+  url: "https://jexchange.io",
+  description:
+    "Decentralized P2P exchange on Elrond Blockchain. Simple and intuitive platform to create tokens exchange offers.",
+  chain: "Elrond",
+  logo: `${baseIconsUrl}/jexchange.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "jexchange",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Elrond"],
+  module: "jexchange/index.js",
+  twitter: "jexchangeP2P", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1669810598
+},
+{
+  id: "2325",
+  name: "Binance Multi Chain Capital",
+  address: "bsc:0xb6D8EE99D5d6cfe7D80b666e6fF5e74e3f72756b",
+  symbol: "BMCC",
+  url: "https://bmcc.finance",
+  description:
+    "Binance Multi-Chain Capital Ecosystem is made to provide the best experience to community with modern governance system to deliver most demanded features supercharged by ToriBot.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/binance-multi-chain-capital.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "binance-multi-chain-capital",
+  cmcId: "17962",
+  category: "Staking",
+  chains: ["Binance"],
+  module: "bmcc/index.js",
+  twitter: "Binancemcc", 
+  forkedFrom: ["PancakeSwap"],
+  oracles: [],
+  listedAt: 1669810600
+},
 ]
 
 export default data2;

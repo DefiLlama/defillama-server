@@ -10,9 +10,10 @@ export interface ProtocolAdaptor extends Protocol {
     protocolsData: IJSON<{
         chains: string[]
         disabled: boolean
+        methodology?: string | IJSON<string>
     }> | null
     methodologyURL: string
-    methodology?: IJSON<string | IJSON<string>>
+    methodology?: string | IJSON<string>
 }
 
 export interface IConfig {

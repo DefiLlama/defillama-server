@@ -9,6 +9,7 @@ import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import { IJSON, ProtocolAdaptor } from "../../data/types";
 import loadAdaptorsData from "../../data"
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
+import { delay } from "../triggerStoreAdaptorData";
 
 export interface IGeneralStats {
     total24h: number | null;
@@ -125,14 +126,21 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         }
     }
 
+    const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
             console.error(e)
             // TODO, move error handling to rejected promises
-            if (enableAlerts)
-                await sendDiscordAlert(e.message).catch(e => console.log("discord error", e))
+            if (enableAlerts){
+                errors.push(e.message)
+                //await sendDiscordAlert(e.message).catch(e => console.log("discord error", e))
+            }
         })
     }))
+    for (const errorMSG of errors) {
+        await sendDiscordAlert(errorMSG).catch(e => console.log("discord error", e))
+        await delay(1000)
+    }
 
     // Handle rejected dexs
     const rejectedDexs = results.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)

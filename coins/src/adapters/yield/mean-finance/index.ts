@@ -6,5 +6,6 @@ export function meanFinance(timestamp: number = 0) {
     getTokenPrices("optimism", timestamp),
     getTokenPrices("polygon", timestamp),
     getTokenPrices("arbitrum", timestamp),
+    getTokenPrices("ethereum", timestamp),
   ]);
 }

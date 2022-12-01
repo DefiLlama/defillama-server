@@ -5,7 +5,7 @@ import { fetch } from "../../utils";
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const tokens: { type: string; address: string }[] = await fetch(
-    `https://api.mean.finance/v1/dca/networks/${chain}/tokens`
+    `https://api.mean.finance/v1/dca/networks/${chain}/tokens?includeNotAllowed`
   );
   const tokens4626 = tokens
     .filter(({ type }) => type === "YIELD_BEARING_SHARE")

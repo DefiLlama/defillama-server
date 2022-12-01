@@ -1121,7 +1121,7 @@ const data2: Protocol[] =  [
   audit_note: null,
   gecko_id: "elyfi",
   cmcId: "18186",
-  category: "Lending",
+  category: "RWA",
   chains: ["Binance", "Ethereum"],
   oracles: [],
   forkedFrom: [],

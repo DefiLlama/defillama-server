@@ -24703,7 +24703,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   audit_note: null,
   gecko_id: "hubble",
   cmcId: "16643",
-  category: "Lending",
+  category: "CDP",
   chains: ["Solana"],
   module: "hubble/index.js",
   twitter: "HubbleProtocol",

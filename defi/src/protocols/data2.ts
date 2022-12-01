@@ -20056,6 +20056,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1669810600
 },
+{
+  id: "2326",
+  name: "KPerp Exchange",
+  address: "kava:0x3817e3f374bABcB0CFa5A39EB59d97aDc6812098",
+  symbol: "KPE",
+  url: "https://kperp.exchange/",
+  description:
+    "KPerp.Exchange is a decentralized exchange created to offer a broad selection of trading options and extremely high levels of liquidity on numerous cryptocurrencies.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kperp-exchange.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Kava"],
+  module: "kperp-exchange/index.js",
+  twitter: "KPerpExchange", 
+  forkedFrom: ["GMX"],
+  oracles: ["TWAP", "Witnet"],
+  listedAt: 1669910621
+},
 ]
 
 export default data2;

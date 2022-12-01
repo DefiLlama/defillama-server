@@ -20078,6 +20078,29 @@ listedAt: 1650804679
   oracles: ["TWAP", "Witnet"],
   listedAt: 1669910621
 },
+{
+  id: "2327",
+  name: "Neptune Mutual",
+  address: null,
+  symbol: "-",
+  url: "https://neptunemutual.com",
+  description:
+    "Neptune mutual follows a parametric insurance model, meaning it provides payout on the basis of parameters instead of individual claim assessments. Upon the resolution of an incident, all the policyholders of the affected protocol will receive the payouts. Neptune Mutual eliminates individual claim assessments which makes policy easy to claim, faster, and much more reliable.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/neptune-mutual.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Insurance",
+  chains: ["Ethereum"],
+  module: "neptune-mutual/index.js",
+  twitter: "neptunemutual", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://blog.openzeppelin.com/neptune-mutual-audit"],
+  listedAt: 1669921501
+},
 ]
 
 export default data2;

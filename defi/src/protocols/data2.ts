@@ -19320,7 +19320,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://www.cakedefi.com",
-  description: "Cake is a Singapore-based fintech platform which provides easy access to Web3 and DeFi services for users and businesses all around the world in the most user-friendly and transparent manner. As Southeast Asia's fastest growing fintech platform and global CeDeFi leader, we have attained all-time high growth in terms of customers, deposits and payouts due to our rigorous business model of recurring revenue.",
+  description: "Cake DeFi is a Singapore-based fintech platform which provides easy access to Web3 and DeFi services for users and businesses all around the world in the most user-friendly and transparent manner. As Southeast Asia's fastest growing fintech platform and global CeDeFi leader, Cake DeFi has attained all-time high growth in terms of customers, deposits and payouts due to its rigorous business model of recurring revenue.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/cake-defi.jpg`,
   audits: "0",

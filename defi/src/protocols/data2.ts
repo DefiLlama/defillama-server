@@ -19938,7 +19938,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Dexes",
+  category: "Derivatives",
   chains: ["Binance"],
   module: "jojo/index.js",
   twitter: "jojo_exchange", 

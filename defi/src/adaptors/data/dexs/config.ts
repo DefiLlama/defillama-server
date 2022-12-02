@@ -633,9 +633,9 @@ export default {
         enabled: true
     },
     "ghostmarket": {
-        enabled: true
+        enabled: false
     },
     "synfutures": {
-        enabled: true
+        enabled: false
     }
 } as AdaptorsConfig

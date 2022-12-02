@@ -55,7 +55,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 protocolsData: getProtocolsData(adapterKey, imports_obj[adapterKey].module.default),
                 protocolType: adapterObj.module.default?.protocolType,
                 methodologyURL: adapterObj.codePath,
-                methodology: getMethodologyData(adapterKey, imports_obj[adapterKey].module.default) ?? getMethodologyByType(dexFoundInProtocols.category??'')
+                methodology: getMethodologyData(adapterKey, imports_obj[adapterKey].module.default) ?? getMethodologyByType(dexFoundInProtocols.category ?? '')
             }
         }
         // TODO: Handle better errors
@@ -101,4 +101,11 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'xdai') return id === "1659"
     if (key === 'stargate') return id === "1571"
     return true
+}
+
+export const getCategory = (type: string, module: string, currentCateogry?: string) => {
+    if (type === 'fees') {
+        if (module === 'ghostmarket') return "NFT Marketplace"
+    }
+    return currentCateogry
 }

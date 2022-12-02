@@ -20103,6 +20103,29 @@ listedAt: 1650804679
   audit_links: ["https://blog.openzeppelin.com/neptune-mutual-audit"],
   listedAt: 1669921501
 },
+{
+  id: "2328",
+  name: "SynFutures",
+  address: null,
+  symbol: "-",
+  url: "https://www.synfutures.com/",
+  description:
+    "SynFutures is a next-generation derivatives exchange focused on creating an open and trustless derivatives market by enabling futures trading on anything, anytime, anywhere. By cultivating a free market and maximizing the variety of tradable assets, SynFutures is lowering the barrier to entry in the derivatives market, creating a more equitable derivatives market.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/synfutures.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: "synfutures",
+  cmcId: "1504",
+  category: "Derivatives",
+  chains: ["Ethereum", "Polygon", "Arbitrum", "Binance"],
+  module: "synfutures-v1/index.js",
+  twitter: "SynFuturesDefi", 
+  forkedFrom: [],
+  oracles: ["Chainlink", "TWAP"],
+  audit_links: ["https://www.synfutures.com/peckshield-audit-report-synfutures-v1.1.pdf"],
+  listedAt: 1669979746
+},
 ]
 
 export default data2;

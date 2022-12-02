@@ -628,5 +628,14 @@ export default {
     },
     "openbook": {
         enabled: true
+    },
+    "orderly-network": {
+        enabled: true
+    },
+    "ghostmarket": {
+        enabled: true
+    },
+    "synfutures": {
+        enabled: true
     }
 } as AdaptorsConfig

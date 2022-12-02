@@ -141,7 +141,7 @@ export default {
         enabled: true
     },
     "ellipsis": {
-        enabled: true
+        enabled: false
     },
     "klex-finance": {
         enabled: true

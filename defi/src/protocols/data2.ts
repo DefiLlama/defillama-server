@@ -14836,6 +14836,7 @@ listedAt: 1650804679
   twitter: "RoaringLionFi",
   listedAt: 1663183931
 },
+/*
 {
   id: "2090",
   name: "Aequinox",
@@ -14857,6 +14858,7 @@ listedAt: 1650804679
   twitter: "Aequinox_Dex",
   listedAt: 1663183935
 },
+*/
 {
   id: "2091",
   name: "Algofi Swap",

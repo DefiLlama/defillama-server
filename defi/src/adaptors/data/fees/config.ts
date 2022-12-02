@@ -243,5 +243,8 @@ export default {
     },
     "gains-network": {
         enabled: true
-    }
+    },
+    "ghostmarket": {
+        enabled: true
+    },
 } as AdaptorsConfig

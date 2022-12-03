@@ -20149,6 +20149,52 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/houstonswap"],
   listedAt: 1670096257
 },
+{
+  id: "2330",
+  name: "Bitlend",
+  address: "bittorrent:0xd7878b71eac29080559491d16419ca97cfcffd3a",
+  symbol: "BLEND",
+  url: "https://bitlend.fi/",
+  description:
+    "Bitlend finance is a fast, low-cost, decentralized lending platform native to the BitTorrent Chain. The protocol is permissionless, transparent, and non-custodial",
+  chain: "Bittorrent",
+  logo: `${baseIconsUrl}/bitlend.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Bittorrent"],
+  module: "bitlend/index.js",
+  twitter: "bitlend_finance", 
+  forkedFrom: ["Compound"],
+  oracles: ["Band"],
+  audit_links: ["https://github.com/Bitlend-protocol/bitlend-audits"],
+  listedAt: 1670096665
+},
+{
+  id: "2331",
+  name: "SwapFish",
+  address: "arbitrum:0xb348B87b23D5977E2948E6f36ca07E1EC94d7328",
+  symbol: "FISH",
+  url: "https://swapfish.fi/",
+  description:
+    "SwapFish Finance is a Decentralized Exchange protocol native to the Arbitrum blockchain. With SwapFish users can trade crypto assets as well as earn trading fees and FISH tokens",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/swapfish.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  module: "houstonswap/index.js",
+  twitter: "SwapFishFi", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  audit_links: ["https://docs.swapfish.fi/security/audit-kyc-and-rugdoc-review"],
+  listedAt: 1670097097
+},
 ]
 
 export default data2;

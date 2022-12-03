@@ -1,6 +1,5 @@
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date"
-import { getCategory } from "../../data/helpers/generateProtocolAdaptorsList"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
@@ -91,7 +90,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             disabled: adapter.disabled,
             displayName: adapter.displayName,
             module: adapter.module,
-            category: getCategory(adaptorType, adapter.module, adapter.category),
+            category: adapter.category,
             logo: adapter.logo,
             records: adaptorRecords,
             recordsMap: cleanRecords.cleanRecordsMap,
@@ -107,6 +106,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
             methodologyURL: adapter.methodologyURL,
             methodology: adapter.methodology,
+            allAddresses: adapter.allAddresses,
             ...extraTypes
         }
     } catch (error) {

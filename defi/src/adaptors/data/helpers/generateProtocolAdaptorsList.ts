@@ -8,6 +8,7 @@ import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalize
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
 import { getMethodologyByType } from "./methodology";
+import overrides from "./overrides";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -45,8 +46,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
         if (dexFoundInProtocols && imports_obj[adapterKey].module.default) {
             return {
                 ...dexFoundInProtocols,
-                id: ID_MAP[dexFoundInProtocols.id]?.id ?? dexFoundInProtocols.id,
-                name: ID_MAP[dexFoundInProtocols.id]?.name ?? dexFoundInProtocols.name,
+                ...overrides[adapterKey],
                 module: adapterKey,
                 config: config[adapterKey],
                 chains: getAllChainsFromAdaptors([adapterKey], imports_obj),
@@ -101,11 +101,4 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'xdai') return id === "1659"
     if (key === 'stargate') return id === "1571"
     return true
-}
-
-export const getCategory = (type: string, module: string, currentCateogry?: string) => {
-    if (type === 'fees') {
-        if (module === 'ghostmarket') return "NFT Marketplace"
-    }
-    return currentCateogry
 }

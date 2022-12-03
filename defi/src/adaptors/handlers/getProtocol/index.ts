@@ -32,6 +32,7 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "protocolsData"
     | "chains"
     | "methodologyURL"
+    | 'allAddresses'
 > {
     totalDataChart: IChartData | null
     totalDataChartBreakdown: IChartDataBreakdown | null
@@ -81,7 +82,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             url: dexData.url,
             description: dexData.description,
             audits: dexData.audits,
-            category: dexData.category,
+            category: generatedSummary.category,
             twitter: dexData.twitter,
             audit_links: dexData.audit_links,
             forkedFrom: dexData.forkedFrom,
@@ -95,7 +96,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             protocolType: generatedSummary.protocolType,
             protocolsData: dexData.protocolsData && Object.keys(dexData.protocolsData).length > 1 ? dexData.protocolsData : null,
             chains: generatedSummary.chains,
-            methodologyURL: generatedSummary.methodologyURL
+            methodologyURL: generatedSummary.methodologyURL,
+            allAddresses: generatedSummary.allAddresses
         } as IHandlerBodyResponse
     } catch (error) {
         console.error(error)

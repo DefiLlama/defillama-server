@@ -14,6 +14,7 @@ export interface ProtocolAdaptor extends Protocol {
     }> | null
     methodologyURL: string
     methodology?: string | IJSON<string>
+    allAddresses?: Array<string>
 }
 
 export interface IConfig {

@@ -31,6 +31,7 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'logo'
     | 'methodologyURL'
     | 'methodology'
+    | 'allAddresses'
 > & {
     protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null
@@ -38,7 +39,7 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     totalAllTime: number | null
 } & IGeneralStats & ExtraTypes
 
-type KeysToRemove = 'records' | 'module' | 'config' | 'recordsMap'
+type KeysToRemove = 'records' | 'config' | 'recordsMap' | 'allAddresses'
 type ProtocolsResponse = Omit<ProtocolAdaptorSummary, KeysToRemove>
 export type IGetOverviewResponseBody = IGeneralStats & {
     totalDataChart: IChartData,
@@ -131,7 +132,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
             console.error(e)
             // TODO, move error handling to rejected promises
-            if (enableAlerts){
+            if (enableAlerts) {
                 errors.push(e.message)
                 //await sendDiscordAlert(e.message).catch(e => console.log("discord error", e))
             }
@@ -213,6 +214,7 @@ const removeVolumesObject = (protocol: WithOptional<ProtocolAdaptorSummary, Keys
     delete protocol['records']
     delete protocol['config']
     delete protocol['recordsMap']
+    delete protocol['allAddresses']
     return protocol
 }
 

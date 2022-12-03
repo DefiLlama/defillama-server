@@ -20126,6 +20126,29 @@ listedAt: 1650804679
   audit_links: ["https://www.synfutures.com/peckshield-audit-report-synfutures-v1.1.pdf"],
   listedAt: 1669979746
 },
+{
+  id: "2329",
+  name: "HoustonSwap",
+  address: "aptos:0x7ab72b249ec24f76fe66b6de19dcee1e3d3361db5c2cccfaa48ea8659060a1bd",
+  symbol: "HOU",
+  url: "https://houstonswap.io/",
+  description:
+    "HoustonSwap is the first DEX to adopt the Concentrated Liquidity Market Making (CLMM) model on Aptos chain, providing automated liquidity provision strategies. The vision of HoustonSwap is to make better use of your capital — offering best trading rates for traders with low slippage equipped by CLMM, and minimizing impermanent losses for liquidity providers with best-in-class automated strategies, accompanied by the comprehensive borrowing functionality and automated bots",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/houstonswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "houston-token",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Aptos"],
+  module: "houstonswap/index.js",
+  twitter: "Houston_swap", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://www.certik.com/projects/houstonswap"],
+  listedAt: 1670096257
+},
 ]
 
 export default data2;

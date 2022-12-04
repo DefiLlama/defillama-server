@@ -20195,6 +20195,28 @@ listedAt: 1650804679
   audit_links: ["https://docs.swapfish.fi/security/audit-kyc-and-rugdoc-review"],
   listedAt: 1670097097
 },
+{
+  id: "2332",
+  name: "Equalizer Exchange",
+  address: "fantom:0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6",
+  symbol: "EQUAL",
+  url: "https://equalizer.exchange",
+  description:
+    "Equalizer's twin-AMM design unites StableSwap pools with Standard 'kxy' liquidity pools. All the trading fees go to Vote-Escrowers of emission token $EQUAL which has to be Locked to earn triple 'Bribes' from candidate pools via Trade Fee, Internal Bribes & External Bribes.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/equalizer-exchange.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom"],
+  module: "Equalizer/index.js",
+  twitter: "Equalizer0x", 
+  forkedFrom: ["Solidly"],
+  oracles: ["TWAP"],
+  listedAt: 1670154453
+},
 ]
 
 export default data2;

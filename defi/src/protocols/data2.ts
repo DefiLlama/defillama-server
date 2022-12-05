@@ -20217,6 +20217,28 @@ listedAt: 1650804679
   oracles: ["TWAP"],
   listedAt: 1670154453
 },
+{
+  id: "2333",
+  name: "JulSwap",
+  address: "bsc:0x5a41f637c3f7553dba6ddc2d3ca92641096577ea",
+  symbol: "JULD",
+  url: "https://julswap.com/#/swap",
+  description:
+    "AMM on BSC chain",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/julswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "julswap",
+  cmcId: "8164",
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "julswap/index.js",
+  twitter: "JulSwap", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1670251723
+},
 ]
 
 export default data2;

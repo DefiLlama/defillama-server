@@ -397,7 +397,7 @@ functions:
     events:
       - schedule: cron(01 0 * * ? *)
   triggerNotifyStatus:
-    handler: src/triggerNotifyStatus.default
+    handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900
     events:
       - schedule: cron(01 2,13 * * ? *)

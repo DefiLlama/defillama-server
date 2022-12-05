@@ -162,7 +162,7 @@ functions:
     timeout: 90
     events:
       - http:
-          path: contractName/{contract}
+          path: contractName/{chain}/{contract}
           method: get
   protocol:
     handler: src/getProtocol.default

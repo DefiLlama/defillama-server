@@ -32,6 +32,7 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'methodologyURL'
     | 'methodology'
     | 'allAddresses'
+    | 'latestFetchIsOk'
 > & {
     protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null

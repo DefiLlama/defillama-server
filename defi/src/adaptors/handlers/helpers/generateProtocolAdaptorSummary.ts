@@ -107,6 +107,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             methodologyURL: adapter.methodologyURL,
             methodology: adapter.methodology,
             allAddresses: adapter.allAddresses,
+            latestFetchIsOk: adapter.latestFetchIsOk,
             ...extraTypes
         }
     } catch (error) {
@@ -122,6 +123,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             logo: adapter.logo,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
             methodologyURL: adapter.methodologyURL,
+            latestFetchIsOk: adapter.latestFetchIsOk,
             total24h: null,
             totalAllTime: null,
             breakdown24h: null,

@@ -6,6 +6,7 @@ export interface ProtocolAdaptor extends Protocol {
     displayName: string
     config?: IConfig
     disabled: boolean
+    latestFetchIsOk: IConfig['latestFetchIsOk']
     protocolType?: ProtocolType
     protocolsData: IJSON<{
         chains: string[]
@@ -18,6 +19,7 @@ export interface ProtocolAdaptor extends Protocol {
 }
 
 export interface IConfig {
+    latestFetchIsOk?: boolean
     enabled?: boolean
     includedVolume?: string[]
     startFrom?: number

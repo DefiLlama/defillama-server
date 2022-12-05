@@ -33,6 +33,7 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "chains"
     | "methodologyURL"
     | 'allAddresses'
+    | 'latestFetchIsOk'
 > {
     totalDataChart: IChartData | null
     totalDataChartBreakdown: IChartDataBreakdown | null
@@ -97,7 +98,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             protocolsData: dexData.protocolsData && Object.keys(dexData.protocolsData).length > 1 ? dexData.protocolsData : null,
             chains: generatedSummary.chains,
             methodologyURL: generatedSummary.methodologyURL,
-            allAddresses: generatedSummary.allAddresses
+            allAddresses: generatedSummary.allAddresses,
+            latestFetchIsOk: generatedSummary.latestFetchIsOk
         } as IHandlerBodyResponse
     } catch (error) {
         console.error(error)
@@ -116,6 +118,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             gecko_id: dexData.gecko_id,
             disabled: dexData.disabled,
             protocolsData: dexData.protocolsData,
+            latestFetchIsOk: dexData.latestFetchIsOk,
             chains: dexData.chains,
             totalDataChart: null,
             totalDataChartBreakdown: null,

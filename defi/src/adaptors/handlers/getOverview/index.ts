@@ -141,7 +141,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         })
     }))
     for (const errorMSG of errors) {
-        await sendDiscordAlert(errorMSG).catch(e => console.log("discord error", e))
+        await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
         await delay(1000)
     }
 

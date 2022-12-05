@@ -1,3 +1,3 @@
 import "./setup.ts"
-import handler from "../../notifyDexsStatus";
-handler()
+import handler from "../handlers/notifyStatus";
+handler({type:'dexs'})

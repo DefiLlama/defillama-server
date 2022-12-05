@@ -396,8 +396,8 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 0 * * ? *)
-  notifyDexStatus:
-    handler: src/notifyDexsStatus.default
+  triggerNotifyStatus:
+    handler: src/triggerNotifyStatus.default
     timeout: 900
     events:
       - schedule: cron(01 2,13 * * ? *)

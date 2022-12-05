@@ -47,6 +47,7 @@ export type IGetOverviewResponseBody = IGeneralStats & {
     totalDataChartBreakdown: IChartDataByDex,
     protocols: ProtocolsResponse[]
     allChains: string[]
+    errors?: string[]
 }
 
 type ExtraTypes = {
@@ -131,16 +132,16 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
-            console.error(e)
+            // console.error(e)
             // TODO, move error handling to rejected promises
-            if (enableAlerts) {
+            if (enableAlerts && !adapter.disabled) {
                 errors.push(e.message)
                 //await sendDiscordAlert(e.message).catch(e => console.log("discord error", e))
             }
         })
     }))
     for (const errorMSG of errors) {
-        await sendDiscordAlert(errorMSG).catch(e => console.log("discord error", e))
+        await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
         await delay(1000)
     }
 
@@ -175,7 +176,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const enableStats = okProtocols.filter(okp => !okp.disabled).length > 0
 
     okProtocols.forEach(removeVolumesObject)
-    return successResponse({
+    const successResponseObj: IGetOverviewResponseBody = {
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
@@ -185,7 +186,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         change_7d: enableStats ? generalStats.change_7d : null,
         change_1m: enableStats ? generalStats.change_1m : null,
         breakdown24h: enableStats ? generalStats.breakdown24h : null
-    } as IGetOverviewResponseBody, 10 * 60); // 10 mins cache
+    }
+    if (enableAlerts) {
+        successResponseObj['errors'] = errors
+    }
+    return successResponse(successResponseObj, 10 * 60); // 10 mins cache
 };
 
 const substractSubsetVolumes = (dex: ProtocolAdaptorSummary, _index: number, dexs: ProtocolAdaptorSummary[], baseTimestamp?: number): ProtocolAdaptorSummary => {

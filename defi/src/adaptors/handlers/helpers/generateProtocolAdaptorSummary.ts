@@ -18,6 +18,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const totalRecord = rawTotalRecord?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
+        const lastRecordRaw = adaptorRecords[adaptorRecords.length-1]
 
         // Get extra revenue
         const extraTypes: IJSON<number | null> = {}
@@ -29,7 +30,6 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
                 extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
                 if (cleanRecord && Object.keys(adapter.protocolsData ?? {}).length > 1)
                     Object.keys(adapter.protocolsData ?? {}).forEach(protVersion => {
-                        console.log("The extra ty", cleanRecord ? sumAllVolumes(cleanRecord.data, protVersion) : null)
                         extraTypesByProtocolVersion[protVersion] = {
                             ...extraTypesByProtocolVersion[protVersion],
                             [AdaptorRecordTypeMapReverse[recordType]]: cleanRecord ? sumAllVolumes(cleanRecord.data, protVersion) : null
@@ -63,7 +63,14 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
                 : null
 
         if (yesterdaysCleanTimestamp !== lastAvailableDataTimestamp) {
-            if (onError) onError(new Error(`${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated\nAdapter: ${adapter.name} [${adapter.id}]\n${formatTimestampAsDate(yesterdaysCleanTimestamp.toString())} <- Report date\n${formatTimestampAsDate(lastAvailableDataTimestamp.toString())} <- Last data found`))
+            if (onError) onError(new Error(`
+Adapter: ${adapter.name} [${adapter.id}]
+${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated
+${formatTimestampAsDate(yesterdaysCleanTimestamp.toString())} <- Report date
+${formatTimestampAsDate(lastAvailableDataTimestamp.toString())} <- Last date found
+${sumAllVolumes(lastRecordRaw.data)} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
+Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
+`))
         }
 
         // Check if data looks is valid. Not sure if this should be added

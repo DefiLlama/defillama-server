@@ -4,19 +4,19 @@ import path from "path"
 import loadAdaptorsData from "../../data"
 import { IJSON } from "../../data/types"
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
-import { getAdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
+import { getAdaptorRecord, AdaptorRecordType, AdaptorRecord } from "../../db-utils/adaptor-record"
 import getDataPoints from "../../utils/getDataPoints"
 import { getUniqStartOfTodayTimestamp } from "@defillama/dimension-adapters/helpers/getUniSubgraphVolume"
 import { removeEventTimestampAttribute } from "../../handlers/getOverview"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { ONE_DAY_IN_SECONDS } from "../../handlers/getProtocol"
-import { ICliArgs } from "./auto"
+import { ICliArgs } from "./backfillFunction"
 import { Chain } from "@defillama/sdk/build/general"
 import { getStartTimestamp } from "@defillama/dimension-adapters/helpers/getStartTimestamp"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
-export default async (adapter: string, adaptorType: AdapterType, cliArguments: ICliArgs) => {
+export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
         // 'mooniswap', 
@@ -61,14 +61,20 @@ export default async (adapter: string, adaptorType: AdapterType, cliArguments: I
 
     const adapterName = adapter ?? DEXS_LIST[0]
     const adaptorsData = loadAdaptorsData(adaptorType)
-    if (adapterName === 'all') {
+    if (adapterName[0] === 'all') {
         const timestamp = cliArguments.timestamp ?? getUniqStartOfTodayTimestamp(new Date()) - ONE_DAY_IN_SECONDS
         const type = Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)[0]
         const adapters2Backfill: string[] = []
         console.info("Checking missing type:", type, "at", timestamp)
         for (const adapter of adaptorsData.default) {
             const volume = await getAdaptorRecord(adapter.id, type as AdaptorRecordType, adapter.protocolType, "TIMESTAMP", timestamp).catch(_e => { })
-            if (!volume) adapters2Backfill.push(adapter.module)
+            if (!volume) {
+                adapters2Backfill.push(adapter.module)
+            }
+            if (volume instanceof AdaptorRecord) {
+                if (volume.getCleanAdaptorRecord() === null)
+                    adapters2Backfill.push(adapter.module)
+            }
         }
         event = {
             type: adaptorType,
@@ -85,7 +91,7 @@ export default async (adapter: string, adaptorType: AdapterType, cliArguments: I
         event = {
             type: adaptorType,
             backfill: [{
-                dexNames: [adapterName],
+                dexNames: adapterName,
                 timestamp: cliArguments.timestamp + ONE_DAY_IN_SECONDS,
                 chain: cliArguments.chain as Chain,
                 adaptorRecordTypes: cliArguments.recordTypes,
@@ -97,7 +103,7 @@ export default async (adapter: string, adaptorType: AdapterType, cliArguments: I
         let startTimestamp = 0
         // Looking for start time from adapter, if not found will default to the above
         const nowSTimestamp = Math.trunc((Date.now()) / 1000)
-        const adapterData = adaptorsData.default.find(adapter => adapter.module === (adapterName))
+        const adapterData = adaptorsData.default.find(adapter => adapter.module === (adapterName[0]))
         if (adapterData) {
             const dexAdapter: Adapter = adaptorsData.importModule(adapterData.module).default
             if ("adapter" in dexAdapter) {
@@ -170,7 +176,7 @@ export default async (adapter: string, adaptorType: AdapterType, cliArguments: I
         event = {
             type: adaptorType,
             backfill: dates.map(date => ({
-                dexNames: [adapterName],
+                dexNames: adapterName,
                 timestamp: date.getTime() / 1000,
                 chain: cliArguments.chain as Chain,
                 adaptorRecordTypes: cliArguments.recordTypes,

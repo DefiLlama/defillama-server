@@ -397,6 +397,11 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 0 * * ? *)
+  notifyStatus:
+    handler: src/adaptors/handlers/notifyStatus.default
+    timeout: 900
+    events:
+      - schedule: cron(01 2,13 * * ? *)
   triggerNotifyStatus:
     handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900

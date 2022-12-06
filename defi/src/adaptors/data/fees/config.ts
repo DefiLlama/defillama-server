@@ -250,5 +250,8 @@ export default {
     },
     "moonwell-artemis": {
         enabled: true
+    },
+    "moonwell-apollo": {
+        enabled: true
     }
 } as AdaptorsConfig

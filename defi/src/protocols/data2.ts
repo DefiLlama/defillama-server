@@ -20237,6 +20237,73 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1670251723
 },
+{
+  id: "2334",
+  name: "DefiEdge",
+  address: null,
+  symbol: "-",
+  url: "https://www.defiedge.io/",
+  description:
+    "Permissionless Liquidity Management on Uniswap V3. DefiEdge provides the smartest solution to deploy liquidity and optimise yields on Uniswap V3",
+  chain: "Etherum",
+  logo: `${baseIconsUrl}/defiedge.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Etherum", "Polygon", "Optimism", "Arbitrum"],
+  module: "defiedge/index.js",
+  twitter: "DefiEdge", 
+  forkedFrom: [],
+  audit_links: ["https://docs.defiedge.io/Security/audits"],
+  oracles: ["Chainlink", "TWAP"],
+  listedAt: 1670347222
+},
+{
+  id: "2335",
+  name: "ABEL Finance",
+  address: "aptos:-",
+  symbol: "ABEL",
+  url: "https://abelfinance.xyz/#/markets",
+  description:
+    "A Cross-Chain Lending Platform Built on Aptos and Sui",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/abel-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Aptos"],
+  module: "abelfinance/index.js",
+  twitter: "abelfinance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670348069
+},
+{
+  id: "2336",
+  name: "EsdtMarket",
+  address: null,
+  symbol: "-",
+  url: "https://esdt.market/",
+  description:
+    "ESDT Market offers trustless swaps backed by smart contracts. The market operates entirely peer-to-peer, with no intermediaries involved in the transaction. Token buyers and sellers trade directly with each other on the MultiversX(Elrond) blockchain",
+  chain: "Elrond",
+  logo: `${baseIconsUrl}/esdtmarket.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Elrond"],
+  module: "esdt-market/index.js",
+  twitter: "EsdtMarket", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670348075
+},
 ]
 
 export default data2;

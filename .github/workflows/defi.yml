@@ -77,6 +77,7 @@ jobs:
         PROD_VYBE_API_KEY: ${{ secrets.PROD_VYBE_API_KEY }}
         BIT_QUERY_API_KEY: ${{ secrets.BIT_QUERY_API_KEY }}
         VOLUMES_WEBHOOK: ${{ secrets.VOLUMES_WEBHOOK }}
+        FEES_WEBHOOK: ${{ secrets.FEES_WEBHOOK }}
         ZEROx_API_KEY: ${{ secrets.ZEROx_API_KEY }}
         INDEXER_DB: ${{ secrets.INDEXER_DB }}
         AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}

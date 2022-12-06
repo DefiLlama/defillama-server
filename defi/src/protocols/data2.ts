@@ -20237,6 +20237,29 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1670251723
 },
+{
+  id: "2334",
+  name: "Abel",
+  address: null,
+  symbol: "ABEL",
+  url: "https://www.abelfinance.xyz/",
+  description: "Abel finance is the first Cross-Chain Lending Platform Build on Aptos and Sui",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/abel.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Aptos"],
+  module: "abelfinance/index.js",
+  twitter: "https://twitter.com/abelfinance", 
+  forkedFrom: ["Compound"],
+  oracles: ["Pyth"],
+  language: "Move",
+  audit_links: ["https://github.com/Vital-block/Project-KYC-Verification/blob/main/ABEL%20FINANCE%20KYC%20CERTIFICATE.pdf","https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ABEL%20FINANCE%20Audit-Report.pdf","https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ABEL%20FINANCE%20Audit-Report.pdf"],
+  listedAt: 1670142352
+},
 ]
 
 export default data2;

@@ -20304,6 +20304,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1670348075
 },
+{
+  id: "2337",
+  name: "STON.fi",
+  address: null,
+  symbol: "-",
+  url: "https://app.ston.fi/",
+  description:
+    "Decentralized automated market maker (AMM) built on the TON blockchain",
+  chain: "TON",
+  logo: `${baseIconsUrl}/ston.fi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["TON"],
+  module: "ston/index.js",
+  twitter: "ston_fi", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670364601
+},
 ]
 
 export default data2;

@@ -248,4 +248,7 @@ export default {
     "ghostmarket": {
         enabled: true
     },
+    "moonwell-artemis": {
+        enabled: true
+    }
 } as AdaptorsConfig

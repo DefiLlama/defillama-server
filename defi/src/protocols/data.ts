@@ -19695,6 +19695,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   address: "0xba3335588d9403515223f109edc4eb7269a9ab5d",
   symbol: "GEAR",
   url: "https://gearbox.fi",
+  referralUrl: "https://app.gearbox.fi/?referral=1404",
   description: "Get up to 10x leverage and use it across DeFi protocols. Gearbox Protocol allows anyone to get leverage in a decentralized way and use it across various other protocols in a composable way: margin trading, leverage farming, and more!",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/gearbox.jpg`,

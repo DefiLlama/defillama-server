@@ -20349,6 +20349,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1670413249
 },
+{
+  id: "2339",
+  name: "Lodestar Finance",
+  address: "arbitrum:0xF19547f9ED24aA66b03c3a552D181Ae334FBb8DB",
+  symbol: "LODE",
+  url: "https://www.lodestarfinance.io",
+  description:
+    "Lodestar Finance is an algorithmic borrowing and lending protocol that aims to bring the critical DeFi primitive of decentralized money markets to Arbitrum communities.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/lodestar-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "lodestar",
+  cmcId: null,
+  category: "Lending",
+  chains: ["Arbitrum"],
+  module: "lodestar/index.js",
+  twitter: "LodestarFinance", 
+  forkedFrom: ["Compound"],
+  oracles: ["Chainlink"],
+  listedAt: 1670424005
+},
 ]
 
 export default data2;

@@ -20270,7 +20270,7 @@ listedAt: 1650804679
     "A Cross-Chain Lending Platform Built on Aptos and Sui",
   chain: "Aptos",
   logo: `${baseIconsUrl}/abel-finance.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -20278,8 +20278,9 @@ listedAt: 1650804679
   chains: ["Aptos"],
   module: "abelfinance/index.js",
   twitter: "abelfinance", 
-  forkedFrom: [],
-  oracles: [],
+  forkedFrom: ["Compound"],
+  oracles: ["Pyth"],
+  audit_links: ["https://github.com/Vital-block/Project-KYC-Verification/blob/main/ABEL%20FINANCE%20KYC%20CERTIFICATE.pdf","https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ABEL%20FINANCE%20Audit-Report.pdf","https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ABEL%20FINANCE%20Audit-Report.pdf"],
   listedAt: 1670348069
 },
 {

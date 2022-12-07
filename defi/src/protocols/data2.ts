@@ -20327,6 +20327,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1670364601
 },
+{
+  id: "2338",
+  name: "Bifrost Liquid Crowdloan",
+  address: null,
+  symbol: "-",
+  url: "https://bifrost.finance",
+  description:
+    "BIfrost is a substrate developed web3 derivatives protocol that provides decentralized cross-chain liquidity for staked assets. Bifrost’s mission is to provide standardized cross-chain interest-bearing derivatives for Polkadot relay chains, parachains and heterogeneous chains bridged with Polkadot.",
+  chain: "Bifrost",
+  logo: `${baseIconsUrl}/bifrost-liquid-crowdloan.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Bifrost"],
+  module: "bifrost-liquid-crowdloan/index.js",
+  twitter: "bifrost_finance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670413249
+},
 ]
 
 export default data2;

@@ -637,5 +637,8 @@ export default {
     },
     "synfutures": {
         enabled: false
+    },
+    "xswap-protocol": {
+        enabled: true
     }
 } as AdaptorsConfig

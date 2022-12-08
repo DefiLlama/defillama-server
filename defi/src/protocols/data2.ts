@@ -20422,6 +20422,50 @@ listedAt: 1650804679
   parentProtocol: "Polycat Finance",
   listedAt: 1670499599 
 },
+{
+  id: "2342",
+  name: "VaporDex",
+  address: null,
+  symbol: "-",
+  url: "https://www.vapordex.io",
+  description:
+    "​The World  Most Rewarding DEX. Automatically earn rewards that boost your savings just by using VaporDEX.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/vapordex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Avalanche"],
+  module: "vapordex/index.js",
+  twitter: "Vapor_DEX", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670517161
+},
+{
+  id: "2343",
+  name: "Nitron",
+  address: null,
+  symbol: "-",
+  url: "https://app.dem.exchange/nitron",
+  description:
+    "Nitron is a permissionless money market used to lend, borrow and mint assets from a plethora of chains.",
+  chain: "Carbon",
+  logo: `${baseIconsUrl}/nitron.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Carbon"],
+  module: "nitron/index.js",
+  twitter: "demexchange", 
+  forkedFrom: ["Demex"],
+  oracles: [],
+  listedAt: 1670517260
+},
 ]
 
 export default data2;

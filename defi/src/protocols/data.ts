@@ -7858,7 +7858,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "polycat/index.js",
     twitter: "PolycatFinance",
     audit_links: ["https://docs.polycat.finance/security#audit"],
-    forkedFrom: ["Uniswap"]
+    forkedFrom: ["Uniswap"],
+    parentProtocol: "Polycat Finance"
   },
   {
     id: "500",

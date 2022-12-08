@@ -20416,6 +20416,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   audit_links: ["https://paladinsec.co/projects/polycat-finance", "https://www.certik.com/projects/polycatfinance"],
+  parentProtocol: "Polycat Finance",
   listedAt: 1670499599 
 },
 ]

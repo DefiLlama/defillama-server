@@ -253,5 +253,11 @@ export default {
     },
     "moonwell-apollo": {
         enabled: true
+    },
+    "kperp-exchange": {
+        enabled: true
+    },
+    "premia": {
+        enabled: true
     }
 } as AdaptorsConfig

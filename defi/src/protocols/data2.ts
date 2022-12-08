@@ -20415,7 +20415,10 @@ listedAt: 1650804679
   twitter: "PolycatFinance", 
   forkedFrom: [],
   oracles: [],
-  audit_links: ["https://paladinsec.co/projects/polycat-finance", "https://www.certik.com/projects/polycatfinance"],
+  audit_links: [
+    "https://paladinsec.co/projects/polycat-finance", 
+    "https://www.certik.com/projects/polycatfinance"
+               ],
   parentProtocol: "Polycat Finance",
   listedAt: 1670499599 
 },

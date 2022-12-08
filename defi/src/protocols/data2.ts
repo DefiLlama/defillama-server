@@ -20454,7 +20454,7 @@ listedAt: 1650804679
     "Nitron is a permissionless money market used to lend, borrow and mint assets from a plethora of chains.",
   chain: "Carbon",
   logo: `${baseIconsUrl}/nitron.png`,
-  audits: "2",
+  audits: "0",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -20465,6 +20465,28 @@ listedAt: 1650804679
   forkedFrom: ["Demex"],
   oracles: [],
   listedAt: 1670517260
+},
+{
+  id: "2344",
+  name: "JediSwap",
+  address: null,
+  symbol: "-",
+  url: "https://jediswap.xyz",
+  description:
+    "A community-led fully permissionless and composable AMM on Starknet by StarkWareLtd",
+  chain: "Starknet",
+  logo: `${baseIconsUrl}/jediswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Starknet"],
+  module: "jediswap/index.js",
+  twitter: "JediSwap", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670534876
 },
 ]
 

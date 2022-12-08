@@ -4070,6 +4070,7 @@ const data: Protocol[] = [
     audit_links: ["https://docs.rulerprotocol.com/security"],
     oracles: ["Chainlink"],
   },
+  /*
   {
     id: "309",
     name: "Wheat Protocol",
@@ -4089,6 +4090,7 @@ const data: Protocol[] = [
     module: "wheat.js",
     twitter: "GrowthDefi",
   },
+  */
   {
     id: "310",
     name: "Belt Finance",
@@ -10661,7 +10663,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     forkedFrom: ["Aave"],
   },
-  /*
   {
     id: "644",
     name: "PadSwap",
@@ -10682,7 +10683,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://dapps.padswap.exchange/pad_audit_report.pdf", "https://toad.network/toad_audit_report.pdf"],
     forkedFrom: ["Uniswap"],
   },
-  */
   {
     id: "645",
     name: "LatteSwap",

@@ -643,5 +643,8 @@ export default {
     },
     "kperp-exchange": {
         enabled: true
+    },
+    "jojo": {
+        enabled: false
     }
 } as AdaptorsConfig

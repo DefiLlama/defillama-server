@@ -60,9 +60,9 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         try {
             const adaptorsData = loadAdaptorsData(type2load as AdapterType)
             dexData = adaptorsData.default
-                .find(va =>
-                    protocolsList.includes(va.module)
-                    && (sluggify(va) === protocolName || sluggifyString(va.displayName) === protocolName))
+                .find(va => protocolsList.includes(va.module)
+                    && (sluggify(va) === protocolName || sluggifyString(va.displayName) === protocolName)
+                )
             if (dexData) break
         } catch (error) {
             console.error(error)

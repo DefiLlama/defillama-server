@@ -81,5 +81,5 @@ jobs:
         ZEROx_API_KEY: ${{ secrets.ZEROx_API_KEY }}
         INDEXER_DB: ${{ secrets.INDEXER_DB }}
         AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        DATADOG_API_KEY: ${{ secrets. DD_API_KEY }}
+        DATADOG_API_KEY: ${{ secrets.DD_API_KEY }}
         DATADOG_SITE: ${{ secrets.DD_SITE }}

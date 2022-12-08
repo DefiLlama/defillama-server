@@ -122,7 +122,6 @@ custom:
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
   datadog:
     site: datadoghq.eu
-    apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   logRetentionInDays: 30
 
 functions:

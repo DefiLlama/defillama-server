@@ -32,12 +32,12 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'methodologyURL'
     | 'methodology'
     | 'allAddresses'
-    | 'latestFetchIsOk'
 > & {
     protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null
     recordsMap: IJSON<AdaptorRecord> | null
     totalAllTime: number | null
+    latestFetchIsOk: boolean
 } & IGeneralStats & ExtraTypes
 
 type KeysToRemove = 'records' | 'config' | 'recordsMap' | 'allAddresses'

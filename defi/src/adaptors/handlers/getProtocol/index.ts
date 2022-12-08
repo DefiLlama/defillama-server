@@ -33,13 +33,13 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "chains"
     | "methodologyURL"
     | 'allAddresses'
-    | 'latestFetchIsOk'
 > {
     totalDataChart: IChartData | null
     totalDataChartBreakdown: IChartDataBreakdown | null
     total24h: number | null
     change_1d: number | null
     totalAllTime: number | null
+    latestFetchIsOk: boolean
 }
 
 export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
@@ -118,7 +118,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             gecko_id: dexData.gecko_id,
             disabled: dexData.disabled,
             protocolsData: dexData.protocolsData,
-            latestFetchIsOk: dexData.latestFetchIsOk,
+            latestFetchIsOk: false,
             chains: dexData.chains,
             totalDataChart: null,
             totalDataChartBreakdown: null,

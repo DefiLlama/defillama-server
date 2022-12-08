@@ -51,7 +51,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 config: config[adapterKey],
                 chains: getAllChainsFromAdaptors([adapterKey], imports_obj),
                 disabled: isDisabled(imports_obj[adapterKey].module.default),
-                latestFetchIsOk: config[adapterKey]?.latestFetchIsOk ?? true,
                 displayName: getDisplayName(dexFoundInProtocols.name, imports_obj[adapterKey].module.default),
                 protocolsData: getProtocolsData(adapterKey, imports_obj[adapterKey].module.default),
                 protocolType: adapterObj.module.default?.protocolType,

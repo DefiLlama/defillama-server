@@ -644,6 +644,9 @@ export default {
     "kperp-exchange": {
         enabled: true
     },
+    "jojo": {
+        enabled: false
+    },
     "vapordex": {
         enabled: true
     }

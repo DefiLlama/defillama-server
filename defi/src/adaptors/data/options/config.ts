@@ -8,6 +8,6 @@ export default {
         startFrom: 1656460800
     },
     "premia": {
-        enabled: true
+        enabled: false
     }
 } as AdaptorsConfig

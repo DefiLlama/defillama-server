@@ -643,5 +643,8 @@ export default {
     },
     "kperp-exchange": {
         enabled: true
+    },
+    "vapordex": {
+        enabled: true
     }
 } as AdaptorsConfig

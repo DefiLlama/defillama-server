@@ -640,5 +640,8 @@ export default {
     },
     "xswap-protocol": {
         enabled: true
+    },
+    "kperp-exchange": {
+        enabled: true
     }
 } as AdaptorsConfig

@@ -546,6 +546,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "revertfinance",
   },
+  {
+    id: "Polycat Finance",
+    name: "Polycat Finance",
+    url: "https://polycat.finance",
+    description:
+    "​Polycat is a decentralized hybrid yield optimizer (yield farm and yield aggregator) running on the Polygon blockchain (formerly known as MATIC). The Paw token is the second token in their ecosystem that they introduced with the launch of their AMM.",
+    logo: `${baseIconsUrl}/polycat finance.jpg`,
+    gecko_id: "polycat-finance",
+    cmcId: "10134",
+    chains: [],
+    twitter: "PolycatFinance",
+  },
 ];
 
 export default parentProtocols;

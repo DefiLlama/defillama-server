@@ -844,8 +844,8 @@ const data2: Protocol[] =  [
 {
   id: "1447",
   name: "Hashflow",
-  address: null,
-  symbol: "-",
+  address: "0xb3999f658c0391d94a37f7ff328f3fec942bcadc",
+  symbol: "HFT",
   url: "https://www.hashflow.com",
   description: "The most powerful DeFi trading experience. Tight spreads. Zero slippage. MEV-resistant",
   chain: "Ethereum",
@@ -20370,6 +20370,101 @@ listedAt: 1650804679
   forkedFrom: ["Compound"],
   oracles: ["Chainlink"],
   listedAt: 1670424005
+},
+/*
+{
+  id: "2340",
+  name: "Optitude Finance",
+  address: "optimism:0xAd669b6cf06704e9D3b8D1d85A275623A1bD8288",
+  symbol: "OPT",
+  url: "https://www.optitude.finance",
+  description:
+    "Optitude, a yield aggregator specially built for Layer2 users.",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/optitude-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Optimism"],
+  module: "optitude/index.js",
+  twitter: "TrueOptitude", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670496843 // add new epoch once enable
+},
+*/
+{
+  id: "2341",
+  name: "Polycat Dex",
+  address: "polygon:0x3a3df212b7aa91aa0402b9035b098891d276572b",
+  symbol: "FISH",
+  url: "https://polycat.finance/swap",
+  description:
+    "​Polycat is a decentralized hybrid yield optimizer (yield farm and yield aggregator) running on the Polygon blockchain (formerly known as MATIC). The Paw token is the second token in their ecosystem that they introduced with the launch of their AMM.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/polycat-dex.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Polygon"],
+  module: "polycat-dex/index.js",
+  twitter: "PolycatFinance", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: [
+    "https://paladinsec.co/projects/polycat-finance", 
+    "https://www.certik.com/projects/polycatfinance"
+               ],
+  parentProtocol: "Polycat Finance",
+  listedAt: 1670499599 
+},
+{
+  id: "2342",
+  name: "VaporDex",
+  address: null,
+  symbol: "-",
+  url: "https://www.vapordex.io",
+  description:
+    "​The World  Most Rewarding DEX. Automatically earn rewards that boost your savings just by using VaporDEX.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/vapordex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Avalanche"],
+  module: "vapordex/index.js",
+  twitter: "Vapor_DEX", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670517161
+},
+{
+  id: "2343",
+  name: "Nitron",
+  address: null,
+  symbol: "-",
+  url: "https://app.dem.exchange/nitron",
+  description:
+    "Nitron is a permissionless money market used to lend, borrow and mint assets from a plethora of chains.",
+  chain: "Carbon",
+  logo: `${baseIconsUrl}/nitron.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Carbon"],
+  module: "nitron/index.js",
+  twitter: "demexchange", 
+  forkedFrom: ["Demex"],
+  oracles: [],
+  listedAt: 1670517260
 },
 ]
 

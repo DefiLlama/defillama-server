@@ -646,5 +646,8 @@ export default {
     },
     "jojo": {
         enabled: false
+    },
+    "vapordex": {
+        enabled: true
     }
 } as AdaptorsConfig

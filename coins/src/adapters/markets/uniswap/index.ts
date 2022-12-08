@@ -163,3 +163,13 @@ export function solidly(timestamp: number = 0) {
     timestamp
   );
 }
+export function diffusion(timestamp: number = 0) {
+  console.log("starting diffusion");
+  return getTokenPrices(
+    "evmos",
+    "0x6abdda34fb225be4610a2d153845e09429523cd2",
+    undefined,
+    undefined,
+    timestamp
+  );
+}

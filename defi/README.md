@@ -50,7 +50,7 @@ git submodule update --init --recursive
 git submodule update --remote --merge
 ```
 
-To ignore submodule (on git status for example)
+To ignore submodule (on git status for example):
 ```
 git config submodule.DefiLlama-Adapters.ignore all
 ```

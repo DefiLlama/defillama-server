@@ -844,8 +844,8 @@ const data2: Protocol[] =  [
 {
   id: "1447",
   name: "Hashflow",
-  address: null,
-  symbol: "-",
+  address: "0xb3999f658c0391d94a37f7ff328f3fec942bcadc",
+  symbol: "HFT",
   url: "https://www.hashflow.com",
   description: "The most powerful DeFi trading experience. Tight spreads. Zero slippage. MEV-resistant",
   chain: "Ethereum",

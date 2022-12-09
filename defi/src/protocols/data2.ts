@@ -20512,6 +20512,28 @@ listedAt: 1650804679
   language: "Cairo",
   listedAt: 1670544009
 },
+{
+  id: "2346",
+  name: "WOO Cex",
+  address: null,
+  symbol: "-",
+  url: "https://x.woo.org/en/trade",
+  description:
+    "Bringing best-in-class liquidity to DeFi and CeFi.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/woo-cex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Ethereum", "Bitcoin", "Avalanche", "Arbitrum"],
+  module: "woo-cex/index.js",
+  twitter: "WOOnetwork", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670587665
+},
 ]
 
 export default data2;

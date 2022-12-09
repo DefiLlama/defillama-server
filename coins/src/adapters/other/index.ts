@@ -48,5 +48,9 @@ export function pods(timestamp: number = 0) {
 }
 export function distressed(timestamp: number = 0) {
   console.log("starting distressed");
-  return distressedAdapter("harmony", timestamp);
+  return Promise.all([
+    distressedAdapter("harmony", timestamp),
+    distressedAdapter("klaytn", timestamp),
+    distressedAdapter("arbitrum", timestamp)
+  ]);
 }

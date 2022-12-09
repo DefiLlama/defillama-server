@@ -20486,6 +20486,7 @@ listedAt: 1650804679
   twitter: "JediSwap", 
   forkedFrom: [],
   oracles: [],
+  language: "Cairo",
   listedAt: 1670534876
 },
 {
@@ -20508,6 +20509,7 @@ listedAt: 1650804679
   twitter: "10KSwap", 
   forkedFrom: [],
   oracles: [],
+  language: "Cairo",
   listedAt: 1670544009
 },
 ]

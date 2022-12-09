@@ -20402,7 +20402,7 @@ listedAt: 1650804679
   symbol: "FISH",
   url: "https://polycat.finance/swap",
   description:
-    "​Polycat is a decentralized hybrid yield optimizer (yield farm and yield aggregator) running on the Polygon blockchain (formerly known as MATIC). The Paw token is the second token in their ecosystem that they introduced with the launch of their AMM.",
+    `Polycat is a decentralized hybrid yield optimizer (yield farm and yield aggregator) running on the Polygon blockchain (formerly known as MATIC). The Paw token is the second token in their ecosystem that they introduced with the launch of their AMM.`,
   chain: "Polygon",
   logo: `${baseIconsUrl}/polycat-dex.jpg`,
   audits: "2",
@@ -20429,7 +20429,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://www.vapordex.io",
   description:
-    "​The World  Most Rewarding DEX. Automatically earn rewards that boost your savings just by using VaporDEX.",
+    "The World  Most Rewarding DEX. Automatically earn rewards that boost your savings just by using VaporDEX.",
   chain: "Avalanche",
   logo: `${baseIconsUrl}/vapordex.jpg`,
   audits: "0",
@@ -20487,6 +20487,28 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1670534876
+},
+{
+  id: "2345",
+  name: "10KSwap",
+  address: null,
+  symbol: "-",
+  url: "https://10kswap.com/",
+  description:
+    "An AMM that advances with Ethereum, deployed on StarkNet Mainnet",
+  chain: "Starknet",
+  logo: `${baseIconsUrl}/10kswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Starknet"],
+  module: "10kswap/index.js",
+  twitter: "10KSwap", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670544009
 },
 ]
 

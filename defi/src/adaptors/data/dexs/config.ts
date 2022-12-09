@@ -649,5 +649,8 @@ export default {
     },
     "vapordex": {
         enabled: true
+    },
+    "10kswap": {
+        enabled: true
     }
 } as AdaptorsConfig

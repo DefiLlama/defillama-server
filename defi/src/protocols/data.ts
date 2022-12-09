@@ -16376,7 +16376,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     address: "avax:0x22d4002028f537599be9f666d1c4fa138522f9c8" ,
     symbol: "PTP" ,
     url: "https://platypus.finance" ,
-    description: "Platypus finance is a novel open-liquidity stableswap protocol that aims to remove blockchain divergence." ,
+    description: "Platypus combined stableswap and stablecoin, masterfully utilizing its underlying assets to bring next-level capital efficiency." ,
     chain: "Avalanche" ,
     logo: `${baseIconsUrl}/platypus.png` ,
     audits: "2" ,

@@ -20534,6 +20534,29 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1670587665
 },
+{
+  id: "2347",
+  name: "RBX",
+  address: "0x8254e26e453eb5abd29b3c37ac9e8da32e5d3299",
+  symbol: "RBX",
+  url: "https://rbxdefi.com",
+  description:
+    "RBX is a novel ecosystem of Decentralized finance DApps, utilities, infrastructure, and protocols, built to accelerate the flow of digital assets and capital. The RBX suite of products provides everything a trader, or project, needs to be successful, all in one simple widgetized package.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/rbx.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "rbx-token",
+  cmcId: "13326",
+  category: "Dexes",
+  chains: ["Ethereum", "Binance"],
+  module: "rbx/index.js",
+  twitter: "RBXtoken", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://github.com/cyberscope-io/audits/tree/main/1-rbx"],
+  listedAt: 1670587665
+},
 ]
 
 export default data2;

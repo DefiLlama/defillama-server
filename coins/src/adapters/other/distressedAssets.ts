@@ -18,10 +18,13 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     USDC: "0x985458E523dB3d53125813eD68c274899e9DfAb4",
     ETH: "0x6983D1E6DEf3690C4d616b13597A09e6193EA013",
     bscBNB: "0xb1f6E61E1e113625593a22fa6aa94F8052bc39E0",
-    bscBUSD: "0x0aB43550A6915F9f67d0c454C2E90385E6497EaA"
+    bscBUSD: "0x0aB43550A6915F9f67d0c454C2E90385E6497EaA",
   },
   klaytn: {
-    USDK: '0xd2137fdf10bd9e4e850c17539eb24cfe28777753',
+    USDK: "0xd2137fdf10bd9e4e850c17539eb24cfe28777753",
+  },
+  arbitrum: {
+    GOLD: "0xc4be0798e5b5b1C15edA36d9B2D8c1A60717fA92",
   },
 };
 

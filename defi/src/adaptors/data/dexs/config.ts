@@ -652,5 +652,8 @@ export default {
     },
     "10kswap": {
         enabled: true
+    },
+    "solarflare": {
+        enabled: true
     }
 } as AdaptorsConfig

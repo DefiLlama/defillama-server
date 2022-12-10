@@ -20601,6 +20601,50 @@ listedAt: 1650804679
   parentProtocol: "mStable",
   listedAt: 1670692797
 },
+{
+  id: "2350",
+  name: "KyotoSwap",
+  address: "bsc:0x29ABc4D03D133D8Fd1F1C54318428353CE08727E",
+  symbol: "KSWAP",
+  url: "https://www.kyotoswap.com/",
+  description:
+    "Kyoto swap is the decentralised exchange for people who want to help make positive change. As the first truly sustainable Dex, our mission is to harness DeFi to benefit people and the environment.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/kyotoswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "kyotoswap/index.js",
+  twitter: "KyotoSwap", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1670693265
+},
+{
+  id: "2351",
+  name: "PepeTeam sWAVES",
+  address: "waves:YiNbofFzC17jEHHCMwrRcpy9MrrjabMMLZxg8g5xmf7",
+  symbol: "sWAVES",
+  url: "https://swaves.pepe.team/",
+  description:
+    "sWAVES is tokenized version of native staking of WAVES token in blockchain Waves. The sWAVES logic is designed in smart contracts and implemented in the Waves blockchain. Users are able to hold sWAVES tokens in their wallets, transfer to other accounts, trade it on DEXes and AMMs, provide liquidity to swapping or lending protocols to gain additional income",
+  chain: "Waves",
+  logo: `${baseIconsUrl}/pepeteam-swaves.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Waves"],
+  module: "pepeteam-sWAVES/index.js",
+  twitter: "cryptopepeteam", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670693571
+},
 ]
 
 export default data2;

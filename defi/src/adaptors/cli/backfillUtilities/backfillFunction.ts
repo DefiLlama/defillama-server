@@ -5,6 +5,7 @@ import readline from 'readline';
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { IJSON } from "../../data/types";
 import { getStringArrUnique } from "../../utils/getAllChainsFromAdaptors";
+import sleep from "../../../utils/shared/sleep";
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -71,6 +72,16 @@ export const autoBackfill = async (argv: string[]) => {
         rl.question('Do you wish to continue? y/n\n', async function (yn) {
             if (yn.toLowerCase() === 'y') {
                 await executeAsyncBackfill(backfillEvent)
+                /* for (let i = 70; i < backfillEvent.backfill.length; i += 50) {
+                    const smallbackfillEvent = {
+                        ...backfillEvent,
+                        backfill: backfillEvent.backfill.slice(i, i + 50),
+                    };
+                    console.info(`${smallbackfillEvent.backfill[0].dexNames[0].toUpperCase()} will be backfilled starting from ${formatTimestampAsDate(String(smallbackfillEvent.backfill[0].timestamp!))}`)
+                    console.info(`${smallbackfillEvent.backfill.length} days will be filled. If a chain is already available will be refilled.`)
+                    await executeAsyncBackfill(smallbackfillEvent)
+                    await sleep(1000 * 60 * 2)
+                } */
                 console.info(`Don't forget to enable the adapter to src/dexVolumes/dexAdapters/config.ts, bye llama🦙`)
                 rl.close();
                 process.exit(0)

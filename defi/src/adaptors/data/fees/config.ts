@@ -129,7 +129,8 @@ export default {
         enabled: true
     },
     "arbitrum": {
-        enabled: true
+        enabled: true,
+        startFrom: 1660608000
     },
     "avalanche": {
         enabled: true

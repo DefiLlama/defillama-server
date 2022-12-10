@@ -20580,7 +20580,7 @@ listedAt: 1650804679
   listedAt: 1670631511
 },
 {
-  id: "125",
+  id: "2349",
   name: "mStable Yield",
   address: "0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
   symbol: "MTA",

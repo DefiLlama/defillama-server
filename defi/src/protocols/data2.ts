@@ -20557,6 +20557,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/cyberscope-io/audits/tree/main/1-rbx"],
   listedAt: 1670587665
 },
+{
+  id: "2348",
+  name: "InfiniTORR",
+  address: null,
+  symbol: "-",
+  url: "https://www.torrswap.io/",
+  description:
+    "InfiniTORR is designed to be a Dapps hub, for Dapps built on the BitTorrent Chain Network (BTTC). The core Dapp of InfiniTORR is heavily inspired by popular Lobby based projects such as Hex, T2X and others. The InfiniTORR Team changes up these Traditional Auction Lobby structures and adds new layers of FOMO to the mix, creating exciting, fresh new experiences for our users. Our first product is TorrSwap, our main dex",
+  chain: "Bittorrent",
+  logo: `${baseIconsUrl}/infinitorr.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Bittorrent"],
+  module: "Torr-Finance/index.js",
+  twitter: "InfiniTorrBTT", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1670631511
+},
 ]
 
 export default data2;

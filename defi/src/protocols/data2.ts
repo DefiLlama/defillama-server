@@ -20639,7 +20639,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Liquid Staking",
   chains: ["Waves"],
-  module: "pepeteam-sWAVES/index.js",
+  module: "pepe-swaves/index.js",
   twitter: "cryptopepeteam", 
   forkedFrom: [],
   oracles: [],

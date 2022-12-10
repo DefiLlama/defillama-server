@@ -23133,7 +23133,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   gecko_id: "paprprintr-finance",
   cmcId: null,
   category: "Algo-Stables",
-  chains: ["Binance", "Kucoin", "Fantom", "Polygon", "Aurora", "OKExChain"],
+  chains: ["Binance",],
   module: "paprprintr/index.js",
   twitter: "paprprintr",
   audit_links: ["https://docs.paprprintr.finance/audit"],

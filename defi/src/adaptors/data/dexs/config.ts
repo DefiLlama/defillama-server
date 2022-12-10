@@ -513,7 +513,7 @@ export default {
         enabled: true
     },
     "swapsicle": {
-        enabled: true
+        enabled: false
     },
     "morpheus-swap": {
         enabled: true

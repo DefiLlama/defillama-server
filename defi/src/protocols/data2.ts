@@ -20579,6 +20579,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1670631511
 },
+{
+  id: "125",
+  name: "mStable Yield",
+  address: "0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
+  symbol: "MTA",
+  url: "https://yield.mstable.org/metavaults",
+  description:
+    "Yield app by mStable",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/mstable.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  module: "mstable-yield/index.js",
+  twitter: "mstable_",
+  audit_links: ["https://developers.mstable.org/security/security-audits"],
+  parentProtocol: "mStable",
+  listedAt: 1670692797
+},
 ]
 
 export default data2;

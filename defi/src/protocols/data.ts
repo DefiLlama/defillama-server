@@ -398,7 +398,7 @@ const data: Protocol[] = [
   },
   {
     id: "125",
-    name: "mStable",
+    name: "mStable CDP",
     address: "0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2",
     symbol: "MTA",
     url: "https://mstable.org/",
@@ -408,13 +408,14 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/mstable.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "meta",
-    cmcId: "5748",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Ethereum", "Polygon"],
     module: "mstable/index.js",
     twitter: "mstable_",
     audit_links: ["https://developers.mstable.org/security/security-audits"],
+    parentProtocol: "mStable"
   },
   {
     id: "126",

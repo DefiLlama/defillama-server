@@ -642,7 +642,7 @@ export default {
         enabled: true
     },
     "kperp-exchange": {
-        enabled: true
+        enabled: false
     },
     "jojo": {
         enabled: false

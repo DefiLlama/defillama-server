@@ -14768,6 +14768,8 @@ listedAt: 1650804679
   audit_links: [
                     "https://github.com/RageTrade/core/blob/159a94ca9fa75a7c1b3acf7191c2c87ebd746691/audits/quantstamp/audit.pdf",            
                     "https://github.com/RageTrade/core/blob/159a94ca9fa75a7c1b3acf7191c2c87ebd746691/audits/cmichelio/audit.pdf",
+                    "https://drive.google.com/file/d/1rgTgB3Zs1A6YhssF4jIsVS5l0Lr8sl1r/view", // Audit Reports + Insurance
+                    "https://docs.google.com/document/d/1joxRpf1D-KoACf7h1xnB72YkPYKxd27oDX-9axTbIQw/edit#heading=h.mnockoickb7e" //Insurance
                ],
   listedAt: 1663144131
 },

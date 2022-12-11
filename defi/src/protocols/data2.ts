@@ -20514,14 +20514,14 @@ listedAt: 1650804679
 },
 {
   id: "2346",
-  name: "WOO Cex",
+  name: "WOO X",
   address: null,
   symbol: "-",
   url: "https://x.woo.org/en/trade",
   description:
     "Bringing best-in-class liquidity to DeFi and CeFi.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/woo-cex.jpg`,
+  logo: `${baseIconsUrl}/woo-x.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

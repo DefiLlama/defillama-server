@@ -20526,7 +20526,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Dexes",
+  category: "CEX",
   chains: ["Ethereum", "Bitcoin", "Avalanche", "Arbitrum"],
   module: "woo-cex/index.js",
   twitter: "WOOnetwork", 

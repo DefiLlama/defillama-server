@@ -192,7 +192,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
     return event
 }
 
-function ensureDirectoryExistence(filePath: string) {
+export function ensureDirectoryExistence(filePath: string) {
     var dirname = path.dirname(filePath);
     if (fs.existsSync(dirname)) {
         return true;

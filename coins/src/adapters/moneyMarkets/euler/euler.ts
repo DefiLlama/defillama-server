@@ -101,7 +101,7 @@ export default async function getTokenPrices(
       abi: abi.convertBalanceToUnderlying,
       calls: markets.map((m: Market) => ({
         target: m.address,
-        params: [BigNumber.from(10).pow(BigNumber.from(m.decimals)).toString()]
+        params: [BigNumber.from(10).pow(BigNumber.from(18)).toString()]
       })),
       chain: chain as any,
       block,

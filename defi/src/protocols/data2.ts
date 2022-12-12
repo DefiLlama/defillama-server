@@ -20647,6 +20647,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1670693571
 },
+{
+  id: "2352",
+  name: "Bitget",
+  address: null,
+  symbol: "-",
+  url: "https://www.bitget.com",
+  description:
+    "Bitget is the leading crypto exchange platform for crypto derivatives trading.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bitget.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin", "Avalanche", "Polygon", "Solana"],
+  module: "bitget/index.js",
+  twitter: "bitgetglobal", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670842933
+},
 ]
 
 export default data2;

@@ -14759,7 +14759,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Derivatives",
+  category: "Yield",
   chains: ["Arbitrum"],
   oracles: ["Chainlink", "TWAP"],
   forkedFrom: [],

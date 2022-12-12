@@ -90,11 +90,14 @@ export default async function (
         }
       }
       if (
-        Math.abs(lastHourlyTVLObject.SK - unixTimestamp) < (5 * HOUR) &&
+        Math.abs(lastHourlyTVLObject.SK - unixTimestamp) < (10 * HOUR) &&
         lastHourlyTVL * 5 < currentTvl &&
         calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl
       ) {
         const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour, disabling it`
+        if(Math.abs(lastHourlyTVLObject.SK - unixTimestamp) > (5 * HOUR)){
+          await sendMessage(errorMessage, process.env.OUTDATED_WEBHOOK!)
+        }
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
         throw new Error(
           errorMessage

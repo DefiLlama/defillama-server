@@ -260,5 +260,8 @@ export default {
     },
     "premia": {
         enabled: true
+    },
+    "kyberswap": {
+        enabled: true
     }
 } as AdaptorsConfig

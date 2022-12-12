@@ -4613,7 +4613,7 @@ const data2: Protocol[] =  [
   address: "0xe80c0cd204d654cebe8dd64a4857cab6be8345a3",
   symbol: "JPEG",
   url: "https://jpegd.io",
-  description: "JPEG'd is a decentralized lending protocol on the Ethereum blockchain that enables non-fungible token (NFT) holders to open collateralized debt positions (CDPs) using their NFTs as collateral. Users mint PUSD - the native stablecoin of the protocol - enabling them to effectively obtain leverage on their NFTs.",
+  description: "JPEG'd is a decentralized lending protocol on the Ethereum blockchain that enables NFT holders to open collateralized debt positions (CDPs) using their NFTs as collateral. Users mint pETH or pUSD, native tokens of the protocol that are pegged to ETH and USD respectively via Curve pools, enabling users to effectively obtain leverage on their NFTs.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/jpeg'd.png`,
   audits: "2",

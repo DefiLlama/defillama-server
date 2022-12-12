@@ -18,4 +18,4 @@ src/utils/imports/incentives_adapters.ts
 src/utils/imports/protocols_adapters.ts
 .vscode
 src/dexVolumes/cli/backfillUtilities/output
-src/adaptors/cli/backfillUtilities/output
+src/adaptors/cli/*/output

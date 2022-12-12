@@ -20669,6 +20669,50 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1670842933
 },
+{
+  id: "2353",
+  name: "X7 Finance",
+  address: "0x70008f18fc58928dce982b0a69c2c21ff80dca54",
+  symbol: "X7R",
+  url: "https://x7.finance",
+  description:
+    "X7 Finance. Leveraged Decentralized Exchange. Launch your project on Xchange with 10-1000x the initial liquidity into the Ethereum ecosystem where anyone can Swap, Borrow and Lend!. Trust no one. Trust code. Long live",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/x7-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "x7r",
+  cmcId: "22184",
+  category: "Dexes",
+  chains: ["Ethereum"],
+  module: "x7/index.js",
+  twitter: "X7_Finance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670853573
+},
+{
+  id: "2354",
+  name: "Gamut Exchange",
+  address: null,
+  symbol: "-",
+  url: "https://www.gamut.exchange",
+  description:
+    "Decentralized exchange designed for volatile assets that benefit liquidity providers and traders with lower fees and higher incentives.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/gamut-exchange.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Kava"],
+  module: "gamutexchange/index.js",
+  twitter: "GamutExchange", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1670853576
+},
 ]
 
 export default data2;

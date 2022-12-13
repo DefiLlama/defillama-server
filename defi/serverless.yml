@@ -232,6 +232,12 @@ functions:
       - http:
           path: chains2/{category}
           method: get
+  inflows:
+    handler: src/getInflows.default
+    events:
+      - http:
+          path: inflows/{protocol}/{timestamp}
+          method: get
   langs:
     handler: src/getLangs.default
     timeout: 600

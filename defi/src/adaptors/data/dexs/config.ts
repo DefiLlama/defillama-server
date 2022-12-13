@@ -655,5 +655,8 @@ export default {
     },
     "solarflare": {
         enabled: true
+    },
+    "sundaeswap": {
+        enabled: true
     }
 } as AdaptorsConfig

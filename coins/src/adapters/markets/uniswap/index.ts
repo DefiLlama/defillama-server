@@ -78,7 +78,7 @@ export function quickswap(timestamp: number = 0) {
     "polygon",
     "0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32",
     undefined,
-    undefined,
+    "https://api.thegraph.com/subgraphs/name/andyjagoe/quickswap-v2-metrics",
     timestamp
   );
 }

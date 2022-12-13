@@ -26,6 +26,9 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
   arbitrum: {
     GOLD: "0xc4be0798e5b5b1C15edA36d9B2D8c1A60717fA92",
   },
+  bsc: {
+    DOGECOLA: '0xe320df552e78d57e95cf1182b6960746d5016561', // OLD dogecola contract
+  },
 };
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

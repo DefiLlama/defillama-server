@@ -1,6 +1,8 @@
 import type {Protocol} from './types'
 import { baseIconsUrl } from "../constants";
 import { listenerCount } from 'process';
+import { parentPort } from 'worker_threads';
+import parentProtocols from './parentProtocols';
 /*
 {
   id: string;
@@ -20802,6 +20804,29 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   oracles: [],
   listedAt: 1670977584
+},
+{
+  id: "2359",
+  name: "RealT RMM Marketplace",
+  address: null,
+  symbol: "-",
+  url: "https://rmm.realtoken.network/markets",
+  description:
+    "Based on the Aave protocol V2, Liquidity providers (Lenders) gain the ability to earn interest and generate passive income returns, while providing liquidity for Borrowers",
+  chain: "xDai",
+  logo: `${baseIconsUrl}/realt-rmm-marketplace.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["xDai"],
+  module: "realtmarkets/index.js",
+  twitter: "RealTPlatform", 
+  forkedFrom: ["AAVE"],
+  oracles: [],
+  parentProtocol: "RealT",
+  listedAt: 1670982822,
 },
 ]
 

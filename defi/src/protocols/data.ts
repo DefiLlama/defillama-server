@@ -12870,7 +12870,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "753",
-    name: "RealT",
+    name: "RealT Token",
     address: null,
     symbol: "-",
     url: "https://realt.co",
@@ -12885,6 +12885,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["xDai"],
     module: "realt.js",
     twitter: "RealTPlatform",
+    parentProtocol: "RealT",
     listedAt: 1635878880,
   },
   {

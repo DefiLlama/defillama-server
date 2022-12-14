@@ -570,6 +570,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "mstable_",
   },
+  {
+    id: "RealT",
+    name: "RealT",
+    url: "https://realt.co",
+    description:
+    "RealToken provides investors with a method to buy into fractional, tokenized properties, leveraging the U.S. legal system and the permissionless, unrestricted token issuance of Ethereum",
+    logo: `${baseIconsUrl}/realt.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "RealTPlatform",
+  },
 ];
 
 export default parentProtocols;

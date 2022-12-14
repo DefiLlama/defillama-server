@@ -1,5 +1,5 @@
 import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared";
-import protocols from "./adaptors/data/protocols";
+import protocols from "./protocols/data";
 import sluggify from "./utils/sluggify";
 import getTVLOfRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { getLastRecord, hourlyTokensTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";

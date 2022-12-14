@@ -73,6 +73,18 @@ export default async function (
   );
 
   const lastHourlyTVLObject = await lastHourlyTVLRecord;
+
+  if (storePreviousData) {
+    await Promise.all(Object.entries(tvl).map(async ([sectionName, sectionTvl]) => {
+      const prevTvl = lastHourlyTVLObject[sectionName]
+      if (sectionTvl === 0 && prevTvl !== 0 && prevTvl !== undefined) {
+        await sendMessage(
+          `TVL for ${protocol.name} has dropped to 0 on key "${sectionName}" (previous TVL was ${prevTvl})`,
+          process.env.DROPS_WEBHOOK!)
+      }
+    }))
+  }
+
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
     const currentTvl = calculateTVLWithAllExtraSections(tvl)
@@ -89,13 +101,14 @@ export default async function (
           }
         }
       }
+      const timeElapsed = Math.abs(lastHourlyTVLObject.SK - unixTimestamp)
       if (
-        Math.abs(lastHourlyTVLObject.SK - unixTimestamp) < (10 * HOUR) &&
+        timeElapsed < (10 * HOUR) &&
         lastHourlyTVL * 5 < currentTvl &&
         calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl
       ) {
-        const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour, disabling it`
-        if(Math.abs(lastHourlyTVLObject.SK - unixTimestamp) > (5 * HOUR)){
+        const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(10 - timeElapsed/HOUR).toFixed(2)} hours`
+        if(timeElapsed > (3 * HOUR)){
           await sendMessage(errorMessage, process.env.OUTDATED_WEBHOOK!)
         }
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
@@ -111,17 +124,6 @@ export default async function (
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
       }
     }
-  }
-
-  if (storePreviousData) {
-    await Promise.all(Object.entries(tvl).map(async ([sectionName, sectionTvl]) => {
-      const prevTvl = lastHourlyTVLObject[sectionName]
-      if (sectionTvl === 0 && prevTvl !== 0 && prevTvl !== undefined) {
-        await sendMessage(
-          `TVL for ${protocol.name} has dropped to 0 on key "${sectionName}" (previous TVL was ${prevTvl})`,
-          process.env.DROPS_WEBHOOK!)
-      }
-    }))
   }
 
   let tvlPrev1Day =  (await lastDailyTVLRecord).tvl

@@ -24,7 +24,7 @@ const handler = async (
     let outflows = 0;
     Object.entries(currentTokens!.tvl).forEach(([token, amountRaw])=>{
         const amount = amountRaw as number;
-        const diff = amount - old.tvl[token];
+        const diff = amount - (old.tvl[token] ?? 0);
         const price = currentUsdTokens!.tvl[token]/amount;
         outflows += diff*price;
     })

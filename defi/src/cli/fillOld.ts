@@ -41,12 +41,17 @@ async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
 type ChainBlocks = {
   [chain: string]: number;
 }
+let failed = 0
 
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
   dailyItems: DailyItems
 ) {
+  if (failed > 3) {
+    console.log('More than 3 failures in a row, exiting now')
+    process.exit(0)
+  }
   const adapterModule = await importAdapter(protocol)
   let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
   if (!process.env.SKIP_BLOCK_FETCH) {
@@ -70,6 +75,8 @@ async function getAndStore(
     () => deleteItemsOnSameDay(dailyItems, timestamp)
   );
   console.log(timestamp, new Date(timestamp * 1000).toDateString(), tvl);
+  if (tvl === undefined) failed++
+  else failed = 0
 }
 
 function getDailyItems(pk: string) {
@@ -88,7 +95,7 @@ const main = async () => {
   const protocolToRefill = process.argv[2]
   const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
   const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel
-  if(process.env.HISTORICAL !== "true"){
+  if (process.env.HISTORICAL !== "true") {
     throw new Error(`You must set HISTORICAL="true" in your .env`)
   }
   const protocol = getProtocol(protocolToRefill);

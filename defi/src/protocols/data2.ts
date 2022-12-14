@@ -20781,6 +20781,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/RoeFinance/RoeMarkets/blob/main/reports/Akira-Roe-Report.pdf"],
   listedAt: 1670855639
 },
+{
+  id: "2358",
+  name: "Dexit Finance Swap",
+  address: null,
+  symbol: "-",
+  url: "https://dexit.finance/swap/",
+  description:
+    "AMM DEX on Dexit Network",
+  chain: "Dexit",
+  logo: `${baseIconsUrl}/dexit-finance-swap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dexit"],
+  module: "dexit-swap/index.js ",
+  twitter: "DexitNetwork", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1670977584
+},
 ]
 
 export default data2;

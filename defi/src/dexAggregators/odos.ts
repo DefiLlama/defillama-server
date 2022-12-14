@@ -15,14 +15,7 @@ const chainMap = {
 } as any;
 export const name = "Odos";
 
-export async function getQuote(
-  chain: string,
-  from: string,
-  to: string,
-  amount: string,
-  slippage: string,
-  userAddress?: string
-) {
+export async function getQuote(chain: string, from: string, to: string, amount: string, extra: any) {
   const gasPrice = await fetch(`https://app.odos.xyz/gas-prices/${chainMap[chain]}`).then((r) => r.json());
 
   const data = await fetch("https://app.odos.xyz/request-path", {
@@ -40,8 +33,8 @@ export async function getQuote(
       gasPrice: gasPrice?.prices[0]?.fee || gasPrice.base_fee,
       lpBlacklist: [],
       chain: chainToId[chain],
-      slippageAmount: +slippage,
-      walletAddress: userAddress,
+      slippageAmount: +extra.slippage,
+      walletAddress: extra.userAddress,
     }),
     method: "POST",
   }).then((res) => res.json());

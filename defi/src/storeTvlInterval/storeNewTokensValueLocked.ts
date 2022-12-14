@@ -68,7 +68,7 @@ async function checkForOutlierCoins(
       if (currentCoinValue > upperBound || currentCoinValue < lowerBound)
         promises.push(
           sendMessage(
-            `TEST ${coinKey.toUpperCase()} value is out of accepted range for ${tvlKey} on ${protocol}.`,
+            `${coinKey.toUpperCase()} value is out of accepted range for ${tvlKey} on ${protocol}.`,
             process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
             true
           )

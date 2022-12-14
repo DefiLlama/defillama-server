@@ -20829,6 +20829,28 @@ listedAt: 1650804679
   parentProtocol: "RealT",
   listedAt: 1670982822,
 },
+{
+  id: "2360",
+  name: "MahaLend",
+  address: null,
+  symbol: "-",
+  url: "http://mahalend.com",
+  description:
+    "MahaLend is a lending protocol that allows you to leverage DeFi yields with ARTH.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/mahalend.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "mahalend/index.js",
+  twitter: "mahalend", 
+  forkedFrom: ["AAVE"],
+  oracles: ["Chainlink"],
+  listedAt: 1671034965
+},
 ]
 
 export default data2;

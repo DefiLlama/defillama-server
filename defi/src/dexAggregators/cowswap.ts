@@ -1,6 +1,7 @@
 // Source: https://docs.cow.fi/off-chain-services/api
 
 import { ethers } from "ethers";
+import fetch from "node-fetch";
 
 export const chainToId = {
   ethereum: "https://api.cow.fi/mainnet",

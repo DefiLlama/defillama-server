@@ -20851,6 +20851,28 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1671034965
 },
+{
+  id: "2361",
+  name: "Mummy Finance",
+  address: null,
+  symbol: "-",
+  url: "https://www.mummy.finance",
+  description:
+    "Bring unparalleled Swap and Perpetual trading experience to FantomFDN users",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/mummy-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Fantom"],
+  module: "mummy/index.js",
+  twitter: "mummyftm", 
+  forkedFrom: ["GMX"],
+  oracles: [],
+  listedAt: 1671034969
+},
 ]
 
 export default data2;

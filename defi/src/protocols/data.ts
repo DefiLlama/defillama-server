@@ -10384,6 +10384,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "cozyfinance",
     audit_links: ["https://www.cozy.finance/audits/quantstamp.pdf", "https://www.cozy.finance/audits/peckshield.pdf"],
     forkedFrom: ["Compound"], // quite different in purpose but still most code is from compound
+    oracles: ["UMA"],
   },
   {
     id: "630",

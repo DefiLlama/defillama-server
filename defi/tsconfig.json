@@ -20,7 +20,7 @@
     "noImplicitThis": false,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
-    "lib": ["ES2019"]
+    "lib": ["ES2019", "DOM"]
   },
   "include": ["src"],
   "exclude": ["src/setupTestEnv.js", "DefiLlama-Adapters/**/*.js", "src/**/*js", "src/cli/backfillDexVolumes"]

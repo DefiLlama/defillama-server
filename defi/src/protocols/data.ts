@@ -6313,7 +6313,7 @@ const data: Protocol[] = [
     gecko_id: "elk-finance",
     cmcId: "10095",
     category: "Dexes",
-    chains: ["Polygon","Avalanche","Fantom", "xDai", "Binance", "Heco", "Moonriver", "Harmony", "Hoo", "Elastos", "Kucoin", "OKExChain", "Telos", "Cronos", "Fuse", "IoTeX", "Ethereum", "Arbitrum", "Optimism", "Kava", "BitTorrent"],
+    chains: ["Polygon","Avalanche","Fantom", "xDai", "Binance", "Heco", "Moonriver", "Harmony", "Hoo", "Elastos", "Kucoin", "OKExChain", "Telos", "Cronos", "Fuse", "IoTeX", "Ethereum", "Arbitrum", "Optimism", "Kava", "Bittorrent"],
     module: "elkfinance/index.js",
     forkedFrom: ["Uniswap"],
     twitter: "elk_finance",

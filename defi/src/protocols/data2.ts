@@ -19138,7 +19138,7 @@ listedAt: 1650804679
 },
 {
   id: "2284",
-  name: "Woofi Earn",
+  name: "WOOFi Earn",
   address: "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
   symbol: "WOO",
   url: "https://fi.woo.org/earn",

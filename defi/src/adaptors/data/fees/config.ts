@@ -263,5 +263,8 @@ export default {
     },
     "kyberswap": {
         enabled: true
+    },
+    "llamalend": {
+        enabled: true
     }
 } as AdaptorsConfig

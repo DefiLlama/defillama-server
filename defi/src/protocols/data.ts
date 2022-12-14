@@ -6302,7 +6302,7 @@ const data: Protocol[] = [
   {
     id: "420",
     name: "Elk",
-    address: "polygon:0xeEeEEb57642040bE42185f49C52F7E9B38f8eeeE",
+    address: "0xeEeEEb57642040bE42185f49C52F7E9B38f8eeeE",
     symbol: "ELK",
     url: "https://elk.finance",
     description: "Elk Finance is building Web3 infrastructure for cross-chain value and data transfer via ElkNet - our decentralized bridge. Our motto is Any chain, anytime, anywhere.",
@@ -6313,7 +6313,7 @@ const data: Protocol[] = [
     gecko_id: "elk-finance",
     cmcId: "10095",
     category: "Dexes",
-    chains: ["Polygon","Avalanche","Fantom", "xDai", "Binance", "Heco", "Moonriver", "Harmony", "Hoo", "Elastos", "Kucoin", "OKExChain", "Telos", "Cronos", "Fuse", "IoTeX", "Ethereum", "Arbitrum", "Optimism", "Kava"],
+    chains: ["Polygon","Avalanche","Fantom", "xDai", "Binance", "Heco", "Moonriver", "Harmony", "Hoo", "Elastos", "Kucoin", "OKExChain", "Telos", "Cronos", "Fuse", "IoTeX", "Ethereum", "Arbitrum", "Optimism", "Kava", "Bittorrent"],
     module: "elkfinance/index.js",
     forkedFrom: ["Uniswap"],
     twitter: "elk_finance",
@@ -10384,6 +10384,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "cozyfinance",
     audit_links: ["https://www.cozy.finance/audits/quantstamp.pdf", "https://www.cozy.finance/audits/peckshield.pdf"],
     forkedFrom: ["Compound"], // quite different in purpose but still most code is from compound
+    oracles: ["UMA"],
   },
   {
     id: "630",
@@ -12870,7 +12871,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "753",
-    name: "RealT",
+    name: "RealT Tokens",
     address: null,
     symbol: "-",
     url: "https://realt.co",
@@ -12885,6 +12886,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["xDai"],
     module: "realt.js",
     twitter: "RealTPlatform",
+    parentProtocol: "RealT",
     listedAt: 1635878880,
   },
   {
@@ -17603,7 +17605,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "colony/index.js",
     twitter: "Colonylab",
     listedAt: 1639173502,
-    audit_links: ['https://omniscia.io/colony-lab-staking-v2/manual-review'],
+    audit_links: ['https://omniscia.io/colony-lab-staking-v2/manual-review', 'https://hacken.io/audits/#colony_lab'],
   },
 /*
   {

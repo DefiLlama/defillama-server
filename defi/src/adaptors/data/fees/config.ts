@@ -260,5 +260,11 @@ export default {
     },
     "premia": {
         enabled: true
+    },
+    "kyberswap": {
+        enabled: true
+    },
+    "llamalend": {
+        enabled: true
     }
 } as AdaptorsConfig

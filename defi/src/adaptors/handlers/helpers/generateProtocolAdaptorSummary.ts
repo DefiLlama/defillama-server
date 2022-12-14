@@ -3,6 +3,7 @@ import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../uti
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
+import { sendDiscordAlert } from "../../utils/notify"
 import { calcNdChange, getStatsByProtocolVersion, sumAllVolumes } from "../../utils/volumeCalcs"
 import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
@@ -50,6 +51,11 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             adapter.protocolsData ? Object.keys(adapter.protocolsData) : [adapter.module],
             chainFilter
         )
+
+        for (const spikeMSG of cleanRecords.spikesLogs) {
+            await sendDiscordAlert(spikeMSG, adaptorType)
+        }
+
         adaptorRecords = cleanRecords.cleanRecordsArr
         if (adaptorRecords.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
 

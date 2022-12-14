@@ -1,6 +1,8 @@
 // Source https://docs.1inch.io/docs/aggregation-protocol/api/swagger
 
 import { ethers } from "ethers";
+import fetch from "node-fetch";
+
 import { defillamaReferrerAddress } from "./constants";
 
 export const chainToId = {

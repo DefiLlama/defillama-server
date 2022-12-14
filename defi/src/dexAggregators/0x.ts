@@ -1,4 +1,6 @@
 import { ethers } from "ethers";
+import fetch from "node-fetch";
+
 import { defillamaReferrerAddress } from "./constants";
 
 export const chainToId = {

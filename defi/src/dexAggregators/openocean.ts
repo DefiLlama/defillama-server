@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import fetch from "node-fetch";
 
 export const chainToId = {
   ethereum: 1,

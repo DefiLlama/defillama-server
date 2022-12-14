@@ -1,6 +1,7 @@
 import { providers } from "@defillama/sdk/build/general";
 import BigNumber from "bignumber.js";
 import { ethers } from "ethers";
+import fetch from "node-fetch";
 
 export const chainToId = {
   ethereum: "ETH",

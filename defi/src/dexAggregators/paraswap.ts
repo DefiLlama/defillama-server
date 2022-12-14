@@ -1,6 +1,7 @@
 // Source: https://developers.paraswap.network/api/master
 
 import { ethers } from "ethers";
+import fetch from "node-fetch";
 
 // api docs have an outdated chain list, need to check https://app.paraswap.io/# to find supported networks
 export const chainToId = {

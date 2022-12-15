@@ -591,7 +591,7 @@ export default {
         enabled: true
     },
     "minerswap": {
-        enabled: true
+        enabled: false
     },
     "wavelength-dao": {
         enabled: true

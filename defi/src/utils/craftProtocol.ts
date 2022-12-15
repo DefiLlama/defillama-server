@@ -18,7 +18,7 @@ import fetch from "node-fetch";
 import { convertSymbols } from "./symbols/convert";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
-  if(balances !== undefined){
+  if(typeof balances === "object"){
     convertSymbols(balances)
   }
   const formattedBalances: { [symbol: string]: number } = {};

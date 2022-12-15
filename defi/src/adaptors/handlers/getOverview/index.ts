@@ -63,6 +63,7 @@ export type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[strin
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.DEXS]: AdaptorRecordType.dailyVolume,
+    [AdapterType.DERIVATIVES]: AdaptorRecordType.dailyVolume,
     [AdapterType.FEES]: AdaptorRecordType.dailyFees,
     [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
     [AdapterType.OPTIONS]: AdaptorRecordType.dailyNotionalVolume,
@@ -132,7 +133,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
-            // console.error(e)
+            console.error(e)
             // TODO, move error handling to rejected promises
             if (enableAlerts && !adapter.disabled) {
                 errors.push(e.message)

@@ -20895,6 +20895,28 @@ listedAt: 1650804679
   oracles: ["Uniswap"],
   listedAt: 1671064853
 },
+{
+  id: "2363",
+  name: "Hotbit",
+  address: null,
+  symbol: "-",
+  url: "https://www.hotbit.io",
+  description:
+    "Known as the cryptocurrency trading platform that lists the world's greatest number of cryptocurrency projects",
+  chain: "Bitcoin",
+  logo: `${baseIconsUrl}/hotbit.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Bitcoin", "Ethereum", "Tron"],
+  module: "hotbit/index.js",
+  twitter: "Hotbit_news", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671107470
+},
 ]
 
 export default data2;

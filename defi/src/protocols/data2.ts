@@ -20917,6 +20917,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671107470
 },
+{
+  id: "2364",
+  name: "Butter Network",
+  address: null,
+  symbol: "-",
+  url: "https://butternetwork.io",
+  description:
+    "Butter is set to change how users, projects, and dApps move tokens and NFTs between blockchains with a suite of proven-secure and user-friendly products",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/butter-network.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Polygon", "Near", "Binance"],
+  module: "butternetwork/index.js",
+  twitter: "ButterNetworkio", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671145989
+},
 ]
 
 export default data2;

@@ -20,7 +20,7 @@ const main = async()=>{
         let outflowsNow = 0;
         Object.entries(t.tvl).forEach(([token, amountRaw])=>{
             const amount = amountRaw as number;
-            const diff = amount - prev[token];
+            const diff = amount - (prev[token] ?? 0);
             const price = usdPrices[token]/amount;
             outflowsNow += diff*price;
         })

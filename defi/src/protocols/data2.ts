@@ -20873,6 +20873,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671034969
 },
+{
+  id: "2362",
+  name: "Hedgehog",
+  address: "0x6d4ca1177087924edfe0908ef655169ea766fdc3",
+  symbol: "HEDGEHOG",
+  url: "https://liqui.space/",
+  description:
+    "LP-vault that earns ETH, by providing liquidity for the UniV3 and hedging its imp losses with Squeeth",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/hedgehog.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  module: "hedgehog/index.js",
+  twitter: "liqui_space", 
+  forkedFrom: [],
+  oracles: ["Uniswap"],
+  listedAt: 1671064853
+},
 ]
 
 export default data2;

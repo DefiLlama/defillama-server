@@ -1,6 +1,7 @@
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { AdaptorData } from "./types";
 import dexs, { KEYS_TO_STORE as dexs_KEYS_TO_STORE, importModule as dexs_importModule, config as dexs_config } from "./dexs"
+import derivatives, { KEYS_TO_STORE as derivatives_KEYS_TO_STORE, importModule as derivatives_importModule, config as derivatives_config } from "./derivatives"
 import fees, { KEYS_TO_STORE as fees_KEYS_TO_STORE, importModule as fees_importModule, config as fees_config } from "./fees"
 import aggregators, { KEYS_TO_STORE as aggregators_KEYS_TO_STORE, importModule as aggregators_importModule, config as aggregators_config } from "./aggregators"
 import options, { KEYS_TO_STORE as options_KEYS_TO_STORE, importModule as options_importModule, config as options_config } from "./options"
@@ -45,6 +46,12 @@ export default (adaptorType: AdapterType): AdaptorData => {
         KEYS_TO_STORE: protocols_KEYS_TO_STORE,
         importModule: protocols_importModule,
         config: protocols_config
+    }
+    if (adaptorType === AdapterType.DERIVATIVES) return {
+        default: derivatives,
+        KEYS_TO_STORE: derivatives_KEYS_TO_STORE,
+        importModule: derivatives_importModule,
+        config: derivatives_config
     }
     else throw new Error(`Couldn't find data for ${adaptorType} type`)
 }

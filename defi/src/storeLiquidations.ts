@@ -7,11 +7,14 @@ import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 import { performance } from "perf_hooks";
 
 export const standaloneProtocols: string[] = ["venus"];
+export const excludedProtocols: string[] = ["angle"]
 
 async function handler() {
   const time = getCurrentUnixTimestamp();
   const data = await Promise.all(
-    Object.entries(adaptersModules).map(async ([protocol, module]) => {
+    Object.entries(adaptersModules)
+    .filter(([protocol]) => !excludedProtocols.includes(protocol))
+    .map(async ([protocol, module]) => {
       const start = performance.now();
       console.log(`Fetching ${protocol} data`);
       const liqs: { [chain: string]: Liq[] } = {};

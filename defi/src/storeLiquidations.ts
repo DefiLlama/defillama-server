@@ -7,7 +7,7 @@ import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 import { performance } from "perf_hooks";
 
 export const standaloneProtocols: string[] = ["venus"];
-export const excludedProtocols: string[] = ["angle"]
+export const excludedProtocols: string[] = ["solend"]
 
 async function handler() {
   const time = getCurrentUnixTimestamp();

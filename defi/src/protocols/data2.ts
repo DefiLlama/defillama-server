@@ -20939,6 +20939,55 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671145989
 },
+{
+  id: "2365",
+  name: "Neopin",
+  address: "klaytn:0xe06597d02a2c3aa7a9708de2cfa587b128bd3815",
+  symbol: "NPT",
+  url: "https://app.neopin.io/swap",
+  description:
+    "Neopin is an AMM-based Instant Swap Protocol with multi-chain staking.",
+  chain: "Klaytn",
+  logo: `${baseIconsUrl}/neopin.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "neopin",
+  cmcId: "18966",
+  category: "Dexes",
+  chains: ["Klaytn"],
+  module: "neopin/index.js",
+  twitter: "NeopinOfficial", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  audit_links: [
+                  "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220627_NPT_Staking_And_DEX_Swap_SlowMist.pdf",
+                  "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220629_Easy_DEX_And_Farm_SlowMist.pdf",
+                  "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_Verification_NPT_SlowMist.pdf",
+              ],
+  listedAt: 1671198621
+},
+{
+  id: "2366",
+  name: "Neopin Staking",
+  address: null,
+  symbol: "-",
+  url: "https://app.neopin.io/staking",
+  description:
+    "Liquid Staking",
+  chain: "Klaytn",
+  logo: `${baseIconsUrl}/neopin-staking.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Klaytn"],
+  module: "neopin-staking/index.js",
+  twitter: "NeopinOfficial", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671198629
+},
 ]
 
 export default data2;

@@ -20959,6 +20959,7 @@ listedAt: 1650804679
   twitter: "NeopinOfficial", 
   forkedFrom: ["Uniswap"],
   oracles: [],
+  parentProtocol: "Neopin Finance",
   audit_links: [
                   "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220627_NPT_Staking_And_DEX_Swap_SlowMist.pdf",
                   "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220629_Easy_DEX_And_Farm_SlowMist.pdf",
@@ -20986,6 +20987,7 @@ listedAt: 1650804679
   twitter: "NeopinOfficial", 
   forkedFrom: [],
   oracles: [],
+  parentProtocol: "Neopin Finance",
   listedAt: 1671198629
 },
 ]

@@ -658,5 +658,8 @@ export default {
     },
     "sundaeswap": {
         enabled: true
+    },
+    "wx.network": {
+        enabled: true
     }
 } as AdaptorsConfig

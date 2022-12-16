@@ -582,6 +582,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RealTPlatform",
   },
+  {
+    id: "Neopin Finance",
+    name: "Neopin Finance",
+    url: "https://neopin.io",
+    description:
+    "NEOPIN is an open blockchain platform servicing DeFi, P2E, and more.",
+    logo: `${baseIconsUrl}/neopin finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "NeopinOfficial",
+  },
 ];
 
 export default parentProtocols;

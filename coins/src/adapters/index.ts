@@ -41,6 +41,7 @@ export default {
   unknownTokens: require("./other/index"),
   pods: require("./other/index"),
   distressed: require("./other/index"),
+  manualInput: require("./other/index"),
   uniswap: require("./markets/uniswap/index"),
   sushiswap1: require("./markets/uniswap/index"),
   sushiswap2: require("./markets/uniswap/index"),

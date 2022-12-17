@@ -4,6 +4,7 @@ import abraAdapter from "./abracadabra";
 import unknownTokenAdapter from "./unknownToken";
 import podsAdapter from "./pods";
 import distressedAdapter from "./distressedAssets";
+import manualInputAdapter from "./manualInput";
 import { wrappedGasTokens } from "../utils/gasTokens";
 
 export function synthetix(timestamp: number = 0) {
@@ -53,4 +54,8 @@ export function distressed(timestamp: number = 0) {
     distressedAdapter("klaytn", timestamp),
     distressedAdapter("arbitrum", timestamp)
   ]);
+}
+export function manualInput(timestamp: number = 0) {
+  console.log("starting manualInputs");
+  return manualInputAdapter("evmos", timestamp);
 }

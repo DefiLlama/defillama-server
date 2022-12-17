@@ -103,12 +103,13 @@ export default async function (
       }
       const timeElapsed = Math.abs(lastHourlyTVLObject.SK - unixTimestamp)
       if (
-        timeElapsed < (10 * HOUR) &&
+        timeElapsed < (15 * HOUR) &&
         lastHourlyTVL * 5 < currentTvl &&
         calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl
       ) {
         const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(10 - timeElapsed/HOUR).toFixed(2)} hours`
         if(timeElapsed > (3 * HOUR)){
+          await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
           await sendMessage(errorMessage, process.env.OUTDATED_WEBHOOK!)
         }
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)

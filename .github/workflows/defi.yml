@@ -73,6 +73,7 @@ jobs:
         DAILY_GROWTH_WEBHOOK: ${{ secrets.DAILY_GROWTH_WEBHOOK }}
         MONITOR_WEBHOOK: ${{ secrets.MONITOR_WEBHOOK }}
         STALE_COINS_ADAPTERS_WEBHOOK: ${{ secrets.STALE_COINS_ADAPTERS_WEBHOOK }}
+        TEAM_WEBHOOK: ${{ secrets.TEAM_WEBHOOK }}
         REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
         PROD_VYBE_API_KEY: ${{ secrets.PROD_VYBE_API_KEY }}
         BIT_QUERY_API_KEY: ${{ secrets.BIT_QUERY_API_KEY }}

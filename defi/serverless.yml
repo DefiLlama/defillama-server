@@ -86,6 +86,7 @@ provider:
     FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
     VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
+    TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
     REVALIDATE_SECRET: ${file(./env.js):REVALIDATE_SECRET}
     DEFILLAMA_SDK_MUTED: true
     PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}

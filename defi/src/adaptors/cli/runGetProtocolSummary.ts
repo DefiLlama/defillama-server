@@ -6,7 +6,7 @@ import { performance } from "perf_hooks";
     const start = performance.now()
     const r = await handler({
         pathParameters: {
-            name: "pancakeswap",
+            name: "uniswap",
             type: "fees"
         },
         /* queryStringParameters: {
@@ -15,8 +15,8 @@ import { performance } from "perf_hooks";
     } as unknown as AWSLambda.APIGatewayEvent)
     const end = performance.now()
     const d = JSON.parse(r.body)
-    console.log(d.totalDataChart.length)
-    console.log(d.totalDataChartBreakdown.length)
+    console.log("last one", JSON.stringify(d.totalDataChart.slice(-1), null, 2))
+    console.log("last bra", JSON.stringify(d.totalDataChartBreakdown.slice(-1), null, 2))
     delete d['totalDataChart']
     delete d['totalDataChartBreakdown']
     console.log(d)

@@ -45,7 +45,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         adaptorRecords = adaptorRecords.slice(startIndex + 1)
 
         // Clean data by chain
-        const cleanRecords = generateCleanRecords(
+        const cleanRecords = await generateCleanRecords(
             adaptorRecords,
             adapter.chains,
             adapter.protocolsData ? Object.keys(adapter.protocolsData) : [adapter.module],

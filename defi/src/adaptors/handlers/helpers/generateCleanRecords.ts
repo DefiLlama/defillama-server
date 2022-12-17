@@ -6,13 +6,14 @@ import { formatChainKey } from "../../utils/getAllChainsFromAdaptors"
 import { sendDiscordAlert } from "../../utils/notify"
 import { calcNdChange } from "../../utils/volumeCalcs"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
+import { convertDataToUSD, IGetHistoricalPricesResponse } from "./convertRecordDataCurrency"
 
 /**
  * Returns a normalized list of adaptor records.
  * If there's missing data it tries to average it based on previos/next available data.
  */
 
-export default (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
+export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
     const spikesLogs: string[] = []
     const chains = chainsRaw.map(formatChainKey)
     const chainFilter = chainFilterRaw ? formatChainKey(chainFilterRaw) : undefined
@@ -21,7 +22,8 @@ export default (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols:
     // Get adaptor id for all records
     const adaptorId = adaptorRecords[0].adaptorId
     // Process adaptors. Should be changed to process based on timestamps instead of stored records
-    const processed = adaptorRecords.reduce((acc, adaptorRecord, currentIndex, array) => {
+    const processed = await adaptorRecords.reduce(async (accP, adaptorRecord, currentIndex, array) => {
+        const acc = await accP
         // Let's work with a clean record
         const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
         // Here will be stored the normalized data (aka data with no errors and if missing, extrapolation of that day)
@@ -102,7 +104,7 @@ export default (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols:
             type,
             adaptorId,
             timestamp,
-            generatedData
+            await convertDataToUSD(generatedData, timestamp)
         )
         Object.entries(acc.lastDataRecord).forEach(([key, record]) => {
             const [chain, protocol] = key.split('#')
@@ -150,7 +152,7 @@ export default (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols:
         acc.adaptorRecords.push(newGen)
         acc.recordsMap[String(newGen.timestamp)] = newGen
         return acc
-    }, {
+    }, Promise.resolve({
         adaptorRecords: [] as AdaptorRecord[],
         lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains) }), {}),
         nextDataRecord: {},
@@ -160,7 +162,7 @@ export default (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols:
         nextDataRecord: { [chainProt: string]: AdaptorRecord | undefined }
         adaptorRecords: AdaptorRecord[],
         recordsMap: IJSON<AdaptorRecord> // Might be good idea to merge it with adaptorRecords list since its the same
-    })
+    }))
     return {
         cleanRecordsArr: processed.adaptorRecords,
         cleanRecordsMap: processed.recordsMap,

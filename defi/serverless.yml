@@ -472,7 +472,7 @@ functions:
     events:
       - schedule: cron(01 0 * * ? *)
   npmData:
-    handler: src/stats/getNpmData.default
+    handler: src/getNpmData.default
     events:
       - http:
           path: npm/{start}

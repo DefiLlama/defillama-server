@@ -203,9 +203,6 @@ export async function storeTvl(
     if (usdTvls.tvl === 0 && protocol.name === "Tarot") {
       throw new Error("Tarot TVL is not 0")
     }
-    if (usdTvls.tvl > 100e9) {
-      throw new Error(`TVL of ${protocol.name} is over 100bn`)
-    }
   } catch (e) {
     console.error(protocol.name, e);
     insertOnDb(useCurrentPrices, 'INSERT INTO `errors2` VALUES (?, ?, ?, ?, ?)', [protocol.name, String(e)], "aggregate")

@@ -88,6 +88,11 @@ export default async function (
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
     const currentTvl = calculateTVLWithAllExtraSections(tvl)
+    if(currentTvl > 100e9){
+      const errorMessage = `TVL of ${protocol.name} is over 100bn`
+      await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+      throw new Error(errorMessage)
+    }
     if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {
       const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
         currentTvl

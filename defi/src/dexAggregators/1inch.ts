@@ -34,9 +34,11 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
       `https://api.1inch.io/v4.0/${chainId}/quote?fromTokenAddress=${tokenFrom}&toTokenAddress=${tokenTo}&amount=${amount}&slippage=${extra.slippage}`
     ).then((r) => r.json()),
     fetch(`https://api.1inch.io/v4.0/${chainId}/approve/spender`).then((r) => r.json()),
-    fetch(
-      `https://api.1inch.io/v4.0/${chainId}/swap?fromTokenAddress=${tokenFrom}&toTokenAddress=${tokenTo}&amount=${amount}&fromAddress=${extra.userAddress}&slippage=${extra.slippage}&referrerAddress=${defillamaReferrerAddress}`
-    ).then((r) => r.json()),
+    extra.userAddress !== ethers.constants.AddressZero
+      ? fetch(
+          `https://api.1inch.io/v4.0/${chainId}/swap?fromTokenAddress=${tokenFrom}&toTokenAddress=${tokenTo}&amount=${amount}&fromAddress=${extra.userAddress}&slippage=${extra.slippage}&referrerAddress=${defillamaReferrerAddress}`
+        ).then((r) => r.json())
+      : null,
   ]);
 
   return {

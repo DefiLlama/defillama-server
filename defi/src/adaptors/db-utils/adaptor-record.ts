@@ -36,7 +36,7 @@ export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((ac
 export const AdaptorRecordTypeMapReverse = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {} as IJSON<string>)
 
 export interface IRecordAdapterRecordChainData {
-    [protocolVersion: string]: number | string,
+    [protocolVersion: string]: number | string | IJSON<string>,
 }
 
 export interface IRecordAdaptorRecordData {

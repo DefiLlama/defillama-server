@@ -1,10 +1,6 @@
 import dynamodb from "../utils/shared/dynamodb";
 import { Protocol } from "../protocols/data";
-import { 
-  getDay,
-  getTimestampAtStartOfDay,
-  secondsInDay,
-} from "../utils/date";
+import { getDay, getTimestampAtStartOfDay, secondsInDay } from "../utils/date";
 import { TokensValueLocked, tvlsObject } from "../types";
 import getTVLOfRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
 import { sendMessage } from "../utils/discord";
@@ -16,7 +12,7 @@ export default async (
   unixTimestamp: number,
   tvl: tvlsObject<TokensValueLocked>,
   hourlyTvl: PKconverted,
-  dailyTvl: PKconverted,
+  dailyTvl: PKconverted
 ) => {
   const hourlyPK = hourlyTvl(protocol.id);
   if (Object.keys(tvl).length === 0) {
@@ -26,13 +22,13 @@ export default async (
   await dynamodb.put({
     PK: hourlyPK,
     SK: unixTimestamp,
-    ...tvl,
+    ...tvl
   });
 
   const closestDailyRecord = await getTVLOfRecordClosestToTimestamp(
     dailyTvl(protocol.id),
     unixTimestamp,
-    secondsInDay*1.5
+    secondsInDay * 1.5
   );
 
   if (hourlyPK.includes("hourlyUsdTokensTvl"))
@@ -43,7 +39,7 @@ export default async (
     await dynamodb.put({
       PK: dailyTvl(protocol.id),
       SK: getTimestampAtStartOfDay(unixTimestamp),
-      ...tvl,
+      ...tvl
     });
   }
 };
@@ -52,7 +48,7 @@ async function checkForOutlierCoins(
   previousTvls: tvlsObject<TokensValueLocked>,
   protocol: string
 ) {
-  const threshold = 0.05;
+  const threshold = 0.4;
   const promises: Promise<void>[] = [];
 
   Object.keys(currentTvls).map((tvlKey) => {

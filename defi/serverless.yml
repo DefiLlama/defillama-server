@@ -80,8 +80,8 @@ provider:
     INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
     DROPS_WEBHOOK: ${file(./env.js):DROPS_WEBHOOK}
     EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
-    FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
-    DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
+    #FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
+    #DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
     MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
     FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
     VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}

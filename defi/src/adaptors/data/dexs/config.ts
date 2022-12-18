@@ -623,7 +623,7 @@ export default {
         enabled: true
     },
     "emdx": {
-        enabled: true
+        enabled: false
     },
     "cetus": {
         enabled: true

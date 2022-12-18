@@ -49,12 +49,12 @@ async function checkForOutlierCoins(
   protocol: string
 ) {
   const changeThresholdFactor = 4;
-  const proportionThresholdFactor = 0.2;
+  const proportionThresholdFactor = 0.5;
   const headline = `${protocol} has TVL values out of accepted range:\n`;
   let alertString = headline;
 
   Object.keys(currentTvls).map((tvlKey) => {
-    const totalChainTvl = Object.values(currentTvls[tvlKey]).reduce(
+    const totalChainTvlPrevious = Object.values(previousTvls[tvlKey]).reduce(
       (p: number, c: number) => p + c,
       0
     );
@@ -65,14 +65,18 @@ async function checkForOutlierCoins(
       if (!(coinKey in previousTvls[tvlKey])) return;
 
       const previousCoinValue = previousTvls[tvlKey][coinKey];
-      const upperBound = previousCoinValue * (1 * changeThresholdFactor);
-      const lowerBound = previousCoinValue * (1 / changeThresholdFactor);
+      const changeUpperBound = previousCoinValue * changeThresholdFactor;
+      const changeLowerBound = previousCoinValue / changeThresholdFactor;
+
+      const proportionBoundPrevious =
+        totalChainTvlPrevious * proportionThresholdFactor;
 
       if (
-        currentCoinValue > proportionThresholdFactor * totalChainTvl &&
-        (currentCoinValue > upperBound || currentCoinValue < lowerBound)
+        currentCoinValue > proportionBoundPrevious &&
+        (currentCoinValue > changeUpperBound ||
+          currentCoinValue < changeLowerBound)
       )
-        alertString += `${coinKey.toUpperCase()} on ${tvlKey}, `;
+        alertString += `${coinKey.toUpperCase()} on ${tvlKey} with previous of ${previousCoinValue} and current of ${currentCoinValue}, `;
     });
   });
 

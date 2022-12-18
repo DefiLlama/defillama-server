@@ -20997,7 +20997,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://www.myswap.xyz",
   description:
-    "Liquid Staking",
+    "an AMM on top of StarkNet",
   chain: "Starknet",
   logo: `${baseIconsUrl}/myswap.png`,
   audits: "0",

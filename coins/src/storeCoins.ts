@@ -15,7 +15,7 @@ const withTimeout = (millis: number, promise: any) => {
 };
 
 const step = 2000;
-const timeout = 8995000; // 15mins - 5s
+const timeout = 840000; //14mins
 export default async function handler(event: any) {
   const a = Object.entries(adapters);
   const timestamp = 0;
@@ -38,7 +38,7 @@ export default async function handler(event: any) {
       }
     })
   );
-} // ts-node src/storeCoins.ts
+} // ts-node coins/src/storeCoins.ts
 // async function main() {
 //   let a = { protocolIndexes: [0] };
 //   await handler(a);

@@ -20990,6 +20990,28 @@ listedAt: 1650804679
   parentProtocol: "Neopin Finance",
   listedAt: 1671198629
 },
+{
+  id: "2367",
+  name: "mySwap",
+  address: null,
+  symbol: "-",
+  url: "https://www.myswap.xyz",
+  description:
+    "Liquid Staking",
+  chain: "Starknet",
+  logo: `${baseIconsUrl}/myswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Starknet"],
+  module: "myswap/index.js",
+  twitter: "mySwapxyz", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671361302
+},
 ]
 
 export default data2;

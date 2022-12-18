@@ -661,5 +661,8 @@ export default {
     },
     "wx.network": {
         enabled: true
+    },
+    "myswap": {
+        enabled: true
     }
 } as AdaptorsConfig

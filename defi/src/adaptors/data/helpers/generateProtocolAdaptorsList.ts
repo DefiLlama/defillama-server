@@ -48,15 +48,12 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
             if (config?.[adapterKey]?.protocolsData && 'breakdown' in moduleObject)
                 moduleObject = {
                     ...moduleObject,
-                    breakdown: {
-                        ...moduleObject.breakdown,
-                        ...Object.entries(moduleObject.breakdown)
-                            .filter(([vName, _adapter]) => config?.[adapterKey]?.protocolsData?.[vName]?.enabled)
-                            .reduce((acc, [vName, adapter]) => {
-                                acc[vName] = adapter
-                                return acc
-                            }, {} as typeof moduleObject.breakdown)
-                    }
+                    breakdown: Object.entries(moduleObject.breakdown)
+                        .filter(([vName, _adapter]) => config?.[adapterKey]?.protocolsData?.[vName]?.enabled)
+                        .reduce((acc, [vName, adapter]) => {
+                            acc[vName] = adapter
+                            return acc
+                        }, {} as typeof moduleObject.breakdown)
                 } as Adapter
             return {
                 ...dexFoundInProtocols,
@@ -80,9 +77,10 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
 export function getDisplayName(name: string, adapter: Adapter) {
     if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
     if (name.split(' ')[0].includes('Uniswap')) return 'Uniswap'
+    if (name === '0x') return '0x - RFQ'
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
         const versionName = Object.keys(adapter.breakdown)[0]
-        return `${name} - ${versionName.charAt(0).toUpperCase()}${versionName.slice(0)}`
+        return `${name} - ${versionName.charAt(0).toUpperCase()}${versionName.slice(1)}`
     }
     if (adapter.protocolType === ProtocolType.CHAIN) return getChainDisplayName(name.toLowerCase(), true)
     return name

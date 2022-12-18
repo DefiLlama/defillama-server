@@ -48,7 +48,7 @@ async function checkForOutlierCoins(
   previousTvls: tvlsObject<TokensValueLocked>,
   protocol: string
 ) {
-  const threshold = 0.4;
+  const thresholdFactor = 2;
   const promises: Promise<void>[] = [];
 
   Object.keys(currentTvls).map((tvlKey) => {
@@ -58,8 +58,8 @@ async function checkForOutlierCoins(
       if (!(coinKey in previousTvls[tvlKey])) return;
 
       const previousCoinValue = previousTvls[tvlKey][coinKey];
-      const upperBound = previousCoinValue * (1 + threshold);
-      const lowerBound = previousCoinValue * (1 - threshold);
+      const upperBound = previousCoinValue * (1 * thresholdFactor);
+      const lowerBound = previousCoinValue * (1 / thresholdFactor);
 
       if (currentCoinValue > upperBound || currentCoinValue < lowerBound)
         promises.push(

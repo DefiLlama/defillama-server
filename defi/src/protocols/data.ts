@@ -14537,7 +14537,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://xexchange.com/",
   description: "xExchange is a DEX AMM running on the MultiversX Network. It is built by the same team that has built the MultiversX blockchain.",
   chain: "Elrond",
-  logo: `${baseIconsUrl}/maiar-exchange.png`,
+  logo: `${baseIconsUrl}/ecxchange.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "maiar-dex",

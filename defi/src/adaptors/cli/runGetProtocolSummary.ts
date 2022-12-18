@@ -6,8 +6,8 @@ import { performance } from "perf_hooks";
     const start = performance.now()
     const r = await handler({
         pathParameters: {
-            name: "uniswap",
-            type: "fees"
+            name: "gmx",
+            type: "dexs"
         },
         /* queryStringParameters: {
             dataType: "dailyRevenue"

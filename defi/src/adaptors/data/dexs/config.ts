@@ -63,6 +63,14 @@ export default {
         enabled: true
     },
     "gmx": {
+        protocolsData: {
+            'swap': {
+                enabled: true
+            },
+            'derivatives': {
+                enabled: false
+            }
+        },
         enabled: true
     },
     "quickswap": {

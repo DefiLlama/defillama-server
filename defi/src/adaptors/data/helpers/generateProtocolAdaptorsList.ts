@@ -44,18 +44,32 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 || dexP.module?.split("/")[0]?.includes(adapterKey))
         })
         if (dexFoundInProtocols && imports_obj[adapterKey].module.default) {
+            let moduleObject = imports_obj[adapterKey].module.default
+            if (config?.[adapterKey]?.protocolsData && 'breakdown' in moduleObject)
+                moduleObject = {
+                    ...moduleObject,
+                    breakdown: {
+                        ...moduleObject.breakdown,
+                        ...Object.entries(moduleObject.breakdown)
+                            .filter(([vName, _adapter]) => config?.[adapterKey]?.protocolsData?.[vName]?.enabled)
+                            .reduce((acc, [vName, adapter]) => {
+                                acc[vName] = adapter
+                                return acc
+                            }, {} as typeof moduleObject.breakdown)
+                    }
+                } as Adapter
             return {
                 ...dexFoundInProtocols,
                 ...overrides[adapterKey],
                 module: adapterKey,
                 config: config[adapterKey],
-                chains: getAllChainsFromAdaptors([adapterKey], imports_obj),
-                disabled: isDisabled(imports_obj[adapterKey].module.default),
-                displayName: getDisplayName(dexFoundInProtocols.name, imports_obj[adapterKey].module.default),
-                protocolsData: getProtocolsData(adapterKey, imports_obj[adapterKey].module.default),
+                chains: getAllChainsFromAdaptors([adapterKey], moduleObject),
+                disabled: isDisabled(moduleObject),
+                displayName: getDisplayName(dexFoundInProtocols.name, moduleObject),
+                protocolsData: getProtocolsData(adapterKey, moduleObject),
                 protocolType: adapterObj.module.default?.protocolType,
                 methodologyURL: adapterObj.codePath,
-                methodology: getMethodologyData(adapterKey, imports_obj[adapterKey].module.default) ?? getMethodologyByType(dexFoundInProtocols.category ?? '')
+                methodology: getMethodologyData(adapterKey, moduleObject) ?? getMethodologyByType(dexFoundInProtocols.category ?? '')
             }
         }
         // TODO: Handle better errors
@@ -66,8 +80,10 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
 export function getDisplayName(name: string, adapter: Adapter) {
     if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
     if (name.split(' ')[0].includes('Uniswap')) return 'Uniswap'
-    /* if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1)
-        return `${Object.keys(adapter.breakdown)[0]}` */
+    if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
+        const versionName = Object.keys(adapter.breakdown)[0]
+        return `${name} - ${versionName.charAt(0).toUpperCase()}${versionName.slice(0)}`
+    }
     if (adapter.protocolType === ProtocolType.CHAIN) return getChainDisplayName(name.toLowerCase(), true)
     return name
 }

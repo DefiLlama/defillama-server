@@ -8,8 +8,9 @@ export interface ProtocolAdaptor extends Protocol {
     disabled: boolean
     protocolType?: ProtocolType
     protocolsData: IJSON<{
-        chains: string[]
-        disabled: boolean
+        category?: string
+        chains?: string[]
+        disabled?: boolean
         methodology?: string | IJSON<string>
     }> | null
     methodologyURL: string
@@ -22,6 +23,9 @@ export interface IConfig {
     enabled?: boolean
     includedVolume?: string[]
     startFrom?: number
+    protocolsData?: IJSON<{
+        enabled?: boolean
+    }>,
 }
 
 

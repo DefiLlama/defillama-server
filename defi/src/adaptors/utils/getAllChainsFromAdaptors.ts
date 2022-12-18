@@ -1,6 +1,7 @@
 import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
+import overrides from "../data/helpers/overrides";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 
 export const getStringArrUnique = (arr: string[]) => {
@@ -9,9 +10,9 @@ export const getStringArrUnique = (arr: string[]) => {
     })
 }
 
-const getAllChainsFromAdaptors = (dexs2Filter: string[], imports_obj: IImportsMap, filter: boolean = true) => {
+const getAllChainsFromAdaptors = (dexs2Filter: string[], moduleAdapter: Adapter, filter: boolean = true) => {
     return getStringArrUnique(dexs2Filter.reduce((acc, adapterName) => {
-        const adaptor = imports_obj[adapterName].module.default
+        const adaptor = moduleAdapter
         if (!adaptor) return acc
         if ("adapter" in adaptor) {
             const chains = Object.keys(adaptor.adapter).filter(c => !filter || c !== DISABLED_ADAPTER_KEY)
@@ -23,7 +24,7 @@ const getAllChainsFromAdaptors = (dexs2Filter: string[], imports_obj: IImportsMa
                 for (const chain of chains)
                     if (!acc.includes(chain)) acc.push(chain)
             }
-        } else console.error("Invalid adapter", adapterName, imports_obj[adapterName].module)
+        } else console.error("Invalid adapter", adapterName, moduleAdapter)
         return acc
     }, [] as string[]))
 }
@@ -90,11 +91,12 @@ export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter): Pr
             return acc
         }, {} as IJSON<ProtocolAdaptor['methodology']>)
     }
-    if (Object.keys(methodology??{}).length<=0) methodology = undefined
+    if (Object.keys(methodology ?? {}).length <= 0) methodology = undefined
     const chainsByProt = getChainByProtocolVersion(adapterKey, moduleAdapter, undefined, false)
     const isDisabled = (protV: string) => chainsByProt[protV] ? chainsByProt[protV].includes(DISABLED_ADAPTER_KEY) : false
     return Object.entries(chainsByProt).reduce((acc, [prot, chains]) => ({
         ...acc, [prot]: {
+            ...overrides?.[adapterKey]?.protocolsData?.[prot],
             chains: chains.filter(c => c !== DISABLED_ADAPTER_KEY),
             disabled: isDisabled(prot),
             methodology: methodology?.[prot]

@@ -44,11 +44,17 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const startIndex = startTimestamp ? adaptorRecords.findIndex(ar => ar.timestamp === startTimestamp) : -1
         adaptorRecords = adaptorRecords.slice(startIndex + 1)
 
+        let protocolsKeys = [adapter.module]
+        if (adapter.protocolsData) {
+            protocolsKeys = Object.keys(adapter.protocolsData).filter(protKey => {
+                return adapter.config?.protocolsData?.[protKey].enabled ?? true
+            })
+        }
         // Clean data by chain
         const cleanRecords = await generateCleanRecords(
             adaptorRecords,
             adapter.chains,
-            adapter.protocolsData ? Object.keys(adapter.protocolsData) : [adapter.module],
+            protocolsKeys,
             chainFilter
         )
 
@@ -176,7 +182,7 @@ const getProtocolVersionStats = (
             ...acc,
             [protKey]: {
                 ...data,
-                chains: chainFilter ? [formatChain(chainFilter)] : data.chains.map(formatChain),
+                chains: chainFilter ? [formatChain(chainFilter)] : data.chains?.map(formatChain),
                 ...protocolVersionsStats[protKey],
                 ...(extraTypesByProtocolVersion?.[protKey] ?? {})
             }

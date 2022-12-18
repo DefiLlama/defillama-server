@@ -18,5 +18,15 @@ export default {
     'aave': {
         id: "111",
         name: "AAVE"
+    },
+    'gmx': {
+        protocolsData: {
+            'swap': {
+                category: 'Dexes'
+            },
+            'derivatives': {
+                category: 'Derivatives'
+            }
+        }
     }
 } as IJSON<Partial<ProtocolAdaptor>>

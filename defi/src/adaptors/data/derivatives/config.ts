@@ -4,7 +4,15 @@ export default {
     'emdx': {
         enabled: true
     },
-    'gmx': {
+    "gmx": {
+        protocolsData: {
+            'swap': {
+                enabled: false
+            },
+            'derivatives': {
+                enabled: true
+            }
+        },
         enabled: true
     },
     'jojo': {

@@ -59,6 +59,7 @@ async function fetchUniV2MarketsFromSubgraph(
       }`;
     const result = (await request(subgraph, lpQuery)).pairs;
     if (result.length < 1000) i = 20;
+    if (result.length == 0) return addresses;
     reservereThreshold = result[Math.max(result.length - 1, 0)].volumeUSD;
     addresses.push(
       ...(await request(subgraph, lpQuery)).pairs.map((p: any) => p.id)
@@ -363,9 +364,7 @@ export default async function getTokenPrices(
   let pairAddresses: string[];
 
   const block: number | undefined = await getBlock(chain, timestamp);
-  if (chain == "bsc" && subgraph == undefined) {
-    return;
-  } else if (subgraph != undefined) {
+  if (subgraph != undefined) {
     pairAddresses = await fetchUniV2MarketsFromSubgraph(subgraph, timestamp);
   } else {
     pairAddresses = await fetchUniV2Markets(chain, factory, block);

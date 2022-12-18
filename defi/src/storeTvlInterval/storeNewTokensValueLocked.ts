@@ -48,28 +48,40 @@ async function checkForOutlierCoins(
   previousTvls: tvlsObject<TokensValueLocked>,
   protocol: string
 ) {
-  const thresholdFactor = 2;
-  const promises: Promise<void>[] = [];
+  const changeThresholdFactor = 2;
+  const proportionThresholdFactor = 0.1;
+  const headline = `${protocol} has TVL values out of accepted range:\n`;
+  let alertString = headline;
 
   Object.keys(currentTvls).map((tvlKey) => {
+    const totalChainTvl = Object.values(currentTvls[tvlKey]).reduce(
+      (p: number, c: number) => p + c,
+      0
+    );
+
     Object.keys(currentTvls[tvlKey]).map((coinKey) => {
       const currentCoinValue = currentTvls[tvlKey][coinKey];
       if (!(tvlKey in previousTvls)) return;
       if (!(coinKey in previousTvls[tvlKey])) return;
 
       const previousCoinValue = previousTvls[tvlKey][coinKey];
-      const upperBound = previousCoinValue * (1 * thresholdFactor);
-      const lowerBound = previousCoinValue * (1 / thresholdFactor);
+      const upperBound = previousCoinValue * (1 * changeThresholdFactor);
+      const lowerBound = previousCoinValue * (1 / changeThresholdFactor);
 
-      if (currentCoinValue > upperBound || currentCoinValue < lowerBound)
-        promises.push(
-          sendMessage(
-            `${coinKey.toUpperCase()} value is out of accepted range for ${tvlKey} on ${protocol}.`,
-            process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-            true
-          )
-        );
+      if (
+        currentCoinValue > proportionThresholdFactor * totalChainTvl &&
+        (currentCoinValue > upperBound || currentCoinValue < lowerBound)
+      ) {
+        alertString += `${coinKey.toUpperCase()} on ${tvlKey}, `;
+      }
     });
   });
-  await Promise.all(promises);
+
+  if (alertString != headline)
+    await sendMessage(
+      alertString,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+      true
+    );
+  return;
 }

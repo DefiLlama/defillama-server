@@ -266,5 +266,8 @@ export default {
     },
     "llamalend": {
         enabled: true
+    },
+    "0vix": {
+        enabled: true
     }
 } as AdaptorsConfig

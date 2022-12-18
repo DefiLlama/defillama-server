@@ -48,8 +48,8 @@ async function checkForOutlierCoins(
   previousTvls: tvlsObject<TokensValueLocked>,
   protocol: string
 ) {
-  const changeThresholdFactor = 2;
-  const proportionThresholdFactor = 0.1;
+  const changeThresholdFactor = 4;
+  const proportionThresholdFactor = 0.2;
   const headline = `${protocol} has TVL values out of accepted range:\n`;
   let alertString = headline;
 

@@ -49,9 +49,6 @@ export function addToDBWritesList(
             chain == "solana" ? token : token.toLowerCase()
           }`,
           price,
-          symbol,
-          decimals: Number(decimals),
-          redirect,
           confidence: Number(confidence)
         },
         {
@@ -81,9 +78,6 @@ export function addToDBWritesList(
       SK: timestamp,
       PK: `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`,
       price,
-      symbol,
-      decimals: Number(decimals),
-      redirect,
       confidence: Number(confidence)
     });
   }

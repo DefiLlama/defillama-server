@@ -49,7 +49,7 @@ export function curve5c(timestamp: number = 0) {
 }
 export function curve5d(timestamp: number = 0) {
   console.log("starting curve5d");
-  return getTokenPrices("optimism", ["cryptoFactory"], timestamp);
+  return getTokenPrices("optimism", ["stableFactory"], timestamp);
 }
 export function curve6(timestamp: number = 0) {
   console.log("starting curve6");

@@ -71,9 +71,8 @@ async function checkForOutlierCoins(
       if (
         currentCoinValue > proportionThresholdFactor * totalChainTvl &&
         (currentCoinValue > upperBound || currentCoinValue < lowerBound)
-      ) {
+      )
         alertString += `${coinKey.toUpperCase()} on ${tvlKey}, `;
-      }
     });
   });
 
@@ -83,5 +82,4 @@ async function checkForOutlierCoins(
       process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
       true
     );
-  return;
 }

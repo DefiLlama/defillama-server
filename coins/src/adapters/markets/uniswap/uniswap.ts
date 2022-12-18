@@ -59,6 +59,7 @@ async function fetchUniV2MarketsFromSubgraph(
       }`;
     const result = (await request(subgraph, lpQuery)).pairs;
     if (result.length < 1000) i = 20;
+    if (result.length == 0) return addresses;
     reservereThreshold = result[Math.max(result.length - 1, 0)].volumeUSD;
     addresses.push(
       ...(await request(subgraph, lpQuery)).pairs.map((p: any) => p.id)

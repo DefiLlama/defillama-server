@@ -11,6 +11,9 @@ import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
 import { BigNumber } from "ethers";
 
+const sleep = (delay: number) =>
+  new Promise((resolve) => setTimeout(resolve, delay));
+
 async function fetchUniV2Markets(
   chain: string,
   factory: string,
@@ -64,6 +67,7 @@ async function fetchUniV2MarketsFromSubgraph(
     addresses.push(
       ...(await request(subgraph, lpQuery)).pairs.map((p: any) => p.id)
     );
+    sleep(500);
   }
   return addresses;
 }

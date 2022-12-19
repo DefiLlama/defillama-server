@@ -20959,7 +20959,7 @@ listedAt: 1650804679
   twitter: "NeopinOfficial", 
   forkedFrom: ["Uniswap"],
   oracles: [],
-  parentProtocol: "Neopin",
+  parentProtocol: "NEOPIN",
   audit_links: [
                   "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220627_NPT_Staking_And_DEX_Swap_SlowMist.pdf",
                   "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220629_Easy_DEX_And_Farm_SlowMist.pdf",
@@ -20987,7 +20987,7 @@ listedAt: 1650804679
   twitter: "NeopinOfficial", 
   forkedFrom: [],
   oracles: [],
-  parentProtocol: "Neopin",
+  parentProtocol: "NEOPIN",
   listedAt: 1671198629
 },
 {
@@ -21056,6 +21056,28 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1671451792
+},
+{
+  id: "2370",
+  name: "Proteo Defi",
+  address: null,
+  symbol: "-",
+  url: "https://dapp.proteodefi.com",
+  description:
+    "Proteo is an extreme-scarce token with a complete Defi Ecosystem. Swaps, Yield Farming, Lending and Flash Offers solutions in MultiversX.",
+  chain: "Elrond",
+  logo: `${baseIconsUrl}/proteo-defi.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Elrond"],
+  module: "proteo-farms/index.js",
+  twitter: "ProteoDefi", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671464546
 },
 ]
 

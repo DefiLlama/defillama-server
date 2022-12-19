@@ -6,10 +6,10 @@ import { performance } from "perf_hooks";
 
 const event = {
     pathParameters: { chain: undefined, type: "fees" },
-    /* queryStringParameters: {
+    queryStringParameters: {
         excludeTotalDataChart: "true",
         excludeTotalDataChartBreakdown: "true"
-    } */
+    }
 } as unknown as APIGatewayProxyEvent
 
 (async () => {
@@ -19,7 +19,7 @@ const event = {
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     // console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('jupiter')))
     // console.log(rr)
-    console.log(rr.protocols.find(p=>p.module==='gmx'))
+    console.log(rr.protocols.find(p=>p.module==='ethereum'))
     // console.log("rr.totalDataChartBreakdown->", rr.totalDataChartBreakdown.slice(-1))
     console.log("length", rr.protocols.length)
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))

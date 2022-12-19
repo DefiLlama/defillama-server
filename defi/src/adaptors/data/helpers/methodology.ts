@@ -17,7 +17,7 @@ const genericMethodologies: IJSON<IJSON<string>> = {
         // HoldersRevenue: null,
         SupplySideRevenue: "Interest paid to lenders"
     },
-    "Chains": {
+    "Chain": {
         UserFees: "Gas fees paid by users",
         Fees: "Gas fees paid by users",
         Revenue: "Burned coins (fees-sequencerCosts for rollups)"

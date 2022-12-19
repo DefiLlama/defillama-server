@@ -149,7 +149,7 @@ export default {
         enabled: true
     },
     "ellipsis": {
-        enabled: false
+        enabled: true
     },
     "klex-finance": {
         enabled: true

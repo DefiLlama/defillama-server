@@ -19,8 +19,8 @@ const event = {
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     // console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('jupiter')))
     // console.log(rr)
-    console.log(rr.protocols.map(p => [p.name]))
-    console.log("rr.totalDataChartBreakdown->", rr.totalDataChartBreakdown.slice(-1))
+    console.log(rr.protocols.find(p=>p.module==='gmx'))
+    // console.log("rr.totalDataChartBreakdown->", rr.totalDataChartBreakdown.slice(-1))
     console.log("length", rr.protocols.length)
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
     // console.log(rr.protocols[0])

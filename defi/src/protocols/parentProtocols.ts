@@ -583,12 +583,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "RealTPlatform",
   },
   {
-    id: "Neopin Finance",
-    name: "Neopin Finance",
+    id: "NEOPIN",
+    name: "NEOPIN",
     url: "https://neopin.io",
     description:
     "NEOPIN is an open blockchain platform servicing DeFi, P2E, and more.",
-    logo: `${baseIconsUrl}/neopin finance.jpg`,
+    logo: `${baseIconsUrl}/neopin.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

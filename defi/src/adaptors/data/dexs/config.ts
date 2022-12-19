@@ -172,9 +172,6 @@ export default {
     "nomiswap": {
         enabled: true
     },
-    "fstswap": {
-        enabled: false
-    },
     "beethoven-x": {
         enabled: true
     },

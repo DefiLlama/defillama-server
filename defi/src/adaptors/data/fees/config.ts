@@ -68,7 +68,6 @@ export default {
         enabled: true
     },
     "pancakeswap": {
-        latestFetchIsOk: false,
         enabled: true
     },
     "pangolin": {

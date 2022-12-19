@@ -1,6 +1,7 @@
 import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
+import { getMethodologyByType as getDefaultMethodologyByCategory } from "../data/helpers/methodology";
 import overrides from "../data/helpers/overrides";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 
@@ -81,13 +82,19 @@ export const getChainByProtocolVersion = (moduleAdapterName: string, moduleAdapt
     return chs[protV] ? chs[protV].includes(DISABLED_ADAPTER_KEY) : true
 } */
 
-export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter): ProtocolAdaptor['protocolsData'] => {
+export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['protocolsData'] => {
     let methodology: IJSON<ProtocolAdaptor['methodology']> | undefined = undefined
+    const defaultMethodology = getDefaultMethodologyByCategory(category) ?? {}
     if ('breakdown' in moduleAdapter) {
         methodology = Object.keys(moduleAdapter.breakdown).reduce((acc, curr) => {
             const methodology = Object.values(moduleAdapter.breakdown[curr])[0].meta?.methodology
             if (!methodology) return acc
-            acc[curr] = methodology
+            if (typeof methodology === 'string') acc[curr] = methodology
+            else
+                acc[curr] = {
+                    ...defaultMethodology,
+                    ...methodology
+                }
             return acc
         }, {} as IJSON<ProtocolAdaptor['methodology']>)
     }
@@ -104,11 +111,15 @@ export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter): Pr
     }), {})
 }
 
-export const getMethodologyData = (_adapterKey: string, moduleAdapter: Adapter): ProtocolAdaptor['methodology'] | undefined => {
+export const getMethodologyData = (_adapterKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
     if ('adapter' in moduleAdapter) {
         const methodology = Object.values(moduleAdapter.adapter)[0].meta?.methodology
         if (!methodology) return
-        return methodology
+        if (typeof methodology === 'string') return methodology
+        return {
+            ...(getDefaultMethodologyByCategory(category) ?? {}),
+            ...methodology
+        }
     } else return undefined
 }
 

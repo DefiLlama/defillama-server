@@ -63,10 +63,10 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 chains: getAllChainsFromAdaptors([adapterKey], moduleObject),
                 disabled: isDisabled(moduleObject),
                 displayName: getDisplayName(dexFoundInProtocols.name, moduleObject),
-                protocolsData: getProtocolsData(adapterKey, moduleObject),
+                protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category ?? ''),
                 protocolType: adapterObj.module.default?.protocolType,
                 methodologyURL: adapterObj.codePath,
-                methodology: getMethodologyData(adapterKey, moduleObject) ?? getMethodologyByType(dexFoundInProtocols.category ?? '')
+                methodology: getMethodologyData(adapterKey, moduleObject, dexFoundInProtocols.category ?? '')
             }
         }
         // TODO: Handle better errors

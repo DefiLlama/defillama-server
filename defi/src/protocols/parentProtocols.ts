@@ -587,7 +587,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "NEOPIN",
     url: "https://neopin.io",
     description:
-    "NEOPIN is an open blockchain platform servicing DeFi, P2E, and more.",
+    "NEOPIN is a blockchain open platform that connects and expands the ecosystem through Gaming, Metaverse, Service, and NFTs, centering on various DeFi services such as staking, yield farming, and swap.",
     logo: `${baseIconsUrl}/neopin.jpg`,
     gecko_id: null,
     cmcId: null,

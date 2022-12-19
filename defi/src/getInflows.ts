@@ -8,6 +8,7 @@ const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
     const protocolName = event.pathParameters?.protocol?.toLowerCase()
+    const tokensToExclude = event.queryStringParameters?.tokensToExclude?.split(",") ?? []
     const timestamp = Number(event.pathParameters?.timestamp)
     const protocolData = protocols.find(
         (prot) => sluggify(prot) === protocolName
@@ -23,6 +24,9 @@ const handler = async (
 
     let outflows = 0;
     Object.entries(currentTokens!.tvl).forEach(([token, amountRaw])=>{
+        if(tokensToExclude.includes(token)){
+            return;
+        }
         const amount = amountRaw as number;
         const diff = amount - (old.tvl[token] ?? 0);
         const price = currentUsdTokens!.tvl[token]/amount;

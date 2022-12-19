@@ -21012,6 +21012,29 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671361302
 },
+{
+  id: "2368",
+  name: "Aptin Finance",
+  address: null,
+  symbol: "-",
+  url: "https://aptin.io",
+  description:
+    "Aptin is an algorithmic, decentralized protocol for lending and borrowing on Aptos. Aptin enables users to effortlessly lend, borrow, and earn interest within a global network.",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/aptin-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Aptos"],
+  module: "aptin-finance/index.js",
+  twitter: "AptinLabs", 
+  forkedFrom: [],
+  oracles: ["Switchboard", "Pyth"],
+  audit_links: ["https://github.com/AptinLabs/audit-report/blob/main/aptin_audit_report.pdf"],
+  listedAt: 1671445831
+},
 ]
 
 export default data2;

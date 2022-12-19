@@ -88,8 +88,8 @@ export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, cat
     if ('breakdown' in moduleAdapter) {
         methodology = Object.keys(moduleAdapter.breakdown).reduce((acc, curr) => {
             const methodology = Object.values(moduleAdapter.breakdown[curr])[0].meta?.methodology
-            if (!methodology) return acc[curr] = { ...(defaultMethodology ?? {}) }
-            if (typeof methodology === 'string') acc[curr] = methodology
+            if (!methodology) acc[curr] = { ...(defaultMethodology ?? {}) }
+            else if (typeof methodology === 'string') acc[curr] = methodology
             else
                 acc[curr] = {
                     ...defaultMethodology,

@@ -19,7 +19,7 @@ const event = {
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     // console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('jupiter')))
     // console.log(rr)
-    console.log(rr.protocols.find(p=>p.module==='ethereum'))
+    console.log(JSON.stringify(rr.protocols.find(p=>p.module==='opensea'), null, 2))
     // console.log("rr.totalDataChartBreakdown->", rr.totalDataChartBreakdown.slice(-1))
     console.log("length", rr.protocols.length)
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))

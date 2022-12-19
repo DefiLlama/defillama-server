@@ -84,11 +84,11 @@ export const getChainByProtocolVersion = (moduleAdapterName: string, moduleAdapt
 
 export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['protocolsData'] => {
     let methodology: IJSON<ProtocolAdaptor['methodology']> | undefined = undefined
-    const defaultMethodology = getDefaultMethodologyByCategory(category) ?? {}
+    const defaultMethodology = getDefaultMethodologyByCategory(category)
     if ('breakdown' in moduleAdapter) {
         methodology = Object.keys(moduleAdapter.breakdown).reduce((acc, curr) => {
             const methodology = Object.values(moduleAdapter.breakdown[curr])[0].meta?.methodology
-            if (!methodology) return acc
+            if (!methodology) return acc[curr] = { ...(defaultMethodology ?? {}) }
             if (typeof methodology === 'string') acc[curr] = methodology
             else
                 acc[curr] = {
@@ -114,7 +114,7 @@ export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, cat
 export const getMethodologyData = (_adapterKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
     if ('adapter' in moduleAdapter) {
         const methodology = Object.values(moduleAdapter.adapter)[0].meta?.methodology
-        if (!methodology) return
+        if (!methodology) return { ...(getDefaultMethodologyByCategory(category) ?? {}) }
         if (typeof methodology === 'string') return methodology
         return {
             ...(getDefaultMethodologyByCategory(category) ?? {}),

@@ -21042,7 +21042,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://phemex.com",
   description:
-    "Phemex is a Top derivatives global crypto exchange. Users can now verify our Proof-of-Reserves anytime.",
+    "Phemex is a Top derivatives global crypto exchange. Users can now verify their Proof-of-Reserves anytime.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/phemex.jpg`,
   audits: "0",

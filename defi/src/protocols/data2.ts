@@ -21035,6 +21035,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/AptinLabs/audit-report/blob/main/aptin_audit_report.pdf"],
   listedAt: 1671445831
 },
+{
+  id: "2369",
+  name: "Phemex",
+  address: null,
+  symbol: "-",
+  url: "https://phemex.com",
+  description:
+    "Phemex is a Top derivatives global crypto exchange. Users can now verify our Proof-of-Reserves anytime.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/phemex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Bitcoin"],
+  module: "phemex/index.js",
+  twitter: "Phemex_official", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671451792
+},
 ]
 
 export default data2;

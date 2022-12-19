@@ -20941,14 +20941,14 @@ listedAt: 1650804679
 },
 {
   id: "2365",
-  name: "Neopin",
+  name: "NEOPIN Pool",
   address: "klaytn:0xe06597d02a2c3aa7a9708de2cfa587b128bd3815",
   symbol: "NPT",
   url: "https://app.neopin.io/swap",
   description:
-    "Neopin is an AMM-based Instant Swap Protocol with multi-chain staking.",
+    "Provide liquidity directly to the pool of your choice and receive NPT in addition to the base rewards by using a non-custodial wallet NEOPIN Wallet.",
   chain: "Klaytn",
-  logo: `${baseIconsUrl}/neopin.jpg`,
+  logo: `${baseIconsUrl}/neopin-pool.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: "neopin",
@@ -20959,7 +20959,7 @@ listedAt: 1650804679
   twitter: "NeopinOfficial", 
   forkedFrom: ["Uniswap"],
   oracles: [],
-  parentProtocol: "Neopin Finance",
+  parentProtocol: "Neopin",
   audit_links: [
                   "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220627_NPT_Staking_And_DEX_Swap_SlowMist.pdf",
                   "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220629_Easy_DEX_And_Farm_SlowMist.pdf",
@@ -20969,12 +20969,12 @@ listedAt: 1650804679
 },
 {
   id: "2366",
-  name: "Neopin Staking",
+  name: "NEOPIN Staking",
   address: null,
   symbol: "-",
   url: "https://app.neopin.io/staking",
   description:
-    "Liquid Staking",
+    "Earn rewards by safely delegating your crypto assets to one of the leading node validators NEOPIN.",
   chain: "Klaytn",
   logo: `${baseIconsUrl}/neopin-staking.jpg`,
   audits: "0",
@@ -20987,7 +20987,7 @@ listedAt: 1650804679
   twitter: "NeopinOfficial", 
   forkedFrom: [],
   oracles: [],
-  parentProtocol: "Neopin Finance",
+  parentProtocol: "Neopin",
   listedAt: 1671198629
 },
 {

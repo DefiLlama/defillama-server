@@ -95,7 +95,7 @@ export const handler = async (event: IHandlerEvent) => {
       const FILTRED_KEYS_TO_STORE = event.adaptorRecordTypes?.reduce((acc, curr) => {
         acc[AdaptorRecordTypeMap[curr]] = curr
         return acc
-      }, {} as IJSON<string>) ?? KEYS_TO_STORE
+      }, {} as IJSON<string>) ?? AdaptorRecordTypeMapReverse
       const rawRecords: RawRecordMap = {}
       for (const [version, adapter] of adaptersToRun) {
         const runAdapterRes = await runAdapter(adapter, cleanCurrentDayTimestamp, chainBlocks)

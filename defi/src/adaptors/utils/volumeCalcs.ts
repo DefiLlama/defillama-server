@@ -30,6 +30,59 @@ const sumObject = (acc: number, [_key, current]: [string, any]): number => {
     }
 }
 
+const calcNdONdChange = (
+    dexs: Pick<ProtocolAdaptorSummary, 'recordsMap'>[],
+    dex2Substract?: ProtocolAdaptorSummary,
+    baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS,
+    nDaysChange: number = 1
+) => {
+    const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp);
+    const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
+
+    let yesterdaysVolumeAll = 0
+    for (let start = yesterdaysTimestamp; start > timestampNd; start -= ONE_DAY_IN_SECONDS) {
+        let dex2SubstractVolumes: any = {}
+        for (const dex of dexs) {
+            if (dex2Substract) {
+                dex2SubstractVolumes['totalVolume'] = dex2Substract.recordsMap?.[String(start)]?.data
+            }
+            const yesterdaysVolume = dex.recordsMap?.[String(start)]?.data
+            yesterdaysVolumeAll += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
+        }
+    }
+
+    const endNdTimestamps = timestampNd - (nDaysChange * ONE_DAY_IN_SECONDS)
+    let ndVolume = 0
+    for (let start = timestampNd; start > endNdTimestamps; start -= ONE_DAY_IN_SECONDS) {
+        let dex2SubstractVolumes: any = {}
+        for (const dex of dexs) {
+            if (dex2Substract) {
+                dex2SubstractVolumes['totalVolume'] = dex2Substract.recordsMap?.[String(start)]?.data
+            }
+            const yesterdaysVolume = dex.recordsMap?.[String(start)]?.data
+            ndVolume += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
+        }
+    }
+
+
+    const ndChange = yesterdaysVolumeAll && ndVolume ? (yesterdaysVolumeAll - ndVolume) / ndVolume * 100 : null
+    return {
+        change_NdoverNd: formatNdChangeNumber(ndChange),
+        totalNd: yesterdaysVolumeAll
+    }
+}
+
+export const getWoWStats = (
+    dexs: Pick<ProtocolAdaptorSummary, 'recordsMap'>[],
+    dex2Substract?: ProtocolAdaptorSummary,
+    baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS
+) => {
+    const wow = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 7)
+    return {
+        change_7dover7d: wow.change_NdoverNd ?? 0,
+        total7d: wow.totalNd
+    }
+}
 
 const getSumAllDexsToday = (
     dexs: ProtocolAdaptorSummary[],
@@ -66,6 +119,7 @@ const getSumAllDexsToday = (
         change_1d: formatNdChangeNumber(((totalVolume - totalVolume1d) / totalVolume1d) * 100) ?? 0,
         change_7d: formatNdChangeNumber(((totalVolume - totalVolume7d) / totalVolume7d) * 100) ?? 0,
         change_1m: formatNdChangeNumber(((totalVolume - totalVolume30d) / totalVolume30d) * 100) ?? 0,
+        ...getWoWStats(dexs, dex2Substract, baseTimestamp),
         breakdown24h: null
     }
 }
@@ -105,6 +159,29 @@ const generateByDexVolumesChartData = (protocols: ProtocolAdaptorSummary[]): ICh
     }
     return chartData
 }
+
+/* export const calcNdONdChange = (volumes: IJSON<AdaptorRecord>, nDaysChange: number, baseTimestamp?: number) => {
+    const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp ?? ((Date.now() / 1000) - ONE_DAY_IN_SECONDS));
+
+    const timestampNd = yesterdaysTimestamp - (nDaysChange * ONE_DAY_IN_SECONDS)
+
+    let yesterdaysVolume = 0
+    for (let start = yesterdaysTimestamp; start > timestampNd; start -= ONE_DAY_IN_SECONDS) {
+        yesterdaysVolume += sumAllVolumes(volumes?.[String(start)]?.data ?? {})
+    }
+    const endNdTimestamps = timestampNd + (nDaysChange * ONE_DAY_IN_SECONDS)
+    let ndVolume = 0
+    for (let start = timestampNd; start > timestampNd + endNdTimestamps; start -= ONE_DAY_IN_SECONDS) {
+        ndVolume += sumAllVolumes(volumes?.[String(start)]?.data ?? {})
+    }
+
+    const ndChange = yesterdaysVolume && ndVolume ? (yesterdaysVolume - ndVolume) / ndVolume * 100 : null
+    console.log("yesterdaysTimestamp", yesterdaysTimestamp, "timestampNd", timestampNd)
+    console.log("yesterdaysVolume", yesterdaysVolume, "ndVolume", ndVolume)
+    console.log("ndChange", ndChange)
+    return formatNdChangeNumber(ndChange)
+} */
+
 
 const calcNdChange = (volumes: IJSON<AdaptorRecord>, nDaysChange: number, baseTimestamp?: number, extend?: boolean) => {
     let totalVolume: number | null = 0
@@ -168,6 +245,9 @@ export const getStatsByProtocolVersion = (volumes: AdaptorRecord[], prevDayTimes
             change_1d: calcNdChange(protVolumes, 1, prevDayTimestamp),
             change_7d: calcNdChange(protVolumes, 7, prevDayTimestamp),
             change_1m: calcNdChange(protVolumes, 30, prevDayTimestamp),
+            ...getWoWStats([{
+                recordsMap: protVolumes
+            }], undefined, prevDayTimestamp),
             breakdown24h: null
         }
         return acc

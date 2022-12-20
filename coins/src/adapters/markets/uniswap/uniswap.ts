@@ -58,7 +58,11 @@ async function fetchUniV2MarketsFromSubgraph(
               ? ``
               : `volumeUSD_lt: ${Number(reservereThreshold).toFixed(4)}`
           }
-          ${timestamp == 0 ? `` : `timestamp_lt: ${timestamp.toString()}`}
+          ${
+            timestamp == 0
+              ? ``
+              : `createdAtTimestamp_gt: ${timestamp.toString()}`
+          }
         }) {
           id
           volumeUSD

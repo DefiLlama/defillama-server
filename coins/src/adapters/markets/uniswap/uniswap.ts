@@ -48,12 +48,16 @@ async function fetchUniV2MarketsFromSubgraph(
   timestamp: number
 ) {
   let addresses: string[] = [];
-  let reservereThreshold: number = 0;
+  let reservereThreshold: Number = 0;
   for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
       query lps {
         pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,
-          where: {${i == 0 ? `` : `volumeUSD_lt: ${reservereThreshold}`}
+          where: {${
+            i == 0
+              ? ``
+              : `volumeUSD_lt: ${Number(reservereThreshold).toFixed(4)}`
+          }
           ${timestamp == 0 ? `` : `timestamp_lt: ${timestamp.toString()}`}
         }) {
           id

@@ -21149,6 +21149,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671554817
 },
+{
+  id: "2374",
+  name: "Contango",
+  address: null,
+  symbol: "-",
+  url: "https://contango.xyz/",
+  description:
+    "Contango is a unique decentralized market offering expirables, contracts to buy or sell an asset at a set price and date in the future",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/contango.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Arbitrum", "Ethereum"],
+  module: "contango/index.js",
+  twitter: "Contango_xyz", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671577485
+},
 ]
 
 export default data2;

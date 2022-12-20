@@ -669,5 +669,8 @@ export default {
     },
     "myswap": {
         enabled: true
+    },
+    "liquidswap": {
+        enabled: true
     }
 } as AdaptorsConfig

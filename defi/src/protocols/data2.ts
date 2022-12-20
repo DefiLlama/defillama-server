@@ -21079,6 +21079,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671464546
 },
+{
+  id: "2371",
+  name: "RAIDSHIFT Marketplace",
+  address: null,
+  symbol: "-",
+  url: "https://raidshift.com",
+  description:
+    "RAIDSHIFT marketplace is an order book based decentralized Peer-to-Peer token exchange on TRON Blockchain. Its ungoverned and immutable Smart Contracts have a small footprint to keep transaction fees as low as possible.Exchanging tokens with peers is free of charge.",
+  chain: "Tron",
+  logo: `${baseIconsUrl}/raidshift-marketplace.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Tron",
+  chains: ["Dexes"],
+  module: "raidshift/index.js",
+  twitter: "raidshift", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671543803
+},
 ]
 
 export default data2;

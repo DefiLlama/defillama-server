@@ -30,7 +30,6 @@ async function getGauges(chain: string, block: number | undefined) {
     calls: calls,
     abi: abi.gauges,
     block,
-    requery: true
   });
 
   return gaugesListRes.output.map((res: any) => res.output);

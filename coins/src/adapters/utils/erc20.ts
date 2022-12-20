@@ -4,7 +4,7 @@ export async function getTokenInfo(
   chain: string,
   targets: string[],
   block: number | undefined,
-  requery: boolean = true
+  _requery: boolean = true
 ) {
   const [supplies, decimals, symbols] = await Promise.all([
     multiCall({
@@ -13,7 +13,6 @@ export async function getTokenInfo(
       })),
       chain: chain as any,
       abi: "erc20:totalSupply",
-      requery,
       block
     }),
     multiCall({
@@ -22,7 +21,6 @@ export async function getTokenInfo(
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery,
       block
     }),
     multiCall({
@@ -31,7 +29,6 @@ export async function getTokenInfo(
       })),
       abi: "erc20:symbol",
       chain: chain as any,
-      requery,
       block
     })
   ]);
@@ -68,7 +65,6 @@ export async function getLPInfo(
       })),
       chain: chain as any,
       abi: "erc20:totalSupply",
-      requery,
       block
     }),
     multiCall({
@@ -77,7 +73,6 @@ export async function getLPInfo(
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery,
       block
     }),
     multiCall({
@@ -86,7 +81,6 @@ export async function getLPInfo(
       })),
       abi: "erc20:symbol",
       chain: chain as any,
-      requery,
       block
     }),
     multiCall({
@@ -95,7 +89,6 @@ export async function getLPInfo(
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery,
       block
     }),
     multiCall({
@@ -104,7 +97,6 @@ export async function getLPInfo(
       })),
       chain: chain as any,
       abi: "erc20:decimals",
-      requery,
       block
     }),
     multiCall({

@@ -21104,7 +21104,7 @@ listedAt: 1650804679
 {
   id: "2372",
   name: "Polytrade",
-  address: "0x6e5970DBd6fc7eb1f29C6D2eDF2bC4c36124C0C1",
+  address: "polygon:0x692ac1e363ae34b6b489148152b12e2785a3d8d6",
   symbol: "TRADE",
   url: "https://lender.polytrade.app",
   description:

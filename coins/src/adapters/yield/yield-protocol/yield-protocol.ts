@@ -6,8 +6,8 @@ import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import getBlock from "../../utils/block";
 import { getLogs } from "../../../utils/cache/getLogs";
-import sdk from '@defillama/sdk'
-import ethers from 'ethers'
+import * as sdk from '@defillama/sdk'
+import * as ethers from 'ethers'
 
 const config = {
   arbitrum: {
@@ -67,14 +67,12 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   let coinsData: CoinData[] = await getTokenAndRedirectData(underlyingTokens, chain, timestamp);
 
-  pricesRes.map(({ output }: any, i) => {
+  pricesRes.map((output, i) => {
     const coinData: (CoinData|undefined) = coinsData.find(
-      (c: CoinData) => c.address == underlyingTokens[i].toLowerCase()
+      (c: CoinData) => c.address.toLowerCase() === underlyingTokens[i].toLowerCase()
     );
-    if (!coinData) return;
-    sdk.log(output)
-    const price = coinData.price * output[0] / 1e6
-    sdk.log(fyTokens[i], price)
+    if (!coinData || !output) return;
+    const price = coinData.price * output / 1e6
 
     addToDBWritesList(writes, chain, fyTokens[i], price, tokenInfos.decimals[i].output, tokenInfos.symbols[i].output, timestamp, 'yield-protocol', coinData.confidence as number)
   });

@@ -105,7 +105,6 @@ export default async function getTokenPrices(
       })),
       chain: chain as any,
       block,
-      requery: false
     })
   ]);
 

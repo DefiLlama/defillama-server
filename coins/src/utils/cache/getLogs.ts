@@ -1,5 +1,5 @@
 
-import sdk from '@defillama/sdk'
+import * as sdk from '@defillama/sdk'
 import { getCache, setCache } from './index'
 import getBlock from './../../adapters/utils/block'
 

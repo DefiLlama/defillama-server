@@ -38,7 +38,6 @@ async function fetchUniV2Markets(
       params: [num]
     })),
     block,
-    requery: true
   });
 
   return pairs.output.map((result) => result.output.toLowerCase());
@@ -91,7 +90,6 @@ async function fetchUniV2MarketData(
         target: pairAddress
       })),
       block,
-      requery: true
     }),
     multiCall({
       abi: abi.token1,
@@ -100,7 +98,6 @@ async function fetchUniV2MarketData(
         target: pairAddress
       })),
       block,
-      requery: true
     }),
     multiCall({
       abi: abi.getReserves,
@@ -109,7 +106,6 @@ async function fetchUniV2MarketData(
         target: pairAddress
       })),
       block,
-      requery: true
     })
   ]);
 

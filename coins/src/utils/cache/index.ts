@@ -1,5 +1,5 @@
-import aws from 'aws-sdk'
-import sdk from '@defillama/sdk'
+import * as aws from 'aws-sdk'
+import * as sdk from '@defillama/sdk'
 import fetch from "node-fetch";
 
 

@@ -21101,6 +21101,32 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671543803
 },
+{
+  id: "2372",
+  name: "Polytrade",
+  address: "0x6e5970DBd6fc7eb1f29C6D2eDF2bC4c36124C0C1",
+  symbol: "TRADE",
+  url: "https://lender.polytrade.app",
+  description:
+    "Polytrade is a blockchain-enabled Trade Finance Platform, allowing SMEs to get unprecedented direct access to trade financing opportunities while offering attractive rewards to those that support the lending pools. We are here to make trade financing more accessible, efficient and transparent by bridging TradeFi and DeFi.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/polytrade.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "polytrade",
+  cmcId: "1046",
+  category: "Polygon",
+  chains: ["Lending"],
+  module: "polytrade/index.js",
+  twitter: "Polytrade_fin", 
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  audit_links: [
+                  "https://www.certik.com/projects/polytrade",
+                  "https://immunebytes.azurewebsites.net/getlink/PolyTrade(v2)%20-%20Final%20Audit%20Report.pdf"
+               ],
+  listedAt: 1671546445
+},
 ]
 
 export default data2;

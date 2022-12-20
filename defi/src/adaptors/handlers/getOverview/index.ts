@@ -16,6 +16,7 @@ export interface IGeneralStats {
     change_1d: number | null;
     change_7d: number | null;
     change_1m: number | null;
+    change_7dover7d: number | null;
     breakdown24h: IRecordAdaptorRecordData | null
 }
 
@@ -186,6 +187,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         change_1d: enableStats ? generalStats.change_1d : null,
         change_7d: enableStats ? generalStats.change_7d : null,
         change_1m: enableStats ? generalStats.change_1m : null,
+        change_7dover7d: enableStats ? generalStats.change_7dover7d : null,
         breakdown24h: enableStats ? generalStats.breakdown24h : null
     }
     if (enableAlerts) {

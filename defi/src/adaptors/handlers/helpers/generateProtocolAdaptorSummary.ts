@@ -4,7 +4,7 @@ import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
 import { sendDiscordAlert } from "../../utils/notify"
-import { calcNdChange, getStatsByProtocolVersion, sumAllVolumes } from "../../utils/volumeCalcs"
+import { calcNdChange, getStatsByProtocolVersion, getWoWStats, sumAllVolumes } from "../../utils/volumeCalcs"
 import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
@@ -116,6 +116,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             change_1d: adapter.disabled ? null : stats.change_1d,
             change_7d: adapter.disabled ? null : stats.change_7d,
             change_1m: adapter.disabled ? null : stats.change_1m,
+            change_7dover7d: adapter.disabled ? null : stats.change_7dover7d,
             total24h: adapter.disabled ? null : stats.total24h,
             totalAllTime: totalRecord ? sumAllVolumes(totalRecord.data) : null,
             breakdown24h: adapter.disabled ? null : stats.breakdown24h,
@@ -151,6 +152,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             recordsMap: null,
             change_7d: null,
             change_1m: null,
+            change_7dover7d: null,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolsStats: null
         }
@@ -163,6 +165,9 @@ const getStats = (adapter: ProtocolAdaptor, adaptorRecordsArr: AdaptorRecord[], 
         change_1d: calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true),
         change_7d: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true),
         change_1m: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true),
+        ...getWoWStats([{
+            recordsMap: adaptorRecordsMap
+        }], undefined, baseTimestamp),
         total24h: adapter.disabled ? null : sumAllVolumes(adaptorRecordsArr[adaptorRecordsArr.length - 1].data),
         breakdown24h: adapter.disabled ? null : adaptorRecordsArr[adaptorRecordsArr.length - 1].data
     }

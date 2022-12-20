@@ -21115,7 +21115,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: "polytrade",
   cmcId: "1046",
-  category: "Lending",
+  category: "Yield",
   chains: ["Polygon"],
   module: "polytrade/index.js",
   twitter: "Polytrade_fin", 

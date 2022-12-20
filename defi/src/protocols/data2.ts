@@ -21127,6 +21127,28 @@ listedAt: 1650804679
                ],
   listedAt: 1671546445
 },
+{
+  id: "2373",
+  name: "Binance US",
+  address: null,
+  symbol: "-",
+  url: "https://www.binance.us",
+  description:
+    "Buy, sell, and trade Bitcoin, Ethereum, and over 130 cryptocurrencies with some of the lowest trading fees in the US.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/binance-us.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Ethereum",
+  chains: ["CEX"],
+  module: "binance-us/index.js",
+  twitter: "BinanceUS", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671554817
+},
 ]
 
 export default data2;

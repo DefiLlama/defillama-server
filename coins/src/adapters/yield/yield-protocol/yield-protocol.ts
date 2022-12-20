@@ -59,7 +59,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   let pricesRes = await sdk.api2.abi.multiCall({
     calls: pools.map((i: string) => ({ target: i, params: 1e6 })),
-    abi: 'address:base',
+    abi: abis.sellFYTokenPreview,
     chain: chain as any, block,
   })
 
@@ -85,6 +85,5 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 const abis = {
   sellFYTokenPreview: { "inputs": [{ "internalType": "uint128", "name": "fyTokenIn", "type": "uint128" }], "name": "sellFYTokenPreview", "outputs": [{ "internalType": "uint128", "name": "", "type": "uint128" }], "stateMutability": "view", "type": "function" },
   pools: { "inputs": [{ "internalType": "bytes6", "name": "", "type": "bytes6" }], "name": "pools", "outputs": [{ "internalType": "contract IJoin", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" },
-  joins: { "inputs": [{ "internalType": "bytes6", "name": "", "type": "bytes6" }], "name": "joins", "outputs": [{ "internalType": "contract IJoin", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" },
   IlkAdded: { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "bytes6", "name": "seriesId", "type": "bytes6" }, { "indexed": true, "internalType": "bytes6", "name": "ilkId", "type": "bytes6" }], "name": "IlkAdded", "type": "event" },
 }

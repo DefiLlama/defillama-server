@@ -20,6 +20,7 @@ export default {
   alchemix: require("./yield/alchemix/index"),
   meanFinance: require("./yield/mean-finance/index"),
   misc4262: require("./yield/misc4262/index"),
+  yieldProtocol: require("./yield/yield-protocol/index"),
   platypus: require("./markets/platypus/index"),
   curve1: require("./markets/curve/index"),
   curve2: require("./markets/curve/index"),
@@ -58,5 +59,5 @@ export default {
   tombswap: require("./markets/uniswap/index"),
   solidly: require("./markets/uniswap/index"),
   diffusion: require("./markets/uniswap/index"),
-  stargate: require("./markets/stargate/index")
+  stargate: require("./markets/stargate/index"),
 };

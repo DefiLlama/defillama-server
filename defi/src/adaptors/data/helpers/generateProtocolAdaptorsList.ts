@@ -55,6 +55,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                             return acc
                         }, {} as typeof moduleObject.breakdown)
                 } as Adapter
+            const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
             return {
                 ...dexFoundInProtocols,
                 ...overrides[adapterKey],
@@ -62,11 +63,11 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 config: config[adapterKey],
                 chains: getAllChainsFromAdaptors([adapterKey], moduleObject),
                 disabled: isDisabled(moduleObject),
-                displayName: getDisplayName(dexFoundInProtocols.name, moduleObject),
+                displayName,
                 protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category ?? ''),
                 protocolType: adapterObj.module.default?.protocolType,
                 methodologyURL: adapterObj.codePath,
-                methodology: getMethodologyData(adapterKey, moduleObject, dexFoundInProtocols.category ?? '')
+                methodology: getMethodologyData(displayName, adapterKey, moduleObject, dexFoundInProtocols.category ?? '')
             }
         }
         // TODO: Handle better errors

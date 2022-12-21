@@ -1,7 +1,7 @@
 import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
-import { getMethodologyByType as getDefaultMethodologyByCategory } from "../data/helpers/methodology";
+import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
 import overrides from "../data/helpers/overrides";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 
@@ -35,7 +35,11 @@ export const getAllProtocolsFromAdaptor = (adaptorModule: string, adaptor: Adapt
     if ("adapter" in adaptor) {
         return [adaptorModule]
     } else if ("breakdown" in adaptor) {
-        return Object.keys(adaptor.breakdown).filter(c => c !== DISABLED_ADAPTER_KEY)
+        return Object.entries(adaptor.breakdown).reduce((acc, [key, adapter]) => {
+            if (!Object.keys(adapter).some(c => c === DISABLED_ADAPTER_KEY))
+                acc.push(key)
+            return acc
+        }, [] as string[])
     } else
         throw new Error(`Invalid adapter ${adaptorModule}`)
 }
@@ -111,7 +115,7 @@ export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, cat
     }), {})
 }
 
-export const getMethodologyData = (_adapterKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
+export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
     if ('adapter' in moduleAdapter) {
         const methodology = Object.values(moduleAdapter.adapter)[0].meta?.methodology
         if (!methodology) return { ...(getDefaultMethodologyByCategory(category) ?? {}) }
@@ -120,7 +124,9 @@ export const getMethodologyData = (_adapterKey: string, moduleAdapter: Adapter, 
             ...(getDefaultMethodologyByCategory(category) ?? {}),
             ...methodology
         }
-    } else return undefined
+    } else {
+        return getParentProtocolMethodology(displayName, getAllProtocolsFromAdaptor(adaptorKey, moduleAdapter))
+    }
 }
 
 /* export const formatChain = (chain: string) => {

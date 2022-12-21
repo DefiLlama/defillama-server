@@ -109,6 +109,9 @@ custom:
     automatic: true
     number: 5 # Number of versions to keep
   tableName: prod-table
+  bundle:
+    ignorePackages:
+      - pg-native
   domainMap:
     prod:
       domain: api.llama.fi

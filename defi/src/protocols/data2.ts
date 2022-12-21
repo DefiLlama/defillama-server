@@ -8251,7 +8251,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "RWA",
+  category: "RWA Lending",
   chains: ["Solana"],
   oracles: [],
   forkedFrom: [],

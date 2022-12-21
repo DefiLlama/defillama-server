@@ -21196,6 +21196,72 @@ listedAt: 1650804679
                ],
   listedAt: 1671622077
 },
+{
+  id: "2376", 
+  name: "ABcDeFX",
+  address: null,
+  symbol: "-",
+  url: "https://abcdefx.eliteness.network",
+  description:
+    "ABcDeFx is A BlockChain-Decentralized Exchange & Forex. ABcDeFX is a Multi-Chain StableSwap DEX & Forex Market.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/abcdefx.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom", "Echelon"],
+  module: "ABCDEFX/index.js",
+  twitter: "FTM1337", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1671639901
+},
+{
+  id: "2377", 
+  name: "YieldBank",
+  address: null,
+  symbol: "-",
+  url: "https://app.yieldbank.xyz/",
+  description:
+    "YieldBank is one stop platform to auto-compound your farms and earn good APY.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/yieldbank.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Fantom", "Echelon"],
+  module: "yieldbank/index.js",
+  twitter: "yieldbank_xyz", 
+  forkedFrom: ["Beefy"],
+  oracles: [],
+  listedAt: 1671639903
+},
+{
+  id: "2378", 
+  name: "stake.link",
+  address: "0xa95c5ebb86e0de73b4fb8c47a45b792cfea28c23",
+  symbol: "SDL",
+  url: "https://stake.link",
+  description:
+    "Effortlessly stake your crypto assets with stake.link  easy to use, secure liquid staking protocol.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/stake.link.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "stake-link",
+  cmcId: "22906",
+  category: "Liquid Staking",
+  chains: ["Ethereum"],
+  module: "stakedotlink/index.js",
+  twitter: "stakedotlink", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671639906
+},
 ]
 
 export default data2;

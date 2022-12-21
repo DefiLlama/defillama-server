@@ -21171,6 +21171,33 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671577485
 },*/
+{
+  id: "2375", 
+  name: "Y2K Finance",
+  address: null,
+  symbol: "-",
+  url: "https://www.y2k.finance",
+  description:
+    "Y2K Finance is a suite of structured products designed for exotic peg derivatives, that will allow market participants the ability to robustly hedge or speculate on the risk of a particular pegged asset (or basket of pegged assets), deviating from their ‘fair implied market value’.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/y2k-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Arbitrum"],
+  module: "y2k-finance/index.js",
+  twitter: "y2kfinance", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: [
+                 "https://2047863079-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaSJHG27D6yEvbos52Fsy%2Fuploads%2FcvH67oRCDa5MfmmyxtuU%2FPeckshield_Y2K.pdf?alt=media&token=0f446a19-4829-436d-aeee-bfc7b66aa66c",
+                 "https://2047863079-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaSJHG27D6yEvbos52Fsy%2Fuploads%2FHl3FHTkdL3GkcmrpG4xV%2FHalborn_Y2K.pdf?alt=media&token=9a72ba61-20ad-4e29-8cc6-859bdd7f0ff7",
+                 "https://2047863079-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaSJHG27D6yEvbos52Fsy%2Fuploads%2Fs53umi8JxWDcLXM2RWkz%2FHalborn_Y2k_Audit2.pdf?alt=media&token=c6deecbb-5e03-4f31-b843-080184e3bfb7",
+               ],
+  listedAt: 1671622077
+},
 ]
 
 export default data2;

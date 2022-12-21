@@ -15,26 +15,34 @@ const subgraphNames: { [chain: string]: string } = {
   arbitrum: "balancer-arbitrum-v2",
   polygon: "balancer-polygon-v2"
 };
-
 async function getPoolIds(chain: string, timestamp: number) {
-  return (
-    await request(
-      `https://api.thegraph.com/subgraphs/name/balancer-labs/${
-        subgraphNames[chain] || chain
-      }`,
-      gql`
-      query {
-        pools (
-            where: {
-                createTime_gt: ${timestamp * 1000}
-            }
-        ) {
-          id
-        }
+  let addresses: string[] = [];
+  let reservereThreshold: Number = 0;
+  const subgraph = `https://api.thegraph.com/subgraphs/name/balancer-labs/${
+    subgraphNames[chain] || chain
+  }`;
+  for (let i = 0; i < 20; i++) {
+    const lpQuery = gql`
+    query {
+      pools (first: 1000, orderBy: totalLiquidity, orderDirection: desc,
+          where: {${
+            i == 0
+              ? ``
+              : `totalLiquidity_lt: ${Number(reservereThreshold).toFixed(4)}`
+          } ${
+      timestamp == 0 ? `` : `createTime_gt: ${(timestamp * 1000).toString()}`
+    }}) {
+        id
+        totalLiquidity
       }
-    `
-    )
-  ).pools.map((p: any) => p.id);
+    }`;
+    const result = (await request(subgraph, lpQuery)).pools;
+    if (result.length < 1000) i = 20;
+    if (result.length == 0) return addresses;
+    reservereThreshold = result[Math.max(result.length - 1, 0)].volumeUSD;
+    addresses.push(...result.map((p: any) => p.id));
+  }
+  return addresses;
 }
 async function getPoolTokens(
   chain: string,
@@ -79,15 +87,18 @@ async function getPoolValues(
   poolTokens.map((p: any, i: number) => {
     poolTokenValues.push([]);
     p.tokens.map((t: string, j: number) => {
-      const tData = coinsData.find(
-        (d: any) => d.address == t.toLowerCase()
-      );
+      if (poolIds[i].includes(t.toLowerCase())) {
+        poolTokenValues[i].push(0);
+        return;
+      }
+
+      const tData = coinsData.find((d: any) => d.address == t.toLowerCase());
       if (tData == undefined) {
         poolTokenValues[i].push(undefined);
         return;
       }
-      const decimals = tData.decimals;
-      const price = tData.price;
+
+      const { decimals, price } = tData;
       const tokenValue = (p.balances[j] * price) / 10 ** decimals;
       poolTokenValues[i].push(tokenValue);
     });
@@ -104,7 +115,6 @@ async function getPoolValues(
 }
 function getTokenValues(poolValues: object, poolInfos: any) {
   const tokenValues: object[] = [];
-  let x = 0;
   poolInfos.supplies.map((s: any, i: number) => {
     const poolValue = Object.entries(poolValues).filter(
       (v: any) => v[0].substring(0, 42) == s.input.target

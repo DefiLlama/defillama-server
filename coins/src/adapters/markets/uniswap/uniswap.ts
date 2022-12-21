@@ -37,7 +37,7 @@ async function fetchUniV2Markets(
       target: factory,
       params: [num]
     })),
-    block,
+    block
   });
 
   return pairs.output.map((result) => result.output.toLowerCase());
@@ -60,7 +60,7 @@ async function fetchUniV2MarketsFromSubgraph(
           ${
             timestamp == 0
               ? ``
-              : `createdAtTimestamp_gt: ${timestamp.toString()}`
+              : `createdAtTimestamp_gt: ${(timestamp * 1000).toString()}`
           }
         }) {
           id
@@ -91,7 +91,7 @@ async function fetchUniV2MarketData(
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
       })),
-      block,
+      block
     }),
     multiCall({
       abi: abi.token1,
@@ -99,7 +99,7 @@ async function fetchUniV2MarketData(
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
       })),
-      block,
+      block
     }),
     multiCall({
       abi: abi.getReserves,
@@ -107,7 +107,7 @@ async function fetchUniV2MarketData(
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
       })),
-      block,
+      block
     })
   ]);
 

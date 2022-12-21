@@ -104,15 +104,14 @@ custom:
     bundle: true
     minify: false
     concurrency: 4
+    exclude:
+      - pg-native
     # for debugging
     #keepOutputDirectory: true
   prune:
     automatic: true
     number: 5 # Number of versions to keep
   tableName: prod-table
-  bundle:
-    ignorePackages:
-      - pg-native
   domainMap:
     prod:
       domain: api.llama.fi

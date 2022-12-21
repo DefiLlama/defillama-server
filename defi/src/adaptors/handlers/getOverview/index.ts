@@ -13,6 +13,7 @@ import { delay } from "../triggerStoreAdaptorData";
 
 export interface IGeneralStats {
     total24h: number | null;
+    total7d: number | null;
     change_1d: number | null;
     change_7d: number | null;
     change_1m: number | null;
@@ -184,6 +185,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         protocols: okProtocols,
         allChains: getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
         total24h: enableStats ? generalStats.total24h : 0,
+        total7d: enableStats ? generalStats.total7d : 0,
         change_1d: enableStats ? generalStats.change_1d : null,
         change_7d: enableStats ? generalStats.change_7d : null,
         change_1m: enableStats ? generalStats.change_1m : null,

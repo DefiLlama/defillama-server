@@ -116,8 +116,9 @@ export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, cat
 }
 
 export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
-    if ('adapter' in moduleAdapter) {
-        const methodology = Object.values(moduleAdapter.adapter)[0].meta?.methodology
+    if ('adapter' in moduleAdapter || ('breakdown' in moduleAdapter && Object.keys(moduleAdapter.breakdown).length === 1)) {
+        const adapter = 'adapter' in moduleAdapter ? moduleAdapter.adapter : Object.values(moduleAdapter.breakdown)[0]
+        const methodology = Object.values(adapter)[0].meta?.methodology
         if (!methodology) return { ...(getDefaultMethodologyByCategory(category) ?? {}) }
         if (typeof methodology === 'string') return methodology
         return {

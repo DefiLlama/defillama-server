@@ -5,7 +5,7 @@ import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "dexs" },
+    pathParameters: { chain: undefined, type: "fees" },
     queryStringParameters: {
         excludeTotalDataChart: "true",
         excludeTotalDataChartBreakdown: "true"
@@ -18,7 +18,7 @@ const event = {
     var endTime = performance.now()
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     // console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('jupiter')))
-    console.log(JSON.stringify(rr.protocols.find(p=>p.module==='pancakeswap'), null, 2))
+    console.log(JSON.stringify(rr.protocols.find(p=>p.module==='gmx'), null, 2))
     // console.log("rr.totalDataChartBreakdown->", rr.totalDataChartBreakdown.slice(-1))
     console.log("length", rr.protocols.length)
     // @ts-ignore

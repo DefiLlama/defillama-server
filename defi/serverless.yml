@@ -418,7 +418,7 @@ functions:
     events:
       - schedule: cron(01 2,13 * * ? *)
     environment:
-      HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
+      HOURLY_OUTDATED_WEBHOOK: ${env:HOURLY_OUTDATED_WEBHOOK}
   triggerNotifyStatus:
     handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900
@@ -443,7 +443,7 @@ functions:
     events:
       - schedule: cron(*/30 * * * ? *)
     environment:
-      MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
+      MONITOR_WEBHOOK: ${env:MONITOR_WEBHOOK}
   notifyStaleCoins:
     handler: src/notifyStaleCoins.default
     timeout: 900

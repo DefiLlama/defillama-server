@@ -21148,9 +21148,9 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1671554817
-},
-{
-  id: "2374",
+},/*
+{ DO NOT USE THIS ID, WILL BE RELISTED SHORTLY
+  id: "2374", 
   name: "Contango",
   address: null,
   symbol: "-",
@@ -21170,7 +21170,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1671577485
-},
+},*/
 ]
 
 export default data2;

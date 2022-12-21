@@ -21146,8 +21146,8 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1671554817
-},/*
-{ DO NOT USE THIS ID, WILL BE RELISTED SHORTLY
+},
+{
   id: "2374", 
   name: "Contango",
   address: null,
@@ -21168,7 +21168,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1671577485
-},*/
+},
 {
   id: "2375", 
   name: "Y2K Finance",

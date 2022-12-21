@@ -21299,7 +21299,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Liquid Staking",
+  category: "Lending",
   chains: ["Cardano"],
   module: "optim-liquidity-bonds/index.js",
   twitter: "OptimFi", 

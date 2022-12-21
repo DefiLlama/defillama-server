@@ -83,3 +83,4 @@ jobs:
         AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
         DATADOG_API_KEY: ${{ secrets.DD_API_KEY }}
         DATADOG_SITE: ${{ secrets.DD_SITE }}
+        AGGREGATOR_DB_URL: ${{ secrets.AGGREGATOR_DB_URL}}

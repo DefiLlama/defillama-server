@@ -93,6 +93,7 @@ provider:
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
     AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
     INDEXER_DB: ${env:INDEXER_DB}
+    AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
 
@@ -156,6 +157,13 @@ functions:
     events:
       - http:
           path: dexAggregatorQuote
+          method: post
+  storeAggregatorEvent:
+    handler: src/storeAggregatorEvent.default
+    timeout: 90
+    events:
+      - http:
+          path: storeAggregatorEvent
           method: post
   contractName:
     handler: src/getContractName.default

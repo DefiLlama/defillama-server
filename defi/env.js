@@ -31,4 +31,5 @@ module.exports = {
     FEES_WEBHOOK: process.env.FEES_WEBHOOK,
     ZEROx_API_KEY: process.env.ZEROx_API_KEY,
     MISSING_COINS_DB_PWD: process.env.MISSING_COINS_DB_PWD,
+    AGGREGATOR_DB_URL: process.env.AGGREGATOR_DB_URL
 }

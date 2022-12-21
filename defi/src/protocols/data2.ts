@@ -20376,7 +20376,6 @@ listedAt: 1650804679
   oracles: ["Chainlink"],
   listedAt: 1670424005
 },
-/*
 {
   id: "2340",
   name: "Optitude Finance",
@@ -20397,9 +20396,8 @@ listedAt: 1650804679
   twitter: "TrueOptitude", 
   forkedFrom: [],
   oracles: [],
-  listedAt: 1670496843 // add new epoch once enable
+  listedAt: 1670496843 
 },
-*/
 {
   id: "2341",
   name: "Polycat Dex",

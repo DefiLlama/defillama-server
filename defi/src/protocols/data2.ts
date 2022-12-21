@@ -21262,6 +21262,52 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671639906
 },
+{
+  id: "2379", 
+  name: "Camel Farm",
+  address: "arbitrum:0xb5734aC76D44BdF32b8DD4331e5BFC3Bf9989CDa",
+  symbol: "CAMEL",
+  url: "https://camelfarm.app",
+  description:
+    "CamelFarm is a High-Yield liquidity mining DAPP launched on Arbitrum, incentivizing liquidity providers on SwapFish.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/camel-farm.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Arbitrum"],
+  module: "camel-farm/index.js",
+  twitter: "CamelFarmApp", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671660415
+},
+
+{
+  id: "2380", 
+  name: "Optim Finance Liquidity Bonds",
+  address: null,
+  symbol: "-",
+  url: "https://optim.finance",
+  description:
+    "Optim Liquidity Bond platform enables the lending and borrowing of staking rights between users at mutually beneficial rates as determined by buyers and sellers in the market.",
+  chain: "Cardano",
+  logo: `${baseIconsUrl}/optim-finance-liquidity-bonds.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Cardano"],
+  module: "optim-liquidity-bonds/index.js",
+  twitter: "OptimFi", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://optim-finance.gitbook.io/optim-finance/products/liquidity-bonds/audit-reports"],
+  listedAt: 1671660419
+},
 ]
 
 export default data2;

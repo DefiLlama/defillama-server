@@ -83,7 +83,7 @@ export const getParentProtocolMethodology = (name: string, versionNames: string[
         else
             return {
                 isSumString: `Addition of all`,
-                versions: `${versionNames.map(v=>v.toUpperCase()).slice(0, -1).join(', ')} ${versionNames[versionNames.length - 1].toUpperCase()} versions`
+                versions: `${versionNames.map(v=>v.toUpperCase()).slice(0, -1).join(', ')} and ${versionNames[versionNames.length - 1].toUpperCase()} versions`
             }
     })()
     return {

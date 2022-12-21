@@ -74,15 +74,13 @@ provider:
     CRONOS_RPC: ${file(./env.js):CRONOS_RPC}
     KLAYTN_RPC: "https://public-node-api.klaytnapi.com/v1/cypress"
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
-    HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
     INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
     DROPS_WEBHOOK: ${file(./env.js):DROPS_WEBHOOK}
-    EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
+    #EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     #FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
     #DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
-    MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
     FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
     VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
@@ -92,7 +90,6 @@ provider:
     PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
-    AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
     INDEXER_DB: ${env:INDEXER_DB}
     AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}
     tableName: ${self:custom.tableName}
@@ -265,6 +262,8 @@ functions:
       - http:
           path: raises
           method: get
+    environment:
+      - AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
   oracles:
     handler: src/getOracles.default
     timeout: 600
@@ -418,6 +417,8 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 2,13 * * ? *)
+    environment:
+      - HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
   triggerNotifyStatus:
     handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900
@@ -441,6 +442,8 @@ functions:
     memorySize: 1024
     events:
       - schedule: cron(*/30 * * * ? *)
+    environment:
+      - MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
   notifyStaleCoins:
     handler: src/notifyStaleCoins.default
     timeout: 900

@@ -57,22 +57,23 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     chain: chain as any, block,
   })
 
+  const tokenInfos = await getTokenInfo(chain, fyTokens, block)
+
+  const params = tokenInfos.decimals.map(i => 10 ** i.output)
+  let coinsData: CoinData[] = await getTokenAndRedirectData(underlyingTokens, chain, timestamp);
+
   let pricesRes = await sdk.api2.abi.multiCall({
-    calls: pools.map((i: string) => ({ target: i, params: 1e6 })),
+    calls: pools.map((i: string, idx) => ({ target: i, params: params[idx].toString() })),
     abi: abis.sellFYTokenPreview,
     chain: chain as any, block,
   })
-
-  const tokenInfos = await getTokenInfo(chain, fyTokens, block)
-
-  let coinsData: CoinData[] = await getTokenAndRedirectData(underlyingTokens, chain, timestamp);
 
   pricesRes.map((output, i) => {
     const coinData: (CoinData|undefined) = coinsData.find(
       (c: CoinData) => c.address.toLowerCase() === underlyingTokens[i].toLowerCase()
     );
     if (!coinData || !output) return;
-    const price = coinData.price * output / 1e6
+    const price = coinData.price * output / params[i]
 
     addToDBWritesList(writes, chain, fyTokens[i], price, tokenInfos.decimals[i].output, tokenInfos.symbols[i].output, timestamp, 'yield-protocol', coinData.confidence as number)
   });

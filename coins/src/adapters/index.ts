@@ -21,6 +21,7 @@ export default {
   meanFinance: require("./yield/mean-finance/index"),
   misc4262: require("./yield/misc4262/index"),
   // yieldProtocol: require("./yield/yield-protocol/index"),
+  // beefy: require("./yield/beefy/index"),
   platypus: require("./markets/platypus/index"),
   curve1: require("./markets/curve/index"),
   curve2: require("./markets/curve/index"),

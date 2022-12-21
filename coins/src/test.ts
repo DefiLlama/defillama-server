@@ -19,15 +19,14 @@ function selectRandom(max: number) {
 
 async function main() {
   console.log(`==== Testing ${protocol} ====`);
-  const entries = Object.entries(adapters);
-  const selectedEntry = entries.filter((e: any) => e[0] == protocol)[0];
-  if (selectedEntry == null) {
+  const protocolWrapper = (adapters as any)[protocol]
+  if (!protocolWrapper) {
     console.log(
       `The passed protocol name is invalid. Make sure '${protocol}' is a key of './adapters/index.ts'`
     );
   }
-
-  const results = await selectedEntry[1][protocol](0);
+  
+  const results = await protocolWrapper[protocol](0);
   const resultsWithoutDuplicates = filterWritesWithLowConfidence(
     results.flat()
   );

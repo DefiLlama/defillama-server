@@ -672,5 +672,8 @@ export default {
     },
     "liquidswap": {
         enabled: true
+    },
+    "rubicon": {
+        enabled: true
     }
 } as AdaptorsConfig

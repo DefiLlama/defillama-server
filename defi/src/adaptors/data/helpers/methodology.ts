@@ -73,6 +73,29 @@ const genericMethodologies: IJSON<IJSON<string>> = {
     }
 }
 
+export const getParentProtocolMethodology = (name: string, versionNames: string[]) => {
+    const text = (() => {
+        if (versionNames.length === 1)
+            return {
+                isSumString: `All`,
+                versions: `${versionNames[0].toUpperCase()} version`
+            }
+        else
+            return {
+                isSumString: `Addition of all`,
+                versions: `${versionNames.map(v=>v.toUpperCase()).slice(0, -1).join(', ')} ${versionNames[versionNames.length - 1].toUpperCase()} versions`
+            }
+    })()
+    return {
+        UserFees: `${text.isSumString} user fees from ${name}'s ${text.versions}`,
+        Fees: `${text.isSumString} fees from ${name}'s ${text.versions}`,
+        Revenue: `${text.isSumString} revenue from ${name}'s ${text.versions}`,
+        ProtocolRevenue: `${text.isSumString} protocol revenue from ${name}'s ${text.versions}`,
+        HoldersRevenue: `${text.isSumString} holders revenue from ${name}'s ${text.versions}`,
+        SupplySideRevenue: `${text.isSumString} supply side revenue from ${name}'s ${text.versions}`
+    }
+}
+
 export const getMethodologyByType = (category: string) => {
     return genericMethodologies?.[category]
 }

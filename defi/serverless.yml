@@ -417,8 +417,6 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 2,13 * * ? *)
-    environment:
-      HOURLY_OUTDATED_WEBHOOK: ${env:HOURLY_OUTDATED_WEBHOOK}
   triggerNotifyStatus:
     handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900
@@ -436,6 +434,8 @@ functions:
     memorySize: 1024
     events:
       - schedule: rate(1 hour)
+    environment:
+      HOURLY_OUTDATED_WEBHOOK: ${env:HOURLY_OUTDATED_WEBHOOK}
   notifyOutdatedApi:
     handler: src/checkOutdatedApi.default
     timeout: 900

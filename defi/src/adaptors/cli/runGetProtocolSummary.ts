@@ -1,24 +1,25 @@
 import "./setup.ts"
-import { handler, IHandlerBodyResponse } from "../handlers/getProtocol";
+import { handler } from "../handlers/getProtocol";
 import { performance } from "perf_hooks";
 
 (async () => {
     const start = performance.now()
     const r = await handler({
         pathParameters: {
-            name: "lido",
-            type: "fees"
+            name: "gmx",
+            type: "dexs"
         },
         /* queryStringParameters: {
             dataType: "dailyRevenue"
         } */
     } as unknown as AWSLambda.APIGatewayEvent)
     const end = performance.now()
-    const d = JSON.parse(r.body) as Partial<IHandlerBodyResponse>
-    console.log(d.totalDataChartBreakdown?.find(r=>+r[0]===Date.UTC(2022, 10, 23)/1000))
+    const d = JSON.parse(r.body)
+    console.log("last one", JSON.stringify(d.totalDataChart.slice(-1), null, 2))
+    console.log("last bra", JSON.stringify(d.totalDataChartBreakdown.slice(-1), null, 2))
     delete d['totalDataChart']
     delete d['totalDataChartBreakdown']
-    //console.log(d)
+    console.log(d)
     console.log((end - start) / 1000)
     //console.log(JSON.stringify(d, null, 2))
 })()

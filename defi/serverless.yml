@@ -90,7 +90,7 @@ provider:
     PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
-    INDEXER_DB: ${env:INDEXER_DB}
+    INDEXER_DB: ${file(./env.js):INDEXER_DB}
     AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -263,7 +263,7 @@ functions:
           path: raises
           method: get
     environment:
-      AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
+      AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
   oracles:
     handler: src/getOracles.default
     timeout: 600
@@ -435,7 +435,7 @@ functions:
     events:
       - schedule: rate(1 hour)
     environment:
-      HOURLY_OUTDATED_WEBHOOK: ${env:HOURLY_OUTDATED_WEBHOOK}
+      HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
   notifyOutdatedApi:
     handler: src/checkOutdatedApi.default
     timeout: 900
@@ -443,7 +443,7 @@ functions:
     events:
       - schedule: cron(*/30 * * * ? *)
     environment:
-      MONITOR_WEBHOOK: ${env:MONITOR_WEBHOOK}
+      MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
   notifyStaleCoins:
     handler: src/notifyStaleCoins.default
     timeout: 900

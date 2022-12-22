@@ -41,9 +41,12 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
       defillamaId: r.fields["DefiLlama Id"],
     }));
 
-  return successResponse({
-    raises: formattedRaises,
-  }, 30*60);
+  return successResponse(
+    {
+      raises: formattedRaises,
+    },
+    30 * 60
+  );
 };
 
 export default wrap(handler);

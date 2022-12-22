@@ -45,36 +45,6 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             if (cleanRecord === null && (!lastRecord || !lastRecord.data[chain])) {
                 return
             }
-            // Checking if we skipped a day with no record
-            const missingDayData: IJSON<IRecordAdaptorRecordData> = {} as IJSON<IRecordAdaptorRecordData>
-            Object.entries(acc.lastDataRecord).forEach(async ([chainprot, record]) => {
-                const [chain, prot] = chainprot.split("#")
-                if (!timestamp || !record) return
-                const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
-                for (let i = 1; i < gaps; i++) {
-                    const recordData = record.data?.[chain]
-                    const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
-                    missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))] = {
-                        ...missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))],
-                        [chain]: {
-                            ...(typeof prevData === 'number' ? undefined : prevData),
-                            ...(typeof recordData === 'number' ? undefined : recordData),
-                        }
-                    }
-                }
-            })
-            // If day with no record skipped, filling with prev day
-            Object.entries(missingDayData).forEach(([timestamp, data]) => {
-                spikesLogs.push(`Missing day found: ${formatTimestampAsDate(timestamp)}\n. Pls fix it`)
-                const missingDay = new AdaptorRecord(
-                    type,
-                    adaptorId,
-                    +timestamp,
-                    data
-                )
-                acc.adaptorRecords.push(missingDay)
-                acc.recordsMap[String(missingDay.timestamp)] = missingDay
-            })
             // If clean data is found, it checks if there's available value for chain-protocol and adds it to generatedData
             if (cleanRecord !== null && cleanRecord.data[chain]) {
                 const chainData = cleanRecord.data[chain]

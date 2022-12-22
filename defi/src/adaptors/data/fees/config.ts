@@ -268,5 +268,8 @@ export default {
     },
     "0vix": {
         enabled: true
+    },
+    "mummy-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

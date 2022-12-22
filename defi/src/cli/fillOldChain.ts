@@ -74,7 +74,9 @@ async function getAndStore(
     if (!adapterModule[chain]) throw new Error('Protocol does not have that chain!')
 
   let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
-  const res = await getBlocksRetry(timestamp, { chains: chainsToRefill as Chain[] })
+  const chains = chainsToRefill.map(i => i.split('-')[0])
+
+  const res = await getBlocksRetry(timestamp, { chains: [...new Set(chains)] as Chain[] })
   ethereumBlock = res.ethereumBlock
   chainBlocks = res.chainBlocks
 
@@ -94,6 +96,7 @@ async function getAndStore(
     {
       chainsToRefill,
       partialRefill: true,
+      returnCompleteTvlObject: true,
       cacheData,
     }
   );
@@ -105,7 +108,7 @@ async function getAndStore(
 const main = async () => {
   sdk.log('DRY RUN: ', !!process.env.DRY_RUN)
   sdk.log('Refilling protocol: ', process.argv[2])
-  sdk.log('Refilling for chain: ', process.argv[3].split(','))
+  sdk.log('Refilling for keys: ', process.argv[3].split(','))
   const protocolToRefill = process.argv[2]
   const chainsToRefill = process.argv[3].split(',')
   const latestDate = (process.argv[4] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp

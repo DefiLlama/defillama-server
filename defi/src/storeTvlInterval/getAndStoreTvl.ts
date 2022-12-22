@@ -127,6 +127,7 @@ function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObjec
 }
 
 type StoreTvlOptions = {
+  returnCompleteTvlObject?: boolean,
   partialRefill?: boolean,
   chainsToRefill?: string[],
   cacheData?: Object
@@ -149,6 +150,7 @@ export async function storeTvl(
 ) {
   const {
     partialRefill = false,
+    returnCompleteTvlObject = false,
     chainsToRefill = [],
     cacheData,
   } = options
@@ -275,5 +277,6 @@ export async function storeTvl(
   }
 
   insertOnDb(useCurrentPrices, 'INSERT INTO `completed` VALUES (?, ?, ?, ?, ?)', [protocol.name, getCurrentUnixTimestamp() - adapterStartTimestamp], "all", 1)
+  if (returnCompleteTvlObject) return usdTvls
   return usdTvls.tvl;
 }

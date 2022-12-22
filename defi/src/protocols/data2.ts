@@ -21247,7 +21247,7 @@ listedAt: 1650804679
   symbol: "SDL",
   url: "https://stake.link",
   description:
-    "Effortlessly stake your crypto assets with stake.link  easy to use, secure liquid staking protocol.",
+    "Effortlessly stake your crypto assets with stake.link it is easy to use, secure liquid staking protocol.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/stake.link.png`,
   audits: "0",

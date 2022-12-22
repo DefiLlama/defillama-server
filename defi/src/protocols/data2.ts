@@ -21287,14 +21287,14 @@ listedAt: 1650804679
 
 {
   id: "2380", 
-  name: "Optim Finance Liquidity Bonds",
+  name: "Optim Finance",
   address: null,
   symbol: "-",
   url: "https://optim.finance",
   description:
     "Optim Liquidity Bond platform enables the lending and borrowing of staking rights between users at mutually beneficial rates as determined by buyers and sellers in the market.",
   chain: "Cardano",
-  logo: `${baseIconsUrl}/optim-finance-liquidity-bonds.jpg`,
+  logo: `${baseIconsUrl}/optim-finance.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

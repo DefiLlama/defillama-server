@@ -43,16 +43,24 @@ async function getTvl(
   isFetchFunction: boolean,
   storedKey: string,
   maxRetries: number,
-  staleCoins: StaleCoins
+  staleCoins: StaleCoins,
+  options: StoreTvlOptions = {} as StoreTvlOptions
 ) {
   for (let i = 0; i < maxRetries; i++) {
     try {
       if (!isFetchFunction) {
-        const tvlBalances = await tvlFunction(
-          unixTimestamp,
-          ethBlock,
-          chainBlocks
-        );
+        let tvlBalances: any
+        if (options.partialRefill && !options.chainsToRefill?.includes(storedKey)) {
+          tvlBalances = (options.cacheData as any)[storedKey]
+          if (!tvlBalances)
+            throw new Error('Cache data missing for '+ storedKey)
+        } else {
+          tvlBalances = await tvlFunction(
+            unixTimestamp,
+            ethBlock,
+            chainBlocks
+          );
+        }
         Object.keys(tvlBalances).forEach((key) => {
           if (+tvlBalances[key] === 0) delete tvlBalances[key]
         })
@@ -118,6 +126,12 @@ function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObjec
   }
 }
 
+type StoreTvlOptions = {
+  partialRefill?: boolean,
+  chainsToRefill?: string[],
+  cacheData?: Object
+}
+
 export async function storeTvl(
   unixTimestamp: number,
   ethBlock: number,
@@ -130,8 +144,17 @@ export async function storeTvl(
   storePreviousData: boolean = true,
   useCurrentPrices: boolean = true,
   breakIfTvlIsZero: boolean = false,
-  runBeforeStore?: () => Promise<void>
+  runBeforeStore?: () => Promise<void>,
+  options: StoreTvlOptions = {} as StoreTvlOptions
 ) {
+  const {
+    partialRefill = false,
+    chainsToRefill = [],
+    cacheData,
+  } = options
+
+  if (partialRefill && (!chainsToRefill.length || !cacheData)) throw new Error('Missing chain list for refill')
+
   const adapterStartTimestamp = getCurrentUnixTimestamp()
 
   const usdTvls: tvlsObject<number> = {};
@@ -163,7 +186,7 @@ export async function storeTvl(
         }
         const startTimestamp = getCurrentUnixTimestamp()
         await getTvl(unixTimestamp, ethBlock, chainBlocks, protocol, useCurrentPrices, usdTvls, tokensBalances,
-          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins)
+          usdTokenBalances, rawTokenBalances, tvlFunction, tvlFunctionIsFetch, storedKey, maxRetries, staleCoins, {...options, partialRefill, chainsToRefill, cacheData })
         let keyToAddChainBalances = tvlType;
         if(tvlType === "tvl" || tvlType === "fetch"){
           keyToAddChainBalances = "tvl"

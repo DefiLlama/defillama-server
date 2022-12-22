@@ -392,7 +392,8 @@ export default async function getTokenPrices(
   const tokenPrices = await getTokenAndRedirectData(
     Array.from(underlyingTokens),
     chain,
-    timestamp
+    timestamp,
+    1
   );
 
   const priceableLPs = await findPriceableLPs(

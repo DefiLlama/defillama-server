@@ -283,7 +283,8 @@ async function getUnderlyingPrices(
   const coinsData: CoinData[] = await getTokenAndRedirectData(
     balances.map((r: Result) => r.input.target.toLowerCase()),
     chain,
-    timestamp
+    timestamp,
+    1
   );
 
   const poolComponents = balances.map((b: any) => {

@@ -17,7 +17,8 @@ const confidenceThreshold: number = 0.4;
 export async function getTokenAndRedirectData(
   tokens: string[],
   chain: string,
-  timestamp: number
+  timestamp: number,
+  hoursRange: number = 12
 ) {
   if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
     return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
@@ -25,7 +26,8 @@ export async function getTokenAndRedirectData(
   return await getTokenAndRedirectDataDB(
     tokens,
     chain,
-    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp
+    timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
+    hoursRange
   );
 }
 export function addToDBWritesList(
@@ -111,7 +113,8 @@ async function getTokenAndRedirectDataFromAPI(
 async function getTokenAndRedirectDataDB(
   tokens: string[],
   chain: string,
-  timestamp: number
+  timestamp: number,
+  hoursRange: number
 ) {
   let allReads: Read[] = [];
   const batchSize = 500;
@@ -125,7 +128,7 @@ async function getTokenAndRedirectDataDB(
         return getTVLOfRecordClosestToTimestamp(
           `asset#${chain}:${t.toLowerCase()}`,
           timestamp,
-          43200 // SEARCHES A 24 HOUR WINDOW
+          hoursRange * 60 * 60
         );
       })
     );
@@ -157,7 +160,7 @@ async function getTokenAndRedirectDataDB(
         return getTVLOfRecordClosestToTimestamp(
           r.PK,
           r.SK,
-          43200 // SEARCHES A 24 HOUR WINDOW
+          hoursRange * 60 * 60
         );
       })
     );

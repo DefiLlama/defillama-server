@@ -7,6 +7,7 @@ import {
   dailyTokensTvl,
   dailyTvl,
   dailyUsdTokensTvl,
+  dailyRawTokensTvl,
 } from "../utils/getLastRecord";
 import { getHistoricalValues } from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
@@ -18,6 +19,8 @@ import {
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapter } from "./utils/importAdapter";
+import * as sdk from '@defillama/sdk'
+import { Chain } from "@defillama/sdk/build/general";
 
 const secondsInDay = 24 * 3600;
 
@@ -47,19 +50,33 @@ let failed = 0
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
-  dailyItems: DailyItems
+  dailyItems: DailyItems,
+  options: {
+    chainsToRefill: string[],
+    rawTokenTvl: DocumentClient.ItemList
+  }
 ) {
+  const { chainsToRefill, rawTokenTvl = [] } = options
+  const cacheData = rawTokenTvl.find(
+    (item) => getClosestDayStartTimestamp(item.SK) === timestamp
+  )
+  if (!cacheData) {
+    console.log('Unable to find cached data for: ', new Date(timestamp * 1000).toDateString())
+    process.exit(0)
+  }
   if (failed > 3) {
     console.log('More than 3 failures in a row, exiting now')
     process.exit(0)
   }
   const adapterModule = await importAdapter(protocol)
+
+  for (const chain of chainsToRefill)
+    if (!adapterModule[chain]) throw new Error('Protocol does not have that chain!')
+
   let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
-  if (!process.env.SKIP_BLOCK_FETCH) {
-    const res = await getBlocksRetry(timestamp, { adapterModule })
-    ethereumBlock = res.ethereumBlock
-    chainBlocks = res.chainBlocks
-  }
+  const res = await getBlocksRetry(timestamp, { chains: chainsToRefill as Chain[] })
+  ethereumBlock = res.ethereumBlock
+  chainBlocks = res.chainBlocks
 
   const tvl = await storeTvl(
     timestamp,
@@ -73,7 +90,12 @@ async function getAndStore(
     false,
     false,
     true,
-    () => deleteItemsOnSameDay(dailyItems, timestamp)
+    () => deleteItemsOnSameDay(dailyItems, timestamp),
+    {
+      chainsToRefill,
+      partialRefill: true,
+      cacheData,
+    }
   );
   console.log(timestamp, new Date(timestamp * 1000).toDateString(), tvl);
   if (tvl === undefined) failed++
@@ -81,22 +103,29 @@ async function getAndStore(
 }
 
 const main = async () => {
-  console.log('DRY RUN: ', !!process.env.DRY_RUN)
+  sdk.log('DRY RUN: ', !!process.env.DRY_RUN)
+  sdk.log('Refilling protocol: ', process.argv[2])
+  sdk.log('Refilling for chain: ', process.argv[3].split(','))
   const protocolToRefill = process.argv[2]
-  const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
-  const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel
+  const chainsToRefill = process.argv[3].split(',')
+  const latestDate = (process.argv[4] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
+  const batchSize = Number(process.argv[5] ?? 1); // how many days to fill in parallel
   if (process.env.HISTORICAL !== "true") {
     throw new Error(`You must set HISTORICAL="true" in your .env`)
   }
+
+  if (!chainsToRefill) throw new Error('Missing chain parameter')
   const protocol = getProtocol(protocolToRefill);
   const adapter = await importAdapter(protocol);
-  if (adapter.timetravel === false) {
-    throw new Error("Adapter doesn't support refilling");
-  }
   const dailyTvls = await getHistoricalValues(dailyTvl(protocol.id));
   const dailyTokens = await getHistoricalValues(dailyTokensTvl(protocol.id));
   const dailyUsdTokens = await getHistoricalValues(dailyUsdTokensTvl(protocol.id));
-  const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens];
+  const rawTokenTvl = await getHistoricalValues(dailyRawTokensTvl(protocol.id));
+  const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens,];
+  debugPrintDailyItems(dailyTvls, 'dailyTvls')
+  debugPrintDailyItems(dailyTokens, 'dailyTokens')
+  debugPrintDailyItems(dailyUsdTokens, 'dailyUsdTokens')
+  debugPrintDailyItems(rawTokenTvl, 'rawTokenTvl')
   const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
@@ -109,7 +138,7 @@ const main = async () => {
   while (timestamp > start) {
     const batchedActions = [];
     for (let i = 0; i < batchSize && timestamp > start; i++) {
-      batchedActions.push(getAndStore(timestamp, protocol, dailyItems));
+      batchedActions.push(getAndStore(timestamp, protocol, dailyItems, { chainsToRefill, rawTokenTvl } as any));
       timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
     }
     await Promise.all(batchedActions);
@@ -119,4 +148,14 @@ main().then(() => {
   console.log('Done!!!')
   process.exit(0)
 })
+
+function debugPrintDailyItems(items: any[] = [], key = '') {
+  sdk.log('Data for ', key)
+  sdk.log('length ', items.length)
+  return;
+  items = [...items].map(i => i.SK)
+  items.sort((a, b) => b - a)
+  items = items.slice(0, 32)
+  sdk.log(JSON.stringify(items?.map(i => new Date(1e3 * i).toDateString()), null, 2))
+}
 

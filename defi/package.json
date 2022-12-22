@@ -17,6 +17,7 @@
     "build": "sls package",
     "updateAdapters": "cd DefiLlama-Adapters && git checkout main && git pull",
     "fillOld": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillOld.ts",
+    "fillOldChain": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillOldChain.ts",
     "fillLast": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillLast.ts",
     "customFill": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/customFill.ts",
     "deleteAtDate": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/deleteAtDate.ts",

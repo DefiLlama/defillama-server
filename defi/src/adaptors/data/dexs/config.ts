@@ -675,5 +675,8 @@ export default {
     },
     "rubicon": {
         enabled: true
+    },
+    "aux-exchange": {
+        enabled: true
     }
 } as AdaptorsConfig

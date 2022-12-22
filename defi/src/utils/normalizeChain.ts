@@ -1228,13 +1228,13 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
-  "boba_avax": {
+  "Boba_Avax": {
     geckoId: null,
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
   },
-  "boba_bnb": {
+  "Boba_Bnb": {
     geckoId: null,
     symbol: null,
     cmcId: null,

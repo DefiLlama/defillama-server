@@ -65,7 +65,8 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             })
             // If day with no record skipped, filling with prev day
             Object.entries(missingDayData).forEach(([timestamp, data]) => {
-                spikesLogs.push(`Missing day found: ${formatTimestampAsDate(timestamp)}\n. Pls fix it`)
+                // TODO: imporove message + process in another lambda
+                // spikesLogs.push(`Missing day found: ${formatTimestampAsDate(timestamp)}\n. Pls fix it`)
                 const missingDay = new AdaptorRecord(
                     type,
                     adaptorId,

@@ -21308,6 +21308,28 @@ listedAt: 1650804679
   audit_links: ["https://optim-finance.gitbook.io/optim-finance/products/liquidity-bonds/audit-reports"],
   listedAt: 1671660419
 },
+{
+  id: "2381", 
+  name: "Genius Yield",
+  address: null,
+  symbol: "-",
+  url: "https://www.geniusyield.co",
+  description:
+    "Bringing the power of yield optimization to your fingertips. Less hassle, minimize risk, maximize profits.",
+  chain: "Cardano",
+  logo: `${baseIconsUrl}/genius-yield.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Cardano"],
+  module: "genius-yield/index.js",
+  twitter: "GeniusyieldO", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1671795512
+},
 ]
 
 export default data2;

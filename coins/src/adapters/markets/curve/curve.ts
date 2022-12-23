@@ -284,7 +284,7 @@ async function getUnderlyingPrices(
     balances.map((r: Result) => r.input.target.toLowerCase()),
     chain,
     timestamp,
-    1
+    3
   );
 
   const poolComponents = balances.map((b: any) => {
@@ -316,10 +316,13 @@ async function unknownPools(
   unknownPoolList: any[],
   unknownTokensList: any[]
 ) {
+  let i = 0;
   for (let registry of registries) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
+      i++;
       try {
+        console.log(i);
         const token: string = await PoolToToken(chain, pool, block);
         const [balances, tokenInfo] = await Promise.all([
           poolBalances(chain, pool, registry, block),
@@ -482,6 +485,7 @@ export default async function getTokenPrices(
   let unknownTokensList: string[] = [];
   let unknownPoolList: any[] = [];
 
+  console.log("pools:");
   await unknownPools(
     chain,
     block,
@@ -492,7 +496,7 @@ export default async function getTokenPrices(
     unknownPoolList,
     unknownTokensList
   );
-
+  console.log("tokens:");
   await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
   return writes;
 }

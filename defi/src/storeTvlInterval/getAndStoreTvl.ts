@@ -1,5 +1,5 @@
 import { Protocol } from "../protocols/data";
-import { util } from "@defillama/sdk";
+import * as sdk from "@defillama/sdk";
 import storeNewTvl from "./storeNewTvl";
 import { TokensValueLocked, tvlsObject } from "../types";
 import storeNewTokensValueLocked from "./storeNewTokensValueLocked";
@@ -55,10 +55,14 @@ async function getTvl(
           if (!tvlBalances)
             throw new Error('Cache data missing for '+ storedKey)
         } else {
+          const chain = storedKey.split('-')[0]
+          const block = chainBlocks[chain]
+          const api = new sdk.api2.abi.ChainApi({ chain, block, })
           tvlBalances = await tvlFunction(
             unixTimestamp,
             ethBlock,
-            chainBlocks
+            chainBlocks,
+            { api, chain, storedKey, block, }
           );
         }
         Object.keys(tvlBalances).forEach((key) => {
@@ -120,7 +124,7 @@ function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObjec
     balancesObject[key] = {}
     storedKeys.map(keyToMerge=>{
       Object.entries(balancesObject[keyToMerge]).forEach((balance) => {
-        util.sumSingleBalance(balancesObject[key], balance[0], balance[1]);
+        sdk.util.sumSingleBalance(balancesObject[key], balance[0], balance[1]);
       });
     })
   }

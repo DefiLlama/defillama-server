@@ -54,7 +54,7 @@ async function checkForOutlierCoins(
   let alertString = headline;
 
   Object.keys(currentTvls).map((tvlKey) => {
-    const totalChainTvlPrevious = Object.values(previousTvls[tvlKey]).reduce(
+    const totalChainTvlPrevious = Object.values(previousTvls[tvlKey] ?? {}).reduce(
       (p: number, c: number) => p + c,
       0
     );

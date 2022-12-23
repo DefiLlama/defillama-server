@@ -678,5 +678,8 @@ export default {
     },
     "aux-exchange": {
         enabled: true
+    },
+    "wojak-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

@@ -681,5 +681,8 @@ export default {
     },
     "wojak-finance": {
         enabled: true
+    },
+    "ampleswap": {
+        enabled: true
     }
 } as AdaptorsConfig

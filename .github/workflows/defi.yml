@@ -39,7 +39,7 @@ jobs:
       with:
         path: /tmp/jest-cache
         key: ${{ runner.os }}-jest-${{ env.TODAY }}
-    - run: npm ci || npm i
+    - run: npm ci
     - run: cd DefiLlama-Adapters && git checkout main && git pull
     - run: cd dimension-adapters && git checkout master && git pull
     - name: Run tests

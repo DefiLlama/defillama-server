@@ -39,7 +39,7 @@ async function getPoolIds(chain: string, timestamp: number) {
     const result = (await request(subgraph, lpQuery)).pools;
     if (result.length < 1000) i = 20;
     if (result.length == 0) return addresses;
-    reservereThreshold = result[Math.max(result.length - 1, 0)].volumeUSD;
+    reservereThreshold = result[Math.max(result.length - 1, 0)].totalLiquidity;
     addresses.push(...result.map((p: any) => p.id));
   }
   return addresses;

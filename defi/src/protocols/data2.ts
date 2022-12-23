@@ -21347,7 +21347,7 @@ listedAt: 1650804679
   category: "Lending",
   chains: ["Arbitrum"],
   module: "tender-finance/index.js",
-  twitter: null, 
+  twitter: "tender_fi", 
   forkedFrom: ["Compound"],
   oracles: ["Chainlink"],
   audit_links: ["http://odex.vip/?sign=6100531bc2e5bf8b94dd7a7b87b53577"],

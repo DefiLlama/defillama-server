@@ -299,7 +299,7 @@ functions:
   storeLiquidations:
     handler: src/storeLiquidations.default
     timeout: 900
-    memorySize: 6000
+    memorySize: 4500
     events:
       # update latest every 20 minutes
       - schedule: cron(0/20 * * * ? *)

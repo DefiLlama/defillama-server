@@ -21322,7 +21322,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Yield",
+  category: "Dexes",
   chains: ["Cardano"],
   module: "genius-yield/index.js",
   twitter: "GeniusyieldO", 

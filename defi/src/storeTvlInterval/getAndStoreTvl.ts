@@ -62,7 +62,7 @@ async function getTvl(
             unixTimestamp,
             ethBlock,
             chainBlocks,
-            { api, chain, storedKey, block, }
+            { api, chain, storedKey, block, },
           );
         }
         Object.keys(tvlBalances).forEach((key) => {

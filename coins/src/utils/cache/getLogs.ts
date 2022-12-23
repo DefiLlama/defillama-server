@@ -76,7 +76,3 @@ export async function getLogs(options: logOptions) {
     return cache
   }
 }
-
-module.exports = {
-  getLogs
-}

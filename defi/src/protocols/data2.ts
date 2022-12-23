@@ -21376,6 +21376,28 @@ listedAt: 1650804679
   audit_links: ["https://ampleswap.com/audit-by-etherauthority.pdf"],
   listedAt: 1671807472
 },
+{
+  id: "2384", 
+  name: "OreoSwap",
+  address: "arbitrum:0x319e222De462ac959BAf2aEc848697AeC2bbD770",
+  symbol: "OREO",
+  url: "https://oreoswap.finance/",
+  description:
+    "OreoSwap is a DeFi platform that provides both AMM and integrated NFT Farming on Arbitrum blockchain network",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/oreoswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  module: "oreoswap/index.js",
+  twitter: "oreoswap", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1671817331
+},
 ]
 
 export default data2;

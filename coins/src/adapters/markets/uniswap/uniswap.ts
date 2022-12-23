@@ -393,7 +393,7 @@ export default async function getTokenPrices(
     Array.from(underlyingTokens),
     chain,
     timestamp,
-    1
+    3
   );
 
   const priceableLPs = await findPriceableLPs(

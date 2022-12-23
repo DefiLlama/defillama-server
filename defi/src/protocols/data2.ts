@@ -21330,6 +21330,52 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671795512
 },
+{
+  id: "2382", 
+  name: "Tender Finance",
+  address: null,
+  symbol: "-",
+  url: "https://www.tender.fi",
+  description:
+    " Tender Finance is an innovative open-source decentralized protocol for borrowing and lending. It will support whole-portfolio collateralization, starting with GMX and GLP, and a novel mechanism for collateralizing long-tail assets.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/tender-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Arbitrum"],
+  module: "tender-finance/index.js",
+  twitter: null, 
+  forkedFrom: ["Compound"],
+  oracles: ["Chainlink"],
+  audit_links: ["http://odex.vip/?sign=6100531bc2e5bf8b94dd7a7b87b53577"],
+  listedAt: 1671807469
+},
+{
+  id: "2383", 
+  name: "AmpleSwap",
+  address: "bsc:0x335f6e0e804b70a96bf9eb8af31588942e9b2515",
+  symbol: "AMPLE",
+  url: "https://ampleswap.com",
+  description:
+    "The best AMM DEX on Binance Smart Chain (BSC, providing friendly trading and better project support",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/ampleswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "ampleswap/index.js",
+  twitter: "ampleswap", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  audit_links: ["https://ampleswap.com/audit-by-etherauthority.pdf"],
+  listedAt: 1671807472
+},
 ]
 
 export default data2;

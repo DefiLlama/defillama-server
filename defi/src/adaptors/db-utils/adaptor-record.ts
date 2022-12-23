@@ -100,18 +100,17 @@ export class AdaptorRecord extends Item {
     }
 
     getCleanAdaptorRecord(chains?: string[]): AdaptorRecord | null {
+        let data = this.data
         if (chains !== undefined && chains.length > 0) {
             //if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
-            const newData = chains.reduce((acc, chain) => {
+            data = chains.reduce((acc, chain) => {
                 acc[formatChainKey(chain)] = this.data[chain] ?? this.data[formatChainKey(chain)]
                 return acc
             }, {} as IJSON<number | IRecordAdapterRecordChainData>)
-            if (AdaptorRecord.isDataEmpty(newData)) return null
-            return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newData)
         }
-        const d = removeErrors(this.data)
-        if (AdaptorRecord.isDataEmpty(d)) return null
-        return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, d)
+        const newDataNoErr = removeErrors(data)
+        if (AdaptorRecord.isDataEmpty(newDataNoErr)) return null
+        return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newDataNoErr)
     }
 
     static isDataEmpty(data: IRecordAdaptorRecordData) {

@@ -21398,6 +21398,52 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1671817331
 },
+{
+  id: "2385", 
+  name: "Exactly",
+  address: null,
+  symbol: "-",
+  url: "https://exact.ly",
+  description:
+    "Exactly is a decentralized, non-custodial, open-source protocol that provides an autonomous fixed and variable interest rate market, enabling users to frictionlessly exchange their assets' time value and complete the DeFi credit market.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/exactly.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "exactly/index.js",
+  twitter: "ExactlyProtocol", 
+  forkedFrom: [],
+  oracles: ["Chainlink"],
+  audit_links: ["https://github.com/exactly/audits"],
+  listedAt: 1671893480
+},
+{
+  id: "2386", 
+  name: "SandClock",
+  address: "0xbA8A621b4a54e61C442F5Ec623687e2a942225ef",
+  symbol: "QUARTZ",
+  url: "https://www.sandclock.org",
+  description:
+    "OreoSwap is a DeFi platform that provides both AMM and integrated NFT Farming on Arbitrum blockchain network",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/sandclock.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "sandclock/index.js",
+  twitter: "SandclockOrg", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://docs.sandclock.org/current/technical-documentation/security/external"],
+  listedAt: 1671893485
+},
 ]
 
 export default data2;

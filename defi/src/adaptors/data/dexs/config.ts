@@ -684,5 +684,8 @@ export default {
     },
     "ampleswap": {
         enabled: true
+    },
+    "heliswap": {
+        enabled: true
     }
 } as AdaptorsConfig

@@ -58,8 +58,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
             const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
             const childCategories = Object.values(overrides[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
             const displayCategory = getDisplayCategory(moduleObject, overrides[adapterKey]) ?? dexFoundInProtocols.category
-            if (adapterKey === 'gmx' || !displayCategory)
-                console.log("displayCategory", displayCategory, adapterKey)
             return {
                 ...dexFoundInProtocols,
                 ...overrides[adapterKey],

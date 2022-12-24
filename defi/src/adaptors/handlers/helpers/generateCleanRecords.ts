@@ -139,7 +139,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         )
         Object.entries(acc.lastDataRecord).forEach(([key, record]) => {
             const [chain, protocol] = key.split('#')
-            const chainData = generatedData[chain]
+            const chainData = newGen.data[chain]
             if (chain && protocol && chainData && typeof chainData !== 'number' && chainData[protocol] && record) {
                 const recordChainData = record.data[chain]
                 if (!recordChainData || typeof recordChainData === 'number') return
@@ -165,7 +165,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                         }
                     )
                 }, 1, newGen.timestamp)
-                if (chg1d && chg1d > 10000000 && chainData[protocol] > 1000000) {
+                if (chg1d && chg1d > 1000 && chainData[protocol] > 10000000) {
                     spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
                     const okChainData = newGen.data[chain]
                     if (okChainData && typeof okChainData !== 'number')

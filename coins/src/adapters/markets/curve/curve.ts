@@ -284,7 +284,7 @@ async function getUnderlyingPrices(
     balances.map((r: Result) => r.input.target.toLowerCase()),
     chain,
     timestamp,
-    3
+    12
   );
 
   const poolComponents = balances.map((b: any) => {

@@ -20878,7 +20878,7 @@ listedAt: 1650804679
   symbol: "HEDGEHOG",
   url: "https://liqui.space/",
   description:
-    "LP-vault that earns ETH, by providing liquidity for the UniV3 and hedging its imp losses with Squeeth",
+    "An automated strategy that earns ETH, by providing liquidity for the Uniswap V3 and hedging its impermanent losses with Squeeth.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/hedgehog.png`,
   audits: "0",

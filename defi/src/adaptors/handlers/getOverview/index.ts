@@ -135,7 +135,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
-            console.error(e)
+            //console.error(e)
             // TODO, move error handling to rejected promises
             if (enableAlerts && !adapter.disabled) {
                 errors.push(e.message)

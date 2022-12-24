@@ -56,24 +56,42 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                         }, {} as typeof moduleObject.breakdown)
                 } as Adapter
             const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
+            const childCategories = Object.values(overrides[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
+            const displayCategory = getDisplayCategory(moduleObject, overrides[adapterKey]) ?? dexFoundInProtocols.category
+            if (adapterKey === 'gmx' || !displayCategory)
+                console.log("displayCategory", displayCategory, adapterKey)
             return {
                 ...dexFoundInProtocols,
                 ...overrides[adapterKey],
                 module: adapterKey,
                 config: config[adapterKey],
+                category: displayCategory,
                 chains: getAllChainsFromAdaptors([adapterKey], moduleObject),
                 disabled: isDisabled(moduleObject),
                 displayName,
-                protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category ?? ''),
+                protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category),
                 protocolType: adapterObj.module.default?.protocolType,
                 methodologyURL: adapterObj.codePath,
-                methodology: getMethodologyData(displayName, adapterKey, moduleObject, dexFoundInProtocols.category ?? '')
+                methodology: getMethodologyData(
+                    displayName,
+                    adapterKey,
+                    moduleObject,
+                    displayCategory ?? '',
+                    childCategories
+                )
             }
         }
         // TODO: Handle better errors
         console.error(`Missing info for ${adapterKey}`)
         return undefined
     }).filter(notUndefined);
+
+function getDisplayCategory(adapter: Adapter, override: typeof overrides[string]) {
+    if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
+        const versionName = Object.keys(adapter.breakdown)[0]
+        return override?.protocolsData?.[versionName]?.category
+    }
+}
 
 export function getDisplayName(name: string, adapter: Adapter) {
     if (name.split(' ')[0].includes('AAVE')) return 'AAVE'

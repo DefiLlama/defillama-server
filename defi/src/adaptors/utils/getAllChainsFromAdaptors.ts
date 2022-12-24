@@ -86,7 +86,8 @@ export const getChainByProtocolVersion = (moduleAdapterName: string, moduleAdapt
     return chs[protV] ? chs[protV].includes(DISABLED_ADAPTER_KEY) : true
 } */
 
-export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['protocolsData'] => {
+export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, category?: string): ProtocolAdaptor['protocolsData'] => {
+    if (!category) throw new Error(`No category found for ${adapterKey}`)
     let methodology: IJSON<ProtocolAdaptor['methodology']> | undefined = undefined
     const defaultMethodology = getDefaultMethodologyByCategory(category)
     if ('breakdown' in moduleAdapter) {
@@ -115,8 +116,11 @@ export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, cat
     }), {})
 }
 
-export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
-    if ('adapter' in moduleAdapter || ('breakdown' in moduleAdapter && Object.keys(moduleAdapter.breakdown).length === 1)) {
+export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string, versionsCategory: string[]): ProtocolAdaptor['methodology'] | undefined => {
+    if (
+        'adapter' in moduleAdapter
+        || ('breakdown' in moduleAdapter && Object.keys(moduleAdapter.breakdown).length === 1)
+    ) {
         const adapter = 'adapter' in moduleAdapter ? moduleAdapter.adapter : Object.values(moduleAdapter.breakdown)[0]
         const methodology = Object.values(adapter)[0].meta?.methodology
         if (!methodology) return { ...(getDefaultMethodologyByCategory(category) ?? {}) }
@@ -125,7 +129,11 @@ export const getMethodologyData = (displayName: string, adaptorKey: string, modu
             ...(getDefaultMethodologyByCategory(category) ?? {}),
             ...methodology
         }
-    } else {
+    }
+    else if ('breakdown' in moduleAdapter && getStringArrUnique(versionsCategory).length <= 1) {
+        return getDefaultMethodologyByCategory(category)
+    }
+    else {
         return getParentProtocolMethodology(displayName, getAllProtocolsFromAdaptor(adaptorKey, moduleAdapter))
     }
 }

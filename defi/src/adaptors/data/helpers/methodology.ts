@@ -4,16 +4,16 @@ const genericMethodologies: IJSON<IJSON<string>> = {
     "Dexes": {
         UserFees: "Swap fees paid by users",
         Fees: "Swap fees paid by users",
-        Revenue: "% of swap fees going to treasury and/or token holders",
-        ProtocolRevenue: "% of swap fees going to treasury",
+        Revenue: "Percentage of swap fees going to treasury and/or token holders",
+        ProtocolRevenue: "Percentage of swap fees going to treasury",
         HoldersRevenue: "Money going to governance token holders",
         SupplySideRevenue: "Liquidity providers revenue"
     },
     "Lending": {
         UserFees: "Interest paid by borrowers",
         Fees: "Interest paid by borrowers",
-        Revenue: "% of interest going to treasury",
-        ProtocolRevenue: "% of interest going to treasury",
+        Revenue: "Percentage of interest going to treasury",
+        ProtocolRevenue: "Percentage of interest going to treasury",
         // HoldersRevenue: null,
         SupplySideRevenue: "Interest paid to lenders"
     },
@@ -48,9 +48,9 @@ const genericMethodologies: IJSON<IJSON<string>> = {
         ProtocolRevenue: "Interest paid by borrowers"
     },
     "Liquid Staking": {
-        UserFees: "% of rewards paid to protocol",
+        UserFees: "Percentage of rewards paid to protocol",
         Fees: "Staking rewards",
-        Revenue: "% of user rewards paid to protocol",
+        Revenue: "Percentage of user rewards paid to protocol",
         ProtocolRevenue: "Fee from users rewards",
         // HoldersRevenue: null,
         SupplySideRevenue: "Revenue earned by stETH holders",
@@ -67,7 +67,7 @@ const genericMethodologies: IJSON<IJSON<string>> = {
         UserFees: "Fees paid by users",
         Fees: "Fees paid by users",
         Revenue: "Fees paid by users",
-        ProtocolRevenue: "% of fees going to treasury",
+        ProtocolRevenue: "Percentage of fees going to treasury",
         // HoldersRevenue: null,
         SupplySideRevenue: "LPs revenue"
     }

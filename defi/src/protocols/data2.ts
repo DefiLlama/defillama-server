@@ -20883,7 +20883,7 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/hedgehog.png`,
   audits: "0",
   audit_note: null,
-  gecko_id: null,
+  gecko_id: "hedgehog",
   cmcId: null,
   category: "Yield",
   chains: ["Ethereum"],

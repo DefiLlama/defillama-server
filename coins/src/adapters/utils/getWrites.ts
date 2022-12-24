@@ -4,6 +4,7 @@ import {
 } from "./database";
 import { getTokenInfo } from "./erc20";
 import { Write, CoinData } from "./dbInterfaces";
+import * as sdk from '@defillama/sdk'
 
 export default async function getWrites(params: { chain: string, timestamp: number, pricesObject: Object, writes?: Write[], projectName: string}) {
   let { chain, timestamp, pricesObject, writes = [] } = params
@@ -29,8 +30,11 @@ export default async function getWrites(params: { chain: string, timestamp: numb
     );
     if (!coinData) return;
 
-    addToDBWritesList(writes, chain, token, price, tokenInfos.decimals[i].output, tokenInfos.symbols[i].output, timestamp, params.projectName, coinData.confidence as number)
+    addToDBWritesList(writes, chain, token, coinData.price * price, tokenInfos.decimals[i].output, tokenInfos.symbols[i].output, timestamp, params.projectName, coinData.confidence as number)
   })
 
+  const writesObject: any = {}
+  writes.forEach((i: any) => writesObject[i.symbol] = i.price)
+  sdk.log(chain, writesObject)
   return writes
 }

@@ -57,7 +57,7 @@ async function getTvl(
         } else {
           const chain = storedKey.split('-')[0]
           const block = chainBlocks[chain]
-          const api = new sdk.api2.abi.ChainApi({ chain, block, })
+          const api = new sdk.ChainApi({ chain, block, timestamp: unixTimestamp, })
           tvlBalances = await tvlFunction(
             unixTimestamp,
             ethBlock,

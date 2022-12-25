@@ -53,7 +53,6 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
       chain,
       aTokens.map((t: Result) => t.output),
       block,
-      true
     )
   ]);
 

@@ -91,7 +91,7 @@ async function getTokensFromFactory(
   let lpTokenInfo: any;
   let underlyingTokens: Result[];
   [lpTokenInfo, { output: underlyingTokens }] = await Promise.all([
-    getTokenInfo(chain, poolAddresses, block),
+    getTokenInfo(chain, poolAddresses, block, { withSupply: true, }),
     multiCall({
       calls: poolAddresses.map((p: string) => ({
         target: p

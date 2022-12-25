@@ -44,7 +44,7 @@ export default async function getTokenPrices(
       chain
     }),
     getTokenAndRedirectData([knownToken], chain, timestamp),
-    getTokenInfo(chain, [unknownToken], block, false)
+    getTokenInfo(chain, [unknownToken], block)
   ]);
   const price: number =
     (parseInt(knownTokenIsGas ? gasBalance.output : knownBalance.output) /

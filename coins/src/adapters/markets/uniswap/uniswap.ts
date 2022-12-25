@@ -408,8 +408,7 @@ export default async function getTokenPrices(
     chain,
     priceableLPs,
     block,
-    false
-  );
+  )  as TokenInfos;
 
   const writes: Write[] = [];
   await unknownTokens(

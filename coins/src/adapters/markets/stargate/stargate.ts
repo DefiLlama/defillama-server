@@ -91,7 +91,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       chain,
       Object.entries(pools).map((p: any) => p[1].pool),
       block,
-      true
+      { withSupply: true, },
     )
   ]);
 

@@ -39,7 +39,6 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     chain,
     Object.values(contracts[chain]),
     block,
-    true
   );
 
   Object.values(contracts[chain]).map((a: string, i: number) => {

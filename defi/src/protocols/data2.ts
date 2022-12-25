@@ -21460,7 +21460,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Farm",
   chains: ["Arbitrum"],
-  module: "sandclock/index.js",
+  module: "sperax-demeter/index.js",
   twitter: "SperaxUSD", 
   forkedFrom: ["Uniswap"],
   oracles: [],

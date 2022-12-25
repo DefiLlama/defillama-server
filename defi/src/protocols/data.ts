@@ -21453,6 +21453,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   twitter: "SperaxUSD",
   oracles: ["DIA"],
   audit_links: ["https://github.com/Sperax/Audit_Reports"],
+  parentProtocol: "Sperax",
   listedAt: 1641400651,
 },
 {

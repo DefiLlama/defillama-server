@@ -21428,7 +21428,7 @@ listedAt: 1650804679
   symbol: "QUARTZ",
   url: "https://www.sandclock.org",
   description:
-    "OreoSwap is a DeFi platform that provides both AMM and integrated NFT Farming on Arbitrum blockchain network",
+    "Sandclock is a multichain DeFi platform with the objective of creating ultra programmable money by leveraging cutting-edge yield generating strategies. By splitting principal from yield and allowing users to subdivide either of them to create their own strategies, Sandclock unlocks the programmability of capital. The design space is infinite: from investments into DCA vaults, corporate CSR management, zero-loss donations/investments/subscription services, to setting up DAOs that provide exit liquidity to NFT floor undercutters",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/sandclock.jpg`,
   audits: "2",
@@ -21443,6 +21443,30 @@ listedAt: 1650804679
   oracles: [],
   audit_links: ["https://docs.sandclock.org/current/technical-documentation/security/external"],
   listedAt: 1671893485
+},
+{
+  id: "2387", 
+  name: "Sperax Demeter",
+  address: null,
+  symbol: "-",
+  url: "https://demeter.sperax.io",
+  description:
+    "Farming-as-a-service infrastructure on UniswapV3. Demeter protocol is a new protocol for DAOs to launch and manage decentralized exchange liquidity - without needing to know how to code",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/sperax-demeter.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Arbitrum"],
+  module: "sandclock/index.js",
+  twitter: "SperaxUSD", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  audit_links: ["https://github.com/Sperax/Audit_Reports/blob/main/Demeter_PeckShield_1.pdf"],
+  parentProtocol: "Sperax",
+  listedAt: 1671936477
 },
 ]
 

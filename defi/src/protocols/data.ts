@@ -14211,7 +14211,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://component.finance/",
   description: "Component aims to provide flexible pool settings suitable for any token project, freedom of pools creation, and fair community protocol governance token distribution.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/component.jpg`,
+  logo: `${baseIconsUrl}/component.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "component",

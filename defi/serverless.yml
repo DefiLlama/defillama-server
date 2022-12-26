@@ -342,6 +342,12 @@ functions:
       - http:
           path: config
           method: get
+  sortedTokenlist:
+    handler: src/getSortedTokenlist.default
+    events:
+      - http:
+          path: sortedTokenlist
+          method: get
   yieldsConfig:
     handler: src/getYieldsConfig.default
     timeout: 30

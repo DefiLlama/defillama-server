@@ -21490,6 +21490,29 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672065667
 },
+{
+  id: "2389", 
+  name: "Freebie Life Finance",
+  address: "avax:0x9BedCE29F79076b21DD04958a9Fd4B22F63fD86D",
+  symbol: "FRB",
+  url: "https://freebielife.me/",
+  description:
+    "Staking protocol for a chance to win tokens in a randon manner",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/freebie-life-finance.png`,
+  audits: "1",
+  audit_note: null,
+  gecko_id: "freebie-life-finance",
+  cmcId: "20870",
+  category: "Staking",
+  chains: ["Avalanche"],
+  module: "freebie/index.js",
+  twitter: "freebielifeme", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/main/May/Freebie_0x9BedCE29F79076b21DD04958a9Fd4B22F63fD86D.pdf"],
+  listedAt: 1672075331
+},
 ]
 
 export default data2;

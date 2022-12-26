@@ -358,7 +358,7 @@ export default {
     "cometh": {
         enabled: true
     },
-    "maiar-exchange": {
+    "xexchange": {
         enabled: true
     },
     "defichain-dex": {

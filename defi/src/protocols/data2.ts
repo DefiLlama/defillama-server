@@ -21468,6 +21468,28 @@ listedAt: 1650804679
   parentProtocol: "Sperax",
   listedAt: 1671936477
 },
+{
+  id: "2388", 
+  name: "Harbor Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://app.harborprotocol.one/dashboard",
+  description:
+    "Interchain Stablecoin Protocol.",
+  chain: "Comdex",
+  logo: `${baseIconsUrl}/harbor-protocol.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Comdex"],
+  module: "harbor-protocol.js",
+  twitter: "Harbor_Protocol", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672065667
+},
 ]
 
 export default data2;

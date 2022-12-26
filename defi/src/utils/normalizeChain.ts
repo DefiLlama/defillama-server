@@ -1240,6 +1240,12 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
+  "Comdex": {
+    geckoId: "comdex",
+    symbol: "CMDX",
+    cmcId: "14713",
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1566,7 +1572,9 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "boba_avax":
       return "Boba_Avax"
     case "boba_bnb":
-      return "Boba_Bnb" 
+      return "Boba_Bnb"
+    case "comdex":
+      return "Comdex"
       
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter

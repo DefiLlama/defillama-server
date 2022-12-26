@@ -15337,7 +15337,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://paraswap.io/",
     description: "ParaSwap aggregates decentralized exchanges and other DeFi services in one comprehensive interface to streamline and facilitate users' interactions with Ethereum's decentralized finance. By aggregating DEX, AMMs and PMMs, Paraswap offers its users the best exchange rate across major chains.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/paraswap.png`,
+    logo: `${baseIconsUrl}/paraswap.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "paraswap",

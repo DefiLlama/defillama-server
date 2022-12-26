@@ -687,5 +687,8 @@ export default {
     },
     "heliswap": {
         enabled: true
+    },
+    "wingswap": {
+        enabled: true
     }
 } as AdaptorsConfig

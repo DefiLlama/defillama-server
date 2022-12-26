@@ -14250,7 +14250,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   url: "https://www.bunnypark.com/",
   description: "BunnyPark is a DeFi + NFT project deployed on BSC focusing on NFT SaaSization and product standardization that allows the output of NFT development standards, diverse gameplay, product rules and application values into a series of standard smart contracts.",
   chain: "Binance",
-  logo: `${baseIconsUrl}/bunnypark.jpg`,
+  logo: `${baseIconsUrl}/bunnypark.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "bunnypark",

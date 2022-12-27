@@ -21535,6 +21535,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672105449
 },
+{
+  id: "2391", 
+  name: "Garble.Money",
+  address: null,
+  symbol: "-",
+  url: "https://www.garble.money",
+  description:
+    "Fully-Decentralized Privacy Wallet on Tron Network.",
+  chain: "Tron",
+  logo: `${baseIconsUrl}/garble.money.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Privacy",
+  chains: ["Tron"],
+  module: "garble-money/index.js",
+  twitter: "GarbleMoney", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672155549
+},
 ]
 
 export default data2;

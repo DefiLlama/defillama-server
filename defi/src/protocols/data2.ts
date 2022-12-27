@@ -21513,6 +21513,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/SpyWolfNetwork/Smart_Contract_Audits/blob/main/May/Freebie_0x9BedCE29F79076b21DD04958a9Fd4B22F63fD86D.pdf"],
   listedAt: 1672075331
 },
+{
+  id: "2390", 
+  name: "KMex",
+  address: "kava:0x599b05875866ceB7378452D9F432d5377825F44B",
+  symbol: "KMX",
+  url: "https://kmex.io",
+  description:
+    "KMex is a perpetual decentralized exchange created to offer a large selection of trading options and extremely high levels of liquidity on numerous cryptocurrencies",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kmex.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Kava"],
+  module: "kmex-io/index.js",
+  twitter: "kmex_io", 
+  forkedFrom: ["GMX"],
+  oracles: [],
+  listedAt: 1672105449
+},
 ]
 
 export default data2;

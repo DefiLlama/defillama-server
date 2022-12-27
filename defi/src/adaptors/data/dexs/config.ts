@@ -690,5 +690,8 @@ export default {
     },
     "wingswap": {
         enabled: true
+    },
+    "zircon-gamma": {
+        enabled: true
     }
 } as AdaptorsConfig

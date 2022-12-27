@@ -12,7 +12,7 @@ import {
   CoinData
 } from "./dbInterfaces";
 
-const confidenceThreshold: number = 0.4;
+const confidenceThreshold: number = 0.3;
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -166,10 +166,15 @@ async function getTokenAndRedirectDataDB(
     );
 
     // aggregate
-    let validResults: Read[] = latestDbEntries.map((ld: DbEntry, i: number) => {
-      if (timedRedirects[i] == undefined) return { dbEntry: ld, redirect: [] };
-      return { dbEntry: ld, redirect: [timedRedirects[i]] };
-    });
+    let validResults: Read[] = latestDbEntries
+      .map((ld: DbEntry, i: number) => {
+        if (timedDbEntries[i].SK == undefined && timedRedirects[i] == undefined)
+          return { dbEntry: ld, redirect: ["FALSE"] };
+        if (timedRedirects[i] == undefined)
+          return { dbEntry: ld, redirect: [] };
+        return { dbEntry: ld, redirect: [timedRedirects[i]] };
+      })
+      .filter((v: any) => v.redirect[0] != "FALSE");
 
     allReads.push(...validResults);
   }

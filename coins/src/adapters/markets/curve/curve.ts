@@ -496,7 +496,10 @@ export default async function getTokenPrices(
 
   let problems: string[] = [];
   writes.map((w: Write) => {
-    const bools: boolean[] = unknownTokensList.map((t: string) => {
+    const bools: boolean[] = [
+      unknownPoolList.map((p: any) => p.token.toLowerCase()),
+      ...unknownTokensList
+    ].map((t: any) => {
       if (w.PK.includes(t.toLowerCase()) && w.confidence > 0.4) return true;
       return false;
     });

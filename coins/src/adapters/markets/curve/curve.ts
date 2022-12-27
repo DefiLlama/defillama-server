@@ -321,6 +321,8 @@ async function unknownPools(
     for (let pool of Object.values(poolList[registry])) {
       try {
         const token: string = await PoolToToken(chain, pool, block);
+        // if (token.toLowerCase() != "0x194ebd173f6cdace046c53eacce9b953f28411d1")
+        //   continue;
         const [balances, tokenInfo] = await Promise.all([
           poolBalances(chain, pool, registry, block),
           getTokenInfo(chain, [token], block)
@@ -497,7 +499,7 @@ export default async function getTokenPrices(
   let problems: string[] = [];
   writes.map((w: Write) => {
     const bools: boolean[] = [
-      unknownPoolList.map((p: any) => p.token.toLowerCase()),
+      ...unknownPoolList.map((p: any) => p.token.toLowerCase()),
       ...unknownTokensList
     ].map((t: any) => {
       if (w.PK.includes(t.toLowerCase()) && w.confidence > 0.4) return true;

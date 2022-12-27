@@ -326,7 +326,7 @@ async function unknownPools(
         const token: string = await PoolToToken(chain, pool, block);
         const [balances, tokenInfo] = await Promise.all([
           poolBalances(chain, pool, registry, block),
-          getTokenInfo(chain, [token], block)
+          getTokenInfo(chain, [token], block, { withSupply: true, },)
         ]);
 
         const poolTokens: any[] = await getUnderlyingPrices(

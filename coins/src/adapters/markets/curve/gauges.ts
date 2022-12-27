@@ -76,7 +76,6 @@ export default async function getTokenPrices(
     chain,
     successfulCallResults.map((c: any) => c.gauge),
     block,
-    false
   );
 
   const tokenAndRedirectData = await getTokenAndRedirectData(

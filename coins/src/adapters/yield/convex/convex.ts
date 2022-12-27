@@ -50,7 +50,6 @@ export default async function getTokenPrices(timestamp: number) {
       chain,
       poolInfos.map((p: Result) => p.output.token),
       block,
-      true
     )
   ]);
 

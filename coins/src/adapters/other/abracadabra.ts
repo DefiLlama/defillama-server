@@ -21,7 +21,7 @@ export default async function getTokenPrices(timestamp: number) {
       abi: "erc20:balanceOf",
       block
     }),
-    getTokenInfo(chain, [sSPELLAddress], block)
+    getTokenInfo(chain, [sSPELLAddress], block, { withSupply: true, })
   ]);
 
   const SPELLPrice: number = SPELLData[0].price;

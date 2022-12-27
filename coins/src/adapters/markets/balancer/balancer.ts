@@ -155,7 +155,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     chain,
     poolIds.map((p: string) => p.substring(0, 42)),
     block,
-    true
+    { withSupply: true, },
   );
 
   const tokenValues: object[] = await getTokenValues(poolValues, tokenInfos);

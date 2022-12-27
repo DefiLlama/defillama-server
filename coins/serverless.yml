@@ -108,6 +108,20 @@ functions:
       - http:
           path: prices
           method: post
+  mcaps:
+    handler: src/getMcaps.default
+    timeout: 60
+    events:
+      - http:
+          path: mcaps
+          method: post
+  chains:
+    handler: src/getChains.default
+    timeout: 60
+    events:
+      - http:
+          path: chains
+          method: get
   coinPrices:
     handler: src/getCoinPrices.default
     timeout: 60
@@ -142,6 +156,20 @@ functions:
     events:
       - http:
           path: chart/{coins}
+          method: get
+  batchHistorical:
+    handler: src/getBatchHistoricalCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: batchHistorical
+          method: get
+  coinPercentageChange:
+    handler: src/getPercentageChange.default
+    timeout: 60
+    events:
+      - http:
+          path: percentage/{coins}
           method: get
   block:
     handler: src/getBlock.default

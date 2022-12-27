@@ -1,23 +1,32 @@
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import { formatTimestampAsDate } from "../../../utils/date"
 import { IJSON } from "../../data/types"
 import { AdaptorRecord, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
+import { formatChainKey } from "../../utils/getAllChainsFromAdaptors"
+import { sendDiscordAlert } from "../../utils/notify"
+import { calcNdChange } from "../../utils/volumeCalcs"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
+import { convertDataToUSD, IGetHistoricalPricesResponse } from "./convertRecordDataCurrency"
 
 /**
  * Returns a normalized list of adaptor records.
  * If there's missing data it tries to average it based on previos/next available data.
  */
 
-export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: string[], chainFilter?: string) => {
+export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
+    const spikesLogs: string[] = []
+    const chains = chainsRaw.map(formatChainKey)
+    const chainFilter = chainFilterRaw ? formatChainKey(chainFilterRaw) : undefined
     // Get adaptor type for all records
     const type = adaptorRecords[0].type
     // Get adaptor id for all records
     const adaptorId = adaptorRecords[0].adaptorId
     // Process adaptors. Should be changed to process based on timestamps instead of stored records
-    const processed = adaptorRecords.reduce((acc, adaptorRecord, currentIndex, array) => {
+    const processed = await adaptorRecords.reduce(async (accP, adaptorRecord, currentIndex, array) => {
+        const acc = await accP
         // Let's work with a clean record
         const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
-        // Here will be stored the normalized data
+        // Here will be stored the normalized data (aka data with no errors and if missing, extrapolation of that day)
         const generatedData = {} as IRecordAdaptorRecordData
         // Get current timestamp we are working with
         let timestamp = cleanRecord?.timestamp
@@ -32,18 +41,50 @@ export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: st
             const protocol = chainProt.split("#")[1]
             const lastRecord = acc.lastDataRecord[chainProt]
             let nextRecord = acc.nextDataRecord[chainProt]
-            // If no clean record is found for current timestamp and the chain-prot hasn't been found before, it skips this chain-prot
+            // If no clean record is found for current timestamp and the chain-prot hasn't been found before, it skips this chain-prot, which means we cant extrapolate/no data up to this timestamp
             if (cleanRecord === null && (!lastRecord || !lastRecord.data[chain])) {
                 return
             }
+            // Checking if we skipped a day with no record
+            const missingDayData: IJSON<IRecordAdaptorRecordData> = {} as IJSON<IRecordAdaptorRecordData>
+            Object.entries(acc.lastDataRecord).forEach(async ([chainprot, record]) => {
+                const [chain, prot] = chainprot.split("#")
+                if (!timestamp || !record) return
+                const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
+                for (let i = 1; i < gaps; i++) {
+                    const recordData = record.data?.[chain]
+                    const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
+                    missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))] = {
+                        ...missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))],
+                        [chain]: {
+                            ...(typeof prevData === 'number' ? undefined : prevData),
+                            ...(typeof recordData === 'number' ? undefined : recordData),
+                        }
+                    }
+                }
+            })
+            // If day with no record skipped, filling with prev day
+            Object.entries(missingDayData).forEach(([timestamp, data]) => {
+                // TODO: imporove message + process in another lambda
+                // spikesLogs.push(`Missing day found: ${formatTimestampAsDate(timestamp)}\n. Pls fix it`)
+                const missingDay = new AdaptorRecord(
+                    type,
+                    adaptorId,
+                    +timestamp,
+                    data
+                )
+                acc.adaptorRecords.push(missingDay)
+                acc.recordsMap[String(missingDay.timestamp)] = missingDay
+            })
             // If clean data is found, it checks if there's available value for chain-protocol and adds it to generatedData
             if (cleanRecord !== null && cleanRecord.data[chain]) {
                 const chainData = cleanRecord.data[chain]
+                // chainData should be an object -> {protocolVersion: data}, if its a number then skip
                 if (typeof chainData === 'number') return
                 const genChainData = generatedData[chain]
-                if (chainData[protocol] && !Number.isNaN(chainData[protocol])) {
+                if (chainData[protocol] !== undefined && !Number.isNaN(chainData[protocol])) {
                     generatedData[chain] = {
-                        ...(typeof genChainData === "number" ? undefined : genChainData),
+                        ...(typeof genChainData === "number" ? undefined : genChainData), // this check is needed to avoid ts errors, but should never be number
                         [protocol]: chainData[protocol]
                     }
                     if (lastRecord && lastRecord.timestamp != cleanRecord.timestamp) {
@@ -85,22 +126,64 @@ export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: st
                     [protocol]: prevValue + ((nextValue - prevValue) / nGaps)
                 }
             }
-        }
-        )
+        })
 
         // Once we have generated correct data
         if (Object.keys(generatedData).length === 0) return acc
+        // Check if this data is an spiiike
         const newGen = new AdaptorRecord(
             type,
             adaptorId,
             timestamp,
-            generatedData
+            await convertDataToUSD(generatedData, timestamp)
         )
+        Object.entries(acc.lastDataRecord).forEach(([key, record]) => {
+            const [chain, protocol] = key.split('#')
+            const chainData = newGen.data[chain]
+            if (chain && protocol && chainData && typeof chainData !== 'number' && chainData[protocol] && record) {
+                const recordChainData = record.data[chain]
+                if (!recordChainData || typeof recordChainData === 'number') return
+                const chg1d = calcNdChange({
+                    [record.timestamp.toString()]: new AdaptorRecord(
+                        type,
+                        adaptorId,
+                        record.timestamp,
+                        {
+                            [chain]: {
+                                [protocol]: recordChainData[protocol]
+                            }
+                        }
+                    ),
+                    [newGen.timestamp.toString()]: new AdaptorRecord(
+                        type,
+                        adaptorId,
+                        newGen.timestamp,
+                        {
+                            [chain]: {
+                                [protocol]: chainData[protocol]
+                            }
+                        }
+                    )
+                }, 1, newGen.timestamp)
+                if (chg1d && chg1d > 1000 && chainData[protocol] > 10000000) {
+                    spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
+                    const okChainData = newGen.data[chain]
+                    if (okChainData && typeof okChainData !== 'number')
+                        newGen.data = {
+                            ...newGen.data,
+                            [chain]: {
+                                ...okChainData,
+                                [protocol]: recordChainData[protocol]
+                            }
+                        }
+                }
+            }
+        })
         acc.lastDataRecord = chains.reduce((acc, chain) => ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[]).reduce((acc, chainProt) => ({ ...acc, [chainProt]: newGen }), {})
         acc.adaptorRecords.push(newGen)
         acc.recordsMap[String(newGen.timestamp)] = newGen
         return acc
-    }, {
+    }, Promise.resolve({
         adaptorRecords: [] as AdaptorRecord[],
         lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains) }), {}),
         nextDataRecord: {},
@@ -110,9 +193,10 @@ export default (adaptorRecords: AdaptorRecord[], chains: string[], protocols: st
         nextDataRecord: { [chainProt: string]: AdaptorRecord | undefined }
         adaptorRecords: AdaptorRecord[],
         recordsMap: IJSON<AdaptorRecord> // Might be good idea to merge it with adaptorRecords list since its the same
-    })
+    }))
     return {
         cleanRecordsArr: processed.adaptorRecords,
-        cleanRecordsMap: processed.recordsMap
+        cleanRecordsMap: processed.recordsMap,
+        spikesLogs
     }
 }

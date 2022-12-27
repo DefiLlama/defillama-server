@@ -18,9 +18,9 @@ function formWrites(
 ) {
   const lpTokenPrices = coinsData
     .map((c: CoinData) => {
-      const underlyingBalance = underlyingBalances.filter(
+      const underlyingBalance = underlyingBalances.find(
         (t: any) => c.address == t.input.target.toLowerCase()
-      )[0];
+      );
       if (underlyingBalance == undefined) return;
       const index = underlyingBalances.indexOf(underlyingBalance);
       const lpSupply = lpTokenInfo.supplies[index].output;
@@ -91,7 +91,7 @@ async function getTokensFromFactory(
   let lpTokenInfo: any;
   let underlyingTokens: Result[];
   [lpTokenInfo, { output: underlyingTokens }] = await Promise.all([
-    getTokenInfo(chain, poolAddresses, block),
+    getTokenInfo(chain, poolAddresses, block, { withSupply: true, }),
     multiCall({
       calls: poolAddresses.map((p: string) => ({
         target: p

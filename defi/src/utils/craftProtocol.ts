@@ -12,18 +12,19 @@ import {
 } from "./getLastRecord";
 import { importAdapter } from "./imports/importAdapter";
 import { nonChains, getChainDisplayName, transformNewChainName, addToChains } from "./normalizeChain";
-import type { IProtocolResponse } from "../types";
+import type { IProtocolResponse, IRaise } from "../types";
 import parentProtocols from "../protocols/parentProtocols";
+import fetch from "node-fetch";
+import { convertSymbols } from "./symbols/convert";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
-  if (balances?.ethereum !== undefined) {
-    balances["WETH"] = (balances["WETH"] ?? 0) + balances["ethereum"];
-    delete balances["ethereum"];
+  if(typeof balances === "object"){
+    convertSymbols(balances)
   }
   const formattedBalances: { [symbol: string]: number } = {};
 
   for (const b in balances) {
-    if (typeof typeof balances[b] === "string") {
+    if (typeof balances[b] === "string") {
       formattedBalances[b] = Number(Number(balances[b]).toFixed(5));
     } else {
       formattedBalances[b] = Number(balances[b].toFixed(5));
@@ -59,6 +60,7 @@ export default async function craftProtocol(
     historicalUsdTokenTvl,
     historicalTokenTvl,
     module,
+    { raises },
   ] = await Promise.all([
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
@@ -67,6 +69,7 @@ export default async function craftProtocol(
     getHistoricalValues((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)),
     getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
     importAdapter(protocolData),
+    fetch("https://api.llama.fi/raises").then((res) => res.json()),
   ]);
 
   if (!useHourlyData && !skipReplaceLast) {
@@ -82,6 +85,7 @@ export default async function craftProtocol(
     currentChainTvls: {},
     chainTvls: {},
     tvl: [],
+    raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
   };
 
   const childProtocolsNames = protocolData.parentProtocol

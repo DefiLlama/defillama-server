@@ -7,3 +7,5 @@ docker
 .DS_Store
 .esbuild
 .vscode
+
+defi/src/cli/tmp

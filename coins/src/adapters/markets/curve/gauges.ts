@@ -30,7 +30,6 @@ async function getGauges(chain: string, block: number | undefined) {
     calls: calls,
     abi: abi.gauges,
     block,
-    requery: true
   });
 
   return gaugesListRes.output.map((res: any) => res.output);
@@ -77,7 +76,6 @@ export default async function getTokenPrices(
     chain,
     successfulCallResults.map((c: any) => c.gauge),
     block,
-    false
   );
 
   const tokenAndRedirectData = await getTokenAndRedirectData(

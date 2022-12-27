@@ -1,5 +1,5 @@
 import { storeTvl } from "./getAndStoreTvl";
-import { getCurrentBlocks } from "./blocks";
+import { getCurrentBlock } from "./blocks";
 import { getCoingeckoLock, releaseCoingeckoLock } from "../utils/shared/coingeckoLocks";
 import protocols from "../protocols/data";
 import { importAdapter } from "../utils/imports/importAdapter";
@@ -14,18 +14,18 @@ export default async (protocolIndexes:number[], getRemainingTimeInMillis:()=>num
   const blocksTimeout = setTimeout(()=>
     executeAndIgnoreErrors('INSERT INTO `timeouts` VALUES (?, ?)', [getCurrentUnixTimestamp(), "blocks"]),
     getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
-  const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlocks();
   clearTimeout(blocksTimeout)
   
   const staleCoins: StaleCoins = {};
   const actions = protocolIndexes
     .map(idx=>protocols[idx])
-    .map((protocol) =>{
+    .map(async (protocol) =>{
       const protocolTimeout = setTimeout(()=>
         executeAndIgnoreErrors('INSERT INTO `timeouts` VALUES (?, ?)', [getCurrentUnixTimestamp(), protocol.name]),
         getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
       const adapterModule = importAdapter(protocol)
-      return storeTvl(
+      const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
+      await storeTvl(
         timestamp,
         ethereumBlock,
         chainBlocks,
@@ -34,7 +34,8 @@ export default async (protocolIndexes:number[], getRemainingTimeInMillis:()=>num
         staleCoins,
         maxRetries,
         getCoingeckoLock,
-      ).then(()=>clearTimeout(protocolTimeout))
+      )
+      return clearTimeout(protocolTimeout)
     });
   const timer = setInterval(() => {
     // Rate limit is 100 calls/min for coingecko's API

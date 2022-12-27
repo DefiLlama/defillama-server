@@ -1,3 +1,9 @@
 import { sendMessage } from "../../utils/discord";
+import { IJSON } from "../data/types";
 
-export const sendDiscordAlert = async (message: string) => sendMessage(message, process.env.VOLUMES_WEBHOOK!)
+const webhooks = {
+    dexs: process.env.VOLUMES_WEBHOOK,
+    fees: process.env.FEES_WEBHOOK
+} as IJSON<string>
+
+export const sendDiscordAlert = async (message: string, type: string) => sendMessage(message, webhooks[type])

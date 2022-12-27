@@ -35,11 +35,25 @@ export function curve4(timestamp: number = 0) {
     getTokenPrices("aurora", ["stableFactory", "cryptoFactory"], timestamp)
   ]);
 }
-export function curve5(timestamp: number = 0) {
-  console.log("starting curve5");
+export function curve5a(timestamp: number = 0) {
+  console.log("starting curve5a");
+  return getTokenPrices("optimism", ["stableswap"], timestamp);
+}
+export function curve5b(timestamp: number = 0) {
+  console.log("starting curve5b");
+  return getTokenPrices("optimism", ["crypto"], timestamp);
+}
+export function curve5c(timestamp: number = 0) {
+  console.log("starting curve5c");
+  return getTokenPrices("optimism", ["cryptoFactory"], timestamp);
+}
+export function curve5d(timestamp: number = 0) {
+  console.log("starting curve5d");
+  return getTokenPrices("optimism", ["stableFactory"], timestamp);
+}
+export function curve6(timestamp: number = 0) {
+  console.log("starting curve6");
   return Promise.all([
-    getTokenPrices("optimism", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("optimism", ["stableFactory", "cryptoFactory"], timestamp),
     getTokenPrices("polygon", ["stableswap", "crypto"], timestamp),
     getTokenPrices("polygon", ["cryptoFactory"], timestamp)
   ]);

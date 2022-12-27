@@ -78,40 +78,36 @@ async function getUsdValues(
   coinsData: CoinData[],
   decimals: any
 ) {
+  const failObject = {
+    address: "fail",
+    price: -1,
+    decimal: -1,
+    symbol: "fail"
+  };
   let usdValues = pricePerShares.output.map((t) => {
-    const selectedVaults = vaults.filter(
+    const selectedVault: VaultKeys | undefined = vaults.find(
       (v: VaultKeys) => v.address.toLowerCase() == t.input.target.toLowerCase()
     );
-    const underlying = selectedVaults[0].token.address;
-    const coinData: CoinData = coinsData.filter(
+    if (selectedVault == null) return failObject;
+    const underlying = selectedVault.token.address;
+    const coinData: CoinData | undefined = coinsData.find(
       (c: CoinData) => c.address == underlying.toLowerCase()
-    )[0];
-    if (!coinData)
-      return {
-        address: "fail",
-        price: -1,
-        decimal: -1,
-        symbol: "fail"
-      };
-    const decimal = decimals.filter(
+    );
+    if (!coinData) return failObject;
+    const decimal = decimals.find(
       (c: any) =>
-        selectedVaults[0].address.toLowerCase() == c.input.target.toLowerCase()
-    )[0].output;
+        selectedVault.address.toLowerCase() == c.input.target.toLowerCase()
+    ).output;
 
-    if (decimal == undefined || decimal == null) {
-      return {
-        address: "fail",
-        price: -1,
-        decimal: -1,
-        symbol: "fail"
-      };
+    if (decimal == null) {
+      return failObject;
     }
     const PPSdecimal = resolveDecimals(t.output, 0);
     return {
       address: t.input.target.toLowerCase(),
       price: (t.output * coinData.price) / 10 ** PPSdecimal,
       decimal,
-      symbol: selectedVaults[0].symbol
+      symbol: selectedVault.symbol
     };
   });
 
@@ -212,7 +208,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       v.symbol,
       timestamp,
       "yearnV2",
-      1
+      0.9
     );
   });
   return writes;

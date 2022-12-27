@@ -17,7 +17,9 @@
     "build": "sls package",
     "updateAdapters": "cd DefiLlama-Adapters && git checkout main && git pull",
     "fillOld": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillOld.ts",
+    "fillOldChain": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillOldChain.ts",
     "fillLast": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/fillLast.ts",
+    "customFill": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/customFill.ts",
     "deleteAtDate": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/cli/deleteAtDate.ts",
     "backfill-dex-script": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts",
     "backfill-dex-local-script": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node src/dexVolumes/cli/backfillUtilities/auto.ts",
@@ -33,7 +35,7 @@
     "@babel/preset-typescript": "^7.17.12",
     "@types/aws-lambda": "^8.10.97",
     "@types/jest": "^27.5.1",
-    "@types/node": "^14.18.18",
+    "@types/node": "^14.18.35",
     "@types/node-fetch": "^2.5.10",
     "@types/promise.allsettled": "^1.0.3",
     "aws-sdk": "^2.1145.0",
@@ -56,13 +58,18 @@
   },
   "dependencies": {
     "@defillama/adapters": "file:./DefiLlama-Adapters",
-    "@defillama/sdk": "^2.3.80",
-    "@defillama/adaptors": "file:./adapters",
+    "@defillama/dimension-adapters": "file:./dimension-adapters",
+    "@defillama/sdk": "^3.0.1",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",
     "dotenv": "^16.0.1",
+    "ethers": "^5.7.2",
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.1",
-    "promise.allsettled": "^1.0.5"
+    "pg": "^8.8.0",
+    "postgres": "^3.3.1",
+    "promise.allsettled": "^1.0.5",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.11"
   }
 }

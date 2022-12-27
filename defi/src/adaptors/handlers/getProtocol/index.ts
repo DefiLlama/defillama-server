@@ -1,12 +1,12 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import sluggify from "../../../utils/sluggify";
+import sluggify, { sluggifyString } from "../../../utils/sluggify";
 import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import loadAdaptorsData from "../../data"
 import { IJSON, ProtocolAdaptor } from "../../data/types";
-import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
-import { IChartData, sumAllVolumes } from "../../utils/volumeCalcs";
+import { IChartData, IChartDataBreakdown, sumAllVolumes } from "../../utils/volumeCalcs";
 import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../getOverview";
 
 export interface ChartItem {
@@ -16,6 +16,7 @@ export interface ChartItem {
 
 export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     "name"
+    | "displayName"
     | "logo"
     | "address"
     | "url"
@@ -28,11 +29,17 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "gecko_id"
     | "disabled"
     | "module"
+    | "protocolsData"
+    | "chains"
+    | "methodologyURL"
+    | 'allAddresses'
 > {
     totalDataChart: IChartData | null
-    totalDataChartBreakdown: IChartData | null
+    totalDataChartBreakdown: IChartDataBreakdown | null
     total24h: number | null
     change_1d: number | null
+    totalAllTime: number | null
+    latestFetchIsOk: boolean
 }
 
 export const ONE_DAY_IN_SECONDS = 60 * 60 * 24
@@ -44,29 +51,39 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     if (!protocolName || !adaptorType) throw new Error("Missing name or type")
 
-    const adaptorsData = loadAdaptorsData(adaptorType)
-    const dexData = adaptorsData.default.find(
-        (prot) => sluggify(prot) === protocolName
-    );
+
+    // Import data list
+    const adapters2load: string[] = [adaptorType, "protocols"]
+    const protocolsList = Object.keys(loadAdaptorsData(adaptorType).config)
+    let dexData: ProtocolAdaptor | undefined = undefined
+    for (const type2load of adapters2load) {
+        try {
+            const adaptorsData = loadAdaptorsData(type2load as AdapterType)
+            dexData = adaptorsData.default
+                .find(va => protocolsList.includes(va.module)
+                    && (sluggify(va) === protocolName || sluggifyString(va.displayName) === protocolName)
+                )
+            if (dexData) break
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     if (!dexData) throw new Error("DEX data not found!")
     let dexDataResponse = {}
     try {
-        let volumes = await getAdaptorRecord(dexData.id, dataType, dexData.protocolType, "ALL")
-        volumes = volumes
-        // This check is made to infer Volume type instead of Volume[] type
-        if (volumes instanceof AdaptorRecord) throw new Error("Wrong volume queried")
-
-        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType)
+        const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)
 
         dexDataResponse = {
             name: generatedSummary.name,
+            displayName: generatedSummary.displayName,
             disabled: generatedSummary.disabled,
             logo: dexData.logo,
             address: dexData.address,
             url: dexData.url,
             description: dexData.description,
             audits: dexData.audits,
-            category: dexData.category,
+            category: generatedSummary.category,
             twitter: dexData.twitter,
             audit_links: dexData.audit_links,
             forkedFrom: dexData.forkedFrom,
@@ -74,14 +91,21 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             totalDataChart: generatedSummary.records?.map(record => ([record.timestamp, sumAllVolumes(record.data)])) ?? null,
             totalDataChartBreakdown: generatedSummary.records?.map(record => ([record.timestamp, record.data])) ?? null,
             total24h: generatedSummary.total24h,
+            totalAllTime: generatedSummary.totalAllTime,
             change_1d: generatedSummary.change_1d,
             module: dexData.module,
             protocolType: generatedSummary.protocolType,
+            protocolsData: dexData.protocolsData && Object.keys(dexData.protocolsData).length > 1 ? dexData.protocolsData : null,
+            chains: generatedSummary.chains,
+            methodologyURL: generatedSummary.methodologyURL,
+            allAddresses: generatedSummary.allAddresses,
+            latestFetchIsOk: generatedSummary.latestFetchIsOk
         } as IHandlerBodyResponse
     } catch (error) {
         console.error(error)
         dexDataResponse = {
             name: dexData.name,
+            displayName: dexData.displayName,
             logo: dexData.logo,
             address: dexData.address,
             url: dexData.url,
@@ -93,10 +117,14 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
             disabled: dexData.disabled,
+            protocolsData: dexData.protocolsData,
+            latestFetchIsOk: false,
+            chains: dexData.chains,
             totalDataChart: null,
             totalDataChartBreakdown: null,
             total24h: null,
-            change_1d: null
+            totalAllTime: null,
+            change_1d: null,
         } as IHandlerBodyResponse
     }
 

@@ -1,10 +1,10 @@
 import "./setup.ts"
 import { handler } from "../handlers/storeAdaptorData";
-import { AdapterType } from "@defillama/adaptors/adapters/types";
-import fees from "../data/fees";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
+import dexs from "../data/dexs";
 
 handler({
-    protocolIndexes: [fees?.findIndex(v=>v.name==='Bitcoin')],
-    timestamp:1665878400,
-    adaptorType: AdapterType.FEES
+    protocolIndexes: [dexs?.findIndex(v => v.name === 'Surfswap')],
+    timestamp: 1670112000,
+    adaptorType: AdapterType.DEXS
 })

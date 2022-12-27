@@ -1,4 +1,4 @@
-import config from "../data/volumes/config";
+import config from "../data/dexs/config";
 import path from "path";
 import getDirectories from "../utils/getDirectories";
 

@@ -39,8 +39,9 @@ jobs:
       with:
         path: /tmp/jest-cache
         key: ${{ runner.os }}-jest-${{ env.TODAY }}
-    - run: npm ci
+    - run: npm ci || npm i
     - run: cd DefiLlama-Adapters && git checkout main && git pull
+    - run: cd dimension-adapters && git checkout master && git pull
     - name: Run tests
       run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
       env:
@@ -72,7 +73,15 @@ jobs:
         DAILY_GROWTH_WEBHOOK: ${{ secrets.DAILY_GROWTH_WEBHOOK }}
         MONITOR_WEBHOOK: ${{ secrets.MONITOR_WEBHOOK }}
         STALE_COINS_ADAPTERS_WEBHOOK: ${{ secrets.STALE_COINS_ADAPTERS_WEBHOOK }}
+        TEAM_WEBHOOK: ${{ secrets.TEAM_WEBHOOK }}
         REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
         PROD_VYBE_API_KEY: ${{ secrets.PROD_VYBE_API_KEY }}
+        BIT_QUERY_API_KEY: ${{ secrets.BIT_QUERY_API_KEY }}
         VOLUMES_WEBHOOK: ${{ secrets.VOLUMES_WEBHOOK }}
+        FEES_WEBHOOK: ${{ secrets.FEES_WEBHOOK }}
         ZEROx_API_KEY: ${{ secrets.ZEROx_API_KEY }}
+        INDEXER_DB: ${{ secrets.INDEXER_DB }}
+        AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        DATADOG_API_KEY: ${{ secrets.DD_API_KEY }}
+        DATADOG_SITE: ${{ secrets.DD_SITE }}
+        AGGREGATOR_DB_URL: ${{ secrets.AGGREGATOR_DB_URL}}

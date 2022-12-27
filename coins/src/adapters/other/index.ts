@@ -1,8 +1,11 @@
 import synthetixAdapter from "./synthetix";
 import glpAdapter from "./glp";
 import abraAdapter from "./abracadabra";
-import saiAdapter from "./sai";
+import unknownTokenAdapter from "./unknownToken";
 import podsAdapter from "./pods";
+import distressedAdapter from "./distressedAssets";
+import manualInputAdapter from "./manualInput";
+import { wrappedGasTokens } from "../utils/gasTokens";
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
@@ -19,11 +22,40 @@ export function abracadabra(timestamp: number = 0) {
   console.log("starting abracadabra");
   return abraAdapter(timestamp);
 }
-export function sai(timestamp: number = 0) {
-  console.log("starting sai");
-  return saiAdapter(timestamp);
+export function unknownTokens(timestamp: number = 0) {
+  console.log("starting unknownTokens");
+  return Promise.all([
+    unknownTokenAdapter(
+      timestamp,
+      "0x09cabec1ead1c0ba254b09efb3ee13841712be14",
+      "0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359",
+      wrappedGasTokens["ethereum"],
+      true,
+      "ethereum"
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xa0feB3c81A36E885B6608DF7f0ff69dB97491b58",
+      "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+      "0x20f663CEa80FaCE82ACDFA3aAE6862d246cE0333",
+      false,
+      "bsc"
+    )
+  ]);
 }
 export function pods(timestamp: number = 0) {
   console.log("starting pods");
   return podsAdapter(timestamp);
+}
+export function distressed(timestamp: number = 0) {
+  console.log("starting distressed");
+  return Promise.all([
+    distressedAdapter("harmony", timestamp),
+    distressedAdapter("klaytn", timestamp),
+    distressedAdapter("arbitrum", timestamp)
+  ]);
+}
+export function manualInput(timestamp: number = 0) {
+  console.log("starting manualInputs");
+  return manualInputAdapter("evmos", timestamp);
 }

@@ -2,14 +2,20 @@ import protocols, { Protocol } from "./protocols/data";
 import { getHistoricalValues } from "./utils/shared/dynamodb";
 import { dailyTvl, getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import { DAY, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
-import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
+import {
+  getChainDisplayName,
+  chainCoingeckoIds,
+  transformNewChainName,
+  extraSections,
+  isDoubleCounted,
+} from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { store } from "./utils/s3";
 import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
 
-function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
+export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {
     sumDailyTvls[chain] = {};
   }
@@ -38,7 +44,7 @@ export interface IProtocol extends Protocol {
 export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: boolean) {
   let exclude = false;
 
-  if (protocol.category === "Chain") {
+  if (protocol.category === "Chain" || protocol.category === "CEX" ) {
     return true;
   }
 
@@ -55,8 +61,8 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean) {
 
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {
-      if (excludeProtocolInCharts(protocol, includeBridge)) {
-        return undefined;
+      if (!protocol || excludeProtocolInCharts(protocol, includeBridge)) {
+        return;
       }
 
       const [lastTvl, historicalTvl, module] = await Promise.all([
@@ -65,13 +71,12 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean) {
         importAdapter(protocol),
       ]);
 
-      if (historicalTvl.length < 1) {
-        return undefined;
+      if (historicalTvl.length < 1 || !module) {
+        return;
       }
 
       // check if protocol is double counted
-      const doublecounted =
-        module.doublecounted ?? (protocol.category === "Yield Aggregator" || protocol.category === "Yield");
+      const doublecounted = isDoubleCounted(module.doublecounted, protocol.category);
 
       let protocolData = { ...protocol, doublecounted };
 
@@ -115,7 +120,7 @@ export async function processProtocols(
   const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(includeBridge);
 
   historicalProtocolTvls.forEach((protocolTvl) => {
-    if (protocolTvl === undefined) {
+    if (!protocolTvl) {
       return;
     }
 

@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
+import { successResponse, wrap, IResponse, errorResponse, cache20MinResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import sluggify from "./utils/sluggify";
 import { storeDataset, buildRedirect } from "./utils/s3";
@@ -42,13 +42,15 @@ export async function craftProtocolResponse(
 export async function wrapResponseOrRedirect(response: any) {
   const jsonData = JSON.stringify(response);
   const dataLength = Buffer.byteLength(jsonData, "utf8");
-  if (dataLength >= 5.5e6) {
+
+  if (process.env.stage !== "prod" || dataLength < 5.5e6) {
+    return cache20MinResponse(response);
+  } else {
     const filename = `protocol-${response.name}.json`;
+
     await storeDataset(filename, jsonData, "application/json");
 
     return buildRedirect(filename, 10 * 60);
-  } else {
-    return successResponse(response, 10 * 60); // 10 mins cache
   }
 }
 

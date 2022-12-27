@@ -1,4 +1,4 @@
-import { IRunAdapterResponseFulfilled, IRunAdapterResponseRejected } from "@defillama/adaptors/adapters/utils/runAdapter"
+import { IRunAdapterResponseFulfilled, IRunAdapterResponseRejected } from "@defillama/dimension-adapters/adapters/utils/runAdapter"
 import { IJSON } from "../../data/types"
 import { RawRecordMap } from "../../db-utils/adaptor-record"
 
@@ -17,7 +17,7 @@ export function processFulfilledPromises(fulfilledResults: IRunAdapterResponseFu
                     ...rawRecord[RECORD_TYPE],
                     [result.chain]: {
                         ...recordChain,
-                        [module]: +value
+                        [module]: typeof value === 'object' ? value : +value
                     }
                 }
             }

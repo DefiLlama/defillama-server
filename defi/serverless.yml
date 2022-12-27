@@ -74,21 +74,24 @@ provider:
     CRONOS_RPC: ${file(./env.js):CRONOS_RPC}
     KLAYTN_RPC: "https://public-node-api.klaytnapi.com/v1/cypress"
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
-    HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
     INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
     DROPS_WEBHOOK: ${file(./env.js):DROPS_WEBHOOK}
-    EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
-    FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
-    DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
-    MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
+    #EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
+    #FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
+    #DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
+    FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
     VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
+    TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
     REVALIDATE_SECRET: ${file(./env.js):REVALIDATE_SECRET}
     DEFILLAMA_SDK_MUTED: true
     PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
+    BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
+    INDEXER_DB: ${file(./env.js):INDEXER_DB}
+    AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
 
@@ -98,6 +101,8 @@ custom:
     bundle: true
     minify: false
     concurrency: 4
+    exclude:
+      - pg-native
     # for debugging
     #keepOutputDirectory: true
   prune:
@@ -118,7 +123,6 @@ custom:
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
   datadog:
     site: datadoghq.eu
-    apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   logRetentionInDays: 30
 
 functions:
@@ -147,6 +151,27 @@ functions:
       - http:
           path: protocols
           method: get
+  dexAggregatorQuote:
+    handler: src/getDexAggregatorQuote.default
+    timeout: 90
+    events:
+      - http:
+          path: dexAggregatorQuote
+          method: post
+  storeAggregatorEvent:
+    handler: src/storeAggregatorEvent.default
+    timeout: 90
+    events:
+      - http:
+          path: storeAggregatorEvent
+          method: post
+  contractName:
+    handler: src/getContractName.default
+    timeout: 90
+    events:
+      - http:
+          path: contractName2/{chain}/{contract}
+          method: get
   protocol:
     handler: src/getProtocol.default
     timeout: 120
@@ -154,6 +179,14 @@ functions:
     events:
       - http:
           path: protocol/{protocol}
+          method: get
+  tokenProtocols:
+    handler: src/getTokenInProtocols.default
+    timeout: 120
+    memorySize: 2000
+    events:
+      - http:
+          path: tokenProtocols/{symbol}
           method: get
   updatedProtocol:
     handler: src/getUpdatedProtocol.default
@@ -207,6 +240,12 @@ functions:
       - http:
           path: chains2/{category}
           method: get
+  inflows:
+    handler: src/getInflows.default
+    events:
+      - http:
+          path: inflows/{protocol}/{timestamp}
+          method: get
   langs:
     handler: src/getLangs.default
     timeout: 600
@@ -223,6 +262,8 @@ functions:
       - http:
           path: raises
           method: get
+    environment:
+      AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
   oracles:
     handler: src/getOracles.default
     timeout: 600
@@ -258,7 +299,7 @@ functions:
   storeLiquidations:
     handler: src/storeLiquidations.default
     timeout: 900
-    memorySize: 2000
+    memorySize: 4500
     events:
       # update latest every 20 minutes
       - schedule: cron(0/20 * * * ? *)
@@ -286,12 +327,26 @@ functions:
       - http:
           path: simpleChainDataset/{chain}
           method: get
+  totalChainDataset:
+    handler: src/getTotalChainDataset.default
+    timeout: 900
+    memorySize: 3000
+    events:
+      - http:
+          path: totalChainDataset/{chain}
+          method: get
   config:
     handler: src/getConfig.default
     timeout: 10
     events:
       - http:
           path: config
+          method: get
+  sortedTokenlist:
+    handler: src/getSortedTokenlist.default
+    events:
+      - http:
+          path: sortedTokenlist
           method: get
   yieldsConfig:
     handler: src/getYieldsConfig.default
@@ -314,6 +369,7 @@ functions:
       - schedule: cron(20 * * * ? *)
   hourly:
     handler: src/getHourlyData.default
+    timeout: 120
     memorySize: 2000
     events:
       - http:
@@ -334,21 +390,6 @@ functions:
     timeout: 900
     events:
       - schedule: cron(0 * * * ? *)
-  storeVolume:
-    handler: src/dexVolumes/handlers/storeDexVolume/index.default
-    timeout: 900
-    memorySize: 512
-  getDexs:
-    handler: src/dexVolumes/handlers/getDexs/index.default
-    timeout: 180 #tmp
-    memorySize: 2000
-    events:
-      - http:
-          path: dexs
-          method: get
-      - http:
-          path: dexs/{chain}
-          method: get
   getOverview:
     handler: src/adaptors/handlers/getOverview/index.default
     timeout: 180
@@ -377,37 +418,16 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 0 * * ? *)
-  getDex:
-    handler: src/dexVolumes/handlers/getDexVolume/index.default
-    timeout: 90
-    memorySize: 2000
-    events:
-      - http:
-          path: dex/{dex}
-          method: get
-  notifyDexStatus:
-    handler: src/notifyDexsStatus.default
+  notifyStatus:
+    handler: src/adaptors/handlers/notifyStatus.default
     timeout: 900
     events:
       - schedule: cron(01 2,13 * * ? *)
-  triggerStoreVolume:
-    handler: src/triggerStoreVolume.default
+  triggerNotifyStatus:
+    handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900
     events:
-      - schedule: cron(01 0 * * ? *)
-  monitorDexResponse:
-    handler: src/monitorDexResponse.default
-    timeout: 900
-    events:
-      - schedule: rate(1 hour)
-  getStats:
-    handler: src/dexVolumes/handlers/getStats/index.default
-    timeout: 90
-    memorySize: 2000
-    events:
-      - http:
-          path: dex/{dex}/stats
-          method: get
+      - schedule: cron(01 2,13 * * ? *)
   storeDataset:
     handler: src/storeCsvDataset.default
     timeout: 900
@@ -420,25 +440,22 @@ functions:
     memorySize: 1024
     events:
       - schedule: rate(1 hour)
+    environment:
+      HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
   notifyOutdatedApi:
     handler: src/checkOutdatedApi.default
     timeout: 900
     memorySize: 1024
     events:
       - schedule: cron(*/30 * * * ? *)
+    environment:
+      MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
   notifyStaleCoins:
     handler: src/notifyStaleCoins.default
     timeout: 900
     memorySize: 1024
     events:
       - schedule: cron(30 * * * ? *)
-  fetchCoingeckoData:
-    handler: src/fetchCoingeckoData.default
-    timeout: 900
-  triggerFetchCoingeckoData:
-    handler: src/triggerFetchCoingeckoData.default
-    events:
-      - schedule: cron(50 * * * ? *)
   sendDiscordMessage:
     handler: src/sendDiscordMessage.default
     timeout: 900
@@ -467,6 +484,17 @@ functions:
     events:
       - http:
           path: outdated
+          method: get
+  storeNpmData:
+    handler: src/storeNpmData.default
+    timeout: 900
+    events:
+      - schedule: cron(01 0 * * ? *)
+  npmData:
+    handler: src/getNpmData.default
+    events:
+      - http:
+          path: npm/{start}
           method: get
 
 resources:

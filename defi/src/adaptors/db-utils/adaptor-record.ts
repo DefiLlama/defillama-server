@@ -3,22 +3,40 @@ import dynamodb from "../../utils/shared/dynamodb"
 import { formatChain, formatChainKey } from "../utils/getAllChainsFromAdaptors"
 import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
-import { ProtocolType } from "@defillama/adaptors/adapters/types"
+import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { IJSON } from "../data/types"
+import dynamoReservedKeywords from "./dynamo-reserved-keywords"
 
 export enum AdaptorRecordType {
     dailyVolume = "dv",
     totalVolume = "tv",
-    totalFees = "tf",
-    dailyFees = "df",
     totalRevenue = "tr",
     dailyRevenue = "dr",
+    totalPremiumVolume = "tpv",
+    totalNotionalVolume = "tnv",
+    dailyPremiumVolume = "dpv",
+    dailyNotionalVolume = "dnv",
+    tokenIncentives = "ti",
+    // fees & revenue
+    dailyFees = "df",
+    dailyUserFees = "duf",
+    dailySupplySideRevenue = "dssr",
+    dailyProtocolRevenue = "dpr",
+    dailyHoldersRevenue = "dhr",
+    dailyCreatorRevenue = "dcr",
+    totalFees = "tf",
+    totalUserFees = "tuf",
+    totalSupplySideRevenue = "tssr",
+    totalProtocolRevenue = "tpr",
+    totalHoldersRevenue = "thr",
+    totalCreatorRevenue = "tcr"
 }
 
 export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as IJSON<AdaptorRecordType>)
+export const AdaptorRecordTypeMapReverse = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {} as IJSON<string>)
 
 export interface IRecordAdapterRecordChainData {
-    [protocolVersion: string]: number | string,
+    [protocolVersion: string]: number | string | IJSON<string>,
 }
 
 export interface IRecordAdaptorRecordData {
@@ -57,7 +75,11 @@ export class AdaptorRecord extends Item {
         const timestamp = +item.SK
         delete body.PK;
         delete body.SK;
-        return new AdaptorRecord(recordType, dexId, timestamp, body, protocolType)
+        const clean_body = Object.entries(body).reduce((acc, [key, value]) => {
+            acc[revertReservedKeyword(key)] = value
+            return acc
+        }, {} as IRecordAdaptorRecordData)
+        return new AdaptorRecord(recordType, dexId, timestamp, clean_body, protocolType)
     }
 
     get pk(): string {
@@ -78,18 +100,17 @@ export class AdaptorRecord extends Item {
     }
 
     getCleanAdaptorRecord(chains?: string[]): AdaptorRecord | null {
+        let data = this.data
         if (chains !== undefined && chains.length > 0) {
             //if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
-            const newData = chains.reduce((acc, chain) => {
+            data = chains.reduce((acc, chain) => {
                 acc[formatChainKey(chain)] = this.data[chain] ?? this.data[formatChainKey(chain)]
                 return acc
             }, {} as IJSON<number | IRecordAdapterRecordChainData>)
-            if (AdaptorRecord.isDataEmpty(newData)) return null
-            return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newData)
         }
-        const d = removeErrors(this.data)
-        if (AdaptorRecord.isDataEmpty(d)) return null
-        return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, d)
+        const newDataNoErr = removeErrors(data)
+        if (AdaptorRecord.isDataEmpty(newDataNoErr)) return null
+        return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newDataNoErr)
     }
 
     static isDataEmpty(data: IRecordAdaptorRecordData) {
@@ -109,8 +130,20 @@ export class AdaptorRecord extends Item {
 
 export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTimestamp: number): Promise<AdaptorRecord> => {
     if (Object.entries(adaptorRecord.data).length === 0) throw new Error(`${adaptorRecord.type}: Can't store empty adaptor record`)
+    const currentRecord = await getAdaptorRecord(adaptorRecord.adaptorId, adaptorRecord.type, adaptorRecord.protocolType, "TIMESTAMP", adaptorRecord.timestamp).catch(() => console.info("No previous data found, writting new row..."))
+    let currentData: IRecordAdaptorRecordData = {}
+    if (currentRecord instanceof AdaptorRecord) currentData = currentRecord.data
     const obj2Store: IRecordAdaptorRecordData = {
-        ...adaptorRecord.data,
+        ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
+            const currentChainValue = acc[chain]
+            if (typeof data === 'number' || typeof currentChainValue === 'number') return acc
+            const clean_chain = replaceReservedKeyword(chain)
+            acc[clean_chain] = {
+                ...currentChainValue,
+                ...data
+            }
+            return acc
+        }, currentData),
         eventTimestamp
     }
     try {
@@ -124,6 +157,17 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
     } catch (error) {
         throw error
     }
+}
+
+const normalizeSuffix = "_key"
+function replaceReservedKeyword(key: string) {
+    if (dynamoReservedKeywords.includes(key.toUpperCase())) return `${key}${normalizeSuffix}`
+    return key
+}
+function revertReservedKeyword(key: string) {
+    if (key.includes(normalizeSuffix))
+        return key.slice(0, -normalizeSuffix.length)
+    return key
 }
 
 function createUpdateExpressionFromObj(obj: IRecordAdaptorRecordData): string {
@@ -166,23 +210,24 @@ export const getAdaptorRecord = async (adaptorId: string, type: AdaptorRecordTyp
 }
 
 // REMOVES ALL VOLUMES, DO NOT USE!
-export const removeAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType): Promise<boolean> => {
-    /*     const removeAdaptorRecordQuery = async (adaptorRecord: AdaptorRecord) => {
-            console.log("Removing", adaptorRecord.keys())
-            return dynamodb.delete({
-                Key: adaptorRecord.keys(),
-            })
-        }
-        try {
-            const allAdaptorRecords = await getAdaptorRecord(adaptorId, type, "ALL")
-            if (!(allAdaptorRecords instanceof Array)) throw new Error("Unexpected error deleting adaptor records")
-            const cleanAdaptorRecs = allAdaptorRecords// .filter(v => v.timestamp * 1000 <= Date.UTC(2020, 8, 7))
-            await Promise.all(cleanAdaptorRecs.map(adaptorRecord => removeAdaptorRecordQuery(adaptorRecord)))
-            return true
-        } catch (error) {
-            console.log(error)
-            return false
-        } */
-    console.log(adaptorId, type)
+export const removeAdaptorRecord = async (adaptorId: string, type: AdaptorRecordType, protocolType: ProtocolType): Promise<boolean> => {
+    /* try {
+        const allAdaptorRecords = await getAdaptorRecord(adaptorId, type, protocolType, "ALL")
+        if (!(allAdaptorRecords instanceof Array)) throw new Error("Unexpected error deleting adaptor records")
+        const cleanAdaptorRecs = allAdaptorRecords// .filter(v => v.timestamp * 1000 <= Date.UTC(2020, 8, 7))
+        await Promise.all(cleanAdaptorRecs.map(adaptorRecord => removeAdaptorRecordQuery(adaptorRecord)))
+        return true
+    } catch (error) {
+        console.log(error)
+        return false
+    } */
+    console.log(adaptorId, type, protocolType)
     return Promise.resolve(false)
+}
+
+export const removeAdaptorRecordQuery = async (adaptorRecord: AdaptorRecord) => {
+    console.log("Removing", adaptorRecord.keys())
+    return dynamodb.delete({
+        Key: adaptorRecord.keys(),
+    })
 }

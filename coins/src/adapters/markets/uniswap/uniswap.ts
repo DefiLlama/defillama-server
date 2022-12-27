@@ -11,6 +11,9 @@ import { request, gql } from "graphql-request";
 import getBlock from "../../utils/block";
 import { BigNumber } from "ethers";
 
+const sleep = (delay: number) =>
+  new Promise((resolve) => setTimeout(resolve, delay));
+
 async function fetchUniV2Markets(
   chain: string,
   factory: string,
@@ -34,8 +37,7 @@ async function fetchUniV2Markets(
       target: factory,
       params: [num]
     })),
-    block,
-    requery: true
+    block
   });
 
   return pairs.output.map((result) => result.output.toLowerCase());
@@ -45,24 +47,32 @@ async function fetchUniV2MarketsFromSubgraph(
   timestamp: number
 ) {
   let addresses: string[] = [];
-  let reservereThreshold: number = 0;
-  for (let i = 0; i < 5; i++) {
+  let reservereThreshold: Number = 0;
+  for (let i = 0; i < 20; i++) {
     const lpQuery = gql`
       query lps {
         pairs(first: 1000, orderBy: volumeUSD, orderDirection: desc,
-          where: {${i == 0 ? `` : `volumeUSD_lt: ${reservereThreshold}`}
-          ${timestamp == 0 ? `` : `timestamp_lt: ${timestamp.toString()}`}
+          where: {${
+            i == 0
+              ? ``
+              : `volumeUSD_lt: ${Number(reservereThreshold).toFixed(4)}`
+          }
+          ${
+            timestamp == 0
+              ? ``
+              : `createdAtTimestamp_gt: ${(timestamp * 1000).toString()}`
+          }
         }) {
           id
           volumeUSD
         }
       }`;
     const result = (await request(subgraph, lpQuery)).pairs;
-    if (result.length < 1000) i = 5;
-    reservereThreshold = result[result.length - 1].volumeUSD;
-    addresses.push(
-      ...(await request(subgraph, lpQuery)).pairs.map((p: any) => p.id)
-    );
+    if (result.length < 1000) i = 20;
+    if (result.length == 0) return addresses;
+    reservereThreshold = result[Math.max(result.length - 1, 0)].volumeUSD;
+    addresses.push(...result.map((p: any) => p.id));
+    sleep(500);
   }
   return addresses;
 }
@@ -81,8 +91,7 @@ async function fetchUniV2MarketData(
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
       })),
-      block,
-      requery: true
+      block
     }),
     multiCall({
       abi: abi.token1,
@@ -90,8 +99,7 @@ async function fetchUniV2MarketData(
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
       })),
-      block,
-      requery: true
+      block
     }),
     multiCall({
       abi: abi.getReserves,
@@ -99,8 +107,7 @@ async function fetchUniV2MarketData(
       calls: pairAddresses.map((pairAddress) => ({
         target: pairAddress
       })),
-      block,
-      requery: true
+      block
     })
   ]);
 
@@ -173,10 +180,10 @@ async function lps(
     ) {
       return;
     }
-    const coinData: CoinData = tokenPrices.filter(
+    const coinData: CoinData | undefined = tokenPrices.find(
       (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
-    )[0];
-
+    );
+    if (coinData == undefined) return;
     const supply =
       tokenInfos.supplies[i].output / 10 ** tokenInfos.lpDecimals[i].output;
     const value =
@@ -218,10 +225,10 @@ async function unknownTokens(
     (p: any) => p.bothTokensKnown == false
   );
   let tokenValues = lpsWithUnknown.map((l: any) => {
-    const coinData: CoinData = tokenPrices.filter(
+    const coinData: CoinData | undefined = tokenPrices.find(
       (p: CoinData) => p.address == l.primaryUnderlying.toLowerCase()
-    )[0];
-
+    );
+    if (coinData == undefined) return;
     const i: number = priceableLPs.indexOf(l);
 
     const sideValue: number =
@@ -363,9 +370,7 @@ export default async function getTokenPrices(
   let pairAddresses: string[];
 
   const block: number | undefined = await getBlock(chain, timestamp);
-  if (chain == "bsc" && subgraph == undefined) {
-    return;
-  } else if (chain == "bsc" && subgraph != undefined) {
+  if (subgraph != undefined) {
     pairAddresses = await fetchUniV2MarketsFromSubgraph(subgraph, timestamp);
   } else {
     pairAddresses = await fetchUniV2Markets(chain, factory, block);
@@ -387,7 +392,8 @@ export default async function getTokenPrices(
   const tokenPrices = await getTokenAndRedirectData(
     Array.from(underlyingTokens),
     chain,
-    timestamp
+    timestamp,
+    12
   );
 
   const priceableLPs = await findPriceableLPs(
@@ -402,19 +408,18 @@ export default async function getTokenPrices(
     chain,
     priceableLPs,
     block,
-    false
-  );
+  )  as TokenInfos;
 
   const writes: Write[] = [];
-  // await unknownTokens(
-  //   writes,
-  //   chain,
-  //   router,
-  //   timestamp,
-  //   priceableLPs,
-  //   tokenPrices,
-  //   tokenInfos
-  // );
+  await unknownTokens(
+    writes,
+    chain,
+    router,
+    timestamp,
+    priceableLPs,
+    tokenPrices,
+    tokenInfos
+  );
   await lps(writes, chain, timestamp, priceableLPs, tokenPrices, tokenInfos);
 
   return writes;

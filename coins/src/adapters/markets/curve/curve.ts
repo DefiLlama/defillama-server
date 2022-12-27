@@ -29,7 +29,7 @@ async function getPools(chain: string, block: number | undefined) {
           "0x266bb386252347b03c7b6eb37f950f476d7c3e63",
           "0x0000000000000000000000000000000000000000",
           "0x0000000000000000000000000000000000000000",
-          "0x0000000000000000000000000000000000000000"
+          "0x41871a4c63d8fae4855848cd1790ed237454a5c4"
         ]
       : (
           await multiCall({
@@ -283,15 +283,16 @@ async function getUnderlyingPrices(
   const coinsData: CoinData[] = await getTokenAndRedirectData(
     balances.map((r: Result) => r.input.target.toLowerCase()),
     chain,
-    timestamp
+    timestamp,
+    12
   );
 
   const poolComponents = balances.map((b: any) => {
     try {
-      let coinData: CoinData = coinsData.filter(
+      let coinData: CoinData | undefined = coinsData.find(
         (c: CoinData) => c.address == b.input.target.toLowerCase()
-      )[0];
-
+      );
+      if (coinData == undefined) throw new Error(`no coin data found`);
       return {
         balance: b.output / 10 ** coinData.decimals,
         price: coinData.price,
@@ -315,14 +316,17 @@ async function unknownPools(
   unknownPoolList: any[],
   unknownTokensList: any[]
 ) {
+  let i = 0;
   for (let registry of registries) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
+      i++;
       try {
+        console.log(i);
         const token: string = await PoolToToken(chain, pool, block);
         const [balances, tokenInfo] = await Promise.all([
           poolBalances(chain, pool, registry, block),
-          getTokenInfo(chain, [token], block)
+          getTokenInfo(chain, [token], block, { withSupply: true, },)
         ]);
 
         const poolTokens: any[] = await getUnderlyingPrices(
@@ -438,10 +442,10 @@ async function unknownTokens(
     .map((d: Result, i: number) => {
       if (i % 2 == 0) return;
       const index = d.input.params[1];
-      const poolInfo = unknownPoolList.filter(
+      const poolInfo = unknownPoolList.find(
         (p: any) => p.address == d.input.target
       );
-      return poolInfo[0].balances[index].input.target;
+      return poolInfo.balances[index].input.target;
     })
     .filter((c: any) => c != undefined);
 
@@ -481,6 +485,7 @@ export default async function getTokenPrices(
   let unknownTokensList: string[] = [];
   let unknownPoolList: any[] = [];
 
+  console.log("pools:");
   await unknownPools(
     chain,
     block,
@@ -491,7 +496,7 @@ export default async function getTokenPrices(
     unknownPoolList,
     unknownTokensList
   );
-
-  // await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
+  console.log("tokens:");
+  await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
   return writes;
 }

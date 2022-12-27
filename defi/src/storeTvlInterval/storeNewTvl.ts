@@ -12,9 +12,11 @@ import { getLastRecord, hourlyTvl, dailyTvl } from "../utils/getLastRecord";
 import { reportError } from "../utils/error";
 import getRecordClosestToTimestamp from "../utils/shared/getRecordClosestToTimestamp";
 import { tvlsObject } from "../types";
-import { humanizeNumber } from "@defillama/sdk/build/computeTVL/humanizeNumber";
+import { util } from "@defillama/sdk";
 import { sendMessage } from "../utils/discord";
 import { extraSections } from "../utils/normalizeChain";
+
+const { humanizeNumber: { humanizeNumber, } } = util
 
 async function getTVLOfRecordClosestToTimestamp(
   PK: string,
@@ -71,9 +73,26 @@ export default async function (
   );
 
   const lastHourlyTVLObject = await lastHourlyTVLRecord;
+
+  if (storePreviousData) {
+    await Promise.all(Object.entries(tvl).map(async ([sectionName, sectionTvl]) => {
+      const prevTvl = lastHourlyTVLObject[sectionName]
+      if (sectionTvl === 0 && prevTvl !== 0 && prevTvl !== undefined) {
+        await sendMessage(
+          `TVL for ${protocol.name} has dropped to 0 on key "${sectionName}" (previous TVL was ${prevTvl})`,
+          process.env.DROPS_WEBHOOK!)
+      }
+    }))
+  }
+
   {
     const lastHourlyTVL = calculateTVLWithAllExtraSections(lastHourlyTVLObject);
     const currentTvl = calculateTVLWithAllExtraSections(tvl)
+    if(currentTvl > 100e9){
+      const errorMessage = `TVL of ${protocol.name} is over 100bn`
+      await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+      throw new Error(errorMessage)
+    }
     if (storePreviousData && lastHourlyTVL * 2 < currentTvl && lastHourlyTVL !== 0) {
       const change = `${humanizeNumber(lastHourlyTVL)} to ${humanizeNumber(
         currentTvl
@@ -87,12 +106,20 @@ export default async function (
           }
         }
       }
+      const timeElapsed = Math.abs(lastHourlyTVLObject.SK - unixTimestamp)
+      const timeLimitDisableHours = 15;
       if (
-        Math.abs(lastHourlyTVLObject.SK - unixTimestamp) < (5 * HOUR) &&
+        timeElapsed < (timeLimitDisableHours * HOUR) &&
         lastHourlyTVL * 5 < currentTvl &&
         calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl
       ) {
-        const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour, disabling it`
+        const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed/HOUR).toFixed(2)} hours`
+        if(timeElapsed > (5 * HOUR)){
+          if(currentTvl > 100e6){
+            await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!)
+          }
+          await sendMessage(errorMessage, process.env.OUTDATED_WEBHOOK!)
+        }
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
         throw new Error(
           errorMessage
@@ -106,17 +133,6 @@ export default async function (
         await sendMessage(errorMessage, process.env.SPIKE_WEBHOOK!)
       }
     }
-  }
-
-  if (storePreviousData) {
-    await Promise.all(Object.entries(tvl).map(async ([sectionName, sectionTvl]) => {
-      const prevTvl = lastHourlyTVLObject[sectionName]
-      if (sectionTvl === 0 && prevTvl !== 0 && prevTvl !== undefined) {
-        await sendMessage(
-          `TVL for ${protocol.name} has dropped to 0 on key "${sectionName}" (previous TVL was ${prevTvl})`,
-          process.env.DROPS_WEBHOOK!)
-      }
-    }))
   }
 
   let tvlPrev1Day =  (await lastDailyTVLRecord).tvl

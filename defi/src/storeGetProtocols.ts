@@ -39,10 +39,11 @@ const handler = async (_event: any) => {
           tvlPrevMonth: protocolTvls.tvlPrevMonth,
           chainTvls: protocolTvls.chainTvls,
           parentProtocol: protocol.parentProtocol,
+          defillamaId: protocol.id,
         };
       })
     )
-  ).filter((p) => p.category !== "Chain");
+  ).filter((p) => p.category !== "Chain" && p.category !== "CEX");
 
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet: Set<string> = new Set();

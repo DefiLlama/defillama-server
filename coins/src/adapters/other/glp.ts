@@ -37,7 +37,7 @@ export default async function getTokenPrice(chain: string, timestamp: number) {
       abi: abi.pricePrecision,
       block
     }),
-    getTokenInfo(chain, [contracts[chain].glp], block, true)
+    getTokenInfo(chain, [contracts[chain].glp], block, { withSupply: true, })
   ]);
 
   const price =

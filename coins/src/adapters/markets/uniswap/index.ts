@@ -6,7 +6,7 @@ export function uniswap(timestamp: number = 0) {
     "ethereum",
     "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
     "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-    undefined,
+    "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2",
     timestamp
   );
 }
@@ -78,7 +78,7 @@ export function quickswap(timestamp: number = 0) {
     "polygon",
     "0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32",
     undefined,
-    undefined,
+    "https://api.thegraph.com/subgraphs/name/andyjagoe/quickswap-v2-metrics",
     timestamp
   );
 }
@@ -158,6 +158,16 @@ export function solidly(timestamp: number = 0) {
   return getTokenPrices(
     "fantom",
     "0x3fAaB499b519fdC5819e3D7ed0C26111904cbc28",
+    undefined,
+    undefined,
+    timestamp
+  );
+}
+export function diffusion(timestamp: number = 0) {
+  console.log("starting diffusion");
+  return getTokenPrices(
+    "evmos",
+    "0x6abdda34fb225be4610a2d153845e09429523cd2",
     undefined,
     undefined,
     timestamp

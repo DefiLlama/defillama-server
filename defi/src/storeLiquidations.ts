@@ -7,11 +7,14 @@ import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 import { performance } from "perf_hooks";
 
 export const standaloneProtocols: string[] = ["venus"];
+export const excludedProtocols: string[] = [];
 
 async function handler() {
   const time = getCurrentUnixTimestamp();
   const data = await Promise.all(
-    Object.entries(adaptersModules).map(async ([protocol, module]) => {
+    Object.entries(adaptersModules)
+    .filter(([protocol]) => !excludedProtocols.includes(protocol))
+    .map(async ([protocol, module]) => {
       const start = performance.now();
       console.log(`Fetching ${protocol} data`);
       const liqs: { [chain: string]: Liq[] } = {};
@@ -97,58 +100,7 @@ async function handler() {
 
   await storeLiqs("availability.json", JSON.stringify({ availability, time }));
 
-  // revalidate the liquidations pages after the data is updated
-  await Promise.all(LIQUIDATIONS_PATHS.map(forceRevalidate));
-
   return;
 }
-
-const forceRevalidate = async (path: string) => {
-  try {
-    const { revalidated } = await fetch(
-      `https://defillama.com/api/revalidate?${new URLSearchParams({
-        secret: process.env.REVALIDATE_SECRET!,
-        path,
-      })}`,
-      { method: "GET" }
-    ).then((r) => r.json() as Promise<{ revalidated: boolean }>);
-    return revalidated;
-  } catch (e) {
-    console.error(e);
-    return undefined;
-  }
-};
-
-const LIQUIDATIONS_PATHS = [
-  "ETH",
-  "WBTC",
-  "DAI",
-  "SOL",
-  "USDC",
-  "WSTETH",
-  "STSOL",
-  "MSOL",
-  "USDT",
-  "YFI",
-  "FTT",
-  "UNI",
-  "BAT",
-  "CRV",
-  "LINK",
-  "TUSD",
-  "AAVE",
-  "MKR",
-  "AVAX",
-  "MATIC",
-  "SUSHI",
-  "SNX",
-  "JOE",
-  "MIM",
-  "ZRX",
-  "ENJ",
-  "MANA",
-  "1INCH",
-  "REN",
-].map((x) => `/liquidations/${x.toLowerCase()}`);
 
 export default wrapScheduledLambda(handler);

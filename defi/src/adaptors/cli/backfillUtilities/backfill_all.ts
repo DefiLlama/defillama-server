@@ -2,7 +2,7 @@ import "../setup"
 import { formatTimestampAsDate } from "../../../utils/date"
 import executeAsyncBackfill from "./executeAsyncBackfill"
 import getBackfillEvent from "./getBackfillEvent"
-import { AdapterType } from "@defillama/adaptors/adapters/types";
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import data from "../../data";
 import sleep from "../../../utils/shared/sleep";
 
@@ -12,7 +12,7 @@ import sleep from "../../../utils/shared/sleep";
     const backfillAdapter = async (adapterName: string) => {
         console.info(`Started backfilling for ${adapterName} adapter`)
         console.info(`Generating backfill event...`)
-        const backfillEvent = await getBackfillEvent(adapterName, ADAPTER_TYPE)
+        const backfillEvent = await getBackfillEvent(adapterName, ADAPTER_TYPE, { onlyMissing: false })
         console.info(`Backfill event generated!`)
         if (backfillEvent.backfill.length <= 0) {
             console.info("Has been generated an empty event, nothing to backfill...")
@@ -31,7 +31,7 @@ import sleep from "../../../utils/shared/sleep";
         }
     }
     const chains = ['doge', 'litecoin']
-    const adaptorsData = data(ADAPTER_TYPE).default.filter(ad=>chains.includes(ad.module))
+    const adaptorsData = data(ADAPTER_TYPE).default.filter(ad => chains.includes(ad.module))
     for (const adapter of adaptorsData) {
         console.log("Sleeping for 2 minutes before launching next backfill", adapter.name)
         await sleep(1000 * 60 * 2)

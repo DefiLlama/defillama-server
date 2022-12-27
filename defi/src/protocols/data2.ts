@@ -1852,7 +1852,7 @@ const data2: Protocol[] =  [
   cmcId: "19268",
   category: "Lending",
   chains: ["Aurora"],
-  oracles: ["Flux"],
+  oracles: ["Flux","Pyth"],
   forkedFrom: ["Compound"],
   module: "aurigami.js",
   twitter: "aurigami_PLY",
@@ -17141,7 +17141,7 @@ listedAt: 1650804679
   chains: ["Solana"],
   module: "beluga-protocol/index.js",
   forkedFrom: [],
-  oracles: [],
+  oracles: ["Pyth"],
   twitter: "Belugadex",
   audit_links: ["https://kudelskisecurity.com/wp-content/uploads/PUBLIC_RELEASE_REDACTED_Kudelski_BelugaDex_SCR_2022_Retest_Report.pdf"],
   listedAt: 1666174631

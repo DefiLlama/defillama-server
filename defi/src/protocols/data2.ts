@@ -12592,8 +12592,8 @@ listedAt: 1650804679
 {
   id: "1987",
   name: "Pangea Swap",
-  address: null,
-  symbol: "-",
+  address: "klaytn:0xB49E754228bc716129E63b1a7b0b6cf27299979e",
+  symbol: "STONE",
   url: "https://pangeaswap.com",
   description: "The First Concentrated Liquidity DEX on Klaytn.",
   chain: "Klaytn",

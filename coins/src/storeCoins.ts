@@ -29,6 +29,7 @@ export default async function handler(event: any) {
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
           await batchWrite(resultsWithoutDuplicates.slice(i, i + step), true);
         }
+        console.log(`${a[i][0]} done`);
       } catch (e) {
         await sendMessage(
           `${a[i][0]} adapter failed: ${e}`,

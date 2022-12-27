@@ -284,7 +284,7 @@ async function getUnderlyingPrices(
     balances.map((r: Result) => r.input.target.toLowerCase()),
     chain,
     timestamp,
-    12
+    3
   );
 
   const poolComponents = balances.map((b: any) => {
@@ -316,13 +316,10 @@ async function unknownPools(
   unknownPoolList: any[],
   unknownTokensList: any[]
 ) {
-  let i = 0;
   for (let registry of registries) {
     //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
-      i++;
       try {
-        console.log(i);
         const token: string = await PoolToToken(chain, pool, block);
         const [balances, tokenInfo] = await Promise.all([
           poolBalances(chain, pool, registry, block),
@@ -485,7 +482,6 @@ export default async function getTokenPrices(
   let unknownTokensList: string[] = [];
   let unknownPoolList: any[] = [];
 
-  console.log("pools:");
   await unknownPools(
     chain,
     block,
@@ -496,7 +492,20 @@ export default async function getTokenPrices(
     unknownPoolList,
     unknownTokensList
   );
-  console.log("tokens:");
   await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
+
+  let problems: string[] = [];
+  writes.map((w: Write) => {
+    const bools: boolean[] = unknownTokensList.map((t: string) => {
+      if (w.PK.includes(t.toLowerCase()) && w.confidence > 0.4) return true;
+      return false;
+    });
+    if (bools.includes(true)) return;
+    if (problems.includes(w.PK.toLowerCase())) return;
+    problems.push(w.PK.toLowerCase());
+  });
+
+  console.log(`${registries[0]} problems:`);
+  console.log(problems);
   return writes;
 }

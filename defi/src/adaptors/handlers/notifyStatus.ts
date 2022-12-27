@@ -8,6 +8,7 @@ export default async (event: { type: string }) => {
         pathParameters: { chain: undefined, type: event.type }
     } as unknown as APIGatewayProxyEvent, true)
     const errorsArr: string[] = JSON.parse(response.body)?.errors
+    console.log("response", response.body)
     if (errorsArr.length > 0) {
         await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying...`, event.type)
         await autoBackfill(['', '', event.type, 'all'])

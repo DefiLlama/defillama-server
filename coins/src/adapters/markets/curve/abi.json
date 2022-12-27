@@ -83,6 +83,18 @@
       }
     ]
   },
+  "get_meta_n_coins": {
+    "stableFactory": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_meta_n_coins",
+      "inputs": [{ "name": "_pool", "type": "address" }],
+      "outputs": [
+        { "name": "", "type": "uint256" },
+        { "name": "", "type": "uint256" }
+      ]
+    }
+  },
   "get_n_coins": {
     "stableswap": {
       "stateMutability": "view",

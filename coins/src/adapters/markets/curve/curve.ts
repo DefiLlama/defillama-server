@@ -137,6 +137,17 @@ async function poolBalances(
         block
       })
     ).output;
+    if (nCoins == "0") {
+      nCoins = (
+        await call({
+          target: pool.input.target,
+          params: [pool.output],
+          chain: chain as any,
+          abi: abi.get_meta_n_coins[registry],
+          block
+        })
+      ).output[0];
+    }
   } catch {
     nCoins = [coins.length];
   }
@@ -321,8 +332,13 @@ async function unknownPools(
     for (let pool of Object.values(poolList[registry])) {
       try {
         const token: string = await PoolToToken(chain, pool, block);
-        // if (token.toLowerCase() != "0x194ebd173f6cdace046c53eacce9b953f28411d1")
+        // if (
+        //   ![
+        //     "0xfd2a8fa60abd58efe3eee34dd494cd491dc14900",
+        //   ].includes(token.toLowerCase())
+        // )
         //   continue;
+
         const [balances, tokenInfo] = await Promise.all([
           poolBalances(chain, pool, registry, block),
           getTokenInfo(chain, [token], block)
@@ -507,7 +523,7 @@ export default async function getTokenPrices(
     });
     if (bools.includes(true)) return;
     if (problems.includes(w.PK.toLowerCase())) return;
-    problems.push(w.PK.toLowerCase());
+    if (bools.includes(false)) problems.push(w.PK.toLowerCase());
   });
 
   console.log(`${registries[0]} problems:`);

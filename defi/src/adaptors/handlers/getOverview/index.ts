@@ -54,6 +54,7 @@ export type IGetOverviewResponseBody = IGeneralStats & {
 }
 
 export type ExtraTypes = {
+    dailyRevenue?: number | null
     dailyUserFees?: number | null
     dailyHoldersRevenue?: number | null
     dailyCreatorRevenue?: number | null
@@ -88,6 +89,7 @@ export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
 
 const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     [AdapterType.FEES]: [
+        AdaptorRecordType.dailyRevenue,
         AdaptorRecordType.dailyUserFees,
         AdaptorRecordType.dailyHoldersRevenue,
         AdaptorRecordType.dailyCreatorRevenue,

@@ -8,12 +8,19 @@ import { Write, CoinData } from "../../utils/dbInterfaces";
 import getBlock from "../../utils/block";
 import abi from "./abi.json";
 import { getTokenInfo } from "../../utils/erc20";
+import { Result } from "../../utils/sdkInterfaces";
 
 const vault = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
+const nullAddress = "0x0000000000000000000000000000000000000000";
 const subgraphNames: { [chain: string]: string } = {
   ethereum: "balancer-v2",
   arbitrum: "balancer-arbitrum-v2",
   polygon: "balancer-polygon-v2"
+};
+const gaugeFactories: { [chain: string]: string } = {
+  ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
+  arbitrum: "0xb08e16cfc07c684daa2f93c70323badb2a6cbfd2",
+  polygon: "0x3b8ca519122cdd8efb272b0d3085453404b25bd0"
 };
 async function getPoolIds(chain: string, timestamp: number) {
   let addresses: string[] = [];
@@ -134,15 +141,8 @@ function getTokenValues(poolValues: object, poolInfos: any) {
   });
   return tokenValues;
 }
-export default async function getTokenPrices(chain: string, timestamp: number) {
-  let writes: Write[] = [];
-  let poolIds: string[];
-  let block: number | undefined;
-  [poolIds, block] = await Promise.all([
-    getPoolIds(chain, timestamp),
-    getBlock(chain, timestamp)
-  ]);
-
+async function getLpPrices(chain: string, timestamp: number, block: number) {
+  const poolIds: string[] = await getPoolIds(chain, timestamp);
   const poolTokens: number[] = await getPoolTokens(chain, block, poolIds);
   const poolValues: object = await getPoolValues(
     chain,
@@ -155,12 +155,31 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     chain,
     poolIds.map((p: string) => p.substring(0, 42)),
     block,
-    { withSupply: true, },
+    { withSupply: true }
   );
 
-  const tokenValues: object[] = await getTokenValues(poolValues, tokenInfos);
+  return getTokenValues(poolValues, tokenInfos);
+}
 
-  tokenValues.map((v: any) => {
+export default async function getTokenPrices(chain: string, timestamp: number) {
+  let writes: Write[] = [];
+  const block: number | undefined = await getBlock(chain, timestamp);
+  const tokenValues: object[] = await getLpPrices(chain, timestamp, block);
+  const gauges: string[] = (
+    await multiCall({
+      target: gaugeFactories[chain],
+      block,
+      chain,
+      calls: tokenValues
+        .map((t: any) => t.address)
+        .map((l: string) => ({
+          params: [l]
+        })),
+      abi: abi.getPoolGauge
+    })
+  ).output.map((o: Result) => o.output);
+
+  tokenValues.map((v: any, i: number) => {
     addToDBWritesList(
       writes,
       chain,
@@ -171,6 +190,19 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       timestamp,
       "balancer-lp",
       0.9
+    );
+    if (gauges[i] == nullAddress) return;
+    addToDBWritesList(
+      writes,
+      chain,
+      gauges[i],
+      undefined,
+      v.decimals,
+      `${v.symbol}-gauge`,
+      timestamp,
+      "balancer-gauge",
+      0.9,
+      `asset#${chain}:${v.address}`
     );
   });
 

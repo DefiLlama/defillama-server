@@ -38,5 +38,20 @@
     ],
     "stateMutability": "view",
     "type": "function"
+  },
+  "getPoolGauge": {
+    "inputs": [
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "name": "getPoolGauge",
+    "outputs": [
+      {
+        "internalType": "contract ILiquidityGauge",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   }
 }

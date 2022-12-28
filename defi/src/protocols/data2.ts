@@ -21579,6 +21579,30 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672225618
 },
+{
+  id: "2393", 
+  name: "Joe V2",
+  address: null,
+  symbol: "-",
+  url: "https://traderjoexyz.com/home",
+  description:
+    "Joe V2 is a decentralized exchange based on Liquidity Book, a novel AMM protocol. Zero 0% slippage for swaps between ticks and Dynamic fees to improve liquidity provider profitability.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/joe-v2.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Avalanche", "Arbitrum"],
+  module: "traderjoe-lb/index.js",
+  twitter: "traderjoe_xyz", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://github.com/abdk-consulting/audits/blob/main/traderjoe/ABDK_TraderJoe_TraderJoe_v_2_0.pdf"],
+  parentProtocol: "Trader Joe",
+  listedAt: 1672226957
+},
 ]
 
 export default data2;

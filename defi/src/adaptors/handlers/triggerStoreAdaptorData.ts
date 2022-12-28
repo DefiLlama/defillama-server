@@ -16,7 +16,7 @@ const STEP = 10;
 
 export interface IHandlerEvent {
   type: AdapterType
-  backfill: Array<{
+  backfill?: Array<{
     dexNames: string[]
     timestamp: IStoreAdaptorDataHandlerEvent['timestamp']
     chain?: IStoreAdaptorDataHandlerEvent['chain']
@@ -79,7 +79,7 @@ const invokeLambdas = async (
       adaptorRecordTypes,
       protocolVersion
     };
-    console.info(`Storing adaptor data: ${protocolIndexes} ${timestamp} ${adaptorType}`)
+    console.info(`Storing adaptor data: ${i} ${i + STEP} ${timestamp} ${adaptorType}`)
     const storeFunction = process.env.runLocal === 'true' ? storeAdaptorData : runStoreAdaptorData
     // if (process.env.runLocal === 'true') await delay(1000)
     await storeFunction(event);

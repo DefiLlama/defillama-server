@@ -13,7 +13,7 @@ import overrides, { chainOverrides } from "./overrides";
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
 
-function notUndefined<T>(x: T | undefined): x is T {
+export function notUndefined<T>(x: T | undefined): x is T {
     return x !== undefined;
 }
 
@@ -61,8 +61,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
             const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
             const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
             const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
-            if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN)
-                console.log("adapterKye", adapterKey, displayCategory, overridesObj[adapterKey], Object.keys(overridesObj))
             return {
                 ...dexFoundInProtocols,
                 ...overridesObj[adapterKey],

@@ -693,5 +693,8 @@ export default {
     },
     "zircon-gamma": {
         enabled: true
+    },
+    "lumenswap": {
+        enabled: true
     }
 } as AdaptorsConfig

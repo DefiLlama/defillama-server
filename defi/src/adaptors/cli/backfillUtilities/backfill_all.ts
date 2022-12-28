@@ -12,8 +12,12 @@ import sleep from "../../../utils/shared/sleep";
     const backfillAdapter = async (adapterName: string) => {
         console.info(`Started backfilling for ${adapterName} adapter`)
         console.info(`Generating backfill event...`)
-        const backfillEvent = await getBackfillEvent(adapterName, ADAPTER_TYPE, { onlyMissing: false })
+        const backfillEvent = await getBackfillEvent([adapterName], ADAPTER_TYPE, { onlyMissing: false })
         console.info(`Backfill event generated!`)
+        if (!backfillEvent.backfill) {
+            console.error("No backfill object found")
+            return
+        }
         if (backfillEvent.backfill.length <= 0) {
             console.info("Has been generated an empty event, nothing to backfill...")
             return

@@ -58,7 +58,7 @@ export const autoBackfill = async (argv: string[]) => {
     console.info(`Generating backfill event...`)
     const backfillEvent = await getBackfillEvent(adapterName, type, cliArguments)
     console.info(`Backfill event generated!`)
-    if (backfillEvent.backfill.length <= 0) {
+    if (!backfillEvent.backfill || backfillEvent.backfill.length <= 0) {
         console.info("Has been generated an empty event, nothing to backfill...")
         rl.close();
         return

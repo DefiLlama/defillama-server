@@ -4,7 +4,7 @@ import { multiCall, call } from "@defillama/sdk/build/abi/index";
 import getBlock from "../../utils/block";
 import { getGasTokenBalance } from "../../utils/gasTokens";
 import { Result, Multicall, MultiCallResults } from "../../utils/sdkInterfaces";
-import { getTokenInfo } from "../../utils/erc20";
+import { getTokenInfo, listUnknownTokens } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import {
   addToDBWritesList,
@@ -295,7 +295,7 @@ async function getUnderlyingPrices(
     balances.map((r: Result) => r.input.target.toLowerCase()),
     chain,
     timestamp,
-    3
+    4
   );
 
   const poolComponents = balances.map((b: any) => {
@@ -334,7 +334,8 @@ async function unknownPools(
         const token: string = await PoolToToken(chain, pool, block);
         // if (
         //   ![
-        //     "0xfd2a8fa60abd58efe3eee34dd494cd491dc14900",
+        //     "0xa1f8a6807c402e4a15ef4eba36528a3fed24e577",
+        //     "0xf43211935c781d5ca1a41d2041f397b8a7366c7a"
         //   ].includes(token.toLowerCase())
         // )
         //   continue;
@@ -513,20 +514,15 @@ export default async function getTokenPrices(
   await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
 
   let problems: string[] = [];
-  writes.map((w: Write) => {
-    const bools: boolean[] = [
-      ...unknownPoolList.map((p: any) => p.token.toLowerCase()),
-      ...unknownTokensList
-    ].map((t: any) => {
-      if (w.PK.includes(t.toLowerCase()) && w.confidence > 0.4) return true;
-      return false;
-    });
-    if (bools.includes(true)) return;
-    if (problems.includes(w.PK.toLowerCase())) return;
-    if (bools.includes(false)) problems.push(w.PK.toLowerCase());
+  unknownTokensList = [...new Set(unknownTokensList)];
+  unknownTokensList.map((t: string) => {
+    const writeKeys = writes.map((w: Write) =>
+      w.PK.substring(w.PK.indexOf(":") + 1)
+    );
+    if (!writeKeys.includes(t)) problems.push(t);
   });
 
-  console.log(`${registries[0]} problems:`);
-  console.log(problems);
+  await listUnknownTokens(chain, problems, block);
+
   return writes;
 }

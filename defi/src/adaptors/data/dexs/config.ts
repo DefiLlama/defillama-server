@@ -696,5 +696,8 @@ export default {
     },
     "lumenswap": {
         enabled: true
+    },
+    "el-dorado-exchange": {
+        enabled: true
     }
 } as AdaptorsConfig

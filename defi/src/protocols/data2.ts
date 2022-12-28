@@ -21557,6 +21557,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672155549
 },
+{
+  id: "2392", 
+  name: "Derify Protocol",
+  address: "bsc:0x89C1Af791d7B4cf046Dca8Fa10a41Dd2298A6a3F",
+  symbol: "DRF",
+  url: "https://derify.exchange/trade",
+  description:
+    "A decentralized perpetual contracts exchange that mining through holding positions.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/derify-protocol.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "derify/index.js",
+  twitter: "DerifyProtocol", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672225618
+},
 ]
 
 export default data2;

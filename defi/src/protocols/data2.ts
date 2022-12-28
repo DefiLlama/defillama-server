@@ -21603,6 +21603,51 @@ listedAt: 1650804679
   parentProtocol: "Trader Joe",
   listedAt: 1672226957
 },
+{
+  id: "2394", 
+  name: "Messina.one",
+  address: null,
+  symbol: "-",
+  url: "https://messina.one",
+  description:
+    "Cross-Chain Bridge, enabling the next 1B users to use blockchain.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/messina.one.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Algorand", "Ethereum"],
+  module: "messinaone/index.js",
+  twitter: "MessinaOne", 
+  forkedFrom: ["Portal"],
+  oracles: [],
+  listedAt: 1672230591
+},
+{
+  id: "2395", 
+  name: "Level Finance",
+  address: "bsc:0xB64E280e9D1B5DbEc4AcceDb2257A87b400DB149",
+  symbol: "LVL",
+  url: "https://app.level.finance",
+  description:
+    "Level Finance - Decentralized Perpetual Exchange.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/level-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Binance"],
+  module: "level/index.js",
+  twitter: "Level__Finance", 
+  forkedFrom: ["GMX"],
+  oracles: ["Chainlink"],
+  audit_links: ["https://obeliskauditing.com/audits/level-finance"],
+  listedAt: 1672230595
+},
 ]
 
 export default data2;

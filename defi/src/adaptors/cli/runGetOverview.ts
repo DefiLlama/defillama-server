@@ -5,11 +5,11 @@ import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "dexs" },
-    /* queryStringParameters: {
+    pathParameters: { chain: undefined, type: "fees" },
+    queryStringParameters: {
         excludeTotalDataChart: "true",
         excludeTotalDataChartBreakdown: "true"
-    } */
+    }
 } as unknown as APIGatewayProxyEvent
 
 (async () => {
@@ -18,12 +18,12 @@ const event = {
     var endTime = performance.now()
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     // console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('jupiter')))
-    console.log(JSON.stringify(rr.protocols.find(p=>p.module==='uniswap'), null, 2))
+    // console.log(JSON.stringify(rr.protocols.find(p=>p.module==='uniswap'), null, 2))
     // console.log("rr.totalDataChartBreakdown->", rr.totalDataChartBreakdown.slice(-1))
     // console.log("length", rr.protocols.length)
     // @ts-ignore
-    // delete rr.protocols
-    // console.log(rr)
+    delete rr.protocols
+    console.log(rr)
     // console.log("rr.totalDataChart", rr.totalDataChart.find(d => +d[0] === Date.UTC(2021, 11, 15) / 1000))
     // console.log("rr.totalDataChartBreakdown", rr.totalDataChartBreakdown.find(d => +d[0] === Date.UTC(2021, 11, 15) / 1000))
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))

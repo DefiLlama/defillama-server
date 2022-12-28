@@ -1,7 +1,7 @@
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../utils/date";
 import { IJSON, ProtocolAdaptor } from "../data/types";
-import { AdaptorRecord, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
-import { IGeneralStats, ProtocolAdaptorSummary } from "../handlers/getOverview";
+import { AdaptorRecord, AdaptorRecordType, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
+import { ExtraTypes, IGeneralStats, ProtocolAdaptorSummary } from "../handlers/getOverview";
 import { ONE_DAY_IN_SECONDS } from "../handlers/getProtocol";
 
 import getDataPoints from "./getDataPoints";
@@ -87,7 +87,8 @@ export const getWoWStats = (
 const getSumAllDexsToday = (
     dexs: ProtocolAdaptorSummary[],
     dex2Substract?: ProtocolAdaptorSummary,
-    baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS
+    baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS,
+    extraTypes?: (keyof ExtraTypes)[],
 ): IGeneralStats => {
     const yesterdaysTimestamp = getTimestampAtStartOfDayUTC(baseTimestamp);
     const timestamp1d = yesterdaysTimestamp - ONE_DAY_IN_SECONDS * 1
@@ -98,7 +99,15 @@ const getSumAllDexsToday = (
     let totalVolume7d = 0
     let totalVolume30d = 0
     let dex2SubstractVolumes: any = {}
+    const extraTypesObj = {} as IJSON<number>
     for (const dex of dexs) {
+        extraTypes?.forEach(extraType => {
+            if (extraTypesObj[extraType]) {
+                extraTypesObj[extraType] += dex[extraType] ?? 0
+            } else {
+                extraTypesObj[extraType] = dex[extraType] ?? 0
+            }
+        })
         if (dex2Substract) {
             dex2SubstractVolumes['totalVolume'] = dex2Substract.recordsMap?.[String(yesterdaysTimestamp)]?.data
             dex2SubstractVolumes['totalVolume1d'] = dex2Substract.recordsMap?.[String(timestamp1d)]?.data
@@ -115,6 +124,7 @@ const getSumAllDexsToday = (
         totalVolume30d += volume30d ? sumAllVolumes(volume30d) - sumAllVolumes(dex2SubstractVolumes['totalVolume30d']) : 0
     }
     return {
+        ...extraTypesObj,
         total24h: totalVolume,
         change_1d: formatNdChangeNumber(((totalVolume - totalVolume1d) / totalVolume1d) * 100) ?? 0,
         change_7d: formatNdChangeNumber(((totalVolume - totalVolume7d) / totalVolume7d) * 100) ?? 0,

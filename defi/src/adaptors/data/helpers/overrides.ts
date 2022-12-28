@@ -30,3 +30,15 @@ export default {
         }
     }
 } as IJSON<Partial<ProtocolAdaptor>>
+
+export const chainOverrides = {
+    'arbitrum': {
+        category: "Rollup"
+    },
+    'optimism': {
+        category: "Rollup"
+    },
+    'polygon': {
+        category: "Rollup"
+    }
+} as IJSON<Partial<ProtocolAdaptor>>

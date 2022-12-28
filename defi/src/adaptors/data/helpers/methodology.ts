@@ -20,8 +20,16 @@ const genericMethodologies: IJSON<IJSON<string>> = {
     "Chain": {
         UserFees: "Gas fees paid by users",
         Fees: "Gas fees paid by users",
-        Revenue: "Burned coins (fees-sequencerCosts for rollups)"
+        Revenue: "Burned coins",
         // ProtocolRevenue: null,
+        // HoldersRevenue: null,
+        // SupplySideRevenue: null
+    },
+    "Rollup": {
+        UserFees: "Fees paid by users to sequencer",
+        Fees: "Fees collected by sequencer paid by users",
+        Revenue: "ETH earned from user fees minus cost to send transactions in L1",
+        ProtocolRevenue: "ETH earned from user fees minus cost to send transactions in L1",
         // HoldersRevenue: null,
         // SupplySideRevenue: null
     },

@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record"
+import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, IChartData, IChartDataByDex } from "../../utils/volumeCalcs";
 import { formatChain } from "../../utils/getAllChainsFromAdaptors";
@@ -10,8 +10,9 @@ import { IJSON, ProtocolAdaptor } from "../../data/types";
 import loadAdaptorsData from "../../data"
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { delay } from "../triggerStoreAdaptorData";
+import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
 
-export interface IGeneralStats {
+export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
     total7d: number | null;
     change_1d: number | null;
@@ -52,7 +53,7 @@ export type IGetOverviewResponseBody = IGeneralStats & {
     errors?: string[]
 }
 
-type ExtraTypes = {
+export type ExtraTypes = {
     dailyUserFees?: number | null
     dailyHoldersRevenue?: number | null
     dailyCreatorRevenue?: number | null
@@ -173,11 +174,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         )
     }
 
+    const extraTypes = (getExtraTypes(adaptorType) as string[]).map(type => AdaptorRecordTypeMapReverse[type]).filter(notUndefined) as (keyof ExtraTypes)[]
     const baseRecord = totalDataChartResponse[totalDataChartResponse.length - 1]
-    const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined)
+    const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined, extraTypes)
 
     const enableStats = okProtocols.filter(okp => !okp.disabled).length > 0
-
     okProtocols.forEach(removeVolumesObject)
     const successResponseObj: IGetOverviewResponseBody = {
         totalDataChart: totalDataChartResponse,
@@ -190,7 +191,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         change_7d: enableStats ? generalStats.change_7d : null,
         change_1m: enableStats ? generalStats.change_1m : null,
         change_7dover7d: enableStats ? generalStats.change_7dover7d : null,
-        breakdown24h: enableStats ? generalStats.breakdown24h : null
+        breakdown24h: enableStats ? generalStats.breakdown24h : null,
+        ...enableStats ? (extraTypes.reduce((acc, curr) => {
+            if (generalStats[curr])
+                acc[curr] = generalStats[curr]
+            return acc
+        }, {} as typeof generalStats)) : undefined
     }
     if (enableAlerts) {
         successResponseObj['errors'] = errors

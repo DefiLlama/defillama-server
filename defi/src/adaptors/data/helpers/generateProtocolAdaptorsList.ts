@@ -8,12 +8,12 @@ import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalize
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
 import { getMethodologyByType } from "./methodology";
-import overrides from "./overrides";
+import overrides, { chainOverrides } from "./overrides";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
 
-function notUndefined<T>(x: T | undefined): x is T {
+export function notUndefined<T>(x: T | undefined): x is T {
     return x !== undefined;
 }
 
@@ -35,8 +35,11 @@ export type IImportsMap = IJSON<IImportObj>
 export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdaptor[] =>
     Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = data
-        if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN)
+        let overridesObj = overrides
+        if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
+            overridesObj = chainOverrides
             list = chainData
+        }
         const dexFoundInProtocols = list.find(dexP => {
             return getBySpecificId(adapterKey, dexP.id) && (dexP.name.toLowerCase()?.includes(adapterKey)
                 || sluggifyString(dexP.name)?.includes(adapterKey)
@@ -56,11 +59,11 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                         }, {} as typeof moduleObject.breakdown)
                 } as Adapter
             const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
-            const childCategories = Object.values(overrides[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
-            const displayCategory = getDisplayCategory(moduleObject, overrides[adapterKey]) ?? dexFoundInProtocols.category
+            const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
+            const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
             return {
                 ...dexFoundInProtocols,
-                ...overrides[adapterKey],
+                ...overridesObj[adapterKey],
                 module: adapterKey,
                 config: config[adapterKey],
                 category: displayCategory,
@@ -89,6 +92,7 @@ function getDisplayCategory(adapter: Adapter, override: typeof overrides[string]
         const versionName = Object.keys(adapter.breakdown)[0]
         return override?.protocolsData?.[versionName]?.category
     }
+    return override?.category
 }
 
 export function getDisplayName(name: string, adapter: Adapter) {

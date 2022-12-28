@@ -21605,14 +21605,14 @@ listedAt: 1650804679
 },
 {
   id: "2394", 
-  name: "Messina.one",
+  name: "Messina One",
   address: null,
   symbol: "-",
   url: "https://messina.one",
   description:
     "Cross-Chain Bridge, enabling the next 1B users to use blockchain.",
   chain: "Algorand",
-  logo: `${baseIconsUrl}/messina.one.jpg`,
+  logo: `${baseIconsUrl}/messina-one.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

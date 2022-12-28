@@ -19232,6 +19232,7 @@ listedAt: 1650804679
   twitter: "THORSwap",
   listedAt: 1668600716
 },
+/*
 {
   id: "2288",
   name: "Trader Joe Liquidity Book",
@@ -19254,6 +19255,7 @@ listedAt: 1650804679
   parentProtocol: "Trader Joe",
   listedAt: 1668638549
 },
+*/
 {
   id: "2289",
   name: "Cetus",

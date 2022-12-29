@@ -37,7 +37,6 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
                         }
                     })
             }
-
         }
 
         const startTimestamp = adapter.config?.startFrom

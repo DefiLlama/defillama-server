@@ -271,5 +271,8 @@ export default {
     },
     "mummy-finance": {
         enabled: true
+    },
+    "bluemove": {
+        enabled: true
     }
 } as AdaptorsConfig

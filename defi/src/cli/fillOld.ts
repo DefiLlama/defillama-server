@@ -18,7 +18,9 @@ import {
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapter } from "./utils/importAdapter";
+import * as sdk from '@defillama/sdk'
 
+const { humanizeNumber: { humanizeNumber } } = sdk.util
 const secondsInDay = 24 * 3600;
 
 type DailyItems = (DocumentClient.ItemList | undefined)[];
@@ -44,6 +46,8 @@ type ChainBlocks = {
 }
 let failed = 0
 
+const IS_DRY_RUN = !!process.env.DRY_RUN
+
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
@@ -61,7 +65,7 @@ async function getAndStore(
     chainBlocks = res.chainBlocks
   }
 
-  const tvl = await storeTvl(
+  const tvl: any = await storeTvl(
     timestamp,
     ethereumBlock as unknown as number,
     chainBlocks,
@@ -73,15 +77,26 @@ async function getAndStore(
     false,
     false,
     true,
-    () => deleteItemsOnSameDay(dailyItems, timestamp)
+    () => deleteItemsOnSameDay(dailyItems, timestamp),
+    {
+      returnCompleteTvlObject: true
+    }
   );
-  console.log(timestamp, new Date(timestamp * 1000).toDateString(), tvl);
+
+  //  sdk.log(tvl);
+  if (typeof tvl === 'object') {
+    Object.entries(tvl).forEach(([key, val]) => sdk.log(key, humanizeNumber((val ?? 0) as number)))
+  }
+
+  const finalTvl = typeof tvl.tvl === "number" ? humanizeNumber(tvl.tvl) : tvl.tvl
+
+  console.log(timestamp, new Date(timestamp * 1000).toDateString(), finalTvl);
   if (tvl === undefined) failed++
   else failed = 0
 }
 
 const main = async () => {
-  console.log('DRY RUN: ', !!process.env.DRY_RUN)
+  console.log('DRY RUN: ', IS_DRY_RUN)
   const protocolToRefill = process.argv[2]
   const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
   const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel
@@ -93,10 +108,14 @@ const main = async () => {
   if (adapter.timetravel === false) {
     throw new Error("Adapter doesn't support refilling");
   }
-  const dailyTvls = await getHistoricalValues(dailyTvl(protocol.id));
-  const dailyTokens = await getHistoricalValues(dailyTokensTvl(protocol.id));
-  const dailyUsdTokens = await getHistoricalValues(dailyUsdTokensTvl(protocol.id));
-  const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens];
+  let dailyItems: any = []
+
+  if (!IS_DRY_RUN)
+    dailyItems = await Promise.all([
+      getHistoricalValues(dailyTvl(protocol.id)),
+      getHistoricalValues(dailyTokensTvl(protocol.id)),
+      getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
+    ]);
   const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);

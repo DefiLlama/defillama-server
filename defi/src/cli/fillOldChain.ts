@@ -22,6 +22,8 @@ import { importAdapter } from "./utils/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { Chain } from "@defillama/sdk/build/general";
 
+const { humanizeNumber: { humanizeNumber } } = sdk.util
+
 const secondsInDay = 24 * 3600;
 
 type DailyItems = (DocumentClient.ItemList | undefined)[];
@@ -70,17 +72,17 @@ async function getAndStore(
   }
   const adapterModule = await importAdapter(protocol)
 
-  for (const chain of chainsToRefill)
-    if (!adapterModule[chain]) throw new Error('Protocol does not have that chain!')
-
   let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
   const chains = chainsToRefill.map(i => i.split('-')[0])
+
+  for (const chain of chains)
+    if (!adapterModule[chain]) throw new Error('Protocol does not have that chain!')
 
   const res = await getBlocksRetry(timestamp, { chains: [...new Set(chains)] as Chain[] })
   ethereumBlock = res.ethereumBlock
   chainBlocks = res.chainBlocks
 
-  const tvl = await storeTvl(
+  const tvl: any = await storeTvl(
     timestamp,
     ethereumBlock as unknown as number,
     chainBlocks,
@@ -100,7 +102,13 @@ async function getAndStore(
       cacheData,
     }
   );
-  console.log(timestamp, new Date(timestamp * 1000).toDateString(), tvl);
+  if (typeof tvl === 'object') {
+    Object.entries(tvl).forEach(([key, val]) => sdk.log(key, humanizeNumber((val ?? 0) as number)))
+  }
+
+  const finalTvl = typeof tvl.tvl === "number" ? humanizeNumber(tvl.tvl) : tvl.tvl
+
+  console.log(timestamp, new Date(timestamp * 1000).toDateString(), finalTvl);
   if (tvl === undefined) failed++
   else failed = 0
 }
@@ -120,15 +128,23 @@ const main = async () => {
   if (!chainsToRefill) throw new Error('Missing chain parameter')
   const protocol = getProtocol(protocolToRefill);
   const adapter = await importAdapter(protocol);
-  const dailyTvls = await getHistoricalValues(dailyTvl(protocol.id));
-  const dailyTokens = await getHistoricalValues(dailyTokensTvl(protocol.id));
-  const dailyUsdTokens = await getHistoricalValues(dailyUsdTokensTvl(protocol.id));
-  const rawTokenTvl = await getHistoricalValues(dailyRawTokensTvl(protocol.id));
-  const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens,];
-  debugPrintDailyItems(dailyTvls, 'dailyTvls')
-  debugPrintDailyItems(dailyTokens, 'dailyTokens')
-  debugPrintDailyItems(dailyUsdTokens, 'dailyUsdTokens')
-  debugPrintDailyItems(rawTokenTvl, 'rawTokenTvl')
+  const chains = chainsToRefill.map(i => i.split('-')[0])
+
+  for (const chain of chains)
+    if (!adapter[chain]) throw new Error('Protocol does not have the chain:' + chain)
+
+  const data = await Promise.all([
+    getHistoricalValues(dailyRawTokensTvl(protocol.id)),
+    getHistoricalValues(dailyTvl(protocol.id)),
+    getHistoricalValues(dailyTokensTvl(protocol.id)),
+    getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
+  ]);
+  const [ rawTokenTvl, ...dailyItems] = data
+  // const [dailyTvls, dailyTokens, dailyUsdTokens, ] = dailyItems
+  // debugPrintDailyItems(dailyTvls, 'dailyTvls')
+  // debugPrintDailyItems(dailyTokens, 'dailyTokens')
+  // debugPrintDailyItems(dailyUsdTokens, 'dailyUsdTokens')
+  // debugPrintDailyItems(rawTokenTvl, 'rawTokenTvl')
   const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);

@@ -28,6 +28,9 @@ export default async (event: { type: string }) => {
     else {
         await sendDiscordAlert(`Looks like all good`, event.type)
     }
-    await sendDiscordAlert(`The following protocols haven't been included in the response ${notIncluded.join(", ")} <@983314132411482143>`, event.type)
+    if (notIncluded.length > 0)
+        await sendDiscordAlert(`The following protocols haven't been included in the response ${notIncluded.join(", ")} <@!983314132411482143>`, event.type, false)
+    else
+        await sendDiscordAlert(`All protocols has been ranked <@!983314132411482143>`, event.type, false)
     return
 }

@@ -10,8 +10,6 @@ import dynamoReservedKeywords from "./dynamo-reserved-keywords"
 export enum AdaptorRecordType {
     dailyVolume = "dv",
     totalVolume = "tv",
-    totalRevenue = "tr",
-    dailyRevenue = "dr",
     totalPremiumVolume = "tpv",
     totalNotionalVolume = "tnv",
     dailyPremiumVolume = "dpv",
@@ -19,12 +17,14 @@ export enum AdaptorRecordType {
     tokenIncentives = "ti",
     // fees & revenue
     dailyFees = "df",
+    dailyRevenue = "dr",
     dailyUserFees = "duf",
     dailySupplySideRevenue = "dssr",
     dailyProtocolRevenue = "dpr",
     dailyHoldersRevenue = "dhr",
     dailyCreatorRevenue = "dcr",
     totalFees = "tf",
+    totalRevenue = "tr",
     totalUserFees = "tuf",
     totalSupplySideRevenue = "tssr",
     totalProtocolRevenue = "tpr",

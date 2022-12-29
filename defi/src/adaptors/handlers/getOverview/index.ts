@@ -63,7 +63,7 @@ export type ExtraTypes = {
     dailyPremiumVolume?: number | null
 }
 
-export type ProtocolStats = (NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)
+export type ProtocolStats = IJSON<(NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)>
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.DEXS]: AdaptorRecordType.dailyVolume,
@@ -136,7 +136,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     }
 
     const errors: string[] = []
-    const results = await allSettled(adaptersList.map(async (adapter) => {
+    const results = await allSettled(adaptersList.filter(m=>m.module==='opensea').map(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
             console.error("Error generating summary:", adapter.module, e)
             // TODO, move error handling to rejected promises

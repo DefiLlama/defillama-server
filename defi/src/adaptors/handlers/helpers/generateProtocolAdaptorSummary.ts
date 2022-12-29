@@ -1,5 +1,6 @@
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date"
+import { DimensionRules } from "../../data"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
@@ -84,17 +85,23 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
 `))
         }
 
-        // Check if data looks is valid. Not sure if this should be added
-        /* if (
-            adaptorRecords.length !== 1
-            && (
-                !stats.change_1d
-                || (stats.change_1d && (stats.change_1d < -99 || stats.change_1d > 10 * 100))
-            )
-        ) {
-            if (onError) await onError(new Error(`${adapter.name} has a daily change of ${stats.change_1d}, looks sus...`))
-        } */
-
+        // Now we add adaptorRecordType to the extra types object
+        extraTypes[AdaptorRecordTypeMapReverse[adaptorRecordType]] = stats.total24h
+        if (protocolVersions) {
+            Object.keys(protocolVersions).forEach(key => {
+                extraTypesByProtocolVersion[key][AdaptorRecordTypeMapReverse[adaptorRecordType]] = protocolVersions[key].total24h
+            })
+        }
+        // And calculate the missing types
+        const rules = DimensionRules(adaptorType) ?? {}
+        for (const [dimension, rule] of Object.entries(rules)) {
+            rule(extraTypes, adapter.category ?? '')
+            if (protocolVersions) {
+                Object.keys(protocolVersions).forEach(key => {
+                    rule(extraTypesByProtocolVersion[key], adapter.category ?? '')
+                })
+            }
+        }
         // Populate last missing days with last available data
         if (!adapter.disabled)
             for (let i = lastAvailableDataTimestamp + ONE_DAY_IN_SECONDS; i <= yesterdaysCleanTimestamp; i += ONE_DAY_IN_SECONDS) {

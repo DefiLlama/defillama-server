@@ -89,7 +89,10 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
         extraTypes[AdaptorRecordTypeMapReverse[adaptorRecordType]] = stats.total24h
         if (protocolVersions) {
             Object.keys(protocolVersions).forEach(key => {
-                extraTypesByProtocolVersion[key][AdaptorRecordTypeMapReverse[adaptorRecordType]] = protocolVersions[key].total24h
+                extraTypesByProtocolVersion[key] = {
+                    ...extraTypesByProtocolVersion[key],
+                    [AdaptorRecordTypeMapReverse[adaptorRecordType]]: protocolVersions[key].total24h
+                }
             })
         }
         // And calculate the missing types

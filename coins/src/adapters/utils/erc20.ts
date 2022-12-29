@@ -86,8 +86,8 @@ export async function listUnknownTokens(
     return a;
   }, []);
   const api = new sdk.ChainApi({ chain, block, })
-  const unknownSymbols = await _getCachedData({ api, targets: unknownTokens, subkey: 'decimals', });
-  unknownTokens = unknownTokens.map((t, i) => `${unknownSymbols[i]}-${t}`);
+  const unknownSymbols = await _getCachedData({ api, targets: unknownTokens, subkey: 'symbol', });
+  unknownTokens = unknownTokens.map((t, i) => `${unknownSymbols[i].output}-${t}`);
   console.log(chain);
   console.log(unknownTokens);
 }

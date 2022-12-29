@@ -63,13 +63,17 @@ const rules = (interval: 'daily' | 'total') => ({
             return
         }
     },
-    [`${interval}SupplySideRevenue`]: (extraDimensions: IJSON<number | null>, _category: string) => {
+    [`${interval}SupplySideRevenue`]: (extraDimensions: IJSON<number | null>, category: string) => {
         const dimensionKey = `${interval}SupplySideRevenue`
         if (extraDimensions[dimensionKey] !== null) return
-        const Fees = extraDimensions[`${interval}Fees`]
-        const Revenue = extraDimensions[`${interval}Revenue`]
-        if (Fees !== null && Revenue !== null) {
-            extraDimensions[dimensionKey] = Fees - Revenue
+        const categories: string[] = [CATEGORIES.Lending, CATEGORIES.DEX, CATEGORIES.Derivatives, CATEGORIES.Liquid_Staking, CATEGORIES.Yield, CATEGORIES.Synthetics]
+        if (categories.includes(category)) {
+            const Fees = extraDimensions[`${interval}Fees`]
+            const Revenue = extraDimensions[`${interval}Revenue`]
+            if (Fees !== null && Revenue !== null) {
+                extraDimensions[dimensionKey] = Fees - Revenue
+                return
+            }
             return
         }
     },
@@ -88,14 +92,17 @@ const rules = (interval: 'daily' | 'total') => ({
             return
         }
     },
-    [`${interval}HoldersRevenue`]: (extraDimensions: IJSON<number | null>, _category: string) => {
+    [`${interval}HoldersRevenue`]: (extraDimensions: IJSON<number | null>, category: string) => {
         const dimensionKey = `${interval}HoldersRevenue`
         if (extraDimensions[dimensionKey] !== null) return
         const Revenue = extraDimensions[`${interval}Revenue`]
         const ProtocolRevenue = extraDimensions[`${interval}ProtocolRevenue`]
-        if (ProtocolRevenue !== null && Revenue !== null) {
-            extraDimensions[dimensionKey] = Revenue - ProtocolRevenue
-            return
+        const categories: string[] = [CATEGORIES.DEX, CATEGORIES.Derivatives]
+        if (categories.includes(category)) {
+            if (ProtocolRevenue !== null && Revenue !== null) {
+                extraDimensions[dimensionKey] = Revenue - ProtocolRevenue
+                return
+            }
         }
     },
     [`${interval}CreatorRevenue`]: (_extraDimensions: IJSON<number | null>, _category: string) => { }

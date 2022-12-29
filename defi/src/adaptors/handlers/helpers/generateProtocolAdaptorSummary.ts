@@ -94,7 +94,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
         }
         // And calculate the missing types
         const rules = DimensionRules(adaptorType) ?? {}
-        for (const [dimension, rule] of Object.entries(rules)) {
+        for (const rule of Object.values(rules)) {
             rule(extraTypes, adapter.category ?? '')
             if (protocolVersions) {
                 Object.keys(protocolVersions).forEach(key => {

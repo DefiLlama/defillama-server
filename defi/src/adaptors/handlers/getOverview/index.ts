@@ -136,7 +136,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     }
 
     const errors: string[] = []
-    const results = await allSettled(adaptersList.filter(m=>m.module==='opensea').map(async (adapter) => {
+    const results = await allSettled(adaptersList.map(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
             console.error("Error generating summary:", adapter.module, e)
             // TODO, move error handling to rejected promises

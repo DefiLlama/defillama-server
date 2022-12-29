@@ -699,5 +699,8 @@ export default {
     },
     "el-dorado-exchange": {
         enabled: true
+    },
+    "mummy-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

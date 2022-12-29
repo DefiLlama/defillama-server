@@ -40,4 +40,5 @@ export type AdaptorData = {
     importModule: (module: string) => IImportObj['module']
     KEYS_TO_STORE: IJSON<string>
     config: IJSON<IConfig>
+    dimensionRules?: IJSON<(extraDimensions: IJSON<number | null>, category: string) => void>
 }

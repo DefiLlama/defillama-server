@@ -137,48 +137,9 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             timestamp,
             await convertDataToUSD(generatedData, timestamp)
         )
-        Object.entries(acc.lastDataRecord).forEach(([key, record]) => {
-            const [chain, protocol] = key.split('#')
-            const chainData = newGen.data[chain]
-            if (chain && protocol && chainData && typeof chainData !== 'number' && chainData[protocol] && record) {
-                const recordChainData = record.data[chain]
-                if (!recordChainData || typeof recordChainData === 'number') return
-                const chg1d = calcNdChange({
-                    [record.timestamp.toString()]: new AdaptorRecord(
-                        type,
-                        adaptorId,
-                        record.timestamp,
-                        {
-                            [chain]: {
-                                [protocol]: recordChainData[protocol]
-                            }
-                        }
-                    ),
-                    [newGen.timestamp.toString()]: new AdaptorRecord(
-                        type,
-                        adaptorId,
-                        newGen.timestamp,
-                        {
-                            [chain]: {
-                                [protocol]: chainData[protocol]
-                            }
-                        }
-                    )
-                }, 1, newGen.timestamp)
-                if (chg1d && chg1d > 1000 && chainData[protocol] > 10000000) {
-                    spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
-                    const okChainData = newGen.data[chain]
-                    if (okChainData && typeof okChainData !== 'number')
-                        newGen.data = {
-                            ...newGen.data,
-                            [chain]: {
-                                ...okChainData,
-                                [protocol]: recordChainData[protocol]
-                            }
-                        }
-                }
-            }
-        })
+
+        checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
+
         acc.lastDataRecord = chains.reduce((acc, chain) => ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[]).reduce((acc, chainProt) => ({ ...acc, [chainProt]: newGen }), {})
         acc.adaptorRecords.push(newGen)
         acc.recordsMap[String(newGen.timestamp)] = newGen
@@ -199,4 +160,49 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         cleanRecordsMap: processed.recordsMap,
         spikesLogs
     }
+}
+
+function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: AdaptorRecord, spikesLogs: string[]) {
+    Object.entries(lastDataRecord).forEach(([key, record]) => {
+        const [chain, protocol] = key.split('#')
+        const chainData = newGen.data[chain]
+        if (chain && protocol && chainData && typeof chainData !== 'number' && chainData[protocol] && record) {
+            const recordChainData = record.data[chain]
+            if (!recordChainData || typeof recordChainData === 'number') return
+            const chg1d = calcNdChange({
+                [record.timestamp.toString()]: new AdaptorRecord(
+                    newGen.type,
+                    newGen.adaptorId,
+                    record.timestamp,
+                    {
+                        [chain]: {
+                            [protocol]: recordChainData[protocol]
+                        }
+                    }
+                ),
+                [newGen.timestamp.toString()]: new AdaptorRecord(
+                    newGen.type,
+                    newGen.adaptorId,
+                    newGen.timestamp,
+                    {
+                        [chain]: {
+                            [protocol]: chainData[protocol]
+                        }
+                    }
+                )
+            }, 1, newGen.timestamp)
+            if (chg1d && chg1d > 1000 && chainData[protocol] > 10000000) {
+                spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
+                const okChainData = newGen.data[chain]
+                if (okChainData && typeof okChainData !== 'number')
+                    newGen.data = {
+                        ...newGen.data,
+                        [chain]: {
+                            ...okChainData,
+                            [protocol]: recordChainData[protocol]
+                        }
+                    }
+            }
+        }
+    })
 }

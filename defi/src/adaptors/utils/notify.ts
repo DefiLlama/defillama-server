@@ -6,4 +6,4 @@ const webhooks = {
     fees: process.env.FEES_WEBHOOK
 } as IJSON<string>
 
-export const sendDiscordAlert = async (message: string, type: string) => sendMessage(message, webhooks[type])
+export const sendDiscordAlert = async (message: string, type: string, formatted?:boolean) => sendMessage(message, webhooks[type], formatted)

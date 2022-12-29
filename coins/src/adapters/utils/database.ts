@@ -178,7 +178,7 @@ async function getTokenAndRedirectDataDB(
         });
         if (dbEntry == undefined && redirect == undefined)
           return { dbEntry: ld, redirect: ["FALSE"] };
-        if (redirect == undefined) return { dbEntry: ld, redirect: [] };
+        if (redirect == undefined) return { dbEntry, redirect: [] };
         return { dbEntry: ld, redirect: [redirect] };
       })
       .filter((v: any) => v.redirect[0] != "FALSE");

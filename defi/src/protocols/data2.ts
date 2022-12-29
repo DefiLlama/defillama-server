@@ -21650,6 +21650,28 @@ listedAt: 1650804679
   audit_links: ["https://obeliskauditing.com/audits/level-finance"],
   listedAt: 1672230595
 },
+{
+  id: "2396", 
+  name: "BlueMove",
+  address: null,
+  symbol: "-",
+  url: "https://bluemove.net",
+  description:
+    "The leading Multi-chain NFT Marketplace on Aptos & Sui Blockchain.",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/bluemove.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Aptos"],
+  module: "dummy.js",  // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
+  twitter: "BlueMove_OA", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672334345
+},
 ]
 
 export default data2;

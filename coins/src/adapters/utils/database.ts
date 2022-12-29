@@ -122,6 +122,7 @@ async function getTokenAndRedirectDataDB(
   for (let lower = 0; lower < tokens.length; lower += batchSize) {
     const upper =
       lower + batchSize > tokens.length ? tokens.length : lower + batchSize;
+    // in order of tokens
     // timestamped origin entries
     let timedDbEntries: any[] = await Promise.all(
       tokens.slice(lower, upper).map((t: string) => {
@@ -133,6 +134,7 @@ async function getTokenAndRedirectDataDB(
       })
     );
 
+    // calls probably get jumbled in here
     // current origin entries, for current redirects
     const latestDbEntries: DbEntry[] = await batchGet(
       tokens.slice(lower, upper).map((t: string) => ({
@@ -167,12 +169,17 @@ async function getTokenAndRedirectDataDB(
 
     // aggregate
     let validResults: Read[] = latestDbEntries
-      .map((ld: DbEntry, i: number) => {
-        if (timedDbEntries[i].SK == undefined && timedRedirects[i] == undefined)
+      .map((ld: DbEntry) => {
+        let dbEntry = timedDbEntries.find((e: any) => {
+          if (e.SK != null) return e.PK == ld.PK;
+        });
+        let redirect = timedRedirects.find((e: any) => {
+          if (e != null) return e.PK == ld.redirect;
+        });
+        if (dbEntry == undefined && redirect == undefined)
           return { dbEntry: ld, redirect: ["FALSE"] };
-        if (timedRedirects[i] == undefined)
-          return { dbEntry: ld, redirect: [] };
-        return { dbEntry: ld, redirect: [timedRedirects[i]] };
+        if (redirect == undefined) return { dbEntry: ld, redirect: [] };
+        return { dbEntry: ld, redirect: [redirect] };
       })
       .filter((v: any) => v.redirect[0] != "FALSE");
 

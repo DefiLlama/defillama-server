@@ -78,9 +78,12 @@ export const getWoWStats = (
     baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS
 ) => {
     const wow = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 7)
+    const mom = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 30)
     return {
         change_7dover7d: wow.change_NdoverNd ?? 0,
-        total7d: wow.totalNd
+        total7d: wow.totalNd,
+        change_30dover30d: mom.change_NdoverNd ?? 0,
+        total30d: mom.totalNd
     }
 }
 

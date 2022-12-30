@@ -126,8 +126,10 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             change_7d: adapter.disabled ? null : stats.change_7d,
             change_1m: adapter.disabled ? null : stats.change_1m,
             change_7dover7d: adapter.disabled ? null : stats.change_7dover7d,
+            change_30dover30d: adapter.disabled ? null : stats.change_30dover30d,
             total24h: adapter.disabled ? null : stats.total24h,
             total7d: adapter.disabled ? null : stats.total7d,
+            total30d: adapter.disabled ? null : stats.total30d,
             totalAllTime: totalRecord ? sumAllVolumes(totalRecord.data) : null,
             breakdown24h: adapter.disabled ? null : stats.breakdown24h,
             config: adapter.config,
@@ -156,6 +158,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             latestFetchIsOk: adapter?.config?.latestFetchIsOk ?? false,
             total24h: null,
             total7d: null,
+            total30d: null,
             totalAllTime: null,
             breakdown24h: null,
             change_1d: null,
@@ -164,6 +167,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             change_7d: null,
             change_1m: null,
             change_7dover7d: null,
+            change_30dover30d: null,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolsStats: null
         }

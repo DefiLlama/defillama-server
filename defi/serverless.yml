@@ -134,7 +134,7 @@ functions:
           method: any
   chart:
     handler: src/getChart.default
-    timeout: 60
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -145,7 +145,7 @@ functions:
           method: get
   protocols:
     handler: src/getProtocols.default
-    timeout: 90
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -153,28 +153,28 @@ functions:
           method: get
   dexAggregatorQuote:
     handler: src/getDexAggregatorQuote.default
-    timeout: 90
+    timeout: 30
     events:
       - http:
           path: dexAggregatorQuote
           method: post
   storeAggregatorEvent:
     handler: src/storeAggregatorEvent.default
-    timeout: 90
+    timeout: 30
     events:
       - http:
           path: storeAggregatorEvent
           method: post
   contractName:
     handler: src/getContractName.default
-    timeout: 90
+    timeout: 30
     events:
       - http:
           path: contractName2/{chain}/{contract}
           method: get
   protocol:
     handler: src/getProtocol.default
-    timeout: 120
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -182,7 +182,7 @@ functions:
           method: get
   tokenProtocols:
     handler: src/getTokenInProtocols.default
-    timeout: 120
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -190,7 +190,7 @@ functions:
           method: get
   updatedProtocol:
     handler: src/getUpdatedProtocol.default
-    timeout: 120
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -198,7 +198,7 @@ functions:
           method: get
   debugProtocol:
     handler: src/getUpdatedProtocol.default
-    timeout: 120
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -218,7 +218,7 @@ functions:
           method: get
   coins:
     handler: src/getCoins.default
-    timeout: 60
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -226,7 +226,7 @@ functions:
           method: post
   chains:
     handler: src/getChains.default
-    timeout: 60
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -234,7 +234,7 @@ functions:
           method: get
   chains2:
     handler: src/getFormattedChains.default
-    timeout: 60
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -248,7 +248,7 @@ functions:
           method: get
   langs:
     handler: src/getLangs.default
-    timeout: 600
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -256,7 +256,7 @@ functions:
           method: get
   raises:
     handler: src/getRaises.default
-    timeout: 60
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -266,7 +266,7 @@ functions:
       AIRTABLE_API_KEY: ${file(./env.js):AIRTABLE_API_KEY}
   oracles:
     handler: src/getOracles.default
-    timeout: 600
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -274,7 +274,7 @@ functions:
           method: get
   forks:
     handler: src/getForks.default
-    timeout: 600
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -282,7 +282,7 @@ functions:
           method: get
   categories:
     handler: src/getCategories.default
-    timeout: 600
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -290,7 +290,7 @@ functions:
           method: get
   testTvl:
     handler: src/testTvl.default
-    timeout: 600
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -313,7 +313,7 @@ functions:
   #     - schedule: cron(40 * * * ? *)
   dataset:
     handler: src/getDataset.default
-    timeout: 900
+    timeout: 30
     memorySize: 10240
     events:
       - http:
@@ -321,7 +321,7 @@ functions:
           method: get
   simpleDataset:
     handler: src/getSimpleChainDataset.default
-    timeout: 900
+    timeout: 30
     memorySize: 3000
     events:
       - http:
@@ -329,7 +329,7 @@ functions:
           method: get
   totalChainDataset:
     handler: src/getTotalChainDataset.default
-    timeout: 900
+    timeout: 30
     memorySize: 3000
     events:
       - http:

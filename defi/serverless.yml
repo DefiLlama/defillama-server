@@ -509,5 +509,4 @@ plugins:
   - serverless-esbuild
   - serverless-offline
   - serverless-prune-plugin
-  - serverless-plugin-datadog
   - serverless-plugin-log-retention

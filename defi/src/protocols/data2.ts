@@ -21584,8 +21584,8 @@ listedAt: 1650804679
 {
   id: "2393", 
   name: "Joe V2",
-  address: null,
-  symbol: "-",
+  address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
+  symbol: "JOE",
   url: "https://traderjoexyz.com/home",
   description:
     "Joe V2 is a decentralized exchange based on Liquidity Book, a novel AMM protocol. Zero 0% slippage for swaps between ticks and Dynamic fees to improve liquidity provider profitability.",

@@ -9,9 +9,10 @@ import getBlock from "../../utils/block";
 import abi from "./abi.json";
 import { getTokenInfo } from "../../utils/erc20";
 import { Result } from "../../utils/sdkInterfaces";
+import { DbTokenInfos } from "../../utils/dbInterfaces";
 
-const vault = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
-const nullAddress = "0x0000000000000000000000000000000000000000";
+const vault: string = "0xBA12222222228d8Ba445958a75a0704d566BF2C8";
+const nullAddress: string = "0x0000000000000000000000000000000000000000";
 const subgraphNames: { [chain: string]: string } = {
   ethereum: "balancer-v2",
   arbitrum: "balancer-arbitrum-v2",
@@ -22,10 +23,24 @@ const gaugeFactories: { [chain: string]: string } = {
   arbitrum: "0xb08e16cfc07c684daa2f93c70323badb2a6cbfd2",
   polygon: "0x3b8ca519122cdd8efb272b0d3085453404b25bd0"
 };
-async function getPoolIds(chain: string, timestamp: number) {
+type GqlResult = {
+  id: string;
+  totalLiquidity: string;
+};
+type PoolInfo = {
+  balances: number[];
+  tokens: string[];
+};
+type TokenValues = {
+  address: string;
+  decimals: number;
+  price: number;
+  symbol: string;
+};
+async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
   let addresses: string[] = [];
-  let reservereThreshold: Number = 0;
-  const subgraph = `https://api.thegraph.com/subgraphs/name/balancer-labs/${
+  let reservereThreshold: number = 0;
+  const subgraph: string = `https://api.thegraph.com/subgraphs/name/balancer-labs/${
     subgraphNames[chain] || chain
   }`;
   for (let i = 0; i < 20; i++) {
@@ -33,9 +48,7 @@ async function getPoolIds(chain: string, timestamp: number) {
     query {
       pools (first: 1000, orderBy: totalLiquidity, orderDirection: desc,
           where: {${
-            i == 0
-              ? ``
-              : `totalLiquidity_lt: ${Number(reservereThreshold).toFixed(4)}`
+            i == 0 ? `` : `totalLiquidity_lt: ${reservereThreshold.toFixed(4)}`
           } ${
       timestamp == 0 ? `` : `createTime_gt: ${(timestamp * 1000).toString()}`
     }}) {
@@ -43,19 +56,21 @@ async function getPoolIds(chain: string, timestamp: number) {
         totalLiquidity
       }
     }`;
-    const result = (await request(subgraph, lpQuery)).pools;
+    const result: GqlResult[] = (await request(subgraph, lpQuery)).pools;
     if (result.length < 1000) i = 20;
     if (result.length == 0) return addresses;
-    reservereThreshold = result[Math.max(result.length - 1, 0)].totalLiquidity;
+    reservereThreshold = Number(
+      result[Math.max(result.length - 1, 0)].totalLiquidity
+    );
     addresses.push(...result.map((p: any) => p.id));
   }
   return addresses;
 }
 async function getPoolTokens(
-  chain: string,
+  chain: any,
   block: number | undefined,
   poolIds: string[]
-) {
+): Promise<PoolInfo[]> {
   return (
     await multiCall({
       abi: abi.getPoolTokens,
@@ -63,14 +78,17 @@ async function getPoolTokens(
         target: vault,
         params: p
       })),
-      chain: chain as any,
+      chain,
       block
     })
-  ).output.map((c: any) => c.output);
+  ).output.map((c: Result) => ({
+    tokens: c.output.tokens,
+    balances: c.output.balances
+  }));
 }
-function findAllUniqueTokens(poolTokens: any[]) {
+function findAllUniqueTokens(poolTokens: PoolInfo[]): string[] {
   const uniqueTokens: string[] = [];
-  poolTokens.map((p: any) => {
+  poolTokens.map((p: PoolInfo) => {
     p.tokens.map((t: string) => {
       if (uniqueTokens.includes(t.toLowerCase())) return;
       uniqueTokens.push(t.toLowerCase());
@@ -81,17 +99,17 @@ function findAllUniqueTokens(poolTokens: any[]) {
 async function getPoolValues(
   chain: string,
   timestamp: number,
-  poolTokens: any[],
+  poolTokens: PoolInfo[],
   poolIds: string[]
-) {
+): Promise<{ [poolId: string]: number }> {
   const uniqueTokens: string[] = findAllUniqueTokens(poolTokens);
   const coinsData: CoinData[] = await getTokenAndRedirectData(
     uniqueTokens,
     chain,
     timestamp
   );
-  const poolTokenValues: any = [];
-  poolTokens.map((p: any, i: number) => {
+  const poolTokenValues: number[][] = [];
+  poolTokens.map((p: PoolInfo, i: number) => {
     poolTokenValues.push([]);
     p.tokens.map((t: string, j: number) => {
       if (poolIds[i].includes(t.toLowerCase())) {
@@ -99,36 +117,41 @@ async function getPoolValues(
         return;
       }
 
-      const tData = coinsData.find((d: any) => d.address == t.toLowerCase());
+      const tData = coinsData.find(
+        (d: CoinData) => d.address == t.toLowerCase()
+      );
       if (tData == undefined) {
-        poolTokenValues[i].push(undefined);
+        poolTokenValues[i].push(-1);
         return;
       }
 
       const { decimals, price } = tData;
-      const tokenValue = (p.balances[j] * price) / 10 ** decimals;
+      const tokenValue: number = (p.balances[j] * price) / 10 ** decimals;
       poolTokenValues[i].push(tokenValue);
     });
   });
 
   const poolTotalValues: { [poolId: string]: number } = {};
-  poolTokenValues.map((p: any[], i: any) => {
-    if (p.includes(undefined)) return;
-    const totalValue = p.reduce((p: number, c: number) => p + c, 0);
+  poolTokenValues.map((p: number[], i: number) => {
+    if (p.includes(-1)) return;
+    const totalValue: number = p.reduce((p: number, c: number) => p + c, 0);
     poolTotalValues[poolIds[i]] = totalValue;
   });
 
   return poolTotalValues;
 }
-function getTokenValues(poolValues: object, poolInfos: any) {
-  const tokenValues: object[] = [];
-  poolInfos.supplies.map((s: any, i: number) => {
+function getTokenValues(
+  poolValues: { [poolId: string]: number },
+  poolInfos: any
+): TokenValues[] {
+  const tokenValues: TokenValues[] = [];
+  poolInfos.supplies.map((s: Result, i: number) => {
     const poolValue = Object.entries(poolValues).filter(
-      (v: any) => v[0].substring(0, 42) == s.input.target
+      (v: any[]) => v[0].substring(0, 42) == s.input.target
     );
 
     if (poolValue.length == 0) return;
-    const price =
+    const price: number =
       (poolValue[0][1] * 10 ** poolInfos.decimals[i].output) / s.output;
     if (isNaN(price)) return;
 
@@ -141,30 +164,67 @@ function getTokenValues(poolValues: object, poolInfos: any) {
   });
   return tokenValues;
 }
-async function getLpPrices(chain: string, timestamp: number, block: number) {
+async function getLpPrices(
+  chain: string,
+  timestamp: number,
+  block: number
+): Promise<TokenValues[]> {
   const poolIds: string[] = await getPoolIds(chain, timestamp);
-  const poolTokens: number[] = await getPoolTokens(chain, block, poolIds);
-  const poolValues: object = await getPoolValues(
+  const poolTokens: PoolInfo[] = await getPoolTokens(chain, block, poolIds);
+  const poolValues: { [poolId: string]: number } = await getPoolValues(
     chain,
     timestamp,
     poolTokens,
     poolIds
   );
 
-  const tokenInfos = await getTokenInfo(
+  let tokenInfos: DbTokenInfos = await getTokenInfo(
     chain,
     poolIds.map((p: string) => p.substring(0, 42)),
     block,
     { withSupply: true }
   );
 
+  const calls: { [target: string]: string }[] = [];
+  poolIds.map((p: string, i: number) => {
+    const normalizedTokens = poolTokens[i].tokens.map((t: string) =>
+      t.toLowerCase()
+    );
+    const target: string = p.substring(0, 42);
+    if (normalizedTokens.includes(target)) calls.push({ target });
+  });
+
+  const actualSupplies: Result[] = (
+    await multiCall({
+      calls,
+      abi: abi.getActualSupply,
+      chain,
+      block
+    })
+  ).output;
+
+  tokenInfos.supplies.map((t: Result, i: number) => {
+    if (
+      !calls
+        .map((c: { [target: string]: string }) => c.target)
+        .includes(t.input.target)
+    )
+      return;
+    const supplyUpdate: Result | undefined = actualSupplies.find(
+      (supplyUpdate: Result) => supplyUpdate.input.target == t.input.target
+    );
+    if (supplyUpdate != null) tokenInfos.supplies[i] = supplyUpdate;
+  });
+
   return getTokenValues(poolValues, tokenInfos);
 }
-
-export default async function getTokenPrices(chain: string, timestamp: number) {
+export default async function getTokenPrices(
+  chain: string,
+  timestamp: number
+): Promise<Write[]> {
   let writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
-  const tokenValues: object[] = await getLpPrices(chain, timestamp, block);
+  const tokenValues: TokenValues[] = await getLpPrices(chain, timestamp, block);
   const gauges: string[] = (
     await multiCall({
       target: gaugeFactories[chain],
@@ -179,7 +239,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     })
   ).output.map((o: Result) => o.output);
 
-  tokenValues.map((v: any, i: number) => {
+  tokenValues.map((v: TokenValues, i: number) => {
     addToDBWritesList(
       writes,
       chain,

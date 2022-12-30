@@ -1,3 +1,5 @@
+import { Result } from "./sdkInterfaces";
+
 export interface Write {
   SK: number;
   PK: string;
@@ -44,4 +46,9 @@ export interface CoinData {
   timestamp: number;
   redirect: string | undefined;
   confidence: number | undefined;
+}
+export interface DbTokenInfos {
+  decimals: Result[];
+  supplies: Result[];
+  symbols: Result[];
 }

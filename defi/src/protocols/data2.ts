@@ -1425,10 +1425,10 @@ const data2: Protocol[] =  [
 {
   id: "1473",
   name: "SportBet",
-  address: "eos:-",
+  address: "eos:SBET-eos-sportbetsbet",
   symbol: "SBET",
   url: "https://sportbet.one/",
-  description: "Decentralized sportsbook on EOS.",
+  description: "Sportbet.one is the first decentralized sportsbook and casino, running on the EOS blockchain. For already four years, the platform guarantees its users transparent conditions and almost instant payouts. KYC-free environment, no deposits, a great variety of sports events, and professional 24/7 support attract users from all over the world. Every week, we proportionally distribute the company's income among those who stake SBET tokens on sportbet.one. Investing in our unique platform means stable earnings - check for yourself!",
   chain: "EOS",
   logo: `${baseIconsUrl}/sportbet.jpg`,
   audits: "0",
@@ -21671,6 +21671,31 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1672334345
+},
+{
+  id: "2397", 
+  name: "Gyroscope Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://app.gyro.finance/",
+  description:
+    "Gyroscope's mission is to build robust public infrastructure for DeFi. The central piece is a fully-backed stablecoin with all-weather reserves and autonomous price bounding",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/gyroscope-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Polygon"],
+  module: "gyroscope/index.js",
+  twitter: "GyroStable", 
+  forkedFrom: [],
+  oracles: ["Chainlink", "TWAP", "Balancer Pool LP token"],
+  audit_links: [
+    "https://docs.gyro.finance/gyroscope-protocol/audit-reports"
+  ],
+  listedAt: 1672424905
 },
 ]
 

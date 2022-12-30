@@ -370,7 +370,7 @@ functions:
       - schedule: cron(20 * * * ? *)
   hourly:
     handler: src/getHourlyData.default
-    timeout: 120
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -393,7 +393,7 @@ functions:
       - schedule: cron(0 * * * ? *)
   getOverview:
     handler: src/adaptors/handlers/getOverview/index.default
-    timeout: 180
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -404,7 +404,7 @@ functions:
           method: get
   getProtocolSummary:
     handler: src/adaptors/handlers/getProtocol/index.default
-    timeout: 180
+    timeout: 30
     memorySize: 2000
     events:
       - http:
@@ -472,7 +472,7 @@ functions:
       - schedule: cron(20 * * * ? *)
   missedUpdates:
     handler: src/stats/getMissedUpdates.default
-    timeout: 900
+    timeout: 30
     memorySize: 10240
     events:
       - http:
@@ -480,7 +480,7 @@ functions:
           method: get
   outdated:
     handler: src/stats/getOutdated.default
-    timeout: 900
+    timeout: 30
     memorySize: 10240
     events:
       - http:

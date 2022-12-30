@@ -6,7 +6,7 @@ export function uniswap(timestamp: number = 0) {
     "ethereum",
     "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
     "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-    "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2",
+    "https://thegraph.com/hosted-service/subgraph/ianlapham/uniswapv2",
     timestamp
   );
 }

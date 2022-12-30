@@ -5,10 +5,10 @@ import { getCurrentUnixTimestamp } from './date';
 // CREATE TABLE missing (time INT, coin VARCHAR(500), timestampRequested INT, rawCoin VARCHAR(500), chain VARCHAR(100), PRIMARY KEY(time, coin, timestampRequested), INDEX `idx_time` (`time` ASC) VISIBLE);
 
 const connection = mysql.createPool({
-  host: 'coin-errors-instance-1.cz3l9ki794cf.eu-central-1.rds.amazonaws.com',
-  port: 3306,
-  user: 'admin',
-  database: 'content',
+  host: '65.21.124.238',
+  port: 9000,
+  user: 'clcao5p1q02z5b3p84l6b0ow2',
+  database: 'clcao5p1r02z7b3p83eklevpm',
   password: process.env.MISSING_COINS_DB_PWD,
   waitForConnections: true,
   connectionLimit: 1,

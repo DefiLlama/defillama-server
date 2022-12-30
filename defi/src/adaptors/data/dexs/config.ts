@@ -702,5 +702,8 @@ export default {
     },
     "mummy-finance": {
         enabled: true
+    },
+    "level-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

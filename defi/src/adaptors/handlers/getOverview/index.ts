@@ -15,10 +15,12 @@ import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
 export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
     total7d: number | null;
+    total30d: number | null;
     change_1d: number | null;
     change_7d: number | null;
     change_1m: number | null;
     change_7dover7d: number | null;
+    change_30dover30d: number | null;
     breakdown24h: IRecordAdaptorRecordData | null
 }
 
@@ -189,10 +191,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         allChains: getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
         total24h: enableStats ? generalStats.total24h : 0,
         total7d: enableStats ? generalStats.total7d : 0,
+        total30d: enableStats ? generalStats.total30d : 0,
         change_1d: enableStats ? generalStats.change_1d : null,
         change_7d: enableStats ? generalStats.change_7d : null,
         change_1m: enableStats ? generalStats.change_1m : null,
         change_7dover7d: enableStats ? generalStats.change_7dover7d : null,
+        change_30dover30d: enableStats ? generalStats.change_30dover30d : null,
         breakdown24h: enableStats ? generalStats.breakdown24h : null,
         ...enableStats ? (extraTypes.reduce((acc, curr) => {
             if (generalStats[curr])

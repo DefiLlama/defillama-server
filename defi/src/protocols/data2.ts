@@ -21697,6 +21697,52 @@ listedAt: 1650804679
   ],
   listedAt: 1672424905
 },
+{
+  id: "2398", 
+  name: "Opyn Convexity",
+  address: null,
+  symbol: "-",
+  url: "https://www.opyn.co",
+  description:
+    "Opyn offers European, cash-settled options that auto-exercise upon expiry.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/opyn-convexity.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Options",
+  chains: ["Ethereum"],
+  module: "opyn-convexity/index.js",
+  twitter: "opyn_", 
+  forkedFrom: [],
+  oracles: [],
+  parentProtocol: "Opyn",
+  listedAt: 1672484834
+},
+{
+  id: "2399", 
+  name: "Opyn Squeeth",
+  address: null,
+  symbol: "-",
+  url: "https://squeeth.opyn.co",
+  description:
+    "Squeeth perpetual exposure to ETH²",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/opyn-squeeth.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "opyn-squeeth",
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Ethereum"],
+  module: "opyn-squeeth/index.js",
+  twitter: "opyn_", 
+  forkedFrom: [],
+  oracles: [],
+  parentProtocol: "Opyn",
+  listedAt: 1672484838
+},
 ]
 
 export default data2;

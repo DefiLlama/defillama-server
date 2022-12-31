@@ -705,5 +705,8 @@ export default {
     },
     "level-finance": {
         enabled: true
+    },
+    "hyperjump": {
+        enabled: true
     }
 } as AdaptorsConfig

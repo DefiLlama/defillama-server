@@ -606,6 +606,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SperaxUSD",
   },
+  {
+    id: "Opyn",
+    name: "Opyn",
+    url: "https://www.opyn.co",
+    description:
+    "Opyn is building Defi-native derivatives and options infrastructure in DeFi",
+    logo: `${baseIconsUrl}/opyn.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "opyn_",
+  },
 ];
 
 export default parentProtocols;

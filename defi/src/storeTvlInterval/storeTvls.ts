@@ -21,7 +21,7 @@ export default async (protocolIndexes: number[], getRemainingTimeInMillis: () =>
   const actions = protocolIndexes.map(idx => protocols[idx])
 
   await PromisePool
-    .withConcurrency(10)
+    .withConcurrency(16)
     .for(actions)
     .process(async  (protocol: any) => {
       const protocolTimeout = setTimeout(() =>

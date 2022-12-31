@@ -9,7 +9,7 @@ function shuffleArray(array:number[]) {
   }
 }
 
-const step = 32;
+const step = 20;
 const handler = async () => {
   const protocolIndexes = Array.from(Array(protocols.length).keys());
   shuffleArray(protocolIndexes);

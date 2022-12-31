@@ -60,6 +60,7 @@
     "@defillama/adapters": "file:./DefiLlama-Adapters",
     "@defillama/dimension-adapters": "file:./dimension-adapters",
     "@defillama/sdk": "^3.0.1",
+    "@supercharge/promise-pool": "^2.3.2",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",
     "dotenv": "^16.0.1",

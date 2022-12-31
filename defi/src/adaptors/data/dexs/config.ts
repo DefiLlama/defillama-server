@@ -708,5 +708,8 @@ export default {
     },
     "hyperjump": {
         enabled: true
+    },
+    "kokonut-swap": {
+        enabled: true
     }
 } as AdaptorsConfig

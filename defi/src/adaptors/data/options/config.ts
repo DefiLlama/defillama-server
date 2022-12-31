@@ -9,5 +9,8 @@ export default {
     },
     "premia": {
         enabled: true
+    },
+    "thales": {
+        enabled: true
     }
 } as AdaptorsConfig

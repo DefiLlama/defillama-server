@@ -6,12 +6,12 @@ const rules = (interval: 'daily' | 'total') => ({
     [`${interval}UserFees`]: (extraDimensions: IJSON<number | null>, category: string) => {
         const dimensionKey = `${interval}UserFees`
         if (extraDimensions[dimensionKey] !== null) return
-        const categoriesFees: string[] = [CATEGORIES.DEX, CATEGORIES.Lending, CATEGORIES.Chain, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP, CATEGORIES.Synthetics]
+        const categoriesFees: string[] = [CATEGORIES.DEX, CATEGORIES.Lending, CATEGORIES.Chain, CATEGORIES.Rollup, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP, CATEGORIES.Synthetics]
         if (categoriesFees.includes(category)) {
             extraDimensions[dimensionKey] = extraDimensions[`${interval}Fees`]
             return
         }
-        const categoriesRevenue: string[] = [CATEGORIES.Chain, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP]
+        const categoriesRevenue: string[] = [CATEGORIES.Chain, CATEGORIES.Rollup, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP]
         if (categoriesRevenue.includes(category)) {
             extraDimensions[dimensionKey] = extraDimensions[`${interval}Revenue`]
             return
@@ -25,12 +25,12 @@ const rules = (interval: 'daily' | 'total') => ({
     [`${interval}Fees`]: (extraDimensions: IJSON<number | null>, category: string) => {
         const dimensionKey = `${interval}Fees`
         if (extraDimensions[dimensionKey] != null) return
-        const categoriesUserFees: string[] = [CATEGORIES.DEX, CATEGORIES.Lending, CATEGORIES.Chain, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP, CATEGORIES.Synthetics]
+        const categoriesUserFees: string[] = [CATEGORIES.DEX, CATEGORIES.Lending, CATEGORIES.Chain, CATEGORIES.Rollup, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP, CATEGORIES.Synthetics]
         if (categoriesUserFees.includes(category)) {
             extraDimensions[dimensionKey] = extraDimensions[`${interval}UserFees`]
             return
         }
-        const categoriesRevenue: string[] = [CATEGORIES.Chain, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP]
+        const categoriesRevenue: string[] = [CATEGORIES.Chain, CATEGORIES.Rollup, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP]
         if (categoriesRevenue.includes(category)) {
             extraDimensions[dimensionKey] = extraDimensions[`${interval}Revenue`]
             return
@@ -39,7 +39,7 @@ const rules = (interval: 'daily' | 'total') => ({
     [`${interval}Revenue`]: (extraDimensions: IJSON<number | null>, category: string) => {
         const dimensionKey = `${interval}Revenue`
         if (extraDimensions[dimensionKey] != null) return
-        const categoriesFees: string[] = [CATEGORIES.Chain, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP]
+        const categoriesFees: string[] = [CATEGORIES.Chain, CATEGORIES.Rollup, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP]
         if (categoriesFees.includes(category)) {
             extraDimensions[dimensionKey] = extraDimensions[`${interval}Fees`]
             return

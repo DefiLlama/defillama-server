@@ -12,5 +12,8 @@ export default {
     },
     "thales": {
         enabled: true
+    },
+    "hegic": {
+        enabled: true
     }
 } as AdaptorsConfig

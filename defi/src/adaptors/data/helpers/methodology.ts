@@ -41,7 +41,23 @@ const genericMethodologies: IJSON<IJSON<string>> = {
         // HoldersRevenue: null,
         // SupplySideRevenue: null
     },
+    "NFT Lending": {
+        UserFees: "Fees paid by users",
+        Fees: "Fees paid by users",
+        Revenue: "Marketplace revenue",
+        ProtocolRevenue: "Marketplace revenue"
+        // HoldersRevenue: null,
+        // SupplySideRevenue: null
+    },
     "Derivatives": {
+        UserFees: "Fees paid by users",
+        Fees: "Fees paid by users",
+        Revenue: "Treasury and token holders revenue",
+        ProtocolRevenue: "Fees going to treasury",
+        HoldersRevenue: "Fees going to governance token holders",
+        SupplySideRevenue: "LPs revenue"
+    },
+    "Options": {
         UserFees: "Fees paid by users",
         Fees: "Fees paid by users",
         Revenue: "Treasury and token holders revenue",

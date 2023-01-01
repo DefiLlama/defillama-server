@@ -5,6 +5,7 @@ export enum CATEGORIES {
     NFT_Marketplace = 'NFT Marketplace',
     Derivatives = 'Derivatives',
     Options = 'Options',
+    "NFT_Lending" = 'NFT Lending',
     CDP = 'CDP',
     Liquid_Staking = 'Liquid Staking',
     Yield = 'Yield',

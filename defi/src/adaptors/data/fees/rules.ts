@@ -16,6 +16,11 @@ const rules = (interval: 'daily' | 'total') => ({
             extraDimensions[dimensionKey] = extraDimensions[`${interval}Revenue`]
             return
         }
+        const categoriesProtocolRevenue: string[] = [CATEGORIES.Yield]
+        if (categoriesProtocolRevenue.includes(category)) {
+            extraDimensions[dimensionKey] = extraDimensions[`${interval}Revenue`]
+            return
+        }
     },
     [`${interval}Fees`]: (extraDimensions: IJSON<number | null>, category: string) => {
         const dimensionKey = `${interval}Fees`

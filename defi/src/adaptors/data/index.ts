@@ -2,7 +2,7 @@ import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { AdaptorData } from "./types";
 import dexs, { KEYS_TO_STORE as dexs_KEYS_TO_STORE, importModule as dexs_importModule, config as dexs_config } from "./dexs"
 import derivatives, { KEYS_TO_STORE as derivatives_KEYS_TO_STORE, importModule as derivatives_importModule, config as derivatives_config } from "./derivatives"
-import fees, { KEYS_TO_STORE as fees_KEYS_TO_STORE, importModule as fees_importModule, config as fees_config, DimensionRules as fees_DimensionRules } from "./fees"
+import fees, { KEYS_TO_STORE as fees_KEYS_TO_STORE, importModule as fees_importModule, config as fees_config, rules as fees_DimensionRules } from "./fees"
 import aggregators, { KEYS_TO_STORE as aggregators_KEYS_TO_STORE, importModule as aggregators_importModule, config as aggregators_config } from "./aggregators"
 import options, { KEYS_TO_STORE as options_KEYS_TO_STORE, importModule as options_importModule, config as options_config } from "./options"
 import incentives, { KEYS_TO_STORE as incentives_KEYS_TO_STORE, importModule as incentives_importModule, config as incentives_config } from "./incentives"

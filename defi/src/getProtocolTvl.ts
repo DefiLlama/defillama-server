@@ -36,7 +36,7 @@ const handler = async (
     );
 
     const tvl = tvls.reduce((p: number, c: any) => p + c.tvl, 0);
-    return successResponse({ lastHourlyRecord: tvl }, 10 * 60); // 10 mins cache
+    return successResponse(tvl, 10 * 60); // 10 mins cache
   }
 
   if (protocolData === undefined) {
@@ -46,7 +46,7 @@ const handler = async (
   }
 
   const tvl = await getLastRecord(hourlyTvl(protocolData.id));
-  return successResponse({ lastHourlyRecord: tvl }, 10 * 60); // 10 mins cache
+  return successResponse(tvl.tvl, 10 * 60); // 10 mins cache
 };
 
 export default wrap(handler);

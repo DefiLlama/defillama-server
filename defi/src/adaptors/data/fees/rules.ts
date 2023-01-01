@@ -59,7 +59,7 @@ const rules = (interval: 'daily' | 'total') => ({
     [`${interval}SupplySideRevenue`]: (extraDimensions: IJSON<number | null>, category: string) => {
         const dimensionKey = `${interval}SupplySideRevenue`
         if (extraDimensions[dimensionKey] !== null) return
-        const categories: string[] = [CATEGORIES.Lending, CATEGORIES.DEX, CATEGORIES.Derivatives, CATEGORIES.Liquid_Staking, CATEGORIES.Yield, CATEGORIES.Synthetics]
+        const categories: string[] = [CATEGORIES.Lending, CATEGORIES.DEX, CATEGORIES.Derivatives, CATEGORIES.Options, CATEGORIES.Liquid_Staking, CATEGORIES.Yield, CATEGORIES.Synthetics]
         if (categories.includes(category)) {
             const Fees = extraDimensions[`${interval}Fees`]
             const Revenue = extraDimensions[`${interval}Revenue`]
@@ -90,7 +90,7 @@ const rules = (interval: 'daily' | 'total') => ({
         if (extraDimensions[dimensionKey] !== null) return
         const Revenue = extraDimensions[`${interval}Revenue`]
         const ProtocolRevenue = extraDimensions[`${interval}ProtocolRevenue`]
-        const categories: string[] = [CATEGORIES.DEX, CATEGORIES.Derivatives]
+        const categories: string[] = [CATEGORIES.DEX, CATEGORIES.Derivatives, CATEGORIES.Options]
         if (categories.includes(category)) {
             if (ProtocolRevenue !== null && Revenue !== null) {
                 extraDimensions[dimensionKey] = Revenue - ProtocolRevenue

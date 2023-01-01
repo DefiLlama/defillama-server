@@ -6,7 +6,7 @@ const rules = (interval: 'daily' | 'total') => ({
     [`${interval}UserFees`]: (extraDimensions: IJSON<number | null>, category: string) => {
         const dimensionKey = `${interval}UserFees`
         if (extraDimensions[dimensionKey] !== null) return
-        const categoriesFees: string[] = [CATEGORIES.DEX, CATEGORIES.Lending, CATEGORIES.NFT_Lending, CATEGORIES.Chain, CATEGORIES.Rollup, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP, CATEGORIES.Synthetics]
+        const categoriesFees: string[] = [CATEGORIES.DEX, CATEGORIES.Lending, CATEGORIES.NFT_Lending, CATEGORIES.Chain, CATEGORIES.Rollup, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP, CATEGORIES.Synthetics, CATEGORIES.Derivatives]
         if (categoriesFees.includes(category)) {
             extraDimensions[dimensionKey] = extraDimensions[`${interval}Fees`]
             return

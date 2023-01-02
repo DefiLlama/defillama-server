@@ -49,25 +49,34 @@ const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 const USER_AGENT = "llama-api-monitor"
 
 const get = async (url: string) => {
+    const res = await axios.get(url, { headers: { "User-Agent": USER_AGENT } })
+    return res
+}
+
+const triggerSmolLogger = async () => {
     const SMOL_LOGGER_URL = process.env.SMOL_LOGGER_URL
     if (SMOL_LOGGER_URL) {
         await axios.get(SMOL_LOGGER_URL, { headers: { "User-Agent": USER_AGENT } })
     }
-    const res = await axios.get(url, { headers: { "User-Agent": USER_AGENT } })
-    return res
 }
 
 const handler = async () => {
     const responses = {} as any
     // Main urls
+    try { await triggerSmolLogger() } catch (e) {}
     await Promise.all(urls.map(async url => {
         try {
             const res = await get(url)
             const lastModified = res.headers["last-modified"]
+            const cfCacheStatus = res.headers["cf-cache-status"]
+            const xCache = res.headers["x-cache"]
+            const cacheMsg = '\n' + `cf-cache-status: ${cfCacheStatus}, x-cache: ${xCache}`
+            let msg = ""
+
             if (lastModified) {
                 const timeDiff = (new Date().getTime() - new Date(lastModified).getTime()) / 1e3
                 if (timeDiff > 3600) {
-                    alert(`${url} was last modified ${(timeDiff / 3600).toFixed(2)} hours ago (${lastModified})`)
+                    msg = `${url} was last modified ${(timeDiff / 3600).toFixed(2)} hours ago (${lastModified})`
                 }
             } else {
                 const maxAge = maxAgeAllowed[url] ?? 3600;
@@ -76,10 +85,11 @@ const handler = async () => {
                     await sleep(5e3) // 5s -> allow page to regenerate if nobody has used it in last hour
                     const newAge = (await get(url)).headers.age
                     if (newAge && Number(newAge) > maxAge) {
-                        alert(`${url} was last updated ${(Number(newAge) / 3600).toFixed(2)} hours ago`)
+                        msg = `${url} was last updated ${(Number(newAge) / 3600).toFixed(2)} hours ago`
                     }
                 }
             }
+            !!msg && alert(msg + cacheMsg)
             responses[url] = res.data;
         } catch (e) {
             alert(`${url} failed`)

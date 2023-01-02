@@ -10,6 +10,13 @@ import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdapto
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
 
+/**
+ * All this iterations can be avoided by;
+ * Prevent errors being stored with entries and add flag when it fails (or no flag)
+ * Extrapolated data can be stored next to correct data with a flag pointing out that its extrapolated
+ * Array->Map can be avoided by slicing the data arrays
+ */
+
 export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
     try {
         // Get all records from db

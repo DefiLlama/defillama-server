@@ -99,7 +99,8 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 // Resets nextRecord
                 acc.nextDataRecord[chainProt] = undefined
                 nextRecord = acc.nextDataRecord[chainProt]
-                for (let i = currentIndex; i < (array.length - 1); i++) {
+                // Note, limited the lookup to up to next 100
+                for (let i = currentIndex; i < Math.min((array.length - 1), 100); i++) {
                     const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
                     const protDataChain = cR?.data[chain]
                     if (cR !== null && typeof protDataChain === 'object' && protDataChain[protocol]) {

@@ -467,7 +467,7 @@ const data: Protocol[] = [
     symbol: "HEGIC",
     url: "https://www.hegic.co/ ",
     description:
-      "Trade non-custodial options for profits or to hedge your positions.\r\n",
+      "Hegic is an on-chain peer-to-pool options trading protocol on Arbitrum. You can trade ETH and WBTC ATM / OTM Calls / Puts & One-click Option Strategies on Hegic",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hegic.jpg`,
     audits: "2",
@@ -478,7 +478,10 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "hegic/index.js",
     twitter: "HegicOptions",
-    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hegic-v1.0.pdf"],
+    audit_links: [
+                   "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hegic-v1.0.pdf",
+                   "https://github.com/hegic/contracts/blob/main/packages/herge/docs/PeckShield-Audit-Report-Hegic-Herge-Protocol-Upgrade-v1.0.pdf",
+                  ],
   },
   {
     id: "129",

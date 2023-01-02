@@ -12,6 +12,7 @@ export const saveEvent = async ({
   txUrl,
   amount,
   errorData,
+  amountUsd,
 }: SwapEvent) => {
   const connection = await AppDataSource.initialize();
 
@@ -26,6 +27,7 @@ export const saveEvent = async ({
   event.txUrl = txUrl;
   event.amount = amount;
   event.errorData = errorData;
+  event.amountUsd = amountUsd;
 
   const res = await connection.manager.save(event);
   return res;

@@ -70,7 +70,7 @@ const handler = async () => {
             const lastModified = res.headers["last-modified"]
             const cfCacheStatus = res.headers["cf-cache-status"]
             const xCache = res.headers["x-cache"]
-            const cfRay = res.headers["cf-ray"]?.split("-")[1]
+            const cfRay = res.headers["cf-ray"]
             const cacheMsg = '\n' + `cf-cache-status: ${cfCacheStatus}, x-cache: ${xCache}, cf-ray: ${cfRay}`
             let msg = ""
 
@@ -83,7 +83,7 @@ const handler = async () => {
                 const maxAge = maxAgeAllowed[url] ?? 3600;
                 const age = res.headers.age
                 if (age && Number(age) > maxAge) {
-                    await sleep(5e3) // 5s -> allow page to regenerate if nobody has used it in last hour
+                    await sleep(15e3) // 15s -> allow page to regenerate if nobody has used it in last hour
                     const newAge = (await get(url)).headers.age
                     if (newAge && Number(newAge) > maxAge) {
                         msg = `${url} was last updated ${(Number(newAge) / 3600).toFixed(2)} hours ago`

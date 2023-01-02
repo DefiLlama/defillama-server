@@ -53,6 +53,14 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       decimals: 6,
       redirect: "coingecko#tether"
     }
+  ],
+  arbitrum: [
+    {
+      symbol: "mUMAMI",
+      address: "0x2adabd6e8ce3e82f52d9998a7f64a90d294a92a4",
+      decimals: 9,
+      redirect: "asset#arbitrum:0x1622bf67e6e5747b81866fe0b85178a93c7f86e3"
+    }
   ]
 };
 

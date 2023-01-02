@@ -6,7 +6,7 @@ export class SwapEvent {
   id?: number;
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt?: Date;
 
   @Column("text")
   user: string;
@@ -35,7 +35,7 @@ export class SwapEvent {
   @Column("text", { nullable: true })
   amount: string;
 
-  @Column("number", { nullable: true })
+  @Column("float", { nullable: true })
   amountUsd: number;
 
   @Column("json")

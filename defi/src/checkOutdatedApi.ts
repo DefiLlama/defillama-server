@@ -46,12 +46,23 @@ const maxAgeAllowed = {
 const alert = (message: string) => sendMessage(message, process.env.MONITOR_WEBHOOK!)
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
+const USER_AGENT = "llama-api-monitor"
+
+const get = async (url: string) => {
+    const SMOL_LOGGER_URL = process.env.SMOL_LOGGER_URL
+    if (SMOL_LOGGER_URL) {
+        await axios.get(SMOL_LOGGER_URL, { headers: { "User-Agent": USER_AGENT } })
+    }
+    const res = await axios.get(url, { headers: { "User-Agent": USER_AGENT } })
+    return res
+}
+
 const handler = async () => {
     const responses = {} as any
     // Main urls
     await Promise.all(urls.map(async url => {
         try {
-            const res = await axios.get(url)
+            const res = await get(url)
             const lastModified = res.headers["last-modified"]
             if (lastModified) {
                 const timeDiff = (new Date().getTime() - new Date(lastModified).getTime()) / 1e3
@@ -63,7 +74,7 @@ const handler = async () => {
                 const age = res.headers.age
                 if (age && Number(age) > maxAge) {
                     await sleep(5e3) // 5s -> allow page to regenerate if nobody has used it in last hour
-                    const newAge = (await axios.get(url)).headers.age
+                    const newAge = (await get(url)).headers.age
                     if (newAge && Number(newAge) > maxAge) {
                         alert(`${url} was last updated ${(Number(newAge) / 3600).toFixed(2)} hours ago`)
                     }

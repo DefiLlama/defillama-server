@@ -66,7 +66,9 @@ const handler = async () => {
     await Promise.all(urls.map(async url => {
         try {
             await get(url)
-            await sleep(10e3) // 10s -> wait for revalidation
+            await sleep(2e3)
+            await get(url)
+            await sleep(13e3) // wait for cache to refresh
             const res = await get(url)
             const lastModified = res.headers["last-modified"]
             const expires = res.headers["expires"]
@@ -78,16 +80,18 @@ const handler = async () => {
             let msg = ""
 
             if (cfCacheStatus !== "HIT") {
-                msg += `${url} status is ${cfCacheStatus}`
+                msg += `${url}`
                 if (expires) {
                     const timeDiff = (new Date(expires).getTime() - new Date().getTime()) / 1e3
                     if (timeDiff < 0) {
-                        msg += '\n' + `Expired ${(timeDiff / 3600).toFixed(2)} hours ago (${expires})`
+                        msg += '\n' + `Expired ${(timeDiff / 3600).toFixed(2)} hours ago`
+                        msg += '\n' + `[Uses expires header] (${expires})`
                     }
                 } else if (maxAge) {
                     const timeDiff = (Number(maxAge) - res.headers.age) / 3600
                     if (timeDiff < 0) {
-                        msg += '\n' + `Expired ${(timeDiff).toFixed(2)} hours ago`
+                        msg += '\n' + `max-age ${maxAge}, age ${res.headers.age}, expired ${(timeDiff).toFixed(2)} hours ago`
+                        msg += '\n' + `[Uses cache-control header] (${res.headers["cache-control"]})`
                     }
                 } else {
                     msg += '\n' + `No cache-control header`

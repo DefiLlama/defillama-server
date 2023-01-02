@@ -20854,8 +20854,8 @@ listedAt: 1650804679
 {
   id: "2361",
   name: "Mummy Finance",
-  address: null,
-  symbol: "-",
+  address: "fantom:0x01e77288b38b416F972428d562454fb329350bAc",
+  symbol: "MMY",
   url: "https://www.mummy.finance",
   description:
     "Bring unparalleled Swap and Perpetual trading experience to FantomFDN users",
@@ -20863,8 +20863,8 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/mummy-finance.jpg`,
   audits: "0",
   audit_note: null,
-  gecko_id: null,
-  cmcId: null,
+  gecko_id: "mummy-finance",
+  cmcId: "23038",
   category: "Derivatives",
   chains: ["Fantom"],
   module: "mummy/index.js",
@@ -21764,6 +21764,29 @@ listedAt: 1650804679
   forkedFrom: ["Solidly"],
   oracles: ["TWAP"],
   listedAt: 1672678979
+},
+{
+  id: "2401",
+  name: "Syrup Finance",
+  address: "bsc:0xDeF49c195099E30E41B2df7dAd55E0BbBe60A0C5",
+  symbol: "SRX",
+  url: "https://syrup.finance/",
+  description:
+    "Fully Decentralized Spot & Perpetual Exchange. Go long, go short or swap crypto in self-custody, with up to 100x more buying power",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/syrup-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "syrup-finance",
+  cmcId: "23111",
+  category: "Derivatives",
+  chains: ["Binance"],
+  module: "syrupfinance/index.js",
+  twitter: "syrupfinance", 
+  forkedFrom: ["GMX"],
+  oracles: [],
+  audit_links: ["https://github.com/Syrup-Finance/syrup-contracts/tree/main/audits"],
+  listedAt: 1672682063
 },
 ]
 

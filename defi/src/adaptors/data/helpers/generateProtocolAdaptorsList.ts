@@ -129,7 +129,7 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'aave') return id === "1599"
     if (key === 'mimo') return id === "1241"
     if (key === '0x') return id === "2116"
-    if (key === 'pact') return id === "541"
+    if (key === 'pact') return id === "1468"
     if (key === 'karura-swap') return id === "451"
     if (key === 'algofi') return id === "2091"
     if (key === 'penguin') return id === "1575"

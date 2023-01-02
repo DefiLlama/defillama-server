@@ -1,9 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm";
 
 @Entity()
 export class SwapEvent {
   @PrimaryGeneratedColumn()
   id?: number;
+
+  @CreateDateColumn()
+  createdAt: Date;
 
   @Column("text")
   user: string;
@@ -31,6 +34,9 @@ export class SwapEvent {
 
   @Column("text", { nullable: true })
   amount: string;
+
+  @Column("number", { nullable: true })
+  amountUsd: number;
 
   @Column("json")
   errorData: any;

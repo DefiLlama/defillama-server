@@ -2821,7 +2821,7 @@ const data2: Protocol[] =  [
   cmcId: "9989",
   category: "Indexes",
   chains: ["Solana"],
-  oracles: ["Pyth"],
+  oracles: ["Pyth"], //https://twitter.com/SolriseFinance/status/1405836105610452992?s=20&t=RCmztoKuPfe4wfHyQ_rKhw
   forkedFrom: [],
   module: "solrise-finance/index.js",
   twitter: "SolriseFinance",
@@ -9116,7 +9116,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Lending",
   chains: ["Solana"],
-  oracles: ["Switchboard","Pyth"],
+  oracles: ["Switchboard","Pyth"], //https://twitter.com/EverlendFinance/status/1419662936323334150?s=20&t=RCmztoKuPfe4wfHyQ_rKhw
   forkedFrom: [],
   module: "everlend/index.js",
   twitter: "EverlendFinance",

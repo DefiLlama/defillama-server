@@ -71,6 +71,7 @@ const handler = async () => {
             await sleep(13e3) // wait for cache to refresh
             const res = await get(url)
             const lastModified = res.headers["last-modified"]
+            const age = res.headers["age"]
             const expires = res.headers["expires"]
             const maxAge = res.headers["cache-control"]?.split("max-age=")[1]?.split(",")[0]
             const cfCacheStatus = res.headers["cf-cache-status"]
@@ -79,32 +80,28 @@ const handler = async () => {
             const cacheMsg = `cf-cache-status: ${cfCacheStatus}, x-cache: ${xCache}, cf-ray: ${cfRay}`
             let msg = ""
 
-            if (cfCacheStatus !== "HIT") {
-                msg += `${url}`
-                if (expires) {
-                    const timeDiff = (new Date(expires).getTime() - new Date().getTime()) / 1e3
-                    if (timeDiff < 0) {
-                        msg += '\n' + `Expired ${(timeDiff / 3600).toFixed(2)} hours ago`
-                        msg += '\n' + `[Uses expires header] (${expires})`
-                    }
-                } else if (maxAge) {
-                    const timeDiff = (Number(maxAge) - res.headers.age) / 3600
-                    if (timeDiff < 0) {
-                        msg += '\n' + `max-age ${maxAge}, age ${res.headers.age}, expired ${(timeDiff).toFixed(2)} hours ago`
-                        msg += '\n' + `[Uses cache-control header] (${res.headers["cache-control"]})`
-                    }
-                } else {
-                    msg += '\n' + `No cache-control header`
+            if (lastModified) {
+                const timeDiff = (new Date().getTime() - new Date(lastModified).getTime()) / 1e3
+                if (timeDiff > 3600) {
+                    msg += '\n' + `Last modified ${(timeDiff / 3600).toFixed(2)} hours ago (${lastModified})`
                 }
+            }
 
-                if (lastModified) {
-                    const timeDiff = (new Date().getTime() - new Date(lastModified).getTime()) / 1e3
-                    if (timeDiff > 3600) {
-                        msg += '\n' + `Last modified ${(timeDiff / 3600).toFixed(2)} hours ago (${lastModified})`
-                    }
+            if (cfCacheStatus === "EXPIRED") {
+                if (expires) {
+                    msg += '\n' + `[expires] (${expires})`
+                } 
+                if (maxAge) {
+                    msg += '\n' + `[max-age] (${maxAge})`
                 }
+                if (age) {
+                    msg += '\n' + `[age] (${age})`
+                }
+            }
+
+            if (msg) {
                 msg += '\n' + cacheMsg
-                alert(msg)
+                alert(url + msg)
             }
         } catch (e) {
             alert(`${url} failed with ${e.message.split('\n')[0] || e.message}`)

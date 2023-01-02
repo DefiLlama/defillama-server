@@ -57,5 +57,8 @@ export function distressed(timestamp: number = 0) {
 }
 export function manualInput(timestamp: number = 0) {
   console.log("starting manualInputs");
-  return manualInputAdapter("evmos", timestamp);
+  return Promise.all([
+    manualInputAdapter("evmos", timestamp),
+    manualInputAdapter("arbitrum", timestamp)
+  ]);
 }

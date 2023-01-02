@@ -19705,7 +19705,7 @@ listedAt: 1650804679
   twitter: "Indigo_protocol",
   forkedFrom:[],
   audit_links: [
-    "https://docs.indigoprotocol.io/readme/risks"
+    "https://docs.indigoprotocol.io/resources/audit"
   ],
   oracles: ["Chainlink"],
   listedAt: 1669327585

@@ -61,39 +61,49 @@ const triggerSmolLogger = async () => {
 }
 
 const handler = async () => {
-    const responses = {} as any
-    // Main urls
+    // deno-lint-ignore no-empty no-unused-vars
     try { await triggerSmolLogger() } catch (e) {}
     await Promise.all(urls.map(async url => {
         try {
+            await get(url)
+            await sleep(10e3) // 10s -> wait for revalidation
             const res = await get(url)
             const lastModified = res.headers["last-modified"]
+            const expires = res.headers["expires"]
+            const maxAge = res.headers["cache-control"]?.split("max-age=")[1]?.split(",")[0]
             const cfCacheStatus = res.headers["cf-cache-status"]
             const xCache = res.headers["x-cache"]
             const cfRay = res.headers["cf-ray"]
-            const cacheMsg = '\n' + `cf-cache-status: ${cfCacheStatus}, x-cache: ${xCache}, cf-ray: ${cfRay}`
+            const cacheMsg = `cf-cache-status: ${cfCacheStatus}, x-cache: ${xCache}, cf-ray: ${cfRay}`
             let msg = ""
 
-            if (lastModified) {
-                const timeDiff = (new Date().getTime() - new Date(lastModified).getTime()) / 1e3
-                if (timeDiff > 3600) {
-                    msg = `${url} was last modified ${(timeDiff / 3600).toFixed(2)} hours ago (${lastModified})`
+            if (cfCacheStatus !== "HIT") {
+                msg += `${url} status is ${cfCacheStatus}`
+                if (expires) {
+                    const timeDiff = (new Date(expires).getTime() - new Date().getTime()) / 1e3
+                    if (timeDiff < 0) {
+                        msg += '\n' + `Expired ${(timeDiff / 3600).toFixed(2)} hours ago (${expires})`
+                    }
+                } else if (maxAge) {
+                    const timeDiff = (Number(maxAge) - res.headers.age) / 3600
+                    if (timeDiff < 0) {
+                        msg += '\n' + `Expired ${(timeDiff).toFixed(2)} hours ago`
+                    }
+                } else {
+                    msg += '\n' + `No cache-control header`
                 }
-            } else {
-                const maxAge = maxAgeAllowed[url] ?? 3600;
-                const age = res.headers.age
-                if (age && Number(age) > maxAge) {
-                    await sleep(15e3) // 15s -> allow page to regenerate if nobody has used it in last hour
-                    const newAge = (await get(url)).headers.age
-                    if (newAge && Number(newAge) > maxAge) {
-                        msg = `${url} was last updated ${(Number(newAge) / 3600).toFixed(2)} hours ago`
+
+                if (lastModified) {
+                    const timeDiff = (new Date().getTime() - new Date(lastModified).getTime()) / 1e3
+                    if (timeDiff > 3600) {
+                        msg += '\n' + `Last modified ${(timeDiff / 3600).toFixed(2)} hours ago (${lastModified})`
                     }
                 }
+                msg += '\n' + cacheMsg
+                alert(msg)
             }
-            !!msg && alert(msg + cacheMsg)
-            responses[url] = res.data;
         } catch (e) {
-            alert(`${url} failed`)
+            alert(`${url} failed with ${e.message.split('\n')[0] || e.message}`)
         }
     }))
     // TODO: test a random sample of endpoints market with `multiple`

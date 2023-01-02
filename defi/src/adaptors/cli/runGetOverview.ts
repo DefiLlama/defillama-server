@@ -7,8 +7,7 @@ import { performance } from "perf_hooks";
 const event = {
     pathParameters: { chain: undefined, type: "fees" },
     queryStringParameters: {
-        excludeTotalDataChart: "true",
-        excludeTotalDataChartBreakdown: "true"
+        dataType: "dailyRevenue"
     }
 } as unknown as APIGatewayProxyEvent
 
@@ -23,13 +22,15 @@ const event = {
     // console.log("length", rr.protocols.length)
     // @ts-ignore
     delete rr.protocols
-    console.log(rr)
+    console.log(rr.allChains)
     // console.log("rr.totalDataChart", rr.totalDataChart.find(d => +d[0] === Date.UTC(2021, 11, 15) / 1000))
     // console.log("rr.totalDataChartBreakdown", rr.totalDataChartBreakdown.find(d => +d[0] === Date.UTC(2021, 11, 15) / 1000))
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
     // console.log(rr.protocols[0])
     console.log(rr.totalDataChart.length)
-    console.log("Current run:", (endTime - startTime) / 1000)
+    const runTime = (endTime - startTime) / 1000
+    const runTimeDescription = runTime > 30 ? '🐢' : '🐇'
+    console.log(`\nCurrent run ${runTimeDescription} (s): ${runTime}`)
     /* for (const [time, datapoint] of rr.totalDataChartBreakdown) {
         console.log(formatTimestampAsDate(time), datapoint)
     } */

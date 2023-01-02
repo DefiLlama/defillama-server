@@ -21743,6 +21743,28 @@ listedAt: 1650804679
   parentProtocol: "Opyn",
   listedAt: 1672484838
 },
+{
+  id: "2400", 
+  name: "SolidlyDEX",
+  address: "0x777172D858dC1599914a1C4c6c9fC48c99a60990",
+  symbol: "SOLID",
+  url: "https://solidly.com",
+  description:
+    "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/solidlydex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Ethereum"],
+  module: "solidly-v2/index.js",
+  twitter: "SolidlyDEX", 
+  forkedFrom: ["Solidly"],
+  oracles: ["TWAP"],
+  listedAt: 1672678979
+},
 ]
 
 export default data2;

@@ -21008,6 +21008,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "psyoptions/index.js",
   twitter: "PsyOptions",
   audit_links: ["https://uploads-ssl.webflow.com/62c82c6d2ffe37f2356d8f28/62fd49a04b1b9b62fcf5786f_PUBLIC_RELEASE_PSYOPTIONS.pdf"],
+  oracles: ["Pyth"],
   listedAt: 1641069495,
 },
 {

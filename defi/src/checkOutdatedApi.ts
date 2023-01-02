@@ -70,7 +70,8 @@ const handler = async () => {
             const lastModified = res.headers["last-modified"]
             const cfCacheStatus = res.headers["cf-cache-status"]
             const xCache = res.headers["x-cache"]
-            const cacheMsg = '\n' + `cf-cache-status: ${cfCacheStatus}, x-cache: ${xCache}`
+            const cfRay = res.headers["cf-ray"]?.split("-")[1]
+            const cacheMsg = '\n' + `cf-cache-status: ${cfCacheStatus}, x-cache: ${xCache}, cf-ray: ${cfRay}`
             let msg = ""
 
             if (lastModified) {

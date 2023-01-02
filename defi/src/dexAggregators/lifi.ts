@@ -37,7 +37,7 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
     }&slippage=${+extra.slippage / 100 || "0.05"}`
   ).then((r) => r.json());
 
-  const gas = data.estimate.gasCosts.reduce((acc: number, val: { estimate: string }) => +acc + val.estimate, 0);
+  const gas = data.estimate.gasCosts.reduce((acc: number, val: { estimate: string }) => +acc + Number(val.estimate), 0);
   return {
     amountReturned: data.estimate.toAmount,
     estimatedGas: gas,

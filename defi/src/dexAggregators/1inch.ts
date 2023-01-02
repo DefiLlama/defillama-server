@@ -42,8 +42,8 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
   ]);
 
   return {
-    amountReturned: data.toTokenAmount,
-    estimatedGas: data.estimatedGas,
+    amountReturned: swapData?.toTokenAmount ?? data.toTokenAmount,
+    estimatedGas: swapData?.tx?.gas ?? data.estimatedGas,
     tokenApprovalAddress,
     rawQuote: swapData,
   };

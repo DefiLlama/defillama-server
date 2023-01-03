@@ -274,5 +274,8 @@ export default {
     },
     "bluemove": {
         enabled: true
+    },
+    "hegic": {
+        enabled: true
     }
 } as AdaptorsConfig

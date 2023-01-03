@@ -62,13 +62,43 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const params = tokenInfos.decimals.map(i => 10 ** i.output)
   let coinsData: CoinData[] = await getTokenAndRedirectData(underlyingTokens, chain, timestamp);
 
-  let pricesRes = await sdk.api2.abi.multiCall({
-    calls: pools.map((i: string, idx) => ({ target: i, params: params[idx].toString() })),
-    abi: abis.sellFYTokenPreview,
+  let maturites = await sdk.api2.abi.multiCall({
+    calls: pools,
+    abi: abis.maturity,
     chain: chain as any, block,
   })
+  let pricesRes: any = []
+  let sellCalls: any = []
+  let unwrapCalls: any = []
+  const currentTime = timestamp === 0 ? Math.floor(Date.now() / 1e3) : timestamp
+  maturites.forEach((value, idx) => {
+    const call = { target: pools[idx], params: params[idx].toString() }
+    // if (value < timestamp)  unwrapCalls.push(call)
+    if (value < currentTime)  pricesRes[idx] = params[idx]
+    else sellCalls.push(call)
+  })
 
-  pricesRes.map((output, i) => {
+  let sellRes = await sdk.api2.abi.multiCall({
+    calls: sellCalls,
+    abi: abis.sellFYTokenPreview,
+    chain: chain as any, block,
+    withMetadata: true,
+  })
+  // let unwrapRes = await sdk.api2.abi.multiCall({
+  //   calls: unwrapCalls,
+  //   abi: abis.unwrapPreview,
+  //   chain: chain as any, block,
+  //   withMetadata: true,
+  // })
+
+  pools.forEach((pool, idx) => {
+    const sellPrice = sellRes.find(i => i.input.target === pool)?.output
+    // const unwrapPrice = unwrapRes.find(i => i.input.target === pool)?.output
+    pricesRes[idx] = pricesRes[idx] || sellPrice
+  })
+
+
+  pricesRes.map((output: any, i: number) => {
     const coinData: (CoinData|undefined) = coinsData.find(
       (c: CoinData) => c.address.toLowerCase() === underlyingTokens[i].toLowerCase()
     );
@@ -82,7 +112,9 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 }
 
 const abis = {
-  sellFYTokenPreview: { "inputs": [{ "internalType": "uint128", "name": "fyTokenIn", "type": "uint128" }], "name": "sellFYTokenPreview", "outputs": [{ "internalType": "uint128", "name": "", "type": "uint128" }], "stateMutability": "view", "type": "function" },
-  pools: { "inputs": [{ "internalType": "bytes6", "name": "", "type": "bytes6" }], "name": "pools", "outputs": [{ "internalType": "contract IJoin", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" },
+  sellFYTokenPreview: "function sellFYTokenPreview(uint128 fyTokenIn) view returns (uint128)",
+  unwrapPreview: "function unwrapPreview(uint256 shares) view returns (uint256)",
+  pools: "function pools(bytes6) view returns (address)",
+  maturity: "uint32:maturity",
   IlkAdded: { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "bytes6", "name": "seriesId", "type": "bytes6" }, { "indexed": true, "internalType": "bytes6", "name": "ilkId", "type": "bytes6" }], "name": "IlkAdded", "type": "event" },
 }

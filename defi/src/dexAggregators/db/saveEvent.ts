@@ -14,7 +14,7 @@ export const saveEvent = async ({
   errorData,
   amountUsd,
 }: SwapEvent) => {
-  const connection = await AppDataSource.connect();
+  const connection = await AppDataSource.getRepository(SwapEvent);
 
   const event = new SwapEvent();
   event.aggregator = aggregator;

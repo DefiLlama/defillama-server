@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse } from "../../../utils/shared";
+import { successResponse, wrap, IResponse, notFoundResponse } from "../../../utils/shared";
 import sluggify, { sluggifyString } from "../../../utils/sluggify";
 import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -69,7 +69,9 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
         }
     }
 
-    if (!dexData) throw new Error("DEX data not found!")
+    if (!dexData) return notFoundResponse({
+        message: `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
+    }, 10*60)
     let dexDataResponse = {}
     try {
         const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)

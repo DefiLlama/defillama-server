@@ -1,7 +1,7 @@
 import AppDataSource from ".";
 import { SwapEvent } from "./Models/SwapEvent";
 
-const connection = await AppDataSource.initialize();
+const connection = AppDataSource.initialize();
 
 export const saveEvent = async ({
   user,
@@ -29,6 +29,6 @@ export const saveEvent = async ({
   event.errorData = errorData;
   event.amountUsd = amountUsd;
 
-  const res = await connection.manager.save(event);
+  const res = await (await connection).manager.save(event);
   return res;
 };

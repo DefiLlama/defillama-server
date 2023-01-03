@@ -173,3 +173,13 @@ export function diffusion(timestamp: number = 0) {
     timestamp
   );
 }
+export function equalizer(timestamp: number = 0) {
+  console.log("starting equalizer");
+  return getTokenPrices(
+    "fantom",
+    "0xc6366efd0af1d09171fe0ebf32c7943bb310832a",
+    "0x1a05eb736873485655f29a37def8a0aa87f5a447",
+    undefined,
+    timestamp
+  );
+}

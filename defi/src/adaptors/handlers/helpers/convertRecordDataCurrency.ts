@@ -38,7 +38,7 @@ const getHistoricalPricesByTokens = async (tokens: string[], fromTimestamp: numb
     const okPrices = getFulfilledResults(prices)
     getRejectedResults(prices).forEach((e) => {
         const err = e as Error
-        console.error(err.message)
+        console.error(`Error getHistoricalPricesByTokens at ${fromTimestamp} ${tokens.join(', ')} ${err.message}`)
     })
     return okPrices.reduce((acc, curr) => {
         acc[curr.chaintoken] = {

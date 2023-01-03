@@ -65,7 +65,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
                 )
             if (dexData) break
         } catch (error) {
-            console.error(error)
+            console.error(`Couldn't load adaptors with type ${type2load} :${JSON.stringify(error)}`)
         }
     }
 
@@ -104,7 +104,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             latestFetchIsOk: generatedSummary.latestFetchIsOk
         } as IHandlerBodyResponse
     } catch (error) {
-        console.error(error)
+        console.error(`Error generating summary for ${dexData.module} ${JSON.stringify(error)}`)
         dexDataResponse = {
             name: dexData.name,
             displayName: dexData.displayName,

@@ -133,7 +133,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
                 return
             })
         } catch (error) {
-            console.error(error)
+            console.error(`Couldn't load adaptors with type ${type2load} :${JSON.stringify(error)}`)
         }
     }
 
@@ -155,7 +155,9 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     // Handle rejected dexs
     const rejectedDexs = results.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
-    rejectedDexs.forEach(console.error)
+    rejectedDexs.forEach(rd => {
+        console.error(`Couldn't summarize ${JSON.stringify(rd)}`)
+    })
 
 
     const okProtocols = results.map(fd => fd.status === "fulfilled" && fd.value.records !== null ? fd.value : undefined).filter(d => d !== undefined) as ProtocolAdaptorSummary[]

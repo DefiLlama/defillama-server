@@ -21619,7 +21619,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Bridge",
+  category: "Cross Chain",
   chains: ["Algorand", "Ethereum"],
   module: "messinaone/index.js",
   twitter: "MessinaOne", 

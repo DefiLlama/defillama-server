@@ -62,4 +62,5 @@ export default {
   diffusion: require("./markets/uniswap/index"),
   stargate: require("./markets/stargate/index"),
   jarvis: require("./markets/jarvis/index"),
+  chainlinkNFT: require("./nft/chainlink/index"),
 };

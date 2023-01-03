@@ -443,14 +443,6 @@ functions:
       - schedule: rate(1 hour)
     environment:
       HOURLY_OUTDATED_WEBHOOK: ${file(./env.js):HOURLY_OUTDATED_WEBHOOK}
-  # notifyOutdatedApi:
-  #   handler: src/checkOutdatedApi.default
-  #   timeout: 900
-  #   memorySize: 1024
-  #   events:
-  #     - schedule: cron(*/30 * * * ? *)
-  #   environment:
-  #     MONITOR_WEBHOOK: ${file(./env.js):MONITOR_WEBHOOK}
   notifyStaleCoins:
     handler: src/notifyStaleCoins.default
     timeout: 900

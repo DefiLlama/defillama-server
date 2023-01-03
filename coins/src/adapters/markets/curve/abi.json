@@ -28,6 +28,20 @@
     "stateMutability": "view",
     "type": "function"
   },
+  "get_gauge_count": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "get_gauge_count",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256" }]
+  },
+  "get_gauge": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "get_gauge",
+    "inputs": [{ "name": "arg0", "type": "uint256" }],
+    "outputs": [{ "name": "", "type": "address" }]
+  },
   "lp_token": {
     "name": "lp_token",
     "outputs": [{ "type": "address", "name": "" }],

@@ -711,5 +711,8 @@ export default {
     },
     "kokonut-swap": {
         enabled: true
+    },
+    "demex": {
+        enabled: true
     }
 } as AdaptorsConfig

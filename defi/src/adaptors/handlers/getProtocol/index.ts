@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse } from "../../../utils/shared";
+import { successResponse, wrap, IResponse, notFoundResponse } from "../../../utils/shared";
 import sluggify, { sluggifyString } from "../../../utils/sluggify";
 import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -65,11 +65,13 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
                 )
             if (dexData) break
         } catch (error) {
-            console.error(error)
+            console.error(`Couldn't load adaptors with type ${type2load} :${JSON.stringify(error)}`)
         }
     }
 
-    if (!dexData) throw new Error("DEX data not found!")
+    if (!dexData) return notFoundResponse({
+        message: `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
+    }, 10*60)
     let dexDataResponse = {}
     try {
         const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)
@@ -102,7 +104,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             latestFetchIsOk: generatedSummary.latestFetchIsOk
         } as IHandlerBodyResponse
     } catch (error) {
-        console.error(error)
+        console.error(`Error generating summary for ${dexData.module} ${JSON.stringify(error)}`)
         dexDataResponse = {
             name: dexData.name,
             displayName: dexData.displayName,

@@ -21788,6 +21788,29 @@ listedAt: 1650804679
   audit_links: ["https://github.com/Syrup-Finance/syrup-contracts/tree/main/audits"],
   listedAt: 1672682063
 },
+{
+  id: "2402",
+  name: "Veno Finance",
+  address: null,
+  symbol: "-",
+  url: "https://veno.finance/",
+  description:
+    "Easy and Reliable Liquid Staking on Cronos chain",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/veno-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Cronos"],
+  module: "venofinance/index.js",
+  twitter: "VenoFinance", 
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://veno-finance.gitbook.io/veno-finance/protocol/security-and-audits"],
+  listedAt: 1672703979
+},
 ]
 
 export default data2;

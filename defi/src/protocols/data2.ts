@@ -21876,6 +21876,28 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/flokifi"],
   listedAt: 1672835629
 },
+{
+  id: "2406",
+  name: "Tegro Finance",
+  address: null,
+  symbol: "-",
+  url: "https://tegro.finance",
+  description:
+    "TegroFinance - A next evolution DeFi exchange on The Open Network (TON).",
+  chain: "TON",
+  logo: `${baseIconsUrl}/tegro-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["TON"],
+  module: "tegro/index.js",
+  twitter: "TegroDEX", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672845040
+},
 ]
 
 export default data2;

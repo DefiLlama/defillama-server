@@ -21666,7 +21666,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "NFT Marketplace",
   chains: ["Aptos"],
-  module: "dummy.js",  // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
+  module: "blue-move-mart/index.js", 
   twitter: "BlueMove_OA", 
   forkedFrom: [],
   oracles: [],

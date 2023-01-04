@@ -98,7 +98,7 @@ export const handler = async (event: IHandlerEvent) => {
       }, {} as IJSON<string>) ?? AdaptorRecordTypeMapReverse
       const rawRecords: RawRecordMap = {}
       for (const [version, adapter] of adaptersToRun) {
-        const runAdapterRes = await runAdapter(adapter, cleanCurrentDayTimestamp, chainBlocks)
+        const runAdapterRes = await runAdapter(adapter, cleanCurrentDayTimestamp, chainBlocks, module)
         const fulfilledResults = getFulfilledResults(runAdapterRes)
         processFulfilledPromises(fulfilledResults, rawRecords, version, FILTRED_KEYS_TO_STORE)
         const rejectedResults = getRejectedResults(runAdapterRes)

@@ -618,6 +618,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "opyn_",
   },
+  {
+    id: "NEST Protocol",
+    name: "NEST Protocol",
+    url: "https://nestprotocol.org",
+    description:
+    "The NEST oracle solves the problem of price on-chain through a decentralized incentive solution, that is, the price predictor.",
+    logo: `${baseIconsUrl}/nest-protocol.png`,
+    gecko_id: "nest",
+    cmcId: "5841",
+    chains: [],
+    twitter: "nest_protocol",
+  },
 ];
 
 export default parentProtocols;

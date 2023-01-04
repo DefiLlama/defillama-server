@@ -21811,6 +21811,27 @@ listedAt: 1650804679
   audit_links: ["https://veno-finance.gitbook.io/veno-finance/protocol/security-and-audits"],
   listedAt: 1672703979
 },
+{
+  id: "2403",
+  name: "NestFi",
+  address: "0x04abeda201850ac0124161f037efd70c74ddc74c",
+  symbol: "NEST",
+  url: "https://nestprotocol.org",
+  description: "Use NEST to buy ETH/USDT and BTC/USDT futures with up to 20x leverage",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/nestfi.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Binance"],
+  module: "nestfi/index.js",
+  twitter: "nest_protocol",
+  oracles: ["Nest"],
+  parentProtocol: "NEST Protocol",
+  listedAt: 1672805701,
+},
 ]
 
 export default data2;

@@ -63,4 +63,5 @@ export default {
   stargate: require("./markets/stargate/index"),
   jarvis: require("./markets/jarvis/index"),
   chainlinkNFT: require("./nft/chainlink/index"),
+  arrakis: require("./markets/arrakis/index"),
 };

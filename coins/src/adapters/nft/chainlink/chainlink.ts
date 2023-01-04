@@ -1,14 +1,10 @@
 import { Write, } from "../../utils/dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectData } from "../../utils/database";
+import { getApi } from "../../utils/sdk";
 import pricefeeds from "./priceFeeds";
-import * as sdk from '@defillama/sdk'
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
-  const api = new sdk.ChainApi({ chain })
-  if (timestamp !== 0) {
-    api.timestamp = timestamp
-    await api.getBlock()
-  }
+  const api = await getApi(chain, timestamp)
   const data: any = (pricefeeds as any)[chain]
   const writes: Write[] = [];
   await Promise.all(data.map(_getWrites))

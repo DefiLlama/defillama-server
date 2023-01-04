@@ -714,5 +714,8 @@ export default {
     },
     "demex": {
         enabled: true
+    },
+    "syrup-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

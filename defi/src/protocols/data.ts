@@ -18161,6 +18161,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   chains: ["Binance"],
   module: "pandaswap/index.js",
   twitter: "thebaoman",
+  parentProtocol: "BAO Finance",
   listedAt: 1639773745 ,
 },
 {

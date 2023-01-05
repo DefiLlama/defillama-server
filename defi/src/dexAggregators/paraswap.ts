@@ -29,7 +29,9 @@ export async function getQuote(chain: string, from: string, to: string, amount: 
   const data = await fetch(
     `https://apiv5.paraswap.io/prices/?srcToken=${tokenFrom}&destToken=${tokenTo}&amount=${amount}&srcDecimals=${
       extra.fromToken?.decimals
-    }&destDecimals=${extra.toToken?.decimals}&side=SELL&network=${chainToId[chain as keyof typeof chainToId]}`
+    }&destDecimals=${extra.toToken?.decimals}&side=SELL&network=${
+      chainToId[chain as keyof typeof chainToId]
+    }&excludeDEXS=ParaSwapPool,ParaSwapLimitOrders`
   ).then((r) => r.json());
 
   const dataSwap =

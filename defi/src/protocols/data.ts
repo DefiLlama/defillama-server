@@ -4561,6 +4561,7 @@ const data: Protocol[] = [
     category: "Farm",
     chains: ["xDai", "Ethereum"],
     module: "bao/index.js",
+    parentProtocol: "BAO Finance",
     twitter: "BaoFinance",
   },
   {
@@ -11781,6 +11782,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "pollyfinance/index.js",
     twitter: "thebaoman",
+    parentProtocol: "BAO Finance",
     listedAt: 1634972259,
   },
   {

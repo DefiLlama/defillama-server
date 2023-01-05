@@ -4558,7 +4558,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "bao-finance",
     cmcId: "8168",
-    category: " Farm",
+    category: "Farm",
     chains: ["xDai", "Ethereum"],
     module: "bao/index.js",
     twitter: "BaoFinance",

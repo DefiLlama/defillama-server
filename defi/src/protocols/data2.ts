@@ -21898,6 +21898,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672845040
 },
+{
+  id: "2407",
+  name: "Inbuilt Finance",
+  address: null,
+  symbol: "-",
+  url: "https://inbuilt.finance",
+  description:
+    "Liquid stacking protocol for all the assets",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/inbuilt-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Kava"],
+  module: "inbuilt-finance/index.js",
+  twitter: "Inbuiltfinance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672921932
+},
 ]
 
 export default data2;

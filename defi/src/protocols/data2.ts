@@ -21920,6 +21920,50 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672921932
 },
+{
+  id: "2408",
+  name: "BAO Swap",
+  address: null,
+  symbol: "-",
+  url: "https://www.baoswap.xyz/#/swap",
+  description:
+    "AMM on xDai network",
+  chain: "xDai",
+  logo: `${baseIconsUrl}/bao-swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["xDai"],
+  module: "baoswap/index.js",
+  twitter: "BaoFinance", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1672925683
+},
+{
+  id: "2409",
+  name: "Panda Chef",
+  address: "bsc:0x47DcC83a14aD53Ed1f13d3CaE8AA4115f07557C0",
+  symbol: "PNDA",
+  url: "https://farms.pandaswap.xyz/",
+  description:
+    "Stake PandaSwap LP tokens to earn PNDA",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/panda-chef.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Binance"],
+  module: "pandachef/index.js",
+  twitter: "BaoFinance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672925686
+},
 ]
 
 export default data2;

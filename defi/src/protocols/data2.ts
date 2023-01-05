@@ -21940,6 +21940,7 @@ listedAt: 1650804679
   twitter: "BaoFinance", 
   forkedFrom: ["Uniswap"],
   oracles: [],
+  parentProtocol: "BAO Finance",
   listedAt: 1672925683
 },
 {
@@ -21962,6 +21963,7 @@ listedAt: 1650804679
   twitter: "BaoFinance", 
   forkedFrom: [],
   oracles: [],
+  parentProtocol: "BAO Finance",
   listedAt: 1672925686
 },
 {
@@ -21984,6 +21986,7 @@ listedAt: 1650804679
   twitter: "BaoFinance", 
   forkedFrom: [],
   oracles: [],
+  parentProtocol: "BAO Finance",
   listedAt: 1672928584
 },
 {
@@ -22006,6 +22009,7 @@ listedAt: 1650804679
   twitter: "BaoFinance", 
   forkedFrom: [],
   oracles: [],
+  parentProtocol: "BAO Finance",
   listedAt: 1672928588
 },
 {
@@ -22028,6 +22032,7 @@ listedAt: 1650804679
   twitter: "BaoFinance", 
   forkedFrom: [],
   oracles: [],
+  parentProtocol: "BAO Finance",
   listedAt: 1672929120
 },
 ]

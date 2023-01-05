@@ -630,6 +630,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "nest_protocol",
   },
+  {
+    id: "BAO Finance",
+    name: "BAO Finance",
+    url: "https://app.bao.finance",
+    description:
+    "Bao Finance is a decentralized, community-run project that uses synthetics to move the power of information from institutions to individuals",
+    logo: `${baseIconsUrl}/bao finance.jpg`,
+    gecko_id: "bao-finance-v2",
+    cmcId: null,
+    chains: [],
+    twitter: "BaoFinance",
+  },
 ];
 
 export default parentProtocols;

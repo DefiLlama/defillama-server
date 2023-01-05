@@ -22035,6 +22035,29 @@ listedAt: 1650804679
   parentProtocol: "BAO Finance",
   listedAt: 1672929120
 },
+{
+  id: "2413",
+  name: "Decryption",
+  address: "0x06eE03F843D057216e27A5c9790780bb00866060",
+  symbol: "TLX",
+  url: "https://decryption.com/dex",
+  description:
+    "Discover the potential of your assets, in Decryption DEX Profit gained every second that can be withdrawn at any time.",
+  chain: "Tlchain",
+  logo: `${baseIconsUrl}/decryption.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Tlchain"],
+  module: "tlchain-decryption/index.js",
+  twitter: "tlchainnetwork", 
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  listedAt: 1672931470
+},
+
 ]
 
 export default data2;

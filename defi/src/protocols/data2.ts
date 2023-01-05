@@ -22008,6 +22008,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672928588
 },
+{
+  id: "2412",
+  name: "BAO Ballast",
+  address: null,
+  symbol: "-",
+  url: "https://app.bao.finance/ballast",
+  description:
+    "The Ballast allows users to swap between bUSD and available DAI for a 1% fee.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bao-ballast.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Ethereum"],
+  module: "bao-usd/index.js",
+  twitter: "BaoFinance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672929120
+},
 ]
 
 export default data2;

@@ -21964,6 +21964,50 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672925686
 },
+{
+  id: "2410",
+  name: "BAO Markets",
+  address: null,
+  symbol: "-",
+  url: "https://app.bao.finance",
+  description:
+    "Lending Platform on Ethereum.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bao-markets.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "bao-markets/index.js",
+  twitter: "BaoFinance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672928584
+},
+{
+  id: "2411",
+  name: "BAO Baskets",
+  address: null,
+  symbol: "-",
+  url: "https://app.bao.finance/baskets/",
+  description:
+    "Bao Baskets allow users to get balanced exposure to digital assets on the Ethereum Network. Baskets are designed to be truly set-and-forget, maximizing your returns at a fraction of the cost and effort. Baskets leverage automated strategies utilizing staking, lending, and yield farming",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bao-baskets.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Leveraged Farming",
+  chains: ["Ethereum"],
+  module: "bao-baskets/index.js",
+  twitter: "BaoFinance", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672928588
+},
 ]
 
 export default data2;

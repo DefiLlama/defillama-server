@@ -22038,7 +22038,7 @@ listedAt: 1650804679
 {
   id: "2413",
   name: "Decryption",
-  address: "0x06eE03F843D057216e27A5c9790780bb00866060",
+  address: "tlchain:0x06eE03F843D057216e27A5c9790780bb00866060",
   symbol: "TLX",
   url: "https://decryption.com/dex",
   description:

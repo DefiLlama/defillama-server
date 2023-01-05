@@ -720,5 +720,8 @@ export default {
     },
     "axial": {
         enabled: true
+    },
+    "exinswap": {
+        enabled: true
     }
 } as AdaptorsConfig

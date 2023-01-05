@@ -717,5 +717,8 @@ export default {
     },
     "syrup-finance": {
         enabled: true
+    },
+    "axial": {
+        enabled: true
     }
 } as AdaptorsConfig

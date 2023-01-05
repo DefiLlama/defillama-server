@@ -21868,7 +21868,7 @@ listedAt: 1650804679
   gecko_id: "floki",
   cmcId: "10804",
   category: "Services",
-  chains: ["Ethereum", "BSC", "Polygon", "Arbitrum", "Optimism", "Fantom", "AVAX", "OKEXCHAIN", "KCC", "Cronos", "Evmos", "Dogechain"],
+  chains: ["Ethereum", "BSC", "Polygon", "Arbitrum", "Optimism", "Fantom", "Avalanche", "OKExChain", "KCC", "Cronos", "Evmos", "Dogechain"],
   module: "flokifi-locker/index.js",
   twitter: "FlokiFi", 
   forkedFrom: [],

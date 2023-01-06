@@ -4561,8 +4561,8 @@ const data: Protocol[] = [
     category: "Farm",
     chains: ["xDai", "Ethereum"],
     module: "bao/index.js",
-    parentProtocol: "BaoCommunity",
-    twitter: "BaoFinance",
+    parentProtocol: "BaoFinance",
+    twitter: "BaoCommunity",
   },
   {
     id: "333",

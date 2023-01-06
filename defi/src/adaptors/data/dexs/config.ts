@@ -723,5 +723,8 @@ export default {
     },
     "exinswap": {
         enabled: true
+    },
+    "darkness": {
+        enabled: true
     }
 } as AdaptorsConfig

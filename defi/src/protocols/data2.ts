@@ -22079,7 +22079,51 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672970801
 },
-
+{
+  id: "2415",
+  name: "OKC Liquid Staking",
+  address: "okexchain:0x97b05e6c5026d5480c4b6576a8699866eb58003b",
+  symbol: "stOKT",
+  url: "https://www.okx.com/okc/liquid-staking",
+  description:
+    "Liquidity for staked OKT(stOKT) on OKX Chain.",
+  chain: "OKExChain",
+  logo: `${baseIconsUrl}/okc-liquid-staking.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["OKExChain"],
+  module: "okc-liquid-staking/index.js",
+  twitter: "OKCNetwork", 
+  forkedFrom: ["Lido"],
+  oracles: [],
+  audit_links: ["https://www.oklink.com/zh-cn/project/liquid-staking/audit"],
+  listedAt: 1673005146
+},
+{
+  id: "2416",
+  name: "FootballManager",
+  address: "arbitrum:0xBFCAd87Eb74E5855D72808aBa3d7DD2d790FFEfD",
+  symbol: "GFM",
+  url: "https://footballmanager.gg",
+  description:
+    "Football Manager is a new generation of strategy GameFi based on Arbitrum.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/footballmanager.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Gaming",
+  chains: ["Arbitrum"],
+  module: "footballmanager/index.js",
+  twitter: "Football_Web3", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1673005148
+},
 ]
 
 export default data2;

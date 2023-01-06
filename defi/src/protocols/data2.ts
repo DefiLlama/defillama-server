@@ -22124,6 +22124,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1673005148
 },
+{
+  id: "2417",
+  name: "Thena",
+  address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
+  symbol: "THE",
+  url: "https://thena.fi/",
+  description:
+    "Thena is a native liquidity layer & AMM on BNB Chain",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/thena.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "thena/index.js",
+  twitter: "ThenaFi_", 
+  forkedFrom: ["Solidly"],
+  oracles: [],
+  listedAt: 1673037671
+},
 ]
 
 export default data2;

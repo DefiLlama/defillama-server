@@ -22057,6 +22057,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1672931470
 },
+{
+  id: "2414",
+  name: "Blur",
+  address: null,
+  symbol: "-",
+  url: "https://blur.io/",
+  description:
+    "The NFT marketplace for pro traders",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/blur.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Ethereum"],
+  module: "blur/index.js",
+  twitter: "blur_io", 
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1672970801
+},
 
 ]
 

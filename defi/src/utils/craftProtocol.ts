@@ -18,8 +18,8 @@ import fetch from "node-fetch";
 import { convertSymbols } from "./symbols/convert";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
-  if(typeof balances === "object"){
-    convertSymbols(balances)
+  if (typeof balances === "object") {
+    convertSymbols(balances);
   }
   const formattedBalances: { [symbol: string]: number } = {};
 
@@ -175,6 +175,10 @@ export default async function craftProtocol(
     const first = singleChainTvls[0].date;
     response.chainTvls[singleChain].tvl = response.tvl.filter((t: any) => t.date < first).concat(singleChainTvls);
   }
+
+  response.tvl = [];
+  response.tokensInUsd = [];
+  response.tokens = [];
 
   return response;
 }

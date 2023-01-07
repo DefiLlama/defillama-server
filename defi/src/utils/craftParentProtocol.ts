@@ -23,19 +23,6 @@ interface ICombinedTvls {
       };
     };
   };
-  tokensInUsd: {
-    [date: number]: {
-      [token: string]: number;
-    };
-  };
-  tokens: {
-    [date: number]: {
-      [token: string]: number;
-    };
-  };
-  tvl: {
-    [date: number]: number;
-  };
 }
 
 export default async function craftParentProtocol(
@@ -57,7 +44,7 @@ export default async function craftParentProtocol(
 
   const hourlyChildProtocols = childProtocolsTvls.reduce((acc, curr) => (acc += curr.tvl.length <= 7 ? 1 : 0), 0);
 
-  const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls.reduce<ICombinedTvls>(
+  const { currentChainTvls, chainTvls } = childProtocolsTvls.reduce<ICombinedTvls>(
     (acc, curr) => {
       // skip adding hourly tvls if child protocol is a newly listed protocol, and parent protocol has other children with more tvl values
       if (hourlyChildProtocols !== childProtocolsTvls.length && curr.tvl.length <= 7) {
@@ -192,114 +179,13 @@ export default async function craftParentProtocol(
         });
       }
 
-      if (curr.tokensInUsd) {
-        curr.tokensInUsd.forEach(({ date, tokens }, index) => {
-          let nearestDate = date;
-
-          if (index > curr.tokensInUsd!.length - hourlyIndexStartingIndex && !acc.tokensInUsd[date]) {
-            const prevDate = curr.tokensInUsd![index - 1].date;
-
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
-              for (
-                let i = prevDate + 1;
-                i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
-                i++
-              ) {
-                if (acc.tokensInUsd[i]) {
-                  nearestDate = i;
-                }
-              }
-            }
-          }
-
-          Object.keys(tokens).forEach((token) => {
-            if (!acc.tokensInUsd[nearestDate]) {
-              acc.tokensInUsd[nearestDate] = {};
-            }
-
-            acc.tokensInUsd[nearestDate][token] = (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
-          });
-        });
-      }
-
-      if (curr.tokens) {
-        curr.tokens.forEach(({ date, tokens }, index) => {
-          let nearestDate = date;
-
-          if (index > curr.tokens!.length - hourlyIndexStartingIndex && !acc.tokens[date]) {
-            const prevDate = curr.tokens![index - 1].date;
-
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
-              for (
-                let i = prevDate + 1;
-                i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
-                i++
-              ) {
-                if (acc.tokens[i]) {
-                  nearestDate = i;
-                }
-              }
-            }
-          }
-
-          Object.keys(tokens).forEach((token) => {
-            if (!acc.tokens[nearestDate]) {
-              acc.tokens[nearestDate] = {};
-            }
-
-            acc.tokens[nearestDate][token] = (acc.tokens[nearestDate][token] || 0) + tokens[token];
-          });
-        });
-      }
-
-      curr.tvl.forEach(({ date, totalLiquidityUSD }, index) => {
-        let nearestDate = date;
-
-        if (index > curr.tvl.length - hourlyIndexStartingIndex && !acc.tvl[date]) {
-          const prevDate = curr.tvl[index - 1].date;
-
-          // change latest timestamp only if prev value's timestamp is at UTC 00:00 and date is same as nearest date
-          if (new Date(prevDate * 1000).getUTCHours() === 0) {
-            for (
-              let i = prevDate + 1;
-              i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
-              i++
-            ) {
-              if (acc.tvl[i]) {
-                nearestDate = i;
-              }
-            }
-          }
-        }
-
-        acc.tvl[nearestDate] = (acc.tvl[nearestDate] || 0) + totalLiquidityUSD;
-      });
-
       return acc;
     },
     {
       currentChainTvls: {},
       chainTvls: {},
-      tokens: {},
-      tokensInUsd: {},
-      tvl: {},
     }
   );
-
-  //  FORMAT NO.OF TOKENS BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
-  const formattedTokens: ITokens = [];
-  for (const date in tokens) {
-    formattedTokens.push({ date: Number(date), tokens: tokens[date] });
-  }
-
-  //  FORMAT TOTAL TOKENS VALUE IN USD BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
-  const formattedTokensInUsd: ITokens = [];
-  for (const date in tokensInUsd) {
-    formattedTokensInUsd.push({
-      date: Number(date),
-      tokens: tokensInUsd[date],
-    });
-  }
 
   //  FORMAT TVL, TOKENS, TOKENS IN USD BY DATE OF EACH CHAIN TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
   const formattedChainTvls: IChainTvl = {};
@@ -332,19 +218,13 @@ export default async function craftParentProtocol(
     };
   }
 
-  // FORMAT TVL BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
-  const formattedTvl = Object.entries(tvl).map(([date, totalLiquidityUSD]) => ({
-    date: Number(date),
-    totalLiquidityUSD,
-  }));
-
   const response: IProtocolResponse = {
     ...parentProtocol,
     currentChainTvls,
     chainTvls: formattedChainTvls,
-    tokens: formattedTokens,
-    tokensInUsd: formattedTokensInUsd,
-    tvl: formattedTvl,
+    tokens: [],
+    tokensInUsd: [],
+    tvl: [],
     isParentProtocol: true,
     raises: childProtocolsTvls?.reduce((acc, curr) => {
       acc = [...acc, ...(curr.raises || [])];
@@ -357,9 +237,6 @@ export default async function craftParentProtocol(
   const dataLength = jsonData.length;
 
   if (dataLength >= 5.8e6) {
-    response.tokens = null;
-    response.tokensInUsd = null;
-
     for (const chain in response.chainTvls) {
       response.chainTvls[chain].tokens = null;
       response.chainTvls[chain].tokensInUsd = null;

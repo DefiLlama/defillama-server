@@ -50,7 +50,8 @@ export default async function craftProtocol(
   protocolData: Protocol,
   useNewChainNames: boolean,
   useHourlyData: boolean,
-  skipReplaceLast: boolean
+  skipReplaceLast: boolean,
+  skipAggregatedTvl: boolean
 ) {
   const [
     lastUsdHourlyRecord,
@@ -176,9 +177,11 @@ export default async function craftProtocol(
     response.chainTvls[singleChain].tvl = response.tvl.filter((t: any) => t.date < first).concat(singleChainTvls);
   }
 
-  response.tvl = [];
-  response.tokensInUsd = [];
-  response.tokens = [];
+  if (skipAggregatedTvl) {
+    response.tvl = [];
+    response.tokensInUsd = [];
+    response.tokens = [];
+  }
 
   return response;
 }

@@ -23,12 +23,26 @@ interface ICombinedTvls {
       };
     };
   };
+  tokensInUsd: {
+    [date: number]: {
+      [token: string]: number;
+    };
+  };
+  tokens: {
+    [date: number]: {
+      [token: string]: number;
+    };
+  };
+  tvl: {
+    [date: number]: number;
+  };
 }
 
 export default async function craftParentProtocol(
   parentProtocol: IParentProtocol,
   useNewChainNames: boolean,
-  useHourlyData: boolean
+  useHourlyData: boolean,
+  skipAggregatedTvl: boolean
 ) {
   const childProtocols = protocols.filter((protocol) => protocol.parentProtocol === parentProtocol.id);
 
@@ -39,7 +53,7 @@ export default async function craftParentProtocol(
   }
 
   const childProtocolsTvls = await Promise.all(
-    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, false))
+    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, false, true))
   );
 
   const hourlyChildProtocols = childProtocolsTvls.reduce((acc, curr) => (acc += curr.tvl.length <= 7 ? 1 : 0), 0);
@@ -179,11 +193,99 @@ export default async function craftParentProtocol(
         });
       }
 
+      if (!skipAggregatedTvl) {
+        if (curr.tokensInUsd) {
+          curr.tokensInUsd.forEach(({ date, tokens }, index) => {
+            let nearestDate = date;
+
+            if (index > curr.tokensInUsd!.length - hourlyIndexStartingIndex && !acc.tokensInUsd[date]) {
+              const prevDate = curr.tokensInUsd![index - 1].date;
+
+              if (new Date(prevDate * 1000).getUTCHours() === 0) {
+                for (
+                  let i = prevDate + 1;
+                  i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
+                  i++
+                ) {
+                  if (acc.tokensInUsd[i]) {
+                    nearestDate = i;
+                  }
+                }
+              }
+            }
+
+            Object.keys(tokens).forEach((token) => {
+              if (!acc.tokensInUsd[nearestDate]) {
+                acc.tokensInUsd[nearestDate] = {};
+              }
+
+              acc.tokensInUsd[nearestDate][token] = (acc.tokensInUsd[nearestDate][token] || 0) + tokens[token];
+            });
+          });
+        }
+
+        if (curr.tokens) {
+          curr.tokens.forEach(({ date, tokens }, index) => {
+            let nearestDate = date;
+
+            if (index > curr.tokens!.length - hourlyIndexStartingIndex && !acc.tokens[date]) {
+              const prevDate = curr.tokens![index - 1].date;
+
+              if (new Date(prevDate * 1000).getUTCHours() === 0) {
+                for (
+                  let i = prevDate + 1;
+                  i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
+                  i++
+                ) {
+                  if (acc.tokens[i]) {
+                    nearestDate = i;
+                  }
+                }
+              }
+            }
+
+            Object.keys(tokens).forEach((token) => {
+              if (!acc.tokens[nearestDate]) {
+                acc.tokens[nearestDate] = {};
+              }
+
+              acc.tokens[nearestDate][token] = (acc.tokens[nearestDate][token] || 0) + tokens[token];
+            });
+          });
+        }
+
+        curr.tvl.forEach(({ date, totalLiquidityUSD }, index) => {
+          let nearestDate = date;
+
+          if (index > curr.tvl.length - hourlyIndexStartingIndex && !acc.tvl[date]) {
+            const prevDate = curr.tvl[index - 1].date;
+
+            // change latest timestamp only if prev value's timestamp is at UTC 00:00 and date is same as nearest date
+            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              for (
+                let i = prevDate + 1;
+                i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
+                i++
+              ) {
+                if (acc.tvl[i]) {
+                  nearestDate = i;
+                }
+              }
+            }
+          }
+
+          acc.tvl[nearestDate] = (acc.tvl[nearestDate] || 0) + totalLiquidityUSD;
+        });
+      }
+
       return acc;
     },
     {
       currentChainTvls: {},
       chainTvls: {},
+      tokens: {},
+      tokensInUsd: {},
+      tvl: {},
     }
   );
 

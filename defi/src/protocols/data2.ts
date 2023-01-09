@@ -15565,7 +15565,7 @@ listedAt: 1650804679
 },
 {
   id: "2123",
-  name: "UniWswap",
+  name: "UniWswap AMM",
   address: "ethpow:0x2a0cf46ECaaEAD92487577e9b737Ec63B0208a33",
   symbol: "UNIW",
   url: "https://uniwswap.com/",
@@ -15574,7 +15574,7 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/uniwswap.png`,
   audits: "0",
   audit_note: null,
-  gecko_id: "uniwswap",
+  gecko_id: null,
   cmcId: null,
   category: "Dexes",
   chains: ["EthereumPoW"],
@@ -15586,6 +15586,7 @@ listedAt: 1650804679
     "https://coinsult.net/projects/uniwswap/",
     "https://github.com/Coinsult/solidity/blob/main/UniWswapAudit.pdf"
   ],
+  parentProtocol: "UniWswap",
   listedAt: 1664061499
 },
 {
@@ -22168,6 +22169,29 @@ listedAt: 1650804679
   oracles: [],
   audit_links: ["https://github.com/solidproof/projects/tree/main/Y2B"],
   listedAt: 1673269106
+},
+{
+  id: "2419",
+  name: "UniWswap UNIA Farms",
+  address: "ethpow:0x2a0cf46ECaaEAD92487577e9b737Ec63B0208a33",
+  symbol: "UNIW",
+  url: "https://farm.uniwswap.com/",
+  description: "UniWswap's farming protocol on Arbitrum and EthereumPoW",
+  chain: "EthereumPoW",
+  logo: `${baseIconsUrl}/uniwswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["EthereumPoW", "Arbitrum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "uniwswap-unia/index.js",
+  twitter: "uniwswap",
+  audit_links: [],
+  parentProtocol: "UniWswap",
+  listedAt: 1673304307
 },
 ]
 

@@ -19441,6 +19441,7 @@ listedAt: 1650804679
   twitter: "FairFi_",
   forkedFrom:[],
   oracles: [],
+  audit_links: ["https://hacken.io/wp-content/uploads/2022/12/FairFi_08.12.2022_SCAudit_Report-1.pdf"],
   listedAt: 1669029577
 },
 {

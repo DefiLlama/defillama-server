@@ -726,5 +726,8 @@ export default {
     },
     "darkness": {
         enabled: true
+    },
+    "zilswap": {
+        enabled: true
     }
 } as AdaptorsConfig

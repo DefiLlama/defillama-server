@@ -6465,7 +6465,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "deri-protocol",
     cmcId: "8424",
-    category: "Derivatives",
+    category: "Options",
     chains: ["Binance", "Polygon"],
     module: "deri/index.js",
     twitter: "DeriProtocol",

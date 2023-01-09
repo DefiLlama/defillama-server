@@ -13,6 +13,7 @@ const chainTokens = [
   ["heco", "huobi-token", "HT"],
   ["celo", "celo", "CELO"],
   ["harmony", "harmony", "ONE"],
+  ["ontology", "ong", "ONG"],
 ];
 
 export default async function bridge() {

@@ -22146,6 +22146,29 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1673037671
 },
+{
+  id: "2418",
+  name: "Y2B Finance",
+  address: "0xF9C12B27cE5058ab98ce11BD53900f84E18C0650",
+  symbol: "Y2B",
+  url: "https://y2b.finance",
+  description:
+    "Y2B is a crypto-native take on structured products on-chain, the protocol provides exotic peg markets which allow users to hedge, leverage, speculate and trade the different components of pegged assets. The protocol launches with 2 different products Typhoon, a 1155 vault allowing users to take risk or hedge against a potential peg deviation, and Volcano, a liquidation wrapper and aggregator that redefines how collateral auctions for bad debt are conducted.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/y2b-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Ethereum"],
+  module: "y2b-finance/index.js",
+  twitter: "Y2BFinance", 
+  forkedFrom: ["Y2K Finance"],
+  oracles: [],
+  audit_links: ["https://github.com/solidproof/projects/tree/main/Y2B"],
+  listedAt: 1673269106
+},
 ]
 
 export default data2;

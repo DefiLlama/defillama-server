@@ -7944,7 +7944,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "The Orion Protocol is a standard for connecting to centralised and decentralised exchanges’ orderbooks, allowing the creation of dApps to provide robust services for buying and selling any cryptocurrency at the best price the market has to offer at the time.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/orion-protocol.jpg`,
+    logo: `${baseIconsUrl}/orion-protocol.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "orion-protocol",

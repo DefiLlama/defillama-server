@@ -11,6 +11,7 @@ export async function craftProtocolResponse(
   rawProtocolName: string | undefined,
   useNewChainNames: boolean,
   useHourlyData: boolean,
+  skipReplaceLast: boolean,
   skipAggregatedTvl: boolean
 ) {
   const protocolName = rawProtocolName?.toLowerCase();
@@ -37,7 +38,7 @@ export async function craftProtocolResponse(
     });
   }
 
-  return craftProtocol(protocolData, useNewChainNames, useHourlyData, false, skipAggregatedTvl);
+  return craftProtocol(protocolData, useNewChainNames, useHourlyData, skipReplaceLast, skipAggregatedTvl);
 }
 
 export async function wrapResponseOrRedirect(response: any) {
@@ -56,7 +57,7 @@ export async function wrapResponseOrRedirect(response: any) {
 }
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const response = await craftProtocolResponse(event.pathParameters?.protocol, false, false, false);
+  const response = await craftProtocolResponse(event.pathParameters?.protocol, false, false, false, false);
 
   return wrapResponseOrRedirect(response);
 };

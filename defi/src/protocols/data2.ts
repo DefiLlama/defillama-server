@@ -22216,6 +22216,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/vantagepointreports/releases/blob/main/VPQ-20220418%20-%20Deflex%20-%20Smart%20Contract%20Audit%20of%20Deflex%20Protocol_Public_V1.1.pdf"],
   listedAt: 1673354892
 },
+{
+  id: "2421",
+  name: "Revoluzion",
+  address: "bsc:0x7d89c67d3c4e72e8c5c64be201dc225f99d16aca",
+  symbol: "RVZ",
+  url: "https://revoluzion.io",
+  description: "The future of the multi-services and multi-dApp ecosystem is here with Revoluzion, the one-stop center for users around the world. Our platform offers a range of features, including the Launchpad, DEX swap, and audit/smart contract services, which make it easy for users to create and manage their projects without worrying about hosting or scaling",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/revoluzion.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "revoluzion",
+  cmcId: null,
+  category: "Services",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: [],
+  module: "Revoluzion/index.js",
+  twitter: "RevoluzionEco",
+  audit_links: ["https://github.com/cyberscope-io/audits/blob/main/rvz/audit.pdf"],
+  listedAt: 1673372523
+},
 ]
 
 export default data2;

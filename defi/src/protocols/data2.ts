@@ -22193,6 +22193,28 @@ listedAt: 1650804679
   parentProtocol: "UniWswap",
   listedAt: 1673304307
 },
+{
+  id: "2420",
+  name: "Deflex",
+  address: null,
+  symbol: "-",
+  url: "https://deflex.fi",
+  description: "Deflex is an exchange infrastructure for best-in-class DeFi trading, leveraging Algorand's renowned efficiency by optimizing and combining liquidity of existing DEXs.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/deflex.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Algorand"],
+  oracles: [],
+  forkedFrom: [],
+  module: "deflex/index.js",
+  twitter: "deflexfi",
+  audit_links: ["https://github.com/vantagepointreports/releases/blob/main/VPQ-20220418%20-%20Deflex%20-%20Smart%20Contract%20Audit%20of%20Deflex%20Protocol_Public_V1.1.pdf"],
+  listedAt: 1673354892
+},
 ]
 
 export default data2;

@@ -13,6 +13,8 @@ import { convertDataToUSD, IGetHistoricalPricesResponse } from "./convertRecordD
  * If there's missing data it tries to average it based on previos/next available data.
  */
 
+const maxGaps2Cover = 10
+
 export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
     const spikesLogs: string[] = []
     const chains = chainsRaw.map(formatChainKey)
@@ -50,7 +52,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             Object.entries(acc.lastDataRecord).forEach(async ([chainprot, record]) => {
                 const [chain, prot] = chainprot.split("#")
                 if (!timestamp || !record) return
-                const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
+                const gaps = Math.min((timestamp - record.timestamp) / ONE_DAY_IN_SECONDS, maxGaps2Cover)
                 for (let i = 1; i < gaps; i++) {
                     const recordData = record.data?.[chain]
                     const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
@@ -99,8 +101,8 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 // Resets nextRecord
                 acc.nextDataRecord[chainProt] = undefined
                 nextRecord = acc.nextDataRecord[chainProt]
-                // Note, limited the lookup to up to next 100
-                for (let i = currentIndex; i < Math.min((array.length - 1), 100); i++) {
+                // Note, limited the lookup to up maxGaps2Cover
+                for (let i = currentIndex; i < Math.min((array.length - 1), maxGaps2Cover); i++) {
                     const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
                     const protDataChain = cR?.data[chain]
                     if (cR !== null && typeof protDataChain === 'object' && protDataChain[protocol]) {

@@ -345,9 +345,9 @@ export default async function craftParentProtocol(
     ...parentProtocol,
     currentChainTvls,
     chainTvls: formattedChainTvls,
-    tokens: [],
-    tokensInUsd: [],
-    tvl: [],
+    tokens: formattedTokens,
+    tokensInUsd: formattedTokensInUsd,
+    tvl: formattedTvl,
     isParentProtocol: true,
     raises: childProtocolsTvls?.reduce((acc, curr) => {
       acc = [...acc, ...(curr.raises || [])];

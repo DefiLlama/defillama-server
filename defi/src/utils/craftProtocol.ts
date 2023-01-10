@@ -53,6 +53,8 @@ export default async function craftProtocol(
   skipReplaceLast: boolean,
   skipAggregatedTvl: boolean
 ) {
+  const module = await importAdapter(protocolData);
+  const misrepresentedTokens = module.misrepresentedTokens === true;
   const [
     lastUsdHourlyRecord,
     lastUsdTokenHourlyRecord,
@@ -60,24 +62,22 @@ export default async function craftProtocol(
     historicalUsdTvl,
     historicalUsdTokenTvl,
     historicalTokenTvl,
-    module,
     { raises },
   ] = await Promise.all([
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
     getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
-    getHistoricalValues((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)),
-    getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
-    importAdapter(protocolData),
+    misrepresentedTokens?[] as any[]:getHistoricalValues((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)),
+    misrepresentedTokens?[] as any[]:getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
     fetch("https://api.llama.fi/raises").then((res) => res.json()),
   ]);
 
   if (!useHourlyData && !skipReplaceLast) {
     // check for falsy values and push lastHourlyRecord to dataset
     lastUsdHourlyRecord && historicalUsdTvl.push(lastUsdHourlyRecord);
-    lastUsdTokenHourlyRecord && historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
-    lastTokenHourlyRecord && historicalTokenTvl.push(lastTokenHourlyRecord);
+    lastUsdTokenHourlyRecord && historicalUsdTokenTvl.length>0 && historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
+    lastTokenHourlyRecord && historicalTokenTvl.length>0 && historicalTokenTvl.push(lastTokenHourlyRecord);
   }
 
   let response: IProtocolResponse = {
@@ -102,7 +102,7 @@ export default async function craftProtocol(
   if (module.methodology) {
     response.methodology = module.methodology;
   }
-  if (module.misrepresentedTokens) {
+  if (misrepresentedTokens === true) {
     response.misrepresentedTokens = true;
   }
   if (module.hallmarks) {

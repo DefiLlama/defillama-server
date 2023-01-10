@@ -19431,7 +19431,7 @@ listedAt: 1650804679
   description: "FairFi - makes Yield Farming transparent, safe and reliable. No mater on a bearish or bullish market. Mix strategies, leverage profits and mitigate your farming risks.",
   chain: "Binance",
   logo: `${baseIconsUrl}/fairfi.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,

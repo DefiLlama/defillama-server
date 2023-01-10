@@ -729,5 +729,8 @@ export default {
     },
     "zilswap": {
         enabled: true
+    },
+    "thena": {
+        enabled: true
     }
 } as AdaptorsConfig

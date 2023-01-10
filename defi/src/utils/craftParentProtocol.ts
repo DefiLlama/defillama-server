@@ -58,7 +58,7 @@ export default async function craftParentProtocol(
 
   const hourlyChildProtocols = childProtocolsTvls.reduce((acc, curr) => (acc += curr.tvl.length <= 7 ? 1 : 0), 0);
 
-  const { currentChainTvls, chainTvls } = childProtocolsTvls.reduce<ICombinedTvls>(
+  const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls.reduce<ICombinedTvls>(
     (acc, curr) => {
       // skip adding hourly tvls if child protocol is a newly listed protocol, and parent protocol has other children with more tvl values
       if (hourlyChildProtocols !== childProtocolsTvls.length && curr.tvl.length <= 7) {
@@ -319,6 +319,27 @@ export default async function craftParentProtocol(
       tokensInUsd,
     };
   }
+
+  //  FORMAT NO.OF TOKENS BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
+  const formattedTokens: ITokens = [];
+  for (const date in tokens) {
+    formattedTokens.push({ date: Number(date), tokens: tokens[date] });
+  }
+
+  //  FORMAT TOTAL TOKENS VALUE IN USD BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
+  const formattedTokensInUsd: ITokens = [];
+  for (const date in tokensInUsd) {
+    formattedTokensInUsd.push({
+      date: Number(date),
+      tokens: tokensInUsd[date],
+    });
+  }
+
+  // FORMAT TVL BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
+  const formattedTvl = Object.entries(tvl).map(([date, totalLiquidityUSD]) => ({
+    date: Number(date),
+    totalLiquidityUSD,
+  }));
 
   const response: IProtocolResponse = {
     ...parentProtocol,

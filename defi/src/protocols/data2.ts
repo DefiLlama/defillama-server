@@ -19432,7 +19432,7 @@ listedAt: 1650804679
   description: "FairFi - makes Yield Farming transparent, safe and reliable. No mater on a bearish or bullish market. Mix strategies, leverage profits and mitigate your farming risks.",
   chain: "Binance",
   logo: `${baseIconsUrl}/fairfi.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -19442,6 +19442,7 @@ listedAt: 1650804679
   twitter: "FairFi_",
   forkedFrom:[],
   oracles: [],
+  audit_links: ["https://hacken.io/wp-content/uploads/2022/12/FairFi_08.12.2022_SCAudit_Report-1.pdf"],
   listedAt: 1669029577
 },
 {

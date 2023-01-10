@@ -642,6 +642,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BaoFinance",
   },
+  {
+    id: "UniWswap",
+    name: "UniWswap",
+    url: "https://uniwswap.com/",
+    description:
+    "UniWswap is an AMM and Farm on EthereumPoW",
+    logo: `${baseIconsUrl}/uniwswap.png`,
+    gecko_id: "uniwswap",
+    cmcId: null,
+    chains: [],
+    twitter: "uniwswap",
+  },
 ];
 
 export default parentProtocols;

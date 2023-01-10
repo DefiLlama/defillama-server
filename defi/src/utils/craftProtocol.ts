@@ -68,16 +68,23 @@ export default async function craftProtocol(
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
     getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
-    misrepresentedTokens?[] as any[]:getHistoricalValues((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)),
-    misrepresentedTokens?[] as any[]:getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
+    misrepresentedTokens
+      ? ([] as any[])
+      : getHistoricalValues((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)),
+    misrepresentedTokens
+      ? ([] as any[])
+      : getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
     fetch("https://api.llama.fi/raises").then((res) => res.json()),
   ]);
 
   if (!useHourlyData && !skipReplaceLast) {
+    console.log({ useHourlyData, skipReplaceLast });
     // check for falsy values and push lastHourlyRecord to dataset
     lastUsdHourlyRecord && historicalUsdTvl.push(lastUsdHourlyRecord);
-    lastUsdTokenHourlyRecord && historicalUsdTokenTvl.length>0 && historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
-    lastTokenHourlyRecord && historicalTokenTvl.length>0 && historicalTokenTvl.push(lastTokenHourlyRecord);
+    lastUsdTokenHourlyRecord &&
+      historicalUsdTokenTvl.length > 0 &&
+      historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
+    lastTokenHourlyRecord && historicalTokenTvl.length > 0 && historicalTokenTvl.push(lastTokenHourlyRecord);
   }
 
   let response: IProtocolResponse = {

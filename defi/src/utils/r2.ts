@@ -9,15 +9,19 @@ const R2_ENDPOINT = process.env.R2_ENDPOINT!;
 const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID!;
 const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY!;
 
-console.log("R2_ENDPOINT", R2_ENDPOINT);
-console.log(
-  "R2_ACCESS_KEY_ID",
-  R2_ACCESS_KEY_ID.substring(0, 2) + "..." + R2_ACCESS_KEY_ID.substring(R2_ACCESS_KEY_ID.length - 2)
-);
-console.log(
-  "R2_SECRET_ACCESS_KEY",
-  R2_SECRET_ACCESS_KEY.substring(0, 2) + "..." + R2_SECRET_ACCESS_KEY.substring(R2_SECRET_ACCESS_KEY.length - 2)
-);
+try {
+  console.log("R2_ENDPOINT", R2_ENDPOINT);
+  console.log(
+    "R2_ACCESS_KEY_ID",
+    R2_ACCESS_KEY_ID.substring(0, 2) + "..." + R2_ACCESS_KEY_ID.substring(R2_ACCESS_KEY_ID.length - 2)
+  );
+  console.log(
+    "R2_SECRET_ACCESS_KEY",
+    R2_SECRET_ACCESS_KEY.substring(0, 2) + "..." + R2_SECRET_ACCESS_KEY.substring(R2_SECRET_ACCESS_KEY.length - 2)
+  );
+} catch (e) {
+  console.error(e);
+}
 
 const R2 = new S3Client({
   region: "auto",

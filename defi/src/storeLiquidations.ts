@@ -28,6 +28,7 @@ async function handler() {
                 const liquidations = await getExternalLiqs(protocol, chain);
                 liqs[chain] = liquidations;
                 await storeCachedLiqs(protocol, chain, JSON.stringify(liquidations));
+                await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
                 const _end = performance.now();
                 console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
               } catch (e) {
@@ -50,6 +51,7 @@ async function handler() {
                 const liquidations = await liquidationsFunc.liquidations();
                 liqs[chain] = liquidations;
                 await storeCachedLiqs(protocol, chain, JSON.stringify(liquidations));
+                await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
                 const _end = performance.now();
                 console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
               } catch (e) {
@@ -95,11 +97,14 @@ async function handler() {
     };
     const filename = symbol.toLowerCase() + "/" + hourId + ".json";
     await storeLiqs(filename, JSON.stringify(_payload));
+    await storeLiqsR2(filename, JSON.stringify(_payload));
     const latestFilename = symbol.toLowerCase() + "/latest.json";
     await storeLiqs(latestFilename, JSON.stringify(_payload));
+    await storeLiqsR2(latestFilename, JSON.stringify(_payload));
   }
 
   await storeLiqs("availability.json", JSON.stringify({ availability, time }));
+  await storeLiqsR2("availability.json", JSON.stringify({ availability, time }));
 
   return;
 }

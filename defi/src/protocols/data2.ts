@@ -22281,6 +22281,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/ForTheWinn/ftw-contract-audits"],
   listedAt: 1673402011
 },
+{
+  id: "2424",
+  name: "LunaFi",
+  address: "polygon:0x77d97db5615dfe8a2d16b38eaa3f8f34524a0a74",
+  symbol: "LFI",
+  url: "http://www.lunafi.io",
+  description: "The decentralized betting protocol where you can become the house.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/lunafi.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["Polygon"],
+  oracles: [],
+  forkedFrom: [],
+  module: "lunafi/index.js",
+  twitter: "LunaFi_Project",
+  audit_links: ["https://hacken.io/audits/#lunafi"],
+  listedAt: 1673451772
+},
 ]
 
 export default data2;

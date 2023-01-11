@@ -35,6 +35,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             if (all.length === 0 || !all[0]) return acc
             timestamp = all[0].timestamp + ONE_DAY_IN_SECONDS
         }
+        const missingDayData: IJSON<IRecordAdaptorRecordData> = {} as IJSON<IRecordAdaptorRecordData>
         // It goes through all combinations of chain-protocol
         chains.reduce((acc, chain) => ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[]).forEach(chainProt => {
             const chain = chainProt.split("#")[0]
@@ -46,13 +47,13 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 return
             }
             // Checking if we skipped a day with no record
-            const missingDayData: IJSON<IRecordAdaptorRecordData> = {} as IJSON<IRecordAdaptorRecordData>
             Object.entries(acc.lastDataRecord).forEach(async ([chainprot, record]) => {
                 const [chain, prot] = chainprot.split("#")
                 if (!timestamp || !record) return
+                const recordData = record.data?.[chain]
+                if (!recordData || !Object.keys(recordData).includes(prot)) return
                 const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
                 for (let i = 1; i < gaps; i++) {
-                    const recordData = record.data?.[chain]
                     const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
                     missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))] = {
                         ...missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))],
@@ -63,19 +64,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                     }
                 }
             })
-            // If day with no record skipped, filling with prev day
-            Object.entries(missingDayData).forEach(([timestamp, data]) => {
-                // TODO: imporove message + process in another lambda
-                // spikesLogs.push(`Missing day found: ${formatTimestampAsDate(timestamp)}\n. Pls fix it`)
-                const missingDay = new AdaptorRecord(
-                    type,
-                    adaptorId,
-                    +timestamp,
-                    data
-                )
-                acc.adaptorRecords.push(missingDay)
-                acc.recordsMap[String(missingDay.timestamp)] = missingDay
-            })
+
             // If clean data is found, it checks if there's available value for chain-protocol and adds it to generatedData
             if (cleanRecord !== null && cleanRecord.data[chain]) {
                 const chainData = cleanRecord.data[chain]
@@ -99,7 +88,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 // Resets nextRecord
                 acc.nextDataRecord[chainProt] = undefined
                 nextRecord = acc.nextDataRecord[chainProt]
-                // Note, limited the lookup to up to next 100
+                // Note, limited the lookup to up maxGaps2Cover
                 for (let i = currentIndex; i < Math.min((array.length - 1), 100); i++) {
                     const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
                     const protDataChain = cR?.data[chain]
@@ -129,9 +118,20 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             }
         })
 
+        // If day with no record skipped, filling with prev day
+        Object.entries(missingDayData).forEach(([timestamp, data]) => {
+            const missingDay = new AdaptorRecord(
+                type,
+                adaptorId,
+                +timestamp,
+                data
+            )
+            acc.adaptorRecords.push(missingDay)
+            acc.recordsMap[String(missingDay.timestamp)] = missingDay
+        })
+
         // Once we have generated correct data
         if (Object.keys(generatedData).length === 0) return acc
-        // Check if this data is an spiiike
         const newGen = new AdaptorRecord(
             type,
             adaptorId,

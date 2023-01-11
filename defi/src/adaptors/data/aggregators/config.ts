@@ -7,5 +7,8 @@ export default {
     "dexible": {
         enabled: true,
         startFrom: 1630022400
+    },
+    "deflex": {
+        enabled: true,
     }
 } as AdaptorsConfig

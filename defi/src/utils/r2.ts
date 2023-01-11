@@ -46,22 +46,42 @@ export async function storeR2(
   return await R2.send(command);
 }
 
-export async function storeDatasetR2(filename: string, body: string | Readable, contentType = "text/csv") {
+export async function storeDatasetR2(
+  filename: string,
+  body: string | Readable,
+  contentType = "text/csv",
+  cache?: number
+) {
   const command = new PutObjectCommand({
     Bucket: datasetBucket,
     Key: `temp/${filename}`,
     Body: body,
     ContentType: contentType,
+    ...(!!cache
+      ? {
+          CacheControl: `max-age=${cache}`,
+        }
+      : {}),
   });
   return await R2.send(command);
 }
 
-export async function storeLiqsR2(filename: string, body: string | Readable, contentType = "application/json") {
+export async function storeLiqsR2(
+  filename: string,
+  body: string | Readable,
+  contentType = "application/json",
+  cache?: number
+) {
   const command = new PutObjectCommand({
     Bucket: datasetBucket,
     Key: `liqs/${filename}`,
     Body: body,
     ContentType: contentType,
+    ...(!!cache
+      ? {
+          CacheControl: `max-age=${cache}`,
+        }
+      : {}),
   });
   return await R2.send(command);
 }
@@ -80,12 +100,17 @@ export async function getExternalLiqsR2(protocol: string, chain: string) {
   return data;
 }
 
-export async function storeCachedLiqsR2(protocol: string, chain: string, body: string | Readable) {
+export async function storeCachedLiqsR2(protocol: string, chain: string, body: string | Readable, cache?: number) {
   const command = new PutObjectCommand({
     Bucket: datasetBucket,
     Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
     Body: body,
     ContentType: "application/json",
+    ...(!!cache
+      ? {
+          CacheControl: `max-age=${cache}`,
+        }
+      : {}),
   });
   return await R2.send(command);
 }
@@ -96,7 +121,7 @@ export function buildRedirectR2(filename: string, cache?: number) {
     body: "",
     headers: {
       Location: publicBucketUrl + `/temp/${filename}`,
-      ...(cache !== undefined
+      ...(!!cache
         ? {
             "Cache-Control": `max-age=${cache}`,
           }

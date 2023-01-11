@@ -4,7 +4,6 @@ import {
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
-import getBlock from "../../utils/block";
 import { getLogs } from "../../../utils/cache/getLogs";
 import * as sdk from '@defillama/sdk'
 import * as ethers from 'ethers'
@@ -20,10 +19,19 @@ const config = {
   },
 } as any
 
+const custom = {
+  ethereum: [getKLPsPrice, getCrabV2Price]
+} as any
+
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const { ladle, fromBlock, } = config[chain]
   const writes: Write[] = [];
-  const block: number | undefined = await getBlock(chain, timestamp);
+  const api = new sdk.ChainApi({ chain, timestamp: timestamp ? timestamp : Math.floor(Date.now() / 1e3), })
+  const block: number | undefined = await api.getBlock()
+  if (custom[chain]) {
+    await Promise.all(custom[chain].map((i: any) => i({ api, writes, timestamp })))
+  }
+  if (!ladle) return writes
   const cauldron = await sdk.api2.abi.call({
     target: ladle,
     abi: 'address:cauldron',
@@ -69,12 +77,10 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   })
   let pricesRes: any = []
   let sellCalls: any = []
-  let unwrapCalls: any = []
   const currentTime = timestamp === 0 ? Math.floor(Date.now() / 1e3) : timestamp
   maturites.forEach((value, idx) => {
     const call = { target: pools[idx], params: params[idx].toString() }
-    // if (value < timestamp)  unwrapCalls.push(call)
-    if (value < currentTime)  pricesRes[idx] = params[idx]
+    if (value < currentTime) pricesRes[idx] = params[idx]
     else sellCalls.push(call)
   })
 
@@ -84,22 +90,15 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     chain: chain as any, block,
     withMetadata: true,
   })
-  // let unwrapRes = await sdk.api2.abi.multiCall({
-  //   calls: unwrapCalls,
-  //   abi: abis.unwrapPreview,
-  //   chain: chain as any, block,
-  //   withMetadata: true,
-  // })
 
   pools.forEach((pool, idx) => {
     const sellPrice = sellRes.find(i => i.input.target === pool)?.output
-    // const unwrapPrice = unwrapRes.find(i => i.input.target === pool)?.output
     pricesRes[idx] = pricesRes[idx] || sellPrice
   })
 
 
   pricesRes.map((output: any, i: number) => {
-    const coinData: (CoinData|undefined) = coinsData.find(
+    const coinData: (CoinData | undefined) = coinsData.find(
       (c: CoinData) => c.address.toLowerCase() === underlyingTokens[i].toLowerCase()
     );
     if (!coinData || !output) return;
@@ -111,10 +110,49 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   return writes
 }
 
+async function getKLPsPrice({ api, writes, timestamp }: any) {
+  const token = '0x3f6740b5898c5D3650ec6eAce9a649Ac791e44D7'
+  const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'.toLowerCase();
+  const KP3R = '0x1ceb5cb57c4d4e2b2433641b95dd330a33185a44'.toLowerCase();
+  const addresses = [KP3R, WETH];
+  let coinsData: CoinData[] = await getTokenAndRedirectData(addresses, api.chain, api.timestamp);
+  const wethPrice: any = coinsData.find((c: CoinData) => c.address.toLowerCase() === WETH)?.price
+  const kp3rPrice: any = coinsData.find((c: CoinData) => c.address.toLowerCase() === KP3R)?.price
+  const klpPrice = 2 * Math.sqrt(kp3rPrice / wethPrice) * wethPrice;
+
+  const tokenInfos = await getTokenInfo(api.chain, [token], api.block)
+  addToDBWritesList(writes, api.chain, token, klpPrice, tokenInfos.decimals[0].output, tokenInfos.symbols[0].output, timestamp, 'yield-protocol', coinsData.find((c: CoinData) => c.address.toLowerCase() === KP3R)?.confidence as number)
+  return writes
+}
+
+async function getCrabV2Price({ api, writes, timestamp }: any) {
+  const token = '0x3B960E47784150F5a63777201ee2B15253D713e8'
+  const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'.toLowerCase();
+  const sqeeth = '0xf1b99e3e573a1a9c5e6b2ce818b617f0e664e86b'.toLowerCase();
+  const addresses = [sqeeth, WETH];
+  const tokenSupply = await api.call({ target: token, abi: 'erc20:totalSupply' })
+  const [_, _1, ethInCrab, squeethInCrab]: any = await api.call({
+    target: token,
+    abi: 'function getVaultDetails() view returns (address, uint256, uint256, uint256)'
+  })
+
+  let coinsData: CoinData[] = await getTokenAndRedirectData(addresses, api.chain, api.timestamp);
+  const wethPrice: any = coinsData.find((c: CoinData) => c.address.toLowerCase() === WETH)?.price
+  const sqeethPrice: any = coinsData.find((c: CoinData) => c.address.toLowerCase() === sqeeth)?.price
+  const tokenInfos = await getTokenInfo(api.chain, [token], api.block)
+  const decimals = tokenInfos.decimals[0].output
+  const ethInVaultUSD = (ethInCrab * wethPrice - (squeethInCrab * (sqeethPrice )))
+  const price =  ethInVaultUSD * (10 ** decimals) / (tokenSupply * 1e18);
+
+  addToDBWritesList(writes, api.chain, token, price, decimals, tokenInfos.symbols[0].output, timestamp, 'yield-protocol', coinsData.find((c: CoinData) => c.address.toLowerCase() === sqeeth)?.confidence as number)
+  return writes
+}
+
+
 const abis = {
   sellFYTokenPreview: "function sellFYTokenPreview(uint128 fyTokenIn) view returns (uint128)",
   unwrapPreview: "function unwrapPreview(uint256 shares) view returns (uint256)",
   pools: "function pools(bytes6) view returns (address)",
   maturity: "uint32:maturity",
-  IlkAdded: { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "bytes6", "name": "seriesId", "type": "bytes6" }, { "indexed": true, "internalType": "bytes6", "name": "ilkId", "type": "bytes6" }], "name": "IlkAdded", "type": "event" },
+  IlkAdded: 'event IlkAdded(bytes6 indexed seriesId, bytes6 indexed ilkId)'
 }

@@ -50,6 +50,10 @@ const rules = (interval: 'daily' | 'total') => ({
             extraDimensions[dimensionKey] = Fees - SupplySideRevenue
             return
         }
+        if (Fees === 0) {
+            extraDimensions[dimensionKey] = Fees
+            return
+        }
         const categoriesProtocolRevenue: string[] = [CATEGORIES.Lending, CATEGORIES.NFT_Lending, CATEGORIES.NFT_Marketplace, CATEGORIES.CDP, CATEGORIES.Liquid_Staking, CATEGORIES.Yield, CATEGORIES.Synthetics]
         if (categoriesProtocolRevenue.includes(category)) {
             extraDimensions[dimensionKey] = extraDimensions[`${interval}ProtocolRevenue`]
@@ -67,6 +71,10 @@ const rules = (interval: 'daily' | 'total') => ({
                 extraDimensions[dimensionKey] = Fees - Revenue
                 return
             }
+            if (Fees === 0) {
+                extraDimensions[dimensionKey] = Fees
+                return
+            }
             return
         }
     },
@@ -77,6 +85,10 @@ const rules = (interval: 'daily' | 'total') => ({
         const HoldersRevenue = extraDimensions[`${interval}HoldersRevenue`]
         if (HoldersRevenue !== null && Revenue !== null) {
             extraDimensions[dimensionKey] = Revenue - HoldersRevenue
+            return
+        }
+        if (Revenue === 0) {
+            extraDimensions[dimensionKey] = Revenue
             return
         }
         const categoriesRevenue: string[] = [CATEGORIES.NFT_Marketplace, CATEGORIES.CDP, CATEGORIES.Lending, CATEGORIES.NFT_Lending, CATEGORIES.Liquid_Staking, CATEGORIES.Yield, CATEGORIES.Synthetics]
@@ -94,6 +106,10 @@ const rules = (interval: 'daily' | 'total') => ({
         if (categories.includes(category)) {
             if (ProtocolRevenue !== null && Revenue !== null) {
                 extraDimensions[dimensionKey] = Revenue - ProtocolRevenue
+                return
+            }
+            if (Revenue === 0) {
+                extraDimensions[dimensionKey] = Revenue
                 return
             }
         }

@@ -8,7 +8,9 @@ import options, { KEYS_TO_STORE as options_KEYS_TO_STORE, importModule as option
 import incentives, { KEYS_TO_STORE as incentives_KEYS_TO_STORE, importModule as incentives_importModule, config as incentives_config } from "./incentives"
 import protocols, { KEYS_TO_STORE as protocols_KEYS_TO_STORE, importModule as protocols_importModule, config as protocols_config } from "./protocols"
 
-// It shouldn't import/return both at the same time for performace reasons but couldn't make work a dynamic import. needs to be improved:/
+// With dynamic imports loads less stuff into memory but becomes slower
+// w/ dynamic imports 1 dex -> 19sec
+// without 1 dex -> 1.6s (all dexs =200 aprox 4s)
 export default (adaptorType: AdapterType): AdaptorData => {
     if (adaptorType === AdapterType.DEXS) return {
         default: dexs,

@@ -53,7 +53,7 @@ export default async function craftParentProtocol(
   }
 
   const childProtocolsTvls = await Promise.all(
-    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, false, true))
+    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, false, skipAggregatedTvl))
   );
 
   const hourlyChildProtocols = childProtocolsTvls.reduce((acc, curr) => (acc += curr.tvl.length <= 7 ? 1 : 0), 0);

@@ -85,7 +85,6 @@ provider:
     VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
     TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
-    REVALIDATE_SECRET: ${file(./env.js):REVALIDATE_SECRET}
     DEFILLAMA_SDK_MUTED: true
     PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
@@ -97,8 +96,6 @@ provider:
     R2_ACCESS_KEY_ID: ${env:R2_ACCESS_KEY_ID}
     R2_SECRET_ACCESS_KEY: ${env:R2_SECRET_ACCESS_KEY}
     R2_ENDPOINT: ${env:R2_ENDPOINT}
-    STATIC_UPLOAD_SERVICE_KEY: ${env:STATIC_UPLOAD_SERVICE_KEY}
-    STATIC_UPLOAD_ENDPOINT: ${env:STATIC_UPLOAD_ENDPOINT}
 
 custom:
   stage: ${opt:stage, self:provider.stage}

@@ -1,5 +1,4 @@
-import aws from "aws-sdk";
-import { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import axios from "axios";
 import type { Readable } from "stream";
 
@@ -10,7 +9,7 @@ const R2_ENDPOINT = process.env.R2_ENDPOINT!;
 const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID!;
 const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY!;
 
-const S3 = new S3Client({
+const R2 = new S3Client({
   region: "auto",
   endpoint: R2_ENDPOINT,
   credentials: {
@@ -44,7 +43,7 @@ export async function storeR2(
       ContentType: "application/json",
     }),
   });
-  return await S3.send(command);
+  return await R2.send(command);
 }
 
 export async function storeDatasetR2(filename: string, body: string | Readable, contentType = "text/csv") {
@@ -54,7 +53,7 @@ export async function storeDatasetR2(filename: string, body: string | Readable, 
     Body: body,
     ContentType: contentType,
   });
-  return await S3.send(command);
+  return await R2.send(command);
 }
 
 export async function storeLiqsR2(filename: string, body: string | Readable, contentType = "application/json") {
@@ -64,7 +63,7 @@ export async function storeLiqsR2(filename: string, body: string | Readable, con
     Body: body,
     ContentType: contentType,
   });
-  return await S3.send(command);
+  return await R2.send(command);
 }
 
 export async function getCachedLiqsR2(protocol: string, chain: string) {
@@ -72,7 +71,7 @@ export async function getCachedLiqsR2(protocol: string, chain: string) {
     Bucket: datasetBucket,
     Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
   });
-  const data = await S3.send(command);
+  const data = await R2.send(command);
   return data.Body?.toString() ?? "";
 }
 
@@ -88,7 +87,7 @@ export async function storeCachedLiqsR2(protocol: string, chain: string, body: s
     Body: body,
     ContentType: "application/json",
   });
-  return await S3.send(command);
+  return await R2.send(command);
 }
 
 export function buildRedirectR2(filename: string, cache?: number) {

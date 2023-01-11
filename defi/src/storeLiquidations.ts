@@ -28,7 +28,11 @@ async function handler() {
                 const liquidations = await getExternalLiqs(protocol, chain);
                 liqs[chain] = liquidations;
                 await storeCachedLiqs(protocol, chain, JSON.stringify(liquidations));
-                await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+                try {
+                  await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+                } catch (e) {
+                  console.error(e);
+                }
                 const _end = performance.now();
                 console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
               } catch (e) {
@@ -51,7 +55,11 @@ async function handler() {
                 const liquidations = await liquidationsFunc.liquidations();
                 liqs[chain] = liquidations;
                 await storeCachedLiqs(protocol, chain, JSON.stringify(liquidations));
-                await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+                try {
+                  await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+                } catch (e) {
+                  console.error(e);
+                }
                 const _end = performance.now();
                 console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
               } catch (e) {
@@ -97,14 +105,26 @@ async function handler() {
     };
     const filename = symbol.toLowerCase() + "/" + hourId + ".json";
     await storeLiqs(filename, JSON.stringify(_payload));
-    await storeLiqsR2(filename, JSON.stringify(_payload));
+    try {
+      await storeLiqsR2(filename, JSON.stringify(_payload));
+    } catch (e) {
+      console.error(e);
+    }
     const latestFilename = symbol.toLowerCase() + "/latest.json";
     await storeLiqs(latestFilename, JSON.stringify(_payload));
-    await storeLiqsR2(latestFilename, JSON.stringify(_payload));
+    try {
+      await storeLiqsR2(latestFilename, JSON.stringify(_payload));
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   await storeLiqs("availability.json", JSON.stringify({ availability, time }));
-  await storeLiqsR2("availability.json", JSON.stringify({ availability, time }));
+  try {
+    await storeLiqsR2("availability.json", JSON.stringify({ availability, time }));
+  } catch (e) {
+    console.error(e);
+  }
 
   return;
 }

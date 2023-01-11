@@ -13,7 +13,11 @@ const handler = async (event: any, _context: AWSLambda.Context) => {
         console.log(`Fetching ${protocol} data for ${chain}`);
         const liquidations = await liquidationsFunc.liquidations();
         await storeCachedLiqs(protocol, chain, JSON.stringify(liquidations));
-        await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+        try {
+          await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+        } catch (e) {
+          console.error(e);
+        }
         const _end = performance.now();
         console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
       } catch (e) {

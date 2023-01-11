@@ -16,6 +16,8 @@ import type { IProtocolResponse, IRaise } from "../types";
 import parentProtocols from "../protocols/parentProtocols";
 import fetch from "node-fetch";
 import { convertSymbols } from "./symbols/convert";
+import configs from "../adaptors/data/configs";
+import { IJSON } from "../adaptors/data/types";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (typeof balances === "object") {
@@ -94,6 +96,12 @@ export default async function craftProtocol(
     chainTvls: {},
     tvl: [],
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
+    metrics: Object.entries(configs).reduce((acc, [metric, map]) => {
+      const isMetricEnabled = map?.[protocolData.module]?.enabled
+      if (isMetricEnabled === true)
+        acc[metric] = isMetricEnabled
+      return acc
+    }, {} as IJSON<boolean>)
   };
 
   const childProtocolsNames = protocolData.parentProtocol

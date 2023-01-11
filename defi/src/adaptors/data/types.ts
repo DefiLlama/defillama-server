@@ -1,4 +1,4 @@
-import { Adapter, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
+import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { IImportObj } from "../../cli/buildRequires"
 import { Protocol } from "../../protocols/types"
 

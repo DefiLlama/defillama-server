@@ -1,3 +1,4 @@
+import { IJSON } from "./adaptors/data/types";
 import { Protocol } from "./protocols/types";
 
 export interface TokenPrices {
@@ -78,6 +79,7 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   tokens?: ITokens;
   isParentProtocol?: boolean;
   raises: Array<IRaise>;
+  metrics?: IJSON<boolean>
 }
 
 export interface IProtocol

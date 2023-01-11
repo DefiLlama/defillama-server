@@ -728,7 +728,7 @@ export default {
         enabled: true
     },
     "zilswap": {
-        enabled: false
+        enabled: true
     },
     "thena": {
         enabled: true

@@ -35,5 +35,19 @@ const abi = {
     stateMutability: "view",
     type: "function",
   },
+  recipient: {
+    inputs: [],
+    name: "recipient",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  token: {
+    inputs: [],
+    name: "",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
 };
 export default abi;

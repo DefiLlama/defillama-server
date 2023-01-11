@@ -48,11 +48,12 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             }
             // Checking if we skipped a day with no record
             Object.entries(acc.lastDataRecord).forEach(async ([chainprot, record]) => {
-                const [chain, _prot] = chainprot.split("#")
+                const [chain, prot] = chainprot.split("#")
                 if (!timestamp || !record) return
+                const recordData = record.data?.[chain]
+                if (!recordData || !Object.keys(recordData).includes(prot)) return
                 const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
                 for (let i = 1; i < gaps; i++) {
-                    const recordData = record.data?.[chain]
                     const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
                     missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))] = {
                         ...missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))],

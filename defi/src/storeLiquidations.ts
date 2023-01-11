@@ -2,7 +2,6 @@ import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import adaptersModules from "./utils/imports/adapters_liquidations";
 import { getCurrentUnixTimestamp } from "./utils/date";
-import { getCachedLiqs, getExternalLiqs, storeCachedLiqs, storeLiqs } from "./utils/s3";
 import { getCachedLiqsR2, getExternalLiqsR2, storeCachedLiqsR2, storeLiqsR2 } from "./utils/r2";
 import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 import { performance } from "perf_hooks";
@@ -25,20 +24,15 @@ async function handler() {
               try {
                 const _start = performance.now();
                 console.log(`Using external fetcher for ${protocol}/${chain}`);
-                const liquidations = await getExternalLiqs(protocol, chain);
+                const liquidations = await getExternalLiqsR2(protocol, chain);
                 liqs[chain] = liquidations;
-                await storeCachedLiqs(protocol, chain, JSON.stringify(liquidations));
-                try {
-                  await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
-                } catch (e) {
-                  console.error(e);
-                }
+                await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
                 const _end = performance.now();
                 console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
               } catch (e) {
                 console.error(e);
                 try {
-                  liqs[chain] = JSON.parse(await getCachedLiqs(protocol, chain));
+                  liqs[chain] = JSON.parse(await getCachedLiqsR2(protocol, chain));
                   console.log(`Using cached data for ${protocol}/${chain}`);
                 } catch (e) {
                   console.log(`No external fetcher data for ${protocol}/${chain}`);
@@ -54,18 +48,13 @@ async function handler() {
                 console.log(`Fetching ${protocol} data for ${chain}`);
                 const liquidations = await liquidationsFunc.liquidations();
                 liqs[chain] = liquidations;
-                await storeCachedLiqs(protocol, chain, JSON.stringify(liquidations));
-                try {
-                  await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
-                } catch (e) {
-                  console.error(e);
-                }
+                await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
                 const _end = performance.now();
                 console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
               } catch (e) {
                 console.error(e);
                 try {
-                  liqs[chain] = JSON.parse(await getCachedLiqs(protocol, chain));
+                  liqs[chain] = JSON.parse(await getCachedLiqsR2(protocol, chain));
                   console.log(`Using cached data for ${protocol}/${chain}`);
                 } catch (e) {
                   console.log(`No cached data for ${protocol}/${chain}`);
@@ -104,28 +93,12 @@ async function handler() {
       time,
     };
     const filename = symbol.toLowerCase() + "/" + hourId + ".json";
-    await storeLiqs(filename, JSON.stringify(_payload));
-    try {
-      await storeLiqsR2(filename, JSON.stringify(_payload));
-    } catch (e) {
-      console.error(e);
-    }
+    await storeLiqsR2(filename, JSON.stringify(_payload));
     const latestFilename = symbol.toLowerCase() + "/latest.json";
-    await storeLiqs(latestFilename, JSON.stringify(_payload));
-    try {
-      await storeLiqsR2(latestFilename, JSON.stringify(_payload));
-    } catch (e) {
-      console.error(e);
-    }
+    await storeLiqsR2(latestFilename, JSON.stringify(_payload));
   }
 
-  await storeLiqs("availability.json", JSON.stringify({ availability, time }));
-  try {
-    await storeLiqsR2("availability.json", JSON.stringify({ availability, time }));
-  } catch (e) {
-    console.error(e);
-  }
-
+  await storeLiqsR2("availability.json", JSON.stringify({ availability, time }));
   return;
 }
 

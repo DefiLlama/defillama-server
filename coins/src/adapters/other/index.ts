@@ -54,6 +54,7 @@ export function distressed(timestamp: number = 0) {
     distressedAdapter("klaytn", timestamp),
     distressedAdapter("arbitrum", timestamp),
     distressedAdapter("bsc", timestamp),
+    distressedAdapter("ethereum", timestamp),
   ]);
 }
 export function manualInput(timestamp: number = 0) {

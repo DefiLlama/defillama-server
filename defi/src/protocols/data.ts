@@ -2533,6 +2533,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "metronome/index.js",
     twitter: "MET_Token",
+    parentProtocol: "Metronome",
     audit_links: ["https://github.com/autonomoussoftware/metronome-audits"],
   },
   {

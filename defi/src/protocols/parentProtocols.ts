@@ -654,6 +654,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "uniwswap",
   },
+  {
+    id: "Metronome",
+    name: "Metronome",
+    url: "https://www.metronome.io/",
+    description:
+    "Synthesizing the future of DeFi.",
+    logo: `${baseIconsUrl}/metronome.jpg`,
+    gecko_id: "metronome",
+    cmcId: "2873",
+    chains: [],
+    twitter: "MetronomeDAO",
+  },
 ];
 
 export default parentProtocols;

@@ -732,5 +732,8 @@ export default {
     },
     "thena": {
         enabled: true
+    },
+    "ttswap": {
+        enabled: true
     }
 } as AdaptorsConfig

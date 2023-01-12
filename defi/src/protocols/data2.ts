@@ -22345,6 +22345,28 @@ listedAt: 1650804679
   twitter: "_SugarSwap",
   listedAt: 1673519899
 },
+{
+  id: "2427",
+  name: "Defender Finance",
+  address: "bsc:0xc91324601B20ea0e238B63c9fAfca18d32600722",
+  symbol: "SWDB",
+  url: "https://defenderfinance.io",
+  description: "Defender Finance an algo-stable yield farming, with Innovative & strong mechanisms and features, Trustworthy, reliable and hardworking team.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/defender-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Binance"],
+  oracles: ["TWAP"],
+  forkedFrom: [],
+  module: "defenderfinance/index.js",
+  twitter: "defender_fi",
+  audit_links: ["https://docs.defenderfinance.io/kyc-and-audit/third-party-audit"],
+  listedAt: 1673533910
+},
 ]
 
 export default data2;

@@ -1,6 +1,7 @@
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date"
 import { DimensionRules } from "../../data"
+import { getConfigByType } from "../../data/configs"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
@@ -47,14 +48,14 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             }
         }
 
-        const startTimestamp = adapter.config?.startFrom
+        const startTimestamp = getConfigByType(adaptorType, adapter.module)?.startFrom
         const startIndex = startTimestamp ? adaptorRecords.findIndex(ar => ar.timestamp === startTimestamp) : -1
         adaptorRecords = adaptorRecords.slice(startIndex + 1)
 
         let protocolsKeys = [adapter.module]
         if (adapter.protocolsData) {
             protocolsKeys = Object.keys(adapter.protocolsData).filter(protKey => {
-                return adapter.config?.protocolsData?.[protKey].enabled ?? true
+                return getConfigByType(adaptorType, adapter.module)?.protocolsData?.[protKey].enabled ?? true
             })
         }
         // Clean data by chain
@@ -139,7 +140,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             total30d: adapter.disabled ? null : stats.total30d,
             totalAllTime: totalRecord ? sumAllVolumes(totalRecord.data) : null,
             breakdown24h: adapter.disabled ? null : stats.breakdown24h,
-            config: adapter.config,
+            config: getConfigByType(adaptorType, adapter.module),
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolsStats: protocolVersions,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
@@ -157,7 +158,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             module: adapter.module,
             disabled: adapter.disabled,
             displayName: adapter.displayName,
-            config: adapter.config,
+            config: getConfigByType(adaptorType, adapter.module),
             category: adapter.category,
             logo: adapter.logo,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,

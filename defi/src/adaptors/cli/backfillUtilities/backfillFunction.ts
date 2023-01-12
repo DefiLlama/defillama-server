@@ -82,7 +82,7 @@ export const autoBackfill = async (argv: string[]) => {
                     await executeAsyncBackfill(smallbackfillEvent)
                     await sleep(1000 * 60 * 2)
                 } */
-                console.info(`Don't forget to enable the adapter to src/dexVolumes/dexAdapters/config.ts, bye llama🦙`)
+                console.info(`Don't forget to enable the adapter to src/adaptors/data/${type}/config.ts, bye llama🦙`)
                 rl.close();
             }
             else {

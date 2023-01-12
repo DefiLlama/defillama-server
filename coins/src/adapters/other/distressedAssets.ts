@@ -31,6 +31,9 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     GVR: "0xaFb64E73dEf6fAa8B6Ef9a6fb7312d5C4C15ebDB", // GVR
     GVR2: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
   },
+  ethereum: {
+    GVR: '0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c'
+  }
 };
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

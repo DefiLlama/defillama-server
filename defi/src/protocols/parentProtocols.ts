@@ -660,7 +660,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://www.metronome.io/",
     description:
     "Synthesizing the future of DeFi.",
-    logo: `${baseIconsUrl}/metronome.jpg`,
+    logo: `${baseIconsUrl}/metronome.png`,
     gecko_id: "metronome",
     cmcId: "2873",
     chains: [],

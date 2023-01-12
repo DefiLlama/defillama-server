@@ -11,4 +11,4 @@ export const KEYS_TO_STORE = AdaptorRecordTypeMapReverse
 
 export { default as config } from "./config";
 
-export default generateProtocolAdaptorsList(protocols_imports, config)
+export default generateProtocolAdaptorsList(protocols_imports, config, "prots")

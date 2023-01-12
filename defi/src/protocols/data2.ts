@@ -22367,6 +22367,28 @@ listedAt: 1650804679
   audit_links: ["https://docs.defenderfinance.io/kyc-and-audit/third-party-audit"],
   listedAt: 1673533910
 },
+{
+  id: "2428",
+  name: "Metronome Synth",
+  address: "0x2Ebd53d035150f328bd754D6DC66B99B0eDB89aa",
+  symbol: "MET",
+  url: "https://www.metronome.io/synth",
+  description: "Metronome Synth is a leading synthetic protocol that enables users to post multi-collateral assets from their existing crypto holdings and create a multitude of synthetic assets in one complete platform. Synth will enable the creation of crypto synthetic assets, and the ability to swap synthetic assets with zero-slippage.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/metronome-synth.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Synthetics",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: ["Chainlink"],
+  module: "metronome-synth/index.js",
+  twitter: "MetronomeDAO",
+  parentProtocol: "Metronome",
+  listedAt: 1673545817
+},
 ]
 
 export default data2;

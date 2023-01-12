@@ -4,6 +4,9 @@ import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
 
 const contracts: { [chain: string]: { [token: string]: string } } = {
+  ethereum: {
+    GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
+  },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
     WrappedEther: "0xF720b7910C6b2FF5bd167171aDa211E226740bfe",

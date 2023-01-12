@@ -2438,7 +2438,7 @@ const data2: Protocol[] =  [
 },
 {
   id: "1520",
-  name: "Paraluni",
+  name: "Paraluni Masterchef",
   address: "bsc:0x43Feaca246392C23EE5A0Db618fCd81a74b91726",
   symbol: "T42",
   url: "https://paraluni.org",
@@ -2456,6 +2456,7 @@ const data2: Protocol[] =  [
   module: "Paraluni/index.js",
   twitter: "paraluni",
   audit_links: ["http://www.auditlions.com/en/index.php?c=index&id=65"],
+  parentProtocol: "Paraluni",
   listedAt: 1646692701,
 },
 {
@@ -22388,6 +22389,28 @@ listedAt: 1650804679
   twitter: "MetronomeDAO",
   parentProtocol: "Metronome",
   listedAt: 1673545817
+},
+{
+  id: "1520",
+  name: "Paraluni Dex",
+  address: "bsc:0x43Feaca246392C23EE5A0Db618fCd81a74b91726",
+  symbol: "T42",
+  url: "https://paraluni.org",
+  description: "AMM on BNB Chain",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/paraluni.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "paraluni-dex/index.js",
+  twitter: "paraluni",
+  parentProtocol: "Paraluni",
+  listedAt: 1673548378,
 },
 ]
 

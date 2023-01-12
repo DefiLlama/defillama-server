@@ -133,6 +133,7 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
     const currentRecord = await getAdaptorRecord(adaptorRecord.adaptorId, adaptorRecord.type, adaptorRecord.protocolType, "TIMESTAMP", adaptorRecord.timestamp).catch(() => console.info("No previous data found, writting new row..."))
     let currentData: IRecordAdaptorRecordData = {}
     if (currentRecord instanceof AdaptorRecord) currentData = currentRecord.data
+    delete currentData.error
     const obj2Store: IRecordAdaptorRecordData = {
         ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
             const currentChainValue = acc[chain]

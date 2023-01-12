@@ -5,6 +5,7 @@ import {
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import { getLogs } from "../../../utils/cache/getLogs";
+import { getApi } from "../../utils/sdk";
 import * as sdk from '@defillama/sdk'
 import * as ethers from 'ethers'
 
@@ -26,8 +27,9 @@ const custom = {
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const { ladle, fromBlock, } = config[chain]
   const writes: Write[] = [];
-  const api = new sdk.ChainApi({ chain, timestamp: timestamp ? timestamp : Math.floor(Date.now() / 1e3), })
-  const block: number | undefined = await api.getBlock()
+  
+  const api = await getApi(chain, timestamp)
+  const block: number | undefined = api.block as any
   if (custom[chain]) {
     await Promise.all(custom[chain].map((i: any) => i({ api, writes, timestamp })))
   }

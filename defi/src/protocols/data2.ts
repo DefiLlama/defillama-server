@@ -22303,6 +22303,48 @@ listedAt: 1650804679
   audit_links: ["https://hacken.io/audits/#lunafi"],
   listedAt: 1673451772
 },
+{
+  id: "2425",
+  name: "Deridex",
+  address: null,
+  symbol: "-",
+  url: "https://app.deridex.org",
+  description: "Deridex is a decentralized on-chain derivatives platform built on the Algorand blockchain, offering a range of leveraged financial products to users.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/deridex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Algorand"],
+  oracles: [],
+  forkedFrom: [],
+  module: "deridex/index.js",
+  twitter: "DeridexHQ",
+  listedAt: 1673519897
+},
+{
+  id: "2426",
+  name: "SugarSwap",
+  address: "arbitrum:0xd3ccbf3867ff0204730173eb4cad3c4b5fd07c69",
+  symbol: "SUGAR",
+  url: "https://sugarfinance.io",
+  description: "SugarSwap is a DeFi platform that provides both AMM and Farming on Arbitrum blockchain network",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/sugarswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "sugarswap/index.js",
+  twitter: "_SugarSwap",
+  listedAt: 1673519899
+},
 ]
 
 export default data2;

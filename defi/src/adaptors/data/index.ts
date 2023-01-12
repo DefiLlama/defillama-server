@@ -11,13 +11,15 @@ import protocols, { KEYS_TO_STORE as protocols_KEYS_TO_STORE, importModule as pr
 // With dynamic imports loads less stuff into memory but becomes slower
 // w/ dynamic imports 1 dex -> 19sec
 // without 1 dex -> 1.6s (all dexs =200 aprox 4s)
+
+// order here matters
 const map = {
-    dexs,
     derivatives,
-    fees,
+    incentives,
     aggregators,
     options,
-    incentives,
+    fees,
+    dexs,
     protocols,
 }
 
@@ -29,7 +31,6 @@ const listToMap = <T>(list: T[], key: string) => list.reduce((acc, curr) => {
 export default (adaptorType: AdapterType): AdaptorData => {
     // Adapters can have all dimensions in one adapter or multiple adapters for different dimensions
     // Thats why we create an object with all adapters using the spread operator which only references the objects (they load all of them into memory anyways)
-    console.log("fees.find(f=>f.module==='sushiswap", fees.find(f=>f.module==='sushiswap'))
     const all = {
         ...listToMap(Object.entries(map).filter(([key]) => ![adaptorType, 'protocols'].includes(key)).reduce((acc, [, list]) => (acc.concat(list)), [] as ProtocolAdaptor[]), 'module'),
         ...listToMap(map.protocols, 'module'), //TODO: move protocols adapters to dexs folder

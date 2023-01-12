@@ -14,4 +14,4 @@ export const KEYS_TO_STORE = {
 
 export { default as config } from "./config";
 
-export default generateProtocolAdaptorsList(aggregators_imports, config, "agg")
+export default generateProtocolAdaptorsList(aggregators_imports, config)

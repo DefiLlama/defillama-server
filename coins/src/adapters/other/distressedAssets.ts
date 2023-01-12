@@ -28,6 +28,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   bsc: {
     DOGECOLA: '0xe320df552e78d57e95cf1182b6960746d5016561', // OLD dogecola contract
+    GVR: '0xaFb64E73dEf6fAa8B6Ef9a6fb7312d5C4C15ebDB', // GVR
   },
 };
 

@@ -2519,7 +2519,7 @@ const data: Protocol[] = [
   {
     id: "233",
     name: "Metronome DAO",
-    address: "0xa3d58c4e56fedcae3a7c43a725aee9a71f0ece4e",
+    address: "0x2Ebd53d035150f328bd754D6DC66B99B0eDB89aa",
     symbol: "MET",
     url: "https://metronome.io/",
     description: "Metronome is the world’s first autonomous cryptocurrency.\r\n",

@@ -2532,8 +2532,7 @@ const data: Protocol[] = [
     category: "Services",
     chains: ["Ethereum"],
     module: "metronome/index.js",
-    twitter: "MET_Token",
-    parentProtocol: "Metronome",
+    twitter: "MetronomeDAO",
     audit_links: ["https://github.com/autonomoussoftware/metronome-audits"],
   },
   {

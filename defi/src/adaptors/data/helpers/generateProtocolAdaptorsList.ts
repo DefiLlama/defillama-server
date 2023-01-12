@@ -32,7 +32,7 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
 export type IImportsMap = IJSON<IImportObj>
 
 // This could be much more efficient
-export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdaptor[] =>
+export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] =>
     Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = data
         let overridesObj = overrides
@@ -48,6 +48,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
         })
         if (dexFoundInProtocols && imports_obj[adapterKey].module.default) {
             let moduleObject = imports_obj[adapterKey].module.default
+            if (adapterKey==='sushiswap') console.log(type, config?.[adapterKey])
             if (config?.[adapterKey]?.protocolsData && 'breakdown' in moduleObject)
                 moduleObject = {
                     ...moduleObject,

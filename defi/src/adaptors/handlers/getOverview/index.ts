@@ -105,6 +105,20 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
 
 export const getExtraTypes = (type: AdapterType) => EXTRA_TYPES[type] ?? []
 
+export interface IGetOverviewEventParams {
+    pathParameters: {
+        type: AdapterType
+        chain?: string
+    }
+    queryStringParameters: {
+        excludeTotalDataChart?: string
+        excludeTotalDataChartBreakdown?: string
+        dataType?: string
+        category?: string
+        fullChart?: string
+    }
+}
+
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     const pathChain = event.pathParameters?.chain?.toLowerCase()
@@ -121,20 +135,18 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (!adaptorType) throw new Error("Missing parameter")
 
     // Import data list
-    const adapters2load: string[] = [adaptorType, "protocols"]
-    const protocolsList = Object.keys(loadAdaptorsData(adaptorType).config)
+    const loadedAdaptors = loadAdaptorsData(adaptorType)
+    const protocolsList = Object.keys(loadedAdaptors.config)
     const adaptersList: ProtocolAdaptor[] = []
-    for (const type2load of adapters2load) {
-        try {
-            const adaptorsData = loadAdaptorsData(type2load as AdapterType)
-            adaptorsData.default.forEach(va => {
-                if (va.config?.enabled && (!category || va.category?.toLowerCase() === category))
-                    if (protocolsList.includes(va.module)) adaptersList.push(va)
-                return
-            })
-        } catch (error) {
-            console.error(`Couldn't load adaptors with type ${type2load} :${JSON.stringify(error)}`)
-        }
+    try {
+        loadedAdaptors.default.forEach(va => {
+            if (protocolsList.includes(va.module))
+                if (loadedAdaptors.config[va.module]?.enabled && (!category || va.category?.toLowerCase() === category))
+                    adaptersList.push(va)
+            return
+        })
+    } catch (error) {
+        console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`, error)
     }
 
     const errors: string[] = []

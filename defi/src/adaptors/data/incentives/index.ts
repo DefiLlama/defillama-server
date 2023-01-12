@@ -13,4 +13,4 @@ export const KEYS_TO_STORE = {
 
 export { default as config } from "./config";
 
-export default generateProtocolAdaptorsList(incentives_imports, config)
+export default generateProtocolAdaptorsList(incentives_imports, config, "inc")

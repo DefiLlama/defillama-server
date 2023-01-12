@@ -1,10 +1,6 @@
-import adapter from "../adapters/dydx";
-import { oneInch } from "../adapters/1inch";
 import { euler } from "../adapters/uniswap";
 import {
   AdapterResult,
-  Allocation,
-  SubAllocation,
   StepAdapterResult,
   CliffAdapterResult,
   LinearAdapterResult,
@@ -18,22 +14,7 @@ import {
   cliffAdapterToRaw,
   linearAdapterToRaw,
 } from "./convertToRawData";
-export function getCirculatingSupplyAtTimestamp(
-  vestingSchedule: Allocation,
-  timestamp: number = Date.now() / 1000,
-): number {
-  let circSupply = 0;
-  const allSections = [
-    ...vestingSchedule.insiders,
-    ...vestingSchedule.community,
-  ];
-  allSections.map((s: SubAllocation) => {
-    if (typeof s.schedule == "number") return (circSupply += s.schedule);
-    const a = s.schedule(timestamp);
-    circSupply += a;
-  });
-  return circSupply;
-}
+
 export async function generateChart(
   adapter: Promise<AdapterResult[]>,
 ): Promise<ChartData> {

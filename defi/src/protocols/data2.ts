@@ -22391,7 +22391,7 @@ listedAt: 1650804679
   listedAt: 1673545817
 },
 {
-  id: "1520",
+  id: "2429",
   name: "Paraluni Dex",
   address: "bsc:0x43Feaca246392C23EE5A0Db618fCd81a74b91726",
   symbol: "T42",

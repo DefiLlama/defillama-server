@@ -224,11 +224,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     return successResponse(successResponseObj, 10 * 60); // 10 mins cache
 };
 
-const substractSubsetVolumes = (dex: ProtocolAdaptorSummary, _index: number, dexs: ProtocolAdaptorSummary[], baseTimestamp?: number): ProtocolAdaptorSummary => {
-    const includedVolume = dex.config?.includedVolume
+const substractSubsetVolumes = (adapter: ProtocolAdaptorSummary, _index: number, dexs: ProtocolAdaptorSummary[], baseTimestamp?: number): ProtocolAdaptorSummary => {
+    const includedVolume = adapter.config?.includedVolume // needs to get config from getConfigByType
     if (includedVolume && includedVolume.length > 0) {
         const includedSummaries = dexs.filter(dex => includedVolume.includes(dex.module))
-        let computedSummary: ProtocolAdaptorSummary = dex
+        let computedSummary: ProtocolAdaptorSummary = adapter
         for (const includedSummary of includedSummaries) {
             const newSum = getSumAllDexsToday([computedSummary], includedSummary, baseTimestamp)
             computedSummary = {
@@ -242,7 +242,7 @@ const substractSubsetVolumes = (dex: ProtocolAdaptorSummary, _index: number, dex
         return computedSummary
     }
     else
-        return dex
+        return adapter
 }
 
 type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;

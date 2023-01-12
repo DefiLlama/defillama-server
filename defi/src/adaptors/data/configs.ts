@@ -5,7 +5,7 @@ import options from "./options/config";
 import incentives from "./incentives/config";
 import protocols from "./protocols/config";
 import derivatives from "./derivatives/config";
-import { IJSON } from "./types";
+import { AdaptorsConfig, IJSON } from "./types";
 
 const configs = {
     dexs,
@@ -15,7 +15,9 @@ const configs = {
     incentives,
     protocols,
     derivatives
-}
+} as IJSON<AdaptorsConfig>
+
+export const getConfigByType = (type: string, module: string) => configs[type]?.[module]
 
 export const getAvailableMetricsByModule = (modulePath: string) => Object.entries(configs).reduce((acc, [metric, map]) => {
     const [module] = modulePath.split("/")[0].split(/[/.]+/)

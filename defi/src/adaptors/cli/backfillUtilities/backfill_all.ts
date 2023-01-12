@@ -31,7 +31,7 @@ import sleep from "../../../utils/shared/sleep";
             console.info(`${smallbackfillEvent.backfill[0].dexNames[0].toUpperCase()} will be backfilled starting from ${formatTimestampAsDate(String(smallbackfillEvent.backfill[0].timestamp!))}`)
             console.info(`${smallbackfillEvent.backfill.length} days will be filled. If a chain is already available will be refilled.`)
             await executeAsyncBackfill(smallbackfillEvent)
-            console.info(`Don't forget to enable the adapter to src/dexVolumes/dexAdapters/config.ts, bye llama🦙`)
+            console.info(`Don't forget to enable the adapter to src/adaptors/data/${ADAPTER_TYPE}/config.ts, bye llama🦙`)
         }
     }
     const chains = ['doge', 'litecoin']

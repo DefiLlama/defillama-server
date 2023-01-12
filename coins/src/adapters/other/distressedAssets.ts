@@ -27,8 +27,9 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     GOLD: "0xc4be0798e5b5b1C15edA36d9B2D8c1A60717fA92",
   },
   bsc: {
-    DOGECOLA: '0xe320df552e78d57e95cf1182b6960746d5016561', // OLD dogecola contract
-    GVR: '0xaFb64E73dEf6fAa8B6Ef9a6fb7312d5C4C15ebDB', // GVR
+    DOGECOLA: "0xe320df552e78d57e95cf1182b6960746d5016561", // OLD dogecola contract
+    GVR: "0xaFb64E73dEf6fAa8B6Ef9a6fb7312d5C4C15ebDB", // GVR
+    GVR2: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
   },
 };
 
@@ -52,7 +53,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       tokenInfos.symbols[i].output,
       timestamp,
       "distressed",
-      1.01
+      1.01,
     );
   });
 

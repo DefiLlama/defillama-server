@@ -23051,7 +23051,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1236",
-    name: "Waterfall Finance",
+    name: "Waterfall Finance Yield",
     address: "fantom:0x6b2a7B82d3F7a6e1F5A5831aB40666Ec717645d5",
     symbol: "WATERFALL",
     url: "https://app.defiwaterfall.com",

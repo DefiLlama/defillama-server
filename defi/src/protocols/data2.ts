@@ -22503,6 +22503,28 @@ listedAt: 1650804679
   forkedFrom: ["Compound"],
   listedAt: 1673620866
 },
+{
+  id: "2434",
+  name: "MYSO",
+  address: null,
+  symbol: "-",
+  url: "https://www.myso.finance",
+  description:
+    "We're building a liquidation-free, fixed-interest and oracle-free borrowing solution. Borrowers are freed from liquidation risk while liquidity providers gain exposure to a passive option writing strategy, unlocking option selling as a sustainable yield source.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/myso.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "myso/index.js",
+  twitter: "MysoFinance",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1673623208
+}, 
 ]
 
 export default data2;

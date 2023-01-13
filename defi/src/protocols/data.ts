@@ -4660,7 +4660,7 @@ const data: Protocol[] = [
   },
   {
     id: "338",
-    name: "Inverse Finance",
+    name: "Inverse Finance - Frontier (deprecated)",
     address: "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
     symbol: "INV",
     url: "https://inverse.finance/",

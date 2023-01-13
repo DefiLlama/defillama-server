@@ -22424,7 +22424,7 @@ listedAt: 1650804679
   url: "https://www.wtfdex.com/",
   description: "Waterfall is the first DEX on Arbitrum that will find a purpose for many Meme tokens and not only! AMM on Arbitrum",
   chain: "Arbitrum",
-  logo: `${baseIconsUrl}/waterfall-dex.png`,
+  logo: `${baseIconsUrl}/waterfall-defi.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,
@@ -22438,6 +22438,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_WaterfallDEX_Token.pdf"],
   parentProtocol: "Waterfall Finance",
   listedAt: 1673572003
+},
+{
+  id: "2431",
+  name: "BrightSide",
+  address: "milkomeda_a1:0x527ad3227063617302d4d76902Df5D96756e1603",
+  symbol: "BRIGHT",
+  url: "https://app.brightside.finance/",
+  description: "AMM Dex on Milkomeda A1",
+  chain: "Milkomeda A1",
+  logo: `${baseIconsUrl}/brightside.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Milkomeda A1"],
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  module: "brightside/index.js",
+  twitter: "BrightSide_fi",
+  listedAt: 1673583729
 },
 ]
 

@@ -34,7 +34,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const extraTypes: IJSON<number | null> = {}
         const extraTypesByProtocolVersion: IJSON<IJSON<number | null>> = {}
         for (const recordType of getExtraTypes(adaptorType)) {
-            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "LAST").catch(_e => { }) as AdaptorRecord | undefined
+            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
             if (AdaptorRecordTypeMapReverse[recordType]) {
                 extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null

@@ -22460,6 +22460,27 @@ listedAt: 1650804679
   twitter: "BrightSide_fi",
   listedAt: 1673583729
 },
+{
+  id: "2432",
+  name: "FlatCoin DEX",
+  address: "tron:TLxSCKNuxso2f62mPz2eBtAnQeXQUaYQiZ",
+  symbol: "FLAT",
+  url: "https://flatcoin.cc",
+  description: "FlatCoin (FLAT) is an ERC20 compliant Meme Token. The total supply of FLAT is limited to 1 000 000 Tokens which were entirely locked in an immutable smart contract. FLAT can be acquired from this smart contract in exchange for USDT and vice versa via a feeless token swap.",
+  chain: "Tron",
+  logo: `${baseIconsUrl}/flatcoin-dex.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Farm",
+  chains: ["Tron"],
+  oracles: [],
+  forkedFrom: [],
+  module: "flatcoin/index.js",
+  twitter: "raidshift",
+  listedAt: 1673619934
+},
 ]
 
 export default data2;

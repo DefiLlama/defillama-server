@@ -277,5 +277,8 @@ export default {
     },
     "hegic": {
         enabled: true
+    },
+    "el-dorado-exchange": {
+        enabled: true
     }
 } as AdaptorsConfig

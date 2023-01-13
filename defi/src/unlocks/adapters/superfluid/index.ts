@@ -1,5 +1,4 @@
 import { multiCall } from "@defillama/sdk/build/abi/abi2";
-import { getBlock } from "@defillama/sdk/build/computeTVL/blocks";
 import { AdapterResult } from "../../types/adapters";
 import { request, gql } from "graphql-request";
 import abi from "./abi";
@@ -25,24 +24,14 @@ const chainData: { [chain: string]: { [key: string]: string } } = {
     cfa: "0x6EeE6060f715257b970700bc2656De21dEdF074C",
   },
 };
-export default async function main(
-  chain: any,
-  timestamp: number | undefined = Math.floor(Date.now() / 1000),
-): Promise<AdapterResult[]> {
+export default async function main(chain: any): Promise<AdapterResult[]> {
   const target = chainData[chain].cfa;
-  let block: number;
-  let gqlData: GqlData[];
-
-  [{ number: block }, gqlData] = await Promise.all([
-    getBlock(chain, timestamp),
-    getStreamIdentifiers(chain),
-  ]);
+  const gqlData: GqlData[] = await getStreamIdentifiers(chain);
 
   const flows: ChainData[] = await multiCall({
     target,
     abi: abi.getFlow,
     chain,
-    block,
     calls: gqlData.map((d: GqlData) => ({
       target,
       params: [d.token, d.sender, d.receiver],
@@ -106,5 +95,3 @@ async function getStreamIdentifiers(chain: string): Promise<GqlData[]> {
   }
   return streams;
 }
-main("polygon");
-// ts-node superfluid/index.ts

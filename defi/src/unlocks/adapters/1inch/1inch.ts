@@ -16,7 +16,7 @@ export default async function main(
     cliffDuration,
     duration,
     started,
-    reciever,
+    receiver,
     token,
   ] = await Promise.all([
     call({ target, abi: abi.cliffAmount, chain, block }),
@@ -25,19 +25,19 @@ export default async function main(
     call({ target, abi: abi.cliffDuration, chain, block }),
     call({ target, abi: abi.stepDuration, chain, block }),
     call({ target, abi: abi.start, chain, block }),
-    call({ target, abi: abi.reciever, chain, block }),
+    call({ target, abi: abi.receiver, chain, block }),
     call({ target, abi: abi.token, chain, block }),
   ]);
 
   const start = Number(started) + Number(cliffDuration);
 
   return [
-    { type: "step", start, duration, amount, steps, reciever, token },
+    { type: "step", start, duration, amount, steps, receiver, token },
     {
       type: "cliff",
       start,
       amount: cliffAmount,
-      reciever,
+      receiver,
       token,
     },
   ];

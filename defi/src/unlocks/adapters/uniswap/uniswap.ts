@@ -12,7 +12,7 @@ export default async function main(
   const block = (await getBlock(chain, timestamp)).number;
   let tokenAbi = abi.token;
   tokenAbi.name = tokenSymbol;
-  const [amount, cliff, start, end, reciever, token] = await Promise.all([
+  const [amount, cliff, start, end, receiver, token] = await Promise.all([
     call({ target, abi: abi.vestingAmount, block, chain }),
     call({ target, abi: abi.vestingCliff, block, chain }),
     call({ target, abi: abi.vestingBegin, block, chain }),
@@ -21,5 +21,5 @@ export default async function main(
     call({ target, abi: abi.token, block, chain }),
   ]);
 
-  return [{ type: "linear", start, end, cliff, amount, reciever, token }];
+  return [{ type: "linear", start, end, cliff, amount, receiver, token }];
 }

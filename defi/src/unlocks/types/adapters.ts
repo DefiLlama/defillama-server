@@ -26,7 +26,7 @@ export type AdapterResult = {
   steps?: number;
   cliff?: number;
   duration?: number;
-  reciever: string;
+  receiver: string;
   token: string;
 };
 export type RawResult = {

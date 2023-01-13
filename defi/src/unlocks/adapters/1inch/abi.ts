@@ -41,9 +41,9 @@ const abi = {
     stateMutability: "view",
     type: "function",
   },
-  reciever: {
+  receiver: {
     inputs: [],
-    name: "reciever",
+    name: "receiver",
     outputs: [{ internalType: "address", name: "", type: "address" }],
     stateMutability: "view",
     type: "function",

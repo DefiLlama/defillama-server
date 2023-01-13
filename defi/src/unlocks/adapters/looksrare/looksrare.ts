@@ -13,13 +13,13 @@ export default async function main(
   const block = (await getBlock(chain, timestamp)).number;
   let tokenAbi = abi.token;
   tokenAbi.name = tokenAbiName;
-  const [amount, steps, startBlock, blockLength, reciever, token] =
+  const [amount, steps, startBlock, blockLength, receiver, token] =
     await Promise.all([
       call({ target, abi: abi.amount, chain, block }),
       call({ target, abi: abi.steps, chain, block }),
       call({ target, abi: abi.start, chain, block }),
       call({ target, abi: abi.stepLength, chain, block }),
-      call({ target, abi: abi.reciever, chain, block }),
+      call({ target, abi: abi.receiver, chain, block }),
       call({ target, abi: abi.token, chain, block }),
     ]);
 
@@ -28,5 +28,5 @@ export default async function main(
   const length = blockLength * 12;
   const end = Number(start) + Number(length * steps);
 
-  return [{ type: "step", start, end, amount, steps, reciever, token }];
+  return [{ type: "step", start, end, amount, steps, receiver, token }];
 }

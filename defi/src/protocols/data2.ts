@@ -22471,7 +22471,7 @@ listedAt: 1650804679
   chain: "Ethereum",
   logo: `${baseIconsUrl}/inverse-finance.jpg`,
   audits: "1",
-  audit_note: 'Bug Bounty contest on Code4rena with 198 white-hat eyes on it',
+  audit_note: 'Bug Bounty contest on Code4rena with 198 white-hat eyes on it and 140 reports',
   gecko_id: "inverse-finance",
   cmcId: "8720",
   category: "CDP",

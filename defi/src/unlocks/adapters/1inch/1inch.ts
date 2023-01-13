@@ -1,14 +1,11 @@
 import { call } from "@defillama/sdk/build/abi/abi2";
-import { getBlock } from "@defillama/sdk/build/computeTVL/blocks";
 import { AdapterResult } from "../../types/adapters";
 import abi from "./abi";
 
 export default async function main(
   target: string,
   chain: any,
-  timestamp: number | undefined = undefined,
 ): Promise<AdapterResult[]> {
-  const block = (await getBlock(chain, timestamp)).number;
   const [
     cliffAmount,
     amount,
@@ -16,28 +13,28 @@ export default async function main(
     cliffDuration,
     duration,
     started,
-    reciever,
+    receiver,
     token,
   ] = await Promise.all([
-    call({ target, abi: abi.cliffAmount, chain, block }),
-    call({ target, abi: abi.stepAmount, chain, block }),
-    call({ target, abi: abi.steps, chain, block }),
-    call({ target, abi: abi.cliffDuration, chain, block }),
-    call({ target, abi: abi.stepDuration, chain, block }),
-    call({ target, abi: abi.start, chain, block }),
-    call({ target, abi: abi.reciever, chain, block }),
-    call({ target, abi: abi.token, chain, block }),
+    call({ target, abi: abi.cliffAmount, chain }),
+    call({ target, abi: abi.stepAmount, chain }),
+    call({ target, abi: abi.steps, chain }),
+    call({ target, abi: abi.cliffDuration, chain }),
+    call({ target, abi: abi.stepDuration, chain }),
+    call({ target, abi: abi.start, chain }),
+    call({ target, abi: abi.receiver, chain }),
+    call({ target, abi: abi.token, chain }),
   ]);
 
   const start = Number(started) + Number(cliffDuration);
 
   return [
-    { type: "step", start, duration, amount, steps, reciever, token },
+    { type: "step", start, duration, amount, steps, receiver, token },
     {
       type: "cliff",
       start,
       amount: cliffAmount,
-      reciever,
+      receiver,
       token,
     },
   ];

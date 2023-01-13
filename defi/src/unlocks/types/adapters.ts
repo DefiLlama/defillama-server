@@ -26,7 +26,7 @@ export type AdapterResult = {
   steps?: number;
   cliff?: number;
   duration?: number;
-  reciever: string;
+  receiver: string;
   token: string;
 };
 export type RawResult = {
@@ -61,4 +61,19 @@ export type ChartYAxisData = {
   start: number;
   increment: number;
   data: number[];
+};
+export type Protocol = {
+  [section: string]:
+    | Promise<AdapterResult>
+    | Promise<AdapterResult[]>
+    | Promise<AdapterResult[][]>
+    | Promise<StepAdapterResult>
+    | Promise<CliffAdapterResult>
+    | Promise<LinearAdapterResult>
+    | AdapterResult
+    | AdapterResult[]
+    | AdapterResult[][]
+    | StepAdapterResult
+    | CliffAdapterResult
+    | LinearAdapterResult;
 };

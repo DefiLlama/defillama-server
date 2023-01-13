@@ -22460,6 +22460,28 @@ listedAt: 1650804679
   twitter: "BrightSide_fi",
   listedAt: 1673583729
 },
+{
+  id: "2432",
+  name: "Inverse Finance - FiRM",
+  address: "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
+  symbol: "INV",
+  url: "https://inverse.finance",
+  description:
+    "FiRM is a Fixed Rate Market protocol to borrow the DOLA usd stablecoin at a fixed-rate with the DOLA Borrowing Right token DBR.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/inverse-finance.jpg`,
+  audits: "1",
+  audit_note: 'Bug Bounty contest on Code4rena with 198 white-hat eyes on it',
+  gecko_id: "inverse-finance",
+  cmcId: "8720",
+  category: "CDP",
+  chains: ["Ethereum"],
+  oracles: ['Chainlink'],
+  module: "inverse-finance-firm/index.js",
+  twitter: "InverseFinance",
+  forkedFrom: [],
+  listedAt: 1670701200
+},
 ]
 
 export default data2;

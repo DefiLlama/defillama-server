@@ -678,6 +678,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "paraluni",
   },
+  {
+    id: "Waterfall Finance",
+    name: "Waterfall Finance",
+    url: "https://wtf.defiwaterfall.com",
+    description:
+    "An innovative eco-system",
+    logo: `${baseIconsUrl}/waterfall-wtf.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "defi_waterfall",
+  },
 ];
 
 export default parentProtocols;

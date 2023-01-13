@@ -218,6 +218,7 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "gemmine/index.js",
   twitter: "defi_waterfall",
+  parentProtocol: "Waterfall Finance",
   listedAt: 1644970013,
 },
 {
@@ -2007,6 +2008,7 @@ const data2: Protocol[] =  [
   module: "lavafall/index.js",
   twitter: "defi_waterfall",
   audit_links: ["https://paladinsec.co/projects/waterfall-finance/"],
+  parentProtocol: "Waterfall Finance",
   listedAt: 1646308732,
 },
 {
@@ -2805,6 +2807,7 @@ const data2: Protocol[] =  [
   module: "jetmine/index.js",
   twitter: "defi_waterfall",
   audit_links: ["https://paladinsec.co/projects/waterfall-finance/"],
+  parentProtocol: "Waterfall Finance",
   listedAt: 1646960602,
 },
 {
@@ -13636,6 +13639,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "wtfdoge-farm/index.js",
   twitter: "defi_waterfall",
+  parentProtocol: "Waterfall Finance",
   listedAt: 1661803273
 },
 {
@@ -22411,6 +22415,29 @@ listedAt: 1650804679
   twitter: "paraluni",
   parentProtocol: "Paraluni",
   listedAt: 1673548378,
+},
+{
+  id: "2430",
+  name: "Waterfall DEX",
+  address: "arbitrum:0x4e6482b05D13085f1C4A7e2Ef612ba43104f71b9",
+  symbol: "WTFX",
+  url: "https://www.wtfdex.com/",
+  description: "Waterfall is the first DEX on Arbitrum that will find a purpose for many Meme tokens and not only! AMM on Arbitrum",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/waterfall-dex.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  oracles: [],
+  forkedFrom: [],
+  module: "wtfdex/index.js",
+  twitter: "defi_waterfall",
+  audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_WaterfallDEX_Token.pdf"],
+  parentProtocol: "Waterfall Finance",
+  listedAt: 1673572003
 },
 ]
 

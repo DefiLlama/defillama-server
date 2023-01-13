@@ -657,9 +657,9 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "Metronome",
     name: "Metronome",
-    url: "https://paraluni.org",
+    url: "https://www.metronome.io/",
     description:
-    "Paraluni,based on the BSC,a no holding currency, no ICO, no pre-mining decentralized platform.",
+    "Synthesizing the future of DeFi.",
     logo: `${baseIconsUrl}/metronome.png`,
     gecko_id: "metronome",
     cmcId: "2873",
@@ -669,9 +669,9 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "Paraluni",
     name: "Paraluni",
-    url: "https://www.metronome.io/",
+    url: "https://paraluni.org",
     description:
-    "Synthesizing the future of DeFi.",
+    "Paraluni,based on the BSC,a no holding currency, no ICO, no pre-mining decentralized platform.",
     logo: `${baseIconsUrl}/paraluni.png`,
     gecko_id: null,
     cmcId: null,

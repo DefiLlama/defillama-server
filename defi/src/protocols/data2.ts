@@ -22525,6 +22525,28 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1673623208
 }, 
+{
+  id: "2435",
+  name: "Nexo",
+  address: null,
+  symbol: "-",
+  url: "https://nexo.io",
+  description:
+    "Nexo is the all-in-one crypto platform where you can buy assets, earn interest and borrow against them or swap between 500+ pairs.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/nexo.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "nexo",
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Fantom", "Avalanche", "Binance"],
+  module: "nexo-cex/index.js",
+  twitter: "Nexo",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1673713595
+},
 ]
 
 export default data2;

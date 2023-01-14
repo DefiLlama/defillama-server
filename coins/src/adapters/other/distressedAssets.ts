@@ -6,6 +6,7 @@ import { addToDBWritesList } from "../utils/database";
 const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
+    GVR_OLD: '0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c',
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
@@ -33,10 +34,8 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     DOGECOLA: "0xe320df552e78d57e95cf1182b6960746d5016561", // OLD dogecola contract
     GVR: "0xaFb64E73dEf6fAa8B6Ef9a6fb7312d5C4C15ebDB", // GVR
     GVR2: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
+    PANCAKE_LP_ABNB_BNB: "0x272c2CF847A49215A3A1D4bFf8760E503A06f880",
   },
-  ethereum: {
-    GVR: '0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c'
-  }
 };
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

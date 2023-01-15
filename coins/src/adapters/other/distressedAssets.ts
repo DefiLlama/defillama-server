@@ -36,6 +36,9 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     GVR2: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
     PANCAKE_LP_ABNB_BNB: "0x272c2CF847A49215A3A1D4bFf8760E503A06f880",
   },
+  cronos: {
+    CRK: '0x065de42e28e42d90c2052a1b49e7f83806af0e1f',
+  },
 };
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

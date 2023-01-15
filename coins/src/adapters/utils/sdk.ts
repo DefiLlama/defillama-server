@@ -36,6 +36,8 @@ export async function getApi(
   if (timestamp !== 0 && timestamp < (timeNow - ONE_HOUR)) { // fetch block information only if timestamp is at least one hour back
     api.timestamp = timestamp
     await api.getBlock()
+  } else {
+    api.timestamp = 0
   }
   return api
 }

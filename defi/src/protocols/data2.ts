@@ -22602,7 +22602,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://www.zeniq.com",
   description:
-    "Dex on Zeniq chain",
+    "ZENIQ will offer a fast and secure way to manage and trade all categories of crypto assets by using the advantages of a decentralized exchange",
   chain: "Zeniq",
   logo: `${baseIconsUrl}/zeniq-swap.jpg`,
   audits: "0",

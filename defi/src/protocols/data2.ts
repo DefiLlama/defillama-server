@@ -22595,6 +22595,28 @@ listedAt: 1650804679
   listedAt: 1673781147
 },
 */
+{
+  id: "2438",
+  name: "Zeniq Swap",
+  address: null,
+  symbol: "-",
+  url: "https://www.zeniq.com",
+  description:
+    "Dex on Zeniq chain",
+  chain: "Zeniq",
+  logo: `${baseIconsUrl}/zeniq-swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Zeniq"],
+  module: "zeniq-swap/index.js",
+  twitter: "Zeniq_corp",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1673786256
+},
 ]
 
 export default data2;

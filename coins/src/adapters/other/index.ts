@@ -41,6 +41,14 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "bsc",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x604bd24343134066c16ffc3efce5d3ca160c1fee",
+      "0x5b52bfb8062ce664d74bbcd4cd6dc7df53fd7233",   //ZENIQ
+      "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      false,
+      "bsc",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

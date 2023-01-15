@@ -19,7 +19,7 @@ const handler = async () => {
         SK: 0
     })))).reduce((all, logo) => ({
         ...all,
-        [logo.PK]: logo.thumb
+        [logo.PK.slice(logoKey("").length)]: logo.thumb
     }), {})
     await store(`tokenlist/logos.json`, JSON.stringify(allLogos), true, false)
     await Promise.all([
@@ -37,7 +37,7 @@ const handler = async () => {
         const chainCoins = cgCoins
             .filter(coin => coin.platforms[chain] !== undefined && coin.platforms[chain] !== "")
             .map(coin => {
-                const logo = allLogos[logoKey(coin.id)]
+                const logo = allLogos[coin.id]
                 return {
                     address: coin.platforms[chain],
                     name: coin.name,
@@ -56,7 +56,7 @@ const handler = async () => {
     await store(`tokenlist/all.json`, JSON.stringify(cgCoins.map(coin => ({
         name: coin.name,
         symbol: coin.symbol,
-        logoURI: allLogos[logoKey(coin.id)],
+        logoURI: allLogos[coin.id],
     }))), true, false)
 };
 

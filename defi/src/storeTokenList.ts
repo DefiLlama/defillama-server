@@ -21,6 +21,7 @@ const handler = async () => {
         ...all,
         [logo.PK]: logo.thumb
     }), {})
+    await store(`tokenlist/logos.json`, JSON.stringify(allLogos), true, false)
     await Promise.all([
         "avalanche",
         "polygon-pos",

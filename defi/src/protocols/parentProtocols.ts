@@ -690,6 +690,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "defi_waterfall",
   },
+  {
+    id: "Inverse Finance",
+    name: "Inverse Finance",
+    url: "https://www.inverse.finance",
+    description:
+    "DOLA Borrowing Rights replace interest rates with a fixed fee that can earn you more.",
+    logo: `${baseIconsUrl}/inverse-finance.jpg`,
+    gecko_id: "inverse-finance",
+    cmcId: "8720",
+    chains: [],
+    twitter: "InverseFinance",
+  },
+
 ];
 
 export default parentProtocols;

@@ -4660,14 +4660,14 @@ const data: Protocol[] = [
   },
   {
     id: "338",
-    name: "Inverse Finance",
+    name: "Inverse Finance Frontier",
     address: "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
     symbol: "INV",
     url: "https://inverse.finance/",
     description:
       "DeFi Summer was just the beginning. Meet Inverse, part of the new wave of decentralized banking & finance. From a capital-efficient money market, to tokenized synthetic assets, legacy finance is about to be invaded.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/inverse-finance.jpg`,
+    logo: `${baseIconsUrl}/inverse-finance-frontier..jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -4676,6 +4676,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "inverse/index.js",
     twitter: "InverseFinance",
+    parentProtocol: "Inverse Finance",
     forkedFrom: ["Compound"],
   },
   {

@@ -9,6 +9,7 @@ const AppDataSource = new DataSource({
   database: "content",
   entities: [SwapEvent],
   logging: false,
+  synchronize: true,
   migrationsRun: true,
   url: process.env.AGGREGATOR_DB_URL,
 });

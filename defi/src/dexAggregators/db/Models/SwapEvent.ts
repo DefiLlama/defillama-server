@@ -40,4 +40,10 @@ export class SwapEvent {
 
   @Column("json")
   errorData: any;
+
+  @Column("text", { nullable: true })
+  slippage: string;
+
+  @Column("text", { nullable: true })
+  routePlace: string;
 }

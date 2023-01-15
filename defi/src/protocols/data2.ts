@@ -22548,6 +22548,53 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1673713595
 },
+{
+  id: "2436",
+  name: "Arcade xyz",
+  address: null,
+  symbol: "-",
+  url: "https://www.arcade.xyz",
+  description:
+    "Decentralized Loan Marketplace for NFTs.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/arcade-xyz.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Lending",
+  chains: ["Ethereum"],
+  module: "arcade.xyz/index.js",
+  twitter: "Arcade_xyz",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://docs.arcade.xyz/docs/audit-reports"],
+  listedAt: 1673781145
+},
+/*
+{
+  id: "2437",
+  name: "Flare Watermelon",
+  address: null,
+  symbol: "-",
+  url: "https://flare.watermelon.dog",
+  description:
+    "The first miner available on FLR",
+  chain: "Flare",
+  logo: `${baseIconsUrl}/flare-watermelon.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Flare"],
+  module: "flareWatermelon/index.js",
+  twitter: "WatermelonMiner",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1673781147
+},
+*/
 ]
 
 export default data2;

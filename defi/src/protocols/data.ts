@@ -4667,7 +4667,7 @@ const data: Protocol[] = [
     description:
       "DeFi Summer was just the beginning. Meet Inverse, part of the new wave of decentralized banking & finance. From a capital-efficient money market, to tokenized synthetic assets, legacy finance is about to be invaded.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/inverse-finance-frontier..jpg`,
+    logo: `${baseIconsUrl}/inverse-finance-frontier.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

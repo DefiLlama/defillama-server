@@ -22501,6 +22501,7 @@ listedAt: 1650804679
   module: "inverse-finance-firm/index.js",
   twitter: "InverseFinance",
   forkedFrom: ["Compound"],
+  parentProtocol: "Inverse Finance",
   listedAt: 1673620866
 },
 {

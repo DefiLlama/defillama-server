@@ -702,7 +702,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "InverseFinance",
   },
-
+  {
+    id: "Kujira",
+    name: "Kujira",
+    url: "https://kujira.app",
+    description:
+    "A decentralized ecosystem for protocols, builders and web3 users seeking sustainable FinTech.",
+    logo: `${baseIconsUrl}/kujira.png`,
+    gecko_id: "kujira",
+    cmcId: "15185",
+    chains: [],
+    twitter: "TeamKujira",
+  },
 ];
 
 export default parentProtocols;

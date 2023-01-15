@@ -3128,7 +3128,7 @@ const data2: Protocol[] =  [
   chains: ["Kujira"],
   oracles: [],
   forkedFrom: [],
-  module: "kujira/index.js",
+  module: "orca-kujira/index.js",
   twitter: "TeamKujira",
   audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/Kujira/OrcaQueue/Kujira%20-%20Orca%20Queue%20-%20Audit%20Report%201.0.pdf"],
   openSource: false,

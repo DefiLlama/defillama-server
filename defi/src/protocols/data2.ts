@@ -22564,7 +22564,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "NFT Lending",
   chains: ["Ethereum"],
-  module: "arcade.xyz/index.js",
+  module: "arcade-xyz/index.js",
   twitter: "Arcade_xyz",
   oracles: [],
   forkedFrom: [],

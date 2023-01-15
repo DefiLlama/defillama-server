@@ -735,5 +735,8 @@ export default {
     },
     "ttswap": {
         enabled: true
+    },
+    "aequinox": {
+        enabled: true
     }
 } as AdaptorsConfig

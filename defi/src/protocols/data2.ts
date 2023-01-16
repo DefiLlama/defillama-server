@@ -21653,9 +21653,12 @@ listedAt: 1650804679
   chains: ["Binance"],
   module: "level/index.js",
   twitter: "Level__Finance", 
-  forkedFrom: ["GMX"],
+  forkedFrom: [],
   oracles: ["Chainlink"],
-  audit_links: ["https://obeliskauditing.com/audits/level-finance"],
+  audit_links: [
+                 "https://obeliskauditing.com/audits/level-finance",
+                 "https://obeliskauditing.com/audits/level-finance-core",
+                 "https://obeliskauditing.com/audits/level-finance-trading",],
   listedAt: 1672230595
 },
 {

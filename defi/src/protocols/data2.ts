@@ -22759,5 +22759,4 @@ listedAt: 1650804679
   listedAt: 1673872039
 },
 ]
-//5128980.758221521 Kujira TVL #1551
 export default data2;

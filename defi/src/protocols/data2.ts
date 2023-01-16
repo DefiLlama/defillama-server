@@ -7215,7 +7215,7 @@ listedAt: 1650804679
   gecko_id: "bifrost-native-coin",
   cmcId: "8705",
   category: "Liquid Staking",
-  chains: ["Bifrost"],
+  chains: ["Bifrost", "Ethereum"],
   oracles: [],
   forkedFrom: [],
   module: "bifrost-staking/index.js",

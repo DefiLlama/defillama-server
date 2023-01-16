@@ -22495,8 +22495,8 @@ listedAt: 1650804679
     "FiRM is a Fixed Rate Market protocol to borrow the DOLA usd stablecoin at a fixed-rate with the DOLA Borrowing Right token DBR.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/inverse-finance-firm.jpg`,
-  audits: "1",
-  audit_note: 'Bug Bounty contest on Code4rena with 198 white-hat eyes on it and 140 reports',
+  audits: "0",
+  audit_note: null , //Bug Bounty contest on Code4rena with 198 white-hat eyes on it and 140 reports
   gecko_id: "inverse-finance",
   cmcId: "8720",
   category: "CDP",
@@ -22504,7 +22504,7 @@ listedAt: 1650804679
   oracles: ['Chainlink'],
   module: "inverse-finance-firm/index.js",
   twitter: "InverseFinance",
-  forkedFrom: ["Compound"],
+  forkedFrom: [],
   parentProtocol: "Inverse Finance",
   listedAt: 1673620866
 },

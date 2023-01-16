@@ -22713,7 +22713,7 @@ listedAt: 1650804679
   parentProtocol: "Kujira",
   listedAt: 1673816826
 },
-  {
+{
   id: "2443",
   name: "USK",
   address: null,
@@ -22735,6 +22735,28 @@ listedAt: 1650804679
   forkedFrom: [],
   parentProtocol: "Kujira",
   listedAt: 1673816828
+},
+{
+  id: "2444",
+  name: "ChangeX Staking",
+  address: "0x7051faed0775f664a0286af4f75ef5ed74e02754",
+  symbol: "CHANGE",
+  url: "https://changex.io",
+  description:
+    "Simplify DeFi. 100% non-custodial, multi-chain wallet. Fiat-to-crypto, ERC20 swaps, ~47% staking APY.",
+  chain: "Hydra",
+  logo: `${baseIconsUrl}/changex-staking.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "changex",
+  cmcId: "21077",
+  category: "Staking",
+  chains: ["Hydra", "Ethereum"],
+  module: "changex/index.js",
+  twitter: "ChangeXapp",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1673872039
 },
 ]
 

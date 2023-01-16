@@ -22722,7 +22722,7 @@ listedAt: 1650804679
   description:
     "Fully decentralised, overcollateralised stablecoin",
   chain: "Kujira",
-  logo: `${baseIconsUrl}/kujira.png`,
+  logo: `${baseIconsUrl}/usk.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

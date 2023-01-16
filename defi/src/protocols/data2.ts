@@ -1853,7 +1853,7 @@ const data2: Protocol[] =  [
   cmcId: "19268",
   category: "Lending",
   chains: ["Aurora"],
-  oracles: ["Flux","Pyth"],
+  oracles: ["SEDA","Pyth"],
   forkedFrom: ["Compound"],
   module: "aurigami.js",
   twitter: "aurigami_PLY",
@@ -2410,7 +2410,7 @@ const data2: Protocol[] =  [
   cmcId: "19728",
   category: "Lending",
   chains: ["Aurora"],
-  oracles: ["Flux"],
+  oracles: ["SEDA"],
   forkedFrom: ["Compound"],
   module: "bastion/index.js",
   twitter: "BastionProtocol",
@@ -8129,7 +8129,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Lending",
   chains: ["Evmos"],
-  oracles: ["Flux"],
+  oracles: ["SEDA"],
   forkedFrom: ["Compound"],
   module: "coslend/index.js",
   twitter: "coslend",
@@ -12635,7 +12635,7 @@ listedAt: 1650804679
   module: "nex/index.js",
   twitter: "nex_market",
   forkedFrom: ["GMX"],
-  oracles: ["Flux"],
+  oracles: ["SEDA"],
   audit_links: ["https://github.com/NEX-market/nex-contracts/blob/d6688b13eab7dcc731a2143c5c4fbd6c1af257bd/audits/NEX_Audit_Report_by_WatchPug.pdf"],
   listedAt: 1660815959
 },
@@ -18575,7 +18575,7 @@ listedAt: 1650804679
   module: "opx/index.js",
   twitter: "opxfinance", 
   forkedFrom: ["GMX"],
-  oracles: ["Flux"],
+  oracles: ["SEDA"],
   audit_links: ["https://github.com/opxfinance/opx-contracts/blob/caf9ef6d2695b45fc8182d2094c334951f7c525d/audits/Quantstamp_Audit_Report.pdf"],
   listedAt: 1667818926
 },
@@ -22759,5 +22759,5 @@ listedAt: 1650804679
   listedAt: 1673872039
 },
 ]
-
+//5128980.758221521 Kujira TVL #1551
 export default data2;

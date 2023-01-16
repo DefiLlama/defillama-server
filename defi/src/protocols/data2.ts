@@ -3132,7 +3132,7 @@ const data2: Protocol[] =  [
   twitter: "TeamKujira",
   audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/Kujira/OrcaQueue/Kujira%20-%20Orca%20Queue%20-%20Audit%20Report%201.0.pdf"],
   openSource: false,
-  parentProtocol: "Kujira",
+  parentProtocol: "Kujira Protocol",
   listedAt: 1647396317,
 },
 {
@@ -22664,7 +22664,7 @@ listedAt: 1650804679
   twitter: "TeamKujira",
   oracles: [],
   forkedFrom: [],
-  parentProtocol: "Kujira",
+  parentProtocol: "Kujira Protocol",
   listedAt: 1673816822
 },
 {
@@ -22710,7 +22710,7 @@ listedAt: 1650804679
   twitter: "TeamKujira",
   oracles: [],
   forkedFrom: [],
-  parentProtocol: "Kujira",
+  parentProtocol: "Kujira Protocol",
   listedAt: 1673816826
 },
 {
@@ -22733,7 +22733,7 @@ listedAt: 1650804679
   twitter: "TeamKujira",
   oracles: [],
   forkedFrom: [],
-  parentProtocol: "Kujira",
+  parentProtocol: "Kujira Protocol",
   listedAt: 1673816828
 },
 {

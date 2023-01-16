@@ -82,7 +82,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
                 ? getProtocolVersionStats(adapter, adaptorRecords, lastAvailableDataTimestamp, chainFilter, extraTypesByProtocolVersion)
                 : null
 
-        if (yesterdaysCleanTimestamp !== lastAvailableDataTimestamp) {
+        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp) {
             if (onError) onError(new Error(`
 Adapter: ${adapter.name} [${adapter.id}]
 ${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated

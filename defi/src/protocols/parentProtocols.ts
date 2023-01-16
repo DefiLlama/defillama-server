@@ -703,12 +703,12 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "InverseFinance",
   },
   {
-    id: "Kujira",
-    name: "Kujira",
+    id: "Kujira Protocol",
+    name: "Kujira Protocol",
     url: "https://kujira.app",
     description:
     "A decentralized ecosystem for protocols, builders and web3 users seeking sustainable FinTech.",
-    logo: `${baseIconsUrl}/kujira.png`,
+    logo: `${baseIconsUrl}/kujira-protocol.png`,
     gecko_id: "kujira",
     cmcId: "15185",
     chains: [],

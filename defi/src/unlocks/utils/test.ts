@@ -16,47 +16,44 @@ import {
   linearAdapterToRaw,
 } from "./convertToRawData";
 
-// export async function generateChart(adapter: Protocol): Promise<ChartData> {
-//   let adapterResults = await adapter;
-//   //if (adapterResults.length == null) adapterResults = [adapterResults];
-//   const rawResults = adapterResults.map((r: AdapterResult) => {
-//     switch (r.type) {
-//       case "step":
-//         return stepAdapterToRaw(<StepAdapterResult>r);
-//       case "cliff":
-//         return cliffAdapterToRaw(<CliffAdapterResult>r);
-//       case "linear":
-//         return linearAdapterToRaw(<LinearAdapterResult>r);
-//       default:
-//         return [];
-//     }
-//   });
-
-//   const bigUnixTime: number = 10_000_000_000;
-//   const startTime: number = Math.min(
-//     ...adapterResults.map((r: AdapterResult) =>
-//       r.start == null ? bigUnixTime : r.start,
-//     ),
-//   );
-
-//   const data = rawResults.map((r: RawResult[]) => rawToChartData(r, startTime));
-
-//   const xAxis: number[] = Array.from(
-//     Array(
-//       Number(Math.max(...data.map((d: ChartYAxisData) => d.data.length))),
-//     ).keys(),
-//   ).map((i: number) => startTime + i * data[0].increment);
-
-//   return { data, xAxis };
-// }
-async function generateChart(adapter: Protocol): Promise<ChartData> {
-  const a = await Promise.all(
+async function generateChart(adapter: Protocol): Promise<any> {
+  return await Promise.all(
     Object.entries(adapter).map(async (a: any[]) => {
       const section = a[0];
-      const emissions = await a[1];
-      return { section, emissions };
+      let adapterResults = await a[1];
+      if (adapterResults.length == null) adapterResults = [adapterResults];
+
+      const rawResults = adapterResults.flat().map((r: AdapterResult) => {
+        switch (r.type) {
+          case "step":
+            return stepAdapterToRaw(<StepAdapterResult>r);
+          case "cliff":
+            return cliffAdapterToRaw(<CliffAdapterResult>r);
+          case "linear":
+            return linearAdapterToRaw(<LinearAdapterResult>r);
+          default:
+            throw new Error(`invalid adapter type: ${r.type}`);
+        }
+      });
+      const bigUnixTime: number = 10_000_000_000;
+      const startTime: number = Math.min(
+        ...adapterResults.map((r: AdapterResult) =>
+          r.start == null ? bigUnixTime : r.start,
+        ),
+      );
+
+      const data = rawResults.map((r: RawResult[]) =>
+        rawToChartData(r, startTime),
+      );
+
+      const xAxis: number[] = Array.from(
+        Array(
+          Number(Math.max(...data.map((d: ChartYAxisData) => d.data.length))),
+        ).keys(),
+      ).map((i: number) => startTime + i * data[0].increment);
+
+      return { data, xAxis, section };
     }),
   );
-  return { data: [], xAxis: [] };
 }
 generateChart(tornado); // ts-node utils/test.ts

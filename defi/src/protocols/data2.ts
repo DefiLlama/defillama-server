@@ -22710,6 +22710,29 @@ listedAt: 1650804679
   parentProtocol: "Kujira",
   listedAt: 1673816826
 },
+  {
+  id: "2443",
+  name: "USK",
+  address: null,
+  symbol: "-",
+  url: "https://blue.kujira.app",
+  description:
+    "Fully decentralised, overcollateralised stablecoin",
+  chain: "Kujira",
+  logo: `${baseIconsUrl}/kujira.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Kujira"],
+  module: "kujira/index.js",
+  twitter: "TeamKujira",
+  oracles: [],
+  forkedFrom: [],
+  parentProtocol: "Kujira",
+  listedAt: 1673816828
+},
 ]
 
 export default data2;

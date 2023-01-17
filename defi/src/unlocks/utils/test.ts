@@ -15,9 +15,10 @@ import {
   cliffAdapterToRaw,
   linearAdapterToRaw,
 } from "./convertToRawData";
+import * as echarts from "echarts";
 
-async function generateChart(adapter: Protocol): Promise<any> {
-  return await Promise.all(
+export async function parseData(adapter: Protocol): Promise<any> {
+  let a = await Promise.all(
     Object.entries(adapter).map(async (a: any[]) => {
       const section = a[0];
       let adapterResults = await a[1];
@@ -55,5 +56,50 @@ async function generateChart(adapter: Protocol): Promise<any> {
       return { data, xAxis, section };
     }),
   );
+  return a;
 }
-generateChart(tornado); // ts-node utils/test.ts
+async function drawChart(data: any): Promise<any> {
+  data;
+  const series = [];
+  const chartDom = document.getElementById("main");
+  if (chartDom == null) return;
+  const myChart = echarts.init(chartDom);
+  const option = {
+    title: "Hi",
+    legend: [],
+    toolbox: { feature: { saveAsImage: {} } },
+    grid: [],
+    xAxis: {
+      type: "value",
+      data: [],
+    },
+    yAxis: {
+      type: "value",
+    },
+    series: [
+      {
+        name: "",
+        type: "line",
+        stack: "Total",
+        areaStyle: {},
+        emphasis: { focus: "series" },
+        data: [],
+      },
+    ],
+  };
+  option && myChart.setOption(option);
+  console.log(
+    myChart.getDataURL({
+      pixelRatio: 2,
+      backgroundColor: "#fff",
+    }),
+  );
+  return;
+}
+async function generateChart(adapter: Protocol): Promise<any> {
+  const data = await parseData(adapter);
+  await drawChart(data);
+}
+export async function main() {
+  await generateChart(tornado); // ts-node utils/test.ts
+}

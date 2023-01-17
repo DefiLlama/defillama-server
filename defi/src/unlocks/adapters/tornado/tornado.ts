@@ -23,10 +23,10 @@ export default async function main(
     call({ target, abi: abi.beneficiary, chain }),
     call({ target, abi: abi.token, chain }),
   ]);
-  const [beforeCliffQty, afterCliffQty, beforeStepQty, afterStepQty] =
-    await Promise.all([
-      call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[0] }),
-      call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[1] }),
+  const //[beforeCliffQty, afterCliffQty,
+    [beforeStepQty, afterStepQty] = await Promise.all([
+      // call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[0] }),
+      // call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[1] }),
       call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[2] }),
       call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[3] }),
     ]);
@@ -41,12 +41,12 @@ export default async function main(
       receiver,
       token,
     },
-    {
-      type: "cliff",
-      start: start + secondsPerMonth * cliffDuration,
-      amount: afterCliffQty - beforeCliffQty,
-      receiver,
-      token,
-    },
+    // {
+    //   type: "cliff",
+    //   start: start + secondsPerMonth * cliffDuration,
+    //   amount: afterCliffQty - beforeCliffQty,
+    //   receiver,
+    //   token,
+    // },
   ];
 }

@@ -81,10 +81,7 @@ provider:
     #EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     #FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
     #DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
-    FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-    VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
-    TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
     DEFILLAMA_SDK_MUTED: true
     PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
@@ -389,6 +386,8 @@ functions:
     handler: src/storeTvlInterval.default
     timeout: 900
     memorySize: 512
+    environment:
+      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     timeout: 900
@@ -405,6 +404,9 @@ functions:
       - http:
           path: overview/{type}/{chain}
           method: get
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   getProtocolSummary:
     handler: src/adaptors/handlers/getProtocol/index.default
     timeout: 30
@@ -413,6 +415,9 @@ functions:
       - http:
           path: summary/{type}/{name}
           method: get
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   storeAdaptorData:
     handler: src/adaptors/handlers/storeAdaptorData/index.default
     timeout: 900
@@ -427,6 +432,9 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 2,13 * * ? *)
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   triggerNotifyStatus:
     handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900

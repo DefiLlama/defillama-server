@@ -76,5 +76,8 @@ export type Protocol = {
     | AdapterResult[][]
     | StepAdapterResult
     | CliffAdapterResult
-    | LinearAdapterResult;
+    | LinearAdapterResult
+    | StepAdapterResult[]
+    | CliffAdapterResult[]
+    | LinearAdapterResult[];
 };

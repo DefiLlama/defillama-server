@@ -22806,5 +22806,28 @@ listedAt: 1650804679
   forkedFrom: ["GMX"],
   listedAt: 1673950178
 },
+{
+  id: "2447",
+  name: "xBacked",
+  address: "algorand:760037151",
+  symbol: "xUSD",
+  url: "https://www.xbacked.io",
+  description:
+    "The xUSD stablecoin is a decentralized, over-collateralized cryptocurrency pegged to the US Dollar. xUSD is supported on the Algorand blockchain.",
+  chain: "Algorand",
+  logo: `${baseIconsUrl}/xbacked.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Algorand"],
+  module: "xbacked/index.js",
+  twitter: "xbacked",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://github.com/xBacked-DAO/xbacked-audits"],
+  listedAt: 1673954939
+},
 ]
 export default data2;

@@ -22816,7 +22816,7 @@ listedAt: 1650804679
     "The xUSD stablecoin is a decentralized, over-collateralized cryptocurrency pegged to the US Dollar. xUSD is supported on the Algorand blockchain.",
   chain: "Algorand",
   logo: `${baseIconsUrl}/xbacked.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -22828,6 +22828,29 @@ listedAt: 1650804679
   forkedFrom: [],
   audit_links: ["https://github.com/xBacked-DAO/xbacked-audits"],
   listedAt: 1673954939
+},
+{
+  id: "2448",
+  name: "SteakHut Liquidity",
+  address: null,
+  symbol: "-",
+  url: "https://www.steakhut.finance",
+  description:
+    " Automate and optimize concentrated liquidity.",
+  chain: "Avalanche ",
+  logo: `${baseIconsUrl}/steakhut-liquidity.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Avalanche", "Arbitrum"],
+  module: "steakHut-lb/index.js",
+  twitter: "steakhut_fi",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
+  listedAt: 1673961705
 },
 ]
 export default data2;

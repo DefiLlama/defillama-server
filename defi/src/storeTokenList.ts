@@ -57,6 +57,7 @@ const handler = async () => {
         name: coin.name,
         symbol: coin.symbol,
         logoURI: allLogos[coin.id],
+        platforms: coin.platforms,
     }))), true, false)
 };
 

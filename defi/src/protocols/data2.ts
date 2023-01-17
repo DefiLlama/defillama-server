@@ -22758,5 +22758,53 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1673872039
 },
+{
+  id: "2445",
+  name: "GumBall Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://www.gumball.fi",
+  description:
+    "GumBall Protocol is a Liquid NFT creation and trading hub.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/gumball-protocol.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Arbitrum"],
+  module: "gumball/index.js",
+  twitter: "GumBallProtocol",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: [
+                  "https://github.com/zokyo-security/audit-reports/blob/main/Gumball_Zokyo%20audit%20report.pdf",
+                  "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-GumBallV2-v1.0.pdf",
+               ],
+  listedAt: 1673950175
+},
+{
+  id: "2446",
+  name: "BayMax",
+  address: "avax:0x18706c65b12595EDB43643214EacDb4F618DD166",
+  symbol: "BAYMAX",
+  url: "https://www.baymax.fi",
+  description:
+    "Decentralized -Perpetual Exchange. Trade BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/baymax.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Avalanche"],
+  module: "baymax/index.js",
+  twitter: "baymaxfi",
+  oracles: [],
+  forkedFrom: ["GMX"],
+  listedAt: 1673950178
+},
 ]
 export default data2;

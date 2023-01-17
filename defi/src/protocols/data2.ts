@@ -22837,7 +22837,7 @@ listedAt: 1650804679
   url: "https://www.steakhut.finance",
   description:
     " Automate and optimize concentrated liquidity.",
-  chain: "Avalanche ",
+  chain: "Avalanche",
   logo: `${baseIconsUrl}/steakhut-liquidity.png`,
   audits: "2",
   audit_note: null,

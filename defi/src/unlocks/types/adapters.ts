@@ -25,7 +25,7 @@ export type AdapterResult = {
   amount: number;
   steps?: number;
   cliff?: number;
-  duration?: number;
+  stepDuration?: number;
   receiver: string;
   token: string;
 };
@@ -36,7 +36,7 @@ export type RawResult = {
 };
 export type StepAdapterResult = {
   start: number;
-  duration: number;
+  stepDuration: number;
   steps: number;
   amount: number;
   type: string;
@@ -61,6 +61,7 @@ export type ChartYAxisData = {
   start: number;
   increment: number;
   data: number[];
+  end: number;
 };
 export type Protocol = {
   [section: string]:

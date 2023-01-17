@@ -15,10 +15,11 @@ import {
   cliffAdapterToRaw,
   linearAdapterToRaw,
 } from "./convertToRawData";
-import * as echarts from "echarts";
 
 export async function parseData(adapter: Protocol): Promise<any> {
-  let a = await Promise.all(
+  let xAxis: number[] = [];
+
+  const yAxis = await Promise.all(
     Object.entries(adapter).map(async (a: any[]) => {
       const section = a[0];
       let adapterResults = await a[1];
@@ -36,6 +37,7 @@ export async function parseData(adapter: Protocol): Promise<any> {
             throw new Error(`invalid adapter type: ${r.type}`);
         }
       });
+
       const bigUnixTime: number = 10_000_000_000;
       const startTime: number = Math.min(
         ...adapterResults.map((r: AdapterResult) =>
@@ -47,59 +49,17 @@ export async function parseData(adapter: Protocol): Promise<any> {
         rawToChartData(r, startTime),
       );
 
-      const xAxis: number[] = Array.from(
-        Array(
-          Number(Math.max(...data.map((d: ChartYAxisData) => d.data.length))),
-        ).keys(),
-      ).map((i: number) => startTime + i * data[0].increment);
+      data.map((d: any) => {
+        xAxis = [...new Set([...d.xAxis, ...xAxis])];
+      });
+      return { data, section };
+    }),
+  );
 
-      return { data, xAxis, section };
-    }),
-  );
-  return a;
+  return { xAxis, yAxis };
 }
-async function drawChart(data: any): Promise<any> {
-  data;
-  const series = [];
-  const chartDom = document.getElementById("main");
-  if (chartDom == null) return;
-  const myChart = echarts.init(chartDom);
-  const option = {
-    title: "Hi",
-    legend: [],
-    toolbox: { feature: { saveAsImage: {} } },
-    grid: [],
-    xAxis: {
-      type: "value",
-      data: [],
-    },
-    yAxis: {
-      type: "value",
-    },
-    series: [
-      {
-        name: "",
-        type: "line",
-        stack: "Total",
-        areaStyle: {},
-        emphasis: { focus: "series" },
-        data: [],
-      },
-    ],
-  };
-  option && myChart.setOption(option);
-  console.log(
-    myChart.getDataURL({
-      pixelRatio: 2,
-      backgroundColor: "#fff",
-    }),
-  );
-  return;
-}
-async function generateChart(adapter: Protocol): Promise<any> {
-  const data = await parseData(adapter);
-  await drawChart(data);
-}
+
 export async function main() {
-  await generateChart(tornado); // ts-node utils/test.ts
+  const data = await parseData(tornado); // ts-node defi/src/unlocks/utils/test.ts
 }
+main();

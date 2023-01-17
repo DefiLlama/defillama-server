@@ -16,37 +16,40 @@ export default async function main(
   ).map((r: any) => ("block" in r ? r.block : r.number));
 
   const secondsPerMonth = periodToSeconds.day * 30;
-  const [cliffDuration, steps, start, receiver, token] = await Promise.all([
+  const [cliffDuration, steps, origin, receiver, token] = await Promise.all([
     call({ target, abi: abi.cliffInMonths, chain }),
     call({ target, abi: abi.durationInMonths, chain }),
     call({ target, abi: abi.startTimestamp, chain }),
     call({ target, abi: abi.beneficiary, chain }),
     call({ target, abi: abi.token, chain }),
   ]);
-  const //[beforeCliffQty, afterCliffQty,
-    [beforeStepQty, afterStepQty] = await Promise.all([
-      // call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[0] }),
-      // call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[1] }),
+
+  const [beforeCliffQty, afterCliffQty, beforeStepQty, afterStepQty] =
+    await Promise.all([
+      call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[0] }),
+      call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[1] }),
       call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[2] }),
       call({ target, abi: abi.vestedAmount, chain, block: eventBlocks[3] }),
     ]);
+
+  const start = Number(origin) + Number(secondsPerMonth * cliffDuration);
 
   return [
     {
       type: "step",
       start,
-      duration: steps * secondsPerMonth,
+      stepDuration: secondsPerMonth,
       amount: afterStepQty - beforeStepQty,
-      steps,
+      steps: steps - cliffDuration,
       receiver,
       token,
     },
-    // {
-    //   type: "cliff",
-    //   start: start + secondsPerMonth * cliffDuration,
-    //   amount: afterCliffQty - beforeCliffQty,
-    //   receiver,
-    //   token,
-    // },
+    {
+      type: "cliff",
+      start,
+      amount: afterCliffQty - beforeCliffQty,
+      receiver,
+      token,
+    },
   ];
 }

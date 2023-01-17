@@ -1,7 +1,4 @@
 import { ChartData, ChartYAxisData, RawResult } from "../types/adapters";
-import { periodToSeconds } from "./time";
-
-const increment = periodToSeconds.week;
 
 export function rawToChartData(
   raw: RawResult[],
@@ -11,42 +8,44 @@ export function rawToChartData(
     ? discreetRawToChart(raw, start)
     : continuousRawToChart(raw, start);
 }
-function discreetRawToChart(raw: RawResult[], start: number): ChartYAxisData {
-  const data: number[] = [];
-  let workingTimestamp: number = start;
-  let workingAmount: number = 0;
+function discreetRawToChart(raw: RawResult[], start: number): any {
+  const xAxis: number[] = [];
+  const yAxis: number[] = [];
   raw.sort((r: RawResult) => r.timestamp);
 
-  for (let i = 0; i < raw.length; i++) {
-    while (workingTimestamp < raw[i].timestamp) {
-      data.push(workingAmount);
-      workingTimestamp += increment;
-    }
-    const change = Number(raw[i].change);
-    data.push(change);
-    workingAmount += change;
+  if (raw[0].timestamp != start) {
+    yAxis.push(0);
+    xAxis.push(start);
   }
 
-  return { start, increment, data };
+  let quantity: number = 0;
+  raw.map((r: RawResult) => {
+    quantity += r.change;
+    yAxis.push(quantity);
+    xAxis.push(r.timestamp);
+  });
+
+  return { xAxis, yAxis, isContinuous: false };
 }
-function continuousRawToChart(raw: RawResult[], start: number): ChartYAxisData {
-  const data: number[] = [];
-  let workingTimestamp: number = start;
-  let workingAmount: number = 0;
+function continuousRawToChart(raw: RawResult[], start: number): any {
+  const xAxis: number[] = [];
+  const yAxis: number[] = [];
   raw.sort((r: RawResult) => r.timestamp);
 
-  for (let i = 0; i < raw.length; i++) {
-    // number of 'inmcrement' in duration
-    const dx = ((raw[i].continuousEnd || 0) - raw[i].timestamp) / increment;
-    // inflation per 'increment'
-    const dy = raw[i].change / dx;
-
-    while (workingTimestamp < (raw[i].continuousEnd || 0)) {
-      if (workingTimestamp > raw[i].timestamp) workingAmount += dy;
-      data.push(workingAmount);
-      workingTimestamp += increment;
-    }
+  if (raw[0].timestamp != start) {
+    yAxis.push(0);
+    xAxis.push(start);
   }
 
-  return { start, increment, data };
+  let quantity: number = 0;
+  raw.map((r: RawResult) => {
+    if (r.continuousEnd == null) return;
+    yAxis.push(quantity);
+    xAxis.push(r.timestamp);
+    quantity += r.change;
+    yAxis.push(quantity);
+    xAxis.push(r.continuousEnd);
+  });
+
+  return { xAxis, yAxis, isContinuous: true };
 }

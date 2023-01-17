@@ -11,7 +11,7 @@ export default async function main(
     amount,
     steps,
     cliffDuration,
-    duration,
+    stepDuration,
     started,
     receiver,
     token,
@@ -29,7 +29,7 @@ export default async function main(
   const start = Number(started) + Number(cliffDuration);
 
   return [
-    { type: "step", start, duration, amount, steps, receiver, token },
+    { type: "step", start, stepDuration, amount, steps, receiver, token },
     {
       type: "cliff",
       start,

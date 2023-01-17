@@ -6,10 +6,10 @@ import {
 
 export const manualStep = (
   start: number,
-  duration: number,
+  stepDuration: number,
   steps: number,
   amount: number,
-): StepAdapterResult => ({ type: "step", start, duration, steps, amount });
+): StepAdapterResult => ({ type: "step", start, stepDuration, steps, amount });
 
 export const manualCliff = (
   start: number,

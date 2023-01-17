@@ -714,6 +714,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TeamKujira",
   },
+  {
+    id: "SteakHut Finance",
+    name: "SteakHut Finance",
+    url: "https://www.steakhut.finance",
+    description:
+    "Discover endless DeFi opportunities, join the liquidity layer of Avalanche.",
+    logo: `${baseIconsUrl}/steakhut-finance.png`,
+    gecko_id: "steakhut-finance",
+    cmcId: "20266",
+    chains: [],
+    twitter: "steakhut_fi",
+  },
 ];
 
 export default parentProtocols;

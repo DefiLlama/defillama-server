@@ -8155,6 +8155,7 @@ listedAt: 1650804679
   module: "steakHut/index.js",
   twitter: "steakhut_fi",
   audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
+  parentProtocol: "SteakHut Finance",
   listedAt: 1653410101
 },
 {
@@ -22850,6 +22851,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
+  parentProtocol: "SteakHut Finance",
   listedAt: 1673961705
 },
 {

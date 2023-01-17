@@ -22836,7 +22836,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://www.steakhut.finance",
   description:
-    " Automate and optimize concentrated liquidity.",
+    "Automate and optimize concentrated liquidity.",
   chain: "Avalanche",
   logo: `${baseIconsUrl}/steakhut-liquidity.png`,
   audits: "2",
@@ -22851,6 +22851,33 @@ listedAt: 1650804679
   forkedFrom: [],
   audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
   listedAt: 1673961705
+},
+{
+  id: "2449",
+  name: "Commodo",
+  address: null,
+  symbol: "-",
+  url: "https://app.commodo.one",
+  description:
+    "Borrowing/Lending Platform on Comdex",
+  chain: "Comdex",
+  logo: `${baseIconsUrl}/commodo.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Comdex"],
+  module: "commodo/index.js",
+  twitter: "Commodo_Finance",
+  oracles: ["Band"],
+  forkedFrom: [],
+  audit_links: [
+                  "https://github.com/oak-security/audit-reports/blob/master/Comdex/2022-10-28%20Audit%20Report%20-%20Comdex%20Locking%20and%20Vesting%20Contracts%20v1.0.pdf",
+                  "https://github.com/oak-security/audit-reports/blob/master/Comdex/2022-11-23%20Audit%20Report%20-%20Comdex%20Lend%20and%20Liquidation%20Modules%20v1.0.pdf",
+                  "https://github.com/oak-security/audit-reports/blob/master/Comdex/2022-12-07%20Audit%20Report%20-%20Comdex%20v1.0.pdf",
+               ],
+  listedAt: 1673965094
 },
 ]
 export default data2;

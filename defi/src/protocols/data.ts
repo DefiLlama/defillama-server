@@ -24381,7 +24381,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "ftm-guru",
     cmcId: "13436",
     category: "Options",
-    chains: ["Fantom", "Echelon", "KCC", "MultiVAC"],
+    chains: ["Fantom", "KCC", "MultiVAC"],
     module: "Guru/index.js",
     twitter: "FTM1337",
     oracles: ["Band"],

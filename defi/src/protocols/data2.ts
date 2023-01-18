@@ -21662,7 +21662,7 @@ listedAt: 1650804679
                  "https://obeliskauditing.com/audits/level-finance-trading",],
   listedAt: 1672230595
 },
-{
+/* {
   id: "2396", 
   name: "BlueMove",
   address: null,
@@ -21683,7 +21683,7 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1672334345
-},
+}, */
 {
   id: "2397", 
   name: "Gyroscope Protocol",

@@ -738,5 +738,8 @@ export default {
     },
     "aequinox": {
         enabled: true
+    },
+    "vexchange": {
+        enabled: true
     }
 } as AdaptorsConfig

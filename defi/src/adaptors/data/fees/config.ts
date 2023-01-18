@@ -280,5 +280,8 @@ export default {
     },
     "el-dorado-exchange": {
         enabled: true
+    },
+    "gearbox": {
+        enabled: true
     }
 } as AdaptorsConfig

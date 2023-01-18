@@ -22881,5 +22881,49 @@ listedAt: 1650804679
                ],
   listedAt: 1673965094
 },
+{
+  id: "2450",
+  name: "BullionFX",
+  address: "0xb439b8731ee047799019ef0b745a51d256b116af",
+  symbol: "BULL",
+  url: "https://app.bullionfx.com/trade",
+  description:
+    "Our mission is to bring currency back to the gold standard that can be trusted again. We are democratising access and ownership of gold – therefore allowing everyone to build their wealth safely in a new global economy.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bullionfx.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "bullionfx",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Ethereum"],
+  module: "bullionFX/index.js",
+  twitter: "BullionFx",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674041471
+},
+{
+  id: "2451",
+  name: "Quadrat",
+  address: null,
+  symbol: "-",
+  url: "https://plasma.finance/quadrat",
+  description:
+    "Quadrat is an active liquidity management protocol for Uniswap v3 with Strategy Vaults provided by 0xPlasma Labs. You can provide liquidity in highly capital-efficient Quadrat vaults to earn the highest fees and APY from Uniswap v3 Pools. Asset Managers can create their own strategies for Uniswap v3 pool to manage their capital or attract external capital to strategies.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/quadrat.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum", "Polygon", "Arbitrum", "Optimism"],
+  module: "quadrat/index.js",
+  twitter: "0xQuadrat",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674041475
+},
 ]
 export default data2;

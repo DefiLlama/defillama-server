@@ -7,17 +7,6 @@ export default {
         enabled: true
     },
     "pancakeswap": {
-        protocolsData: {
-            'v1': {
-                enabled: true
-            },
-            'v2': {
-                enabled: true
-            },
-            'stableswap': {
-                enabled: false
-            }
-        },
         enabled: true
     }
 } as AdaptorsConfig

@@ -41,7 +41,7 @@ jobs:
           key: ${{ runner.os }}-jest-${{ env.TODAY }}
       - run: cd DefiLlama-Adapters && git checkout main && git pull
       - run: cd dimension-adapters && git checkout master && git pull
-      - run: npm i
+      - run: npm  ci || npm i
       - name: Run tests
         run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
         env:

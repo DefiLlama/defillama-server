@@ -24,6 +24,7 @@ const map = {
 }
 
 const listToMap = <T>(list: T[], key: string) => list.reduce((acc, curr) => {
+    console.log("Processing", curr)
     const keyMap = (curr as IJSON<string>)[key] as string
     return { ...acc, [keyMap]: curr }
 }, {} as IJSON<T>)

@@ -83,7 +83,7 @@ provider:
     #DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
     DEFILLAMA_SDK_MUTED: true
-    PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
+    #PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
     INDEXER_DB: ${file(./env.js):INDEXER_DB}
@@ -470,7 +470,7 @@ functions:
   tokenlist:
     handler: src/storeTokenList.default
     timeout: 900
-    memorySize: 1024
+    memorySize: 512
     events:
       - schedule: cron(20 * * * ? *)
   missedUpdates:

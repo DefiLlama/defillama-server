@@ -28,6 +28,9 @@ export default {
                 category: 'Derivatives'
             }
         }
+    },
+    'opyn': {
+        displayName: "Opyn Gamma"
     }
 } as IJSON<Partial<ProtocolAdaptor>>
 

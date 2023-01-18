@@ -22925,5 +22925,28 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1674041475
 },
+{
+  id: "2452",
+  name: "Metropolis",
+  address: null,
+  symbol: "-",
+  url: "https://metropolis.exchange",
+  description:
+    "Metropolis is a Liquidity Book AMM on Fantom focused on offering a premier trading experience with zero slippage and low fees.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/metropolis.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom"],
+  module: "metropolis/index.js",
+  twitter: "MetropolisDEX",
+  oracles: [],
+  forkedFrom: ["TraderJoe"],
+  listedAt: 1674059066
+},
+
 ]
 export default data2;

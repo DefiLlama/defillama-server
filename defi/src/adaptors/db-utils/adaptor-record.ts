@@ -137,18 +137,18 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
     const obj2Store: IRecordAdaptorRecordData = {
         ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
             const currentChainValue = acc[chain]
-            if (typeof data === 'number' || typeof currentChainValue === 'number') return acc
+            if (typeof data === 'number' || typeof currentChainValue === 'number' || chain === 'error') return acc
             const clean_chain = replaceReservedKeyword(chain)
             acc[clean_chain] = {
                 ...currentChainValue,
                 ...data
             }
             return acc
-        }, currentData),
+        }, {} as IRecordAdaptorRecordData),
         eventTimestamp
     }
     try {
-        console.log("Storing", adaptorRecord)
+        console.log("Storing", adaptorRecord, adaptorRecord.keys())
         await dynamodb.update({
             Key: adaptorRecord.keys(),
             UpdateExpression: createUpdateExpressionFromObj(obj2Store),

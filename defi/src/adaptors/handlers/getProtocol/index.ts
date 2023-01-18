@@ -71,7 +71,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
 
     if (!dexData) return notFoundResponse({
         message: `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
-    }, 10*60)
+    }, 10 * 60)
     let dexDataResponse = {}
     try {
         const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)

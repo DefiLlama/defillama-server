@@ -61,9 +61,8 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
             const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
             const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
             const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
-            return {
+            const infoItem = {
                 ...dexFoundInProtocols,
-                ...overridesObj[adapterKey],
                 module: adapterKey,
                 config: config[adapterKey],
                 category: displayCategory,
@@ -79,8 +78,10 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                     moduleObject,
                     displayCategory ?? '',
                     childCategories
-                )
+                ),
+                ...overridesObj[adapterKey],
             }
+            return infoItem
         }
         // TODO: Handle better errors
         console.error(`Missing info for ${adapterKey}`)

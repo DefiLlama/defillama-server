@@ -14,4 +14,6 @@ export const KEYS_TO_STORE = {
 
 export { default as config } from "./config";
 
+export { default as dex_imports } from "../../../utils/imports/dexs_adapters"
+
 export default generateProtocolAdaptorsList(dex_imports, config)

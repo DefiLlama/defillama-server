@@ -533,7 +533,7 @@ const data: Protocol[] = [
     gecko_id: "barnbridge",
     cmcId: "7440",
     category: "Yield Aggregator",
-    chains: ["Ethereum", "Polygon", "Avalanche", "Optimism", "Binance", "Arbitrum"],
+    chains: ["Ethereum", "Arbitrum"],
     module: "barnbridge/index.js",
     twitter: "Barn_Bridge",
     audit_links: ["https://github.com/BarnBridge/BarnBridge-PM/tree/master/audits"],

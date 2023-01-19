@@ -741,5 +741,8 @@ export default {
     },
     "vexchange": {
         enabled: true
+    },
+    "metropolis": {
+        enabled: true
     }
 } as AdaptorsConfig

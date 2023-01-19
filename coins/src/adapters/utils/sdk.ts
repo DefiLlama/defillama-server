@@ -28,7 +28,8 @@ export async function requery(
 
 export async function getApi(
   chain: string,
-  timestamp: number | undefined = 0
+  timestamp: number | undefined = 0,
+  alwaysGetBlock?: boolean
 ): Promise<sdk.ChainApi> {
   const api = new sdk.ChainApi({ chain })
   const timeNow = Date.now() / 1e3
@@ -37,7 +38,8 @@ export async function getApi(
     api.timestamp = timestamp
     await api.getBlock()
   } else {
-    api.timestamp = 0
+    api.timestamp = Math.floor(timeNow)
+    if (alwaysGetBlock) await api.getBlock()
   }
   return api
 }

@@ -22,6 +22,7 @@ export default {
   misc4626: require("./yield/misc4626/index"),
   vesper: require("./yield/vesper/index"),
   yieldProtocol: require("./yield/yield-protocol/index"),
+  timeless: require("./yield/timeless/index"),
   beefy: require("./yield/beefy/index"),
   platypus: require("./markets/platypus/index"),
   curve1: require("./markets/curve/index"),

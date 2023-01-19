@@ -1,15 +1,19 @@
 
 import * as sdk from '@defillama/sdk'
+import * as ethers from 'ethers'
 import { getCache, setCache } from './index'
 import getBlock from './../../adapters/utils/block'
 
 const cacheFolder = 'logs'
 
 export interface logOptions {
+  api?: sdk.ChainApi;
   chain?: string;
   topic?: string;
   keys?: any;
   topics?: any;
+  eventAbi?: any;
+  onlyArgs?: boolean;
   target: string;
   timestamp?: number;
   toBlock?: number;
@@ -19,7 +23,13 @@ export interface logOptions {
 export async function getLogs(options: logOptions) {
   let { chain = 'ethereum', target,
     topic, keys = [], fromBlock, toBlock, topics,
-    timestamp, } = options
+    timestamp, api, eventAbi, onlyArgs } = options
+
+  if (api) {
+    if (api.chain) chain = api.chain
+    if (api.block) toBlock = api.block as number
+    if (api.timestamp) timestamp = api.timestamp
+  }
 
   if (!target) throw new Error('Missing target!')
   if (!fromBlock) throw new Error('Missing fromBlock!')
@@ -62,7 +72,15 @@ export async function getLogs(options: logOptions) {
 
   await setCache(cacheFolder, key, cache)
 
-  return cache.logs
+  if (!eventAbi) return cache.logs
+
+  return cache.logs.map((log: any) => {
+    const iface = new ethers.utils.Interface([eventAbi])
+    const res = iface.parseLog(log)
+    if (onlyArgs) return res.args
+    // res.topics = log.topics.map(i => `0x${i.slice(26)}`)
+    return res
+  })
 
   async function _getCache(key: string) {
     let cache = await getCache(cacheFolder, key)

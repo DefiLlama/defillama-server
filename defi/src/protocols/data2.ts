@@ -22947,6 +22947,71 @@ listedAt: 1650804679
   forkedFrom: ["TraderJoe"],
   listedAt: 1674059066
 },
-
+{
+  id: "2453",
+  name: "Doglands Swap",
+  address: "dogechain:0x106E6a2D54332247441c1Cdf4E3e24a0696a46d0",
+  symbol: "GIL",
+  url: "https://swap.doglands.dog",
+  description:
+    "Doglands is a multi-purpose GameFi and DeFi protocol that seeks to incorporate various DeFi primitives - decentralized trading, lending markets into a fully playable roguelite with immutable, on-chain progression. GIL tokens allow you to participate in various wealth creation activities of the protocol, such as fees from the revenue streams that the protocol generates over time, access to various in-game items and more.",
+  chain: "Dogechain",
+  logo: `${baseIconsUrl}/doglands-swap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Dogechain"],
+  module: "doglands-swap/index.js",
+  twitter: "DoglandsDC",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674124870
+},
+{
+  id: "2453",
+  name: "GETH",
+  address: "0x3802c218221390025bceabbad5d8c59f40eb74b8",
+  symbol: "GETH",
+  url: "https://guarda.com/staking/ethereum-staking/",
+  description:
+    "With GETH, you can hold or trade your staked assets at any time, without having to wait for Phase 2 of Ethereum 2.0.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/geth.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "guarded-ether",
+  cmcId: "7908",
+  category: "Liquid Staking",
+  chains: ["Ethereum"],
+  module: "garuda-staking/index.js",
+  twitter: "GuardaWallet",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674124872
+},
+{
+  id: "2454",
+  name: "BETH",
+  address: "bsc:0x250632378E573c6Be1AC2f97Fcdf00515d0Aa91B",
+  symbol: "BETH",
+  url: "https://www.binance.com/en/eth2",
+  description:
+    "Binance tokenizes BETH for users that represent your staked ETH on a 1:1 basis, to keep using your locked assets for trading and withdrawals.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/beth.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "binance-eth",
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Ethereum"],
+  module: "binance-beth/index.js",
+  twitter: "binance",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674124874
+},
 ]
 export default data2;

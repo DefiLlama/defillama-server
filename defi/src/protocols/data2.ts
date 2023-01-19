@@ -8146,8 +8146,8 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/steakhut.png`,
   audits: "2",
   audit_note: null,
-  gecko_id: "steakhut-finance",
-  cmcId: "20266",
+  gecko_id: null,
+  cmcId: null,
   category: "Farm",
   chains: ["Avalanche"],
   oracles: [],
@@ -8155,7 +8155,7 @@ listedAt: 1650804679
   module: "steakHut/index.js",
   twitter: "steakhut_fi",
   audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
-  parentProtocol: "SteakHut Finance",
+  parentProtocol: "SteakHut-Finance",
   listedAt: 1653410101
 },
 {
@@ -22851,7 +22851,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
-  parentProtocol: "SteakHut Finance",
+  parentProtocol: "SteakHut-Finance",
   listedAt: 1673961705
 },
 {

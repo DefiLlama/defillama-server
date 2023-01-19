@@ -715,8 +715,8 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TeamKujira",
   },
   {
-    id: "SteakHut Finance",
-    name: "SteakHut Finance",
+    id: "SteakHut-Finance",
+    name: "SteakHut-Finance",
     url: "https://www.steakhut.finance",
     description:
     "Discover endless DeFi opportunities, join the liquidity layer of Avalanche.",

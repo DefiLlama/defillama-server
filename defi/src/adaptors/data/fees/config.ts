@@ -283,5 +283,8 @@ export default {
     },
     "gearbox": {
         enabled: true
+    },
+    "predy-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

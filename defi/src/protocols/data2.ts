@@ -22970,7 +22970,7 @@ listedAt: 1650804679
   listedAt: 1674124870
 },
 {
-  id: "2453",
+  id: "2454",
   name: "GETH",
   address: "0x3802c218221390025bceabbad5d8c59f40eb74b8",
   symbol: "GETH",
@@ -22992,7 +22992,7 @@ listedAt: 1650804679
   listedAt: 1674124872
 },
 {
-  id: "2454",
+  id: "2455",
   name: "BETH",
   address: "bsc:0x250632378E573c6Be1AC2f97Fcdf00515d0Aa91B",
   symbol: "BETH",

@@ -3074,7 +3074,7 @@ const data: Protocol[] = [
     gecko_id: "mirror-protocol",
     cmcId: "7857",
     category: "Derivatives",
-    chains: ["Terra", "Ethereum"],
+    chains: ["Terra"],
     module: "mirror/index.js",
     twitter: "mirror_protocol",
     audit_links: ["https://docsend.com/view/p4es2dgvwadamgqg"],

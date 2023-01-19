@@ -23015,5 +23015,50 @@ listedAt: 1650804679
   listedAt: 1674124874
 },
 */
+{
+  id: "2456",
+  name: "Bunni",
+  address: null,
+  symbol: "-",
+  url: "https://bunni.pro",
+  description:
+    "Bunni represents Uniswap v3 LP positions with fungible ERC-20 tokens, which makes it easier to incentivize liquidity and integrate Uniswap liquidity in other apps.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bunni.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum", "Arbitrum", "Optimism", "Polygon"],
+  module: "bunni/index.js",
+  twitter: "Timeless_Fi",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674140788
+},
+{
+  id: "2457",
+  name: "Vidya",
+  address: "0x3d3d35bb9bec23b06ca00fe472b50e7a4c692c30",
+  symbol: "VIDYA",
+  url: "https://vidya.game",
+  description:
+    "Vidya is a GameFi project bridging the gap between cryptocurrency and traditional gaming.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/vidya.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "vidya",
+  cmcId: "6709",
+  category: "Gaming",
+  chains: ["Ethereum"],
+  module: "vidya/index.js",
+  twitter: "Team3D_Official",
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  audit_links: ["https://www.certik.com/projects/vidya"],
+  listedAt: 1674140789
+},
 ]
 export default data2;

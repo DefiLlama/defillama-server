@@ -23137,7 +23137,7 @@ listedAt: 1650804679
   description:
     "Bridge between Ethereum and MultiversX",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/ad-astra bridge.png`,
+  logo: `${baseIconsUrl}/ad-astra-bridge.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

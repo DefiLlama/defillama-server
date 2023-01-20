@@ -23082,5 +23082,28 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1674183431
 },
+{
+  id: "2459",
+  name: "Neutra Finance",
+  address: null,
+  symbol: "-",
+  url: "https://neutra.finance",
+  description:
+    "Delivering risk-hedged, sustainable investment strategies easily accessible for anyone, anywhere.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/neutra-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Arbitrum"],
+  module: "neutra-finance/index.js",
+  twitter: "Neutrafinance",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://github.com/NeutraFinance/neutra-gmx-contracts/blob/master/audits/solidproof/v2_SmartContract_Audit_Solidproof_NeutraFinance.pdf"],
+  listedAt: 1674213134
+},
 ]
 export default data2;

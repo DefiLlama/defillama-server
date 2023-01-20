@@ -289,5 +289,8 @@ export default {
     },
     "verse": {
         enabled: true
+    },
+    "level-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

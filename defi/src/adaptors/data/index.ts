@@ -3,7 +3,7 @@ import { AdaptorData, IJSON, ProtocolAdaptor } from "./types";
 import dexs, { KEYS_TO_STORE as dexs_KEYS_TO_STORE, importModule as dexs_importModule, config as dexs_config, dex_imports as dexs_imports } from "./dexs"
 import derivatives, { KEYS_TO_STORE as derivatives_KEYS_TO_STORE, importModule as derivatives_importModule, config as derivatives_config, dex_imports as derivatives_imports } from "./derivatives"
 import fees, { KEYS_TO_STORE as fees_KEYS_TO_STORE, importModule as fees_importModule, config as fees_config, rules as fees_DimensionRules, fees_imports } from "./fees"
-import aggregators, { KEYS_TO_STORE as aggregators_KEYS_TO_STORE, importModule as aggregators_importModule, config as aggregators_config, dex_imports } from "./aggregators"
+import aggregators, { KEYS_TO_STORE as aggregators_KEYS_TO_STORE, importModule as aggregators_importModule, config as aggregators_config, dex_imports as aggregators_imports } from "./aggregators"
 import options, { KEYS_TO_STORE as options_KEYS_TO_STORE, importModule as options_importModule, config as options_config, options_imports } from "./options"
 import incentives, { KEYS_TO_STORE as incentives_KEYS_TO_STORE, importModule as incentives_importModule, config as incentives_config, incentives_imports } from "./incentives"
 import protocols, { KEYS_TO_STORE as protocols_KEYS_TO_STORE, importModule as protocols_importModule, config as protocols_config, protocols_imports } from "./protocols"
@@ -27,7 +27,7 @@ const importsMap = {
     dexs_imports,
     derivatives_imports,
     fees_imports,
-    dex_imports,
+    aggregators_imports,
     options_imports,
     incentives_imports,
     protocols_imports

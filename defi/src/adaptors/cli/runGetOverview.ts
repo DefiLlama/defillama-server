@@ -5,7 +5,7 @@ import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "dexs" },
+    pathParameters: { chain: undefined, type: "fees" },
     // queryStringParameters: {
     //     excludeTotalDataChart: "true",
     //     excludeTotalDataChartBreakdown: "true"

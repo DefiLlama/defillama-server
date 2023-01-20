@@ -23105,5 +23105,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/NeutraFinance/neutra-gmx-contracts/blob/master/audits/solidproof/v2_SmartContract_Audit_Solidproof_NeutraFinance.pdf"],
   listedAt: 1674213134
 },
+{
+  id: "2460",
+  name: "SkullSwap",
+  address: "fantom:0x9945Dd3eCB40A6b594813f2A4DF1643b10Fe3550",
+  symbol: "SKULL",
+  url: "https://skullswap.exchange",
+  description:
+    "SkullSwap is a decentralized exchange (DEX) built on the Fantom network that aims to bring concentrated liquidity to the ecosystem. With a focus on user experience and security, SkullSwap allows for fast, easy and safe trading of many tokens.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/skullswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Fantom"],
+  module: "skullswap/index.js",
+  twitter: "skullswapdex",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  listedAt: 1674226360
+},
 ]
 export default data2;

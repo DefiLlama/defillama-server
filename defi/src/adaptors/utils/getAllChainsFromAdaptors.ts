@@ -2,7 +2,7 @@ import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/dimension-adapters/ada
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
 import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
-import overrides from "../data/helpers/overrides";
+import { IOverrides } from "../data/helpers/overrides";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 
 export const getStringArrUnique = (arr: string[]) => {
@@ -86,7 +86,7 @@ export const getChainByProtocolVersion = (moduleAdapterName: string, moduleAdapt
     return chs[protV] ? chs[protV].includes(DISABLED_ADAPTER_KEY) : true
 } */
 
-export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, category?: string): ProtocolAdaptor['protocolsData'] => {
+export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, category?: string, overrides?: IOverrides): ProtocolAdaptor['protocolsData'] => {
     if (!category) throw new Error(`No category found for ${adapterKey}`)
     let methodology: IJSON<ProtocolAdaptor['methodology']> | undefined = undefined
     const defaultMethodology = getDefaultMethodologyByCategory(category)

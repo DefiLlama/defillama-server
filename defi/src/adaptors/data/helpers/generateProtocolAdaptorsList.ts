@@ -8,7 +8,7 @@ import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalize
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
 import { getMethodologyByType } from "./methodology";
-import overrides, { chainOverrides } from "./overrides";
+import overrides, { chainOverrides, IOverrides } from "./overrides";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -32,10 +32,10 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
 export type IImportsMap = IJSON<IImportObj>
 
 // This could be much more efficient
-export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdaptor[] =>
+export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] =>
     Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = data
-        let overridesObj = overrides
+        let overridesObj = overrides(type)
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
             overridesObj = chainOverrides
             list = chainData
@@ -69,7 +69,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                 chains: getAllChainsFromAdaptors([adapterKey], moduleObject),
                 disabled: isDisabled(moduleObject),
                 displayName,
-                protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category),
+                protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category, overridesObj),
                 protocolType: adapterObj.module.default?.protocolType,
                 methodologyURL: adapterObj.codePath,
                 methodology: getMethodologyData(
@@ -88,7 +88,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
         return undefined
     }).filter(notUndefined);
 
-function getDisplayCategory(adapter: Adapter, override: typeof overrides[string]) {
+function getDisplayCategory(adapter: Adapter, override: IOverrides[string]) {
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
         const versionName = Object.keys(adapter.breakdown)[0]
         return override?.protocolsData?.[versionName]?.category

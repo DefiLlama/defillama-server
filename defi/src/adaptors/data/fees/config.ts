@@ -292,5 +292,8 @@ export default {
     },
     "level-finance": {
         enabled: true
+    },
+    "blur": {
+        enabled: true
     }
 } as AdaptorsConfig

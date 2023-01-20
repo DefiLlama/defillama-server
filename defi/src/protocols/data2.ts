@@ -23105,6 +23105,7 @@ listedAt: 1650804679
   audit_links: ["https://github.com/NeutraFinance/neutra-gmx-contracts/blob/master/audits/solidproof/v2_SmartContract_Audit_Solidproof_NeutraFinance.pdf"],
   listedAt: 1674213134
 },
+/*
 {
   id: "2460",
   name: "SkullSwap",
@@ -23126,6 +23127,6 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Uniswap"],
   listedAt: 1674226360
-},
+},*/
 ]
 export default data2;

@@ -23107,7 +23107,7 @@ listedAt: 1650804679
 },
 /*
 {
-  id: "2460",  /// Soft launch until February 2023  
+  id: "2460", 
   name: "SkullSwap",
   address: "fantom:0x9945Dd3eCB40A6b594813f2A4DF1643b10Fe3550",
   symbol: "SKULL",
@@ -23127,13 +23127,13 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Uniswap"],
   listedAt: 1674226360
-},*/ 
+},*/
 {
   id: "2461",
   name: "Ad-Astra Bridge",
   address: null,
   symbol: "-",
-  url: "https://ad-astra.multiversx.com/ ",
+  url: "https://ad-astra.multiversx.com/",
   description:
     "Bridge between Ethereum and MultiversX",
   chain: "Ethereum",
@@ -23150,5 +23150,28 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1674236651
 },
+/*
+{
+  id: "2462",
+  name: "Cranium Exchange",
+  address: "fantom:0x9945Dd3eCB40A6b594813f2A4DF1643b10Fe3550",
+  symbol: "SKULL",
+  url: "https://cranium.exchange/",
+  description:
+    "Cranium is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/cranium-exchange.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Fantom"],
+  module: "cranium/index.js",
+  twitter: null,
+  oracles: ["Chainlink"],
+  forkedFrom: ["GMX"],
+  listedAt: 1674239023
+},*/
 ]
 export default data2;

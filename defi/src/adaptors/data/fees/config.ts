@@ -286,5 +286,8 @@ export default {
     },
     "predy-finance": {
         enabled: true
+    },
+    "verse": {
+        enabled: true
     }
 } as AdaptorsConfig

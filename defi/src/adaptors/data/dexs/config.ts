@@ -747,5 +747,8 @@ export default {
     },
     "verse": {
         enabled: true
+    },
+    "equalizer-exchange": {
+        enabled: true
     }
 } as AdaptorsConfig

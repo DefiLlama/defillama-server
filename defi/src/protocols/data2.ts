@@ -5452,7 +5452,7 @@ const data2: Protocol[] =  [
   address: null,
   symbol: "-",
   url: "https://www.predy.finance",
-  description: "Predy V2 is building on-chain Derivative Vaults connected to Automated Market Maker (AMM) with the following specification:Margin trading, up to 20x leverage as portfolio margin. USD Coin (USDC) is accepted as collateral.",
+  description: "The core of Predy v3 is the Tripartite Lending Protocol(TLP) as the middle protocol to handle ETH, USDC, and Uniswap LPT (applicable to any Token pair and its Uniswap LPT) to represent the status of lending as an perpetual option (LP fees = option premiums). Uniswap achieved path independence for total K by using only token-pair quantities, which Predy v3 inherits.  The measurement of the position's value against the debt is the key of lending protocol, and it maintains a positive value with the certain volatility of the underlying asset price, where It's verifiability and finality bring extension that other protocols have not been able to achieve due to external dependencies and administrative privileges.",
   chain: "Arbitrum",
   logo: `${baseIconsUrl}/predy-finance.png`,
   audits: "2",

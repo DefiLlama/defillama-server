@@ -23107,7 +23107,7 @@ listedAt: 1650804679
 },
 /*
 {
-  id: "2460",
+  id: "2460",  /// Soft launch until February 2023  
   name: "SkullSwap",
   address: "fantom:0x9945Dd3eCB40A6b594813f2A4DF1643b10Fe3550",
   symbol: "SKULL",
@@ -23127,6 +23127,28 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Uniswap"],
   listedAt: 1674226360
-},*/
+},*/ 
+{
+  id: "2461",
+  name: "Ad-Astra Bridge",
+  address: null,
+  symbol: "-",
+  url: "https://ad-astra.multiversx.com/ ",
+  description:
+    "Bridge between Ethereum and MultiversX",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ad-astra bridge.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Ethereum"],
+  module: "ad-astra/index.js",
+  twitter: "MultiversX",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674236651
+},
 ]
 export default data2;

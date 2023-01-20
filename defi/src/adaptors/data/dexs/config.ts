@@ -744,5 +744,8 @@ export default {
     },
     "metropolis": {
         enabled: true
+    },
+    "verse": {
+        enabled: true
     }
 } as AdaptorsConfig

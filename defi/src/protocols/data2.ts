@@ -23060,5 +23060,27 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/vidya"],
   listedAt: 1674140789
 },
+{
+  id: "2458",
+  name: "Unlockd",
+  address: null,
+  symbol: "-",
+  url: "https://unlockd.finance",
+  description:
+    "Earn yield and borrow against your NFTs with the safest loans on the market",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/unlockd.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  module: "unlockd/index.js",
+  twitter: "Unlockd_Finance",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674183431
+},
 ]
 export default data2;

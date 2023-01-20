@@ -138,5 +138,6 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'stargate') return id === "1571"
     if (key === 'thena') return id === "2417"
     if (key === 'verse') return id === "1732"
+    if (key === 'blur') return id === "2414"
     return true
 }

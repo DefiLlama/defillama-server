@@ -54,7 +54,7 @@ export type LinearAdapterResult = {
   cliff: number;
 };
 export type ChartData = {
-  xAxis: number[];
+  timestamp: number[];
   data: ChartYAxisData[];
 };
 export type ChartYAxisData = {

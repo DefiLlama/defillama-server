@@ -16,6 +16,7 @@ src/utils/imports/options_adapters.ts
 src/utils/imports/aggregators_adapters.ts
 src/utils/imports/incentives_adapters.ts
 src/utils/imports/protocols_adapters.ts
+src/unlocks/utils/*.png
 .vscode
 src/dexVolumes/cli/backfillUtilities/output
 src/adaptors/cli/*/output

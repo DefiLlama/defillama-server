@@ -15,11 +15,12 @@ import {
   cliffAdapterToRaw,
   linearAdapterToRaw,
 } from "./convertToRawData";
+import { getChartPng } from "./client";
 
 export async function parseData(adapter: Protocol): Promise<any> {
-  let xAxis: number[] = [];
+  let timestamp: number[] = [];
 
-  const yAxis = await Promise.all(
+  const unlocked = await Promise.all(
     Object.entries(adapter).map(async (a: any[]) => {
       const section = a[0];
       let adapterResults = await a[1];
@@ -50,16 +51,16 @@ export async function parseData(adapter: Protocol): Promise<any> {
       );
 
       data.map((d: any) => {
-        xAxis = [...new Set([...d.xAxis, ...xAxis])];
+        timestamp = [...new Set([...d.timestamp, ...timestamp])];
       });
       return { data, section };
     }),
   );
 
-  return { xAxis, yAxis };
+  await getChartPng({ timestamp, unlocked });
 }
 
 export async function main() {
-  const data = await parseData(tornado); // ts-node defi/src/unlocks/utils/test.ts
+  const data = await parseData(tornado); // ts-node src/unlocks/utils/test.ts
 }
 main();

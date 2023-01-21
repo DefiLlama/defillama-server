@@ -2,7 +2,7 @@ import fs from "fs";
 import { resolve } from "path";
 import dayjs from "dayjs";
 import { ChartJSNodeCanvas } from "chartjs-node-canvas";
-const chartJSNodeCanvas = new ChartJSNodeCanvas({ width: 700, height: 300 });
+const chartJSNodeCanvas = new ChartJSNodeCanvas({ width: 1000, height: 500, backgroundColour: "white" });
 
 const hexColors = {
   green: "#008000",
@@ -22,7 +22,7 @@ export async function draw(configuration: any) {
 }
 function buildOptionsObject(data: any) {
   const labels = data[0].data.timestamps.map((t: number) =>
-    stringifyDate(t, "DD/MM/YYYY"),
+    stringifyDate(t*1e3, "DD/MM/YYYY"),
   );
   const sections = [...new Set(data.map((d: any) => d.section))];
 

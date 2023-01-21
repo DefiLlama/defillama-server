@@ -1,51 +1,32 @@
 import { ChartData, ChartYAxisData, RawResult } from "../types/adapters";
+import { periodToSeconds } from "./time";
 
 export function rawToChartData(
   raw: RawResult[],
   start: number,
-): ChartYAxisData {
-  return raw[0].continuousEnd == null
-    ? discreetRawToChart(raw, start)
-    : continuousRawToChart(raw, start);
-}
-function discreetRawToChart(raw: RawResult[], start: number): any {
-  const timestamp: number[] = [];
+  end: number,
+  resolution: number = periodToSeconds.day,
+): any {
+  const roundedStart = Math.floor(start / resolution) * resolution;
+  const roundedEnd = Math.ceil(end / resolution) * resolution;
+  const steps = (roundedEnd - roundedStart) / resolution;
+  const timestamps: number[] = [];
   const unlocked: number[] = [];
   raw.sort((r: RawResult) => r.timestamp);
 
-  if (raw[0].timestamp != start) {
-    unlocked.push(0);
-    timestamp.push(start);
+  let workingQuantity: number = 0;
+  let workingTimestamp: number = roundedStart;
+  let j = 0; // index of current raw data timestamp
+  for (let i = 0; i < steps; i++) {
+    // checks if the next data point falls between the previous and next plot times
+    if (j < raw.length && raw[j].timestamp < workingTimestamp) {
+      workingQuantity += raw[j].change;
+      j += 1;
+    }
+    unlocked.push(workingQuantity);
+    timestamps.push(workingTimestamp);
+    workingTimestamp += resolution;
   }
 
-  let quantity: number = 0;
-  raw.map((r: RawResult) => {
-    quantity += r.change;
-    unlocked.push(quantity);
-    timestamp.push(r.timestamp);
-  });
-
-  return { timestamp, unlocked, isContinuous: false };
-}
-function continuousRawToChart(raw: RawResult[], start: number): any {
-  const timestamp: number[] = [];
-  const unlocked: number[] = [];
-  raw.sort((r: RawResult) => r.timestamp);
-
-  if (raw[0].timestamp != start) {
-    unlocked.push(0);
-    timestamp.push(start);
-  }
-
-  let quantity: number = 0;
-  raw.map((r: RawResult) => {
-    if (r.continuousEnd == null) return;
-    unlocked.push(quantity);
-    timestamp.push(r.timestamp);
-    quantity += r.change;
-    unlocked.push(quantity);
-    timestamp.push(r.continuousEnd);
-  });
-
-  return { timestamp, unlocked, isContinuous: true };
+  return { timestamps, unlocked, isContinuous: raw[0].continuousEnd != null };
 }

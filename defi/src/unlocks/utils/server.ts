@@ -18,7 +18,7 @@ app.use("/", async (request: Request, response: Response) => {
     const datasets = JSON.parse(request.query.data).unlocked; // dataset[]
     // dataset: {data: {time, unlock, isCont}[], section }
     const data = datasets[0].data[0].unlocked;
-    const labels = datasets[0].data[0].timestamp;
+    const labels = datasets[0].data[0].timestamps;
     // response.contentType("json");
     // response.send({
     //   data,

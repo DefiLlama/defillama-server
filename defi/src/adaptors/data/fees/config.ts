@@ -86,7 +86,7 @@ export default {
         enabled: true
     },
     "synthetix": {
-        enabled: false
+        enabled: true
     },
     "tarot": {
         enabled: true

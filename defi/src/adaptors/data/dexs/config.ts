@@ -750,5 +750,8 @@ export default {
     },
     "equalizer-exchange": {
         enabled: true
+    },
+    "canto-dex": {
+        enabled: true
     }
 } as AdaptorsConfig

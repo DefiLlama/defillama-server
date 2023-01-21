@@ -9,13 +9,53 @@ export function rawToChartData(
 ): any {
   const roundedStart = Math.floor(start / resolution) * resolution;
   const roundedEnd = Math.ceil(end / resolution) * resolution;
-  const steps = (roundedEnd - roundedStart) / resolution;
-  const timestamps: number[] = [];
-  const unlocked: number[] = [];
+  let config = {
+    resolution,
+    roundedStart,
+    roundedEnd,
+    steps: (roundedEnd - roundedStart) / resolution,
+    timestamps: [],
+    unlocked: [],
+    workingQuantity: 0,
+    workingTimestamp: roundedStart,
+  };
   raw.sort((r: RawResult) => r.timestamp);
 
-  let workingQuantity: number = 0;
-  let workingTimestamp: number = roundedStart;
+  return raw[0].continuousEnd ? continuous(raw, config) : discreet(raw, config);
+}
+function continuous(raw: any, config: any) {
+  let {
+    resolution,
+    steps,
+    timestamps,
+    unlocked,
+    workingQuantity,
+    workingTimestamp,
+  } = config;
+
+  const dy =
+    (raw[0].change * resolution) / (raw[0].continuousEnd - raw[0].timestamp);
+
+  for (let i = 0; i < steps; i++) {
+    if (raw[0].timestamp < workingTimestamp) {
+      workingQuantity += dy;
+    }
+    unlocked.push(workingQuantity);
+    timestamps.push(workingTimestamp);
+    workingTimestamp += resolution;
+  }
+  return { timestamps, unlocked, isContinuous: true };
+}
+function discreet(raw: any, config: any) {
+  let {
+    resolution,
+    steps,
+    timestamps,
+    unlocked,
+    workingQuantity,
+    workingTimestamp,
+  } = config;
+
   let j = 0; // index of current raw data timestamp
   for (let i = 0; i < steps; i++) {
     // checks if the next data point falls between the previous and next plot times
@@ -27,6 +67,5 @@ export function rawToChartData(
     timestamps.push(workingTimestamp);
     workingTimestamp += resolution;
   }
-
-  return { timestamps, unlocked, isContinuous: raw[0].continuousEnd != null };
+  return { timestamps, unlocked, isContinuous: false };
 }

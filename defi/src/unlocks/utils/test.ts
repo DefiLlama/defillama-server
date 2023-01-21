@@ -15,7 +15,7 @@ import {
   cliffAdapterToRaw,
   linearAdapterToRaw,
 } from "./convertToRawData";
-import { getChartPng } from "./client";
+import { getChartPng } from "./chart";
 
 export async function parseData(adapter: Protocol): Promise<any> {
   let startTime: number = 10_000_000_000;
@@ -50,7 +50,11 @@ export async function parseData(adapter: Protocol): Promise<any> {
 
       endTime = Math.max(
         endTime,
-        ...results.flat().map((r: any) => r.timestamp),
+        ...results
+          .flat()
+          .map((r: any) =>
+            r.continuousEnd == null ? r.timestamp : r.continuousEnd,
+          ),
       );
     }),
   );
@@ -68,6 +72,6 @@ export async function parseData(adapter: Protocol): Promise<any> {
 }
 
 export async function main() {
-  const data = await parseData(tornado); // ts-node src/unlocks/utils/test.ts
+  await parseData(tornado); // ts-node src/unlocks/utils/test.ts
 }
 main();

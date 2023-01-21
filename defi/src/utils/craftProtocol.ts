@@ -79,7 +79,6 @@ export default async function craftProtocol(
   ]);
 
   if (!useHourlyData && !skipReplaceLast) {
-    console.log({ useHourlyData, skipReplaceLast });
     // check for falsy values and push lastHourlyRecord to dataset
     lastUsdHourlyRecord && historicalUsdTvl.push(lastUsdHourlyRecord);
     lastUsdTokenHourlyRecord &&
@@ -95,7 +94,7 @@ export default async function craftProtocol(
     chainTvls: {},
     tvl: [],
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
-    metrics: getAvailableMetricsByModule(protocolData.module)
+    metrics: getAvailableMetricsByModule(protocolData.module),
   };
 
   const childProtocolsNames = protocolData.parentProtocol

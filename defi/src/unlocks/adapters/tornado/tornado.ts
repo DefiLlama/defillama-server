@@ -39,7 +39,7 @@ export default async function main(
       type: "step",
       start,
       stepDuration: secondsPerMonth,
-      amount: afterStepQty - beforeStepQty,
+      amount: (afterStepQty - beforeStepQty) / 10 ** 18,
       steps: steps - cliffDuration,
       receiver,
       token,
@@ -47,7 +47,7 @@ export default async function main(
     {
       type: "cliff",
       start,
-      amount: afterCliffQty - beforeCliffQty,
+      amount: (afterCliffQty - beforeCliffQty) / 10 ** 18,
       receiver,
       token,
     },

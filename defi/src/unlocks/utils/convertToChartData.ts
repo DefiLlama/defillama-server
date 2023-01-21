@@ -37,7 +37,10 @@ function continuous(raw: any, config: any) {
     (raw[0].change * resolution) / (raw[0].continuousEnd - raw[0].timestamp);
 
   for (let i = 0; i < steps; i++) {
-    if (raw[0].timestamp < workingTimestamp) {
+    if (
+      raw[0].timestamp < workingTimestamp &&
+      raw[0].continuousEnd > workingTimestamp
+    ) {
       workingQuantity += dy;
     }
     unlocked.push(workingQuantity);

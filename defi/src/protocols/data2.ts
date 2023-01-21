@@ -22321,7 +22321,7 @@ listedAt: 1650804679
   url: "https://app.deridex.org",
   description: "Deridex is a decentralized on-chain derivatives platform built on the Algorand blockchain, offering a range of leveraged financial products to users.",
   chain: "Algorand",
-  logo: `${baseIconsUrl}/deridex.jpg`,
+  logo: `${baseIconsUrl}/deridex.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { getCachedResponseOnR2 } from "../../utils/storeR2Response";
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE, getOverviewCachedResponseKey } from "../processProtocolsSummary";
+import { handler as process_handler, DEFAULT_CHART_BY_ADAPTOR_TYPE, getOverviewCachedResponseKey } from "../processProtocolsSummary";
 import invokeLambda from "../../../utils/shared/invokeLambda";
 import { AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 
@@ -24,7 +24,9 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     if (!response) {
         await invokeLambda("defillama-prod-processProtocolsSummary", event)
-        return successResponse({ message: "Response not yet available, please wait some minutes" }, 3 * 60);
+        const fallback_response = await process_handler(event, false)
+        return successResponse(fallback_response, 3 * 60);
+        //return successResponse({ message: "Response not yet available, please wait some minutes" }, 3 * 60);
     }
 
     if (excludeTotalDataChart)

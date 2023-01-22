@@ -396,8 +396,9 @@ functions:
   processProtocolsSummary:
     handler: src/processProtocolsSummary.default
       timeout: 60
-      events:
-        - schedule: cron(0 * * * ? *)
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   getOverview:
     handler: src/adaptors/handlers/getOverview/index.default
     timeout: 30

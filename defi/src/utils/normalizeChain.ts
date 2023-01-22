@@ -1264,6 +1264,12 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
+  "Omax": {
+    geckoId: "omax-token",
+    symbol: "OMAX",
+    cmcId: "13916",
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1599,6 +1605,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Tlchain"
     case "zeniq":
       return "Zeniq"
+    case "omax":
+      return "Omax"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

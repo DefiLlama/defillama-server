@@ -23196,5 +23196,27 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1674298215
 },
+{
+  id: "2464",
+  name: "Omax Swap",
+  address: null,
+  symbol: "-",
+  url: "https://omaxswap.com/swap",
+  description:
+    "AMM DEX on Omax chain",
+  chain: "Omax",
+  logo: `${baseIconsUrl}/omax-swap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: 'omax-token',
+  cmcId: '13916',
+  category: "Dexes",
+  chains: ["Omax"],
+  module: "omaxswap/index.js",
+  twitter: "omaxtoken",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  listedAt: 1674403191
+},
 ]
 export default data2;

@@ -46,15 +46,6 @@ export async function storeR2(
   return await R2.send(command);
 }
 
-export async function getR2(filename: string) {
-  const command = new GetObjectCommand({
-    Bucket: datasetBucket,
-    Key: filename,
-  });
-  const data = await R2.send(command);
-  return data.Body?.toString() ?? undefined;
-}
-
 export async function storeDatasetR2(
   filename: string,
   body: string | Readable,

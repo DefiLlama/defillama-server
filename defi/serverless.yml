@@ -393,6 +393,11 @@ functions:
     timeout: 900
     events:
       - schedule: cron(0 * * * ? *)
+  processProtocolsSummary:
+    handler: src/processProtocolsSummary.default
+      timeout: 60
+      events:
+        - schedule: cron(0 * * * ? *)
   getOverview:
     handler: src/adaptors/handlers/getOverview/index.default
     timeout: 30

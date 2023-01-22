@@ -1467,7 +1467,7 @@ const data2: Protocol[] =  [
 },
 {
   id: "1475",
-  name: "MahaDAO",
+  name: "MahaDAO Arth",
   address: "0xb4d930279552397bba2ee473229f89ec245bc365",
   symbol: "MAHA",
   url: "https://mahadao.com",
@@ -1476,14 +1476,15 @@ const data2: Protocol[] =  [
   logo: `${baseIconsUrl}/mahadao.png`,
   audits: "2",
   audit_note: null,
-  gecko_id: "mahadao",
-  cmcId: "8043",
+  gecko_id: null,
+  cmcId: null,
   category: "CDP",
   chains: ["Polygon", "Binance", "Ethereum"],
   oracles: ["Chainlink"],
   forkedFrom: ["Liquity"],
   module: "mahadao/index.js",
   twitter: "TheMahaDAO",
+  parentProtocol: "MahaDAO",
   listedAt: 1645824445,
 },
 {
@@ -20859,6 +20860,7 @@ listedAt: 1650804679
   twitter: "mahalend", 
   forkedFrom: ["AAVE"],
   oracles: ["Chainlink"],
+  parentProtocol: "MahaDAO",
   listedAt: 1671034965
 },
 {

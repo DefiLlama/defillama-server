@@ -726,6 +726,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "steakhut_fi",
   },
+  {
+    id: "MahaDAO",
+    name: "MahaDAO",
+    url: "https://mahadao.com",
+    description:
+    "MahaDAO is a community focused DAO focused on building ARTH, a decentralized valuecoin that maintains the purchasing power of it's token. It is designed to appreciate against the US dollar (after accounting for inflation) in the long run whilst remaining relatively stable in the short run.",
+    logo: `${baseIconsUrl}/mahadao.png`,
+    gecko_id: "mahadao",
+    cmcId: "8043",
+    chains: [],
+    twitter: "TheMahaDAO",
+  },
 ];
 
 export default parentProtocols;

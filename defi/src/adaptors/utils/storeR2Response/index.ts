@@ -9,7 +9,7 @@ export const cacheResponseOnR2 = async (key: string, response: string) => {
 
 export const getCachedResponseOnR2 = async (key: string): Promise<IGetOverviewResponseBody | undefined> => {
     const objectString = await getR2(`${ADAPTORS_FOLDER_KEY}/${key}`).catch(e=>console.error("R2Storage:", e))
-    console.log("R2Storage:response", objectString)
+    console.log("R2Storage:response", JSON.stringify(objectString))
     if (objectString) {
         try {
             return JSON.parse(objectString) as IGetOverviewResponseBody

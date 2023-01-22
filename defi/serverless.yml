@@ -419,10 +419,10 @@ functions:
     memorySize: 2000
     events:
       - http:
-          path: overview/{type}
+          path: overviewPre/{type}
           method: get
       - http:
-          path: overview/{type}/{chain}
+          path: overviewPre/{type}/{chain}
           method: get
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}

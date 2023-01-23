@@ -120,7 +120,7 @@ export async function getCachedLiqsR2(protocol: string, chain: string) {
     Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
   });
   const data = await R2.send(command);
-  return data.Body?.toString() ?? "";
+  return data.Body?.transformToString();
 }
 
 export async function getExternalLiqsR2(protocol: string, chain: string) {

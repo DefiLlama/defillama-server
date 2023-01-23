@@ -129,7 +129,7 @@ export const getOverviewCachedResponseKey = (
 ) => `overview_${adaptorType}_${chainFilter}_${dataType}_${category}_${adaptorType}_${fullChart}`
 
 // -> /overview/{type}/{chain}
-export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = true): Promise<IResponse> => {
+export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     console.log("deubg event", event)
     const pathChain = event.pathParameters?.chain?.toLowerCase()
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType

@@ -20106,17 +20106,23 @@ listedAt: 1650804679
     "Neptune mutual follows a parametric insurance model, meaning it provides payout on the basis of parameters instead of individual claim assessments. Upon the resolution of an incident, all the policyholders of the affected protocol will receive the payouts. Neptune Mutual eliminates individual claim assessments which makes policy easy to claim, faster, and much more reliable.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/neptune-mutual.png`,
-  audits: "0",
+  audits: "5",
   audit_note: null,
-  gecko_id: null,
-  cmcId: null,
+  gecko_id: "neptune-mutual",
+  cmcId: "22625",
   category: "Insurance",
-  chains: ["Ethereum"],
+  chains: ["Ethereum", "Arbitrum"],
   module: "neptune-mutual/index.js",
   twitter: "neptunemutual", 
   forkedFrom: [],
   oracles: [],
-  audit_links: ["https://blog.openzeppelin.com/neptune-mutual-audit"],
+  audit_links: [
+    "https://neptunemutual.com/security/blocksec-audit-report/",
+    "https://neptunemutual.com/security/open-zeppelin-audit-report/",
+    "https://neptunemutual.com/security/cyraacs-sdk-audit/",
+    "https://neptunemutual.com/security/cyraacs-application-penetration-test-greybox/",
+    "https://neptunemutual.com/security/cyraacs-application-penetration-test-blackbox/"
+  ],
   listedAt: 1669921501
 },
 {

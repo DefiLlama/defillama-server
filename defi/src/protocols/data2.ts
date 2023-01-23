@@ -23252,7 +23252,7 @@ listedAt: 1650804679
   description:
     "A decentralised betting platform with tokenised ownership on ZK-Rollups.",
   chain: "Binance",
-  logo: `${baseIconsUrl}/zkcasino.jpg`,
+  logo: `${baseIconsUrl}/zkasino.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

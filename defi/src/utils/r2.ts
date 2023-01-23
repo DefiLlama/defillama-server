@@ -46,11 +46,7 @@ export async function storeR2(
   return await R2.send(command);
 }
 
-export async function storeR2JSONString(
-  filename: string,
-  body: string | Readable,
-  cache?: number
-) {
+export async function storeR2JSONString(filename: string, body: string | Readable, cache?: number) {
   const command = new PutObjectCommand({
     Bucket: datasetBucket,
     Key: filename,
@@ -71,7 +67,7 @@ export async function getR2(filename: string) {
     Key: filename,
   });
   const data = await R2.send(command);
-  return data.Body?.transformToString()
+  return data.Body?.transformToString();
 }
 
 export async function storeDatasetR2(
@@ -120,7 +116,7 @@ export async function getCachedLiqsR2(protocol: string, chain: string) {
     Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
   });
   const data = await R2.send(command);
-  return data.Body?.toString() ?? "";
+  return data.Body?.transformToString();
 }
 
 export async function getExternalLiqsR2(protocol: string, chain: string) {

@@ -23243,5 +23243,27 @@ listedAt: 1650804679
   parentProtocol: "Tethys Finance",
   listedAt: 1674434859
 },
+{
+  id: "2466",
+  name: "ZKasino",
+  address: null,
+  symbol: "-",
+  url: "https://play.zkasino.io",
+  description:
+    "A decentralised betting platform with tokenised ownership on ZK-Rollups.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/zkcasino.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Prediction Market",
+  chains: ["Binance", "Polygon"],
+  module: "zkasino/index.js",
+  twitter: "ZKasino_io",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674496723
+},
 ]
 export default data2;

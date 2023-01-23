@@ -21760,7 +21760,7 @@ listedAt: 1650804679
 },
 {
   id: "2400", 
-  name: "SolidlyDEX",
+  name: "Solidly V2",
   address: "0x777172D858dC1599914a1C4c6c9fC48c99a60990",
   symbol: "SOLID",
   url: "https://solidly.com",

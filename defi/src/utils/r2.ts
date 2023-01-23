@@ -65,12 +65,23 @@ export async function storeR2JSONString(
   return await R2.send(command);
 }
 
+/* const streamToString = (stream: Readable) =>
+  new Promise((resolve, reject) => {
+    const chunks = [] as any[];
+    stream.on("data", (chunk) => chunks.push(chunk));
+    stream.on("error", reject);
+    stream.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
+  }); */
+
 export async function getR2(filename: string) {
   const command = new GetObjectCommand({
     Bucket: datasetBucket,
     Key: filename,
   });
   const data = await R2.send(command);
+  console.log("data", data)
+  console.log("data.Body", data.Body)
+  console.log("data.Body?.transformToString()", data.Body?.transformToString())
   return data.Body?.toString() ?? undefined;
 }
 

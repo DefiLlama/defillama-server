@@ -67,7 +67,14 @@ export async function getR2(filename: string) {
     Key: filename,
   });
   const data = await R2.send(command);
+<<<<<<< Updated upstream
   return data.Body?.transformToString();
+=======
+  return {
+    body: await data.Body?.transformToString(),
+    lastModified: data.LastModified
+  }
+>>>>>>> Stashed changes
 }
 
 export async function storeDatasetR2(

@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { getCachedResponseOnR2 } from "../../utils/storeR2Response";
-import { handler as process_handler, DEFAULT_CHART_BY_ADAPTOR_TYPE, getOverviewCachedResponseKey } from "../processProtocolsSummary";
+import { handler as process_handler, DEFAULT_CHART_BY_ADAPTOR_TYPE, getOverviewCachedResponseKey, IGetOverviewResponseBody } from "../processProtocolsSummary";
 import invokeLambda from "../../../utils/shared/invokeLambda";
 import { AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 
@@ -20,23 +20,24 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     if (!adaptorType) throw new Error("Missing parameter")
 
-    const response = await getCachedResponseOnR2(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)))
+    const response = await getCachedResponseOnR2<IGetOverviewResponseBody>(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)))
 
     if (!response) {
         await invokeLambda("defillama-prod-processProtocolsSummary", event)
-        const fallback_response = await process_handler(event, false)
-        return successResponse(fallback_response, 3 * 60);
-        //return successResponse({ message: "Response not yet available, please wait some minutes" }, 3 * 60);
+        return successResponse({ message: "Response not yet available, please await some minutes" }, 3 * 60);
     }
 
-    if (excludeTotalDataChart)
-        delete response.totalDataChart
-    if (excludeTotalDataChartBreakdown)
-        delete response.totalDataChartBreakdown
-    if (!enableAlerts)
-        delete response.errors
+    if ((Date.now() - response.lastModified.getTime()) > 1000 * 60 * 60)
+        await invokeLambda("defillama-prod-processProtocolsSummary", event)
 
-    return successResponse(response, 10 * 60); // 10 mins cache
+    if (excludeTotalDataChart)
+        delete response.body.totalDataChart
+    if (excludeTotalDataChartBreakdown)
+        delete response.body.totalDataChartBreakdown
+    if (!enableAlerts)
+        delete response.body.errors
+
+    return successResponse(response.body, 60 * 60); // 1h cache
 };
 
 

@@ -26,8 +26,9 @@ export type AdapterResult = {
   steps?: number;
   cliff?: number;
   stepDuration?: number;
-  receiver: string;
+  receiver?: string;
   token: string;
+  confirmed?: boolean;
 };
 export type RawResult = {
   timestamp: number;

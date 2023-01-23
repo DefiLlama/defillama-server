@@ -1,4 +1,4 @@
-import { tornado } from "./../protocols/tornado";
+import { curve as adapter } from "./../protocols/curve";
 import {
   AdapterResult,
   StepAdapterResult,
@@ -72,6 +72,6 @@ export async function parseData(adapter: Protocol): Promise<any> {
 }
 
 export async function main() {
-  await parseData(tornado); // ts-node src/unlocks/utils/test.ts
+  await parseData(adapter); // ts-node src/unlocks/utils/test.ts
 }
 main();

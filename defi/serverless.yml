@@ -395,7 +395,7 @@ functions:
       - schedule: cron(0 * * * ? *)
   processProtocolsSummary:
     handler: src/adaptors/handlers/processProtocolsSummary/index.default
-    timeout: 60
+    timeout: 180
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}

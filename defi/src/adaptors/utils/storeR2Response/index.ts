@@ -1,11 +1,11 @@
-import { getR2, storeR2 } from "../../../utils/r2";
+import { getR2, storeR2JSONString } from "../../../utils/r2";
 import { IGetOverviewResponseBody } from "../../handlers/processProtocolsSummary";
 
 const ADAPTORS_FOLDER_KEY = 'dimensions'
 
 export const cacheResponseOnR2 = async (key: string, response: string) => {
     console.log("Storing R2 with key", `${ADAPTORS_FOLDER_KEY}/${key}.json`, response)
-    await storeR2(`${ADAPTORS_FOLDER_KEY}/${key}.json`, response)
+    await storeR2JSONString(`${ADAPTORS_FOLDER_KEY}/${key}.json`, response)
 }
 
 export const getCachedResponseOnR2 = async (key: string): Promise<IGetOverviewResponseBody | undefined> => {

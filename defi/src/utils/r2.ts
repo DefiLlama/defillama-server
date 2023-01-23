@@ -46,6 +46,25 @@ export async function storeR2(
   return await R2.send(command);
 }
 
+export async function storeR2JSONString(
+  filename: string,
+  body: string | Readable,
+  cache?: number
+) {
+  const command = new PutObjectCommand({
+    Bucket: datasetBucket,
+    Key: filename,
+    Body: body,
+    ContentType: "application/json",
+    ...(!!cache
+      ? {
+          CacheControl: `max-age=${cache}`,
+        }
+      : {}),
+  });
+  return await R2.send(command);
+}
+
 export async function getR2(filename: string) {
   const command = new GetObjectCommand({
     Bucket: datasetBucket,

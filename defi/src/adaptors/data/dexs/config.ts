@@ -753,5 +753,8 @@ export default {
     },
     "canto-dex": {
         enabled: true
+    },
+    "solidlydex": {
+        enabled: true
     }
 } as AdaptorsConfig

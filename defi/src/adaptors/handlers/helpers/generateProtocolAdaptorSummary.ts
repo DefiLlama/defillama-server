@@ -19,6 +19,7 @@ import generateCleanRecords from "./generateCleanRecords"
  */
 
 export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
+    console.info("Generating summary for:", adapter.name, "with params", adaptorRecordType, adaptorType, chainFilter)
     try {
         // Get all records from db
         let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorRecordType, adapter.protocolType)
@@ -59,12 +60,14 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             })
         }
         // Clean data by chain
+        console.info("Cleaning records", adapter.name, adapter.id, adapter.module)
         const cleanRecords = await generateCleanRecords(
             adaptorRecords,
             adapter.chains,
             protocolsKeys,
             chainFilter
         )
+        console.info("Cleaning records OK", adapter.name, adapter.id, adapter.module)
 
         for (const spikeMSG of cleanRecords.spikesLogs) {
             await sendDiscordAlert(spikeMSG, adaptorType)

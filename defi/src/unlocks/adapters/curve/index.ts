@@ -11,11 +11,11 @@ export const employees = adapter(
   "ethereum",
   26_666_666,
 );
-export const teamAndInvestors = adapter(
-  "0xf7dbc322d72c1788a1e37eee738e2ea9c7fa875e",
-  "ethereum",
-  14_016_820,
-);
+export const teamAndInvestors = Promise.all([
+  adapter("0xf7dbc322d72c1788a1e37eee738e2ea9c7fa875e", "ethereum", 14_016_820),
+  adapter("0xd2D43555134dC575BF7279F4bA18809645dB0F1D", "ethereum", 0),
+  adapter("0x2a7d59e327759acd5d11a8fb652bf4072d28ac04", "ethereum", 0),
+]);
 export const community = incentives(
   "0xd533a949740bb3306d119cc777fa900ba034cd52",
   1597266000,

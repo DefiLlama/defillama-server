@@ -130,6 +130,7 @@ export const getOverviewCachedResponseKey = (
 
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = true): Promise<IResponse> => {
+    console.log("deubg event", event)
     const pathChain = event.pathParameters?.chain?.toLowerCase()
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
     const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
@@ -140,6 +141,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
+    console.log("Parsing OK")
 
     if (!adaptorType) throw new Error("Missing parameter")
 

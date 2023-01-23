@@ -4,7 +4,7 @@ import { IGetOverviewResponseBody } from "../../handlers/processProtocolsSummary
 const ADAPTORS_FOLDER_KEY = 'dimensions'
 
 export const cacheResponseOnR2 = async (key: string, response: string) => {
-    console.log("Storing R2 with key", `${ADAPTORS_FOLDER_KEY}/${key}.json`)
+    console.log("Storing R2 with key", `${ADAPTORS_FOLDER_KEY}/${key}.json`, response)
     await storeR2(`${ADAPTORS_FOLDER_KEY}/${key}.json`, response)
 }
 

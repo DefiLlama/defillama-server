@@ -738,6 +738,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TheMahaDAO",
   },
+  {
+    id: "Tethys Finance",
+    name: "Tethys Finance",
+    url: "https://tethys.finance",
+    description:
+    "We believe that in the future, L2 solutions will help Ethereum with scaling. Our mission is to empower the Metis Andromeda network with a fast, secure, reliable, and advanced native decentralized exchange app to handle all kinds of trading needs.",
+    logo: `${baseIconsUrl}/tethys-finance.png`,
+    gecko_id: "tethys-finance",
+    cmcId: "16640",
+    chains: [],
+    twitter: "tethysfinance",
+  },
 ];
 
 export default parentProtocols;

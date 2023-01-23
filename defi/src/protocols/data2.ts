@@ -23220,5 +23220,28 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   listedAt: 1674403191
 },
+{
+  id: "2465",
+  name: "Tethys Perpetual",
+  address: null,
+  symbol: "-",
+  url: "https://tethys.finance/#/trade",
+  description:
+    "A decentralized perpetual exchange to offer $METIS leverage trading, trade up to 50x leverage",
+  chain: "Metis",
+  logo: `${baseIconsUrl}/tethys-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Metis"],
+  module: "tethys-perpetual/index.js",
+  twitter: "tethysfinance",
+  oracles: [],
+  forkedFrom: ["GMX"],
+  parentProtocol: "Tethys Finance",
+  listedAt: 1674434859
+},
 ]
 export default data2;

@@ -81,7 +81,7 @@ export async function getR2(filename: string) {
   const data = await R2.send(command);
   console.log("data", data)
   console.log("data.Body", data.Body)
-  console.log("data.Body?.transformToString()", data.Body?.transformToString())
+  console.log("data.Body?.transformToString()", await data.Body?.transformToString())
   return data.Body?.toString() ?? undefined;
 }
 

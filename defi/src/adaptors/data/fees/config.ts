@@ -295,5 +295,8 @@ export default {
     },
     "blur": {
         enabled: true
+    },
+    "solidlydex": {
+        enabled: true
     }
 } as AdaptorsConfig

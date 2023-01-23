@@ -27,15 +27,5 @@ const abi = {
     stateMutability: "view",
     type: "function",
   },
-  mintable_in_timeframe: {
-    name: "mintable_in_timeframe",
-    outputs: [{ type: "uint256", name: "" }],
-    inputs: [
-      { type: "uint256", name: "start" },
-      { type: "uint256", name: "end" },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
 };
 export default abi;

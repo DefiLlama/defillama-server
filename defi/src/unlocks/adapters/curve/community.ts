@@ -1,5 +1,3 @@
-import { call } from "@defillama/sdk/build/abi/abi2";
-import { getBlock } from "@defillama/sdk/build/computeTVL/blocks";
 import { AdapterResult } from "../../types/adapters";
 import { periodToSeconds } from "../../utils/time";
 

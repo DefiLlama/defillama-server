@@ -756,5 +756,8 @@ export default {
     },
     "solidlydex": {
         enabled: true
+    },
+    "defibox": {
+        enabled: true
     }
 } as AdaptorsConfig

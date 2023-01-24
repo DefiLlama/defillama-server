@@ -5,11 +5,12 @@ import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "fees" },
-    // queryStringParameters: {
-    //     excludeTotalDataChart: "true",
-    //     excludeTotalDataChartBreakdown: "true"
-    // }
+    pathParameters: { chain: undefined, type: "options" },
+    queryStringParameters: {
+        excludeTotalDataChart: "false",
+        excludeTotalDataChartBreakdown: "true",
+        dataType: "dailyPremiumVolume"
+    }
 } as IGetOverviewEventParams
 
 (async () => {

@@ -1,4 +1,4 @@
-import { successResponse, wrap, IResponse } from "../../../utils/shared";
+import { successResponse, wrap, IResponse, acceptedResponse } from "../../../utils/shared";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { getCachedResponseOnR2 } from "../../utils/storeR2Response";
 import { handler as process_handler, DEFAULT_CHART_BY_ADAPTOR_TYPE, getOverviewCachedResponseKey, IGetOverviewResponseBody } from "../processProtocolsSummary";
@@ -23,12 +23,16 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const response = await getCachedResponseOnR2<IGetOverviewResponseBody>(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)))
 
     if (!response) {
+        console.info("Response not found, generating...")
         await invokeLambda("defillama-prod-processProtocolsSummary", event)
-        return successResponse({ message: "Response not yet available, please await some minutes" }, 3 * 60);
+        console.info("Returning 202")
+        return acceptedResponse("Request accepted, your response is being generated. Please try again this request in some minutes");
     }
 
-    if ((Date.now() - response.lastModified.getTime()) > 1000 * 60 * 60)
+    if ((Date.now() - response.lastModified.getTime()) > 1000 * 60 * 60) {
+        console.info("Response expired, invoking lambda to update it.")
         await invokeLambda("defillama-prod-processProtocolsSummary", event)
+    }
 
     if (excludeTotalDataChart)
         delete response.body.totalDataChart

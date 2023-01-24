@@ -16984,15 +16984,15 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "JADE",
     url: "https://jadeprotocol.io/",
     description:
-      "Jade Protocol is a community-governed investment collective with deals sourced and vetted by the $JADE Alpha Army",
+      "Jade Protocol is a decentralized investment collective that leverages its community (the “Jade Alpha Army”) to identify and offer due diligence on liquid token and seed investment opportunities.",
     chain: "Binance",
     logo: `${baseIconsUrl}/jade-protocol.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "jade-protocol",
     cmcId: "14938",
-    category: "Staking",
-    chains: ["Binance"],
+    category: "Reserve Currency",
+    chains: ["Binance"], //, "Avalanche", "Ethereum", "Arbitrum", "Optimism", "Osmosis", "Terra"]
     module: "jade-protocol/index.js",
     twitter: "JadeProtocol",
     forkedFrom: ["Olympus DAO"],

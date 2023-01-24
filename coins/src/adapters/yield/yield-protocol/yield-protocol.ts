@@ -29,19 +29,18 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const writes: Write[] = [];
   
   const api = await getApi(chain, timestamp)
-  const block: number | undefined = api.block as any
+  const block: number | undefined = await api.getBlock() as any
   if (custom[chain]) {
     await Promise.all(custom[chain].map((i: any) => i({ api, writes, timestamp })))
   }
   if (!ladle) return writes
-  const cauldron = await sdk.api2.abi.call({
+  const cauldron = await api.call({
     target: ladle,
     abi: 'address:cauldron',
-    chain: chain as any, block,
   })
 
   const logs = await getLogs({
-    chain, target: cauldron, fromBlock, timestamp,
+    chain, target: cauldron, fromBlock, timestamp, api,
     topic: 'IlkAdded(bytes6,bytes6)'
   })
 
@@ -49,22 +48,20 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   let parsedLogs = logs.map((log: any) => (iface.parseLog(log)).args)
   const seriesIds = parsedLogs.map((i: any) => i.seriesId)
 
-  let pools = await sdk.api2.abi.multiCall({
+  let pools = await api.multiCall({
     target: ladle,
     calls: seriesIds,
     abi: abis.pools,
-    chain: chain as any, block,
   })
   pools = [...new Set(pools)]
-  const fyTokens = await sdk.api2.abi.multiCall({
+  const fyTokens = await api.multiCall({
     calls: pools,
     abi: 'address:fyToken',
     chain: chain as any, block,
   })
-  const underlyingTokens = await sdk.api2.abi.multiCall({
+  const underlyingTokens = await api.multiCall({
     calls: pools,
     abi: 'address:base',
-    chain: chain as any, block,
   })
 
   const tokenInfos = await getTokenInfo(chain, fyTokens, block)
@@ -72,10 +69,9 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const params = tokenInfos.decimals.map(i => 10 ** i.output)
   let coinsData: CoinData[] = await getTokenAndRedirectData(underlyingTokens, chain, timestamp);
 
-  let maturites = await sdk.api2.abi.multiCall({
+  let maturites = await api.multiCall({
     calls: pools,
     abi: abis.maturity,
-    chain: chain as any, block,
   })
   let pricesRes: any = []
   let sellCalls: any = []
@@ -86,10 +82,9 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     else sellCalls.push(call)
   })
 
-  let sellRes = await sdk.api2.abi.multiCall({
+  let sellRes = await api.multiCall({
     calls: sellCalls,
     abi: abis.sellFYTokenPreview,
-    chain: chain as any, block,
     withMetadata: true,
   })
 

@@ -13,6 +13,7 @@ import { convertDataToUSD, IGetHistoricalPricesResponse } from "./convertRecordD
  */
 
 export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
+    const currentTimestamp = Math.trunc(Date.now() / 1000)
     const spikesLogs: string[] = []
     const chains = chainsRaw.map(formatChainKey)
     const chainFilter = chainFilterRaw ? formatChainKey(chainFilterRaw) : undefined
@@ -29,6 +30,10 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         const generatedData = {} as IRecordAdaptorRecordData
         // Get current timestamp we are working with
         let timestamp = cleanRecord?.timestamp
+        if (timestamp && (timestamp > currentTimestamp)) {
+            console.error("Timestamp in miliseconds or in the future has been found! Please check what's wrong...", timestamp, adaptorRecord)
+            return acc
+        }
         if (!timestamp) {
             const all = Object.values(acc.lastDataRecord)
             if (all.length === 0 || !all[0]) return acc

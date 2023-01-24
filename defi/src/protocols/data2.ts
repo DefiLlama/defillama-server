@@ -23265,5 +23265,28 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1674496723
 },
+{
+  id: "2467",
+  name: "Zyberswap",
+  address: null,
+  symbol: "-",
+  url: "https://www.zyberswap.io",
+  description:
+    "Community Driven Exchange on Arbitrum.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/zyberswap.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  module: "zkasino/index.js",
+  twitter: "zyberswap/index.js",
+  oracles: ["TWAP"],
+  forkedFrom: ["Uniswap"],
+  audit_links: ["https://github.com/solidproof/projects/blob/main/ZyberSwap/SmartContract_Audit_Solidproof_Zyberswap.pdf"],
+  listedAt: 1674558950
+},
 ]
 export default data2;

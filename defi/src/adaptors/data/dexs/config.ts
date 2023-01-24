@@ -605,7 +605,7 @@ export default {
         enabled: true
     },
     "dexible": {
-        enabled: true
+        enabled: false
     },
     "metatdex": {
         enabled: true

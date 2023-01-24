@@ -23288,5 +23288,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/solidproof/projects/blob/main/ZyberSwap/SmartContract_Audit_Solidproof_Zyberswap.pdf"],
   listedAt: 1674558950
 },
+{
+  id: "2468",
+  name: "Hats.Finance",
+  address: null,
+  symbol: "-",
+  url: "https://hats.finance",
+  description:
+    "Hats is an onchain Bug Bounty Protocol, Hats uses incentives to funnel part of the 3.2bn in stolen assets annually into bounties for ethical / responsible disclosures.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/hats.finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "hats/index.js",
+  twitter: "HatsFinance",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://github.com/hats-finance/hats-contracts/tree/develop/audit"],
+  listedAt: 1674569878
+},
 ]
 export default data2;

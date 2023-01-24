@@ -23178,14 +23178,14 @@ listedAt: 1650804679
 },*/
 {
   id: "2463",
-  name: "WYND",
+  name: "WYND DEX",
   address: "juno:juno1mkw83sv6c7sjdvsaplrzc8yaes9l42p4mhy0ssuxjnyzl87c9eps7ce3m9",
   symbol: "WYND",
   url: "https://dex.wynddao.com/pools",
   description:
     "WYND DEX took most of Junoswap's liquidity by a bipartisan on-chain proposal similar to a corporate M&A deal. 80-90% of liquidity from Junoswap has now been migrated to WYND DEX now",
   chain: "Juno",
-  logo: `${baseIconsUrl}/wynd.jpg`,
+  logo: `${baseIconsUrl}/wynd-dex.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: "wynd",

@@ -41,10 +41,13 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
             list = chainData
         }
         const dexFoundInProtocols = list.find(dexP => {
-            return getBySpecificId(adapterKey, dexP.id) && (dexP.name.toLowerCase()?.includes(adapterKey)
+            return getBySpecificId(adapterKey, dexP.id) && (
+                dexP.name.toLowerCase()?.includes(adapterKey)
                 || sluggifyString(dexP.name)?.includes(adapterKey)
                 || dexP.gecko_id?.includes(adapterKey)
-                || dexP.module?.split("/")[0]?.includes(adapterKey))
+                || dexP.module?.split("/")[0]?.includes(adapterKey)
+                || dexP.logo?.toLocaleLowerCase()?.includes(adapterKey)
+            )
         })
         if (dexFoundInProtocols && imports_obj[adapterKey].module.default) {
             let moduleObject = imports_obj[adapterKey].module.default
@@ -139,5 +142,7 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'thena') return id === "2417"
     if (key === 'verse') return id === "1732"
     if (key === 'blur') return id === "2414"
+    if (key === 'solidlydex') return id === "2400"
+    if (key === 'tethys-finance') return id === "1139"
     return true
 }

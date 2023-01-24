@@ -66,4 +66,5 @@ export default {
   jarvis: require("./markets/jarvis/index"),
   chainlinkNFT: require("./nft/chainlink/index"),
   arrakis: require("./markets/arrakis/index"),
+  yieldYak: require("./yield/yield-yak/index"),
 };

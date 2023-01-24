@@ -6,7 +6,6 @@ import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import { getLogs } from "../../../utils/cache/getLogs";
 import { getApi } from "../../utils/sdk";
-import * as sdk from '@defillama/sdk'
 import * as ethers from 'ethers'
 
 const config = {
@@ -40,7 +39,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   })
 
   const logs = await getLogs({
-    chain, target: cauldron, fromBlock, timestamp, api,
+    target: cauldron, fromBlock, api,
     topic: 'IlkAdded(bytes6,bytes6)'
   })
 
@@ -57,7 +56,6 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const fyTokens = await api.multiCall({
     calls: pools,
     abi: 'address:fyToken',
-    chain: chain as any, block,
   })
   const underlyingTokens = await api.multiCall({
     calls: pools,

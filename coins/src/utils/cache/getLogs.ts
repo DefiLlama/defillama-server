@@ -28,9 +28,8 @@ export async function getLogs(options: logOptions) {
     api = new sdk.ChainApi({ block: toBlock, chain, timestamp })
   
   if (api.chain) chain = api.chain
-  if (api.block || !toBlock) {
-    await api.getBlock()
-    toBlock = api.block as number
+  if (!toBlock) {
+    toBlock = await api.getBlock()
   }
   if (api.timestamp) timestamp = api.timestamp
 

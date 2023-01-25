@@ -7,7 +7,7 @@ import { IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { IChartData, IChartDataBreakdown, sumAllVolumes } from "../../utils/volumeCalcs";
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../processProtocolsSummary";
+import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../getOverview";
 
 export interface ChartItem {
     data: IRecordAdaptorRecordData;

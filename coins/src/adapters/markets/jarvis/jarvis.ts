@@ -31,6 +31,7 @@ export const JFIAT: Record<string, { symbol: string, address: string, feed: stri
     { symbol: 'jPHP', address: '0x486880FB16408b47f928F472f57beC55AC6089d1', feed: '0x218231089Bebb2A31970c3b77E96eCfb3BA006D1' },
     { symbol: 'jTRY', address: '0x2a227fc77bb2cf8f1881a04ecc8fa01ec57ec9fc', feed: '0xd78325DcA0F90F0FFe53cCeA1B02Bb12E1bf8FdB' },
     { symbol: 'jBRL', address: '0xf2f77FE7b8e66571E0fca7104c4d670BF1C8d722', feed: '0xB90DA3ff54C3ED09115abf6FbA0Ff4645586af2c' },
+    { symbol: 'jSGD', address: '0xa926db7a4cc0cb1736d5ac60495ca8eb7214b503', feed: '0x8CE3cAc0E6635ce04783709ca3CC4F5fc5304299' },
   ],
 }
 

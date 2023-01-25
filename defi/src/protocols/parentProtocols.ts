@@ -750,6 +750,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tethysfinance",
   },
+  /*
   {
     id: "Timeless",
     name: "Timeless",
@@ -762,6 +763,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Timeless_Fi",
   },
+  */
 ];
 
 export default parentProtocols;

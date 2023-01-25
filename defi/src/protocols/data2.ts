@@ -21768,7 +21768,7 @@ listedAt: 1650804679
   description:
     "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/solidlydex.jpg`,
+  logo: `${baseIconsUrl}/solidly-v2.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

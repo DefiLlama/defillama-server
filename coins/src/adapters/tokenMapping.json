@@ -6130,7 +6130,7 @@
     },
     "B37E4D9FB5B30F3E1E20A4B2DE2A005E584C5C822C44527546556AE2470B4539": {
       "name": "polkadot",
-      "decimals": "6",
+      "decimals": "10",
       "symbol": "DOT",
       "to": "coingecko#polkadot"
     },

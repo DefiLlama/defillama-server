@@ -12561,7 +12561,7 @@ listedAt: 1650804679
   name: "Canto Dex",
   address: null,
   symbol: "-",
-  url: "https://convert.canto.io",
+  url: "https://app.slingshot.finance/swap/CANTO",
   description: "Dex on canto blockchain",
   chain: "Canto",
   logo: `${baseIconsUrl}/canto-dex.jpg`,

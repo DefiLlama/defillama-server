@@ -11467,7 +11467,7 @@ listedAt: 1650804679
   module: "timeless/index.js",
   twitter: "Timeless_Fi",
   audit_links: ["https://github.com/spearbit/portfolio/blob/master/pdfs/Timeless-Spearbit-Security-Review.pdf"],
-  //parentProtocol: "Timeless",
+  parentProtocol: "Timeless",
   listedAt: 1658931496
 },
 {
@@ -23039,7 +23039,7 @@ listedAt: 1650804679
   twitter: "Timeless_Fi",
   oracles: [],
   forkedFrom: [],
-  //parentProtocol: "Timeless",
+  parentProtocol: "Timeless",
   listedAt: 1674140788
 },
 {

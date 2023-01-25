@@ -750,6 +750,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tethysfinance",
   },
+  {
+    id: "Timeless",
+    name: "Timeless",
+    url: "https://timelessfi.com",
+    description:
+    "Timeless is powered by yield tokens, specially designed ERC-20 tokens whose values are related to yield rates. Each farm corresponds to a set of three yield tokens.",
+    logo: `${baseIconsUrl}/timeless.jpg`,
+    gecko_id: "timeless",
+    cmcId: "23236",
+    chains: [],
+    twitter: "Timeless_Fi",
+  },
 ];
 
 export default parentProtocols;

@@ -1,4 +1,4 @@
-import { curve as adapter } from "./../protocols/curve";
+import { curve as adapter } from "./../protocols/uniswap";
 import {
   AdapterResult,
   StepAdapterResult,

@@ -1,18 +1,35 @@
-import { earlyUsers, employees, teamAndInvestors } from "../adapters/convex";
-import { manualCliff } from "../adapters/manual";
+import { lpRewards } from "../adapters/convex";
+import { manualCliff, manualLinear } from "../adapters/manual";
 import { Protocol } from "../types/adapters";
+import { periodToSeconds } from "../utils/time";
 
+const deployTime = 1621242000;
 export const curve: Protocol = {
-  investors,
-  treasury,
-  team,
-  "veCRV voters": manualCliff(),
-  "veCRV holders": [],
-  "liquidity mining": [],
-  "lp rewards": [],
+  investors: manualLinear(
+    deployTime,
+    deployTime + periodToSeconds.year,
+    3_300_000,
+    0,
+  ),
+  treasury: manualLinear(
+    deployTime,
+    deployTime + periodToSeconds.year,
+    9_700_000,
+    0,
+  ),
+  team: manualLinear(
+    deployTime,
+    deployTime + periodToSeconds.year,
+    10_000_000,
+    0,
+  ),
+  "veCRV voters": manualCliff(deployTime, 1_000_000),
+  "veCRV holders": manualCliff(deployTime, 1_000_000),
+  "liquidity mining": manualLinear(
+    deployTime,
+    deployTime + 4 * periodToSeconds.year,
+    25_000_000,
+    0,
+  ),
+  "lp rewards": lpRewards(deployTime),
 };
-
-// https://etherscan.io/tx/0x3f9aa0ff15fbd00cce60e36f32f25d6f85a43a19d983100d98007a84609f861a
-// https://curve.readthedocs.io/dao-gauges.html
-// inflation reduced by 2^0.25x each year
-// first year

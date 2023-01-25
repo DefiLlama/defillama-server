@@ -65,20 +65,5 @@ export type ChartYAxisData = {
   end: number;
 };
 export type Protocol = {
-  [section: string]:
-    | Promise<AdapterResult>
-    | Promise<AdapterResult[]>
-    | Promise<AdapterResult[][]>
-    | Promise<StepAdapterResult>
-    | Promise<CliffAdapterResult>
-    | Promise<LinearAdapterResult>
-    | AdapterResult
-    | AdapterResult[]
-    | AdapterResult[][]
-    | StepAdapterResult
-    | CliffAdapterResult
-    | LinearAdapterResult
-    | StepAdapterResult[]
-    | CliffAdapterResult[]
-    | LinearAdapterResult[];
+  [section: string]: any;
 };

@@ -9,7 +9,7 @@ export default async function main(
 ): Promise<AdapterResult[]> {
   let tokenAbi = abi.token;
   tokenAbi.name = tokenSymbol;
-  const [amount, cliff, start, end, receiver, token] = await Promise.all([
+  const [rawAmount, cliff, start, end, receiver, token] = await Promise.all([
     call({ target, abi: abi.vestingAmount, chain }),
     call({ target, abi: abi.vestingCliff, chain }),
     call({ target, abi: abi.vestingBegin, chain }),
@@ -17,6 +17,16 @@ export default async function main(
     call({ target, abi: abi.recipient, chain }),
     call({ target, abi: abi.token, chain }),
   ]);
-
-  return [{ type: "linear", start, end, cliff, amount, receiver, token }];
+  const decimals = await call({ target: token, abi: "erc20:decimals", chain });
+  return [
+    {
+      type: "linear",
+      start,
+      end,
+      cliff,
+      amount: rawAmount / 10 ** decimals,
+      receiver,
+      token,
+    },
+  ];
 }

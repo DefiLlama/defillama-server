@@ -34,10 +34,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         await invokeLambda("defillama-prod-processProtocolsSummary", event)
     }
 
+    // TODO: return undefined instead of an empty array, but should be properly handled in the fe
     if (excludeTotalDataChart)
-        delete response.body.totalDataChart
+        response.body.totalDataChart = []
     if (excludeTotalDataChartBreakdown)
-        delete response.body.totalDataChartBreakdown
+        response.body.totalDataChartBreakdown = []
     if (!enableAlerts)
         delete response.body.errors
 

@@ -59,9 +59,18 @@ async function getPrices(collaterals: string[]) {
       timestamp: number;
     };
   };
+  if (_prices["coingecko:tezos"]) {
+    _prices["coingecko:tezos"].decimals = 6;
+  }
   const prices: Price[] = Object.entries(_prices).map(([address, price]) => {
     const _chain = address.split(":")[0];
-    const chain = _chain === "avax" ? "avalanche" : _chain;
+    // const chain = _chain === "avax" ? "avalanche" : _chain;
+    let chain = _chain;
+    if (_chain === "avax") {
+      chain = "avalanche";
+    } else if (address = 'coingecko:tezos') {
+      chain = "tezos";
+    }
     return {
       ...price,
       address,

@@ -68,7 +68,7 @@ async function getPrices(collaterals: string[]) {
     let chain = _chain;
     if (_chain === "avax") {
       chain = "avalanche";
-    } else if (address = 'coingecko:tezos') {
+    } else if (address === 'coingecko:tezos') {
       chain = "tezos";
     }
     return {

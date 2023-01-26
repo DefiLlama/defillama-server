@@ -17,13 +17,14 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
-
     if (!adaptorType) throw new Error("Missing parameter")
 
     const response = await getCachedResponseOnR2<IGetOverviewResponseBody>(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)))
 
     if (!response) {
         console.info("Response not found, generating...")
+        delete event.queryStringParameters?.excludeTotalDataChart
+        delete event.queryStringParameters?.excludeTotalDataChartBreakdown
         await invokeLambda("defillama-prod-processProtocolsSummary", event)
         console.info("Returning 202")
         return acceptedResponse("Request accepted, your response is being generated. Please try again this request in some minutes");
@@ -31,13 +32,15 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     if ((Date.now() - response.lastModified.getTime()) > 1000 * 60 * 60) {
         console.info("Response expired, invoking lambda to update it.")
+        delete event.queryStringParameters?.excludeTotalDataChart
+        delete event.queryStringParameters?.excludeTotalDataChartBreakdown
         await invokeLambda("defillama-prod-processProtocolsSummary", event)
     }
 
     if (excludeTotalDataChart)
-        delete response.body.totalDataChart
+        response.body.totalDataChart = []
     if (excludeTotalDataChartBreakdown)
-        delete response.body.totalDataChartBreakdown
+        response.body.totalDataChartBreakdown = []
     if (!enableAlerts)
         delete response.body.errors
 

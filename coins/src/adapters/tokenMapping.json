@@ -2830,13 +2830,13 @@
       "symbol": "KUJI",
       "to": "coingecko#kujira"
     },
-    "factory/kujira1qk00h5atutpsv900x202pxx42npjr9thg58dnqpa72f2p7m2luase444a7/uusk": {
+    "factory:kujira1qk00h5atutpsv900x202pxx42npjr9thg58dnqpa72f2p7m2luase444a7:uusk": {
       "name": "usk",
       "decimals": "6",
       "symbol": "USK",
       "to": "coingecko#usk"
     },
-    "factory/kujira1swkuyt08z74n5jl7zr6hx0ru5sa2yev5v896p6/local": {
+    "factory:kujira1swkuyt08z74n5jl7zr6hx0ru5sa2yev5v896p6:local": {
       "name": "local-money",
       "decimals": "6",
       "symbol": "LOCAL",

@@ -5049,6 +5049,12 @@
       "decimals": "18",
       "symbol": "kBRISE",
       "to": "coingecko#bitrise-token"
+    },
+    "0x9b82ee2c5e811d9849d7766edc3d750d9ab6492c": {
+      "name": "PREMIO",
+      "decimals": "18",
+      "symbol": "PREMIO",
+      "to": "coingecko#premio"
     }
   },
   "sx": {

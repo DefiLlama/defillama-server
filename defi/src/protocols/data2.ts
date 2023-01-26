@@ -22743,14 +22743,14 @@ listedAt: 1650804679
 },
 {
   id: "2444",
-  name: "ChangeX Staking",
+  name: "Changex",
   address: "0x7051faed0775f664a0286af4f75ef5ed74e02754",
   symbol: "CHANGE",
   url: "https://changex.io",
   description:
-    "Simplify DeFi. 100% non-custodial, multi-chain wallet. Fiat-to-crypto, ERC20 swaps, ~47% staking APY.",
+    "DeFi + TradFi super app. Multi-chain staking, daily reward payout, compounding, no lock-ups. Leveraged Staking for 2x APR on any integrated POS token (coming soon).",
   chain: "Hydra",
-  logo: `${baseIconsUrl}/changex-staking.png`,
+  logo: `${baseIconsUrl}/changex.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "changex",

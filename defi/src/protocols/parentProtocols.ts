@@ -762,6 +762,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Timeless_Fi",
   },
+  {
+    id: "Cap Finance",
+    name: "Cap Finance",
+    url: "https://www.cap.finance",
+    description:
+    "Decentralized Perps. Trade with up to 100x leverage directly from your wallet. ",
+    logo: `${baseIconsUrl}/cap-finance.jpg`,
+    gecko_id: "cap",
+    cmcId: "5809",
+    chains: [],
+    twitter: "CapDotFinance",
+  },
 ];
 
 export default parentProtocols;

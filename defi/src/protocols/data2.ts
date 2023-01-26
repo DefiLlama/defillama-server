@@ -23313,5 +23313,28 @@ listedAt: 1650804679
   audit_links: ["https://github.com/hats-finance/hats-contracts/tree/develop/audit"],
   listedAt: 1674569878
 },
+{
+  id: "2469",
+  name: "Cap V4",
+  address: "arbitrum:0x43044f861ec040db59a7e324c40507addb673142",
+  symbol: "CAP",
+  url: "https://cap.io",
+  description:
+    "Decentralized Perps. Trade global markets with low fees, deep liquidity, and up to 100× leverage.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/cap-v4.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Arbitrum"],
+  module: "cap-v4/index.js",
+  twitter: "CapDotFinance",
+  oracles: [],
+  forkedFrom: ["Pyth"],
+  parentProtocol: "Cap Finance",
+  listedAt: 1674732169
+},
 ]
 export default data2;

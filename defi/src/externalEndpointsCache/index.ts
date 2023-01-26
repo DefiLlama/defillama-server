@@ -1,18 +1,18 @@
 import { successResponse, wrap, IResponse, acceptedResponse, errorResponse } from "../utils/shared";
-import { getCachedResponseOnR2 } from "../adaptors/utils/storeR2Response";
+import { cacheResponseOnR2, getCachedResponseOnR2 } from "../adaptors/utils/storeR2Response";
 import invokeLambda from "../utils/shared/invokeLambda";
-import { storeR2JSONString } from "../utils/r2";
+import fetch from "node-fetch";
 
 const allowedURLS: string[] = [
     'https://api.coingecko.com/api/v3/exchanges?per_page=250',
     "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
 ]
 
-const cachedResponseKey = (path: string) => `cgcache_${path.split(/[/?=]+/).join("_")}`
+const cachedResponseKey = (path: string) => `cgcache_${path.split(/[/?=:.]+/).join("_")}`
 
 export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-    const url = decodeURI(event.queryStringParameters?.url ?? '')
-
+    const url = decodeURIComponent(event.queryStringParameters?.url ?? '')
+    console.info("Decoded url", url)
     if (!allowedURLS.includes(url)) return errorResponse({ message: "Url not allowed" })
 
     const response = await getCachedResponseOnR2<any>(cachedResponseKey(url))
@@ -32,18 +32,19 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     return successResponse(response.body, 60 * 60); // 1h cache
 };
 
-const cacheExternalResponseHandler = async (event: { url: string }) => {
+export const cacheExternalResponseHandler = async (event: { url: string }) => {
     if (!event.url) {
         console.error("URL not defined")
         return
     }
-    const url = decodeURI(event.url)
+    const url = decodeURIComponent(event.url)
+    console.info("Decoded url", url)
     const response = await fetch(url).then(res => res.json()).catch(e => {
         console.error(e)
         return undefined
     })
     if (response) {
-        await storeR2JSONString(cachedResponseKey(url), JSON.stringify(response))
+        await cacheResponseOnR2(cachedResponseKey(url), JSON.stringify(response))
     }
 };
 

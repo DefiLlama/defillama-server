@@ -472,7 +472,7 @@ functions:
     events:
       - schedule: cron(01 2,13 * * ? *)
   cacheExternalResponse:
-    handler: src/externalEndpointsCache/index.cacheExternalResponse
+    handler: src/externalEndpointsCache/index.cacheExternalResponseHandler
     timeout: 180
   cachedExternalResponse:
     handler: src/externalEndpointsCache/index.default

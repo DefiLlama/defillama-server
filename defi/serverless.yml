@@ -471,6 +471,17 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 2,13 * * ? *)
+  cacheExternalResponse:
+    handler: src/externalEndpointsCache/index.cacheExternalResponse
+    timeout: 180
+  cachedExternalResponse:
+    handler: src/externalEndpointsCache/index.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: cachedExternalResponse
+          method: get
   storeDataset:
     handler: src/storeCsvDataset.default
     timeout: 900

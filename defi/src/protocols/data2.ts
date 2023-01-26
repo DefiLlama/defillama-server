@@ -23336,7 +23336,6 @@ listedAt: 1650804679
   parentProtocol: "Cap Finance",
   listedAt: 1674732169
 },
-/*
 {
   id: "2470",
   name: "Bitindi Dex",
@@ -23359,6 +23358,27 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   listedAt: 1674733691
 },
-*/
+{
+  id: "2471",
+  name: "Premio",
+  address: "celo:0x94140c2ea9d208d8476ca4e3045254169791c59e",
+  symbol: "PREMIO",
+  url: "https://premio.finance",
+  description:
+    "Premio offer the distribution of awards on a blockchain network whether in crypto or business world.",
+  chain: "Celo",
+  logo: `${baseIconsUrl}/premio.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "premio",
+  cmcId: "14035",
+  category: "Yield",
+  chains: ["Celo", "Kava"],
+  module: "premio/index.js",
+  twitter: "premiofinance",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674734540
+},
 ]
 export default data2;

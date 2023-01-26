@@ -9,9 +9,9 @@ const curve: Protocol = {
   employees,
   "team and investors": teamAndInvestors,
   community: manualCliff(1597285800, 151_515_151),
+  sources: [
+    "https://etherscan.io/tx/0x3f9aa0ff15fbd00cce60e36f32f25d6f85a43a19d983100d98007a84609f861a",
+    "https://curve.readthedocs.io/dao-gauges.html",
+  ],
 };
 export default curve;
-// https://etherscan.io/tx/0x3f9aa0ff15fbd00cce60e36f32f25d6f85a43a19d983100d98007a84609f861a
-// https://curve.readthedocs.io/dao-gauges.html
-// inflation reduced by 2^0.25x each year
-// first year

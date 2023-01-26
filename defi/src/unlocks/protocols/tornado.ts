@@ -12,4 +12,7 @@ export const tornado: Protocol = {
     0,
   ),
   "team and investors": teamAndInvestors,
+  sources: [
+    "https://etherscan.io/token/0x77777feddddffc19ff86db637967013e6c6a116c#balances",
+  ],
 };

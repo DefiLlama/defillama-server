@@ -23,7 +23,7 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 const protocol = process.argv[2];
-
+const excludedKeys = ["sources"];
 export async function parseData(adapter: Protocol): Promise<void> {
   let startTime: number = 10_000_000_000;
   let endTime: number = 0;
@@ -31,6 +31,7 @@ export async function parseData(adapter: Protocol): Promise<void> {
 
   await Promise.all(
     Object.entries(adapter.default).map(async (a: any[]) => {
+      if (excludedKeys.includes(a[0])) return;
       const section: string = a[0];
       let adapterResults = await a[1];
       if (adapterResults.length == null) adapterResults = [adapterResults];

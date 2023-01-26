@@ -22,5 +22,6 @@ const uniswap: Protocol = {
     0,
   ),
   advisors: manualLinear(start, start + periodToSeconds.year * 4, 6_900_000, 0),
+  sources: ["https://uniswap.org/blog/uni"],
 };
 export default uniswap;

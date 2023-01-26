@@ -32,5 +32,6 @@ const curve: Protocol = {
     0,
   ),
   "lp rewards": lpRewards(deployTime),
+  sources: [],
 };
 export default curve;

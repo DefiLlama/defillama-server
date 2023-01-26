@@ -97,5 +97,8 @@ const tornado: Protocol = {
   ),
   "DAO treasury": manualCliff(1627999200, 50_000_000),
   "retroactive mining rewards": manualCliff(1627999200, 75_000_000),
+  sources: [
+    "https://docs.dydx.community/dydx-governance/start-here/dydx-allocations",
+  ],
 };
 export default tornado;

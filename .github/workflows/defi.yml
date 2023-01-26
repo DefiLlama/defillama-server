@@ -60,6 +60,7 @@ jobs:
           SOLANA_RPC: ${{ secrets.SOLANA_RPC }}
           MOONRIVER_RPC: ${{ secrets.MOONRIVER_RPC }}
           CRONOS_RPC: ${{ secrets.CRONOS_RPC }}
+          LOFTY_API: ${{ secrets.LOFTY_API }}
           OUTDATED_WEBHOOK: ${{ secrets.OUTDATED_WEBHOOK }}
           HOURLY_OUTDATED_WEBHOOK: ${{ secrets.HOURLY_OUTDATED_WEBHOOK }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

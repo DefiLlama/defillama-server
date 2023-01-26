@@ -23380,5 +23380,27 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1674734540
 },
+{
+  id: "2472",
+  name: "Traddify Arbitrage",
+  address: null,
+  symbol: "-",
+  url: "https://arbitrage.traddify.com",
+  description:
+    "AI arbitrage trading bot to assist users in earning passive income by exploiting arbitrage opportunities on multiple chains.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/traddify-arbitrage.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Kava"],
+  module: "traddify/index.js",
+  twitter: "traddify",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674768737
+},
 ]
 export default data2;

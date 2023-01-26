@@ -7,7 +7,6 @@ export default async function getTokenPrices(timestamp: number) {
   const writes: Write[] = [];
 
   const res = (await Promise.all([getPlentyData(), getTezToolsData()])).flat()
-  console.log(res)
   res.forEach((i: any) => {
     if (!i.token) return; // ignore xtz token
     addToDBWritesList(writes, 'tezos', i.token, i.price, i.decimals, i.symbol, timestamp, 'tezos', i.confidence)
@@ -22,7 +21,7 @@ async function getPlentyData() {
     const { symbol, decimals, } = i
     const tvl = +i.tvl.value
     if (tvl < 1000) {
-      console.log('Ignoring', symbol, ' tvl is only', tvl)
+      // console.log('Ignoring', symbol, ' tvl is only', tvl)
       return;
     }
     const confidence = tvl > 10000 ? 0.99 : 0.6
@@ -31,7 +30,6 @@ async function getPlentyData() {
     response.push({ symbol, token: label, decimals, price: +i.price.value, confidence })
   })
 
-  console.log('plenty', response.length, data.length)
   return response
 }
 
@@ -42,7 +40,7 @@ async function getTezToolsData()  {
     const { symbol, decimals, pairs, } = i
     const tvl = pairs.reduce((a: number, j: any) => a + +j.tvl, 0)
     if (tvl < 1000) {
-      console.log('Ignoring', symbol, ' tvl is only', tvl)
+      // console.log('Ignoring', symbol, ' tvl is only', tvl)
       return;
     }
     const confidence = tvl > 10000 ? 0.99 : 0.6
@@ -50,6 +48,5 @@ async function getTezToolsData()  {
     if (i.hasOwnProperty('factoryIndex') && i.factoryIndex !== 0) label += '-' + i.factoryIndex
     response.push({ symbol, token: label, decimals, price: i.usdValue, confidence })
   })
-  console.log('tez', response.length, data.contracts.length)
   return response
 }

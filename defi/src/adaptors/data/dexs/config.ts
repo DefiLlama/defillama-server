@@ -759,5 +759,8 @@ export default {
     },
     "defibox": {
         enabled: true
+    },
+    "shell-protocol": {
+        enabled: true
     }
 } as AdaptorsConfig

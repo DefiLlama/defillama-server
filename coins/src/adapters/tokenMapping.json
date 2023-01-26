@@ -780,12 +780,6 @@
     }
   },
   "cronos": {
-    "0x065de42e28e42d90c2052a1b49e7f83806af0e1f": {
-      "name": "CroKing",
-      "decimals": "9",
-      "symbol": "CRK",
-      "to": "ethereum:0x123"
-    },
     "0x87efb3ec1576dec8ed47e58b832bedcd86ee186e": {
       "name": "TrueUSD",
       "decimals": "18",

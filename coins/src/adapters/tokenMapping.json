@@ -5774,6 +5774,12 @@
       "symbol": "AXLUSDC",
       "to": "coingecko#axlusdc"
     },
+    "EAC38D55372F38F1AFD68DF7FE9EF762DCF69F26520643CF3F9D292A738D8034": {
+      "name": "axlusdc",
+      "decimals": "6",
+      "symbol": "AXLUSDC",
+      "to": "coingecko#axlusdc"
+    },
     "11F940BCDFD7CFBFD7EDA13F25DA95D308286D441209D780C9863FD4271514EB": {
       "name": "agoric",
       "decimals": "6",

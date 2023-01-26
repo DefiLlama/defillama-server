@@ -35,9 +35,9 @@ export default async function bridge(): Promise<Token[]> {
       ([from, { to, symbol, decimals: decimalsNum }]) => {
         const decimals = +decimalsNum
         if (isNaN(decimals)) throw new Error('Is not valid token mapping: '+ from)
-        const from_lowerCase = from.toLowerCase()
-        if (from_lowerCase !== from)
-          tokens.push([from_lowerCase, to, symbol, decimals]);
+        // const from_lowerCase = from.toLowerCase()
+        // if (from_lowerCase !== from)
+        //   tokens.push([from_lowerCase, to, symbol, decimals]);
         tokens.push([from, to, symbol, decimals]);
       })
     response.push(formatExtraTokens(chain, tokens))

@@ -23336,5 +23336,27 @@ listedAt: 1650804679
   parentProtocol: "Cap Finance",
   listedAt: 1674732169
 },
+{
+  id: "2470",
+  name: "Bitindi Dex",
+  address: null,
+  symbol: "-",
+  url: "https://dex.bitindi.org/#/swap",
+  description:
+    "Dexes on bitindi chain",
+  chain: "Bitindi",
+  logo: `${baseIconsUrl}/bitindi-dex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Bitindi"],
+  module: "bitindi-dex/index.js",
+  twitter: "bitindichain",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  listedAt: 1674733691
+},
 ]
 export default data2;

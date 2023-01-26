@@ -486,18 +486,6 @@
       "symbol": "axlUSDC",
       "to": "coingecko#usd-coin"
     },
-    "0xe85afccdafbe7f2b096f268e31cce3da8da2990a": {
-      "name": "Ankr Reward Bearing BNB",
-      "decimals": "18",
-      "symbol": "ankrBNB",
-      "to": "coingecko#aBnBc-bad"
-    },
-    "0xbb1aa6e59e5163d8722a122cd66eba614b59df0d": {
-      "name": "Ankr Reward Earning BNB",
-      "decimals": "18",
-      "symbol": "aBNBb",
-      "to": "coingecko#aBnBb-bad"
-    },
     "0xfb5b838b6cfeedc2873ab27866079ac55363d37e": {
       "name": "FLOKI",
       "decimals": "9",
@@ -6154,6 +6142,5 @@
       "symbol": "BNI",
       "to": "coingecko#bitindi-chain"
     }
-
   }
 }

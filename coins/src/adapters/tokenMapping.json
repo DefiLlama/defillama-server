@@ -2180,6 +2180,12 @@
       "symbol": "TLOS",
       "to": "coingecko#telos"
     },
+    "0xb4b01216a5bc8f1c8a33cd990a1239030e60c905": {
+      "name": "Staked Telos",
+      "decimals": "18",
+      "symbol": "STLOS",
+      "to": "coingecko#telos"
+    },
     "0xd102ce6a4db07d247fcc28f366a623df0938ca9e": {
       "name": "Wrapped TLOS",
       "decimals": "18",

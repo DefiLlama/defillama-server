@@ -45,7 +45,7 @@ async function getTezToolsData()  {
     }
     const confidence = tvl > 10000 ? 0.99 : 0.6
     let label = i.tokenAddress
-    if (i.hasOwnProperty('factoryIndex') && i.factoryIndex !== 0) label += '-' + i.factoryIndex
+    if (i.hasOwnProperty('tokenId') && i.tokenId !== 0) label += '-' + i.tokenId
     response.push({ symbol, token: label, decimals, price: i.usdValue, confidence })
   })
   return response

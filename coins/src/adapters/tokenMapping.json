@@ -4076,36 +4076,6 @@
       "symbol": "XTZ",
       "to": "coingecko#tezos"
     },
-    "KT1VYsVfmobT7rsMVivvZ4J8i3bPiqz12NaH": {
-      "name": "tezos",
-      "decimals": "6",
-      "symbol": "XTZ",
-      "to": "coingecko#tezos"
-    },
-    "KT1GRSvLoikDsXujKgZPsGLX8k8VvR2Tq95b": {
-      "name": "plenty-dao",
-      "decimals": "18",
-      "symbol": "PLENTY",
-      "to": "coingecko#plenty-dao"
-    },
-    "KT1SjXiUX63QvdNMcM2m492f7kuf8JxXRLp4": {
-      "name": "tezos",
-      "decimals": "6",
-      "symbol": "XTZ",
-      "to": "coingecko#tezos"
-    },
-    "KT1Ha4yFVeyzw6KRAdkzq6TxDHB97KG4pZe8": {
-      "name": "dogami",
-      "decimals": "5",
-      "symbol": "DOGA",
-      "to": "coingecko#dogami"
-    },
-    "KT1JkoE42rrMBP9b2oDhbx6EUr26GcySZMUH": {
-      "name": "kolibri-dao",
-      "decimals": "18",
-      "symbol": "KDAO",
-      "to": "coingecko#kolibri-dao"
-    },
     "KT18fp5rcTW7mbWDmzFwjLDUhs5MeJmagDSZ-19": {
       "name": "wrapped-bitcoin",
       "decimals": "8",
@@ -4148,30 +4118,6 @@
       "symbol": "DAI",
       "to": "coingecko#dai"
     },
-    "KT19DUSZw7mfeEATrbWVPHRrWNVbNnmfFAE6": {
-      "name": "paul-token",
-      "decimals": "18",
-      "symbol": "PAUL",
-      "to": "coingecko#paul-token"
-    },
-    "KT1TgmD7kXQzofpuc9VbTRMdZCS2e6JDuTtc": {
-      "name": "upsorber",
-      "decimals": "0",
-      "symbol": "UP",
-      "to": "coingecko#upsorber"
-    },
-    "KT1TwzD6zV3WeJ39ukuqxcfK2fJCnhvrdN1X": {
-      "name": "smartlink",
-      "decimals": "3",
-      "symbol": "SMAK",
-      "to": "coingecko#smartlink"
-    },
-    "KT19at7rQUvyjxnZ2fBv7D9zc8rkyG7gAoU8": {
-      "name": "ethtez",
-      "decimals": "18",
-      "symbol": "ETHTZ",
-      "to": "coingecko#ethtez"
-    },
     "KT18fp5rcTW7mbWDmzFwjLDUhs5MeJmagDSZ": {
       "name": "aave",
       "decimals": "18",
@@ -4183,42 +4129,6 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
-    },
-    "KT1K9gCRgaLRFKTErYt1wVxA3Frb9FjasjTV": {
-      "name": "kolibri-usd",
-      "decimals": "18",
-      "symbol": "KUSD",
-      "to": "coingecko#kolibri-usd"
-    },
-    "KT1LN4LPSqTMS7Sd2CJw4bbDGRkMv2t68Fy9": {
-      "name": "usdtez",
-      "decimals": "6",
-      "symbol": "USDTZ",
-      "to": "coingecko#usdtez"
-    },
-    "KT1XRPEPXbZK25r3Htzp2o1x7xdMMmfocKNW": {
-      "name": "youves-uusd",
-      "decimals": "12",
-      "symbol": "UUSD",
-      "to": "coingecko#youves-uusd"
-    },
-    "KT1PWx2mnDueood7fEmfbBDKx1D9BAnnXitn": {
-      "name": "bitcoin",
-      "decimals": "8",
-      "symbol": "BTC",
-      "to": "coingecko#bitcoin"
-    },
-    "KT1XRPEPXBZK25R3HTZP2O1X7XDMMMFOCKNW-0": {
-      "name": "youves-uusd",
-      "decimals": "12",
-      "symbol": "UUSD",
-      "to": "coingecko#youves-uusd"
-    },
-    "KT1Xobej4mc6XgEjDoJoHtTKgbD1ELMvcQuL": {
-      "name": "youves-you-governance",
-      "decimals": "12",
-      "symbol": "YOU",
-      "to": "coingecko#youves-you-governance"
     },
     "KT1XRPEPXbZK25r3Htzp2o1x7xdMMmfocKNW-2": {
       "name": "wrapped-bitcoin",
@@ -4279,72 +4189,6 @@
       "decimals": "18",
       "symbol": "BUSD",
       "to": "coingecko#binance-usd"
-    },
-    "KT1XnTn74bUtxHfDtBmm2bGZAQfhPbvKWR8o": {
-      "name": "tether",
-      "decimals": "6",
-      "symbol": "USDT",
-      "to": "coingecko#tether"
-    },
-    "KT1F1mn2jbqQCJcsNgYKVAQjvenecNMY2oPK": {
-      "name": "pixelpotus",
-      "decimals": "6",
-      "symbol": "PXL",
-      "to": "coingecko#pixelpotus"
-    },
-    "KT193D4vozYnhGJQVtw7CoxxqphqUEEwK6Vb": {
-      "name": "quipuswap-governance-token",
-      "decimals": "6",
-      "symbol": "QUIPU",
-      "to": "coingecko#quipuswap-governance-token"
-    },
-    "KT1ErKVqEhG9jxXgUG2KGLW3bNM7zXHX8SDF": {
-      "name": "unobtanium-tezos",
-      "decimals": "9",
-      "symbol": "UNO",
-      "to": "coingecko#unobtanium-tezos"
-    },
-    "KT1AFA2mwNUMNd4SsujE1YYp29vd8BZejyKW": {
-      "name": "hic-et-nunc-dao",
-      "decimals": "6",
-      "symbol": "HDAO",
-      "to": "coingecko#hic-et-nunc-dao"
-    },
-    "KT1XTxpQvo7oRCqp85LikEZgAZ22uDxhbWJv": {
-      "name": "gif-dao",
-      "decimals": "9",
-      "symbol": "GIF",
-      "to": "coingecko#gif-dao"
-    },
-    "KT1A5P4ejnLix13jtadsfV9GCnXLMNnab8UT": {
-      "name": "kalamint",
-      "decimals": "10",
-      "symbol": "KALAM",
-      "to": "coingecko#kalamint"
-    },
-    "KT1LRboPna9yQY9BrjtQYDS1DVxhKESK4VVd": {
-      "name": "wrap-governance-token",
-      "decimals": "8",
-      "symbol": "WRAP",
-      "to": "coingecko#wrap-governance-token"
-    },
-    "KT1REEb5VxWRjcHm5GzDMwErMmNFftsE5Gpf": {
-      "name": "stableusd",
-      "decimals": "6",
-      "symbol": "USDS",
-      "to": "coingecko#stableusd"
-    },
-    "KT1AEfeckNbdEYwaMKkytBwPJPycz7jdSGea": {
-      "name": "staker-dao",
-      "decimals": "18",
-      "symbol": "STKR",
-      "to": "coingecko#staker-dao"
-    },
-    "KT1BB1uMwVvJ1M3vVHXWALs1RWdgTp1rnXTR": {
-      "name": "moneyhero",
-      "decimals": "8",
-      "symbol": "MYH",
-      "to": "coingecko#moneyhero"
     }
   },
   "hpb": {

@@ -23336,6 +23336,7 @@ listedAt: 1650804679
   parentProtocol: "Cap Finance",
   listedAt: 1674732169
 },
+/*
 {
   id: "2470",
   name: "Bitindi Dex",
@@ -23358,5 +23359,6 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   listedAt: 1674733691
 },
+*/
 ]
 export default data2;

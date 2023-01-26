@@ -23155,11 +23155,10 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1674236651
 },
-/*
 {
   id: "2462",
   name: "Cranium Exchange",
-  address: "fantom:0x9945Dd3eCB40A6b594813f2A4DF1643b10Fe3550",
+  address: "fantom:0xfa5992A8A47aF7029e04eC6a95203AD3f301460b",
   symbol: "SKULL",
   url: "https://cranium.exchange/",
   description:
@@ -23173,11 +23172,11 @@ listedAt: 1650804679
   category: "Derivatives",
   chains: ["Fantom"],
   module: "cranium/index.js",
-  twitter: null,
+  twitter: "craniumexchange",
   oracles: ["Chainlink"],
   forkedFrom: ["GMX"],
   listedAt: 1674239023
-},*/
+},
 {
   id: "2463",
   name: "WYND DEX",

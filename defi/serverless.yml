@@ -144,6 +144,17 @@ functions:
       - http:
           path: charts/{chain}
           method: get
+  defaultChart:
+    handler: src/getDefaultChart.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: defaultChart
+          method: get
+      - http:
+          path: defaultChart/{chain}
+          method: get
   protocols:
     handler: src/getProtocols.default
     timeout: 30

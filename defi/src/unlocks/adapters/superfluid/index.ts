@@ -3,6 +3,13 @@ import { AdapterResult } from "../../types/adapters";
 import { request, gql } from "graphql-request";
 import abi from "./abi";
 
+type Result = {
+  currentFlowRate: number;
+  token: { id: string };
+  sender: { id: string };
+  receiver: { id: string };
+  createdAtTimestamp: number;
+};
 type GqlData = {
   receiver: string;
   sender: string;
@@ -16,6 +23,7 @@ type ChainData = {
   owedDeposit: number;
   deposit: number;
 };
+
 const baseUrl: string =
   "https://api.thegraph.com/subgraphs/name/superfluid-finance/protocol-v1-";
 const chainData: { [chain: string]: { [key: string]: string } } = {
@@ -25,7 +33,7 @@ const chainData: { [chain: string]: { [key: string]: string } } = {
   },
 };
 export default async function main(chain: any): Promise<AdapterResult[]> {
-  const target = chainData[chain].cfa;
+  const target: string = chainData[chain].cfa;
   const gqlData: GqlData[] = await getStreamIdentifiers(chain);
 
   const flows: ChainData[] = await multiCall({
@@ -39,8 +47,8 @@ export default async function main(chain: any): Promise<AdapterResult[]> {
   });
 
   return gqlData.map((g: GqlData, i: number) => {
-    const flow = flows[i];
-    const end = Math.floor(
+    const flow: ChainData = flows[i];
+    const end: number = Math.floor(
       Number(flow.timestamp) + Number(flow.deposit / flow.flowRate),
     );
 
@@ -58,7 +66,7 @@ async function getStreamIdentifiers(chain: string): Promise<GqlData[]> {
   let streams: GqlData[] = [];
   let reservereThreshold: number | undefined;
   const subgraph: string = `${baseUrl}${chainData[chain].subgraphKey}`;
-  let result: any[] = [];
+  let result: Result[] = [];
   result.length = 1000;
   while (result.length == 1000) {
     const lpQuery = gql`
@@ -84,7 +92,7 @@ async function getStreamIdentifiers(chain: string): Promise<GqlData[]> {
       result[Math.max(result.length - 1, 0)].currentFlowRate,
     );
     streams.push(
-      ...result.map((p: any) => ({
+      ...result.map((p: Result) => ({
         token: p.token.id,
         sender: p.sender.id,
         receiver: p.receiver.id,

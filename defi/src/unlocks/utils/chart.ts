@@ -2,9 +2,13 @@ import fs from "fs";
 import { resolve } from "path";
 import dayjs from "dayjs";
 import { ChartJSNodeCanvas } from "chartjs-node-canvas";
-const chartJSNodeCanvas = new ChartJSNodeCanvas({ width: 1000, height: 500, backgroundColour: "white" });
-
-const hexColors = {
+import { ChartSection, Dataset } from "../types/adapters";
+const chartJSNodeCanvas = new ChartJSNodeCanvas({
+  width: 1000,
+  height: 500,
+  backgroundColour: "white",
+});
+const hexColors: { [name: string]: string } = {
   green: "#008000",
   blue: "#0000FF",
   cyan: "#00FFFF",
@@ -13,20 +17,18 @@ const hexColors = {
   maroon: "#800000",
   purple: "#800080",
 };
-export async function draw(configuration: any) {
-  const image = await chartJSNodeCanvas.renderToBuffer(
-    configuration,
-    `image/png`,
-  );
-  return image;
+export async function draw(configuration: any): Promise<Buffer> {
+  return await chartJSNodeCanvas.renderToBuffer(configuration, `image/png`);
 }
-function buildOptionsObject(data: any) {
-  const labels = data[0].data.timestamps.map((t: number) =>
-    stringifyDate(t*1e3, "DD/MM/YYYY"),
+function buildOptionsObject(data: ChartSection[]): Object {
+  const labels: string[] = data[0].data.timestamps.map((t: number) =>
+    stringifyDate(t * 1e3, "DD/MM/YYYY"),
   );
-  const sections = [...new Set(data.map((d: any) => d.section))];
+  const sections: string[] = [
+    ...new Set(data.map((d: ChartSection) => d.section)),
+  ];
 
-  const datasets: any[] = data.map((d: any) => ({
+  const datasets: Dataset[] = data.map((d: ChartSection) => ({
     label: d.section,
     data: d.data.unlocked,
     borderColor: Object.values(hexColors)[sections.indexOf(d.section)],
@@ -65,17 +67,21 @@ function buildOptionsObject(data: any) {
     },
   };
 }
-export async function getChartPng(data: any[]) {
-  const path = resolve(__dirname);
-  const options = buildOptionsObject(data);
-  const image = await draw(options);
-  fs.writeFile(`${path}/result2.png`, image, function (err) {
+export async function getChartPng(data: ChartSection[]): Promise<void> {
+  const path: string = resolve(__dirname);
+  const options: Object = buildOptionsObject(data);
+  const image: Buffer = await draw(options);
+  fs.writeFile(`${path}/result.png`, image, function (err) {
     if (err) {
       return console.log(err);
     }
-    console.log("The file was saved!");
+    console.log("The file was saved at utils/result.png!");
   });
 }
-function stringifyDate(datetime: number, format: string, locale = "en-US") {
+function stringifyDate(
+  datetime: number,
+  format: string,
+  locale = "en-US",
+): string {
   return dayjs(datetime).locale(locale).format(format);
 }

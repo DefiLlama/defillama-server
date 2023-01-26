@@ -1,4 +1,4 @@
-import { ChartData, ChartYAxisData, RawResult } from "../types/adapters";
+import { ChartData, ChartConfig, RawResult } from "../types/adapters";
 import { periodToSeconds } from "./time";
 
 export function rawToChartData(
@@ -6,10 +6,10 @@ export function rawToChartData(
   start: number,
   end: number,
   resolution: number = periodToSeconds.day,
-): any {
-  const roundedStart = Math.floor(start / resolution) * resolution;
-  const roundedEnd = Math.ceil(end / resolution) * resolution;
-  let config = {
+): ChartData {
+  const roundedStart: number = Math.floor(start / resolution) * resolution;
+  const roundedEnd: number = Math.ceil(end / resolution) * resolution;
+  let config: ChartConfig = {
     resolution,
     roundedStart,
     roundedEnd,
@@ -23,7 +23,7 @@ export function rawToChartData(
 
   return raw[0].continuousEnd ? continuous(raw, config) : discreet(raw, config);
 }
-function continuous(raw: any, config: any) {
+function continuous(raw: RawResult[], config: ChartConfig): ChartData {
   let {
     resolution,
     steps,
@@ -33,7 +33,12 @@ function continuous(raw: any, config: any) {
     workingTimestamp,
   } = config;
 
-  const dy =
+  if (raw[0].continuousEnd == null)
+    throw new Error(
+      `some noncontinuous data has entered the continuous function`,
+    );
+
+  const dy: number =
     (raw[0].change * resolution) / (raw[0].continuousEnd - raw[0].timestamp);
 
   for (let i = 0; i < steps; i++) {
@@ -49,7 +54,7 @@ function continuous(raw: any, config: any) {
   }
   return { timestamps, unlocked, isContinuous: true };
 }
-function discreet(raw: any, config: any) {
+function discreet(raw: RawResult[], config: ChartConfig): ChartData {
   let {
     resolution,
     steps,

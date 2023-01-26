@@ -8,7 +8,8 @@ import {
 export function stepAdapterToRaw(result: StepAdapterResult): RawResult[] {
   const output: RawResult[] = [];
   for (let i = 0; i < result.steps; i++) {
-    const timestamp = Number(result.start) + (i + 1) * result.stepDuration;
+    const timestamp: number =
+      Number(result.start) + (i + 1) * result.stepDuration;
     output.push({
       timestamp,
       change: result.amount,

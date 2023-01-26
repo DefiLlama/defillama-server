@@ -4,7 +4,7 @@ import { Protocol } from "../types/adapters";
 import { periodToSeconds } from "../utils/time";
 
 const deployTime = 1621242000;
-export const curve: Protocol = {
+const curve: Protocol = {
   investors: manualLinear(
     deployTime,
     deployTime + periodToSeconds.year,
@@ -33,3 +33,4 @@ export const curve: Protocol = {
   ),
   "lp rewards": lpRewards(deployTime),
 };
+export default curve;

@@ -7,7 +7,7 @@ const quantities = {
   employees: 152_704_930,
   futureEmployees: 70_000_000,
 };
-export const tornado: Protocol = {
+const tornado: Protocol = {
   "future employees & consultannts": [
     manualCliff(1675436400, quantities.futureEmployees * 0.3),
     manualStep(
@@ -98,3 +98,4 @@ export const tornado: Protocol = {
   "DAO treasury": manualCliff(1627999200, 50_000_000),
   "retroactive mining rewards": manualCliff(1627999200, 75_000_000),
 };
+export default tornado;

@@ -56,7 +56,8 @@ export type LinearAdapterResult = {
 };
 export type ChartData = {
   timestamps: number[];
-  data: ChartYAxisData[];
+  unlocked: number[];
+  isContinuous: boolean;
 };
 export type ChartYAxisData = {
   start: number;
@@ -66,4 +67,29 @@ export type ChartYAxisData = {
 };
 export type Protocol = {
   [section: string]: any;
+};
+export type RawSection = {
+  section: string;
+  results: RawResult[] | RawResult[][];
+};
+export type ChartConfig = {
+  resolution: number;
+  steps: number;
+  timestamps: number[];
+  unlocked: number[];
+  workingQuantity: number;
+  workingTimestamp: number;
+  roundedStart: number;
+  roundedEnd: number;
+};
+export type ChartSection = {
+  data: ChartData;
+  section: string;
+};
+export type Dataset = {
+  label: string;
+  data: number[];
+  borderColor: string;
+  backgroundColor: string;
+  fill: boolean;
 };

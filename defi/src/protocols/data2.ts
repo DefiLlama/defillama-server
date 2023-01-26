@@ -10144,7 +10144,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Lending",
   chains: ["Kucoin"],
-  oracles: ["Internal"],
+  oracles: ["Internal","Pyth"],
   forkedFrom: ["Compound"],
   module: "torches/index.js",
   twitter: "TorchesFinance",

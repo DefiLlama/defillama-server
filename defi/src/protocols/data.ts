@@ -7633,6 +7633,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kuswap/index.js",
     twitter: "kuswapfinance",
     forkedFrom: ["Uniswap"],
+    oracles: ["Pyth"],
   },
   {
     id: "481",

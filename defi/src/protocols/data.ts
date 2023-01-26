@@ -10253,7 +10253,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "cap/index.js",
     twitter: "CapDotFinance",
     parentProtocol: "Cap Finance",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Pyth"],
   },
   {
     id: "609",

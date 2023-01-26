@@ -23331,7 +23331,7 @@ listedAt: 1650804679
   chains: ["Arbitrum"],
   module: "cap-v4/index.js",
   twitter: "CapDotFinance",
-  oracles: [],
+  oracles: ["Pyth"],
   forkedFrom: ["Pyth"],
   parentProtocol: "Cap Finance",
   listedAt: 1674732169

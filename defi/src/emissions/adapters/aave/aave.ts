@@ -1,6 +1,5 @@
 import { call, multiCall } from "@defillama/sdk/build/abi/abi2";
 import { AdapterResult } from "../../types/adapters";
-import { periodToSeconds } from "../../utils/time";
 import abi from "./abi";
 
 export default async function main(

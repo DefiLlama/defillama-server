@@ -280,5 +280,23 @@ export default {
     },
     "el-dorado-exchange": {
         enabled: true
+    },
+    "gearbox": {
+        enabled: true
+    },
+    "predy-finance": {
+        enabled: true
+    },
+    "verse": {
+        enabled: true
+    },
+    "level-finance": {
+        enabled: true
+    },
+    "blur": {
+        enabled: true
+    },
+    "solidlydex": {
+        enabled: true
     }
 } as AdaptorsConfig

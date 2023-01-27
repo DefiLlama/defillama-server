@@ -16,4 +16,6 @@ export const KEYS_TO_STORE = {
 
 export { default as config } from "./config";
 
+export { default as options_imports } from "../../../utils/imports/options_adapters"
+
 export default generateProtocolAdaptorsList(options_imports, config)

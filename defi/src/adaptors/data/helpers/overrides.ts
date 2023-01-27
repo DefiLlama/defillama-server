@@ -1,6 +1,6 @@
 import { IJSON, ProtocolAdaptor } from "../types";
 
-export default {
+const overrides = {
     'ghostmarket': {
         category: "NFT Marketplace",
         allAddresses: [
@@ -28,8 +28,28 @@ export default {
                 category: 'Derivatives'
             }
         }
+    },
+    'opyn': {
+        displayName: "Opyn Gamma"
     }
 } as IJSON<Partial<ProtocolAdaptor>>
+
+const overridesByType = {
+    fees: {
+        ...overrides,
+        'gmx': {
+            protocolsData: {
+                'gmx': {
+                    category: 'Derivatives'
+                }
+            }
+        },
+    }
+} as IJSON<IJSON<Partial<ProtocolAdaptor>>>
+
+export type IOverrides = IJSON<Partial<ProtocolAdaptor>>
+
+export default (type?: string) => type ? overridesByType[type] ?? overrides : overrides
 
 export const chainOverrides = {
     'arbitrum': {

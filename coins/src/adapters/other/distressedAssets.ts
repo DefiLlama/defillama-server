@@ -7,6 +7,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
     GVR_OLD: '0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c',
+    XRPC: '0xd4ca5c2aff1eefb0bea9e9eab16f88db2990c183',
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
@@ -31,6 +32,8 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     GOLD: "0xc4be0798e5b5b1C15edA36d9B2D8c1A60717fA92",
   },
   bsc: {
+    aBNBb: "0xbb1aa6e59e5163d8722a122cd66eba614b59df0d",
+    aBNBc: "0xe85afccdafbe7f2b096f268e31cce3da8da2990a",
     DOGECOLA: "0xe320df552e78d57e95cf1182b6960746d5016561", // OLD dogecola contract
     GVR: "0xaFb64E73dEf6fAa8B6Ef9a6fb7312d5C4C15ebDB", // GVR
     GVR2: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",

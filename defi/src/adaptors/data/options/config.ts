@@ -15,5 +15,8 @@ export default {
     },
     "hegic": {
         enabled: true
+    },
+    "opyn": {
+        enabled: false
     }
 } as AdaptorsConfig

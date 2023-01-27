@@ -11,6 +11,8 @@ export const KEYS_TO_STORE = {
     [AdaptorRecordType.tokenIncentives]: "tokens"
 }
 
+export { default as incentives_imports } from "../../../utils/imports/incentives_adapters"
+
 export { default as config } from "./config";
 
 export default generateProtocolAdaptorsList(incentives_imports, config)

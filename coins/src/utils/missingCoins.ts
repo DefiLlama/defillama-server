@@ -26,7 +26,7 @@ export function storeMissingCoins(requestedCoins: string[], response: {
     if(response[coin] === undefined){
         const lowercaseCoin = coin.toLowerCase()
         return executeAndIgnoreErrors('INSERT INTO `missing` VALUES (?, ?, ?, ?, ?)', 
-            [getCurrentUnixTimestamp(), lowercaseCoin, coin, timestampRequested, lowercaseCoin.split(":")[0]])
+            [getCurrentUnixTimestamp(), lowercaseCoin, timestampRequested, coin, lowercaseCoin.split(":")[0]])
     }
    }))
 }

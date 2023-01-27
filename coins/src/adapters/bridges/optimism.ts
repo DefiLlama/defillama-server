@@ -1,5 +1,6 @@
 import { Token } from "./index";
 import { fetch, formatExtraTokens } from "../utils";
+import tokenMappings from "../tokenMapping.json";
 
 export default async function bridge(): Promise<Token[]> {
   const bridge = (
@@ -26,7 +27,23 @@ export default async function bridge(): Promise<Token[]> {
         decimals: optToken.decimals
       });
     });
-  return [...tokens, ...extraTokens];
+  const response =  [tokens, extraTokens]
+
+  Object.entries(tokenMappings).forEach(([chain, tokenMap]) => {
+    const tokens: [string, string, string, number][] = [];
+    Object.entries(tokenMap).map(
+      ([from, { to, symbol, decimals: decimalsNum }]) => {
+        const decimals = +decimalsNum
+        if (isNaN(decimals)) throw new Error('Is not valid token mapping: '+ from)
+        // const from_lowerCase = from.toLowerCase()
+        // if (from_lowerCase !== from)
+        //   tokens.push([from_lowerCase, to, symbol, decimals]);
+        tokens.push([from, to, symbol, decimals]);
+      })
+    response.push(formatExtraTokens(chain, tokens))
+  })
+
+  return response.flat()
 }
 
 const extraTokens = formatExtraTokens("optimism", [

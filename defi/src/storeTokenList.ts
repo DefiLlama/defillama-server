@@ -1,6 +1,6 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
-import { batchGet } from "./utils/shared/dynamodb";
+import ddb, { batchGet } from "./utils/shared/dynamodb";
 import { store } from './utils/s3';
 
 const logoKey = (coinId: string) => `cgLogo#${coinId}`
@@ -21,6 +21,21 @@ const handler = async () => {
         ...all,
         [logo.PK.slice(logoKey("").length)]: logo.thumb
     }), {})
+    const missingLogos = cgCoins.filter(coin=>allLogos[coin.id] === undefined)
+    console.log(`${missingLogos.length} logos missing`)
+    await Promise.all(missingLogos.map(async coin=>{
+        try{
+            const extended = await fetch(`https://api.coingecko.com/api/v3/coins/${coin.id}`).then(r=>r.json())
+            await ddb.put({
+                PK: logoKey(coin.id),
+                SK: 0,
+                thumb: extended.image.thumb
+            })
+        } catch(e){
+            return
+        }
+    }))
+
     await store(`tokenlist/logos.json`, JSON.stringify(allLogos), true, false)
     await Promise.all([
         "avalanche",
@@ -57,6 +72,7 @@ const handler = async () => {
         name: coin.name,
         symbol: coin.symbol,
         logoURI: allLogos[coin.id],
+        platforms: coin.platforms,
     }))), true, false)
 };
 

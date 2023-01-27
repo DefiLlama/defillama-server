@@ -81,12 +81,9 @@ provider:
     #EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     #FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
     #DAILY_GROWTH_WEBHOOK: ${file(./env.js):DAILY_GROWTH_WEBHOOK}
-    FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-    VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
-    TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
     DEFILLAMA_SDK_MUTED: true
-    PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
+    #PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
     INDEXER_DB: ${file(./env.js):INDEXER_DB}
@@ -96,6 +93,7 @@ provider:
     R2_ACCESS_KEY_ID: ${env:R2_ACCESS_KEY_ID}
     R2_SECRET_ACCESS_KEY: ${env:R2_SECRET_ACCESS_KEY}
     R2_ENDPOINT: ${env:R2_ENDPOINT}
+    INDEXA_DB: ${file(./env.js):INDEXA_DB}
 
 custom:
   stage: ${opt:stage, self:provider.stage}
@@ -145,6 +143,17 @@ functions:
           method: get
       - http:
           path: charts/{chain}
+          method: get
+  defaultChart:
+    handler: src/getDefaultChart.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: defaultChart
+          method: get
+      - http:
+          path: defaultChart/{chain}
           method: get
   protocols:
     handler: src/getProtocols.default
@@ -388,11 +397,19 @@ functions:
     handler: src/storeTvlInterval.default
     timeout: 900
     memorySize: 512
+    environment:
+      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     timeout: 900
     events:
       - schedule: cron(0 * * * ? *)
+  processProtocolsSummary:
+    handler: src/adaptors/handlers/processProtocolsSummary/index.default
+    timeout: 180
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   getOverview:
     handler: src/adaptors/handlers/getOverview/index.default
     timeout: 30
@@ -404,6 +421,23 @@ functions:
       - http:
           path: overview/{type}/{chain}
           method: get
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
+  getOverviewPre:
+    handler: src/adaptors/handlers/getOverviewPre/index.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: overviewPre/{type}
+          method: get
+      - http:
+          path: overviewPre/{type}/{chain}
+          method: get
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   getProtocolSummary:
     handler: src/adaptors/handlers/getProtocol/index.default
     timeout: 30
@@ -412,6 +446,9 @@ functions:
       - http:
           path: summary/{type}/{name}
           method: get
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   storeAdaptorData:
     handler: src/adaptors/handlers/storeAdaptorData/index.default
     timeout: 900
@@ -426,11 +463,25 @@ functions:
     timeout: 900
     events:
       - schedule: cron(01 2,13 * * ? *)
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   triggerNotifyStatus:
     handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900
     events:
       - schedule: cron(01 2,13 * * ? *)
+  cacheExternalResponse:
+    handler: src/externalEndpointsCache/index.cacheExternalResponseHandler
+    timeout: 180
+  cachedExternalResponse:
+    handler: src/externalEndpointsCache/index.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: cachedExternalResponse
+          method: get
   storeDataset:
     handler: src/storeCsvDataset.default
     timeout: 900
@@ -461,7 +512,7 @@ functions:
   tokenlist:
     handler: src/storeTokenList.default
     timeout: 900
-    memorySize: 1024
+    memorySize: 512
     events:
       - schedule: cron(20 * * * ? *)
   missedUpdates:

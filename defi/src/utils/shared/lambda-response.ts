@@ -96,6 +96,14 @@ export function notFoundResponse(
   });
 }
 
+export function acceptedResponse(message: string) {
+  return {
+    statusCode: 202,
+    allowCORS: true,
+    body: message
+  }
+}
+
 export function cache20MinResponse(
   json: IJSON,
 ) {

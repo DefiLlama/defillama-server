@@ -22,6 +22,7 @@ export default {
   misc4626: require("./yield/misc4626/index"),
   vesper: require("./yield/vesper/index"),
   yieldProtocol: require("./yield/yield-protocol/index"),
+  timeless: require("./yield/timeless/index"),
   beefy: require("./yield/beefy/index"),
   platypus: require("./markets/platypus/index"),
   curve1: require("./markets/curve/index"),
@@ -65,4 +66,6 @@ export default {
   jarvis: require("./markets/jarvis/index"),
   chainlinkNFT: require("./nft/chainlink/index"),
   arrakis: require("./markets/arrakis/index"),
+  yieldYak: require("./yield/yield-yak/index"),
+  tezos: require("./tezos/index"),
 };

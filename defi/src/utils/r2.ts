@@ -46,6 +46,33 @@ export async function storeR2(
   return await R2.send(command);
 }
 
+export async function storeR2JSONString(filename: string, body: string | Readable, cache?: number) {
+  const command = new PutObjectCommand({
+    Bucket: datasetBucket,
+    Key: filename,
+    Body: body,
+    ContentType: "application/json",
+    ...(!!cache
+      ? {
+          CacheControl: `max-age=${cache}`,
+        }
+      : {}),
+  });
+  return await R2.send(command);
+}
+
+export async function getR2(filename: string) {
+  const command = new GetObjectCommand({
+    Bucket: datasetBucket,
+    Key: filename,
+  });
+  const data = await R2.send(command);
+  return {
+    body: await data.Body?.transformToString(),
+    lastModified: data.LastModified
+  }
+}
+
 export async function storeDatasetR2(
   filename: string,
   body: string | Readable,
@@ -92,7 +119,7 @@ export async function getCachedLiqsR2(protocol: string, chain: string) {
     Key: `liqs/_cache/${protocol}/${chain}/latest.json`,
   });
   const data = await R2.send(command);
-  return data.Body?.toString() ?? "";
+  return data.Body?.transformToString();
 }
 
 export async function getExternalLiqsR2(protocol: string, chain: string) {

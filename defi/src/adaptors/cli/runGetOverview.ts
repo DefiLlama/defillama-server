@@ -1,20 +1,21 @@
 import "./setup.ts"
-import { handler, IGetOverviewEventParams, IGetOverviewResponseBody } from "../handlers/getOverview";
+import { handler, IGetOverviewEventParams, IGetOverviewResponseBody } from "../handlers/processProtocolsSummary";
 import { APIGatewayProxyEvent } from "aws-lambda";
 import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "dexs" },
-    // queryStringParameters: {
-    //     excludeTotalDataChart: "true",
-    //     excludeTotalDataChartBreakdown: "true"
-    // }
+    pathParameters: { chain: undefined, type: "options" },
+    queryStringParameters: {
+        excludeTotalDataChart: "false",
+        excludeTotalDataChartBreakdown: "true",
+        dataType: "dailyPremiumVolume"
+    }
 } as IGetOverviewEventParams
 
 (async () => {
     var startTime = performance.now()
-    const r = await handler(event as unknown as APIGatewayProxyEvent)
+    const r = await handler(event as unknown as APIGatewayProxyEvent, false)
     var endTime = performance.now()
     const rr = JSON.parse(r.body) as IGetOverviewResponseBody
     // console.log(rr.protocols.filter(p=>p.name.toLowerCase().includes('jupiter')))

@@ -605,7 +605,7 @@ export default {
         enabled: true
     },
     "dexible": {
-        enabled: true
+        enabled: false
     },
     "metatdex": {
         enabled: true
@@ -737,6 +737,30 @@ export default {
         enabled: true
     },
     "aequinox": {
+        enabled: true
+    },
+    "vexchange": {
+        enabled: true
+    },
+    "metropolis": {
+        enabled: true
+    },
+    "verse": {
+        enabled: true
+    },
+    "equalizer-exchange": {
+        enabled: true
+    },
+    "canto-dex": {
+        enabled: true
+    },
+    "solidlydex": {
+        enabled: true
+    },
+    "defibox": {
+        enabled: true
+    },
+    "shell-protocol": {
         enabled: true
     }
 } as AdaptorsConfig

@@ -12,6 +12,8 @@ export const KEYS_TO_STORE = {
     [AdaptorRecordType.totalVolume]: "totalVolume"
 }
 
+export { default as dex_imports } from "../../../utils/imports/dexs_adapters"
+
 export { default as config } from "./config";
 
 export default generateProtocolAdaptorsList(dex_imports, config)

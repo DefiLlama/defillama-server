@@ -91,9 +91,9 @@ export default async function craftParentProtocol(
           }
 
           if (index > curr.chainTvls[chain].tvl!.length - hourlyIndexStartingIndex && !acc.chainTvls[chain].tvl[date]) {
-            const prevDate = curr.chainTvls[chain].tvl[index - 1].date;
+            const prevDate = curr.chainTvls[chain].tvl[index - 1]?.date;
 
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+            if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
               for (
                 let i = prevDate + 1;
                 i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -127,9 +127,9 @@ export default async function craftParentProtocol(
             index > curr.chainTvls[chain].tokensInUsd!.length - hourlyIndexStartingIndex &&
             !acc.chainTvls[chain].tokensInUsd[date]
           ) {
-            const prevDate = curr.chainTvls[chain].tokensInUsd![index - 1].date;
+            const prevDate = curr.chainTvls[chain].tokensInUsd![index - 1]?.date;
 
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+            if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
               for (
                 let i = prevDate + 1;
                 i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -167,9 +167,9 @@ export default async function craftParentProtocol(
             index > curr.chainTvls[chain].tokens!.length - hourlyIndexStartingIndex &&
             !acc.chainTvls[chain].tokens[date]
           ) {
-            const prevDate = curr.chainTvls[chain].tokens![index - 1].date;
+            const prevDate = curr.chainTvls[chain].tokens![index - 1]?.date;
 
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+            if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
               for (
                 let i = prevDate + 1;
                 i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -199,9 +199,9 @@ export default async function craftParentProtocol(
             let nearestDate = date;
 
             if (index > curr.tokensInUsd!.length - hourlyIndexStartingIndex && !acc.tokensInUsd[date]) {
-              const prevDate = curr.tokensInUsd![index - 1].date;
+              const prevDate = curr.tokensInUsd![index - 1]?.date;
 
-              if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
                 for (
                   let i = prevDate + 1;
                   i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -229,9 +229,9 @@ export default async function craftParentProtocol(
             let nearestDate = date;
 
             if (index > curr.tokens!.length - hourlyIndexStartingIndex && !acc.tokens[date]) {
-              const prevDate = curr.tokens![index - 1].date;
+              const prevDate = curr.tokens![index - 1]?.date;
 
-              if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
                 for (
                   let i = prevDate + 1;
                   i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -258,10 +258,10 @@ export default async function craftParentProtocol(
           let nearestDate = date;
 
           if (index > curr.tvl.length - hourlyIndexStartingIndex && !acc.tvl[date]) {
-            const prevDate = curr.tvl[index - 1].date;
+            const prevDate = curr.tvl[index - 1]?.date;
 
             // change latest timestamp only if prev value's timestamp is at UTC 00:00 and date is same as nearest date
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+            if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
               for (
                 let i = prevDate + 1;
                 i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;

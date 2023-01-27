@@ -119,7 +119,7 @@ export const handler = async (event: IHandlerEvent) => {
       throw error
     }
   }))
-  console.info("Execution result", JSON.stringify(results))
+  console.info("Execution result", results)
   console.info(`**************************`)
 };
 

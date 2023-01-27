@@ -27,5 +27,12 @@ const abi = {
     stateMutability: "view",
     type: "function",
   },
+  total_locked: {
+    name: "total_locked",
+    outputs: [{ type: "uint256", name: "" }],
+    inputs: [],
+    stateMutability: "view",
+    type: "function",
+  },
 };
 export default abi;

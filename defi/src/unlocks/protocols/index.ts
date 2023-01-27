@@ -4,4 +4,5 @@ export default {
   dydx: require("./dydx"),
   tornado: require("./tornado"),
   uniswap: require("./uniswap"),
+  yearn: require("./yearn"),
 };

@@ -6,13 +6,14 @@ export default async function main(
   target: string,
   chain: any,
   cliff: number,
+  supplyAbiKey: keyof typeof abi,
 ): Promise<AdapterResult> {
   const [start, end, token, rawAmount] = await Promise.all([
     call({ abi: abi.start_time, chain, target }),
     call({ abi: abi.end_time, chain, target }),
     call({ abi: abi.token, chain, target }),
     call({
-      abi: abi.initial_locked_supply,
+      abi: abi[supplyAbiKey],
       chain,
       target,
     }),

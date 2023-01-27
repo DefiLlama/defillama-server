@@ -762,5 +762,8 @@ export default {
     },
     "shell-protocol": {
         enabled: true
+    },
+    "archly-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

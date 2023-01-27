@@ -7828,7 +7828,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "Plenty is a decentralized exchange on Tezos that offers a seamless trading experience. Users can trade, earn, govern and build on the platform. Plenty features both stable and volatile liquidity pools, enables near-zero slippage trades and easy bridging from Ethereum and Polygon.",
     chain: "Tezos",
-    logo: `${baseIconsUrl}/plenty-network.png`,
+    logo: `${baseIconsUrl}/plenty.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

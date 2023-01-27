@@ -23110,11 +23110,10 @@ listedAt: 1650804679
   audit_links: ["https://github.com/NeutraFinance/neutra-gmx-contracts/blob/master/audits/solidproof/v2_SmartContract_Audit_Solidproof_NeutraFinance.pdf"],
   listedAt: 1674213134
 },
-/*
 {
   id: "2460", 
   name: "SkullSwap",
-  address: "fantom:0x9945Dd3eCB40A6b594813f2A4DF1643b10Fe3550",
+  address: "fantom:0xfa5992A8A47aF7029e04eC6a95203AD3f301460b",
   symbol: "SKULL",
   url: "https://skullswap.exchange",
   description:
@@ -23132,7 +23131,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Uniswap"],
   listedAt: 1674226360
-},*/
+},
 {
   id: "2461",
   name: "Ad-Astra Bridge",

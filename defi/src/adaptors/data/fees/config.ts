@@ -298,5 +298,8 @@ export default {
     },
     "solidlydex": {
         enabled: true
+    },
+    "archly-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

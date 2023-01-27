@@ -13,24 +13,24 @@ type Result = {
 export async function calculate4626Prices(
   chain: any,
   timestamp: number,
-  tokens: string[]
+  tokens: string[],
 ): Promise<Result[]> {
   const block: number | undefined = await getBlock(chain, timestamp);
   const { sharesDecimals, assets, symbols, ratios } = await getTokenData(
     block,
     chain,
-    tokens
+    tokens,
   );
   const assetsInfo: CoinData[] = await getTokenAndRedirectData(
     assets,
     chain,
-    timestamp
+    timestamp,
   );
 
   const result: Result[] = [];
   for (let i = 0; i < tokens.length; i++) {
     const assetInfo = assetsInfo.find(
-      ({ address }) => assets[i].toLowerCase() === address.toLowerCase()
+      ({ address }) => assets[i].toLowerCase() === address.toLowerCase(),
     );
     if (!assetInfo) continue;
 
@@ -40,15 +40,15 @@ export async function calculate4626Prices(
       assetPriceBN = utils.parseUnits(`${assetInfo.price}`, assetInfo.decimals);
     } catch (e) {
       assetPriceBN = BigNumber.from(
-        (assetInfo.price * 10 ** assetInfo.decimals).toFixed(0)
+        (assetInfo.price * 10 ** assetInfo.decimals).toFixed(0),
       );
     }
     const sharePrice = assetPriceBN.mul(ratios[i]).div(assetMagnitude);
     result.push({
       token: tokens[i].toLowerCase(),
-      price: parseFloat(utils.formatUnits(sharePrice, sharesDecimals[i])),
+      price: parseFloat(utils.formatUnits(sharePrice, assetInfo.decimals)),
       decimals: sharesDecimals[i],
-      symbol: symbols[i]
+      symbol: symbols[i],
     });
   }
   return result;
@@ -62,37 +62,37 @@ const abi = {
       {
         internalType: "contract ERC20",
         name: "",
-        type: "address"
-      }
+        type: "address",
+      },
     ],
     stateMutability: "view",
-    type: "function"
+    type: "function",
   },
   convertToAssets: {
     inputs: [
       {
         internalType: "uint256",
         name: "shares",
-        type: "uint256"
-      }
+        type: "uint256",
+      },
     ],
     name: "convertToAssets",
     outputs: [
       {
         internalType: "uint256",
         name: "",
-        type: "uint256"
-      }
+        type: "uint256",
+      },
     ],
     stateMutability: "view",
-    type: "function"
-  }
+    type: "function",
+  },
 };
 
 async function getTokenData(
   block: number | undefined,
   chain: any,
-  tokens: string[]
+  tokens: string[],
 ) {
   const targets = tokens.map((target: string) => ({ target }));
   const multiCallForAbi = (abi: any) =>
@@ -100,28 +100,28 @@ async function getTokenData(
   const [sharesDecimalsPromise, assetsPromise, symbolsPromise] = [
     multiCallForAbi("erc20:decimals"),
     multiCallForAbi(abi.asset),
-    multiCallForAbi("erc20:symbol")
+    multiCallForAbi("erc20:symbol"),
   ];
   const sharesDecimals = await sharesDecimalsPromise;
   const ratiosPromise = multiCall({
     calls: tokens.map((target: string, i: number) => ({
       target,
-      params: magnitude(sharesDecimals.output[i].output)
+      params: magnitude(sharesDecimals.output[i].output),
     })),
     chain,
     block,
-    abi: abi.convertToAssets
+    abi: abi.convertToAssets,
   });
   const [assets, symbols, ratios] = await Promise.all([
     assetsPromise,
     symbolsPromise,
-    ratiosPromise
+    ratiosPromise,
   ]);
   return {
     sharesDecimals: sharesDecimals.output.map(({ output }) => output),
     assets: assets.output.map(({ output }) => output),
     symbols: symbols.output.map(({ output }) => output),
-    ratios: ratios.output.map(({ output }) => output)
+    ratios: ratios.output.map(({ output }) => output),
   };
 }
 

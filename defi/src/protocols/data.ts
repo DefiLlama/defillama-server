@@ -8284,7 +8284,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "FeederFinance",
     audit_links: ["https://docs.feeder.finance/audits"],
   },
-  {
+  /*{ 
     id: "513",
     name: "QuipuSwap",
     address: "tezos:KT193D4vozYnhGJQVtw7CoxxqphqUEEwK6Vb",
@@ -8306,7 +8306,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://leastauthority.com/static/publications/LeastAuthority_Tezos_Foundation_QuipuSwap_Smart_Contracts_Final_Audit_Report.pdf",
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/quipuswap-stableswap.pdf",
     ],
-  },
+  }, 
+  */
   {
     id: "514",
     name: "Orion Money",

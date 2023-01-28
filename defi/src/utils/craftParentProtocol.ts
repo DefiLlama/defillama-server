@@ -1,8 +1,8 @@
 import type { IParentProtocol } from "../protocols/types";
 import protocols from "../protocols/data";
 import { errorResponse } from "./shared";
-import craftProtocol from "./craftProtocol";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
+import sluggify from "./sluggify";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -38,12 +38,16 @@ interface ICombinedTvls {
   };
 }
 
-export default async function craftParentProtocol(
-  parentProtocol: IParentProtocol,
-  useNewChainNames: boolean,
-  useHourlyData: boolean,
-  skipAggregatedTvl: boolean
-) {
+export default async function craftParentProtocol({
+  parentProtocol,
+  useHourlyData,
+  skipAggregatedTvl,
+}: {
+  parentProtocol: IParentProtocol;
+  useNewChainNames: boolean;
+  useHourlyData: boolean;
+  skipAggregatedTvl: boolean;
+}) {
   const childProtocols = protocols.filter((protocol) => protocol.parentProtocol === parentProtocol.id);
 
   if (childProtocols.length < 1 || childProtocols.map((p) => p.name).includes(parentProtocol.name)) {
@@ -52,8 +56,10 @@ export default async function craftParentProtocol(
     });
   }
 
-  const childProtocolsTvls = await Promise.all(
-    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, false, skipAggregatedTvl))
+  const PROTOCOL_API = useHourlyData ? "https://api.llama.fi/hourly" : "https://api.llama.fi/updatedProtocol";
+
+  const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(
+    childProtocols.map((protocolData) => fetch(`${PROTOCOL_API}/${sluggify(protocolData)}`).then((res) => res.json()))
   );
 
   const hourlyChildProtocols = childProtocolsTvls.reduce((acc, curr) => (acc += curr.tvl.length <= 7 ? 1 : 0), 0);

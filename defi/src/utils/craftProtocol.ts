@@ -47,13 +47,17 @@ function selectChainFromItem(item: any, normalizedChain: string) {
   return item[normalizedChain] ?? item[altChainName];
 }
 
-export default async function craftProtocol(
-  protocolData: Protocol,
-  useNewChainNames: boolean,
-  useHourlyData: boolean,
-  skipReplaceLast: boolean,
-  skipAggregatedTvl: boolean
-) {
+export default async function craftProtocol({
+  protocolData,
+  useNewChainNames,
+  useHourlyData,
+  skipAggregatedTvl,
+}: {
+  protocolData: Protocol;
+  useNewChainNames: boolean;
+  useHourlyData: boolean;
+  skipAggregatedTvl: boolean;
+}) {
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
   const [
@@ -78,7 +82,7 @@ export default async function craftProtocol(
     fetch("https://api.llama.fi/raises").then((res) => res.json()),
   ]);
 
-  if (!useHourlyData && !skipReplaceLast) {
+  if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset
     lastUsdHourlyRecord && historicalUsdTvl.push(lastUsdHourlyRecord);
     lastUsdTokenHourlyRecord &&

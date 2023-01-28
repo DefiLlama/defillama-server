@@ -6,6 +6,7 @@ import { getProtocolTvl } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
+import { storeR2 } from "./utils/r2";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -79,6 +80,7 @@ const handler = async (_event: any) => {
       parentProtocols,
     })
   );
+  await storeR2("lite/protocols2", compressedV2Response, true);
   await store("lite/protocols2", compressedV2Response, true);
 };
 

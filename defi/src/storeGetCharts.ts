@@ -14,6 +14,7 @@ import { store } from "./utils/s3";
 import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
+import { storeR2 } from "./utils/r2";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {
@@ -246,6 +247,7 @@ const handler = async (_event: any) => {
         [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
       });
       const filename = chain === "total" ? "lite/charts" : `lite/charts/${chain}`;
+      await storeR2(filename, compressedRespone, true);
       await store(filename, compressedRespone, true);
     })
   );

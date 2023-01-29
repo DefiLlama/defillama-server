@@ -3,6 +3,7 @@ import protocols from "../protocols/data";
 import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
+import fetch from "node-fetch";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;

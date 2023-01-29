@@ -5989,7 +5989,7 @@
       "decimals": "18",
       "symbol": "gPAXG",
       "to": "coingecko#pax-gold"
-    },
+    }
   },
   "bitindi": {
     "0x0000000000000000000000000000000000000000": {

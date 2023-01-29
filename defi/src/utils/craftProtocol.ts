@@ -47,6 +47,8 @@ function selectChainFromItem(item: any, normalizedChain: string) {
   return item[normalizedChain] ?? item[altChainName];
 }
 
+const raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json())
+
 export default async function craftProtocol({
   protocolData,
   useNewChainNames,
@@ -79,7 +81,7 @@ export default async function craftProtocol({
     misrepresentedTokens
       ? ([] as any[])
       : getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
-    fetch("https://api.llama.fi/raises").then((res) => res.json()),
+    raisesPromise,
   ]);
 
   if (!useHourlyData) {

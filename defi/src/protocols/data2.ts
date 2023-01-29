@@ -20106,7 +20106,7 @@ listedAt: 1650804679
     "Neptune mutual follows a parametric insurance model, meaning it provides payout on the basis of parameters instead of individual claim assessments. Upon the resolution of an incident, all the policyholders of the affected protocol will receive the payouts. Neptune Mutual eliminates individual claim assessments which makes policy easy to claim, faster, and much more reliable.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/neptune-mutual.png`,
-  audits: "5",
+  audits: "2",
   audit_note: null,
   gecko_id: "neptune-mutual",
   cmcId: "22625",

@@ -5983,7 +5983,13 @@
       "decimals": "18",
       "symbol": "BNB",
       "to": "coingecko#binancecoin"
-    }
+    },
+     "B4DCACF7753C05040AF0A7BF2B583402C4B8C9B0A86FCECE32EF63CB7F0A46B3": {
+      "name": "gravity-bridge-paxg",
+      "decimals": "18",
+      "symbol": "gPAXG",
+      "to": "coingecko#pax-gold"
+    },
   },
   "bitindi": {
     "0x0000000000000000000000000000000000000000": {

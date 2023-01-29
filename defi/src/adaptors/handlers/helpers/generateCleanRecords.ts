@@ -1,11 +1,9 @@
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
-import { formatTimestampAsDate } from "../../../utils/date"
 import { IJSON } from "../../data/types"
 import { AdaptorRecord, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
 import { formatChainKey } from "../../utils/getAllChainsFromAdaptors"
-import { calcNdChange } from "../../utils/volumeCalcs"
+import { sumAllVolumes } from "../../utils/volumeCalcs"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
-import { convertDataToUSD, IGetHistoricalPricesResponse } from "./convertRecordDataCurrency"
+import { convertDataToUSD } from "./convertRecordDataCurrency"
 
 /**
  * Returns a normalized list of adaptor records.
@@ -80,9 +78,6 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                         ...(typeof genChainData === "number" ? undefined : genChainData), // this check is needed to avoid ts errors, but should never be number
                         [protocol]: chainData[protocol]
                     }
-                    if (lastRecord && lastRecord.timestamp != cleanRecord.timestamp) {
-                        acc.lastDataRecord[chainProt] = cleanRecord
-                    }
                     return
                 }
             }
@@ -143,9 +138,13 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             await convertDataToUSD(generatedData, timestamp)
         )
 
-        checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
+        if (timestamp > (Date.now() / 1000) -  60 * 60 * 24 * 7)
+            checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
 
-        acc.lastDataRecord = chains.reduce((acc, chain) => ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[]).reduce((acc, chainProt) => ({ ...acc, [chainProt]: newGen }), {})
+        acc.lastDataRecord = chains
+            .reduce((acc, chain) =>
+                ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[])
+            .reduce((acc, chainProt) => ({ ...acc, [chainProt]: newGen }), {})
         acc.adaptorRecords.push(newGen)
         acc.recordsMap[String(newGen.timestamp)] = newGen
         return acc
@@ -168,46 +167,13 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
 }
 
 function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: AdaptorRecord, spikesLogs: string[]) {
-    Object.entries(lastDataRecord).forEach(([key, record]) => {
-        const [chain, protocol] = key.split('#')
-        const chainData = newGen.data[chain]
-        if (chain && protocol && chainData && typeof chainData !== 'number' && chainData[protocol] && record) {
-            const recordChainData = record.data[chain]
-            if (!recordChainData || typeof recordChainData === 'number') return
-            const chg1d = calcNdChange({
-                [record.timestamp.toString()]: new AdaptorRecord(
-                    newGen.type,
-                    newGen.adaptorId,
-                    record.timestamp,
-                    {
-                        [chain]: {
-                            [protocol]: recordChainData[protocol]
-                        }
-                    }
-                ),
-                [newGen.timestamp.toString()]: new AdaptorRecord(
-                    newGen.type,
-                    newGen.adaptorId,
-                    newGen.timestamp,
-                    {
-                        [chain]: {
-                            [protocol]: chainData[protocol]
-                        }
-                    }
-                )
-            }, 1, newGen.timestamp)
-            if (chg1d && chg1d > 1000 && chainData[protocol] > 10000000) {
-                spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
-                const okChainData = newGen.data[chain]
-                if (okChainData && typeof okChainData !== 'number')
-                    newGen.data = {
-                        ...newGen.data,
-                        [chain]: {
-                            ...okChainData,
-                            [protocol]: recordChainData[protocol]
-                        }
-                    }
-            }
-        }
-    })
+    const current = sumAllVolumes(newGen.data)
+    const prev = Object.values(lastDataRecord).reduce((acc, record) => {
+        return acc += record ? sumAllVolumes(record.data) : 0
+    }, 0)
+    const chg1d = Math.abs((current - prev) / prev) * 100
+    if (chg1d && chg1d > 10000 && current > 10000000) {
+        spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
+        newGen = new AdaptorRecord(newGen.type, newGen.adaptorId, newGen.timestamp, {})
+    }
 }

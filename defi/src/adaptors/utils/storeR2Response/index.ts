@@ -3,7 +3,7 @@ import { getR2, storeR2JSONString } from "../../../utils/r2";
 const ADAPTORS_FOLDER_KEY = 'dimensions'
 
 export const cacheResponseOnR2 = async (key: string, response: string) => {
-    console.info("Storing R2 with key", `${ADAPTORS_FOLDER_KEY}/${key}.json`, response)
+    console.info("Storing R2 with key", `${ADAPTORS_FOLDER_KEY}/${key}.json`)
     await storeR2JSONString(`${ADAPTORS_FOLDER_KEY}/${key}.json`, response)
 }
 

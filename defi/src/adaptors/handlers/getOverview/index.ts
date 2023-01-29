@@ -11,6 +11,7 @@ import loadAdaptorsData from "../../data"
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { delay } from "../triggerStoreAdaptorData";
 import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
+import { cacheResponseOnR2 } from "../../utils/storeR2Response";
 
 export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
@@ -48,8 +49,8 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
 type KeysToRemove = 'records' | 'config' | 'recordsMap' | 'allAddresses'
 type ProtocolsResponse = Omit<ProtocolAdaptorSummary, KeysToRemove>
 export type IGetOverviewResponseBody = IGeneralStats & {
-    totalDataChart: IChartData,
-    totalDataChartBreakdown: IChartDataByDex,
+    totalDataChart?: IChartData,
+    totalDataChartBreakdown?: IChartDataByDex,
     protocols: ProtocolsResponse[]
     allChains: string[]
     errors?: string[]
@@ -119,8 +120,17 @@ export interface IGetOverviewEventParams {
     }
 }
 
+export const getOverviewCachedResponseKey = (
+    adaptorType: string,
+    chainFilter?: string,
+    dataType?: string,
+    category?: string,
+    fullChart?: string
+) => `overview_${adaptorType}_${chainFilter}_${dataType}_${category}_${adaptorType}_${fullChart}`
+
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
+    console.info("Event received", JSON.stringify(event))
     const pathChain = event.pathParameters?.chain?.toLowerCase()
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
     const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
@@ -131,10 +141,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
+    console.info("Parameters parsing OK")
 
     if (!adaptorType) throw new Error("Missing parameter")
 
     // Import data list
+    console.info("Loading adaptors...")
     const loadedAdaptors = loadAdaptorsData(adaptorType)
     const protocolsList = Object.keys(loadedAdaptors.config)
     const adaptersList: ProtocolAdaptor[] = []
@@ -148,11 +160,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     } catch (error) {
         console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`, error)
     }
+    console.info("Loaded OK:", adaptersList.length)
 
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {
         return generateProtocolAdaptorSummary(adapter, dataType, adaptorType, chainFilter, async (e) => {
-            console.error("Error generating summary:", adapter.module, e)
+            console.error("Error generating summary:", adapter.module, e) // this should be a warning
             // TODO, move error handling to rejected promises
             if (enableAlerts && !adapter.disabled) {
                 errors.push(e.message)
@@ -160,6 +173,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             }
         })
     }))
+
+    console.info("Sending discord alerts")
     for (const errorMSG of errors) {
         await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
         await delay(1000)
@@ -168,11 +183,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     // Handle rejected dexs
     const rejectedDexs = results.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
     rejectedDexs.forEach(rd => {
-        console.error(`Couldn't summarize ${JSON.stringify(rd)}`)
+        console.error(`Couldn't summarize ${JSON.stringify(rd)}`, rd)
     })
 
-
     const okProtocols = results.map(fd => fd.status === "fulfilled" && fd.value.records !== null ? fd.value : undefined).filter(d => d !== undefined) as ProtocolAdaptorSummary[]
+    console.info("Fullfiled results:", okProtocols.length)
+    console.info("Creating charts...")
     let totalDataChartResponse: IGetOverviewResponseBody['totalDataChart'] = excludeTotalDataChart ? [] : generateAggregatedVolumesChartData(okProtocols)
     let totalDataChartBreakdownResponse: IGetOverviewResponseBody['totalDataChartBreakdown'] = excludeTotalDataChartBreakdown ? [] : generateByDexVolumesChartData(okProtocols)
 
@@ -191,10 +207,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
             totalDataChartBreakdownResponse.length - [...totalDataChartBreakdownResponse].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
         )
     }
-
+    console.info("Charts OK")
+    console.info("Calculating stats...")
     const extraTypes = (getExtraTypes(adaptorType) as string[]).map(type => AdaptorRecordTypeMapReverse[type]).filter(notUndefined) as (keyof ExtraTypes)[]
     const baseRecord = totalDataChartResponse[totalDataChartResponse.length - 1]
     const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined, extraTypes)
+    console.info("Stats OK")
 
     const enableStats = okProtocols.filter(okp => !okp.disabled).length > 0
     okProtocols.forEach(removeVolumesObject)
@@ -221,6 +239,10 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     if (enableAlerts) {
         successResponseObj['errors'] = errors
     }
+    console.info("Storing response to R2")
+    await cacheResponseOnR2(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)), JSON.stringify(successResponseObj))
+        .then(()=>console.info("Stored R2 OK")).catch(e => console.error("Unable to cache...", e))
+    // console.info("Returning response:", JSON.stringify(successResponseObj))
     return successResponse(successResponseObj, 10 * 60); // 10 mins cache
 };
 

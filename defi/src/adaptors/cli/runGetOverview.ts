@@ -1,15 +1,15 @@
 import "./setup.ts"
-import { handler, IGetOverviewEventParams, IGetOverviewResponseBody } from "../handlers/processProtocolsSummary";
+import { IGetOverviewEventParams, IGetOverviewResponseBody } from "../handlers/getOverview";
+import { handler } from "../handlers/getOverviewPre";
 import { APIGatewayProxyEvent } from "aws-lambda";
 import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "options" },
+    pathParameters: { chain: undefined, type: "dexs" },
     queryStringParameters: {
         excludeTotalDataChart: "false",
-        excludeTotalDataChartBreakdown: "true",
-        dataType: "dailyPremiumVolume"
+        excludeTotalDataChartBreakdown: "false"
     }
 } as IGetOverviewEventParams
 

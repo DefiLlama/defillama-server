@@ -162,7 +162,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 const HOUR = 3600;
 async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
   const toTimestamp = getCurrentUnixTimestamp();
-  const fromTimestamp = toTimestamp - 6 * HOUR;
+  const fromTimestamp = toTimestamp - (24 * HOUR - 5*60); // 24h - 5 mins
   const coinData = await retryCoingeckoRequest(
     `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
     3

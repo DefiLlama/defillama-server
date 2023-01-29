@@ -10,7 +10,6 @@ import {
   isDoubleCounted,
 } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { store } from "./utils/s3";
 import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";

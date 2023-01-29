@@ -1,7 +1,7 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
 import ddb, { batchGet } from "./utils/shared/dynamodb";
-import { store } from './utils/s3';
+import { storeR2 } from "./utils/r2";
 
 const logoKey = (coinId: string) => `cgLogo#${coinId}`
 
@@ -36,7 +36,7 @@ const handler = async () => {
         }
     }))
 
-    await store(`tokenlist/logos.json`, JSON.stringify(allLogos), true, false)
+    await storeR2(`tokenlist/logos.json`, JSON.stringify(allLogos), true, false)
     await Promise.all([
         "avalanche",
         "polygon-pos",
@@ -66,9 +66,9 @@ const handler = async () => {
             }, {} as {
                 [address: string]: any
             });
-        await store(`tokenlist/${chain}.json`, JSON.stringify(chainCoins), true, false)
+        await storeR2(`tokenlist/${chain}.json`, JSON.stringify(chainCoins), true, false)
     }))
-    await store(`tokenlist/all.json`, JSON.stringify(cgCoins.map(coin => ({
+    await storeR2(`tokenlist/all.json`, JSON.stringify(cgCoins.map(coin => ({
         name: coin.name,
         symbol: coin.symbol,
         logoURI: allLogos[coin.id],

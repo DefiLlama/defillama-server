@@ -1,8 +1,8 @@
 import { wrap, IResponse, errorResponse } from "./utils/shared";
-import { storeDataset } from "./utils/s3";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
 import { getHistoricalTvlForAllProtocols } from "./storeGetCharts";
 import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
+import { buildRedirectR2, storeDatasetR2 } from "./utils/r2";
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   const rawChain = decodeURI(event.pathParameters!.chain!);
@@ -128,18 +128,9 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
 
   const filename = `chain-dataset-${rawChain}.csv`;
 
-  // store to S3
-  await storeDataset(filename, csv);
+  await storeDatasetR2(filename, csv);
 
-  const response: IResponse = {
-    statusCode: 307,
-    body: "",
-    headers: {
-      Location: `https://defillama-datasets.s3.eu-central-1.amazonaws.com/temp/${filename}`,
-    },
-  };
-
-  return response;
+  return buildRedirectR2(filename, 10*60);
 };
 
 export default wrap(handler);

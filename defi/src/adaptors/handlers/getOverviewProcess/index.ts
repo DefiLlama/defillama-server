@@ -44,9 +44,10 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     recordsMap: IJSON<AdaptorRecord> | null
     totalAllTime: number | null
     latestFetchIsOk: boolean
+    spikes?: string
 } & IGeneralStats & ExtraTypes
 
-type KeysToRemove = 'records' | 'config' | 'recordsMap' | 'allAddresses'
+type KeysToRemove = 'records' | 'config' | 'recordsMap' | 'allAddresses' | 'spikes'
 type ProtocolsResponse = Omit<ProtocolAdaptorSummary, KeysToRemove>
 export type IGetOverviewResponseBody = IGeneralStats & {
     totalDataChart?: IChartData,
@@ -214,6 +215,13 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const generalStats = getSumAllDexsToday(okProtocols.map(substractSubsetVolumes), undefined, baseRecord ? +baseRecord[0] : undefined, extraTypes)
     console.info("Stats OK")
 
+    for (const { spikes } of okProtocols) {
+        if (spikes) {
+            await sendDiscordAlert(spikes, adaptorType).catch(e => console.log("discord error", e))
+            await delay(1000)
+        }
+    }
+
     const enableStats = okProtocols.filter(okp => !okp.disabled).length > 0
     okProtocols.forEach(removeVolumesObject)
     const successResponseObj: IGetOverviewResponseBody = {
@@ -241,7 +249,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     }
     console.info("Storing response to R2")
     await cacheResponseOnR2(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)), JSON.stringify(successResponseObj))
-        .then(()=>console.info("Stored R2 OK")).catch(e => console.error("Unable to cache...", e))
+        .then(() => console.info("Stored R2 OK")).catch(e => console.error("Unable to cache...", e))
     // console.info("Returning response:", JSON.stringify(successResponseObj))
     return successResponse(successResponseObj, 10 * 60); // 10 mins cache
 };
@@ -274,6 +282,7 @@ const removeVolumesObject = (protocol: WithOptional<ProtocolAdaptorSummary, Keys
     delete protocol['config']
     delete protocol['recordsMap']
     delete protocol['allAddresses']
+    delete protocol['spikes']
     return protocol
 }
 

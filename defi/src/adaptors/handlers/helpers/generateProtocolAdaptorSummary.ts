@@ -69,9 +69,6 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         )
         console.info("Cleaning records OK", adapter.name, adapter.id, adapter.module)
 
-        for (const spikeMSG of cleanRecords.spikesLogs) {
-            await sendDiscordAlert(spikeMSG, adaptorType)
-        }
 
         adaptorRecords = cleanRecords.cleanRecordsArr
         if (adaptorRecords.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
@@ -125,6 +122,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             }
 
         return {
+            spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined,
             name: adapter.name,
             disabled: adapter.disabled,
             displayName: adapter.displayName,
@@ -157,6 +155,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
         // TODO: handle better errors
         if (onError) onError(error as Error)
         return {
+            spikes: undefined,
             name: adapter.name,
             module: adapter.module,
             disabled: adapter.disabled,

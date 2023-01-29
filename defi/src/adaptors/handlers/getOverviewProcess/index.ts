@@ -174,11 +174,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         })
     }))
 
-    /* console.info("Sending discord alerts")
+    console.info("Sending discord alerts")
     for (const errorMSG of errors) {
         await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
         await delay(1000)
-    } */
+    }
 
     // Handle rejected dexs
     const rejectedDexs = results.filter(d => d.status === 'rejected').map(fd => fd.status === "rejected" ? fd.reason : undefined)
@@ -241,8 +241,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     }
     console.info("Storing response to R2")
     await cacheResponseOnR2(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)), JSON.stringify(successResponseObj))
-    console.info("Stored R2 OK")
-    console.info("Returning response:", JSON.stringify(successResponseObj))
+        .then(()=>console.info("Stored R2 OK")).catch(e => console.error("Unable to cache...", e))
+    // console.info("Returning response:", JSON.stringify(successResponseObj))
     return successResponse(successResponseObj, 10 * 60); // 10 mins cache
 };
 

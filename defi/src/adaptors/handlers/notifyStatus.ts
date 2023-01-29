@@ -1,4 +1,4 @@
-import { handler } from "./getOverview";
+import { handler } from "./getOverviewProcess";
 import { APIGatewayProxyEvent } from "aws-lambda";
 import { sendDiscordAlert } from "../utils/notify";
 import { autoBackfill } from "../cli/backfillUtilities/backfillFunction";

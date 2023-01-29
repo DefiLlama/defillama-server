@@ -424,16 +424,16 @@ functions:
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-  getOverviewPre:
-    handler: src/adaptors/handlers/getOverviewPre/index.default
+  getOverviewProcess:
+    handler: src/adaptors/handlers/getOverviewProcess/index.default
     timeout: 30
     memorySize: 2000
     events:
       - http:
-          path: overviewPre/{type}
+          path: overviewProcess/{type}
           method: get
       - http:
-          path: overviewPre/{type}/{chain}
+          path: overviewProcess/{type}/{chain}
           method: get
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}

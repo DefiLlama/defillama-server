@@ -6,19 +6,25 @@ const port = 3000
 
 app.get('/protocol/:protocol', async (req, res) => {
     const protocol = req.params.protocol
-    const response = await getProtocol({
-        pathParameters: {
-            protocol
+    try {
+        const response = await getProtocol({
+            pathParameters: {
+                protocol
+            }
+        })
+        if (typeof response !== "object") {
+            res.sendStatus(500);
+            return
         }
-    })
-    if (typeof response !== "object") {
+        res.set(response.headers)
+        res.send(response.body)
+    } catch (e) {
+        console.log(`Errored on protocol ${protocol}`, e);
         res.sendStatus(500);
         return
     }
-    res.set(response.headers)
-    res.send(response.body)
 })
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`App listening on port ${port}`)
 })

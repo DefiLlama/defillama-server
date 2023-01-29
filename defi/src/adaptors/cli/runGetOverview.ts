@@ -1,6 +1,6 @@
 import "./setup.ts"
-import { IGetOverviewEventParams, IGetOverviewResponseBody } from "../handlers/getOverview";
-import { handler } from "../handlers/getOverviewPre";
+import { IGetOverviewEventParams, IGetOverviewResponseBody } from "../handlers/getOverviewProcess";
+import { handler } from "../handlers/getOverview";
 import { APIGatewayProxyEvent } from "aws-lambda";
 import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";

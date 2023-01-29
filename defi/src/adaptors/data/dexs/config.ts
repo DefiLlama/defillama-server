@@ -765,5 +765,8 @@ export default {
     },
     "archly-finance": {
         enabled: true
+    },
+    "zyberswap": {
+        enabled: true
     }
 } as AdaptorsConfig

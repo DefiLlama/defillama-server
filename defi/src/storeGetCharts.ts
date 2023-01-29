@@ -248,7 +248,6 @@ const handler = async (_event: any) => {
       });
       const filename = chain === "total" ? "lite/charts" : `lite/charts/${chain}`;
       await storeR2(filename, compressedRespone, true);
-      await store(filename, compressedRespone, true);
     })
   );
 };

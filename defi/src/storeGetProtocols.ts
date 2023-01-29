@@ -81,7 +81,6 @@ const handler = async (_event: any) => {
     })
   );
   await storeR2("lite/protocols2", compressedV2Response, true);
-  await store("lite/protocols2", compressedV2Response, true);
 };
 
 export default wrapScheduledLambda(handler);

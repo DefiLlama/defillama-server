@@ -2,7 +2,7 @@ import { wrap, IResponse, errorResponse } from "./utils/shared";
 import allProtocols from "./protocols/data";
 import sluggify from "./utils/sluggify";
 import craftCsvDataset from "./storeTvlUtils/craftCsvDataset";
-import { storeDataset, buildRedirect } from "./utils/s3";
+import { buildRedirectR2, storeDatasetR2 } from "./utils/r2";
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   let protocolName = event.pathParameters?.protocol?.toLowerCase();
@@ -26,9 +26,9 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     return { statusCode: 200, body: JSON.stringify(csv) };
   }
 
-  await storeDataset(filename, csv);
+  await storeDatasetR2(filename, csv);
 
-  return buildRedirect(filename);
+  return buildRedirectR2(filename, 10*60);
 };
 
 export default wrap(handler);

@@ -1,11 +1,11 @@
 import { wrap, IResponse, errorResponse, cache20MinResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import sluggify from "./utils/sluggify";
-import { storeDataset, buildRedirect } from "./utils/s3";
 import craftProtocol from "./utils/craftProtocol";
 import parentProtocols from "./protocols/parentProtocols";
 import craftParentProtocol from "./utils/craftParentProtocol";
 import standardizeProtocolName from "./utils/standardizeProtocolName";
+import { buildRedirectR2, storeDatasetR2 } from "./utils/r2";
 
 export async function craftProtocolResponse({
   rawProtocolName,
@@ -54,9 +54,9 @@ export async function wrapResponseOrRedirect(response: any) {
   } else {
     const filename = `protocol-${response.name}.json`;
 
-    await storeDataset(filename, jsonData, "application/json");
+    await storeDatasetR2(filename, jsonData, "application/json");
 
-    return buildRedirect(filename, 10 * 60);
+    return buildRedirectR2(filename, 10 * 60);
   }
 }
 

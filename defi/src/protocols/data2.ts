@@ -22523,8 +22523,7 @@ listedAt: 1650804679
     "We're building a liquidation-free, fixed-interest and oracle-free borrowing solution. Borrowers are freed from liquidation risk while liquidity providers gain exposure to a passive option writing strategy, unlocking option selling as a sustainable yield source.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/myso.jpg`,
-  audits: "1",
-  audit_links: ["https://chainsecurity.com/security-audit/myso-finance-core-v1/"],
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -22534,6 +22533,7 @@ listedAt: 1650804679
   twitter: "MysoFinance",
   oracles: [],
   forkedFrom: [],
+  audit_links: ["https://chainsecurity.com/security-audit/myso-finance-core-v1/"],
   listedAt: 1673623208
 }, 
 {

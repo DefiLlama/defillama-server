@@ -23541,5 +23541,56 @@ listedAt: 1650804679
   audit_links: ["https://docs.akiba.finance/documentation/audit-and-security"],
   listedAt: 1675076609
 },
+{
+  id: "2479",
+  name: "DeltaPrime",
+  address: null,
+  symbol: "-",
+  url: "https://deltaprime.io",
+  description:
+    "DeltaPrime aggregates the best of Avalanche in one DeFi ecosystem. Within this ecosystem investors gain access to extra capital, which they can use in a completely trustless fashion. This way, they multiply their returns with a balanced portfolio, whether through trading, LPing or farming.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/deltaprime.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Avalanche"],
+  module: "deltaprime/index.js",
+  twitter: "DeltaPrimeDefi",
+  oracles: ["RedStone"],
+  forkedFrom: [],
+  audit_links: [
+                "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/DeltaPrime-Review-Piotr-Szlachciak.pdf",
+                "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/PeckShield-Audit-Report-DeltaPrime.pdf",
+                "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/Smart_Contract_Audit_DeltaPrime_Protocol_04112022.pdf",
+                "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/PeckShield-Audit-Report-DeltaPrime-v1.0.pdf"
+               ],
+  listedAt: 1675090708
+},
+{
+  id: "2480",
+  name: "AlgoBlocks",
+  address: "algorand:0xfecca80ff6deb2b492e93df3b67f0c523cfd3a48",
+  symbol: "ALGOBLK",
+  url: "https://www.algoblocks.io",
+  description:
+    "AlgoBlocks is an ecosystem to provide a personalized experience for crypto users to Discover, Invest, Manage, and Personalize DeFi investments, all in one place.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/algoblocks.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Binance"],
+  module: "algoblocks/index.js",
+  twitter: "Algoblockstrade",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://github.com/ALGOBLOCKS/smart-contracts-audits/blob/main/ALGOBLK/Security%20Audit%20of%20Project%20ALGOBLOCKS_report%20040622.pdf"],
+  listedAt: 1675090710
+},
 ]
 export default data2;

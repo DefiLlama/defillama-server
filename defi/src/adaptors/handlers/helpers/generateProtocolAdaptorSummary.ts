@@ -10,6 +10,7 @@ import { calcNdChange, getStatsByProtocolVersion, getWoWStats, sumAllVolumes } f
 import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
+import getCachedReturnValue from "./getCachedReturnValue"
 
 /**
  * All this iterations can be avoided by;
@@ -18,18 +19,25 @@ import generateCleanRecords from "./generateCleanRecords"
  * Array->Map can be avoided by slicing the data arrays
  */
 
+const getAdapterKey = (
+    adapterId: string,
+    adaptorRecordType: AdaptorRecordType,
+    adaptorType: AdapterType,
+    chainFilter?: string
+) => `generateCleanRecords_${adapterId}_${adaptorRecordType}_${adaptorType}_${chainFilter}`
+
 export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
     console.info("Generating summary for:", adapter.name, "with params", adaptorRecordType, adaptorType, chainFilter)
     try {
         // Get all records from db
-        let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorRecordType, adapter.protocolType)
+        let adaptorRecordsRaw = await getAdaptorRecord(adapter.id, adaptorRecordType, adapter.protocolType)
         const rawTotalRecord = ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType]
             ? await getAdaptorRecord(adapter.id, ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType], adapter.protocolType, "LAST").catch(_e => { }) as AdaptorRecord | undefined
             : undefined
         const totalRecord = rawTotalRecord?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
-        if (!(adaptorRecords instanceof Array)) throw new Error("Wrong volume queried")
-        const lastRecordRaw = adaptorRecords[adaptorRecords.length - 1]
+        if (!(adaptorRecordsRaw instanceof Array)) throw new Error("Wrong volume queried")
+        const lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
 
         // Get extra revenue
         const extraTypes: IJSON<number | null> = {}
@@ -50,8 +58,8 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         }
 
         const startTimestamp = getConfigByType(adaptorType, adapter.module)?.startFrom
-        const startIndex = startTimestamp ? adaptorRecords.findIndex(ar => ar.timestamp === startTimestamp) : -1
-        adaptorRecords = adaptorRecords.slice(startIndex + 1)
+        const startIndex = startTimestamp ? adaptorRecordsRaw.findIndex(ar => ar.timestamp === startTimestamp) : -1
+        let adaptorRecords = adaptorRecordsRaw.slice(startIndex + 1)
 
         let protocolsKeys = [adapter.module]
         if (adapter.protocolsData) {
@@ -61,12 +69,19 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         }
         // Clean data by chain
         console.info("Cleaning records", adapter.name, adapter.id, adapter.module)
-        const cleanRecords = await generateCleanRecords(
-            adaptorRecords,
-            adapter.chains,
-            protocolsKeys,
-            chainFilter
-        )
+        const cleanRecords = await getCachedReturnValue(
+            getAdapterKey(
+                adapter.id,
+                adaptorRecordType,
+                adaptorType,
+                chainFilter
+            ),
+            async () => generateCleanRecords(
+                adaptorRecords,
+                adapter.chains,
+                protocolsKeys,
+                chainFilter
+            ))
         console.info("Cleaning records OK", adapter.name, adapter.id, adapter.module)
 
 

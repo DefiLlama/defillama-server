@@ -759,5 +759,11 @@ export default {
     },
     "defibox": {
         enabled: true
+    },
+    "shell-protocol": {
+        enabled: true
+    },
+    "archly-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

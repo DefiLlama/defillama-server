@@ -10144,7 +10144,7 @@ listedAt: 1650804679
   cmcId: null,
   category: "Lending",
   chains: ["Kucoin"],
-  oracles: ["Internal"],
+  oracles: ["Internal","Pyth"],
   forkedFrom: ["Compound"],
   module: "torches/index.js",
   twitter: "TorchesFinance",
@@ -11467,7 +11467,7 @@ listedAt: 1650804679
   module: "timeless/index.js",
   twitter: "Timeless_Fi",
   audit_links: ["https://github.com/spearbit/portfolio/blob/master/pdfs/Timeless-Spearbit-Security-Review.pdf"],
-  //parentProtocol: "Timeless",
+  parentProtocol: "Timeless",
   listedAt: 1658931496
 },
 {
@@ -12561,7 +12561,7 @@ listedAt: 1650804679
   name: "Canto Dex",
   address: null,
   symbol: "-",
-  url: "https://convert.canto.io",
+  url: "https://app.slingshot.finance/swap/CANTO",
   description: "Dex on canto blockchain",
   chain: "Canto",
   logo: `${baseIconsUrl}/canto-dex.jpg`,
@@ -21768,7 +21768,7 @@ listedAt: 1650804679
   description:
     "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/solidlydex.jpg`,
+  logo: `${baseIconsUrl}/solidly-v2.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,
@@ -22743,14 +22743,14 @@ listedAt: 1650804679
 },
 {
   id: "2444",
-  name: "ChangeX Staking",
+  name: "Changex",
   address: "0x7051faed0775f664a0286af4f75ef5ed74e02754",
   symbol: "CHANGE",
   url: "https://changex.io",
   description:
-    "Simplify DeFi. 100% non-custodial, multi-chain wallet. Fiat-to-crypto, ERC20 swaps, ~47% staking APY.",
+    "DeFi + TradFi super app. Multi-chain staking, daily reward payout, compounding, no lock-ups. Leveraged Staking for 2x APR on any integrated POS token (coming soon).",
   chain: "Hydra",
-  logo: `${baseIconsUrl}/changex-staking.png`,
+  logo: `${baseIconsUrl}/changex.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "changex",
@@ -23039,7 +23039,7 @@ listedAt: 1650804679
   twitter: "Timeless_Fi",
   oracles: [],
   forkedFrom: [],
-  //parentProtocol: "Timeless",
+  parentProtocol: "Timeless",
   listedAt: 1674140788
 },
 {
@@ -23155,11 +23155,10 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1674236651
 },
-/*
 {
   id: "2462",
   name: "Cranium Exchange",
-  address: "fantom:0x9945Dd3eCB40A6b594813f2A4DF1643b10Fe3550",
+  address: "fantom:0xfa5992A8A47aF7029e04eC6a95203AD3f301460b",
   symbol: "SKULL",
   url: "https://cranium.exchange/",
   description:
@@ -23173,11 +23172,11 @@ listedAt: 1650804679
   category: "Derivatives",
   chains: ["Fantom"],
   module: "cranium/index.js",
-  twitter: null,
+  twitter: "craniumexchange",
   oracles: ["Chainlink"],
   forkedFrom: ["GMX"],
   listedAt: 1674239023
-},*/
+},
 {
   id: "2463",
   name: "WYND DEX",
@@ -23312,6 +23311,95 @@ listedAt: 1650804679
   forkedFrom: [],
   audit_links: ["https://github.com/hats-finance/hats-contracts/tree/develop/audit"],
   listedAt: 1674569878
+},
+{
+  id: "2469",
+  name: "Cap V4",
+  address: "arbitrum:0x43044f861ec040db59a7e324c40507addb673142",
+  symbol: "CAP",
+  url: "https://cap.io",
+  description:
+    "Decentralized Perps. Trade global markets with low fees, deep liquidity, and up to 100× leverage.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/cap-v4.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Arbitrum"],
+  module: "cap-v4/index.js",
+  twitter: "CapDotFinance",
+  oracles: ["Pyth"],
+  forkedFrom: [],
+  parentProtocol: "Cap Finance",
+  listedAt: 1674732169
+},
+{
+  id: "2470",
+  name: "Bitindi Dex",
+  address: null,
+  symbol: "-",
+  url: "https://dex.bitindi.org/#/swap",
+  description:
+    "Dexes on bitindi chain",
+  chain: "Bitindi",
+  logo: `${baseIconsUrl}/bitindi-dex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Bitindi"],
+  module: "bitindi-dex/index.js",
+  twitter: "bitindichain",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  listedAt: 1674733691
+},
+{
+  id: "2471",
+  name: "Premio",
+  address: "celo:0x94140c2ea9d208d8476ca4e3045254169791c59e",
+  symbol: "PREMIO",
+  url: "https://premio.finance",
+  description:
+    "Premio offer the distribution of awards on a blockchain network whether in crypto or business world.",
+  chain: "Celo",
+  logo: `${baseIconsUrl}/premio.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "premio",
+  cmcId: "14035",
+  category: "Yield",
+  chains: ["Celo", "Kava"],
+  module: "premio/index.js",
+  twitter: "premiofinance",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674734540
+},
+{
+  id: "2472",
+  name: "Traddify Arbitrage",
+  address: null,
+  symbol: "-",
+  url: "https://arbitrage.traddify.com",
+  description:
+    "AI arbitrage trading bot to assist users in earning passive income by exploiting arbitrage opportunities on multiple chains.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/traddify-arbitrage.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Kava"],
+  module: "traddify/index.js",
+  twitter: "traddify",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1674768737
 },
 ]
 export default data2;

@@ -8,25 +8,6 @@ export default async function getTokenPrices(timestamp: number) {
     writes = [
       {
         SK: 0,
-        PK: `asset#${chain}:0xbb1aa6e59e5163d8722a122cd66eba614b59df0d`,
-        symbol: "aBNBb",
-        decimals: 18,
-        redirect: "coingecko#binancecoin",
-        timestamp: getCurrentUnixTimestamp(),
-        adapter: "ankr",
-        confidence: 0.9
-      },
-      {
-        SK: getCurrentUnixTimestamp(),
-        PK: `asset#${chain}:0xbb1aa6e59e5163d8722a122cd66eba614b59df0d`,
-        symbol: "aBNBb",
-        decimals: 18,
-        redirect: "coingecko#binancecoin",
-        adapter: "ankr",
-        confidence: 0.9
-      },
-      {
-        SK: 0,
         PK: `asset#${chain}:0x1075bea848451a13fd6f696b5d0fda52743e6439`,
         symbol: "aETHb",
         decimals: 18,
@@ -66,15 +47,6 @@ export default async function getTokenPrices(timestamp: number) {
     ];
   } else {
     writes = [
-      {
-        SK: getCurrentUnixTimestamp(),
-        PK: `asset#${chain}:0xbb1aa6e59e5163d8722a122cd66eba614b59df0d`,
-        symbol: "aBNBb",
-        decimals: 18,
-        redirect: "coingecko#binancecoin",
-        adapter: "ankr",
-        confidence: 0.9
-      },
       {
         SK: getCurrentUnixTimestamp(),
         PK: `asset#${chain}:0x1075bea848451a13fd6f696b5d0fda52743e6439`,

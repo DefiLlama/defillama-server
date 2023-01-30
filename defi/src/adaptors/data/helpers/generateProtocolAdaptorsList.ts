@@ -40,15 +40,15 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
             overridesObj = chainOverrides
             list = chainData
         }
-        const dexFoundInProtocols = list.find(dexP => {
-            return getBySpecificId(adapterKey, dexP.id) && (
-                dexP.name.toLowerCase()?.includes(adapterKey)
-                || sluggifyString(dexP.name)?.includes(adapterKey)
-                || dexP.gecko_id?.includes(adapterKey)
-                || dexP.module?.split("/")[0]?.includes(adapterKey)
-                || dexP.logo?.toLocaleLowerCase()?.includes(adapterKey)
-            )
-        })
+        let dexFoundInProtocols = list.find(dexP => getBySpecificId(adapterKey, dexP.id))
+        if (!dexFoundInProtocols)
+            dexFoundInProtocols = list.find(dexP => {
+                return dexP.name.toLowerCase()?.includes(adapterKey)
+                    || sluggifyString(dexP.name)?.includes(adapterKey)
+                    || dexP.gecko_id?.includes(adapterKey)
+                    || dexP.module?.split("/")[0]?.includes(adapterKey)
+                    || dexP.logo?.toLocaleLowerCase()?.includes(adapterKey)
+            })
         if (dexFoundInProtocols && imports_obj[adapterKey].module.default) {
             let moduleObject = imports_obj[adapterKey].module.default
             if (config?.[adapterKey]?.protocolsData && 'breakdown' in moduleObject)
@@ -144,5 +144,5 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'blur') return id === "2414"
     if (key === 'solidlydex') return id === "2400"
     if (key === 'tethys-finance') return id === "1139"
-    return true
+    return false
 }

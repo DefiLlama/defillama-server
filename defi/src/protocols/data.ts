@@ -24468,7 +24468,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "ibuffer-token",
     cmcId: "12440",
     category: "Options",
-    chains: ["Binance", "Arbitrum"],
+    chains: ["Arbitrum"],
     module: "buffer/index.js",
     twitter: "Buffer_Finance",
     audit_links: [

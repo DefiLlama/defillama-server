@@ -57,7 +57,7 @@ export default {
   trisolaris: require("./markets/uniswap/index"),
   pangolin: require("./markets/uniswap/index"),
   spiritswap: require("./markets/uniswap/index"),
-  pancakeswap: require("./markets/uniswap/index"),
+  // pancakeswap: require("./markets/uniswap/index"),
   spookyswap: require("./markets/uniswap/index"),
   tombswap: require("./markets/uniswap/index"),
   solidly: require("./markets/uniswap/index"),

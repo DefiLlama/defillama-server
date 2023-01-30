@@ -43,9 +43,6 @@ export default {
     "gmx": {
         enabled: true
     },
-    "index": {
-        enabled: true
-    },
     "lido": {
         enabled: true
     },

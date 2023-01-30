@@ -138,8 +138,8 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             await convertDataToUSD(generatedData, timestamp)
         )
 
-        //if (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7)
-            //checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
+        if (timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
+            checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
 
         acc.lastDataRecord = chains
             .reduce((acc, chain) =>
@@ -173,7 +173,7 @@ function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: A
         if (!record) return acc
         const accChain = acc[chain]
         const recordChain = record.data[chain]
-        if (typeof recordChain === 'number') return acc
+        if (!recordChain || typeof recordChain === 'number') return acc
         return {
             ...acc,
             [chain]: {

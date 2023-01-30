@@ -514,7 +514,7 @@ export default {
     "icecreamswap": {
         enabled: true
     },
-    "artic": {
+    "arctic": {
         enabled: true
     },
     "swapsicle": {

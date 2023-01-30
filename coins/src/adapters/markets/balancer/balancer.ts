@@ -2,7 +2,7 @@ import { multiCall } from "@defillama/sdk/build/abi/index";
 import { request, gql } from "graphql-request";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectData,
 } from "../../utils/database";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import getBlock from "../../utils/block";
@@ -16,12 +16,12 @@ const nullAddress: string = "0x0000000000000000000000000000000000000000";
 const subgraphNames: { [chain: string]: string } = {
   ethereum: "balancer-v2",
   arbitrum: "balancer-arbitrum-v2",
-  polygon: "balancer-polygon-v2"
+  polygon: "balancer-polygon-v2",
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
   arbitrum: "0xb08e16cfc07c684daa2f93c70323badb2a6cbfd2",
-  polygon: "0x3b8ca519122cdd8efb272b0d3085453404b25bd0"
+  polygon: "0x3b8ca519122cdd8efb272b0d3085453404b25bd0",
 };
 type GqlResult = {
   id: string;
@@ -60,7 +60,7 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
     if (result.length < 1000) i = 20;
     if (result.length == 0) return addresses;
     reservereThreshold = Number(
-      result[Math.max(result.length - 1, 0)].totalLiquidity
+      result[Math.max(result.length - 1, 0)].totalLiquidity,
     );
     addresses.push(...result.map((p: any) => p.id));
   }
@@ -69,21 +69,21 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
 async function getPoolTokens(
   chain: any,
   block: number | undefined,
-  poolIds: string[]
+  poolIds: string[],
 ): Promise<PoolInfo[]> {
   return (
     await multiCall({
       abi: abi.getPoolTokens,
       calls: poolIds.map((p: string) => ({
         target: vault,
-        params: p
+        params: p,
       })),
       chain,
-      block
+      block,
     })
   ).output.map((c: Result) => ({
     tokens: c.output.tokens,
-    balances: c.output.balances
+    balances: c.output.balances,
   }));
 }
 function findAllUniqueTokens(poolTokens: PoolInfo[]): string[] {
@@ -100,13 +100,13 @@ async function getPoolValues(
   chain: string,
   timestamp: number,
   poolTokens: PoolInfo[],
-  poolIds: string[]
+  poolIds: string[],
 ): Promise<{ [poolId: string]: number }> {
   const uniqueTokens: string[] = findAllUniqueTokens(poolTokens);
   const coinsData: CoinData[] = await getTokenAndRedirectData(
     uniqueTokens,
     chain,
-    timestamp
+    timestamp,
   );
   const poolTokenValues: number[][] = [];
   poolTokens.map((p: PoolInfo, i: number) => {
@@ -118,7 +118,7 @@ async function getPoolValues(
       }
 
       const tData = coinsData.find(
-        (d: CoinData) => d.address == t.toLowerCase()
+        (d: CoinData) => d.address == t.toLowerCase(),
       );
       if (tData == undefined) {
         poolTokenValues[i].push(-1);
@@ -142,12 +142,12 @@ async function getPoolValues(
 }
 function getTokenValues(
   poolValues: { [poolId: string]: number },
-  poolInfos: any
+  poolInfos: any,
 ): TokenValues[] {
   const tokenValues: TokenValues[] = [];
   poolInfos.supplies.map((s: Result, i: number) => {
     const poolValue = Object.entries(poolValues).filter(
-      (v: any[]) => v[0].substring(0, 42) == s.input.target
+      (v: any[]) => v[0].substring(0, 42) == s.input.target,
     );
 
     if (poolValue.length == 0) return;
@@ -159,7 +159,7 @@ function getTokenValues(
       address: s.input.target,
       price,
       decimals: poolInfos.decimals[i].output,
-      symbol: poolInfos.symbols[i].output
+      symbol: poolInfos.symbols[i].output,
     });
   });
   return tokenValues;
@@ -167,7 +167,7 @@ function getTokenValues(
 async function getLpPrices(
   chain: string,
   timestamp: number,
-  block: number
+  block: number,
 ): Promise<TokenValues[]> {
   const poolIds: string[] = await getPoolIds(chain, timestamp);
   const poolTokens: PoolInfo[] = await getPoolTokens(chain, block, poolIds);
@@ -175,20 +175,20 @@ async function getLpPrices(
     chain,
     timestamp,
     poolTokens,
-    poolIds
+    poolIds,
   );
 
   let tokenInfos: DbTokenInfos = await getTokenInfo(
     chain,
     poolIds.map((p: string) => p.substring(0, 42)),
     block,
-    { withSupply: true }
+    { withSupply: true },
   );
 
   const calls: { [target: string]: string }[] = [];
   poolIds.map((p: string, i: number) => {
     const normalizedTokens = poolTokens[i].tokens.map((t: string) =>
-      t.toLowerCase()
+      t.toLowerCase(),
     );
     const target: string = p.substring(0, 42);
     if (normalizedTokens.includes(target)) calls.push({ target });
@@ -199,7 +199,7 @@ async function getLpPrices(
       calls,
       abi: abi.getActualSupply,
       chain,
-      block
+      block,
     })
   ).output;
 
@@ -211,7 +211,7 @@ async function getLpPrices(
     )
       return;
     const supplyUpdate: Result | undefined = actualSupplies.find(
-      (supplyUpdate: Result) => supplyUpdate.input.target == t.input.target
+      (supplyUpdate: Result) => supplyUpdate.input.target == t.input.target,
     );
     if (supplyUpdate != null) tokenInfos.supplies[i] = supplyUpdate;
   });
@@ -220,11 +220,13 @@ async function getLpPrices(
 }
 export default async function getTokenPrices(
   chain: string,
-  timestamp: number
+  timestamp: number,
 ): Promise<Write[]> {
   let writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
-  const tokenValues: TokenValues[] = await getLpPrices(chain, timestamp, block);
+  const tokenValues: TokenValues[] = (
+    await getLpPrices(chain, timestamp, block)
+  ).filter((t: TokenValues) => t.price != Infinity);
   const gauges: string[] = (
     await multiCall({
       target: gaugeFactories[chain],
@@ -233,9 +235,9 @@ export default async function getTokenPrices(
       calls: tokenValues
         .map((t: any) => t.address)
         .map((l: string) => ({
-          params: [l]
+          params: [l],
         })),
-      abi: abi.getPoolGauge
+      abi: abi.getPoolGauge,
     })
   ).output.map((o: Result) => o.output);
 
@@ -249,7 +251,7 @@ export default async function getTokenPrices(
       v.symbol,
       timestamp,
       "balancer-lp",
-      0.9
+      0.9,
     );
     if (gauges[i] == nullAddress) return;
     addToDBWritesList(
@@ -262,7 +264,7 @@ export default async function getTokenPrices(
       timestamp,
       "balancer-gauge",
       0.9,
-      `asset#${chain}:${v.address}`
+      `asset#${chain}:${v.address}`,
     );
   });
 

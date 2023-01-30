@@ -4,7 +4,7 @@ const ADAPTORS_FOLDER_KEY = 'dimensions'
 
 export const cacheResponseOnR2 = async (key: string, response: string) => {
     console.info("Storing R2 with key", `${ADAPTORS_FOLDER_KEY}/${key}.json`)
-    await storeR2JSONString(`${ADAPTORS_FOLDER_KEY}/${key}.json`, response)
+    await storeR2JSONString(`${ADAPTORS_FOLDER_KEY}/${key}.json`, response).catch(e => console.error("R2Storage:error", e))
 }
 
 interface ICachedResponse<T> {

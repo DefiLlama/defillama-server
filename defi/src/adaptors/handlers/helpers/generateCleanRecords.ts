@@ -138,8 +138,8 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             await convertDataToUSD(generatedData, timestamp)
         )
 
-        if (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7)
-            checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
+        //if (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7)
+            //checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
 
         acc.lastDataRecord = chains
             .reduce((acc, chain) =>

@@ -23496,5 +23496,50 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675014442
 },
+{
+  id: "2477",
+  name: "BonqDAO",
+  address: "polygon:0x91efbe97e08d0ffc7d31381c032d05fad8e25aaa",
+  symbol: "BNQ",
+  url: "https://bonqdao.com",
+  description:
+    "BonqDAO is providing solutions for self-sovereign finance.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/bonqdao.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "bonq",
+  cmcId: null,
+  category: "Lending",
+  chains: ["Polygon"],
+  module: "bonqdao/index.js",
+  twitter: "BonqDAO",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675076607
+},
+{
+  id: "2478",
+  name: "Akiba Finance",
+  address: "kava:0x8f5af8d2E06c976970752b5596BE05Cd518Adcdd",
+  symbol: "AKIBA",
+  url: "https://akiba.finance",
+  description:
+    "Synthetic token protocol aimed at developing and supporting the KAVA Network",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/akiba-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Algo-Stables",
+  chains: ["Kava"],
+  module: "akiba/index.js",
+  twitter: "AkibaFinance",
+  oracles: ["TWAP"],
+  forkedFrom: ["Fantasm"],
+  audit_links: ["https://docs.akiba.finance/documentation/audit-and-security"],
+  listedAt: 1675076609
+},
 ]
 export default data2;

@@ -123,7 +123,7 @@ export async function getCachedLiqsR2(protocol: string, chain: string) {
 }
 
 export async function getExternalLiqsR2(protocol: string, chain: string) {
-  const data = (await axios.get("https://liquidations-extra-9sja.onrender.com/" + protocol + "/" + chain)).data;
+  const data = (await axios.get("https://liquidations.llama.fi/" + protocol + "/" + chain)).data;
   return data;
 }
 

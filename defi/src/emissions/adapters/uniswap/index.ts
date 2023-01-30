@@ -8,7 +8,7 @@ export const uniswap = Promise.all(
     "0x3d30b1ab88d487b0f3061f40de76845bec3f1e94",
   ].map((a: string) => adapter(a, "ethereum", "uni")),
 );
-export const euler = adapter(
+export const euler1 = adapter(
   "0x3cc634320A3825448539176Cc6a1627FaC451BBb",
   "ethereum",
   "eul",

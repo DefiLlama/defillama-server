@@ -1298,7 +1298,7 @@ chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
 chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
 
-export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury", "vesting"]
+export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
 export function transformNewChainName(chain: string) {
   switch (chain) {

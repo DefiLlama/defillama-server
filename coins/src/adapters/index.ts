@@ -68,4 +68,5 @@ export default {
   arrakis: require("./markets/arrakis/index"),
   yieldYak: require("./yield/yield-yak/index"),
   tezos: require("./tezos/index"),
+  aaveDebt: require("./moneyMarkets/aave-debt/index"),
 };

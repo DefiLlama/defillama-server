@@ -5,4 +5,6 @@ export default {
   tornado: require("./tornado"),
   uniswap: require("./uniswap"),
   yearn: require("./yearn"),
+  aura: require("./aura"),
+  sushi: require("./sushi"),
 };

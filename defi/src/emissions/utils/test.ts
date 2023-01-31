@@ -95,4 +95,4 @@ export async function main() {
   await parseData(protocolWrapper);
 }
 main();
-// ts-node src/unlocks/utils/test.ts convex
+// ts-node src/emissions/utils/test.ts convex

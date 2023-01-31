@@ -1,13 +1,9 @@
-import { manualCliff, manualLinear } from "../adapters/manual";
 import { Protocol } from "../types/adapters";
-import { periodToSeconds } from "../utils/time";
-import { yearnContributors as contributors } from "../adapters/curve";
+import { sushiMasterchef, sushiDevFund } from "../adapters/sushi";
 
-// (total alloc point - alloc point pool 45) / total alloc point * sushi per block
-// for emissions
 const sushi: Protocol = {
-  "liquidity mining": [],
-  "development fund": [],
-  sources: [],
+  "liquidity mining": sushiMasterchef,
+  "development fund": sushiDevFund,
+  sources: ["https://dev.sushi.com/docs/FAQ/Sushinomics%20FAQ"],
 };
 export default sushi;

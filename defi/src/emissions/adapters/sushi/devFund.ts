@@ -25,6 +25,7 @@ export default async function main(
       call({ target, abi: abi.totalAllocPoint, chain }),
       call({ target, abi: abi.token[target as keyof typeof abi.token], chain }),
     ]);
+
   const [excludedPoolRewards, start, end, decimals] = await Promise.all([
     multiCall({
       calls: excludedPoolIndexes.map((p: number) => ({ params: p, target })),
@@ -36,8 +37,7 @@ export default async function main(
     call({ target: token, abi: "erc20:decimals", chain }),
   ]);
 
-  const actualEmissionFactor =
-    (totalAllocPoint - excludedPoolRewards) / totalAllocPoint;
+  const actualEmissionFactor = excludedPoolRewards / totalAllocPoint;
   const blocks = endBlock - startBlock;
   const amount =
     rewardPerBlock * blocks * actualEmissionFactor * 10 ** -decimals;

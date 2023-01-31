@@ -7,14 +7,14 @@ export default async function main(
   chain: any,
   amount: number,
 ): Promise<AdapterResult[]> {
-  const [start, end, token] = await Promise.all([
+  const [start, duration, token] = await Promise.all([
     call({
       abi: abi.startTime,
       chain,
       target,
     }),
     call({
-      abi: abi.endTime,
+      abi: abi.duration,
       chain,
       target,
     }),
@@ -29,7 +29,7 @@ export default async function main(
     {
       type: "linear",
       start,
-      end,
+      end: Number(start) + Number(duration),
       amount,
       cliff: 0,
       token,

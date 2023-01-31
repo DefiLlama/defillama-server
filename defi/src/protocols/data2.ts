@@ -23572,7 +23572,7 @@ listedAt: 1650804679
 {
   id: "2480",
   name: "AlgoBlocks",
-  address: "algorand:0xfecca80ff6deb2b492e93df3b67f0c523cfd3a48",
+  address: "bsc:0xfecca80ff6deb2b492e93df3b67f0c523cfd3a48",
   symbol: "ALGOBLK",
   url: "https://www.algoblocks.io",
   description:

@@ -27,6 +27,7 @@ module.exports = {
   TEAM_WEBHOOK: process.env.TEAM_WEBHOOK,
   PROD_VYBE_API_KEY: process.env.PROD_VYBE_API_KEY,
   BIT_QUERY_API_KEY: process.env.BIT_QUERY_API_KEY,
+  LOFTY_API: process.env.LOFTY_API,
   VOLUMES_WEBHOOK: process.env.VOLUMES_WEBHOOK,
   FEES_WEBHOOK: process.env.FEES_WEBHOOK,
   ZEROx_API_KEY: process.env.ZEROx_API_KEY,

@@ -298,5 +298,8 @@ export default {
     },
     "archly-finance": {
         enabled: true
+    },
+    "stride": {
+        enabled: true
     }
 } as AdaptorsConfig

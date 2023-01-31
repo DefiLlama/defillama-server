@@ -2196,7 +2196,7 @@
       "name": "Wrapped TLOS",
       "decimals": "18",
       "symbol": "WTLOS",
-      "to": "coingecko#telos"
+      "to": "telos:0x0000000000000000000000000000000000000000"
     }
   },
   "solana": {

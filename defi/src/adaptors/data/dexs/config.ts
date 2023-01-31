@@ -768,5 +768,8 @@ export default {
     },
     "zyberswap": {
         enabled: true
+    },
+    "hermes-protocol": {
+        enabled: true
     }
 } as AdaptorsConfig

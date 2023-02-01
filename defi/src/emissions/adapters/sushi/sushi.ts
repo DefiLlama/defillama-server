@@ -8,7 +8,7 @@ export default async function main(
   target: string,
   chain: any,
   excludedPoolIndexes: number[] = [],
-): Promise<AdapterResult[]> {
+): Promise<AdapterResult> {
   const [startBlock, endBlock, rewardPerBlock, totalAllocPoint, token] =
     await Promise.all([
       call({ target, abi: abi.startBlock, chain }),
@@ -42,14 +42,11 @@ export default async function main(
   const amount =
     rewardPerBlock * blocks * actualEmissionFactor * 10 ** -decimals;
 
-  return [
-    {
-      type: "linear",
-      start,
-      end,
-      cliff: 0,
-      amount,
-      token,
-    },
-  ];
+  return {
+    type: "linear",
+    start,
+    end,
+    amount,
+    token,
+  };
 }

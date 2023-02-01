@@ -7,7 +7,7 @@ export default async function main(
   chain: any,
   cliff: number,
   supplyAbiKey: keyof typeof abi,
-): Promise<AdapterResult> {
+): Promise<AdapterResult[]> {
   const [start, end, token, rawAmount] = await Promise.all([
     call({ abi: abi.start_time, chain, target }),
     call({ abi: abi.end_time, chain, target }),
@@ -21,12 +21,19 @@ export default async function main(
 
   const decimals = await call({ abi: "erc20:decimals", chain, target: token });
 
-  return {
-    type: "linear",
-    start,
-    end,
-    amount: rawAmount / 10 ** decimals,
-    cliff,
-    token,
-  };
+  return [
+    {
+      type: "linear",
+      start,
+      end,
+      amount: rawAmount / 10 ** decimals,
+      token,
+    },
+    {
+      type: "cliff",
+      start,
+      amount: cliff,
+      token,
+    },
+  ];
 }

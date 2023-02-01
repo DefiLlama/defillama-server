@@ -52,7 +52,6 @@ export type LinearAdapterResult = {
   start: number;
   end: number;
   amount: number;
-  cliff: number;
 };
 export type ChartData = {
   timestamps: number[];

@@ -9,27 +9,19 @@ const curve: Protocol = {
     deployTime,
     deployTime + periodToSeconds.year,
     3_300_000,
-    0,
   ),
   treasury: manualLinear(
     deployTime,
     deployTime + periodToSeconds.year,
     9_700_000,
-    0,
   ),
-  team: manualLinear(
-    deployTime,
-    deployTime + periodToSeconds.year,
-    10_000_000,
-    0,
-  ),
+  team: manualLinear(deployTime, deployTime + periodToSeconds.year, 10_000_000),
   "veCRV voters": manualCliff(deployTime, 1_000_000),
   "veCRV holders": manualCliff(deployTime, 1_000_000),
   "liquidity mining": manualLinear(
     deployTime,
     deployTime + 4 * periodToSeconds.year,
     25_000_000,
-    0,
   ),
   "lp rewards": lpRewards(deployTime),
   sources: [

@@ -20,5 +20,4 @@ export const manualLinear = (
   start: number,
   end: number,
   amount: number,
-  cliff: number,
-): LinearAdapterResult => ({ type: "linear", start, end, amount, cliff });
+): LinearAdapterResult => ({ type: "linear", start, end, amount });

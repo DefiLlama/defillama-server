@@ -51,19 +51,16 @@ const rates: Rate[] = [
 
 export default function main(percentage: number): AdapterResult[] {
   const lines: AdapterResult[] = [];
-  let cliff: number = 0;
   for (let i: number = 0; i < rates.length - 1; i++) {
     const start: number = rates[i].start;
     const end: number = rates[i + 1].start;
     const amount: number = rates[i].rate * blocksPerPeriod * percentage;
-    cliff = +amount;
 
     lines.push({
       type: "linear",
       start,
       end,
       amount,
-      cliff,
       token,
     });
   }

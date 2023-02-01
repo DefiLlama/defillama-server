@@ -9,7 +9,6 @@ export const tornado: Protocol = {
     1608262063,
     1608262063 + 31536000,
     1_000_000,
-    0,
   ),
   "team and investors": teamAndInvestors,
   sources: [

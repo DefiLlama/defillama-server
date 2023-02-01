@@ -8,7 +8,6 @@ const yearn: Protocol = {
     1594969200,
     1594969200 + periodToSeconds.day * 9,
     30_000,
-    0,
   ),
   contributors,
   treasury: manualCliff(1612530000, 3_881),

@@ -47,7 +47,6 @@ export default async function main(
       type: "linear",
       start,
       end,
-      cliff: 0,
       amount,
       token,
     },

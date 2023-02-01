@@ -23660,5 +23660,27 @@ listedAt: 1650804679
   audit_links: ["https://github.com/equilibria-xyz/perennial-mono/tree/master/packages/perennial/audits"],
   listedAt: 1675165374
 },
+{
+  id: "2484",
+  name: "Djed Stablecoin",
+  address: "null",
+  symbol: "-",
+  url: "https://djed.xyz/",
+  description:
+    "Cardano's native overcollateralized stablecoin, developed by IOG and powered by COTI. $DJED is backed by $ADA and uses $SHEN as a reserve coin",
+  chain: "Cardano",
+  logo: `${baseIconsUrl}/djed-stablecoin.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Cardano"],
+  module: "djed/index.js",
+  twitter: "DjedStablecoin",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675229824
+},
 ]
 export default data2;

@@ -23704,5 +23704,28 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   listedAt: 1675271563
 },
+{
+  id: "2486",
+  name: "Landshare",
+  address: "bsc:0x9D986A3f147212327Dd658F712d5264a73a1fdB0",
+  symbol: "LAND",
+  url: "https://landshare.io",
+  description:
+    "Landshare turns real-world properties into asset-backed, yield bearing, and fully tradeable Asset Tokens on the Binance Smart Chain. Invest in real estate for as little as $50 and benefit from property appreciation and monthly rental income sent directly to your wallet each month.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/landshare.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "RWA",
+  chains: ["Binance"],
+  module: "landshare/index.js",
+  twitter: "Landshareio",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://landshare.io/wp-content/uploads/2022/06/Audit.pdf"],
+  listedAt: 1675273672
+},
 ]
 export default data2;

@@ -463,7 +463,12 @@ functions:
     handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900
     events:
-      - schedule: cron(01 2,13 * * ? *)
+      - schedule: cron(01 2,5,8,11 * * ? *)
+  triggerNotifyStatus2:
+    handler: src/adaptors/handlers/triggerNotifyStatus.default
+    timeout: 900
+    events:
+      - schedule: cron(30 0 * * ? *)
   cacheExternalResponse:
     handler: src/externalEndpointsCache/index.cacheExternalResponseHandler
     timeout: 180

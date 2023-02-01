@@ -21642,7 +21642,7 @@ listedAt: 1650804679
   chains: ["Algorand", "Ethereum"],
   module: "messinaone/index.js",
   twitter: "MessinaOne", 
-  forkedFrom: ["Portal"],
+  forkedFrom: [],
   oracles: [],
   listedAt: 1672230591
 },
@@ -23681,6 +23681,28 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   listedAt: 1675229824
+},
+{
+  id: "2485",
+  name: "HiveSwap",
+  address: "null",
+  symbol: "-",
+  url: "https://swap.hiveswap.io",
+  description:
+    "Uniswap fork on map blockchain",
+  chain: "Map",
+  logo: `${baseIconsUrl}/hiveswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Map"],
+  module: "hiveswap/index.js",
+  twitter: null,
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  listedAt: 1675271563
 },
 ]
 export default data2;

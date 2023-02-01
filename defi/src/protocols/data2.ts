@@ -21631,7 +21631,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://messina.one",
   description:
-    "Cross-Chain Bridge, enabling the next 1B users to use blockchain.",
+    "Messina.one is a cross-chain protocol built on top of Wormhole that aims to enable the next 1B blockchain users.",
   chain: "Algorand",
   logo: `${baseIconsUrl}/messinaone.jpg`,
   audits: "0",

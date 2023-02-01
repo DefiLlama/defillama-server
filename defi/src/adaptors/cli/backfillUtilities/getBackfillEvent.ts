@@ -12,7 +12,7 @@ import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { ONE_DAY_IN_SECONDS } from "../../handlers/getProtocol"
 import { ICliArgs } from "./backfillFunction"
 import { Chain } from "@defillama/sdk/build/general"
-import { getStartTimestamp } from "@defillama/dimension-adapters/helpers/getStartTimestamp"
+import { sumAllVolumes } from "../../utils/volumeCalcs"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
@@ -72,7 +72,8 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
                 adapters2Backfill.push(adapter.module)
             }
             if (volume instanceof AdaptorRecord) {
-                if (volume.getCleanAdaptorRecord() === null)
+                const cleanRecord = volume.getCleanAdaptorRecord()
+                if (cleanRecord === null || sumAllVolumes(cleanRecord.data) === 0)
                     adapters2Backfill.push(adapter.module)
             }
         }

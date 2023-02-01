@@ -37,7 +37,11 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const totalRecord = rawTotalRecord?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecordsRaw instanceof Array)) throw new Error("Wrong volume queried")
-        const lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
+        let lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
+        if (sumAllVolumes(lastRecordRaw.data)===0) {
+            lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 2]
+            adaptorRecordsRaw[adaptorRecordsRaw.length - 1] = adaptorRecordsRaw[adaptorRecordsRaw.length - 2]
+        }
 
         // Get extra revenue
         const extraTypes: IJSON<number | null> = {}

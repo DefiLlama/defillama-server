@@ -77,8 +77,6 @@ export default async function craftParentProtocol({
       const hourlyIndexStartingIndex =
         hourlyChildProtocols === childProtocolsTvls.length && curr.tvl.length <= 7 ? 8 : 2;
 
-      console.log(hourlyIndexStartingIndex);
-
       // TOTAL TVL OF EACH CHAIN
       for (const name in curr.currentChainTvls) {
         acc.currentChainTvls = {

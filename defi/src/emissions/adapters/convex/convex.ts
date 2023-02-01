@@ -16,11 +16,14 @@ export default async function convex(
   const results = [];
 
   while (emission > 0) {
-    emission = await getCvxEmitted(chain, target, timestamp);
-    results.push(await getCvxEmitted(chain, target, timestamp));
-    timestamp += periodToSeconds.day;
+    try {
+      emission = await getCvxEmitted(chain, target, timestamp);
+      results.push(await getCvxEmitted(chain, target, timestamp));
+      timestamp += periodToSeconds.day;
+    } catch {
+      return results;
+    }
   }
-  return [];
   return results;
 }
 async function getCrvEarned(): Promise<number> {

@@ -32,6 +32,8 @@ const curve: Protocol = {
     0,
   ),
   "lp rewards": lpRewards(deployTime),
-  sources: [],
+  sources: [
+    "https://docs.convexfinance.com/convexfinance/general-information/tokenomics",
+  ],
 };
 export default curve;

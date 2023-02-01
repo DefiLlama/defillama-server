@@ -23,10 +23,12 @@ export default async function main(
   });
 
   let cliff = 0;
-  const results: AdapterResult[] = streams.map((s: any) => {
-    const amount = ((s.stopTime - s.startTime) * s.ratePerSecond) / 10 ** 18;
-    cliff = amount;
-    return {
+  const results: AdapterResult[] = [];
+  streams.map((s: any) => {
+    const amount = Number(
+      ((s.stopTime - s.startTime) * s.ratePerSecond) / 10 ** 18,
+    );
+    results.push({
       type: "linear",
       start: s.startTime,
       end: s.stopTime,
@@ -34,7 +36,8 @@ export default async function main(
       cliff,
       receiver: s.recipient,
       token: s.tokenAddress,
-    };
+    });
+    cliff += amount;
   });
 
   const amount = results.reduce(

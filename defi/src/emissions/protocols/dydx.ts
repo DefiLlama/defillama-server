@@ -7,7 +7,7 @@ const quantities = {
   employees: 152_704_930,
   futureEmployees: 70_000_000,
 };
-const tornado: Protocol = {
+const dydx: Protocol = {
   "future employees & consultannts": [
     //
     manualCliff(1701388800, quantities.futureEmployees * 0.3),
@@ -104,4 +104,4 @@ const tornado: Protocol = {
     "https://docs.dydx.community/dydx-governance/start-here/dydx-allocations",
   ],
 };
-export default tornado;
+export default dydx;

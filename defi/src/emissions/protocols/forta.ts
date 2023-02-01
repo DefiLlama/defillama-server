@@ -12,7 +12,7 @@ const nonCommunity = (percentage: number) => [
 ];
 const totalQty = 1_000_000_000;
 const start = 1655517600;
-const sushi: Protocol = {
+const forta: Protocol = {
   airdrop: manualCliff(start, totalQty * 0.04),
   "node runner rewards": manualCliff(start, totalQty * 0.002),
   other: [
@@ -25,4 +25,4 @@ const sushi: Protocol = {
   OpenZeppelin: nonCommunity(0.1),
   sources: ["https://docs.forta.network/en/latest/fort-token/"],
 };
-export default sushi;
+export default forta;

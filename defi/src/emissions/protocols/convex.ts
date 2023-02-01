@@ -4,7 +4,7 @@ import { Protocol } from "../types/adapters";
 import { periodToSeconds } from "../utils/time";
 
 const deployTime = 1621242000;
-const curve: Protocol = {
+const convex: Protocol = {
   investors: manualLinear(
     deployTime,
     deployTime + periodToSeconds.year,
@@ -28,4 +28,4 @@ const curve: Protocol = {
     "https://docs.convexfinance.com/convexfinance/general-information/tokenomics",
   ],
 };
-export default curve;
+export default convex;

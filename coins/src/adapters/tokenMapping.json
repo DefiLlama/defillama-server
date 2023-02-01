@@ -2809,6 +2809,14 @@
       "to": "coingecko#juno-network"
     }
   },
+  "stargaze": {
+    "ustars": {
+      "name": "Stargaze",
+      "decimals": "6",
+      "symbol": "STARS",
+      "to": "coingecko#stargaze"
+    }
+  },
   "osmosis": {
     "uion": {
       "name": "ion",

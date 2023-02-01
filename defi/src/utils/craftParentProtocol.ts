@@ -60,7 +60,9 @@ export default async function craftParentProtocol({
   const PROTOCOL_API = useHourlyData ? "https://api.llama.fi/hourly" : "https://api.llama.fi/updatedProtocol";
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(
-    childProtocols.map((protocolData) => fetch(`${PROTOCOL_API}/${sluggify(protocolData)}`).then((res) => res.json()))
+    childProtocols.map((protocolData) =>
+      fetch(`${PROTOCOL_API}/${sluggify(protocolData)}?includeAggregatedTvl=true`).then((res) => res.json())
+    )
   );
 
   const hourlyChildProtocols = childProtocolsTvls.reduce((acc, curr) => (acc += curr.tvl.length <= 7 ? 1 : 0), 0);
@@ -74,6 +76,8 @@ export default async function craftParentProtocol({
 
       const hourlyIndexStartingIndex =
         hourlyChildProtocols === childProtocolsTvls.length && curr.tvl.length <= 7 ? 8 : 2;
+
+      console.log(hourlyIndexStartingIndex);
 
       // TOTAL TVL OF EACH CHAIN
       for (const name in curr.currentChainTvls) {
@@ -97,7 +101,11 @@ export default async function craftParentProtocol({
             };
           }
 
-          if (index > curr.chainTvls[chain].tvl!.length - hourlyIndexStartingIndex && !acc.chainTvls[chain].tvl[date]) {
+          if (
+            index > curr.chainTvls[chain].tvl!.length - hourlyIndexStartingIndex &&
+            !acc.chainTvls[chain].tvl[date] &&
+            Object.keys(curr.chainTvls)[0] !== chain
+          ) {
             const prevDate = curr.chainTvls[chain].tvl[index - 1]?.date;
 
             if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
@@ -132,7 +140,8 @@ export default async function craftParentProtocol({
 
           if (
             index > curr.chainTvls[chain].tokensInUsd!.length - hourlyIndexStartingIndex &&
-            !acc.chainTvls[chain].tokensInUsd[date]
+            !acc.chainTvls[chain].tokensInUsd[date] &&
+            Object.keys(curr.chainTvls)[0] !== chain
           ) {
             const prevDate = curr.chainTvls[chain].tokensInUsd![index - 1]?.date;
 
@@ -172,7 +181,8 @@ export default async function craftParentProtocol({
 
           if (
             index > curr.chainTvls[chain].tokens!.length - hourlyIndexStartingIndex &&
-            !acc.chainTvls[chain].tokens[date]
+            !acc.chainTvls[chain].tokens[date] &&
+            Object.keys(curr.chainTvls)[0] !== chain
           ) {
             const prevDate = curr.chainTvls[chain].tokens![index - 1]?.date;
 

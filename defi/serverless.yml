@@ -456,8 +456,6 @@ functions:
   notifyStatus:
     handler: src/adaptors/handlers/notifyStatus.default
     timeout: 900
-    events:
-      - schedule: cron(01 2,13 * * ? *)
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}

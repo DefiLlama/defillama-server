@@ -103,6 +103,10 @@ export default {
           token: "0xbd3531da5cf5857e7cfaa92426877b022e612cf8",
           oracle: "0xaC9962D846D431254C7B3Da3AA12519a1E2Eb5e7",
         },
+        {   // Ringers
+          token: "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270",
+          oracle: "0xd88b089f47d6f82e84589601fd7c329472077E08",
+        },
         {   // Sandbox Land
           token: "0x5cc5b05a8a13e3fbdb0bb9fccd98d38e50f90c38",
           oracle: "0xa62b4828a9f4b2e3cba050c6befdd8f0a0056af4",

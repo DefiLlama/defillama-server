@@ -3,9 +3,9 @@ export default {
     {
       underlying: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       nfts: [
-        {   // Art Blocks
-          token: "0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a",
-          oracle: "0xEbF67AB8cFF336D3F609127E8BbF8BD6DD93cd81",
+        {   // Autoglyphs
+          token: "0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782",
+          oracle: "0xcc164249E9840a9e7D9e18E67b78cBeF06C5F8a5",
         },
         {   // Azuki
           token: "0xed5af388653567af2f388e6224dc7c4b3241c544",
@@ -59,6 +59,10 @@ export default {
           token: "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
           oracle: "0x027828052840a43Cc2D0187BcfA6e3D6AcE60336",
         },
+        {   // Fidenza
+          token: "0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782",
+          oracle: "0x2dE2EB5Fb9B8d7df45A9e144030c36128682c288",
+        },
         {   // Forgotten Rune Wizards Cult
           token: "0x521f9C7505005CFA19A8E5786a9c3c9c9F5e6f42",
           oracle: "0x4da2765FFCFC0eEd625F450B9A1A1C89c919DbE8",
@@ -102,6 +106,10 @@ export default {
         {   // Sandbox Land
           token: "0x5cc5b05a8a13e3fbdb0bb9fccd98d38e50f90c38",
           oracle: "0xa62b4828a9f4b2e3cba050c6befdd8f0a0056af4",
+        },
+        {   // Squiggles
+          token: "0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a",
+          oracle: "0xEbF67AB8cFF336D3F609127E8BbF8BD6DD93cd81",
         },
         {   // VeeFriends
           token: "0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb",

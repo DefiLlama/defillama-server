@@ -24,6 +24,7 @@ import parentProtocols from './parentProtocols';
   module: string;
   twitter: string;
   language?: string;
+  treasury?: string;
 },
 */
 /* Audits: Please follow this legend
@@ -476,6 +477,7 @@ const data2: Protocol[] =  [
   oracles: [],
   forkedFrom: [],
   module: "gooddollar/index.js",
+  treasury: "gooddollar.js",
   twitter: "gooddollarorg",
   audit_links: ["https://github.com/GoodDollar/GoodProtocol/tree/master/audits"],
   listedAt: 1645138963,
@@ -1485,6 +1487,7 @@ const data2: Protocol[] =  [
   oracles: ["Chainlink"],
   forkedFrom: ["Liquity"],
   module: "mahadao/index.js",
+  treasury: "mahadao.js",
   twitter: "TheMahaDAO",
   parentProtocol: "MahaDAO",
   listedAt: 1645824445,
@@ -2134,6 +2137,7 @@ const data2: Protocol[] =  [
   audits: "0",
   audit_note: null,
   gecko_id: "floordao" ,
+  treasury: "floor-dao.js" ,
   cmcId: "18440" ,
   category: "Reserve Currency",
   chains: ["Ethereum"],
@@ -2782,6 +2786,7 @@ const data2: Protocol[] =  [
   audits: "0",
   audit_note: null,
   gecko_id: "cubo",
+  treasury: "cubo.js",
   cmcId: "18278",
   category: "Yield",
   chains: ["Fantom"],
@@ -3355,6 +3360,7 @@ const data2: Protocol[] =  [
   oracles: ["Chainlink"],
   forkedFrom: [],
   module: "peardao/index.js",
+  treasury: "peardao.js",
   twitter: "OfficialPearDAO",
   audit_links: ["https://www.certik.com/projects/peardao"],
   listedAt: 1647629790
@@ -6889,6 +6895,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   module: "shibui/index.js",
+  treasury: "shibui.js",
   twitter: "shibuidao",
   listedAt: 1651691930
 },
@@ -6952,6 +6959,7 @@ listedAt: 1650804679
   oracles: ["Internal"],
   forkedFrom: [],
   module: "pegasusfinance/index.js",
+  treasury: "pegasusfinance.js",
   twitter: "0xPegasusFi",
   listedAt: 1651695169
 },
@@ -7599,6 +7607,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Solidly"],
   module: "spartacus-exchange/index.js",
+  treasury: "spartacus.js",
   twitter: "Spartacus_Fi",
   listedAt: 1652209030
 },
@@ -7837,6 +7846,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: ["Balancer"],
   module: "koyo/index.js",
+  treasury: "koyo.js",
   twitter: "KoyoFinance",
   listedAt: 1652809510
 },
@@ -8335,6 +8345,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   module: "gale/index.js",
+  treasury: "gale.js",
   twitter: "GaleNetwork",
   audit_links: ["https://github.com/solidproof/projects/blob/main/Gale/SmartContract_Audit_Solidproof_GaleToken.pdf"],
   listedAt: 1653656978
@@ -10988,6 +10999,7 @@ listedAt: 1650804679
   audits: "2",
   audit_note: null,
   gecko_id: "betswirl",
+  treasury: "betswirl.js",
   cmcId: "18453",
   category: "Prediction Market",
   chains: ["Polygon", "Binance", "Avalanche"],
@@ -14237,6 +14249,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   module: "puli/index.js",
+  treasury: "puli.js",
   twitter: "Puli_Token",
   audit_links: [
                  "https://www.certik.com/projects/puli-inu" ,
@@ -16716,6 +16729,7 @@ listedAt: 1650804679
   audits: "2",
   audit_note: null,
   gecko_id: "dexshare",
+  treasury: "dex.js",
   cmcId: "20282",
   category: "Yield Aggregator",
   chains: ["Binance"], 
@@ -17261,6 +17275,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Ethereum"],
   module: "uniswap/index.js",
+  treasury: "uniswap.js",
   twitter: "Uniswap",
   audit_links: [
     "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",
@@ -20718,6 +20733,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Ethereum"],
   module: "x7/index.js",
+  treasury: "x7.js",
   twitter: "X7_Finance", 
   forkedFrom: [],
   oracles: [],
@@ -21723,6 +21739,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Polygon"],
   module: "gyroscope/index.js",
+  treasury: "gyro.js",
   twitter: "GyroStable", 
   forkedFrom: [],
   oracles: ["Chainlink", "TWAP", "Balancer Pool LP token"],
@@ -22266,6 +22283,7 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   module: "Revoluzion/index.js",
+  treasury: "revoluzion.js",
   twitter: "RevoluzionEco",
   audit_links: ["https://github.com/cyberscope-io/audits/blob/main/rvz/audit.pdf"],
   listedAt: 1673372523
@@ -22396,6 +22414,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "defenderfinance/index.js",
   twitter: "defender_fi",
+  treasury: "defender.js",
   audit_links: ["https://docs.defenderfinance.io/kyc-and-audit/third-party-audit"],
   listedAt: 1673533910
 },
@@ -23336,6 +23355,7 @@ listedAt: 1650804679
   name: "Cap V4",
   address: "arbitrum:0x43044f861ec040db59a7e324c40507addb673142",
   symbol: "CAP",
+  treasury: "cap.js",
   url: "https://cap.io",
   description:
     "Decentralized Perps. Trade global markets with low fees, deep liquidity, and up to 100× leverage.",

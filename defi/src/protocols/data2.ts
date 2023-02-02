@@ -2091,7 +2091,7 @@ const data2: Protocol[] =  [
   url: "https://snowyowl.finance/",
   description: " Welcome to Snowy Owl, home to the first algorithmic token fork pegged to $JOE on the Avalanche network with innovating features.",
   chain: "Avalanche",
-  logo: `${baseIconsUrl}/floor-dao.jpg`,
+  logo: `${baseIconsUrl}/snowyowl.png`,
   audits: "0",
   audit_note: null,
   gecko_id: "snowy-owl" ,

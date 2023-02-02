@@ -167,7 +167,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     }
     console.info("Loaded OK:", adaptersList.length)
     const allChains = getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[]))
-    if (chainFilter !== undefined && !allChains.includes(chainFilter)) throw new Error("Chain not supported")
+    if (chainFilter !== undefined && !allChains.map(c=>c.toLowerCase()).includes(chainFilter)) throw new Error(`Chain not supported ${chainFilter}`)
 
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {

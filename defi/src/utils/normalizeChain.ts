@@ -1282,6 +1282,12 @@ export const chainCoingeckoIds = {
     cmcId: "4956",
     categories: ["EVM"],
   },
+  "Stargaze": {
+    geckoId: "stargaze",
+    symbol: "STARS",
+    cmcId: "16842",
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1621,8 +1627,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Omax"
     case "bitindi":
       return "Bitindi"
-    case "Map":
-      return "map"
+    case "map":
+      return "Map"
+    case "stargaze":
+      return "Stargaze"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

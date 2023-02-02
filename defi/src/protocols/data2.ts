@@ -23739,5 +23739,27 @@ listedAt: 1650804679
   audit_links: ["https://landshare.io/wp-content/uploads/2022/06/Audit.pdf"],
   listedAt: 1675273672
 },
+{
+  id: "2487",
+  name: "Stargaze",
+  address: "stargaze:-",
+  symbol: "STARS",
+  url: "https://www.stargaze.zone",
+  description:
+    "A decentralized, community-owned app chain for NFTs. 100% carbon neutral. ZERO gas. Powered by CosmWasm and $STARS.",
+  chain: "Stargaze",
+  logo: `${baseIconsUrl}/stargaze.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "stargaze",
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Stargaze"],
+  module: "stargaze/index.js",
+  twitter: "StargazeZone",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675310293
+},
 ]
 export default data2;

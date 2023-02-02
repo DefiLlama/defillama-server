@@ -774,5 +774,8 @@ export default {
     },
     "hiveswap": {
         enabled: true
+    },
+    "plenty": {
+        enabled: true
     }
 } as AdaptorsConfig

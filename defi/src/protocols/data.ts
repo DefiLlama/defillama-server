@@ -26831,4 +26831,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   // },
 ];
 
-export default data.concat(data2);
+const protocols = data.concat(data2)
+
+export const treasuries: Protocol[] = protocols.filter(i => i.treasury).map((i: Protocol) => {
+  const clone: Protocol = JSON.parse(JSON.stringify(i))
+  clone.id = `${i.id}-treasury`
+  clone.module = `treasury/${i.treasury}`
+  clone.name = `${i.name} (treasury)`
+  return clone
+})
+
+export default protocols

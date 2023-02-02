@@ -28,9 +28,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   const tokenDiff: { [token: string]: number } = {};
 
   for (const token in currentTokens.tvl) {
-    if (!tokensToExclude.includes(token)) {
-      tokenDiff[token] = currentTokens.tvl[token] || 0;
-    }
+    tokenDiff[token] = (tokenDiff[token] || 0) + (currentTokens.tvl[token] || 0);
   }
 
   for (const token in old.tvl) {
@@ -43,9 +41,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
       : null;
 
     if (formattedToken) {
-      if (!tokensToExclude.includes(formattedToken)) {
-        tokenDiff[formattedToken] -= old.tvl[token];
-      }
+      tokenDiff[formattedToken] -= old.tvl[token];
     } else {
       console.log(
         `Inflows: Couldn't find ${token} in last tokens record of ${protocolData!.name}(id: ${protocolData!.id})`
@@ -58,16 +54,24 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   let outflows = 0;
 
   for (const token in tokenDiff) {
-    const currentAmount = currentTokens!.tvl[token];
+    if (
+      !tokensToExclude.includes(token) && geckoSymbols[token] ? !tokensToExclude.includes(geckoSymbols[token]) : true
+    ) {
+      const currentAmount = currentTokens!.tvl[token];
 
-    const currentPrice = currentUsdTokens!.tvl[token] / currentAmount;
+      const currentPrice = currentUsdTokens!.tvl[token] / currentAmount;
 
-    const diff = tokenDiff[token];
+      const diff = tokenDiff[token];
 
-    outflows += diff * currentPrice;
+      outflows += diff * currentPrice;
+    }
   }
 
-  return successResponse({ outflows, oldTokens: old.tvl, currentTokens: currentTokens.tvl });
+  return successResponse({
+    outflows,
+    oldTokens: { date: old.SK, tvl: old.tvl },
+    currentTokens: { date: currentTokens.SK, tvl: currentTokens.tvl },
+  });
 };
 
 export default wrap(handler);

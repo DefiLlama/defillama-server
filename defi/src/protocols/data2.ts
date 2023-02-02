@@ -23781,5 +23781,49 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675310293
 },
+{
+  id: "2488",
+  name: "DPEX",
+  address: null,
+  symbol: "-",
+  url: "https://dpex.io",
+  description:
+    "Decentralized Perpetual Exchange. Trade Bitcoin, Ethereum, and other digital currencies with up to 50X leverage from the comfort of your web3 wallet, such as Metamask or Coinbase Wallet - no need for a middleman.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/dpex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Polygon"],
+  module: "dpex/index.js",
+  twitter: "DPEX_io",
+  oracles: [],
+  forkedFrom: ["GMX"],
+  listedAt: 1675348415
+},
+{
+  id: "2489",
+  name: "Caviar",
+  address: null,
+  symbol: "-",
+  url: "https://www.caviar.sh",
+  description:
+    "The easiest way to trade and earn yield on an NFT.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/caviar.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Ethereum"],
+  module: "caviar/index.js",
+  twitter: "caviarAMM",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675348417
+},
 ]
 export default data2;

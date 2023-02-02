@@ -54,9 +54,8 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   let outflows = 0;
 
   for (const token in tokenDiff) {
-    if (
-      !tokensToExclude.includes(token) && geckoSymbols[token] ? !tokensToExclude.includes(geckoSymbols[token]) : true
-    ) {
+    const formattedToken = geckoSymbols[token] || tokenMapping[token] || token;
+    if (!tokensToExclude.includes(formattedToken)) {
       const currentAmount = currentTokens!.tvl[token];
 
       const currentPrice = currentUsdTokens!.tvl[token] / currentAmount;

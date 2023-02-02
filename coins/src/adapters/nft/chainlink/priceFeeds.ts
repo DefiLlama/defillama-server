@@ -59,10 +59,6 @@ export default {
           token: "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
           oracle: "0x027828052840a43Cc2D0187BcfA6e3D6AcE60336",
         },
-        {   // Fidenza
-          token: "0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782",
-          oracle: "0x2dE2EB5Fb9B8d7df45A9e144030c36128682c288",
-        },
         {   // Forgotten Rune Wizards Cult
           token: "0x521f9C7505005CFA19A8E5786a9c3c9c9F5e6f42",
           oracle: "0x4da2765FFCFC0eEd625F450B9A1A1C89c919DbE8",
@@ -102,10 +98,6 @@ export default {
         {   // Pudgy Penguins
           token: "0xbd3531da5cf5857e7cfaa92426877b022e612cf8",
           oracle: "0xaC9962D846D431254C7B3Da3AA12519a1E2Eb5e7",
-        },
-        {   // Ringers
-          token: "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270",
-          oracle: "0xd88b089f47d6f82e84589601fd7c329472077E08",
         },
         {   // Sandbox Land
           token: "0x5cc5b05a8a13e3fbdb0bb9fccd98d38e50f90c38",

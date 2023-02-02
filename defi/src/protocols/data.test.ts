@@ -1,20 +1,18 @@
-import protocols, { Protocol } from "./data";
+import protocols, { Protocol, treasuries } from "./data";
 import { baseIconsUrl } from "../constants";
-import { importAdapter, importTreasuryAdapter } from "../cli/utils/importAdapter";
+import { importAdapter, } from "../cli/utils/importAdapter";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
 const fs = require("fs");
 
 test("all the dynamic imports work", async () => {
   await Promise.all(protocols.map(importAdapter))
-  await Promise.all(protocols.map(p => {
-    if (!p.treasury) return;
-    return importTreasuryAdapter(p)
-  }))
+  await Promise.all(treasuries.map(importAdapter))
 });
 
 const ignored = ['default', 'staking', 'pool2', 'treasury', "hallmarks", "borrowed", "ownTokens"]
 test("all chains are on chainMap", async () => {
-  for (const protocol of protocols) {
+  const allProtocols = [protocols, treasuries].flat()
+  for (const protocol of allProtocols) {
     const module = await importAdapter(protocol)
     Object.entries(module).map(entry => {
       if (!ignored.includes(entry[0]) && typeof entry[1] === "object") {
@@ -31,6 +29,21 @@ test("all chains are on chainMap", async () => {
       }
     })
   }
+});
+
+test("valid treasury fields", async () => {
+  const treasuryKeys = new Set(['ownTokens', 'tvl'])
+  const ignoredKeys = new Set(['default'])
+  await Promise.all(treasuries.map(async protocol => {
+    const module = await importAdapter(protocol)
+    for (const [chain, value] of Object.entries(module)) {
+      if (typeof value !== 'object' || ignoredKeys.has(chain)) continue;
+      for (const [key, _module] of Object.entries(value as Object)) {
+        if (typeof _module !== 'function' || !treasuryKeys.has(key))
+          throw new Error('Bad module for adapter: ' + protocol.name + ' in chain ' + chain + ' key:' + key)
+      }
+    }
+  }))
 });
 
 test("projects have a single chain or each chain has an adapter", async () => {

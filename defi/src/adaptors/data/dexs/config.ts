@@ -771,5 +771,8 @@ export default {
     },
     "hermes-protocol": {
         enabled: true
+    },
+    "hiveswap": {
+        enabled: true
     }
 } as AdaptorsConfig

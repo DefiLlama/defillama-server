@@ -301,5 +301,8 @@ export default {
     },
     "stride": {
         enabled: true
+    },
+    "plenty": {
+        enabled: true
     }
 } as AdaptorsConfig

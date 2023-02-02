@@ -23825,5 +23825,27 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675348417
 },
+{
+  id: "2490",
+  name: "Libre Swap",
+  address: null,
+  symbol: "-",
+  url: "https://dashboard.libre.org/swap",
+  description:
+    "DeFi for Bitcoin and Tether - Trade, Provide Liquidity, Farm - instant tx and no gas fees.",
+  chain: "Libre",
+  logo: `${baseIconsUrl}/libre-swap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Libre"],
+  module: "libre-swap/index.js",
+  twitter: "libreblockchain",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675355930
+},
 ]
 export default data2;

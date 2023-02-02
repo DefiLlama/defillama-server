@@ -1532,6 +1532,18 @@
       "symbol": "USDK",
       "to": "coingecko#krome-stablecoin-bad"
     },
+    "0x127a75b751ba810e459121af6207d83841c586b7": {
+      "name": "Orbit Bridge Klaytn Meshswap Protocol",
+      "decimals": "18",
+      "symbol": "oMESH",
+      "to": "coingecko#meshswap-protocol"
+    },
+    "0x4b96dbf8f42c8c296573933a6616dcafb80ca461": {
+      "name": "Orbit Bridge Klaytn Toncoin",
+      "decimals": "9",
+      "symbol": "oTON",
+      "to": "coingecko#the-open-network"
+    },
     "0xe06597d02a2c3aa7a9708de2cfa587b128bd3815": {
       "name": "NEOPIN Token",
       "decimals": "18",

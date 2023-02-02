@@ -12,6 +12,7 @@ import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSu
 import { delay } from "../triggerStoreAdaptorData";
 import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
 import { cacheResponseOnR2 } from "../../utils/storeR2Response";
+import { CATEGORIES } from "../../data/helpers/categories";
 
 export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
@@ -138,13 +139,16 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
     const rawDataType = event.queryStringParameters?.dataType
     const rawCategory = event.queryStringParameters?.category
-    const category = rawCategory === 'dexs' ? 'dexes' : rawCategory
+    const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
     const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
     console.info("Parameters parsing OK")
 
     if (!adaptorType) throw new Error("Missing parameter")
+    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error("Adaptor type not supported")
+    if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")
+    if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
     // Import data list
     console.info("Loading adaptors...")
@@ -162,6 +166,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`, error)
     }
     console.info("Loaded OK:", adaptersList.length)
+    const allChains = getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[]))
+    if (chainFilter !== undefined && !allChains.includes(chainFilter)) throw new Error("Chain not supported")
 
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {
@@ -228,7 +234,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
-        allChains: getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
+        allChains,
         total24h: enableStats ? generalStats.total24h : 0,
         total7d: enableStats ? generalStats.total7d : 0,
         total30d: enableStats ? generalStats.total30d : 0,

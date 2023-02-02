@@ -800,6 +800,7 @@ const data2: Protocol[] =  [
   module: "vesta/index.js",
   twitter: "vestafinance",
   audit_links: ["https://docs.vestafinance.xyz/audit/audits"],
+  governanceID: ["snapshot:vestafinance.eth"],
   listedAt: 1645453933,
 },
 {
@@ -1135,6 +1136,7 @@ const data2: Protocol[] =  [
     "https://github.com/elysia-dev/elyfi-token/tree/main/audit"
   ],
   listedAt: 1645646372,
+  governanceID: ["snapshot:elyfi-bsc.eth"]
 },
 {
   id: "1460",
@@ -2613,6 +2615,7 @@ const data2: Protocol[] =  [
   module: "libero/index.js",
   twitter: "LiberoFinancial",
   audit_links: ["https://github.com/Rugfreecoins/Smart-Contract-Audits/blob/main/Libero%20Financial%20Token.pdf"],
+  governanceID: ["snapshot:liberofinancial.eth"],
   listedAt: 1646877651,
 },
 {
@@ -4635,6 +4638,7 @@ const data2: Protocol[] =  [
   module: "jpeg-d/index.js",
   twitter: "JPEGd_69",
   audit_links: ["https://docs.jpegd.io/other-links/audits"],
+  governanceID: ["snapshot:jpeg’d.eth"],
   listedAt: 1649284165
 },
 {
@@ -4741,7 +4745,8 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "ambire-wallet/index.js",
   twitter: "AmbireWallet",
-  listedAt: 1649359983
+  listedAt: 1649359983,
+  governanceID: ["snapshot:ambire.eth"]
 },
 {
   id: "1625",
@@ -5122,6 +5127,7 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "epns/index.js",
   twitter: "epnsproject",
+  governanceID: ["snapshot:pushdao.eth"],
   listedAt: 1649713407
 },
 {
@@ -8377,6 +8383,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "popcorn/index.js",
   twitter: "Popcorn_DAO",
+  governanceID: ["snapshot:popcorn-snapshot.eth"],
   listedAt: 1653901963
 },
 {
@@ -11227,6 +11234,7 @@ listedAt: 1650804679
   module: "radiant/index.js",
   twitter: "RDNTCapital",
   audit_links: ["https://solidity.finance/audits/RadiantProtocol/"],
+  governanceID: ["snapshot:radiantcapital.eth"],
   listedAt: 1658739357
 },
 {
@@ -13332,6 +13340,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "silo/index.js",
   twitter: "SiloFinance",
+  governanceID: ["snapshot:silofinance.eth"],
   listedAt: 1661433529
 },
 {
@@ -14101,7 +14110,8 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "swivel/index.js",
   twitter: "SwivelFinance",
-  listedAt: 1662283597
+  listedAt: 1662283597,
+  governanceID: ["snapshot:swiveldao.eth"]
 },
 {
   id: "2056",
@@ -15443,6 +15453,7 @@ listedAt: 1650804679
   forkedFrom: [],
   twitter: "0xProject",
   audit_links: ["https://docs.0x.org/developer-resources/audits"],
+  governanceID: ["snapshot:0xgov.eth"],
   listedAt: 1663922935
 },
 {
@@ -20890,6 +20901,7 @@ listedAt: 1650804679
   twitter: "mummyftm", 
   forkedFrom: ["GMX"],
   oracles: [],
+  governanceID: ["snapshot:mmyvote.eth"],
   listedAt: 1671034969
 },
 {

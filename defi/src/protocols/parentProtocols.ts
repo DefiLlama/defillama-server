@@ -17,6 +17,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "aave",
     cmcId: "7278",
     twitter: "AaveAave",
+    governanceID: ["snapshot:aave.eth"]
   },
   {
     id: "Sushi",
@@ -29,6 +30,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6758",
     chains: [],
     twitter: "SushiSwap",
+    governanceID: ["snapshot:sushigov.eth"]
   },
   {
     id: "SUN.io",
@@ -161,6 +163,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "21437",
     chains: [],
     twitter: "mycelium_xyz",
+    governanceID: ["snapshot:tracer.eth"]
   },
   {
     id: "Bancor",
@@ -173,6 +176,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "1727",
     chains: [],
     twitter: "Bancor",
+    governanceID: ["snapshot:bancornetwork.eth"]
   },
   {
     id: "SpiritSwap",
@@ -209,6 +213,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6953",
     chains: [],
     twitter: "fraxfinance",
+    governanceID: ["snapshot:frax.eth"]
   },
   {
     id: "Compound Finance",
@@ -245,6 +250,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "21324",
     chains: [],
     twitter: "redactedcartel",
+    governanceID: ["snapshot:redactedcartel.eth"]
   },
   {
     id: "Tomb Finance",
@@ -293,6 +299,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "12387",
     chains: [],
     twitter: "ribbonfinance",
+    governanceID: ["snapshot:rbn.eth", "snapshot:gauge.rbn.eth"]
   },
   {
     id: "Planet",
@@ -317,6 +324,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8420",
     chains: [],
     twitter: "TheDaoMaker",
+    governanceID: ["snapshot:shomustgoon.eth"]
   },
   {
     id: "Morpho",
@@ -377,6 +385,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "11396",
     chains: [],
     twitter: "traderjoe_xyz",
+    governanceID: ["snapshot:joegovernance.eth"]
   },
   {
     id: "handle finance",
@@ -425,6 +434,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "7083",
     chains: [],
     twitter: "Uniswap",
+    governanceID: ["snapshot:uniswap"]
   },
   {
     id: "Tetu",
@@ -437,6 +447,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "12452",
     chains: [],
     twitter: "tetu_io",
+    governanceID: ["snapshot:tetu.eth"]
   },
   {
     id: "Pando",

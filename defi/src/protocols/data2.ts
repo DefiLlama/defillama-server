@@ -23628,7 +23628,7 @@ listedAt: 1650804679
 },
 {
   id: "2482",
-  name: "citaDAO",
+  name: "CitaDAO",
   address: "0x3541A5C1b04AdABA0B83F161747815cd7B1516bC",
   symbol: "KNIGHT",
   url: "https://citadao.io",

@@ -1,27 +1,21 @@
 import protocols, { Protocol } from "./data";
 import { baseIconsUrl } from "../constants";
+import { importAdapter, importTreasuryAdapter } from "../cli/utils/importAdapter";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
 const fs = require("fs");
 
-const protocolsThatCantBeImported: string[] = []
-async function importProtocol(protocol: Protocol) {
-  if (protocolsThatCantBeImported.includes(protocol.name)) {
-    return {}
-  } else {
-    return import("@defillama/adapters/projects/" + protocol.module);
-  }
-}
-
 test("all the dynamic imports work", async () => {
-  for (const protocol of protocols) {
-    await importProtocol(protocol)
-  }
+  await Promise.all(protocols.map(importAdapter))
+  await Promise.all(protocols.map(p => {
+    if (!p.treasury) return;
+    return importTreasuryAdapter(p)
+  }))
 });
 
 const ignored = ['default', 'staking', 'pool2', 'treasury', "hallmarks", "borrowed", "ownTokens"]
 test("all chains are on chainMap", async () => {
   for (const protocol of protocols) {
-    const module = await importProtocol(protocol)
+    const module = await importAdapter(protocol)
     Object.entries(module).map(entry => {
       if (!ignored.includes(entry[0]) && typeof entry[1] === "object") {
         const chain = getChainDisplayName(entry[0], true)
@@ -42,7 +36,7 @@ test("all chains are on chainMap", async () => {
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
     if (protocol.module === 'dummy.js') continue;
-    const module = await importProtocol(protocol)
+    const module = await importAdapter(protocol)
     const chains = protocol.module.includes("volumes/") ? Object.keys(module) : protocol.chains.map((chain) => normalizeChain(chain));
     if (chains.length > 1) {
       chains.forEach((chain) => {

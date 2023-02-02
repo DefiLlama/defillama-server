@@ -22,6 +22,7 @@ export interface Protocol {
     listedAt?: number;
     openSource?: boolean;
     parentProtocol?: string;
+    treasury?: string;
     referralUrl?: string;
     governanceID?: Array<string>
   }

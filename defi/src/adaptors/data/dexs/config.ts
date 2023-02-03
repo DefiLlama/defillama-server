@@ -777,5 +777,8 @@ export default {
     },
     "plenty": {
         enabled: true
+    },
+    "jediswap": {
+        enabled: true
     }
 } as AdaptorsConfig

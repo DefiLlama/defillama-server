@@ -1185,8 +1185,14 @@
     "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
       "name": "TokemakWethPool",
       "decimals": "18",
-      "symbol": "tWETH",
+      "symbol": "ETH",
       "to": "ethereum:0x0000000000000000000000000000000000000000"
+    },
+    "0xdad33e12e61dc2f2692f2c12e6303b5ade7277ba": {
+      "name": "Brewlabs",
+      "decimals": "9",
+      "symbol": "BREWLABS",
+      "to": "coingecko#brewlabs"
     },
     "0x94671a3cee8c7a12ea72602978d1bb84e920efb2": {
       "name": "TokemaktFRAX",

@@ -64,6 +64,7 @@
     "@supercharge/promise-pool": "^2.3.2",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",
+    "chartjs-node-canvas": "^4.1.5",
     "dotenv": "^16.0.1",
     "ethers": "^5.7.2",
     "mysql2": "^2.3.3",

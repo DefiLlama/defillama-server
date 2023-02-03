@@ -23895,5 +23895,28 @@ listedAt: 1650804679
   forkedFrom: ["Solidex"],
   listedAt: 1675424331
 },
+{
+  id: "2493",
+  name: "Brewlabs",
+  address: "bsc:0x6aac56305825f712fd44599e59f2ede51d42c3e7",
+  symbol: "BREWLABS",
+  url: "https://brewlabs.info/",
+  description:
+    "Brewlabs offers individuals the opportunity to bring their cryptocurrency ideas to life through smart contract engineering, dapp/web3 development, auditing and launch. Brewlabs offers a suite of tools and DeFI products routing fee revenue back to buy back the BREWLABS token through an innovating treasury buy back model",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/brewlabs.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "brewlabs",
+  cmcId: "16405",
+  category: "Yield",
+  chains: ["Ethereum", "Binance", "Polygon"],
+  module: "brewlabs/index.js",
+  twitter: "TeamBrewlabs",
+  oracles: [],
+  forkedFrom: ["Solidex"],
+  audit_links: ["https://www.certik.com/projects/brewlabs"],
+  listedAt: 1675453646
+},
 ]
 export default data2;

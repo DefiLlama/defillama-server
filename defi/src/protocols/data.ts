@@ -2851,7 +2851,7 @@ const data: Protocol[] = [
     gecko_id: "jarvis-reward-token",
     cmcId: "5187",
     category: "Derivatives",
-    chains: ["Ethereum", "Polygon"],
+    chains: ["Polygon", "Avalanche", "xDai", "Binance", "Optimism"],
     module: "jarvis/index.js",
     twitter: "Jarvis_Network",
     audit_links: ["https://drive.google.com/file/d/1PdmrOKDV-udArVJu6E2rKUsCm9gPuN2p/view"],

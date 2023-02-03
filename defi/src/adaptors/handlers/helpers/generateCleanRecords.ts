@@ -1,12 +1,9 @@
-import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
-import { formatTimestampAsDate } from "../../../utils/date"
 import { IJSON } from "../../data/types"
 import { AdaptorRecord, IRecordAdaptorRecordData } from "../../db-utils/adaptor-record"
 import { formatChainKey } from "../../utils/getAllChainsFromAdaptors"
-import { sendDiscordAlert } from "../../utils/notify"
-import { calcNdChange } from "../../utils/volumeCalcs"
+import { sumAllVolumes } from "../../utils/volumeCalcs"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
-import { convertDataToUSD, IGetHistoricalPricesResponse } from "./convertRecordDataCurrency"
+import { convertDataToUSD } from "./convertRecordDataCurrency"
 
 /**
  * Returns a normalized list of adaptor records.
@@ -14,6 +11,7 @@ import { convertDataToUSD, IGetHistoricalPricesResponse } from "./convertRecordD
  */
 
 export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
+    const currentTimestamp = Math.trunc(Date.now() / 1000)
     const spikesLogs: string[] = []
     const chains = chainsRaw.map(formatChainKey)
     const chainFilter = chainFilterRaw ? formatChainKey(chainFilterRaw) : undefined
@@ -30,11 +28,16 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         const generatedData = {} as IRecordAdaptorRecordData
         // Get current timestamp we are working with
         let timestamp = cleanRecord?.timestamp
+        if (timestamp && (timestamp > currentTimestamp)) {
+            console.error("Timestamp in miliseconds or in the future has been found! Please check what's wrong...", timestamp, adaptorRecord)
+            return acc
+        }
         if (!timestamp) {
             const all = Object.values(acc.lastDataRecord)
             if (all.length === 0 || !all[0]) return acc
             timestamp = all[0].timestamp + ONE_DAY_IN_SECONDS
         }
+        const missingDayData: IJSON<IRecordAdaptorRecordData> = {} as IJSON<IRecordAdaptorRecordData>
         // It goes through all combinations of chain-protocol
         chains.reduce((acc, chain) => ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[]).forEach(chainProt => {
             const chain = chainProt.split("#")[0]
@@ -46,13 +49,13 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 return
             }
             // Checking if we skipped a day with no record
-            const missingDayData: IJSON<IRecordAdaptorRecordData> = {} as IJSON<IRecordAdaptorRecordData>
             Object.entries(acc.lastDataRecord).forEach(async ([chainprot, record]) => {
                 const [chain, prot] = chainprot.split("#")
                 if (!timestamp || !record) return
+                const recordData = record.data?.[chain]
+                if (!recordData || !Object.keys(recordData).includes(prot)) return
                 const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
                 for (let i = 1; i < gaps; i++) {
-                    const recordData = record.data?.[chain]
                     const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
                     missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))] = {
                         ...missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))],
@@ -63,19 +66,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                     }
                 }
             })
-            // If day with no record skipped, filling with prev day
-            Object.entries(missingDayData).forEach(([timestamp, data]) => {
-                // TODO: imporove message + process in another lambda
-                // spikesLogs.push(`Missing day found: ${formatTimestampAsDate(timestamp)}\n. Pls fix it`)
-                const missingDay = new AdaptorRecord(
-                    type,
-                    adaptorId,
-                    +timestamp,
-                    data
-                )
-                acc.adaptorRecords.push(missingDay)
-                acc.recordsMap[String(missingDay.timestamp)] = missingDay
-            })
+
             // If clean data is found, it checks if there's available value for chain-protocol and adds it to generatedData
             if (cleanRecord !== null && cleanRecord.data[chain]) {
                 const chainData = cleanRecord.data[chain]
@@ -87,9 +78,6 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                         ...(typeof genChainData === "number" ? undefined : genChainData), // this check is needed to avoid ts errors, but should never be number
                         [protocol]: chainData[protocol]
                     }
-                    if (lastRecord && lastRecord.timestamp != cleanRecord.timestamp) {
-                        acc.lastDataRecord[chainProt] = cleanRecord
-                    }
                     return
                 }
             }
@@ -99,7 +87,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 // Resets nextRecord
                 acc.nextDataRecord[chainProt] = undefined
                 nextRecord = acc.nextDataRecord[chainProt]
-                // Note, limited the lookup to up to next 100
+                // Note, limited the lookup to up maxGaps2Cover
                 for (let i = currentIndex; i < Math.min((array.length - 1), 100); i++) {
                     const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
                     const protDataChain = cR?.data[chain]
@@ -129,9 +117,20 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             }
         })
 
+        // If day with no record skipped, filling with prev day
+        Object.entries(missingDayData).forEach(([timestamp, data]) => {
+            const missingDay = new AdaptorRecord(
+                type,
+                adaptorId,
+                +timestamp,
+                data
+            )
+            acc.adaptorRecords.push(missingDay)
+            acc.recordsMap[String(missingDay.timestamp)] = missingDay
+        })
+
         // Once we have generated correct data
         if (Object.keys(generatedData).length === 0) return acc
-        // Check if this data is an spiiike
         const newGen = new AdaptorRecord(
             type,
             adaptorId,
@@ -139,9 +138,13 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             await convertDataToUSD(generatedData, timestamp)
         )
 
-        checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
+        if (timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
+            checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
 
-        acc.lastDataRecord = chains.reduce((acc, chain) => ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[]).reduce((acc, chainProt) => ({ ...acc, [chainProt]: newGen }), {})
+        acc.lastDataRecord = chains
+            .reduce((acc, chain) =>
+                ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[])
+            .reduce((acc, chainProt) => ({ ...acc, [chainProt]: newGen }), {})
         acc.adaptorRecords.push(newGen)
         acc.recordsMap[String(newGen.timestamp)] = newGen
         return acc
@@ -164,46 +167,25 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
 }
 
 function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: AdaptorRecord, spikesLogs: string[]) {
-    Object.entries(lastDataRecord).forEach(([key, record]) => {
-        const [chain, protocol] = key.split('#')
-        const chainData = newGen.data[chain]
-        if (chain && protocol && chainData && typeof chainData !== 'number' && chainData[protocol] && record) {
-            const recordChainData = record.data[chain]
-            if (!recordChainData || typeof recordChainData === 'number') return
-            const chg1d = calcNdChange({
-                [record.timestamp.toString()]: new AdaptorRecord(
-                    newGen.type,
-                    newGen.adaptorId,
-                    record.timestamp,
-                    {
-                        [chain]: {
-                            [protocol]: recordChainData[protocol]
-                        }
-                    }
-                ),
-                [newGen.timestamp.toString()]: new AdaptorRecord(
-                    newGen.type,
-                    newGen.adaptorId,
-                    newGen.timestamp,
-                    {
-                        [chain]: {
-                            [protocol]: chainData[protocol]
-                        }
-                    }
-                )
-            }, 1, newGen.timestamp)
-            if (chg1d && chg1d > 1000 && chainData[protocol] > 10000000) {
-                spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
-                const okChainData = newGen.data[chain]
-                if (okChainData && typeof okChainData !== 'number')
-                    newGen.data = {
-                        ...newGen.data,
-                        [chain]: {
-                            ...okChainData,
-                            [protocol]: recordChainData[protocol]
-                        }
-                    }
+    const current = sumAllVolumes(newGen.data)
+    const prevObj = Object.entries(lastDataRecord).reduce((acc, [chainprot, record]) => {
+        const [chain, prot] = chainprot.split("#")
+        if (!record) return acc
+        const accChain = acc[chain]
+        const recordChain = record.data[chain]
+        if (!recordChain || typeof recordChain === 'number') return acc
+        return {
+            ...acc,
+            [chain]: {
+                ...(typeof accChain === 'number' ? undefined : accChain),
+                [prot]: recordChain[prot],
             }
         }
-    })
+    }, {} as IRecordAdaptorRecordData)
+    const prev = sumAllVolumes(prevObj)
+    const chg1d = Math.abs((current - prev) / prev) * 100
+    if (chg1d && chg1d > 10000 && current > 10000000) {
+        spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
+        newGen.data = prevObj
+    }
 }

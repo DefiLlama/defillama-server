@@ -43,9 +43,6 @@ export default {
     "gmx": {
         enabled: true
     },
-    "index": {
-        enabled: true
-    },
     "lido": {
         enabled: true
     },
@@ -276,6 +273,30 @@ export default {
         enabled: true
     },
     "hegic": {
+        enabled: true
+    },
+    "el-dorado-exchange": {
+        enabled: true
+    },
+    "gearbox": {
+        enabled: true
+    },
+    "predy-finance": {
+        enabled: true
+    },
+    "verse": {
+        enabled: true
+    },
+    "level-finance": {
+        enabled: true
+    },
+    "blur": {
+        enabled: true
+    },
+    "solidlydex": {
+        enabled: true
+    },
+    "archly-finance": {
         enabled: true
     }
 } as AdaptorsConfig

@@ -10,10 +10,10 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const tokens4626 = tokens
     .filter(({ type }) => type === "YIELD_BEARING_SHARE")
     .map(({ address }) => address);
-  return await unwrap4262(chain, tokens4626, timestamp, "mean-finance");
+  return await unwrap4626(chain, tokens4626, timestamp, "mean-finance");
 }
 
-export async function unwrap4262(
+export async function unwrap4626(
   chain: string,
   tokens: string[],
   timestamp: number,

@@ -1,12 +1,13 @@
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../../utils/date"
 import { DimensionRules } from "../../data"
+import { getConfigByType } from "../../data/configs"
 import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
 import { sendDiscordAlert } from "../../utils/notify"
 import { calcNdChange, getStatsByProtocolVersion, getWoWStats, sumAllVolumes } from "../../utils/volumeCalcs"
-import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverview"
+import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
 
@@ -18,6 +19,7 @@ import generateCleanRecords from "./generateCleanRecords"
  */
 
 export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
+    console.info("Generating summary for:", adapter.name, "with params", adaptorRecordType, adaptorType, chainFilter)
     try {
         // Get all records from db
         let adaptorRecords = await getAdaptorRecord(adapter.id, adaptorRecordType, adapter.protocolType)
@@ -33,7 +35,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const extraTypes: IJSON<number | null> = {}
         const extraTypesByProtocolVersion: IJSON<IJSON<number | null>> = {}
         for (const recordType of getExtraTypes(adaptorType)) {
-            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "LAST").catch(_e => { }) as AdaptorRecord | undefined
+            const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
             if (AdaptorRecordTypeMapReverse[recordType]) {
                 extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
@@ -47,27 +49,26 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             }
         }
 
-        const startTimestamp = adapter.config?.startFrom
+        const startTimestamp = getConfigByType(adaptorType, adapter.module)?.startFrom
         const startIndex = startTimestamp ? adaptorRecords.findIndex(ar => ar.timestamp === startTimestamp) : -1
         adaptorRecords = adaptorRecords.slice(startIndex + 1)
 
         let protocolsKeys = [adapter.module]
         if (adapter.protocolsData) {
             protocolsKeys = Object.keys(adapter.protocolsData).filter(protKey => {
-                return adapter.config?.protocolsData?.[protKey].enabled ?? true
+                return getConfigByType(adaptorType, adapter.module)?.protocolsData?.[protKey].enabled ?? true
             })
         }
         // Clean data by chain
+        console.info("Cleaning records", adapter.name, adapter.id, adapter.module)
         const cleanRecords = await generateCleanRecords(
             adaptorRecords,
             adapter.chains,
             protocolsKeys,
             chainFilter
         )
+        console.info("Cleaning records OK", adapter.name, adapter.id, adapter.module)
 
-        for (const spikeMSG of cleanRecords.spikesLogs) {
-            await sendDiscordAlert(spikeMSG, adaptorType)
-        }
 
         adaptorRecords = cleanRecords.cleanRecordsArr
         if (adaptorRecords.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
@@ -81,7 +82,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
                 ? getProtocolVersionStats(adapter, adaptorRecords, lastAvailableDataTimestamp, chainFilter, extraTypesByProtocolVersion)
                 : null
 
-        if (yesterdaysCleanTimestamp !== lastAvailableDataTimestamp) {
+        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp) {
             if (onError) onError(new Error(`
 Adapter: ${adapter.name} [${adapter.id}]
 ${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated
@@ -121,6 +122,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             }
 
         return {
+            spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined,
             name: adapter.name,
             disabled: adapter.disabled,
             displayName: adapter.displayName,
@@ -139,7 +141,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             total30d: adapter.disabled ? null : stats.total30d,
             totalAllTime: totalRecord ? sumAllVolumes(totalRecord.data) : null,
             breakdown24h: adapter.disabled ? null : stats.breakdown24h,
-            config: adapter.config,
+            config: getConfigByType(adaptorType, adapter.module),
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolsStats: protocolVersions,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
@@ -153,11 +155,12 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
         // TODO: handle better errors
         if (onError) onError(error as Error)
         return {
+            spikes: undefined,
             name: adapter.name,
             module: adapter.module,
             disabled: adapter.disabled,
             displayName: adapter.displayName,
-            config: adapter.config,
+            config: getConfigByType(adaptorType, adapter.module),
             category: adapter.category,
             logo: adapter.logo,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,

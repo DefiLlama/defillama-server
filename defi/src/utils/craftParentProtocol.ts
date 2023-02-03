@@ -1,8 +1,9 @@
 import type { IParentProtocol } from "../protocols/types";
 import protocols from "../protocols/data";
 import { errorResponse } from "./shared";
-import craftProtocol from "./craftProtocol";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
+import sluggify from "./sluggify";
+import fetch from "node-fetch";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -38,12 +39,16 @@ interface ICombinedTvls {
   };
 }
 
-export default async function craftParentProtocol(
-  parentProtocol: IParentProtocol,
-  useNewChainNames: boolean,
-  useHourlyData: boolean,
-  skipAggregatedTvl: boolean
-) {
+export default async function craftParentProtocol({
+  parentProtocol,
+  useHourlyData,
+  skipAggregatedTvl,
+}: {
+  parentProtocol: IParentProtocol;
+  useNewChainNames: boolean;
+  useHourlyData: boolean;
+  skipAggregatedTvl: boolean;
+}) {
   const childProtocols = protocols.filter((protocol) => protocol.parentProtocol === parentProtocol.id);
 
   if (childProtocols.length < 1 || childProtocols.map((p) => p.name).includes(parentProtocol.name)) {
@@ -52,13 +57,15 @@ export default async function craftParentProtocol(
     });
   }
 
-  const childProtocolsTvls = await Promise.all(
-    childProtocols.map(async (c) => await craftProtocol(c, useNewChainNames, useHourlyData, false, true))
+  const PROTOCOL_API = useHourlyData ? "https://api.llama.fi/hourly" : "https://api.llama.fi/updatedProtocol";
+
+  const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(
+    childProtocols.map((protocolData) => fetch(`${PROTOCOL_API}/${sluggify(protocolData)}`).then((res) => res.json()))
   );
 
   const hourlyChildProtocols = childProtocolsTvls.reduce((acc, curr) => (acc += curr.tvl.length <= 7 ? 1 : 0), 0);
 
-  const { currentChainTvls, chainTvls } = childProtocolsTvls.reduce<ICombinedTvls>(
+  const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls.reduce<ICombinedTvls>(
     (acc, curr) => {
       // skip adding hourly tvls if child protocol is a newly listed protocol, and parent protocol has other children with more tvl values
       if (hourlyChildProtocols !== childProtocolsTvls.length && curr.tvl.length <= 7) {
@@ -91,9 +98,9 @@ export default async function craftParentProtocol(
           }
 
           if (index > curr.chainTvls[chain].tvl!.length - hourlyIndexStartingIndex && !acc.chainTvls[chain].tvl[date]) {
-            const prevDate = curr.chainTvls[chain].tvl[index - 1].date;
+            const prevDate = curr.chainTvls[chain].tvl[index - 1]?.date;
 
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+            if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
               for (
                 let i = prevDate + 1;
                 i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -127,9 +134,9 @@ export default async function craftParentProtocol(
             index > curr.chainTvls[chain].tokensInUsd!.length - hourlyIndexStartingIndex &&
             !acc.chainTvls[chain].tokensInUsd[date]
           ) {
-            const prevDate = curr.chainTvls[chain].tokensInUsd![index - 1].date;
+            const prevDate = curr.chainTvls[chain].tokensInUsd![index - 1]?.date;
 
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+            if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
               for (
                 let i = prevDate + 1;
                 i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -167,9 +174,9 @@ export default async function craftParentProtocol(
             index > curr.chainTvls[chain].tokens!.length - hourlyIndexStartingIndex &&
             !acc.chainTvls[chain].tokens[date]
           ) {
-            const prevDate = curr.chainTvls[chain].tokens![index - 1].date;
+            const prevDate = curr.chainTvls[chain].tokens![index - 1]?.date;
 
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+            if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
               for (
                 let i = prevDate + 1;
                 i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -199,9 +206,9 @@ export default async function craftParentProtocol(
             let nearestDate = date;
 
             if (index > curr.tokensInUsd!.length - hourlyIndexStartingIndex && !acc.tokensInUsd[date]) {
-              const prevDate = curr.tokensInUsd![index - 1].date;
+              const prevDate = curr.tokensInUsd![index - 1]?.date;
 
-              if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
                 for (
                   let i = prevDate + 1;
                   i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -229,9 +236,9 @@ export default async function craftParentProtocol(
             let nearestDate = date;
 
             if (index > curr.tokens!.length - hourlyIndexStartingIndex && !acc.tokens[date]) {
-              const prevDate = curr.tokens![index - 1].date;
+              const prevDate = curr.tokens![index - 1]?.date;
 
-              if (new Date(prevDate * 1000).getUTCHours() === 0) {
+              if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
                 for (
                   let i = prevDate + 1;
                   i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -258,10 +265,10 @@ export default async function craftParentProtocol(
           let nearestDate = date;
 
           if (index > curr.tvl.length - hourlyIndexStartingIndex && !acc.tvl[date]) {
-            const prevDate = curr.tvl[index - 1].date;
+            const prevDate = curr.tvl[index - 1]?.date;
 
             // change latest timestamp only if prev value's timestamp is at UTC 00:00 and date is same as nearest date
-            if (new Date(prevDate * 1000).getUTCHours() === 0) {
+            if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
               for (
                 let i = prevDate + 1;
                 i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
@@ -320,13 +327,34 @@ export default async function craftParentProtocol(
     };
   }
 
+  //  FORMAT NO.OF TOKENS BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
+  const formattedTokens: ITokens = [];
+  for (const date in tokens) {
+    formattedTokens.push({ date: Number(date), tokens: tokens[date] });
+  }
+
+  //  FORMAT TOTAL TOKENS VALUE IN USD BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
+  const formattedTokensInUsd: ITokens = [];
+  for (const date in tokensInUsd) {
+    formattedTokensInUsd.push({
+      date: Number(date),
+      tokens: tokensInUsd[date],
+    });
+  }
+
+  // FORMAT TVL BY DATE TO MATCH TYPE AS IN NORMAL PROTOCOL RESPONSE
+  const formattedTvl = Object.entries(tvl).map(([date, totalLiquidityUSD]) => ({
+    date: Number(date),
+    totalLiquidityUSD,
+  }));
+
   const response: IProtocolResponse = {
     ...parentProtocol,
     currentChainTvls,
     chainTvls: formattedChainTvls,
-    tokens: [],
-    tokensInUsd: [],
-    tvl: [],
+    tokens: formattedTokens,
+    tokensInUsd: formattedTokensInUsd,
+    tvl: formattedTvl,
     isParentProtocol: true,
     raises: childProtocolsTvls?.reduce((acc, curr) => {
       acc = [...acc, ...(curr.raises || [])];

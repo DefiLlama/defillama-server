@@ -202,18 +202,17 @@ functions:
   triggerHourlyFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
     events:
-      - schedule: cron(0 * * * ? *) # Hourly
+      - schedule: cron(0 0,12 * * ? *) # every 12 hours
   fetchHourlyCoingeckoData:
     handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
     timeout: 900
   storeDefiCoins:
     handler: src/storeCoins.default
     timeout: 900
-    memorySize: 10240
+    memorySize: 1024
   triggerStoreDefiCoins:
     handler: src/triggerStoreCoins.default
     timeout: 900
-    memorySize: 10240
     events:
       - schedule: cron(0 * * * ? *) # Hourly
 

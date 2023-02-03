@@ -7,7 +7,7 @@ import { IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { IChartData, IChartDataBreakdown, sumAllVolumes } from "../../utils/volumeCalcs";
-import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../getOverview";
+import { DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../getOverviewProcess";
 
 export interface ChartItem {
     data: IRecordAdaptorRecordData;
@@ -71,7 +71,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
 
     if (!dexData) return notFoundResponse({
         message: `${adaptorType[0].toUpperCase()}${adaptorType.slice(1)} for ${protocolName} not found, please visit /overview/${adaptorType} to see available protocols`
-    }, 10*60)
+    }, 10 * 60)
     let dexDataResponse = {}
     try {
         const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)

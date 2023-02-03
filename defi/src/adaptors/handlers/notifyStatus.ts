@@ -1,4 +1,4 @@
-import { handler } from "./getOverview";
+import { handler } from "./getOverviewProcess";
 import { APIGatewayProxyEvent } from "aws-lambda";
 import { sendDiscordAlert } from "../utils/notify";
 import { autoBackfill } from "../cli/backfillUtilities/backfillFunction";
@@ -21,7 +21,7 @@ export default async (event: { type: string }) => {
             notIncluded.push(prot)
         }
     }
-    if (errorsArr.length > 0) {
+    if (errorsArr && errorsArr.length > 0) {
         await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying...`, event.type)
         await autoBackfill(['', '', event.type, 'all'])
     }
@@ -29,7 +29,7 @@ export default async (event: { type: string }) => {
         await sendDiscordAlert(`Looks like all good`, event.type)
     }
     if (notIncluded.length > 0)
-        await sendDiscordAlert(`The following protocols haven't been included in the response ${notIncluded.join(", ")} <@!983314132411482143>`, event.type, false)
+        await sendDiscordAlert(`The following protocols haven't been included in the response: ${notIncluded.join(", ")} <@!983314132411482143>`, event.type, false)
     else
         await sendDiscordAlert(`All protocols has been ranked <@!983314132411482143>`, event.type, false)
     return

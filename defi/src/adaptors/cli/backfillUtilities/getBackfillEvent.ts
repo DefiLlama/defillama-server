@@ -7,7 +7,7 @@ import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 import { getAdaptorRecord, AdaptorRecordType, AdaptorRecord } from "../../db-utils/adaptor-record"
 import getDataPoints from "../../utils/getDataPoints"
 import { getUniqStartOfTodayTimestamp } from "@defillama/dimension-adapters/helpers/getUniSubgraphVolume"
-import { removeEventTimestampAttribute } from "../../handlers/getOverview"
+import { removeEventTimestampAttribute } from "../../handlers/getOverviewProcess"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { ONE_DAY_IN_SECONDS } from "../../handlers/getProtocol"
 import { ICliArgs } from "./backfillFunction"

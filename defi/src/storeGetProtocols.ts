@@ -1,11 +1,11 @@
 import { craftProtocolsResponse } from "./getProtocols";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from "zlib";
 import { getProtocolTvl } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
+import { storeR2 } from "./utils/r2";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -79,7 +79,7 @@ const handler = async (_event: any) => {
       parentProtocols,
     })
   );
-  await store("lite/protocols2", compressedV2Response, true);
+  await storeR2("lite/protocols2", compressedV2Response, true);
 };
 
 export default wrapScheduledLambda(handler);

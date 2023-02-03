@@ -29,7 +29,7 @@ The previous commands will run the backfill in the cloud. If you would like to r
 
 - Finally, you should enable the protocol in `src/adaptor/data/<type>/config.ts`
 
-> If the flag `runAtCurrTime` is set to true in the adapter, you won't be able to backfill but by doing the first step (export the adapter) and the last step (enable the dex in `config.ts`) it should show up the next day after the scheduled job stores the daily volume of all adapters (daily at 00:00:01 UTC).
+> If the flag `runAtCurrTime` is set to true in the adapter, you won't be able to backfill but by doing the first step (export the adapter) and the last step (enable the protoxol in `config.ts`) it should show up the next day after the scheduled job stores the daily volume of all adapters (daily at 00:00:01 UTC).
 
 ### Improvements
 - Currently is not posible to backfill a sigle chain so it will rewrite previous chains when backfilling a new one. This can be manually avoided but ideally should be changed the backfill script to allow backfilling a single chain.

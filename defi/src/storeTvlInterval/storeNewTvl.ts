@@ -111,7 +111,8 @@ export default async function (
       if (
         timeElapsed < (timeLimitDisableHours * HOUR) &&
         lastHourlyTVL * 5 < currentTvl &&
-        calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl
+        calculateTVLWithAllExtraSections(tvlToCompareAgainst) * 5 < currentTvl &&
+        currentTvl > 1e6
       ) {
         const errorMessage = `TVL for ${protocol.name} has 5x (${change}) within one hour. It's been disabled but will be automatically re-enabled in ${(timeLimitDisableHours - timeElapsed/HOUR).toFixed(2)} hours`
         if(timeElapsed > (5 * HOUR)){

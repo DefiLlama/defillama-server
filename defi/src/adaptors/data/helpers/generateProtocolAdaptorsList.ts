@@ -8,7 +8,7 @@ import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalize
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
 import { getMethodologyByType } from "./methodology";
-import overrides, { chainOverrides } from "./overrides";
+import overrides, { chainOverrides, IOverrides } from "./overrides";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -32,20 +32,23 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
 export type IImportsMap = IJSON<IImportObj>
 
 // This could be much more efficient
-export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdaptor[] =>
+export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] =>
     Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = data
-        let overridesObj = overrides
+        let overridesObj = overrides(type)
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
             overridesObj = chainOverrides
             list = chainData
         }
-        const dexFoundInProtocols = list.find(dexP => {
-            return getBySpecificId(adapterKey, dexP.id) && (dexP.name.toLowerCase()?.includes(adapterKey)
-                || sluggifyString(dexP.name)?.includes(adapterKey)
-                || dexP.gecko_id?.includes(adapterKey)
-                || dexP.module?.split("/")[0]?.includes(adapterKey))
-        })
+        let dexFoundInProtocols = list.find(dexP => getBySpecificId(adapterKey, dexP.id))
+        if (!dexFoundInProtocols)
+            dexFoundInProtocols = list.find(dexP => {
+                return dexP.name.toLowerCase()?.includes(adapterKey)
+                    || sluggifyString(dexP.name)?.includes(adapterKey)
+                    || dexP.gecko_id?.includes(adapterKey)
+                    || dexP.module?.split("/")[0]?.includes(adapterKey)
+                    || dexP.logo?.toLocaleLowerCase()?.includes(adapterKey)
+            })
         if (dexFoundInProtocols && imports_obj[adapterKey].module.default) {
             let moduleObject = imports_obj[adapterKey].module.default
             if (config?.[adapterKey]?.protocolsData && 'breakdown' in moduleObject)
@@ -61,16 +64,15 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
             const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
             const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
             const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
-            return {
+            const infoItem = {
                 ...dexFoundInProtocols,
-                ...overridesObj[adapterKey],
                 module: adapterKey,
                 config: config[adapterKey],
                 category: displayCategory,
                 chains: getAllChainsFromAdaptors([adapterKey], moduleObject),
                 disabled: isDisabled(moduleObject),
                 displayName,
-                protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category),
+                protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category, overridesObj),
                 protocolType: adapterObj.module.default?.protocolType,
                 methodologyURL: adapterObj.codePath,
                 methodology: getMethodologyData(
@@ -79,15 +81,17 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig): ProtocolAdapt
                     moduleObject,
                     displayCategory ?? '',
                     childCategories
-                )
+                ),
+                ...overridesObj[adapterKey],
             }
+            return infoItem
         }
         // TODO: Handle better errors
         console.error(`Missing info for ${adapterKey}`)
         return undefined
     }).filter(notUndefined);
 
-function getDisplayCategory(adapter: Adapter, override: typeof overrides[string]) {
+function getDisplayCategory(adapter: Adapter, override: IOverrides[string]) {
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
         const versionName = Object.keys(adapter.breakdown)[0]
         return override?.protocolsData?.[versionName]?.category
@@ -135,5 +139,10 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'penguin') return id === "1575"
     if (key === 'xdai') return id === "1659"
     if (key === 'stargate') return id === "1571"
-    return true
+    if (key === 'thena') return id === "2417"
+    if (key === 'verse') return id === "1732"
+    if (key === 'blur') return id === "2414"
+    if (key === 'solidlydex') return id === "2400"
+    if (key === 'tethys-finance') return id === "1139"
+    return false
 }

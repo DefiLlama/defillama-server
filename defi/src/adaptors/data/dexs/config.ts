@@ -514,7 +514,7 @@ export default {
     "icecreamswap": {
         enabled: true
     },
-    "artic": {
+    "arctic": {
         enabled: true
     },
     "swapsicle": {
@@ -605,7 +605,7 @@ export default {
         enabled: true
     },
     "dexible": {
-        enabled: true
+        enabled: false
     },
     "metatdex": {
         enabled: true
@@ -725,6 +725,48 @@ export default {
         enabled: true
     },
     "darkness": {
+        enabled: true
+    },
+    "zilswap": {
+        enabled: true
+    },
+    "thena": {
+        enabled: true
+    },
+    "ttswap": {
+        enabled: true
+    },
+    "aequinox": {
+        enabled: true
+    },
+    "vexchange": {
+        enabled: true
+    },
+    "metropolis": {
+        enabled: true
+    },
+    "verse": {
+        enabled: true
+    },
+    "equalizer-exchange": {
+        enabled: true
+    },
+    "canto-dex": {
+        enabled: true
+    },
+    "solidlydex": {
+        enabled: true
+    },
+    "defibox": {
+        enabled: true
+    },
+    "shell-protocol": {
+        enabled: true
+    },
+    "archly-finance": {
+        enabled: true
+    },
+    "zyberswap": {
         enabled: true
     }
 } as AdaptorsConfig

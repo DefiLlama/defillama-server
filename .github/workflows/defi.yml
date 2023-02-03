@@ -2,84 +2,88 @@ name: Defi
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   repository_dispatch:
 
 defaults:
   run:
     working-directory: defi
-    
+
 jobs:
   changes:
     runs-on: ubuntu-latest
     outputs:
       defi: ${{ steps.filter.outputs.defi }}
     steps:
-    - uses: actions/checkout@v2
-    - uses: dorny/paths-filter@v2
-      id: filter
-      with:
-        filters: |
-          defi:
-            - 'defi/**'
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            defi:
+              - 'defi/**'
   deploy:
     needs: changes
     if: ${{ needs.changes.outputs.defi == 'true' }}
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: git submodule update --init --recursive
-    - name: Get Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '16'
-    - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
-    - name: Get jest cache
-      uses: actions/cache@v3
-      with:
-        path: /tmp/jest-cache
-        key: ${{ runner.os }}-jest-${{ env.TODAY }}
-    - run: npm ci || npm i
-    - run: cd DefiLlama-Adapters && git checkout main && git pull
-    - run: cd dimension-adapters && git checkout master && git pull
-    - name: Run tests
-      run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
-      env:
-        ETHEREUM_RPC: ETHEREUM_RPC
-    - name: Deploy infrastructure stack
-      run: npm run deploy:prod
-      env:
-        ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
-        POLYGON_RPC: ${{ secrets.POLYGON_RPC }}
-        BSC_RPC: ${{ secrets.BSC_RPC }}
-        FANTOM_RPC: ${{ secrets.FANTOM_RPC }}
-        ARBITRUM_RPC: ${{ secrets.ARBITRUM_RPC }}
-        OPTIMISM_RPC: ${{ secrets.OPTIMISM_RPC }}
-        XDAI_RPC: ${{ secrets.XDAI_RPC }}
-        HARMONY_RPC: ${{ secrets.HARMONY_RPC }}
-        SOLANA_RPC: ${{ secrets.SOLANA_RPC }}
-        MOONRIVER_RPC: ${{ secrets.MOONRIVER_RPC }}
-        CRONOS_RPC: ${{ secrets.CRONOS_RPC }}
-        OUTDATED_WEBHOOK: ${{ secrets.OUTDATED_WEBHOOK }}
-        HOURLY_OUTDATED_WEBHOOK: ${{ secrets.HOURLY_OUTDATED_WEBHOOK }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        SPIKE_WEBHOOK: ${{ secrets.SPIKE_WEBHOOK }}
-        CLOUDWATCH_WEBHOOK_URL: ${{ secrets.CLOUDWATCH_WEBHOOK_URL }}
-        DROPS_WEBHOOK: ${{ secrets.DROPS_WEBHOOK }}
-        EULER_MONGODB_APIKEY: ${{ secrets.EULER_MONGODB_APIKEY }}
-        INFLUXDB_TOKEN: ${{ secrets.INFLUXDB_TOKEN }}
-        FATHOM_SECRET: ${{ secrets.FATHOM_SECRET }}
-        DAILY_GROWTH_WEBHOOK: ${{ secrets.DAILY_GROWTH_WEBHOOK }}
-        MONITOR_WEBHOOK: ${{ secrets.MONITOR_WEBHOOK }}
-        STALE_COINS_ADAPTERS_WEBHOOK: ${{ secrets.STALE_COINS_ADAPTERS_WEBHOOK }}
-        TEAM_WEBHOOK: ${{ secrets.TEAM_WEBHOOK }}
-        REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
-        PROD_VYBE_API_KEY: ${{ secrets.PROD_VYBE_API_KEY }}
-        BIT_QUERY_API_KEY: ${{ secrets.BIT_QUERY_API_KEY }}
-        VOLUMES_WEBHOOK: ${{ secrets.VOLUMES_WEBHOOK }}
-        FEES_WEBHOOK: ${{ secrets.FEES_WEBHOOK }}
-        ZEROx_API_KEY: ${{ secrets.ZEROx_API_KEY }}
-        INDEXER_DB: ${{ secrets.INDEXER_DB }}
-        AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        AGGREGATOR_DB_URL: ${{ secrets.AGGREGATOR_DB_URL}}
+      - uses: actions/checkout@v2
+      - run: git submodule update --init --recursive
+      - name: Get Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+      - run: echo "TODAY=$(date +%Y%m%d)" >> $GITHUB_ENV
+      - name: Get jest cache
+        uses: actions/cache@v3
+        with:
+          path: /tmp/jest-cache
+          key: ${{ runner.os }}-jest-${{ env.TODAY }}
+      - run: cd DefiLlama-Adapters && git checkout main && git pull
+      - run: cd dimension-adapters && git checkout master && git pull
+      - run: npm  ci || npm i
+      - name: Run tests
+        run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
+        env:
+          ETHEREUM_RPC: ETHEREUM_RPC
+      - name: Deploy infrastructure stack
+        run: npm run deploy:prod
+        env:
+          ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
+          POLYGON_RPC: ${{ secrets.POLYGON_RPC }}
+          BSC_RPC: ${{ secrets.BSC_RPC }}
+          FANTOM_RPC: ${{ secrets.FANTOM_RPC }}
+          ARBITRUM_RPC: ${{ secrets.ARBITRUM_RPC }}
+          OPTIMISM_RPC: ${{ secrets.OPTIMISM_RPC }}
+          XDAI_RPC: ${{ secrets.XDAI_RPC }}
+          HARMONY_RPC: ${{ secrets.HARMONY_RPC }}
+          SOLANA_RPC: ${{ secrets.SOLANA_RPC }}
+          MOONRIVER_RPC: ${{ secrets.MOONRIVER_RPC }}
+          CRONOS_RPC: ${{ secrets.CRONOS_RPC }}
+          LOFTY_API: ${{ secrets.LOFTY_API }}
+          OUTDATED_WEBHOOK: ${{ secrets.OUTDATED_WEBHOOK }}
+          HOURLY_OUTDATED_WEBHOOK: ${{ secrets.HOURLY_OUTDATED_WEBHOOK }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SPIKE_WEBHOOK: ${{ secrets.SPIKE_WEBHOOK }}
+          CLOUDWATCH_WEBHOOK_URL: ${{ secrets.CLOUDWATCH_WEBHOOK_URL }}
+          DROPS_WEBHOOK: ${{ secrets.DROPS_WEBHOOK }}
+          EULER_MONGODB_APIKEY: ${{ secrets.EULER_MONGODB_APIKEY }}
+          INFLUXDB_TOKEN: ${{ secrets.INFLUXDB_TOKEN }}
+          FATHOM_SECRET: ${{ secrets.FATHOM_SECRET }}
+          DAILY_GROWTH_WEBHOOK: ${{ secrets.DAILY_GROWTH_WEBHOOK }}
+          MONITOR_WEBHOOK: ${{ secrets.MONITOR_WEBHOOK }}
+          STALE_COINS_ADAPTERS_WEBHOOK: ${{ secrets.STALE_COINS_ADAPTERS_WEBHOOK }}
+          TEAM_WEBHOOK: ${{ secrets.TEAM_WEBHOOK }}
+          PROD_VYBE_API_KEY: ${{ secrets.PROD_VYBE_API_KEY }}
+          BIT_QUERY_API_KEY: ${{ secrets.BIT_QUERY_API_KEY }}
+          VOLUMES_WEBHOOK: ${{ secrets.VOLUMES_WEBHOOK }}
+          FEES_WEBHOOK: ${{ secrets.FEES_WEBHOOK }}
+          ZEROx_API_KEY: ${{ secrets.ZEROx_API_KEY }}
+          INDEXER_DB: ${{ secrets.INDEXER_DB }}
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AGGREGATOR_DB_URL: ${{ secrets.AGGREGATOR_DB_URL }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          INDEXA_DB: ${{ secrets.INDEXA_DB }}

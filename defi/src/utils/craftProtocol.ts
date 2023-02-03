@@ -16,6 +16,7 @@ import type { IProtocolResponse, IRaise } from "../types";
 import parentProtocols from "../protocols/parentProtocols";
 import fetch from "node-fetch";
 import { convertSymbols } from "./symbols/convert";
+import { getAvailableMetricsByModule } from "../adaptors/data/configs";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (typeof balances === "object") {
@@ -46,13 +47,21 @@ function selectChainFromItem(item: any, normalizedChain: string) {
   return item[normalizedChain] ?? item[altChainName];
 }
 
-export default async function craftProtocol(
-  protocolData: Protocol,
-  useNewChainNames: boolean,
-  useHourlyData: boolean,
-  skipReplaceLast: boolean,
-  skipAggregatedTvl: boolean
-) {
+const raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json())
+
+export default async function craftProtocol({
+  protocolData,
+  useNewChainNames,
+  useHourlyData,
+  skipAggregatedTvl,
+}: {
+  protocolData: Protocol;
+  useNewChainNames: boolean;
+  useHourlyData: boolean;
+  skipAggregatedTvl: boolean;
+}) {
+  const module = await importAdapter(protocolData);
+  const misrepresentedTokens = module.misrepresentedTokens === true;
   const [
     lastUsdHourlyRecord,
     lastUsdTokenHourlyRecord,
@@ -60,24 +69,28 @@ export default async function craftProtocol(
     historicalUsdTvl,
     historicalUsdTokenTvl,
     historicalTokenTvl,
-    module,
     { raises },
   ] = await Promise.all([
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
     getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
-    getHistoricalValues((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)),
-    getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
-    importAdapter(protocolData),
-    fetch("https://api.llama.fi/raises").then((res) => res.json()),
+    misrepresentedTokens
+      ? ([] as any[])
+      : getHistoricalValues((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id)),
+    misrepresentedTokens
+      ? ([] as any[])
+      : getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
+    raisesPromise,
   ]);
 
-  if (!useHourlyData && !skipReplaceLast) {
+  if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset
     lastUsdHourlyRecord && historicalUsdTvl.push(lastUsdHourlyRecord);
-    lastUsdTokenHourlyRecord && historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
-    lastTokenHourlyRecord && historicalTokenTvl.push(lastTokenHourlyRecord);
+    lastUsdTokenHourlyRecord &&
+      historicalUsdTokenTvl.length > 0 &&
+      historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
+    lastTokenHourlyRecord && historicalTokenTvl.length > 0 && historicalTokenTvl.push(lastTokenHourlyRecord);
   }
 
   let response: IProtocolResponse = {
@@ -87,6 +100,7 @@ export default async function craftProtocol(
     chainTvls: {},
     tvl: [],
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
+    metrics: getAvailableMetricsByModule(protocolData.module),
   };
 
   const childProtocolsNames = protocolData.parentProtocol
@@ -102,7 +116,7 @@ export default async function craftProtocol(
   if (module.methodology) {
     response.methodology = module.methodology;
   }
-  if (module.misrepresentedTokens) {
+  if (misrepresentedTokens === true) {
     response.misrepresentedTokens = true;
   }
   if (module.hallmarks) {

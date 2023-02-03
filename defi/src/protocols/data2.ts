@@ -23847,5 +23847,27 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675355930
 },
+{
+  id: "2491",
+  name: "Liqwid",
+  address: null,
+  symbol: "-",
+  url: "https://app.liqwid.finance/",
+  description:
+    "Decentralized interest rate curves for lending and borrowing on Cardano",
+  chain: "Cardano",
+  logo: `${baseIconsUrl}/liqwid.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Cardano"],
+  module: "liqwid/index.js",
+  twitter: "liqwidfinance",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675383083
+},
 ]
 export default data2;

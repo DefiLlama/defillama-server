@@ -23791,7 +23791,7 @@ listedAt: 1650804679
     "Decentralized Perpetual Exchange. Trade Bitcoin, Ethereum, and other digital currencies with up to 50X leverage from the comfort of your web3 wallet, such as Metamask or Coinbase Wallet - no need for a middleman.",
   chain: "Polygon",
   logo: `${baseIconsUrl}/dpex.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -23801,6 +23801,10 @@ listedAt: 1650804679
   twitter: "DPEX_io",
   oracles: [],
   forkedFrom: ["GMX"],
+  audit_links: [
+    "https://www.certik.com/projects/dpex",
+    "https://github.com/zokyo-sec/audit-reports/blob/main/DPEX/DPEX_Zokyo%20audit%20report.pdf"
+  ],
   listedAt: 1675348415
 },
 {

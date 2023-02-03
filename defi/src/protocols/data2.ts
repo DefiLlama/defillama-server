@@ -23854,8 +23854,8 @@ listedAt: 1650804679
 {
   id: "2491",
   name: "Liqwid",
-  address: null,
-  symbol: "-",
+  address: "cardano:8e420ce194ca84040ba6971e6ab816e3d76ee9ee",
+  symbol: "LQ",
   url: "https://app.liqwid.finance/",
   description:
     "Decentralized interest rate curves for lending and borrowing on Cardano",
@@ -23863,8 +23863,8 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/liqwid.png`,
   audits: "0",
   audit_note: null,
-  gecko_id: null,
-  cmcId: null,
+  gecko_id: "liqwid-finance",
+  cmcId: "18774",
   category: "Lending",
   chains: ["Cardano"],
   module: "liqwid/index.js",
@@ -23904,7 +23904,7 @@ listedAt: 1650804679
   description:
     "Brewlabs offers individuals the opportunity to bring their cryptocurrency ideas to life through smart contract engineering, dapp/web3 development, auditing and launch. Brewlabs offers a suite of tools and DeFI products routing fee revenue back to buy back the BREWLABS token through an innovating treasury buy back model",
   chain: "Binance",
-  logo: `${baseIconsUrl}/brewlabs.jpg`,
+  logo: `${baseIconsUrl}/brewlabs.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "brewlabs",
@@ -23914,9 +23914,32 @@ listedAt: 1650804679
   module: "brewlabs/index.js",
   twitter: "TeamBrewlabs",
   oracles: [],
-  forkedFrom: ["Solidex"],
+  forkedFrom: [],
   audit_links: ["https://www.certik.com/projects/brewlabs"],
   listedAt: 1675453646
+},
+{
+  id: "2494",
+  name: "ReHold",
+  address: null,
+  symbol: "-",
+  url: "https://rehold.io",
+  description:
+    "ReHold is an innovative platform that offers the first Dual investments in DeFi. High APRs are accessible due to Uniswap V3 Liquidity Pools with an effective price range for concentrated liquidity",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/rehold.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Binance"],
+  module: "rehold/index.js",
+  twitter: "rehold_io",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: [],
+  listedAt: 1675454199
 },
 ]
 export default data2;

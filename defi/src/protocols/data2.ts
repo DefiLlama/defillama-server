@@ -23928,7 +23928,7 @@ listedAt: 1650804679
     "ReHold is an innovative platform that offers the first Dual investments in DeFi. High APRs are accessible due to Uniswap V3 Liquidity Pools with an effective price range for concentrated liquidity",
   chain: "Binance",
   logo: `${baseIconsUrl}/rehold.png`,
-  audits: "2",
+  audits: "0",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -23940,6 +23940,29 @@ listedAt: 1650804679
   forkedFrom: [],
   audit_links: [],
   listedAt: 1675454199
+},
+{
+  id: "2495",
+  name: "UNO farm",
+  address: null,
+  symbol: "-",
+  url: "https://uno.farm/",
+  description:
+    "UNO.farm is a unique cross-chain autofarming solution with transparent automated strategies and beautiful analytics. Users can easily enter best DeFi yield opportunities and leave their farms for a several months, without need to do recompounding and liquidity swaps manually",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/uno-farm.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Aurora", "Binance", "Polygon"],
+  module: "uno-farm/index.js",
+  twitter: "uno_farm",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://www.certik.com/projects/uno-farm"],
+  listedAt: 1675454583
 },
 ]
 export default data2;

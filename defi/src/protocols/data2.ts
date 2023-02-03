@@ -23869,5 +23869,27 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675383083
 },
+{
+  id: "2492",
+  name: "Monolith",
+  address: "0x848578e351d25b6ec0d486e42677891521c3d743",
+  symbol: "moSOLID",
+  url: "https://alpha.mono.farm",
+  description:
+    "Monolith is a yield optimization layer for ve(3,3) protocols.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/monolith.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "mosolid",
+  cmcId: "23198",
+  category: "Yield Aggregator",
+  chains: ["Ethereum"],
+  module: "monolith/index.js",
+  twitter: "MonolithETH_",
+  oracles: [],
+  forkedFrom: ["Solidex"],
+  listedAt: 1675424331
+},
 ]
 export default data2;

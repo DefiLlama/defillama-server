@@ -5,7 +5,7 @@ import { treasuries } from "./protocols/data";
 import sluggify from "./utils/sluggify";
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const protocolName = event.pathParameters?.protocol?.toLowerCase()
+  const protocolName = event.pathParameters?.protocol?.toLowerCase() + "-(treasury)"
   const protocolData = treasuries.find((prot) => sluggify(prot) === protocolName);
   if(protocolData === undefined){
     return errorResponse({

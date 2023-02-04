@@ -1,4 +1,4 @@
-import protocols from "../protocols/data";
+import protocols, {treasuries} from "../protocols/data";
 import { writeFileSync, readdirSync } from "fs"
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 
@@ -8,7 +8,7 @@ function getUnique(arry: string[]) {
 
 writeFileSync("./src/utils/imports/adapters.ts",
     `export default {
-    ${getUnique(protocols.map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
+    ${getUnique(protocols.concat(treasuries).map(p => `"${p.module}": require("@defillama/adapters/projects/${p.module}"),`)).join('\n')}
 }`)
 
 const excludeLiquidation = ["test.ts", "utils", "README.md"]

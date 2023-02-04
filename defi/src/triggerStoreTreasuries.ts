@@ -13,7 +13,7 @@ const step = 40;
 const handler = async () => {
   const protocolIndexes = Array.from(Array(treasuries.length).keys());
   shuffleArray(protocolIndexes);
-  for (let i = 0; i < protocols.length; i += step) {
+  for (let i = 0; i < treasuries.length; i += step) {
     const event = {
       protocolIndexes: protocolIndexes.slice(i, i+step)
     };

@@ -23974,5 +23974,49 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/uno-farm"],
   listedAt: 1675454583
 },
+{
+  id: "2496",
+  name: "FunDex",
+  address: "optimism:0xe106e99472b2DEe098E5b8bBCD5d23331F346312",
+  symbol: "FUN",
+  url: "https://fundex.exchange/",
+  description:
+    "Governance: FUN token holders can participate and vote on governance decisions. Liquidity Incentives: Users can earn Fun tokens as rewards by providing liquidity with stablecoins to the liquidity pool. Boosting: Users can earn additional Fun from the Boosting Pool by locking Fun tokens. The Boosting Pool incorporates voting escrow Fun (veFun) for rewards accrual. Locking any amount of Fun applies a boost to all stablecoin pools.",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/fundex.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Optimism"],
+  module: "fundex/index.js",
+  twitter: "Fundexexchange",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  listedAt: 1675542033
+},
+{
+  id: "2497",
+  name: "Dinosaur.Finance",
+  address: "arbitrum:0xaAf5193EE366620FaEa13F37810cED2706B93F36",
+  symbol: "DINO",
+  url: "https://www.dinosaur.ink/",
+  description:
+    "Dinosaur is a revolutionary and SAFU yield aggregator on Arbitrum",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/dinosaur.finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Arbitrum"],
+  module: "dinosaur-finance/index.js",
+  twitter: "Dinosaur_Yield_",
+  oracles: [],
+  forkedFrom: ["Beefy"],
+  listedAt: 1675542041
+},
 ]
 export default data2;

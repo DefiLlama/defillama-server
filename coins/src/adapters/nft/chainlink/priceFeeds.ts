@@ -59,10 +59,6 @@ export default {
           token: "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e",
           oracle: "0x027828052840a43Cc2D0187BcfA6e3D6AcE60336",
         },
-        {   // Fidenza
-          token: "0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782",
-          oracle: "0x2dE2EB5Fb9B8d7df45A9e144030c36128682c288",
-        },
         {   // Forgotten Rune Wizards Cult
           token: "0x521f9C7505005CFA19A8E5786a9c3c9c9F5e6f42",
           oracle: "0x4da2765FFCFC0eEd625F450B9A1A1C89c919DbE8",

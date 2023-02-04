@@ -23,17 +23,12 @@ export function getPercentChange(previous: number, current: number) {
 }
 
 export async function craftProtocolsResponse(useNewChainNames: boolean) {
-  const coinMarkets = (await batchGet(
-    protocols
-    .filter((protocol) => typeof protocol.gecko_id === "string")
-    .map((protocol) => ({
-      PK: `asset#${protocol.gecko_id}`,
-      SK: 0,
-    }))))
-  .reduce((p, c) => {
-      p[c.PK] = c;
-      return p;
-    }, {} as any);
+  const coinMarkets = fetch("https://coins.llama.fi/mcaps", {
+    method: "POST",
+    body: JSON.stringify({coins:protocols
+        .filter((protocol) => typeof protocol.gecko_id === "string")
+        .map((protocol) => `coingecko:${protocol.gecko_id}`)})
+    }).then(r=>r.json())
 
   const response = (
     await Promise.all(
@@ -108,10 +103,9 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
 
         if (typeof protocol.gecko_id === "string") {
           const coingeckoData = (await coinMarkets)[
-            `asset#${protocol.gecko_id}`
+            `coingecko:${protocol.gecko_id}`
           ];
           if (coingeckoData !== undefined) {
-            dataToReturn.fdv = coingeckoData.fdv;
             dataToReturn.mcap = coingeckoData.mcap;
           }
         }

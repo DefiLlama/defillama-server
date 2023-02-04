@@ -164,6 +164,14 @@ functions:
       - http:
           path: protocols
           method: get
+  treasuries:
+    handler: src/getProtocols.treasuriesHandler
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: treasuries
+          method: get
   dexAggregatorQuote:
     handler: src/getDexAggregatorQuote.default
     timeout: 30

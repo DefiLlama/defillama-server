@@ -1,5 +1,5 @@
-import { successResponse, wrap, IResponse } from "./utils/shared";
-import protocols, { Protocol } from "./protocols/data";
+import { successResponse, wrap, IResponse, cache20MinResponse } from "./utils/shared";
+import protocols, { Protocol, treasuries } from "./protocols/data";
 import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import {
@@ -10,7 +10,6 @@ import {
   extraSections,
   transformNewChainName,
 } from "./utils/normalizeChain";
-import { batchGet } from "./utils/shared/dynamodb";
 import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
 
@@ -22,17 +21,17 @@ export function getPercentChange(previous: number, current: number) {
   return change;
 }
 
-export async function craftProtocolsResponse(useNewChainNames: boolean) {
+async function craftProtocolsResponseInternal(useNewChainNames: boolean, protocolList:Protocol[]) {
   const coinMarkets = fetch("https://coins.llama.fi/mcaps", {
     method: "POST",
-    body: JSON.stringify({coins:protocols
+    body: JSON.stringify({coins:protocolList
         .filter((protocol) => typeof protocol.gecko_id === "string")
         .map((protocol) => `coingecko:${protocol.gecko_id}`)})
     }).then(r=>r.json())
 
   const response = (
     await Promise.all(
-      protocols.map(async (protocol) => {
+      protocolList.map(async (protocol) => {
         const lastHourlyRecord = await getLastRecord(hourlyTvl(protocol.id));
 
         if (!lastHourlyRecord) {
@@ -120,6 +119,10 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
   return response;
 }
 
+export async function craftProtocolsResponse(useNewChainNames: boolean) {
+  return craftProtocolsResponseInternal(useNewChainNames, protocols)
+}
+
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
@@ -132,7 +135,11 @@ const handler = async (
 
   const response: Array<IProtocol | IChain> = [...protocols, ...chainData];
 
-  return successResponse(response, 10 * 60); // 10 mins cache
+  return cache20MinResponse(response);
+};
+
+export const treasuriesHandler = async (): Promise<IResponse> => {
+  return cache20MinResponse(await craftProtocolsResponseInternal(true, treasuries));
 };
 
 export default wrap(handler);

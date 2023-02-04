@@ -134,7 +134,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             }
         }
         // Populate last missing days with last available data
-        if (!adapter.disabled)
+        if (!adapter.disabled && ((yesterdaysCleanTimestamp-lastAvailableDataTimestamp)/ONE_DAY_IN_SECONDS)<5)
             for (let i = lastAvailableDataTimestamp + ONE_DAY_IN_SECONDS; i <= yesterdaysCleanTimestamp; i += ONE_DAY_IN_SECONDS) {
                 const data = new AdaptorRecord(adaptorRecords[0].type, adaptorRecords[0].adaptorId, i, adaptorRecords[adaptorRecords.length - 1].data)
                 adaptorRecords.push(data)

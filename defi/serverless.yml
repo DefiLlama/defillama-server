@@ -201,6 +201,14 @@ functions:
       - http:
           path: tokenProtocols/{symbol}
           method: get
+  treasury:
+    handler: src/getTreasury.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: treasury/{protocol}
+          method: get
   updatedProtocol:
     handler: src/getUpdatedProtocol.default
     timeout: 30

@@ -163,7 +163,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "21437",
     chains: [],
     twitter: "mycelium_xyz",
-    governanceID: ["snapshot:tracer.eth"]
+    governanceID: ["snapshot:tracer.eth", "myceliumgrowth.eth"]
   },
   {
     id: "Bancor",
@@ -226,6 +226,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5692",
     chains: [],
     twitter: "compoundfinance",
+    governanceID: ["snapshot:comp-vote.eth"]
   },
   {
     id: "Algofi",
@@ -580,6 +581,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5748",
     chains: [],
     twitter: "mstable_",
+    governanceID: ["snapshot:mstablegovernance.eth"]
   },
   {
     id: "RealT",

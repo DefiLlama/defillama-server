@@ -867,6 +867,7 @@ const data2: Protocol[] =  [
   module: "hashflow/index.js",
   twitter: "hashflow",
   listedAt: 1645555257,
+  governanceID: ["snapshot:hashflowdao.eth"]
 },
 {
   id: "1448",
@@ -2146,6 +2147,7 @@ const data2: Protocol[] =  [
   module: "floor-dao/index.js",
   twitter: "FloorDAO",
   listedAt: 1646390885,
+  governanceID: ["snapshot:floordao.eth"]
 },
 {
   id: "1506",
@@ -3363,7 +3365,8 @@ const data2: Protocol[] =  [
   treasury: "peardao.js",
   twitter: "OfficialPearDAO",
   audit_links: ["https://www.certik.com/projects/peardao"],
-  listedAt: 1647629790
+  listedAt: 1647629790,
+  governanceID: ["snapshot:pear-dao.eth"]
 },
 {
   id: "1562",
@@ -7110,7 +7113,8 @@ listedAt: 1650804679
   module: "versedex/index.js",
   twitter: "BitcoinCom",
   audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/bitcoin.com/Bitcoin.com_final-audit-report.pdf"],
-  listedAt: 1651771447
+  listedAt: 1651771447,
+  governanceID: ["snapshot:verse.eth"]
 },
 {
   id: "1733",
@@ -7975,7 +7979,8 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "apollox/index.js",
   twitter: "ApolloX_com",
-  listedAt: 1652988932
+  listedAt: 1652988932,
+  governanceID: ["snapshot:apolloxdao.eth"]
 },
 {
   id: "1773",
@@ -11159,7 +11164,8 @@ listedAt: 1650804679
   module: "aura-finance/index.js",
   twitter: "aurafinance",
   audit_links: ["https://github.com/aurafinance/aura-contracts/tree/main/audits"],
-  listedAt: 1658511775
+  listedAt: 1658511775,
+  governanceID: ["snapshot:gauges.aurafinance.eth"]
 },
 {
   id: "1919",
@@ -16624,7 +16630,8 @@ listedAt: 1650804679
                  "https://www.certik.com/projects/baby-doge-coin",
                  "https://dessertswap.finance/audits/Baby%20Doge%20Coin%20(BabyDoge)%20BEP-20%20Audit%208332977.pdf"
                ],
-  listedAt: 1665220470
+  listedAt: 1665220470,
+  governanceID: ["snapshot:babydogevote.eth"]
 },
 {
   id: "2170",
@@ -20670,7 +20677,8 @@ listedAt: 1650804679
   twitter: "KyotoSwap", 
   forkedFrom: ["Uniswap"],
   oracles: [],
-  listedAt: 1670693265
+  listedAt: 1670693265,
+  governanceID: ["snapshot:kyotofoundation.eth"]
 },
 {
   id: "2351",
@@ -20804,7 +20812,8 @@ listedAt: 1650804679
   forkedFrom: ["GMX"],
   oracles: ["Chainlink"],
   audit_links: ["https://docs.ede.finance/audit"],
-  listedAt: 1670855637
+  listedAt: 1670855637,
+  governanceID: ["snapshot:edefinance.eth"]
 },
 {
   id: "2357",
@@ -21698,7 +21707,8 @@ listedAt: 1650804679
                  "https://obeliskauditing.com/audits/level-finance",
                  "https://obeliskauditing.com/audits/level-finance-core",
                  "https://obeliskauditing.com/audits/level-finance-trading",],
-  listedAt: 1672230595
+  listedAt: 1672230595,
+  governanceID: ["snapshot:level-finance.eth"]
 },
 {
   id: "2396", 

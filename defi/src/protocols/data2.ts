@@ -24018,5 +24018,27 @@ listedAt: 1650804679
   forkedFrom: ["Beefy"],
   listedAt: 1675542041
 },
+{
+  id: "2498",
+  name: "Phezzan",
+  address: null,
+  symbol: "PHE",
+  url: "https://phezzan.xyz/",
+  description:
+    "Phezzan Protocol is an orderbook perpetual DEX that enables retail liquidity on zkSync2.0 and Kava that enables retail liquidity APY without Impermanent Loss.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/phezzan.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Kava"],
+  module: "phezzan/index.js",
+  twitter: "PhezzanProtocol",
+  oracles: ["Chainlink"],
+  forkedFrom: ["Beefy"],
+  listedAt: 1675542041
+},
 ]
 export default data2;

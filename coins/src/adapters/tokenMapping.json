@@ -2871,6 +2871,14 @@
       "to": "coingecko#injective-protocol"
     }
   },
+  "umee": {
+    "uumee": {
+      "name": "Umee",
+      "decimals": "6",
+      "symbol": "UMEE",
+      "to": "coingecko#umee"
+    }
+  },
   "comdex": {
     "ucmdx": {
       "name": "comdex",
@@ -6016,7 +6024,31 @@
       "symbol": "BNB",
       "to": "coingecko#binancecoin"
     },
-     "B4DCACF7753C05040AF0A7BF2B583402C4B8C9B0A86FCECE32EF63CB7F0A46B3": {
+     "04CE51E6E02243E565AE676DD60336E48D455F8AAD0611FA0299A22FDAC448D6": {
+      "name": "Ethereum",
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "153B97FE395140EAAA2D7CAC537AF1804AEC5F0595CBC5F1603094018D158C0C": {
+      "name": "WBTC",
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
+    "49788C29CD84E08D25CA7BE960BC1F61E88FEFC6333F58557D236D693398466A": {
+      "name": "USDC",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "C86651B4D30C1739BF8B061E36F4473A0C9D60380B52D01E56A6874037A5D060": {
+      "name": "DAI",
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    },
+    "B4DCACF7753C05040AF0A7BF2B583402C4B8C9B0A86FCECE32EF63CB7F0A46B3": {
       "name": "gravity-bridge-paxg",
       "decimals": "18",
       "symbol": "gPAXG",

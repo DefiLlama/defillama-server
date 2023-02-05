@@ -18031,7 +18031,7 @@ listedAt: 1650804679
     "Tangible is an NFT marketplace for Real World Assets. Tangible is also the creator of Real USD, the first stablecoin backed by tokenized, yield-producing real estate.Rental income from Real USD’s backing is paid out to Real USD holders in the form of a daily rebase projected to range between 10 - 15% APY.",
   chain: "Polygon",
   logo: `${baseIconsUrl}/tangible.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "tangible",
   cmcId: "20271",
@@ -18041,6 +18041,7 @@ listedAt: 1650804679
   twitter: "tangibleDAO", 
   forkedFrom: [],
   oracles: ["Curve"],
+  audit_links: ["https://github.com/cyberscope-io/audits/blob/main/tngbl/audit.pdf"],
   listedAt: 1666883108
 },
 {

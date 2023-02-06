@@ -304,5 +304,8 @@ export default {
     },
     "plenty": {
         enabled: true
+    },
+    "firebird-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

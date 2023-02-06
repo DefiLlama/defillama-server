@@ -24084,7 +24084,6 @@ listedAt: 1650804679
   twitter: "BanklessHQ",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675698355
 },
 {
   id: "2501",
@@ -24106,7 +24105,6 @@ listedAt: 1650804679
   twitter: "AragonProject",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675698357
 },
 {
   id: "2502",
@@ -24128,7 +24126,6 @@ listedAt: 1650804679
   twitter: "BitDAO_Official",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675699191
 },
 {
   id: "2503",
@@ -24150,7 +24147,6 @@ listedAt: 1650804679
   twitter: "PleasrDAO",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675699193
 },
 {
   id: "2504",
@@ -24172,7 +24168,6 @@ listedAt: 1650804679
   twitter: "rarible",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675699195
 },
 ]
 export default data2;

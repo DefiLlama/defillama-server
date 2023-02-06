@@ -1550,6 +1550,12 @@
       "symbol": "oTON",
       "to": "coingecko#the-open-network"
     },
+    "0xea5a82b35244d9e5e48781f00b11b14e627d2951": {
+      "name": "ATOM",
+      "decimals": "6",
+      "symbol": "ATOM",
+      "to": "coingecko#cosmos"
+    },
     "0xe06597d02a2c3aa7a9708de2cfa587b128bd3815": {
       "name": "NEOPIN Token",
       "decimals": "18",

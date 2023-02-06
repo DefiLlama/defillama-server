@@ -2934,7 +2934,7 @@ const data: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum", "Polygon", "Fantom"],
     module: "mimo/index.js",
-    twitter: "mimodefi",
+    twitter: "mimo_labs",
     audit_links: ["https://certificate.quantstamp.com/full/ten-x-titan"],
     oracles: ["DIA"],
     governanceID: ["snapshot:mimo.eth"]

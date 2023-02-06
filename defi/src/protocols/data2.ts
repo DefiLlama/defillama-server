@@ -24042,5 +24042,27 @@ listedAt: 1650804679
   audit_links: ["https://umeeversity.umee.cc/overview/umee-overview/security-audits.html"],
   listedAt: 1675684784
 },
+{
+  id: "2499",
+  name: "Eternal Finance",
+  address: null,
+  symbol: "-",
+  url: "https://eternalfinance.io",
+  description:
+    "Eternal Finance is the first automated and leveraged yield farming protocol built on Aptos and other chains, offering automated bots to optimize everyone's yield farming experience.",
+  chain: "Aptos",
+  logo: `${baseIconsUrl}/eternal-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Aptos"],
+  module: "eternalFinance/index.js",
+  twitter: "eternalfinance_",
+  oracles: ["Internal"],
+  forkedFrom: [],
+  listedAt: 1675697426
+},
 ]
 export default data2;

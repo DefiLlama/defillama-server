@@ -24064,5 +24064,50 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675697426
 },
+{
+  id: "2500",
+  name: "Bankless",
+  address: "0x2d94aa3e47d9d5024503ca8491fce9a2fb4da198",
+  symbol: "BANK",
+  url: "https://www.bankless.community",
+  description:
+    "Media and Social DAO Onboarding 1 billion people to crypto.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bankless.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "bankless-dao",
+  cmcId: "9607",
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  twitter: "BanklessHQ",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675698355
+},
+{
+  id: "2501",
+  name: "Aragon",
+  address: "0xa117000000f279d81a1d3cc75430faa017fa5a2e",
+  symbol: "ANT",
+  url: "https://aragon.org",
+  description:
+    "Govern better, together. Learn about DAOs and launch your organization in minutes..",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/aragon.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "aragon",
+  cmcId: "1680",
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  twitter: "AragonProject",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675698357
+},
+
 ]
 export default data2;

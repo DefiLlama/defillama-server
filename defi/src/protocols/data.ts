@@ -5676,12 +5676,12 @@ const data: Protocol[] = [
   },
   {
     id: "383",
-    name: "Osmosis",
+    name: "Osmosis DEX",
     address: "-",
     symbol: "OSMO",
     url: "https://osmosis.zone/",
     description:
-      "Osmosis is an advanced automated market maker (AMM) protocol that allows developers to build customized AMMs with sovereign liquidity pools.",
+      "Osmosis DEX is the advanced automated market maker (AMM) protocol at the core of the Osmosis blockchain.",
     chain: "Osmosis",
     logo: `${baseIconsUrl}/osmosis.jpg`,
     audits: "0",

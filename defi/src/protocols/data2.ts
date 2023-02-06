@@ -24019,5 +24019,28 @@ listedAt: 1650804679
   forkedFrom: ["Beefy"],
   listedAt: 1675542041
 },
+{
+  id: "2498",
+  name: "Umee",
+  address: "0xc0a4df35568f116c370e6a6a6022ceb908eeddac",
+  symbol: "UMEE",
+  url: "https://app.umee.cc/#/markets",
+  description:
+    "The most programmable, safety-first, autonomous lending algorithm built as a blockchain. Umee is reshaping the global debt markets in Web3.",
+  chain: "Umee",
+  logo: `${baseIconsUrl}/umee.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Umee"],
+  module: "umee/index.js",
+  twitter: "Umee_CrossChain",
+  oracles: ["Ojo Oracle"],
+  forkedFrom: [],
+  audit_links: ["https://umeeversity.umee.cc/overview/umee-overview/security-audits.html"],
+  listedAt: 1675684784
+},
 ]
 export default data2;

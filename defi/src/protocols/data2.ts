@@ -24108,6 +24108,71 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675698357
 },
-
+{
+  id: "2502",
+  name: "BitDAO",
+  address: "0x1a4b46696b2bb4794eb3d4c26f1c55f9170fa4c5",
+  symbol: "BIT",
+  url: "https://www.bitdao.io",
+  description:
+    "BitDAO is a collective of builders, products, and mutually beneficial ecosystems governed by $BIT token holders.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bitdao.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "bitdao",
+  cmcId: "11221",
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  twitter: "BitDAO_Official",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675699191
+},
+{
+  id: "2503",
+  name: "PleasrDAO",
+  address: null,
+  symbol: "-",
+  url: "https://pleasr.house",
+  description:
+    "PleasrDAO is a collective of DeFi leaders, early NFT collectors and digital artists",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/pleasrdao.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  twitter: "PleasrDAO",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675699193
+},
+{
+  id: "2504",
+  name: "Rarible",
+  address: "0xfca59cd816ab1ead66534d82bc21e7515ce441cf",
+  symbol: "RARI",
+  url: "https://rari.foundation",
+  description:
+    "Govern better, together. Learn about DAOs and launch your organization in minutes..",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/rarible.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "rarible",
+  cmcId: "5877",
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  twitter: "rarible",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675699195
+},
 ]
 export default data2;

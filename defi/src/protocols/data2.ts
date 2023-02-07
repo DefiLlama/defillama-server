@@ -8787,6 +8787,7 @@ listedAt: 1650804679
   forkedFrom: ["0xDAO"],
   module: "penrose/index.js",
   twitter: "PenroseDeFi",
+  parentProtocol: "SPHERE",
   listedAt: 1654600878
 },
 {
@@ -24211,6 +24212,7 @@ listedAt: 1650804679
   twitter: "dyson_money",
   oracles: [],
   forkedFrom: [],
+  parentProtocol: "SPHERE",
   listedAt: 1675745079
 },
 {

@@ -787,6 +787,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "CapDotFinance",
   },
+  {
+    id: "SPHERE",
+    name: "SPHERE",
+    url: "https://www.sphere.finance",
+    description:
+    "The center of DeFi - earn revenue from multiple innovative streams by holding one token.",
+    logo: `${baseIconsUrl}/sphere.jpg`,
+    gecko_id: "sphere-finance",
+    cmcId: "18945",
+    chains: [],
+    twitter: "SphereDeFi",
+  },
 ];
 
 export default parentProtocols;

@@ -4080,6 +4080,7 @@ const data2: Protocol[] =  [
   oracles: [],
   forkedFrom: [],
   module: "sphere-finance/index.js",
+  parentProtocol: "SPHERE",
   twitter: "SphereDeFi",
   listedAt: 1648668558
 },

@@ -24206,7 +24206,7 @@ listedAt: 1650804679
   gecko_id: null,
   cmcId: null,
   category: "Yield Aggregator",
-  chains: ["Polygon", "Optimisim", "Arbitrum"],
+  chains: ["Polygon", "Optimism", "Arbitrum"],
   module: "dyson-money/index.js",
   twitter: "dyson_money",
   oracles: [],

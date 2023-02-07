@@ -24235,5 +24235,50 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675767017
 },
+{
+  id: "2508",
+  name: "Notiboy",
+  address: null,
+  symbol: "-",
+  url: "https://notiboy.com",
+  description:
+    "Notiboy is an on-chain communication protocol that will help web3 applications to send notifications to their users in a censorship resistant and decentralized way based on on-chain and off-chain events. Events include but not limited to liquidation warning, NFT offers, DAO governance and voting remainders, on-chain lottery updates etc.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/notiboy.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Algorand"],
+  module: "notiboy/index.js",
+  treasury: "notiboy-treasury.js",
+  twitter: "notiboyproject",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675772060
+},
+{
+  id: "2509",
+  name: "BusinessBuildersNFTs",
+  address: "polygon:0xf305012ea754252184f1071c86ae99fac5b40320",
+  symbol: "FTB",
+  url: "https://businessbuilders.city",
+  description:
+    "BusinessBuildersNFTs is a ecosystem based on the blockcchain and NFTs technologies. You can build your own city, create your own business hiring and firing employees and create your own community in our DAPPs. We created an scalable ecosystem including new projects and integrations little by little improving the main project sustainability.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/businessbuildersnfts.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Gamming",
+  chains: ["Polygon", "Meter"],
+  module: "business-builders-nfts/index.js",
+  twitter: "NFTBBuilders",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675772062
+},
 ]
 export default data2;

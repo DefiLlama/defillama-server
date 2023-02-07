@@ -24213,5 +24213,27 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675745079
 },
+{
+  id: "2507",
+  name: "BitVenus",
+  address: null,
+  symbol: "-",
+  url: "https://www.bitvenus.me",
+  description:
+    "BitVenus (BV for short) is a well-known digital asset trading platform in Europe, supporting hundreds of digital asset transactions. Officially established in London County, England in June 2018",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/bitvenus.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CEX",
+  chains: ["Ethereum", "Binance", "Bitcoin"],
+  module: "bitvenus/index.js",
+  twitter: "bit_venus",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675767017
+},
 ]
 export default data2;

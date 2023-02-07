@@ -2891,6 +2891,12 @@
       "decimals": "6",
       "symbol": "ION",
       "to": "coingecko#ion"
+    },
+    "uosmo": {
+      "name": "osmo",
+      "decimals": "6",
+      "symbol": "OSMO",
+      "to": "coingecko#osmosis"
     }
   },
   "kujira": {
@@ -5877,6 +5883,12 @@
       "to": "coingecko#agoric"
     },
     "295548A78785A1007F232DE286149A6FF512F180AF5657780FC89C009E2C348F": {
+      "name": "axlusdc",
+      "decimals": "6",
+      "symbol": "AXLUSDC",
+      "to": "coingecko#axlusdc"
+    },
+    "D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858": {
       "name": "axlusdc",
       "decimals": "6",
       "symbol": "AXLUSDC",

@@ -24169,5 +24169,27 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
 },
+{
+  id: "2505",
+  name: "ORIO",
+  address: null,
+  symbol: "-",
+  url: "https://orio.io/",
+  description:
+    "ORIO is a stable progressive currency with a price value built-in growth mechanism of a 1% tax fee charged at each transaction",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/orio.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  module: "orio/index.js",
+  twitter: "ORIOINC",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675734631
+},
 ]
 export default data2;

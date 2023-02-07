@@ -24313,7 +24313,7 @@ listedAt: 1650804679
     "Solana's smartest DeFi navigator, a one-stop-shop for SOL & USDC DeFi yields aggregated & automated in 1-click.",
   chain: "Solana",
   logo: `${baseIconsUrl}/hawksight.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "hawksight",
   cmcId: "19677",
@@ -24325,6 +24325,32 @@ listedAt: 1650804679
   forkedFrom: [],
   audit_links: ["https://hawksight.gitbook.io/whitepaper/security-audits"],
   listedAt: 1675781739
+},
+{
+  id: "2512",
+  name: "Velvet.Capital",
+  address: null,
+  symbol: "-",
+  url: "https://app.velvet.capital/",
+  description:
+    "Velvet.Capital is a DeFi Asset Management protocol which helps people & institutions create diversified financial products (tokenized funds, portfolios, yield farming strategies and other structured products)",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/velvet.capital.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Binance"],
+  module: "velvet-capital/index.js",
+  twitter: "Velvet_Capital",
+  oracles: ["Chainlink"],
+  forkedFrom: [],
+  audit_links: [
+                  "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Velvet-v1.0.pdf",
+                  "https://audit.shellboxes.com/report.php?id=NKU750HSXU",
+],
+  listedAt: 1675795158
 },
 ]
 export default data2;

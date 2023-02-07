@@ -24340,7 +24340,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Services",
+  category: "Indexes",
   chains: ["Binance"],
   module: "velvet-capital/index.js",
   twitter: "Velvet_Capital",

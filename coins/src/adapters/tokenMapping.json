@@ -2549,6 +2549,50 @@
       "to": "coingecko#omax-token"
     }
   },
+  "wemix": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "Wemix",
+      "decimals": "18",
+      "symbol": "WEMIX",
+      "to": "coingecko#wemix-token"
+    },
+    "0x7d72b22a74a216af4a002a1095c8c707d6ec1c5f": {
+      "name": "Wrapped Wemix",
+      "decimals": "18",
+      "symbol": "WWEMIX",
+      "to": "coingecko#wemix-token"
+    },
+    "0x8e81fcc2d4a3baa0ee9044e0d7e36f59c9bba9c1": {
+      "name": "WEMIX$",
+      "decimals": "18",
+      "symbol": "WEMIX$",
+      "to": "coingecko#wemix-dollar"
+    },
+    "0x9b377bd7db130e8bd2f3641e0e161cb613da93de": {
+      "name": "Staked WEMIX",
+      "decimals": "18",
+      "symbol": "stWEMIX",
+      "to": "coingecko#staked-wemix"
+    },
+    "0x461d52769884ca6235b685ef2040f47d30c94eb5": {
+      "name": "Klaytn",
+      "decimals": "18",
+      "symbol": "KLAY",
+      "to": "coingecko#klay-token"
+    },
+    "0xe3f5a90f9cb311505cd691a46596599aa1a0ad7d": {
+      "name": "USDC",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0xa649325aa7c5093d12d6f98eb4378deae68ce23f": {
+      "name": "USDT",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
+  },
   "defichain": {
     "DFI": {
       "name": "defichain",

@@ -24272,7 +24272,7 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Gamming",
+  category: "Gaming",
   chains: ["Polygon", "Meter"],
   module: "business-builders-nfts/index.js",
   twitter: "NFTBBuilders",

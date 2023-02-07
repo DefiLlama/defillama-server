@@ -24191,5 +24191,27 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675734631
 },
+{
+  id: "2506",
+  name: "Dyson",
+  address: null,
+  symbol: "-",
+  url: "https://www.dyson.money/",
+  description:
+    "Dyson brings exotic investment strategies to some of the most popular cryptocurrencies, amplifies the APRs and makes them accessible to everyone",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/dyson.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Polygon", "Optimisim", "Arbitrum"],
+  module: "dyson-money/index.js",
+  twitter: "dyson_money",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675745078
+},
 ]
 export default data2;

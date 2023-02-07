@@ -2934,6 +2934,7 @@ const data: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum", "Polygon", "Fantom"],
     module: "mimo/index.js",
+    treasury: "mimo-protocol.js",
     twitter: "mimo_labs",
     audit_links: ["https://certificate.quantstamp.com/full/ten-x-titan"],
     oracles: ["DIA"],
@@ -10665,6 +10666,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Lending",
     chains: ["Ethereum"],
     module: "paladinfinance/index.js",
+    treasury: "paladin-finance.js",
     twitter: "Paladin_vote",
     audit_links: [
       "https://github.com/pessimistic-io/audits/blob/914e35fdfc879451a61d2a3969f3be839b8c808f/Paladin%20Security%20Analysis%20by%20Pessimistic.pdf",

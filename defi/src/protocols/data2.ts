@@ -24280,5 +24280,51 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675772062
 },
+{
+  id: "2510",
+  name: "DAM Finance",
+  address: "0x2FdA8c6783Aa36BeD645baD28a4cDC8769dCD252",
+  symbol: "d2O",
+  url: "https://dam.finance",
+  description:
+    "DAM is a decentralized, global liquidity infrastructure for powering value mobility between sovereign web3 networks. It helps blockchains scale native liquidity and improves capital efficiency across the fragmented digital assets space.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/dam-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "dam-finance",
+  cmcId: null,
+  category: "CDP",
+  chains: ["Ethereum"],
+  module: "dam-finance/index.js",
+  twitter: "DAM_Finance",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://github.com/HalbornSecurity/PublicReports/tree/master/Solidity%20Smart%20Contract%20Audits/DAMfinance%20Audits"],
+  listedAt: 1675781737
+},
+{
+  id: "2511",
+  name: "Hawksight",
+  address: "solana:BKipkearSqAUdNKa1WDstvcMjoPsSKBuNyvKDQDDu9WE",
+  symbol: "HAWK",
+  url: "https://hawksight.co",
+  description:
+    "Solana's smartest DeFi navigator, a one-stop-shop for SOL & USDC DeFi yields aggregated & automated in 1-click.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/hawksight.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "hawksight",
+  cmcId: "19677",
+  category: "Yield Aggregator",
+  chains: ["Solana"],
+  module: "hawksight/index.js",
+  twitter: "HawksightCo",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://hawksight.gitbook.io/whitepaper/security-audits"],
+  listedAt: 1675781739
+},
 ]
 export default data2;

@@ -24211,7 +24211,7 @@ listedAt: 1650804679
   twitter: "dyson_money",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675745078
+  listedAt: 1675745079
 },
 ]
 export default data2;

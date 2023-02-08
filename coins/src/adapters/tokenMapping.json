@@ -5756,6 +5756,12 @@
     }
   },
   "ton": {
+    "EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c": {
+      "name": "the-open-network",
+      "decimals": "9",
+      "symbol": "TON",
+      "to": "coingecko#the-open-network"
+    },
     "0x0000000000000000000000000000000000000000": {
       "name": "the-open-network",
       "decimals": "9",

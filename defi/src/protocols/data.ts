@@ -176,6 +176,7 @@ const data: Protocol[] = [
     audit_links: ["https://compound.finance/docs/security"],
     oracles: ["Chainlink"],
     parentProtocol: "Compound Finance",
+    treasury: "compound.js"
   },
   {
     id: "115",
@@ -1357,7 +1358,7 @@ const data: Protocol[] = [
     category: "Indexes",
     chains: ["Ethereum"],
     module: "indexcoop/index.js",
-    treasury: "index-protocol.js",
+    treasury: "index-coop.js",
     audit_links: [
       "https://docs.tokensets.com/protocol/security",
       "https://gist.github.com/bernard-wagner/8a96ae7b9746ba8394dc6c16202a6b64",

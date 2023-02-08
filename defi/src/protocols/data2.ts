@@ -24410,7 +24410,7 @@ listedAt: 1650804679
 },
 {
   id: "2515",
-  name: "cantOHM",
+  name: "Manifesto",
   address: "canto:0xfC65316f26949B268f82519256C159B23ACC938F",
   symbol: "MNF",
   url: "https://app.manifesto.finance",

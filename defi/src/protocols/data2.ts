@@ -24355,5 +24355,53 @@ listedAt: 1650804679
 ],
   listedAt: 1675795158
 },
+{
+  id: "2513",
+  name: "Liquid Bolt",
+  address: null,
+  symbol: "-",
+  url: "https://app.liquidbolt.finance/farms",
+  description:
+    "V-farm - 1st volatility yield farming dapp on multiple blockchains.",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/liquid-bolt.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Fantom", "Binance", "Polygon"],
+  module: "liquid-bolt/index.js",
+  twitter: "LiquidBoltFi",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: [
+                  "https://rugdoc.io/project/liquid-bolt-finance",
+                  "https://solidity.finance/audits/LiquidBolt",
+               ],
+  listedAt: 1675860426
+},
+{
+  id: "2514",
+  name: "cantOHM",
+  address: "0x533C0f08BE45eaaC821392B85E67Fb0c7DC2cab7",
+  symbol: "cOHM",
+  url: "https://app.cantohm.money",
+  description:
+    "Public market fund raising infra on an EVM-compatible Cosmo app chain fork aka web+. ",
+  chain: "Canto",
+  logo: `${baseIconsUrl}/cantohm.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Reserve Currency",
+  chains: ["Canto"],
+  module: "cantohm/index.js",
+  twitter: "imgonnacohm",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675860428
+},
 ]
 export default data2;

@@ -219,7 +219,8 @@ const data: Protocol[] = [
     module: "balancer/index.js",
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
-    governanceID: ["snapshot:balancer.eth"]
+    governanceID: ["snapshot:balancer.eth"],
+    treasury: "balancer.js"
   },
   {
     id: "117",
@@ -262,6 +263,7 @@ const data: Protocol[] = [
     twitter: "MakerDAO",
     audit_links: ["https://security.makerdao.com/"],
     oracles: ["Maker"],
+    treasury: "maker.js"
   },
   {
     id: "119",
@@ -890,6 +892,7 @@ const data: Protocol[] = [
     twitter: "TornadoCash",
     audit_links: ["https://tornado.cash/#faq"],
     oracles: [],
+    treasury: "tornado-cash.js"
   },
   {
     id: "149",
@@ -16017,6 +16020,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20ParaSwap%20%5B20.01.2021%5D.pdf",
     ],
     listedAt: 1637654600,
+    treasury: "paraswap.js"
   },
   {
     id: "895",

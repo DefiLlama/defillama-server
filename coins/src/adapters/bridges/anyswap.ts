@@ -29,7 +29,7 @@ const chainIdToSlug = {
   57: "syscoin",
   1284: "moonbeam",
   9001: "evmos",
-  30: "rsk",
+  30: "rootstock",
   1030: "conflux",
   47805: "rei",
   2001: "milkomeda",

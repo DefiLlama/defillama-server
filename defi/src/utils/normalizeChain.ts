@@ -224,7 +224,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 1666600000,
   },
-  "RSK": {
+  "Rootstock": {
     geckoId: "rootstock",
     symbol: "RBTC",
     cmcId: "3626",
@@ -1392,8 +1392,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "EOS"
     case "neo":
       return "NEO"
-    case "rsk":
-      return "RSK"
+    case "rootstock":
+      return "Rootstock"
     case "iotex":
       return "IoTeX"
     case "thundercore":

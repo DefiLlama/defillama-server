@@ -3477,7 +3477,7 @@
       "to": "coingecko#lif3-lshare"
     }
   },
-  "rsk": {
+  "rootstock": {
     "0x967f8799af07df1534d48a95a5c9febe92c53ae0": {
       "name": "Wrapped RBTC",
       "decimals": "18",

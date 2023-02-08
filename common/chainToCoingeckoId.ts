@@ -25,7 +25,7 @@ export const chainToCoingeckoId = {
   optimism: "optimistic-ethereum",
   eos: "eos",
   secret: "secret",
-  rsk: "rootstock",
+  rootstock: "rootstock",
   neo: "neo",
   tezos: "tezos",
   wan: "wanchain",

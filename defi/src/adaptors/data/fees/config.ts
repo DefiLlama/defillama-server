@@ -307,5 +307,8 @@ export default {
     },
     "firebird-finance": {
         enabled: true
+    },
+    "x2y2": {
+        enabled: true
     }
 } as AdaptorsConfig

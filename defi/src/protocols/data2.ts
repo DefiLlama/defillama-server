@@ -24452,5 +24452,29 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675872118
 },
+{
+  id: "2517",
+  name: "ParaSpace",
+  address: null,
+  symbol: "-",
+  url: "https://para.space",
+  description:
+    "ParaSpace is a permissionless universal, cross-margin NFT lending protocol that enables users to collateralize both ERC-721 and ERC-20 assets into a single portfolio to borrow against.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/paraspace.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Lending",
+  chains: ["Ethereum"],
+  module: "paraspace/index.js",
+  twitter: "ParaSpace_NFT",
+  oracles: ["Internal"],
+  forkedFrom: [],
+  audit_links: ["https://docs.para.space/para-space/para-space/external-audits"],
+  listedAt: 1675872130
+},
+
 ]
 export default data2;

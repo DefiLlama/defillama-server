@@ -17,7 +17,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "aave",
     cmcId: "7278",
     twitter: "AaveAave",
-    governanceID: ["snapshot:aave.eth"]
+    governanceID: ["snapshot:aave.eth"],
   },
   {
     id: "Sushi",
@@ -79,6 +79,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "PodsFinance",
+    governanceID: ["snapshot:podsfinance.eth"]
   },
   {
     id: "ApeSwap",
@@ -91,6 +92,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8497",
     chains: [],
     twitter: "ape_swap",
+    governanceID: ["snapshot:apeswap-finance.eth"]
   },
   {
     id: "Parallel DeFi Super App",
@@ -117,7 +119,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "value_defi",
   },
   {
-    id: "Magik Finance",
+    id: " ",
     name: "Magik Finance",
     url: "https://magik.finance/",
     description:
@@ -139,6 +141,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "12922",
     chains: [],
     twitter: "HuckleberryDEX",
+    governanceID: ["snapshot:huckleberrydex.eth"]
   },
   {
     id: "MM Finance",
@@ -151,6 +154,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "MMFcrypto",
+    governanceID: ["snapshot:mmfinance.eth"]
   },
   {
     id: "Mycelium",
@@ -163,7 +167,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "21437",
     chains: [],
     twitter: "mycelium_xyz",
-    governanceID: ["snapshot:tracer.eth", "myceliumgrowth.eth"]
+    governanceID: ["snapshot:tracer.eth", "snapshot:myceliumgrowth.eth"]
   },
   {
     id: "Bancor",
@@ -189,6 +193,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "1359",
     chains: [],
     twitter: "Spirit_Swap",
+    governanceID: ["snapshot:spiritswap.eth"]
   },
   {
     id: "Interlay",
@@ -264,6 +269,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "11495",
     chains: [],
     twitter: "tombfinance",
+    governanceID: ["snapshot:tombfinance.eth"]
   },
   {
     id: "Volt Finance",
@@ -276,6 +282,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19160",
     chains: [],
     twitter: "Meter_IO",
+    governanceID: ["snapshot:voltswap.eth"]
   },
   {
     id: "Based Finance",
@@ -313,6 +320,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "10023",
     chains: [],
     twitter: "planet_finance",
+    governanceID: ["snapshot:planetfinance.eth"]
   },
   {
     id: "DAO Maker",
@@ -338,6 +346,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "MorphoLabs",
+    governanceID: ["snapshot:morpho.eth"]
   },
   {
     id: "Quickswap",
@@ -350,6 +359,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19966",
     chains: [],
     twitter: "QuickswapDEX",
+    governanceID: ["snapshot:quickvote.eth"]
   },
   {
     id: "iZUMI Finance",
@@ -399,6 +409,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "11794",
     chains: [],
     twitter: "handle_fi",
+    governanceID: ["snapshot:handlefx.eth"]
   },
   {
     id: "Omnidex",
@@ -497,6 +508,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "11415",
     chains: [],
     twitter: "yieldyak_",
+    governanceID: ["snapshot:yakherd.eth"]
   },
   {
     id: "Animal Farm",
@@ -509,6 +521,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "DRIPcommunity",
+    governanceID: ["snapshot:theanimalfarm.eth"]
   },
   {
     id: "Metavault",
@@ -521,6 +534,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "MetavaultDAO",
+    governanceID: ["snapshot:metavault-trade.eth", "snapshot:metavault-dao.eth"]
   },
   {
     id: "MUX Protocol",
@@ -533,6 +547,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5956",
     chains: [],
     twitter: "muxprotocol",
+    governanceID: ["snapshot:muxvote.eth"]
   },
   {
     id: "WOO Network",
@@ -569,6 +584,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "10134",
     chains: [],
     twitter: "PolycatFinance",
+    governanceID: ["snapshot:polycatfi.eth"]
   },
   {
     id: "mStable",
@@ -618,6 +634,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SperaxUSD",
+    governanceID: ["snapshot:speraxdao.eth"]
   },
   {
     id: "Opyn",
@@ -642,6 +659,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5841",
     chains: [],
     twitter: "nest_protocol",
+    governanceID: ["snapshot:nestecosystem.eth"]
   },
   {
     id: "BAO Finance",
@@ -654,6 +672,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "BaoFinance",
+    governanceID: ["snapshot:pandaswapbsc.eth", "snapshot:baovotes.eth"]
   },
   {
     id: "UniWswap",
@@ -678,6 +697,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "2873",
     chains: [],
     twitter: "MetronomeDAO",
+    governanceID: ["snapshot:metronome.eth"]
   },
   {
     id: "Paraluni",
@@ -750,6 +770,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8043",
     chains: [],
     twitter: "TheMahaDAO",
+    governanceID: ["snapshot:maha.eth"]
   },
   {
     id: "Tethys Finance",
@@ -762,6 +783,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "16640",
     chains: [],
     twitter: "tethysfinance",
+    governanceID: ["snapshot:tethysswap.eth"]
   },
   {
     id: "Timeless",
@@ -774,6 +796,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "23236",
     chains: [],
     twitter: "Timeless_Fi",
+    governanceID: ["snapshot:timelessfi.eth"]
   },
   {
     id: "Cap Finance",
@@ -798,6 +821,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "18945",
     chains: [],
     twitter: "SphereDeFi",
+    governanceID: ["snapshot:spherefinance.eth"]
   },
 ];
 

@@ -79,7 +79,7 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   tokens?: ITokens;
   isParentProtocol?: boolean;
   raises: Array<IRaise>;
-  metrics?: IJSON<boolean>
+  metrics?: IJSON<boolean>;
 }
 
 export interface IProtocol
@@ -97,6 +97,7 @@ export interface IProtocol
   fdv?: number;
   staking?: number;
   pool2?: number;
+  tokenBreakdowns: { [key: string]: number };
 }
 
 export type LiteProtocol = Pick<

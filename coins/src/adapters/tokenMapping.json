@@ -1152,6 +1152,12 @@
       "symbol": "BNB",
       "to": "bsc:0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
     },
+    "0xC5c9fB6223A989208Df27dCEE33fC59ff5c26fFF": {
+      "name": "ParaSpace Compound APE",
+      "decimals": "18",
+      "symbol": "cAPE",
+      "to": "ethereum:0x4d224452801ACEd8B2F0aebE155379bb5D594381"
+    },
     "0xeb637a9ab6be83c7f8c79fdaa62e1043b65534f0": {
       "name": "BXHToken",
       "decimals": "18",

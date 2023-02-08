@@ -115,6 +115,10 @@ export default {
           token: "0xe785e82358879f061bc3dcac6f0444462d4b5330",
           oracle: "0xDdf0B85C600DAF9e308AFed9F597ACA212354764",
         },
+        {   // Sewer Pass
+          token: "0x764AeebcF425d56800eF2c84F2578689415a2DAa",
+          oracle: "0xA75a865d973276ba2f6D6A75C2D02f5d0c07b06f",
+        },
       ]
     }
   ]

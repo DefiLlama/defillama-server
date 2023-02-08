@@ -24389,7 +24389,7 @@ listedAt: 1650804679
 {
   id: "2514",
   name: "cantOHM",
-  address: "0x533C0f08BE45eaaC821392B85E67Fb0c7DC2cab7",
+  address: "canto:0x533C0f08BE45eaaC821392B85E67Fb0c7DC2cab7",
   symbol: "cOHM",
   url: "https://app.cantohm.money",
   description:
@@ -24407,6 +24407,50 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   listedAt: 1675860428
+},
+{
+  id: "2515",
+  name: "cantOHM",
+  address: "canto:0xfC65316f26949B268f82519256C159B23ACC938F",
+  symbol: "MNF",
+  url: "https://app.manifesto.finance",
+  description:
+    "$MNF is the biggest temporary decentralized reserve currency for Canto",
+  chain: "Canto",
+  logo: `${baseIconsUrl}/manifesto.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Reserve Currency",
+  chains: ["Canto"],
+  module: "manifesto/index.js",
+  twitter: "ManifestoDAO",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675872114
+},
+{
+  id: "2516",
+  name: "Phezzan Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://phezzan.xyz",
+  description:
+    "Phezzan Protocol is an orderbook perpetual DEX that enables retail liquidity on @zkSync 2.0",
+  chain: "zkSync",
+  logo: `${baseIconsUrl}/phezzan-protocol.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["zkSync"],
+  module: "phezzan/index.js",
+  twitter: "PhezzanProtocol",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675872118
 },
 ]
 export default data2;

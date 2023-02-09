@@ -556,7 +556,7 @@ const data2: Protocol[] =  [
   description: "Jones DAO is a yield, strategy, and liquidity protocol for options, with vaults that enable 1-click access to institutional-grade options strategies while unlocking liquidity and capital efficiency for DeFi options with yield-bearing options-backed asset tokens.",
   chain: "Arbitrum",
   logo: `${baseIconsUrl}/jones-dao.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "jones-dao",
   cmcId: "17743",
@@ -566,6 +566,7 @@ const data2: Protocol[] =  [
   forkedFrom: [],
   module: "jones-dao/index.js",
   twitter: "DAOJonesOptions",
+  audit_links: ["https://docs.jonesdao.io/jones-dao/other/security"],
   listedAt: 1645235945,
 },
 {

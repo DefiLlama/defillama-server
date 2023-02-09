@@ -1385,6 +1385,7 @@ const data: Protocol[] = [
     category: "Yield Aggregator",
     chains: ["Ethereum", "Binance", "Arbitrum"],
     module: "badgerdao.js",
+    treasury: "badger-dao.js",
     twitter: "Yield Aggregator",
     audit_links: [
       "https://badger.finance/wp-content/uploads/2021/01/HAECHI-AUDIT-BadgerDAO-Smart-Contract-Audit-Report-1.pdf",
@@ -17453,6 +17454,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Reserve Currency",
     chains: ["Fantom", "Moonriver", "Binance", "Ethereum"],
     module: "fantOHM/index.js",
+    treasury: "fantohm-dao.js",
     twitter: "FantohmDAO",
     forkedFrom: ["Olympus DAO"],
     oracles: ["DIA"],

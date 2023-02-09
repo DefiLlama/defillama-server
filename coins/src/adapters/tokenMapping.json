@@ -1373,6 +1373,12 @@
       "decimals": "18",
       "symbol": "sdCRV",
       "to": "coingecko#stake-dao-crv"
+    },
+    "0x875773784af8135ea0ef43b5a374aad105c5d39e": {
+      "name": "IDLE",
+      "decimals": "18",
+      "symbol": "IDLE",
+      "to": "coingecko#idle"
     }
   },
   "klaytn": {
@@ -2151,6 +2157,12 @@
       "decimals": "18",
       "symbol": "WORK",
       "to": "ethereum:0x123"
+    },
+    "0xc25351811983818c9fe6d8c580531819c8ade90f": {
+      "name": "IDLE Polygon",
+      "decimals": "18",
+      "symbol": "IDLE",
+      "to": "coingecko#idle"
     }
   },
   "arbitrum": {

@@ -1367,6 +1367,12 @@
       "decimals": "18",
       "symbol": "SPETHWIN",
       "to": "coingecko#staked-ether"
+    },
+    "0xd1b5651e55d4ceed36251c61c50c889b36f6abb5": {
+      "name": "Stake DAO CRV",
+      "decimals": "18",
+      "symbol": "sdCRV",
+      "to": "coingecko#stake-dao-crv"
     }
   },
   "klaytn": {

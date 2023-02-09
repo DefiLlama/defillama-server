@@ -224,7 +224,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 1666600000,
   },
-  "RSK": {
+  "Rootstock": {
     geckoId: "rootstock",
     symbol: "RBTC",
     cmcId: "3626",
@@ -1325,6 +1325,7 @@ chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
 chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
+chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -1350,6 +1351,8 @@ export function transformNewChainName(chain: string) {
         return "Milkomeda C1"
     case "Elrond":
       return "MultiversX"
+    case "RSK":
+      return "Rootstock"
     default:
       return chain
   }
@@ -1381,6 +1384,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
     case "elrond":
       return useNewChainNames ? "MultiversX" : "Elrond"
+    case "rsk":
+      return useNewChainNames ? "Rootstock" : "RSK"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -1397,8 +1402,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "EOS"
     case "neo":
       return "NEO"
-    case "rsk":
-      return "RSK"
     case "iotex":
       return "IoTeX"
     case "thundercore":

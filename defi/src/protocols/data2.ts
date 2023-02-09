@@ -24523,5 +24523,52 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675965146
 },
+{
+  id: "2520",
+  name: "Gnosis DAO",
+  address: "0x6810e776880c02933d47db1b9fc05908e5386b96",
+  symbol: "GNO",
+  url: "https://www.gnosis.io",
+  description:
+    "Decentralized infrastructure for the Ethereum ecosystem.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/gnosis-dao.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  treasury: "gnosis-dao.js",
+  twitter: "GnosisDAO",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675969377
+},
+{
+  id: "2521",
+  name: "Ethereum Foundation",
+  address: null,
+  symbol: "-",
+  url: "https://ethereum.foundation",
+  description:
+    "The Ethereum Foundation (EF) is a non-profit that supports the Ethereum ecosystem. We are part of a larger community of organizations and individuals that fund protocol development, grow the ecosystem, and advocate for Ethereum.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ethereum-foundation.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  treasury: "eth-foundation.js",
+  twitter: "ethereum",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675969379
+},
+
 ]
 export default data2;

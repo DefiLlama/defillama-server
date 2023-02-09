@@ -4746,6 +4746,7 @@ const data: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     module: "inverse/index.js",
+    treasury: "inverse.js",
     twitter: "InverseFinance",
     parentProtocol: "Inverse Finance",
     forkedFrom: ["Compound"],

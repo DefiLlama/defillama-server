@@ -4647,7 +4647,7 @@ const data2: Protocol[] =  [
   oracles: [],
   forkedFrom: [],
   module: "jpeg-d/index.js",
-  treasury: "jpeg-d",
+  treasury: "jpegd",
   twitter: "JPEGd_69",
   audit_links: ["https://docs.jpegd.io/other-links/audits"],
   governanceID: ["snapshot:jpeg’d.eth"],

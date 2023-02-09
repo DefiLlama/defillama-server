@@ -2584,6 +2584,7 @@ const data: Protocol[] = [
     module: "metronome/index.js",
     twitter: "MetronomeDAO",
     parentProtocol: "Metronome",
+    treasury: "metronome.js",
     audit_links: ["https://github.com/autonomoussoftware/metronome-audits"],
   },
   {

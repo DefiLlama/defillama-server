@@ -24569,6 +24569,29 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675969379
 },
+{
+  id: "2522",
+  name: "Nouns",
+  address: null,
+  symbol: "-",
+  url: "https://nouns.wtf",
+  description:
+    "Nouns is a community-owned brand that makes a positive impact by funding ideas and fostering collaboration. From collectors and technologists, to non-profits and brands, Nouns is for everyone..",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/nouns.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  treasury: "nouns.js",
+  twitter: "nounsdao",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675976057
+},
 
 ]
 export default data2;

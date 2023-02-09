@@ -20140,7 +20140,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://neptunemutual.com",
   description:
-    "Neptune mutual follows a parametric insurance model, meaning it provides payout on the basis of parameters instead of individual claim assessments. Upon the resolution of an incident, all the policyholders of the affected protocol will receive the payouts. Neptune Mutual eliminates individual claim assessments which makes policy easy to claim, faster, and much more reliable.",
+    "Neptune Mutual follows a parametric insurance model, meaning it provides payout on the basis of parameters instead of individual claim assessments. Upon the resolution of an incident, all the policyholders of the affected protocol will receive the payouts. Neptune Mutual eliminates individual claim assessments which makes policy easy to claim, faster, and much more reliable.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/neptune-mutual.png`,
   audits: "2",

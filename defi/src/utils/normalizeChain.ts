@@ -1350,6 +1350,8 @@ export function transformNewChainName(chain: string) {
         return "Milkomeda C1"
     case "Elrond":
       return "MultiversX"
+    case "RSK":
+      return "Rootstock"
     default:
       return chain
   }
@@ -1398,7 +1400,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "neo":
       return "NEO"
     case "rsk":
-      return "RSK"
+      return useNewChainNames ? "RSK" : "Rootstock"
     case "iotex":
       return "IoTeX"
     case "thundercore":

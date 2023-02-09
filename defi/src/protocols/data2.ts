@@ -24475,6 +24475,51 @@ listedAt: 1650804679
   audit_links: ["https://docs.para.space/para-space/para-space/external-audits"],
   listedAt: 1675872130
 },
-
+{
+  id: "2518",
+  name: "Gitcoin",
+  address: "0xde30da39c46104798bb5aa3fe8b9e0e1f348163f",
+  symbol: "GTC",
+  url: "https://gitcoin.co",
+  description:
+    "Empowering communities to fund, build, & protect what matters",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/gitcoin.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  treasury: "gitcoin.js",
+  twitter: "gitcoin",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675965144
+},
+{
+  id: "2519",
+  name: "ENS",
+  address: "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
+  symbol: "ENS",
+  url: "https://ens.domains",
+  description:
+    "Decentralised naming for wallets, websites, & more.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ens.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  treasury: "ens.js",
+  twitter: "ensdomains",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1675965146
+},
 ]
 export default data2;

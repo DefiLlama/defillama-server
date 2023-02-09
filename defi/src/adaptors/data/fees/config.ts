@@ -310,5 +310,8 @@ export default {
     },
     "x2y2": {
         enabled: true
+    },
+    "buffer": {
+        enabled: true
     }
 } as AdaptorsConfig

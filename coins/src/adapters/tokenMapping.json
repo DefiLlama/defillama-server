@@ -1356,13 +1356,13 @@
       "symbol": "FLOKI",
       "to": "coingecko#floki"
     },
-    "0xdd4d117723C257CEe402285D3aCF218E9A8236E1": {
+    "0xdd4d117723c257cee402285d3acf218e9a8236e1": {
       "name": "PoolTogether aUSDC Ticket",
       "decimals": "6",
       "symbol": "PTaUSDC",
       "to": "coingecko#usd-coin"
     },
-    "0xD5f60154BEf3564EbFBe9bB236595f0da548a742": {
+    "0xd5f60154bef3564ebfbe9bb236595f0da548a742": {
       "name": "ETHWIN SPONSOR",
       "decimals": "18",
       "symbol": "SPETHWIN",

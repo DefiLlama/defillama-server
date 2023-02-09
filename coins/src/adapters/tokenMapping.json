@@ -1356,7 +1356,7 @@
       "symbol": "FLOKI",
       "to": "coingecko#floki"
     },
-    "0xdd4d117723C257CEe402285D3aCF218E9A8236E1": {
+    "0xdd4d117723c257cee402285d3acf218e9a8236e1": {
       "name": "PoolTogether aUSDC Ticket",
       "decimals": "6",
       "symbol": "PTaUSDC",

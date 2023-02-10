@@ -479,7 +479,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://meteora.ag/",
     description:
       "Building the most secure, sustainable & composable yield layer for all of Solana and DeFi",
-    logo: `${baseIconsUrl}/mercurial fi.jpg`,
+    logo: `${baseIconsUrl}/meteora.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

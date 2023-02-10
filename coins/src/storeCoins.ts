@@ -9,7 +9,7 @@ const withTimeout = (millis: number, promise: any) => {
     setTimeout(() => {
       reject(`timed out after ${millis / 1000} s.`);
       resolve;
-    }, millis)
+    }, millis),
   );
   return Promise.race([promise, timeout]);
 };
@@ -24,20 +24,21 @@ export default async function handler(event: any) {
       try {
         const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
         const resultsWithoutDuplicates = filterWritesWithLowConfidence(
-          results.flat()
+          results.flat(),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
           await batchWrite(resultsWithoutDuplicates.slice(i, i + step), true);
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {
+        console.error(e);
         await sendMessage(
           `${a[i][0]} adapter failed: ${e}`,
           process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-          true
+          true,
         );
       }
-    })
+    }),
   );
 }
 // ts-node coins/src/storeCoins.ts

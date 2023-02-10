@@ -15365,7 +15365,8 @@ listedAt: 1650804679
   forkedFrom: ["Aave"],
   module: "uwulend/index.js",
   twitter: "UwU_Lend",
-  listedAt: 1663811025
+  listedAt: 1663811025,
+  treasury: "uwulend.js"
 },
 {
   id: "2112",

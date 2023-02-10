@@ -1379,6 +1379,12 @@
       "decimals": "18",
       "symbol": "IDLE",
       "to": "coingecko#idle"
+    },
+    "0x55c08ca52497e2f1534b59e2917bf524d4765257": {
+      "name": "UwU",
+      "decimals": "18",
+      "symbol": "UwU",
+      "to": "coingecko#uwu-lend"
     }
   },
   "klaytn": {

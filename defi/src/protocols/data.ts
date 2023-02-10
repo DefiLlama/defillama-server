@@ -5750,7 +5750,7 @@ const data: Protocol[] = [
     module: "mercurial.js",
     twitter: "MercurialFi",
     openSource: false,
-    parentProtocol: "Mercurial Fi",
+    parentProtocol: "Meteora",
   },
   {
     id: "386",

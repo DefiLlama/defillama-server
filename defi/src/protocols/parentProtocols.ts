@@ -474,16 +474,16 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "pando_im",
   },
   {
-    id: "Mercurial Fi",
-    name: "Mercurial Fi",
-    url: "https://www.mercurial.finance/about",
+    id: "Meteora",
+    name: "Meteora",
+    url: "https://meteora.ag/",
     description:
-      "Building DeFi's first dynamic yield infrastructure on Solana",
+      "Building the most secure, sustainable & composable yield layer for all of Solana and DeFi",
     logo: `${baseIconsUrl}/mercurial fi.jpg`,
-    gecko_id: "mercurial",
-    cmcId: "9549",
+    gecko_id: null,
+    cmcId: null,
     chains: [],
-    twitter: "MercurialFi",
+    twitter: "MeteoraAG",
   },
   {
     id: "Folks Finance",

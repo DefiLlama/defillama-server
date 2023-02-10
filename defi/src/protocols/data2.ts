@@ -24499,7 +24499,6 @@ listedAt: 1650804679
   twitter: "gitcoin",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675965144
 },
 {
   id: "2519",
@@ -24522,7 +24521,6 @@ listedAt: 1650804679
   twitter: "ensdomains",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675965146
 },
 {
   id: "2520",
@@ -24545,7 +24543,6 @@ listedAt: 1650804679
   twitter: "GnosisDAO",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675969377
 },
 {
   id: "2521",
@@ -24568,7 +24565,6 @@ listedAt: 1650804679
   twitter: "ethereum",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675969379
 },
 {
   id: "2522",
@@ -24591,7 +24587,6 @@ listedAt: 1650804679
   twitter: "nounsdao",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1675976057
 },
 {
   id: "2523",

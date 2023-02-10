@@ -24593,6 +24593,27 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1675976057
 },
-
+{
+  id: "2523",
+  name: "casinocronos",
+  address: null,
+  symbol: "-",
+  url: "https://casinocronos.com/#/swap",
+  description:
+    "Gambling & Yield farming on Cronos.",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/casinocronos.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Cronos"],
+  module: "casinocronos/index.js",
+  twitter: "casinocronos",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  listedAt: 1676023911
+},
 ]
 export default data2;

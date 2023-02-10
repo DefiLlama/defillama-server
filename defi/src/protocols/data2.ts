@@ -24596,8 +24596,8 @@ listedAt: 1650804679
 {
   id: "2523",
   name: "casinocronos",
-  address: null,
-  symbol: "-",
+  address: "cronos:0x95ac4a86c0677971c4125ACe494e3C17a87a4C61",
+  symbol: "casino",
   url: "https://casinocronos.com/#/swap",
   description:
     "Gambling & Yield farming on Cronos.",

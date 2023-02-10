@@ -24610,5 +24610,27 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   listedAt: 1676023911
 },
+{
+  id: "2524",
+  name: "Friends With Benefits",
+  address: "0x35bD01FC9d6D5D81CA9E055Db88Dc49aa2c699A8",
+  symbol: "FWB",
+  url: "https://www.fwb.help/",
+  description:
+    "A new kind of social network - owned by the creatives and builders who believe in the promise of a better internet",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/friends-with-benefits.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "friends-with-benefits-pro",
+  cmcId: "10090",
+  category: "Services",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  treasury: "friendswithbenefits.js",
+  twitter: "FWBtweets",
+  oracles: [],
+  forkedFrom: [],
+},
 ]
 export default data2;

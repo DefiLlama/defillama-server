@@ -313,5 +313,8 @@ export default {
     },
     "buffer": {
         enabled: true
+    },
+    "betswirl": {
+        enabled: true
     }
 } as AdaptorsConfig

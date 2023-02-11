@@ -23,8 +23,9 @@ const getAdapterKey = (
     adapterId: string,
     adaptorRecordType: AdaptorRecordType,
     adaptorType: AdapterType,
+    protocolType: ProtocolType,
     chainFilter?: string
-) => `generateCleanRecords/${adaptorType}/${adapterId}/${adaptorRecordType}_${chainFilter}`
+) => `generateCleanRecords/${adaptorType}/${adapterId}/${protocolType}/${adaptorRecordType}_${chainFilter}`
 
 export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
     console.info("Generating summary for:", adapter.name, "with params", adaptorRecordType, adaptorType, chainFilter)
@@ -79,6 +80,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
                 adapter.id,
                 adaptorRecordType,
                 adaptorType,
+                adapter.protocolType,
                 chainFilter
             ),
             async () => generateCleanRecords(

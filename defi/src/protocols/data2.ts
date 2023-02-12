@@ -24632,5 +24632,27 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
 },
+{
+  id: "2525",
+  name: "Covo Finance",
+  address: "polygon:0x681D3e1b54B3E1a338feB5B076cebf53a697d51F",
+  symbol: "COVO",
+  url: "https://covo.finance",
+  description:
+    "Covo Finance is a decentralized trading platform that offers spot and perpetual trading with low swap fees and zero market impact. The platform offers a maximum leverage of 50x on major cryptos and is backed by a singular multi-asset pool that generates income for liquidity providers through fees garnered from market making, swap transactions, leveraged trading (including spreads, funding fees, and liquidations), and rebalancing of assets",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/covo-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Polygon"],
+  module: "covo-finance/index.js",
+  twitter: "covofinance",
+  oracles: ["Chainlink"],
+  forkedFrom: ["GMX"],
+  listedAt: 1676226573
+},
 ]
 export default data2;

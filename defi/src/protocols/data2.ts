@@ -14935,7 +14935,7 @@ listedAt: 1650804679
   url: "https://pirex.io/",
   description: "Pirex is a product by Redacted which creates liquid wrappers that allow for auto-compounding and the tokenization of future yield/vote events.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/pirex-convex.png`,
+  logo: `${baseIconsUrl}/pirex.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

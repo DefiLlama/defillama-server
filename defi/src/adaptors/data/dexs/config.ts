@@ -780,5 +780,8 @@ export default {
     },
     "jediswap": {
         enabled: true
+    },
+    "solidlizard": {
+        enabled: true
     }
 } as AdaptorsConfig

@@ -836,6 +836,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "PancakeSwap",
     governanceID: ["snapshot:cakevote.eth"]
   },
+  {
+    id: "ZyberSwap",
+    name: "ZyberSwap",
+    url: "https://www.zyberswap.io",
+    description:
+    "Zyberswap is one of the first decentralized exchanges (DEX) with an automated market-maker (AMM) on the Arbitrum blockchain. ",
+    logo: `${baseIconsUrl}/zyberswap.jpg`,
+    gecko_id: "zyberswap",
+    cmcId: "23419",
+    chains: [],
+    twitter: "zyberswap",
+  },
 ];
 
 export default parentProtocols;

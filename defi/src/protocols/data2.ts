@@ -23332,8 +23332,8 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/zyberswap-amm.jpg`,
   audits: "2",
   audit_note: null,
-  gecko_id: "zyberswap",
-  cmcId: "23419",
+  gecko_id: null,
+  cmcId: null,
   category: "Dexes",
   chains: ["Arbitrum"],
   module: "zyberswap/index.js",
@@ -23341,6 +23341,7 @@ listedAt: 1650804679
   oracles: ["TWAP"],
   forkedFrom: ["Uniswap"],
   audit_links: ["https://github.com/solidproof/projects/blob/main/ZyberSwap/SmartContract_Audit_Solidproof_Zyberswap.pdf"],
+  parentProtocol: "ZyberSwap",
   listedAt: 1674558950
 },
 {
@@ -24764,6 +24765,7 @@ listedAt: 1650804679
   twitter: "zyberswap",
   oracles: [],
   forkedFrom: [],
+  parentProtocol: "ZyberSwap",
   listedAt: 1676313508
 },
 

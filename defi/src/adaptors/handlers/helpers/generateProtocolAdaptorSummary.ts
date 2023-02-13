@@ -23,7 +23,7 @@ const getAdapterKey = (
     adapterId: string,
     adaptorRecordType: AdaptorRecordType,
     adaptorType: AdapterType,
-    protocolType: ProtocolType,
+    protocolType?: ProtocolType,
     chainFilter?: string
 ) => `generateCleanRecords/${adaptorType}/${adapterId}/${protocolType}/${adaptorRecordType}_${chainFilter}`
 

@@ -823,6 +823,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SphereDeFi",
     governanceID: ["snapshot:spherefinance.eth"]
   },
+  {
+    id: "PancakeSwap",
+    name: "PancakeSwap",
+    url: "https://pancakeswap.finance",
+    description:
+    "Trade. Earn. Win. NFT.",
+    logo: `${baseIconsUrl}/pancakeswap.jpg`,
+    gecko_id: "pancakeswap-token",
+    cmcId: "1165",
+    chains: [],
+    twitter: "PancakeSwap",
+    governanceID: ["snapshot:cakevote.eth"]
+  },
 ];
 
 export default parentProtocols;

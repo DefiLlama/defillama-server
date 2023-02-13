@@ -1807,7 +1807,7 @@ const data: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Binance"],
-    module: "pancake-swap.js",
+    module: "pancake-swap/index.js",
     twitter: "PancakeSwap",
     audit_links: ["https://docs.pancakeswap.finance/#is-it-safe"],
     forkedFrom: ["Uniswap"],

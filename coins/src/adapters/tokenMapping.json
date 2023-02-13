@@ -6163,6 +6163,12 @@
       "decimals": "18",
       "symbol": "gPAXG",
       "to": "coingecko#pax-gold"
+    },
+     "DBF6ABDB5F3D4267C039967515594453F4A31007FD838A566F563A01D2C2FB80": {
+      "name": "mars-protocol",
+      "decimals": "6",
+      "symbol": "MARS",
+      "to": "coingecko#mars-protocol-a7fcbcfb-fd61-4017-92f0-7ee9f9cc6da3"
     }
   },
   "bitindi": {

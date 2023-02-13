@@ -57,8 +57,5 @@ export const chainOverrides = {
     },
     'optimism': {
         category: "Rollup"
-    },
-    'polygon': {
-        category: "Rollup"
     }
 } as IJSON<Partial<ProtocolAdaptor>>

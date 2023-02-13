@@ -23322,14 +23322,14 @@ listedAt: 1650804679
 },
 {
   id: "2467",
-  name: "Zyberswap",
+  name: "Zyberswap AMM",
   address: null,
   symbol: "-",
   url: "https://www.zyberswap.io",
   description:
     "Community Driven Exchange on Arbitrum.",
   chain: "Arbitrum",
-  logo: `${baseIconsUrl}/zyberswap.jpg`,
+  logo: `${baseIconsUrl}/zyberswap-amm.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: "zyberswap",
@@ -24743,6 +24743,28 @@ listedAt: 1650804679
   forkedFrom: [],
   parentProtocol: "PancakeSwap",
   listedAt: 1676313502
+},
+{
+  id: "2530",
+  name: "ZyberSwap Stable",
+  address: null,
+  symbol: "-",
+  url: "https://app.zyberswap.io/exchange/swap",
+  description:
+    "Community Driven Exchange on Arbitrum.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/zyberswap-stable.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  module: "zyberswap-stableswap/index.js",
+  twitter: "zyberswap",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1676313508
 },
 
 ]

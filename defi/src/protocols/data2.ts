@@ -14929,9 +14929,9 @@ listedAt: 1650804679
 },
 {
   id: "2092",
-  name: "Pirex Convex",
-  address: "0xbce0cf87f513102f22232436cca2ca49e815c3ac",
-  symbol: "pxCVX",
+  name: "Pirex",
+  address: null,
+  symbol: "-",
   url: "https://pirex.io/",
   description: "Pirex is a product by Redacted which creates liquid wrappers that allow for auto-compounding and the tokenization of future yield/vote events.",
   chain: "Ethereum",
@@ -14940,15 +14940,15 @@ listedAt: 1650804679
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Services",
-  chains: ["Ethereum"],
+  category: "Yield",
+  chains: ["Ethereum", "Arbitrum"],
   oracles: [],
   forkedFrom: [],
   module: "pirex/index.js",
   twitter: "redactedcartel",
   audit_links: [
-    "https://omniscia.io/pirex-multi-token-convex-wrapper",
-    "https://drive.google.com/file/d/151iyZSiFhHmdEaSu3w-3ba19NKaERexH/view"
+    "https://docs.redacted.finance/products/pirex/convex/audits",
+    "https://docs.redacted.finance/products/pirex/gmx/audits",
   ],
   parentProtocol: "Redacted",
   listedAt: 1663257608

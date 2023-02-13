@@ -17103,6 +17103,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://omniscia.io/platypus-finance-governance-staking/",
     ],
     listedAt: 1638299790,
+    treasury: "platypus.js"
   },
   {
     id: "945",

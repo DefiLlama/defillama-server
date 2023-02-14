@@ -24724,14 +24724,14 @@ listedAt: 1650804679
 },
 {
   id: "2529",
-  name: "StableSwap",
+  name: "PancakeSwap StableSwap",
   address: "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
   symbol: "CAKE",
   url: "https://pancakeswap.finance/swap",
   description:
     "StableSwap on PancakeSwap is a feature to trade stable pairs with a lower slippage based on an invariant curve slippage function. It is designed to swap specific assets that are priced closely – such as USD stablecoin.",
   chain: "Binance",
-  logo: `${baseIconsUrl}/stableswap.jpg`,
+  logo: `${baseIconsUrl}/pancakeswap-stableswap.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

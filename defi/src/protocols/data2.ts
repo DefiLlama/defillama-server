@@ -5404,11 +5404,12 @@ const data2: Protocol[] =  [
 {
   id: "1654",
   name: "Scrub Money",
-  address: "cronos:0x49fB98F9b4a3183Cd88e7a115144fdf00fa6fB95",
+  address: "kava:0x990e157fC8a492c28F5B50022F000183131b9026",
   symbol: "LION",
   url: "https://scrub.money",
-  description: "Scrub Money is the first deflationary algorithmic token fork pegged to $SVN on the Cronos network with innovative new features.",
-  chain: "Cronos",
+  description: "Scrub Money is a decentralised cross-chain ecosystem currently building a fully backed stable coin and an innovative revenue share model. Driven by the vision to unite seamlessly commerce, trading, betting and gaming, along with NFT Collections and a NFT marketplace, the protocol empowers users by allowing them to purchase goods and services in real life using their funds on chain.\n\nThe main currency of the protocol is $LION, an algorithmic stablecoin, pegged to 0.025$ and in the process of being fully backed. $TIGER is a revenue-sharing token, designed to redistribute to all holders the profits of the protocol, incentivising long-term investing. Lastly, $BEAR whose liquidity is with BTC, has a limited supply and may be spent to pay the fees of all the financial services the team is about to launch.
+",
+  chain: "Kava",
   logo: `${baseIconsUrl}/scrub-money.png`,
   audits: "2",
   audit_note: null,

@@ -19500,7 +19500,7 @@ listedAt: 1650804679
   address: null,
   symbol: "-",
   url: "https://coinsquare.com",
-  description: "The New Coinsquare is here. Securely buy, HODL, and trade Bitcoin, Ethereum, and more on Coinsquare, Canada’s home for digital currency.",
+  description: "The New Coinsquare is here. Securely buy, HODL, and trade Bitcoin, Ethereum, and more on Coinsquare, Canada's home for digital currency.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/coinsquare.jpg`,
   audits: "0",
@@ -24852,6 +24852,29 @@ listedAt: 1650804679
   twitter: "OnePunchSwap",
   oracles: [],
   forkedFrom: [],
+},
+{
+  id: "2535",
+  name: "tBTC",
+  address: "0xcdf7028ceab81fa0c6971208e83fa7872994bee5",
+  symbol: "T",
+  url: "https://threshold.network/",
+  description:
+    "tBTC is Threshold's decentralized and permissionless bridge to bring BTC to the Ethereum network. tBTC has been designed to allow bitcoin holders to participate in Ethereum's Decentralized Finance (DeFi) applications. Users wishing to utilize their bitcoin on Ethereum can use the tBTC decentralized bridge to deposit their bitcoin into the system and get a minted tBTC token in their Ethereum wallet",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/tbtc.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "threshold-network-token",
+  cmcId: "17751",
+  category: "Bridge",
+  chains: ["Ethereum"],
+  module: "tbtc/index.js",
+  twitter: "TheTNetwork",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://leastauthority.com/blog/audits/audit-of-keep-network-tbtc-bridge-v2/"],
+  listedAt: 1676411129
 },
 ]
 export default data2;

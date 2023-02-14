@@ -316,5 +316,8 @@ export default {
     },
     "betswirl": {
         enabled: true
+    },
+    "zonic": {
+        enabled: true
     }
 } as AdaptorsConfig

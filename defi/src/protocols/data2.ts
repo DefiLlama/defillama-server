@@ -24747,14 +24747,14 @@ listedAt: 1650804679
 },
 {
   id: "2530",
-  name: "ZyberSwap Stable",
-  address: null,
-  symbol: "-",
+  name: "ZyberSwap Stableswap",
+  address: "arbitrum:0x3b475f6f2f41853706afc9fa6a6b8c5df1a2724c",
+  symbol: "ZYB",
   url: "https://app.zyberswap.io/exchange/swap",
   description:
     "Community Driven Exchange on Arbitrum.",
   chain: "Arbitrum",
-  logo: `${baseIconsUrl}/zyberswap-stable.jpg`,
+  logo: `${baseIconsUrl}/zyberswap-stableswap.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

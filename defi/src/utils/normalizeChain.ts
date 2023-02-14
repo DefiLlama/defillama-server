@@ -262,6 +262,7 @@ export const chainCoingeckoIds = {
     geckoId: "tron",
     symbol: "TRON",
     cmcId: "1958",
+    categories: ["EVM"],
   },
   "Icon": {
     geckoId: "icon",
@@ -827,6 +828,7 @@ export const chainCoingeckoIds = {
     geckoId: "hedera-hashgraph",
     symbol: "HBAR",
     cmcId: "4642",
+    categories: ["EVM"],
   },
   "Findora": {
     geckoId: "findora",

@@ -24835,7 +24835,7 @@ listedAt: 1650804679
   listedAt: 1676376896
 },
 {
-  id: "2532",
+  id: "2534",
   name: "OnePunchSwap",
   address: null,
   symbol: "-",

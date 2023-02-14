@@ -11011,7 +11011,7 @@ listedAt: 1650804679
   treasury: "betswirl.js",
   cmcId: "18453",
   category: "Prediction Market",
-  chains: ["Polygon", "Binance", "Avalanche"],
+  chains: ["Binance"],
   oracles: ["Chainlink"],
   forkedFrom: [],
   module: "betswirl/index.js",

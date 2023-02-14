@@ -24810,7 +24810,6 @@ listedAt: 1650804679
   twitter: "ZonicApp",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1676372619
 },
 {
   id: "2533",

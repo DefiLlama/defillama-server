@@ -46,4 +46,7 @@ export class SwapEvent {
 
   @Column("text", { nullable: true })
   routePlace: string;
+
+  @Column("json", { nullable: true })
+  route: any;
 }

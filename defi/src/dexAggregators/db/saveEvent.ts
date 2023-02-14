@@ -17,6 +17,7 @@ export const saveEvent = async ({
   amountUsd,
   slippage,
   routePlace,
+  route,
 }: SwapEvent) => {
   const event = new SwapEvent();
   event.aggregator = aggregator;
@@ -32,6 +33,7 @@ export const saveEvent = async ({
   event.amountUsd = amountUsd;
   event.slippage = slippage;
   event.routePlace = routePlace;
+  event.route = route;
 
   const res = await (await connection).manager.save(event);
   return res;

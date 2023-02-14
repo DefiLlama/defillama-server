@@ -18,7 +18,13 @@ function getCGMarketsDataURLs() {
 async function getAllCGTokensList(): Promise<Array<{ name: string; symbol: string; image: string }>> {
   const data = await arrayFetcher(getCGMarketsDataURLs());
 
-  return data?.flat()?.map((t) => ({ ...t, symbol: t.symbol === "mimatic" ? "mai" : t.symbol })) ?? [];
+  return (
+    data?.flat()?.map((t) => ({
+      ...t,
+      symbol: t.symbol === "mimatic" ? "mai" : t.symbol,
+      image2: `https://icons.llamao.fi/icons/tokens/0/${t.name.toLowerCase()}?h=24&w=24`,
+    })) ?? []
+  );
 }
 
 const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {

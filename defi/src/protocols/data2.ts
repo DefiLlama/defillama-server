@@ -24832,7 +24832,6 @@ listedAt: 1650804679
   twitter: "THORWalletDEX",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1676376896
 },
 {
   id: "2534",
@@ -24854,7 +24853,6 @@ listedAt: 1650804679
   twitter: "OnePunchSwap",
   oracles: [],
   forkedFrom: [],
-  listedAt: 1676376898
 },
 ]
 export default data2;

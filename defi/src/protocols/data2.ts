@@ -24768,6 +24768,49 @@ listedAt: 1650804679
   parentProtocol: "ZyberSwap",
   listedAt: 1676313508
 },
-
+{
+  id: "2531",
+  name: "Vaultka",
+  address: null,
+  symbol: "-",
+  url: "https://www.vaultka.com",
+  description:
+    "Vaultka offers a wide spectrum of vault strategies that aim to provide products that suit different risk appetites and tolerance for the community. With our automated processes for our strategies, users will be hassle-free.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/vaultka.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Arbitrum"],
+  module: "vaultka/index.js",
+  twitter: "Vaultkaofficial",
+  oracles: ["Chainlink"],
+  forkedFrom: ["Rage Trade"],
+  listedAt: 1676372614
+},
+{
+  id: "2532",
+  name: "Zonic",
+  address: null,
+  symbol: "-",
+  url: "https://zonic.app",
+  description:
+    "NFT Marketplace for Optimism and Arbitrum by the team of Apetimism",
+  chain: "Optimism",
+  logo: `${baseIconsUrl}/zonic.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Arbitrum", "Optimism"],
+  module: "dummy.js",
+  twitter: "ZonicApp",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1676372619
+},
 ]
 export default data2;

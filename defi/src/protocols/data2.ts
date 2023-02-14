@@ -24812,5 +24812,49 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1676372619
 },
+{
+  id: "2533",
+  name: "THORWallet DEX",
+  address: null,
+  symbol: "-",
+  url: "https://www.thorwallet.org",
+  description:
+    "True cross-chain DEX",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/thorwallet-dex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Cross Chain",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  twitter: "THORWalletDEX",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1676376896
+},
+{
+  id: "2532",
+  name: "OnePunchSwap",
+  address: null,
+  symbol: "-",
+  url: "https://www.onepunch.finance",
+  description:
+    "A DEX for capital-efficiency, best-price, and zero slippage.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/onepunchswap.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Binance"],
+  module: "dummy.js",
+  twitter: "OnePunchSwap",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1676376898
+},
 ]
 export default data2;

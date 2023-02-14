@@ -22127,8 +22127,8 @@ listedAt: 1650804679
 {
   id: "2414",
   name: "Blur",
-  address: null,
-  symbol: "-",
+  address: "0x5283d291dbcf85356a21ba090e6db59121208b44",
+  symbol: "BLUR",
   url: "https://blur.io/",
   description:
     "The NFT marketplace for pro traders",
@@ -22136,7 +22136,7 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/blur.png`,
   audits: "0",
   audit_note: null,
-  gecko_id: null,
+  gecko_id: "blur",
   cmcId: null,
   category: "NFT Marketplace",
   chains: ["Ethereum"],

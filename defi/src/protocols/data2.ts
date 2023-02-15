@@ -24899,5 +24899,26 @@ listedAt: 1650804679
   listedAt: 1676431477,
   parentProtocol: "Scrub Finance"
 },
+{
+  id: "2537",
+  name: "Flux Finance",
+  address: null,
+  symbol: "-",
+  url: "https://fluxfinance.com",
+  description: "Flux Finance is a decentralized lending platform supporting permissioned assets",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/flux-finance.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: ["Compound"],
+  module: "fluxfinance/index.js",
+  twitter: "FluxDeFi",
+  listedAt: 1676431956,
+},
 ]
 export default data2;

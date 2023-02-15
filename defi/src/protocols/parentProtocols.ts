@@ -848,6 +848,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "zyberswap",
   },
+  {
+    id: "Scrub Finance",
+    name: "Scrub Finance",
+    url: "https://scrub.money",
+    description:
+    "Decentralized commerce and services ecosystem",
+    logo: `${baseIconsUrl}/scrub-money.png`,
+    gecko_id: "lion-scrub-finance",
+    cmcId: "19410",
+    chains: [],
+    twitter: "ScrubFinance",
+  },
 ];
 
 export default parentProtocols;

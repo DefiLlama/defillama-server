@@ -5422,6 +5422,7 @@ const data2: Protocol[] =  [
   twitter: "ScrubFinance",
   audit_links: ["https://scrub.finance/audit.pdf"] ,
   listedAt: 1650038462,
+  parentProtocol: "Scrub Finance"
 },
 {
   id: "1655",
@@ -24875,6 +24876,28 @@ listedAt: 1650804679
   forkedFrom: [],
   audit_links: ["https://leastauthority.com/blog/audits/audit-of-keep-network-tbtc-bridge-v2/"],
   listedAt: 1676411129
+},
+{
+  id: "2536",
+  name: "Lion Commerce",
+  address: "kava:0x990e157fC8a492c28F5B50022F000183131b9026",
+  symbol: "LION",
+  url: "https://commerce.scrub.money",
+  description: "Lion Commerce empowers users to effortlessly purchase real-life products and gift cards with their on-chain assets. Plus, the innovative staking system enables them to earn additional discounts on their purchases. Powered by Scrub Money and currently available on Kava and Cronos chains, with many more to come, Lion Commerce is the future of decentralized shopping. Join Lion Commerce today and experience a whole new way of shopping!",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/lion-commerce.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "lion-scrub-money-2",
+  cmcId: null,
+  category: "Services",
+  chains: ["Kava"],
+  oracles: ["Internal"],
+  forkedFrom: [],
+  module: "lioncommerce/index.js",
+  twitter: "ScrubFinance",
+  listedAt: 1676431477,
+  parentProtocol: "Scrub Finance"
 },
 ]
 export default data2;

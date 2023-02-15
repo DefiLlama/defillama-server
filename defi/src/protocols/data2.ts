@@ -5423,7 +5423,7 @@ const data2: Protocol[] =  [
   twitter: "ScrubFinance",
   audit_links: ["https://scrub.finance/audit.pdf"] ,
   listedAt: 1650038462,
-  parentProtocol: "Scrub Finance"
+  parentProtocol: "Scrub Money"
 },
 {
   id: "1655",
@@ -24900,7 +24900,7 @@ listedAt: 1650804679
   module: "lioncommerce/index.js",
   twitter: "ScrubFinance",
   listedAt: 1676431477,
-  parentProtocol: "Scrub Finance"
+  parentProtocol: "Scrub Money"
 },
 {
   id: "2537",

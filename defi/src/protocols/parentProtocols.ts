@@ -849,8 +849,8 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "zyberswap",
   },
   {
-    id: "Scrub Finance",
-    name: "Scrub Finance",
+    id: "Scrub Money",
+    name: "Scrub Money",
     url: "https://scrub.money",
     description:
     "Decentralized commerce and services ecosystem",

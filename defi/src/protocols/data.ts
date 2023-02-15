@@ -5734,7 +5734,7 @@ const data: Protocol[] = [
   },
   {
     id: "385",
-    name: "Meteora Pools",
+    name: "Meteora pools",
     address: "solana:MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K",
     symbol: "MER",
     url: "https://mercurial.finance/",

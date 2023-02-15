@@ -17840,7 +17840,7 @@ listedAt: 1650804679
 },
 {
   id: "2223",
-  name: "Meteora Vaults",
+  name: "Meteora vaults",
   address: "solana:MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K",
   symbol: "MER",
   url: "https://vaults.mercurial.finance",

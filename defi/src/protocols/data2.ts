@@ -24945,5 +24945,27 @@ listedAt: 1650804679
   audit_links: ["https://docs.parcl.co/security"],
   listedAt: 1676483939
 },
+{
+  id: "2539",
+  name: "unshETH",
+  address: null,
+  symbol: "-",
+  url: "https://unsheth.xyz",
+  description: "unshETH is a protocol that aims to further validator decentralization by creating a marketplace for staked ETH liquidity in which LSD protocols can compete for ETH by offering the best yield.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/unsheth.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Liquid Staking",
+  chains: ["Ethereum"],
+  oracles: [],
+  forkedFrom: ["Frax Ether"],
+  module: "unsheth/index.js",
+  twitter: "unsheth_xyz",
+  listedAt: 1676489078
+},
+
 ]
 export default data2;

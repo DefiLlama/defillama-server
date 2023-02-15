@@ -17840,14 +17840,14 @@ listedAt: 1650804679
 },
 {
   id: "2223",
-  name: "Mercurial Vaults",
+  name: "Meteora Vaults",
   address: "solana:MERt85fc5boKw3BW1eYdxonEuJNvXbiMbs6hvheau5K",
   symbol: "MER",
   url: "https://vaults.mercurial.finance",
   description:
-    "Mercurial Dynamic Yield Layer allows any protocol, including wallets, treasuries, and Automated Market Makers (AMMs), to build on top of this layer to generate more returns for their Liquidity Providers (LPs). The liquidity of any protocol built on this yield infra can be dynamically allocated to various lending platforms.",
+    "Meteora Dynamic Yield Layer allows any protocol, including wallets, treasuries, and Automated Market Makers (AMMs), to build on top of this layer to generate more returns for their Liquidity Providers (LPs). The liquidity of any protocol built on this yield infra can be dynamically allocated to various lending platforms.",
   chain: "Solana",
-  logo: `${baseIconsUrl}/mercurial-vaults.jpg`,
+  logo: `${baseIconsUrl}/meteora.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,
@@ -17855,7 +17855,7 @@ listedAt: 1650804679
   category: "Yield Aggregator",
   chains: ["Solana"],
   module: "mercurical-vaults/index.js",
-  twitter: "MercurialFi", 
+  twitter: "MeteoraAG", 
   forkedFrom: [],
   oracles: [],
   audit_links: [

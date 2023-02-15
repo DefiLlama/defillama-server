@@ -6867,6 +6867,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tokemak/index.js",
     twitter: "TokenReactor",
     audit_links: ["https://omniscia.io/tokemak-capital-management-protocol/"],
+    treasury: 'tokemak.js'
   },
   {
     id: "439",
@@ -11317,7 +11318,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "beethovenx/index.js",
     twitter: "beethoven_x",
     forkedFrom: ["Balancer"],
-    governanceID: ["snapshot:beets.eth"]
+    governanceID: ["snapshot:beets.eth"],
+    treasury: "beethovenx.js"
   },
   {
     id: "655",

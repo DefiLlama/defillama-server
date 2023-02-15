@@ -3596,6 +3596,7 @@ const data2: Protocol[] =  [
   module: "stargatefinance/index.js",
   twitter: "StargateFinance",
   audit_links: ["https://github.com/stargate-protocol/stargate/tree/main/audit"],
+  treasury: "stargate.js",
   listedAt: 1647975344,
 },
 {
@@ -11170,7 +11171,8 @@ listedAt: 1650804679
   twitter: "aurafinance",
   audit_links: ["https://github.com/aurafinance/aura-contracts/tree/main/audits"],
   listedAt: 1658511775,
-  governanceID: ["snapshot:gauges.aurafinance.eth"]
+  governanceID: ["snapshot:gauges.aurafinance.eth"],
+  treasury: "aura.js"
 },
 {
   id: "1919",
@@ -17148,7 +17150,8 @@ listedAt: 1650804679
                  "https://solidity.finance/audits/PlvGLP",
                  "https://www.certik.com/projects/plutusdao"
                ],
-  listedAt: 1666097177
+  listedAt: 1666097177,
+  treasury: "plutusdao.js"
 },
 {
   id: "2193",

@@ -24923,5 +24923,27 @@ listedAt: 1650804679
   twitter: "FluxDeFi",
   listedAt: 1676431956,
 },
+{
+  id: "2538",
+  name: "Parcl",
+  address: null,
+  symbol: "-",
+  url: "https://www.parcl.co",
+  description: "Real estate derivatives built on Solana. Buy and short real estate markets around the world.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/parcl.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Solana"],
+  oracles: ["Pyth"],
+  forkedFrom: [],
+  module: "parcl/index.js",
+  twitter: "Parcl",
+  audit_links: ["https://docs.parcl.co/security"],
+  listedAt: 1676483939
+},
 ]
 export default data2;

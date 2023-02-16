@@ -319,5 +319,8 @@ export default {
     },
     "zonic": {
         enabled: true
+    },
+    "covo-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

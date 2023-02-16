@@ -783,5 +783,8 @@ export default {
     },
     "solidlizard": {
         enabled: true
+    },
+    "onepunch": {
+        enabled: true
     }
 } as AdaptorsConfig

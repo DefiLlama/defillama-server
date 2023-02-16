@@ -786,5 +786,8 @@ export default {
     },
     "onepunch": {
         enabled: true
+    },
+    "thorwallet": {
+        enabled: true
     }
 } as AdaptorsConfig

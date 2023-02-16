@@ -7298,10 +7298,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "460",
-    name: "Ondo Finance",
+    name: "Ondo Finance V1",
     address: "-",
     symbol: "-",
-    url: "https://ondo.finance",
+    url: "https://v1.ondo.finance",
     description:
       "Ondo is a DeFi protocol that allows investors to better balance risk with rewards while gaining exposure to yield-generating crypto-assets on Ethereum.",
     chain: "Ethereum",
@@ -7312,9 +7312,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Yield",
     chains: ["Ethereum"],
-    module: "ondofinance/index.js",
+    module: "ondofinance-v1/index.js",
     twitter: "OndoFinance",
-    audit_links: ["https://www.certik.org/projects/ondofinance"],
+    audit_links: [
+      "https://docs.ondo.finance/assets/files/Ondo-Certik-Audit-April_2021-89b12280795b7fa94013652f6f986769.pdf",
+      "https://docs.ondo.finance/assets/files/Ondo-ABDK-Audit-October-2022-b08d29dce81d383e0d2c05fbf51af385.pdf",
+      "https://docs.ondo.finance/assets/files/Ondo-Quantstamp-Audit-January_2022-c670ae4579ad332729bcc271612dda74.pdf"
+    ],
+    parentProtocol: "Ondo Finance"
   },
   {
     id: "461",

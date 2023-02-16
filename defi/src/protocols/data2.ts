@@ -25009,5 +25009,26 @@ listedAt: 1650804679
   twitter: "CloberDEX",
   listedAt: 1676572192
 },
+{
+  id: "2542",
+  name: "Ondo Finance V2",
+  address: "-",
+  symbol: "-",
+  url: "https://ondo.finance",
+  description:
+    "This share class provides liquid exposure to an ETF of short-term U.S. Treasuries",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/ondo-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Ethereum"],
+  module: "ondofinance/index.js",
+  twitter: "OndoFinance",
+  audit_links: ["https://www.certik.org/projects/ondofinance"],
+  parentProtocol: "Ondo Finance"
+},
 ]
 export default data2;

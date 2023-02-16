@@ -860,6 +860,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ScrubFinance",
   },
+  {
+    id: "Ondo Finance",
+    name: "Ondo Finance",
+    url: "https://ondo.finance",
+    description:
+    "Institutional-Grade Finance. On-Chain. For Everyone",
+    logo: `${baseIconsUrl}/ondo-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "OndoFinance",
+  },
 ];
 
 export default parentProtocols;

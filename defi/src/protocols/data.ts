@@ -216,7 +216,7 @@ const data: Protocol[] = [
     cmcId: "5728",
     category: "Dexes",
     chains: ["Ethereum", "Polygon", "Arbitrum"],
-    module: "balancer/index.js",
+    module: "balancer/onchain.js",
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
     governanceID: ["snapshot:balancer.eth"],

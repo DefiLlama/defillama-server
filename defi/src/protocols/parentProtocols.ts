@@ -872,6 +872,20 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "OndoFinance",
   },
+  /*
+  {
+    id: "Bank Of Cronos", //once we enable, we need to add parentProtocol field to the two protocols
+    name: "Bank Of Cronos",
+    url: "https://boc.bankofcronos.com",
+    description:
+    "BOC is a community-owned decentralized autonomous organization introducing DeFi protocols on the Cronos network. DeFi Simplified, on Cronos.",
+    logo: `${baseIconsUrl}/bank-of-cronos.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "bankofcronos",
+  },
+  */
 ];
 
 export default parentProtocols;

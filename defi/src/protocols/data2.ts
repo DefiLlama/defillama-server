@@ -25070,9 +25070,9 @@ listedAt: 1650804679
   twitter: "bankofcronos",
   oracles: ["Tectonic"],
   audit_links: ["https://docs.google.com/document/d/1DxfCo6KqfKOJfmlQmAlb2UySyFaMDwBNKkDo_nZPIsw/edit"],
+  parentProtocol: "Bank Of Cronos",
   listedAt: 1676630025
 },
-/*
 {
   id: "2545",
   name: "Bank of Cronos Loans",
@@ -25092,9 +25092,9 @@ listedAt: 1650804679
   module: "BankofCronos-Loans/index.js",
   twitter: "bankofcronos",
   oracles: ["Tectonic"],
+  parentProtocol: "Bank Of Cronos",
   listedAt: 1676630028
 },
-*/
 {
   id: "2546",
   name: "NFTEarth",

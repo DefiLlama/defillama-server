@@ -872,9 +872,8 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "OndoFinance",
   },
-  /*
   {
-    id: "Bank Of Cronos", //once we enable, we need to add parentProtocol field to the two protocols
+    id: "Bank Of Cronos",
     name: "Bank Of Cronos",
     url: "https://boc.bankofcronos.com",
     description:
@@ -885,7 +884,6 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "bankofcronos",
   },
-  */
 ];
 
 export default parentProtocols;

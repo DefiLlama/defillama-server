@@ -38,6 +38,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     GVR: "0xaFb64E73dEf6fAa8B6Ef9a6fb7312d5C4C15ebDB", // GVR
     GVR2: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
     PANCAKE_LP_ABNB_BNB: "0x272c2CF847A49215A3A1D4bFf8760E503A06f880",
+    BTCBR: "0x0cf8e180350253271f4b917ccfb0accc4862f262",
   },
   cronos: {
     CRK: '0x065de42e28e42d90c2052a1b49e7f83806af0e1f',

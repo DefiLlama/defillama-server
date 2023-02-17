@@ -25114,7 +25114,30 @@ listedAt: 1650804679
   module: "dummy.js",
   twitter: "NFTEarth_L2",
   oracles: [],
-  listedAt: 1676630032
+},
+{
+  id: "2547",
+  name: "Archimedes Finance",
+  address: "0x73C69d24ad28e2d43D03CBf35F79fE26EBDE1011",
+  symbol: "ARCH",
+  url: "https://archimedesfi.com/", 
+  description:
+    "Archimedes is a lending and borrowing marketplace offering up to 10x leverage on yield-bearing stablecoins and sustainable top of market APY for both lenders and borrowers",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/archimedes-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "archimedes",
+  cmcId: "23518",
+  category: "Leveraged Farming",
+  chains: ["Ethereum"],
+  module: "ArchimedesFinance/index.js",
+  twitter: "ArchimedesFi",
+  audit_links: [
+    "https://github.com/thisisarchimedes/Archimedes_Finance/tree/AuditDir/audit"
+  ],
+  oracles: [],
+  listedAt: 1676665602
 },
 ]
 export default data2;

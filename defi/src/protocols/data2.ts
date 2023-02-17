@@ -25030,5 +25030,70 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.org/projects/ondofinance"],
   parentProtocol: "Ondo Finance"
 },
+{
+  id: "2543",
+  name: "RubyDex",
+  address: null,
+  symbol: "-",
+  url: "https://rubydex.com",
+  description:
+    "Decentralized Perpetual Contract Exchange.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/rubydex.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Arbitrum"],
+  module: "rubydex/index.js",
+  twitter: "Ruby_Dex",
+  listedAt: 1676630023
+},
+{
+  id: "2544",
+  name: "Bank of Cronos",
+  address: "cronos:0xe5786DDFc4D6DcA0973D1c5b02987cBbac66ed87",
+  symbol: "BOC",
+  url: "https://app.bankofcronos.com",
+  description:
+    "OHM fork on the cronos network",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/bank-of-cronos.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Reserve Currency",
+  chains: ["Cronos"],
+  module: "BankOfCronos/index.js",
+  twitter: "bankofcronos",
+  oracles: ["Tectonic"],
+  audit_links: ["https://docs.google.com/document/d/1DxfCo6KqfKOJfmlQmAlb2UySyFaMDwBNKkDo_nZPIsw/edit"],
+  listedAt: 1676630025
+},
+/*
+{
+  id: "2545",
+  name: "Bank of Cronos Loans",
+  address: "cronos:0xe5786DDFc4D6DcA0973D1c5b02987cBbac66ed87",
+  symbol: "BOC",
+  url: "https://app.bankofcronos.com", // change website once its live
+  description:
+    "Lending Protocol on the Cronos network",
+  chain: "Cronos",
+  logo: `${baseIconsUrl}/bank-of-cronos-loans.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Cronos"],
+  module: "BankofCronos-Loans/index.js",
+  twitter: "bankofcronos",
+  oracles: ["Tectonic"],
+  listedAt: 1676630028
+},
+*/
 ]
 export default data2;

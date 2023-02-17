@@ -5816,6 +5816,12 @@
       "symbol": "TON",
       "to": "coingecko#the-open-network"
     },
+    "EQBPAVa6fjMigxsnHF33UQ3auufVrg2Z8lBZTY9R-isfjIFr": {
+      "name": "the-open-network",
+      "decimals": "9",
+      "symbol": "TON",
+      "to": "coingecko#the-open-network"
+    },
     "EQAW42HutyDem98Be1f27PoXobghh81umTQ-cGgaKVmRLS7-": {
       "name": "ethereum",
       "decimals": "18",

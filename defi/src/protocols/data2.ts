@@ -25069,6 +25069,7 @@ listedAt: 1650804679
   module: "BankOfCronos/index.js",
   twitter: "bankofcronos",
   oracles: ["Tectonic"],
+  forkedFrom: ["Olympus DAO"],
   audit_links: ["https://docs.google.com/document/d/1DxfCo6KqfKOJfmlQmAlb2UySyFaMDwBNKkDo_nZPIsw/edit"],
   parentProtocol: "Bank Of Cronos",
   listedAt: 1676630025
@@ -25092,6 +25093,7 @@ listedAt: 1650804679
   module: "BankofCronos-Loans/index.js",
   twitter: "bankofcronos",
   oracles: ["Tectonic"],
+  forkedFrom: ["Liquity"],
   parentProtocol: "Bank Of Cronos",
   listedAt: 1676630028
 },

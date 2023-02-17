@@ -25052,14 +25052,14 @@ listedAt: 1650804679
 },
 {
   id: "2544",
-  name: "Bank of Cronos",
+  name: "Bank of Cronos OHM",
   address: "cronos:0xe5786DDFc4D6DcA0973D1c5b02987cBbac66ed87",
   symbol: "BOC",
   url: "https://app.bankofcronos.com",
   description:
     "OHM fork on the cronos network",
   chain: "Cronos",
-  logo: `${baseIconsUrl}/bank-of-cronos.png`,
+  logo: `${baseIconsUrl}/bank-of-cronos-ohm.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,
@@ -25095,5 +25095,26 @@ listedAt: 1650804679
   listedAt: 1676630028
 },
 */
+{
+  id: "2546",
+  name: "NFTEarth",
+  address: null,
+  symbol: "-",
+  url: "https://nftearth.exchange", 
+  description:
+    "Buy and Sell NFTs on L2.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/nftearth.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Marketplace",
+  chains: ["Ethereum"],
+  module: "dummy.js",
+  twitter: "NFTEarth_L2",
+  oracles: [],
+  listedAt: 1676630032
+},
 ]
 export default data2;

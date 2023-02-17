@@ -322,5 +322,8 @@ export default {
     },
     "covo-finance": {
         enabled: true
+    },
+    "nftearth": {
+        enabled: true
     }
 } as AdaptorsConfig

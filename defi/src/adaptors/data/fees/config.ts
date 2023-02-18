@@ -325,5 +325,8 @@ export default {
     },
     "nftearth": {
         enabled: true
+    },
+    "liquid-bolt": {
+        enabled: true
     }
 } as AdaptorsConfig

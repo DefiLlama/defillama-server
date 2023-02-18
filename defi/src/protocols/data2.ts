@@ -25141,5 +25141,26 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1676665602
 },
+{
+  id: "2548",
+  name: "Vela Exchange",
+  address: "arbitrum:0x088cd8f5eF3652623c22D48b1605DCfE860Cd704",
+  symbol: "VELA",
+  url: "https://www.vela.exchange/", 
+  description:
+    "Vela Exchange is a decentralized exchange with advanced perpetuals trading capabilities, community focused incentives, and scalable infrastructure",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/vela-exchange.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "vela-token",
+  cmcId: "23248",
+  category: "Derivatives",
+  chains: ["Arbitrum"],
+  module: "vela-exchange/index.js",
+  twitter: "vela_exchange",
+  oracles: [],
+  listedAt: 1676686261
+},
 ]
 export default data2;

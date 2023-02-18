@@ -789,5 +789,8 @@ export default {
     },
     "thorwallet": {
         enabled: true
+    },
+    "helix": {
+        enabled: true
     }
 } as AdaptorsConfig

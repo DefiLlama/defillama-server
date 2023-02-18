@@ -71,7 +71,11 @@ export default async function craftParentProtocol({
     (acc, curr) => {
       // skip adding hourly tvls if child protocol is a newly listed protocol, and parent protocol has other children with more tvl values
       if (hourlyChildProtocols !== childProtocolsTvls.length && curr.tvl.length <= 7) {
-        return acc;
+        const isNotHourly = curr.tvl.length >= 2 && curr.tvl[1].date - curr.tvl[0].date >= 80000;
+
+        if (!isNotHourly) {
+          return acc;
+        }
       }
 
       const hourlyIndexStartingIndex =

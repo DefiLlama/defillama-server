@@ -25228,5 +25228,27 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1676732747
 },
+{
+  id: "2552",
+  name: "LaDAO Xocolatl",
+  address: null,
+  symbol: "-",
+  url: "https://xocolatl.finance/", 
+  description:
+    "LaDAO is the organization bringing Defi and web3 to Mexico. We created and maintain $XOC; the first decentralized stablecoin with close peg to the mexican (MXN) peso. The xocolatl protocol is the system that allows $XOC to be minted or burned using overcollateralization of crypto assets",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/ladao-xocolatl.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "CDP",
+  chains: ["Polygon"],
+  module: "ladao-xocolatl/index.js",
+  twitter: "LaDAO_Club",
+  audit_links: ["https://github.com/La-DAO/xocolatl-contracts/tree/main/audits/cyberscope"],
+  oracles: ["Chainlink", "RedStone"],
+  listedAt: 1676776857
+},
 ]
 export default data2;

@@ -792,5 +792,8 @@ export default {
     },
     "helix": {
         enabled: true
+    },
+    "ashswap": {
+        enabled: true
     }
 } as AdaptorsConfig

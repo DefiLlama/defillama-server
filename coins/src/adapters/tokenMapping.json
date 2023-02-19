@@ -4928,6 +4928,24 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     },
+    "0x4dE4B92C12dD4584873e72447573382C41da5597": {
+      "name": "Vision BTC",
+      "decimals": "18",
+      "symbol": "VBTC",
+      "to": "coingecko#bitcoin"
+    },
+    "0x9261Bb697FE632dd4746c78406E955123085Bf4C": {
+      "name": "Vision ETH",
+      "decimals": "18",
+      "symbol": "VETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xf6515Ce2ab3482C84Daaef961793bdFa3266b8ad": {
+      "name": "Vision BNB",
+      "decimals": "18",
+      "symbol": "VBNB",
+      "to": "coingecko#binancecoin"
+    },
     "0x79ffbc4fff98b821d59dbd7b33f91a2783006b6f": {
       "name": "Wrapped Vision",
       "decimals": "6",

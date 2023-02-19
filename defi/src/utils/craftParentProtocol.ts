@@ -391,14 +391,20 @@ export default async function craftParentProtocol({
     response.otherProtocols = childProtocolsTvls[0].otherProtocols;
 
     // show all hallmarks of child protocols on parent protocols chart
-    response.hallmarks = [];
-    childProtocolsTvls
-      .filter((childModule) => childModule.hallmarks)
-      .forEach((m) => {
-        m.hallmarks?.forEach((hallmark: [number, string]) => response.hallmarks?.push(hallmark));
-      });
+    const hallmarks: { [date: number]: string } = {};
+    childProtocolsTvls.forEach((module) => {
+      if (module.hallmarks) {
+        module.hallmarks.forEach(([date, desc]: [number, string]) => {
+          if (!hallmarks[date] || hallmarks[date] !== desc) {
+            hallmarks[date] = desc;
+          }
+        });
+      }
+    });
 
-    response.hallmarks.sort((a, b) => a[0] - b[0]);
+    response.hallmarks = Object.entries(hallmarks)
+      .map(([date, desc]) => [Number(date), desc])
+      .sort((a, b) => (a[0] as number) - (b[0] as number)) as Array<[number, string]>;
   }
 
   return response;

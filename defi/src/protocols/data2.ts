@@ -25250,5 +25250,27 @@ listedAt: 1650804679
   oracles: ["Chainlink", "RedStone"],
   listedAt: 1676776857
 },
+{
+  id: "2553",
+  name: "Lenen",
+  address: "vision:VFt1YjfxwkZBYZ6wAr8g7x9KEc8pPWSLHw",
+  symbol: "LEN",
+  url: "https://lenen.network/home", 
+  description:
+    "A Decentralized Lending Platform. Supply, Borrow & Earn Anytime.",
+  chain: "Vision",
+  logo: `${baseIconsUrl}/lenlen.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Vision"],
+  module: "lenlen/index.js",
+  twitter: "LenenProtocol",
+  forkedFrom: ["Compound"],
+  oracles: [],
+  listedAt: 1676806751
+},
 ]
 export default data2;

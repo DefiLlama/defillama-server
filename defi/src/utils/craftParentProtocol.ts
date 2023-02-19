@@ -70,12 +70,14 @@ export default async function craftParentProtocol({
   const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls.reduce<ICombinedTvls>(
     (acc, curr) => {
       // skip adding hourly tvls if child protocol is a newly listed protocol, and parent protocol has other children with more tvl values
-      if (hourlyChildProtocols !== childProtocolsTvls.length && curr.tvl.length <= 7) {
-        const isNotHourly = curr.tvl.length >= 2 && curr.tvl[1].date - curr.tvl[0].date >= 80000;
+      // if (hourlyChildProtocols !== childProtocolsTvls.length && curr.tvl.length <= 7) {
+      //   return acc;
+      // }
 
-        if (!isNotHourly) {
-          return acc;
-        }
+      const isHourly = curr.tvl.length < 2 || curr.tvl[1].date - curr.tvl[0].date < 86400;
+
+      if (isHourly) {
+        return acc;
       }
 
       const hourlyIndexStartingIndex =

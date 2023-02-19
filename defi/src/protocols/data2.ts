@@ -25259,7 +25259,7 @@ listedAt: 1650804679
   description:
     "A Decentralized Lending Platform. Supply, Borrow & Earn Anytime.",
   chain: "Vision",
-  logo: `${baseIconsUrl}/lenlen.jpg`,
+  logo: `${baseIconsUrl}/lenen.png`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

@@ -19,7 +19,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
     if (!adaptorType) throw new Error("Missing parameter")
-    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error("Adaptor type not supported")
+    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
     if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")
     if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 

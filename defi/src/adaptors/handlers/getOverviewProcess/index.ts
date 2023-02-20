@@ -146,7 +146,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     console.info("Parameters parsing OK")
 
     if (!adaptorType) throw new Error("Missing parameter")
-    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error("Adaptor type not supported")
+    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
     if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")
     if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
@@ -167,7 +167,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     }
     console.info("Loaded OK:", adaptersList.length)
     const allChains = getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[]))
-    if (chainFilter !== undefined && !allChains.map(c=>c.toLowerCase()).includes(chainFilter)) throw new Error(`Chain not supported ${chainFilter}`)
+    if (chainFilter !== undefined && !allChains.map(c => c.toLowerCase()).includes(chainFilter)) throw new Error(`Chain not supported ${chainFilter}`)
 
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {

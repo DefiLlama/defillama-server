@@ -483,6 +483,7 @@ functions:
   notifyStatus:
     handler: src/adaptors/handlers/notifyStatus.default
     timeout: 900
+    memorySize: 1024
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}

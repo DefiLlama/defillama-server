@@ -3572,7 +3572,8 @@ const data: Protocol[] = [
     treasury: "ribbon.js",
     twitter: "ribbonfinance",
     audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
-    parentProtocol: "Ribbon Finance"
+    parentProtocol: "Ribbon Finance",
+    oracles: ["Pyth"]
   },
   {
     id: "282",

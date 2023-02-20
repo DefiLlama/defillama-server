@@ -8,6 +8,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   const rawChain = decodeURI(event.pathParameters!.chain!);
   const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain, true);
   const params = event.queryStringParameters ?? {};
+  const categorySelected = params.category===undefined?undefined:decodeURI(params.category);
 
   const sumDailyTvls = {} as {
     [ts: number]: {
@@ -19,6 +20,9 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (!protocolTvl) {
       return;
+    }
+    if(categorySelected !== undefined && protocolTvl.protocol.category !== categorySelected){
+      return
     }
 
     let { historicalTvl, protocol, lastTimestamp } = protocolTvl;

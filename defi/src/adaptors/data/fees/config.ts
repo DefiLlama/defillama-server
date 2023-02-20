@@ -319,5 +319,14 @@ export default {
     },
     "zonic": {
         enabled: true
+    },
+    "covo-finance": {
+        enabled: true
+    },
+    "nftearth": {
+        enabled: true
+    },
+    "liquid-bolt": {
+        enabled: true
     }
 } as AdaptorsConfig

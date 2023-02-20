@@ -70,7 +70,13 @@ export default async function craftParentProtocol({
   const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls.reduce<ICombinedTvls>(
     (acc, curr) => {
       // skip adding hourly tvls if child protocol is a newly listed protocol, and parent protocol has other children with more tvl values
-      if (hourlyChildProtocols !== childProtocolsTvls.length && curr.tvl.length <= 7) {
+      // if (hourlyChildProtocols !== childProtocolsTvls.length && curr.tvl.length <= 7) {
+      //   return acc;
+      // }
+
+      const isHourly = curr.tvl.length < 2 || curr.tvl[1].date - curr.tvl[0].date < 86400;
+
+      if (isHourly) {
         return acc;
       }
 
@@ -385,14 +391,20 @@ export default async function craftParentProtocol({
     response.otherProtocols = childProtocolsTvls[0].otherProtocols;
 
     // show all hallmarks of child protocols on parent protocols chart
-    response.hallmarks = [];
-    childProtocolsTvls
-      .filter((childModule) => childModule.hallmarks)
-      .forEach((m) => {
-        m.hallmarks?.forEach((hallmark: [number, string]) => response.hallmarks?.push(hallmark));
-      });
+    const hallmarks: { [date: number]: string } = {};
+    childProtocolsTvls.forEach((module) => {
+      if (module.hallmarks) {
+        module.hallmarks.forEach(([date, desc]: [number, string]) => {
+          if (!hallmarks[date] || hallmarks[date] !== desc) {
+            hallmarks[date] = desc;
+          }
+        });
+      }
+    });
 
-    response.hallmarks.sort((a, b) => a[0] - b[0]);
+    response.hallmarks = Object.entries(hallmarks)
+      .map(([date, desc]) => [Number(date), desc])
+      .sort((a, b) => (a[0] as number) - (b[0] as number)) as Array<[number, string]>;
   }
 
   return response;

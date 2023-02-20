@@ -783,5 +783,17 @@ export default {
     },
     "solidlizard": {
         enabled: true
+    },
+    "onepunch": {
+        enabled: true
+    },
+    "thorwallet": {
+        enabled: true
+    },
+    "helix": {
+        enabled: true
+    },
+    "ashswap": {
+        enabled: true
     }
 } as AdaptorsConfig

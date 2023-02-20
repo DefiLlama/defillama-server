@@ -849,8 +849,8 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "zyberswap",
   },
   {
-    id: "Scrub Finance",
-    name: "Scrub Finance",
+    id: "Scrub Money",
+    name: "Scrub Money",
     url: "https://scrub.money",
     description:
     "Decentralized commerce and services ecosystem",
@@ -859,6 +859,30 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19410",
     chains: [],
     twitter: "ScrubFinance",
+  },
+  {
+    id: "Ondo Finance",
+    name: "Ondo Finance",
+    url: "https://ondo.finance",
+    description:
+    "Institutional-Grade Finance. On-Chain. For Everyone",
+    logo: `${baseIconsUrl}/ondo-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "OndoFinance",
+  },
+  {
+    id: "Bank Of Cronos",
+    name: "Bank Of Cronos",
+    url: "https://boc.bankofcronos.com",
+    description:
+    "BOC is a community-owned decentralized autonomous organization introducing DeFi protocols on the Cronos network. DeFi Simplified, on Cronos.",
+    logo: `${baseIconsUrl}/bank-of-cronos.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "bankofcronos",
   },
 ];
 

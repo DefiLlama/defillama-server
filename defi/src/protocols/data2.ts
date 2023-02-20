@@ -17564,7 +17564,7 @@ listedAt: 1650804679
     "Liquidswap is the first AMM on Aptos, the safest and most scalable L1 blockchain. The DEX runs on Aptos mainnet.",
   chain: "Aptos",
   logo: `${baseIconsUrl}/liquidswap.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -17574,6 +17574,7 @@ listedAt: 1650804679
   twitter: "PontemNetwork", 
   forkedFrom: [],
   oracles: [],
+  audit_links: ["https://docs.liquidswap.com/#halborn","https://docs.liquidswap.com/#ottersec","https://docs.liquidswap.com/#zellic",],
   listedAt: 1666362910
 },
 {

@@ -788,7 +788,7 @@ export default {
         enabled: true
     },
     "thorwallet": {
-        enabled: true
+        enabled: false
     },
     "helix": {
         enabled: true

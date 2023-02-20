@@ -884,6 +884,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "bankofcronos",
   },
+  {
+    id: "BendDAO",
+    name: "BendDAO",
+    url: "https://www.benddao.xyz",
+    description:
+    "Use your NFTs as collateral to borrow ETH or deposit your ETH and earn yields instantly.",
+    logo: `${baseIconsUrl}/benddao.png`,
+    gecko_id: "benddao",
+    cmcId: "19162",
+    chains: [],
+    twitter: "BendDAO",
+  },
 ];
 
 export default parentProtocols;

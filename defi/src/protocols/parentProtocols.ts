@@ -896,6 +896,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BendDAO",
   },
+  {
+    id: "Subzero",
+    name: "Subzero",
+    url: "https://subzero.plus",
+    description:
+    "Subzero is a decentralized venture capital investment protocol on the Avalanche network. The protocol focuses on sustainable mechanisms to encourage long-term staking and providing liquidity.",
+    logo: `${baseIconsUrl}/subzero.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "subzeroplus",
+  },
 ];
 
 export default parentProtocols;

@@ -10849,6 +10849,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://2adxrezjguhnrdzzvzwmcc52v4kdhtpw3vjk4737dbsobmwo6c6q.arweave.net/0Ad4kyk1DtiPOa5swQu6rxQzzfbdUq5_fxhk4LLO8L0",
     ],
     oracles: ["TWAP"],
+    treasury: "beanstalk.js",
     governanceID: ["snapshot:beanstalkdao.eth", "snapshot:beanstalkfarms.eth"] //Add sub-spaces?
   },
   {
@@ -23082,6 +23083,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-LooksRare-AggregatorFeeSharing-v1.0.pdf",
     ],
     listedAt: 1641874709,
+    treasury: "looksrare.js"
   },
   {
     id: "1230",

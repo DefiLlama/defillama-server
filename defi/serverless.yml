@@ -461,6 +461,34 @@ functions:
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
+  getOverview_ez:
+    handler: src/adaptors/handlers/getOverview_ez/index.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: overview/{type}
+          method: get
+      - http:
+          path: overview/{type}/{chain}
+          method: get
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
+  getOverviewProcess_ez:
+    handler: src/adaptors/handlers/getOverviewProcess_ez/index.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: overviewProcess/{type}
+          method: get
+      - http:
+          path: overviewProcess/{type}/{chain}
+          method: get
+    environment:
+      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
+      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   getProtocolSummary:
     handler: src/adaptors/handlers/getProtocol/index.default
     timeout: 30

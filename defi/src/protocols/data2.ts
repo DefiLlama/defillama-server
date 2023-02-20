@@ -25299,5 +25299,51 @@ listedAt: 1650804679
   parentProtocol: "BendDAO",
   listedAt: 1676894728
 },
+{
+  id: "2555",
+  name: "Subzero+",
+  address: "avax:0xA0105D7fc6190598523f568001A71164341b0A22",
+  symbol: "SUB",
+  url: "https://subzero.plus", 
+  description:
+    "Subzero is a decentralized venture capital investment protocol on the Avalanche network. The protocol focuses on sustainable mechanisms to encourage long-term staking and providing liquidity.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/subzero+.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Reserve Currency",
+  chains: ["Avalanche"],
+  module: "subzero-plus/index.js",
+  twitter: "subzeroplus",
+  forkedFrom: ["Tomb Finance"],
+  oracles: [],
+  parentProtocol: "Subzero",
+  listedAt: 1676903060
+},
+{
+  id: "2556",
+  name: "Subzero ZSwap",
+  address: null,
+  symbol: "-",
+  url: "https://zswap.plus", 
+  description:
+    "Swap, farm, stake and win crypto with ZSwap! The future home of crypto on AVAX.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/subzero-zswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Avalanche"],
+  module: "zswap-plus/index.js",
+  twitter: "subzeroplus",
+  forkedFrom: ["Uniswap"],
+  oracles: [],
+  parentProtocol: "Subzero",
+  listedAt: 1676903060
+},
 ]
 export default data2;

@@ -7999,8 +7999,8 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/benddao-lending.png`,
   audits: "2",
   audit_note: null,
-  gecko_id: "benddao",
-  cmcId: "19162",
+  gecko_id: null,
+  cmcId: null,
   category: "NFT Lending",
   chains: ["Ethereum"],
   oracles: ["NFTOracle" , "ReserveOracle"],
@@ -8010,6 +8010,7 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/bend-dao",
                 "https://www.verilog.solutions/audits/BendDAO",
 ],
+  parentProtocol: "BendDAO",
   listedAt: 1652990010
 },
 {
@@ -25295,6 +25296,7 @@ listedAt: 1650804679
   twitter: "BendDAO",
   forkedFrom: [],
   oracles: [],
+  parentProtocol: "BendDAO",
   listedAt: 1676894728
 },
 ]

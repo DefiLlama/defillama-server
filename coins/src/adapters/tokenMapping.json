@@ -2915,6 +2915,86 @@
       "to": "coingecko#astroport-fi"
     }
   },
+  "terra": {
+    "uluna": {
+      "name": "terra-luna",
+      "decimals": "6",
+      "symbol": "LUNC",
+      "to": "coingecko#terra-luna"
+    },
+    "uusd": {
+      "name": "uusd",
+      "decimals": "6",
+      "symbol": "USTC",
+      "to": "coingecko#terrausd"
+    },
+    "terra15k5r9r8dl8r7xlr29pry8a9w7sghehcnv5mgp6": {
+      "name": "lunaverse",
+      "decimals": "6",
+      "symbol": "lunaverse",
+      "to": "coingecko#lunaverse"
+    },
+    "terra1dy9kmlm4anr92e42mrkjwzyvfqwz66un00rwr5": {
+      "name": "valkyrie-protocol",
+      "decimals": "6",
+      "symbol": "valkyrie-protocol",
+      "to": "coingecko#valkyrie-protocol"
+    },
+    "terra14z56l0fp2lsf86zy3hty2z47ezkhnthtr9yq76": {
+      "name": "anchor-protocol",
+      "decimals": "6",
+      "symbol": "anchor-protocol",
+      "to": "coingecko#anchor-protocol"
+    },
+    "terra15gwkyepfc6xgca5t5zefzwy42uts8l2m4g40k6": {
+      "name": "mirror-protocol",
+      "decimals": "6",
+      "symbol": "mirror-protocol",
+      "to": "coingecko#mirror-protocol"
+    },
+    "terra17y9qkl8dfkeg4py7n0g5407emqnemc3yqk5rup": {
+      "name": "stader-lunax",
+      "decimals": "6",
+      "symbol": "stader-lunax",
+      "to": "coingecko#stader-lunax"
+    },
+    "terra1hzh9vpxhsk8253se0vv5jj6etdvxu3nv8z07zu": {
+      "name": "anchorust",
+      "decimals": "6",
+      "symbol": "anchorust",
+      "to": "coingecko#anchorust"
+    },
+    "terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp": {
+      "name": "bonded-luna",
+      "decimals": "6",
+      "symbol": "bonded-luna",
+      "to": "coingecko#bonded-luna"
+    },
+    "terra1dzhzukyezv0etz22ud940z7adyv7xgcjkahuun": {
+      "name": "anchor-beth-token",
+      "decimals": "6",
+      "symbol": "anchor-beth-token",
+      "to": "coingecko#anchor-beth-token"
+    },
+    "terra1z3e2e4jpk4n0xzzwlkgcfvc95pc5ldq0xcny58": {
+      "name": "avalanche-2",
+      "decimals": "6",
+      "symbol": "avalanche-2",
+      "to": "coingecko#avalanche-2"
+    },
+    "terra1vwz7t30q76s7xx6qgtxdqnu6vpr3ak3vw62ygk": {
+      "name": "luart",
+      "decimals": "6",
+      "symbol": "luart",
+      "to": "coingecko#luart"
+    },
+    "terra1xj49zyqrwpv5k928jwfpfy2ha668nwdgkwlrg3": {
+      "name": "astroport",
+      "decimals": "6",
+      "symbol": "astroport",
+      "to": "coingecko#astroport"
+    }
+  },
   "crescent": {
     "ubcre": {
       "name": "liquid-staking-crescent",

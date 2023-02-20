@@ -568,6 +568,7 @@ const data2: Protocol[] =  [
   twitter: "DAOJonesOptions",
   audit_links: ["https://docs.jonesdao.io/jones-dao/other/security"],
   listedAt: 1645235945,
+  treasury: "jonesdao.js"
 },
 {
   id: "1434",
@@ -16151,6 +16152,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "ipor/index.js",
   twitter: "ipor_io",
+  treasury: "ipor.js"
   audit_links: ["https://drive.google.com/file/d/1t5oRH8Cxux19Trl75qTEF3kxIpX717H7/view?usp=sharing"],
   listedAt: 1664876804
 },

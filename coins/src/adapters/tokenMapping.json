@@ -2940,6 +2940,12 @@
       "symbol": "valkyrie-protocol",
       "to": "coingecko#valkyrie-protocol"
     },
+    "terra12897djskt9rge8dtmm86w654g7kzckkd698608": {
+      "name": "white whale",
+      "decimals": "6",
+      "symbol": "WHALE",
+      "to": "coingecko#white-whale"
+    },
     "terra14z56l0fp2lsf86zy3hty2z47ezkhnthtr9yq76": {
       "name": "anchor-protocol",
       "decimals": "6",

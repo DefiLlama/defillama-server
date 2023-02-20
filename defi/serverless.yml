@@ -373,6 +373,7 @@ functions:
           method: get
   sortedTokenlist:
     handler: src/getSortedTokenlist.default
+    timeout: 30
     events:
       - http:
           path: sortedTokenlist

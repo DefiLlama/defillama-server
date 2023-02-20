@@ -1,10 +1,38 @@
 import fetch from "node-fetch";
 import { successResponse, wrap, IResponse } from "./utils/shared";
+import sleep from "./utils/shared/sleep";
 
 const CG_TOKEN_API =
   "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=<PLACEHOLDER>";
 
-const arrayFetcher = (urlArr: string[]) => Promise.all(urlArr.map((url) => fetch(url).then((res) => res.json())));
+async function cgRequest(url:string){
+  let data;
+  for(let i=0; i<10; i++){
+    try{
+      console.log(Date.now()/1e3)
+      data = await fetch(url).then((res) => res.json())
+      await sleep(1200);
+      if(data?.status?.error_code){
+        throw Error()
+      }
+      return data
+    } catch(e){
+      console.log(`error ${i}`)
+      await sleep(30e3)
+    }
+  }
+  console.log(data)
+  throw Error(`Coingecko fails on "${url}"`)
+}
+
+const arrayFetcher = async (urlArr: string[]) => {
+  const results = []
+  for(const url of urlArr){
+    let data = await cgRequest(url)
+    results.push(data);
+  }
+  return results
+};
 
 function getCGMarketsDataURLs() {
   const urls: string[] = [];

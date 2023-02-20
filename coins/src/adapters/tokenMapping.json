@@ -6262,7 +6262,7 @@
       "symbol": "BNB",
       "to": "coingecko#binancecoin"
     },
-     "04CE51E6E02243E565AE676DD60336E48D455F8AAD0611FA0299A22FDAC448D6": {
+    "04CE51E6E02243E565AE676DD60336E48D455F8AAD0611FA0299A22FDAC448D6": {
       "name": "Ethereum",
       "decimals": "18",
       "symbol": "ETH",
@@ -6292,7 +6292,7 @@
       "symbol": "gPAXG",
       "to": "coingecko#pax-gold"
     },
-     "DBF6ABDB5F3D4267C039967515594453F4A31007FD838A566F563A01D2C2FB80": {
+    "DBF6ABDB5F3D4267C039967515594453F4A31007FD838A566F563A01D2C2FB80": {
       "name": "mars-protocol",
       "decimals": "6",
       "symbol": "MARS",
@@ -6311,6 +6311,20 @@
       "decimals": "18",
       "symbol": "BNI",
       "to": "coingecko#bitindi-chain"
+    }
+  },
+  "enuls": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "Nuls",
+      "decimals": "18",
+      "symbol": "NULS",
+      "to": "coingecko#nuls"
+    },
+    "0x217dffF57E3b855803CE88a1374C90759Ea071bD": {
+      "name": "Wrapped NULS",
+      "decimals": "18",
+      "symbol": "WNULS",
+      "to": "coingecko#nuls"
     }
   },
   "map": {

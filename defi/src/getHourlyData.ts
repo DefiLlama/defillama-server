@@ -9,6 +9,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     useNewChainNames: true,
     useHourlyData: true,
     skipAggregatedTvl: false,
+    draftApi: false
   });
   return wrapResponseOrRedirect(response);
 };

@@ -4,6 +4,7 @@ import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
+import { craftParentProtocolDraft } from "./craftParentProtocolDraft";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -43,12 +44,16 @@ export default async function craftParentProtocol({
   parentProtocol,
   useHourlyData,
   skipAggregatedTvl,
+  draftApi,
 }: {
   parentProtocol: IParentProtocol;
   useNewChainNames: boolean;
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
+  draftApi?: boolean;
 }) {
+  if (draftApi) return craftParentProtocolDraft({ parentProtocol, useHourlyData, skipAggregatedTvl });
+
   const childProtocols = protocols.filter((protocol) => protocol.parentProtocol === parentProtocol.id);
 
   if (childProtocols.length < 1 || childProtocols.map((p) => p.name).includes(parentProtocol.name)) {

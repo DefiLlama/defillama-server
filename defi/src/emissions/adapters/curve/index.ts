@@ -63,7 +63,7 @@ export const yearnContributors = Promise.all(
     "0x0e1f845736baf6b8e44432b88191f7f5a3fcd679",
     "0x5dab4cb743cd55383abbf64753df0573d4e010ec",
   ].map((c: string) =>
-    adapter(c, "ethereum", 0, "total_locked").then((r: AdapterResult) => {
+    adapter(c, "ethereum", 0, "total_locked").then((r: any) => {
       r.cliff = r.amount / 5;
       return r;
     }),

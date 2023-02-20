@@ -3573,6 +3573,7 @@ const data: Protocol[] = [
     twitter: "ribbonfinance",
     audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
     parentProtocol: "Ribbon Finance",
+    treasury: "ribbon.js"
   },
   {
     id: "282",

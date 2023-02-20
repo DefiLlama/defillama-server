@@ -7990,13 +7990,13 @@ listedAt: 1650804679
 },
 {
   id: "1773",
-  name: "BendDAO",
+  name: "BendDAO Lending",
   address: "0x0d02755a5700414B26FF040e1dE35D337DF56218",
   symbol: "BEND",
   url: "https://www.benddao.xyz",
   description: "BendDAO is a decentralized peer-to-pool based NFT liquidity protocol.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/benddao.png`,
+  logo: `${baseIconsUrl}/benddao-lending.png`,
   audits: "2",
   audit_note: null,
   gecko_id: "benddao",
@@ -25273,6 +25273,29 @@ listedAt: 1650804679
   forkedFrom: ["Compound"],
   oracles: [],
   listedAt: 1676806751
+},
+{
+  id: "2554",
+  name: "BendDAO APE Staking",
+  address: "0x0d02755a5700414B26FF040e1dE35D337DF56218",
+  symbol: "BEND",
+  url: "https://www.benddao.xyz/en/apecoin-staking/explore/pairing-listings/", 
+  description:
+    "ApeCoin Staking Yield",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/benddao-ape-staking.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["Ethereum"],
+  module: "benddao-ape-staking/index.js",
+  treasury: "benddao.js",
+  twitter: "BendDAO",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1676894728
 },
 ]
 export default data2;

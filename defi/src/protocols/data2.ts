@@ -16152,7 +16152,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "ipor/index.js",
   twitter: "ipor_io",
-  treasury: "ipor.js"
+  treasury: "ipor.js",
   audit_links: ["https://drive.google.com/file/d/1t5oRH8Cxux19Trl75qTEF3kxIpX717H7/view?usp=sharing"],
   listedAt: 1664876804
 },

@@ -795,5 +795,8 @@ export default {
     },
     "ashswap": {
         enabled: true
+    },
+    "veniceswap": {
+        enabled: true
     }
 } as AdaptorsConfig

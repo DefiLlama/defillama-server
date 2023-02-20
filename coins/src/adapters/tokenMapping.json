@@ -2448,6 +2448,24 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     },
+    "0xffffffff000000000000000000000001000007c0": {
+      "name": "Tether USD",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xea093b81ca103585fc8df82cb3d5d7f2e394ab70": {
+      "name": "Wrapped Astar",
+      "decimals": "18",
+      "symbol": "WASTR",
+      "to": "coingecko#astar"
+    },
+    "0xee8138b3bd03905cf84afe10ccd0dccb820ee08e": {
+      "name": "Starfish Token",
+      "decimals": "18",
+      "symbol": "SEAN",
+      "to": "coingecko#starfish-finance"
+    },
     "0x430d50963d9635bbef5a2ff27bd0bddc26ed691f": {
       "name": "Starlay interest bearing USDT",
       "decimals": "6",

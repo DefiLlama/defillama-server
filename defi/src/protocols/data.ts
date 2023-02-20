@@ -1554,7 +1554,7 @@ const data: Protocol[] = [
     description:
       "MANTRA DAO leverages the wisdom of the crowd to give financial control back to the people to grow wealth together.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mantra-dao.jpg`,
+    logo: `${baseIconsUrl}/mantra-dao.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "mantra-dao",

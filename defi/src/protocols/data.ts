@@ -1554,7 +1554,7 @@ const data: Protocol[] = [
     description:
       "MANTRA DAO leverages the wisdom of the crowd to give financial control back to the people to grow wealth together.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mantra-dao.jpg`,
+    logo: `${baseIconsUrl}/mantra-dao.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "mantra-dao",
@@ -3572,8 +3572,7 @@ const data: Protocol[] = [
     treasury: "ribbon.js",
     twitter: "ribbonfinance",
     audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
-    parentProtocol: "Ribbon Finance",
-    treasury: "ribbon.js"
+    parentProtocol: "Ribbon Finance"
   },
   {
     id: "282",

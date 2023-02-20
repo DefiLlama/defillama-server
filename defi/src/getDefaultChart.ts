@@ -38,8 +38,8 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
 
   return successResponse(
     Object.entries(tvl).map((v: any) => ({
-      date: String(v[0]),
-      totalLiquidityUSD: Number(v[1]),
+      date: Number(v[0]),
+      tvl: Number(v[1]),
     })),
     10 * 60
   ); // 10 mins cache

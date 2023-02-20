@@ -151,10 +151,10 @@ functions:
     memorySize: 2000
     events:
       - http:
-          path: defaultChart
+          path: /v2/historicalChainTvl
           method: get
       - http:
-          path: defaultChart/{chain}
+          path: /v2/historicalChainTvl/{chain}
           method: get
   protocols:
     handler: src/getProtocols.default

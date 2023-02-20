@@ -569,6 +569,13 @@ functions:
       - http:
           path: npm/{start}
           method: get
+  emissions:
+    handler: src/getEmissions.default
+    timeout: 900
+    events:
+      - http:
+          path: emissions/{protocol}
+          method: get
 
 resources:
   # CORS for api gateway errors

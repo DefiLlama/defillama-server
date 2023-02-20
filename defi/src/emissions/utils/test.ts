@@ -24,7 +24,10 @@ if (process.argv.length < 3) {
 }
 const protocol = process.argv[2];
 const excludedKeys = ["sources"];
-export async function parseData(adapter: Protocol): Promise<void> {
+
+export async function createChartData(
+  adapter: Protocol,
+): Promise<ChartSection[]> {
   let startTime: number = 10_000_000_000;
   let endTime: number = 0;
   const rawSections: RawSection[] = [];
@@ -79,6 +82,10 @@ export async function parseData(adapter: Protocol): Promise<void> {
     );
   });
 
+  return data;
+}
+export async function parseData(adapter: Protocol): Promise<void> {
+  const data = await createChartData(adapter);
   await getChartPng(data);
 }
 

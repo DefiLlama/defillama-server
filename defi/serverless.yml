@@ -225,6 +225,14 @@ functions:
       - http:
           path: updatedProtocol/{protocol}
           method: get
+  updatedProtocolDraft:
+    handler: src/updatedProtocolDraft.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: updatedProtocol/{protocol}
+          method: get
   debugProtocol:
     handler: src/getUpdatedProtocol.default
     timeout: 30

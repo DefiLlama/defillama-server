@@ -9,7 +9,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     useNewChainNames: true,
     useHourlyData: false,
     skipAggregatedTvl: includeAggregatedTvl && includeAggregatedTvl === "true" ? false : true,
-    draftApi: false
+    draftApi: true
   });
 
   return wrapResponseOrRedirect(response);

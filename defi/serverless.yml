@@ -571,7 +571,7 @@ functions:
           method: get
   emissions:
     handler: src/getEmissions.default
-    timeout: 900
+    timeout: 30
     events:
       - http:
           path: emissions/{protocol}

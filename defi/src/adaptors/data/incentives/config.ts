@@ -4,6 +4,7 @@ import { AdaptorsConfig } from "../types"
 
 export default {
     "bitcoin": {
-        enabled: true
-    }
+        "enabled": true,
+        "id": "1"
+      }
 } as AdaptorsConfig

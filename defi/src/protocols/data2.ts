@@ -25347,5 +25347,50 @@ listedAt: 1650804679
   parentProtocol: "Subzero",
   listedAt: 1676903060
 },
+{
+  id: "2557",
+  name: "Bhavish Finance",
+  address: null,
+  symbol: "-",
+  url: "https://www.bhavish.xyz", 
+  description:
+    "Bhavish Predictions is a decentralized prediction market protocol based on Polygon that allows users to forecast cryptocurrencies, stocks (equities), commodities, sports events, and socio-political outcomes. The platform is set apart by its GameFi elements that reward users for their engagement on the platform along with the accuracy of predictions.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/bhavish-finance.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Polygon"],
+  module: "bhavish/index.js",
+  twitter: "BhavishFinance",
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://www.bhavish.xyz/assets/docs/slowmist-audit-report.pdf"],
+  listedAt: 1676983479
+},
+{
+  id: "2558",
+  name: "Pine Protocol",
+  address: null,
+  symbol: "-",
+  url: "https://pine.loans", 
+  description:
+    "Non-custodial decentralized asset-backed lending protocol that allows borrowers to borrow fungible digital tokens from lenders using non-fungible tokens as collateral.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/pine-protocoljpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Lending",
+  chains: ["Ethereum"],
+  module: "pine-protocol/index.js",
+  twitter: "PineProtocol",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1676983482
+},
 ]
 export default data2;

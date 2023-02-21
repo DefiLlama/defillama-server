@@ -8,6 +8,7 @@ export default {
   dydx: require("./dydx"),
   // euler: require("./euler"),
   forta: require("./forta"),
+  stargate: require("./stargate"),
   sushi: require("./sushi"),
   tornado: require("./tornado"),
   uniswap: require("./uniswap"),

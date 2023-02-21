@@ -30,4 +30,3 @@ export async function main() {
   await parseData(protocolWrapper);
 }
 main();
-// ts-node src/emissions/utils/test.ts apecoin

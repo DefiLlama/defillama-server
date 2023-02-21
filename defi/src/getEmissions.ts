@@ -28,10 +28,3 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
-
-async function main() {
-  let a = await handler({ pathParameters: { protocol: "apecoin" } });
-  return;
-}
-
-main(); // ts-node src/getEmissions.ts

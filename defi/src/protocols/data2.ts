@@ -25018,7 +25018,7 @@ listedAt: 1650804679
 },
 {
   id: "2542",
-  name: "Ondo Finance V2",
+  name: "Ondo Finance",
   address: "-",
   symbol: "-",
   url: "https://ondo.finance",

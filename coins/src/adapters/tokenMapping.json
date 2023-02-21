@@ -6292,6 +6292,30 @@
       "symbol": "gPAXG",
       "to": "coingecko#pax-gold"
     },
+    "6B49A789937D4E50BF01F0F50DDEDF5C1103EDF01306B7021BDF23BDE65D99BA": {
+      "name": "Stride Staked Osmo",
+      "decimals": "6",
+      "symbol": "STOSMO",
+      "to": "coingecko#stride-staked-osmo"
+    },
+    "ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518": {
+      "name": "Osmosis",
+      "decimals": "6",
+      "symbol": "OSMO",
+      "to": "coingecko#osmosis"
+    },
+    "C8B3026C2844D204F3A49F91058DC947F01F2FC36AFF17850FFC8701504BDDEE": {
+      "name": "Stride Staked Atom",
+      "decimals": "6",
+      "symbol": "STATOM",
+      "to": "coingecko#stride-staked-atom"
+    },
+    "BA460328D9ABA27E643A924071FDB3836E4CE8084C6D2380F25EFAB85CF8EB11": {
+      "name": "Inter Stable Token",
+      "decimals": "6",
+      "symbol": "IST",
+      "to": "coingecko#inter-stable-token"
+    },
     "DBF6ABDB5F3D4267C039967515594453F4A31007FD838A566F563A01D2C2FB80": {
       "name": "mars-protocol",
       "decimals": "6",

@@ -8316,6 +8316,7 @@ listedAt: 1650804679
   forkedFrom: [],
   module: "diamond/index.js",
   twitter: "DiamondProtocol",
+  parentProtocol: "Diamond",
   listedAt: 1653626563
 },
 {
@@ -25414,6 +25415,29 @@ listedAt: 1650804679
   oracles: ["0x"],
   audit_links: ["https://github.com/Alongside-Finance/Audits"],
   listedAt: 1676985047
+},
+{
+  id: "2560",
+  name: "Unibot V2",
+  address: null,
+  symbol: "-",
+  url: "https://unibot-v2.dmo.finance/factory", 
+  description:
+    "UniBot is designed to solve the problems for Uniswap v3 liquidity providers. UniBot is an Automated Leveraged Liquidity Provision Platform that offers higher capital efficiency, in-protocol lending pools, and automation position management.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/unibot-v2.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Arbitrum"],
+  module: "diamond-unibot-v2/index.js",
+  twitter: "DiamondProtocol",
+  forkedFrom: [],
+  oracles: [],
+  parentProtocol: "Diamond",
+  listedAt: 1676990605
 },
 ]
 export default data2;

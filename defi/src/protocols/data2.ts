@@ -8580,7 +8580,8 @@ listedAt: 1650804679
   forkedFrom: ["Solidly"],
   module: "velodrome/index.js",
   twitter: "VelodromeFi",
-  listedAt: 1654194517
+  listedAt: 1654194517,
+  treasury: "velodrome.js"
 },
 {
   id: "1800",

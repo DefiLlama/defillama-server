@@ -788,12 +788,15 @@ export default {
         enabled: true
     },
     "thorwallet": {
-        enabled: true
+        enabled: false
     },
     "helix": {
         enabled: true
     },
     "ashswap": {
+        enabled: true
+    },
+    "veniceswap": {
         enabled: true
     }
 } as AdaptorsConfig

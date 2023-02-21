@@ -8,9 +8,9 @@ const batchStep = 2000; // USUALLY NO NEED TO CHANGE
 const start = Math.floor((+new Date('2022-12-12')/1e3));
 const timeStep = 43200; // 12 HOURS
 // const end = 1670932800;
-const end = Math.floor(+new Date('2023-01-12')/1e3);
+const end = Math.floor(+new Date()/1e3);
 const fillRecentFirst = true;
-const indexes = [0, 1]; // FROM adapters list at ./adapters/index.ts
+const indexes = [0]; // FROM adapters list at ./adapters/index.ts
 
 function createTimestampArray() {
   const timestampArray = [];

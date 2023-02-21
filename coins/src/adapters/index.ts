@@ -1,4 +1,5 @@
 export default {
+  ondo: require("./yield/ondo/index"),
   aave: require("./moneyMarkets/aave/index"),
   geist: require("./moneyMarkets/aave/index"),
   radiant: require("./moneyMarkets/aave/index"),

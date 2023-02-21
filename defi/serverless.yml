@@ -151,10 +151,10 @@ functions:
     memorySize: 2000
     events:
       - http:
-          path: defaultChart
+          path: /v2/historicalChainTvl
           method: get
       - http:
-          path: defaultChart/{chain}
+          path: /v2/historicalChainTvl/{chain}
           method: get
   protocols:
     handler: src/getProtocols.default
@@ -224,6 +224,14 @@ functions:
     events:
       - http:
           path: updatedProtocol/{protocol}
+          method: get
+  updatedProtocolDraft:
+    handler: src/getUpdatedProtocolDraft.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: updatedProtocolDraft/{protocol}
           method: get
   debugProtocol:
     handler: src/getUpdatedProtocol.default
@@ -373,6 +381,7 @@ functions:
           method: get
   sortedTokenlist:
     handler: src/getSortedTokenlist.default
+    timeout: 30
     events:
       - http:
           path: sortedTokenlist
@@ -483,6 +492,7 @@ functions:
   notifyStatus:
     handler: src/adaptors/handlers/notifyStatus.default
     timeout: 900
+    memorySize: 1024
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
@@ -566,6 +576,13 @@ functions:
     events:
       - http:
           path: npm/{start}
+          method: get
+  emissions:
+    handler: src/getEmissions.default
+    timeout: 30
+    events:
+      - http:
+          path: emissions/{protocol}
           method: get
 
 resources:

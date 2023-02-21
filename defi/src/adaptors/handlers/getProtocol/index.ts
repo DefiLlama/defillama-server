@@ -50,7 +50,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     const rawDataType = event.queryStringParameters?.dataType
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     if (!protocolName || !adaptorType) throw new Error("Missing name or type")
-    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error("Adaptor type not supported")
+    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
     if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
     // Import data list

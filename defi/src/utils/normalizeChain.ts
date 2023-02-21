@@ -1306,6 +1306,12 @@ export const chainCoingeckoIds = {
     symbol: "WEMIX",
     cmcId: "7548",
   },
+  "Persistence": {
+    geckoId: "persistence",
+    symbol: "XPRT",
+    cmcId: "7281",
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1658,6 +1664,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Umee"
     case "wemix":
       return "WEMIX"
+    case "persistence":
+      return "Persistence"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

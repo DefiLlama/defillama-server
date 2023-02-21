@@ -1,5 +1,5 @@
 import { earlyUsers, employees, teamAndInvestors } from "../adapters/curve";
-import { community } from "../adapters/curve";
+import { curveCommunity as community } from "../adapters/curve";
 import { manualCliff } from "../adapters/manual";
 import { Protocol } from "../types/adapters";
 

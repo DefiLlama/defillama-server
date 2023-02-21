@@ -9,7 +9,7 @@ import {
   SectionData,
 } from "../types/adapters";
 
-const excludedKeys = ["sources"];
+const excludedKeys = ["sources", "notes", "token"];
 
 export async function createRawSections(
   adapter: Protocol,

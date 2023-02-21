@@ -1,6 +1,6 @@
 import adapter from "./curve";
 import incentives from "./community";
-import { AdapterResult } from "../../types/adapters";
+import { periodToSeconds } from "../../utils/time";
 
 export const earlyUsers = adapter(
   "0x575CCD8e2D300e2377B43478339E364000318E2c",
@@ -21,9 +21,26 @@ export const teamAndInvestors = Promise.all(
     ["0x2a7d59e327759acd5d11a8fb652bf4072d28ac04", 0],
   ].map((c: any[]) => adapter(c[0], "ethereum", c[1], "initial_locked_supply")),
 );
-export const community = incentives(
+export const curveCommunity = incentives(
   "0xd533a949740bb3306d119cc777fa900ba034cd52",
   1597266000,
+  274_815_283,
+  2 ** 0.25,
+  periodToSeconds.year,
+);
+export const velodromeCommunity = incentives(
+  "0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
+  1654066800,
+  15_000_000 * 0.97,
+  1.0101010101,
+  periodToSeconds.week,
+);
+export const velodromeTeam = incentives(
+  "0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
+  1654066800 + periodToSeconds.month * 3,
+  15_000_000 * 0.03,
+  1.0101010101,
+  periodToSeconds.week,
 );
 export const yearnContributors = Promise.all(
   [

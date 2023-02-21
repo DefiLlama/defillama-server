@@ -18,7 +18,7 @@ export async function parseData(adapter: Protocol): Promise<void> {
 }
 
 export async function main() {
-  console.log(`==== Testing ${protocol} ====`);
+  console.log(`==== Drawing ${protocol} chart ====`);
   const protocolWrapper = (adapters as any)[protocol];
 
   if (!protocolWrapper) {

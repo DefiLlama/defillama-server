@@ -1,11 +1,66 @@
 import {
-  RawResult,
+  AdapterResult,
   StepAdapterResult,
   CliffAdapterResult,
   LinearAdapterResult,
+  RawResult,
+  RawSection,
+  Protocol,
+  SectionData,
 } from "../types/adapters";
 
-export function stepAdapterToRaw(result: StepAdapterResult): RawResult[] {
+const excludedKeys = ["sources"];
+
+export async function createRawSections(
+  adapter: Protocol,
+): Promise<SectionData> {
+  let startTime: number = 10_000_000_000;
+  let endTime: number = 0;
+  const rawSections: RawSection[] = [];
+
+  await Promise.all(
+    Object.entries(adapter.default).map(async (a: any[]) => {
+      if (excludedKeys.includes(a[0])) return;
+      const section: string = a[0];
+      let adapterResults = await a[1];
+      if (adapterResults.length == null) adapterResults = [adapterResults];
+
+      const results: RawResult[] | RawResult[][] = adapterResults
+        .flat()
+        .map((r: AdapterResult) => {
+          switch (r.type) {
+            case "step":
+              return stepAdapterToRaw(<StepAdapterResult>r);
+            case "cliff":
+              return cliffAdapterToRaw(<CliffAdapterResult>r);
+            case "linear":
+              return linearAdapterToRaw(<LinearAdapterResult>r);
+            default:
+              throw new Error(`invalid adapter type: ${r.type}`);
+          }
+        });
+
+      rawSections.push({ section, results });
+
+      startTime = Math.min(
+        startTime,
+        ...adapterResults.flat().map((r: AdapterResult) => r.start!),
+      );
+
+      endTime = Math.max(
+        endTime,
+        ...results
+          .flat()
+          .map((r: any) =>
+            r.continuousEnd == null ? r.timestamp : r.continuousEnd,
+          ),
+      );
+    }),
+  );
+
+  return { rawSections, startTime, endTime };
+}
+function stepAdapterToRaw(result: StepAdapterResult): RawResult[] {
   const output: RawResult[] = [];
   for (let i = 0; i < result.steps; i++) {
     const timestamp: number =
@@ -18,8 +73,7 @@ export function stepAdapterToRaw(result: StepAdapterResult): RawResult[] {
   }
   return output;
 }
-
-export function cliffAdapterToRaw(result: CliffAdapterResult): RawResult[] {
+function cliffAdapterToRaw(result: CliffAdapterResult): RawResult[] {
   return [
     {
       timestamp: result.start,
@@ -28,8 +82,7 @@ export function cliffAdapterToRaw(result: CliffAdapterResult): RawResult[] {
     },
   ];
 }
-
-export function linearAdapterToRaw(result: LinearAdapterResult): RawResult[] {
+function linearAdapterToRaw(result: LinearAdapterResult): RawResult[] {
   return [
     {
       timestamp: result.start,

@@ -1,10 +1,35 @@
-import { ChartData, ChartConfig, RawResult } from "../types/adapters";
 import { periodToSeconds } from "./time";
+import {
+  ChartData,
+  ChartConfig,
+  RawResult,
+  RawSection,
+  ChartSection,
+} from "../types/adapters";
 
+export function createChartData(
+  rawSections: RawSection[],
+  startTime: number,
+  endTime: number,
+  isTest: boolean = true,
+): ChartSection[] {
+  const data: any[] = [];
+  rawSections.map((r: any) => {
+    r.results.map((d: any) =>
+      data.push({
+        data: rawToChartData(d, startTime, endTime, isTest),
+        section: r.section,
+      }),
+    );
+  });
+
+  return data;
+}
 export function rawToChartData(
   raw: RawResult[],
   start: number,
   end: number,
+  isTest: boolean = true,
   resolution: number = periodToSeconds.day,
 ): ChartData {
   const roundedStart: number = Math.floor(start / resolution) * resolution;
@@ -18,6 +43,8 @@ export function rawToChartData(
     unlocked: [],
     workingQuantity: 0,
     workingTimestamp: roundedStart,
+    isTest,
+    apiData: [],
   };
   raw.sort((r: RawResult) => r.timestamp);
 
@@ -31,6 +58,8 @@ function continuous(raw: RawResult[], config: ChartConfig): ChartData {
     unlocked,
     workingQuantity,
     workingTimestamp,
+    isTest,
+    apiData,
   } = config;
 
   if (raw[0].continuousEnd == null)
@@ -48,11 +77,15 @@ function continuous(raw: RawResult[], config: ChartConfig): ChartData {
     ) {
       workingQuantity += dy;
     }
-    unlocked.push(workingQuantity);
-    timestamps.push(workingTimestamp);
+    if (isTest) {
+      unlocked.push(workingQuantity);
+      timestamps.push(workingTimestamp);
+    } else {
+      apiData.push({ timestamp: workingTimestamp, unlocked: workingQuantity });
+    }
     workingTimestamp += resolution;
   }
-  return { timestamps, unlocked, isContinuous: true };
+  return { timestamps, unlocked, apiData, isContinuous: true };
 }
 function discreet(raw: RawResult[], config: ChartConfig): ChartData {
   let {
@@ -62,6 +95,8 @@ function discreet(raw: RawResult[], config: ChartConfig): ChartData {
     unlocked,
     workingQuantity,
     workingTimestamp,
+    isTest,
+    apiData,
   } = config;
 
   let j = 0; // index of current raw data timestamp
@@ -71,9 +106,13 @@ function discreet(raw: RawResult[], config: ChartConfig): ChartData {
       workingQuantity += raw[j].change;
       j += 1;
     }
-    unlocked.push(workingQuantity);
-    timestamps.push(workingTimestamp);
+    if (isTest) {
+      unlocked.push(workingQuantity);
+      timestamps.push(workingTimestamp);
+    } else {
+      apiData.push({ timestamp: workingTimestamp, unlocked: workingQuantity });
+    }
     workingTimestamp += resolution;
   }
-  return { timestamps, unlocked, isContinuous: false };
+  return { timestamps, unlocked, apiData, isContinuous: false };
 }

@@ -1,14 +1,19 @@
 import { AdapterResult } from "../../types/adapters";
 import { periodToSeconds } from "../../utils/time";
 
-export default function main(token: string, start: number): AdapterResult[] {
+export default function main(
+  token: string,
+  start: number,
+  startAmount: number,
+  rateReductionCoefficient: number,
+  rateReductionPeriod: number,
+  cliff: number = 0,
+): AdapterResult[] {
+  let amount = startAmount;
   const results = [];
-  const rateReductionPeriod = periodToSeconds.year;
-  const rateReductionCoefficient = 2 ** 0.25;
-  let cliff = 0;
-  let amount = 274_815_283;
 
-  for (let i = 0; i < 6; i++) {
+  const periodsInNearFuture = (6 * periodToSeconds.year) / rateReductionPeriod;
+  for (let i = 0; i < periodsInNearFuture; i++) {
     const end = start + rateReductionPeriod;
     results.push({
       type: "linear",

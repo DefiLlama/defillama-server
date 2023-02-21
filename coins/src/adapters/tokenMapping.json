@@ -2232,6 +2232,12 @@
       "symbol": "LIQD",
       "to": "coingecko#liquid-finance"
     },
+    "0x52C64b8998eB7C80b6F526E99E29ABdcC86B841b": {
+      "name": "DSU",
+      "decimals": "18",
+      "symbol": "DSU",
+      "to": "coingecko#digital-standard-unit"
+    },
     "0x5326e71ff593ecc2cf7acae5fe57582d6e74cff1": {
       "name": "Plutus Vault GLP",
       "decimals": "18",

@@ -231,7 +231,7 @@ functions:
     memorySize: 2000
     events:
       - http:
-          path: updatedProtocol/{protocol}
+          path: updatedProtocolDraft/{protocol}
           method: get
   debugProtocol:
     handler: src/getUpdatedProtocol.default

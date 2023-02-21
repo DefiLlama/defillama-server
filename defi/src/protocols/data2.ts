@@ -25341,7 +25341,7 @@ listedAt: 1650804679
   category: "Dexes",
   chains: ["Avalanche"],
   module: "zswap-plus/index.js",
-  twitter: "subzeroplus",
+  twitter: "zswapdex",
   forkedFrom: ["Uniswap"],
   oracles: [],
   parentProtocol: "Subzero",

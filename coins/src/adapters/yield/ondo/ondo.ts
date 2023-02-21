@@ -21,7 +21,7 @@ export default async function getTokenPrices(timestamp: number) {
     api.multiCall({ abi: 'function getUnderlyingPrice(address) view returns (uint256)', calls: fluxTokens, target: oracle, }),
   ])
   ondoTokens.forEach((token: any, i: number) => {
-    addToDBWritesList(writes, chain, token, oraclePrice[i] / (10 ** decimals[i]), decimals[i], symbols[i].output, timestamp, 'ondo', 0.99)
+    addToDBWritesList(writes, chain, token, oraclePrice[i] / (10 ** decimals[i]), decimals[i], symbols[i], timestamp, 'ondo', 0.99)
   })
 
   return writes

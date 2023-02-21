@@ -908,6 +908,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "subzeroplus",
   },
+  {
+    id: "Diamond",
+    name: "Diamond",
+    url: "https://dmo.finance",
+    description:
+    "Diamond Protocol aims to be the DeFi Lab to build on-chain structured products to earn sustainable yield on crypto assets.",
+    logo: `${baseIconsUrl}/diamond.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "DiamondProtocol",
+  },
 ];
 
 export default parentProtocols;

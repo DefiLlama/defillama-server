@@ -15,3 +15,4 @@ export const tornado: Protocol = {
     "https://etherscan.io/token/0x77777feddddffc19ff86db637967013e6c6a116c#balances",
   ],
 };
+export default tornado;

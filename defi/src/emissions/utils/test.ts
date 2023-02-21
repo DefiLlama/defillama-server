@@ -6,7 +6,7 @@ import { getChartPng } from "./chart";
 
 if (process.argv.length < 3) {
   console.error(`Missing argument, you need to provide the adapter name.
-    Eg: ts-node coins/src/test.ts euler`);
+    Eg: ts-node defi/src/emissions/utils/test.ts aave`);
   process.exit(1);
 }
 const protocol = process.argv[2];

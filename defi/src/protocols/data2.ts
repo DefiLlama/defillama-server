@@ -25392,5 +25392,28 @@ listedAt: 1650804679
   oracles: [],
   listedAt: 1676983482
 },
+{
+  id: "2559",
+  name: "Alongside",
+  address: "0xf17a3fe536f8f7847f1385ec1bc967b2ca9cae8d",
+  symbol: "AMKT",
+  url: "https://alongside.xyz/", 
+  description:
+    "AMKT is a crypto index designed to track the crypto market in a single token.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/alongside.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "alongside-crypto-market-index",
+  cmcId: "22999",
+  category: "Indexes",
+  chains: ["Ethereum"],
+  module: "alongside/index.js",
+  twitter: "alongsidefi",
+  forkedFrom: [],
+  oracles: ["0x"],
+  audit_links: ["https://github.com/Alongside-Finance/Audits"],
+  listedAt: 1676985047
+},
 ]
 export default data2;

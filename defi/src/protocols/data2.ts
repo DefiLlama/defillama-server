@@ -25439,5 +25439,28 @@ listedAt: 1650804679
   parentProtocol: "Diamond",
   listedAt: 1676990605
 },
+{
+  id: "2561",
+  name: "NerveNetwork",
+  address: null,
+  symbol: "-",
+  url: "https://nerve.network/", 
+  description:
+    "NerveNetwork is a Decentralized Digital Asset Service Network.It is an asset relay network connecting multiple blockchains, a completely gas-free blockchain.",
+  chain: "Enuls",
+  logo: `${baseIconsUrl}/nervenetwork.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Enuls"],
+  module: "nervenetworkbridge/index.js",
+  twitter: "nerve_network",
+  forkedFrom: [],
+  oracles: [],
+  audit_links: ["https://drive.google.com/drive/folders/13gk5XzfJmCUyRCmoleWH47REUOyGc4yo"],
+  listedAt: 1676992246
+},
 ]
 export default data2;

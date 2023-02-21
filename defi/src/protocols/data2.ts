@@ -25462,5 +25462,27 @@ listedAt: 1650804679
   audit_links: ["https://drive.google.com/drive/folders/13gk5XzfJmCUyRCmoleWH47REUOyGc4yo"],
   listedAt: 1676992246
 },
+{
+  id: "2562",
+  name: "Defi Master",
+  address: null,
+  symbol: "-",
+  url: "https://defimaster.pro", 
+  description:
+    "Farm Booster On Arbitrum, Zero Fees",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/defi-master.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Arbitrum"],
+  module: "defimaster/index.js",
+  twitter: "DefiFarmMaster",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1677007517
+},
 ]
 export default data2;

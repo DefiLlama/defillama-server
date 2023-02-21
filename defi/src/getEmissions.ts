@@ -4,7 +4,8 @@ import {
   errorResponse,
   successResponse,
 } from "./utils/shared";
-import { createChartData } from "./emissions/utils/test";
+import { createChartData } from "./emissions/utils/convertToChartData";
+import { createRawSections } from "./emissions/utils/convertToRawData";
 import adapters from "./emissions/protocols";
 import { ChartSection, Protocol } from "./emissions/types/adapters";
 
@@ -16,8 +17,14 @@ const handler = async (event: any): Promise<IResponse> => {
       message: `The passed protocol name is invalid. Make sure '${adapter}' is a key of './emissions/protocols/index.ts`,
     });
   }
-  const data: ChartSection[] = await createChartData(adapter);
-  return successResponse(data);
+  const { rawSections, startTime, endTime } = await createRawSections(adapter);
+  const data = createChartData(rawSections, startTime, endTime, false).map(
+    (s: ChartSection) => ({
+      label: s.section,
+      data: s.data.apiData,
+    }),
+  );
+  return successResponse({ data });
 };
 
 export default wrap(handler);

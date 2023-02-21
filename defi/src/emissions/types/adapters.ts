@@ -57,6 +57,12 @@ export type ChartData = {
   timestamps: number[];
   unlocked: number[];
   isContinuous: boolean;
+  apiData?: ApiChartData[];
+};
+export type ApiChartData = {
+  timestamp: number;
+  unlocked: number;
+  label?: string;
 };
 export type ChartYAxisData = {
   start: number;
@@ -80,6 +86,8 @@ export type ChartConfig = {
   workingTimestamp: number;
   roundedStart: number;
   roundedEnd: number;
+  isTest: boolean;
+  apiData: ApiChartData[];
 };
 export type ChartSection = {
   data: ChartData;
@@ -91,4 +99,9 @@ export type Dataset = {
   borderColor: string;
   backgroundColor: string;
   fill: boolean;
+};
+export type SectionData = {
+  rawSections: RawSection[];
+  startTime: number;
+  endTime: number;
 };

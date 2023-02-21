@@ -25379,7 +25379,7 @@ listedAt: 1650804679
   description:
     "Non-custodial decentralized asset-backed lending protocol that allows borrowers to borrow fungible digital tokens from lenders using non-fungible tokens as collateral.",
   chain: "Ethereum",
-  logo: `${baseIconsUrl}/pine-protocoljpg`,
+  logo: `${baseIconsUrl}/pine-protocol.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

@@ -17,6 +17,11 @@ export function notUndefined<T>(x: T | undefined): x is T {
     return x !== undefined;
 }
 
+const dataMap = data.reduce((acc, curr) => {
+    acc[curr.id] = curr
+    return acc
+}, {} as IJSON<Protocol>)
+
 const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
     if (!obj.cmcId && !obj.chainId) return undefined
     return {
@@ -40,6 +45,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
             overridesObj = chainOverrides
             list = chainData
         }
+        //let dexFoundInProtocols = dataMap[config?.[adapterKey].id]
         let dexFoundInProtocols = list.find(dexP => getBySpecificId(adapterKey, dexP.id))
         if (!dexFoundInProtocols)
             dexFoundInProtocols = list.find(dexP => {

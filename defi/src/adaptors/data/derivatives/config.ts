@@ -1,31 +1,36 @@
 import { AdaptorsConfig } from "../types"
 
 export default {
-    'emdx': {
-        enabled: true
+    "emdx": {
+        "enabled": true,
+        "id": "2299"
     },
     "gmx": {
-        protocolsData: {
-            'swap': {
-                enabled: false
+        "protocolsData": {
+            "swap": {
+                "enabled": false
             },
-            'derivatives': {
-                enabled: true
+            "derivatives": {
+                "enabled": true
             }
         },
-        enabled: true
+        "enabled": true,
+        "id": "337"
     },
-    'jojo': {
-        enabled: true
+    "jojo": {
+        "enabled": true,
+        "id": "2320"
     },
-    'kperp-exchange': {
-        enabled: true
+    "kperp-exchange": {
+        "enabled": true,
+        "id": "2326"
     },
-    'metavault.trade': {
-        enabled: true
+    "metavault.trade": {
+        "enabled": true,
+        "id": "1801"
     },
-    'synfutures': {
-        enable: true
+    "synfutures": {
+        "enable": true,
+        "id": "2328"
     }
-
 } as AdaptorsConfig

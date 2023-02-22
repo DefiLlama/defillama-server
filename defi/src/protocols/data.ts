@@ -5694,7 +5694,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "pendle/index.js",
     twitter: "pendle_fi",
-    audit_links: ["https://docs.pendle.finance/faq#has-pendle-been-audited"],
+    audit_links: ["https://github.com/pendle-finance/pendle-core-v2-public/tree/main/audits"],
   },
   {
     id: "383",

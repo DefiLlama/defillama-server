@@ -5,13 +5,34 @@ import data from './index'
 //import { IJSON } from './types';
 
 describe("Protocol adaptor list is complete", () => {
-    test.each(Object.values(AdapterType))(
-        '%s',
-        (type) => {
-            const d = data(type).default
-            expect(d).toMatchSnapshot()
-        }
-    );
+    it("DEXS", () => {
+        const d = data(AdapterType.DEXS).default
+        expect(d).toMatchSnapshot()
+    });
+    it("FEES", () => {
+        const d = data(AdapterType.FEES).default
+        expect(d).toMatchSnapshot()
+    });
+    it("DERIVATIVES", () => {
+        const d = data(AdapterType.DERIVATIVES).default
+        expect(d).toMatchSnapshot()
+    });
+    it("OPTIONS", () => {
+        const d = data(AdapterType.OPTIONS).default
+        expect(d).toMatchSnapshot()
+    });
+    it("AGGREGATORS", () => {
+        const d = data(AdapterType.AGGREGATORS).default
+        expect(d).toMatchSnapshot()
+    });
+    it("INCENTIVES", () => {
+        const d = data(AdapterType.INCENTIVES).default
+        expect(d).toMatchSnapshot()
+    });
+    it("PROTOCOLS", () => {
+        const d = data(AdapterType.PROTOCOLS).default
+        expect(d).toMatchSnapshot()
+    });
 });
 
 

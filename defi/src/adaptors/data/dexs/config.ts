@@ -1059,5 +1059,21 @@ export default {
     "megaton-finance": {
         enabled: true,
         "id": "2540"
+    },
+    "bakeryswap": {
+        "enabled": true,
+        "id": "602"
+    },
+    "bisq": {
+        "enabled": true,
+        "id": "2588"
+    },
+    "dexalot": {
+        "enabled": true,
+        "id": "2589"
+    },
+    "metavault.trade": {
+        "enabled": true,
+        "id": "1801"
     }
 } as AdaptorsConfig

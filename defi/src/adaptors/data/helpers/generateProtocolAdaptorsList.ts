@@ -34,27 +34,25 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
     }
 }).filter(c => c !== undefined) as unknown as Protocol[]
 
+const chainDataMap = chainData.reduce((acc, curr) => {
+    acc[curr.id] = curr
+    return acc
+}, {} as IJSON<Protocol>)
+
 export type IImportsMap = IJSON<IImportObj>
 
 // This could be much more efficient
 export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] =>
     Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
-        let list = data
+        let list = dataMap
         let overridesObj = overrides(type)
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
             overridesObj = chainOverrides
-            list = chainData
+            list = chainDataMap
         }
-        //let dexFoundInProtocols = dataMap[config?.[adapterKey].id]
-        let dexFoundInProtocols = list.find(dexP => getBySpecificId(adapterKey, dexP.id))
-        if (!dexFoundInProtocols)
-            dexFoundInProtocols = list.find(dexP => {
-                return dexP.name.toLowerCase()?.includes(adapterKey)
-                    || sluggifyString(dexP.name)?.includes(adapterKey)
-                    || dexP.gecko_id?.includes(adapterKey)
-                    || dexP.module?.split("/")[0]?.includes(adapterKey)
-                    || dexP.logo?.toLocaleLowerCase()?.includes(adapterKey)
-            })
+        const protocolId = config?.[adapterKey]?.id
+        if (!protocolId) return
+        let dexFoundInProtocols = list[protocolId]
         if (dexFoundInProtocols && imports_obj[adapterKey].module.default) {
             let moduleObject = imports_obj[adapterKey].module.default
             if (config?.[adapterKey]?.protocolsData && 'breakdown' in moduleObject)

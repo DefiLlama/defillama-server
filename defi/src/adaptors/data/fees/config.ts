@@ -51,6 +51,11 @@ export default {
         "id": "2121"
     },
     "gmx": {
+            protocolsData: {
+                'gmx': {
+                    category: 'Derivatives'
+                }
+            },
         "enabled": true,
         "id": "337"
     },
@@ -147,6 +152,7 @@ export default {
         "id": "5567"
     },
     "optimism": {
+        "category": "Rollup",
         "enabled": true,
         "id": "11840"
     },
@@ -163,6 +169,7 @@ export default {
         "id": "1958"
     },
     "arbitrum": {
+        "category": "Rollup",
         "enabled": true,
         "startFrom": 1660608000,
         "id": "42161"

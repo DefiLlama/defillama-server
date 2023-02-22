@@ -13,4 +13,4 @@ export { default as config } from "./config";
 
 export { default as protocols_imports } from "../../../utils/imports/protocols_adapters"
 
-export default generateProtocolAdaptorsList(protocols_imports, config)
+export default generateProtocolAdaptorsList(protocols_imports, config, "protocols")

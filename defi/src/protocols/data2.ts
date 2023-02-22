@@ -5907,13 +5907,13 @@ const data2: Protocol[] =  [
 },
 {
   id: "1677",
-  name: "Timeswap",
+  name: "Timeswap V1",
   address: null,
   symbol: "-",
   url: "https://timeswap.io",
   description: "Timeswap is the first fully permissionless, oracle-less, non-liquidatable, fixed maturity lending & borrowing protocol.",
   chain: "Polygon",
-  logo: `${baseIconsUrl}/timeswap.png`,
+  logo: `${baseIconsUrl}/timeswap-v1.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,
@@ -25575,6 +25575,28 @@ listedAt: 1650804679
   oracles: [],
   forkedFrom: [],
   listedAt: 1677066683
+},
+{
+  id: "2567",
+  name: "Timeswap V2",
+  address: null,
+  symbol: "-",
+  url: "https://app.timeswap.io",
+  description:
+    "V2 comes with the same design principles as V1, but with 5x more capital efficiency & more.",
+  chain: "Polygon",
+  logo: `${baseIconsUrl}/timeswap-v2.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Polygon"],
+  module: "timeswap-v2/index.js",
+  twitter: "TimeswapLabs",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1677075857
 },
 ]
 export default data2;

@@ -25652,6 +25652,28 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1677089952
 },
+{
+  id: "2570",
+  name: "marginfi",
+  address: null,
+  symbol: "-",
+  url: "https://app.marginfi.com",
+  description:
+    "Connecting liquidity across DeFi.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/marginfi.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Solana"],
+  module: "marginfi/index.js",
+  twitter: "marginfi",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1677103747
+},
 
 ]
 export default data2;

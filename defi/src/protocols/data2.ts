@@ -13805,14 +13805,15 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/lif3-swap.png`,
   audits: "0",
   audit_note: null,
-  gecko_id: "lif3",
-  cmcId: "20611",
+  gecko_id: null,
+  cmcId: null,
   category: "Dexes",
   chains: ["Tombchain"],
   oracles: [],
   forkedFrom: ["Uniswap"],
   module: "lif3-swap/index.js",
   twitter: "Official_LIF3",
+  parentProtocol: "Life.com",
   listedAt: 1661900824
 },
 {
@@ -25483,6 +25484,29 @@ listedAt: 1650804679
   forkedFrom: [],
   oracles: [],
   listedAt: 1677007517
+},
+{
+  id: "2563",
+  name: "Lif3 Trade",
+  address: "fantom:0xbf60e7414ef09026733c1e7de72e7393888c64da",
+  symbol: "LIF3",
+  url: "https://trade.lif3.com/trade",
+  description:
+    "Lif3 Trade is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades",
+  chain: "Fantom",
+  logo: `${baseIconsUrl}/lif3-trade.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Fantom"],
+  module: "lif3-trade/index.js",
+  twitter: "Official_LIF3",
+  oracles: ["Chainlink"],
+  forkedFrom: ["GMX"],
+  parentProtocol: "Lif3.com",
+  listedAt: 1677033189
 },
 ]
 export default data2;

@@ -920,6 +920,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "DiamondProtocol",
   },
+  {
+    id: "Lif3.com",
+    name: "Lif3.com",
+    url: "https://lif3.com/",
+    description:
+    "Lif3.com is a complete multi-chain DeFi Ecosystem",
+    logo: `${baseIconsUrl}/lif3.com.png`,
+    gecko_id: "lif3",
+    cmcId: "20611",
+    chains: [],
+    twitter: "Official_LIF3",
+  },
 ];
 
 export default parentProtocols;

@@ -3111,6 +3111,36 @@
       "decimals": "6",
       "symbol": "USDT",
       "to": "coingecko#tether"
+    },
+    "orai1gzvndtzceqwfymu2kqhta2jn6gmzxvzqwdgvjw": {
+      "name": "milky-token",
+      "decimals": "6",
+      "symbol": "milky-token",
+      "to": "coingecko#milky-token"
+    },
+    "orai1nd4r053e3kgedgld2ymen8l9yrw8xpjyaal7j5": {
+      "name": "kawaii-islands",
+      "decimals": "6",
+      "symbol": "kawaii-islands",
+      "to": "coingecko#kawaii-islands"
+    },
+    "orai10ldgzued6zjp0mkqwsv2mux3ml50l97c74x8sg": {
+      "name": "airight",
+      "decimals": "6",
+      "symbol": "airight",
+      "to": "coingecko#airight"
+    },
+    "orai1lus0f0rhx8s03gdllx2n6vhkmf0536dv57wfge": {
+      "name": "oraidex",
+      "decimals": "6",
+      "symbol": "oraidex",
+      "to": "coingecko#oraidex"
+    },
+    "orai1065qe48g7aemju045aeyprflytemx7kecxkf5m7u5h5mphd0qlcs47pclp": {
+      "name": "scorai",
+      "decimals": "6",
+      "symbol": "scorai",
+      "to": "coingecko#scorai"
     }
   },
   "comdex": {
@@ -6041,6 +6071,18 @@
       "decimals": "6",
       "symbol": "ATOM",
       "to": "coingecko#cosmos"
+    },
+    "A2E2EEC9057A4A1C2C0A6A4C78B0239118DF5F278830F50B4A6BDD7A66506B78": {
+      "name": "cosmos",
+      "decimals": "6",
+      "symbol": "ATOM",
+      "to": "coingecko#cosmos"
+    },
+    "9C4DCD21B48231D0BC2AC3D1B74A864746B37E4292694C93C617324250D002FC": {
+      "name": "osmosis",
+      "decimals": "6",
+      "symbol": "OSMO",
+      "to": "coingecko#osmosis"
     },
     "4627AD2524E3E0523047E35BB76CC90E37D9D57ACF14F0FCBCEB2480705F3CB8": {
       "name": "terra-luna",

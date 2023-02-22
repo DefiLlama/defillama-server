@@ -43,7 +43,7 @@ export type IImportsMap = IJSON<IImportObj>
 
 // This could be much more efficient
 export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] =>
-    Object.entries(imports_obj).map(([adapterKey, adapterObj], index) => {
+    Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = dataMap
         let overridesObj = overrides(type)
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
@@ -53,10 +53,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
         const protocolId = config?.[adapterKey]?.id
         if (!protocolId) return
         let dexFoundInProtocolsArr = [] as Protocol[]
-        if (index === 0) {
-            console.error(JSON.stringify(Object.keys(imports_obj)))
-            console.error(JSON.stringify(Object.keys(config)))
-        }
         if (list[protocolId]) dexFoundInProtocolsArr.push(list[protocolId])
         else {
             if (adapterKey === 'uniswap')

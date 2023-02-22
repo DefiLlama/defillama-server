@@ -25570,7 +25570,7 @@ listedAt: 1650804679
   description:
     "Mugen is transforming the yield management industry by connecting multiple public Decentralized Apps (DApps) and the messaging protocol of Layer Zero. Allowing anyone to generate yield by simply holding Mugen. Representing a variety of yield sources from different chains, with different strategies.",
   chain: "Arbitrum",
-  logo: `${baseIconsUrl}/mugen-finance.jpg`,
+  logo: `${baseIconsUrl}/mugenfinance.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,

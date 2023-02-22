@@ -25554,5 +25554,27 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/perion"],
   listedAt: 1677066683
 },
+{
+  id: "2566",
+  name: "MugenFinance",
+  address: null,
+  symbol: "-",
+  url: "https://www.mugenfinance.com",
+  description:
+    "Mugen is transforming the yield management industry by connecting multiple public Decentralized Apps (DApps) and the messaging protocol of Layer Zero. Allowing anyone to generate yield by simply holding Mugen. Representing a variety of yield sources from different chains, with different strategies.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/mugen-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield Aggregator",
+  chains: ["Arbitrum"],
+  module: "mugen-fi/index.js",
+  twitter: "MugenFinance",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1677066683
+},
 ]
 export default data2;

@@ -25606,5 +25606,28 @@ listedAt: 1650804679
   parentProtocol: "Timeswap",
   listedAt: 1677075857
 },
+{
+  id: "2568",
+  name: "Garbi Protocol",
+  address: "arbitrum:0x5Fd71280b6385157b291b9962f22153FC9E79000",
+  symbol: "GRB",
+  url: "https://garbi.io/earn.html",
+  description:
+    "Trade, reap the rewards and cultivate on a single, decentralized, community-powered platform",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/garbi-protocol.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Yield",
+  chains: ["Arbitrum"],
+  module: "grabi/index.js",
+  twitter: "garbi_protocol",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://www.cognitos.io/garbi-protocol-audit"],
+  listedAt: 1677082099
+},
 ]
 export default data2;

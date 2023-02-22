@@ -5913,7 +5913,7 @@ const data2: Protocol[] =  [
   url: "https://timeswap.io",
   description: "Timeswap is the first fully permissionless, oracle-less, non-liquidatable, fixed maturity lending & borrowing protocol.",
   chain: "Polygon",
-  logo: `${baseIconsUrl}/timeswap-v1.png`,
+  logo: `${baseIconsUrl}/timeswap-v1.jpg`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

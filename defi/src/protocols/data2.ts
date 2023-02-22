@@ -25508,5 +25508,51 @@ listedAt: 1650804679
   parentProtocol: "Lif3.com",
   listedAt: 1677033189
 },
+{
+  id: "2564",
+  name: "OraiDEX",
+  address: null,
+  symbol: "ORAIX",
+  url: "https://oraidex.io",
+  description:
+    "Developed by Oraichain, OraiDEX is a CosmWasm smart contract-based decentralized exchange with multi-chain interoperability & optimal speed.",
+  chain: "Orai",
+  logo: `${baseIconsUrl}/oraidex.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "oraidex",
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Orai"],
+  module: "oraidex/index.js",
+  twitter: "oraidex",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1677066570
+},
+{
+  id: "2565",
+  name: "Perion",
+  address: "0x60bE1e1fE41c1370ADaF5d8e66f07Cf1C2Df2268",
+  symbol: "PERC",
+  url: "https://perion.gg",
+  description:
+    "Perion is a multifaceted DAO on a mission to back and build next generation products and teams at the intersect of web3, eSports, gaming and NFTs. We see web3 as being synonymous with the future of gaming and culture, a future that we will build upon utilitarian web3 technology.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/perion.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Gaming",
+  chains: ["Ethereum"],
+  module: "perion/index.js",
+  treasury: "perion.js",
+  twitter: "PerionDAO",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://www.certik.com/projects/perion"],
+  listedAt: 1677066683
+},
 ]
 export default data2;

@@ -5925,6 +5925,7 @@ const data2: Protocol[] =  [
   module: "timeswap/index.js",
   twitter: "TimeswapLabs",
   audit_links: ['https://code4rena.com/reports/2022-03-timeswap'],
+  parentProtocol: "Timeswap",
   listedAt: 1650665129
 },
 {
@@ -25596,6 +25597,7 @@ listedAt: 1650804679
   twitter: "TimeswapLabs",
   oracles: [],
   forkedFrom: [],
+  parentProtocol: "Timeswap",
   listedAt: 1677075857
 },
 ]

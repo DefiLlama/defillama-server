@@ -932,6 +932,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Official_LIF3",
   },
+  {
+    id: "Timeswap",
+    name: "Timeswap",
+    url: "https://timeswap.io",
+    description:
+    "Timeswap is a fixed time preference protocol for users to manage their ERC20 tokens over discrete time. It works as a zero liquidation money market and options market in one.",
+    logo: `${baseIconsUrl}/timeswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TimeswapLabs",
+  },
 ];
 
 export default parentProtocols;

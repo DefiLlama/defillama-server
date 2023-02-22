@@ -25448,14 +25448,14 @@ listedAt: 1650804679
 },
 {
   id: "2561",
-  name: "NerveNetwork",
+  name: "NerveBridge",
   address: null,
   symbol: "-",
   url: "https://nerve.network/", 
   description:
     "NerveNetwork is a Decentralized Digital Asset Service Network.It is an asset relay network connecting multiple blockchains, a completely gas-free blockchain.",
   chain: "Enuls",
-  logo: `${baseIconsUrl}/nervenetwork.png`,
+  logo: `${baseIconsUrl}/nervebridge.png`,
   audits: "2",
   audit_note: null,
   gecko_id: null,

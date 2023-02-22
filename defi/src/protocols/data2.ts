@@ -13819,7 +13819,7 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   module: "lif3-swap/index.js",
   twitter: "Official_LIF3",
-  parentProtocol: "Life.com",
+  parentProtocol: "Lif3.com",
   listedAt: 1661900824
 },
 {

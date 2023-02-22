@@ -944,6 +944,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TimeswapLabs",
   },
+  {
+    id: "Moonwell",
+    name: "Moonwell",
+    url: "https://moonwell.fi/",
+    description:
+    "Moonwell is an open lending and borrowing DeFi protocol on Moonbeam & Moonriver",
+    logo: `${baseIconsUrl}/moonwell-artemis.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LunarTechFdn",
+  },
 ];
 
 export default parentProtocols;

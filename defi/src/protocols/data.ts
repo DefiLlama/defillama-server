@@ -26711,6 +26711,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Moonwell_Finance_Safety_Module_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf",
     ],
     listedAt: 1644685001,
+    parentProtocol: "Moonwell"
   },
   {
     id: "1402",

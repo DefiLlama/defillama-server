@@ -798,5 +798,8 @@ export default {
     },
     "veniceswap": {
         enabled: true
+    },
+    "oraidex": {
+        enabled: true
     }
 } as AdaptorsConfig

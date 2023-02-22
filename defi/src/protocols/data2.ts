@@ -13361,7 +13361,7 @@ listedAt: 1650804679
   description: "Silo Finance creates permissionless and risk-isolated lending markets.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/silo-finance.png`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: "silo-finance",
   cmcId: "16010",
@@ -13372,6 +13372,11 @@ listedAt: 1650804679
   module: "silo/index.js",
   twitter: "SiloFinance",
   governanceID: ["snapshot:silofinance.eth"],
+  audit_links: [
+                 "https://drive.google.com/file/d/1D2EIOb0XaRov5Ph2AE0DTfIsMISd7UXG/view",
+                 "https://drive.google.com/file/d/1WXaB3ICLv4rSEX86POK3-NaOIxXwyq9l/view",
+                 "https://drive.google.com/file/d/10GyfA-nBJ5jqLWW9LEYJQeFem8qSgNH6/view"
+               ],
   listedAt: 1661433529
 },
 {

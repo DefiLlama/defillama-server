@@ -25630,5 +25630,28 @@ listedAt: 1650804679
   audit_links: ["https://www.cognitos.io/garbi-protocol-audit"],
   listedAt: 1677082099
 },
+{
+  id: "2569",
+  name: "Spice Finance",
+  address: null,
+  symbol: "-",
+  url: "https://www.spicefi.xyz",
+  description:
+    "Spice Finance is an NFT lending aggregator that optimizes yield for lenders.",
+  chain: "Ethereum",
+  logo: `${baseIconsUrl}/spice-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "NFT Lending",
+  chains: ["Ethereum"],
+  module: "spice-finance/index.js",
+  twitter: "spice_finance",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1677089952
+},
+
 ]
 export default data2;

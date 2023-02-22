@@ -23852,7 +23852,7 @@ listedAt: 1650804679
     "The easiest way to trade and earn yield on an NFT.",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/caviar.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -23862,6 +23862,7 @@ listedAt: 1650804679
   twitter: "caviarAMM",
   oracles: [],
   forkedFrom: [],
+  audit_links: ["https://code4rena.com/reports/2022-12-caviar"],
   listedAt: 1675348417
 },
 {

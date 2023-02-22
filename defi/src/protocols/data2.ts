@@ -25623,6 +25623,7 @@ listedAt: 1650804679
   category: "Yield",
   chains: ["Arbitrum"],
   module: "grabi/index.js",
+  treasury: "grabi.js",
   twitter: "garbi_protocol",
   oracles: [],
   forkedFrom: [],

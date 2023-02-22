@@ -25442,7 +25442,7 @@ listedAt: 1650804679
 },
 {
   id: "2561",
-  name: "NerveNetwork",
+  name: "NerveBridge",
   address: null,
   symbol: "-",
   url: "https://nerve.network/", 

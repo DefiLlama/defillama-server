@@ -25564,8 +25564,8 @@ listedAt: 1650804679
 {
   id: "2566",
   name: "MugenFinance",
-  address: null,
-  symbol: "-",
+  address: "arbitrum:0xfc77b86f3ade71793e1eec1e7944db074922856e",
+  symbol: "MGN",
   url: "https://www.mugenfinance.com",
   description:
     "Mugen is transforming the yield management industry by connecting multiple public Decentralized Apps (DApps) and the messaging protocol of Layer Zero. Allowing anyone to generate yield by simply holding Mugen. Representing a variety of yield sources from different chains, with different strategies.",
@@ -25573,8 +25573,8 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/mugenfinance.jpg`,
   audits: "0",
   audit_note: null,
-  gecko_id: null,
-  cmcId: null,
+  gecko_id: "mugen-finance",
+  cmcId: "21862",
   category: "Yield Aggregator",
   chains: ["Arbitrum"],
   module: "mugen-fi/index.js",

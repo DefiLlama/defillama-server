@@ -24,5 +24,9 @@ const forta: Protocol = {
   "core contributors": nonCommunity(0.2),
   OpenZeppelin: nonCommunity(0.1),
   sources: ["https://docs.forta.network/en/latest/fort-token/"],
+  token: "ethereum:0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29",
+  notes: [
+    "the emission rate of unallocated in unconfirmed. Here we have used a pessimistic emission schedule",
+  ],
 };
 export default forta;

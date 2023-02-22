@@ -23,9 +23,13 @@ const convex: Protocol = {
     deployTime + 4 * periodToSeconds.year,
     25_000_000,
   ),
-  "lp rewards": lpRewards(deployTime),
+  // "lp rewards": lpRewards(deployTime),
   sources: [
     "https://docs.convexfinance.com/convexfinance/general-information/tokenomics",
+  ],
+  token: "ethereum:0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+  notes: [
+    "calculating the rate of future LP rewards is not possible, since it relies on the number of CRV accumulated",
   ],
 };
 export default convex;

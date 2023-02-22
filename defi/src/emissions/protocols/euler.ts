@@ -12,5 +12,6 @@ const euler: Protocol = {
   "Encode incubator": [], //1,087,313 30mo 1/1/22 onwards lin
   "employees, advisors, consultants": [], //5,613,252  COFOUNDERSN ONLY 48mo 1/1/22 onwards lin
   sources: ["https://docs.euler.finance/eul/about"],
+  token: "ethereum:0xd9fcd98c322942075a5c3860693e9f4f03aae07b",
 };
 export default euler;

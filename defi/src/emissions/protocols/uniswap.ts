@@ -17,5 +17,6 @@ const uniswap: Protocol = {
   investors: manualLinear(start, start + periodToSeconds.year * 4, 180_440_000),
   advisors: manualLinear(start, start + periodToSeconds.year * 4, 6_900_000),
   sources: ["https://uniswap.org/blog/uni"],
+  token: "ethereum:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
 };
 export default uniswap;

@@ -3,7 +3,8 @@ export default {
   apecoin: require("./apecoin"),
   aptos: require("./aptos"),
   // aura: require("./aura"),
-  // convex: require("./convex"),
+  blur: require("./blur"),
+  convex: require("./convex"),
   curve: require("./curve"),
   dydx: require("./dydx"),
   // euler: require("./euler"),
@@ -14,4 +15,5 @@ export default {
   uniswap: require("./uniswap"),
   velodrome: require("./velodrome"),
   yearn: require("./yearn"),
+  zyberswap: require("./zyberswap"),
 };

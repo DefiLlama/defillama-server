@@ -3,7 +3,7 @@ export default {
   apecoin: require("./apecoin"),
   aptos: require("./aptos"),
   // aura: require("./aura"),
-  // convex: require("./convex"),
+  convex: require("./convex"),
   curve: require("./curve"),
   dydx: require("./dydx"),
   // euler: require("./euler"),

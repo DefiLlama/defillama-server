@@ -13,6 +13,7 @@ const aura: Protocol = {
   "launch incentives": [],
   "future incentives": manualCliff(1670500408, 1_000_000), // 0x1a661CF8D8cd69dD2A423F3626A461A24280a8fB
   sources: ["https://docs.aura.finance/aura/usdaura/distribution"],
+  token: "ethereum:0xc0c293ce456ff0ed870add98a0828dd4d2903dbf",
 };
 export default aura;
 // hard to identify:

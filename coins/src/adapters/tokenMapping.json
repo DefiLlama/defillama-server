@@ -972,6 +972,18 @@
       "symbol": "WMOVR",
       "to": "moonriver:0x98878B06940aE243284CA214f92Bb71a2b032B8A"
     },
+    "0x6ccf12b480a99c54b23647c995f4525d544a7e72": {
+      "name": "Lido DAO Token",
+      "decimals": "18",
+      "symbol": "LDO",
+      "to": "coingecko#lido-dao"
+    },
+    "0xfffffffff6e528ad57184579beee00c5d5e646f0": {
+      "name": "Kintsugi Wrapped BTC",
+      "decimals": "8",
+      "symbol": "xcKBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "0xcb4a593ce512d78162c58384f0b2fd6e802c2c47": {
       "name": "BEPRO Network",
       "decimals": "18",

@@ -328,5 +328,8 @@ export default {
     },
     "liquid-bolt": {
         enabled: true
+    },
+    "frax-ether": {
+        enabled: true
     }
 } as AdaptorsConfig

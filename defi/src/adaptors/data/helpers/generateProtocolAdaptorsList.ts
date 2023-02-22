@@ -43,7 +43,7 @@ export type IImportsMap = IJSON<IImportObj>
 
 // This could be much more efficient
 export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] =>
-    Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
+    Object.entries(imports_obj).map(([adapterKey, adapterObj], index) => {
         let list = dataMap
         let overridesObj = overrides(type)
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
@@ -52,48 +52,67 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
         }
         const protocolId = config?.[adapterKey]?.id
         if (!protocolId) return
-        let dexFoundInProtocols = list[protocolId]
-        if (dexFoundInProtocols && imports_obj[adapterKey].module.default) {
-            let moduleObject = imports_obj[adapterKey].module.default
-            if (config?.[adapterKey]?.protocolsData && 'breakdown' in moduleObject)
-                moduleObject = {
-                    ...moduleObject,
-                    breakdown: Object.entries(moduleObject.breakdown)
-                        .filter(([vName, _adapter]) => config?.[adapterKey]?.protocolsData?.[vName]?.enabled)
-                        .reduce((acc, [vName, adapter]) => {
-                            acc[vName] = adapter
-                            return acc
-                        }, {} as typeof moduleObject.breakdown)
-                } as Adapter
-            const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
-            const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
-            const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
-            const infoItem = {
-                ...dexFoundInProtocols,
-                module: adapterKey,
-                config: config[adapterKey],
-                category: displayCategory,
-                chains: getAllChainsFromAdaptors([adapterKey], moduleObject),
-                disabled: isDisabled(moduleObject),
-                displayName,
-                protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category, overridesObj),
-                protocolType: adapterObj.module.default?.protocolType,
-                methodologyURL: adapterObj.codePath,
-                methodology: getMethodologyData(
+        let dexFoundInProtocolsArr = [] as Protocol[]
+        if (index === 0) {
+            console.error(JSON.stringify(Object.keys(imports_obj)))
+            console.error(JSON.stringify(Object.keys(config)))
+        }
+        if (list[protocolId]) dexFoundInProtocolsArr.push(list[protocolId])
+        else {
+            if (adapterKey === 'uniswap')
+                console.error("enters here", type, config?.[adapterKey])
+            const protocolsData = config?.[adapterKey]?.protocolsData
+            if (!protocolsData) return
+            dexFoundInProtocolsArr = Object.values(protocolsData).map(protocolData => {
+                if (adapterKey === 'uniswap')
+                    console.error("enters here2", protocolData)
+                if (!list[protocolData.id]) console.error(`Protocol not found with id ${protocolData.id} and key ${adapterKey}`)
+                return list[protocolData.id]
+            }).filter(notUndefined)
+        }
+        if (dexFoundInProtocolsArr.length > 0 && imports_obj[adapterKey].module.default) {
+            return dexFoundInProtocolsArr.map((dexFoundInProtocols => {
+                let moduleObject = imports_obj[adapterKey].module.default
+                if (config?.[adapterKey]?.protocolsData && 'breakdown' in moduleObject)
+                    moduleObject = {
+                        ...moduleObject,
+                        breakdown: Object.entries(moduleObject.breakdown)
+                            .filter(([vName, _adapter]) => config?.[adapterKey]?.protocolsData?.[vName]?.enabled)
+                            .reduce((acc, [vName, adapter]) => {
+                                acc[vName] = adapter
+                                return acc
+                            }, {} as typeof moduleObject.breakdown)
+                    } as Adapter
+                const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
+                const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
+                const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
+                const infoItem = {
+                    ...dexFoundInProtocols,
+                    module: adapterKey,
+                    config: config[adapterKey],
+                    category: displayCategory,
+                    chains: getAllChainsFromAdaptors([adapterKey], moduleObject),
+                    disabled: isDisabled(moduleObject),
                     displayName,
-                    adapterKey,
-                    moduleObject,
-                    displayCategory ?? '',
-                    childCategories
-                ),
-                ...overridesObj[adapterKey],
-            }
-            return infoItem
+                    protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category, overridesObj),
+                    protocolType: adapterObj.module.default?.protocolType,
+                    methodologyURL: adapterObj.codePath,
+                    methodology: getMethodologyData(
+                        displayName,
+                        adapterKey,
+                        moduleObject,
+                        displayCategory ?? '',
+                        childCategories
+                    ),
+                    ...overridesObj[adapterKey],
+                }
+                return infoItem
+            }))
         }
         // TODO: Handle better errors
-        console.error(`Missing info for ${adapterKey}`)
+        console.error(`Missing info for ${adapterKey} on ${type}`)
         return undefined
-    }).filter(notUndefined);
+    }).flat().filter(notUndefined);
 
 function getDisplayCategory(adapter: Adapter, override: IOverrides[string]) {
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
@@ -105,7 +124,6 @@ function getDisplayCategory(adapter: Adapter, override: IOverrides[string]) {
 
 export function getDisplayName(name: string, adapter: Adapter) {
     if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
-    if (name.split(' ')[0].includes('Uniswap')) return 'Uniswap'
     if (name === '0x') return '0x - RFQ'
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
         const versionName = Object.keys(adapter.breakdown)[0]

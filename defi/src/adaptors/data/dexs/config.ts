@@ -27,7 +27,21 @@ export default {
     },
     "uniswap": {
         "enabled": true,
-        "id": "1"
+        "id": "1",
+        "protocolsData": {
+            "v1": {
+                "enabled": true,
+                "id": "2196"
+            },
+            "v2": {
+                "enabled": true,
+                "id": "2197"
+            },
+            "v3": {
+                "enabled": true,
+                "id": "2198"
+            },
+        },
     },
     "traderjoe": {
         "enabled": true,
@@ -83,10 +97,8 @@ export default {
     "gmx": {
         "protocolsData": {
             "swap": {
+                "id": "337",
                 "enabled": true
-            },
-            "derivatives": {
-                "enabled": false
             }
         },
         "enabled": true,

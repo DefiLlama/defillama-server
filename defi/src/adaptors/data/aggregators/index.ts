@@ -16,4 +16,4 @@ export { default as config } from "./config";
 
 export { default as dex_imports } from "../../../utils/imports/dexs_adapters"
 
-export default generateProtocolAdaptorsList(aggregators_imports, config)
+export default generateProtocolAdaptorsList(aggregators_imports, config, "aggregators")

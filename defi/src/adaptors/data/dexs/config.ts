@@ -1047,5 +1047,21 @@ export default {
     "veniceswap": {
         "enabled": true,
         "id": "2550"
+    },
+    "bakeryswap": {
+        "enabled": true,
+        "id": "602"
+    },
+    "bisq": {
+        "enabled": true,
+        "id": "2557"
+    },
+    "dexalot": {
+        "enabled": true,
+        "id": "2558"
+    },
+    "metavault.trade": {
+        "enabled": true,
+        "id": "1801"
     }
 } as AdaptorsConfig

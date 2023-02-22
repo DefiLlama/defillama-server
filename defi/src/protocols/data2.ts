@@ -25346,5 +25346,49 @@ listedAt: 1650804679
   parentProtocol: "Subzero",
   listedAt: 1676903060
 },
+{
+  id: "2557",
+  name: "Bisq",
+  address: null,
+  symbol: "-",
+  url: "https://bisq.network/", 
+  description:
+    "Buy and sell bitcoin for fiat (or other cryptocurrencies) privately and securely using Bisq's peer-to-peer network and open-source desktop software.",
+  chain: "Bitcoin",
+  logo: `${baseIconsUrl}/bisq.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Bitcoin"],
+  module: "dummy.js",
+  twitter: "bisq_network",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1676983383
+},
+{
+  id: "2558",
+  name: "Dexalot",
+  address: null,
+  symbol: "ALOT",
+  url: "https://dexalot.com/", 
+  description:
+    "Dexalot is a revolutionary decentralized exchange aiming at bringing the traditional centralized exchange look and feel through a decentralized on-chain application.",
+  chain: "Avalanche",
+  logo: `${baseIconsUrl}/dexalot.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Avalanche"],
+  module: "dummy.js",
+  twitter: "dexalotcom",
+  forkedFrom: [],
+  oracles: [],
+  listedAt: 1676985639
+}
 ]
 export default data2;

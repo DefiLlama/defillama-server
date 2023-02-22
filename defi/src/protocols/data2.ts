@@ -14268,7 +14268,7 @@ listedAt: 1650804679
   logo: `${baseIconsUrl}/puli.png`,
   audits: "3",
   audit_note: null,
-  gecko_id: "puli",
+  gecko_id: "puli-inu",
   cmcId: "17354",
   category: "Gaming",
   chains: ["Binance"],

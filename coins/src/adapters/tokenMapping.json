@@ -3099,6 +3099,20 @@
       "to": "coingecko#umee"
     }
   },
+  "orai": {
+    "orai": {
+      "name": "Oraichain",
+      "decimals": "6",
+      "symbol": "ORAI",
+      "to": "coingecko#oraichain-token"
+    },
+    "orai12hzjxfh77wl572gdzct2fxv2arxcwh6gykc7qh": {
+      "name": "USDT",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
+  },
   "comdex": {
     "ucmdx": {
       "name": "comdex",

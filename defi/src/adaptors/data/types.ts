@@ -26,6 +26,7 @@ export interface IConfig {
     startFrom?: number
     protocolsData?: IJSON<{
         enabled?: boolean
+        id: string
     }>,
 }
 

@@ -51,11 +51,6 @@ export default {
         "id": "2121"
     },
     "gmx": {
-            protocolsData: {
-                'gmx': {
-                    category: 'Derivatives'
-                }
-            },
         "enabled": true,
         "id": "337"
     },

@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
+[
+  {
+    "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+    "audit_links": [
+      "https://docs.pancakeswap.finance/#is-it-safe",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Dexes",
+    "chain": "Binance",
+    "chains": [
+      "bsc",
+      "ethereum",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "194",
+    },
+    "description": "The #1 AMM and yield farm on Binance Smart Chain",
+    "disabled": false,
+    "displayName": "PancakeSwap AMM",
+    "forkedFrom": [
+      "Uniswap",
+    ],
+    "gecko_id": null,
+    "id": "194",
+    "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
+    "module": "pancakeswap",
+    "name": "PancakeSwap AMM",
+    "oracles": [],
+    "parentProtocol": "PancakeSwap",
+    "protocolType": undefined,
+    "protocolsData": {
+      "stableswap": {
+        "chains": [
+          "bsc",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
+          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
+          "ProtocolRevenue": "Treasury receives 10% of the fees.",
+          "Revenue": "Revenue is 50% of the fees paid by users.",
+          "SupplySideRevenue": "LPs receive 50% of the fees.",
+          "UserFees": "User pays 0.25% fees on each swap.",
+        },
+      },
+      "v1": {
+        "chains": [],
+        "disabled": true,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "v2": {
+        "chains": [
+          "bsc",
+          "ethereum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "All fees comes from the user.",
+          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
+          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
+          "Revenue": "All revenue generated comes from user fees.",
+          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
+          "UserFees": "User pays 0.25% fees on each swap.",
+        },
+      },
+    },
+    "symbol": "CAKE",
+    "twitter": "PancakeSwap",
+    "url": "https://pancakeswap.finance/",
+  },
+]
+`;

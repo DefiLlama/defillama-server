@@ -7,10 +7,8 @@ export default {
     },
     "gmx": {
         "protocolsData": {
-            "swap": {
-                "enabled": false
-            },
             "derivatives": {
+                "id": "337",
                 "enabled": true
             }
         },

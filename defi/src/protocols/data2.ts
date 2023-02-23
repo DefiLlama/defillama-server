@@ -25675,6 +25675,50 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1677103747
 },
-
+{
+  id: "2571",
+  name: "Mosquitos Finance",
+  address: null,
+  symbol: "-",
+  url: "https://app.mosquitos.finance",
+  description:
+    "Mosquitos Finance is a decentralized exchange with the most advanced perpetual yield farm running on Aptos Chain.",
+  chain: "Canto",
+  logo: `${baseIconsUrl}/mosquitos-finance.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Canto"],
+  module: "mosquitos-finance/index.js",
+  twitter: "Mosquitos_Fin",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  listedAt: 1677149680
+},
+{
+  id: "2572",
+  name: "Nucleon",
+  address: "conflux:0xfe197e7968807b311d476915db585831b43a7e3b",
+  symbol: "NUT",
+  url: "https://www.nucleon.space",
+  description:
+    "Nucleon is a liquid staking solution for Conflux PoS. Nucleon enables users to stake CFX without the overhead of illiquid assets. Users can enjoy liquidity while remaining secure, earning interest, and accessing the broader DeFi ecosystem.",
+  chain: "Conflux",
+  logo: `${baseIconsUrl}/nucleon.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "nucleon-space",
+  cmcId: "23581",
+  category: "Liquid Staking",
+  chains: ["Conflux"],
+  module: "nucleon/index.js",
+  twitter: "OfficialNucleon",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://doc.nucleon.network/about-nucleon/security"],
+  listedAt: 1677149684
+},
 ]
 export default data2;

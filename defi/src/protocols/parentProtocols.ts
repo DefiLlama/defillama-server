@@ -801,7 +801,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "Cap Finance",
     name: "Cap Finance",
-    url: "https://www.cap.finance",
+    url: "https://www.cap.io",
     description:
     "Decentralized Perps. Trade with up to 100x leverage directly from your wallet. ",
     logo: `${baseIconsUrl}/cap-finance.jpg`,

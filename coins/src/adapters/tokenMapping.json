@@ -2296,6 +2296,12 @@
       "symbol": "pSOL",
       "to": "solana:So11111111111111111111111111111111111111112"
     },
+    "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn": {
+      "name": "Jito Staked SOL",
+      "decimals": "9",
+      "symbol": "JITOSOL",
+      "to": "coingecko:jito-staked-sol"
+    },
     "6LNeTYMqtNm1pBFN8PfhQaoLyegAH8GD32WmHU9erXKN": {
       "name": "Aptos Coin (Wormhole)",
       "decimals": "8",

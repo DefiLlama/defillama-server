@@ -1,6 +1,6 @@
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { AdaptorData, IJSON, ProtocolAdaptor } from "./types";
-import { KEYS_TO_STORE as dexs_KEYS_TO_STORE, config as dexs_config, dex_imports } from "./dexs"
+import { KEYS_TO_STORE as dexs_KEYS_TO_STORE, config as dexs_config, dexs_imports } from "./dexs"
 import { KEYS_TO_STORE as derivatives_KEYS_TO_STORE, config as derivatives_config, dex_imports as derivatives_imports } from "./derivatives"
 import { KEYS_TO_STORE as fees_KEYS_TO_STORE, config as fees_config, rules as fees_DimensionRules, fees_imports } from "./fees"
 import { KEYS_TO_STORE as aggregators_KEYS_TO_STORE, config as aggregators_config, aggregators_imports } from "./aggregators"
@@ -14,14 +14,14 @@ import generateProtocolAdaptorsList, { IImportsMap } from "./helpers/generatePro
 // without 1 dex -> 1.6s (all dexs =200 aprox 4s)
 
 const importsMap = {
-    dex_imports,
+    dexs_imports,
     derivatives_imports,
     fees_imports,
     aggregators_imports,
     options_imports,
     incentives_imports,
     protocols_imports
-} as IJSON<typeof dex_imports>
+} as IJSON<typeof dexs_imports>
 
 const all = {
     // list: {},

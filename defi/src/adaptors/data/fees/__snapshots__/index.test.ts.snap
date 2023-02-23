@@ -2534,6 +2534,291 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
     "url": "https://fi.woo.org",
   },
   {
+    "address": "0x584bC13c7D411c00c01A62e8019472dE68768430",
+    "audit_links": [
+      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hegic-v1.0.pdf",
+      "https://github.com/hegic/contracts/blob/main/packages/herge/docs/PeckShield-Audit-Report-Hegic-Herge-Protocol-Upgrade-v1.0.pdf",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Options",
+    "chain": "Ethereum",
+    "chains": [
+      "arbitrum",
+    ],
+    "cmcId": "6929",
+    "config": {
+      "enabled": true,
+      "id": "128",
+    },
+    "description": "Hegic is an on-chain peer-to-pool options trading protocol on Arbitrum. You can trade ETH and WBTC ATM / OTM Calls / Puts & One-click Option Strategies on Hegic",
+    "disabled": false,
+    "displayName": "Hegic",
+    "gecko_id": "hegic",
+    "id": "128",
+    "logo": "https://icons.llama.fi/hegic.jpg",
+    "methodology": "
+The only thing anyone pays on Hegic is premiums. This goes into dailyFees.
+
+The paid premiums can be considered Revenue, but at the moment we don't include it in the dashboard, because:
+
+- payout is epoch-based (30 days), not daily
+- stakers get all premiums minus profits of traders (!!!), so in fact stakers may get a negative payout (slashed stake)
+
+Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that could be considered ProtocolRevenue
+  ",
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/hegic.ts",
+    "module": "hegic",
+    "name": "Hegic",
+    "protocolType": undefined,
+    "protocolsData": {
+      "hegic": {
+        "chains": [
+          "arbitrum",
+        ],
+        "disabled": false,
+        "methodology": undefined,
+      },
+    },
+    "symbol": "HEGIC",
+    "twitter": "HegicOptions",
+    "url": "https://www.hegic.co/ ",
+  },
+  {
+    "address": "optimism:0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
+    "audit_links": [
+      "https://github.com/lyra-finance/lyra-protocol/tree/master/audits/v1",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Options",
+    "chain": "Optimism",
+    "chains": [
+      "optimism",
+    ],
+    "cmcId": "15447",
+    "config": {
+      "enabled": true,
+      "id": "503",
+    },
+    "description": "The first complete decentralized options protocol built on Ethereum",
+    "disabled": false,
+    "displayName": "Lyra",
+    "gecko_id": "lyra-finance",
+    "governanceID": [
+      "snapshot:lyra.eth",
+    ],
+    "id": "503",
+    "logo": "https://icons.llama.fi/lyra.jpg",
+    "methodology": {
+      "Fees": "Fees paid by users",
+      "HoldersRevenue": "Fees going to governance token holders",
+      "ProtocolRevenue": "Fees going to treasury",
+      "Revenue": "Treasury and token holders revenue",
+      "SupplySideRevenue": "LPs revenue",
+      "UserFees": "Fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/lyra.ts",
+    "module": "lyra",
+    "name": "Lyra",
+    "oracles": [
+      "Chainlink",
+    ],
+    "protocolType": undefined,
+    "protocolsData": {
+      "lyra": {
+        "chains": [
+          "optimism",
+        ],
+        "disabled": false,
+        "methodology": undefined,
+      },
+    },
+    "symbol": "LYRA",
+    "twitter": "lyrafinance",
+    "url": "https://www.lyra.finance",
+  },
+  {
+    "address": "0x6399c842dd2be3de30bf99bc7d1bbf6fa3650e70",
+    "audit_links": [
+      "https://solidity.finance/audits/Premia",
+      "https://hacken.io/audits/#solidstate",
+      "https://hacken.io/audits/#premia_finance",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Options",
+    "chain": "Ethereum",
+    "chains": [
+      "arbitrum",
+      "ethereum",
+      "fantom",
+      "optimism",
+    ],
+    "cmcId": "8476",
+    "config": {
+      "enabled": true,
+      "id": "381",
+    },
+    "description": "Premia's automated options market enables best-in-class pricing based on realtime supply and demand, bringing fully-featured peer-to-pool trading and capital efficiency to DeFi options.",
+    "disabled": false,
+    "displayName": "Premia",
+    "gecko_id": "premia",
+    "id": "381",
+    "logo": "https://icons.llama.fi/premia.jpg",
+    "methodology": {
+      "Fees": "Fees paid by users",
+      "HoldersRevenue": "Fees going to governance token holders",
+      "ProtocolRevenue": "Fees going to treasury",
+      "Revenue": "Treasury and token holders revenue",
+      "SupplySideRevenue": "LPs revenue",
+      "UserFees": "Fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/premia.ts",
+    "module": "premia",
+    "name": "Premia",
+    "protocolType": undefined,
+    "protocolsData": {
+      "premia": {
+        "chains": [
+          "arbitrum",
+          "ethereum",
+          "fantom",
+          "optimism",
+        ],
+        "disabled": false,
+        "methodology": undefined,
+      },
+    },
+    "symbol": "PREMIA",
+    "twitter": "PremiaFinance",
+    "url": "https://premia.finance/",
+  },
+  {
+    "category": "Chain",
+    "chains": [
+      "bitcoin",
+    ],
+    "cmcId": "1",
+    "config": {
+      "enabled": true,
+      "id": "1",
+    },
+    "disabled": false,
+    "displayName": "Bitcoin",
+    "geckoId": "bitcoin",
+    "gecko_id": "bitcoin",
+    "id": "1",
+    "logo": "https://icons.llama.fi/chains/rsz_bitcoin.jpg",
+    "methodology": {
+      "Fees": "Gas fees paid by users",
+      "Revenue": "Burned coins",
+      "UserFees": "Gas fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/bitcoin.ts",
+    "module": "bitcoin",
+    "name": "Bitcoin",
+    "protocolType": "chain",
+    "protocolsData": {
+      "bitcoin": {
+        "chains": [
+          "bitcoin",
+        ],
+        "disabled": false,
+        "methodology": undefined,
+      },
+    },
+    "symbol": "BTC",
+  },
+  {
+    "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+    "audit_links": [
+      "https://docs.pancakeswap.finance/#is-it-safe",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Dexes",
+    "chain": "Binance",
+    "chains": [
+      "bsc",
+      "ethereum",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "194",
+    },
+    "description": "The #1 AMM and yield farm on Binance Smart Chain",
+    "disabled": false,
+    "displayName": "PancakeSwap AMM",
+    "forkedFrom": [
+      "Uniswap",
+    ],
+    "gecko_id": null,
+    "id": "194",
+    "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
+    "module": "pancakeswap",
+    "name": "PancakeSwap AMM",
+    "oracles": [],
+    "parentProtocol": "PancakeSwap",
+    "protocolType": undefined,
+    "protocolsData": {
+      "stableswap": {
+        "chains": [
+          "bsc",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
+          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
+          "ProtocolRevenue": "Treasury receives 10% of the fees.",
+          "Revenue": "Revenue is 50% of the fees paid by users.",
+          "SupplySideRevenue": "LPs receive 50% of the fees.",
+          "UserFees": "User pays 0.25% fees on each swap.",
+        },
+      },
+      "v1": {
+        "chains": [],
+        "disabled": true,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "v2": {
+        "chains": [
+          "bsc",
+          "ethereum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "All fees comes from the user.",
+          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
+          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
+          "Revenue": "All revenue generated comes from user fees.",
+          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
+          "UserFees": "User pays 0.25% fees on each swap.",
+        },
+      },
+    },
+    "symbol": "CAKE",
+    "twitter": "PancakeSwap",
+    "url": "https://pancakeswap.finance/",
+  },
+  {
     "address": null,
     "audit_links": [
       "https://assets.website-files.com/622a09bc809cd190f58b7b15/627cd4450f5eb2df769b4ac1_PeckShield-Audit-Report-0VIX-v1.0.pdf",
@@ -3000,42 +3285,6 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
     "treasury": "betswirl.js",
     "twitter": "BetSwirl",
     "url": "https://www.betswirl.com",
-  },
-  {
-    "category": "Chain",
-    "chains": [
-      "bitcoin",
-    ],
-    "cmcId": "1",
-    "config": {
-      "enabled": true,
-      "id": "1",
-    },
-    "disabled": false,
-    "displayName": "Bitcoin",
-    "geckoId": "bitcoin",
-    "gecko_id": "bitcoin",
-    "id": "1",
-    "logo": "https://icons.llama.fi/chains/rsz_bitcoin.jpg",
-    "methodology": {
-      "Fees": "Gas fees paid by users",
-      "Revenue": "Burned coins",
-      "UserFees": "Gas fees paid by users",
-    },
-    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/bitcoin.ts",
-    "module": "bitcoin",
-    "name": "Bitcoin",
-    "protocolType": "chain",
-    "protocolsData": {
-      "bitcoin": {
-        "chains": [
-          "bitcoin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
-    "symbol": "BTC",
   },
   {
     "address": null,
@@ -3918,16 +4167,9 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
   },
   {
     "address": "neo:0x9b049f1283515eef1d3f6ac610e1595ed25ca3e9",
-    "allAddresses": [
-      "neo:0x9b049f1283515eef1d3f6ac610e1595ed25ca3e9",
-      "ethereum:0x35609dc59e15d03c5c865507e1348fa5abb319a8",
-      "polygon:0x6a335ac6a3cdf444967fe03e7b6b273c86043990",
-      "avax:0x0b53b5da7d0f275c31a6a182622bdf02474af253",
-      "bsc:0x0b53b5da7d0f275c31a6a182622bdf02474af253",
-    ],
     "audit_note": null,
     "audits": "0",
-    "category": "NFT Marketplace",
+    "category": "Liquid Staking",
     "chain": "NEO",
     "chains": [
       "neo",
@@ -3939,6 +4181,14 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
     ],
     "cmcId": "17454",
     "config": {
+      "allAddresses": [
+        "neo:0x9b049f1283515eef1d3f6ac610e1595ed25ca3e9",
+        "ethereum:0x35609dc59e15d03c5c865507e1348fa5abb319a8",
+        "polygon:0x6a335ac6a3cdf444967fe03e7b6b273c86043990",
+        "avax:0x0b53b5da7d0f275c31a6a182622bdf02474af253",
+        "bsc:0x0b53b5da7d0f275c31a6a182622bdf02474af253",
+      ],
+      "category": "NFT Marketplace",
       "enabled": true,
       "id": "2290",
     },
@@ -3955,6 +4205,7 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
       "HoldersRevenue": "20% of user fees goes to GFUND single stake pool",
       "ProtocolRevenue": "Protocol gets 2% of each trade",
       "Revenue": "Revenue is 2% of each trade",
+      "SupplySideRevenue": "Revenue earned by stETH holders",
       "UserFees": "Users pay 2% fees on each trade",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/ghostmarket",
@@ -3978,57 +4229,6 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
     "symbol": "GM",
     "twitter": "ghostmarketio",
     "url": "https://ghostmarket.io",
-  },
-  {
-    "address": "0x584bC13c7D411c00c01A62e8019472dE68768430",
-    "audit_links": [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hegic-v1.0.pdf",
-      "https://github.com/hegic/contracts/blob/main/packages/herge/docs/PeckShield-Audit-Report-Hegic-Herge-Protocol-Upgrade-v1.0.pdf",
-    ],
-    "audit_note": null,
-    "audits": "2",
-    "category": "Options",
-    "chain": "Ethereum",
-    "chains": [
-      "arbitrum",
-    ],
-    "cmcId": "6929",
-    "config": {
-      "enabled": true,
-      "id": "128",
-    },
-    "description": "Hegic is an on-chain peer-to-pool options trading protocol on Arbitrum. You can trade ETH and WBTC ATM / OTM Calls / Puts & One-click Option Strategies on Hegic",
-    "disabled": false,
-    "displayName": "Hegic",
-    "gecko_id": "hegic",
-    "id": "128",
-    "logo": "https://icons.llama.fi/hegic.jpg",
-    "methodology": "
-The only thing anyone pays on Hegic is premiums. This goes into dailyFees.
-
-The paid premiums can be considered Revenue, but at the moment we don't include it in the dashboard, because:
-
-- payout is epoch-based (30 days), not daily
-- stakers get all premiums minus profits of traders (!!!), so in fact stakers may get a negative payout (slashed stake)
-
-Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that could be considered ProtocolRevenue
-  ",
-    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/hegic.ts",
-    "module": "hegic",
-    "name": "Hegic",
-    "protocolType": undefined,
-    "protocolsData": {
-      "hegic": {
-        "chains": [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
-    "symbol": "HEGIC",
-    "twitter": "HegicOptions",
-    "url": "https://www.hegic.co/ ",
   },
   {
     "categories": [
@@ -4367,60 +4567,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "treasury": "looksrare.js",
     "twitter": "LooksRareNFT",
     "url": "https://looksrare.org",
-  },
-  {
-    "address": "optimism:0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
-    "audit_links": [
-      "https://github.com/lyra-finance/lyra-protocol/tree/master/audits/v1",
-    ],
-    "audit_note": null,
-    "audits": "2",
-    "category": "Options",
-    "chain": "Optimism",
-    "chains": [
-      "optimism",
-    ],
-    "cmcId": "15447",
-    "config": {
-      "enabled": true,
-      "id": "503",
-    },
-    "description": "The first complete decentralized options protocol built on Ethereum",
-    "disabled": false,
-    "displayName": "Lyra",
-    "gecko_id": "lyra-finance",
-    "governanceID": [
-      "snapshot:lyra.eth",
-    ],
-    "id": "503",
-    "logo": "https://icons.llama.fi/lyra.jpg",
-    "methodology": {
-      "Fees": "Fees paid by users",
-      "HoldersRevenue": "Fees going to governance token holders",
-      "ProtocolRevenue": "Fees going to treasury",
-      "Revenue": "Treasury and token holders revenue",
-      "SupplySideRevenue": "LPs revenue",
-      "UserFees": "Fees paid by users",
-    },
-    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/lyra.ts",
-    "module": "lyra",
-    "name": "Lyra",
-    "oracles": [
-      "Chainlink",
-    ],
-    "protocolType": undefined,
-    "protocolsData": {
-      "lyra": {
-        "chains": [
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
-    "symbol": "LYRA",
-    "twitter": "lyrafinance",
-    "url": "https://www.lyra.finance",
   },
   {
     "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
@@ -5095,62 +5241,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "url": "https://www.predy.finance",
   },
   {
-    "address": "0x6399c842dd2be3de30bf99bc7d1bbf6fa3650e70",
-    "audit_links": [
-      "https://solidity.finance/audits/Premia",
-      "https://hacken.io/audits/#solidstate",
-      "https://hacken.io/audits/#premia_finance",
-    ],
-    "audit_note": null,
-    "audits": "2",
-    "category": "Options",
-    "chain": "Ethereum",
-    "chains": [
-      "arbitrum",
-      "ethereum",
-      "fantom",
-      "optimism",
-    ],
-    "cmcId": "8476",
-    "config": {
-      "enabled": true,
-      "id": "381",
-    },
-    "description": "Premia's automated options market enables best-in-class pricing based on realtime supply and demand, bringing fully-featured peer-to-pool trading and capital efficiency to DeFi options.",
-    "disabled": false,
-    "displayName": "Premia",
-    "gecko_id": "premia",
-    "id": "381",
-    "logo": "https://icons.llama.fi/premia.jpg",
-    "methodology": {
-      "Fees": "Fees paid by users",
-      "HoldersRevenue": "Fees going to governance token holders",
-      "ProtocolRevenue": "Fees going to treasury",
-      "Revenue": "Treasury and token holders revenue",
-      "SupplySideRevenue": "LPs revenue",
-      "UserFees": "Fees paid by users",
-    },
-    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/premia.ts",
-    "module": "premia",
-    "name": "Premia",
-    "protocolType": undefined,
-    "protocolsData": {
-      "premia": {
-        "chains": [
-          "arbitrum",
-          "ethereum",
-          "fantom",
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
-    "symbol": "PREMIA",
-    "twitter": "PremiaFinance",
-    "url": "https://premia.finance/",
-  },
-  {
     "category": "Chain",
     "chains": [
       "solana",
@@ -5637,94 +5727,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "-",
     "twitter": "ZonicApp",
     "url": "https://zonic.app",
-  },
-  {
-    "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-    "audit_links": [
-      "https://docs.pancakeswap.finance/#is-it-safe",
-    ],
-    "audit_note": null,
-    "audits": "2",
-    "category": "Dexes",
-    "chain": "Binance",
-    "chains": [
-      "bsc",
-      "ethereum",
-    ],
-    "cmcId": null,
-    "config": {
-      "enabled": true,
-      "id": "194",
-    },
-    "description": "The #1 AMM and yield farm on Binance Smart Chain",
-    "disabled": false,
-    "displayName": "PancakeSwap AMM",
-    "forkedFrom": [
-      "Uniswap",
-    ],
-    "gecko_id": null,
-    "id": "194",
-    "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
-    "methodology": {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
-    },
-    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
-    "module": "pancakeswap",
-    "name": "PancakeSwap AMM",
-    "oracles": [],
-    "parentProtocol": "PancakeSwap",
-    "protocolType": undefined,
-    "protocolsData": {
-      "stableswap": {
-        "chains": [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": {
-          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
-          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 10% of the fees.",
-          "Revenue": "Revenue is 50% of the fees paid by users.",
-          "SupplySideRevenue": "LPs receive 50% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
-      },
-      "v1": {
-        "chains": [],
-        "disabled": true,
-        "methodology": {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-      "v2": {
-        "chains": [
-          "bsc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": {
-          "Fees": "All fees comes from the user.",
-          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
-          "Revenue": "All revenue generated comes from user fees.",
-          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
-      },
-    },
-    "symbol": "CAKE",
-    "twitter": "PancakeSwap",
-    "url": "https://pancakeswap.finance/",
   },
 ]
 `;

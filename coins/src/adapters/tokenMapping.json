@@ -1176,6 +1176,12 @@
       "symbol": "BXH",
       "to": "heco:0xcbd6cb9243d8e3381fea611ef023e17d1b7aedf0"
     },
+    "0xea5a82b35244d9e5e48781f00b11b14e627d2951": {
+      "name": "Cosmos",
+      "decimals": "6",
+      "symbol": "ATOM",
+      "to": "coingecko#cosmos"
+    },
     "0x18084fba666a33d37592fa2633fd49a74dd93a88": {
       "name": "tBTC v2",
       "decimals": "18",

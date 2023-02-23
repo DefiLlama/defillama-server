@@ -8,7 +8,13 @@ export default {
     "dexible": {
         "enabled": true,
         "startFrom": 1630022400,
-        "id": "2249"
+        "id": "2249",
+        protocolsData: {
+            Dexible_v2: {
+                "id": "2249",
+                displayName: "Dexible V2"
+            }
+        }
     },
     "deflex": {
         "enabled": true,

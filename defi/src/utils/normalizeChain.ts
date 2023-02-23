@@ -1312,7 +1312,7 @@ export const chainCoingeckoIds = {
     cmcId: "7281",
     categories: ["Cosmos"],
   },
-  "Enuls": {
+  "ENULS": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -1679,7 +1679,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "persistence":
       return "Persistence"
     case "enuls":
-      return "Enuls"
+      return "ENULS"
     case "orai":
       return "Orai"
     default:

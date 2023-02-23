@@ -25789,5 +25789,28 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1677162923
 },
+{
+  id: "2576",
+  name: "Goledo",
+  address: null,
+  symbol: "-",
+  url: "https://www.goledo.cash",
+  description:
+    "1st Innovative Lending Protocol on Conflux eSpace",
+  chain: "Conflux",
+  logo: `${baseIconsUrl}/goledo.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Lending",
+  chains: ["Conflux"],
+  module: "goledo/index.js",
+  twitter: "GoledoFinance",
+  oracles: [],
+  forkedFrom: ["AAVE"],
+  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Goledo-v1.0.pdf"],
+  listedAt: 1677164241
+},
 ]
 export default data2;

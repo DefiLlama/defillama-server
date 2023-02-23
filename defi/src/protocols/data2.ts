@@ -25720,5 +25720,51 @@ listedAt: 1650804679
   audit_links: ["https://doc.nucleon.network/about-nucleon/security"],
   listedAt: 1677149684
 },
+{
+  id: "2573",
+  name: "QuantumX Network",
+  address: null,
+  symbol: "-",
+  url: "https://www.quantumx.network",
+  description:
+    "QuantumX Network is a decentralized platform that provides a tightly integrated ecosystem of dApps aiming to get full advantage of the power of MultiversX.",
+  chain: "Elrond",
+  logo: `${baseIconsUrl}/quantumx-network.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Services",
+  chains: ["Elrond"],
+  module: "quantumx-network/api.js",
+  twitter: "QuantumXnetwork",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://bhero.com/pdf/audits/elrond/SuperRareBears_SmartContract_Audit_FarmsSmartContract_v.0.1.pdf"],
+  listedAt: 1677155709
+},
+{
+  id: "2574",
+  name: "HXRO Network",
+  address: "solana:0x4bd70556ae3f8a6ec6c4080a0c327b24325438f3",
+  symbol: "HXRO",
+  url: "https://hxro.com",
+  description:
+    "A core derivatives primitive built on Solana.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/hxro-network.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "hxro",
+  cmcId: "3748",
+  category: "Derivatives",
+  chains: ["Solana"],
+  module: "hxro-network/index.js",
+  twitter: "HxroNetwork",
+  oracles: ["Pyth", "Jiritsu"],
+  forkedFrom: [],
+  audit_links: ["https://docs.hxro.network/hxro-token/staking-and-governance/15-9-2022-audit"],
+  listedAt: 1677155712
+},
 ]
 export default data2;

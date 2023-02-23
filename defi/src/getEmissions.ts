@@ -10,12 +10,9 @@ const handler = async (event: any): Promise<IResponse> => {
   const protocolName: string = event.pathParameters?.protocol?.toLowerCase();
   try {
     const data = JSON.parse(
-      fs.readFileSync(
-        `defi/src/emissions/results/${protocolName}.json`,
-        "utf8",
-      ),
+      fs.readFileSync(`defi/src/emissions/charts/${protocolName}.json`, "utf8"),
     );
-    return successResponse({ data });
+    return successResponse(data);
   } catch {
     return errorResponse({
       message: `protocol '${protocolName}' has no chart to fetch`,

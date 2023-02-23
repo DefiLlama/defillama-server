@@ -2595,6 +2595,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "chain": "Optimism",
     "chains": [
       "optimism",
+      "arbitrum",
     ],
     "cmcId": "15447",
     "config": {
@@ -2629,6 +2630,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "lyra": {
         "chains": [
           "optimism",
+          "arbitrum",
         ],
         "disabled": false,
         "methodology": undefined,
@@ -3355,9 +3357,9 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "listedAt": 1672970801,
     "logo": "https://icons.llama.fi/blur.png",
     "methodology": {
-      "Fees": "Fees paid by users",
+      "Fees": "All royalties+marketplace fees paid on sales",
       "ProtocolRevenue": "Marketplace revenue",
-      "Revenue": "Marketplace revenue",
+      "Revenue": "At the moment blur charges no marketplace fees",
       "UserFees": "Fees paid by users",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/blur.ts",

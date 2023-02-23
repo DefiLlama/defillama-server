@@ -1318,7 +1318,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
-  "Orai": {
+  "Oraichain": {
     geckoId: "oraichain-token",
     symbol: "ORAI",
     cmcId: "7533",

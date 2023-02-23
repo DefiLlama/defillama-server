@@ -8,6 +8,7 @@ export default {
     "gmx": {
         "protocolsData": {
             "derivatives": {
+                displayName: "GMX - Derivatives",
                 "id": "337",
                 "enabled": true
             }

@@ -5,12 +5,17 @@ import {
   successResponse,
 } from "./utils/shared";
 import fs from "fs";
+import path from "path";
 
 const handler = async (event: any): Promise<IResponse> => {
   const protocolName: string = event.pathParameters?.protocol?.toLowerCase();
+
   try {
     const data = JSON.parse(
-      fs.readFileSync(`defi/src/emissions/charts/${protocolName}.json`, "utf8"),
+      fs.readFileSync(
+        path.join(__dirname, `./emissions/charts/${protocolName}.json`),
+        "utf8",
+      ),
     );
     return successResponse(data);
   } catch {
@@ -21,3 +26,9 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
+
+// async function main() {
+//   let a = await handler({ pathParameters: { protocol: "aave" } });
+//   return;
+// }
+// main(); // ts-node defi/src/getEmissions.ts

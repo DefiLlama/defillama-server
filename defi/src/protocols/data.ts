@@ -12493,14 +12493,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   */
   {
     id: "709",
-    name: "pStake",
+    name: "pSTAKE Finance",
     address: "0xfB5c6815cA3AC72Ce9F5006869AE67f18bF77006",
     symbol: "PSTAKE",
     url: "https://pstake.finance",
     description:
       "pSTAKE is a liquid staking protocol unlocking the liquidity of staked assets. Stakers of PoS tokens can now stake their assets while maintaining the liquidity of these assets. On staking with pSTAKE, users earn staking rewards and also receive 1:1 pegged staked representative tokens (stkTOKENs) which can be used in DeFi to generate additional yield (yield on top of staking rewards).",
     chain: "Persistence",
-    logo: `${baseIconsUrl}/pstake.png`,
+    logo: `${baseIconsUrl}/pstake-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "pstake-finance",

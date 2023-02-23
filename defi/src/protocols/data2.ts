@@ -21839,7 +21839,7 @@ listedAt: 1650804679
     "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
   chain: "Ethereum",
   logo: `${baseIconsUrl}/solidly-v2.jpg`,
-  audits: "0",
+  audits: "2",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
@@ -21848,7 +21848,8 @@ listedAt: 1650804679
   module: "solidly-v2/index.js",
   twitter: "SolidlyDEX", 
   forkedFrom: ["Solidly"],
-  oracles: ["TWAP"],
+  oracles: [],
+  audit_links: ["https://github.com/SolidlyLabs/Solidly-Audits/blob/main/audit_solidly.pdf"],
   listedAt: 1672678979
 },
 {

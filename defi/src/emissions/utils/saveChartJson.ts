@@ -12,6 +12,7 @@ if (process.argv.length < 3) {
 const protocol = process.argv[2];
 
 async function main() {
+  // for (let protocol of Object.keys(adapters)) {
   const adapter: Protocol = (adapters as any)[protocol];
   if (!adapter)
     throw new Error(`${protocol} doesn't seem to be a valid protocol`);
@@ -23,7 +24,7 @@ async function main() {
     }),
   );
   fs.writeFile(
-    `defi/src/emissions/results/${protocol}.json`,
+    `defi/src/emissions/charts/${protocol}.json`,
     JSON.stringify({ data }),
     function (err) {
       if (err) {
@@ -32,5 +33,6 @@ async function main() {
     },
   );
   console.log(`saved ${protocol} chart`);
+  // }
 }
 main();

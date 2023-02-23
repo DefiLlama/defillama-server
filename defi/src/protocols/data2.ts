@@ -25767,5 +25767,27 @@ listedAt: 1650804679
   audit_links: ["https://docs.hxro.network/hxro-token/staking-and-governance/15-9-2022-audit"],
   listedAt: 1677155712
 },
+{
+  id: "2575",
+  name: "Cypher",
+  address: null,
+  symbol: "-",
+  url: "https://app.cypher.trade",
+  description:
+    "Building Disneyland for derivatives on Solana.",
+  chain: "Solana",
+  logo: `${baseIconsUrl}/cypher.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Derivatives",
+  chains: ["Solana"],
+  module: "cypher-trade/index.js",
+  twitter: "cypher_protocol",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1677162923
+},
 ]
 export default data2;

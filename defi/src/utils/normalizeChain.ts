@@ -1373,6 +1373,8 @@ export function transformNewChainName(chain: string) {
       return "MultiversX"
     case "RSK":
       return "Rootstock"
+    case "Orai":
+      return "Oraichain"
     default:
       return chain
   }
@@ -1681,7 +1683,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "enuls":
       return "ENULS"
     case "orai":
-      return "Orai"
+      return useNewChainNames ? "Oraichain" : "Orai"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

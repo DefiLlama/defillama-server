@@ -5526,7 +5526,7 @@ const data: Protocol[] = [
   },
   {
     id: "375",
-    name: "Nerve Network",
+    name: "Nerve Staking",
     address: "bsc:0xf0e406c49c63abf358030a299c0e00118c4c6ba5",
     symbol: "NVT",
     url: "https://nerve.network/",

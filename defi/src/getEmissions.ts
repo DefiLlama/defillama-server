@@ -18,9 +18,18 @@ const handler = async (event: any): Promise<IResponse> => {
       ),
     );
     return successResponse(data);
-  } catch {
+  } catch (e) {
+    if (
+      typeof e == "object" &&
+      e != null &&
+      "message" in e &&
+      typeof e.message == "string"
+    )
+      return errorResponse({
+        message: `protocol '${protocolName}' has no chart to fetch: ${e.message}`,
+      });
     return errorResponse({
-      message: `protocol '${protocolName}' has no chart to fetch`,
+      message: `protocol '${protocolName}' has no chart to fetch and no error message could be returned`,
     });
   }
 };
@@ -28,7 +37,7 @@ const handler = async (event: any): Promise<IResponse> => {
 export default wrap(handler);
 
 // async function main() {
-//   let a = await handler({ pathParameters: { protocol: "aave" } });
+//   let a = await handler({ pathParameters: { protocol: "ave" } });
 //   return;
 // }
 // main(); // ts-node defi/src/getEmissions.ts

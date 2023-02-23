@@ -804,5 +804,8 @@ export default {
     },
     "subzero-zswap": {
         enabled: true
+    },
+    "megaton-finance": {
+        enabled: true
     }
 } as AdaptorsConfig

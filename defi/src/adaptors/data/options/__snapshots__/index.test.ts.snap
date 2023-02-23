@@ -180,6 +180,11 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "config": {
       "enabled": false,
       "id": "285",
+      "protocolsData": {
+        "gamma": {
+          "id": "285",
+        },
+      },
     },
     "description": "Options market",
     "disabled": false,

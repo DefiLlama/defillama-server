@@ -28,7 +28,7 @@ const schedule = (cliffQty: number, percentageOfTotalSupply: number) => [
     qty * percentageOfTotalSupply * 0.4,
   ),
 ];
-const start = 0;
+const start = 1675191600;
 const qty = 3_000_000_0000;
 const blur: Protocol = {
   airdrop: manualCliff(start, qty * 0.12),

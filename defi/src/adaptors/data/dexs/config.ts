@@ -801,5 +801,8 @@ export default {
     },
     "oraidex": {
         enabled: true
+    },
+    "subzero-zswap": {
+        enabled: true
     }
 } as AdaptorsConfig

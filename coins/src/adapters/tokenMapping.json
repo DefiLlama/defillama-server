@@ -5412,6 +5412,12 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     },
+    "0xfe197e7968807b311d476915db585831b43a7e3b": {
+      "name": "Nucleon Governance Token",
+      "decimals": "18",
+      "symbol": "NUT",
+      "to": "coingecko#nucleon-space"
+    },
     "0xfe97e85d13abd9c1c33384e796f10b73905637ce": {
       "name": "Tether USD",
       "decimals": "18",

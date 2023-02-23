@@ -10362,7 +10362,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Cap",
     address: "arbitrum:0x43044f861ec040db59a7e324c40507addb673142",
     symbol: "CAP",
-    url: "https://cap.finance",
+    url: "https://www.cap.io",
     description: "CAP lets you trade crypto markets like BTC/USD and ETH/USD with leverage. It is decentralized, open source, and accessible to everyone.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/cap.jpg`,

@@ -25812,5 +25812,51 @@ listedAt: 1650804679
   audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Goledo-v1.0.pdf"],
   listedAt: 1677164241
 },
+{
+  id: "2577",
+  name: "Sharky Swap",
+  address: "arbitrum:0x73eD68B834e44096eB4beA6eDeAD038c945722F1",
+  symbol: "SHARKY",
+  url: "https://sharkyswap.xyz",
+  description:
+    "Surf, trade and farm crypto between the waves, among the Elite.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/sharky-swap.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "sharky-swap",
+  cmcId: "23616",
+  category: "Dexes",
+  chains: ["Arbitrum"],
+  module: "sharkyswap/index.js",
+  twitter: "SharkySwapFi",
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  audit_links: ["https://github.com/solidproof/projects/tree/main/SharkySwap"],
+  listedAt: 1677170521
+},
+{
+  id: "2578",
+  name: "Beamer Bridge",
+  address: null,
+  symbol: "-",
+  url: "https://app.beamerbridge.com",
+  description:
+    "Enjoy Effortless Bridging - Beam your ERC20 assets between EVM-compatible rollups with certainty, speed and security.",
+  chain: "Arbitrum",
+  logo: `${baseIconsUrl}/beamer-bridge.jpg`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Bridge",
+  chains: ["Arbitrum", "Optimism"],
+  module: "beamer/index.js",
+  twitter: "BeamerBridge",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://drive.google.com/file/d/1_LDtDNWcPC9ZdMK6tHqQpvGw6O1RcHE1/view"],
+  listedAt: 1677170525
+},
 ]
 export default data2;

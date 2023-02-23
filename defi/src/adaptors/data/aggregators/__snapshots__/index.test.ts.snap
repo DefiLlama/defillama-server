@@ -75,6 +75,12 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
     "config": {
       "enabled": true,
       "id": "2249",
+      "protocolsData": {
+        "Dexible_v2": {
+          "displayName": "Dexible V2",
+          "id": "2249",
+        },
+      },
       "startFrom": 1630022400,
     },
     "description": " DeFi's execution management system. Dexible is a DEX aggregator that also provides algo and automated order types normally only seen in CeFi.",

@@ -25858,5 +25858,28 @@ listedAt: 1650804679
   audit_links: ["https://drive.google.com/file/d/1_LDtDNWcPC9ZdMK6tHqQpvGw6O1RcHE1/view"],
   listedAt: 1677170525
 },
+{
+  id: "2579",
+  name: "King Finance",
+  address: "bsc:0x74f08af7528ffb751e3a435ddd779b5c4565e684",
+  symbol: "KING",
+  url: "https://kingworld.finance/",
+  description:
+    "KING is the parent company developing three of the most innovative services in decentralised finance: King Floki, King Land, & King Pad.",
+  chain: "Binance",
+  logo: `${baseIconsUrl}/king-finance.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: "king",
+  cmcId: "23420",
+  category: "Services",
+  chains: ["Binance"],
+  module: "king-finance/index.js",
+  twitter: "kingfinance",
+  oracles: [],
+  forkedFrom: [],
+  audit_links: ["https://www.certik.com/projects/king"],
+  listedAt: 1677194619
+},
 ]
 export default data2;

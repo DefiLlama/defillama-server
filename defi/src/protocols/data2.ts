@@ -25683,7 +25683,7 @@ listedAt: 1650804679
   symbol: "-",
   url: "https://app.mosquitos.finance",
   description:
-    "Mosquitos Finance is a decentralized exchange with the most advanced perpetual yield farm running on Aptos Chain.",
+    "Mosquitos Finance is a decentralized exchange with the most advanced perpetual yield farm running on Aptos Chain with lots of other curated features that let you earn additional rewards and enjoy the ecosystem. $SUCKR",
   chain: "Canto",
   logo: `${baseIconsUrl}/mosquitos-finance.jpg`,
   audits: "0",

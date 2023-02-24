@@ -25903,5 +25903,27 @@ listedAt: 1650804679
   forkedFrom: [],
   listedAt: 1677236770
 },
+{
+  id: "2581",
+  name: "KapaSwap",
+  address: null,
+  symbol: "-",
+  url: "https://app.kapaswap.com",
+  description:
+    "Dexes on Kava Network",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/kapaswap.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Kava"],
+  module: "kapaswap/index.js",
+  twitter: null,
+  oracles: [],
+  forkedFrom: ["Uniswap"],
+  listedAt: 1677239405
+},
 ]
 export default data2;

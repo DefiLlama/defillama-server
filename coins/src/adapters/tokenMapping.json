@@ -258,6 +258,12 @@
       "symbol": "2030Floki",
       "to": "ethereum:0x123"
     },
+    "0x808a3f2639a5cd54d64ed768192369bcd729100e": {
+      "name": "Zircon Gamma Token",
+      "decimals": "18",
+      "symbol": "ZRG",
+      "to": "moonriver:0x4545e94974adacb82fc56bcf136b07943e152055"
+    },
     "0x6ded0f2c886568fb4bb6f04f179093d3d167c9d7": {
       "name": "DeFIL-V2",
       "decimals": "18",

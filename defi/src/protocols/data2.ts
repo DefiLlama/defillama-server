@@ -25925,5 +25925,27 @@ listedAt: 1650804679
   forkedFrom: ["Uniswap"],
   listedAt: 1677239405
 },
+{
+  id: "2582",
+  name: "TrueFeedBack",
+  address: "0x4057db5bd9f67a566aa10e5587b1a964affc6a16",
+  symbol: "TFBX",
+  url: "https://truefeedback.io",
+  description:
+    "TrueFeedBack builds a blockchain-based data collection and analysis platform, enabling users to earn TrueFeedBack Tokens (TFBX) as a reward for their actions with the features on their mobile application.",
+  chain: "Celo",
+  logo: `${baseIconsUrl}/truefeedback.jpg`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: "truefeedbackchain",
+  cmcId: "4144",
+  category: "Gaming",
+  chains: ["Celo","Kava"],
+  module: "truefeedback/index.js",
+  twitter: "Truefeedback_io",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1677248276
+},
 ]
 export default data2;

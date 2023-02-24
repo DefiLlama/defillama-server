@@ -25785,7 +25785,7 @@ listedAt: 1650804679
   chains: ["Solana"],
   module: "cypher-trade/index.js",
   twitter: "cypher_protocol",
-  oracles: [],
+  oracles: ["Pyth"],
   forkedFrom: [],
   listedAt: 1677162923
 },

@@ -25881,5 +25881,27 @@ listedAt: 1650804679
   audit_links: ["https://www.certik.com/projects/king"],
   listedAt: 1677194619
 },
+{
+  id: "2580",
+  name: "NULS POCM",
+  address: null,
+  symbol: "-",
+  url: "https://pocm.nuls.io",
+  description:
+    "NULS POCM (Proof of Credit Mining) is an SCO Platform that allows projects to use smart-contracts to issue and distribute project tokens on blockchains.",
+  chain: "ENULS",
+  logo: `${baseIconsUrl}/nuls-pocm.png`,
+  audits: "0",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Staking",
+  chains: ["ENULS"],
+  module: "pocm-staking/index.js",
+  twitter: "Nuls",
+  oracles: [],
+  forkedFrom: [],
+  listedAt: 1677236770
+},
 ]
 export default data2;

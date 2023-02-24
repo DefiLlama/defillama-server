@@ -5526,14 +5526,14 @@ const data: Protocol[] = [
   },
   {
     id: "375",
-    name: "Nerve Network",
+    name: "Nerve Staking",
     address: "bsc:0xf0e406c49c63abf358030a299c0e00118c4c6ba5",
     symbol: "NVT",
     url: "https://nerve.network/",
     description:
       "Nerve is a decentralized digital asset service network based on the NULS micro-services framework, which uses the NULS ChainBox to develop a blockchain cross-chain interaction protocol.",
     chain: "Nuls",
-    logo: `${baseIconsUrl}/nerve-network.jpg`,
+    logo: `${baseIconsUrl}/nerve-staking.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "nervenetwork",

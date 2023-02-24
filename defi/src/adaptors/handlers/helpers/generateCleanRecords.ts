@@ -139,7 +139,12 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         )
 
         if (timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
-            checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
+            checkSpikes(acc.lastDataRecord, newGen, spikesLogs, acc.ath)
+
+        const dayVolume = sumAllVolumes(newGen.data)
+        if (acc.ath < dayVolume && Number.isFinite(dayVolume) && !Number.isNaN(dayVolume)) {
+            acc.ath = dayVolume
+        }
 
         acc.lastDataRecord = chains
             .reduce((acc, chain) =>
@@ -152,12 +157,14 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         adaptorRecords: [] as AdaptorRecord[],
         lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains) }), {}),
         nextDataRecord: {},
-        recordsMap: {}
+        recordsMap: {},
+        ath: 0
     } as {
         lastDataRecord: { [chain: string]: AdaptorRecord | undefined }
         nextDataRecord: { [chainProt: string]: AdaptorRecord | undefined }
         adaptorRecords: AdaptorRecord[],
-        recordsMap: IJSON<AdaptorRecord> // Might be good idea to merge it with adaptorRecords list since its the same
+        recordsMap: IJSON<AdaptorRecord>, // Might be good idea to merge it with adaptorRecords list since its the same
+        ath: number
     }))
     return {
         cleanRecordsArr: processed.adaptorRecords,
@@ -166,7 +173,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
     }
 }
 
-function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: AdaptorRecord, spikesLogs: string[]) {
+function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: AdaptorRecord, spikesLogs: string[], ath: number) {
     const current = sumAllVolumes(newGen.data)
     const prevObj = Object.entries(lastDataRecord).reduce((acc, [chainprot, record]) => {
         const [chain, prot] = chainprot.split("#")
@@ -182,7 +189,7 @@ function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: A
             }
         }
     }, {} as IRecordAdaptorRecordData)
-    const prev = sumAllVolumes(prevObj)
+    const prev = ath//sumAllVolumes(prevObj)
     const chg1d = Math.abs((current - prev) / prev) * 100
     if (chg1d && chg1d > 10000 && current > 10000000) {
         spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)

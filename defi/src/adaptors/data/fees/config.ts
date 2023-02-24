@@ -4,7 +4,18 @@ export default {
     "aave": {
         "enabled": true,
         "startFrom": 1647648000,
-        "id": "111"
+        "id": "111",
+        protocolsData: {
+            v1: {
+                "id": "1838",
+            },
+            v2: {
+                "id": "111",
+            },
+            v3: {
+                "id": "1599",
+            }
+        }
     },
     "angle": {
         "enabled": true,
@@ -12,7 +23,17 @@ export default {
     },
     "balancer": {
         "enabled": true,
-        "id": "116"
+        "id": "116",
+        protocolsData: {
+            v1: {
+                id: "2562",
+                displayName: "Balancer V1"
+            },
+            v2: {
+                id: "2563",
+                displayName: "Balancer V2"
+            }
+        }
     },
     "biswap": {
         "enabled": true,
@@ -76,13 +97,41 @@ export default {
     },
     "opensea": {
         "enabled": true,
-        "id": "2258"
+        "id": "2258",
+        protocolsData: {
+            v1: {
+                "id": "2258",
+                displayName: "Opensea V1"
+            },
+            v2: {
+                "id": "2258",
+                displayName: "Opensea V2"
+            },
+            seaport: {
+                "id": "2258",
+                displayName: "Opensea Seaport"
+            }
+        }
     },
     "osmosis": {
         "enabled": true,
         "id": "383"
     },
     "pancakeswap": {
+        protocolsData: {
+            v1: {
+                "disabled": true,
+                "id": "2559"
+            },
+            v2: {
+                enabled: true,
+                "id": "194"
+            },
+            stableswap: {
+                "enabled": true,
+                "id": "2529"
+            }
+        },
         "enabled": true,
         "id": "194"
     },
@@ -92,7 +141,16 @@ export default {
     },
     "quickswap": {
         "enabled": true,
-        "id": "306"
+        "id": "306",
+        protocolsData: {
+            v2: {
+                id: "306",
+                displayName: "Quickswap V2"
+            },
+            v3: {
+                id: "2239"
+            }
+        }
     },
     "raydium": {
         "enabled": true,
@@ -104,7 +162,15 @@ export default {
     },
     "sushiswap": {
         "enabled": true,
-        "id": "119"
+        "id": "119",
+        protocolsData: {
+            classic: {
+                id: "119"
+            },
+            trident: {
+                id: "2152"
+            }
+        }
     },
     "synthetix": {
         "enabled": true,
@@ -116,11 +182,33 @@ export default {
     },
     "traderjoe": {
         "enabled": true,
-        "id": "468"
+        "id": "468",
+        protocolsData: {
+            v1: {
+                id: "468"
+            },
+            v2: {
+                id: "2393"
+            }
+        }
     },
     "uniswap": {
         "enabled": true,
-        "id": "1"
+        "id": "1",
+        "protocolsData": {
+            "v1": {
+                "enabled": true,
+                "id": "2196"
+            },
+            "v2": {
+                "enabled": true,
+                "id": "2197"
+            },
+            "v3": {
+                "enabled": true,
+                "id": "2198"
+            },
+        },
     },
     "velodrome": {
         "enabled": true,
@@ -351,7 +439,17 @@ export default {
     },
     "kyberswap": {
         "enabled": true,
-        "id": "127"
+        "id": "127",
+        protocolsData: {
+            classic: {
+                id: "2560",
+                displayName: "KyberSwap - Classic"
+            },
+            elastic: {
+                id: "2561",
+                displayName: "KyberSwap - Elastic"
+            }
+        }
     },
     "llamalend": {
         "enabled": true,

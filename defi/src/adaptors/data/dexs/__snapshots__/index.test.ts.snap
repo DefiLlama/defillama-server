@@ -19,10 +19,17 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "config": {
       "enabled": true,
       "id": "2116",
+      "protocolsData": {
+        "0x RFQ": {
+          "displayName": "0x - RFQ",
+          "id": "2116",
+        },
+      },
     },
     "description": "Open-source, decentralized exchange infrastructure that enables the exchange of tokenized assets on multiple blockchains.",
     "disabled": false,
     "displayName": "0x - RFQ",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "governanceID": [
@@ -81,6 +88,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "An AMM that advances with Ethereum, deployed on StarkNet Mainnet",
     "disabled": false,
     "displayName": "10KSwap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2345",
@@ -133,6 +141,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The 3xcalibur Protocol is a permissionless, liquidationless, oracleless liquidity marketplace, powered by Tri-AMM architecture to facilitate stableswaps, variable swaps and borrowing/lending.",
     "disabled": false,
     "displayName": "3xcalibur",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -186,6 +195,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Pando is a set of open financial protocols which includes 3 major protocols: 1.Pando Lake/4swap: a decentralized protocol for automated liquidity provision built with the Mixin Trusted Group. 2.Pando Leaf: a decentralized financial network to minting stablecoins. 3.Pando Rings: a decentralized protocol where you can lend or borrow cryptocurrencies",
     "disabled": false,
     "displayName": "4Swap",
+    "enabled": true,
     "gecko_id": null,
     "id": "951",
     "listedAt": 1638382732,
@@ -233,6 +243,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Aequinox Dex is a community-driven decentralized exchange that supports multi-token and weighted pools on the Binance Smart Chain.",
     "disabled": false,
     "displayName": "Aequinox",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "aequinox",
     "id": "2090",
@@ -284,6 +295,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Aldrin’s mission is to simplify DeFi and create powerful tools for all traders to succeed.",
     "disabled": false,
     "displayName": "Aldrin",
+    "enabled": true,
     "gecko_id": "aldrin",
     "id": "739",
     "listedAt": 1635802554,
@@ -334,6 +346,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Next Gen DeFi on Bitcoin via Stacks. Building Financial Infrastructure on Bitcoin through Stacks",
     "disabled": false,
     "displayName": "ALEX",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "alexgo",
     "id": "1466",
@@ -386,6 +399,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Decentralized swap protocol built on Algorand",
     "disabled": false,
     "displayName": "Algofi Swap",
+    "enabled": true,
     "gecko_id": null,
     "id": "2091",
     "listedAt": 1663197511,
@@ -437,6 +451,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The best AMM DEX on Binance Smart Chain (BSC, providing friendly trading and better project support",
     "disabled": false,
     "displayName": "AmpleSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -493,6 +508,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "ApeSwap is a Decentralized Autonomous Organization (DAO) that offers a full suite of tools to explore and engage with decentralized finance opportunities. Using the products within our DeFi Hub, users and partners can tap into this new wave of financial innovation in a secure, transparent, and globally accessible way.",
     "disabled": false,
     "displayName": "ApeSwap AMM",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -545,6 +561,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Archly is a permissionless, low slippage, low cost protocol that incentives fees on the Telos EVM.",
     "disabled": false,
     "displayName": "Archly Finance",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -598,6 +615,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Powered by iZUMi Finance, Arctic is leading the next chapter of Aurora development as the core ecosystem-DEX, bringing DeFi innovation to Aurora in the forms of the veNFT and DL-AMM (Discretized Liquidity-AMM).",
     "disabled": false,
     "displayName": "Arctic",
+    "enabled": true,
     "forkedFrom": [
       "iziSwap",
     ],
@@ -651,6 +669,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The very first decentralized exchange (DEX) following the stable-swap model on the MultiversX blockchain",
     "disabled": false,
     "displayName": "Ashswap",
+    "enabled": true,
     "gecko_id": "ashswap",
     "id": "2551",
     "listedAt": 1676732747,
@@ -695,12 +714,14 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     ],
     "cmcId": "16304",
     "config": {
+      "disabled": true,
       "enabled": true,
       "id": "1052",
     },
     "description": "The meta AMM of Terra",
     "disabled": true,
     "displayName": "Astroport",
+    "enabled": true,
     "gecko_id": "astroport",
     "id": "1052",
     "listedAt": 1639915230,
@@ -748,6 +769,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "AuraSwap is an AMM decentralized exchange and Yield Farming on Polygon with near-zero gas fees. At the heart of AURA is the driving force of the ecosystem.",
     "disabled": false,
     "displayName": "AuraSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -801,6 +823,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "AutoShark Finance is the 1st Hybrid AMM and Yield Optimizer, offering unparalleled access to farming opportunities through the use of superior yield strategies, auto-compounding vaults, and NFT-powered farming.",
     "disabled": false,
     "displayName": "AutoShark",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -850,6 +873,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "AUX is the universal exchange. Our mission is to provide the best decentralized trading experience possible. Live on Aptos.",
     "disabled": false,
     "displayName": "AUX Exchange",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2213",
@@ -898,6 +922,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Axial is creating the new center for liquidity on Avalanche. It is an implementation of the Stableswap mechanism and decentralized governance. As the centerpiece for liquidity of value-pegged assets, bridged and native assets will have a home and route throughout the Avalanche ecosystem. Axial was launched in November of 2021, and is one of many projects originating from the Snowball DAO.",
     "disabled": false,
     "displayName": "Axial",
+    "enabled": true,
     "forkedFrom": [
       "Saddle Finance",
     ],
@@ -951,6 +976,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Meme of BSC hold, pet, love, & help save dogs! BSC Farms & Swap",
     "disabled": false,
     "displayName": "BabyDogeSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -1007,6 +1033,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "BabySwap is an AMM+NFT decentralized exchange for new projects on Binance Smart Chain",
     "disabled": false,
     "displayName": "BabySwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -1040,29 +1067,33 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
   },
   {
     "address": "0xba100000625a3754423978a60c9317c58a424e3d",
-    "audit_links": [
-      "https://docs.balancer.fi/core-concepts/security/audits",
-    ],
+    "audit_links": [],
     "audit_note": null,
-    "audits": "2",
+    "audits": "0",
     "category": "Dexes",
     "chain": "Ethereum",
     "chains": [
       "ethereum",
-      "polygon",
-      "arbitrum",
     ],
     "cmcId": "5728",
     "config": {
       "enabled": true,
       "id": "116",
+      "protocolsData": {
+        "v1": {
+          "displayName": "Balancer V1",
+          "id": "2562",
+        },
+        "v2": {
+          "displayName": "Balancer V2",
+          "id": "2563",
+        },
+      },
     },
-    "description": "Balancer is a protocol for programmable liquidity.
-
-
-",
+    "description": "Balancer is a protocol for programmable liquidity.",
     "disabled": false,
-    "displayName": "Balancer",
+    "displayName": "Balancer V1",
+    "enabled": true,
     "gecko_id": "balancer",
     "governanceID": [
       "snapshot:balancer.eth",
@@ -1079,7 +1110,97 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/balancer",
     "module": "balancer",
-    "name": "Balancer",
+    "name": "Balancer V1",
+    "parentProtocol": "Balancer",
+    "protocolType": undefined,
+    "protocolsData": {
+      "v1": {
+        "chains": [
+          "ethereum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "v2": {
+        "chains": [
+          "ethereum",
+          "polygon",
+          "arbitrum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+    },
+    "symbol": "BAL",
+    "treasury": "balancer.js",
+    "twitter": "BalancerLabs",
+    "url": "https://balancer.finance/",
+  },
+  {
+    "address": "0xba100000625a3754423978a60c9317c58a424e3d",
+    "audit_links": [
+      "https://docs.balancer.fi/core-concepts/security/audits",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Dexes",
+    "chain": "Ethereum",
+    "chains": [
+      "ethereum",
+      "polygon",
+      "arbitrum",
+    ],
+    "cmcId": "5728",
+    "config": {
+      "enabled": true,
+      "id": "116",
+      "protocolsData": {
+        "v1": {
+          "displayName": "Balancer V1",
+          "id": "2562",
+        },
+        "v2": {
+          "displayName": "Balancer V2",
+          "id": "2563",
+        },
+      },
+    },
+    "description": "Balancer is a protocol for programmable liquidity.",
+    "disabled": false,
+    "displayName": "Balancer V2",
+    "enabled": true,
+    "gecko_id": "balancer",
+    "governanceID": [
+      "snapshot:balancer.eth",
+    ],
+    "id": "116",
+    "logo": "https://icons.llama.fi/balancer.png",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/balancer",
+    "module": "balancer",
+    "name": "Balancer V2",
+    "parentProtocol": "Balancer",
     "protocolType": undefined,
     "protocolsData": {
       "v1": {
@@ -1121,6 +1242,86 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
   {
     "address": "0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
     "audit_links": [
+      "https://docs.bancor.network/about-bancor-network/security-and-audits",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Dexes",
+    "chain": "Ethereum",
+    "chains": [
+      "ethereum",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "162",
+      "protocolsData": {
+        "v2.1": {
+          "id": "162",
+        },
+        "v3": {
+          "id": "1995",
+        },
+      },
+    },
+    "description": "Bancor is an on-chain liquidity protocol that enables automated, decentralized exchange on Ethereum and across blockchains.",
+    "disabled": false,
+    "displayName": "Bancor V3",
+    "enabled": true,
+    "gecko_id": null,
+    "id": "162",
+    "listedAt": 1660936922,
+    "logo": "https://icons.llama.fi/bancor.png",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/bancor",
+    "module": "bancor",
+    "name": "Bancor V3",
+    "parentProtocol": "Bancor",
+    "protocolType": undefined,
+    "protocolsData": {
+      "v2.1": {
+        "chains": [
+          "ethereum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "v3": {
+        "chains": [
+          "ethereum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+    },
+    "symbol": "BNT",
+    "twitter": "Bancor",
+    "url": "https://app.bancor.network/",
+  },
+  {
+    "address": "0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
+    "audit_links": [
       "https://bancor-network.gitbook.io/v2.1/ethereum-contracts/security",
     ],
     "audit_note": null,
@@ -1134,10 +1335,19 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "config": {
       "enabled": true,
       "id": "162",
+      "protocolsData": {
+        "v2.1": {
+          "id": "162",
+        },
+        "v3": {
+          "id": "1995",
+        },
+      },
     },
     "description": "Bancor is an on-chain liquidity protocol that enables automated, decentralized exchange on Ethereum and across blockchains.",
     "disabled": false,
     "displayName": "Bancor V2.1",
+    "enabled": true,
     "gecko_id": null,
     "id": "162",
     "logo": "https://icons.llama.fi/bancor.png",
@@ -1208,6 +1418,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Baryon Network is a BNB Chain-based Premier Suite of DeFi Products containing three fundamental building blocks: BaryonSwap (AMM), BaryonFarm, and BaryonStake.",
     "disabled": false,
     "displayName": "Baryon Network",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1950",
@@ -1255,10 +1466,19 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "config": {
       "enabled": true,
       "id": "1289",
+      "protocolsData": {
+        "classic": {
+          "id": "2564",
+        },
+        "stable-amm": {
+          "id": "2565",
+        },
+      },
     },
     "description": "Defi Hub on Moonbeam",
     "disabled": false,
-    "displayName": "BeamSwap",
+    "displayName": "BeamSwap Classic",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -1276,10 +1496,97 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/beamswap",
     "module": "beamswap",
-    "name": "BeamSwap",
+    "name": "BeamSwap Classic",
     "oracles": [
       "DIA",
     ],
+    "parentProtocol": "Beamswap",
+    "protocolType": undefined,
+    "protocolsData": {
+      "classic": {
+        "chains": [
+          "moonbeam",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "stable-amm": {
+        "chains": [
+          "moonbeam",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+    },
+    "symbol": "GLINT",
+    "twitter": "Beamswapio",
+    "url": "https://beamswap.io",
+  },
+  {
+    "address": "moonbeam:0xcd3B51D98478D53F4515A306bE565c6EebeF1D58",
+    "audit_links": [
+      "https://docs.beamswap.io/contracts/audit",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Dexes",
+    "chain": "Moonbeam",
+    "chains": [
+      "moonbeam",
+    ],
+    "cmcId": "17035",
+    "config": {
+      "enabled": true,
+      "id": "1289",
+      "protocolsData": {
+        "classic": {
+          "id": "2564",
+        },
+        "stable-amm": {
+          "id": "2565",
+        },
+      },
+    },
+    "description": "Defi Hub on Moonbeam",
+    "disabled": false,
+    "displayName": "BeamSwap Stable AMM",
+    "enabled": true,
+    "forkedFrom": [
+      "Uniswap",
+    ],
+    "gecko_id": "beamswap",
+    "id": "1289",
+    "listedAt": 1642599283,
+    "logo": "https://icons.llama.fi/beamswap.jpg",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/beamswap",
+    "module": "beamswap",
+    "name": "BeamSwap Stable AMM",
+    "oracles": [
+      "DIA",
+    ],
+    "parentProtocol": "Beamswap",
     "protocolType": undefined,
     "protocolsData": {
       "classic": {
@@ -1333,6 +1640,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "We leverage best in breed DeFi protocols to offer novel decentralized investment strategies. Built on Balancer V2, Beethoven X is the first next-generation AMM protocol on Fantom.",
     "disabled": false,
     "displayName": "Beethoven X",
+    "enabled": true,
     "forkedFrom": [
       "Balancer",
     ],
@@ -1389,6 +1697,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "BenSwap. The #1 AMM and yield farm for dog lovers on BSC and smartBCH",
     "disabled": false,
     "displayName": "BenSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -1438,6 +1747,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Buy and sell bitcoin for fiat (or other cryptocurrencies) privately and securely using Bisq's peer-to-peer network and open-source desktop software.",
     "disabled": false,
     "displayName": "Bisq",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2557",
@@ -1489,6 +1799,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Biswap is the first decentralized exchange platform on the market with a three-type referral system and the lowest platform transaction fees (0.1%).",
     "disabled": false,
     "displayName": "BiSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -1540,6 +1851,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Green Planet is an incentivized, non-custodial lending protocol for earning interest on deposits and borrowing assets.",
     "disabled": false,
     "displayName": "Blue Planet",
+    "enabled": true,
     "gecko_id": null,
     "id": "2158",
     "listedAt": 1665024139,
@@ -1594,6 +1906,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Bogged. Finance is a DeFi tool suite for the Binance Smart Chain powered by the BOG token",
     "disabled": false,
     "displayName": "Bogged Finance",
+    "enabled": true,
     "gecko_id": "bogged-finance",
     "id": "617",
     "logo": "https://icons.llama.fi/bogged-finance.jpg",
@@ -1647,6 +1960,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "BXH (Bitcoin Dex on HECO) is an innovative Dex trading platform developed based on HECO Chain.",
     "disabled": false,
     "displayName": "BXH",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -1699,6 +2013,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Camelot is an ecosystem-focused and community-driven DEX built on Arbitrum. It has been built as a highly efficient and customizable protocol, allowing both builders and users to leverage our custom infrastructure for deep, sustainable, and adaptable liquidity. Camelot moves beyond the traditional design of DEXs to focus on offering a tailored approach that prioritises composability",
     "disabled": false,
     "displayName": "Camelot",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -1749,6 +2064,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Dex on canto blockchain",
     "disabled": false,
     "displayName": "Canto Dex",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1985",
@@ -1800,6 +2116,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Capricorn is an automated market maker (AMM) based decentralized exchange (DEX) for CUBE Chain.",
     "disabled": false,
     "displayName": "Capricorn Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -1850,6 +2167,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "CarbonSwap is a family of interconnected green, sustainability-focused DeFi & NFT products, including initially an automated market-making (AMM) decentralized exchange (DEX) and a bi-directional ERC-to-ERC bridge (Omnibridge) between the Ethereum Mainnet and Energy Web Chain.",
     "disabled": false,
     "displayName": "CarbonSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -1899,6 +2217,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Cetus is a pioneer DEX and concentrated liquidity protocol focusing on Move-based ecosystems like Aptos and Sui. It works as a crucial part of the ecosystem infrastructure to satisfy the comprehensive needs of traders, LPs, upper applications and an increasing DeFi population.",
     "disabled": false,
     "displayName": "Cetus",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2289",
@@ -1949,6 +2268,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Chainge Finance stands as the most liquid cross-chain aggregated DEX with over 70bn in aggregated liquidity. The mobile app boasts over 20 integrated DEXs and 29 chains. From a cross-chain wallet and instant cross-chain roaming to decentralized earning solutions and smart escrow contracts, Chainge is an DeFi app powered and secured by the innovative Fusion DCRM tech",
     "disabled": false,
     "displayName": "Chainge Finance",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "chainge-finance",
     "id": "704",
@@ -1996,6 +2316,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The Internet Scale DeFi for the People. Trade, earn, and win crypto on the most popular decentralized platform for all people with internet access.",
     "disabled": false,
     "displayName": "ChampagneSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -2051,6 +2372,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "CherrySwap is the automatic market-making protocol based on OKExChain(OEC). It adopts the mechanism of Automatic Market Maker (AMM) and aims to achieve self-driven liquidity creation with diversified functions such as liquidity mining, IFO, NFT, lottery, and DAO, so as to provide participants with the maximum value bonus.",
     "disabled": false,
     "displayName": "CherrySwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -2102,6 +2424,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Swap, earn, and claim on the decentralized, community driven platform",
     "disabled": false,
     "displayName": "ClaimSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -2160,6 +2483,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Clipper is the decentralized exchange (DEX) built to give the self-made crypto trader the best possible prices on small trades (< $10k)",
     "disabled": false,
     "displayName": "Clipper",
+    "enabled": true,
     "gecko_id": null,
     "id": "622",
     "logo": "https://icons.llama.fi/clipper.jpg",
@@ -2209,6 +2533,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "DeFi powered space game with yield generating NFT ",
     "disabled": false,
     "displayName": "Cometh",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -2258,6 +2583,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Complus Network is an (AMM) decentralized crypto exchange (DEX) and yield farming protocol on Avalanche.",
     "disabled": false,
     "displayName": "Complus Network",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -2307,6 +2633,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Cone is a decentralized exchange that allows swaps at a low cost in swap fees and has a governance structure based on the ve(3,3) system",
     "disabled": false,
     "displayName": "Cone",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -2356,6 +2683,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Crema Finance is a powerful concentrated liquidity protocol built on Solana that provides superior performance for both traders and liquidity providers. It changes the Solana DeFi game by introducing a series of innovations to improve the overall capital efficiency and trading depth.",
     "disabled": false,
     "displayName": "Crema Finance",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1412",
@@ -2408,6 +2736,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Crodex is a decentralized exchange (DEX), providing liquidity and enabling peer-to-peer transactions on Cronos.",
     "disabled": false,
     "displayName": "Crodex",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -2457,6 +2786,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The hottest new AMM on BSC! Earn CST through yield farming, then stake it in Csyrup Pools to earn more tokens. Swap, stake, and earn",
     "disabled": false,
     "displayName": "CryptoSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -2518,6 +2848,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Curve is a decentralized exchange liquidity pool on Ethereum designed for extremely efficient stablecoin trading",
     "disabled": false,
     "displayName": "Curve",
+    "enabled": true,
     "gecko_id": "curve-dao-token",
     "governanceID": [
       "snapshot:curve.eth",
@@ -2574,6 +2905,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "AMM DEX on BSC",
     "disabled": false,
     "displayName": "DAO Swap",
+    "enabled": true,
     "gecko_id": null,
     "id": "2167",
     "listedAt": 1665169761,
@@ -2624,6 +2956,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "DarkNess Finance is the first multi-fractional-algorithmic stablecoin with stablecoins DEX on Cronos Chain",
     "disabled": false,
     "displayName": "Darkness",
+    "enabled": true,
     "forkedFrom": [
       "Balancer",
     ],
@@ -2677,6 +3010,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "DeFi Kingdoms is a game, a DEX, a liquidity pool opportunity, a market of rare utility driven NFTs, and it all plays out seamlessly in the incredibly nostalgic form of fantasy pixel art.",
     "disabled": false,
     "displayName": "Defi Kingdoms",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -2731,6 +3065,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Crypto.com DeFi Swap is a fork of Uniswap V2 designed to be the best place to swap and farm DeFi coins.",
     "disabled": false,
     "displayName": "Defi Swap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -2785,6 +3120,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Defibox is a one-stop DeFi application platform. The project was launched on EOS chain (https://defibox.io) on July 21, 2020 and Swap protocol was launched on BSC chain(https://bscdapp.defibox.io/) on July 21, 2021. Currently, Defibox has launched three protocols, namely Swap protocol, USN stable coin protocol and decentralized lending protocol.",
     "disabled": false,
     "displayName": "DefiBox",
+    "enabled": true,
     "gecko_id": "defibox",
     "id": "507",
     "logo": "https://icons.llama.fi/defibox.png",
@@ -2835,6 +3171,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Swap between DFI and wrapped tokens in a completely decentralized, exchange.",
     "disabled": false,
     "displayName": "DefiChain DEX",
+    "enabled": true,
     "gecko_id": "defichain",
     "id": "1166",
     "logo": "https://icons.llama.fi/defichain.jpg",
@@ -2883,6 +3220,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "DefiPlaza is the low-cost distributed exchange on Ethereum",
     "disabled": false,
     "displayName": "DefiPlaza",
+    "enabled": true,
     "gecko_id": "defiplaza",
     "id": "728",
     "listedAt": 1635540662,
@@ -2929,6 +3267,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The first fully decentralized DEX that supports any type of financial market.",
     "disabled": false,
     "displayName": "Demex",
+    "enabled": true,
     "gecko_id": null,
     "id": "2001",
     "listedAt": 1661118051,
@@ -2975,6 +3314,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Dexalot is a revolutionary decentralized exchange aiming at bringing the traditional centralized exchange look and feel through a decentralized on-chain application.",
     "disabled": false,
     "displayName": "Dexalot",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2558",
@@ -3027,6 +3367,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "DFX is a decentralized foreign exchange protocol optimized for trading fiat-backed foreign stablecoins",
     "disabled": false,
     "displayName": "DFX Finance",
+    "enabled": true,
     "forkedFrom": [
       "Shell Protocol",
     ],
@@ -3076,6 +3417,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "AMM",
     "disabled": false,
     "displayName": "Dfyn Network",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -3131,6 +3473,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The dinosaur world is a metaverse built on the Binance Smart Chain (BSC) which includes a trading platform and NFT exchange market, followed by a social networking platform in the future.",
     "disabled": false,
     "displayName": "Dinosaur Eggs",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -3187,6 +3530,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Trade crypto assets with market-leading liquidity",
     "disabled": false,
     "displayName": "DODO",
+    "enabled": true,
     "gecko_id": "dodo",
     "governanceID": [
       "snapshot:dodobird.eth",
@@ -3243,6 +3587,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "A reimagined, community-oriented ve(3,3) dex on Polygon",
     "disabled": false,
     "displayName": "Dystopia",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -3296,6 +3641,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "El Dorado Exchange(EDE) is a decentralized spot and perpetual social trading exchange which prioritizes user security and stable investor returns. In EDE, all the interactions will happen on-chain. Trading is supported by 3 unique multi-asset pools",
     "disabled": false,
     "displayName": "El Dorado Exchange",
+    "enabled": true,
     "forkedFrom": [
       "GMX",
     ],
@@ -3367,6 +3713,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Elk Finance is building Web3 infrastructure for cross-chain value and data transfer via ElkNet - our decentralized bridge. Our motto is Any chain, anytime, anywhere.",
     "disabled": false,
     "displayName": "Elk",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -3431,6 +3778,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Secure low-slippage stable swapping on BSC.",
     "disabled": false,
     "displayName": "Ellipsis Finance",
+    "enabled": true,
     "forkedFrom": [
       "Curve",
     ],
@@ -3482,6 +3830,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "EMDX is a decentralized derivative protocol with an in-house spot market, expanding risk hedging tools for traditional assets into the DeFi environment and allowing token listing “on demand” with “liquidity as a service” from the start.",
     "disabled": false,
     "displayName": "EMDX",
+    "enabled": false,
     "gecko_id": null,
     "id": "2299",
     "listedAt": 1669035629,
@@ -3531,6 +3880,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "#EmpireDEX is a Multi-Chain DEX Protocol",
     "disabled": false,
     "displayName": "EmpireDEX",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -3583,6 +3933,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "A fully decentralized protocol for automated liquidity provision on Energi.",
     "disabled": false,
     "displayName": "Energiswap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -3631,6 +3982,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Equalizer's twin-AMM design unites StableSwap pools with Standard 'kxy' liquidity pools. All the trading fees go to Vote-Escrowers of emission token $EQUAL which has to be Locked to earn triple 'Bribes' from candidate pools via Trade Fee, Internal Bribes & External Bribes.",
     "disabled": false,
     "displayName": "Equalizer Exchange",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -3683,6 +4035,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "ExinSwap is the automated market making trading platform of Exin.",
     "disabled": false,
     "displayName": "ExinSwap",
+    "enabled": true,
     "gecko_id": null,
     "id": "1179",
     "listedAt": 1641193239,
@@ -3729,6 +4082,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Fairyswap, the first DEX V2 on Findora (FRA) delivering great trading experience and earning opportunities.",
     "disabled": false,
     "displayName": "FairySwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -3782,6 +4136,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "a stableswap AMM protocol on Cronos",
     "disabled": false,
     "displayName": "Ferro",
+    "enabled": true,
     "forkedFrom": [
       "Saddle Finance",
     ],
@@ -3835,6 +4190,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "An Interoperable Full-Stack DeFi Protocol on Neo",
     "disabled": false,
     "displayName": "Flamingo Finance",
+    "enabled": true,
     "gecko_id": "flamingo-finance",
     "id": "304",
     "logo": "https://icons.llama.fi/flamingo-finance.jpg",
@@ -3890,6 +4246,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Fraxswap is the first constant product automated market maker with an embedded time-weighted average market maker (TWAMM) for conducting large trades over long periods of time trustlessly. It is fully permissionless and the core AMM is based on Uniswap V2.",
     "disabled": false,
     "displayName": "Frax Swap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -3951,6 +4308,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "A scalable, open and decentralized ecosystem, enabling all to build entirely on and for the blockchain.",
     "disabled": false,
     "displayName": "FX Swap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4004,6 +4362,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Gin Finance is a DEX solution on BOBA Network. It is an open-source protocol for providing liquidity and trading ERC20 tokens on BOBA Network.",
     "disabled": false,
     "displayName": "Gin Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4057,6 +4416,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Glide Finance is a Decentralized Exchange / Automated Market Maker, Yield Farming, and Staking platform running on the Elastos Smart Chain (ESC) that aims to accelerate adoption of the Elastos ecosystem by acting as a source of liquidity for users and the projects built on it.",
     "disabled": false,
     "displayName": "Glide Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4096,7 +4456,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
+    "category": "Derivatives",
     "chain": "Binance",
     "chains": [
       "arbitrum",
@@ -4115,7 +4475,8 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     },
     "description": "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
     "disabled": false,
-    "displayName": "GMX - Swap",
+    "displayName": "GMX",
+    "enabled": true,
     "gecko_id": "gmx",
     "governanceID": [
       "snapshot:gmx.eth",
@@ -4123,12 +4484,12 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "id": "337",
     "logo": "https://icons.llama.fi/gmx.png",
     "methodology": {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from GMX's SWAP and DERIVATIVES versions",
+      "HoldersRevenue": "Sum of all holders revenue from GMX's SWAP and DERIVATIVES versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from GMX's SWAP and DERIVATIVES versions",
+      "Revenue": "Sum of all revenue from GMX's SWAP and DERIVATIVES versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from GMX's SWAP and DERIVATIVES versions",
+      "UserFees": "Sum of all user fees from GMX's SWAP and DERIVATIVES versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/gmx",
     "module": "gmx",
@@ -4168,6 +4529,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": " A full suite DeFi platform to trade crypto, derivatives, NFTs and single sided liquidity pools with yield farming.",
     "disabled": false,
     "displayName": "GooseFX",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "goosefx",
     "id": "2175",
@@ -4222,6 +4584,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "A complete tool set for basic income: DeFi - AMM DEX",
     "disabled": false,
     "displayName": "Gravis Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4277,6 +4640,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Gravity Finance is a DeFi platform, consisting of a Decentralised Exchange, Yield Farms, Auto-Compounding Vaults, an IDO Launchpad and Automated Investment Strategies called Silos. Gravity Admin Fees are paid to Governance Token Holders as ETH and BTC.",
     "disabled": false,
     "displayName": "Gravity Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4328,6 +4692,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "HakuSwap is a crypto world for users to trade, earn, and game. It is the premier choice for projects on Avalanche with features including AMM, NFT, and GameFi.",
     "disabled": false,
     "displayName": "HakuSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4382,6 +4747,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The most powerful DeFi trading experience. Tight spreads. Zero slippage. MEV-resistant",
     "disabled": false,
     "displayName": "Hashflow",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "governanceID": [
@@ -4441,6 +4807,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The first DEX on the Hedera network supporting swaps between HTS, ERC20s and HBAR. Open-sourced, completely trustless and permissionless. Built on the Hedera Smart Contract Service with the aim to become the defacto AMM being a public good within the network.",
     "disabled": false,
     "displayName": "HeliSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4491,6 +4858,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The premier decentralized crypto exchange. Trade unlimited cross-chain spot and futures markets.",
     "disabled": false,
     "displayName": "Helix",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2259",
@@ -4539,6 +4907,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Hermes is the first DEX that allows low cost, near 0 slippage trades on uncorrelated or tightly correlated assets. The protocol incentivizes fees instead of liquidity.",
     "disabled": false,
     "displayName": "Hermes Protocol",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -4589,6 +4958,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Uniswap fork on map blockchain",
     "disabled": false,
     "displayName": "HiveSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4640,6 +5010,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Honeyswap is a decentralized exchange built on the xDai Chain, this enables users to experience fast and secure transactions with incredibly low fees. Multiple tokens are available with which you can swap and add liquidity. It is a fork of the well known Uniswap-V2 protocol adapted to fit for the xDai Chain and the 1hive ecosystem.",
     "disabled": false,
     "displayName": "Honeyswap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4693,6 +5064,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Huckleberry is a brand-new kind of community driven AMM crosschain DEX ",
     "disabled": false,
     "displayName": "Huckleberry AMM",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4747,6 +5119,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Humble Defi is your one stop shop Defi suite. Our first product, Humble Swap is an AMM style exchange that allows you to swap, pool and earn on your assets.",
     "disabled": false,
     "displayName": "Humble Defi",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1629",
@@ -4800,6 +5173,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Play To Earn Farm To Earn Cross-Chain DEX on FTM, BSC & METIS",
     "disabled": false,
     "displayName": "HyperJump",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4848,6 +5222,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The first Swap on the Bitgert (Brise) Blockchain",
     "disabled": false,
     "displayName": "IcecreamSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -4901,6 +5276,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "A permisionless CPAMM-based decentralized exchange on Flow.",
     "disabled": false,
     "displayName": "Increment Swap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1907",
@@ -4955,6 +5331,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "A next-generation DEX on BNB Chain to maximize capital efficiency with the innovative Discretized-Liquidity-AMM model",
     "disabled": false,
     "displayName": "iziSwap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1883",
@@ -5004,6 +5381,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "A community-led fully permissionless and composable AMM on Starknet by StarkWareLtd",
     "disabled": false,
     "displayName": "JediSwap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2344",
@@ -5057,6 +5435,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Jetfuel ecosystem is an all-in-one Defi that's meant to be a one-stop-shop for users, it accounts with an AMM & Yield Farming on Jetswap, Lending/borrowing markets on Fortress, a Yield optimizer on Jetfuel.",
     "disabled": false,
     "displayName": "JetSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -5105,6 +5484,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "JOJO is a decentralized perpetual contract exchange based on an off-chain matching system.",
     "disabled": false,
     "displayName": "JOJO",
+    "enabled": false,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2320",
@@ -5159,6 +5539,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Jswap Finance is the community-driven multi-chain compatible Dex and assets management protocol.",
     "disabled": false,
     "displayName": "JSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -5208,6 +5589,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "JunoSwap is an interchain decentralized exchange focussed on CW-20 (CosmWasm) asset adoption. Built on the public permission-less Juno Network",
     "disabled": false,
     "displayName": "Junoswap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "junoswap-raw-dao",
     "id": "2052",
@@ -5256,6 +5638,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "KAIDEX is the first of its kind in the decentralized exchange market, possessing the capabilities of a completely decentralized cross-chain token trading platform. KAIDEX is built upon the Dual Node technology, a novel patent-pending technology that would truly revolutionize multi-chain swapping.",
     "disabled": false,
     "displayName": "Kaidex",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -5305,6 +5688,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Karura Swap is a trustless, automated market maker (AMM)-styled decentralized exchange on the Karura network.",
     "disabled": false,
     "displayName": "Karura Swap",
+    "enabled": true,
     "gecko_id": null,
     "id": "451",
     "logo": "https://icons.llama.fi/karura-swap.jpg",
@@ -5350,6 +5734,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Katana a DEX For Ronin",
     "disabled": false,
     "displayName": "Katana DEX",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -5399,6 +5784,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Kava Swap is a cross-chain Autonomous Market Making (AMM) application designed to provide an efficient and safe way to swap natively between the world's largest cryptocurrency assets",
     "disabled": false,
     "displayName": "Kava Swap",
+    "enabled": true,
     "gecko_id": "kava-swap",
     "id": "618",
     "logo": "https://icons.llama.fi/kava-swap.jpg",
@@ -5447,6 +5833,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "KLAYswap is an AMM-based Instant Swap Protocol",
     "disabled": false,
     "displayName": "KlaySwap",
+    "enabled": true,
     "gecko_id": "klayswap-protocol",
     "id": "508",
     "logo": "https://icons.llama.fi/klayswap.jpg",
@@ -5495,6 +5882,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "KLEX is a protocol for programmable liquidity.",
     "disabled": false,
     "displayName": "KLEX Finance",
+    "enabled": true,
     "forkedFrom": [
       "Balancer",
     ],
@@ -5549,6 +5937,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Trade, Earn, & Raid To Stack Your Riches While Securely Storing Them Within Our Castle Vaults",
     "disabled": false,
     "displayName": "KnightSwap Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -5602,6 +5991,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Kokonut Swap is a 2nd generation DEX protocol, with the lowest slippage and fees made possible through self-implemented Stable Swaps and Crypto Pools.",
     "disabled": false,
     "displayName": "Kokonut Swap",
+    "enabled": true,
     "forkedFrom": [
       "Curve",
     ],
@@ -5654,6 +6044,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Kōyō is the first next-generation AMM protocol in the Boba ecosystem. It is inspired by Balancer. At its core, it's a decentralised exchange (DEX) that minimizes unnecessary losses from swaps between assets of equal value.",
     "disabled": false,
     "displayName": "Koyo Finance",
+    "enabled": true,
     "forkedFrom": [
       "Balancer",
     ],
@@ -5705,6 +6096,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "KPerp.Exchange is a decentralized exchange created to offer a broad selection of trading options and extremely high levels of liquidity on numerous cryptocurrencies.",
     "disabled": false,
     "displayName": "KPerp Exchange",
+    "enabled": false,
     "forkedFrom": [
       "GMX",
     ],
@@ -5758,6 +6150,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "KuSwap is the first decentralized trading platform on the KCC network to offer the lowest platform transaction fees (0.1 percent), with fees refunded in KUS, our native currency.",
     "disabled": false,
     "displayName": "KuSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -5816,10 +6209,21 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "config": {
       "enabled": true,
       "id": "127",
+      "protocolsData": {
+        "classic": {
+          "displayName": "KyberSwap - Classic",
+          "id": "2560",
+        },
+        "elastic": {
+          "displayName": "KyberSwap - Elastic",
+          "id": "2561",
+        },
+      },
     },
     "description": "KyberSwap is both a decentralized exchange (DEX) aggregator and a liquidity source with capital-efficient liquidity pools that earns fees for liquidity providers",
     "disabled": false,
-    "displayName": "KyberSwap",
+    "displayName": "KyberSwap - Classic",
+    "enabled": true,
     "gecko_id": "kyber-network",
     "id": "127",
     "logo": "https://icons.llama.fi/kyberswap.png",
@@ -5833,11 +6237,117 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/kyberswap",
     "module": "kyberswap",
-    "name": "KyberSwap",
+    "name": "KyberSwap - Classic",
     "oracles": [
       "Chainlink",
       "Band",
     ],
+    "parentProtocol": "KyberSwap",
+    "protocolType": undefined,
+    "protocolsData": {
+      "classic": {
+        "chains": [
+          "aurora",
+          "optimism",
+          "arbitrum",
+          "fantom",
+          "avax",
+          "bsc",
+          "polygon",
+          "ethereum",
+          "cronos",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "elastic": {
+        "chains": [
+          "optimism",
+          "arbitrum",
+          "fantom",
+          "avax",
+          "bsc",
+          "polygon",
+          "ethereum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+    },
+    "symbol": "KNC",
+    "twitter": "KyberNetwork",
+    "url": "https://kyberswap.com/#/swap",
+  },
+  {
+    "address": "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
+    "audit_links": [
+      "https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/",
+    ],
+    "audit_note": null,
+    "audits": null,
+    "category": "Dexes",
+    "chain": "Ethereum",
+    "chains": [
+      "optimism",
+      "arbitrum",
+      "fantom",
+      "avax",
+      "bsc",
+      "polygon",
+      "ethereum",
+    ],
+    "cmcId": "404",
+    "config": {
+      "enabled": true,
+      "id": "127",
+      "protocolsData": {
+        "classic": {
+          "displayName": "KyberSwap - Classic",
+          "id": "2560",
+        },
+        "elastic": {
+          "displayName": "KyberSwap - Elastic",
+          "id": "2561",
+        },
+      },
+    },
+    "description": "KyberSwap is both a decentralized exchange (DEX) aggregator and a liquidity source with capital-efficient liquidity pools that earns fees for liquidity providers",
+    "disabled": false,
+    "displayName": "KyberSwap - Elastic",
+    "enabled": true,
+    "gecko_id": "kyber-network",
+    "id": "127",
+    "logo": "https://icons.llama.fi/kyberswap.png",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/kyberswap",
+    "module": "kyberswap",
+    "name": "KyberSwap - Elastic",
+    "oracles": [
+      "Chainlink",
+      "Band",
+    ],
+    "parentProtocol": "KyberSwap",
     "protocolType": undefined,
     "protocolsData": {
       "classic": {
@@ -5907,6 +6417,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Advanced Decentralized Ecosystem With a Reward Sharing Economy",
     "disabled": false,
     "displayName": "LeonicornSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -5961,6 +6472,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Level Finance - Decentralized Perpetual Exchange.",
     "disabled": false,
     "displayName": "Level Finance",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "governanceID": [
@@ -6014,6 +6526,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "AMM DEX on xDai powered by the LightningDAO",
     "disabled": false,
     "displayName": "Levinswap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -6062,6 +6575,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "AMM DEX on Tombchain",
     "disabled": false,
     "displayName": "Lif3 Swap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -6112,6 +6626,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "The first proactive market maker on Solana designed to improve capital efficiency and reduce impermanent loss.",
     "disabled": false,
     "displayName": "Lifinity",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2154",
@@ -6165,6 +6680,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Liquidswap is the first AMM on Aptos, the safest and most scalable L1 blockchain. The DEX runs on Aptos mainnet.",
     "disabled": false,
     "displayName": "LiquidSwap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2210",
@@ -6217,6 +6733,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "LuaSwap is a swap protocol inspired by the previous AMM-based swap protocols such as Uniswap and SushiSwap.",
     "disabled": false,
     "displayName": "LuaSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -6267,6 +6784,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Lumenswap is a decentralized exchange built on the Stellar network that allows you to swap and trade assets using a friendly, minimal interface.",
     "disabled": false,
     "displayName": "LumenSwap",
+    "enabled": true,
     "gecko_id": "lumenswap",
     "id": "882",
     "listedAt": 1637392233,
@@ -6316,6 +6834,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "description": "Makiswap is an automated market maker (AMM). You can think of an AMM as a primitive robotic market maker that is always willing to quote prices between two assets according to a simple pricing algorithm. Makiswap can be farmed that can be found on the 'rewards' section on this page.",
     "disabled": false,
     "displayName": "MakiSwap",
+    "enabled": true,
     "gecko_id": "makiswap",
     "id": "378",
     "logo": "https://icons.llama.fi/makiswap.jpg",
@@ -6371,6 +6890,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
 allowing zero price impact trading, up to 100x leverage, no counterparty risks for traders and an optimized on-chain trading experience.",
     "disabled": false,
     "displayName": "MCDEX",
+    "enabled": false,
     "gecko_id": null,
     "id": "232",
     "logo": "https://icons.llama.fi/mcdex.jpg",
@@ -6429,6 +6949,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "AMM",
     "disabled": false,
     "displayName": "MDEX",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -6478,6 +6999,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Meshswap is an AMM based decentralized exchange protocol to actively utilize the assets on Polygon.",
     "disabled": false,
     "displayName": "Meshswap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "meshswap-protocol",
     "id": "1726",
@@ -6530,6 +7052,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "MetaTdex is a decentralized order matching trading platform",
     "disabled": false,
     "displayName": "MetaTdex",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2253",
@@ -6583,6 +7106,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Metavault.Trade is a new kind of Decentralised Exchange, designed to provide a large range of trading features and very deep liquidity on many large cap crypto assets. Traders can use it in two ways: Spot trading, with swaps and limit orders. Perpetual futures trading with up to 50x leverage on short and long positions. Metavault.Trade aims to become the go-to solution for traders who want to stay in control of their funds at all times without sharing their personal data.",
     "disabled": false,
     "displayName": "Metavault.Trade",
+    "enabled": true,
     "forkedFrom": [
       "GMX",
     ],
@@ -6636,6 +7160,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Metropolis is a Liquidity Book AMM on Fantom focused on offering a premier trading experience with zero slippage and low fees.",
     "disabled": false,
     "displayName": "Metropolis",
+    "enabled": true,
     "forkedFrom": [
       "TraderJoe",
     ],
@@ -6686,6 +7211,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "mimo is a decentralized liquidity protocol that will fuel the next wave of decentralized finance (DeFi) on IoTeX. mimo’s vision is to empower next-gen DeFi products that utilize our state-of-the-art automated liquidity protocol and the IoTeX's lightning-fast speed, low gas fees, and cross-chain capabilities.",
     "disabled": false,
     "displayName": "Mimo",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -6738,6 +7264,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "MinerSwap is the first hybrid StableSwap / Uniswap V2 DEX on EthereumPoW. Swap, farm, and stake tokens to earn MSP and earn additional yields.",
     "disabled": false,
     "displayName": "MinerSwap",
+    "enabled": false,
     "forkedFrom": [
       "Solidly",
     ],
@@ -6788,6 +7315,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Minswap aims to be the best liquidity provider on the market by integrating the best asset pool models from across the DEX ecosystem into one protocol.",
     "disabled": false,
     "displayName": "Minswap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "minswap",
     "id": "1494",
@@ -6839,6 +7367,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Trade, launch, stake, farm, invest, automate, build on the premier DeFi platform of smartBCH",
     "disabled": false,
     "displayName": "MistSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -6888,6 +7417,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "MM Finance swap on Polygon network",
     "disabled": false,
     "displayName": "MM Stableswap Polygon",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2015",
@@ -6937,6 +7467,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "A cross-chain stableswap protocol built on Celo.",
     "disabled": false,
     "displayName": "Mobius Money",
+    "enabled": true,
     "forkedFrom": [
       "Saddle Finance",
     ],
@@ -6988,6 +7519,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Mojito Finance is a decentralized exchange running on KCC, with lots of features that let you earn and win tokens. It is fast, cheap and easily accessible as it is not difficult to use. It has currently opened Trade ,Bar (Farm) and Wine Pools. Other functions are on the way. And it will continue to launch interesting functions such as Cocktail Tickets and NFT in the future.",
     "disabled": false,
     "displayName": "MojitoSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -7037,6 +7569,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "MoonSwap: High speed,0 GAS AMM DEX Based on Ethereum and Conflux.",
     "disabled": false,
     "displayName": "Moon Swap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -7091,6 +7624,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Next gen. AMM protocol by 1inch! Redistributes earnings to liquidity providers, capitalizes on user slippages and protects traders from front-running attacks.",
     "disabled": false,
     "displayName": "MooniSwap",
+    "enabled": true,
     "gecko_id": null,
     "id": "1053",
     "listedAt": 1639945104,
@@ -7140,6 +7674,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Morpheus Swap is a decentralized exchange that's powered by Fantom Opera. By staking our core token, PILLS, users are entitled to a percentage of all protocol revenue, paid out in other tokens.",
     "disabled": false,
     "displayName": "Morpheus Swap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -7192,6 +7727,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "A live and operating Orderbook and AMM DEX on Cardano L1 and Milkomeda - based on the simplistic, research-driven order book protocol tailored for Cardano UTXOs.",
     "disabled": false,
     "displayName": "MuesliSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -7242,6 +7778,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Bring unparalleled Swap and Perpetual trading experience to FantomFDN users",
     "disabled": false,
     "displayName": "Mummy Finance",
+    "enabled": true,
     "forkedFrom": [
       "GMX",
     ],
@@ -7295,6 +7832,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "an AMM on top of StarkNet",
     "disabled": false,
     "displayName": "mySwap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2367",
@@ -7346,6 +7884,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Netswap is a decentralized exchange (DEX) which runs on Metis Andromeda (Layer2), uses the same AMM model as Uniswap and has a governance token NETT",
     "disabled": false,
     "displayName": "NetSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -7398,6 +7937,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Nomiswap is a decentralized exchange platform with a binary referral system and the lowest platform transaction fees.",
     "disabled": false,
     "displayName": "Nomiswap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -7451,6 +7991,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "OKC Swap is the official AMM dex based on OKX Chain.",
     "disabled": false,
     "displayName": "OKCSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -7501,6 +8042,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "A DEX for capital-efficiency, best-price, and zero slippage.",
     "disabled": false,
     "displayName": "OnePunchSwap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2534",
@@ -7551,6 +8093,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "As the liquidity hub of Boba Network, OolongSwap is a DEX that is...well, not satisfied with being just an ordinary, everyday DEX. We don't want to be just another AMM, we want the best of both worlds: safe, smooth while also being fun, revolutionary, and most importantly, irreplaceable!",
     "disabled": false,
     "displayName": "OolongSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -7600,6 +8143,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "OpenBook is a community-led fork of the Serum V3 program. The CLOB formerly known as Serum V3.",
     "disabled": false,
     "displayName": "OpenBook",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2322",
@@ -7654,6 +8198,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "OpenLeverage is a permissionless margin trading protocol that enables traders or other applications to be long or short on any trading pair on DEXs efficiently and securely.",
     "disabled": false,
     "displayName": "OpenLeverage",
+    "enabled": true,
     "gecko_id": "openleverage",
     "governanceID": [
       "snapshot:xole.eth",
@@ -7708,6 +8253,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "OPX (Decentralized Spot & Perpetual Exchange) - the next DEX generation in  Optimizing Investment Efficiency & Leverage Trading",
     "disabled": false,
     "displayName": "OPX Finance",
+    "enabled": true,
     "forkedFrom": [
       "GMX",
     ],
@@ -7760,6 +8306,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "AMM",
     "disabled": false,
     "displayName": "Orca",
+    "enabled": true,
     "gecko_id": "orca",
     "id": "283",
     "logo": "https://icons.llama.fi/orca.jpg",
@@ -7809,6 +8356,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Orderly Network is a permissionless and modular protocol that brings high throughput, low latency, low fees, tight spreads and composability for DeFi builders.",
     "disabled": false,
     "displayName": "Orderly Network",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2264",
@@ -7857,6 +8405,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Osmosis DEX is the advanced automated market maker (AMM) protocol at the core of the Osmosis blockchain.",
     "disabled": false,
     "displayName": "Osmosis DEX",
+    "enabled": true,
     "gecko_id": "osmosis",
     "id": "383",
     "logo": "https://icons.llama.fi/osmosis-dex.jpg",
@@ -7905,6 +8454,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Pact is a decentralised Automated Market Maker (AMM) built on the Algorand protocol, offering deep liquidity and low transaction fees.",
     "disabled": false,
     "displayName": "Pact",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1468",
@@ -7959,6 +8509,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Cross Chain AMM, Advanced Liquidity Solutions, DeFi product solves, Yield farming.",
     "disabled": false,
     "displayName": "PadSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8012,6 +8563,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "PaintSwap Finance has the premier open NFT Marketplace on Fantom. It has a unique and sustainable yield farming AMM platform where 50% of farming rewards are locked for 3 months in the Art Gallery. The first project to create a video game built on the Fantom network, as well as many other exciting features in the works.",
     "disabled": false,
     "displayName": "Paint Swap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8063,6 +8615,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "PandoraSwap has the most complete and holistic ecosystem on Astar Chain with its AMM/DEX, Yield Optimizer & NFT.",
     "disabled": false,
     "displayName": "Pandora Swap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8116,6 +8669,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "The First Concentrated Liquidity DEX on Klaytn.",
     "disabled": false,
     "displayName": "Pangea Swap",
+    "enabled": true,
     "forkedFrom": [
       "SushiSwap",
     ],
@@ -8168,6 +8722,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Pangolin is a community-driven DEX that runs on multiple blockchains. ",
     "disabled": false,
     "displayName": "Pangolin",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8219,6 +8774,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "PayCash – among other things – is a universal EOS blockchain-based decentralized p2p crypto-to-fiat gateway (exchange) facilitating easy entry and exit to and from the cryptocurrency universe.",
     "disabled": false,
     "displayName": "PayCash",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "malinka",
     "id": "1452",
@@ -8268,6 +8824,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Swap, earn, and build with the leading decentralized crypto trading protocol on Syscoin.",
     "disabled": false,
     "displayName": "PegaSys",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8318,6 +8875,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "A Liquidity-as-a-Service Platform, built on Solana.",
     "disabled": false,
     "displayName": "Penguin",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1575",
@@ -8368,6 +8926,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "AMM styled decentralized exchange (DEX) on Cronos ",
     "disabled": false,
     "displayName": "PhotonSwap Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8420,6 +8979,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Sale, swap, earn, lock all on one decentralized, community driven platform. Earn PinkS by staking LP & tokens. Welcome to PinkArmy Family!",
     "disabled": false,
     "displayName": "PinkSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8473,6 +9033,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Platypus combined stableswap and stablecoin, masterfully utilizing its underlying assets to bring next-level capital efficiency.",
     "disabled": false,
     "displayName": "Platypus Finance",
+    "enabled": true,
     "gecko_id": "platypus-finance",
     "id": "944",
     "listedAt": 1638299790,
@@ -8522,6 +9083,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Plenty is a decentralized exchange on Tezos that offers a seamless trading experience. Users can trade, earn, govern and build on the platform. Plenty features both stable and volatile liquidity pools, enables near-zero slippage trades and easy bridging from Ethereum and Polygon.",
     "disabled": false,
     "displayName": "Plenty",
+    "enabled": true,
     "gecko_id": null,
     "id": "490",
     "logo": "https://icons.llama.fi/plenty.png",
@@ -8570,6 +9132,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "​Polycat is a value-oriented, sustainable and decentralized hybrid yield optimizer (yield farm and yield aggregator) running on the Polygon blockchain.",
     "disabled": false,
     "displayName": "Polycat",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8622,6 +9185,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "The First AMM on Fantom in which you are the owner of the Protocol",
     "disabled": false,
     "displayName": "ProtoFi",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8674,6 +9238,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "The New Swap 2.0 Protocol",
     "disabled": false,
     "displayName": "PYEswap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8723,10 +9288,20 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "config": {
       "enabled": true,
       "id": "306",
+      "protocolsData": {
+        "v2": {
+          "displayName": "Quickswap V2",
+          "id": "306",
+        },
+        "v3": {
+          "id": "2239",
+        },
+      },
     },
     "description": "AMM",
     "disabled": false,
-    "displayName": "Quickswap Dex",
+    "displayName": "Quickswap V2",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8744,6 +9319,90 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/quickswap",
     "module": "quickswap",
     "name": "Quickswap Dex",
+    "parentProtocol": "Quickswap",
+    "protocolType": undefined,
+    "protocolsData": {
+      "v2": {
+        "chains": [
+          "polygon",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "v3": {
+        "chains": [
+          "polygon",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+    },
+    "symbol": "QUICK",
+    "twitter": "QuickswapDEX",
+    "url": "https://quickswap.exchange/",
+  },
+  {
+    "address": "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
+    "audit_links": [
+      "https://contractsecurity.io/quick-audit-report/",
+    ],
+    "audit_note": null,
+    "audits": "3",
+    "category": "Dexes",
+    "chain": "Polygon",
+    "chains": [
+      "polygon",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "306",
+      "protocolsData": {
+        "v2": {
+          "displayName": "Quickswap V2",
+          "id": "306",
+        },
+        "v3": {
+          "id": "2239",
+        },
+      },
+    },
+    "description": "QuickSwap is a decentralized exchange that runs on Polygon Network to offer cheaper and faster transactions. Its automated market maker integrates upgradeable smart contracts on Ethereum and renders intermediaries obsolete. The exchange is based on open-source software and prioritizes decentralization, censorship resistance and security. It benefits from ultra-low gas prices compared to Ethereum, as well as fast and simple trading execution",
+    "disabled": false,
+    "displayName": "Quickswap V3",
+    "enabled": true,
+    "forkedFrom": [
+      "Uniswap",
+    ],
+    "gecko_id": null,
+    "id": "306",
+    "listedAt": 1667063569,
+    "logo": "https://icons.llama.fi/quickswap-dex.jpg",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/quickswap",
+    "module": "quickswap",
+    "name": "Quickswap V3",
     "parentProtocol": "Quickswap",
     "protocolType": undefined,
     "protocolsData": {
@@ -8801,6 +9460,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "QuipuSwap is an open-source protocol that provides an interface for the seamless decentralized exchange of Tezos-based Tokens, stable swap with dividends, and farming features. Liquidity providers may earn fees from trading, baking rewards, or receive rewards from staking tokens on farms. QuipuSwap smart contracts were developed by the MadFish Team and audited by Least Authority and  Runtime Verification companies.",
     "disabled": false,
     "displayName": "QuipuSwap",
+    "enabled": true,
     "gecko_id": "quipuswap-governance-token",
     "id": "513",
     "logo": "https://icons.llama.fi/quipuswap.png",
@@ -8853,6 +9513,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Uniswap fork",
     "disabled": false,
     "displayName": "RadioShack",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -8907,6 +9568,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "An on-chain order book AMM powering the evolution of DeFi.",
     "disabled": false,
     "displayName": "Raydium",
+    "enabled": true,
     "gecko_id": "raydium",
     "id": "214",
     "logo": "https://icons.llama.fi/raydium.jpg",
@@ -8953,6 +9615,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Ref Finance is a core projects in the DeFi ecosystem on Near Protocol. Its main objective is to bring together the core components of DeFi, namely, decentralized exchange (DEX), lending protocol, synthetic asset issuer, and more",
     "disabled": false,
     "displayName": "Ref Finance",
+    "enabled": true,
     "gecko_id": "ref-finance",
     "id": "541",
     "logo": "https://icons.llama.fi/ref-finance.jpg",
@@ -9001,6 +9664,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Democratizing the open order book and bringing decentralized exchange to the masses. Built on Ethereum L2.",
     "disabled": false,
     "displayName": "Rubicon",
+    "enabled": true,
     "gecko_id": null,
     "id": "799",
     "listedAt": 1636304524,
@@ -9047,6 +9711,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Saber is the first automated market maker optimized for trading pegged assets on Solana. Our protocol enables Solana users and applications to efficiently trade between stable pairs of assets, as well as earn yields by providing liquidity to the platform.",
     "disabled": false,
     "displayName": "Saber",
+    "enabled": true,
     "gecko_id": "saber",
     "id": "419",
     "logo": "https://icons.llama.fi/saber.jpg",
@@ -9098,6 +9763,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Saddle is an automated market maker for pegged value crypto assets.",
     "disabled": false,
     "displayName": "Saddle Finance",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "saddle-finance",
     "governanceID": [
@@ -9151,6 +9817,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Saros Finance is the ultimate DeFi platform native to Solana, with trading, staking, and yield farming services. Built by Coin98 Labs, Saros Finance aims to adopt millions of users to DeFi.",
     "disabled": false,
     "displayName": "Saros",
+    "enabled": true,
     "gecko_id": null,
     "id": "1262",
     "listedAt": 1642193205,
@@ -9201,6 +9868,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "SaucerSwap is an automated market maker protocol that leverages the Hedera Smart Contract Service to include Solidity smart contract integration with the Hedera Token Service.",
     "disabled": false,
     "displayName": "SaucerSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -9254,8 +9922,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Serum is a decentralized exchange (DEX) and ecosystem that brings unprecedented speed and low transaction costs to decentralized finance.",
     "disabled": false,
     "displayName": "Serum",
+    "enabled": true,
     "gecko_id": "serum",
     "id": "145",
+    "includedVolume": [
+      "raydium",
+    ],
     "logo": "https://icons.llama.fi/serum.jpg",
     "methodology": {
       "Fees": "Swap fees paid by users",
@@ -9299,6 +9971,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "SharkSwap is a decentralized trading platform on the SX network.",
     "disabled": false,
     "displayName": "SharkSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -9349,6 +10022,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "DeFi hub for users & builders. Breakthrough accounting architecture and AMM engine.",
     "disabled": false,
     "displayName": "Shell Protocol",
+    "enabled": true,
     "gecko_id": null,
     "governanceID": [
       "snapshot:shellprotocol.eth",
@@ -9400,6 +10074,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "SHIB, LEASH, and BONE, come together to create ShibaSwap, the next evolution in DeFi platforms. ShibaSwap gives users the ability to DIG (provide liquidity), BURY (stake), and SWAP tokens to gain WOOF Returns through our sophisticated and innovative passive income reward system.",
     "disabled": false,
     "displayName": "ShibaSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -9448,6 +10123,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "SmartDEX is a decentralized exchange developed by the Autonio Team. It is designed to be the world’s first 'smart DEX', giving users the ability to use high-frequency market makers and automated trading algorithms on a decentralized exchange.",
     "disabled": false,
     "displayName": "SmartDEX",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -9497,6 +10173,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "AMM on bsc",
     "disabled": false,
     "displayName": "SMBSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -9547,6 +10224,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Solarbeam is a decentralized exchange, providing liquidity and enabling peer-to-peer transactions on the Moonriver Network.",
     "disabled": false,
     "displayName": "Solarbeam",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -9598,6 +10276,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Solarflare is a decentralized exchange, providing liquidity and enabling peer-to-peer transactions on the Moonbeam Network.",
     "disabled": false,
     "displayName": "Solarflare",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -9647,6 +10326,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "SolidLizard is an Arbitrum One decentralized exchange that allows swaps at a low cost in swap fees and has a governance structure based on the ve(3,3) system",
     "disabled": false,
     "displayName": "SolidLizard",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -9700,6 +10380,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Solidly allows low cost, near 0 slippage trades on uncorrelated or tightly correlated assets. The protocol incentivizes fees instead of liquidity. Liquidity providers (LPs) are given incentives in the form of token",
     "disabled": false,
     "displayName": "Solidly",
+    "enabled": true,
     "gecko_id": "solidly",
     "id": "1407",
     "language": "Solidity",
@@ -9748,6 +10429,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
     "disabled": false,
     "displayName": "Solidly V2",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -9800,6 +10482,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Soul is an algorithmic, cross-chain AMM and P2P lending protocol (on Fantom) built for traders, investors, developers, and visionaries seeking to unlock a universe of open financial applications.",
     "disabled": false,
     "displayName": "SoulSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -9851,6 +10534,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "SOY Finance will deploy a set of services on the Callisto Network blockchain, including decentralized swap, yield farming, as well as a stable coin.",
     "disabled": false,
     "displayName": "Soy Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -9900,6 +10584,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Spartacus Exchange is a decentralized exchange that is designed for everyone with low fees for both correlated and volatile assets.",
     "disabled": false,
     "displayName": "Spartacus Exchange",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -9956,6 +10641,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Spartan Protocol is an AMM built on top of Binance Smart Chain utilizing liquidity sensitive fees. Focusing on incentivised liquidity pools and Synths, Spartan Protocol allows users to earn revenue by providing liquidity to pools and forging + staking Synthetic Assets.",
     "disabled": false,
     "displayName": "Spartan",
+    "enabled": true,
     "gecko_id": "spartan-protocol-token",
     "id": "1246",
     "listedAt": 1642022683,
@@ -10003,6 +10689,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "An AIO(All-In-One) solution for trading, farming, staking and holding",
     "disabled": false,
     "displayName": "Sphynx",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -10057,6 +10744,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "AMM",
     "disabled": false,
     "displayName": "SpiritSwap AMM",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -10109,6 +10797,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Automated Market Maker.",
     "disabled": false,
     "displayName": "SpookySwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -10161,6 +10850,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "We’re fast. We’re free. And we’re the first decentralized crypto platform with global fiat gateways. You can trade bitcoin for Euros for Chinese Yuan on StellarX. That’s not possible anywhere else.",
     "disabled": false,
     "displayName": "StellarX",
+    "enabled": true,
     "gecko_id": null,
     "id": "972",
     "listedAt": 1638583658,
@@ -10210,6 +10900,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Stellaswap is leading DEX on Moonbeam.",
     "disabled": false,
     "displayName": "StellaSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -10259,6 +10950,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Dex on Step Network ",
     "disabled": false,
     "displayName": "Step Exchange",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "stepex",
     "id": "2312",
@@ -10307,6 +10999,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "The first native AMM-based decentralized exchange and liquidity provision protocol on Cardano.",
     "disabled": false,
     "displayName": "SundaeSwap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "sundaeswap",
     "id": "1302",
@@ -10357,6 +11050,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "SUNSwap is a TRON-based decentralized trading protocol for automated liquidity provision and an open financial market accessible to all.",
     "disabled": false,
     "displayName": "SUNSwap",
+    "enabled": true,
     "gecko_id": null,
     "id": "690",
     "listedAt": 1634757407,
@@ -10403,10 +11097,19 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "config": {
       "enabled": true,
       "id": "1868",
+      "protocolsData": {
+        "classic": {
+          "id": "2566",
+        },
+        "stable-amm": {
+          "id": "2567",
+        },
+      },
     },
     "description": "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
     "disabled": false,
-    "displayName": "Surfswap",
+    "displayName": "Surfswap Classic",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -10424,10 +11127,97 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/surfswap",
     "module": "surfswap",
-    "name": "Surfswap",
+    "name": "Surfswap Classic",
     "oracles": [
       "TWAP",
     ],
+    "parentProtocol": "SurfSwap",
+    "protocolType": undefined,
+    "protocolsData": {
+      "classic": {
+        "chains": [
+          "kava",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "stable-amm": {
+        "chains": [
+          "kava",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+    },
+    "symbol": "TIDE",
+    "twitter": "SurfswapDEX",
+    "url": "https://surfdex.io",
+  },
+  {
+    "address": "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
+    "audit_links": [
+      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Beamswap-v1.0.pdf",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Dexes",
+    "chain": "Kava",
+    "chains": [
+      "kava",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "1868",
+      "protocolsData": {
+        "classic": {
+          "id": "2566",
+        },
+        "stable-amm": {
+          "id": "2567",
+        },
+      },
+    },
+    "description": "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
+    "disabled": false,
+    "displayName": "Surfswap Stable AMM",
+    "enabled": true,
+    "forkedFrom": [
+      "Uniswap",
+    ],
+    "gecko_id": null,
+    "id": "1868",
+    "listedAt": 1656665210,
+    "logo": "https://icons.llama.fi/surfswap.png",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/surfswap",
+    "module": "surfswap",
+    "name": "Surfswap Stable AMM",
+    "oracles": [
+      "TWAP",
+    ],
+    "parentProtocol": "SurfSwap",
     "protocolType": undefined,
     "protocolsData": {
       "classic": {
@@ -10486,20 +11276,25 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "moonbeam",
       "boba",
       "fuse",
-      "optimism",
-      "kava",
-      "metis",
-      "bittorrent",
     ],
     "cmcId": "6758",
     "config": {
       "enabled": true,
       "id": "119",
+      "protocolsData": {
+        "classic": {
+          "id": "119",
+        },
+        "trident": {
+          "id": "2152",
+        },
+      },
     },
     "description": "A fully decentralized protocol for automated liquidity provision on Ethereum.
 ",
     "disabled": false,
     "displayName": "SushiSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -10575,6 +11370,111 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "url": "https://sushi.com/",
   },
   {
+    "address": null,
+    "audit_note": null,
+    "audits": "0",
+    "category": "Dexes",
+    "chain": "Polygon",
+    "chains": [
+      "polygon",
+      "optimism",
+      "kava",
+      "metis",
+      "bittorrent",
+      "arbitrum",
+      "bsc",
+      "avax",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "119",
+      "protocolsData": {
+        "classic": {
+          "id": "119",
+        },
+        "trident": {
+          "id": "2152",
+        },
+      },
+    },
+    "description": "TRIDENT 🔱 is a newly developed AMM and routing system from SushiSwap (Sushi).",
+    "disabled": false,
+    "displayName": "Sushi Trident",
+    "enabled": true,
+    "forkedFrom": [],
+    "gecko_id": null,
+    "id": "119",
+    "listedAt": 1664917476,
+    "logo": "https://icons.llama.fi/sushi-trident.png",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/sushiswap",
+    "module": "sushiswap",
+    "name": "Sushi Trident",
+    "oracles": [],
+    "parentProtocol": "Sushi",
+    "protocolType": undefined,
+    "protocolsData": {
+      "classic": {
+        "chains": [
+          "ethereum",
+          "bsc",
+          "polygon",
+          "fantom",
+          "arbitrum",
+          "celo",
+          "avax",
+          "harmony",
+          "moonriver",
+          "xdai",
+          "moonbeam",
+          "boba",
+          "fuse",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "SushiSwap charges a flat 0.3% fee",
+          "HoldersRevenue": "SUSHI token stakers are entitled to share a 0.05% fee from each trade",
+          "ProtocolRevenue": "Treasury have no revenue",
+          "Revenue": "A 0.05% of each trade goes to token holders",
+          "SupplySideRevenue": "Liquidity providers get 0.25% of all trades in their pools",
+          "UserFees": "Users pay a 0.3% fee on each trade",
+        },
+      },
+      "trident": {
+        "chains": [
+          "polygon",
+          "optimism",
+          "kava",
+          "metis",
+          "bittorrent",
+          "arbitrum",
+          "bsc",
+          "avax",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+    },
+    "symbol": "-",
+    "twitter": "SushiSwap",
+    "url": "https://www.sushi.com/swap",
+  },
+  {
     "address": "conflux:0x22f41abf77905f50df398f21213290597e7414dd",
     "audit_links": [
       "https://drive.google.com/file/d/1zj08NuUuMAO-bikOBvPOsOnPcTC5rdHx/view?usp=sharing",
@@ -10594,6 +11494,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Swappi is an automated market maker (AMM) based decentralized exchange (DEX) deployed on Conflux Network.",
     "disabled": false,
     "displayName": "Swappi",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -10649,6 +11550,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "A governance-enabled automated-market maker with adjustable fees, made by DXdao.",
     "disabled": false,
     "displayName": "Swapr",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -10705,6 +11607,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Swapsicle is a decentralised exchange built on the avalanche blockchain offering swaps, farming and staking opportunities.",
     "disabled": false,
     "displayName": "Swapsicle",
+    "enabled": false,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -10761,6 +11664,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "SynFutures is a next-generation derivatives exchange focused on creating an open and trustless derivatives market by enabling futures trading on anything, anytime, anywhere. By cultivating a free market and maximizing the variety of tradable assets, SynFutures is lowering the barrier to entry in the derivatives market, creating a more equitable derivatives market.",
     "disabled": false,
     "displayName": "SynFutures",
+    "enabled": false,
     "forkedFrom": [],
     "gecko_id": "synfutures",
     "id": "2328",
@@ -10818,6 +11722,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Synthetify is a decentralized synthetic assets protocol build on the Solana blockchain. The protocol allows for the creation and exchange of synthetic assets that closely track the price of specific assets. Synthetic tokens are based on the SPL-Token standard that gives them the ability to be easily integrated with other DeFi applications like AMM.",
     "disabled": false,
     "displayName": "Synthetify",
+    "enabled": true,
     "gecko_id": "synthetify-token",
     "id": "731",
     "listedAt": 1635546647,
@@ -10870,6 +11775,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Fully Decentralized Spot & Perpetual Exchange. Go long, go short or swap crypto in self-custody, with up to 100x more buying power",
     "disabled": false,
     "displayName": "Syrup Finance",
+    "enabled": true,
     "forkedFrom": [
       "GMX",
     ],
@@ -10920,6 +11826,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "$TEMPLE can be purchased and sold from our own AMM under the Trade page",
     "disabled": false,
     "displayName": "TempleDAO Trade",
+    "enabled": true,
     "gecko_id": null,
     "id": "2178",
     "listedAt": 1665606253,
@@ -10961,12 +11868,14 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "cmcId": null,
     "config": {
+      "disabled": true,
       "enabled": true,
       "id": "491",
     },
     "description": "Terraswap is a Uniswap-inspired automated market-maker (AMM) protocol implemented with smart contracts on the Terra blockchain. This enables a decentralized on-chain exchange for the various assets involved in Terra ecosystem.",
     "disabled": true,
     "displayName": "Terraswap",
+    "enabled": true,
     "gecko_id": null,
     "id": "491",
     "logo": "https://icons.llama.fi/terraswap.png",
@@ -11016,6 +11925,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "We believe that in the future, L2 solutions will help Ethereum with scaling. Our mission is to empower the Metis Andromeda network with a fast, secure, reliable, and advanced native decentralized exchange app to handle all kinds of trading needs.",
     "disabled": false,
     "displayName": "Tethys AMM",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
       "Impermax Finance",
@@ -11070,6 +11980,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Tetu is a decentralized organization committed to providing a next generation yield aggregator to DeFi investors. The Tetu core team has deep industry knowledge building back-end international banking systems and development with leading global payment processing infrastructure.",
     "disabled": false,
     "displayName": "Tetu Earn",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "506",
@@ -11119,6 +12030,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Thena is a native liquidity layer & AMM on BNB Chain",
     "disabled": false,
     "displayName": "Thena",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -11169,6 +12081,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Earn native yield with THORChain Savers Vaults with no additional asset exposure or impermanent loss.",
     "disabled": false,
     "displayName": "THORSwap",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2287",
@@ -11216,6 +12129,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "True cross-chain DEX",
     "disabled": false,
     "displayName": "THORWallet DEX",
+    "enabled": false,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2533",
@@ -11259,6 +12173,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Tinyman is a next-generation decentralized AMM on the Algorand blockchain.",
     "disabled": false,
     "displayName": "Tinyman",
+    "enabled": true,
     "gecko_id": null,
     "id": "680",
     "listedAt": 1634497796,
@@ -11308,6 +12223,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Titano Dex",
     "disabled": false,
     "displayName": "Titano Swych",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -11358,6 +12274,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "AMM DEX of the Tomb Finance ecosystem on Fantom",
     "disabled": false,
     "displayName": "Tomb Swap",
+    "enabled": true,
     "gecko_id": null,
     "id": "2129",
     "listedAt": 1664215603,
@@ -11399,16 +12316,24 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "chain": "Avalanche",
     "chains": [
       "avax",
-      "arbitrum",
     ],
     "cmcId": null,
     "config": {
       "enabled": true,
       "id": "468",
+      "protocolsData": {
+        "v1": {
+          "id": "468",
+        },
+        "v2": {
+          "id": "2393",
+        },
+      },
     },
     "description": "Trader Joe is your one-stop decentralized trading platform on the Avalanche network.",
     "disabled": false,
     "displayName": "Trader Joe DEX",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -11465,6 +12390,90 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "url": "https://www.traderjoexyz.com",
   },
   {
+    "address": "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
+    "audit_links": [
+      "https://github.com/abdk-consulting/audits/blob/main/traderjoe/ABDK_TraderJoe_TraderJoe_v_2_0.pdf",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Dexes",
+    "chain": "Avalanche",
+    "chains": [
+      "avax",
+      "arbitrum",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "468",
+      "protocolsData": {
+        "v1": {
+          "id": "468",
+        },
+        "v2": {
+          "id": "2393",
+        },
+      },
+    },
+    "description": "Joe V2 is a decentralized exchange based on Liquidity Book, a novel AMM protocol. Zero 0% slippage for swaps between ticks and Dynamic fees to improve liquidity provider profitability.",
+    "disabled": false,
+    "displayName": "Joe V2",
+    "enabled": true,
+    "forkedFrom": [],
+    "gecko_id": null,
+    "id": "468",
+    "listedAt": 1672226957,
+    "logo": "https://icons.llama.fi/joe-v2.jpg",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/traderjoe",
+    "module": "traderjoe",
+    "name": "Joe V2",
+    "oracles": [],
+    "parentProtocol": "Trader Joe",
+    "protocolType": undefined,
+    "protocolsData": {
+      "v1": {
+        "chains": [
+          "avax",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "v2": {
+        "chains": [
+          "avax",
+          "arbitrum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+    },
+    "symbol": "JOE",
+    "twitter": "traderjoe_xyz",
+    "url": "https://traderjoexyz.com/home",
+  },
+  {
     "address": null,
     "audit_note": null,
     "audits": "0",
@@ -11481,6 +12490,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "TTSwap is a DEX (decentralized exchange) on the ThunderCore blockchain based on the model: Automated Market-Making (AMM) inspired by Uniswap.",
     "disabled": false,
     "displayName": "TTswap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -11533,6 +12543,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Ubeswap is the leading DEX on Celo network!",
     "disabled": false,
     "displayName": "Ubeswap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -11581,6 +12592,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Ultron Foundation is an EVM-compatible layer-1 blockchain system supported by Solidity Finance, with a fully functioning DeFi ecosystem that includes a native coin and dApps. The project was initiated in 2020 with a multi-cultural team of blockchain professionals developing internal products",
     "disabled": false,
     "displayName": "UltronSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -11634,6 +12646,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Unicly is a permissionless protocol to combine, fractionalize, and trade NFTs. Users can fractionalize NFT collections into "uTokens", and trade them on a Sushiswap-fork AMM with liquidity incentives via liquidity mining.",
     "disabled": false,
     "displayName": "Unicly",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -11695,6 +12708,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Unifi Protocol is a group of non-custodial, interoperable smart contracts linking multiple blockchains together into one large DeFi marketplace.",
     "disabled": false,
     "displayName": "UniFi",
+    "enabled": true,
     "gecko_id": "unifi-protocol-dao",
     "id": "646",
     "logo": "https://icons.llama.fi/unifi.jpg",
@@ -11749,6 +12763,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "DEX Built On Vision Network. Uses A “Defi + NFT” Paradigm, Which Isolates The Platform Token's Governance Utility From Its Governance System And Uses NFT To Power It",
     "disabled": false,
     "displayName": "VanSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -11799,6 +12814,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "The World  Most Rewarding DEX. Automatically earn rewards that boost your savings just by using VaporDEX.",
     "disabled": false,
     "displayName": "VaporDex",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "2342",
@@ -11847,6 +12863,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "A revolutionary new AMM based on Solidly launched on Optimism.",
     "disabled": false,
     "displayName": "Velodrome",
+    "enabled": true,
     "forkedFrom": [
       "Solidly",
     ],
@@ -11897,6 +12914,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Vencieswap, the second DEX on Findora (FRA) delivering great trading experience and earning opportunities",
     "disabled": false,
     "displayName": "VeniceSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -11951,6 +12969,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Verse DEX by Bitcoin.com enables permissionless trading via your Web3 wallet, including the multichain Bitcoin.com Wallet. Trading is currently available on Ethereum and SmartBCH, but more chains are coming soon. Sign up at getverse.com to get notified.",
     "disabled": false,
     "displayName": "Verse",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12005,6 +13024,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "A protocol for trading and automated liquidity provision on VeChain",
     "disabled": false,
     "displayName": "Vexchange",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12057,6 +13077,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "ViperSwap is Harmony's leading DEX. Building on top of Harmony's 2-second finality and insanely low fees it's one of the fastest and cheapest DEXes to use.",
     "disabled": false,
     "displayName": "ViperSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12105,6 +13126,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Built atop the powerful Fuse blockchain and ecosystem, Voltage enables anyone to carry the power of DeFi in their pocket.",
     "disabled": false,
     "displayName": "Voltage",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
       "Compound",
@@ -12151,10 +13173,20 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "config": {
       "enabled": true,
       "id": "1225",
+      "protocolsData": {
+        "v1": {
+          "disabled": true,
+          "id": "1225",
+        },
+        "v2": {
+          "id": "2133",
+        },
+      },
     },
     "description": "VoltSwap is the first major DEX in the Meter ecosystem. It is a completely community-driven project and was introduced by the Meter.io team to showcase the capabilities of the Meter blockchain.",
-    "disabled": false,
+    "disabled": true,
     "displayName": "VoltSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12178,7 +13210,91 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": {
       "v1": {
-        "chains": [],
+        "chains": [
+          "meter",
+        ],
+        "disabled": true,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "v2": {
+        "chains": [
+          "meter",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+    },
+    "symbol": "VOLT",
+    "twitter": "Meter_IO",
+    "url": "https://voltswap.finance",
+  },
+  {
+    "address": "meter:0x8Df95e66Cb0eF38F91D2776DA3c921768982fBa0",
+    "audit_note": null,
+    "audits": "0",
+    "category": "Dexes",
+    "chain": "Meter",
+    "chains": [
+      "meter",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "1225",
+      "protocolsData": {
+        "v1": {
+          "disabled": true,
+          "id": "1225",
+        },
+        "v2": {
+          "id": "2133",
+        },
+      },
+    },
+    "description": "VoltSwap is the first major DEX in the Meter ecosystem. It is a completely community-driven project and was introduced by the Meter.io team to showcase the capabilities of the Meter blockchain.",
+    "disabled": false,
+    "displayName": "VoltSwap V2",
+    "enabled": true,
+    "forkedFrom": [
+      "Uniswap",
+    ],
+    "gecko_id": null,
+    "id": "1225",
+    "listedAt": 1664359970,
+    "logo": "https://icons.llama.fi/voltswap-v2.png",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/voltswap",
+    "module": "voltswap",
+    "name": "VoltSwap V2",
+    "oracles": [],
+    "parentProtocol": "Volt Finance",
+    "protocolType": undefined,
+    "protocolsData": {
+      "v1": {
+        "chains": [
+          "meter",
+        ],
         "disabled": true,
         "methodology": {
           "Fees": "Swap fees paid by users",
@@ -12225,6 +13341,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Vortex is an all-in-one decentralized finance protocol built on the Tezos blockchain.",
     "disabled": false,
     "displayName": "Vortex Protocol",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1706",
@@ -12276,6 +13393,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "VVS is designed to be the simplest DeFi platform for users to swap tokens, earn high yields, and most importantly have fun!",
     "disabled": false,
     "displayName": "VVS Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12328,6 +13446,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "WagyuSwap is the leading decentralized exchange on the Velas Chain, which has been clocked as the fastest blockchain in the world.",
     "disabled": false,
     "displayName": "WagyuSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12380,6 +13499,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "WanSwap is an innovative crosschain automatic market making (AMM) decentralized exchange (DEX) based on Wanchain.",
     "disabled": false,
     "displayName": "WanSwap Dex",
+    "enabled": true,
     "gecko_id": "wanswap",
     "id": "186",
     "logo": "https://icons.llama.fi/wanswap-dex.jpg",
@@ -12432,6 +13552,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Wardenswap is not just another decentralized exchange (DEX). When you trade on Wardenswap, you will receive a much better price than any other DEX. If there is another pool that has a price ready to be arbitraged, Wardenswap will also take the deal for you. Wardenswap is the gateway to all decentralized exchanges on the earth.",
     "disabled": false,
     "displayName": "WardenSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12484,6 +13605,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Wavelength is the first of its kind on Velas. At the core of our project is a Decentralized Exchange (DEX) built on top of the Balancer V2 framework, which makes us the first next-generation Automated Market Maker (AMM) protocol on Velas!",
     "disabled": false,
     "displayName": "Wavelength DAO",
+    "enabled": true,
     "forkedFrom": [
       "Balancer",
     ],
@@ -12538,6 +13660,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "A next-generation DEX on BNB Chain to maximize capital efficiency with the innovative Discretized-Liquidity-AMM model",
     "disabled": false,
     "displayName": "WhaleSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12592,6 +13715,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "DeFi hub on Fantom network with LIFETIME farming earnings powered by Gamified Burning Mechanism (GBM)",
     "disabled": false,
     "displayName": "WigoSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12641,6 +13765,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "An explosive innovation of all-in-one decentralized exchange",
     "disabled": false,
     "displayName": "WinerySwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12694,6 +13819,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "The DEX on Cardano. Native and fast AMM decentralized exchange platform.",
     "disabled": false,
     "displayName": "WingRiders",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "wingriders",
     "id": "1601",
@@ -12745,6 +13871,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "WingSwap is a dedicated Decentralized Exchange (DEX) and a staking platform where users can provide liquidity to the DEX, trade different types of assets in a decentralized way and get rewarded for doing so.",
     "disabled": false,
     "displayName": "WingSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12794,6 +13921,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "The newest DEX on Doge!",
     "disabled": false,
     "displayName": "Wojak Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -12849,6 +13977,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Hyper efficient multi-chain stableswap. #BNB and beyond.",
     "disabled": false,
     "displayName": "Wombat Exchange",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": "wombat-exchange",
     "id": "1700",
@@ -12905,6 +14034,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "WOOFi is a multichain DeFi platform which offers the best trade execution and lowest swap fee, opportunities to earn sustainable yields on crypto, and a high-efficiency solution for on-chain liquidity provision.",
     "disabled": false,
     "displayName": "WOOFi",
+    "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
     "id": "1461",
@@ -12961,6 +14091,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Launched in 2017 as Waves DEX, WX.Network is a robust platform for self-sovereign crypto management with a suite of investment tools in a convenient interface. WX.Network offers high transaction speed and an unprecedented level of security as users remain in sole control of their assets",
     "disabled": false,
     "displayName": "WX.Network",
+    "enabled": true,
     "gecko_id": "waves-exchange",
     "id": "614",
     "logo": "https://icons.llama.fi/wx.network.png",
@@ -13006,6 +14137,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "xExchange is a DEX AMM running on the MultiversX Network. It is built by the same team that has built the MultiversX blockchain.",
     "disabled": false,
     "displayName": "xExchange",
+    "enabled": true,
     "gecko_id": "maiar-dex",
     "id": "854",
     "listedAt": 1637185638,
@@ -13056,6 +14188,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "XSWAP is the first decentralized exchange (DEX) that utilizes an automated market maker (AMM) system on the Xinfin network and is powered by XDC. The vision of XSWAP is to grow and expand the Xinfin network. It allows the swap and exchange of XRC20 tokens and offers staking & yield farming. XSwap is also home to the first launchpad in the XDC network which offers token creation, presale creation, token & liquidity locker and multisender for all XRC20 tokens.",
     "disabled": false,
     "displayName": "XSwap Protocol",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13109,6 +14242,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "YieldFields is an Automated Market Maker (AMM) with the Exchange at the heart of YieldFields. ",
     "disabled": false,
     "displayName": "YieldFields",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13158,6 +14292,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "YodeSwap is one of the first automated market-making (AMM), decentralized exchanges (DEX) for the Dogechain Network.",
     "disabled": false,
     "displayName": "Yodeswap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13209,6 +14344,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "YokaiSwap is a next generation interoperable, decentralized trading platform and the first to come from the Nervos network.",
     "disabled": false,
     "displayName": "YokaiSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13264,6 +14400,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Yoshi.exchange is a DEX aggregator launching at Fantom Opera blockchain. We create the first closed-cycle united Fantom payment system. The main goal is to facilitate entry threshold to Fantom ecosystem for newcomers and to simplify the user experience for the current consumers.",
     "disabled": false,
     "displayName": "Yoshi Exchange",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13315,6 +14452,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Decentralised exchange for ZRC2 tokens on Zilliqa.",
     "disabled": false,
     "displayName": "ZilSwap",
+    "enabled": true,
     "gecko_id": "zilswap",
     "id": "303",
     "logo": "https://icons.llama.fi/zilswap.jpg",
@@ -13360,6 +14498,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Swap, earn, and build on the first optimistic rollup optimized decentralized crypto trading protocol.",
     "disabled": false,
     "displayName": "ZipSwap",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13412,6 +14551,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Zircon is a DEX protocol with a unique mechanism to provide liquidity with one token and with greatly reduced impermanent loss.",
     "disabled": false,
     "displayName": "Zircon Gamma",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13465,6 +14605,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "Community Driven Exchange on Arbitrum.",
     "disabled": false,
     "displayName": "Zyberswap AMM",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13523,6 +14664,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "The world’s most powerful cross-chain NFT marketplace. Create, Sell, Discover and Buy BSC, NEO N3, Ethereum, Phantasma, Polygon and Avalanche digital collectibles.",
     "disabled": false,
     "displayName": "GhostMarket",
+    "enabled": false,
     "forkedFrom": [],
     "gecko_id": "ghostmarket",
     "id": "2290",
@@ -13559,75 +14701,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "url": "https://ghostmarket.io",
   },
   {
-    "address": null,
-    "audit_links": [
-      "https://github.com/BUIDLHub/dexible-contracts/blob/master/Audit%20Report%20-%20Dexible%20%5B16%20August%202021%5D.pdf",
-    ],
-    "audit_note": null,
-    "audits": "2",
-    "category": "Dexes",
-    "chain": "Ethereum",
-    "chains": [
-      "ethereum",
-      "arbitrum",
-      "avax",
-      "bsc",
-      "fantom",
-      "optimism",
-      "polygon",
-    ],
-    "cmcId": null,
-    "config": {
-      "enabled": false,
-      "id": "2249",
-    },
-    "description": " DeFi's execution management system. Dexible is a DEX aggregator that also provides algo and automated order types normally only seen in CeFi.",
-    "disabled": false,
-    "displayName": "Dexible - Dexible_v2",
-    "forkedFrom": [],
-    "gecko_id": null,
-    "id": "2249",
-    "listedAt": 1667558693,
-    "logo": "https://icons.llama.fi/dexible.png",
-    "methodology": {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
-    },
-    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/aggregators/dexible",
-    "module": "dexible",
-    "name": "Dexible",
-    "protocolType": undefined,
-    "protocolsData": {
-      "Dexible_v2": {
-        "chains": [
-          "ethereum",
-          "arbitrum",
-          "avax",
-          "bsc",
-          "fantom",
-          "optimism",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-    },
-    "symbol": "-",
-    "twitter": "DexibleApp",
-    "url": "https://dexible.io",
-  },
-  {
     "address": "bsc:0x557233E794d1a5FbCc6D26dca49147379ea5073c",
     "audit_links": [
       "https://www.certik.org/projects/alitafinance",
@@ -13647,6 +14720,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "description": "A DEX that is connecting Centralized and Decentralized Trading Platforms Worldwide.",
     "disabled": false,
     "displayName": "Alita Finance",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13684,6 +14758,110 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "https://docs.pancakeswap.finance/#is-it-safe",
     ],
     "audit_note": null,
+    "audits": "0",
+    "category": "Dexes",
+    "chain": "Binance",
+    "chains": [
+      "bsc",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "194",
+      "protocolsData": {
+        "stableswap": {
+          "enabled": true,
+          "id": "2529",
+        },
+        "v1": {
+          "disabled": true,
+          "id": "2559",
+        },
+        "v2": {
+          "enabled": true,
+          "id": "194",
+        },
+      },
+    },
+    "description": "The #1 AMM and yield farm on Binance Smart Chain",
+    "disabled": true,
+    "displayName": "PancakeSwap AMM V1",
+    "enabled": true,
+    "forkedFrom": [
+      "Uniswap",
+    ],
+    "gecko_id": null,
+    "id": "194",
+    "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
+    "module": "pancakeswap",
+    "name": "PancakeSwap AMM V1",
+    "oracles": [],
+    "parentProtocol": "PancakeSwap",
+    "protocolType": undefined,
+    "protocolsData": {
+      "stableswap": {
+        "chains": [
+          "bsc",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
+          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
+          "ProtocolRevenue": "Treasury receives 10% of the fees.",
+          "Revenue": "Revenue is 50% of the fees paid by users.",
+          "SupplySideRevenue": "LPs receive 50% of the fees.",
+          "UserFees": "User pays 0.25% fees on each swap.",
+        },
+      },
+      "v1": {
+        "chains": [
+          "bsc",
+        ],
+        "disabled": true,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "v2": {
+        "chains": [
+          "bsc",
+          "ethereum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "All fees comes from the user.",
+          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
+          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
+          "Revenue": "All revenue generated comes from user fees.",
+          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
+          "UserFees": "User pays 0.25% fees on each swap.",
+        },
+      },
+    },
+    "symbol": "CAKE",
+    "twitter": "PancakeSwap",
+    "url": "https://v1exchange.pancakeswap.finance/",
+  },
+  {
+    "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+    "audit_links": [
+      "https://docs.pancakeswap.finance/#is-it-safe",
+    ],
+    "audit_note": null,
     "audits": "2",
     "category": "Dexes",
     "chain": "Binance",
@@ -13695,10 +14873,25 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "config": {
       "enabled": true,
       "id": "194",
+      "protocolsData": {
+        "stableswap": {
+          "enabled": true,
+          "id": "2529",
+        },
+        "v1": {
+          "disabled": true,
+          "id": "2559",
+        },
+        "v2": {
+          "enabled": true,
+          "id": "194",
+        },
+      },
     },
     "description": "The #1 AMM and yield farm on Binance Smart Chain",
     "disabled": false,
     "displayName": "PancakeSwap AMM",
+    "enabled": true,
     "forkedFrom": [
       "Uniswap",
     ],
@@ -13735,7 +14928,9 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         },
       },
       "v1": {
-        "chains": [],
+        "chains": [
+          "bsc",
+        ],
         "disabled": true,
         "methodology": {
           "Fees": "Swap fees paid by users",
@@ -13767,6 +14962,106 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "url": "https://pancakeswap.finance/",
   },
   {
+    "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+    "audit_note": null,
+    "audits": "0",
+    "category": "Dexes",
+    "chain": "Binance",
+    "chains": [
+      "bsc",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "194",
+      "protocolsData": {
+        "stableswap": {
+          "enabled": true,
+          "id": "2529",
+        },
+        "v1": {
+          "disabled": true,
+          "id": "2559",
+        },
+        "v2": {
+          "enabled": true,
+          "id": "194",
+        },
+      },
+    },
+    "description": "StableSwap on PancakeSwap is a feature to trade stable pairs with a lower slippage based on an invariant curve slippage function. It is designed to swap specific assets that are priced closely – such as USD stablecoin.",
+    "disabled": false,
+    "displayName": "PancakeSwap StableSwap",
+    "enabled": true,
+    "forkedFrom": [],
+    "gecko_id": null,
+    "id": "194",
+    "listedAt": 1676313502,
+    "logo": "https://icons.llama.fi/pancakeswap-stableswap.jpg",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
+    "module": "pancakeswap",
+    "name": "PancakeSwap StableSwap",
+    "oracles": [],
+    "parentProtocol": "PancakeSwap",
+    "protocolType": undefined,
+    "protocolsData": {
+      "stableswap": {
+        "chains": [
+          "bsc",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
+          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
+          "ProtocolRevenue": "Treasury receives 10% of the fees.",
+          "Revenue": "Revenue is 50% of the fees paid by users.",
+          "SupplySideRevenue": "LPs receive 50% of the fees.",
+          "UserFees": "User pays 0.25% fees on each swap.",
+        },
+      },
+      "v1": {
+        "chains": [
+          "bsc",
+        ],
+        "disabled": true,
+        "methodology": {
+          "Fees": "Swap fees paid by users",
+          "HoldersRevenue": "Money going to governance token holders",
+          "ProtocolRevenue": "Percentage of swap fees going to treasury",
+          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+          "SupplySideRevenue": "Liquidity providers revenue",
+          "UserFees": "Swap fees paid by users",
+        },
+      },
+      "v2": {
+        "chains": [
+          "bsc",
+          "ethereum",
+        ],
+        "disabled": false,
+        "methodology": {
+          "Fees": "All fees comes from the user.",
+          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
+          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
+          "Revenue": "All revenue generated comes from user fees.",
+          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
+          "UserFees": "User pays 0.25% fees on each swap.",
+        },
+      },
+    },
+    "symbol": "CAKE",
+    "twitter": "PancakeSwap",
+    "url": "https://pancakeswap.finance/swap",
+  },
+  {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     "audit_links": [
       "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",
@@ -13779,10 +15074,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "chain": "Ethereum",
     "chains": [
       "ethereum",
-      "optimism",
-      "arbitrum",
-      "polygon",
-      "celo",
     ],
     "cmcId": "595",
     "config": {
@@ -13807,6 +15098,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
 ",
     "disabled": false,
     "displayName": "Uniswap V1",
+    "enabled": true,
     "gecko_id": "uniswap",
     "id": "1",
     "listedAt": 1666191149,
@@ -13890,10 +15182,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "chain": "Ethereum",
     "chains": [
       "ethereum",
-      "optimism",
-      "arbitrum",
-      "polygon",
-      "celo",
     ],
     "cmcId": "1069",
     "config": {
@@ -13918,6 +15206,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
 ",
     "disabled": false,
     "displayName": "Uniswap V2",
+    "enabled": true,
     "gecko_id": null,
     "id": "1",
     "listedAt": 1666191162,
@@ -14029,6 +15318,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
 ",
     "disabled": false,
     "displayName": "Uniswap V3",
+    "enabled": true,
     "gecko_id": null,
     "id": "1",
     "listedAt": 1666191475,

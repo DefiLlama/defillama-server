@@ -3,11 +3,29 @@ import { AdaptorsConfig } from "../types"
 export default {
     "balancer": {
         "enabled": true,
-        "id": "116"
+        "id": "116",
+        protocolsData: {
+            v1: {
+                id: "2562",
+                displayName: "Balancer V1"
+            },
+            v2: {
+                id: "2563",
+                displayName: "Balancer V2"
+            }
+        }
     },
     "bancor": {
         "enabled": true,
-        "id": "162"
+        "id": "162",
+        protocolsData: {
+            v3: {
+                id: "1995"
+            },
+            "v2.1": {
+                id: "162"
+            }
+        }
     },
     "champagneswap": {
         "enabled": true,
@@ -19,7 +37,21 @@ export default {
     },
     "pancakeswap": {
         "enabled": true,
-        "id": "194"
+        "id": "194",
+        protocolsData: {
+            v1: {
+                "disabled": true,
+                "id": "2559"
+            },
+            v2: {
+                enabled: true,
+                "id": "194"
+            },
+            stableswap: {
+                "enabled": true,
+                "id": "2529"
+            }
+        },
     },
     "raydium": {
         "enabled": true,
@@ -45,11 +77,27 @@ export default {
     },
     "traderjoe": {
         "enabled": true,
-        "id": "468"
+        "id": "468",
+        protocolsData: {
+            v1: {
+                id: "468"
+            },
+            v2: {
+                id: "2393"
+            }
+        }
     },
     "sushiswap": {
         "enabled": true,
-        "id": "119"
+        "id": "119",
+        protocolsData: {
+            classic: {
+                id: "119"
+            },
+            trident: {
+                id: "2152"
+            }
+        }
     },
     "spookyswap": {
         "enabled": true,
@@ -98,7 +146,9 @@ export default {
         "protocolsData": {
             "swap": {
                 "id": "337",
-                "enabled": true
+                "enabled": true,
+                "category": "Derivatives",
+                "displayName": "GMX - SWAP"
             }
         },
         "enabled": true,
@@ -106,7 +156,16 @@ export default {
     },
     "quickswap": {
         "enabled": true,
-        "id": "306"
+        "id": "306",
+        protocolsData: {
+            v2: {
+                id: "306",
+                displayName: "Quickswap V2"
+            },
+            v3: {
+                id: "2239"
+            }
+        }
     },
     "woofi": {
         "enabled": true,
@@ -126,7 +185,17 @@ export default {
     },
     "kyberswap": {
         "enabled": true,
-        "id": "127"
+        "id": "127",
+        protocolsData: {
+            classic: {
+                id: "2560",
+                displayName: "KyberSwap - Classic"
+            },
+            elastic: {
+                id: "2561",
+                displayName: "KyberSwap - Elastic"
+            }
+        }
     },
     "ref-finance": {
         "enabled": true,
@@ -186,7 +255,13 @@ export default {
     },
     "0x": {
         "enabled": true,
-        "id": "2116"
+        "id": "2116",
+        protocolsData: {
+            "0x RFQ": {
+                "id": "2116",
+                displayName: "0x - RFQ"
+            }
+        }
     },
     "baryon": {
         "enabled": true,
@@ -306,6 +381,7 @@ export default {
     },
     "terraswap": {
         "enabled": true,
+        disabled: true,
         "id": "491"
     },
     "saros": {
@@ -346,7 +422,15 @@ export default {
     },
     "beamswap": {
         "enabled": true,
-        "id": "1289"
+        "id": "1289",
+        protocolsData: {
+            "classic": {
+                id: "2564"
+            },
+            "stable-amm": {
+                id: "2565"
+            }
+        }
     },
     "openleverage": {
         "enabled": true,
@@ -394,6 +478,7 @@ export default {
     },
     "astroport": {
         "enabled": true,
+        disabled: true,
         "id": "1052"
     },
     "tethys-finance": {
@@ -434,6 +519,16 @@ export default {
     },
     "voltswap": {
         "enabled": true,
+        protocolsData: {
+            v1: {
+                "disabled": true,
+                "id": "1225",
+                displayName: "VoltSwap V1"
+            },
+            v2: {
+                id: "2133",
+            }
+        },
         "id": "1225"
     },
     "yokaiswap": {
@@ -574,7 +669,15 @@ export default {
     },
     "surfswap": {
         "enabled": true,
-        "id": "1868"
+        "id": "1868",
+        protocolsData: {
+            classic: {
+                "id": "2566"
+            },
+            "stable-amm": {
+                "id": "2567"
+            }
+        }
     },
     "bogged-finance": {
         "enabled": true,
@@ -799,10 +902,6 @@ export default {
     "thorswap": {
         "enabled": true,
         "id": "2287"
-    },
-    "dexible": {
-        "enabled": false,
-        "id": "2249"
     },
     "metatdex": {
         "enabled": true,

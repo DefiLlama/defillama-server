@@ -24,10 +24,9 @@ export interface IConfig {
     enabled?: boolean
     includedVolume?: string[]
     startFrom?: number
-    protocolsData?: IJSON<{
-        enabled?: boolean
-        id: string
-    }>,
+    disabled?: boolean
+    displayName?: string
+    protocolsData?: IJSON<Omit<IConfig, 'protocolsData'>>,
 }
 
 

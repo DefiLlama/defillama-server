@@ -1,4 +1,4 @@
-import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/dimension-adapters/adapters/types";
+import { DISABLED_ADAPTER_KEY, Adapter, BaseAdapter } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
 import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
@@ -28,6 +28,10 @@ const getAllChainsFromAdaptors = (dexs2Filter: string[], moduleAdapter: Adapter,
         } else console.error("Invalid adapter", adapterName, moduleAdapter)
         return acc
     }, [] as string[]))
+}
+
+export const getChainsFromBaseAdapter = (moduleAdapter: BaseAdapter) => {
+    return Object.keys(moduleAdapter).filter(c => c !== DISABLED_ADAPTER_KEY)
 }
 
 export const getAllProtocolsFromAdaptor = (adaptorModule: string, adaptor: Adapter) => {

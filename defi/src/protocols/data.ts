@@ -207,7 +207,7 @@ const data: Protocol[] = [
     address: "0xba100000625a3754423978a60c9317c58a424e3d",
     symbol: "BAL",
     url: "https://balancer.finance/",
-    description: "Balancer is a protocol for programmable liquidity.\r\n\r\n\r\n",
+    description: "Balancer is a protocol for programmable liquidity.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/balancer.png`,
     audits: "2",

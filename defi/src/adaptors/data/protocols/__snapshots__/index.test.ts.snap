@@ -25,7 +25,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
         },
         "v1": {
           "disabled": true,
-          "id": "2559",
+          "id": "2590",
         },
         "v2": {
           "enabled": true,
@@ -130,7 +130,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
         },
         "v1": {
           "disabled": true,
-          "id": "2559",
+          "id": "2590",
         },
         "v2": {
           "enabled": true,
@@ -231,7 +231,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
         },
         "v1": {
           "disabled": true,
-          "id": "2559",
+          "id": "2590",
         },
         "v2": {
           "enabled": true,

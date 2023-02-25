@@ -376,8 +376,8 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
       },
     },
     "symbol": "ALEX",
-    "twitter": "alexgoBtc",
-    "url": "https://www.alexgo.io",
+    "twitter": "@ALEXLabBTC",
+    "url": "https://alexlab.co/",
   },
   {
     "address": null,
@@ -1082,11 +1082,11 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
       "protocolsData": {
         "v1": {
           "displayName": "Balancer V1",
-          "id": "2562",
+          "id": "2593",
         },
         "v2": {
           "displayName": "Balancer V2",
-          "id": "2563",
+          "id": "2594",
         },
       },
     },
@@ -1171,11 +1171,11 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
       "protocolsData": {
         "v1": {
           "displayName": "Balancer V1",
-          "id": "2562",
+          "id": "2593",
         },
         "v2": {
           "displayName": "Balancer V2",
-          "id": "2563",
+          "id": "2594",
         },
       },
     },
@@ -1468,10 +1468,10 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
       "id": "1289",
       "protocolsData": {
         "classic": {
-          "id": "2564",
+          "id": "2595",
         },
         "stable-amm": {
-          "id": "2565",
+          "id": "2596",
         },
       },
     },
@@ -1554,10 +1554,10 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
       "id": "1289",
       "protocolsData": {
         "classic": {
-          "id": "2564",
+          "id": "2595",
         },
         "stable-amm": {
-          "id": "2565",
+          "id": "2596",
         },
       },
     },
@@ -1742,7 +1742,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "cmcId": null,
     "config": {
       "enabled": true,
-      "id": "2557",
+      "id": "2588",
     },
     "description": "Buy and sell bitcoin for fiat (or other cryptocurrencies) privately and securely using Bisq's peer-to-peer network and open-source desktop software.",
     "disabled": false,
@@ -1750,7 +1750,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
-    "id": "2557",
+    "id": "2588",
     "listedAt": 1676983383,
     "logo": "https://icons.llama.fi/bisq.png",
     "methodology": {
@@ -3309,7 +3309,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "cmcId": null,
     "config": {
       "enabled": true,
-      "id": "2558",
+      "id": "2589",
     },
     "description": "Dexalot is a revolutionary decentralized exchange aiming at bringing the traditional centralized exchange look and feel through a decentralized on-chain application.",
     "disabled": false,
@@ -3317,7 +3317,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "enabled": true,
     "forkedFrom": [],
     "gecko_id": null,
-    "id": "2558",
+    "id": "2589",
     "listedAt": 1676985639,
     "logo": "https://icons.llama.fi/dexalot.png",
     "methodology": {
@@ -4468,6 +4468,8 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
       "id": "337",
       "protocolsData": {
         "swap": {
+          "category": "Dexes",
+          "displayName": "GMX - SWAP",
           "enabled": true,
           "id": "337",
         },
@@ -4475,7 +4477,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     },
     "description": "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
     "disabled": false,
-    "displayName": "GMX",
+    "displayName": "GMX - SWAP",
     "enabled": true,
     "gecko_id": "gmx",
     "governanceID": [
@@ -6212,11 +6214,11 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
       "protocolsData": {
         "classic": {
           "displayName": "KyberSwap - Classic",
-          "id": "2560",
+          "id": "2591",
         },
         "elastic": {
           "displayName": "KyberSwap - Elastic",
-          "id": "2561",
+          "id": "2592",
         },
       },
     },
@@ -6317,11 +6319,11 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
       "protocolsData": {
         "classic": {
           "displayName": "KyberSwap - Classic",
-          "id": "2560",
+          "id": "2591",
         },
         "elastic": {
           "displayName": "KyberSwap - Elastic",
-          "id": "2561",
+          "id": "2592",
         },
       },
     },
@@ -6981,6 +6983,58 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "MDX",
     "twitter": "Mdextech",
     "url": "https://mdex.com/",
+  },
+  {
+    "address": "ton:EQB-cCOQDwerEnUD4-6xoYD0eL6_yC1zogAvA5GuXTF0iDIf",
+    "audit_links": [
+      "https://docs.megaton.fi/v/en/more/contract-and-audit",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Dexes",
+    "chain": "TON",
+    "chains": [
+      "ton",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "2540",
+    },
+    "description": "Megatonfi is an AMM-based Instant Swap Protocol",
+    "disabled": false,
+    "displayName": "Megaton Finance",
+    "enabled": true,
+    "forkedFrom": [],
+    "gecko_id": null,
+    "id": "2540",
+    "listedAt": 1676572189,
+    "logo": "https://icons.llama.fi/megaton-finance.png",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/megaton-finance",
+    "module": "megaton-finance",
+    "name": "Megaton Finance",
+    "oracles": [],
+    "protocolType": undefined,
+    "protocolsData": {
+      "megaton-finance": {
+        "chains": [
+          "ton",
+        ],
+        "disabled": false,
+        "methodology": undefined,
+      },
+    },
+    "symbol": "MEGA",
+    "twitter": "Megaton_Fi",
+    "url": "https://megaton.fi",
   },
   {
     "address": "polygon:0x82362ec182db3cf7829014bc61e9be8a2e82868a",
@@ -8288,6 +8342,55 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "-",
     "twitter": "opxfinance",
     "url": "https://www.opx.finance/#/trade",
+  },
+  {
+    "address": null,
+    "audit_note": null,
+    "audits": "0",
+    "category": "Dexes",
+    "chain": "Orai",
+    "chains": [
+      "orai",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "2564",
+    },
+    "description": "Developed by Oraichain, OraiDEX is a CosmWasm smart contract-based decentralized exchange with multi-chain interoperability & optimal speed.",
+    "disabled": false,
+    "displayName": "OraiDEX",
+    "enabled": true,
+    "forkedFrom": [],
+    "gecko_id": "oraidex",
+    "id": "2564",
+    "listedAt": 1677066570,
+    "logo": "https://icons.llama.fi/oraidex.png",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/oraidex",
+    "module": "oraidex",
+    "name": "OraiDEX",
+    "oracles": [],
+    "protocolType": undefined,
+    "protocolsData": {
+      "oraidex": {
+        "chains": [
+          "orai",
+        ],
+        "disabled": false,
+        "methodology": undefined,
+      },
+    },
+    "symbol": "ORAIX",
+    "twitter": "oraidex",
+    "url": "https://oraidex.io",
   },
   {
     "address": "solana:orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
@@ -10414,8 +10517,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
   },
   {
     "address": "0x777172D858dC1599914a1C4c6c9fC48c99a60990",
+    "audit_links": [
+      "https://github.com/SolidlyLabs/Solidly-Audits/blob/main/audit_solidly.pdf",
+    ],
     "audit_note": null,
-    "audits": "0",
+    "audits": "2",
     "category": "Dexes",
     "chain": "Ethereum",
     "chains": [
@@ -10448,9 +10554,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/solidlydex",
     "module": "solidlydex",
     "name": "Solidly V2",
-    "oracles": [
-      "TWAP",
-    ],
+    "oracles": [],
     "protocolType": undefined,
     "protocolsData": {
       "solidlydex": {
@@ -10985,6 +11089,58 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
   {
     "address": null,
     "audit_note": null,
+    "audits": "0",
+    "category": "Dexes",
+    "chain": "Avalanche",
+    "chains": [
+      "avax",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "2556",
+    },
+    "description": "Swap, farm, stake and win crypto with ZSwap! The future home of crypto on AVAX.",
+    "disabled": false,
+    "displayName": "Subzero ZSwap",
+    "enabled": true,
+    "forkedFrom": [
+      "Uniswap",
+    ],
+    "gecko_id": null,
+    "id": "2556",
+    "listedAt": 1676903060,
+    "logo": "https://icons.llama.fi/subzero-zswap.png",
+    "methodology": {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/subzero-zswap",
+    "module": "subzero-zswap",
+    "name": "Subzero ZSwap",
+    "oracles": [],
+    "parentProtocol": "Subzero",
+    "protocolType": undefined,
+    "protocolsData": {
+      "subzero-zswap": {
+        "chains": [
+          "avax",
+        ],
+        "disabled": false,
+        "methodology": undefined,
+      },
+    },
+    "symbol": "-",
+    "twitter": "zswapdex",
+    "url": "https://zswap.plus",
+  },
+  {
+    "address": null,
+    "audit_note": null,
     "audits": "2",
     "category": "Dexes",
     "chain": "Cardano",
@@ -11084,7 +11240,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
   {
     "address": "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
     "audit_links": [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Beamswap-v1.0.pdf",
+      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf",
     ],
     "audit_note": null,
     "audits": "2",
@@ -11099,10 +11255,10 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "1868",
       "protocolsData": {
         "classic": {
-          "id": "2566",
+          "id": "2597",
         },
         "stable-amm": {
-          "id": "2567",
+          "id": "2598",
         },
       },
     },
@@ -11170,7 +11326,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
   {
     "address": "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
     "audit_links": [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Beamswap-v1.0.pdf",
+      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf",
     ],
     "audit_note": null,
     "audits": "2",
@@ -11185,10 +11341,10 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "1868",
       "protocolsData": {
         "classic": {
-          "id": "2566",
+          "id": "2597",
         },
         "stable-amm": {
-          "id": "2567",
+          "id": "2598",
         },
       },
     },
@@ -13176,6 +13332,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "protocolsData": {
         "v1": {
           "disabled": true,
+          "displayName": "VoltSwap V1",
           "id": "1225",
         },
         "v2": {
@@ -13185,7 +13342,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     },
     "description": "VoltSwap is the first major DEX in the Meter ecosystem. It is a completely community-driven project and was introduced by the Meter.io team to showcase the capabilities of the Meter blockchain.",
     "disabled": true,
-    "displayName": "VoltSwap",
+    "displayName": "VoltSwap V1",
     "enabled": true,
     "forkedFrom": [
       "Uniswap",
@@ -13258,6 +13415,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "protocolsData": {
         "v1": {
           "disabled": true,
+          "displayName": "VoltSwap V1",
           "id": "1225",
         },
         "v2": {
@@ -14775,7 +14933,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         },
         "v1": {
           "disabled": true,
-          "id": "2559",
+          "id": "2590",
         },
         "v2": {
           "enabled": true,
@@ -14880,7 +15038,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         },
         "v1": {
           "disabled": true,
-          "id": "2559",
+          "id": "2590",
         },
         "v2": {
           "enabled": true,
@@ -14981,7 +15139,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         },
         "v1": {
           "disabled": true,
-          "id": "2559",
+          "id": "2590",
         },
         "v2": {
           "enabled": true,

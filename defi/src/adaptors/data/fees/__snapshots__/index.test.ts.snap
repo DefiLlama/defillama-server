@@ -187,11 +187,11 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
       "protocolsData": {
         "v1": {
           "displayName": "Balancer V1",
-          "id": "2562",
+          "id": "2593",
         },
         "v2": {
           "displayName": "Balancer V2",
-          "id": "2563",
+          "id": "2594",
         },
       },
     },
@@ -276,11 +276,11 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
       "protocolsData": {
         "v1": {
           "displayName": "Balancer V1",
-          "id": "2562",
+          "id": "2593",
         },
         "v2": {
           "displayName": "Balancer V2",
-          "id": "2563",
+          "id": "2594",
         },
       },
     },
@@ -1066,11 +1066,11 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
       "protocolsData": {
         "classic": {
           "displayName": "KyberSwap - Classic",
-          "id": "2560",
+          "id": "2591",
         },
         "elastic": {
           "displayName": "KyberSwap - Elastic",
-          "id": "2561",
+          "id": "2592",
         },
       },
     },
@@ -1171,11 +1171,11 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
       "protocolsData": {
         "classic": {
           "displayName": "KyberSwap - Classic",
-          "id": "2560",
+          "id": "2591",
         },
         "elastic": {
           "displayName": "KyberSwap - Elastic",
-          "id": "2561",
+          "id": "2592",
         },
       },
     },
@@ -2248,8 +2248,11 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
   },
   {
     "address": "0x777172D858dC1599914a1C4c6c9fC48c99a60990",
+    "audit_links": [
+      "https://github.com/SolidlyLabs/Solidly-Audits/blob/main/audit_solidly.pdf",
+    ],
     "audit_note": null,
-    "audits": "0",
+    "audits": "2",
     "category": "Dexes",
     "chain": "Ethereum",
     "chains": [
@@ -2282,9 +2285,7 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/solidlydex.ts",
     "module": "solidlydex",
     "name": "Solidly V2",
-    "oracles": [
-      "TWAP",
-    ],
+    "oracles": [],
     "protocolType": undefined,
     "protocolsData": {
       "solidlydex": {
@@ -3305,7 +3306,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
         },
         "v1": {
           "disabled": true,
-          "id": "2559",
+          "id": "2590",
         },
         "v2": {
           "enabled": true,
@@ -3410,7 +3411,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
         },
         "v1": {
           "disabled": true,
-          "id": "2559",
+          "id": "2590",
         },
         "v2": {
           "enabled": true,
@@ -3511,7 +3512,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
         },
         "v1": {
           "disabled": true,
-          "id": "2559",
+          "id": "2590",
         },
         "v2": {
           "enabled": true,
@@ -5361,6 +5362,55 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "url": "https://app.firebird.finance/one-pool",
   },
   {
+    "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
+    "audit_note": null,
+    "audits": "0",
+    "category": "Liquid Staking",
+    "chain": "Ethereum",
+    "chains": [
+      "ethereum",
+    ],
+    "cmcId": null,
+    "config": {
+      "enabled": true,
+      "id": "2221",
+    },
+    "description": "Frax Ether is a liquid ETH staking derivative designed to uniquely leverage the Frax Finance ecosystem to maximize staking yield and smoothen the Ethereum staking process for a simplified, secure, and DeFi-native way to earn interest on ETH. ",
+    "disabled": false,
+    "displayName": "Frax Ether",
+    "enabled": true,
+    "forkedFrom": [],
+    "gecko_id": null,
+    "id": "2221",
+    "listedAt": 1666641678,
+    "logo": "https://icons.llama.fi/frax-ether.jpg",
+    "methodology": {
+      "Fees": "Staking rewards",
+      "ProtocolRevenue": "Fee from users rewards",
+      "Revenue": "Percentage of user rewards paid to protocol",
+      "SupplySideRevenue": "Revenue earned by stETH holders",
+      "UserFees": "Percentage of rewards paid to protocol",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/frax-ether.ts",
+    "module": "frax-ether",
+    "name": "Frax Ether",
+    "oracles": [],
+    "parentProtocol": "Frax Finance",
+    "protocolType": undefined,
+    "protocolsData": {
+      "frax-ether": {
+        "chains": [
+          "ethereum",
+        ],
+        "disabled": false,
+        "methodology": undefined,
+      },
+    },
+    "symbol": "frxETH",
+    "twitter": "fraxfinance",
+    "url": "https://app.frax.finance/frxeth/mint",
+  },
+  {
     "address": "polygon:0xe5417af564e4bfda1c483642db72007871397896",
     "audit_links": [
       "https://www.certik.com/projects/gains-network",
@@ -6165,6 +6215,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": [
       "Chainlink",
     ],
+    "parentProtocol": "Moonwell",
     "protocolType": undefined,
     "protocolsData": {
       "moonwell-apollo": {

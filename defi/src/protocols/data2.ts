@@ -10074,7 +10074,7 @@ const data2: Protocol[] = [
   forkedFrom: ["Uniswap"],
   module: "surfswap/index.js",
   twitter: "SurfswapDEX",
-  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Beamswap-v1.0.pdf"],
+  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf"],
   listedAt: 1656665210
 },
 {
@@ -26072,6 +26072,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
+    category: "Dexes",
     chains: ["Bitcoin"],
     module: "dummy.js",
     twitter: "bisq_network",
@@ -26093,6 +26094,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
+    category: "Dexes",
     chains: ["Avalanche"],
     module: "dummy.js",
     twitter: "dexalotcom",

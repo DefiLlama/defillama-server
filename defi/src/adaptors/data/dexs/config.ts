@@ -147,7 +147,7 @@ export default {
             "swap": {
                 "id": "337",
                 "enabled": true,
-                "category": "Derivatives",
+                "category": "Dexes",
                 "displayName": "GMX - SWAP"
             }
         },

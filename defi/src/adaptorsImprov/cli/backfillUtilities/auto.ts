@@ -1,4 +1,4 @@
-import "./../setup.ts"
+import "../setup.ts"
 import { autoBackfill } from "./backfillFunction"
 
 (async () => {

@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse, acceptedResponse, errorResponse } from "../utils/shared";
-import { cacheResponseOnR2, getCachedResponseOnR2 } from "../adaptors/utils/storeR2Response";
+import { cacheResponseOnR2, getCachedResponseOnR2 } from "../adaptorsImprov/utils/storeR2Response";
 import invokeLambda from "../utils/shared/invokeLambda";
 import fetch from "node-fetch";
 

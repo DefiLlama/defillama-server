@@ -1,4 +1,4 @@
-import "./../setup.ts"
+import "../setup.ts"
 import { getAdaptorRecord, AdaptorRecordType, AdaptorRecord } from "../../db-utils/adaptor-record"
 import loadAdaptorsData from "../../data"
 import { AdapterType, ProtocolType } from "@defillama/dimension-adapters/adapters/types"

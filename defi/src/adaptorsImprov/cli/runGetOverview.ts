@@ -29,6 +29,7 @@ const event = {
     // console.log("rr.totalDataChartBreakdown", rr.totalDataChartBreakdown.find(d => +d[0] === Date.UTC(2021, 11, 15) / 1000))
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
     // console.log(rr.protocols[0])
+    console.log(rr.totalDataChart.length)
     console.log(rr.protocols.length)
     const runTime = (endTime - startTime) / 1000
     const runTimeDescription = runTime > 30 ? '🐢' : '🐇'

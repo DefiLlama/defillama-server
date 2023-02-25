@@ -128,7 +128,7 @@ export const getOverviewCachedResponseKey = (
     dataType?: string,
     category?: string,
     fullChart?: string
-) => `overview/${adaptorType}/${dataType}/${chainFilter}_${category}_${fullChart}`
+) => `overviewImprov/${adaptorType}/${dataType}/${chainFilter}_${category}_${fullChart}`
 
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {

@@ -6542,8 +6542,9 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "bunicorn/index.js",
     twitter: "bunicornswap",
-    audit_links: ["https://hacken.io/wp-content/uploads/2021/05/Bunicorndefi_03052021_SC_Audit_2Report.pdf",
-                   "https://hacken.io/wp-content/uploads/2021/06/Bunicorndefi_11062021SC_Audit_Report_2.pdf"],
+    audit_links: [
+      "https://hacken.io/wp-content/uploads/2021/05/Bunicorndefi_03052021_SC_Audit_2Report.pdf",
+      "https://hacken.io/wp-content/uploads/2021/06/Bunicorndefi_11062021SC_Audit_Report_2.pdf"],
   },
   {
     id: "423",

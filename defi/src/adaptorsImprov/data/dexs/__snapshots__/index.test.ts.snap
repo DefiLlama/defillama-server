@@ -6569,7 +6569,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "chains": [
       "tombchain",
     ],
-    "cmcId": "20611",
+    "cmcId": null,
     "config": {
       "enabled": true,
       "id": "2040",
@@ -6581,7 +6581,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "forkedFrom": [
       "Uniswap",
     ],
-    "gecko_id": "lif3",
+    "gecko_id": null,
     "id": "2040",
     "listedAt": 1661900824,
     "logo": "https://icons.llama.fi/lif3-swap.png",
@@ -6597,6 +6597,7 @@ exports[`Protocol adaptor list is complete DEXS 1`] = `
     "module": "lif3-swap",
     "name": "Lif3 Swap",
     "oracles": [],
+    "parentProtocol": "Lif3.com",
     "protocolType": undefined,
     "protocolsData": {
       "lif3-swap": {
@@ -13050,6 +13051,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       },
     },
     "symbol": "VELO",
+    "treasury": "velodrome.js",
     "twitter": "VelodromeFi",
     "url": "https://app.velodrome.finance",
   },

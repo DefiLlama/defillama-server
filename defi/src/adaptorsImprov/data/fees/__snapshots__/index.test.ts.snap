@@ -2899,6 +2899,7 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
       },
     },
     "symbol": "VELO",
+    "treasury": "velodrome.js",
     "twitter": "VelodromeFi",
     "url": "https://app.velodrome.finance",
   },
@@ -6273,6 +6274,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": [
       "Chainlink",
     ],
+    "parentProtocol": "Moonwell",
     "protocolType": undefined,
     "protocolsData": {
       "moonwell-artemis": {

@@ -30,7 +30,6 @@ const event = {
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
     // console.log(rr.protocols[0])
     console.log(rr.totalDataChart.length)
-    console.log(rr.protocols.length)
     const runTime = (endTime - startTime) / 1000
     const runTimeDescription = runTime > 30 ? '🐢' : '🐇'
     console.log(`\nCurrent run ${runTimeDescription} (s): ${runTime}`)

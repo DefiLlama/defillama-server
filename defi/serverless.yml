@@ -469,34 +469,6 @@ functions:
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-  getOverviewImprov:
-    handler: src/adaptorsImprov/handlers/getOverview/index.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: overviewImprov/{type}
-          method: get
-      - http:
-          path: overviewImprov/{type}/{chain}
-          method: get
-    environment:
-      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
-      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-  getOverviewProcessImprov:
-    handler: src/adaptorsImprov/handlers/getOverviewProcess/index.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: overviewProcessImprov/{type}
-          method: get
-      - http:
-          path: overviewProcessImprov/{type}/{chain}
-          method: get
-    environment:
-      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
-      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
   getProtocolSummary:
     handler: src/adaptors/handlers/getProtocol/index.default
     timeout: 30
@@ -504,17 +476,6 @@ functions:
     events:
       - http:
           path: summary/{type}/{name}
-          method: get
-    environment:
-      VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
-      FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-  getProtocolSummaryImprov:
-    handler: src/adaptorsImprov/handlers/getProtocol/index.default
-    timeout: 30
-    memorySize: 2000
-    events:
-      - http:
-          path: summaryImprov/{type}/{name}
           method: get
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}

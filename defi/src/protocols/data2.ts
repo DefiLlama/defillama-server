@@ -289,6 +289,7 @@ const data2: Protocol[] = [
     language: "Solidity",
     listedAt: 1644992134,
   },
+  /*
   {
     id: "1421",
     name: "Enso Finance",
@@ -309,7 +310,9 @@ const data2: Protocol[] = [
     module: "enso-finance/index.js",
     twitter: "EnsoFinance",
     listedAt: 1645036681,
-  }, {
+  }, 
+  */
+  {
     id: "1422",
     name: "Winkyverse",
     address: "bsc:0xb160A5F19ebccd8E0549549327e43DDd1D023526",

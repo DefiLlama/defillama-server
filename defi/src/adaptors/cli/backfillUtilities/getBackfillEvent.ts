@@ -186,10 +186,14 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         }
     }
 
-    const eventFileLocation = path.resolve(__dirname, "output", `backfill_event.json`);
-    ensureDirectoryExistence(eventFileLocation)
-    writeFileSync(eventFileLocation, JSON.stringify(event, null, 2))
-    console.log(`Event stored ${eventFileLocation}`)
+    try {
+        const eventFileLocation = path.resolve(__dirname, "output", `backfill_event.json`);
+        ensureDirectoryExistence(eventFileLocation)
+        writeFileSync(eventFileLocation, JSON.stringify(event, null, 2))
+        console.log(`Event stored ${eventFileLocation}`)
+    } catch (error) {
+        console.info("Unable to store backfill event", error)
+    }
     return event
 }
 

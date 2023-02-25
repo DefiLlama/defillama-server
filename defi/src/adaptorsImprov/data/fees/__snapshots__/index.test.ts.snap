@@ -199,7 +199,7 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
     "disabled": false,
     "displayName": "Balancer V1",
     "enabled": true,
-    "gecko_id": "balancer",
+    "gecko_id": null,
     "governanceID": [
       "snapshot:balancer.eth",
     ],
@@ -288,7 +288,7 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
     "disabled": false,
     "displayName": "Balancer V2",
     "enabled": true,
-    "gecko_id": "balancer",
+    "gecko_id": null,
     "governanceID": [
       "snapshot:balancer.eth",
     ],
@@ -1078,7 +1078,7 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
     "disabled": false,
     "displayName": "KyberSwap - Classic",
     "enabled": true,
-    "gecko_id": "kyber-network",
+    "gecko_id": null,
     "id": "127",
     "logo": "https://icons.llama.fi/kyberswap.png",
     "methodology": {
@@ -1183,7 +1183,7 @@ exports[`Protocol adaptor list is complete FEES 1`] = `
     "disabled": false,
     "displayName": "KyberSwap - Elastic",
     "enabled": true,
-    "gecko_id": "kyber-network",
+    "gecko_id": null,
     "id": "127",
     "logo": "https://icons.llama.fi/kyberswap.png",
     "methodology": {

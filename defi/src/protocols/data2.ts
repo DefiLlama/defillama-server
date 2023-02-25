@@ -25684,18 +25684,18 @@ listedAt: 1650804679
   url: "https://app.mosquitos.finance",
   description:
     "Mosquitos Finance is a decentralized exchange with the most advanced perpetual yield farm running on Aptos Chain with lots of other curated features that let you earn additional rewards and enjoy the ecosystem. $SUCKR",
-  chain: "Canto",
+  chain: "Aptos",
   logo: `${baseIconsUrl}/mosquitos-finance.jpg`,
   audits: "0",
   audit_note: null,
   gecko_id: null,
   cmcId: null,
-  category: "Dexes",
-  chains: ["Canto"],
+  category: "Yield",
+  chains: ["Aptos"],
   module: "mosquitos-finance/index.js",
   twitter: "Mosquitos_Fin",
   oracles: [],
-  forkedFrom: ["Uniswap"],
+  forkedFrom: [],
   listedAt: 1677149680
 },
 {

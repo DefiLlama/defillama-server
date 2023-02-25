@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Protocol adaptor list is complete OPTIONS 1`] = `
-[
-  {
+Array [
+  Object {
     "address": "0x584bC13c7D411c00c01A62e8019472dE68768430",
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hegic-v1.0.pdf",
       "https://github.com/hegic/contracts/blob/main/packages/herge/docs/PeckShield-Audit-Report-Hegic-Herge-Protocol-Upgrade-v1.0.pdf",
     ],
@@ -12,11 +12,11 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "audits": "2",
     "category": "Options",
     "chain": "Ethereum",
-    "chains": [
+    "chains": Array [
       "arbitrum",
     ],
     "cmcId": "6929",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "128",
     },
@@ -27,7 +27,7 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "gecko_id": "hegic",
     "id": "128",
     "logo": "https://icons.llama.fi/hegic.jpg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",
       "ProtocolRevenue": "Fees going to treasury",
@@ -39,9 +39,9 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "module": "hegic",
     "name": "Hegic",
     "protocolType": undefined,
-    "protocolsData": {
-      "hegic": {
-        "chains": [
+    "protocolsData": Object {
+      "hegic": Object {
+        "chains": Array [
           "arbitrum",
         ],
         "disabled": false,
@@ -52,21 +52,21 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "twitter": "HegicOptions",
     "url": "https://www.hegic.co/ ",
   },
-  {
+  Object {
     "address": "optimism:0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/lyra-finance/lyra-protocol/tree/master/audits/v1",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Options",
     "chain": "Optimism",
-    "chains": [
+    "chains": Array [
       "optimism",
       "arbitrum",
     ],
     "cmcId": "15447",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "503",
       "startFrom": 1656460800,
@@ -76,12 +76,12 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "displayName": "Lyra",
     "enabled": true,
     "gecko_id": "lyra-finance",
-    "governanceID": [
+    "governanceID": Array [
       "snapshot:lyra.eth",
     ],
     "id": "503",
     "logo": "https://icons.llama.fi/lyra.jpg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",
       "ProtocolRevenue": "Fees going to treasury",
@@ -92,13 +92,13 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/options/lyra",
     "module": "lyra",
     "name": "Lyra",
-    "oracles": [
+    "oracles": Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": {
-      "lyra": {
-        "chains": [
+    "protocolsData": Object {
+      "lyra": Object {
+        "chains": Array [
           "optimism",
           "arbitrum",
         ],
@@ -111,9 +111,9 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "twitter": "lyrafinance",
     "url": "https://www.lyra.finance",
   },
-  {
+  Object {
     "address": "0x6399c842dd2be3de30bf99bc7d1bbf6fa3650e70",
-    "audit_links": [
+    "audit_links": Array [
       "https://solidity.finance/audits/Premia",
       "https://hacken.io/audits/#solidstate",
       "https://hacken.io/audits/#premia_finance",
@@ -122,14 +122,14 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "audits": "2",
     "category": "Options",
     "chain": "Ethereum",
-    "chains": [
+    "chains": Array [
       "ethereum",
       "arbitrum",
       "fantom",
       "optimism",
     ],
     "cmcId": "8476",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "381",
     },
@@ -140,7 +140,7 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "gecko_id": "premia",
     "id": "381",
     "logo": "https://icons.llama.fi/premia.jpg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",
       "ProtocolRevenue": "Fees going to treasury",
@@ -152,9 +152,9 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "module": "premia",
     "name": "Premia",
     "protocolType": undefined,
-    "protocolsData": {
-      "premia": {
-        "chains": [
+    "protocolsData": Object {
+      "premia": Object {
+        "chains": Array [
           "ethereum",
           "arbitrum",
           "fantom",
@@ -168,24 +168,24 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "twitter": "PremiaFinance",
     "url": "https://premia.finance/",
   },
-  {
+  Object {
     "address": null,
-    "audit_links": [
+    "audit_links": Array [
       "https://opyn.gitbook.io/opyn/get-started/security#audits",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Options",
     "chain": "Ethereum",
-    "chains": [
+    "chains": Array [
       "ethereum",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": false,
       "id": "285",
-      "protocolsData": {
-        "gamma": {
+      "protocolsData": Object {
+        "gamma": Object {
           "id": "285",
         },
       },
@@ -197,7 +197,7 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "gecko_id": null,
     "id": "285",
     "logo": "https://icons.llama.fi/opyn-gamma.jpg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",
       "ProtocolRevenue": "Fees going to treasury",
@@ -208,18 +208,18 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/options/opyn",
     "module": "opyn",
     "name": "Opyn Gamma",
-    "oracles": [
+    "oracles": Array [
       "Chainlink",
     ],
     "parentProtocol": "Opyn",
     "protocolType": undefined,
-    "protocolsData": {
-      "gamma": {
-        "chains": [
+    "protocolsData": Object {
+      "gamma": Object {
+        "chains": Array [
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Fees paid by users",
           "HoldersRevenue": "Fees going to governance token holders",
           "ProtocolRevenue": "Fees going to treasury",
@@ -233,23 +233,23 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "twitter": "opyn_",
     "url": "https://www.opyn.co/",
   },
-  {
+  Object {
     "address": "0x03e173ad8d1581a4802d3b532ace27a62c5b81dc",
-    "audit_links": [
+    "audit_links": Array [
       "https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Prediction Market",
     "chain": "Ethereum",
-    "chains": [
+    "chains": Array [
       "optimism",
       "polygon",
       "arbitrum",
       "bsc",
     ],
     "cmcId": "11973",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "534",
     },
@@ -260,14 +260,14 @@ exports[`Protocol adaptor list is complete OPTIONS 1`] = `
     "gecko_id": "thales",
     "id": "534",
     "logo": "https://icons.llama.fi/thales.png",
-    "methodology": {},
+    "methodology": Object {},
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/options/thales",
     "module": "thales",
     "name": "Thales",
     "protocolType": undefined,
-    "protocolsData": {
-      "thales": {
-        "chains": [
+    "protocolsData": Object {
+      "thales": Object {
+        "chains": Array [
           "optimism",
           "polygon",
           "arbitrum",

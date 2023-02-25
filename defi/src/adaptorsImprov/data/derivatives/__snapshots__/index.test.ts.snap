@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
-[
-  {
+Array [
+  Object {
     "address": null,
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Derivatives",
     "chain": "Avalanche",
-    "chains": [
+    "chains": Array [
       "avax",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "2299",
     },
@@ -27,7 +27,7 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "id": "2299",
     "listedAt": 1669035629,
     "logo": "https://icons.llama.fi/emdx.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",
       "ProtocolRevenue": "Fees going to treasury",
@@ -39,9 +39,9 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "module": "emdx",
     "name": "EMDX",
     "protocolType": undefined,
-    "protocolsData": {
-      "emdx": {
-        "chains": [
+    "protocolsData": Object {
+      "emdx": Object {
+        "chains": Array [
           "avax",
         ],
         "disabled": false,
@@ -52,25 +52,25 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "twitter": "emdx_io",
     "url": "https://emdx.io/",
   },
-  {
+  Object {
     "address": "arbitrum:0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/xvi10/gambit-contracts/tree/master/audits",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Derivatives",
     "chain": "Binance",
-    "chains": [
+    "chains": Array [
       "arbitrum",
       "avax",
     ],
     "cmcId": "11857",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "337",
-      "protocolsData": {
-        "derivatives": {
+      "protocolsData": Object {
+        "derivatives": Object {
           "displayName": "GMX - Derivatives",
           "enabled": true,
           "id": "337",
@@ -82,12 +82,12 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "displayName": "GMX - Derivatives",
     "enabled": true,
     "gecko_id": "gmx",
-    "governanceID": [
+    "governanceID": Array [
       "snapshot:gmx.eth",
     ],
     "id": "337",
     "logo": "https://icons.llama.fi/gmx.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Sum of all fees from GMX's SWAP and DERIVATIVES versions",
       "HoldersRevenue": "Sum of all holders revenue from GMX's SWAP and DERIVATIVES versions",
       "ProtocolRevenue": "Sum of all protocol revenue from GMX's SWAP and DERIVATIVES versions",
@@ -99,11 +99,11 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "module": "gmx",
     "name": "GMX",
     "protocolType": undefined,
-    "protocolsData": {
-      "derivatives": {
+    "protocolsData": Object {
+      "derivatives": Object {
         "category": "Derivatives",
       },
-      "swap": {
+      "swap": Object {
         "category": "Dexes",
       },
     },
@@ -112,17 +112,17 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "twitter": "GMX_IO",
     "url": "https://gmx.io/",
   },
-  {
+  Object {
     "address": null,
     "audit_note": null,
     "audits": "0",
     "category": "Derivatives",
     "chain": "Binance",
-    "chains": [
+    "chains": Array [
       "bsc",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "2320",
     },
@@ -130,12 +130,12 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "disabled": false,
     "displayName": "JOJO",
     "enabled": true,
-    "forkedFrom": [],
+    "forkedFrom": Array [],
     "gecko_id": null,
     "id": "2320",
     "listedAt": 1669732079,
     "logo": "https://icons.llama.fi/jojo.jpg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",
       "ProtocolRevenue": "Fees going to treasury",
@@ -146,13 +146,13 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/jojo",
     "module": "jojo",
     "name": "JOJO",
-    "oracles": [
+    "oracles": Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": {
-      "jojo": {
-        "chains": [
+    "protocolsData": Object {
+      "jojo": Object {
+        "chains": Array [
           "bsc",
         ],
         "disabled": false,
@@ -163,17 +163,17 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "twitter": "jojo_exchange",
     "url": "https://app.jojo.exchange/trade",
   },
-  {
+  Object {
     "address": "kava:0x3817e3f374bABcB0CFa5A39EB59d97aDc6812098",
     "audit_note": null,
     "audits": "0",
     "category": "Derivatives",
     "chain": "Kava",
-    "chains": [
+    "chains": Array [
       "kava",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "2326",
     },
@@ -181,14 +181,14 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "disabled": false,
     "displayName": "KPerp Exchange",
     "enabled": true,
-    "forkedFrom": [
+    "forkedFrom": Array [
       "GMX",
     ],
     "gecko_id": null,
     "id": "2326",
     "listedAt": 1669910621,
     "logo": "https://icons.llama.fi/kperp-exchange.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",
       "ProtocolRevenue": "Fees going to treasury",
@@ -199,14 +199,14 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/kperp-exchange",
     "module": "kperp-exchange",
     "name": "KPerp Exchange",
-    "oracles": [
+    "oracles": Array [
       "TWAP",
       "Witnet",
     ],
     "protocolType": undefined,
-    "protocolsData": {
-      "kperp-exchange": {
-        "chains": [
+    "protocolsData": Object {
+      "kperp-exchange": Object {
+        "chains": Array [
           "kava",
         ],
         "disabled": false,
@@ -217,20 +217,20 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "twitter": "KPerpExchange",
     "url": "https://kperp.exchange/",
   },
-  {
+  Object {
     "address": "polygon:0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7",
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/metavaultorg/trade-contracts/blob/main/Metavault.Trade_Full_Smart_Contract_Security_Audit.pdf",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Derivatives",
     "chain": "Polygon",
-    "chains": [
+    "chains": Array [
       "polygon",
     ],
     "cmcId": "19973",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "1801",
     },
@@ -238,14 +238,14 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "disabled": false,
     "displayName": "Metavault.Trade",
     "enabled": true,
-    "forkedFrom": [
+    "forkedFrom": Array [
       "GMX",
     ],
     "gecko_id": "metavault-trade",
     "id": "1801",
     "listedAt": 1654203519,
     "logo": "https://icons.llama.fi/metavault.trade.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",
       "ProtocolRevenue": "Fees going to treasury",
@@ -256,14 +256,14 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/metavault.trade",
     "module": "metavault.trade",
     "name": "Metavault.Trade",
-    "oracles": [
+    "oracles": Array [
       "Chainlink",
     ],
     "parentProtocol": "Metavault",
     "protocolType": undefined,
-    "protocolsData": {
-      "metavault.trade": {
-        "chains": [
+    "protocolsData": Object {
+      "metavault.trade": Object {
+        "chains": Array [
           "polygon",
         ],
         "disabled": false,
@@ -274,23 +274,23 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "twitter": "MetavaultTRADE",
     "url": "https://metavault.trade",
   },
-  {
+  Object {
     "address": null,
-    "audit_links": [
+    "audit_links": Array [
       "https://www.synfutures.com/peckshield-audit-report-synfutures-v1.1.pdf",
     ],
     "audit_note": null,
     "audits": "1",
     "category": "Derivatives",
     "chain": "Ethereum",
-    "chains": [
+    "chains": Array [
       "polygon",
       "arbitrum",
       "ethereum",
       "bsc",
     ],
     "cmcId": "1504",
-    "config": {
+    "config": Object {
       "enable": true,
       "id": "2328",
     },
@@ -298,12 +298,12 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "disabled": false,
     "displayName": "SynFutures",
     "enable": true,
-    "forkedFrom": [],
+    "forkedFrom": Array [],
     "gecko_id": "synfutures",
     "id": "2328",
     "listedAt": 1669979746,
     "logo": "https://icons.llama.fi/synfutures.svg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",
       "ProtocolRevenue": "Fees going to treasury",
@@ -314,14 +314,14 @@ exports[`Protocol adaptor list is complete DERIVATIVES 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/synfutures",
     "module": "synfutures",
     "name": "SynFutures",
-    "oracles": [
+    "oracles": Array [
       "Chainlink",
       "TWAP",
     ],
     "protocolType": undefined,
-    "protocolsData": {
-      "synfutures": {
-        "chains": [
+    "protocolsData": Object {
+      "synfutures": Object {
+        "chains": Array [
           "polygon",
           "arbitrum",
           "ethereum",

@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
-[
-  {
+Array [
+  Object {
     "address": null,
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/vantagepointreports/releases/blob/main/VPQ-20220418%20-%20Deflex%20-%20Smart%20Contract%20Audit%20of%20Deflex%20Protocol_Public_V1.1.pdf",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
     "chain": "Algorand",
-    "chains": [
+    "chains": Array [
       "algorand",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "2420",
     },
@@ -23,12 +23,12 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
     "disabled": false,
     "displayName": "Deflex",
     "enabled": true,
-    "forkedFrom": [],
+    "forkedFrom": Array [],
     "gecko_id": null,
     "id": "2420",
     "listedAt": 1673354892,
     "logo": "https://icons.llama.fi/deflex.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -39,11 +39,11 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/aggregators/deflex",
     "module": "deflex",
     "name": "Deflex",
-    "oracles": [],
+    "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": {
-      "deflex": {
-        "chains": [
+    "protocolsData": Object {
+      "deflex": Object {
+        "chains": Array [
           "algorand",
         ],
         "disabled": false,
@@ -54,16 +54,16 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
     "twitter": "deflexfi",
     "url": "https://deflex.fi",
   },
-  {
+  Object {
     "address": null,
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/BUIDLHub/dexible-contracts/blob/master/Audit%20Report%20-%20Dexible%20%5B16%20August%202021%5D.pdf",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
     "chain": "Ethereum",
-    "chains": [
+    "chains": Array [
       "ethereum",
       "arbitrum",
       "avax",
@@ -73,11 +73,11 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
       "polygon",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "2249",
-      "protocolsData": {
-        "Dexible_v2": {
+      "protocolsData": Object {
+        "Dexible_v2": Object {
           "displayName": "Dexible V2",
           "id": "2249",
         },
@@ -88,12 +88,12 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
     "disabled": false,
     "displayName": "Dexible V2",
     "enabled": true,
-    "forkedFrom": [],
+    "forkedFrom": Array [],
     "gecko_id": null,
     "id": "2249",
     "listedAt": 1667558693,
     "logo": "https://icons.llama.fi/dexible.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -105,9 +105,9 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
     "module": "dexible",
     "name": "Dexible",
     "protocolType": undefined,
-    "protocolsData": {
-      "Dexible_v2": {
-        "chains": [
+    "protocolsData": Object {
+      "Dexible_v2": Object {
+        "chains": Array [
           "ethereum",
           "arbitrum",
           "avax",
@@ -117,7 +117,7 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
           "polygon",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Money going to governance token holders",
           "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -132,17 +132,17 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
     "twitter": "DexibleApp",
     "url": "https://dexible.io",
   },
-  {
+  Object {
     "address": null,
     "audit_note": null,
     "audits": "0",
     "category": "Dexes",
     "chain": "Solana",
-    "chains": [
+    "chains": Array [
       "solana",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "2141",
     },
@@ -150,12 +150,12 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
     "disabled": false,
     "displayName": "Jupiter Aggregator",
     "enabled": true,
-    "forkedFrom": [],
+    "forkedFrom": Array [],
     "gecko_id": null,
     "id": "2141",
     "listedAt": 1664608359,
     "logo": "https://icons.llama.fi/jupiter-aggregator.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -167,9 +167,9 @@ exports[`Protocol adaptor list is complete AGGREGATORS 1`] = `
     "module": "jupiter-aggregator",
     "name": "Jupiter Aggregator",
     "protocolType": undefined,
-    "protocolsData": {
-      "jupiter-aggregator": {
-        "chains": [
+    "protocolsData": Object {
+      "jupiter-aggregator": Object {
+        "chains": Array [
           "solana",
         ],
         "disabled": false,

@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Protocol adaptor list is complete INCENTIVES 1`] = `
-[
-  {
+Array [
+  Object {
     "category": "Chain",
-    "chains": [
+    "chains": Array [
       "bitcoin",
     ],
     "cmcId": "1",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "1",
     },
@@ -19,7 +19,7 @@ exports[`Protocol adaptor list is complete INCENTIVES 1`] = `
     "gecko_id": "bitcoin",
     "id": "1",
     "logo": "https://icons.llama.fi/chains/rsz_bitcoin.jpg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Gas fees paid by users",
       "Revenue": "Burned coins",
       "UserFees": "Gas fees paid by users",
@@ -28,9 +28,9 @@ exports[`Protocol adaptor list is complete INCENTIVES 1`] = `
     "module": "bitcoin",
     "name": "Bitcoin",
     "protocolType": "chain",
-    "protocolsData": {
-      "bitcoin": {
-        "chains": [
+    "protocolsData": Object {
+      "bitcoin": Object {
+        "chains": Array [
           "bitcoin",
         ],
         "disabled": false,

@@ -1,33 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
-[
-  {
+Array [
+  Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-    "audit_links": [
+    "audit_links": Array [
       "https://docs.pancakeswap.finance/#is-it-safe",
     ],
     "audit_note": null,
     "audits": "0",
     "category": "Dexes",
     "chain": "Binance",
-    "chains": [
+    "chains": Array [
       "bsc",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "194",
-      "protocolsData": {
-        "stableswap": {
+      "protocolsData": Object {
+        "stableswap": Object {
           "enabled": true,
           "id": "2529",
         },
-        "v1": {
+        "v1": Object {
           "disabled": true,
           "id": "2590",
         },
-        "v2": {
+        "v2": Object {
           "enabled": true,
           "id": "194",
         },
@@ -37,13 +37,13 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "disabled": true,
     "displayName": "PancakeSwap AMM V1",
     "enabled": true,
-    "forkedFrom": [
+    "forkedFrom": Array [
       "Uniswap",
     ],
     "gecko_id": null,
     "id": "194",
     "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -54,16 +54,16 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
     "module": "pancakeswap",
     "name": "PancakeSwap AMM V1",
-    "oracles": [],
+    "oracles": Array [],
     "parentProtocol": "PancakeSwap",
     "protocolType": undefined,
-    "protocolsData": {
-      "stableswap": {
-        "chains": [
+    "protocolsData": Object {
+      "stableswap": Object {
+        "chains": Array [
           "bsc",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "All fees comes from the user fees, which is 025% of each trade.",
           "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
           "ProtocolRevenue": "Treasury receives 10% of the fees.",
@@ -72,12 +72,12 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "User pays 0.25% fees on each swap.",
         },
       },
-      "v1": {
-        "chains": [
+      "v1": Object {
+        "chains": Array [
           "bsc",
         ],
         "disabled": true,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Money going to governance token holders",
           "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -86,13 +86,13 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "Swap fees paid by users",
         },
       },
-      "v2": {
-        "chains": [
+      "v2": Object {
+        "chains": Array [
           "bsc",
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "All fees comes from the user.",
           "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
           "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
@@ -106,33 +106,33 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "twitter": "PancakeSwap",
     "url": "https://v1exchange.pancakeswap.finance/",
   },
-  {
+  Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-    "audit_links": [
+    "audit_links": Array [
       "https://docs.pancakeswap.finance/#is-it-safe",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
     "chain": "Binance",
-    "chains": [
+    "chains": Array [
       "bsc",
       "ethereum",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "194",
-      "protocolsData": {
-        "stableswap": {
+      "protocolsData": Object {
+        "stableswap": Object {
           "enabled": true,
           "id": "2529",
         },
-        "v1": {
+        "v1": Object {
           "disabled": true,
           "id": "2590",
         },
-        "v2": {
+        "v2": Object {
           "enabled": true,
           "id": "194",
         },
@@ -142,13 +142,13 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "disabled": false,
     "displayName": "PancakeSwap AMM",
     "enabled": true,
-    "forkedFrom": [
+    "forkedFrom": Array [
       "Uniswap",
     ],
     "gecko_id": null,
     "id": "194",
     "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -159,16 +159,16 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
     "module": "pancakeswap",
     "name": "PancakeSwap AMM",
-    "oracles": [],
+    "oracles": Array [],
     "parentProtocol": "PancakeSwap",
     "protocolType": undefined,
-    "protocolsData": {
-      "stableswap": {
-        "chains": [
+    "protocolsData": Object {
+      "stableswap": Object {
+        "chains": Array [
           "bsc",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "All fees comes from the user fees, which is 025% of each trade.",
           "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
           "ProtocolRevenue": "Treasury receives 10% of the fees.",
@@ -177,12 +177,12 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "User pays 0.25% fees on each swap.",
         },
       },
-      "v1": {
-        "chains": [
+      "v1": Object {
+        "chains": Array [
           "bsc",
         ],
         "disabled": true,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Money going to governance token holders",
           "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -191,13 +191,13 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "Swap fees paid by users",
         },
       },
-      "v2": {
-        "chains": [
+      "v2": Object {
+        "chains": Array [
           "bsc",
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "All fees comes from the user.",
           "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
           "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
@@ -211,29 +211,29 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/",
   },
-  {
+  Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
     "audit_note": null,
     "audits": "0",
     "category": "Dexes",
     "chain": "Binance",
-    "chains": [
+    "chains": Array [
       "bsc",
     ],
     "cmcId": null,
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "194",
-      "protocolsData": {
-        "stableswap": {
+      "protocolsData": Object {
+        "stableswap": Object {
           "enabled": true,
           "id": "2529",
         },
-        "v1": {
+        "v1": Object {
           "disabled": true,
           "id": "2590",
         },
-        "v2": {
+        "v2": Object {
           "enabled": true,
           "id": "194",
         },
@@ -243,12 +243,12 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "disabled": false,
     "displayName": "PancakeSwap StableSwap",
     "enabled": true,
-    "forkedFrom": [],
+    "forkedFrom": Array [],
     "gecko_id": null,
     "id": "194",
     "listedAt": 1676313502,
     "logo": "https://icons.llama.fi/pancakeswap-stableswap.jpg",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -259,16 +259,16 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
     "module": "pancakeswap",
     "name": "PancakeSwap StableSwap",
-    "oracles": [],
+    "oracles": Array [],
     "parentProtocol": "PancakeSwap",
     "protocolType": undefined,
-    "protocolsData": {
-      "stableswap": {
-        "chains": [
+    "protocolsData": Object {
+      "stableswap": Object {
+        "chains": Array [
           "bsc",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "All fees comes from the user fees, which is 025% of each trade.",
           "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
           "ProtocolRevenue": "Treasury receives 10% of the fees.",
@@ -277,12 +277,12 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "User pays 0.25% fees on each swap.",
         },
       },
-      "v1": {
-        "chains": [
+      "v1": Object {
+        "chains": Array [
           "bsc",
         ],
         "disabled": true,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Money going to governance token holders",
           "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -291,13 +291,13 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "Swap fees paid by users",
         },
       },
-      "v2": {
-        "chains": [
+      "v2": Object {
+        "chains": Array [
           "bsc",
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "All fees comes from the user.",
           "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
           "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
@@ -311,9 +311,9 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/swap",
   },
-  {
+  Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",
       "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits",
       "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
@@ -322,23 +322,23 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "audits": "2",
     "category": "Dexes",
     "chain": "Ethereum",
-    "chains": [
+    "chains": Array [
       "ethereum",
     ],
     "cmcId": "595",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "1",
-      "protocolsData": {
-        "v1": {
+      "protocolsData": Object {
+        "v1": Object {
           "enabled": true,
           "id": "2196",
         },
-        "v2": {
+        "v2": Object {
           "enabled": true,
           "id": "2197",
         },
-        "v3": {
+        "v3": Object {
           "enabled": true,
           "id": "2198",
         },
@@ -353,7 +353,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "id": "1",
     "listedAt": 1666191149,
     "logo": "https://icons.llama.fi/uniswap-v1.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -364,16 +364,16 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/uniswap",
     "module": "uniswap",
     "name": "Uniswap",
-    "oracles": [],
+    "oracles": Array [],
     "parentProtocol": "Uniswap",
     "protocolType": undefined,
-    "protocolsData": {
-      "v1": {
-        "chains": [
+    "protocolsData": Object {
+      "v1": Object {
+        "chains": Array [
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Holders have no revenue.",
           "ProtocolRevenue": "Protocol have no revenue.",
@@ -382,12 +382,12 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "User pays 0.3% fees on each swap.",
         },
       },
-      "v2": {
-        "chains": [
+      "v2": Object {
+        "chains": Array [
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Holders have no revenue.",
           "ProtocolRevenue": "Protocol have no revenue.",
@@ -396,8 +396,8 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "User pays 0.3% fees on each swap.",
         },
       },
-      "v3": {
-        "chains": [
+      "v3": Object {
+        "chains": Array [
           "ethereum",
           "optimism",
           "arbitrum",
@@ -405,7 +405,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "celo",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Holders have no revenue.",
           "ProtocolRevenue": "Protocol have no revenue.",
@@ -419,9 +419,9 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
   },
-  {
+  Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",
       "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits",
       "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
@@ -430,23 +430,23 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "audits": "2",
     "category": "Dexes",
     "chain": "Ethereum",
-    "chains": [
+    "chains": Array [
       "ethereum",
     ],
     "cmcId": "1069",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "1",
-      "protocolsData": {
-        "v1": {
+      "protocolsData": Object {
+        "v1": Object {
           "enabled": true,
           "id": "2196",
         },
-        "v2": {
+        "v2": Object {
           "enabled": true,
           "id": "2197",
         },
-        "v3": {
+        "v3": Object {
           "enabled": true,
           "id": "2198",
         },
@@ -461,7 +461,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "id": "1",
     "listedAt": 1666191162,
     "logo": "https://icons.llama.fi/uniswap-v2.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -472,16 +472,16 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/uniswap",
     "module": "uniswap",
     "name": "Uniswap",
-    "oracles": [],
+    "oracles": Array [],
     "parentProtocol": "Uniswap",
     "protocolType": undefined,
-    "protocolsData": {
-      "v1": {
-        "chains": [
+    "protocolsData": Object {
+      "v1": Object {
+        "chains": Array [
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Holders have no revenue.",
           "ProtocolRevenue": "Protocol have no revenue.",
@@ -490,12 +490,12 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "User pays 0.3% fees on each swap.",
         },
       },
-      "v2": {
-        "chains": [
+      "v2": Object {
+        "chains": Array [
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Holders have no revenue.",
           "ProtocolRevenue": "Protocol have no revenue.",
@@ -504,8 +504,8 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "User pays 0.3% fees on each swap.",
         },
       },
-      "v3": {
-        "chains": [
+      "v3": Object {
+        "chains": Array [
           "ethereum",
           "optimism",
           "arbitrum",
@@ -513,7 +513,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "celo",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Holders have no revenue.",
           "ProtocolRevenue": "Protocol have no revenue.",
@@ -527,9 +527,9 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
   },
-  {
+  Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-    "audit_links": [
+    "audit_links": Array [
       "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",
       "https://github.com/Uniswap/uniswap-v3-periphery/tree/main/audits",
       "https://github.com/ConsenSys/Uniswap-audit-report-2018-12",
@@ -538,7 +538,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "audits": "2",
     "category": "Dexes",
     "chain": "Ethereum",
-    "chains": [
+    "chains": Array [
       "ethereum",
       "optimism",
       "arbitrum",
@@ -546,19 +546,19 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
       "celo",
     ],
     "cmcId": "1348",
-    "config": {
+    "config": Object {
       "enabled": true,
       "id": "1",
-      "protocolsData": {
-        "v1": {
+      "protocolsData": Object {
+        "v1": Object {
           "enabled": true,
           "id": "2196",
         },
-        "v2": {
+        "v2": Object {
           "enabled": true,
           "id": "2197",
         },
-        "v3": {
+        "v3": Object {
           "enabled": true,
           "id": "2198",
         },
@@ -573,7 +573,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "id": "1",
     "listedAt": 1666191475,
     "logo": "https://icons.llama.fi/uniswap-v3.png",
-    "methodology": {
+    "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "Percentage of swap fees going to treasury",
@@ -584,16 +584,16 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/uniswap",
     "module": "uniswap",
     "name": "Uniswap",
-    "oracles": [],
+    "oracles": Array [],
     "parentProtocol": "Uniswap",
     "protocolType": undefined,
-    "protocolsData": {
-      "v1": {
-        "chains": [
+    "protocolsData": Object {
+      "v1": Object {
+        "chains": Array [
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Holders have no revenue.",
           "ProtocolRevenue": "Protocol have no revenue.",
@@ -602,12 +602,12 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "User pays 0.3% fees on each swap.",
         },
       },
-      "v2": {
-        "chains": [
+      "v2": Object {
+        "chains": Array [
           "ethereum",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Holders have no revenue.",
           "ProtocolRevenue": "Protocol have no revenue.",
@@ -616,8 +616,8 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "UserFees": "User pays 0.3% fees on each swap.",
         },
       },
-      "v3": {
-        "chains": [
+      "v3": Object {
+        "chains": Array [
           "ethereum",
           "optimism",
           "arbitrum",
@@ -625,7 +625,7 @@ exports[`Protocol adaptor list is complete PROTOCOLS 1`] = `
           "celo",
         ],
         "disabled": false,
-        "methodology": {
+        "methodology": Object {
           "Fees": "Swap fees paid by users",
           "HoldersRevenue": "Holders have no revenue.",
           "ProtocolRevenue": "Protocol have no revenue.",

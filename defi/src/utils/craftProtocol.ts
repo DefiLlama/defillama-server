@@ -16,7 +16,7 @@ import type { IProtocolResponse, IRaise } from "../types";
 import parentProtocols from "../protocols/parentProtocols";
 import fetch from "node-fetch";
 import { convertSymbols } from "./symbols/convert";
-import { getAvailableMetricsByModule } from "../adaptors/data/configs";
+import { getAvailableMetricsByModule } from "../adaptorsImprov/data/configs";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (typeof balances === "object") {

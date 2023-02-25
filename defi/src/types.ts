@@ -1,4 +1,4 @@
-import { IJSON } from "./adaptors/data/types";
+import { IJSON } from "./adaptorsImprov/data/types";
 import { Protocol } from "./protocols/types";
 
 export interface TokenPrices {

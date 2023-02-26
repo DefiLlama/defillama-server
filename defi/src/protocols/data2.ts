@@ -23190,7 +23190,7 @@ const data2: Protocol[] = [
   {
     id: "2460", 
     name: "SkullSwap",
-    address: "fantom:0x9945Dd3eCB40A6b594813f2A4DF1643b10Fe3550",
+    address: "fantom:0xfa5992A8A47aF7029e04eC6a95203AD3f301460b",
     symbol: "SKULL",
     url: "https://skullswap.exchange",
     description:

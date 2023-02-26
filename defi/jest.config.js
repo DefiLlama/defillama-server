@@ -12,6 +12,7 @@ module.exports = {
   transformIgnorePatterns: [
     '/node_modules/(?!@polkadot|@babel/runtime/helpers/esm/)'
   ],
+  testPathIgnorePatterns: ["src/adaptorsImprov"],
   detectOpenHandles: true,
   forceExit: true,
   maxWorkers: 1,

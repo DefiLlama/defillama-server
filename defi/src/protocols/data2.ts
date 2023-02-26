@@ -23187,7 +23187,6 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/NeutraFinance/neutra-gmx-contracts/blob/master/audits/solidproof/v2_SmartContract_Audit_Solidproof_NeutraFinance.pdf"],
     listedAt: 1674213134
   },
-  /*
   {
     id: "2460", 
     name: "SkullSwap",
@@ -23209,7 +23208,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap"],
     listedAt: 1674226360
-  },*/
+  },
   {
     id: "2461",
     name: "Ad-Astra Bridge",

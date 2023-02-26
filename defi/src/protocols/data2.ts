@@ -26315,5 +26315,27 @@ const data2: Protocol[] = [
     listedAt: 1656665210,
     parentProtocol: "SurfSwap"
   },
+  {
+    id: "2599",
+    name: "Moret",
+    address: "polygon:0x43F2acbaE09272021AFC107180Aa0ee313B00D8F",
+    symbol: "MOR",
+    url: "https://moret.io/",
+    description: "DeFi protocol for options AMM and options-based perpetuals, running on Polygon chain only",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/moret.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "moret/index.js",
+    twitter: "moret_io",
+    audit_links: ["https://www.certik.com/projects/moret"],
+    listedAt: 1677386057,
+  },
 ]
 export default data2;

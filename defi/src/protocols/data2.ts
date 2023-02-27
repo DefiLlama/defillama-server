@@ -26222,6 +26222,7 @@ const data2: Protocol[] = [
     treasury: "balancer.js",
     parentProtocol: "Balancer"
   },
+  /*
   {
      id: "2595",
      name: "BeamSwap Classic",
@@ -26245,6 +26246,7 @@ const data2: Protocol[] = [
      listedAt: 1642599283,
      parentProtocol: "BeamSwap"
   },
+  */
   {
     id: "2596",
     name: "BeamSwap Stable AMM",

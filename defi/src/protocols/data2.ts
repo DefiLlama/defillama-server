@@ -23346,8 +23346,8 @@ const data2: Protocol[] = [
   {
     id: "2467",
     name: "Zyberswap AMM",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x3b475f6f2f41853706afc9fa6a6b8c5df1a2724c",
+    symbol: "ZYB",
     url: "https://www.zyberswap.io",
     description:
       "Community Driven Exchange on Arbitrum.",
@@ -26338,8 +26338,8 @@ const data2: Protocol[] = [
   {
     id: "2600",
     name: "Zyberswap V3",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x3b475f6f2f41853706afc9fa6a6b8c5df1a2724c",
+    symbol: "ZYB",
     url: "https://www.zyberswap.io/",
     description: "ZyberSwap V3's Concentrated Liquidity feature allows liquidity providers to focus their liquidity within a specific price range, resulting in increased capital efficiency and reduced impermanent loss. This feature is particularly beneficial for those looking to optimize their investment strategy and maximize returns, as it allows for more precise tracking of Total Value Locked (TVL) within a designated price range.",
     chain: "Arbitrum",

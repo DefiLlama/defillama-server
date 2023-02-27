@@ -6,6 +6,7 @@ export interface ProtocolAdaptor extends Protocol {
     displayName: string
     config?: IConfig
     disabled: boolean
+    enabled?: boolean
     protocolType?: ProtocolType
     versionKey?: string
     protocolsData: IJSON<{

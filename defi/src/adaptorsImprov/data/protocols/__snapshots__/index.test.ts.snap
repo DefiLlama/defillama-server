@@ -25,6 +25,7 @@ Array [
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -131,6 +132,7 @@ Array [
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -233,6 +235,7 @@ Array [
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {

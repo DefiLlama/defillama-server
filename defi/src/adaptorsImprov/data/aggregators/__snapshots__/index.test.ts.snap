@@ -79,6 +79,7 @@ Array [
       "protocolsData": Object {
         "Dexible_v2": Object {
           "displayName": "Dexible V2",
+          "enabled": true,
           "id": "2249",
         },
       },

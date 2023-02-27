@@ -186,6 +186,7 @@ Array [
       "id": "285",
       "protocolsData": Object {
         "gamma": Object {
+          "enabled": false,
           "id": "285",
         },
       },

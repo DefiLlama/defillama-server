@@ -68,10 +68,8 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         let adaptorRecords = adaptorRecordsRaw.slice(startIndex + 1)
 
         let protocolsKeys = [adapter.module]
-        if (adapter.protocolsData) {
-            protocolsKeys = Object.keys(adapter.protocolsData).filter(protKey => {
-                return getConfigByType(adaptorType, adapter.module)?.protocolsData?.[protKey].enabled ?? true
-            })
+        if (adapter?.enabled && adapter.versionKey) {
+            protocolsKeys = [adapter.versionKey]
         }
         // Clean data by chain
         console.info("Cleaning records", adapter.name, adapter.id, adapter.module)

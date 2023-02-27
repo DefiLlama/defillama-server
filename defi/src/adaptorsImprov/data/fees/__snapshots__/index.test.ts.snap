@@ -187,10 +187,12 @@ Array [
       "protocolsData": Object {
         "v1": Object {
           "displayName": "Balancer V1",
+          "enabled": true,
           "id": "2593",
         },
         "v2": Object {
           "displayName": "Balancer V2",
+          "enabled": true,
           "id": "2594",
         },
       },
@@ -277,10 +279,12 @@ Array [
       "protocolsData": Object {
         "v1": Object {
           "displayName": "Balancer V1",
+          "enabled": true,
           "id": "2593",
         },
         "v2": Object {
           "displayName": "Balancer V2",
+          "enabled": true,
           "id": "2594",
         },
       },
@@ -1068,10 +1072,12 @@ Array [
       "protocolsData": Object {
         "classic": Object {
           "displayName": "KyberSwap - Classic",
+          "enabled": true,
           "id": "2591",
         },
         "elastic": Object {
           "displayName": "KyberSwap - Elastic",
+          "enabled": true,
           "id": "2592",
         },
       },
@@ -1174,10 +1180,12 @@ Array [
       "protocolsData": Object {
         "classic": Object {
           "displayName": "KyberSwap - Classic",
+          "enabled": true,
           "id": "2591",
         },
         "elastic": Object {
           "displayName": "KyberSwap - Elastic",
+          "enabled": true,
           "id": "2592",
         },
       },
@@ -1892,9 +1900,11 @@ Array [
       "protocolsData": Object {
         "v2": Object {
           "displayName": "Quickswap V2",
+          "enabled": true,
           "id": "306",
         },
         "v3": Object {
+          "enabled": true,
           "id": "2239",
         },
       },
@@ -1976,9 +1986,11 @@ Array [
       "protocolsData": Object {
         "v2": Object {
           "displayName": "Quickswap V2",
+          "enabled": true,
           "id": "306",
         },
         "v3": Object {
+          "enabled": true,
           "id": "2239",
         },
       },
@@ -2498,9 +2510,11 @@ Array [
       "id": "119",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "119",
         },
         "trident": Object {
+          "enabled": true,
           "id": "2152",
         },
       },
@@ -2607,9 +2621,11 @@ Array [
       "id": "119",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "119",
         },
         "trident": Object {
+          "enabled": true,
           "id": "2152",
         },
       },
@@ -2709,9 +2725,11 @@ Array [
       "id": "468",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "468",
         },
         "v2": Object {
+          "enabled": true,
           "id": "2393",
         },
       },
@@ -2795,9 +2813,11 @@ Array [
       "id": "468",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "468",
         },
         "v2": Object {
+          "enabled": true,
           "id": "2393",
         },
       },
@@ -3317,6 +3337,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -3423,6 +3444,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -3525,6 +3547,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -4012,12 +4035,15 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "id": "111",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "1838",
         },
         "v2": Object {
+          "enabled": true,
           "id": "111",
         },
         "v3": Object {
+          "enabled": true,
           "id": "1599",
         },
       },
@@ -4121,12 +4147,15 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "id": "111",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "1838",
         },
         "v2": Object {
+          "enabled": true,
           "id": "111",
         },
         "v3": Object {
+          "enabled": true,
           "id": "1599",
         },
       },
@@ -4233,12 +4262,15 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "id": "111",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "1838",
         },
         "v2": Object {
+          "enabled": true,
           "id": "111",
         },
         "v3": Object {
+          "enabled": true,
           "id": "1599",
         },
       },
@@ -6433,14 +6465,17 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "protocolsData": Object {
         "seaport": Object {
           "displayName": "Opensea Seaport",
+          "enabled": true,
           "id": "2258",
         },
         "v1": Object {
           "displayName": "Opensea V1",
+          "enabled": true,
           "id": "2258",
         },
         "v2": Object {
           "displayName": "Opensea V2",
+          "enabled": true,
           "id": "2258",
         },
       },
@@ -6529,14 +6564,17 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "protocolsData": Object {
         "seaport": Object {
           "displayName": "Opensea Seaport",
+          "enabled": true,
           "id": "2258",
         },
         "v1": Object {
           "displayName": "Opensea V1",
+          "enabled": true,
           "id": "2258",
         },
         "v2": Object {
           "displayName": "Opensea V2",
+          "enabled": true,
           "id": "2258",
         },
       },
@@ -6625,14 +6663,17 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "protocolsData": Object {
         "seaport": Object {
           "displayName": "Opensea Seaport",
+          "enabled": true,
           "id": "2258",
         },
         "v1": Object {
           "displayName": "Opensea V1",
+          "enabled": true,
           "id": "2258",
         },
         "v2": Object {
           "displayName": "Opensea V2",
+          "enabled": true,
           "id": "2258",
         },
       },

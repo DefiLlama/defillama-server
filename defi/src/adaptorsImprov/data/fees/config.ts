@@ -8,12 +8,15 @@ export default {
         protocolsData: {
             v1: {
                 "id": "1838",
+                enabled: true,
             },
             v2: {
                 "id": "111",
+                enabled: true,
             },
             v3: {
                 "id": "1599",
+                enabled: true,
             }
         }
     },
@@ -27,10 +30,12 @@ export default {
         protocolsData: {
             v1: {
                 id: "2593",
+                enabled: true,
                 displayName: "Balancer V1"
             },
             v2: {
                 id: "2594",
+                enabled: true,
                 displayName: "Balancer V2"
             }
         }
@@ -101,14 +106,17 @@ export default {
         protocolsData: {
             v1: {
                 "id": "2258",
+                enabled: true,
                 displayName: "Opensea V1"
             },
             v2: {
                 "id": "2258",
+                enabled: true,
                 displayName: "Opensea V2"
             },
             seaport: {
                 "id": "2258",
+                enabled: true,
                 displayName: "Opensea Seaport"
             }
         }
@@ -121,6 +129,7 @@ export default {
         protocolsData: {
             v1: {
                 "disabled": true,
+                enabled: true,
                 "id": "2590"
             },
             v2: {
@@ -145,10 +154,12 @@ export default {
         protocolsData: {
             v2: {
                 id: "306",
+                enabled: true,
                 displayName: "Quickswap V2"
             },
             v3: {
-                id: "2239"
+                id: "2239",
+                enabled: true,
             }
         }
     },
@@ -165,10 +176,12 @@ export default {
         "id": "119",
         protocolsData: {
             classic: {
-                id: "119"
+                id: "119",
+                enabled: true,
             },
             trident: {
-                id: "2152"
+                id: "2152",
+                enabled: true,
             }
         }
     },
@@ -185,10 +198,12 @@ export default {
         "id": "468",
         protocolsData: {
             v1: {
-                id: "468"
+                id: "468",
+                enabled: true,
             },
             v2: {
-                id: "2393"
+                id: "2393",
+                enabled: true,
             }
         }
     },
@@ -443,10 +458,12 @@ export default {
         protocolsData: {
             classic: {
                 id: "2591",
+                enabled: true,
                 displayName: "KyberSwap - Classic"
             },
             elastic: {
                 id: "2592",
+                enabled: true,
                 displayName: "KyberSwap - Elastic"
             }
         }

@@ -22,6 +22,7 @@ Array [
       "protocolsData": Object {
         "0x RFQ": Object {
           "displayName": "0x - RFQ",
+          "enabled": true,
           "id": "2116",
         },
       },
@@ -1083,10 +1084,12 @@ Array [
       "protocolsData": Object {
         "v1": Object {
           "displayName": "Balancer V1",
+          "enabled": true,
           "id": "2593",
         },
         "v2": Object {
           "displayName": "Balancer V2",
+          "enabled": true,
           "id": "2594",
         },
       },
@@ -1173,10 +1176,12 @@ Array [
       "protocolsData": Object {
         "v1": Object {
           "displayName": "Balancer V1",
+          "enabled": true,
           "id": "2593",
         },
         "v2": Object {
           "displayName": "Balancer V2",
+          "enabled": true,
           "id": "2594",
         },
       },
@@ -1260,9 +1265,11 @@ Array [
       "id": "162",
       "protocolsData": Object {
         "v2.1": Object {
+          "enabled": true,
           "id": "162",
         },
         "v3": Object {
+          "enabled": true,
           "id": "1995",
         },
       },
@@ -1341,9 +1348,11 @@ Array [
       "id": "162",
       "protocolsData": Object {
         "v2.1": Object {
+          "enabled": true,
           "id": "162",
         },
         "v3": Object {
+          "enabled": true,
           "id": "1995",
         },
       },
@@ -1473,9 +1482,11 @@ Array [
       "id": "1289",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "1289",
         },
         "stable-amm": Object {
+          "enabled": true,
           "id": "2596",
         },
       },
@@ -1559,9 +1570,11 @@ Array [
       "id": "1289",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "1289",
         },
         "stable-amm": Object {
+          "enabled": true,
           "id": "2596",
         },
       },
@@ -6221,10 +6234,12 @@ Array [
       "protocolsData": Object {
         "classic": Object {
           "displayName": "KyberSwap - Classic",
+          "enabled": true,
           "id": "2591",
         },
         "elastic": Object {
           "displayName": "KyberSwap - Elastic",
+          "enabled": true,
           "id": "2592",
         },
       },
@@ -6327,10 +6342,12 @@ Array [
       "protocolsData": Object {
         "classic": Object {
           "displayName": "KyberSwap - Classic",
+          "enabled": true,
           "id": "2591",
         },
         "elastic": Object {
           "displayName": "KyberSwap - Elastic",
+          "enabled": true,
           "id": "2592",
         },
       },
@@ -9404,9 +9421,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "protocolsData": Object {
         "v2": Object {
           "displayName": "Quickswap V2",
+          "enabled": true,
           "id": "306",
         },
         "v3": Object {
+          "enabled": true,
           "id": "2239",
         },
       },
@@ -9490,9 +9509,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "protocolsData": Object {
         "v2": Object {
           "displayName": "Quickswap V2",
+          "enabled": true,
           "id": "306",
         },
         "v3": Object {
+          "enabled": true,
           "id": "2239",
         },
       },
@@ -11254,9 +11275,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
   },
   Object {
     "address": "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
-    "audit_links": Array [],
+    "audit_links": Array [
+      "https://surfswap.gitbook.io/surfswap/contracts/audits",
+    ],
     "audit_note": null,
-    "audits": "0",
+    "audits": "2",
     "category": "Dexes",
     "chain": "Kava",
     "chains": Array [
@@ -11268,9 +11291,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "1868",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "1868",
         },
         "stable-amm": Object {
+          "enabled": true,
           "id": "2598",
         },
       },
@@ -11355,9 +11380,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "1868",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "1868",
         },
         "stable-amm": Object {
+          "enabled": true,
           "id": "2598",
         },
       },
@@ -11454,9 +11481,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "119",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "119",
         },
         "trident": Object {
+          "enabled": true,
           "id": "2152",
         },
       },
@@ -11563,9 +11592,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "119",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "119",
         },
         "trident": Object {
+          "enabled": true,
           "id": "2152",
         },
       },
@@ -12496,9 +12527,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "468",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "468",
         },
         "v2": Object {
+          "enabled": true,
           "id": "2393",
         },
       },
@@ -12582,9 +12615,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "468",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "468",
         },
         "v2": Object {
+          "enabled": true,
           "id": "2393",
         },
       },
@@ -13353,9 +13388,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         "v1": Object {
           "disabled": true,
           "displayName": "VoltSwap V1",
+          "enabled": true,
           "id": "1225",
         },
         "v2": Object {
+          "enabled": true,
           "id": "2133",
         },
       },
@@ -13437,9 +13474,11 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         "v1": Object {
           "disabled": true,
           "displayName": "VoltSwap V1",
+          "enabled": true,
           "id": "1225",
         },
         "v2": Object {
+          "enabled": true,
           "id": "2133",
         },
       },
@@ -14955,6 +14994,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -15061,6 +15101,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -15163,6 +15204,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {

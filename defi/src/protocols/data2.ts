@@ -10069,7 +10069,7 @@ const data2: Protocol[] = [
     description: "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
     chain: "Kava",
     logo: `${baseIconsUrl}/surfswap-classic.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -10080,7 +10080,7 @@ const data2: Protocol[] = [
     module: "surfswap/index.js",
     twitter: "SurfswapDEX",
     parentProtocol: "Surfswap",
-    audit_links: [],
+    audit_links: ["https://surfswap.gitbook.io/surfswap/contracts/audits"],
     listedAt: 1656665210
   },
   {

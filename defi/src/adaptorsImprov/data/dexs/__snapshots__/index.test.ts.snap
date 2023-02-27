@@ -70,6 +70,7 @@ Array [
     "symbol": "ZRX",
     "twitter": "0xProject",
     "url": "https://www.0x.org/",
+    "versionKey": "0x RFQ",
   },
   Object {
     "address": null,
@@ -1149,6 +1150,7 @@ Array [
     "treasury": "balancer.js",
     "twitter": "BalancerLabs",
     "url": "https://balancer.finance/",
+    "versionKey": "v1",
   },
   Object {
     "address": "0xba100000625a3754423978a60c9317c58a424e3d",
@@ -1238,6 +1240,7 @@ Array [
     "treasury": "balancer.js",
     "twitter": "BalancerLabs",
     "url": "https://balancer.finance/",
+    "versionKey": "v2",
   },
   Object {
     "address": "0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
@@ -1318,6 +1321,7 @@ Array [
     "symbol": "BNT",
     "twitter": "Bancor",
     "url": "https://app.bancor.network/",
+    "versionKey": "v3",
   },
   Object {
     "address": "0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
@@ -1397,6 +1401,7 @@ Array [
     "symbol": "BNT",
     "twitter": "Bancor",
     "url": "https://app.bancor.network/",
+    "versionKey": "v2.1",
   },
   Object {
     "address": null,
@@ -1534,6 +1539,7 @@ Array [
     "symbol": "GLINT",
     "twitter": "Beamswapio",
     "url": "https://beamswap.io",
+    "versionKey": "classic",
   },
   Object {
     "address": "moonbeam:0xcd3B51D98478D53F4515A306bE565c6EebeF1D58",
@@ -1620,6 +1626,7 @@ Array [
     "symbol": "GLINT",
     "twitter": "Beamswapio",
     "url": "https://beamswap.io",
+    "versionKey": "stable-amm",
   },
   Object {
     "address": "fantom:0xf24bcf4d1e507740041c9cfd2dddb29585adce1e",
@@ -4508,6 +4515,7 @@ Array [
     "symbol": "GMX",
     "twitter": "GMX_IO",
     "url": "https://gmx.io/",
+    "versionKey": "swap",
   },
   Object {
     "address": "solana:GFX1ZjR2P15tmrSwow6FjyDYcEkoFb4p4gJCpLBjaxHD",
@@ -6292,6 +6300,7 @@ Array [
     "symbol": "KNC",
     "twitter": "KyberNetwork",
     "url": "https://kyberswap.com/#/swap",
+    "versionKey": "classic",
   },
   Object {
     "address": "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
@@ -6397,6 +6406,7 @@ Array [
     "symbol": "KNC",
     "twitter": "KyberNetwork",
     "url": "https://kyberswap.com/#/swap",
+    "versionKey": "elastic",
   },
   Object {
     "address": "bsc:0x27e873bee690c8e161813de3566e9e18a64b0381",
@@ -9458,6 +9468,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "QUICK",
     "twitter": "QuickswapDEX",
     "url": "https://quickswap.exchange/",
+    "versionKey": "v2",
   },
   Object {
     "address": "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
@@ -9544,6 +9555,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "QUICK",
     "twitter": "QuickswapDEX",
     "url": "https://quickswap.exchange/",
+    "versionKey": "v3",
   },
   Object {
     "address": "tezos:KT193D4vozYnhGJQVtw7CoxxqphqUEEwK6Vb",
@@ -11323,6 +11335,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "TIDE",
     "twitter": "SurfswapDEX",
     "url": "https://surfdex.io",
+    "versionKey": "classic",
   },
   Object {
     "address": "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
@@ -11409,6 +11422,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "TIDE",
     "twitter": "SurfswapDEX",
     "url": "https://surfdex.io",
+    "versionKey": "stable-amm",
   },
   Object {
     "address": "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
@@ -11525,6 +11539,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "treasury": "sushiswap.js",
     "twitter": "SushiSwap",
     "url": "https://sushi.com/",
+    "versionKey": "classic",
   },
   Object {
     "address": null,
@@ -11630,6 +11645,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "-",
     "twitter": "SushiSwap",
     "url": "https://www.sushi.com/swap",
+    "versionKey": "trident",
   },
   Object {
     "address": "conflux:0x22f41abf77905f50df398f21213290597e7414dd",
@@ -12545,6 +12561,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "treasury": "traderjoe.js",
     "twitter": "traderjoe_xyz",
     "url": "https://www.traderjoexyz.com",
+    "versionKey": "v1",
   },
   Object {
     "address": "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
@@ -12629,6 +12646,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "JOE",
     "twitter": "traderjoe_xyz",
     "url": "https://traderjoexyz.com/home",
+    "versionKey": "v2",
   },
   Object {
     "address": null,
@@ -13400,6 +13418,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "VOLT",
     "twitter": "Meter_IO",
     "url": "https://voltswap.finance",
+    "versionKey": "v1",
   },
   Object {
     "address": "meter:0x8Df95e66Cb0eF38F91D2776DA3c921768982fBa0",
@@ -13483,6 +13502,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "VOLT",
     "twitter": "Meter_IO",
     "url": "https://voltswap.finance",
+    "versionKey": "v2",
   },
   Object {
     "address": "tezos:KT1TwzD6zV3WeJ39ukuqxcfK2fJCnhvrdN1X",
@@ -15015,6 +15035,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://v1exchange.pancakeswap.finance/",
+    "versionKey": "v1",
   },
   Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
@@ -15120,6 +15141,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/",
+    "versionKey": "v2",
   },
   Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
@@ -15220,6 +15242,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/swap",
+    "versionKey": "stableswap",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -15328,6 +15351,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v1",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -15436,6 +15460,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v2",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -15549,6 +15574,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "treasury": "uniswap.js",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v3",
   },
 ]
 `;

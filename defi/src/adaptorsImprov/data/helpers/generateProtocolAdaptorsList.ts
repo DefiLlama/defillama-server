@@ -70,12 +70,15 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
         if (dexFoundInProtocolsArr.length > 0 && imports_obj[adapterKey].module.default) {
             return dexFoundInProtocolsArr.map((dexFoundInProtocols => {
                 let configObj = config[adapterKey]
+                let versionKey = undefined
                 const protData = config?.[adapterKey]?.protocolsData
                 if ('breakdown' in moduleObject) {
                     const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
                     configObj = vConfig ?? config[adapterKey]
-                    if (key)
+                    if (key) {
+                        versionKey = key
                         baseModuleObject = moduleObject.breakdown[key]
+                    }
                 }
                 const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
                 const infoItem = {
@@ -100,6 +103,8 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                     infoItem.category ?? '',
                     childCategories
                 )
+                if (versionKey)
+                    infoItem.versionKey = versionKey
                 return infoItem
             }))
         }

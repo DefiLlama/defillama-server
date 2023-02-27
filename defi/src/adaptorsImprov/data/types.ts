@@ -7,6 +7,7 @@ export interface ProtocolAdaptor extends Protocol {
     config?: IConfig
     disabled: boolean
     protocolType?: ProtocolType
+    versionKey?: string
     protocolsData: IJSON<{
         category?: string
         chains?: string[]

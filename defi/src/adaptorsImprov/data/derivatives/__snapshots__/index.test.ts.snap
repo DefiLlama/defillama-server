@@ -111,6 +111,7 @@ Array [
     "symbol": "GMX",
     "twitter": "GMX_IO",
     "url": "https://gmx.io/",
+    "versionKey": "derivatives",
   },
   Object {
     "address": null,

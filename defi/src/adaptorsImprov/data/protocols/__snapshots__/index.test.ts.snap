@@ -105,6 +105,7 @@ Array [
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://v1exchange.pancakeswap.finance/",
+    "versionKey": "v1",
   },
   Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
@@ -210,6 +211,7 @@ Array [
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/",
+    "versionKey": "v2",
   },
   Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
@@ -310,6 +312,7 @@ Array [
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/swap",
+    "versionKey": "stableswap",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -418,6 +421,7 @@ Array [
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v1",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -526,6 +530,7 @@ Array [
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v2",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -639,6 +644,7 @@ Array [
     "treasury": "uniswap.js",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v3",
   },
 ]
 `;

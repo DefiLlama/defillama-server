@@ -254,6 +254,7 @@ Array [
     "treasury": "balancer.js",
     "twitter": "BalancerLabs",
     "url": "https://balancer.finance/",
+    "versionKey": "v1",
   },
   Object {
     "address": "0xba100000625a3754423978a60c9317c58a424e3d",
@@ -343,6 +344,7 @@ Array [
     "treasury": "balancer.js",
     "twitter": "BalancerLabs",
     "url": "https://balancer.finance/",
+    "versionKey": "v2",
   },
   Object {
     "address": "bsc:0x965f527d9159dce6288a2219db51fc6eef120dd1",
@@ -1145,6 +1147,7 @@ Array [
     "symbol": "KNC",
     "twitter": "KyberNetwork",
     "url": "https://kyberswap.com/#/swap",
+    "versionKey": "classic",
   },
   Object {
     "address": "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
@@ -1250,6 +1253,7 @@ Array [
     "symbol": "KNC",
     "twitter": "KyberNetwork",
     "url": "https://kyberswap.com/#/swap",
+    "versionKey": "elastic",
   },
   Object {
     "address": "bsc:0xB64E280e9D1B5DbEc4AcceDb2257A87b400DB149",
@@ -1951,6 +1955,7 @@ Array [
     "symbol": "QUICK",
     "twitter": "QuickswapDEX",
     "url": "https://quickswap.exchange/",
+    "versionKey": "v2",
   },
   Object {
     "address": "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
@@ -2035,6 +2040,7 @@ Array [
     "symbol": "QUICK",
     "twitter": "QuickswapDEX",
     "url": "https://quickswap.exchange/",
+    "versionKey": "v3",
   },
   Object {
     "address": "0x7a5d3A9Dcd33cb8D527f7b5F96EB4Fef43d55636",
@@ -2577,6 +2583,7 @@ Array [
     "treasury": "sushiswap.js",
     "twitter": "SushiSwap",
     "url": "https://sushi.com/",
+    "versionKey": "classic",
   },
   Object {
     "address": null,
@@ -2682,6 +2689,7 @@ Array [
     "symbol": "-",
     "twitter": "SushiSwap",
     "url": "https://www.sushi.com/swap",
+    "versionKey": "trident",
   },
   Object {
     "address": "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
@@ -2766,6 +2774,7 @@ Array [
     "treasury": "traderjoe.js",
     "twitter": "traderjoe_xyz",
     "url": "https://www.traderjoexyz.com",
+    "versionKey": "v1",
   },
   Object {
     "address": "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
@@ -2850,6 +2859,7 @@ Array [
     "symbol": "JOE",
     "twitter": "traderjoe_xyz",
     "url": "https://traderjoexyz.com/home",
+    "versionKey": "v2",
   },
   Object {
     "address": "optimism:0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
@@ -3387,6 +3397,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://v1exchange.pancakeswap.finance/",
+    "versionKey": "v1",
   },
   Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
@@ -3492,6 +3503,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/",
+    "versionKey": "v2",
   },
   Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
@@ -3592,6 +3604,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/swap",
+    "versionKey": "stableswap",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -3700,6 +3713,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v1",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -3808,6 +3822,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v2",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -3921,6 +3936,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "treasury": "uniswap.js",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v3",
   },
   Object {
     "address": null,
@@ -4083,6 +4099,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "AAVE",
     "twitter": "AaveAave",
     "url": "https://aave.com",
+    "versionKey": "v1",
   },
   Object {
     "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
@@ -4191,6 +4208,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "twitter": "AaveAave",
     "url": "https://aave.com
 ",
+    "versionKey": "v2",
   },
   Object {
     "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
@@ -4300,6 +4318,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "AAVE",
     "twitter": "AaveAave",
     "url": "https://aave.com",
+    "versionKey": "v3",
   },
   Object {
     "address": "0x090185f2135308bad17527004364ebcc2d37e5f6",
@@ -6489,6 +6508,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "-",
     "twitter": "opensea",
     "url": "https://opensea.io/",
+    "versionKey": "v1",
   },
   Object {
     "address": null,
@@ -6584,6 +6604,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "-",
     "twitter": "opensea",
     "url": "https://opensea.io/",
+    "versionKey": "v1",
   },
   Object {
     "address": null,
@@ -6679,6 +6700,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "-",
     "twitter": "opensea",
     "url": "https://opensea.io/",
+    "versionKey": "v1",
   },
   Object {
     "categories": Array [

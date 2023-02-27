@@ -1468,7 +1468,7 @@ Array [
       "id": "1289",
       "protocolsData": Object {
         "classic": Object {
-          "id": "2595",
+          "id": "1289",
         },
         "stable-amm": Object {
           "id": "2596",
@@ -1482,7 +1482,7 @@ Array [
     "forkedFrom": Array [
       "Uniswap",
     ],
-    "gecko_id": null,
+    "gecko_id": "beamswap",
     "id": "1289",
     "listedAt": 1642599283,
     "logo": "https://icons.llama.fi/beamswap.jpg",
@@ -1500,7 +1500,6 @@ Array [
     "oracles": Array [
       "DIA",
     ],
-    "parentProtocol": "Beamswap",
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
@@ -1548,13 +1547,13 @@ Array [
     "chains": Array [
       "moonbeam",
     ],
-    "cmcId": "17035",
+    "cmcId": null,
     "config": Object {
       "enabled": true,
       "id": "1289",
       "protocolsData": Object {
         "classic": Object {
-          "id": "2595",
+          "id": "1289",
         },
         "stable-amm": Object {
           "id": "2596",
@@ -1571,7 +1570,7 @@ Array [
     "gecko_id": null,
     "id": "1289",
     "listedAt": 1642599283,
-    "logo": "https://icons.llama.fi/beamswap.jpg",
+    "logo": "https://icons.llama.fi/beamswap-stable-amm.jpg",
     "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
@@ -1586,7 +1585,7 @@ Array [
     "oracles": Array [
       "DIA",
     ],
-    "parentProtocol": "Beamswap",
+    "parentProtocol": "BeamSwap",
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
@@ -9443,6 +9442,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "v3": Object {
         "chains": Array [
           "polygon",
+          "dogechain",
         ],
         "disabled": false,
         "methodology": Object {
@@ -9470,6 +9470,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "chain": "Polygon",
     "chains": Array [
       "polygon",
+      "dogechain",
     ],
     "cmcId": null,
     "config": Object {
@@ -9527,6 +9528,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "v3": Object {
         "chains": Array [
           "polygon",
+          "dogechain",
         ],
         "disabled": false,
         "methodology": Object {
@@ -11240,11 +11242,9 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
   },
   Object {
     "address": "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
-    "audit_links": Array [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf",
-    ],
+    "audit_links": Array [],
     "audit_note": null,
-    "audits": "2",
+    "audits": "0",
     "category": "Dexes",
     "chain": "Kava",
     "chains": Array [
@@ -11256,7 +11256,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "1868",
       "protocolsData": Object {
         "classic": Object {
-          "id": "2597",
+          "id": "1868",
         },
         "stable-amm": Object {
           "id": "2598",
@@ -11273,7 +11273,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "gecko_id": null,
     "id": "1868",
     "listedAt": 1656665210,
-    "logo": "https://icons.llama.fi/surfswap.png",
+    "logo": "https://icons.llama.fi/surfswap-classic.png",
     "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
@@ -11288,7 +11288,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "oracles": Array [
       "TWAP",
     ],
-    "parentProtocol": "SurfSwap",
+    "parentProtocol": "Surfswap",
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
@@ -11342,7 +11342,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "1868",
       "protocolsData": Object {
         "classic": Object {
-          "id": "2597",
+          "id": "1868",
         },
         "stable-amm": Object {
           "id": "2598",
@@ -11359,7 +11359,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "gecko_id": null,
     "id": "1868",
     "listedAt": 1656665210,
-    "logo": "https://icons.llama.fi/surfswap.png",
+    "logo": "https://icons.llama.fi/surfswap-stable-amm.png",
     "methodology": Object {
       "Fees": "Swap fees paid by users",
       "HoldersRevenue": "Money going to governance token holders",
@@ -11374,7 +11374,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "oracles": Array [
       "TWAP",
     ],
-    "parentProtocol": "SurfSwap",
+    "parentProtocol": "Surfswap",
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {

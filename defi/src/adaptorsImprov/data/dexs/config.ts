@@ -425,7 +425,7 @@ export default {
         "id": "1289",
         protocolsData: {
             "classic": {
-                id: "2595"
+                id: "1289"
             },
             "stable-amm": {
                 id: "2596"
@@ -672,7 +672,7 @@ export default {
         "id": "1868",
         protocolsData: {
             classic: {
-                "id": "2597"
+                "id": "1868"
             },
             "stable-amm": {
                 "id": "2598"

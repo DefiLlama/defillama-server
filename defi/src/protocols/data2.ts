@@ -18465,7 +18465,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2249",
-    name: "Dexible",
+    name: "Dexible V2",
     address: null,
     symbol: "-",
     url: "https://dexible.io",
@@ -18473,7 +18473,7 @@ const data2: Protocol[] = [
       " DeFi's execution management system. Dexible is a DEX aggregator that also provides algo and automated order types normally only seen in CeFi.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dexible.png`,
-    audits: "2",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

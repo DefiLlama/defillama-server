@@ -77,7 +77,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                     if (key)
                         baseModuleObject = moduleObject.breakdown[key]
                 }
-                const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
                 const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
                 const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
                 const infoItem = {
@@ -90,12 +89,12 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                     category: displayCategory,
                     chains: getChainsFromBaseAdapter(baseModuleObject),
                     disabled: configObj.disabled ?? false,
-                    displayName: configObj.displayName ?? displayName,
+                    displayName: configObj.displayName ?? dexFoundInProtocols.name,
                     protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category, overridesObj),
                     protocolType: adapterObj.module.default?.protocolType,
                     methodologyURL: adapterObj.codePath,
                     methodology: getMethodologyData(
-                        displayName,
+                        dexFoundInProtocols.name,
                         adapterKey,
                         moduleObject,
                         displayCategory ?? '',
@@ -117,16 +116,6 @@ function getDisplayCategory(adapter: Adapter, override: IOverrides[string]) {
         return override?.protocolsData?.[versionName]?.category
     }
     return override?.category
-}
-
-export function getDisplayName(name: string, adapter: Adapter) {
-    if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
-    if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
-        const versionName = Object.keys(adapter.breakdown)[0]
-        return `${name} - ${versionName.charAt(0).toUpperCase()}${versionName.slice(1)}`
-    }
-    if (adapter.protocolType === ProtocolType.CHAIN) return getChainDisplayName(name.toLowerCase(), true)
-    return name
 }
 
 function getLogoKey(key: string) {

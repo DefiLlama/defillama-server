@@ -26393,7 +26393,7 @@ const data2: Protocol[] = [
     description: "ZyberSwap V3's Concentrated Liquidity feature allows liquidity providers to focus their liquidity within a specific price range, resulting in increased capital efficiency and reduced impermanent loss. This feature is particularly beneficial for those looking to optimize their investment strategy and maximize returns, as it allows for more precise tracking of Total Value Locked (TVL) within a designated price range.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/zyberswap-v3.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

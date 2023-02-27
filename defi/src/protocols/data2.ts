@@ -26222,29 +26222,29 @@ const data2: Protocol[] = [
     treasury: "balancer.js",
     parentProtocol: "Balancer"
   },
-  // {
-  //   id: "2595",
-  //   name: "BeamSwap Classic",
-  //   address: "moonbeam:0xcd3B51D98478D53F4515A306bE565c6EebeF1D58",
-  //   symbol: "GLINT",
-  //   url: "https://beamswap.io",
-  //   description: "Defi Hub on Moonbeam",
-  //   chain: "Moonbeam",
-  //   logo: `${baseIconsUrl}/beamswap.jpg`,
-  //   audits: "2",
-  //   audit_note: null,
-  //   gecko_id: null,
-  //   cmcId: "17035",
-  //   category: "Dexes",
-  //   chains: ["Moonbeam"],
-  //   module: "beamswap/index.js",
-  //   twitter: "Beamswapio",
-  //   audit_links: ["https://docs.beamswap.io/contracts/audit"],
-  //   oracles: ["DIA"],
-  //   forkedFrom: ["Uniswap"],
-  //   listedAt: 1642599283,
-  //   parentProtocol: "Beamswap"
-  // },
+  {
+     id: "2595",
+     name: "BeamSwap Classic",
+     address: "moonbeam:0xcd3B51D98478D53F4515A306bE565c6EebeF1D58",
+     symbol: "GLINT",
+     url: "https://beamswap.io",
+     description: "Defi Hub on Moonbeam",
+     chain: "Moonbeam",
+     logo: `${baseIconsUrl}/beamswap.jpg`,
+     audits: "2",
+     audit_note: null,
+     gecko_id: null,
+     cmcId: null,
+     category: "Dexes",
+     chains: ["Moonbeam"],
+     module: "beamswap/index.js",
+     twitter: "Beamswapio",
+     audit_links: ["https://docs.beamswap.io/contracts/audit"],
+     oracles: ["DIA"],
+     forkedFrom: ["Uniswap"],
+     listedAt: 1642599283,
+     parentProtocol: "BeamSwap"
+  },
   {
     id: "2596",
     name: "BeamSwap Stable AMM",
@@ -26257,7 +26257,7 @@ const data2: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: null,
-    cmcId: "17035",
+    cmcId: null,
     category: "Dexes",
     chains: ["Moonbeam"],
     module: "beamswap-stableswap/index.js",
@@ -26266,9 +26266,9 @@ const data2: Protocol[] = [
     oracles: ["DIA"],
     forkedFrom: ["Uniswap"],
     listedAt: 1642599283,
-    parentProtocol: "Beamswap"
+    parentProtocol: "BeamSwap"
   },
-/*   {
+  {
     id: "2597",
     name: "Surfswap Classic",
     address: "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
@@ -26290,7 +26290,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf"],
     listedAt: 1656665210,
     parentProtocol: "SurfSwap"
-  }, */
+  },
   {
     id: "2598",
     name: "Surfswap Stable AMM",

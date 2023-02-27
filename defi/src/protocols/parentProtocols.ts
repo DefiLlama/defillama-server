@@ -956,6 +956,30 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LunarTechFdn",
   },
+  {
+    id: "BeamSwap",
+    name: "BeamSwap",
+    url: "https://beamswap.io",
+    description:
+    "Defi Hub on Moonbeam",
+    logo: `${baseIconsUrl}/beamswap.jpg`,
+    gecko_id: "beamswap",
+    cmcId: "17035",
+    chains: [],
+    twitter: "Beamswapio",
+  },
+  {
+    id: "SurfSwap",
+    name: "SurfSwap",
+    url: "https://surfdex.io/",
+    description:
+    "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
+    logo: `${baseIconsUrl}/surfswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SurfswapDEX",
+  },
 ];
 
 export default parentProtocols;

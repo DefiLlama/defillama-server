@@ -26270,6 +26270,7 @@ const data2: Protocol[] = [
     listedAt: 1642599283,
     parentProtocol: "BeamSwap"
   },
+  /*
   {
     id: "2597",
     name: "Surfswap Classic",
@@ -26293,6 +26294,7 @@ const data2: Protocol[] = [
     listedAt: 1656665210,
     parentProtocol: "SurfSwap"
   },
+  */
   {
     id: "2598",
     name: "Surfswap Stable AMM",

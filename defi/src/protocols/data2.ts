@@ -26384,5 +26384,27 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Shoebill-v1.0.pdf"],
     listedAt: 1677473337,
   },
+  {
+    id: "2602",
+    name: "Zyberswap V3",
+    address: null,
+    symbol: "-",
+    url: "https://www.zyberswap.io/",
+    description: "ZyberSwap V3's Concentrated Liquidity feature allows liquidity providers to focus their liquidity within a specific price range, resulting in increased capital efficiency and reduced impermanent loss. This feature is particularly beneficial for those looking to optimize their investment strategy and maximize returns, as it allows for more precise tracking of Total Value Locked (TVL) within a designated price range.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/zyberswap-v3.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "zyberswap-v3/index.js",
+    twitter: "ZyberSwap",
+    parentProtocol: "ZyberSwap",
+    listedAt: 1677500668
+  },
 ]
 export default data2;

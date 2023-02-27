@@ -969,8 +969,8 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Beamswapio",
   },
   {
-    id: "SurfSwap",
-    name: "SurfSwap",
+    id: "Surfswap",
+    name: "Surfswap",
     url: "https://surfdex.io/",
     description:
     "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",

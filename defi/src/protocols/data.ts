@@ -24639,6 +24639,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Buffer_Finance",
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Buffer-v1.0.pdf",
+      "https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2022.12.08%20-%20Final%20-%20Buffer%20Finance%20Audit%20Report.pdf"
     ],
     oracles: ["Chainlink"],
     forkedFrom: [],

@@ -60,7 +60,7 @@ Array [
       "https://github.com/BUIDLHub/dexible-contracts/blob/master/Audit%20Report%20-%20Dexible%20%5B16%20August%202021%5D.pdf",
     ],
     "audit_note": null,
-    "audits": "2",
+    "audits": "1",
     "category": "Dexes",
     "chain": "Ethereum",
     "chains": Array [
@@ -79,6 +79,7 @@ Array [
       "protocolsData": Object {
         "Dexible_v2": Object {
           "displayName": "Dexible V2",
+          "enabled": true,
           "id": "2249",
         },
       },
@@ -103,7 +104,7 @@ Array [
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/aggregators/dexible",
     "module": "dexible",
-    "name": "Dexible",
+    "name": "Dexible V2",
     "protocolType": undefined,
     "protocolsData": Object {
       "Dexible_v2": Object {
@@ -131,6 +132,7 @@ Array [
     "symbol": "-",
     "twitter": "DexibleApp",
     "url": "https://dexible.io",
+    "versionKey": "Dexible_v2",
   },
   Object {
     "address": null,

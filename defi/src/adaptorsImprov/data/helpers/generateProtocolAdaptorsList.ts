@@ -70,16 +70,17 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
         if (dexFoundInProtocolsArr.length > 0 && imports_obj[adapterKey].module.default) {
             return dexFoundInProtocolsArr.map((dexFoundInProtocols => {
                 let configObj = config[adapterKey]
+                let versionKey = undefined
                 const protData = config?.[adapterKey]?.protocolsData
                 if ('breakdown' in moduleObject) {
                     const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
                     configObj = vConfig ?? config[adapterKey]
-                    if (key)
+                    if (key) {
+                        versionKey = key
                         baseModuleObject = moduleObject.breakdown[key]
+                    }
                 }
-                const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
                 const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
-                const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
                 const infoItem = {
                     ...dexFoundInProtocols,
                     ...config[adapterKey],
@@ -87,22 +88,23 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                     id: config[adapterKey].id,
                     module: adapterKey,
                     config: config[adapterKey],
-                    category: displayCategory,
                     chains: getChainsFromBaseAdapter(baseModuleObject),
                     disabled: configObj.disabled ?? false,
-                    displayName: configObj.displayName ?? displayName,
+                    displayName: configObj.displayName ?? dexFoundInProtocols.name,
                     protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category, overridesObj),
                     protocolType: adapterObj.module.default?.protocolType,
                     methodologyURL: adapterObj.codePath,
-                    methodology: getMethodologyData(
-                        displayName,
-                        adapterKey,
-                        moduleObject,
-                        displayCategory ?? '',
-                        childCategories
-                    ),
                     ...overridesObj[adapterKey],
                 }
+                infoItem.methodology = getMethodologyData(
+                    dexFoundInProtocols.name,
+                    adapterKey,
+                    moduleObject,
+                    infoItem.category ?? '',
+                    childCategories
+                )
+                if (versionKey)
+                    infoItem.versionKey = versionKey
                 return infoItem
             }))
         }
@@ -110,24 +112,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
         console.error(`Missing info for ${adapterKey} on ${type}`)
         return undefined
     }).flat().filter(notUndefined);
-
-function getDisplayCategory(adapter: Adapter, override: IOverrides[string]) {
-    if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
-        const versionName = Object.keys(adapter.breakdown)[0]
-        return override?.protocolsData?.[versionName]?.category
-    }
-    return override?.category
-}
-
-export function getDisplayName(name: string, adapter: Adapter) {
-    if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
-    if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
-        const versionName = Object.keys(adapter.breakdown)[0]
-        return `${name} - ${versionName.charAt(0).toUpperCase()}${versionName.slice(1)}`
-    }
-    if (adapter.protocolType === ProtocolType.CHAIN) return getChainDisplayName(name.toLowerCase(), true)
-    return name
-}
 
 function getLogoKey(key: string) {
     if (key.toLowerCase() === 'bsc') return 'binance'

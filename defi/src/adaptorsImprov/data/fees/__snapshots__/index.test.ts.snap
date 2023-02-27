@@ -187,10 +187,12 @@ Array [
       "protocolsData": Object {
         "v1": Object {
           "displayName": "Balancer V1",
+          "enabled": true,
           "id": "2593",
         },
         "v2": Object {
           "displayName": "Balancer V2",
+          "enabled": true,
           "id": "2594",
         },
       },
@@ -254,6 +256,7 @@ Array [
     "treasury": "balancer.js",
     "twitter": "BalancerLabs",
     "url": "https://balancer.finance/",
+    "versionKey": "v1",
   },
   Object {
     "address": "0xba100000625a3754423978a60c9317c58a424e3d",
@@ -276,10 +279,12 @@ Array [
       "protocolsData": Object {
         "v1": Object {
           "displayName": "Balancer V1",
+          "enabled": true,
           "id": "2593",
         },
         "v2": Object {
           "displayName": "Balancer V2",
+          "enabled": true,
           "id": "2594",
         },
       },
@@ -343,6 +348,7 @@ Array [
     "treasury": "balancer.js",
     "twitter": "BalancerLabs",
     "url": "https://balancer.finance/",
+    "versionKey": "v2",
   },
   Object {
     "address": "bsc:0x965f527d9159dce6288a2219db51fc6eef120dd1",
@@ -1066,10 +1072,12 @@ Array [
       "protocolsData": Object {
         "classic": Object {
           "displayName": "KyberSwap - Classic",
+          "enabled": true,
           "id": "2591",
         },
         "elastic": Object {
           "displayName": "KyberSwap - Elastic",
+          "enabled": true,
           "id": "2592",
         },
       },
@@ -1145,6 +1153,7 @@ Array [
     "symbol": "KNC",
     "twitter": "KyberNetwork",
     "url": "https://kyberswap.com/#/swap",
+    "versionKey": "classic",
   },
   Object {
     "address": "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
@@ -1171,10 +1180,12 @@ Array [
       "protocolsData": Object {
         "classic": Object {
           "displayName": "KyberSwap - Classic",
+          "enabled": true,
           "id": "2591",
         },
         "elastic": Object {
           "displayName": "KyberSwap - Elastic",
+          "enabled": true,
           "id": "2592",
         },
       },
@@ -1250,6 +1261,7 @@ Array [
     "symbol": "KNC",
     "twitter": "KyberNetwork",
     "url": "https://kyberswap.com/#/swap",
+    "versionKey": "elastic",
   },
   Object {
     "address": "bsc:0xB64E280e9D1B5DbEc4AcceDb2257A87b400DB149",
@@ -1888,9 +1900,11 @@ Array [
       "protocolsData": Object {
         "v2": Object {
           "displayName": "Quickswap V2",
+          "enabled": true,
           "id": "306",
         },
         "v3": Object {
+          "enabled": true,
           "id": "2239",
         },
       },
@@ -1951,6 +1965,7 @@ Array [
     "symbol": "QUICK",
     "twitter": "QuickswapDEX",
     "url": "https://quickswap.exchange/",
+    "versionKey": "v2",
   },
   Object {
     "address": "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
@@ -1971,9 +1986,11 @@ Array [
       "protocolsData": Object {
         "v2": Object {
           "displayName": "Quickswap V2",
+          "enabled": true,
           "id": "306",
         },
         "v3": Object {
+          "enabled": true,
           "id": "2239",
         },
       },
@@ -2035,6 +2052,7 @@ Array [
     "symbol": "QUICK",
     "twitter": "QuickswapDEX",
     "url": "https://quickswap.exchange/",
+    "versionKey": "v3",
   },
   Object {
     "address": "0x7a5d3A9Dcd33cb8D527f7b5F96EB4Fef43d55636",
@@ -2492,9 +2510,11 @@ Array [
       "id": "119",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "119",
         },
         "trident": Object {
+          "enabled": true,
           "id": "2152",
         },
       },
@@ -2577,6 +2597,7 @@ Array [
     "treasury": "sushiswap.js",
     "twitter": "SushiSwap",
     "url": "https://sushi.com/",
+    "versionKey": "classic",
   },
   Object {
     "address": null,
@@ -2600,9 +2621,11 @@ Array [
       "id": "119",
       "protocolsData": Object {
         "classic": Object {
+          "enabled": true,
           "id": "119",
         },
         "trident": Object {
+          "enabled": true,
           "id": "2152",
         },
       },
@@ -2682,6 +2705,7 @@ Array [
     "symbol": "-",
     "twitter": "SushiSwap",
     "url": "https://www.sushi.com/swap",
+    "versionKey": "trident",
   },
   Object {
     "address": "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
@@ -2701,9 +2725,11 @@ Array [
       "id": "468",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "468",
         },
         "v2": Object {
+          "enabled": true,
           "id": "2393",
         },
       },
@@ -2766,6 +2792,7 @@ Array [
     "treasury": "traderjoe.js",
     "twitter": "traderjoe_xyz",
     "url": "https://www.traderjoexyz.com",
+    "versionKey": "v1",
   },
   Object {
     "address": "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
@@ -2786,9 +2813,11 @@ Array [
       "id": "468",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "468",
         },
         "v2": Object {
+          "enabled": true,
           "id": "2393",
         },
       },
@@ -2850,6 +2879,7 @@ Array [
     "symbol": "JOE",
     "twitter": "traderjoe_xyz",
     "url": "https://traderjoexyz.com/home",
+    "versionKey": "v2",
   },
   Object {
     "address": "optimism:0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
@@ -3307,6 +3337,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -3387,6 +3418,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://v1exchange.pancakeswap.finance/",
+    "versionKey": "v1",
   },
   Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
@@ -3412,6 +3444,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -3492,6 +3525,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/",
+    "versionKey": "v2",
   },
   Object {
     "address": "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
@@ -3513,6 +3547,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
         },
         "v1": Object {
           "disabled": true,
+          "enabled": true,
           "id": "2590",
         },
         "v2": Object {
@@ -3592,6 +3627,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/swap",
+    "versionKey": "stableswap",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -3700,6 +3736,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v1",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -3808,6 +3845,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v2",
   },
   Object {
     "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
@@ -3921,6 +3959,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "treasury": "uniswap.js",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
+    "versionKey": "v3",
   },
   Object {
     "address": null,
@@ -3996,12 +4035,15 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "id": "111",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "1838",
         },
         "v2": Object {
+          "enabled": true,
           "id": "111",
         },
         "v3": Object {
+          "enabled": true,
           "id": "1599",
         },
       },
@@ -4009,7 +4051,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     },
     "description": "Earn interest, borrow assets, and build applications",
     "disabled": false,
-    "displayName": "AAVE",
+    "displayName": "AAVE V1",
     "enabled": true,
     "forkedFrom": Array [],
     "gecko_id": null,
@@ -4083,6 +4125,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "AAVE",
     "twitter": "AaveAave",
     "url": "https://aave.com",
+    "versionKey": "v1",
   },
   Object {
     "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
@@ -4104,12 +4147,15 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "id": "111",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "1838",
         },
         "v2": Object {
+          "enabled": true,
           "id": "111",
         },
         "v3": Object {
+          "enabled": true,
           "id": "1599",
         },
       },
@@ -4117,7 +4163,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     },
     "description": "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
     "disabled": false,
-    "displayName": "AAVE",
+    "displayName": "AAVE V2",
     "enabled": true,
     "gecko_id": "aave",
     "id": "111",
@@ -4191,6 +4237,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "twitter": "AaveAave",
     "url": "https://aave.com
 ",
+    "versionKey": "v2",
   },
   Object {
     "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
@@ -4215,12 +4262,15 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "id": "111",
       "protocolsData": Object {
         "v1": Object {
+          "enabled": true,
           "id": "1838",
         },
         "v2": Object {
+          "enabled": true,
           "id": "111",
         },
         "v3": Object {
+          "enabled": true,
           "id": "1599",
         },
       },
@@ -4228,7 +4278,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     },
     "description": "Earn interest, borrow assets, and build applications",
     "disabled": false,
-    "displayName": "AAVE",
+    "displayName": "AAVE V3",
     "enabled": true,
     "forkedFrom": Array [],
     "gecko_id": null,
@@ -4300,6 +4350,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "AAVE",
     "twitter": "AaveAave",
     "url": "https://aave.com",
+    "versionKey": "v3",
   },
   Object {
     "address": "0x090185f2135308bad17527004364ebcc2d37e5f6",
@@ -4809,7 +4860,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
   Object {
     "address": "arbitrum:0x1A5B0aaF478bf1FDA7b934c76E7692D722982a6D",
     "audit_links": Array [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Buffer-v1.0.pdf",
+      "https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2022.12.08%20-%20Final%20-%20Buffer%20Finance%20Audit%20Report.pdf",
     ],
     "audit_note": null,
     "audits": "2",
@@ -5580,7 +5631,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "audit_note": null,
     "audits": "0",
-    "category": "Liquid Staking",
+    "category": "NFT Marketplace",
     "chain": "NEO",
     "chains": Array [
       "neo",
@@ -5617,7 +5668,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "HoldersRevenue": "20% of user fees goes to GFUND single stake pool",
       "ProtocolRevenue": "Protocol gets 2% of each trade",
       "Revenue": "Revenue is 2% of each trade",
-      "SupplySideRevenue": "Revenue earned by stETH holders",
       "UserFees": "Users pay 2% fees on each trade",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/ghostmarket",
@@ -6415,14 +6465,17 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "protocolsData": Object {
         "seaport": Object {
           "displayName": "Opensea Seaport",
+          "enabled": true,
           "id": "2258",
         },
         "v1": Object {
           "displayName": "Opensea V1",
+          "enabled": true,
           "id": "2258",
         },
         "v2": Object {
           "displayName": "Opensea V2",
+          "enabled": true,
           "id": "2258",
         },
       },
@@ -6490,6 +6543,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "-",
     "twitter": "opensea",
     "url": "https://opensea.io/",
+    "versionKey": "v1",
   },
   Object {
     "address": null,
@@ -6510,14 +6564,17 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "protocolsData": Object {
         "seaport": Object {
           "displayName": "Opensea Seaport",
+          "enabled": true,
           "id": "2258",
         },
         "v1": Object {
           "displayName": "Opensea V1",
+          "enabled": true,
           "id": "2258",
         },
         "v2": Object {
           "displayName": "Opensea V2",
+          "enabled": true,
           "id": "2258",
         },
       },
@@ -6585,6 +6642,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "-",
     "twitter": "opensea",
     "url": "https://opensea.io/",
+    "versionKey": "v1",
   },
   Object {
     "address": null,
@@ -6605,14 +6663,17 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "protocolsData": Object {
         "seaport": Object {
           "displayName": "Opensea Seaport",
+          "enabled": true,
           "id": "2258",
         },
         "v1": Object {
           "displayName": "Opensea V1",
+          "enabled": true,
           "id": "2258",
         },
         "v2": Object {
           "displayName": "Opensea V2",
+          "enabled": true,
           "id": "2258",
         },
       },
@@ -6680,6 +6741,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "symbol": "-",
     "twitter": "opensea",
     "url": "https://opensea.io/",
+    "versionKey": "v1",
   },
   Object {
     "categories": Array [
@@ -7300,7 +7362,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "id": "1659",
     },
     "disabled": false,
-    "displayName": "Gnosis",
+    "displayName": "xDai",
     "enabled": true,
     "geckoId": "gnosis",
     "gecko_id": "gnosis",

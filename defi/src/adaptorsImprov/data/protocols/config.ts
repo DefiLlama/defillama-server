@@ -27,6 +27,7 @@ export default {
         protocolsData: {
             v1: {
                 "disabled": true,
+                enabled: true,
                 "id": "2590"
             },
             v2: {

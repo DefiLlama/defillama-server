@@ -7,11 +7,13 @@ export default {
         protocolsData: {
             v1: {
                 id: "2593",
-                displayName: "Balancer V1"
+                displayName: "Balancer V1",
+                enabled: true,
             },
             v2: {
                 id: "2594",
-                displayName: "Balancer V2"
+                displayName: "Balancer V2",
+                enabled: true,
             }
         }
     },
@@ -20,10 +22,12 @@ export default {
         "id": "162",
         protocolsData: {
             v3: {
-                id: "1995"
+                id: "1995",
+                enabled: true,
             },
             "v2.1": {
-                id: "162"
+                id: "162",
+                enabled: true,
             }
         }
     },
@@ -41,6 +45,7 @@ export default {
         protocolsData: {
             v1: {
                 "disabled": true,
+                enabled: true,
                 "id": "2590"
             },
             v2: {
@@ -80,9 +85,11 @@ export default {
         "id": "468",
         protocolsData: {
             v1: {
+                enabled: true,
                 id: "468"
             },
             v2: {
+                enabled: true,
                 id: "2393"
             }
         }
@@ -92,9 +99,11 @@ export default {
         "id": "119",
         protocolsData: {
             classic: {
+                enabled: true,
                 id: "119"
             },
             trident: {
+                enabled: true,
                 id: "2152"
             }
         }
@@ -160,9 +169,11 @@ export default {
         protocolsData: {
             v2: {
                 id: "306",
+                enabled: true,
                 displayName: "Quickswap V2"
             },
             v3: {
+                enabled: true,
                 id: "2239"
             }
         }
@@ -189,10 +200,12 @@ export default {
         protocolsData: {
             classic: {
                 id: "2591",
+                enabled: true,
                 displayName: "KyberSwap - Classic"
             },
             elastic: {
                 id: "2592",
+                enabled: true,
                 displayName: "KyberSwap - Elastic"
             }
         }
@@ -259,6 +272,7 @@ export default {
         protocolsData: {
             "0x RFQ": {
                 "id": "2116",
+                enabled: true,
                 displayName: "0x - RFQ"
             }
         }
@@ -425,10 +439,12 @@ export default {
         "id": "1289",
         protocolsData: {
             "classic": {
-                id: "2595"
+                id: "1289",
+                enabled: true,
             },
             "stable-amm": {
-                id: "2596"
+                id: "2596",
+                enabled: true,
             }
         }
     },
@@ -523,10 +539,12 @@ export default {
             v1: {
                 "disabled": true,
                 "id": "1225",
-                displayName: "VoltSwap V1"
+                displayName: "VoltSwap V1",
+                enabled: true,
             },
             v2: {
                 id: "2133",
+                enabled: true,
             }
         },
         "id": "1225"
@@ -672,10 +690,12 @@ export default {
         "id": "1868",
         protocolsData: {
             classic: {
-                "id": "2597"
+                "id": "1868",
+                enabled: true,
             },
             "stable-amm": {
-                "id": "2598"
+                "id": "2598",
+                enabled: true,
             }
         }
     },

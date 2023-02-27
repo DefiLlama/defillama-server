@@ -12,6 +12,7 @@ export default {
         protocolsData: {
             Dexible_v2: {
                 "id": "2249",
+                enabled: true,
                 displayName: "Dexible V2"
             }
         }

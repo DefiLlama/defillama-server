@@ -25,7 +25,8 @@ export default {
         "id": "285",
         protocolsData: {
             gamma: {
-                id: "285"
+                id: "285",
+                enabled: false,
             }
         }
     }

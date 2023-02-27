@@ -807,5 +807,8 @@ export default {
     },
     "megaton-finance": {
         enabled: true
+    },
+    "alienfi": {
+        enabled: true
     }
 } as AdaptorsConfig

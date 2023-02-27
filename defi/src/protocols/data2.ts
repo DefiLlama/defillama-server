@@ -10079,7 +10079,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap"],
     module: "surfswap/index.js",
     twitter: "SurfswapDEX",
-    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Beamswap-v1.0.pdf"],
+    audit_links: ["https://surfswap.gitbook.io/surfswap/contracts/audits"],
     listedAt: 1656665210
   },
   {
@@ -26310,7 +26310,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap"],
     module: "surfswap-stableswap/index.js",
     twitter: "SurfswapDEX",
-    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf"],
+    audit_links: ["https://surfswap.gitbook.io/surfswap/contracts/audits"],
     listedAt: 1656665210,
     parentProtocol: "SurfSwap"
   },

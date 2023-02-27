@@ -1468,10 +1468,11 @@ Array [
       "id": "1289",
       "protocolsData": Object {
         "classic": Object {
-          "id": "2595",
+          "id": "1289",
         },
         "stable-amm": Object {
           "id": "2596",
+          "parentProtocol": "Beamswap",
         },
       },
     },
@@ -1482,7 +1483,7 @@ Array [
     "forkedFrom": Array [
       "Uniswap",
     ],
-    "gecko_id": null,
+    "gecko_id": "beamswap",
     "id": "1289",
     "listedAt": 1642599283,
     "logo": "https://icons.llama.fi/beamswap.jpg",
@@ -1500,7 +1501,6 @@ Array [
     "oracles": Array [
       "DIA",
     ],
-    "parentProtocol": "Beamswap",
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
@@ -1554,10 +1554,11 @@ Array [
       "id": "1289",
       "protocolsData": Object {
         "classic": Object {
-          "id": "2595",
+          "id": "1289",
         },
         "stable-amm": Object {
           "id": "2596",
+          "parentProtocol": "Beamswap",
         },
       },
     },
@@ -9443,6 +9444,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "v3": Object {
         "chains": Array [
           "polygon",
+          "dogechain",
         ],
         "disabled": false,
         "methodology": Object {
@@ -9470,6 +9472,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "chain": "Polygon",
     "chains": Array [
       "polygon",
+      "dogechain",
     ],
     "cmcId": null,
     "config": Object {
@@ -9527,6 +9530,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "v3": Object {
         "chains": Array [
           "polygon",
+          "dogechain",
         ],
         "disabled": false,
         "methodology": Object {
@@ -11241,7 +11245,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
   Object {
     "address": "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
     "audit_links": Array [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf",
+      "https://surfswap.gitbook.io/surfswap/contracts/audits",
     ],
     "audit_note": null,
     "audits": "2",
@@ -11256,7 +11260,8 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "1868",
       "protocolsData": Object {
         "classic": Object {
-          "id": "2597",
+          "id": "1868",
+          "parentProtocol": "SurfSwap",
         },
         "stable-amm": Object {
           "id": "2598",
@@ -11327,7 +11332,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
   Object {
     "address": "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
     "audit_links": Array [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf",
+      "https://surfswap.gitbook.io/surfswap/contracts/audits",
     ],
     "audit_note": null,
     "audits": "2",
@@ -11342,7 +11347,8 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "id": "1868",
       "protocolsData": Object {
         "classic": Object {
-          "id": "2597",
+          "id": "1868",
+          "parentProtocol": "SurfSwap",
         },
         "stable-amm": Object {
           "id": "2598",

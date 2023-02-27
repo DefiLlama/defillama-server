@@ -26428,7 +26428,7 @@ const data2: Protocol[] = [
     listedAt: 1677501969
   },
   {
-    id: "2602",
+    id: "2604",
     name: "DSU Money",
     address: "0x24aE124c4CC33D6791F8E8B63520ed7107ac8b3e",
     symbol: "ESS",

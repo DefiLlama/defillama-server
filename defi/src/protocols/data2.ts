@@ -25477,8 +25477,8 @@ const data2: Protocol[] = [
   {
     id: "2562",
     name: "Defi Master",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x2a6631feFdf10025C8A2240A3E740B9846285BF6",
+    symbol: "BST",
     url: "https://defimaster.pro",
     description:
       "Farm Booster On Arbitrum, Zero Fees",

@@ -78,7 +78,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                         baseModuleObject = moduleObject.breakdown[key]
                 }
                 const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
-                const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
                 const infoItem = {
                     ...dexFoundInProtocols,
                     ...config[adapterKey],
@@ -86,22 +85,21 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                     id: config[adapterKey].id,
                     module: adapterKey,
                     config: config[adapterKey],
-                    category: displayCategory,
                     chains: getChainsFromBaseAdapter(baseModuleObject),
                     disabled: configObj.disabled ?? false,
                     displayName: configObj.displayName ?? dexFoundInProtocols.name,
                     protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category, overridesObj),
                     protocolType: adapterObj.module.default?.protocolType,
                     methodologyURL: adapterObj.codePath,
-                    methodology: getMethodologyData(
-                        dexFoundInProtocols.name,
-                        adapterKey,
-                        moduleObject,
-                        displayCategory ?? '',
-                        childCategories
-                    ),
                     ...overridesObj[adapterKey],
                 }
+                infoItem.methodology = getMethodologyData(
+                    dexFoundInProtocols.name,
+                    adapterKey,
+                    moduleObject,
+                    infoItem.category ?? '',
+                    childCategories
+                )
                 return infoItem
             }))
         }
@@ -109,14 +107,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
         console.error(`Missing info for ${adapterKey} on ${type}`)
         return undefined
     }).flat().filter(notUndefined);
-
-function getDisplayCategory(adapter: Adapter, override: IOverrides[string]) {
-    if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
-        const versionName = Object.keys(adapter.breakdown)[0]
-        return override?.protocolsData?.[versionName]?.category
-    }
-    return override?.category
-}
 
 function getLogoKey(key: string) {
     if (key.toLowerCase() === 'bsc') return 'binance'

@@ -4455,7 +4455,7 @@ Array [
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Derivatives",
+    "category": "Dexes",
     "chain": "Binance",
     "chains": Array [
       "arbitrum",

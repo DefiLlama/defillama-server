@@ -5580,7 +5580,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "audit_note": null,
     "audits": "0",
-    "category": "Liquid Staking",
+    "category": "NFT Marketplace",
     "chain": "NEO",
     "chains": Array [
       "neo",
@@ -5617,7 +5617,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "HoldersRevenue": "20% of user fees goes to GFUND single stake pool",
       "ProtocolRevenue": "Protocol gets 2% of each trade",
       "Revenue": "Revenue is 2% of each trade",
-      "SupplySideRevenue": "Revenue earned by stETH holders",
       "UserFees": "Users pay 2% fees on each trade",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/ghostmarket",

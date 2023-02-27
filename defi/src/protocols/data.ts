@@ -24328,7 +24328,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1289",
-    name: "BeamSwap",
+    name: "BeamSwap Classic",
     address: "moonbeam:0xcd3B51D98478D53F4515A306bE565c6EebeF1D58",
     symbol: "GLINT",
     url: "https://beamswap.io",

@@ -215,7 +215,7 @@ const data: Protocol[] = [
     gecko_id: "balancer",
     cmcId: "5728",
     category: "Dexes",
-    chains: ["Ethereum", "Polygon", "Arbitrum"],
+    chains: ["Ethereum"],
     module: "balancer-v1/index.js",
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],

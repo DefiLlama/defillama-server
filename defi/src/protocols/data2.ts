@@ -26135,6 +26135,7 @@ const data2: Protocol[] = [
     parentProtocol: "PancakeSwap",
     oracles: [],
   },
+  /*
   {
     id: "2591",
     name: "KyberSwap - Classic",
@@ -26667,6 +26668,28 @@ const data2: Protocol[] = [
     module: "grappa-finance/index.js",
     twitter: "grappafinance",
     listedAt: 1677611970
+  },
+  {
+    id: "2615",
+    name: "KyberSwap Elastic",
+    address: "0xdefa4e8a7bcba345f687a2f1456f5edd9ce97202",
+    symbol: "KNC",
+    url: "https://kyberswap.com/#/swap",
+    description:
+      "KyberSwap is both a decentralized exchange (DEX) aggregator and a liquidity source with capital-efficient liquidity pools that earns fees for liquidity providers",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/kyberswap-elastic.png`,
+    audits: null,
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum", "Polygon", "Binance", "Avalanche"],
+    module: "kyber/index.js",
+    twitter: "KyberNetwork",
+    audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],
+    oracles: ["Chainlink", "Band"],
+    parentProtocol: "KyberSwap"
   },
 ]
 export default data2;

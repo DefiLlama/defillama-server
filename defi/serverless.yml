@@ -623,6 +623,13 @@ functions:
       - http:
           path: emissions/{protocol}
           method: get
+  emissionsDev:
+    handler: src/getEmissionsDev.default
+    timeout: 30
+    events:
+      - http:
+          path: emissionsDev/{protocol}
+          method: get
 
 resources:
   # CORS for api gateway errors

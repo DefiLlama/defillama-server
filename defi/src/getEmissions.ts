@@ -4,40 +4,27 @@ import {
   errorResponse,
   successResponse,
 } from "./utils/shared";
-import fs from "fs";
-import path from "path";
+import { createChartData } from "./emissions/utils/convertToChartData";
+import { createRawSections } from "./emissions/utils/convertToRawData";
+import adapters from "./emissions/protocols";
+import { ChartSection, Protocol } from "./emissions/types/adapters";
 
 const handler = async (event: any): Promise<IResponse> => {
   const protocolName: string = event.pathParameters?.protocol?.toLowerCase();
-
-  try {
-    const data = JSON.parse(
-      fs.readFileSync(
-        path.join(__dirname, `./emissions/charts/${protocolName}.json`),
-        "utf8",
-      ),
-    );
-    return successResponse(data);
-  } catch (e) {
-    if (
-      typeof e == "object" &&
-      e != null &&
-      "message" in e &&
-      typeof e.message == "string"
-    )
-      return errorResponse({
-        message: `protocol '${protocolName}' has no chart to fetch: ${e.message}`,
-      });
+  const adapter: Protocol = (adapters as any)[protocolName];
+  if (!adapter) {
     return errorResponse({
-      message: `protocol '${protocolName}' has no chart to fetch and no error message could be returned`,
+      message: `The passed protocol name is invalid. Make sure '${adapter}' is a key of './emissions/protocols/index.ts`,
     });
   }
+  const { rawSections, startTime, endTime } = await createRawSections(adapter);
+  const data = createChartData(rawSections, startTime, endTime, false).map(
+    (s: ChartSection) => ({
+      label: s.section,
+      data: s.data.apiData,
+    }),
+  );
+  return successResponse({ data });
 };
 
 export default wrap(handler);
-
-// async function main() {
-//   let a = await handler({ pathParameters: { protocol: "ave" } });
-//   return;
-// }
-// main(); // ts-node defi/src/getEmissions.ts

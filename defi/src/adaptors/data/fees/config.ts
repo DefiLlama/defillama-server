@@ -334,5 +334,8 @@ export default {
     },
     "frax-fpi": {
         enabled: true
+    },
+    "zora": {
+        enabled: true
     }
 } as AdaptorsConfig

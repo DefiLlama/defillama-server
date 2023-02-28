@@ -22129,8 +22129,8 @@ const data2: Protocol[] = [
   {
     id: "2413",
     name: "Decryption",
-    address: "tlchain:0x06eE03F843D057216e27A5c9790780bb00866060",
-    symbol: "TLX",
+    address: "tlchain:0x24d8421cE5709AE8e957Cf0FA046622CA599411c",
+    symbol: "X",
     url: "https://decryption.com/dex",
     description:
       "Discover the potential of your assets, in Decryption DEX Profit gained every second that can be withdrawn at any time.",

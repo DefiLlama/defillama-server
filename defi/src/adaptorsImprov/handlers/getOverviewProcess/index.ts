@@ -40,7 +40,6 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'methodology'
     | 'allAddresses'
 > & {
-    protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null
     recordsMap: IJSON<AdaptorRecord> | null
     totalAllTime: number | null
@@ -68,7 +67,7 @@ export type ExtraTypes = {
     dailyPremiumVolume?: number | null
 }
 
-export type ProtocolStats = IJSON<(NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)>
+export type ProtocolStats = IJSON<(NonNullable<IGeneralStats>)>
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.DEXS]: AdaptorRecordType.dailyVolume,

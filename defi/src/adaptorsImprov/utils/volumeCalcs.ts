@@ -230,44 +230,6 @@ const formatNdChangeNumber = (number: number | null) => {
     return Math.round((number + Number.EPSILON) * 100) / 100
 }
 
-export const getStatsByProtocolVersion = (volumes: AdaptorRecord[], prevDayTimestamp: number, protocolData: NonNullable<ProtocolAdaptor['protocolsData']>) => {
-    const raw = volumes.reduce((accVols, volume) => {
-        for (const [chain, protocolsData] of Object.entries(volume.data)) {
-            if (typeof protocolsData === 'number') return accVols
-            const protocolNames = Object.keys(protocolsData)
-            for (const protocolName of protocolNames) {
-                if (!accVols[protocolName]) accVols[protocolName] = {}
-                const accData = accVols[protocolName][String(volume.timestamp)]?.data
-                let accChain = accData?.[chain]
-                if (typeof accChain === 'number') accChain = {}
-                accVols[protocolName][String(volume.timestamp)] = new AdaptorRecord(volume.type, volume.adaptorId, volume.timestamp, {
-                    ...accData,
-                    [chain]: {
-                        ...accChain,
-                        [protocolName]: protocolsData[protocolName]
-                    }
-                })
-            }
-        }
-        return accVols
-    }, {} as IJSON<IJSON<AdaptorRecord>>)
-    const summaryByProtocols = Object.entries(raw).reduce((acc, [protVersion, protVolumes]) => {
-        const prevDayVolume = protVolumes[prevDayTimestamp]
-        acc[protVersion] = {
-            total24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data, protVersion) : protocolData[protVersion].disabled ? null : 0,
-            change_1d: calcNdChange(protVolumes, 1, prevDayTimestamp),
-            change_7d: calcNdChange(protVolumes, 7, prevDayTimestamp),
-            change_1m: calcNdChange(protVolumes, 30, prevDayTimestamp),
-            ...getWoWStats([{
-                recordsMap: protVolumes
-            }], undefined, prevDayTimestamp),
-            breakdown24h: null
-        }
-        return acc
-    }, {} as IJSON<IGeneralStats>)
-    return summaryByProtocols
-}
-
 export {
     sumAllVolumes,
     getSumAllDexsToday,

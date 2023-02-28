@@ -20645,8 +20645,8 @@ const data2: Protocol[] = [
   {
     id: "2348",
     name: "InfiniTORR",
-    address: null,
-    symbol: "-",
+    address: "bittorrent:0x195ca22a177e6ed905c469f4f64cf67e819f49c2",
+    symbol: "TORR",
     url: "https://www.torrswap.io/",
     description:
       "InfiniTORR is designed to be a Dapps hub, for Dapps built on the BitTorrent Chain Network (BTTC). The core Dapp of InfiniTORR is heavily inspired by popular Lobby based projects such as Hex, T2X and others. The InfiniTORR Team changes up these Traditional Auction Lobby structures and adds new layers of FOMO to the mix, creating exciting, fresh new experiences for our users. Our first product is TorrSwap, our main dex",
@@ -20654,7 +20654,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/infinitorr.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "infinitorr",
     cmcId: null,
     category: "Dexes",
     chains: ["Bittorrent"],
@@ -20870,8 +20870,8 @@ const data2: Protocol[] = [
   {
     id: "2358",
     name: "Dexit Finance Swap",
-    address: null,
-    symbol: "-",
+    address: "bsc:0x2b2ff80c489dad868318a19fd6f258889a026da5",
+    symbol: "DXT",
     url: "https://dexit.finance/swap/",
     description:
       "AMM DEX on Dexit Network",
@@ -21055,8 +21055,8 @@ const data2: Protocol[] = [
   {
     id: "2366",
     name: "NEOPIN Staking",
-    address: null,
-    symbol: "-",
+    address: "klaytn:0xe06597d02a2c3aa7a9708de2cfa587b128bd3815",
+    symbol: "NPT",
     url: "https://app.neopin.io/staking",
     description:
       "Earn rewards by safely delegating your crypto assets to one of the leading node validators NEOPIN.",
@@ -21145,7 +21145,7 @@ const data2: Protocol[] = [
   {
     id: "2370",
     name: "Proteo Defi",
-    address: null,
+    address: "elrond:PROTEO-0c7311",
     symbol: "-",
     url: "https://dapp.proteodefi.com",
     description:
@@ -21154,8 +21154,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/proteo-defi.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "proteo-defi",
+    cmcId: "22439",
     category: "Farm",
     chains: ["Elrond"],
     module: "proteo-farms/index.js",
@@ -21398,8 +21398,8 @@ const data2: Protocol[] = [
   {
     id: "2381",
     name: "Genius Yield",
-    address: null,
-    symbol: "-",
+    address: "cardano:dda5fdb1002f7389b33e036b6afee82a8189becb6cba852e8b79b4fb",
+    symbol: "GENS",
     url: "https://www.geniusyield.co",
     description:
       "Bringing the power of yield optimization to your fingertips. Less hassle, minimize risk, maximize profits.",
@@ -21407,8 +21407,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/genius-yield.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "genius-yield",
+    cmcId: "15709",
     category: "Dexes",
     chains: ["Cardano"],
     module: "genius-yield/index.js",
@@ -21420,8 +21420,8 @@ const data2: Protocol[] = [
   {
     id: "2382",
     name: "Tender Finance",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xc47d9753f3b32aa9548a7c3f30b6aec3b2d2798c",
+    symbol: "TND",
     url: "https://www.tender.fi",
     description:
       " Tender Finance is an innovative open-source decentralized protocol for borrowing and lending. It will support whole-portfolio collateralization, starting with GMX and GLP, and a novel mechanism for collateralizing long-tail assets.",
@@ -21429,8 +21429,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/tender-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "tender-fi",
+    cmcId: "23170",
     category: "Lending",
     chains: ["Arbitrum"],
     module: "tender-finance/index.js",
@@ -21742,8 +21742,8 @@ const data2: Protocol[] = [
   {
     id: "2396",
     name: "BlueMove",
-    address: null,
-    symbol: "-",
+    address: "aptos:0x27fafcc4e39daac97556af8a803dbb52bcb03f0821898dc845ac54225b9793eb::move_coin::MoveCoin",
+    symbol: "MOVE",
     url: "https://bluemove.net",
     description:
       "The leading Multi-chain NFT Marketplace on Aptos & Sui Blockchain.",
@@ -21751,8 +21751,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/bluemove.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "bluemove",
+    cmcId: "23359",
     category: "NFT Marketplace",
     chains: ["Aptos"],
     module: "blue-move-mart/index.js",
@@ -21882,8 +21882,8 @@ const data2: Protocol[] = [
   {
     id: "2402",
     name: "Veno Finance",
-    address: null,
-    symbol: "-",
+    address: "cronos:0xdb7d0a1ec37de1de924f8e8adac6ed338d4404e9",
+    symbol: "VNO",
     url: "https://veno.finance/",
     description:
       "Easy and Reliable Liquid Staking on Cronos chain",
@@ -21891,8 +21891,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/veno-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "veno-finance",
+    cmcId: "23295",
     category: "Liquid Staking",
     chains: ["Cronos"],
     module: "venofinance/index.js",
@@ -22915,8 +22915,8 @@ const data2: Protocol[] = [
   {
     id: "2448",
     name: "SteakHut Liquidity",
-    address: null,
-    symbol: "-",
+    address: "avax:0xb279f8dd152b99ec1d84a489d32c35bc0c7f5674",
+    symbol: "STEAK",
     url: "https://www.steakhut.finance",
     description:
       "Automate and optimize concentrated liquidity.",
@@ -23168,8 +23168,8 @@ const data2: Protocol[] = [
   {
     id: "2459",
     name: "Neutra Finance",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xda51015b73ce11f77a115bb1b8a7049e02ddecf0",
+    symbol: "NEU",
     url: "https://neutra.finance",
     description:
       "Delivering risk-hedged, sustainable investment strategies easily accessible for anyone, anywhere.",
@@ -23177,8 +23177,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/neutra-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "neutra-finance",
+    cmcId: "23296",
     category: "Yield",
     chains: ["Arbitrum"],
     module: "neutra-finance/index.js",
@@ -23301,8 +23301,8 @@ const data2: Protocol[] = [
   {
     id: "2465",
     name: "Tethys Perpetual",
-    address: null,
-    symbol: "-",
+    address: "metis:0x69fdb77064ec5c84fa2f21072973eb28441f43f3",
+    symbol: "TETHYS",
     url: "https://tethys.finance/#/trade",
     description:
       "A decentralized perpetual exchange to offer $METIS leverage trading, trade up to 50x leverage",
@@ -25120,8 +25120,8 @@ const data2: Protocol[] = [
   {
     id: "2546",
     name: "NFTEarth",
-    address: null,
-    symbol: "-",
+    address: "0x0f9b80fc3c8b9123d0aef43df58ebdbc034a8901",
+    symbol: "NFTE",
     url: "https://nftearth.exchange",
     description:
       "Buy and Sell NFTs on L2.",
@@ -25129,7 +25129,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/nftearth.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "nftearth",
     cmcId: null,
     category: "NFT Marketplace",
     chains: ["Ethereum"],
@@ -25229,7 +25229,7 @@ const data2: Protocol[] = [
   {
     id: "2551",
     name: "Ashswap",
-    address: "elrond:a642d1",
+    address: "elrond:ASH-a642d1",
     symbol: "ASH",
     url: "https://app.ashswap.io/swap/",
     description:
@@ -25387,8 +25387,8 @@ const data2: Protocol[] = [
   {
     id: "2558",
     name: "Pine Protocol",
-    address: null,
-    symbol: "-",
+    address: "0x569424c5ee13884a193773fdc5d1c5f79c443a51",
+    symbol: "PINE",
     url: "https://pine.loans",
     description:
       "Non-custodial decentralized asset-backed lending protocol that allows borrowers to borrow fungible digital tokens from lenders using non-fungible tokens as collateral.",
@@ -25396,8 +25396,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/pine-protocol.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "pine",
+    cmcId: "22698",
     category: "NFT Lending",
     chains: ["Ethereum"],
     module: "pine-protocol/index.js",
@@ -25682,8 +25682,8 @@ const data2: Protocol[] = [
   {
     id: "2571",
     name: "Mosquitos Finance",
-    address: null,
-    symbol: "-",
+    address: "aptos:0x4db735a9d57f0ed393e44638540efc8e2ef2dccca3bd30c29bd09353b6285832::MosquitoCoin::SUCKR",
+    symbol: "SUCKR",
     url: "https://app.mosquitos.finance",
     description:
       "Mosquitos Finance is a decentralized exchange with the most advanced perpetual yield farm running on Aptos Chain with lots of other curated features that let you earn additional rewards and enjoy the ecosystem. $SUCKR",
@@ -25691,7 +25691,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/mosquitos-finance.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "mosquitos-finance",
     cmcId: null,
     category: "Yield",
     chains: ["Aptos"],
@@ -25795,8 +25795,8 @@ const data2: Protocol[] = [
   {
     id: "2576",
     name: "Goledo",
-    address: null,
-    symbol: "-",
+    address: "conflux:0xa4b59aa3de2af57959c23e2c9c89a2fcb408ce6a",
+    symbol: "GOL",
     url: "https://www.goledo.cash",
     description:
       "1st Innovative Lending Protocol on Conflux eSpace",
@@ -26360,8 +26360,8 @@ const data2: Protocol[] = [
   {
     id: "2601",
     name: "AlienFi",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x6740acb82ac5c63a7ad2397ee1faed7c788f5f8c",
+    symbol: "ALIEN",
     url: "https://www.alien.fi",
     description: "The most faster, cheaper and secure DEX on Arbitrum. Swap, earn and farm tokens with few clicks and automate your earnings",
     chain: "Arbitrum",

@@ -39,15 +39,6 @@ Array [
     "module": "hegic",
     "name": "Hegic",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "hegic": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "HEGIC",
     "twitter": "HegicOptions",
     "url": "https://www.hegic.co/ ",
@@ -96,16 +87,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "lyra": Object {
-        "chains": Array [
-          "optimism",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "startFrom": 1656460800,
     "symbol": "LYRA",
     "twitter": "lyrafinance",
@@ -152,18 +133,6 @@ Array [
     "module": "premia",
     "name": "Premia",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "premia": Object {
-        "chains": Array [
-          "ethereum",
-          "arbitrum",
-          "fantom",
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PREMIA",
     "twitter": "PremiaFinance",
     "url": "https://premia.finance/",
@@ -216,18 +185,8 @@ Array [
     "protocolType": undefined,
     "protocolsData": Object {
       "gamma": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Fees paid by users",
-          "HoldersRevenue": "Fees going to governance token holders",
-          "ProtocolRevenue": "Fees going to treasury",
-          "Revenue": "Treasury and token holders revenue",
-          "SupplySideRevenue": "LPs revenue",
-          "UserFees": "Fees paid by users",
-        },
+        "enabled": false,
+        "id": "285",
       },
     },
     "symbol": "-",
@@ -267,18 +226,6 @@ Array [
     "module": "thales",
     "name": "Thales",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "thales": Object {
-        "chains": Array [
-          "optimism",
-          "polygon",
-          "arbitrum",
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "THALES",
     "twitter": "thalesmarket",
     "url": "https://thalesmarket.io/",

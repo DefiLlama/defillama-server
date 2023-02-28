@@ -28,15 +28,6 @@ Array [
     "module": "bitcoin",
     "name": "Bitcoin",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "bitcoin": Object {
-        "chains": Array [
-          "bitcoin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BTC",
   },
 ]

@@ -39,15 +39,6 @@ Array [
     "module": "emdx",
     "name": "EMDX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "emdx": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "emdx_io",
     "url": "https://emdx.io/",
@@ -151,15 +142,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "jojo": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "jojo_exchange",
     "url": "https://app.jojo.exchange/trade",
@@ -205,15 +187,6 @@ Array [
       "Witnet",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "kperp-exchange": Object {
-        "chains": Array [
-          "kava",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KPE",
     "twitter": "KPerpExchange",
     "url": "https://kperp.exchange/",
@@ -262,15 +235,6 @@ Array [
     ],
     "parentProtocol": "Metavault",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "metavault.trade": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MVX",
     "twitter": "MetavaultTRADE",
     "url": "https://metavault.trade",
@@ -320,18 +284,6 @@ Array [
       "TWAP",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "synfutures": Object {
-        "chains": Array [
-          "polygon",
-          "arbitrum",
-          "ethereum",
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "SynFuturesDefi",
     "url": "https://www.synfutures.com/",

@@ -53,19 +53,9 @@ Array [
     "protocolType": undefined,
     "protocolsData": Object {
       "0x RFQ": Object {
-        "chains": Array [
-          "ethereum",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "0x - RFQ",
+        "enabled": true,
+        "id": "2116",
       },
     },
     "symbol": "ZRX",
@@ -110,15 +100,6 @@ Array [
     "name": "10KSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "10kswap": Object {
-        "chains": Array [
-          "starknet",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "10KSwap",
     "url": "https://10kswap.com/",
@@ -164,15 +145,6 @@ Array [
     "name": "3xcalibur",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "3xcalibur": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "XCAL",
     "twitter": "3xcalibur69",
     "url": "https://3xcalibur.com",
@@ -215,15 +187,6 @@ Array [
     "name": "4Swap",
     "parentProtocol": "Pando",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "4swap": Object {
-        "chains": Array [
-          "mixin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "pando_im",
     "url": "https://pando.im",
@@ -264,15 +227,6 @@ Array [
     "name": "Aequinox",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "aequinox": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "AEQ",
     "twitter": "Aequinox_Dex",
     "url": "https://www.aequinox.exchange/#/pools",
@@ -315,15 +269,6 @@ Array [
     "name": "Aldrin",
     "openSource": false,
     "protocolType": undefined,
-    "protocolsData": Object {
-      "aldrin": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "RIN",
     "twitter": "Aldrin_Exchange",
     "url": "https://aldrin.com",
@@ -368,15 +313,6 @@ Array [
     "name": "ALEX",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "alex": Object {
-        "chains": Array [
-          "stacks",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ALEX",
     "twitter": "@ALEXLabBTC",
     "url": "https://alexlab.co/",
@@ -420,15 +356,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "Algofi",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "algofi": Object {
-        "chains": Array [
-          "algorand",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "algofiorg",
     "url": "https://www.algofi.org/",
@@ -474,15 +401,6 @@ Array [
     "name": "AmpleSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ampleswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "AMPLE",
     "twitter": "ampleswap",
     "url": "https://ampleswap.com",
@@ -530,18 +448,6 @@ Array [
     "name": "ApeSwap AMM",
     "parentProtocol": "ApeSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "apeswap": Object {
-        "chains": Array [
-          "bsc",
-          "polygon",
-          "ethereum",
-          "telos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BANANA",
     "twitter": "ape_swap",
     "url": "https://apeswap.finance",
@@ -584,15 +490,6 @@ Array [
     "name": "Archly Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "archly-finance": Object {
-        "chains": Array [
-          "telos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ARC",
     "twitter": "ArchlyFinance",
     "url": "https://archly.fi",
@@ -638,21 +535,12 @@ Array [
     "name": "Arctic",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "arctic": Object {
-        "chains": Array [
-          "aurora",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ARC",
     "twitter": "Arctic_trade",
     "url": "https://arctic.trade/trade/swap",
   },
   Object {
-    "address": "elrond:a642d1",
+    "address": "elrond:ASH-a642d1",
     "audit_links": Array [
       "https://docs.ashswap.io/resources/audit-report",
     ],
@@ -689,15 +577,6 @@ Array [
     "name": "Ashswap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ashswap": Object {
-        "chains": Array [
-          "elrond",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ASH",
     "twitter": "ash_swap",
     "url": "https://app.ashswap.io/swap/",
@@ -741,15 +620,6 @@ Array [
     "name": "Astroport",
     "openSource": true,
     "protocolType": undefined,
-    "protocolsData": Object {
-      "astroport": Object {
-        "chains": Array [
-          "terra",
-        ],
-        "disabled": true,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ASTRO",
     "twitter": "astroport_fi",
     "url": "https://astroport.fi",
@@ -792,15 +662,6 @@ Array [
     "name": "AuraSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "auraswap": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "AURA",
     "twitter": "AuraSwapDEX",
     "url": "https://auraswap.finance",
@@ -845,15 +706,6 @@ Array [
     "module": "autoshark",
     "name": "AutoShark",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "autoshark": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "JAWS",
     "twitter": "AutoSharkFin",
     "url": "https://autoshark.finance",
@@ -894,15 +746,6 @@ Array [
     "name": "AUX Exchange",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "aux-exchange": Object {
-        "chains": Array [
-          "aptos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "AuxExchange",
     "url": "https://aux.exchange/",
@@ -944,15 +787,6 @@ Array [
     "module": "axial",
     "name": "Axial",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "axial": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "AXIAL",
     "twitter": "AxialDeFi",
     "url": "https://www.axial.exchange",
@@ -1002,15 +836,6 @@ Array [
     "name": "BabyDogeSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "babydogeswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BabyDoge",
     "twitter": "BabyDogeCoin",
     "url": "https://babydogeswap.com",
@@ -1054,30 +879,23 @@ Array [
     "module": "babyswap",
     "name": "BabySwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "babyswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BABY",
     "twitter": "babyswap_bsc",
     "url": "https://home.babyswap.finance",
   },
   Object {
     "address": "0xba100000625a3754423978a60c9317c58a424e3d",
-    "audit_links": Array [],
+    "audit_links": Array [
+      "https://docs.balancer.fi/core-concepts/security/audits",
+    ],
     "audit_note": null,
-    "audits": "0",
+    "audits": "2",
     "category": "Dexes",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
     ],
-    "cmcId": "5728",
+    "cmcId": null,
     "config": Object {
       "enabled": true,
       "id": "116",
@@ -1105,48 +923,28 @@ Array [
     "id": "116",
     "logo": "https://icons.llama.fi/balancer.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Balancer V2's V1 and V2 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Balancer V2's V1 and V2 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Balancer V2's V1 and V2 versions",
+      "Revenue": "Sum of all revenue from Balancer V2's V1 and V2 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Balancer V2's V1 and V2 versions",
+      "UserFees": "Sum of all user fees from Balancer V2's V1 and V2 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/balancer",
     "module": "balancer",
-    "name": "Balancer V1",
+    "name": "Balancer V2",
     "parentProtocol": "Balancer",
     "protocolType": undefined,
     "protocolsData": Object {
       "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "Balancer V1",
+        "enabled": true,
+        "id": "2593",
       },
       "v2": Object {
-        "chains": Array [
-          "ethereum",
-          "polygon",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "Balancer V2",
+        "enabled": true,
+        "id": "2594",
       },
     },
     "symbol": "BAL",
@@ -1156,20 +954,20 @@ Array [
     "versionKey": "v1",
   },
   Object {
-    "address": "0xba100000625a3754423978a60c9317c58a424e3d",
+    "address": "moonbeam:0xcd3B51D98478D53F4515A306bE565c6EebeF1D58",
     "audit_links": Array [
-      "https://docs.balancer.fi/core-concepts/security/audits",
+      "https://docs.beamswap.io/contracts/audit",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
-    "chain": "Ethereum",
+    "chain": "Moonbeam",
     "chains": Array [
       "ethereum",
       "polygon",
       "arbitrum",
     ],
-    "cmcId": "5728",
+    "cmcId": null,
     "config": Object {
       "enabled": true,
       "id": "116",
@@ -1186,65 +984,48 @@ Array [
         },
       },
     },
-    "description": "Balancer is a protocol for programmable liquidity.",
+    "description": "Defi Hub on Moonbeam",
     "disabled": false,
     "displayName": "Balancer V2",
     "enabled": true,
-    "gecko_id": null,
-    "governanceID": Array [
-      "snapshot:balancer.eth",
+    "forkedFrom": Array [
+      "Uniswap",
     ],
+    "gecko_id": null,
     "id": "116",
-    "logo": "https://icons.llama.fi/balancer.png",
+    "listedAt": 1642599283,
+    "logo": "https://icons.llama.fi/beamswap-stable-amm.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from BeamSwap Stable AMM's V1 and V2 versions",
+      "HoldersRevenue": "Sum of all holders revenue from BeamSwap Stable AMM's V1 and V2 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from BeamSwap Stable AMM's V1 and V2 versions",
+      "Revenue": "Sum of all revenue from BeamSwap Stable AMM's V1 and V2 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from BeamSwap Stable AMM's V1 and V2 versions",
+      "UserFees": "Sum of all user fees from BeamSwap Stable AMM's V1 and V2 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/balancer",
     "module": "balancer",
-    "name": "Balancer V2",
-    "parentProtocol": "Balancer",
+    "name": "BeamSwap Stable AMM",
+    "oracles": Array [
+      "DIA",
+    ],
+    "parentProtocol": "BeamSwap",
     "protocolType": undefined,
     "protocolsData": Object {
       "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "Balancer V1",
+        "enabled": true,
+        "id": "2593",
       },
       "v2": Object {
-        "chains": Array [
-          "ethereum",
-          "polygon",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "Balancer V2",
+        "enabled": true,
+        "id": "2594",
       },
     },
-    "symbol": "BAL",
-    "treasury": "balancer.js",
-    "twitter": "BalancerLabs",
-    "url": "https://balancer.finance/",
+    "symbol": "GLINT",
+    "twitter": "Beamswapio",
+    "url": "https://beamswap.io",
     "versionKey": "v2",
   },
   Object {
@@ -1283,12 +1064,12 @@ Array [
     "listedAt": 1660936922,
     "logo": "https://icons.llama.fi/bancor.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Bancor V3's V2.1 and V3 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Bancor V3's V2.1 and V3 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Bancor V3's V2.1 and V3 versions",
+      "Revenue": "Sum of all revenue from Bancor V3's V2.1 and V3 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Bancor V3's V2.1 and V3 versions",
+      "UserFees": "Sum of all user fees from Bancor V3's V2.1 and V3 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/bancor",
     "module": "bancor",
@@ -1297,32 +1078,12 @@ Array [
     "protocolType": undefined,
     "protocolsData": Object {
       "v2.1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "162",
       },
       "v3": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "1995",
       },
     },
     "symbol": "BNT",
@@ -1365,12 +1126,12 @@ Array [
     "id": "162",
     "logo": "https://icons.llama.fi/bancor.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Bancor V2.1's V2.1 and V3 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Bancor V2.1's V2.1 and V3 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Bancor V2.1's V2.1 and V3 versions",
+      "Revenue": "Sum of all revenue from Bancor V2.1's V2.1 and V3 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Bancor V2.1's V2.1 and V3 versions",
+      "UserFees": "Sum of all user fees from Bancor V2.1's V2.1 and V3 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/bancor",
     "module": "bancor",
@@ -1379,32 +1140,12 @@ Array [
     "protocolType": undefined,
     "protocolsData": Object {
       "v2.1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "162",
       },
       "v3": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "1995",
       },
     },
     "symbol": "BNT",
@@ -1451,15 +1192,6 @@ Array [
     "name": "Baryon Network",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "baryon": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "BaryonNetwork",
     "url": "https://www.baryon.network",
@@ -1501,14 +1233,14 @@ Array [
     "gecko_id": "beamswap",
     "id": "1289",
     "listedAt": 1642599283,
-    "logo": "https://icons.llama.fi/beamswap.jpg",
+    "logo": "https://icons.llama.fi/beamswap-classic.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from BeamSwap Classic's CLASSIC and STABLE-AMM versions",
+      "HoldersRevenue": "Sum of all holders revenue from BeamSwap Classic's CLASSIC and STABLE-AMM versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from BeamSwap Classic's CLASSIC and STABLE-AMM versions",
+      "Revenue": "Sum of all revenue from BeamSwap Classic's CLASSIC and STABLE-AMM versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from BeamSwap Classic's CLASSIC and STABLE-AMM versions",
+      "UserFees": "Sum of all user fees from BeamSwap Classic's CLASSIC and STABLE-AMM versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/beamswap",
     "module": "beamswap",
@@ -1519,32 +1251,12 @@ Array [
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
-        "chains": Array [
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "1289",
       },
       "stable-amm": Object {
-        "chains": Array [
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2596",
       },
     },
     "symbol": "GLINT",
@@ -1553,14 +1265,14 @@ Array [
     "versionKey": "classic",
   },
   Object {
-    "address": "moonbeam:0xcd3B51D98478D53F4515A306bE565c6EebeF1D58",
+    "address": "polygon:0x43F2acbaE09272021AFC107180Aa0ee313B00D8F",
     "audit_links": Array [
-      "https://docs.beamswap.io/contracts/audit",
+      "https://www.certik.com/projects/moret",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
-    "chain": "Moonbeam",
+    "chain": "Polygon",
     "chains": Array [
       "moonbeam",
     ],
@@ -1579,66 +1291,43 @@ Array [
         },
       },
     },
-    "description": "Defi Hub on Moonbeam",
+    "description": "DeFi protocol for options AMM and options-based perpetuals, running on Polygon chain only",
     "disabled": false,
-    "displayName": "BeamSwap Stable AMM",
+    "displayName": "Moret",
     "enabled": true,
-    "forkedFrom": Array [
-      "Uniswap",
-    ],
+    "forkedFrom": Array [],
     "gecko_id": null,
     "id": "1289",
-    "listedAt": 1642599283,
-    "logo": "https://icons.llama.fi/beamswap-stable-amm.jpg",
+    "listedAt": 1677386057,
+    "logo": "https://icons.llama.fi/moret.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Moret's CLASSIC and STABLE-AMM versions",
+      "HoldersRevenue": "Sum of all holders revenue from Moret's CLASSIC and STABLE-AMM versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Moret's CLASSIC and STABLE-AMM versions",
+      "Revenue": "Sum of all revenue from Moret's CLASSIC and STABLE-AMM versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Moret's CLASSIC and STABLE-AMM versions",
+      "UserFees": "Sum of all user fees from Moret's CLASSIC and STABLE-AMM versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/beamswap",
     "module": "beamswap",
-    "name": "BeamSwap Stable AMM",
+    "name": "Moret",
     "oracles": Array [
-      "DIA",
+      "Chainlink",
     ],
-    "parentProtocol": "BeamSwap",
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
-        "chains": Array [
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "1289",
       },
       "stable-amm": Object {
-        "chains": Array [
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2596",
       },
     },
-    "symbol": "GLINT",
-    "twitter": "Beamswapio",
-    "url": "https://beamswap.io",
+    "symbol": "MOR",
+    "twitter": "moret_io",
+    "url": "https://moret.io/",
     "versionKey": "stable-amm",
   },
   Object {
@@ -1681,16 +1370,6 @@ Array [
     "module": "beethoven-x",
     "name": "Beethoven X",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "beethoven-x": Object {
-        "chains": Array [
-          "fantom",
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BEETS",
     "treasury": "beethovenx.js",
     "twitter": "beethoven_x",
@@ -1736,15 +1415,6 @@ Array [
     "module": "benswap",
     "name": "BenSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "benswap": Object {
-        "chains": Array [
-          "smartbch",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "EBEN",
     "twitter": "BenTokenFinanc1",
     "url": "https://benswap.cash",
@@ -1785,15 +1455,6 @@ Array [
     "name": "Bisq",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "bisq": Object {
-        "chains": Array [
-          "bitcoin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "bisq_network",
     "url": "https://bisq.network/",
@@ -1840,15 +1501,6 @@ Array [
     "module": "biswap",
     "name": "BiSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "biswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BSW",
     "twitter": "Biswap_Dex",
     "url": "https://biswap.org/",
@@ -1888,15 +1540,6 @@ Array [
     "name": "Blue Planet",
     "parentProtocol": "Planet",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "blue-planet": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "AQUA",
     "twitter": "planet_finance",
     "url": "https://app.planet.finance/",
@@ -1941,19 +1584,6 @@ Array [
     "module": "bogged-finance",
     "name": "Bogged Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "bogged-finance": Object {
-        "chains": Array [
-          "bsc",
-          "avax",
-          "fantom",
-          "polygon",
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BOG",
     "twitter": "boggedfinance",
     "url": "https://www.bogged.finance",
@@ -1998,16 +1628,6 @@ Array [
     "module": "bxh",
     "name": "BXH",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "bxh": Object {
-        "chains": Array [
-          "bsc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BXH",
     "twitter": "BXH_Blockchain",
     "url": "https://bxh.com",
@@ -2053,15 +1673,6 @@ Array [
     "name": "Camelot",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "camelot": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GRAIL",
     "twitter": "CamelotDEX",
     "url": "https://camelot.exchange/",
@@ -2102,15 +1713,6 @@ Array [
     "name": "Canto Dex",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "canto-dex": Object {
-        "chains": Array [
-          "canto",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "CantoPublic",
     "url": "https://app.slingshot.finance/swap/CANTO",
@@ -2156,15 +1758,6 @@ Array [
     "name": "Capricorn Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "capricorn-finance": Object {
-        "chains": Array [
-          "cube",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CORN",
     "twitter": "CapricornFi",
     "url": "https://www.capricorn.finance/",
@@ -2206,15 +1799,6 @@ Array [
     "module": "carbonswap",
     "name": "CarbonSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "carbonswap": Object {
-        "chains": Array [
-          "energyweb",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SUSU",
     "twitter": "carbonswap_fi",
     "url": "https://carbonswap.exchange/#/swap",
@@ -2254,15 +1838,6 @@ Array [
     "module": "cetus",
     "name": "Cetus",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "cetus": Object {
-        "chains": Array [
-          "aptos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "CetusProtocol",
     "url": "https://www.cetus.zone",
@@ -2305,15 +1880,6 @@ Array [
     "module": "chainge-finance",
     "name": "Chainge Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "chainge-finance": Object {
-        "chains": Array [
-          "fusion",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CHNG",
     "twitter": "FinanceChainge",
     "url": "https://www.chainge.finance",
@@ -2356,15 +1922,6 @@ Array [
     "name": "ChampagneSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "champagneswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CHAM",
     "twitter": "champagnedefi",
     "url": "https://champagneswap.com",
@@ -2410,15 +1967,6 @@ Array [
     "module": "cherryswap",
     "name": "CherrySwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "cherryswap": Object {
-        "chains": Array [
-          "okexchain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CHE",
     "twitter": "CherryswapNet",
     "url": "https://www.cherryswap.net",
@@ -2465,15 +2013,6 @@ Array [
     "name": "ClaimSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "claimswap": Object {
-        "chains": Array [
-          "klaytn",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CLA",
     "twitter": "claimswap",
     "url": "https://claimswap.org/",
@@ -2518,19 +2057,6 @@ Array [
     "module": "clipper",
     "name": "Clipper",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "clipper": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-          "polygon",
-          "moonbeam",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "Clipper_DEX",
     "url": "https://clipper.exchange",
@@ -2571,15 +2097,6 @@ Array [
     "module": "cometh",
     "name": "Cometh",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "cometh": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MUST",
     "twitter": "MUSTCometh",
     "url": "https://www.cometh.io/",
@@ -2621,16 +2138,6 @@ Array [
     "module": "complus-network",
     "name": "Complus Network",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "complus-network": Object {
-        "chains": Array [
-          "avax",
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "COM",
     "twitter": "complusnetwork",
     "url": "https://complus.exchange",
@@ -2672,15 +2179,6 @@ Array [
     "module": "cone",
     "name": "Cone",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "cone": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CONE",
     "twitter": "Coneswap",
     "url": "https://cone.exchange",
@@ -2722,15 +2220,6 @@ Array [
     "openSource": false,
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "crema-finance": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "Crema_Finance",
     "url": "https://www.crema.finance",
@@ -2775,15 +2264,6 @@ Array [
     "module": "crodex",
     "name": "Crodex",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "crodex": Object {
-        "chains": Array [
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CRX",
     "twitter": "crodexapp",
     "url": "https://swap.crodex.app",
@@ -2828,15 +2308,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "cryptoswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CST",
     "twitter": "CryptoDevelopm3",
     "url": "https://cryptoswapdex.com",
@@ -2888,21 +2359,6 @@ Array [
     "name": "Curve",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "curve": Object {
-        "chains": Array [
-          "ethereum",
-          "polygon",
-          "fantom",
-          "arbitrum",
-          "avax",
-          "optimism",
-          "xdai",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CRV",
     "twitter": "CurveFinance",
     "url": "https://curve.fi",
@@ -2942,15 +2398,6 @@ Array [
     "name": "DAO Swap",
     "parentProtocol": "DAO Maker",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "dao-swap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DAO",
     "twitter": "TheDaoMaker",
     "url": "https://swap.daomaker.com/",
@@ -2996,15 +2443,6 @@ Array [
     "name": "Darkness",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "darkness": Object {
-        "chains": Array [
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "NESS",
     "twitter": "DarkCryptoFi",
     "url": "https://www.darkness.finance",
@@ -3051,15 +2489,6 @@ Array [
     "module": "defi-kingdoms",
     "name": "Defi Kingdoms",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "defi-kingdoms": Object {
-        "chains": Array [
-          "harmony",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "JEWEL",
     "twitter": "DefiKingdoms",
     "url": "https://www.defikingdoms.com",
@@ -3103,15 +2532,6 @@ Array [
     "module": "defi-swap",
     "name": "Defi Swap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "defi-swap": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CRO",
     "twitter": "cryptocom",
     "url": "https://crypto.com/defi/swap",
@@ -3155,17 +2575,6 @@ Array [
     "module": "defibox",
     "name": "DefiBox",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "defibox": Object {
-        "chains": Array [
-          "eos",
-          "wax",
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BOX",
     "twitter": "DefiboxOfficial",
     "url": "https://defibox.io",
@@ -3206,15 +2615,6 @@ Array [
     "module": "defichain-dex",
     "name": "DefiChain DEX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "defichain-dex": Object {
-        "chains": Array [
-          "defichain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DFI",
     "twitter": "defichain",
     "url": "https://defichain.com/dex",
@@ -3256,15 +2656,6 @@ Array [
     "module": "defiplaza",
     "name": "DefiPlaza",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "defiplaza": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DFP2",
     "twitter": "DefiPlaza",
     "url": "https://defiplaza.net/",
@@ -3303,15 +2694,6 @@ Array [
     "module": "demex",
     "name": "Demex",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "demex": Object {
-        "chains": Array [
-          "carbon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "demexchange",
     "url": "https://app.dem.exchange/",
@@ -3352,15 +2734,6 @@ Array [
     "name": "Dexalot",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "dexalot": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ALOT",
     "twitter": "dexalotcom",
     "url": "https://dexalot.com/",
@@ -3405,16 +2778,6 @@ Array [
     "module": "dfx-finance",
     "name": "DFX Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "dfx-finance": Object {
-        "chains": Array [
-          "ethereum",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DFX",
     "twitter": "DFXFinance",
     "url": "https://app.dfx.finance",
@@ -3459,15 +2822,6 @@ Array [
       "DIA",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "dfyn": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DFYN",
     "twitter": "_Dfyn",
     "url": "https://www.dfyn.network/",
@@ -3512,15 +2866,6 @@ Array [
     "module": "dinosaur-eggs",
     "name": "Dinosaur Eggs",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "dinosaur-eggs": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DSG",
     "twitter": "dsgmetaverse",
     "url": "https://dsgmetaverse.com",
@@ -3571,19 +2916,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "dodo": Object {
-        "chains": Array [
-          "arbitrum",
-          "aurora",
-          "bsc",
-          "ethereum",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DODO",
     "treasury": "dodo.js",
     "twitter": "BreederDodo",
@@ -3627,15 +2959,6 @@ Array [
     "name": "Dystopia",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "dystopia": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DYST",
     "twitter": "dystopiaswap",
     "url": "https://www.dystopia.exchange",
@@ -3686,15 +3009,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "el-dorado-exchange": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "EDE",
     "twitter": "ede_finance",
     "url": "https://ede.finance",
@@ -3751,28 +3065,6 @@ Array [
     "module": "elk",
     "name": "Elk",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "elk": Object {
-        "chains": Array [
-          "arbitrum",
-          "avax",
-          "bsc",
-          "fantom",
-          "polygon",
-          "xdai",
-          "elastos",
-          "okexchain",
-          "kcc",
-          "ethereum",
-          "optimism",
-          "fuse",
-          "iotex",
-          "telos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ELK",
     "twitter": "elk_finance",
     "url": "https://elk.finance",
@@ -3816,15 +3108,6 @@ Array [
     "module": "ellipsis",
     "name": "Ellipsis Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ellipsis": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "EPS",
     "twitter": "Ellipsisfi",
     "url": "https://ellipsis.finance/",
@@ -3866,15 +3149,6 @@ Array [
     "module": "emdx",
     "name": "EMDX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "emdx": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "emdx_io",
     "url": "https://emdx.io/",
@@ -3919,18 +3193,6 @@ Array [
     "module": "empiredex",
     "name": "EmpireDEX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "empiredex": Object {
-        "chains": Array [
-          "bsc",
-          "xdai",
-          "polygon",
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "EMPIRE",
     "twitter": "Empire_DEX",
     "url": "https://ecc.capital/swap",
@@ -3971,15 +3233,6 @@ Array [
     "module": "energiswap",
     "name": "Energiswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "energiswap": Object {
-        "chains": Array [
-          "energi",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "NRG",
     "twitter": "energi",
     "url": "https://www.energiswap.exchange",
@@ -4024,15 +3277,6 @@ Array [
       "TWAP",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "equalizer-exchange": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "EQUAL",
     "twitter": "Equalizer0x",
     "url": "https://equalizer.exchange",
@@ -4071,15 +3315,6 @@ Array [
     "module": "exinswap",
     "name": "ExinSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "exinswap": Object {
-        "chains": Array [
-          "mixin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": null,
     "url": "https://app.exinswap.com",
@@ -4122,15 +3357,6 @@ Array [
     "name": "FairySwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "fairyswap": Object {
-        "chains": Array [
-          "findora",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "FAIRY",
     "twitter": "fairy_swap",
     "url": "https://fairyswap.finance",
@@ -4176,15 +3402,6 @@ Array [
     "name": "Ferro",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ferro": Object {
-        "chains": Array [
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "FER",
     "twitter": "FerroProtocol",
     "url": "https://ferroprotocol.com",
@@ -4225,15 +3442,6 @@ Array [
     "module": "flamingo-finance",
     "name": "Flamingo Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "flamingo-finance": Object {
-        "chains": Array [
-          "neo",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "FLM",
     "twitter": "FlamingoFinance",
     "url": "https://flamingo.finance/",
@@ -4287,25 +3495,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "Frax Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "frax-swap": Object {
-        "chains": Array [
-          "arbitrum",
-          "aurora",
-          "avax",
-          "boba",
-          "bsc",
-          "ethereum",
-          "fantom",
-          "harmony",
-          "moonbeam",
-          "moonriver",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "fraxfinance",
     "url": "https://app.frax.finance/swap/main",
@@ -4348,15 +3537,6 @@ Array [
     "name": "FX Swap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "fx-swap": Object {
-        "chains": Array [
-          "functionx",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WFX",
     "twitter": "FUNCTIONX_IO",
     "url": "https://fx-swap.io/#/swap",
@@ -4402,15 +3582,6 @@ Array [
     "name": "Gin Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "gin-finance": Object {
-        "chains": Array [
-          "boba",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GIN",
     "twitter": "ginfinance_",
     "url": "https://www.gin.finance",
@@ -4455,15 +3626,6 @@ Array [
     "module": "glide-finance",
     "name": "Glide Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "glide-finance": Object {
-        "chains": Array [
-          "elastos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GLIDE",
     "twitter": "GlideFinance",
     "url": "https://glidefinance.io",
@@ -4572,15 +3734,6 @@ Array [
       "Pyth",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "goosefx": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GOFX",
     "twitter": "GooseFX1",
     "url": "https://app.goosefx.io",
@@ -4627,16 +3780,6 @@ Array [
     "name": "Gravis Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "gravis": Object {
-        "chains": Array [
-          "polygon",
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GRVS",
     "twitter": "GravisFi",
     "url": "https://gswap.exchange",
@@ -4681,15 +3824,6 @@ Array [
     "module": "gravity-finance",
     "name": "Gravity Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "gravity-finance": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GFI",
     "twitter": "Gravity_Finance",
     "url": "https://gravityfinance.io/",
@@ -4734,15 +3868,6 @@ Array [
     "module": "hakuswap",
     "name": "HakuSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "hakuswap": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "HAKU",
     "twitter": "HakuSwap",
     "url": "https://hakuswap.com",
@@ -4791,20 +3916,6 @@ Array [
     "name": "Hashflow",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "hashflow": Object {
-        "chains": Array [
-          "ethereum",
-          "avax",
-          "bsc",
-          "arbitrum",
-          "optimism",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "HFT",
     "twitter": "hashflow",
     "url": "https://www.hashflow.com",
@@ -4850,15 +3961,6 @@ Array [
     "name": "HeliSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "heliswap": Object {
-        "chains": Array [
-          "hedera",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "HeliSwap_DEX",
     "url": "https://www.heliswap.io",
@@ -4899,15 +4001,6 @@ Array [
     "name": "Helix",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "helix": Object {
-        "chains": Array [
-          "injective",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "HelixApp_",
     "url": "https://helixapp.com",
@@ -4950,15 +4043,6 @@ Array [
     "module": "hermes-protocol",
     "name": "Hermes Protocol",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "hermes-protocol": Object {
-        "chains": Array [
-          "metis",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "HERMES",
     "twitter": "HermesOmnichain",
     "url": "https://hermes.maiadao.io/",
@@ -5001,15 +4085,6 @@ Array [
     "name": "HiveSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "hiveswap": Object {
-        "chains": Array [
-          "map",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": null,
     "url": "https://swap.hiveswap.io",
@@ -5051,16 +4126,6 @@ Array [
     "module": "honeyswap",
     "name": "Honeyswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "honeyswap": Object {
-        "chains": Array [
-          "polygon",
-          "xdai",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "HNY",
     "twitter": "Honeyswap",
     "url": "https://honeyswap.org/",
@@ -5106,16 +4171,6 @@ Array [
     "name": "Huckleberry AMM",
     "parentProtocol": "Huckleberry",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "huckleberry": Object {
-        "chains": Array [
-          "moonriver",
-          "clv",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "FINN",
     "twitter": "HuckleberryDEX",
     "url": "https://www.huckleberry.finance/",
@@ -5162,15 +4217,6 @@ Array [
       "Coingecko",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "humble-defi": Object {
-        "chains": Array [
-          "algorand",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "HumbleDefi",
     "url": "https://www.humble.sh",
@@ -5214,15 +4260,6 @@ Array [
     "module": "hyperjump",
     "name": "HyperJump",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "hyperjump": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "HYPR",
     "twitter": "Hyperjump_fi",
     "url": "https://www.hyperjump.app",
@@ -5265,15 +4302,6 @@ Array [
     "name": "IcecreamSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "icecreamswap": Object {
-        "chains": Array [
-          "bitgert",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ICE",
     "twitter": "icecream_swap",
     "url": "https://icecreamswap.com/",
@@ -5319,15 +4347,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "incrementFinance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "increment-swap": Object {
-        "chains": Array [
-          "flow",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "incrementfi",
     "url": "https://app.increment.fi/swap",
@@ -5373,15 +4392,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "iZUMI Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "iziswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "IZI",
     "twitter": "izumi_Finance",
     "url": "https://izumi.finance/trade/swap",
@@ -5423,15 +4433,6 @@ Array [
     "name": "JediSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "jediswap": Object {
-        "chains": Array [
-          "starknet",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "JediSwap",
     "url": "https://jediswap.xyz",
@@ -5476,15 +4477,6 @@ Array [
     "module": "jetswap",
     "name": "JetSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "jetswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WINGS",
     "twitter": "Jetfuelfinance",
     "url": "https://jetswap.finance",
@@ -5527,15 +4519,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "jojo": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "jojo_exchange",
     "url": "https://app.jojo.exchange/trade",
@@ -5581,15 +4564,6 @@ Array [
     "module": "jswap",
     "name": "JSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "jswap": Object {
-        "chains": Array [
-          "okexchain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "JF",
     "twitter": "Jswap_Finance",
     "url": "https://app.jswap.finance/#/swap",
@@ -5630,15 +4604,6 @@ Array [
     "name": "Junoswap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "junoswap": Object {
-        "chains": Array [
-          "juno",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "RAW",
     "twitter": "JunoNetwork",
     "url": "https://www.junoswap.com/",
@@ -5680,15 +4645,6 @@ Array [
     "module": "kaidex",
     "name": "Kaidex",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "kaidex": Object {
-        "chains": Array [
-          "kardia",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KDX",
     "twitter": "KardiaChain",
     "url": "https://kaidex.io",
@@ -5726,15 +4682,6 @@ Array [
     "module": "karura-swap",
     "name": "Karura Swap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "karura-swap": Object {
-        "chains": Array [
-          "KARURA",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "KaruraNetwork",
     "url": "https://acala.network/karura",
@@ -5776,15 +4723,6 @@ Array [
     "module": "katana",
     "name": "Katana DEX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "katana": Object {
-        "chains": Array [
-          "ronin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "AxieInfinity",
     "url": "https://katana.roninchain.com/#/swap",
@@ -5822,15 +4760,6 @@ Array [
     "module": "kava-swap",
     "name": "Kava Swap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "kava-swap": Object {
-        "chains": Array [
-          "kava",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SWP",
     "twitter": "Kava_Swap",
     "url": "https://app.kava.io/swap/pools",
@@ -5871,15 +4800,6 @@ Array [
     "module": "klayswap",
     "name": "KlaySwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "klayswap": Object {
-        "chains": Array [
-          "klaytn",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KSP",
     "twitter": "KLAYswap",
     "url": "https://klayswap.com/dashboard",
@@ -5925,15 +4845,6 @@ Array [
     "name": "KLEX Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "klex-finance": Object {
-        "chains": Array [
-          "klaytn",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "klexfinance",
     "url": "https://klex.finance",
@@ -5979,16 +4890,6 @@ Array [
     "module": "knightswap-finance",
     "name": "KnightSwap Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "knightswap-finance": Object {
-        "chains": Array [
-          "bsc",
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KNIGHT",
     "twitter": "KnightEcosystem",
     "url": "https://knightswap.financial",
@@ -6036,15 +4937,6 @@ Array [
       "TWAP",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "kokonut-swap": Object {
-        "chains": Array [
-          "klaytn",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KOKOS",
     "twitter": null,
     "url": "https://kokonutswap.finance",
@@ -6087,15 +4979,6 @@ Array [
     "name": "Koyo Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "koyo": Object {
-        "chains": Array [
-          "boba",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KYO",
     "treasury": "koyo.js",
     "twitter": "KoyoFinance",
@@ -6142,15 +5025,6 @@ Array [
       "Witnet",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "kperp-exchange": Object {
-        "chains": Array [
-          "kava",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KPE",
     "twitter": "KPerpExchange",
     "url": "https://kperp.exchange/",
@@ -6194,15 +5068,6 @@ Array [
       "Pyth",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "kuswap": Object {
-        "chains": Array [
-          "kcc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KUS",
     "twitter": "kuswapfinance",
     "url": "https://kuswap.finance",
@@ -6252,12 +5117,12 @@ Array [
     "id": "127",
     "logo": "https://icons.llama.fi/kyberswap.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from KyberSwap - Classic's CLASSIC and ELASTIC versions",
+      "HoldersRevenue": "Sum of all holders revenue from KyberSwap - Classic's CLASSIC and ELASTIC versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from KyberSwap - Classic's CLASSIC and ELASTIC versions",
+      "Revenue": "Sum of all revenue from KyberSwap - Classic's CLASSIC and ELASTIC versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from KyberSwap - Classic's CLASSIC and ELASTIC versions",
+      "UserFees": "Sum of all user fees from KyberSwap - Classic's CLASSIC and ELASTIC versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/kyberswap",
     "module": "kyberswap",
@@ -6270,46 +5135,14 @@ Array [
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
-        "chains": Array [
-          "aurora",
-          "optimism",
-          "arbitrum",
-          "fantom",
-          "avax",
-          "bsc",
-          "polygon",
-          "ethereum",
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "KyberSwap - Classic",
+        "enabled": true,
+        "id": "2591",
       },
       "elastic": Object {
-        "chains": Array [
-          "optimism",
-          "arbitrum",
-          "fantom",
-          "avax",
-          "bsc",
-          "polygon",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "KyberSwap - Elastic",
+        "enabled": true,
+        "id": "2592",
       },
     },
     "symbol": "KNC",
@@ -6360,12 +5193,12 @@ Array [
     "id": "127",
     "logo": "https://icons.llama.fi/kyberswap.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from KyberSwap - Elastic's CLASSIC and ELASTIC versions",
+      "HoldersRevenue": "Sum of all holders revenue from KyberSwap - Elastic's CLASSIC and ELASTIC versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from KyberSwap - Elastic's CLASSIC and ELASTIC versions",
+      "Revenue": "Sum of all revenue from KyberSwap - Elastic's CLASSIC and ELASTIC versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from KyberSwap - Elastic's CLASSIC and ELASTIC versions",
+      "UserFees": "Sum of all user fees from KyberSwap - Elastic's CLASSIC and ELASTIC versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/kyberswap",
     "module": "kyberswap",
@@ -6378,46 +5211,14 @@ Array [
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
-        "chains": Array [
-          "aurora",
-          "optimism",
-          "arbitrum",
-          "fantom",
-          "avax",
-          "bsc",
-          "polygon",
-          "ethereum",
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "KyberSwap - Classic",
+        "enabled": true,
+        "id": "2591",
       },
       "elastic": Object {
-        "chains": Array [
-          "optimism",
-          "arbitrum",
-          "fantom",
-          "avax",
-          "bsc",
-          "polygon",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "KyberSwap - Elastic",
+        "enabled": true,
+        "id": "2592",
       },
     },
     "symbol": "KNC",
@@ -6465,15 +5266,6 @@ Array [
     "module": "leonicornswap",
     "name": "LeonicornSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "leonicornswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LEON",
     "twitter": "swapleonicorn",
     "url": "https://dex.leonicornswap.com/home",
@@ -6524,15 +5316,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "level-finance": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LVL",
     "twitter": "Level__Finance",
     "url": "https://app.level.finance",
@@ -6573,15 +5356,6 @@ Array [
     "module": "levinswap",
     "name": "Levinswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "levinswap": Object {
-        "chains": Array [
-          "xdai",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LEVIN",
     "twitter": "levinswap",
     "url": "https://levinswap.org/",
@@ -6625,15 +5399,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "Lif3.com",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "lif3-swap": Object {
-        "chains": Array [
-          "tombchain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LIF3",
     "twitter": "Official_LIF3",
     "url": "https://lif3.com/swap",
@@ -6674,15 +5439,6 @@ Array [
     "name": "Lifinity",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "lifinity": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "Lifinity_io",
     "url": "https://lifinity.io/pools",
@@ -6728,15 +5484,6 @@ Array [
     "name": "LiquidSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "liquidswap": Object {
-        "chains": Array [
-          "aptos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "PontemNetwork",
     "url": "https://liquidswap.com/",
@@ -6782,16 +5529,6 @@ Array [
     "module": "luaswap",
     "name": "LuaSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "luaswap": Object {
-        "chains": Array [
-          "tomochain",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LUA",
     "twitter": "LuaSwap",
     "url": "https://luaswap.org/#/",
@@ -6830,15 +5567,6 @@ Array [
     "module": "lumenswap",
     "name": "LumenSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "lumenswap": Object {
-        "chains": Array [
-          "stellar",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LSP",
     "twitter": "lumenswap",
     "url": "https://lumenswap.io",
@@ -6882,15 +5610,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "makiswap": Object {
-        "chains": Array [
-          "heco",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MAKI",
     "twitter": "MakiSwap",
     "url": "https://makiswap.com",
@@ -6939,18 +5658,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "parentProtocol": "MUX Protocol",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mcdex": Object {
-        "chains": Array [
-          "arbitrum",
-          "avax",
-          "bsc",
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MCB",
     "twitter": "muxprotocol",
     "url": "https://mux.network/",
@@ -6997,16 +5704,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "mdex",
     "name": "MDEX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mdex": Object {
-        "chains": Array [
-          "bsc",
-          "heco",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MDX",
     "twitter": "Mdextech",
     "url": "https://mdex.com/",
@@ -7050,15 +5747,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Megaton Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "megaton-finance": Object {
-        "chains": Array [
-          "ton",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MEGA",
     "twitter": "Megaton_Fi",
     "url": "https://megaton.fi",
@@ -7101,15 +5789,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "Internal",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "meshswap": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MESH",
     "twitter": "Meshswap_Fi",
     "url": "https://meshswap.fi",
@@ -7152,17 +5831,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "MetaTdex",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "metatdex": Object {
-        "chains": Array [
-          "bsc",
-          "heco",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "TT",
     "twitter": "MetaTdex",
     "url": "https://www.metatdex.com",
@@ -7211,15 +5879,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "parentProtocol": "Metavault",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "metavault.trade": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MVX",
     "twitter": "MetavaultTRADE",
     "url": "https://metavault.trade",
@@ -7262,15 +5921,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Metropolis",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "metropolis": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "MetropolisDEX",
     "url": "https://metropolis.exchange",
@@ -7312,15 +5962,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "mimo",
     "name": "Mimo",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mimo": Object {
-        "chains": Array [
-          "iotex",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "mimoprotocol",
     "url": "https://mimo.exchange",
@@ -7366,15 +6007,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "MinerSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "minerswap": Object {
-        "chains": Array [
-          "ethpow",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MSP",
     "twitter": "minerswapfi",
     "url": "https://minerswap.fi",
@@ -7415,15 +6047,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Minswap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "minswap": Object {
-        "chains": Array [
-          "cardano",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MIN",
     "twitter": "MinswapDEX",
     "url": "https://minswap.org",
@@ -7468,15 +6091,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "mistswap",
     "name": "MistSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mistswap": Object {
-        "chains": Array [
-          "smartbch",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MIST",
     "twitter": "mistswapdex",
     "url": "https://mistswap.fi",
@@ -7518,15 +6132,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "oracles": Array [],
     "parentProtocol": "MM Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mm-stableswap-polygon": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "MMFcrypto",
     "url": "https://polymm.finance",
@@ -7567,15 +6172,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "mobius-money",
     "name": "Mobius Money",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mobius-money": Object {
-        "chains": Array [
-          "celo",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MOBI",
     "twitter": "MobiusMoney",
     "url": "https://www.mobius.money",
@@ -7620,15 +6216,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "mojitoswap",
     "name": "MojitoSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mojitoswap": Object {
-        "chains": Array [
-          "kcc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MJT",
     "twitter": "MojitoSwap",
     "url": "https://www.mojitoswap.finance",
@@ -7670,15 +6257,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "moon-swap",
     "name": "Moon Swap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "moon-swap": Object {
-        "chains": Array [
-          "conflux",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MOON",
     "twitter": "imMoonSwap",
     "url": "https://moonswap.fi",
@@ -7722,15 +6300,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "mooniswap",
     "name": "MooniSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mooniswap": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "mooniswap",
     "url": "https://mooniswap.exchange/#/swap",
@@ -7774,15 +6343,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "morpheus-swap",
     "name": "Morpheus Swap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "morpheus-swap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PILLS",
     "twitter": "MorpheusSwap",
     "url": "https://morpheusswap.finance",
@@ -7828,16 +6388,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "muesliswap",
     "name": "MuesliSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "muesliswap": Object {
-        "chains": Array [
-          "milkomeda",
-          "cardano",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MILK",
     "twitter": "MuesliSwapTeam",
     "url": "https://muesliswap.com",
@@ -7883,15 +6433,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Mummy Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mummy-finance": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MMY",
     "twitter": "mummyftm",
     "url": "https://www.mummy.finance",
@@ -7932,15 +6473,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "mySwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "myswap": Object {
-        "chains": Array [
-          "starknet",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "mySwapxyz",
     "url": "https://www.myswap.xyz",
@@ -7985,15 +6517,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "netswap",
     "name": "NetSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "netswap": Object {
-        "chains": Array [
-          "metis",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "NETT",
     "twitter": "netswapofficial",
     "url": "https://netswap.io/#/home",
@@ -8039,15 +6562,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Nomiswap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "nomiswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "NMX",
     "twitter": "Nomiswap",
     "url": "https://nomiswap.io",
@@ -8093,15 +6607,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "OKCSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "okcswap": Object {
-        "chains": Array [
-          "okexchain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": null,
     "url": "https://www.okx.com/okc/swap",
@@ -8141,15 +6646,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "OnePunchSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "onepunch": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "OnePunchSwap",
     "url": "https://www.onepunch.finance",
@@ -8194,15 +6690,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "oolongswap",
     "name": "OolongSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "oolongswap": Object {
-        "chains": Array [
-          "boba",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "OLO",
     "twitter": "oolongswap",
     "url": "https://oolongswap.com/#/",
@@ -8243,15 +6730,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "OpenBook",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "openbook": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "openbookdex",
     "url": "https://openserum.io",
@@ -8299,17 +6777,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "openleverage",
     "name": "OpenLeverage",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "openleverage": Object {
-        "chains": Array [
-          "bsc",
-          "kcc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "OLE",
     "twitter": "OpenLeverage",
     "url": "https://openleverage.finance",
@@ -8357,15 +6824,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "SEDA",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "opx-finance": Object {
-        "chains": Array [
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "opxfinance",
     "url": "https://www.opx.finance/#/trade",
@@ -8406,15 +6864,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "OraiDEX",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "oraidex": Object {
-        "chains": Array [
-          "orai",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ORAIX",
     "twitter": "oraidex",
     "url": "https://oraidex.io",
@@ -8453,15 +6902,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Orca",
     "openSource": false,
     "protocolType": undefined,
-    "protocolsData": Object {
-      "orca": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ORCA",
     "twitter": "orca_so",
     "url": "https://www.orca.so",
@@ -8505,15 +6945,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Orderly Network",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "orderly-network": Object {
-        "chains": Array [
-          "near",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "OrderlyNetwork",
     "url": "https://orderly.network",
@@ -8551,15 +6982,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "osmosis",
     "name": "Osmosis DEX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "osmosis": Object {
-        "chains": Array [
-          "cosmos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "OSMO",
     "twitter": "osmosiszone",
     "url": "https://osmosis.zone/",
@@ -8603,15 +7025,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Pact",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "pact": Object {
-        "chains": Array [
-          "algorand",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "pact_fi",
     "url": "https://app.pact.fi",
@@ -8658,17 +7071,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "padswap",
     "name": "PadSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "padswap": Object {
-        "chains": Array [
-          "moonriver",
-          "bsc",
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "TOAD",
     "twitter": "ToadNetwork",
     "url": "https://padswap.exchange",
@@ -8712,15 +7114,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "paint-swap",
     "name": "Paint Swap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "paint-swap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BRUSH",
     "twitter": "paint_swap",
     "url": "https://paintswap.finance",
@@ -8766,15 +7159,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Pandora Swap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "pandora": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PANDORA",
     "twitter": "pandora_swap",
     "url": "https://pandoraswapxyz.org/",
@@ -8822,15 +7206,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "Witnet",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "pangea-swap": Object {
-        "chains": Array [
-          "klaytn",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "STONE",
     "twitter": "Pangea_Swap",
     "url": "https://pangeaswap.com",
@@ -8874,15 +7249,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "pangolin",
     "name": "Pangolin",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "pangolin": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PNG",
     "twitter": "pangolindex",
     "url": "https://pangolin.exchange",
@@ -8924,15 +7290,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "PayCash",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "paycash": Object {
-        "chains": Array [
-          "eos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MLNK",
     "twitter": "PayCashTweet",
     "url": "https://paycashswap.com",
@@ -8975,15 +7332,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "PegaSys",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "pegasys": Object {
-        "chains": Array [
-          "syscoin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PSYS",
     "twitter": "PegasysDEX",
     "url": "https://pegasys.finance",
@@ -9026,15 +7374,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "Coingecko",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "penguin": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "png_fi",
     "url": "https://png.fi",
@@ -9076,15 +7415,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "photonswap-finance",
     "name": "PhotonSwap Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "photonswap-finance": Object {
-        "chains": Array [
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PHOTON",
     "twitter": "photonswap_fi",
     "url": "https://photonswap.finance",
@@ -9128,15 +7458,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "pinkswap",
     "name": "PinkSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "pinkswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PINKS",
     "twitter": "pinkmoonfinance",
     "url": "https://www.pinkswap.finance/",
@@ -9180,15 +7501,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "platypus",
     "name": "Platypus Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "platypus": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PTP",
     "twitter": "Platypusdefi",
     "url": "https://platypus.finance",
@@ -9229,15 +7541,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "plenty",
     "name": "Plenty",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "plenty": Object {
-        "chains": Array [
-          "tezos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PLY",
     "twitter": "plenty_network",
     "url": "https://www.plenty.network",
@@ -9282,15 +7585,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Polycat",
     "parentProtocol": "Polycat Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "polycat": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "FISH",
     "twitter": "PolycatFinance",
     "url": "https://polycat.finance",
@@ -9335,15 +7629,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "protofi",
     "name": "ProtoFi",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "protofi": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PROTO",
     "twitter": "ProtoFiProtocol",
     "url": "https://fantombank.protofi.app/",
@@ -9389,15 +7674,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "PYEswap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "pyeswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PYE",
     "twitter": "PyeEcosystem",
     "url": "https://pyeswap.com/",
@@ -9441,12 +7717,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "id": "306",
     "logo": "https://icons.llama.fi/quickswap-dex.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Quickswap Dex's V2 and V3 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Quickswap Dex's V2 and V3 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Quickswap Dex's V2 and V3 versions",
+      "Revenue": "Sum of all revenue from Quickswap Dex's V2 and V3 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Quickswap Dex's V2 and V3 versions",
+      "UserFees": "Sum of all user fees from Quickswap Dex's V2 and V3 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/quickswap",
     "module": "quickswap",
@@ -9455,33 +7731,13 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "v2": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "Quickswap V2",
+        "enabled": true,
+        "id": "306",
       },
       "v3": Object {
-        "chains": Array [
-          "polygon",
-          "dogechain",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2239",
       },
     },
     "symbol": "QUICK",
@@ -9530,12 +7786,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1667063569,
     "logo": "https://icons.llama.fi/quickswap-dex.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Quickswap V3's V2 and V3 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Quickswap V3's V2 and V3 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Quickswap V3's V2 and V3 versions",
+      "Revenue": "Sum of all revenue from Quickswap V3's V2 and V3 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Quickswap V3's V2 and V3 versions",
+      "UserFees": "Sum of all user fees from Quickswap V3's V2 and V3 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/quickswap",
     "module": "quickswap",
@@ -9544,33 +7800,13 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "v2": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "Quickswap V2",
+        "enabled": true,
+        "id": "306",
       },
       "v3": Object {
-        "chains": Array [
-          "polygon",
-          "dogechain",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2239",
       },
     },
     "symbol": "QUICK",
@@ -9615,15 +7851,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "quipuswap",
     "name": "QuipuSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "quipuswap": Object {
-        "chains": Array [
-          "tezos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "QUIPU",
     "twitter": "QuipuSwap",
     "url": "https://quipuswap.com",
@@ -9673,19 +7900,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "RadioShack",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "radioshack": Object {
-        "chains": Array [
-          "polygon",
-          "bsc",
-          "ethereum",
-          "avax",
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "RADIO",
     "twitter": "RadioShack",
     "url": "https://www.radioshack.org/",
@@ -9724,15 +7938,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Raydium",
     "openSource": false,
     "protocolType": undefined,
-    "protocolsData": Object {
-      "raydium": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "RAY",
     "twitter": "RaydiumProtocol",
     "url": "https://raydium.io",
@@ -9770,15 +7975,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "ref-finance",
     "name": "Ref Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ref-finance": Object {
-        "chains": Array [
-          "near",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "REF",
     "twitter": "finance_ref",
     "url": "https://app.ref.finance",
@@ -9820,15 +8016,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "rubicon",
     "name": "Rubicon",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "rubicon": Object {
-        "chains": Array [
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "rubicondefi",
     "url": "https://www.rubicon.finance",
@@ -9866,15 +8053,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "saber",
     "name": "Saber",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "saber": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SBR",
     "twitter": "Saber_HQ",
     "url": "https://saber.so",
@@ -9922,16 +8100,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "saddle-finance",
     "name": "Saddle Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "saddle-finance": Object {
-        "chains": Array [
-          "arbitrum",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SDL",
     "twitter": "saddlefinance",
     "url": "https://saddle.finance/",
@@ -9974,15 +8142,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Saros",
     "openSource": false,
     "protocolType": undefined,
-    "protocolsData": Object {
-      "saros": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SAROS",
     "twitter": "Saros_Finance",
     "url": "https://saros.finance",
@@ -10028,15 +8187,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "SaucerSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "saucerswap": Object {
-        "chains": Array [
-          "hedera",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SAUCE",
     "twitter": "SaucerSwapLabs",
     "url": "https://www.saucerswap.finance",
@@ -10080,15 +8230,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "serum",
     "name": "Serum",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "serum": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SRM",
     "twitter": "ProjectSerum",
     "url": "https://projectserum.com/",
@@ -10131,15 +8272,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "SharkSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "sharkswap": Object {
-        "chains": Array [
-          "sx",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SHARK",
     "twitter": "SharkSwap_xyz",
     "url": "https://sharkswap.xyz",
@@ -10180,15 +8312,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "shell-protocol",
     "name": "Shell Protocol",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "shell-protocol": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "ShellProtocol",
     "url": "https://www.shellprotocol.io/",
@@ -10232,15 +8355,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "shibaswap",
     "name": "ShibaSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "shibaswap": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BONE",
     "twitter": "ShibaSwapDEX",
     "url": "https://shibaswap.com",
@@ -10282,15 +8396,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "smartdex",
     "name": "SmartDEX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "smartdex": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "AI_smartdex",
     "url": "https://www.smartdex.app",
@@ -10333,15 +8438,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "SMBSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "smbswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SELF",
     "twitter": "smbswap",
     "url": "https://smbswap.finance/",
@@ -10382,15 +8478,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "solarbeam",
     "name": "Solarbeam",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "solarbeam": Object {
-        "chains": Array [
-          "moonriver",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SOLAR",
     "twitter": "Solarbeamio",
     "url": "https://app.solarbeam.io/exchange/swap",
@@ -10435,15 +8522,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "solarflare",
     "name": "Solarflare",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "solarflare": Object {
-        "chains": Array [
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "FLARE",
     "twitter": "Solarbeamio",
     "url": "https://solarflare.io",
@@ -10486,15 +8564,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "SolidLizard",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "solidlizard": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SLIZ",
     "twitter": "solidlizardfi",
     "url": "https://solidlizard.finance/",
@@ -10538,15 +8607,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Solidly",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "solidly": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SOLID",
     "twitter": "solidlyexchange",
     "url": "https://solidly.exchange/",
@@ -10592,15 +8652,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Solidly V2",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "solidlydex": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SOLID",
     "twitter": "SolidlyDEX",
     "url": "https://solidly.com",
@@ -10641,15 +8692,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "soulswap",
     "name": "SoulSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "soulswap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SOUL",
     "twitter": "SoulSwapFinance",
     "url": "https://soul.sh",
@@ -10694,15 +8736,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "soy-finance",
     "name": "Soy Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "soy-finance": Object {
-        "chains": Array [
-          "callisto",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SOY",
     "twitter": "Soy_Finance",
     "url": "https://soy.finance",
@@ -10745,15 +8778,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Spartacus Exchange",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "spartacus-exchange": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "treasury": "spartacus.js",
     "twitter": "Spartacus_Fi",
@@ -10798,15 +8822,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "spartan",
     "name": "Spartan",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "spartan": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SPARTA",
     "twitter": "SpartanProtocol",
     "url": "https://spartanprotocol.org",
@@ -10850,16 +8865,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Sphynx",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "sphynx": Object {
-        "chains": Array [
-          "bsc",
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SPHYNX",
     "twitter": "SphynxLabs",
     "url": "https://linktr.ee/sphynxlabs",
@@ -10904,15 +8909,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "SpiritSwap AMM",
     "parentProtocol": "SpiritSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "spiritswap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SPIRIT",
     "twitter": "Spirit_Swap",
     "url": "https://app.spiritswap.finance/#/",
@@ -10959,15 +8955,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "spookyswap",
     "name": "SpookySwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "spookyswap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BOO",
     "treasury": "spookyswap.js",
     "twitter": "SpookySwap",
@@ -11007,15 +8994,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "stellarx",
     "name": "StellarX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "stellarx": Object {
-        "chains": Array [
-          "stellar",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "stellarxhq",
     "url": "https://www.stellarx.com",
@@ -11060,15 +9038,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "stellaswap",
     "name": "StellaSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "stellaswap": Object {
-        "chains": Array [
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "STELLA",
     "twitter": "StellaSwap",
     "url": "https://stellaswap.com",
@@ -11109,15 +9078,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Step Exchange",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "step-exchange": Object {
-        "chains": Array [
-          "step",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "StepApp_",
     "url": "https://app.step.exchange",
@@ -11161,15 +9121,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "oracles": Array [],
     "parentProtocol": "Subzero",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "subzero-zswap": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "zswapdex",
     "url": "https://zswap.plus",
@@ -11209,15 +9160,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "sundaeswap",
     "name": "SundaeSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "sundaeswap": Object {
-        "chains": Array [
-          "cardano",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SUNDAE",
     "twitter": "SundaeSwap",
     "url": "https://www.sundaeswap.finance/",
@@ -11260,15 +9202,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "SUNSwap",
     "parentProtocol": "SUN.io",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "sunswap": Object {
-        "chains": Array [
-          "tron",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SUN",
     "twitter": "DeFi_JUST",
     "url": "https://sunswap.com/#/home",
@@ -11312,12 +9245,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1656665210,
     "logo": "https://icons.llama.fi/surfswap-classic.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Surfswap Classic's CLASSIC and STABLE-AMM versions",
+      "HoldersRevenue": "Sum of all holders revenue from Surfswap Classic's CLASSIC and STABLE-AMM versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Surfswap Classic's CLASSIC and STABLE-AMM versions",
+      "Revenue": "Sum of all revenue from Surfswap Classic's CLASSIC and STABLE-AMM versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Surfswap Classic's CLASSIC and STABLE-AMM versions",
+      "UserFees": "Sum of all user fees from Surfswap Classic's CLASSIC and STABLE-AMM versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/surfswap",
     "module": "surfswap",
@@ -11329,32 +9262,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
-        "chains": Array [
-          "kava",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "1868",
       },
       "stable-amm": Object {
-        "chains": Array [
-          "kava",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2598",
       },
     },
     "symbol": "TIDE",
@@ -11363,14 +9276,14 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "versionKey": "classic",
   },
   Object {
-    "address": "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
+    "address": null,
     "audit_links": Array [
-      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf",
+      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Shoebill-v1.0.pdf",
     ],
     "audit_note": null,
     "audits": "2",
-    "category": "Dexes",
-    "chain": "Kava",
+    "category": "Lending",
+    "chain": "Klaytn",
     "chains": Array [
       "kava",
     ],
@@ -11389,66 +9302,44 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
         },
       },
     },
-    "description": "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
+    "description": "Shoebill Finance is a DeFi lending protocol that allows users to earn high stablecoin yields or take out interest-free loans and earn interest with leverage. When a borrower deposits tokens as collateral, Shoebill Finance earns interest by depositing them into protocols like Kokoa Finance, Kokonutswap, and Stake.ly. These interest earnings are then converted into the same tokens deposited by the creditor and distributed as interest",
     "disabled": false,
-    "displayName": "Surfswap Stable AMM",
+    "displayName": "Shoebill Finance",
     "enabled": true,
-    "forkedFrom": Array [
-      "Uniswap",
-    ],
+    "forkedFrom": Array [],
     "gecko_id": null,
     "id": "1868",
-    "listedAt": 1656665210,
-    "logo": "https://icons.llama.fi/surfswap-stable-amm.png",
+    "listedAt": 1677473337,
+    "logo": "https://icons.llama.fi/shoebill-finance.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Shoebill Finance's CLASSIC and STABLE-AMM versions",
+      "HoldersRevenue": "Sum of all holders revenue from Shoebill Finance's CLASSIC and STABLE-AMM versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Shoebill Finance's CLASSIC and STABLE-AMM versions",
+      "Revenue": "Sum of all revenue from Shoebill Finance's CLASSIC and STABLE-AMM versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Shoebill Finance's CLASSIC and STABLE-AMM versions",
+      "UserFees": "Sum of all user fees from Shoebill Finance's CLASSIC and STABLE-AMM versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/surfswap",
     "module": "surfswap",
-    "name": "Surfswap Stable AMM",
+    "name": "Shoebill Finance",
     "oracles": Array [
-      "TWAP",
+      "chainlink",
+      "Internal",
     ],
-    "parentProtocol": "Surfswap",
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
-        "chains": Array [
-          "kava",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "1868",
       },
       "stable-amm": Object {
-        "chains": Array [
-          "kava",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2598",
       },
     },
-    "symbol": "TIDE",
-    "twitter": "SurfswapDEX",
-    "url": "https://surfdex.io",
+    "symbol": "-",
+    "twitter": "ShoebillFinance",
+    "url": "https://app.shoebill.finance/",
     "versionKey": "stable-amm",
   },
   Object {
@@ -11502,12 +9393,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "id": "119",
     "logo": "https://icons.llama.fi/sushiswap.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from SushiSwap's CLASSIC and TRIDENT versions",
+      "HoldersRevenue": "Sum of all holders revenue from SushiSwap's CLASSIC and TRIDENT versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from SushiSwap's CLASSIC and TRIDENT versions",
+      "Revenue": "Sum of all revenue from SushiSwap's CLASSIC and TRIDENT versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from SushiSwap's CLASSIC and TRIDENT versions",
+      "UserFees": "Sum of all user fees from SushiSwap's CLASSIC and TRIDENT versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/sushiswap",
     "module": "sushiswap",
@@ -11517,51 +9408,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
-        "chains": Array [
-          "ethereum",
-          "bsc",
-          "polygon",
-          "fantom",
-          "arbitrum",
-          "celo",
-          "avax",
-          "harmony",
-          "moonriver",
-          "xdai",
-          "moonbeam",
-          "boba",
-          "fuse",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "SushiSwap charges a flat 0.3% fee",
-          "HoldersRevenue": "SUSHI token stakers are entitled to share a 0.05% fee from each trade",
-          "ProtocolRevenue": "Treasury have no revenue",
-          "Revenue": "A 0.05% of each trade goes to token holders",
-          "SupplySideRevenue": "Liquidity providers get 0.25% of all trades in their pools",
-          "UserFees": "Users pay a 0.3% fee on each trade",
-        },
+        "enabled": true,
+        "id": "119",
       },
       "trident": Object {
-        "chains": Array [
-          "polygon",
-          "optimism",
-          "kava",
-          "metis",
-          "bittorrent",
-          "arbitrum",
-          "bsc",
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2152",
       },
     },
     "symbol": "SUSHI",
@@ -11611,12 +9463,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1664917476,
     "logo": "https://icons.llama.fi/sushi-trident.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Sushi Trident's CLASSIC and TRIDENT versions",
+      "HoldersRevenue": "Sum of all holders revenue from Sushi Trident's CLASSIC and TRIDENT versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Sushi Trident's CLASSIC and TRIDENT versions",
+      "Revenue": "Sum of all revenue from Sushi Trident's CLASSIC and TRIDENT versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Sushi Trident's CLASSIC and TRIDENT versions",
+      "UserFees": "Sum of all user fees from Sushi Trident's CLASSIC and TRIDENT versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/sushiswap",
     "module": "sushiswap",
@@ -11626,51 +9478,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "classic": Object {
-        "chains": Array [
-          "ethereum",
-          "bsc",
-          "polygon",
-          "fantom",
-          "arbitrum",
-          "celo",
-          "avax",
-          "harmony",
-          "moonriver",
-          "xdai",
-          "moonbeam",
-          "boba",
-          "fuse",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "SushiSwap charges a flat 0.3% fee",
-          "HoldersRevenue": "SUSHI token stakers are entitled to share a 0.05% fee from each trade",
-          "ProtocolRevenue": "Treasury have no revenue",
-          "Revenue": "A 0.05% of each trade goes to token holders",
-          "SupplySideRevenue": "Liquidity providers get 0.25% of all trades in their pools",
-          "UserFees": "Users pay a 0.3% fee on each trade",
-        },
+        "enabled": true,
+        "id": "119",
       },
       "trident": Object {
-        "chains": Array [
-          "polygon",
-          "optimism",
-          "kava",
-          "metis",
-          "bittorrent",
-          "arbitrum",
-          "bsc",
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2152",
       },
     },
     "symbol": "-",
@@ -11719,15 +9532,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Swappi",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "swappi": Object {
-        "chains": Array [
-          "conflux",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PPI",
     "twitter": "SwappiDEX",
     "url": "https://app.swappi.io",
@@ -11776,17 +9580,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "swapr",
     "name": "Swapr",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "swapr": Object {
-        "chains": Array [
-          "ethereum",
-          "arbitrum",
-          "xdai",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SWPR",
     "twitter": "SwaprEth",
     "url": "https://swapr.eth.link/#/swap",
@@ -11832,15 +9625,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Swapsicle",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "swapsicle": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "POPS",
     "twitter": "SwapsicIeDEX",
     "url": "https://swapsicle.io",
@@ -11890,18 +9674,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "TWAP",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "synfutures": Object {
-        "chains": Array [
-          "polygon",
-          "arbitrum",
-          "ethereum",
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "SynFuturesDefi",
     "url": "https://www.synfutures.com/",
@@ -11946,15 +9718,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "Pyth",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "synthetify": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SNY",
     "twitter": "synthetify",
     "url": "https://www.synthetify.io",
@@ -12000,15 +9763,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Syrup Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "syrup-finance": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SRX",
     "twitter": "syrupfinance",
     "url": "https://syrup.finance/",
@@ -12048,15 +9802,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "TempleDAO Trade",
     "parentProtocol": "Temple DAO",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "templedao-trade": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "TEMPLE",
     "twitter": "templedao",
     "url": "https://templedao.link/dapp/trade",
@@ -12096,15 +9841,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Terraswap",
     "openSource": true,
     "protocolType": undefined,
-    "protocolsData": Object {
-      "terraswap": Object {
-        "chains": Array [
-          "terra",
-        ],
-        "disabled": true,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "terraswap_io",
     "url": "https://terraswap.io",
@@ -12151,15 +9887,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Tethys AMM",
     "parentProtocol": "Tethys Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "tethys-finance": Object {
-        "chains": Array [
-          "metis",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "TETHYS",
     "twitter": "tethysfinance",
     "url": "https://tethys.finance",
@@ -12204,15 +9931,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "parentProtocol": "Tetu",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "tetu": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "TETU",
     "twitter": "tetu_io",
     "url": "http://tetu.io",
@@ -12255,15 +9973,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Thena",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "thena": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "THE",
     "twitter": "ThenaFi_",
     "url": "https://thena.fi/",
@@ -12303,15 +10012,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "thorswap",
     "name": "THORSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "thorswap": Object {
-        "chains": Array [
-          "thorchain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "THORSwap",
     "url": "https://app.thorswap.finance/liquidity",
@@ -12344,15 +10044,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "THORWallet DEX",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "thorwallet": Object {
-        "chains": Array [
-          "thorchain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "THORWalletDEX",
     "url": "https://www.thorwallet.org",
@@ -12394,15 +10085,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "tinyman",
     "name": "Tinyman",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "tinyman": Object {
-        "chains": Array [
-          "algorand",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "tinymanorg",
     "url": "https://tinyman.org",
@@ -12448,15 +10130,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Titano Swych",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "titano-swych": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "TITANO",
     "twitter": "TitanoFinance",
     "url": "https://app.titano.finance/swap",
@@ -12496,15 +10169,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Tomb Swap",
     "parentProtocol": "Tomb Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "tomb-swap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "TOMB",
     "twitter": "tombfinance",
     "url": "https://tomb.finance/",
@@ -12547,12 +10211,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "id": "468",
     "logo": "https://icons.llama.fi/trader-joe.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Trader Joe DEX's V1 and V2 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Trader Joe DEX's V1 and V2 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Trader Joe DEX's V1 and V2 versions",
+      "Revenue": "Sum of all revenue from Trader Joe DEX's V1 and V2 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Trader Joe DEX's V1 and V2 versions",
+      "UserFees": "Sum of all user fees from Trader Joe DEX's V1 and V2 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/traderjoe",
     "module": "traderjoe",
@@ -12561,33 +10225,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "v1": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "468",
       },
       "v2": Object {
-        "chains": Array [
-          "avax",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2393",
       },
     },
     "symbol": "JOE",
@@ -12634,12 +10277,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1672226957,
     "logo": "https://icons.llama.fi/joe-v2.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Joe V2's V1 and V2 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Joe V2's V1 and V2 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Joe V2's V1 and V2 versions",
+      "Revenue": "Sum of all revenue from Joe V2's V1 and V2 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Joe V2's V1 and V2 versions",
+      "UserFees": "Sum of all user fees from Joe V2's V1 and V2 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/traderjoe",
     "module": "traderjoe",
@@ -12649,33 +10292,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "v1": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "468",
       },
       "v2": Object {
-        "chains": Array [
-          "avax",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2393",
       },
     },
     "symbol": "JOE",
@@ -12720,15 +10342,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "ttswap",
     "name": "TTswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ttswap": Object {
-        "chains": Array [
-          "thundercore",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "ThunderProtocol",
     "url": "https://ttswap.space/#/swap",
@@ -12772,15 +10385,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "ubeswap",
     "name": "Ubeswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ubeswap": Object {
-        "chains": Array [
-          "celo",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "UBE",
     "twitter": "ubeswap",
     "url": "https://ubeswap.org",
@@ -12823,15 +10427,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "UltronSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ultronswap": Object {
-        "chains": Array [
-          "ultron",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ULX",
     "twitter": "ultron_found",
     "url": "https://ultronswap.com",
@@ -12875,15 +10470,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "unicly",
     "name": "Unicly",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "unicly": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "UNIC",
     "twitter": "uniclyNFT",
     "url": "https://app.unic.ly",
@@ -12934,24 +10520,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "unifi",
     "name": "UniFi",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "unifi": Object {
-        "chains": Array [
-          "avax",
-          "bittorrent",
-          "tron",
-          "ontology_evm",
-          "harmony",
-          "bsc",
-          "ethereum",
-          "icon",
-          "iotex",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "UNFI",
     "twitter": "unifiprotocol",
     "url": "https://unifiprotocol.com",
@@ -12994,15 +10562,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "VanSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "vanswap": Object {
-        "chains": Array [
-          "vision",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "VAN",
     "twitter": "Van_Swap",
     "url": "https://www.vanswap.org/#/home",
@@ -13043,15 +10602,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "VaporDex",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "vapordex": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "Vapor_DEX",
     "url": "https://www.vapordex.io",
@@ -13094,15 +10644,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Velodrome",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "velodrome": Object {
-        "chains": Array [
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "VELO",
     "treasury": "velodrome.js",
     "twitter": "VelodromeFi",
@@ -13146,15 +10687,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "VeniceSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "veniceswap": Object {
-        "chains": Array [
-          "findora",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "venicefinance",
     "url": "https://venice.finance",
@@ -13204,16 +10736,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Verse",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "verse": Object {
-        "chains": Array [
-          "ethereum",
-          "smartbch",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "BitcoinCom",
     "url": "https://verse.bitcoin.com",
@@ -13255,15 +10777,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "vexchange",
     "name": "Vexchange",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "vexchange": Object {
-        "chains": Array [
-          "vechain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "VEX",
     "twitter": "VexchangeIO",
     "url": "https://vexchange.io/swap",
@@ -13307,15 +10820,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "viperswap",
     "name": "ViperSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "viperswap": Object {
-        "chains": Array [
-          "harmony",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "VIPER",
     "twitter": "VenomDAO",
     "url": "https://viper.exchange",
@@ -13358,15 +10862,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "voltage",
     "name": "Voltage",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "voltage": Object {
-        "chains": Array [
-          "fuse",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "VOLT",
     "twitter": "voltfinance",
     "url": "https://app.voltage.finance/",
@@ -13409,12 +10904,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1641871826,
     "logo": "https://icons.llama.fi/voltswap.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "All fees from VoltSwap's V2 version",
+      "HoldersRevenue": "All holders revenue from VoltSwap's V2 version",
+      "ProtocolRevenue": "All protocol revenue from VoltSwap's V2 version",
+      "Revenue": "All revenue from VoltSwap's V2 version",
+      "SupplySideRevenue": "All supply side revenue from VoltSwap's V2 version",
+      "UserFees": "All user fees from VoltSwap's V2 version",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/voltswap",
     "module": "voltswap",
@@ -13424,32 +10919,14 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "v1": Object {
-        "chains": Array [
-          "meter",
-        ],
         "disabled": true,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "VoltSwap V1",
+        "enabled": true,
+        "id": "1225",
       },
       "v2": Object {
-        "chains": Array [
-          "meter",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2133",
       },
     },
     "symbol": "VOLT",
@@ -13495,12 +10972,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1664359970,
     "logo": "https://icons.llama.fi/voltswap-v2.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "All fees from VoltSwap V2's V2 version",
+      "HoldersRevenue": "All holders revenue from VoltSwap V2's V2 version",
+      "ProtocolRevenue": "All protocol revenue from VoltSwap V2's V2 version",
+      "Revenue": "All revenue from VoltSwap V2's V2 version",
+      "SupplySideRevenue": "All supply side revenue from VoltSwap V2's V2 version",
+      "UserFees": "All user fees from VoltSwap V2's V2 version",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/voltswap",
     "module": "voltswap",
@@ -13510,32 +10987,14 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "v1": Object {
-        "chains": Array [
-          "meter",
-        ],
         "disabled": true,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "VoltSwap V1",
+        "enabled": true,
+        "id": "1225",
       },
       "v2": Object {
-        "chains": Array [
-          "meter",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2133",
       },
     },
     "symbol": "VOLT",
@@ -13579,15 +11038,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Vortex Protocol",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "vortex-protocol": Object {
-        "chains": Array [
-          "tezos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SMAK",
     "twitter": "vortexAMM",
     "url": "https://app.vortex.network/",
@@ -13632,15 +11082,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "vvs-finance",
     "name": "VVS Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "vvs-finance": Object {
-        "chains": Array [
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "VVS",
     "twitter": "VVS_finance",
     "url": "https://vvs.finance",
@@ -13685,15 +11126,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "wagyuswap",
     "name": "WagyuSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wagyuswap": Object {
-        "chains": Array [
-          "velas",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WAG",
     "twitter": "WagyuSwap_app",
     "url": "https://www.wagyuswap.app",
@@ -13734,15 +11166,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "wanswap-dex",
     "name": "WanSwap Dex",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wanswap-dex": Object {
-        "chains": Array [
-          "wan",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WASP",
     "twitter": "wanswap",
     "url": "https://wanswap.finance/",
@@ -13790,19 +11213,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "wardenswap",
     "name": "WardenSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wardenswap": Object {
-        "chains": Array [
-          "bsc",
-          "optimism",
-          "arbitrum",
-          "ethereum",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WAD",
     "twitter": "WardenSwap",
     "url": "https://www.wardenswap.com",
@@ -13845,15 +11255,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Wavelength DAO",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wavelength-dao": Object {
-        "chains": Array [
-          "velas",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "Wavelength_DAO",
     "url": "https://wavelength.exchange",
@@ -13900,16 +11301,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "WhaleSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "whaleswap": Object {
-        "chains": Array [
-          "bsc",
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "POD",
     "twitter": "WhaleLoans",
     "url": "https://whaleswap.finance",
@@ -13954,15 +11345,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "wigoswap",
     "name": "WigoSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wigoswap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WIGO",
     "twitter": "WigoSwap",
     "url": "https://wigoswap.io/",
@@ -14005,15 +11387,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "WinerySwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wineryswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CORK",
     "twitter": "WinerySwap",
     "url": "https://winery.finance",
@@ -14057,15 +11430,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "WingRiders",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wingriders": Object {
-        "chains": Array [
-          "cardano",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WRT",
     "twitter": "wingriderscom",
     "url": "https://www.wingriders.com",
@@ -14110,15 +11474,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "wingswap",
     "name": "WingSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wingswap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WIS",
     "twitter": "WingSwapFTM",
     "url": "https://wingswap.io",
@@ -14161,15 +11516,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Wojak Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wojak-finance": Object {
-        "chains": Array [
-          "dogechain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WOJK",
     "twitter": "wojakfi",
     "url": "https://wojak.fi",
@@ -14215,15 +11561,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Wombat Exchange",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wombat-exchange": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WOM",
     "twitter": "WombatExchange",
     "url": "https://www.wombat.exchange/",
@@ -14275,20 +11612,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "parentProtocol": "WOO Network",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "woofi": Object {
-        "chains": Array [
-          "avax",
-          "bsc",
-          "fantom",
-          "polygon",
-          "arbitrum",
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WOO",
     "twitter": "WOOnetwork",
     "url": "https://fi.woo.org",
@@ -14326,15 +11649,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "wx.network",
     "name": "WX.Network",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wx.network": Object {
-        "chains": Array [
-          "waves",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "Waves.Exchange",
     "twitter": "Waves_Exchange",
     "url": "https://waves.exchange",
@@ -14373,15 +11687,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "xexchange",
     "name": "xExchange",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "xexchange": Object {
-        "chains": Array [
-          "elrond",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MEX",
     "twitter": "MaiarExchange",
     "url": "https://xexchange.com/",
@@ -14428,15 +11733,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "XSwap Protocol",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "xswap-protocol": Object {
-        "chains": Array [
-          "xdc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "XSP",
     "twitter": "XSwapProtocol",
     "url": "https://app.xspswap.finance",
@@ -14481,15 +11777,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "yieldfields",
     "name": "YieldFields",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "yieldfields": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "FIELD",
     "twitter": "yieldfields",
     "url": "https://yieldfields.finance/",
@@ -14532,15 +11819,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Yodeswap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "yodeswap": Object {
-        "chains": Array [
-          "dogechain",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "YODE",
     "twitter": "Yodeswap",
     "url": "https://yodeswap.dog",
@@ -14583,16 +11861,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "yokaiswap",
     "name": "YokaiSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "yokaiswap": Object {
-        "chains": Array [
-          "godwoken",
-          "godwoken_v1",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "YOK",
     "twitter": "yokaiswap",
     "url": "https://www.yokaiswap.com",
@@ -14639,17 +11907,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "yoshi-exchange",
     "name": "Yoshi Exchange",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "yoshi-exchange": Object {
-        "chains": Array [
-          "fantom",
-          "bsc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "YOSHI",
     "twitter": "YoshiExchange",
     "url": "https://yoshi.exchange",
@@ -14687,15 +11944,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "zilswap",
     "name": "ZilSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "zilswap": Object {
-        "chains": Array [
-          "zilliqa",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ZWAP",
     "twitter": "ZilSwap",
     "url": "https://zilswap.io/swap",
@@ -14737,15 +11985,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "zipswap",
     "name": "ZipSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "zipswap": Object {
-        "chains": Array [
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ZIP",
     "twitter": "Zip_swap",
     "url": "https://zipswap.fi/#/",
@@ -14791,21 +12030,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "name": "Zircon Gamma",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "zircon-gamma": Object {
-        "chains": Array [
-          "moonriver",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ZRG",
     "twitter": "Zircon_Finance",
     "url": "https://zircon.finance",
   },
   Object {
-    "address": null,
+    "address": "arbitrum:0x3b475f6f2f41853706afc9fa6a6b8c5df1a2724c",
     "audit_links": Array [
       "https://github.com/solidproof/projects/blob/main/ZyberSwap/SmartContract_Audit_Solidproof_Zyberswap.pdf",
     ],
@@ -14848,16 +12078,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     ],
     "parentProtocol": "ZyberSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "zyberswap": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
-    "symbol": "-",
+    "symbol": "ZYB",
     "twitter": "zyberswap",
     "url": "https://www.zyberswap.io",
   },
@@ -14901,20 +12122,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "ghostmarket",
     "name": "GhostMarket",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ghostmarket": Object {
-        "chains": Array [
-          "neo",
-          "bsc",
-          "avax",
-          "polygon",
-          "ethereum",
-          "phantasma",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GM",
     "twitter": "ghostmarketio",
     "url": "https://ghostmarket.io",
@@ -14958,15 +12165,6 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "module": "alita-finance",
     "name": "Alita Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "alita-finance": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ALI",
     "twitter": "AlitaFinance",
     "url": "https://app.alita.finance",
@@ -15014,12 +12212,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "id": "194",
     "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from PancakeSwap AMM V1's V2 and STABLESWAP versions",
+      "HoldersRevenue": "Sum of all holders revenue from PancakeSwap AMM V1's V2 and STABLESWAP versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from PancakeSwap AMM V1's V2 and STABLESWAP versions",
+      "Revenue": "Sum of all revenue from PancakeSwap AMM V1's V2 and STABLESWAP versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from PancakeSwap AMM V1's V2 and STABLESWAP versions",
+      "UserFees": "Sum of all user fees from PancakeSwap AMM V1's V2 and STABLESWAP versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
     "module": "pancakeswap",
@@ -15029,47 +12227,17 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "stableswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
-          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 10% of the fees.",
-          "Revenue": "Revenue is 50% of the fees paid by users.",
-          "SupplySideRevenue": "LPs receive 50% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "2529",
       },
       "v1": Object {
-        "chains": Array [
-          "bsc",
-        ],
         "disabled": true,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2590",
       },
       "v2": Object {
-        "chains": Array [
-          "bsc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user.",
-          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
-          "Revenue": "All revenue generated comes from user fees.",
-          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "194",
       },
     },
     "symbol": "CAKE",
@@ -15121,12 +12289,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "id": "194",
     "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from PancakeSwap AMM's V2 and STABLESWAP versions",
+      "HoldersRevenue": "Sum of all holders revenue from PancakeSwap AMM's V2 and STABLESWAP versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from PancakeSwap AMM's V2 and STABLESWAP versions",
+      "Revenue": "Sum of all revenue from PancakeSwap AMM's V2 and STABLESWAP versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from PancakeSwap AMM's V2 and STABLESWAP versions",
+      "UserFees": "Sum of all user fees from PancakeSwap AMM's V2 and STABLESWAP versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
     "module": "pancakeswap",
@@ -15136,47 +12304,17 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "stableswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
-          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 10% of the fees.",
-          "Revenue": "Revenue is 50% of the fees paid by users.",
-          "SupplySideRevenue": "LPs receive 50% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "2529",
       },
       "v1": Object {
-        "chains": Array [
-          "bsc",
-        ],
         "disabled": true,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2590",
       },
       "v2": Object {
-        "chains": Array [
-          "bsc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user.",
-          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
-          "Revenue": "All revenue generated comes from user fees.",
-          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "194",
       },
     },
     "symbol": "CAKE",
@@ -15223,12 +12361,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1676313502,
     "logo": "https://icons.llama.fi/pancakeswap-stableswap.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from PancakeSwap StableSwap's V2 and STABLESWAP versions",
+      "HoldersRevenue": "Sum of all holders revenue from PancakeSwap StableSwap's V2 and STABLESWAP versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from PancakeSwap StableSwap's V2 and STABLESWAP versions",
+      "Revenue": "Sum of all revenue from PancakeSwap StableSwap's V2 and STABLESWAP versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from PancakeSwap StableSwap's V2 and STABLESWAP versions",
+      "UserFees": "Sum of all user fees from PancakeSwap StableSwap's V2 and STABLESWAP versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
     "module": "pancakeswap",
@@ -15238,47 +12376,17 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "stableswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
-          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 10% of the fees.",
-          "Revenue": "Revenue is 50% of the fees paid by users.",
-          "SupplySideRevenue": "LPs receive 50% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "2529",
       },
       "v1": Object {
-        "chains": Array [
-          "bsc",
-        ],
         "disabled": true,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "enabled": true,
+        "id": "2590",
       },
       "v2": Object {
-        "chains": Array [
-          "bsc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user.",
-          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
-          "Revenue": "All revenue generated comes from user fees.",
-          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "194",
       },
     },
     "symbol": "CAKE",
@@ -15329,12 +12437,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1666191149,
     "logo": "https://icons.llama.fi/uniswap-v1.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Uniswap V1's V1, V2 and V3 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Uniswap V1's V1, V2 and V3 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Uniswap V1's V1, V2 and V3 versions",
+      "Revenue": "Sum of all revenue from Uniswap V1's V1, V2 and V3 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Uniswap V1's V1, V2 and V3 versions",
+      "UserFees": "Sum of all user fees from Uniswap V1's V1, V2 and V3 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/uniswap",
     "module": "uniswap",
@@ -15344,50 +12452,16 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "2196",
       },
       "v2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "2197",
       },
       "v3": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-          "arbitrum",
-          "polygon",
-          "celo",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.05%, 0.30%, or 1% on each swap.",
-        },
+        "enabled": true,
+        "id": "2198",
       },
     },
     "symbol": "UNI",
@@ -15438,12 +12512,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1666191162,
     "logo": "https://icons.llama.fi/uniswap-v2.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Uniswap V2's V1, V2 and V3 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Uniswap V2's V1, V2 and V3 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Uniswap V2's V1, V2 and V3 versions",
+      "Revenue": "Sum of all revenue from Uniswap V2's V1, V2 and V3 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Uniswap V2's V1, V2 and V3 versions",
+      "UserFees": "Sum of all user fees from Uniswap V2's V1, V2 and V3 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/uniswap",
     "module": "uniswap",
@@ -15453,50 +12527,16 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "2196",
       },
       "v2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "2197",
       },
       "v3": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-          "arbitrum",
-          "polygon",
-          "celo",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.05%, 0.30%, or 1% on each swap.",
-        },
+        "enabled": true,
+        "id": "2198",
       },
     },
     "symbol": "UNI",
@@ -15551,12 +12591,12 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "listedAt": 1666191475,
     "logo": "https://icons.llama.fi/uniswap-v3.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Sum of all fees from Uniswap V3's V1, V2 and V3 versions",
+      "HoldersRevenue": "Sum of all holders revenue from Uniswap V3's V1, V2 and V3 versions",
+      "ProtocolRevenue": "Sum of all protocol revenue from Uniswap V3's V1, V2 and V3 versions",
+      "Revenue": "Sum of all revenue from Uniswap V3's V1, V2 and V3 versions",
+      "SupplySideRevenue": "Sum of all supply side revenue from Uniswap V3's V1, V2 and V3 versions",
+      "UserFees": "Sum of all user fees from Uniswap V3's V1, V2 and V3 versions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/uniswap",
     "module": "uniswap",
@@ -15566,50 +12606,16 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "protocolType": undefined,
     "protocolsData": Object {
       "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "2196",
       },
       "v2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
+        "enabled": true,
+        "id": "2197",
       },
       "v3": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-          "arbitrum",
-          "polygon",
-          "celo",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.05%, 0.30%, or 1% on each swap.",
-        },
+        "enabled": true,
+        "id": "2198",
       },
     },
     "symbol": "UNI",

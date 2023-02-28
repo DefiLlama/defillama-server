@@ -331,5 +331,8 @@ export default {
     },
     "frax-ether": {
         enabled: true
+    },
+    "fpi": {
+        enabled: true
     }
 } as AdaptorsConfig

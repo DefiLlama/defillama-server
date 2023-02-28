@@ -1,4 +1,4 @@
-import { DISABLED_ADAPTER_KEY, Adapter, BaseAdapter } from "@defillama/dimension-adapters/adapters/types";
+import { DISABLED_ADAPTER_KEY, Adapter, BaseAdapter, AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
 import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
@@ -109,12 +109,11 @@ export const getMethodologyData = (displayName: string, adaptorKey: string, modu
     }
 }
 
-/* export const formatChain = (chain: string) => {
-    let c = chain
-    if (chain === 'avax') c = "avalanche"
-    else if (chain === 'terra') c = 'terra classic'
-    return c[0].toUpperCase() + c.slice(1)
-} */
+export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
+    const methodology = Object.values(adapter)[0].meta?.methodology
+    if (!methodology && type === AdapterType.FEES) return { ...(getDefaultMethodologyByCategory(category ?? '') ?? {}) }
+    return methodology
+}
 
 export const formatChain = (chain: string) => {
     if (!chain) return chain

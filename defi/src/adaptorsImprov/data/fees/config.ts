@@ -78,7 +78,23 @@ export default {
     },
     "gmx": {
         "enabled": true,
-        "id": "337"
+        "id": "337",
+        "gmx": {
+            enabled: true,
+            protocolsData: {
+                "swap": {
+                    "id": "337",
+                    "enabled": true,
+                    "category": "Dexes",
+                    "displayName": "GMX - SWAP"
+                },
+                "derivatives": {
+                    displayName: "GMX - Derivatives",
+                    "id": "337",
+                    "enabled": true
+                }
+            },
+        },
     },
     "lido": {
         "enabled": true,

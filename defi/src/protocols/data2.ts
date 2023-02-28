@@ -26187,7 +26187,7 @@ const data2: Protocol[] = [
     url: "https://balancer.finance/",
     description: "Balancer is a protocol for programmable liquidity.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/balancer.png`,
+    logo: `${baseIconsUrl}/balancer-v2.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -26198,7 +26198,6 @@ const data2: Protocol[] = [
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
     governanceID: ["snapshot:balancer.eth"],
-    treasury: "balancer.js",
     parentProtocol: "Balancer"
   },
   {

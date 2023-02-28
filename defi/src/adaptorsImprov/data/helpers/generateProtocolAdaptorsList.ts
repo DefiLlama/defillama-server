@@ -1,7 +1,7 @@
 import data, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
 import { sluggifyString } from "../../../utils/sluggify";
-import getAllChainsFromAdaptors, { getChainsFromBaseAdapter, getMethodologyData } from "../../utils/getAllChainsFromAdaptors";
+import getAllChainsFromAdaptors, { getChainsFromBaseAdapter, getMethodologyData, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { Adapter, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
@@ -82,7 +82,6 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                 }
                 const infoItem = {
                     ...dexFoundInProtocols,
-                    ...config[adapterKey],
                     ...configObj,
                     id: config[adapterKey].id,
                     module: adapterKey,
@@ -94,12 +93,9 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                     methodologyURL: adapterObj.codePath,
                     ...overridesObj[adapterKey],
                 }
-                infoItem.methodology = getMethodologyData(
-                    dexFoundInProtocols.name,
-                    adapterKey,
-                    moduleObject,
-                    infoItem.category ?? ''
-                )
+                const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
+                if (methodology)
+                    infoItem.methodology = methodology
                 if (versionKey)
                     infoItem.versionKey = versionKey
                 return infoItem

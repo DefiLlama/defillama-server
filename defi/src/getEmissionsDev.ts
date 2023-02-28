@@ -1,35 +1,19 @@
 import {
   wrap,
   IResponse,
-  errorResponse,
+  notFoundResponse,
   successResponse,
 } from "./utils/shared";
-import fs from "fs";
-import path from "path";
 
 const handler = async (event: any): Promise<IResponse> => {
   const protocolName: string = event.pathParameters?.protocol?.toLowerCase();
 
   try {
-    const data = JSON.parse(
-      fs.readFileSync(
-        path.join(__dirname, `./emissions/charts/${protocolName}.json`),
-        "utf8",
-      ),
-    );
+    const data = await import(`./emissions/charts/${protocolName}.json`);
     return successResponse(data);
   } catch (e) {
-    if (
-      typeof e == "object" &&
-      e != null &&
-      "message" in e &&
-      typeof e.message == "string"
-    )
-      return errorResponse({
-        message: `protocol '${protocolName}' has no chart to fetch: ${e.message}`,
-      });
-    return errorResponse({
-      message: `protocol '${protocolName}' has no chart to fetch and no error message could be returned`,
+    return notFoundResponse({
+      message: `protocol '${protocolName}' has no chart to fetch`,
     });
   }
 };
@@ -37,7 +21,7 @@ const handler = async (event: any): Promise<IResponse> => {
 export default wrap(handler);
 
 // async function main() {
-//   let a = await handler({ pathParameters: { protocol: "ave" } });
+//   let a = await handler({ pathParameters: { protocol: "aave" } });
 //   return;
 // }
-// main(); // ts-node defi/src/getEmissions.ts
+// main(); // ts-node defi/src/getEmissionsDev.ts

@@ -26600,5 +26600,52 @@ const data2: Protocol[] = [
     governanceID: ["snapshot:balancer.eth"],
     parentProtocol: "Balancer"
   },
+  {
+    id: "2612",
+    name: "Genius",
+    address: "0x444444444444C1a66F394025Ac839A535246FCc8",
+    symbol: "GENI",
+    url: "https://thegeniustoken.com",
+    description: "First AI-driven certificate of deposit on blockchain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/genius.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "genius",
+    cmcId: "23204",
+    category: "Liquid Staking",
+    chains: ["Ethereum", "Avalanche", "Binance", "Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "genius/index.js",
+    twitter: "Genicrypto",
+    audit_links: [
+                   "https://www.certik.com/projects/genius",
+                   "https://www.gleipnirsecurity.com/reports"
+                 ],
+    listedAt: 1677607434
+  },
+  {
+    id: "2613",
+    name: "Mellow Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://mellow.finance",
+    description: "Mellow Protocol is a permissionless system for active liquidity management and building trustless automatic DeFi strategies.First AI-driven certificate of deposit on blockchain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/genius.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum", "Polygon"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "MellowProtocol/index.js",
+    twitter: "mellowprotocol",
+    audit_links: ["https://github.com/mellow-finance/mellow-audits"],
+    listedAt: 1677607439
+  },
 ]
 export default data2;

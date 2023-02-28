@@ -26557,5 +26557,26 @@ const data2: Protocol[] = [
     twitter: "HordApp",
     listedAt: 1677586298
   },
+  {
+    id: "2610",
+    name: "ZORA",
+    address: null,
+    symbol: "-",
+    url: "https://market.zora.co",
+    description: "The NFT Marketplace Protocol",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/zora.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "ourZORA",
+    listedAt: 1677604484
+  },
 ]
 export default data2;

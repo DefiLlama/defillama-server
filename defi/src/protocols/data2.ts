@@ -26633,7 +26633,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://mellow.finance",
-    description: "Mellow Protocol is a permissionless system for active liquidity management and building trustless automatic DeFi strategies.First AI-driven certificate of deposit on blockchain.",
+    description: "Mellow Protocol is a permissionless system for active liquidity management and building trustless automatic DeFi strategies",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/genius.jpg`,
     audits: "2",

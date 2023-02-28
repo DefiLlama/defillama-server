@@ -26203,6 +26203,7 @@ const data2: Protocol[] = [
     parentProtocol: "Balancer",
   },
   */
+  /*
   {
     id: "2594",
     name: "Balancer V2",
@@ -26577,6 +26578,27 @@ const data2: Protocol[] = [
     module: "dummy.js",
     twitter: "ourZORA",
     listedAt: 1677604484
+  },
+  {
+    id: "2611",
+    name: "Balancer V2",
+    address: "0xba100000625a3754423978a60c9317c58a424e3d",
+    symbol: "BAL",
+    url: "https://balancer.finance/",
+    description: "Balancer is a protocol for programmable liquidity.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/balancer-v2.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum", "Polygon", "Arbitrum"],
+    module: "balancer/index.js",
+    twitter: "BalancerLabs",
+    audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
+    governanceID: ["snapshot:balancer.eth"],
+    parentProtocol: "Balancer"
   },
 ]
 export default data2;

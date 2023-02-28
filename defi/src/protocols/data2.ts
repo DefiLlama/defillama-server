@@ -26181,28 +26181,6 @@ const data2: Protocol[] = [
   },
   {
     id: "2593",
-    name: "Balancer V1",
-    address: "0xba100000625a3754423978a60c9317c58a424e3d",
-    symbol: "BAL",
-    url: "https://balancer.finance/",
-    description: "Balancer is a protocol for programmable liquidity.",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/balancer.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: "5728",
-    category: "Dexes",
-    chains: ["Ethereum"],
-    module: "dummy.js",
-    twitter: "BalancerLabs",
-    audit_links: [],
-    governanceID: ["snapshot:balancer.eth"],
-    treasury: "balancer.js",
-    parentProtocol: "Balancer",
-  },
-  {
-    id: "2594",
     name: "Balancer V2",
     address: "0xba100000625a3754423978a60c9317c58a424e3d",
     symbol: "BAL",
@@ -26213,10 +26191,10 @@ const data2: Protocol[] = [
     audits: "2",
     audit_note: null,
     gecko_id: null,
-    cmcId: "5728",
+    cmcId: null,
     category: "Dexes",
     chains: ["Ethereum", "Polygon", "Arbitrum"],
-    module: "dummy.js",
+    module: "balancer/index.js",
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
     governanceID: ["snapshot:balancer.eth"],
@@ -26224,7 +26202,7 @@ const data2: Protocol[] = [
     parentProtocol: "Balancer"
   },
   {
-    id: "2595",
+    id: "2594",
     name: "BeamSwap Stable AMM",
     address: "moonbeam:0xcd3B51D98478D53F4515A306bE565c6EebeF1D58",
     symbol: "GLINT",
@@ -26247,7 +26225,7 @@ const data2: Protocol[] = [
     parentProtocol: "BeamSwap"
   },
   {
-    id: "2596",
+    id: "2595",
     name: "Surfswap Stable AMM",
     address: "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
     symbol: "TIDE",
@@ -26270,7 +26248,7 @@ const data2: Protocol[] = [
     parentProtocol: "Surfswap"
   },
   {
-    id: "2597",
+    id: "2596",
     name: "Moret",
     address: "polygon:0x43F2acbaE09272021AFC107180Aa0ee313B00D8F",
     symbol: "MOR",
@@ -26292,7 +26270,7 @@ const data2: Protocol[] = [
     listedAt: 1677386057,
   },
   {
-    id: "2598",
+    id: "2597",
     name: "Symmetry",
     address: null,
     symbol: "-",
@@ -26314,7 +26292,7 @@ const data2: Protocol[] = [
     listedAt: 1677438953,
   },
   {
-    id: "2599",
+    id: "2598",
     name: "Shoebill Finance",
     address: null,
     symbol: "-",
@@ -26336,7 +26314,7 @@ const data2: Protocol[] = [
     listedAt: 1677473337,
   },
   {
-    id: "2600",
+    id: "2599",
     name: "Zyberswap V3",
     address: "arbitrum:0x3b475f6f2f41853706afc9fa6a6b8c5df1a2724c",
     symbol: "ZYB",
@@ -26358,7 +26336,7 @@ const data2: Protocol[] = [
     listedAt: 1677500668
   },
   {
-    id: "2601",
+    id: "2600",
     name: "AlienFi",
     address: "arbitrum:0x6740acb82ac5c63a7ad2397ee1faed7c788f5f8c",
     symbol: "ALIEN",
@@ -26379,7 +26357,7 @@ const data2: Protocol[] = [
     listedAt: 1677501969
   },
   {
-    id: "2602",
+    id: "2601",
     name: "DSU Money",
     address: "0x24aE124c4CC33D6791F8E8B63520ed7107ac8b3e",
     symbol: "ESS",
@@ -26400,7 +26378,7 @@ const data2: Protocol[] = [
     listedAt: 1677501985
   },
   {
-    id: "2603",
+    id: "2602",
     name: "Rysk Finance",
     address: null,
     symbol: "-",
@@ -26421,7 +26399,7 @@ const data2: Protocol[] = [
     listedAt: 1677530240
   },
   {
-    id: "2604",
+    id: "2603",
     name: "Lockless Protocol",
     address: null,
     symbol: "-ESS",

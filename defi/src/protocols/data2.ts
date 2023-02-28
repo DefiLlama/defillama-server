@@ -26418,5 +26418,27 @@ const data2: Protocol[] = [
     twitter: "FTM1337",
     listedAt: 1677530245
   },
+  {
+    id: "2604",
+    name: "Frax FPI",
+    address: "0x5ca135cb8527d76e932f34b5145575f9d8cbe08e",
+    symbol: "FPI",
+    url: "https://app.frax.finance/fpifpis/fpi",
+    description: "The Frax Price Index (FPI) is the second stablecoin of the Frax Finance ecosystem. FPI is the first stablecoin pegged to a basket of real-world consumer items as defined by the US CPI-U average. The FPI stablecoin is intended to keep its price constant to the price of all items within the CPI basket and thus hold its purchasing power with on-chain stability mechanisms.f locking the asset.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/frax-fpi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "fraxfinance",
+    parentProtocol: "Frax Finance",
+    listedAt: 1677584770
+  },
 ]
 export default data2;

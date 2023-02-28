@@ -992,6 +992,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Balancer",
   },
+  {
+    id: "KyberSwap",
+    name: "KyberSwap",
+    url: "https://kyberswap.com",
+    description:
+    "Multichain DEX & aggregator on 14 chains. KyberSwap is both a decentralized exchange (DEX) aggregator and a liquidity source with capital-efficient liquidity pools that earns fees for liquidity providers.",
+    logo: `${baseIconsUrl}/kyberswap.png`,
+    gecko_id: "kyber-network-crystal",
+    cmcId: "9444",
+    chains: [],
+    twitter: "KyberNetwork",
+  },
 ];
 
 export default parentProtocols;

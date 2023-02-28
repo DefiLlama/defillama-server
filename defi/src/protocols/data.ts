@@ -473,6 +473,7 @@ const data: Protocol[] = [
     module: "kyber-classic/index.js",
     twitter: "KyberNetwork",
     audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],
+    parentProtocol: "KyberSwap",
     oracles: ["Chainlink", "Band"],
   },
   {

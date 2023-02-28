@@ -4,7 +4,7 @@ import {
   notFoundResponse,
   successResponse,
 } from "./utils/shared";
-
+import * as _a from "./emissions/charts";
 const handler = async (event: any): Promise<IResponse> => {
   const protocolName: string = event.pathParameters?.protocol?.toLowerCase();
 

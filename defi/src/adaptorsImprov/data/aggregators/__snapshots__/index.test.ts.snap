@@ -41,15 +41,6 @@ Array [
     "name": "Deflex",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "deflex": Object {
-        "chains": Array [
-          "algorand",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "deflexfi",
     "url": "https://deflex.fi",
@@ -108,24 +99,9 @@ Array [
     "protocolType": undefined,
     "protocolsData": Object {
       "Dexible_v2": Object {
-        "chains": Array [
-          "ethereum",
-          "arbitrum",
-          "avax",
-          "bsc",
-          "fantom",
-          "optimism",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
+        "displayName": "Dexible V2",
+        "enabled": true,
+        "id": "2249",
       },
     },
     "startFrom": 1630022400,
@@ -169,15 +145,6 @@ Array [
     "module": "jupiter-aggregator",
     "name": "Jupiter Aggregator",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "jupiter-aggregator": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "JupiterExchange",
     "url": "https://jup.ag/",

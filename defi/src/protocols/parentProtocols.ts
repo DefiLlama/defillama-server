@@ -980,6 +980,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SurfswapDEX",
   },
+  {
+    id: "Balancer",
+    name: "Balancer",
+    url: "https://balancer.fi",
+    description:
+    "Balancer is a decentralized automated market maker (AMM) protocol built on Ethereum that represents a flexible building block for programmable liquidity.",
+    logo: `${baseIconsUrl}/balancer.png`,
+    gecko_id: "balancer",
+    cmcId: "5728",
+    chains: [],
+    twitter: "Balancer",
+  },
 ];
 
 export default parentProtocols;

@@ -212,14 +212,15 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/balancer-v1.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "balancer",
-    cmcId: "5728",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
     module: "balancer-v1/index.js",
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
     governanceID: ["snapshot:balancer.eth"],
+    parentProtocol: "Balancer",
     treasury: "balancer.js"
   },
   {

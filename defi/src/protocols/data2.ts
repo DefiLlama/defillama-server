@@ -26647,5 +26647,26 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/mellow-finance/mellow-audits"],
     listedAt: 1677607439
   },
+  {
+    id: "2614",
+    name: "Grappa Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.grappa.finance",
+    description: "Grappa is an open sourced, permissionless option margin layer focuses on composability and capital efficiency. Different margin engines can be plugged into Grappa to provide wide range of choice based on users' risk tolerance and capital efficiency.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/grappa-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "grappa-finance/index.js",
+    twitter: "grappafinance",
+    listedAt: 1677611970
+  },
 ]
 export default data2;

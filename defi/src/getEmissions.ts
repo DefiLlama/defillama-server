@@ -1,7 +1,7 @@
 import {
   wrap,
   IResponse,
-  errorResponse,
+  notFoundResponse,
   successResponse,
 } from "./utils/shared";
 import { createChartData } from "./emissions/utils/convertToChartData";
@@ -13,7 +13,7 @@ const handler = async (event: any): Promise<IResponse> => {
   const protocolName: string = event.pathParameters?.protocol?.toLowerCase();
   const adapter: Protocol = (adapters as any)[protocolName];
   if (!adapter) {
-    return errorResponse({
+    return notFoundResponse({
       message: `The passed protocol name is invalid. Make sure '${adapter}' is a key of './emissions/protocols/index.ts`,
     });
   }

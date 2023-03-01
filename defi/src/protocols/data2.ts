@@ -26692,5 +26692,47 @@ const data2: Protocol[] = [
     oracles: ["Chainlink", "Band"],
     parentProtocol: "KyberSwap"
   },
+  {
+    id: "2616",
+    name: "Conic Finance",
+    address: "0x9ae380f0272e2162340a5bb646c354271c0f5cfc",
+    symbol: "CNC",
+    url: "https://conic.finance",
+    description:
+      "Conic Finance is an easy-to-use platform built for liquidity providers to easily diversify their exposure to multiple Curve pools. Any user can provide liquidity into a Conic Omnipool which allocates funds across Curve in proportion to protocol controlled pool weights.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/conic-omnipool.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "conic-omnipool/index.js",
+    twitter: "ConicFinance",
+    oracles: [],
+    listedAt: 1677700863
+  },
+  {
+    id: "2617",
+    name: "DeDust",
+    address: "ton:EQBlqsm144Dq6SjbPI4jjZvA1hqTIP3CvHovbIfW_t-SCALE",
+    symbol: "SCALE",
+    url: "https://dedust.io",
+    description:
+      "DeDust is a decentralized exchange liquidity pool on TON",
+    chain: "TON",
+    logo: `${baseIconsUrl}/dedust.png`,
+    audits: null,
+    audit_note: null,
+    gecko_id: null,
+    cmcId: "5631",
+    category: "Dexes",
+    chains: ["TON"],
+    module: "dedust/index.js",
+    twitter: "ScaletonCo",
+    oracles: [],
+    listedAt: 1677700865
+  },
 ]
 export default data2;

@@ -21,11 +21,12 @@ import getCachedReturnValue from "./getCachedReturnValue"
 
 const getAdapterKey = (
     adapterId: string,
+    versionKey: string,
     adaptorRecordType: AdaptorRecordType,
     adaptorType: AdapterType,
     protocolType?: ProtocolType,
     chainFilter?: string
-) => `generateCleanRecordsImprov/${adaptorType}/${adapterId}/${protocolType}/${adaptorRecordType}_${chainFilter}`
+) => `generateCleanRecordsImprov/${adaptorType}/${adapterId}/${versionKey}/${protocolType}/${adaptorRecordType}_${chainFilter}`
 
 export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecordType, adaptorType: AdapterType, chainFilter?: string, onError?: (e: Error) => Promise<void>): Promise<ProtocolAdaptorSummary> => {
     console.info("Generating summary for:", adapter.name, "with params", adaptorRecordType, adaptorType, chainFilter)
@@ -40,7 +41,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         if (!(adaptorRecordsRaw instanceof Array)) throw new Error("Wrong volume queried")
         if (adaptorRecordsRaw.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
         let lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
-        if (sumAllVolumes(lastRecordRaw.data)===0) {
+        if (sumAllVolumes(lastRecordRaw.data) === 0) {
             lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 2]
             adaptorRecordsRaw[adaptorRecordsRaw.length - 1] = adaptorRecordsRaw[adaptorRecordsRaw.length - 2]
         }
@@ -68,6 +69,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const cleanRecords = await getCachedReturnValue(
             getAdapterKey(
                 adapter.id,
+                adapter.versionKey ?? adapter.module,
                 adaptorRecordType,
                 adaptorType,
                 adapter.protocolType,
@@ -110,7 +112,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             rule(extraTypes, adapter.category ?? '')
         }
         // Populate last missing days with last available data
-        if (!adapter.disabled && ((yesterdaysCleanTimestamp-lastAvailableDataTimestamp)/ONE_DAY_IN_SECONDS)<5)
+        if (!adapter.disabled && ((yesterdaysCleanTimestamp - lastAvailableDataTimestamp) / ONE_DAY_IN_SECONDS) < 5)
             for (let i = lastAvailableDataTimestamp + ONE_DAY_IN_SECONDS; i <= yesterdaysCleanTimestamp; i += ONE_DAY_IN_SECONDS) {
                 const data = new AdaptorRecord(adaptorRecords[0].type, adaptorRecords[0].adaptorId, i, adaptorRecords[adaptorRecords.length - 1].data)
                 adaptorRecords.push(data)

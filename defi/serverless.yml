@@ -623,6 +623,12 @@ functions:
       - http:
           path: emissions/{protocol}
           method: get
+  storeEmissions:
+    handler: src/storeEmissions.default
+    timeout: 900
+    memorySize: 3000
+    events:
+      - schedule: cron(01 0 * * ? *)
   emissionsDev:
     handler: src/getEmissionsDev.default
     timeout: 30

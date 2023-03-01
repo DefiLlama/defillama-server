@@ -1,30 +1,22 @@
+import { getR2 } from "./utils/r2";
 import {
   wrap,
   IResponse,
   notFoundResponse,
   successResponse,
 } from "./utils/shared";
-import { createChartData } from "./emissions/utils/convertToChartData";
-import { createRawSections } from "./emissions/utils/convertToRawData";
-import adapters from "./emissions/protocols";
-import { ChartSection, Protocol } from "./emissions/types/adapters";
 
 const handler = async (event: any): Promise<IResponse> => {
   const protocolName: string = event.pathParameters?.protocol?.toLowerCase();
-  const adapter: Protocol = (adapters as any)[protocolName];
-  if (!adapter) {
+
+  try {
+    const data = await getR2(`emissions/${protocolName}`);
+    return successResponse(data);
+  } catch (e) {
     return notFoundResponse({
-      message: `The passed protocol name is invalid. Make sure '${adapter}' is a key of './emissions/protocols/index.ts`,
+      message: `protocol '${protocolName}' has no chart to fetch`,
     });
   }
-  const { rawSections, startTime, endTime } = await createRawSections(adapter);
-  const data = createChartData(rawSections, startTime, endTime, false).map(
-    (s: ChartSection) => ({
-      label: s.section,
-      data: s.data.apiData,
-    }),
-  );
-  return successResponse({ data });
 };
 
 export default wrap(handler);

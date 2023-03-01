@@ -629,13 +629,6 @@ functions:
     memorySize: 3000
     events:
       - schedule: cron(01 0 * * ? *)
-  emissionsDev:
-    handler: src/getEmissionsDev.default
-    timeout: 30
-    events:
-      - http:
-          path: emissionsDev/{protocol}
-          method: get
 
 resources:
   # CORS for api gateway errors

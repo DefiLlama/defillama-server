@@ -30,14 +30,7 @@ const event = {
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
     // console.log(rr.protocols[0])
     console.log(rr.totalDataChart.length)
-    console.log(JSON.stringify(rr.protocols.map(d=>{
-        return{
-            name: d.name,
-            displayName: d.displayName,
-            total24h: d.total24h,
-            breakdown24h: d.breakdown24h
-        }
-    }), null, 2))
+    console.log(rr.protocols.filter(d=>d.module==='uniswap').map(d=>d.parentProtocol))
     const runTime = (endTime - startTime) / 1000
     const runTimeDescription = runTime > 30 ? '🐢' : '🐇'
     console.log(`\nCurrent run ${runTimeDescription} (s): ${runTime}`)

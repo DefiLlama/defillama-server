@@ -100,7 +100,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             chains: generatedSummary.chains,
             methodologyURL: generatedSummary.methodologyURL,
             allAddresses: generatedSummary.allAddresses,
-            latestFetchIsOk: generatedSummary.latestFetchIsOk
+            latestFetchIsOk: generatedSummary.latestFetchIsOk,
+            parentProtocol: generatedSummary.parentProtocol,
         } as IHandlerBodyResponse
     } catch (error) {
         console.error(`Error generating summary for ${dexData.module} ${JSON.stringify(error)}`)

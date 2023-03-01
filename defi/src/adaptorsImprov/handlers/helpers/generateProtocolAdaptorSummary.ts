@@ -145,6 +145,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             methodologyURL: adapter.methodologyURL,
             methodology: adapter.methodology,
             allAddresses: adapter.allAddresses,
+            parentProtocol: adapter.parentProtocol,
             latestFetchIsOk: adapter?.config?.latestFetchIsOk ?? true,
             ...extraTypes
         }

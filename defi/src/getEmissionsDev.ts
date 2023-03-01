@@ -21,8 +21,8 @@ const handler = async (event: any): Promise<IResponse> => {
 
 export default wrap(handler);
 
-async function main() {
-  let a = await handler({ pathParameters: { protocol: "aave" } });
-  return;
-}
-main(); // ts-node defi/src/getEmissionsDev.ts
+// async function main() {
+//   let a = await handler({ pathParameters: { protocol: "aave" } });
+//   return;
+// }
+// main(); // ts-node defi/src/getEmissionsDev.ts

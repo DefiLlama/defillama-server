@@ -43,7 +43,7 @@ Array [
     ],
     "gecko_id": null,
     "id": "194",
-    "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
+    "logo": "https://icons.llama.fi/pancakeswap-amm-v1.jpg",
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
     "module": "pancakeswap",
     "name": "PancakeSwap AMM V1",

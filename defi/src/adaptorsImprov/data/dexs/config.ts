@@ -6,12 +6,12 @@ export default {
         "id": "116",
         protocolsData: {
             v1: {
-                id: "2593",
+                id: "116",
                 displayName: "Balancer V1",
                 enabled: true,
             },
             v2: {
-                id: "2594",
+                id: "2611",
                 displayName: "Balancer V2",
                 enabled: true,
             }
@@ -199,12 +199,12 @@ export default {
         "id": "127",
         protocolsData: {
             classic: {
-                id: "2591",
+                id: "127",
                 enabled: true,
                 displayName: "KyberSwap - Classic"
             },
             elastic: {
-                id: "2592",
+                id: "2615",
                 enabled: true,
                 displayName: "KyberSwap - Elastic"
             }

@@ -62,7 +62,7 @@ export default {
   spookyswap: require("./markets/uniswap/index"),
   tombswap: require("./markets/uniswap/index"),
   solidly: require("./markets/uniswap/index"),
-  diffusion: require("./markets/uniswap/index"),
+  // diffusion: require("./markets/uniswap/index"),
   stargate: require("./markets/stargate/index"),
   jarvis: require("./markets/jarvis/index"),
   chainlinkNFT: require("./nft/chainlink/index"),

@@ -7,6 +7,7 @@ import {
   RawSection,
   Protocol,
   SectionData,
+  Metadata,
 } from "../types/adapters";
 
 const excludedKeys = ["sources", "notes", "token"];
@@ -17,10 +18,14 @@ export async function createRawSections(
   let startTime: number = 10_000_000_000;
   let endTime: number = 0;
   const rawSections: RawSection[] = [];
+  let metadata: Metadata = { token: "", sources: [] };
 
   await Promise.all(
     Object.entries(adapter.default).map(async (a: any[]) => {
-      if (excludedKeys.includes(a[0])) return;
+      if (excludedKeys.includes(a[0])) {
+        metadata[a[0] as keyof typeof metadata] = a[1];
+        return;
+      }
       const section: string = a[0];
       let adapterResults = await a[1];
       if (adapterResults.length == null) adapterResults = [adapterResults];
@@ -58,7 +63,7 @@ export async function createRawSections(
     }),
   );
 
-  return { rawSections, startTime, endTime };
+  return { rawSections, startTime, endTime, metadata };
 }
 function stepAdapterToRaw(result: StepAdapterResult): RawResult[] {
   const output: RawResult[] = [];

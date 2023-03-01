@@ -104,4 +104,10 @@ export type SectionData = {
   rawSections: RawSection[];
   startTime: number;
   endTime: number;
+  metadata: Metadata;
+};
+export type Metadata = {
+  sources: string[];
+  token: string;
+  notes?: string[];
 };

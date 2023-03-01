@@ -8,13 +8,14 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 async function handler() {
     await Promise.all(Object.keys(adapters).map(async protocolName => {
         const adapter: Protocol = (adapters as any)[protocolName];
-        const { rawSections, startTime, endTime } = await createRawSections(adapter);
-        const data = createChartData(rawSections, startTime, endTime, false).map(
+        const { rawSections, startTime, endTime, metadata } = await createRawSections(adapter);
+        const chart = createChartData(rawSections, startTime, endTime, false).map(
             (s: ChartSection) => ({
                 label: s.section,
                 data: s.data.apiData,
             }),
         );
+        const data = { data: chart, metadata };
         await storeR2JSONString(`emissions/${protocolName}`, JSON.stringify(data), 3600)
     }))
 }

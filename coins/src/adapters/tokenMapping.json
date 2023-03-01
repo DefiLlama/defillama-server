@@ -6408,6 +6408,12 @@
       "symbol": "STATOM",
       "to": "coingecko#stride-staked-atom"
     },
+    "8184469200C5E667794375F5B0EC3B9ABB6FF79082941BF5D0F8FF59FEBA862E": {
+      "name": "BNB",
+      "decimals": "18",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    },
     "BA460328D9ABA27E643A924071FDB3836E4CE8084C6D2380F25EFAB85CF8EB11": {
       "name": "Inter Stable Token",
       "decimals": "6",

@@ -11,6 +11,7 @@ export default {
   dydx: require("./dydx"),
   // euler: require("./euler"),
   forta: require("./forta"),
+  gmx: require("./gmx"),
   radiant: require("./radiant"),
   stargate: require("./stargate"),
   sushi: require("./sushi"),

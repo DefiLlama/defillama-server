@@ -16318,7 +16318,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Solana"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "lifinity/index.js",
     twitter: "Lifinity_io",

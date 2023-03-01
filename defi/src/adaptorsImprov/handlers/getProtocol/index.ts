@@ -29,7 +29,6 @@ export interface IHandlerBodyResponse extends Pick<ProtocolAdaptor,
     | "gecko_id"
     | "disabled"
     | "module"
-    | "protocolsData"
     | "chains"
     | "methodologyURL"
     | 'allAddresses'
@@ -98,7 +97,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             change_1d: generatedSummary.change_1d,
             module: dexData.module,
             protocolType: generatedSummary.protocolType,
-            protocolsData: dexData.protocolsData && Object.keys(dexData.protocolsData).length > 1 ? dexData.protocolsData : null,
             chains: generatedSummary.chains,
             methodologyURL: generatedSummary.methodologyURL,
             allAddresses: generatedSummary.allAddresses,
@@ -120,7 +118,6 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
             forkedFrom: dexData.forkedFrom,
             gecko_id: dexData.gecko_id,
             disabled: dexData.disabled,
-            protocolsData: dexData.protocolsData,
             latestFetchIsOk: false,
             chains: dexData.chains,
             totalDataChart: null,

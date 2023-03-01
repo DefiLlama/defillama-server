@@ -45,18 +45,6 @@ Array [
     "name": "ApeSwap AMM",
     "parentProtocol": "ApeSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "apeswap": Object {
-        "chains": Array [
-          "bsc",
-          "ethereum",
-          "polygon",
-          "telos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BANANA",
     "twitter": "ape_swap",
     "url": "https://apeswap.finance",
@@ -99,15 +87,6 @@ Array [
     "name": "Archly Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "archly-finance": Object {
-        "chains": Array [
-          "telos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ARC",
     "twitter": "ArchlyFinance",
     "url": "https://archly.fi",
@@ -157,30 +136,23 @@ Array [
     "name": "BabyDogeSwap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "babydogeswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BabyDoge",
     "twitter": "BabyDogeCoin",
     "url": "https://babydogeswap.com",
   },
   Object {
     "address": "0xba100000625a3754423978a60c9317c58a424e3d",
-    "audit_links": Array [],
+    "audit_links": Array [
+      "https://docs.balancer.fi/core-concepts/security/audits",
+    ],
     "audit_note": null,
-    "audits": "0",
+    "audits": "2",
     "category": "Dexes",
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
     ],
-    "cmcId": "5728",
+    "cmcId": null,
     "config": Object {
       "enabled": true,
       "id": "116",
@@ -208,50 +180,17 @@ Array [
     "id": "116",
     "logo": "https://icons.llama.fi/balancer.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "All trading fees collected",
+      "ProtocolRevenue": "Balancer V1 protocol fees are set to 0%",
+      "Revenue": "Balancer V1 protocol fees are set to 0%",
+      "SupplySideRevenue": "Trading fees are distributed among LPs",
+      "UserFees": "Trading fees paid by users, ranging from 0.0001% and 10%",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/balancer.ts",
     "module": "balancer",
-    "name": "Balancer V1",
+    "name": "Balancer V2",
     "parentProtocol": "Balancer",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All trading fees collected",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Balancer V1 protocol fees are set to 0%",
-          "Revenue": "Balancer V1 protocol fees are set to 0%",
-          "SupplySideRevenue": "Trading fees are distributed among LPs",
-          "UserFees": "Trading fees paid by users, ranging from 0.0001% and 10%",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "ethereum",
-          "polygon",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All trading fees collected (doesn't include withdrawal and flash loan fees)",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Set to 10% of collected fees by a governance vote",
-          "Revenue": "Protocol revenue from all fees collected",
-          "SupplySideRevenue": "A small percentage of the trade paid by traders to pool LPs, set by the pool creator or dynamically optimized by Gauntlet",
-          "UserFees": "Trading fees paid by users, ranging from 0.0001% to 10%",
-        },
-      },
-    },
     "symbol": "BAL",
     "treasury": "balancer.js",
     "twitter": "BalancerLabs",
@@ -259,20 +198,20 @@ Array [
     "versionKey": "v1",
   },
   Object {
-    "address": "0xba100000625a3754423978a60c9317c58a424e3d",
+    "address": "moonbeam:0xcd3B51D98478D53F4515A306bE565c6EebeF1D58",
     "audit_links": Array [
-      "https://docs.balancer.fi/core-concepts/security/audits",
+      "https://docs.beamswap.io/contracts/audit",
     ],
     "audit_note": null,
     "audits": "2",
     "category": "Dexes",
-    "chain": "Ethereum",
+    "chain": "Moonbeam",
     "chains": Array [
       "ethereum",
       "polygon",
       "arbitrum",
     ],
-    "cmcId": "5728",
+    "cmcId": null,
     "config": Object {
       "enabled": true,
       "id": "116",
@@ -289,65 +228,35 @@ Array [
         },
       },
     },
-    "description": "Balancer is a protocol for programmable liquidity.",
+    "description": "Defi Hub on Moonbeam",
     "disabled": false,
     "displayName": "Balancer V2",
     "enabled": true,
-    "gecko_id": null,
-    "governanceID": Array [
-      "snapshot:balancer.eth",
+    "forkedFrom": Array [
+      "Uniswap",
     ],
+    "gecko_id": null,
     "id": "116",
-    "logo": "https://icons.llama.fi/balancer.png",
+    "listedAt": 1642599283,
+    "logo": "https://icons.llama.fi/beamswap-stable-amm.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "All trading fees collected (doesn't include withdrawal and flash loan fees)",
+      "ProtocolRevenue": "Set to 10% of collected fees by a governance vote",
+      "Revenue": "Protocol revenue from all fees collected",
+      "SupplySideRevenue": "A small percentage of the trade paid by traders to pool LPs, set by the pool creator or dynamically optimized by Gauntlet",
+      "UserFees": "Trading fees paid by users, ranging from 0.0001% to 10%",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/balancer.ts",
     "module": "balancer",
-    "name": "Balancer V2",
-    "parentProtocol": "Balancer",
+    "name": "BeamSwap Stable AMM",
+    "oracles": Array [
+      "DIA",
+    ],
+    "parentProtocol": "BeamSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All trading fees collected",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Balancer V1 protocol fees are set to 0%",
-          "Revenue": "Balancer V1 protocol fees are set to 0%",
-          "SupplySideRevenue": "Trading fees are distributed among LPs",
-          "UserFees": "Trading fees paid by users, ranging from 0.0001% and 10%",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "ethereum",
-          "polygon",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All trading fees collected (doesn't include withdrawal and flash loan fees)",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Set to 10% of collected fees by a governance vote",
-          "Revenue": "Protocol revenue from all fees collected",
-          "SupplySideRevenue": "A small percentage of the trade paid by traders to pool LPs, set by the pool creator or dynamically optimized by Gauntlet",
-          "UserFees": "Trading fees paid by users, ranging from 0.0001% to 10%",
-        },
-      },
-    },
-    "symbol": "BAL",
-    "treasury": "balancer.js",
-    "twitter": "BalancerLabs",
-    "url": "https://balancer.finance/",
+    "symbol": "GLINT",
+    "twitter": "Beamswapio",
+    "url": "https://beamswap.io",
     "versionKey": "v2",
   },
   Object {
@@ -382,7 +291,6 @@ Array [
     "logo": "https://icons.llama.fi/biswap.jpg",
     "methodology": Object {
       "Fees": "Fees collected from user trading fees",
-      "HoldersRevenue": "Money going to governance token holders",
       "ProtocolRevenue": "A 0.05% of each swap goes to treasure",
       "Revenue": "Revenue is 0.05% of each swap which goes to treasury",
       "SupplySideRevenue": "A 0.15% fee of each swap is distributed among LPs",
@@ -392,15 +300,6 @@ Array [
     "module": "biswap",
     "name": "BiSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "biswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BSW",
     "twitter": "Biswap_Dex",
     "url": "https://biswap.org/",
@@ -452,21 +351,6 @@ Array [
     "name": "Curve",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "curve": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-          "arbitrum",
-          "polygon",
-          "avax",
-          "fantom",
-          "xdai",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CRV",
     "twitter": "CurveFinance",
     "url": "https://curve.fi",
@@ -510,15 +394,6 @@ Array [
     "module": "defi-swap",
     "name": "Defi Swap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "defi-swap": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CRO",
     "twitter": "cryptocom",
     "url": "https://crypto.com/defi/swap",
@@ -570,20 +445,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "dodo": Object {
-        "chains": Array [
-          "ethereum",
-          "bsc",
-          "polygon",
-          "arbitrum",
-          "aurora",
-          "boba",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DODO",
     "treasury": "dodo.js",
     "twitter": "BreederDodo",
@@ -622,10 +483,7 @@ Array [
     "logo": "https://icons.llama.fi/el-dorado-exchange.jpg",
     "methodology": Object {
       "Fees": "All mint, burn, margin and liquidation and swap fees are collected",
-      "HoldersRevenue": "Fees going to governance token holders",
-      "ProtocolRevenue": "Fees going to treasury",
       "Revenue": "Revenue is calculated as 30% of the total fee.",
-      "SupplySideRevenue": "LPs revenue",
       "UserFees": "Users pay swap fees and margin and liquidation fees",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/el-dorado-exchange.ts",
@@ -635,15 +493,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "el-dorado-exchange": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "EDE",
     "twitter": "ede_finance",
     "url": "https://ede.finance",
@@ -700,28 +549,6 @@ Array [
     "module": "elk",
     "name": "Elk",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "elk": Object {
-        "chains": Array [
-          "arbitrum",
-          "avax",
-          "bsc",
-          "fantom",
-          "polygon",
-          "xdai",
-          "elastos",
-          "okexchain",
-          "kcc",
-          "ethereum",
-          "optimism",
-          "fuse",
-          "iotex",
-          "telos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ELK",
     "twitter": "elk_finance",
     "url": "https://elk.finance",
@@ -763,15 +590,6 @@ Array [
     "module": "emdx",
     "name": "EMDX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "emdx": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "emdx_io",
     "url": "https://emdx.io/",
@@ -813,10 +631,6 @@ Array [
     "logo": "https://icons.llama.fi/frax.jpg",
     "methodology": Object {
       "Fees": "A 0.3% fee is collected from each swap",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
       "UserFees": "Users pay 0.3% swap fees",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/frax-swap.ts",
@@ -825,25 +639,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "Frax Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "frax-swap": Object {
-        "chains": Array [
-          "arbitrum",
-          "aurora",
-          "avax",
-          "boba",
-          "bsc",
-          "ethereum",
-          "fantom",
-          "harmony",
-          "moonbeam",
-          "moonriver",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "fraxfinance",
     "url": "https://app.frax.finance/swap/main",
@@ -864,6 +659,22 @@ Array [
     "cmcId": "11857",
     "config": Object {
       "enabled": true,
+      "gmx": Object {
+        "enabled": true,
+        "protocolsData": Object {
+          "derivatives": Object {
+            "displayName": "GMX - Derivatives",
+            "enabled": true,
+            "id": "337",
+          },
+          "swap": Object {
+            "category": "Dexes",
+            "displayName": "GMX - SWAP",
+            "enabled": true,
+            "id": "337",
+          },
+        },
+      },
       "id": "337",
     },
     "description": "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
@@ -871,6 +682,22 @@ Array [
     "displayName": "GMX",
     "enabled": true,
     "gecko_id": "gmx",
+    "gmx": Object {
+      "enabled": true,
+      "protocolsData": Object {
+        "derivatives": Object {
+          "displayName": "GMX - Derivatives",
+          "enabled": true,
+          "id": "337",
+        },
+        "swap": Object {
+          "category": "Dexes",
+          "displayName": "GMX - SWAP",
+          "enabled": true,
+          "id": "337",
+        },
+      },
+    },
     "governanceID": Array [
       "snapshot:gmx.eth",
     ],
@@ -935,16 +762,6 @@ Array [
     "module": "honeyswap",
     "name": "Honeyswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "honeyswap": Object {
-        "chains": Array [
-          "polygon",
-          "xdai",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "HNY",
     "twitter": "Honeyswap",
     "url": "https://honeyswap.org/",
@@ -985,15 +802,6 @@ Array [
     "name": "Junoswap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "junoswap": Object {
-        "chains": Array [
-          "juno",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "RAW",
     "twitter": "JunoNetwork",
     "url": "https://www.junoswap.com/",
@@ -1032,15 +840,6 @@ Array [
       "Witnet",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "kperp-exchange": Object {
-        "chains": Array [
-          "kava",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KPE",
     "twitter": "KPerpExchange",
     "url": "https://kperp.exchange/",
@@ -1090,12 +889,12 @@ Array [
     "id": "127",
     "logo": "https://icons.llama.fi/kyberswap.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Kyberswap Classic collects a dynamic fee that increases with market volatility and decreases with stable market conditions",
+      "HoldersRevenue": "Holders who stake and participate in the KyberDAO get their share of the fees designated for rewards, currently set at 10% of trading fees",
+      "ProtocolRevenue": "Treasury have no revenue",
+      "Revenue": "Currently 100% of the dao rewards (10% of the collected fees) goes to all voters (KNC stakers)",
+      "SupplySideRevenue": "Liquidity providers earn 90% fees of trading routed through their pool and selected price range",
+      "UserFees": "Users pay a dynamic fee based on market conditions",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/kyberswap.ts",
     "module": "kyberswap",
@@ -1106,50 +905,6 @@ Array [
     ],
     "parentProtocol": "KyberSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "classic": Object {
-        "chains": Array [
-          "aurora",
-          "optimism",
-          "arbitrum",
-          "fantom",
-          "avax",
-          "bsc",
-          "polygon",
-          "ethereum",
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Kyberswap Classic collects a dynamic fee that increases with market volatility and decreases with stable market conditions",
-          "HoldersRevenue": "Holders who stake and participate in the KyberDAO get their share of the fees designated for rewards, currently set at 10% of trading fees",
-          "ProtocolRevenue": "Treasury have no revenue",
-          "Revenue": "Currently 100% of the dao rewards (10% of the collected fees) goes to all voters (KNC stakers)",
-          "SupplySideRevenue": "Liquidity providers earn 90% fees of trading routed through their pool and selected price range",
-          "UserFees": "Users pay a dynamic fee based on market conditions",
-        },
-      },
-      "elastic": Object {
-        "chains": Array [
-          "optimism",
-          "arbitrum",
-          "fantom",
-          "avax",
-          "bsc",
-          "polygon",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Each pool can have different fees set from the following tires: 0.008%, 0.01%, 0.04%, 0.3% and 1%",
-          "HoldersRevenue": "Holders who stake and participate in the KyberDAO get their share of the fees designated for rewards, currently set at 10% of trading fees",
-          "ProtocolRevenue": "Treasury have no revenue",
-          "Revenue": "Currently 100% of the dao rewards (10% of the collected fees) goes to all voters (KNC stakers)",
-          "SupplySideRevenue": "Liquidity providers earn 90% fees of trading routed through their pool and selected price range",
-          "UserFees": "Users pay trading fees based pool fee setting: 0.008%, 0.01%, 0.04%, 0.3% and 1%",
-        },
-      },
-    },
     "symbol": "KNC",
     "twitter": "KyberNetwork",
     "url": "https://kyberswap.com/#/swap",
@@ -1198,12 +953,12 @@ Array [
     "id": "127",
     "logo": "https://icons.llama.fi/kyberswap.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "Each pool can have different fees set from the following tires: 0.008%, 0.01%, 0.04%, 0.3% and 1%",
+      "HoldersRevenue": "Holders who stake and participate in the KyberDAO get their share of the fees designated for rewards, currently set at 10% of trading fees",
+      "ProtocolRevenue": "Treasury have no revenue",
+      "Revenue": "Currently 100% of the dao rewards (10% of the collected fees) goes to all voters (KNC stakers)",
+      "SupplySideRevenue": "Liquidity providers earn 90% fees of trading routed through their pool and selected price range",
+      "UserFees": "Users pay trading fees based pool fee setting: 0.008%, 0.01%, 0.04%, 0.3% and 1%",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/kyberswap.ts",
     "module": "kyberswap",
@@ -1214,50 +969,6 @@ Array [
     ],
     "parentProtocol": "KyberSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "classic": Object {
-        "chains": Array [
-          "aurora",
-          "optimism",
-          "arbitrum",
-          "fantom",
-          "avax",
-          "bsc",
-          "polygon",
-          "ethereum",
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Kyberswap Classic collects a dynamic fee that increases with market volatility and decreases with stable market conditions",
-          "HoldersRevenue": "Holders who stake and participate in the KyberDAO get their share of the fees designated for rewards, currently set at 10% of trading fees",
-          "ProtocolRevenue": "Treasury have no revenue",
-          "Revenue": "Currently 100% of the dao rewards (10% of the collected fees) goes to all voters (KNC stakers)",
-          "SupplySideRevenue": "Liquidity providers earn 90% fees of trading routed through their pool and selected price range",
-          "UserFees": "Users pay a dynamic fee based on market conditions",
-        },
-      },
-      "elastic": Object {
-        "chains": Array [
-          "optimism",
-          "arbitrum",
-          "fantom",
-          "avax",
-          "bsc",
-          "polygon",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Each pool can have different fees set from the following tires: 0.008%, 0.01%, 0.04%, 0.3% and 1%",
-          "HoldersRevenue": "Holders who stake and participate in the KyberDAO get their share of the fees designated for rewards, currently set at 10% of trading fees",
-          "ProtocolRevenue": "Treasury have no revenue",
-          "Revenue": "Currently 100% of the dao rewards (10% of the collected fees) goes to all voters (KNC stakers)",
-          "SupplySideRevenue": "Liquidity providers earn 90% fees of trading routed through their pool and selected price range",
-          "UserFees": "Users pay trading fees based pool fee setting: 0.008%, 0.01%, 0.04%, 0.3% and 1%",
-        },
-      },
-    },
     "symbol": "KNC",
     "twitter": "KyberNetwork",
     "url": "https://kyberswap.com/#/swap",
@@ -1296,10 +1007,7 @@ Array [
     "logo": "https://icons.llama.fi/level-finance.png",
     "methodology": Object {
       "Fees": "All mint, burn, margin, liquidation and swap fees are collect",
-      "HoldersRevenue": "Fees going to governance token holders",
-      "ProtocolRevenue": "Fees going to treasury",
       "Revenue": "50% of the total fee",
-      "SupplySideRevenue": "LPs revenue",
       "UserFees": "All mint, burn, margin, liquidation and swap fees are collect",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/level-finance.ts",
@@ -1309,15 +1017,6 @@ Array [
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "level-finance": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LVL",
     "twitter": "Level__Finance",
     "url": "https://app.level.finance",
@@ -1358,15 +1057,6 @@ Array [
     "name": "Lifinity",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "lifinity": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "Lifinity_io",
     "url": "https://lifinity.io/pools",
@@ -1408,15 +1098,6 @@ Array [
     ],
     "parentProtocol": "Metavault",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "metavault.trade": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MVX",
     "twitter": "MetavaultTRADE",
     "url": "https://metavault.trade",
@@ -1458,15 +1139,6 @@ Array [
     "module": "mimo",
     "name": "Mimo",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mimo": Object {
-        "chains": Array [
-          "iotex",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "mimoprotocol",
     "url": "https://mimo.exchange",
@@ -1508,15 +1180,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "MM Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mm-stableswap-polygon": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "MMFcrypto",
     "url": "https://polymm.finance",
@@ -1561,15 +1224,6 @@ Array [
     "module": "mojitoswap",
     "name": "MojitoSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mojitoswap": Object {
-        "chains": Array [
-          "kcc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MJT",
     "twitter": "MojitoSwap",
     "url": "https://www.mojitoswap.finance",
@@ -1613,15 +1267,6 @@ Array [
     "module": "mooniswap",
     "name": "MooniSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mooniswap": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "mooniswap",
     "url": "https://mooniswap.exchange/#/swap",
@@ -1667,15 +1312,6 @@ Array [
     "name": "Mummy Finance",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mummy-finance": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MMY",
     "twitter": "mummyftm",
     "url": "https://www.mummy.finance",
@@ -1721,15 +1357,6 @@ Array [
     "name": "Nomiswap",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "nomiswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "NMX",
     "twitter": "Nomiswap",
     "url": "https://nomiswap.io",
@@ -1767,15 +1394,6 @@ Array [
     "module": "osmosis",
     "name": "Osmosis DEX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "osmosis": Object {
-        "chains": Array [
-          "cosmos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "OSMO",
     "twitter": "osmosiszone",
     "url": "https://osmosis.zone/",
@@ -1819,15 +1437,6 @@ Array [
     "module": "pangolin",
     "name": "Pangolin",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "pangolin": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PNG",
     "twitter": "pangolindex",
     "url": "https://pangolin.exchange",
@@ -1868,15 +1477,6 @@ Array [
     "module": "plenty",
     "name": "Plenty",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "plenty": Object {
-        "chains": Array [
-          "tezos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PLY",
     "twitter": "plenty_network",
     "url": "https://www.plenty.network",
@@ -1920,48 +1520,18 @@ Array [
     "id": "306",
     "logo": "https://icons.llama.fi/quickswap-dex.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "A 0.3% of each swap is collected as trading fees",
+      "HoldersRevenue": "Holders have no revenue.",
+      "ProtocolRevenue": "Protocol have no revenue.",
+      "Revenue": "Protocol have no revenue",
+      "SupplySideRevenue": "All user fees are distributed among LPs.",
+      "UserFees": "User pays 0.3% fees on each swap.",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/quickswap.ts",
     "module": "quickswap",
     "name": "Quickswap Dex",
     "parentProtocol": "Quickswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v2": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "A 0.3% of each swap is collected as trading fees",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Protocol have no revenue",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-      "v3": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "A 0.3% of each swap is collected as trading fees",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Protocol have no revenue",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-    },
     "symbol": "QUICK",
     "twitter": "QuickswapDEX",
     "url": "https://quickswap.exchange/",
@@ -2007,48 +1577,18 @@ Array [
     "listedAt": 1667063569,
     "logo": "https://icons.llama.fi/quickswap-dex.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "A 0.3% of each swap is collected as trading fees",
+      "HoldersRevenue": "Holders have no revenue.",
+      "ProtocolRevenue": "Protocol have no revenue.",
+      "Revenue": "Protocol have no revenue",
+      "SupplySideRevenue": "All user fees are distributed among LPs.",
+      "UserFees": "User pays 0.3% fees on each swap.",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/quickswap.ts",
     "module": "quickswap",
     "name": "Quickswap V3",
     "parentProtocol": "Quickswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v2": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "A 0.3% of each swap is collected as trading fees",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Protocol have no revenue",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-      "v3": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "A 0.3% of each swap is collected as trading fees",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Protocol have no revenue",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-    },
     "symbol": "QUICK",
     "twitter": "QuickswapDEX",
     "url": "https://quickswap.exchange/",
@@ -2099,19 +1639,6 @@ Array [
     "name": "RadioShack",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "radioshack": Object {
-        "chains": Array [
-          "fantom",
-          "avax",
-          "ethereum",
-          "bsc",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "RADIO",
     "twitter": "RadioShack",
     "url": "https://www.radioshack.org/",
@@ -2150,15 +1677,6 @@ Array [
     "name": "Raydium",
     "openSource": false,
     "protocolType": undefined,
-    "protocolsData": Object {
-      "raydium": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "RAY",
     "twitter": "RaydiumProtocol",
     "url": "https://raydium.io",
@@ -2202,15 +1720,6 @@ Array [
     "module": "shibaswap",
     "name": "ShibaSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "shibaswap": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BONE",
     "twitter": "ShibaSwapDEX",
     "url": "https://shibaswap.com",
@@ -2251,15 +1760,6 @@ Array [
     "module": "solarbeam",
     "name": "Solarbeam",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "solarbeam": Object {
-        "chains": Array [
-          "moonriver",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SOLAR",
     "twitter": "Solarbeamio",
     "url": "https://app.solarbeam.io/exchange/swap",
@@ -2305,15 +1805,6 @@ Array [
     "name": "Solidly V2",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "solidlydex": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SOLID",
     "twitter": "SolidlyDEX",
     "url": "https://solidly.com",
@@ -2358,15 +1849,6 @@ Array [
     "name": "SpiritSwap AMM",
     "parentProtocol": "SpiritSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "spiritswap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SPIRIT",
     "twitter": "Spirit_Swap",
     "url": "https://app.spiritswap.finance/#/",
@@ -2413,15 +1895,6 @@ Array [
     "module": "spookyswap",
     "name": "SpookySwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "spookyswap": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BOO",
     "treasury": "spookyswap.js",
     "twitter": "SpookySwap",
@@ -2467,15 +1940,6 @@ Array [
     "module": "stellaswap",
     "name": "StellaSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "stellaswap": Object {
-        "chains": Array [
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "STELLA",
     "twitter": "StellaSwap",
     "url": "https://stellaswap.com",
@@ -2531,12 +1995,12 @@ Array [
     "id": "119",
     "logo": "https://icons.llama.fi/sushiswap.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "SushiSwap charges a flat 0.3% fee",
+      "HoldersRevenue": "SUSHI token stakers are entitled to share a 0.05% fee from each trade",
+      "ProtocolRevenue": "Treasury have no revenue",
+      "Revenue": "A 0.05% of each trade goes to token holders",
+      "SupplySideRevenue": "Liquidity providers get 0.25% of all trades in their pools",
+      "UserFees": "Users pay a 0.3% fee on each trade",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/sushiswap",
     "module": "sushiswap",
@@ -2544,55 +2008,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "Sushi",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "classic": Object {
-        "chains": Array [
-          "ethereum",
-          "bsc",
-          "polygon",
-          "fantom",
-          "arbitrum",
-          "celo",
-          "avax",
-          "harmony",
-          "moonriver",
-          "xdai",
-          "moonbeam",
-          "boba",
-          "fuse",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "SushiSwap charges a flat 0.3% fee",
-          "HoldersRevenue": "SUSHI token stakers are entitled to share a 0.05% fee from each trade",
-          "ProtocolRevenue": "Treasury have no revenue",
-          "Revenue": "A 0.05% of each trade goes to token holders",
-          "SupplySideRevenue": "Liquidity providers get 0.25% of all trades in their pools",
-          "UserFees": "Users pay a 0.3% fee on each trade",
-        },
-      },
-      "trident": Object {
-        "chains": Array [
-          "polygon",
-          "optimism",
-          "kava",
-          "metis",
-          "bittorrent",
-          "arbitrum",
-          "bsc",
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-    },
     "symbol": "SUSHI",
     "treasury": "sushiswap.js",
     "twitter": "SushiSwap",
@@ -2653,55 +2068,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "Sushi",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "classic": Object {
-        "chains": Array [
-          "ethereum",
-          "bsc",
-          "polygon",
-          "fantom",
-          "arbitrum",
-          "celo",
-          "avax",
-          "harmony",
-          "moonriver",
-          "xdai",
-          "moonbeam",
-          "boba",
-          "fuse",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "SushiSwap charges a flat 0.3% fee",
-          "HoldersRevenue": "SUSHI token stakers are entitled to share a 0.05% fee from each trade",
-          "ProtocolRevenue": "Treasury have no revenue",
-          "Revenue": "A 0.05% of each trade goes to token holders",
-          "SupplySideRevenue": "Liquidity providers get 0.25% of all trades in their pools",
-          "UserFees": "Users pay a 0.3% fee on each trade",
-        },
-      },
-      "trident": Object {
-        "chains": Array [
-          "polygon",
-          "optimism",
-          "kava",
-          "metis",
-          "bittorrent",
-          "arbitrum",
-          "bsc",
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-    },
     "symbol": "-",
     "twitter": "SushiSwap",
     "url": "https://www.sushi.com/swap",
@@ -2757,37 +2123,6 @@ Array [
     "name": "Trader Joe DEX",
     "parentProtocol": "Trader Joe",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "arbitrum",
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-    },
     "symbol": "JOE",
     "treasury": "traderjoe.js",
     "twitter": "traderjoe_xyz",
@@ -2845,37 +2180,6 @@ Array [
     "oracles": Array [],
     "parentProtocol": "Trader Joe",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "arbitrum",
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-    },
     "symbol": "JOE",
     "twitter": "traderjoe_xyz",
     "url": "https://traderjoexyz.com/home",
@@ -2919,15 +2223,6 @@ Array [
     "name": "Velodrome",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "velodrome": Object {
-        "chains": Array [
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "VELO",
     "treasury": "velodrome.js",
     "twitter": "VelodromeFi",
@@ -2967,8 +2262,6 @@ Array [
     "logo": "https://icons.llama.fi/verse.png",
     "methodology": Object {
       "Fees": "0.3% trading fee",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
       "Revenue": "Percentage of swap fees (sbch and ethereum) going to treasury, 0.05% on each swap",
       "SupplySideRevenue": "User fees (sbch and ethereum) distributed among LPs, 0.25% on each swap",
       "UserFees": "Fees paid by traders, 0.3% on each swap",
@@ -2978,16 +2271,6 @@ Array [
     "name": "Verse",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "verse": Object {
-        "chains": Array [
-          "ethereum",
-          "smartbch",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "BitcoinCom",
     "url": "https://verse.bitcoin.com",
@@ -3033,15 +2316,6 @@ Array [
     "name": "Wombat Exchange",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "wombat-exchange": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WOM",
     "twitter": "WombatExchange",
     "url": "https://www.wombat.exchange/",
@@ -3093,20 +2367,6 @@ Array [
     ],
     "parentProtocol": "WOO Network",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "woofi": Object {
-        "chains": Array [
-          "avax",
-          "bsc",
-          "fantom",
-          "polygon",
-          "arbitrum",
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WOO",
     "twitter": "WOOnetwork",
     "url": "https://fi.woo.org",
@@ -3150,15 +2410,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "hegic",
     "name": "Hegic",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "hegic": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "HEGIC",
     "twitter": "HegicOptions",
     "url": "https://www.hegic.co/ ",
@@ -3206,16 +2457,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "lyra": Object {
-        "chains": Array [
-          "optimism",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LYRA",
     "twitter": "lyrafinance",
     "url": "https://www.lyra.finance",
@@ -3261,18 +2502,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "premia",
     "name": "Premia",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "premia": Object {
-        "chains": Array [
-          "arbitrum",
-          "ethereum",
-          "fantom",
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "PREMIA",
     "twitter": "PremiaFinance",
     "url": "https://premia.finance/",
@@ -3303,15 +2532,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "bitcoin",
     "name": "Bitcoin",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "bitcoin": Object {
-        "chains": Array [
-          "bitcoin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BTC",
   },
   Object {
@@ -3370,51 +2590,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": Array [],
     "parentProtocol": "PancakeSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "stableswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
-          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 10% of the fees.",
-          "Revenue": "Revenue is 50% of the fees paid by users.",
-          "SupplySideRevenue": "LPs receive 50% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
-      },
-      "v1": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": true,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "bsc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user.",
-          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
-          "Revenue": "All revenue generated comes from user fees.",
-          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
-      },
-    },
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://v1exchange.pancakeswap.finance/",
@@ -3464,12 +2639,12 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "id": "194",
     "logo": "https://icons.llama.fi/pancakeswap-amm.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "All fees comes from the user.",
+      "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
+      "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
+      "Revenue": "All revenue generated comes from user fees.",
+      "SupplySideRevenue": "LPs receive 0.17% of the fees.",
+      "UserFees": "User pays 0.25% fees on each swap.",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
     "module": "pancakeswap",
@@ -3477,51 +2652,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": Array [],
     "parentProtocol": "PancakeSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "stableswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
-          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 10% of the fees.",
-          "Revenue": "Revenue is 50% of the fees paid by users.",
-          "SupplySideRevenue": "LPs receive 50% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
-      },
-      "v1": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": true,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "bsc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user.",
-          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
-          "Revenue": "All revenue generated comes from user fees.",
-          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
-      },
-    },
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/",
@@ -3566,12 +2696,12 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "listedAt": 1676313502,
     "logo": "https://icons.llama.fi/pancakeswap-stableswap.jpg",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "Fees": "All fees comes from the user fees, which is 025% of each trade.",
+      "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
+      "ProtocolRevenue": "Treasury receives 10% of the fees.",
+      "Revenue": "Revenue is 50% of the fees paid by users.",
+      "SupplySideRevenue": "LPs receive 50% of the fees.",
+      "UserFees": "User pays 0.25% fees on each swap.",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/pancakeswap",
     "module": "pancakeswap",
@@ -3579,51 +2709,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": Array [],
     "parentProtocol": "PancakeSwap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "stableswap": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user fees, which is 025% of each trade.",
-          "HoldersRevenue": "A 40% of the fees is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 10% of the fees.",
-          "Revenue": "Revenue is 50% of the fees paid by users.",
-          "SupplySideRevenue": "LPs receive 50% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
-      },
-      "v1": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": true,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Money going to governance token holders",
-          "ProtocolRevenue": "Percentage of swap fees going to treasury",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "Liquidity providers revenue",
-          "UserFees": "Swap fees paid by users",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "bsc",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "All fees comes from the user.",
-          "HoldersRevenue": "0.0575% is used to facilitate CAKE buyback and burn.",
-          "ProtocolRevenue": "Treasury receives 0.0225% of each swap.",
-          "Revenue": "All revenue generated comes from user fees.",
-          "SupplySideRevenue": "LPs receive 0.17% of the fees.",
-          "UserFees": "User pays 0.25% fees on each swap.",
-        },
-      },
-    },
     "symbol": "CAKE",
     "twitter": "PancakeSwap",
     "url": "https://pancakeswap.finance/swap",
@@ -3672,12 +2757,10 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "listedAt": 1666191149,
     "logo": "https://icons.llama.fi/uniswap-v1.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "HoldersRevenue": "Holders have no revenue.",
+      "ProtocolRevenue": "Protocol have no revenue.",
+      "SupplySideRevenue": "All user fees are distributed among LPs.",
+      "UserFees": "User pays 0.3% fees on each swap.",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/uniswap",
     "module": "uniswap",
@@ -3685,54 +2768,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": Array [],
     "parentProtocol": "Uniswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-      "v3": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-          "arbitrum",
-          "polygon",
-          "celo",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.05%, 0.30%, or 1% on each swap.",
-        },
-      },
-    },
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
@@ -3781,12 +2816,10 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "listedAt": 1666191162,
     "logo": "https://icons.llama.fi/uniswap-v2.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "HoldersRevenue": "Holders have no revenue.",
+      "ProtocolRevenue": "Protocol have no revenue.",
+      "SupplySideRevenue": "All user fees are distributed among LPs.",
+      "UserFees": "User pays 0.3% fees on each swap.",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/uniswap",
     "module": "uniswap",
@@ -3794,54 +2827,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": Array [],
     "parentProtocol": "Uniswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-      "v3": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-          "arbitrum",
-          "polygon",
-          "celo",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.05%, 0.30%, or 1% on each swap.",
-        },
-      },
-    },
     "symbol": "UNI",
     "twitter": "Uniswap",
     "url": "https://uniswap.org/",
@@ -3894,12 +2879,10 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "listedAt": 1666191475,
     "logo": "https://icons.llama.fi/uniswap-v3.png",
     "methodology": Object {
-      "Fees": "Swap fees paid by users",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
-      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
+      "HoldersRevenue": "Holders have no revenue.",
+      "ProtocolRevenue": "Protocol have no revenue.",
+      "SupplySideRevenue": "All user fees are distributed among LPs.",
+      "UserFees": "User pays 0.05%, 0.30%, or 1% on each swap.",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/protocols/uniswap",
     "module": "uniswap",
@@ -3907,54 +2890,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": Array [],
     "parentProtocol": "Uniswap",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.3% fees on each swap.",
-        },
-      },
-      "v3": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-          "arbitrum",
-          "polygon",
-          "celo",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Swap fees paid by users",
-          "HoldersRevenue": "Holders have no revenue.",
-          "ProtocolRevenue": "Protocol have no revenue.",
-          "Revenue": "Percentage of swap fees going to treasury and/or token holders",
-          "SupplySideRevenue": "All user fees are distributed among LPs.",
-          "UserFees": "User pays 0.05%, 0.30%, or 1% on each swap.",
-        },
-      },
-    },
     "symbol": "UNI",
     "treasury": "uniswap.js",
     "twitter": "Uniswap",
@@ -4004,15 +2939,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "0vix": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "0vixProtocol",
     "url": "https://www.0vix.com",
@@ -4073,55 +2999,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "parentProtocol": "AAVE",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Interest paid by borrowers",
-          "ProtocolRevenue": "Percentage of interest going to treasury",
-          "Revenue": "Percentage of interest going to treasury",
-          "SupplySideRevenue": "Interest paid to lenders",
-          "UserFees": "Interest paid by borrowers",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "avax",
-          "ethereum",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Interest paid by borrowers",
-          "ProtocolRevenue": "Percentage of interest going to treasury",
-          "Revenue": "Percentage of interest going to treasury",
-          "SupplySideRevenue": "Interest paid to lenders",
-          "UserFees": "Interest paid by borrowers",
-        },
-      },
-      "v3": Object {
-        "chains": Array [
-          "avax",
-          "polygon",
-          "arbitrum",
-          "optimism",
-          "fantom",
-          "harmony",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Interest paid by borrowers",
-          "ProtocolRevenue": "Percentage of interest going to treasury",
-          "Revenue": "Percentage of interest going to treasury",
-          "SupplySideRevenue": "Interest paid to lenders",
-          "UserFees": "Interest paid by borrowers",
-        },
-      },
-    },
-    "startFrom": 1647648000,
     "symbol": "AAVE",
     "twitter": "AaveAave",
     "url": "https://aave.com",
@@ -4183,55 +3060,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "parentProtocol": "AAVE",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Interest paid by borrowers",
-          "ProtocolRevenue": "Percentage of interest going to treasury",
-          "Revenue": "Percentage of interest going to treasury",
-          "SupplySideRevenue": "Interest paid to lenders",
-          "UserFees": "Interest paid by borrowers",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "avax",
-          "ethereum",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Interest paid by borrowers",
-          "ProtocolRevenue": "Percentage of interest going to treasury",
-          "Revenue": "Percentage of interest going to treasury",
-          "SupplySideRevenue": "Interest paid to lenders",
-          "UserFees": "Interest paid by borrowers",
-        },
-      },
-      "v3": Object {
-        "chains": Array [
-          "avax",
-          "polygon",
-          "arbitrum",
-          "optimism",
-          "fantom",
-          "harmony",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Interest paid by borrowers",
-          "ProtocolRevenue": "Percentage of interest going to treasury",
-          "Revenue": "Percentage of interest going to treasury",
-          "SupplySideRevenue": "Interest paid to lenders",
-          "UserFees": "Interest paid by borrowers",
-        },
-      },
-    },
-    "startFrom": 1647648000,
     "symbol": "AAVE",
     "treasury": "aave.js",
     "twitter": "AaveAave",
@@ -4298,55 +3126,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": Array [],
     "parentProtocol": "AAVE",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Interest paid by borrowers",
-          "ProtocolRevenue": "Percentage of interest going to treasury",
-          "Revenue": "Percentage of interest going to treasury",
-          "SupplySideRevenue": "Interest paid to lenders",
-          "UserFees": "Interest paid by borrowers",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "avax",
-          "ethereum",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Interest paid by borrowers",
-          "ProtocolRevenue": "Percentage of interest going to treasury",
-          "Revenue": "Percentage of interest going to treasury",
-          "SupplySideRevenue": "Interest paid to lenders",
-          "UserFees": "Interest paid by borrowers",
-        },
-      },
-      "v3": Object {
-        "chains": Array [
-          "avax",
-          "polygon",
-          "arbitrum",
-          "optimism",
-          "fantom",
-          "harmony",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "Fees": "Interest paid by borrowers",
-          "ProtocolRevenue": "Percentage of interest going to treasury",
-          "Revenue": "Percentage of interest going to treasury",
-          "SupplySideRevenue": "Interest paid to lenders",
-          "UserFees": "Interest paid by borrowers",
-        },
-      },
-    },
-    "startFrom": 1647648000,
     "symbol": "AAVE",
     "twitter": "AaveAave",
     "url": "https://aave.com",
@@ -4393,19 +3172,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "abracadabra": Object {
-        "chains": Array [
-          "ethereum",
-          "fantom",
-          "avax",
-          "bsc",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SPELL",
     "treasury": "abracadabra.js",
     "twitter": "MIM_Spell",
@@ -4456,18 +3222,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "TWAP",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "angle": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-          "arbitrum",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ANGLE",
     "twitter": "AngleProtocol",
     "url": "https://app.angle.money",
@@ -4513,15 +3267,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       ],
     },
     "protocolType": "chain",
-    "protocolsData": Object {
-      "arbitrum": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "startFrom": 1660608000,
     "symbol": null,
   },
@@ -4562,15 +3307,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       ],
     },
     "protocolType": "chain",
-    "protocolsData": Object {
-      "aurora": Object {
-        "chains": Array [
-          "aurora",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "AURORA",
   },
   Object {
@@ -4603,15 +3339,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "avalanche",
     "name": "Avalanche",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "avalanche": Object {
-        "chains": Array [
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "AVAX",
   },
   Object {
@@ -4657,24 +3384,13 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "betswirl": Object {
-        "chains": Array [
-          "bsc",
-          "polygon",
-          "avax",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BETS",
     "treasury": "betswirl.js",
     "twitter": "BetSwirl",
     "url": "https://www.betswirl.com",
   },
   Object {
-    "address": null,
+    "address": "aptos:0x27fafcc4e39daac97556af8a803dbb52bcb03f0821898dc845ac54225b9793eb::move_coin::MoveCoin",
     "audit_note": null,
     "audits": "0",
     "category": "NFT Marketplace",
@@ -4682,7 +3398,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "chains": Array [
       "aptos",
     ],
-    "cmcId": null,
+    "cmcId": "23359",
     "config": Object {
       "enabled": true,
       "id": "2396",
@@ -4692,7 +3408,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "displayName": "BlueMove",
     "enabled": true,
     "forkedFrom": Array [],
-    "gecko_id": null,
+    "gecko_id": "bluemove",
     "id": "2396",
     "listedAt": 1672334345,
     "logo": "https://icons.llama.fi/bluemove.png",
@@ -4707,16 +3423,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "name": "BlueMove",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "bluemove": Object {
-        "chains": Array [
-          "aptos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
-    "symbol": "-",
+    "symbol": "MOVE",
     "twitter": "BlueMove_OA",
     "url": "https://bluemove.net",
   },
@@ -4745,24 +3452,13 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "logo": "https://icons.llama.fi/blur.png",
     "methodology": Object {
       "Fees": "All royalties+marketplace fees paid on sales",
-      "ProtocolRevenue": "Marketplace revenue",
       "Revenue": "At the moment blur charges no marketplace fees",
-      "UserFees": "Fees paid by users",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/blur.ts",
     "module": "blur",
     "name": "Blur",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "blur": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BLUR",
     "twitter": "blur_io",
     "url": "https://blur.io/",
@@ -4805,15 +3501,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       ],
     },
     "protocolType": "chain",
-    "protocolsData": Object {
-      "boba": Object {
-        "chains": Array [
-          "boba",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BOBA",
   },
   Object {
@@ -4846,15 +3533,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "bsc",
     "name": "Binance",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "bsc": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BNB",
   },
   Object {
@@ -4898,15 +3576,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "buffer": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "BFR",
     "twitter": "Buffer_Finance",
     "url": "https://www.buffer.finance",
@@ -4941,15 +3610,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "canto",
     "name": "Canto",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "canto": Object {
-        "chains": Array [
-          "canto",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CANTO",
   },
   Object {
@@ -4978,15 +3638,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "cardano",
     "name": "Cardano",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "cardano": Object {
-        "chains": Array [
-          "cardano",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ADA",
   },
   Object {
@@ -5019,15 +3670,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "celo",
     "name": "Celo",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "celo": Object {
-        "chains": Array [
-          "celo",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CELO",
   },
   Object {
@@ -5069,15 +3711,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "parentProtocol": "Compound Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "compound": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "COMP",
     "treasury": "compound.js",
     "twitter": "compoundfinance",
@@ -5119,15 +3752,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "convex",
     "name": "Convex Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "convex": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CVX",
     "treasury": "convex.js",
     "twitter": "ConvexFinance",
@@ -5173,15 +3797,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "covo-finance": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "COVO",
     "twitter": "covofinance",
     "url": "https://covo.finance",
@@ -5217,15 +3832,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "cronos",
     "name": "Cronos",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "cronos": Object {
-        "chains": Array [
-          "cronos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "CRO",
   },
   Object {
@@ -5254,15 +3860,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "doge",
     "name": "Doge",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "doge": Object {
-        "chains": Array [
-          "doge",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "DOGE",
   },
   Object {
@@ -5295,15 +3892,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "ethereum",
     "name": "Ethereum",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "ethereum": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "ETH",
   },
   Object {
@@ -5336,15 +3924,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "fantom",
     "name": "Fantom",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "fantom": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "FTM",
   },
   Object {
@@ -5385,30 +3964,12 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "logo": "https://icons.llama.fi/firebird.jpg",
     "methodology": Object {
       "Fees": "Fees collected from user trading fees",
-      "HoldersRevenue": "Money going to governance token holders",
-      "ProtocolRevenue": "Percentage of swap fees going to treasury",
       "Revenue": "Revenue is 100% fee of each swap which goes to treasury",
-      "SupplySideRevenue": "Liquidity providers revenue",
-      "UserFees": "Swap fees paid by users",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/firebird-finance.ts",
     "module": "firebird-finance",
     "name": "Firebird",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "firebird-finance": Object {
-        "chains": Array [
-          "avax",
-          "fantom",
-          "polygon",
-          "bsc",
-          "cronos",
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "HOPE",
     "twitter": "FinanceFirebird",
     "url": "https://app.firebird.finance/one-pool",
@@ -5449,15 +4010,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "oracles": Array [],
     "parentProtocol": "Frax Finance",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "frax-ether": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "frxETH",
     "twitter": "fraxfinance",
     "url": "https://app.frax.finance/frxeth/mint",
@@ -5500,16 +4052,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "gains-network",
     "name": "Gains Network",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "gains-network": Object {
-        "chains": Array [
-          "polygon",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GNS",
     "twitter": "GainsNetwork_io",
     "url": "https://gainsnetwork.io",
@@ -5550,15 +4092,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "gearbox": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "referralUrl": "https://app.gearbox.fi/?referral=1404",
     "symbol": "GEAR",
     "treasury": "gearbox.js",
@@ -5607,15 +4140,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "geist-finance": Object {
-        "chains": Array [
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GEIST",
     "twitter": "GeistFinance",
     "url": "https://geist.finance",
@@ -5674,20 +4198,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "ghostmarket",
     "name": "GhostMarket",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "ghostmarket": Object {
-        "chains": Array [
-          "neo",
-          "bsc",
-          "avax",
-          "polygon",
-          "ethereum",
-          "phantasma",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GM",
     "twitter": "ghostmarketio",
     "url": "https://ghostmarket.io",
@@ -5722,15 +4232,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "klaytn",
     "name": "Klaytn",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "klaytn": Object {
-        "chains": Array [
-          "klaytn",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "KLAY",
   },
   Object {
@@ -5772,15 +4273,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "name": "Lido",
     "openSource": true,
     "protocolType": undefined,
-    "protocolsData": Object {
-      "lido": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "referralUrl": "https://stake.lido.fi/?ref=0x08a3c2A819E3de7ACa384c798269B3Ce1CD0e437",
     "symbol": "LDO",
     "treasury": "lido.js",
@@ -5830,18 +4322,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "name": "Liquid Bolt",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "liquid-bolt": Object {
-        "chains": Array [
-          "fantom",
-          "arbitrum",
-          "bsc",
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "LiquidBoltFi",
     "url": "https://app.liquidbolt.finance/farms",
@@ -5884,15 +4364,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "liquity": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LQTY",
     "treasury": "liquity-treasury.js",
     "twitter": "LiquityProtocol",
@@ -5924,15 +4395,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "litecoin",
     "name": "Litecoin",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "litecoin": Object {
-        "chains": Array [
-          "litecoin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LTC",
   },
   Object {
@@ -5973,15 +4435,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Internal",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "llamalend": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "llamalend",
     "url": "https://llamalend.com/",
@@ -6023,15 +4476,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "looksrare",
     "name": "LooksRare",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "looksrare": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "LOOKS",
     "treasury": "looksrare.js",
     "twitter": "LooksRareNFT",
@@ -6075,15 +4519,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Maker",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "makerdao": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "referralUrl": "https://oasis.app/?ref=0x08a3c2A819E3de7ACa384c798269B3Ce1CD0e437",
     "symbol": "MKR",
     "treasury": "maker.js",
@@ -6116,15 +4551,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "mixin",
     "name": "Mixin",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "mixin": Object {
-        "chains": Array [
-          "mixin",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "XIN",
   },
   Object {
@@ -6164,15 +4590,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       ],
     },
     "protocolType": "chain",
-    "protocolsData": Object {
-      "moonbeam": Object {
-        "chains": Array [
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GLMR",
   },
   Object {
@@ -6212,15 +4629,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       ],
     },
     "protocolType": "chain",
-    "protocolsData": Object {
-      "moonriver": Object {
-        "chains": Array [
-          "moonriver",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MOVR",
   },
   Object {
@@ -6268,15 +4676,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "parentProtocol": "Moonwell",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "moonwell-apollo": Object {
-        "chains": Array [
-          "moonriver",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MFAM",
     "twitter": "MoonwellDeFi",
     "url": "https://moonwell.fi",
@@ -6326,15 +4725,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "parentProtocol": "Moonwell",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "moonwell-artemis": Object {
-        "chains": Array [
-          "moonbeam",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "WELL",
     "twitter": "MoonwellDeFi",
     "url": "https://moonwell.fi",
@@ -6383,24 +4773,12 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     ],
     "parentProtocol": "MUX Protocol",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "mux": Object {
-        "chains": Array [
-          "arbitrum",
-          "bsc",
-          "avax",
-          "fantom",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MCB",
     "twitter": "muxprotocol",
     "url": "https://mux.network/",
   },
   Object {
-    "address": null,
+    "address": "0x0f9b80fc3c8b9123d0aef43df58ebdbc034a8901",
     "audit_note": null,
     "audits": "0",
     "category": "NFT Marketplace",
@@ -6418,7 +4796,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "disabled": false,
     "displayName": "NFTEarth",
     "enabled": true,
-    "gecko_id": null,
+    "gecko_id": "nftearth",
     "id": "2546",
     "logo": "https://icons.llama.fi/nftearth.jpg",
     "methodology": Object {
@@ -6432,17 +4810,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "name": "NFTEarth",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "nftearth": Object {
-        "chains": Array [
-          "optimism",
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
-    "symbol": "-",
+    "symbol": "NFTE",
     "twitter": "NFTEarth_L2",
     "url": "https://nftearth.exchange",
   },
@@ -6490,56 +4858,14 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "listedAt": 1667934393,
     "logo": "https://icons.llama.fi/opensea.png",
     "methodology": Object {
-      "Fees": "Fees paid by users",
-      "ProtocolRevenue": "Marketplace revenue",
-      "Revenue": "Marketplace revenue",
-      "UserFees": "Fees paid by users",
+      "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
+      "Fees": "Service fees and royalties collected",
+      "Revenue": "Opensea takes 2.5% on each sale",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/opensea",
     "module": "opensea",
     "name": "Opensea",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "seaport": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
-          "Fees": "Service fees and royalties collected",
-          "ProtocolRevenue": "Marketplace revenue",
-          "Revenue": "Opensea takes 2.5% on each sale",
-          "UserFees": "Fees paid by users",
-        },
-      },
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
-          "Fees": "Service fees and royalties collected",
-          "ProtocolRevenue": "Marketplace revenue",
-          "Revenue": "Opensea takes 2.5% on each sale",
-          "UserFees": "Fees paid by users",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
-          "Fees": "Service fees and royalties collected",
-          "ProtocolRevenue": "Marketplace revenue",
-          "Revenue": "Opensea takes 2.5% on each sale",
-          "UserFees": "Fees paid by users",
-        },
-      },
-    },
     "symbol": "-",
     "twitter": "opensea",
     "url": "https://opensea.io/",
@@ -6589,56 +4915,14 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "listedAt": 1667934393,
     "logo": "https://icons.llama.fi/opensea.png",
     "methodology": Object {
-      "Fees": "Fees paid by users",
-      "ProtocolRevenue": "Marketplace revenue",
-      "Revenue": "Marketplace revenue",
-      "UserFees": "Fees paid by users",
+      "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
+      "Fees": "Service fees and royalties collected",
+      "Revenue": "Opensea takes 2.5% on each sale",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/opensea",
     "module": "opensea",
     "name": "Opensea",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "seaport": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
-          "Fees": "Service fees and royalties collected",
-          "ProtocolRevenue": "Marketplace revenue",
-          "Revenue": "Opensea takes 2.5% on each sale",
-          "UserFees": "Fees paid by users",
-        },
-      },
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
-          "Fees": "Service fees and royalties collected",
-          "ProtocolRevenue": "Marketplace revenue",
-          "Revenue": "Opensea takes 2.5% on each sale",
-          "UserFees": "Fees paid by users",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
-          "Fees": "Service fees and royalties collected",
-          "ProtocolRevenue": "Marketplace revenue",
-          "Revenue": "Opensea takes 2.5% on each sale",
-          "UserFees": "Fees paid by users",
-        },
-      },
-    },
     "symbol": "-",
     "twitter": "opensea",
     "url": "https://opensea.io/",
@@ -6688,56 +4972,14 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "listedAt": 1667934393,
     "logo": "https://icons.llama.fi/opensea.png",
     "methodology": Object {
-      "Fees": "Fees paid by users",
-      "ProtocolRevenue": "Marketplace revenue",
-      "Revenue": "Marketplace revenue",
-      "UserFees": "Fees paid by users",
+      "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
+      "Fees": "Service fees and royalties collected",
+      "Revenue": "Opensea takes 2.5% on each sale",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/opensea",
     "module": "opensea",
     "name": "Opensea",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "seaport": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
-          "Fees": "Service fees and royalties collected",
-          "ProtocolRevenue": "Marketplace revenue",
-          "Revenue": "Opensea takes 2.5% on each sale",
-          "UserFees": "Fees paid by users",
-        },
-      },
-      "v1": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
-          "Fees": "Service fees and royalties collected",
-          "ProtocolRevenue": "Marketplace revenue",
-          "Revenue": "Opensea takes 2.5% on each sale",
-          "UserFees": "Fees paid by users",
-        },
-      },
-      "v2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": Object {
-          "CreatorRevenue": "Creators can set up to 10% royalty fees of each sale",
-          "Fees": "Service fees and royalties collected",
-          "ProtocolRevenue": "Marketplace revenue",
-          "Revenue": "Opensea takes 2.5% on each sale",
-          "UserFees": "Fees paid by users",
-        },
-      },
-    },
     "symbol": "-",
     "twitter": "opensea",
     "url": "https://opensea.io/",
@@ -6783,15 +5025,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       ],
     },
     "protocolType": "chain",
-    "protocolsData": Object {
-      "optimism": Object {
-        "chains": Array [
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "OP",
   },
   Object {
@@ -6832,15 +5065,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "perp88",
     "name": "Perp88",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "perp88": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "0xPerp88",
     "url": "https://perp88.com/",
@@ -6875,15 +5099,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "polygon",
     "name": "Polygon",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "polygon": Object {
-        "chains": Array [
-          "polygon",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "MATIC",
   },
   Object {
@@ -6927,15 +5142,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "predy-finance": Object {
-        "chains": Array [
-          "arbitrum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "predyfinance",
     "url": "https://www.predy.finance",
@@ -6966,15 +5172,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "solana",
     "name": "Solana",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "solana": Object {
-        "chains": Array [
-          "solana",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SOL",
   },
   Object {
@@ -7014,20 +5211,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "name": "Stargate",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "stargate": Object {
-        "chains": Array [
-          "ethereum",
-          "avax",
-          "polygon",
-          "arbitrum",
-          "fantom",
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "STG",
     "treasury": "stargate.js",
     "twitter": "StargateFinance",
@@ -7066,30 +5249,13 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "logo": "https://icons.llama.fi/stride.png",
     "methodology": Object {
       "Fees": "Fees are staking rewards earned by tokens staked with Stride. They are measured across Stride's LSD tokens' yields and converted to USD terms.",
-      "ProtocolRevenue": "Fee from users rewards",
       "Revenue": "Stride collects 10% of liquid staked assets's staking rewards. These fees are measured across Stride's LSD tokens' yields and converted to USD terms.",
-      "SupplySideRevenue": "Revenue earned by stETH holders",
-      "UserFees": "Percentage of rewards paid to protocol",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/stride.ts",
     "module": "stride",
     "name": "Stride",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "stride": Object {
-        "chains": Array [
-          "cosmos",
-          "osmosis",
-          "juno",
-          "stargaze",
-          "terra",
-          "evmos",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "STRD",
     "twitter": "stride_zone",
     "url": "https://stride.zone/",
@@ -7125,9 +5291,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "methodology": Object {
       "Fees": "Fees generated on each synthetic asset exchange, between 0.1% and 1% (usually 0.3%)",
       "HoldersRevenue": "Fees in the fee pool can be claimed by proportionally by SNX stakers (note: rewards can also be claimed by SNX stakers, which are not included here)",
-      "ProtocolRevenue": "Percentage of fees going to treasury",
       "Revenue": "Fees paid by user and claimed by SNX stakers",
-      "SupplySideRevenue": "LPs revenue",
       "UserFees": "Users pay between 10-100 bps (0.1%-1%), usually 30 bps, whenever they exchange a synthetic asset (Synth)",
     },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/synthetix.ts",
@@ -7137,16 +5301,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "synthetix": Object {
-        "chains": Array [
-          "ethereum",
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "SNX",
     "treasury": "synthetix.js",
     "twitter": "synthetix_io",
@@ -7188,16 +5342,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "tarot",
     "name": "Tarot",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "tarot": Object {
-        "chains": Array [
-          "fantom",
-          "optimism",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "TAROT",
     "twitter": "TarotFinance",
     "url": "https://www.tarot.to",
@@ -7231,15 +5375,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "tron",
     "name": "Tron",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "tron": Object {
-        "chains": Array [
-          "tron",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "TRON",
   },
   Object {
@@ -7284,15 +5419,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "Chainlink",
     ],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "valas-finance": Object {
-        "chains": Array [
-          "bsc",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "VALAS",
     "twitter": "ValasFinance",
     "url": "https://valasfinance.com/",
@@ -7334,15 +5460,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "name": "X2Y2",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "x2y2": Object {
-        "chains": Array [
-          "ethereum",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "X2Y2",
     "twitter": "the_x2y2",
     "url": "https://x2y2.io",
@@ -7377,15 +5494,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "module": "xdai",
     "name": "xDai",
     "protocolType": "chain",
-    "protocolsData": Object {
-      "xdai": Object {
-        "chains": Array [
-          "xdai",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "GNO",
   },
   Object {
@@ -7423,17 +5531,6 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "name": "Zonic",
     "oracles": Array [],
     "protocolType": undefined,
-    "protocolsData": Object {
-      "zonic": Object {
-        "chains": Array [
-          "optimism",
-          "arbitrum",
-          "arbitrum_nova",
-        ],
-        "disabled": false,
-        "methodology": undefined,
-      },
-    },
     "symbol": "-",
     "twitter": "ZonicApp",
     "url": "https://zonic.app",

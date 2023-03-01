@@ -1,7 +1,7 @@
 import data, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
 import { sluggifyString } from "../../../utils/sluggify";
-import getAllChainsFromAdaptors, { getChainsFromBaseAdapter, getMethodologyData, getProtocolsData, isDisabled } from "../../utils/getAllChainsFromAdaptors";
+import getAllChainsFromAdaptors, { getChainsFromBaseAdapter, getMethodologyData, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { Adapter, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
@@ -80,10 +80,8 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                         baseModuleObject = moduleObject.breakdown[key]
                     }
                 }
-                const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
                 const infoItem = {
                     ...dexFoundInProtocols,
-                    ...config[adapterKey],
                     ...configObj,
                     id: config[adapterKey].id,
                     module: adapterKey,
@@ -91,18 +89,13 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                     chains: getChainsFromBaseAdapter(baseModuleObject),
                     disabled: configObj.disabled ?? false,
                     displayName: configObj.displayName ?? dexFoundInProtocols.name,
-                    protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category, overridesObj),
                     protocolType: adapterObj.module.default?.protocolType,
                     methodologyURL: adapterObj.codePath,
                     ...overridesObj[adapterKey],
                 }
-                infoItem.methodology = getMethodologyData(
-                    dexFoundInProtocols.name,
-                    adapterKey,
-                    moduleObject,
-                    infoItem.category ?? '',
-                    childCategories
-                )
+                const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
+                if (methodology)
+                    infoItem.methodology = methodology
                 if (versionKey)
                     infoItem.versionKey = versionKey
                 return infoItem

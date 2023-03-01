@@ -9,12 +9,6 @@ export interface ProtocolAdaptor extends Protocol {
     enabled?: boolean
     protocolType?: ProtocolType
     versionKey?: string
-    protocolsData: IJSON<{
-        category?: string
-        chains?: string[]
-        disabled?: boolean
-        methodology?: string | IJSON<string>
-    }> | null
     methodologyURL: string
     methodology?: string | IJSON<string>
     allAddresses?: Array<string>

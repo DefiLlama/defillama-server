@@ -6,7 +6,7 @@ import { IJSON, ProtocolAdaptor } from "../../data/types"
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdaptorRecord } from "../../db-utils/adaptor-record"
 import { formatChain } from "../../utils/getAllChainsFromAdaptors"
 import { sendDiscordAlert } from "../../utils/notify"
-import { calcNdChange, getStatsByProtocolVersion, getWoWStats, sumAllVolumes } from "../../utils/volumeCalcs"
+import { calcNdChange, getWoWStats, sumAllVolumes } from "../../utils/volumeCalcs"
 import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import generateCleanRecords from "./generateCleanRecords"
@@ -47,19 +47,11 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
 
         // Get extra revenue
         const extraTypes: IJSON<number | null> = {}
-        const extraTypesByProtocolVersion: IJSON<IJSON<number | null>> = {}
         for (const recordType of getExtraTypes(adaptorType)) {
             const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
             if (AdaptorRecordTypeMapReverse[recordType]) {
                 extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
-                if (cleanRecord && Object.keys(adapter.protocolsData ?? {}).length > 1)
-                    Object.keys(adapter.protocolsData ?? {}).forEach(protVersion => {
-                        extraTypesByProtocolVersion[protVersion] = {
-                            ...extraTypesByProtocolVersion[protVersion],
-                            [AdaptorRecordTypeMapReverse[recordType]]: cleanRecord ? sumAllVolumes(cleanRecord.data, protVersion) : null
-                        }
-                    })
             }
         }
 
@@ -97,10 +89,6 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
         const lastAvailableDataTimestamp = adaptorRecords[adaptorRecords.length - 1].timestamp
         const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap, lastAvailableDataTimestamp)
-        const protocolVersions =
-            adapter.protocolsData && Object.keys(adapter.protocolsData).length > 1
-                ? getProtocolVersionStats(adapter, adaptorRecords, lastAvailableDataTimestamp, chainFilter, extraTypesByProtocolVersion)
-                : null
 
         if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp) {
             if (onError) onError(new Error(`
@@ -115,23 +103,11 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
 
         // Now we add adaptorRecordType to the extra types object
         extraTypes[AdaptorRecordTypeMapReverse[adaptorRecordType]] = stats.total24h
-        if (protocolVersions) {
-            Object.keys(protocolVersions).forEach(key => {
-                extraTypesByProtocolVersion[key] = {
-                    ...extraTypesByProtocolVersion[key],
-                    [AdaptorRecordTypeMapReverse[adaptorRecordType]]: protocolVersions[key].total24h
-                }
-            })
-        }
+
         // And calculate the missing types
         const rules = DimensionRules(adaptorType) ?? {}
         for (const rule of Object.values(rules)) {
             rule(extraTypes, adapter.category ?? '')
-            if (protocolVersions) {
-                Object.keys(protocolVersions).forEach(key => {
-                    rule(extraTypesByProtocolVersion[key], adapter.category ?? '')
-                })
-            }
         }
         // Populate last missing days with last available data
         if (!adapter.disabled && ((yesterdaysCleanTimestamp-lastAvailableDataTimestamp)/ONE_DAY_IN_SECONDS)<5)
@@ -163,7 +139,6 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             breakdown24h: adapter.disabled ? null : stats.breakdown24h,
             config: getConfigByType(adaptorType, adapter.module),
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
-            protocolsStats: protocolVersions,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
             methodologyURL: adapter.methodologyURL,
             methodology: adapter.methodology,
@@ -199,7 +174,6 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             change_7dover7d: null,
             change_30dover30d: null,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
-            protocolsStats: null
         }
     }
 }
@@ -216,25 +190,4 @@ const getStats = (adapter: ProtocolAdaptor, adaptorRecordsArr: AdaptorRecord[], 
         total24h: adapter.disabled ? null : sumAllVolumes(adaptorRecordsArr[adaptorRecordsArr.length - 1].data),
         breakdown24h: adapter.disabled ? null : adaptorRecordsArr[adaptorRecordsArr.length - 1].data
     }
-}
-
-const getProtocolVersionStats = (
-    adapterData: ProtocolAdaptor,
-    adaptorRecords: AdaptorRecord[],
-    baseTimestamp: number,
-    chainFilter?: string,
-    extraTypesByProtocolVersion?: IJSON<IJSON<number | null>>
-) => {
-    if (!adapterData.protocolsData) return null
-    const protocolVersionsStats = getStatsByProtocolVersion(adaptorRecords, baseTimestamp, adapterData.protocolsData)
-    return Object.entries(adapterData.protocolsData)
-        .reduce((acc, [protKey, data]) => ({
-            ...acc,
-            [protKey]: {
-                ...data,
-                chains: chainFilter ? [formatChain(chainFilter)] : data.chains?.map(formatChain),
-                ...protocolVersionsStats[protKey],
-                ...(extraTypesByProtocolVersion?.[protKey] ?? {})
-            }
-        }), {} as ProtocolStats)
 }

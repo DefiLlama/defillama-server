@@ -337,5 +337,8 @@ export default {
     },
     "zora": {
         enabled: true
+    },
+    "solidlizard": {
+        enabled: true
     }
 } as AdaptorsConfig

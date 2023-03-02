@@ -26842,5 +26842,27 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     listedAt: 1677761709
   },
+  {
+    id: "2623",
+    name: "Chainlink",
+    address: "0x514910771af9ca656af840dff83e8264ecf986ca",
+    symbol: "LINK",
+    url: "https://chain.link",
+    description:
+      "Chainlink decentralized oracle networks provide tamper-proof inputs, outputs, and computations to support advanced smart contracts on any blockchain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/chainlink.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "chainlink",
+    cmcId: "1975",
+    category: "Oracle",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "chainlink",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1677769175
+  },
 ]
 export default data2;

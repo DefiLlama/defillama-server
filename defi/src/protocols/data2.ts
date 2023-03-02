@@ -26701,7 +26701,7 @@ const data2: Protocol[] = [
     description:
       "Conic Finance is an easy-to-use platform built for liquidity providers to easily diversify their exposure to multiple Curve pools. Any user can provide liquidity into a Conic Omnipool which allocates funds across Curve in proportion to protocol controlled pool weights.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/conic-omnipool.jpg`,
+    logo: `${baseIconsUrl}/conic-finance.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

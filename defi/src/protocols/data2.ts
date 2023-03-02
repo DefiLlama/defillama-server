@@ -26910,5 +26910,49 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-dTrade-v1.0.pdf"],
     listedAt: 1677769578
   },
+  {
+    id: "2626",
+    name: "ether.fi",
+    address: null,
+    symbol: "-",
+    url: "https://www.mainnet.ether.fi",
+    description:
+      "Decentralized and non-custodial Ethereum staking protocol..",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ether.fi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    module: "ether-fi/index.js",
+    twitter: "ether_fi",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1677778460
+  },
+  {
+    id: "2627",
+    name: "Cat in a Box",
+    address: null,
+    symbol: "-",
+    url: "https://catinabox.finance",
+    description:
+      "A dynamic lending protocol for yield-bearing assets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cat-in-a-box.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "cat-in-a-box/index.js",
+    twitter: "catinaboxfi",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1677778463
+  },
 ]
 export default data2;

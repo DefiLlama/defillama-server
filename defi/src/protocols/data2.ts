@@ -26864,5 +26864,51 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1677769175
   },
+  {
+    id: "2624",
+    name: "MyMetaTrader",
+    address: "arbitrum:0x27d8de4c30ffde34e982482ae504fc7f23061f61",
+    symbol: "MMT",
+    url: "https://www.mtrader.finance",
+    description:
+      "mTrader is a derivative DEX built on the Arbitrum One blockchain. mTrader aims to revolutionize the future of trading. As a decentralized platform, mTrader is governed by the community, with proposals and funding allocated through a transparent and democratic process. ",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/mymetatrader.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "my-metatrader",
+    cmcId: "23627",
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "mymetatrader/index.js",
+    twitter: "MyMetaTrader",
+    oracles: ["Chainlink"],
+    forkedFrom: ["Gains Network"],
+    audit_links: ["https://www.certik.com/projects/mymetatrader"],
+    listedAt: 1677769575
+  },
+  {
+    id: "2625",
+    name: "Bluefin",
+    address: null,
+    symbol: "-",
+    url: "https://bluefin.io",
+    description:
+      "Bluefin is a decentralized exchange (DEX) for derivatives currently offering perpetual swaps trading with up to 20x leverage using isolated margin. The exchange is non-custodial and uses an off-chain order book for efficient price discovery.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/bluefin.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "bluefin/index.js",
+    twitter: "bluefinapp",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-dTrade-v1.0.pdf"],
+    listedAt: 1677769578
+  },
 ]
 export default data2;

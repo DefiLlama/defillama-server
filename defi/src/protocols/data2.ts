@@ -26798,5 +26798,49 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/linear-protocol/audits/blob/main/BlockSec%20-%20Security%20Audit%20Report%20for%20Phoenix%20Bonds%20-%20202301.pdf"],
     listedAt: 1677759013
   },
+  {
+    id: "2621",
+    name: "Sterling Finance",
+    address: "arbitrum:0x5db7b150c5f38c5f5db11dcbdb885028fcc51d68",
+    symbol: "STR",
+    url: "https://www.sterling.finance",
+    description:
+      "Sterling is a decentralized exchange that has launched on Arbitrum with low fees, near 0 slippage on correlated assets and a strong focus on secondary markets for tokenized locks as NFT’s (veToken = veSVR).",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sterling-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "sterling-finance",
+    cmcId: "6103",
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "sterling-finance/index.js",
+    twitter: "Sterling_Fi",
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    listedAt: 1677761705
+  },
+  {
+    id: "2622",
+    name: "Mare Finance",
+    address: "kava:0xd86C8d4279CCaFbec840c782BcC50D201f277419",
+    symbol: "MARE",
+    url: "https://mare.finance",
+    description:
+      "Mare Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless, open source protocol serving users on Kava. Users can deposit their assets, use them as collateral and borrow against them.",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/mare-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Kava"],
+    module: "mare-finance/index.js",
+    twitter: "MareFinance",
+    oracles: ["Witnet"],
+    forkedFrom: ["Compound"],
+    listedAt: 1677761709
+  },
 ]
 export default data2;

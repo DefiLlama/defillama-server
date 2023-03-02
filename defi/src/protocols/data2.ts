@@ -26755,5 +26755,26 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1677734709
   },
+  {
+    id: "2619",
+    name: "Proton Dex",
+    address: "proton:",
+    symbol: "-",
+    url: "https://protondex.com",
+    description:
+      "Dex on Proton Chain",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/proton-dex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Proton"],
+    module: "proton-dex/index.js",
+    twitter: "ProtonXPR",
+    oracles: [],
+    listedAt: 1677755490
+  },
 ]
 export default data2;

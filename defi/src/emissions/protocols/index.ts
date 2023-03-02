@@ -13,6 +13,7 @@ export default {
   forta: require("./forta"),
   gmx: require("./gmx"),
   radiant: require("./radiant"),
+  rocketpool: require("./rocketpool"),
   stargate: require("./stargate"),
   sushi: require("./sushi"),
   tornado: require("./tornado"),

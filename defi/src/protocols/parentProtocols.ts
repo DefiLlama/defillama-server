@@ -101,8 +101,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
     "Parallel Finance is a Decentralized Money Market Protocol that offers lending, staking, and borrowing in the Polkadot ecosystem. Depositors can lend and stake simultaneously to earn double yield on their staked coins, and borrowers can collateralize to borrow.",
     logo: `${baseIconsUrl}/parallel-defi-super-app.jpg`,
-    gecko_id: null ,
-    cmcId: null,
+    gecko_id: "parallel-finance" ,
+    cmcId: "12887",
     chains: [],
     twitter: "ParallelFi",
   },
@@ -618,8 +618,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
     "NEOPIN is a blockchain open platform that connects and expands the ecosystem through Gaming, Metaverse, Service, and NFTs, centering on various DeFi services such as staking, yield farming, and swap.",
     logo: `${baseIconsUrl}/neopin.jpg`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "neopin",
+    cmcId: "18966",
     chains: [],
     twitter: "NeopinOfficial",
   },
@@ -630,8 +630,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
     "SperaxUSD (USDs) is a stablecoin and yield-automator on Arbitrum. USDs is 100% backed by collateral that is sent to DeFi strategies to produce a yield. This yield is then distributed to holders in a gasless manner, making compound interest easy",
     logo: `${baseIconsUrl}/sperax.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "sperax",
+    cmcId: "6715",
     chains: [],
     twitter: "SperaxUSD",
     governanceID: ["snapshot:speraxdao.eth"]
@@ -975,7 +975,7 @@ const parentProtocols: IParentProtocol[] = [
     description:
     "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
     logo: `${baseIconsUrl}/surfswap.jpg`,
-    gecko_id: null,
+    gecko_id: "surfswap",
     cmcId: null,
     chains: [],
     twitter: "SurfswapDEX",

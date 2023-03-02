@@ -26680,7 +26680,7 @@ const data2: Protocol[] = [
       "KyberSwap is both a decentralized exchange (DEX) aggregator and a liquidity source with capital-efficient liquidity pools that earns fees for liquidity providers",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/kyberswap-elastic.png`,
-    audits: null,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -26723,7 +26723,7 @@ const data2: Protocol[] = [
       "DeDust is a decentralized exchange liquidity pool on TON",
     chain: "TON",
     logo: `${baseIconsUrl}/dedust.png`,
-    audits: null,
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: "5631",
@@ -26733,6 +26733,27 @@ const data2: Protocol[] = [
     twitter: "ScaletonCo",
     oracles: [],
     listedAt: 1677700865
+  },
+  {
+    id: "2618",
+    name: "OasisSwap",
+    address: "arbitrum:0x602Eb0D99A5e3e76D1510372C4d2020e12EaEa8a",
+    symbol: "PSI",
+    url: "https://swap.trident.game/#/swap",
+    description:
+      "Official Dex for Trident, a 2D MMO, procedurally-generated infinite universe video game on Arbitrum",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/oasisswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "tridentdao",
+    cmcId: "23412",
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "oasisswapdex/index.js",
+    twitter: "OasisSwapDEX",
+    oracles: [],
+    listedAt: 1677734709
   },
 ]
 export default data2;

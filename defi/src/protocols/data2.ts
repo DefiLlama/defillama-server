@@ -26949,6 +26949,7 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     module: "cat-in-a-box/index.js",
+    treasury: "cat-in-a-box.js",
     twitter: "catinaboxfi",
     oracles: [],
     forkedFrom: [],

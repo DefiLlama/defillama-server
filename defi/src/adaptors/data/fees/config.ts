@@ -340,5 +340,8 @@ export default {
     },
     "solidlizard": {
         enabled: true
+    },
+    "chainlink": {
+        enabled: true
     }
 } as AdaptorsConfig

@@ -16,7 +16,11 @@ export function normalizeChain(chain: string) {
 }
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string){
-  return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield" || category === "RWA");
+  return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield");
+}
+
+export function isExcludedFromChainTvl(category?: string){
+  return category === "RWA";
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']

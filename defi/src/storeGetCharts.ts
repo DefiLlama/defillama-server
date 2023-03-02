@@ -8,6 +8,7 @@ import {
   transformNewChainName,
   extraSections,
   isDoubleCounted,
+  isExcludedFromChainTvl,
 } from "./utils/normalizeChain";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { constants, brotliCompress } from "zlib";
@@ -75,6 +76,9 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean) {
         return;
       }
 
+      if(isExcludedFromChainTvl(protocol.category)){
+        return;
+      }
       // check if protocol is double counted
       const doublecounted = isDoubleCounted(module.doublecounted, protocol.category);
 

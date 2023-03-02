@@ -26776,5 +26776,27 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1677755490
   },
+  {
+    id: "2620",
+    name: "Phoenix Bonds",
+    address: "near:phoenix-bonds.near",
+    symbol: "pNEAR",
+    url: "https://phoenixbonds.org/",
+    description:
+      "Phoenix Bonds is a principal-protected bonding platform that help protocols with liquidity-bootstrapping and provide perpetually-boosted yield to users. Phoenix Bonds can work with all yield bearing assets. The first version is launched for $LiNEAR, the staking derivative token of LiNEAR Protocol.",
+    chain: "Near",
+    logo: `${baseIconsUrl}/phoenix-bonds.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Near"],
+    module: "phoenix-bonds/index.js",
+    twitter: "LinearProtocol",
+    oracles: [],
+    audit_links: ["https://github.com/linear-protocol/audits/blob/main/BlockSec%20-%20Security%20Audit%20Report%20for%20Phoenix%20Bonds%20-%20202301.pdf"],
+    listedAt: 1677759013
+  },
 ]
 export default data2;

@@ -26382,7 +26382,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Klaytn"],
-    oracles: ["chainlink", "Internal"],
+    oracles: ["Chainlink", "Internal"],
     forkedFrom: [],
     module: "shoebillFinance/index.js",
     twitter: "ShoebillFinance",

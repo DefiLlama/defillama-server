@@ -26955,5 +26955,28 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1677778463
   },
+  {
+    id: "2628",
+    name: "Just Yield",
+    address: null,
+    symbol: "-",
+    url: "https://www.justyield.finance",
+    description:
+      "Just Yield is a decentralized platform that allows users to earn interest on their crypto holdings through a range of yield farming strategies.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/just-yield.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Arbitrum"],
+    module: "justyield/index.js",
+    treasury: "just-yield.js",
+    twitter: "JustYield_Fi",
+    oracles: [],
+    forkedFrom: ["Beefy"],
+    listedAt: 1677784097
+  },
 ]
 export default data2;

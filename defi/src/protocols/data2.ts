@@ -26978,5 +26978,27 @@ const data2: Protocol[] = [
     forkedFrom: ["Beefy"],
     listedAt: 1677784097
   },
+  {
+    id: "2629",
+    name: "Unamano",
+    address: null,
+    symbol: "-",
+    url: "https://unamano.io/home",
+    description:
+      "Unamano is an ETH2.0 Staking & Project DAOs Protocol, stake #ETH to earn multiple crypto assets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/unamano.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "unamano/index.js",
+    twitter: "unamanoio",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1677841378
+  },
 ]
 export default data2;

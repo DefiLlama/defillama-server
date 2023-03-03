@@ -27,7 +27,7 @@ export type AdapterResult = {
   cliff?: number;
   stepDuration?: number;
   receiver?: string;
-  token: string;
+  token?: string;
   confirmed?: boolean;
 };
 export type RawResult = {

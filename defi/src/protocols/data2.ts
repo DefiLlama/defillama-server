@@ -18686,6 +18686,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "opensea",
     audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/SeaportProtocol.pdf"],
+    parentProtocol: "OpenSea",
     listedAt: 1667934393
   },
   {
@@ -27018,6 +27019,7 @@ const data2: Protocol[] = [
     module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
     forkedFrom: [],
     twitter: "opensea",
+    parentProtocol: "OpenSea",
     audit_links: [],
   },
   {
@@ -27039,6 +27041,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "opensea",
     audit_links: [],
+    parentProtocol: "OpenSea"
   },
 ]
 export default data2;

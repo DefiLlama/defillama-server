@@ -18669,7 +18669,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2258",
-    name: "Opensea",
+    name: "Opensea Seaport",
     address: null,
     symbol: "-",
     url: "https://opensea.io/",
@@ -26999,6 +26999,46 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1677841378
+  },
+  {
+    id: "2630",
+    name: "Opensea V1",
+    address: null,
+    symbol: "-",
+    url: "https://opensea.io/",
+    description: "OpenSea is the world's first and largest web3 marketplace for NFTs and crypto collectibles.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/opensea.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Ethereum"],
+    module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
+    forkedFrom: [],
+    twitter: "opensea",
+    audit_links: []
+  },
+  {
+    id: "2631",
+    name: "Opensea V2",
+    address: null,
+    symbol: "-",
+    url: "https://opensea.io/",
+    description: "OpenSea is the world's first and largest web3 marketplace for NFTs and crypto collectibles.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/opensea.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Ethereum"],
+    module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
+    forkedFrom: [],
+    twitter: "opensea",
+    audit_links: []
   },
 ]
 export default data2;

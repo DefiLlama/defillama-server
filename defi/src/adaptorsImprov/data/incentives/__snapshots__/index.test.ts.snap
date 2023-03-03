@@ -19,6 +19,11 @@ Array [
     "gecko_id": "bitcoin",
     "id": "1",
     "logo": "https://icons.llama.fi/chains/rsz_bitcoin.jpg",
+    "methodology": Object {
+      "Fees": "Gas fees paid by users",
+      "Revenue": "Burned coins",
+      "UserFees": "Gas fees paid by users",
+    },
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/incentives/bitcoin",
     "module": "bitcoin",
     "name": "Bitcoin",

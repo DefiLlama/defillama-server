@@ -1004,6 +1004,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "KyberNetwork",
   },
+  {
+    id: "OpenSea",
+    name: "OpenSea",
+    url: "https://opensea.io/",
+    description: "OpenSea is the world's first and largest web3 marketplace for NFTs and crypto collectibles.",
+    logo: `${baseIconsUrl}/opensea.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "opensea",
+  },
 ];
 
 export default parentProtocols;

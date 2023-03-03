@@ -26712,6 +26712,7 @@ const data2: Protocol[] = [
     module: "conic-omnipool/index.js",
     twitter: "ConicFinance",
     oracles: [],
+    audit_links: ["https://conic.finance/media/PeckShield-Audit-Report-ConicFinance.pdf"],
     listedAt: 1677700863
   },
   {

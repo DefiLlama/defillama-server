@@ -18669,7 +18669,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2258",
-    name: "Opensea Seaport",
+    name: "OpenSea Seaport",
     address: null,
     symbol: "-",
     url: "https://opensea.io/",
@@ -18686,7 +18686,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "opensea",
     audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/SeaportProtocol.pdf"],
-    listedAt: 1667934393
+    parentProtocol: "OpenSea",
   },
   {
     id: "2259",
@@ -27002,7 +27002,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2630",
-    name: "Opensea V1",
+    name: "OpenSea V1",
     address: null,
     symbol: "-",
     url: "https://opensea.io/",
@@ -27018,11 +27018,12 @@ const data2: Protocol[] = [
     module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
     forkedFrom: [],
     twitter: "opensea",
-    audit_links: []
+    audit_links: [],
+    parentProtocol: "OpenSea"
   },
   {
     id: "2631",
-    name: "Opensea V2",
+    name: "OpenSea V2",
     address: null,
     symbol: "-",
     url: "https://opensea.io/",
@@ -27038,7 +27039,8 @@ const data2: Protocol[] = [
     module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
     forkedFrom: [],
     twitter: "opensea",
-    audit_links: []
+    audit_links: [],
+    parentProtocol: "OpenSea"
   },
 ]
 export default data2;

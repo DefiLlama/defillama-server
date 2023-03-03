@@ -121,12 +121,12 @@ export default {
         "id": "2258",
         protocolsData: {
             v1: {
-                "id": "2258",
+                "id": "2630",
                 enabled: true,
                 displayName: "Opensea V1"
             },
             v2: {
-                "id": "2258",
+                "id": "2631",
                 enabled: true,
                 displayName: "Opensea V2"
             },

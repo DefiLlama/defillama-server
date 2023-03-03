@@ -26863,7 +26863,6 @@ const data2: Protocol[] = [
     twitter: "chainlink",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1677769175
   },
   {
     id: "2624",

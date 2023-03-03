@@ -4084,7 +4084,7 @@ const data: Protocol[] = [
     module: "quickswap/index.js",
     twitter: "QuickswapDEX",
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap"], 
     parentProtocol: "Quickswap",
   },
   {
@@ -24035,7 +24035,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "stellaswap.js",
     twitter: "StellaSwap",
     audit_links: ["https://www.certik.com/projects/stellaswap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Algebra DEX"],
     listedAt: 1642405794,
   },
   {

@@ -18263,7 +18263,7 @@ const data2: Protocol[] = [
     module: "quickswap-v3/index.js",
     twitter: "QuickswapDEX",
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.
     parentProtocol: "Quickswap",
     listedAt: 1667063569
   },
@@ -23363,7 +23363,7 @@ const data2: Protocol[] = [
     module: "zyberswap/index.js",
     twitter: "zyberswap",
     oracles: ["TWAP"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.
     audit_links: ["https://github.com/solidproof/projects/blob/main/ZyberSwap/SmartContract_Audit_Solidproof_Zyberswap.pdf"],
     parentProtocol: "ZyberSwap",
     listedAt: 1674558950

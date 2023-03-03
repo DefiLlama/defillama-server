@@ -12,6 +12,7 @@ export default {
   euler: require("./euler"),
   forta: require("./forta"),
   gmx: require("./gmx"),
+  idle: require("./idle"),
   gearbox: require("./gearbox"),
   radiant: require("./radiant"),
   rocketpool: require("./rocketpool"),

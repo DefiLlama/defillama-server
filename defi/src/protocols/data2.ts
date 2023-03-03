@@ -27043,5 +27043,27 @@ const data2: Protocol[] = [
     audit_links: [],
     parentProtocol: "OpenSea"
   },
+  {
+    id: "2632",
+    name: "LendeXe Finance",
+    address: "0x53011e93f21ec7a74cdfbb7e6548f1abce306833",
+    symbol: "LEXE",
+    url: "https://lendexe.fi/",
+    description: "LendeXe is a Web3 ecosystem of various innovative DeFi applications. At the center of LendeXe's vision is the XSD Stablecoin. This stablecoins is backed by the three largest other Stablecoins: USDT, USDC, BUSD. Even if one of these Stablecoins were to implode for some unknown reason, there are safety mechanics designed for such unlikely cases. In addition, XSD can be used as collateral for the Lendexe Decentralized Lending Protocol. Around the XSD Stablecoin, Lendexe has created a variety of products that allow anyone to secure their crypto assets or create passive income with them. From LendeXe Lending to the Ultimate Loan (a loan for 1.5x the value of your collateral",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lendexe-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "lendexe",
+    cmcId: "23619",
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "lendexe/index.js",
+    forkedFrom: ["Compound"],
+    oracles: ["Chainlink"],
+    twitter: "LendeXeFinance",
+    audit_links: ["https://www.certik.com/projects/lendexe"],
+    listedAt: 1677865003  
+  },
 ]
 export default data2;

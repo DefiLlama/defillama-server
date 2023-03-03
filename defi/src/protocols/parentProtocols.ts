@@ -119,7 +119,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "value_defi",
   },
   {
-    id: " ",
+    id: "Magik Finance",
     name: "Magik Finance",
     url: "https://magik.finance/",
     description:

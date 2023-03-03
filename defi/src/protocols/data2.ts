@@ -27064,5 +27064,27 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/lendexe"],
     listedAt: 1677865003  
   },
+  {
+    id: "2633",
+    name: "AnyHedge v0.11",
+    address: null,
+    symbol: "-",
+    url: "https://anyhedge.com/",
+    description: "AnyHedge allows users to take leveraged long or short positions against main-chain BCH. It is permissionless, non-custodial, and on-chain. The contracts are fully funded on creation and have no counterparty risk. The risks are early liquidation, slippage, and oracle risks.",
+    chain: "Bitcoincash",
+    logo: `${baseIconsUrl}/anyhedge-v0.11.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Bitcoincash"],
+    module: "anyhedge/index.js",
+    forkedFrom: [],
+    oracles: ["Oracles.Cash"],
+    twitter: "AnyHedge",
+    audit_links: [],
+    listedAt: 1677872808  
+  },
 ]
 export default data2;

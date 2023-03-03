@@ -27065,6 +27065,7 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/lendexe"],
     listedAt: 1677865003  
   },
+  /*
   {
     id: "2633",
     name: "AnyHedge v0.11",
@@ -27086,6 +27087,6 @@ const data2: Protocol[] = [
     twitter: "AnyHedge",
     audit_links: [],
     listedAt: 1677872808  
-  },
+  },*/
 ]
 export default data2;

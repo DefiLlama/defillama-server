@@ -1,14 +1,11 @@
 import data, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
-import { sluggifyString } from "../../../utils/sluggify";
-import getAllChainsFromAdaptors, { getChainsFromBaseAdapter, getMethodologyData, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
+import  { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
-import { Adapter, BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import {  BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
-import { getMethodologyByType } from "./methodology";
-import overrides, { chainOverrides, IOverrides } from "./overrides";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -26,6 +23,7 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
     if (!obj.cmcId && !obj.chainId) return undefined
     return {
         ...obj,
+        displayName: getChainDisplayName(key, true),
         name: key,
         id: obj.cmcId ?? obj.chainId,
         gecko_id: obj.geckoId,
@@ -45,9 +43,7 @@ export type IImportsMap = IJSON<IImportObj>
 export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] =>
     Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = dataMap
-        let overridesObj = overrides(type)
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
-            overridesObj = chainOverrides
             list = chainDataMap
         }
         const protocolId = config?.[adapterKey]?.id
@@ -80,7 +76,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                         baseModuleObject = moduleObject.breakdown[key]
                     }
                 }
-                const infoItem = {
+                const infoItem: ProtocolAdaptor = {
                     ...dexFoundInProtocols,
                     ...configObj,
                     id: config[adapterKey].id,
@@ -91,7 +87,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
                     displayName: configObj.displayName ?? dexFoundInProtocols.name,
                     protocolType: adapterObj.module.default?.protocolType,
                     methodologyURL: adapterObj.codePath,
-                    ...overridesObj[adapterKey],
+                    methodology: undefined
                 }
                 const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
                 if (methodology)

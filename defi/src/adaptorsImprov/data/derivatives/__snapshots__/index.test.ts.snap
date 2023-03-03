@@ -90,14 +90,6 @@ Array [
     "module": "gmx",
     "name": "GMX",
     "protocolType": undefined,
-    "protocolsData": Object {
-      "derivatives": Object {
-        "category": "Derivatives",
-      },
-      "swap": Object {
-        "category": "Dexes",
-      },
-    },
     "referralUrl": "https://gmx.io/#/?ref=defillama",
     "symbol": "GMX",
     "twitter": "GMX_IO",

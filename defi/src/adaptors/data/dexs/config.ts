@@ -810,5 +810,8 @@ export default {
     },
     "alienfi": {
         enabled: true
+    },
+    "oswap": {
+        enabled: true
     }
 } as AdaptorsConfig

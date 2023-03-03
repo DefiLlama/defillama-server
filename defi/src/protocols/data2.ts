@@ -25675,7 +25675,7 @@ const data2: Protocol[] = [
     chains: ["Solana"],
     module: "marginfi/index.js",
     twitter: "marginfi",
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     listedAt: 1677103747
   },

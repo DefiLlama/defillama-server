@@ -103,10 +103,10 @@ export default {
           token: "0x5cc5b05a8a13e3fbdb0bb9fccd98d38e50f90c38",
           oracle: "0xa62b4828a9f4b2e3cba050c6befdd8f0a0056af4",
         },
-        {   // Squiggles
-          token: "0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a",
-          oracle: "0xEbF67AB8cFF336D3F609127E8BbF8BD6DD93cd81",
-        },
+        // {   // Squiggles
+        //   token: "0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a",
+        //   oracle: "0xEbF67AB8cFF336D3F609127E8BbF8BD6DD93cd81",
+        // },
         {   // VeeFriends
           token: "0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb",
           oracle: "0x35bf6767577091E7f04707c0290b3f889e968307",

@@ -88,3 +88,4 @@ jobs:
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
           INDEXA_DB: ${{ secrets.INDEXA_DB }}
           DL_NEWS_API: ${{ secrets.DL_NEWS_API }}
+          DL_NEWS_ACCESS_TOKEN: ${{ secrets.DL_NEWS_ACCESS_TOKEN }}

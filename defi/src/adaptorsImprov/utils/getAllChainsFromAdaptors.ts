@@ -112,7 +112,11 @@ export const getMethodologyData = (displayName: string, adaptorKey: string, modu
 export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
     const methodology = Object.values(adapter)[0].meta?.methodology
     if (!methodology && type === AdapterType.FEES) return { ...(getDefaultMethodologyByCategory(category ?? '') ?? {}) }
-    return methodology
+    if (typeof methodology === 'string') return methodology
+    return {
+        ...(getDefaultMethodologyByCategory(category ?? '') ?? {}),
+        ...methodology
+    }
 }
 
 export const formatChain = (chain: string) => {

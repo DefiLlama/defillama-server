@@ -9,7 +9,7 @@ export default {
   convex: require("./convex"),
   curve: require("./curve"),
   dydx: require("./dydx"),
-  // euler: require("./euler"),
+  euler: require("./euler"),
   forta: require("./forta"),
   gmx: require("./gmx"),
   gearbox: require("./gearbox"),

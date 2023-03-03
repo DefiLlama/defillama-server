@@ -26,3 +26,11 @@ export const periodToSeconds = {
   hour: 3600,
   minute: 60,
 };
+export function parseDateString(inputDate: string): number {
+  const year = inputDate.substring(6, 10);
+  const month = inputDate.substring(3, 5);
+  const day = inputDate.substring(0, 2);
+  return Math.floor(
+    new Date(`${year}-${month}-${day}T00:00:00`).getTime() / 1000,
+  );
+}

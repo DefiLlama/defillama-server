@@ -99,8 +99,16 @@ export class AdaptorRecord extends Item {
         }
     }
 
-    getCleanAdaptorRecord(chains?: string[]): AdaptorRecord | null {
+    getCleanAdaptorRecord(chains?: string[], protocolKey?: string): AdaptorRecord | null {
         let data = this.data
+        if (protocolKey)
+            data = Object.entries(data).reduce((acc, [chain, value]) => {
+                if (typeof value === 'number') return acc
+                acc[chain] = {
+                    [protocolKey]: value[protocolKey]
+                }
+                return acc
+            }, {} as IRecordAdaptorRecordData)
         if (chains !== undefined && chains.length > 0) {
             //if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
             data = chains.reduce((acc, chain) => {

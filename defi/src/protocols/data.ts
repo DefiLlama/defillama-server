@@ -21781,7 +21781,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Synthetics",
     chains: ["DefiChain"],
     module: "defichain-loans/api.js",
     twitter: "defichain",

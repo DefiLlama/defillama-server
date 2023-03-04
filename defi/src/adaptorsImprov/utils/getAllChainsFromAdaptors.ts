@@ -1,8 +1,6 @@
 import { DISABLED_ADAPTER_KEY, Adapter, BaseAdapter, AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
-import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
 import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
-import { IOverrides } from "../data/helpers/overrides";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 
 export const getStringArrUnique = (arr: string[]) => {

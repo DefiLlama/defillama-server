@@ -36,7 +36,13 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const rawTotalRecord = ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType]
             ? await getAdaptorRecord(adapter.id, ACCOMULATIVE_ADAPTOR_TYPE[adaptorRecordType], adapter.protocolType, "LAST").catch(_e => { }) as AdaptorRecord | undefined
             : undefined
-        const totalRecord = rawTotalRecord?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
+
+        let protocolsKeys = [adapter.module]
+        if (adapter?.enabled && adapter.versionKey) {
+            protocolsKeys = [adapter.versionKey]
+        }
+        if (protocolsKeys[0] === 'stableswap') console.debug(protocolsKeys)
+        const totalRecord = rawTotalRecord?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecordsRaw instanceof Array)) throw new Error("Wrong volume queried")
         if (adaptorRecordsRaw.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
@@ -50,7 +56,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const extraTypes: IJSON<number | null> = {}
         for (const recordType of getExtraTypes(adaptorType)) {
             const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined
-            const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined)
+            const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
             if (AdaptorRecordTypeMapReverse[recordType]) {
                 extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
             }
@@ -60,10 +66,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const startIndex = startTimestamp ? adaptorRecordsRaw.findIndex(ar => ar.timestamp === startTimestamp) : -1
         let adaptorRecords = adaptorRecordsRaw.slice(startIndex + 1)
 
-        let protocolsKeys = [adapter.module]
-        if (adapter?.enabled && adapter.versionKey) {
-            protocolsKeys = [adapter.versionKey]
-        }
+
         // Clean data by chain
         console.info("Cleaning records", adapter.name, adapter.id, adapter.module)
         const cleanRecords = await getCachedReturnValue(
@@ -118,6 +121,8 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
                 adaptorRecords.push(data)
                 cleanRecords.cleanRecordsMap[i] = data
             }
+
+        if (protocolsKeys[0] === 'stableswap') console.debug("totalRecord", totalRecord)
 
         return {
             spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined,

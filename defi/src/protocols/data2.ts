@@ -27093,7 +27093,7 @@ const data2: Protocol[] = [
     address: "arbitrum:0x50AA7A13B28EeA97dc6C3f5E8aaa7fE512e7306D",
     symbol: "XB",
     url: "https://www.xblue.finance",
-    description: "XBlue, a yield farming protocol with liquidity aggregation built on arbitrum with with community driven decisions.",
+    description: "Xblue Finance is a decentralized protocol yieldfarming and yield aggregator built on the Arbitrum network, in order to provide liquidity pools in Camelot Exchange, attracting large scale of deep liquidity and increasing attraction by the L2 ecosystem.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/x-blue-finance.jpg`,
     audits: "0",

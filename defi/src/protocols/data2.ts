@@ -10623,8 +10623,8 @@ const data2: Protocol[] = [
   {
     id: "1893",
     name: "MIND Games",
-    address: "aurora:0xa685f488dee49b75469e9e866965dabc8ed6083d",
-    symbol: "CELL",
+    address: "arbitrum:0xb21Be1Caf592A5DC1e75e418704d1B6d50B0d083",
+    symbol: "CRX",
     url: "https://mindgames.io",
     description: "MIND Games is a DEX & Play and Earn Gaming Hub with DeFi instruments at the core of its crypto NFT-based economy, designed by gamers for gamers everywhere.",
     chain: "Aurora",
@@ -27086,6 +27086,28 @@ const data2: Protocol[] = [
     twitter: "AnyHedge",
     audit_links: [],
     listedAt: 1677872808  
+  },
+  {
+    id: "2634",
+    name: "X Blue Finance",
+    address: "arbitrum:0xb21Be1Caf592A5DC1e75e418704d1B6d50B0d083",
+    symbol: "CRX",
+    url: "https://www.xblue.finance",
+    description: "XBlue, a yield farming protocol with liquidity aggregation built on arbitrum with with community driven decisions.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/x-blue-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum"],
+    module: "xbluefinance/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "XBlueFinance",
+    audit_links: [],
+    listedAt: 1678021458 
   },
 ]
 export default data2;

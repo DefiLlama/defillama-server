@@ -27090,8 +27090,8 @@ const data2: Protocol[] = [
   {
     id: "2634",
     name: "X Blue Finance",
-    address: "arbitrum:0xb21Be1Caf592A5DC1e75e418704d1B6d50B0d083",
-    symbol: "CRX",
+    address: "arbitrum:0x50AA7A13B28EeA97dc6C3f5E8aaa7fE512e7306D",
+    symbol: "XB",
     url: "https://www.xblue.finance",
     description: "XBlue, a yield farming protocol with liquidity aggregation built on arbitrum with with community driven decisions.",
     chain: "Arbitrum",

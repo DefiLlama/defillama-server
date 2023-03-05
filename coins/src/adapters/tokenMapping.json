@@ -2202,6 +2202,12 @@
       "symbol": "ARBY",
       "to": "polygon:0xc3fdbadc7c795ef1d6ba111e06ff8f16a20ea539"
     },
+    "0x2d9c0e1b4f97efc6aa8984ddc632cfc50f8b212d": {
+      "name": "Wrapped Ether",
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
     "0xdbf31df14b66535af65aac99c32e9ea844e14501": {
       "name": "renBTC",
       "decimals": "8",

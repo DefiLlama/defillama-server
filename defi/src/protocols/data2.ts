@@ -27129,6 +27129,27 @@ const data2: Protocol[] = [
     twitter: "LazyFi_Learning",
     listedAt: 1678109560 
   },
-
+  {
+    id: "2636",
+    name: "Lighter",
+    address: null,
+    symbol: "-",
+    url: "https://lighter.xyz",
+    description: "Liquid digital assets traded the way they were meant to be with the fully decentralized order book exchange for spot trading on L2’s, now live on Arbitrum.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lighter.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "lighter/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "Lighter_xyz",
+    audit_links: ["https://www.certik.com/projects/lighter"],
+    listedAt: 1678136619
+  },
 ]
 export default data2;

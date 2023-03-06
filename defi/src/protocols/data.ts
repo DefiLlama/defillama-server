@@ -10484,14 +10484,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "614",
-    name: "WX.Network",
+    name: "WX Network",
     address: "waves:Atqv59EYzjFGuitKVnMRk6H8FukjoV3ktPorbEys25on",
     symbol: "Waves.Exchange",
-    url: "https://waves.exchange",
+    url: "https://wx.network/",
     description:
-      "Launched in 2017 as Waves DEX, WX.Network is a robust platform for self-sovereign crypto management with a suite of investment tools in a convenient interface. WX.Network offers high transaction speed and an unprecedented level of security as users remain in sole control of their assets",
+      "Launched in 2017 as Waves DEX, WX Network is a robust platform for self-sovereign crypto management with a suite of investment tools in a convenient interface. WX.Network offers high transaction speed and an unprecedented level of security as users remain in sole control of their assets",
     chain: "Waves",
-    logo: `${baseIconsUrl}/wx.network.png`,
+    logo: `${baseIconsUrl}/wx-network.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "waves-exchange",
@@ -10499,7 +10499,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Waves"],
     module: "waves-exchange/index.js",
-    twitter: "Waves_Exchange",
+    twitter: "WXNetwork",
   },
   {
     id: "615",

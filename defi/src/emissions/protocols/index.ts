@@ -6,6 +6,7 @@ export default {
   benddao: require("./benddao"),
   blur: require("./blur"),
   canto: require("./canto"),
+  centrifuge: require("./centrifuge"),
   convex: require("./convex"),
   curve: require("./curve"),
   dydx: require("./dydx"),

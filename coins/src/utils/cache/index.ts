@@ -46,3 +46,17 @@ export async function setCache(project: string, chain: string, cache: any, {
     // sdk.log(e)
   }
 }
+
+export async function getConfig(project: string, endpoint: string) {
+  if (!project || !endpoint) throw new Error('Missing parameters')
+  const chain = 'config-cache'
+  try {
+    const json = await (fetch(endpoint).then(r => r.json()))
+    await setCache(project, chain, json)
+    return json
+  } catch (e) {
+    // sdk.log(e)
+    sdk.log(project, 'trying to fetch from cache, failed to fetch data from endpoint:', endpoint)
+    return getCache(project, chain)
+  }
+}

@@ -70,4 +70,5 @@ export default {
   yieldYak: require("./yield/yield-yak/index"),
   tezos: require("./tezos/index"),
   aaveDebt: require("./moneyMarkets/aave-debt/index"),
+  saber: require("./solana/saber/index"),
 };

@@ -5176,6 +5176,7 @@ const data: Protocol[] = [
     category: "CDP",
     chains: ["Solana"],
     module: "parrot.js",
+    treasury: "parrot-protocol.js",
     twitter: "gopartyparrot",
     audit_links: ["https://doc.parrot.fi/security/"],
     openSource: false,

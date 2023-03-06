@@ -27106,8 +27106,29 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "XBlueFinance",
-    audit_links: [],
     listedAt: 1678021458 
   },
+  {
+    id: "2635",
+    name: "LazyFi",
+    address: null,
+    symbol: "-",
+    url: "https://www.lazyfi.gg",
+    description: "We build online games that clients can configure with learning and rewards.",
+    chain: "Near",
+    logo: `${baseIconsUrl}/lazyfi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Near"],
+    module: "lazyfi/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "LazyFi_Learning",
+    listedAt: 1678109560 
+  },
+
 ]
 export default data2;

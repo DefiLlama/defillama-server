@@ -20,6 +20,7 @@ export default {
   sushi: require("./sushi"),
   tornado: require("./tornado"),
   uniswap: require("./uniswap"),
+  vela: require("./vela"),
   velodrome: require("./velodrome"),
   yearn: require("./yearn"),
   zyberswap: require("./zyberswap"),

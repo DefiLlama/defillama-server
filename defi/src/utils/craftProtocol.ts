@@ -86,7 +86,7 @@ export default async function craftProtocol({
 
   if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset
-    lastUsdHourlyRecord && historicalUsdTvl.push(lastUsdHourlyRecord);
+    lastUsdHourlyRecord && lastUsdHourlyRecord.SK !== historicalUsdTvl[historicalUsdTvl.length-1].SK && historicalUsdTvl.push(lastUsdHourlyRecord);
     lastUsdTokenHourlyRecord &&
       historicalUsdTokenTvl.length > 0 &&
       historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);

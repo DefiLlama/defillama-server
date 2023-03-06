@@ -5492,7 +5492,7 @@ const data: Protocol[] = [
     symbol: "BSW",
     url: "https://biswap.org/",
     description:
-      "Biswap is the first decentralized exchange platform on the market with a three-type referral system and the lowest platform transaction fees (0.1%).",
+      "Biswap is a trusted DEX platform on the BNB Chain network with a Multi-type Referral Program and low trade fee starting from 0.1%. Biswap is the ecosystem that offers the best service and creates new standards in the DeFi industry",
     chain: "Binance",
     logo: `${baseIconsUrl}/biswap.jpg`,
     audits: "2",

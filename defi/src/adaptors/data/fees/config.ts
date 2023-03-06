@@ -343,5 +343,8 @@ export default {
     },
     "chainlink": {
         enabled: true
+    },
+    "zyberswap": {
+        enabled: true
     }
 } as AdaptorsConfig

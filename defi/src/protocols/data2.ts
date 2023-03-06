@@ -27157,7 +27157,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sector.finance",
-    description: "A decentralized application that creates risk-adjusted financial products and informs users about their risk exposures in order to accelerate the adoption of digital assets.",
+    description: "Sector Finance is a structured product protocol offering transparent risk analysis and real-yield market-neutral investment strategies.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/lighter.jpg`,
     audits: "2",

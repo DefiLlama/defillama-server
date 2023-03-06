@@ -2,7 +2,7 @@ import { manualCliff, manualLinear } from "../adapters/manual";
 import { Protocol } from "../types/adapters";
 import { periodToSeconds } from "../utils/time";
 
-const start = 0;
+const start = 1671840000;
 const qty = 50_000_000;
 
 const vela: Protocol = {

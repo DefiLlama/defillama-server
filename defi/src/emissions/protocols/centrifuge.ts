@@ -2,7 +2,7 @@ import { manualCliff, manualLinear } from "../adapters/manual";
 import { Protocol } from "../types/adapters";
 import { periodToSeconds } from "../utils/time";
 
-const start = 0;
+const start = 1588201200;
 const qty = 425_000_000;
 
 const centrifuge: Protocol = {

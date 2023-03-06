@@ -27151,5 +27151,30 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/lighter"],
     listedAt: 1678136619
   },
+  {
+    id: "2637",
+    name: "Sector Finance",
+    address: null,
+    symbol: "-",
+    url: "https://sector.finance",
+    description: "A decentralized application that creates risk-adjusted financial products and informs users about their risk exposures in order to accelerate the adoption of digital assets.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/lighter.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Optimism", "Arbitrum"],
+    module: "sector-fi/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "sector_fi",
+    audit_links:[
+                  "https://1194552491-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Faizh7QHFZ0AM4JGHZRn6%2Fuploads%2Fj3nsS4VbUkK4j5ucSRq8%2FSector_Finance_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf?alt=media&token=baabd2bb-7f8d-40ee-b8ff-b66f84c1345a",
+                  "https://1194552491-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Faizh7QHFZ0AM4JGHZRn6%2Fuploads%2FhOfiANzdgcROK65IdYip%2FSector_Finance_New_Strategies_and_Vaults_Upgradeable_Contracts_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf?alt=media&token=567d90c1-5bcc-4ae9-91f5-b48acc0515d3"
+                ],
+    listedAt: 1678137824
+  },
 ]
 export default data2;

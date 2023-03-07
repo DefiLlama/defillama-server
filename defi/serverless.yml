@@ -522,7 +522,7 @@ functions:
   storeAdaptorData:
     handler: src/adaptors/handlers/storeAdaptorData/index.default
     timeout: 900
-    memorySize: 512
+    memorySize: 2048
   triggerStoreAdaptorData:
     handler: src/adaptors/handlers/triggerStoreAdaptorData.default
     timeout: 900

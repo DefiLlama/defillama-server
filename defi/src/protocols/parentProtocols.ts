@@ -1015,6 +1015,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "opensea",
   },
+  {
+    id: "Ruby.Exchange",
+    name: "Ruby.Exchange",
+    url: "https://opensea.io/",
+    description: "Gasless, NFT-powered AMM/Dual DEX on the SkaleNetwork",
+    logo: `${baseIconsUrl}/ruby.exchange.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ruby_exchange",
+  },
 ];
 
 export default parentProtocols;

@@ -25883,6 +25883,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://www.certik.com/projects/king"],
+    treasury: "king-finance.js",
     listedAt: 1677194619
   },
   {
@@ -26755,6 +26756,7 @@ const data2: Protocol[] = [
     module: "oasisswapdex/index.js",
     twitter: "OasisSwapDEX",
     oracles: [],
+    treasury: "oasisswapdex.js",
     listedAt: 1677734709
   },
   {

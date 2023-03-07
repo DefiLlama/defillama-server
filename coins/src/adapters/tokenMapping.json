@@ -6461,6 +6461,56 @@
       "to": "coingecko#nuls"
     }
   },
+  "europa": {
+    "0x73d22d8a2D1f59Bf5Bcf62cA382481a2073FAF58": {
+      "name": "Paxos Dollar",
+      "decimals": "18",
+      "symbol": "USDP",
+      "to": "ethereum:0x8e870d67f660d95d5be530380d0ec0bd388289e1"
+    },
+    "0xcb011E86DF014a46F4e3AC3F3cbB114A4EB80870": {
+      "name": "WBTC",
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "ethereum:0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+    },
+    "0xE0595a049d02b7674572b0d59cd4880Db60EDC50": {
+      "name": "SKALE",
+      "decimals": "18",
+      "symbol": "SKL",
+      "to": "ethereum:0x00c83aecc790e8a4453e5dd3b0b4b3680501a7a7"
+    },
+    "0xD2Aaa00700000000000000000000000000000000": {
+      "name": "Ether Clone",
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "ethereum:0x0000000000000000000000000000000000000000"
+    },
+    "0x1c0491E3396AD6a35f061c62387a95d7218FC515": {
+      "name": "USDT",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "ethereum:0xdac17f958d2ee523a2206206994597c13d831ec7"
+    },
+    "0x5F795bb52dAC3085f578f4877D450e2929D2F13d": {
+      "name": "USDC",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "ethereum:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+    },
+    "0x2B4e4899b53E8b7958c4591a6d02f9C0b5c50F8f": {
+      "name": "RUBY",
+      "decimals": "18",
+      "symbol": "RUBY",
+      "to": "ethereum:0x918d8f3670c67f14ff3feb025d46b9c165d12a23"
+    },
+    "0xD05C4be5f3be302d376518c9492EC0147Fa5A718": {
+      "name": "DAI",
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "ethereum:0x6b175474e89094c44da98b954eedeac495271d0f"
+    }
+  },
   "map": {
     "0x0000000000000000000000000000000000000000": {
       "name": "MAP Protocol",

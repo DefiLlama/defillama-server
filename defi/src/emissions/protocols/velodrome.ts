@@ -29,7 +29,7 @@ const velodrome: Protocol = {
   sources: ["https://docs.velodrome.finance/tokenomics"],
   notes: [
     "Velodrome team's 3% rake of emissions is locked for 3 months, then linearly vested for 3. Here we have indicated just the 3 month cliff.",
-    "1/6 of this rake (0.5%) goes to the team as 6-month locked veVELO and then is linearly unlocked for 6 months. This hasnt been accounted for",
+    "1/6 of this rake (0.5%) goes to the team as 6-month locked veVELO and then is linearly unlocked for 6 months. This hasnt been accounted for.",
   ],
   token: "optimism:0x3c8b650257cfb5f272f799f5e2b4e65093a11a05",
 };

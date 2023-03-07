@@ -19,14 +19,14 @@ const forta: Protocol = {
     manualCliff(start, 0.01),
     manualCliff(start + periodToSeconds.year * 2, 0.012),
   ],
-  unallocated: manualCliff(start, totalQty * 0.391), // unconfirmed
+  // unallocated: manualCliff(start, totalQty * 0.391),
   backers: nonCommunity(0.245),
   "core contributors": nonCommunity(0.2),
   OpenZeppelin: nonCommunity(0.1),
   sources: ["https://docs.forta.network/en/latest/fort-token/"],
   token: "ethereum:0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29",
   notes: [
-    "the emission rate of unallocated in unconfirmed. Here we have used a pessimistic emission schedule",
+    "the emission rate of unallocated in unconfirmed. Here we have excluded them from analytics.",
   ],
 };
 export default forta;

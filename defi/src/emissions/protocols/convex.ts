@@ -29,7 +29,7 @@ const convex: Protocol = {
   ],
   token: "ethereum:0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
   notes: [
-    "calculating the rate of future LP rewards is not possible, since it relies on the number of CRV accumulated",
+    "calculating the rate of future LP rewards is not possible, since it relies on the number of CRV accumulated. Therefore this section has been excluded from analytics.",
   ],
 };
 export default convex;

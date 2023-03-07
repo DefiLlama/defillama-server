@@ -7,6 +7,7 @@ import {
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { quantisePeriod } from "./utils/timestampUtils";
 import { getBasicCoins } from "./utils/getCoinsUtils";
+import { lowercaseAddress } from "./utils/processCoin";
 
 async function fetchDBData(
   coinsObj: any,
@@ -25,7 +26,7 @@ async function fetchDBData(
       c.PK.includes(
         coinAddress.includes("coingecko")
           ? coinAddress.replace(":", "#").toLowerCase()
-          : coinAddress.toLowerCase()
+          : lowercaseAddress(coinAddress)
       )
     );
     if (coin == null) return;

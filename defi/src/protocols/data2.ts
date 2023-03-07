@@ -27178,5 +27178,30 @@ const data2: Protocol[] = [
                 ],
     listedAt: 1678137824
   },
+  {
+    id: "2638",
+    name: "Uniwhale",
+    address: null,
+    symbol: "-",
+    url: "https://www.uniwhale.co",
+    description: "Uniwhale is an oracle-based decentralized on-chain perpetual trading exchange where you can trade, with up to 200x leverage, BTC, ETH, and many mainstream crypto assets, directly from your wallet. You can provide liquidity with stablecoins like BUSD, USDC, USDT, and more, to earn real yield from market-making and leverage trading.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/uniwhale.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    module: "uniwhale/index.js",
+    forkedFrom: [],
+    oracles: ["Pyth"],
+    twitter: "UniwhaleEx",
+    audit_links:[
+                  "https://cdn.uniwhale.co/pdf/UniWhale_final_Secure3_Audit_Report.pdf",
+                  "https://cdn.uniwhale.co/pdf/MetaScan_Report_Uniwhale.pdf"
+                ],
+    listedAt: 1678196874
+  },
 ]
 export default data2;

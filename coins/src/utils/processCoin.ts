@@ -1,4 +1,4 @@
-function lowercaseAddress(coin: string) {
+export function lowercaseAddress(coin: string) {
     if (coin.startsWith("solana:")) {
         return coin
     }

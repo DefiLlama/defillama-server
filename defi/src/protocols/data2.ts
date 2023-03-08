@@ -27295,5 +27295,25 @@ const data2: Protocol[] = [
                  ],
     listedAt: 1678203848
   },
+  {
+    id: "2643",
+    name: "CoW Swap",
+    address: "0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab",
+    symbol: "COW",
+    url: "https://cow.fi",
+    description: "CoW Swap finds the lowest prices across all exchanges and aggregators & saves you more by matching Coincidences of Wants (CoWs) and protecting from MEV",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cow-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "cow-protocol",
+    cmcId: "19269",
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "CoWSwap",
+  },
 ]
 export default data2;

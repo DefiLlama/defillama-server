@@ -349,5 +349,8 @@ export default {
     },
     "cow-protocol": {
         enabled: true
+    },
+    "maverick": {
+        enabled: true
     }
 } as AdaptorsConfig

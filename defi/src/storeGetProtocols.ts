@@ -52,10 +52,22 @@ const handler = async (_event: any) => {
     if (!p.category) return;
 
     protocolCategoriesSet.add(p.category);
-    if (p.category !== "Bridge") {
+    if (p.category !== 'Bridge' && p.category !== 'RWA') {
       p.chains.forEach((c: string) => {
-        chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
-      });
+        chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0)
+
+        if (p.chainTvls[`${c}-liquidstaking`]) {
+          chains[c] = (chains[c] ?? 0) - (p.chainTvls[`${c}-liquidstaking`]?.tvl ?? 0)
+        }
+
+        if (p.chainTvls[`${c}-doublecounted`]) {
+          chains[c] = (chains[c] ?? 0) - (p.chainTvls[`${c}-doublecounted`]?.tvl ?? 0)
+        }
+
+        if (p.chainTvls[`${c}-dcAndLsOverlap`]) {
+          chains[c] = (chains[c] ?? 0) + (p.chainTvls[`${c}-dcAndLsOverlap`]?.tvl ?? 0)
+        }
+      })
     }
   });
 

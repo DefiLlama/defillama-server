@@ -146,5 +146,6 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'tethys-finance') return id === "1139"
     if (key === 'ashswap') return id === "2551"
     if (key === 'oswap') return id === "1778"
+    if (key === 'cow-protocol') return id === "2643"
     return false
 }

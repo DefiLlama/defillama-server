@@ -23,7 +23,9 @@ const manualVaults: { [chain: string]: string[] } = {
     "0x83f798e925bcd4017eb265844fddabb448f1707d", // yUSDT
     "0x73a052500105205d34daf004eab301916da8190f" // yTUSD
   ],
-  optimism: [],
+  optimism: [
+    '0x22f39d6535df5767f8f57fee3b2f941410773ec4', // yvETH
+  ],
   arbitrum: [],
   fantom: []
 };

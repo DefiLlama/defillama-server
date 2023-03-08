@@ -2,11 +2,15 @@
 import { Write, CoinData, } from "../../utils/dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectData, } from "../../utils/database";
 import { getConfig, } from "../../../utils/cache";
-import { getTokenAccountBalances, getTokenSupplies, } from "..//utils";
+import { getTokenAccountBalances, getTokenSupplies, getConnection, getMultipleAccountBuffers, } from "../utils";
+import { PublicKey, } from "@solana/web3.js"
 
 export function saber(timestamp: number) {
   console.log("starting saber");
-  return getTokenPrices(timestamp);
+  return Promise.all([
+    getTokenPrices(timestamp),
+    priceMSOL(timestamp),
+  ])
 }
 const chain = 'solana'
 
@@ -57,5 +61,30 @@ async function getTokenPrices(timestamp: number) {
     addToDBWritesList(writes, chain, tokens[i], price, decimals, symbol, timestamp, 'saber', confidence)
   })
 
+  return writes
+}
+
+async function priceMSOL(timestamp: number) {
+
+  const MSOL_LP_SOL = new PublicKey("UefNb6z6yvArqe4cJHTXCqStRsKmWhGxnZzuHbikP5Q")
+  const MSOL_LP_MSOL = new PublicKey("7GgPYjS5Dza89wV6FpZ23kUJRG5vbQ1GM25ezspYFSoE")
+  const MSOL_LP_MINT = new PublicKey("LPmSozJJ8Jh69ut2WP3XmVohTjL4ipR18yiCzxrUmVj")
+  const MSOL = 'mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So'
+  const SOL = 'So11111111111111111111111111111111111111112'
+  const connection = getConnection();
+  const accountData = await getMultipleAccountBuffers({ msolTokens: MSOL_LP_MSOL.toString(), poolMint: MSOL_LP_MINT.toString(), });
+
+  const solAmount = ((await connection.getAccountInfo(MSOL_LP_SOL)) as any).lamports / 10 ** 9;
+  const msolAmount = Number(accountData.msolTokens.readBigUInt64LE(64)) / 10 ** 9;
+  const lpSupply = Number(accountData.poolMint.readBigUInt64LE(4 + 32)) / 10 ** 9;
+  const tokenData = await getTokenAndRedirectData([SOL, MSOL], chain, timestamp)
+  const writes: Write[] = [];
+
+  const solPrice: (CoinData | undefined) = tokenData.find((c: CoinData) => c.address === SOL)
+  const msolPrice: (CoinData | undefined) = tokenData.find((c: CoinData) => c.address === MSOL)
+  if (!solPrice || !msolPrice) return writes;
+
+  const price = (msolAmount * msolPrice.price + solAmount * solPrice.price) / lpSupply
+  addToDBWritesList(writes, chain, MSOL_LP_MINT.toString(), price, 9, 'mSOL-SOL-LP', timestamp, 'mSOL-SOL-LP', 0.95)
   return writes
 }

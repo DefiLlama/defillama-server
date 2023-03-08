@@ -40,6 +40,7 @@
     "@ethersproject/bignumber": "^5.5.0",
     "@sentry/serverless": "^6.19.7",
     "@sentry/tracing": "^6.19.7",
+    "@solana/web3.js": "^1.73.3",
     "@supercharge/promise-pool": "^2.1.0",
     "dotenv": "^8.6.0",
     "ethers": "^5.6.9",

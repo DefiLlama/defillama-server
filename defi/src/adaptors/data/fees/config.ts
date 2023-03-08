@@ -346,5 +346,8 @@ export default {
     },
     "zyberswap": {
         enabled: true
+    },
+    "cow-protocol": {
+        enabled: true
     }
 } as AdaptorsConfig

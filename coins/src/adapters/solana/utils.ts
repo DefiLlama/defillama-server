@@ -13,11 +13,7 @@ export async function getTokenSupplies(tokens: string[]) {
     const bal = await axios.post(endpoint, chunk.map(formBody))
     tokenBalances.push(...bal.data)
   }
-  const response: any = []
-  tokenBalances.forEach(i => {
-    response[i.id] = i.result.value
-  })
-  return response
+  return tokenBalances.map(i => i.result.value)
 }
 
 export async function getTokenAccountBalances(tokenAccounts: string[], { individual = false, chunkSize = 99, allowError = false, } = {}): Promise<any> {

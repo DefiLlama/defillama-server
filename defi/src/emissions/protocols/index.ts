@@ -15,6 +15,7 @@ export default {
   forta: require("./forta"),
   gmx: require("./gmx"),
   idle: require("./idle"),
+  hop: require("./hop"),
   jonesDao: require("./jonesDao"),
   pendle: require("./pendle"),
   gearbox: require("./gearbox"),

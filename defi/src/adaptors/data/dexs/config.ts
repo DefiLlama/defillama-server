@@ -813,5 +813,8 @@ export default {
     },
     "oswap": {
         enabled: true
+    },
+    "maverick": {
+        enabled: true
     }
 } as AdaptorsConfig

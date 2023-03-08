@@ -27321,7 +27321,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.mav.xyz",
-    description: "CoW Swap finds the lowest prices across all exchanges and aggregators & saves you more by matching Coincidences of Wants (CoWs) and protecting from MEV",
+    description: "The DeFi infrastructure built to bring higher capital efficiency + greater capital control to the liquidity market, powered by Maverick AMM.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/maverick-protocol.jpg`,
     audits: "2",

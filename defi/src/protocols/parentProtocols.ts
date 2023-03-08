@@ -1026,6 +1026,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ruby_exchange",
   },
+  {
+    id: "SkullSwap",
+    name: "SkullSwap",
+    url: "https://www.skullswap.exchange",
+    description: "SkullSwap is an automated market-making (AMM) decentralized exchange (DEX) for the Fantom Opera network. ",
+    logo: `${baseIconsUrl}/skullswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "skullswapdex",
+  },
 ];
 
 export default parentProtocols;

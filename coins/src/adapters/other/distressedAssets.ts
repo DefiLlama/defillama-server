@@ -39,6 +39,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     GVR2: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
     PANCAKE_LP_ABNB_BNB: "0x272c2CF847A49215A3A1D4bFf8760E503A06f880",
     BTCBR: "0x0cf8e180350253271f4b917ccfb0accc4862f262",
+    RB: "0x441bb79f2da0daf457bad3d401edb68535fb3faa", // bad pricing
     MOR: "0x87bade473ea0513d4aa7085484aeaa6cb6ebe7e3" //MOR
   },
   cronos: {

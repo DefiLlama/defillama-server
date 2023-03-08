@@ -1,4 +1,5 @@
 import { multiCall } from "@defillama/sdk/build/abi";
+import { log } from "@defillama/sdk";
 import { BigNumber, utils } from "ethers";
 import getBlock from "./block";
 import { getTokenAndRedirectData } from "./database";
@@ -51,6 +52,7 @@ export async function calculate4626Prices(
       symbol: symbols[i],
     });
   }
+  log(result)
   return result;
 }
 

@@ -8,6 +8,7 @@ export const config = {
     wantVaults: [
       '0x8e2cdf8c6477439b7c989e86b917d80871b92339',
       '0x4d153f47f03c237f6360a6eccd185b4ae09c63d0',
+      '0x0892a178c363b4739e5ac89e9155b9c30214c0c0',
     ],
     nativeVaults: [
       '0x7ee71053102d54fc843baebaf07277c2b6db64f1',

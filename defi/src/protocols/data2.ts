@@ -27315,5 +27315,27 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "CoWSwap",
   },
+  {
+    id: "2644",
+    name: "Maverick Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.mav.xyz",
+    description: "CoW Swap finds the lowest prices across all exchanges and aggregators & saves you more by matching Coincidences of Wants (CoWs) and protecting from MEV",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/maverick-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "maverick/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "mavprotocol",
+    audit_links: ["https://github.com/maverickprotocol/audits"],
+    listedAt: 1678282138
+  },
 ]
 export default data2;

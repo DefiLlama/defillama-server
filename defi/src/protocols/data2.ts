@@ -14341,7 +14341,7 @@ const data2: Protocol[] = [
     description: "Under-collateralized lending protocol",
     chain: "Polygon",
     logo: `${baseIconsUrl}/rocifi.jpg`,
-    audits: "2",
+    audits: "3",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -14349,7 +14349,7 @@ const data2: Protocol[] = [
     chains: ["Polygon"],
     oracles: [],
     forkedFrom: [],
-    module: "rocifiv1/index.js",
+    module: "rocifi/index.js",
     twitter: "rocifi",
     audit_links: ["https://github.com/rociFi/docs"],
     listedAt: 1662456730

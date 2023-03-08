@@ -23191,14 +23191,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2460", 
-    name: "SkullSwap",
+    name: "SkullSwap V2",
     address: "fantom:0xfa5992A8A47aF7029e04eC6a95203AD3f301460b",
     symbol: "SKULL",
     url: "https://skullswap.exchange",
     description:
       "SkullSwap is a decentralized exchange (DEX) built on the Fantom network that aims to bring concentrated liquidity to the ecosystem. With a focus on user experience and security, SkullSwap allows for fast, easy and safe trading of many tokens.",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/skullswap.png`,
+    logo: `${baseIconsUrl}/skullswap-v2.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -27336,6 +27336,27 @@ const data2: Protocol[] = [
     twitter: "mavprotocol",
     audit_links: ["https://github.com/maverickprotocol/audits"],
     listedAt: 1678282138
+  },
+  {
+    id: "2645",
+    name: "SkullSwap V3",
+    address: "fantom:0xfa5992A8A47aF7029e04eC6a95203AD3f301460b",
+    symbol: "SKULL",
+    url: "https://www.skullswap.exchange/#/swap",
+    description: "SkullSwap is an automated market-making (AMM) decentralized exchange (DEX) for the Fantom Opera network. ",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/skullswap-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fantom"],
+    module: "skullswap-v3/index.js",
+    forkedFrom: ["Algebra DEX"],
+    oracles: [],
+    twitter: "skullswapdex",
+    listedAt: 1678295426
   },
 ]
 export default data2;

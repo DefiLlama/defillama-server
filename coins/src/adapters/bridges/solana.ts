@@ -1,4 +1,8 @@
 import { fetch } from "../utils";
+const blacklist = new Set([
+  'CASHedBw9NfhsLBXq1WNVfueVznx255j8LLTScto3S6s',
+  'C9xqJe3gMTUDKidZsZ6jJ7tL9zSLimDUKVpgUbLZnNbi',
+])
 
 interface Token {
   chainId: 101;
@@ -26,6 +30,7 @@ export default async function bridge() {
   tokenlist.map((token) => {
     const coingeckoId = token.extensions?.coingeckoId;
     if (coingeckoId === undefined) return;
+    if (blacklist.has(token.address)) return;
     tokens.push({
       from: `solana:${token.address}`,
       to: `coingecko#${coingeckoId}`,

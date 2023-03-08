@@ -23209,6 +23209,7 @@ const data2: Protocol[] = [
     twitter: "skullswapdex",
     oracles: [],
     forkedFrom: ["Uniswap"],
+    parentProtocol: "SkullSwap",
     listedAt: 1674226360
   },
   {
@@ -27356,6 +27357,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Algebra DEX"],
     oracles: [],
     twitter: "skullswapdex",
+    parentProtocol: "SkullSwap",
     listedAt: 1678295426
   },
 ]

@@ -1,5 +1,6 @@
 export default {
   aave: require("./aave"),
+  // angle: require("./angle"),
   apecoin: require("./apecoin"),
   aptos: require("./aptos"),
   // aura: require("./aura"),
@@ -15,6 +16,7 @@ export default {
   gmx: require("./gmx"),
   idle: require("./idle"),
   jonesDao: require("./jonesDao"),
+  pendle: require("./pendle"),
   gearbox: require("./gearbox"),
   radiant: require("./radiant"),
   rocketpool: require("./rocketpool"),

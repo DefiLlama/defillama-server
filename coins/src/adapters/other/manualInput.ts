@@ -1,5 +1,3 @@
-import getBlock from "../utils/block";
-import { getTokenInfo } from "../utils/erc20";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
 

@@ -55,38 +55,8 @@ export async function calculate4626Prices(
 }
 
 const abi = {
-  asset: {
-    inputs: [],
-    name: "asset",
-    outputs: [
-      {
-        internalType: "contract ERC20",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  convertToAssets: {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "shares",
-        type: "uint256",
-      },
-    ],
-    name: "convertToAssets",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
+  asset: "address:asset",
+  convertToAssets: "function convertToAssets(uint256) view returns (uint256)"
 };
 
 async function getTokenData(

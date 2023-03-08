@@ -9,6 +9,11 @@ export const config = {
       '0x50379f632ca68d36e50cfbc8f78fe16bd1499d1e',
     ],
   },
+  polygon: {
+    lps: [
+      '0x873f4ae80867b9f97304b9bb7ef92c4d563fa48c',
+    ],
+  },
 } as any
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

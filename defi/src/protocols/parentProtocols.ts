@@ -1048,7 +1048,6 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "rocifi",
   },
-  /*
   {
     id: "LFGSwap",
     name: "LFGSwap",
@@ -1060,7 +1059,6 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LfgSwap",
   },
-  */
   {
     id: "Oswap",
     name: "Oswap",

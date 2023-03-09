@@ -27500,7 +27500,7 @@ const data2: Protocol[] = [
     url: "https://token.oswap.io",
     description: "OSWAP token is designed to reflect the success of Oswap protocol — with greater total value locked (TVL) in all pools of Oswap DEX the token appreciates faster, and with lower TVL it appreciates slower.",
     chain: "Obyte",
-    logo: `${baseIconsUrl}/oswap-token.jpg`,
+    logo: `${baseIconsUrl}/oswap-token.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

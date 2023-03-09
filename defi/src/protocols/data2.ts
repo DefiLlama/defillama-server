@@ -27388,7 +27388,7 @@ const data2: Protocol[] = [
   /*
   {
     id: "2647",
-    name: "LFGSwap CORE",
+    name: "LFGSwap",
     address: "core:0xf7a0b80681ec935d6dd9f3af9826e68b99897d6d",
     symbol: "LFG",
     url: "https://app.lfgswap.finance/?chainId=1116",
@@ -27403,11 +27403,11 @@ const data2: Protocol[] = [
     chains: ["CORE"],
     oracles: [],
     forkedFrom: ["Uniswap"],
-    module: "lfgswap-core/index.js",
+    module: "lfgswap/index.js",
     twitter: "LfgSwap",
-    parentProtocol: "LFGSwap",
     listedAt: 1678338279
-  },*/
+  },
+  */
   {
     id: "2648",
     name: "ArcherSwap",
@@ -27429,6 +27429,48 @@ const data2: Protocol[] = [
     twitter: "archerswapcore",
     audit_links: ["https://2515231189-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F6vdtb4jHLhV87BIUy2nb%2Fuploads%2FkBTuxRssUr6JyX5XJA7t%2FArcherSwap%20Protocol%20-%20Smart%20Contracts%20Security%20Audit%20Report.pdf?alt=media&token=75cae46a-3500-430e-8adc-1c2da1eaf780"],
     listedAt: 1678362050
+  },
+  {
+    id: "2649",
+    name: "CoreSwap",
+    address: "0x8326321a7777Cd5D650c1da6A497f0D06633781e",
+    symbol: "cSWAP",
+    url: "https://www.coreswap.finance/",
+    description: "coreswap.finance is an Automated Market Maker (AMM) protocol and liquidity pool designed for efficient trading between crypto-assets. The trading activity on coreswap.finance captures fees as revenue for liquidity providers, resulting in a decentralized market and trading experience.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/coreswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "coreswap/index.js",
+    twitter: "CoreSwapFinance",
+    listedAt: 1678365386
+  },
+  {
+    id: "2650",
+    name: "ShadowSwap",
+    address: null,
+    symbol: "-",
+    url: "https://shadowswap.xyz",
+    description: "ShadowSwap is a Decentralized exchange based on automated market makers (AMM), Which has become the standard and the most convenient way to exchange crypto tokens.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/shadowswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "shadowswap/index.js",
+    twitter: "Shadowswap_xyz",
+    listedAt: 1678365388
   },
 ]
 export default data2;

@@ -263,7 +263,7 @@ const data: Protocol[] = [
     module: "maker/index.js",
     twitter: "MakerDAO",
     audit_links: ["https://security.makerdao.com/"],
-    oracles: ["Maker"],
+    oracles: ["Chronicle"],
     treasury: "maker.js"
   },
   {
@@ -409,7 +409,7 @@ const data: Protocol[] = [
     module: "keep.js",
     twitter: null,
     audit_links: ["https://consensys.net/diligence/audits/2020/02/thesis-tbtc-and-keep/"],
-    oracles: ["Maker"],
+    oracles: ["Chronicle"],
   },
   {
     id: "125",

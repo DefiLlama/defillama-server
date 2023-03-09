@@ -6531,6 +6531,26 @@
       "to": "core:0x0000000000000000000000000000000000000000"
     }
   },
+  "rpg": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "RPG",
+      "decimals": "18",
+      "symbol": "RPG",
+      "to": "coingecko#RPGdaoorg"
+    },
+    "0x8bb3887ab4fec66eb9aadd7836b6944215008355": {
+      "name": "Wrapped RPG",
+      "decimals": "18",
+      "symbol": "WRPG",
+      "to": "rpg:0x0000000000000000000000000000000000000000"
+    },
+    "0x71d9cfd1b7adb1e8eb4c193ce6ffbe19b4aee0db": {
+      "name": "Wrapped RPG",
+      "decimals": "18",
+      "symbol": "WRPG",
+      "to": "rpg:0x0000000000000000000000000000000000000000"
+    }
+  },
   "crab": {
     "0x0000000000000000000000000000000000000000": {
       "name": "CRAB",

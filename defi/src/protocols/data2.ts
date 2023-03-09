@@ -27408,5 +27408,27 @@ const data2: Protocol[] = [
     parentProtocol: "LFGSwap",
     listedAt: 1678338279
   },*/
+  {
+    id: "2648",
+    name: "ArcherSwap",
+    address: "core:0x1a639e150d2210a4be4a5f0857a9151b241e7ae4",
+    symbol: "BOW",
+    url: "https://archerswap.finance",
+    description: "ArcherSwap is a crypto world for users to trade, earn, and game. It is the premier choice for projects on Core Chain with features including AMM, NFT, and GameFi.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/archerswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "archerswap/index.js",
+    twitter: "archerswapcore",
+    audit_links: ["https://2515231189-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F6vdtb4jHLhV87BIUy2nb%2Fuploads%2FkBTuxRssUr6JyX5XJA7t%2FArcherSwap%20Protocol%20-%20Smart%20Contracts%20Security%20Audit%20Report.pdf?alt=media&token=75cae46a-3500-430e-8adc-1c2da1eaf780"],
+    listedAt: 1678362050
+  },
 ]
 export default data2;

@@ -16570,11 +16570,11 @@ const data2: Protocol[] = [
   },
   {
     id: "2166",
-    name: "LFGSwap EthereumPoW",
+    name: "LFGSwap",
     address: "ethpow:0xFd483e333cBe8fE7A418D9398d6BB81CC2B8e07B​",
     symbol: "LFG",
     url: "https://app.lfgswap.finance/swap",
-    description: "AMM DEX on EthereumPoW",
+    description: "AMM DEX on EthereumPoW and CORE Chain",
     chain: "EthereumPoW",
     logo: `${baseIconsUrl}/lfgswap.png`,
     audits: "0",
@@ -16587,7 +16587,6 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap"],
     module: "lfgswap/index.js",
     twitter: "LfgSwap",
-    parentProtocol: "LFGSwap",
     listedAt: 1665165717
   },
   {
@@ -27388,7 +27387,7 @@ const data2: Protocol[] = [
   /*
   {
     id: "2647",
-    name: "LFGSwap",
+    name: "LFGSwap Core",
     address: "core:0xf7a0b80681ec935d6dd9f3af9826e68b99897d6d",
     symbol: "LFG",
     url: "https://app.lfgswap.finance/?chainId=1116",

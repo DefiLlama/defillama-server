@@ -1048,6 +1048,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "rocifi",
   },
+  /*
   {
     id: "LFGSwap",
     name: "LFGSwap",
@@ -1059,6 +1060,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LfgSwap",
   },
+  */
 ];
 
 export default parentProtocols;

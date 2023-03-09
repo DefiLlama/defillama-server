@@ -14334,7 +14334,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2064",
-    name: "RociFi",
+    name: "RociFi V1",
     address: null,
     symbol: "-",
     url: "https://roci.fi",
@@ -14352,6 +14352,7 @@ const data2: Protocol[] = [
     module: "rocifiv1/index.js",
     twitter: "rocifi",
     audit_links: ["https://github.com/rociFi/docs"],
+    parentProtocol: "RociFi",
     listedAt: 1662456730
   },
   {
@@ -27359,6 +27360,29 @@ const data2: Protocol[] = [
     twitter: "skullswapdex",
     parentProtocol: "SkullSwap",
     listedAt: 1678295426
+  },
+  {
+    id: "2646",
+    name: "RociFi V2",
+    address: null,
+    symbol: "-",
+    url: "https://roci.fi",
+    description: "Under-collateralized lending protocol",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/rocifi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "rocifi-v2/index.js",
+    twitter: "rocifi",
+    audit_links: ["https://github.com/RociFi/docs/blob/main/RociFi_Hexens_Dec_2022_SMA_public.pdf"],
+    parentProtocol: "RociFi",
+    listedAt: 1662456730
   },
 ]
 export default data2;

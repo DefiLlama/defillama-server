@@ -27382,7 +27382,7 @@ const data2: Protocol[] = [
     twitter: "rocifi",
     audit_links: ["https://github.com/RociFi/docs/blob/main/RociFi_Hexens_Dec_2022_SMA_public.pdf"],
     parentProtocol: "RociFi",
-    listedAt: 1662456730
+    listedAt: 1678336553
   },
 ]
 export default data2;

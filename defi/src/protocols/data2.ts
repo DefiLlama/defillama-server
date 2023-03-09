@@ -24486,14 +24486,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2517",
-    name: "ParaSpace",
+    name: "ParaSpace NFT",
     address: null,
     symbol: "-",
     url: "https://para.space",
     description:
       "ParaSpace is a permissionless universal, cross-margin NFT lending protocol that enables users to collateralize both ERC-721 and ERC-20 assets into a single portfolio to borrow against.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/paraspace.jpg`,
+    logo: `${baseIconsUrl}/paraspace-nft.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -27536,6 +27536,28 @@ const data2: Protocol[] = [
     twitter: "nf3exchange",
     audit_links: ["https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Public%20Audit%20Report%20-%20NF3%20Auto%20Compouding%20-%20v1.0.pdf"],
     listedAt: 1678372923
+  },
+  {
+    id: "2653",
+    name: "ParaSpace APE",
+    address: null,
+    symbol: "-",
+    url: "https://apecoinstaking.io",
+    description: "Earn more rewards across APE Staking pools, manage all your APE staking, and access instant APE liquidity for staking.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/paraspace-ape.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "paraspace-ape-staking/index.js",
+    twitter: "ParaSpace_NFT",
+    audit_links: ["https://github.com/Secure3Audit/Secure3Academy/tree/main/audit_reports/ParaSpace%20Ape%20Yield"],
+    listedAt: 1678375097
   },
 ]
 export default data2;

@@ -24504,6 +24504,7 @@ const data2: Protocol[] = [
     twitter: "ParaSpace_NFT",
     oracles: ["Internal"],
     forkedFrom: [],
+    parentProtocol: "ParaSpace",
     audit_links: ["https://docs.para.space/para-space/para-space/external-audits"],
     listedAt: 1675872130
   },
@@ -27556,6 +27557,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "paraspace-ape-staking/index.js",
     twitter: "ParaSpace_NFT",
+    parentProtocol: "ParaSpace",
     audit_links: ["https://github.com/Secure3Audit/Secure3Academy/tree/main/audit_reports/ParaSpace%20Ape%20Yield"],
     listedAt: 1678375097
   },

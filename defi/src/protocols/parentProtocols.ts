@@ -1072,6 +1072,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ObyteOrg",
   },
+  {
+    id: "ParaSpace",
+    name: "ParaSpace",
+    url: "https://para.space",
+    description: "ParaSpace is a permissionless universal, cross-margin NFT lending protocol that enables users to collateralize both ERC-721 and ERC-20 assets into a single portfolio to borrow against.",
+    logo: `${baseIconsUrl}/paraspace.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ParaSpace_NFT",
+  },
 ];
 
 export default parentProtocols;

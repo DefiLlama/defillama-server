@@ -27538,14 +27538,14 @@ const data2: Protocol[] = [
     listedAt: 1678372923
   },
   {
-    id: "2653",
+    id: "2654",
     name: "ParaSpace APE",
     address: null,
     symbol: "-",
     url: "https://apecoinstaking.io",
     description: "Earn more rewards across APE Staking pools, manage all your APE staking, and access instant APE liquidity for staking.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/paraspace-ape.png`,
+    logo: `${baseIconsUrl}/paraspace-ape.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

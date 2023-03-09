@@ -6523,6 +6523,12 @@
       "decimals": "18",
       "symbol": "WCORE",
       "to": "core:0x0000000000000000000000000000000000000000"
+    },
+    "0x40375c92d9faf44d2f9db9bd9ba41a3317a2404f": {
+      "name": "Wrapped Core",
+      "decimals": "18",
+      "symbol": "WCORE",
+      "to": "core:0x0000000000000000000000000000000000000000"
     }
   },
   "map": {

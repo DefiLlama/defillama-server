@@ -1018,8 +1018,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "Ruby.Exchange",
     name: "Ruby.Exchange",
-    url: "https://opensea.io/",
-    description: "Gasless, NFT-powered AMM/Dual DEX on the SkaleNetwork",
+    url: "https://ruby.exchange",
+    description: "Gasless, NFT-powered AMM/Dual DEX on the SKALE Network",
     logo: `${baseIconsUrl}/ruby.exchange.jpg`,
     gecko_id: null,
     cmcId: null,

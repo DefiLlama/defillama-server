@@ -27563,7 +27563,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2655",
-    name: "SnowSwap",
+    name: "SnowSwap AMM",
     address: null,
     symbol: "-",
     url: "https://snowswap.xyz",

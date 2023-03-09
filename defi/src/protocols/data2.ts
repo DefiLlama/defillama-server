@@ -8125,6 +8125,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "oswap/index.js",
     twitter: "ObyteOrg",
+    parentProtocol: "Oswap",
     listedAt: 1653131107
   },
   {
@@ -27511,7 +27512,30 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "oswap-token/index.js",
     twitter: "ObyteOrg",
+    parentProtocol: "Oswap",
     listedAt: 1678371768
+  },
+  {
+    id: "2653",
+    name: "NF3 APE",
+    address: null,
+    symbol: "-",
+    url: "https://apecoinstaking.io",
+    description: "Auto-Compounding Pool to stake APE",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/nf3-ape.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "apeCoinStaking/index.js",
+    twitter: "nf3exchange",
+    audit_links: ["https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Public%20Audit%20Report%20-%20NF3%20Auto%20Compouding%20-%20v1.0.pdf"],
+    listedAt: 1678372923
   },
 ]
 export default data2;

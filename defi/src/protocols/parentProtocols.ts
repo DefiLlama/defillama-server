@@ -1061,6 +1061,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LfgSwap",
   },
   */
+  {
+    id: "Oswap",
+    name: "Oswap",
+    url: "https://oswap.io",
+    description: "A fully decentralized protocol for automated liquidity provision on Obyte.",
+    logo: `${baseIconsUrl}/oswap.jpg`,
+    gecko_id: "byteball",
+    cmcId: "1492",
+    chains: [],
+    twitter: "ObyteOrg",
+  },
 ];
 
 export default parentProtocols;

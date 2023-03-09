@@ -6531,6 +6531,20 @@
       "to": "core:0x0000000000000000000000000000000000000000"
     }
   },
+  "crab": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "CRAB",
+      "decimals": "18",
+      "symbol": "CRAB",
+      "to": "coingecko#darwinia-network-native-token"
+    },
+    "0x2d2b97ea380b0185e9fdf8271d1afb5d2bf18329": {
+      "name": "Wrapped CRAB",
+      "decimals": "18",
+      "symbol": "WCRAB",
+      "to": "crab:0x0000000000000000000000000000000000000000"
+    }
+  },
   "map": {
     "0x0000000000000000000000000000000000000000": {
       "name": "MAP Protocol",

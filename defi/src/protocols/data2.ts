@@ -16570,7 +16570,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2166",
-    name: "LFGSwap",
+    name: "LFGSwap EthereumPoW",
     address: "ethpow:0xFd483e333cBe8fE7A418D9398d6BB81CC2B8e07B​",
     symbol: "LFG",
     url: "https://app.lfgswap.finance/swap",
@@ -16587,6 +16587,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap"],
     module: "lfgswap/index.js",
     twitter: "LfgSwap",
+    parentProtocol: "LFGSwap",
     listedAt: 1665165717
   },
   {
@@ -27384,5 +27385,28 @@ const data2: Protocol[] = [
     parentProtocol: "RociFi",
     listedAt: 1678336553
   },
+  /*
+  {
+    id: "2647",
+    name: "LFGSwap CORE",
+    address: "core:0xf7a0b80681ec935d6dd9f3af9826e68b99897d6d",
+    symbol: "LFG",
+    url: "https://app.lfgswap.finance/?chainId=1116",
+    description: "AMM DEX on CORE",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/lfgswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "lfgswap-finance-core",
+    cmcId: "23712",
+    category: "Dexes",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "lfgswap-core/index.js",
+    twitter: "LfgSwap",
+    parentProtocol: "LFGSwap",
+    listedAt: 1678338279
+  },*/
 ]
 export default data2;

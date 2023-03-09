@@ -1037,6 +1037,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "skullswapdex",
   },
+  {
+    id: "RociFi",
+    name: "RociFi",
+    url: "https://roci.fi",
+    description: "Under-collateralized lending protocol",
+    logo: `${baseIconsUrl}/rocifi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "rocifi",
+  },
+  {
+    id: "LFGSwap",
+    name: "LFGSwap",
+    url: "https://app.lfgswap.finance/swap",
+    description: "AMM DEX on EthereumPoW and CORE blockchain",
+    logo: `${baseIconsUrl}/lfgswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LfgSwap",
+  },
 ];
 
 export default parentProtocols;

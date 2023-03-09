@@ -27404,7 +27404,7 @@ const data2: Protocol[] = [
     chains: ["CORE"],
     oracles: [],
     forkedFrom: ["Uniswap"],
-    module: "lfgswap/index.js",
+    module: "lfgswap-core/index.js",
     twitter: "LfgSwap",
     parentProtocol: "LFGSwap",
     listedAt: 1678338279

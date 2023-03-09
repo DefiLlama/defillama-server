@@ -12261,6 +12261,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/CookFinance/cook-token/tree/master/audits"],
     listedAt: 1634930710,
   },
+  /*
   {
     id: "698",
     name: "EvolutionLand",
@@ -12283,6 +12284,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     listedAt: 1634932898,
   },
+  */
   {
     id: "699",
     name: "Polly Finance",

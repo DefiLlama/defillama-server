@@ -6215,7 +6215,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://halofi.me",
-    description: "HaloFi (previously GoodGhosting) helps you grow your wealth, step by step, with crypto. Whether you want to save regularly or hold onto your tokens for the long term, we've got you covered. Earn yield, badges, and more while completing our savings challenges. Hit your goals to get rewarded. Powered by smart contracts, HaloFi puts you in control of your future. Start your DeFi journey here.",
+    description: "HaloFi helps you grow your wealth, step by step, with crypto. Whether you want to save regularly or hold onto your tokens for the long term, we've got you covered. Earn yield, badges, and more while completing our savings challenges. Hit your goals to get rewarded. Powered by smart contracts, HaloFi puts you in control of your future. Start your DeFi journey with HaloFi and become your best financial self today!",
     chain: "Celo",
     logo: `${baseIconsUrl}/halofi.png`,
     audits: "3",

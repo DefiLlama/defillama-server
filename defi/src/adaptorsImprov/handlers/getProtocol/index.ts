@@ -6,7 +6,7 @@ import loadAdaptorsData from "../../data"
 import { AdaptorData, IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
-import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, IChartData, IChartDataBreakdown, sumAllVolumes } from "../../utils/volumeCalcs";
+import { formatNdChangeNumber, generateAggregatedVolumesChartData, generateAggregatedVolumesChartDataImprov, generateByDexVolumesChartData, generateByDexVolumesChartDataImprov, IChartData, IChartDataBreakdown, IChartDatav2, sumAllVolumes } from "../../utils/volumeCalcs";
 import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGetOverviewResponseBody, ProtocolAdaptorSummary } from "../getOverviewProcess";
 import parentProtocols from "../../../protocols/parentProtocols";
 import standardizeProtocolName from "../../../utils/standardizeProtocolName";
@@ -37,7 +37,7 @@ export interface IHandlerBodyResponse extends
         | "methodologyURL"
         | 'allAddresses'
     >, 'module' | 'methodologyURL'> {
-    totalDataChart: IChartData | null
+    totalDataChart: IChartDatav2 | null
     totalDataChartBreakdown: IChartDataBreakdown | null
     total24h: number | null
     change_1d: number | null
@@ -154,7 +154,7 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
     const summaries = await Promise.all(childs.map(child => getProtocolSummary(child, dataType, adaptorType)))
     const totalToday = sumReduce(summaries, 'total24h')
     const totalYesterday = sumReduce(summaries, 'total48hto24h')
-    const change_1d = (totalToday && totalYesterday) ? ((totalToday - totalYesterday) / totalYesterday) * 100 : null
+    const change_1d = formatNdChangeNumber(totalToday && totalYesterday ? ((totalToday - totalYesterday) / totalYesterday) * 100 : null)
     return {
         ...parentData,
         displayName: parentData.name,
@@ -165,8 +165,8 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
         change_1d,
         methodologyURL: null,
         module: null,
-        totalDataChartBreakdown: generateByDexVolumesChartData(summaries.map((s) => s.generatedSummary).filter(notUndefined)),
-        totalDataChart: generateAggregatedVolumesChartData(summaries.map((s) => s.generatedSummary).filter(notUndefined)),
+        totalDataChartBreakdown: generateByDexVolumesChartDataImprov(summaries.map((s) => s.generatedSummary).filter(notUndefined)),
+        totalDataChart: generateAggregatedVolumesChartDataImprov(summaries.map((s) => s.generatedSummary).filter(notUndefined)),
         childProtocols: summaries.map(s => s.displayName)
     }
 }

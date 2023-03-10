@@ -143,7 +143,7 @@ const getSumAllDexsToday = (
 }
 
 export type IChartData = [string, number][] // [timestamp, volume]
-export type IChartDataBreakdown = Array<[string, { [protocol: string]: number | IJSON<number> }]>
+export type IChartDataBreakdown = Array<[number, { [protocol: string]: number | IJSON<number> }]>
 
 const generateAggregatedVolumesChartData = (protocols: ProtocolAdaptorSummary[]): IChartData => {
     const chartData: IChartData = []
@@ -174,6 +174,36 @@ const generateByDexVolumesChartData = (protocols: ProtocolAdaptorSummary[]): ICh
                 dayBreakDown[protocol.displayName] = sumAllVolumes(volumeObj)
         }
         chartData.push([`${dataPoint}`, dayBreakDown])
+    }
+    return chartData
+}
+
+export type IChartDatav2 = [number, number][] // [timestamp, volume]
+export const generateAggregatedVolumesChartDataImprov = (protocols: ProtocolAdaptorSummary[]): IChartDatav2 => {
+    const chartData: IChartDatav2 = []
+    const dataPoints = getDataPoints()
+    for (const dataPoint of dataPoints) {
+        let total = 0
+        for (const protocol of protocols) {
+            const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
+            total += volumeObj ? sumAllVolumes(volumeObj) : 0
+        }
+        chartData.push([dataPoint, total])
+    }
+    return chartData
+}
+
+export const generateByDexVolumesChartDataImprov = (protocols: ProtocolAdaptorSummary[]): IChartDataBreakdown => {
+    const chartData: IChartDataBreakdown = []
+    const dataPoints = getDataPoints()
+    for (const dataPoint of dataPoints) {
+        const dayBreakDown: IChartDataByDex[0][1] = {}
+        for (const protocol of protocols) {
+            const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
+            if (volumeObj)
+                dayBreakDown[protocol.displayName] = sumAllVolumes(volumeObj)
+        }
+        chartData.push([dataPoint, dayBreakDown])
     }
     return chartData
 }
@@ -233,7 +263,7 @@ const calcNdChange = (volumes: IJSON<AdaptorRecord>, nDaysChange: number, baseTi
     }
 }
 
-const formatNdChangeNumber = (number: number | null) => {
+export const formatNdChangeNumber = (number: number | null) => {
     if (number === Number.POSITIVE_INFINITY || number === Number.NEGATIVE_INFINITY || Number.isNaN(number) || number === null)
         return null
     return Math.round((number + Number.EPSILON) * 100) / 100

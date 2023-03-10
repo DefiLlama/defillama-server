@@ -19,6 +19,7 @@ export default {
   jonesDao: require("./jonesDao"),
   pendle: require("./pendle"),
   perpetual: require("./perpetual"),
+  quickswap: require("./quickswap"),
   gearbox: require("./gearbox"),
   radiant: require("./radiant"),
   rocketpool: require("./rocketpool"),

@@ -41,7 +41,6 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         if (adapter?.enabled && adapter.versionKey) {
             protocolsKeys = [adapter.versionKey]
         }
-        if (protocolsKeys[0] === 'stableswap') console.debug(protocolsKeys)
         const totalRecord = rawTotalRecord?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
         // This check is made to infer AdaptorRecord[] type instead of AdaptorRecord type
         if (!(adaptorRecordsRaw instanceof Array)) throw new Error("Wrong volume queried")
@@ -121,8 +120,6 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
                 adaptorRecords.push(data)
                 cleanRecords.cleanRecordsMap[i] = data
             }
-
-        if (protocolsKeys[0] === 'stableswap') console.debug("totalRecord", totalRecord)
 
         return {
             spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined,

@@ -20,10 +20,11 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
     // Get adaptor id for all records
     const adaptorId = adaptorRecords[0].adaptorId
     // Process adaptors. Should be changed to process based on timestamps instead of stored records
+
     const processed = await adaptorRecords.reduce(async (accP, adaptorRecord, currentIndex, array) => {
         const acc = await accP
         // Let's work with a clean record
-        const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
+        const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0])
         // Here will be stored the normalized data (aka data with no errors and if missing, extrapolation of that day)
         const generatedData = {} as IRecordAdaptorRecordData
         // Get current timestamp we are working with
@@ -32,6 +33,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             console.error("Timestamp in miliseconds or in the future has been found! Please check what's wrong...", timestamp, adaptorRecord)
             return acc
         }
+
         if (!timestamp) {
             const all = Object.values(acc.lastDataRecord)
             if (all.length === 0 || !all[0]) return acc
@@ -89,7 +91,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 nextRecord = acc.nextDataRecord[chainProt]
                 // Note, limited the lookup to up maxGaps2Cover
                 for (let i = currentIndex; i < Math.min((array.length - 1), 100); i++) {
-                    const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
+                    const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0])
                     const protDataChain = cR?.data[chain]
                     if (cR !== null && typeof protDataChain === 'object' && protDataChain[protocol]) {
                         acc.nextDataRecord[chainProt] = cR
@@ -155,7 +157,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         return acc
     }, Promise.resolve({
         adaptorRecords: [] as AdaptorRecord[],
-        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains) }), {}),
+        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains,  protocols[0]) }), {}),
         nextDataRecord: {},
         recordsMap: {},
         ath: 0

@@ -6,7 +6,7 @@ import { performance } from "perf_hooks";
     const start = performance.now()
     const r = await handler({
         pathParameters: {
-            name: "pancakeswap",
+            name: "uniswap",
             type: "dexs"
         },
         /* queryStringParameters: {
@@ -15,8 +15,9 @@ import { performance } from "perf_hooks";
     } as unknown as AWSLambda.APIGatewayEvent)
     const end = performance.now()
     const d = JSON.parse(r.body) as Partial<IHandlerBodyResponse>
-    //console.log(d.totalDataChartBreakdown?.find(r=>+r[0]===Date.UTC(2022, 10, 23)/1000))
+    console.log(d.totalDataChartBreakdown?.slice(-5))
     console.log(d.totalDataChart?.slice(-5))
+    console.log(d.childProtocols)
     console.log((end - start) / 1000)
     //console.log(JSON.stringify(d, null, 2))
 })()

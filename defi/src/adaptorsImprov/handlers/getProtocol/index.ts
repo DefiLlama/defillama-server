@@ -165,7 +165,7 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
         change_1d,
         methodologyURL: null,
         module: null,
-        totalDataChartBreakdown: null,
+        totalDataChartBreakdown: generateByDexVolumesChartData(summaries.map((s) => s.generatedSummary).filter(notUndefined)),
         totalDataChart: generateAggregatedVolumesChartData(summaries.map((s) => s.generatedSummary).filter(notUndefined)),
         childProtocols: summaries.map(s => s.displayName)
     }

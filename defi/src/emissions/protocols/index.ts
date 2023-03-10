@@ -29,6 +29,7 @@ export default {
   uniswap: require("./uniswap"),
   vela: require("./vela"),
   velodrome: require("./velodrome"),
+  venus: require("./venus"),
   yearn: require("./yearn"),
   zyberswap: require("./zyberswap"),
 };

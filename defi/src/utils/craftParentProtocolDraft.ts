@@ -142,6 +142,9 @@ export async function craftParentProtocolDraft({
             if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tokensInUsd![index - 1].date > 86400) {
               const prev = curr.chainTvls[chain].tokensInUsd![index - 1];
 
+              if(!acc.chainTvls[chain].tokensInUsd[prev.date + 86400]){
+                acc.chainTvls[chain].tokensInUsd[prev.date + 86400] = {}
+              }
               for (const token in tokens) {
                 acc.chainTvls[chain].tokensInUsd[prev.date + 86400][token] =
                   (acc.chainTvls[chain].tokensInUsd[prev.date + 86400][token] || 0) +
@@ -179,6 +182,9 @@ export async function craftParentProtocolDraft({
             if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tokens![index - 1].date > 86400) {
               const prev = curr.chainTvls[chain].tokens![index - 1];
 
+              if(!acc.chainTvls[chain].tokens[prev.date + 86400]){
+                acc.chainTvls[chain].tokens[prev.date + 86400] = {}
+              }
               for (const token in tokens) {
                 acc.chainTvls[chain].tokens[prev.date + 86400][token] =
                   (acc.chainTvls[chain].tokens[prev.date + 86400][token] || 0) +

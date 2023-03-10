@@ -67,15 +67,14 @@ export async function craftParentProtocolDraft({
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
     tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
 
-  const areAllChildProtocolTvlsHourly =
-    childProtocolsTvls.length === childProtocolsTvls.filter((x) => isHourlyTvl(x.tvl)).length;
-
   const currentTime = Math.floor(Date.now() / 1000);
 
   const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
     .sort((a, b) => b.tvl.length - a.tvl.length)
     .reduce<ICombinedTvls>(
       (acc, curr) => {
+        const isTvlDataHourly = isHourlyTvl(curr.tvl);
+
         // TOTAL TVL OF EACH CHAIN
         for (const name in curr.currentChainTvls) {
           acc.currentChainTvls = {
@@ -88,8 +87,6 @@ export async function craftParentProtocolDraft({
         for (const chain in curr.chainTvls) {
           // TVLS OF EACH CHAIN BY DATE
           curr.chainTvls[chain].tvl.forEach(({ date, totalLiquidityUSD }, index) => {
-            let nearestDate = date;
-
             if (!acc.chainTvls[chain]) {
               acc.chainTvls[chain] = {
                 tvl: {},
@@ -98,7 +95,17 @@ export async function craftParentProtocolDraft({
               };
             }
 
+            if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tvl[index - 1].date > 86400) {
+              const prev = curr.chainTvls[chain].tvl[index - 1];
+              acc.chainTvls[chain].tvl = {
+                ...acc.chainTvls[chain].tvl,
+                [prev.date + 86400]:
+                  (acc.chainTvls[chain].tvl[prev.date + 86400] || 0) + (prev.totalLiquidityUSD + totalLiquidityUSD) / 2,
+              };
+            }
+
             // roundoff lasthourly date
+            let nearestDate = date;
             if (index === curr.chainTvls[chain].tvl.length - 1) {
               nearestDate = currentTime;
             }
@@ -110,8 +117,6 @@ export async function craftParentProtocolDraft({
           });
           //   // TOKENS IN USD OF EACH CHAIN BY DATE
           curr.chainTvls[chain].tokensInUsd?.forEach(({ date, tokens }, index) => {
-            let nearestDate = date;
-
             if (!acc.chainTvls[chain]) {
               acc.chainTvls[chain] = {
                 tvl: {},
@@ -120,7 +125,18 @@ export async function craftParentProtocolDraft({
               };
             }
 
+            if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tokensInUsd![index - 1].date > 86400) {
+              const prev = curr.chainTvls[chain].tokensInUsd![index - 1];
+
+              for (const token in tokens) {
+                acc.chainTvls[chain].tokensInUsd[prev.date + 86400][token] =
+                  (acc.chainTvls[chain].tokensInUsd[prev.date + 86400][token] || 0) +
+                  ((prev.tokens[token] || 0) + tokens[token]) / 2;
+              }
+            }
+
             // roundoff lasthourly date
+            let nearestDate = date;
             if (index === curr.chainTvls[chain].tokensInUsd!.length - 1) {
               nearestDate = currentTime;
             }
@@ -136,8 +152,6 @@ export async function craftParentProtocolDraft({
           });
           // NO.OF TOKENS IN EACH CHAIN BY DATE
           curr.chainTvls[chain].tokens?.forEach(({ date, tokens }, index) => {
-            let nearestDate = date;
-
             if (!acc.chainTvls[chain]) {
               acc.chainTvls[chain] = {
                 tvl: {},
@@ -146,7 +160,18 @@ export async function craftParentProtocolDraft({
               };
             }
 
+            if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tokens![index - 1].date > 86400) {
+              const prev = curr.chainTvls[chain].tokens![index - 1];
+
+              for (const token in tokens) {
+                acc.chainTvls[chain].tokens[prev.date + 86400][token] =
+                  (acc.chainTvls[chain].tokens[prev.date + 86400][token] || 0) +
+                  ((prev.tokens[token] || 0) + tokens[token]) / 2;
+              }
+            }
+
             // roundoff lasthourly date
+            let nearestDate = date;
             if (index === curr.chainTvls[chain].tokens!.length - 1) {
               nearestDate = currentTime;
             }
@@ -165,9 +190,21 @@ export async function craftParentProtocolDraft({
         if (!skipAggregatedTvl) {
           if (curr.tokensInUsd) {
             curr.tokensInUsd.forEach(({ date, tokens }, index) => {
-              let nearestDate = date;
+              if (index !== 0 && !isTvlDataHourly && date - curr.tokensInUsd![index - 1].date > 86400) {
+                const prev = curr.tokensInUsd![index - 1];
+
+                Object.keys(tokens).forEach((token) => {
+                  if (!acc.tokens[prev.date + 86400]) {
+                    acc.tokens[prev.date + 86400] = {};
+                  }
+
+                  acc.tokens[prev.date + 86400][token] =
+                    (acc.tokens[prev.date + 86400][token] || 0) + ((prev.tokens[token] || 0) + tokens[token]) / 2;
+                });
+              }
 
               // roundoff lasthourly date
+              let nearestDate = date;
               if (index === curr.tokensInUsd!.length - 1) {
                 nearestDate = currentTime;
               }
@@ -184,9 +221,21 @@ export async function craftParentProtocolDraft({
 
           if (curr.tokens) {
             curr.tokens.forEach(({ date, tokens }, index) => {
-              let nearestDate = date;
+              if (index !== 0 && !isTvlDataHourly && date - curr.tokens![index - 1].date > 86400) {
+                const prev = curr.tokens![index - 1];
+
+                Object.keys(tokens).forEach((token) => {
+                  if (!acc.tokens[prev.date + 86400]) {
+                    acc.tokens[prev.date + 86400] = {};
+                  }
+
+                  acc.tokens[prev.date + 86400][token] =
+                    (acc.tokens[prev.date + 86400][token] || 0) + ((prev.tokens[token] || 0) + tokens[token]) / 2;
+                });
+              }
 
               // roundoff lasthourly date
+              let nearestDate = date;
               if (index === curr.tokens!.length - 1) {
                 nearestDate = currentTime;
               }
@@ -202,9 +251,14 @@ export async function craftParentProtocolDraft({
           }
 
           curr.tvl.forEach(({ date, totalLiquidityUSD }, index) => {
-            let nearestDate = date;
+            if (index !== 0 && !isTvlDataHourly && date - curr.tvl[index - 1].date > 86400) {
+              const prev = curr.tvl[index - 1];
+              acc.tvl[prev.date + 86400] =
+                (acc.tvl[prev.date + 86400] || 0) + (prev.totalLiquidityUSD + totalLiquidityUSD) / 2;
+            }
 
             // roundoff lasthourly date
+            let nearestDate = date;
             if (index === curr.tvl!.length - 1) {
               nearestDate = currentTime;
             }

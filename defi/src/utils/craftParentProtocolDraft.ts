@@ -67,8 +67,10 @@ export async function craftParentProtocolDraft({
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
     tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
 
-  const areAllChildProtocolTvlsHoulry =
+  const areAllChildProtocolTvlsHourly =
     childProtocolsTvls.length === childProtocolsTvls.filter((x) => isHourlyTvl(x.tvl)).length;
+
+  const currentTime = Math.floor(Date.now() / 1000);
 
   const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
     .sort((a, b) => b.tvl.length - a.tvl.length)
@@ -96,33 +98,9 @@ export async function craftParentProtocolDraft({
               };
             }
 
-            // useHourlyData - check if api is /hourly/{protocolName}
-            // areAllChildProtocolTvlsHoulry - check if tvl of all childProtocols are hourly
-            // index > curr.chainTvls[chain].tvl!.length - 2 - only roundsoff dates of last two tvl values
-            // acc.chainTvls[chain].tvl[date] - check if date exists in accumulator
-            // Object.keys(curr.chainTvls)[0] !== chain - roundoff date only if the current protocol is not the first one in child protocols list
-            if (
-              !useHourlyData &&
-              !areAllChildProtocolTvlsHoulry &&
-              index > curr.chainTvls[chain].tvl!.length - 2 &&
-              !acc.chainTvls[chain].tvl[date] &&
-              Object.keys(curr.chainTvls)[0] !== chain
-            ) {
-              const prevDate = curr.chainTvls[chain].tvl[index - 1]?.date;
-
-              if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
-                // nearestDate === date check means date hasn't been modified yet
-                for (
-                  let i = prevDate + 1;
-                  i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
-                  i++
-                ) {
-                  // roundoff date if it exists in accumulator
-                  if (acc.chainTvls[chain].tvl[i]) {
-                    nearestDate = i;
-                  }
-                }
-              }
+            // roundoff lasthourly date
+            if (index === curr.chainTvls[chain].tvl.length - 1) {
+              nearestDate = currentTime;
             }
 
             acc.chainTvls[chain].tvl = {
@@ -142,33 +120,9 @@ export async function craftParentProtocolDraft({
               };
             }
 
-            // useHourlyData - check if api is /hourly/{protocolName}
-            // areAllChildProtocolTvlsHoulry - check if tvl of all childProtocols are hourly
-            // index > curr.chainTvls[chain].tokensInUsd!.length - 2 - only roundsoff dates of last two tvl values
-            // acc.chainTvls[chain].tokensInUsd[date] - check if date exists in accumulator
-            // Object.keys(curr.chainTvls)[0] !== chain - roundoff date only if the current protocol is not the first one in child protocols list
-            if (
-              !useHourlyData &&
-              !areAllChildProtocolTvlsHoulry &&
-              index > curr.chainTvls[chain].tokensInUsd!.length - 2 &&
-              !acc.chainTvls[chain].tokensInUsd[date] &&
-              Object.keys(curr.chainTvls)[0] !== chain
-            ) {
-              const prevDate = curr.chainTvls[chain].tokensInUsd![index - 1]?.date;
-
-              if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
-                // nearestDate === date check means date hasn't been modified yet
-                for (
-                  let i = prevDate + 1;
-                  i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
-                  i++
-                ) {
-                  // roundoff date if it exists in accumulator
-                  if (acc.chainTvls[chain].tokensInUsd[i]) {
-                    nearestDate = i;
-                  }
-                }
-              }
+            // roundoff lasthourly date
+            if (index === curr.chainTvls[chain].tokensInUsd!.length - 1) {
+              nearestDate = currentTime;
             }
 
             if (!acc.chainTvls[chain].tokensInUsd[nearestDate]) {
@@ -192,33 +146,9 @@ export async function craftParentProtocolDraft({
               };
             }
 
-            // useHourlyData - check if api is /hourly/{protocolName}
-            // areAllChildProtocolTvlsHoulry - check if tvl of all childProtocols are hourly
-            // index > curr.chainTvls[chain].tokens!.length - 2 - only roundsoff dates of last two tvl values
-            // acc.chainTvls[chain].tokens[date] - check if date exists in accumulator
-            // Object.keys(curr.chainTvls)[0] !== chain - roundoff date only if the current protocol is not the first one in child protocols list
-            if (
-              !useHourlyData &&
-              !areAllChildProtocolTvlsHoulry &&
-              index > curr.chainTvls[chain].tokens!.length - 2 &&
-              !acc.chainTvls[chain].tokens[date] &&
-              Object.keys(curr.chainTvls)[0] !== chain
-            ) {
-              const prevDate = curr.chainTvls[chain].tokens![index - 1]?.date;
-
-              if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
-                // nearestDate === date check means date hasn't been modified yet
-                for (
-                  let i = prevDate + 1;
-                  i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
-                  i++
-                ) {
-                  // roundoff date if it exists in accumulator
-                  if (acc.chainTvls[chain].tokens[i]) {
-                    nearestDate = i;
-                  }
-                }
-              }
+            // roundoff lasthourly date
+            if (index === curr.chainTvls[chain].tokens!.length - 1) {
+              nearestDate = currentTime;
             }
 
             if (!acc.chainTvls[chain].tokens[nearestDate]) {
@@ -237,31 +167,9 @@ export async function craftParentProtocolDraft({
             curr.tokensInUsd.forEach(({ date, tokens }, index) => {
               let nearestDate = date;
 
-              // useHourlyData - check if api is /hourly/{protocolName}
-              // areAllChildProtocolTvlsHoulry - check if tvl of all childProtocols are hourly
-              // index > curr.tokensInUsd!.length - 2 - only roundsoff dates of last two tvl values
-              // acc.tokensInUsd[date] - check if date exists in accumulator
-              if (
-                !useHourlyData &&
-                !areAllChildProtocolTvlsHoulry &&
-                index > curr.tokensInUsd!.length - 2 &&
-                !acc.tokensInUsd[date]
-              ) {
-                const prevDate = curr.tokensInUsd![index - 1]?.date;
-
-                if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
-                  // nearestDate === date check means date hasn't been modified yet
-                  for (
-                    let i = prevDate + 1;
-                    i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
-                    i++
-                  ) {
-                    // roundoff date if it exists in accumulator
-                    if (acc.tokensInUsd[i]) {
-                      nearestDate = i;
-                    }
-                  }
-                }
+              // roundoff lasthourly date
+              if (index === curr.tokensInUsd!.length - 1) {
+                nearestDate = currentTime;
               }
 
               Object.keys(tokens).forEach((token) => {
@@ -278,31 +186,9 @@ export async function craftParentProtocolDraft({
             curr.tokens.forEach(({ date, tokens }, index) => {
               let nearestDate = date;
 
-              // useHourlyData - check if api is /hourly/{protocolName}
-              // areAllChildProtocolTvlsHoulry - check if tvl of all childProtocols are hourly
-              // index > curr.tokens!.length - 2 - only roundsoff dates of last two tvl values
-              // acc.tokens[date] - check if date exists in accumulator
-              if (
-                !useHourlyData &&
-                !areAllChildProtocolTvlsHoulry &&
-                index > curr.tokens!.length - 2 &&
-                !acc.tokens[date]
-              ) {
-                const prevDate = curr.tokens![index - 1]?.date;
-
-                if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
-                  // nearestDate === date check means date hasn't been modified yet
-                  for (
-                    let i = prevDate + 1;
-                    i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
-                    i++
-                  ) {
-                    // roundoff date if it exists in accumulator
-                    if (acc.tokens[i]) {
-                      nearestDate = i;
-                    }
-                  }
-                }
+              // roundoff lasthourly date
+              if (index === curr.tokens!.length - 1) {
+                nearestDate = currentTime;
               }
 
               Object.keys(tokens).forEach((token) => {
@@ -318,27 +204,9 @@ export async function craftParentProtocolDraft({
           curr.tvl.forEach(({ date, totalLiquidityUSD }, index) => {
             let nearestDate = date;
 
-            // useHourlyData - check if api is /hourly/{protocolName}
-            // areAllChildProtocolTvlsHoulry - check if tvl of all childProtocols are hourly
-            // index > curr.tvl!.length - 2 - only roundsoff dates of last two tvl values
-            // acc.tvl[date] - check if date exists in accumulator
-            if (!useHourlyData && !areAllChildProtocolTvlsHoulry && index > curr.tvl.length - 2 && !acc.tvl[date]) {
-              const prevDate = curr.tvl[index - 1]?.date;
-
-              // change latest timestamp only if prev value's timestamp is at UTC 00:00 and date is same as nearest date
-              if (prevDate && new Date(prevDate * 1000).getUTCHours() === 0) {
-                // nearestDate === date check means date hasn't been modified yet
-                for (
-                  let i = prevDate + 1;
-                  i <= Number((new Date().getTime() / 1000).toFixed(0)) && nearestDate === date;
-                  i++
-                ) {
-                  // roundoff date if it exists in accumulator
-                  if (acc.tvl[i]) {
-                    nearestDate = i;
-                  }
-                }
-              }
+            // roundoff lasthourly date
+            if (index === curr.tvl!.length - 1) {
+              nearestDate = currentTime;
             }
 
             acc.tvl[nearestDate] = (acc.tvl[nearestDate] || 0) + totalLiquidityUSD;

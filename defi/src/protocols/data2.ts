@@ -27588,7 +27588,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://bo.metavault.trade/",
-    description: "Metavault Bo offers short-term, risk-defined contracts known as binary options. These contracts are simpler than at-the-money contracts and involve only two possible outcomes - either the underlying price goes up or goes down, based on the option holder's estimation. ",
+    description: "Metavault Binary Options offers short-term, risk-defined contracts known as binary options. These contracts are simpler than at-the-money contracts and involve only two possible outcomes - either the underlying price goes up or goes down, based on the option holder's estimation. ",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/metavault-binary-options.jpg`,
     audits: "2",

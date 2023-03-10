@@ -143,7 +143,7 @@ const getSumAllDexsToday = (
 }
 
 export type IChartData = [string, number][] // [timestamp, volume]
-export type IChartDataBreakdown = Array<[number, { [protocol: string]: number | IJSON<number> }]>
+export type IChartDataBreakdown = Array<[string, { [protocol: string]: number | IJSON<number> }]>
 
 const generateAggregatedVolumesChartData = (protocols: ProtocolAdaptorSummary[]): IChartData => {
     const chartData: IChartData = []
@@ -171,7 +171,7 @@ const generateByDexVolumesChartData = (protocols: ProtocolAdaptorSummary[]): ICh
         for (const protocol of protocols) {
             const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
             if (volumeObj)
-                dayBreakDown[protocol.module] = sumAllVolumes(volumeObj)
+                dayBreakDown[protocol.displayName] = sumAllVolumes(volumeObj)
         }
         chartData.push([`${dataPoint}`, dayBreakDown])
     }

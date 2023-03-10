@@ -155,6 +155,22 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
     const totalToday = sumReduce(summaries, 'total24h')
     const totalYesterday = sumReduce(summaries, 'total48hto24h')
     const change_1d = formatNdChangeNumber(totalToday && totalYesterday ? ((totalToday - totalYesterday) / totalYesterday) * 100 : null)
+    let totalDataChart = generateAggregatedVolumesChartDataImprov(summaries.map((s) => s.generatedSummary).filter(notUndefined))
+    let totalDataChartBreakdown = generateByDexVolumesChartDataImprov(summaries.map((s) => s.generatedSummary).filter(notUndefined))
+    // This could be avoided/optimized if moved to generateAggregatedVolumesChartData
+    totalDataChart = totalDataChart.slice(
+        totalDataChart.findIndex(it => it[1] !== 0),
+        totalDataChart.length - [...totalDataChart].reverse().findIndex(it => it[1] !== 0)
+    )
+    // This could be avoided/optimized if moved to generateByDexVolumesChartData
+    const sumBreakdownItem = (item: { [chain: string]: number | IJSON<number> }) => Object.values(item).reduce((acc: number, current) => {
+        if (typeof current === 'object') return acc
+        return acc += current
+    }, 0 as number)
+    totalDataChartBreakdown = totalDataChartBreakdown.slice(
+        totalDataChartBreakdown.findIndex(it => sumBreakdownItem(it[1]) !== 0),
+        totalDataChartBreakdown.length - [...totalDataChartBreakdown].reverse().findIndex(it => sumBreakdownItem(it[1]) !== 0)
+    )
     return {
         ...parentData,
         displayName: parentData.name,
@@ -165,8 +181,8 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
         change_1d,
         methodologyURL: null,
         module: null,
-        totalDataChartBreakdown: generateByDexVolumesChartDataImprov(summaries.map((s) => s.generatedSummary).filter(notUndefined)),
-        totalDataChart: generateAggregatedVolumesChartDataImprov(summaries.map((s) => s.generatedSummary).filter(notUndefined)),
+        totalDataChart,
+        totalDataChartBreakdown,
         childProtocols: summaries.map(s => s.displayName)
     }
 }

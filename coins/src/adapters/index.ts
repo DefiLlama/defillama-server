@@ -65,10 +65,11 @@ export default {
   // diffusion: require("./markets/uniswap/index"),
   stargate: require("./markets/stargate/index"),
   jarvis: require("./markets/jarvis/index"),
-  chainlinkNFT: require("./nft/chainlink/index"),
+  // chainlinkNFT: require("./nft/chainlink/index"),
   arrakis: require("./markets/arrakis/index"),
   yieldYak: require("./yield/yield-yak/index"),
   tezos: require("./tezos/index"),
   aaveDebt: require("./moneyMarkets/aave-debt/index"),
   saber: require("./solana/saber/index"),
+  reservoir: require("./nft/reservoir/index"),
 };

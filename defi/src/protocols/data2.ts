@@ -27641,7 +27641,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Binance"],
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["GMX"],
     module: "alpacafinance-gmx/index.js",
     twitter: "AlpacaFinance",
     parentProtocol: "Alpaca",

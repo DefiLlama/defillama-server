@@ -27605,7 +27605,7 @@ const data2: Protocol[] = [
     listedAt: 1678383915
   },
   {
-    id: "2656",
+    id: "2657",
     name: "PonytaSwap",
     address: null,
     symbol: "-",
@@ -27613,7 +27613,7 @@ const data2: Protocol[] = [
     description: "The first DEX for traders and gamers on Rangers Protocol",
     chain: "Rangers",
     logo: `${baseIconsUrl}/ponytaswap.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

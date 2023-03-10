@@ -1137,7 +1137,18 @@ export default {
     },
     "zyberswap": {
         "enabled": true,
-        "id": "2467"
+        "id": "2467",
+        protocolsData: {
+            "v2": {
+                id: "2467"
+            },
+            "v3": {
+                id: "2602"
+            },
+            "stable": {
+                id: "2530"
+            }
+        }
     },
     "hermes-protocol": {
         "enabled": true,

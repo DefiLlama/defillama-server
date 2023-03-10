@@ -102,6 +102,8 @@ function getDisplayCategory(adapter: Adapter, override: IOverrides[string]) {
 export function getDisplayName(name: string, adapter: Adapter) {
     if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
     if (name.split(' ')[0].includes('Uniswap')) return 'Uniswap'
+    if (name.split(' ')[0].includes('PancakeSwap')) return 'PancakeSwap'
+    if (name.split(' ')[0].includes('KyberSwap')) return 'KyberSwap'
     if (name === '0x') return '0x - RFQ'
     if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
         const versionName = Object.keys(adapter.breakdown)[0]
@@ -147,5 +149,7 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'ashswap') return id === "2551"
     if (key === 'oswap') return id === "1778"
     if (key === 'cow-protocol') return id === "2643"
+    if (key === 'wx.network') return id === "614"
+    if (key === 'baryon') return id === "1950"
     return false
 }

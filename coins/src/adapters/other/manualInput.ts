@@ -74,6 +74,14 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       redirect: "asset#arbitrum:0x4277f8f2c384827b5273592ff7cebd9f2c1ac258",
     },
   ],
+  polygon: [
+    {
+      symbol: "wstETH",
+      address: "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
+      decimals: 18,
+      redirect: "coingecko#wrapped-steth",
+    },
+  ],
 };
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

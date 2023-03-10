@@ -2,7 +2,7 @@ import { manualCliff, manualLinear } from "../adapters/manual";
 import { Protocol } from "../types/adapters";
 import { periodToSeconds } from "../utils/time";
 
-const start: number = 0;
+const start: number = 1601161200;
 const qty: number = 30_000_000;
 
 const quickswap: Protocol = {

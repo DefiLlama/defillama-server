@@ -24487,7 +24487,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2517",
-    name: "ParaSpace NFT",
+    name: "ParaSpace Lending",
     address: null,
     symbol: "-",
     url: "https://para.space",
@@ -27540,7 +27540,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2654",
-    name: "ParaSpace APE",
+    name: "ParaSpace APE Staking",
     address: null,
     symbol: "-",
     url: "https://apecoinstaking.io",

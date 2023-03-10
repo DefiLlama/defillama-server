@@ -16,6 +16,7 @@ import { CATEGORIES } from "../../data/helpers/categories";
 
 export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
+    total48hto24h: number | null;
     total7d: number | null;
     total14dto7d: number | null;
     total30d: number | null;
@@ -238,6 +239,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         protocols: okProtocols,
         allChains,
         total24h: enableStats ? generalStats.total24h : 0,
+        total48hto24h: null,
         total7d: enableStats ? generalStats.total7d : 0,
         total14dto7d: enableStats ? generalStats.total14dto7d : 0,
         total60dto30d: enableStats ? generalStats.total60dto30d : 0,

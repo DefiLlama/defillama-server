@@ -6816,7 +6816,7 @@ const data: Protocol[] = [
     module: "hop",
     twitter: "HopProtocol",
     audit_links: ["https://docs.hop.exchange/faq#are-hop-contracts-audited"],
-    forkedFrom: ["Saddle Finance"],
+    forkedFrom: [],
     governanceID: ["snapshot:hop.eth"]
   },
   {
@@ -11395,7 +11395,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
     module: "synapse/index.js",
     twitter: "SynapseProtocol",
-    forkedFrom: ["Saddle Finance"],
+    forkedFrom: [],
     governanceID: ["snapshot:synapseprotocol.eth"]
   },
   {

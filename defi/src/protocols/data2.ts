@@ -14720,7 +14720,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Bridge",
-    chains: ["Wanchain", "Polygon", "Moonriver", "Avalanche", "Ethereum", "Binance", "Moonbeam", "OKExChain", "CLV", "XDC"],
+    chains: ["Wanchain", "Polygon", "Moonriver", "Avalanche", "Ethereum", "Binance", "Moonbeam", "OKExChain", /* "CLV", */ "XDC"],
     oracles: [], //Wanchain's own oracle
     forkedFrom: [],
     module: "wanbridge.js",

@@ -75,6 +75,8 @@ export async function craftParentProtocolDraft({
       (acc, curr) => {
         const isTvlDataHourly = isHourlyTvl(curr.tvl);
 
+        console.log(curr.name);
+
         // TOTAL TVL OF EACH CHAIN
         for (const name in curr.currentChainTvls) {
           acc.currentChainTvls = {
@@ -145,7 +147,7 @@ export async function craftParentProtocolDraft({
               for (const token in tokens) {
                 acc.chainTvls[chain].tokensInUsd[prev.date + 86400][token] =
                   (acc.chainTvls[chain].tokensInUsd[prev.date + 86400][token] || 0) +
-                  ((prev.tokens[token] || 0) + tokens[token]) / 2;
+                  ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
               }
             }
 
@@ -182,7 +184,7 @@ export async function craftParentProtocolDraft({
               for (const token in tokens) {
                 acc.chainTvls[chain].tokens[prev.date + 86400][token] =
                   (acc.chainTvls[chain].tokens[prev.date + 86400][token] || 0) +
-                  ((prev.tokens[token] || 0) + tokens[token]) / 2;
+                  ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
               }
             }
 
@@ -217,7 +219,7 @@ export async function craftParentProtocolDraft({
                   }
 
                   acc.tokens[prev.date + 86400][token] =
-                    (acc.tokens[prev.date + 86400][token] || 0) + ((prev.tokens[token] || 0) + tokens[token]) / 2;
+                    (acc.tokens[prev.date + 86400][token] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
                 });
               }
 
@@ -250,7 +252,7 @@ export async function craftParentProtocolDraft({
                   }
 
                   acc.tokens[prev.date + 86400][token] =
-                    (acc.tokens[prev.date + 86400][token] || 0) + ((prev.tokens[token] || 0) + tokens[token]) / 2;
+                    (acc.tokens[prev.date + 86400][token] || 0) + ((prev.tokens?.[token] ?? 0) + tokens[token]) / 2;
                 });
               }
 

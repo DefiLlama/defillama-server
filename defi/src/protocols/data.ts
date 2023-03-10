@@ -22785,6 +22785,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Services",
     chains: ["Ethereum"],
     module: "ovr/index.js",
+    treasury: "ovr.js",
     twitter: "OVRtheReality",
     listedAt: 1641669316,
   },

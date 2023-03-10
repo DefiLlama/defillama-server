@@ -18,6 +18,7 @@ export default {
   hop: require("./hop"),
   jonesDao: require("./jonesDao"),
   pendle: require("./pendle"),
+  perpetual: require("./perpetual"),
   gearbox: require("./gearbox"),
   radiant: require("./radiant"),
   rocketpool: require("./rocketpool"),

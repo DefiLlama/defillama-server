@@ -75,8 +75,6 @@ export async function craftParentProtocolDraft({
       (acc, curr) => {
         const isTvlDataHourly = isHourlyTvl(curr.tvl);
 
-        console.log(curr.name);
-
         // TOTAL TVL OF EACH CHAIN
         for (const name in curr.currentChainTvls) {
           acc.currentChainTvls = {
@@ -106,7 +104,7 @@ export async function craftParentProtocolDraft({
               console.log({ next: curr.chainTvls[chain].tvl[index + 1] });
             }
 
-            console.log("CHECK 1");
+            console.log(`CHECK 1 ${curr.name} ${chain} ${date}`);
 
             if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tvl[index - 1].date > 86400) {
               const prev = curr.chainTvls[chain].tvl[index - 1];
@@ -139,7 +137,7 @@ export async function craftParentProtocolDraft({
               };
             }
 
-            console.log("CHECK 2");
+            console.log(`CHECK 2 ${curr.name} ${chain} ${date}`);
 
             if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tokensInUsd![index - 1].date > 86400) {
               const prev = curr.chainTvls[chain].tokensInUsd![index - 1];
@@ -176,7 +174,7 @@ export async function craftParentProtocolDraft({
               };
             }
 
-            console.log("CHECK 3");
+            console.log(`CHECK 3 ${curr.name} ${chain} ${date}`);
 
             if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tokens![index - 1].date > 86400) {
               const prev = curr.chainTvls[chain].tokens![index - 1];
@@ -208,7 +206,7 @@ export async function craftParentProtocolDraft({
         if (!skipAggregatedTvl) {
           if (curr.tokensInUsd) {
             curr.tokensInUsd.forEach(({ date, tokens }, index) => {
-              console.log("CHECK 4");
+              console.log(`CHECK 4 ${curr.name} ${date}`);
 
               if (index !== 0 && !isTvlDataHourly && date - curr.tokensInUsd![index - 1].date > 86400) {
                 const prev = curr.tokensInUsd![index - 1];
@@ -241,7 +239,7 @@ export async function craftParentProtocolDraft({
 
           if (curr.tokens) {
             curr.tokens.forEach(({ date, tokens }, index) => {
-              console.log("CHECK 5");
+              console.log(`CHECK 5 ${curr.name} ${date}`);
 
               if (index !== 0 && !isTvlDataHourly && date - curr.tokens![index - 1].date > 86400) {
                 const prev = curr.tokens![index - 1];
@@ -273,7 +271,7 @@ export async function craftParentProtocolDraft({
           }
 
           curr.tvl.forEach(({ date, totalLiquidityUSD }, index) => {
-            console.log("CHECK 6");
+            console.log(`CHECK 6 ${curr.name} ${date}`);
 
             if (index !== 0 && !isTvlDataHourly && date - curr.tvl[index - 1].date > 86400) {
               const prev = curr.tvl[index - 1];

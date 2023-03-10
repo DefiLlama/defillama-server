@@ -23974,7 +23974,7 @@ const data2: Protocol[] = [
       "ReHold is an innovative platform that offers the first Dual investments in DeFi. High APRs are accessible due to Uniswap V3 Liquidity Pools with an effective price range for concentrated liquidity",
     chain: "Binance",
     logo: `${baseIconsUrl}/rehold.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -23984,7 +23984,7 @@ const data2: Protocol[] = [
     twitter: "rehold_io",
     oracles: [],
     forkedFrom: [],
-    audit_links: [],
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-ReHold-v1.0.pdf"],
     listedAt: 1675454199
   },
   {

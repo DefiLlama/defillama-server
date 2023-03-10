@@ -4909,7 +4909,7 @@ const data2: Protocol[] = [
     address: "0xA2cd3D43c775978A96BdBf12d733D5A1ED94fb18",
     symbol: "XCN",
     url: "https://app.onyx.org/",
-    description: "Earn, borrow, and build with OnyxProtocol (prev. Chain) , a fully decentralized cross-token liquidity market powered by $XCN that supports NFTs and crypto.",
+    description: "Earn, borrow, and build with OnyxProtocol (prev. Chain) , a fully decentralized cross-token liquidity market powered by Onyxcoin (XCN) that supports NFTs and crypto.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/onyx-protocol.jpg`,
     audits: "2",

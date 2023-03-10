@@ -27604,5 +27604,26 @@ const data2: Protocol[] = [
     parentProtocol: "Metavault",
     listedAt: 1678383915
   },
+  {
+    id: "2656",
+    name: "PonytaSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.ponytaswap.finance/swap",
+    description: "The first DEX for traders and gamers on Rangers Protocol",
+    chain: "Rangers",
+    logo: `${baseIconsUrl}/ponytaswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Rangers"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ponytaswap/index.js",
+    twitter: "ponytaswap",
+    listedAt: 1678406755
+  },
 ]
 export default data2;

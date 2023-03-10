@@ -1081,6 +1081,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ParaSpace_NFT",
   },
+  {
+    id: "Alpaca",
+    name: "Alpaca",
+    url: "https://www.alpacafinance.org",
+    description: "Alpaca Finance is the largest lending protocol allowing leveraged yield farming on BNB Chain and Fantom. It helps lenders earn safe and stable yields, and offers borrowers undercollateralized loans for leveraged yield farming positions, vastly multiplying their farming principals and resulting profits.",
+    logo: `${baseIconsUrl}/alpaca.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AlpacaFinance",
+  },
 ];
 
 export default parentProtocols;

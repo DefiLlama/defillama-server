@@ -4900,6 +4900,7 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "alpaca-finance/index.js",
     twitter: "AlpacaFinance",
+    parentProtocol: "Alpaca",
     audit_links: ["https://docs.alpacafinance.org/our-protocol-1/transparency"],
     governanceID: ["snapshot:alpacafinance.eth"]
   },

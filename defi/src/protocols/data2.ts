@@ -27625,5 +27625,27 @@ const data2: Protocol[] = [
     twitter: "ponytaswap",
     listedAt: 1678406755
   },
+  {
+    id: "2658",
+    name: "Alpaca Perpetual Futures Exchange",
+    address: "bsc:0x8f0528ce5ef7b51152a59745befdd91d97091d2f",
+    symbol: "ALPACA",
+    url: "https://app.alpacafinance.org/perpetual/trade",
+    description: "Perpetual Futures allow users to have leveraged long or short exposure on assets without an expiration date. In place of expiration, users pay ongoing fees as unrealized P/L in the positions while the positions are open.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/alpaca-perpetual-futures-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "alpacafinance-gmx/index.js",
+    twitter: "AlpacaFinance",
+    parentProtocol: "Alpaca",
+    listedAt: 1678446144
+  },
 ]
 export default data2;

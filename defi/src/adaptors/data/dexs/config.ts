@@ -816,5 +816,8 @@ export default {
     },
     "maverick": {
         enabled: true
+    },
+    "integral": {
+        enabled: true
     }
 } as AdaptorsConfig

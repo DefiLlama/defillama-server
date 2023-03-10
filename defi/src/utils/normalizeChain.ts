@@ -1347,9 +1347,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "Rangers": {
-    geckoId: "coredaoorg",
-    symbol: "CORE",
-    cmcId: "23254",
+    geckoId: "rangers-protocol-gas",
+    symbol: "RPG",
+    cmcId: "12221",
     categories: ["EVM"],
   },
 } as unknown as {

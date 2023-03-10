@@ -15,6 +15,14 @@ const overrides = {
         id: "1",
         name: "Uniswap"
     },
+    'pancakeswap': {
+        id: "194",
+        name: "PancakeSwap"
+    },
+    'kyberswap': {
+        id: "127",
+        name: "KyberSwap",
+    },
     'aave': {
         id: "111",
         name: "AAVE"

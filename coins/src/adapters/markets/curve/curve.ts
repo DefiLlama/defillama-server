@@ -8,7 +8,7 @@ import { getTokenInfo, listUnknownTokens } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectData,
 } from "../../utils/database";
 import { BigNumber } from "ethers";
 import { requery } from "../../utils/sdk";
@@ -20,37 +20,68 @@ const registryIds = {
   stableswap: 0,
   stableFactory: 3,
   crypto: 5,
-  cryptoFactory: 6
+  cryptoFactory: 6,
 };
-async function getPools(chain: string, block: number | undefined) {
+async function getPcsPools(chain: any, block: number | undefined) {
+  const target: string = "0x36bBb126e75351C0DfB651e39b38fe0BC436FFD2";
+  const poolCount: Result = (
+    await call({
+      chain,
+      target,
+      abi: abi.pairLength,
+      block,
+    })
+  ).output;
+
+  const pools: any = {};
+  pools["pcs"] = (
+    await multiCall({
+      calls: [...Array(Number(poolCount)).keys()].map((n) => ({
+        target,
+        params: [n],
+      })),
+      chain,
+      abi: abi.swapPairContract,
+      block,
+    })
+  ).output;
+
+  return pools;
+}
+async function getPools(
+  chain: any,
+  block: number | undefined,
+  name: string | undefined,
+) {
+  if (name == "pcs") return await getPcsPools(chain, block);
   const registries: string[] =
     chain == "bsc"
       ? [
           "0x266bb386252347b03c7b6eb37f950f476d7c3e63",
           "0x0000000000000000000000000000000000000000",
           "0x0000000000000000000000000000000000000000",
-          "0x41871a4c63d8fae4855848cd1790ed237454a5c4"
+          "0x41871a4c63d8fae4855848cd1790ed237454a5c4",
         ]
       : (
           await multiCall({
-            chain: chain as any,
+            chain,
             calls: Object.values(registryIds).map((r: number) => ({
               params: r,
-              target: contracts[chain].addressProvider
+              target: contracts[chain].addressProvider,
             })),
             abi: abi.get_id_info,
-            block
+            block,
           })
         ).output.map((r: any) => r.output.addr);
 
   const poolCounts: Result[] = (
     await multiCall({
-      chain: chain as any,
+      chain,
       calls: registries.map((r: string) => ({
-        target: r
+        target: r,
       })),
       abi: abi.pool_count,
-      block
+      block,
     })
   ).output;
 
@@ -60,34 +91,34 @@ async function getPools(chain: string, block: number | undefined) {
       await multiCall({
         calls: [...Array(Number(poolCounts[i].output)).keys()].map((n) => ({
           target: poolCounts[i].input.target,
-          params: [n]
+          params: [n],
         })),
-        chain: chain as any,
+        chain,
         abi: abi.pool_list,
-        block
+        block,
       })
     ).output;
   }
 
   return pools;
 }
-function mapGaugeTokenBalances(calls: Multicall[], chain: string) {
+function mapGaugeTokenBalances(calls: Multicall[], chain: any) {
   const mapping: any = {
     "0x7f90122bf0700f9e7e1f688fe926940e8839f353": {
       to: "0xbF7E49483881C76487b0989CD7d9A8239B20CA41",
       pools: [],
-      chains: ["arbitrum"]
+      chains: ["arbitrum"],
     },
     "0x27e611fd27b276acbd5ffd632e5eaebec9761e40": {
       to: "0x8866414733F22295b7563f9C5299715D2D76CAf4",
       pools: [],
-      chains: ["fantom"]
+      chains: ["fantom"],
     },
     "0xd02a30d33153877bc20e5721ee53dedee0422b2f": {
       to: "0xd4f94d0aaa640bbb72b5eec2d85f6d114d81a88e",
       pools: [],
-      chains: ["fantom"]
-    }
+      chains: ["fantom"],
+    },
   };
 
   return calls.map(function (c) {
@@ -106,24 +137,64 @@ function mapGaugeTokenBalances(calls: Multicall[], chain: string) {
 function aggregateBalanceCalls(coins: string[], nCoins: string[], pool: any) {
   let calls: Multicall[] = [];
   [...Array(Number(nCoins[0])).keys()].map((n) =>
-    calls.push({ target: coins[n], params: [pool.output] })
+    calls.push({ target: coins[n], params: [pool.output] }),
   );
   return calls;
 }
-async function poolBalances(
-  chain: string,
+async function pcsPoolBalances(
+  chain: any,
   pool: any,
   registry: string,
-  block: number | undefined
+  block: number | undefined,
+) {
+  const nCoins: string = (
+    await call({
+      target: pool.output,
+      chain,
+      abi: abi.get_n_coins[registry],
+      block,
+    })
+  ).output;
+
+  const coins: string[] = (
+    await multiCall({
+      calls: [...Array(Number(nCoins)).keys()].map((n) => ({
+        target: pool.output,
+        params: [n],
+      })),
+      chain,
+      abi: abi.get_coins[registry],
+      block,
+    })
+  ).output.map((c: Result) => c.output);
+
+  let calls: Multicall[] = aggregateBalanceCalls(coins, [nCoins], pool);
+
+  let balances: Result[] = (
+    await multiCall({
+      calls: calls as any,
+      chain,
+      abi: "erc20:balanceOf",
+      block,
+    })
+  ).output;
+
+  return await getGasTokenBalance(chain, pool.output, balances, block);
+}
+async function poolBalances(
+  chain: any,
+  pool: any,
+  registry: string,
+  block: number | undefined,
 ) {
   let nCoins;
   const coins = (
     await call({
       target: pool.input.target,
       params: [pool.output],
-      chain: chain as any,
+      chain,
       abi: abi.get_coins[registry],
-      block
+      block,
     })
   ).output;
 
@@ -132,9 +203,9 @@ async function poolBalances(
       await call({
         target: pool.input.target,
         params: [pool.output],
-        chain: chain as any,
+        chain,
         abi: abi.get_n_coins[registry],
-        block
+        block,
       })
     ).output;
     if (nCoins == "0") {
@@ -142,9 +213,9 @@ async function poolBalances(
         await call({
           target: pool.input.target,
           params: [pool.output],
-          chain: chain as any,
+          chain,
           abi: abi.get_meta_n_coins[registry],
-          block
+          block,
         })
       ).output[0];
     }
@@ -157,25 +228,21 @@ async function poolBalances(
   let balances: Result[] = (
     await multiCall({
       calls: calls as any,
-      chain: chain as any,
+      chain,
       abi: "erc20:balanceOf",
-      block
+      block,
     })
   ).output;
 
   return await getGasTokenBalance(chain, pool.output, balances, block);
 }
-async function PoolToToken(
-  chain: string,
-  pool: any,
-  block: number | undefined
-) {
+async function PoolToToken(chain: any, pool: any, block: number | undefined) {
   pool = pool.output.toLowerCase();
   let token: string;
 
   const faultyPools: string[] = [
     "0x5633e00994896d0f472926050ecb32e38bef3e65",
-    "0xd0c855c092dbc41055a40297420bba0a6f46f8ad"
+    "0xd0c855c092dbc41055a40297420bba0a6f46f8ad",
   ];
   if (faultyPools.includes(pool)) {
     throw new Error(`pool at ${pool} is faulty some how`);
@@ -186,8 +253,8 @@ async function PoolToToken(
       await call({
         target: pool,
         abi: abi.lp_token,
-        chain: chain as any,
-        block
+        chain,
+        block,
       })
     ).output.toLowerCase();
   } catch {
@@ -196,8 +263,8 @@ async function PoolToToken(
         await call({
           target: pool,
           abi: abi.token,
-          chain: chain as any,
-          block
+          chain,
+          block,
         })
       ).output.toLowerCase();
     } catch {
@@ -278,7 +345,7 @@ async function PoolToToken(
         "0xa827a652ead76c6b0b3d19dba05452e06e25c27e":
           "0x3dfe1324a0ee9d86337d06aeb829deb4528db9ca",
         "0xb755b949c126c04e0348dd881a5cf55d424742b2":
-          "0x1dab6560494b04473a0be3e7d83cf3fdf3a51828"
+          "0x1dab6560494b04473a0be3e7d83cf3fdf3a51828",
       };
       token = mapping[pool] ? mapping[pool] : pool;
     }
@@ -287,28 +354,28 @@ async function PoolToToken(
 }
 async function getUnderlyingPrices(
   balances: any,
-  chain: string,
+  chain: any,
   timestamp: number,
-  unknownTokensList: any[]
+  unknownTokensList: any[],
 ) {
   const coinsData: CoinData[] = await getTokenAndRedirectData(
     balances.map((r: Result) => r.input.target.toLowerCase()),
     chain,
     timestamp,
-    4
+    4,
   );
 
   const poolComponents = balances.map((b: any) => {
     try {
       let coinData: CoinData | undefined = coinsData.find(
-        (c: CoinData) => c.address == b.input.target.toLowerCase()
+        (c: CoinData) => c.address == b.input.target.toLowerCase(),
       );
       if (coinData == undefined) throw new Error(`no coin data found`);
       return {
         balance: b.output / 10 ** coinData.decimals,
         price: coinData.price,
         decimals: coinData.decimals,
-        confidence: coinData.confidence
+        confidence: coinData.confidence,
       };
     } catch {
       unknownTokensList.push(b.input.target.toLowerCase());
@@ -318,20 +385,20 @@ async function getUnderlyingPrices(
   return poolComponents;
 }
 async function unknownPools(
-  chain: string,
+  chain: any,
   block: number | undefined,
   timestamp: number,
   poolList: any,
   registries: string[],
   writes: Write[],
   unknownPoolList: any[],
-  unknownTokensList: any[]
+  unknownTokensList: any[],
 ) {
   for (let registry of registries) {
-    //Object.keys(poolList)) {
     for (let pool of Object.values(poolList[registry])) {
       try {
         const token: string = await PoolToToken(chain, pool, block);
+        // THIS IS GOOD FOR DEBUG
         // if (
         //   ![
         //     "0xa1f8a6807c402e4a15ef4eba36528a3fed24e577",
@@ -341,15 +408,17 @@ async function unknownPools(
         //   continue;
 
         const [balances, tokenInfo] = await Promise.all([
-          poolBalances(chain, pool, registry, block),
-          getTokenInfo(chain, [token], block, { withSupply: true, },)
+          registry == "pcs"
+            ? pcsPoolBalances(chain, pool, registry, block)
+            : poolBalances(chain, pool, registry, block),
+          getTokenInfo(chain, [token], block, { withSupply: true }),
         ]);
 
         const poolTokens: any[] = await getUnderlyingPrices(
           balances,
           chain,
           timestamp,
-          unknownTokensList
+          unknownTokensList,
         );
         if (poolTokens.includes(undefined) || poolTokens.length == 0) {
           unknownPoolList.push({
@@ -357,19 +426,19 @@ async function unknownPools(
             token,
             balances,
             tokenInfo,
-            poolTokens
+            poolTokens,
           });
           continue;
         }
         const poolValue: number = poolTokens.reduce(
           (p, c) => p + c.balance * c.price,
-          0
+          0,
         );
 
         if (
           isNaN(
             (poolValue * 10 ** tokenInfo.decimals[0].output) /
-              tokenInfo.supplies[0].output
+              tokenInfo.supplies[0].output,
           ) ||
           tokenInfo.supplies[0].output == 0
         ) {
@@ -394,7 +463,7 @@ async function unknownPools(
           tokenInfo.symbols[0].output,
           timestamp,
           "curve-LP",
-          confidence
+          confidence,
         );
       } catch {
         //console.log([pool].map((i: any) => i.output)[0]);
@@ -403,11 +472,11 @@ async function unknownPools(
   }
 }
 async function unknownTokens(
-  chain: string,
+  chain: any,
   block: number | undefined,
   writes: Write[],
   timestamp: number,
-  unknownPoolList: any[]
+  unknownPoolList: any[],
 ) {
   const usdSwapSize = 5 * 10 ** 5;
   const knownTokenIndexes: TokenIndexes[] = unknownPoolList.map((p: any) => {
@@ -415,7 +484,7 @@ async function unknownTokens(
     const knownTokens = p.poolTokens.filter((t: any) => t != undefined);
     return {
       known: knownTokens.map((t: any) => p.poolTokens.indexOf(t)),
-      unknown: unknownTokens.map((t: any) => p.poolTokens.indexOf(t))
+      unknown: unknownTokens.map((t: any) => p.poolTokens.indexOf(t)),
     };
   });
 
@@ -425,19 +494,19 @@ async function unknownTokens(
         const tokenInfo = unknownPoolList[i].poolTokens[ts.known[0]];
         if (ts.known.length == 0 || tokenInfo.price == 0) return;
         const realQuantity = BigNumber.from(
-          (usdSwapSize / tokenInfo.price).toFixed(0)
+          (usdSwapSize / tokenInfo.price).toFixed(0),
         );
         const decimalFactor = BigNumber.from("10").pow(tokenInfo.decimals);
         const rawQuantity = realQuantity.mul(decimalFactor);
         return [
           {
             params: [ts.known[0], t, rawQuantity],
-            target: unknownPoolList[i].address
+            target: unknownPoolList[i].address,
           },
           {
             params: [ts.known[0], t, rawQuantity.div(usdSwapSize)],
-            target: unknownPoolList[i].address
-          }
+            target: unknownPoolList[i].address,
+          },
         ];
       });
     })
@@ -445,10 +514,10 @@ async function unknownTokens(
     .filter((c: any) => c != undefined);
 
   let dys: MultiCallResults = await multiCall({
-    chain: chain as any,
+    chain,
     calls,
     abi: abi.get_dy,
-    block
+    block,
   });
   await requery(dys, chain, abi.get_dy, block);
   await requery(dys, chain, abi.get_dy2, block);
@@ -459,7 +528,7 @@ async function unknownTokens(
       if (i % 2 == 0) return;
       const index = d.input.params[1];
       const poolInfo = unknownPoolList.find(
-        (p: any) => p.address == d.input.target
+        (p: any) => p.address == d.input.target,
       );
       return poolInfo.balances[index].input.target;
     })
@@ -486,17 +555,18 @@ async function unknownTokens(
       unknownTokenInfos.symbols[Math.floor(i / 2)].output,
       timestamp,
       "curve-unknown-token",
-      confidence
+      confidence,
     );
   });
 }
 export default async function getTokenPrices(
-  chain: string,
+  chain: any,
   registries: string[],
-  timestamp: number
+  timestamp: number,
+  name: string | undefined = undefined,
 ) {
   const block: number | undefined = await getBlock(chain, timestamp);
-  const poolList = await getPools(chain, block);
+  const poolList = await getPools(chain, block, name);
   const writes: Write[] = [];
   let unknownTokensList: string[] = [];
   let unknownPoolList: any[] = [];
@@ -509,7 +579,7 @@ export default async function getTokenPrices(
     registries,
     writes,
     unknownPoolList,
-    unknownTokensList
+    unknownTokensList,
   );
   await unknownTokens(chain, block, writes, timestamp, unknownPoolList);
 
@@ -517,7 +587,7 @@ export default async function getTokenPrices(
   unknownTokensList = [...new Set(unknownTokensList)];
   unknownTokensList.map((t: string) => {
     const writeKeys = writes.map((w: Write) =>
-      w.PK.substring(w.PK.indexOf(":") + 1)
+      w.PK.substring(w.PK.indexOf(":") + 1),
     );
     if (!writeKeys.includes(t)) problems.push(t);
   });

@@ -110,6 +110,13 @@
     }
   },
   "get_n_coins": {
+    "pcs": {
+      "inputs": [],
+      "name": "N_COINS",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
     "stableswap": {
       "stateMutability": "view",
       "type": "function",
@@ -180,6 +187,13 @@
     }
   },
   "get_coins": {
+    "pcs": {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "coins",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
     "stableswap": {
       "stateMutability": "view",
       "type": "function",
@@ -303,5 +317,19 @@
       { "name": "dx", "type": "uint256" }
     ],
     "outputs": [{ "name": "", "type": "uint256" }]
+  },
+  "pairLength": {
+    "inputs": [],
+    "name": "pairLength",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "swapPairContract": {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "swapPairContract",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
   }
 }

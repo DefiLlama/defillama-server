@@ -66,6 +66,10 @@ export function ellipsis(timestamp: number = 0) {
     timestamp,
   );
 }
+export function pcsStable(timestamp: number = 0) {
+  console.log("starting PCS stableswap");
+  return getTokenPrices("bsc", ["pcs"], timestamp, "pcs");
+}
 export function gauges(timestamp: number = 0) {
   console.log("starting gauges");
   return Promise.all([

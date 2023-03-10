@@ -137,7 +137,8 @@ const getSumAllDexsToday = (
         change_7d: formatNdChangeNumber(((totalVolume - totalVolume7d) / totalVolume7d) * 100) ?? 0,
         change_1m: formatNdChangeNumber(((totalVolume - totalVolume30d) / totalVolume30d) * 100) ?? 0,
         ...getWoWStats(dexs, dex2Substract, baseTimestamp),
-        breakdown24h: null
+        breakdown24h: null,
+        total48hto24h: totalVolume1d
     }
 }
 
@@ -225,7 +226,11 @@ const calcNdChange = (volumes: IJSON<AdaptorRecord>, nDaysChange: number, baseTi
     totalVolume = yesterdaysVolume ? totalVolume + sumAllVolumes(yesterdaysVolume) : null
     totalVolumeNd = volumeNd ? totalVolumeNd + sumAllVolumes(volumeNd) : null
     const ndChange = totalVolume && totalVolumeNd ? (totalVolume - totalVolumeNd) / totalVolumeNd * 100 : null
-    return formatNdChangeNumber(ndChange)
+    return {
+        ndChange: formatNdChangeNumber(ndChange),
+        totalNd: totalVolumeNd,
+        total24h: totalVolume
+    }
 }
 
 const formatNdChangeNumber = (number: number | null) => {

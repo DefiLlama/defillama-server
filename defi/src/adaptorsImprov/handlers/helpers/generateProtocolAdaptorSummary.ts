@@ -137,6 +137,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             change_7dover7d: adapter.disabled ? null : stats.change_7dover7d,
             change_30dover30d: adapter.disabled ? null : stats.change_30dover30d,
             total24h: adapter.disabled ? null : stats.total24h,
+            total48hto24h: adapter.disabled ? null : stats.total48hto24h,
             total7d: adapter.disabled ? null : stats.total7d,
             total30d: adapter.disabled ? null : stats.total30d,
             total14dto7d: adapter.disabled ? null : stats.total14dto7d,
@@ -169,6 +170,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             methodologyURL: adapter.methodologyURL,
             latestFetchIsOk: adapter?.config?.latestFetchIsOk ?? false,
             total24h: null,
+            total48hto24h: null,
             total7d: null,
             total30d: null,
             total14dto7d: null,
@@ -190,13 +192,14 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
 
 const getStats = (adapter: ProtocolAdaptor, adaptorRecordsArr: AdaptorRecord[], adaptorRecordsMap: IJSON<AdaptorRecord>, baseTimestamp: number): IGeneralStats => {
     return {
-        change_1d: calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true),
-        change_7d: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true),
-        change_1m: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true),
+        change_1d: calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true).ndChange,
+        change_7d: calcNdChange(adaptorRecordsMap, 7, baseTimestamp, true).ndChange,
+        change_1m: calcNdChange(adaptorRecordsMap, 30, baseTimestamp, true).ndChange,
         ...getWoWStats([{
             recordsMap: adaptorRecordsMap
         }], undefined, baseTimestamp),
         total24h: adapter.disabled ? null : sumAllVolumes(adaptorRecordsArr[adaptorRecordsArr.length - 1].data),
-        breakdown24h: adapter.disabled ? null : adaptorRecordsArr[adaptorRecordsArr.length - 1].data
+        breakdown24h: adapter.disabled ? null : adaptorRecordsArr[adaptorRecordsArr.length - 1].data,
+        total48hto24h: adapter.disabled ? null : calcNdChange(adaptorRecordsMap, 1, baseTimestamp, true).totalNd
     }
 }

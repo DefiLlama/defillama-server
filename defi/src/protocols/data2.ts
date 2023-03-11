@@ -27647,5 +27647,26 @@ const data2: Protocol[] = [
     parentProtocol: "Alpaca",
     listedAt: 1678446144
   },
+  {
+    id: "2659",
+    name: "Lunagens",
+    address: null,
+    symbol: "LUNG",
+    url: "https://dapp.lunagens.info/swap",
+    description: "AMM on Lung chain",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/lunagens.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "lunagens",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Lung"],
+    oracles: [],
+    forkedFrom: [],
+    module: "lunggens-dex/index.js",
+    twitter: "LunaGensOffcial",
+    listedAt: 1678542319
+  },
 ]
 export default data2;

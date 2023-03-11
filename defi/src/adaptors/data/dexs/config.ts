@@ -822,5 +822,8 @@ export default {
     },
     "archerswap": {
         enabled: true
+    },
+    "ponytaswap": {
+        enabled: true
     }
 } as AdaptorsConfig

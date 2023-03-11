@@ -1,6 +1,6 @@
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../utils/date";
 import { IJSON, ProtocolAdaptor } from "../data/types";
-import { AdaptorRecord, AdaptorRecordType, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
+import { AdaptorRecord, AdaptorRecordType, IRecordAdapterRecordChainData, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
 import { ExtraTypes, IGeneralStats, ProtocolAdaptorSummary } from "../handlers/getOverviewProcess";
 import { ONE_DAY_IN_SECONDS } from "../handlers/getProtocol";
 
@@ -143,7 +143,7 @@ const getSumAllDexsToday = (
 }
 
 export type IChartData = [string, number][] // [timestamp, volume]
-export type IChartDataBreakdown = Array<[number, { [protocol: string]: number | IJSON<number> }]>
+export type IChartDataBreakdown = Array<[number, { [protocol: string]: IRecordAdapterRecordChainData }]>
 
 const generateAggregatedVolumesChartData = (protocols: ProtocolAdaptorSummary[], from?: number): IChartData => {
     const chartData: IChartData = []
@@ -197,11 +197,12 @@ export const generateByDexVolumesChartDataImprov = (protocols: ProtocolAdaptorSu
     const chartData: IChartDataBreakdown = []
     const dataPoints = getDataPoints()
     for (const dataPoint of dataPoints) {
-        const dayBreakDown: IChartDataByDex[0][1] = {}
+        const dayBreakDown: IChartDataBreakdown[0][1] = {}
         for (const protocol of protocols) {
             const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
-            if (volumeObj)
-                dayBreakDown[protocol.displayName] = sumAllVolumes(volumeObj)
+            if (volumeObj) {
+                dayBreakDown[protocol.displayName] = volumeObj as IRecordAdapterRecordChainData
+            }
         }
         chartData.push([dataPoint, dayBreakDown])
     }

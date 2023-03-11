@@ -1,6 +1,6 @@
 import { successResponse, wrap, IResponse, notFoundResponse } from "../../../utils/shared";
 import sluggify, { sluggifyString } from "../../../utils/sluggify";
-import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
+import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import loadAdaptorsData from "../../data"
 import { AdaptorData, IJSON, ProtocolAdaptor } from "../../data/types";
@@ -163,8 +163,8 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
         totalDataChart.length - [...totalDataChart].reverse().findIndex(it => it[1] !== 0)
     )
     // This could be avoided/optimized if moved to generateByDexVolumesChartData
-    const sumBreakdownItem = (item: { [chain: string]: number | IJSON<number> }) => Object.values(item).reduce((acc: number, current) => {
-        if (typeof current === 'object') return acc
+    const sumBreakdownItem = (item: IJSON<IRecordAdapterRecordChainData> | IRecordAdapterRecordChainData): number => Object.values(item).reduce((acc: number, current) => {
+        if (typeof current === 'object') return sumBreakdownItem(current)
         return acc += current
     }, 0 as number)
     totalDataChartBreakdown = totalDataChartBreakdown.slice(

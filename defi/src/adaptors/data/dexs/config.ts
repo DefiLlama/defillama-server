@@ -819,5 +819,8 @@ export default {
     },
     "integral": {
         enabled: true
+    },
+    "archerswap": {
+        enabled: true
     }
 } as AdaptorsConfig

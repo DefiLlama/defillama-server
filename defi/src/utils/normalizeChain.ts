@@ -1352,6 +1352,12 @@ export const chainCoingeckoIds = {
     cmcId: "12221",
     categories: ["EVM"],
   },
+  "Lung": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1720,6 +1726,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "CORE"
     case "rpg":
       return "Rangers"
+    case "lung":
+      return "Lung"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

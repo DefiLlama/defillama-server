@@ -25,7 +25,7 @@ export default {
   rocketpool: require("./rocketpool"),
   stargate: require("./stargate"),
   sushi: require("./sushi"),
-  // tornado: require("./tornado"),
+  tornado: require("./tornado"),
   uniswap: require("./uniswap"),
   vela: require("./vela"),
   velodrome: require("./velodrome"),

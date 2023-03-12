@@ -1092,6 +1092,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AlpacaFinance",
   },
+  {
+    id: "Spin",
+    name: "Spin",
+    url: "https://spin.fi",
+    description: "Spin is a 360° decentralized trading and investments platform built on NEAR Protocol. Spin offers a wide range of products designed to meet the demands of both novice and savvy traders, DeFi investors, and passive income seekers.",
+    logo: `${baseIconsUrl}/spin.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "spin_fi",
+  },
 ];
 
 export default parentProtocols;

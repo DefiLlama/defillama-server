@@ -8887,6 +8887,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "spin/index.js",
     twitter: "spin_fi",
+    parentProtocol: "Spin",
     listedAt: 1654771434
   },
   {
@@ -27687,6 +27688,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "spin-prep/index.js",
     twitter: "spin_fi",
+    parentProtocol: "Spin",
     listedAt: 1678620529
   },
   {
@@ -27708,6 +27710,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "spin-vault/index.js",
     twitter: "spin_fi",
+    parentProtocol: "Spin",
     listedAt: 1678620532
   },
 ]

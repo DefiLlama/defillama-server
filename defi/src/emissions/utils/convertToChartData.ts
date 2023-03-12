@@ -23,7 +23,25 @@ export function createChartData(
     );
   });
 
-  return data;
+  return consolidateDuplicateKeys(data);
+}
+function consolidateDuplicateKeys(data: any[]) {
+  let sortedData: any[] = [];
+
+  data.map((d: any) => {
+    const sortedKeys = sortedData.map((s: any) => s.section);
+
+    if (sortedKeys.includes(d.section)) {
+      d.data.apiData.map((a: any, i: number) => {
+        const j = sortedKeys.indexOf(d.section);
+        sortedData[j].data.apiData[i].unlocked += a.unlocked;
+      });
+    }
+
+    sortedData.push(d);
+  });
+
+  return sortedData;
 }
 export function rawToChartData(
   raw: RawResult[],

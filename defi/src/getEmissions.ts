@@ -7,7 +7,7 @@ import {
 } from "./utils/shared";
 
 const handler = async (event: any): Promise<IResponse> => {
-  const protocolName: string = event.pathParameters?.protocol?.toLowerCase();
+  const protocolName: string = event.pathParameters?.protocol;
 
   try {
     const data = await getR2(`emissions/${protocolName}`);
@@ -22,7 +22,7 @@ const handler = async (event: any): Promise<IResponse> => {
 export default wrap(handler);
 
 // async function main() {
-//   let a = await handler({ pathParameters: { protocol: "Gmx" } });
+//   let a = await handler({ pathParameters: { protocol: "jonesDAO" } });
 //   let b = JSON.parse(a.body);
 //   let c = JSON.parse(b.body);
 //   return;

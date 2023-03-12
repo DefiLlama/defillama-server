@@ -1,6 +1,6 @@
 export default {
   aave: require("./aave"),
-  // Angle: require("./angle"),
+  // angle: require("./angle"),
   apecoin: require("./apecoin"),
   aptos: require("./aptos"),
   // aura: require("./aura"),

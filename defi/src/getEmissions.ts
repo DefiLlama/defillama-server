@@ -20,3 +20,11 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
+
+// async function main() {
+//   let a = await handler({ pathParameters: { protocol: "Gmx" } });
+//   let b = JSON.parse(a.body);
+//   let c = JSON.parse(b.body);
+//   return;
+// }
+// main(); // ts-node defi/src/getEmissions.ts

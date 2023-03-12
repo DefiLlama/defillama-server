@@ -36,9 +36,9 @@ function consolidateDuplicateKeys(data: any[]) {
         const j = sortedKeys.indexOf(d.section);
         sortedData[j].data.apiData[i].unlocked += a.unlocked;
       });
+    } else {
+      sortedData.push(d);
     }
-
-    sortedData.push(d);
   });
 
   return sortedData;

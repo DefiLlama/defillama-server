@@ -17,7 +17,7 @@ export default {
   idle: require("./idle"),
   hop: require("./hop"),
   jonesDAO: require("./jonesDao"),
-  pendle: require("./canto"),
+  pendle: require("./pendle"),
   perpetual: require("./perpetual"),
   quickswap: require("./quickswap"),
   gearbox: require("./gearbox"),

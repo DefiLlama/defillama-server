@@ -15,5 +15,6 @@ export const tornado: Protocol = {
     "https://etherscan.io/token/0x77777feddddffc19ff86db637967013e6c6a116c#balances",
   ],
   token: "ethereum:0x77777feddddffc19ff86db637967013e6c6a116c",
+  protocolIds: ["148"],
 };
 export default tornado;

@@ -24,5 +24,6 @@ const centrifuge: Protocol = {
   notes: [
     "There isnt much information available regarding vesting schedules, so we have used the pessimistic view that tokens were immediately unlocked.",
   ],
+  protocolIds: ["509"],
 };
 export default centrifuge;

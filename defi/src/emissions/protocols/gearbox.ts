@@ -33,5 +33,6 @@ const centrifuge: Protocol = {
   ),
   sources: ["https://docs.gearbox.finance/gear-token/gear-overview"],
   token: "ethereum:0xba3335588d9403515223f109edc4eb7269a9ab5d",
+  protocolIds: ["1108"],
 };
 export default centrifuge;

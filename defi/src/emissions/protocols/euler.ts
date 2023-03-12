@@ -35,5 +35,6 @@ const euler: Protocol = {
   notes: [
     `within the 'employees, advisors, consultants' section, co-founders have a 48 month linear unlock schedule, while all others have undisclosed individual agreements. Here we have shown the whole section to have the same schedule as co-founders.`,
   ],
+  protocolIds: ["1183"],
 };
 export default euler;

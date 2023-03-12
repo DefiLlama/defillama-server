@@ -44,5 +44,6 @@ const pendle: Protocol = {
   "Liquidity bootstrapping": manualCliff(start, qty * 0.07),
   sources: ["https://medium.com/pendle/pendle-tokenomics-3a33d9caa0e4"],
   token: "ethereum:0x808507121b80c02388fad14726482e061b8da827",
+  protocolIds: ["382"],
 };
 export default pendle;

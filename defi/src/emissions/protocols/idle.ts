@@ -43,5 +43,6 @@ const idle: Protocol = {
   ],
   sources: ["https://gmxio.gitbook.io/gmx/tokenomics"],
   token: "arbitrum:0xfc5a1a6eb076a2c7ad06ed22c90d7e710e35ad0a",
+  protocolIds: ["150"],
 };
 export default idle;

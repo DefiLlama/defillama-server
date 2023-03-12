@@ -14,5 +14,6 @@ const quickswap: Protocol = {
   ],
   sources: ["https://venus.io/Whitepaper.pdf"],
   token: "bsc:0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+  protocolIds: ["212"],
 };
 export default quickswap;

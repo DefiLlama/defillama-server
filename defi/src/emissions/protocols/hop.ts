@@ -25,5 +25,6 @@ const hop: Protocol = {
   ],
   sources: ["https://medium.com/pendle/pendle-tokenomics-3a33d9caa0e4"],
   token: "ethereum:0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc",
+  protocolIds: ["435"],
 };
 export default hop;

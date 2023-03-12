@@ -16,5 +16,6 @@ const yearn: Protocol = {
     "https://gov.yearn.finance/t/yip-57-funding-yearns-future/9319",
   ],
   token: "ethereum:0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
+  protocolIds: ["113"],
 };
 export default yearn;

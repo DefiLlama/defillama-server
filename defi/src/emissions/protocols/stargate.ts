@@ -36,6 +36,7 @@ const stargate: Protocol = {
     "https://stargateprotocol.gitbook.io/stargate/v/user-docs/tokenomics/allocations-and-lockups",
   ],
   token: "ethereum:0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
+  protocolIds: ["1013"],
 };
 
 export default stargate;

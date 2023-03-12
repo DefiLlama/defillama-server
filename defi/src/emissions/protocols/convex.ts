@@ -31,5 +31,6 @@ const convex: Protocol = {
   notes: [
     "calculating the rate of future LP rewards is not possible, since it relies on the number of CRV accumulated. Therefore this section has been excluded from analytics.",
   ],
+  protocolIds: ["319"],
 };
 export default convex;

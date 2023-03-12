@@ -10,7 +10,7 @@ import {
   Metadata,
 } from "../types/adapters";
 
-const excludedKeys = ["sources", "notes", "token"];
+const excludedKeys = ["sources", "notes", "token", "protocolIds"];
 
 export async function createRawSections(
   adapter: Protocol,

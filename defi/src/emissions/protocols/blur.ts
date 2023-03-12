@@ -41,6 +41,7 @@ const blur: Protocol = {
   notes: [
     "advisor allocation vests over 48-60 months with a 4-16 month cliff. Here we've used a pessimistic assumption that all advisor allocation unlocks on a 4 month cliff and 48 month vesting",
   ],
+  protocolIds: ["2414"],
 };
 
 export default blur;

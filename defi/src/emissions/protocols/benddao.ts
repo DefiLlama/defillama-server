@@ -25,6 +25,7 @@ const benddao: Protocol = {
   ),
   token: "ethereum:0x0d02755a5700414b26ff040e1de35d337df56218",
   sources: ["https://docs.benddao.xyz/portal/governance/bendenomics"],
+  protocolIds: ["1773", "2554"],
 };
 
 export default benddao;

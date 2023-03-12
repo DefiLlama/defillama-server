@@ -48,5 +48,6 @@ const angle: Protocol = {
     "https://snapshot.org/#/anglegovernance.eth/proposal/0x478e838b67f2dffcff6160d4c8adc9622d67db985c981e4cad45c031e284fd63",
   ],
   token: "ethereum:0x31429d1856ad1377a8a0079410b297e1a9e214c2",
+  protocolIds: ["756"],
 };
 export default angle;

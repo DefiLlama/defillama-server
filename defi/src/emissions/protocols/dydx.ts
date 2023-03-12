@@ -104,5 +104,6 @@ const dydx: Protocol = {
     "https://docs.dydx.community/dydx-governance/start-here/dydx-allocations",
   ],
   token: "ethereum:0x92d6c1e31e14520e676a687f0a93788b716beff5",
+  protocolIds: ["144"],
 };
 export default dydx;

@@ -28,6 +28,7 @@ const vela: Protocol = {
   sources: [
     "https://vela-exchange.gitbook.io/vela-knowledge-base/token-economy/usdvela-distribution",
   ],
+  protocolIds: ["2548"],
 };
 
 export default vela;

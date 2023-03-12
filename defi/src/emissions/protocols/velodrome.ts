@@ -32,6 +32,7 @@ const velodrome: Protocol = {
     "1/6 of this rake (0.5%) goes to the team as 6-month locked veVELO and then is linearly unlocked for 6 months. This hasnt been accounted for.",
   ],
   token: "optimism:0x3c8b650257cfb5f272f799f5e2b4e65093a11a05",
+  protocolIds: ["1799"],
 };
 
 export default velodrome;

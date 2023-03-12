@@ -29,5 +29,6 @@ const jonesDao: Protocol = {
   notes: [
     `Operations and Incentives allocations are emitted at a dynamic rate, so they have been excluded from our analysis. OlympusDAO's allocation is to be held in perpetuity (effectively burnt) so it has been excluded from our analysis.`,
   ],
+  protocolIds: ["1433"],
 };
 export default jonesDao;

@@ -27,5 +27,6 @@ const rocketpool: Protocol = {
     "https://medium.com/ddcfund/rocket-pool-rpl-the-leading-decentralized-staking-pool-for-ethereum-8101cbea9c5d",
   ],
   token: "ethereum:0xd33526068d116ce69f19a9ee46f0bd304f21a51f",
+  protocolIds: ["900"],
 };
 export default rocketpool;

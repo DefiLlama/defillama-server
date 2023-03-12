@@ -35,6 +35,7 @@ const radiant: Protocol = {
   "supply and borrowers incentives": schedule(60, 0.5),
   token: "arbitrum:0x0c4681e6c0235179ec3d4f4fc4df3d14fdd96017",
   sources: ["https://docs.radiant.capital/radiant/project-info/rdnt-token"],
+  protocolIds: ["1922"],
 };
 
 export default radiant;

@@ -36,5 +36,6 @@ const perpetual: Protocol = {
     "https://support.perp.com/hc/en-us/articles/5748445892761-PERP-Token#heading-1",
   ],
   token: "ethereum:0xbc396689893d065f41bc2c6ecbee5e0085233447",
+  protocolIds: ["362"],
 };
 export default perpetual;

@@ -1176,6 +1176,12 @@
       "symbol": "cAPE",
       "to": "ethereum:0x4d224452801ACEd8B2F0aebE155379bb5D594381"
     },
+    "0xaa0c3f5f7dfd688c6e646f66cd2a6b66acdbe434": {
+      "name": "Staked CvxCrv",
+      "decimals": "18",
+      "symbol": "stkCvxCrv",
+      "to": "ethereum:0x62B9c7356A2Dc64a1969e19C23e4f579F9810Aa7"
+    },
     "0xeb637a9ab6be83c7f8c79fdaa62e1043b65534f0": {
       "name": "BXHToken",
       "decimals": "18",

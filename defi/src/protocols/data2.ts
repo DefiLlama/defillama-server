@@ -16718,10 +16718,10 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "kleva",
     cmcId: "21122",
-    category: "Yield",
+    category: "Leveraged Farming",
     chains: ["Klaytn"],
     oracles: [],
-    forkedFrom: ["Alpaca Finance"],
+    forkedFrom: ["Alpaca Leveraged Yield Farming"],
     module: "kleva/index.js",
     twitter: "KLEVA_Protocol",
     audit_links: [
@@ -27645,7 +27645,7 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     module: "alpacafinance-gmx/index.js",
     twitter: "AlpacaFinance",
-    parentProtocol: "Alpaca",
+    parentProtocol: "Alpaca Finance",
     listedAt: 1678446144
   },
   {

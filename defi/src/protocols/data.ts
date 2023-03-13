@@ -4896,11 +4896,11 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "alpaca-finance",
     cmcId: "8707",
-    category: "Yield",
+    category: "Leveraged Farming",
     chains: ["Binance"],
     module: "alpaca-finance/index.js",
     twitter: "AlpacaFinance",
-    parentProtocol: "Alpaca",
+    parentProtocol: "Alpaca Finance",
     audit_links: ["https://docs.alpacafinance.org/our-protocol-1/transparency"],
     governanceID: ["snapshot:alpacafinance.eth"]
   },

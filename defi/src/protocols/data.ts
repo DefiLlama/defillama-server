@@ -11040,14 +11040,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "641",
-    name: "Arrakis Finance",
+    name: "Arrakis V1",
     address: null,
     symbol: "-",
     url: "https://www.arrakis.finance",
     description:
       "Arrakis is a protocol that specializes in concentrated & active liquidity management. By creating a curated marketplace of novel tokenized LP strategies, Arrakis facilitates deep liquidity and optimizes LP earnings across its vaults.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/arrakis-finance.png`,
+    logo: `${baseIconsUrl}/arrakis-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

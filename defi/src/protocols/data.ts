@@ -11456,6 +11456,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Options",
     chains: ["Ethereum", "Arbitrum"],
     module: "dopex/index.js",
+    treasury: "dopex.js",
     twitter: "dopex_io",
     audit_links: [
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Dopex%20%5B21.06.2021%5D.pdf",

@@ -6585,6 +6585,38 @@
       "to": "lung:0x0000000000000000000000000000000000000000"
     }
   },
+  "stacks": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "STX",
+      "decimals": "6",
+      "symbol": "STX",
+      "to": "coingecko#blockstack"
+    },
+    "SPSCWDV3RKV5ZRN1FQD84YE1NQFEDJ9R1F4DYQ11.newyorkcitycoin-token-v2::newyorkcitycoin": {
+      "name": "nycccoin",
+      "decimals": "6",
+      "symbol": "NYC",
+      "to": "coingecko#nycccoin"
+    },
+    "SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-token::newyorkcitycoin": {
+      "name": "nycccoin",
+      "decimals": "0",
+      "symbol": "NYC",
+      "to": "coingecko#nycccoin"
+    },
+    "SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-token::miamicoin": {
+      "name": "miamicoin",
+      "decimals": "0",
+      "symbol": "MIA",
+      "to": "coingecko#miamicoin"
+    },
+    "SP1H1733V5MZ3SZ9XRW9FKYGEZT0JDGEB8Y634C7R.miamicoin-token-v2::miamicoin": {
+      "name": "miamicoin",
+      "decimals": "6",
+      "symbol": "MIA",
+      "to": "coingecko#miamicoin"
+    }
+  },
   "map": {
     "0x0000000000000000000000000000000000000000": {
       "name": "MAP Protocol",

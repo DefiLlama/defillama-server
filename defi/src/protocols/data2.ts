@@ -27735,5 +27735,26 @@ const data2: Protocol[] = [
     parentProtocol: "Morphex",
     listedAt: 1678706137
   },
+  {
+    id: "2663",
+    name: "0xAcid",
+    address: "arbitrum:0x29C1EA5ED7af53094b1a79eF60d20641987c867e",
+    symbol: "ACID",
+    url: "https://0xacid.com",
+    description: "Unleash the true power of LSD. Bringing maximum LSD yield profits to Acid holders with our innovative revenue models.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/0xacid.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "acid",
+    cmcId: "23890",
+    category: "Liquid Staking",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "0xacid/index.js",
+    twitter: "0xAcidDAO",
+    listedAt: 1678716528
+  },
 ]
 export default data2;

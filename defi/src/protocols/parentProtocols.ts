@@ -1041,7 +1041,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "RociFi",
     name: "RociFi",
     url: "https://roci.fi",
-    description: "Under-collateralized lending protocol",
+    description: "RociFi - On-chain Credit Scoring and Capital-Efficient Lending Protocol",
     logo: `${baseIconsUrl}/rocifi.jpg`,
     gecko_id: null,
     cmcId: null,

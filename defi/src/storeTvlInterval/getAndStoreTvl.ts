@@ -64,6 +64,7 @@ async function getTvl(
             chainBlocks,
             { api, chain, storedKey, block, },
           );
+          if (!tvlBalances && Object.keys(api.balances).length) tvlBalances = api.balances
         }
         Object.keys(tvlBalances).forEach((key) => {
           if (+tvlBalances[key] === 0) delete tvlBalances[key]

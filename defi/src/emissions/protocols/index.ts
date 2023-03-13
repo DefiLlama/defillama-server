@@ -17,6 +17,7 @@ export default {
   idle: require("./idle"),
   hop: require("./hop"),
   jonesDao: require("./jonesDao"),
+  liquity: require("./liquity"),
   pendle: require("./pendle"),
   perpetual: require("./perpetual"),
   quickswap: require("./quickswap"),

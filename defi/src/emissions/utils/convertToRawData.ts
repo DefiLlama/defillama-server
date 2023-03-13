@@ -63,6 +63,8 @@ export async function createRawSections(
     }),
   );
 
+  if (!("protocolIds" in metadata))
+    throw new Error(`protocol must have a 'protocolIds' string[] property`);
   return { rawSections, startTime, endTime, metadata };
 }
 function stepAdapterToRaw(result: StepAdapterResult): RawResult[] {

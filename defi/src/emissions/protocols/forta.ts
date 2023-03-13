@@ -28,5 +28,6 @@ const forta: Protocol = {
   notes: [
     "the emission rate of unallocated in unconfirmed. Here we have excluded them from analytics.",
   ],
+  protocolIds: ["2664"],
 };
 export default forta;

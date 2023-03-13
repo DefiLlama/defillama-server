@@ -55,7 +55,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 const [chain, prot] = chainprot.split("#")
                 if (!timestamp || !record) return
                 const recordData = record.data?.[chain]
-                if (!recordData || !Object.keys(recordData).includes(prot)) return
+                if (!recordData || !Object.keys(recordData).includes(prot) || (cleanRecord !== null && !Object.keys(cleanRecord).includes(prot))) return
                 const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
                 for (let i = 1; i < gaps; i++) {
                     const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
@@ -157,7 +157,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         return acc
     }, Promise.resolve({
         adaptorRecords: [] as AdaptorRecord[],
-        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains,  protocols[0]) }), {}),
+        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0]) }), {}),
         nextDataRecord: {},
         recordsMap: {},
         ath: 0

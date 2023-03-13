@@ -27798,8 +27798,8 @@ const data2: Protocol[] = [
   {
     id: "2666",
     name: "Paxo Finance",
-    address: "0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29",
-    symbol: "FORT",
+    address: null,
+    symbol: "-",
     url: "https://paxo.finance",
     description: "Paxo finance is a permissionless DeFi marketplace where users can deposit cryptocurrencies/tokens and earn interest. It also allows users to borrow from the lending pools and invest in crypto assets in a walled guarded manner.",
     chain: "Polygon",
@@ -27819,6 +27819,27 @@ const data2: Protocol[] = [
                    "https://github.com/Quillhash/QuillAudit_Reports/blob/master/Paxo%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"
                  ],
     listedAt: 1678721730
+  },
+  {
+    id: "2667",
+    name: "Arrakis V2",
+    address: null,
+    symbol: "-",
+    url: "https://beta.arrakis.finance/vaults",
+    description: "Arrakis V2 is a next-generation market-making infrastructure built on top of Uniswap V3. Its unique functionalities allow the creation and automated execution of sophisticated market-making strategies on Uniswap V3 that previously were only feasible on CEXs.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/arrakis-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "arrakis-v2/index.js",
+    twitter: "ArrakisFinance",
+    listedAt: 1678728840
   },
 ]
 export default data2;

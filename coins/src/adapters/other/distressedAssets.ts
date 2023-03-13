@@ -49,17 +49,32 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
   },
 };
 
+const eulerTokens = [
+  "0x1b808f49add4b8c6b5117d9681cf7312fcf0dc1d",
+  "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+  "0xeb91861f8a4e1c12333f42dce8fb0ecdc28da716",
+  "0x4d19f33948b99800b6113ff3e83bec9b537c85d2",
+  // 4626 wrapped eTokens
+  "0x60897720aa966452e8706e74296b018990aec527",
+  "0x3c66B18F67CA6C1A71F829E2F6a0c987f97462d0",
+  "0x4169Df1B7820702f566cc10938DA51F6F597d264",
+]
+
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const writes: Write[] = [];
+  const tokens = Object.values(contracts[chain])
+
+  if (chain === 'ethereum')
+    tokens.push(...eulerTokens)
 
   const tokenInfos = await getTokenInfo(
     chain,
-    Object.values(contracts[chain]),
+    tokens,
     block,
   );
 
-  Object.values(contracts[chain]).map((a: string, i: number) => {
+  tokens.map((a: string, i: number) => {
     addToDBWritesList(
       writes,
       chain,

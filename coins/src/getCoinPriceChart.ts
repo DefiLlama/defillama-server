@@ -3,7 +3,7 @@ import {
   successResponse,
   wrap,
   IResponse,
-  errorResponse
+  errorResponse,
 } from "./utils/shared";
 import { getBasicCoins } from "./utils/getCoinsUtils";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
@@ -32,51 +32,76 @@ type QueryParams = {
 };
 function uintCheck(value: any, name: string) {
   if (value < 0 || isNaN(value))
-    return errorResponse({ message: `${name} must be uint` });
+    return errorResponse({
+      message: `${name} is not an uint`,
+    });
+
   return value;
 }
 function formParamsObject(event: any): QueryParams {
-  const paramKeys: string[] = ["period", "span", "start", "end", "searchWidth"];
   let params: any = { coins: (event.pathParameters?.coins ?? "").split(",") };
-  for (let p of paramKeys) {
+
+  for (let p of Object.keys(event.queryStringParameters)) {
     let value;
-    if (p == "period") {
-      value = quantisePeriod(
-        event.queryStringParameters?.period?.toLowerCase() ?? "d"
-      );
-    } else if (p == "searchWidth") {
-      value = quantisePeriod(
-        event.queryStringParameters?.searchWidth?.toLowerCase() ??
-          (params.period / 10).toString()
-      );
-    } else if (p == "end") {
-      value = parseInt(
-        event.queryStringParameters?.[p] ?? getCurrentUnixTimestamp()
-      );
-    } else {
-      value = parseInt(event.queryStringParameters?.[p] ?? "0");
+
+    switch (p) {
+      case "period":
+        value = quantisePeriod(
+          event.queryStringParameters?.period?.toLowerCase() ?? "d",
+        );
+        break;
+
+      case "searchWidth":
+        value = quantisePeriod(
+          event.queryStringParameters?.searchWidth?.toLowerCase() ??
+            (params.period / 10).toString(),
+        );
+        break;
+
+      case "end":
+        value = parseInt(
+          event.queryStringParameters?.[p] ?? getCurrentUnixTimestamp(),
+        );
+        break;
+
+      case "start":
+        value = parseInt(event.queryStringParameters?.[p] ?? "1514764800"); // 1/1/18
+        break;
+
+      case "span":
+        value = parseInt(event.queryStringParameters?.[p] ?? "0");
+        break;
+
+      default:
+        params[p] = errorResponse({
+          message: `${p} is either an invalid param`,
+        });
+        continue;
     }
+
     params[p] = uintCheck(value, p);
   }
+
   if (params.start + params.end == 0) params.end = getCurrentUnixTimestamp();
+
   return params;
 }
 async function fetchDBData(
   params: QueryParams,
   timestamps: number[],
   coins: any[],
-  PKTransforms: any
+  PKTransforms: any,
 ) {
   let response = {} as PriceChartResponse;
-
   const promises: any[] = [];
+
   coins.map(async (coin) => {
     promises.push(
       ...timestamps.map(async (timestamp) => {
         const finalCoin = await getRecordClosestToTimestamp(
           coin.redirect ?? coin.PK,
           timestamp,
-          params.searchWidth
+          params.searchWidth,
         );
         if (finalCoin.SK === undefined) {
           return;
@@ -86,43 +111,42 @@ async function fetchDBData(
             symbol: coin.symbol,
             confidence: coin.confidence,
             decimals: coin.decimals,
-            prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }]
+            prices: [{ timestamp: finalCoin.SK, price: finalCoin.price }],
           };
         } else {
           response[PKTransforms[coin.PK]].prices.push({
             timestamp: finalCoin.SK,
-            price: finalCoin.price
+            price: finalCoin.price,
           });
         }
-      })
+      }),
     );
   });
+
   await Promise.all(promises);
   return response;
 }
-const handler = async (
-  event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
+const handler = async (event: any): Promise<IResponse> => {
   if (
     event.queryStringParameters?.start != null &&
     event.queryStringParameters?.end != null
   ) {
     return errorResponse({
-      message: "use either start or end parameter, not both"
+      message: "use either start or end parameter, not both",
     });
   }
   const params = formParamsObject(event);
 
   const paramError: any = Object.values(params).find(
-    (p: any) => typeof p == "object" && p.length == undefined
+    (p: any) => typeof p == "object" && p.length == undefined,
   );
   if (paramError) return paramError;
 
   const timestamps: number[] = getTimestampsArray(
-    params.end == 0 ? params.start : params.end,
-    params.end == 0,
+    params.end == null ? params.start : params.end,
+    params.end == null,
     params.period,
-    params.span
+    params.span,
   );
 
   const { PKTransforms, coins } = await getBasicCoins(params.coins);
@@ -131,18 +155,18 @@ const handler = async (
     params,
     timestamps,
     coins,
-    PKTransforms
+    PKTransforms,
   );
   Object.values(response).map((r: any) =>
     r.prices.sort((a: TimedPrice, b: TimedPrice) =>
-      a.timestamp > b.timestamp ? 1 : -1
-    )
+      a.timestamp > b.timestamp ? 1 : -1,
+    ),
   );
   return successResponse(
     {
-      coins: response
+      coins: response,
     },
-    3600
+    3600,
   ); // 1 hour cache
 };
 

@@ -193,7 +193,7 @@ export const generateAggregatedVolumesChartDataImprov = (protocols: ProtocolAdap
     return chartData
 }
 
-export const generateByDexVolumesChartDataImprov = (protocols: ProtocolAdaptorSummary[]): IChartDataBreakdown => {
+export const generateByChainVolumesChartDataBreakdown = (protocols: ProtocolAdaptorSummary[]): IChartDataBreakdown => {
     const chartData: IChartDataBreakdown = []
     const dataPoints = getDataPoints()
     for (const dataPoint of dataPoints) {
@@ -201,7 +201,15 @@ export const generateByDexVolumesChartDataImprov = (protocols: ProtocolAdaptorSu
         for (const protocol of protocols) {
             const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
             if (volumeObj) {
-                dayBreakDown[protocol.displayName] = volumeObj as IRecordAdapterRecordChainData
+                Object.entries(volumeObj).forEach(([chain, value]) => {
+                    if (typeof value === 'number') return
+                    const key = protocol.versionKey ?? protocol.module
+                    dayBreakDown[chain] = {
+                        ...dayBreakDown[chain],
+                        [protocol.displayName]: value[key]
+                    }
+                })
+                //dayBreakDown[protocol.displayName] = volumeObj as IRecordAdapterRecordChainData
             }
         }
         chartData.push([dataPoint, dayBreakDown])

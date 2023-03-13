@@ -6,7 +6,7 @@ import loadAdaptorsData from "../../data"
 import { AdaptorData, IJSON, ProtocolAdaptor } from "../../data/types";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
-import { formatNdChangeNumber, generateAggregatedVolumesChartData, generateAggregatedVolumesChartDataImprov, generateByDexVolumesChartData, generateByDexVolumesChartDataImprov, IChartData, IChartDataBreakdown, IChartDatav2, sumAllVolumes } from "../../utils/volumeCalcs";
+import { formatNdChangeNumber, generateAggregatedVolumesChartData, generateAggregatedVolumesChartDataImprov, generateByDexVolumesChartData, generateByChainVolumesChartDataBreakdown, IChartData, IChartDataBreakdown, IChartDatav2, sumAllVolumes } from "../../utils/volumeCalcs";
 import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGetOverviewResponseBody, ProtocolAdaptorSummary } from "../getOverviewProcess";
 import parentProtocols from "../../../protocols/parentProtocols";
 import standardizeProtocolName from "../../../utils/standardizeProtocolName";
@@ -156,7 +156,7 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
     const totalYesterday = sumReduce(summaries, 'total48hto24h')
     const change_1d = formatNdChangeNumber(totalToday && totalYesterday ? ((totalToday - totalYesterday) / totalYesterday) * 100 : null)
     let totalDataChart = generateAggregatedVolumesChartDataImprov(summaries.map((s) => s.generatedSummary).filter(notUndefined))
-    let totalDataChartBreakdown = generateByDexVolumesChartDataImprov(summaries.map((s) => s.generatedSummary).filter(notUndefined))
+    let totalDataChartBreakdown = generateByChainVolumesChartDataBreakdown(summaries.map((s) => s.generatedSummary).filter(notUndefined))
     // This could be avoided/optimized if moved to generateAggregatedVolumesChartData
     totalDataChart = totalDataChart.slice(
         totalDataChart.findIndex(it => it[1] !== 0),

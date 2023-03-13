@@ -43,6 +43,7 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'methodology'
     | 'allAddresses'
     | 'parentProtocol'
+    | 'versionKey'
 > & {
     records: AdaptorRecord[] | null
     recordsMap: IJSON<AdaptorRecord> | null

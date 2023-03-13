@@ -27713,5 +27713,27 @@ const data2: Protocol[] = [
     parentProtocol: "Spin",
     listedAt: 1678620532
   },
+  {
+    id: "2662",
+    name: "Morphex Perp",
+    address: "fantom:0x66eed5ff1701e6ed8470dc391f05e27b1d0657eb",
+    symbol: "MPX",
+    url: "https://www.morphex.trade",
+    description: "Decentralized perpetual exchange, powered by Fantom.",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/morphex-perp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Fantom"],
+    oracles: [],
+    forkedFrom: ["GMX"],
+    module: "morphex/index.js",
+    twitter: "MorphexFTM",
+    parentProtocol: "Morphex",
+    listedAt: 1678706137
+  },
 ]
 export default data2;

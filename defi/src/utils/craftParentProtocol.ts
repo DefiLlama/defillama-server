@@ -5,6 +5,7 @@ import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
 import { craftParentProtocolDraft } from "./craftParentProtocolDraft";
+import { getAvailableMetricsByModule } from "../adaptors/data/configs";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -375,6 +376,7 @@ export default async function craftParentProtocol({
     tokensInUsd: formattedTokensInUsd,
     tvl: formattedTvl,
     isParentProtocol: true,
+    metrics: getAvailableMetricsByModule(parentProtocol.id),
     raises: childProtocolsTvls?.reduce((acc, curr) => {
       acc = [...acc, ...(curr.raises || [])];
       return acc;

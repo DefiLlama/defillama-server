@@ -23,7 +23,7 @@ export function createChartData(
     );
   });
 
-  return consolidateDuplicateKeys(data);
+  return isTest ? data : consolidateDuplicateKeys(data);
 }
 function consolidateDuplicateKeys(data: any[]) {
   let sortedData: any[] = [];

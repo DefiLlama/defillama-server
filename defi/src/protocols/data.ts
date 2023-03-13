@@ -11056,6 +11056,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "sorbetfinance/index.js",
     twitter: "ArrakisFinance",
+    parentProtocol: "Arrakis Finance",
     audit_links: [
       "https://www.certik.org/projects/gelato",
       "https://drive.google.com/file/d/1aTmVdENDTt7-Rbr9Nxx8DLqy8BE0ZLew/view?usp=sharing",

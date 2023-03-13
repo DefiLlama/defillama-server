@@ -1116,6 +1116,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MorphexFTM",
   },
   */
+  {
+    id: "Arrakis Finance",
+    name: "Arrakis Finance",
+    url: "https://www.arrakis.finance",
+    description: "Arrakis is web3's trustless market making infrastructure protocol that enables running sophisticated algorithmic strategies on Uniswap V3. Liquidity providers can utilize Arrakis Vaults to have their liquidity be managed in an automated, capital efficient, non-custodial and transparent manner. ",
+    logo: `${baseIconsUrl}/arrakis-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ArrakisFinance",
+  },
 ];
 
 export default parentProtocols;

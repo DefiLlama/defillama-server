@@ -9804,7 +9804,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "morpheusswap/index.js",
     twitter: "MorpheusSwap",
     audit_links: ["https://morpheusswap.gitbook.io/morpheus-swap/security/audit"],
-    parentProtocol: "Morphex",
     forkedFrom: ["Uniswap"],
   },
   {

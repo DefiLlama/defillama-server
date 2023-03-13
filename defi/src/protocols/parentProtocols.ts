@@ -1103,6 +1103,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "spin_fi",
   },
+  /*
   {
     id: "Morphex",
     name: "Morphex",
@@ -1114,6 +1115,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MorphexFTM",
   },
+  */
 ];
 
 export default parentProtocols;

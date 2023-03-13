@@ -1103,6 +1103,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "spin_fi",
   },
+  {
+    id: "Morphex",
+    name: "Morphex",
+    url: "https://www.morphex.trade",
+    description: "Trade cryptocurrencies on Fantom with up to 30x leverage directly from your wallet",
+    logo: `${baseIconsUrl}/spin.png`,
+    gecko_id: "mpx",
+    cmcId: "23431",
+    chains: [],
+    twitter: "MorphexFTM",
+  },
 ];
 
 export default parentProtocols;

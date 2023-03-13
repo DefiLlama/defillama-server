@@ -1866,6 +1866,18 @@
       "symbol": "qiAVAX",
       "to": "avax:0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7"
     },
+    "0x9e295b5b976a184b14ad8cd72413ad846c299660": {
+      "name": "fsGLP",
+      "symbol": "fsGLP",
+      "decimals": 18,
+      "to": "avax:0x01234181085565ed162a948b6a5e88758cd7c7b8"
+    },
+    "0xd2d1162512f927a7e282ef43a362659e4f2a728f": {
+      "name": "fGLP",
+      "symbol": "fGLP",
+      "decimals": 18,
+      "to": "avax:0x01234181085565ed162a948b6a5e88758cd7c7b8"
+    },
     "0x9debca6ea3af87bf422cea9ac955618ceb56efb4": {
       "name": "DMMDAI",
       "decimals": "18",

@@ -27732,7 +27732,6 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     module: "morphex/index.js",
     twitter: "MorphexFTM",
-    parentProtocol: "Morphex",
     listedAt: 1678706137
   },
   {

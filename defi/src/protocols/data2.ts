@@ -27796,5 +27796,30 @@ const data2: Protocol[] = [
     module: "dummy.js",
     twitter: "apecoin",
   },
+  {
+    id: "2666",
+    name: "Paxo Finance",
+    address: "0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29",
+    symbol: "FORT",
+    url: "https://paxo.finance",
+    description: "Paxo finance is a permissionless DeFi marketplace where users can deposit cryptocurrencies/tokens and earn interest. It also allows users to borrow from the lending pools and invest in crypto assets in a walled guarded manner.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/paxo-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: ["Compound"],
+    module: "paxo-finance/index.js",
+    twitter: "paxofinance",
+    audit_links: [
+                   "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Paxo-v1.0.pdf",
+                   "https://github.com/Quillhash/QuillAudit_Reports/blob/master/Paxo%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"
+                 ],
+    listedAt: 1678721730
+  },
 ]
 export default data2;

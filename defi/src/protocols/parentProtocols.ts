@@ -1127,6 +1127,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ArrakisFinance",
   },
+  {
+    id: "Enosys",
+    name: "Enosys",
+    url: "https://www.arrakis.finance",
+    description: "Formerly FLR Finance. Building a Multi-Chain DeFi Economy. From the creators of @FlareScan and @DeFiOracles",
+    logo: `${baseIconsUrl}/arrakis-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "enosys_global",
+  },
 ];
 
 export default parentProtocols;

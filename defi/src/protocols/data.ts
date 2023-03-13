@@ -15864,6 +15864,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "flarex/index.js",
     twitter: "flrfinance",
     forkedFrom: ["Uniswap"],
+    parentProtocol: "Enosys",
     listedAt: 1637418466,
   },
   {
@@ -16443,6 +16444,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "flare-loans/index.js",
     twitter: "flrfinance",
     forkedFrom: ["Liquity"],
+    parentProtocol: "Enosys",
     listedAt: 1637821444,
   },
   {
@@ -23713,6 +23715,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Songbird"],
     module: "flarefarm/index.js",
     twitter: "flrfinance",
+    parentProtocol: "Enosys",
     listedAt: 1642143222,
   },
   {

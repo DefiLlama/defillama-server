@@ -152,6 +152,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             allAddresses: adapter.allAddresses,
             parentProtocol: adapter.parentProtocol,
             latestFetchIsOk: adapter?.config?.latestFetchIsOk ?? true,
+            versionKey: adapter.versionKey,
             ...extraTypes
         }
     } catch (error) {
@@ -169,6 +170,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
             methodologyURL: adapter.methodologyURL,
             latestFetchIsOk: adapter?.config?.latestFetchIsOk ?? false,
+            versionKey: adapter.versionKey,
             total24h: null,
             total48hto24h: null,
             total7d: null,

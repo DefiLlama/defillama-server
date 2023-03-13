@@ -27839,6 +27839,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "arrakis-v2/index.js",
     twitter: "ArrakisFinance",
+    parentProtocol: "Arrakis Finance",
     listedAt: 1678728840
   },
 ]

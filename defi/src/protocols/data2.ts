@@ -27715,7 +27715,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2662",
-    name: "Morphex Perp",
+    name: "Morphex",
     address: "fantom:0x66eed5ff1701e6ed8470dc391f05e27b1d0657eb",
     symbol: "MPX",
     url: "https://www.morphex.trade",

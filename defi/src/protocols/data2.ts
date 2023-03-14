@@ -27935,5 +27935,50 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1678815732
   },
+  {
+    id: "2672",
+    name: "Alyx finance",
+    address: "bsc:0x2701C7cBf3220FFF6e6CEaabbCD9B932Eb11E3Ff",
+    symbol: "ALYX",
+    url: "https://alyx.finance/",
+    description:
+      "A DAO defi that marries real-yields with AI NFT art, and a liquidity protocol. Alyx is first and foremost a DAO that operates the $ALYX currency to grow a treasury that correspondingly backs $ALYX token as a reserve currency",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/alyx-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Reserve Currency",
+    chains: ["Binance"],
+    module: "alyx-finance/index.js",
+    twitter: "AlyxFinance",
+    oracles: [],
+    forkedFrom: ["Olympus DAO"],
+    listedAt: 1678821724
+  },
+  {
+    id: "2673",
+    name: "MetaCoin Swap",
+    address: null,
+    symbol: "-",
+    url: "https://metacoinswap.io/",
+    description:
+      "MetacoinSwap is a decentralized exchange platform constructed on top of EVM compatible blockchains. It provides order book tradings for users, with visualised candlestick charts to enhance trading experience",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/metacoin-swap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    module: "metacoin/index.js",
+    twitter: "metacoinswap",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://www.certik.com/projects/metacoinswap"],
+    listedAt: 1678822025
+  },
 ]
 export default data2;

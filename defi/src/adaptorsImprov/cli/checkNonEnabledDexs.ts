@@ -1,7 +1,5 @@
-import config from "../../adaptors/data/dexs/config";
-import config_new from "../data/dexs/config";
-import path from "path";
-import getDirectories from "../utils/getDirectories";
+import config from "../../adaptors/data/fees/config";
+import config_new from "../data/fees/config";
 
 const moduleKeys_old = Object.keys(config)
 const modules_new = Object.keys(config_new)

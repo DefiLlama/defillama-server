@@ -579,5 +579,33 @@ export default {
     "frax-ether": {
         enabled: true,
         "id": "2221"
+    },
+    "frax-fpi": {
+        enabled: true,
+        id: "2607"
+    },
+    "zora": {
+        enabled: true,
+        id: "2610"
+    },
+    "solidlizard": {
+        enabled: true,
+        id: "2528"
+    },
+    "chainlink": {
+        enabled: true,
+        id: "2623"
+    },
+    "zyberswap": {
+        enabled: true,
+        id: "2467"
+    },
+    "cow-protocol": {
+        enabled: true,
+        id: "2643"
+    },
+    "maverick": {
+        enabled: true,
+        id: "2644"
     }
 } as AdaptorsConfig

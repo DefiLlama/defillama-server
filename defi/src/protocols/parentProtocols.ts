@@ -1138,6 +1138,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "enosys_global",
   },
+  {
+    id: "Velocimeter",
+    name: "Velocimeter",
+    url: "https://canto.velocimeter.xyz/",
+    description: "Velocimeter's twin-AMM design unites StableSwap pools with Standard 'kxy' liquidity pools. All the trading fees go to Vote-Escrowers of emission token $FLOW which has to be Locked to earn triple 'Bribes' from candidate pools via Trade Fee, Internal Bribes & External Bribes",
+    logo: `${baseIconsUrl}/velocimeter.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "VelocimeterDEX",
+  },
 ];
 
 export default parentProtocols;

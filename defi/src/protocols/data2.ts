@@ -25983,7 +25983,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2584",
-    name: "Velocimeter",
+    name: "Velocimeter V1",
     address: "canto:0x2Baec546a92cA3469f71b7A091f7dF61e5569889",
     symbol: "FLOW",
     url: "https://canto.velocimeter.xyz/",
@@ -26002,6 +26002,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Solidly"],
     audit_links: [],
+    parentProtocol: "Velocimeter",
     listedAt: 1677302601
   },
   {
@@ -27841,6 +27842,30 @@ const data2: Protocol[] = [
     twitter: "ArrakisFinance",
     parentProtocol: "Arrakis Finance",
     listedAt: 1678728840
+  },
+  {
+    id: "2668",
+    name: "Velocimeter V2",
+    address: "canto:0x2Baec546a92cA3469f71b7A091f7dF61e5569889",
+    symbol: "FLOW",
+    url: "https://www.velocimeter.xyz/swap",
+    description:
+      "Velocimeter's twin-AMM design unites StableSwap pools with Standard 'kxy' liquidity pools. All the trading fees go to Vote-Escrowers of emission token $FLOW which has to be Locked to earn triple 'Bribes' from candidate pools via Trade Fee, Internal Bribes & External Bribes",
+    chain: "Canto",
+    logo: `${baseIconsUrl}/velocimeter.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Canto"],
+    module: "velocimeter-v2/index.js",
+    twitter: "VelocimeterDEX",
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    audit_links: [],
+    parentProtocol: "Velocimeter",
+    listedAt: 1678765228
   },
 ]
 export default data2;

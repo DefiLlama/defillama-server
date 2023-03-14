@@ -61,7 +61,10 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
         }
         else if ('breakdown' in moduleObject) {
             const protocolsData = config?.[adapterKey]?.protocolsData
-            if (!protocolsData) throw "No protocols data defined for breakdown man!" + adapterKey
+            if (!protocolsData) {
+                console.error(`No protocols data defined in ${type}'s config for adapter with breakdown`, adapterKey)
+                return
+            }
             dexFoundInProtocolsArr = Object.values(protocolsData).map(protocolData => {
                 if (!list[protocolData.id]) console.error(`Protocol not found with id ${protocolData.id} and key ${adapterKey}`)
                 return list[protocolData.id]

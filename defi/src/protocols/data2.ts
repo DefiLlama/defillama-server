@@ -27867,5 +27867,28 @@ const data2: Protocol[] = [
     parentProtocol: "Velocimeter",
     listedAt: 1678765228
   },
+  {
+    id: "2669",
+    name: "UWU Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://uwu.cash",
+    description:
+      "UWU Protocol lets you access your STX's value today, without missing out on tomorrow's upside.",
+    chain: "Stacks",
+    logo: `${baseIconsUrl}/uwu-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Stacks"],
+    module: "uwu-cash/index.js",
+    twitter: "VelocimeterDEX",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1678792677
+  },
 ]
 export default data2;

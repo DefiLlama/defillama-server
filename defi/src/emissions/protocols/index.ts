@@ -1,5 +1,6 @@
 export default {
   aave: require("./aave"),
+  abracadabra: require("./abracadabra"),
   // angle: require("./angle"),
   apecoin: require("./apecoin"),
   aptos: require("./aptos"),

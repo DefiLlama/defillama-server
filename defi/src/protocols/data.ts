@@ -7313,7 +7313,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "460",
-    name: "Ondo Finance V1",
+    name: "Ondo v1 (Legacy)",
     address: "-",
     symbol: "-",
     url: "https://v1.ondo.finance",
@@ -7334,7 +7334,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://docs.ondo.finance/assets/files/Ondo-ABDK-Audit-October-2022-b08d29dce81d383e0d2c05fbf51af385.pdf",
       "https://docs.ondo.finance/assets/files/Ondo-Quantstamp-Audit-January_2022-c670ae4579ad332729bcc271612dda74.pdf"
     ],
-    parentProtocol: "Ondo Finance"
   },
   {
     id: "461",

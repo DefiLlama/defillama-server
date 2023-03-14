@@ -25038,7 +25038,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2542",
-    name: "Ondo Finance V2",
+    name: "Ondo Finance",
     address: "-",
     symbol: "-",
     url: "https://ondo.finance",
@@ -25055,7 +25055,6 @@ const data2: Protocol[] = [
     module: "ondofinance/index.js",
     twitter: "OndoFinance",
     audit_links: ["https://www.certik.org/projects/ondofinance"],
-    parentProtocol: "Ondo Finance"
   },
   {
     id: "2543",

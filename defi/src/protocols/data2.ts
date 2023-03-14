@@ -27884,7 +27884,7 @@ const data2: Protocol[] = [
     category: "CDP",
     chains: ["Stacks"],
     module: "uwu-cash/index.js",
-    twitter: "VelocimeterDEX",
+    twitter: "@UWUProtocol",
     oracles: [],
     forkedFrom: [],
     audit_links: [],

@@ -27801,7 +27801,7 @@ const data2: Protocol[] = [
     name: "Paxo Finance",
     address: null,
     symbol: "-",
-    url: "https://paxo.finance",
+    url: "https://www.alpha-app.paxo.finance",
     description: "Paxo finance is a permissionless DeFi marketplace where users can deposit cryptocurrencies/tokens and earn interest. It also allows users to borrow from the lending pools and invest in crypto assets in a walled guarded manner.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/paxo-finance.jpg`,

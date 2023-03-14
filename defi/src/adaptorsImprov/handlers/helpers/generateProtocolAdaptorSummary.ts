@@ -61,7 +61,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             }
         }
 
-        const startTimestamp = getConfigByType(adaptorType, adapter.module)?.startFrom
+        const startTimestamp = adapter.startFrom
         const startIndex = startTimestamp ? adaptorRecordsRaw.findIndex(ar => ar.timestamp === startTimestamp) : -1
         let adaptorRecords = adaptorRecordsRaw.slice(startIndex + 1)
 

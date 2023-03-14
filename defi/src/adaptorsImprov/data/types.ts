@@ -12,6 +12,7 @@ export interface ProtocolAdaptor extends Protocol {
     methodologyURL: string
     methodology?: string | IJSON<string>
     allAddresses?: Array<string>
+    startFrom?: number
 }
 
 export interface IConfig {

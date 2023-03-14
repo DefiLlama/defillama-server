@@ -1218,5 +1218,45 @@ export default {
     "metavault.trade": {
         "enabled": true,
         "id": "1801"
+    },
+    "1inch": {
+        enabled: false,
+        id: "189"
+    },
+    /* "carthage": {
+        enabled: false,
+        id: 1944
+    }, */
+    "dexible": {
+        enabled: false,
+        id: "2249"
+    },
+    "alienfi": {
+        enabled: true,
+        id: "2603"
+    },
+    "oswap": {
+        enabled: true,
+        id: "1778"
+    },
+    "maverick": {
+        enabled: true,
+        id: "2644"
+    },
+    "integral": {
+        enabled: true,
+        id: "291"
+    },
+    "archerswap": {
+        enabled: true,
+        id: "2648"
+    },
+    "ponytaswap": {
+        enabled: true,
+        id: "2657"
+    },
+    "equilibre": {
+        enabled: true,
+        id: "2586"
     }
 } as AdaptorsConfig

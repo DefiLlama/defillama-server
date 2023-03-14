@@ -1,5 +1,6 @@
 export default {
   aave: require("./aave"),
+  abracadabra: require("./abracadabra"),
   // angle: require("./angle"),
   apecoin: require("./apecoin"),
   aptos: require("./aptos"),
@@ -20,6 +21,7 @@ export default {
   liquity: require("./liquity"),
   pendle: require("./pendle"),
   perpetual: require("./perpetual"),
+  qiDao: require("./qiDao"),
   quickswap: require("./quickswap"),
   gearbox: require("./gearbox"),
   radiant: require("./radiant"),

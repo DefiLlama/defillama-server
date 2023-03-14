@@ -1229,7 +1229,13 @@ export default {
     }, */
     "dexible": {
         enabled: false,
-        id: "2249"
+        id: "2249",
+        protocolsData: {
+            Dexible_v2: {
+                id: "2249",
+                enabled: false
+            }
+        }
     },
     "alienfi": {
         enabled: true,

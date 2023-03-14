@@ -2,7 +2,7 @@ import { manualCliff, manualLinear } from "../adapters/manual";
 import { Protocol } from "../types/adapters";
 import { periodToSeconds } from "../utils/time";
 
-const start: number = 0;
+const start: number = 1619996400;
 const qty: number = 200_000_000;
 
 const qiDao: Protocol = {

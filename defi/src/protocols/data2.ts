@@ -27890,5 +27890,50 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1678792677
   },
+  {
+    id: "2670",
+    name: "KoffeeSwap",
+    address: null,
+    symbol: "-",
+    url: "https://koffeeswap.exchange/#/swap",
+    description:
+      "KoffeeSwap - DEX on KCC with live charts and transaction history.",
+    chain: "KCC",
+    logo: `${baseIconsUrl}/koffeswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["KCC"],
+    module: "koffeeswap/index.js",
+    twitter: "KoffeeSwap",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1678815729
+  },
+  {
+    id: "2671",
+    name: "Finext Finance",
+    address: "arbitrum:0x593d93f2c32B2D9E22f77a7274224Fd4a87F106D",
+    symbol: "FINX",
+    url: "https://finext.finance",
+    description:
+      "FINEXT is a decentralized finance (DeFi) with a seigniorage algorithmic token on Arbitrum, bringing a model that follows the price of a defined asset (ETH in this case).",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/finext-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Arbitrum"],
+    module: "finext-finance/index.js",
+    twitter: "finext_finance",
+    oracles: ["TWAP"],
+    forkedFrom: [],
+    listedAt: 1678815732
+  },
 ]
 export default data2;

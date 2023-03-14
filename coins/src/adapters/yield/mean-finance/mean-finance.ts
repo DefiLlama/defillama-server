@@ -3,7 +3,15 @@ import { Write } from "../../utils/dbInterfaces";
 import { calculate4626Prices } from "../../utils/erc4626";
 import { fetch } from "../../utils";
 
-const blacklist: string[] = ["0x35ddc863400689f7aa4deca7986c40b0559333fa"];
+const blacklist: string[] = [
+  // Ethereum
+  '0xCd0E5871c97C663D43c62B5049C123Bb45BfE2cC', // Euler 4626 (USDC)
+  '0xd4dE9D2Fc1607d1DF63E1c95ecBfa8d7946f5457', // Euler 4626 (WETH)
+  '0xc4113b7605D691E073c162809060b6C5Ae402F1e', // Euler 4626 (DAI)
+  '0x48E345cb84895EAb4db4C44ff9B619cA0bE671d9', // Euler 4626 (WBTC)
+  '0xb95E6eee428902C234855990E18a632fA34407dc', // Euler 4626 (LUSD)
+  '0x7C6D161b367Ec0605260628c37B8dd778446256b', // Euler 4626 (wstETH)
+].map(token => token.toLowerCase());
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const tokens: { type: string; address: string }[] = await fetch(

@@ -825,5 +825,8 @@ export default {
     },
     "ponytaswap": {
         enabled: true
+    },
+    "equilibre": {
+        enabled: true
     }
 } as AdaptorsConfig

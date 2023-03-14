@@ -310,7 +310,7 @@ const data2: Protocol[] = [
     module: "enso-finance/index.js",
     twitter: "EnsoFinance",
     listedAt: 1645036681,
-  }, 
+  },
   */
   {
     id: "1422",
@@ -8397,8 +8397,8 @@ const data2: Protocol[] = [
     address: "0xd0cd466b34a24fcb2f87676278af2005ca8a78c4",
     symbol: "POP",
     url: "https://popcorndao.finance",
-    description: `Popcorn is where DeFi and Social impact collide. 
-    Earn high yield on your cryptoassets while creating real world impact. 
+    description: `Popcorn is where DeFi and Social impact collide.
+    Earn high yield on your cryptoassets while creating real world impact.
     Popcorn's products fund environmental, open source, and educational initiatives.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/popcorn.png`,
@@ -21038,7 +21038,7 @@ const data2: Protocol[] = [
     description:
       "Provide liquidity directly to the pool of your choice and receive NPT in addition to the base rewards by using a non-custodial wallet NEOPIN Wallet.",
     chain: "Klaytn",
-    logo: `${baseIconsUrl}/neopin-pool.jpg`,
+    logo: `${baseIconsUrl}/neopin-pool.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -21066,7 +21066,7 @@ const data2: Protocol[] = [
     description:
       "Earn rewards by safely delegating your crypto assets to one of the leading node validators NEOPIN.",
     chain: "Klaytn",
-    logo: `${baseIconsUrl}/neopin-staking.jpg`,
+    logo: `${baseIconsUrl}/neopin-staking.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -23194,7 +23194,7 @@ const data2: Protocol[] = [
     listedAt: 1674213134
   },
   {
-    id: "2460", 
+    id: "2460",
     name: "SkullSwap V2",
     address: "fantom:0xfa5992A8A47aF7029e04eC6a95203AD3f301460b",
     symbol: "SKULL",
@@ -27072,7 +27072,7 @@ const data2: Protocol[] = [
     oracles: ["Chainlink"],
     twitter: "LendeXeFinance",
     audit_links: ["https://www.certik.com/projects/lendexe"],
-    listedAt: 1677865003  
+    listedAt: 1677865003
   },
   {
     id: "2633",
@@ -27094,7 +27094,7 @@ const data2: Protocol[] = [
     oracles: ["Oracles.Cash"],
     twitter: "AnyHedge",
     audit_links: [],
-    listedAt: 1677872808  
+    listedAt: 1677872808
   },
   {
     id: "2634",
@@ -27115,7 +27115,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "XBlueFinance",
-    listedAt: 1678021458 
+    listedAt: 1678021458
   },
   {
     id: "2635",
@@ -27136,7 +27136,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "LazyFi_Learning",
-    listedAt: 1678109560 
+    listedAt: 1678109560
   },
   {
     id: "2636",

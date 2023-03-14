@@ -54,7 +54,8 @@ export default {
             },
             stableswap: {
                 "enabled": true,
-                "id": "2529"
+                "id": "2529",
+                startFrom: 1663718400
             }
         },
     },

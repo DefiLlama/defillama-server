@@ -27955,6 +27955,7 @@ const data2: Protocol[] = [
     twitter: "AlyxFinance",
     oracles: [],
     forkedFrom: ["Olympus DAO"],
+    treasury: "alyx.js",
     listedAt: 1678821724
   },
   {
@@ -28024,6 +28025,51 @@ const data2: Protocol[] = [
     oracles: ["TWAP"],
     forkedFrom: ["Solidly"],
     listedAt: 1678883899
+  },
+  {
+    id: "2676",
+    name: "Rose Finance",
+    address: "arbitrum:0xf989C34E5Dbf0e94a34CFf75A0fa3Abd05C23061",
+    symbol: "ROSE",
+    url: "https://rosefinance.io/",
+    description:
+      "Tomb innovation based on debased token",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/rose-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "rose-finance",
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Arbitrum"],
+    module: "rose-finance/index.js",
+    twitter: "RealRoseFinance",
+    oracles: [],
+    forkedFrom: ["Tomb Finance"],
+    listedAt: 1678918252
+  },
+  {
+    id: "2677",
+    name: "Cthulhu.Finance",
+    address: "optimism:0xF8e943f646816e4B51279B8934753821ED832Dca",
+    symbol: "CTH",
+    url: "https://www.cthulhu.finance/",
+    description:
+      "Cthulhu. Finance is a comprehensive yield aggregator that automatically sources the highest yield opportunities across various DeFi platforms",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/cthulhu.finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Optimism"],
+    module: "CthulhuFinance/index.js",
+    twitter: "Cthulhu_Finance",
+    oracles: [],
+    forkedFrom: ["Reaper Farm"],
+    treasury: "cthulhufinance.js",
+    listedAt: 1678918257
   },
 ]
 export default data2;

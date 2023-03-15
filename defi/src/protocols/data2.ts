@@ -28022,7 +28022,7 @@ const data2: Protocol[] = [
     module: "ramses/index.js",
     twitter: "RamsesExchange",
     oracles: ["TWAP"],
-    forkedFrom: ["Velodrome"],
+    forkedFrom: ["Solidly"],
     listedAt: 1678883899
   },
 ]

@@ -26370,8 +26370,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1386",
     name: "Soluna",
-    address: null,
-    symbol: "-",
+    address: "solana:SLNAAQ8VT6DRDc3W9UPDjFyRt7u4mzh8Z4WYMDjJc35",
+    symbol: "SLNA",
     url: "https://soluna.money",
     description:
       "Soluna is a protocol for composable stable assets designed to bridge Anchor Protocol's high-yield savings to Solana.",
@@ -26379,7 +26379,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/soluna.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "soluna",
     cmcId: null,
     category: "Yield",
     chains: ["Terra"],

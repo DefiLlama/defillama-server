@@ -1,7 +1,7 @@
-import { createChartData } from "./emissions/utils/convertToChartData";
-import { createRawSections } from "./emissions/utils/convertToRawData";
-import adapters from "./emissions/protocols";
-import { ChartSection, Protocol } from "./emissions/types/adapters";
+import { createChartData } from "../emissions-adapters/utils/convertToChartData";
+import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
+import adapters from "../emissions-adapters/protocols";
+import { ChartSection, Protocol } from "../emissions-adapters/types/adapters";
 import { storeR2JSONString } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 

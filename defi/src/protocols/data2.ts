@@ -27980,5 +27980,28 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/metacoinswap"],
     listedAt: 1678822025
   },
+  {
+    id: "2674",
+    name: "WEMIX.FI",
+    address: null,
+    symbol: "-",
+    url: "https://wemix.fi",
+    description:
+      "WEMIX.Fi is the first decentralized exchange on the WEMIX3.0 mainnet. WEMIX.Fi is a fully on-chain DeFi platform supporting storage, exchange, borrowing, settlement and investment of crypto-assets.",
+    chain: "WEMIX",
+    logo: `${baseIconsUrl}/wemix.fi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["WEMIX"],
+    module: "wemix-fi/index.js",
+    twitter: "WemixNetwork",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://www.certik.com/projects/wemix"],
+    listedAt: 1678878315
+  },
 ]
 export default data2;

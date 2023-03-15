@@ -1021,7 +1021,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://ruby.exchange",
     description: "Gasless, NFT-powered AMM/Dual DEX on the SKALE Network",
     logo: `${baseIconsUrl}/ruby.exchange.jpg`,
-    gecko_id: null,
+    gecko_id: "ruby",
     cmcId: null,
     chains: [],
     twitter: "ruby_exchange",

@@ -8870,7 +8870,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1813",
-    name: "Spin AMM",
+    name: "Spin Spot",
     address: null,
     symbol: "-",
     url: "https://spin.fi",

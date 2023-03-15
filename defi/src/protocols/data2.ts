@@ -28003,5 +28003,27 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/wemix"],
     listedAt: 1678878315
   },
+  {
+    id: "2675",
+    name: "Ramses Exchange",
+    address: "arbitrum:0xaaa6c1e32c55a7bfa8066a6fae9b42650f262418",
+    symbol: "RAM",
+    url: "https://www.ramses.exchange/home",
+    description:
+      "RAMSES is a ve(3,3) DEX that masterfully adapts Andre Cronje's initial vision of Solidly. The original Solidly fundamentals have been long forgotten, and RAMSES aims to revitalize three core tenets: Community, Decentralization, and Functionality.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/ramses-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "ramses-exchange",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "ramses/index.js",
+    twitter: "RamsesExchange",
+    oracles: ["TWAP"],
+    forkedFrom: ["Velodrome"],
+    listedAt: 1678883899
+  },
 ]
 export default data2;

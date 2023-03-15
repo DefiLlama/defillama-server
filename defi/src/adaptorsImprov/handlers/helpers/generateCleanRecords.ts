@@ -11,6 +11,7 @@ import { convertDataToUSD } from "./convertRecordDataCurrency"
  */
 
 export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
+    console.log("cleaning")
     const currentTimestamp = Math.trunc(Date.now() / 1000)
     const spikesLogs: string[] = []
     const chains = chainsRaw.map(formatChainKey)
@@ -55,7 +56,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 const [chain, prot] = chainprot.split("#")
                 if (!timestamp || !record) return
                 const recordData = record.data?.[chain]
-                if (!recordData || !Object.keys(recordData).includes(prot) || (cleanRecord !== null && !Object.keys(cleanRecord).includes(prot))) return
+                if (!recordData || !Object.keys(recordData).includes(prot) || !getProtocolsFromRecord(cleanRecord).includes(prot)) return
                 const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
                 for (let i = 1; i < gaps; i++) {
                     const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
@@ -147,7 +148,6 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         if (acc.ath < dayVolume && Number.isFinite(dayVolume) && !Number.isNaN(dayVolume)) {
             acc.ath = dayVolume
         }
-
         acc.lastDataRecord = chains
             .reduce((acc, chain) =>
                 ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[])
@@ -173,6 +173,17 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         cleanRecordsMap: processed.recordsMap,
         spikesLogs
     }
+}
+
+function getProtocolsFromRecord(record: AdaptorRecord | null): string[] {
+    if (record == null) return []
+    return Object.values(record.data).reduce((acc, chainData) => {
+        for (const protkey of Object.keys(chainData)) {
+            if (!acc.includes(protkey))
+                acc.push(protkey)
+        }
+        return acc
+    }, [] as string[])
 }
 
 function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: AdaptorRecord, spikesLogs: string[], ath: number) {

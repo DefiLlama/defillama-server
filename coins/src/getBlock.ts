@@ -48,13 +48,8 @@ function getExtraProvider(chain: string | undefined) {
 
 async function isAValidBlockAtThisTimestamp(timestamp: number, provider: any) {
   try {
-    const [genesisBlockTime, latestBlockTime] = await Promise.all([
-      provider.getBlock(1).then((b: any) => b.timestamp),
-      provider
-        .getBlockNumber()
-        .then((n: any) => provider.getBlock(n).then((b: any) => b.timestamp)),
-    ]);
-    return genesisBlockTime < timestamp && timestamp < latestBlockTime;
+    const genesisBlockTime = await provider.getBlock(1).then((b: any) => b.timestamp)
+    return genesisBlockTime < timestamp && timestamp < Date.now() / 1000;
   } catch {
     return true;
   }

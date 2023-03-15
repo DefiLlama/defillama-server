@@ -39,7 +39,12 @@ function uintCheck(value: any, name: string) {
   return value;
 }
 function formParamsObject(event: any): QueryParams {
-  let params: any = { coins: (event.pathParameters?.coins ?? "").split(",") };
+  let params: any = {
+    coins: (event.pathParameters?.coins ?? "").split(","),
+    span: "0",
+    start: "1514764800", // 1/1/18
+    period: "d",
+  };
 
   for (let p of Object.keys(event.queryStringParameters)) {
     let value;
@@ -47,29 +52,26 @@ function formParamsObject(event: any): QueryParams {
     switch (p) {
       case "period":
         value = quantisePeriod(
-          event.queryStringParameters?.period?.toLowerCase() ?? "d",
+          event.queryStringParameters?.period?.toLowerCase(),
         );
         break;
 
       case "searchWidth":
         value = quantisePeriod(
-          event.queryStringParameters?.searchWidth?.toLowerCase() ??
-            (params.period / 10).toString(),
+          event.queryStringParameters?.searchWidth?.toLowerCase(),
         );
         break;
 
       case "end":
-        value = parseInt(
-          event.queryStringParameters?.[p] ?? getCurrentUnixTimestamp(),
-        );
+        value = parseInt(event.queryStringParameters?.[p]);
         break;
 
       case "start":
-        value = parseInt(event.queryStringParameters?.[p] ?? "1514764800"); // 1/1/18
+        value = parseInt(event.queryStringParameters?.[p]);
         break;
 
       case "span":
-        value = parseInt(event.queryStringParameters?.[p] ?? "0");
+        value = parseInt(event.queryStringParameters?.[p]);
         break;
 
       default:
@@ -83,6 +85,7 @@ function formParamsObject(event: any): QueryParams {
   }
 
   if (params.start + params.end == 0) params.end = getCurrentUnixTimestamp();
+  if (!("searchWidth" in params)) params.searchWidth = params.period / 10;
 
   return params;
 }
@@ -126,7 +129,9 @@ async function fetchDBData(
   await Promise.all(promises);
   return response;
 }
-const handler = async (event: any): Promise<IResponse> => {
+const handler = async (
+  event: AWSLambda.APIGatewayEvent,
+): Promise<IResponse> => {
   if (
     event.queryStringParameters?.start != null &&
     event.queryStringParameters?.end != null

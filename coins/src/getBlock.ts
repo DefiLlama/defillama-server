@@ -3,6 +3,7 @@ import ddb from "./utils/shared/dynamodb";
 import { getProvider } from "@defillama/sdk/build/general"
 import fetch from "node-fetch"
 import { getCurrentUnixTimestamp } from "./utils/date";
+import genesisBlockTimes from './genesisBlockTimes';
 
 interface TimestampBlock {
   height: number;
@@ -46,6 +47,11 @@ function getExtraProvider(chain: string | undefined) {
   return getProvider(chain as any);
 }
 
+async function isAValidBlockAtThisTimestamp(timestamp: number, chain: string) {
+  if (!(chain in Object.keys(genesisBlockTimes))) return true
+  return genesisBlockTimes[chain] < timestamp && timestamp < Date.now() / 1000;
+}
+
 function getClosestBlock(PK: string, timestamp: number, search: "high" | "low") {
   return ddb
     .query({
@@ -82,6 +88,11 @@ const handler = async (
       message: "Timestamp needs to be a number"
     })
   }
+  const isValid = await isAValidBlockAtThisTimestamp(timestamp, chain);
+  if (!isValid)
+    return successResponse({
+      error: `requested timestamp is either before genesis or after now`,
+    });
   let [top, bottom] = await Promise.all([
     getClosestBlock(blockPK(chain), timestamp, "high"),
     getClosestBlock(blockPK(chain), timestamp, "low")

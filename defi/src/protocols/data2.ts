@@ -27989,7 +27989,7 @@ const data2: Protocol[] = [
     description:
       "WEMIX.Fi is the first decentralized exchange on the WEMIX3.0 mainnet. WEMIX.Fi is a fully on-chain DeFi platform supporting storage, exchange, borrowing, settlement and investment of crypto-assets.",
     chain: "WEMIX",
-    logo: `${baseIconsUrl}/wemix.fi.jpg`,
+    logo: `${baseIconsUrl}/wemix.fi.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

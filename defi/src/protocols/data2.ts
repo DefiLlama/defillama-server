@@ -25163,7 +25163,7 @@ const data2: Protocol[] = [
     module: "ArchimedesFinance/index.js",
     twitter: "ArchimedesFi",
     audit_links: [
-      "https://github.com/thisisarchimedes/Archimedes_Finance/tree/AuditDir/audit"
+      "https://github.com/thisisarchimedes/Archimedes_Finance/tree/main/audit"
     ],
     oracles: [],
     listedAt: 1676665602

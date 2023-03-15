@@ -607,5 +607,9 @@ export default {
     "maverick": {
         enabled: true,
         id: "2644"
+    },
+    "equalizer-exchange": {
+        enabled: true,
+        id: "2332"
     }
 } as AdaptorsConfig

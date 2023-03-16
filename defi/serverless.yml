@@ -95,6 +95,7 @@ provider:
     R2_SECRET_ACCESS_KEY: ${file(./env.js):R2_SECRET_ACCESS_KEY}
     R2_ENDPOINT: ${file(./env.js):R2_ENDPOINT}
     INDEXA_DB: ${file(./env.js):INDEXA_DB}
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
 
 custom:
   stage: ${opt:stage, self:provider.stage}
@@ -523,6 +524,7 @@ functions:
     handler: src/adaptors/handlers/storeAdaptorData/index.default
     timeout: 900
     memorySize: 2048
+    lambdaInsights: true
   triggerStoreAdaptorData:
     handler: src/adaptors/handlers/triggerStoreAdaptorData.default
     timeout: 900
@@ -654,3 +656,4 @@ plugins:
   - serverless-prune-plugin
   - serverless-plugin-log-retention
   - serverless-plugin-datadog
+  - serverless-plugin-lambda-insights

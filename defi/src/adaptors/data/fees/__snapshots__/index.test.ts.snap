@@ -1377,6 +1377,7 @@ Array [
     "chain": "Fantom",
     "chains": Array [
       "fantom",
+      "optimism",
     ],
     "cmcId": "23038",
     "config": Object {
@@ -1685,6 +1686,9 @@ Array [
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/fees/quickswap.ts",
     "module": "quickswap",
     "name": "Quickswap V3",
+    "oracles": Array [
+      "Witnet",
+    ],
     "parentProtocol": "Quickswap",
     "protocolType": undefined,
     "symbol": "QUICK",
@@ -3159,6 +3163,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
       "arbitrum",
       "polygon",
       "celo",
+      "bsc",
     ],
     "cmcId": "1348",
     "config": Object {

@@ -6515,6 +6515,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "chain": "Fantom",
     "chains": Array [
       "fantom",
+      "optimism",
     ],
     "cmcId": "23038",
     "config": Object {
@@ -7981,6 +7982,9 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/quickswap",
     "module": "quickswap",
     "name": "Quickswap V3",
+    "oracles": Array [
+      "Witnet",
+    ],
     "parentProtocol": "Quickswap",
     "protocolType": undefined,
     "symbol": "QUICK",
@@ -11352,6 +11356,49 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
     "url": "https://wavelength.exchange",
   },
   Object {
+    "address": null,
+    "audit_links": Array [
+      "https://www.certik.com/projects/wemix",
+    ],
+    "audit_note": null,
+    "audits": "2",
+    "category": "Dexes",
+    "chain": "WEMIX",
+    "chains": Array [
+      "wemix",
+    ],
+    "cmcId": null,
+    "config": Object {
+      "enabled": true,
+      "id": "2674",
+    },
+    "description": "WEMIX.Fi is the first decentralized exchange on the WEMIX3.0 mainnet. WEMIX.Fi is a fully on-chain DeFi platform supporting storage, exchange, borrowing, settlement and investment of crypto-assets.",
+    "disabled": false,
+    "displayName": "WEMIX.FI",
+    "enabled": true,
+    "forkedFrom": Array [],
+    "gecko_id": null,
+    "id": "2674",
+    "listedAt": 1678878315,
+    "logo": "https://icons.llama.fi/wemix.fi.png",
+    "methodology": Object {
+      "Fees": "Swap fees paid by users",
+      "HoldersRevenue": "Money going to governance token holders",
+      "ProtocolRevenue": "Percentage of swap fees going to treasury",
+      "Revenue": "Percentage of swap fees going to treasury and/or token holders",
+      "SupplySideRevenue": "Liquidity providers revenue",
+      "UserFees": "Swap fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/dexs/wemix.fi",
+    "module": "wemix.fi",
+    "name": "WEMIX.FI",
+    "oracles": Array [],
+    "protocolType": undefined,
+    "symbol": "-",
+    "twitter": "WemixNetwork",
+    "url": "https://wemix.fi",
+  },
+  Object {
     "address": "binance:0xDDed222297B3d08DAFDAc8f65eeB799B2674C78F",
     "audit_links": Array [
       "https://github.com/Whale-Swap/audits/blob/878e4671851d65c4fc9a35a7d2fec94a483e1d72/WhaleSwap_Audit.pdf",
@@ -12755,6 +12802,7 @@ allowing zero price impact trading, up to 100x leverage, no counterparty risks f
       "arbitrum",
       "polygon",
       "celo",
+      "bsc",
     ],
     "cmcId": "1348",
     "config": Object {

@@ -320,6 +320,7 @@ Array [
       "arbitrum",
       "polygon",
       "celo",
+      "bsc",
     ],
     "cmcId": "1348",
     "config": Object {

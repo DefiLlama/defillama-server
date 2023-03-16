@@ -6414,6 +6414,12 @@
       "symbol": "BNB",
       "to": "coingecko#binancecoin"
     },
+    "DF8D00B4B31B55AFCA9BAF192BC36C67AA06D9987DCB96490661BCAB63C27006": {
+      "name": "Matic",
+      "decimals": "18",
+      "symbol": "MATIC",
+      "to": "coingecko#matic-network"
+    },
     "BA460328D9ABA27E643A924071FDB3836E4CE8084C6D2380F25EFAB85CF8EB11": {
       "name": "Inter Stable Token",
       "decimals": "6",

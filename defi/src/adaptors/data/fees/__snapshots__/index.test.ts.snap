@@ -5343,7 +5343,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "disabled": false,
     "displayName": "MUX Derivatives",
     "enabled": true,
-    "gecko_id": null,
+    "gecko_id": "mcdex",
     "id": "2254",
     "listedAt": 1667699921,
     "logo": "https://icons.llama.fi/mux protocol.png",

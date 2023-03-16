@@ -6420,6 +6420,12 @@
       "symbol": "MATIC",
       "to": "coingecko#matic-network"
     },
+    "AB2652E28C9961D13CFF2EC5F53C7E2965C8D0CF37A33CC97D8EEF6212F315C8": {
+      "name": "Polkadot",
+      "decimals": "10",
+      "symbol": "DOT",
+      "to": "coingecko#polkadot"
+    },
     "BA460328D9ABA27E643A924071FDB3836E4CE8084C6D2380F25EFAB85CF8EB11": {
       "name": "Inter Stable Token",
       "decimals": "6",

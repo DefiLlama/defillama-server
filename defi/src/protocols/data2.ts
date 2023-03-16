@@ -18591,7 +18591,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/mux protocol.png`,
     audits: "1",
     audit_note: null,
-    gecko_id: "mcdex",
+    gecko_id: null,
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum", "Binance", "Avalanche", "Fantom"],
@@ -28164,28 +28164,6 @@ const data2: Protocol[] = [
     audit_links: [],
     parentProtocol: "Scrub Money",
     listedAt: 1678968383
-  },
-  {
-    id: "2682",
-    name: "Dogewhale",
-    address: "bsc:0x43adc41cf63666ebb1938b11256f0ea3f16e6932",
-    symbol: "DOGEWHALE",
-    url: "https://www.dogewhale.lol",
-    description: "Dogewhale is a time-based deflationary token backed by a self-filling reserve of Doge, SHIB, and Floki. Reserves only go up, supply only goes down",
-    chain: "Binance",
-    logo: `${baseIconsUrl}/dogewhale.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: "dogewhale",
-    cmcId: "16589",
-    category: "Reserve Currency",
-    chains: ["Binance"],
-    oracles: [],
-    forkedFrom: [],
-    module: "dogewhale/index.js",
-    twitter: "d0gewhale",
-    audit_links: [],
-    listedAt: 1678984549
   },
 ]
 export default data2;

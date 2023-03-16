@@ -6426,6 +6426,12 @@
       "symbol": "DOT",
       "to": "coingecko#polkadot"
     },
+    "D1CB2804AA5EB64D503F28E8DF3552F8A4D642802B66EFE50DE432B755F37AE1": {
+      "name": "Axelar",
+      "decimals": "6",
+      "symbol": "AXL",
+      "to": "coingecko#axelar"
+    },
     "BA460328D9ABA27E643A924071FDB3836E4CE8084C6D2380F25EFAB85CF8EB11": {
       "name": "Inter Stable Token",
       "decimals": "6",

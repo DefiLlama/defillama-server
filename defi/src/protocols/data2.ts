@@ -28120,5 +28120,27 @@ const data2: Protocol[] = [
     parentProtocol: "Kleva Protocol",
     listedAt: 1678946775
   },
+  {
+    id: "2680",
+    name: "Kivach",
+    address: null,
+    symbol: "-",
+    url: "https://kivach.org/",
+    description: "Support open-source projects with donations in crypto, and they will automatically forward a part of your donation to other open-source projects that made them possible",
+    chain: "Obyte",
+    logo: `${baseIconsUrl}/kivach.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Obyte"],
+    oracles: [],
+    forkedFrom: [],
+    module: "kivach/index.js",
+    twitter: "ObyteOrg",
+    audit_links: [],
+    listedAt: 1678965790
+  },
 ]
 export default data2;

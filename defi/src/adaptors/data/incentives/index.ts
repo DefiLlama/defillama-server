@@ -15,4 +15,4 @@ export { default as incentives_imports } from "../../../utils/imports/incentives
 
 export { default as config } from "./config";
 
-export default generateProtocolAdaptorsList(incentives_imports, config)
+ 

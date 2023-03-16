@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Protocol adaptor list is complete INCENTIVES 1`] = `
+Array [
+  Object {
+    "category": "Chain",
+    "chains": Array [
+      "bitcoin",
+    ],
+    "cmcId": "1",
+    "config": Object {
+      "enabled": true,
+      "id": "1",
+    },
+    "disabled": false,
+    "displayName": "Bitcoin",
+    "enabled": true,
+    "geckoId": "bitcoin",
+    "gecko_id": "bitcoin",
+    "id": "1",
+    "logo": "https://icons.llama.fi/chains/rsz_bitcoin.jpg",
+    "methodology": Object {
+      "Fees": "Gas fees paid by users",
+      "Revenue": "Burned coins",
+      "UserFees": "Gas fees paid by users",
+    },
+    "methodologyURL": "https://github.com/DefiLlama/dimension-adapters/blob/master/incentives/bitcoin",
+    "module": "bitcoin",
+    "name": "Bitcoin",
+    "protocolType": "chain",
+    "symbol": "BTC",
+  },
+]
+`;

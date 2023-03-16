@@ -1,4 +1,4 @@
-import "./../setup.ts"
+import "../setup.ts"
 import { removeAdaptorRecord, AdaptorRecordType } from "../../db-utils/adaptor-record"
 import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
 

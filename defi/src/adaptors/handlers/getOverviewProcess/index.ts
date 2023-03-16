@@ -16,8 +16,11 @@ import { CATEGORIES } from "../../data/helpers/categories";
 
 export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
+    total48hto24h: number | null;
     total7d: number | null;
+    total14dto7d: number | null;
     total30d: number | null;
+    total60dto30d: number | null;
     change_1d: number | null;
     change_7d: number | null;
     change_1m: number | null;
@@ -39,8 +42,9 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'methodologyURL'
     | 'methodology'
     | 'allAddresses'
+    | 'parentProtocol'
+    | 'versionKey'
 > & {
-    protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null
     recordsMap: IJSON<AdaptorRecord> | null
     totalAllTime: number | null
@@ -68,7 +72,7 @@ export type ExtraTypes = {
     dailyPremiumVolume?: number | null
 }
 
-export type ProtocolStats = IJSON<(NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)>
+export type ProtocolStats = IJSON<(NonNullable<IGeneralStats>)>
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.DEXS]: AdaptorRecordType.dailyVolume,
@@ -128,7 +132,7 @@ export const getOverviewCachedResponseKey = (
     dataType?: string,
     category?: string,
     fullChart?: string
-) => `overview/${adaptorType}/${dataType}/${chainFilter}_${category}_${fullChart}`
+) => `overviewImprov/${adaptorType}/${dataType}/${chainFilter}_${category}_${fullChart}`
 
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
@@ -236,7 +240,10 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         protocols: okProtocols,
         allChains,
         total24h: enableStats ? generalStats.total24h : 0,
+        total48hto24h: null,
         total7d: enableStats ? generalStats.total7d : 0,
+        total14dto7d: enableStats ? generalStats.total14dto7d : 0,
+        total60dto30d: enableStats ? generalStats.total60dto30d : 0,
         total30d: enableStats ? generalStats.total30d : 0,
         change_1d: enableStats ? generalStats.change_1d : null,
         change_7d: enableStats ? generalStats.change_7d : null,

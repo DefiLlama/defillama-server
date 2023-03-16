@@ -16,16 +16,6 @@ import { sumAllVolumes } from "../../utils/volumeCalcs"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
-const KEYS_TO_CHECK = {
-    [AdapterType.FEES]: 'df',
-    [AdapterType.DEXS]: 'dv',
-    [AdapterType.INCENTIVES]: 'ti',
-    [AdapterType.AGGREGATORS]: 'dv',
-    [AdapterType.DERIVATIVES]: 'dv',
-    [AdapterType.OPTIONS]: 'dv',
-    [AdapterType.PROTOCOLS]: 'dv'
-}
-
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
@@ -153,8 +143,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         const dates: Date[] = []
         if (cliArguments.onlyMissing) {
             let volTimestamps = {} as IJSON<boolean>
-            for (const type of [KEYS_TO_CHECK[adaptorType]]) {
-                console.log("Checking missing days for data type -> ", type)
+            for (const type of Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)) {
                 let vols = (await getAdaptorRecord(adapterData.id, type as AdaptorRecordType, adapterData.protocolType, "ALL"))
                 if (!(vols instanceof Array)) throw new Error("Incorrect volumes found")
                 vols = vols.map(removeEventTimestampAttribute)

@@ -1,6 +1,6 @@
 import { formatTimestampAsDate, getTimestampAtStartOfDayUTC } from "../../utils/date";
 import { IJSON, ProtocolAdaptor } from "../data/types";
-import { AdaptorRecord, AdaptorRecordType, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
+import { AdaptorRecord, AdaptorRecordType, IRecordAdapterRecordChainData, IRecordAdaptorRecordData } from "../db-utils/adaptor-record";
 import { ExtraTypes, IGeneralStats, ProtocolAdaptorSummary } from "../handlers/getOverviewProcess";
 import { ONE_DAY_IN_SECONDS } from "../handlers/getProtocol";
 
@@ -78,12 +78,16 @@ export const getWoWStats = (
     baseTimestamp: number = (Date.now() / 1000) - ONE_DAY_IN_SECONDS
 ) => {
     const wow = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 7)
+    const wow14 = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 14)
     const mom = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 30)
+    const mom60 = calcNdONdChange(dexs, dex2Substract, baseTimestamp, 60)
     return {
         change_7dover7d: wow.change_NdoverNd ?? 0,
         total7d: wow.totalNd,
         change_30dover30d: mom.change_NdoverNd ?? 0,
-        total30d: mom.totalNd
+        total30d: mom.totalNd,
+        total14dto7d: wow14.totalNd - wow.totalNd,
+        total60dto30d: mom60.totalNd - mom.totalNd
     }
 }
 
@@ -133,16 +137,17 @@ const getSumAllDexsToday = (
         change_7d: formatNdChangeNumber(((totalVolume - totalVolume7d) / totalVolume7d) * 100) ?? 0,
         change_1m: formatNdChangeNumber(((totalVolume - totalVolume30d) / totalVolume30d) * 100) ?? 0,
         ...getWoWStats(dexs, dex2Substract, baseTimestamp),
-        breakdown24h: null
+        breakdown24h: null,
+        total48hto24h: totalVolume1d
     }
 }
 
 export type IChartData = [string, number][] // [timestamp, volume]
-export type IChartDataBreakdown = Array<[number, { [protocol: string]: number | IJSON<number> }]>
+export type IChartDataBreakdown = Array<[number, { [protocol: string]: IRecordAdapterRecordChainData }]>
 
-const generateAggregatedVolumesChartData = (protocols: ProtocolAdaptorSummary[]): IChartData => {
+const generateAggregatedVolumesChartData = (protocols: ProtocolAdaptorSummary[], from?: number): IChartData => {
     const chartData: IChartData = []
-    const dataPoints = getDataPoints()
+    const dataPoints = getDataPoints(from)
     for (const dataPoint of dataPoints) {
         let total = 0
         for (const protocol of protocols) {
@@ -158,17 +163,56 @@ export type IChartDataByDex = Array<[string, {
     [dex: string]: number
 }]> // [timestamp, {chain: volume}]
 
-const generateByDexVolumesChartData = (protocols: ProtocolAdaptorSummary[]): IChartDataByDex => {
+const generateByDexVolumesChartData = (protocols: ProtocolAdaptorSummary[], from?: number): IChartDataByDex => {
     const chartData: IChartDataByDex = []
-    const dataPoints = getDataPoints()
+    const dataPoints = getDataPoints(from)
     for (const dataPoint of dataPoints) {
         const dayBreakDown: IChartDataByDex[0][1] = {}
         for (const protocol of protocols) {
             const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
             if (volumeObj)
-                dayBreakDown[protocol.module] = sumAllVolumes(volumeObj)
+                dayBreakDown[protocol.displayName] = sumAllVolumes(volumeObj)
         }
         chartData.push([`${dataPoint}`, dayBreakDown])
+    }
+    return chartData
+}
+
+export type IChartDatav2 = [number, number][] // [timestamp, volume]
+export const generateAggregatedVolumesChartDataImprov = (protocols: ProtocolAdaptorSummary[]): IChartDatav2 => {
+    const chartData: IChartDatav2 = []
+    const dataPoints = getDataPoints()
+    for (const dataPoint of dataPoints) {
+        let total = 0
+        for (const protocol of protocols) {
+            const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
+            total += volumeObj ? sumAllVolumes(volumeObj) : 0
+        }
+        chartData.push([dataPoint, total])
+    }
+    return chartData
+}
+
+export const generateByChainVolumesChartDataBreakdown = (protocols: ProtocolAdaptorSummary[]): IChartDataBreakdown => {
+    const chartData: IChartDataBreakdown = []
+    const dataPoints = getDataPoints()
+    for (const dataPoint of dataPoints) {
+        const dayBreakDown: IChartDataBreakdown[0][1] = {}
+        for (const protocol of protocols) {
+            const volumeObj = protocol.recordsMap?.[String(dataPoint)]?.data
+            if (volumeObj) {
+                Object.entries(volumeObj).forEach(([chain, value]) => {
+                    if (typeof value === 'number') return
+                    const key = protocol.versionKey ?? protocol.module
+                    dayBreakDown[chain] = {
+                        ...dayBreakDown[chain],
+                        [protocol.displayName]: value[key]
+                    }
+                })
+                //dayBreakDown[protocol.displayName] = volumeObj as IRecordAdapterRecordChainData
+            }
+        }
+        chartData.push([dataPoint, dayBreakDown])
     }
     return chartData
 }
@@ -221,51 +265,17 @@ const calcNdChange = (volumes: IJSON<AdaptorRecord>, nDaysChange: number, baseTi
     totalVolume = yesterdaysVolume ? totalVolume + sumAllVolumes(yesterdaysVolume) : null
     totalVolumeNd = volumeNd ? totalVolumeNd + sumAllVolumes(volumeNd) : null
     const ndChange = totalVolume && totalVolumeNd ? (totalVolume - totalVolumeNd) / totalVolumeNd * 100 : null
-    return formatNdChangeNumber(ndChange)
+    return {
+        ndChange: formatNdChangeNumber(ndChange),
+        totalNd: totalVolumeNd,
+        total24h: totalVolume
+    }
 }
 
-const formatNdChangeNumber = (number: number | null) => {
+export const formatNdChangeNumber = (number: number | null) => {
     if (number === Number.POSITIVE_INFINITY || number === Number.NEGATIVE_INFINITY || Number.isNaN(number) || number === null)
         return null
     return Math.round((number + Number.EPSILON) * 100) / 100
-}
-
-export const getStatsByProtocolVersion = (volumes: AdaptorRecord[], prevDayTimestamp: number, protocolData: NonNullable<ProtocolAdaptor['protocolsData']>) => {
-    const raw = volumes.reduce((accVols, volume) => {
-        for (const [chain, protocolsData] of Object.entries(volume.data)) {
-            if (typeof protocolsData === 'number') return accVols
-            const protocolNames = Object.keys(protocolsData)
-            for (const protocolName of protocolNames) {
-                if (!accVols[protocolName]) accVols[protocolName] = {}
-                const accData = accVols[protocolName][String(volume.timestamp)]?.data
-                let accChain = accData?.[chain]
-                if (typeof accChain === 'number') accChain = {}
-                accVols[protocolName][String(volume.timestamp)] = new AdaptorRecord(volume.type, volume.adaptorId, volume.timestamp, {
-                    ...accData,
-                    [chain]: {
-                        ...accChain,
-                        [protocolName]: protocolsData[protocolName]
-                    }
-                })
-            }
-        }
-        return accVols
-    }, {} as IJSON<IJSON<AdaptorRecord>>)
-    const summaryByProtocols = Object.entries(raw).reduce((acc, [protVersion, protVolumes]) => {
-        const prevDayVolume = protVolumes[prevDayTimestamp]
-        acc[protVersion] = {
-            total24h: prevDayVolume ? sumAllVolumes(prevDayVolume.data, protVersion) : protocolData[protVersion].disabled ? null : 0,
-            change_1d: calcNdChange(protVolumes, 1, prevDayTimestamp),
-            change_7d: calcNdChange(protVolumes, 7, prevDayTimestamp),
-            change_1m: calcNdChange(protVolumes, 30, prevDayTimestamp),
-            ...getWoWStats([{
-                recordsMap: protVolumes
-            }], undefined, prevDayTimestamp),
-            breakdown24h: null
-        }
-        return acc
-    }, {} as IJSON<IGeneralStats>)
-    return summaryByProtocols
 }
 
 export {

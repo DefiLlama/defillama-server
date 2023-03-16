@@ -26545,7 +26545,7 @@ const data2: Protocol[] = [
     chains: ["Solana"],
     oracles: [],
     forkedFrom: [],
-    module: "streamflow/api.js",
+    module: "streamflow/index.js",
     twitter: "streamflow_fi",
     audit_links: ["https://github.com/streamflow-finance/rust-sdk/blob/main/protocol_audit.pdf"],
     listedAt: 1677586293

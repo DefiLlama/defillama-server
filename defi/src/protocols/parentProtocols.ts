@@ -1149,6 +1149,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VelocimeterDEX",
   },
+  {
+    id: "Kleva Protocol",
+    name: "Kleva Protocol",
+    url: "https://kleva.io",
+    description: "KLEVA Protocol is the first Leveraged Yield Farming Protocol on KLAYTN, with aim to become the largest Lending Protocol for Leveraged Yield Farmers and Lenders.",
+    logo: `${baseIconsUrl}/kleva-protocol.png`,
+    gecko_id: "kleva",
+    cmcId: "21122",
+    chains: [],
+    twitter: "KLEVA_Protocol",
+  },
 ];
 
 export default parentProtocols;

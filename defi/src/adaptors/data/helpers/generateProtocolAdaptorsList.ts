@@ -1,11 +1,12 @@
 import data, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
-import  { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
+import { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
-import {  BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
+import { getCollectionsMap } from "../collections";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -44,11 +45,15 @@ const chainDataMap = chainData.reduce((acc, curr) => {
 export type IImportsMap = IJSON<IImportObj>
 
 // This could be much more efficient
-export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] =>
-    Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
+export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): Promise<ProtocolAdaptor[]> => {
+    const collectionsMap = await getCollectionsMap()
+    return Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = dataMap
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
             list = chainDataMap
+        }
+        if (adapterObj.module.default?.protocolType === ProtocolType.COLLECTION) {
+            list = collectionsMap
         }
         const protocolId = config?.[adapterKey]?.id
         let moduleObject = imports_obj[adapterKey].module.default
@@ -108,6 +113,7 @@ export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string)
         console.error(`Missing info for ${adapterKey} on ${type}`)
         return undefined
     }).flat().filter(notUndefined);
+}
 
 function getLogoKey(key: string) {
     if (key.toLowerCase() === 'bsc') return 'binance'

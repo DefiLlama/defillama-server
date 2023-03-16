@@ -37,7 +37,7 @@ export const handler = async (event: IHandlerEvent) => {
   const cleanPreviousDayTimestamp = getTimestampAtStartOfDayUTC(cleanCurrentDayTimestamp - 1)
 
   // Import data list to be used
-  const dataModule = loadAdaptorsData(event.adaptorType)
+  const dataModule = await loadAdaptorsData(event.adaptorType)
   const dataList = dataModule.default
   // Import some utils
   const { importModule, KEYS_TO_STORE } = dataModule

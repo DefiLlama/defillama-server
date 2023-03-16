@@ -156,7 +156,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     // Import data list
     console.info("Loading adaptors...")
-    const loadedAdaptors = loadAdaptorsData(adaptorType)
+    const loadedAdaptors = await loadAdaptorsData(adaptorType)
     const protocolsList = Object.keys(loadedAdaptors.config)
     const adaptersList: ProtocolAdaptor[] = []
     try {

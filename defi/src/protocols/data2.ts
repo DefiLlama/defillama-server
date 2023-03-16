@@ -18591,7 +18591,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/mux protocol.png`,
     audits: "1",
     audit_note: null,
-    gecko_id: "mcdex",
+    gecko_id: null,
     cmcId: null,
     category: "Derivatives",
     chains: ["Arbitrum", "Binance", "Avalanche", "Fantom"],

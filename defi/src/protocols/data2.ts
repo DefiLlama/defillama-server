@@ -18270,6 +18270,7 @@ const data2: Protocol[] = [
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
     forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.
     parentProtocol: "Quickswap",
+    oracles: ["Witnet"],
     listedAt: 1667063569
   },
   {

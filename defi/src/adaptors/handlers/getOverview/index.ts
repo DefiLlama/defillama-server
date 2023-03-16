@@ -38,7 +38,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     if ((Date.now() - response.lastModified.getTime()) > 1000 * 60 * 60) {
         console.info("Response expired, invoking lambda to update it.")
-        await invokeLambda("defillama-prod-getOverviewProcessImprov", event)
+        await invokeLambda("defillama-prod-getOverviewProcess", event)
     }
 
     if (excludeTotalDataChart)

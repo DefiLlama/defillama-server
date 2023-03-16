@@ -28142,5 +28142,27 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1678965790
   },
+  {
+    id: "2681",
+    name: "Kava Football Club",
+    address: null,
+    symbol: "-",
+    url: "https://sport.kavafc.bet",
+    description: "KAVA FC is a decentralized betting protocol that operates as a Betting Exchange, allowing users to both lay (create) and match existing bets on-chain.",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/kava-football-club.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Kava"],
+    oracles: [],
+    forkedFrom: [],
+    module: "kavafc/index.js",
+    twitter: "KavaFCBet",
+    audit_links: [],
+    listedAt: 1678968383
+  },
 ]
 export default data2;

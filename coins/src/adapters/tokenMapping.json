@@ -6438,6 +6438,24 @@
       "symbol": "BNB",
       "to": "coingecko#binancecoin"
     },
+    "FAEC929814E0D916C019EB4B8BE58360EC3B6AB6A2B3185CB1EA0B54832DEE68": {
+      "name": "Matic",
+      "decimals": "18",
+      "symbol": "MATIC",
+      "to": "coingecko#matic-network"
+    },
+    "AB2652E28C9961D13CFF2EC5F53C7E2965C8D0CF37A33CC97D8EEF6212F315C8": {
+      "name": "Polkadot",
+      "decimals": "10",
+      "symbol": "DOT",
+      "to": "coingecko#polkadot"
+    },
+    "D1CB2804AA5EB64D503F28E8DF3552F8A4D642802B66EFE50DE432B755F37AE1": {
+      "name": "Axelar",
+      "decimals": "6",
+      "symbol": "AXL",
+      "to": "coingecko#axelar"
+    },
     "BA460328D9ABA27E643A924071FDB3836E4CE8084C6D2380F25EFAB85CF8EB11": {
       "name": "Inter Stable Token",
       "decimals": "6",

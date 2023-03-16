@@ -4739,6 +4739,7 @@ const data: Protocol[] = [
     module: "gmx/index.js",
     twitter: "GMX_IO",
     audit_links: ["https://github.com/xvi10/gambit-contracts/tree/master/audits"],
+    oracles: ["Chainlink"],
     governanceID: ["snapshot:gmx.eth"]
   },
   {

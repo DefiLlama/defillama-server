@@ -6,26 +6,24 @@ export interface ProtocolAdaptor extends Protocol {
     displayName: string
     config?: IConfig
     disabled: boolean
+    enabled?: boolean
     protocolType?: ProtocolType
-    protocolsData: IJSON<{
-        category?: string
-        chains?: string[]
-        disabled?: boolean
-        methodology?: string | IJSON<string>
-    }> | null
+    versionKey?: string
     methodologyURL: string
     methodology?: string | IJSON<string>
     allAddresses?: Array<string>
+    startFrom?: number
 }
 
 export interface IConfig {
+    id: string
     latestFetchIsOk?: boolean
     enabled?: boolean
     includedVolume?: string[]
     startFrom?: number
-    protocolsData?: IJSON<{
-        enabled?: boolean
-    }>,
+    disabled?: boolean
+    displayName?: string
+    protocolsData?: IJSON<Omit<IConfig, 'protocolsData'>>,
 }
 
 

@@ -20,8 +20,8 @@ const configs = {
 export const getConfigByType = (type: string, module: string) => configs[type]?.[module]
 
 export const getAvailableMetricsByModule = (modulePath: string) => Object.entries(configs).reduce((acc, [metric, map]) => {
-    const [module] = modulePath.split("/")[0].split(/[/.-]+/)
-    const isMetricEnabled = map?.[module.toLocaleLowerCase()]?.enabled
+    const [module] = modulePath.split("/")[0].split(/[/.]+/)
+    const isMetricEnabled = map?.[module]?.enabled
     if (isMetricEnabled === true)
     acc[metric] = isMetricEnabled
     return acc

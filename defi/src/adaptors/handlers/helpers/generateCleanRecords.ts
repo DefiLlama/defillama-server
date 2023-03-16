@@ -11,6 +11,7 @@ import { convertDataToUSD } from "./convertRecordDataCurrency"
  */
 
 export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
+    console.log("cleaning")
     const currentTimestamp = Math.trunc(Date.now() / 1000)
     const spikesLogs: string[] = []
     const chains = chainsRaw.map(formatChainKey)
@@ -20,10 +21,11 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
     // Get adaptor id for all records
     const adaptorId = adaptorRecords[0].adaptorId
     // Process adaptors. Should be changed to process based on timestamps instead of stored records
+
     const processed = await adaptorRecords.reduce(async (accP, adaptorRecord, currentIndex, array) => {
         const acc = await accP
         // Let's work with a clean record
-        const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
+        const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0])
         // Here will be stored the normalized data (aka data with no errors and if missing, extrapolation of that day)
         const generatedData = {} as IRecordAdaptorRecordData
         // Get current timestamp we are working with
@@ -32,6 +34,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             console.error("Timestamp in miliseconds or in the future has been found! Please check what's wrong...", timestamp, adaptorRecord)
             return acc
         }
+
         if (!timestamp) {
             const all = Object.values(acc.lastDataRecord)
             if (all.length === 0 || !all[0]) return acc
@@ -53,7 +56,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 const [chain, prot] = chainprot.split("#")
                 if (!timestamp || !record) return
                 const recordData = record.data?.[chain]
-                if (!recordData || !Object.keys(recordData).includes(prot)) return
+                if (!recordData || !Object.keys(recordData).includes(prot) || !getProtocolsFromRecord(cleanRecord).includes(prot)) return
                 const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
                 for (let i = 1; i < gaps; i++) {
                     const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
@@ -89,7 +92,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 nextRecord = acc.nextDataRecord[chainProt]
                 // Note, limited the lookup to up maxGaps2Cover
                 for (let i = currentIndex; i < Math.min((array.length - 1), 100); i++) {
-                    const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
+                    const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0])
                     const protDataChain = cR?.data[chain]
                     if (cR !== null && typeof protDataChain === 'object' && protDataChain[protocol]) {
                         acc.nextDataRecord[chainProt] = cR
@@ -145,7 +148,6 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         if (acc.ath < dayVolume && Number.isFinite(dayVolume) && !Number.isNaN(dayVolume)) {
             acc.ath = dayVolume
         }
-
         acc.lastDataRecord = chains
             .reduce((acc, chain) =>
                 ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[])
@@ -155,7 +157,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         return acc
     }, Promise.resolve({
         adaptorRecords: [] as AdaptorRecord[],
-        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains) }), {}),
+        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0]) }), {}),
         nextDataRecord: {},
         recordsMap: {},
         ath: 0
@@ -171,6 +173,17 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         cleanRecordsMap: processed.recordsMap,
         spikesLogs
     }
+}
+
+function getProtocolsFromRecord(record: AdaptorRecord | null): string[] {
+    if (record == null) return []
+    return Object.values(record.data).reduce((acc, chainData) => {
+        for (const protkey of Object.keys(chainData)) {
+            if (!acc.includes(protkey))
+                acc.push(protkey)
+        }
+        return acc
+    }, [] as string[])
 }
 
 function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: AdaptorRecord, spikesLogs: string[], ath: number) {

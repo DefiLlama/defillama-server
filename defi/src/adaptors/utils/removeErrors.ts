@@ -6,7 +6,7 @@ export default (data: IRecordAdaptorRecordData) => Object.entries(data).reduce((
     const entries = Object.entries(volume)
     if (entries.length === 1 && entries[0][0] === 'error' || chain === 'eventTimestamp') return acc
     const cleanChainData = entries.reduce((pacc, [prot, value]) => {
-        if (prot !== 'error' && typeof value === 'number')
+        if (prot !== 'error' && (typeof value === 'number' || typeof value === 'object'))
             pacc[prot] = value
         return pacc
     }, {} as {

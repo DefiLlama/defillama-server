@@ -828,5 +828,8 @@ export default {
     },
     "equilibre": {
         enabled: true
+    },
+    "wemix.fi": {
+        enabled: true
     }
 } as AdaptorsConfig

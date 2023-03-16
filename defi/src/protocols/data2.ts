@@ -28162,6 +28162,7 @@ const data2: Protocol[] = [
     module: "kavafc/index.js",
     twitter: "KavaFCBet",
     audit_links: [],
+    parentProtocol: "Scrub Money",
     listedAt: 1678968383
   },
 ]

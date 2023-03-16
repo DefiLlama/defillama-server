@@ -28026,6 +28026,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Solidly"],
     listedAt: 1678883899
   },
+  /*
   {
     id: "2676",
     name: "Rose Finance",
@@ -28048,6 +28049,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Tomb Finance"],
     listedAt: 1678918252
   },
+  */
   {
     id: "2677",
     name: "Cthulhu.Finance",

@@ -5,6 +5,7 @@ import unknownTokenAdapter from "./unknownToken";
 import podsAdapter from "./pods";
 import distressedAdapter from "./distressedAssets";
 import manualInputAdapter from "./manualInput";
+import realtAdapter from "./realt";
 import { wrappedGasTokens } from "../utils/gasTokens";
 
 export function synthetix(timestamp: number = 0) {
@@ -71,5 +72,12 @@ export function manualInput(timestamp: number = 0) {
     manualInputAdapter("evmos", timestamp),
     manualInputAdapter("arbitrum", timestamp),
     manualInputAdapter("polygon", timestamp),
+  ]);
+}
+export function realt(timestamp: number = 0) {
+  console.log("starting realt");
+  return Promise.all([
+    realtAdapter("ethereum", timestamp),
+    realtAdapter("xdai", timestamp),
   ]);
 }

@@ -28098,7 +28098,7 @@ const data2: Protocol[] = [
     listedAt: 1678946164
   },
   {
-    id: "2678",
+    id: "2679",
     name: "Kleva Lend",
     address: "klaytn:0x5fff3a6c16c2208103f318f4713d4d90601a7313",
     symbol: "KLEVA",

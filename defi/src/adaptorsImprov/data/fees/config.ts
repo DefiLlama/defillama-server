@@ -594,11 +594,36 @@ export default {
     },
     "chainlink": {
         enabled: true,
-        id: "2623"
+        id: "2623",
+        protocolsData: {
+            "vrf v1": {
+                id: "2623",
+            },
+            "vrf v2": {
+                id: "2623"
+            },
+            "keepers": {
+                id: "2623"
+            },
+            "requests": {
+                id: "2623"
+            }
+        }
     },
     "zyberswap": {
         enabled: true,
-        id: "2467"
+        id: "2467",
+        protocolsData: {
+            "v2": {
+                id: "2467"
+            },
+            "v3": {
+                id: "2602"
+            },
+            "stable": {
+                id: "2530"
+            }
+        }
     },
     "cow-protocol": {
         enabled: true,

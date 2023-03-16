@@ -317,7 +317,6 @@ Array [
     "chain": "Ethereum",
     "chains": Array [
       "ethereum",
-      "optimism",
       "arbitrum",
       "polygon",
       "celo",

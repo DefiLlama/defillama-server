@@ -1264,5 +1264,9 @@ export default {
     "equilibre": {
         enabled: true,
         id: "2586"
+    },
+    "wemix.fi": {
+        enabled: true,
+        id: "2674"
     }
 } as AdaptorsConfig

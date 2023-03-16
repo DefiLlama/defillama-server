@@ -100,7 +100,7 @@ export const handler = async (event: IHandlerEvent) => {
       for (const [version, adapter] of adaptersToRun) {
         const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
         if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - cleanCurrentDayTimestamp) > 60 * 60 * 2) continue
-        const runAdapterRes = await runAdapter(adapter, cleanCurrentDayTimestamp, chainBlocks, module)
+        const runAdapterRes = await runAdapter(adapter, cleanCurrentDayTimestamp, chainBlocks, module, version)
         const fulfilledResults = getFulfilledResults(runAdapterRes)
         processFulfilledPromises(fulfilledResults, rawRecords, version, FILTRED_KEYS_TO_STORE)
         const rejectedResults = getRejectedResults(runAdapterRes)

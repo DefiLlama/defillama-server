@@ -597,15 +597,19 @@ export default {
         id: "2623",
         protocolsData: {
             "vrf v1": {
+                enabled: true,
                 id: "2623",
             },
             "vrf v2": {
+                enabled: true,
                 id: "2623"
             },
             "keepers": {
+                enabled: true,
                 id: "2623"
             },
             "requests": {
+                enabled: true,
                 id: "2623"
             }
         }
@@ -615,13 +619,16 @@ export default {
         id: "2467",
         protocolsData: {
             "v2": {
-                id: "2467"
+                id: "2467",
+                enabled: true
             },
             "v3": {
-                id: "2602"
+                id: "2602",
+                enabled: true
             },
             "stable": {
-                id: "2530"
+                id: "2530",
+                enabled: true
             }
         }
     },

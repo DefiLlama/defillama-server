@@ -30,7 +30,7 @@ const event = {
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
     // console.log(rr.protocols[0])
     console.log(rr.totalDataChart.length)
-    console.log(rr.protocols.filter(d=>d.module==='uniswap').map(d=>[
+    console.log(rr.protocols.filter(d=>d.module==='zyberswap').map(d=>[
         d.displayName,
         `7d-> ${d.total7d}`,
         `14d-> ${d.total14dto7d}`,

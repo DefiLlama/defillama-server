@@ -2,6 +2,7 @@ import { Write, } from "../../utils/dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectData } from "../../utils/database";
 import { getApi, } from "../../utils/sdk";
 import axios from 'axios'
+import { log } from '@defillama/sdk'
 
 const chain = 'ethereum'
 export async function reservoir(timestamp: number = 0) {
@@ -13,7 +14,9 @@ export async function reservoir(timestamp: number = 0) {
   const symbols = await api.multiCall({ abi: "string:symbol", calls: collections.map((i: any) => i.contract) })
 
   const symbolFromName = (i: string) => i.split('by ')[0].split('(')[0].trim().replace(/\s+'?\s*/g, '-').toUpperCase()
-
+  let res: any = {}
+  symbols.forEach((_, i) => res[collections[i].collectionId.toLowerCase()] = collections[i].floorAskPrice)
+  log(res)
   collections.forEach((item: any, i: number) => {
     let symbol = symbols[i]
 

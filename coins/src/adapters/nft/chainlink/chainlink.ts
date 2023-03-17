@@ -4,14 +4,15 @@ import { getApi } from "../../utils/sdk";
 import pricefeeds from "./priceFeeds";
 import jPricefeeds from "./priceFeeds_jpegd"
 
+// still kept because Wrapped ether rock is not priced in reservoir
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const api = await getApi(chain, timestamp)
   const data: any = (pricefeeds as any)[chain]
   const dataJPEGD: any = (jPricefeeds as any)[chain]
   const writes: Write[] = [];
-  await Promise.all(data.map(_getWrites))
+  // await Promise.all(data.map(_getWrites))
   await Promise.all(dataJPEGD.map(_getWritesJPEGD))
-  await Promise.all(dataJPEGD.map(_getWritesArtBlocks))
+  // await Promise.all(dataJPEGD.map(_getWritesArtBlocks))
 
   return writes
 

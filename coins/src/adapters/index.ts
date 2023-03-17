@@ -1,4 +1,5 @@
 export default {
+  // minswap: require("./markets/minswap"),
   ondo: require("./yield/ondo"),
   aave: require("./moneyMarkets/aave"),
   geist: require("./moneyMarkets/aave"),
@@ -67,7 +68,7 @@ export default {
   // diffusion: require("./markets/uniswap"),
   stargate: require("./markets/stargate"),
   jarvis: require("./markets/jarvis"),
-  // chainlinkNFT: require("./nft/chainlink"),
+  chainlinkNFT: require("./nft/chainlink"),
   arrakis: require("./markets/arrakis"),
   yieldYak: require("./yield/yield-yak"),
   tezos: require("./tezos"),

@@ -38,7 +38,9 @@ export default async function bridge(): Promise<Token[]> {
         // const from_lowerCase = from.toLowerCase()
         // if (from_lowerCase !== from)
         //   tokens.push([from_lowerCase, to, symbol, decimals]);
-        tokens.push([from, to, symbol, decimals]);
+        let token = from
+        if (!['solana'].includes(chain)) token = token.toLowerCase()
+        tokens.push([token, to, symbol, decimals]);
       })
     response.push(formatExtraTokens(chain, tokens))
   })

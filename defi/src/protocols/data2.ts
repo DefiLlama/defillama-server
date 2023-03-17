@@ -28195,7 +28195,7 @@ const data2: Protocol[] = [
     url: "https://davos.xyz/",
     description: "Davos is a first-rate cross-chain lending and borrowing platform that offers its users the opportunity to borrow the DAVOS Stable Asset, initially using their staked MATIC assets as collateral. By doing so, users can earn extra yield from the yield-bearing stable asset while taking on a single debt position with a low interest rate. This provides a unique opportunity for users to maximize their returns while maintaining the stability of their assets.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/davos.png`,
+    logo: `${baseIconsUrl}/davos-protocol.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "davos-protocol",

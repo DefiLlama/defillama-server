@@ -643,5 +643,9 @@ export default {
     "equalizer-exchange": {
         enabled: true,
         id: "2332"
+    },
+    "camelot": {
+        enabled: true,
+        id: "2307"
     }
 } as AdaptorsConfig

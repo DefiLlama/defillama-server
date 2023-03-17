@@ -6298,7 +6298,6 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/Shrimp-Labs/audit/blob/master/Pippi%20Shrimp_audit.pdf"],
     forkedFrom: ["Uniswap"],
   },
-  /*
   {
     id: "412",
     name: "Thorchain",
@@ -6318,7 +6317,6 @@ const data: Protocol[] = [
     twitter: "THORChain",
     audit_links: ["https://www.certik.org/projects/thorchain"],
   },
-  */
   {
     id: "413",
     name: "Spectrum Protocol",

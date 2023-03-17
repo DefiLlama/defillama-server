@@ -73,7 +73,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
     const adaptorsData = loadAdaptorsData(adaptorType)
     if (adapterName[0] === 'all') {
         const timestamp = cliArguments.timestamp ?? getUniqStartOfTodayTimestamp(new Date()) - ONE_DAY_IN_SECONDS
-        const type = Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)[0]
+        const type = KEYS_TO_CHECK[adaptorType]
         const adapters2Backfill: string[] = []
         console.info("Checking missing type:", type, "at", timestamp)
         for (const adapter of adaptorsData.default) {

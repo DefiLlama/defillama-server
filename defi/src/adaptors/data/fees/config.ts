@@ -647,5 +647,9 @@ export default {
     "camelot": {
         enabled: true,
         id: "2307"
+    },
+    "thena": {
+        enabled: true,
+        id: "2417"
     }
 } as AdaptorsConfig

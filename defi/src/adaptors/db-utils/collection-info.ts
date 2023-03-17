@@ -7,7 +7,7 @@ import { Protocol } from "../../protocols/types"
 
 type CollectionInfoBody = Protocol & { PK?: string, SK?: string }
 
-export class CollectionInfo extends Item<string, string> {
+export class CollectionInfo extends Item {
     collectionId: string
     marketplace: string
     body: Protocol
@@ -40,8 +40,8 @@ export class CollectionInfo extends Item<string, string> {
         return `info#collections#${this.marketplace}`
     }
 
-    get sk(): string {
-        return this.collectionId
+    get sk(): number {
+        return +this.collectionId
     }
 
     toItem(): Record<string, unknown> {

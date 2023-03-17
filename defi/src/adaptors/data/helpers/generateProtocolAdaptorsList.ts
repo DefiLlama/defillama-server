@@ -7,6 +7,8 @@ import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalize
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
 import { getCollectionsMap } from "../collections";
+import collections from "@defillama/dimension-adapters/helpers/getOpenseaCollections/collections";
+import { seaportCollections } from "../fees/collections";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -44,9 +46,16 @@ const chainDataMap = chainData.reduce((acc, curr) => {
 
 export type IImportsMap = IJSON<IImportObj>
 
+//TODO: refactor
+const addressMap = {
+    'opensea-seaport-collections': seaportCollections,
+    'opensea-v1-collections': seaportCollections,
+    'opensea-v2-collections': seaportCollections
+} as IJSON<typeof seaportCollections>
+
 // This could be much more efficient
 export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): Promise<ProtocolAdaptor[]> => {
-    const collectionsMap = await getCollectionsMap()
+    const collectionsMap = await getCollectionsMap(config)
     return Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = dataMap
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
@@ -57,15 +66,16 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
         }
         const protocolId = config?.[adapterKey]?.id
         let moduleObject = imports_obj[adapterKey].module.default
-        if (!protocolId || !moduleObject) return
+        if (!moduleObject) return
         let dexFoundInProtocolsArr = [] as Protocol[]
         let baseModuleObject = {} as BaseAdapter
         if ('adapter' in moduleObject) {
+            if (!protocolId) return
             dexFoundInProtocolsArr.push(list[protocolId])
             baseModuleObject = moduleObject.adapter
         }
         else if ('breakdown' in moduleObject) {
-            const protocolsData = config?.[adapterKey]?.protocolsData
+            const protocolsData = config?.[adapterKey]?.protocolsData ?? addressMap[adapterKey]
             if (!protocolsData) {
                 console.error(`No protocols data defined in ${type}'s config for adapter with breakdown`, adapterKey)
                 return
@@ -79,7 +89,7 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
             return dexFoundInProtocolsArr.map((dexFoundInProtocols => {
                 let configObj = config[adapterKey]
                 let versionKey = undefined
-                const protData = config?.[adapterKey]?.protocolsData
+                const protData = config?.[adapterKey]?.protocolsData ?? addressMap[adapterKey]
                 if ('breakdown' in moduleObject) {
                     const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
                     configObj = vConfig ?? config[adapterKey]
@@ -91,7 +101,7 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
                 const infoItem: ProtocolAdaptor = {
                     ...dexFoundInProtocols,
                     ...configObj,
-                    id: config[adapterKey].id,
+                    id: dexFoundInProtocols.id,
                     module: adapterKey,
                     config: config[adapterKey],
                     chains: getChainsFromBaseAdapter(baseModuleObject),

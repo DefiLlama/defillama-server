@@ -30,7 +30,7 @@ export const handler = async (event: IHandlerEvent) => {
   const type = event.type
   // TODO separate those that need to be called on the hour and those using graphs with timestamp
   if (event.backfill) {
-    const adaptorsData = data(type)
+    const adaptorsData = await data(type)
     console.info("Backfill event", event.backfill.length)
     for (const bf of event.backfill) {
       const protocolIndexes: IStoreAdaptorDataHandlerEvent['protocolIndexes'] = []
@@ -43,7 +43,7 @@ export const handler = async (event: IHandlerEvent) => {
     }
   }
   else if (type) {
-    const adaptorsData = data(type)
+    const adaptorsData = await data(type)
     const protocolIndexes = Array.from(Array(adaptorsData.default.length).keys())
     await invokeLambdas(protocolIndexes, type)
   }

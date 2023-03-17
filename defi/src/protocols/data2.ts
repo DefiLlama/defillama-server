@@ -28187,5 +28187,27 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1678984549
   },
+  {
+    id: "2683",
+    name: "Davos Protocol",
+    address: "polygon:0xD14F6c6a2BDC8172C460F4CaABb93a718764F0B5",
+    symbol: "DAVOS",
+    url: "https://davos.xyz/",
+    description: "Davos is a first-rate cross-chain lending and borrowing platform that offers its users the opportunity to borrow the DAVOS Stable Asset, initially using their staked MATIC assets as collateral. By doing so, users can earn extra yield from the yield-bearing stable asset while taking on a single debt position with a low interest rate. This provides a unique opportunity for users to maximize their returns while maintaining the stability of their assets.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/davos.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "davos-protocol",
+    cmcId: "23515",
+    category: "CDP",
+    chains: ["Polygon"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["MakerDAO"],
+    module: "davos-protocol/index.js",
+    twitter: "Davos_Protocol",
+    audit_links: ["https://github.com/davos-money/new-davos-smart-contracts/tree/main/audits"],
+    listedAt: 1679050000
+  },
 ]
 export default data2;

@@ -1141,12 +1141,15 @@ export default {
         "id": "2467",
         protocolsData: {
             "v2": {
+                enabled: true,
                 id: "2467"
             },
             "v3": {
+                enabled: true,
                 id: "2602"
             },
             "stable": {
+                enabled: true,
                 id: "2530"
             }
         }

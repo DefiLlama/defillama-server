@@ -11,7 +11,6 @@ import { convertDataToUSD } from "./convertRecordDataCurrency"
  */
 
 export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
-    console.log("cleaning")
     const currentTimestamp = Math.trunc(Date.now() / 1000)
     const spikesLogs: string[] = []
     const chains = chainsRaw.map(formatChainKey)
@@ -21,7 +20,6 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
     // Get adaptor id for all records
     const adaptorId = adaptorRecords[0].adaptorId
     // Process adaptors. Should be changed to process based on timestamps instead of stored records
-
     const processed = await adaptorRecords.reduce(async (accP, adaptorRecord, currentIndex, array) => {
         const acc = await accP
         // Let's work with a clean record

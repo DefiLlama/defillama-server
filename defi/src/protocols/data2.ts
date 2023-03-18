@@ -28216,7 +28216,7 @@ const data2: Protocol[] = [
     address: "0xc82e3db60a52cf7529253b4ec688f631aad9e7c2",
     symbol: "ARC",
     url: "https://www.arc.market",
-    description: "ARC is the world's first decentralized multi-market aggregator and the gateway for institutional grade investment in the crypto-sphere.",
+    description: "Build with Arc's Reactor tech. At the forefront of Web3 & AI innovation. Smart contract & dApp development across multiple blockchains including zkEVM. Trade using our multi-market aggregator using SOR technology. Build Anything. Trade Everything. Web3 Development, Solved.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/arc-swap.jpg`,
     audits: "0",

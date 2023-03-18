@@ -6,12 +6,20 @@ import podsAdapter from "./pods";
 import distressedAdapter from "./distressedAssets";
 import manualInputAdapter from "./manualInput";
 import realtAdapter from "./realt";
+import metronomeAdapter from "./metronome";
 import { wrappedGasTokens } from "../utils/gasTokens";
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
   return synthetixAdapter(timestamp);
 }
+
+
+export function metronome(timestamp: number = 0) {
+  console.log("starting metronome");
+  return metronomeAdapter('ethereum', timestamp);
+}
+
 export function glp(timestamp: number = 0) {
   console.log("starting glp");
   return Promise.all([

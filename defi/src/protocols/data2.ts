@@ -28291,6 +28291,7 @@ const data2: Protocol[] = [
     chains: ["Optimism"],
     oracles: [],
     forkedFrom: ["Uniswap"],
+    treasury: "openxswap.js",
     module: "openxswap/index.js",
     twitter: "OpenXSwap",
     listedAt: 1679172319

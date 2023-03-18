@@ -28062,7 +28062,7 @@ const data2: Protocol[] = [
       "Cthulhu. Finance is a comprehensive yield aggregator that automatically sources the highest yield opportunities across various DeFi platforms",
     chain: "Optimism",
     logo: `${baseIconsUrl}/cthulhu.finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

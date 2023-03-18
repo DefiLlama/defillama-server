@@ -28073,6 +28073,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Reaper Farm"],
     treasury: "cthulhufinance.js",
+    audit_links: ["https://github.com/solidproof/projects/tree/main/Cthulhu"],
     listedAt: 1678918257
   },
   {

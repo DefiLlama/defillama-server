@@ -1271,5 +1271,9 @@ export default {
     "wemix.fi": {
         enabled: true,
         id: "2674"
+    },
+    "ramses-exchange": {
+        enabled: true,
+        id: "2675"
     }
 } as AdaptorsConfig

@@ -28253,5 +28253,26 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/Vital-block/Smart-Contract-Audit/blob/03c1a811a69f8e459264c22d140cba99b3a518da/ARBITRUM%20EXCHANGE%20Full%20AUDIT%20Report.pdf"],
     listedAt: 1679146739
   },
+  {
+    id: "2686",
+    name: "Factor",
+    address: "arbitrum:0x6dD963C510c2D2f09d5eDdB48Ede45FeD063Eb36",
+    symbol: "FCTR",
+    url: "https://factor.fi",
+    description: "Factor gives exposure to a wide variety of community-generated yield opportunities, including passive and active strategies, thematic indices, and more.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/factor.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "factor",
+    cmcId: "23502",
+    category: "Indexes",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "factor/index.js",
+    twitter: "FactorDAO",
+    listedAt: 1679152920
+  },
 ]
 export default data2;

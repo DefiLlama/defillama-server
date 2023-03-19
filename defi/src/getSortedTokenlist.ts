@@ -18,6 +18,7 @@ async function cgRequest(url:string){
       return data
     } catch(e){
       console.log(`error ${i}`)
+      console.log(e)
       await sleep(1e3)
     }
   }

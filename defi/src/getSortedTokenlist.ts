@@ -36,7 +36,7 @@ const arrayFetcher = async (urlArr: string[]) => {
 
 function getCGMarketsDataURLs() {
   const urls: string[] = [];
-  const maxPage = 10;
+  const maxPage = 7;
   for (let page = 1; page <= maxPage; page++) {
     urls.push(`${CG_TOKEN_API.replace("<PLACEHOLDER>", `${page}`)}`);
   }

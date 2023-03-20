@@ -28361,7 +28361,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2691",
-    name: "Doora Inu",
+    name: "Sohei",
     address: "arbitrum:0x7e70e4efbbcc72f21979eb029efa38ecb40238c6",
     symbol: "HEI",
     url: "https://app.sohei.io/markets",

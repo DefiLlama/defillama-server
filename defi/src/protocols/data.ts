@@ -18787,7 +18787,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "20317",
     category: "Yield",
     chains: ["Polygon"],
-    module: "ovnstable.js",
+    module: "overnight-usdPlus/index.js",
     twitter: "overnight_fi",
     audit_links: ["https://github.com/ovnstable/ovnstable-app/blob/master/audits/hacken_2022-02-03.pdf"],
     listedAt: 1639428732,

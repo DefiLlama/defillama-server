@@ -28338,6 +28338,47 @@ const data2: Protocol[] = [
     twitter: "DooraInuWorld",
     listedAt: 1679172325
   },
-
+  {
+    id: "2690",
+    name: "WYND LSD",
+    address: null,
+    symbol: "-",
+    url: "https://app.wynddao.com/lsd",
+    description: "LSDs represent liquid versions of staked assets. Deposits into WYND’s LSD products will return the user with wyAssets such as wyJuno. wyAssets will automatically claim the staking rewards and restake those rewards once per day so users do not have to manually claim rewards.",
+    chain: "Juno",
+    logo: `${baseIconsUrl}/wynd-lsd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "LSD",
+    chains: ["Juno"],
+    oracles: [],
+    forkedFrom: [],
+    module: "wyndao-lsd/index.js",
+    twitter: "wynddao",
+    listedAt: 1679313366
+  },
+  {
+    id: "2691",
+    name: "Doora Inu",
+    address: "arbitrum:0x7e70e4efbbcc72f21979eb029efa38ecb40238c6",
+    symbol: "HEI",
+    url: "https://app.sohei.io/markets",
+    description: "Building the ultimate DeFi lending experience, powered by Arbitrum.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sohei.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "sohei",
+    cmcId: "23971",
+    category: "Lending",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: ["Compound"],
+    module: "sohei/index.js",
+    twitter: "soheidotio",
+    listedAt: 1679313368
+  },
 ]
 export default data2;

@@ -20,5 +20,9 @@ export default {
     "deflex": {
         "enabled": true,
         "id": "2420"
+    },
+    "dForce-swap": {
+        "enabled": true,
+        "id": "123"
     }
 } as AdaptorsConfig

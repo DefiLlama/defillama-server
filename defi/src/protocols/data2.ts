@@ -23274,7 +23274,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/wynd-dex.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "wynd",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Juno"],
@@ -23282,6 +23282,7 @@ const data2: Protocol[] = [
     twitter: "wynddao",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "WYND",
     listedAt: 1674298215
   },
   {
@@ -28357,6 +28358,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "wyndao-lsd/index.js",
     twitter: "wynddao",
+    parentProtocol: "WYND",
     listedAt: 1679313366
   },
   {

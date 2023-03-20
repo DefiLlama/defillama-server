@@ -1160,6 +1160,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "KLEVA_Protocol",
   },
+  {
+    id: "WYND",
+    name: "WYND",
+    url: "https://app.wynddao.com",
+    description: "WYND is a new ReFi protocol to leverage DeFi tokenomics to regenerate the environment.",
+    logo: `${baseIconsUrl}/wynd.jpg`,
+    gecko_id: "wynd",
+    cmcId: null,
+    chains: [],
+    twitter: "wynddao",
+  },
 ];
 
 export default parentProtocols;

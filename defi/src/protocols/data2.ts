@@ -28488,5 +28488,26 @@ const data2: Protocol[] = [
     parentProtocol: "Overnight Finance",
     listedAt: 1679332234
   },
+  {
+    id: "2697",
+    name: "Bond Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.bondprotocol.finance/",
+    description: "Bond Protocol is an independent, fair platform offering innovative Bonds-as-a-Service for DeFi. It allows permissionless bond market creation, tokenized bond positions, and easy integration of new bond assets and auction interfaces",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bond-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bond-protocol/index.js",
+    twitter: "Bond_Protocol",
+    listedAt: 1679351635
+  },
 ]
 export default data2;

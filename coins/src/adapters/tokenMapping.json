@@ -6660,5 +6660,19 @@
       "symbol": "WMAPO",
       "to": "coingecko#marcopolo"
     }
+  },
+  "loop": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "LOOP",
+      "decimals": "18",
+      "symbol": "LOOP",
+      "to": "coingecko#loopnetwork"
+    },
+    "0x3936d20a39ed4b0d44eabfc91757b182f14a38d5": {
+      "name": "Wrapped LOOP",
+      "decimals": "18",
+      "symbol": "WLOOP",
+      "to": "coingecko#loopnetwork"
+    }
   }
 }

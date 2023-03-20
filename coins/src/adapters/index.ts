@@ -1,6 +1,6 @@
 export default {
+  minswap: require("./markets/minswap"),
   metronome: require("./other"),
-  // minswap: require("./markets/minswap"),
   ondo: require("./yield/ondo"),
   aave: require("./moneyMarkets/aave"),
   geist: require("./moneyMarkets/aave"),

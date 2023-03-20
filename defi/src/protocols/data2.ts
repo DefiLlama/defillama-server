@@ -28485,6 +28485,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "overnight-daiPlus/index.js",
     twitter: "overnight_fi",
+    parentProtocol: "Overnight Finance",
     listedAt: 1679332234
   },
 ]

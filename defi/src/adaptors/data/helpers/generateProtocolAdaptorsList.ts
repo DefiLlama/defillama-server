@@ -143,6 +143,6 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'solidlydex') return id === "2400"
     if (key === 'tethys-finance') return id === "1139"
     if (key === 'ashswap') return id === "2551"
-    if (key === 'dForce-swap') return id === "123"
+    if (key === 'dforce') return id === "123"
     return false
 }

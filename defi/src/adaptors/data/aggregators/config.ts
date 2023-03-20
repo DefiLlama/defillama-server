@@ -21,7 +21,7 @@ export default {
         "enabled": true,
         "id": "2420"
     },
-    "dForce-swap": {
+    "dforce": {
         "enabled": true,
         "id": "123"
     }

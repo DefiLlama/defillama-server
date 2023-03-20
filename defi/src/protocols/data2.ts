@@ -28445,5 +28445,26 @@ const data2: Protocol[] = [
     twitter: "JujubeFinance",
     listedAt: 1679328768
   },
+  {
+    id: "2695",
+    name: "SmarDex",
+    address: "0x5de8ab7e27f6e7a1fff3e5b337584aa43961beef",
+    symbol: "SDEX",
+    url: "https://smardex.io",
+    description: "SMARDEX sophisticated fine-tuned algorithm transforms impermanent loss to impermanent gain!",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/smardex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "smardex",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "SmarDex/index.js",
+    twitter: "realSmarDex",
+    listedAt: 1679329866
+  },
 ]
 export default data2;

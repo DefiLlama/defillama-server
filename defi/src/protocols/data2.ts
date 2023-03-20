@@ -28380,5 +28380,26 @@ const data2: Protocol[] = [
     twitter: "soheidotio",
     listedAt: 1679313368
   },
+  {
+    id: "2692",
+    name: "sevenswap",
+    address: null,
+    symbol: "-",
+    url: "https://app.sevenswap.net/",
+    description: "Dexes on Kava Network",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/sevenswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Kava"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "sevenswap/index.js",
+    twitter: null,
+    listedAt: 1679313369
+  },
 ]
 export default data2;

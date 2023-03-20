@@ -6,8 +6,9 @@ import { addToDBWritesList } from "../utils/database";
 const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
-    GVR_OLD: '0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c',
-    XRPC: '0xd4ca5c2aff1eefb0bea9e9eab16f88db2990c183',
+    GVR_OLD: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
+    XRPC: "0xd4ca5c2aff1eefb0bea9e9eab16f88db2990c183",
+    LUFFY: "0x54012cdf4119de84218f7eb90eeb87e25ae6ebd7",
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
@@ -41,11 +42,10 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     BTCBR: "0x0cf8e180350253271f4b917ccfb0accc4862f262",
     RB: "0x441bb79f2da0daf457bad3d401edb68535fb3faa", // bad pricing
     MOR: "0x87bade473ea0513d4aa7085484aeaa6cb6ebe7e3", //MOR
-    $CINO: "0xdfe6891ce8e5a5c7cf54ffde406a6c2c54145f71" //$cino . Problem with dodo adapter on 13/03/2023 (mispriced)
-
+    $CINO: "0xdfe6891ce8e5a5c7cf54ffde406a6c2c54145f71", //$cino . Problem with dodo adapter on 13/03/2023 (mispriced)
   },
   cronos: {
-    CRK: '0x065de42e28e42d90c2052a1b49e7f83806af0e1f',
+    CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
   },
 };
 
@@ -60,21 +60,16 @@ const eulerTokens = [
   "0x3c66B18F67CA6C1A71F829E2F6a0c987f97462d0",
   "0x4169Df1B7820702f566cc10938DA51F6F597d264",
   "0xbd1bd5c956684f7eb79da40f582cbe1373a1d593",
-]
+];
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const writes: Write[] = [];
-  const tokens = Object.values(contracts[chain])
+  const tokens = Object.values(contracts[chain]);
 
-  if (chain === 'ethereum')
-    tokens.push(...eulerTokens)
+  if (chain === "ethereum") tokens.push(...eulerTokens);
 
-  const tokenInfos = await getTokenInfo(
-    chain,
-    tokens,
-    block,
-  );
+  const tokenInfos = await getTokenInfo(chain, tokens, block);
 
   tokens.map((a: string, i: number) => {
     addToDBWritesList(

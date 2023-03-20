@@ -28466,5 +28466,26 @@ const data2: Protocol[] = [
     twitter: "realSmarDex",
     listedAt: 1679329866
   },
+  {
+    id: "2696",
+    name: "Overnight ETS",
+    address: null,
+    symbol: "-",
+    url: "https://app.overnight.fi/market",
+    description: "Crypto-to-stable LP positions with hedge against crypto price fluctuations",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/overnight-ets.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Optimism", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "overnight-daiPlus/index.js",
+    twitter: "overnight_fi",
+    listedAt: 1679332234
+  },
 ]
 export default data2;

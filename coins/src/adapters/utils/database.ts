@@ -43,14 +43,16 @@ export function addToDBWritesList(
   confidence: number,
   redirect: string | undefined = undefined,
 ) {
+  const PK: string =
+    chain == "coingecko"
+      ? `coingecko#${token.toLowerCase()}`
+      : `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`;
   if (timestamp == 0) {
     writes.push(
       ...[
         {
           SK: getCurrentUnixTimestamp(),
-          PK: `asset#${chain}:${
-            chain == "solana" ? token : token.toLowerCase()
-          }`,
+          PK,
           price,
           symbol,
           decimals: Number(decimals),
@@ -59,9 +61,7 @@ export function addToDBWritesList(
         },
         {
           SK: 0,
-          PK: `asset#${chain}:${
-            chain == "solana" ? token : token.toLowerCase()
-          }`,
+          PK,
           price,
           symbol,
           decimals: Number(decimals),
@@ -82,7 +82,7 @@ export function addToDBWritesList(
     }
     writes.push({
       SK: timestamp,
-      PK: `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`,
+      PK,
       symbol,
       decimals: Number(decimals),
       redirect,
@@ -128,7 +128,9 @@ async function getTokenAndRedirectDataDB(
     let timedDbEntries: any[] = await Promise.all(
       tokens.slice(lower, upper).map((t: string) => {
         return getTVLOfRecordClosestToTimestamp(
-          `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
+          chain == "coingecko"
+            ? `coingecko#${t.toLowerCase()}`
+            : `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
           timestamp,
           hoursRange * 60 * 60,
         );
@@ -139,7 +141,10 @@ async function getTokenAndRedirectDataDB(
     // current origin entries, for current redirects
     const latestDbEntries: DbEntry[] = await batchGet(
       tokens.slice(lower, upper).map((t: string) => ({
-        PK: `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
+        PK:
+          chain == "coingecko"
+            ? `coingecko#${t.toLowerCase()}`
+            : `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
         SK: 0,
       })),
     );

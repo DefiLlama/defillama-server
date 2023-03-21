@@ -42,8 +42,9 @@ export default async function handler(event: any) {
   );
 }
 // ts-node coins/src/storeCoins.ts
-// async function main() {
-//   let a = { protocolIndexes: [0] };
-//   await handler(a);
-// }
-// main();
+async function main() {
+  let a = { protocolIndexes: [0] };
+  await handler(a);
+  // process.exit(0)
+}
+// main()

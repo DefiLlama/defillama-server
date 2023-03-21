@@ -24,6 +24,7 @@ async function getTokenPrices(timestamp: number) {
   const decimals = await getDecimals(ids)
   const basePrice = await getTokenAndRedirectData(['cardano'], 'coingecko', timestamp)
   const cardanoPrice = basePrice[0].price
+  addToDBWritesList(writes, chain, '0x0000000000000000000000000000000000000000', cardanoPrice, 6, 'ADA', timestamp, 'minswap', 0.9)
   const priceLog: any[] = []
   pools.forEach(({ base_id, base_symbol = '', last_price, base_name = '' }: any) => {
     const token = base_id.toLowerCase()

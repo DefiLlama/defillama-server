@@ -3988,7 +3988,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/puzzle-swap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "puzzle-swap",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Waves"],
@@ -3996,6 +3996,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "puzzle.js",
     twitter: "puzzle_swap",
+    parentProtocol: "PuzzleSwapOrg",
     listedAt: 1648571915,
   },
   {
@@ -28742,7 +28743,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/puzzle-lend.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "puzzle-swap",
+    gecko_id: null,
     cmcId: null,
     category: "Lending",
     chains: ["Waves"],
@@ -28750,6 +28751,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "puzzle-lend.js",
     twitter: "puzzle_lend",
+    parentProtocol: "PuzzleSwapOrg",
     listedAt: 1679438099
   },
 ]

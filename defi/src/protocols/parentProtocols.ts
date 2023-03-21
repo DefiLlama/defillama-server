@@ -1204,6 +1204,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "RDNTCapital",
     governanceID: ["snapshot:radiantcapital.eth"],
   },
+  {
+    id: "PuzzleSwapOrg",
+    name: "PuzzleSwapOrg",
+    url: "https://puzzleswap.org/trade",
+    description: "DEX 2.0 & Lending protocol built on Waves to bring a new light to DeFi experience",
+    logo: `${baseIconsUrl}/puzzle-swap.jpg`,
+    gecko_id: "puzzle-swap",
+    cmcId: null,
+    chains: [],
+    twitter: "puzzle_swap"
+  },
 ];
 
 export default parentProtocols;

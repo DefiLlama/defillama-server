@@ -651,5 +651,9 @@ export default {
     "thena": {
         enabled: true,
         id: "2417"
+    },
+    "paraswap": {
+        enabled: true,
+        id: "894"
     }
 } as AdaptorsConfig

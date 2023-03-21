@@ -1182,6 +1182,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "overnight_fi",
   },
+  {
+    id: "FairySwap",
+    name: "FairySwap",
+    url: "https://fairyswap.finance",
+    description: "The first DAPP on Findora, offering unparalleled privacy and security with zero-knowledge technology.",
+    logo: `${baseIconsUrl}/fairyswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "fairy_swap",
+  },
 ];
 
 export default parentProtocols;

@@ -5800,6 +5800,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap"],
     module: "fairyswap/index.js",
     twitter: "fairy_swap",
+    parentProtocol: "FairySwap",
     listedAt: 1650569731
   },
   {
@@ -28577,7 +28578,7 @@ const data2: Protocol[] = [
     id: "2701",
     name: "FairySwap V2",
     address: "findora:0xaf196C2d7870B5146F02D49b011dF9197C093Ffe",
-    symbol: "FAIRY",
+    symbol: "FAY",
     url: "https://fairyswap.finance",
     description: " FairySwap v2, the first DEX upgrade on Findora (FRA) delivering great trading experience and earning opportunities.",
     chain: "Findora",
@@ -28592,6 +28593,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap"],
     module: "fairyswap-v2/index.js",
     twitter: "fairy_swap",
+    parentProtocol: "FairySwap",
     listedAt: 1679396448
   },
 ]

@@ -28749,7 +28749,7 @@ const data2: Protocol[] = [
     chains: ["Waves"],
     oracles: [],
     forkedFrom: [],
-    module: "puzzle-lend.js",
+    module: "puzzle-lend/index.js",
     twitter: "puzzle_lend",
     parentProtocol: "PuzzleSwapOrg",
     listedAt: 1679438099

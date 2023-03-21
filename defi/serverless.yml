@@ -186,6 +186,13 @@ functions:
       - http:
           path: storeAggregatorEvent
           method: post
+  getSwapsHistory:
+    handler: src/getSwapsHistory.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapsHistory
+          method: get
   contractName:
     handler: src/getContractName.default
     timeout: 30

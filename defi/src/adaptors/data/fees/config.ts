@@ -655,5 +655,9 @@ export default {
     "paraswap": {
         enabled: true,
         id: "894"
+    },
+    "ramses-exchange": {
+        enabled: true,
+        id: "2675"
     }
 } as AdaptorsConfig

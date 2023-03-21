@@ -5,8 +5,8 @@ import data from '../index'
 //import { IJSON } from './types';
 
 describe("Protocol adaptor list is complete", () => {
-    it("DEXS", () => {
-        const d = data(AdapterType.DEXS).default
+    it("DEXS", async () => {
+        const d = (await data(AdapterType.DEXS)).default
         expect(d).toMatchSnapshot()
     });
 });

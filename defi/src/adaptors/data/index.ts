@@ -7,6 +7,7 @@ import { KEYS_TO_STORE as aggregators_KEYS_TO_STORE, config as aggregators_confi
 import { KEYS_TO_STORE as options_KEYS_TO_STORE, config as options_config, options_imports } from "./options"
 import { KEYS_TO_STORE as incentives_KEYS_TO_STORE, config as incentives_config, incentives_imports } from "./incentives"
 import { KEYS_TO_STORE as protocols_KEYS_TO_STORE, config as protocols_config, protocols_imports } from "./protocols"
+import { KEYS_TO_STORE as royalties_KEYS_TO_STORE, config as royalties_config, royalties_imports } from "./royalties"
 import generateProtocolAdaptorsList, { IImportsMap } from "./helpers/generateProtocolAdaptorsList"
 
 // With dynamic imports loads less stuff into memory but becomes slower
@@ -16,11 +17,12 @@ import generateProtocolAdaptorsList, { IImportsMap } from "./helpers/generatePro
 const importsMap = {
     dexs_imports,
     derivatives_imports,
+    royalties_imports,
     fees_imports,
     aggregators_imports,
     options_imports,
     incentives_imports,
-    protocols_imports
+    protocols_imports,
 } as IJSON<typeof dexs_imports>
 
 const all = {
@@ -85,6 +87,12 @@ export default async (adaptorType: AdapterType): Promise<AdaptorData> => {
         KEYS_TO_STORE: derivatives_KEYS_TO_STORE,
         importModule: importModule(adaptorType),
         config: derivatives_config
+    }
+    if (adaptorType === AdapterType.ROYALTIES) return {
+        default: await generateProtocolAdaptorsList(all.imports[adaptorType], derivatives_config, adaptorType),
+        KEYS_TO_STORE: royalties_KEYS_TO_STORE,
+        importModule: importModule(adaptorType),
+        config: royalties_config
     }
     else throw new Error(`Couldn't find data for ${adaptorType} type`)
 }

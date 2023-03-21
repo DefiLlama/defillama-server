@@ -71,6 +71,12 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       decimals: 18,
       redirect: "asset#arbitrum:0x4277f8f2c384827b5273592ff7cebd9f2c1ac258",
     },
+    {
+      symbol: "OLE",
+      address: "0xd4d026322c88c2d49942a75dff920fcfbc5614c1",
+      decimals: 18,
+      redirect: "coingecko#openleverage",
+    },
   ],
   polygon: [
     {

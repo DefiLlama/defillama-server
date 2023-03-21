@@ -6,7 +6,7 @@ import { BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapter
 import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
-import { getCollectionsMap } from "../collections";
+import { getCollectionsMap } from "./collections";
 import collections from "@defillama/dimension-adapters/helpers/getOpenseaCollections/collections";
 import { seaportCollections } from "../fees/collections";
 

@@ -1,9 +1,9 @@
-import { Protocol } from "../../../protocols/types"
+import { Protocol } from "../../../../protocols/types"
 import openseaCollections from "@defillama/dimension-adapters/helpers/getOpenseaCollections/collections";
-import { AdaptorsConfig, IJSON } from "../types";
-import { CollectionInfo, getCollectionInfo, storeCollectionInfo } from "../../db-utils/collection-info";
+import { AdaptorsConfig, IJSON } from "../../types";
+import { CollectionInfo, getCollectionInfo, storeCollectionInfo } from "../../../db-utils/collection-info";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
-import { CATEGORIES } from "../helpers/categories";
+import { CATEGORIES } from "../categories";
 import fetch from "node-fetch";
 
 enum MARKETPLACES {

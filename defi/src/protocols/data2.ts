@@ -28576,7 +28576,7 @@ const data2: Protocol[] = [
   {
     id: "2701",
     name: "FairySwap V2",
-    address: "findora:0xccc94d78b01d94330f25f7b8e827ef24249132de",
+    address: "findora:0xaf196C2d7870B5146F02D49b011dF9197C093Ffe",
     symbol: "FAIRY",
     url: "https://fairyswap.finance",
     description: " FairySwap v2, the first DEX upgrade on Findora (FRA) delivering great trading experience and earning opportunities.",

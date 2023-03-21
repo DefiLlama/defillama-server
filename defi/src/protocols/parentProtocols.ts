@@ -1193,6 +1193,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "fairy_swap",
   },
+  {
+    id: "WEMIX.FI",
+    name: "WEMIX.FI",
+    url: "https://wemix.fi",
+    description: "WEMIX.Fi is the first decentralized exchange on the WEMIX3.0 mainnet. WEMIX.Fi is a fully on-chain DeFi platform supporting storage, exchange, borrowing, settlement and investment of crypto-assets.",
+    logo: `${baseIconsUrl}/wemix.fi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "WemixNetwork",
+  },
 ];
 
 export default parentProtocols;

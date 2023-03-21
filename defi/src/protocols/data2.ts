@@ -28006,6 +28006,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://www.certik.com/projects/wemix"],
+    parentProtocol: "WEMIX.FI",
     listedAt: 1678878315
   },
   {
@@ -28666,7 +28667,7 @@ const data2: Protocol[] = [
     listedAt: 1679408968
   },
   {
-    id: "2704",
+    id: "2705",
     name: "WEMIX.FI Lend",
     address: null,
     symbol: "-",
@@ -28684,6 +28685,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "wemix-lend/index.js",
     twitter: "WemixNetwork",
+    parentProtocol: "WEMIX.FI",
     listedAt: 1679410774
   },
 ]

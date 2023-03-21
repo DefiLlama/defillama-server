@@ -27987,14 +27987,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2674",
-    name: "WEMIX.FI",
+    name: "WEMIX.FI AMM",
     address: null,
     symbol: "-",
     url: "https://wemix.fi",
     description:
       "WEMIX.Fi is the first decentralized exchange on the WEMIX3.0 mainnet. WEMIX.Fi is a fully on-chain DeFi platform supporting storage, exchange, borrowing, settlement and investment of crypto-assets.",
     chain: "WEMIX",
-    logo: `${baseIconsUrl}/wemix.fi.png`,
+    logo: `${baseIconsUrl}/wemix.fi-amm.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -28664,6 +28664,27 @@ const data2: Protocol[] = [
                    "https://blocksafu.com/project-detail/0x43B35e89d15B91162Dea1C51133C4c93bdd1C4aF"
                  ],
     listedAt: 1679408968
+  },
+  {
+    id: "2704",
+    name: "WEMIX.FI Lend",
+    address: null,
+    symbol: "-",
+    url: "https://wemix.fi/market",
+    description: "Safely deposit the coins and earn profits, or borrow the coins you want on the WEMIX Network.",
+    chain: "WEMIX",
+    logo: `${baseIconsUrl}/wemix.fi-lend.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["WEMIX"],
+    oracles: [],
+    forkedFrom: [],
+    module: "wemix-lend/index.js",
+    twitter: "WemixNetwork",
+    listedAt: 1679410774
   },
 ]
 export default data2;

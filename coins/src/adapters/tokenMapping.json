@@ -2700,6 +2700,18 @@
       "symbol": "KLAY",
       "to": "coingecko#klay-token"
     },
+    "0x765277eebeca2e31912c9946eae1021199b39c61": {
+      "name": "ETH",
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x2c78f1b70ccf63cdee49f9233e9faa99d43aa07e": {
+      "name": "WBTC",
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "0xe3f5a90f9cb311505cd691a46596599aa1a0ad7d": {
       "name": "USDC",
       "decimals": "6",

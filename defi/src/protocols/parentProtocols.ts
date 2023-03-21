@@ -550,8 +550,8 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:muxvote.eth"]
   },
   {
-    id: "WOO Network",
-    name: "WOO Network",
+    id: "WOOFi",
+    name: "WOOFi",
     url: "https://woo.org",
     description:
     "Bringing best-in-class liquidity to DeFi and CeFi.",

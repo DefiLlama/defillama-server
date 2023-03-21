@@ -1170,7 +1170,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1461",
-    name: "WOOFi",
+    name: "WOOFi Swap",
     address: "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
     symbol: "WOO",
     url: "https://fi.woo.org",
@@ -1189,7 +1189,7 @@ const data2: Protocol[] = [
     twitter: "WOOnetwork",
     audit_links: ["https://www.certik.com/projects/woofiswap"],
     listedAt: 1645647756,
-    parentProtocol: "WOO Network"
+    parentProtocol: "WOOFi"
   },
   {
     id: "1462",
@@ -19238,7 +19238,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1668524390,
-    parentProtocol: "WOO Network"
+    parentProtocol: "WOOFi"
   },
   {
     id: "2285",

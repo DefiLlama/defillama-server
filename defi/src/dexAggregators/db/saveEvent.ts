@@ -1,7 +1,5 @@
-import AppDataSource from ".";
+import { connection } from ".";
 import { SwapEvent } from "./Models/SwapEvent";
-
-const connection = AppDataSource.initialize();
 
 export const saveEvent = async ({
   user,

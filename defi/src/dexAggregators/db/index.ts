@@ -14,4 +14,8 @@ const AppDataSource = new DataSource({
   url: process.env.AGGREGATOR_DB_URL,
 });
 
+const connection = AppDataSource.initialize();
+
+export { connection };
+
 export default AppDataSource;

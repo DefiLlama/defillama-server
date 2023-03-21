@@ -183,3 +183,13 @@ export function equalizer(timestamp: number = 0) {
     timestamp,
   );
 }
+export function camelot(timestamp: number = 0) {
+  console.log("starting camelot");
+  return getTokenPrices(
+    "arbitrum",
+    "0x6eccab422d763ac031210895c81787e87b43a652",
+    "0xc873fecbd354f5a56e00e710b90ef4201db2448d",
+    undefined,
+    timestamp,
+  );
+}

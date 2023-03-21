@@ -43,6 +43,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     RB: "0x441bb79f2da0daf457bad3d401edb68535fb3faa", // bad pricing
     MOR: "0x87bade473ea0513d4aa7085484aeaa6cb6ebe7e3", //MOR
     $CINO: "0xdfe6891ce8e5a5c7cf54ffde406a6c2c54145f71", //$cino . Problem with dodo adapter on 13/03/2023 (mispriced)
+    VBSWAP: "0x4f0ed527e8a95ecaa132af214dfd41f30b361600",
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

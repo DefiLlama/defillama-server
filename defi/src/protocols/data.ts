@@ -24360,6 +24360,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.beamswap.io/contracts/audit"],
     oracles: ["DIA"],
     forkedFrom: ["Uniswap"],
+    parentProtocol: "BeamSwap",
     listedAt: 1642599283,
   },
   {

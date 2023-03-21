@@ -1204,6 +1204,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "WemixNetwork",
   },
+  {
+    id: "Radiant",
+    name: "Radiant",
+    url: "https://radiant.capital/#/markets",
+    description: "Earn Interest & Borrow Assets Cross-Chain, Seamlessly",
+    logo: `${baseIconsUrl}/radiant.png`,
+    gecko_id: "radiant-capital",
+    cmcId: "21106",
+    chains: [],
+    twitter: "RDNTCapital",
+    governanceID: ["snapshot:radiantcapital.eth"],
+  },
 ];
 
 export default parentProtocols;

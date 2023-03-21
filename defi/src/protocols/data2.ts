@@ -11255,7 +11255,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1922",
-    name: "Radiant",
+    name: "Radiant V1",
     address: "arbitrum:0x0c4681e6c0235179ec3d4f4fc4df3d14fdd96017",
     symbol: "RDNT",
     url: "https://radiant.capital/#/markets",
@@ -11264,8 +11264,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/radiant.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "radiant-capital",
-    cmcId: "21106",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Arbitrum"],
     oracles: ["Chainlink"],
@@ -11273,7 +11273,7 @@ const data2: Protocol[] = [
     module: "radiant/index.js",
     twitter: "RDNTCapital",
     audit_links: ["https://solidity.finance/audits/RadiantProtocol/"],
-    governanceID: ["snapshot:radiantcapital.eth"],
+    parentProtocol: "Radiant",
     listedAt: 1658739357
   },
   {
@@ -28687,6 +28687,29 @@ const data2: Protocol[] = [
     twitter: "WemixNetwork",
     parentProtocol: "WEMIX.FI",
     listedAt: 1679410774
+  },
+  {
+    id: "2706",
+    name: "Radiant V2",
+    address: "arbitrum:0x3082CC23568eA640225c2467653dB90e9250AaA0",
+    symbol: "RDNT",
+    url: "https://radiant.capital/#/markets",
+    description: "Radiant v2 introduces a migration to the LayerZero OFT format, improving cross-chain fee sharing, enabling faster launches on additional chains, and allowing native ownership of bridging contracts. This update addresses utility exchange concerns and eligibility for RDNT emissions by implementing changes to core protocol mechanics, emissions, utility, and enhancing cross-chain functionality",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/radiant.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["Aave"],
+    module: "radiant-v2/index.js",
+    twitter: "RDNTCapital",
+    audit_links: ["https://solidity.finance/audits/RadiantProtocol/"],
+    parentProtocol: "Radiant",
+    listedAt: 1679414982
   },
 ]
 export default data2;

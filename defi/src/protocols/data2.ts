@@ -28799,5 +28799,27 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_BAPT_SWAP.pdf"],
     listedAt: 1679483195
   },
+  {
+    id: "2711",
+    name: "Void",
+    address: "ftm:0x80F2B8CdbC470c4DB4452Cc7e4a62F5277Db7061",
+    symbol: "VOID",
+    url: "https://void.money",
+    description: "VOID NEXT GENERATION HYBRID AUTO-REWARDING PROTOCOL - VOID rewards holders with an automatic $DAI Reflection from the Treasury and with each transaction done with $VOID. Simply hold VOID and earn passive income from multiple revenue streams.",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/void.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "void-ad9a561a-8bca-4c17-9a3f-483f5cf20ac0",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Fantom"],
+    oracles: [],
+    forkedFrom: [],
+    module: "void/index.js",
+    treasury: "void.js",
+    twitter: "VoidToken_fi",
+    listedAt: 1679496436
+  },
 ]
 export default data2;

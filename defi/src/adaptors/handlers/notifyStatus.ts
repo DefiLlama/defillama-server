@@ -13,7 +13,7 @@ export default async (event: { type: string }) => {
     const errorsArr = parsedBody?.errors
     console.log("response", response.body)
     const returnedProtocols = parsedBody.protocols.map((p: any) => p.module)
-    const protocolsList = Object.entries(loadAdaptorsData(event.type as AdapterType).config).filter(([_key, config]) => config.enabled).map(m => m[0])
+    const protocolsList = Object.entries((await loadAdaptorsData(event.type as AdapterType)).config).filter(([_key, config]) => config.enabled).map(m => m[0])
     const notIncluded = []
     for (const prot of protocolsList) {
         if (!returnedProtocols.includes(prot)) {

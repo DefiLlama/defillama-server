@@ -50,7 +50,7 @@ export const bridges = [
   anyswap,
   arbitrum,
   avax,
-  bsc,
+  //bsc,
   fantom,
   gasTokens,
   //harmony,

@@ -28842,5 +28842,26 @@ const data2: Protocol[] = [
     twitter: "prepo_io",
     listedAt: 1679504121
   },
+  {
+    id: "2713",
+    name: "pxswap",
+    address: null,
+    symbol: "-",
+    url: "https://pxswap.xyz",
+    description: "NFT OTC Trading platform, the Future of NFT Finance",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/pxswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Kava"],
+    oracles: [],
+    forkedFrom: [],
+    module: "pxswap/index.js",
+    twitter: "pxswap_xyz",
+    listedAt: 1679509047
+  },
 ]
 export default data2;

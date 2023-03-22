@@ -10300,7 +10300,7 @@ const data2: Protocol[] = [
     cmcId: "19843",
     category: "Dexes",
     chains: ["Arbitrum"],
-    oracles: ["TWAP"],
+    oracles: ["Stork"],
     forkedFrom: [],
     module: "apex/index.js",
     twitter: "OfficialApeXdex",

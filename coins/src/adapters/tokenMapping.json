@@ -2164,6 +2164,12 @@
       "symbol": "rUSD",
       "to": "coingecko#rusd"
     },
+    "0x2ee50c34392e7e7a1d17b0a42328a8d1ad6894e3": {
+      "name": "sMVLP",
+      "decimals": "18",
+      "symbol": "sMVLP",
+      "to": "polygon:0x9f4f8bc00f48663b7c204c96b932c29ccc43a2e8"
+    },
     "0x4c28f48448720e9000907bc2611f73022fdce1fa": {
       "name": "Wrapped Ether",
       "decimals": "18",

@@ -5,7 +5,8 @@ import { getTokenInfo } from "../utils/erc20";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
 
-const contracts: { [chain: string]: { [contract: string]: string } } = {
+type GLPContract = { [chain: string]: { [contract: string]: string } }
+const contracts: GLPContract = {
   arbitrum: {
     manager: "0x321f653eed006ad1c29d174e17d96351bde22649",
     glp: "0x4277f8f2c384827b5273592ff7cebd9f2c1ac258"
@@ -16,9 +17,22 @@ const contracts: { [chain: string]: { [contract: string]: string } } = {
   }
 };
 
+const mvlpContracts: GLPContract = {
+  polygon: {
+    manager: "0x13e733ddd6725a8133bec31b2fc5994fa5c26ea9",
+    glp: "0x9f4f8bc00f48663b7c204c96b932c29ccc43a2e8"
+  }
+}
+
 export default async function getTokenPrice(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const writes: Write[] = [];
+  await Promise.all([contracts, mvlpContracts].map(i => addContract(i, chain, block, writes, timestamp)))
+  return writes;
+}
+
+async function addContract(contracts: GLPContract, chain: string, block: number | undefined, writes: Write[], timestamp: number) {
+  if (!contracts[chain]) return;
 
   const [
     { output: aums },
@@ -56,5 +70,4 @@ export default async function getTokenPrice(chain: string, timestamp: number) {
     1
   );
 
-  return writes;
 }

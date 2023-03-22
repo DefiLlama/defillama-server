@@ -25,6 +25,7 @@ export function glp(timestamp: number = 0) {
   return Promise.all([
     glpAdapter("arbitrum", timestamp),
     glpAdapter("avax", timestamp),
+    glpAdapter("polygon", timestamp),
   ]);
 }
 export function abracadabra(timestamp: number = 0) {

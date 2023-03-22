@@ -121,9 +121,14 @@ async function storeTokensOfBridge(bridge: Bridge) {
 
       let decimals: number, symbol: string;
       if ("getAllInfo" in token) {
-        const newToken = await token.getAllInfo();
-        decimals = newToken.decimals;
-        symbol = newToken.symbol;
+        try {
+          const newToken = await token.getAllInfo();
+          decimals = newToken.decimals;
+          symbol = newToken.symbol;
+        } catch(e){
+          console.log("Skipping token", finalPK, e);
+          return
+        }
       } else {
         decimals = token.decimals;
         symbol = token.symbol;

@@ -28659,6 +28659,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "sakai-vault/index.js",
+    treasury: "sakai-vault.js",
     twitter: "SakaiVault",
     audit_links: [
                    "https://www.certik.com/projects/sakai-vault",
@@ -28754,5 +28755,49 @@ const data2: Protocol[] = [
     parentProtocol: "PuzzleSwapOrg",
     listedAt: 1679438099
   }, */
+  {
+    id: "2709",
+    name: "insrt finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.insrt.finance",
+    description: "insrt finance is a protocol that acts as a decentralized financial intermediary for non-fungible digital assets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/insrt-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "insrt_finance/index.js",
+    twitter: "insrtfinance",
+    audit_links: ["https://www.certik.com/projects/insrt-finance"],
+    listedAt: 1679483191
+  }, 
+  {
+    id: "2710",
+    name: "BaptSwap",
+    address: null,
+    symbol: "-",
+    url: "https://baptswap.com",
+    description: "Swap. Stake. Secure. The first DEX to support fee-on-transfer tokens on Aptos.",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/baptswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "baptswap/index.js",
+    twitter: "baptswap",
+    audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_BAPT_SWAP.pdf"],
+    listedAt: 1679483195
+  },
 ]
 export default data2;

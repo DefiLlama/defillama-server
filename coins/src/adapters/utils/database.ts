@@ -54,9 +54,8 @@ export function addToDBWritesList(
           SK: getCurrentUnixTimestamp(),
           PK,
           price,
-          symbol,
-          decimals: Number(decimals),
           redirect,
+          adapter,
           confidence: Number(confidence),
         },
         {
@@ -83,10 +82,9 @@ export function addToDBWritesList(
     writes.push({
       SK: timestamp,
       PK,
-      symbol,
-      decimals: Number(decimals),
       redirect,
       price,
+      adapter,
       confidence: Number(confidence),
     });
   }
@@ -179,41 +177,30 @@ async function getTokenAndRedirectDataDB(
         let dbEntry = timedDbEntries.find((e: any) => {
           if (e.SK != null) return e.PK == ld.PK;
         });
+        if (dbEntry != null) {
+          const latestDbEntry: DbEntry | undefined = latestDbEntries.find(
+            (e: any) => {
+              if (e.SK != null) return e.PK == ld.PK;
+            },
+          );
+
+          dbEntry.decimals = latestDbEntry?.decimals;
+          dbEntry.symbol = latestDbEntry?.symbol;
+        }
         let redirect = timedRedirects.find((e: any) => {
           if (e != null) return e.PK == ld.redirect;
         });
-        if (dbEntry == undefined && redirect == undefined)
+
+        if (dbEntry == null && redirect == null)
           return { dbEntry: ld, redirect: ["FALSE"] };
-        if (redirect == undefined) return { dbEntry, redirect: [] };
+        if (redirect == null) return { dbEntry, redirect: [] };
         return { dbEntry: ld, redirect: [redirect] };
       })
       .filter((v: any) => v.redirect[0] != "FALSE");
 
     allReads.push(...validResults);
   }
-  const timestampedResults = aggregateTokenAndRedirectData(allReads);
-
-  // if (timestampedResults.length < tokens.length) {
-  //   const returnedTokens = timestampedResults.map((t: any) => t.address);
-  //   const missingTokens: string[] = [];
-
-  //   tokens.map((t: any) => {
-  //     if (returnedTokens[t] == undefined) {
-  //       missingTokens.push(t);
-  //     }
-  //   });
-
-  //   const currentResults = await getTokenAndRedirectData(
-  //     missingTokens,
-  //     chain,
-  //     getCurrentUnixTimestamp()
-  //   );
-
-  //   if (currentResults.length > 0) {
-  //     await currentResult.adapter()
-  //   }
-  // }
-  return timestampedResults;
+  return aggregateTokenAndRedirectData(allReads);
 }
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
   allWrites = allWrites.filter((w: Write) => w != undefined);

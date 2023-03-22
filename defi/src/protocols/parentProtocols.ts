@@ -555,7 +555,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://woo.org",
     description:
     "Bringing best-in-class liquidity to DeFi and CeFi.",
-    logo: `${baseIconsUrl}/woo network.jpg`,
+    logo: `${baseIconsUrl}/woofi.png`,
     gecko_id: "woo-network",
     cmcId: "7501",
     chains: [],

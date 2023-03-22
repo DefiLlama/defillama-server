@@ -61,7 +61,7 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
             list = chainDataMap
         }
-        if (adapterObj.module.default?.protocolType === ProtocolType.COLLECTION) {
+        else if (adapterObj.module.default?.protocolType === ProtocolType.COLLECTION) {
             list = collectionsMap
         }
         const protocolId = config?.[adapterKey]?.id
@@ -98,10 +98,11 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
                         baseModuleObject = moduleObject.breakdown[key]
                     }
                 }
+                if (!configObj) return
                 const infoItem: ProtocolAdaptor = {
                     ...dexFoundInProtocols,
                     ...configObj,
-                    id: dexFoundInProtocols.id,
+                    id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id,
                     module: adapterKey,
                     config: config[adapterKey],
                     chains: getChainsFromBaseAdapter(baseModuleObject),

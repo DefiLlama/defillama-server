@@ -89,7 +89,7 @@ export default async (adaptorType: AdapterType): Promise<AdaptorData> => {
         config: derivatives_config
     }
     if (adaptorType === AdapterType.ROYALTIES) return {
-        default: await generateProtocolAdaptorsList(all.imports[adaptorType], derivatives_config, adaptorType),
+        default: await generateProtocolAdaptorsList(all.imports[adaptorType], royalties_config, adaptorType),
         KEYS_TO_STORE: royalties_KEYS_TO_STORE,
         importModule: importModule(adaptorType),
         config: royalties_config

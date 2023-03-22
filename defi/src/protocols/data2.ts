@@ -28821,5 +28821,26 @@ const data2: Protocol[] = [
     twitter: "VoidToken_fi",
     listedAt: 1679496436
   },
+  {
+    id: "2712",
+    name: "prePO",
+    address: null,
+    symbol: "-",
+    url: "https://app.prepo.io/trade",
+    description: "Go long or short on pre-IPO stocks & pre-IDO tokens.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/prepo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "prePo/index.js",
+    twitter: "prepo_io",
+    listedAt: 1679504121
+  },
 ]
 export default data2;

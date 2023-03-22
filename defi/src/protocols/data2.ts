@@ -10290,7 +10290,7 @@ const data2: Protocol[] = [
     name: "ApeX Protocol",
     address: "0x52a8845df664d76c69d2eea607cd793565af42b8",
     symbol: "APEX",
-    url: "https://app.apex.exchange/trade",
+    url: "https://www.apex.exchange/",
     description: "ApeX, an innovative derivatives protocol to provide Web3 users with a supreme derivatives trading experience.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/apex-protocol.png`,

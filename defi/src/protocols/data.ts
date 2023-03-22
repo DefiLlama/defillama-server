@@ -18786,7 +18786,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "overnight-usdPlus/index.js",
     twitter: "overnight_fi",
-    audit_links: ["https://github.com/ovnstable/ovnstable-app/blob/master/audits/hacken_2022-02-03.pdf"],
+    audit_links: [
+                    "https://github.com/ovnstable/ovnstable-app/blob/master/audits/hacken_2022-02-03.pdf",
+                    "https://github.com/ovnstable/ovnstable-core/blob/master/audits/hacken_2022-02-03.pdf",
+                    "https://github.com/ovnstable/ovnstable-core/blob/master/audits/ackee_2023-03-03.pdf",
+                   
+                ],
     parentProtocol: "Overnight Finance",
     listedAt: 1639428732,
   },

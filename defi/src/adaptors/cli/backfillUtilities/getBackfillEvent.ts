@@ -23,7 +23,8 @@ const KEYS_TO_CHECK = {
     [AdapterType.AGGREGATORS]: 'dv',
     [AdapterType.DERIVATIVES]: 'dv',
     [AdapterType.OPTIONS]: 'dv',
-    [AdapterType.PROTOCOLS]: 'dv'
+    [AdapterType.PROTOCOLS]: 'dv',
+    [AdapterType.ROYALTIES]: 'dv',
 }
 
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {

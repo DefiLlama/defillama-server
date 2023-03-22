@@ -5425,7 +5425,7 @@ const data2: Protocol[] = [
     oracles: ["TWAP"],
     forkedFrom: ["Tomb Finance"],
     module: "scrub/index.js",
-    twitter: "ScrubFinance",
+    twitter: "ScrubMoneyDefi",
     audit_links: ["https://scrub.finance/audit.pdf"],
     listedAt: 1650038462,
     parentProtocol: "Scrub Money"

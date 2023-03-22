@@ -1,0 +1,11 @@
+{
+  "type": "dexs",
+  "backfill": [
+    {
+      "dexNames": [
+        "quickswap"
+      ],
+      "timestamp": 1676851200
+    }
+  ]
+}

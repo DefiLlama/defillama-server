@@ -70,7 +70,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
     let event: ITriggerStoreVolumeEventHandler | undefined
 
     const adapterName = adapter ?? DEXS_LIST[0]
-    const adaptorsData = await loadAdaptorsData(adaptorType)
+    const adaptorsData = loadAdaptorsData(adaptorType)
     if (adapterName[0] === 'all') {
         const timestamp = cliArguments.timestamp ?? getUniqStartOfTodayTimestamp(new Date()) - ONE_DAY_IN_SECONDS
         const type = KEYS_TO_CHECK[adaptorType]

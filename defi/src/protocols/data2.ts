@@ -28863,5 +28863,26 @@ const data2: Protocol[] = [
     twitter: "pxswap_xyz",
     listedAt: 1679509047
   },
+  {
+    id: "2714",
+    name: "Bonerium Tech",
+    address: null,
+    symbol: "-",
+    url: "https://www.boneriumtech.com/#/swap",
+    description: "AMM on Bone Network",
+    chain: "Bone",
+    logo: `${baseIconsUrl}/bonerium-tech.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Bone"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "boneriumtech/index.js",
+    twitter: "Bonerscan",
+    listedAt: 1679526967
+  },
 ]
 export default data2;

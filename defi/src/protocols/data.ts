@@ -19252,7 +19252,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TempusFinance",
     audit_links: ["https://www.coinspect.com/tempus-audit"],
     listedAt: 1639812368,
-    governanceID: ["snapshot"]
+    // governanceID: ["snapshot"]
   },
   {
     id: "1046",

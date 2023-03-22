@@ -2332,6 +2332,12 @@
       "symbol": "pSOL",
       "to": "solana:So11111111111111111111111111111111111111112"
     },
+    "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m": {
+      "name": "Metaplex",
+      "decimals": "6",
+      "symbol": "META",
+      "to": "coingecko:metaplex"
+    },
     "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn": {
       "name": "Jito Staked SOL",
       "decimals": "9",

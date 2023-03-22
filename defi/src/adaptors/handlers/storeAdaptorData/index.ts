@@ -61,11 +61,11 @@ export const handler = async (event: IHandlerEvent) => {
       } catch (e) { console.log(e) }
     })
   );
-  console.log("adaptorsList", adaptorsList)
+
   const results = await allSettled(adaptorsList.map(async protocol => {
     // Get adapter info
-    const { id, module } = protocol;
-    console.info(`Adapter found ${id} ${module}`)
+    const { id, module, versionKey } = protocol;
+    console.info(`Adapter found ${id} ${module} ${versionKey}`)
 
     try {
       // Import adaptor
@@ -99,6 +99,7 @@ export const handler = async (event: IHandlerEvent) => {
       }, {} as IJSON<string>) ?? AdaptorRecordTypeMapReverse
       if (adaptor.protocolType === ProtocolType.COLLECTION) {
         for (const [version, adapter] of adaptersToRun) {
+          if (version!==versionKey) continue
           const rawRecords: RawRecordMap = {}
           const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
           if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - cleanCurrentDayTimestamp) > 60 * 60 * 2) continue
@@ -109,8 +110,8 @@ export const handler = async (event: IHandlerEvent) => {
           // Make sure rejected ones are also included in rawRecords
           processRejectedPromises(rejectedResults, rawRecords, module, FILTRED_KEYS_TO_STORE)
           for (const [recordType, record] of Object.entries(rawRecords)) {
-            console.log("STORING -> ", event.adaptorType, recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType)
-            // await storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
+            console.info("STORING -> ", event.adaptorType, recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType)
+            await storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
           }
         }
       } else {
@@ -129,7 +130,7 @@ export const handler = async (event: IHandlerEvent) => {
         // Store records // TODO: Change to run in parallel
         for (const [recordType, record] of Object.entries(rawRecords)) {
           console.log(event.adaptorType, recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType)
-          // await storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
+          await storeAdaptorRecord(new AdaptorRecord(recordType as AdaptorRecordType, id, cleanPreviousDayTimestamp, record, adaptor.protocolType), LAMBDA_TIMESTAMP)
         }
       }
     }

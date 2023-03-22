@@ -5,12 +5,9 @@ import { CollectionInfo, getCollectionInfo, storeCollectionInfo } from "../../..
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
 import { CATEGORIES } from "../categories";
 import fetch from "node-fetch";
+import data, { MARKETPLACES } from "./data";
 
-enum MARKETPLACES {
-    OPENSEA = 'opensea'
-}
-
-const getCollectionList = async (config: AdaptorsConfig): Promise<Protocol[]> => {
+const getCollectionList = async (): Promise<Protocol[]> => {
     const allCollections = [] as Protocol[]
     // GETOPENSEACOLLECTIONS
     const collectionAddrs = Object.keys(openseaCollections)
@@ -34,7 +31,7 @@ const getCollectionList = async (config: AdaptorsConfig): Promise<Protocol[]> =>
                         throw new Error(`No address was found for ${primaryAssetContract}`)
                     }
                     collectionInfo = {
-                        id: config[collectionAddr].id,
+                        id: data[`${MARKETPLACES.OPENSEA}#${collectionAddr}`].id,
                         name: infoAPI.name,
                         address: primaryAssetContract.address,
                         category: CATEGORIES.Collection,
@@ -49,7 +46,7 @@ const getCollectionList = async (config: AdaptorsConfig): Promise<Protocol[]> =>
                         twitter: infoAPI.twitter_username,
                         module: infoAPI.slug,
                     }
-                    await storeCollectionInfo(new CollectionInfo(config[collectionAddr].id, MARKETPLACES.OPENSEA, collectionInfo))
+                    await storeCollectionInfo(new CollectionInfo(data[`${MARKETPLACES.OPENSEA}#${collectionAddr}`].id, MARKETPLACES.OPENSEA, collectionInfo))
                 }
                 allCollections.push(collectionInfo)
             } catch (error) {
@@ -77,8 +74,8 @@ interface CollectionResponse {
 }
 const fetchCollectionData = async (slug: string): Promise<CollectionResponse> => fetch(`https://api.opensea.io/api/v1/collection/${slug}`).then((r) => r.json());
 
-export const getCollectionsMap = async (config: AdaptorsConfig): Promise<IJSON<Protocol>> => {
-    const collectionsList = await getCollectionList(config)
+export const getCollectionsMap = async (): Promise<IJSON<Protocol>> => {
+    const collectionsList = await getCollectionList()
     return collectionsList.reduce((acc, curr) => {
         acc[curr.id] = curr
         return acc

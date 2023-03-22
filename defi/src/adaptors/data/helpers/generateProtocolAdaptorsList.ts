@@ -55,7 +55,7 @@ const addressMap = {
 
 // This could be much more efficient
 export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): Promise<ProtocolAdaptor[]> => {
-    const collectionsMap = await getCollectionsMap(config)
+    const collectionsMap = await getCollectionsMap()
     return Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = dataMap
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {

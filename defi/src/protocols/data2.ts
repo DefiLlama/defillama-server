@@ -16575,7 +16575,7 @@ const data2: Protocol[] = [
   {
     id: "2166",
     name: "LFGSwap EthereumPoW",
-    address: "ethpow:0xFd483e333cBe8fE7A418D9398d6BB81CC2B8e07B​",
+    address: "ethpow:0xFd483e333cBe8fE7A418D9398d6BB81CC2B8e07B ",
     symbol: "LFG",
     url: "https://app.lfgswap.finance/swap",
     description: "AMM DEX on EthereumPoW and CORE Chain",
@@ -19228,7 +19228,7 @@ const data2: Protocol[] = [
     description:
       'WOOFi Earn provides "set-and-forget" yield generating strategies, where users can simply deposit into a vault and let the automated strategies do the rest',
     chain: "Binance",
-    logo: `${baseIconsUrl}/woofi-earn.jpg`,
+    logo: `${baseIconsUrl}/woofi.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

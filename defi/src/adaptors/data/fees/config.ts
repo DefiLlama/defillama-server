@@ -1,4 +1,5 @@
 import { AdaptorsConfig } from "../types"
+import { seaportCollections } from "./collections"
 
 export default {
     "aave": {
@@ -659,5 +660,6 @@ export default {
     "ramses-exchange": {
         enabled: true,
         id: "2675"
-    }
+    },
+    ...seaportCollections
 } as AdaptorsConfig

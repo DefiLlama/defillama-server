@@ -11069,18 +11069,20 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "BUMP",
     url: "https://www.bumper.fi",
     description:
-      "Bumper Finance is the first product on the market to offer efficient, flexible, cost effective, easy-to-use, and guaranteed protection against volatility",
+      "Bumper protects the value of your crypto using an innovative DeFi protocol. Set the price you want to protect and if the market crashes, your asset will never fall below that price. Importantly, if the market pumps, your asset rises too.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bumper-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: "bumper",
     cmcId: "11069",
-    category: "Insurance",
+    category: "Options",
     chains: ["Ethereum"],
     module: "bumper/index.js",
     twitter: "bumperfinance",
-    audit_links: ["https://drive.google.com/file/d/1MT75ifDmiV2hAg9nVJfVjzWr4UrNO6fU/view"],
+    audit_links: [
+      "https://docs.bumper.fi/security/audits"
+    ],
   },
   {
     id: "643",

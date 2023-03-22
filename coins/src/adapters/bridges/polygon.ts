@@ -6,7 +6,6 @@ export default async function bridge() {
     const tokens = await fetch(
         tokenList
       )
-      .then((r) => r.json())
       .then((r) => r.tokens);
 
     return tokens.map((token: any) => {

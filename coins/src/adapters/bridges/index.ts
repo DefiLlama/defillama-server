@@ -4,7 +4,7 @@ import avax from "./avax";
 import bsc from "./bsc";
 import fantom from "./fantom";
 import gasTokens from "./gasTokens";
-import harmony from "./harmony";
+//import harmony from "./harmony";
 import optimism from "./optimism";
 import polygon from "./polygon";
 import solana from "./solana";
@@ -53,7 +53,7 @@ export const bridges = [
   bsc,
   fantom,
   gasTokens,
-  harmony,
+  //harmony,
   optimism,
   polygon,
   solana

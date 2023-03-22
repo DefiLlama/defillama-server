@@ -54,8 +54,9 @@ export function addToDBWritesList(
           SK: getCurrentUnixTimestamp(),
           PK,
           price,
+          symbol,
+          decimals: Number(decimals),
           redirect,
-          adapter,
           confidence: Number(confidence),
         },
         {
@@ -82,9 +83,10 @@ export function addToDBWritesList(
     writes.push({
       SK: timestamp,
       PK,
+      symbol,
+      decimals: Number(decimals),
       redirect,
       price,
-      adapter,
       confidence: Number(confidence),
     });
   }
@@ -189,8 +191,29 @@ async function getTokenAndRedirectDataDB(
 
     allReads.push(...validResults);
   }
+  const timestampedResults = aggregateTokenAndRedirectData(allReads);
 
-  return aggregateTokenAndRedirectData(allReads);
+  // if (timestampedResults.length < tokens.length) {
+  //   const returnedTokens = timestampedResults.map((t: any) => t.address);
+  //   const missingTokens: string[] = [];
+
+  //   tokens.map((t: any) => {
+  //     if (returnedTokens[t] == undefined) {
+  //       missingTokens.push(t);
+  //     }
+  //   });
+
+  //   const currentResults = await getTokenAndRedirectData(
+  //     missingTokens,
+  //     chain,
+  //     getCurrentUnixTimestamp()
+  //   );
+
+  //   if (currentResults.length > 0) {
+  //     await currentResult.adapter()
+  //   }
+  // }
+  return timestampedResults;
 }
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
   allWrites = allWrites.filter((w: Write) => w != undefined);

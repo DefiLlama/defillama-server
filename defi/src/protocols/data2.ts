@@ -28732,7 +28732,7 @@ const data2: Protocol[] = [
     twitter: "realms_daos",
     listedAt: 1679437797
   },
-  {
+  /* {
     id: "2708",
     name: "Puzzle Lend",
     address: "waves:-",
@@ -28753,6 +28753,6 @@ const data2: Protocol[] = [
     twitter: "puzzle_lend",
     parentProtocol: "PuzzleSwapOrg",
     listedAt: 1679438099
-  },
+  }, */
 ]
 export default data2;

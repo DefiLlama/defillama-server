@@ -283,6 +283,7 @@ export default {
         "id": "1958"
     },
     "arbitrum": {
+        latestFetchIsOk: false,
         "category": "Rollup",
         "enabled": true,
         "startFrom": 1660608000,

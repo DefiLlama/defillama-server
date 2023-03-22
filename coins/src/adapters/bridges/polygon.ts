@@ -1,20 +1,18 @@
 import { fetch, getAllInfo } from "../utils"
 
-const PoSMappedTokenList =
-    "https://api.bridge.matic.network/api/tokens/pos/erc20";
-const PlasmaMappedTokenList =
-    "https://api.bridge.matic.network/api/tokens/plasma/erc20";
+const tokenList = "https://api-polygon-tokens.polygon.technology/tokenlists/polygonTokens.tokenlist.json";
 
 export default async function bridge() {
-    const posTokens = await fetch(PoSMappedTokenList);
-    const plasmaTokens = await fetch(PlasmaMappedTokenList);
-    const tokens = posTokens.tokens
-        .concat(plasmaTokens.tokens);
+    const tokens = await fetch(
+        tokenList
+      )
+      .then((r) => r.json())
+      .then((r) => r.tokens);
 
     return tokens.map((token: any) => {
-        const polygonAddress = token.childToken.toLowerCase()
+        const polygonAddress = token.address.toLowerCase()
         const from = "polygon:" + polygonAddress
-        const to = "ethereum:" + token.rootToken.toLowerCase()
+        const to = "ethereum:" + token.extensions.rootAddress.toLowerCase()
         return {
             from,
             to,

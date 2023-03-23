@@ -16,7 +16,10 @@ import { sumAllVolumes } from "../../utils/volumeCalcs"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
-const KEYS_TO_CHECK = {
+type TKeysToCheck = {
+    [l: AdapterType | string]: string;
+}
+const KEYS_TO_CHECK: TKeysToCheck = {
     [AdapterType.FEES]: 'df',
     [AdapterType.DEXS]: 'dv',
     [AdapterType.INCENTIVES]: 'ti',
@@ -29,41 +32,41 @@ const KEYS_TO_CHECK = {
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
-        // 'mooniswap', 
+        // 'mooniswap',
         // 'balancer',
         // 'bancor',
-        // 'champagneswap', 
-        // 'curve', 
-        // 'dodo', 
+        // 'champagneswap',
+        // 'curve',
+        // 'dodo',
         // 'katana',
-        // 'klayswap', 
-        // 'osmosis', 
-        // 'pancakeswap', 
-        // 'quickswap', 
-        // 'raydium', 
-        // 'saros', 
-        // 'serum', 
-        // 'soulswap', 
-        // 'spiritswap', 
-        // 'spookyswap', 
-        // 'sushiswap', 
-        // 'terraswap', 
-        // 'traderjoe', 
-        // 'uniswap', 
-        // 'gmx', 
-        // 'velodrome', 
-        // 'woofi', 
-        // 'hashflow', 
+        // 'klayswap',
+        // 'osmosis',
+        // 'pancakeswap',
+        // 'quickswap',
+        // 'raydium',
+        // 'saros',
+        // 'serum',
+        // 'soulswap',
+        // 'spiritswap',
+        // 'spookyswap',
+        // 'sushiswap',
+        // 'terraswap',
+        // 'traderjoe',
+        // 'uniswap',
+        // 'gmx',
+        // 'velodrome',
+        // 'woofi',
+        // 'hashflow',
         // 'biswap',
-        // 'zipswap', 
-        // 'wardenswap', 
-        // 'apeswap', 
-        // 'kyberswap', 
+        // 'zipswap',
+        // 'wardenswap',
+        // 'apeswap',
+        // 'kyberswap',
         // 'orca',
-        // 'pangolin', 
-        // 'ref-finance', 
-        // 'saber', 
-        // 'solidly'       
+        // 'pangolin',
+        // 'ref-finance',
+        // 'saber',
+        // 'solidly'
         // 'yoshi-exchange',
         // 'platypus'
     ]

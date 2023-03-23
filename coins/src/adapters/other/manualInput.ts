@@ -86,6 +86,14 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       redirect: "coingecko#wrapped-steth",
     },
   ],
+  kava: [
+    {
+      symbol: "DEXI",
+      address: "0xd22a58f79e9481d1a88e00c343885a588b34b68b",
+      decimals: 9,
+      redirect: "coingecko#dexioprotocol-v2",
+    },
+  ],
 };
 
 export default async function getTokenPrices(chain: string, timestamp: number) {

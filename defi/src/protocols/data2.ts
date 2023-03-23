@@ -28865,13 +28865,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2714",
-    name: "Bonerium Tech",
+    name: "BoneSwap Bonerium",
     address: null,
     symbol: "-",
     url: "https://www.boneriumtech.com/#/swap",
     description: "AMM on Bone Network",
     chain: "Bone",
-    logo: `${baseIconsUrl}/bonerium-tech.jpg`,
+    logo: `${baseIconsUrl}/boneswap-bonerium.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28883,6 +28883,27 @@ const data2: Protocol[] = [
     module: "boneriumtech/index.js",
     twitter: "Bonerscan",
     listedAt: 1679526967
+  },
+  {
+    id: "2715",
+    name: "OnyxDAO",
+    address: "arbitrum:0xb7cd6c8c4600aed9985d2c0eb174e0bee56e8854",
+    symbol: "ONYX",
+    url: "https://www.onyxdao.finance/",
+    description: "Farms to earn $ONYX",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/onyxdao.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "onyxdao-farm/index.js",
+    twitter: "OnyxDAO",
+    listedAt: 1679540877
   },
 ]
 export default data2;

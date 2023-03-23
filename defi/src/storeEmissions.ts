@@ -46,9 +46,3 @@ async function handler() {
 }
 
 export default wrapScheduledLambda(handler);
-
-async function main() {
-  let a = await handler();
-  return;
-}
-main(); // ts-node src/storeEmissions.ts

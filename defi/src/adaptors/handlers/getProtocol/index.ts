@@ -11,7 +11,7 @@ import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGetOverviewResponseBody, ProtocolAdapto
 import parentProtocols from "../../../protocols/parentProtocols";
 import standardizeProtocolName from "../../../utils/standardizeProtocolName";
 import { IParentProtocol } from "../../../protocols/types";
-import { notNull, notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
+import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
 
 export interface ChartItem {
     data: IRecordAdaptorRecordData;
@@ -60,7 +60,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IRespon
     if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
 
-    const dexData = getProtocolData(protocolName, adaptorType)
+    const dexData = await getProtocolData(protocolName, adaptorType)
     if (dexData) {
         const dexDataResponse = await getProtocolSummary(dexData, dataType, adaptorType)
         delete dexDataResponse.generatedSummary
@@ -144,7 +144,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
 }
 
 const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: AdaptorRecordType, adaptorType: AdapterType): Promise<IHandlerBodyResponse> => {
-    const adaptorsData = loadAdaptorsData(adaptorType as AdapterType)
+    const adaptorsData = await loadAdaptorsData(adaptorType as AdapterType)
     const childs = adaptorsData.default.reduce((acc, curr) => {
         const parentId = curr.parentProtocol
         if (parentId)
@@ -193,15 +193,15 @@ const sumReduce = (summaries: IJSON<any>[], key: string) => summaries.reduce((ac
     return acc
 }, null as number | null)
 
-const getProtocolData = (protocolName: string, adaptorType: AdapterType) => {
+const getProtocolData = async (protocolName: string, adaptorType: AdapterType) => {
     // Import data list
     const adapters2load: string[] = [adaptorType, "protocols"]
-    const protocolsList = Object.keys(loadAdaptorsData(adaptorType).config)
+    const protocolsList = Object.keys((await loadAdaptorsData(adaptorType)).config)
     let dexData: ProtocolAdaptor | undefined = undefined
     let adaptorsData: AdaptorData | undefined = undefined
     for (const type2load of adapters2load) {
         try {
-            adaptorsData = loadAdaptorsData(type2load as AdapterType)
+            adaptorsData = await loadAdaptorsData(type2load as AdapterType)
             dexData = adaptorsData.default
                 .find(va => protocolsList.includes(va.module)
                     && (sluggifyString(va.name) === protocolName || sluggifyString(va.displayName) === protocolName)

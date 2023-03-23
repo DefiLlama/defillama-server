@@ -10,5 +10,6 @@ export enum CATEGORIES {
     Liquid_Staking = 'Liquid Staking',
     Yield = 'Yield',
     Synthetics = 'Synthetics',
-    Rollup = 'Rollup'
+    Rollup = 'Rollup',
+    Collection = 'Collection'
 }

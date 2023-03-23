@@ -28998,5 +28998,27 @@ const data2: Protocol[] = [
     audit_links: ["https://sithswap.com/audits/nethermind.pdf"],
     listedAt: 1679585211
   },
+  {
+    id: "2720",
+    name: "Satin Exchange",
+    address: "polygon:0x9FC3104f6fC188fee65C85Bbc4b94a48282aE76D",
+    symbol: "SATIN",
+    url: "https://satin.exchange",
+    description: "The Flywheel of Liquidity and Stable Yield on Polygon.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/satin-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "satin/index.js",
+    twitter: "SatinExchange",
+    audit_links: ["https://www.trustindistrust.com/satin-exchange-audit"],
+    listedAt: 1679593322
+  },
 ]
 export default data2;

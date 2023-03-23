@@ -51,6 +51,14 @@ export const config = {
     tokenVaults: [
       '0x7d60f21072b585351dfd5e8b17109458d97ec120',
     ],
+    wantVaults: [
+      '0xa0FdCDDA62C4C6a0109A702a7Efe59B4E8807e3f', // mooMvxMVLP
+    ],
+  },
+  arbitrum: {
+    wantVaults: [
+      '0x9dbbBaecACEDf53d5Caa295b8293c1def2055Adc', // mooGmxGLP
+    ],
   },
   ethereum: {
     tokenVaults: [

@@ -26,7 +26,8 @@ const KEYS_TO_CHECK: TKeysToCheck = {
     [AdapterType.AGGREGATORS]: 'dv',
     [AdapterType.DERIVATIVES]: 'dv',
     [AdapterType.OPTIONS]: 'dv',
-    [AdapterType.PROTOCOLS]: 'dv'
+    [AdapterType.PROTOCOLS]: 'dv',
+    [AdapterType.ROYALTIES]: 'dv',
 }
 
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {
@@ -73,7 +74,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
     let event: ITriggerStoreVolumeEventHandler | undefined
 
     const adapterName = adapter ?? DEXS_LIST[0]
-    const adaptorsData = loadAdaptorsData(adaptorType)
+    const adaptorsData = await loadAdaptorsData(adaptorType)
     if (adapterName[0] === 'all') {
         const timestamp = cliArguments.timestamp ?? getUniqStartOfTodayTimestamp(new Date()) - ONE_DAY_IN_SECONDS
         const type = KEYS_TO_CHECK[adaptorType]

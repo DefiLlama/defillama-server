@@ -5,8 +5,8 @@ import data from '../index'
 //import { IJSON } from './types';
 
 describe("Protocol adaptor list is complete", () => {
-    it("AGGREGATORS", () => {
-        const d = data(AdapterType.AGGREGATORS).default
+    it("AGGREGATORS",async  () => {
+        const d = (await data(AdapterType.AGGREGATORS)).default
         expect(d).toMatchSnapshot()
     });
 });

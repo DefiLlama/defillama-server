@@ -19228,7 +19228,7 @@ const data2: Protocol[] = [
     description:
       'WOOFi Earn provides "set-and-forget" yield generating strategies, where users can simply deposit into a vault and let the automated strategies do the rest',
     chain: "Binance",
-    logo: `${baseIconsUrl}/woofi.png`,
+    logo: `${baseIconsUrl}/woofi-earn.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -28975,6 +28975,28 @@ const data2: Protocol[] = [
     twitter: "volta_protocol",
     audit_links: ["https://app.sherlock.xyz/audits/contests/47"],
     listedAt: 1679573391
+  },
+  {
+    id: "2719",
+    name: "SithSwap",
+    address: null,
+    symbol: "SITH",
+    url: "https://sithswap.com",
+    description: "SithSwap is an advanced, composable and permissionless stableswap protocol built on Starknet, where users can trade uncorrelated and correlated assets with dynamic fees and extremely low slippage.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/sithswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "sithswap",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Starknet"],
+    oracles: [],
+    forkedFrom: [],
+    module: "sithswap/index.js",
+    twitter: "SithSwap",
+    audit_links: ["https://sithswap.com/audits/nethermind.pdf"],
+    listedAt: 1679585211
   },
 ]
 export default data2;

@@ -81,7 +81,6 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
     [AdapterType.OPTIONS]: AdaptorRecordType.dailyNotionalVolume,
     [AdapterType.INCENTIVES]: AdaptorRecordType.tokenIncentives,
-    [AdapterType.ROYALTIES]: AdaptorRecordType.dailyFees,
 }
 
 export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -157,7 +156,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     // Import data list
     console.info("Loading adaptors...")
-    const loadedAdaptors = await loadAdaptorsData(adaptorType)
+    const loadedAdaptors = loadAdaptorsData(adaptorType)
     const protocolsList = Object.keys(loadedAdaptors.config)
     const adaptersList: ProtocolAdaptor[] = []
     try {

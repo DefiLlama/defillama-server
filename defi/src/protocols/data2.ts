@@ -29020,5 +29020,27 @@ const data2: Protocol[] = [
     audit_links: ["https://www.trustindistrust.com/satin-exchange-audit"],
     listedAt: 1679593322
   },
+  {
+    id: "2721",
+    name: "Metavisor",
+    address: null,
+    symbol: "-",
+    url: "https://www.metavisor.app/",
+    description: "Liquidity Automation, Optimization & Management Platform",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/metavisor.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Polygon", "Binance", "Optimism", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "metavisor/index.js",
+    twitter: "0xMetavisor",
+    audit_links: ["https://omniscia.io/reports/metavisor-automated-liquidity-vault-63e9e3b394e38c0014d24e8d/", "https://docs.metavisor.app/protocol/security"],
+    listedAt: 1679613000
+  },
 ]
 export default data2;

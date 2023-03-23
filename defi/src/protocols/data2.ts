@@ -29014,7 +29014,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Polygon"],
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Solidly"],
     module: "satin/index.js",
     twitter: "SatinExchange",
     audit_links: ["https://www.trustindistrust.com/satin-exchange-audit"],

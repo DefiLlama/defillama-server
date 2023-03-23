@@ -5192,6 +5192,12 @@
       "symbol": "KAVA",
       "to": "coingecko#kava"
     },
+    "0x667fd83e24ca1d935d36717d305d54fa0cac991c": {
+      "name": "BLUES",
+      "decimals": "18",
+      "symbol": "BLUES",
+      "to": "coingecko#blueshift"
+    },
     "0xc86c7c0efbd6a49b35e8714c5f59d99de09a225b": {
       "name": "Wrapped Kava",
       "decimals": "18",
@@ -6697,6 +6703,20 @@
       "decimals": "18",
       "symbol": "WLOOP",
       "to": "coingecko#loopnetwork"
+    }
+  },
+  "bone": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "BONE",
+      "decimals": "18",
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
+    },
+    "0xcda1fa23ff3b9b7172be82237bf662efb69437e9": {
+      "name": "Wrapped BONE",
+      "decimals": "18",
+      "symbol": "WBONE",
+      "to": "coingecko#bone-shibaswap"
     }
   }
 }

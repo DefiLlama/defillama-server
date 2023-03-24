@@ -31,8 +31,15 @@ const fetchProtocolEmissionData = async (protocol: string) => {
       : null;
   const totalLocked = maxSupply - circSupply;
 
+  const token = res.metadata.token;
+
+  const tokenPrice = await fetch(`https://coins.llama.fi/prices/current/${token}?searchWidth=4h`).then((res) =>
+    res.json()
+  );
+
   return {
-    token: res.metadata.token,
+    token,
+    tokenPrice,
     sources: res.metadata.sources,
     protocolId,
     name: res.name,

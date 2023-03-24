@@ -14,10 +14,9 @@ export function synthetix(timestamp: number = 0) {
   return synthetixAdapter(timestamp);
 }
 
-
 export function metronome(timestamp: number = 0) {
   console.log("starting metronome");
-  return metronomeAdapter('ethereum', timestamp);
+  return metronomeAdapter("ethereum", timestamp);
 }
 
 export function glp(timestamp: number = 0) {
@@ -81,6 +80,7 @@ export function manualInput(timestamp: number = 0) {
     manualInputAdapter("evmos", timestamp),
     manualInputAdapter("arbitrum", timestamp),
     manualInputAdapter("polygon", timestamp),
+    manualInputAdapter("kava", timestamp),
   ]);
 }
 export function realt(timestamp: number = 0) {

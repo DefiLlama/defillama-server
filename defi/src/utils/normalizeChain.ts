@@ -6,7 +6,9 @@ const normalizedChainReplacements = {
   "nova network": "nova" ,
   "godwokenv1" : "godwoken_v1",
   "arbitrum nova" : "arbitrum_nova",
-  "OKExChain": "OKXChain"
+  "OKExChain": "OKXChain",
+  "zkSync": "zkSync Legacy"
+
 } as {
   [chain: string]: string
 }
@@ -591,7 +593,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 2020,
   },
-  "zkSync": {
+  "zkSync Legacy": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -1427,6 +1429,8 @@ export function transformNewChainName(chain: string) {
       return "Rootstock"
     case "Orai":
       return "Oraichain"
+    case "zkSync":
+      return "zkSync Legacy"
     default:
       return chain
   }
@@ -1533,7 +1537,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
-      return "zkSync"
+        return useNewChainNames ? "zkSync Legacy": "zkSync"
     case "godwoken":
       return "Godwoken"
     case "callisto":

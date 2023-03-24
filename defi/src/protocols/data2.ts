@@ -29064,5 +29064,27 @@ const data2: Protocol[] = [
     audit_links: ["https://omniscia.io/reports/metavisor-automated-liquidity-vault-63e9e3b394e38c0014d24e8d"],
     listedAt: 1679658225
   },
+  {
+    id: "2723",
+    name: "Arbitrum DAO",
+    address: null,
+    symbol: "-",
+    url: "https://arbitrum.foundation",
+    description: "The Arbitrum DAO is a decentralized autonomous organization (DAO) built on the Ethereum blockchain. At its core, the Arbitrum DAO is a community-driven governance mechanism that allows $ARB token holders to propose and vote on changes to the organization and the technologies it governs.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/arbitrum-dao.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    treasury: "arbitrum-dao.js",
+    twitter: "arbitrum",
+    listedAt: 1679658225
+  },
 ]
 export default data2;

@@ -29084,7 +29084,7 @@ const data2: Protocol[] = [
     module: "dummy.js",
     treasury: "arbitrum-dao.js",
     twitter: "arbitrum",
-    listedAt: 1679658225
+    listedAt: 1679661348
   },
 ]
 export default data2;

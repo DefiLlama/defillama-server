@@ -29086,5 +29086,27 @@ const data2: Protocol[] = [
     twitter: "arbitrum",
     listedAt: 1679661348
   },
+  {
+    id: "2724",
+    name: "India Covid Relief Fund",
+    address: null,
+    symbol: "-",
+    url: "https://cryptorelief.in/transparency",
+    description: "We're a community-run fund delivering relief during the ongoing Covid crisis in India",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/india-covid-relief-fund.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum", "Bitcoin", "Tron"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    treasury: "india-covid-relief-fund.js",
+    twitter: "CryptoRelief_",
+    listedAt: 1679665690
+  },
 ]
 export default data2;

@@ -11,7 +11,7 @@ async function handler() {
   const protocolsArray: string[] = [];
   const promises: Promise<any>[] = [];
 
-  adapters.index.map(async (protocolName) => {
+  adapters.index.map(async (protocolName: string) => {
     try {
       const adapter: Protocol = await import(`../emissions-adapters/protocols/${protocolName}`);
       const { rawSections, startTime, endTime, metadata } = await createRawSections(adapter);
@@ -22,11 +22,15 @@ async function handler() {
       }));
 
       const pId = metadata?.protocolIds?.[0] ?? null;
-      const pName = pId && pId !== "" ? protocols.find((p) => p.id == pId)?.name ?? null : null;
-      const data = { data: chart, metadata, name: pName || protocolName };
+      const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : null;
+      const data = { data: chart, metadata, name: pData?.name ?? protocolName, gecko_id: pData?.gecko_id };
 
       promises.push(
-        storeR2JSONString(`emissions/${standardizeProtocolName(pName || protocolName)}`, JSON.stringify(data), 3600)
+        storeR2JSONString(
+          `emissions/${standardizeProtocolName(pData?.name ?? protocolName)}`,
+          JSON.stringify(data),
+          3600
+        )
       );
 
       protocolsArray.push(protocolName);

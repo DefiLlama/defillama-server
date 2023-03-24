@@ -29165,7 +29165,7 @@ const data2: Protocol[] = [
     chains: ["zkSync Era"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "mute/index.js",
     twitter: "mute_io",
     listedAt: 1679676617
   },

@@ -1275,5 +1275,9 @@ export default {
     "ramses-exchange": {
         enabled: true,
         id: "2675"
+    },
+    "zigzag": {
+        enabled: true,
+        id: "800"
     }
 } as AdaptorsConfig

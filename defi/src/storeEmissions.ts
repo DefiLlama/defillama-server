@@ -12,30 +12,56 @@ const saveLocation = "../emissions-adapters/protocols/protocolsArray.ts";
 
 async function handler() {
   const protocolsArray: string[] = [];
-  await Promise.all(
-    Object.keys(adapters).map(async (protocolName) => {
+  const promises: Promise<any>[] = [];
+
+  Object.keys(adapters).map(async (protocolName) => {
+    try {
       const adapter: Protocol = (adapters as any)[protocolName];
-      const { rawSections, startTime, endTime, metadata } = await createRawSections(adapter);
-      const chart = createChartData(rawSections, startTime, endTime, false).map((s: ChartSection) => ({
-        label: s.section,
-        data: s.data.apiData,
-      }));
+      const { rawSections, startTime, endTime, metadata } =
+        await createRawSections(adapter);
+
+      const chart = createChartData(rawSections, startTime, endTime, false).map(
+        (s: ChartSection) => ({
+          label: s.section,
+          data: s.data.apiData,
+        }),
+      );
       const pId = metadata?.protocolIds?.[0] ?? null;
-      const pName = pId && pId !== "" ? protocols.find((p) => p.id == pId)?.name ?? null : null;
+      const pName =
+        pId && pId !== ""
+          ? protocols.find((p) => p.id == pId)?.name ?? null
+          : null;
       const data = { data: chart, metadata, name: pName || protocolName };
-      await storeR2JSONString(`emissions/${protocolName}`, JSON.stringify(data), 3600);
+      promises.push(
+        storeR2JSONString(
+          `emissions/${protocolName}`,
+          JSON.stringify(data),
+          3600,
+        ),
+      );
+
       protocolsArray.push(`"${protocolName}"`);
-    })
+    } catch (e) {
+      console.log(protocolName);
+    }
+  });
+
+  promises.push(
+    storeR2JSONString(
+      `emissions/index`,
+      JSON.stringify({ data: protocolsArray }),
+      3600,
+    ),
   );
 
-  const path: string = resolve(__dirname, saveLocation);
-
-  fs.writeFile(path, `export const protocols: string[] = [${protocolsArray.toString()}]`, function (err) {
-    if (err) {
-      return console.log(err);
-    }
-    console.log(`Protocols array successfully saved!`);
-  });
+  let a = await Promise.all(promises);
+  return;
 }
 
 export default wrapScheduledLambda(handler);
+
+async function main() {
+  let a = await handler();
+  return;
+}
+main(); // ts-node src/storeEmissions.ts

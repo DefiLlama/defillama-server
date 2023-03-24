@@ -1,22 +1,20 @@
 import { createChartData } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
-import adapters from "../emissions-adapters/protocols";
+import * as adapters from "../emissions-adapters/protocols";
 import { ChartSection, Protocol } from "../emissions-adapters/types/adapters";
 import { storeR2JSONString } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import fs from "fs";
-import { resolve } from "path";
 import protocols from "./protocols/data";
-
-const saveLocation = "../emissions-adapters/protocols/protocolsArray.ts";
 
 async function handler() {
   const protocolsArray: string[] = [];
   const promises: Promise<any>[] = [];
 
-  Object.keys(adapters).map(async (protocolName) => {
+  adapters.index.map(async (protocolName) => {
     try {
-      const adapter: Protocol = (adapters as any)[protocolName];
+      const adapter: Protocol = await import(
+        `../emissions-adapters/protocols/${protocolName}`
+      );
       const { rawSections, startTime, endTime, metadata } =
         await createRawSections(adapter);
 
@@ -26,12 +24,14 @@ async function handler() {
           data: s.data.apiData,
         }),
       );
+
       const pId = metadata?.protocolIds?.[0] ?? null;
       const pName =
         pId && pId !== ""
           ? protocols.find((p) => p.id == pId)?.name ?? null
           : null;
       const data = { data: chart, metadata, name: pName || protocolName };
+
       promises.push(
         storeR2JSONString(
           `emissions/${protocolName}`,
@@ -40,28 +40,13 @@ async function handler() {
         ),
       );
 
-      protocolsArray.push(`"${protocolName}"`);
-    } catch (e) {
+      protocolsArray.push(protocolName);
+    } catch {
       console.log(protocolName);
     }
   });
 
-  promises.push(
-    storeR2JSONString(
-      `emissions/index`,
-      JSON.stringify({ data: protocolsArray }),
-      3600,
-    ),
-  );
-
-  let a = await Promise.all(promises);
-  return;
+  await Promise.all(promises);
 }
 
 export default wrapScheduledLambda(handler);
-
-async function main() {
-  let a = await handler();
-  return;
-}
-main(); // ts-node src/storeEmissions.ts

@@ -20,8 +20,8 @@ async function handler() {
         label: s.section,
         data: s.data.apiData,
       }));
-      const pId = metadata.protocolIds?.[0] ?? null;
-      const pName = pId && pId !== "" ? protocols.find((p) => p.id == pId) : null;
+      const pId = metadata?.protocolIds?.[0] ?? null;
+      const pName = pId && pId !== "" ? protocols.find((p) => p.id == pId)?.name ?? null : null;
       const data = { data: chart, metadata, name: pName || protocolName };
       await storeR2JSONString(`emissions/${protocolName}`, JSON.stringify(data), 3600);
       protocolsArray.push(`"${protocolName}"`);
@@ -29,6 +29,7 @@ async function handler() {
   );
 
   const path: string = resolve(__dirname, saveLocation);
+
   fs.writeFile(path, `export const protocols: string[] = [${protocolsArray.toString()}]`, function (err) {
     if (err) {
       return console.log(err);

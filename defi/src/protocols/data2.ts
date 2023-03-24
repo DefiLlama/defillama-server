@@ -29148,5 +29148,26 @@ const data2: Protocol[] = [
     module: "dummy.js",
     twitter: "CantoPublic",
   },
+  {
+    id: "2727",
+    name: "Mute.io",
+    address: "0xa49d7499271ae71cd8ab9ac515e6694c755d400c",
+    symbol: "MUTE",
+    url: "https://app.mute.io",
+    description: "A zkRollup based DEX w/ limit orders, farming platform, and Bond platform. Built on Ethereum and zkSync.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/mute.io.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "mute",
+    cmcId: "8795",
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "mute_io",
+    listedAt: 1679676617
+  },
 ]
 export default data2;

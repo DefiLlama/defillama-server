@@ -7,7 +7,7 @@ const normalizedChainReplacements = {
   "godwokenv1" : "godwoken_v1",
   "arbitrum nova" : "arbitrum_nova",
   "OKExChain": "OKXChain",
-  "zkSync": "zkSync Legacy",
+  "zkSync": "zkSync Lite",
   "zkSync Era": "era"
 
 } as {
@@ -594,7 +594,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 2020,
   },
-  "zkSync Legacy": {
+  "zkSync Lite": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -1437,7 +1437,7 @@ export function transformNewChainName(chain: string) {
     case "Orai":
       return "Oraichain"
     case "zkSync":
-      return "zkSync Legacy"
+      return "zkSync Lite"
     default:
       return chain
   }
@@ -1544,7 +1544,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
-        return useNewChainNames ? "zkSync Legacy": "zkSync"
+        return useNewChainNames ? "zkSync Lite": "zkSync"
     case "godwoken":
       return "Godwoken"
     case "callisto":

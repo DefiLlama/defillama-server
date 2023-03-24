@@ -590,7 +590,14 @@ functions:
     timeout: 30
     events:
       - http:
-          path: emissions/{protocol}
+          path: emissions
+          method: get
+  emission:
+    handler: src/getEmissionProtocol.default
+    timeout: 30
+    events:
+      - http:
+          path: emission/{protocol}
           method: get
   storeEmissions:
     handler: src/storeEmissions.default
@@ -606,8 +613,8 @@ functions:
           path: news/articles
           method: get
     environment:
-      DL_NEWS_API: ${env:DL_NEWS_API}
-      DL_NEWS_ACCESS_TOKEN: ${env:DL_NEWS_ACCESS_TOKEN}
+      DL_NEWS_API: ${file(./env.js):DL_NEWS_API}
+      DL_NEWS_ACCESS_TOKEN: ${file(./env.js):DL_NEWS_ACCESS_TOKEN}
 
 resources:
   # CORS for api gateway errors

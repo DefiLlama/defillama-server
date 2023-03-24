@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { protocols } from "../emissions-adapters/protocols/protocolsArray";
+import { index } from "../emissions-adapters/protocols";
 import { getR2 } from "./utils/r2";
 import { wrap, IResponse, successResponse } from "./utils/shared";
 
@@ -37,6 +37,13 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     res.json()
   );
 
+  const mcap = fetch("https://coins.llama.fi/mcaps", {
+    method: "POST",
+    body: JSON.stringify({
+      coins: res.gecko_id ? [res.gecko_id] : [],
+    }),
+  }).then((r) => r.json());
+
   return {
     token,
     tokenPrice,
@@ -47,11 +54,12 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     totalLocked,
     maxSupply,
     nextEvent,
+    mcap,
   };
 };
 
 const handler = async (event: any): Promise<IResponse> => {
-  const data = await Promise.all(protocols.map((protocol) => fetchProtocolEmissionData(protocol)));
+  const data = await Promise.all(index.map((protocol) => fetchProtocolEmissionData(protocol)));
   return successResponse(data, 10 * 60); // 10 mins cache
 };
 

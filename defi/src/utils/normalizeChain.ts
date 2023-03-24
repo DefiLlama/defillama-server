@@ -1477,8 +1477,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Avalanche"
     case "xdaiarb":
       return "XdaiArb"
-    case "okexchain":
-      return "OKExChain"
     case "defichain":
       return "DefiChain"
     case "stacks":

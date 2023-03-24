@@ -17553,6 +17553,7 @@ const data2: Protocol[] = [
     language: "Move",
     listedAt: 1666310467
   },
+/*
   {
     id: "2209",
     name: "Opulous",
@@ -17575,6 +17576,7 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1666349179
   },
+*/
   {
     id: "2210",
     name: "LiquidSwap",

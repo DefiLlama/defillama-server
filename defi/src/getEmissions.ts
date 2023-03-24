@@ -1,6 +1,5 @@
 import fetch from "node-fetch";
 import { protocols } from "../emissions-adapters/protocols/protocolsArray";
-import protocolsList from "./protocols/data";
 import { getR2 } from "./utils/r2";
 import { wrap, IResponse, successResponse } from "./utils/shared";
 
@@ -12,8 +11,6 @@ const fetchProtocolEmissionData = async (protocol: string) => {
   }
 
   const protocolId = res.metadata.protocolIds?.[0] ?? null;
-
-  const protocolName = protocolId ? protocolsList.find((p) => p.id === protocolId)?.name : null;
 
   const data: { [date: number]: number } = {};
 
@@ -38,7 +35,7 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     token: res.metadata.token,
     sources: res.metadata.sources,
     protocolId,
-    name: protocolName || protocol,
+    name: res.name,
     circSupply,
     totalLocked,
     maxSupply,

@@ -5,6 +5,9 @@ import { wrap, IResponse, successResponse } from "./utils/shared";
 
 const fetchProtocolEmissionData = async (protocol: string) => {
   const res = await getR2(`emissions/${protocol}`).then((res) => (res.body ? JSON.parse(res.body) : null));
+  // const res = await fetch(`https://api.llama.fi/emission/${protocol}`)
+  //   .then((res) => res.json())
+  //   .then((res) => (res.body ? JSON.parse(res.body) : null));
 
   if (!res) {
     throw new Error(`protocol '${protocol}' has no chart to fetch`);
@@ -37,10 +40,10 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     res.json()
   );
 
-  const mcap = fetch("https://coins.llama.fi/mcaps", {
+  const mcap = await fetch("https://coins.llama.fi/mcaps", {
     method: "POST",
     body: JSON.stringify({
-      coins: res.gecko_id ? [res.gecko_id] : [],
+      coins: res.gecko_id ? [`coingecko:${res.gecko_id}`] : [],
     }),
   }).then((r) => r.json());
 
@@ -59,7 +62,9 @@ const fetchProtocolEmissionData = async (protocol: string) => {
 };
 
 const handler = async (event: any): Promise<IResponse> => {
-  const data = await Promise.all(index.map((protocol) => fetchProtocolEmissionData(protocol)));
+  const data = await Promise.all(
+    index.filter((p) => p !== "frax-share").map((protocol) => fetchProtocolEmissionData(protocol))
+  );
   return successResponse(data, 10 * 60); // 10 mins cache
 };
 

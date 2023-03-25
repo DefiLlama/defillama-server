@@ -33,11 +33,13 @@ async function handler() {
         )
       );
 
-      protocolsArray.push(protocolName);
-    } catch {
-      console.log(protocolName);
+      protocolsArray.push(standardizeProtocolName(pData?.name ?? protocolName));
+    } catch (err) {
+      console.log(err, ` storing ${protocolName}`);
     }
   });
+
+  promises.push(storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray), 3600));
 
   await Promise.all(promises);
 }

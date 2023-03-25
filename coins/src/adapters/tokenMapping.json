@@ -6601,6 +6601,18 @@
       "decimals": "18",
       "symbol": "WCORE",
       "to": "core:0x0000000000000000000000000000000000000000"
+    },
+    "0x900101d06a7426441ae63e9ab3b9b0f63be145f1": {
+      "name": "USDT",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xa4151b2b3e269645181dccf2d426ce75fcbdeca9": {
+      "name": "USDC",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
     }
   },
   "rpg": {

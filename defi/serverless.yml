@@ -605,6 +605,12 @@ functions:
     memorySize: 3000
     events:
       - schedule: cron(01 0 * * ? *)
+  storeActiveUsers:
+    handler: src/storeActiveUsers.default
+    timeout: 900
+    memorySize: 1000
+    events:
+      - schedule: cron(0 * * * ? *)
   newsArticles:
     handler: src/getNewsArticles.default
     timeout: 30

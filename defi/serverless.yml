@@ -611,6 +611,13 @@ functions:
     memorySize: 1000
     events:
       - schedule: cron(0 * * * ? *)
+  activeUsers:
+    handler: src/getActiveUsers.default
+    timeout: 120
+    events:
+      - http:
+          path: activeUsers
+          method: get
   newsArticles:
     handler: src/getNewsArticles.default
     timeout: 30

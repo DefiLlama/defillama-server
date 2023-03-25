@@ -1279,5 +1279,9 @@ export default {
     "zigzag": {
         enabled: true,
         id: "800"
+    },
+    "mute.io": {
+        enabled: true,
+        id: "2727"
     }
 } as AdaptorsConfig

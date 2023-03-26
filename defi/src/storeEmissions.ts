@@ -9,9 +9,8 @@ import standardizeProtocolName from "./utils/standardizeProtocolName";
 
 async function handler() {
   const protocolsArray: string[] = [];
-  const promises: Promise<any>[] = [];
 
-  Object.entries(adapters).map(async ([protocolName, rawAdapter]: [string, any]) => {
+  await Promise.all(Object.entries(adapters).map(async ([protocolName, rawAdapter]: [string, any]) => {
     try {
       const adapter = typeof rawAdapter.default === "function"? {default:await rawAdapter.default()}:rawAdapter
       const { rawSections, startTime, endTime, metadata } = await createRawSections(adapter);
@@ -25,23 +24,19 @@ async function handler() {
       const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : null;
       const data = { data: chart, metadata, name: pData?.name ?? protocolName, gecko_id: pData?.gecko_id };
 
-      promises.push(
-        storeR2JSONString(
+      await storeR2JSONString(
           `emissions/${standardizeProtocolName(pData?.name ?? protocolName)}`,
           JSON.stringify(data),
           3600
-        )
-      );
+        );
 
       protocolsArray.push(standardizeProtocolName(pData?.name ?? protocolName));
     } catch (err) {
       console.log(err, ` storing ${protocolName}`);
     }
-  });
+  }));
 
-  promises.push(storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray), 3600));
-
-  await Promise.all(promises);
+  await storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray), 3600);
 }
 
 export default wrapScheduledLambda(handler);

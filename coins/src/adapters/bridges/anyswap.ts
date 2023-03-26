@@ -44,22 +44,33 @@ export default async function bridge(): Promise<Token[]> {
   ).bridgeList as any[];
 
   const tokens: Token[] = [];
-  const unknownUnderlyings: any[] = [];
 
   multichainTokens.map((token) => {
     const destinationChain = chainIdToSlug[token.chainId];
     const originChain = chainIdToSlug[token.srcChainId];
-    let srcToken = token.srcToken ?? "";
+    let srcToken = token.srcToken;
+    const destinationToken = token.token;
 
-    if (destinationChain === undefined || originChain === undefined) {
-      srcToken = token.underlying;
-      if (srcToken == undefined) unknownUnderlyings.push(token);
+    if (destinationChain === undefined || originChain === undefined || typeof srcToken !== "string") {
       return;
     }
 
-    if (!srcToken.includes("0x"))
-      srcToken = "0x0000000000000000000000000000000000000000";
-    const destinationToken = token.token;
+    if (!srcToken.includes("0x")){
+      if(/^[A-Z]*$/.test(srcToken)){ // ETH, BNB...
+        srcToken = "0x0000000000000000000000000000000000000000";
+      } else {
+        console.log(`Weird token on`, token)
+        return
+      }
+    }
+
+    if(destinationChain === originChain && srcToken === destinationToken){
+      if(token.underlying?.includes("0x")){
+        srcToken = token.underlying
+      } else {
+        return
+      }
+    }
 
     tokens.push({
       from: `${destinationChain}:${destinationToken}`,

@@ -144,7 +144,7 @@ async function storeTokensOfBridge(bridge: Bridge) {
     })
   );
 
-  batchWrite(writes, true);
+  await batchWrite(writes, true);
 }
 export async function storeTokens() {
   await Promise.all(bridges.map(storeTokensOfBridge));

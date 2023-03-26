@@ -1,6 +1,6 @@
 import { createChartData } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
-import * as adapters from "../emissions-adapters/protocols";
+import adapters from "./utils/imports/emissions_adapters";
 import { ChartSection, Protocol } from "../emissions-adapters/types/adapters";
 import { storeR2JSONString } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
@@ -11,9 +11,11 @@ async function handler() {
   const protocolsArray: string[] = [];
   const promises: Promise<any>[] = [];
 
-  adapters.index.map(async (protocolName: string) => {
+  Object.entries(adapters).map(async ([protocolName, adapter]: [string, any]) => {
     try {
-      const adapter: Protocol = await import(`../emissions-adapters/protocols/${protocolName}`);
+      if(typeof adapter.default === "function"){ // Protocol|()=>Promise<Protocol>
+        adapter.default = await adapter.default()
+      }
       const { rawSections, startTime, endTime, metadata } = await createRawSections(adapter);
 
       const chart = createChartData(rawSections, startTime, endTime, false).map((s: ChartSection) => ({

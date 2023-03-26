@@ -56,16 +56,20 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     totalLocked,
     maxSupply,
     nextEvent,
-    mcap,
+    gecko_id: res.gecko_id,
+    mcap: mcap?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0,
   };
 };
 
 const handler = async (_event: any): Promise<IResponse> => {
-  const allProtocols = await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!)) as string[];
+  const allProtocols = (await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!))) as string[];
   const data = await Promise.all(
     allProtocols.filter((p) => p !== "frax-share").map((protocol) => fetchProtocolEmissionData(protocol))
   );
-  return successResponse(data, 10 * 60); // 10 mins cache
+  return successResponse(
+    data.sort((a, b) => b.mcap - a.mcap),
+    10 * 60
+  ); // 10 mins cache
 };
 
 export default wrap(handler);

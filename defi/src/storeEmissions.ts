@@ -11,11 +11,9 @@ async function handler() {
   const protocolsArray: string[] = [];
   const promises: Promise<any>[] = [];
 
-  Object.entries(adapters).map(async ([protocolName, adapter]: [string, any]) => {
+  Object.entries(adapters).map(async ([protocolName, rawAdapter]: [string, any]) => {
     try {
-      if(typeof adapter.default === "function"){ // Protocol|()=>Promise<Protocol>
-        adapter.default = await adapter.default()
-      }
+      const adapter = typeof rawAdapter.default === "function"? {default:await rawAdapter.default()}:rawAdapter
       const { rawSections, startTime, endTime, metadata } = await createRawSections(adapter);
 
       const chart = createChartData(rawSections, startTime, endTime, false).map((s: ChartSection) => ({

@@ -24678,7 +24678,7 @@ const data2: Protocol[] = [
     symbol: "COVO",
     url: "https://covo.finance",
     description:
-      "Covo Finance is a decentralized trading platform that offers spot and perpetual trading with low swap fees and zero market impact. The platform offers a maximum leverage of 50x on major cryptos and is backed by a singular multi-asset pool that generates income for liquidity providers through fees garnered from market making, swap transactions, leveraged trading (including spreads, funding fees, and liquidations), and rebalancing of assets",
+      "Covo Finance is a decentralized leverage trading platform offering Crypto, Forex, and Metals perpetual trading with low swap fees and no market impact. The platform provides a maximum leverage of 100x and is supported by asset pools, such as USDC, which generate income for liquidity providers through fees collected from leverage trading and liquidations",
     chain: "Polygon",
     logo: `${baseIconsUrl}/covo-finance.png`,
     audits: "0",
@@ -24689,8 +24689,7 @@ const data2: Protocol[] = [
     chains: ["Polygon"],
     module: "covo-finance/index.js",
     twitter: "covofinance",
-    oracles: ["Chainlink"],
-    forkedFrom: ["GMX"],
+    oracles: ["Chainlink","Pyth"],
     listedAt: 1676226573
   },
   {

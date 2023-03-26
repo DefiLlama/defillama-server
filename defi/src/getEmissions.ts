@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import { index } from "../emissions-adapters/protocols";
 import { getR2 } from "./utils/r2";
 import { wrap, IResponse, successResponse } from "./utils/shared";
 
@@ -61,9 +60,10 @@ const fetchProtocolEmissionData = async (protocol: string) => {
   };
 };
 
-const handler = async (event: any): Promise<IResponse> => {
+const handler = async (_event: any): Promise<IResponse> => {
+  const allProtocols = await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!)) as string[];
   const data = await Promise.all(
-    index.filter((p) => p !== "frax-share").map((protocol) => fetchProtocolEmissionData(protocol))
+    allProtocols.filter((p) => p !== "frax-share").map((protocol) => fetchProtocolEmissionData(protocol))
   );
   return successResponse(data, 10 * 60); // 10 mins cache
 };

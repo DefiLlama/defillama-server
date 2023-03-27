@@ -22,18 +22,6 @@ function cosmosBlockProvider(chain: "terra" | "kava") {
   };
 }
 
-function zkSyncBlockProvider() {
-  return {
-    getBlock: async (height: number | "latest") => 
-      fetch(`https://api.zksync.io/api/v0.1/blocks${height == "latest" ? "" : `/${height}`}`)
-        .then((res) => res.json())
-        .then((blocks) => ({
-          number: Number(height == "latest" ? blocks[0].block_number : blocks.block_number),
-          timestamp: Math.round(Date.parse(height == "latest" ? blocks[0].committed_at : blocks.committed_at) / 1000),
-        }))
-  };
-}
-
 const blockPK = (chain: string) => `block#${chain}`
 
 async function getBlock(provider: ReturnType<typeof cosmosBlockProvider>, height: number | "latest", chain: string): Promise<TimestampBlock> {
@@ -56,7 +44,6 @@ function getExtraProvider(chain: string | undefined) {
   if (chain === "terra" || chain === "kava") {
     return cosmosBlockProvider(chain)
   }
-  if (chain === "era") return zkSyncBlockProvider();
   return getProvider(chain as any);
 }
 

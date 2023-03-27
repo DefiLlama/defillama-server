@@ -29171,5 +29171,26 @@ const data2: Protocol[] = [
     twitter: "mute_io",
     listedAt: 1679676617
   },
+  {
+    id: "2728",
+    name: "SyncSwap",
+    address: null,
+    symbol: "-",
+    url: "https://syncswap.xyz/",
+    description: "SyncSwap is a decentralized exchange (DEX) on zkSync Era ",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/syncswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "syncswap/index.js",
+    twitter: "syncswap",
+    listedAt: 1679883857  
+  },
 ]
 export default data2;

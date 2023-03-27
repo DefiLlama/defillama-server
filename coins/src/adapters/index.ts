@@ -1,4 +1,5 @@
 export default {
+  dforce: require("./moneyMarkets/dforce"),
   minswap: require("./markets/minswap"),
   metronome: require("./other"),
   ondo: require("./yield/ondo"),

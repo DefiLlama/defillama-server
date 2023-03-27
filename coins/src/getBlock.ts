@@ -75,7 +75,7 @@ function getExtraProvider(chain: string | undefined) {
   if (chain === "terra" || chain === "kava") {
     return cosmosBlockProvider(chain)
   }
-  if (chain === "era") return zkSyncBlockProvider(chain);
+  if (["era", "lite"].includes(chain)) return zkSyncBlockProvider(chain);
   return getProvider(chain as any);
 }
 

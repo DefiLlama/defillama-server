@@ -13,15 +13,19 @@ const gasTokenDummyAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
 async function processDbData(
   underlyingBalances: Result[],
-  coinsData: CoinData[]
+  coinsData: CoinData[],
+  chain: string
 ) {
   return underlyingBalances.map((b: Result) => {
+    const token =
+      b.input.target.toLowerCase() === gasTokenDummyAddress
+        ? wrappedGasTokens[chain]
+        : b.input.target.toLowerCase();
     const coinData: CoinData = coinsData.filter(
-      (c: CoinData) => c.address.toLowerCase() === b.input.target.toLowerCase()
+      (c: CoinData) => c.address.toLowerCase() === token
     )[0];
 
     if (coinData == undefined) {
-      // console.log (`${b.input.target} is undefined`)
       return;
     }
     return {
@@ -112,7 +116,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     Object.entries(pools).map((p: any) =>
       p[1].underlying.toLowerCase() === gasTokenDummyAddress
         ? wrappedGasTokens[chain]
-        : p[1].underlying
+        : p[1].underlying.toLowerCase()
     ),
     chain,
     timestamp
@@ -120,18 +124,9 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   const underlyingTokenData = await processDbData(
     underlyingBalances,
-    coinsData
+    coinsData,
+    chain
   );
-
-  // console.log({
-  //   underlyingTokenData,
-  //   pools,
-  //   chain,
-  //   underlyingBalances,
-  //   tokenInfos,
-  //   writes,
-  //   timestamp,
-  // });
 
   return formWrites(
     underlyingTokenData,

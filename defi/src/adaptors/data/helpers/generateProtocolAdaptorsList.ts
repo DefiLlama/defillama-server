@@ -3,11 +3,11 @@ import { AdaptorsConfig, IJSON } from "../types"
 import { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
-import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
+import { getChainDisplayName } from "../../../utils/normalizeChain"
+import chainCoingeckoIds from "./chains"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
 import { getCollectionsMap } from "./collections";
-import collections from "@defillama/dimension-adapters/helpers/getOpenseaCollections/collections";
 import { seaportCollections } from "../fees/collections";
 
 // Obtaining all dex protocols
@@ -98,7 +98,7 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
                         baseModuleObject = moduleObject.breakdown[key]
                     }
                 }
-                if (!configObj) return
+                if (!configObj || !dexFoundInProtocols) return
                 const infoItem: ProtocolAdaptor = {
                     ...dexFoundInProtocols,
                     ...configObj,

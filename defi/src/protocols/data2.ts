@@ -29192,5 +29192,26 @@ const data2: Protocol[] = [
     twitter: "syncswap",
     listedAt: 1679883857  
   },
+  {
+    id: "2729",
+    name: "GemSwap",
+    address: null,
+    symbol: "-",
+    url: "https://zks.gemswap.online/swap",
+    description: "GemSwap is a decentralized exchange built on the ZkSync Era Network",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/gemswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "gemswap/index.js",
+    twitter: "GemSwap_ZKS",
+    listedAt: 1679891989  
+  },
 ]
 export default data2;

@@ -51,10 +51,10 @@ function formWrites(
     const j = Object.values(pools).indexOf(
       Object.values(pools).filter(
         (p: any) =>
-          d.address ==
-          (p.underlying == gasTokenDummyAddress
+          d.address.toLowerCase() ==
+          (p.underlying.toLowerCase() == gasTokenDummyAddress
             ? wrappedGasTokens[chain]
-            : p.underlying)
+            : p.underlying.toLowerCase())
       )[0]
     );
     if (j == -1) return;

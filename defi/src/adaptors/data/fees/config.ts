@@ -665,5 +665,9 @@ export default {
     "blastapi": {
         enabled: true,
         id: "2734"
+    },
+    "get-protocol": {
+        enabled: true,
+        id: "2735"
     }
 } as AdaptorsConfig

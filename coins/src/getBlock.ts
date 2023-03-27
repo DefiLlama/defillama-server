@@ -4,6 +4,7 @@ import { getProvider } from "@defillama/sdk/build/general"
 import fetch from "node-fetch"
 import { getCurrentUnixTimestamp } from "./utils/date";
 import genesisBlockTimes from './genesisBlockTimes';
+import * as zk from "zksync-web3";
 
 interface TimestampBlock {
   height: number;
@@ -22,15 +23,33 @@ function cosmosBlockProvider(chain: "terra" | "kava") {
   };
 }
 
-function zkSyncBlockProvider() {
+function zkSyncBlockProvider(chain: "era" | "lite") {
+  if (chain == "era")
+    return {
+      getBlock: async (height: number | "latest") => {
+        const provider = new zk.Provider("https://mainnet.era.zksync.io");
+        const block = await provider.getBlock(height);
+        return { number: block.number, timestamp: block.timestamp };
+      },
+    };
   return {
-    getBlock: async (height: number | "latest") => 
-      fetch(`https://api.zksync.io/api/v0.1/blocks${height == "latest" ? "" : `/${height}`}`)
+    getBlock: async (height: number | "latest") =>
+      fetch(
+        `https://api.zksync.io/api/v0.1/blocks${
+          height == "latest" ? "" : `/${height}`
+        }`,
+      )
         .then((res) => res.json())
         .then((blocks) => ({
-          number: Number(height == "latest" ? blocks[0].block_number : blocks.block_number),
-          timestamp: Math.round(Date.parse(height == "latest" ? blocks[0].committed_at : blocks.committed_at) / 1000),
-        }))
+          number: Number(
+            height == "latest" ? blocks[0].block_number : blocks.block_number,
+          ),
+          timestamp: Math.round(
+            Date.parse(
+              height == "latest" ? blocks[0].committed_at : blocks.committed_at,
+            ) / 1000,
+          ),
+        })),
   };
 }
 
@@ -56,7 +75,7 @@ function getExtraProvider(chain: string | undefined) {
   if (chain === "terra" || chain === "kava") {
     return cosmosBlockProvider(chain)
   }
-  if (chain === "era") return zkSyncBlockProvider();
+  if (chain === "era") return zkSyncBlockProvider(chain);
   return getProvider(chain as any);
 }
 

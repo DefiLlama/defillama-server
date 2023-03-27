@@ -83,7 +83,8 @@ const times: { [chains: string]: number } = {
   muuchain: 1661756434,
   karura_evm: 1624361292,
   godwoken: 1635653867,
-  era: 1612884498,
+  lite: 1612884498,
+  era: 1676384520,
 };
 
 export default times;

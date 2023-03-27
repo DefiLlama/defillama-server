@@ -661,5 +661,9 @@ export default {
         enabled: true,
         id: "2675"
     },
-    ...seaportCollections
+    ...seaportCollections,
+    "blastapi": {
+        enabled: true,
+        id: "2734"
+    }
 } as AdaptorsConfig

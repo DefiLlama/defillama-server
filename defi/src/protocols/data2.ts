@@ -5478,7 +5478,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.predy.finance",
-    description: "The core of Predy v3 is the Tripartite Lending Protocol(TLP) as the middle protocol to handle ETH, USDC, and Uniswap LPT (applicable to any Token pair and its Uniswap LPT) to represent the status of lending as an perpetual option (LP fees = option premiums). Uniswap achieved path independence for total K by using only token-pair quantities, which Predy v3 inherits.  The measurement of the position's value against the debt is the key of lending protocol, and it maintains a positive value with the certain volatility of the underlying asset price, where It's verifiability and finality bring extension that other protocols have not been able to achieve due to external dependencies and administrative privileges.",
+    description: "Predy V3.2 allows traders to utilize portfolio margin for Squart and ETH perpetual trading while simplifying the creation of delta-neutral and leveraged LP positions. Rest assured, LP positions will always remain in-range, Squart addresses the liquidity fragmentation issue commonly found in perpetual options by eliminating strikes. This ensures positions consistently possess gamma, similar to at-the-money options.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/predy-finance.png`,
     audits: "2",

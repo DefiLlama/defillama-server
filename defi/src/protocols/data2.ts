@@ -29299,5 +29299,25 @@ const data2: Protocol[] = [
     twitter: "FamousFoxFed",
     listedAt: 1679923808  
   },
+  {
+    id: "2733",
+    name: "Blast API",
+    address: null,
+    symbol: "-",
+    url: "https://blastapi.io",
+    description: "A multichain, subscription-based, API platform, featuring the fastest and most reliable access to the most relevant networks in Web3.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/blast-api.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "BlastAPI",
+  },
 ]
 export default data2;

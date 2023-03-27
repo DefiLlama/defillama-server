@@ -24673,14 +24673,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2525",
-    name: "Covo Finance",
+    name: "Covo V1",
     address: "polygon:0x681D3e1b54B3E1a338feB5B076cebf53a697d51F",
     symbol: "COVO",
     url: "https://covo.finance",
     description:
-      "Covo Finance is a decentralized trading platform that offers spot and perpetual trading with low swap fees and zero market impact. The platform offers a maximum leverage of 50x on major cryptos and is backed by a singular multi-asset pool that generates income for liquidity providers through fees garnered from market making, swap transactions, leveraged trading (including spreads, funding fees, and liquidations), and rebalancing of assets",
+      "Covo V1 is a decentralized trading platform that offers spot and perpetual trading with low swap fees and zero market impact. The platform offers a maximum leverage of 50x on major cryptos and is backed by a singular multi-asset pool that generates income for liquidity providers through fees garnered from market making, swap transactions, leveraged trading (including spreads, funding fees, and liquidations), and rebalancing of assets",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/covo-finance.png`,
+    logo: `${baseIconsUrl}/covo-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -24691,6 +24691,7 @@ const data2: Protocol[] = [
     twitter: "covofinance",
     oracles: ["Chainlink"],
     forkedFrom: ["GMX"],
+    parentProtocol: "Covo Finance",
     listedAt: 1676226573
   },
   {
@@ -29212,6 +29213,28 @@ const data2: Protocol[] = [
     module: "gemswap/index.js",
     twitter: "GemSwap_ZKS",
     listedAt: 1679891989  
+  },
+  {
+    id: "2730",
+    name: "Covo V2",
+    address: "polygon:0x681D3e1b54B3E1a338feB5B076cebf53a697d51F",
+    symbol: "COVO",
+    url: "https://v2.covo.finance/trade/MATIC-USD",
+    description: "A Decentralized Crypto Trading Platform with up to 50X Leverage.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/covo-v2.jpg`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: ["GMX"],
+    module: "covo-v2/index.js",
+    twitter: "covofinance",
+    parentProtocol: "Covo Finance",
+    listedAt: 1679912448  
   },
 ]
 export default data2;

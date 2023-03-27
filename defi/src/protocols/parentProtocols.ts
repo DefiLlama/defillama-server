@@ -1215,6 +1215,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "puzzle_swap"
   },
+  {
+    id: "Covo Finance",
+    name: "Covo Finance",
+    url: "https://covo.finance",
+    description: "Covo Finance is a decentralized trading platform that offers spot and perpetual trading with low swap fees and zero market impact. The platform offers a maximum leverage of 50x on major cryptos and is backed by a singular multi-asset pool that generates income for liquidity providers through fees garnered from market making, swap transactions, leveraged trading (including spreads, funding fees, and liquidations), and rebalancing of assets.",
+    logo: `${baseIconsUrl}/covo-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "covofinance"
+  },
 ];
 
 export default parentProtocols;

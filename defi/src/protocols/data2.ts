@@ -29258,7 +29258,7 @@ const data2: Protocol[] = [
     listedAt: 1679923802  
   },
   {
-    id: "2731",
+    id: "2732",
     name: "Atlas Aggregator",
     address: "arbitrum:0x296A0b8847BD4ED9af71a9ef238fa5Be0778B611",
     symbol: "ATA",
@@ -29279,7 +29279,7 @@ const data2: Protocol[] = [
     listedAt: 1679923806  
   },
   {
-    id: "2732",
+    id: "2733",
     name: "Citrus",
     address: null,
     symbol: "-",
@@ -29300,7 +29300,7 @@ const data2: Protocol[] = [
     listedAt: 1679923808  
   },
   {
-    id: "2733",
+    id: "2734",
     name: "Blast API",
     address: null,
     symbol: "-",

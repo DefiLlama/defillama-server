@@ -29319,5 +29319,30 @@ const data2: Protocol[] = [
     module: "dummy.js",
     twitter: "BlastAPI",
   },
+  {
+    id: "2735",
+    name: "GET Protocol",
+    address: "0x8a854288a5976036A725879164Ca3e91d30c6A1B",
+    symbol: "GET",
+    url: "https://www.get-protocol.io",
+    description: "GET Protocol provides NFT ticketing infrastructure to put real NFT ticket distribution in the hands of event organisers and ticketing companies.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/get-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "get-token",
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "GetProtocol",
+    audit_links: [
+                   "https://www.get-protocol.io/files/GET-Protocol-Token-Sale-Matthew-Di-Ferrante.pdf",
+                   "https://reports.yacademy.dev/docs/12-2022-GET-Protocol-Staking/"
+                 ],
+
+  },
 ]
 export default data2;

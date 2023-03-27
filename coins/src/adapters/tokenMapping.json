@@ -6749,12 +6749,6 @@
       "decimals": "18",
       "symbol": "WETH",
       "to": "ethereum:0x0000000000000000000000000000000000000000"
-    },
-    "0xdfaab828f5f515e104baaba4d8d554da9096f0e4": {
-      "name": "USDC",
-      "decimals": "6",
-      "symbol": "USDC",
-      "to": "ethereum:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
     }
   }
 }

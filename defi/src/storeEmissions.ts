@@ -1,14 +1,12 @@
 import { createChartData } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import adapters from "./utils/imports/emissions_adapters";
-import { ChartSection, Protocol } from "../emissions-adapters/types/adapters";
+import { ChartSection } from "../emissions-adapters/types/adapters";
 import { storeR2JSONString } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
+import { sluggifyString } from "./utils/sluggify";
 
-const standardizeProtocolName = (tokenName = "") =>
-  tokenName.toLowerCase().split(" ").join("-");
-  
 async function handler() {
   const protocolsArray: string[] = [];
 
@@ -28,9 +26,9 @@ async function handler() {
         const name = pData ? pData.parentProtocol || pData.name : protocolName;
         const data = { data: chart, metadata, name: name, gecko_id: pData?.gecko_id };
 
-        await storeR2JSONString(`emissions/${standardizeProtocolName(name)}`, JSON.stringify(data), 3600);
+        await storeR2JSONString(`emissions/${sluggifyString(name)}`, JSON.stringify(data), 3600);
 
-        protocolsArray.push(standardizeProtocolName(name));
+        protocolsArray.push(sluggifyString(name));
       } catch (err) {
         console.log(err, ` storing ${protocolName}`);
       }

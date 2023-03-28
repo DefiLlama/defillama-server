@@ -29409,5 +29409,26 @@ const data2: Protocol[] = [
     twitter: null,
     listedAt: 1680009928  
   },
+  {
+    id: "2739",
+    name: "Liquify",
+    address: "core:0xe9aece1BA8bBd429a1ed33349C61280441AC8F99",
+    symbol: "Liquify",
+    url: "https://app.liquify.network",
+    description: "Permissionless liquidity market, community oriented ve(3,3) on CoreDAO.",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/liquify.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    module: "Liquify/index.js",
+    twitter: "NetworkLiquify",
+    listedAt: 1680017064  
+  },
 ]
 export default data2;

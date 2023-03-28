@@ -5,8 +5,10 @@ import { ChartSection, Protocol } from "../emissions-adapters/types/adapters";
 import { storeR2JSONString } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
-import standardizeProtocolName from "./utils/standardizeProtocolName";
 
+const standardizeProtocolName = (tokenName = "") =>
+  tokenName.toLowerCase().split(" ").join("-");
+  
 async function handler() {
   const protocolsArray: string[] = [];
 

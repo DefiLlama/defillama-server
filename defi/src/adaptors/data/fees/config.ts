@@ -653,18 +653,22 @@ export default {
     },
     "chainlink-vrf-v1": {
         enabled: true,
+        displayName: "Chainlink VRF V1",
         id: "2623",
     },
     "chainlink-vrf-v2": {
         enabled: true,
+        displayName: "Chainlink VRF V2",
         id: "2623"
     },
     "chainlink-keepers": {
         enabled: true,
+        displayName: "Chainlink Keepers",
         id: "2623"
     },
     "chainlink-requests": {
         enabled: true,
+        displayName: "Chainlink Requests",
         id: "2623"
     },
     ...seaportCollections

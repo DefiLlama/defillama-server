@@ -669,5 +669,9 @@ export default {
     "get-protocol": {
         enabled: true,
         id: "2735"
+    },
+    "radiant": {
+        enabled: true,
+        id: "2706"
     }
 } as AdaptorsConfig

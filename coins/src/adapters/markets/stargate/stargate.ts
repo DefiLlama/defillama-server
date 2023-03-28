@@ -45,33 +45,45 @@ function formWrites(
   writes: Write[],
   timestamp: number
 ) {
-  underlyingTokenData.map((d: any, i: number) => {
-    if (d == undefined) return;
-
-    const j = Object.values(pools).indexOf(
-      Object.values(pools).filter(
-        (p: any) =>
-          d.address.toLowerCase() ==
-          (p.underlying.toLowerCase() == gasTokenDummyAddress
-            ? wrappedGasTokens[chain]
-            : p.underlying.toLowerCase())
-      )[0]
-    );
-    if (j == -1) return;
-
-    const price =
-      d.price * (underlyingBalances[i].output / tokenInfos.supplies[j].output);
-
+  Object.keys(pools).forEach((p: string) => {
+    const curr = pools[p];
+    const underlying: string =
+      curr.underlying.toLowerCase() === gasTokenDummyAddress
+        ? wrappedGasTokens[chain]
+        : curr.underlying.toLowerCase();
+    const pool: string = curr.pool.toLowerCase();
+    const underlyingInfo = underlyingTokenData.filter(
+      (x: any) => x.address.toLowerCase() === underlying
+    )[0];
+    const underlyingPrice: number = underlyingInfo.price;
+    const underlyingDecimals: number = underlyingInfo.decimals;
+    const underlyingBalance: number = underlyingBalances.filter(
+      (x: any) => x.input.target.toLowerCase() === underlying
+    )[0].output;
+    const poolSupply: number = tokenInfos.supplies.filter(
+      (x: any) => x.input.target.toLowerCase() === pool
+    )[0].output;
+    const poolDecimals: number = tokenInfos.decimals.filter(
+      (x: any) => x.input.target.toLowerCase() === pool
+    )[0].output;
+    const poolSymbol: string = tokenInfos.symbols.filter(
+      (x: any) => x.input.target.toLowerCase() === pool
+    )[0].output;
+    const price: number =
+      underlyingPrice *
+      (underlyingBalance /
+        10 ** underlyingDecimals /
+        (poolSupply / 10 ** poolDecimals));
     addToDBWritesList(
       writes,
       chain,
-      Object.values(pools)[j].pool,
+      pool,
       price,
-      tokenInfos.decimals[j].output,
-      tokenInfos.symbols[j].output,
+      poolDecimals,
+      poolSymbol,
       timestamp,
       "stargate",
-      d.confidence
+      underlyingInfo.confidence
     );
   });
   return writes;

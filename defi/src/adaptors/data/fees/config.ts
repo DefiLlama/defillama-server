@@ -593,28 +593,6 @@ export default {
         enabled: true,
         id: "2528"
     },
-    "chainlink": {
-        enabled: true,
-        id: "2623",
-        protocolsData: {
-            "vrf v1": {
-                enabled: true,
-                id: "2623",
-            },
-            "vrf v2": {
-                enabled: true,
-                id: "2623"
-            },
-            "keepers": {
-                enabled: true,
-                id: "2623"
-            },
-            "requests": {
-                enabled: true,
-                id: "2623"
-            }
-        }
-    },
     "zyberswap": {
         enabled: true,
         id: "2467",
@@ -661,7 +639,6 @@ export default {
         enabled: true,
         id: "2675"
     },
-    ...seaportCollections,
     "blastapi": {
         enabled: true,
         id: "2734"
@@ -673,5 +650,22 @@ export default {
     "radiant": {
         enabled: true,
         id: "2706"
-    }
+    },
+    "chainlink-vrf-v1": {
+        enabled: true,
+        id: "2623",
+    },
+    "chainlink-vrf-v2": {
+        enabled: true,
+        id: "2623"
+    },
+    "chainlink-keepers": {
+        enabled: true,
+        id: "2623"
+    },
+    "chainlink-requests": {
+        enabled: true,
+        id: "2623"
+    },
+    ...seaportCollections
 } as AdaptorsConfig

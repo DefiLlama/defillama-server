@@ -14,7 +14,7 @@ import { IJSON, ProtocolAdaptor } from "../../data/types";
 // Runs a little bit past each hour, but calls function with timestamp on the hour to allow blocks to sync for high throughput chains. Does not work for api based with 24/hours
 
 export interface IHandlerEvent {
-  protocolIndexes: number[]
+  protocolModules: string[]
   timestamp?: number
   adaptorType: AdapterType
   chain?: Chain
@@ -25,7 +25,7 @@ export interface IHandlerEvent {
 const LAMBDA_TIMESTAMP = Math.trunc((Date.now()) / 1000)
 
 export const handler = async (event: IHandlerEvent) => {
-  console.info(`*************Storing for the following indexs ${event.protocolIndexes} *************`)
+  console.info(`*************Storing for the following indexs ${event.protocolModules} *************`)
   console.info(`- chain: ${event.chain}`)
   console.info(`- timestamp: ${event.timestamp}`)
   console.info(`- adaptorRecordTypes: ${event.adaptorRecordTypes}`)
@@ -39,11 +39,15 @@ export const handler = async (event: IHandlerEvent) => {
   // Import data list to be used
   const dataModule = await loadAdaptorsData(event.adaptorType)
   const dataList = dataModule.default
+  const dataMap = dataList.reduce((acc, curr) => {
+    acc[curr.module] = curr
+    return acc
+  }, {} as IJSON<typeof dataList[number]>)
   // Import some utils
   const { importModule, KEYS_TO_STORE } = dataModule
 
   // Get list of adaptors to run
-  const adaptorsList = event.protocolIndexes.map(index => dataList[index]).filter(p => p !== undefined)
+  const adaptorsList = event.protocolModules.map(index => dataMap[index]).filter(p => p !== undefined)
 
   // Get closest block to clean day. Only for EVM compatible ones.
   const allChains = event.chain ? [event.chain] : adaptorsList.reduce((acc, { chains }) => {

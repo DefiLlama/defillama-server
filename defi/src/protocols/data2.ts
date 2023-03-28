@@ -29430,5 +29430,25 @@ const data2: Protocol[] = [
     twitter: "NetworkLiquify",
     listedAt: 1680017064  
   },
+  {
+    id: "2740",
+    name: "PLEXUS",
+    address: "0x60b9c9C167bA57cc376b0FaafC68Df5C9882328e",
+    symbol: "PLX",
+    url: "https://www.plexus.app",
+    description: "PLEXUS is a Cross-chain aggregator service for mass adoption of blockchain. All chains, all tokens, and the cheapest swap with just one transaction.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/plexus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "plexus-app",
+    cmcId: "23731",
+    category: "Cross Chain",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "plexus_fi",
+  },
 ]
 export default data2;

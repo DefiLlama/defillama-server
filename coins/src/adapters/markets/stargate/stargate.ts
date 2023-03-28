@@ -58,7 +58,9 @@ function formWrites(
     const underlyingPrice: number = underlyingInfo.price;
     const underlyingDecimals: number = underlyingInfo.decimals;
     const underlyingBalance: number = underlyingBalances.filter(
-      (x: any) => x.input.target.toLowerCase() === underlying
+      (x: any) =>
+        x.input.target.toLowerCase() === underlying &&
+        x.input.params[0].toLowerCase() === pool
     )[0].output;
     const poolSupply: number = tokenInfos.supplies.filter(
       (x: any) => x.input.target.toLowerCase() === pool

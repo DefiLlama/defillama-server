@@ -76,6 +76,7 @@ function formWrites(
       (underlyingBalance /
         10 ** underlyingDecimals /
         (poolSupply / 10 ** poolDecimals));
+    if (!price) return;
     addToDBWritesList(
       writes,
       chain,

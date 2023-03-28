@@ -68,7 +68,7 @@ export default {
   tombswap: require("./markets/uniswap"),
   solidly: require("./markets/uniswap"),
   // diffusion: require("./markets/uniswap"),
-  // stargate: require("./markets/stargate"),
+  stargate: require("./markets/stargate"),
   jarvis: require("./markets/jarvis"),
   chainlinkNFT: require("./nft/chainlink"),
   arrakis: require("./markets/arrakis"),

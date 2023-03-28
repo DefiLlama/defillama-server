@@ -69,7 +69,7 @@ function formWrites(
     const poolSymbol: string = tokenInfos.symbols.filter(
       (x: any) => x.input.target.toLowerCase() === pool
     )[0].output;
-    const price =
+    const price: number =
       underlyingPrice *
       (underlyingBalance /
         10 ** underlyingDecimals /

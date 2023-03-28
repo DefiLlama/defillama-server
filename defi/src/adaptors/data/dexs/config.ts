@@ -1283,5 +1283,9 @@ export default {
     "mute.io": {
         enabled: true,
         id: "2727"
+    },
+    "dexter": {
+        enabled: true,
+        id: "2737"
     }
 } as AdaptorsConfig

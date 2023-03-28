@@ -667,5 +667,9 @@ export default {
         enabled: true,
         id: "2623"
     },
-    ...seaportCollections
+    ...seaportCollections,
+    "aura": {
+        enabled: true,
+        id: "1918"
+    }
 } as AdaptorsConfig

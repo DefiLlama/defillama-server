@@ -29344,5 +29344,30 @@ const data2: Protocol[] = [
                  ],
 
   },
+  {
+    id: "2736",
+    name: "Dexter",
+    address: null,
+    symbol: "-",
+    url: "https://dexter.zone/",
+    description:
+      "DEXTER is an Interchain DEX built on Persistence for yield-generating and liquid-staked assets. Dexter supports the tried and tested AMM mechanisms inspired by the best innovations in all of DeFi, and would offer an optimized experience for all the users.",
+    chain: "Persistence",
+    logo: `${baseIconsUrl}/dexter.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Persistence"],
+    module: "dexter/index.js",
+    twitter: "dexter_zone",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [
+      "https://github.com/dexter-zone/dexter_core/tree/main/audit"
+    ],
+    listedAt: 1677245995
+  }
 ]
 export default data2;

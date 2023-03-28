@@ -85,6 +85,7 @@ provider:
     #PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
     LOFTY_API: ${file(./env.js):LOFTY_API}
+    COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
     INDEXER_DB: ${file(./env.js):INDEXER_DB}
     AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}

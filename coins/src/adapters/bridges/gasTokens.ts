@@ -14,6 +14,7 @@ const chainTokens = [
   ["celo", "celo", "CELO"],
   ["harmony", "harmony", "ONE"],
   ["ontology", "ong", "ONG"],
+  ["polygon_zkevm", "ethereum", "ETH"],
 ];
 
 export default async function bridge() {

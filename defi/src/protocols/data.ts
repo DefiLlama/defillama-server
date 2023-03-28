@@ -9994,8 +9994,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/multichain.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "anyswap",
-    cmcId: "5892",
+    gecko_id: "multichain",
+    cmcId: "17050",
     category: "Bridge",
     chains: [
       "Ethereum",

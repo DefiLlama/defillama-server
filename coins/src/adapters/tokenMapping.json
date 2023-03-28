@@ -6750,7 +6750,7 @@
       "symbol": "WETH",
       "to": "ethereum:0x0000000000000000000000000000000000000000"
     },
-    "0xdfaab828f5f515e104baaba4d8d554da9096f0e4": {
+    "0x3355df6d4c9c3035724fd0e3914de96a5a83aaf4": {
       "name": "USDC",
       "decimals": "6",
       "symbol": "USDC",

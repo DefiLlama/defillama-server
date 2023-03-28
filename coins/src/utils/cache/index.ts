@@ -6,7 +6,7 @@ import fetch from "node-fetch";
 const Bucket = "tvl-adapter-cache";
 
 function getKey(project: string, chain: string): string {
-  return `cache/${project}/${chain}.json`
+  return `coins-cache/${project}/${chain}.json`
 }
 
 function getLink(project: string, chain: string): string {

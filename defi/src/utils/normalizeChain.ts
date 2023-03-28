@@ -8,7 +8,8 @@ const normalizedChainReplacements = {
   "arbitrum nova" : "arbitrum_nova",
   "OKExChain": "OKXChain",
   "zkSync": "zkSync Lite",
-  "zkSync Era": "era"
+  "zkSync Era": "era",
+  "polygon zkEVM": "polygon_zkevm"
 
 } as {
   [chain: string]: string
@@ -1386,6 +1387,13 @@ export const chainCoingeckoIds = {
     },
     chainid: 324,
   },
+  "Polygon zkEVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1443,6 +1451,8 @@ export function transformNewChainName(chain: string) {
       return "Oraichain"
     case "zkSync":
       return "zkSync Lite"
+    case "polygon_zkevm":
+      return "Polygon zkEVM"
     default:
       return chain
   }
@@ -1766,10 +1776,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Loop"
     case "bone":
       return "Bone"
-    default:
-      return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
     case "era":
       return "zkSync Era"
+    case "polygon_zkevm":
+      return "Polygon zkEVM"
+    default:
+      return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }
 }
 

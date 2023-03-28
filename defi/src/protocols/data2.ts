@@ -3823,7 +3823,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap"],
     module: "hebeswap/index.js",
-    twitter: "BlockHebe",
+    twitter: "EtcHebeBlock",
     listedAt: 1648276449,
   },
   {

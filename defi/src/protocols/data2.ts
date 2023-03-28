@@ -28248,7 +28248,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/arbitrum-exchange.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "arbitrum-exchange",
     cmcId: null,
     category: "Dexes",
     chains: ["Arbitrum"],
@@ -29343,6 +29343,27 @@ const data2: Protocol[] = [
                    "https://reports.yacademy.dev/docs/12-2022-GET-Protocol-Staking/"
                  ],
 
+  },
+  {
+    id: "2736",
+    name: "Teller",
+    address: null,
+    symbol: "-",
+    url: "https://teller.org",
+    description: "Leverage any crypto asset as collateral, with time-based liquidation. Fixed APR. Flexible durations. Instant loans on Ethereum & Polygon.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/teller.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum", "Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "teller/index.js",
+    twitter: "useteller",
+    listedAt: 1680005661  
   },
 ]
 export default data2;

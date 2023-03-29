@@ -34,7 +34,7 @@ async function main() {
     const coins = await fetch(
         `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true?&x_cg_pro_api_key=${process.env.CG_KEY}`
     ).then((r) => r.json()) as any[];
-    const step = 50;
+    const step = 80;
     for (let i = 0; i < coins.length; i += step) {
         const coinData = await retryCoingeckoRequest(
             `https://pro-api.coingecko.com/api/v3/simple/price?ids=${coins.slice(i, i + step).map(c => c.id).join(

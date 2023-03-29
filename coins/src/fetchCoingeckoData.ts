@@ -200,7 +200,7 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
   );
 }
 
-const step = 50;
+const step = 80;
 const handler = (hourly: boolean) => async (
   event: any,
   _context: AWSLambda.Context

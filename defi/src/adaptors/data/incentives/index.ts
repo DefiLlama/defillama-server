@@ -1,6 +1,4 @@
-import generateProtocolAdaptorsList from "../helpers/generateProtocolAdaptorsList";
 import incentives_imports from "../../../utils/imports/incentives_adapters"
-import config from "./config";
 import { AdaptorRecordType } from "../../db-utils/adaptor-record";
 
 // TODO: needs to be optimized. Currently loads to memory all adaptors
@@ -15,4 +13,4 @@ export { default as incentives_imports } from "../../../utils/imports/incentives
 
 export { default as config } from "./config";
 
-export default generateProtocolAdaptorsList(incentives_imports, config)
+ 

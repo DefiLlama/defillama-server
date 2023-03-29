@@ -5,7 +5,7 @@ import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectData,
 } from "../../utils/database";
 import abi from "./abi.json";
 
@@ -14,12 +14,12 @@ function formWrites(
   coinsData: CoinData[],
   lpTokenInfo: any,
   chain: string,
-  timestamp: number
+  timestamp: number,
 ) {
   const lpTokenPrices = coinsData
     .map((c: CoinData) => {
       const underlyingBalance = underlyingBalances.find(
-        (t: any) => c.address == t.input.target.toLowerCase()
+        (t: any) => c.address == t.input.target.toLowerCase(),
       );
       if (underlyingBalance == undefined) return;
       const index = underlyingBalances.indexOf(underlyingBalance);
@@ -28,13 +28,14 @@ function formWrites(
       const price =
         ((c.price * underlyingBalance.output) / lpSupply) *
         10 ** (c.decimals - lpDecimals);
+      if (price == Infinity) return;
 
       return {
         address: underlyingBalances[index].input.params[0].toLowerCase(),
         price,
         decimals: c.decimals,
         symbol: lpTokenInfo.symbols[index].output,
-        confidence: c.confidence
+        confidence: c.confidence,
       };
     })
     .filter((p: any) => p != undefined);
@@ -50,8 +51,8 @@ function formWrites(
       p.symbol,
       timestamp,
       "platypus",
-      p.confidence
-    )
+      p.confidence,
+    ),
   );
 
   return writes;
@@ -61,14 +62,14 @@ async function getTokensFromFactory(
   block: number | undefined,
   chain: any,
   factory: string,
-  poolInfoAbi: any
+  poolInfoAbi: any,
 ) {
   let poolLength: number = (
     await call({
       target: factory,
       abi: abi.poolLength,
       chain,
-      block
+      block,
     })
   ).output;
 
@@ -77,29 +78,29 @@ async function getTokensFromFactory(
   let rawPoolAddresses: MultiCallResults = await multiCall({
     calls: poolNums.map((p: number) => ({
       target: factory,
-      params: p
+      params: p,
     })),
     abi: poolInfoAbi,
     chain,
-    block
+    block,
   });
 
   const poolAddresses: string[] = rawPoolAddresses.output.map(
-    (p: any) => p.output.lpToken
+    (p: any) => p.output.lpToken,
   );
 
   let lpTokenInfo: any;
   let underlyingTokens: Result[];
   [lpTokenInfo, { output: underlyingTokens }] = await Promise.all([
-    getTokenInfo(chain, poolAddresses, block, { withSupply: true, }),
+    getTokenInfo(chain, poolAddresses, block, { withSupply: true }),
     multiCall({
       calls: poolAddresses.map((p: string) => ({
-        target: p
+        target: p,
       })),
       abi: abi.underlyingToken,
       chain,
-      block
-    })
+      block,
+    }),
   ]);
 
   let coinsData: CoinData[];
@@ -108,17 +109,17 @@ async function getTokensFromFactory(
     getTokenAndRedirectData(
       underlyingTokens.map((t: Result) => t.output.toLowerCase()),
       chain,
-      timestamp
+      timestamp,
     ),
     multiCall({
       calls: poolAddresses.map((p: string, i) => ({
         target: underlyingTokens[i].output,
-        params: p
+        params: p,
       })),
       abi: "erc20:balanceOf",
       chain,
-      block
-    })
+      block,
+    }),
   ]);
 
   return formWrites(
@@ -126,7 +127,7 @@ async function getTokensFromFactory(
     coinsData,
     lpTokenInfo,
     chain,
-    timestamp
+    timestamp,
   );
 }
 export default async function getTokenPrices(timestamp: number) {
@@ -140,8 +141,8 @@ export default async function getTokenPrices(timestamp: number) {
         block,
         chain,
         factory[0],
-        factory[1]
-      ))
+        factory[1],
+      )),
     );
   }
   return writes;

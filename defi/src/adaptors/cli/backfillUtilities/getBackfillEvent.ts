@@ -12,58 +12,72 @@ import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { ONE_DAY_IN_SECONDS } from "../../handlers/getProtocol"
 import { ICliArgs } from "./backfillFunction"
 import { Chain } from "@defillama/sdk/build/general"
-import { getStartTimestamp } from "@defillama/dimension-adapters/helpers/getStartTimestamp"
+import { sumAllVolumes } from "../../utils/volumeCalcs"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
+
+type TKeysToCheck = {
+    [l: AdapterType | string]: string;
+}
+const KEYS_TO_CHECK: TKeysToCheck = {
+    [AdapterType.FEES]: 'df',
+    [AdapterType.DEXS]: 'dv',
+    [AdapterType.INCENTIVES]: 'ti',
+    [AdapterType.AGGREGATORS]: 'dv',
+    [AdapterType.DERIVATIVES]: 'dv',
+    [AdapterType.OPTIONS]: 'dv',
+    [AdapterType.PROTOCOLS]: 'dv',
+    [AdapterType.ROYALTIES]: 'dv',
+}
 
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {
     // comment dexs that you dont want to backfill
     const DEXS_LIST: string[] = [
-        // 'mooniswap', 
+        // 'mooniswap',
         // 'balancer',
         // 'bancor',
-        // 'champagneswap', 
-        // 'curve', 
-        // 'dodo', 
+        // 'champagneswap',
+        // 'curve',
+        // 'dodo',
         // 'katana',
-        // 'klayswap', 
-        // 'osmosis', 
-        // 'pancakeswap', 
-        // 'quickswap', 
-        // 'raydium', 
-        // 'saros', 
-        // 'serum', 
-        // 'soulswap', 
-        // 'spiritswap', 
-        // 'spookyswap', 
-        // 'sushiswap', 
-        // 'terraswap', 
-        // 'traderjoe', 
-        // 'uniswap', 
-        // 'gmx', 
-        // 'velodrome', 
-        // 'woofi', 
-        // 'hashflow', 
+        // 'klayswap',
+        // 'osmosis',
+        // 'pancakeswap',
+        // 'quickswap',
+        // 'raydium',
+        // 'saros',
+        // 'serum',
+        // 'soulswap',
+        // 'spiritswap',
+        // 'spookyswap',
+        // 'sushiswap',
+        // 'terraswap',
+        // 'traderjoe',
+        // 'uniswap',
+        // 'gmx',
+        // 'velodrome',
+        // 'woofi',
+        // 'hashflow',
         // 'biswap',
-        // 'zipswap', 
-        // 'wardenswap', 
-        // 'apeswap', 
-        // 'kyberswap', 
+        // 'zipswap',
+        // 'wardenswap',
+        // 'apeswap',
+        // 'kyberswap',
         // 'orca',
-        // 'pangolin', 
-        // 'ref-finance', 
-        // 'saber', 
-        // 'solidly'       
+        // 'pangolin',
+        // 'ref-finance',
+        // 'saber',
+        // 'solidly'
         // 'yoshi-exchange',
         // 'platypus'
     ]
     let event: ITriggerStoreVolumeEventHandler | undefined
 
     const adapterName = adapter ?? DEXS_LIST[0]
-    const adaptorsData = loadAdaptorsData(adaptorType)
+    const adaptorsData = await loadAdaptorsData(adaptorType)
     if (adapterName[0] === 'all') {
         const timestamp = cliArguments.timestamp ?? getUniqStartOfTodayTimestamp(new Date()) - ONE_DAY_IN_SECONDS
-        const type = Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)[0]
+        const type = KEYS_TO_CHECK[adaptorType]
         const adapters2Backfill: string[] = []
         console.info("Checking missing type:", type, "at", timestamp)
         for (const adapter of adaptorsData.default) {
@@ -72,7 +86,8 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
                 adapters2Backfill.push(adapter.module)
             }
             if (volume instanceof AdaptorRecord) {
-                if (volume.getCleanAdaptorRecord() === null)
+                const cleanRecord = volume.getCleanAdaptorRecord()
+                if (cleanRecord === null || sumAllVolumes(cleanRecord.data) === 0)
                     adapters2Backfill.push(adapter.module)
             }
         }
@@ -142,7 +157,8 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         const dates: Date[] = []
         if (cliArguments.onlyMissing) {
             let volTimestamps = {} as IJSON<boolean>
-            for (const type of Object.keys(adaptorsData.KEYS_TO_STORE).slice(0, 1)) {
+            for (const type of [KEYS_TO_CHECK[adaptorType]]) {
+                console.log("Checking missing days for data type -> ", type)
                 let vols = (await getAdaptorRecord(adapterData.id, type as AdaptorRecordType, adapterData.protocolType, "ALL"))
                 if (!(vols instanceof Array)) throw new Error("Incorrect volumes found")
                 vols = vols.map(removeEventTimestampAttribute)
@@ -185,10 +201,14 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         }
     }
 
-    const eventFileLocation = path.resolve(__dirname, "output", `backfill_event.json`);
-    ensureDirectoryExistence(eventFileLocation)
-    writeFileSync(eventFileLocation, JSON.stringify(event, null, 2))
-    console.log(`Event stored ${eventFileLocation}`)
+    try {
+        const eventFileLocation = path.resolve(__dirname, "output", `backfill_event.json`);
+        ensureDirectoryExistence(eventFileLocation)
+        writeFileSync(eventFileLocation, JSON.stringify(event, null, 2))
+        console.log(`Event stored ${eventFileLocation}`)
+    } catch (error) {
+        console.info("Unable to store backfill event", error)
+    }
     return event
 }
 

@@ -15,6 +15,7 @@ sdk.cache.startCache(cache)
 console.log('No. of protocols: ', protocols.length)
 
 const startTime = getTime()
+const ignoreSet = new Set(['solana', 'terra', 'terra2', 'algorand', 'eos', 'aptos', 'cardano', 'tron', 'near', 'tezos', 'mixin', 'waves', 'acala', 'neo' ])
 
 async function run() {
   const timestamp = getTime()
@@ -24,19 +25,21 @@ async function run() {
   let finished = 0
   let running = 0
   await PromisePool
-    .withConcurrency(31)
-    .for(protocols)
+    .withConcurrency(1)
+    // .for(protocols.filter(i => i.name === 'Unifarm'))
+    .for(protocols.slice(650))
     .process(async (protocol: Protocol, _index: number) => {
       running++
-      // console.log('runnnng for ', protocol.name)
+      console.log('runnnng for ', protocol.name)
       const adapterModule = await importAdapter(protocol)
 
-      // if (_index % 50 === 0) 
+      if (_index % 100 === 0) 
         fs.writeFileSync(cacheFile, JSON.stringify(cache))
 
       try {
 
         let tvlPromises = Object.entries(adapterModule).map(async ([chain, value]) => {
+          if (ignoreSet.has(chain)) return;
           if (chain === "default") {
             return;
           }
@@ -60,16 +63,11 @@ async function run() {
             await tvlFunction(timestamp, ethereumBlock, chainBlocks, { api, chain, storedKey, block })
           }))
         })
-        if (adapterModule.tvl || adapterModule.fetch) {
-          let mainTvlIsFetch: boolean;
+        if (adapterModule.tvl) {
           if (adapterModule.tvl) {
-            mainTvlIsFetch = false
-          } else {
-            mainTvlIsFetch = true
+            const mainTvlPromise = adapterModule.tvl(timestamp, ethereumBlock, chainBlocks)
+            tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
           }
-          const tvlFunction = adapterModule.tvl || adapterModule.fetch
-          const mainTvlPromise = tvlFunction(timestamp, ethereumBlock, chainBlocks)
-          tvlPromises = tvlPromises.concat([mainTvlPromise as Promise<any>])
         }
         await Promise.all(tvlPromises)
       } catch (e) { }

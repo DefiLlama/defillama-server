@@ -1,6 +1,4 @@
-import generateProtocolAdaptorsList from "../helpers/generateProtocolAdaptorsList";
 import dex_imports from "../../../utils/imports/dexs_adapters"
-import config from "./config";
 import { AdaptorRecordType } from "../../db-utils/adaptor-record";
 
 // TODO: needs to be optimized. Currently loads to memory all adaptors
@@ -16,4 +14,4 @@ export { default as config } from "./config";
 
 export { default as dex_imports } from "../../../utils/imports/dexs_adapters"
 
-export default generateProtocolAdaptorsList(dex_imports, config)
+ 

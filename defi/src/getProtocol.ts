@@ -33,7 +33,7 @@ export async function craftProtocolResponse({
       });
     }
 
-    return craftParentProtocol({ parentProtocol, useNewChainNames, useHourlyData, skipAggregatedTvl });
+    return craftParentProtocol({ parentProtocol, useHourlyData, skipAggregatedTvl });
   }
 
   if (protocolData === undefined) {

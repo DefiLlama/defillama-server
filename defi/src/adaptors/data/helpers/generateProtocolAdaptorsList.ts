@@ -1,14 +1,14 @@
 import data, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
-import { sluggifyString } from "../../../utils/sluggify";
-import getAllChainsFromAdaptors, { getMethodologyData, getProtocolsData, isDisabled } from "../../utils/getAllChainsFromAdaptors";
+import { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
-import { Adapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
-import { chainCoingeckoIds, getChainDisplayName } from "../../../utils/normalizeChain"
+import { BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
+import { getChainDisplayName } from "../../../utils/normalizeChain"
+import chainCoingeckoIds from "./chains"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
-import { getMethodologyByType } from "./methodology";
-import overrides, { chainOverrides, IOverrides } from "./overrides";
+import { getCollectionsMap } from "./collections";
+import { seaportCollections } from "../fees/collections";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -17,10 +17,20 @@ export function notUndefined<T>(x: T | undefined): x is T {
     return x !== undefined;
 }
 
+export function notNull<T>(x: T | null): x is T {
+    return x !== null;
+}
+
+const dataMap = data.reduce((acc, curr) => {
+    acc[curr.id] = curr
+    return acc
+}, {} as IJSON<Protocol>)
+
 const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
     if (!obj.cmcId && !obj.chainId) return undefined
     return {
         ...obj,
+        displayName: getChainDisplayName(key, true),
         name: key,
         id: obj.cmcId ?? obj.chainId,
         gecko_id: obj.geckoId,
@@ -29,86 +39,91 @@ const chainData = Object.entries(chainCoingeckoIds).map(([key, obj]) => {
     }
 }).filter(c => c !== undefined) as unknown as Protocol[]
 
+const chainDataMap = chainData.reduce((acc, curr) => {
+    acc[curr.id] = curr
+    return acc
+}, {} as IJSON<Protocol>)
+
 export type IImportsMap = IJSON<IImportObj>
 
+//TODO: refactor
+const addressMap = {
+    'opensea-seaport-collections': seaportCollections,
+    'opensea-v1-collections': seaportCollections,
+    'opensea-v2-collections': seaportCollections
+} as IJSON<typeof seaportCollections>
+
 // This could be much more efficient
-export default (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): ProtocolAdaptor[] =>
-    Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
-        let list = data
-        let overridesObj = overrides(type)
+export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): Promise<ProtocolAdaptor[]> => {
+    const collectionsMap = await getCollectionsMap()
+    return Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
+        let list = dataMap
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
-            overridesObj = chainOverrides
-            list = chainData
+            list = chainDataMap
         }
-        let dexFoundInProtocols = list.find(dexP => getBySpecificId(adapterKey, dexP.id))
-        if (!dexFoundInProtocols)
-            dexFoundInProtocols = list.find(dexP => {
-                return dexP.name.toLowerCase()?.includes(adapterKey)
-                    || sluggifyString(dexP.name)?.includes(adapterKey)
-                    || dexP.gecko_id?.includes(adapterKey)
-                    || dexP.module?.split("/")[0]?.includes(adapterKey)
-                    || dexP.logo?.toLocaleLowerCase()?.includes(adapterKey)
-            })
-        if (dexFoundInProtocols && imports_obj[adapterKey].module.default) {
-            let moduleObject = imports_obj[adapterKey].module.default
-            if (config?.[adapterKey]?.protocolsData && 'breakdown' in moduleObject)
-                moduleObject = {
-                    ...moduleObject,
-                    breakdown: Object.entries(moduleObject.breakdown)
-                        .filter(([vName, _adapter]) => config?.[adapterKey]?.protocolsData?.[vName]?.enabled)
-                        .reduce((acc, [vName, adapter]) => {
-                            acc[vName] = adapter
-                            return acc
-                        }, {} as typeof moduleObject.breakdown)
-                } as Adapter
-            const displayName = getDisplayName(dexFoundInProtocols.name, moduleObject)
-            const childCategories = Object.values(overridesObj[adapterKey]?.protocolsData ?? {}).map(v => v?.category).filter(notUndefined)
-            const displayCategory = getDisplayCategory(moduleObject, overridesObj[adapterKey]) ?? dexFoundInProtocols.category
-            const infoItem = {
-                ...dexFoundInProtocols,
-                module: adapterKey,
-                config: config[adapterKey],
-                category: displayCategory,
-                chains: getAllChainsFromAdaptors([adapterKey], moduleObject),
-                disabled: isDisabled(moduleObject),
-                displayName,
-                protocolsData: getProtocolsData(adapterKey, moduleObject, dexFoundInProtocols.category, overridesObj),
-                protocolType: adapterObj.module.default?.protocolType,
-                methodologyURL: adapterObj.codePath,
-                methodology: getMethodologyData(
-                    displayName,
-                    adapterKey,
-                    moduleObject,
-                    displayCategory ?? '',
-                    childCategories
-                ),
-                ...overridesObj[adapterKey],
+        else if (adapterObj.module.default?.protocolType === ProtocolType.COLLECTION) {
+            list = collectionsMap
+        }
+        const protocolId = config?.[adapterKey]?.id
+        let moduleObject = imports_obj[adapterKey].module.default
+        if (!moduleObject) return
+        let dexFoundInProtocolsArr = [] as Protocol[]
+        let baseModuleObject = {} as BaseAdapter
+        if ('adapter' in moduleObject) {
+            if (!protocolId) return
+            dexFoundInProtocolsArr.push(list[protocolId])
+            baseModuleObject = moduleObject.adapter
+        }
+        else if ('breakdown' in moduleObject) {
+            const protocolsData = config?.[adapterKey]?.protocolsData ?? addressMap[adapterKey]
+            if (!protocolsData) {
+                console.error(`No protocols data defined in ${type}'s config for adapter with breakdown`, adapterKey)
+                return
             }
-            return infoItem
+            dexFoundInProtocolsArr = Object.values(protocolsData).map(protocolData => {
+                if (!list[protocolData.id]) console.error(`Protocol not found with id ${protocolData.id} and key ${adapterKey}`)
+                return list[protocolData.id]
+            }).filter(notUndefined)
+        }
+        if (dexFoundInProtocolsArr.length > 0 && imports_obj[adapterKey].module.default) {
+            return dexFoundInProtocolsArr.map((dexFoundInProtocols => {
+                let configObj = config[adapterKey]
+                let versionKey = undefined
+                const protData = config?.[adapterKey]?.protocolsData ?? addressMap[adapterKey]
+                if ('breakdown' in moduleObject) {
+                    const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
+                    configObj = vConfig ?? config[adapterKey]
+                    if (key) {
+                        versionKey = key
+                        baseModuleObject = moduleObject.breakdown[key]
+                    }
+                }
+                if (!configObj || !dexFoundInProtocols) return
+                const infoItem: ProtocolAdaptor = {
+                    ...dexFoundInProtocols,
+                    ...configObj,
+                    id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id,
+                    module: adapterKey,
+                    config: config[adapterKey],
+                    chains: getChainsFromBaseAdapter(baseModuleObject),
+                    disabled: configObj.disabled ?? false,
+                    displayName: configObj.displayName ?? dexFoundInProtocols.name,
+                    protocolType: adapterObj.module.default?.protocolType,
+                    methodologyURL: adapterObj.codePath,
+                    methodology: undefined
+                }
+                const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
+                if (methodology)
+                    infoItem.methodology = methodology
+                if (versionKey)
+                    infoItem.versionKey = versionKey
+                return infoItem
+            }))
         }
         // TODO: Handle better errors
-        console.error(`Missing info for ${adapterKey}`)
+        console.error(`Missing info for ${adapterKey} on ${type}`)
         return undefined
-    }).filter(notUndefined);
-
-function getDisplayCategory(adapter: Adapter, override: IOverrides[string]) {
-    if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
-        const versionName = Object.keys(adapter.breakdown)[0]
-        return override?.protocolsData?.[versionName]?.category
-    }
-    return override?.category
-}
-
-export function getDisplayName(name: string, adapter: Adapter) {
-    if (name.split(' ')[0].includes('AAVE')) return 'AAVE'
-    if (name.split(' ')[0].includes('Uniswap')) return 'Uniswap'
-    if (name === '0x') return '0x - RFQ'
-    if ("breakdown" in adapter && Object.keys(adapter.breakdown).length === 1) {
-        const versionName = Object.keys(adapter.breakdown)[0]
-        return `${name} - ${versionName.charAt(0).toUpperCase()}${versionName.slice(1)}`
-    }
-    if (adapter.protocolType === ProtocolType.CHAIN) return getChainDisplayName(name.toLowerCase(), true)
-    return name
+    }).flat().filter(notUndefined);
 }
 
 function getLogoKey(key: string) {
@@ -144,5 +159,7 @@ export const getBySpecificId = (key: string, id: string) => {
     if (key === 'blur') return id === "2414"
     if (key === 'solidlydex') return id === "2400"
     if (key === 'tethys-finance') return id === "1139"
+    if (key === 'ashswap') return id === "2551"
+    if (key === 'dforce') return id === "123"
     return false
 }

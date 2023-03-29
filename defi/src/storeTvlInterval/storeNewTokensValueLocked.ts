@@ -12,7 +12,7 @@ export default async (
   unixTimestamp: number,
   tvl: tvlsObject<TokensValueLocked>,
   hourlyTvl: PKconverted,
-  dailyTvl: PKconverted
+  dailyTvl: PKconverted,
 ) => {
   const hourlyPK = hourlyTvl(protocol.id);
   if (Object.keys(tvl).length === 0) {
@@ -22,13 +22,13 @@ export default async (
   await dynamodb.put({
     PK: hourlyPK,
     SK: unixTimestamp,
-    ...tvl
+    ...tvl,
   });
 
   const closestDailyRecord = await getTVLOfRecordClosestToTimestamp(
     dailyTvl(protocol.id),
     unixTimestamp,
-    secondsInDay * 1.5
+    secondsInDay * 1.5,
   );
 
   if (hourlyPK.includes("hourlyUsdTokensTvl"))
@@ -39,30 +39,36 @@ export default async (
     await dynamodb.put({
       PK: dailyTvl(protocol.id),
       SK: getTimestampAtStartOfDay(unixTimestamp),
-      ...tvl
+      ...tvl,
     });
   }
 };
 async function checkForOutlierCoins(
   currentTvls: tvlsObject<TokensValueLocked>,
   previousTvls: tvlsObject<TokensValueLocked>,
-  protocol: string
+  protocol: string,
 ) {
   const changeThresholdFactor = 4;
   const proportionThresholdFactor = 0.5;
+  const outlierThreshold = 20_000_000_000;
+  const smallThreshold = 10_000;
   const headline = `${protocol} has TVL values out of accepted range:\n`;
   let alertString = headline;
+  const coinKeys: string[] = [];
 
   Object.keys(currentTvls).map((tvlKey) => {
-    const totalChainTvlPrevious = Object.values(previousTvls[tvlKey] ?? {}).reduce(
-      (p: number, c: number) => p + c,
-      0
-    );
+    const totalChainTvlPrevious = Object.values(
+      previousTvls[tvlKey] ?? {},
+    ).reduce((p: number, c: number) => p + c, 0);
 
     Object.keys(currentTvls[tvlKey]).map((coinKey) => {
       const currentCoinValue = currentTvls[tvlKey][coinKey];
+      if (currentCoinValue > outlierThreshold)
+        alertString += `${coinKey.toUpperCase()} is more than ${outlierThreshold} which is ridiculous, `;
+      if (currentCoinValue < smallThreshold) return;
       if (!(tvlKey in previousTvls)) return;
       if (!(coinKey in previousTvls[tvlKey])) return;
+      if (coinKey.toUpperCase() in coinKeys) return;
 
       const previousCoinValue = previousTvls[tvlKey][coinKey];
       const changeUpperBound = previousCoinValue * changeThresholdFactor;
@@ -75,8 +81,10 @@ async function checkForOutlierCoins(
         currentCoinValue > proportionBoundPrevious &&
         (currentCoinValue > changeUpperBound ||
           currentCoinValue < changeLowerBound)
-      )
+      ) {
         alertString += `${coinKey.toUpperCase()} on ${tvlKey} with previous of ${previousCoinValue} and current of ${currentCoinValue}, `;
+        coinKeys.push(coinKey.toUpperCase());
+      }
     });
   });
 
@@ -84,6 +92,6 @@ async function checkForOutlierCoins(
     await sendMessage(
       alertString,
       process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-      true
+      true,
     );
 }

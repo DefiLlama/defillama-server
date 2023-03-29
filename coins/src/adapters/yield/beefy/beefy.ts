@@ -8,6 +8,7 @@ export const config = {
     wantVaults: [
       '0x8e2cdf8c6477439b7c989e86b917d80871b92339',
       '0x4d153f47f03c237f6360a6eccd185b4ae09c63d0',
+      '0x0892a178c363b4739e5ac89e9155b9c30214c0c0',
     ],
     nativeVaults: [
       '0x7ee71053102d54fc843baebaf07277c2b6db64f1',
@@ -49,6 +50,14 @@ export const config = {
     ],
     tokenVaults: [
       '0x7d60f21072b585351dfd5e8b17109458d97ec120',
+    ],
+    wantVaults: [
+      '0xa0FdCDDA62C4C6a0109A702a7Efe59B4E8807e3f', // mooMvxMVLP
+    ],
+  },
+  arbitrum: {
+    wantVaults: [
+      '0x9dbbBaecACEDf53d5Caa295b8293c1def2055Adc', // mooGmxGLP
     ],
   },
   ethereum: {

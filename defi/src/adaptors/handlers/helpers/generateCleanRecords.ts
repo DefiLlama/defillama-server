@@ -23,7 +23,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
     const processed = await adaptorRecords.reduce(async (accP, adaptorRecord, currentIndex, array) => {
         const acc = await accP
         // Let's work with a clean record
-        const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
+        const cleanRecord = adaptorRecord.getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0])
         // Here will be stored the normalized data (aka data with no errors and if missing, extrapolation of that day)
         const generatedData = {} as IRecordAdaptorRecordData
         // Get current timestamp we are working with
@@ -32,6 +32,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             console.error("Timestamp in miliseconds or in the future has been found! Please check what's wrong...", timestamp, adaptorRecord)
             return acc
         }
+
         if (!timestamp) {
             const all = Object.values(acc.lastDataRecord)
             if (all.length === 0 || !all[0]) return acc
@@ -53,7 +54,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 const [chain, prot] = chainprot.split("#")
                 if (!timestamp || !record) return
                 const recordData = record.data?.[chain]
-                if (!recordData || !Object.keys(recordData).includes(prot)) return
+                if (!recordData || !Object.keys(recordData).includes(prot) || !getProtocolsFromRecord(cleanRecord).includes(prot)) return
                 const gaps = (timestamp - record.timestamp) / ONE_DAY_IN_SECONDS
                 for (let i = 1; i < gaps; i++) {
                     const prevData = missingDayData[String(record.timestamp + (ONE_DAY_IN_SECONDS * i))]?.[chain]
@@ -89,7 +90,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
                 nextRecord = acc.nextDataRecord[chainProt]
                 // Note, limited the lookup to up maxGaps2Cover
                 for (let i = currentIndex; i < Math.min((array.length - 1), 100); i++) {
-                    const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains)
+                    const cR = array[i + 1].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0])
                     const protDataChain = cR?.data[chain]
                     if (cR !== null && typeof protDataChain === 'object' && protDataChain[protocol]) {
                         acc.nextDataRecord[chainProt] = cR
@@ -139,8 +140,12 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         )
 
         if (timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
-            checkSpikes(acc.lastDataRecord, newGen, spikesLogs)
+            checkSpikes(acc.lastDataRecord, newGen, spikesLogs, acc.ath)
 
+        const dayVolume = sumAllVolumes(newGen.data)
+        if (acc.ath < dayVolume && Number.isFinite(dayVolume) && !Number.isNaN(dayVolume)) {
+            acc.ath = dayVolume
+        }
         acc.lastDataRecord = chains
             .reduce((acc, chain) =>
                 ([...acc, ...protocols.map(prot => `${chain}#${prot}`)]), [] as string[])
@@ -150,14 +155,16 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
         return acc
     }, Promise.resolve({
         adaptorRecords: [] as AdaptorRecord[],
-        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains) }), {}),
+        lastDataRecord: chains.reduce((acc, chain) => ({ ...acc, [chain]: adaptorRecords[0].getCleanAdaptorRecord(chainFilter ? [chainFilter] : chains, protocols[0]) }), {}),
         nextDataRecord: {},
-        recordsMap: {}
+        recordsMap: {},
+        ath: 0
     } as {
         lastDataRecord: { [chain: string]: AdaptorRecord | undefined }
         nextDataRecord: { [chainProt: string]: AdaptorRecord | undefined }
         adaptorRecords: AdaptorRecord[],
-        recordsMap: IJSON<AdaptorRecord> // Might be good idea to merge it with adaptorRecords list since its the same
+        recordsMap: IJSON<AdaptorRecord>, // Might be good idea to merge it with adaptorRecords list since its the same
+        ath: number
     }))
     return {
         cleanRecordsArr: processed.adaptorRecords,
@@ -166,7 +173,18 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
     }
 }
 
-function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: AdaptorRecord, spikesLogs: string[]) {
+function getProtocolsFromRecord(record: AdaptorRecord | null): string[] {
+    if (record == null) return []
+    return Object.values(record.data).reduce((acc, chainData) => {
+        for (const protkey of Object.keys(chainData)) {
+            if (!acc.includes(protkey))
+                acc.push(protkey)
+        }
+        return acc
+    }, [] as string[])
+}
+
+function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: AdaptorRecord, spikesLogs: string[], ath: number) {
     const current = sumAllVolumes(newGen.data)
     const prevObj = Object.entries(lastDataRecord).reduce((acc, [chainprot, record]) => {
         const [chain, prot] = chainprot.split("#")
@@ -182,7 +200,7 @@ function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: A
             }
         }
     }, {} as IRecordAdaptorRecordData)
-    const prev = sumAllVolumes(prevObj)
+    const prev = ath//sumAllVolumes(prevObj)
     const chg1d = Math.abs((current - prev) / prev) * 100
     if (chg1d && chg1d > 10000 && current > 10000000) {
         spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)

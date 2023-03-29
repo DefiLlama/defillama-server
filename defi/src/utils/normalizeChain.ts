@@ -5,7 +5,12 @@ const normalizedChainReplacements = {
   "terra classic": "terra",
   "nova network": "nova" ,
   "godwokenv1" : "godwoken_v1",
-  "arbitrum nova" : "arbitrum_nova"
+  "arbitrum nova" : "arbitrum_nova",
+  "OKExChain": "OKXChain",
+  "zkSync": "zkSync Lite",
+  "zkSync Era": "era",
+  "polygon zkEVM": "polygon_zkevm"
+
 } as {
   [chain: string]: string
 }
@@ -16,7 +21,11 @@ export function normalizeChain(chain: string) {
 }
 
 export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string){
-  return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield" || category === "RWA");
+  return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield");
+}
+
+export function isExcludedFromChainTvl(category?: string){
+  return category === "RWA";
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -39,9 +48,9 @@ export const chainCoingeckoIds = {
     chainId: 1,
   },
   "Arbitrum": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "arbitrum",
+    symbol: "ARB",
+    cmcId: "11841",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -158,7 +167,7 @@ export const chainCoingeckoIds = {
     cmcId: "4846",
     categories: ["Cosmos"],
   },
-  "OKExChain": {
+  "OKXChain": {
     geckoId: "oec-token",
     symbol: "OKT",
     cmcId: "8267",
@@ -224,7 +233,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 1666600000,
   },
-  "RSK": {
+  "Rootstock": {
     geckoId: "rootstock",
     symbol: "RBTC",
     cmcId: "3626",
@@ -262,6 +271,7 @@ export const chainCoingeckoIds = {
     geckoId: "tron",
     symbol: "TRON",
     cmcId: "1958",
+    categories: ["EVM"],
   },
   "Icon": {
     geckoId: "icon",
@@ -585,7 +595,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 2020,
   },
-  "zkSync": {
+  "zkSync Lite": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -827,6 +837,7 @@ export const chainCoingeckoIds = {
     geckoId: "hedera-hashgraph",
     symbol: "HBAR",
     cmcId: "4642",
+    categories: ["EVM"],
   },
   "Findora": {
     geckoId: "findora",
@@ -1276,6 +1287,113 @@ export const chainCoingeckoIds = {
     cmcId: "22026",
     categories: ["EVM"],
   },
+  "Map": {
+    geckoId: "marcopolo",
+    symbol: "MAP",
+    cmcId: "4956",
+    categories: ["EVM"],
+  },
+  "Stargaze": {
+    geckoId: "stargaze",
+    symbol: "STARS",
+    cmcId: "16842",
+    categories: ["Cosmos"],
+  },
+  "Libre": {
+    geckoId: "libre",
+    symbol: "LIBRE",
+    cmcId: null,
+  },
+  "Umee": {
+    geckoId: "umee",
+    symbol: "UMEE",
+    cmcId: "16389",
+    categories: ["Cosmos"],
+  },
+  "WEMIX": {
+    geckoId: "wemix-token",
+    symbol: "WEMIX",
+    cmcId: "7548",
+  },
+  "Persistence": {
+    geckoId: "persistence",
+    symbol: "XPRT",
+    cmcId: "7281",
+    categories: ["Cosmos"],
+  },
+  "ENULS": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Oraichain": {
+    geckoId: "oraichain-token",
+    symbol: "ORAI",
+    cmcId: "7533",
+    categories: ["Cosmos"],
+  },
+  "Goerli": {
+    geckoId: "goerli-eth",
+    symbol: "GETH",
+    cmcId: "23669",
+    categories: ["EVM"],
+  },
+  "Europa": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "CORE": {
+    geckoId: "coredaoorg",
+    symbol: "CORE",
+    cmcId: "23254",
+    categories: ["EVM"],
+  },
+  "Rangers": {
+    geckoId: "rangers-protocol-gas",
+    symbol: "RPG",
+    cmcId: "12221",
+    categories: ["EVM"],
+  },
+  "Lung": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 78887
+  },
+  "Loop": {
+    geckoId: "loopnetwork",
+    symbol: "LOOP",
+    cmcId: "18761",
+    categories: ["EVM"],
+  },
+  "Bone": {
+    geckoId: null,
+    symbol: "BONE",
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "zkSync Era": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainid: 324,
+  },
+  "Polygon zkEVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1297,6 +1415,9 @@ chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
 chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
+chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
+chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKXChain"]
+
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
@@ -1306,6 +1427,8 @@ export function transformNewChainName(chain: string) {
       return "BSC"
     case "Kucoin":
       return "KCC"
+    case "OKExChain":
+      return "OKXChain"
     case "xDai":
       return "Gnosis"
     case "Cosmos":
@@ -1322,6 +1445,14 @@ export function transformNewChainName(chain: string) {
         return "Milkomeda C1"
     case "Elrond":
       return "MultiversX"
+    case "RSK":
+      return "Rootstock"
+    case "Orai":
+      return "Oraichain"
+    case "zkSync":
+      return "zkSync Lite"
+    case "polygon_zkevm":
+      return "Polygon zkEVM"
     default:
       return chain
   }
@@ -1341,6 +1472,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Wanchain"
     case "kcc":
       return useNewChainNames ? "KCC" : "Kucoin"
+    case "okexchain":
+      return useNewChainNames ? "OKXChain": "OKExChain"
     case "xdai":
       return useNewChainNames ? "Gnosis" : "xDai"
     case "cosmos":
@@ -1353,12 +1486,12 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
     case "elrond":
       return useNewChainNames ? "MultiversX" : "Elrond"
+    case "rsk":
+      return useNewChainNames ? "Rootstock" : "RSK"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
       return "XdaiArb"
-    case "okexchain":
-      return "OKExChain"
     case "defichain":
       return "DefiChain"
     case "stacks":
@@ -1369,8 +1502,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "EOS"
     case "neo":
       return "NEO"
-    case "rsk":
-      return "RSK"
     case "iotex":
       return "IoTeX"
     case "thundercore":
@@ -1426,7 +1557,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
-      return "zkSync"
+        return useNewChainNames ? "zkSync Lite": "zkSync"
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -1615,6 +1746,40 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Omax"
     case "bitindi":
       return "Bitindi"
+    case "map":
+      return "Map"
+    case "stargaze":
+      return "Stargaze"
+    case "libre":
+      return "Libre"
+    case "umee":
+      return "Umee"
+    case "wemix":
+      return "WEMIX"
+    case "persistence":
+      return "Persistence"
+    case "enuls":
+      return "ENULS"
+    case "orai":
+      return useNewChainNames ? "Oraichain" : "Orai"
+    case "goerli":
+      return "Goerli"
+    case "europa":
+      return "Europa"
+    case "core":
+      return "CORE"
+    case "rpg":
+      return "Rangers"
+    case "lung":
+      return "Lung"
+    case "loop":
+      return "Loop"
+    case "bone":
+      return "Bone"
+    case "era":
+      return "zkSync Era"
+    case "polygon_zkevm":
+      return "Polygon zkEVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

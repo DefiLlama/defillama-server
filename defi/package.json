@@ -27,6 +27,7 @@
     "backfill-dex-local": "npm run update-submodules && npm run backfill-dex-local-script",
     "check-adapters": "npm run update-submodules && npx ts-node src/dexVolumes/cli/checkNonEnabledDexs.ts",
     "update-submodules": "git submodule update --init --recursive --remote --merge && npm run prebuild ",
+    "get-snapshot-ids": "npx ts-node src/governance/getSnapshotIds.ts",
     "backfill": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/adaptors/cli/backfillUtilities/auto.ts",
     "backfill-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node src/adaptors/cli/backfillUtilities/auto.ts"
   },
@@ -49,6 +50,7 @@
     "serverless-esbuild": "^1.30.0",
     "serverless-offline": "^8.0.0",
     "serverless-plugin-datadog": "^5.14.1",
+    "serverless-plugin-lambda-insights": "^1.6.0",
     "serverless-plugin-log-retention": "^2.0.0",
     "serverless-prune-plugin": "^2.0.0",
     "ts-jest": "^28.0.3",
@@ -60,6 +62,7 @@
     "@aws-sdk/client-s3": "^3.245.0",
     "@defillama/adapters": "file:./DefiLlama-Adapters",
     "@defillama/dimension-adapters": "file:./dimension-adapters",
+    "@defillama/emissions-adapters": "file:./emissions-adapters",
     "@defillama/sdk": "^3.0.1",
     "@supercharge/promise-pool": "^2.3.2",
     "axios": "^0.27.2",

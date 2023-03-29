@@ -99,8 +99,16 @@ export class AdaptorRecord extends Item {
         }
     }
 
-    getCleanAdaptorRecord(chains?: string[]): AdaptorRecord | null {
+    getCleanAdaptorRecord(chains?: string[], protocolKey?: string): AdaptorRecord | null {
         let data = this.data
+        if (protocolKey)
+            data = Object.entries(data).reduce((acc, [chain, value]) => {
+                if (typeof value === 'number') return acc
+                acc[chain] = {
+                    [protocolKey]: value[protocolKey]
+                }
+                return acc
+            }, {} as IRecordAdaptorRecordData)
         if (chains !== undefined && chains.length > 0) {
             //if (!this.data[chain] && !this.data[formatChainKey(chain)]) return null
             data = chains.reduce((acc, chain) => {
@@ -137,18 +145,20 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
     const obj2Store: IRecordAdaptorRecordData = {
         ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
             const currentChainValue = acc[chain]
-            if (typeof data === 'number' || typeof currentChainValue === 'number' || chain === 'error') return acc
             const clean_chain = replaceReservedKeyword(chain)
+            const prevChainValue = acc[clean_chain]
+            if (typeof data === 'number' || typeof currentChainValue === 'number' || chain === 'error') return acc
+            if (typeof prevChainValue === 'number' || clean_chain === 'error') return acc
             acc[clean_chain] = {
+                ...prevChainValue,
                 ...currentChainValue,
-                ...data
             }
             return acc
-        }, {} as IRecordAdaptorRecordData),
+        }, currentData as IRecordAdaptorRecordData),
         eventTimestamp
     }
     try {
-        console.log("Storing", adaptorRecord, adaptorRecord.keys())
+        console.log("Storing", obj2Store, adaptorRecord.keys())
         await dynamodb.update({
             Key: adaptorRecord.keys(),
             UpdateExpression: createUpdateExpressionFromObj(obj2Store),

@@ -47,7 +47,7 @@ const handler = async (
       };
     })
   );
-  await storeMissingCoins(requestedCoins, response, timestampRequested);
+  // await storeMissingCoins(requestedCoins, response, timestampRequested);
   return successResponse(
     {
       coins: response

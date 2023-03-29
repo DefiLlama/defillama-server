@@ -1,5 +1,3 @@
-import getBlock from "../utils/block";
-import { getTokenInfo } from "../utils/erc20";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
 
@@ -72,6 +70,28 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       address: "0x4e971a87900b931fF39d1Aad67697F49835400b6",
       decimals: 18,
       redirect: "asset#arbitrum:0x4277f8f2c384827b5273592ff7cebd9f2c1ac258",
+    },
+    {
+      symbol: "OLE",
+      address: "0xd4d026322c88c2d49942a75dff920fcfbc5614c1",
+      decimals: 18,
+      redirect: "coingecko#openleverage",
+    },
+  ],
+  polygon: [
+    {
+      symbol: "wstETH",
+      address: "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
+      decimals: 18,
+      redirect: "coingecko#wrapped-steth",
+    },
+  ],
+  kava: [
+    {
+      symbol: "DEXI",
+      address: "0xd22a58f79e9481d1a88e00c343885a588b34b68b",
+      decimals: 9,
+      redirect: "coingecko#dexioprotocol-v2",
     },
   ],
 };

@@ -32,7 +32,7 @@ function sum(
   const data = total[time][oracle] || {};
 
   for (const i in item) {
-    const section: string = i.includes("-") ? i.split("-")[1] : i;
+    const section: string = i;
     if (section === "tvl" || extraSections.includes(section)) {
       data[section] = (data[section] || 0) + item[section];
     }

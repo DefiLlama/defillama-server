@@ -1,6 +1,4 @@
-import generateProtocolAdaptorsList from "../helpers/generateProtocolAdaptorsList";
 import aggregators_imports from "../../../utils/imports/aggregators_adapters"
-import config from "./config";
 import { AdaptorRecordType } from "../../db-utils/adaptor-record";
 
 // TODO: needs to be optimized. Currently loads to memory all adaptors
@@ -14,6 +12,6 @@ export const KEYS_TO_STORE = {
 
 export { default as config } from "./config";
 
-export { default as dex_imports } from "../../../utils/imports/dexs_adapters"
+export { default as aggregators_imports } from "../../../utils/imports/aggregators_adapters"
 
-export default generateProtocolAdaptorsList(aggregators_imports, config)
+ 

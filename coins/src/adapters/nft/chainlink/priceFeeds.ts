@@ -3,9 +3,9 @@ export default {
     {
       underlying: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
       nfts: [
-        {   // Art Blocks
-          token: "0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a",
-          oracle: "0xEbF67AB8cFF336D3F609127E8BbF8BD6DD93cd81",
+        {   // Autoglyphs
+          token: "0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782",
+          oracle: "0xcc164249E9840a9e7D9e18E67b78cBeF06C5F8a5",
         },
         {   // Azuki
           token: "0xed5af388653567af2f388e6224dc7c4b3241c544",
@@ -103,6 +103,10 @@ export default {
           token: "0x5cc5b05a8a13e3fbdb0bb9fccd98d38e50f90c38",
           oracle: "0xa62b4828a9f4b2e3cba050c6befdd8f0a0056af4",
         },
+        // {   // Squiggles
+        //   token: "0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a",
+        //   oracle: "0xEbF67AB8cFF336D3F609127E8BbF8BD6DD93cd81",
+        // },
         {   // VeeFriends
           token: "0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb",
           oracle: "0x35bf6767577091E7f04707c0290b3f889e968307",
@@ -110,6 +114,10 @@ export default {
         {   // World of Women
           token: "0xe785e82358879f061bc3dcac6f0444462d4b5330",
           oracle: "0xDdf0B85C600DAF9e308AFed9F597ACA212354764",
+        },
+        {   // Sewer Pass
+          token: "0x764AeebcF425d56800eF2c84F2578689415a2DAa",
+          oracle: "0xA75a865d973276ba2f6D6A75C2D02f5d0c07b06f",
         },
       ]
     }

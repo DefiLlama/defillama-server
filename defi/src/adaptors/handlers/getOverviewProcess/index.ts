@@ -12,11 +12,15 @@ import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSu
 import { delay } from "../triggerStoreAdaptorData";
 import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
 import { cacheResponseOnR2 } from "../../utils/storeR2Response";
+import { CATEGORIES } from "../../data/helpers/categories";
 
 export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
+    total48hto24h: number | null;
     total7d: number | null;
+    total14dto7d: number | null;
     total30d: number | null;
+    total60dto30d: number | null;
     change_1d: number | null;
     change_7d: number | null;
     change_1m: number | null;
@@ -38,8 +42,9 @@ export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     | 'methodologyURL'
     | 'methodology'
     | 'allAddresses'
+    | 'parentProtocol'
+    | 'versionKey'
 > & {
-    protocolsStats: ProtocolStats | null
     records: AdaptorRecord[] | null
     recordsMap: IJSON<AdaptorRecord> | null
     totalAllTime: number | null
@@ -67,7 +72,7 @@ export type ExtraTypes = {
     dailyPremiumVolume?: number | null
 }
 
-export type ProtocolStats = IJSON<(NonNullable<ProtocolAdaptor['protocolsData']>[string] & IGeneralStats)>
+export type ProtocolStats = IJSON<(NonNullable<IGeneralStats>)>
 
 export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.DEXS]: AdaptorRecordType.dailyVolume,
@@ -76,6 +81,7 @@ export const DEFAULT_CHART_BY_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
     [AdapterType.AGGREGATORS]: AdaptorRecordType.dailyVolume,
     [AdapterType.OPTIONS]: AdaptorRecordType.dailyNotionalVolume,
     [AdapterType.INCENTIVES]: AdaptorRecordType.tokenIncentives,
+    [AdapterType.ROYALTIES]: AdaptorRecordType.dailyFees,
 }
 
 export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
@@ -93,6 +99,14 @@ export const ACCOMULATIVE_ADAPTOR_TYPE: IJSON<AdaptorRecordType> = {
 
 const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     [AdapterType.FEES]: [
+        AdaptorRecordType.dailyRevenue,
+        AdaptorRecordType.dailyUserFees,
+        AdaptorRecordType.dailyHoldersRevenue,
+        AdaptorRecordType.dailyCreatorRevenue,
+        AdaptorRecordType.dailySupplySideRevenue,
+        AdaptorRecordType.dailyProtocolRevenue
+    ],
+    [AdapterType.ROYALTIES]: [
         AdaptorRecordType.dailyRevenue,
         AdaptorRecordType.dailyUserFees,
         AdaptorRecordType.dailyHoldersRevenue,
@@ -127,7 +141,7 @@ export const getOverviewCachedResponseKey = (
     dataType?: string,
     category?: string,
     fullChart?: string
-) => `overview_${adaptorType}_${chainFilter}_${dataType}_${category}_${adaptorType}_${fullChart}`
+) => `overview/${adaptorType}/${dataType}/${chainFilter}_${category}_${fullChart}`
 
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
@@ -138,17 +152,20 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
     const rawDataType = event.queryStringParameters?.dataType
     const rawCategory = event.queryStringParameters?.category
-    const category = rawCategory === 'dexs' ? 'dexes' : rawCategory
+    const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
     const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
     const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
     console.info("Parameters parsing OK")
 
     if (!adaptorType) throw new Error("Missing parameter")
+    if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
+    if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")
+    if (!Object.values(AdaptorRecordType).includes(dataType)) throw new Error("Data type not suported")
 
     // Import data list
     console.info("Loading adaptors...")
-    const loadedAdaptors = loadAdaptorsData(adaptorType)
+    const loadedAdaptors = await loadAdaptorsData(adaptorType)
     const protocolsList = Object.keys(loadedAdaptors.config)
     const adaptersList: ProtocolAdaptor[] = []
     try {
@@ -162,6 +179,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         console.error(`Couldn't load adaptors with type ${adaptorType} :${JSON.stringify(error)}`, error)
     }
     console.info("Loaded OK:", adaptersList.length)
+    const allChains = getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[]))
+    if (chainFilter !== undefined && !allChains.map(c => c.toLowerCase()).includes(chainFilter)) throw new Error(`Chain not supported ${chainFilter}`)
 
     const errors: string[] = []
     const results = await allSettled(adaptersList.map(async (adapter) => {
@@ -175,7 +194,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         })
     }))
 
-    console.info("Sending discord alerts")
+    console.info("Sending discord alerts:", errors.length)
     for (const errorMSG of errors) {
         await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
         await delay(1000)
@@ -228,9 +247,12 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
-        allChains: getAllChainsUniqueString(adaptersList.reduce(((acc, protocol) => ([...acc, ...protocol.chains])), [] as string[])),
+        allChains,
         total24h: enableStats ? generalStats.total24h : 0,
+        total48hto24h: null,
         total7d: enableStats ? generalStats.total7d : 0,
+        total14dto7d: enableStats ? generalStats.total14dto7d : 0,
+        total60dto30d: enableStats ? generalStats.total60dto30d : 0,
         total30d: enableStats ? generalStats.total30d : 0,
         change_1d: enableStats ? generalStats.change_1d : null,
         change_7d: enableStats ? generalStats.change_7d : null,

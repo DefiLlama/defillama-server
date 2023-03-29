@@ -119,9 +119,9 @@ async function getSymbolAndDecimals(tokenAddress: string, chain: string) {
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinIds = coins.map((c) => c.id);
   const coinData = await retryCoingeckoRequest(
-    `https://api.coingecko.com/api/v3/simple/price?ids=${coinIds.join(
+    `https://pro-api.coingecko.com/api/v3/simple/price?ids=${coinIds.join(
       ","
-    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true`,
+    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true?&x_cg_pro_api_key=${process.env.CG_KEY}`,
     10
   );
   const idToSymbol = {} as IdToSymbol;
@@ -165,7 +165,7 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
   const toTimestamp = getCurrentUnixTimestamp();
   const fromTimestamp = toTimestamp - (24 * HOUR - 5 * 60); // 24h - 5 mins
   const coinData = await retryCoingeckoRequest(
-    `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
+    `https://pro-api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}?&x_cg_pro_api_key=${process.env.CG_KEY}`,
     3
   );
   if (!Array.isArray(coinData.prices)) {
@@ -203,7 +203,7 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
 async function filterCoins(coins: Coin[]): Promise<Coin[]> {
   const str = coins.map(i => i.id).join(',')
   const coinsData = await retryCoingeckoRequest(
-    `https://api.coingecko.com/api/v3/simple/price?ids=${str}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true`,
+    `https://pro-api.coingecko.com/api/v3/simple/price?ids=${str}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true?&x_cg_pro_api_key=${process.env.CG_KEY}`,
     3)
 
   return coins.filter(coin => {
@@ -216,7 +216,8 @@ async function filterCoins(coins: Coin[]): Promise<Coin[]> {
   })
 }
 
-const step = 50;
+const step = 80;
+
 const handler = (hourly: boolean) => async (
   event: any,
   _context: AWSLambda.Context

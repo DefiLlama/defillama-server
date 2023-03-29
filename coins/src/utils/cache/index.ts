@@ -6,7 +6,7 @@ import fetch from "node-fetch";
 const Bucket = "tvl-adapter-cache";
 
 function getKey(project: string, chain: string): string {
-  return `cache/${project}/${chain}.json`
+  return `coins-cache/${project}/${chain}.json`
 }
 
 function getLink(project: string, chain: string): string {
@@ -44,5 +44,19 @@ export async function setCache(project: string, chain: string, cache: any, {
   } catch (e) {
     sdk.log('failed to write data to s3 bucket: ', Key)
     // sdk.log(e)
+  }
+}
+
+export async function getConfig(project: string, endpoint: string) {
+  if (!project || !endpoint) throw new Error('Missing parameters')
+  const chain = 'config-cache'
+  try {
+    const json = await (fetch(endpoint).then(r => r.json()))
+    await setCache(project, chain, json)
+    return json
+  } catch (e) {
+    // sdk.log(e)
+    sdk.log(project, 'trying to fetch from cache, failed to fetch data from endpoint:', endpoint)
+    return getCache(project, chain)
   }
 }

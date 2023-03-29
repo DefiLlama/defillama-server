@@ -1,8 +1,6 @@
-import { DISABLED_ADAPTER_KEY, Adapter } from "@defillama/dimension-adapters/adapters/types";
+import { DISABLED_ADAPTER_KEY, Adapter, BaseAdapter, AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
-import { IImportsMap } from "../data/helpers/generateProtocolAdaptorsList";
 import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
-import { IOverrides } from "../data/helpers/overrides";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 
 export const getStringArrUnique = (arr: string[]) => {
@@ -28,6 +26,10 @@ const getAllChainsFromAdaptors = (dexs2Filter: string[], moduleAdapter: Adapter,
         } else console.error("Invalid adapter", adapterName, moduleAdapter)
         return acc
     }, [] as string[]))
+}
+
+export const getChainsFromBaseAdapter = (moduleAdapter: BaseAdapter) => {
+    return Object.keys(moduleAdapter).filter(c => c !== DISABLED_ADAPTER_KEY)
 }
 
 export const getAllProtocolsFromAdaptor = (adaptorModule: string, adaptor: Adapter) => {
@@ -86,37 +88,7 @@ export const getChainByProtocolVersion = (moduleAdapterName: string, moduleAdapt
     return chs[protV] ? chs[protV].includes(DISABLED_ADAPTER_KEY) : true
 } */
 
-export const getProtocolsData = (adapterKey: string, moduleAdapter: Adapter, category?: string, overrides?: IOverrides): ProtocolAdaptor['protocolsData'] => {
-    if (!category) throw new Error(`No category found for ${adapterKey}`)
-    let methodology: IJSON<ProtocolAdaptor['methodology']> | undefined = undefined
-    const defaultMethodology = getDefaultMethodologyByCategory(category)
-    if ('breakdown' in moduleAdapter) {
-        methodology = Object.keys(moduleAdapter.breakdown).reduce((acc, curr) => {
-            const methodology = Object.values(moduleAdapter.breakdown[curr])[0].meta?.methodology
-            if (!methodology) acc[curr] = { ...(defaultMethodology ?? {}) }
-            else if (typeof methodology === 'string') acc[curr] = methodology
-            else
-                acc[curr] = {
-                    ...defaultMethodology,
-                    ...methodology
-                }
-            return acc
-        }, {} as IJSON<ProtocolAdaptor['methodology']>)
-    }
-    if (Object.keys(methodology ?? {}).length <= 0) methodology = undefined
-    const chainsByProt = getChainByProtocolVersion(adapterKey, moduleAdapter, undefined, false)
-    const isDisabled = (protV: string) => chainsByProt[protV] ? chainsByProt[protV].includes(DISABLED_ADAPTER_KEY) : false
-    return Object.entries(chainsByProt).reduce((acc, [prot, chains]) => ({
-        ...acc, [prot]: {
-            ...overrides?.[adapterKey]?.protocolsData?.[prot],
-            chains: chains.filter(c => c !== DISABLED_ADAPTER_KEY),
-            disabled: isDisabled(prot),
-            methodology: methodology?.[prot]
-        }
-    }), {})
-}
-
-export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string, versionsCategory: string[]): ProtocolAdaptor['methodology'] | undefined => {
+export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
     if (
         'adapter' in moduleAdapter
         || ('breakdown' in moduleAdapter && Object.keys(moduleAdapter.breakdown).length === 1)
@@ -130,20 +102,20 @@ export const getMethodologyData = (displayName: string, adaptorKey: string, modu
             ...methodology
         }
     }
-    else if ('breakdown' in moduleAdapter && getStringArrUnique(versionsCategory).length <= 1) {
-        return getDefaultMethodologyByCategory(category)
-    }
     else {
         return getParentProtocolMethodology(displayName, getAllProtocolsFromAdaptor(adaptorKey, moduleAdapter))
     }
 }
 
-/* export const formatChain = (chain: string) => {
-    let c = chain
-    if (chain === 'avax') c = "avalanche"
-    else if (chain === 'terra') c = 'terra classic'
-    return c[0].toUpperCase() + c.slice(1)
-} */
+export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: string, category?: string): ProtocolAdaptor['methodology'] | undefined => {
+    const methodology = Object.values(adapter)[0].meta?.methodology
+    if (!methodology && type === AdapterType.FEES) return { ...(getDefaultMethodologyByCategory(category ?? '') ?? {}) }
+    if (typeof methodology === 'string') return methodology
+    return {
+        ...(getDefaultMethodologyByCategory(category ?? '') ?? {}),
+        ...methodology
+    }
+}
 
 export const formatChain = (chain: string) => {
     if (!chain) return chain

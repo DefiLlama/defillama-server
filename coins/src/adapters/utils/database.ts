@@ -9,7 +9,7 @@ import {
   Redirect,
   DbQuery,
   Read,
-  CoinData
+  CoinData,
 } from "./dbInterfaces";
 
 const confidenceThreshold: number = 0.3;
@@ -18,9 +18,9 @@ export async function getTokenAndRedirectData(
   tokens: string[],
   chain: string,
   timestamp: number,
-  hoursRange: number = 12
+  hoursRange: number = 12,
 ) {
-  tokens = [...new Set(tokens)]
+  tokens = [...new Set(tokens)];
   if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
     return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);
   }
@@ -28,7 +28,7 @@ export async function getTokenAndRedirectData(
     tokens,
     chain,
     timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
-    hoursRange
+    hoursRange,
   );
 }
 export function addToDBWritesList(
@@ -41,40 +41,39 @@ export function addToDBWritesList(
   timestamp: number,
   adapter: string,
   confidence: number,
-  redirect: string | undefined = undefined
+  redirect: string | undefined = undefined,
 ) {
+  const PK: string =
+    chain == "coingecko"
+      ? `coingecko#${token.toLowerCase()}`
+      : `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`;
   if (timestamp == 0) {
     writes.push(
       ...[
         {
           SK: getCurrentUnixTimestamp(),
-          PK: `asset#${chain}:${
-            chain == "solana" ? token : token.toLowerCase()
-          }`,
+          PK,
           price,
-          symbol,
-          decimals: Number(decimals),
           redirect,
-          confidence: Number(confidence)
+          adapter,
+          confidence: Number(confidence),
         },
         {
           SK: 0,
-          PK: `asset#${chain}:${
-            chain == "solana" ? token : token.toLowerCase()
-          }`,
+          PK,
           price,
           symbol,
           decimals: Number(decimals),
           redirect,
           ...(price !== undefined
             ? {
-                timestamp: getCurrentUnixTimestamp()
+                timestamp: getCurrentUnixTimestamp(),
               }
             : {}),
           adapter,
-          confidence: Number(confidence)
-        }
-      ]
+          confidence: Number(confidence),
+        },
+      ],
     );
   } else {
     if (timestamp > 10000000000 || timestamp < 1400000000) {
@@ -82,19 +81,18 @@ export function addToDBWritesList(
     }
     writes.push({
       SK: timestamp,
-      PK: `asset#${chain}:${chain == "solana" ? token : token.toLowerCase()}`,
-      symbol,
-      decimals: Number(decimals),
+      PK,
       redirect,
       price,
-      confidence: Number(confidence)
+      adapter,
+      confidence: Number(confidence),
     });
   }
 }
 async function getTokenAndRedirectDataFromAPI(
   tokens: string[],
   chain: string,
-  timestamp: number
+  timestamp: number,
 ) {
   const burl = "https://coins.llama.fi/prices/";
   const historical = timestamp == 0 ? "current/" : `historical/${timestamp}/`;
@@ -115,7 +113,7 @@ async function getTokenAndRedirectDataDB(
   tokens: string[],
   chain: string,
   timestamp: number,
-  hoursRange: number
+  hoursRange: number,
 ) {
   let allReads: Read[] = [];
   const batchSize = 500;
@@ -128,26 +126,31 @@ async function getTokenAndRedirectDataDB(
     let timedDbEntries: any[] = await Promise.all(
       tokens.slice(lower, upper).map((t: string) => {
         return getTVLOfRecordClosestToTimestamp(
-          `asset#${chain}:${t.toLowerCase()}`,
+          chain == "coingecko"
+            ? `coingecko#${t.toLowerCase()}`
+            : `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
           timestamp,
-          hoursRange * 60 * 60
+          hoursRange * 60 * 60,
         );
-      })
+      }),
     );
 
     // calls probably get jumbled in here
     // current origin entries, for current redirects
     const latestDbEntries: DbEntry[] = await batchGet(
       tokens.slice(lower, upper).map((t: string) => ({
-        PK: `asset#${chain}:${t.toLowerCase()}`,
-        SK: 0
-      }))
+        PK:
+          chain == "coingecko"
+            ? `coingecko#${t.toLowerCase()}`
+            : `asset#${chain}:${chain == "solana" ? t : t.toLowerCase()}`,
+        SK: 0,
+      })),
     );
 
     // current redirect links
     const redirects: DbQuery[] = latestDbEntries.map((d: DbEntry) => {
       const selectedEntries: any[] = timedDbEntries.filter(
-        (t: any) => d.PK == t.PK
+        (t: any) => d.PK == t.PK,
       );
       if (selectedEntries.length == 0) {
         return { PK: d.redirect, SK: d.SK };
@@ -163,9 +166,9 @@ async function getTokenAndRedirectDataDB(
         return getTVLOfRecordClosestToTimestamp(
           r.PK,
           r.SK,
-          hoursRange * 60 * 60
+          hoursRange * 60 * 60,
         );
-      })
+      }),
     );
 
     // aggregate
@@ -174,41 +177,30 @@ async function getTokenAndRedirectDataDB(
         let dbEntry = timedDbEntries.find((e: any) => {
           if (e.SK != null) return e.PK == ld.PK;
         });
+        if (dbEntry != null) {
+          const latestDbEntry: DbEntry | undefined = latestDbEntries.find(
+            (e: any) => {
+              if (e.SK != null) return e.PK == ld.PK;
+            },
+          );
+
+          dbEntry.decimals = latestDbEntry?.decimals;
+          dbEntry.symbol = latestDbEntry?.symbol;
+        }
         let redirect = timedRedirects.find((e: any) => {
           if (e != null) return e.PK == ld.redirect;
         });
-        if (dbEntry == undefined && redirect == undefined)
+
+        if (dbEntry == null && redirect == null)
           return { dbEntry: ld, redirect: ["FALSE"] };
-        if (redirect == undefined) return { dbEntry, redirect: [] };
+        if (redirect == null) return { dbEntry, redirect: [] };
         return { dbEntry: ld, redirect: [redirect] };
       })
       .filter((v: any) => v.redirect[0] != "FALSE");
 
     allReads.push(...validResults);
   }
-  const timestampedResults = aggregateTokenAndRedirectData(allReads);
-
-  // if (timestampedResults.length < tokens.length) {
-  //   const returnedTokens = timestampedResults.map((t: any) => t.address);
-  //   const missingTokens: string[] = [];
-
-  //   tokens.map((t: any) => {
-  //     if (returnedTokens[t] == undefined) {
-  //       missingTokens.push(t);
-  //     }
-  //   });
-
-  //   const currentResults = await getTokenAndRedirectData(
-  //     missingTokens,
-  //     chain,
-  //     getCurrentUnixTimestamp()
-  //   );
-
-  //   if (currentResults.length > 0) {
-  //     await currentResult.adapter()
-  //   }
-  // }
-  return timestampedResults;
+  return aggregateTokenAndRedirectData(allReads);
 }
 export function filterWritesWithLowConfidence(allWrites: Write[]) {
   allWrites = allWrites.filter((w: Write) => w != undefined);
@@ -222,7 +214,7 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
         (((x.SK < w.SK + 1000 || x.SK > w.SK + 1000) &&
           w.SK != 0 &&
           x.SK != 0) ||
-          (x.SK == 0 && w.SK == 0))
+          (x.SK == 0 && w.SK == 0)),
     );
 
     if (checkedWritesOfThisKind.length > 0) return;
@@ -234,7 +226,7 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
         (((x.SK < w.SK + 1000 || x.SK > w.SK + 1000) &&
           w.SK != 0 &&
           x.SK != 0) ||
-          (x.SK == 0 && w.SK == 0))
+          (x.SK == 0 && w.SK == 0)),
     );
 
     if (allWritesOfThisKind.length == 1) {
@@ -248,13 +240,13 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     } else {
       const maxConfidence = Math.max.apply(
         null,
-        allWritesOfThisKind.map((x: Write) => x.confidence)
+        allWritesOfThisKind.map((x: Write) => x.confidence),
       );
       filteredWrites.push(
         allWritesOfThisKind.filter(
           (x: Write) =>
-            x.confidence == maxConfidence && x.confidence > confidenceThreshold
-        )[0]
+            x.confidence == maxConfidence && x.confidence > confidenceThreshold,
+        )[0],
       );
     }
   });
@@ -295,7 +287,7 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
           r.redirect.length == 0 || r.redirect[0].PK == r.dbEntry.PK
             ? undefined
             : r.redirect[0].PK,
-        confidence
+        confidence,
       };
     })
     .filter((d: CoinData) => d.price != -1);

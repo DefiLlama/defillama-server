@@ -13,7 +13,7 @@ const handler = async (
 ): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins?? "").split(',');
   const searchWidth: number = quantisePeriod(
-    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "6h"
+    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "48h"
   );
   const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
   const response = {} as CoinsResponse
@@ -53,7 +53,7 @@ const handler = async (
         })
     })
   }
-  await storeMissingCoins(requestedCoins, response, 0);
+  // await storeMissingCoins(requestedCoins, response, 0);
 
   // Coingecko price refreshes happen each 5 minutes, set expiration at the :00; :05, :10, :15... mark, with 20 seconds extra
   const date = new Date()

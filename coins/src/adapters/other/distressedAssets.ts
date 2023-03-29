@@ -6,8 +6,10 @@ import { addToDBWritesList } from "../utils/database";
 const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
-    GVR_OLD: '0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c',
-    XRPC: '0xd4ca5c2aff1eefb0bea9e9eab16f88db2990c183',
+    GVR_OLD: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
+    XRPC: "0xd4ca5c2aff1eefb0bea9e9eab16f88db2990c183",
+    LUFFY: "0x54012cdf4119de84218f7eb90eeb87e25ae6ebd7",
+    LUFFY_NEW: "0x7121d00b4fa18f13da6c2e30d19c04844e6afdc8",
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
@@ -38,23 +40,41 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     GVR: "0xaFb64E73dEf6fAa8B6Ef9a6fb7312d5C4C15ebDB", // GVR
     GVR2: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
     PANCAKE_LP_ABNB_BNB: "0x272c2CF847A49215A3A1D4bFf8760E503A06f880",
+    BTCBR: "0x0cf8e180350253271f4b917ccfb0accc4862f262",
+    RB: "0x441bb79f2da0daf457bad3d401edb68535fb3faa", // bad pricing
+    MOR: "0x87bade473ea0513d4aa7085484aeaa6cb6ebe7e3", //MOR
+    $CINO: "0xdfe6891ce8e5a5c7cf54ffde406a6c2c54145f71", //$cino . Problem with dodo adapter on 13/03/2023 (mispriced)
+    VBSWAP: "0x4f0ed527e8a95ecaa132af214dfd41f30b361600",
+    ZEDXION: "0xfbc4f3f645c4003a2e4f4e9b51077d2daa9a9341", // price manipulated?
   },
   cronos: {
-    CRK: '0x065de42e28e42d90c2052a1b49e7f83806af0e1f',
+    CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
   },
 };
+
+const eulerTokens = [
+  "0x1b808f49add4b8c6b5117d9681cf7312fcf0dc1d",
+  "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+  "0xeb91861f8a4e1c12333f42dce8fb0ecdc28da716",
+  "0x4d19f33948b99800b6113ff3e83bec9b537c85d2",
+  "0x5484451a88a35cd0878a1be177435ca8a0e4054e",
+  // 4626 wrapped eTokens
+  "0x60897720aa966452e8706e74296b018990aec527",
+  "0x3c66B18F67CA6C1A71F829E2F6a0c987f97462d0",
+  "0x4169Df1B7820702f566cc10938DA51F6F597d264",
+  "0xbd1bd5c956684f7eb79da40f582cbe1373a1d593",
+];
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const writes: Write[] = [];
+  const tokens = Object.values(contracts[chain]);
 
-  const tokenInfos = await getTokenInfo(
-    chain,
-    Object.values(contracts[chain]),
-    block,
-  );
+  if (chain === "ethereum") tokens.push(...eulerTokens);
 
-  Object.values(contracts[chain]).map((a: string, i: number) => {
+  const tokenInfos = await getTokenInfo(chain, tokens, block);
+
+  tokens.map((a: string, i: number) => {
     addToDBWritesList(
       writes,
       chain,

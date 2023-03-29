@@ -72,7 +72,6 @@ provider:
     SOLANA_RPC: ${file(./env.js):SOLANA_RPC}
     MOONRIVER_RPC: ${file(./env.js):MOONRIVER_RPC}
     CRONOS_RPC: ${file(./env.js):CRONOS_RPC}
-    KLAYTN_RPC: "https://public-node-api.klaytnapi.com/v1/cypress"
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
@@ -86,6 +85,7 @@ provider:
     #PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
     LOFTY_API: ${file(./env.js):LOFTY_API}
+    COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
     INDEXER_DB: ${file(./env.js):INDEXER_DB}
     AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}
@@ -95,6 +95,7 @@ provider:
     R2_SECRET_ACCESS_KEY: ${file(./env.js):R2_SECRET_ACCESS_KEY}
     R2_ENDPOINT: ${file(./env.js):R2_ENDPOINT}
     INDEXA_DB: ${file(./env.js):INDEXA_DB}
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
 
 custom:
   stage: ${opt:stage, self:provider.stage}
@@ -151,10 +152,10 @@ functions:
     memorySize: 2000
     events:
       - http:
-          path: defaultChart
+          path: /v2/historicalChainTvl
           method: get
       - http:
-          path: defaultChart/{chain}
+          path: /v2/historicalChainTvl/{chain}
           method: get
   protocols:
     handler: src/getProtocols.default
@@ -163,6 +164,14 @@ functions:
     events:
       - http:
           path: protocols
+          method: get
+  treasuries:
+    handler: src/getProtocols.treasuriesHandler
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: treasuries
           method: get
   dexAggregatorQuote:
     handler: src/getDexAggregatorQuote.default
@@ -178,6 +187,13 @@ functions:
       - http:
           path: storeAggregatorEvent
           method: post
+  getSwapsHistory:
+    handler: src/getSwapsHistory.default
+    timeout: 30
+    events:
+      - http:
+          path: getSwapsHistory
+          method: get
   contractName:
     handler: src/getContractName.default
     timeout: 30
@@ -201,6 +217,14 @@ functions:
       - http:
           path: tokenProtocols/{symbol}
           method: get
+  treasury:
+    handler: src/getTreasury.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: treasury/{protocol}
+          method: get
   updatedProtocol:
     handler: src/getUpdatedProtocol.default
     timeout: 30
@@ -208,6 +232,14 @@ functions:
     events:
       - http:
           path: updatedProtocol/{protocol}
+          method: get
+  updatedProtocolDraft:
+    handler: src/getUpdatedProtocol.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: updatedProtocolDraft/{protocol}
           method: get
   debugProtocol:
     handler: src/getUpdatedProtocol.default
@@ -357,6 +389,7 @@ functions:
           method: get
   sortedTokenlist:
     handler: src/getSortedTokenlist.default
+    timeout: 30
     events:
       - http:
           path: sortedTokenlist
@@ -400,8 +433,19 @@ functions:
     memorySize: 512
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+  storeTreasuryInterval:
+    handler: src/storeTreasuryInterval.default
+    timeout: 900
+    memorySize: 512
+    environment:
+      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
+    timeout: 900
+    events:
+      - schedule: cron(0 * * * ? *)
+  triggerStoreTreasuries:
+    handler: src/triggerStoreTreasuries.default
     timeout: 900
     events:
       - schedule: cron(0 * * * ? *)
@@ -447,7 +491,8 @@ functions:
   storeAdaptorData:
     handler: src/adaptors/handlers/storeAdaptorData/index.default
     timeout: 900
-    memorySize: 512
+    memorySize: 2048
+    lambdaInsights: true
   triggerStoreAdaptorData:
     handler: src/adaptors/handlers/triggerStoreAdaptorData.default
     timeout: 900
@@ -456,8 +501,7 @@ functions:
   notifyStatus:
     handler: src/adaptors/handlers/notifyStatus.default
     timeout: 900
-    events:
-      - schedule: cron(01 2,13 * * ? *)
+    memorySize: 1024
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
@@ -465,7 +509,12 @@ functions:
     handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900
     events:
-      - schedule: cron(01 2,13 * * ? *)
+      - schedule: cron(01 2,5,8,11 * * ? *)
+  triggerNotifyStatus2:
+    handler: src/adaptors/handlers/triggerNotifyStatus.default
+    timeout: 900
+    events:
+      - schedule: cron(30 0 * * ? *)
   cacheExternalResponse:
     handler: src/externalEndpointsCache/index.cacheExternalResponseHandler
     timeout: 180
@@ -537,6 +586,49 @@ functions:
       - http:
           path: npm/{start}
           method: get
+  emissions:
+    handler: src/getEmissions.default
+    timeout: 30
+    events:
+      - http:
+          path: emissions
+          method: get
+  emission:
+    handler: src/getEmissionProtocol.default
+    timeout: 30
+    events:
+      - http:
+          path: emission/{protocol}
+          method: get
+  storeEmissions:
+    handler: src/storeEmissions.default
+    timeout: 900
+    memorySize: 3000
+    events:
+      - schedule: cron(01 0 * * ? *)
+  storeActiveUsers:
+    handler: src/storeActiveUsers.default
+    timeout: 900
+    memorySize: 1000
+    events:
+      - schedule: cron(0 * * * ? *)
+  activeUsers:
+    handler: src/getActiveUsers.default
+    timeout: 120
+    events:
+      - http:
+          path: activeUsers
+          method: get
+  newsArticles:
+    handler: src/getNewsArticles.default
+    timeout: 30
+    events:
+      - http:
+          path: news/articles
+          method: get
+    environment:
+      DL_NEWS_API: ${file(./env.js):DL_NEWS_API}
+      DL_NEWS_ACCESS_TOKEN: ${file(./env.js):DL_NEWS_ACCESS_TOKEN}
 
 resources:
   # CORS for api gateway errors
@@ -552,3 +644,4 @@ plugins:
   - serverless-prune-plugin
   - serverless-plugin-log-retention
   - serverless-plugin-datadog
+  - serverless-plugin-lambda-insights

@@ -41,6 +41,7 @@ jobs:
           key: ${{ runner.os }}-jest-${{ env.TODAY }}
       - run: cd DefiLlama-Adapters && git checkout main && git pull
       - run: cd dimension-adapters && git checkout master && git pull
+      - run: cd emissions-adapters && git checkout master && git pull
       - run: npm  ci || npm i
       - name: Run tests
         run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
@@ -61,6 +62,7 @@ jobs:
           MOONRIVER_RPC: ${{ secrets.MOONRIVER_RPC }}
           CRONOS_RPC: ${{ secrets.CRONOS_RPC }}
           LOFTY_API: ${{ secrets.LOFTY_API }}
+          COVALENT_KEY: ${{ secrets.COVALENT_KEY }}
           OUTDATED_WEBHOOK: ${{ secrets.OUTDATED_WEBHOOK }}
           HOURLY_OUTDATED_WEBHOOK: ${{ secrets.HOURLY_OUTDATED_WEBHOOK }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -87,3 +89,5 @@ jobs:
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
           INDEXA_DB: ${{ secrets.INDEXA_DB }}
+          DL_NEWS_API: ${{ secrets.DL_NEWS_API }}
+          DL_NEWS_ACCESS_TOKEN: ${{ secrets.DL_NEWS_ACCESS_TOKEN }}

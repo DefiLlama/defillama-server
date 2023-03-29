@@ -1,6 +1,6 @@
-import { successResponse, wrap, IResponse } from "./utils/shared";
-import protocols, { Protocol } from "./protocols/data";
-import { getLastRecord, hourlyTvl } from "./utils/getLastRecord";
+import { wrap, IResponse, cache20MinResponse } from "./utils/shared";
+import protocols, { Protocol, treasuries } from "./protocols/data";
+import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import {
   getChainDisplayName,
@@ -10,7 +10,6 @@ import {
   extraSections,
   transformNewChainName,
 } from "./utils/normalizeChain";
-import { batchGet } from "./utils/shared/dynamodb";
 import { craftChainsResponse } from "./getChains";
 import type { IProtocol, IChain, ITvlsByChain } from "./types";
 
@@ -22,26 +21,112 @@ export function getPercentChange(previous: number, current: number) {
   return change;
 }
 
-export async function craftProtocolsResponse(useNewChainNames: boolean) {
-  const coinMarkets = (await batchGet(
-    protocols
-    .filter((protocol) => typeof protocol.gecko_id === "string")
-    .map((protocol) => ({
-      PK: `asset#${protocol.gecko_id}`,
-      SK: 0,
-    }))))
-  .reduce((p, c) => {
-      p[c.PK] = c;
-      return p;
-    }, {} as any);
+const majors = [
+  "BTC",
+  "ETH",
+  "WBTC",
+  "WETH",
+  "aWBTC",
+  "ammWBTC",
+  "wstETH",
+  "aEthwstETH",
+  "aWETH",
+  "ammWETH",
+  "aEthWETH",
+  "stETH",
+  "aSTETH",
+  "rETH",
+  "sETH2",
+  "rETH2",
+  "frxETH",
+  "sfrxETH",
+  "renBTC",
+  "icETH",
+  "BTCB",
+  "BETH",
+];
+const stablecoins = [
+  "USDT",
+  "USDC",
+  "DAI",
+  "FRAX",
+  "aUSDC",
+  "ammUSDC",
+  "aEthUSDC",
+  "aDAI",
+  "ammDAI",
+  "aEthDAI",
+  "aUSDT",
+  "ammUSDT",
+  "LUSD",
+  "aLUSD",
+  "GUSD",
+  "aGUSD",
+  "TUSD",
+  "aTUSD",
+  "USDP",
+  "aUSDP",
+  "FEI",
+  "aFEI",
+  "BUSD",
+  "yyDAI+yUSDC+yUSDT+yTUSD",
+  "cDAI",
+  "BSC-USD",
+  "USD+",
+  "sUSD",
+];
+
+function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {
+  const breakdown = {
+    ownTokens: 0,
+    stablecoins: 0,
+    majors: 0,
+    others: 0,
+  };
+
+  if (lastRecord["ownTokens"]) {
+    for (const token in lastRecord["ownTokens"]) {
+      breakdown.ownTokens = breakdown.ownTokens + lastRecord["ownTokens"][token];
+    }
+  }
+
+  for (const token in lastRecord.tvl) {
+    if (majors.includes(token)) {
+      breakdown.majors = breakdown.majors + lastRecord.tvl[token];
+    } else if (stablecoins.includes(token)) {
+      breakdown.stablecoins = breakdown.stablecoins + lastRecord.tvl[token];
+    } else {
+      breakdown.others = breakdown.others + lastRecord.tvl[token];
+    }
+  }
+
+  return breakdown;
+}
+
+async function craftProtocolsResponseInternal(
+  useNewChainNames: boolean,
+  protocolList: Protocol[],
+  includeTokenBreakdowns?: boolean
+) {
+  const coinMarkets = fetch("https://coins.llama.fi/mcaps", {
+    method: "POST",
+    body: JSON.stringify({
+      coins: protocolList
+        .filter((protocol) => typeof protocol.gecko_id === "string")
+        .map((protocol) => `coingecko:${protocol.gecko_id}`),
+    }),
+  }).then((r) => r.json());
 
   const response = (
     await Promise.all(
-      protocols.map(async (protocol) => {
-        const lastHourlyRecord = await getLastRecord(hourlyTvl(protocol.id));
+      protocolList.map(async (protocol) => {
+        const [lastHourlyRecord, lastHourlyTokensUsd] = await Promise.all([
+          getLastRecord(hourlyTvl(protocol.id)),
+          includeTokenBreakdowns ? getLastRecord(hourlyUsdTokensTvl(protocol.id)) : {},
+        ]);
 
         if (!lastHourlyRecord) {
-          return null
+          return null;
         }
 
         const returnedProtocol: Partial<Protocol> = { ...protocol };
@@ -59,18 +144,13 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
           addToChains(chains, chainDisplayName);
         });
         if (chains.length === 0) {
-          const chain = useNewChainNames
-            ? transformNewChainName(protocol.chain)
-            : protocol.chain;
+          const chain = useNewChainNames ? transformNewChainName(protocol.chain) : protocol.chain;
           if (chainTvls[chain] === undefined) {
             chainTvls[chain] = lastHourlyRecord.tvl;
           }
           extraSections.forEach((section) => {
             const chainSectionName = `${chain}-${section}`;
-            if (
-              chainTvls[section] !== undefined &&
-              chainTvls[chainSectionName] === undefined
-            ) {
+            if (chainTvls[section] !== undefined && chainTvls[chainSectionName] === undefined) {
               chainTvls[chainSectionName] = chainTvls[section];
             }
           });
@@ -84,18 +164,10 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
           chainTvls,
           chains: chains.sort((a, b) => chainTvls[b] - chainTvls[a]),
           chain: getDisplayChain(chains),
-          change_1h: getPercentChange(
-            lastHourlyRecord.tvlPrev1Hour,
-            lastHourlyRecord.tvl
-          ),
-          change_1d: getPercentChange(
-            lastHourlyRecord.tvlPrev1Day,
-            lastHourlyRecord.tvl
-          ),
-          change_7d: getPercentChange(
-            lastHourlyRecord.tvlPrev1Week,
-            lastHourlyRecord.tvl
-          ),
+          change_1h: getPercentChange(lastHourlyRecord.tvlPrev1Hour, lastHourlyRecord.tvl),
+          change_1d: getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl),
+          change_7d: getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl),
+          tokenBreakdowns: includeTokenBreakdowns ? getTokenBreakdowns(lastHourlyTokensUsd) : {},
         };
 
         const extraData: ["staking", "pool2"] = ["staking", "pool2"];
@@ -107,11 +179,8 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
         }
 
         if (typeof protocol.gecko_id === "string") {
-          const coingeckoData = (await coinMarkets)[
-            `asset#${protocol.gecko_id}`
-          ];
+          const coingeckoData = (await coinMarkets)[`coingecko:${protocol.gecko_id}`];
           if (coingeckoData !== undefined) {
-            dataToReturn.fdv = coingeckoData.fdv;
             dataToReturn.mcap = coingeckoData.mcap;
           }
         }
@@ -122,23 +191,26 @@ export async function craftProtocolsResponse(useNewChainNames: boolean) {
   )
     .filter((protocol) => protocol !== null)
     .sort((a, b) => b!.tvl - a!.tvl) as IProtocol[];
-    
+
   return response;
 }
 
-const handler = async (
-  event: AWSLambda.APIGatewayEvent
-): Promise<IResponse> => {
+export async function craftProtocolsResponse(useNewChainNames: boolean) {
+  return craftProtocolsResponseInternal(useNewChainNames, protocols);
+}
+
+const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   const protocols = await craftProtocolsResponse(false);
 
-  const chainData: IChain[] =
-    event.queryStringParameters?.includeChains === "true"
-      ? await craftChainsResponse()
-      : [];
+  const chainData: IChain[] = event.queryStringParameters?.includeChains === "true" ? await craftChainsResponse() : [];
 
   const response: Array<IProtocol | IChain> = [...protocols, ...chainData];
 
-  return successResponse(response, 10 * 60); // 10 mins cache
+  return cache20MinResponse(response);
+};
+
+export const treasuriesHandler = async (): Promise<IResponse> => {
+  return cache20MinResponse(await craftProtocolsResponseInternal(true, treasuries, true));
 };
 
 export default wrap(handler);

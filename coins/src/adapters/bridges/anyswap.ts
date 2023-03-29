@@ -3,6 +3,7 @@ import { Token } from "./index";
 
 const chainIdToSlug = {
   1: "ethereum",
+  10: "optimism",
   250: "fantom",
   56: "bsc",
   128: "heco",
@@ -43,23 +44,51 @@ export default async function bridge(): Promise<Token[]> {
     await fetch("https://netapi.anyswap.net/bridge/v2/info")
   ).bridgeList as any[];
 
+  const tokensV4Api = await fetch("https://bridgeapi.anyswap.exchange/v4/tokenlistv4/all")
+
   const tokens: Token[] = [];
-  const unknownUnderlyings: any[] = [];
 
   multichainTokens.map((token) => {
     const destinationChain = chainIdToSlug[token.chainId];
-    const originChain = chainIdToSlug[token.srcChainId];
-    let srcToken = token.srcToken ?? "";
+    let originChain = chainIdToSlug[token.srcChainId];
+    let srcToken = token.srcToken;
+    const destinationToken = token.token;
 
-    if (destinationChain === undefined || originChain === undefined) {
-      srcToken = token.underlying;
-      if (srcToken == undefined) unknownUnderlyings.push(token);
+    if (destinationChain === undefined || originChain === undefined || typeof srcToken !== "string") {
       return;
     }
 
-    if (!srcToken.includes("0x"))
-      srcToken = "0x0000000000000000000000000000000000000000";
-    const destinationToken = token.token;
+    if (!srcToken.includes("0x")){
+      if(/^[A-Z]*$/.test(srcToken)){ // ETH, BNB...
+        srcToken = "0x0000000000000000000000000000000000000000";
+      } else {
+        console.log(`Weird token on`, token)
+        return
+      }
+    }
+
+    if(destinationChain === originChain && srcToken === destinationToken){
+      if(token.underlying?.includes("0x")){
+        srcToken = token.underlying
+      } else {
+        const tokenData = tokensV4Api[token.srcChainId]["evm"+srcToken]?.destChains
+        if(!tokenData){
+          return
+        }
+        const underlyingTokens = Object.entries(tokenData).map(([_chainid, t]:any)=>{
+          return Object.values(t)[0] as any
+        }).filter(t=>t.underlying)
+        if(underlyingTokens.length === 0){
+          return
+        }
+        originChain = chainIdToSlug[underlyingTokens[0].chainId];
+        srcToken = underlyingTokens[0].address
+        if(srcToken === undefined || originChain === undefined){
+          // likely because we don't recognize the chain
+          return
+        }
+      }
+    }
 
     tokens.push({
       from: `${destinationChain}:${destinationToken}`,

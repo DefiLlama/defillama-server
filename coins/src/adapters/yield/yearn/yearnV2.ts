@@ -23,12 +23,16 @@ const manualVaults: { [chain: string]: string[] } = {
     "0x83f798e925bcd4017eb265844fddabb448f1707d", // yUSDT
     "0x73a052500105205d34daf004eab301916da8190f" // yTUSD
   ],
+  optimism: [
+    '0x22f39d6535df5767f8f57fee3b2f941410773ec4', // yvETH
+  ],
   arbitrum: [],
   fantom: []
 };
 const chains: object = {
   ethereum: 1,
   arbitrum: 42161,
+  optimism: 42161,
   fantom: 250
 };
 interface TokenKeys {
@@ -159,15 +163,20 @@ async function pushMoreVaults(
   }));
   vaults.push(...vaultInfo);
 }
+
+const blacklistedTokens = new Set([
+  '0xbD17B1ce622d73bD438b9E658acA5996dc394b0d',
+].map(i => i.toLowerCase()))
+
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
+
   let vaults: VaultKeys[] = (
     await axios.get(
-      `https://api.yearn.finance/v1/chains/${
-        chains[chain as keyof object]
+      `https://api.yearn.finance/v1/chains/${chains[chain as keyof object]
       }/vaults/all`
     )
-  ).data;
+  ).data.filter((i: any) => !blacklistedTokens.has(i.address.toLowerCase()))
   // 135
   await pushMoreVaults(chain, vaults, block);
 

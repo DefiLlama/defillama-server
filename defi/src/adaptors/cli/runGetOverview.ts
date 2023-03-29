@@ -30,6 +30,14 @@ const event = {
     // console.log(rr.protocols.filter(name=>name.name.toLowerCase().includes("uniswap") || name.name.toLowerCase().includes("pancakeswap")))
     // console.log(rr.protocols[0])
     console.log(rr.totalDataChart.length)
+    console.log(rr.protocols.length)
+    console.log(rr.protocols.filter(d=>d.module==='zyberswap').map(d=>[
+        d.displayName,
+        `7d-> ${d.total7d}`,
+        `14d-> ${d.total14dto7d}`,
+        `30d-> ${d.total30d}`,
+        `60d-> ${d.total60dto30d}`,
+    ]))
     const runTime = (endTime - startTime) / 1000
     const runTimeDescription = runTime > 30 ? '🐢' : '🐇'
     console.log(`\nCurrent run ${runTimeDescription} (s): ${runTime}`)

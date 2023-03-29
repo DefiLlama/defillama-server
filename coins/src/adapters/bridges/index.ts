@@ -4,7 +4,7 @@ import avax from "./avax";
 import bsc from "./bsc";
 import fantom from "./fantom";
 import gasTokens from "./gasTokens";
-import harmony from "./harmony";
+//import harmony from "./harmony";
 import optimism from "./optimism";
 import polygon from "./polygon";
 import solana from "./solana";
@@ -50,10 +50,10 @@ export const bridges = [
   anyswap,
   arbitrum,
   avax,
-  bsc,
+  //bsc,
   fantom,
   gasTokens,
-  harmony,
+  //harmony,
   optimism,
   polygon,
   solana
@@ -121,9 +121,14 @@ async function storeTokensOfBridge(bridge: Bridge) {
 
       let decimals: number, symbol: string;
       if ("getAllInfo" in token) {
-        const newToken = await token.getAllInfo();
-        decimals = newToken.decimals;
-        symbol = newToken.symbol;
+        try {
+          const newToken = await token.getAllInfo();
+          decimals = newToken.decimals;
+          symbol = newToken.symbol;
+        } catch(e){
+          console.log("Skipping token", finalPK, e);
+          return
+        }
       } else {
         decimals = token.decimals;
         symbol = token.symbol;
@@ -139,7 +144,7 @@ async function storeTokensOfBridge(bridge: Bridge) {
     })
   );
 
-  batchWrite(writes, true);
+  await batchWrite(writes, true);
 }
 export async function storeTokens() {
   await Promise.all(bridges.map(storeTokensOfBridge));

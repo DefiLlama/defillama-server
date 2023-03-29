@@ -5106,7 +5106,7 @@ const data: Protocol[] = [
     symbol: "GAMMA",
     url: "https://www.gamma.xyz",
     description:
-      "Access active liquidity management on Uniswap v3. Gamma has developed a protocol, a management infrastructure, and a variety of strategies used by managers and market makers.",
+      "A protocol for active liquidity management and market-making strategies. Gamma offers non-custodial, automated, and active concentrated liquidity management services.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/gamma.jpg`,
     audits: "2",

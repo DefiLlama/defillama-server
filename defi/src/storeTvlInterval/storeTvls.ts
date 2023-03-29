@@ -5,7 +5,7 @@ import protocols from "../protocols/data";
 import { importAdapter } from "../utils/imports/importAdapter";
 import { executeAndIgnoreErrors } from "./errorDb";
 import { getCurrentUnixTimestamp } from "../utils/date";
-import { storeStaleCoins, StaleCoins } from "./staleCoins";
+import { storeStaleCoins, storeStaleCoins2, StaleCoins } from "./staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
 
 const maxRetries = 4;
@@ -48,7 +48,10 @@ export default async (protocolIndexes: number[], getRemainingTimeInMillis: () =>
     releaseCoingeckoLock();
   }, 600);
   clearInterval(timer);
-  await storeStaleCoins(staleCoins)
+  await Promise.all([
+    storeStaleCoins(staleCoins),
+    storeStaleCoins2(staleCoins),
+  ]);
   return;
 
   

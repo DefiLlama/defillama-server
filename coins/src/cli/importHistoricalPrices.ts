@@ -1,3 +1,4 @@
+require("dotenv").config();
 import fetch from "node-fetch";
 import { toUNIXTimestamp, getCurrentUnixTimestamp } from "../utils/date";
 import { batchWrite } from "../utils/shared/dynamodb";
@@ -40,7 +41,7 @@ async function getPrices(coin: Coin, fromTimestamp: number, toTimestamp: number)
     );
   }
   const { prices } = await coingeckoRequest(
-    `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`
+    `https://pro-api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}?&x_cg_pro_api_key=${process.env.CG_KEY}`
   ) as PriceRangeResponse
   return prices
 }
@@ -48,7 +49,7 @@ async function getPrices(coin: Coin, fromTimestamp: number, toTimestamp: number)
 async function main() {
   setTimer(1500);
   const coins = (await coingeckoRequest(
-    "https://api.coingecko.com/api/v3/coins/list"
+    `https://pro-api.coingecko.com/api/v3/coins/list?&x_cg_pro_api_key=${process.env.CG_KEY}`
   )) as Coin[];
   for (
     let coinIndex = startingCoinIndex;

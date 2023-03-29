@@ -5712,7 +5712,7 @@ const data2: Protocol[] = [
     category: "NFT Marketplace",
     chains: ["Ethereum", "Binance", "Arbitrum", "Polygon"],
     oracles: [],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: [],
     module: "solv-protocol/index.js",
     twitter: "SolvProtocol",
     audit_links: ["https://github.com/solv-finance/Audit"],

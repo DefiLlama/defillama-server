@@ -279,7 +279,7 @@ export default {
         }
     },
     "baryon": {
-        "enabled": true,
+        "enabled": false,
         "id": "1950"
     },
     "cherryswap": {
@@ -1207,7 +1207,7 @@ export default {
         "id": "2540"
     },
     "bakeryswap": {
-        "enabled": true,
+        "enabled": false,
         "id": "602"
     },
     "bisq": {

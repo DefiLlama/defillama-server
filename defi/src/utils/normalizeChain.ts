@@ -47,7 +47,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 1,
   },
-  "Arbitrum": {
+  "Arbitrum One": {
     geckoId: "arbitrum",
     symbol: "ARB",
     cmcId: "11841",
@@ -1099,9 +1099,9 @@ export const chainCoingeckoIds = {
     chainId: 71402,
   },
   "Arbitrum Nova": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "arbitrum",
+    symbol: "ARB",
+    cmcId: "11841",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",

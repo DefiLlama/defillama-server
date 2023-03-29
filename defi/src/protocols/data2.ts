@@ -7126,7 +7126,7 @@ const data2: Protocol[] = [
     twitter: "BitcoinCom",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/bitcoin.com/Bitcoin.com_final-audit-report.pdf"],
     listedAt: 1651771447,
-    governanceID: ["snapshot:verse.eth"]
+    // governanceID: ["snapshot:verse.eth"] // I couldnt find this
   },
   {
     id: "1733",

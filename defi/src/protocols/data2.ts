@@ -29374,7 +29374,7 @@ const data2: Protocol[] = [
     description:
       "DEXTER is an Interchain DEX built on Persistence for yield-generating and liquid-staked assets. Dexter supports the tried and tested AMM mechanisms inspired by the best innovations in all of DeFi, and would offer an optimized experience for all the users.",
     chain: "Persistence",
-    logo: `${baseIconsUrl}/dexter.png`,
+    logo: `${baseIconsUrl}/dexter.svg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

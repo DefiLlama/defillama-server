@@ -32,11 +32,11 @@ export function storeStaleCoins2(staleCoins: StaleCoins) {
     return Promise.all(
       Object.entries(staleCoins).map(([pk, details]) => {
         sql`
-        INSERT INTO staleCoins (id, time, address, lastUpdate, chain, symbol)
+        INSERT INTO public.stalecoins (id, time, address, lastupdate, chain, symbol)
         VALUES (${pk}, ${currentTime}, ${pk.split(":")[1]}, ${
           details.lastUpdate
-        }, ${pk.split(":")[0]})
-        ONN CONFLICT (id) DO UPDATE
+        }, ${pk.split(":")[0]}, ${details.symbol})
+        ON CONFLICT (id) DO UPDATE
           SET time = ${currentTime}
         `;
       }),

@@ -4,6 +4,7 @@ import type { IHandlerEvent as IStoreAdaptorDataHandlerEvent } from './storeAdap
 import { handler as storeAdaptorData } from "./storeAdaptorData";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import data from "../data";
+import { IJSON } from "../data/types";
 
 function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -25,27 +26,30 @@ export interface IHandlerEvent {
   }>
 }
 
+const quarantineList = {
+  [AdapterType.FEES]: ["chainlink-vrf-v1", 'chainlink-vrf-v2', 'chainlink-keepers']
+} as IJSON<string[]>
+
 export const handler = async (event: IHandlerEvent) => {
   console.log("event", event)
   const type = event.type
   // TODO separate those that need to be called on the hour and those using graphs with timestamp
+  const quarantinedModules = quarantineList[type] ?? []
   if (event.backfill) {
-    const adaptorsData = await data(type)
     console.info("Backfill event", event.backfill.length)
     for (const bf of event.backfill) {
-      const protocolIndexes: IStoreAdaptorDataHandlerEvent['protocolIndexes'] = []
-      for (const dexName of bf.dexNames) {
-        const dexIndex = adaptorsData.default.findIndex(va => va.module === dexName)
-        if (dexIndex >= 0)
-          protocolIndexes.push(dexIndex)
-      }
-      await invokeLambdas(protocolIndexes, type, bf.timestamp, bf.chain, bf.adaptorRecordTypes, bf.protocolVersion)
+      const protocolModules: IStoreAdaptorDataHandlerEvent['protocolModules'] = bf.dexNames.filter(m => !quarantinedModules.includes(m))
+      await invokeLambdas(protocolModules, type, bf.timestamp, bf.chain, bf.adaptorRecordTypes, bf.protocolVersion)
+      const protocolModulesConfined = bf.dexNames.filter(m => quarantinedModules.includes(m))
+      Promise.all(protocolModulesConfined.map((confinedModule) => invokeLambdas([confinedModule], type)))
     }
   }
   else if (type) {
     const adaptorsData = await data(type)
-    const protocolIndexes = Array.from(Array(adaptorsData.default.length).keys())
-    await invokeLambdas(protocolIndexes, type)
+    const protocolModules = adaptorsData.default.filter(m => !quarantinedModules.includes(m.module)).map(m => m.module)
+    await invokeLambdas(protocolModules, type)
+    const protocolModulesConfined = adaptorsData.default.filter(m => quarantinedModules.includes(m.module)).map(m => m.module)
+    Promise.all(protocolModulesConfined.map((confinedModule) => invokeLambdas([confinedModule], type)))
   }
   else {
     Promise.all(
@@ -62,17 +66,17 @@ export const handler = async (event: IHandlerEvent) => {
 };
 
 const invokeLambdas = async (
-  protocolIndexes: IStoreAdaptorDataHandlerEvent['protocolIndexes'],
+  protocolModules: IStoreAdaptorDataHandlerEvent['protocolModules'],
   adaptorType: AdapterType,
   timestamp?: IStoreAdaptorDataHandlerEvent['timestamp'],
   chain?: IStoreAdaptorDataHandlerEvent['chain'],
   adaptorRecordTypes?: IStoreAdaptorDataHandlerEvent['adaptorRecordTypes'],
   protocolVersion?: IStoreAdaptorDataHandlerEvent['protocolVersion']
 ) => {
-  shuffleArray(protocolIndexes);
-  for (let i = 0; i < protocolIndexes.length; i += STEP) {
+  shuffleArray(protocolModules);
+  for (let i = 0; i < protocolModules.length; i += STEP) {
     const event = {
-      protocolIndexes: protocolIndexes.slice(i, i + STEP),
+      protocolModules: protocolModules.slice(i, i + STEP),
       timestamp,
       adaptorType: adaptorType,
       chain,

@@ -2238,6 +2238,12 @@
       "symbol": "sGLP",
       "to": "arbitrum:0x4277f8f2c384827b5273592ff7cebd9f2c1ac258"
     },
+    "0x34df4e8062a8c8ae97e3382b452bd7bf60542698": {
+      "name": "dfsGLP",
+      "decimals": "18",
+      "symbol": "dfsGLP",
+      "to": "arbitrum:0x4277f8f2c384827b5273592ff7cebd9f2c1ac258"
+    },
     "0xdbf31df14b66535af65aac99c32e9ea844e14501": {
       "name": "renBTC",
       "decimals": "8",
@@ -2342,13 +2348,13 @@
       "name": "Metaplex",
       "decimals": "6",
       "symbol": "META",
-      "to": "coingecko:metaplex"
+      "to": "coingecko#metaplex"
     },
     "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn": {
       "name": "Jito Staked SOL",
       "decimals": "9",
       "symbol": "JITOSOL",
-      "to": "coingecko:jito-staked-sol"
+      "to": "coingecko#jito-staked-sol"
     },
     "6LNeTYMqtNm1pBFN8PfhQaoLyegAH8GD32WmHU9erXKN": {
       "name": "Aptos Coin (Wormhole)",
@@ -3161,6 +3167,12 @@
       "decimals": "18",
       "symbol": "INJ",
       "to": "coingecko#injective-protocol"
+    },
+    "factory:inj14ejqjyq8um4p3xfqj74yld5waqljf88f9eneuk:inj1q6zlut7gtkzknkk773jecujwsdkgq882akqksk": {
+      "name": "USDT",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   },
   "umee": {

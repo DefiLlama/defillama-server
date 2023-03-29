@@ -49,6 +49,7 @@
     "graphql-request": "^5.1.0",
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "zksync-web3": "^0.14.3"
   }
 }

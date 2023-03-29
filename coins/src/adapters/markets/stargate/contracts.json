@@ -43,6 +43,10 @@
     "metis": {
       "underlying": "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
       "pool": "0xd8772edBF88bBa2667ed011542343b0eDDaCDa47"
+    },
+    "metis.usdt": {
+      "underlying": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "pool": "0x430Ebff5E3E80A6C58E7e6ADA1d90F5c28AA116d"
     }
   },
   "bsc": {
@@ -65,6 +69,10 @@
     "metis": {
       "underlying": "0xe552Fb52a4F19e44ef5A967632DBc320B0820639",
       "pool": "0xD4CEc732b3B135eC52a3c0bc8Ce4b8cFb9dacE46"
+    },
+    "metis.usdt": {
+      "underlying": "0x55d398326f99059fF775485246999027B3197955",
+      "pool": "0x68C6c27fB0e02285829e69240BE16f32C5f8bEFe"
     }
   },
   "avax": {
@@ -83,6 +91,10 @@
     "mai": {
       "underlying": "0x5c49b268c9841AFF1Cc3B0a418ff5c3442eE3F3b",
       "pool": "0x8736f92646B2542B3e5F3c63590cA7Fe313e283B"
+    },
+    "metis.usdt": {
+      "underlying": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
+      "pool": "0xEAe5c2F6B25933deB62f754f239111413A0A25ef"
     }
   },
   "polygon": {

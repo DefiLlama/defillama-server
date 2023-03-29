@@ -20509,7 +20509,7 @@ const data2: Protocol[] = [
     chains: ["Polygon"],
     module: "polycat-dex/index.js",
     twitter: "PolycatFinance",
-    forkedFrom: [],
+    forkedFrom: ["Uniswap"],
     oracles: [],
     audit_links: [
       "https://paladinsec.co/projects/polycat-finance",

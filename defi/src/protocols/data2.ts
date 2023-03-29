@@ -29514,6 +29514,28 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.yama.finance/assets/files/hacken-audit-f36080037d41631b9e887abb36035a2f.pdf"],
     twitter: "YamaFinance",
     listedAt: 1680130246,
-  }
+  },
+  {
+    id: "2744",
+    name: "Kavastarter",
+    address: "kava:0x32a57dCa514Cc601d3DDEe974f57Db9Dc2CfE83b",
+    symbol: "KAST",
+    url: "https://www.kavastarter.com/#/home",
+    description: "Besides raising funds, Kavastarter will provide support for innovative crypto projects and technologies in many ways as possible",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/kavastarter.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Kava"],
+    oracles: [],
+    forkedFrom: [],
+    module: "kavastarter/index.js",
+    audit_links: [],
+    twitter: null,
+    listedAt: 1680130701
+  },
 ]
 export default data2;

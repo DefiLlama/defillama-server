@@ -24759,6 +24759,7 @@ const data2: Protocol[] = [
     twitter: "solidlizardfi",
     oracles: [],
     forkedFrom: ["Solidly"],
+    governanceID: ["snapshot:solidlizardfinance.eth"],
     listedAt: 1676230053
   },
   {

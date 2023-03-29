@@ -2755,6 +2755,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Binance"],
     module: "powerindex/index.js",
     twitter: "powerpoolcvp",
+    governanceID: ["snapshot:cvp.eth"],
     audit_links: ["https://docs.powerpool.finance/security/security-audits"],
   },
   {
@@ -3776,6 +3777,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "integral/index.js",
     twitter: "IntegralHQ",
+    governanceID: ["snapshot:integraldao.eth"],
     audit_links: ["https://docs.integral.link/library/audit-reports"],
   },
   {
@@ -4572,6 +4574,7 @@ const data: Protocol[] = [
     chains: ["RSK"],
     module: "sovryn.js",
     twitter: "SovrynBTC",
+    governanceID: ["snapshot:sovrynbitocracy.eth"],
     audit_links: ["https://www.sovryn.app/library"],
   },
   {

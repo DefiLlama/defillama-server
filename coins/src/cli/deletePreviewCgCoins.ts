@@ -1,3 +1,4 @@
+require("dotenv").config();
 import fetch from "node-fetch";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
 import ddb from "../utils/shared/dynamodb";
@@ -31,14 +32,14 @@ interface CoingeckoResponse {
 async function main() {
     setTimer(1500);
     const coins = await fetch(
-        "https://api.coingecko.com/api/v3/coins/list?include_platform=true"
+        `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true?&x_cg_pro_api_key=${process.env.CG_KEY}`
     ).then((r) => r.json()) as any[];
     const step = 50;
     for (let i = 0; i < coins.length; i += step) {
         const coinData = await retryCoingeckoRequest(
-            `https://api.coingecko.com/api/v3/simple/price?ids=${coins.slice(i, i + step).map(c => c.id).join(
+            `https://pro-api.coingecko.com/api/v3/simple/price?ids=${coins.slice(i, i + step).map(c => c.id).join(
                 ","
-            )}&vs_currencies=usd&include_market_cap=true`,
+            )}&vs_currencies=usd&include_market_cap=true?&x_cg_pro_api_key=${process.env.CG_KEY}`,
             10
         );
         await Promise.all(Object.entries(coinData).map(async ([id, d]) => {

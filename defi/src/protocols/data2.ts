@@ -24994,10 +24994,9 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "unsheth",
     cmcId: "23837",
-    category: "Liquid Staking",
+    category: "Indexes",
     chains: ["Ethereum"],
     oracles: [],
-    forkedFrom: ["Frax Ether"],
     module: "unsheth/index.js",
     twitter: "unsheth_xyz",
     listedAt: 1676489078

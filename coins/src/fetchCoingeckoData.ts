@@ -33,6 +33,7 @@ interface CoingeckoResponse {
     usd: number;
     usd_market_cap: number;
     last_updated_at: number;
+    usd_24h_vol: number;
   };
 }
 
@@ -162,7 +163,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
 const HOUR = 3600;
 async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
   const toTimestamp = getCurrentUnixTimestamp();
-  const fromTimestamp = toTimestamp - (24 * HOUR - 5*60); // 24h - 5 mins
+  const fromTimestamp = toTimestamp - (24 * HOUR - 5 * 60); // 24h - 5 mins
   const coinData = await retryCoingeckoRequest(
     `https://pro-api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}?&x_cg_pro_api_key=${process.env.CG_KEY}`,
     3
@@ -199,7 +200,24 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
   );
 }
 
+async function filterCoins(coins: Coin[]): Promise<Coin[]> {
+  const str = coins.map(i => i.id).join(',')
+  const coinsData = await retryCoingeckoRequest(
+    `https://pro-api.coingecko.com/api/v3/simple/price?ids=${str}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true?&x_cg_pro_api_key=${process.env.CG_KEY}`,
+    3)
+
+  return coins.filter(coin => {
+    const coinData = coinsData[coin.id]
+    if (!coinData) return false
+    // we fetch chart information only for coins with:
+    //   at least 10M marketcap
+    //   at least 10M trading volume in last 24 hours
+    return coinData.usd_market_cap > 1e7 && coinData.usd_24h_vol > 1e17
+  })
+}
+
 const step = 80;
+
 const handler = (hourly: boolean) => async (
   event: any,
   _context: AWSLambda.Context
@@ -210,13 +228,15 @@ const handler = (hourly: boolean) => async (
   const timer = setTimer();
   const requests = [];
   if (hourly) {
+    const hourlyCoins = []
     for (let i = 0; i < coins.length; i += step) {
-      await Promise.all(
-        coins
-          .slice(i, i + step)
-          .map((coin) => getAndStoreHourly(coin, rejected))
-      );
+      let currentCoins = coins.slice(i, i + step)
+      currentCoins = await filterCoins(currentCoins)
+      hourlyCoins.push(...currentCoins)
     }
+    await Promise.all(
+      hourlyCoins.map((coin) => getAndStoreHourly(coin, rejected))
+    );
   } else {
     for (let i = 0; i < coins.length; i += step) {
       requests.push(getAndStoreCoins(coins.slice(i, i + step), rejected));

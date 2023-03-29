@@ -13,7 +13,7 @@ const handler = async (
 ): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins?? "").split(',');
   const searchWidth: number = quantisePeriod(
-    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "6h"
+    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "48h"
   );
   const {PKTransforms, coins} = await getBasicCoins(requestedCoins)
   const response = {} as CoinsResponse

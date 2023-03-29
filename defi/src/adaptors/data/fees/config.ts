@@ -675,5 +675,9 @@ export default {
     "aura": {
         enabled: true,
         id: "1918"
+    },
+    "synapse": {
+        enabled: true,
+        id: "657"
     }
 } as AdaptorsConfig

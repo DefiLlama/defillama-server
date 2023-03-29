@@ -47,7 +47,25 @@ function selectChainFromItem(item: any, normalizedChain: string) {
   return item[normalizedChain] ?? item[altChainName];
 }
 
-const raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json())
+const raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json());
+
+const protocolMcap = async (geckoId?: string | null) => {
+  if (!geckoId) return null;
+
+  const mcap = await fetch("https://coins.llama.fi/mcaps", {
+    method: "POST",
+    body: JSON.stringify({
+      coins: [`coingecko:${geckoId}`],
+    }),
+  })
+    .then((r) => r.json())
+    .catch((err) => {
+      console.log(err);
+      return {};
+    });
+
+  return mcap?.[`coingecko:${geckoId}`]?.mcap ?? null;
+};
 
 export default async function craftProtocol({
   protocolData,
@@ -70,6 +88,7 @@ export default async function craftProtocol({
     historicalUsdTokenTvl,
     historicalTokenTvl,
     { raises },
+    mcap,
   ] = await Promise.all([
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
@@ -82,16 +101,21 @@ export default async function craftProtocol({
       ? ([] as any[])
       : getHistoricalValues((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id)),
     raisesPromise,
+    protocolMcap(protocolData.gecko_id),
   ]);
 
   if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset
-    lastUsdHourlyRecord && lastUsdHourlyRecord.SK !== historicalUsdTvl[historicalUsdTvl.length-1].SK && historicalUsdTvl.push(lastUsdHourlyRecord);
+    lastUsdHourlyRecord &&
+      lastUsdHourlyRecord.SK !== historicalUsdTvl[historicalUsdTvl.length - 1].SK &&
+      historicalUsdTvl.push(lastUsdHourlyRecord);
     lastUsdTokenHourlyRecord &&
       historicalUsdTokenTvl.length > 0 &&
       historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
     lastTokenHourlyRecord && historicalTokenTvl.length > 0 && historicalTokenTvl.push(lastTokenHourlyRecord);
   }
+
+  const mcapkey = protocolData.gecko_id ? `coingecko:${protocolData.gecko_id}` : null;
 
   let response: IProtocolResponse = {
     ...protocolData,
@@ -101,6 +125,7 @@ export default async function craftProtocol({
     tvl: [],
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
     metrics: getAvailableMetricsByModule(protocolData.module),
+    mcap,
   };
 
   const childProtocolsNames = protocolData.parentProtocol

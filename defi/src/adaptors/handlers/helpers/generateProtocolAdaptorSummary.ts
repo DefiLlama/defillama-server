@@ -48,7 +48,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         let lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
         if (sumAllVolumes(lastRecordRaw.data) === 0) {
             lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 2]
-            adaptorRecordsRaw[adaptorRecordsRaw.length - 1] = adaptorRecordsRaw[adaptorRecordsRaw.length - 2]
+            adaptorRecordsRaw[adaptorRecordsRaw.length - 1].data = adaptorRecordsRaw[adaptorRecordsRaw.length - 2].data
         }
 
         // Get extra revenue

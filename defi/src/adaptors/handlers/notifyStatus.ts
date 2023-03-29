@@ -35,9 +35,9 @@ export default async (event: { type: string }) => {
         if (hasZeroValues)
             await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension, this might be because the source haven't update the volume for today or because simply theres no activity on the protocol... Will retry later... \n${zeroValueProtocols.join(', ')}`, event.type)
         if (hasErrors)
-            await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@!983314132411482143>`, event.type)
-        if (hasErrors && errorsArr.length > 35)
-            await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@&849669546448388107>`, event.type)
+            await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@!983314132411482143>`, event.type, false)
+        if (hasErrors && errorsArr.length > 50)
+            await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@&849669546448388107>`, event.type, false)
     }
     else {
         await sendDiscordAlert(`Looks like all good`, event.type)

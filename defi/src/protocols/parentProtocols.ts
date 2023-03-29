@@ -536,6 +536,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MetavaultDAO",
     governanceID: ["snapshot:metavault-trade.eth", "snapshot:metavault-dao.eth"]
   },
+  /*
   {
     id: "MUX Protocol",
     name: "MUX Protocol",
@@ -549,6 +550,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "muxprotocol",
     governanceID: ["snapshot:muxvote.eth"]
   },
+  */
   {
     id: "WOOFi",
     name: "WOOFi",

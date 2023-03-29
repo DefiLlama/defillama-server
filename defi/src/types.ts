@@ -80,6 +80,7 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   isParentProtocol?: boolean;
   raises: Array<IRaise>;
   metrics?: IJSON<boolean>;
+  mcap?: number | null;
 }
 
 export interface IProtocol

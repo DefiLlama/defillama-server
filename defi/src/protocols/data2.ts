@@ -27736,7 +27736,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Fantom"],
-    oracles: ["Pyth"],
+    oracles: [],
     forkedFrom: ["GMX"],
     module: "morphex/index.js",
     twitter: "MorphexFTM",

@@ -9,6 +9,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     GVR_OLD: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
     XRPC: "0xd4ca5c2aff1eefb0bea9e9eab16f88db2990c183",
     LUFFY: "0x54012cdf4119de84218f7eb90eeb87e25ae6ebd7",
+    LUFFY_NEW: "0x7121d00b4fa18f13da6c2e30d19c04844e6afdc8",
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
@@ -44,7 +45,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     MOR: "0x87bade473ea0513d4aa7085484aeaa6cb6ebe7e3", //MOR
     $CINO: "0xdfe6891ce8e5a5c7cf54ffde406a6c2c54145f71", //$cino . Problem with dodo adapter on 13/03/2023 (mispriced)
     VBSWAP: "0x4f0ed527e8a95ecaa132af214dfd41f30b361600",
-    ZEDXION: "0xfbc4f3f645c4003a2e4f4e9b51077d2daa9a9341",  // price manipulated?
+    ZEDXION: "0xfbc4f3f645c4003a2e4f4e9b51077d2daa9a9341", // price manipulated?
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

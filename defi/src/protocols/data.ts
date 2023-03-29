@@ -2575,7 +2575,6 @@ const data: Protocol[] = [
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],
     oracles: ["Chainlink"],
-    parentProtocol: "MUX Protocol",
   },
   {
     id: "233",

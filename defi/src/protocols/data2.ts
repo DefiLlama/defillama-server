@@ -5701,7 +5701,7 @@ const data2: Protocol[] = [
     name: "Solv Protocol",
     address: "0x256f2d67e52fe834726d2ddcd8413654f5eb8b53",
     symbol: "SOLV",
-    url: "https://solv.finance/home",
+    url: "https://solv.finance/",
     description: "Solv Protocol is a one-stop platform for creating, using and trading financial NFTs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/solv-protocol.png`,

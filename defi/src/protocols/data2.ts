@@ -23025,7 +23025,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://metropolis.exchange",
     description:
-      "Metropolis is a Liquidity Book AMM on Fantom focused on offering a premier trading experience with zero slippage and low fees.",
+      "Metropolis has been recently acquired by Swapline (defillama.com/protocol/swapline)",
     chain: "Fantom",
     logo: `${baseIconsUrl}/metropolis.png`,
     audits: "0",

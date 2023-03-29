@@ -18585,7 +18585,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2254",
-    name: "MUX Derivatives",
+    name: "MUX Protocol",
     address: "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42",
     symbol: "MCB",
     url: "https://mux.network/",
@@ -18602,8 +18602,8 @@ const data2: Protocol[] = [
     module: "mux/index.js",
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],
+    governanceID: ["snapshot:muxvote.eth"],
     oracles: ["Chainlink"],
-    parentProtocol: "MUX Protocol",
     listedAt: 1667699921
   },
   {

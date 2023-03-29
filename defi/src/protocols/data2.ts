@@ -29493,5 +29493,27 @@ const data2: Protocol[] = [
     twitter: "fluiditymoney",
     listedAt: 1680036839
   },
+  {
+    id: "2743",
+    name: "Yama Finance",
+    address: null,
+    symbol: "-",
+    url: "https://yama.finance/",
+    description: "Yama is a novel omnichain stablecoin that facilitates extremely high leverage and liquidity.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/yama.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "yama-finance/index.js",
+    audit_links: ["https://docs.yama.finance/assets/files/hacken-audit-f36080037d41631b9e887abb36035a2f.pdf"],
+    twitter: "YamaFinance",
+    listedAt: 1680130246,
+  }
 ]
 export default data2;

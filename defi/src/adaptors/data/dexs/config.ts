@@ -1287,5 +1287,9 @@ export default {
     "dexter": {
         enabled: true,
         id: "2737"
-    }
+    },
+    "swapline": {
+        "enabled": true,
+        "id": "2731"
+    },
 } as AdaptorsConfig

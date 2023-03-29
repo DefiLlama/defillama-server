@@ -1,4 +1,3 @@
-require("dotenv").config();
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
 import invokeLambda from "./utils/shared/invokeLambda";

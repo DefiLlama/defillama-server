@@ -1,4 +1,3 @@
-require("dotenv").config();
 import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { getCoingeckoLock, setTimer } from "./utils/shared/coingeckoLocks";

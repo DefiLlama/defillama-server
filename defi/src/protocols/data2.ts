@@ -29551,7 +29551,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Canto", "Polygon zkEVM"],
+    chains: ["Canto"],
     oracles: [],
     forkedFrom: ["Uniswap"],
     module: "leetswap/index.js",

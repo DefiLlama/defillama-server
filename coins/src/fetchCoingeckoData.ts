@@ -17,7 +17,7 @@ export async function retryCoingeckoRequest(
   for (let i = 0; i < retries; i++) {
     await getCoingeckoLock();
     try {
-      return await fetch(`https://api.coigecko.com/api/v3/${query}`).then((r) => r.json());
+      return await fetch(`https://api.coingecko.com/api/v3/${query}`).then((r) => r.json());
     } catch {
       try {
         return await fetch(`https://pro-api.coingecko.com/api/v3/${query}?&x_cg_pro_api_key=${process.env.CG_KEY}`).then((r) => r.json());

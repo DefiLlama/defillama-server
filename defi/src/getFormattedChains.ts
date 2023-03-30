@@ -2,6 +2,7 @@ import { chainCoingeckoIds } from "./utils/normalizeChain";
 import fetch from "node-fetch";
 import { LiteProtocol } from "./types";
 import { errorResponse, successResponse, wrap } from "./utils/shared";
+import { coingeckoRequest } from "./utils/shared/coingeckoLocks";
 
 interface IResponse {
   chains: string[];
@@ -122,11 +123,11 @@ const formattedChains = async (category: string) => {
   );
 
   // get mcaps of chains in given category
-  const chainMcaps = await fetch(
-    `https://pro-api.coingecko.com/api/v3/simple/price?ids=${Object.values(chainCoingeckoIds)
+  const chainMcaps = await coingeckoRequest(
+    `simple/price?ids=${Object.values(chainCoingeckoIds)
       .map((v) => v.geckoId)
-      .join(",")}&vs_currencies=usd&include_market_cap=true?&x_cg_pro_api_key=${process.env.CG_KEY}`
-  ).then((res) => res.json());
+      .join(",")}&vs_currencies=usd&include_market_cap=true`
+  );
 
   // calc no.of protocols present in each chains as well as extra tvl data like staking , pool2 etc
   const numOfProtocolsPerChain: INumOfProtocolsPerChain = {};

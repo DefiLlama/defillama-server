@@ -1,10 +1,8 @@
 require("dotenv").config();
-import fetch from "node-fetch";
-import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
+import { setTimer, retryCoingeckoRequest, coingeckoRequest } from "../utils/shared/coingeckoLocks";
 import ddb from "../utils/shared/dynamodb";
 import { cgPK } from "../utils/keys";
 import { iterateOverPlatforms } from "../utils/coingeckoPlatforms";
-import { retryCoingeckoRequest } from "../fetchCoingeckoData"
 // IMPORTANT! READ ALL COMMENTS BEFORE USING
 
 interface CoingeckoResponse {
@@ -16,9 +14,7 @@ interface CoingeckoResponse {
 
 async function main() {
     setTimer(1500);
-    const coins = await fetch(
-        `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true?&x_cg_pro_api_key=${process.env.CG_KEY}`
-    ).then((r) => r.json()) as any[];
+    const coins = await coingeckoRequest(`coins/list?include_platform=true`) as any[];
     const step = 80;
     for (let i = 0; i < coins.length; i += step) {
         const coinData = await retryCoingeckoRequest(
@@ -26,7 +22,7 @@ async function main() {
                 ","
             )}&vs_currencies=usd&include_market_cap=true`,
             10
-        );
+        ) as CoingeckoResponse;
         await Promise.all(Object.entries(coinData).map(async ([id, d]) => {
             if (d.usd === undefined) {
                 const records = (await ddb.query({

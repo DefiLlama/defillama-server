@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { getCoingeckoLock, setTimer } from "./utils/shared/coingeckoLocks";
+import { setTimer, retryCoingeckoRequest } from "./utils/shared/coingeckoLocks";
 import ddb, { batchWrite, batchGet } from "./utils/shared/dynamodb";
 import { cgPK } from "./utils/keys";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
@@ -8,28 +8,6 @@ import invokeLambda from "./utils/shared/invokeLambda";
 import sleep from "./utils/shared/sleep";
 import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
-
-export async function retryCoingeckoRequest(
-  query: string,
-  retries: number
-): Promise<CoingeckoResponse> {
-  for (let i = 0; i < retries; i++) {
-    await getCoingeckoLock();
-    try {
-      return await fetch(`https://api.coingecko.com/api/v3/${query}`).then((r) => r.json());
-    } catch {
-      try {
-        return await fetch(`https://pro-api.coingecko.com/api/v3/${query}?&x_cg_pro_api_key=${process.env.CG_KEY}`).then((r) => r.json());
-      } catch (e) {
-        if ((i + 1) % 3 === 0 && retries > 3) {
-          await sleep(10e3); // 10s
-        }
-        continue;
-      }
-    }
-  }
-  return {};
-}
 
 interface CoingeckoResponse {
   [cgId: string]: {
@@ -167,7 +145,7 @@ const HOUR = 3600;
 async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
   const toTimestamp = getCurrentUnixTimestamp();
   const fromTimestamp = toTimestamp - (24 * HOUR - 5 * 60); // 24h - 5 mins
-  const coinData = await retryCoingeckoRequest(
+  const coinData: CoingeckoResponse = await retryCoingeckoRequest(
     `coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
     3
   );

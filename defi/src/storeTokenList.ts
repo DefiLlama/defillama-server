@@ -1,12 +1,12 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import fetch from "node-fetch";
 import ddb, { batchGet } from "./utils/shared/dynamodb";
 import { storeR2 } from "./utils/r2";
+import { coingeckoRequest } from "./utils/shared/coingeckoLocks";
 
 const logoKey = (coinId: string) => `cgLogo#${coinId}`
 
 const handler = async () => {
-    const cgCoins = (await fetch("https://api.coingecko.com/api/v3/coins/list?include_platform=true").then(r => r.json())) as {
+    const cgCoins = (await coingeckoRequest("coins/list?include_platform=true")) as {
         "id": string;
         "symbol": string;
         "name": string;
@@ -25,7 +25,7 @@ const handler = async () => {
     console.log(`${missingLogos.length} logos missing`)
     await Promise.all(missingLogos.map(async coin=>{
         try{
-            const extended = await fetch(`https://api.coingecko.com/api/v3/coins/${coin.id}`).then(r=>r.json())
+            const extended = await coingeckoRequest(`coins/${coin.id}`)
             await ddb.put({
                 PK: logoKey(coin.id),
                 SK: 0,

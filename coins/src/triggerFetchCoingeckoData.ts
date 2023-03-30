@@ -1,14 +1,12 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import fetch from "node-fetch";
 import invokeLambda from "./utils/shared/invokeLambda";
 import { shuffleArray } from "./utils/shared/shuffleArray";
+import { coingeckoRequest } from "./utils/shared/coingeckoLocks";
 
 const hourlyLambda = `coins-prod-fetchHourlyCoingeckoData`;
 const step = 500;
 const handler = (lambdaFunctioName: string) => async () => {
-  const coins = await fetch(
-    `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true?&x_cg_pro_api_key=${process.env.CG_KEY}`,
-  ).then((r) => r.json());
+  const coins = await coingeckoRequest(`coins/list?include_platform=true`)
   shuffleArray(coins)
   for (let i = 0; i < coins.length; i += step) {
     const event = {

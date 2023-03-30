@@ -130,6 +130,7 @@ export default {
         "id": "383"
     },
     "serum": {
+        disabled: true,
         "enabled": true,
         "includedVolume": [
             "raydium"
@@ -412,6 +413,7 @@ export default {
         "id": "397"
     },
     "viperswap": {
+        disabled: true,
         "enabled": true,
         "id": "313"
     },
@@ -730,6 +732,7 @@ export default {
     },
     "photonswap-finance": {
         "enabled": true,
+        disabled: true,
         "id": "847"
     },
     "alita-finance": {
@@ -997,6 +1000,7 @@ export default {
         "id": "1269"
     },
     "sundaeswap": {
+        disabled: true,
         "enabled": true,
         "id": "1302"
     },
@@ -1069,6 +1073,7 @@ export default {
         "id": "2001"
     },
     "syrup-finance": {
+        disabled: true,
         "enabled": true,
         "id": "2401"
     },
@@ -1105,6 +1110,7 @@ export default {
         "id": "963"
     },
     "metropolis": {
+        disabled: true,
         "enabled": true,
         "id": "2452"
     },

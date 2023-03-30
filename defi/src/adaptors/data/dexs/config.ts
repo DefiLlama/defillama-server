@@ -505,6 +505,7 @@ export default {
         "id": "1139"
     },
     "mimo": {
+        disabled: true,
         "enabled": true,
         "id": "1241"
     },
@@ -585,6 +586,7 @@ export default {
         "id": "812"
     },
     "makiswap": {
+        disabled: true,
         "enabled": true,
         "id": "378"
     },

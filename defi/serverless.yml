@@ -234,7 +234,7 @@ functions:
           path: updatedProtocol/{protocol}
           method: get
   updatedProtocolDraft:
-    handler: src/getUpdatedProtocolDraft.default
+    handler: src/getUpdatedProtocol.default
     timeout: 30
     memorySize: 2000
     events:

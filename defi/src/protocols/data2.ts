@@ -5701,7 +5701,7 @@ const data2: Protocol[] = [
     name: "Solv Protocol",
     address: "0x256f2d67e52fe834726d2ddcd8413654f5eb8b53",
     symbol: "SOLV",
-    url: "https://solv.finance/home",
+    url: "https://solv.finance/",
     description: "Solv Protocol is a one-stop platform for creating, using and trading financial NFTs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/solv-protocol.png`,
@@ -7126,7 +7126,7 @@ const data2: Protocol[] = [
     twitter: "BitcoinCom",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/bitcoin.com/Bitcoin.com_final-audit-report.pdf"],
     listedAt: 1651771447,
-    governanceID: ["snapshot:verse.eth"]
+    // governanceID: ["snapshot:verse.eth"] // I couldnt find this
   },
   {
     id: "1733",
@@ -18585,7 +18585,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2254",
-    name: "MUX Derivatives",
+    name: "MUX Protocol",
     address: "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42",
     symbol: "MCB",
     url: "https://mux.network/",
@@ -18602,8 +18602,8 @@ const data2: Protocol[] = [
     module: "mux/index.js",
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],
+    governanceID: ["snapshot:muxvote.eth"],
     oracles: ["Chainlink"],
-    parentProtocol: "MUX Protocol",
     listedAt: 1667699921
   },
   {
@@ -23025,7 +23025,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://metropolis.exchange",
     description:
-      "Metropolis is a Liquidity Book AMM on Fantom focused on offering a premier trading experience with zero slippage and low fees.",
+      "Metropolis has been recently acquired by Swapline (defillama.com/protocol/swapline)",
     chain: "Fantom",
     logo: `${baseIconsUrl}/metropolis.png`,
     audits: "0",
@@ -24759,6 +24759,7 @@ const data2: Protocol[] = [
     twitter: "solidlizardfi",
     oracles: [],
     forkedFrom: ["Solidly"],
+    governanceID: ["snapshot:solidlizardfinance.eth"],
     listedAt: 1676230053
   },
   {
@@ -24993,10 +24994,9 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "unsheth",
     cmcId: "23837",
-    category: "Liquid Staking",
+    category: "Indexes",
     chains: ["Ethereum"],
     oracles: [],
-    forkedFrom: ["Frax Ether"],
     module: "unsheth/index.js",
     twitter: "unsheth_xyz",
     listedAt: 1676489078

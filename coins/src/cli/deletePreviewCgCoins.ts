@@ -17,7 +17,7 @@ interface CoingeckoResponse {
 async function main() {
     setTimer(1500);
     const coins = await fetch(
-        `https://api.coingecko.com/api/v3/coins/list?include_platform=true`
+        `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true?&x_cg_pro_api_key=${process.env.CG_KEY}`
     ).then((r) => r.json()) as any[];
     const step = 80;
     for (let i = 0; i < coins.length; i += step) {

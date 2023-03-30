@@ -7,7 +7,7 @@ const hourlyLambda = `coins-prod-fetchHourlyCoingeckoData`;
 const step = 500;
 const handler = (lambdaFunctioName: string) => async () => {
   const coins = await fetch(
-    `https://api.coingecko.com/api/v3/coins/list?include_platform=true`,
+    `https://pro-api.coingecko.com/api/v3/coins/list?include_platform=true?&x_cg_pro_api_key=${process.env.CG_KEY}`,
   ).then((r) => r.json());
   shuffleArray(coins)
   for (let i = 0; i < coins.length; i += step) {

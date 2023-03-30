@@ -679,5 +679,9 @@ export default {
     "synapse": {
         enabled: true,
         id: "657"
+    },
+    "plexus": {
+        enabled: true,
+        id: "2740"
     }
 } as AdaptorsConfig

@@ -2562,7 +2562,7 @@ const data: Protocol[] = [
     symbol: "MCB",
     url: "https://mux.network/",
     description:
-      "MUX (Previously MCDEX),The first Multi-Chain native leveraged trading protocol,\r\nallowing zero price impact trading, up to 100x leverage, no counterparty risks for traders and an optimized on-chain trading experience.",
+      "MCDEX is a permissionless AMM-based decentralized perpetual swap protocol. MCDEX has ceased operation, and the remaining TVL on the platform is from user deposits.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mcdex.jpg`,
     audits: "1",

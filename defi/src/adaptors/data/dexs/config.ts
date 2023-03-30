@@ -1298,4 +1298,8 @@ export default {
         "enabled": true,
         "id": "2731"
     },
+    "hadouken-amm": {
+        "enabled": true,
+        "id": "2748"
+    }
 } as AdaptorsConfig

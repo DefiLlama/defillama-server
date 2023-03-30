@@ -46,6 +46,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         if (!(adaptorRecordsRaw instanceof Array)) throw new Error("Wrong volume queried")
         if (adaptorRecordsRaw.length === 0) throw new Error(`${adapter.name} ${adapter.id} has no records stored${chainFilter ? ` for chain ${chainFilter}` : ''}`)
         let lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 1]
+        const cleanLastReacord = JSON.parse(JSON.stringify(lastRecordRaw.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])))
         if (sumAllVolumes(lastRecordRaw.data) === 0) {
             lastRecordRaw = adaptorRecordsRaw[adaptorRecordsRaw.length - 2]
             adaptorRecordsRaw[adaptorRecordsRaw.length - 1].data = adaptorRecordsRaw[adaptorRecordsRaw.length - 2].data
@@ -94,7 +95,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const lastAvailableDataTimestamp = adaptorRecords[adaptorRecords.length - 1].timestamp
         const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap, lastAvailableDataTimestamp)
 
-        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp) {
+        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null) {
             if (onError) onError(new Error(`
 Adapter: ${adapter.name} [${adapter.id}]
 ${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated

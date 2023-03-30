@@ -630,6 +630,7 @@ export default {
     },
     "crodex": {
         "enabled": true,
+        disabled: true,
         "id": "828"
     },
     "babyswap": {
@@ -824,6 +825,7 @@ export default {
         "id": "581"
     },
     "fairyswap": {
+        disabled: true,
         "enabled": true,
         "id": "1671"
     },
@@ -1021,6 +1023,7 @@ export default {
         "id": "799"
     },
     "aux-exchange": {
+        disabled: true,
         "enabled": true,
         "id": "2213"
     },
@@ -1078,6 +1081,7 @@ export default {
         "id": "2401"
     },
     "axial": {
+        disabled: true,
         "enabled": true,
         "id": "845"
     },
@@ -1263,6 +1267,7 @@ export default {
         id: "291"
     },
     "archerswap": {
+        disabled: true,
         enabled: true,
         id: "2648"
     },

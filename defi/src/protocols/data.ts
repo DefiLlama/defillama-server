@@ -24725,7 +24725,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "0xDAO/index.js",
     twitter: "0xDAO_fi",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: [],
     listedAt: 1642798081,
   },
   {

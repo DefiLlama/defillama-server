@@ -47,6 +47,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     $CINO: "0xdfe6891ce8e5a5c7cf54ffde406a6c2c54145f71", //$cino . Problem with dodo adapter on 13/03/2023 (mispriced)
     VBSWAP: "0x4f0ed527e8a95ecaa132af214dfd41f30b361600",
     ZEDXION: "0xfbc4f3f645c4003a2e4f4e9b51077d2daa9a9341", // price manipulated?
+    FEG: "0xacfc95585d80ab62f67a14c566c1b7a49fe91167"
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

@@ -29667,5 +29667,27 @@ const data2: Protocol[] = [
     twitter: "NuonFinance",
     listedAt: 1680188227
   },
+  {
+    id: "2751",
+    name: "LFGSwap Arbitrum",
+    address: "arbitrum:0xF7a0b80681eC935d6dd9f3Af9826E68B99897d6D",
+    symbol: "LFG",
+    url: "https://app.lfgswap.finance/swap?chainId=42161",
+    description: "AMM DEX on Arbitrum",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lfgswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "lfgswap-arbitrum/index.js",
+    twitter: "LfgSwap",
+    parentProtocol: "LFGSwap",
+    listedAt: 1680200332
+  },
 ]
 export default data2;

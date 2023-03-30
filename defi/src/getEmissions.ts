@@ -60,9 +60,10 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     mcap: mcap?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0,
     events:
       res.metadata.events
-        ?.map(({ description, timestamp }: { description: string; timestamp: string }) => ({
+        ?.map(({ description, timestamp, noOfTokens }: { description: string; timestamp: string, noOfTokens:number[] }) => ({
           timestamp: Number(timestamp),
           description,
+          noOfTokens
         }))
         .sort(
           (a: { description: string; timestamp: number }, b: { description: string; timestamp: number }) =>

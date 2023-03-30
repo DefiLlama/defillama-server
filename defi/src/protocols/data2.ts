@@ -29690,7 +29690,7 @@ const data2: Protocol[] = [
     listedAt: 1680200332
   },
   {
-    id: "2751",
+    id: "2752",
     name: "Onchain Trade",
     address: null,
     symbol: "OT",

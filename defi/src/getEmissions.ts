@@ -58,7 +58,16 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     nextEvent,
     gecko_id: res.gecko_id,
     mcap: mcap?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0,
-    events: res.metadata.events || [],
+    events:
+      res.metadata.events
+        ?.map(({ description, timestamp }: { description: string; timestamp: string }) => ({
+          timestamp: Number(timestamp),
+          description,
+        }))
+        .sort(
+          (a: { description: string; timestamp: number }, b: { description: string; timestamp: number }) =>
+            a.timestamp - b.timestamp
+        ) ?? [],
   };
 };
 

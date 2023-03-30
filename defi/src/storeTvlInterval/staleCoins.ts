@@ -26,11 +26,12 @@ export function storeStaleCoins(staleCoins: StaleCoins) {
     }))
 }
 
-export function storeStaleCoins2(staleCoins: StaleCoins) {
+export async function storeStaleCoins2(staleCoins: StaleCoins) {
     const sql = postgres(process.env.COINS_DB!);
     const currentTime = getCurrentUnixTimestamp();
-    return Promise.all(
+    await Promise.all(
       Object.entries(staleCoins).slice(0, 1).map(([pk, details]) => {
+        console.log(`writing to postgres pk: ${pk}...`)
         sql`
         INSERT INTO public.stalecoins (id, time, address, lastupdate, chain, symbol)
         VALUES (${pk}, ${currentTime}, ${pk.split(":")[1]}, ${
@@ -41,4 +42,5 @@ export function storeStaleCoins2(staleCoins: StaleCoins) {
         `;
       }),
     ).catch((e) => console.log("postgres error", e));
+    console.log(`write to postgres done`)
   }

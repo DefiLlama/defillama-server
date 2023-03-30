@@ -9,20 +9,23 @@ import sleep from "./utils/shared/sleep";
 import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 
-async function retryCoingeckoRequest(
-  url: string,
+export async function retryCoingeckoRequest(
+  query: string,
   retries: number
 ): Promise<CoingeckoResponse> {
   for (let i = 0; i < retries; i++) {
     await getCoingeckoLock();
     try {
-      const coinData = await fetch(url).then((r) => r.json());
-      return coinData;
-    } catch (e) {
-      if ((i + 1) % 3 === 0 && retries > 3) {
-        await sleep(10e3); // 10s
+      return await fetch(`https://api.coingecko.com/api/v3/${query}`).then((r) => r.json());
+    } catch {
+      try {
+        return await fetch(`https://pro-api.coingecko.com/api/v3/${query}?&x_cg_pro_api_key=${process.env.CG_KEY}`).then((r) => r.json());
+      } catch (e) {
+        if ((i + 1) % 3 === 0 && retries > 3) {
+          await sleep(10e3); // 10s
+        }
+        continue;
       }
-      continue;
     }
   }
   return {};
@@ -119,9 +122,9 @@ async function getSymbolAndDecimals(tokenAddress: string, chain: string) {
 async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   const coinIds = coins.map((c) => c.id);
   const coinData = await retryCoingeckoRequest(
-    `https://pro-api.coingecko.com/api/v3/simple/price?ids=${coinIds.join(
+    `simple/price?ids=${coinIds.join(
       ","
-    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true?&x_cg_pro_api_key=${process.env.CG_KEY}`,
+    )}&vs_currencies=usd&include_market_cap=true&include_last_updated_at=true`,
     10
   );
   const idToSymbol = {} as IdToSymbol;
@@ -165,7 +168,7 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
   const toTimestamp = getCurrentUnixTimestamp();
   const fromTimestamp = toTimestamp - (24 * HOUR - 5 * 60); // 24h - 5 mins
   const coinData = await retryCoingeckoRequest(
-    `https://pro-api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}?&x_cg_pro_api_key=${process.env.CG_KEY}`,
+    `coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`,
     3
   );
   if (!Array.isArray(coinData.prices)) {

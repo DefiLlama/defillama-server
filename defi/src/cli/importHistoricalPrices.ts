@@ -37,9 +37,7 @@ async function main() {
     );
   }
   setTimer(1500);
-  const coins = (await coingeckoRequest(
-    "https://api.coingecko.com/api/v3/coins/list"
-  )) as Coin[];
+  const coins = (await coingeckoRequest("coins/list")) as Coin[];
   for (
     let coinIndex = startingCoinIndex;
     coinIndex < coins.length;
@@ -50,10 +48,10 @@ async function main() {
     try {
       const [coinData, { prices }] = await Promise.all([
         coingeckoRequest(
-          `https://api.coingecko.com/api/v3/coins/${coin.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`
+          `coins/${coin.id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`
         ),
         coingeckoRequest(
-          `https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`
+          `coins/${coin.id}/market_chart/range?vs_currency=usd&from=${fromTimestamp}&to=${toTimestamp}`
         ) as PriceRangeResponse,
       ]);
       await iterateOverPlatforms(coinData, coin, async (PK) => storePrices(PK, prices));

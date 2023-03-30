@@ -1228,6 +1228,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "covofinance"
   },
+  {
+    id: "Hadouken Finance",
+    name: "Hadouken Finance",
+    url: "https://covo.finance",
+    description: "An integrated borrowing/lending platform and AMM on Godwoken V1 Network.",
+    logo: `${baseIconsUrl}/hadouken-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HadoukenFinance"
+  },
 ];
 
 export default parentProtocols;

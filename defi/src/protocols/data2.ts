@@ -18590,7 +18590,7 @@ const data2: Protocol[] = [
     symbol: "MCB",
     url: "https://mux.network/",
     description:
-      "Trade crypto on the MUX protocol with zero price impact, up to 100x leverage and no counterparty risks",
+      "MUX Protocol Suite contains the MUX Leveraged Trading Protocol and MUX Aggregator. MUX offers optimized trading cost, deep aggregated liquidity, diverse market options and a wide range of leverage options for traders.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/mux protocol.png`,
     audits: "1",
@@ -18598,7 +18598,7 @@ const data2: Protocol[] = [
     gecko_id: "mcdex",
     cmcId: "5956",
     category: "Derivatives",
-    chains: ["Arbitrum", "Binance", "Avalanche", "Fantom"],
+    chains: ["Arbitrum", "Binance", "Avalanche", "Fantom", "Optimism"],
     module: "mux/index.js",
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],

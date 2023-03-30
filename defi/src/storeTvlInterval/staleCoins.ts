@@ -18,19 +18,11 @@ export function addStaleCoin(staleCoins: StaleCoins, address: string, symbol: st
     }
 }
 
-export function storeStaleCoins(staleCoins: StaleCoins) {
-    const currentTime = getCurrentUnixTimestamp()
-    return Promise.all(Object.entries(staleCoins).map(([address, details]) => {
-        const chain = address.split(':')[0]
-        return executeAndIgnoreErrors('INSERT INTO `staleCoins` VALUES (?, ?, ?, ?, ?)', [currentTime, address, details.lastUpdate, chain, details.symbol])
-    }))
-}
-
-export async function storeStaleCoins2(staleCoins: StaleCoins) {
+export async function storeStaleCoins(staleCoins: StaleCoins) {
     const sql = postgres(process.env.COINS_DB!);
     const currentTime = getCurrentUnixTimestamp();
     await Promise.all(
-      Object.entries(staleCoins).slice(0, 1).map(([pk, details]) => {
+      Object.entries(staleCoins).map(([pk, details]) => {
         console.log(`writing to postgres pk: ${pk}...`)
         sql`
         INSERT INTO public.stalecoins (id, time, address, lastupdate, chain, symbol)
@@ -41,6 +33,6 @@ export async function storeStaleCoins2(staleCoins: StaleCoins) {
           SET time = ${currentTime}
         `;
       }),
-    ).catch((e) => console.log("postgres error", e));
+    )
     console.log(`write to postgres done`)
   }

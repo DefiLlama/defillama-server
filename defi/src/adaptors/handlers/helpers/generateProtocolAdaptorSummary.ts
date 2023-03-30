@@ -93,7 +93,8 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         // Calc stats with last available data
         const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
         const lastAvailableDataTimestamp = adaptorRecords[adaptorRecords.length - 1].timestamp
-        const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap, lastAvailableDataTimestamp)
+        const lastDaysExtrapolation = ((yesterdaysCleanTimestamp - lastAvailableDataTimestamp) / ONE_DAY_IN_SECONDS) < 5
+        const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap,lastAvailableDataTimestamp)
 
         if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null) {
             if (onError) onError(new Error(`
@@ -115,7 +116,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             rule(extraTypes, adapter.category ?? '')
         }
         // Populate last missing days with last available data
-        if (!adapter.disabled && ((yesterdaysCleanTimestamp - lastAvailableDataTimestamp) / ONE_DAY_IN_SECONDS) < 5)
+        if (!adapter.disabled && lastDaysExtrapolation)
             for (let i = lastAvailableDataTimestamp + ONE_DAY_IN_SECONDS; i <= yesterdaysCleanTimestamp; i += ONE_DAY_IN_SECONDS) {
                 const data = new AdaptorRecord(adaptorRecords[0].type, adaptorRecords[0].adaptorId, i, adaptorRecords[adaptorRecords.length - 1].data)
                 adaptorRecords.push(data)
@@ -132,19 +133,19 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             logo: adapter.logo,
             records: adaptorRecords,
             recordsMap: cleanRecords.cleanRecordsMap,
-            change_1d: adapter.disabled ? null : stats.change_1d,
-            change_7d: adapter.disabled ? null : stats.change_7d,
-            change_1m: adapter.disabled ? null : stats.change_1m,
-            change_7dover7d: adapter.disabled ? null : stats.change_7dover7d,
-            change_30dover30d: adapter.disabled ? null : stats.change_30dover30d,
-            total24h: adapter.disabled ? null : stats.total24h,
-            total48hto24h: adapter.disabled ? null : stats.total48hto24h,
-            total7d: adapter.disabled ? null : stats.total7d,
-            total30d: adapter.disabled ? null : stats.total30d,
-            total14dto7d: adapter.disabled ? null : stats.total14dto7d,
-            total60dto30d: adapter.disabled ? null : stats.total60dto30d,
+            change_1d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.change_1d,
+            change_7d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.change_7d,
+            change_1m: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.change_1m,
+            change_7dover7d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.change_7dover7d,
+            change_30dover30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.change_30dover30d,
+            total24h: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total24h,
+            total48hto24h: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total48hto24h,
+            total7d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total7d,
+            total30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total30d,
+            total14dto7d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total14dto7d,
+            total60dto30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total60dto30d,
             totalAllTime: totalRecord ? sumAllVolumes(totalRecord.data) : null,
-            breakdown24h: adapter.disabled ? null : stats.breakdown24h,
+            breakdown24h: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.breakdown24h,
             config: getConfigByType(adaptorType, adapter.module),
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,

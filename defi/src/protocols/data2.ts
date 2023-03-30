@@ -29625,7 +29625,7 @@ const data2: Protocol[] = [
     listedAt: 1680182612
   },
   {
-    id: "2748",
+    id: "2749",
     name: "Antfarm finance",
     address: "0x518b63Da813D46556FEa041A88b52e3CAa8C16a8",
     symbol: "ATF",

@@ -193,6 +193,20 @@ functions:
       - http:
           path: getSwapsHistory
           method: get
+  getBlackListedTokens:
+    handler: src/getBlackListedTokens.default
+    timeout: 30
+    events:
+      - http:
+          path: getBlackListedTokens
+          method: get
+  storeBlacklistPermit:
+    handler: src/storeBlacklistPermit.default
+    timeout: 30
+    events:
+      - http:
+          path: storeBlacklistPermit
+          method: post
   contractName:
     handler: src/getContractName.default
     timeout: 30

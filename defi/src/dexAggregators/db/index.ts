@@ -1,13 +1,13 @@
 import "reflect-metadata";
 
 import { DataSource } from "typeorm";
-
+import { PermitBlackList } from "./Models/PermitBlackList";
 import { SwapEvent } from "./Models/SwapEvent";
 
 const AppDataSource = new DataSource({
   type: "postgres",
   database: "content",
-  entities: [SwapEvent],
+  entities: [SwapEvent, PermitBlackList],
   logging: false,
   synchronize: true,
   migrationsRun: true,

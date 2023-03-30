@@ -146,15 +146,13 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
         ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
             const currentChainValue = acc[chain]
             const clean_chain = replaceReservedKeyword(chain)
-            const prevChainValue = acc[clean_chain]
             if (typeof data === 'number' || typeof currentChainValue === 'number' || chain === 'error') return acc
-            if (typeof prevChainValue === 'number' || clean_chain === 'error') return acc
             acc[clean_chain] = {
-                ...prevChainValue,
                 ...currentChainValue,
+                ...data,
             }
             return acc
-        }, currentData as IRecordAdaptorRecordData),
+        }, (currentData ?? {}) as IRecordAdaptorRecordData),
         eventTimestamp
     }
     try {

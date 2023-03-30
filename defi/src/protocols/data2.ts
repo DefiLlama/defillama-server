@@ -21560,7 +21560,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "sperax-demeter/index.js",
     twitter: "SperaxUSD",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/Sperax/Audit_Reports/blob/main/Demeter_PeckShield_1.pdf"],
     parentProtocol: "Sperax",

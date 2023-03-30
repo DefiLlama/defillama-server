@@ -8,19 +8,20 @@ import { Write, CoinData } from "../../utils/dbInterfaces";
 import { Result } from "../../utils/sdkInterfaces";
 import getBlock from "../../utils/block";
 import contracts from "./contracts.json";
-import { getGasTokenBalance, wrappedGasTokens } from "../../utils/gasTokens";
+import abi from "./abi.json";
+import { wrappedGasTokens } from "../../utils/gasTokens";
 const gasTokenDummyAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
 async function processDbData(
-  underlyingBalances: Result[],
+  pools: { [pool: string]: { [address: string]: string } },
   coinsData: CoinData[],
   chain: string
 ) {
-  return underlyingBalances.map((b: Result) => {
+  return Object.keys(pools).map((b: string) => {
     const token =
-      b.input.target.toLowerCase() === gasTokenDummyAddress
+      pools[b].underlying.toLowerCase() === gasTokenDummyAddress
         ? wrappedGasTokens[chain]
-        : b.input.target.toLowerCase();
+        : pools[b].underlying.toLowerCase();
     const coinData: CoinData = coinsData.filter(
       (c: CoinData) => c.address.toLowerCase() === token
     )[0];
@@ -40,7 +41,7 @@ function formWrites(
   underlyingTokenData: any[],
   pools: { [pool: string]: { [address: string]: string } },
   chain: string,
-  underlyingBalances: Result[],
+  poolTokenLiquidities: Result[],
   tokenInfos: any,
   writes: Write[],
   timestamp: number
@@ -56,11 +57,8 @@ function formWrites(
       (x: any) => x.address.toLowerCase() === underlying
     )[0];
     const underlyingPrice: number = underlyingInfo.price;
-    const underlyingDecimals: number = underlyingInfo.decimals;
-    const underlyingBalance: number = underlyingBalances.filter(
-      (x: any) =>
-        x.input.target.toLowerCase() === underlying &&
-        x.input.params[0].toLowerCase() === pool
+    const poolTokenLiquidity: number = poolTokenLiquidities.filter(
+      (x: any) => x.input.target.toLowerCase() === pool
     )[0].output;
     const poolSupply: number = tokenInfos.supplies.filter(
       (x: any) => x.input.target.toLowerCase() === pool
@@ -71,11 +69,7 @@ function formWrites(
     const poolSymbol: string = tokenInfos.symbols.filter(
       (x: any) => x.input.target.toLowerCase() === pool
     )[0].output;
-    const price: number =
-      underlyingPrice *
-      (underlyingBalance /
-        10 ** underlyingDecimals /
-        (poolSupply / 10 ** poolDecimals));
+    const price: number = underlyingPrice * (poolTokenLiquidity / poolSupply);
     if (!price) return;
     addToDBWritesList(
       writes,
@@ -97,14 +91,13 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
   const pools: { [pool: string]: { [address: string]: string } } =
     contracts[chain as keyof typeof contracts];
 
-  let underlyingBalances: Result[];
+  let tokenSupplies: Result[];
   let tokenInfos: any;
-  [{ output: underlyingBalances }, tokenInfos] = await Promise.all([
+  [{ output: tokenSupplies }, tokenInfos] = await Promise.all([
     multiCall({
-      abi: "erc20:balanceOf",
+      abi: abi["totalLiquidity"],
       calls: Object.entries(pools).map((p: any) => ({
-        target: p[1].underlying,
-        params: p[1].pool,
+        target: p[1].pool,
       })),
       chain: chain as any,
       block,
@@ -117,16 +110,6 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     ),
   ]);
 
-  await Promise.all(
-    Object.entries(pools)
-      .filter(
-        (p: any) => p[1].underlying.toLowerCase() === gasTokenDummyAddress
-      )
-      .map((p: any) =>
-        getGasTokenBalance(chain, p[1].pool, underlyingBalances, block)
-      )
-  );
-
   let coinsData: CoinData[] = await getTokenAndRedirectData(
     Object.entries(pools).map((p: any) =>
       p[1].underlying.toLowerCase() === gasTokenDummyAddress
@@ -137,17 +120,13 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     timestamp
   );
 
-  const underlyingTokenData = await processDbData(
-    underlyingBalances,
-    coinsData,
-    chain
-  );
+  const underlyingTokenData = await processDbData(pools, coinsData, chain);
 
   return formWrites(
     underlyingTokenData,
     pools,
     chain,
-    underlyingBalances,
+    tokenSupplies,
     tokenInfos,
     writes,
     timestamp

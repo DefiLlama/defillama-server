@@ -29689,5 +29689,27 @@ const data2: Protocol[] = [
     parentProtocol: "LFGSwap",
     listedAt: 1680200332
   },
+  {
+    id: "2751",
+    name: "Onchain Trade",
+    address: null,
+    symbol: "OT",
+    url: "https://onchain.trade",
+    description: "Onchain Trade(OT) is a vertically integrated DeFi protocol where people can provide liquidity, swap, borrow and trading perpetuals with 0 slippage. OT designed single side AMM pools so that liquidity can be used for swap as well as borrow, allowing LPs to earn both swap fees and borrow interest, which increases capital efficiency and decreases Impermanent Loss for LPs.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/onchain-trade.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "onchain-trade-protocol",
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "OT/index.js",
+    twitter: "OnchainTrade",
+    audit_links: ["https://onchaintrade.gitbook.io/ot/audit-reports"],
+    listedAt: 1680200261
+  },
 ]
 export default data2;

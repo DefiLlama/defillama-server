@@ -11611,7 +11611,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/marsecosystem"],
     listedAt: 1634207654,
   },
-  {
+  /* {
     id: "668",
     name: "Swap Cat",
     address: null,
@@ -11651,7 +11651,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "swapcat/index.js",
     twitter: null,
     listedAt: 1634223504,
-  },
+  }, */
   {
     id: "669",
     name: "Shield",

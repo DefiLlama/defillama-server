@@ -206,7 +206,7 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
 async function filterCoins(coins: Coin[]): Promise<Coin[]> {
   const str = coins.map(i => i.id).join(',')
   const coinsData = await retryCoingeckoRequest(
-    `https://pro-api.coingecko.com/api/v3/simple/price?ids=${str}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true?&x_cg_pro_api_key=${process.env.CG_KEY}`,
+    `simple/price?ids=${str}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true`,
     3)
 
   return coins.filter(coin => {

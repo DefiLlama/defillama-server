@@ -40,5 +40,5 @@ export function storeStaleCoins2(staleCoins: StaleCoins) {
           SET time = ${currentTime}
         `;
       }),
-    ).catch((e) => console.log("mysql error", e));
+    ).catch((e) => console.log("postgres error", e));
   }

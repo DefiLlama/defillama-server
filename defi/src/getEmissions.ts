@@ -58,6 +58,7 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     nextEvent,
     gecko_id: res.gecko_id,
     mcap: mcap?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0,
+    events: res.metadata.events || [],
   };
 };
 

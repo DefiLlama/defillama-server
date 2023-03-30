@@ -29709,7 +29709,7 @@ const data2: Protocol[] = [
     module: "OT/index.js",
     twitter: "OnchainTrade",
     audit_links: ["https://onchaintrade.gitbook.io/ot/audit-reports"],
-    listedAt: 1680200261
+    listedAt: 1680201542
   },
 ]
 export default data2;

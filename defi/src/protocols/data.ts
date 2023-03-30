@@ -2034,7 +2034,7 @@ const data: Protocol[] = [
     module: "goose.js",
     twitter: "Goosedefi",
     audit_links: ["https://www.goosedefi.com/files/hackenAudit.pdf", "https://www.certik.org/projects/goose-finance"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: [],
   },
   {
     id: "206",

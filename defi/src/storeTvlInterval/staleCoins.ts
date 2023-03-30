@@ -30,7 +30,7 @@ export function storeStaleCoins2(staleCoins: StaleCoins) {
     const sql = postgres(process.env.COINS_DB!);
     const currentTime = getCurrentUnixTimestamp();
     return Promise.all(
-      Object.entries(staleCoins).map(([pk, details]) => {
+      Object.entries(staleCoins).slice(0, 1).map(([pk, details]) => {
         sql`
         INSERT INTO public.stalecoins (id, time, address, lastupdate, chain, symbol)
         VALUES (${pk}, ${currentTime}, ${pk.split(":")[1]}, ${

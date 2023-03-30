@@ -1,8 +1,8 @@
-import { AdapterType } from "@defillama/adaptors/adapters/types"
+import { AdapterType } from "@defillama/dimension-adapters/adapters/types"
 import "../setup.ts"
 import executeAsyncBackfill from "./executeAsyncBackfill"
 import getBackfillEvent from "./getBackfillEvent"
-import printDexsList from "./printDexsList"
+/* import printDexsList from "./printDexsList" */
 
 enum RUNS {
     PRINT_DEXS_LIST,
@@ -10,15 +10,15 @@ enum RUNS {
     EXECUTE_ASYNC_BACKFILL
 }
 
-const RUN: RUNS = RUNS.GET_BACKFILL_EVENT
+const RUN: RUNS = RUNS.EXECUTE_ASYNC_BACKFILL
 
 switch (Number(RUN)) {
     case RUNS.PRINT_DEXS_LIST:
-        printDexsList()
+        /* printDexsList() */
         break
     case RUNS.GET_BACKFILL_EVENT:
         // Make sure to edit based on your needs!
-        getBackfillEvent("uniswap" , AdapterType.VOLUME, true)
+        getBackfillEvent("uniswap" , AdapterType.DEXS, true)
         break
     case RUNS.EXECUTE_ASYNC_BACKFILL:
         executeAsyncBackfill()

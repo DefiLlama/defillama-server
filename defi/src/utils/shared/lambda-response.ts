@@ -81,6 +81,29 @@ export function successResponse(
   });
 }
 
+// TTL must be in seconds
+export function notFoundResponse(
+  json: IJSON,
+  cacheTTL?: number,
+  headers?: Headers
+) {
+  return lambdaResponse({
+    body: json,
+    statusCode: 404,
+    allowCORS: true,
+    cacheTTL,
+    headers,
+  });
+}
+
+export function acceptedResponse(message: string) {
+  return {
+    statusCode: 202,
+    allowCORS: true,
+    body: message
+  }
+}
+
 export function cache20MinResponse(
   json: IJSON,
 ) {

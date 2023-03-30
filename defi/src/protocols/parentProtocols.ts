@@ -17,6 +17,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "aave",
     cmcId: "7278",
     twitter: "AaveAave",
+    governanceID: ["snapshot:aave.eth"],
   },
   {
     id: "Sushi",
@@ -29,6 +30,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6758",
     chains: [],
     twitter: "SushiSwap",
+    governanceID: ["snapshot:sushigov.eth"]
   },
   {
     id: "SUN.io",
@@ -77,6 +79,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "PodsFinance",
+    governanceID: ["snapshot:podsfinance.eth"]
   },
   {
     id: "ApeSwap",
@@ -89,6 +92,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8497",
     chains: [],
     twitter: "ape_swap",
+    governanceID: ["snapshot:apeswap-finance.eth"]
   },
   {
     id: "Parallel DeFi Super App",
@@ -97,8 +101,8 @@ const parentProtocols: IParentProtocol[] = [
     description:
     "Parallel Finance is a Decentralized Money Market Protocol that offers lending, staking, and borrowing in the Polkadot ecosystem. Depositors can lend and stake simultaneously to earn double yield on their staked coins, and borrowers can collateralize to borrow.",
     logo: `${baseIconsUrl}/parallel-defi-super-app.jpg`,
-    gecko_id: null ,
-    cmcId: null,
+    gecko_id: "parallel-finance" ,
+    cmcId: "12887",
     chains: [],
     twitter: "ParallelFi",
   },
@@ -137,6 +141,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "12922",
     chains: [],
     twitter: "HuckleberryDEX",
+    governanceID: ["snapshot:huckleberrydex.eth"]
   },
   {
     id: "MM Finance",
@@ -149,18 +154,20 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "MMFcrypto",
+    governanceID: ["snapshot:mmfinance.eth"]
   },
   {
     id: "Mycelium",
     name: "Mycelium",
-    url: "https://swaps.mycelium.xyz",
+    url: "https://mycelium.xyz",
     description:
-    "Trade with liquidity, leverage, low fees.",
+    "Previously Tracer DAO. Trade with liquidity, leverage and low fees.",
     logo: `${baseIconsUrl}/mycelium.jpg`,
     gecko_id: "mycelium",
     cmcId: "21437",
     chains: [],
     twitter: "mycelium_xyz",
+    governanceID: ["snapshot:tracer.eth", "snapshot:myceliumgrowth.eth"]
   },
   {
     id: "Bancor",
@@ -173,6 +180,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "1727",
     chains: [],
     twitter: "Bancor",
+    governanceID: ["snapshot:bancornetwork.eth"]
   },
   {
     id: "SpiritSwap",
@@ -185,6 +193,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "1359",
     chains: [],
     twitter: "Spirit_Swap",
+    governanceID: ["snapshot:spiritswap.eth"]
   },
   {
     id: "Interlay",
@@ -209,6 +218,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6953",
     chains: [],
     twitter: "fraxfinance",
+    governanceID: ["snapshot:frax.eth"]
   },
   {
     id: "Compound Finance",
@@ -221,6 +231,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5692",
     chains: [],
     twitter: "compoundfinance",
+    governanceID: ["snapshot:comp-vote.eth"]
   },
   {
     id: "Algofi",
@@ -245,6 +256,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "21324",
     chains: [],
     twitter: "redactedcartel",
+    governanceID: ["snapshot:redactedcartel.eth"]
   },
   {
     id: "Tomb Finance",
@@ -257,6 +269,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "11495",
     chains: [],
     twitter: "tombfinance",
+    governanceID: ["snapshot:tombfinance.eth"]
   },
   {
     id: "Volt Finance",
@@ -269,6 +282,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19160",
     chains: [],
     twitter: "Meter_IO",
+    governanceID: ["snapshot:voltswap.eth"]
   },
   {
     id: "Based Finance",
@@ -293,6 +307,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "12387",
     chains: [],
     twitter: "ribbonfinance",
+    governanceID: ["snapshot:rbn.eth", "snapshot:gauge.rbn.eth"]
   },
   {
     id: "Planet",
@@ -305,6 +320,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "10023",
     chains: [],
     twitter: "planet_finance",
+    governanceID: ["snapshot:planetfinance.eth"]
   },
   {
     id: "DAO Maker",
@@ -317,6 +333,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8420",
     chains: [],
     twitter: "TheDaoMaker",
+    governanceID: ["snapshot:shomustgoon.eth"]
   },
   {
     id: "Morpho",
@@ -329,6 +346,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "MorphoLabs",
+    governanceID: ["snapshot:morpho.eth"]
   },
   {
     id: "Quickswap",
@@ -341,6 +359,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19966",
     chains: [],
     twitter: "QuickswapDEX",
+    governanceID: ["snapshot:quickvote.eth"]
   },
   {
     id: "iZUMI Finance",
@@ -377,18 +396,848 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "11396",
     chains: [],
     twitter: "traderjoe_xyz",
+    governanceID: ["snapshot:joegovernance.eth"]
   },
   {
     id: "handle finance",
     name: "handle finance",
     url: "https://handle.fi",
     description:
-      "the global defi FX protocol. borrow, convert & trade multi-currency #stablecoins ",
+      "the global defi FX protocol. borrow, convert & trade multi-currency #stablecoins.",
     logo: `${baseIconsUrl}/handle finance.jpg`,
     gecko_id: "handle-fi",
     cmcId: "11794",
     chains: [],
     twitter: "handle_fi",
+    governanceID: ["snapshot:handlefx.eth"]
+  },
+  {
+    id: "Omnidex",
+    name: "Omnidex",
+    url: "https://omnidex.finance",
+    description:
+      "OmniDex is building a comprehensive decentralized trading platform on the Telos Blockchain.",
+    logo: `${baseIconsUrl}/omnidex.jpg`,
+    gecko_id: "omnidex",
+    cmcId: null,
+    chains: [],
+    twitter: "OmniDex1",
+  },
+  {
+    id: "Amulet",
+    name: "Amulet",
+    url: "https://amulet.org",
+    description:
+      "Amulet has designed an innovative and open risk protection model which not only effectively addresses the common challenges of existing decentralized RPPs, but also creates a new paradigm shift for the whole risk protection sector.",
+    logo: `${baseIconsUrl}/amulet.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AmuletProtocol",
+  },
+  {
+    id: "Uniswap",
+    name: "Uniswap",
+    url: "https://uniswap.org/",
+    description:
+      "Swap, earn, and build on the leading decentralized crypto trading protocol.",
+    logo: `${baseIconsUrl}/uniswap.png`,
+    gecko_id: "uniswap",
+    cmcId: "7083",
+    chains: [],
+    twitter: "Uniswap",
+    governanceID: ["snapshot:uniswap"]
+  },
+  {
+    id: "Tetu",
+    name: "Tetu",
+    url: "http://tetu.io",
+    description:
+      "Tetu is a decentralized organization committed to providing a next generation yield aggregator to DeFi investors. The Tetu core team has deep industry knowledge building back-end international banking systems and development with leading global payment processing infrastructure.",
+    logo: `${baseIconsUrl}/tetu.svg`,
+    gecko_id: "tetu",
+    cmcId: "12452",
+    chains: [],
+    twitter: "tetu_io",
+    governanceID: ["snapshot:tetu.eth"]
+  },
+  {
+    id: "Pando",
+    name: "Pando",
+    url: "https://pando.im",
+    description:
+      "Pando is a set of open financial protocols which includes 3 major protocols: 1.Pando Lake/4swap: a decentralized protocol for automated liquidity provision built with the Mixin Trusted Group. 2.Pando Leaf: a decentralized financial network to minting stablecoins. 3.Pando Rings: a decentralized protocol where you can lend or borrow cryptocurrencies",
+    logo: `${baseIconsUrl}/pando.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "pando_im",
+  },
+  {
+    id: "Meteora",
+    name: "Meteora",
+    url: "https://meteora.ag/",
+    description:
+      "Building the most secure, sustainable & composable yield layer for all of Solana and DeFi",
+    logo: `${baseIconsUrl}/meteora.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MeteoraAG",
+  },
+  {
+    id: "Folks Finance",
+    name: "Folks Finance",
+    url: "https://folks.finance/",
+    description:
+    "Lending and borrowing protocol with innovative features and Liquid Staking built on Algorand Blockchain.",
+    logo: `${baseIconsUrl}/folks-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FolksFinance",
+  },
+  {
+    id: "Yield Yak",
+    name: "Yield Yak",
+    url: "https://yieldyak.com",
+    description:
+    "Yield Yak provides tools for DeFi users on Avalanche. Discover a huge selection of autocompounding farms and make your life easier.",
+    logo: `${baseIconsUrl}/yield yak.png`,
+    gecko_id: "yield-yak",
+    cmcId: "11415",
+    chains: [],
+    twitter: "yieldyak_",
+    governanceID: ["snapshot:yakherd.eth"]
+  },
+  {
+    id: "Animal Farm",
+    name: "Animal Farm",
+    url: "https://animalfarm.app",
+    description:
+    "Our vision is to make traditional finance tools, typically only reserved for the super wealthy, available to the anyone by using decentralized protocols which are not limited by the gatekeeping of centralized institutions. All of our products utilize trustless models that allow users to take full ownership of their personal finances. Lending and yield aggregating is the main focus of Animal Farm, but unlike other platforms Animal Farm is the only true decentralized ownership lending and yield aggregating platform.",
+    logo: `${baseIconsUrl}/animal farm.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "DRIPcommunity",
+    governanceID: ["snapshot:theanimalfarm.eth"]
+  },
+  {
+    id: "Metavault",
+    name: "Metavault",
+    url: "https://metavault.org/",
+    description:
+    "Metavault is a blockchain-based, community governed investment platform and decentralized venture capital fund. It allows anyone to participate in the latest and most profitable DeFi projects and strategies and deploys a in-house development team for project incubation.",
+    logo: `${baseIconsUrl}/metavault.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MetavaultDAO",
+    governanceID: ["snapshot:metavault-trade.eth", "snapshot:metavault-dao.eth"]
+  },
+  /*
+  {
+    id: "MUX Protocol",
+    name: "MUX Protocol",
+    url: "https://mux.network/",
+    description:
+    "MUX (Previously MCDEX),The first Multi-Chain native leveraged trading protocol,\r\nallowing zero price impact trading, up to 100x leverage, no counterparty risks for traders and an optimized on-chain trading experience",
+    logo: `${baseIconsUrl}/mux protocol.png`,
+    gecko_id: "mcdex",
+    cmcId: "5956",
+    chains: [],
+    twitter: "muxprotocol",
+    governanceID: ["snapshot:muxvote.eth"]
+  },
+  */
+  {
+    id: "WOOFi",
+    name: "WOOFi",
+    url: "https://woo.org",
+    description:
+    "Bringing best-in-class liquidity to DeFi and CeFi.",
+    logo: `${baseIconsUrl}/woofi.png`,
+    gecko_id: "woo-network",
+    cmcId: "7501",
+    chains: [],
+    twitter: "WOOnetwork",
+  },
+  {
+    id: "Revert",
+    name: "Revert",
+    url: "https://revert.finance",
+    description:
+    "Actionable analytics for AMM liquidity providers.",
+    logo: `${baseIconsUrl}/revert.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "revertfinance",
+  },
+  {
+    id: "Polycat Finance",
+    name: "Polycat Finance",
+    url: "https://polycat.finance",
+    description:
+    "Polycat is a decentralized hybrid yield optimizer (yield farm and yield aggregator) running on the Polygon blockchain (formerly known as MATIC). The Paw token is the second token in their ecosystem that they introduced with the launch of their AMM.",
+    logo: `${baseIconsUrl}/polycat finance.jpg`,
+    gecko_id: "polycat-finance",
+    cmcId: "10134",
+    chains: [],
+    twitter: "PolycatFinance",
+    governanceID: ["snapshot:polycatfi.eth"]
+  },
+  {
+    id: "mStable",
+    name: "mStable",
+    url: "https://mstable.org/",
+    description:
+    "mStable unites stablecoins, lending and swapping into one standard.",
+    logo: `${baseIconsUrl}/mstable.png`,
+    gecko_id: "meta",
+    cmcId: "5748",
+    chains: [],
+    twitter: "mstable_",
+    governanceID: ["snapshot:mstablegovernance.eth"]
+  },
+  {
+    id: "RealT",
+    name: "RealT",
+    url: "https://realt.co",
+    description:
+    "RealToken provides investors with a method to buy into fractional, tokenized properties, leveraging the U.S. legal system and the permissionless, unrestricted token issuance of Ethereum",
+    logo: `${baseIconsUrl}/realt.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "RealTPlatform",
+  },
+  {
+    id: "NEOPIN",
+    name: "NEOPIN",
+    url: "https://neopin.io",
+    description:
+    "NEOPIN is a one-stop, non-custodial CeDeFi protocol for the secure use of crypto with regulatory frameworks while leveraging the benefits of both CeFi and DeFi.",
+    logo: `${baseIconsUrl}/neopin.png`,
+    gecko_id: "neopin",
+    cmcId: "18966",
+    chains: [],
+    twitter: "NeopinOfficial",
+  },
+  {
+    id: "Sperax",
+    name: "Sperax",
+    url: "http://sperax.io",
+    description:
+    "SperaxUSD (USDs) is a stablecoin and yield-automator on Arbitrum. USDs is 100% backed by collateral that is sent to DeFi strategies to produce a yield. This yield is then distributed to holders in a gasless manner, making compound interest easy",
+    logo: `${baseIconsUrl}/sperax.png`,
+    gecko_id: "sperax",
+    cmcId: "6715",
+    chains: [],
+    twitter: "SperaxUSD",
+    governanceID: ["snapshot:speraxdao.eth"]
+  },
+  {
+    id: "Opyn",
+    name: "Opyn",
+    url: "https://www.opyn.co",
+    description:
+    "Opyn is building Defi-native derivatives and options infrastructure in DeFi",
+    logo: `${baseIconsUrl}/opyn.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "opyn_",
+  },
+  {
+    id: "NEST Protocol",
+    name: "NEST Protocol",
+    url: "https://nestprotocol.org",
+    description:
+    "The NEST oracle solves the problem of price on-chain through a decentralized incentive solution, that is, the price predictor.",
+    logo: `${baseIconsUrl}/nest-protocol.png`,
+    gecko_id: "nest",
+    cmcId: "5841",
+    chains: [],
+    twitter: "nest_protocol",
+    governanceID: ["snapshot:nestecosystem.eth"]
+  },
+  {
+    id: "BAO Finance",
+    name: "BAO Finance",
+    url: "https://app.bao.finance",
+    description:
+    "Bao Finance is a decentralized, community-run project that uses synthetics to move the power of information from institutions to individuals",
+    logo: `${baseIconsUrl}/bao finance.jpg`,
+    gecko_id: "bao-finance-v2",
+    cmcId: null,
+    chains: [],
+    twitter: "BaoFinance",
+    governanceID: ["snapshot:pandaswapbsc.eth", "snapshot:baovotes.eth"]
+  },
+  {
+    id: "UniWswap",
+    name: "UniWswap",
+    url: "https://uniwswap.com/",
+    description:
+    "UniWswap is an AMM and Farm on EthereumPoW",
+    logo: `${baseIconsUrl}/uniwswap.png`,
+    gecko_id: "uniwswap",
+    cmcId: null,
+    chains: [],
+    twitter: "uniwswap",
+  },
+  {
+    id: "Metronome",
+    name: "Metronome",
+    url: "https://www.metronome.io/",
+    description:
+    "Synthesizing the future of DeFi.",
+    logo: `${baseIconsUrl}/metronome.png`,
+    gecko_id: "metronome",
+    cmcId: "2873",
+    chains: [],
+    twitter: "MetronomeDAO",
+    governanceID: ["snapshot:metronome.eth"]
+  },
+  {
+    id: "Paraluni",
+    name: "Paraluni",
+    url: "https://paraluni.org",
+    description:
+    "Paraluni,based on the BSC,a no holding currency, no ICO, no pre-mining decentralized platform.",
+    logo: `${baseIconsUrl}/paraluni.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "paraluni",
+  },
+  {
+    id: "Waterfall Finance",
+    name: "Waterfall Finance",
+    url: "https://wtf.defiwaterfall.com",
+    description:
+    "An innovative eco-system",
+    logo: `${baseIconsUrl}/waterfall-wtf.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "defi_waterfall",
+  },
+  {
+    id: "Inverse Finance",
+    name: "Inverse Finance",
+    url: "https://www.inverse.finance",
+    description:
+    "DOLA Borrowing Rights replace interest rates with a fixed fee that can earn you more.",
+    logo: `${baseIconsUrl}/inverse-finance.jpg`,
+    gecko_id: "inverse-finance",
+    cmcId: "8720",
+    chains: [],
+    twitter: "InverseFinance",
+  },
+  {
+    id: "Kujira Protocol",
+    name: "Kujira Protocol",
+    url: "https://kujira.app",
+    description:
+    "A decentralized ecosystem for protocols, builders and web3 users seeking sustainable FinTech.",
+    logo: `${baseIconsUrl}/kujira-protocol.png`,
+    gecko_id: "kujira",
+    cmcId: "15185",
+    chains: [],
+    twitter: "TeamKujira",
+  },
+  {
+    id: "Steakhut Finance",
+    name: "Steakhut Finance",
+    url: "https://www.steakhut.finance",
+    description:
+    "Discover endless DeFi opportunities, join the liquidity layer of Avalanche.",
+    logo: `${baseIconsUrl}/steakhut-finance.png`,
+    gecko_id: "steakhut-finance",
+    cmcId: "20266",
+    chains: [],
+    twitter: "steakhut_fi",
+  },
+  {
+    id: "MahaDAO",
+    name: "MahaDAO",
+    url: "https://mahadao.com",
+    description:
+    "MahaDAO is a community focused DAO focused on building ARTH, a decentralized valuecoin that maintains the purchasing power of it's token. It is designed to appreciate against the US dollar (after accounting for inflation) in the long run whilst remaining relatively stable in the short run.",
+    logo: `${baseIconsUrl}/mahadao.png`,
+    gecko_id: "mahadao",
+    cmcId: "8043",
+    chains: [],
+    twitter: "TheMahaDAO",
+    governanceID: ["snapshot:maha.eth"]
+  },
+  {
+    id: "Tethys Finance",
+    name: "Tethys Finance",
+    url: "https://tethys.finance",
+    description:
+    "We believe that in the future, L2 solutions will help Ethereum with scaling. Our mission is to empower the Metis Andromeda network with a fast, secure, reliable, and advanced native decentralized exchange app to handle all kinds of trading needs.",
+    logo: `${baseIconsUrl}/tethys-finance.png`,
+    gecko_id: "tethys-finance",
+    cmcId: "16640",
+    chains: [],
+    twitter: "tethysfinance",
+    governanceID: ["snapshot:tethysswap.eth"]
+  },
+  {
+    id: "Timeless",
+    name: "Timeless",
+    url: "https://timelessfi.com",
+    description:
+    "Timeless is powered by yield tokens, specially designed ERC-20 tokens whose values are related to yield rates. Each farm corresponds to a set of three yield tokens.",
+    logo: `${baseIconsUrl}/timeless.jpg`,
+    gecko_id: "timeless",
+    cmcId: "23236",
+    chains: [],
+    twitter: "Timeless_Fi",
+    governanceID: ["snapshot:timelessfi.eth"]
+  },
+  {
+    id: "Cap Finance",
+    name: "Cap Finance",
+    url: "https://www.cap.io",
+    description:
+    "Decentralized Perps. Trade with up to 100x leverage directly from your wallet. ",
+    logo: `${baseIconsUrl}/cap-finance.jpg`,
+    gecko_id: "cap",
+    cmcId: "5809",
+    chains: [],
+    twitter: "CapDotFinance",
+  },
+  {
+    id: "SPHERE",
+    name: "SPHERE",
+    url: "https://www.sphere.finance",
+    description:
+    "The center of DeFi - earn revenue from multiple innovative streams by holding one token.",
+    logo: `${baseIconsUrl}/sphere.jpg`,
+    gecko_id: "sphere-finance",
+    cmcId: "18945",
+    chains: [],
+    twitter: "SphereDeFi",
+    governanceID: ["snapshot:spherefinance.eth"]
+  },
+  {
+    id: "PancakeSwap",
+    name: "PancakeSwap",
+    url: "https://pancakeswap.finance",
+    description:
+    "Trade. Earn. Win. NFT.",
+    logo: `${baseIconsUrl}/pancakeswap.jpg`,
+    gecko_id: "pancakeswap-token",
+    cmcId: "1165",
+    chains: [],
+    twitter: "PancakeSwap",
+    governanceID: ["snapshot:cakevote.eth"]
+  },
+  {
+    id: "ZyberSwap",
+    name: "ZyberSwap",
+    url: "https://www.zyberswap.io",
+    description:
+    "Zyberswap is one of the first decentralized exchanges (DEX) with an automated market-maker (AMM) on the Arbitrum blockchain. ",
+    logo: `${baseIconsUrl}/zyberswap.jpg`,
+    gecko_id: "zyberswap",
+    cmcId: "23419",
+    chains: [],
+    twitter: "zyberswap",
+  },
+  {
+    id: "Scrub Money",
+    name: "Scrub Money",
+    url: "https://scrub.money",
+    description:
+    "Decentralized commerce and services ecosystem",
+    logo: `${baseIconsUrl}/scrub-money.png`,
+    gecko_id: "lion-scrub-finance",
+    cmcId: "19410",
+    chains: [],
+    twitter: "ScrubFinance",
+  },
+  {
+    id: "Bank Of Cronos",
+    name: "Bank Of Cronos",
+    url: "https://boc.bankofcronos.com",
+    description:
+    "BOC is a community-owned decentralized autonomous organization introducing DeFi protocols on the Cronos network. DeFi Simplified, on Cronos.",
+    logo: `${baseIconsUrl}/bank-of-cronos.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "bankofcronos",
+  },
+  {
+    id: "BendDAO",
+    name: "BendDAO",
+    url: "https://www.benddao.xyz",
+    description:
+    "Use your NFTs as collateral to borrow ETH or deposit your ETH and earn yields instantly.",
+    logo: `${baseIconsUrl}/benddao.png`,
+    gecko_id: "benddao",
+    cmcId: "19162",
+    chains: [],
+    twitter: "BendDAO",
+  },
+  {
+    id: "Subzero",
+    name: "Subzero",
+    url: "https://subzero.plus",
+    description:
+    "Subzero is a decentralized venture capital investment protocol on the Avalanche network. The protocol focuses on sustainable mechanisms to encourage long-term staking and providing liquidity.",
+    logo: `${baseIconsUrl}/subzero.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "subzeroplus",
+  },
+  {
+    id: "Diamond",
+    name: "Diamond",
+    url: "https://dmo.finance",
+    description:
+    "Diamond Protocol aims to be the DeFi Lab to build on-chain structured products to earn sustainable yield on crypto assets.",
+    logo: `${baseIconsUrl}/diamond.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "DiamondProtocol",
+  },
+  {
+    id: "Lif3.com",
+    name: "Lif3.com",
+    url: "https://lif3.com/",
+    description:
+    "Lif3.com is a complete multi-chain DeFi Ecosystem",
+    logo: `${baseIconsUrl}/lif3.com.png`,
+    gecko_id: "lif3",
+    cmcId: "20611",
+    chains: [],
+    twitter: "Official_LIF3",
+  },
+  {
+    id: "Timeswap",
+    name: "Timeswap",
+    url: "https://timeswap.io",
+    description:
+    "Timeswap is a fixed time preference protocol for users to manage their ERC20 tokens over discrete time. It works as a zero liquidation money market and options market in one.",
+    logo: `${baseIconsUrl}/timeswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TimeswapLabs",
+  },
+  {
+    id: "Moonwell",
+    name: "Moonwell",
+    url: "https://moonwell.fi/",
+    description:
+    "Moonwell is an open lending and borrowing DeFi protocol on Moonbeam & Moonriver",
+    logo: `${baseIconsUrl}/moonwell-artemis.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LunarTechFdn",
+  },
+  {
+    id: "BeamSwap",
+    name: "BeamSwap",
+    url: "https://beamswap.io",
+    description:
+    "Defi Hub on Moonbeam",
+    logo: `${baseIconsUrl}/beamswap.jpg`,
+    gecko_id: "beamswap",
+    cmcId: "17035",
+    chains: [],
+    twitter: "Beamswapio",
+  },
+  {
+    id: "Surfswap",
+    name: "Surfswap",
+    url: "https://surfdex.io/",
+    description:
+    "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
+    logo: `${baseIconsUrl}/surfswap.jpg`,
+    gecko_id: "surfswap",
+    cmcId: null,
+    chains: [],
+    twitter: "SurfswapDEX",
+  },
+  {
+    id: "Balancer",
+    name: "Balancer",
+    url: "https://balancer.fi",
+    description:
+    "Balancer is a decentralized automated market maker (AMM) protocol built on Ethereum that represents a flexible building block for programmable liquidity.",
+    logo: `${baseIconsUrl}/balancer.png`,
+    gecko_id: "balancer",
+    cmcId: "5728",
+    chains: [],
+    twitter: "Balancer",
+  },
+  {
+    id: "KyberSwap",
+    name: "KyberSwap",
+    url: "https://kyberswap.com",
+    description:
+    "Multichain DEX & aggregator on 14 chains. KyberSwap is both a decentralized exchange (DEX) aggregator and a liquidity source with capital-efficient liquidity pools that earns fees for liquidity providers.",
+    logo: `${baseIconsUrl}/kyberswap.png`,
+    gecko_id: "kyber-network-crystal",
+    cmcId: "9444",
+    chains: [],
+    twitter: "KyberNetwork",
+  },
+  {
+    id: "OpenSea",
+    name: "OpenSea",
+    url: "https://opensea.io/",
+    description: "OpenSea is the world's first and largest web3 marketplace for NFTs and crypto collectibles.",
+    logo: `${baseIconsUrl}/opensea.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "opensea",
+  },
+  {
+    id: "Ruby.Exchange",
+    name: "Ruby.Exchange",
+    url: "https://ruby.exchange",
+    description: "Gasless, NFT-powered AMM/Dual DEX on the SKALE Network",
+    logo: `${baseIconsUrl}/ruby.exchange.jpg`,
+    gecko_id: "ruby",
+    cmcId: null,
+    chains: [],
+    twitter: "ruby_exchange",
+  },
+  {
+    id: "SkullSwap",
+    name: "SkullSwap",
+    url: "https://www.skullswap.exchange",
+    description: "SkullSwap is an automated market-making (AMM) decentralized exchange (DEX) for the Fantom Opera network. ",
+    logo: `${baseIconsUrl}/skullswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "skullswapdex",
+  },
+  {
+    id: "RociFi",
+    name: "RociFi",
+    url: "https://roci.fi",
+    description: "RociFi - On-chain Credit Scoring and Capital-Efficient Lending Protocol",
+    logo: `${baseIconsUrl}/rocifi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "rocifi",
+  },
+  {
+    id: "LFGSwap",
+    name: "LFGSwap",
+    url: "https://app.lfgswap.finance/swap",
+    description: "AMM DEX on EthereumPoW and CORE blockchain",
+    logo: `${baseIconsUrl}/lfgswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LfgSwap",
+  },
+  {
+    id: "Oswap",
+    name: "Oswap",
+    url: "https://oswap.io",
+    description: "A fully decentralized protocol for automated liquidity provision on Obyte.",
+    logo: `${baseIconsUrl}/oswap.jpg`,
+    gecko_id: "byteball",
+    cmcId: "1492",
+    chains: [],
+    twitter: "ObyteOrg",
+  },
+  {
+    id: "ParaSpace",
+    name: "ParaSpace",
+    url: "https://para.space",
+    description: "ParaSpace is a permissionless universal, cross-margin NFT lending protocol that enables users to collateralize both ERC-721 and ERC-20 assets into a single portfolio to borrow against.",
+    logo: `${baseIconsUrl}/paraspace.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ParaSpace_NFT",
+  },
+  {
+    id: "Alpaca Finance",
+    name: "Alpaca Finance",
+    url: "https://www.alpacafinance.org",
+    description: "Alpaca Finance is the largest lending protocol allowing leveraged yield farming on BNB Chain and Fantom. It helps lenders earn safe and stable yields, and offers borrowers undercollateralized loans for leveraged yield farming positions, vastly multiplying their farming principals and resulting profits.",
+    logo: `${baseIconsUrl}/alpaca-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AlpacaFinance",
+  },
+  {
+    id: "Spin",
+    name: "Spin",
+    url: "https://spin.fi",
+    description: "Spin is a 360° decentralized trading and investments platform built on NEAR Protocol. Spin offers a wide range of products designed to meet the demands of both novice and savvy traders, DeFi investors, and passive income seekers.",
+    logo: `${baseIconsUrl}/spin.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "spin_fi",
+  },
+  /*
+  {
+    id: "Morphex",
+    name: "Morphex",
+    url: "https://www.morphex.trade",
+    description: "Trade cryptocurrencies on Fantom with up to 30x leverage directly from your wallet",
+    logo: `${baseIconsUrl}/spin.png`,
+    gecko_id: "mpx",
+    cmcId: "23431",
+    chains: [],
+    twitter: "MorphexFTM",
+  },
+  */
+  {
+    id: "Arrakis Finance",
+    name: "Arrakis Finance",
+    url: "https://www.arrakis.finance",
+    description: "Arrakis is web3's trustless market making infrastructure protocol that enables running sophisticated algorithmic strategies on Uniswap V3. Liquidity providers can utilize Arrakis Vaults to have their liquidity be managed in an automated, capital efficient, non-custodial and transparent manner. ",
+    logo: `${baseIconsUrl}/arrakis-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ArrakisFinance",
+  },
+  {
+    id: "Enosys",
+    name: "Enosys",
+    url: "https://www.arrakis.finance",
+    description: "Formerly FLR Finance. Building a Multi-Chain DeFi Economy. From the creators of @FlareScan and @DeFiOracles",
+    logo: `${baseIconsUrl}/enosys.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "enosys_global",
+  },
+  {
+    id: "Velocimeter",
+    name: "Velocimeter",
+    url: "https://canto.velocimeter.xyz/",
+    description: "Velocimeter's twin-AMM design unites StableSwap pools with Standard 'kxy' liquidity pools. All the trading fees go to Vote-Escrowers of emission token $FLOW which has to be Locked to earn triple 'Bribes' from candidate pools via Trade Fee, Internal Bribes & External Bribes",
+    logo: `${baseIconsUrl}/velocimeter.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "VelocimeterDEX",
+  },
+  {
+    id: "Kleva Protocol",
+    name: "Kleva Protocol",
+    url: "https://kleva.io",
+    description: "KLEVA Protocol is the first Leveraged Yield Farming Protocol on KLAYTN, with aim to become the largest Lending Protocol for Leveraged Yield Farmers and Lenders.",
+    logo: `${baseIconsUrl}/kleva-protocol.png`,
+    gecko_id: "kleva",
+    cmcId: "21122",
+    chains: [],
+    twitter: "KLEVA_Protocol",
+  },
+  {
+    id: "WYND",
+    name: "WYND",
+    url: "https://app.wynddao.com",
+    description: "WYND is a new ReFi protocol to leverage DeFi tokenomics to regenerate the environment.",
+    logo: `${baseIconsUrl}/wynd.jpg`,
+    gecko_id: "wynd",
+    cmcId: null,
+    chains: [],
+    twitter: "wynddao",
+  },
+  {
+    id: "Overnight Finance",
+    name: "Overnight Finance",
+    url: "https://overnight.fi",
+    description: "Overnight Finance is an asset management protocol offering passive yield products based on delta-neutral strategies, primarily for conservative stablecoin investors.",
+    logo: `${baseIconsUrl}/overnight-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "overnight_fi",
+  },
+  {
+    id: "FairySwap",
+    name: "FairySwap",
+    url: "https://fairyswap.finance",
+    description: "The first DAPP on Findora, offering unparalleled privacy and security with zero-knowledge technology.",
+    logo: `${baseIconsUrl}/fairyswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "fairy_swap",
+  },
+  {
+    id: "WEMIX.FI",
+    name: "WEMIX.FI",
+    url: "https://wemix.fi",
+    description: "WEMIX.Fi is the first decentralized exchange on the WEMIX3.0 mainnet. WEMIX.Fi is a fully on-chain DeFi platform supporting storage, exchange, borrowing, settlement and investment of crypto-assets.",
+    logo: `${baseIconsUrl}/wemix.fi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "WemixNetwork",
+  },
+  {
+    id: "Radiant",
+    name: "Radiant",
+    url: "https://radiant.capital/#/markets",
+    description: "Earn Interest & Borrow Assets Cross-Chain, Seamlessly",
+    logo: `${baseIconsUrl}/radiant.png`,
+    gecko_id: "radiant-capital",
+    cmcId: "21106",
+    chains: [],
+    twitter: "RDNTCapital",
+    governanceID: ["snapshot:radiantcapital.eth"],
+  },
+  {
+    id: "PuzzleSwapOrg",
+    name: "PuzzleSwapOrg",
+    url: "https://puzzleswap.org/trade",
+    description: "DEX 2.0 & Lending protocol built on Waves to bring a new light to DeFi experience",
+    logo: `${baseIconsUrl}/puzzle-swap.jpg`,
+    gecko_id: "puzzle-swap",
+    cmcId: null,
+    chains: [],
+    twitter: "puzzle_swap"
+  },
+  {
+    id: "Covo Finance",
+    name: "Covo Finance",
+    url: "https://covo.finance",
+    description: "Covo Finance is a decentralized trading platform that offers spot and perpetual trading with low swap fees and zero market impact. The platform offers a maximum leverage of 50x on major cryptos and is backed by a singular multi-asset pool that generates income for liquidity providers through fees garnered from market making, swap transactions, leveraged trading (including spreads, funding fees, and liquidations), and rebalancing of assets.",
+    logo: `${baseIconsUrl}/covo-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "covofinance"
+  },
+  {
+    id: "Hadouken Finance",
+    name: "Hadouken Finance",
+    url: "https://covo.finance",
+    description: "An integrated borrowing/lending platform and AMM on Godwoken V1 Network.",
+    logo: `${baseIconsUrl}/hadouken-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HadoukenFinance"
   },
 ];
 

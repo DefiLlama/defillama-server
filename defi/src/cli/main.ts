@@ -1,7 +1,5 @@
 import AWS from "aws-sdk";
-import protocols from "../protocols/data";
 const db = require("../../imported-db/defillama-db.json");
-import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import { getClosestDayStartTimestamp } from "../utils/date";
 
 AWS.config.update({ region: "eu-central-1" });

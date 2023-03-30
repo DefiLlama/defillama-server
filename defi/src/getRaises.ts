@@ -24,7 +24,6 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     .filter(
       (r) =>
         r.fields["Company name (pls match names in defillama)"] !== undefined &&
-        r.fields["Source (twitter/news links better because blogposts go down quite often)"] !== undefined &&
         r.fields["Date (DD/MM/YYYY, the correct way)"] !== undefined
     )
     .map((r) => ({
@@ -34,18 +33,20 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
       amount: r.fields["Amount raised (millions)"] ?? null,
       chains: r.fields["Chain"] ?? [],
       sector: r.fields[SECTOR]?.endsWith("\n") ? r.fields[SECTOR].slice(-1) : r.fields[SECTOR] || null,
+      category: r.fields["General Sector"] ?? null,
       source: r.fields["Source (twitter/news links better because blogposts go down quite often)"],
       leadInvestors: r.fields["Lead Investor"] ?? [],
       otherInvestors: r.fields["Other investors"] ?? [],
       valuation: r.fields[VALUATION]?.endsWith("\n") ? r.fields[VALUATION].slice(-1) : r.fields[VALUATION] || null,
+      defillamaId: r.fields["DefiLlama Id"],
     }));
 
   return successResponse(
     {
       raises: formattedRaises,
     },
-    10 * 60
-  ); // 10 mins cache
+    30 * 60
+  );
 };
 
 export default wrap(handler);

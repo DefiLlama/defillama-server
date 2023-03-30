@@ -45,6 +45,7 @@ const chainToLang = {
   NEO: "C#",
   Cardano: "Haskell",
   Lamden: "Python",
+  Icon: "Java",
   Waves: "Ride",
   Elrond: "Rust",
 } as {

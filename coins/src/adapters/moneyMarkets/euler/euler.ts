@@ -50,14 +50,14 @@ function formWrites(
 ) {
   const writes: Write[] = [];
   markets.map((m: any) => {
-    const coinData: CoinData = underlyingPrices.filter(
+    const coinData: CoinData | undefined = underlyingPrices.find(
       (c: CoinData) => c.address == m.underlying.toLowerCase()
-    )[0];
+    );
 
-    if (coinData == undefined) return;
-    const rate: Result = rates.filter(
+    const rate: Result | undefined = rates.find(
       (r: Result) => r.input.target == m.address
-    )[0];
+    );
+    if (coinData == null || rate == null) return;
     const eTokenPrice: number =
       (coinData.price * rate.output) / 10 ** m.decimals;
 
@@ -68,7 +68,7 @@ function formWrites(
       chain,
       m.address,
       eTokenPrice,
-      m.decimals,
+      18,
       `e${m.symbol}`,
       timestamp,
       "euler",
@@ -101,11 +101,10 @@ export default async function getTokenPrices(
       abi: abi.convertBalanceToUnderlying,
       calls: markets.map((m: Market) => ({
         target: m.address,
-        params: [BigNumber.from(10).pow(BigNumber.from(m.decimals)).toString()]
+        params: [BigNumber.from(10).pow(BigNumber.from(18)).toString()]
       })),
       chain: chain as any,
       block,
-      requery: false
     })
   ]);
 

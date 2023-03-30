@@ -1,17 +1,23 @@
-import { successResponse, wrap, IResponse, errorResponse } from "./utils/shared";
+import { wrap, IResponse, errorResponse, cache20MinResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import sluggify from "./utils/sluggify";
-import { storeDataset, buildRedirect } from "./utils/s3";
 import craftProtocol from "./utils/craftProtocol";
 import parentProtocols from "./protocols/parentProtocols";
 import craftParentProtocol from "./utils/craftParentProtocol";
 import standardizeProtocolName from "./utils/standardizeProtocolName";
+import { buildRedirectR2, storeDatasetR2 } from "./utils/r2";
 
-export async function craftProtocolResponse(
-  rawProtocolName: string | undefined,
-  useNewChainNames: boolean,
-  useHourlyData: boolean
-) {
+export async function craftProtocolResponse({
+  rawProtocolName,
+  useNewChainNames,
+  useHourlyData,
+  skipAggregatedTvl,
+}: {
+  rawProtocolName: string | undefined;
+  useNewChainNames: boolean;
+  useHourlyData: boolean;
+  skipAggregatedTvl: boolean;
+}) {
   const protocolName = rawProtocolName?.toLowerCase();
 
   const protocolData = protocols.find((prot) => sluggify(prot) === protocolName);
@@ -27,7 +33,7 @@ export async function craftProtocolResponse(
       });
     }
 
-    return craftParentProtocol(parentProtocol, useNewChainNames, useHourlyData);
+    return craftParentProtocol({ parentProtocol, useHourlyData, skipAggregatedTvl });
   }
 
   if (protocolData === undefined) {
@@ -36,24 +42,31 @@ export async function craftProtocolResponse(
     });
   }
 
-  return craftProtocol(protocolData, useNewChainNames, useHourlyData, false);
+  return craftProtocol({ protocolData, useNewChainNames, useHourlyData, skipAggregatedTvl });
 }
 
 export async function wrapResponseOrRedirect(response: any) {
   const jsonData = JSON.stringify(response);
   const dataLength = Buffer.byteLength(jsonData, "utf8");
-  if (dataLength >= 5.5e6) {
-    const filename = `protocol-${response.name}.json`;
-    await storeDataset(filename, jsonData, "application/json");
 
-    return buildRedirect(filename, 10 * 60);
+  if (process.env.stage !== "prod" || dataLength < 5.5e6) {
+    return cache20MinResponse(response);
   } else {
-    return successResponse(response, 10 * 60); // 10 mins cache
+    const filename = `protocol-${response.name}.json`;
+
+    await storeDatasetR2(filename, jsonData, "application/json");
+
+    return buildRedirectR2(filename, 10 * 60);
   }
 }
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-  const response = await craftProtocolResponse(event.pathParameters?.protocol, false, false);
+  const response = await craftProtocolResponse({
+    rawProtocolName: event.pathParameters?.protocol,
+    useNewChainNames: false,
+    useHourlyData: false,
+    skipAggregatedTvl: false,
+  });
 
   return wrapResponseOrRedirect(response);
 };

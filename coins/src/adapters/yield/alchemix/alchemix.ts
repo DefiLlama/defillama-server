@@ -53,15 +53,14 @@ export default async function getTokenPrices(chain: any, timestamp: number) {
       chain,
       aTokens.map((t: Result) => t.output),
       block,
-      true
     )
   ]);
 
   const writes: Write[] = [];
   aTokens.map((a: Result, i: number) => {
-    const underlyingInfo: CoinData = underlyingInfos.filter(
+    const underlyingInfo: CoinData | undefined = underlyingInfos.find(
       (i: CoinData) => i.address == a.output.toLowerCase()
-    )[0];
+    );
     if (underlyingInfo == null) return;
 
     const price: number = (ratios[i].output * underlyingInfo.price) / 10 ** 18;

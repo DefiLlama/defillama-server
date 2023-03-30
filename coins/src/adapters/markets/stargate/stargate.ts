@@ -1,7 +1,7 @@
 import { multiCall } from "@defillama/sdk/build/abi/index";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectData,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write, CoinData } from "../../utils/dbInterfaces";
@@ -13,19 +13,26 @@ const gasTokenDummyAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
 async function processDbData(
   underlyingBalances: Result[],
-  coinsData: CoinData[]
+  coinsData: CoinData[],
+  chain: string
 ) {
   return underlyingBalances.map((b: Result) => {
+    const token =
+      b.input.target.toLowerCase() === gasTokenDummyAddress
+        ? wrappedGasTokens[chain]
+        : b.input.target.toLowerCase();
     const coinData: CoinData = coinsData.filter(
-      (c: CoinData) => c.address == b.input.target.toLowerCase()
+      (c: CoinData) => c.address.toLowerCase() === token
     )[0];
-    if (coinData == undefined) return;
 
+    if (coinData == undefined) {
+      return;
+    }
     return {
       price: coinData.price,
       decimals: coinData.decimals,
       confidence: coinData.confidence,
-      address: coinData.address
+      address: coinData.address,
     };
   });
 }
@@ -38,33 +45,48 @@ function formWrites(
   writes: Write[],
   timestamp: number
 ) {
-  underlyingTokenData.map((d: any, i: number) => {
-    if (d == undefined) return;
-
-    const j = Object.values(pools).indexOf(
-      Object.values(pools).filter(
-        (p: any) =>
-          d.address ==
-          (p.underlying == gasTokenDummyAddress
-            ? wrappedGasTokens[chain]
-            : p.underlying)
-      )[0]
-    );
-    if (j == -1) return;
-
-    const price =
-      d.price * (underlyingBalances[i].output / tokenInfos.supplies[j].output);
-
+  Object.keys(pools).forEach((p: string) => {
+    const curr = pools[p];
+    const underlying: string =
+      curr.underlying.toLowerCase() === gasTokenDummyAddress
+        ? wrappedGasTokens[chain]
+        : curr.underlying.toLowerCase();
+    const pool: string = curr.pool.toLowerCase();
+    const underlyingInfo = underlyingTokenData.filter(
+      (x: any) => x.address.toLowerCase() === underlying
+    )[0];
+    const underlyingPrice: number = underlyingInfo.price;
+    const underlyingDecimals: number = underlyingInfo.decimals;
+    const underlyingBalance: number = underlyingBalances.filter(
+      (x: any) =>
+        x.input.target.toLowerCase() === underlying &&
+        x.input.params[0].toLowerCase() === pool
+    )[0].output;
+    const poolSupply: number = tokenInfos.supplies.filter(
+      (x: any) => x.input.target.toLowerCase() === pool
+    )[0].output;
+    const poolDecimals: number = tokenInfos.decimals.filter(
+      (x: any) => x.input.target.toLowerCase() === pool
+    )[0].output;
+    const poolSymbol: string = tokenInfos.symbols.filter(
+      (x: any) => x.input.target.toLowerCase() === pool
+    )[0].output;
+    const price: number =
+      underlyingPrice *
+      (underlyingBalance /
+        10 ** underlyingDecimals /
+        (poolSupply / 10 ** poolDecimals));
+    if (!price) return;
     addToDBWritesList(
       writes,
       chain,
-      Object.values(pools)[j].pool,
+      pool,
       price,
-      tokenInfos.decimals[j].output,
-      tokenInfos.symbols[j].output,
+      poolDecimals,
+      poolSymbol,
       timestamp,
       "stargate",
-      d.confidence
+      underlyingInfo.confidence
     );
   });
   return writes;
@@ -82,22 +104,24 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       abi: "erc20:balanceOf",
       calls: Object.entries(pools).map((p: any) => ({
         target: p[1].underlying,
-        params: p[1].pool
+        params: p[1].pool,
       })),
       chain: chain as any,
-      block
+      block,
     }),
     getTokenInfo(
       chain,
       Object.entries(pools).map((p: any) => p[1].pool),
       block,
-      true
-    )
+      { withSupply: true }
+    ),
   ]);
 
   await Promise.all(
     Object.entries(pools)
-      .filter((p: any) => p[1].underlying == gasTokenDummyAddress)
+      .filter(
+        (p: any) => p[1].underlying.toLowerCase() === gasTokenDummyAddress
+      )
       .map((p: any) =>
         getGasTokenBalance(chain, p[1].pool, underlyingBalances, block)
       )
@@ -105,9 +129,9 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   let coinsData: CoinData[] = await getTokenAndRedirectData(
     Object.entries(pools).map((p: any) =>
-      p[1].underlying == gasTokenDummyAddress
+      p[1].underlying.toLowerCase() === gasTokenDummyAddress
         ? wrappedGasTokens[chain]
-        : p[1].underlying
+        : p[1].underlying.toLowerCase()
     ),
     chain,
     timestamp
@@ -115,7 +139,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   const underlyingTokenData = await processDbData(
     underlyingBalances,
-    coinsData
+    coinsData,
+    chain
   );
 
   return formWrites(

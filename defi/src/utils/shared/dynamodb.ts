@@ -8,7 +8,7 @@ const client = new AWS.DynamoDB.DocumentClient({
     region: "local"
   })
 });
-export const TableName = process.env.tableName!;
+export const TableName = process.env.tableName! || process.env.AWS_COINS_TABLE_NAME!
 
 const dynamodb = {
   get: (

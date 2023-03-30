@@ -23,12 +23,16 @@ const manualVaults: { [chain: string]: string[] } = {
     "0x83f798e925bcd4017eb265844fddabb448f1707d", // yUSDT
     "0x73a052500105205d34daf004eab301916da8190f" // yTUSD
   ],
+  optimism: [
+    '0x22f39d6535df5767f8f57fee3b2f941410773ec4', // yvETH
+  ],
   arbitrum: [],
   fantom: []
 };
 const chains: object = {
   ethereum: 1,
   arbitrum: 42161,
+  optimism: 42161,
   fantom: 250
 };
 interface TokenKeys {
@@ -78,40 +82,36 @@ async function getUsdValues(
   coinsData: CoinData[],
   decimals: any
 ) {
+  const failObject = {
+    address: "fail",
+    price: -1,
+    decimal: -1,
+    symbol: "fail"
+  };
   let usdValues = pricePerShares.output.map((t) => {
-    const selectedVaults = vaults.filter(
+    const selectedVault: VaultKeys | undefined = vaults.find(
       (v: VaultKeys) => v.address.toLowerCase() == t.input.target.toLowerCase()
     );
-    const underlying = selectedVaults[0].token.address;
-    const coinData: CoinData = coinsData.filter(
+    if (selectedVault == null) return failObject;
+    const underlying = selectedVault.token.address;
+    const coinData: CoinData | undefined = coinsData.find(
       (c: CoinData) => c.address == underlying.toLowerCase()
-    )[0];
-    if (!coinData)
-      return {
-        address: "fail",
-        price: -1,
-        decimal: -1,
-        symbol: "fail"
-      };
-    const decimal = decimals.filter(
+    );
+    if (!coinData) return failObject;
+    const decimal = decimals.find(
       (c: any) =>
-        selectedVaults[0].address.toLowerCase() == c.input.target.toLowerCase()
-    )[0].output;
+        selectedVault.address.toLowerCase() == c.input.target.toLowerCase()
+    ).output;
 
-    if (decimal == undefined || decimal == null) {
-      return {
-        address: "fail",
-        price: -1,
-        decimal: -1,
-        symbol: "fail"
-      };
+    if (decimal == null) {
+      return failObject;
     }
     const PPSdecimal = resolveDecimals(t.output, 0);
     return {
       address: t.input.target.toLowerCase(),
       price: (t.output * coinData.price) / 10 ** PPSdecimal,
       decimal,
-      symbol: selectedVaults[0].symbol
+      symbol: selectedVault.symbol
     };
   });
 
@@ -163,15 +163,20 @@ async function pushMoreVaults(
   }));
   vaults.push(...vaultInfo);
 }
+
+const blacklistedTokens = new Set([
+  '0xbD17B1ce622d73bD438b9E658acA5996dc394b0d',
+].map(i => i.toLowerCase()))
+
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
+
   let vaults: VaultKeys[] = (
     await axios.get(
-      `https://api.yearn.finance/v1/chains/${
-        chains[chain as keyof object]
+      `https://api.yearn.finance/v1/chains/${chains[chain as keyof object]
       }/vaults/all`
     )
-  ).data;
+  ).data.filter((i: any) => !blacklistedTokens.has(i.address.toLowerCase()))
   // 135
   await pushMoreVaults(chain, vaults, block);
 
@@ -212,7 +217,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       v.symbol,
       timestamp,
       "yearnV2",
-      1
+      0.9
     );
   });
   return writes;

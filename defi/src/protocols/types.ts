@@ -22,7 +22,9 @@ export interface Protocol {
     listedAt?: number;
     openSource?: boolean;
     parentProtocol?: string;
-    referralUrl?: string
+    treasury?: string;
+    referralUrl?: string;
+    governanceID?: Array<string>
   }
 
   export interface IParentProtocol {
@@ -38,4 +40,5 @@ export interface Protocol {
     twitter: string;
     oracles?: Array<string>;
     forkedFrom?: Array<string>;
+    governanceID?: Array<string>
   }

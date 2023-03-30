@@ -1,11 +1,11 @@
 import { craftProtocolsResponse } from "./getProtocols";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { store } from "./utils/s3";
 import { constants, brotliCompressSync } from "zlib";
 import { getProtocolTvl } from "./utils/getProtocolTvl";
 import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
+import { storeR2 } from "./utils/r2";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -39,10 +39,11 @@ const handler = async (_event: any) => {
           tvlPrevMonth: protocolTvls.tvlPrevMonth,
           chainTvls: protocolTvls.chainTvls,
           parentProtocol: protocol.parentProtocol,
+          defillamaId: protocol.id,
         };
       })
     )
-  ).filter((p) => p.category !== "Chain");
+  ).filter((p) => p.category !== "Chain" && p.category !== "CEX");
 
   const chains = {} as { [chain: string]: number };
   const protocolCategoriesSet: Set<string> = new Set();
@@ -51,10 +52,22 @@ const handler = async (_event: any) => {
     if (!p.category) return;
 
     protocolCategoriesSet.add(p.category);
-    if (p.category !== "Bridge") {
+    if (p.category !== 'Bridge' && p.category !== 'RWA') {
       p.chains.forEach((c: string) => {
-        chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
-      });
+        chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0)
+
+        if (p.chainTvls[`${c}-liquidstaking`]) {
+          chains[c] = (chains[c] ?? 0) - (p.chainTvls[`${c}-liquidstaking`]?.tvl ?? 0)
+        }
+
+        if (p.chainTvls[`${c}-doublecounted`]) {
+          chains[c] = (chains[c] ?? 0) - (p.chainTvls[`${c}-doublecounted`]?.tvl ?? 0)
+        }
+
+        if (p.chainTvls[`${c}-dcAndLsOverlap`]) {
+          chains[c] = (chains[c] ?? 0) + (p.chainTvls[`${c}-dcAndLsOverlap`]?.tvl ?? 0)
+        }
+      })
     }
   });
 
@@ -78,7 +91,7 @@ const handler = async (_event: any) => {
       parentProtocols,
     })
   );
-  await store("lite/protocols2", compressedV2Response, true);
+  await storeR2("lite/protocols2", compressedV2Response, true);
 };
 
 export default wrapScheduledLambda(handler);

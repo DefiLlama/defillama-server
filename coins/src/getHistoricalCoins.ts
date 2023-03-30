@@ -1,15 +1,18 @@
 require("dotenv").config();
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
-import { DAY } from "./utils/processCoin";
 import { CoinsResponse, getBasicCoins } from "./utils/getCoinsUtils";
 import { storeMissingCoins } from "./utils/missingCoins";
 import { getCurrentUnixTimestamp } from "./utils/date";
+import { quantisePeriod } from "./utils/timestampUtils";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
   const requestedCoins = (event.pathParameters?.coins ?? "").split(",");
+  const searchWidth: number = quantisePeriod(
+    event.queryStringParameters?.searchWidth?.toLowerCase() ?? "6h"
+  );
   const timestampRequested = Number(event.pathParameters!.timestamp);
   const { PKTransforms, coins } = await getBasicCoins(requestedCoins);
   const response = {} as CoinsResponse;
@@ -18,7 +21,7 @@ const handler = async (
       const finalCoin = await getRecordClosestToTimestamp(
         coin.redirect ?? coin.PK,
         timestampRequested,
-        DAY / 4
+        searchWidth
       );
       if (finalCoin.SK === undefined) {
         // if (process.env.DEFILLAMA_SDK_MUTED == "true") {
@@ -40,13 +43,17 @@ const handler = async (
         symbol: coin.symbol,
         price: finalCoin.price,
         timestamp: finalCoin.SK,
-        confidence: finalCoin.confidence,
-    };
-  }))
-  await storeMissingCoins(requestedCoins, response, timestampRequested);
-  return successResponse({
-    coins: response
-  }, 3600); // 1 hour cache
+        confidence: finalCoin.confidence
+      };
+    })
+  );
+  // await storeMissingCoins(requestedCoins, response, timestampRequested);
+  return successResponse(
+    {
+      coins: response
+    },
+    3600
+  ); // 1 hour cache
 };
 
 export default wrap(handler);

@@ -1,3 +1,4 @@
+import { IJSON } from "./adaptors/data/types";
 import { Protocol } from "./protocols/types";
 
 export interface TokenPrices {
@@ -49,6 +50,20 @@ export interface ProtocolTvls {
   chainTvls: ITvlsWithChangesByChain;
 }
 
+export interface IRaise {
+  date: number;
+  name: string;
+  amount: number;
+  round: string;
+  chains: Array<string>;
+  sector: string;
+  source: string;
+  valuation: number;
+  defillamaId?: number;
+  leadInvestors: Array<string>;
+  otherInvestors: Array<string>;
+}
+
 export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "module"> {
   symbol?: string;
   chain?: string;
@@ -63,6 +78,9 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   tokensInUsd?: ITokens;
   tokens?: ITokens;
   isParentProtocol?: boolean;
+  raises: Array<IRaise>;
+  metrics?: IJSON<boolean>;
+  mcap?: number | null;
 }
 
 export interface IProtocol
@@ -80,6 +98,7 @@ export interface IProtocol
   fdv?: number;
   staking?: number;
   pool2?: number;
+  tokenBreakdowns: { [key: string]: number };
 }
 
 export type LiteProtocol = Pick<

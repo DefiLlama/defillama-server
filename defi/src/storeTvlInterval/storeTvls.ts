@@ -1,31 +1,35 @@
 import { storeTvl } from "./getAndStoreTvl";
-import { getCurrentBlocks } from "./blocks";
+import { getCurrentBlock } from "./blocks";
 import { getCoingeckoLock, releaseCoingeckoLock } from "../utils/shared/coingeckoLocks";
 import protocols from "../protocols/data";
 import { importAdapter } from "../utils/imports/importAdapter";
 import { executeAndIgnoreErrors } from "./errorDb";
 import { getCurrentUnixTimestamp } from "../utils/date";
-import { storeStaleCoins, StaleCoins } from "./staleCoins";
+import { storeStaleCoins, storeStaleCoins2, StaleCoins } from "./staleCoins";
+import { PromisePool } from '@supercharge/promise-pool'
 
 const maxRetries = 4;
 const millisecondsBeforeLambdaEnd = 30e3; // 30s
 
-export default async (protocolIndexes:number[], getRemainingTimeInMillis:()=>number) => {
-  const blocksTimeout = setTimeout(()=>
+export default async (protocolIndexes: number[], getRemainingTimeInMillis: () => number) => {
+  const blocksTimeout = setTimeout(() =>
     executeAndIgnoreErrors('INSERT INTO `timeouts` VALUES (?, ?)', [getCurrentUnixTimestamp(), "blocks"]),
     getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
-  const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlocks();
   clearTimeout(blocksTimeout)
-  
+
   const staleCoins: StaleCoins = {};
-  const actions = protocolIndexes
-    .map(idx=>protocols[idx])
-    .map((protocol) =>{
-      const protocolTimeout = setTimeout(()=>
+  const actions = protocolIndexes.map(idx => protocols[idx])
+
+  await PromisePool
+    .withConcurrency(16)
+    .for(actions)
+    .process(async  (protocol: any) => {
+      const protocolTimeout = setTimeout(() =>
         executeAndIgnoreErrors('INSERT INTO `timeouts` VALUES (?, ?)', [getCurrentUnixTimestamp(), protocol.name]),
         getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd)
       const adapterModule = importAdapter(protocol)
-      return storeTvl(
+      const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
+      await storeTvl(
         timestamp,
         ethereumBlock,
         chainBlocks,
@@ -34,15 +38,21 @@ export default async (protocolIndexes:number[], getRemainingTimeInMillis:()=>num
         staleCoins,
         maxRetries,
         getCoingeckoLock,
-      ).then(()=>clearTimeout(protocolTimeout))
-    });
+      )
+      return clearTimeout(protocolTimeout)
+    })
+
   const timer = setInterval(() => {
     // Rate limit is 100 calls/min for coingecko's API
     // So we'll release one every 0.6 seconds to match it
     releaseCoingeckoLock();
   }, 600);
-  await Promise.all(actions);
   clearInterval(timer);
-  await storeStaleCoins(staleCoins)
+  await Promise.all([
+    //storeStaleCoins(staleCoins),
+    storeStaleCoins2(staleCoins),
+  ]);
   return;
+
+  
 };

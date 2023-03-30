@@ -5,7 +5,12 @@ const normalizedChainReplacements = {
   "terra classic": "terra",
   "nova network": "nova" ,
   "godwokenv1" : "godwoken_v1",
-  "arbitrum nova" : "arbitrum_nova"
+  "arbitrum nova" : "arbitrum_nova",
+  "OKExChain": "OKXChain",
+  "zkSync": "zkSync Lite",
+  "zkSync Era": "era",
+  "polygon zkEVM": "polygon_zkevm"
+
 } as {
   [chain: string]: string
 }
@@ -13,6 +18,14 @@ const normalizedChainReplacements = {
 export function normalizeChain(chain: string) {
   let normalizedChain = chain.toLowerCase();
   return normalizedChainReplacements[normalizedChain] ?? normalizedChain;
+}
+
+export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string){
+  return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield");
+}
+
+export function isExcludedFromChainTvl(category?: string){
+  return category === "RWA";
 }
 
 export const nonChains = ['PK', 'SK', 'tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
@@ -35,9 +48,9 @@ export const chainCoingeckoIds = {
     chainId: 1,
   },
   "Arbitrum": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "arbitrum",
+    symbol: "ARB",
+    cmcId: "11841",
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -154,11 +167,11 @@ export const chainCoingeckoIds = {
     cmcId: "4846",
     categories: ["Cosmos"],
   },
-  "OKExChain": {
+  "OKXChain": {
     geckoId: "oec-token",
     symbol: "OKT",
     cmcId: "8267",
-    categories: ["EVM"],
+    categories: ["EVM", "Cosmos"],
     chainId: 66,
   },
   "Wanchain": {
@@ -220,7 +233,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 1666600000,
   },
-  "RSK": {
+  "Rootstock": {
     geckoId: "rootstock",
     symbol: "RBTC",
     cmcId: "3626",
@@ -258,6 +271,7 @@ export const chainCoingeckoIds = {
     geckoId: "tron",
     symbol: "TRON",
     cmcId: "1958",
+    categories: ["EVM"],
   },
   "Icon": {
     geckoId: "icon",
@@ -475,7 +489,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 55,
   },
-  "Elrond": {
+  "MultiversX": {
     geckoId: "elrond-erd-2",
     symbol: "EGLD",
     cmcId: "6892",
@@ -581,7 +595,7 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 2020,
   },
-  "zkSync": {
+  "zkSync Lite": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -772,7 +786,7 @@ export const chainCoingeckoIds = {
     symbol: "VITE",
     cmcId: "2937",
   },
-  "Milkomeda": {
+  "Milkomeda C1": {
     geckoId: null,
     symbol: null,
     cmcId: null,
@@ -823,6 +837,7 @@ export const chainCoingeckoIds = {
     geckoId: "hedera-hashgraph",
     symbol: "HBAR",
     cmcId: "4642",
+    categories: ["EVM"],
   },
   "Findora": {
     geckoId: "findora",
@@ -1062,10 +1077,10 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "Canto": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
-    categories: ["EVM"],
+    geckoId: "canto",
+    symbol: "CANTO",
+    cmcId: "21516",
+    categories: ["EVM", "Cosmos"],
   },
     "Ripple": {
       geckoId: "ripple",
@@ -1154,6 +1169,231 @@ export const chainCoingeckoIds = {
     cmcId: "3884",
     categories: ["EVM"],
   },
+  "Aptos": {
+    geckoId: "aptos",
+    symbol: "APT",
+    cmcId: "21794",
+  },
+  "Kekchain": {
+    geckoId: "kekchain",
+    symbol: "KEK",
+    cmcId: "21606",
+    categories: ["EVM"],
+    chainId: 420420,
+  },
+  "Milkomeda A1": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Algorand",
+      types: ["L2", "gas"]
+    },
+    chainId: 2002,
+  },
+  "Stride": {
+    geckoId: "stride",
+    symbol: "STRD",
+    cmcId: "21781",
+    categories: ["Cosmos"],
+  },
+  "MUUCHAIN": {
+    geckoId: "muu-inu",
+    symbol: "MUU",
+    cmcId: "22020",
+    categories: ["EVM"],
+    chainId: 20402,
+  },
+  "Injective": {
+    geckoId: "injective-protocol",
+    symbol: "INJ",
+    cmcId: null,
+    categories: ["Cosmos"],
+  },
+  "Step": {
+    geckoId: "stepex",
+    symbol: "SPEX",
+    cmcId: "21725",
+    categories: ["EVM"],
+  },
+  "TON": {
+    geckoId: "the-open-network",
+    symbol: "TON",
+    cmcId: "11419",
+  },
+  "Starknet": {
+    geckoId: "starknet",
+    symbol: "STRK",
+    cmcId: null,
+  },
+  "Dexit": {
+    geckoId: "dexit-finance",
+    symbol: "DXT",
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Empire": {
+    geckoId: null,
+    symbol: "EMPIRE",
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Boba_Avax": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Boba_Bnb": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Comdex": {
+    geckoId: "comdex",
+    symbol: "CMDX",
+    cmcId: "14713",
+    categories: ["Cosmos"],
+  },
+  "Flare": {
+    geckoId: "flare-networks",
+    symbol: "FLR",
+    cmcId: "4172",
+    categories: ["EVM"],
+  },
+  "Tlchain": {
+    geckoId: "tlchain",
+    symbol: "TLC",
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Zeniq": {
+    geckoId: null,
+    symbol: "ZENIQ",
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Omax": {
+    geckoId: "omax-token",
+    symbol: "OMAX",
+    cmcId: "13916",
+    categories: ["EVM"],
+  },
+  "Bitindi": {
+    geckoId: "bitindi-chain",
+    symbol: "BNI",
+    cmcId: "22026",
+    categories: ["EVM"],
+  },
+  "Map": {
+    geckoId: "marcopolo",
+    symbol: "MAP",
+    cmcId: "4956",
+    categories: ["EVM"],
+  },
+  "Stargaze": {
+    geckoId: "stargaze",
+    symbol: "STARS",
+    cmcId: "16842",
+    categories: ["Cosmos"],
+  },
+  "Libre": {
+    geckoId: "libre",
+    symbol: "LIBRE",
+    cmcId: null,
+  },
+  "Umee": {
+    geckoId: "umee",
+    symbol: "UMEE",
+    cmcId: "16389",
+    categories: ["Cosmos"],
+  },
+  "WEMIX": {
+    geckoId: "wemix-token",
+    symbol: "WEMIX",
+    cmcId: "7548",
+  },
+  "Persistence": {
+    geckoId: "persistence",
+    symbol: "XPRT",
+    cmcId: "7281",
+    categories: ["Cosmos"],
+  },
+  "ENULS": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "Oraichain": {
+    geckoId: "oraichain-token",
+    symbol: "ORAI",
+    cmcId: "7533",
+    categories: ["Cosmos"],
+  },
+  "Goerli": {
+    geckoId: "goerli-eth",
+    symbol: "GETH",
+    cmcId: "23669",
+    categories: ["EVM"],
+  },
+  "Europa": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "CORE": {
+    geckoId: "coredaoorg",
+    symbol: "CORE",
+    cmcId: "23254",
+    categories: ["EVM"],
+  },
+  "Rangers": {
+    geckoId: "rangers-protocol-gas",
+    symbol: "RPG",
+    cmcId: "12221",
+    categories: ["EVM"],
+  },
+  "Lung": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 78887
+  },
+  "Loop": {
+    geckoId: "loopnetwork",
+    symbol: "LOOP",
+    cmcId: "18761",
+    categories: ["EVM"],
+  },
+  "Bone": {
+    geckoId: null,
+    symbol: "BONE",
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "zkSync Era": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    chainid: 324,
+  },
+  "Polygon zkEVM": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1173,8 +1413,13 @@ chainCoingeckoIds["Kucoin"] = chainCoingeckoIds["KCC"]
 chainCoingeckoIds["Cosmos"] = chainCoingeckoIds["CosmosHub"]
 chainCoingeckoIds["Terra"] = chainCoingeckoIds["Terra Classic"]
 chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
+chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
+chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
+chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
+chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKXChain"]
 
-export const extraSections = ["staking", "pool2", "offers", "borrowed", "masterchef", "treasury", "vesting"]
+
+export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
 
 export function transformNewChainName(chain: string) {
   switch (chain) {
@@ -1182,6 +1427,8 @@ export function transformNewChainName(chain: string) {
       return "BSC"
     case "Kucoin":
       return "KCC"
+    case "OKExChain":
+      return "OKXChain"
     case "xDai":
       return "Gnosis"
     case "Cosmos":
@@ -1194,6 +1441,18 @@ export function transformNewChainName(chain: string) {
       return "GodwokenV1"
     case "arbitrum_nova":
       return "Arbitrum Nova"
+    case "Milkomeda":
+        return "Milkomeda C1"
+    case "Elrond":
+      return "MultiversX"
+    case "RSK":
+      return "Rootstock"
+    case "Orai":
+      return "Oraichain"
+    case "zkSync":
+      return "zkSync Lite"
+    case "polygon_zkevm":
+      return "Polygon zkEVM"
     default:
       return chain
   }
@@ -1213,6 +1472,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Wanchain"
     case "kcc":
       return useNewChainNames ? "KCC" : "Kucoin"
+    case "okexchain":
+      return useNewChainNames ? "OKXChain": "OKExChain"
     case "xdai":
       return useNewChainNames ? "Gnosis" : "xDai"
     case "cosmos":
@@ -1223,14 +1484,14 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "Nova Network" : "Nova Network"
     case "godwoken_v1":
       return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
-    case "arbitrum_nova":
-      return useNewChainNames ? "Arbitrum Nova" : "Arbitrum Nova"
+    case "elrond":
+      return useNewChainNames ? "MultiversX" : "Elrond"
+    case "rsk":
+      return useNewChainNames ? "Rootstock" : "RSK"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
       return "XdaiArb"
-    case "okexchain":
-      return "OKExChain"
     case "defichain":
       return "DefiChain"
     case "stacks":
@@ -1241,8 +1502,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "EOS"
     case "neo":
       return "NEO"
-    case "rsk":
-      return "RSK"
     case "iotex":
       return "IoTeX"
     case "thundercore":
@@ -1277,8 +1536,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Polis"
     case "zyx":
       return "ZYX"
-    case "elrond":
-      return "Elrond"
     case "stellar":
       return "Stellar"
     case "shiden":
@@ -1300,7 +1557,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
-      return "zkSync"
+        return useNewChainNames ? "zkSync Lite": "zkSync"
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -1342,7 +1599,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "vite":
       return "Vite"
     case "milkomeda":
-      return "Milkomeda"
+      return useNewChainNames ? "Milkomeda C1" : "Milkomeda"
     case "dfk":
       return "DFK"
     case "clv":
@@ -1451,7 +1708,78 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Cube"
     case "functionx":
       return "FunctionX"
-
+    case "aptos":
+      return "Aptos"
+    case "kekchain":
+      return "Kekchain"
+    case "milkomeda_a1":
+      return "Milkomeda A1"
+    case "stride":
+      return "Stride"
+    case "muuchain":
+      return "MUUCHAIN"
+    case "injective":
+      return "Injective"
+    case "step":
+      return "Step"
+    case "ton":
+      return "TON"
+    case "starknet":
+      return "Starknet"
+    case "dexit":
+      return "Dexit"
+    case "empire":
+      return "Empire"
+    case "boba_avax":
+      return "Boba_Avax"
+    case "boba_bnb":
+      return "Boba_Bnb"
+    case "comdex":
+      return "Comdex"
+    case "flare":
+      return "Flare"
+    case "tlchain":
+      return "Tlchain"
+    case "zeniq":
+      return "Zeniq"
+    case "omax":
+      return "Omax"
+    case "bitindi":
+      return "Bitindi"
+    case "map":
+      return "Map"
+    case "stargaze":
+      return "Stargaze"
+    case "libre":
+      return "Libre"
+    case "umee":
+      return "Umee"
+    case "wemix":
+      return "WEMIX"
+    case "persistence":
+      return "Persistence"
+    case "enuls":
+      return "ENULS"
+    case "orai":
+      return useNewChainNames ? "Oraichain" : "Orai"
+    case "goerli":
+      return "Goerli"
+    case "europa":
+      return "Europa"
+    case "core":
+      return "CORE"
+    case "rpg":
+      return "Rangers"
+    case "lung":
+      return "Lung"
+    case "loop":
+      return "Loop"
+    case "bone":
+      return "Bone"
+    case "era":
+      return "zkSync Era"
+    case "polygon_zkevm":
+      return "Polygon zkEVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

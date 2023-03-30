@@ -8,14 +8,8 @@ export default async function getRecordEarliestTimestamp(PK: string) {
         ":sk": 0
       },
       KeyConditionExpression: "PK = :pk AND SK > :sk",
+      Limit: 1,
       ScanIndexForward: true
     })
-    .then((records) => {
-      if (records.Items == undefined || records.Items.length == 0) {
-        return {
-          SK: undefined
-        };
-      }
-      return records.Items[0];
-    });
+    .then((res) => res.Items?.[0]);
 }

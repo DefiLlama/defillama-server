@@ -8,3 +8,5 @@ docker
 .esbuild
 .vscode
 .idea
+
+defi/src/cli/tmp

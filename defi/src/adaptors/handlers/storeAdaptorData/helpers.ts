@@ -1,4 +1,4 @@
-import { IRunAdapterResponseFulfilled, IRunAdapterResponseRejected } from "@defillama/adaptors/adapters/utils/runAdapter"
+import { IRunAdapterResponseFulfilled, IRunAdapterResponseRejected } from "@defillama/dimension-adapters/adapters/utils/runAdapter"
 import { IJSON } from "../../data/types"
 import { RawRecordMap } from "../../db-utils/adaptor-record"
 
@@ -9,7 +9,7 @@ export function processFulfilledPromises(fulfilledResults: IRunAdapterResponseFu
     for (const [RECORD_TYPE, ATTRIBUTE] of Object.entries(ATTRIBUTE_KEYS)) {
         for (const result of results) {
             const value = result[ATTRIBUTE]
-            if (value && result.chain) {
+            if (value !== undefined && result.chain) {
                 if (!rawRecord[RECORD_TYPE]) rawRecord[RECORD_TYPE] = {}
                 const recordChain = rawRecord[RECORD_TYPE][result.chain]
                 if (typeof recordChain === 'number') return
@@ -17,7 +17,7 @@ export function processFulfilledPromises(fulfilledResults: IRunAdapterResponseFu
                     ...rawRecord[RECORD_TYPE],
                     [result.chain]: {
                         ...recordChain,
-                        [module]: +value
+                        [module]: typeof value === 'object' ? value : +value
                     }
                 }
             }
@@ -31,10 +31,11 @@ export const STORE_ERROR = "STORE_ERROR"
 export function processRejectedPromises(rejectedResults: IRunAdapterResponseRejected[], rawRecord: RawRecordMap, dexName: string, ATTRIBUTE_KEYS: IJSON<string>) {
     for (const [RECORD_TYPE, ATTRIBUTE] of Object.entries(ATTRIBUTE_KEYS)) {
         for (const result of rejectedResults) {
-            console.error(`${STORE_ERROR}:${dexName}:Rejected: ${JSON.stringify(result)}\nTIMESTAMP: ${result.timestamp}`)
+            console.error(`${STORE_ERROR}:${dexName}:Rejected:${ATTRIBUTE}: \nTIMESTAMP: ${result.timestamp}`, result)
             if (!rawRecord[RECORD_TYPE]) rawRecord[RECORD_TYPE] = {}
             const recordChain = rawRecord[RECORD_TYPE][result.chain]
             if (typeof recordChain === 'number') return
+            // TODO: change errors to another column
             rawRecord[RECORD_TYPE] = {
                 ...rawRecord[RECORD_TYPE],
                 [result.chain]: {

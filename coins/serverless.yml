@@ -54,6 +54,11 @@ provider:
         - "s3:ListBucket"
         - "s3:*Object*"
       Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "secretsmanager:GetSecretValue"
+      Resource:
+        - "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     BSC_RPC: ${file(./env.js):BSC_RPC}
@@ -92,6 +97,9 @@ custom:
   domain: ${self:custom.domainMap.${self:custom.stage}.domain}
   certificateArn: ${self:custom.domainMap.${self:custom.stage}.certificateArn}
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
+  datadog:
+    site: datadoghq.eu
+    apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   logRetentionInDays: 30
 
 functions:
@@ -108,6 +116,20 @@ functions:
       - http:
           path: prices
           method: post
+  mcaps:
+    handler: src/getMcaps.default
+    timeout: 60
+    events:
+      - http:
+          path: mcaps
+          method: post
+  chains:
+    handler: src/getChains.default
+    timeout: 60
+    events:
+      - http:
+          path: chains
+          method: get
   coinPrices:
     handler: src/getCoinPrices.default
     timeout: 60
@@ -122,12 +144,40 @@ functions:
       - http:
           path: prices/current/{coins}
           method: get
+  coinFirstTimestamp:
+    handler: src/getCoinFirstTimestamp.default
+    timeout: 60
+    events:
+      - http:
+          path: prices/first/{coins}
+          method: get
   historicalCoinPrices:
     handler: src/getHistoricalCoins.default
     timeout: 60
     events:
       - http:
           path: prices/historical/{timestamp}/{coins}
+          method: get
+  coinPriceChart:
+    handler: src/getCoinPriceChart.default
+    timeout: 60
+    events:
+      - http:
+          path: chart/{coins}
+          method: get
+  batchHistorical:
+    handler: src/getBatchHistoricalCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: batchHistorical
+          method: get
+  coinPercentageChange:
+    handler: src/getPercentageChange.default
+    timeout: 60
+    events:
+      - http:
+          path: percentage/{coins}
           method: get
   block:
     handler: src/getBlock.default
@@ -152,18 +202,23 @@ functions:
   triggerHourlyFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
     events:
-      - schedule: cron(0 * * * ? *) # Hourly
+      - schedule: cron(0 0,12 * * ? *) # every 12 hours
   fetchHourlyCoingeckoData:
     handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
     timeout: 900
   storeDefiCoins:
     handler: src/storeCoins.default
     timeout: 900
-    memorySize: 10240
+    memorySize: 1024
   triggerStoreDefiCoins:
     handler: src/triggerStoreCoins.default
     timeout: 900
-    memorySize: 10240
+    events:
+      - schedule: cron(0 * * * ? *) # Hourly
+  StoreBridgedCoins:
+    handler: src/storeBridgedCoins.default
+    timeout: 900
+    memorySize: 1024
     events:
       - schedule: cron(0 * * * ? *) # Hourly
 
@@ -180,3 +235,4 @@ plugins:
   - serverless-offline
   - serverless-prune-plugin
   - serverless-plugin-log-retention
+  - serverless-plugin-datadog

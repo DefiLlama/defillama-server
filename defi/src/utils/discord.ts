@@ -1,6 +1,9 @@
 import fetch from "node-fetch"
 
-export async function sendMessage(message: string, webhookUrl:string, formatted = true) {
+export async function sendMessage(message: string, webhookUrl:string|undefined, formatted = true) {
+    if(webhookUrl === undefined){
+      throw new Error(`You are missing an env variable for discord hooks (eg TEAM_WEBHOOK, OUTDATED_WEBHOOK, SPIKE_WEBHOOK...) and this makes it impossible to send the following error message: "${message}"`)
+    }
     const formattedMessage = formatted? "```\n" + message + "\n```" : message; // Put it into a code block to prevent the format from getting messed up
     if(formattedMessage.length >= 2000){
       const lines = message.split('\n')

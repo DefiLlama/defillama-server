@@ -1,6 +1,6 @@
-import adapters from "./adapters/index";
-import { batchWrite } from "./utils/shared/dynamodb";
-import { filterWritesWithLowConfidence } from "./adapters/utils/database";
+import adapters from "../adapters/index";
+import { batchWrite } from "../utils/shared/dynamodb";
+import { filterWritesWithLowConfidence } from "../adapters/utils/database";
 
 // CHOOSE YOUR TIMESTAMPS AND PROTOCOLS HERE
 const batchStep = 2000; // USUALLY NO NEED TO CHANGE

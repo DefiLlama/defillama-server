@@ -49,7 +49,7 @@ export default async (protocolIndexes: number[], getRemainingTimeInMillis: () =>
   }, 600);
   clearInterval(timer);
   await Promise.all([
-    storeStaleCoins(staleCoins),
+    //storeStaleCoins(staleCoins),
     storeStaleCoins2(staleCoins),
   ]);
   return;

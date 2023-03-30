@@ -10,6 +10,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     XRPC: "0xd4ca5c2aff1eefb0bea9e9eab16f88db2990c183",
     LUFFY: "0x54012cdf4119de84218f7eb90eeb87e25ae6ebd7",
     LUFFY_NEW: "0x7121d00b4fa18f13da6c2e30d19c04844e6afdc8",
+    FEG: "0x389999216860ab8e0175387a0c90e5c52522c945"
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",

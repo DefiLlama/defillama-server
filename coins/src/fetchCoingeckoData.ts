@@ -19,7 +19,7 @@ export async function retryCoingeckoRequest(
       return await fetch(`https://api.coingecko.com/api/v3/${query}`).then((r) => r.json());
     } catch {
       try {
-        return await fetch(`https://pro-api.coingecko.com/api/v3/${query}?&x_cg_pro_api_key=${process.env.CG_KEY}`).then((r) => r.json());
+        return await fetch(`https://pro-api.coingecko.com/api/v3/${query}&x_cg_pro_api_key=${process.env.CG_KEY}`).then((r) => r.json());
       } catch (e) {
         if ((i + 1) % 3 === 0 && retries > 3) {
           await sleep(10e3); // 10s

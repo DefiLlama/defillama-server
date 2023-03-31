@@ -48,8 +48,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       const t0Value = (t0Data.price * token0Bal) / (10 ** t0Data.decimals)
       const t1Value = (t1Data.price * token1Bal) / (10 ** t1Data.decimals)
       const price = (t0Value + t1Value) / (supplies[i] / (10 ** decimals[i]))
-      const t0confidence = t0Data.confidence ?? 1
-      const t1confidence = t1Data.confidence ?? 1
+      const t0confidence = t0Data.confidence ?? 0.8
+      const t1confidence = t1Data.confidence ?? 0.8
       const confidence = t0confidence < t1confidence ? t0confidence : t1confidence
 
       addToDBWritesList(writes, chain, lps[i], price, decimals[i], symbols[i], timestamp, 'arrakis', confidence)

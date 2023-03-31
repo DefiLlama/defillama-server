@@ -683,5 +683,9 @@ export default {
     "plexus": {
         enabled: true,
         id: "2740"
+    },
+    "vela": {
+        enabled: true,
+        id: "2548"
     }
 } as AdaptorsConfig

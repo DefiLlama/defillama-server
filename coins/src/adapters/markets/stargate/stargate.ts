@@ -15,7 +15,7 @@ const gasTokenDummyAddress = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 async function processDbData(
   pools: { [pool: string]: { [address: string]: string } },
   coinsData: CoinData[],
-  chain: string
+  chain: string,
 ) {
   return Object.keys(pools).map((b: string) => {
     const token =
@@ -23,7 +23,7 @@ async function processDbData(
         ? wrappedGasTokens[chain]
         : pools[b].underlying.toLowerCase();
     const coinData: CoinData = coinsData.filter(
-      (c: CoinData) => c.address.toLowerCase() === token
+      (c: CoinData) => c.address.toLowerCase() === token,
     )[0];
 
     if (coinData == undefined) {
@@ -44,7 +44,7 @@ function formWrites(
   poolTokenLiquidities: Result[],
   tokenInfos: any,
   writes: Write[],
-  timestamp: number
+  timestamp: number,
 ) {
   Object.keys(pools).forEach((p: string) => {
     const curr = pools[p];
@@ -53,23 +53,26 @@ function formWrites(
         ? wrappedGasTokens[chain]
         : curr.underlying.toLowerCase();
     const pool: string = curr.pool.toLowerCase();
-    const underlyingInfo = underlyingTokenData.filter(
-      (x: any) => x.address.toLowerCase() === underlying
-    )[0];
+    const underlyingInfo = underlyingTokenData.find(
+      (x: any) => x.address.toLowerCase() === underlying,
+    );
+    if (underlyingInfo == null) return;
     const underlyingPrice: number = underlyingInfo.price;
-    const poolTokenLiquidity: number = poolTokenLiquidities.filter(
-      (x: any) => x.input.target.toLowerCase() === pool
-    )[0].output;
-    const poolSupply: number = tokenInfos.supplies.filter(
-      (x: any) => x.input.target.toLowerCase() === pool
-    )[0].output;
-    const poolDecimals: number = tokenInfos.decimals.filter(
-      (x: any) => x.input.target.toLowerCase() === pool
-    )[0].output;
-    const poolSymbol: string = tokenInfos.symbols.filter(
-      (x: any) => x.input.target.toLowerCase() === pool
-    )[0].output;
-    const price: number = underlyingPrice * (poolTokenLiquidity / poolSupply);
+    let poolTokenLiquidity: any = poolTokenLiquidities.find(
+      (x: any) => x.input.target.toLowerCase() === pool,
+    );
+    if (poolTokenLiquidity.output == null) return;
+    const poolSupply: number = tokenInfos.supplies.find(
+      (x: any) => x.input.target.toLowerCase() === pool,
+    ).output;
+    const poolDecimals: number = tokenInfos.decimals.find(
+      (x: any) => x.input.target.toLowerCase() === pool,
+    ).output;
+    const poolSymbol: string = tokenInfos.symbols.find(
+      (x: any) => x.input.target.toLowerCase() === pool,
+    ).output;
+    const price: number =
+      underlyingPrice * (poolTokenLiquidity.output / poolSupply);
     if (!price) return;
     addToDBWritesList(
       writes,
@@ -80,7 +83,7 @@ function formWrites(
       poolSymbol,
       timestamp,
       "stargate",
-      underlyingInfo.confidence
+      underlyingInfo.confidence,
     );
   });
   return writes;
@@ -106,7 +109,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       chain,
       Object.entries(pools).map((p: any) => p[1].pool),
       block,
-      { withSupply: true }
+      { withSupply: true },
     ),
   ]);
 
@@ -114,21 +117,21 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     Object.entries(pools).map((p: any) =>
       p[1].underlying.toLowerCase() === gasTokenDummyAddress
         ? wrappedGasTokens[chain]
-        : p[1].underlying.toLowerCase()
+        : p[1].underlying.toLowerCase(),
     ),
     chain,
-    timestamp
+    timestamp,
   );
 
   const underlyingTokenData = await processDbData(pools, coinsData, chain);
 
   return formWrites(
-    underlyingTokenData,
+    underlyingTokenData.filter((d: any) => d != undefined),
     pools,
     chain,
-    tokenSupplies,
+    tokenSupplies.filter((d: any) => d != undefined),
     tokenInfos,
     writes,
-    timestamp
+    timestamp,
   );
 }

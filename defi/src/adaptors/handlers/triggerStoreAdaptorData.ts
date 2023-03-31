@@ -42,7 +42,8 @@ export const handler = async (event: IHandlerEvent) => {
       const protocolModules: IStoreAdaptorDataHandlerEvent['protocolModules'] = bf.dexNames.filter(m => !quarantinedModules.includes(m))
       await invokeLambdas(protocolModules, type, bf.timestamp, bf.chain, bf.adaptorRecordTypes, bf.protocolVersion)
       const protocolModulesConfined = bf.dexNames.filter(m => quarantinedModules.includes(m))
-      Promise.all(protocolModulesConfined.map((confinedModule) => invokeLambdas([confinedModule], type)))
+      if (protocolModulesConfined.length > 0)
+        Promise.all(protocolModulesConfined.map((confinedModule) => invokeLambdas([confinedModule], type, bf.timestamp, bf.chain, bf.adaptorRecordTypes, bf.protocolVersion)))
     }
   }
   else if (type) {

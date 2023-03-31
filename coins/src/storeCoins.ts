@@ -32,11 +32,12 @@ export default async function handler(event: any) {
         console.log(`${a[i][0]} done`);
       } catch (e) {
         console.error(e);
-        await sendMessage(
-          `${a[i][0]} adapter failed: ${e}`,
-          process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
-          true,
-        );
+        if (!process.env.LLAMA_RUN_LOCAL)
+          await sendMessage(
+            `${a[i][0]} adapter failed: ${e}`,
+            process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+            true,
+          );
       }
     }),
   );
@@ -46,9 +47,7 @@ export default async function handler(event: any) {
 async function main() {
   let a = { protocolIndexes: [0] };
   await handler(a);
-  if (process.env.LLAMA_RUN_LOCAL)
-    process.exit(0)
+  if (process.env.LLAMA_RUN_LOCAL) process.exit(0);
 }
 
-if (process.env.LLAMA_RUN_LOCAL)
-  main()
+if (process.env.LLAMA_RUN_LOCAL) main();

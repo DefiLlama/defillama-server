@@ -19,7 +19,7 @@ export async function getTokenAndRedirectData(
   chain: string,
   timestamp: number,
   hoursRange: number = 12,
-) {
+): Promise<CoinData[]> {
   tokens = [...new Set(tokens)];
   if (process.env.DEFILLAMA_SDK_MUTED !== "true") {
     return await getTokenAndRedirectDataFromAPI(tokens, chain, timestamp);

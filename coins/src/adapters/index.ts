@@ -77,4 +77,5 @@ export default {
   aaveDebt: require("./moneyMarkets/aave-debt"),
   saber: require("./solana/saber"),
   reservoir: require("./nft/reservoir"),
+  jpegd: require("./yield/jpegd"),
 };

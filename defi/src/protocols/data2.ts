@@ -29754,5 +29754,27 @@ const data2: Protocol[] = [
     parentProtocol: "MM Finance",
     listedAt: 1680257948
   },
+  {
+    id: "2755",
+    name: "Synthetix V2",
+    address: "optimism:0x8700daec35af8ff88c16bdf0418774cb3d7599b4",
+    symbol: "SNX",
+    url: "https://synthetix.io",
+    description: "Synthetix is a derivatives liquidity protocol providing the backbone for derivatives trading in DeFi.(Optimism network)",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/synthetix-v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["Optimism"],
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    module: "synthetix-v2/index.js",
+    twitter: "synthetix_io",
+    parentProtocol: "Synthetix",
+    listedAt: 1680261877
+  },
 ]
 export default data2;

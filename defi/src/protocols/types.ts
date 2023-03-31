@@ -24,7 +24,10 @@ export interface Protocol {
     parentProtocol?: string;
     treasury?: string;
     referralUrl?: string;
-    governanceID?: Array<string>
+    oraclesByChain?: {
+      [chain:string]: string[]
+    };
+    governanceID?: Array<string>;
   }
 
   export interface IParentProtocol {

@@ -10,7 +10,7 @@ const timeStep = 43200; // 12 HOURS
 // const end = 1670932800;
 const end = Math.floor(+new Date()/1e3);
 const fillRecentFirst = true;
-const indexes = [0]; // FROM adapters list at ./adapters/index.ts
+const adapterTorefill = "stargate"; // FROM adapters list at ./adapters/index.ts
 
 function createTimestampArray() {
   const timestampArray = [];
@@ -23,7 +23,7 @@ function createTimestampArray() {
 }
 
 async function handler(indexes: number[], timestamp: number) {
-  const a = Object.entries(adapters);
+  const a = Object.entries(adapters).filter(([name])=>name===adapterTorefill);
   await Promise.all(
     indexes.map(async (i: any) => {
       try {
@@ -47,7 +47,7 @@ async function handler(indexes: number[], timestamp: number) {
 async function main() {
   const timestampArray = createTimestampArray();
   for (let i of timestampArray) {
-    await handler(indexes, i);
+    await handler([0], i);
   }
 }
 main();

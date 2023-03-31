@@ -198,7 +198,10 @@ const data: Protocol[] = [
     treasury: "synthetix.js",
     twitter: "synthetix_io",
     audit_links: ["https://docs.synthetix.io/contracts/audits/"],
-    oracles: ["Chainlink"],
+    oraclesByChain: {
+      ethereum: ["Chainlink"],
+      optimism: ["Chainlink", "Pyth"],
+    },
     governanceID: ["snapshot:synthetix-stakers-poll.eth"]
   },
   {

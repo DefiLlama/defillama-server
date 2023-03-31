@@ -1239,6 +1239,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HadoukenFinance"
   },
+  {
+    id: "Synthetix",
+    name: "Synthetix",
+    url: "https://synthetix.io",
+    description: "Synthetix is a derivatives liquidity protocol providing the backbone for derivatives trading in DeFi.",
+    logo: `${baseIconsUrl}/synthetix.png`,
+    gecko_id: "havven",
+    cmcId: "2586",
+    chains: [],
+    twitter: "synthetix_io",
+    governanceID: ["snapshot:synthetix-stakers-poll.eth"]
+  },
 ];
 
 export default parentProtocols;

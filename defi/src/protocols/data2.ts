@@ -29711,5 +29711,28 @@ const data2: Protocol[] = [
     audit_links: ["https://onchaintrade.gitbook.io/ot/audit-reports"],
     listedAt: 1680201542
   },
+  {
+    id: "2753",
+    name: "Synthetix V2",
+    address: "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+    symbol: "SNX",
+    url: "https://synthetix.io",
+    description:
+      "Synthetix is a derivatives liquidity protocol providing the backbone for derivatives trading in DeFi.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/synthetix.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "havven",
+    cmcId: "2586",
+    category: "Synthetics",
+    chains: ["Optimism"],
+    module: "synthetix_v2/index.js",
+    treasury: "synthetix.js",
+    twitter: "synthetix_io",
+    audit_links: ["https://docs.synthetix.io/contracts/audits/"],
+    oracles: ["Pyth"],
+    governanceID: ["snapshot:synthetix-stakers-poll.eth"]
+  },
 ]
 export default data2;

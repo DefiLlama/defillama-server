@@ -193,7 +193,7 @@ const data: Protocol[] = [
     gecko_id: "havven",
     cmcId: "2586",
     category: "Synthetics",
-    chains: ["Ethereum", "Optimism"],
+    chains: ["Ethereum"],
     module: "synthetix/index.js",
     treasury: "synthetix.js",
     twitter: "synthetix_io",

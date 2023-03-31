@@ -1308,5 +1308,9 @@ export default {
     "hadouken-amm": {
         "enabled": true,
         "id": "2748"
+    },
+    "acala-swap": {
+        "enabled": true,
+        "id": "1847"
     }
 } as AdaptorsConfig

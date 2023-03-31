@@ -129,9 +129,7 @@ async function fetchDBData(
   await Promise.all(promises);
   return response;
 }
-const handler = async (
-  event: AWSLambda.APIGatewayEvent,
-): Promise<IResponse> => {
+const handler = async (event: any): Promise<IResponse> => {
   if (
     event.queryStringParameters?.start != null &&
     event.queryStringParameters?.end != null
@@ -156,17 +154,24 @@ const handler = async (
 
   const { PKTransforms, coins } = await getBasicCoins(params.coins);
 
-  const response: PriceChartResponse = await fetchDBData(
+  let response: PriceChartResponse = await fetchDBData(
     params,
     timestamps,
     coins,
     PKTransforms,
   );
-  Object.values(response).map((r: any) =>
-    r.prices.sort((a: TimedPrice, b: TimedPrice) =>
+
+  Object.values(response).map((r: any) => {
+    const unique = r.prices.filter(
+      (v: TimedPrice, i: number, a: TimedPrice[]) =>
+        a.findIndex((v2) => v2.timestamp === v.timestamp) === i,
+    );
+    unique.sort((a: TimedPrice, b: TimedPrice) =>
       a.timestamp > b.timestamp ? 1 : -1,
-    ),
-  );
+    );
+    r.prices = unique;
+  });
+
   return successResponse(
     {
       coins: response,

@@ -1239,6 +1239,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HadoukenFinance"
   },
+  /*
   {
     id: "Synthetix",
     name: "Synthetix",
@@ -1251,6 +1252,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "synthetix_io",
     governanceID: ["snapshot:synthetix-stakers-poll.eth"]
   },
+  */
 ];
 
 export default parentProtocols;

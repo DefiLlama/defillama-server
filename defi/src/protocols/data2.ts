@@ -29754,6 +29754,7 @@ const data2: Protocol[] = [
     parentProtocol: "MM Finance",
     listedAt: 1680257948
   },
+  /*
   {
     id: "2755",
     name: "Synthetix V2",
@@ -29776,5 +29777,6 @@ const data2: Protocol[] = [
     parentProtocol: "Synthetix",
     listedAt: 1680261877
   },
+  */
 ]
 export default data2;

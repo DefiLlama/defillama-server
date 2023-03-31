@@ -27,7 +27,7 @@ async function processDbData(
     )[0];
 
     if (coinData == undefined) {
-      console.log(`Couldn't find underlying data for ${token} on stargate`)
+      console.log(`Couldn't find underlying data for ${chain}:${token} on stargate`)
       return;
     }
     return {
@@ -57,7 +57,8 @@ function formWrites(
     const underlyingInfo = underlyingTokenData.filter(
       (x: any) => x.address.toLowerCase() === underlying
     )[0];
-    const underlyingPrice: number = underlyingInfo.price;
+    const underlyingPrice: number = underlyingInfo?.price;
+    if (!underlyingPrice) return;
     const poolTokenLiquidity: number = poolTokenLiquidities.filter(
       (x: any) => x.input.target.toLowerCase() === pool
     )[0].output;

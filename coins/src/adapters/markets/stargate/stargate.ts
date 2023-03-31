@@ -27,6 +27,7 @@ async function processDbData(
     )[0];
 
     if (coinData == undefined) {
+      console.log(`Couldn't find underlying data for ${token} on stargate`)
       return;
     }
     return {
@@ -35,7 +36,7 @@ async function processDbData(
       confidence: coinData.confidence,
       address: coinData.address,
     };
-  });
+  }).filter(t=>t!==undefined);
 }
 function formWrites(
   underlyingTokenData: any[],

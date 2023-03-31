@@ -2232,6 +2232,12 @@
       "symbol": "WETH",
       "to": "coingecko#ethereum"
     },
+    "0x2f546ad4edd93b956c8999be404cdcafde3e89ae": {
+      "name": "sGLP",
+      "decimals": "18",
+      "symbol": "sGLP",
+      "to": "arbitrum:0x4277f8f2c384827b5273592ff7cebd9f2c1ac258"
+    },
     "0x5402b5f40310bded796c7d0f3ff6683f5c0cffdf": {
       "name": "sGLP",
       "decimals": "18",

@@ -12,18 +12,17 @@ const handler = async (_event: any) => {
     SELECT
       address,
       symbol,
-      chain,
       ${now} - lastupdate as latency
     FROM public.stalecoins
     WHERE
-      lastupdate < (${now} - 10800) and lastupdate > (${now} - 86400)
-    GROUP BY address, symbol, latency, chain
+      time > (${now} - 10800) and lastupdate > (${now} - 86400)
+    GROUP BY address, symbol, latency
     ORDER BY latency asc;`;
 
   const message = (staleCoins as any[])
     .map(
       (coin) =>
-        `${coin.symbol}\t${coin.chain}:${coin.address.padEnd(10, " ")}\t${(
+        `${coin.symbol}\t${coin.address.padEnd(54, " ")}\t${(
           coin.latency / 3600
         ).toFixed(2)} hours ago`,
     )

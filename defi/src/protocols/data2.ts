@@ -18398,11 +18398,11 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Services",
+    category: "Lending",
     chains: ["Astar"],
     module: "starfish-finance/index.js",
     twitter: "Starfish_Fi",
-    forkedFrom: [],
+    forkedFrom: ["Compound"],
     oracles: ["DIA"],
     parentProtocol: "Starfish",
     listedAt: 1667390191

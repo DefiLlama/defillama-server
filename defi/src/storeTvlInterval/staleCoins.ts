@@ -1,5 +1,5 @@
-import { getCurrentUnixTimestamp } from "../utils/date"
-import postgres from "postgres";
+//import { getCurrentUnixTimestamp } from "../utils/date"
+//import postgres from "postgres";
 
 export interface StaleCoins {
     [address: string]: {
@@ -17,7 +17,8 @@ export function addStaleCoin(staleCoins: StaleCoins, address: string, symbol: st
     }
 }
 
-export async function storeStaleCoins(staleCoins: StaleCoins) {
+export async function storeStaleCoins(_staleCoins: StaleCoins) {
+  /*
     const sql = postgres(process.env.COINS_DB!);
     const currentTime = getCurrentUnixTimestamp();
     Object.entries(staleCoins).map(async ([pk, details]) => {
@@ -37,4 +38,5 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
       }
     }
   );
+  */
 }

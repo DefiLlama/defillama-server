@@ -1253,6 +1253,17 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:synthetix-stakers-poll.eth"]
   },
   */
+  {
+    id: "Starfish",
+    name: "Starfish",
+    url: "https://app.starfish.finance",
+    description: "Leading the Entertainment-Fi experience in Web3",
+    logo: `${baseIconsUrl}/starfish.jpg`,
+    gecko_id: "starfish-finance",
+    cmcId: "22002",
+    chains: [],
+    twitter: "Starfish_Fi"
+  },
 ];
 
 export default parentProtocols;

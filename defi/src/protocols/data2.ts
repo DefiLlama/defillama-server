@@ -29778,5 +29778,26 @@ const data2: Protocol[] = [
     listedAt: 1680261877
   },
   */
+  {
+    id: "2756",
+    name: "Sharpe Magnum",
+    address: "-",
+    symbol: "SHARPE",
+    url: "https://www.sharpe.ai/magnum",
+    description: "Sharpe Magnum is a leveraged staking layer that is built on top of Aave, Lido, Balancer, and Aura. Magnum functions as a staking optimizer, enhancing the capital efficiency of staking pools by leveraging staked assets via lending protocols and flashloans",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sharpe-magnum.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "SharpeLabs/index.js",
+    twitter: "sharpe_ai",
+    listedAt: 1680306454
+  },
 ]
 export default data2;

@@ -29799,5 +29799,26 @@ const data2: Protocol[] = [
     twitter: "sharpe_ai",
     listedAt: 1680306454
   },
+  {
+    id: "2757",
+    name: "Glacier Finance",
+    address: "avax:0x3712871408a829C5cd4e86DA1f4CE727eFCD28F6",
+    symbol: "GLCR",
+    url: "https://glacier.exchange/",
+    description: "Glacier Finance is a community-driven ve(3,3) trading and liquidity hub, governed by veGLCR and living on the Avalanche C-Chain",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/glacier-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche"],
+    oracles: [],
+    forkedFrom: ["Uniswap"],
+    module: "glacier-finance/index.js",
+    twitter: "Glacier_Fi",
+    listedAt: 1680317242
+  },
 ]
 export default data2;

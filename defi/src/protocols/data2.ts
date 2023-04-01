@@ -29815,7 +29815,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Avalanche"],
     oracles: [],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Solidly"],
     module: "glacier-finance/index.js",
     twitter: "Glacier_Fi",
     listedAt: 1680317242

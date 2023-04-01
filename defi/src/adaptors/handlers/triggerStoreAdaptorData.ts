@@ -27,8 +27,8 @@ export interface IHandlerEvent {
 }
 
 const quarantineList = {
-  [AdapterType.FEES]: ["chainlink-vrf-v1", 'chainlink-vrf-v2', 'chainlink-keepers'],
-  [AdapterType.DEXS]: ["vanswap"]
+  [AdapterType.FEES]: ["chainlink-vrf-v1", 'chainlink-vrf-v2', 'chainlink-keepers', "dodo"],
+  [AdapterType.DEXS]: ["vanswap", "dodo"]
 } as IJSON<string[]>
 
 export const handler = async (event: IHandlerEvent) => {

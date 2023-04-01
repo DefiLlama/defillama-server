@@ -687,5 +687,9 @@ export default {
     "vela": {
         enabled: true,
         id: "2548"
+    },
+    "equilibre-exchange": {
+        enabled: true,
+        id: "2586"
     }
 } as AdaptorsConfig

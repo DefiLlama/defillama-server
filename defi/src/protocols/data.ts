@@ -303,7 +303,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf",
     ],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     oracles: [], // chainlink for lending?
     parentProtocol: "Sushi",
   },
@@ -1526,7 +1526,7 @@ const data: Protocol[] = [
     module: "varen/index.js",
     twitter: "varenfinance",
     audit_links: ["https://certificate.quantstamp.com/full/linkswap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     governanceID: ["snapshot:varen.eth"]
   },
   /*
@@ -1822,7 +1822,7 @@ const data: Protocol[] = [
     module: "pancake-swap/index.js",
     twitter: "PancakeSwap",
     audit_links: ["https://docs.pancakeswap.finance/#is-it-safe"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     parentProtocol: "PancakeSwap",
     oracles: [],
   },
@@ -2358,7 +2358,7 @@ const data: Protocol[] = [
     module: "defi-swap/index.js",
     twitter: "cryptocom",
     audit_links: ["https://crypto.com/defi/swap-protocol-audit.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "222",
@@ -2778,7 +2778,7 @@ const data: Protocol[] = [
     chains: ["Energi"],
     module: "energiswap.js",
     twitter: "energi",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "243",
@@ -2856,7 +2856,7 @@ const data: Protocol[] = [
     chains: ["Avalanche", "Hedera", "Flare", "Songbird"],
     module: "pangolin/index.js",
     twitter: "pangolindex",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     governanceID: ["snapshot:pangolindex.eth"]
   },
   {
@@ -3171,7 +3171,7 @@ const data: Protocol[] = [
     chains: ["Polygon"],
     module: "mustcometh/index.js",
     twitter: "MUSTCometh",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "262",
@@ -3376,7 +3376,7 @@ const data: Protocol[] = [
     chains: ["xDai", "Polygon"],
     module: "honeyswap/index.js",
     twitter: "Honeyswap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "272",
@@ -3699,7 +3699,7 @@ const data: Protocol[] = [
     chains: ["Avalanche"],
     module: "zerodex/index.js",
     twitter: "OfficialZeroDEX",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     oracles: ["Chainlink"],
   },
   /*
@@ -3741,7 +3741,7 @@ const data: Protocol[] = [
     chains: ["Avalanche"],
     module: "yetiswap/index.js",
     twitter: "YetiSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "290",
@@ -3800,7 +3800,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "xDai", "Arbitrum"],
     module: "swapr/index.js",
     twitter: "SwaprEth",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://gateway.ipfs.io/ipfs/QmNspbn2dQgQMQ9uXkMc7Fjf12RUVVJTzB27ywGeLUXXdn"],
     governanceID: ["snapshot:swpr.eth"]
   },
@@ -3819,7 +3819,7 @@ const data: Protocol[] = [
     cmcId: "11191",
     category: "Dexes",
     chains: ["Avalanche"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "lydia/index.js",
     twitter: "LydiaFinance",
     audit_links: ["https://docs.lydia.finance/security/certik-audit"],
@@ -3945,7 +3945,7 @@ const data: Protocol[] = [
     chains: ["xDai"],
     module: "levinswap/index.js",
     twitter: "levinswap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "300",
@@ -4010,7 +4010,7 @@ const data: Protocol[] = [
     treasury: "spookyswap.js",
     twitter: "SpookySwap",
     audit_links: ["https://www.certik.org/projects/spookyswap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     governanceID: ["snapshot:spookyswap.eth"]
   },
   {
@@ -4088,7 +4088,7 @@ const data: Protocol[] = [
     module: "quickswap/index.js",
     twitter: "QuickswapDEX",
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
-    forkedFrom: ["Uniswap"], 
+    forkedFrom: ["Uniswap V2"], 
     parentProtocol: "Quickswap",
   },
   {
@@ -4190,7 +4190,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/Layer3Org/spiritswap-core/blob/main/SpiritSwap-Core%20Security%20Audit%20Report.pdf",
     ],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     parentProtocol: "SpiritSwap",
   },
   {
@@ -4235,7 +4235,7 @@ const data: Protocol[] = [
     module: "viperswap/index.js",
     twitter: "VenomDAO",
     audit_links: ["https://solidity.finance/audits/ViperSwap/"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "314",
@@ -4314,7 +4314,7 @@ const data: Protocol[] = [
     module: "hyperjump/index.js",
     twitter: "Hyperjump_fi",
     audit_links: ["https://docs.hyperjump.fi/essentials/audits"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "318",
@@ -4334,7 +4334,7 @@ const data: Protocol[] = [
     module: "dfyn/index.js",
     twitter: "_Dfyn",
     oracles: ["Chainlink", "DIA"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "319",
@@ -4459,7 +4459,7 @@ const data: Protocol[] = [
     module: "unicly/index.js",
     twitter: "uniclyNFT",
     audit_links: ["https://github.com/uniclyNFT/Resources/blob/main/Unicly%20Security%20Audit.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "325",
@@ -4534,7 +4534,7 @@ const data: Protocol[] = [
     gecko_id: "youswap",
     cmcId: "10070",
     category: "Dexes",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     chains: ["Binance", "Ethereum", "Heco"],
     module: "youswap/index.js",
     twitter: "YouSwap_Global",
@@ -4682,7 +4682,7 @@ const data: Protocol[] = [
       "https://mdex.com/fairyproof_bsc.pdf",
       "https://mdex.com/certik_bsc.pdf",
     ],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "335",
@@ -4701,7 +4701,7 @@ const data: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "flashstake-old/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "flashstake",
     audit_links: ["https://t.co/ngdoQ1FYv1?amp=1"],
   },
@@ -5036,7 +5036,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Polygon"],
     module: "gravity-finance/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "Gravity_Finance",
     audit_links: [
       "https://github.com/Tibereum/obelisk-audits/blob/main/Gravity.pdf",
@@ -5378,7 +5378,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Binance"],
     module: "pinkswap/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "pinkmoonfinance",
     audit_links: [
       "https://github.com/TechRate/Smart-Contract-Audits/blob/main/PinkSwap%20Token%20Full%20Smart%20Contract%20Security%20Audit.pdf",
@@ -5469,7 +5469,7 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "kokomoswap/index.js",
     twitter: "KokomoSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://docs.kokomoswap.io/risk-and-security-1/audit"],
   },
   {
@@ -5511,7 +5511,7 @@ const data: Protocol[] = [
     module: "biswap/index.js",
     twitter: "Biswap_Dex",
     audit_links: ["https://www.certik.org/projects/biswap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     governanceID: ["snapshot:biswap-org.eth"]
   },
   {
@@ -5743,7 +5743,7 @@ const data: Protocol[] = [
     chains: ["Polygon"],
     module: "firebird/index.js",
     twitter: "FinanceFirebird",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: [
       "https://docs.firebird.finance/security-safu/audits",
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Firebird-Swap-v1.0.pdf",
@@ -5809,7 +5809,7 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "bearnfi/index.js",
     twitter: "BearnFi",
-    forkedFrom: ["Uniswap", "Compound"],
+    forkedFrom: ["Uniswap V2", "Compound"],
   },
   {
     id: "388",
@@ -5827,7 +5827,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "nowswap/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "nowswap_org",
   },
   {
@@ -5889,7 +5889,7 @@ const data: Protocol[] = [
     module: "pantherswap/index.js",
     twitter: "PantherSwap",
     audit_links: ["https://docs.pantherswap.com/security/audits"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "392",
@@ -5910,7 +5910,7 @@ const data: Protocol[] = [
     module: "wardenswap/index.js",
     twitter: "WardenSwap",
     audit_links: ["https://www.certik.org/projects/wardenswap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "393",
@@ -5990,7 +5990,7 @@ const data: Protocol[] = [
     chains: ["Polygon"],
     module: "polydex/index.js",
     twitter: "polydexfi",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: [
       "https://github.com/polydex-fi/polydex-swap-core/blob/5fdd6b85550235800cd980ccb8fab9bd5247a7af/PolydexSwap.pdf",
     ],
@@ -6014,7 +6014,7 @@ const data: Protocol[] = [
     module: "shibaswap/index.js",
     twitter: "ShibaSwapDEX",
     audit_links: ["https://www.certik.org/projects/shib"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "398",
@@ -6033,7 +6033,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Binance", "Polygon", "Ethereum"],
     module: "apeswap-amm/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "ape_swap",
     audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
     parentProtocol: "ApeSwap",
@@ -6156,7 +6156,7 @@ const data: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Heco"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "bxh/index.js",
     twitter: "BXH_Blockchain",
     audit_links: ["https://mos-wallet-public.oss-cn-hangzhou.aliyuncs.com/mos/BXH/bxh_audit.pdf"],
@@ -6240,7 +6240,7 @@ const data: Protocol[] = [
     module: "jetfuelfinance/index.js",
     twitter: "Jetfuelfinance",
     audit_links: ["https://jetfuel.finance/audits"],
-    forkedFrom: ["Uniswap", "Compound"],
+    forkedFrom: ["Uniswap V2", "Compound"],
   },
   {
     id: "409",
@@ -6261,7 +6261,7 @@ const data: Protocol[] = [
     module: "cafeswap/index.js",
     twitter: "CafeSwapFinance",
     audit_links: ["https://docs.cafeswap.finance/audits"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "410",
@@ -6301,7 +6301,7 @@ const data: Protocol[] = [
     module: "pippifinance/index.js",
     twitter: "pippishrimpswap",
     audit_links: ["https://github.com/Shrimp-Labs/audit/blob/master/Pippi%20Shrimp_audit.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "412",
@@ -6510,7 +6510,7 @@ const data: Protocol[] = [
       "Bittorrent",
     ],
     module: "elkfinance/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "elk_finance",
     audit_links: ["https://blog.hashex.org/elk-finance-smart-contracts-audit-report-a18deaa5890b"],
   },
@@ -6530,7 +6530,7 @@ const data: Protocol[] = [
     cmcId: "13229",
     category: "Dexes",
     chains: ["Fantom"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "paintswap/index.js",
     twitter: "paint_swap",
     audit_links: ["https://solidity.finance/audits/PaintSwap/"],
@@ -6695,7 +6695,7 @@ const data: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum", "Binance"],
     module: "bamboodefi/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "FiBamboo",
     audit_links: [
       "https://www.bamboodefi.com/assets/Bamboo%20DeFi%20-%20Security%20Audit%20Report.pdf",
@@ -7009,7 +7009,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "polyDEX-cryption-network/index.js",
     twitter: "Polydex_",
     audit_links: ["https://www.certik.org/projects/cryptionnetwork"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "445",
@@ -7028,7 +7028,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Binance"],
     module: "cobraswap/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "VenomDAO",
   },
   {
@@ -7229,7 +7229,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "zoodex/index.js",
     twitter: "CoinZoo",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "456",
@@ -7504,7 +7504,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     treasury: "traderjoe.js",
     audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
     twitter: "traderjoe_xyz",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     parentProtocol: "Trader Joe",
   },
   {
@@ -7568,7 +7568,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Dexes",
     chains: ["Avalanche"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "complus/index.js",
     twitter: "complusnetwork",
   },
@@ -7609,7 +7609,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "baguette/index.js",
     twitter: "Baguette_avax",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "474",
@@ -7629,7 +7629,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "canary/index.js",
     twitter: "CanaryDex",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "475",
@@ -7710,7 +7710,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "yapeswap/index.js",
     twitter: "yapeswap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "479",
@@ -7728,7 +7728,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Fantom"],
     module: "Shibafantom/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "ShibaFantom",
   },
   {
@@ -7749,7 +7749,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Kucoin"],
     module: "kuswap/index.js",
     twitter: "kuswapfinance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     oracles: ["Pyth"],
   },
   {
@@ -7769,7 +7769,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "sonicswap/index.js",
     twitter: "SonicSwapIO",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "482",
@@ -7790,7 +7790,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "shibance/index.js",
     twitter: "shibance",
     audit_links: ["https://github.com/shibance/audits/tree/main/ApeAudits"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "483",
@@ -7852,7 +7852,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "11034",
     category: "Dexes",
     chains: ["Binance"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "tendieswap/index.js",
     twitter: "tendie_swap",
   },
@@ -7914,7 +7914,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Celo"],
     module: "ubeswap/index.js",
     twitter: "ubeswap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://docs.ubeswap.org/code-and-contracts/security#audits"],
   },
   {
@@ -8076,7 +8076,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "orionprotocol/index.js",
     twitter: "orion_protocol",
     audit_links: ["https://www.certik.org/projects/orionprotocol"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "497",
@@ -8136,7 +8136,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "polycat/index.js",
     twitter: "PolycatFinance",
     audit_links: ["https://docs.polycat.finance/security#audit"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     parentProtocol: "Polycat Finance",
   },
   {
@@ -8711,7 +8711,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "kswap_finance",
     audit_links: ["https://static.kswap.finance/audit/KST_Audit_Report_EN.pdf"],
     oracles: [],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "528",
@@ -8809,7 +8809,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "twindex/index.js",
     twitter: "twindexcom",
     oracles: ["Chainlink"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "533",
@@ -8966,7 +8966,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "moonswap/index.js",
     twitter: "MoonSwapDEX",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "541",
@@ -9023,7 +9023,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "9437",
     category: "Dexes",
     chains: ["OKExChain"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "cherryswap/index.js",
     twitter: "CherryswapNet",
     audit_links: [
@@ -9050,7 +9050,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "soulswap/index.js",
     twitter: "SoulSwapFinance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "545",
@@ -9177,7 +9177,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "freeriver/index.js",
     twitter: "FreeRiverX",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "551",
@@ -9197,7 +9197,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "solarbeam/index.js",
     twitter: "Solarbeamio",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "552",
@@ -9216,7 +9216,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "seascape/index.js",
     twitter: "seascapenetwork",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "553",
@@ -9296,7 +9296,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "defikingdoms/index.js",
     twitter: "DefiKingdoms",
     audit_links: ["https://solidity.finance/audits/DefiKingdoms/"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     governanceID: ["snapshot:dfkvote.eth"]
   },
   {
@@ -9396,7 +9396,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "alita-finance/index.js",
     twitter: "AlitaFinance",
     audit_links: ["https://www.certik.org/projects/alitafinance"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "562",
@@ -9418,7 +9418,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "CrystlFinance",
     audit_links: ["https://polycrystal.gitbook.io/polycrystal-finance/security/audits"],
     oracles: [],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1634207334,
   },
   {
@@ -9666,7 +9666,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "fuzzfinance",
     twitter: "FuzzFinance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "575",
@@ -9685,7 +9685,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "coinswap/index.js",
     twitter: "CoinSwap_Space",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.certik.org/projects/coinswap"],
   },
   {
@@ -9788,7 +9788,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "sashimiswap/index.js",
     twitter: "SASHIMISASHIMI5",
     audit_links: ["https://sashimi.cool/files/sashimi_audit_report.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "581",
@@ -9809,7 +9809,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "morpheusswap/index.js",
     twitter: "MorpheusSwap",
     audit_links: ["https://morpheusswap.gitbook.io/morpheus-swap/security/audit"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "582",
@@ -10108,7 +10108,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "convergence/index.js",
     twitter: "ConvergenceFin",
     audit_links: ["https://www.certik.org/projects/convergencefinance"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "596",
@@ -10149,7 +10149,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "babyswap/index.js",
     twitter: "babyswap_bsc",
     audit_links: ["https://www.certik.org/projects/babyswap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "598",
@@ -10255,7 +10255,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "bakeryswap/index.js",
     twitter: "bakery_swap",
     audit_links: ["https://www.certik.org/projects/bakeryswap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     oracles: [],
   },
   {
@@ -10341,7 +10341,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Lamden"],
     module: "rocketswap.js",
     twitter: "RSwapOfficial",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "607",
@@ -10834,7 +10834,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/HuckleberryDex/huckleberry-contracts/blob/main/Smart%20contract%20security%20audit%20report-Huckleberry.pdf",
     ],
     parentProtocol: "Huckleberry",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "631",
@@ -11132,7 +11132,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "padswap/index.js",
     twitter: "ToadNetwork",
     audit_links: ["https://dapps.padswap.exchange/pad_audit_report.pdf", "https://toad.network/toad_audit_report.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "645",
@@ -11152,7 +11152,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "latte/index.js",
     twitter: "latteswapOG",
     audit_links: ["https://docs.latteswap.com/latteswap/security/audits"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "646",
@@ -11236,7 +11236,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "swapmatic/index.js",
     twitter: "SwapMatic",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "650",
@@ -11301,7 +11301,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Kucoin", "Polygon"],
     module: "emiswap/index.js",
     twitter: "EmiSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: [
       "https://emiswap.com/docs/06042021_Emiswap_SC_Audit_Report.pdf",
       "https://emiswap.com/docs/12072021_Emiswap_SC_Audit_Report_V2.pdf",
@@ -11445,7 +11445,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "jetswap/index.js",
     twitter: "Jetfuelfinance",
     audit_links: ["https://jetswap.finance/audit-by-etherauthority.pdf", "https://jetswap.finance/audit-by-hash0x.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "660",
@@ -11698,7 +11698,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["EnergyWeb"],
     module: "carbonswap/index.js",
     twitter: "carbonswap_fi",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1634259695,
   },
   {
@@ -11780,7 +11780,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["RSK"],
     module: "rskswap/index.js",
     twitter: "RskSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1634321814,
   },
   {
@@ -11863,7 +11863,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["OKExChain"],
     module: "jswap-finance/index.js",
     twitter: "Jswap_Finance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=928799684ad96ef4ed4b0c0fb12a5fae085456f874b19dc4300195b32a5a1431",
       "https://www.slowmist.com/en/security-audit-certificate.html?id=e18f32468d1c52dc0682fbf1c1137df933fabb09526b124c84cd391fce7149bb",
@@ -11972,7 +11972,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["GoChain"],
     module: "GoSwap/index.js",
     twitter: "goswapper",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1634580919,
   },
   {
@@ -11991,7 +11991,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["HPB"],
     module: "hpdex/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: null,
     listedAt: 1634594197,
   },
@@ -12160,7 +12160,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/HurricaneSam/AuditReport/blob/main/PeckShield-Audit-Report-HurricanSwapV2-v1.0rc.pdf",
     ],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1634834188,
   },
   {
@@ -12226,7 +12226,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "dsgmetaverse",
     audit_links: ["https://www.certik.org/projects/dinosaureggs"],
     listedAt: 1634851801,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "696",
@@ -12439,7 +12439,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["ThunderCore"],
     module: "ttswap/index.js",
     twitter: "ThunderProtocol",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1635107086,
   },
   {
@@ -12482,7 +12482,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "luaswap/index.js",
     twitter: "LuaSwap",
     audit_links: ["https://github.com/tomochain/luaswap-core/tree/master/audit"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1635108394,
   },
   /*
@@ -12589,7 +12589,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Kardia"],
     module: "kaidex/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "KardiaChain",
     listedAt: 1635254890,
   },
@@ -12630,7 +12630,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fuse"],
     module: "fusefi/index.js",
     twitter: "voltfinance",
-    forkedFrom: ["Uniswap", "Compound"],
+    forkedFrom: ["Uniswap V2", "Compound"],
     listedAt: 1635268314,
   },
   {
@@ -12724,7 +12724,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://drive.google.com/file/d/1oC_wrSwjw_47scZBeuHavTvtjwWmwQXS/view",
     ],
     listedAt: 1635389421,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "719",
@@ -12832,7 +12832,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "PotluckProtocol",
     audit_links: ["https://dessertswap.finance/audits/Potluck%20BSC-FTM%20audit%2011437133.pdf"],
     oracles: ["Internal"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1635465731,
   },
   {
@@ -13074,7 +13074,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/0xGuard-com/audit-reports/blob/master/openswap/OpenSwap_final-audit-report_v1.pdfaudit",
       "https://github.com/0xGuard-com/audit-reports/blob/master/openswap_v2/OpenSwapV2_final-audit-report.pdf",
     ],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1635798336,
   },
   {
@@ -13093,7 +13093,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Kardia"],
     module: "becoswap/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "beco_swap",
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/Becoswap.pdf"],
     listedAt: 1635800029,
@@ -13135,7 +13135,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "dinoexchange/index.js",
     twitter: "dinoexchange",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1635801116,
   },
   {
@@ -13198,7 +13198,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "elephantdex/index.js",
     twitter: "elephant_dex",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1635803086,
   },
   {
@@ -13353,7 +13353,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["smartBCH"],
     module: "muesliswap/index.js",
     twitter: "MuesliSwapTeam",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/mlabs-haskell/audit"],
     listedAt: 1635842482,
   },
@@ -13375,7 +13375,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mistswap/index.js",
     twitter: "mistswapdex",
     audit_links: ["https://docs.mistswap.fi/MistSwap-0xguard-audit.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1635846048,
   },
   {
@@ -13396,7 +13396,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "benswap/index.js",
     twitter: "BenTokenFinanc1",
     audit_links: ["https://www.certik.org/projects/bentoken-finance"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1635848244,
   },
   {
@@ -13502,7 +13502,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "boss-swap/index.js",
     twitter: "BossSwapFinance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.bossswap.finance/audit"],
     listedAt: 1635966094,
   },
@@ -13612,7 +13612,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "eggtartswap/index.js",
     twitter: "EggTartSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1635981448,
   },
   {
@@ -13721,7 +13721,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Aurora"],
     module: "trisolaris.js",
     twitter: "trisolarislabs",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636045437,
   },
   {
@@ -13742,7 +13742,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "lootswap/index.js",
     twitter: "lootswapfinance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636058049,
   },
   {
@@ -13786,7 +13786,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "squidstake/index.js",
     twitter: "SquidStake",
     audit_links: ["https://docs.squidstake.com/contracts"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636132129,
   },
   {
@@ -13940,7 +13940,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "oolongswap/index.js",
     twitter: "oolongswap",
     audit_links: ["https://github.com/OolongSwap/oolongswap-audits"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636194293,
   },
   {
@@ -13999,7 +13999,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ronin"],
     module: "katana-ronin.js",
     twitter: "AxieInfinity",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636260169,
   },
   {
@@ -14020,7 +14020,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "adenafinance/index.js",
     twitter: "adenafinance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636268324,
   },
   {
@@ -14212,7 +14212,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "glide-finance/index.js",
     twitter: "GlideFinance",
     audit_links: ["https://docs.glidefinance.io/security/audit"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636387832,
   },
   {
@@ -14294,7 +14294,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "zenlink/index.js",
     twitter: "ZenlinkPro",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636427656,
   },
   {
@@ -14316,7 +14316,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kebab-finance/index.js",
     twitter: "kebabfinance",
     audit_links: ["https://www.certik.org/projects/kebab"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636430124,
   },
   {
@@ -14336,7 +14336,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance", "Polygon", "xDai", "Fantom", "Avalanche", "Cronos"],
     module: "empiredex/index.js",
     twitter: "Empire_DEX",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636439712,
   },
   /*
@@ -14398,7 +14398,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "pureswap/index.js",
     twitter: "Pureswap1",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636441951,
   },
   {
@@ -14665,7 +14665,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Cronos"],
     module: "crodex/index.js",
     twitter: "crodexapp",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://hacken.io/audits/#crodex"],
     listedAt: 1636671573,
   },
@@ -14686,7 +14686,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Shiden"],
     module: "standard-tech/index.js",
     twitter: "standarddefi",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     oracles: ["DIA", "Internal"],
     listedAt: 1636671594,
   },
@@ -14731,7 +14731,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "vvs-finance/index.js",
     twitter: "VVS_finance",
     audit_links: ["https://docs.vvs.finance/fundamentals/smart-contracts-and-security"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636736668,
   },
   {
@@ -14840,7 +14840,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Cronos"],
     module: "cronaswap/index.js",
     twitter: "cronaswap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636768562,
   },
   {
@@ -14904,7 +14904,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polis"],
     module: "hadesswap/index.js",
     twitter: "HadesSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1636925267,
   },
   {
@@ -14950,7 +14950,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Cronos"],
     module: "swapp/index.js",
     twitter: "SwappFi",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637002081,
   },
   {
@@ -15013,7 +15013,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["ZYX"],
     module: "zyxswap/index.js",
     twitter: "zyx_swap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637030880,
   },
   {
@@ -15076,7 +15076,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Cronos"],
     module: "photonswap/index.js",
     twitter: "photonswap_fi",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637042970,
   },
   {
@@ -15415,7 +15415,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "YoshiExchange",
     audit_links: ["https://hacken.io/wp-content/uploads/2021/10/Yoshi_22102021SCAudit_Report_2.pdf"],
     listedAt: 1637346402,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "864",
@@ -15497,7 +15497,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "gibxswap/index.js",
     twitter: "GIBX_Swap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.certik.org/projects/gibx-swap"],
     listedAt: 1637365166,
   },
@@ -15618,7 +15618,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     chains: ["Binance"],
     module: "bscswap/index.js",
     twitter: null,
@@ -15827,7 +15827,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Polygon"],
     module: "smartdex/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "AI_smartdex",
     listedAt: 1637392829,
   },
@@ -15849,7 +15849,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "corgiswap.js",
     twitter: "corgidogeestate",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637394147,
   },
   {
@@ -15870,7 +15870,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Songbird"],
     module: "flarex/index.js",
     twitter: "flrfinance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     parentProtocol: "Enosys",
     listedAt: 1637418466,
   },
@@ -15912,7 +15912,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     module: "swapperchan/index.js",
     twitter: "SwapperChan",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637511326,
   },
   {
@@ -16018,7 +16018,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Cronos"],
     module: "smolswap/index.js",
     twitter: "SmolSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637605616,
   },
   {
@@ -16103,7 +16103,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Binance", "Shiden"],
     module: "Kwikswap/index.js",
     twitter: "kwikswapdex",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637684497,
   },
   {
@@ -16233,7 +16233,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Heco"],
     module: "hswap.js",
     twitter: "HswapDEX",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.hswap.com/slowmist-zh.pdf", "https://www.hswap.com/lianan-zh.pdf"],
     listedAt: 1637724237,
   },
@@ -16255,7 +16255,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "minidex.js",
     twitter: "Mini_Swap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637725995,
   },
   {
@@ -16297,7 +16297,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tangoswap/index.js",
     twitter: "TangoSwapCash",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/tangoswap/TangoSwap_final-audit.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637729126,
   },
   {
@@ -16319,7 +16319,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "impossiblefi/index.js",
     twitter: "impossiblefi",
     audit_links: ["https://github.com/ImpossibleFinance/audits"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637783764,
   },
   {
@@ -16340,7 +16340,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Cronos"],
     module: "chronoswap/index.js",
     twitter: "CyborgSwapDEX",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: [
       "https://www.certik.com/projects/chronoswap",
       "https://github.com/Tech-Audit/Smart-Contract-Audits/blob/main/TECHAUDIT_CHRONOSWAP.pdf",
@@ -16429,7 +16429,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "sumswap/index.js",
     twitter: "sum_swap",
     audit_links: ["https://www.certik.com/projects/sumswap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637813174,
   },
   {
@@ -16495,7 +16495,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "vampireswap",
     oracles: ["Chainlink"],
     listedAt: 1637883311,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "915",
@@ -16622,7 +16622,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "scarecrow-raven/index.js",
     twitter: "scarecrowdefi",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1637947348,
   },
   {
@@ -16694,7 +16694,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "leonicornswap/index.js",
     twitter: "swapleonicorn",
     audit_links: ["https://hacken.io/audits/#leonicorn_swap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638083864,
   },
   {
@@ -16715,7 +16715,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "butterswap/index.js",
     twitter: "ButterSwap",
     audit_links: ["https://docs.butterswap.me/audit"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638085420,
   },
   {
@@ -16859,7 +16859,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Cronos"],
     module: "genesis/index.js",
     twitter: "cronos_genesis",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638134020,
   },
   {
@@ -17090,7 +17090,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "knightswap/index.js",
     twitter: "KnightEcosystem",
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/November/KnightSwap.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638214443,
   },
   {
@@ -17110,7 +17110,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ubiq"],
     module: "shinobi/index.js",
     twitter: "ubiqsmart",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638297195,
   },
   {
@@ -17328,7 +17328,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Aurora"],
     module: "nearpad/index.js",
     twitter: "NearPad",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638393212,
   },
   {
@@ -17467,7 +17467,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Dexes",
     chains: ["SmartBCH"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "1bch/index.js",
     twitter: "1BCHOfficial",
     audit_links: ["https://github.com/interfinetwork/smart-contract-audits/blob/main/1BCH_AuditReport_InterFi.pdf"],
@@ -17536,7 +17536,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["VeChain"],
     module: "vexchange/index.js",
     twitter: "VexchangeIO",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638464939,
   },
   {
@@ -17815,7 +17815,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "wingswap/index.js",
     twitter: "WingSwapFTM",
     audit_links: ["https://wingswap.gitbook.io/wingswap/getting-started/audit-1"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638612818,
   },
   {
@@ -17857,7 +17857,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "chickenswap/index.js",
     twitter: "ChefGrandpa",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638681578,
   },
   {
@@ -17879,7 +17879,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "partyswap/index.js",
     twitter: "partyswapdex",
     audit_links: ["https://solidity.finance/audits/PartySwap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638690045,
   },
   {
@@ -17900,7 +17900,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "wannaswap/index.js",
     twitter: "wannaswapamm",
     oracles: ["Chainlink"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.certik.com/projects/wannaswap"],
     listedAt: 1638702808,
   },
@@ -18073,7 +18073,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/polydex-fi/polydex-swap-core/blob/5fdd6b85550235800cd980ccb8fab9bd5247a7af/PolydexSwap.pdf",
     ],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1638882307,
   },
   {
@@ -18263,7 +18263,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   //   chains: ["Binance"],
   //   module: "kokoswap/index.js",
   //   twitter: "kokoswap",
-  //   forkedFrom: ["Uniswap"],
+  //   forkedFrom: ["Uniswap V2"],
   //   listedAt: 1639000954,
   // },
   {
@@ -18347,7 +18347,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Godwoken", "GodwokenV1"],
     module: "yokaiswap/index.js",
     twitter: "yokaiswap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1639116787,
   },
   {
@@ -18369,7 +18369,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "wagyuswap/index.js",
     twitter: "WagyuSwap_app",
     audit_links: ["https://solidity.finance/audits/Wagyu"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1639119653,
   },
   {
@@ -18453,7 +18453,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon", "Ethereum"],
     module: "safeswap/index.js",
     twitter: "DexSafeSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1639276917,
   },
   {
@@ -18475,7 +18475,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "soyfinance/index.js",
     twitter: "Soy_Finance",
     audit_links: ["https://soy-finance.gitbook.io/soy-finance/safety-on-yields/soy-finance-security-audit"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1639294731,
   },
   {
@@ -18752,7 +18752,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "rivrkitty.js",
     twitter: "RivrKitty",
     audit_links: ["https://docs.rivrkitty.com/smart-contracts/main-contracts#usdpaws-farming-contract"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1639421711,
   },
   {
@@ -18820,7 +18820,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "defyswap/index.js",
     twitter: "DefySwap",
     audit_links: ["https://defiyield.app/audit-database/shellboxes/defyswap"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1639510919,
   },
   {
@@ -18902,7 +18902,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Cronos"],
     module: "mm-finance/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "MMFcrypto",
     audit_links: ["https://www.certik.com/projects/mmfinance"],
     parentProtocol: "MM Finance",
@@ -19190,7 +19190,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "solanafarm/index.js",
     twitter: "solana_farm",
     audit_links: ["https://github.com/Tech-Audit/Smart-Contract-Audits/blob/main/TECHAUDIT_SOLANAFARM.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1639805654,
   },
   {
@@ -19211,7 +19211,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "sunflowerswap/index.js",
     twitter: "Sunflower_Swap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1639807342,
   },
   {
@@ -19345,7 +19345,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "globiancedex/index.js",
     twitter: "globiance",
     audit_links: ["https://dexapi.globiance.com/assets/GlobianceDEXAudit.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1639872890,
   },
   {
@@ -19838,7 +19838,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["CSC"],
     module: "ifswap/index.js",
     twitter: "if_networks",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1640105053,
   },
   {
@@ -19881,7 +19881,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "autoshark/index.js",
     twitter: "AutoSharkFin",
     audit_links: ["https://docs.autoshark.finance/audit"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1640115841,
   },
   {
@@ -20026,7 +20026,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "babypigfinance/index.js",
     twitter: "BabypigCash",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "1082",
@@ -20046,7 +20046,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Polygon"],
     module: "umbria/index.js",
     twitter: "NetworkUmbria",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1640255497,
   },
   {
@@ -20188,7 +20188,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kaco/index.js",
     twitter: "KacOFinance",
     audit_links: ["https://www.certik.com/projects/coinversation"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1640426184,
   },
   {
@@ -20250,7 +20250,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "afraswap/index.js",
     twitter: "afraswap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1640516061,
   },
   {
@@ -20747,7 +20747,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://rugdoc.io/project/vultureswap",
     ],
     listedAt: 1640645851,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "1117",
@@ -20768,7 +20768,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "crowfi_",
     audit_links: ["https://www.certik.com/projects/crowdefi"],
     listedAt: 1640643322,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "1118",
@@ -21121,7 +21121,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DuckyDeFi",
     audit_links: ["https://rugdoc.io/project/duckydefi-exchange/"],
     listedAt: 1640733460,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "1135",
@@ -21224,7 +21224,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tethys/index.js",
     twitter: "tethysfinance",
     audit_links: ["https://defisecurity.io/dist/files/tethys_finance_security_audit_report_1.0.pdf"],
-    forkedFrom: ["Uniswap", "Impermax Finance"],
+    forkedFrom: ["Uniswap V2", "Impermax Finance"],
     parentProtocol: "Tethys Finance",
     listedAt: 1640746550,
   },
@@ -21247,7 +21247,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "netswap/index.js",
     twitter: "netswapofficial",
     audit_links: ["https://docs.netswap.io/security/security-audits"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1640747909,
   },
   {
@@ -21454,7 +21454,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "wraithswap/index.js",
     twitter: "wraithswap",
     listedAt: 1640810152,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "1151",
@@ -21595,7 +21595,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   //   chains: ["Liquidchain"],
   //   module: "liquidswap/index.js",
   //   twitter: "LiquidChainXLC",
-  //   forkedFrom: ["Uniswap"],
+  //   forkedFrom: ["Uniswap V2"],
   //   listedAt: 1640874908,
   // },
   {
@@ -21681,7 +21681,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Nahmii"],
     module: "niifi.js",
     twitter: "NiiFiDAO",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1640904409,
   },
   {
@@ -21930,7 +21930,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Aurora"],
     module: "auroraswap/index.js",
     twitter: "AuroraSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     oracles: ["DIA"],
     listedAt: 1641071171,
   },
@@ -21973,7 +21973,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tropicalfinance/index.js",
     twitter: "tropicalfi_",
     audit_links: ["https://tropical.finance/audit.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1641171227,
   },
   {
@@ -22078,7 +22078,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Kucoin"],
     module: "mojitoswap/index.js",
     twitter: "MojitoSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: [
       "https://github.com/MojitoFinance/mojito-swap-farm/blob/main/doc/PeckShield-Audit-Report-Mojito-v1.0.pdf",
     ],
@@ -22317,7 +22317,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Shiden", "Binance", "Polygon", "Astar"],
     module: "polkaex/index.js",
     twitter: "PolkaExOfficial",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.certik.com/projects/polkaex"],
     listedAt: 1641360374,
   },
@@ -22608,7 +22608,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "wagmidao/index.js",
     twitter: "WagmiDAO_",
     audit_links: ["https://docs.wagmidao.io/resources/audits"],
-    forkedFrom: ["Uniswap", "Olympus DAO"],
+    forkedFrom: ["Uniswap V2", "Olympus DAO"],
     listedAt: 1641514188,
   },
   {
@@ -22720,7 +22720,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "ThorusFi",
     audit_links: ["https://thorus.fi/Thorus_Bonds-Inspex_Audit.pdf"],
     listedAt: 1641573897,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "1212",
@@ -23016,7 +23016,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Meter", "Theta"],
     module: "voltswap/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "Meter_IO",
     oracles: [],
     listedAt: 1641871826,
@@ -23319,7 +23319,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Oasis"],
     module: "duneswap.js",
     twitter: "DuneSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1641941263,
   },
   {
@@ -23340,7 +23340,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Oasis"],
     module: "yuzu.js",
     twitter: "Yuzu_Swap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1641941821,
     audit_links: ["https://app.yuzu-swap.com/PeckShield-Audit-Report-YuzuSwap-v1.0_final.pdf"],
   },
@@ -23362,7 +23362,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["IoTeX"],
     module: "mimoswap/index.js",
     twitter: "mimoprotocol",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1641944808,
   },
   {
@@ -23621,7 +23621,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "HakuSwap",
     audit_links: ["https://hakuswap.com/audit.pdf"],
     listedAt: 1642109094,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   /*
 {
@@ -23768,7 +23768,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Theta"],
     module: "thetaswap/index.js",
     twitter: "Theta_Network",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1642191461,
   },
   {
@@ -23955,7 +23955,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "solarflare.js",
     twitter: "Solarbeamio",
     audit_links: ["https://www.certik.com/projects/solarbeam"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1642210209,
   },
   {
@@ -24203,7 +24203,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "weve/index.js",
     twitter: "_veDAO_",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1642528930,
   },
   {
@@ -24287,7 +24287,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Moonriver"],
     module: "alphadex.js",
     twitter: "thealphadex",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1642569490,
   },
   {
@@ -24308,7 +24308,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "omnidex/index.js",
     twitter: "OmniDex1",
     oracles: ["DIA"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     parentProtocol: "Omnidex",
     listedAt: 1642579561,
   },
@@ -24370,7 +24370,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Beamswapio",
     audit_links: ["https://docs.beamswap.io/contracts/audit"],
     oracles: ["DIA"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     parentProtocol: "BeamSwap",
     listedAt: 1642599283,
   },
@@ -24437,7 +24437,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "radial/index.js",
     twitter: "RadialFinance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1642629505,
   },
   {
@@ -24496,7 +24496,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Binance"],
     module: "burgerswap/index.js",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "burger_swap",
     listedAt: 1642723859,
   },
@@ -24516,7 +24516,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "19917",
     category: "Dexes",
     chains: ["Optimism", "Arbitrum"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "zipswap/index.js",
     twitter: "Zip_swap",
     listedAt: 1642724011,
@@ -24599,7 +24599,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "vapedao/index.js",
     twitter: "apedaofinance",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1642765130,
   },
   {
@@ -24709,7 +24709,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "ProtoFiProtocol",
     audit_links: ["https://www.certik.com/projects/protofi"],
     listedAt: 1642781169,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "1307",
@@ -25041,7 +25041,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "alligator-exchange/index.js",
     twitter: "alligator_defi",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1643391258,
   },
   {
@@ -25082,7 +25082,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "furylabsfinance/index.js",
     twitter: "FuryLabs_",
     audit_links: ["https://fury-labs.gitbook.io/faq/security"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1643397175,
   },
   {
@@ -25306,7 +25306,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "shiroswap/index.js",
     twitter: "ShiroTokens",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1643486991,
   },
   {
@@ -25554,7 +25554,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "yieldfields/index.js",
     twitter: "yieldfields",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://rugdoc.io/project/yieldfields/"],
     listedAt: 1643834444,
   },
@@ -25597,7 +25597,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "degenhaus/index.js",
     twitter: "HouseDegen",
     listedAt: 1643835964,
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
   },
   {
     id: "1350",
@@ -25636,7 +25636,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "wigoswap/index.js",
     twitter: "WigoSwap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://certik.com/projects/wigoswap"],
     listedAt: 1643852628,
   },
@@ -25808,7 +25808,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Curio"],
     module: "capitaldex/index.js",
     twitter: "Capitaldex_",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1643937401,
   },
   {
@@ -25892,7 +25892,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "oni/index.js",
     twitter: "oniexchange",
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/Oni%20MasterChef.pdf"],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1644152759,
   },
   {
@@ -25913,7 +25913,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "narwhalswap/index.js",
     twitter: "narwhalswap",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1644153456,
   },
   {
@@ -25998,7 +25998,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "astroswap.js",
     twitter: "AstroSwapApp",
     language: "Solidity",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1644230266,
   },
   {
@@ -26168,7 +26168,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "saharaexchange/index.js",
     twitter: "SaharaDex",
     language: "Solidity",
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1644440454,
   },
   {
@@ -26596,7 +26596,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Astar"],
     oracles: [],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "arthswap/index.js",
     twitter: "arthswap",
     language: "Solidity",
@@ -26663,7 +26663,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Moonbeam"],
     oracles: [],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "1beam/index.js",
     twitter: "1beamio",
     language: "Solidity",
@@ -26708,7 +26708,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Oasis"],
     oracles: [],
-    forkedFrom: ["Uniswap"],
+    forkedFrom: ["Uniswap V2"],
     module: "LizardExchange/index.js",
     twitter: "LizardExchange",
     listedAt: 1644598160,

@@ -195,6 +195,8 @@ functions:
   fetchCoingeckoData:
     handler: src/fetchCoingeckoData.fetchCoingeckoData
     timeout: 900
+    environment:
+      CG_KEY: ${env:CG_KEY}
   triggerFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.triggerNewFetches
     events:

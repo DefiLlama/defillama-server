@@ -29864,5 +29864,26 @@ const data2: Protocol[] = [
     twitter: "octoplace",
     listedAt: 1680356318
   },
+  {
+    id: "2760",
+    name: "Maia V3",
+    address: null,
+    symbol: "-",
+    url: "https://uni.maiadao.io/#/swap",
+    description: "Fork of Uniswap V3 on Metis network",
+    chain: "Metis",
+    logo: `${baseIconsUrl}/maia-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Metis"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "maia-dao-uni/index.js",
+    twitter: "MaiaDAOEco",
+    listedAt: 1680444176
+  },
 ]
 export default data2;

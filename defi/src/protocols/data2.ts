@@ -17050,7 +17050,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://dolomite.io",
-    description: "An immutable margin lending and advanced hedging protocol on Arbitrum that's built around capital efficiency.",
+    description: "A next-gen money market and margin trading protocol on Arbitrum.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/dolomite.jpg`,
     audits: "2",

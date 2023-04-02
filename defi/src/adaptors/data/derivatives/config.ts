@@ -31,5 +31,9 @@ export default {
     "synfutures": {
         "enable": true,
         "id": "2328"
+    },
+    "vela": {
+        "enable": true,
+        "id": "2548"
     }
 } as AdaptorsConfig

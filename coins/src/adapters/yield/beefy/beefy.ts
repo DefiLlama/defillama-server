@@ -36,6 +36,8 @@ export const config = {
       '0x5d2EF803D6e255eF4D1c66762CBc8845051B54dB',
       '0xA4e2EE5a7fF51224c27C98098D8DB5C770bAAdbE',
       '0xD8dd2EA228968F7f043474Db610A20aF887866c7',
+      '0x8b92de822b121761a3caf894627a09a9f87864c0',
+      '0xf723ae5478b1f03ca88c204f1ae5498d3576b78f',
     ],
   },
   moonriver: {

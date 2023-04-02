@@ -3,7 +3,7 @@ import parentProtocols from '../protocols/parentProtocols'
 import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { graphURL, metadataQuery, proposalQuery, } from './snapshotQueries'
 import axios from 'axios'
-import { getSnapshot, setSnapshot } from './cache'
+import { getSnapshot, setSnapshot, getSnapshotOverview, setSnapshotOverview, } from './cache'
 import * as sdk from '@defillama/sdk'
 
 export interface SnapshotCache {
@@ -75,6 +75,7 @@ export async function getProposals(ids: string[], recent?: boolean) {
 }
 
 export async function updateSnapshots() {
+  const overview = await getSnapshotOverview()
   const idsAll = getSnapshotIds()
   console.log('snapshot gov#', idsAll.length)
   const idChunks = sliceIntoChunks(idsAll, 31)
@@ -101,68 +102,78 @@ export async function updateSnapshots() {
     Object.values(idMap).map(updateStats)
     await Promise.all(fetchOnlyProposals.map(id => setSnapshot(id, idMap[id])))
   }
-}
-
-async function addAllProposals(cache: SnapshotCache) {
-  cache.proposals = {}
-  const proposals = await getProposals([cache.id])
-  proposals.forEach((v) => cache.proposals![v.id] = v)
-  updateStats(cache)
-  await setSnapshot(cache.id, cache)
-}
-
-function updateStats(cache: SnapshotCache) {
-  if (!cache.proposals)  sdk.log('Updating: ', cache.id)
-  if (!cache.proposals) cache.proposals = {}
-  const { proposals, metadata } = cache
-  const proposalsArray = Object.values(proposals)
-  const stats = cache.stats ?? {}
-
-  stats.proposalsCount = metadata.proposalsCount
-  stats.followersCount = metadata.followersCount
-  stats.name = metadata.name
-  stats.id = metadata.id
-  stats.strategyCount = metadata.strategies.length
-  stats.followersCount = metadata.followersCount
-
-  proposalsArray.forEach(i => {
-    i.month = (new Date(i.start * 1000)).toISOString().slice(0, 7)
-    delete i.strategies
-    if (i.scores_total > 1) {
-      const highestScore = max(i.scores)
-      i.score_skew = highestScore! / i.scores_total
-    }
-  })
-  stats.proposalsByDate = [...proposalsArray].sort((a, b) => b.start - a.start).map(i => i.id)
-  stats.proposalsBySkew = [...proposalsArray].sort((a, b) => a.score_skew - b.score_skew).map(i => i.id)
-  stats.proposalsByScore = [...proposalsArray].sort((a, b) => b.scores_total - a.scores_total).map(i => i.id)
-
-  addStateSplit(stats, proposalsArray)
-  addDateSplit(stats, proposalsArray)
-
-  cache.stats = stats
+  await setSnapshotOverview(overview)
 
 
-  function addStateSplit(obj: any, arry: any) {
-    obj.states = arry.reduce((acc: any, i: any) => {
-      if (!acc[i.state]) acc[i.state] = 0
-      acc[i.state] += 1
-      return acc
-    }, {})
+  async function addAllProposals(cache: SnapshotCache) {
+    cache.proposals = {}
+    const proposals = await getProposals([cache.id])
+    proposals.forEach((v) => cache.proposals![v.id] = v)
+    updateStats(cache)
+    await setSnapshot(cache.id, cache)
   }
 
-  function addDateSplit(obj: any, arry: any) {
-    obj.months = arry.reduce((acc: any, i: any) => {
-      if (!acc[i.month]) acc[i.month] = { proposals: [] }
-      acc[i.month].proposals.push(i.id)
-      return acc
-    }, {})
+  function updateStats(cache: SnapshotCache) {
+    if (!cache.proposals) sdk.log('Updating: ', cache.id)
+    if (!cache.proposals) cache.proposals = {}
+    const { proposals, metadata } = cache
+    const proposalsArray = Object.values(proposals)
+    const stats = cache.stats ?? {}
 
-    // get state split within each month
-    Object.values(obj.months).forEach((obj: any) => {
-      const _props = obj.proposals.map((i: any) => proposals[i])
-      addStateSplit(obj, _props)
+    stats.proposalsCount = metadata.proposalsCount
+    stats.followersCount = metadata.followersCount
+    stats.name = metadata.name
+    stats.id = metadata.id
+    stats.strategyCount = metadata.strategies.length
+    stats.followersCount = metadata.followersCount
+
+    proposalsArray.forEach(i => {
+      i.month = (new Date(i.start * 1000)).toISOString().slice(0, 7)
+      delete i.strategies
+      if (i.scores_total > 1) {
+        const highestScore = max(i.scores)
+        i.score_skew = highestScore! / i.scores_total
+      }
     })
+
+    const ONE_MONTH = 30 * 24 * 3600
+    stats.proposalsByDate = [...proposalsArray].sort((a, b) => b.start - a.start).map(i => i.id)
+    stats.proposalsBySkew = [...proposalsArray].sort((a, b) => a.score_skew - b.score_skew).map(i => i.id)
+    stats.proposalsByScore = [...proposalsArray].sort((a, b) => b.scores_total - a.scores_total).map(i => i.id)
+    stats.propsalsInLast30Days = proposalsArray.filter(i => (i.start + ONE_MONTH) > +Date.now() / 1e3).length
+
+    addStateSplit(stats, proposalsArray)
+    addDateSplit(stats, proposalsArray)
+
+    const id = stats.id
+    overview[id] = { ...overview[id], ...stats }
+    const skipFields = ['proposalsByDate', 'proposalsBySkew', 'proposalsByScore',]
+    skipFields.forEach(field => delete overview[id][field])
+
+    cache.stats = stats
+
+
+    function addStateSplit(obj: any, arry: any) {
+      obj.states = arry.reduce((acc: any, i: any) => {
+        if (!acc[i.state]) acc[i.state] = 0
+        acc[i.state] += 1
+        return acc
+      }, {})
+    }
+
+    function addDateSplit(obj: any, arry: any) {
+      obj.months = arry.reduce((acc: any, i: any) => {
+        if (!acc[i.month]) acc[i.month] = { proposals: [] }
+        acc[i.month].proposals.push(i.id)
+        return acc
+      }, {})
+
+      // get state split within each month
+      Object.values(obj.months).forEach((obj: any) => {
+        const _props = obj.proposals.map((i: any) => proposals[i])
+        addStateSplit(obj, _props)
+      })
+    }
   }
 }
 

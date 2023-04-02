@@ -53,3 +53,12 @@ export async function getSnapshot(project: string) {
 export async function setSnapshot(project: string, cache: any) {
   return setCache('snapshot', project, cache)
 }
+
+
+export async function getSnapshotOverview() {
+  return getCache('overview', 'snapshot')
+}
+
+export async function setSnapshotOverview(cache: any) {
+  return setCache('overview', 'snapshot', cache)
+}

@@ -447,12 +447,14 @@ functions:
     memorySize: 512
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINS_DB: ${env:COINS_DB}
   storeTreasuryInterval:
     handler: src/storeTreasuryInterval.default
     timeout: 900
     memorySize: 512
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINS_DB: ${env:COINS_DB}
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     timeout: 900

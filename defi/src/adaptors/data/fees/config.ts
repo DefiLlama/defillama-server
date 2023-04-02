@@ -691,5 +691,9 @@ export default {
     "equilibre-exchange": {
         enabled: true,
         id: "2586"
+    },
+    "waves": {
+        enabled: true,
+        id: "1274"
     }
 } as AdaptorsConfig

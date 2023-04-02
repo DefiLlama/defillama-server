@@ -49,7 +49,7 @@ async function getPrices(coin: Coin, fromTimestamp: number, toTimestamp: number)
 async function main() {
   setTimer(1500);
   const coins = (await coingeckoRequest(
-    `https://pro-api.coingecko.com/api/v3/coins/list&x_cg_pro_api_key=${process.env.CG_KEY}`
+    `https://pro-api.coingecko.com/api/v3/coins/list?&x_cg_pro_api_key=${process.env.CG_KEY}`
   )) as Coin[];
   for (
     let coinIndex = startingCoinIndex;

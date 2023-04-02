@@ -96,10 +96,10 @@ export const handler = async (event: IHandlerEvent) => {
       }
 
       // Run adapters // TODO: Change to run in parallel
-      const FILTRED_KEYS_TO_STORE = event.adaptorRecordTypes?.reduce((acc, curr) => {
+      const FILTRED_KEYS_TO_STORE = KEYS_TO_STORE/* event.adaptorRecordTypes?.reduce((acc, curr) => {
         acc[AdaptorRecordTypeMap[curr]] = curr
         return acc
-      }, {} as IJSON<string>) ?? AdaptorRecordTypeMapReverse
+      }, {} as IJSON<string>) ?? AdaptorRecordTypeMapReverse */
       if (adaptor.protocolType === ProtocolType.COLLECTION) {
         for (const [version, adapter] of adaptersToRun) {
           if (version !== versionKey) continue

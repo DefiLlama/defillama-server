@@ -699,5 +699,9 @@ export default {
     "maia-v3": {
         "enabled": true,
         "id": "2760"
+    },
+    "morphex": {
+        "enabled": true,
+        "id": "2662"
     }
 } as AdaptorsConfig

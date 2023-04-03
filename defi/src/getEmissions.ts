@@ -22,32 +22,39 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     });
   });
 
-  const now = Math.floor(Date.now() / 1000);
-  const formattedData = Object.entries(data);
-  const maxSupply = formattedData[formattedData.length - 1][1];
-  const nextEventIndex = formattedData.findIndex(([date]) => Number(date) > now);
-  const circSupply = nextEventIndex ? formattedData[nextEventIndex - 1]?.[1] ?? [] : 0;
-  const nextEvent =
-    nextEventIndex && formattedData[nextEventIndex]
-      ? { 
-          date: formattedData[nextEventIndex][0], 
-          toUnlock: formattedData[nextEventIndex][1] - circSupply, 
-          proportion: formattedData[nextEventIndex][1] - circSupply / circSupply,        }
-      : null;
-  const totalLocked = maxSupply - circSupply;
-
   const token = res.metadata.token;
 
   const tokenPrice = await fetch(`https://coins.llama.fi/prices/current/${token}?searchWidth=4h`).then((res) =>
     res.json()
   );
 
-  const mcap = await fetch("https://coins.llama.fi/mcaps", {
+  const mcapRes = await fetch("https://coins.llama.fi/mcaps", {
     method: "POST",
     body: JSON.stringify({
       coins: res.gecko_id ? [`coingecko:${res.gecko_id}`] : [],
     }),
   }).then((r) => r.json());
+
+  const now = Math.floor(Date.now() / 1000);
+  const formattedData = Object.entries(data);
+  const maxSupply = formattedData[formattedData.length - 1][1];
+  const nextEventIndex = formattedData.findIndex(([date]) => Number(date) > now);
+  const circSupply = nextEventIndex ? formattedData[nextEventIndex - 1]?.[1] ?? [] : 0;
+
+  const coin: any = Object.values(tokenPrice?.coins ?? {})[0]
+  const mcap = mcapRes?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0
+  const float = (isNaN(coin.price) || mcap == 0) ? null : mcap / coin.price
+  const proportion = float == null ? null : (formattedData[nextEventIndex][1] - circSupply) / float
+
+  const nextEvent =
+    nextEventIndex && formattedData[nextEventIndex]
+      ? { 
+          date: formattedData[nextEventIndex][0], 
+          toUnlock: formattedData[nextEventIndex][1] - circSupply, 
+          proportion
+        }
+      : null;
+  const totalLocked = maxSupply - circSupply;
 
   return {
     token,
@@ -60,7 +67,7 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     maxSupply,
     nextEvent,
     gecko_id: res.gecko_id,
-    mcap: mcap?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0,
+    mcap,
     events:
       res.metadata.events
         ?.map(({ description, timestamp, noOfTokens }: { description: string; timestamp: string, noOfTokens:number[] }) => ({
@@ -87,3 +94,9 @@ const handler = async (_event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
+
+async function main() {
+  let a = await fetchProtocolEmissionData('moonbeam')
+  return
+}
+main() // ts-node defi/src/getEmissions.ts

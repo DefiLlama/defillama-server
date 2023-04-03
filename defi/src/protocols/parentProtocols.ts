@@ -1264,6 +1264,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Starfish_Fi"
   },
+  {
+    id: "Hector Network",
+    name: "Hector Network",
+    url: "https://hector.network",
+    description: "Hector Network is an expansive decentralized ecosystem run by a utility token, HEC, and complemented by the TOR stablecoin.",
+    logo: `${baseIconsUrl}/hector-network.png`,
+    gecko_id: "hector-dao",
+    cmcId: "13881",
+    chains: [],
+    twitter: "Hector_Network"
+  },
 ];
 
 export default parentProtocols;

@@ -15477,7 +15477,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "flashstake",
     audit_links: [
-      "https://docs.flashstake.io/security.html",
+      "https://docs.flashstake.io/docs/security-and-risks/audits",
       "https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-Flashstake-v1.0.pdf"
     ],
     listedAt: 1663898509
@@ -29884,6 +29884,28 @@ const data2: Protocol[] = [
     module: "maia-dao-uni/index.js",
     twitter: "MaiaDAOEco",
     listedAt: 1680444176
+  },
+  {
+    id: "2761",
+    name: "Hector Lending",
+    address: "fantom:0x5C4FDfc5233f935f20D2aDbA572F770c2E377Ab0",
+    symbol: "HEC",
+    url: "https://lending.hectorinstitute.com/",
+    description: "Lending protocol from Hector Network",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/hector-lending.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Fantom"],
+    oracles: [],
+    forkedFrom: ["Compound"],
+    module: "hector-lendng/index.js",
+    twitter: "Hector_Network",
+    parentProtocol: "Hector Network",
+    listedAt: 1680514599
   },
 ]
 export default data2;

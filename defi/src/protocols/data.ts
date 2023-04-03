@@ -6240,7 +6240,7 @@ const data: Protocol[] = [
     module: "jetfuelfinance/index.js",
     twitter: "Jetfuelfinance",
     audit_links: ["https://jetfuel.finance/audits"],
-    forkedFrom: ["Uniswap V2", "Compound"],
+    forkedFrom: ["Compound"],
   },
   {
     id: "409",

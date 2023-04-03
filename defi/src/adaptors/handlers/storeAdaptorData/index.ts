@@ -44,7 +44,7 @@ export const handler = async (event: IHandlerEvent) => {
     return acc
   }, {} as IJSON<typeof dataList[number]>)
   // Import some utils
-  const { importModule, KEYS_TO_STORE } = dataModule
+  const { importModule, KEYS_TO_STORE, config } = dataModule
 
   // Get list of adaptors to run
   const adaptorsList = event.protocolModules.map(index => dataMap[index]).filter(p => p !== undefined)
@@ -67,7 +67,7 @@ export const handler = async (event: IHandlerEvent) => {
 
   const results = await allSettled(adaptorsList.map(async protocol => {
     // Get adapter info
-    const { id, module, versionKey } = protocol;
+    let { id, module, versionKey } = protocol;
     console.info(`Adapter found ${id} ${module} ${versionKey}`)
 
     try {
@@ -102,7 +102,7 @@ export const handler = async (event: IHandlerEvent) => {
       }, {} as IJSON<string>) ?? AdaptorRecordTypeMapReverse */
       if (adaptor.protocolType === ProtocolType.COLLECTION) {
         for (const [version, adapter] of adaptersToRun) {
-          if (version !== versionKey) continue
+          id = config[version].id
           const rawRecords: RawRecordMap = {}
           const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
           if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - cleanCurrentDayTimestamp) > 60 * 60 * 2) continue

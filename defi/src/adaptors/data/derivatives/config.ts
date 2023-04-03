@@ -29,11 +29,11 @@ export default {
         "id": "1801"
     },
     "synfutures": {
-        "enable": true,
+        "enabled": true,
         "id": "2328"
     },
     "vela": {
-        "enable": true,
+        "enabled": true,
         "id": "2548"
     }
 } as AdaptorsConfig

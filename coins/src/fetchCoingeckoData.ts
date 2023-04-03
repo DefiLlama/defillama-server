@@ -8,6 +8,9 @@ import invokeLambda from "./utils/shared/invokeLambda";
 import sleep from "./utils/shared/sleep";
 import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
+import { Connection, PublicKey, Keypair } from "@solana/web3.js";
+
+let solanaConnection = new Connection(process.env.SOLANA_RPC || "https://rpc.ankr.com/solana")
 
 export async function retryCoingeckoRequest(
   query: string,
@@ -82,7 +85,7 @@ function storeHistoricalCoinData(
 }
 
 let solanaTokens: Promise<any>;
-async function getSymbolAndDecimals(tokenAddress: string, chain: string) {
+async function getSymbolAndDecimals(tokenAddress: string, chain: string, coingeckoSymbol:string) {
   if (chain === "solana") {
     if (solanaTokens === undefined) {
       solanaTokens = fetch(
@@ -93,9 +96,17 @@ async function getSymbolAndDecimals(tokenAddress: string, chain: string) {
       (t) => t.address === tokenAddress
     );
     if (token === undefined) {
-      throw new Error(
-        `Token ${chain}:${tokenAddress} not found in solana token list`
-      );
+      const decimalsQuery = await solanaConnection.getParsedAccountInfo(new PublicKey(tokenAddress))
+      const decimals = (decimalsQuery.value?.data as any)?.parsed?.info?.decimals
+      if(typeof decimals !== "number"){
+        throw new Error(
+          `Token ${chain}:${tokenAddress} not found in solana token list`
+        );
+      }
+      return {
+        symbol: coingeckoSymbol.toUpperCase(),
+        decimals: decimals
+      }
     }
     return {
       symbol: token.symbol,
@@ -147,7 +158,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
         }
         const { decimals, symbol } = await getSymbolAndDecimals(
           tokenAddress,
-          chain
+          chain,
+          coin.symbol
         );
         await ddb.put({
           PK,
@@ -265,6 +277,16 @@ const handler = (hourly: boolean) => async (
     }
   }
 };
+
+/*
+function getMetadataPDA(mint: PublicKey) {
+  const [publicKey] = PublicKey.findProgramAddressSync(
+    [Buffer.from("metadata"), new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s").toBuffer(), mint.toBuffer()],
+    new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s")
+  );
+  return publicKey;
+}
+*/
 
 export const fetchCoingeckoData = wrapScheduledLambda(handler(false));
 export const fetchHourlyCoingeckoData = wrapScheduledLambda(handler(true));

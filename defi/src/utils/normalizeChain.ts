@@ -1385,13 +1385,18 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
-    chainid: 324,
+    chainId: 324,
   },
   "Polygon zkEVM": {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Polygon",
+      types: ["L2", "gas"]
+    },
+    chainId: 1101
   },
   
 } as unknown as {

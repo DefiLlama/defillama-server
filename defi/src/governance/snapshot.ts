@@ -137,7 +137,7 @@ export async function updateSnapshots() {
       if (i.scores_total > 1) {
         const highestScore = max(i.scores)
         i.score_skew = highestScore! / i.scores_total
-        i.score_curve = i.scores_total * (highestScore >= 0.5 ? 0.5 - 0.5 * highestScore : 0.5 * highestScore)
+        i.score_curve = i.scores_total * (i.score_skew >= 0.5 ? 0.5 - 0.5 * i.score_skew : 0.5 * i.score_skew)
       }
     })
 

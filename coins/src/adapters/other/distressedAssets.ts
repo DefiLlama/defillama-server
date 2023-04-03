@@ -53,7 +53,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
   },
   solana: {
-    YAKU: "NGK3iHqqQkyRZUj4uhJDQqEyKKcZ7mdawWpqwMffM3s
+    YAKU: "NGK3iHqqQkyRZUj4uhJDQqEyKKcZ7mdawWpqwMffM3s",
   },
 };
 

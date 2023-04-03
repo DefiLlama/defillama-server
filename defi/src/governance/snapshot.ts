@@ -18,7 +18,9 @@ export interface Proposal {
   space: any;
   scores: number[];
   scores_total: number;
+  quorum: number;
   score_skew: number;
+  score_curve: number;
   start: number;
   month: string;
   strategies?: any;
@@ -100,7 +102,8 @@ export async function updateSnapshots() {
       proposals[i.id] = { ...(proposals[i.id] ?? {}), ...i }
     })
     Object.values(idMap).map(updateStats)
-    await Promise.all(fetchOnlyProposals.map(id => setSnapshot(id, idMap[id])))
+    await Promise.all(Object.values(idMap).map(cache => setSnapshot(cache.id, cache)))
+    // await Promise.all(fetchOnlyProposals.map(id => setSnapshot(id, idMap[id])))
   }
   await setSnapshotOverview(overview)
 
@@ -121,6 +124,7 @@ export async function updateSnapshots() {
     const stats = cache.stats ?? {}
 
     stats.proposalsCount = metadata.proposalsCount
+    stats.successfulProposals = proposalsArray.filter(isSuccessfulProposal).length
     stats.followersCount = metadata.followersCount
     stats.name = metadata.name
     stats.id = metadata.id
@@ -133,14 +137,15 @@ export async function updateSnapshots() {
       if (i.scores_total > 1) {
         const highestScore = max(i.scores)
         i.score_skew = highestScore! / i.scores_total
+        i.score_curve = i.scores_total * (highestScore >= 0.5 ? 0.5 - 0.5 * highestScore : 0.5 * highestScore)
       }
     })
 
-    const ONE_MONTH = 30 * 24 * 3600
     stats.proposalsByDate = [...proposalsArray].sort((a, b) => b.start - a.start).map(i => i.id)
     stats.proposalsBySkew = [...proposalsArray].sort((a, b) => a.score_skew - b.score_skew).map(i => i.id)
     stats.proposalsByScore = [...proposalsArray].sort((a, b) => b.scores_total - a.scores_total).map(i => i.id)
-    stats.propsalsInLast30Days = proposalsArray.filter(i => (i.start + ONE_MONTH) > +Date.now() / 1e3).length
+    stats.propsalsInLast30Days = proposalsArray.filter(isProposalUnderAMonth).length
+    stats.successfulPropsalsInLast30Days = proposalsArray.filter(isProposalUnderAMonth).filter(isSuccessfulProposal).length
 
     addStateSplit(stats, proposalsArray)
     addDateSplit(stats, proposalsArray)
@@ -174,6 +179,15 @@ export async function updateSnapshots() {
         addStateSplit(obj, _props)
       })
     }
+  }
+
+  function isSuccessfulProposal(i: Proposal) {
+    return i.state === 'closed' && i.scores_total > i.quorum
+  }
+
+  function isProposalUnderAMonth(i: Proposal) {
+    const ONE_MONTH = 30 * 24 * 3600
+    return (i.start + ONE_MONTH) > +Date.now() / 1e3
   }
 }
 

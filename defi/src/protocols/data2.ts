@@ -23685,7 +23685,7 @@ const data2: Protocol[] = [
     symbol: "MAP",
     url: "https://www.mapprotocol.io",
     description:
-      "MAP Protocol (MAPO) is the omnichain layer for Web3 with provably secure cross-chain communication built on Light-client and Zero-knowledge technology. By connecting both EVM and non-EVM public chains, MAPO empowers dApp developers to thrive in Web3 with a full suite of omnichain SDKs.",
+      "MAP Protocol is the omnichain layer for Web3 with provably secure cross-chain communication built on Light-client and Zero-knowledge technology. By connecting both EVM and non-EVM public chains, MAPO empowers dApp developers to thrive in Web3 with a full suite of omnichain SDKs.",
     chain: "Binance",
     logo: `${baseIconsUrl}/mapo.png`,
     audits: "0",

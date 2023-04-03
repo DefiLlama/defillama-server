@@ -2356,6 +2356,26 @@
       "symbol": "META",
       "to": "coingecko#metaplex"
     },
+    "DUALa4FC2yREwZ59PHeu1un4wis36vHRv5hWVBmzykCJ": {
+      "decimals": "6",
+      "symbol": "DUAL",
+      "to": "coingecko#dual-finance"
+    },
+    "JET6zMJWkCN9tpRT2v2jfAmm5VnQFDpUBCyaKojmGtz": {
+      "decimals": "9",
+      "symbol": "JET",
+      "to": "coingecko#jet"
+    },
+    "CvB1ztJvpYQPvdPBePtRzjL4aQidjydtUz61NWgcgQtP": {
+      "decimals": "6",
+      "symbol": "EPCT",
+      "to": "coingecko#epics-token"
+    },
+    "BWXrrYFhT7bMHmNBFoQFWdsSgA3yXoAnMhDK6Fn1eSEn": {
+      "decimals": "9",
+      "symbol": "HADES",
+      "to": "coingecko#hades"
+    },
     "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn": {
       "name": "Jito Staked SOL",
       "decimals": "9",

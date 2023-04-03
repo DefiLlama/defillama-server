@@ -42,7 +42,9 @@ function sum(
         section = section.split("-")[1]
       }
     }
-    if (section === sectionToAdd || extraSections.includes(section)) {
+    if(section === chain){
+      data.tvl = (data.tvl || 0) + item[section];
+    } else if (section === sectionToAdd || extraSections.includes(section)) {
       data[section] = (data[section] || 0) + item[section];
     }
   }

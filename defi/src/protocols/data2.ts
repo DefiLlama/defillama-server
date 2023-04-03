@@ -25642,7 +25642,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Yield",
     chains: ["Arbitrum"],
-    module: "grabi/index.js",
+    module: "garbi/index.js",
     treasury: "grabi.js",
     twitter: "garbi_protocol",
     oracles: [],

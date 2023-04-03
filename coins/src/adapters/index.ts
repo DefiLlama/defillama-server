@@ -18,7 +18,7 @@ export default {
   aurigami: require("./moneyMarkets/compound"),
   cream: require("./moneyMarkets/compound"),
   scream: require("./moneyMarkets/compound"),
-  euler: require("./moneyMarkets/euler"),
+  // euler: require("./moneyMarkets/euler"),
   yearn: require("./yield/yearn"),
   convex: require("./yield/convex"),
   alchemix: require("./yield/alchemix"),
@@ -78,4 +78,5 @@ export default {
   saber: require("./solana/saber"),
   reservoir: require("./nft/reservoir"),
   jpegd: require("./yield/jpegd"),
+  mare: require("./moneyMarkets/compound"),
 };

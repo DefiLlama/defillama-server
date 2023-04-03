@@ -13,6 +13,7 @@ import { ONE_DAY_IN_SECONDS } from "../../handlers/getProtocol"
 import { ICliArgs } from "./backfillFunction"
 import { Chain } from "@defillama/sdk/build/general"
 import { sumAllVolumes } from "../../utils/volumeCalcs"
+import { getStringArrUnique } from "../../utils/getAllChainsFromAdaptors"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
@@ -94,7 +95,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
         event = {
             type: adaptorType,
             backfill: [{
-                dexNames: adapters2Backfill,
+                dexNames: getStringArrUnique(adapters2Backfill), //arrUniqueBcCollectionsAreUnderSameMoule
                 timestamp: timestamp + ONE_DAY_IN_SECONDS,
                 chain: cliArguments.chain as Chain,
                 adaptorRecordTypes: cliArguments.recordTypes,

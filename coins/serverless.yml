@@ -201,13 +201,19 @@ functions:
     handler: src/triggerFetchCoingeckoData.triggerNewFetches
     events:
       - schedule: rate(5 minutes)
+    environment:
+      CG_KEY: ${env:CG_KEY}
   triggerHourlyFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
     events:
       - schedule: cron(0 0,12 * * ? *) # every 12 hours
+    environment:
+      CG_KEY: ${env:CG_KEY}
   fetchHourlyCoingeckoData:
     handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
     timeout: 900
+    environment:
+      CG_KEY: ${env:CG_KEY}
   storeDefiCoins:
     handler: src/storeCoins.default
     timeout: 900

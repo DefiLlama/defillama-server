@@ -695,5 +695,9 @@ export default {
     "waves": {
         enabled: true,
         id: "1274"
+    },
+    "maia-v3": {
+        "enabled": true,
+        "id": "2760"
     }
 } as AdaptorsConfig

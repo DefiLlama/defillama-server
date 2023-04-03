@@ -30078,27 +30078,5 @@ const data2: Protocol[] = [
     parentProtocol: "PancakeSwap",
     listedAt: 1680550578
   },
-  {
-    id: "2769",
-    name: "PancakeSwap AMM V3",
-    address: "bsc:0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-    symbol: "CAKE",
-    url: "https://pancakeswap.finance/swap",
-    description: "PancakeSwap V3: A More Efficient and User-Friendly DEX on BNB Chain",
-    chain: "Binance",
-    logo: `${baseIconsUrl}/pancakeswap-amm-v3.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexes",
-    chains: ["Binance"],
-    oracles: [],
-    forkedFrom: ["Uniswap V3"],
-    module: "pancakeswap-v3/index.js",
-    twitter: "PancakeSwap",
-    parentProtocol: "PancakeSwap",
-    listedAt: 1680561327
-  },
 ]
 export default data2;

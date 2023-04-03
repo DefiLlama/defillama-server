@@ -5,6 +5,7 @@ import { handler as process_handler, DEFAULT_CHART_BY_ADAPTOR_TYPE, getOverviewC
 import invokeLambda from "../../../utils/shared/invokeLambda";
 import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 import { CATEGORIES } from "../../data/helpers/categories";
+import { getTimestampAtStartOfDay } from "@defillama/dimension-adapters/utils/date";
 
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
@@ -36,7 +37,8 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         }
     }
 
-    if ((Date.now() - response.lastModified.getTime()) > 1000 * 60 * 60) {
+    const currentTiemstamp = Math.trunc(Date.now() / 1000)
+    if ((currentTiemstamp - response.lastModified.getTime()) > 60 * 60 || (currentTiemstamp < getTimestampAtStartOfDay(currentTiemstamp) + 60 + 60 + 3)) {
         console.info("Response expired, invoking lambda to update it.")
         await invokeLambda("defillama-prod-getOverviewProcess", event)
     }

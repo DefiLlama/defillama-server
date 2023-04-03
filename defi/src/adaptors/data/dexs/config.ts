@@ -1312,5 +1312,9 @@ export default {
     "acala-swap": {
         "enabled": true,
         "id": "1847"
+    },
+    "maia-v3": {
+        "enabled": true,
+        "id": "2760"
     }
 } as AdaptorsConfig

@@ -29,7 +29,10 @@ const fetchProtocolEmissionData = async (protocol: string) => {
   const circSupply = nextEventIndex ? formattedData[nextEventIndex - 1]?.[1] ?? [] : 0;
   const nextEvent =
     nextEventIndex && formattedData[nextEventIndex]
-      ? { date: formattedData[nextEventIndex][0], toUnlock: formattedData[nextEventIndex][1] - circSupply }
+      ? { 
+          date: formattedData[nextEventIndex][0], 
+          toUnlock: formattedData[nextEventIndex][1] - circSupply, 
+          proportion: formattedData[nextEventIndex][1] - circSupply / circSupply,        }
       : null;
   const totalLocked = maxSupply - circSupply;
 
@@ -84,3 +87,9 @@ const handler = async (_event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
+
+async function main() {
+  let a = await fetchProtocolEmissionData('aave')
+  return 
+}
+main() // ts-node defi/src/getEmissions.ts

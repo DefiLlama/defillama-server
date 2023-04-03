@@ -38,6 +38,7 @@ export default async (event: { type: string }) => {
             await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@!983314132411482143>`, event.type, false)
         if (hasErrors && errorsArr.length > 60) // tmp till fix adapters
             await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@&849669546448388107>`, event.type, false)
+        await autoBackfill(['', process.argv[1], event.type, 'all'])
     }
     else {
         await sendDiscordAlert(`Looks like all good`, event.type)

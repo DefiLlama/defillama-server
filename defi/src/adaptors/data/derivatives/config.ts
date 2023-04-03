@@ -35,5 +35,16 @@ export default {
     "vela": {
         "enabled": true,
         "id": "2548"
+    },
+    "morphex": {
+        "protocolsData": {
+            "derivatives": {
+                displayName: "Morphex - Derivatives",
+                "id": "2662",
+                "enabled": true
+            }
+        },
+        "enabled": true,
+        "id": "2662"
     }
 } as AdaptorsConfig

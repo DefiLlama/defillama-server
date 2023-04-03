@@ -1316,5 +1316,17 @@ export default {
     "maia-v3": {
         "enabled": true,
         "id": "2760"
+    },
+    "morphex": {
+        "protocolsData": {
+            "swap": {
+                "id": "2662",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "Morphex - SWAP"
+            }
+        },
+        "enabled": true,
+        "id": "2662"
     }
 } as AdaptorsConfig

@@ -30076,7 +30076,7 @@ const data2: Protocol[] = [
     module: "pancakeswap-v3/index.js",
     twitter: "PancakeSwap",
     parentProtocol: "PancakeSwap",
-    listedAt: 1680550578
+    listedAt: 1680561479
   },
 ]
 export default data2;

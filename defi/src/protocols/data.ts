@@ -14736,18 +14736,18 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "832",
-    name: "Hector Network",
+    name: "Hector AMM",
     address: "fantom:0x5C4FDfc5233f935f20D2aDbA572F770c2E377Ab0",
     symbol: "HEC",
     url: "https://hector.network/",
     description:
       "Hector Network is developing an expansive web 3 ecosystem for a visionary future. The foundations of the ecosystem, supported by the HEC utility token and TOR stablecoin, are functionality, accessibility and community. In conjunction with their growing list of partners, Hector Network is expanding crosschain and is dedicated to mass adoption",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/hector-network.png`,
+    logo: `${baseIconsUrl}/hector-amm.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "hector-dao",
-    cmcId: "13881",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Fantom"],
     module: "hector/index.js",
@@ -14755,6 +14755,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     audit_links: ["https://www.certik.com/projects/hector-network"],
     listedAt: 1636755480,
+    parentProtocol: "Hector Network",
     governanceID: ["snapshot:hectordao.eth"]
   },
   {

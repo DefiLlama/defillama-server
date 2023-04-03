@@ -6185,13 +6185,13 @@ const data: Protocol[] = [
   },
   {
     id: "406",
-    name: "Element Finance",
-    address: "-",
+    name: "DELV", // rebrand from Element Finance to DELV https://twitter.com/delv_tech/status/1641880663174549504
+    address: null,
     symbol: "-",
     url: "https://www.element.fi",
-    description: "Element Finance is a protocol that enables users to seek high fixed yield income in the DeFi market.",
+    description: "DELV (formerly Element Finance) is developing the complete suite of decentralized finance. Our protocols work together to help create the new financial system..",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/element-finance.jpg`,
+    logo: `${baseIconsUrl}/delv.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -6199,7 +6199,7 @@ const data: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum"],
     module: "elementfi/index.js",
-    twitter: "element_fi",
+    twitter: "delv_tech",
     audit_links: ["https://docs.element.fi/developers/bug-bounty-programs#b93e"],
   },
   {

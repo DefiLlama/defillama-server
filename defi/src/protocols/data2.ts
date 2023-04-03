@@ -30035,5 +30035,26 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/blob/main/JBCFinance/SmartContract_Audit_Solidproof_JBCFinance.pdf"],
     listedAt: 1680540285
   },
+  {
+    id: "2768",
+    name: "LSDx Finance",
+    address: "0xfAC77A24E52B463bA9857d6b758ba41aE20e31FF",
+    symbol: "LSD",
+    url: "https://www.lsdx.finance",
+    description: "LSDx is an ultra-liquid protocol for all LSD. MasterChef",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lsdx-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "lsdx/index.js",
+    twitter: "LSDxfinance",
+    listedAt: 1680550578
+  },
 ]
 export default data2;

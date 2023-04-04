@@ -6745,6 +6745,21 @@
       "decimals": "18",
       "symbol": "WMAPO",
       "to": "coingecko#marcopolo"
+    },
+    "0x9f722b2cb30093f766221fd0d37964949ed66918": {
+      "decimals": "18",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x05ab928d446d8ce6761e368c8e7be03c3168a9ec": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x35bf4004c3fc9f509259d4942da6bae3669e1db1": {
+      "decimals": "18",
+      "symbol": "BUSD",
+      "to": "coingecko#binance-usd"
     }
   },
   "loop": {

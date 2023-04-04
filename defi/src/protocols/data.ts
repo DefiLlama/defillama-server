@@ -7112,7 +7112,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "qidao/index.js",
     twitter: "QiDaoProtocol",
     audit_links: ["https://docs.mai.finance/risks/security#has-the-project-been-audited"],
-    governanceID: ["snapshot:qidao.eth"]
+    governanceID: ["snapshot:qidao.eth"],
+    oracles: ["Witnet"],
   },
   {
     id: "450",

@@ -25,7 +25,7 @@ const handler = async (_event: any) => {
           category: protocol.category,
           chains: protocol.chains,
           oracles: protocol.oracles,
-          oraclesByChain: protocol.oraclesByChain?,
+          oraclesByChain: protocol.oraclesByChain,
           forkedFrom: protocol.forkedFrom,
           listedAt: protocol.listedAt,
           mcap: protocol.mcap,

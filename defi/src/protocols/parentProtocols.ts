@@ -554,14 +554,14 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "WOOFi",
     name: "WOOFi",
-    url: "https://woo.org",
+    url: "https://fi.woo.org",
     description:
-    "Bringing best-in-class liquidity to DeFi and CeFi.",
+    "One DEX to rule all chains  - trade and earn like royalty with unmatched execution, cross-chain swaps, and single-sided yields.",
     logo: `${baseIconsUrl}/woofi.png`,
     gecko_id: "woo-network",
     cmcId: "7501",
     chains: [],
-    twitter: "WOOnetwork",
+    twitter: "_WOOFi",
   },
   {
     id: "Revert",

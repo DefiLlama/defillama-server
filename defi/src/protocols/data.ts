@@ -5884,7 +5884,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "pantherswap",
     cmcId: "9778",
-    category: "Yield",
+    category: "Dexes",
     chains: ["Binance"],
     module: "pantherswap/index.js",
     twitter: "PantherSwap",
@@ -12832,7 +12832,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "PotluckProtocol",
     audit_links: ["https://dessertswap.finance/audits/Potluck%20BSC-FTM%20audit%2011437133.pdf"],
     oracles: ["Internal"],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Goose Finance"],
     listedAt: 1635465731,
   },
   {
@@ -25584,7 +25584,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Degen Haus",
     address: "fantom:0x9F3c6e1bD483cd977DF9B36734E1cD684f1Be62",
     symbol: "DOPE",
-    url: "https://app.degen.haus/",
+    url: "https://www.degen.haus/",
     description:
       "Degen Haus is a place that should have been here years ago. Are you sick of teddy bear/dog/cat memes and other regurgitated cyrpto-themes? Time for something unique and different. That’s where Degen Haus comes in!",
     chain: "Fantom",

@@ -30118,6 +30118,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "empyreal/index.js",
     twitter: "EmpyrealArb",
+    treasury: "empyreal.js",
     listedAt: 1680599830
   },
   {

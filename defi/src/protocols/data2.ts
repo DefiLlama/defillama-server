@@ -30086,7 +30086,7 @@ const data2: Protocol[] = [
     url: "https://gxypad.com",
     description: "Make your project easier launching on the zkSync Era Mainnet, One-click service",
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/gyypad.jpg`,
+    logo: `${baseIconsUrl}/gxypad.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -1186,7 +1186,7 @@ const data2: Protocol[] = [
     oracles: ["Chainlink"],
     forkedFrom: [],
     module: "woofi.js",
-    twitter: "WOOnetwork",
+    twitter: "_WOOFi",
     audit_links: ["https://www.certik.com/projects/woofiswap"],
     listedAt: 1645647756,
     parentProtocol: "WOOFi"
@@ -20616,7 +20616,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://x.woo.org/en/trade",
     description:
-      "Bringing best-in-class liquidity to DeFi and CeFi.",
+      "Aggregated liquidity for a superior CEX life. Built for traders who seek the ultimate in liquidity, price execution, and transparency.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/woo-x.jpg`,
     audits: "0",
@@ -20626,7 +20626,7 @@ const data2: Protocol[] = [
     category: "CEX",
     chains: ["Ethereum", "Bitcoin", "Avalanche", "Arbitrum"],
     module: "woo-cex/index.js",
-    twitter: "WOOnetwork",
+    twitter: "_WOO_X",
     forkedFrom: [],
     oracles: [],
     listedAt: 1670587665

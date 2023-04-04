@@ -1004,7 +1004,6 @@ export default {
         "id": "1269"
     },
     "sundaeswap": {
-        disabled: true,
         "enabled": true,
         "id": "1302"
     },

@@ -56,9 +56,9 @@ export default {
         cmcId: "2092",
     },
     "Witnet": {
-        geckoId: null,
-        symbol: null,
-        cmcId: null,
+        geckoId: "witnet",
+        symbol: "WIT",
+        cmcId: "14925",
     },
     "BSC": {
         geckoId: "binancecoin",

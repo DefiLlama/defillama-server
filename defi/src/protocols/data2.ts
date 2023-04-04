@@ -8606,7 +8606,7 @@ const data2: Protocol[] = [
     cmcId: "19900",
     category: "Liquid Staking",
     chains: ["Cronos"],
-    oracles: ["Crypto.org API"],
+    oracles: ["Crypto.org API", "Witnet"],
     forkedFrom: [],
     module: "argofinance/index.js",
     twitter: "ArgoProtocol",

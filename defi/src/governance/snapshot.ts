@@ -1,4 +1,4 @@
-import protocols from '../protocols/data'
+import protocols, { Protocol } from '../protocols/data'
 import parentProtocols from '../protocols/parentProtocols'
 import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { graphURL, metadataQuery, proposalQuery, } from './snapshotQueries'
@@ -28,12 +28,11 @@ export interface Proposal {
 
 
 export function getSnapshotIds() {
-  const governance: string[] = protocols.filter(i => i.governanceID && i.governanceID![0]!.startsWith('snapshot')).map(i => i.governanceID![0])
-  const parentProtocolsGov: string[] = parentProtocols.filter(i => i.governanceID && i.governanceID![0]!.startsWith('snapshot')).map(i => i.governanceID![0])
-
-  governance.push(...parentProtocolsGov)
-  const ids = governance.map(i => i.replace('snapshot:', ''))
-  return [...new Set(ids)]
+  const snapshotIds =  new Set()
+  const addSnapshot = (i: any) => i.governanceID?.filter((j: any) => j.startsWith('snapshot:')).forEach((j: any) => snapshotIds.add(j))
+  protocols.map(addSnapshot)
+  parentProtocols.map(addSnapshot)
+  return [...snapshotIds].map((i: any) => i.replace('snapshot:', ''))
 }
 
 

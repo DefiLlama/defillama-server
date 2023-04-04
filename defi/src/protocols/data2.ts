@@ -29693,7 +29693,7 @@ const data2: Protocol[] = [
   {
     id: "2752",
     name: "Onchain Trade",
-    address: "0xD0eA21ba66B67bE636De1EC4bd9696EB8C61e9AA",
+    address: "zksyncera:0xD0eA21ba66B67bE636De1EC4bd9696EB8C61e9AA",
     symbol: "OT",
     url: "https://onchain.trade",
     description: "Onchain Trade(OT) is a vertically integrated DeFi protocol where people can provide liquidity, swap, borrow and trading perpetuals with 0 slippage. OT designed single side AMM pools so that liquidity can be used for swap as well as borrow, allowing LPs to earn both swap fees and borrow interest, which increases capital efficiency and decreases Impermanent Loss for LPs.",

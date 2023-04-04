@@ -1174,7 +1174,7 @@ const data2: Protocol[] = [
     address: "0x4691937a7508860f876c9c0a2a617e7d9e945d4b",
     symbol: "WOO",
     url: "http://fi.woo.org/",
-    description: "WOOFi is a multichain DeFi platform which offers the best trade execution and lowest swap fee, opportunities to earn sustainable yields on crypto, and a high-efficiency solution for on-chain liquidity provision.",
+    description: "One DEX to rule all chains - trade and earn like royalty with unmatched execution, cross-chain swaps, and single-sided yields.",
     chain: "Binance",
     logo: `${baseIconsUrl}/woofi.png`,
     audits: "2",
@@ -29693,7 +29693,7 @@ const data2: Protocol[] = [
   {
     id: "2752",
     name: "Onchain Trade",
-    address: null,
+    address: "0xD0eA21ba66B67bE636De1EC4bd9696EB8C61e9AA",
     symbol: "OT",
     url: "https://onchain.trade",
     description: "Onchain Trade(OT) is a vertically integrated DeFi protocol where people can provide liquidity, swap, borrow and trading perpetuals with 0 slippage. OT designed single side AMM pools so that liquidity can be used for swap as well as borrow, allowing LPs to earn both swap fees and borrow interest, which increases capital efficiency and decreases Impermanent Loss for LPs.",

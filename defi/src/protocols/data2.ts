@@ -17422,7 +17422,7 @@ const data2: Protocol[] = [
     name: "Tetu Swap",
     address: "polygon:0x255707b70bf90aa112006e1b07b9aea6de021424",
     symbol: "TETU",
-    url: "http://tetu.io",
+    url: "https://swap.tetu.io/#/swap",
     description: "Tetu is a decentralized organization committed to providing a next generation yield aggregator to DeFi investors. The Tetu core team has deep industry knowledge building back-end international banking systems and development with leading global payment processing infrastructure.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/tetu.svg`,

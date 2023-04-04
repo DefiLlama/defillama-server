@@ -29792,7 +29792,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid Staking",
+    category: "Yield",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

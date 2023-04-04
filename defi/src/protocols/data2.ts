@@ -25825,7 +25825,7 @@ const data2: Protocol[] = [
     chains: ["Conflux"],
     module: "goledo/index.js",
     twitter: "GoledoFinance",
-    oracles: [],
+    oracles: ["Witnet"],
     forkedFrom: ["AAVE"],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Goledo-v1.0.pdf"],
     listedAt: 1677164241

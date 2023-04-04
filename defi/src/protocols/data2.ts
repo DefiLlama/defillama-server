@@ -11943,7 +11943,7 @@ const data2: Protocol[] = [
     category: "RWA",
     chains: ["Polygon", "Celo"],
     module: "toucan-protocol/index.js",
-    oracles: [],
+    oracles: ["Witnet"],
     forkedFrom: [],
     twitter: "ToucanProtocol",
     audit_links: ["https://docs.toucan.earth/protocol/resources/security"],

@@ -21,20 +21,19 @@ export interface Proposal {
   quorum: number;
   score_skew: number;
   score_curve: number;
+  score_curve2: number;
   start: number;
   month: string;
   strategies?: any;
 }
 
-
 export function getSnapshotIds() {
-  const snapshotIds =  new Set()
+  const snapshotIds = new Set()
   const addSnapshot = (i: any) => i.governanceID?.filter((j: any) => j.startsWith('snapshot:')).forEach((j: any) => snapshotIds.add(j))
   protocols.map(addSnapshot)
   parentProtocols.map(addSnapshot)
   return [...snapshotIds].map((i: any) => i.replace('snapshot:', ''))
 }
-
 
 export async function getSnapshotMetadata(ids: string[]) {
   const { data: { data: { spaces, } } } = await axios.post(graphURL, {
@@ -136,7 +135,10 @@ export async function updateSnapshots() {
       if (i.scores_total > 1) {
         const highestScore = max(i.scores)
         i.score_skew = highestScore! / i.scores_total
-        i.score_curve = i.scores_total * (i.score_skew >= 0.5 ? 0.5 - 0.5 * i.score_skew : 0.5 * i.score_skew)
+        const curve_input = i.score_skew >= 0.5 ? 0.5 - 0.5 * i.score_skew : 0.5 * i.score_skew
+        const curve_input2 = i.quorum > 0 ? Math.sqrt(i.scores_total / i.quorum) : 1
+        i.score_curve = i.scores_total * curve_input
+        i.score_curve2 = curve_input * curve_input2
       }
     })
 
@@ -175,6 +177,8 @@ export async function updateSnapshots() {
       // get state split within each month
       Object.values(obj.months).forEach((obj: any) => {
         const _props = obj.proposals.map((i: any) => proposals[i])
+        obj.total = _props.length
+        obj.successful = _props.filter(isSuccessfulProposal).length
         addStateSplit(obj, _props)
       })
     }

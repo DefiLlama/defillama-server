@@ -2741,7 +2741,7 @@ const data: Protocol[] = [
     twitter: "PoolTogether_",
     audit_links: ["https://docs.pooltogether.com/security/audits-and-testing"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:pooltogether.eth"]
+    governanceID: ["snapshot:pooltogether.eth", "snapshot:poolpool.pooltogether.eth"]
   },
   {
     id: "240",
@@ -4362,6 +4362,7 @@ const data: Protocol[] = [
     twitter: "_Dfyn",
     oracles: ["Chainlink", "DIA"],
     forkedFrom: ["Uniswap V2"],
+    governanceID: ["snapshot:dfyn.eth"]
   },
   {
     id: "319",
@@ -5303,7 +5304,7 @@ const data: Protocol[] = [
     twitter: "perpprotocol",
     audit_links: ["https://docs.perp.fi/library/audit-report"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:vote-perp.eth"]
+    governanceID: ["snapshot:vote-perp.eth", "snapshot:perp-temp-check.eth"]
   },
   {
     id: "363",
@@ -10004,6 +10005,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "StrikeFinance",
     audit_links: ["https://www.certik.org/projects/strikefinance"],
     forkedFrom: ["Compound"],
+    governanceID: ["snapshot:strikeorg.eth"]
   },
   {
     id: "590",
@@ -13263,6 +13265,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     oracles: ["TWAP"],
     forkedFrom: ["Harvest Finance"],
+    governanceID: ["snapshot:harvestfi.eth"],
     listedAt: 1635803932,
   },
   {
@@ -17542,6 +17545,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/fantohm-dev/fantohm-contracts/blob/main/audit/Fantohm%20USD%20Full%20Smart%20Contract%20Security%20Audit.pdf",
     ],
     listedAt: 1638463469,
+    governanceID: ["snapshot:fantohmdao.eth"]
   },
   {
     id: "962",
@@ -19571,6 +19575,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.com/projects/linearfinance"],
     oracles: ["Chainlink"],
     listedAt: 1639989997,
+    governanceID: ["snapshot:lineardao.eth"]
   },
   {
     id: "1058",

@@ -3733,6 +3733,7 @@ const data2: Protocol[] = [
     twitter: "SturdyFinance",
     audit_links: ["https://www.certik.com/projects/sturdy"],
     listedAt: 1648061916,
+    governanceID: ["snapshot:sturdyfi.eth"]
   },
   {
     id: "1578",
@@ -6593,7 +6594,8 @@ const data2: Protocol[] = [
     module: "clever/index.js",
     twitter: "0xC_Lever",
     audit_links: ["https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_CLever_Report_v1.1.pdf"],
-    listedAt: 1651168503
+    listedAt: 1651168503,
+    governanceID: ["snapshot:clevercvx.eth", "snapshot:veclev.eth"]
   },
   {
     id: "1708",
@@ -17180,7 +17182,8 @@ const data2: Protocol[] = [
       "https://www.certik.com/projects/plutusdao"
     ],
     listedAt: 1666097177,
-    treasury: "plutusdao.js"
+    treasury: "plutusdao.js",
+    governanceID: ["snapshot:plutus-dao.eth"]
   },
   {
     id: "2193",
@@ -27355,7 +27358,8 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "mavprotocol",
     audit_links: ["https://github.com/maverickprotocol/audits"],
-    listedAt: 1678282138
+    listedAt: 1678282138,
+    governanceID: ["snapshot:mavxyz.eth"]
   },
   {
     id: "2645",
@@ -29176,7 +29180,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "mute/index.js",
     twitter: "mute_io",
-    listedAt: 1679676617
+    listedAt: 1679676617,
+    governanceID: ["snapshot:mutegov.eth"]
   },
   {
     id: "2728",

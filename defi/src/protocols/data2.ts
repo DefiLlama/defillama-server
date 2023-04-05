@@ -4539,7 +4539,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Polygon"],
+    chains: ["Polygon", "Polygon zkEVM"],
     oraclesByChain: {
       polygon: ["Chainlink"],
       polygon_zkevm: ["Pyth"],

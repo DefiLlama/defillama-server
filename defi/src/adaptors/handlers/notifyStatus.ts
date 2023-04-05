@@ -14,7 +14,7 @@ export default async (event: { type: string }) => {
     console.log("response", response.body)
     const returnedProtocols = parsedBody.protocols.map((p: any) => p.module)
     const protocolsList = Object.entries((await loadAdaptorsData(event.type as AdapterType)).config).filter(([_key, config]) => config.enabled).map(m => m[0])
-    const notIncluded = []
+    let notIncluded = []
     for (const prot of protocolsList) {
         if (!returnedProtocols.includes(prot)) {
             console.log("not included", prot)
@@ -25,8 +25,13 @@ export default async (event: { type: string }) => {
     for (const [key, value] of Object.entries(parsedBody.totalDataChartBreakdown?.slice(-1)[0][1] ?? {})) {
         if (value === 0) zeroValueProtocols.push(key)
     }
-    if (notIncluded.length > 0)
-        await sendDiscordAlert(`The following protocols haven't been included in the response: ${notIncluded.join(", ")} <@!983314132411482143>`, event.type, false)
+    //TMP till enable collection adapters
+    notIncluded = notIncluded.filter(m => !m.startsWith('0x'))
+    console.log(notIncluded.length)
+    if (notIncluded.length > 0) {
+        await sendDiscordAlert(`The following protocols haven't been included in the response: ${notIncluded.join(", ")}`, event.type)
+        await sendDiscordAlert(`${notIncluded.length} protocols haven't been included in the response <@!983314132411482143>`, event.type, false)
+    }
     else
         await sendDiscordAlert(`All protocols have been ranked <@!983314132411482143>`, event.type, false)
     const hasErrors = errorsArr && errorsArr.length > 0
@@ -36,7 +41,7 @@ export default async (event: { type: string }) => {
             await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension, this might be because the source haven't update the volume for today or because simply theres no activity on the protocol... Will retry later... \n${zeroValueProtocols.join(', ')}`, event.type)
         if (hasErrors)
             await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@!983314132411482143>`, event.type, false)
-        if (hasErrors && errorsArr.length > 60) // tmp till fix adapters
+        if (hasErrors && errorsArr.length > 30)
             await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@&849669546448388107>`, event.type, false)
         await autoBackfill(['', process.argv[1], event.type, 'all'])
     }

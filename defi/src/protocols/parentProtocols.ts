@@ -725,6 +725,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "defi_waterfall",
+    governanceID: ["snapshot:waterfalldao.eth"]
   },
   {
     id: "Inverse Finance",

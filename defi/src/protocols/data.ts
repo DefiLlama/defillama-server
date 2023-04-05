@@ -1707,6 +1707,7 @@ const data: Protocol[] = [
     module: "indexed/index.js",
     twitter: "ndxfi",
     audit_links: ["https://docs.indexed.finance/protocol/security"],
+    governanceID: ["snapshot:ndx.eth"]
   },
   {
     id: "189",
@@ -1750,7 +1751,7 @@ const data: Protocol[] = [
     module: "dhedge.js",
     twitter: "dHedgeOrg",
     audit_links: ["https://iosiro.com/audits/dhedge-platform-smart-contract-audit"],
-
+    governanceID: ["snapshot:gov.dhedge.eth"]
   },
   {
     id: "191",
@@ -1896,6 +1897,7 @@ const data: Protocol[] = [
     twitter: "OokiTrade",
     audit_links: ["https://docs.ooki.com/developers/audits"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:ooki.eth"]
   },
   /*
   {
@@ -2001,6 +2003,7 @@ const data: Protocol[] = [
     module: "siren/index.js",
     twitter: "sirenprotocol",
     audit_links: ["https://docs.sirenmarkets.com/faq-general/for-users#is-the-siren-protocol-safe"],
+    governanceID: ["snapshot:sirenmarkets.eth"]
   },
   {
     id: "204",
@@ -2065,6 +2068,7 @@ const data: Protocol[] = [
     module: "xtoken/index.js",
     twitter: "xtokenterminal",
     audit_links: ["https://github.com/xtokenmarket/terminal-mining/tree/master/audits"],
+    governanceID: ["snapshot:xxtka.eth"]
   },
   {
     id: "207",
@@ -2144,6 +2148,7 @@ const data: Protocol[] = [
     module: "yaxis/index.js",
     twitter: "yaxis_project",
     audit_links: ["https://github.com/yaxis-project/SushiSwap/tree/main/audits"],
+    governanceID: ["snapshot:yaxis.eth"]
   },
   {
     id: "211",
@@ -2189,6 +2194,7 @@ const data: Protocol[] = [
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:venus-xvs.eth"]
   },
   {
     id: "213",
@@ -2209,6 +2215,7 @@ const data: Protocol[] = [
     module: "onx.js",
     twitter: "OnXFinance",
     audit_links: ["https://onx-finance.gitbook.io/docs/audits-and-contracts"],
+    governanceID: ["snapshot:onx-finance.eth"]
   },
   {
     id: "214",
@@ -2346,6 +2353,7 @@ const data: Protocol[] = [
     twitter: "VesperFi",
     audit_links: ["https://github.com/vesperfi/doc/tree/main/audit"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:vsp.eth"]
   },
   {
     id: "221",
@@ -2388,6 +2396,7 @@ const data: Protocol[] = [
     twitter: "DeFinerOrg",
     audit_links: ["https://docs.definer.org/"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:definerorg.eth"]
   },
   {
     id: "223",
@@ -2426,6 +2435,7 @@ const data: Protocol[] = [
     module: "dextf/index.js",
     twitter: "DomaniProtocol",
     audit_links: ["https://docs.dextf.com/documentation/introduction/security-assessment-report"],
+    governanceID: ["snapshot:dextfprotocol.eth", "snapshot:domanidao.eth"]
   },
   {
     id: "225",
@@ -2446,6 +2456,7 @@ const data: Protocol[] = [
     twitter: "enzymefinance",
     audit_links: ["https://audit.enzyme.finance/"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:enzymefinance.eth"]
   },
   {
     id: "226",
@@ -2586,6 +2597,7 @@ const data: Protocol[] = [
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:vote.mcdex.eth"]
   },
   {
     id: "233",
@@ -3036,6 +3048,7 @@ const data: Protocol[] = [
       "https://github.com/PancakeBunny-finance/Bunny/blob/main/audits/%5BHAECHI%20AUDIT%5D%20PancakeBunny%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf",
     ],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:pancakebunny.eth"]
   },
   {
     id: "255",
@@ -3430,6 +3443,7 @@ const data: Protocol[] = [
     module: "acoconut/index.js",
     twitter: null,
     audit_links: ["https://docs.acoconut.fi/security"],
+    governanceID: ["snapshot:acoconutbsc.eth", "snapshot:acoconut.eth"]
   },
   {
     id: "274",
@@ -3508,6 +3522,7 @@ const data: Protocol[] = [
     module: "stakewise/index.js",
     twitter: "stakewise_io",
     audit_links: ["https://github.com/stakewise/contracts/tree/master/audits"],
+    governanceID: ["snapshot:stakewise.eth"]
   },
   {
     id: "278",
@@ -3527,6 +3542,7 @@ const data: Protocol[] = [
     module: "ankr/index.js",
     twitter: "ankr",
     audit_links: ["https://assets.ankr.com/files/stkr_smart_contract_auditing_report.pdf"],
+    governanceID: ["snapshot:ankr-dao.eth"]
   },
   {
     id: "279",
@@ -3831,6 +3847,7 @@ const data: Protocol[] = [
     module: "lydia/index.js",
     twitter: "LydiaFinance",
     audit_links: ["https://docs.lydia.finance/security/certik-audit"],
+    governanceID: ["snapshot:lydiafinance.eth"]
   },
   {
     id: "294",
@@ -3998,6 +4015,7 @@ const data: Protocol[] = [
     twitter: "NerveFinance",
     audit_links: ["https://docs.nerve.fi/fundamentals/audits-and-security"],
     forkedFrom: ["Saddle Finance"],
+    governanceID: ["snapshot:nervefinance.eth"]
   },
   {
     id: "302",
@@ -4323,6 +4341,7 @@ const data: Protocol[] = [
     twitter: "Hyperjump_fi",
     audit_links: ["https://docs.hyperjump.fi/essentials/audits"],
     forkedFrom: ["Uniswap V2"],
+    governanceID: ["snapshot:ftm.hyperjumpdao.eth", "snapshot:bsc.hyperjumpdao.eth"]
   },
   {
     id: "318",
@@ -6087,6 +6106,7 @@ const data: Protocol[] = [
     module: "amun/index.js",
     audit_links: ["https://www.certik.com/projects/amunag"],
     twitter: "amun",
+    governanceID: ["snapshot:dmx.amun.eth", "snapshot:dfi.amun.eth"]
   },
   {
     id: "401",
@@ -6710,6 +6730,7 @@ const data: Protocol[] = [
       "https://www.bamboodefi.com/assets/Bamboo%20DeFi%20-%20Security%20Audit%20Report.pdf",
       "https://www.bamboodefi.com/assets/bridge_audit.pdf",
     ],
+    governanceID: ["snapshot:bamboodefi.eth"]
   },
   {
     id: "430",
@@ -12954,6 +12975,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/pessimistic-io/audits/blob/main/DeFi%20Plaza%20Security%20Analysis%20by%20Pessimistic.pdf",
     ],
+    governanceID: ["snapshot:realdefiplaza.eth"],
     listedAt: 1635540662,
   },
   {
@@ -14180,6 +14202,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "GyroDAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1636378556,
+    governanceID: ["snapshot:gyrodefi.eth"]
   },
   {
     id: "805",
@@ -14222,6 +14245,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "GlideFinance",
     audit_links: ["https://docs.glidefinance.io/security/audit"],
     forkedFrom: ["Uniswap V2"],
+    governanceID: ["snapshot:glidefinance.eth"],
     listedAt: 1636387832,
   },
   {
@@ -15045,6 +15069,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "axial/index.js",
     twitter: "AxialDeFi",
     forkedFrom: ["Saddle Finance"],
+    governanceID: ["snapshot:axialdefi.eth"],
     listedAt: 1637031735,
   },
   {

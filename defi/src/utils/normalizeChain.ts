@@ -9,7 +9,7 @@ const normalizedChainReplacements = {
   "OKExChain": "OKXChain",
   "zkSync": "zkSync Lite",
   "zkSync Era": "era",
-  "polygon zkEVM": "polygon_zkevm"
+  "Polygon zkEVM": "polygon_zkevm"
 
 } as {
   [chain: string]: string

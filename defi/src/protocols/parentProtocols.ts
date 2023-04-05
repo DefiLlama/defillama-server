@@ -372,6 +372,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "16305",
     chains: [],
     twitter: "izumi_Finance",
+    governanceID: ["snapshot:veizi.eth"]
   },
   {
     id: "Temple DAO",
@@ -849,6 +850,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "23419",
     chains: [],
     twitter: "zyberswap",
+    governanceID: ["snapshot:zyberswap.eth"]
   },
   {
     id: "Scrub Money",
@@ -885,6 +887,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19162",
     chains: [],
     twitter: "BendDAO",
+    governanceID: ["snapshot:benddao.eth"]
   },
   {
     id: "Subzero",
@@ -981,6 +984,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5728",
     chains: [],
     twitter: "Balancer",
+    governanceID: ["snapshot:balancer.eth"]
   },
   {
     id: "KyberSwap",
@@ -1081,6 +1085,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "AlpacaFinance",
+    governanceID: ["snapshot:alpacafinance.eth"]
   },
   {
     id: "Spin",
@@ -1273,7 +1278,8 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "hector-dao",
     cmcId: "13881",
     chains: [],
-    twitter: "Hector_Network"
+    twitter: "Hector_Network",
+    governanceID: ["snapshot:hectordao.eth"]
   },
 ];
 

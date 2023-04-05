@@ -153,7 +153,7 @@ const data: Protocol[] = [
     twitter: "iearnfinance",
     audit_links: ["https://github.com/yearn/yearn-audits"],
     language: "Vyper",
-    governanceID: ["snapshot:ybaby.eth"]
+    governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"]
   },
   {
     id: "114",
@@ -222,7 +222,6 @@ const data: Protocol[] = [
     module: "balancer-v1/index.js",
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
-    governanceID: ["snapshot:balancer.eth"],
     parentProtocol: "Balancer",
     treasury: "balancer.js"
   },
@@ -456,6 +455,7 @@ const data: Protocol[] = [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
     ],
     oracles: ["Chainlink", "Band"],
+    governanceID: ["snapshot:loopringdao.eth"]
   },
   {
     id: "127",
@@ -666,6 +666,7 @@ const data: Protocol[] = [
     audit_links: ["https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7"],
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
+    governanceID: ["snapshot:fuse.eth"]
   },
   {
     id: "137",
@@ -963,6 +964,7 @@ const data: Protocol[] = [
     twitter: "rhinofi",
     audit_links: ["https://www.deversifi.com/audit"],
     language: "Cairo",
+    governanceID: ["snapshot:rhinofi.vote"]
   },
   {
     id: "152",
@@ -1063,6 +1065,7 @@ const data: Protocol[] = [
     twitter: "88mphapp",
     audit_links: ["https://docs.88mph.app/main-products/security-and-audits#is-88mph-audited"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:88mph.eth"]
   },
   {
     id: "158",
@@ -1083,6 +1086,7 @@ const data: Protocol[] = [
     module: "dracula.js",
     twitter: "DraculaProtocol",
     audit_links: ["https://solidity.finance/audits/Dracula/"],
+    governanceID: ["snapshot:draculasucks.eth"]
   },
   {
     id: "159",
@@ -1125,6 +1129,7 @@ const data: Protocol[] = [
     twitter: "Alpha_HomoraV2",
     audit_links: ["https://blog.openzeppelin.com/alpha-homora-v2/"],
     oracles: ["Band", "Chainlink"],
+    governanceID: ["snapshot:alpha-finance-lab.eth"]
   },
   {
     id: "161",
@@ -1148,6 +1153,7 @@ const data: Protocol[] = [
       "https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf",
     ],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:boringvote.eth"]
   },
   {
     id: "162",
@@ -1230,6 +1236,7 @@ const data: Protocol[] = [
     module: "cover.js",
     twitter: "CoverProtocol",
     audit_links: ["https://github.com/CoverProtocol/cover-security/tree/master/audits"],
+    governanceID: ["snapshot:cover-protocol.eth"]
   },
   {
     id: "166",
@@ -1465,6 +1472,7 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/mushroomsforest/deployment/blob/main/security.md"],
     forkedFrom: ["Yearn Finance"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:mushroomsfi.eth"]
   },
   {
     id: "177",
@@ -6677,6 +6685,7 @@ const data: Protocol[] = [
     module: "dinoswap/index.js",
     twitter: "DinoSwapHQ",
     audit_links: ["https://www.certik.org/projects/dinoswap"],
+    governanceID: ["snapshot:dinoswapexchange.eth"]
   },
   {
     id: "429",

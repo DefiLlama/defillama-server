@@ -20719,7 +20719,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1670693265,
-    governanceID: ["snapshot:kyotofoundation.eth"]
+    governanceID: ["snapshot:kyotofoundation.eth", "snapshot:kyotoswap.eth"]
   },
   {
     id: "2351",

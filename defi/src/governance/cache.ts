@@ -12,7 +12,7 @@ function getLink(govType: string, project: string): string {
   return `https://${Bucket}.s3.eu-central-1.amazonaws.com/${getKey(govType, project)}`
 }
 
-async function getCache(govType: string, project: string, { } = {}) {
+export async function getCache(govType: string, project: string, { } = {}) {
   const Key = getKey(govType, project)
 
   try {
@@ -25,7 +25,7 @@ async function getCache(govType: string, project: string, { } = {}) {
   }
 }
 
-async function setCache(govType: string, project: string, cache: any, {
+export async function setCache(govType: string, project: string, cache: any, {
   ContentType = 'application/json',
   ACL = 'public-read'
 } = {}) {
@@ -61,4 +61,22 @@ export async function getSnapshotOverview() {
 
 export async function setSnapshotOverview(cache: any) {
   return setCache('overview', 'snapshot', cache)
+}
+
+export async function getCompound(project: string) {
+  return getCache('compound', project)
+}
+
+export async function setCompound(project: string, cache: any) {
+  console.log('updating project: ', project)
+  return setCache('compound', project, cache)
+}
+
+export async function getCompoundOverview() {
+  return getCache('overview', 'compound')
+}
+
+export async function setCompoundOverview(cache: any) {
+  console.log('overview')
+  return setCache('overview', 'compound', cache)
 }

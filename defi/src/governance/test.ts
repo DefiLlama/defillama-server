@@ -1,5 +1,5 @@
 import { updateSnapshots, } from './snapshot'
-import { updateAll, } from './compound'
+import { updateCompounds, } from './compound'
 
 main().then(() => {
   console.log('done!')
@@ -7,6 +7,7 @@ main().then(() => {
 })
 
 async function main() {
+  // yeah, it would be per protocol, let me look up how to get median
   await updateSnapshots()
-  await updateAll()
+  // await updateCompounds()
 }

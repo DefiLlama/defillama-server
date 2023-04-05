@@ -231,7 +231,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5692",
     chains: [],
     twitter: "compoundfinance",
-    governanceID: ["snapshot:comp-vote.eth", "compound:ethereum:0xef3b6e9e13706a8f01fe98fdcf66335dc5cfdeed:15235678"]
+    governanceID: ["snapshot:comp-vote.eth", "compound:ethereum:0xc0da02939e1441f497fd74f78ce7decb17b66529"]
   },
   {
     id: "Algofi",

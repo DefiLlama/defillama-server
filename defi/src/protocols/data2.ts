@@ -6721,7 +6721,7 @@ const data2: Protocol[] = [
     cmcId: "10132",
     category: "Synthetics",
     chains: ["Binance"],
-    oracles: ["Chainlink", "TWAP"],
+    oracles: ["Chainlink", "TWAP","Pyth"],
     forkedFrom: [],
     module: "duet/index.js",
     twitter: "duetprotocol",

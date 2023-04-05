@@ -4981,6 +4981,7 @@ const data: Protocol[] = [
     twitter: "MIM_Spell",
     oracles: ["Chainlink"],
     audit_links: ["https://www.certora.com/pubs/SushiBentoboxFeb2021.pdf"],
+    governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"]
   },
   {
     id: "348",
@@ -6042,6 +6043,7 @@ const data: Protocol[] = [
     twitter: "ShibaSwapDEX",
     audit_links: ["https://www.certik.org/projects/shib"],
     forkedFrom: ["Uniswap V2"],
+    governanceID: ["snapshot:shiba-swap.eth"]
   },
   {
     id: "398",
@@ -6644,6 +6646,7 @@ const data: Protocol[] = [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Tranchess-v1.0.pdf",
       "https://www.certik.org/projects/tranchess",
     ],
+    governanceID: ["snapshot:tranchess.com"]
   },
   {
     id: "426",
@@ -6832,6 +6835,7 @@ const data: Protocol[] = [
     module: "tarot/index.js",
     twitter: "TarotFinance",
     forkedFrom: ["Impermax Finance"],
+    governanceID: ["snapshot:xtarot.eth"]
   },
   {
     id: "435",
@@ -6916,7 +6920,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tokemak/index.js",
     twitter: "TokenReactor",
     audit_links: ["https://omniscia.io/tokemak-capital-management-protocol/"],
-    treasury: 'tokemak.js'
+    treasury: 'tokemak.js',
+    governanceID: ["snapshot:tokemak.eth"]
   },
   {
     id: "439",
@@ -9144,6 +9149,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "pnetwork.js",
     twitter: "pNetworkDeFi",
     audit_links: ["https://cryptonics.consulting/wp-content/uploads/2020/03/20200302_Audit_Report_pToken-2.pdf"],
+    governanceID: ["snapshot:pnetwork-dao.eth"]
   },
   {
     id: "548",
@@ -10988,6 +10994,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "keep3r/index.js",
     twitter: "thekeep3r",
     audit_links: ["https://github.com/keep3r-network/keep3r.network/tree/master/audits"],
+    governanceID: ["snapshot:vkp3r.eth"]
   },
   {
     id: "637",
@@ -12449,6 +12456,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "FinanceChainge",
     audit_links: ["https://www.certik.org/projects/chaingefinance"],
     forkedFrom: [],
+    governanceID: ["snapshot:chaingedao.eth"],
     listedAt: 1635106127,
   },
   {
@@ -13624,6 +13632,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Spartacus_Fi",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1635966336,
+    governanceID: ["snapshot:spartacusdao.eth"]
   },
   {
     id: "759",
@@ -18724,6 +18733,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "GainsNetwork_io",
     audit_links: ["https://www.certik.com/projects/gains-network"],
     listedAt: 1639418230,
+    governanceID: ["snapshot:gains-network.eth"]
   },
   {
     id: "1019",
@@ -19273,6 +19283,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1639811716,
     openSource: true,
+    governanceID: ["snapshot:staderdao.eth"]
   },
   {
     id: "1045",
@@ -22667,6 +22678,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://blog.openzeppelin.com/uma-audit-l2-bridges/"],
     oracles: ["UMA"],
     listedAt: 1641519276,
+    governanceID: ["snapshot:acrossprotocol.eth"]
   },
   {
     id: "1208",
@@ -24679,6 +24691,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Compound"],
     listedAt: 1642768849,
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:iron-bank.eth"]
   },
   {
     id: "1304",
@@ -26773,7 +26786,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Moonwell_Finance_Safety_Module_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf",
     ],
     listedAt: 1644685001,
-    parentProtocol: "Moonwell"
+    parentProtocol: "Moonwell",
+    governanceID: ["snapshot:moonwell-apollo-governance.eth"]
   },
   {
     id: "1402",

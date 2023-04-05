@@ -2998,6 +2998,7 @@ const data2: Protocol[] = [
     twitter: "0xconcentrator",
     audit_links: ["https://aladdin.club/audits/AladdinDao_V3_Report_Secbit.pdf"],
     listedAt: 1647257070,
+    governanceID: ["snapshot:concentratordao.eth"]
   },
   {
     id: "1545",
@@ -4656,7 +4657,7 @@ const data2: Protocol[] = [
     treasury: "jpegd",
     twitter: "JPEGd_69",
     audit_links: ["https://docs.jpegd.io/other-links/audits"],
-    governanceID: ["snapshot:jpeg’d.eth"],
+    governanceID: ["snapshot:jpeg'd.eth"],
     listedAt: 1649284165
   },
   {
@@ -4924,7 +4925,8 @@ const data2: Protocol[] = [
     module: "onyx/index.js",
     twitter: "OnyxProtocol",
     audit_links: ["https://github.com/chain/chain-token/blob/main/XCN-token-Certik-Audit-2022-03-06.pdf"],
-    listedAt: 1649671541
+    listedAt: 1649671541,
+    governanceID: ["snapshot:onyx.eth"]
   },
   {
     id: "1632",
@@ -9761,7 +9763,8 @@ const data2: Protocol[] = [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Moonwell_Finance_Safety_Module_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf",
     ],
     listedAt: 1655988523,
-    parentProtocol: "Moonwell"
+    parentProtocol: "Moonwell",
+    governanceID: ["snapshot:moonwell-governance.eth"]
   },
   {
     id: "1854",
@@ -11186,7 +11189,7 @@ const data2: Protocol[] = [
     twitter: "aurafinance",
     audit_links: ["https://github.com/aurafinance/aura-contracts/tree/main/audits"],
     listedAt: 1658511775,
-    governanceID: ["snapshot:gauges.aurafinance.eth"],
+    governanceID: ["snapshot:gauges.aurafinance.eth", "snapshot:gauges.aurafinance.eth"],
     treasury: "aura.js"
   },
   {
@@ -16062,7 +16065,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     module: "sonne-finance/index.js",
     twitter: "SonneFinance",
-    listedAt: 1664706279
+    listedAt: 1664706279,
+    governanceID: ["snapshot:sonnefi.eth"]
   },
   {
     id: "2143",
@@ -26729,7 +26733,8 @@ const data2: Protocol[] = [
     twitter: "ConicFinance",
     oracles: [],
     audit_links: ["https://conic.finance/media/PeckShield-Audit-Report-ConicFinance.pdf"],
-    listedAt: 1677700863
+    listedAt: 1677700863,
+    governanceID: ["snapshot:conic-dao.eth"]
   },
   {
     id: "2617",
@@ -29192,7 +29197,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "syncswap/index.js",
     twitter: "syncswap",
-    listedAt: 1679883857  
+    listedAt: 1679883857,
+    governanceID: ["snapshot:syncswapxyz.eth"]
   },
   {
     id: "2729",

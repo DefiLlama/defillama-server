@@ -19246,7 +19246,7 @@ const data2: Protocol[] = [
     category: "Yield",
     chains: ["Binance", "Fantom", "Avalanche", "Polygon", "Arbitrum"],
     module: "woofi-earn/index.js",
-    twitter: "WOOnetwork",
+    twitter: "_WOOFi",
     forkedFrom: [],
     oracles: [],
     listedAt: 1668524390,

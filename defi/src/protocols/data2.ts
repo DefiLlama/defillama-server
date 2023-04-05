@@ -30172,7 +30172,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Arbitrum"],
     oracles: [],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Solidly"],
     module: "auragi-finance/index.js",
     twitter: "AuragiFinance",
     audit_links: ["https://github.com/solidproof/projects/tree/main/Auragi"],

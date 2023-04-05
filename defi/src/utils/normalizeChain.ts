@@ -1784,7 +1784,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "era":
       return "zkSync Era"
     case "polygon_zkevm":
-      return "Polygon zkEVM"
+      return useNewChainNames ? "polygon_zkevm" : "Polygon zkEVM"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

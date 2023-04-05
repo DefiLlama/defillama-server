@@ -141,12 +141,20 @@ export const storeAdaptorRecord = async (adaptorRecord: AdaptorRecord, eventTime
     const currentRecord = await getAdaptorRecord(adaptorRecord.adaptorId, adaptorRecord.type, adaptorRecord.protocolType, "TIMESTAMP", adaptorRecord.timestamp).catch(() => console.info("No previous data found, writting new row..."))
     let currentData: IRecordAdaptorRecordData = {}
     if (currentRecord instanceof AdaptorRecord) currentData = currentRecord.data
+
+    // Proceed to remove previous errors
     delete currentData.error
+    currentData = Object.entries(currentData).reduce((acc, [key, chainData]) => {
+        if (typeof chainData !== 'number') delete chainData.error
+        acc[key] = chainData
+        return acc
+    }, {} as IRecordAdaptorRecordData)
     const obj2Store: IRecordAdaptorRecordData = {
         ...Object.entries(adaptorRecord.data).reduce((acc, [chain, data]) => {
             const currentChainValue = acc[chain]
             const clean_chain = replaceReservedKeyword(chain)
             if (typeof data === 'number' || typeof currentChainValue === 'number' || chain === 'error') return acc
+            if (currentChainValue && Object.keys(currentChainValue).length === 0) return acc
             acc[clean_chain] = {
                 ...currentChainValue,
                 ...data,
@@ -180,11 +188,17 @@ function revertReservedKeyword(key: string) {
 }
 
 function createUpdateExpressionFromObj(obj: IRecordAdaptorRecordData): string {
-    return `set ${Object.keys(obj).map(field => `${field}=:${field}`).join(',')}`
+    const removeExpression = `${Object.entries(obj)
+        .filter(([, obj]) => typeof obj === 'object' && Object.keys(obj).length === 0)
+        .map(([field]) => `${field}`).join(',')}`
+    return `set ${Object.entries(obj)
+        .filter(([, obj]) => typeof obj !== 'object' || typeof obj === 'object' && Object.keys(obj).length > 0)
+        .map(([field]) => `${field}=:${field}`).join(',')}${removeExpression ? ` remove ${removeExpression}` : ''}`
 }
 
 function createExpressionAttributeValuesFromObj(obj: IRecordAdaptorRecordData): Record<string, unknown> {
     return Object.entries(obj).reduce((acc, [key, value]) => {
+        if (typeof value === 'object' && Object.keys(value).length === 0) return acc
         return {
             ...acc,
             [`:${key}`]: value

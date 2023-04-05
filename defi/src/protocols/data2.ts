@@ -30200,7 +30200,7 @@ const data2: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/twt-stake"],
     listedAt: 1680730891
   },
-  {
+  /*{
     id: "2775",
     name: "ArbiDragon",
     address: "arbitrum:0xf3f45fA22c374c82Ca8573FFCb8D529B9e1A27A1",
@@ -30220,6 +30220,6 @@ const data2: Protocol[] = [
     module: "arbidragon/index.js",
     twitter: "ArbiDragonxyz",
     listedAt: 1680731263
-  },
+  },*/
 ]
 export default data2;

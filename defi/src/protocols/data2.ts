@@ -30158,7 +30158,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2773",
-    name: "Auriga Finance",
+    name: "Auragi Finance",
     address: "arbitrum:0xff191514a9baba76bfd19e3943a4d37e8ec9a111",
     symbol: "AGI",
     url: "https://auragi.finance",

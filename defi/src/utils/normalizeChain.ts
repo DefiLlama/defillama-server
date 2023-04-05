@@ -1,4 +1,5 @@
 const normalizedChainReplacements = {
+  // keys should be full lowercase
   "binance": "bsc",
   "wanchain": "wan",
   "kucoin": "kcc",
@@ -6,11 +7,8 @@ const normalizedChainReplacements = {
   "nova network": "nova" ,
   "godwokenv1" : "godwoken_v1",
   "arbitrum nova" : "arbitrum_nova",
-  "OKExChain": "OKXChain",
-  "zkSync": "zkSync Lite",
-  "zkSync Era": "era",
-  "Polygon zkEVM": "polygon_zkevm"
-
+  "zksync era": "era",
+  "polygon zkevm": "polygon_zkevm"
 } as {
   [chain: string]: string
 }

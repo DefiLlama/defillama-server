@@ -4542,7 +4542,7 @@ const data2: Protocol[] = [
     chains: ["Polygon","Polygon zkEVM"],
     oraclesByChain: {
       polygon: ["Chainlink"],
-      polygonzkevm: ["Pyth"],
+      polygon_zkevm: ["Pyth"],
     },
     forkedFrom: ["Compound"],
     module: "0vix/index.js",

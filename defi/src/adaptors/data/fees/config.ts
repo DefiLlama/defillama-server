@@ -711,5 +711,9 @@ export default {
     "sonne-finance": {
         "enabled": true,
         "id": "2142"
+    },
+    "SmarDex": {
+        "enabled": true,
+        "id": "2695"
     }
 } as AdaptorsConfig

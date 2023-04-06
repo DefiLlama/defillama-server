@@ -2343,6 +2343,7 @@ const data2: Protocol[] = [
     module: "the-granary/index.js",
     twitter: "GranaryFinance",
     listedAt: 1646515940,
+    governanceID: ["snapshot:granaryfinance.eth"]
   },
   {
     id: "1515",
@@ -30305,6 +30306,26 @@ const data2: Protocol[] = [
     module: "zenithswap/index.js",
     twitter: "Zenith_Swap",
     listedAt: 1680798657
+  },
+  {
+    id: "2780",
+    name: "Ethereum Name Service",
+    address: "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
+    symbol: "ENS",
+    url: "https://ens.domains/",
+    description: "Decentralised naming for wallets, websites, & more",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ethereum-name-service.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "ensdomains",
   },
 ]
 export default data2;

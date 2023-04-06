@@ -5715,6 +5715,7 @@ const data: Protocol[] = [
       "https://hacken.io/audits/#solidstate",
       "https://hacken.io/audits/#premia_finance",
     ],
+    governanceID: ["snapshot:premia.eth"]
   },
   {
     id: "382",
@@ -6171,6 +6172,7 @@ const data: Protocol[] = [
     chains: ["Fantom"],
     module: "liquiddriver/index.js",
     twitter: "LiquidDriver",
+    governanceID: ["snapshot:liquiddriver.eth"]
   },
   {
     id: "404",
@@ -15691,6 +15693,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "ichifarm",
     audit_links: ["https://docs.ichi.farm/audits-and-risks/audits"],
     listedAt: 1637376327,
+    governanceID: ["snapshot:ichi.eth"]
   },
   {
     id: "875",
@@ -26408,6 +26411,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     language: "Solidity",
     forkedFrom: ["Solidly"],
     listedAt: 1644507498,
+    governanceID: ["snapshot:hermesprotocol.eth"]
   },
   {
     id: "1385",

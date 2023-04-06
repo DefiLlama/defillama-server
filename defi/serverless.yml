@@ -173,13 +173,6 @@ functions:
       - http:
           path: treasuries
           method: get
-  dexAggregatorQuote:
-    handler: src/getDexAggregatorQuote.default
-    timeout: 30
-    events:
-      - http:
-          path: dexAggregatorQuote
-          method: post
   storeAggregatorEvent:
     handler: src/storeAggregatorEvent.default
     timeout: 30

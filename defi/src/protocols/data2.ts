@@ -30293,7 +30293,7 @@ const data2: Protocol[] = [
     url: "https://app.zenithswap.com/swap",
     description: "Decentralized Exchange on Arbitrum",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/zenithswap.jpg`,
+    logo: `${baseIconsUrl}/zenithswap.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "zenithswap",

@@ -4820,10 +4820,10 @@ const data: Protocol[] = [
   {
     id: "340",
     name: "Olympus DAO",
-    address: "0x383518188c0c6d7730d91b2c03a03c837814a899",
+    address: "0x64aa3364F17a4D01c6f1751Fd97C2BD3D7e7f1D5",
     symbol: "OHM",
     url: "https://olympusdao.finance/",
-    description: "$OHM is a decentralized reserve currency that remains unbound by a peg.",
+    description: "$OHM is a community-owned, decentralized and censorship-resistant reserve currency that is asset-backed, deeply liquid and used widely across Web3.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/olympus-dao.jpg`,
     audits: "2",
@@ -4835,7 +4835,7 @@ const data: Protocol[] = [
     module: "olympus/index.js",
     treasury: "olympus-dao.js",
     twitter: "OlympusDAO",
-    audit_links: ["https://docs.olympusdao.finance/references/audits"],
+    audit_links: ["https://docs.olympusdao.finance/main/technical/audits"],
     governanceID: ["snapshot:olympusdao.eth"]
   },
   {

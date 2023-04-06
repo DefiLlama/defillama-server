@@ -703,5 +703,9 @@ export default {
     "morphex": {
         "enabled": true,
         "id": "2662"
+    },
+    "kyotoswap": {
+        "enabled": true,
+        "id": "2350"
     }
 } as AdaptorsConfig

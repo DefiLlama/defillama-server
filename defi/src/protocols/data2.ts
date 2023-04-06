@@ -30285,5 +30285,26 @@ const data2: Protocol[] = [
     twitter: "SyncDex_Finance",
     listedAt: 1680775139
   },
+  {
+    id: "2779",
+    name: "ZenithSwap",
+    address: "arbitrum:0xb2dcbd5258a22385240e4ac13fc6726b66f0de96",
+    symbol: "ZSP",
+    url: "https://app.zenithswap.com/swap",
+    description: "Decentralized Exchange on Arbitrum",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/zenithswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "zenithswap",
+    cmcId: "24155",
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "zenithswap/index.js",
+    twitter: "Zenith_Swap",
+    listedAt: 1680798657
+  },
 ]
 export default data2;

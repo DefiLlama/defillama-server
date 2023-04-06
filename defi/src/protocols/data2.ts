@@ -19239,7 +19239,7 @@ const data2: Protocol[] = [
     symbol: "WOO",
     url: "https://fi.woo.org/earn",
     description:
-      'WOOFi Earn provides "set-and-forget" yield generating strategies, where users can simply deposit into a vault and let the automated strategies do the rest',
+      'WOOFi Earn features supercharger vaults allow users to provide liquidity in WOOFi swap and earn single sided yields by delegating the liquidity management to the sPMM pool manager.',
     chain: "Binance",
     logo: `${baseIconsUrl}/woofi-earn.png`,
     audits: "0",

@@ -529,6 +529,11 @@ functions:
     timeout: 900
     events:
       - schedule: cron(30 0 * * ? *)
+  refreshDimensionOverviewCache:
+    handler: src/adaptors/handlers/refreshDimensionOverviewCache.default
+    timeout: 180
+    events:
+      - schedule: rate(1 hour)
   cacheExternalResponse:
     handler: src/externalEndpointsCache/index.cacheExternalResponseHandler
     timeout: 180

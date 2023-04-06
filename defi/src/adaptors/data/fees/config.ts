@@ -707,5 +707,9 @@ export default {
     "kyotoswap": {
         "enabled": true,
         "id": "2350"
+    },
+    "sonne-finance": {
+        "enabled": true,
+        "id": "2142"
     }
 } as AdaptorsConfig

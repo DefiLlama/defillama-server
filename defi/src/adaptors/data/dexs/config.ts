@@ -1331,5 +1331,9 @@ export default {
     "kyotoswap": {
         "enabled": true,
         "id": "2350"
+    },
+    "SmarDex": {
+        "enabled": true,
+        "id": "2695"
     }
 } as AdaptorsConfig

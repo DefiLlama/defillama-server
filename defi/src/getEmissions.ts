@@ -89,8 +89,8 @@ const handler = async (_event: any): Promise<IResponse> => {
   );
   return successResponse(
     data.sort((a, b) => b.mcap - a.mcap),
-    10 * 60
-  ); // 10 mins cache
+    6 * 60 * 60
+  ); // 6 hours cache
 };
 
 export default wrap(handler);

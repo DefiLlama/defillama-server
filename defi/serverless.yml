@@ -447,12 +447,14 @@ functions:
     memorySize: 512
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINS_DB: ${file(./env.js):COINS_DB}
   storeTreasuryInterval:
     handler: src/storeTreasuryInterval.default
     timeout: 900
     memorySize: 512
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINS_DB: ${file(./env.js):COINS_DB}
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     timeout: 900
@@ -565,6 +567,10 @@ functions:
     memorySize: 1024
     events:
       - schedule: cron(30 * * * ? *)
+    environment:
+      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINS_DB: ${file(./env.js):COINS_DB}
+      STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
   sendDiscordMessage:
     handler: src/sendDiscordMessage.default
     timeout: 900

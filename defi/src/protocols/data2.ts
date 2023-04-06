@@ -30221,5 +30221,27 @@ const data2: Protocol[] = [
     twitter: "ArbiDragonxyz",
     listedAt: 1680731263
   },*/
+  {
+    id: "2776",
+    name: "SushiSwap V3",
+    address: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+    symbol: "SUSHI",
+    url: "https://sushi.com/",
+    description: "SushiSwap V3: A Uniswap V3 fork",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sushiswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "sushiswap-v3/index.js",
+    twitter: "SushiSwap",
+    parentProtocol: "Sushi",
+    listedAt: 1680740698
+  },
 ]
 export default data2;

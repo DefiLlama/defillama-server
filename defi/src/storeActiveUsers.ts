@@ -9,6 +9,10 @@ async function storeActiveUsers() {
         .withConcurrency(16)
         .for(shuffleArray(userAdapters))
         .process(async ({ name, getUsers, id }) => {
+            if(!id){
+                // No id to store
+                return;
+            }
             try {
                 const end = Math.floor(Date.now() / 1e3)
                 const start = end - 24 * 3600

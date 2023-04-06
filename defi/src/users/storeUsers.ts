@@ -1,10 +1,10 @@
 import postgres from "postgres";
 import { getTimestampAtStartOfDay } from "../utils/date";
 
-// CREATE TABLE hourlyUsers (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), users INT, PRIMARY KEY(start, protocolId, chain);
+// CREATE TABLE hourlyUsers (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), users INT, PRIMARY KEY(start, protocolId, chain));
 // CREATE INDEX idx_time ON hourlyUsers (start);
-// CREATE TABLE dailyUsers (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), users INT, realStart INT, PRIMARY KEY(start, protocolId, chain);
-// CREATE INDEX idx_time ON dailyUsers (start);
+// CREATE TABLE dailyUsers (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), users INT, realStart INT, PRIMARY KEY(start, protocolId, chain));
+// CREATE INDEX idx_time2 ON dailyUsers (start);
 
 const sql = postgres(process.env.ACCOUNTS_DB!);
 

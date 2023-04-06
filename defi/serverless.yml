@@ -619,6 +619,13 @@ functions:
       - http:
           path: emission/{protocol}
           method: get
+  emissionsList:
+    handler: src/getEmissionsList.default
+    timeout: 30
+    events:
+      - http:
+          path: emissionsList
+          method: get
   storeEmissions:
     handler: src/storeEmissions.default
     timeout: 900

@@ -30307,7 +30307,7 @@ const data2: Protocol[] = [
     twitter: "Zenith_Swap",
     listedAt: 1680798657
   },
-  {
+  /*{
     id: "2780",
     name: "Ethereum Name Service",
     address: "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
@@ -30326,7 +30326,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "ensdomains",
-  },
+  },*/
   {
     id: "2781",
     name: "NFT360",

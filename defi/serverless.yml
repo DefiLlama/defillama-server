@@ -530,7 +530,7 @@ functions:
     events:
       - schedule: cron(30 0 * * ? *)
   refreshDimensionOverviewCache:
-    handler: src/adaptors/handlers/refreshDimensionOverviewCache.default
+    handler: src/adaptors/handlers/refreshDimensionOverviewCache/index.default
     timeout: 180
     events:
       - schedule: rate(1 hour)

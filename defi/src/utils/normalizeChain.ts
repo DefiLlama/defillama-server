@@ -454,7 +454,7 @@ export const chainCoingeckoIds = {
     chainId: 122,
     governanceID: ["snapshot:fusedao.eth"]
   },
-  "smartBCH": {
+  "SmartBCH": {
     geckoId: "bitcoin-cash",
     symbol: "BCH",
     cmcId: "1831",

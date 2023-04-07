@@ -10,15 +10,16 @@ import { getTimestampAtStartOfDay } from "@defillama/dimension-adapters/utils/da
 // -> /overview/{type}/{chain}
 export const handler = async (): Promise<undefined> => {
     // Go over all types
-    const res = await Promise.all(Object.values(AdaptorRecordType).map(async type => {
+    const res = await Promise.all(Object.values(AdapterType).map(async type => {
         // Try to get current cached response
-        let response = await getCachedResponseOnR2<IGetOverviewResponseBody>(getOverviewCachedResponseKey(
+        const key = getOverviewCachedResponseKey(
             type,
             undefined,
             DEFAULT_CHART_BY_ADAPTOR_TYPE[type],
             undefined,
             String(false)
-        )).catch(e => console.error(`Unable to retrieve cached response for ${type}...`, e))
+        )
+        let response = await getCachedResponseOnR2<IGetOverviewResponseBody>(key).catch(e => console.error(`Unable to retrieve cached response for ${type}...`, e))
         // Initializing chains to update array (undefined = all)
         const allChains = [undefined] as (string | undefined)[]
         // If already cached response has been found, add all chains to list of chains
@@ -27,6 +28,7 @@ export const handler = async (): Promise<undefined> => {
         else console.info("Response not found, generating for all chains...")
         // Go through all chains + cache overview response
         Promise.all(allChains.map((chain) => {
+            console.log("Invoking", key)
             return invokeLambda("defillama-prod-getOverviewProcess", {
                 pathParameters: { chain: chain, type: type }
             })
@@ -35,6 +37,5 @@ export const handler = async (): Promise<undefined> => {
     console.info(JSON.stringify(res))
     return undefined
 };
-
 
 export default handler;

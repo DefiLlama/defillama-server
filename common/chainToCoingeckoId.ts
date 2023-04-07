@@ -1,4 +1,4 @@
-
+// https://api.coingecko.com/api/v3/asset_platforms
 export const chainToCoingeckoId = {
   bsc: "binance-smart-chain",
   ethereum: "ethereum",
@@ -43,6 +43,7 @@ export const chainToCoingeckoId = {
   sx: "sx-network",
   velas: "velas",
   milkomeda: "milkomeda-cardano",
+  aptos: "aptos",
 }
 
 export default chainToCoingeckoId

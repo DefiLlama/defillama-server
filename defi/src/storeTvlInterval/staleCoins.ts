@@ -57,27 +57,26 @@ async function writeCoins(
 ): Promise<void> {
   const time = getCurrentUnixTimestamp();
 
-  await db.none(`
-    ${PGP.helpers.insert(
-      Object.entries(staleCoins).map(([pk, details]) => ({
-        id: pk,
-        time,
-        address: pk.split(":")[1],
-        lastupdate: details.lastUpdate,
-        chain: pk.split(":")[0],
-        symbol: details.symbol,
-      })),
-      new PGP.helpers.ColumnSet([
-        "id",
-        "time",
-        "address",
-        "lastupdate",
-        "chain",
-        "symbol",
-      ]),
-      "stalecoins",
-    )}
-    ON CONFLICT (id) DO UPDATE
-      SET time = ${time}
-  `);
+  const insertData = Object.entries(staleCoins).map(([pk, details]) => ({
+    id: pk,
+    time,
+    address: pk.split(":")[1],
+    lastupdate: details.lastUpdate,
+    chain: pk.split(":")[0],
+    symbol: details.symbol,
+  }));
+
+  const columnSets = new PGP.helpers.ColumnSet(
+    ["id", "time", "address", "lastupdate", "chain", "symbol"],
+    { table: "stalecoins" },
+  );
+
+  await db.none(
+    PGP.helpers.insert(insertData, columnSets) +
+      " ON CONFLICT (id) DO UPDATE SET " +
+      columnSets.assignColumns({
+        from: "EXCLUDED",
+        skip: ["id", "address", "chain", "symbol"],
+      }),
+  );
 }

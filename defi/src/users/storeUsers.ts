@@ -28,3 +28,11 @@ export async function storeUsers(start:number, end:number, protocolId:string, ch
     )
   `
 }
+
+export async function getProtocolUsers(protocolId:string) {
+  return sql`SELECT * FROM dailyUsers WHERE protocolId = ${protocolId}`
+}
+
+export async function getLatestUsersData(minEnd:number, chain: string) {
+  return sql`SELECT * FROM hourlyUsers WHERE endTime > ${minEnd} AND chain = ${chain}`
+}

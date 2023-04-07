@@ -641,10 +641,21 @@ functions:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
   activeUsers:
     handler: src/getActiveUsers.default
-    timeout: 120
+    timeout: 90
+    environment:
+      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
     events:
       - http:
           path: activeUsers
+          method: get
+  protocolActiveUsers:
+    handler: src/getProtocolUsers.default
+    timeout: 90
+    environment:
+      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+    events:
+      - http:
+          path: activeUsers/{protocolId}
           method: get
   newsArticles:
     handler: src/getNewsArticles.default

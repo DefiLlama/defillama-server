@@ -7,10 +7,10 @@ import sleep from "../utils/shared/sleep";
 import { getTimestampAtStartOfDay } from "../utils/date";
 
 async function main() {
-    let end = getTimestampAtStartOfDay(Math.floor(Date.now() / 1e3))
+    let start = getTimestampAtStartOfDay(1680652800)
     while (true) {
-        console.log("end", end)
-        const start = end - 24 * 3600
+        console.log("start", start)
+        const end = start + 24 * 3600
         const reorderedAdapterList = ([] as typeof userAdapters).concat(userAdapters); // shallow copy
         shuffleArray(reorderedAdapterList);
         PromisePool
@@ -24,12 +24,12 @@ async function main() {
                 try {
                     const users = await getUsers(start, end)
                     await Promise.all(Object.entries(users).map(([chain, userNum]) => storeUsers(start, end, id, chain, Number(userNum))))
-                } catch (e) {
-                    console.log(`Storing users for ${name} failed with error`, e)
+                } catch (e:any) {
+                    console.log(`Storing users for ${name} failed with error`, e.message)
                 }
             })
         await sleep(5*60*1e3) // 5 mins
-        end = getTimestampAtStartOfDay(end - 12 * 3600);
+        start = getTimestampAtStartOfDay(start - 12 * 3600);
     }
 }
 main()

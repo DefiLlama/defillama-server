@@ -2497,6 +2497,7 @@ const data2: Protocol[] = [
     twitter: "HorizonProtocol",
     audit_links: ["https://static.horizonprotocol.com/Horizon-Protocol-Smart-Contract-Audit-Report.pdf"],
     listedAt: 1646762203,
+    governanceID: ["snapshot:horizonprotocol.eth"]
   },
   {
     id: "1522",
@@ -2870,6 +2871,7 @@ const data2: Protocol[] = [
     twitter: "riskharbor",
     audit_links: ["https://docs.riskharbor.com/contracts/security-audits"],
     listedAt: 1647046245,
+    governanceID: ["snapshot:riskharbor.eth"]
   },
   {
     id: "1539",
@@ -3282,6 +3284,7 @@ const data2: Protocol[] = [
     twitter: "single_finance",
     audit_links: ["https://www.certik.com/projects/singlefinance"],
     listedAt: 1647474272,
+    governanceID: ["snapshot:singlefinance.eth"]
   },
   {
     id: "1558",
@@ -4158,6 +4161,7 @@ const data2: Protocol[] = [
     twitter: "TheIdolsNFT",
     audit_links: ["https://docs.theidols.io/resources/audit"],
     listedAt: 1648752313,
+    governanceID: ["snapshot:theidols.eth"]
   },
   {
     id: "1597",
@@ -4862,7 +4866,8 @@ const data2: Protocol[] = [
       "https://docs.singularitydao.ai/audits/hacken-bonded-staking",
       "https://www.certik.com/projects/singularitydao"
     ],
-    listedAt: 1649526364
+    listedAt: 1649526364,
+    governanceID: ["snapshot:sdao.eth"]
   },
   {
     id: "1629",
@@ -5045,7 +5050,8 @@ const data2: Protocol[] = [
     module: "bolide/index.js",
     twitter: "Bolide_fi",
     audit_links: ["https://docs.bolide.fi/protocol/audits"],
-    listedAt: 1649674184
+    listedAt: 1649674184,
+    governanceID: ["snapshot:blid.eth"]
   },
   {
     id: "1637",
@@ -5723,7 +5729,8 @@ const data2: Protocol[] = [
     module: "solv-protocol/index.js",
     twitter: "SolvProtocol",
     audit_links: ["https://github.com/solv-finance/Audit"],
-    listedAt: 1650458739
+    listedAt: 1650458739,
+    governanceID: ["snapshot:solvgov.eth"]
   },
   {
     id: "1668",
@@ -9331,7 +9338,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "unidex/index.js",
     twitter: "UniDexFinance",
-    listedAt: 1655547687
+    listedAt: 1655547687,
+    governanceID: ["snapshot:unidexapp.eth"]
   },
   {
     id: "1834",
@@ -16511,7 +16519,8 @@ const data2: Protocol[] = [
       "https://github.com/EaseDeFi/Audits/blob/main/Dedaub_RCA_Audit.pdf",
       "https://github.com/EaseDeFi/gvToken/tree/main/audits"
     ],
-    listedAt: 1665063478
+    listedAt: 1665063478,
+    governanceID: ["snapshot:easedao.eth"]
   },
   {
     id: "2163",
@@ -19006,7 +19015,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Magpie-v1.1.pdf"],
-    listedAt: 1668185763
+    listedAt: 1668185763,
+    governanceID: ["snapshot:magpiexyz.eth"]
   },
   {
     id: "2272",
@@ -20024,7 +20034,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://solidity.finance/audits/GMDAOVault"],
-    listedAt: 1669732077
+    listedAt: 1669732077,
+    governanceID: ["snapshot:gmdgovernance.eth"]
   },
   {
     id: "2320",
@@ -20368,7 +20379,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://docs.defiedge.io/Security/audits"],
     oracles: ["Chainlink", "TWAP"],
-    listedAt: 1670347222
+    listedAt: 1670347222,
+    governanceID: ["snapshot:0xdefiedge.eth"]
   },
   {
     id: "2335",
@@ -21370,7 +21382,8 @@ const data2: Protocol[] = [
     twitter: "stakedotlink",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1671639906
+    listedAt: 1671639906,
+    governanceID: ["snapshot:stakedotlink.eth"]
   },
   {
     id: "2379",
@@ -24550,6 +24563,7 @@ const data2: Protocol[] = [
     twitter: "gitcoin",
     oracles: [],
     forkedFrom: [],
+    governanceID: ["snapshot:gitcoindao.eth"]
   },
   {
     id: "2519",
@@ -24572,6 +24586,7 @@ const data2: Protocol[] = [
     twitter: "ensdomains",
     oracles: [],
     forkedFrom: [],
+    governanceID: ["snapshot:ens.eth"]
   },
   {
     id: "2520",
@@ -24594,6 +24609,7 @@ const data2: Protocol[] = [
     twitter: "GnosisDAO",
     oracles: [],
     forkedFrom: [],
+    governanceID: ["snapshot:gnosis.eth"]
   },
   {
     id: "2521",
@@ -24682,6 +24698,7 @@ const data2: Protocol[] = [
     twitter: "FWBtweets",
     oracles: [],
     forkedFrom: [],
+    governanceID: ["snapshot:friendswithbenefits.eth"]
   },
   {
     id: "2525",
@@ -25612,7 +25629,8 @@ const data2: Protocol[] = [
     twitter: "MugenFinance",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1677066683
+    listedAt: 1677066683,
+    governanceID: ["snapshot:mugengovernance.eth"]
   },
   {
     id: "2567",

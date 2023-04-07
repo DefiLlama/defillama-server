@@ -706,6 +706,7 @@ const data: Protocol[] = [
     twitter: "hakkafinance",
     audit_links: ["https://github.com/hakkafinance/audit-reports"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:hakka.eth"]
   },
   {
     id: "139",
@@ -4898,6 +4899,7 @@ const data: Protocol[] = [
     twitter: "ImpermaxFinance",
     audit_links: ["https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/tree/main/audit"],
     oracles: ["Chainlink"],
+    governanceID: ["snapshot:impermax.eth"]
   },
   {
     id: "344",
@@ -5389,6 +5391,7 @@ const data: Protocol[] = [
     module: "dfx/index.js",
     twitter: "DFXFinance",
     audit_links: ["https://github.com/dfx-finance/protocol/blob/main/audits/2021-05-03-Trail_of_Bits.pdf"],
+    governanceID: ["snapshot:dfx.eth"]
   },
   {
     id: "367",
@@ -10406,6 +10409,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
+    governanceID: ["hundredfinance.eth"]
   },
   {
     id: "608",
@@ -11217,6 +11221,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://drive.google.com/file/d/10Qdqj-ry4OhsQX3SesSRc1nEsNZ8UFkD/view",
       "https://medium.com/unifiprotocol/unifi-protocol-passes-slowmist-audit-9694b55b77ba",
     ],
+    governanceID: ["snapshot:unfi.eth"]
   },
   {
     id: "647",
@@ -12572,6 +12577,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/persistenceOne/pStake-auditReports",
     ],
     listedAt: 1635248310,
+    governanceID: ["snapshot:pstakefinance.eth"]
   },
   {
     id: "710",
@@ -21303,6 +21309,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.netswap.io/security/security-audits"],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1640747909,
+    governanceID: ["snapshot:venett.eth"]
   },
   {
     id: "1141",
@@ -26249,6 +26256,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     language: "Solidity",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1644441697,
+    governanceID: ["snapshot:maiadao.eth"]
   },
   {
     id: "1378",

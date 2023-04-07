@@ -527,6 +527,7 @@ functions:
   refreshDimensionOverviewCache:
     handler: src/adaptors/handlers/refreshDimensionOverviewCache/index.default
     timeout: 180
+    memorySize: 1024
     events:
       - schedule: rate(1 hour)
   cacheExternalResponse:

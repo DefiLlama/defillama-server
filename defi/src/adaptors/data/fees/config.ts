@@ -671,7 +671,6 @@ export default {
         displayName: "Chainlink Requests",
         id: "2623"
     },
-    ...seaportCollections,
     "aura": {
         enabled: true,
         id: "1918"

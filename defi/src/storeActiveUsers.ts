@@ -17,7 +17,7 @@ async function storeActiveUsers() {
                 const end = Math.floor(Date.now() / 1e3)
                 const start = end - 24 * 3600
                 const users = await getUsers(start, end)
-                await Promise.all(Object.entries(users).map(([chain, userNum]) => storeUsers(start, end, id, chain, Number(userNum))))
+                await Promise.all(Object.entries(users).map(([chain, userNum]) => storeUsers(start, end, id, chain, Number((userNum as any).users))))
             } catch (e) {
                 console.log(`Storing users for ${name} failed with error`, e)
             }

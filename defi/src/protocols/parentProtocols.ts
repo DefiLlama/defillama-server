@@ -1282,6 +1282,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Hector_Network",
     governanceID: ["snapshot:hectordao.eth"]
   },
+  {
+    id: "Zenlink",
+    name: "Zenlink",
+    url: "https://zenlink.pro",
+    description: "An ultimate, open, and universal cross-chain DEX protocol for building DEX on Polkadot with one click. Make DEX easier, for more people.",
+    logo: `${baseIconsUrl}/zenlink.png`,
+    gecko_id: "zenlink-network-token",
+    cmcId: "15419",
+    chains: [],
+    twitter: "ZenlinkPro",
+  },
 ];
 
 export default parentProtocols;

@@ -14336,22 +14336,23 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "810",
-    name: "Zenlink",
+    name: "Zenlink AMM",
     address: "moonriver:0x0f47ba9d9Bde3442b42175e51d6A367928A1173B",
     symbol: "ZLK",
     url: "https://zenlink.pro",
     description: "Zenlink is a cross-chain DEX protocol based on Polkadot.",
     chain: "Moonriver",
-    logo: `${baseIconsUrl}/zenlink.png`,
+    logo: `${baseIconsUrl}/zenlink-amm.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "zenlink-network-token",
-    cmcId: "15419",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Moonriver"],
     module: "zenlink/index.js",
     twitter: "ZenlinkPro",
     forkedFrom: ["Uniswap V2"],
+    parentProtocol: "Zenlink",
     listedAt: 1636427656,
   },
   {
@@ -16339,7 +16340,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Tornado Cash"],
     listedAt: 1637727721,
   },
-  /*
   {
     id: "905",
     name: "TangoSwap",
@@ -16361,7 +16361,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637729126,
   },
-  */
   {
     id: "906",
     name: "Impossible Finance",

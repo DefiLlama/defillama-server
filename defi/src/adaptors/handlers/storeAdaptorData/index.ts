@@ -102,7 +102,9 @@ export const handler = async (event: IHandlerEvent) => {
       }, {} as IJSON<string>) ?? AdaptorRecordTypeMapReverse */
       if (adaptor.protocolType === ProtocolType.COLLECTION) {
         for (const [version, adapter] of adaptersToRun) {
-          id = config[version].id
+          const colletionConfig = config[module]?.protocolsData?.[version]
+          if (!colletionConfig) continue
+          id = colletionConfig.id
           const rawRecords: RawRecordMap = {}
           const runAtCurrTime = Object.values(adapter).some(a => a.runAtCurrTime)
           if (runAtCurrTime && Math.abs(LAMBDA_TIMESTAMP - cleanCurrentDayTimestamp) > 60 * 60 * 2) continue

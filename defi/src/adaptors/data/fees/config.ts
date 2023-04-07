@@ -715,5 +715,9 @@ export default {
     "SmarDex": {
         "enabled": true,
         "id": "2695"
+    },
+    "ens": {
+        "enabled": true,
+        "id": "2519"
     }
 } as AdaptorsConfig

@@ -30539,5 +30539,26 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
     listedAt: 1680889424
   },
+  {
+    id: "2790",
+    name: "Illuminate",
+    address: null,
+    symbol: "-",
+    url: "https://app.illuminate.finance/lend",
+    description: "Illuminate is a fixed-rate lending protocol designed to aggregate Principal Tokens and provide the only scalable infrastructure for fixed rates, offering the combined depth of all fixed-rate markets as well as a guarantee of the best rate in DeFi",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/illuminate.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "illuminate-fi/index.js",
+    twitter: "IlluminateFi",
+    listedAt: 1680902441
+  },
 ]
 export default data2;

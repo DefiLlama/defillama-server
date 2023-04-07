@@ -27,7 +27,7 @@ export const handler = async (): Promise<undefined> => {
         // If not, it will update chain=all so next execution all available chains will be known
         else console.info("Response not found, generating for all chains...")
         // Go through all chains + cache overview response
-        Promise.all(allChains.map((chain) => {
+        return Promise.all(allChains.map((chain) => {
             console.log("Invoking", key)
             return invokeLambda("defillama-prod-getOverviewProcess", {
                 pathParameters: { chain: chain, type: type }

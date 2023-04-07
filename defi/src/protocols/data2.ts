@@ -15192,7 +15192,8 @@ const data2: Protocol[] = [
     module: "fstswap/index.js",
     twitter: "FstSwapbright",
     audit_links: ["https://help.fstswap.exchange/audit-report"],
-    listedAt: 1663680968
+    listedAt: 1663680968,
+    governanceID: ["snapshot:fistdex.eth"]
   },
   {
     id: "2102",
@@ -24197,6 +24198,7 @@ const data2: Protocol[] = [
     twitter: "BitDAO_Official",
     oracles: [],
     forkedFrom: [],
+    governanceID: ["snapshot:bitdao.eth"]
   },
   {
     id: "2503",
@@ -24241,6 +24243,7 @@ const data2: Protocol[] = [
     twitter: "rarible",
     oracles: [],
     forkedFrom: [],
+    governanceID: ["snapshot:rarible.eth"]
   },
   {
     id: "2505",
@@ -26625,7 +26628,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "ourZORA",
-    listedAt: 1677604484
+    listedAt: 1677604484,
+    governanceID: ["snapshot:zora.eth"]
   },
   {
     id: "2611",
@@ -27834,6 +27838,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "apecoin",
+    governanceID: ["snapshot:apecoin.eth"]
   },
   {
     id: "2666",
@@ -29612,7 +29617,8 @@ const data2: Protocol[] = [
     module: "nexon/index.js",
     twitter: "NexonFi",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Nexon-v1.0.pdf"],
-    listedAt: 1680172068
+    listedAt: 1680172068,
+    governanceID: ["snapshot:nexondao.eth"]
   },
   {
     id: "2747",

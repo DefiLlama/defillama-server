@@ -245,6 +245,7 @@ const data: Protocol[] = [
     twitter: "renprotocol",
     audit_links: ["https://github.com/renproject/ren/wiki/Audits"],
     oracles: [],
+    governanceID: ["snapshot:ren-project.eth"]
   },
   {
     id: "118",
@@ -8057,6 +8058,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "grim/index.js",
     twitter: "financegrim",
     audit_links: ["https://solidity.finance/audits/GrimVault/", "https://www.certik.com/projects/grim-finance"],
+    governanceID: ["snapshot:nikar0.eth"]
   },
   {
     id: "494",
@@ -13448,6 +13450,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/bentoken-finance"],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1635848244,
+    governanceID: ["snapshot:bentokenfinance.eth"]
   },
   {
     id: "750",
@@ -13774,6 +13777,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "trisolarislabs",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1636045437,
+    governanceID: ["snapshot:trisolarislabs.eth"]
   },
   {
     id: "785",
@@ -19318,7 +19322,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TempusFinance",
     audit_links: ["https://www.coinspect.com/tempus-audit"],
     listedAt: 1639812368,
-    // governanceID: ["snapshot"]
+    governanceID: ["snapshot:tempusgov.eth"]
+
   },
   {
     id: "1046",

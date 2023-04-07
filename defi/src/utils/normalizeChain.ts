@@ -55,6 +55,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 42161,
+    governanceID: ["snapshot:arbitrumfoundation.eth"]
   },
   "Palm": {
     geckoId: null,
@@ -73,6 +74,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 10,
+    governanceID: ["snapshot:opcollective.eth"]
   },
   "Stacks": {
     geckoId: "blockstack",
@@ -144,6 +146,7 @@ export const chainCoingeckoIds = {
     cmcId: "1659",
     categories: ["EVM"],
     chainId: 100,
+    governanceID: ["snapshot:xdaistake.eth"]
   },
   "XdaiArb": {
     geckoId: null,
@@ -230,6 +233,7 @@ export const chainCoingeckoIds = {
     cmcId: "3945",
     categories: ["EVM"],
     chainId: 1666600000,
+    governanceID: ["snapshot:harmony-mainnet.eth"]
   },
   "Rootstock": {
     geckoId: "rootstock",
@@ -294,6 +298,7 @@ export const chainCoingeckoIds = {
     cmcId: "2087",
     categories: ["EVM"],
     chainId: 321,
+    governanceID: ["snapshot:kcc.eth"]
   },
   "Karura": {
     geckoId: "karura",
@@ -334,6 +339,7 @@ export const chainCoingeckoIds = {
     cmcId: "2777",
     categories: ["EVM"],
     chainId: 4689,
+    governanceID: ["snapshot:iotex.eth"]
   },
   "Ultra": {
     geckoId: "ultra",
@@ -369,6 +375,7 @@ export const chainCoingeckoIds = {
     cmcId: "3930",
     categories: ["EVM"],
     chainId: 108,
+    governanceID: ["snapshot:thundercorelabs.eth"]
   },
   "Lamden": {
     geckoId: "lamden",
@@ -409,6 +416,7 @@ export const chainCoingeckoIds = {
     cmcId: "2345",
     categories: ["EVM"],
     chainId: 269,
+    governanceID: ["snapshot:xinlian.eth"]
   },
   "GoChain": {
     geckoId: "gochain",
@@ -444,6 +452,7 @@ export const chainCoingeckoIds = {
     cmcId: "5634",
     categories: ["EVM"],
     chainId: 122,
+    governanceID: ["snapshot:fusedao.eth"]
   },
   "smartBCH": {
     geckoId: "bitcoin-cash",
@@ -479,6 +488,7 @@ export const chainCoingeckoIds = {
     cmcId: "2359",
     categories: ["EVM"],
     chainId: 333999,
+    governanceID: ["snapshot:polis-dao.eth"]
   },
   "ZYX": {
     geckoId: "zyx",
@@ -518,6 +528,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 1088,
+    governanceID: ["snapshot:metislayer2.eth"]
   },
   "Ubiq": {
     geckoId: "ubiq",
@@ -525,6 +536,7 @@ export const chainCoingeckoIds = {
     cmcId: "588",
     categories: ["EVM"],
     chainId: 8,
+    governanceID: ["snapshot:ubiq.eth"]
   },
   "Mixin": {
     geckoId: "mixin",
@@ -552,6 +564,7 @@ export const chainCoingeckoIds = {
     cmcId: "4747",
     categories: ["EVM"],
     chainId: 106,
+    governanceID: ["snapshot:velascommunity.eth"]
   },
   "Polkadot": {
     geckoId: "polkadot",
@@ -602,13 +615,6 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
-  },
-  "SmartBCH": {
-    geckoId: "bitcoin-cash",
-    symbol: "BCH",
-    cmcId: "1831",
-    categories: ["EVM"],
-    chainId: 10000,
   },
   "Godwoken": {
     geckoId: null,
@@ -679,6 +685,7 @@ export const chainCoingeckoIds = {
     cmcId: "5919",
     categories: ["EVM"],
     chainId: 82,
+    governanceID: ["snapshot:meter-mainnet.eth"]
   },
   "Oasis": {
     geckoId: "oasis-network",
@@ -711,6 +718,7 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
     chainId: 1284,
+    governanceID: ["snapshot:moonbeam-foundation.eth"]
   },
   "Astar": {
     geckoId: "astar",
@@ -733,6 +741,7 @@ export const chainCoingeckoIds = {
       types: ["skale"]
     },
     chainId: 836542336838601,
+    governanceID: ["snapshot:curiotools.eth"]
   },
   "SKALE": {
     geckoId: "skale",
@@ -768,6 +777,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Cosmos"],
     chainId: "9001",
+    governanceID: ["snapshot:evmosdao.eth"]
   },
   "Proton": {
     geckoId: "proton",
@@ -823,6 +833,7 @@ export const chainCoingeckoIds = {
     cmcId: "19819",
     categories: ["EVM"],
     chainId: 47805,
+    governanceID: ["snapshot:rei-network.eth"]
   },
   "Crab": {
     geckoId: "darwinia-crab-network",
@@ -872,6 +883,7 @@ export const chainCoingeckoIds = {
     cmcId: "18327",
     categories: ["EVM"],
     chainId: 534,
+    governanceID: ["snapshot:cndl.eth"]
   },
   "Bifrost": {
     geckoId: "bifrost-native-coin",
@@ -1030,6 +1042,7 @@ export const chainCoingeckoIds = {
     cmcId: "15399",
     categories: ["EVM"],
     chainId: 87,
+    governanceID: ["snapshot:novanetwork.eth"]
   },
   "Kintsugi": {
     geckoId: "kintsugi",
@@ -1147,6 +1160,7 @@ export const chainCoingeckoIds = {
     symbol: "VS",
     cmcId: "19083",
     categories: ["EVM"],
+    governanceID: ["snapshot:vnetwork.eth"]
   },
   "EthereumPoW": {
     geckoId: "ethereum-pow-iou",
@@ -1224,6 +1238,11 @@ export const chainCoingeckoIds = {
     geckoId: "starknet",
     symbol: "STRK",
     cmcId: null,
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    governanceID: ["snapshot:starknet.eth"]
   },
   "Dexit": {
     geckoId: "dexit-finance",
@@ -1354,6 +1373,7 @@ export const chainCoingeckoIds = {
     symbol: "RPG",
     cmcId: "12221",
     categories: ["EVM"],
+    governanceID: ["snapshot:rangersprotocoldao.eth"]
   },
   "Lung": {
     geckoId: null,

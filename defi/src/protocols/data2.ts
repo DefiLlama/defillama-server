@@ -30517,5 +30517,27 @@ const data2: Protocol[] = [
     module: "dummy.js",
     twitter: "MoonbeamNetwork",
   },
+  {
+    id: "2789",
+    name: "Thala Labs",
+    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+    symbol: "THL",
+    url: "https://www.thala.fi/",
+    description: "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/thala-labs.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "thala",
+    cmcId: "24268",
+    category: "CDP",
+    chains: ["Aptos"],
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    module: "move-dollar/index.js",
+    twitter: "ThalaLabs",
+    audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
+    listedAt: 1680889424
+  },
 ]
 export default data2;

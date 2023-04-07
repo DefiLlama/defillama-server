@@ -30450,7 +30450,7 @@ const data2: Protocol[] = [
     gecko_id: "arbitrum",
     cmcId: null,
     category: "Staking",
-    chains: ["arbitrum"],
+    chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",

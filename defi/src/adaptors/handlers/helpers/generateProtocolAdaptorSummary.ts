@@ -9,6 +9,7 @@ import { sendDiscordAlert } from "../../utils/notify"
 import { calcNdChange, getWoWStats, sumAllVolumes } from "../../utils/volumeCalcs"
 import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
+import { convertDataToUSD } from "./convertRecordDataCurrency"
 import generateCleanRecords from "./generateCleanRecords"
 import getCachedReturnValue from "./getCachedReturnValue"
 
@@ -58,7 +59,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
             if (AdaptorRecordTypeMapReverse[recordType]) {
-                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
+                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(await convertDataToUSD(cleanRecord.data, lastRecordRaw.timestamp)) : null
             }
         }
 

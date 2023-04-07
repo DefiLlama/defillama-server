@@ -10,7 +10,7 @@ async function storeActiveUsers() {
         .for(shuffleArray(userAdapters))
         .process(async ({ name, getUsers, id }) => {
             if(!id){
-                // No id to store
+                console.log(`No id for ${name}, skipping...`) // No id to store
                 return;
             }
             try {

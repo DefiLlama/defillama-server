@@ -46,7 +46,7 @@ const chainDataMap = chainData.reduce((acc, curr) => {
 
 export type IImportsMap = IJSON<IImportObj>
 
-//TODO: refactor
+//TODO: refactor and use list from helpers/collections/data.ts
 const addressMap = {
     'opensea-seaport-collections': seaportCollections,
     'opensea-v1-collections': seaportCollections,

@@ -454,7 +454,7 @@ export const chainCoingeckoIds = {
     chainId: 122,
     governanceID: ["snapshot:fusedao.eth"]
   },
-  "SmartBCH": {
+  "smartBCH": {
     geckoId: "bitcoin-cash",
     symbol: "BCH",
     cmcId: "1831",
@@ -605,6 +605,13 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
     chainId: 2020,
+  },
+  "SmartBCH": {
+    geckoId: "bitcoin-cash",
+    symbol: "BCH",
+    cmcId: "1831",
+    categories: ["EVM"],
+    chainId: 10000,
   },
   "zkSync Lite": {
     geckoId: null,

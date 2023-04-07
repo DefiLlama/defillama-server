@@ -1,4 +1,4 @@
-import { users as userAdapters } from "../dimension-adapters/users/routers/uniswap-v2";
+import userAdapters from "../dimension-adapters/users/list";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { PromisePool } from '@supercharge/promise-pool'
 import { shuffleArray } from "./utils/shared/shuffleArray";

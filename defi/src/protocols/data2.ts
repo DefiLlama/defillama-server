@@ -19003,7 +19003,7 @@ const data2: Protocol[] = [
     symbol: "MGP",
     url: "https://www.magpiexyz.io",
     description:
-      "Magpie is a platform built on BNB Chain to boost yields for liquidity providers and governance token holders of veTokenomics protocols.",
+      "Magpie is a Multi-chain DeFi platform providing Yield & veTokenomics boosting services.",
     chain: "Binance",
     logo: `${baseIconsUrl}/magpie.png`,
     audits: "2",
@@ -19011,7 +19011,7 @@ const data2: Protocol[] = [
     gecko_id: "magpie",
     cmcId: "22391",
     category: "Yield",
-    chains: ["Binance"],
+    chains: ["Binance", "Arbitrum"],
     module: "magpiexyz/index.js",
     twitter: "magpiexyz_io",
     forkedFrom: [],

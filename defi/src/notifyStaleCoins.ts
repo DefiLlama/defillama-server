@@ -3,7 +3,7 @@ import { sendMessage } from "./utils/discord";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import postgres from "postgres";
 
-const hours = 2;
+const hours = 2.5;
 
 const handler = async (_event: any) => {
   const webhookUrl = process.env.STALE_COINS_ADAPTERS_WEBHOOK!;

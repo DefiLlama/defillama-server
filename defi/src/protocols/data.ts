@@ -16339,6 +16339,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Tornado Cash"],
     listedAt: 1637727721,
   },
+  /*
   {
     id: "905",
     name: "TangoSwap",
@@ -16360,6 +16361,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637729126,
   },
+  */
   {
     id: "906",
     name: "Impossible Finance",

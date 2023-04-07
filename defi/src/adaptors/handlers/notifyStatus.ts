@@ -5,6 +5,9 @@ import { autoBackfill } from "../cli/backfillUtilities/backfillFunction";
 import loadAdaptorsData from "../data"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 
+const DISCORD_USER_0xtawa_ID = '<@!983314132411482143>'
+const DISCORD_ROLE_llama_ID = '<@&849669546448388107>'
+
 export default async (event: { type: string }) => {
     const response = await handler({
         pathParameters: { chain: undefined, type: event.type }
@@ -40,9 +43,9 @@ export default async (event: { type: string }) => {
         if (hasZeroValues)
             await sendDiscordAlert(`${zeroValueProtocols.length} adapters report 0 value dimension, this might be because the source haven't update the volume for today or because simply theres no activity on the protocol... Will retry later... \n${zeroValueProtocols.join(', ')}`, event.type)
         if (hasErrors)
-            await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@!983314132411482143>`, event.type, false)
-        if (hasErrors && errorsArr.length > 30)
-            await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... <@&849669546448388107>`, event.type, false)
+            await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... ${DISCORD_USER_0xtawa_ID}`, event.type, false)
+        if (hasErrors && errorsArr.length > 30 && (new Date()).getUTCHours() > 6)
+            await sendDiscordAlert(`${errorsArr.length} adapters failed to update... Retrying... ${DISCORD_ROLE_llama_ID}`, event.type, false)
         await autoBackfill(['', process.argv[1], event.type, 'all'])
     }
     else {

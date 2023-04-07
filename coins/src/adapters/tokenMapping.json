@@ -3838,6 +3838,12 @@
     }
   },
   "aptos": {
+    "0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615::thl_coin::thl": {
+      "name": "thala",
+      "decimals": "8",
+      "symbol": "THL",
+      "to": "coingecko:thala"
+    },
     "0x1::aptos_coin::AptosCoin": {
       "name": "aptos",
       "decimals": "8",

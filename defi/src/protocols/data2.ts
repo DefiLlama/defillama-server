@@ -30096,6 +30096,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "lsdx/index.js",
+    treasury: "lsdx-finance.js",
     twitter: "LSDxfinance",
     listedAt: 1680550578
   },

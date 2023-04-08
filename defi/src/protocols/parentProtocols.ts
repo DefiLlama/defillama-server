@@ -1296,13 +1296,24 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "Camelot",
     name: "Camelot",
-    url: "https://camelot.exchange/",
+    url: "https://www.thala.fi/",
     description: "Camelot is an ecosystem-focused and community-driven DEX built on Arbitrum. It has been built as a highly efficient and customizable protocol, allowing both builders and users to leverage our custom infrastructure for deep, sustainable, and adaptable liquidity. Camelot moves beyond the traditional design of DEXs to focus on offering a tailored approach that prioritises composability",
     logo: `${baseIconsUrl}/zenlink.png`,
     gecko_id: "camelot-token",
     cmcId: "22949",
     chains: [],
     twitter: "CamelotDEX",
+  },
+  {
+    id: "Thala Labs",
+    name: "Thala Labs",
+    url: "https://camelot.exchange/",
+    description: "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
+    logo: `${baseIconsUrl}/thala-labs.png`,
+    gecko_id: "thala",
+    cmcId: "24268",
+    chains: [],
+    twitter: "ThalaLabs",
   },
 ];
 

@@ -30524,7 +30524,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2789",
-    name: "Thala Labs",
+    name: "Thala Labs CDP",
     address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
     symbol: "THL",
     url: "https://www.thala.fi/",
@@ -30533,8 +30533,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/thala-labs.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "thala",
-    cmcId: "24268",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Aptos"],
     oracles: ["Pyth"],
@@ -30542,6 +30542,7 @@ const data2: Protocol[] = [
     module: "move-dollar/index.js",
     twitter: "ThalaLabs",
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
+    parentProtocol: "Thala Labs",
     listedAt: 1680889424
   },
   {
@@ -30649,6 +30650,29 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1680973947
+  },
+  {
+    id: "2795",
+    name: "ThalaSwap",
+    address: "aptos:0x7fd500c11216f0fe3095d0c4b8aa4d64a4e2e04f83758462f2b127255643615",
+    symbol: "THL",
+    url: "https://www.thala.fi/",
+    description: "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
+    chain: "Aptos",
+    logo: `${baseIconsUrl}/thala-labs.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aptos"],
+    oracles: [],
+    forkedFrom: [],
+    module: "thalaswap/index.js",
+    twitter: "ThalaLabs",
+    audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
+    parentProtocol: "Thala Labs",
+    listedAt: 1680980221
   },
 ]
 export default data2;

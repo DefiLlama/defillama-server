@@ -6,6 +6,7 @@ import loadAdaptorsData from "../data"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 
 const DISCORD_USER_0xtawa_ID = '<@!983314132411482143>'
+const DISCORD_USER_0xgnek_ID = '<@!736594617918554182>'
 const DISCORD_ROLE_llama_ID = '<@&849669546448388107>'
 
 export default async (event: { type: string }) => {
@@ -28,15 +29,12 @@ export default async (event: { type: string }) => {
     for (const [key, value] of Object.entries(parsedBody.totalDataChartBreakdown?.slice(-1)[0][1] ?? {})) {
         if (value === 0) zeroValueProtocols.push(key)
     }
-    //TMP till enable collection adapters
-    notIncluded = notIncluded.filter(m => !m.startsWith('0x'))
-    console.log(notIncluded.length)
     if (notIncluded.length > 0) {
         await sendDiscordAlert(`The following protocols haven't been included in the response: ${notIncluded.join(", ")}`, event.type)
-        await sendDiscordAlert(`${notIncluded.length} protocols haven't been included in the response <@!983314132411482143>`, event.type, false)
+        await sendDiscordAlert(`${notIncluded.length} protocols haven't been included in the response ${DISCORD_USER_0xtawa_ID} ${DISCORD_USER_0xgnek_ID}`, event.type, false)
     }
     else
-        await sendDiscordAlert(`All protocols have been ranked <@!983314132411482143>`, event.type, false)
+        await sendDiscordAlert(`All protocols have been ranked ${DISCORD_USER_0xtawa_ID}`, event.type, false)
     const hasErrors = errorsArr && errorsArr.length > 0
     const hasZeroValues = zeroValueProtocols.length > 0
     if (hasErrors || hasZeroValues) {

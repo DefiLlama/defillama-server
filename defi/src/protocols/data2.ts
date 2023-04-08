@@ -30560,5 +30560,26 @@ const data2: Protocol[] = [
     twitter: "IlluminateFi",
     listedAt: 1680902441
   },
+  {
+    id: "2791",
+    name: "TrainSwap",
+    address: "arbitrum:0x52DA160e9a8CeF972FF0A797D4902eD67589f64C",
+    symbol: "TRAIN",
+    url: "https://trainswap.io",
+    description: "Next Gen DEX platform on Arbitrum network",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/trainswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "trainswap/index.js",
+    twitter: "trainswap0",
+    listedAt: 1680918802
+  },
 ]
 export default data2;

@@ -1335,5 +1335,9 @@ export default {
     "SmarDex": {
         "enabled": true,
         "id": "2695"
+    },
+    "mm-finance-arbitrum": {
+        "enabled": true,
+        "id": "2754"
     }
 } as AdaptorsConfig

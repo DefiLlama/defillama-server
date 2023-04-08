@@ -1293,6 +1293,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ZenlinkPro",
   },
+  {
+    id: "Camelot",
+    name: "Camelot",
+    url: "https://camelot.exchange/",
+    description: "Camelot is an ecosystem-focused and community-driven DEX built on Arbitrum. It has been built as a highly efficient and customizable protocol, allowing both builders and users to leverage our custom infrastructure for deep, sustainable, and adaptable liquidity. Camelot moves beyond the traditional design of DEXs to focus on offering a tailored approach that prioritises composability",
+    logo: `${baseIconsUrl}/zenlink.png`,
+    gecko_id: "camelot-token",
+    cmcId: "22949",
+    chains: [],
+    twitter: "CamelotDEX",
+  },
 ];
 
 export default parentProtocols;

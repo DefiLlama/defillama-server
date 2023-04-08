@@ -19753,7 +19753,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2307",
-    name: "Camelot",
+    name: "Camelot V1",
     address: "arbitrum:0x3d9907F9a368ad0a51Be60f7Da3b97cf940982D8",
     symbol: "GRAIL",
     url: "https://camelot.exchange/",
@@ -19771,6 +19771,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://paladinsec.co/projects/camelot/"],
     oracles: [],
+    parentProtocol: "Camelot",
     listedAt: 1669242459
   },
   {
@@ -30584,6 +30585,28 @@ const data2: Protocol[] = [
     module: "trainswap/index.js",
     twitter: "trainswap0",
     listedAt: 1680918802
+  },
+  {
+    id: "2792",
+    name: "Camelot V2",
+    address: "arbitrum:0x3d9907F9a368ad0a51Be60f7Da3b97cf940982D8",
+    symbol: "GRAIL",
+    url: "https://camelot.exchange/",
+    description: "Concentrated liquidity AMM on Arbitrum",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/camelot.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "camelot-v2/index.js",
+    twitter: "CamelotDEX",
+    forkedFrom: ["Algebra DEX"],
+    oracles: [],
+    parentProtocol: "Camelot",
+    listedAt: 1680972349
   },
 ]
 export default data2;

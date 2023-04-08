@@ -8621,7 +8621,7 @@ const data2: Protocol[] = [
     cmcId: "19900",
     category: "Liquid Staking",
     chains: ["Cronos"],
-    oracles: ["Crypto.org API"],
+    oracles: ["Witnet"],
     forkedFrom: [],
     module: "argofinance/index.js",
     twitter: "ArgoProtocol",
@@ -11960,7 +11960,10 @@ const data2: Protocol[] = [
     category: "RWA",
     chains: ["Polygon", "Celo"],
     module: "toucan-protocol/index.js",
-    oracles: [],
+    oraclesByChain: {
+      polygon: [],
+      celo: ["Witnet"]
+    },
     forkedFrom: [],
     twitter: "ToucanProtocol",
     audit_links: ["https://docs.toucan.earth/protocol/resources/security"],
@@ -25858,7 +25861,7 @@ const data2: Protocol[] = [
     chains: ["Conflux"],
     module: "goledo/index.js",
     twitter: "GoledoFinance",
-    oracles: [],
+    oracles: ["Witnet"],
     forkedFrom: ["AAVE"],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Goledo-v1.0.pdf"],
     listedAt: 1677164241

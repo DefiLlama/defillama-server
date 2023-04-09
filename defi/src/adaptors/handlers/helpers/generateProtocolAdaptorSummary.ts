@@ -97,8 +97,8 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const lastDaysExtrapolation = ((yesterdaysCleanTimestamp - lastAvailableDataTimestamp) / ONE_DAY_IN_SECONDS) < 5
         const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap, lastAvailableDataTimestamp)
 
-        const storedChains = Object.keys(cleanLastReacord.data)
-        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null || storedChains.length < adapter.chains.length) {
+        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null || Object.keys(cleanLastReacord.data).length < adapter.chains.length) {
+            const storedChains = Object.keys(cleanLastReacord?.data ?? {})
             const missingChains = adapter.chains.filter(chain => !storedChains.includes(chain))
             if (onError) onError(new Error(`
 Adapter: ${adapter.name} [${adapter.id}]

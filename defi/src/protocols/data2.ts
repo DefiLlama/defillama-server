@@ -30674,5 +30674,26 @@ const data2: Protocol[] = [
     parentProtocol: "Thala Labs",
     listedAt: 1680980221
   },
+  {
+    id: "2796",
+    name: "Zks Miner",
+    address: null,
+    symbol: "-",
+    url: "https://zksminer.io/",
+    description: "Zks Miner is a DeFi protocol offering passive income from staking",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zks-miner.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "zks-miner/index.js",
+    twitter: "Zksminer",
+    listedAt: 1681001887
+  },
 ]
 export default data2;

@@ -5254,6 +5254,18 @@
       "symbol": "BLUES",
       "to": "coingecko#blueshift"
     },
+    "0x165dbb08de0476271714952c3c1f068693bd60d7": {
+      "name": "TAROT",
+      "decimals": "18",
+      "symbol": "TAROT",
+      "to": "coingecko#tarot"
+    },
+    "0x6c2c113c8ca73db67224ef4d8c8dfcec61e52a9c": {
+      "name": "LQDR",
+      "decimals": "18",
+      "symbol": "LQDR",
+      "to": "coingecko#liquiddriver"
+    },
     "0xc86c7c0efbd6a49b35e8714c5f59d99de09a225b": {
       "name": "Wrapped Kava",
       "decimals": "18",

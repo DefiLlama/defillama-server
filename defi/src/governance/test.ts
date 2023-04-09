@@ -9,5 +9,5 @@ main().then(() => {
 async function main() {
   // yeah, it would be per protocol, let me look up how to get median
   await updateSnapshots()
-  // await updateCompounds()
+  await updateCompounds()
 }

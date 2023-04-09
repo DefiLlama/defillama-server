@@ -1,4 +1,5 @@
 export default {
+  // wemix: require("./markets/uniswap"),
   dforce: require("./moneyMarkets/dforce"),
   minswap: require("./markets/minswap"),
   metronome: require("./other"),

@@ -58,6 +58,14 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "bsc",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x59b51516032241b796de4e495A90030C2d48BD1e",
+      "0x9B377bd7Db130E8bD2f3641E0E161cB613DA93De", //stWEMIX
+      "0x7D72b22a74A216Af4a002a1095C8C707d6eC1C5f",
+      false,
+      "wemix",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

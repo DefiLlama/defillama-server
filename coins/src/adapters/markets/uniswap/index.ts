@@ -153,6 +153,16 @@ export function tombswap(timestamp: number = 0) {
     timestamp,
   );
 }
+export function wemix(timestamp: number = 0) {
+  console.log("starting wemix");
+  return getTokenPrices(
+    "wemix",
+    "0xe1F36C7B919c9f893E2Cd30b471434Aa2494664A",
+    undefined,
+    undefined,
+    timestamp,
+  );
+}
 export function solidly(timestamp: number = 0) {
   console.log("starting solidly");
   return getTokenPrices(

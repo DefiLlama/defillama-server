@@ -2170,6 +2170,12 @@
       "symbol": "sMVLP",
       "to": "polygon:0x9f4f8bc00f48663b7c204c96b932c29ccc43a2e8"
     },
+    "0x64875aaa68d1d5521666c67d692ee0b926b08b2f": {
+      "name": "CelsiusX Wrapped ADA",
+      "decimals": "18",
+      "symbol": "cxADA",
+      "to": "coingecko#cardano"
+    },
     "0x4c28f48448720e9000907bc2611f73022fdce1fa": {
       "name": "Wrapped Ether",
       "decimals": "18",

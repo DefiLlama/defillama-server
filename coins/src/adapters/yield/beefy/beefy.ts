@@ -60,6 +60,7 @@ export const config = {
   arbitrum: {
     wantVaults: [
       '0x9dbbBaecACEDf53d5Caa295b8293c1def2055Adc', // mooGmxGLP
+      '0x9e75f8298e458b76382870982788988a0799195b', // mooCurveWSTETH
     ],
   },
   ethereum: {

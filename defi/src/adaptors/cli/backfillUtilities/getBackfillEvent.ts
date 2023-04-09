@@ -14,6 +14,7 @@ import { ICliArgs } from "./backfillFunction"
 import { Chain } from "@defillama/sdk/build/general"
 import { sumAllVolumes } from "../../utils/volumeCalcs"
 import { getStringArrUnique } from "../../utils/getAllChainsFromAdaptors"
+import { formatTimestampAsDate } from "../../../utils/date"
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
@@ -32,66 +33,44 @@ const KEYS_TO_CHECK: TKeysToCheck = {
 }
 
 export default async (adapter: string[], adaptorType: AdapterType, cliArguments: ICliArgs) => {
-    // comment dexs that you dont want to backfill
-    const DEXS_LIST: string[] = [
-        // 'mooniswap',
-        // 'balancer',
-        // 'bancor',
-        // 'champagneswap',
-        // 'curve',
-        // 'dodo',
-        // 'katana',
-        // 'klayswap',
-        // 'osmosis',
-        // 'pancakeswap',
-        // 'quickswap',
-        // 'raydium',
-        // 'saros',
-        // 'serum',
-        // 'soulswap',
-        // 'spiritswap',
-        // 'spookyswap',
-        // 'sushiswap',
-        // 'terraswap',
-        // 'traderjoe',
-        // 'uniswap',
-        // 'gmx',
-        // 'velodrome',
-        // 'woofi',
-        // 'hashflow',
-        // 'biswap',
-        // 'zipswap',
-        // 'wardenswap',
-        // 'apeswap',
-        // 'kyberswap',
-        // 'orca',
-        // 'pangolin',
-        // 'ref-finance',
-        // 'saber',
-        // 'solidly'
-        // 'yoshi-exchange',
-        // 'platypus'
-    ]
+    // declare event used to trigger backfill
     let event: ITriggerStoreVolumeEventHandler | undefined
 
-    const adapterName = adapter ?? DEXS_LIST[0]
+    // load all adapters data
+    const adapterName = adapter
     const adaptorsData = await loadAdaptorsData(adaptorType)
+
+    // build event with all adapters with missing data for specified timestamp
     if (adapterName[0] === 'all') {
+        // get timestamp to work with
         const timestamp = cliArguments.timestamp ?? getUniqStartOfTodayTimestamp(new Date()) - ONE_DAY_IN_SECONDS
+        // based on the type, check for default dataType
         const type = KEYS_TO_CHECK[adaptorType]
+        console.info(`Checking missing ${type} at ${formatTimestampAsDate(timestamp)}`)
         const adapters2Backfill: string[] = []
-        console.info("Checking missing type:", type, "at", timestamp)
+        // Go through all adapters checking if data for today is available
         for (const adapter of adaptorsData.default) {
+            // Query timestamp data from dynamo
             const volume = await getAdaptorRecord(adapter.id, type as AdaptorRecordType, adapter.protocolType, "TIMESTAMP", timestamp).catch(_e => { })
+            // if data is missing add 2 backfill
             if (!volume) {
                 adapters2Backfill.push(adapter.module)
             }
-            if (volume instanceof AdaptorRecord) {
+            else if (volume instanceof AdaptorRecord) {
                 const cleanRecord = volume.getCleanAdaptorRecord()
-                if (cleanRecord === null || sumAllVolumes(cleanRecord.data) === 0)
+                if (
+                    // if clean data (filtering errors, posible NaN values, event data) is null
+                    cleanRecord === null
+                    // or sum of timestamp's dimension is 0
+                    || sumAllVolumes(cleanRecord.data) === 0
+                    // or is missing a specific chain data
+                    || Object.keys(cleanRecord.data).length < adapter.chains.length
+                )
+                    // then 2 backfill
                     adapters2Backfill.push(adapter.module)
             }
         }
+        // build event
         event = {
             type: adaptorType,
             backfill: [{
@@ -103,6 +82,7 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             }]
         }
     }
+    // build event for specified adapters at specified timestamp
     else if (cliArguments.timestamp) {
         event = {
             type: adaptorType,
@@ -115,7 +95,9 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
             }]
         }
     }
+    // build event for historical backfill
     else {
+        // TODO: IMPROVE code
         let startTimestamp = 0
         // Looking for start time from adapter, if not found will default to the above
         const nowSTimestamp = Math.trunc((Date.now()) / 1000)

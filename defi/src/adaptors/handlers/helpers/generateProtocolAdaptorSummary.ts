@@ -95,12 +95,14 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
         const lastAvailableDataTimestamp = adaptorRecords[adaptorRecords.length - 1].timestamp
         const lastDaysExtrapolation = ((yesterdaysCleanTimestamp - lastAvailableDataTimestamp) / ONE_DAY_IN_SECONDS) < 5
-        const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap,lastAvailableDataTimestamp)
+        const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap, lastAvailableDataTimestamp)
 
-        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null) {
+        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null || Object.keys(cleanLastReacord.data).length < adapter.chains.length) {
+            const storedChains = Object.keys(cleanLastReacord?.data ?? {})
+            const missingChains = adapter.chains.filter(chain => !storedChains.includes(chain))
             if (onError) onError(new Error(`
 Adapter: ${adapter.name} [${adapter.id}]
-${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated
+${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated${missingChains.length > 0 ? ` with missing chains: ${missingChains.join(', ')}` : ''}
 ${formatTimestampAsDate(yesterdaysCleanTimestamp.toString())} <- Report date
 ${formatTimestampAsDate(lastAvailableDataTimestamp.toString())} <- Last date found
 ${sumAllVolumes(lastRecordRaw.data)} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}

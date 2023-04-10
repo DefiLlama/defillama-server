@@ -6,5 +6,18 @@
       "symbol": "META",
       "to": "coingecko#metadium"
     }
-  }
-}
+  },
+  "wemix": {
+    "0xc1be9a4d5d45beeacae296a7bd5fadbfc14602c4": {
+      "name": "Binance",
+      "decimals": "18",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0x2b58644b9f210ebb8fbf4c27066f9d1d97b03cbc": {
+      "name": "Wrapped REFLECT",
+      "decimals": "18",
+      "symbol": "wRFT",
+      "to": "coingecko#wrapped-reflect"
+    }
+}}

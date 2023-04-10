@@ -158,7 +158,10 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             parentProtocol: adapter.parentProtocol,
             latestFetchIsOk: adapter?.config?.latestFetchIsOk ?? true,
             versionKey: adapter.versionKey,
-            ...extraTypes
+            ...Object.entries(extraTypes).reduce((acc, [key, value]) => {
+                acc[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : value
+                return acc
+            }, {} as typeof extraTypes)
         }
     } catch (error) {
         // TODO: handle better errors

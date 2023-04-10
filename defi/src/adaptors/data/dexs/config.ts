@@ -4,6 +4,7 @@ export default {
     "balancer": {
         "enabled": true,
         "id": "116",
+        parentId: "Balancer",
         protocolsData: {
             v1: {
                 id: "116",
@@ -20,6 +21,7 @@ export default {
     "bancor": {
         "enabled": true,
         "id": "162",
+        parentId: "Bancor",
         protocolsData: {
             v3: {
                 id: "1995",
@@ -42,6 +44,7 @@ export default {
     "pancakeswap": {
         "enabled": true,
         "id": "194",
+        parentId: "PancakeSwap",
         protocolsData: {
             v1: {
                 "disabled": true,
@@ -66,6 +69,7 @@ export default {
     "uniswap": {
         "enabled": true,
         "id": "1",
+        parentId: "Uniswap",
         "protocolsData": {
             "v1": {
                 "enabled": true,
@@ -84,6 +88,7 @@ export default {
     "traderjoe": {
         "enabled": true,
         "id": "468",
+        parentId: "Trader Joe",
         protocolsData: {
             v1: {
                 enabled: true,
@@ -98,6 +103,7 @@ export default {
     "sushiswap": {
         "enabled": true,
         "id": "119",
+        parentId: "Sushi",
         protocolsData: {
             classic: {
                 enabled: true,
@@ -154,6 +160,7 @@ export default {
         "id": "1799"
     },
     "gmx": {
+        parentId: "337",
         "protocolsData": {
             "swap": {
                 "id": "337",
@@ -168,6 +175,7 @@ export default {
     "quickswap": {
         "enabled": true,
         "id": "306",
+        parentId: "Quickswap",
         protocolsData: {
             v2: {
                 id: "306",
@@ -199,6 +207,7 @@ export default {
     "kyberswap": {
         "enabled": true,
         "id": "127",
+        parentId: "KyberSwap",
         protocolsData: {
             classic: {
                 id: "127",
@@ -271,6 +280,7 @@ export default {
     "0x": {
         "enabled": true,
         "id": "2116",
+        parentId: "2116",
         protocolsData: {
             "0x RFQ": {
                 "id": "2116",
@@ -440,6 +450,7 @@ export default {
     "beamswap": {
         "enabled": true,
         "id": "1289",
+        parentId: "BeamSwap",
         protocolsData: {
             "classic": {
                 id: "1289",
@@ -539,6 +550,7 @@ export default {
     },
     "voltswap": {
         "enabled": true,
+        parentId: "Volt Finance",
         protocolsData: {
             v1: {
                 "disabled": true,
@@ -694,6 +706,7 @@ export default {
     "surfswap": {
         "enabled": true,
         "id": "1868",
+        parentId: "Surfswap",
         protocolsData: {
             classic: {
                 "id": "1868",
@@ -1150,6 +1163,7 @@ export default {
     "zyberswap": {
         "enabled": true,
         "id": "2467",
+        parentId: "ZyberSwap",
         protocolsData: {
             "v2": {
                 enabled: true,
@@ -1244,6 +1258,7 @@ export default {
     "dexible": {
         enabled: false,
         id: "2249",
+        parentId: "2249",
         protocolsData: {
             Dexible_v2: {
                 id: "2249",
@@ -1317,6 +1332,7 @@ export default {
         "id": "2760"
     },
     "morphex": {
+        parentId: "2662",
         "protocolsData": {
             "swap": {
                 "id": "2662",

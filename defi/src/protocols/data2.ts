@@ -30826,5 +30826,25 @@ const data2: Protocol[] = [
     audit_links: ["https://app.solidproof.io/projects/hashdao"],
     listedAt: 1681133595
   },
+  {
+    id: "2803",
+    name: "Native",
+    address: null,
+    symbol: "-",
+    url: "https://native.org",
+    description: "Native is crypto’s invisible DEX layer. Each DEX is owned by an individual project and embedded into that project’s UI, with access to liquidity across the entire network.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/native.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "native_fi",
+  },
 ]
 export default data2;

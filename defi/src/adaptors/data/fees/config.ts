@@ -56,6 +56,7 @@ export default {
         "id": "1839"
     },
     "compound": {
+        parentId: "Compound Finance",
         "enabled": true,
         "id": "114"
     },
@@ -76,6 +77,7 @@ export default {
         "id": "1027"
     },
     "frax-swap": {
+        parentId: "Frax Finance",
         "enabled": true,
         "id": "2121"
     },
@@ -257,6 +259,7 @@ export default {
         "id": "1700"
     },
     "woofi": {
+        parentId: "WOOFi",
         "enabled": true,
         "id": "1461"
     },
@@ -376,10 +379,12 @@ export default {
         "id": "551"
     },
     "spiritswap": {
+        parentId: "SpiritSwap",
         "enabled": true,
         "id": "311"
     },
     "apeswap": {
+        parentId: "ApeSwap",
         "enabled": true,
         "id": "398"
     },
@@ -424,6 +429,7 @@ export default {
         "id": "1571"
     },
     "mm-stableswap-polygon": {
+        parentId: "MM Finance",
         "enabled": true,
         "id": "2015"
     },
@@ -573,6 +579,7 @@ export default {
         "id": "2532"
     },
     "covo-finance": {
+        parentId: "Covo Finance",
         "enabled": true,
         "id": "2525"
     },
@@ -585,11 +592,13 @@ export default {
         "id": "2513"
     },
     "frax-ether": {
+        parentId: "Frax Finance",
         enabled: true,
         "id": "2221"
     },
     "frax-fpi": {
         enabled: true,
+        parentId: "Frax Finance",
         id: "2607"
     },
     "zora": {
@@ -632,6 +641,7 @@ export default {
         id: "2332"
     },
     "camelot": {
+        parentId: "Camelot",
         enabled: true,
         id: "2307"
     },

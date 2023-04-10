@@ -59,6 +59,9 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
   avax: {
     DUEL: "0xc1a49c0B9C10F35850bd8E15EaeF0346BE63E002",
   },
+  fantom: {
+    CoUSD: "0x0DeF844ED26409C5C46dda124ec28fb064D90D27",
+  },
 };
 
 const eulerTokens = [

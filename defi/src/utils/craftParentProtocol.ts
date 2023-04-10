@@ -4,6 +4,7 @@ import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
+import { getAvailableMetricsById } from "../adaptors/data/configs";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -370,6 +371,7 @@ export default async function craftParentProtocol({
       acc = [...acc, ...(curr.raises || [])];
       return acc;
     }, [] as Array<IRaise>),
+    //metrics: getAvailableMetricsById(parentProtocol.id),
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

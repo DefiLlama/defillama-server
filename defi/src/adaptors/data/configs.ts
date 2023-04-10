@@ -19,11 +19,22 @@ const configs = {
 
 export const getConfigByType = (type: string, module: string) => configs[type]?.[module]
 
-export const getAvailableMetricsByModule = (modulePath: string) => Object.entries(configs).reduce((acc, [metric, map]) => {
-    const [module] = modulePath.split("/")[0].split(/[/.]+/)
-    const isMetricEnabled = map?.[module]?.enabled
+const idMaps = {} as IJSON<IJSON<AdaptorsConfig[string]>>
+export const getAvailableMetricsById = (id: string) => Object.entries(configs).reduce((acc, [metric, map]) => {
+    if (!idMaps[metric]) {
+        idMaps[metric] = Object.values(map).reduce((acc, curr) => {
+            acc[curr.id] = curr
+            if (curr.protocolsData) {
+                Object.values(curr.protocolsData).forEach(protData => {
+                    acc[protData.id] = protData
+                })
+            }
+            return acc
+        }, {} as IJSON<AdaptorsConfig[string]>)
+    }
+    const isMetricEnabled = idMaps?.[metric]?.[id]?.enabled
     if (isMetricEnabled === true)
-    acc[metric] = isMetricEnabled
+        acc[metric] = isMetricEnabled
     return acc
 }, {} as IJSON<boolean>)
 

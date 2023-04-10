@@ -726,5 +726,9 @@ export default {
     "ens": {
         "enabled": true,
         "id": "2519"
+    },
+    "azuro": {
+        "enabled": true,
+        "id": "1892"
     }
 } as AdaptorsConfig

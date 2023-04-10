@@ -30633,7 +30633,7 @@ const data2: Protocol[] = [
   {
     id: "2794",
     name: "ko.one",
-    address: "era:0xDF130E43065012839f6bad5c92BEaC2a83Fb6C6e",
+    address: "era:0x24088C81f20A18cd482ab4B6ede6972f0d2A8B2C",
     symbol: "KO",
     url: "https://www.ko.one",
     description: "ko.one is a decentralized exchange (DEX) on zkSync Era",

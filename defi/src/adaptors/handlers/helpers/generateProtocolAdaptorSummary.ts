@@ -105,7 +105,7 @@ Adapter: ${adapter.name} [${adapter.id}]
 ${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated${missingChains.length > 0 ? ` with missing chains: ${missingChains.join(', ')}` : ''}
 ${formatTimestampAsDate(yesterdaysCleanTimestamp.toString())} <- Report date
 ${formatTimestampAsDate(lastAvailableDataTimestamp.toString())} <- Last date found
-${sumAllVolumes(lastRecordRaw.data)} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
+${sumAllVolumes(await convertDataToUSD(lastRecordRaw.data, lastRecordRaw.timestamp))} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
 Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
 `))
         }
@@ -147,7 +147,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             total30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total30d,
             total14dto7d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total14dto7d,
             total60dto30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total60dto30d,
-            totalAllTime: totalRecord ? sumAllVolumes(totalRecord.data) : null,
+            totalAllTime: totalRecord ? sumAllVolumes(await convertDataToUSD(totalRecord.data, totalRecord.timestamp)) : null,
             breakdown24h: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.breakdown24h,
             config: getConfigByType(adaptorType, adapter.module),
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),

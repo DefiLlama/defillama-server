@@ -16,7 +16,7 @@ import type { IProtocolResponse, IRaise } from "../types";
 import parentProtocols from "../protocols/parentProtocols";
 import fetch from "node-fetch";
 import { convertSymbols } from "./symbols/convert";
-import { getAvailableMetricsByModule } from "../adaptors/data/configs";
+import { getAvailableMetricsById } from "../adaptors/data/configs";
 
 function normalizeEthereum(balances: { [symbol: string]: number }) {
   if (typeof balances === "object") {
@@ -124,7 +124,7 @@ export default async function craftProtocol({
     chainTvls: {},
     tvl: [],
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
-    metrics: getAvailableMetricsByModule(protocolData.module),
+    metrics: getAvailableMetricsById(protocolData.id),
     mcap,
   };
 

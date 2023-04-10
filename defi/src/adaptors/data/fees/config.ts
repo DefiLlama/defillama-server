@@ -6,6 +6,7 @@ export default {
         "enabled": true,
         "startFrom": 1647648000,
         "id": "111",
+        parentId: "AAVE",
         protocolsData: {
             v1: {
                 "id": "1838",
@@ -28,6 +29,7 @@ export default {
     "balancer": {
         "enabled": true,
         "id": "116",
+        parentId: "Balancer",
         protocolsData: {
             v1: {
                 id: "116",
@@ -80,21 +82,19 @@ export default {
     "gmx": {
         "enabled": true,
         "id": "337",
-        "gmx": {
-            enabled: true,
-            protocolsData: {
-                "swap": {
-                    "id": "337",
-                    "enabled": true,
-                    "category": "Dexes",
-                    "displayName": "GMX - SWAP"
-                },
-                "derivatives": {
-                    displayName: "GMX - Derivatives",
-                    "id": "337",
-                    "enabled": true
-                }
+        parentId: "337",
+        protocolsData: {
+            "swap": {
+                "id": "337",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "GMX - SWAP"
             },
+            "derivatives": {
+                displayName: "GMX - Derivatives",
+                "id": "337",
+                "enabled": true
+            }
         },
     },
     "lido": {
@@ -120,6 +120,7 @@ export default {
     "opensea": {
         "enabled": true,
         "id": "2258",
+        parentId: "OpenSea",
         protocolsData: {
             v1: {
                 "id": "2630",
@@ -143,6 +144,7 @@ export default {
         "id": "383"
     },
     "pancakeswap": {
+        parentId: "PancakeSwap",
         protocolsData: {
             v1: {
                 "disabled": true,
@@ -168,6 +170,7 @@ export default {
     "quickswap": {
         "enabled": true,
         "id": "306",
+        parentId: "Quickswap",
         protocolsData: {
             v2: {
                 id: "306",
@@ -191,6 +194,7 @@ export default {
     "sushiswap": {
         "enabled": true,
         "id": "119",
+        parentId: "Sushi",
         protocolsData: {
             classic: {
                 id: "119",
@@ -213,6 +217,7 @@ export default {
     "traderjoe": {
         "enabled": true,
         "id": "468",
+        parentId: "Trader Joe",
         protocolsData: {
             v1: {
                 id: "468",
@@ -227,6 +232,7 @@ export default {
     "uniswap": {
         "enabled": true,
         "id": "1",
+        parentId: "Uniswap",
         "protocolsData": {
             "v1": {
                 "enabled": true,
@@ -472,6 +478,7 @@ export default {
     "kyberswap": {
         "enabled": true,
         "id": "127",
+        parentId: "KyberSwap",
         protocolsData: {
             classic: {
                 id: "127",
@@ -596,6 +603,7 @@ export default {
     "zyberswap": {
         enabled: true,
         id: "2467",
+        parentId: "ZyberSwap",
         protocolsData: {
             "v2": {
                 id: "2467",

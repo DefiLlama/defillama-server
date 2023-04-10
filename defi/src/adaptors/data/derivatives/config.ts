@@ -6,6 +6,7 @@ export default {
         "id": "2299"
     },
     "gmx": {
+        parentId: "337",
         "protocolsData": {
             "derivatives": {
                 displayName: "GMX - Derivatives",
@@ -37,6 +38,7 @@ export default {
         "id": "2548"
     },
     "morphex": {
+        parentId: "2662",
         "protocolsData": {
             "derivatives": {
                 displayName: "Morphex - Derivatives",

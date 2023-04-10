@@ -4,9 +4,9 @@ const normalizedChainReplacements = {
   "wanchain": "wan",
   "kucoin": "kcc",
   "terra classic": "terra",
-  "nova network": "nova" ,
-  "godwokenv1" : "godwoken_v1",
-  "arbitrum nova" : "arbitrum_nova",
+  "nova network": "nova",
+  "godwokenv1": "godwoken_v1",
+  "arbitrum nova": "arbitrum_nova",
   "zksync era": "era",
   "polygon zkevm": "polygon_zkevm"
 } as {
@@ -18,11 +18,11 @@ export function normalizeChain(chain: string) {
   return normalizedChainReplacements[normalizedChain] ?? normalizedChain;
 }
 
-export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string){
+export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
   return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield");
 }
 
-export function isExcludedFromChainTvl(category?: string){
+export function isExcludedFromChainTvl(category?: string) {
   return category === "RWA";
 }
 
@@ -1100,10 +1100,10 @@ export const chainCoingeckoIds = {
     cmcId: "21516",
     categories: ["EVM", "Cosmos"],
   },
-    "Ripple": {
-      geckoId: "ripple",
-      symbol: "XRP",
-      cmcId: "52",
+  "Ripple": {
+    geckoId: "ripple",
+    symbol: "XRP",
+    cmcId: "52",
   },
   "GodwokenV1": {
     geckoId: null,
@@ -1423,7 +1423,7 @@ export const chainCoingeckoIds = {
     },
     chainId: 1101
   },
-  
+
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1472,7 +1472,7 @@ export function transformNewChainName(chain: string) {
     case "arbitrum_nova":
       return "Arbitrum Nova"
     case "Milkomeda":
-        return "Milkomeda C1"
+      return "Milkomeda C1"
     case "Elrond":
       return "MultiversX"
     case "RSK":
@@ -1503,7 +1503,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kcc":
       return useNewChainNames ? "KCC" : "Kucoin"
     case "okexchain":
-      return useNewChainNames ? "OKXChain": "OKExChain"
+      return useNewChainNames ? "OKXChain" : "OKExChain"
     case "xdai":
       return useNewChainNames ? "Gnosis" : "xDai"
     case "cosmos":
@@ -1513,7 +1513,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "nova":
       return useNewChainNames ? "Nova Network" : "Nova Network"
     case "godwoken_v1":
-      return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
+      return useNewChainNames ? "GodwokenV1" : "GodwokenV1"
     case "elrond":
       return useNewChainNames ? "MultiversX" : "Elrond"
     case "rsk":
@@ -1587,7 +1587,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
-        return useNewChainNames ? "zkSync Lite": "zkSync"
+      return useNewChainNames ? "zkSync Lite" : "zkSync"
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -1821,4 +1821,14 @@ export function getDisplayChain(chains: string[]) {
   } else {
     return chains[0];
   }
+}
+
+const chainIdToNameMap = {} as {
+  [id: string]: string
+}
+
+Object.entries(chainCoingeckoIds).forEach(([chain, obj]) => chainIdToNameMap[obj.chainId + ''] = chain)
+
+export function getChainNameFromId(id: string | number | undefined) {
+  return chainIdToNameMap['' + id]
 }

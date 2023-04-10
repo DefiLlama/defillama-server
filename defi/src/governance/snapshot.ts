@@ -4,7 +4,7 @@ import { graphURL, metadataQuery, proposalQuery, } from './snapshotQueries'
 import axios from 'axios'
 import { getSnapshot, setSnapshot, getSnapshotOverview, setSnapshotOverview, } from './cache'
 import { GovCache, Proposal, } from './types'
-import { updateStats, getGovernanceSources, } from './utils'
+import { updateStats, getGovernanceSources, getChainNameFromId, } from './utils'
 
 export function getSnapshotIds() {
   const snapshotIds = new Set()
@@ -66,6 +66,7 @@ export async function updateSnapshots() {
     const fetchOnlyProposals: string[] = []
     metadataAll.forEach((v: any) => {
       idMap[v.id].metadata = v
+      if (v.network) v.chainName = getChainNameFromId(v.network)
       idMap[v.id].id = v.id
       if (!idMap[v.id].proposals) firstFetchIds.push(v.id)
       else fetchOnlyProposals.push(v.id)

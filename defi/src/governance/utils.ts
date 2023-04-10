@@ -4,6 +4,7 @@ import { GovCache, Proposal, } from './types'
 import protocols, { Protocol } from '../protocols/data'
 import parentProtocols from '../protocols/parentProtocols'
 import { chainCoingeckoIds } from '../utils/normalizeChain'
+export { getChainNameFromId } from '../utils/normalizeChain'
 
 export function getGovernanceSources() {
   return [
@@ -42,6 +43,7 @@ export function updateStats(cache: GovCache, overview: any, _id: any) {
   stats.successfulProposals = proposalsArray.filter(isSuccessfulProposal).length
   stats.followersCount = metadata.followersCount
   stats.name = metadata.name
+  stats.chainName = metadata.chainName
   stats.id = metadata.id
   stats.strategyCount = metadata.strategies.length
   stats.followersCount = metadata.followersCount

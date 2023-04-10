@@ -1,7 +1,7 @@
 import { getCompound, setCompound, getCompoundOverview, setCompoundOverview, } from './cache'
 import { CompoundCache, CompoundProposal, } from './types'
 import { getLogs, } from './getLogs'
-import { updateStats, toHex, getGovernanceSources } from './utils'
+import { updateStats, toHex, getGovernanceSources, getChainNameFromId } from './utils'
 import * as sdk from '@defillama/sdk'
 import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { getProvider } from '@defillama/sdk/build/general'
@@ -20,7 +20,7 @@ export async function updateCompounds() {
   const compoundIds = getCompoundIds(Object.keys(overview))
   // const compoundIds = ['ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3']
   console.log('compound gov#', compoundIds.length)
-  const idChunks = sliceIntoChunks(compoundIds, 5)
+  const idChunks = sliceIntoChunks(compoundIds, 8)
 
   for (const ids of idChunks) {
     await Promise.all(ids.map(updateCache))
@@ -41,6 +41,8 @@ export async function updateCompounds() {
 
     try {
       await updateMetadata()
+      cache.metadata.network = '' + api.chainId
+      cache.metadata.chainName = getChainNameFromId(cache.metadata.network)
       const logMap = await getProposalLogs()
 
       const missingIds: string[] = []

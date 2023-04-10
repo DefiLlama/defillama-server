@@ -1355,5 +1355,9 @@ export default {
     "mm-finance-arbitrum": {
         "enabled": true,
         "id": "2754"
+    },
+    "native": {
+        "enabled": true,
+        "id": "2803"
     }
 } as AdaptorsConfig

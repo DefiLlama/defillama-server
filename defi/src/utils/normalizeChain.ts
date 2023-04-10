@@ -1423,6 +1423,12 @@ export const chainCoingeckoIds = {
     },
     chainId: 1101
   },
+  "Meta": {
+    geckoId: "metadium",
+    symbol: "META",
+    cmcId: "3418",
+    categories: ["EVM"],
+  },
 
 } as unknown as {
   [chain: string]: {
@@ -1810,6 +1816,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "zkSync Era"
     case "polygon_zkevm":
       return "Polygon zkEVM"
+    case "meta":
+      return "Meta"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

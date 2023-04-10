@@ -632,6 +632,12 @@ functions:
     memorySize: 3000
     events:
       - schedule: cron(01 0 * * ? *)
+  storeGovernance:
+    handler: src/storeGovernance.default
+    timeout: 900
+    memorySize: 3000
+    events:
+      - schedule: cron(01 0 * * ? *)
   storeActiveUsers:
     handler: src/storeActiveUsers.default
     timeout: 900

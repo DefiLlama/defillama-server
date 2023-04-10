@@ -5,8 +5,8 @@ import { autoBackfill } from "../cli/backfillUtilities/backfillFunction";
 import loadAdaptorsData from "../data"
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 
-const DISCORD_USER_0xtawa_ID = '<@!983314132411482143>'
-const DISCORD_USER_0xgnek_ID = '<@!736594617918554182>'
+export const DISCORD_USER_0xtawa_ID = '<@!983314132411482143>'
+export const DISCORD_USER_0xgnek_ID = '<@!736594617918554182>'
 const DISCORD_ROLE_llama_ID = '<@&849669546448388107>'
 
 export default async (event: { type: string }) => {

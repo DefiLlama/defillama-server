@@ -26,6 +26,7 @@ export default {
         "id": "2326"
     },
     "metavault.trade": {
+        parentId: "Metavault",
         "enabled": true,
         "id": "1801"
     },

@@ -1418,7 +1418,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "Polygon",
+      chain: "Ethereum",
       types: ["L2", "gas"]
     },
     chainId: 1101

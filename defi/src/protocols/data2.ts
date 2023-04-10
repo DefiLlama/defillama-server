@@ -21377,7 +21377,7 @@ const data2: Protocol[] = [
     description:
       "Effortlessly stake your crypto assets with stake.link it is easy to use, secure liquid staking protocol.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/stake.linkliquid.png`,
+    logo: `${baseIconsUrl}/stake.link-liquid.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "stake-link",

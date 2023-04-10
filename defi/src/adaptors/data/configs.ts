@@ -23,7 +23,7 @@ const idMaps = {} as IJSON<IJSON<AdaptorsConfig[string]>>
 export const getAvailableMetricsById = (id: string) => Object.entries(configs).reduce((acc, [metric, map]) => {
     if (!idMaps[metric]) {
         idMaps[metric] = Object.values(map).reduce((acc, curr) => {
-            acc[curr.id] = curr
+            acc[curr.parentId ?? curr.id] = curr
             if (curr.protocolsData) {
                 Object.values(curr.protocolsData).forEach(protData => {
                     acc[protData.id] = protData

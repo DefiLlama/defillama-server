@@ -371,7 +371,7 @@ export default async function craftParentProtocol({
       acc = [...acc, ...(curr.raises || [])];
       return acc;
     }, [] as Array<IRaise>),
-    //metrics: getAvailableMetricsById(parentProtocol.id),
+    metrics: getAvailableMetricsById(parentProtocol.id),
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

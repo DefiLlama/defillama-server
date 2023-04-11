@@ -285,6 +285,9 @@ functions:
       - http:
           path: chains
           method: get
+      - http:
+          path: v2/chains
+          method: get
   chains2:
     handler: src/getFormattedChains.default
     timeout: 30

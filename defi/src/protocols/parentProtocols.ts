@@ -1315,6 +1315,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ThalaLabs",
   },
+  {
+    id: "stake.link",
+    name: "stake.link",
+    url: "https://stake.link",
+    description: "stake.link is a diversified liquid staking protocol powered by fifteen of the most experienced and reliable infrastructure providers in Web3",
+    logo: `${baseIconsUrl}/stake.link.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "stakedotlink",
+  },
+  {
+    id: "Dove Swap",
+    name: "Dove Swap",
+    url: "https://swap.dovish.finance",
+    description: "Bringing innovative DeFi to the zkEVM space.",
+    logo: `${baseIconsUrl}/dove-swap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "DovishFi",
+  },
 ];
 
 export default parentProtocols;

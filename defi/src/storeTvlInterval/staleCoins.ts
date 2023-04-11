@@ -8,6 +8,9 @@ export interface StaleCoins {
     }
 }
 
+const PGP = pgp();
+let db: any = null;
+
 export function addStaleCoin(staleCoins: StaleCoins, address: string, symbol: string, lastUpdate: number) {
     if (staleCoins[address] === undefined) {
         staleCoins[address] = {
@@ -20,8 +23,7 @@ export function addStaleCoin(staleCoins: StaleCoins, address: string, symbol: st
 export async function storeStaleCoins(staleCoins: StaleCoins) {
   try {
     if (!process.env.COINS_DB) return;
-    const PGP = pgp();
-    const db = PGP(process.env.COINS_DB!);
+    if (db == null) db = PGP(process.env.COINS_DB!);
     const recentlyUpdatedCoins = await readCoins(staleCoins, db);
     const filteredStaleCoins = Object.keys(staleCoins)
       .filter((key) => !recentlyUpdatedCoins.includes(key))
@@ -44,8 +46,8 @@ async function readCoins(staleCoins: StaleCoins, db: any): Promise<string[]> {
         id, 
         time
       FROM stalecoins
-      WHERE id in ($1:csv) and time > ${time - 300}`,
-      [Object.keys(staleCoins)],
+      WHERE id in ($1:csv) and time > ${time - 3600}`,
+      [Object.keys(staleCoins).map((c: string) => c.toLowerCase())],
     )
   ).map((e: any) => e.id);
 }

@@ -30139,7 +30139,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Launchpad",
+    category: "Dexes",
     chains: ["zkSync Era"],
     oracles: [],
     forkedFrom: [],

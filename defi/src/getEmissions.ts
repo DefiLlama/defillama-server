@@ -43,7 +43,7 @@ const fetchProtocolEmissionData = async (protocol: string) => {
 
   const coin: any = Object.values(tokenPrice?.coins ?? {})[0]
   const mcap = mcapRes?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0
-  const float = (isNaN(coin.price) || mcap == 0) ? null : mcap / coin.price
+  const float = (coin == null ||  isNaN(coin.price) || mcap == 0) ? null : mcap / coin.price
   const proportion = float == null ? null : (formattedData[nextEventIndex][1] - circSupply) / float
 
   const nextEvent =

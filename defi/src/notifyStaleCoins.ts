@@ -6,7 +6,6 @@ import postgres from "postgres";
 const hours = 2.5;
 
 const handler = async (_event: any) => {
-/*
   const webhookUrl = process.env.STALE_COINS_ADAPTERS_WEBHOOK!;
   const now = getCurrentUnixTimestamp();
   const sql = postgres(process.env.COINS_DB!);
@@ -47,7 +46,6 @@ const handler = async (_event: any) => {
 
   promises.push(sendMessage(message, webhookUrl, true));
   await Promise.all(promises);
-*/
 };
 
 export default wrapScheduledLambda(handler);

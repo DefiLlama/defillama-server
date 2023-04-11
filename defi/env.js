@@ -29,6 +29,7 @@ module.exports = {
   BIT_QUERY_API_KEY: process.env.BIT_QUERY_API_KEY,
   LOFTY_API: process.env.LOFTY_API,
   COVALENT_KEY: process.env.COVALENT_KEY,
+  OLYMPUS_GRAPH_API_KEY: process.env.OLYMPUS_GRAPH_API_KEY,
   VOLUMES_WEBHOOK: process.env.VOLUMES_WEBHOOK,
   FEES_WEBHOOK: process.env.FEES_WEBHOOK,
   ZEROx_API_KEY: process.env.ZEROx_API_KEY,

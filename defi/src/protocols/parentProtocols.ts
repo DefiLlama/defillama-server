@@ -737,6 +737,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "inverse-finance",
     cmcId: "8720",
     chains: [],
+    governanceID: ["compound:ethereum:0x35d9f4953748b318f18c30634ba299b237eedfff"],
     twitter: "InverseFinance",
   },
   {

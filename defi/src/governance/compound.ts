@@ -60,8 +60,8 @@ export async function updateCompounds() {
 
       await updateProposals(missingIds)
 
-      updateStats(cache, overview, cache.id)
       cache.metadata.proposalsCount = Object.values(cache.proposals).length
+      updateStats(cache, overview, cache.id)
       return setCompound(cache.id, cache)
 
 

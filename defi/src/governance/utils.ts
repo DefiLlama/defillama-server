@@ -47,6 +47,7 @@ export function updateStats(cache: GovCache, overview: any, _id: any) {
   stats.id = metadata.id
   stats.strategyCount = metadata.strategies.length
   stats.followersCount = metadata.followersCount
+  stats.highestTotalScore = highestTotalScore
 
   proposalsArray.forEach(i => {
     if (!i.start) i.start = 0

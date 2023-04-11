@@ -1144,7 +1144,7 @@ const data2: Protocol[] = [
       "https://github.com/elysia-dev/elyfi-token/tree/main/audit"
     ],
     listedAt: 1645646372,
-    governanceID: ["snapshot:elyfi-bsc.eth"]
+    governanceID: ["snapshot:elyfi-bsc.eth","compound:ethereum:0x0c54629266d7fa40b4bfaf1640ebc2cd093866c3",]
   },
   {
     id: "1460",
@@ -11177,6 +11177,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
+    governanceID: ["compound:ethereum:0x6853f8865ba8e9fbd9c8cce3155ce5023fb7eeb0"],
     module: "sudoswap/index.js",
     audit_links: ["https://github.com/sudoswap/audits"],
     twitter: "sudoswap",

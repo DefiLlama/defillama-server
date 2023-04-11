@@ -3072,7 +3072,7 @@ const data: Protocol[] = [
     twitter: "feiprotocol",
     audit_links: ["https://docs.fei.money/audit"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:fei.eth"]
+    governanceID: ["snapshot:fei.eth", "compound:ethereum:0x0bef27feb58e857046d630b2c03dfb7bae567494"]
   },
   {
     id: "256",
@@ -3990,6 +3990,7 @@ const data: Protocol[] = [
     cmcId: "9322",
     category: "Lending",
     chains: ["Ethereum"],
+    governanceID: ["compound:ethereum:0x593b443da1ef8be060c4b7e793998ed743621340"],
     module: "bond-appetit.js",
     twitter: "DeFiBonds",
     audit_links: [

@@ -63,6 +63,7 @@ jobs:
           CRONOS_RPC: ${{ secrets.CRONOS_RPC }}
           LOFTY_API: ${{ secrets.LOFTY_API }}
           COVALENT_KEY: ${{ secrets.COVALENT_KEY }}
+          OLYMPUS_GRAPH_API_KEY: ${{ secrets.OLYMPUS_GRAPH_API_KEY }}
           OUTDATED_WEBHOOK: ${{ secrets.OUTDATED_WEBHOOK }}
           HOURLY_OUTDATED_WEBHOOK: ${{ secrets.HOURLY_OUTDATED_WEBHOOK }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

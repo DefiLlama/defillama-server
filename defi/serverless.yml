@@ -405,6 +405,11 @@ functions:
       - http:
           path: sortedTokenlist
           method: get
+  storeSortedTokenlist:
+    handler: src/storeSortedTokenlist.default
+    timeout: 60
+    events:
+      - schedule: cron(43 * * * ? *)
   yieldsConfig:
     handler: src/getYieldsConfig.default
     timeout: 30

@@ -43,7 +43,8 @@ function getCGMarketsDataURLs() {
   return urls;
 }
 
-async function getAllCGTokensList(): Promise<Array<{ name: string; symbol: string; image: string }>> {
+
+export async function getAllCGTokensList(): Promise<Array<{ name: string; symbol: string; image: string }>> {
   const data = await arrayFetcher(getCGMarketsDataURLs());
 
   return (

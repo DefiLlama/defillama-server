@@ -160,6 +160,10 @@ export default {
             stableswap: {
                 "enabled": true,
                 "id": "2529"
+            },
+            v3: {
+                "enabled": true,
+                "id": "2769"
             }
         },
         "enabled": true,

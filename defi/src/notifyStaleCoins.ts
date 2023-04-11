@@ -27,13 +27,13 @@ const handler = async (_event: any) => {
   );
 
   const promises = [];
-  if (recentlyStaleCoins.length > 100)
-    promises.push(
-      sendMessage(
-        `At least 100 coins have just gone stale!!`,
-        process.env.TEAM_WEBHOOK,
-      ),
-    );
+  // if (recentlyStaleCoins.length > 100)
+  //   promises.push(
+  //     sendMessage(
+  //       `At least 100 coins have just gone stale!!`,
+  //       process.env.TEAM_WEBHOOK,
+  //     ),
+  //   );
 
   const message = (staleCoins as any[])
     .map(

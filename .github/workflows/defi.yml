@@ -94,3 +94,4 @@ jobs:
           DL_NEWS_ACCESS_TOKEN: ${{ secrets.DL_NEWS_ACCESS_TOKEN }}
           COINS_DB: ${{ secrets.COINS_DB }}
           ACCOUNTS_DB: ${{ secrets.ACCOUNTS_DB }}
+          CG_KEY: ${{ secrets.CG_KEY }}

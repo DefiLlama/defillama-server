@@ -398,18 +398,13 @@ functions:
       - http:
           path: config
           method: get
-  sortedTokenlist:
-    handler: src/getSortedTokenlist.default
-    timeout: 30
-    events:
-      - http:
-          path: sortedTokenlist
-          method: get
   storeSortedTokenlist:
     handler: src/storeSortedTokenlist.default
     timeout: 60
     events:
       - schedule: cron(43 * * * ? *)
+    environment:
+      CG_KEY: ${env:CG_KEY}
   yieldsConfig:
     handler: src/getYieldsConfig.default
     timeout: 30

@@ -59,6 +59,10 @@ export default {
                 "enabled": true,
                 "id": "2529",
                 startFrom: 1663718400
+            },
+            v3: {
+                "enabled": true,
+                "id": "2769"
             }
         },
     },

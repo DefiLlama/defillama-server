@@ -217,6 +217,14 @@ functions:
       - http:
           path: protocol/{protocol}
           method: get
+  protocol2:
+    handler: src/getProtocol2.default
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: protocol2/{protocol}
+          method: get
   tokenProtocols:
     handler: src/getTokenInProtocols.default
     timeout: 30

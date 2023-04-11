@@ -24,7 +24,7 @@
     "umee": {
       "0B1D3A663E6D41C7B1CFC78DB41C829A3B8329D396B47737445AFF5E0E9DA125": {
         "name": "Akash",
-        "decimals": "6",
+        "decimals": "18",
         "symbol": "AKT",
         "to": "coingecko#akash-network"
       },
@@ -36,13 +36,13 @@
       },
     "88178A7DF538EF97AC4585C949304C3DE4FC04AA91F8F1372281E921D3F44A0D": {
         "name": "JUNO",
-        "decimals": "6",
+        "decimals": "18",
         "symbol": "JUNO",
         "to": "coingecko#juno-network"
       },
    "452372B8214E22C625E98958C5EDFB939C48E6590E40B711E9D30206EF8EDC9B": {
         "name": "Terra-2",
-        "decimals": "6",
+        "decimals": "18",
         "symbol": "Luna",
         "to": "coingecko#terra-luna-2"
       }}

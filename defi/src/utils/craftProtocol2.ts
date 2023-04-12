@@ -190,9 +190,9 @@ export default async function craftProtocol({
     historicalUsdTokenTvl,
     historicalTokenTvl,
   ] = await Promise.all([
-    fetchFrom(hourlyTvl(protocolData.id), lastTimestamp),
-    fetchFrom(hourlyUsdTokensTvl(protocolData.id), lastTimestamp),
-    fetchFrom(hourlyTokensTvl(protocolData.id), lastTimestamp),
+    fetchFrom((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id), lastTimestamp),
+    fetchFrom((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id), lastTimestamp),
+    fetchFrom((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id), lastTimestamp),
   ])
 
   const module = await importAdapter(protocolData);

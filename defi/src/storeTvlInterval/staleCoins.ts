@@ -2,22 +2,27 @@ import { getCurrentUnixTimestamp } from "../utils/date";
 import pgp from "pg-promise";
 
 export interface StaleCoins {
-    [address: string]: {
-        symbol: string,
-        lastUpdate: number,
-    }
+  [address: string]: {
+    symbol: string;
+    lastUpdate: number;
+  };
 }
 
 const PGP = pgp();
 let db: any = null;
 
-export function addStaleCoin(staleCoins: StaleCoins, address: string, symbol: string, lastUpdate: number) {
-    if (staleCoins[address] === undefined) {
-        staleCoins[address] = {
-            symbol,
-            lastUpdate
-        }
-    }
+export function addStaleCoin(
+  staleCoins: StaleCoins,
+  address: string,
+  symbol: string,
+  lastUpdate: number,
+) {
+  if (staleCoins[address] === undefined) {
+    staleCoins[address] = {
+      symbol,
+      lastUpdate,
+    };
+  }
 }
 
 export async function storeStaleCoins(staleCoins: StaleCoins) {
@@ -61,14 +66,16 @@ async function writeCoins(
 ): Promise<void> {
   const time = getCurrentUnixTimestamp();
 
-  const insertData = Object.entries(staleCoins).map(([pk, details]) => ({
-    id: pk,
-    time,
-    address: pk.split(":")[1],
-    lastupdate: details.lastUpdate,
-    chain: pk.split(":")[0],
-    symbol: details.symbol,
-  }));
+  const insertData = Object.entries(staleCoins)
+    .map(([pk, details]) => ({
+      id: pk,
+      time,
+      address: pk.split(":")[1],
+      lastupdate: details.lastUpdate,
+      chain: pk.split(":")[0],
+      symbol: details.symbol,
+    }))
+    .filter((c: any) => c.lastupdate > time - 3600 * 24);
 
   const columnSets = new PGP.helpers.ColumnSet(
     ["id", "time", "address", "lastupdate", "chain", "symbol"],

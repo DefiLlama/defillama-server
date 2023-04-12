@@ -1322,10 +1322,11 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://stake.link",
     description: "stake.link is a diversified liquid staking protocol powered by fifteen of the most experienced and reliable infrastructure providers in Web3",
     logo: `${baseIconsUrl}/stake.link.png`,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "stake-link",
+    cmcId: "22906",
     chains: [],
     twitter: "stakedotlink",
+    governanceID: ["snapshot:stakedotlink.eth"]
   },
   {
     id: "Dove Swap",

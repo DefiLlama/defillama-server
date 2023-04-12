@@ -33,7 +33,7 @@ export async function updateCompounds() {
     const [chain, address] = id.split(':')
     const cache = await getCompound(id)
     if (!cache.metadata) cache.metadata = { id, chain, address }
-    if (!cache.proposals) cache.proposals = {}
+    cache.proposals = {}
     const timestamp = Math.floor(Date.now() / 1e3)
     const api = new sdk.ChainApi({ chain, timestamp, })
     cache.id = id
@@ -61,14 +61,9 @@ export async function updateCompounds() {
       await updateProposals(missingIds)
 
       cache.metadata.proposalsCount = Object.values(cache.proposals).length
+      fixDecimals()
       updateStats(cache, overview, cache.id)
       return setCompound(cache.id, cache)
-
-
-      // function isInvalidProposal(prop: CompoundProposal) {
-      //   return prop.eta === 0 && prop.startBlock === 0 && prop.endBlock === 0
-      // }
-
 
       async function updateMetadata() {
         const metadata = cache.metadata
@@ -77,23 +72,14 @@ export async function updateCompounds() {
         try {
           name = await api.call({ target, abi: 'string:name' })
         } catch (error) { }
-        // const [name, ,] = await Promise.all([
-        //   ,
-        //   ,
-        //   // api.call({ target, abi: 'string:symbol' }),
-        //   // api.call({ target, abi: 'uint8:decimals' }),
-        //   // api.call({ target, abi: 'uint256:proposalCount' }),
-        // ])
-        // sdk.log(target, name)
+
         metadata.name = name
         metadata.strategies = [
           {
             "name": "erc20-balance-of",
             "network": api.chainId,
-            // "params": { symbol, address, decimals }
           }
         ]
-        // metadata.symbol = symbol
         metadata.network = api.chainId
         metadata.quorumVotes = 0
       }
@@ -171,11 +157,6 @@ export async function updateCompounds() {
         const scores = [+forVotes, +againstVotes, +abstainVotes,]
         const scores_total = scores.reduce((acc, i) => acc + i, 0)
 
-        // let state = 'Active'
-        // if (executed || end < timestamp) state = 'Closed'
-        // else if (canceled) state = 'Rejected'
-        // else if (+forVotes > +againstVotes && scores_total > cache.metadata.quorumVotes) state = 'Queued'
-
         const description = (logMap[id].description ?? '').trim()
         let title = description.includes('\n') ? description.split('\n')[0] : description
         if (title.length > 200) title = title.slice(0, 197) + '...'
@@ -193,14 +174,13 @@ export async function updateCompounds() {
           space: {
             id: cache.metadata.id,
           },
-          quorum: cache.metadata.quorumVotes,
+          quorum: cache.metadata.quorumVotes ?? 0,
           votes: 0,
           score_skew: 0,
           score_curve: 0,
           score_curve2: 0,
         }
 
-        // proposal.isInvalid = isInvalidProposal(proposal)
         cache.proposals[id] = proposal
       }
 
@@ -223,6 +203,30 @@ export async function updateCompounds() {
         })
         sdk.log(cache.metadata.name, 'fetched logs#', logs.length)
         return logMap
+      }
+
+      function fixDecimals() {
+        let divider = 1e18
+
+        if (["ethereum:0x6f3e6272a167e8accb32072d08e0957f9c79223d",
+          "ethereum:0x5e5031627408fc2a75c8560f9c84548c1de6fe37",
+          "ethereum:0x0b901d47cbe666de867a6d6f1b54939e71c5f649",
+          "ethereum:0x1a1b5bdd78817cd8fe22e0491c347ee076f27215",
+          "ethereum:0x80bae65e9d56498c7651c34cfb37e2f417c4a703",
+          "ethereum:0xdbd38f7e739709fe5bfae6cc8ef67c3820830e0c",
+          "ethereum:0xcdb9f8f9be143b7c72480185459ab9720462a786",].includes(cache.id)) {
+          divider = 1
+        } else if (["ethereum:0xda9c9ed96f6d42f7e74f3c7eea6772d64ed84bdf"].includes(cache.id)) {
+          divider = 1e8
+        }
+
+        Object.values(cache.proposals).forEach((i: any) => {
+          if (i.scores_total > divider) {
+            i.scores = i.scores.map((j: any) => j / divider)
+            i.scores_total /= divider
+            i.quorum /= divider
+          }
+        })
       }
     } catch (e) {
       console.log(`

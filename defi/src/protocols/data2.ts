@@ -22011,6 +22011,7 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/flokifi"],
     listedAt: 1672835629
   },
+  /*
   {
     id: "2406",
     name: "Tegro Finance",
@@ -22033,6 +22034,7 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1672845040
   },
+  */
   {
     id: "2407",
     name: "Inbuilt Finance",

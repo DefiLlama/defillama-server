@@ -53,7 +53,7 @@ export default {
     "covo-v2": {
         "enabled": true,
         "id": "1892",
-        parentId: "1892",
+        parentId: "2525",
         "protocolsData": {
             "derivatives": {
                 displayName: "Covo V2 - Derivatives",
@@ -61,5 +61,17 @@ export default {
                 "enabled": true
             }
         },
+    },
+    "spacedex": {
+        parentId: "2814",
+        "protocolsData": {
+            "derivatives": {
+                "id": "2814",
+                "enabled": true,
+                "displayName": "SpaceDex - Derivatives"
+            }
+        },
+        "enabled": true,
+        "id": "2814"
     }
 } as AdaptorsConfig

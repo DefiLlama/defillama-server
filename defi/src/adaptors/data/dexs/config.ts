@@ -1388,5 +1388,18 @@ export default {
     "native": {
         "enabled": true,
         "id": "2803"
+    },
+    "spacedex": {
+        parentId: "2814",
+        "protocolsData": {
+            "swap": {
+                "id": "2814",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "SpaceDex - SWAP"
+            }
+        },
+        "enabled": true,
+        "id": "2814"
     }
 } as AdaptorsConfig

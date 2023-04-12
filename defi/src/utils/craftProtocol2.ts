@@ -214,12 +214,14 @@ export default async function craftProtocol({
   if (!useHourlyData) {
     // check for falsy values and push lastHourlyRecord to dataset
     lastUsdHourlyRecord &&
-      lastUsdHourlyRecord.SK !== historicalUsdTvl[historicalUsdTvl.length - 1].SK &&
+      lastUsdHourlyRecord.SK !== historicalUsdTvl[historicalUsdTvl.length - 1]?.SK &&
       historicalUsdTvl.push(lastUsdHourlyRecord);
     lastUsdTokenHourlyRecord &&
-      historicalUsdTokenTvl.length > 0 &&
+      lastUsdTokenHourlyRecord.SK !== historicalUsdTokenTvl[historicalUsdTokenTvl.length - 1]?.SK &&
       historicalUsdTokenTvl.push(lastUsdTokenHourlyRecord);
-    lastTokenHourlyRecord && historicalTokenTvl.length > 0 && historicalTokenTvl.push(lastTokenHourlyRecord);
+    lastTokenHourlyRecord &&
+      lastTokenHourlyRecord.SK !== historicalTokenTvl[historicalTokenTvl.length - 1]?.SK &&
+      historicalTokenTvl.push(lastTokenHourlyRecord);
   }
 
   let response: IProtocolResponse = {

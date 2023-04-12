@@ -27849,7 +27849,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2666",
-    name: "Wefi",
+    name: "wefi",
     address: null,
     symbol: "-",
     url: "https://wefi.xyz",
@@ -27865,7 +27865,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Compound"],
     module: "paxo-finance/index.js",
-    twitter: "paxofinance",
+    twitter: "wefi_xyz",
     audit_links: [
                    "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Paxo-v1.0.pdf",
                    "https://github.com/Quillhash/QuillAudit_Reports/blob/master/Paxo%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"

@@ -31151,7 +31151,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "agility",
     cmcId: "24364",
-    category: "Liquid Staking",
+    category: "Indexes",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

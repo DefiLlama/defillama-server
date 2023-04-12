@@ -41,7 +41,7 @@ export default {
                 "id": "2529"
             },
             v3: {
-                "enabled": true,
+                "enabled": false,
                 "id": "2769"
             }
         },

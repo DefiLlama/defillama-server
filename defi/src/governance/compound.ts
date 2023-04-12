@@ -33,7 +33,7 @@ export async function updateCompounds() {
     const [chain, address] = id.split(':')
     const cache = await getCompound(id)
     if (!cache.metadata) cache.metadata = { id, chain, address }
-    cache.proposals = {}
+    if (!cache.proposals) cache.proposals = {}
     const timestamp = Math.floor(Date.now() / 1e3)
     const api = new sdk.ChainApi({ chain, timestamp, })
     cache.id = id

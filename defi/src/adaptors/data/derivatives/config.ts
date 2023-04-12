@@ -49,5 +49,17 @@ export default {
         },
         "enabled": true,
         "id": "2662"
+    },
+    "covo-v2": {
+        "enabled": true,
+        "id": "1892",
+        parentId: "1892",
+        "protocolsData": {
+            "derivatives": {
+                displayName: "Covo V2 - Derivatives",
+                "id": "1892",
+                "enabled": true
+            }
+        },
     }
 } as AdaptorsConfig

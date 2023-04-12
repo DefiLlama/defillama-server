@@ -744,5 +744,9 @@ export default {
     "azuro": {
         "enabled": true,
         "id": "1892"
+    },
+    "covo-v2": {
+        "enabled": true,
+        "id": "1892"
     }
 } as AdaptorsConfig

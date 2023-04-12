@@ -667,7 +667,7 @@ const data: Protocol[] = [
     audit_links: ["https://www.notion.so/Rari-Capital-Audit-Quantstamp-December-2020-24a1d1df94894d6881ee190686f47bc7"],
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
-    governanceID: ["snapshot:fuse.eth"]
+    governanceID: ["snapshot:fuse.eth", "compound:ethereum:0x91d9c2b5cf81d55a5f2ecc0fc84e62f9cd2cefd6"]
   },
   {
     id: "137",
@@ -1899,7 +1899,7 @@ const data: Protocol[] = [
     twitter: "OokiTrade",
     audit_links: ["https://docs.ooki.com/developers/audits"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:ooki.eth"]
+    governanceID: ["snapshot:ooki.eth", "compound:ethereum:0x3133b4f4dcffc083724435784fefad510fa659c6"]
   },
   /*
   {
@@ -3424,7 +3424,7 @@ const data: Protocol[] = [
       "https://certificate.quantstamp.com/full/cryptex",
     ],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:cryptexdao.eth"]
+    governanceID: ["snapshot:cryptexdao.eth", "compound:ethereum:0x271901c3268d0959bbc9543de4f073d3708c88f7"]
   },
   {
     id: "273",
@@ -6865,7 +6865,7 @@ const data: Protocol[] = [
     twitter: "HopProtocol",
     audit_links: ["https://docs.hop.exchange/faq#are-hop-contracts-audited"],
     forkedFrom: ["Saddle Finance"],
-    governanceID: ["snapshot:hop.eth"]
+    governanceID: ["snapshot:hop.eth", "compound:ethereum:0xed8bdb5895b8b7f9fdb3c087628fd8410e853d48"]
   },
   {
     id: "436",
@@ -10013,7 +10013,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "StrikeFinance",
     audit_links: ["https://www.certik.org/projects/strikefinance"],
     forkedFrom: ["Compound"],
-    governanceID: ["snapshot:strikeorg.eth"]
+    governanceID: ["snapshot:strikeorg.eth", "compound:ethereum:0x29e2a3af8ec2d537cbd484c6ec430abe1c7fe2d8"]
   },
   {
     id: "590",
@@ -13601,7 +13601,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/AngleProtocol/angle-core/tree/main/audits"],
     oracles: ["Chainlink", "TWAP"],
     listedAt: 1635962344,
-    governanceID: ["snapshot:anglegovernance.eth"]
+    governanceID: ["snapshot:anglegovernance.eth", "compound:ethereum:0x59153e939c5b4721543251ff3049ea04c755373b"]
   },
   {
     id: "757",

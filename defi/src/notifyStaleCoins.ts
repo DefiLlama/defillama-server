@@ -18,9 +18,8 @@ const handler = async (_event: any) => {
       ${now} - lastupdate as latency
     FROM public.stalecoins
     WHERE
-      lastupdate < (${now - 3600 * hours}) and lastupdate > (${now - 3600 * 24})
-    GROUP BY address, symbol, latency, chain
-    ORDER BY latency asc;`;
+      lastupdate < (${now - 3600 * hours})
+    GROUP BY address, symbol, latency, chain;`;
 
   const recentlyStaleCoins = staleCoins.filter(
     (s: any) => s.latency < 3600 * (hours + 1),
@@ -35,8 +34,8 @@ const handler = async (_event: any) => {
       ),
     );
 
-  promises.push(sql`DELETE FROM public.stalecoins`)
-  
+  promises.push(sql`DELETE FROM public.stalecoins`);
+
   const message = (staleCoins as any[])
     .map(
       (coin) =>

@@ -30962,7 +30962,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://swap.dovish.finance",
-    description: "Uniswap V3 fork",
+    description: "DoveSwap, the first native DEX on Polygon's zkEVM, enables faster and more cost-effective transactions. The DEX uses concentrated liquidity pools to improve capital efficiency, and reduce impermanent loss. ",
     chain: "Polygon zkEVM",
     logo: `${baseIconsUrl}/dove-swap-v3.png`,
     audits: "3",

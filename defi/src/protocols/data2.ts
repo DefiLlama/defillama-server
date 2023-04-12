@@ -31158,5 +31158,27 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1681309758
   },
+  {
+    id: "2818",
+    name: "Tonpound",
+    address: "0x5cb17273BFE227bD791CEEe31C9d5db6289f2797",
+    symbol: "TPI",
+    url: "https://app.tonpound.com",
+    description: "Decentralized lending protocol that connects The Open Network and Ethereum blockchain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tonpound.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["Compound"],
+    module: "tonpound.js",
+    twitter: "Tonpound_com",
+    audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Tonpound%20Lending/Tonpound%20Lending.pdf"],
+    listedAt: 1681312681
+  },
 ]
 export default data2;

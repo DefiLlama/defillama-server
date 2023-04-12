@@ -747,6 +747,6 @@ export default {
     },
     "covo-v2": {
         "enabled": true,
-        "id": "1892"
+        "id": "2730"
     }
 } as AdaptorsConfig

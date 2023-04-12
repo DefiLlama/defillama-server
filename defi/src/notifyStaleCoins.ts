@@ -26,15 +26,17 @@ const handler = async (_event: any) => {
     (s: any) => s.latency < 3600 * (hours + 1),
   );
 
-  const promises = [];
-  // if (recentlyStaleCoins.length > 100)
-  //   promises.push(
-  //     sendMessage(
-  //       `At least 100 coins have just gone stale!!`,
-  //       process.env.TEAM_WEBHOOK,
-  //     ),
-  //   );
+  const promises: any = [];
+  if (recentlyStaleCoins.length > 100)
+    promises.push(
+      sendMessage(
+        `At least 100 coins have just gone stale!!`,
+        process.env.TEAM_WEBHOOK,
+      ),
+    );
 
+  promises.push(sql`DELETE FROM public.stalecoins`)
+  
   const message = (staleCoins as any[])
     .map(
       (coin) =>

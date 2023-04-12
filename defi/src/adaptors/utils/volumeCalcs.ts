@@ -125,10 +125,14 @@ const getSumAllDexsToday = (
         const volume1d = dex.recordsMap?.[String(timestamp1d)]?.data
         const volume7d = dex.recordsMap?.[String(timestamp7d)]?.data
         const volume30d = dex.recordsMap?.[String(timestamp30d)]?.data
-        totalVolume += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
-        totalVolume1d += volume1d ? sumAllVolumes(volume1d) - sumAllVolumes(dex2SubstractVolumes['totalVolume1d']) : 0
-        totalVolume7d += volume7d ? sumAllVolumes(volume7d) - sumAllVolumes(dex2SubstractVolumes['totalVolume7d']) : 0
-        totalVolume30d += volume30d ? sumAllVolumes(volume30d) - sumAllVolumes(dex2SubstractVolumes['totalVolume30d']) : 0
+        if (yesterdaysVolume && !Number.isNaN(sumAllVolumes(yesterdaysVolume))) {
+            //console.debug("yesterdaysVolume", dex.recordsMap?.[String(yesterdaysTimestamp)].timestamp, yesterdaysVolume)
+            totalVolume += yesterdaysVolume ? sumAllVolumes(yesterdaysVolume) - sumAllVolumes(dex2SubstractVolumes['totalVolume']) : 0
+            console.debug(totalVolume)
+            totalVolume1d += volume1d ? sumAllVolumes(volume1d) - sumAllVolumes(dex2SubstractVolumes['totalVolume1d']) : 0
+            totalVolume7d += volume7d ? sumAllVolumes(volume7d) - sumAllVolumes(dex2SubstractVolumes['totalVolume7d']) : 0
+            totalVolume30d += volume30d ? sumAllVolumes(volume30d) - sumAllVolumes(dex2SubstractVolumes['totalVolume30d']) : 0
+        }
     }
     return {
         ...extraTypesObj,

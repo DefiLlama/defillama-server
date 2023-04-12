@@ -32,6 +32,7 @@ export async function storeStaleCoins(staleCoins: StaleCoins) {
         obj[key] = staleCoins[key];
         return obj;
       }, {});
+    if (Object.keys(filteredStaleCoins).length == 0) return;
     await writeCoins(filteredStaleCoins, PGP, db);
   } catch (e) {
     console.error("write to postgres failed:");

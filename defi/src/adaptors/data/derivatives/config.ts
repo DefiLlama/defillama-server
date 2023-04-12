@@ -52,12 +52,12 @@ export default {
     },
     "covo-v2": {
         "enabled": true,
-        "id": "1892",
+        "id": "2730",
         parentId: "2525",
         "protocolsData": {
             "derivatives": {
                 displayName: "Covo V2 - Derivatives",
-                "id": "1892",
+                "id": "2730",
                 "enabled": true
             }
         },

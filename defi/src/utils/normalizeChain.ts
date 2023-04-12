@@ -1429,7 +1429,16 @@ export const chainCoingeckoIds = {
     cmcId: "3418",
     categories: ["EVM"],
   },
-
+  "Equilibrium": {
+    geckoId: "equilibrium-token",
+    symbol: "EQ",
+    cmcId: "6780",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1818,6 +1827,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Polygon zkEVM"
     case "meta":
       return "Meta"
+    case "equilibrium":
+        return "Equilibrium"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

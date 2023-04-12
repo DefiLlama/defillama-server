@@ -23,6 +23,7 @@ export function addStaleCoin(staleCoins: StaleCoins, address: string, symbol: st
 export async function storeStaleCoins(staleCoins: StaleCoins) {
   try {
     if (!process.env.COINS_DB) return;
+    if (Object.keys(staleCoins).length == 0) return;
     if (db == null) db = PGP(process.env.COINS_DB!);
     const recentlyUpdatedCoins = await readCoins(staleCoins, db);
     const filteredStaleCoins = Object.keys(staleCoins)
@@ -46,7 +47,7 @@ async function readCoins(staleCoins: StaleCoins, db: any): Promise<string[]> {
         id, 
         time
       FROM stalecoins
-      WHERE id in ($1:csv) and time > ${time - 3600}`,
+      WHERE id IN ($1:csv) AND time > ${time - 3600}`,
       [Object.keys(staleCoins).map((c: string) => c.toLowerCase())],
     )
   ).map((e: any) => e.id);

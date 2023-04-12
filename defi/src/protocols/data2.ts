@@ -13401,7 +13401,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "silo/index.js",
     twitter: "SiloFinance",
-    governanceID: ["snapshot:silofinance.eth"],
+    governanceID: ["snapshot:silofinance.eth", "compound:ethereum:0xa89163f7b2d68a8fba6ca36beed32bd4f3eeaf61"],
     audit_links: [
       "https://drive.google.com/file/d/1D2EIOb0XaRov5Ph2AE0DTfIsMISd7UXG/view",
       "https://drive.google.com/file/d/1WXaB3ICLv4rSEX86POK3-NaOIxXwyq9l/view",
@@ -16526,7 +16526,7 @@ const data2: Protocol[] = [
       "https://github.com/EaseDeFi/gvToken/tree/main/audits"
     ],
     listedAt: 1665063478,
-    governanceID: ["snapshot:easedao.eth"]
+    governanceID: ["snapshot:easedao.eth", "compound:ethereum:0xea5edef17c4fce9c120790f3c54d6e04823de587"]
   },
   {
     id: "2163",
@@ -24596,7 +24596,7 @@ const data2: Protocol[] = [
     twitter: "ensdomains",
     oracles: [],
     forkedFrom: [],
-    governanceID: ["snapshot:ens.eth"]
+    governanceID: ["snapshot:ens.eth", "compound:ethereum:0x323a76393544d5ecca80cd6ef2a560c6a395b7e3"],
   },
   {
     id: "2520",

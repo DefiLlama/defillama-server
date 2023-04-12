@@ -447,7 +447,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "7083",
     chains: [],
     twitter: "Uniswap",
-    governanceID: ["snapshot:uniswap"]
+    governanceID: ["snapshot:uniswap", "compound:ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3"]
   },
   {
     id: "Tetu",

@@ -170,7 +170,11 @@ export default async function craftProtocol({
   const cacheKey = `protocolCache/${protocolData.id}-${useNewChainNames}-${useHourlyData}`
   let previousRun: Awaited<ReturnType<typeof buildCoreData>>
   try{
-    previousRun = JSON.parse((await getR2(cacheKey)).body!)
+    const data = (await getR2(cacheKey)).body
+    if(data === undefined){
+      throw new Error("No previous run")
+    }
+    previousRun = JSON.parse(data)
   } catch(e){
     previousRun = await buildCoreData({protocolData, useNewChainNames, useHourlyData})
     await storeR2(cacheKey, JSON.stringify(previousRun))

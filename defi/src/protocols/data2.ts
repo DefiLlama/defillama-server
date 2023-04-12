@@ -21442,7 +21442,7 @@ const data2: Protocol[] = [
   {
     id: "2381",
     name: "Genius Yield",
-    address: "cardano:dda5fdb1002f7389b33e036b6afee82a8189becb6cba852e8b79b4fb",
+    address: "cardano:dda5fdb1002f7389b33e036b6afee82a8189becb6cba852e8b79b4fb0014df1047454e53",
     symbol: "GENS",
     url: "https://www.geniusyield.co",
     description:

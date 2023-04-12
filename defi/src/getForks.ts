@@ -1,5 +1,5 @@
 import { IProtocol, processProtocols, TvlItem } from "./storeGetCharts";
-import { successResponse, wrap, IResponse } from "./utils/shared";
+import { successResponse, wrap, IResponse, cache20MinResponse } from "./utils/shared";
 import { extraSections } from "./utils/normalizeChain";
 
 interface SumDailyTvls {
@@ -81,13 +81,12 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     { includeBridge: false }
   );
 
-  return successResponse(
+  return cache20MinResponse(
     {
       chart: sumDailyTvls,
       forks: Object.fromEntries(Object.entries(forkedProtocols).map((c) => [c[0], Array.from(c[1])])),
-    },
-    10 * 60
-  ); // 10 mins cache
+    }
+  );
 };
 
 export default wrap(handler);

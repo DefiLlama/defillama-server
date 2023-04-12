@@ -31092,5 +31092,27 @@ const data2: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/space-dex"],
     listedAt: 1681240573
   },
+  {
+    id: "2815",
+    name: "Holdr",
+    address: "aurora:0x1aaee8F00D02fcdb10cF1F0caB651dC83318c7AA",
+    symbol: "HLDR",
+    url: "https://www.holdr.fi/",
+    description: "Holdr is a Balancer-friendly and community-driven fork of the Balancer V2 DEX on Aurora, operated by SolaceFi",
+    chain: "Aurora",
+    logo: `${baseIconsUrl}/holdr.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "holdr",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aurora"],
+    oracles: [],
+    forkedFrom: ["Balancer"],
+    module: "holdr-fi/index.js",
+    twitter: "HoldrFi",
+    audit_links: [],
+    listedAt: 1681262189
+  },
 ]
 export default data2;

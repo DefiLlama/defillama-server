@@ -233,6 +233,10 @@ export default async function craftProtocol({
   };
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]) => {
+    if (nonChains.includes(chain) && chain !== "tvl") {
+      return;
+    }
+
     const displayChainName = getChainDisplayName(chain, useNewChainNames);
     addToChains(response.chains, displayChainName);
     if (chain !== "tvl") {
@@ -240,21 +244,21 @@ export default async function craftProtocol({
     }
     const container = chain === "tvl"? response:response.chainTvls[displayChainName]
 
-    container.tvl.push(...historicalUsdTvl
+    container?.tvl?.push(...historicalUsdTvl
       ?.map((item) => ({
         date: item.SK,
         totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
       }))
       .filter((item) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD));
 
-    container.tokensInUsd?.push(...historicalUsdTokenTvl
+    container?.tokensInUsd?.push(...historicalUsdTokenTvl
       ?.map((item) => ({
         date: item.SK,
         tokens: normalizeEthereum(selectChainFromItem(item, chain)),
       }))
       .filter((item) => item.tokens));
 
-    container.tokens?.push(...historicalTokenTvl
+    container?.tokens?.push(...historicalTokenTvl
       ?.map((item) => ({
         date: item.SK,
         tokens: normalizeEthereum(selectChainFromItem(item, chain)),

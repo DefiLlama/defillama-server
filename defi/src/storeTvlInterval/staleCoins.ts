@@ -48,7 +48,7 @@ async function readCoins(staleCoins: StaleCoins, db: any): Promise<string[]> {
         id, 
         time
       FROM stalecoins
-      WHERE id IN ($1:csv) AND time > ${time - 3600}`,
+      WHERE id IN ($1:csv) AND time > ${time - 1200}`,
       [Object.keys(staleCoins).map((c: string) => c.toLowerCase())],
     )
   ).map((e: any) => e.id);

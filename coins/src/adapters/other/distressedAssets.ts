@@ -10,7 +10,8 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     XRPC: "0xd4ca5c2aff1eefb0bea9e9eab16f88db2990c183",
     LUFFY: "0x54012cdf4119de84218f7eb90eeb87e25ae6ebd7",
     LUFFY_NEW: "0x7121d00b4fa18f13da6c2e30d19c04844e6afdc8",
-    FEG: "0x389999216860ab8e0175387a0c90e5c52522c945"
+    FEG: "0x389999216860ab8e0175387a0c90e5c52522c945",
+    yUSDT: "0x83f798e925bcd4017eb265844fddabb448f1707d",
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
@@ -48,7 +49,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     VBSWAP: "0x4f0ed527e8a95ecaa132af214dfd41f30b361600",
     ZEDXION: "0xfbc4f3f645c4003a2e4f4e9b51077d2daa9a9341", // price manipulated?
     FEG: "0xacfc95585d80ab62f67a14c566c1b7a49fe91167",
-    MFI: "0xeb5bb9d14d27f75c787cf7475e7ed00d21dc7279"
+    MFI: "0xeb5bb9d14d27f75c787cf7475e7ed00d21dc7279",
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

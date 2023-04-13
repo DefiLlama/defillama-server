@@ -8604,7 +8604,8 @@ const data2: Protocol[] = [
     module: "velodrome/index.js",
     twitter: "VelodromeFi",
     listedAt: 1654194517,
-    treasury: "velodrome.js"
+    treasury: "velodrome.js",
+    governanceID: ["compound:ethereum:0xa1d8800ae2f4794f2910cfcd835831faae69cea0"]
   },
   {
     id: "1800",
@@ -10617,7 +10618,8 @@ const data2: Protocol[] = [
     module: "blur-finance/index.js",
     twitter: "Blur_Finance",
     audit_links: ["https://github.com/solidproof/projects/tree/main/BlurFinance"],
-    listedAt: 1657699961
+    listedAt: 1657699961,
+    governanceID: ["compound:ethereum:0xf7967b43949fb0cec48e63e345512d5ea5845810"]
   },
   {
     id: "1892",
@@ -18059,7 +18061,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/headline-design/silo-protocol/tree/main/smartContract_audits"],
-    listedAt: 1666868708
+    listedAt: 1666868708,
+    governanceID: ["compound:ethereum:0xa89163f7b2d68a8fba6ca36beed32bd4f3eeaf61"]
   },
   {
     id: "2230",
@@ -25105,6 +25108,7 @@ const data2: Protocol[] = [
     module: "ondofinance/index.js",
     twitter: "OndoFinance",
     audit_links: ["https://www.certik.org/projects/ondofinance"],
+    governanceID: ["compound:ethereum:0xeaa87097991a874eee2c66b8a09c3dc90e45f6f0"]
   },
   {
     id: "2543",

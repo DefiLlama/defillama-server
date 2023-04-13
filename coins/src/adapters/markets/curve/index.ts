@@ -4,8 +4,15 @@ import getGaugePrices from "./gauges";
 export function curve1(timestamp: number = 0) {
   console.log("starting curve1");
   return Promise.all([
-    getTokenPrices("ethereum", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("ethereum", ["stableFactory", "cryptoFactory"], timestamp),
+    getTokenPrices("ethereum", ["stableswap"], timestamp),
+    getTokenPrices("ethereum", ["crypto"], timestamp),
+  ]);
+}
+export function curve1b(timestamp: number = 0) {
+  console.log("starting curve1b");
+  return Promise.all([
+    getTokenPrices("ethereum", ["stableFactory"], timestamp),
+    getTokenPrices("ethereum", ["cryptoFactory"], timestamp),
   ]);
 }
 export function curve2(timestamp: number = 0) {
@@ -55,7 +62,7 @@ export function curve6(timestamp: number = 0) {
   console.log("starting curve6");
   return Promise.all([
     getTokenPrices("polygon", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("polygon", ["cryptoFactory"], timestamp),
+    getTokenPrices("polygon", ["cryptoFactory", "stableFactory"], timestamp),
   ]);
 }
 export function ellipsis(timestamp: number = 0) {

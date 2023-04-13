@@ -31321,5 +31321,26 @@ const data2: Protocol[] = [
     twitter: "ABCpospool",
     listedAt: 1681404535
   },
+  {
+    id: "2825",
+    name: "Nostra",
+    address: null,
+    symbol: "-",
+    url: "https://nostra.finance",
+    description: "Nostra is your one-stop DeFi solution where you can lend, borrow, and swap crypto.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/nostra.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Starknet"],
+    oracles: [],
+    forkedFrom: [],
+    module: "nostra/index.js",
+    twitter: "nostrafinance",
+    listedAt: 1681406218
+  },
 ]
 export default data2;

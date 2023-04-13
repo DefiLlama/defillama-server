@@ -201,14 +201,15 @@ function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: A
             }
         }
     }, {} as IRecordAdaptorRecordData)
-    const prev = ath//sumAllVolumes(prevObj)
+    const prevVal = sumAllVolumes(prevObj)
+    const prev = ath
     const chg1d = Math.abs((current - prev) / prev) * 100
-    if (chg1d && chg1d > 10000 && current > 10000000) {
-        spikesLogs.push(`SPIKE DETECTED ON ${newGen.pk}\n
-        1dChange: ${chg1d}\n
-        Timestamp: ${newGen.timestamp}\n
-        Record: ${JSON.stringify(newGen, null, 2)}
-        Please ${DISCORD_USER_0xtawa_ID} ${DISCORD_USER_0xgnek_ID} take a look :pray~1:`)
+    if (prevVal !== 0 && chg1d && chg1d > 10000 && current > 10000000) {
+        spikesLogs.push(`SPIKE DETECTED ON ${newGen.pk}
+1dChange: ${chg1d}
+Timestamp: ${newGen.timestamp}
+Record: ${JSON.stringify(newGen, null, 2)}
+Please ${DISCORD_USER_0xtawa_ID} ${DISCORD_USER_0xgnek_ID} take a look`)
         newGen.data = prevObj
     }
 }

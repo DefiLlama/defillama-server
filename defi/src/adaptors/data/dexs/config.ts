@@ -61,7 +61,7 @@ export default {
                 startFrom: 1663718400
             },
             v3: {
-                "enabled": false,
+                "enabled": true,
                 "id": "2769"
             }
         },

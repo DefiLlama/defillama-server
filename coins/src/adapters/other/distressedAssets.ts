@@ -3,7 +3,7 @@ import { getTokenInfo } from "../utils/erc20";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
 
-const contracts: { [chain: string]: { [token: string]: string } } = {
+export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
     GVR_OLD: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",

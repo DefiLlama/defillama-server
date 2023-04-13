@@ -217,7 +217,7 @@ export async function filterWritesWithLowConfidence(allWrites: Write[]) {
     allWrites[0].PK.indexOf(":"),
   );
   const tokensStoredInTheLastHalfHour = await getTokenAndRedirectData(
-    addresses,
+    [...new Set(addresses)],
     chain,
     getCurrentUnixTimestamp(),
     0.5,

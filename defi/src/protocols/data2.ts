@@ -25108,7 +25108,10 @@ const data2: Protocol[] = [
     module: "ondofinance/index.js",
     twitter: "OndoFinance",
     audit_links: ["https://www.certik.org/projects/ondofinance"],
-    governanceID: ["compound:ethereum:0xeaa87097991a874eee2c66b8a09c3dc90e45f6f0"]
+    governanceID: [
+      "compound:ethereum:0xeaa87097991a874eee2c66b8a09c3dc90e45f6f0",
+      "compound:ethereum:0x76847efc52f0d7ed270ba520a0ee7dddc7141dcf",
+    ]
   },
   {
     id: "2543",

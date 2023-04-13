@@ -239,8 +239,7 @@ const parentProtocols: IParentProtocol[] = [
       "compound:ethereum:0xc0da02939e1441f497fd74f78ce7decb17b66529",
       "compound:ethereum:0xc0da01a04c3f3e0be433606045bb7017a7323e38",
       "compound:ethereum:0x336505ec1bcc1a020eede459f57581725d23465a",
-      "compound:ethereum:0x76847efc52f0d7ed270ba520a0ee7dddc7141dcf",
-      "compound:ethereum:0x542ed9b1b50dc686e88404c73c062faa39568304"
+      //"compound:ethereum:0x542ed9b1b50dc686e88404c73c062faa39568304" //GridZone.io ZONE
     ]
   },
   {

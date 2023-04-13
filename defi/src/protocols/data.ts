@@ -3661,7 +3661,7 @@ const data: Protocol[] = [
       "compound:ethereum:0x62702387c2a26c903985e9d078d18c45acae0908",
       "compound:ethereum:0xc32f9b0292965c5dd4a0ea1abfcc1f5a36d66986",
       "compound:ethereum:0x78bdd33e95ecbcac16745fb28db0ffb703344026",
-      "compound:ethereum:0x2da253835967d6e721c6c077157f9c9742934aea",
+      "compound:ethereum:0x2da253835967d6e721c6c077157f9c9742934aea",//CONTRACTCREATOR natew.eth
       "compound:ethereum:0x6aba376e3331e3090456495e8292ecdfa1ab4920"
     ]
   },

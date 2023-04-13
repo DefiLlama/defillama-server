@@ -3,7 +3,7 @@ import { getTokenInfo } from "../utils/erc20";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
 
-const contracts: { [chain: string]: { [token: string]: string } } = {
+export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
     GVR: "0x84FA8f52E437Ac04107EC1768764B2b39287CB3e",
     GVR_OLD: "0xF33893DE6eB6aE9A67442E066aE9aBd228f5290c",
@@ -19,6 +19,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     ypaxCrv: "0xd905e2eaebe188fc92179b6350807d8bd91db0d8",
     "yDAI+yUSDC+yUSDT+yTUSD": "0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8",
     "yyDAI+yUSDC+yUSDT+yTUSD": "0x5dbcf33d8c2e976c6b560249878e6f1491bca25c",
+    yUSD: "0x4b5bfd52124784745c1071dcb244c6688d2533d3",
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",

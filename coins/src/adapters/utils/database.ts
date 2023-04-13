@@ -11,6 +11,7 @@ import {
   Read,
   CoinData,
 } from "./dbInterfaces";
+import { contracts } from "../other/distressedAssets";
 
 const confidenceThreshold: number = 0.3;
 
@@ -202,29 +203,21 @@ async function getTokenAndRedirectDataDB(
   }
   return aggregateTokenAndRedirectData(allReads);
 }
-export async function filterWritesWithLowConfidence(allWrites: Write[]) {
+export function filterWritesWithLowConfidence(allWrites: Write[]) {
   allWrites = allWrites.filter((w: Write) => w != undefined);
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
 
   if (allWrites.length == 0) return [];
 
-  const addresses = allWrites.map((w: Write) =>
-    w.PK.substring(w.PK.indexOf(":") + 1),
-  );
   const chain = allWrites[0].PK.substring(
     allWrites[0].PK.indexOf("#") + 1,
     allWrites[0].PK.indexOf(":"),
   );
-  const tokensStoredInTheLastHalfHour = await getTokenAndRedirectData(
-    [...new Set(addresses)],
-    chain,
-    getCurrentUnixTimestamp(),
-    0.5,
+
+  const distressedAssets = Object.values(contracts[chain]).map((d: string) =>
+    d.toLowerCase(),
   );
-  const highConfidenceStores = tokensStoredInTheLastHalfHour
-    .filter((c: any) => c.confidence >= 1)
-    .map((c: any) => c.address);
 
   allWrites.map((w: Write) => {
     let checkedWritesOfThisKind = checkedWrites.filter(
@@ -273,7 +266,7 @@ export async function filterWritesWithLowConfidence(allWrites: Write[]) {
   return filteredWrites.filter(
     (f: Write) =>
       f != undefined &&
-      !highConfidenceStores.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
+      !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
   );
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {

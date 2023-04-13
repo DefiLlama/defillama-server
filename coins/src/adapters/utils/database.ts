@@ -215,9 +215,10 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     allWrites[0].PK.indexOf(":"),
   );
 
-  const distressedAssets = Object.values(contracts[chain]).map((d: string) =>
-    d.toLowerCase(),
-  );
+  const distressedAssets =
+    chain in contracts
+      ? Object.values(contracts[chain]).map((d: string) => d.toLowerCase())
+      : [];
 
   allWrites.map((w: Write) => {
     let checkedWritesOfThisKind = checkedWrites.filter(

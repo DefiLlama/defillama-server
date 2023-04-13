@@ -1,17 +1,13 @@
-import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { getCachedResponseOnR2 } from "../../utils/storeR2Response";
-import { handler as process_handler, DEFAULT_CHART_BY_ADAPTOR_TYPE, getOverviewCachedResponseKey, IGetOverviewResponseBody, getExtraTypes } from "../getOverviewProcess"
+import { getOverviewCachedResponseKey, IGetOverviewResponseBody, getExtraTypes, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../getOverviewProcess"
 import invokeLambda from "../../../utils/shared/invokeLambda";
-import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
-import { CATEGORIES } from "../../data/helpers/categories";
-import { getTimestampAtStartOfDay } from "@defillama/dimension-adapters/utils/date";
 
 // -> /overview/{type}/{chain}
 export const handler = async (): Promise<undefined> => {
     // Go over all types
     const res = await Promise.all(Object.values(AdapterType).map(async type => {
-        return Promise.all(getExtraTypes(type).map(async dataType => {
+        return Promise.all([DEFAULT_CHART_BY_ADAPTOR_TYPE[type], ...getExtraTypes(type)].map(async dataType => {
             // Try to get current cached response
             const key = getOverviewCachedResponseKey(
                 type,

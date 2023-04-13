@@ -417,13 +417,13 @@ functions:
     timeout: 60
     memorySize: 3000
     events:
-      - schedule: cron(20 * * * ? *)
+      - schedule: cron(16 * * * ? *)
   storeCharts:
     handler: src/storeGetCharts.default
     timeout: 60
     memorySize: 2000
     events:
-      - schedule: cron(20 * * * ? *)
+      - schedule: cron(16 * * * ? *)
   hourly:
     handler: src/getHourlyData.default
     timeout: 30

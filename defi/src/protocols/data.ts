@@ -7176,6 +7176,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Screamdotsh",
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
+    governanceID: ["snapshot:screamsh.eth"]
   },
   {
     id: "451",

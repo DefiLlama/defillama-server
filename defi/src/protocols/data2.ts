@@ -20498,7 +20498,8 @@ const data2: Protocol[] = [
     twitter: "LodestarFinance",
     forkedFrom: ["Compound"],
     oracles: ["Chainlink"],
-    listedAt: 1670424005
+    listedAt: 1670424005,
+    governanceID: ["snapshot:lodestarfinance.eth"]
   },
   {
     id: "2340",

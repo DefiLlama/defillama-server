@@ -25035,7 +25035,7 @@ const data2: Protocol[] = [
     description: "unshETH is a protocol that aims to further validator decentralization by creating a marketplace for staked ETH liquidity in which LSD protocols can compete for ETH by offering the best yield.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/unsheth.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "unsheth",
     cmcId: "23837",
@@ -25044,6 +25044,7 @@ const data2: Protocol[] = [
     oracles: [],
     module: "unsheth/index.js",
     twitter: "unsheth_xyz",
+    audit_links: ["https://skynet.certik.com/projects/unsheth"],
     listedAt: 1676489078
   },
   {

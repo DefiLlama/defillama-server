@@ -16,6 +16,7 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     ycUSDT_v1: "0x1be5d71f2da660bfdee8012ddc58d024448a0a59",
     yUSDT_yDAI_yUSDT_BUSD: "0x2994529c0652d127b7842094103715ec5299bbed",
     crv_yUSDT_yDAI_yUSDT_BUSD: "0x3b3ac5386837dc563660fb6a0937dfaa5924333b",
+    ypaxCrv: "0xd905e2eaebe188fc92179b6350807d8bd91db0d8",
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",

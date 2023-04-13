@@ -10625,7 +10625,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://azuro.org",
-    description: "The base layer for decentralized betting. Build your own betting app powered by Azuro's feed of priced, liquid markets",
+    description: "Azuro is an infrastructure & liquidity layer for on-chain betting. It utilizes a new Liquidity Pool design called the “Liquidity Tree,” which creates and maintains market liquidity.",
     chain: "xDai",
     logo: `${baseIconsUrl}/azuro.png`,
     audits: "2",

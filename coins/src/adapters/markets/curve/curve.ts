@@ -457,12 +457,16 @@ async function unknownPools(
             })
             .reduce((a, b) => a + b, 0) / poolTokens.length;
 
+        const price =
+          (poolValue * 10 ** tokenInfo.decimals[0].output) /
+          tokenInfo.supplies[0].output;
+        if (price == Infinity) continue;
+
         addToDBWritesList(
           writes,
           chain,
           token,
-          (poolValue * 10 ** tokenInfo.decimals[0].output) /
-            tokenInfo.supplies[0].output,
+          price,
           tokenInfo.decimals[0].output,
           tokenInfo.symbols[0].output,
           timestamp,

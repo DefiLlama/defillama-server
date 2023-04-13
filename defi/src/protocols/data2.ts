@@ -31232,7 +31232,7 @@ const data2: Protocol[] = [
     oracles: ["TWAP"],
     forkedFrom: ["Tomb"],
     module: "ArbiTen/index.js",
-    twitter: "stfil_io",
+    twitter: "ArbiTenFinance",
     audit_links: ["https://etherauthority.io/10mb-finance-smart-contract-audit"],
     listedAt: 1681382692
   },

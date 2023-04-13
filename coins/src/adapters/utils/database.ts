@@ -223,7 +223,7 @@ export async function filterWritesWithLowConfidence(allWrites: Write[]) {
     0.5,
   );
   const highConfidenceStores = tokensStoredInTheLastHalfHour
-    .filter((c: any) => c.confidence > 1)
+    .filter((c: any) => c.confidence >= 1)
     .map((c: any) => c.address);
 
   allWrites.map((w: Write) => {

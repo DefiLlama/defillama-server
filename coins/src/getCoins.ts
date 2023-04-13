@@ -36,7 +36,7 @@ const handler = async (
         formattedCoin.price = redirectedCoin.Item?.price
         formattedCoin.timestamp = redirectedCoin.Item?.timestamp;
       } else {
-        const finalCoin = await getRecordClosestToTimestamp(coin.redirect ?? coin.PK, timestampRequested, DAY*2);
+        const finalCoin = await getRecordClosestToTimestamp(coin.redirect ?? coin.PK, timestampRequested, DAY/2);
         if(finalCoin.SK === undefined){
           return
         }

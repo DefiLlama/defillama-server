@@ -23,7 +23,7 @@ export default async function handler(event: any) {
     event.protocolIndexes.map(async (i: any) => {
       try {
         const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
-        const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+        const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat(),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {

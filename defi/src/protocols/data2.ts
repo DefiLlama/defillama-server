@@ -30308,6 +30308,7 @@ const data2: Protocol[] = [
     twitter: "gmcashfi",
     listedAt: 1680775135
   },
+  /*
   {
     id: "2778",
     name: "SyncDEX Finance",
@@ -30329,6 +30330,7 @@ const data2: Protocol[] = [
     twitter: "SyncDex_Finance",
     listedAt: 1680775139
   },
+  */
   {
     id: "2779",
     name: "ZenithSwap",

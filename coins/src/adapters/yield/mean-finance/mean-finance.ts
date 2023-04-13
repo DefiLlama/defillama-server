@@ -4,14 +4,12 @@ import { calculate4626Prices, Result4626 } from "../../utils/erc4626";
 import { fetch } from "../../utils";
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
-  const tokens: { type: string; address: string }[] = await fetch(
-    `https://api.mean.finance/v1/dca/networks/${chain}/tokens?includeNotAllowed`,
+  const { transforms }: { transforms: { type: string; dependent: string }[] } = await fetch(
+    `https://api.mean.finance/v1/transforms/networks/${chain}/transforms`,
   );
-  const tokens4626 = tokens
-    .filter(
-      (t) => t.type === "YIELD_BEARING_SHARE"
-    )
-    .map(({ address }) => address);
+  const tokens4626 = transforms
+    .filter((t) => t.type === "ERC4626")
+    .map(({ dependent }) => dependent);
   return await unwrap4626(chain, tokens4626, timestamp, "mean-finance");
 }
 

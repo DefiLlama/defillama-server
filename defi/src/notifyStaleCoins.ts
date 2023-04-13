@@ -19,7 +19,8 @@ const handler = async (_event: any) => {
     FROM public.stalecoins
     WHERE
       lastupdate < (${now - 3600 * hours})
-    GROUP BY address, symbol, latency, chain;`;
+    GROUP BY address, symbol, latency, chain
+    ORDER BY latency asc;`;
 
   const recentlyStaleCoins = staleCoins.filter(
     (s: any) => s.latency < 3600 * (hours + 1),

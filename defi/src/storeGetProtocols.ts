@@ -41,6 +41,7 @@ const handler = async (_event: any) => {
           chainTvls: protocolTvls.chainTvls,
           parentProtocol: protocol.parentProtocol,
           defillamaId: protocol.id,
+          governanceID: protocol.governanceID,
         };
       })
     )

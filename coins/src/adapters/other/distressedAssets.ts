@@ -12,6 +12,8 @@ const contracts: { [chain: string]: { [token: string]: string } } = {
     LUFFY_NEW: "0x7121d00b4fa18f13da6c2e30d19c04844e6afdc8",
     FEG: "0x389999216860ab8e0175387a0c90e5c52522c945",
     yUSDT: "0x83f798e925bcd4017eb265844fddabb448f1707d",
+    yUSDT_v1: "0xe6354ed5bc4b393a5aad09f21c46e101e692d447",
+    ycUSDT_v1: "0x1be5d71f2da660bfdee8012ddc58d024448a0a59",
     yUSDT_yDAI_yUSDT_BUSD: "0x2994529c0652d127b7842094103715ec5299bbed",
     crv_yUSDT_yDAI_yUSDT_BUSD: "0x3b3ac5386837dc563660fb6a0937dfaa5924333b",
   },

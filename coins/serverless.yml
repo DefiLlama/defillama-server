@@ -224,13 +224,13 @@ functions:
     handler: src/triggerStoreCoins.default
     timeout: 900
     events:
-      - schedule: cron(0 * * * ? *) # Hourly
+      - schedule: cron(45 * * * ? *) # Hourly
   StoreBridgedCoins:
     handler: src/storeBridgedCoins.default
     timeout: 900
     memorySize: 1024
     events:
-      - schedule: cron(0 * * * ? *) # Hourly
+      - schedule: cron(45 * * * ? *) # Hourly
 
 resources:
   # CORS for api gateway errors

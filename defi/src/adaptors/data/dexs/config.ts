@@ -1406,5 +1406,9 @@ export default {
         parentId: "Camelot",
         "enabled": true,
         "id": "2792"
+    },
+    "satoshiswap": {
+        "enabled": true,
+        "id": "2827"
     }
 } as AdaptorsConfig

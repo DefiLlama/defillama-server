@@ -1401,5 +1401,10 @@ export default {
         },
         "enabled": true,
         "id": "2814"
+    },
+    "camelot-v3": {
+        parentId: "Camelot",
+        "enabled": true,
+        "id": "2792"
     }
 } as AdaptorsConfig

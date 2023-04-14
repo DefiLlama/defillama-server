@@ -30848,7 +30848,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://native.org",
-    description: "Native is crypto’s invisible DEX layer. Each DEX is owned by an individual project and embedded into that project’s UI, with access to liquidity across the entire network.",
+    description: "Native is crypto's invisible DEX layer. Each DEX is owned by an individual project and embedded into that project's UI, with access to liquidity across the entire network.",
     chain: "Binance",
     logo: `${baseIconsUrl}/native.jpg`,
     audits: "0",
@@ -30856,11 +30856,12 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Binance"],
+    chains: ["Binance", "Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "native/index.js",
     twitter: "native_fi",
+    listedAt: 1681448411
   },
   {
     id: "2804",

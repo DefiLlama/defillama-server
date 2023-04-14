@@ -32,6 +32,7 @@ export default {
   platypus: require("./markets/platypus"),
   curve1: require("./markets/curve"),
   curve1b: require("./markets/curve"),
+  curve1c: require("./markets/curve"),
   curve2: require("./markets/curve"),
   curve3: require("./markets/curve"),
   curve4: require("./markets/curve"),

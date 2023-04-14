@@ -203,3 +203,23 @@ export function camelot(timestamp: number = 0) {
     timestamp,
   );
 }
+export function velocore(timestamp: number = 0) {
+  console.log("starting velocore");
+  return getTokenPrices(
+    "era",
+    "0xe140eac2bb748c8f456719a457f26636617bb0e9",
+    "0x46dbd39e26a56778d88507d7aec6967108c0bd36",
+    undefined,
+    timestamp,
+  );
+}
+export function mute(timestamp: number = 0) {
+  console.log("starting mute");
+  return getTokenPrices(
+    "era",
+    "0x40be1cba6c5b47cdf9da7f963b6f761f4c60627d",
+    "0x8b791913eb07c32779a16750e3868aa8495f5964",
+    undefined,
+    timestamp,
+  );
+}

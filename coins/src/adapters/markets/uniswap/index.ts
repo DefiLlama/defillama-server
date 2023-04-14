@@ -203,3 +203,52 @@ export function camelot(timestamp: number = 0) {
     timestamp,
   );
 }
+export function velocore(timestamp: number = 0) {
+  console.log("starting velocore");
+  return getTokenPrices(
+    "era",
+    "0xe140eac2bb748c8f456719a457f26636617bb0e9",
+    "0x46dbd39e26a56778d88507d7aec6967108c0bd36",
+    undefined,
+    timestamp,
+  );
+}
+export function mute(timestamp: number = 0) {
+  console.log("starting mute");
+  return getTokenPrices(
+    "era",
+    "0x40be1cba6c5b47cdf9da7f963b6f761f4c60627d",
+    "0x8b791913eb07c32779a16750e3868aa8495f5964",
+    undefined,
+    timestamp,
+  );
+}
+export function spacefi(timestamp: number = 0) {
+  console.log("starting spacefi");
+  return Promise.all([
+    getTokenPrices(
+      "era",
+      "0x0700fb51560cfc8f896b2c812499d17c5b0bf6a7",
+      undefined,
+      undefined,
+      timestamp,
+    ),
+    getTokenPrices(
+      "era",
+      "0x868a71ebfc46b86a676768c7b7ad65055cc293ee",
+      undefined,
+      undefined,
+      timestamp,
+    ),
+  ]);
+}
+export function gemswap(timestamp: number = 0) {
+  console.log("starting gemswap");
+  return getTokenPrices(
+    "era",
+    "0x065c8703132F2A38Be3d2dbF7Be6BE455930560c",
+    "0x70B86390133d4875933bE54AE2083AAEbe18F2dA",
+    undefined,
+    timestamp,
+  );
+}

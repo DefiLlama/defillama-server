@@ -748,5 +748,10 @@ export default {
     "covo-v2": {
         "enabled": true,
         "id": "2730"
+    },
+    "camelot-v3": {
+        parentId: "Camelot",
+        "enabled": true,
+        "id": "2792"
     }
 } as AdaptorsConfig

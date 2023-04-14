@@ -31343,5 +31343,52 @@ const data2: Protocol[] = [
     twitter: "nostrafinance",
     listedAt: 1681406218
   },
+  {
+    id: "2826",
+    name: "CZODIAC",
+    address: "bsc:0x5cd0c2C744caF04cda258Efc6558A3Ed3defE97b",
+    symbol: "CZRED",
+    url: "https://czodiac.com",
+    description: "CZODIAC offers an innovative and comprehensive suite of financial tools and services, designed to meet the unique needs of every user. Whether you're a seasoned crypto veteran or a newcomer to the DeFi space, CZODIAC makes it easy for you to achieve your financial goals with its focus on simplicity, accessibility, and cutting-edge technology",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/czodiac.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "czred",
+    cmcId: "23079",
+    category: "Yield",
+    chains: ["Binance"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["Synthetix", "Olive.cash"],
+    module: "czodiac/index.js",
+    audit_links: ["https://audits.finance/Audits/CZUSD-Smart-Contract-Audit.pdf"],
+    twitter: "zodiacs_c",
+    listedAt: 1681436619
+  },
+  {
+    id: "2827",
+    name: "SatoshiSwap",
+    address: "core:0xC951d8561B2f1bcE76FEe922933E243C875ba48f",
+    symbol: "SAT",
+    url: "https://satoshiswap.exchange",
+    description: "SatoshiSwap is a DeFi exchange with concentrated liquidity marketing for CoreDAO ecosystem, improving trading for on-chain traders and market makers with volatile and stable tokens",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/satoshiswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["CORE"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "satoshiswap/index.js",
+    audit_links: [
+      "https://docs.satoshiswap.exchange/contracts/audits",
+      "https://blocksafu.com/project-detail/0xC951d8561B2f1bcE76FEe922933E243C875ba48f"
+    ],
+    twitter: "satoshiswapcore",
+    listedAt: 1681436914
+  },
 ]
 export default data2;

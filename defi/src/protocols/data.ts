@@ -16164,6 +16164,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "paraswap.js",
     twitter: "paraswap",
+    governanceID: ["snapshot:paraswap-dao.eth"],
     audit_links: [
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20ParaSwap%20%5B20.01.2021%5D.pdf",
     ],

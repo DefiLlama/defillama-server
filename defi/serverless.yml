@@ -564,7 +564,7 @@ functions:
     timeout: 900
     memorySize: 1024
     events:
-      - schedule: cron(05 * * * ? *)
+      - schedule: cron(15 * * * ? *)
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
       COINS_DB: ${env:COINS_DB}

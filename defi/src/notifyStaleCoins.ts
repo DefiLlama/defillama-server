@@ -22,18 +22,19 @@ const handler = async (_event: any) => {
     GROUP BY address, symbol, latency, chain
     ORDER BY latency asc;`;
 
-  const recentlyStaleCoins = staleCoins.filter(
-    (s: any) => s.latency < 3600 * (hours + 1),
-  );
-
   const promises: any = [];
-  if (recentlyStaleCoins.length > 100)
-    promises.push(
-      sendMessage(
-        `At least 100 coins have just gone stale!!`,
-        process.env.TEAM_WEBHOOK,
-      ),
-    );
+
+  // const recentlyStaleCoins = staleCoins.filter(
+  //   (s: any) => s.latency < 3600 * (hours + 1),
+  // );
+
+  // if (recentlyStaleCoins.length > 100)
+  //   promises.push(
+  //     sendMessage(
+  //       `At least 100 coins have just gone stale!!`,
+  //       process.env.TEAM_WEBHOOK,
+  //     ),
+  //   );
 
   promises.push(sql`DELETE FROM public.stalecoins`);
 

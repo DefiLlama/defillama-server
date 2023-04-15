@@ -244,6 +244,13 @@ export default async function craftProtocol({
     if (chain !== "tvl") {
       response.currentChainTvls[displayChainName] = chainTvl ? Number(chainTvl.toFixed(5)) : 0;
     }
+    if(chain !== "tvl" && response.chainTvls[displayChainName] === undefined){
+      response.chainTvls[displayChainName]={
+        tvl:[],
+        tokensInUsd:[],
+        tokens:[]
+      }
+    }
     const container = chain === "tvl"? response:response.chainTvls[displayChainName]
 
     container?.tvl?.push(...historicalUsdTvl

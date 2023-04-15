@@ -1410,5 +1410,9 @@ export default {
     "satoshiswap": {
         "enabled": true,
         "id": "2827"
+    },
+    "wagmi": {
+        "enabled": true,
+        "id": "2837"
     }
 } as AdaptorsConfig

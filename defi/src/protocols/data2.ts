@@ -31305,7 +31305,7 @@ const data2: Protocol[] = [
   {
     id: "2824",
     name: "ABC Pool",
-    address: "cfx:acb78besxg2tnxs1ccca45g2fm412mdpr6b0ve6wtc",
+    address: "conflux:0x905f2202003453006eaf975699545f2e909079b8",
     symbol: "ABC",
     url: "https://confluxpos.cn",
     description: "ABC PoS Pool is a staking solution that allows users to participate in PoS safely and pledge CFX without loss to obtain CFX+ABC reward.",

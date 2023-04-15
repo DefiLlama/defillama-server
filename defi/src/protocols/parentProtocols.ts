@@ -1374,6 +1374,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "juiceboxETH",
   },
+  {
+    id: "Sovryn",
+    name: "Sovryn",
+    url: "https://sovryn.com/",
+    description: "Sovryn is a non-custodial and permission-less smart contract based system for bitcoin lending, borrowing and margin trading.",
+    logo: `${baseIconsUrl}/sovryn.png`,
+    gecko_id: "sovryn",
+    cmcId: "8669",
+    chains: [],
+    twitter: "SovrynBTC",
+  },
+
 ];
 
 export default parentProtocols;

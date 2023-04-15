@@ -31738,7 +31738,7 @@ const data2: Protocol[] = [
     url: "https://sovryn.app",
     description: "Sovryn is a non-custodial and permission-less smart contract based system for bitcoin lending, borrowing and margin trading.",
     chain: "RSK",
-    logo: `${baseIconsUrl}/sharky.jpg`,
+    logo: `${baseIconsUrl}/sovryn-lending.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -31747,7 +31747,7 @@ const data2: Protocol[] = [
     chains: ["RSK"],
     oracles: [],
     forkedFrom: [],
-    module: "sovryn-lending.png",
+    module: "sovryn-lending/index.js",
     twitter: "SovrynBTC",
     parentProtocol: "Sovryn",
     listedAt: 1681562277

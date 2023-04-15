@@ -4643,7 +4643,7 @@ const data: Protocol[] = [
     cmcId: "8669",
     category: "Dexes",
     chains: ["RSK"],
-    module: "sovryn.js",
+    module: "sovryn-dex/index.js",
     twitter: "SovrynBTC",
     governanceID: ["snapshot:sovrynbitocracy.eth"],
     audit_links: ["https://www.sovryn.app/library"],

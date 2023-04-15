@@ -31774,5 +31774,26 @@ const data2: Protocol[] = [
     parentProtocol: "Sovryn",
     listedAt: 1681562279
   },
+  {
+    id: "2845",
+    name: "Spiral Fi Mixer",
+    address: null,
+    symbol: "-",
+    url: "https://www.spiralfi.io",
+    description: "Spiral finance is a fully decentralized non-custodial protocol allowing private transactions on-chain.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/sovryn-zero.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Privacy",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "spiral-fi-mixer/index.js",
+    twitter: "SpiralFi",
+    listedAt: 1681580914
+  },
 ]
 export default data2;

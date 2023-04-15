@@ -80,6 +80,7 @@ export function distressed(timestamp: number = 0) {
     distressedAdapter("arbitrum", timestamp),
     distressedAdapter("bsc", timestamp),
     distressedAdapter("ethereum", timestamp),
+    distressedAdapter("avax", timestamp),
   ]);
 }
 export function manualInput(timestamp: number = 0) {

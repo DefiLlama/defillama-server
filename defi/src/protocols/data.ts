@@ -4629,14 +4629,14 @@ const data: Protocol[] = [
   },
   {
     id: "329",
-    name: "Sovryn",
+    name: "Sovryn Dex",
     address: "rsk:0xEfC78FC7D48B64958315949279bA181C2114abbD",
     symbol: "SOV",
     url: "https://www.sovryn.app/",
     description:
       "Sovryn is a non-custodial and permission-less smart contract based system for bitcoin lending, borrowing and margin trading.",
     chain: "RSK",
-    logo: `${baseIconsUrl}/sovryn.svg`,
+    logo: `${baseIconsUrl}/sovryn-dex.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "sovryn",

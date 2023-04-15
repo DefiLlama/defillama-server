@@ -31662,6 +31662,7 @@ const data2: Protocol[] = [
     audit_links: [
       "https://hacken.io/audits/interport/"
     ],
+    treasury: "interport-finance.js",
     listedAt: 1681518751
   },
 ]

@@ -31518,6 +31518,7 @@ const data2: Protocol[] = [
     module: "juicebox-v1/index.js",
     twitter: "juiceboxETH",
     audit_links: ["https://hacken.io/wp-content/uploads/2022/01/%D0%A1onstitution-DAO_11012022Audit_Report.pdf"],
+    parentProtocol: "Juicebox",
     listedAt: 1681516871
   },
   {
@@ -31540,6 +31541,7 @@ const data2: Protocol[] = [
     module: "juicebox-v2/index.js",
     twitter: "juiceboxETH",
     audit_links: ["https://docs.juicebox.money/assets/files/certik-audit-report-12b48328d22ac38207dad74162cac1db.pdf/"],
+    parentProtocol: "Juicebox",
     listedAt: 1681517022
   },
   {
@@ -31565,6 +31567,7 @@ const data2: Protocol[] = [
       "https://hackmd.io/@berndartmueller/2023-01-juice-v3-migration",
       "https://code4rena.com/reports/2022-10-juicebox/"
     ],
+    parentProtocol: "Juicebox",
     listedAt: 1681517104
   },
   {

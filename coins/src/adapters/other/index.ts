@@ -81,6 +81,9 @@ export function distressed(timestamp: number = 0) {
     distressedAdapter("bsc", timestamp),
     distressedAdapter("ethereum", timestamp),
     distressedAdapter("avax", timestamp),
+    distressedAdapter("cronos", timestamp),
+    distressedAdapter("solana", timestamp),
+    distressedAdapter("fantom", timestamp),
   ]);
 }
 export function manualInput(timestamp: number = 0) {

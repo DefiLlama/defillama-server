@@ -217,7 +217,9 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
 
   const distressedAssets =
     chain in contracts
-      ? Object.values(contracts[chain]).map((d: string) => d.toLowerCase())
+      ? Object.values(contracts[chain]).map((d: string) =>
+          chain == "solana" ? d : d.toLowerCase(),
+        )
       : [];
 
   allWrites.map((w: Write) => {

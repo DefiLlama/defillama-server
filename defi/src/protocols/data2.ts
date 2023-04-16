@@ -11961,7 +11961,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "RWA",
-    chains: ["Polygon", "Celo", "Regen",],
+    chains: ["Polygon", "Celo"],
     module: "toucan-protocol/index.js",
     oraclesByChain: {
       polygon: [],

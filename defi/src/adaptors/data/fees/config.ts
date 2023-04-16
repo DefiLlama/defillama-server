@@ -747,7 +747,8 @@ export default {
     },
     "covo-v2": {
         "enabled": true,
-        "id": "2730"
+        "id": "2730",
+        parentId: "Covo Finance"
     },
     "camelot-v3": {
         parentId: "Camelot",

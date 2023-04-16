@@ -8,10 +8,10 @@ export default {
         "id": "111",
         parentId: "AAVE",
         protocolsData: {
-            v1: {
+           /*  v1: {
                 "id": "1838",
-                enabled: true,
-            },
+                enabled: false,
+            }, */
             v2: {
                 "id": "111",
                 enabled: true,

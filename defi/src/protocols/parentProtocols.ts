@@ -1385,7 +1385,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SovrynBTC",
   },
-
+  {
+    id: "Polynomial Protocol",
+    name: "Polynomial Protocol",
+    url: "https://www.polynomial.fi",
+    description: "Polynomial automates financial derivative strategies to create products that deliver passive yield on various assets",
+    logo: `${baseIconsUrl}/polynominal-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PolynomialFi",
+  },
 ];
 
 export default parentProtocols;

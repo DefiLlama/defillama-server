@@ -218,7 +218,10 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6953",
     chains: [],
     twitter: "fraxfinance",
-    governanceID: ["snapshot:frax.eth"]
+    governanceID: [
+      "snapshot:frax.eth",
+      "compound:ethereum:0xd74034c6109a23b6c7657144cacbbbb82bdcb00e"//FXS
+    ]
   },
   {
     id: "Compound Finance",
@@ -231,7 +234,13 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5692",
     chains: [],
     twitter: "compoundfinance",
-    governanceID: ["snapshot:comp-vote.eth", "compound:ethereum:0xc0da02939e1441f497fd74f78ce7decb17b66529"]
+    governanceID: [
+      "snapshot:comp-vote.eth", 
+      "compound:ethereum:0xc0da02939e1441f497fd74f78ce7decb17b66529",
+      "compound:ethereum:0xc0da01a04c3f3e0be433606045bb7017a7323e38",
+      "compound:ethereum:0x336505ec1bcc1a020eede459f57581725d23465a",
+      //"compound:ethereum:0x542ed9b1b50dc686e88404c73c062faa39568304" //GridZone.io ZONE
+    ]
   },
   {
     id: "Algofi",
@@ -447,7 +456,11 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "7083",
     chains: [],
     twitter: "Uniswap",
-    governanceID: ["snapshot:uniswap"]
+    governanceID: [
+      "snapshot:uniswap", 
+      "compound:ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3",
+      "compound:ethereum:0x5e4be8bc9637f0eaa1a755019e06a68ce081d58f"
+    ]
   },
   {
     id: "Tetu",
@@ -700,7 +713,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "2873",
     chains: [],
     twitter: "MetronomeDAO",
-    governanceID: ["snapshot:metronome.eth"]
+    governanceID: ["snapshot:metronome.eth", "compound:ethereum:0xc8697de7c190244bfd63d276823aa20035cb5a12"]
   },
   {
     id: "Paraluni",
@@ -737,6 +750,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "inverse-finance",
     cmcId: "8720",
     chains: [],
+    governanceID: ["compound:ethereum:0x35d9f4953748b318f18c30634ba299b237eedfff"],
     twitter: "InverseFinance",
   },
   {
@@ -1282,6 +1296,96 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Hector_Network",
     governanceID: ["snapshot:hectordao.eth"]
   },
+  {
+    id: "Zenlink",
+    name: "Zenlink",
+    url: "https://zenlink.pro",
+    description: "An ultimate, open, and universal cross-chain DEX protocol for building DEX on Polkadot with one click. Make DEX easier, for more people.",
+    logo: `${baseIconsUrl}/zenlink.png`,
+    gecko_id: "zenlink-network-token",
+    cmcId: "15419",
+    chains: [],
+    twitter: "ZenlinkPro",
+  },
+  {
+    id: "Camelot",
+    name: "Camelot",
+    url: "https://camelot.exchange/",
+    description: "Camelot is an ecosystem-focused and community-driven DEX built on Arbitrum. It has been built as a highly efficient and customizable protocol, allowing both builders and users to leverage our custom infrastructure for deep, sustainable, and adaptable liquidity. Camelot moves beyond the traditional design of DEXs to focus on offering a tailored approach that prioritises composability",
+    logo: `${baseIconsUrl}/camelot.png`,
+    gecko_id: "camelot-token",
+    cmcId: "22949",
+    chains: [],
+    twitter: "CamelotDEX",
+  },
+  {
+    id: "Thala Labs",
+    name: "Thala Labs",
+    url: "https://www.thala.fi/",
+    description: "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
+    logo: `${baseIconsUrl}/thala-labs.png`,
+    gecko_id: "thala",
+    cmcId: "24268",
+    chains: [],
+    twitter: "ThalaLabs",
+  },
+  {
+    id: "stake.link",
+    name: "stake.link",
+    url: "https://stake.link",
+    description: "stake.link is a diversified liquid staking protocol powered by fifteen of the most experienced and reliable infrastructure providers in Web3",
+    logo: `${baseIconsUrl}/stake.link.png`,
+    gecko_id: "stake-link",
+    cmcId: "22906",
+    chains: [],
+    twitter: "stakedotlink",
+    governanceID: ["snapshot:stakedotlink.eth"]
+  },
+  {
+    id: "Dove Swap",
+    name: "Dove Swap",
+    url: "https://swap.dovish.finance",
+    description: "Bringing innovative DeFi to the zkEVM space.",
+    logo: `${baseIconsUrl}/dove-swap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "DovishFi",
+  },
+  {
+    id: "Forge SX",
+    name: "Forge SX",
+    url: "https://forge.sx",
+    description: "Forge is a brand new DeFi protocol enabling anyone to mint & trade real-world assets with the convenience of the blockchain",
+    logo: `${baseIconsUrl}/dove-swap.png`,
+    gecko_id: "forge",
+    cmcId: null,
+    chains: [],
+    twitter: "forge_sx",
+  },
+  {
+    id: "Juicebox",
+    name: "Juicebox",
+    url: "https://juicebox.money/",
+    description: "The programmable crypto fundraising protocol for builders and creators. Light enough for a group of friends, powerful enough for a global network of anons. Community-owned, on Ethereum",
+    logo: `${baseIconsUrl}/juicebox.png`,
+    gecko_id: "juicebox",
+    cmcId: "15456",
+    chains: [],
+    twitter: "juiceboxETH",
+  },
+  {
+    id: "Sovryn",
+    name: "Sovryn",
+    url: "https://sovryn.com/",
+    description: "Sovryn is a non-custodial and permission-less smart contract based system for bitcoin lending, borrowing and margin trading.",
+    logo: `${baseIconsUrl}/sovryn.png`,
+    gecko_id: "sovryn",
+    cmcId: "8669",
+    chains: [],
+    twitter: "SovrynBTC",
+  },
+
 ];
 
 export default parentProtocols;

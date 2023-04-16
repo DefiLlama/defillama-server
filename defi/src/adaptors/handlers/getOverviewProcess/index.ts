@@ -197,7 +197,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     console.info("Sending discord alerts:", errors.length)
     for (const errorMSG of errors) {
         await sendDiscordAlert(errorMSG, adaptorType).catch(e => console.log("discord error", e))
-        await delay(1000)
+        await delay(750)
     }
 
     // Handle rejected dexs
@@ -236,7 +236,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     for (const { spikes } of okProtocols) {
         if (spikes) {
-            await sendDiscordAlert(spikes, adaptorType).catch(e => console.log("discord error", e))
+            await sendDiscordAlert(spikes, adaptorType, false).catch(e => console.log("discord error", e))
             await delay(1000)
         }
     }

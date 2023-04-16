@@ -68,7 +68,6 @@ export async function getCompound(project: string) {
 }
 
 export async function setCompound(project: string, cache: any) {
-  console.log('updating project: ', project)
   return setCache('compound', project, cache)
 }
 
@@ -77,6 +76,5 @@ export async function getCompoundOverview() {
 }
 
 export async function setCompoundOverview(cache: any) {
-  console.log('overview')
   return setCache('overview', 'compound', cache)
 }

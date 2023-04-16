@@ -6,6 +6,7 @@ export default {
     "uniswap": {
         "enabled": true,
         "id": "1",
+        parentId: "Uniswap",
         "protocolsData": {
             "v1": {
                 "enabled": true,
@@ -24,6 +25,7 @@ export default {
     "pancakeswap": {
         "enabled": true,
         "id": "194",
+        parentId: "PancakeSwap",
         protocolsData: {
             v1: {
                 "disabled": true,
@@ -37,6 +39,10 @@ export default {
             stableswap: {
                 "enabled": true,
                 "id": "2529"
+            },
+            v3: {
+                "enabled": true,
+                "id": "2769"
             }
         },
     }

@@ -6,6 +6,7 @@ export default {
         "id": "2299"
     },
     "gmx": {
+        parentId: "337",
         "protocolsData": {
             "derivatives": {
                 displayName: "GMX - Derivatives",
@@ -25,6 +26,7 @@ export default {
         "id": "2326"
     },
     "metavault.trade": {
+        parentId: "Metavault",
         "enabled": true,
         "id": "1801"
     },
@@ -37,6 +39,7 @@ export default {
         "id": "2548"
     },
     "morphex": {
+        parentId: "2662",
         "protocolsData": {
             "derivatives": {
                 displayName: "Morphex - Derivatives",
@@ -46,5 +49,29 @@ export default {
         },
         "enabled": true,
         "id": "2662"
+    },
+    "covo-v2": {
+        "enabled": true,
+        "id": "2730",
+        parentId: "2525",
+        "protocolsData": {
+            "derivatives": {
+                displayName: "Covo V2 - Derivatives",
+                "id": "2730",
+                "enabled": true
+            }
+        },
+    },
+    "spacedex": {
+        parentId: "2814",
+        "protocolsData": {
+            "derivatives": {
+                "id": "2814",
+                "enabled": true,
+                "displayName": "SpaceDex - Derivatives"
+            }
+        },
+        "enabled": true,
+        "id": "2814"
     }
 } as AdaptorsConfig

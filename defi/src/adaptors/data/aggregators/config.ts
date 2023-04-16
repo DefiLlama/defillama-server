@@ -9,6 +9,7 @@ export default {
         "enabled": true,
         "startFrom": 1630022400,
         "id": "2249",
+        parentId: "2249",
         protocolsData: {
             Dexible_v2: {
                 "id": "2249",

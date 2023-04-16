@@ -1,6 +1,7 @@
 {
   "arbitrum": {
-    "gDAI": "0x4fc050d75dba5bf2d6ebd3667ffec731a45b1f35"
+    "gDAI": "0x4fc050d75dba5bf2d6ebd3667ffec731a45b1f35",
+    "mooCurveWSTETH": "0xf05f0e8760ce9a32df05549309ebef7ddb2190fe"
   },
   "optimism": {
     "wsETH": "0x926b92b15385981416a5e0dcb4f8b31733d598cf",
@@ -9,6 +10,7 @@
   },
   "polygon": {
     "stMATIC": "0x4c8dfb55d08bd030814cb6fe774420f3c01a5edb",
+    "wstETH": "0xcc03032fbf096f14a2de8809c79d8b584151212b",
     "gDAI": "0x2dea91e68fdc5693b63924c5fee0a28cfb78a801",
     "MaticX": "0x2acd702f7d35d3d2915663d7f7cbdf2863ec6e79"
   }

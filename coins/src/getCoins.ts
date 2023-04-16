@@ -26,14 +26,12 @@ const handler = async (
       timestamp: coin.timestamp,
     }
     const finalCoin = await getRecordClosestToTimestamp(
-      coin.redirect ?? coin.PK, 
-      timestampRequested ?? getCurrentUnixTimestamp(), 
-      DAY*2,
-    );
-    if(finalCoin.SK === undefined){
-      return
-    }
-    formattedCoin.price = finalCoin.price;
+      coin.redirect ?? coin.PK,
+      timestampRequested ?? getCurrentUnixTimestamp(),
+      DAY * 2,
+    )
+    if (finalCoin.SK === undefined) return;
+    formattedCoin.price = formattedCoin.price ?? finalCoin.price;
     formattedCoin.timestamp = finalCoin.SK;
     response[coinName] = formattedCoin;
   }))

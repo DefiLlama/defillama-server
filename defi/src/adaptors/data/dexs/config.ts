@@ -4,6 +4,7 @@ export default {
     "balancer": {
         "enabled": true,
         "id": "116",
+        parentId: "Balancer",
         protocolsData: {
             v1: {
                 id: "116",
@@ -20,6 +21,7 @@ export default {
     "bancor": {
         "enabled": true,
         "id": "162",
+        parentId: "Bancor",
         protocolsData: {
             v3: {
                 id: "1995",
@@ -42,6 +44,7 @@ export default {
     "pancakeswap": {
         "enabled": true,
         "id": "194",
+        parentId: "PancakeSwap",
         protocolsData: {
             v1: {
                 "disabled": true,
@@ -56,6 +59,10 @@ export default {
                 "enabled": true,
                 "id": "2529",
                 startFrom: 1663718400
+            },
+            v3: {
+                "enabled": true,
+                "id": "2769"
             }
         },
     },
@@ -66,6 +73,7 @@ export default {
     "uniswap": {
         "enabled": true,
         "id": "1",
+        parentId: "Uniswap",
         "protocolsData": {
             "v1": {
                 "enabled": true,
@@ -84,6 +92,7 @@ export default {
     "traderjoe": {
         "enabled": true,
         "id": "468",
+        parentId: "Trader Joe",
         protocolsData: {
             v1: {
                 enabled: true,
@@ -98,6 +107,7 @@ export default {
     "sushiswap": {
         "enabled": true,
         "id": "119",
+        parentId: "Sushi",
         protocolsData: {
             classic: {
                 enabled: true,
@@ -114,6 +124,7 @@ export default {
         "id": "302"
     },
     "spiritswap": {
+        parentId: "SpiritSwap",
         "enabled": true,
         "id": "311"
     },
@@ -154,6 +165,7 @@ export default {
         "id": "1799"
     },
     "gmx": {
+        parentId: "337",
         "protocolsData": {
             "swap": {
                 "id": "337",
@@ -168,6 +180,7 @@ export default {
     "quickswap": {
         "enabled": true,
         "id": "306",
+        parentId: "Quickswap",
         protocolsData: {
             v2: {
                 id: "306",
@@ -181,6 +194,7 @@ export default {
         }
     },
     "woofi": {
+        parentId: "WOOFi",
         "enabled": true,
         "id": "1461"
     },
@@ -199,6 +213,7 @@ export default {
     "kyberswap": {
         "enabled": true,
         "id": "127",
+        parentId: "KyberSwap",
         protocolsData: {
             classic: {
                 id: "127",
@@ -241,6 +256,7 @@ export default {
         "id": "373"
     },
     "apeswap": {
+        parentId: "ApeSwap",
         "enabled": true,
         "id": "398"
     },
@@ -271,6 +287,7 @@ export default {
     "0x": {
         "enabled": true,
         "id": "2116",
+        parentId: "2116",
         protocolsData: {
             "0x RFQ": {
                 "id": "2116",
@@ -316,6 +333,7 @@ export default {
         "id": "1632"
     },
     "sunswap": {
+        parentId: "SUN.io",
         "enabled": true,
         "id": "690"
     },
@@ -344,6 +362,7 @@ export default {
         "id": "551"
     },
     "tomb-swap": {
+        parentId: "Tomb Finance",
         "enabled": true,
         "id": "2129"
     },
@@ -352,10 +371,12 @@ export default {
         "id": "366"
     },
     "frax-swap": {
+        parentId: "Frax Finance",
         "enabled": true,
         "id": "2121"
     },
     "iziswap": {
+        parentId: "iZUMI Finance",
         "enabled": true,
         "id": "1883"
     },
@@ -380,6 +401,7 @@ export default {
         "id": "1726"
     },
     "mm-stableswap-polygon": {
+        parentId: "MM Finance",
         "enabled": true,
         "id": "2015"
     },
@@ -440,6 +462,7 @@ export default {
     "beamswap": {
         "enabled": true,
         "id": "1289",
+        parentId: "BeamSwap",
         protocolsData: {
             "classic": {
                 id: "1289",
@@ -501,6 +524,7 @@ export default {
         "id": "1052"
     },
     "tethys-finance": {
+        parentId: "Tethys Finance",
         "enabled": true,
         "id": "1139"
     },
@@ -514,6 +538,7 @@ export default {
         "id": "712"
     },
     "lif3-swap": {
+        parentId: "Lif3.com",
         "enabled": true,
         "id": "2040"
     },
@@ -534,11 +559,13 @@ export default {
         "id": "728"
     },
     "polycat": {
+        parentId: "Polycat Finance",
         "enabled": true,
         "id": "499"
     },
     "voltswap": {
         "enabled": true,
+        parentId: "Volt Finance",
         protocolsData: {
             v1: {
                 "disabled": true,
@@ -607,6 +634,7 @@ export default {
         "id": "1166"
     },
     "blue-planet": {
+        parentId: "Planet",
         "enabled": true,
         "id": "2158"
     },
@@ -648,6 +676,7 @@ export default {
         "id": "2066"
     },
     "dao-swap": {
+        parentId: "DAO Maker",
         "enabled": true,
         "id": "2167"
     },
@@ -668,6 +697,7 @@ export default {
         "id": "299"
     },
     "templedao-trade": {
+        parentId: "Temple DAO",
         "enabled": true,
         "id": "2178"
     },
@@ -694,6 +724,7 @@ export default {
     "surfswap": {
         "enabled": true,
         "id": "1868",
+        parentId: "Surfswap",
         protocolsData: {
             classic: {
                 "id": "1868",
@@ -751,6 +782,7 @@ export default {
         "id": "2118"
     },
     "huckleberry": {
+        parentId: "Huckleberry",
         "enabled": true,
         "id": "630"
     },
@@ -791,6 +823,7 @@ export default {
         "id": "1468"
     },
     "algofi": {
+        parentId: "Algofi",
         "enabled": true,
         "id": "2091"
     },
@@ -827,6 +860,7 @@ export default {
         "id": "581"
     },
     "fairyswap": {
+        parentId: "FairySwap",
         disabled: true,
         "enabled": true,
         "id": "1671"
@@ -888,6 +922,7 @@ export default {
         "id": "351"
     },
     "4swap": {
+        parentId: "Pando",
         "enabled": true,
         "id": "951"
     },
@@ -896,6 +931,7 @@ export default {
         "id": "2195"
     },
     "tetu": {
+        parentId: "Tetu",
         "enabled": true,
         "id": "506"
     },
@@ -912,6 +948,7 @@ export default {
         "id": "1882"
     },
     "increment-swap": {
+        parentId: "incrementFinance",
         "enabled": true,
         "id": "1907"
     },
@@ -960,6 +997,7 @@ export default {
         "id": "2256"
     },
     "camelot": {
+        parentId: "Camelot",
         "enabled": true,
         "id": "2307"
     },
@@ -1150,6 +1188,7 @@ export default {
     "zyberswap": {
         "enabled": true,
         "id": "2467",
+        parentId: "ZyberSwap",
         protocolsData: {
             "v2": {
                 enabled: true,
@@ -1244,6 +1283,7 @@ export default {
     "dexible": {
         enabled: false,
         id: "2249",
+        parentId: "2249",
         protocolsData: {
             Dexible_v2: {
                 id: "2249",
@@ -1256,6 +1296,7 @@ export default {
         id: "2603"
     },
     "oswap": {
+        parentId: "Oswap",
         enabled: true,
         id: "1778"
     },
@@ -1281,6 +1322,7 @@ export default {
         id: "2586"
     },
     "wemix.fi": {
+        parentId: "WEMIX.FI",
         enabled: true,
         id: "2674"
     },
@@ -1305,6 +1347,7 @@ export default {
         "id": "2731"
     },
     "hadouken-amm": {
+        parentId: "Hadouken Finance",
         "enabled": true,
         "id": "2748"
     },
@@ -1317,6 +1360,7 @@ export default {
         "id": "2760"
     },
     "morphex": {
+        parentId: "2662",
         "protocolsData": {
             "swap": {
                 "id": "2662",
@@ -1331,5 +1375,44 @@ export default {
     "kyotoswap": {
         "enabled": true,
         "id": "2350"
+    },
+    "SmarDex": {
+        "enabled": true,
+        "id": "2695"
+    },
+    "mm-finance-arbitrum": {
+        parentId: "MM Finance",
+        "enabled": true,
+        "id": "2754"
+    },
+    "native": {
+        "enabled": true,
+        "id": "2803"
+    },
+    "spacedex": {
+        parentId: "2814",
+        "protocolsData": {
+            "swap": {
+                "id": "2814",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "SpaceDex - SWAP"
+            }
+        },
+        "enabled": true,
+        "id": "2814"
+    },
+    "camelot-v3": {
+        parentId: "Camelot",
+        "enabled": true,
+        "id": "2792"
+    },
+    "satoshiswap": {
+        "enabled": true,
+        "id": "2827"
+    },
+    "wagmi": {
+        "enabled": true,
+        "id": "2837"
     }
 } as AdaptorsConfig

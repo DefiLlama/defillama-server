@@ -3,6 +3,7 @@ import { AdaptorRecord, IRecordAdaptorRecordData } from "../../db-utils/adaptor-
 import { formatChainKey } from "../../utils/getAllChainsFromAdaptors"
 import { sumAllVolumes } from "../../utils/volumeCalcs"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
+import { DISCORD_USER_0xgnek_ID, DISCORD_USER_0xtawa_ID } from "../notifyStatus"
 import { convertDataToUSD } from "./convertRecordDataCurrency"
 
 /**
@@ -200,10 +201,15 @@ function checkSpikes(lastDataRecord: IJSON<AdaptorRecord | undefined>, newGen: A
             }
         }
     }, {} as IRecordAdaptorRecordData)
-    const prev = ath//sumAllVolumes(prevObj)
+    const prevVal = sumAllVolumes(prevObj)
+    const prev = ath
     const chg1d = Math.abs((current - prev) / prev) * 100
-    if (chg1d && chg1d > 10000 && current > 10000000) {
-        spikesLogs.push(`Spike found!\n1dChange: ${chg1d}\nTimestamp: ${newGen.timestamp}\nRecord: ${JSON.stringify(newGen, null, 2)}`)
+    if (prevVal !== 0 && chg1d && chg1d > 10000 && current > 10000000) {
+        spikesLogs.push(`SPIKE DETECTED ON ${newGen.pk}
+1dChange: ${chg1d}
+Timestamp: ${newGen.timestamp}
+Record: ${JSON.stringify(newGen, null, 2)}
+Please ${DISCORD_USER_0xtawa_ID} ${DISCORD_USER_0xgnek_ID} take a look`)
         newGen.data = prevObj
     }
 }

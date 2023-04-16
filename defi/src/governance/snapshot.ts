@@ -1,18 +1,15 @@
-import protocols, { Protocol } from '../protocols/data'
-import parentProtocols from '../protocols/parentProtocols'
+
 import { sliceIntoChunks } from '@defillama/sdk/build/util/index'
 import { graphURL, metadataQuery, proposalQuery, } from './snapshotQueries'
 import axios from 'axios'
 import { getSnapshot, setSnapshot, getSnapshotOverview, setSnapshotOverview, } from './cache'
 import { GovCache, Proposal, } from './types'
-import { updateStats, } from './utils'
-
+import { updateStats, getGovernanceSources, getChainNameFromId, } from './utils'
 
 export function getSnapshotIds() {
   const snapshotIds = new Set()
   const addSnapshot = (i: any) => i.governanceID?.filter((j: any) => j.startsWith('snapshot:')).forEach((j: any) => snapshotIds.add(j))
-  protocols.map(addSnapshot)
-  parentProtocols.map(addSnapshot)
+  getGovernanceSources().map(addSnapshot)
   return [...snapshotIds].map((i: any) => i.replace('snapshot:', ''))
 }
 
@@ -36,7 +33,7 @@ export async function getProposals(ids: string[], recent?: boolean) {
   const length = 1000
   let fetchAgain = false
   const variables: any = { ids, skip: 0, }
-  if (recent) variables.startFrom = Math.floor(+Date.now() / 1e3 - ONE_WEEK)
+  if (recent) variables.startFrom = Math.floor(+Date.now() / 1e3 - (ONE_WEEK * 12))
   do {
     const { data: { data: { proposals, } } } = await axios.post(graphURL, {
       query: proposalQuery,
@@ -69,6 +66,7 @@ export async function updateSnapshots() {
     const fetchOnlyProposals: string[] = []
     metadataAll.forEach((v: any) => {
       idMap[v.id].metadata = v
+      if (v.network) v.chainName = getChainNameFromId(v.network)
       idMap[v.id].id = v.id
       if (!idMap[v.id].proposals) firstFetchIds.push(v.id)
       else fetchOnlyProposals.push(v.id)

@@ -4,9 +4,9 @@ const normalizedChainReplacements = {
   "wanchain": "wan",
   "kucoin": "kcc",
   "terra classic": "terra",
-  "nova network": "nova" ,
-  "godwokenv1" : "godwoken_v1",
-  "arbitrum nova" : "arbitrum_nova",
+  "nova network": "nova",
+  "godwokenv1": "godwoken_v1",
+  "arbitrum nova": "arbitrum_nova",
   "zksync era": "era",
   "polygon zkevm": "polygon_zkevm"
 } as {
@@ -18,11 +18,11 @@ export function normalizeChain(chain: string) {
   return normalizedChainReplacements[normalizedChain] ?? normalizedChain;
 }
 
-export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string){
+export function isDoubleCounted(moduleDoubleCounted?: boolean, category?: string) {
   return moduleDoubleCounted ?? (category === "Yield Aggregator" || category === "Yield");
 }
 
-export function isExcludedFromChainTvl(category?: string){
+export function isExcludedFromChainTvl(category?: string) {
   return category === "RWA";
 }
 
@@ -55,6 +55,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 42161,
+    governanceID: ["snapshot:arbitrumfoundation.eth"]
   },
   "Palm": {
     geckoId: null,
@@ -73,6 +74,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 10,
+    governanceID: ["snapshot:opcollective.eth"]
   },
   "Stacks": {
     geckoId: "blockstack",
@@ -95,9 +97,9 @@ export const chainCoingeckoIds = {
     cmcId: "2092",
   },
   "Witnet": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "witnet",
+    symbol: "WIT",
+    cmcId: "14925",
   },
   "BSC": {
     geckoId: "binancecoin",
@@ -144,6 +146,7 @@ export const chainCoingeckoIds = {
     cmcId: "1659",
     categories: ["EVM"],
     chainId: 100,
+    governanceID: ["snapshot:xdaistake.eth"]
   },
   "XdaiArb": {
     geckoId: null,
@@ -230,6 +233,7 @@ export const chainCoingeckoIds = {
     cmcId: "3945",
     categories: ["EVM"],
     chainId: 1666600000,
+    governanceID: ["snapshot:harmony-mainnet.eth"]
   },
   "Rootstock": {
     geckoId: "rootstock",
@@ -294,6 +298,7 @@ export const chainCoingeckoIds = {
     cmcId: "2087",
     categories: ["EVM"],
     chainId: 321,
+    governanceID: ["snapshot:kcc.eth"]
   },
   "Karura": {
     geckoId: "karura",
@@ -334,6 +339,7 @@ export const chainCoingeckoIds = {
     cmcId: "2777",
     categories: ["EVM"],
     chainId: 4689,
+    governanceID: ["snapshot:iotex.eth"]
   },
   "Ultra": {
     geckoId: "ultra",
@@ -369,6 +375,7 @@ export const chainCoingeckoIds = {
     cmcId: "3930",
     categories: ["EVM"],
     chainId: 108,
+    governanceID: ["snapshot:thundercorelabs.eth"]
   },
   "Lamden": {
     geckoId: "lamden",
@@ -409,6 +416,7 @@ export const chainCoingeckoIds = {
     cmcId: "2345",
     categories: ["EVM"],
     chainId: 269,
+    governanceID: ["snapshot:xinlian.eth"]
   },
   "GoChain": {
     geckoId: "gochain",
@@ -444,6 +452,7 @@ export const chainCoingeckoIds = {
     cmcId: "5634",
     categories: ["EVM"],
     chainId: 122,
+    governanceID: ["snapshot:fusedao.eth"]
   },
   "smartBCH": {
     geckoId: "bitcoin-cash",
@@ -479,6 +488,7 @@ export const chainCoingeckoIds = {
     cmcId: "2359",
     categories: ["EVM"],
     chainId: 333999,
+    governanceID: ["snapshot:polis-dao.eth"]
   },
   "ZYX": {
     geckoId: "zyx",
@@ -518,6 +528,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 1088,
+    governanceID: ["snapshot:metislayer2.eth"]
   },
   "Ubiq": {
     geckoId: "ubiq",
@@ -525,6 +536,7 @@ export const chainCoingeckoIds = {
     cmcId: "588",
     categories: ["EVM"],
     chainId: 8,
+    governanceID: ["snapshot:ubiq.eth"]
   },
   "Mixin": {
     geckoId: "mixin",
@@ -552,6 +564,7 @@ export const chainCoingeckoIds = {
     cmcId: "4747",
     categories: ["EVM"],
     chainId: 106,
+    governanceID: ["snapshot:velascommunity.eth"]
   },
   "Polkadot": {
     geckoId: "polkadot",
@@ -593,6 +606,13 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainId: 2020,
   },
+  "SmartBCH": {
+    geckoId: "bitcoin-cash",
+    symbol: "BCH",
+    cmcId: "1831",
+    categories: ["EVM"],
+    chainId: 10000,
+  },
   "zkSync Lite": {
     geckoId: null,
     symbol: null,
@@ -602,13 +622,6 @@ export const chainCoingeckoIds = {
       chain: "Ethereum",
       types: ["L2", "gas"]
     },
-  },
-  "SmartBCH": {
-    geckoId: "bitcoin-cash",
-    symbol: "BCH",
-    cmcId: "1831",
-    categories: ["EVM"],
-    chainId: 10000,
   },
   "Godwoken": {
     geckoId: null,
@@ -679,6 +692,7 @@ export const chainCoingeckoIds = {
     cmcId: "5919",
     categories: ["EVM"],
     chainId: 82,
+    governanceID: ["snapshot:meter-mainnet.eth"]
   },
   "Oasis": {
     geckoId: "oasis-network",
@@ -711,6 +725,7 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
     chainId: 1284,
+    governanceID: ["snapshot:moonbeam-foundation.eth"]
   },
   "Astar": {
     geckoId: "astar",
@@ -733,6 +748,7 @@ export const chainCoingeckoIds = {
       types: ["skale"]
     },
     chainId: 836542336838601,
+    governanceID: ["snapshot:curiotools.eth"]
   },
   "SKALE": {
     geckoId: "skale",
@@ -768,6 +784,7 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Cosmos"],
     chainId: "9001",
+    governanceID: ["snapshot:evmosdao.eth"]
   },
   "Proton": {
     geckoId: "proton",
@@ -823,6 +840,7 @@ export const chainCoingeckoIds = {
     cmcId: "19819",
     categories: ["EVM"],
     chainId: 47805,
+    governanceID: ["snapshot:rei-network.eth"]
   },
   "Crab": {
     geckoId: "darwinia-crab-network",
@@ -872,6 +890,7 @@ export const chainCoingeckoIds = {
     cmcId: "18327",
     categories: ["EVM"],
     chainId: 534,
+    governanceID: ["snapshot:cndl.eth"]
   },
   "Bifrost": {
     geckoId: "bifrost-native-coin",
@@ -1030,6 +1049,7 @@ export const chainCoingeckoIds = {
     cmcId: "15399",
     categories: ["EVM"],
     chainId: 87,
+    governanceID: ["snapshot:novanetwork.eth"]
   },
   "Kintsugi": {
     geckoId: "kintsugi",
@@ -1080,10 +1100,10 @@ export const chainCoingeckoIds = {
     cmcId: "21516",
     categories: ["EVM", "Cosmos"],
   },
-    "Ripple": {
-      geckoId: "ripple",
-      symbol: "XRP",
-      cmcId: "52",
+  "Ripple": {
+    geckoId: "ripple",
+    symbol: "XRP",
+    cmcId: "52",
   },
   "GodwokenV1": {
     geckoId: null,
@@ -1147,6 +1167,7 @@ export const chainCoingeckoIds = {
     symbol: "VS",
     cmcId: "19083",
     categories: ["EVM"],
+    governanceID: ["snapshot:vnetwork.eth"]
   },
   "EthereumPoW": {
     geckoId: "ethereum-pow-iou",
@@ -1224,6 +1245,11 @@ export const chainCoingeckoIds = {
     geckoId: "starknet",
     symbol: "STRK",
     cmcId: null,
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
+    governanceID: ["snapshot:starknet.eth"]
   },
   "Dexit": {
     geckoId: "dexit-finance",
@@ -1354,6 +1380,7 @@ export const chainCoingeckoIds = {
     symbol: "RPG",
     cmcId: "12221",
     categories: ["EVM"],
+    governanceID: ["snapshot:rangersprotocoldao.eth"]
   },
   "Lung": {
     geckoId: null,
@@ -1391,12 +1418,27 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM", "Rollup"],
     parent: {
-      chain: "Polygon",
+      chain: "Ethereum",
       types: ["L2", "gas"]
     },
     chainId: 1101
   },
-  
+  "Meta": {
+    geckoId: "metadium",
+    symbol: "META",
+    cmcId: "3418",
+    categories: ["EVM"],
+  },
+  "Equilibrium": {
+    geckoId: "equilibrium-token",
+    symbol: "EQ",
+    cmcId: "6780",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1445,7 +1487,7 @@ export function transformNewChainName(chain: string) {
     case "arbitrum_nova":
       return "Arbitrum Nova"
     case "Milkomeda":
-        return "Milkomeda C1"
+      return "Milkomeda C1"
     case "Elrond":
       return "MultiversX"
     case "RSK":
@@ -1476,7 +1518,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kcc":
       return useNewChainNames ? "KCC" : "Kucoin"
     case "okexchain":
-      return useNewChainNames ? "OKXChain": "OKExChain"
+      return useNewChainNames ? "OKXChain" : "OKExChain"
     case "xdai":
       return useNewChainNames ? "Gnosis" : "xDai"
     case "cosmos":
@@ -1486,7 +1528,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "nova":
       return useNewChainNames ? "Nova Network" : "Nova Network"
     case "godwoken_v1":
-      return useNewChainNames ? "GodwokenV1"   : "GodwokenV1"
+      return useNewChainNames ? "GodwokenV1" : "GodwokenV1"
     case "elrond":
       return useNewChainNames ? "MultiversX" : "Elrond"
     case "rsk":
@@ -1560,7 +1602,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "ethereumclassic":
       return "EthereumClassic"
     case "zksync":
-        return useNewChainNames ? "zkSync Lite": "zkSync"
+      return useNewChainNames ? "zkSync Lite" : "zkSync"
     case "godwoken":
       return "Godwoken"
     case "callisto":
@@ -1783,6 +1825,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "zkSync Era"
     case "polygon_zkevm":
       return "Polygon zkEVM"
+    case "meta":
+      return "Meta"
+    case "equilibrium":
+        return "Equilibrium"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }
@@ -1794,4 +1840,14 @@ export function getDisplayChain(chains: string[]) {
   } else {
     return chains[0];
   }
+}
+
+const chainIdToNameMap = {} as {
+  [id: string]: string
+}
+
+Object.entries(chainCoingeckoIds).forEach(([chain, obj]) => chainIdToNameMap[obj.chainId + ''] = chain)
+
+export function getChainNameFromId(id: string | number | undefined) {
+  return chainIdToNameMap['' + id]
 }

@@ -1,6 +1,18 @@
 
 import * as sdk from '@defillama/sdk'
 import { GovCache, Proposal, } from './types'
+import protocols, { Protocol } from '../protocols/data'
+import parentProtocols from '../protocols/parentProtocols'
+import { chainCoingeckoIds } from '../utils/normalizeChain'
+export { getChainNameFromId } from '../utils/normalizeChain'
+
+export function getGovernanceSources() {
+  return [
+    protocols,
+    parentProtocols,
+    Object.values(chainCoingeckoIds),
+  ].flat()
+}
 
 const ONE_YEAR = 365 * 24 * 3600
 const ONE_MONTH = 30 * 24 * 3600
@@ -31,11 +43,15 @@ export function updateStats(cache: GovCache, overview: any, _id: any) {
   stats.successfulProposals = proposalsArray.filter(isSuccessfulProposal).length
   stats.followersCount = metadata.followersCount
   stats.name = metadata.name
+  stats.chainName = metadata.chainName
   stats.id = metadata.id
   stats.strategyCount = metadata.strategies.length
   stats.followersCount = metadata.followersCount
+  stats.highestTotalScore = highestTotalScore
 
   proposalsArray.forEach(i => {
+    if (!i.start) i.start = 0
+    if (!i.end) i.end = timeNow
     const tempEndDate = i.end - timeNow > 3 * ONE_MONTH ? timeNow : i.end
     if (tempEndDate - i.start > ONE_YEAR) i.start = tempEndDate - ONE_MONTH
     i.month = (new Date(i.start * 1000)).toISOString().slice(0, 7)
@@ -68,6 +84,7 @@ export function updateStats(cache: GovCache, overview: any, _id: any) {
   cache.stats = stats
 
   function isSuccessfulProposal(i: Proposal) {
+    if (['Succeeded', 'Queued', 'Executed'].includes(i.state)) return true
     if (i.hasOwnProperty('executed')) return i.executed
     let quorum = i.quorum
     if (quorum < 1) {

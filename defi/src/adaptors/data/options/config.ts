@@ -23,6 +23,7 @@ export default {
     "opyn": {
         "enabled": false,
         "id": "285",
+        parentId: "Opyn",
         protocolsData: {
             gamma: {
                 id: "285",

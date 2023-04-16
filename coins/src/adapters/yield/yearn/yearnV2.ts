@@ -25,6 +25,7 @@ const manualVaults: { [chain: string]: string[] } = {
   ],
   optimism: [
     '0x22f39d6535df5767f8f57fee3b2f941410773ec4', // yvETH
+    '0x5b977577eb8a480f63e11fc615d6753adb8652ae', // yvWETH
   ],
   arbitrum: [],
   fantom: []

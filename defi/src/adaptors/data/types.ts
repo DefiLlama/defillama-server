@@ -17,6 +17,7 @@ export interface ProtocolAdaptor extends Protocol {
 
 export interface IConfig {
     id: string
+    parentId?: string
     latestFetchIsOk?: boolean
     enabled?: boolean
     includedVolume?: string[]

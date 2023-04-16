@@ -119,6 +119,11 @@ function mapGaugeTokenBalances(calls: Multicall[], chain: any) {
       pools: [],
       chains: ["fantom"],
     },
+    "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171": {
+      to: "0x19793b454d3afc7b454f206ffe95ade26ca6912c",
+      pools: [],
+      chains: ["polygon"],
+    },
   };
 
   return calls.map(function (c) {
@@ -400,10 +405,9 @@ async function unknownPools(
         const token: string = await PoolToToken(chain, pool, block);
         // THIS IS GOOD FOR DEBUG
         // if (
-        //   ![
-        //     "0xa1f8a6807c402e4a15ef4eba36528a3fed24e577",
-        //     "0xf43211935c781d5ca1a41d2041f397b8a7366c7a"
-        //   ].includes(token.toLowerCase())
+        //   !["0x10f38a56720ff3a16bd04754e9b49e1f39d4aa4a"].includes(
+        //     token.toLowerCase(),
+        //   )
         // )
         //   continue;
 
@@ -453,12 +457,16 @@ async function unknownPools(
             })
             .reduce((a, b) => a + b, 0) / poolTokens.length;
 
+        const price =
+          (poolValue * 10 ** tokenInfo.decimals[0].output) /
+          tokenInfo.supplies[0].output;
+        if (price == Infinity) continue;
+
         addToDBWritesList(
           writes,
           chain,
           token,
-          (poolValue * 10 ** tokenInfo.decimals[0].output) /
-            tokenInfo.supplies[0].output,
+          price,
           tokenInfo.decimals[0].output,
           tokenInfo.symbols[0].output,
           timestamp,

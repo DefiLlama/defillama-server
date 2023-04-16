@@ -11,6 +11,7 @@ import {
   Read,
   CoinData,
 } from "./dbInterfaces";
+import { contracts } from "../other/distressedAssets";
 
 const confidenceThreshold: number = 0.3;
 
@@ -207,6 +208,20 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
 
+  if (allWrites.length == 0) return [];
+
+  const chain = allWrites[0].PK.substring(
+    allWrites[0].PK.indexOf("#") + 1,
+    allWrites[0].PK.indexOf(":"),
+  );
+
+  const distressedAssets =
+    chain in contracts
+      ? Object.values(contracts[chain]).map((d: string) =>
+          chain == "solana" ? d : d.toLowerCase(),
+        )
+      : [];
+
   allWrites.map((w: Write) => {
     let checkedWritesOfThisKind = checkedWrites.filter(
       (x: Write) =>
@@ -251,7 +266,11 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     }
   });
 
-  return filteredWrites.filter((f: Write) => f != undefined);
+  return filteredWrites.filter(
+    (f: Write) =>
+      f != undefined &&
+      !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
+  );
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {
   const coinData: CoinData[] = reads

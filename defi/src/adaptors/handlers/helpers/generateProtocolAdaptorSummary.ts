@@ -9,6 +9,7 @@ import { sendDiscordAlert } from "../../utils/notify"
 import { calcNdChange, getWoWStats, sumAllVolumes } from "../../utils/volumeCalcs"
 import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
+import { convertDataToUSD } from "./convertRecordDataCurrency"
 import generateCleanRecords from "./generateCleanRecords"
 import getCachedReturnValue from "./getCachedReturnValue"
 
@@ -58,7 +59,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
             const value = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType, "TIMESTAMP", lastRecordRaw.timestamp).catch(_e => { }) as AdaptorRecord | undefined
             const cleanRecord = value?.getCleanAdaptorRecord(chainFilter ? [chainFilter] : undefined, protocolsKeys[0])
             if (AdaptorRecordTypeMapReverse[recordType]) {
-                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(cleanRecord.data) : null
+                extraTypes[AdaptorRecordTypeMapReverse[recordType]] = cleanRecord ? sumAllVolumes(await convertDataToUSD(cleanRecord.data, lastRecordRaw.timestamp)) : null
             }
         }
 
@@ -94,15 +95,17 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         const yesterdaysCleanTimestamp = getTimestampAtStartOfDayUTC((Date.now() - ONE_DAY_IN_SECONDS * 1000) / 1000)
         const lastAvailableDataTimestamp = adaptorRecords[adaptorRecords.length - 1].timestamp
         const lastDaysExtrapolation = ((yesterdaysCleanTimestamp - lastAvailableDataTimestamp) / ONE_DAY_IN_SECONDS) < 5
-        const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap,lastAvailableDataTimestamp)
+        const stats = getStats(adapter, adaptorRecords, cleanRecords.cleanRecordsMap, lastAvailableDataTimestamp)
 
-        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null) {
+        if (yesterdaysCleanTimestamp > lastAvailableDataTimestamp || cleanLastReacord == null || Object.keys(cleanLastReacord.data).length < adapter.chains.length) {
+            const storedChains = Object.keys(cleanLastReacord?.data ?? {})
+            const missingChains = adapter.chains.filter(chain => !storedChains.includes(chain))
             if (onError) onError(new Error(`
 Adapter: ${adapter.name} [${adapter.id}]
-${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated
+${AdaptorRecordTypeMapReverse[adaptorRecordType]} not updated${missingChains.length > 0 ? ` with missing chains: ${missingChains.join(', ')}` : ''}
 ${formatTimestampAsDate(yesterdaysCleanTimestamp.toString())} <- Report date
 ${formatTimestampAsDate(lastAvailableDataTimestamp.toString())} <- Last date found
-${sumAllVolumes(lastRecordRaw.data)} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
+${sumAllVolumes(await convertDataToUSD(lastRecordRaw.data, lastRecordRaw.timestamp))} <- Last computed ${AdaptorRecordTypeMapReverse[adaptorRecordType]}
 Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
 `))
         }
@@ -144,7 +147,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             total30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total30d,
             total14dto7d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total14dto7d,
             total60dto30d: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.total60dto30d,
-            totalAllTime: totalRecord ? sumAllVolumes(totalRecord.data) : null,
+            totalAllTime: totalRecord ? sumAllVolumes(await convertDataToUSD(totalRecord.data, totalRecord.timestamp)) : null,
             breakdown24h: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.breakdown24h,
             config: getConfigByType(adaptorType, adapter.module),
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
@@ -155,7 +158,10 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             parentProtocol: adapter.parentProtocol,
             latestFetchIsOk: adapter?.config?.latestFetchIsOk ?? true,
             versionKey: adapter.versionKey,
-            ...extraTypes
+            ...Object.entries(extraTypes).reduce((acc, [key, value]) => {
+                acc[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : value
+                return acc
+            }, {} as typeof extraTypes)
         }
     } catch (error) {
         // TODO: handle better errors

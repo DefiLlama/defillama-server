@@ -86,6 +86,7 @@ provider:
     BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
     LOFTY_API: ${file(./env.js):LOFTY_API}
     COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
+    OLYMPUS_GRAPH_API_KEY: ${file(./env.js):OLYMPUS_GRAPH_API_KEY}
     ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
     INDEXER_DB: ${file(./env.js):INDEXER_DB}
     AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}
@@ -173,13 +174,6 @@ functions:
       - http:
           path: treasuries
           method: get
-  dexAggregatorQuote:
-    handler: src/getDexAggregatorQuote.default
-    timeout: 30
-    events:
-      - http:
-          path: dexAggregatorQuote
-          method: post
   storeAggregatorEvent:
     handler: src/storeAggregatorEvent.default
     timeout: 30
@@ -291,6 +285,9 @@ functions:
       - http:
           path: chains
           method: get
+      - http:
+          path: v2/chains
+          method: get
   chains2:
     handler: src/getFormattedChains.default
     timeout: 30
@@ -401,13 +398,13 @@ functions:
       - http:
           path: config
           method: get
-  sortedTokenlist:
-    handler: src/getSortedTokenlist.default
-    timeout: 30
+  storeSortedTokenlist:
+    handler: src/storeSortedTokenlist.default
+    timeout: 60
     events:
-      - http:
-          path: sortedTokenlist
-          method: get
+      - schedule: cron(43 * * * ? *)
+    environment:
+      CG_KEY: ${env:CG_KEY}
   yieldsConfig:
     handler: src/getYieldsConfig.default
     timeout: 30
@@ -420,13 +417,13 @@ functions:
     timeout: 60
     memorySize: 3000
     events:
-      - schedule: cron(20 * * * ? *)
+      - schedule: cron(16 * * * ? *)
   storeCharts:
     handler: src/storeGetCharts.default
     timeout: 60
     memorySize: 2000
     events:
-      - schedule: cron(20 * * * ? *)
+      - schedule: cron(16 * * * ? *)
   hourly:
     handler: src/getHourlyData.default
     timeout: 30
@@ -447,12 +444,14 @@ functions:
     memorySize: 512
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINS_DB: ${env:COINS_DB}
   storeTreasuryInterval:
     handler: src/storeTreasuryInterval.default
     timeout: 900
     memorySize: 512
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINS_DB: ${env:COINS_DB}
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     timeout: 900
@@ -532,6 +531,7 @@ functions:
   refreshDimensionOverviewCache:
     handler: src/adaptors/handlers/refreshDimensionOverviewCache/index.default
     timeout: 180
+    memorySize: 1024
     events:
       - schedule: rate(1 hour)
   cacheExternalResponse:
@@ -564,7 +564,11 @@ functions:
     timeout: 900
     memorySize: 1024
     events:
-      - schedule: cron(30 * * * ? *)
+      - schedule: cron(15 * * * ? *)
+    environment:
+      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINS_DB: ${env:COINS_DB}
+      STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
   sendDiscordMessage:
     handler: src/sendDiscordMessage.default
     timeout: 900
@@ -619,8 +623,21 @@ functions:
       - http:
           path: emission/{protocol}
           method: get
+  emissionsList:
+    handler: src/getEmissionsList.default
+    timeout: 30
+    events:
+      - http:
+          path: emissionsList
+          method: get
   storeEmissions:
     handler: src/storeEmissions.default
+    timeout: 900
+    memorySize: 3000
+    events:
+      - schedule: cron(01 0 * * ? *)
+  storeGovernance:
+    handler: src/storeGovernance.default
     timeout: 900
     memorySize: 3000
     events:
@@ -631,12 +648,25 @@ functions:
     memorySize: 1000
     events:
       - schedule: cron(0 * * * ? *)
+    environment:
+      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
   activeUsers:
     handler: src/getActiveUsers.default
-    timeout: 120
+    timeout: 90
+    environment:
+      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
     events:
       - http:
           path: activeUsers
+          method: get
+  protocolActiveUsers:
+    handler: src/getProtocolUsers.default
+    timeout: 90
+    environment:
+      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+    events:
+      - http:
+          path: activeUsers/{protocolId}
           method: get
   newsArticles:
     handler: src/getNewsArticles.default

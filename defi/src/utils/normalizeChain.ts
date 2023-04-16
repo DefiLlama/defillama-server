@@ -1438,6 +1438,12 @@ export const chainCoingeckoIds = {
       chain: "Polkadot",
       types: ["parachain"]
     },
+    "Regen": {
+      geckoId: "regen",
+      symbol: "REGEN",
+      cmcId: "11646",
+      categories: ["Cosmos"],
+    },
   },
 } as unknown as {
   [chain: string]: {
@@ -1829,6 +1835,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Meta"
     case "equilibrium":
         return "Equilibrium"
+    case "regen":
+        return "Regen"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

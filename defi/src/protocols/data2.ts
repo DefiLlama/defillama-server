@@ -8469,7 +8469,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "b-watch-box",
     cmcId: null,
-    category: "Services",
+    category: "Indexes",
     chains: ["Mixin"],
     oracles: [],
     forkedFrom: [],

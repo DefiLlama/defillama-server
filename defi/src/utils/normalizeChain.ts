@@ -1438,12 +1438,12 @@ export const chainCoingeckoIds = {
       chain: "Polkadot",
       types: ["parachain"]
     },
-    "Regen": {
-      geckoId: "regen",
-      symbol: "REGEN",
-      cmcId: "11646",
-      categories: ["Cosmos"],
-    },
+  },
+  "Regen": {
+    geckoId: "regen",
+    symbol: "REGEN",
+    cmcId: "11646",
+    categories: ["Cosmos"],
   },
 } as unknown as {
   [chain: string]: {

@@ -83,12 +83,7 @@ provider:
     STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
     DEFILLAMA_SDK_MUTED: true
     #PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
-    BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
-    LOFTY_API: ${file(./env.js):LOFTY_API}
-    COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
-    OLYMPUS_GRAPH_API_KEY: ${file(./env.js):OLYMPUS_GRAPH_API_KEY}
-    ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
-    INDEXER_DB: ${file(./env.js):INDEXER_DB}
+    #INDEXER_DB: ${file(./env.js):INDEXER_DB}
     AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -445,6 +440,9 @@ functions:
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
       COINS_DB: ${env:COINS_DB}
+      LOFTY_API: ${file(./env.js):LOFTY_API}
+      OLYMPUS_GRAPH_API_KEY: ${file(./env.js):OLYMPUS_GRAPH_API_KEY}
+      COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
   storeTreasuryInterval:
     handler: src/storeTreasuryInterval.default
     timeout: 900
@@ -452,6 +450,7 @@ functions:
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
       COINS_DB: ${env:COINS_DB}
+      COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     timeout: 900
@@ -515,6 +514,9 @@ functions:
     timeout: 900
     memorySize: 2048
     lambdaInsights: true
+    environment:
+      ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
+      BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
   triggerStoreAdaptorData:
     handler: src/adaptors/handlers/triggerStoreAdaptorData.default
     timeout: 900

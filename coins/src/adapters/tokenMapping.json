@@ -24,6 +24,18 @@
       "to": "aurora:0xc21ff01229e982d7c8b8691163b0a3cb8f357453"
     }
   },
+  "map": {
+    "0x33daba9618a75a7aff103e53afe530fbacf4a3dd": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xeddfaac857cb94ae8a0347e2b1b06f21aa1aaefa": {
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    }
+  },
   "wemix": {
     "0xc1be9a4d5d45beeacae296a7bd5fadbfc14602c4": {
       "name": "Binance",

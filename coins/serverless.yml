@@ -218,8 +218,6 @@ functions:
     handler: src/storeCoins.default
     timeout: 900
     memorySize: 1024
-    environment: 
-      STALE_COINS_ADAPTERS_WEBHOOK: ${file(./env.js):STALE_COINS_ADAPTERS_WEBHOOK}
   triggerStoreDefiCoins:
     handler: src/triggerStoreCoins.default
     timeout: 900

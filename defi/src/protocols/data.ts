@@ -24780,7 +24780,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/sherlock-protocol/sherlock-reports/blob/main/audits/2022.12.08%20-%20Final%20-%20Buffer%20Finance%20Audit%20Report.pdf"
     ],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Pyth"],
     forkedFrom: [],
     listedAt: 1642780144,
   },

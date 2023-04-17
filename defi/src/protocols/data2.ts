@@ -31902,5 +31902,26 @@ const data2: Protocol[] = [
     twitter: "toreusfinance",
     listedAt: 1681727990
   },
+  {
+    id: "2851",
+    name: "Arbswap StableSwap",
+    address: null,
+    symbol: "-",
+    url: "https://arbswap.io/swap",
+    description: "Stableswap AMM",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/arbswap-stableswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "arbswap-stableswap/index.js",
+    twitter: "ArbswapOfficial",
+    listedAt: 1681736128
+  },
 ]
 export default data2;

@@ -36,6 +36,33 @@
       "to": "coingecko#dai"
     }
   },
+  "eos_evm": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "EOS",
+      "to": "coingecko#eos"
+    },
+    "0x922d641a426dcffaef11680e5358f34d97d112e1": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x765277eebeca2e31912c9946eae1021199b39c61": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0xfa9343c3897324496a05fc75abed6bac29f8a40f": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xefaeee334f0fd1712f9a8cc375f427d9cdd40d73": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    }
+  },
   "wemix": {
     "0xc1be9a4d5d45beeacae296a7bd5fadbfc14602c4": {
       "name": "Binance",

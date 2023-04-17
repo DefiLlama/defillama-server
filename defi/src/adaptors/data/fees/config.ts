@@ -754,5 +754,9 @@ export default {
         parentId: "Camelot",
         "enabled": true,
         "id": "2792"
+    },
+    "auragi": {
+        "enabled": true,
+        "id": "2773"
     }
 } as AdaptorsConfig

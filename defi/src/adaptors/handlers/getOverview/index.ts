@@ -8,7 +8,7 @@ import { CATEGORIES } from "../../data/helpers/categories";
 import { getTimestampAtStartOfDay } from "@defillama/dimension-adapters/utils/date";
 
 // -> /overview/{type}/{chain}
-export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
+export const handler = async (event: AWSLambda.APIGatewayEvent & { dlRefresh?: boolean }, enableAlerts: boolean = false): Promise<IResponse> => {
     const pathChain = event.pathParameters?.chain?.toLowerCase()
     const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
     const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
@@ -39,7 +39,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     const currentTiemstamp = Date.now()
     console.debug("lastModified", currentTiemstamp, response.lastModified.getTime())
-    if ((currentTiemstamp - response.lastModified.getTime()) > 30 * 60 * 1000 || (Math.trunc(currentTiemstamp) < getTimestampAtStartOfDay(Math.trunc(currentTiemstamp)) + 60 * 60 * 3)) {
+    if (event?.dlRefresh || (currentTiemstamp - response.lastModified.getTime()) > 60 * 60 * 1000 || (Math.trunc(currentTiemstamp) < getTimestampAtStartOfDay(Math.trunc(currentTiemstamp)) + 60 * 60 * 3)) {
         console.info("Response expired, invoking lambda to update it.")
         await invokeLambda("defillama-prod-getOverviewProcess", event)
     }

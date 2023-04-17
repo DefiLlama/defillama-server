@@ -2,6 +2,7 @@ import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { getCachedResponseOnR2 } from "../../utils/storeR2Response";
 import { getOverviewCachedResponseKey, IGetOverviewResponseBody, getExtraTypes, DEFAULT_CHART_BY_ADAPTOR_TYPE } from "../getOverviewProcess"
 import invokeLambda from "../../../utils/shared/invokeLambda";
+import { AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record";
 
 // -> /overview/{type}/{chain}
 export const handler = async (): Promise<undefined> => {
@@ -34,20 +35,16 @@ export const handler = async (): Promise<undefined> => {
                 else console.info("Response not found, generating only for all chains...")
                 // Go through all chains + cache overview response
                 Promise.all(allChains.map((chain) => {
-                    console.info("Invoking", key, "with params:", {
+                    const event = {
+                        dlRefresh: true,
                         pathParameters: { chain: chain, type: type },
                         queryStringParameters: {
-                            dataType: dataType,
-                            fullChart: fullChart
+                            dataType: AdaptorRecordTypeMapReverse[dataType],
+                            fullChart: String(fullChart)
                         }
-                    })
-                    return invokeLambda("defillama-prod-getOverviewProcess", {
-                        pathParameters: { chain: chain, type: type },
-                        queryStringParameters: {
-                            dataType: dataType,
-                            fullChart: fullChart
-                        }
-                    })
+                    }
+                    console.info("Invoking", key, "with event:", event)
+                    return invokeLambda("defillama-prod-getOverviewProcess", event)
                 }))
             }
         }

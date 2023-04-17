@@ -30767,7 +30767,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/monopoly-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "monopoly-layer2-duo",
     cmcId: null,
     category: "Farm",
     chains: ["Arbitrum"],

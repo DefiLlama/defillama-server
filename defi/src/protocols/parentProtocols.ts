@@ -1396,6 +1396,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PolynomialFi",
   },
+  {
+    id: "Arbswap",
+    name: "Arbswap",
+    url: "https://arbswap.io",
+    description: "Arbswap is the only true Arbitrum-native DEX suite, offering the best Game-fi services on Nova and the smoothest trading experience on One.",
+    logo: `${baseIconsUrl}/arbswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ArbswapOfficial",
+  },
 ];
 
 export default parentProtocols;

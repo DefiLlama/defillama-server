@@ -66,6 +66,22 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "wemix",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xC597952437Fa67B4a28bb03B19BF786AD26A4036",
+      "0x1702EC380e924B0E12d5C2e838B6b91A1fB3A052", //bSERO
+      "0x55d398326f99059fF775485246999027B3197955",
+      false,
+      "bsc",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xeAdff72aBdA0709CD795CEFa3A44f45a22440144",
+      "0x1f88e9956c8f8f64c8d5fef5ed8a818e2237112c", //UCON
+      "0x55d398326f99059fF775485246999027B3197955",
+      false,
+      "bsc",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

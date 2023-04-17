@@ -31860,5 +31860,26 @@ const data2: Protocol[] = [
     parentProtocol: "Polynomial Protocol",
     listedAt: 1681671402
   },
+  {
+    id: "2849",
+    name: "MERLIN DEX",
+    address: "era:-",
+    symbol: "MAGE",
+    url: "https://mage.exchange/",
+    description: "We developed an innovative DEX solution for true yields and liquidity lodging that is native to zksync",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/merlin-dex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "merlin/index.js",
+    twitter: "TheMerlinDEX",
+    listedAt: 1681701241
+  },
 ]
 export default data2;

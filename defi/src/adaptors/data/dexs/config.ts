@@ -1414,5 +1414,9 @@ export default {
     "wagmi": {
         "enabled": true,
         "id": "2837"
+    },
+    "auragi": {
+        "enabled": true,
+        "id": "2773"
     }
 } as AdaptorsConfig

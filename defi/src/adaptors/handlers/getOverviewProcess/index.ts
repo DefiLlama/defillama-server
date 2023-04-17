@@ -11,7 +11,7 @@ import loadAdaptorsData from "../../data"
 import generateProtocolAdaptorSummary from "../helpers/generateProtocolAdaptorSummary";
 import { delay } from "../triggerStoreAdaptorData";
 import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
-import { cacheResponseOnR2 } from "../../utils/storeR2Response";
+import { cacheResponseOnR2, getCachedResponseOnR2 } from "../../utils/storeR2Response";
 import { CATEGORIES } from "../../data/helpers/categories";
 
 export interface IGeneralStats extends ExtraTypes {
@@ -270,8 +270,11 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         successResponseObj['errors'] = errors
     }
     console.info("Storing response to R2")
-    await cacheResponseOnR2(getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart)), JSON.stringify(successResponseObj))
+    const cacheKey = getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart))
+    await cacheResponseOnR2(cacheKey, JSON.stringify(successResponseObj))
         .then(() => console.info("Stored R2 OK")).catch(e => console.error("Unable to cache...", e))
+    const cachedResponse = await getCachedResponseOnR2(cacheKey)
+    console.log("cachedResponse", cachedResponse)
     // console.info("Returning response:", JSON.stringify(successResponseObj))
     return successResponse(successResponseObj, 10 * 60); // 10 mins cache
 };

@@ -42,6 +42,11 @@
       "symbol": "EOS",
       "to": "coingecko#eos"
     },
+    "0xc00592aa41d32d137dc480d9f6d0df19b860104f": {
+      "decimals": "18",
+      "symbol": "EOS",
+      "to": "coingecko#eos"
+    },
     "0x922d641a426dcffaef11680e5358f34d97d112e1": {
       "decimals": "18",
       "symbol": "ETH",

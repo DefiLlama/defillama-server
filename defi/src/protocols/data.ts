@@ -26307,7 +26307,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     language: "Solidity",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1644441697,
-    governanceID: ["snapshot:maiadao.eth"]
+    governanceID: ["snapshot:maiadao.eth"],
+    parentProtocol: "Maia DAO Ecosystem",
   },
   {
     id: "1378",
@@ -26470,6 +26471,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     language: "Solidity",
     forkedFrom: ["Solidly"],
     listedAt: 1644507498,
+    parentProtocol: "Maia DAO Ecosystem",
     governanceID: ["snapshot:hermesprotocol.eth"]
   },
   {

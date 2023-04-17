@@ -167,7 +167,7 @@ function getTokenValues(
 async function getLpPrices(
   chain: string,
   timestamp: number,
-  block: number,
+  block: number | undefined,
 ): Promise<TokenValues[]> {
   const poolIds: string[] = await getPoolIds(chain, timestamp);
   const poolTokens: PoolInfo[] = await getPoolTokens(chain, block, poolIds);

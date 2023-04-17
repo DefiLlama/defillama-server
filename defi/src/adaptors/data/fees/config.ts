@@ -758,5 +758,9 @@ export default {
     "auragi": {
         "enabled": true,
         "id": "2773"
+    },
+    "vesta-finance": {
+        "enabled": true,
+        "id": "1444"
     }
 } as AdaptorsConfig

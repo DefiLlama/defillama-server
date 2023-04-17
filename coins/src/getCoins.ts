@@ -31,7 +31,7 @@ const handler = async (
       DAY * 2,
     )
     if (finalCoin.SK === undefined) return;
-    formattedCoin.price = formattedCoin.price ?? finalCoin.price;
+    formattedCoin.price = finalCoin.price;
     formattedCoin.timestamp = finalCoin.SK;
     response[coinName] = formattedCoin;
   }))

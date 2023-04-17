@@ -39,7 +39,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
 
     const currentTiemstamp = Date.now()
     console.debug("lastModified", currentTiemstamp, response.lastModified.getTime())
-    if ((currentTiemstamp - response.lastModified.getTime()) > 30 * 60 * 1000 || (currentTiemstamp < getTimestampAtStartOfDay(currentTiemstamp) + 60 * 60 * 3)) {
+    if ((currentTiemstamp - response.lastModified.getTime()) > 30 * 60 * 1000 || (Math.trunc(currentTiemstamp) < getTimestampAtStartOfDay(Math.trunc(currentTiemstamp)) + 60 * 60 * 3)) {
         console.info("Response expired, invoking lambda to update it.")
         await invokeLambda("defillama-prod-getOverviewProcess", event)
     }

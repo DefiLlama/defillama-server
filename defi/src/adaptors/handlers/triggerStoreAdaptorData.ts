@@ -43,7 +43,7 @@ export const handler = async (event: IHandlerEvent) => {
       await invokeLambdas(protocolModules, type, bf.timestamp, bf.chain, bf.adaptorRecordTypes, bf.protocolVersion)
       const protocolModulesConfined = bf.dexNames.filter(m => quarantinedModules.includes(m))
       if (protocolModulesConfined.length > 0)
-        Promise.all(protocolModulesConfined.map((confinedModule) => invokeLambdas([confinedModule], type, bf.timestamp, bf.chain, bf.adaptorRecordTypes, bf.protocolVersion)))
+        await Promise.all(protocolModulesConfined.map((confinedModule) => invokeLambdas([confinedModule], type, bf.timestamp, bf.chain, bf.adaptorRecordTypes, bf.protocolVersion)))
     }
   }
   else if (type) {
@@ -51,10 +51,10 @@ export const handler = async (event: IHandlerEvent) => {
     const protocolModules = adaptorsData.default.filter(m => !quarantinedModules.includes(m.module)).map(m => m.module)
     await invokeLambdas(protocolModules, type)
     const protocolModulesConfined = adaptorsData.default.filter(m => quarantinedModules.includes(m.module)).map(m => m.module)
-    Promise.all(protocolModulesConfined.map((confinedModule) => invokeLambdas([confinedModule], type)))
+    await Promise.all(protocolModulesConfined.map((confinedModule) => invokeLambdas([confinedModule], type)))
   }
   else {
-    Promise.all(
+    await Promise.all(
       [
         AdapterType.FEES,
         AdapterType.OPTIONS,

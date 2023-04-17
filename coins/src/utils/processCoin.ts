@@ -1,6 +1,8 @@
 export function lowercaseAddress(coin: string) {
     if (coin.startsWith("solana:")) {
         return coin
+    } else if (coin.startsWith("gnosis:")) {
+        return coin.replace("gnosis:", "xdai:").toLowerCase()
     }
     return coin.toLowerCase()
 }

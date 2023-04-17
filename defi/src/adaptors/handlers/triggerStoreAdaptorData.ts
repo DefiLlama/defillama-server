@@ -60,6 +60,7 @@ export const handler = async (event: IHandlerEvent) => {
         AdapterType.OPTIONS,
         AdapterType.INCENTIVES,
         AdapterType.AGGREGATORS,
+        AdapterType.DERIVATIVES,
         AdapterType.DEXS,
         AdapterType.PROTOCOLS
       ].map(type => invokeLambda(`defillama-prod-triggerStoreAdaptorData`, { type }))

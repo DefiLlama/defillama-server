@@ -273,7 +273,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const cacheKey = getOverviewCachedResponseKey(adaptorType, chainFilter, dataType, category, String(fullChart))
     await cacheResponseOnR2(cacheKey, JSON.stringify(successResponseObj))
         .then(() => console.info("Stored R2 OK")).catch(e => console.error("Unable to cache...", e))
-    const cachedResponse = await getCachedResponseOnR2(cacheKey)
+    const cachedResponse = await getCachedResponseOnR2(cacheKey).catch(e => console.error("Failed to retrieve...", cacheKey, e))
     console.log("cachedResponse", cachedResponse)
     // console.info("Returning response:", JSON.stringify(successResponseObj))
     return successResponse(successResponseObj, 10 * 60); // 10 mins cache

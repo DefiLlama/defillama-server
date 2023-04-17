@@ -42,6 +42,7 @@ export const handler = async (): Promise<undefined> => {
                         }
                     })
                     return invokeLambda("defillama-prod-getOverviewProcess", {
+                        dl_refresh: true,
                         pathParameters: { chain: chain, type: type },
                         queryStringParameters: {
                             dataType: dataType,

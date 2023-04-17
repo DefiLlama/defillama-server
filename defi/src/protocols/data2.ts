@@ -31994,7 +31994,7 @@ const data2: Protocol[] = [
     name: "Noah Swap",
     address: null,
     symbol: "-",
-    url: "hhttps://noahark.pro",
+    url: "https://noahark.pro",
     description: "Best DeFi on EOS  EVM",
     chain: "EOS EVM",
     logo: `${baseIconsUrl}/noah-swap.jpg`,

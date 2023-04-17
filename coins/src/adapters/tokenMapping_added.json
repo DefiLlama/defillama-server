@@ -1198,7 +1198,7 @@
       "name": "tBTC v2",
       "decimals": "18",
       "symbol": "tBTC",
-      "to": "ethereum:0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa"
+      "to": "ethereum:0x18084fba666a33d37592fa2633fd49a74dd93a88"
     },
     "0xef779cf3d260dbe6177b30ff08b10db591a6dd9c": {
       "name": "kUSD",

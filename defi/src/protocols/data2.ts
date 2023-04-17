@@ -24943,8 +24943,8 @@ const data2: Protocol[] = [
   {
     id: "2535",
     name: "tBTC",
-    address: "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
-    symbol: "tBTC",
+    address: "0xcdf7028ceab81fa0c6971208e83fa7872994bee5",
+    symbol: "T",
     url: "https://threshold.network/",
     description:
       "tBTC is Threshold's decentralized and permissionless bridge to bring BTC to the Ethereum network. tBTC has been designed to allow bitcoin holders to participate in Ethereum's Decentralized Finance (DeFi) applications. Users wishing to utilize their bitcoin on Ethereum can use the tBTC decentralized bridge to deposit their bitcoin into the system and get a minted tBTC token in their Ethereum wallet",

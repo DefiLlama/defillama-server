@@ -4546,7 +4546,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Binance", "Harmony"],
     module: "mochiswap/index.js",
-    forkedFrom: ["SushiSwap"],
+    forkedFrom: ["Uniswap V2"],
     twitter: "mochiswap",
   },
   {
@@ -25838,7 +25838,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "knightsfantom/index.js",
     twitter: "knightsoffantom",
     audit_links: ["https://knights-fantom.gitbook.io/knights-of-fantom/tokenomics/security-and-safety"],
-    forkedFrom: ["SushiSwap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1643883431,
   },
   {
@@ -26258,7 +26258,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "animal-farm/index.js",
     twitter: "DRIPcommunity",
     language: "Solidity",
-    forkedFrom: ["SushiSwap"],
+    forkedFrom: ["Uniswap V2"],
     listedAt: 1644437338,
     parentProtocol: "Animal Farm",
   },

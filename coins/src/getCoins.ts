@@ -11,7 +11,7 @@ const handler = async (
 ): Promise<IResponse> => {
   const body = parseRequestBody(event.body)
   const requestedCoins = body.coins;
-  const timestampRequested = Number(body.timestamp)
+  const timestampRequested = body.timestamp
   const coins = await batchGet(requestedCoins.map((coin: string) => ({
     PK: coinToPK(coin),
     SK: 0,

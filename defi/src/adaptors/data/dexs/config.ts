@@ -1418,5 +1418,18 @@ export default {
     "auragi": {
         "enabled": true,
         "id": "2773"
-    }
+    },
+    "covo-v2": {
+        "enabled": true,
+        "id": "2730",
+        parentId: "Covo Finance",
+        "protocolsData": {
+            "swap": {
+                "id": "2730",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "Covo V2 - SWAP"
+            }
+        },
+    },
 } as AdaptorsConfig

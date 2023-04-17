@@ -53,7 +53,7 @@ export default {
     "covo-v2": {
         "enabled": true,
         "id": "2730",
-        parentId: "2525",
+        parentId: "Covo Finance",
         "protocolsData": {
             "derivatives": {
                 displayName: "Covo V2 - Derivatives",

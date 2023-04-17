@@ -31899,7 +31899,7 @@ const data2: Protocol[] = [
     category: "Lending",
     chains: ["Kava"],
     oracles: ["Witnet"],
-    forkedFrom: ["Geist"],
+    forkedFrom: ["Aave"],
     module: "toreus/index.js",
     twitter: "toreusfinance",
     listedAt: 1681727990

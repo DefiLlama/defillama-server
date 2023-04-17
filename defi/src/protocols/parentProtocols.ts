@@ -1407,6 +1407,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ArbswapOfficial",
   },
+  {
+    id: "Maia DAO Ecosystem",
+    name: "Maia DAO Ecosystem",
+    url: "https://maiadao.io",
+    description: "MAIA is the first decentralized community-owned reserve currency in Metis Andromeda.",
+    logo: `${baseIconsUrl}/maia-dao-ecosystem.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MaiaDAOEco",
+  },
 ];
 
 export default parentProtocols;

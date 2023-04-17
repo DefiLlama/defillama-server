@@ -29942,6 +29942,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "maia-dao-uni/index.js",
     twitter: "MaiaDAOEco",
+    parentProtocol: "Maia DAO Ecosystem",
     listedAt: 1680444176
   },
   {

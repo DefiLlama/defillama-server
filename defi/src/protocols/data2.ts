@@ -13463,13 +13463,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2023",
-    name: "Arbswap",
+    name: "Arbswap AMM",
     address: null,
     symbol: "-",
     url: "https://arbswap.io/",
     description: "The #1 AMM and DEX on Arbitrum Nova powered by #Arbitrum.",
     chain: "Arbitrum Nova",
-    logo: `${baseIconsUrl}/arbswap.jpg`,
+    logo: `${baseIconsUrl}/arbswap-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -13480,6 +13480,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "arbswap/index.js",
     twitter: "ArbswapOfficial",
+    parentProtocol: "Arbswap",
     listedAt: 1661508167
   },
   {
@@ -31921,7 +31922,29 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "arbswap-stableswap/index.js",
     twitter: "ArbswapOfficial",
+    parentProtocol: "Arbswap",
     listedAt: 1681736128
+  },
+  {
+    id: "2852",
+    name: "Solunea",
+    address: null,
+    symbol: "-",
+    url: "https://www.solunea.xyz",
+    description: "Solunea is the first 100% Real Yield & Community owned ve(3,3) DEX on zkSync Era.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/solunea.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "solunea/index.js",
+    twitter: "SoluneaDex",
+    listedAt: 1681737935
   },
 ]
 export default data2;

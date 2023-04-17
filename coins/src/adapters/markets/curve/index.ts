@@ -61,11 +61,17 @@ export function curve5d(timestamp: number = 0) {
 }
 export function curve6(timestamp: number = 0) {
   console.log("starting curve6");
-  return Promise.all([
-    getTokenPrices("polygon", ["stableswap", "crypto"], timestamp),
-    getTokenPrices("polygon", ["cryptoFactory", "stableFactory"], timestamp),
-  ]);
+  return getTokenPrices("polygon", ["stableswap", "crypto"], timestamp);
 }
+export function curve6b(timestamp: number = 0) {
+  console.log("starting curve6b");
+  return getTokenPrices(
+    "polygon",
+    ["cryptoFactory", "stableFactory"],
+    timestamp,
+  );
+}
+
 export function ellipsis(timestamp: number = 0) {
   console.log("starting ellipsis");
   return getTokenPrices(

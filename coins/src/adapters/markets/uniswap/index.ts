@@ -225,22 +225,13 @@ export function mute(timestamp: number = 0) {
 }
 export function spacefi(timestamp: number = 0) {
   console.log("starting spacefi");
-  return Promise.all([
-    getTokenPrices(
-      "era",
-      "0x0700fb51560cfc8f896b2c812499d17c5b0bf6a7",
-      undefined,
-      undefined,
-      timestamp,
-    ),
-    getTokenPrices(
-      "era",
-      "0x868a71ebfc46b86a676768c7b7ad65055cc293ee",
-      undefined,
-      undefined,
-      timestamp,
-    ),
-  ]);
+  return getTokenPrices(
+    "era",
+    "0x0700fb51560cfc8f896b2c812499d17c5b0bf6a7",
+    undefined,
+    undefined,
+    timestamp,
+  );
 }
 export function gemswap(timestamp: number = 0) {
   console.log("starting gemswap");

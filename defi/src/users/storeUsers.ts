@@ -1,11 +1,6 @@
 import postgres from "postgres";
 import { getTimestampAtStartOfDay } from "../utils/date";
 
-// CREATE TABLE hourlyUsers (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), users INT, PRIMARY KEY(start, protocolId, chain));
-// CREATE INDEX idx_time ON hourlyUsers (start);
-// CREATE TABLE dailyUsers (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), users INT, realStart INT, PRIMARY KEY(start, protocolId, chain));
-// CREATE INDEX idx_time2 ON dailyUsers (start);
-
 const sql = postgres(process.env.ACCOUNTS_DB!);
 
 export async function storeUsers(start:number, end:number, protocolId:string, chain:string, users:number) {
@@ -27,6 +22,48 @@ export async function storeUsers(start:number, end:number, protocolId:string, ch
       ${start}, ${end}, ${protocolId}, ${chain}, ${users}
     )
   `
+}
+
+export async function storeTxs(start:number, end:number, protocolId:string, chain:string, txs:number) {
+  const startDayTimestamp = getTimestampAtStartOfDay(start)
+  const otherDailyItems = await sql`SELECT start FROM dailyTxs WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId}`
+  if(otherDailyItems.length === 0){
+      await sql`
+insert into dailyTxs (
+  start, endTime, protocolId, chain, txs, realStart
+) values (
+  ${startDayTimestamp}, ${end}, ${protocolId}, ${chain}, ${txs}, ${start}
+)
+`
+  }
+  await sql`
+  insert into hourlyTxs (
+    start, endTime, protocolId, chain, txs
+  ) values (
+    ${start}, ${end}, ${protocolId}, ${chain}, ${txs}
+  )
+`
+}
+
+export async function storeGas(start:number, end:number, protocolId:string, chain:string, gas:number, gasUsd:number) {
+  const startDayTimestamp = getTimestampAtStartOfDay(start)
+  const otherDailyItems = await sql`SELECT start FROM dailyGas WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId}`
+  if(otherDailyItems.length === 0){
+      await sql`
+insert into dailyGas (
+  start, endTime, protocolId, chain, gas, gasUsd, realStart
+) values (
+  ${startDayTimestamp}, ${end}, ${protocolId}, ${chain}, ${gas}, ${gasUsd}, ${start}
+)
+`
+  }
+  await sql`
+  insert into hourlyGas (
+    start, endTime, protocolId, chain, gas, gasUsd,
+  ) values (
+    ${start}, ${end}, ${protocolId}, ${chain}, ${gas}, ${gasUsd}
+  )
+`
 }
 
 export async function getProtocolUsers(protocolId:string) {

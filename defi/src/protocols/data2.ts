@@ -31881,5 +31881,26 @@ const data2: Protocol[] = [
     twitter: "TheMerlinDEX",
     listedAt: 1681701241
   },
+  {
+    id: "2850",
+    name: "Toreus",
+    address: "kava:0x443aB8d6Ab303Ce28f9031BE91c19c6B92e59C8a",
+    symbol: "TORE",
+    url: "https://toreus.finance",
+    description: "A lending market inspired by Geist, powered by the Kava Community & Secured by Tendermint Concensus",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/toreus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Kava"],
+    oracles: ["Witnet"],
+    forkedFrom: ["Geist"],
+    module: "toreus/index.js",
+    twitter: "toreusfinance",
+    listedAt: 1681727990
+  },
 ]
 export default data2;

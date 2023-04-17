@@ -45,7 +45,7 @@ insert into dailyTxs (
 `
 }
 
-export async function storeGas(start:number, end:number, protocolId:string, chain:string, gas:number, gasUsd:number) {
+export async function storeGas(start:number, end:number, protocolId:string, chain:string, gas:number|null, gasUsd:number) {
   const startDayTimestamp = getTimestampAtStartOfDay(start)
   const otherDailyItems = await sql`SELECT start FROM dailyGas WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId}`
   if(otherDailyItems.length === 0){

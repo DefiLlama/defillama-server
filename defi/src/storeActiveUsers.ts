@@ -10,10 +10,10 @@ const cache = {} as {
 }
 
 async function getAvgPrice(start: number, end: number, chain: string) {
-    const [startPrice, endPrice] = await Promise.all([start, end].map(t => 
+    const [startPrice, endPrice] = await Promise.all([start, end].map(t =>
         fetch(`https://coins.llama.fi/prices/historical/${t}/${chain}:0x0000000000000000000000000000000000000000?searchWidth=4h`)
-        .then(r => r.json()).then(r => r.coins[`${chain}:0x0000000000000000000000000000000000000000`].price)))
-    return (startPrice + endPrice)/2
+            .then(r => r.json()).then(r => r.coins[`${chain}:0x0000000000000000000000000000000000000000`].price)))
+    return (startPrice + endPrice) / 2
 }
 
 function getGasPrice(start: number, end: number, chain: string) {
@@ -37,6 +37,7 @@ async function storeActiveUsers() {
                 const end = Math.floor(Date.now() / 1e3)
                 const start = end - 24 * 3600
                 const users = await getUsers(start, end)
+                let totalGasUsd = 0;
                 await Promise.all(Object.entries(users).map(async ([chain, metrics]: [string, any]) => {
                     if (metrics.users) {
                         await storeUsers(start, end, id, chain, Number(metrics.users))
@@ -45,17 +46,23 @@ async function storeActiveUsers() {
                         await storeTxs(start, end, id, chain, Number(metrics.txs))
                     }
                     if (metrics.gas) {
-                        try{
+                        try {
                             const gasPrice = await getGasPrice(start, end, chain)
-                            if(typeof gasPrice !== "number" || Number.isNaN(gasPrice)){
+                            if (typeof gasPrice !== "number" || Number.isNaN(gasPrice)) {
                                 throw new Error(`gasPrice on ${chain} is ${gasPrice}`)
                             }
-                            await storeGas(start, end, id, chain, Number(metrics.gas), gasPrice*Number(metrics.gas))
-                        } catch(e){
+                            totalGasUsd += gasPrice * Number(metrics.gas);
+                            await storeGas(start, end, id, chain, Number(metrics.gas), gasPrice * Number(metrics.gas))
+                        } catch (e) {
                             console.log(`Couldn't store gas data for ${name} on chain ${chain}`)
                         }
                     }
                 }))
+                const allTxs = Object.values(users).reduce((sum: number, chain: any) => sum + Number(chain.txs ?? 0), 0)
+                if (allTxs !== 0) {
+                    await storeTxs(start, end, id, "all", allTxs)
+                }
+                await storeGas(start, end, id, "all", null, totalGasUsd)
             } catch (e) {
                 console.log(`Storing users for ${name} failed with error`, e)
             }

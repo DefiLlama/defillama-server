@@ -30759,10 +30759,10 @@ const data2: Protocol[] = [
   {
     id: "2799",
     name: "Monopoly Finance",
-    address: "arbitrum:0xbC0a588120AB8b913436D342a702C92611C9af6a",
-    symbol: "MONO",
+    address: "arbitrum:0x322F15d4BEDaa20C178fb75b2628663D2dA19736",
+    symbol: "DUO",
     url: "https://monopoly.finance",
-    description: "Monopoly Finance is a layered yield farming project utilizing Sushiswap's LP tokens. $MONO is its main governance token for layer 1 and additional features will be added for the upcoming layer.",
+    description: "Monopoly Finance is a layered yield farming project utilizing Sushiswap's LP tokens. $DUO is its main governance token and additional features will be added for the upcoming layer.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/monopoly-finance.jpg`,
     audits: "2",

@@ -30678,7 +30678,7 @@ const data2: Protocol[] = [
     url: "https://www.thala.fi/",
     description: "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
     chain: "Aptos",
-    logo: `${baseIconsUrl}/thala-labs.png`,
+    logo: `${baseIconsUrl}/thalaswap.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "thala",

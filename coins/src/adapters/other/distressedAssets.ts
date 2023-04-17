@@ -69,6 +69,11 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   avax: {
     DUEL: "0xc1a49c0B9C10F35850bd8E15EaeF0346BE63E002",
   },
+  oasis: {
+    // https://www.chainabuse.com/report/3ac26ddd-6ea5-438d-b0ff-dbe4508c641c?d=https%3A%2F%2Fbridge.evodefi.com%2F
+    USDT: "0x6Cb9750a92643382e020eA9a170AbB83Df05F30B",
+    USDC: "0x94fbffe5698db6f54d6ca524dbe673a7729014be",
+  },
   fantom: {
     CoUSD: "0x0DeF844ED26409C5C46dda124ec28fb064D90D27",
   },

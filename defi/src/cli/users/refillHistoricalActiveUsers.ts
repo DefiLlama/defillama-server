@@ -1,10 +1,10 @@
 require("dotenv").config();
-import userAdapters from "../../dimension-adapters/users/list";
-import { storeUsers } from "../users/storeUsers";
-import { shuffleArray } from "../utils/shared/shuffleArray";
+import userAdapters from "../../../dimension-adapters/users/list";
+import { storeUsers } from "../../users/storeUsers";
+import { shuffleArray } from "../../utils/shared/shuffleArray";
 import { PromisePool } from '@supercharge/promise-pool'
-import sleep from "../utils/shared/sleep";
-import { getTimestampAtStartOfDay } from "../utils/date";
+import sleep from "../../utils/shared/sleep";
+import { getTimestampAtStartOfDay } from "../../utils/date";
 
 async function main() {
     let start = getTimestampAtStartOfDay(1680652800)

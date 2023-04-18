@@ -475,9 +475,9 @@ functions:
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-      # DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
-      # AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
-      # OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
+      DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
+      AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
+      OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
   getOverviewProcess:
     handler: src/adaptors/handlers/getOverviewProcess/index.default
     timeout: 30
@@ -492,9 +492,9 @@ functions:
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-      # DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
-      # AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
-      # OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
+      DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
+      AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
+      OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
   getProtocolSummary:
     handler: src/adaptors/handlers/getProtocol/index.default
     timeout: 30
@@ -506,9 +506,9 @@ functions:
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-      # DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
-      # AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
-      # OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
+      DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
+      AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
+      OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
   storeAdaptorData:
     handler: src/adaptors/handlers/storeAdaptorData/index.default
     timeout: 900
@@ -529,9 +529,9 @@ functions:
     environment:
       VOLUMES_WEBHOOK: ${file(./env.js):VOLUMES_WEBHOOK}
       FEES_WEBHOOK: ${file(./env.js):FEES_WEBHOOK}
-      # DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
-      # AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
-      # OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
+      DERIVATIVES_WEBHOOK: ${file(./env.js):DERIVATIVES_WEBHOOK}
+      AGGREGATORS_WEBHOOK: ${file(./env.js):AGGREGATORS_WEBHOOK}
+      OPTIONS_WEBHOOK: ${file(./env.js):OPTIONS_WEBHOOK}
   triggerNotifyStatus:
     handler: src/adaptors/handlers/triggerNotifyStatus.default
     timeout: 900

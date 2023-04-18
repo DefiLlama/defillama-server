@@ -5,7 +5,7 @@ const sql = postgres(process.env.ACCOUNTS_DB!);
 
 export async function storeUsers(start:number, end:number, protocolId:string, chain:string, users:number) {
     const startDayTimestamp = getTimestampAtStartOfDay(start)
-    const otherDailyItems = await sql`SELECT start FROM dailyUsers WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId}`
+    const otherDailyItems = await sql`SELECT start FROM dailyUsers WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId} AND chain = ${chain}`
     if(otherDailyItems.length === 0){
         await sql`
   insert into dailyUsers (
@@ -26,7 +26,7 @@ export async function storeUsers(start:number, end:number, protocolId:string, ch
 
 export async function storeTxs(start:number, end:number, protocolId:string, chain:string, txs:number) {
   const startDayTimestamp = getTimestampAtStartOfDay(start)
-  const otherDailyItems = await sql`SELECT start FROM dailyTxs WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId}`
+  const otherDailyItems = await sql`SELECT start FROM dailyTxs WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId} AND chain = ${chain}`
   if(otherDailyItems.length === 0){
       await sql`
 insert into dailyTxs (
@@ -47,7 +47,7 @@ insert into dailyTxs (
 
 export async function storeGas(start:number, end:number, protocolId:string, chain:string, gas:number|null, gasUsd:number) {
   const startDayTimestamp = getTimestampAtStartOfDay(start)
-  const otherDailyItems = await sql`SELECT start FROM dailyGas WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId}`
+  const otherDailyItems = await sql`SELECT start FROM dailyGas WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId} AND chain = ${chain}`
   if(otherDailyItems.length === 0){
       await sql`
 insert into dailyGas (

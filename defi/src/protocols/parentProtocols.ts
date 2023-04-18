@@ -7,7 +7,7 @@ import type { IParentProtocol } from "./types";
 
 const parentProtocols: IParentProtocol[] = [
   {
-    id: "AAVE",
+    id: "parent#aave",
     name: "AAVE",
     url: "https://aave.com\r\n",
     description:

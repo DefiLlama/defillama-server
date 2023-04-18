@@ -2,6 +2,7 @@ import protocols, { Protocol, treasuries } from "./data";
 import { baseIconsUrl } from "../constants";
 import { importAdapter, } from "../cli/utils/importAdapter";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
+import parentProtocols from "./parentProtocols";
 const fs = require("fs");
 
 test("all the dynamic imports work", async () => {
@@ -68,7 +69,7 @@ test("projects have a single chain or each chain has an adapter", async () => {
 
 test("no id is repeated", async () => {
   const ids = [];
-  for (const protocol of protocols) {
+  for (const protocol of (protocols as {id:string}[]).concat(parentProtocols)) {
     expect(ids).not.toContain(protocol.id);
     ids.push(protocol.id);
   }

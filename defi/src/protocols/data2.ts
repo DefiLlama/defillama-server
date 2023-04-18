@@ -32062,7 +32062,7 @@ const data2: Protocol[] = [
     url: "https://glif.io",
     description: "The Infinity Pool operates like an over-collateralized, perpetual leasing mechanism. SPs are required to contribute collateral equal to the amount of FIL they borrow from the Infinity Pool. After borrowing, SPs are expected to make weekly payments, which in turn increase the pool's assets and iFIL price. While there is no strict “due date” for the borrowed FIL, any payments exceeding the required weekly payment amount will be applied towards the initial borrowed principal.",
     chain: "Filecoin",
-    logo: `${baseIconsUrl}/gilf-infinity-pool.png`,
+    logo: `${baseIconsUrl}/glif-infinity-pool.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

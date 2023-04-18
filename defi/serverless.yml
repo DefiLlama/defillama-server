@@ -680,7 +680,7 @@ functions:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
     events:
       - http:
-          path: activeUsers/{type}/{protocolId}
+          path: userData/{type}/{protocolId}
           method: get
   newsArticles:
     handler: src/getNewsArticles.default

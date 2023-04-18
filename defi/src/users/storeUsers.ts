@@ -71,11 +71,11 @@ export async function getProtocolUsers(protocolId:string) {
 }
 
 export async function getProtocolTxs(protocolId:string) {
-  return sql`SELECT * FROM dailyTxs WHERE protocolId = ${protocolId} AND chain = 'all'`
+  return sql`SELECT start, sum(txs) FROM dailyTxs WHERE protocolId = ${protocolId} group by start`
 }
 
 export async function getProtocolGas(protocolId:string) {
-  return sql`SELECT * FROM dailyGas WHERE protocolId = ${protocolId} AND chain = 'all'`
+  return sql`SELECT start, sum(gasUsd) FROM dailyGas WHERE protocolId = ${protocolId} group by start`
 }
 
 export async function getLatestUsersData(minEnd:number, chain: string) {

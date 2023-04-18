@@ -8,11 +8,11 @@ const typeInfo = {
     },
     txs: {
         query: getProtocolTxs,
-        column: "txs"
+        column: "sum"
     },
     gas: {
         query: getProtocolGas,
-        column: "gasUsd"
+        column: "sum"
     },
 } as {[type:string]: {query:typeof getProtocolUsers, column:string}}
 

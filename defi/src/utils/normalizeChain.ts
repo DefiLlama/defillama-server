@@ -1452,6 +1452,12 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["EVM"],
   },
+  "Quicksilver": {
+    geckoId: "quicksilver",
+    symbol: "QCK",
+    cmcId: null,
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1843,11 +1849,13 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "meta":
       return "Meta"
     case "equilibrium":
-        return "Equilibrium"
+      return "Equilibrium"
     case "regen":
-        return "Regen"
+      return "Regen"
     case "eos_evm":
       return "EOS EVM"
+    case "quicksilver":
+      return "Quicksilver"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

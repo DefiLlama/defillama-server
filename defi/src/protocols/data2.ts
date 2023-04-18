@@ -32121,5 +32121,27 @@ const data2: Protocol[] = [
     parentProtocol: "MM Finance",
     listedAt: 1681840766
   },
+  {
+    id: "2861",
+    name: "Quicksilver Protocol",
+    address: "ibc/635CB83EF1DFE598B10A3E90485306FD0D47D34217A4BE5FD9977FA010A5367D",
+    symbol: "QCK",
+    url: "https://quicksilver.zone",
+    description: "The liquid staking zone for the Interchain. Maximum choice for users, autocompounded rewards. Available for Cosmos.",
+    chain: "Quicksilver",
+    logo: `${baseIconsUrl}/quicksilver-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "quicksilver",
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Quicksilver"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "quicksilver/index.js",
+    twitter: "quicksilverzone",
+    audit_links: ["https://github.com/ingenuity-build/audits"],
+    listedAt: 1681842223
+  },
 ]
 export default data2;

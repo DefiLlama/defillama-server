@@ -132,7 +132,7 @@ const data2: Protocol[] = [
     module: "svn/index.js",
     twitter: "MMFcrypto",
     audit_links: ["https://mmfinance.gitbook.io/docs/audit"],
-    parentProtocol: "MM Finance",
+    parentProtocol: "parent#mm-finance",
     listedAt: 1644884068,
   },
   {
@@ -219,7 +219,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "gemmine/index.js",
     twitter: "defi_waterfall",
-    parentProtocol: "Waterfall Finance",
+    parentProtocol: "parent#waterfall-finance",
     listedAt: 1644970013,
   },
   {
@@ -439,7 +439,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.benqi.fi/resources/risks#audits"],
     twitter: "BenqiFinance",
     listedAt: 1645133212,
-    parentProtocol: "Benqi"
+    parentProtocol: "parent#benqi"
   },
   {
     id: "1428",
@@ -1189,7 +1189,7 @@ const data2: Protocol[] = [
     twitter: "_WOOFi",
     audit_links: ["https://www.certik.com/projects/woofiswap"],
     listedAt: 1645647756,
-    parentProtocol: "WOOFi"
+    parentProtocol: "parent#woofi"
   },
   {
     id: "1462",
@@ -1495,7 +1495,7 @@ const data2: Protocol[] = [
     module: "mahadao/index.js",
     treasury: "mahadao.js",
     twitter: "TheMahaDAO",
-    parentProtocol: "MahaDAO",
+    parentProtocol: "parent#mahadao",
     listedAt: 1645824445,
   },
   {
@@ -2020,7 +2020,7 @@ const data2: Protocol[] = [
     module: "lavafall/index.js",
     twitter: "defi_waterfall",
     audit_links: ["https://paladinsec.co/projects/waterfall-finance/"],
-    parentProtocol: "Waterfall Finance",
+    parentProtocol: "parent#waterfall-finance",
     listedAt: 1646308732,
   },
   {
@@ -2473,7 +2473,7 @@ const data2: Protocol[] = [
     module: "Paraluni/index.js",
     twitter: "paraluni",
     audit_links: ["http://www.auditlions.com/en/index.php?c=index&id=65"],
-    parentProtocol: "Paraluni",
+    parentProtocol: "parent#paraluni",
     listedAt: 1646692701,
   },
   {
@@ -2606,7 +2606,7 @@ const data2: Protocol[] = [
     module: "metavault/index.js",
     twitter: "MetavaultDAO",
     listedAt: 1646854791,
-    parentProtocol: "Metavault"
+    parentProtocol: "parent#metavault"
   },
   {
     id: "1527",
@@ -2825,7 +2825,7 @@ const data2: Protocol[] = [
     module: "jetmine/index.js",
     twitter: "defi_waterfall",
     audit_links: ["https://paladinsec.co/projects/waterfall-finance/"],
-    parentProtocol: "Waterfall Finance",
+    parentProtocol: "parent#waterfall-finance",
     listedAt: 1646960602,
   },
   {
@@ -3128,7 +3128,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "metf-finance/index.js",
     twitter: "MMFcrypto",
-    parentProtocol: "MM Finance",
+    parentProtocol: "parent#mm-finance",
     listedAt: 1647390824,
   },
   {
@@ -3152,7 +3152,7 @@ const data2: Protocol[] = [
     twitter: "TeamKujira",
     audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/Kujira/OrcaQueue/Kujira%20-%20Orca%20Queue%20-%20Audit%20Report%201.0.pdf"],
     openSource: false,
-    parentProtocol: "Kujira Protocol",
+    parentProtocol: "parent#kujira-protocol",
     listedAt: 1647396317,
   },
   {
@@ -3424,7 +3424,7 @@ const data2: Protocol[] = [
       "https://docsend.com/view/2bif3vfinpv657mh"
     ],
     listedAt: 1647667685,
-    parentProtocol: "iZUMI Finance"
+    parentProtocol: "parent#izumi-finance"
   },
   {
     id: "1564",
@@ -4002,7 +4002,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "puzzle.js",
     twitter: "puzzle_swap",
-    parentProtocol: "PuzzleSwapOrg",
+    parentProtocol: "parent#puzzleswaporg",
     listedAt: 1648571915,
   },
   {
@@ -4093,7 +4093,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "sphere-finance/index.js",
-    parentProtocol: "SPHERE",
+    parentProtocol: "parent#sphere",
     twitter: "SphereDeFi",
     listedAt: 1648668558
   },
@@ -4226,7 +4226,7 @@ const data2: Protocol[] = [
     twitter: "AaveAave",
     audit_links: ["https://aave.com/security"],
     listedAt: 1648776877,
-    parentProtocol: "AAVE"
+    parentProtocol: "parent#aave"
   },
   {
     id: "1600",
@@ -4577,7 +4577,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "polynomial-earn/index.js",
     twitter: "PolynomialFi",
-    parentProtocol: "Polynomial Protocol",
+    parentProtocol: "parent#polynomial-protocol",
     audit_links: ["https://docs.earn.polynomial.fi/smart-contracts/audits"],
     listedAt: 1649156645
   },
@@ -5186,7 +5186,7 @@ const data2: Protocol[] = [
       "https://github.com/vantagepointreports/releases/blob/main/VPQ-20210652%20-%20Folks.Finance%20-%20Smart%20Contract%20Audit%20-%20Phase%201_Public_V1.0.pdf",
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Folks-Finance-Design-Review.pdf"
     ],
-    parentProtocol: "Folks Finance",
+    parentProtocol: "parent#folks-finance",
     listedAt: 1649792952
   },
   {
@@ -5442,7 +5442,7 @@ const data2: Protocol[] = [
     twitter: "ScrubMoneyDefi",
     audit_links: ["https://scrub.finance/audit.pdf"],
     listedAt: 1650038462,
-    parentProtocol: "Scrub Money"
+    parentProtocol: "parent#scrub-money"
   },
   {
     id: "1655",
@@ -5816,7 +5816,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "fairyswap/index.js",
     twitter: "fairy_swap",
-    parentProtocol: "FairySwap",
+    parentProtocol: "parent#fairyswap",
     listedAt: 1650569731
   },
   {
@@ -5945,7 +5945,7 @@ const data2: Protocol[] = [
     module: "timeswap/index.js",
     twitter: "TimeswapLabs",
     audit_links: ['https://code4rena.com/reports/2022-03-timeswap'],
-    parentProtocol: "Timeswap",
+    parentProtocol: "parent#timeswap",
     listedAt: 1650665129
   },
   {
@@ -8035,7 +8035,7 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/bend-dao",
       "https://www.verilog.solutions/audits/BendDAO",
     ],
-    parentProtocol: "BendDAO",
+    parentProtocol: "parent#benddao",
     listedAt: 1652990010
   },
   {
@@ -8145,7 +8145,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "oswap/index.js",
     twitter: "ObyteOrg",
-    parentProtocol: "Oswap",
+    parentProtocol: "parent#oswap",
     listedAt: 1653131107
   },
   {
@@ -8211,7 +8211,7 @@ const data2: Protocol[] = [
     module: "steakHut/index.js",
     twitter: "steakhut_fi",
     audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
-    parentProtocol: "Steakhut Finance",
+    parentProtocol: "parent#steakhut-finance",
     listedAt: 1653410101
   },
   {
@@ -8341,7 +8341,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "diamond/index.js",
     twitter: "DiamondProtocol",
-    parentProtocol: "Diamond",
+    parentProtocol: "parent#diamond",
     listedAt: 1653626563
   },
   {
@@ -8653,7 +8653,7 @@ const data2: Protocol[] = [
     twitter: "MetavaultTRADE",
     audit_links: ["https://github.com/metavaultorg/trade-contracts/blob/main/Metavault.Trade_Full_Smart_Contract_Security_Audit.pdf"],
     listedAt: 1654203519,
-    parentProtocol: "Metavault"
+    parentProtocol: "parent#metavault"
   },
   {
     id: "1802",
@@ -8823,7 +8823,7 @@ const data2: Protocol[] = [
     forkedFrom: ["0xDAO"],
     module: "penrose/index.js",
     twitter: "PenroseDeFi",
-    parentProtocol: "SPHERE",
+    parentProtocol: "parent#sphere",
     listedAt: 1654600878
   },
   {
@@ -8908,7 +8908,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "spin/index.js",
     twitter: "spin_fi",
-    parentProtocol: "Spin",
+    parentProtocol: "parent#spin",
     listedAt: 1654771434
   },
   {
@@ -9451,7 +9451,7 @@ const data2: Protocol[] = [
     twitter: "AaveAave",
     audit_links: ["https://aave.com/security"],
     listedAt: 1655586107,
-    parentProtocol: "AAVE"
+    parentProtocol: "parent#aave"
   },
   {
     id: "1839",
@@ -9474,7 +9474,7 @@ const data2: Protocol[] = [
     twitter: "AaveAave",
     audit_links: ["https://aave.com/security"],
     listedAt: 1655586107,
-    parentProtocol: "AAVE"
+    parentProtocol: "parent#aave"
   },
   {
     id: "1840",
@@ -9497,7 +9497,7 @@ const data2: Protocol[] = [
     twitter: "SushiSwap",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-SushiSwap-v1.0.pdf",],
     listedAt: 1655586107,
-    parentProtocol: "Sushi"
+    parentProtocol: "parent#sushi"
   },
   {
     id: "1841",
@@ -9781,7 +9781,7 @@ const data2: Protocol[] = [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Moonwell_Finance_Safety_Module_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf",
     ],
     listedAt: 1655988523,
-    parentProtocol: "Moonwell",
+    parentProtocol: "parent#moonwell",
     governanceID: ["snapshot:moonwell-governance.eth"]
   },
   {
@@ -10104,7 +10104,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "surfswap/index.js",
     twitter: "SurfswapDEX",
-    parentProtocol: "Surfswap",
+    parentProtocol: "parent#surfswap",
     audit_links: ["https://surfswap.gitbook.io/surfswap/contracts/audits"],
     listedAt: 1656665210
   },
@@ -10443,7 +10443,7 @@ const data2: Protocol[] = [
       "https://docsend.com/view/2bif3vfinpv657mh",
     ],
     listedAt: 1657098632,
-    parentProtocol: "iZUMI Finance"
+    parentProtocol: "parent#izumi-finance"
   },
   {
     id: "1884",
@@ -10773,7 +10773,7 @@ const data2: Protocol[] = [
     module: "waterfall-wtf-finance/index.js",
     twitter: "defi_waterfall",
     listedAt: 1657791449,
-    parentProtocol: "Waterfall Finance"
+    parentProtocol: "parent#waterfall-finance"
   },
   {
     id: "1899",
@@ -10945,7 +10945,7 @@ const data2: Protocol[] = [
     twitter: "incrementfi",
     audit_links: ["https://github.com/oak-security/audit-reports/tree/master/IncrementFi"],
     listedAt: 1658135993,
-    parentProtocol: "incrementFinance",
+    parentProtocol: "parent#increment-finance",
     language: "Cadence"
   },
   {
@@ -10969,7 +10969,7 @@ const data2: Protocol[] = [
     twitter: "incrementfi",
     audit_links: ["https://github.com/oak-security/audit-reports/tree/master/IncrementFi"],
     listedAt: 1658135993,
-    parentProtocol: "incrementFinance",
+    parentProtocol: "parent#increment-finance",
     language: "Cadence"
   },
   {
@@ -11297,7 +11297,7 @@ const data2: Protocol[] = [
     module: "radiant/index.js",
     twitter: "RDNTCapital",
     audit_links: ["https://solidity.finance/audits/RadiantProtocol/"],
-    parentProtocol: "Radiant",
+    parentProtocol: "parent#radiant",
     listedAt: 1658739357
   },
   {
@@ -11341,7 +11341,7 @@ const data2: Protocol[] = [
     module: "pods-yield/index.js",
     twitter: "PodsFinance",
     listedAt: 1658752292,
-    parentProtocol: "podsFinance"
+    parentProtocol: "parent#pods-finance"
   },
   {
     id: "1925",
@@ -11538,7 +11538,7 @@ const data2: Protocol[] = [
     module: "timeless/index.js",
     twitter: "Timeless_Fi",
     audit_links: ["https://github.com/spearbit/portfolio/blob/master/pdfs/Timeless-Spearbit-Security-Review.pdf"],
-    parentProtocol: "Timeless",
+    parentProtocol: "parent#timeless",
     listedAt: 1658931496
   },
   {
@@ -11690,7 +11690,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     twitter: "ape_swap",
     audit_links: ["https://apeswap.gitbook.io/apeswap-finance/security/audits"],
-    parentProtocol: "ApeSwap",
+    parentProtocol: "parent#apeswap",
     listedAt: 1659048081
   },
   {
@@ -11841,7 +11841,7 @@ const data2: Protocol[] = [
       "https://immunefi.com/bounty/revert",
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Revert-Compoundor-v1.0.pdf"
     ],
-    parentProtocol: "Revert",
+    parentProtocol: "parent#revert",
     listedAt: 1659525571
   },
   {
@@ -12013,7 +12013,7 @@ const data2: Protocol[] = [
     chains: ["Parallel"],
     module: "parallel-lending/index.js",
     twitter: "ParallelFi",
-    parentProtocol: "Parallel DeFi Super App",
+    parentProtocol: "parent#parallel-deFi-super-app",
   },
   {
     id: "1956",
@@ -12032,7 +12032,7 @@ const data2: Protocol[] = [
     chains: ["Parallel"],
     module: "parallelamm/index.js",
     twitter: "ParallelFi",
-    parentProtocol: "Parallel DeFi Super App",
+    parentProtocol: "parent#parallel-deFi-super-app",
   },
   {
     id: "1957",
@@ -12051,7 +12051,7 @@ const data2: Protocol[] = [
     chains: ["Parallel"],
     module: "parallel-stream/index.js",
     twitter: "ParallelFi",
-    parentProtocol: "Parallel DeFi Super App",
+    parentProtocol: "parent#parallel-deFi-super-app",
   },
   {
     id: "1958",
@@ -12070,7 +12070,7 @@ const data2: Protocol[] = [
     chains: ["Parallel"],
     module: "parallel-staking/index.js",
     twitter: "ParallelFi",
-    parentProtocol: "Parallel DeFi Super App",
+    parentProtocol: "parent#parallel-deFi-super-app",
   },
   {
     id: "1959",
@@ -12243,7 +12243,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     twitter: "DrachmaExchange",
     audit_links: ["https://www.certik.com/projects/mmfinance"],
-    parentProtocol: "MM Finance",
+    parentProtocol: "parent#mm-finance",
     listedAt: 1660328599
   },
   {
@@ -12288,7 +12288,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Beefy"],
     twitter: "MagikDotFinance",
     audit_links: ["https://github.com/PembROCK-Finance/audits/blob/main/2022-07-01%20BlockSec%20Security%20Audit%20Report%20for%20PembRock%20Contracts.pdf"],
-    parentProtocol: "Magik Finance",
+    parentProtocol: "parent#magik-finance",
     listedAt: 1660361151
   },
   {
@@ -12310,7 +12310,7 @@ const data2: Protocol[] = [
     twitter: "HuckleberryDEX",
     audit_links: ["https://github.com/HuckleberryDex/huckleberry-contracts/blob/main/Smart%20contract%20security%20audit%20report-Huckleberry.pdf"],
     forkedFrom: ["Compound"],
-    parentProtocol: "Huckleberry",
+    parentProtocol: "parent#huckleberry",
     listedAt: 1660364257
   },
   {
@@ -12351,7 +12351,7 @@ const data2: Protocol[] = [
     module: "mm-stableswap/index.js",
     twitter: "MMFcrypto",
     forkedFrom: ["Curve"],
-    parentProtocol: "MM Finance",
+    parentProtocol: "parent#mm-finance",
     listedAt: 1660493037
   },
   {
@@ -12737,7 +12737,7 @@ const data2: Protocol[] = [
     twitter: "mycelium_xyz",
     forkedFrom: ["GMX"],
     oracles: ["Chainlink"],
-    parentProtocol: "Mycelium",
+    parentProtocol: "parent#mycelium",
     listedAt: 1660821814
   },
   {
@@ -12865,7 +12865,7 @@ const data2: Protocol[] = [
     twitter: "Bancor",
     audit_links: ["https://docs.bancor.network/about-bancor-network/security-and-audits"],
     listedAt: 1660936922,
-    parentProtocol: "Bancor"
+    parentProtocol: "parent#bancor"
   },
   {
     id: "1996",
@@ -12917,7 +12917,7 @@ const data2: Protocol[] = [
       "https://docs.morpho.xyz/resources/security-and-audits"
     ],
     listedAt: 1660946171,
-    parentProtocol: "Morpho"
+    parentProtocol: "parent#morpho"
   },
   {
     id: "1998",
@@ -13067,7 +13067,7 @@ const data2: Protocol[] = [
     module: "mmo-finance-polygon/index.js",
     twitter: "MMFcrypto",
     forkedFrom: ["Bunny"],
-    parentProtocol: "MM Finance",
+    parentProtocol: "parent#mm-finance",
     listedAt: 1661152341,
   },
   {
@@ -13300,7 +13300,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "mm-stableswap-polygon/index.js",
     twitter: "MMFcrypto",
-    parentProtocol: "MM Finance",
+    parentProtocol: "parent#mm-finance",
     listedAt: 1661361356
   },
   {
@@ -13482,7 +13482,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "arbswap/index.js",
     twitter: "ArbswapOfficial",
-    parentProtocol: "Arbswap",
+    parentProtocol: "parent#arbswap",
     listedAt: 1661508167
   },
   {
@@ -13591,7 +13591,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "bifrost-dex/index.js",
     twitter: "bifrost_finance",
-    parentProtocol: "Zenlink",
+    parentProtocol: "parent#zenlink",
     audit_links: [
       "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
       "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
@@ -13704,7 +13704,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "interlay-btc/index.js",
     twitter: "InterlayHQ",
-    parentProtocol: "Interlay",
+    parentProtocol: "parent#interlay",
     listedAt: 1661801239
   },
   {
@@ -13726,7 +13726,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "wtfdoge-farm/index.js",
     twitter: "defi_waterfall",
-    parentProtocol: "Waterfall Finance",
+    parentProtocol: "parent#waterfall-finance",
     listedAt: 1661803273
   },
   {
@@ -13791,7 +13791,7 @@ const data2: Protocol[] = [
     twitter: "Spirit_Swap",
     oracles: ["Internal"],
     forkedFrom: ["Compound"],
-    parentProtocol: "SpiritSwap",
+    parentProtocol: "parent#spiritswap",
     listedAt: 1661881491
   },
   {
@@ -13856,7 +13856,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "lif3-swap/index.js",
     twitter: "Official_LIF3",
-    parentProtocol: "Lif3.com",
+    parentProtocol: "parent#lif3.com",
     listedAt: 1661900824
   },
   {
@@ -14361,7 +14361,7 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     module: "madmex/index.js",
     twitter: "MMFcrypto",
-    parentProtocol: "MM Finance",
+    parentProtocol: "parent#mm-finance",
     listedAt: 1662456710
   },
   {
@@ -14384,7 +14384,7 @@ const data2: Protocol[] = [
     module: "rocifiv1/index.js",
     twitter: "rocifi",
     audit_links: ["https://github.com/rociFi/docs"],
-    parentProtocol: "RociFi",
+    parentProtocol: "parent#rocifi",
     listedAt: 1662456730
   },
   {
@@ -14495,7 +14495,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "interlay-staking/index.js",
     twitter: "InterlayHQ",
-    parentProtocol: "Interlay",
+    parentProtocol: "parent#interlay",
     listedAt: 1662498604
   },
   {
@@ -14517,7 +14517,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "interlay-collateral/index.js",
     twitter: "InterlayHQ",
-    parentProtocol: "Interlay",
+    parentProtocol: "parent#interlay",
     listedAt: 1662498615
   },
   {
@@ -14647,7 +14647,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "fraxlend/index.js",
     twitter: "fraxfinance",
-    parentProtocol: "Frax Finance",
+    parentProtocol: "parent#frax-finance",
     listedAt: 1662603346
   },
   {
@@ -14913,7 +14913,7 @@ const data2: Protocol[] = [
     module: "compound-v3/index.js",
     twitter: "compoundfinance",
     audit_links: ["https://compound.finance/docs/security"],
-    parentProtocol: "Compound Finance",
+    parentProtocol: "parent#compound-finance",
     listedAt: 1663169029
   },
   {
@@ -14977,7 +14977,7 @@ const data2: Protocol[] = [
     twitter: "algofiorg",
     oracles: [],
     audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algofi.pdf"],
-    parentProtocol: "Algofi",
+    parentProtocol: "parent#algofi",
     listedAt: 1663197511
   },
   {
@@ -15003,7 +15003,7 @@ const data2: Protocol[] = [
       "https://docs.redacted.finance/products/pirex/convex/audits",
       "https://docs.redacted.finance/products/pirex/gmx/audits",
     ],
-    parentProtocol: "Redacted",
+    parentProtocol: "parent#redacted",
     listedAt: 1663257608
   },
   {
@@ -15638,7 +15638,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "frax-swap/index.js",
     twitter: "fraxfinance",
-    parentProtocol: "Frax Finance",
+    parentProtocol: "parent#frax-finance",
     listedAt: 1663946542
   },
   {
@@ -15685,7 +15685,7 @@ const data2: Protocol[] = [
       "https://coinsult.net/projects/uniwswap/",
       "https://github.com/Coinsult/solidity/blob/main/UniWswapAudit.pdf"
     ],
-    parentProtocol: "UniWswap",
+    parentProtocol: "parent#uniwswap",
     listedAt: 1664061499
   },
   {
@@ -15813,7 +15813,7 @@ const data2: Protocol[] = [
     chains: ["Fantom"],
     module: "tomb-swap/index.js",
     twitter: "tombfinance",
-    parentProtocol: "Tomb Finance",
+    parentProtocol: "parent#tomb-finance",
     listedAt: 1664215603
   },
   {
@@ -15899,7 +15899,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "voltswap-v2/index.js",
     twitter: "Meter_IO",
-    parentProtocol: "Volt Finance",
+    parentProtocol: "parent#volt-finance",
     listedAt: 1664359970
   },
   {
@@ -16181,7 +16181,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sushiswap-furo/index.js",
     twitter: "SushiSwap",
-    parentProtocol: "Sushi",
+    parentProtocol: "parent#sushi",
     listedAt: 1664808317
   },
   {
@@ -16247,7 +16247,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Based V1"],
     module: "based-finance/basedV2.js",
     twitter: "BasedDEFI",
-    parentProtocol: "Based Finance",
+    parentProtocol: "parent#based-finance",
     audit_links: [
       "https://obeliskauditing.com/audits/based3",
       "https://obeliskauditing.com/audits/based2"
@@ -16272,7 +16272,7 @@ const data2: Protocol[] = [
     module: "ribbon-earn/index.js",
     twitter: "ribbonfinance",
     audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
-    parentProtocol: "Ribbon Finance"
+    parentProtocol: "parent#ribbon-finance"
   },
   {
     id: "2151",
@@ -16292,7 +16292,7 @@ const data2: Protocol[] = [
     module: "ribbon-lend/index.js",
     twitter: "ribbonfinance",
     audit_links: ["https://docs.ribbon.finance/developers/security#audits"],
-    parentProtocol: "Ribbon Finance"
+    parentProtocol: "parent#ribbon-finance"
   },
   {
     id: "2152",
@@ -16313,7 +16313,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sushiswap-trident/index.js",
     twitter: "SushiSwap",
-    parentProtocol: "Sushi",
+    parentProtocol: "parent#sushi",
     listedAt: 1664917476
   },
   {
@@ -16420,7 +16420,7 @@ const data2: Protocol[] = [
     module: "planet-green/index.js",
     twitter: "planet_finance",
     listedAt: 1665024124,
-    parentProtocol: "Planet"
+    parentProtocol: "parent#planet"
   },
   {
     id: "2158",
@@ -16440,7 +16440,7 @@ const data2: Protocol[] = [
     module: "planet-blue/index.js",
     twitter: "planet_finance",
     listedAt: 1665024139,
-    parentProtocol: "Planet"
+    parentProtocol: "parent#planet"
   },
   {
     id: "2159",
@@ -16462,7 +16462,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://files.amulet.org/public/AmuletGlobalMTRLabs.pdf"],
-    parentProtocol: "Amulet",
+    parentProtocol: "parent#amulet",
     listedAt: 1665048387
   },
   {
@@ -16622,7 +16622,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "lfgswap/index.js",
     twitter: "LfgSwap",
-    parentProtocol: "LFGSwap",
+    parentProtocol: "parent#lfgswap",
     listedAt: 1665165717
   },
   {
@@ -16643,7 +16643,7 @@ const data2: Protocol[] = [
     module: "daomaker-swap/index.js",
     twitter: "TheDaoMaker",
     listedAt: 1665169761,
-    parentProtocol: "DAO Maker"
+    parentProtocol: "parent#dao-maker"
   },
   {
     id: "2168",
@@ -16668,7 +16668,7 @@ const data2: Protocol[] = [
       "https://docs.morpho.xyz/resources/security-and-audits"
     ],
     listedAt: 1665186810,
-    parentProtocol: "Morpho"
+    parentProtocol: "parent#morpho"
   },
   {
     id: "2169",
@@ -16762,7 +16762,7 @@ const data2: Protocol[] = [
       "https://docs.kleva.io/audit-report/sooho",
       "https://docs.kleva.io/audit-report/scvsoft"
     ],
-    parentProtocol: "Kleva Protocol",
+    parentProtocol: "parent#kleva-protocol",
     listedAt: 1665493642
   },
   {
@@ -16785,7 +16785,7 @@ const data2: Protocol[] = [
     module: "quickswap-lending/index.js",
     twitter: "QuickswapDEX",
     listedAt: 1665495016,
-    parentProtocol: "Quickswap"
+    parentProtocol: "parent#quickswap"
 
   },
   {
@@ -16901,7 +16901,7 @@ const data2: Protocol[] = [
     module: "templedao-trade/index.js",
     twitter: "templedao",
     listedAt: 1665606253,
-    parentProtocol: "Temple DAO"
+    parentProtocol: "parent#temple-dao"
   },
   {
     id: "2179",
@@ -16922,7 +16922,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.traderjoexyz.com/main/security-and-contracts/audits"],
     twitter: "traderjoe_xyz",
     forkedFrom: ["Compound"],
-    parentProtocol: "Trader Joe",
+    parentProtocol: "parent#trader-joe",
     listedAt: 1665614545
   },
   {
@@ -17028,7 +17028,7 @@ const data2: Protocol[] = [
     twitter: "handle_fi",
     forkedFrom: ["GMX"],
     listedAt: 1665919003,
-    parentProtocol: "handle finance"
+    parentProtocol: "parent#handle-finance"
   },
   {
     id: "2185",
@@ -17158,7 +17158,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "SushiSwap",
-    parentProtocol: "Sushi",
+    parentProtocol: "parent#sushi",
     listedAt: 1666088130
   },
   {
@@ -17180,7 +17180,7 @@ const data2: Protocol[] = [
     forkedFrom: ["AAVE"],
     oracles: [],
     twitter: "OmniDex1",
-    parentProtocol: "Omnidex",
+    parentProtocol: "parent#omnidex",
     listedAt: 1666095753
   },
   {
@@ -17230,7 +17230,7 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "AmuletProtocol",
     audit_links: ["https://files.amulet.org/public/AmuletGlobalMTRLabs.pdf"],
-    parentProtocol: "Amulet",
+    parentProtocol: "parent#amulet",
     listedAt: 1666174560
   },
   {
@@ -17302,7 +17302,7 @@ const data2: Protocol[] = [
     ],
     oracles: [],
     listedAt: 1666191149,
-    parentProtocol: "Uniswap"
+    parentProtocol: "parent#uniswap"
   },
   {
     id: "2197",
@@ -17329,7 +17329,7 @@ const data2: Protocol[] = [
     ],
     oracles: [],
     listedAt: 1666191162,
-    parentProtocol: "Uniswap"
+    parentProtocol: "parent#uniswap"
   },
   {
     id: "2198",
@@ -17357,7 +17357,7 @@ const data2: Protocol[] = [
     ],
     oracles: [],
     listedAt: 1666191475,
-    parentProtocol: "Uniswap"
+    parentProtocol: "parent#uniswap"
   },
   {
     id: "2199",
@@ -17469,7 +17469,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.tetu.io/tetu-io/security/audits"],
     oracles: ["Internal"],
     forkedFrom: ["Uniswap V2"],
-    parentProtocol: "Tetu"
+    parentProtocol: "parent#tetu"
   },
   {
     id: "2204",
@@ -17489,7 +17489,7 @@ const data2: Protocol[] = [
     module: "pando-rings/index.js",
     twitter: "pando_im",
     audit_links: ["https://docs.pando.im/docs/security/audit-reports"],
-    parentProtocol: "Pando",
+    parentProtocol: "parent#pando",
     listedAt: 1638382732,
   },
   {
@@ -17510,7 +17510,7 @@ const data2: Protocol[] = [
     module: "pando-leaf/index.js",
     twitter: "pando_im",
     audit_links: ["https://docs.pando.im/docs/security/audit-reports"],
-    parentProtocol: "Pando",
+    parentProtocol: "parent#pando",
     listedAt: 1638382732,
   },
   {
@@ -17653,7 +17653,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://docs.increment.fi/protocols/liquid-staking/audits"],
-    parentProtocol: "incrementFinance",
+    parentProtocol: "parent#increment-finance",
     listedAt: 1666369477
   },
   {
@@ -17876,7 +17876,7 @@ const data2: Protocol[] = [
     twitter: "fraxfinance",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "Frax Finance",
+    parentProtocol: "parent#frax-finance",
     listedAt: 1666641678
   },
   {
@@ -17925,7 +17925,7 @@ const data2: Protocol[] = [
       "https://drive.google.com/file/d/1CjdMl7LhJisnI1LTrAFt2Bvi5ahqq1yc/view",
       "https://drive.google.com/file/d/1cJ2ZH23yj9uO1otR2pLDQ1MP3OJm84IW/view"
     ],
-    parentProtocol: "Meteora",
+    parentProtocol: "parent#meteora",
     listedAt: 1666698713
 
   },
@@ -18214,7 +18214,7 @@ const data2: Protocol[] = [
       "https://github.com/vantagepointreports/releases/blob/main/VPQ-20210652%20-%20Folks.Finance%20-%20Smart%20Contract%20Audit%20-%20Phase%201_Public_V1.0.pdf",
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Folks-Finance-Design-Review.pdf"
     ],
-    parentProtocol: "Folks Finance",
+    parentProtocol: "parent#folks-finance",
     listedAt: 1666971574
   },
   {
@@ -18238,7 +18238,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://docs.geode.fi/developers/audits"],
-    parentProtocol: "Yield Yak",
+    parentProtocol: "parent#yield-yak",
     listedAt: 1667041431
   },
   {
@@ -18306,7 +18306,7 @@ const data2: Protocol[] = [
     twitter: "QuickswapDEX",
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
     forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.
-    parentProtocol: "Quickswap",
+    parentProtocol: "parent#quickswap",
     oracles: ["Witnet"],
     listedAt: 1667063569
   },
@@ -18393,7 +18393,7 @@ const data2: Protocol[] = [
     twitter: "algofiorg",
     oracles: [],
     audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algofi.pdf"] ,
-    parentProtocol: "Algofi",
+    parentProtocol: "parent#algofi",
     listedAt: 1667329765
   }, */
   {
@@ -18437,7 +18437,7 @@ const data2: Protocol[] = [
     twitter: "Starfish_Fi",
     forkedFrom: ["Compound"],
     oracles: ["DIA"],
-    parentProtocol: "Starfish",
+    parentProtocol: "parent#starfish",
     listedAt: 1667390191
   },
   {
@@ -18482,7 +18482,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://dripcommunity.wiki/static/paladin_af.pdf", "https://rugdoc.io/project/the-animal-farm", "https://dripcommunity.wiki/static/animalfarm_truthseekers_audit.pdf"],
-    parentProtocol: "Animal Farm",
+    parentProtocol: "parent#animal-farm",
     listedAt: 1667408979
   },
   {
@@ -18730,7 +18730,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "opensea",
     audit_links: ["https://github.com/trailofbits/publications/blob/master/reviews/SeaportProtocol.pdf"],
-    parentProtocol: "OpenSea",
+    parentProtocol: "parent#opensea",
     listedAt: 1667934393
   },
   {
@@ -19277,7 +19277,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1668524390,
-    parentProtocol: "WOOFi"
+    parentProtocol: "paent#woofi"
   },
   {
     id: "2285",
@@ -19371,7 +19371,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.traderjoexyz.com/audits"],
     twitter: "traderjoe_xyz",
     forkedFrom:[],
-    parentProtocol: "Trader Joe",
+    parentProtocol: "parent#trader-joe",
     listedAt: 1668638549
   },
   */
@@ -19690,7 +19690,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Revert-v1.0.pdf"],
     listedAt: 1669202666,
-    parentProtocol: "Revert"
+    parentProtocol: "parent#revert"
   },
   {
     id: "2304",
@@ -19779,7 +19779,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://paladinsec.co/projects/camelot/"],
     oracles: [],
-    parentProtocol: "Camelot",
+    parentProtocol: "parent#camelot",
     listedAt: 1669242459
   },
   {
@@ -20554,7 +20554,7 @@ const data2: Protocol[] = [
       "https://paladinsec.co/projects/polycat-finance",
       "https://www.certik.com/projects/polycatfinance"
     ],
-    parentProtocol: "Polycat Finance",
+    parentProtocol: "parent#polycat-finance",
     listedAt: 1670499599
   },
   {
@@ -20733,7 +20733,7 @@ const data2: Protocol[] = [
     module: "mstable-yield/index.js",
     twitter: "mstable_",
     audit_links: ["https://developers.mstable.org/security/security-audits"],
-    parentProtocol: "mStable",
+    parentProtocol: "parent#mstable",
     listedAt: 1670692797
   },
   {
@@ -20959,7 +20959,7 @@ const data2: Protocol[] = [
     twitter: "RealTPlatform",
     forkedFrom: ["AAVE"],
     oracles: [],
-    parentProtocol: "RealT",
+    parentProtocol: "parent#realt",
     listedAt: 1670982822,
   },
   {
@@ -20982,7 +20982,7 @@ const data2: Protocol[] = [
     twitter: "mahalend",
     forkedFrom: ["AAVE"],
     oracles: ["Chainlink"],
-    parentProtocol: "MahaDAO",
+    parentProtocol: "parent#mahadao",
     listedAt: 1671034965
   },
   {
@@ -21094,7 +21094,7 @@ const data2: Protocol[] = [
     twitter: "NeopinOfficial",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    parentProtocol: "NEOPIN",
+    parentProtocol: "parent#neopin",
     audit_links: [
       "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220627_NPT_Staking_And_DEX_Swap_SlowMist.pdf",
       "https://github.com/Neopin/neopin-audits/blob/master/Audit_Report_20220629_Easy_DEX_And_Farm_SlowMist.pdf",
@@ -21122,7 +21122,7 @@ const data2: Protocol[] = [
     twitter: "NeopinOfficial",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "NEOPIN",
+    parentProtocol: "parent#neopin",
     listedAt: 1671198629
   },
   {
@@ -21398,7 +21398,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1671639906,
-    parentProtocol: "stake.link",
+    parentProtocol: "parent#stake.link",
     governanceID: ["snapshot:stakedotlink.eth"]
   },
   {
@@ -21604,7 +21604,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/Sperax/Audit_Reports/blob/main/Demeter_PeckShield_1.pdf"],
-    parentProtocol: "Sperax",
+    parentProtocol: "parent#sperax",
     listedAt: 1671936477
   },
   {
@@ -21739,7 +21739,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/abdk-consulting/audits/blob/main/traderjoe/ABDK_TraderJoe_TraderJoe_v_2_0.pdf"],
-    parentProtocol: "Trader Joe",
+    parentProtocol: "parent#trader-joe",
     listedAt: 1672226957
   },
   {
@@ -21859,7 +21859,7 @@ const data2: Protocol[] = [
     twitter: "opyn_",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "Opyn",
+    parentProtocol: "parent#opyn",
     listedAt: 1672484834
   },
   {
@@ -21882,7 +21882,7 @@ const data2: Protocol[] = [
     twitter: "opyn_",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "Opyn",
+    parentProtocol: "parent#opyn",
     listedAt: 1672484838
   },
   {
@@ -21972,7 +21972,7 @@ const data2: Protocol[] = [
     module: "nestfi/index.js",
     twitter: "nest_protocol",
     oracles: ["Nest"],
-    parentProtocol: "NEST Protocol",
+    parentProtocol: "parent#nest-protocol",
     listedAt: 1672805701,
   },
   {
@@ -22085,7 +22085,7 @@ const data2: Protocol[] = [
     twitter: "BaoCommunity",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    parentProtocol: "BAO Finance",
+    parentProtocol: "parent#bao-finance",
     listedAt: 1672925683
   },
   {
@@ -22108,7 +22108,7 @@ const data2: Protocol[] = [
     twitter: "BaoCommunity",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "BAO Finance",
+    parentProtocol: "parent#bao-finance",
     listedAt: 1672925686
   },
   {
@@ -22131,7 +22131,7 @@ const data2: Protocol[] = [
     twitter: "BaoCommunity",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "BAO Finance",
+    parentProtocol: "parent#bao-finance",
     listedAt: 1672928584
   },
   {
@@ -22154,7 +22154,7 @@ const data2: Protocol[] = [
     twitter: "BaoCommunity",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "BAO Finance",
+    parentProtocol: "parent#bao-finance",
     listedAt: 1672928588
   },
   {
@@ -22177,7 +22177,7 @@ const data2: Protocol[] = [
     twitter: "BaoCommunity",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "BAO Finance",
+    parentProtocol: "parent#bao-finance",
     listedAt: 1672929120
   },
   {
@@ -22334,7 +22334,7 @@ const data2: Protocol[] = [
     module: "uniwswap-unia/index.js",
     twitter: "uniwswap",
     audit_links: [],
-    parentProtocol: "UniWswap",
+    parentProtocol: "parent#uniwswap",
     listedAt: 1673304307
   },
   {
@@ -22531,7 +22531,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Chainlink"],
     module: "metronome-synth/index.js",
     twitter: "MetronomeDAO",
-    parentProtocol: "Metronome",
+    parentProtocol: "parent#metronome",
     listedAt: 1673545817
   },
   {
@@ -22553,7 +22553,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "paraluni-dex/index.js",
     twitter: "paraluni",
-    parentProtocol: "Paraluni",
+    parentProtocol: "parent#paraluni",
     listedAt: 1673548378,
   },
   {
@@ -22576,7 +22576,7 @@ const data2: Protocol[] = [
     module: "wtfdex/index.js",
     twitter: "defi_waterfall",
     audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_WaterfallDEX_Token.pdf"],
-    parentProtocol: "Waterfall Finance",
+    parentProtocol: "parent#waterfall-finance",
     listedAt: 1673572003
   },
   {
@@ -22641,7 +22641,7 @@ const data2: Protocol[] = [
     module: "inverse-finance-firm/index.js",
     twitter: "InverseFinance",
     forkedFrom: [],
-    parentProtocol: "Inverse Finance",
+    parentProtocol: "parent#inverse-finance",
     listedAt: 1673620866
   },
   {
@@ -22801,7 +22801,7 @@ const data2: Protocol[] = [
     twitter: "TeamKujira",
     oracles: [],
     forkedFrom: [],
-    parentProtocol: "Kujira Protocol",
+    parentProtocol: "parent#kujira-protocol",
     listedAt: 1673816822
   },
   {
@@ -22847,7 +22847,7 @@ const data2: Protocol[] = [
     twitter: "TeamKujira",
     oracles: [],
     forkedFrom: [],
-    parentProtocol: "Kujira Protocol",
+    parentProtocol: "parent#kujira-protocol",
     listedAt: 1673816826
   },
   {
@@ -22870,7 +22870,7 @@ const data2: Protocol[] = [
     twitter: "TeamKujira",
     oracles: [],
     forkedFrom: [],
-    parentProtocol: "Kujira Protocol",
+    parentProtocol: "parent#kujira-protocol",
     listedAt: 1673816828
   },
   {
@@ -22987,7 +22987,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://paladinsec.co/projects/steakhut-finance"],
-    parentProtocol: "Steakhut Finance",
+    parentProtocol: "parent#steakhut-finance",
     listedAt: 1673961705
   },
   {
@@ -23171,7 +23171,7 @@ const data2: Protocol[] = [
     twitter: "Timeless_Fi",
     oracles: [],
     forkedFrom: [],
-    parentProtocol: "Timeless",
+    parentProtocol: "parent#timeless",
     listedAt: 1674140788
   },
   {
@@ -23262,7 +23262,7 @@ const data2: Protocol[] = [
     twitter: "skullswapdex",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
-    parentProtocol: "SkullSwap",
+    parentProtocol: "parent#skullswap",
     listedAt: 1674226360
   },
   {
@@ -23329,7 +23329,7 @@ const data2: Protocol[] = [
     twitter: "wynddao",
     oracles: [],
     forkedFrom: [],
-    parentProtocol: "WYND",
+    parentProtocol: "parent#wynd",
     listedAt: 1674298215
   },
   {
@@ -23374,7 +23374,7 @@ const data2: Protocol[] = [
     twitter: "tethysfinance",
     oracles: [],
     forkedFrom: ["GMX"],
-    parentProtocol: "Tethys Finance",
+    parentProtocol: "parent#tethys-finance",
     listedAt: 1674434859
   },
   {
@@ -23420,7 +23420,7 @@ const data2: Protocol[] = [
     oracles: ["TWAP"],
     forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.
     audit_links: ["https://github.com/solidproof/projects/blob/main/ZyberSwap/SmartContract_Audit_Solidproof_Zyberswap.pdf"],
-    parentProtocol: "ZyberSwap",
+    parentProtocol: "parent#zyberswap",
     listedAt: 1674558950
   },
   {
@@ -23467,7 +23467,7 @@ const data2: Protocol[] = [
     twitter: "CapDotFinance",
     oracles: ["Pyth"],
     forkedFrom: [],
-    parentProtocol: "Cap Finance",
+    parentProtocol: "parent#cap-finance",
     listedAt: 1674732169
   },
   {
@@ -24304,7 +24304,7 @@ const data2: Protocol[] = [
     twitter: "dyson_money",
     oracles: [],
     forkedFrom: [],
-    parentProtocol: "SPHERE",
+    parentProtocol: "parent#sphere",
     listedAt: 1675745079
   },
   {
@@ -24558,7 +24558,7 @@ const data2: Protocol[] = [
     twitter: "ParaSpace_NFT",
     oracles: ["Internal"],
     forkedFrom: [],
-    parentProtocol: "ParaSpace",
+    parentProtocol: "parent#paraspace",
     audit_links: ["https://docs.para.space/para-space/para-space/external-audits"],
     listedAt: 1675872130
   },
@@ -24740,7 +24740,7 @@ const data2: Protocol[] = [
     twitter: "covofinance",
     oracles: ["Chainlink"],
     forkedFrom: ["GMX"],
-    parentProtocol: "Covo Finance",
+    parentProtocol: "parent#covo-finance",
     listedAt: 1676226573
   },
   {
@@ -24831,7 +24831,7 @@ const data2: Protocol[] = [
     twitter: "PancakeSwap",
     oracles: [],
     forkedFrom: [],
-    parentProtocol: "PancakeSwap",
+    parentProtocol: "parent#pancakeswap",
     listedAt: 1676313502
   },
   {
@@ -24854,7 +24854,7 @@ const data2: Protocol[] = [
     twitter: "zyberswap",
     oracles: [],
     forkedFrom: [],
-    parentProtocol: "ZyberSwap",
+    parentProtocol: "parent#zyberswap",
     listedAt: 1676313508
   },
   {
@@ -24985,7 +24985,7 @@ const data2: Protocol[] = [
     module: "lioncommerce/index.js",
     twitter: "ScrubFinance",
     listedAt: 1676431477,
-    parentProtocol: "Scrub Money"
+    parentProtocol: "parent#scrub-money"
   },
   {
     id: "2537",
@@ -25159,7 +25159,7 @@ const data2: Protocol[] = [
     oracles: ["Tectonic"],
     forkedFrom: ["Olympus DAO"],
     audit_links: ["https://docs.google.com/document/d/1DxfCo6KqfKOJfmlQmAlb2UySyFaMDwBNKkDo_nZPIsw/edit"],
-    parentProtocol: "Bank Of Cronos",
+    parentProtocol: "parent#bank-of-cronos",
     listedAt: 1676630025
   },
   {
@@ -25182,7 +25182,7 @@ const data2: Protocol[] = [
     twitter: "bankofcronos",
     oracles: ["Tectonic"],
     forkedFrom: ["Liquity"],
-    parentProtocol: "Bank Of Cronos",
+    parentProtocol: "parent#bank-of-cronos",
     listedAt: 1676630028
   },
   {
@@ -25380,7 +25380,7 @@ const data2: Protocol[] = [
     twitter: "BendDAO",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "BendDAO",
+    parentProtocol: "parent#benddao",
     listedAt: 1676894728
   },
   {
@@ -25403,7 +25403,7 @@ const data2: Protocol[] = [
     twitter: "subzeroplus",
     forkedFrom: ["Tomb Finance"],
     oracles: [],
-    parentProtocol: "Subzero",
+    parentProtocol: "parent#subzero",
     listedAt: 1676903060
   },
   {
@@ -25426,7 +25426,7 @@ const data2: Protocol[] = [
     twitter: "zswapdex",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    parentProtocol: "Subzero",
+    parentProtocol: "parent#subzero",
     listedAt: 1676903060
   },
   {
@@ -25517,7 +25517,7 @@ const data2: Protocol[] = [
     twitter: "DiamondProtocol",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "Diamond",
+    parentProtocol: "parent#diamond",
     listedAt: 1676990605
   },
   {
@@ -25585,7 +25585,7 @@ const data2: Protocol[] = [
     twitter: "Official_LIF3",
     oracles: ["Chainlink"],
     forkedFrom: ["GMX"],
-    parentProtocol: "Lif3.com",
+    parentProtocol: "parent#lif3.com",
     listedAt: 1677033189
   },
   {
@@ -25677,7 +25677,7 @@ const data2: Protocol[] = [
     twitter: "TimeswapLabs",
     oracles: [],
     forkedFrom: [],
-    parentProtocol: "Timeswap",
+    parentProtocol: "parent#timeswap",
     listedAt: 1677075857
   },
   {
@@ -26064,7 +26064,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Solidly"],
     audit_links: [],
-    parentProtocol: "Velocimeter",
+    parentProtocol: "parent#velocimeter",
     listedAt: 1677302601
   },
   {
@@ -26203,7 +26203,7 @@ const data2: Protocol[] = [
     twitter: "PancakeSwap",
     audit_links: ["https://docs.pancakeswap.finance/#is-it-safe"],
     forkedFrom: ["Uniswap V2"],
-    parentProtocol: "PancakeSwap",
+    parentProtocol: "parent#pancakeswap",
     oracles: [],
   },
   /*
@@ -26227,7 +26227,7 @@ const data2: Protocol[] = [
     twitter: "KyberNetwork",
     audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],
     oracles: ["Chainlink", "Band"],
-    parentProtocol: "KyberSwap"
+    parentProtocol: "parent#kyberswap"
   },
   {
     id: "2592",
@@ -26249,7 +26249,7 @@ const data2: Protocol[] = [
     twitter: "KyberNetwork",
     audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],
     oracles: ["Chainlink", "Band"],
-    parentProtocol: "KyberSwap"
+    parentProtocol: "parent#kyberswap"
   },
   /*
   {
@@ -26272,7 +26272,7 @@ const data2: Protocol[] = [
     audit_links: [],
     governanceID: ["snapshot:balancer.eth"],
     treasury: "balancer.js",
-    parentProtocol: "Balancer",
+    parentProtocol: "parent#balancer",
   },
   */
   /*
@@ -26295,7 +26295,7 @@ const data2: Protocol[] = [
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
     governanceID: ["snapshot:balancer.eth"],
-    parentProtocol: "Balancer"
+    parentProtocol: "parent#balancer"
   },
     /*
   {
@@ -26319,7 +26319,7 @@ const data2: Protocol[] = [
      oracles: ["DIA"],
      forkedFrom: ["Uniswap V2"],
      listedAt: 1642599283,
-     parentProtocol: "BeamSwap"
+     parentProtocol: "parent#beamswap"
   },
   */
   {
@@ -26343,7 +26343,7 @@ const data2: Protocol[] = [
     oracles: ["DIA"],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1642599283,
-    parentProtocol: "BeamSwap"
+    parentProtocol: "parent#beamswap"
   },
     /*
   {
@@ -26367,7 +26367,7 @@ const data2: Protocol[] = [
     twitter: "SurfswapDEX",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf"],
     listedAt: 1656665210,
-    parentProtocol: "SurfSwap"
+    parentProtocol: "parent#surfswap"
   },
   */
   {
@@ -26391,7 +26391,7 @@ const data2: Protocol[] = [
     twitter: "SurfswapDEX",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf"],
     listedAt: 1656665210,
-    parentProtocol: "Surfswap"
+    parentProtocol: "parent#surfswap"
   },
   {
     id: "2599",
@@ -26479,7 +26479,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "zyberswap-v3/index.js",
     twitter: "ZyberSwap",
-    parentProtocol: "ZyberSwap",
+    parentProtocol: "parent#zyberswap",
     listedAt: 1677500668
   },
   {
@@ -26585,7 +26585,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "fraxfinance",
-    parentProtocol: "Frax Finance",
+    parentProtocol: "parent#frax-finance",
     listedAt: 1677584770
   },
   {
@@ -26672,7 +26672,7 @@ const data2: Protocol[] = [
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
     governanceID: ["snapshot:balancer.eth"],
-    parentProtocol: "Balancer"
+    parentProtocol: "parent#balancer"
   },
   {
     id: "2612",
@@ -26762,7 +26762,7 @@ const data2: Protocol[] = [
     twitter: "KyberNetwork",
     audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],
     oracles: ["Chainlink", "Band"],
-    parentProtocol: "KyberSwap"
+    parentProtocol: "parent#kyberswap"
   },
   {
     id: "2616",
@@ -27092,7 +27092,7 @@ const data2: Protocol[] = [
     module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
     forkedFrom: [],
     twitter: "opensea",
-    parentProtocol: "OpenSea",
+    parentProtocol: "parent#opensea",
     audit_links: [],
   },
   {
@@ -27114,7 +27114,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "opensea",
     audit_links: [],
-    parentProtocol: "OpenSea"
+    parentProtocol: "parent#opensea"
   },
   {
     id: "2632",
@@ -27294,7 +27294,7 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "ruby_exchange",
     audit_links:["https://github.com/RubyExchange/documents/blob/master/SlowMist%20Audit%20Report%20-%20Ruby%20Protocol%20FINAL.pdf"],
-    parentProtocol: "Ruby.Exchange",
+    parentProtocol: "parent#ruby.exchange",
     listedAt: 1678200473
   },
   {
@@ -27317,7 +27317,7 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "ruby_exchange",
     audit_links:["https://github.com/RubyExchange/documents/blob/master/SlowMist%20Audit%20Report%20-%20Ruby%20Protocol%20FINAL.pdf"],
-    parentProtocol: "Ruby.Exchange",
+    parentProtocol: "parent#ruby.exchange",
     listedAt: 1678200478
   },
   {
@@ -27428,7 +27428,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Algebra DEX"],
     oracles: [],
     twitter: "skullswapdex",
-    parentProtocol: "SkullSwap",
+    parentProtocol: "parent#skullswap",
     listedAt: 1678295426
   },
   {
@@ -27451,7 +27451,7 @@ const data2: Protocol[] = [
     module: "rocifi-v2/index.js",
     twitter: "rocifi",
     audit_links: ["https://github.com/RociFi/docs/blob/main/RociFi_Hexens_Dec_2022_SMA_public.pdf"],
-    parentProtocol: "RociFi",
+    parentProtocol: "parent#rocifi",
     listedAt: 1678336553
   },
   {
@@ -27473,7 +27473,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "lfgswap-core/index.js",
     twitter: "LfgSwap",
-    parentProtocol: "LFGSwap",
+    parentProtocol: "parent#lfgswap",
     listedAt: 1678338279
   },
   {
@@ -27580,7 +27580,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "oswap-token/index.js",
     twitter: "ObyteOrg",
-    parentProtocol: "Oswap",
+    parentProtocol: "parent#oswap",
     listedAt: 1678371768
   },
   {
@@ -27624,7 +27624,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "paraspace-ape-staking/index.js",
     twitter: "ParaSpace_NFT",
-    parentProtocol: "ParaSpace",
+    parentProtocol: "parent#paraspace",
     audit_links: ["https://github.com/Secure3Audit/Secure3Academy/tree/main/audit_reports/ParaSpace%20Ape%20Yield"],
     listedAt: 1678375097
   },
@@ -27668,7 +27668,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "metavault-bo/index.js",
     twitter: "MetavaultDAO",
-    parentProtocol: "Metavault",
+    parentProtocol: "parent#metavault",
     listedAt: 1678383915
   },
   {
@@ -27711,7 +27711,7 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     module: "alpacafinance-gmx/index.js",
     twitter: "AlpacaFinance",
-    parentProtocol: "Alpaca Finance",
+    parentProtocol: "parent#alpaca-finance",
     listedAt: 1678446144
   },
   {
@@ -27754,7 +27754,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "spin-prep/index.js",
     twitter: "spin_fi",
-    parentProtocol: "Spin",
+    parentProtocol: "parent#spin",
     listedAt: 1678620529
   },
   {
@@ -27776,7 +27776,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "spin-vault/index.js",
     twitter: "spin_fi",
-    parentProtocol: "Spin",
+    parentProtocol: "parent#spin",
     listedAt: 1678620532
   },
   {
@@ -27906,7 +27906,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "arrakis-v2/index.js",
     twitter: "ArrakisFinance",
-    parentProtocol: "Arrakis Finance",
+    parentProtocol: "parent#arrakis-finance",
     listedAt: 1678728840
   },
   {
@@ -27930,7 +27930,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Solidly"],
     audit_links: [],
-    parentProtocol: "Velocimeter",
+    parentProtocol: "parent#velocimeter",
     listedAt: 1678765228
   },
   {
@@ -28068,7 +28068,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://www.certik.com/projects/wemix"],
-    parentProtocol: "WEMIX.FI",
+    parentProtocol: "parent#wemix.fi",
     listedAt: 1678878315
   },
   {
@@ -28160,7 +28160,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "alpaca-finance-lend/index.js",
     twitter: "AlpacaFinance",
-    parentProtocol: "Alpaca Finance",
+    parentProtocol: "parent#alpaca-finance",
     listedAt: 1678946164
   },
   {
@@ -28183,7 +28183,7 @@ const data2: Protocol[] = [
     module: "kleva-lend/index.js",
     twitter: "KLEVA_Protocol",
     audit_links: [],
-    parentProtocol: "Kleva Protocol",
+    parentProtocol: "parent#kleva-protocol",
     listedAt: 1678946775
   },
   {
@@ -28228,7 +28228,7 @@ const data2: Protocol[] = [
     module: "kavafc/index.js",
     twitter: "KavaFCBet",
     audit_links: [],
-    parentProtocol: "Scrub Money",
+    parentProtocol: "parent#scrub-money",
     listedAt: 1678968383
   },
   {
@@ -28422,7 +28422,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "wyndao-lsd/index.js",
     twitter: "wynddao",
-    parentProtocol: "WYND",
+    parentProtocol: "parent#wynd",
     listedAt: 1679313366
   },
   {
@@ -28549,7 +28549,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "overnight-daiPlus/index.js",
     twitter: "overnight_fi",
-    parentProtocol: "Overnight Finance",
+    parentProtocol: "parent#overnight-finance",
     listedAt: 1679332234
   },
   {
@@ -28613,7 +28613,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "waterdendy/index.js",
     twitter: "defi_waterfall",
-    parentProtocol: "Waterfall Finance",
+    parentProtocol: "parent#waterfall-finance",
     listedAt: 1679394807
   },
   {
@@ -28656,7 +28656,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "fairyswap-v2/index.js",
     twitter: "fairy_swap",
-    parentProtocol: "FairySwap",
+    parentProtocol: "parent#fairyswap",
     listedAt: 1679396448
   },
   {
@@ -28748,7 +28748,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "wemix-lend/index.js",
     twitter: "WemixNetwork",
-    parentProtocol: "WEMIX.FI",
+    parentProtocol: "parent#wemix.fi",
     listedAt: 1679410774
   },
   {
@@ -28771,7 +28771,7 @@ const data2: Protocol[] = [
     module: "radiant-v2/index.js",
     twitter: "RDNTCapital",
     audit_links: ["https://solidity.finance/audits/RadiantProtocol/"],
-    parentProtocol: "Radiant",
+    parentProtocol: "parent#radiant",
     listedAt: 1679414982
   },
   {
@@ -28814,7 +28814,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "puzzle-lend/index.js",
     twitter: "puzzle_lend",
-    parentProtocol: "PuzzleSwapOrg",
+    parentProtocol: "parent#puzzleswaporg",
     listedAt: 1679438099
   },
   {
@@ -29294,7 +29294,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "covo-v2/index.js",
     twitter: "covofinance",
-    parentProtocol: "Covo Finance",
+    parentProtocol: "parent#covo-finance",
     listedAt: 1679912448  
   },
   {
@@ -29661,7 +29661,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "hadouken-fi-lending/index.js",
     twitter: "HadoukenFinance",
-    parentProtocol: "Hadouken Finance",
+    parentProtocol: "parent#hadouken-finance",
     listedAt: 1680182608
   },
   {
@@ -29683,7 +29683,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "hadouken-fi-dex/index.js",
     twitter: "HadoukenFinance",
-    parentProtocol: "Hadouken Finance",
+    parentProtocol: "parent#hadouken-finance",
     listedAt: 1680182612
   },
   {
@@ -29748,7 +29748,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "lfgswap-arbitrum/index.js",
     twitter: "LfgSwap",
-    parentProtocol: "LFGSwap",
+    parentProtocol: "parent#lfgswap",
     listedAt: 1680200332
   },
   {
@@ -29813,7 +29813,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "mm-finance-arbitrum/index.js",
     twitter: "MMFcrypto",
-    parentProtocol: "MM Finance",
+    parentProtocol: "parent#mm-finance",
     listedAt: 1680257948
   },
   /*
@@ -29836,7 +29836,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "synthetix-v2/index.js",
     twitter: "synthetix_io",
-    parentProtocol: "Synthetix",
+    parentProtocol: "parent#synthetix",
     listedAt: 1680261877
   },
   */
@@ -29901,7 +29901,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "starfish-liq-staking/index.js",
     twitter: "Starfish_Fi",
-    parentProtocol: "Starfish",
+    parentProtocol: "parent#starfish",
     listedAt: 1680356315
   },
   {
@@ -29944,7 +29944,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "maia-dao-uni/index.js",
     twitter: "MaiaDAOEco",
-    parentProtocol: "Maia DAO Ecosystem",
+    parentProtocol: "parent#maia-dao-ecosystem",
     listedAt: 1680444176
   },
   {
@@ -29966,7 +29966,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     module: "hector-lendng/index.js",
     twitter: "Hector_Network",
-    parentProtocol: "Hector Network",
+    parentProtocol: "parent#hector-network",
     listedAt: 1680514599
   },
   {
@@ -30009,7 +30009,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "doveswap/index.js",
     twitter: "DovishFi",
-    parentProtocol: "Dove Swap",
+    parentProtocol: "parent#dove-swap",
     listedAt: 1680529375
   },
   {
@@ -30139,7 +30139,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "pancakeswap-v3/index.js",
     twitter: "PancakeSwap",
-    parentProtocol: "PancakeSwap",
+    parentProtocol: "parent#pancakeswap",
     listedAt: 1680561479
   },
   {
@@ -30290,7 +30290,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "sushiswap-v3/index.js",
     twitter: "SushiSwap",
-    parentProtocol: "Sushi",
+    parentProtocol: "parent#sushi",
     listedAt: 1680740698
   },
   {
@@ -30439,7 +30439,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "scrubinvest/index.js",
     twitter: "ScrubMoneyDefi",
-    parentProtocol: "Scrub Money",
+    parentProtocol: "parent#scrub-money",
     listedAt: 1680810932
   },
   {
@@ -30563,7 +30563,7 @@ const data2: Protocol[] = [
     module: "move-dollar/index.js",
     twitter: "ThalaLabs",
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
-    parentProtocol: "Thala Labs",
+    parentProtocol: "parent#thala-labs",
     listedAt: 1680889424
   },
   {
@@ -30627,7 +30627,7 @@ const data2: Protocol[] = [
     twitter: "CamelotDEX",
     forkedFrom: ["Algebra DEX"],
     oracles: [],
-    parentProtocol: "Camelot",
+    parentProtocol: "parent#camelot",
     listedAt: 1680972349
   },
   {
@@ -30692,7 +30692,7 @@ const data2: Protocol[] = [
     module: "thalaswap/index.js",
     twitter: "ThalaLabs",
     audit_links: ["https://docs.thala.fi/thala-protocol-design/operations/audits"],
-    parentProtocol: "Thala Labs",
+    parentProtocol: "parent#thala-labs",
     listedAt: 1680980221
   },
   {
@@ -30735,7 +30735,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "aevo-xyz/index.js",
     twitter: "aevoxyz",
-    parentProtocol: "Ribbon Finance",
+    parentProtocol: "parent#ribbon-finance",
     audit_links: ["https://github.com/aevoxyz/audit"],
     listedAt: 1681122429
   },
@@ -30908,7 +30908,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "stakedotlink-index/index.js",
     twitter: "stakedotlink",
-    parentProtocol: "stake.link",
+    parentProtocol: "parent#stake.link",
     listedAt: 1681164059
   },
   {
@@ -30994,7 +30994,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "doveswap-v3/index.js",
     twitter: "DovishFi",
-    parentProtocol: "Dove Swap",
+    parentProtocol: "parent#dove-swap",
     listedAt: 1681214153
   },
   {
@@ -31016,7 +31016,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "overnight-usdtPlus/index.js",
     twitter: "overnight_fi",
-    parentProtocol: "Overnight Finance",
+    parentProtocol: "parent#overnight-finance",
     listedAt: 1681228187
   },
   {
@@ -31039,7 +31039,7 @@ const data2: Protocol[] = [
     module: "forgesx/index.js",
     twitter: "forge_sx",
     audit_links: ["https://the-stamp.com/2023/04/forge-sx"],
-    parentProtocol: "Forge SX",
+    parentProtocol: "parent#forge-sx",
     listedAt: 1681228189
   },
   {
@@ -31062,7 +31062,7 @@ const data2: Protocol[] = [
     module: "forge-sx-dex/index.js",
     twitter: "forge_sx",
     audit_links: ["https://the-stamp.com/2023/04/forge-sx"],
-    parentProtocol: "Forge SX",
+    parentProtocol: "parent#forge-sx",
     listedAt: 1681238595
   },
   {
@@ -31523,7 +31523,7 @@ const data2: Protocol[] = [
     module: "juicebox-v1/index.js",
     twitter: "juiceboxETH",
     audit_links: ["https://hacken.io/wp-content/uploads/2022/01/%D0%A1onstitution-DAO_11012022Audit_Report.pdf"],
-    parentProtocol: "Juicebox",
+    parentProtocol: "parent#juicebox",
     listedAt: 1681516871
   },
   {
@@ -31546,7 +31546,7 @@ const data2: Protocol[] = [
     module: "juicebox-v2/index.js",
     twitter: "juiceboxETH",
     audit_links: ["https://docs.juicebox.money/assets/files/certik-audit-report-12b48328d22ac38207dad74162cac1db.pdf/"],
-    parentProtocol: "Juicebox",
+    parentProtocol: "parent#juicebox",
     listedAt: 1681517022
   },
   {
@@ -31572,7 +31572,7 @@ const data2: Protocol[] = [
       "https://hackmd.io/@berndartmueller/2023-01-juice-v3-migration",
       "https://code4rena.com/reports/2022-10-juicebox/"
     ],
-    parentProtocol: "Juicebox",
+    parentProtocol: "parent#juicebox",
     listedAt: 1681517104
   },
   {
@@ -31754,7 +31754,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sovryn-lending/index.js",
     twitter: "SovrynBTC",
-    parentProtocol: "Sovryn",
+    parentProtocol: "parent#sovryn",
     listedAt: 1681562277
   },
   {
@@ -31776,7 +31776,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sovryn-zero/index.js",
     twitter: "SovrynBTC",
-    parentProtocol: "Sovryn",
+    parentProtocol: "parent#sovryn",
     listedAt: 1681562279
   },
   {
@@ -31861,7 +31861,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "polynomial-trade/index.js",
     twitter: "PolynomialFi",
-    parentProtocol: "Polynomial Protocol",
+    parentProtocol: "parent#polynomial-protocol",
     listedAt: 1681671402
   },
   {
@@ -31925,7 +31925,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "arbswap-stableswap/index.js",
     twitter: "ArbswapOfficial",
-    parentProtocol: "Arbswap",
+    parentProtocol: "parent#arbswap",
     listedAt: 1681736128
   },
   {

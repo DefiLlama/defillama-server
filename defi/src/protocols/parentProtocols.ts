@@ -20,7 +20,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:aave.eth"],
   },
   {
-    id: "Sushi",
+    id: "parent#sushi",
     name: "Sushi",
     url: "https://sushi.com/",
     description:
@@ -33,7 +33,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:sushigov.eth"]
   },
   {
-    id: "SUN.io",
+    id: "parent#sun",
     name: "SUN",
     url: "https://sun.io",
     description:
@@ -45,7 +45,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "defi_sunio",
   },
   {
-    id: "Benqi",
+    id: "parent#benqi",
     name: "Benqi",
     url: "https://benqi.fi",
     description:
@@ -57,7 +57,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "BenqiFinance",
   },
   {
-    id: "incrementFinance",
+    id: "parent#increment-finance",
     name: "Increment Finance",
     url: "https://increment.fi",
     description:
@@ -69,7 +69,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "incrementfi",
   },
   {
-    id: "podsFinance",
+    id: "parent#pods-finance",
     name: "Pods",
     url: "https://www.pods.finance/",
     description:
@@ -82,7 +82,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:podsfinance.eth"]
   },
   {
-    id: "ApeSwap",
+    id: "parent#apeswap",
     name: "ApeSwap",
     url: "https://apeswap.finance",
     description:
@@ -95,7 +95,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:apeswap-finance.eth"]
   },
   {
-    id: "Parallel DeFi Super App",
+    id: "parent#parallel-deFi-super-app",
     name: "Parallel DeFi Super App",
     url: "https://parallel.fi",
     description:
@@ -107,7 +107,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ParallelFi",
   },
   {
-    id: "Value Finance",
+    id: "parent#value-finance",
     name: "Value Finance",
     url: "https://valuedefi.io",
     description:
@@ -119,7 +119,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "value_defi",
   },
   {
-    id: "Magik Finance",
+    id: "parent#magik-finance",
     name: "Magik Finance",
     url: "https://magik.finance/",
     description:
@@ -131,7 +131,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MagikDotFinance",
   },
   {
-    id: "Huckleberry",
+    id: "parent#huckleberry",
     name: "Huckleberry",
     url: "https://www.huckleberry.finance/",
     description:
@@ -144,7 +144,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:huckleberrydex.eth"]
   },
   {
-    id: "MM Finance",
+    id: "parent#mm-finance",
     name: "MM Finance",
     url: "https://linktr.ee/madmeerkat",
     description:
@@ -157,7 +157,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:mmfinance.eth"]
   },
   {
-    id: "Mycelium",
+    id: "parent#mycelium",
     name: "Mycelium",
     url: "https://mycelium.xyz",
     description:
@@ -170,7 +170,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:tracer.eth", "snapshot:myceliumgrowth.eth"]
   },
   {
-    id: "Bancor",
+    id: "parent#bancor",
     name: "Bancor",
     url: "https://app.bancor.network/",
     description:
@@ -183,7 +183,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:bancornetwork.eth"]
   },
   {
-    id: "SpiritSwap",
+    id: "parent#spiritswap",
     name: "SpiritSwap",
     url: "https://app.spiritswap.finance/#/",
     description:
@@ -196,7 +196,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:spiritswap.eth"]
   },
   {
-    id: "Interlay",
+    id: "parent#interlay",
     name: "Interlay",
     url: "https://interlay.io/",
     description:
@@ -208,7 +208,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "InterlayHQ",
   },
   {
-    id: "Frax Finance",
+    id: "parent#frax-finance",
     name: "Frax Finance",
     url: "https://frax.finance/",
     description:
@@ -224,7 +224,7 @@ const parentProtocols: IParentProtocol[] = [
     ]
   },
   {
-    id: "Compound Finance",
+    id: "parent#compound-finance",
     name: "Compound Finance",
     url: "https://compound.finance/",
     description:
@@ -243,7 +243,7 @@ const parentProtocols: IParentProtocol[] = [
     ]
   },
   {
-    id: "Algofi",
+    id: "parent#algofi",
     name: "Algofi",
     url: "https://www.algofi.org/",
     description:
@@ -255,7 +255,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "algofiorg",
   },
   {
-    id: "Redacted",
+    id: "parent#redacted",
     name: "Redacted",
     url: "https://redacted.finance",
     description:
@@ -268,7 +268,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:redactedcartel.eth"]
   },
   {
-    id: "Tomb Finance",
+    id: "parent#tomb-finance",
     name: "Tomb Finance",
     url: "https://tomb.finance/",
     description:
@@ -281,7 +281,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:tombfinance.eth"]
   },
   {
-    id: "Volt Finance",
+    id: "parent#volt-finance",
     name: "Volt Finance",
     url: "https://voltswap.finance",
     description:
@@ -294,7 +294,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:voltswap.eth"]
   },
   {
-    id: "Based Finance",
+    id: "parent#based-finance",
     name: "Based Finance",
     url: "https://next-gen.basedfinance.io/",
     description:
@@ -306,7 +306,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "BasedDEFI",
   },
   {
-    id: "Ribbon Finance",
+    id: "parent#ribbon-finance",
     name: "Ribbon Finance",
     url: "https://www.ribbon.finance/",
     description:
@@ -319,7 +319,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:rbn.eth", "snapshot:gauge.rbn.eth"]
   },
   {
-    id: "Planet",
+    id: "parent#planet",
     name: "Planet",
     url: "https://app.planet.finance/",
     description:
@@ -332,7 +332,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:planetfinance.eth"]
   },
   {
-    id: "DAO Maker",
+    id: "parent#dao-maker",
     name: "DAO Maker",
     url: "https://daomaker.com/",
     description:
@@ -345,7 +345,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:shomustgoon.eth"]
   },
   {
-    id: "Morpho",
+    id: "parent#morpho",
     name: "Morpho",
     url: "https://www.morpho.xyz",
     description:
@@ -358,7 +358,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:morpho.eth"]
   },
   {
-    id: "Quickswap",
+    id: "parent#quickswap",
     name: "Quickswap",
     url: "https://quickswap.exchange",
     description:
@@ -371,7 +371,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:quickvote.eth"]
   },
   {
-    id: "iZUMI Finance",
+    id: "parent#izumi-finance",
     name: "iZUMI Finance",
     url: "https://izumi.finance/home",
     description:
@@ -384,7 +384,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:veizi.eth"]
   },
   {
-    id: "Temple DAO",
+    id: "parent#temple-dao",
     name: "Temple DAO",
     url: "https://www.templedao.link",
     description:
@@ -396,7 +396,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "templedao",
   },
   {
-    id: "Trader Joe",
+    id: "parent#trader-joe",
     name: "Trader Joe",
     url: "https://www.traderjoexyz.com",
     description:
@@ -409,7 +409,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:joegovernance.eth"]
   },
   {
-    id: "handle finance",
+    id: "parent#handle-finance",
     name: "handle finance",
     url: "https://handle.fi",
     description:
@@ -422,7 +422,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:handlefx.eth"]
   },
   {
-    id: "Omnidex",
+    id: "parent#omnidex",
     name: "Omnidex",
     url: "https://omnidex.finance",
     description:
@@ -434,7 +434,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "OmniDex1",
   },
   {
-    id: "Amulet",
+    id: "parent#amulet",
     name: "Amulet",
     url: "https://amulet.org",
     description:
@@ -446,7 +446,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AmuletProtocol",
   },
   {
-    id: "Uniswap",
+    id: "parent#uniswap",
     name: "Uniswap",
     url: "https://uniswap.org/",
     description:
@@ -463,7 +463,7 @@ const parentProtocols: IParentProtocol[] = [
     ]
   },
   {
-    id: "Tetu",
+    id: "parent#tetu",
     name: "Tetu",
     url: "http://tetu.io",
     description:
@@ -476,7 +476,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:tetu.eth"]
   },
   {
-    id: "Pando",
+    id: "parent#pando",
     name: "Pando",
     url: "https://pando.im",
     description:
@@ -488,7 +488,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "pando_im",
   },
   {
-    id: "Meteora",
+    id: "parent#meteora",
     name: "Meteora",
     url: "https://meteora.ag/",
     description:
@@ -500,7 +500,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MeteoraAG",
   },
   {
-    id: "Folks Finance",
+    id: "parent#folks-finance",
     name: "Folks Finance",
     url: "https://folks.finance/",
     description:
@@ -512,7 +512,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "FolksFinance",
   },
   {
-    id: "Yield Yak",
+    id: "parent#yield-yak",
     name: "Yield Yak",
     url: "https://yieldyak.com",
     description:
@@ -525,7 +525,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:yakherd.eth"]
   },
   {
-    id: "Animal Farm",
+    id: "parent#animal-farm",
     name: "Animal Farm",
     url: "https://animalfarm.app",
     description:
@@ -538,7 +538,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:theanimalfarm.eth"]
   },
   {
-    id: "Metavault",
+    id: "parent#metavault",
     name: "Metavault",
     url: "https://metavault.org/",
     description:
@@ -566,7 +566,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   */
   {
-    id: "WOOFi",
+    id: "parent#woofi",
     name: "WOOFi",
     url: "https://fi.woo.org",
     description:
@@ -578,7 +578,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "_WOOFi",
   },
   {
-    id: "Revert",
+    id: "parent#revert",
     name: "Revert",
     url: "https://revert.finance",
     description:
@@ -590,7 +590,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "revertfinance",
   },
   {
-    id: "Polycat Finance",
+    id: "parent#polycat-finance",
     name: "Polycat Finance",
     url: "https://polycat.finance",
     description:
@@ -603,7 +603,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:polycatfi.eth"]
   },
   {
-    id: "mStable",
+    id: "parent#mstable",
     name: "mStable",
     url: "https://mstable.org/",
     description:
@@ -616,7 +616,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:mstablegovernance.eth"]
   },
   {
-    id: "RealT",
+    id: "parent#realt",
     name: "RealT",
     url: "https://realt.co",
     description:
@@ -628,7 +628,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "RealTPlatform",
   },
   {
-    id: "NEOPIN",
+    id: "parent#neopin",
     name: "NEOPIN",
     url: "https://neopin.io",
     description:
@@ -640,7 +640,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "NeopinOfficial",
   },
   {
-    id: "Sperax",
+    id: "parent#sperax",
     name: "Sperax",
     url: "http://sperax.io",
     description:
@@ -653,7 +653,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:speraxdao.eth"]
   },
   {
-    id: "Opyn",
+    id: "parent#opyn",
     name: "Opyn",
     url: "https://www.opyn.co",
     description:
@@ -665,7 +665,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "opyn_",
   },
   {
-    id: "NEST Protocol",
+    id: "parent#nest-protocol",
     name: "NEST Protocol",
     url: "https://nestprotocol.org",
     description:
@@ -678,7 +678,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:nestecosystem.eth"]
   },
   {
-    id: "BAO Finance",
+    id: "parent#bao-finance",
     name: "BAO Finance",
     url: "https://app.bao.finance",
     description:
@@ -691,7 +691,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:pandaswapbsc.eth", "snapshot:baovotes.eth"]
   },
   {
-    id: "UniWswap",
+    id: "parent#uniwswap",
     name: "UniWswap",
     url: "https://uniwswap.com/",
     description:
@@ -703,7 +703,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "uniwswap",
   },
   {
-    id: "Metronome",
+    id: "parent#metronome",
     name: "Metronome",
     url: "https://www.metronome.io/",
     description:
@@ -716,7 +716,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:metronome.eth", "compound:ethereum:0xc8697de7c190244bfd63d276823aa20035cb5a12"]
   },
   {
-    id: "Paraluni",
+    id: "parent#paraluni",
     name: "Paraluni",
     url: "https://paraluni.org",
     description:
@@ -728,7 +728,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "paraluni",
   },
   {
-    id: "Waterfall Finance",
+    id: "parent#waterfall-finance",
     name: "Waterfall Finance",
     url: "https://wtf.defiwaterfall.com",
     description:
@@ -741,7 +741,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:waterfalldao.eth"]
   },
   {
-    id: "Inverse Finance",
+    id: "parent#inverse-finance",
     name: "Inverse Finance",
     url: "https://www.inverse.finance",
     description:
@@ -754,7 +754,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "InverseFinance",
   },
   {
-    id: "Kujira Protocol",
+    id: "parent#kujira-protocol",
     name: "Kujira Protocol",
     url: "https://kujira.app",
     description:
@@ -766,7 +766,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TeamKujira",
   },
   {
-    id: "Steakhut Finance",
+    id: "parent#steakhut-finance",
     name: "Steakhut Finance",
     url: "https://www.steakhut.finance",
     description:
@@ -778,7 +778,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "steakhut_fi",
   },
   {
-    id: "MahaDAO",
+    id: "parent#mahadao",
     name: "MahaDAO",
     url: "https://mahadao.com",
     description:
@@ -791,7 +791,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:maha.eth"]
   },
   {
-    id: "Tethys Finance",
+    id: "parent#tethys-finance",
     name: "Tethys Finance",
     url: "https://tethys.finance",
     description:
@@ -804,7 +804,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:tethysswap.eth"]
   },
   {
-    id: "Timeless",
+    id: "parent#timeless",
     name: "Timeless",
     url: "https://timelessfi.com",
     description:
@@ -817,7 +817,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:timelessfi.eth"]
   },
   {
-    id: "Cap Finance",
+    id: "parent#cap-finance",
     name: "Cap Finance",
     url: "https://www.cap.io",
     description:
@@ -829,7 +829,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "CapDotFinance",
   },
   {
-    id: "SPHERE",
+    id: "parent#sphere",
     name: "SPHERE",
     url: "https://www.sphere.finance",
     description:
@@ -842,7 +842,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:spherefinance.eth"]
   },
   {
-    id: "PancakeSwap",
+    id: "parent#pancakeswap",
     name: "PancakeSwap",
     url: "https://pancakeswap.finance",
     description:
@@ -855,7 +855,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:cakevote.eth"]
   },
   {
-    id: "ZyberSwap",
+    id: "parent#zyberswap",
     name: "ZyberSwap",
     url: "https://www.zyberswap.io",
     description:
@@ -868,7 +868,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:zyberswap.eth"]
   },
   {
-    id: "Scrub Money",
+    id: "parent#scrub-money",
     name: "Scrub Money",
     url: "https://scrub.money",
     description:
@@ -880,7 +880,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ScrubFinance",
   },
   {
-    id: "Bank Of Cronos",
+    id: "parent#bank-of-cronos",
     name: "Bank Of Cronos",
     url: "https://boc.bankofcronos.com",
     description:
@@ -892,7 +892,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "bankofcronos",
   },
   {
-    id: "BendDAO",
+    id: "parent#benddao",
     name: "BendDAO",
     url: "https://www.benddao.xyz",
     description:
@@ -905,7 +905,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:benddao.eth"]
   },
   {
-    id: "Subzero",
+    id: "parent#subzero",
     name: "Subzero",
     url: "https://subzero.plus",
     description:
@@ -917,7 +917,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "subzeroplus",
   },
   {
-    id: "Diamond",
+    id: "parent#diamond",
     name: "Diamond",
     url: "https://dmo.finance",
     description:
@@ -929,7 +929,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DiamondProtocol",
   },
   {
-    id: "Lif3.com",
+    id: "parent#lif3.com",
     name: "Lif3.com",
     url: "https://lif3.com/",
     description:
@@ -941,7 +941,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Official_LIF3",
   },
   {
-    id: "Timeswap",
+    id: "parent#timeswap",
     name: "Timeswap",
     url: "https://timeswap.io",
     description:
@@ -953,7 +953,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TimeswapLabs",
   },
   {
-    id: "Moonwell",
+    id: "parent#moonwell",
     name: "Moonwell",
     url: "https://moonwell.fi/",
     description:
@@ -965,7 +965,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LunarTechFdn",
   },
   {
-    id: "BeamSwap",
+    id: "parent#beamswap",
     name: "BeamSwap",
     url: "https://beamswap.io",
     description:
@@ -977,7 +977,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Beamswapio",
   },
   {
-    id: "Surfswap",
+    id: "parent#surfswap",
     name: "Surfswap",
     url: "https://surfdex.io/",
     description:
@@ -989,7 +989,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SurfswapDEX",
   },
   {
-    id: "Balancer",
+    id: "parent#balancer",
     name: "Balancer",
     url: "https://balancer.fi",
     description:
@@ -1002,7 +1002,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:balancer.eth"]
   },
   {
-    id: "KyberSwap",
+    id: "parent#kyberswap",
     name: "KyberSwap",
     url: "https://kyberswap.com",
     description:
@@ -1014,7 +1014,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "KyberNetwork",
   },
   {
-    id: "OpenSea",
+    id: "parent#opensea",
     name: "OpenSea",
     url: "https://opensea.io/",
     description: "OpenSea is the world's first and largest web3 marketplace for NFTs and crypto collectibles.",
@@ -1025,7 +1025,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "opensea",
   },
   {
-    id: "Ruby.Exchange",
+    id: "parent#ruby.exchange",
     name: "Ruby.Exchange",
     url: "https://ruby.exchange",
     description: "Gasless, NFT-powered AMM/Dual DEX on the SKALE Network",
@@ -1036,7 +1036,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ruby_exchange",
   },
   {
-    id: "SkullSwap",
+    id: "parent#skullswap",
     name: "SkullSwap",
     url: "https://www.skullswap.exchange",
     description: "SkullSwap is an automated market-making (AMM) decentralized exchange (DEX) for the Fantom Opera network. ",
@@ -1047,7 +1047,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "skullswapdex",
   },
   {
-    id: "RociFi",
+    id: "parent#rocifi",
     name: "RociFi",
     url: "https://roci.fi",
     description: "RociFi - On-chain Credit Scoring and Capital-Efficient Lending Protocol",
@@ -1058,7 +1058,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "rocifi",
   },
   {
-    id: "LFGSwap",
+    id: "parent#lfgswap",
     name: "LFGSwap",
     url: "https://app.lfgswap.finance/swap",
     description: "AMM DEX on EthereumPoW and CORE blockchain",
@@ -1069,7 +1069,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LfgSwap",
   },
   {
-    id: "Oswap",
+    id: "parent#oswap",
     name: "Oswap",
     url: "https://oswap.io",
     description: "A fully decentralized protocol for automated liquidity provision on Obyte.",
@@ -1080,7 +1080,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ObyteOrg",
   },
   {
-    id: "ParaSpace",
+    id: "parent#paraspace",
     name: "ParaSpace",
     url: "https://para.space",
     description: "ParaSpace is a permissionless universal, cross-margin NFT lending protocol that enables users to collateralize both ERC-721 and ERC-20 assets into a single portfolio to borrow against.",
@@ -1091,7 +1091,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ParaSpace_NFT",
   },
   {
-    id: "Alpaca Finance",
+    id: "parent#alpaca-finance",
     name: "Alpaca Finance",
     url: "https://www.alpacafinance.org",
     description: "Alpaca Finance is the largest lending protocol allowing leveraged yield farming on BNB Chain and Fantom. It helps lenders earn safe and stable yields, and offers borrowers undercollateralized loans for leveraged yield farming positions, vastly multiplying their farming principals and resulting profits.",
@@ -1103,7 +1103,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:alpacafinance.eth"]
   },
   {
-    id: "Spin",
+    id: "parent#spin",
     name: "Spin",
     url: "https://spin.fi",
     description: "Spin is a 360° decentralized trading and investments platform built on NEAR Protocol. Spin offers a wide range of products designed to meet the demands of both novice and savvy traders, DeFi investors, and passive income seekers.",
@@ -1127,7 +1127,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   */
   {
-    id: "Arrakis Finance",
+    id: "parent#arrakis-finance",
     name: "Arrakis Finance",
     url: "https://www.arrakis.finance",
     description: "Arrakis is web3's trustless market making infrastructure protocol that enables running sophisticated algorithmic strategies on Uniswap V3. Liquidity providers can utilize Arrakis Vaults to have their liquidity be managed in an automated, capital efficient, non-custodial and transparent manner. ",
@@ -1138,7 +1138,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ArrakisFinance",
   },
   {
-    id: "Enosys",
+    id: "parent#enosys",
     name: "Enosys",
     url: "https://www.arrakis.finance",
     description: "Formerly FLR Finance. Building a Multi-Chain DeFi Economy. From the creators of @FlareScan and @DeFiOracles",
@@ -1149,7 +1149,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "enosys_global",
   },
   {
-    id: "Velocimeter",
+    id: "parent#velocimeter",
     name: "Velocimeter",
     url: "https://canto.velocimeter.xyz/",
     description: "Velocimeter's twin-AMM design unites StableSwap pools with Standard 'kxy' liquidity pools. All the trading fees go to Vote-Escrowers of emission token $FLOW which has to be Locked to earn triple 'Bribes' from candidate pools via Trade Fee, Internal Bribes & External Bribes",
@@ -1160,7 +1160,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "VelocimeterDEX",
   },
   {
-    id: "Kleva Protocol",
+    id: "parent#kleva-protocol",
     name: "Kleva Protocol",
     url: "https://kleva.io",
     description: "KLEVA Protocol is the first Leveraged Yield Farming Protocol on KLAYTN, with aim to become the largest Lending Protocol for Leveraged Yield Farmers and Lenders.",
@@ -1171,7 +1171,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "KLEVA_Protocol",
   },
   {
-    id: "WYND",
+    id: "parent#wynd",
     name: "WYND",
     url: "https://app.wynddao.com",
     description: "WYND is a new ReFi protocol to leverage DeFi tokenomics to regenerate the environment.",
@@ -1182,7 +1182,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "wynddao",
   },
   {
-    id: "Overnight Finance",
+    id: "parent#overnight-finance",
     name: "Overnight Finance",
     url: "https://overnight.fi",
     description: "Overnight Finance is an asset management protocol offering passive yield products based on delta-neutral strategies, primarily for conservative stablecoin investors.",
@@ -1193,7 +1193,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "overnight_fi",
   },
   {
-    id: "FairySwap",
+    id: "parent#fairyswap",
     name: "FairySwap",
     url: "https://fairyswap.finance",
     description: "The first DAPP on Findora, offering unparalleled privacy and security with zero-knowledge technology.",
@@ -1204,7 +1204,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "fairy_swap",
   },
   {
-    id: "WEMIX.FI",
+    id: "parent#wemix.fi",
     name: "WEMIX.FI",
     url: "https://wemix.fi",
     description: "WEMIX.Fi is the first decentralized exchange on the WEMIX3.0 mainnet. WEMIX.Fi is a fully on-chain DeFi platform supporting storage, exchange, borrowing, settlement and investment of crypto-assets.",
@@ -1215,7 +1215,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "WemixNetwork",
   },
   {
-    id: "Radiant",
+    id: "parent#radiant",
     name: "Radiant",
     url: "https://radiant.capital/#/markets",
     description: "Earn Interest & Borrow Assets Cross-Chain, Seamlessly",
@@ -1227,7 +1227,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:radiantcapital.eth"],
   },
   {
-    id: "PuzzleSwapOrg",
+    id: "parent#puzzleswaporg",
     name: "PuzzleSwapOrg",
     url: "https://puzzleswap.org/trade",
     description: "DEX 2.0 & Lending protocol built on Waves to bring a new light to DeFi experience",
@@ -1238,7 +1238,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "puzzle_swap"
   },
   {
-    id: "Covo Finance",
+    id: "parent#covo-finance",
     name: "Covo Finance",
     url: "https://covo.finance",
     description: "Covo Finance is a decentralized trading platform that offers spot and perpetual trading with low swap fees and zero market impact. The platform offers a maximum leverage of 50x on major cryptos and is backed by a singular multi-asset pool that generates income for liquidity providers through fees garnered from market making, swap transactions, leveraged trading (including spreads, funding fees, and liquidations), and rebalancing of assets.",
@@ -1249,7 +1249,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "covofinance"
   },
   {
-    id: "Hadouken Finance",
+    id: "parent#hadouken-finance",
     name: "Hadouken Finance",
     url: "https://covo.finance",
     description: "An integrated borrowing/lending platform and AMM on Godwoken V1 Network.",
@@ -1261,7 +1261,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   /*
   {
-    id: "Synthetix",
+    id: "parent#synthetix",
     name: "Synthetix",
     url: "https://synthetix.io",
     description: "Synthetix is a derivatives liquidity protocol providing the backbone for derivatives trading in DeFi.",
@@ -1274,7 +1274,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   */
   {
-    id: "Starfish",
+    id: "parent#starfish",
     name: "Starfish",
     url: "https://app.starfish.finance",
     description: "Leading the Entertainment-Fi experience in Web3",
@@ -1285,7 +1285,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Starfish_Fi"
   },
   {
-    id: "Hector Network",
+    id: "parent#hector-network",
     name: "Hector Network",
     url: "https://hector.network",
     description: "Hector Network is an expansive decentralized ecosystem run by a utility token, HEC, and complemented by the TOR stablecoin.",
@@ -1297,7 +1297,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:hectordao.eth"]
   },
   {
-    id: "Zenlink",
+    id: "parent#zenlink",
     name: "Zenlink",
     url: "https://zenlink.pro",
     description: "An ultimate, open, and universal cross-chain DEX protocol for building DEX on Polkadot with one click. Make DEX easier, for more people.",
@@ -1308,7 +1308,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ZenlinkPro",
   },
   {
-    id: "Camelot",
+    id: "parent#camelot",
     name: "Camelot",
     url: "https://camelot.exchange/",
     description: "Camelot is an ecosystem-focused and community-driven DEX built on Arbitrum. It has been built as a highly efficient and customizable protocol, allowing both builders and users to leverage our custom infrastructure for deep, sustainable, and adaptable liquidity. Camelot moves beyond the traditional design of DEXs to focus on offering a tailored approach that prioritises composability",
@@ -1319,7 +1319,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "CamelotDEX",
   },
   {
-    id: "Thala Labs",
+    id: "parent#thala-labs",
     name: "Thala Labs",
     url: "https://www.thala.fi/",
     description: "Thala is a decentralized finance protocol powered by the Move language, enabling seamless borrowing of a decentralized, over-collateralized stablecoin in Move Dollar and capital-efficient liquidity provisioning via a rebalancing AMM on the Aptos blockchain",
@@ -1330,7 +1330,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ThalaLabs",
   },
   {
-    id: "stake.link",
+    id: "parent#stake.link",
     name: "stake.link",
     url: "https://stake.link",
     description: "stake.link is a diversified liquid staking protocol powered by fifteen of the most experienced and reliable infrastructure providers in Web3",
@@ -1342,7 +1342,7 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:stakedotlink.eth"]
   },
   {
-    id: "Dove Swap",
+    id: "parent#dove-swap",
     name: "Dove Swap",
     url: "https://swap.dovish.finance",
     description: "Bringing innovative DeFi to the zkEVM space.",
@@ -1353,7 +1353,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "DovishFi",
   },
   {
-    id: "Forge SX",
+    id: "parent#forge-sx",
     name: "Forge SX",
     url: "https://forge.sx",
     description: "Forge is a brand new DeFi protocol enabling anyone to mint & trade real-world assets with the convenience of the blockchain",
@@ -1364,7 +1364,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "forge_sx",
   },
   {
-    id: "Juicebox",
+    id: "parent#juicebox",
     name: "Juicebox",
     url: "https://juicebox.money/",
     description: "The programmable crypto fundraising protocol for builders and creators. Light enough for a group of friends, powerful enough for a global network of anons. Community-owned, on Ethereum",
@@ -1375,7 +1375,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "juiceboxETH",
   },
   {
-    id: "Sovryn",
+    id: "parent#sovryn",
     name: "Sovryn",
     url: "https://sovryn.com/",
     description: "Sovryn is a non-custodial and permission-less smart contract based system for bitcoin lending, borrowing and margin trading.",
@@ -1386,7 +1386,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SovrynBTC",
   },
   {
-    id: "Polynomial Protocol",
+    id: "parent#polynomial-protocol",
     name: "Polynomial Protocol",
     url: "https://www.polynomial.fi",
     description: "Polynomial automates financial derivative strategies to create products that deliver passive yield on various assets",
@@ -1397,7 +1397,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "PolynomialFi",
   },
   {
-    id: "Arbswap",
+    id: "parent#arbswap",
     name: "Arbswap",
     url: "https://arbswap.io",
     description: "Arbswap is the only true Arbitrum-native DEX suite, offering the best Game-fi services on Nova and the smoothest trading experience on One.",
@@ -1408,7 +1408,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ArbswapOfficial",
   },
   {
-    id: "Maia DAO Ecosystem",
+    id: "parent#maia-dao-ecosystem",
     name: "Maia DAO Ecosystem",
     url: "https://maiadao.io",
     description: "MAIA is the first decentralized community-owned reserve currency in Metis Andromeda.",

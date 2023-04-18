@@ -11,7 +11,7 @@ CREATE TABLE dailyTxs (start INT, endTime INT, protocolId VARCHAR(200), chain VA
 CREATE INDEX dailyTxs_time2 ON dailyTxs (start);
 
 -- gas
-CREATE TABLE hourlyGas (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), gas INT, gasUsd INT, PRIMARY KEY(start, protocolId, chain));
+CREATE TABLE hourlyGas (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), gas double precision, gasUsd double precision, PRIMARY KEY(start, protocolId, chain));
 CREATE INDEX hourlyGas_time ON hourlyGas (start);
-CREATE TABLE dailyGas (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), gas INT, gasUsd INT, realStart INT, PRIMARY KEY(start, protocolId, chain));
+CREATE TABLE dailyGas (start INT, endTime INT, protocolId VARCHAR(200), chain VARCHAR(200), gas double precision, gasUsd double precision, realStart INT, PRIMARY KEY(start, protocolId, chain));
 CREATE INDEX dailyGas_time2 ON dailyGas (start);

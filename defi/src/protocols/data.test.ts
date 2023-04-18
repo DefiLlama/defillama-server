@@ -67,6 +67,14 @@ test("projects have a single chain or each chain has an adapter", async () => {
   }
 });
 
+test("parentProtocol exists", async () => {
+  const parentIds = parentProtocols.map(p=>p.id)
+  for (const protocol of protocols) {
+    if(protocol.parentProtocol)
+    expect(parentIds).toContain(protocol.parentProtocol);
+  }
+});
+
 test("no id is repeated", async () => {
   const ids = [];
   for (const protocol of (protocols as {id:string}[]).concat(parentProtocols)) {

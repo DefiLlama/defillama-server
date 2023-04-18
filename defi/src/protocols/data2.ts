@@ -19277,7 +19277,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1668524390,
-    parentProtocol: "paent#woofi"
+    parentProtocol: "parent#woofi"
   },
   {
     id: "2285",
@@ -32118,7 +32118,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "mm-finance-arbitrum-v3/index.js",
     twitter: "MMFcrypto",
-    parentProtocol: "MM Finance",
+    parentProtocol: "parent#mm-finance",
     listedAt: 1681840766
   },
   {

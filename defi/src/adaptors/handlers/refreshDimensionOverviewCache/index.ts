@@ -36,7 +36,6 @@ export const handler = async (): Promise<undefined> => {
                 // Go through all chains + cache overview response
                 Promise.all(allChains.map((chain) => {
                     const event = {
-                        dlRefresh: true,
                         pathParameters: { chain: chain, type: type },
                         queryStringParameters: {
                             dataType: AdaptorRecordTypeMapReverse[dataType],

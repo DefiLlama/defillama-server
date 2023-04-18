@@ -405,7 +405,7 @@ async function unknownPools(
         const token: string = await PoolToToken(chain, pool, block);
         // THIS IS GOOD FOR DEBUG
         // if (
-        //   !["0x10f38a56720ff3a16bd04754e9b49e1f39d4aa4a"].includes(
+        //   !["0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"].includes(
         //     token.toLowerCase(),
         //   )
         // )
@@ -460,7 +460,7 @@ async function unknownPools(
         const price =
           (poolValue * 10 ** tokenInfo.decimals[0].output) /
           tokenInfo.supplies[0].output;
-        if (price == Infinity) continue;
+        if (price == Infinity || price == 0) continue;
 
         addToDBWritesList(
           writes,

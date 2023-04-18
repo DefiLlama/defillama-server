@@ -32143,5 +32143,27 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/ingenuity-build/audits"],
     listedAt: 1681842223
   },
+  {
+    id: "2862",
+    name: "Hyperliquid",
+    address: null,
+    symbol: "-",
+    url: "https://hyperliquid.xyz",
+    description: "Hyperliquid is a decentralized perpetual exchange with best-in-class speed, liquidity, and price.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/hyperliquid.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hyperliquid/index.js",
+    twitter: "HyperliquidX",
+    listedAt: 1681846146
+  },
+
 ]
 export default data2;

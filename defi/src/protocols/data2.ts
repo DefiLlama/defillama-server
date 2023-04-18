@@ -32054,5 +32054,26 @@ const data2: Protocol[] = [
     twitter: null,
     listedAt: 1681767845
   },
+  {
+    id: "2858",
+    name: "GLIF Infinity Pool",
+    address: null,
+    symbol: "-",
+    url: "https://glif.io",
+    description: "The Infinity Pool operates like an over-collateralized, perpetual leasing mechanism. SPs are required to contribute collateral equal to the amount of FIL they borrow from the Infinity Pool. After borrowing, SPs are expected to make weekly payments, which in turn increase the pool's assets and iFIL price. While there is no strict “due date” for the borrowed FIL, any payments exceeding the required weekly payment amount will be applied towards the initial borrowed principal.",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/gilf-infinity-pool.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Filecoin"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "glif/index.js",
+    twitter: "glifio",
+    listedAt: 1681809804
+  },
 ]
 export default data2;

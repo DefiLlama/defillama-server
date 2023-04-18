@@ -70,7 +70,7 @@ export default {
   spookyswap: require("./markets/uniswap"),
   tombswap: require("./markets/uniswap"),
   solidly: require("./markets/uniswap"),
-  diffusion: require("./markets/uniswap"),
+  // diffusion: require("./markets/uniswap"),
   equalizer: require("./markets/uniswap"),
   camelot: require("./markets/uniswap"),
   velocore: require("./markets/uniswap"),

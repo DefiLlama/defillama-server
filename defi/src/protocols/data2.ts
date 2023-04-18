@@ -11249,7 +11249,7 @@ const data2: Protocol[] = [
     chains: ["Avalanche"],
     oracles: [],
     forkedFrom: [],
-    module: "ordernchaos/index.js",
+    module: "onc/index.js",
     twitter: "ordernchaos_fi",
     listedAt: 1658736615
   },
@@ -32070,10 +32070,32 @@ const data2: Protocol[] = [
     category: "Staking Pool",
     chains: ["Filecoin"],
     oracles: [],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     module: "glif/index.js",
     twitter: "glifio",
     listedAt: 1681809804
+  },
+  {
+    id: "2859",
+    name: "Bonsai Strike",
+    address: null,
+    symbol: "-",
+    url: "https://bonsai.money",
+    description: "Bonsai Strike is the first in a planned series of Defi products on Binance Smart Chain that help users access sustainable and real yield.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bonsai-strike.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options Vault",
+    chains: ["Binance"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["Ribbon"],
+    module: "bonsai-strike/index.js",
+    twitter: "BonsaiStrike",
+    audit_links: ["https://3252533156-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2sLHA6VC2Qvv8soKXZfl%2Fuploads%2FEoxxawgW1OoGPCvYyyGt%2FCODA%20Audit%20Report_V4_140223.pdf?alt=media&token=c97d558c-3342-4a30-93be-d735c76724e7"],
+    listedAt: 1681815342
   },
 ]
 export default data2;

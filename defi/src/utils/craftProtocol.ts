@@ -179,7 +179,7 @@ export default async function craftProtocol({
     previousRun = await buildCoreData({protocolData, useNewChainNames, useHourlyData})
     await storeR2(cacheKey, JSON.stringify(previousRun))
   }
-  const lastTimestamp = previousRun.tvl[previousRun.tvl.length-1].date;
+  const lastTimestamp = previousRun.tvl[previousRun.tvl.length-1]?.date ?? 0; // Consider the case when array is empty
   /* TODO: Update cache
   if ((getCurrentUnixTimestamp() - lastTimestamp) > 24 * 3600) {
   }

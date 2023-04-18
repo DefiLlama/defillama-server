@@ -59,15 +59,23 @@ insert into dailyGas (
   }
   await sql`
   insert into hourlyGas (
-    start, endTime, protocolId, chain, gas, gasUsd,
+    start, endTime, protocolId, chain, gas, gasUsd
   ) values (
     ${start}, ${end}, ${protocolId}, ${chain}, ${gas}, ${gasUsd}
   )
 `
 }
 
-export async function getProtocolUsers(protocolId:string, table:string) {
-  return sql`SELECT * FROM ${table} WHERE protocolId = ${protocolId} AND chain = 'all'`
+export async function getProtocolUsers(protocolId:string) {
+  return sql`SELECT * FROM dailyUsers WHERE protocolId = ${protocolId} AND chain = 'all'`
+}
+
+export async function getProtocolTxs(protocolId:string) {
+  return sql`SELECT * FROM dailyTxs WHERE protocolId = ${protocolId} AND chain = 'all'`
+}
+
+export async function getProtocolGas(protocolId:string) {
+  return sql`SELECT * FROM dailyGas WHERE protocolId = ${protocolId} AND chain = 'all'`
 }
 
 export async function getLatestUsersData(minEnd:number, chain: string) {

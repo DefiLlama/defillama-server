@@ -1,20 +1,20 @@
 import { cache20MinResponse, wrap, IResponse, errorResponse } from "./utils/shared";
-import { getProtocolUsers } from "./users/storeUsers";
+import { getProtocolGas, getProtocolTxs, getProtocolUsers } from "./users/storeUsers";
 
 const typeInfo = {
     users: {
-        table: "dailyUsers",
+        query: getProtocolUsers,
         column: "users"
     },
     txs: {
-        table: "dailyTxs",
+        query: getProtocolTxs,
         column: "txs"
     },
     gas: {
-        table: "dailyGas",
+        query: getProtocolGas,
         column: "gasUsd"
     },
-} as {[type:string]: {table:string, column:string}}
+} as {[type:string]: {query:typeof getProtocolUsers, column:string}}
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
     const protocolId = event.pathParameters?.protocolId?.toLowerCase();
@@ -23,7 +23,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     if(selectedTypeInfo === undefined){
         return errorResponse({message: `Wrong type`})
     }
-    const records = await getProtocolUsers(protocolId ?? "none", selectedTypeInfo.table)
+    const records = await selectedTypeInfo.query(protocolId ?? "none")
     return cache20MinResponse(records.map((d)=>([d.start, d[selectedTypeInfo.column]])))
 }
 

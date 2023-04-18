@@ -32137,7 +32137,7 @@ const data2: Protocol[] = [
     category: "Staking Pool",
     chains: ["Quicksilver"],
     oracles: [],
-    forkedFrom: ["Uniswap V3"],
+    forkedFrom: [""],
     module: "quicksilver/index.js",
     twitter: "quicksilverzone",
     audit_links: ["https://github.com/ingenuity-build/audits"],

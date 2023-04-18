@@ -67,7 +67,7 @@ insert into dailyGas (
 }
 
 export async function getProtocolUsers(protocolId:string, table:string) {
-  return sql`SELECT * FROM ${table} WHERE protocolId = ${protocolId}`
+  return sql`SELECT * FROM ${table} WHERE protocolId = ${protocolId} AND chain = 'all'`
 }
 
 export async function getLatestUsersData(minEnd:number, chain: string) {

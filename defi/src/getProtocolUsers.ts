@@ -24,7 +24,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
         return errorResponse({message: `Wrong type`})
     }
     const records = await getProtocolUsers(protocolId ?? "none", selectedTypeInfo.table)
-    return cache20MinResponse(records.map((d)=>({start:d.start, chain:d.chain, value: d[selectedTypeInfo.column]})))
+    return cache20MinResponse(records.map((d)=>([d.start, d[selectedTypeInfo.column]])))
 }
 
 export default wrap(handler);

@@ -1432,4 +1432,8 @@ export default {
             }
         },
     },
+    "polkaswap": {
+        "enabled": true,
+        "id": "713"
+    }
 } as AdaptorsConfig

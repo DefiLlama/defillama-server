@@ -22271,14 +22271,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2417",
-    name: "Thena V2",
+    name: "Thena V1",
     address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     symbol: "THE",
     url: "https://thena.fi/",
     description:
       "Thena is a native liquidity layer & AMM on BNB Chain",
     chain: "Binance",
-    logo: `${baseIconsUrl}/thena-v2.jpg`,
+    logo: `${baseIconsUrl}/thena-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "thena",

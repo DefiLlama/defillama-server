@@ -650,6 +650,8 @@ export default {
         id: "2307"
     },
     "thena": {
+        name: "Thena V1",
+        displayName: "Thena V1",
         enabled: true,
         id: "2417"
     },

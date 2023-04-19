@@ -6,6 +6,7 @@ import { storeR2JSONString } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
+import parentProtocols from "./protocols/parentProtocols";
 
 async function handler() {
   const protocolsArray: string[] = [];
@@ -23,10 +24,15 @@ async function handler() {
 
         const pId = metadata?.protocolIds?.[0] ?? null;
         const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : null;
-        const name = pData ? pData.parentProtocol || pData.name : protocolName;
+        const id = pData ? pData.parentProtocol || pData.name : protocolName;
+        let name = id;
+        if(pData?.parentProtocol){
+          name = parentProtocols.find(p=>p.id===pData.parentProtocol)?.name ?? id;
+        }
         const data = { data: chart, metadata, name: name, gecko_id: pData?.gecko_id };
 
-        await storeR2JSONString(`emissions/${sluggifyString(name)}`, JSON.stringify(data), 3600);
+
+        await storeR2JSONString(`emissions/${sluggifyString(id)}`, JSON.stringify(data), 3600);
 
         protocolsArray.push(sluggifyString(name));
       } catch (err) {

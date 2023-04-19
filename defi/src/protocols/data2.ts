@@ -22271,14 +22271,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2417",
-    name: "Thena",
+    name: "Thena V2",
     address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
     symbol: "THE",
     url: "https://thena.fi/",
     description:
       "Thena is a native liquidity layer & AMM on BNB Chain",
     chain: "Binance",
-    logo: `${baseIconsUrl}/thena.png`,
+    logo: `${baseIconsUrl}/thena-v2.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "thena",
@@ -22289,6 +22289,7 @@ const data2: Protocol[] = [
     twitter: "ThenaFi_",
     forkedFrom: ["Solidly"],
     oracles: [],
+    parentProtocol: "parent#thena",
     listedAt: 1673037671
   },
   {
@@ -32184,6 +32185,28 @@ const data2: Protocol[] = [
     module: "saitaswap/index.js",
     twitter: "WeAreSaitama",
     listedAt: 1681859571
+  },
+  {
+    id: "2864",
+    name: "Thena V3",
+    address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
+    symbol: "THE",
+    url: "https://www.thena.fi",
+    description: "THENA V3 is the concentrated liquidity protocol on BSC chain, powered by Algebra Protocol",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/thena-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "thena-v3/index.js",
+    twitter: "ThenaFi_",
+    parentProtocol: "parent#thena",
+    listedAt: 1681910178
   },
 ]
 export default data2;

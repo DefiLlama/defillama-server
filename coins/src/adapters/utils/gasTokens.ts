@@ -33,7 +33,9 @@ export async function getGasTokenBalance(
   ).output;
 
   const i = balances.indexOf(
-    balances.find((b: any) => b == null || b.success == false),
+    balances.find(
+      (b: any) => b == null || b.success == false || b.output == "0",
+    ),
   );
   balances[i] = {
     input: {

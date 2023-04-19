@@ -16748,7 +16748,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Services",
     chains: ["Ethereum"],
     module: "daomaker/index.js",
-    twitter: "TheDaoMaker",
+    twitter: "daomaker",
     audit_links: [
       "https://learn.daomaker.com/audits",
       "https://drive.google.com/file/d/18Anm53T_BbcRQLWHMthkQgvtLC6CDGW0/view",

@@ -341,7 +341,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "dao-maker",
     cmcId: "8420",
     chains: [],
-    twitter: "TheDaoMaker",
+    twitter: "daomaker",
     governanceID: ["snapshot:shomustgoon.eth"]
   },
   {

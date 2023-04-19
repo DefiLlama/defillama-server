@@ -16641,7 +16641,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Binance"],
     module: "daomaker-swap/index.js",
-    twitter: "TheDaoMaker",
+    twitter: "daomaker",
     listedAt: 1665169761,
     parentProtocol: "parent#dao-maker"
   },
@@ -32137,7 +32137,7 @@ const data2: Protocol[] = [
     category: "Staking Pool",
     chains: ["Quicksilver"],
     oracles: [],
-    forkedFrom: [""],
+    forkedFrom: [],
     module: "quicksilver/index.js",
     twitter: "quicksilverzone",
     audit_links: ["https://github.com/ingenuity-build/audits"],
@@ -32185,6 +32185,5 @@ const data2: Protocol[] = [
     twitter: "WeAreSaitama",
     listedAt: 1681859571
   },
-
 ]
 export default data2;

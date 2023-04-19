@@ -65,6 +65,8 @@ export default async (adapter: string[], adaptorType: AdapterType, cliArguments:
                     || sumAllVolumes(cleanRecord.data) === 0
                     // or is missing a specific chain data
                     || Object.keys(cleanRecord.data).length < adapter.chains.length
+                    // or one of the chains report 0 value
+                    || Object.entries(cleanRecord.data).some(([chainKey, chainRecord]) => sumAllVolumes({ [chainKey]: chainRecord }) === 0)
                 )
                     // then 2 backfill
                     adapters2Backfill.push(adapter.module)

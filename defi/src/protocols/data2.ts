@@ -32208,5 +32208,26 @@ const data2: Protocol[] = [
     parentProtocol: "parent#thena",
     listedAt: 1681910178
   },
+  {
+    id: "2865",
+    name: "Thena V1",
+    address: "bsc:0xf4c8e32eadec4bfe97e0f595add0f4450a863a11",
+    symbol: "THE",
+    url: "https://www.thena.fi",
+    description: "Thena is a native liquidity layer & AMM on BNB Chain",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/thena-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    oracles: [],
+    module: "dummy.js",
+    twitter: "ThenaFi_",
+    parentProtocol: "parent#thena",
+    listedAt: 1681910178
+  },
 ]
 export default data2;

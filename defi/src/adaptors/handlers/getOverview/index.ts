@@ -56,7 +56,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     }
 
     if (response.body?.allChains && response.body.allChains.length)
-        response.body.allChains = response?.body.allChains.map((name: string) => getChainDisplayName(name, false))
+        response.body.allChains.map((name: string) => getChainDisplayName(name, false))
     if (excludeTotalDataChart)
         response.body.totalDataChart = []
     if (excludeTotalDataChartBreakdown)

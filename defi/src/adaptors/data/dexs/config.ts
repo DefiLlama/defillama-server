@@ -1437,5 +1437,10 @@ export default {
     "polkaswap": {
         "enabled": true,
         "id": "713"
+    },
+    "thena-v3": {
+        parentId: "Thena",
+        "enabled": true,
+        "id": "2864"
     }
 } as AdaptorsConfig

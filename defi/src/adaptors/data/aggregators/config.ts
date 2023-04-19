@@ -7,11 +7,13 @@ export default {
     },
     "dexible": {
         "enabled": true,
+        disabled: true,
         "startFrom": 1630022400,
         "id": "2249",
         parentId: "2249",
         protocolsData: {
             Dexible_v2: {
+                disabled: true,
                 "id": "2249",
                 enabled: true,
                 displayName: "Dexible V2"

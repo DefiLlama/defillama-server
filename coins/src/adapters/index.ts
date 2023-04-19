@@ -19,6 +19,7 @@ export default {
   aurigami: require("./moneyMarkets/compound"),
   cream: require("./moneyMarkets/compound"),
   scream: require("./moneyMarkets/compound"),
+  tonpound: require("./moneyMarkets/compound"),
   // euler: require("./moneyMarkets/euler"),
   yearn: require("./yield/yearn"),
   convex: require("./yield/convex"),

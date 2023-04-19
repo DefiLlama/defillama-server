@@ -110,3 +110,11 @@ export function mare(timestamp: number = 0) {
     ),
   ]);
 }
+export function tonpound(timestamp: number = 0) {
+  console.log("starting tonpound");
+  return getTokenPrices(
+    "ethereum",
+    "0x79645effe4dc7df2ecf52e267d56c98d239fd838",
+    timestamp,
+  );
+}

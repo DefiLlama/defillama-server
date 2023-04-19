@@ -1,5 +1,6 @@
 import { DISABLED_ADAPTER_KEY, Adapter, BaseAdapter, AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { CHAIN } from "@defillama/dimension-adapters/helpers/chains";
+import { getChainDisplayName } from "../../utils/normalizeChain";
 import { getMethodologyByType as getDefaultMethodologyByCategory, getParentProtocolMethodology } from "../data/helpers/methodology";
 import { IJSON, ProtocolAdaptor } from "../data/types";
 
@@ -120,17 +121,14 @@ export const getMethodologyDataByBaseAdapter = (adapter: BaseAdapter, type?: str
 export const formatChain = (chain: string) => {
     if (!chain) return chain
     let c = chain.toLowerCase()
-    if (c === 'avax') return "Avalanche"
-    if (c === 'bsc') return c.toUpperCase()
-    if (c === 'xdai') return "xDai"
-    if (c === 'terra' || c === 'terra-classic') return "Terra Classic"
-    return c[0].toUpperCase() + c.slice(1)
+    return getChainDisplayName(c, true)
 }
 
 export const formatChainKey = (chain: string) => {
     if (chain === 'avalanche') return CHAIN.AVAX
     if (chain === 'terra classic' || chain === 'terra-classic') return CHAIN.TERRA
     if (chain.toLowerCase() === 'karura') return CHAIN.KARURA
+    if (chain.toLowerCase() === 'zksync era') return CHAIN.ERA
     return chain
 }
 

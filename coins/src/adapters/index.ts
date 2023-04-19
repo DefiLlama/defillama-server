@@ -74,6 +74,7 @@ export default {
   jarvis: require("./markets/jarvis"),
   chainlinkNFT: require("./nft/chainlink"),
   arrakis: require("./markets/arrakis"),
+  aktionariat: require("./markets/aktionariat"),
   yieldYak: require("./yield/yield-yak"),
   tezos: require("./tezos"),
   aaveDebt: require("./moneyMarkets/aave-debt"),

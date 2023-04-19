@@ -6,12 +6,20 @@ import parentProtocolsList from "./protocols/parentProtocols";
 import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
 import { storeR2 } from "./utils/r2";
+import { getChainDisplayName } from "./utils/normalizeChain";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
     [constants.BROTLI_PARAM_MODE]: constants.BROTLI_MODE_TEXT,
     [constants.BROTLI_PARAM_QUALITY]: constants.BROTLI_MAX_QUALITY,
   });
+}
+
+function replaceChainNames(oraclesByChain?: {
+  [chain: string]: string[];
+} | undefined){
+  if(!oraclesByChain) return oraclesByChain
+  return Object.fromEntries(Object.entries(oraclesByChain).map(([chain, vals])=>[getChainDisplayName(chain, true), vals]))
 }
 
 const handler = async (_event: any) => {
@@ -25,7 +33,7 @@ const handler = async (_event: any) => {
           category: protocol.category,
           chains: protocol.chains,
           oracles: protocol.oracles,
-          oraclesByChain: protocol.oraclesByChain,
+          oraclesByChain: replaceChainNames(protocol.oraclesByChain),
           forkedFrom: protocol.forkedFrom,
           listedAt: protocol.listedAt,
           mcap: protocol.mcap,

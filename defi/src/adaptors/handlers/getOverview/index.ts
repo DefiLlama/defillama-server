@@ -6,6 +6,8 @@ import invokeLambda from "../../../utils/shared/invokeLambda";
 import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 import { CATEGORIES } from "../../data/helpers/categories";
 import { getTimestampAtStartOfDay } from "@defillama/dimension-adapters/utils/date";
+import { getChainDisplayName } from "../../../utils/normalizeChain";
+
 
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
@@ -44,6 +46,17 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         await invokeLambda("defillama-prod-getOverviewProcess", event)
     }
 
+    if (response.body?.protocols) {
+        response.body.protocols.map((e: any) => {
+            return {
+                ...e,
+                chains: e.chains?.length && e.chains.map((name: string) => getChainDisplayName(name, false))
+            }
+        })
+    }
+
+    if (response.body?.allChains && response.body.allChains.length)
+        response.body.allChains = response?.body.allChains.map((name: string) => getChainDisplayName(name, false))
     if (excludeTotalDataChart)
         response.body.totalDataChart = []
     if (excludeTotalDataChartBreakdown)

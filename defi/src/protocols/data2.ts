@@ -16641,7 +16641,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Binance"],
     module: "daomaker-swap/index.js",
-    twitter: "TheDaoMaker",
+    twitter: "daomaker",
     listedAt: 1665169761,
     parentProtocol: "parent#dao-maker"
   },
@@ -32137,7 +32137,7 @@ const data2: Protocol[] = [
     category: "Staking Pool",
     chains: ["Quicksilver"],
     oracles: [],
-    forkedFrom: [""],
+    forkedFrom: ["Uniswap V3"],
     module: "quicksilver/index.js",
     twitter: "quicksilverzone",
     audit_links: ["https://github.com/ingenuity-build/audits"],
@@ -32164,27 +32164,5 @@ const data2: Protocol[] = [
     twitter: "HyperliquidX",
     listedAt: 1681846146
   },
-  {
-    id: "2863",
-    name: "SaitaSwap",
-    address: "0xce3f08e664693ca792cace4af1364d5e220827b2",
-    symbol: "SAITAMA",
-    url: "https://dex.saita.pro/home",
-    description: "Official Dex of Saitama",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/saitaswap.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: "saitama-inu",
-    cmcId: "20513",
-    category: "Dexes",
-    chains: ["Ethereum", "Binance"],
-    oracles: [],
-    forkedFrom: ["Uniswap V2"],
-    module: "saitaswap/index.js",
-    twitter: "WeAreSaitama",
-    listedAt: 1681859571
-  },
-
 ]
 export default data2;

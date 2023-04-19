@@ -32225,7 +32225,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     oracles: ["Chainlink"],
     forkedFrom: ["Uniswap V2"],
-    module: "moonbase-alpha/index.js",
+    module: "moonbase.js",
     twitter: "MBaseAlpha",
     audit_links: ["https://www.rdauditors.com/wp-content/uploads/2023/03/Moonbase-Alpha-Security-Audit-Report-1.pdf"],
     listedAt: 1681927556

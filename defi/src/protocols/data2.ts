@@ -32135,7 +32135,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "quicksilver",
     cmcId: null,
-    category: "Staking Pool",
+    category: "Liquid Staking",
     chains: ["Quicksilver"],
     oracles: [],
     forkedFrom: [],

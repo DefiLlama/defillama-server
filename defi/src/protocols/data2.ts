@@ -32208,5 +32208,27 @@ const data2: Protocol[] = [
     parentProtocol: "parent#thena",
     listedAt: 1681910178
   },
+  {
+    id: "2865",
+    name: "Moonbase Alpha",
+    address: "arbitrum:0xB536AE2B2Ed085eA0197C67e3948b7cBF40010c3",
+    symbol: "MROOK",
+    url: "https://exchange.themoonbase.app",
+    description: "Moonbase Alpha is an all in one decentralized haven for everything blockchain.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/moonbase-alpha.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["Uniswap V2"],
+    module: "moonbase-alpha/index.js",
+    twitter: "MBaseAlpha",
+    audit_links: ["https://www.rdauditors.com/wp-content/uploads/2023/03/Moonbase-Alpha-Security-Audit-Report-1.pdf"],
+    listedAt: 1681927556
+  },
 ]
 export default data2;

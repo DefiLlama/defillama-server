@@ -20,7 +20,10 @@ export default async function getYieldWrites({ chain, timestamp, tokens, priceAb
   const decimals = await api.multiCall({ abi: 'uint8:decimals', calls: underlyingTokens, } as any)
 
   const pricesObject: any = {}
-  tokens.forEach((vault: any, i: any) => { pricesObject[vault] = { underlying: underlyingTokens[i], price: prices[i] / (10 ** decimals[i]) } })
+  tokens.forEach((vault: any, i: any) => { 
+    if ([underlyingTokens[i], prices[i], decimals[i]].includes(null)) return 
+    pricesObject[vault] = { underlying: underlyingTokens[i], price: prices[i] / (10 ** decimals[i]) } 
+  })
 
   return getWrites({ chain, timestamp, writes, pricesObject, projectName })
 }

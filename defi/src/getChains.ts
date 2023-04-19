@@ -1,7 +1,7 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getChainDisplayName, chainCoingeckoIds, isDoubleCounted } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, isDoubleCounted, isExcludedFromChainTvl } from "./utils/normalizeChain";
 import { excludeProtocolInCharts } from "./storeGetCharts";
 import { IChain } from "./types";
 import { importAdapter } from "./utils/imports/importAdapter";
@@ -10,7 +10,7 @@ export async function craftChainsResponse(excludeDoublecountedAndLSD = false){
   const chainTvls = {} as {[chain:string]:number}
   await Promise.all(
     protocols.map(async (protocol) => {
-      if(excludeProtocolInCharts(protocol)){
+      if(excludeProtocolInCharts(protocol) || isExcludedFromChainTvl(protocol.category)){
         return undefined;
       }
       const lastTvl = await getLastRecord(hourlyTvl(protocol.id))

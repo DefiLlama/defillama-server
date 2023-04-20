@@ -42,7 +42,7 @@ function formParamsObject(event: any): QueryParams {
   let params: any = {
     coins: (event.pathParameters?.coins ?? "").split(","),
     span: "0",
-    start: "1514764800", // 1/1/18
+    start: 1514764800, // 1/1/18
     period: "d",
   };
 

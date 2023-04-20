@@ -32277,5 +32277,26 @@ const data2: Protocol[] = [
                 ],
     listedAt: 1681991669
   },
+  {
+    id: "2868",
+    name: "zkFox",
+    address: "0xaAf72D359ABC19751aC01f52f33A820041903322",
+    symbol: "ZKFOX",
+    url: "https://zkfox.io",
+    description: "zkFox is a leveraged income aggregator focusing on the DeFi ecology, built on zkSync. It is committed to building a complete ecological infrastructure of the public chain, allowing users to use leverage more conveniently to obtain higher returns.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zkfox.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "zkfox/index.js",
+    twitter: "zk_zkfox",
+    listedAt: 1682023939
+  },
 ]
 export default data2;

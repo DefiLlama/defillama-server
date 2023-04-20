@@ -56,6 +56,7 @@ export default {
   manualInput: require("./other"),
   realt: require("./other"),
   uniswap: require("./markets/uniswap"),
+  glacier: require("./markets/uniswap"),
   sushiswap1: require("./markets/uniswap"),
   sushiswap2: require("./markets/uniswap"),
   traderJoe: require("./markets/uniswap"),

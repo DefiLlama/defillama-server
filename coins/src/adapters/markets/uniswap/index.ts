@@ -243,3 +243,13 @@ export function gemswap(timestamp: number = 0) {
     timestamp,
   );
 }
+export function glacier(timestamp: number = 0) {
+  console.log("starting glacier");
+  return getTokenPrices(
+    "avax",
+    "0xac7b7eac8310170109301034b8fdb75eca4cc491",
+    "0xc5b8ce3c8c171d506deb069a6136a351ee1629dc",
+    undefined,
+    timestamp,
+  );
+}

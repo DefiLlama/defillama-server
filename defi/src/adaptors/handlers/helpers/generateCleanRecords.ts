@@ -11,7 +11,12 @@ import { convertDataToUSD } from "./convertRecordDataCurrency"
  * If there's missing data it tries to average it based on previos/next available data.
  */
 
-export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string) => {
+export interface ICleanRecordsConfig {
+    genuineSpikes: IJSON<boolean>
+}
+
+export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string, cleanRecordsConfig?: ICleanRecordsConfig) => {
+    const genuineSpikes = cleanRecordsConfig?.genuineSpikes ?? {}
     const currentTimestamp = Math.trunc(Date.now() / 1000)
     const spikesLogs: string[] = []
     const chains = chainsRaw.map(formatChainKey)
@@ -140,7 +145,7 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             await convertDataToUSD(generatedData, timestamp)
         )
 
-        if (timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
+        if (!genuineSpikes[String(timestamp)] && timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
             checkSpikes(acc.lastDataRecord, newGen, spikesLogs, acc.ath)
 
         const dayVolume = sumAllVolumes(newGen.data)

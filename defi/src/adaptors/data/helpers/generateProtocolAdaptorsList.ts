@@ -46,13 +46,6 @@ const chainDataMap = chainData.reduce((acc, curr) => {
 
 export type IImportsMap = IJSON<IImportObj>
 
-//TODO: refactor and use list from helpers/collections/data.ts
-const addressMap = {
-    'opensea-seaport-collections': seaportCollections,
-    'opensea-v1-collections': seaportCollections,
-    'opensea-v2-collections': seaportCollections
-} as IJSON<typeof seaportCollections>
-
 // This could be much more efficient
 export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): Promise<ProtocolAdaptor[]> => {
     const collectionsMap = await getCollectionsMap()
@@ -75,7 +68,7 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
             baseModuleObject = moduleObject.adapter
         }
         else if ('breakdown' in moduleObject) {
-            const protocolsData = config?.[adapterKey]?.protocolsData ?? addressMap[adapterKey]
+            const protocolsData = config?.[adapterKey]?.protocolsData
             if (!protocolsData) {
                 console.error(`No protocols data defined in ${type}'s config for adapter with breakdown`, adapterKey)
                 return
@@ -89,7 +82,7 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
             return dexFoundInProtocolsArr.map((dexFoundInProtocols => {
                 let configObj = config[adapterKey]
                 let versionKey = undefined
-                const protData = config?.[adapterKey]?.protocolsData ?? addressMap[adapterKey]
+                const protData = config?.[adapterKey]?.protocolsData
                 if ('breakdown' in moduleObject) {
                     const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
                     configObj = vConfig ?? config[adapterKey]
@@ -99,12 +92,17 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
                     }
                 }
                 if (!configObj || !dexFoundInProtocols) return
+                const parentConfig = JSON.parse(JSON.stringify(config[adapterKey]))
+                delete parentConfig.protocolsData
                 const infoItem: ProtocolAdaptor = {
                     ...dexFoundInProtocols,
                     ...configObj,
                     id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id,
                     module: adapterKey,
-                    config: config[adapterKey],
+                    config: {
+                        ...parentConfig,
+                        ...configObj,
+                    },
                     chains: getChainsFromBaseAdapter(baseModuleObject),
                     disabled: configObj.disabled ?? false,
                     displayName: configObj.displayName ?? dexFoundInProtocols.name,

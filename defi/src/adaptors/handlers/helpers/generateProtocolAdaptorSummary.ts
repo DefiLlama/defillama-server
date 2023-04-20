@@ -69,7 +69,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
 
 
         // Clean data by chain
-        console.info("Cleaning records", adapter.name, adapter.id, adapter.module, adaptorRecords.length)
+        console.info("Cleaning records", adapter.name, adapter.id, adapter.module, adaptorRecords.length, adapter.config)
         const cleanRecords = await getCachedReturnValue(
             getAdapterKey(
                 adapter.id,
@@ -83,7 +83,8 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
                 adaptorRecords,
                 adapter.chains,
                 protocolsKeys,
-                chainFilter
+                chainFilter,
+                adapter.config?.cleanRecordsConfig
             ))
         console.info("Cleaning records OK", adapter.name, adapter.id, adapter.module, cleanRecords.cleanRecordsArr.length)
 

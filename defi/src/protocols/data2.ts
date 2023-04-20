@@ -32230,5 +32230,28 @@ const data2: Protocol[] = [
     audit_links: ["https://www.rdauditors.com/wp-content/uploads/2023/03/Moonbase-Alpha-Security-Audit-Report-1.pdf"],
     listedAt: 1681927556
   },
+  {
+    id: "2866",
+    name: "Ghost",
+    address: null,
+    symbol: "-",
+    url: "https://ghost.kujira.app",
+    description: "Ghost is the native lending and borrowing market on the Kujira blockchain",
+    chain: "Kujira",
+    logo: `${baseIconsUrl}/ghost.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Kujira"],
+    oracles: ["Internal"],
+    forkedFrom: [],
+    module: "ghost/index.js",
+    twitter: "TeamKujira",
+    parentProtocol: "parent#kujira-protocol",
+    listedAt: 1681989943
+  },
+
 ]
 export default data2;

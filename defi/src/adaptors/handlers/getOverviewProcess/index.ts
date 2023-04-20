@@ -31,6 +31,7 @@ export interface IGeneralStats extends ExtraTypes {
 
 export type ProtocolAdaptorSummary = Pick<ProtocolAdaptor,
     'name'
+    | 'defillamaId'
     | 'disabled'
     | 'displayName'
     | 'chains'

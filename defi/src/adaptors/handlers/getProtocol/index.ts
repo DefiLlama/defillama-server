@@ -20,6 +20,7 @@ export interface ChartItem {
 export interface IHandlerBodyResponse extends
     Omit<Pick<ProtocolAdaptor,
         "name"
+        | "defillamaId"
         | "displayName"
         | "logo"
         | "address"
@@ -84,6 +85,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
         const generatedSummary = await generateProtocolAdaptorSummary(dexData, dataType, adaptorType)
 
         dexDataResponse = {
+            defillamaId: dexData.defillamaId,
             name: generatedSummary.name,
             displayName: generatedSummary.displayName,
             disabled: generatedSummary.disabled,
@@ -117,6 +119,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
     } catch (error) {
         console.error(`Error generating summary for ${dexData.module} ${JSON.stringify(error)}`)
         dexDataResponse = {
+            defillamaId: dexData.defillamaId,
             name: dexData.name,
             displayName: dexData.displayName,
             logo: dexData.logo,
@@ -173,6 +176,7 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
     )
     return {
         ...parentData,
+        defillamaId: parentData.id,
         displayName: parentData.name,
         total24h: totalToday,
         totalAllTime: sumReduce(summaries, 'totalAllTime'),

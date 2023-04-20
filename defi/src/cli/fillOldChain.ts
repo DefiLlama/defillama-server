@@ -21,6 +21,7 @@ import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapter } from "./utils/importAdapter";
 import * as sdk from '@defillama/sdk'
 import { Chain } from "@defillama/sdk/build/general";
+import { clearProtocolCacheById } from "./utils/clearProtocolCache";
 
 const { humanizeNumber: { humanizeNumber } } = sdk.util
 
@@ -154,15 +155,26 @@ const main = async () => {
   setInterval(() => {
     releaseCoingeckoLock();
   }, 1.5e3);
-  while (timestamp > start) {
-    const batchedActions = [];
-    for (let i = 0; i < batchSize && timestamp > start; i++) {
-      batchedActions.push(getAndStore(timestamp, protocol, dailyItems, { chainsToRefill, rawTokenTvl } as any));
-      timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
+  let atLeastOneUpdateSuccessful = false
+
+  try {
+    while (timestamp > start) {
+      const batchedActions = [];
+      for (let i = 0; i < batchSize && timestamp > start; i++) {
+        batchedActions.push(getAndStore(timestamp, protocol, dailyItems, { chainsToRefill, rawTokenTvl } as any));
+        timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
+      }
+      await Promise.all(batchedActions);
+      atLeastOneUpdateSuccessful = true
     }
-    await Promise.all(batchedActions);
+  } catch (e) {
+    console.error(e)
   }
+
+  if (!process.env.DRY_RUN && atLeastOneUpdateSuccessful)
+    return clearProtocolCacheById(protocol.id)
 };
+
 main().then(() => {
   console.log('Done!!!')
   process.exit(0)

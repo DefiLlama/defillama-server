@@ -3,7 +3,7 @@ import protocolAddresses from "../../../dimension-adapters/users/routers/routerA
 import { convertChainToFlipside, isAcceptedChain } from "../../../dimension-adapters/users/utils/convertChain";
 import { queryFlipside } from "../../../dimension-adapters/helpers/flipsidecrypto";
 import { PromisePool } from '@supercharge/promise-pool'
-import { storeUsers } from "../../users/storeUsers";
+import { storeTxs } from "../../users/storeUsers";
 
 async function main() {
     const filtered = protocolAddresses.filter(addresses => {
@@ -17,7 +17,7 @@ async function main() {
                 .map(async ([chain, chainAddresses]: [string, string[]]) => {
                     const usersChart = await queryFlipside(`SELECT
                         date_trunc(day, block_timestamp) as dt, 
-                        count(DISTINCT FROM_ADDRESS) uniques
+                        count(*)
                     from
                         ${convertChainToFlipside(chain)}.core.fact_transactions
                     where
@@ -35,7 +35,7 @@ async function main() {
                                 return
                             }
                             try{
-                                await storeUsers(start, end, id, chain, users) // if already stored -> don't overwrite
+                                await storeTxs(start, end, id, chain, users) // if already stored -> don't overwrite
                             } catch(e){
                                 if(!String(e).includes("duplicate key value violates unique constraint")){
                                     console.error(`Couldn't store users for ${name} on ${chain}`, e)

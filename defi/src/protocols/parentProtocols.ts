@@ -1140,7 +1140,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#enosys",
     name: "Enosys",
-    url: "https://www.arrakis.finance",
+    url: "https://enosys.global",
     description: "Formerly FLR Finance. Building a Multi-Chain DeFi Economy. From the creators of @FlareScan and @DeFiOracles",
     logo: `${baseIconsUrl}/enosys.jpg`,
     gecko_id: null,

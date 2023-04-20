@@ -128,7 +128,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             }
 
         return {
-            spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined,
+            defillamaId: adapter.defillamaId,
             name: adapter.name,
             disabled: adapter.disabled,
             displayName: adapter.displayName,
@@ -162,13 +162,14 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             ...Object.entries(extraTypes).reduce((acc, [key, value]) => {
                 acc[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : value
                 return acc
-            }, {} as typeof extraTypes)
+            }, {} as typeof extraTypes),
+            spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined
         }
     } catch (error) {
         // TODO: handle better errors
         if (onError) onError(error as Error)
         return {
-            spikes: undefined,
+            defillamaId: adapter.id,
             name: adapter.name,
             module: adapter.module,
             disabled: adapter.disabled,
@@ -196,6 +197,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             change_7dover7d: null,
             change_30dover30d: null,
             chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
+            spikes: undefined,
         }
     }
 }

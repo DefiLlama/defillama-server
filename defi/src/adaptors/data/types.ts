@@ -4,6 +4,7 @@ import { Protocol } from "../../protocols/types"
 import { ICleanRecordsConfig } from "../handlers/helpers/generateCleanRecords"
 
 export interface ProtocolAdaptor extends Protocol {
+    defillamaId: string
     displayName: string
     config?: IConfig
     disabled: boolean

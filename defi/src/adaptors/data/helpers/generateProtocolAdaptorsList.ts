@@ -97,7 +97,8 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
                 const infoItem: ProtocolAdaptor = {
                     ...dexFoundInProtocols,
                     ...configObj,
-                    id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id,
+                    id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id, // used to query db, eventually should be changed to defillamaId
+                    defillamaId: !isNaN(+configObj?.id) ? configObj.id : config[adapterKey].id,
                     module: adapterKey,
                     config: {
                         ...parentConfig,

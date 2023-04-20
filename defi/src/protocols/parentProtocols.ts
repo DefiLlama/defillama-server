@@ -1422,7 +1422,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#thena",
     name: "THENA",
     url: "https://www.thena.fi",
-    description: "Thena is a native liquidity layer & AMM on BNB Chain",
+    description: "THENA is a native liquidity layer & AMM on BNB Chain",
     logo: `${baseIconsUrl}/thena.png`,
     gecko_id: "thena",
     cmcId: "23335",

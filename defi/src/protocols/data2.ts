@@ -10319,7 +10319,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "apex-token-2",
     cmcId: "19843",
-    category: "Dexes",
+    category: "Derivatives",
     chains: ["Arbitrum"],
     oracles: ["Stork"],
     forkedFrom: [],

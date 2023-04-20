@@ -58,7 +58,13 @@ export default {
             "derivatives": {
                 displayName: "Covo V2 - Derivatives",
                 "id": "2730",
-                "enabled": true
+                "enabled": true,
+                cleanRecordsConfig: {
+                    genuineSpikes: {
+                        ["1681862400"]: true,
+                        ["1681776000"]: true
+                    }
+                }
             }
         },
     },

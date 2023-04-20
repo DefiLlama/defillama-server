@@ -1,6 +1,6 @@
 require("dotenv").config();
 import adapters from "./adapters/index";
-import { batchWrite } from "./utils/shared/dynamodb";
+import { batchWriteWithAlerts } from "./adapters/utils/database";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
 
@@ -27,7 +27,10 @@ export default async function handler(event: any) {
           results.flat(),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
-          await batchWrite(resultsWithoutDuplicates.slice(i, i + step), true);
+          await batchWriteWithAlerts(
+            resultsWithoutDuplicates.slice(i, i + step),
+            true,
+          );
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {

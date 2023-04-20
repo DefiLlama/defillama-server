@@ -57,13 +57,13 @@ export function excludeProtocolInCharts(protocol: Protocol, includeBridge?: bool
   return exclude;
 }
 
-export async function getHistoricalTvlForAllProtocols(includeBridge: boolean) {
+export async function getHistoricalTvlForAllProtocols(includeBridge: boolean, excludeProtocolsFromCharts = true) {
   // get last daily timestamp by checking out all protocols most recent tvl value
   let lastDailyTimestamp = 0;
 
   const historicalProtocolTvls = await Promise.all(
     protocols.map(async (protocol) => {
-      if (!protocol || excludeProtocolInCharts(protocol, includeBridge)) {
+      if (!protocol || (excludeProtocolsFromCharts && excludeProtocolInCharts(protocol, includeBridge))) {
         return;
       }
 
@@ -77,7 +77,7 @@ export async function getHistoricalTvlForAllProtocols(includeBridge: boolean) {
         return;
       }
 
-      if(isExcludedFromChainTvl(protocol.category)){
+      if(excludeProtocolsFromCharts && isExcludedFromChainTvl(protocol.category)){
         return;
       }
       // check if protocol is double counted

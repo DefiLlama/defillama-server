@@ -16,7 +16,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     };
   };
 
-  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(false);
+  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(categorySelected !== undefined, categorySelected === undefined);
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (!protocolTvl) {
       return;

@@ -124,11 +124,30 @@ export const formatChain = (chain: string) => {
     return getChainDisplayName(c, true)
 }
 
+const normalizeDimensionChainsMap = {
+    ['avalanche']: CHAIN.AVAX,
+    ['terra classic']: CHAIN.TERRA,
+    ['terra-classic']: CHAIN.TERRA,
+    ['karura']: CHAIN.KARURA,
+    ['zksync era']: CHAIN.ERA,
+    ['zksync lite']: CHAIN.ZKSYNC,
+    ['multiversx']: CHAIN.ELROND,
+    ['okxchain']: CHAIN.OKEXCHAIN,
+    ['gnosis']: CHAIN.XDAI,
+    ['godwokenv1']: CHAIN.GODWOKEN_V1,
+    ['milkomeda c1']: CHAIN.MILKOMEDA,
+    ['oraichain']: CHAIN.ORAI,
+    ['cosmoshub']: CHAIN.COSMOS,
+    ['rangers']: CHAIN.RPG,
+    ['polygon zkevm']: CHAIN.POLYGON_ZKEVM,
+    ['sxnetwork']: CHAIN.SX,
+    ['ontologyevm']: CHAIN.ONTOLOGY_EVM,
+    ['wanchain']: CHAIN.WAN,
+} as IJSON<CHAIN>
+
 export const formatChainKey = (chain: string) => {
-    if (chain === 'avalanche') return CHAIN.AVAX
-    if (chain === 'terra classic' || chain === 'terra-classic') return CHAIN.TERRA
-    if (chain.toLowerCase() === 'karura') return CHAIN.KARURA
-    if (chain.toLowerCase() === 'zksync era') return CHAIN.ERA
+    if (normalizeDimensionChainsMap[chain.toLowerCase()])
+        return normalizeDimensionChainsMap[chain.toLowerCase()]
     return chain
 }
 

@@ -32252,6 +32252,30 @@ const data2: Protocol[] = [
     parentProtocol: "parent#kujira-protocol",
     listedAt: 1681989943
   },
-
+  {
+    id: "2867",
+    name: "Ensuro",
+    address: null,
+    symbol: "-",
+    url: "https://ensuro.co",
+    description: "Ensuro is a decentralized capital provider for insurance risk. We use smart contracts to curate competitive insurance portfolios. We allow anyone to invest in insurance risk and reap its benefits. By opening up the insurance market to new players, we fuel innovation for established and upcoming insurance partners.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/ensuro.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Insurance",
+    chains: ["Polygon"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ensuro/index.js",
+    twitter: "Ensuroproject",
+    audit_links:[
+                  "https://github.com/ensuro/ensuro/blob/main/audits/Quantstamp-Ensuro-Final-Report-2022-11-09.pdf",
+                  "https://github.com/ensuro/ensuro/blob/main/audits/SlowMistAuditReport-Ensuro-2021-09-29.pdf"
+                ],
+    listedAt: 1681991669
+  },
 ]
 export default data2;

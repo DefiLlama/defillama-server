@@ -38,6 +38,12 @@ export class SwapEvent {
   @Column("float", { nullable: true })
   amountUsd: number;
 
+  @Column("float", { nullable: true })
+  reportedOutput: number;
+
+  @Column("float", { nullable: true })
+  realOutput: number;
+
   @Column("json")
   errorData: any;
 

@@ -1,0 +1,335 @@
+{
+  "gauges": {
+    "name": "gauges",
+    "outputs": [
+      {
+        "type": "address",
+        "name": ""
+      }
+    ],
+    "inputs": [
+      {
+        "type": "uint256",
+        "name": "arg0"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "n_gauges": {
+    "name": "n_gauges",
+    "outputs": [
+      {
+        "type": "int128",
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "get_gauge_count": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "get_gauge_count",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256" }]
+  },
+  "get_gauge": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "get_gauge",
+    "inputs": [{ "name": "arg0", "type": "uint256" }],
+    "outputs": [{ "name": "", "type": "address" }]
+  },
+  "lp_token": {
+    "name": "lp_token",
+    "outputs": [{ "type": "address", "name": "" }],
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "token": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "token",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "address" }]
+  },
+  "get_registry": {
+    "name": "get_registry",
+    "outputs": [
+      {
+        "type": "address",
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "pool_list": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "pool_list",
+    "inputs": [
+      {
+        "name": "arg0",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  "pool_count": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "pool_count",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  "get_meta_n_coins": {
+    "stableFactory": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_meta_n_coins",
+      "inputs": [{ "name": "_pool", "type": "address" }],
+      "outputs": [
+        { "name": "", "type": "uint256" },
+        { "name": "", "type": "uint256" }
+      ]
+    }
+  },
+  "get_n_coins": {
+    "pcs": {
+      "inputs": [],
+      "name": "N_COINS",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    "stableswap": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_n_coins",
+      "inputs": [
+        {
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[2]"
+        }
+      ]
+    },
+    "stableFactory": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_n_coins",
+      "inputs": [
+        {
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ]
+    },
+    "crypto": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_n_coins",
+      "inputs": [
+        {
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ]
+    },
+    "cryptoFactory": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_n_coins",
+      "inputs": [
+        {
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ]
+    }
+  },
+  "get_coins": {
+    "pcs": {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "coins",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    "stableswap": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_coins",
+      "inputs": [
+        {
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[8]"
+        }
+      ]
+    },
+    "stableFactory": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_coins",
+      "inputs": [
+        {
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[4]"
+        }
+      ]
+    },
+    "crypto": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_coins",
+      "inputs": [
+        {
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[8]"
+        }
+      ]
+    },
+    "cryptoFactory": {
+      "stateMutability": "view",
+      "type": "function",
+      "name": "get_coins",
+      "inputs": [
+        {
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[2]"
+        }
+      ]
+    }
+  },
+  "get_id_info": {
+    "name": "get_id_info",
+    "outputs": [
+      {
+        "type": "address",
+        "name": "addr"
+      },
+      {
+        "type": "bool",
+        "name": "is_active"
+      },
+      {
+        "type": "uint256",
+        "name": "version"
+      },
+      {
+        "type": "uint256",
+        "name": "last_modified"
+      },
+      {
+        "type": "string",
+        "name": "description"
+      }
+    ],
+    "inputs": [
+      {
+        "type": "uint256",
+        "name": "arg0"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "get_dy": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "get_dy",
+    "inputs": [
+      { "name": "i", "type": "int128" },
+      { "name": "j", "type": "int128" },
+      { "name": "dx", "type": "uint256" }
+    ],
+    "outputs": [{ "name": "", "type": "uint256" }]
+  },
+  "get_dy2": {
+    "stateMutability": "view",
+    "type": "function",
+    "name": "get_dy",
+    "inputs": [
+      { "name": "i", "type": "uint256" },
+      { "name": "j", "type": "uint256" },
+      { "name": "dx", "type": "uint256" }
+    ],
+    "outputs": [{ "name": "", "type": "uint256" }]
+  },
+  "pairLength": {
+    "inputs": [],
+    "name": "pairLength",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "swapPairContract": {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "swapPairContract",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  }
+}

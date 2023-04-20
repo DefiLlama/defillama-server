@@ -79,6 +79,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     updates,
     countUpdatesAllProtocols,
     allExpectedHourlyUpdates,
+    missedUpdatesAllProtocols: allExpectedHourlyUpdates - countUpdatesAllProtocols,
     missedUpdatesPercent: 1 - (countUpdatesAllProtocols/allExpectedHourlyUpdates),
     totalProtocols,
     protocolsWithMissedUpdates,

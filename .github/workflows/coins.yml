@@ -44,5 +44,7 @@ jobs:
         XDAI_RPC: ${{ secrets.XDAI_RPC }}
         HARMONY_RPC: ${{ secrets.HARMONY_RPC }}
         SOLANA_RPC: ${{ secrets.SOLANA_RPC }}
+        CG_KEY: ${{ secrets.CG_KEY }}
+        MISSING_COINS_DB_PWD: ${{ secrets.MISSING_COINS_DB_PWD }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -3,6 +3,8 @@ import ddb from "./utils/shared/dynamodb";
 import { getProvider } from "@defillama/sdk/build/general"
 import fetch from "node-fetch"
 import { getCurrentUnixTimestamp } from "./utils/date";
+import genesisBlockTimes from './genesisBlockTimes';
+import * as zk from "zksync-web3";
 
 interface TimestampBlock {
   height: number;
@@ -17,6 +19,36 @@ function cosmosBlockProvider(chain: "terra" | "kava") {
         .then((block) => ({
           number: Number(block.block.header.height),
           timestamp: Math.round(Date.parse(block.block.header.time) / 1000),
+        })),
+  };
+}
+
+function zkSyncBlockProvider(chain: "era" | "lite") {
+  if (chain == "era")
+    return {
+      getBlock: async (height: number | "latest") => {
+        const provider = new zk.Provider("https://mainnet.era.zksync.io");
+        const block = await provider.getBlock(height);
+        return { number: block.number, timestamp: block.timestamp };
+      },
+    };
+  return {
+    getBlock: async (height: number | "latest") =>
+      fetch(
+        `https://api.zksync.io/api/v0.1/blocks${
+          height == "latest" ? "" : `/${height}`
+        }`,
+      )
+        .then((res) => res.json())
+        .then((blocks) => ({
+          number: Number(
+            height == "latest" ? blocks[0].block_number : blocks.block_number,
+          ),
+          timestamp: Math.round(
+            Date.parse(
+              height == "latest" ? blocks[0].committed_at : blocks.committed_at,
+            ) / 1000,
+          ),
         })),
   };
 }
@@ -43,7 +75,13 @@ function getExtraProvider(chain: string | undefined) {
   if (chain === "terra" || chain === "kava") {
     return cosmosBlockProvider(chain)
   }
+  if (["era", "lite"].includes(chain)) return zkSyncBlockProvider(chain);
   return getProvider(chain as any);
+}
+
+async function isAValidBlockAtThisTimestamp(timestamp: number, chain: string) {
+  if (!(chain in Object.keys(genesisBlockTimes))) return true
+  return genesisBlockTimes[chain] < timestamp && timestamp < Date.now() / 1000;
 }
 
 function getClosestBlock(PK: string, timestamp: number, search: "high" | "low") {
@@ -82,6 +120,11 @@ const handler = async (
       message: "Timestamp needs to be a number"
     })
   }
+  const isValid = await isAValidBlockAtThisTimestamp(timestamp, chain);
+  if (!isValid)
+    return successResponse({
+      error: `requested timestamp is either before genesis or after now`,
+    });
   let [top, bottom] = await Promise.all([
     getClosestBlock(blockPK(chain), timestamp, "high"),
     getClosestBlock(blockPK(chain), timestamp, "low")

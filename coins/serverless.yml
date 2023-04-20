@@ -19,7 +19,7 @@ provider:
         - xray:PutTraceSegments
         - xray:PutTelemetryRecords
       Resource: "*"
-    - Effect: 'Allow'
+    - Effect: "Allow"
       Action:
         - dynamodb:DescribeTable
         - dynamodb:Query
@@ -31,30 +31,34 @@ provider:
         - dynamodb:BatchGetItem
         - dynamodb:BatchWriteItem
       Resource:
-        - "Fn::GetAtt": [ DynamoTable, Arn ]
+        - "Fn::GetAtt": [DynamoTable, Arn]
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup
         - logs:CreateLogStream
         - logs:PutLogEvents
       Resource:
-        - 'Fn::Join':
-          - ':'
-          -
-            - 'arn:aws:logs'
-            - Ref: 'AWS::Region'
-            - Ref: 'AWS::AccountId'
-            - 'log-group:/aws/lambda/*:*:*'
+        - "Fn::Join":
+            - ":"
+            - - "arn:aws:logs"
+              - Ref: "AWS::Region"
+              - Ref: "AWS::AccountId"
+              - "log-group:/aws/lambda/*:*:*"
     # For warm-up functions
-    - Effect: 'Allow'
+    - Effect: "Allow"
       Action:
-        - 'lambda:InvokeFunction'
-      Resource: '*'
-    - Effect: 'Allow'
+        - "lambda:InvokeFunction"
+      Resource: "*"
+    - Effect: "Allow"
       Action:
-        - 's3:ListBucket'
-        - 's3:*Object*'
-      Resource: '*'
+        - "s3:ListBucket"
+        - "s3:*Object*"
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "secretsmanager:GetSecretValue"
+      Resource:
+        - "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     BSC_RPC: ${file(./env.js):BSC_RPC}
@@ -65,6 +69,7 @@ provider:
     XDAI_RPC: ${file(./env.js):XDAI_RPC}
     HARMONY_RPC: ${file(./env.js):HARMONY_RPC}
     SOLANA_RPC: ${file(./env.js):SOLANA_RPC}
+    MISSING_COINS_DB_PWD: ${file(./env.js):MISSING_COINS_DB_PWD}
     DEFILLAMA_SDK_MUTED: true
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -79,18 +84,23 @@ custom:
     automatic: true
     number: 5 # Number of versions to keep
   tableName: ${self:custom.stage}-coins-table
+  region: eu-central-1
   domainMap:
     prod:
       domain: coins.llama.fi
-      certificateArn: 'arn:aws:acm:us-east-1:856461987125:certificate/b4209013-30a6-417e-847e-6e630c3e77fe'
+      certificateArn: "arn:aws:acm:us-east-1:856461987125:certificate/b4209013-30a6-417e-847e-6e630c3e77fe"
       hostedZone: llama.fi
     dev:
       domain: staging-coins.llama.fi
-      certificateArn: 'arn:aws:acm:us-east-1:856461987125:certificate/b4209013-30a6-417e-847e-6e630c3e77fe'
+      certificateArn: "arn:aws:acm:us-east-1:856461987125:certificate/b4209013-30a6-417e-847e-6e630c3e77fe"
       hostedZone: llama.fi
   domain: ${self:custom.domainMap.${self:custom.stage}.domain}
   certificateArn: ${self:custom.domainMap.${self:custom.stage}.certificateArn}
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
+  datadog:
+    site: datadoghq.eu
+    apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
+  logRetentionInDays: 30
 
 functions:
   fallback:
@@ -106,6 +116,20 @@ functions:
       - http:
           path: prices
           method: post
+  mcaps:
+    handler: src/getMcaps.default
+    timeout: 60
+    events:
+      - http:
+          path: mcaps
+          method: post
+  chains:
+    handler: src/getChains.default
+    timeout: 60
+    events:
+      - http:
+          path: chains
+          method: get
   coinPrices:
     handler: src/getCoinPrices.default
     timeout: 60
@@ -113,6 +137,48 @@ functions:
       - http:
           path: coin/timestamps
           method: post
+  currentCoinPrices:
+    handler: src/getCurrentCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: prices/current/{coins}
+          method: get
+  coinFirstTimestamp:
+    handler: src/getCoinFirstTimestamp.default
+    timeout: 60
+    events:
+      - http:
+          path: prices/first/{coins}
+          method: get
+  historicalCoinPrices:
+    handler: src/getHistoricalCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: prices/historical/{timestamp}/{coins}
+          method: get
+  coinPriceChart:
+    handler: src/getCoinPriceChart.default
+    timeout: 60
+    events:
+      - http:
+          path: chart/{coins}
+          method: get
+  batchHistorical:
+    handler: src/getBatchHistoricalCoins.default
+    timeout: 60
+    events:
+      - http:
+          path: batchHistorical
+          method: get
+  coinPercentageChange:
+    handler: src/getPercentageChange.default
+    timeout: 60
+    events:
+      - http:
+          path: percentage/{coins}
+          method: get
   block:
     handler: src/getBlock.default
     timeout: 60
@@ -129,17 +195,40 @@ functions:
   fetchCoingeckoData:
     handler: src/fetchCoingeckoData.fetchCoingeckoData
     timeout: 900
+    environment:
+      CG_KEY: ${env:CG_KEY}
   triggerFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.triggerNewFetches
     events:
       - schedule: rate(5 minutes)
+    environment:
+      CG_KEY: ${env:CG_KEY}
   triggerHourlyFetchCoingeckoData:
     handler: src/triggerFetchCoingeckoData.triggerHourlyFetches
     events:
-      - schedule: cron(0 * * * ? *) # Hourly
+      - schedule: cron(0 0,12 * * ? *) # every 12 hours
+    environment:
+      CG_KEY: ${env:CG_KEY}
   fetchHourlyCoingeckoData:
     handler: src/fetchCoingeckoData.fetchHourlyCoingeckoData
     timeout: 900
+    environment:
+      CG_KEY: ${env:CG_KEY}
+  storeDefiCoins:
+    handler: src/storeCoins.default
+    timeout: 900
+    memorySize: 1024
+  triggerStoreDefiCoins:
+    handler: src/triggerStoreCoins.default
+    timeout: 900
+    events:
+      - schedule: cron(45 * * * ? *) # Hourly
+  StoreBridgedCoins:
+    handler: src/storeBridgedCoins.default
+    timeout: 900
+    memorySize: 1024
+    events:
+      - schedule: cron(45 * * * ? *) # Hourly
 
 resources:
   # CORS for api gateway errors
@@ -153,3 +242,5 @@ plugins:
   - serverless-esbuild
   - serverless-offline
   - serverless-prune-plugin
+  - serverless-plugin-log-retention
+  - serverless-plugin-datadog

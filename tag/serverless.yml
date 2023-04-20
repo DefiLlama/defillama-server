@@ -82,6 +82,7 @@ custom:
   domain: ${self:custom.domainMap.${self:custom.stage}.domain}
   certificateArn: ${self:custom.domainMap.${self:custom.stage}.certificateArn}
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
+  logRetentionInDays: 30
 
 functions:
   fallback:
@@ -116,3 +117,4 @@ plugins:
   - serverless-webpack
   - serverless-offline
   - serverless-prune-plugin
+  - serverless-plugin-log-retention

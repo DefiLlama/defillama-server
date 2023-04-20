@@ -5,10 +5,10 @@ const client = new AWS.DynamoDB.DocumentClient({
   ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
     endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
     sslEnabled: false,
-    region: "local",
-  }),
+    region: "local"
+  })
 });
-export const TableName = process.env.tableName!;
+export const TableName = process.env.tableName! || process.env.AWS_COINS_TABLE_NAME!
 
 const dynamodb = {
   get: (
@@ -32,33 +32,33 @@ const dynamodb = {
       .batchGet({
         RequestItems: {
           [TableName]: {
-            Keys: keys,
-          },
-        },
+            Keys: keys
+          }
+        }
       })
       .promise(),
-  scan: () => client.scan({ TableName }).promise(),
+  scan: (params: Omit<AWS.DynamoDB.DocumentClient.ScanInput, "TableName">) =>
+    client.scan({ TableName, ...params }).promise()
 };
 export default dynamodb;
 
 export async function getHistoricalValues(pk: string) {
-  let items = [] as any[]
+  let items = [] as any[];
   let lastKey = -1;
   do {
-    const result = await dynamodb
-      .query({
-        ExpressionAttributeValues: {
-          ":pk": pk,
-          ":sk": lastKey
-        },
-        KeyConditionExpression: "PK = :pk AND SK > :sk",
-      })
-    lastKey = result.LastEvaluatedKey?.SK
+    const result = await dynamodb.query({
+      ExpressionAttributeValues: {
+        ":pk": pk,
+        ":sk": lastKey
+      },
+      KeyConditionExpression: "PK = :pk AND SK > :sk"
+    });
+    lastKey = result.LastEvaluatedKey?.SK;
     if (result.Items !== undefined) {
-      items = items.concat(result.Items)
+      items = items.concat(result.Items);
     }
-  } while (lastKey !== undefined)
-  return items
+  } while (lastKey !== undefined);
+  return items;
 }
 
 const maxWriteRetries = 6; // Total wait time if all requests fail ~= 1.2s
@@ -70,8 +70,8 @@ async function underlyingBatchWrite(
   const output = await client
     .batchWrite({
       RequestItems: {
-        [TableName]: items,
-      },
+        [TableName]: items
+      }
     })
     .promise();
   const unprocessed = output.UnprocessedItems?.[TableName] ?? [];
@@ -125,16 +125,24 @@ export async function batchWrite(
 }
 
 const batchGetStep = 100; // Max 100 items per batchGet
-export function batchGet(keys: { PK: string; SK: number }[]) {
+export async function batchGet(keys: { PK: string; SK: number }[], retriesLeft = 3) {
+  if(retriesLeft === 0){
+    console.log("Unprocessed batchGet reqs:", keys)
+    throw new Error("Not all batchGet requests could be processed")
+  }
   const requests = [];
   for (let i = 0; i < keys.length; i += batchGetStep) {
     requests.push(
       dynamodb
         .batchGet(removeDuplicateKeys(keys.slice(i, i + batchGetStep)))
-        .then((items) => items.Responses![TableName])
     );
   }
-  return Promise.all(requests).then((returnedRequests) =>
-    ([] as any[]).concat(...returnedRequests)
-  );
+  const responses = await Promise.all(requests)
+  let processedResponses = ([] as any[]).concat(...responses.map(r=>r.Responses![TableName]))
+  const unprocessed = responses.map(r=>r.UnprocessedKeys?.[TableName]?.Keys ?? []).flat()
+  if(unprocessed.length > 0){
+    const missingResponses = await batchGet(unprocessed as any[], retriesLeft-1)
+    processedResponses = processedResponses.concat(missingResponses)
+  }
+  return processedResponses
 }

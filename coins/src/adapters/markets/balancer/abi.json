@@ -1,0 +1,64 @@
+{
+  "getPoolTokenInfo": {
+    "inputs": [
+      { "internalType": "bytes32", "name": "poolId", "type": "bytes32" },
+      { "internalType": "contract IERC20", "name": "token", "type": "address" }
+    ],
+    "name": "getPoolTokenInfo",
+    "outputs": [
+      { "internalType": "uint256", "name": "cash", "type": "uint256" },
+      { "internalType": "uint256", "name": "managed", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "lastChangeBlock",
+        "type": "uint256"
+      },
+      { "internalType": "address", "name": "assetManager", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "getPoolTokens": {
+    "inputs": [
+      { "internalType": "bytes32", "name": "poolId", "type": "bytes32" }
+    ],
+    "name": "getPoolTokens",
+    "outputs": [
+      {
+        "internalType": "contract IERC20[]",
+        "name": "tokens",
+        "type": "address[]"
+      },
+      { "internalType": "uint256[]", "name": "balances", "type": "uint256[]" },
+      {
+        "internalType": "uint256",
+        "name": "lastChangeBlock",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "getPoolGauge": {
+    "inputs": [
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "name": "getPoolGauge",
+    "outputs": [
+      {
+        "internalType": "contract ILiquidityGauge",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "getActualSupply": {
+    "inputs": [],
+    "name": "getActualSupply",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  }
+}

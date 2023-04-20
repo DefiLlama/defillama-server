@@ -1,0 +1,138 @@
+{
+  "poolLength": {
+    "inputs": [],
+    "name": "poolLength",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "poolInfo": {
+    "0x68c5f4374228beedfa078e77b5ed93c28a2f713e": {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "poolInfo",
+      "outputs": [
+        {
+          "internalType": "contract IAsset",
+          "name": "lpToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "baseAllocPoint",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "lastRewardTimestamp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "accPtpPerShare",
+          "type": "uint256"
+        },
+        {
+          "internalType": "contract IRewarder",
+          "name": "rewarder",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sumOfFactors",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "accPtpPerFactorShare",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "adjustedAllocPoint",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    "0xb0523f9f473812fb195ee49bc7d2ab9873a98044": {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "poolInfo",
+      "outputs": [
+        {
+          "internalType": "contract IERC20",
+          "name": "lpToken",
+          "type": "address"
+        },
+        { "internalType": "uint256", "name": "allocPoint", "type": "uint256" },
+        {
+          "internalType": "uint256",
+          "name": "lastRewardTimestamp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "accPtpPerShare",
+          "type": "uint256"
+        },
+        {
+          "internalType": "contract IRewarder",
+          "name": "rewarder",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sumOfFactors",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "accPtpPerFactorShare",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    "0x7125b4211357d7c3a90f796c956c12c681146ebb": {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "poolInfo",
+      "outputs": [
+        {
+          "internalType": "contract IAsset",
+          "name": "lpToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "baseAllocPoint",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "lastRewardTimestamp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "accPtpPerShare",
+          "type": "uint256"
+        },
+        {
+          "internalType": "contract IRewarder",
+          "name": "rewarder",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  },
+  "underlyingToken": {
+    "inputs": [],
+    "name": "underlyingToken",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  }
+}

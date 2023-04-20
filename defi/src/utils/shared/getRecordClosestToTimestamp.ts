@@ -10,14 +10,14 @@ export default async function getTVLOfRecordClosestToTimestamp(
       ExpressionAttributeValues: {
         ":pk": PK,
         ":begin": timestamp - searchWidth,
-        ":end": timestamp + searchWidth,
+        ":end": timestamp + searchWidth
       },
-      KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end",
+      KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end"
     })
     .then((records) => {
       if (records.Items == undefined || records.Items.length == 0) {
         return {
-          SK: undefined,
+          SK: undefined
         };
       }
       let closest = records.Items[0];

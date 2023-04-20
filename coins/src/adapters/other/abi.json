@@ -1,0 +1,36 @@
+{
+  "proxy": {
+    "constant": true,
+    "inputs": [],
+    "name": "proxy",
+    "outputs": [
+      { "internalType": "contract Proxy", "name": "", "type": "address" }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "pricePrecision": {
+    "inputs": [],
+    "name": "PRICE_PRECISION",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "getAums": {
+    "inputs": [],
+    "name": "getAums",
+    "outputs": [
+      { "internalType": "uint256[]", "name": "", "type": "uint256[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  "totalAssets": {
+    "inputs": [],
+    "name": "totalAssets",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  }
+}

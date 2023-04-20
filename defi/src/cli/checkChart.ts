@@ -3,7 +3,7 @@ import protocols from "../protocols/data";
 import dynamodb from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import { getBlocksRetry } from "./utils";
+import { getBlocksRetry } from "../storeTvlInterval/blocks";
 import {
   getCoingeckoLock,
   releaseCoingeckoLock,
@@ -12,7 +12,7 @@ import { dailyTvl, dailyTokensTvl, dailyUsdTokensTvl } from "../utils/getLastRec
 import { date } from './utils'
 import { importAdapter } from "./utils/importAdapter";
 
-const projectsToRefill: string[] = ["AAVE"];
+const projectsToRefill: string[] = ["Trader Joe"];
 const notify = false;
 const deleteRepeated = true;
 const extrapolate = false;
@@ -77,10 +77,10 @@ async function main() {
                     tvl,
                   });
                 } else {
-                  const { ethereumBlock, chainBlocks } = await getBlocksRetry(
-                    nextTimestamp
-                  );
                   const adapterModule = await importAdapter(protocol)
+                  const { ethereumBlock, chainBlocks } = await getBlocksRetry(
+                    nextTimestamp, { adapterModule },
+                  );
                   tvl = await storeTvl(
                     nextTimestamp,
                     ethereumBlock,

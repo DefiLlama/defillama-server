@@ -1,4 +1,4 @@
-export interface result {
+export interface Result {
   success: boolean;
   input: {
     target: string;
@@ -6,10 +6,19 @@ export interface result {
   };
   output: any;
 }
-export interface multicall {
+export interface Multicall {
   target: string;
-  params: string[];
+  params: any[];
 }
-export interface multiCallResults {
-  output: result[];
+export interface MultiCallResults {
+  output: Result[];
+}
+export interface TokenInfos {
+  supplies: Result[];
+  lpDecimals: Result[];
+  underlyingDecimalAs: Result[];
+  underlyingDecimalBs: Result[];
+  symbolAs: Result[];
+  symbolBs: Result[];
+  lpSymbols: Result[];
 }

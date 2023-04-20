@@ -3,6 +3,7 @@ import ddb, { batchGet } from "./utils/shared/dynamodb";
 import parseRequestBody from "./utils/shared/parseRequestBody";
 import getRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { coinToPK, DAY, PKToCoin } from "./utils/processCoin";
+import { CoinsResponse } from "./utils/getCoinsUtils";
 
 const handler = async (
   event: AWSLambda.APIGatewayEvent
@@ -14,38 +15,36 @@ const handler = async (
     PK: coinToPK(coin),
     SK: 0,
   })));
-  const response = {} as {
-    [coin: string]: {
-      decimals: number,
-      price: number,
-      timestamp: number,
-      symbol: string,
-    }
-  }
+  const response = {} as CoinsResponse
   await Promise.all(coins.map(async coin => {
     const coinName = PKToCoin(coin.PK);
-    const formattedCoin = {
+    let formattedCoin = {
       decimals: coin.decimals,
       price: coin.price,
       symbol: coin.symbol,
       timestamp: coin.timestamp,
     }
-    if (coin.redirect || timestampRequested !== undefined) {
-      if (timestampRequested === undefined) {
+    if(timestampRequested === undefined){
+      if(coin.redirect){
         const redirectedCoin = await ddb.get({
           PK: coin.redirect,
           SK: 0
         })
-        formattedCoin.price = redirectedCoin.Item?.price
-        formattedCoin.timestamp = redirectedCoin.Item?.timestamp;
-      } else {
-        const finalCoin = await getRecordClosestToTimestamp(coin.redirect ?? coin.PK, timestampRequested, DAY/2);
-        if(finalCoin.SK === undefined){
+        if(redirectedCoin.Item === undefined){
           return
         }
-        formattedCoin.price = finalCoin.price;
-        formattedCoin.timestamp = finalCoin.SK;
+        formattedCoin.price = redirectedCoin.Item.price;
+        formattedCoin.timestamp = redirectedCoin.Item.timestamp;
       }
+    } else {
+      const finalCoin = await getRecordClosestToTimestamp(
+        coin.redirect ?? coin.PK,
+        Number(timestampRequested),
+        DAY * 2,
+      )
+      if (finalCoin.SK === undefined) return;
+      formattedCoin.price = finalCoin.price;
+      formattedCoin.timestamp = finalCoin.SK;
     }
     response[coinName] = formattedCoin;
   }))

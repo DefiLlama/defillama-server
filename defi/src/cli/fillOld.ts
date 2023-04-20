@@ -1,12 +1,14 @@
 require("dotenv").config();
 
 import dynamodb from "../utils/shared/dynamodb";
-import { getProtocol, getBlocksRetry } from "./utils";
+import { getProtocol, } from "./utils";
+import { getBlocksRetry } from "../storeTvlInterval/blocks";
 import {
   dailyTokensTvl,
   dailyTvl,
   dailyUsdTokensTvl,
 } from "../utils/getLastRecord";
+import { getHistoricalValues } from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import {
@@ -16,7 +18,9 @@ import {
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapter } from "./utils/importAdapter";
+import * as sdk from '@defillama/sdk'
 
+const { humanizeNumber: { humanizeNumber } } = sdk.util
 const secondsInDay = 24 * 3600;
 
 type DailyItems = (DocumentClient.ItemList | undefined)[];
@@ -37,16 +41,33 @@ async function deleteItemsOnSameDay(dailyItems: DailyItems, timestamp: number) {
   }
 }
 
+type ChainBlocks = {
+  [chain: string]: number;
+}
+let failed = 0
+
+const IS_DRY_RUN = !!process.env.DRY_RUN
+
 async function getAndStore(
   timestamp: number,
   protocol: Protocol,
   dailyItems: DailyItems
 ) {
-  const { ethereumBlock, chainBlocks } = await getBlocksRetry(timestamp);
+  if (failed > 3) {
+    console.log('More than 3 failures in a row, exiting now')
+    process.exit(0)
+  }
   const adapterModule = await importAdapter(protocol)
-  const tvl = await storeTvl(
+  let ethereumBlock = undefined, chainBlocks: ChainBlocks = {}
+  if (!process.env.SKIP_BLOCK_FETCH) {
+    const res = await getBlocksRetry(timestamp, { adapterModule })
+    ethereumBlock = res.ethereumBlock
+    chainBlocks = res.chainBlocks
+  }
+
+  const tvl: any = await storeTvl(
     timestamp,
-    ethereumBlock,
+    ethereumBlock as unknown as number,
     chainBlocks,
     protocol,
     adapterModule,
@@ -56,27 +77,30 @@ async function getAndStore(
     false,
     false,
     true,
-    () => deleteItemsOnSameDay(dailyItems, timestamp)
+    () => deleteItemsOnSameDay(dailyItems, timestamp),
+    {
+      returnCompleteTvlObject: true
+    }
   );
-  console.log(timestamp, new Date(timestamp * 1000).toDateString(), tvl);
-}
 
-function getDailyItems(pk: string) {
-  return dynamodb
-    .query({
-      ExpressionAttributeValues: {
-        ":pk": pk,
-      },
-      KeyConditionExpression: "PK = :pk",
-    })
-    .then((res) => res.Items);
+  //  sdk.log(tvl);
+  if (typeof tvl === 'object') {
+    Object.entries(tvl).forEach(([key, val]) => sdk.log(key, humanizeNumber((val ?? 0) as number)))
+  }
+
+  const finalTvl = typeof tvl.tvl === "number" ? humanizeNumber(tvl.tvl) : tvl.tvl
+
+  console.log(timestamp, new Date(timestamp * 1000).toDateString(), finalTvl);
+  if (tvl === undefined) failed++
+  else failed = 0
 }
 
 const main = async () => {
+  console.log('DRY RUN: ', IS_DRY_RUN)
   const protocolToRefill = process.argv[2]
   const latestDate = (process.argv[3] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
   const batchSize = Number(process.argv[4] ?? 1); // how many days to fill in parallel
-  if(process.env.HISTORICAL !== "true"){
+  if (process.env.HISTORICAL !== "true") {
     throw new Error(`You must set HISTORICAL="true" in your .env`)
   }
   const protocol = getProtocol(protocolToRefill);
@@ -84,10 +108,14 @@ const main = async () => {
   if (adapter.timetravel === false) {
     throw new Error("Adapter doesn't support refilling");
   }
-  const dailyTvls = await getDailyItems(dailyTvl(protocol.id));
-  const dailyTokens = await getDailyItems(dailyTokensTvl(protocol.id));
-  const dailyUsdTokens = await getDailyItems(dailyUsdTokensTvl(protocol.id));
-  const dailyItems = [dailyTvls, dailyTokens, dailyUsdTokens];
+  let dailyItems: any = []
+
+  if (!IS_DRY_RUN)
+    dailyItems = await Promise.all([
+      getHistoricalValues(dailyTvl(protocol.id)),
+      getHistoricalValues(dailyTokensTvl(protocol.id)),
+      getHistoricalValues(dailyUsdTokensTvl(protocol.id)),
+    ]);
   const start = adapter.start ?? 0;
   const now = Math.round(Date.now() / 1000);
   let timestamp = getClosestDayStartTimestamp(latestDate ?? now);
@@ -106,4 +134,8 @@ const main = async () => {
     await Promise.all(batchedActions);
   }
 };
-main();
+main().then(() => {
+  console.log('Done!!!')
+  process.exit(0)
+})
+

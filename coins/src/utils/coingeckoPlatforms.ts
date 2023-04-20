@@ -1,4 +1,4 @@
-import { chainToCoingeckoId } from "@defillama/sdk/build/computeTVL/index";
+import chainToCoingeckoId from "../../../common/chainToCoingeckoId";
 import ddb from "./shared/dynamodb";
 
 interface StringObject {
@@ -21,6 +21,10 @@ export interface Coin {
   };
 }
 
+function lowercase(address:string, chain:string){
+  return chain==="solana"?address: address.toLowerCase()
+}
+
 export async function iterateOverPlatforms(
   coin: Coin,
   iterator: (PK: string, tokenAddress: string, chain: string) => Promise<void>
@@ -33,7 +37,7 @@ export async function iterateOverPlatforms(
         if (chain === undefined) {
           continue;
         }
-        const address = chain + ":" + platforms[platform]!.toLowerCase().trim();
+        const address = chain + ":" + lowercase(platforms[platform]!, chain).trim();
         const PK = `asset#${address}`;
         const storedItem = await ddb.get({
           PK,

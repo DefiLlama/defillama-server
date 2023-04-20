@@ -1,0 +1,188 @@
+{
+  "ethereum": {
+    "usdc": {
+      "underlying": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+      "pool": "0xdf0770df86a8034b3efef0a1bb3c889b8332ff56"
+    },
+    "usdt": {
+      "underlying": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "pool": "0x38ea452219524bb87e18de1c24d3bb59510bd783"
+    },
+    "eth": {
+      "underlying": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c",
+      "pool": "0x101816545f6bd2b1076434b54383a1e633390a2e"
+    },
+    "sgeth": {
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "pool": "0x72e2f4830b9e45d52f80ac08cb2bec0fef72ed9c"
+    },
+    "usdd": {
+      "underlying": "0x0C10bF8FcB7Bf5412187A595ab97a3609160b5c6",
+      "pool": "0x692953e758c3669290cb1677180c64183cEe374e"
+    },
+    "dai": {
+      "underlying": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "pool": "0x0Faf1d2d3CED330824de3B8200fc8dc6E397850d"
+    },
+    "frax": {
+      "underlying": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "pool": "0xfA0F307783AC21C39E939ACFF795e27b650F6e68"
+    },
+    "susd": {
+      "underlying": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51",
+      "pool": "0x590d4f8A68583639f215f675F3a259Ed84790580"
+    },
+    "lusd": {
+      "underlying": "0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
+      "pool": "0xE8F55368C82D38bbbbDb5533e7F56AfC2E978CC2"
+    },
+    "mai": {
+      "underlying": "0x8D6CeBD76f18E1558D4DB88138e2DeFB3909fAD6",
+      "pool": "0x9cef9a0b1bE0D289ac9f4a98ff317c33EAA84eb8"
+    },
+    "metis": {
+      "underlying": "0x9E32b13ce7f2E80A01932B42553652E053D6ed8e",
+      "pool": "0xd8772edBF88bBa2667ed011542343b0eDDaCDa47"
+    },
+    "metis.usdt": {
+      "underlying": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "pool": "0x430Ebff5E3E80A6C58E7e6ADA1d90F5c28AA116d"
+    }
+  },
+  "bsc": {
+    "busd": {
+      "underlying": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+      "pool": "0x98a5737749490856b401DB5Dc27F522fC314A4e1"
+    },
+    "usdt": {
+      "underlying": "0x55d398326f99059fF775485246999027B3197955",
+      "pool": "0x9aA83081AA06AF7208Dcc7A4cB72C94d057D2cda"
+    },
+    "usdd": {
+      "underlying": "0xd17479997F34dd9156Deef8F95A52D81D265be9c",
+      "pool": "0x4e145a589e4c03cBe3d28520e4BF3089834289Df"
+    },
+    "mai": {
+      "underlying": "0x3F56e0c36d275367b8C502090EDF38289b3dEa0d",
+      "pool": "0x7BfD7f2498C4796f10b6C611D9db393D3052510C"
+    },
+    "metis": {
+      "underlying": "0xe552Fb52a4F19e44ef5A967632DBc320B0820639",
+      "pool": "0xD4CEc732b3B135eC52a3c0bc8Ce4b8cFb9dacE46"
+    },
+    "metis.usdt": {
+      "underlying": "0x55d398326f99059fF775485246999027B3197955",
+      "pool": "0x68C6c27fB0e02285829e69240BE16f32C5f8bEFe"
+    }
+  },
+  "avax": {
+    "usdc": {
+      "underlying": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+      "pool": "0x1205f31718499dBf1fCa446663B532Ef87481fe1"
+    },
+    "usdt": {
+      "underlying": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
+      "pool": "0x29e38769f23701A2e4A8Ef0492e19dA4604Be62c"
+    },
+    "frax": {
+      "underlying": "0xD24C2Ad096400B6FBcd2ad8B24E7acBc21A1da64",
+      "pool": "0x1c272232Df0bb6225dA87f4dEcD9d37c32f63Eea"
+    },
+    "mai": {
+      "underlying": "0x5c49b268c9841AFF1Cc3B0a418ff5c3442eE3F3b",
+      "pool": "0x8736f92646B2542B3e5F3c63590cA7Fe313e283B"
+    },
+    "metis.usdt": {
+      "underlying": "0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7",
+      "pool": "0xEAe5c2F6B25933deB62f754f239111413A0A25ef"
+    }
+  },
+  "polygon": {
+    "usdc": {
+      "underlying": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      "pool": "0x1205f31718499dBf1fCa446663B532Ef87481fe1"
+    },
+    "usdt": {
+      "underlying": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+      "pool": "0x29e38769f23701A2e4A8Ef0492e19dA4604Be62c"
+    },
+    "dai": {
+      "underlying": "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+      "pool": "0x1c272232Df0bb6225dA87f4dEcD9d37c32f63Eea"
+    },
+    "maimatic": {
+      "underlying": "0xa3Fa99A148fA48D14Ed51d610c367C61876997F1",
+      "pool": "0x8736f92646B2542B3e5F3c63590cA7Fe313e283B"
+    }
+  },
+  "arbitrum": {
+    "usdc": {
+      "underlying": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+      "pool": "0x892785f33CdeE22A30AEF750F285E18c18040c3e"
+    },
+    "usdt": {
+      "underlying": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+      "pool": "0xB6CfcF89a7B22988bfC96632aC2A9D6daB60d641"
+    },
+    "eth": {
+      "underlying": "0x82cbecf39bee528b5476fe6d1550af59a9db6fc0",
+      "pool": "0x915A55e36A01285A14f05dE6e81ED9cE89772f8e"
+    },
+    "sgeth": {
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "pool": "0x82cbecf39bee528b5476fe6d1550af59a9db6fc0"
+    },
+    "frax": {
+      "underlying": "0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F",
+      "pool": "0xaa4BF442F024820B2C28Cd0FD72b82c63e66F56C"
+    },
+    "mai": {
+      "underlying": "0x3F56e0c36d275367b8C502090EDF38289b3dEa0d",
+      "pool": "0xF39B7Be294cB36dE8c510e267B82bb588705d977"
+    },
+    "lusd": {
+      "underlying": "0x93b346b6BC2548dA6A1E7d98E9a421B42541425b",
+      "pool": "0x600E576F9d853c95d58029093A16EE49646F3ca5"
+    }
+  },
+  "optimism": {
+    "usdc": {
+      "underlying": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
+      "pool": "0xDecC0c09c3B5f6e92EF4184125D5648a66E35298"
+    },
+    "eth": {
+      "underlying": "0xb69c8cbcd90a39d8d3d3ccf0a3e968511c3856a0",
+      "pool": "0xd22363e3762cA7339569F3d33EADe20127D5F98C"
+    },
+    "sgeth": {
+      "underlying": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "pool": "0xb69c8cbcd90a39d8d3d3ccf0a3e968511c3856a0"
+    },
+    "dai": {
+      "underlying": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+      "pool": "0x165137624F1f692e69659f944BF69DE02874ee27"
+    },
+    "frax": {
+      "underlying": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+      "pool": "0x368605D9C6243A80903b9e326f1Cddde088B8924"
+    },
+    "susd": {
+      "underlying": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+      "pool": "0x2F8bC9081c7FCFeC25b9f41a50d97EaA592058ae"
+    },
+    "lusd": {
+      "underlying": "0xc40F949F8a4e094D1b49a23ea9241D289B7b2819",
+      "pool": "0x3533F5e279bDBf550272a199a223dA798D9eff78"
+    },
+    "mai": {
+      "underlying": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+      "pool": "0x5421FA1A48f9FF81e4580557E86C7C0D24C18036"
+    }
+  },
+  "fantom": {
+    "usdc": {
+      "underlying": "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+      "pool": "0x12edeA9cd262006cC3C4E77c90d2CD2DD4b1eb97"
+    }
+  }
+}

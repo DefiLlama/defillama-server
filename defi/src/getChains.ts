@@ -1,20 +1,25 @@
 import { successResponse, wrap, IResponse } from "./utils/shared";
 import protocols from "./protocols/data";
 import { getLastRecord, hourlyTvl } from './utils/getLastRecord'
-import { getChainDisplayName, chainCoingeckoIds } from "./utils/normalizeChain";
+import { getChainDisplayName, chainCoingeckoIds, isDoubleCounted, isExcludedFromChainTvl } from "./utils/normalizeChain";
 import { excludeProtocolInCharts } from "./storeGetCharts";
 import { IChain } from "./types";
+import { importAdapter } from "./utils/imports/importAdapter";
 
-export async function craftChainsResponse(){
+export async function craftChainsResponse(excludeDoublecountedAndLSD = false){
   const chainTvls = {} as {[chain:string]:number}
   await Promise.all(
     protocols.map(async (protocol) => {
-      if(excludeProtocolInCharts(protocol)){
+      if(excludeProtocolInCharts(protocol) || isExcludedFromChainTvl(protocol.category)){
         return undefined;
       }
       const lastTvl = await getLastRecord(hourlyTvl(protocol.id))
       if(lastTvl === undefined){
           return
+      }
+      const module = await importAdapter(protocol);
+      if(excludeDoublecountedAndLSD && (protocol.category === "Liquid Staking" || isDoubleCounted(module.doublecounted, protocol.category)  === true)){
+        return
       }
       let chainsAdded = 0
       Object.entries(lastTvl).forEach(([chain, chainTvl])=>{
@@ -43,9 +48,9 @@ export async function craftChainsResponse(){
 }
 
 const handler = async (
-  _event: AWSLambda.APIGatewayEvent
+  event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const chainData = await craftChainsResponse()
+  const chainData = await craftChainsResponse(event.path === "/v2/chains")
   return successResponse(chainData, 10 * 60); // 10 mins cache
 };
 

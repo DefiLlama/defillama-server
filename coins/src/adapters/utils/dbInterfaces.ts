@@ -1,32 +1,54 @@
-export interface write {
+import { Result } from "./sdkInterfaces";
+
+export interface Write {
   SK: number;
   PK: string;
-  price: number | undefined;
-  symbol: string;
-  decimals: number;
-  redirect: string | undefined;
+  price?: number;
+  symbol?: string;
+  decimals?: number;
+  redirect?: string;
+  adapter?: string;
+  confidence: number;
+  timestamp?: number;
 }
-export interface dbQuery {
+export interface DbQuery {
   PK: string;
   SK: number;
 }
-export interface dbEntry {
+export interface DbEntry {
   PK: string;
   SK: number;
   redirect: string;
   price: number;
   decimals: number;
+  symbol: string;
+  confidence: number;
 }
-export interface read {
-  dbEntry: dbEntry;
+export interface Read {
+  dbEntry: DbEntry;
   redirect: any;
 }
-export interface redirect {
+export interface Redirect {
   PK: string;
   SK: number;
   price: number;
 }
-export interface price {
+export interface Price {
   address: string;
   price: number;
+}
+export interface CoinData {
+  chain: string | undefined;
+  address: string;
+  decimals: number;
+  symbol: string;
+  price: number;
+  timestamp: number;
+  redirect: string | undefined;
+  confidence: number | undefined;
+}
+export interface DbTokenInfos {
+  decimals: Result[];
+  supplies: Result[];
+  symbols: Result[];
 }

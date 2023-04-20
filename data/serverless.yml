@@ -19,7 +19,7 @@ provider:
         - xray:PutTraceSegments
         - xray:PutTelemetryRecords
       Resource: "*"
-    - Effect: 'Allow'
+    - Effect: "Allow"
       Action:
         - dynamodb:DescribeTable
         - dynamodb:Query
@@ -31,30 +31,29 @@ provider:
         - dynamodb:BatchGetItem
         - dynamodb:BatchWriteItem
       Resource:
-        - "Fn::GetAtt": [ DynamoTable, Arn ]
+        - "Fn::GetAtt": [DynamoTable, Arn]
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup
         - logs:CreateLogStream
         - logs:PutLogEvents
       Resource:
-        - 'Fn::Join':
-          - ':'
-          -
-            - 'arn:aws:logs'
-            - Ref: 'AWS::Region'
-            - Ref: 'AWS::AccountId'
-            - 'log-group:/aws/lambda/*:*:*'
+        - "Fn::Join":
+            - ":"
+            - - "arn:aws:logs"
+              - Ref: "AWS::Region"
+              - Ref: "AWS::AccountId"
+              - "log-group:/aws/lambda/*:*:*"
     # For warm-up functions
-    - Effect: 'Allow'
+    - Effect: "Allow"
       Action:
-        - 'lambda:InvokeFunction'
-      Resource: '*'
-    - Effect: 'Allow'
+        - "lambda:InvokeFunction"
+      Resource: "*"
+    - Effect: "Allow"
       Action:
-        - 's3:ListBucket'
-        - 's3:*Object*'
-      Resource: '*'
+        - "s3:ListBucket"
+        - "s3:*Object*"
+      Resource: "*"
   environment:
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
@@ -64,7 +63,7 @@ custom:
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
-    packager: 'npm'
+    packager: "npm"
     excludeFiles: src/**/*.test.ts
   prune:
     automatic: true
@@ -73,15 +72,16 @@ custom:
   domainMap:
     prod:
       domain: data.llama.fi
-      certificateArn: 'arn:aws:acm:us-east-1:856461987125:certificate/b4209013-30a6-417e-847e-6e630c3e77fe'
+      certificateArn: "arn:aws:acm:us-east-1:856461987125:certificate/b4209013-30a6-417e-847e-6e630c3e77fe"
       hostedZone: llama.fi
     dev:
       domain: staging-data.llama.fi
-      certificateArn: 'arn:aws:acm:us-east-1:856461987125:certificate/b4209013-30a6-417e-847e-6e630c3e77fe'
+      certificateArn: "arn:aws:acm:us-east-1:856461987125:certificate/b4209013-30a6-417e-847e-6e630c3e77fe"
       hostedZone: llama.fi
   domain: ${self:custom.domainMap.${self:custom.stage}.domain}
   certificateArn: ${self:custom.domainMap.${self:custom.stage}.certificateArn}
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
+  logRetentionInDays: 30
 
 functions:
   fallback:
@@ -116,3 +116,4 @@ plugins:
   - serverless-webpack
   - serverless-offline
   - serverless-prune-plugin
+  - serverless-plugin-log-retention

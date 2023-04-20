@@ -1,7 +1,5 @@
 import AWS from "aws-sdk";
-import protocols from "../protocols/data";
 const db = require("../../imported-db/defillama-db.json");
-import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
 import { getClosestDayStartTimestamp } from "../utils/date";
 
 AWS.config.update({ region: "eu-central-1" });
@@ -30,8 +28,8 @@ const deleteOverlapping = async () => {
         TableName,
         Key: {
           PK,
-          SK,
-        },
+          SK
+        }
       })
       .promise();
     await client
@@ -40,8 +38,8 @@ const deleteOverlapping = async () => {
         Item: {
           PK,
           SK: newSK,
-          tvl,
-        },
+          tvl
+        }
       })
       .promise();
   }
@@ -56,8 +54,8 @@ const deleteAtTime = async () => {
         TableName,
         Key: {
           PK,
-          SK,
-        },
+          SK
+        }
       })
       .promise();
   }
@@ -71,9 +69,9 @@ function getTVLOfRecordClosestToTimestamp(PK: string, timestamp: number) {
       ExpressionAttributeValues: {
         ":pk": PK,
         ":begin": timestamp - searchInterval,
-        ":end": timestamp + searchInterval,
+        ":end": timestamp + searchInterval
       },
-      KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end",
+      KeyConditionExpression: "PK = :pk AND SK BETWEEN :begin AND :end"
     })
     .promise()
     .then((records) => {
@@ -106,8 +104,8 @@ async function fillDailyGaps() {
           Item: {
             PK,
             SK: getClosestDayStartTimestamp(hourlyItem.SK),
-            tvl: hourlyItem.tvl,
-          },
+            tvl: hourlyItem.tvl
+          }
         })
         .promise();
     }

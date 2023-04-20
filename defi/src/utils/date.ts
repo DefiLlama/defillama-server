@@ -104,8 +104,9 @@ function pad(s: number) {
   return s < 10 ? "0" + s : s;
 }
 
-export function formatTimestampAsDate(timestamp: string) {
-  const date = new Date(Number(timestamp) * 1000);
+export function formatTimestampAsDate(timestamp: string | number) {
+  const num = typeof timestamp === 'string' ? Number(timestamp) : timestamp
+  const date = new Date(num * 1000);
   return `${pad(date.getDate())}/${pad(
     date.getMonth() + 1
   )}/${date.getFullYear()}`;

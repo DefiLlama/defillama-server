@@ -1,31 +1,53 @@
-import { storeCoin } from "./storeCoin";
-import {
-  getCoingeckoLock,
-  releaseCoingeckoLock
-} from "../src/utils/shared/coingeckoLocks";
-import protocols from "./protocols/data";
-import { importAdapter } from "./protocols/importAdapter";
+require("dotenv").config();
+import adapters from "./adapters/index";
+import { batchWrite } from "./utils/shared/dynamodb";
+import { filterWritesWithLowConfidence } from "./adapters/utils/database";
+import { sendMessage } from "./../../defi/src/utils/discord";
 
-const maxRetries = 4;
+const withTimeout = (millis: number, promise: any) => {
+  const timeout = new Promise((resolve, reject) =>
+    setTimeout(() => {
+      reject(`timed out after ${millis / 1000} s.`);
+      resolve;
+    }, millis),
+  );
+  return Promise.race([promise, timeout]);
+};
 
-async function iterateProtocols(protocolIndexes: number[]) {
-  const actions = protocolIndexes
-    .map((idx) => protocols[idx])
-    .map((protocol) => {
-      const adapterModule = importAdapter(protocol);
-      console.log("a");
-      //return storeCoin(adapterModule, getCoingeckoLock);
-    });
-  const timer = setInterval(() => {
-    // Rate limit is 100 calls/min for coingecko's API
-    // So we'll release one every 0.6 seconds to match it
-    releaseCoingeckoLock();
-  }, 600);
-  await Promise.all(actions);
-  clearInterval(timer);
-  return;
+const step = 2000;
+const timeout = 840000; //14mins
+export default async function handler(event: any) {
+  const a = Object.entries(adapters);
+  const timestamp = 0;
+  await Promise.all(
+    event.protocolIndexes.map(async (i: any) => {
+      try {
+        const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
+        const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+          results.flat(),
+        );
+        for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
+          await batchWrite(resultsWithoutDuplicates.slice(i, i + step), true);
+        }
+        console.log(`${a[i][0]} done`);
+      } catch (e) {
+        console.error(e);
+        if (!process.env.LLAMA_RUN_LOCAL)
+          await sendMessage(
+            `${a[i][0]} adapter failed: ${e}`,
+            process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+            true,
+          );
+      }
+    }),
+  );
 }
 
-export default async (protocolIndexes: number[]) => {
-  await iterateProtocols(protocolIndexes);
-};
+// ts-node coins/src/storeCoins.ts
+async function main() {
+  let a = { protocolIndexes: [0] };
+  await handler(a);
+  if (process.env.LLAMA_RUN_LOCAL) process.exit(0);
+}
+
+if (process.env.LLAMA_RUN_LOCAL) main();

@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "META",
+      "decimals": "18",
+      "symbol": "META",
+      "to": "coingecko#metadium"
+    }
+  },
+  "aurora": {
+    "0x6bb0c4d909a84d118b5e6c4b17117e79e621ae94": {
+      "decimals": "18",
+      "symbol": "WNEAR",
+      "to": "aurora:0xc42c30ac6cc15fac9bd938618bcaa1a1fae8501d"
+    },
+    "0x120908185dc7f4d4ae8b32c376484406cc16731a": {
+      "decimals": "18",
+      "symbol": "WstNEAR",
+      "to": "aurora:0x07f9f7f963c5cd2bbffd30ccfb964be114332e30"
+    },
+    "0x71b61b0c931cad9e9a3cae116c5f48a865c0fc7b": {
+      "decimals": "18",
+      "symbol": "WMETA",
+      "to": "aurora:0xc21ff01229e982d7c8b8691163b0a3cb8f357453"
+    }
+  },
+  "map": {
+    "0x33daba9618a75a7aff103e53afe530fbacf4a3dd": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xeddfaac857cb94ae8a0347e2b1b06f21aa1aaefa": {
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    }
+  },
+  "eos_evm": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "EOS",
+      "to": "coingecko#eos"
+    },
+    "0xc00592aa41d32d137dc480d9f6d0df19b860104f": {
+      "decimals": "18",
+      "symbol": "EOS",
+      "to": "coingecko#eos"
+    },
+    "0x922d641a426dcffaef11680e5358f34d97d112e1": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0x765277eebeca2e31912c9946eae1021199b39c61": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0xfa9343c3897324496a05fc75abed6bac29f8a40f": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0xefaeee334f0fd1712f9a8cc375f427d9cdd40d73": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    }
+  },
+  "wemix": {
+    "0xc1be9a4d5d45beeacae296a7bd5fadbfc14602c4": {
+      "name": "Binance",
+      "decimals": "18",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0x2b58644b9f210ebb8fbf4c27066f9d1d97b03cbc": {
+      "name": "Wrapped REFLECT",
+      "decimals": "18",
+      "symbol": "wRFT",
+      "to": "coingecko#wrapped-reflect"
+    }
+  },
+  "umee": {
+    "0B1D3A663E6D41C7B1CFC78DB41C829A3B8329D396B47737445AFF5E0E9DA125": {
+      "name": "Akash",
+      "decimals": "18",
+      "symbol": "AKT",
+      "to": "coingecko#akash-network"
+    },
+    "223420B0E8CF9CC47BCAB816AB3A20AE162EED27C1177F4B2BC270C83E11AD8D": {
+      "name": "USDT",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "88178A7DF538EF97AC4585C949304C3DE4FC04AA91F8F1372281E921D3F44A0D": {
+      "name": "JUNO",
+      "decimals": "18",
+      "symbol": "JUNO",
+      "to": "coingecko#juno-network"
+    },
+    "452372B8214E22C625E98958C5EDFB939C48E6590E40B711E9D30206EF8EDC9B": {
+      "name": "Terra-2",
+      "decimals": "18",
+      "symbol": "Luna",
+      "to": "coingecko#terra-luna-2"
+    }
+  }
+}

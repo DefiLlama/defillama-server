@@ -10421,7 +10421,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1883",
-    name: "iziSwap",
+    name: "iZiSwap",
     address: "0x9ad37205d608B8b219e6a2573f922094CEc5c200",
     symbol: "IZI",
     url: "https://izumi.finance/trade/swap",

@@ -360,7 +360,7 @@ async function checkMovement(
     filteredItems.push(...[items[i], items[i + 1]]);
   });
 
-  if (errors != "")
+  if (errors != "" && !process.env.LLAMA_RUN_LOCAL)
     await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
 
   return filteredItems;

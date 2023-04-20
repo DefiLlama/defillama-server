@@ -764,5 +764,10 @@ export default {
     "vesta-finance": {
         "enabled": true,
         "id": "1444"
+    },
+    "thena-v3": {
+        parentId: "Thena",
+        "enabled": true,
+        "id": "2864"
     }
 } as AdaptorsConfig

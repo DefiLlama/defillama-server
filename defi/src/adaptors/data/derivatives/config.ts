@@ -79,5 +79,9 @@ export default {
         },
         "enabled": true,
         "id": "2814"
+    },
+    "hyperliquid": {
+        "id": "2862",
+        "enabled": true
     }
 } as AdaptorsConfig

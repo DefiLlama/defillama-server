@@ -372,7 +372,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#izumi-finance",
-    name: "iZUMI Finance",
+    name: "iZUMi Finance",
     url: "https://izumi.finance/home",
     description:
       "Liquidity Redefined - A multi-chain DeFi protocol providing One-Stop Liquidity as a Service (LaaS).",

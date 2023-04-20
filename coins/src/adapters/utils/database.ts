@@ -341,19 +341,22 @@ async function checkMovement(
   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = [];
   const obj: { [PK: string]: any } = {};
   let errors: string = "";
-  items.map((i: any) => (obj[i.PK] = i));
+  previousItems.map((i: any) => (obj[i.PK] = i));
 
-  previousItems.map((d: DbEntry, i: number) => {
-    const currentItem = obj[d.PK];
+  items.map((d: any, i: number) => {
+    if (i % 2 != 0) return;
+    const previousItem = obj[d.PK];
     const percentageChange: number =
-      Math.abs(currentItem.price - d.price) / d.price;
+      Math.abs(previousItem.price - d.price) / previousItem.price;
+
     if (percentageChange > margin) {
       errors += `${d.PK.substring(d.PK.indexOf("#") + 1)} \t ${(
         percentageChange * 100
-      ).toFixed(3)}% change from $${d.price} to $${currentItem.price}\n`;
+      ).toFixed(3)}% change from $${previousItem.price} to $${d.price}\n`;
       return;
     }
-    filteredItems.push(...[items[i * 2], items[i * 2 + 1]]);
+
+    filteredItems.push(...[items[i], items[i + 1]]);
   });
 
   if (errors != "")

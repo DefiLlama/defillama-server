@@ -68,7 +68,7 @@ const protocolMcap = async (geckoId?: string | null) => {
   return mcap?.[`coingecko:${geckoId}`]?.mcap ?? null;
 };
 
-const tokenPrice = async (geckoId?: string | null) => {
+const getProtocolTokenPrice = async (geckoId?: string | null) => {
   if (!geckoId) return null;
 
   const price = await fetch("https://coins.llama.fi/prices", {
@@ -86,7 +86,7 @@ const tokenPrice = async (geckoId?: string | null) => {
   return price?.coins?.[`coingecko:${geckoId}`]?.price ?? null;
 };
 
-const tokenSupply = async (geckoId?: string | null) => {
+const getProtocolTokenSupply = async (geckoId?: string | null) => {
   if (!geckoId) return null;
 
   const supply = await fetch(
@@ -237,8 +237,8 @@ export default async function craftProtocol({
     getLastRecord(hourlyTokensTvl(protocolData.id)),
     raisesPromise,
     protocolMcap(protocolData.gecko_id),
-    tokenPrice(protocolData.gecko_id),
-    tokenSUpply(protocolData.gecko_id),
+    getProtocolTokenPrice(protocolData.gecko_id),
+    getProtocolTokenSupply(protocolData.gecko_id),
   ]);
 
   if (!useHourlyData) {

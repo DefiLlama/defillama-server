@@ -372,6 +372,11 @@ export default async function craftParentProtocol({
       return acc;
     }, [] as Array<IRaise>),
     metrics: getAvailableMetricsById(parentProtocol.id),
+    treasury: parentProtocol.treasury || childProtocols.find((p) => p.treasury)?.treasury,
+    mcap: childProtocolsTvls.find((p) => p.mcap)?.mcap,
+    tokenPrice: childProtocolsTvls.find((p) => p.tokenPrice)?.tokenPrice,
+    tokenMcap: childProtocolsTvls.find((p) => p.tokenMcap)?.tokenMcap,
+    tokenSupply: childProtocolsTvls.find((p) => p.tokenSupply)?.tokenSupply,
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

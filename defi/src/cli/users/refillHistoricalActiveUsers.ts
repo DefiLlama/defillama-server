@@ -6,6 +6,7 @@ import { PromisePool } from '@supercharge/promise-pool'
 import sleep from "../../utils/shared/sleep";
 import { getTimestampAtStartOfDay } from "../../utils/date";
 
+
 async function main() {
     let start = getTimestampAtStartOfDay(1680652800)
     while (true) {
@@ -32,4 +33,5 @@ async function main() {
         start = getTimestampAtStartOfDay(start - 12 * 3600);
     }
 }
-main()
+// DEPRECATED, use the other scripts to refill data, they are much more efficient and less error prone
+// main()

@@ -1443,5 +1443,9 @@ export default {
         parentId: "Thena",
         "enabled": true,
         "id": "2864"
+    },
+    "astroswap": {
+        "enabled": true,
+        "id": "1368"
     }
 } as AdaptorsConfig

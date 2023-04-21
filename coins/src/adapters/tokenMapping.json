@@ -7,6 +7,13 @@
       "to": "coingecko#metadium"
     }
   },
+  "moonriver": {
+    "0xffc7780c34b450d917d557e728f033033cb4fa8c": {
+      "decimals": "12",
+      "symbol": " stKSM",
+      "to": "moonriver:0xffffffff1fcacbd218edc0eba20fc2308c778080"
+    }
+  },
   "aurora": {
     "0x6bb0c4d909a84d118b5e6c4b17117e79e621ae94": {
       "decimals": "18",
@@ -44,7 +51,7 @@
     },
     "0xc00592aa41d32d137dc480d9f6d0df19b860104f": {
       "decimals": "18",
-      "symbol": "EOS",
+      "symbol": "WEOS",
       "to": "coingecko#eos"
     },
     "0x922d641a426dcffaef11680e5358f34d97d112e1": {

@@ -32342,5 +32342,26 @@ const data2: Protocol[] = [
     twitter: "JLSwap0001",
     listedAt: 1682105777
   },
+  {
+    id: "2871",
+    name: "Kimberlite",
+    address: "arbitrum:-",
+    symbol: "KLB",
+    url: "https://kimberlite.rocks/",
+    description: "Multichain high Yield Aggregator, Token/LP Locker, and Utility backed NFT Collection",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/kimberlite.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Binance", "Ethereum", "Dogechain", "Metis", "Polygon", "Arbitrum", "CORE"],
+    oracles: [],
+    forkedFrom: [],
+    module: "kimberlite/index.js",
+    twitter: "KimberliteLabs",
+    listedAt: 1682115289
+  },
 ]
 export default data2;

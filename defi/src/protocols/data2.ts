@@ -32298,5 +32298,26 @@ const data2: Protocol[] = [
     twitter: "zk_zkfox",
     listedAt: 1682023939
   },
+  {
+    id: "2869",
+    name: "SFT",
+    address: "filecoin:0xC5eA96Dd365983cfEc90E72b6A2daC9562f458Ba",
+    symbol: "SFT Protocol",
+    url: "https://www.sftproject.io/",
+    description: "The SFT protocol solves the staking liquidity of the POS blockchain, and provides cloud node API and equipment services, to be the fastest and the most reliable Web3 infrastructure",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/sft-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Filecoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "sft-protocol/index.js",
+    twitter: "SFTProtocol",
+    listedAt: 1682079773076
+  },
 ]
 export default data2;

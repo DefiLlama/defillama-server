@@ -49,6 +49,9 @@ ORDER BY
                     const date = new Date(`${dateString} UTC`)
                     const start = Math.round(date.getTime() / 1e3)
                     const end = start + 24 * 3600
+                    if(end > Date.now()/1e3){
+                        return
+                    }
                     try{
                         //console.log(start, end, id, "all", users)
                         await storeUsers(start, end, id, "all", users) // if already stored -> don't overwrite

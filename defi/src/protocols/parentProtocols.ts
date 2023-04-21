@@ -1357,7 +1357,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Forge SX",
     url: "https://forge.sx",
     description: "Forge is a brand new DeFi protocol enabling anyone to mint & trade real-world assets with the convenience of the blockchain",
-    logo: `${baseIconsUrl}/dove-swap.png`,
+    logo: `${baseIconsUrl}/forge-sx.jpg`,
     gecko_id: "forge",
     cmcId: null,
     chains: [],

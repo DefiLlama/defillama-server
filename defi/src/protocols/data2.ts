@@ -29994,8 +29994,8 @@ const data2: Protocol[] = [
   {
     id: "2763",
     name: "Dove Swap V2",
-    address: null,
-    symbol: "-",
+    address: "0x696c0ba235444607a1c4b93e6b34ba14928c1b60",
+    symbol: "DOV",
     url: "https://swap.dovish.finance",
     description: "Dove Swap is an emerging DEX that runs on the Polygon zkEVM to offer cheaper and faster transactions. The DEX focuses on providing the most user-friendly experience in DeFi, for both DeFi users and protocols. DoveSwap mainly operates and benefits from the lower gas prices, and higher transaction throughputs of the chain it operates on compared to Ethereum.",
     chain: "Polygon zkEVM",
@@ -30979,8 +30979,8 @@ const data2: Protocol[] = [
   {
     id: "2809",
     name: "Dove Swap V3",
-    address: null,
-    symbol: "-",
+    address: "0x696c0ba235444607a1c4b93e6b34ba14928c1b60",
+    symbol: "DOV",
     url: "https://swap.dovish.finance",
     description: "DoveSwap, the first native DEX on Polygon's zkEVM, enables faster and more cost-effective transactions. The DEX uses concentrated liquidity pools to improve capital efficiency, and reduce impermanent loss. ",
     chain: "Polygon zkEVM",

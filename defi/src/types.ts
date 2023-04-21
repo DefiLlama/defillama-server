@@ -81,6 +81,9 @@ export interface IProtocolResponse extends Omit<Protocol, "symbol" | "chain" | "
   raises: Array<IRaise>;
   metrics?: IJSON<boolean>;
   mcap?: number | null;
+  tokenPrice?: number | null;
+  tokenMcap?: number | null;
+  tokenSupply?: number | null;
 }
 
 export interface IProtocol

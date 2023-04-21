@@ -23721,7 +23721,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/ALGOBLOCKS/smart-contracts-audits/blob/main/ALGOBLK/Security%20Audit%20of%20Project%20ALGOBLOCKS_report%20040622.pdf"],
     listedAt: 1675090710
   },
-  {
+  /* {
     id: "2481",
     name: "MAPO",
     address: "0x9e976f211daea0d652912ab99b0dc21a7fd728e4",
@@ -23742,7 +23742,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1675165369
-  },
+  }, */
   {
     id: "2482",
     name: "CitaDAO",
@@ -24675,6 +24675,7 @@ const data2: Protocol[] = [
     twitter: "nounsdao",
     oracles: [],
     forkedFrom: [],
+    governanceID: ["eip155:1:0x6f3E6272A167e8AcCb32072d08E0957F9c79223d"]
   },
   {
     id: "2523",

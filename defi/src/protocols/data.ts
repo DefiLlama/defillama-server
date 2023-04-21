@@ -14838,7 +14838,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "832",
-    name: "Hector AMM",
+    name: "Hector Treasury",
     address: "fantom:0x5C4FDfc5233f935f20D2aDbA572F770c2E377Ab0",
     symbol: "HEC",
     url: "https://hector.network/",
@@ -14850,7 +14850,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Reserve Currency",
     chains: ["Fantom"],
     module: "hector/index.js",
     twitter: "Hector_Network",

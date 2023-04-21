@@ -1,3 +1,4 @@
+import { CATEGORIES } from "../helpers/categories"
 import { AdaptorsConfig } from "../types"
 
 export default {
@@ -931,9 +932,9 @@ export default {
         "id": "2195"
     },
     "tetu": {
-        parentId: "Tetu",
+        parentId: "parent#tetu",
         "enabled": true,
-        "id": "506"
+        "id": "2203"
     },
     "muesliswap": {
         "enabled": true,

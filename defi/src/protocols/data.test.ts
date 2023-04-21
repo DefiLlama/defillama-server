@@ -33,11 +33,10 @@ test("all chains are on chainMap", async () => {
   }
 });
 
-/*
 test("there are no repeated values in unlock adapters", async () => {
   const tokens = [] as string[], protocolIds = [] as string[][], notes = [] as string[][], sources = [] as string[][];
   for (const rawProtocol of Object.values(emissionsAdapters).map(p=>p.default)) {
-    const protocol = typeof rawProtocol === "function"?await rawProtocol():rawProtocol;
+    const protocol = rawProtocol.meta;
     expect(protocol.token).not.toBe(undefined)
     expect(tokens).not.toContain(protocol.token);
     tokens.push(protocol.token);
@@ -55,7 +54,6 @@ test("there are no repeated values in unlock adapters", async () => {
     }
   }
 })
-*/
 
 test("valid treasury fields", async () => {
   const treasuryKeys = new Set(['ownTokens', 'tvl'])

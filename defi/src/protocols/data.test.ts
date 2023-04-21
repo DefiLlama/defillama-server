@@ -3,6 +3,7 @@ import { baseIconsUrl } from "../constants";
 import { importAdapter, } from "../cli/utils/importAdapter";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
 import parentProtocols from "./parentProtocols";
+import emissionsAdapters from "../utils/imports/emissions_adapters";
 const fs = require("fs");
 
 test("all the dynamic imports work", async () => {
@@ -31,6 +32,28 @@ test("all chains are on chainMap", async () => {
     })
   }
 });
+
+test("there are no repeated values in unlock adapters", async () => {
+  const tokens = [] as string[], protocolIds = [] as string[][], notes = [] as string[][], sources = [] as string[][];
+  for (const rawProtocol of Object.values(emissionsAdapters).map(p=>p.default)) {
+    const protocol = typeof rawProtocol === "function"?await rawProtocol():rawProtocol;
+    expect(protocol.token).not.toBe(undefined)
+    expect(tokens).not.toContain(protocol.token);
+    tokens.push(protocol.token);
+    if(protocol.protocolIds){
+      expect(protocolIds).not.toContain(protocol.protocolIds);
+      protocolIds.push(protocol.protocolIds);
+    }
+    if(protocol.notes){
+      expect(notes).not.toContain(protocol.notes);
+      notes.push(protocol.notes);
+    }
+    if(protocol.sources){
+      expect(sources).not.toContain(protocol.sources);
+      sources.push(protocol.sources);
+    }
+  }
+})
 
 test("valid treasury fields", async () => {
   const treasuryKeys = new Set(['ownTokens', 'tvl'])

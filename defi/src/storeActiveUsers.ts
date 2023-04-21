@@ -18,7 +18,6 @@ async function storeActiveUsers() {
                 const end = Math.floor(Date.now() / 1e3)
                 const start = end - 24 * 3600
                 const users = await getUsers(start, end)
-                let totalGasUsd = 0;
                 await Promise.all(Object.entries(users).map(async ([chain, metrics]: [string, any]) => {
                     if (metrics.users) {
                         await storeUsers(start, end, id, chain, Number(metrics.users))
@@ -32,18 +31,12 @@ async function storeActiveUsers() {
                             if (typeof gasPrice !== "number" || Number.isNaN(gasPrice)) {
                                 throw new Error(`gasPrice on ${chain} is ${gasPrice}`)
                             }
-                            totalGasUsd += gasPrice * Number(metrics.gas);
                             await storeGas(start, end, id, chain, Number(metrics.gas), gasPrice * Number(metrics.gas))
                         } catch (e) {
                             console.log(`Couldn't store gas data for ${name} on chain ${chain}`)
                         }
                     }
                 }))
-                const allTxs = Object.values(users).reduce((sum: number, chain: any) => sum + Number(chain.txs ?? 0), 0)
-                if (allTxs !== 0) {
-                    await storeTxs(start, end, id, "all", allTxs)
-                }
-                await storeGas(start, end, id, "all", null, totalGasUsd)
             } catch (e) {
                 console.log(`Storing users for ${name} failed with error`, e)
             }

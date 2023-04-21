@@ -17,7 +17,7 @@ const typeInfo = {
 } as {[type:string]: {query:typeof getProtocolUsers, column:string}}
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
-    const protocolId = event.pathParameters?.protocolId?.toLowerCase();
+    const protocolId = event.pathParameters?.protocolId?.toLowerCase().replace("$", "#");
     const type = event.pathParameters?.type?.toLowerCase();
     const selectedTypeInfo = typeInfo[type ?? '']
     if(selectedTypeInfo === undefined){

@@ -68,23 +68,51 @@ const protocolMcap = async (geckoId?: string | null) => {
   return mcap?.[`coingecko:${geckoId}`]?.mcap ?? null;
 };
 
+const tokenPrice = async (geckoId?: string | null) => {
+  if (!geckoId) return null;
+
+  const price = await fetch("https://coins.llama.fi/prices", {
+    method: "POST",
+    body: JSON.stringify({
+      coins: [`coingecko:${geckoId}`],
+    }),
+  })
+    .then((r) => r.json())
+    .catch((err) => {
+      console.log(err);
+      return {};
+    });
+
+  return price?.coins?.[`coingecko:${geckoId}`]?.price ?? null;
+};
+
+const tokenSupply = async (geckoId?: string | null) => {
+  if (!geckoId) return null;
+
+  const supply = await fetch(
+    `https://api.coingecko.com/api/v3/coins/${geckoId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false&x_cg_pro_api_key=${process.env.CG_KEY}`
+  )
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err);
+      return {};
+    });
+
+  return supply?.["market_data"]?.["total_supply"] ?? null;
+};
+
 export async function buildCoreData({
   protocolData,
   useNewChainNames,
-  useHourlyData
+  useHourlyData,
 }: {
   protocolData: Protocol;
   useNewChainNames: boolean;
   useHourlyData: boolean;
-}){
+}) {
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
-  const [
-    historicalUsdTvl,
-    historicalUsdTokenTvl,
-    historicalTokenTvl,
-    { raises },
-  ] = await Promise.all([
+  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl, { raises }] = await Promise.all([
     getHistoricalValues((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id)),
     misrepresentedTokens
       ? ([] as any[])
@@ -95,12 +123,12 @@ export async function buildCoreData({
     raisesPromise,
   ]);
 
-  let response: Pick<IProtocolResponse, "chainTvls"|"tvl"> = {
+  let response: Pick<IProtocolResponse, "chainTvls" | "tvl"> = {
     chainTvls: {},
     tvl: [],
   };
 
-  const lastRecord = historicalUsdTvl[historicalUsdTvl.length-1]
+  const lastRecord = historicalUsdTvl[historicalUsdTvl.length - 1];
 
   Object.entries(lastRecord ?? {}).forEach(([chain]) => {
     if (nonChains.includes(chain) && chain !== "tvl") {
@@ -143,17 +171,19 @@ export async function buildCoreData({
       }
     }
   });
-  return response
+  return response;
 }
 
-function fetchFrom(pk:string, start:number){
-  return ddb.query({
-    ExpressionAttributeValues: {
-      ":pk": pk,
-      ":sk": start
-    },
-    KeyConditionExpression: "PK = :pk AND SK > :sk",
-  }).then(r=>r.Items ?? [])
+function fetchFrom(pk: string, start: number) {
+  return ddb
+    .query({
+      ExpressionAttributeValues: {
+        ":pk": pk,
+        ":sk": start,
+      },
+      KeyConditionExpression: "PK = :pk AND SK > :sk",
+    })
+    .then((r) => r.Items ?? []);
 }
 
 export default async function craftProtocol({
@@ -167,33 +197,29 @@ export default async function craftProtocol({
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
 }) {
-  const cacheKey = `protocolCache/${protocolData.id}-${useNewChainNames}-${useHourlyData}`
-  let previousRun: Awaited<ReturnType<typeof buildCoreData>>
-  try{
-    const data = (await getR2(cacheKey)).body
-    if(data === undefined){
-      throw new Error("No previous run")
+  const cacheKey = `protocolCache/${protocolData.id}-${useNewChainNames}-${useHourlyData}`;
+  let previousRun: Awaited<ReturnType<typeof buildCoreData>>;
+  try {
+    const data = (await getR2(cacheKey)).body;
+    if (data === undefined) {
+      throw new Error("No previous run");
     }
-    previousRun = JSON.parse(data)
-  } catch(e){
-    previousRun = await buildCoreData({protocolData, useNewChainNames, useHourlyData})
-    await storeR2(cacheKey, JSON.stringify(previousRun))
+    previousRun = JSON.parse(data);
+  } catch (e) {
+    previousRun = await buildCoreData({ protocolData, useNewChainNames, useHourlyData });
+    await storeR2(cacheKey, JSON.stringify(previousRun));
   }
-  const lastTimestamp = previousRun.tvl[previousRun.tvl.length-1]?.date ?? 0; // Consider the case when array is empty
+  const lastTimestamp = previousRun.tvl[previousRun.tvl.length - 1]?.date ?? 0; // Consider the case when array is empty
   /* TODO: Update cache
   if ((getCurrentUnixTimestamp() - lastTimestamp) > 24 * 3600) {
   }
   */
 
-  const [
-    historicalUsdTvl,
-    historicalUsdTokenTvl,
-    historicalTokenTvl,
-  ] = await Promise.all([
+  const [historicalUsdTvl, historicalUsdTokenTvl, historicalTokenTvl] = await Promise.all([
     fetchFrom((useHourlyData ? hourlyTvl : dailyTvl)(protocolData.id), lastTimestamp),
     fetchFrom((useHourlyData ? hourlyUsdTokensTvl : dailyUsdTokensTvl)(protocolData.id), lastTimestamp),
     fetchFrom((useHourlyData ? hourlyTokensTvl : dailyTokensTvl)(protocolData.id), lastTimestamp),
-  ])
+  ]);
 
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
@@ -203,12 +229,16 @@ export default async function craftProtocol({
     lastTokenHourlyRecord,
     { raises },
     mcap,
+    tokenPrice,
+    tokenSupply,
   ] = await Promise.all([
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
     raisesPromise,
     protocolMcap(protocolData.gecko_id),
+    tokenPrice(protocolData.gecko_id),
+    tokenSUpply(protocolData.gecko_id),
   ]);
 
   if (!useHourlyData) {
@@ -232,6 +262,9 @@ export default async function craftProtocol({
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
     metrics: getAvailableMetricsById(protocolData.id),
     mcap,
+    tokenMcap: mcap,
+    tokenPrice,
+    tokenSupply,
   };
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]) => {
@@ -244,37 +277,42 @@ export default async function craftProtocol({
     if (chain !== "tvl") {
       response.currentChainTvls[displayChainName] = chainTvl ? Number(chainTvl.toFixed(5)) : 0;
     }
-    if(chain !== "tvl" && response.chainTvls[displayChainName] === undefined){
-      response.chainTvls[displayChainName]={
-        tvl:[],
-        tokensInUsd:[],
-        tokens:[]
-      }
+    if (chain !== "tvl" && response.chainTvls[displayChainName] === undefined) {
+      response.chainTvls[displayChainName] = {
+        tvl: [],
+        tokensInUsd: [],
+        tokens: [],
+      };
     }
-    const container = chain === "tvl"? response:response.chainTvls[displayChainName]
+    const container = chain === "tvl" ? response : response.chainTvls[displayChainName];
 
-    container?.tvl?.push(...historicalUsdTvl
-      ?.map((item) => ({
-        date: item.SK,
-        totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
-      }))
-      .filter((item) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD));
+    container?.tvl?.push(
+      ...historicalUsdTvl
+        ?.map((item) => ({
+          date: item.SK,
+          totalLiquidityUSD: selectChainFromItem(item, chain) && Number(selectChainFromItem(item, chain).toFixed(5)),
+        }))
+        .filter((item) => item.totalLiquidityUSD === 0 || item.totalLiquidityUSD)
+    );
 
-    container?.tokensInUsd?.push(...historicalUsdTokenTvl
-      ?.map((item) => ({
-        date: item.SK,
-        tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-      }))
-      .filter((item) => item.tokens));
+    container?.tokensInUsd?.push(
+      ...historicalUsdTokenTvl
+        ?.map((item) => ({
+          date: item.SK,
+          tokens: normalizeEthereum(selectChainFromItem(item, chain)),
+        }))
+        .filter((item) => item.tokens)
+    );
 
-    container?.tokens?.push(...historicalTokenTvl
-      ?.map((item) => ({
-        date: item.SK,
-        tokens: normalizeEthereum(selectChainFromItem(item, chain)),
-      }))
-      .filter((item) => item.tokens));
-
-  })
+    container?.tokens?.push(
+      ...historicalTokenTvl
+        ?.map((item) => ({
+          date: item.SK,
+          tokens: normalizeEthereum(selectChainFromItem(item, chain)),
+        }))
+        .filter((item) => item.tokens)
+    );
+  });
 
   const singleChain = transformNewChainName(protocolData.chain);
 

@@ -16728,7 +16728,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "scarecrow-raven/index.js",
     twitter: "scarecrowdefi",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     listedAt: 1637947348,
   },
   {
@@ -18860,7 +18860,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "rivrkitty.js",
     twitter: "RivrKitty",
     audit_links: ["https://docs.rivrkitty.com/smart-contracts/main-contracts#usdpaws-farming-contract"],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     listedAt: 1639421711,
   },
   {
@@ -19319,7 +19319,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "sunflowerswap/index.js",
     twitter: "Sunflower_Swap",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     listedAt: 1639807342,
   },
   {
@@ -20137,7 +20137,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "babypigfinance/index.js",
     twitter: "BabypigCash",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
   },
   {
     id: "1082",
@@ -24712,7 +24712,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "vapedao/index.js",
     twitter: "apedaofinance",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     listedAt: 1642765130,
   },
   {
@@ -25838,7 +25838,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "knightsfantom/index.js",
     twitter: "knightsoffantom",
     audit_links: ["https://knights-fantom.gitbook.io/knights-of-fantom/tokenomics/security-and-safety"],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     listedAt: 1643883431,
   },
   {

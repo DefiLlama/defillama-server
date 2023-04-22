@@ -12,7 +12,7 @@ import { convertDataToUSD } from "./convertRecordDataCurrency"
  */
 
 export interface ICleanRecordsConfig {
-    genuineSpikes: IJSON<boolean>
+    genuineSpikes: IJSON<boolean> | boolean
 }
 
 export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string, cleanRecordsConfig?: ICleanRecordsConfig) => {
@@ -144,8 +144,8 @@ export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], prot
             timestamp,
             await convertDataToUSD(generatedData, timestamp)
         )
-
-        if (!genuineSpikes[String(timestamp)] && timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
+        const checkSpike = typeof genuineSpikes === 'boolean' ? genuineSpikes : !genuineSpikes[String(timestamp)]
+        if (checkSpike && timestamp && (timestamp > (Date.now() / 1000) - 60 * 60 * 24 * 7))
             checkSpikes(acc.lastDataRecord, newGen, spikesLogs, acc.ath)
 
         const dayVolume = sumAllVolumes(newGen.data)

@@ -750,7 +750,10 @@ export default {
     "covo-v2": {
         "enabled": true,
         "id": "2730",
-        parentId: "Covo Finance"
+        parentId: "Covo Finance",
+        cleanRecordsConfig: {
+            genuineSpikes: true
+        }
     },
     "camelot-v3": {
         parentId: "Camelot",

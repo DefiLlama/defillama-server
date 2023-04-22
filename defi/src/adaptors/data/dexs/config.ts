@@ -1431,7 +1431,10 @@ export default {
                 "id": "2730",
                 "enabled": true,
                 "category": "Dexes",
-                "displayName": "Covo V2 - SWAP"
+                "displayName": "Covo V2 - SWAP",
+                cleanRecordsConfig: {
+                    genuineSpikes: true
+                }
             }
         },
     },

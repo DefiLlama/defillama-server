@@ -45,6 +45,9 @@ async function storeIntervals(protocolIndexes: number[], getRemainingTimeInMilli
           ? parentProtocols.find((p) => p.id === protocol.parentProtocol)?.name ?? protocol.name
           : protocol.name,
       };
+
+      console.log({ updatedProtocol });
+
       await storeTvl(
         timestamp,
         ethereumBlock,

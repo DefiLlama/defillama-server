@@ -126,7 +126,14 @@ const formattedChains = async (category: string) => {
     `https://pro-api.coingecko.com/api/v3/simple/price?ids=${Object.values(chainCoingeckoIds)
       .map((v) => v.geckoId)
       .join(",")}&vs_currencies=usd&include_market_cap=true&x_cg_pro_api_key=${process.env.CG_KEY}`
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err);
+      return {};
+    });
+
+  console.log({ chainMcaps });
 
   // calc no.of protocols present in each chains as well as extra tvl data like staking , pool2 etc
   const numOfProtocolsPerChain: INumOfProtocolsPerChain = {};

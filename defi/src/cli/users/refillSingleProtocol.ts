@@ -1,4 +1,4 @@
-import protocolAddresses from "../../../dimension-adapters/users/routers/routerAddresses";
+import { addressList } from "../../../dimension-adapters/users/list";
 import { storeChainGas } from "./queries/gas";
 import { storeChainTxs } from "./queries/txs";
 import { storeAllUsers, storeChainUsers } from "./queries/users";
@@ -8,10 +8,13 @@ const sql = postgres(process.env.ACCOUNTS_DB!);
 
 async function main() {
     const protocolName = process.argv[2]
-    const protocol = protocolAddresses.find(addresses => addresses.name.toLowerCase() === protocolName)
+    const protocol = addressList.find(addresses => addresses.name.toLowerCase() === protocolName) as any
     if(protocol === undefined){
         console.error(`No protocol with name "${protocolName}"`)
         return
+    }
+    if(protocol.getAddresses){
+        protocol.addresses = await protocol.getAddresses()
     }
     console.log(`Deleting data for protocol with id ${protocol.id}`)
     await Promise.all([

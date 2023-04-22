@@ -42,7 +42,7 @@ async function storeIntervals(protocolIndexes: number[], getRemainingTimeInMilli
       const updatedProtocol = {
         ...protocol,
         name: protocol.parentProtocol
-          ? parentProtocols.find((p) => p.id === protocol.parentProtocol) || protocol.name
+          ? parentProtocols.find((p) => p.id === protocol.parentProtocol)?.name ?? protocol.name
           : protocol.name,
       };
       await storeTvl(

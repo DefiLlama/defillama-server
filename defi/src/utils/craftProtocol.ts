@@ -263,8 +263,8 @@ export default async function craftProtocol({
     metrics: getAvailableMetricsById(protocolData.id),
     mcap,
     tokenMcap: mcap,
-    tokenPrice,
-    tokenSupply,
+    tokenPrice: tokenPrice,
+    tokenSupply: tokenSupply,
   };
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]) => {

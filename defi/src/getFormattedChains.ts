@@ -123,7 +123,7 @@ const formattedChains = async (category: string) => {
 
   // get mcaps of chains in given category
   const chainMcaps = await fetch(
-    `https://pro-api.coingecko.com/api/v3/simple/price?ids=${Object.values(chainCoingeckoIds)
+    `https://api.coingecko.com/api/v3/simple/price?ids=${Object.values(chainCoingeckoIds)
       .map((v) => v.geckoId)
       .join(",")}&vs_currencies=usd&include_market_cap=true&x_cg_pro_api_key=${process.env.CG_KEY}`
   )

@@ -3,36 +3,35 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
 import sleep from "./utils/shared/sleep";
 
-const CG_TOKEN_API =
-  `https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=<PLACEHOLDER>&x_cg_pro_api_key=${process.env.CG_KEY}`;
+const CG_TOKEN_API = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=<PLACEHOLDER>&x_cg_pro_api_key=${process.env.CG_KEY}`;
 
-async function cgRequest(url:string){
+async function cgRequest(url: string) {
   let data;
-  for(let i=0; i<10; i++){
-    try{
-      console.log(Date.now()/1e3)
-      data = await fetch(url).then((res) => res.json())
+  for (let i = 0; i < 10; i++) {
+    try {
+      console.log(Date.now() / 1e3);
+      data = await fetch(url).then((res) => res.json());
       await sleep(1200);
-      if(data?.status?.error_code){
-        throw Error()
+      if (data?.status?.error_code) {
+        throw Error();
       }
-      return data
-    } catch(e){
-      console.log(`error ${i}`)
-      await sleep(1e3)
+      return data;
+    } catch (e) {
+      console.log(`error ${i}`);
+      await sleep(1e3);
     }
   }
-  console.log(data)
-  throw Error(`Coingecko fails on "${url}"`)
+  console.log(data);
+  throw Error(`Coingecko fails on "${url}"`);
 }
 
 const arrayFetcher = async (urlArr: string[]) => {
-  const results = []
-  for(const url of urlArr){
-    let data = await cgRequest(url)
+  const results = [];
+  for (const url of urlArr) {
+    let data = await cgRequest(url);
     results.push(data);
   }
-  return results
+  return results;
 };
 
 function getCGMarketsDataURLs() {
@@ -43,7 +42,6 @@ function getCGMarketsDataURLs() {
   }
   return urls;
 }
-
 
 export async function getAllCGTokensList(): Promise<Array<{ name: string; symbol: string; image: string }>> {
   const data = await arrayFetcher(getCGMarketsDataURLs());
@@ -58,8 +56,8 @@ export async function getAllCGTokensList(): Promise<Array<{ name: string; symbol
 }
 
 const handler = async () => {
-    const list = await getAllCGTokensList();
-    await storeR2JSONString(`tokenlist/sorted.json`, JSON.stringify(list), 60 * 60);
+  const list = await getAllCGTokensList();
+  await storeR2JSONString(`tokenlist/sorted.json`, JSON.stringify(list), 60 * 60);
 };
 
-export default wrapScheduledLambda(handler)
+export default wrapScheduledLambda(handler);

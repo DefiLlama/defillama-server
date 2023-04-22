@@ -642,7 +642,7 @@ const data: Protocol[] = [
     category: "CDP",
     chains: ["Kava"],
     module: "kava.js",
-    twitter: "kava_platform",
+    twitter: "KAVA_CHAIN",
     audit_links: ["https://www.certik.org/projects/kava"],
     oracles: ["Chainlink"],
   },

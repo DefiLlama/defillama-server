@@ -18821,7 +18821,7 @@ const data2: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Kava"],
     module: "kava-liquid/index.js",
-    twitter: "kava_platform",
+    twitter: "KAVA_CHAIN",
     forkedFrom: [],
     oracles: ["Chainlink"],
     listedAt: 1668080824
@@ -18914,7 +18914,7 @@ const data2: Protocol[] = [
     category: "Yield Aggregator",
     chains: ["Kava"],
     module: "kava-earn/index.js",
-    twitter: "kava_platform",
+    twitter: "KAVA_CHAIN",
     forkedFrom: [],
     oracles: ["Chainlink"],
     listedAt: 1668111911
@@ -18936,7 +18936,7 @@ const data2: Protocol[] = [
     category: "Farm",
     chains: ["Kava"],
     module: "kava-boost/index.js",
-    twitter: "kava_platform",
+    twitter: "KAVA_CHAIN",
     forkedFrom: [],
     oracles: ["Chainlink"],
     listedAt: 1668111919

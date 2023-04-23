@@ -584,7 +584,7 @@ export default {
     },
     "covo-finance": {
         parentId: "Covo Finance",
-        "enabled": true,
+        "enabled": false,
         "id": "2525"
     },
     "nftearth": {

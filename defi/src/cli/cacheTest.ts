@@ -25,7 +25,7 @@ async function run() {
   let finished = 0
   let running = 0
   await PromisePool
-    .withConcurrency(1)
+    .withConcurrency(15)
     // .for(protocols.filter(i => i.name === 'Unifarm'))
     .for(protocols.slice(650))
     .process(async (protocol: Protocol, _index: number) => {
@@ -70,7 +70,15 @@ async function run() {
           }
         }
         await Promise.all(tvlPromises)
-      } catch (e) { }
+      } catch (e) { 
+        console.log(`
+        ----------------
+        failed for: ${protocol.name}
+
+        ---------------
+        
+        `)
+      }
       // console.log('finished for ', protocol.name)
 
       finished++
@@ -91,4 +99,5 @@ function getTime() {
 run().then(() => {
   console.log('Done !!!')
   console.log('time taken (mins):', getTimeTaken())
+  process.exit(0)
 })

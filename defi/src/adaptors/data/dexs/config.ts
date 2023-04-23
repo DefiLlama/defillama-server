@@ -1450,5 +1450,9 @@ export default {
     "astroswap": {
         "enabled": true,
         "id": "1368"
+    },
+    "merlin": {
+        "enabled": true,
+        "id": "2849"
     }
 } as AdaptorsConfig

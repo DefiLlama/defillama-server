@@ -1454,5 +1454,9 @@ export default {
     "merlin": {
         "enabled": true,
         "id": "2849"
+    },
+    "tealswap": {
+        "enabled": true,
+        "id": "2874"
     }
 } as AdaptorsConfig

@@ -7,6 +7,18 @@
       "to": "coingecko#metadium"
     }
   },
+  "oasys": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "OAS",
+      "to": "coingecko#oasys"
+    },
+    "0x5200000000000000000000000000000000000001": {
+      "decimals": "18",
+      "symbol": "WOAS",
+      "to": "coingecko#oasys"
+    }
+  },
   "moonriver": {
     "0xffc7780c34b450d917d557e728f033033cb4fa8c": {
       "decimals": "12",

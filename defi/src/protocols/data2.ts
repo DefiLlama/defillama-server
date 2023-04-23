@@ -31876,7 +31876,7 @@ const data2: Protocol[] = [
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/merlin-dex.png`,
     audits: "2",
-    audit_note: "Merlin is an permission-less, community centric DEX built on ZkSync with a liquidity environment that is robust and efficient. Their full report is available here.",
+    audit_note: null,
     gecko_id: null,
     cmcId: "6767",
     category: "Dexes",

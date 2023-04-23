@@ -32380,7 +32380,7 @@ const data2: Protocol[] = [
     chains: ["Avalanche"],
     oracles: [],
     forkedFrom: ["Solidly"],
-    module: "printy/index.js",
+    module: "printyfi/index.js",
     twitter: "printyfinance",
     listedAt: 1682200817
   },

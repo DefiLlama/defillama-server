@@ -32457,7 +32457,7 @@ const data2: Protocol[] = [
     url: "https://www.sftproject.io",
     description: "The SFT protocol solves the staking liquidity of the POS blockchain, and provides cloud node API and equipment services, to be the fastest and the most reliable Web3 infrastructure",
     chain: "Filecoin",
-    logo: `${baseIconsUrl}/sft-protocol.png`,
+    logo: `${baseIconsUrl}/sft-protocol.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

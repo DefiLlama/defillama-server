@@ -22019,7 +22019,6 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/flokifi"],
     listedAt: 1672835629
   },
-  /*
   {
     id: "2406",
     name: "Tegro Finance",
@@ -22036,13 +22035,13 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["TON"],
-    module: "tegro/index.js",
+    // module: "tegro/index.js",
+    module: "anyhedge/index.js",
     twitter: "TegroDEX",
     forkedFrom: [],
     oracles: [],
     listedAt: 1672845040
   },
-  */
   {
     id: "2407",
     name: "Inbuilt Finance",
@@ -25811,7 +25810,8 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Services",
     chains: ["Elrond"],
-    module: "quantumx-network/api.js",
+    // module: "quantumx-network/api.js",
+    module: "anyhedge/index.js",
     twitter: "QuantumXnetwork",
     oracles: [],
     forkedFrom: [],

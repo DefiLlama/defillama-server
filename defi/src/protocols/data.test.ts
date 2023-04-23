@@ -168,6 +168,7 @@ test("no module repeated", async () => {
   for (const protocol of protocols) {
     const script = protocol.module
     if (script === 'dummy.js') continue; // dummy.js is an exception
+    if (script === 'anyhedge/index.js') continue; // anyhedge/index.js is an exception, used as short hand for skipping tvl update
     expect(ids).not.toContain(script);
     ids.push(script);
   }

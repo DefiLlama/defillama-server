@@ -772,5 +772,9 @@ export default {
         parentId: "Thena",
         "enabled": true,
         "id": "2864"
+    },
+    "merlin": {
+        "enabled": true,
+        "id": "2849"
     }
 } as AdaptorsConfig

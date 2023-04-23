@@ -32406,5 +32406,27 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/tree/main/NeutroSwap"],
     listedAt: 1682200819
   },
+  {
+    id: "2874",
+    name: "Tealswap",
+    address: null,
+    symbol: "-",
+    url: "https://tealswap.com/dashboard",
+    description: "Tealswap is a decentralized exchange with automated market maker on Oasys hub-layer.",
+    chain: "Oasys",
+    logo: `${baseIconsUrl}/tealswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Oasys"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "tealswap/index.js",
+    twitter: "tealswap",
+    audit_links: ["https://2660718327-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FelNqRwrEOuHToNqYrgbQ%2Fuploads%2FFx0VH6iHvSJBV1shyUwC%2FTealswap%20Smart%20Contract%20Audit%20Report_v1.0.pdf?alt=media&token=4ba9d254-0655-4e7b-a41d-513abb23845c"],
+    listedAt: 1682246393
+  },
 ]
 export default data2;

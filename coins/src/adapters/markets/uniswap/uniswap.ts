@@ -92,6 +92,7 @@ async function fetchUniV2MarketData(
         target: pairAddress,
       })),
       block,
+      permitFailure: true,
     }),
     multiCall({
       abi: abi.token1,
@@ -100,6 +101,7 @@ async function fetchUniV2MarketData(
         target: pairAddress,
       })),
       block,
+      permitFailure: true,
     }),
     multiCall({
       abi: abi.getReserves,
@@ -108,6 +110,7 @@ async function fetchUniV2MarketData(
         target: pairAddress,
       })),
       block,
+      permitFailure: true,
     }),
   ]);
 

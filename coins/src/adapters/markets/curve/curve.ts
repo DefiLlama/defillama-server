@@ -82,6 +82,7 @@ async function getPools(
       })),
       abi: abi.pool_count,
       block,
+      permitFailure: true,
     })
   ).output;
 

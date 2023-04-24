@@ -7155,6 +7155,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "illuvium/index.js",
     twitter: "illuviumio",
     audit_links: ["https://certificate.quantstamp.com/full/illuvium-yield-farming-rewards"],
+    treasury: "illuvium.js",
     governanceID: ["snapshot:ilvgov.eth", "snapshot:ilv.eth"]
   },
   {

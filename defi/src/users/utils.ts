@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 import { getCoingeckoLock, setTimer } from "../utils/shared/coingeckoLocks";
+import sleep from "../utils/shared/sleep";
 
 const cache = {} as {
     [key: string]: Promise<number> | undefined
@@ -13,6 +14,9 @@ async function getAvgPrice(start: number, end: number, chain: string) {
         const url = `https://coins.llama.fi/prices/historical/${t}/${coinKey}?searchWidth=12h`
         for (let i = 0; i < 5; i++) {
             try {
+                if(i !== 0){
+                    await sleep(100*(2**(i-1))) // exponential backoff
+                }
                 await getCoingeckoLock()
                 const data = await fetch(url)
                     .then(r => r.json())

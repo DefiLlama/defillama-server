@@ -1,17 +1,11 @@
 require("dotenv").config();
 import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
-import { batchGet } from "../../utils/shared/dynamodb";
+import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
-import {
-  Write,
-  DbEntry,
-  Redirect,
-  DbQuery,
-  Read,
-  CoinData,
-} from "./dbInterfaces";
+import { Write, DbEntry, DbQuery, Read, CoinData } from "./dbInterfaces";
 import { contracts } from "../other/distressedAssets";
+import { sendMessage } from "./../../../../defi/src/utils/discord";
 
 const confidenceThreshold: number = 0.3;
 
@@ -312,4 +306,62 @@ function aggregateTokenAndRedirectData(reads: Read[]) {
     .filter((d: CoinData) => d.price != -1);
 
   return coinData;
+}
+export async function batchWriteWithAlerts(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  failOnError: boolean,
+): Promise<void> {
+  const previousItems: DbEntry[] = await readPreviousValues(items);
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
+    items,
+    previousItems,
+  );
+  await batchWrite(filteredItems, failOnError);
+}
+async function readPreviousValues(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+): Promise<DbEntry[]> {
+  let queries: { PK: string; SK: number }[] = [];
+  items.map(
+    (t: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap, i: number) => {
+      if (i % 2) return;
+      queries.push({
+        PK: t.PK,
+        SK: 0,
+      });
+    },
+  );
+  return await batchGet(queries);
+}
+async function checkMovement(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  previousItems: DbEntry[],
+  margin: number = 0.1,
+): Promise<AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]> {
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = [];
+  const obj: { [PK: string]: any } = {};
+  let errors: string = "";
+  previousItems.map((i: any) => (obj[i.PK] = i));
+
+  items.map((d: any, i: number) => {
+    if (i % 2 != 0) return;
+    const previousItem = obj[d.PK];
+    if (previousItem) {
+      const percentageChange: number =
+        Math.abs(previousItem.price - d.price) / previousItem.price;
+
+      if (percentageChange > margin) {
+        errors += `${d.PK.substring(d.PK.indexOf("#") + 1)} \t ${(
+          percentageChange * 100
+        ).toFixed(3)}% change from $${previousItem.price} to $${d.price}\n`;
+        return;
+      }
+    }
+    filteredItems.push(...[items[i], items[i + 1]]);
+  });
+
+  if (errors != "" && !process.env.LLAMA_RUN_LOCAL)
+    await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
+
+  return filteredItems;
 }

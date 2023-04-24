@@ -32214,7 +32214,7 @@ const data2: Protocol[] = [
     id: "2865",
     name: "Moonbase Alpha",
     address: "arbitrum:0xB536AE2B2Ed085eA0197C67e3948b7cBF40010c3",
-    symbol: "MROOK",
+    symbol: "MROCK",
     url: "https://exchange.themoonbase.app",
     description: "Moonbase Alpha is an all in one decentralized haven for everything blockchain.",
     chain: "Arbitrum",

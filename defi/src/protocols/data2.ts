@@ -32662,5 +32662,27 @@ const data2: Protocol[] = [
     audit_links: ["https://hacken.io/audits/asymetrix-protocol"],
     listedAt: 1682356968
   },
+  {
+    id: "2886",
+    name: "RabbitX",
+    address: null,
+    symbol: "-",
+    url: "https://app.rabbitx.io/",
+    description: "RabbitX is a global permissionless perpetuals exchange offering 20x leverage with $0 gas fees",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/rabbitx.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "rabbitx/index.js",
+    twitter: "rabbitx_io",
+    audit_links: [],
+    listedAt: 1682370221
+  },
 ]
 export default data2;

@@ -434,16 +434,28 @@ async function unknownPools(
           });
           continue;
         }
+        const isJunk = poolTokens.find(
+          (t: any) =>
+            t.price == null ||
+            t.price <= 0 ||
+            t.balance == null ||
+            t.balance == 0,
+        );
+        if (isJunk != null) {
+          continue;
+        }
         const poolValue: number = poolTokens.reduce(
           (p, c) => p + c.balance * c.price,
           0,
         );
 
+        const price =
+          (poolValue * 10 ** tokenInfo.decimals[0].output) /
+          tokenInfo.supplies[0].output;
         if (
-          isNaN(
-            (poolValue * 10 ** tokenInfo.decimals[0].output) /
-              tokenInfo.supplies[0].output,
-          ) ||
+          isNaN(price) ||
+          price == 0 ||
+          price == Infinity ||
           tokenInfo.supplies[0].output == 0
         ) {
           continue;
@@ -456,11 +468,6 @@ async function unknownPools(
               return p.confidence;
             })
             .reduce((a, b) => a + b, 0) / poolTokens.length;
-
-        const price =
-          (poolValue * 10 ** tokenInfo.decimals[0].output) /
-          tokenInfo.supplies[0].output;
-        if (price == Infinity || price == 0) continue;
 
         addToDBWritesList(
           writes,

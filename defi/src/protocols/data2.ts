@@ -32641,7 +32641,7 @@ const data2: Protocol[] = [
     listedAt: 1682356965
   },
   {
-    id: "2884",
+    id: "2885",
     name: "Asymetrix Protocol",
     address: "0x67d85A291fcDC862A78812a3C26d55e28FFB2701",
     symbol: "ASX",

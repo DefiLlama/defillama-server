@@ -94,6 +94,7 @@ export default async function getTokenPrices(
       abi: "erc20:decimals",
       chain: chain as any,
       block,
+      permitFailure: true,
     }),
     multiCall({
       calls: cTokens.map((c: CToken) => ({
@@ -113,7 +114,7 @@ export default async function getTokenPrices(
       const coinData: CoinData | undefined = coinsData.find(
         (c: CoinData) => c.address == t.underlying,
       );
-      if (coinData == null) return;
+      if (coinData == null || underlyingDecimals[i].output == null) return;
       prices.push({
         address: t.address,
         price: coinData.price * exchangeRates[i].output,

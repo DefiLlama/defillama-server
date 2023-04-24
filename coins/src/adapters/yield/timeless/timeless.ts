@@ -74,8 +74,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     prices
     // decimals,
   ] = await Promise.all([
-    api.multiCall({  abi: abi.getUnderlyingOfVault, calls: gateCalls}),
-    api.multiCall({  abi: abi.getPricePerVaultShare, calls: gateCalls}),
+    api.multiCall({  abi: abi.getUnderlyingOfVault, calls: gateCalls, permitFailure: true}),
+    api.multiCall({  abi: abi.getPricePerVaultShare, calls: gateCalls, permitFailure: true }),
     // api.multiCall({  abi: 'erc20:decimals', calls: vaults }),
   ])
 
@@ -83,6 +83,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   const pricesObject: any = {}
   data.forEach((val: any, i: number) => {
+    if ([prices[i], underlyings[i]].includes(null)) return 
     const { pyt, nyt, pytPrice, nytPrice, xpyt, xpytPrice, } = val
     const underlying = underlyings[i]
     const ratio = prices[i] / 1e27

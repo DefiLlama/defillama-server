@@ -84,6 +84,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     calls: sellCalls,
     abi: abis.sellFYTokenPreview,
     withMetadata: true,
+    permitFailure: true 
   })
 
   pools.forEach((pool, idx) => {

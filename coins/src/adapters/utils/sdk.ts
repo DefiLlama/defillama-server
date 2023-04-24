@@ -17,7 +17,8 @@ export async function requery(
       abi,
       chain: chain as any,
       calls: failed.map((f: any) => f[0].input),
-      block
+      block, 
+      permitFailure: true 
     }).then(({ output }) => output);
     failed.forEach((f: any, i) => {
       results[f[1]] = newResults[i];

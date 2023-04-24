@@ -36,7 +36,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@defillama/sdk": "^3.0.0",
+    "@defillama/sdk": "^4.0.0",
     "@ethersproject/bignumber": "^5.5.0",
     "@sentry/serverless": "^6.19.7",
     "@sentry/tracing": "^6.19.7",

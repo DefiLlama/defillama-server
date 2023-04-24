@@ -533,6 +533,7 @@ async function unknownTokens(
     calls,
     abi: abi.get_dy,
     block,
+    permitFailure: true,
   });
   await requery(dys, chain, abi.get_dy, block);
   await requery(dys, chain, abi.get_dy2, block);
@@ -552,8 +553,12 @@ async function unknownTokens(
   const unknownTokenInfos = await getTokenInfo(chain, unknownTokens, block);
 
   const prices = dys.output.map((d: Result, i: number) => {
-    const decimals = unknownTokenInfos.decimals[Math.floor(i / 2)].output;
-    return (i % 2 == 0 ? usdSwapSize : 1) / (d.output / 10 ** decimals);
+    const unknownToken = unknownTokens[Math.floor(i / 2)].toLowerCase();
+    const decimals = unknownTokenInfos.decimals.find(
+      (i: any) => i.input.target.toLowerCase() == unknownToken,
+    );
+    if (!decimals) return Infinity;
+    return (i % 2 == 0 ? usdSwapSize : 1) / (d.output / 10 ** decimals.output);
   });
 
   prices.map((p: any, i: number) => {

@@ -343,6 +343,7 @@ async function getConfidenceScores(
     abi: abi.getAmountsOut,
     chain: chain as any,
     calls: calls as any,
+    permitFailure: true,
   });
 
   const confidences: { [address: string]: number } = {};

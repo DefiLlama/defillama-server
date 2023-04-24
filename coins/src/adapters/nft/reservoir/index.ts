@@ -11,7 +11,7 @@ export async function reservoir(timestamp: number = 0) {
   const collections = await getCollections()
   const [{ price: ethPrice }] = await getTokenAndRedirectData(['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'], chain, timestamp)
   const writes: Write[] = [];
-  const symbols = await api.multiCall({ abi: "string:symbol", calls: collections.map((i: any) => i.contract) })
+  const symbols = await api.multiCall({ abi: "string:symbol", calls: collections.map((i: any) => i.contract), permitFailure: true })
 
   const symbolFromName = (i: string) => i.split('by ')[0].split('(')[0].trim().replace(/\s+'?\s*/g, '-').toUpperCase()
   let res: any = {}

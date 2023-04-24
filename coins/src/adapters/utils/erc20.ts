@@ -13,7 +13,7 @@ export async function getTokenInfo(
   params: {
     withSupply?: boolean;
     timestamp?: number;
-  } = {}
+  } = {},
 ): Promise<DbTokenInfos> {
   const { withSupply = false, timestamp } = params;
   targets = targets.map((i) => i.toLowerCase());
@@ -21,7 +21,7 @@ export async function getTokenInfo(
   const api = new sdk.ChainApi({ chain, block, timestamp });
   const [decimals, symbols] = await Promise.all([
     _getCachedData({ api, targets, subkey: "decimals" }),
-    _getCachedData({ api, targets, subkey: "symbol" })
+    _getCachedData({ api, targets, subkey: "symbol" }),
   ]);
 
   let supplies: Result[] = [];
@@ -29,13 +29,13 @@ export async function getTokenInfo(
     supplies = (await api.multiCall({
       abi: "erc20:totalSupply",
       calls: targets,
-      withMetadata: true
+      withMetadata: true,
     })) as Result[];
 
   return {
     supplies,
     decimals,
-    symbols
+    symbols,
   };
 }
 interface Lp {
@@ -47,7 +47,7 @@ interface Lp {
 export async function getLPInfo(
   chain: string,
   targets: Lp[],
-  block: number | undefined
+  block: number | undefined,
 ) {
   const api = new sdk.ChainApi({ chain, block });
   const [
@@ -57,43 +57,43 @@ export async function getLPInfo(
     underlyingDecimalAs,
     underlyingDecimalBs,
     symbolAs,
-    symbolBs
+    symbolBs,
   ] = await Promise.all([
     api.multiCall({
       abi: "erc20:totalSupply",
       calls: targets.map((i: any) => i.address),
-      withMetadata: true
+      withMetadata: true,
     }),
     _getCachedData({
       api,
       targets: targets.map((i: any) => i.address),
-      subkey: "decimals"
+      subkey: "decimals",
     }),
     _getCachedData({
       api,
       targets: targets.map((i: any) => i.address),
-      subkey: "symbol"
+      subkey: "symbol",
     }),
     _getCachedData({
       api,
       targets: targets.map((i: any) => i.primaryUnderlying),
-      subkey: "decimals"
+      subkey: "decimals",
     }),
     _getCachedData({
       api,
       targets: targets.map((i: any) => i.secondaryUnderlying),
-      subkey: "decimals"
+      subkey: "decimals",
     }),
     _getCachedData({
       api,
       targets: targets.map((i: any) => i.primaryUnderlying),
-      subkey: "symbol"
+      subkey: "symbol",
     }),
     _getCachedData({
       api,
       targets: targets.map((i: any) => i.secondaryUnderlying),
-      subkey: "symbol"
-    })
+      subkey: "symbol",
+    }),
   ]);
   return {
     supplies,
@@ -102,14 +102,14 @@ export async function getLPInfo(
     underlyingDecimalAs,
     underlyingDecimalBs,
     symbolAs,
-    symbolBs
+    symbolBs,
   };
 }
 
 export async function listUnknownTokens(
   chain: string,
   unknownTokens: string[],
-  block: number | undefined
+  block: number | undefined,
 ) {
   unknownTokens = unknownTokens.reduce(function (a: string[], b) {
     if (a.indexOf(b) == -1) a.push(b);
@@ -119,10 +119,10 @@ export async function listUnknownTokens(
   const unknownSymbols = await _getCachedData({
     api,
     targets: unknownTokens,
-    subkey: "symbol"
+    subkey: "symbol",
   });
   unknownTokens = unknownTokens.map(
-    (t, i) => `${unknownSymbols[i].output}-${t}`
+    (t, i) => `${unknownSymbols[i].output}-${t}`,
   );
   console.log(chain);
   console.log(unknownTokens);
@@ -148,7 +148,11 @@ async function _getCachedData(params: {
   const cache = cacheObject[cacheKey];
   targets = targets.map((i) => i.toLowerCase());
   const missing = targets.filter((i) => !cache[i]);
-  const decimals = await api.multiCall({ abi, calls: missing });
+  const decimals = await api.multiCall({
+    abi,
+    calls: missing,
+    permitFailure: true,
+  });
   decimals.forEach((o, i) => (cache[missing[i]] = o));
   await setCache(key, chain, cache);
 
@@ -156,7 +160,7 @@ async function _getCachedData(params: {
     return {
       input: { target: i },
       output: cache[i],
-      success: !!cache[i]
+      success: !!cache[i],
     };
   }) as Result[];
 }

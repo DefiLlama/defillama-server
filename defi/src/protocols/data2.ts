@@ -31859,7 +31859,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Optimism"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "polynomial-trade/index.js",
     twitter: "PolynomialFi",

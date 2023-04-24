@@ -27836,11 +27836,11 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "forta",
     cmcId: "20622",
-    category: "Services",
+    category: "Staking",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "forta/index.js",
     twitter: "FortaNetwork",
   },
   {

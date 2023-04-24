@@ -3,7 +3,7 @@ import abi from "./abi.json";
 import axios from "axios";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectData,
 } from "../../utils/database";
 import { MultiCallResults } from "../../utils/sdkInterfaces";
 import { CoinData, Write } from "../../utils/dbInterfaces";
@@ -21,20 +21,20 @@ const manualVaults: { [chain: string]: string[] } = {
     "0x16de59092dae5ccf4a1e6439d611fd0653f0bd01", // yDAI
     "0xd6ad7a6750a7593e092a9b218d66c0a814a3436e", // yUSDC
     "0x83f798e925bcd4017eb265844fddabb448f1707d", // yUSDT
-    "0x73a052500105205d34daf004eab301916da8190f" // yTUSD
+    "0x73a052500105205d34daf004eab301916da8190f", // yTUSD
   ],
   optimism: [
-    '0x22f39d6535df5767f8f57fee3b2f941410773ec4', // yvETH
-    '0x5b977577eb8a480f63e11fc615d6753adb8652ae', // yvWETH
+    "0x22f39d6535df5767f8f57fee3b2f941410773ec4", // yvETH
+    "0x5b977577eb8a480f63e11fc615d6753adb8652ae", // yvWETH
   ],
   arbitrum: [],
-  fantom: []
+  fantom: [],
 };
 const chains: object = {
   ethereum: 1,
   arbitrum: 42161,
   optimism: 42161,
-  fantom: 250
+  fantom: 250,
 };
 interface TokenKeys {
   symbol: string;
@@ -60,20 +60,21 @@ function resolveDecimals(value: number, i: number) {
 async function getPricePerShare(
   vaults: VaultKeys[],
   chain: string,
-  block: number | undefined
+  block: number | undefined,
 ) {
   let pricePerShares: MultiCallResults = await multiCall({
     abi: abi.pricePerShare,
     calls: vaults.map((v: VaultKeys) => ({
-      target: v.address
+      target: v.address,
     })),
     chain: chain as any,
-    block
+    block,
+    permitFailure: true,
   });
   await requery(pricePerShares, chain, abi.getPricePerFullShare, block);
   await requery(pricePerShares, chain, abi.constantPricePerShare, block);
   pricePerShares.output = pricePerShares.output.filter(
-    (v) => v.success == true
+    (v) => v.success == true,
   );
   return pricePerShares;
 }
@@ -81,27 +82,27 @@ async function getUsdValues(
   pricePerShares: MultiCallResults,
   vaults: VaultKeys[],
   coinsData: CoinData[],
-  decimals: any
+  decimals: any,
 ) {
   const failObject = {
     address: "fail",
     price: -1,
     decimal: -1,
-    symbol: "fail"
+    symbol: "fail",
   };
   let usdValues = pricePerShares.output.map((t) => {
     const selectedVault: VaultKeys | undefined = vaults.find(
-      (v: VaultKeys) => v.address.toLowerCase() == t.input.target.toLowerCase()
+      (v: VaultKeys) => v.address.toLowerCase() == t.input.target.toLowerCase(),
     );
     if (selectedVault == null) return failObject;
     const underlying = selectedVault.token.address;
     const coinData: CoinData | undefined = coinsData.find(
-      (c: CoinData) => c.address == underlying.toLowerCase()
+      (c: CoinData) => c.address == underlying.toLowerCase(),
     );
     if (!coinData) return failObject;
     const decimal = decimals.find(
       (c: any) =>
-        selectedVault.address.toLowerCase() == c.input.target.toLowerCase()
+        selectedVault.address.toLowerCase() == c.input.target.toLowerCase(),
     ).output;
 
     if (decimal == null) {
@@ -112,7 +113,7 @@ async function getUsdValues(
       address: t.input.target.toLowerCase(),
       price: (t.output * coinData.price) / 10 ** PPSdecimal,
       decimal,
-      symbol: selectedVault.symbol
+      symbol: selectedVault.symbol,
     };
   });
 
@@ -121,34 +122,34 @@ async function getUsdValues(
 async function pushMoreVaults(
   chain: string,
   vaults: VaultKeys[],
-  block: number | undefined
+  block: number | undefined,
 ) {
   if (manualVaults[chain as keyof typeof manualVaults].length == 0)
     return vaults;
   const [
     { output: tokens },
-    { output: symbols }
+    { output: symbols },
   ]: MultiCallResults[] = await Promise.all([
     multiCall({
       abi: abi.token,
       chain: chain as any,
       calls: manualVaults[chain as keyof typeof manualVaults].map(
         (v: string) => ({
-          target: v
-        })
+          target: v,
+        }),
       ),
-      block
+      block,
     }),
     multiCall({
       abi: "erc20:symbol",
       chain: chain as any,
       calls: manualVaults[chain as keyof typeof manualVaults].map(
         (v: string) => ({
-          target: v
-        })
+          target: v,
+        }),
       ),
-      block
-    })
+      block,
+    }),
   ]);
 
   const vaultInfo: VaultKeys[] = manualVaults[
@@ -157,46 +158,48 @@ async function pushMoreVaults(
     address: v,
     token: {
       address: tokens[i].output,
-      symbol: "NA"
+      symbol: "NA",
     },
     symbol: symbols[i].output,
-    type: "manually added"
+    type: "manually added",
   }));
   vaults.push(...vaultInfo);
 }
 
-const blacklistedTokens = new Set([
-  '0xbD17B1ce622d73bD438b9E658acA5996dc394b0d',
-].map(i => i.toLowerCase()))
+const blacklistedTokens = new Set(
+  ["0xbD17B1ce622d73bD438b9E658acA5996dc394b0d"].map((i) => i.toLowerCase()),
+);
 
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
 
   let vaults: VaultKeys[] = (
     await axios.get(
-      `https://api.yearn.finance/v1/chains/${chains[chain as keyof object]
-      }/vaults/all`
+      `https://api.yearn.finance/v1/chains/${
+        chains[chain as keyof object]
+      }/vaults/all`,
     )
-  ).data.filter((i: any) => !blacklistedTokens.has(i.address.toLowerCase()))
+  ).data.filter((i: any) => !blacklistedTokens.has(i.address.toLowerCase()));
   // 135
   await pushMoreVaults(chain, vaults, block);
 
   const coinsData: CoinData[] = await getTokenAndRedirectData(
     vaults.map((v: VaultKeys) => v.token.address.toLowerCase()),
     chain,
-    timestamp
+    timestamp,
   );
 
   const [pricePerShares] = await Promise.all([
-    getPricePerShare(vaults, chain, block)
+    getPricePerShare(vaults, chain, block),
   ]);
 
   const decimals = await multiCall({
     chain: chain as any,
     calls: vaults.map((v: VaultKeys) => ({
-      target: v.address
+      target: v.address,
     })),
-    abi: "erc20:decimals"
+    abi: "erc20:decimals",
+    permitFailure: true,
   });
   requery(decimals, chain, "erc20:decimals", block);
 
@@ -204,7 +207,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     pricePerShares,
     vaults,
     coinsData,
-    decimals.output
+    decimals.output,
   );
 
   let writes: Write[] = [];
@@ -218,7 +221,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
       v.symbol,
       timestamp,
       "yearnV2",
-      0.9
+      0.9,
     );
   });
   return writes;

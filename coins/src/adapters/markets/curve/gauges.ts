@@ -77,6 +77,7 @@ async function getUnderlyings(
       })),
       abi: abi.lp_token,
       block,
+      permitFailure: true,
     })
   ).output.map((c: any) => c.output);
 }

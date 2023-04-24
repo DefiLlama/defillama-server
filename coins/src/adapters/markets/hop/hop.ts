@@ -3,7 +3,7 @@ import getBlock from "../../utils/block";
 import { Result } from "./../../utils/sdkInterfaces";
 import {
   addToDBWritesList,
-  getTokenAndRedirectData
+  getTokenAndRedirectData,
 } from "../../utils/database";
 import { getTokenInfo } from "../../utils/erc20";
 import { Write } from "../../utils/dbInterfaces";
@@ -18,23 +18,23 @@ async function getTokenAddressMap(
   chain: any,
   block: number | undefined,
   virtualPrices: Result[],
-  addresses: any
+  addresses: any,
 ): Promise<map[]> {
   const underlyingResults: Result[] = (
     await multiCall({
       abi: abi.getToken,
       calls: virtualPrices.map((r: Result) => ({
         target: r.input.target,
-        params: [0]
+        params: [0],
       })),
       block,
-      chain
+      chain,
     })
   ).output;
 
   return underlyingResults.map((u: Result) => ({
     lp: addresses.find((l: any) => u.input.target == l.target).lp.toLowerCase(),
-    underlying: u.output.toLowerCase()
+    underlying: u.output.toLowerCase(),
   }));
 }
 function formWrites(
@@ -43,14 +43,14 @@ function formWrites(
   lpInfos: any,
   virtualPrices: Result[],
   addressMap: map[],
-  underlyingTokenInfos: any[]
+  underlyingTokenInfos: any[],
 ): Write[] {
   const writes: Write[] = [];
   addressMap.map((m: any, i: number) => {
     if (Object.values(m).includes(null) || Number(virtualPrices[i].output) == 0)
       return;
     const underlyingInfo = underlyingTokenInfos.find(
-      (u) => u.address == m.underlying
+      (u) => u.address == m.underlying,
     );
     if (underlyingInfo == null) return;
     const price = (underlyingInfo.price * virtualPrices[i].output) / 10 ** 18;
@@ -64,7 +64,7 @@ function formWrites(
       lpInfos.symbols[i].output,
       timestamp,
       "hop",
-      0.9
+      0.9,
     );
   });
 
@@ -82,7 +82,7 @@ export default async function getTokenPrices(timestamp: number, chain: any) {
     if (contracts != undefined)
       correspondingContracts.push({
         target: contracts.l2SaddleSwap,
-        lp: contracts.l2SaddleLpToken
+        lp: contracts.l2SaddleLpToken,
       });
   });
 
@@ -91,7 +91,8 @@ export default async function getTokenPrices(timestamp: number, chain: any) {
       abi: abi.getVirtualPrice,
       calls: correspondingContracts.map((c) => ({ target: c.target })),
       block,
-      chain
+      chain,
+      permitFailure: true,
     })
   ).output.filter((r: Result) => r.success == true);
 
@@ -99,20 +100,20 @@ export default async function getTokenPrices(timestamp: number, chain: any) {
     chain,
     block,
     virtualPrices,
-    correspondingContracts
+    correspondingContracts,
   );
 
   const [underlyingTokenInfos, lpInfos] = await Promise.all([
     getTokenAndRedirectData(
       addressMap.map((m) => m.underlying),
       chain,
-      timestamp
+      timestamp,
     ),
     getTokenInfo(
       chain,
       addressMap.map((m) => m.lp),
-      block
-    )
+      block,
+    ),
   ]);
 
   return formWrites(
@@ -121,6 +122,6 @@ export default async function getTokenPrices(timestamp: number, chain: any) {
     lpInfos,
     virtualPrices,
     addressMap,
-    underlyingTokenInfos
+    underlyingTokenInfos,
   );
 }

@@ -336,7 +336,7 @@ async function readPreviousValues(
 async function checkMovement(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
   previousItems: DbEntry[],
-  margin: number = 0.1,
+  margin: number = 0.5,
 ): Promise<AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]> {
   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = [];
   const obj: { [PK: string]: any } = {};
@@ -351,9 +351,11 @@ async function checkMovement(
         Math.abs(previousItem.price - d.price) / previousItem.price;
 
       if (percentageChange > margin) {
-        errors += `${d.PK.substring(d.PK.indexOf("#") + 1)} \t ${(
-          percentageChange * 100
-        ).toFixed(3)}% change from $${previousItem.price} to $${d.price}\n`;
+        errors += `${d.adapter} \t ${d.PK.substring(
+          d.PK.indexOf("#") + 1,
+        )} \t ${(percentageChange * 100).toFixed(3)}% change from $${
+          previousItem.price
+        } to $${d.price}\n`;
         return;
       }
     }

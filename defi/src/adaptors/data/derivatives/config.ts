@@ -80,5 +80,9 @@ export default {
     "hyperliquid": {
         "id": "2862",
         "enabled": true
+    },
+    "dydx": {
+        "id": "144",
+        "enabled": true
     }
 } as AdaptorsConfig

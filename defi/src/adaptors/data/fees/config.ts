@@ -748,7 +748,7 @@ export default {
         "id": "1892"
     },
     "covo-v2": {
-        "enabled": false,
+        "enabled": true,
         "id": "2730",
         parentId: "Covo Finance",
         cleanRecordsConfig: {

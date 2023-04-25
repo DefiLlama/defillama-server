@@ -84,5 +84,10 @@ export default {
     "dydx": {
         "id": "144",
         "enabled": true
+    },
+    "level-finance-derivative": {
+        "enabled": true,
+        "id": "2395",
+        "displayName": "Level Finance - Derivatives"
     }
 } as AdaptorsConfig

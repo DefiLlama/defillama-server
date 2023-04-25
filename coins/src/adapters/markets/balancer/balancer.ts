@@ -201,6 +201,7 @@ async function getLpPrices(
       abi: abi.getActualSupply,
       chain,
       block,
+      permitFailure: true,
     })
   ).output;
 

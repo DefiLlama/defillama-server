@@ -42,6 +42,7 @@ export default {
   curve5c: require("./markets/curve"),
   curve5d: require("./markets/curve"),
   curve6: require("./markets/curve"),
+  curve6b: require("./markets/curve"),
   ellipsis: require("./markets/curve"),
   balancer: require("./markets/balancer"),
   hop: require("./markets/hop"),

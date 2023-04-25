@@ -32204,7 +32204,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Binance"],
     oracles: [],
-    forkedFrom: ["Uniswap V3"],
+    forkedFrom: ["Algebra DEX"],
     module: "thena-v3/index.js",
     twitter: "ThenaFi_",
     parentProtocol: "parent#thena",

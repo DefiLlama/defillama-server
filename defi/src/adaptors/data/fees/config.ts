@@ -8,10 +8,10 @@ export default {
         "id": "111",
         parentId: "AAVE",
         protocolsData: {
-           /*  v1: {
-                "id": "1838",
-                enabled: false,
-            }, */
+            /*  v1: {
+                 "id": "1838",
+                 enabled: false,
+             }, */
             v2: {
                 "id": "111",
                 enabled: true,
@@ -779,6 +779,18 @@ export default {
     },
     "hydradex": {
         "enabled": true,
-        "id": "1673"
+        "id": "1673",
+        protocolsData: {
+            v2: {
+                "enabled": true,
+                "id": "1673",
+                displayName: "Hydradex V2"
+            },
+            v3: {
+                "enabled": true,
+                "id": "1673",
+                displayName: "Hydradex V3"
+            }
+        }
     }
 } as AdaptorsConfig

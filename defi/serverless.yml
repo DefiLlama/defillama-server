@@ -650,6 +650,8 @@ functions:
     memorySize: 3000
     events:
       - schedule: cron(01 0 * * ? *)
+    environment:
+      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
   storeGovernance:
     handler: src/storeGovernance.default
     timeout: 900

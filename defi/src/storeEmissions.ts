@@ -7,6 +7,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
 import parentProtocols from "./protocols/parentProtocols";
+import { sendMessage } from "./utils/discord";
 
 async function handler() {
   const protocolsArray: string[] = [];
@@ -41,7 +42,17 @@ async function handler() {
     })
   );
 
-  await storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray), 3600);
+  const errorMessage: string = `emissionsProtocolsList length is 0! This will cause the unlocks UI to be empty.`;
+
+  if (protocolsArray.length == 0) {
+    await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!);
+  } else {
+    await storeR2JSONString(
+      `emissionsProtocolsList`,
+      JSON.stringify(protocolsArray),
+      3600,
+    );
+  }
 }
 
 export default wrapScheduledLambda(handler);

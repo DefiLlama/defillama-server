@@ -73,7 +73,7 @@ async function fetchUniV2MarketsFromSubgraph(
     if (pairs.length == 0) return addresses;
     reservereThreshold = pairs[Math.max(pairs.length - 1, 0)].volumeUSD;
     addresses.push(...pairs.map((p: any) => p.id));
-    sleep(500);
+    sleep(5000);
   }
   return addresses;
 }

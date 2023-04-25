@@ -664,6 +664,14 @@ functions:
       - schedule: cron(0 * * * ? *)
     environment:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+  storeNewActiveUsers:
+    handler: src/storeNewActiveUsers.default
+    timeout: 900
+    memorySize: 1000
+    events:
+      - schedule: cron(0 * * * ? *)
+    environment:
+      ACCOUNTS_DB: ${env:ACCOUNTS_DB}
   activeUsers:
     handler: src/getActiveUsers.default
     timeout: 90

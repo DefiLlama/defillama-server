@@ -24,6 +24,27 @@ export async function storeUsers(start:number, end:number, protocolId:string, ch
   `
 }
 
+export async function storeNewUsers(start:number, end:number, protocolId:string, chain:string, users:number) {
+  const startDayTimestamp = getTimestampAtStartOfDay(start)
+  const otherDailyItems = await sql`SELECT start FROM dailyNewUsers WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId} AND chain = ${chain}`
+  if(otherDailyItems.length === 0){
+      await sql`
+insert into dailyNewUsers (
+  start, endTime, protocolId, chain, users, realStart
+) values (
+  ${startDayTimestamp}, ${end}, ${protocolId}, ${chain}, ${users}, ${start}
+)
+`
+  }
+  await sql`
+  insert into hourlyNewUsers (
+    start, endTime, protocolId, chain, users
+  ) values (
+    ${start}, ${end}, ${protocolId}, ${chain}, ${users}
+  )
+`
+}
+
 export async function storeTxs(start:number, end:number, protocolId:string, chain:string, txs:number) {
   const startDayTimestamp = getTimestampAtStartOfDay(start)
   const otherDailyItems = await sql`SELECT start FROM dailyTxs WHERE start = ${startDayTimestamp} AND protocolId = ${protocolId} AND chain = ${chain}`
@@ -68,6 +89,9 @@ insert into dailyGas (
 
 export async function getProtocolUsers(protocolId:string) {
   return sql`SELECT * FROM dailyUsers WHERE protocolId = ${protocolId} AND chain = 'all'`
+}
+export async function getProtocolNewUsers(protocolId:string) {
+  return sql`SELECT * FROM dailyNewUsers WHERE protocolId = ${protocolId} AND chain = 'all'`
 }
 
 export async function getProtocolTxs(protocolId:string) {

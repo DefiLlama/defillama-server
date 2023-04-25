@@ -1,5 +1,5 @@
 import { cache20MinResponse, wrap, IResponse, errorResponse } from "./utils/shared";
-import { getProtocolGas, getProtocolTxs, getProtocolUsers } from "./users/storeUsers";
+import { getProtocolGas, getProtocolTxs, getProtocolUsers, getProtocolNewUsers } from "./users/storeUsers";
 
 const typeInfo = {
     users: {
@@ -13,6 +13,10 @@ const typeInfo = {
     gas: {
         query: getProtocolGas,
         column: "sum"
+    },
+    newusers: {
+        query: getProtocolNewUsers,
+        column: "users"
     },
 } as {[type:string]: {query:typeof getProtocolUsers, column:string}}
 

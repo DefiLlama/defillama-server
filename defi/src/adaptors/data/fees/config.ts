@@ -776,5 +776,9 @@ export default {
     "merlin": {
         "enabled": true,
         "id": "2849"
+    },
+    "hydradex": {
+        "enabled": true,
+        "id": "1673"
     }
 } as AdaptorsConfig

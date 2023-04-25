@@ -1458,5 +1458,9 @@ export default {
     "tealswap": {
         "enabled": true,
         "id": "2874"
+    },
+    "hydradex": {
+        "enabled": true,
+        "id": "1673"
     }
 } as AdaptorsConfig

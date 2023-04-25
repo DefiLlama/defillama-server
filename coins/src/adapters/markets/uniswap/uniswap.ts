@@ -67,11 +67,12 @@ async function fetchUniV2MarketsFromSubgraph(
           volumeUSD
         }
       }`;
-    const result = (await request(subgraph, lpQuery)).pairs;
-    if (result.length < 1000) i = 20;
-    if (result.length == 0) return addresses;
-    reservereThreshold = result[Math.max(result.length - 1, 0)].volumeUSD;
-    addresses.push(...result.map((p: any) => p.id));
+    const res: any = await request(subgraph, lpQuery);
+    const pairs = res.pairs;
+    if (pairs.length < 1000) i = 20;
+    if (pairs.length == 0) return addresses;
+    reservereThreshold = pairs[Math.max(pairs.length - 1, 0)].volumeUSD;
+    addresses.push(...pairs.map((p: any) => p.id));
     sleep(500);
   }
   return addresses;

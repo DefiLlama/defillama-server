@@ -1,4 +1,4 @@
-const normalizedChainReplacements = {
+export const normalizedChainReplacements = {
   // keys should be full lowercase
   "binance": "bsc",
   "wanchain": "wan",

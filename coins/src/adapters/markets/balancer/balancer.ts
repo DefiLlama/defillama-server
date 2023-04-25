@@ -56,7 +56,8 @@ async function getPoolIds(chain: string, timestamp: number): Promise<string[]> {
         totalLiquidity
       }
     }`;
-    const result: GqlResult[] = (await request(subgraph, lpQuery)).pools;
+    const res: any = await request(subgraph, lpQuery);
+    const result: GqlResult[] = res.pools;
     if (result.length < 1000) i = 20;
     if (result.length == 0) return addresses;
     reservereThreshold = Number(

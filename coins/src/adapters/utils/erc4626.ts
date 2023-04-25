@@ -53,17 +53,16 @@ export async function calculate4626Prices(
         symbol: symbols[i],
       });
     } else {
-      result.push(null)
+      result.push(null);
     }
-    
   }
-  log(result)
+  log(result);
   return result;
 }
 
 const abi = {
   asset: "address:asset",
-  convertToAssets: "function convertToAssets(uint256) view returns (uint256)"
+  convertToAssets: "function convertToAssets(uint256) view returns (uint256)",
 };
 
 async function getTokenData(
@@ -95,10 +94,10 @@ async function getTokenData(
     ratiosPromise,
   ]);
   return {
-    sharesDecimals: sharesDecimals.output.map(({ output }) => output),
-    assets: assets.output.map(({ output }) => output),
-    symbols: symbols.output.map(({ output }) => output),
-    ratios: ratios.output.map(({ output }) => output),
+    sharesDecimals: sharesDecimals.output.map(({ output }: any) => output),
+    assets: assets.output.map(({ output }: any) => output),
+    symbols: symbols.output.map(({ output }: any) => output),
+    ratios: ratios.output.map(({ output }: any) => output),
   };
 }
 

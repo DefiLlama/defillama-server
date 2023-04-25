@@ -311,12 +311,11 @@ export async function batchWriteWithAlerts(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
   failOnError: boolean,
 ): Promise<void> {
-  // const previousItems: DbEntry[] = await readPreviousValues(items);
-  const filteredItems = items;
-  // const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
-  //   items,
-  //   previousItems,
-  // );
+  const previousItems: DbEntry[] = await readPreviousValues(items);
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
+    items,
+    previousItems,
+  );
   await batchWrite(filteredItems, failOnError);
 }
 async function readPreviousValues(

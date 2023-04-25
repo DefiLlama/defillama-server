@@ -1,5 +1,6 @@
 import { addressList } from "../../../dimension-adapters/users/list";
 import { storeChainGas } from "./queries/gas";
+import { storeAllNewUsers } from "./queries/newUsers";
 import { storeChainTxs } from "./queries/txs";
 import { storeAllUsers, storeChainUsers } from "./queries/users";
 import postgres from "postgres";
@@ -24,14 +25,16 @@ async function main() {
         sql`DELETE FROM hourlyTxs WHERE protocolId = ${protocol.id};`,
         sql`DELETE FROM dailyGas WHERE protocolId = ${protocol.id};`,
         sql`DELETE FROM hourlyGas WHERE protocolId = ${protocol.id};`,
-
+        sql`DELETE FROM dailyNewUsers WHERE protocolId = ${protocol.id};`,
+        sql`DELETE FROM hourlyNewUsers WHERE protocolId = ${protocol.id};`,
     ])
     console.log(`Refilling data`)
     await Promise.all([
-        storeAllUsers(protocol),
-        storeChainGas(protocol),
-        storeChainUsers(protocol),
-        storeChainTxs(protocol)
+        storeAllUsers(protocol).then(()=>console.log("all users refilled")),
+        storeChainGas(protocol).then(()=>console.log("gas refilled")),
+        storeChainUsers(protocol).then(()=>console.log("chain users refilled")),
+        storeChainTxs(protocol).then(()=>console.log("txs refilled")),
+        storeAllNewUsers(protocol).then(()=>console.log("new users refilled")),
     ])
     console.log(`Finished!`)
 }

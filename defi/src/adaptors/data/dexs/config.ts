@@ -1466,10 +1466,12 @@ export default {
             v2: {
                 "enabled": true,
                 "id": "1673",
+                displayName: "Hydradex V2"
             },
             v3: {
                 "enabled": true,
                 "id": "1673",
+                displayName: "Hydradex V3"
             }
         }
     }

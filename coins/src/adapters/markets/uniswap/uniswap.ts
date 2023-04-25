@@ -73,7 +73,7 @@ async function fetchUniV2MarketsFromSubgraph(
     if (pairs.length == 0) return addresses;
     reservereThreshold = pairs[Math.max(pairs.length - 1, 0)].volumeUSD;
     addresses.push(...pairs.map((p: any) => p.id));
-    sleep(500);
+    sleep(5000);
   }
   return addresses;
 }
@@ -311,14 +311,13 @@ async function getConfidenceScores(
   tokenInfos: TokenInfos,
   chain: string,
 ) {
-  const usdSwapSize: number = 5 * 10 ** 5;
+  const usdSwapSize: number = 10 ** 5;
   const ratio: number = 10000;
   const calls = lpsWithUnknown
     .map((l: any, i: number) => {
       const j = priceableLPs.indexOf(l);
       const swapSize =
-        10 ** tokenInfos.underlyingDecimalBs[j].output /
-        tokenValues[i].toFixed();
+        10 ** tokenInfos.underlyingDecimalBs[j].output / tokenValues[i];
       if (isNaN(swapSize) || !isFinite(swapSize)) return [];
 
       const qty: BigNumber | undefined = translateQty(

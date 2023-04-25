@@ -494,7 +494,7 @@ async function unknownTokens(
   timestamp: number,
   unknownPoolList: any[],
 ) {
-  const usdSwapSize = 5 * 10 ** 5;
+  const usdSwapSize = 10 ** 5;
   const knownTokenIndexes: TokenIndexes[] = unknownPoolList.map((p: any) => {
     const unknownTokens = p.poolTokens.filter((t: any) => t == undefined);
     const knownTokens = p.poolTokens.filter((t: any) => t != undefined);

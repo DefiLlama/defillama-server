@@ -78,3 +78,22 @@ export async function getCompoundOverview() {
 export async function setCompoundOverview(cache: any) {
   return setCache('overview', 'compound', cache)
 }
+
+export async function getTally(project: string) {
+  return getCache('tally', project)
+}
+
+export async function setTally(project: string, cache: any) {
+  console.log('writing to tally cache', project, cache)
+  // return setCache('tally', project, cache)
+}
+
+
+export async function getTallyOverview() {
+  return getCache('overview', 'tally')
+}
+
+export async function setTallyOverview(cache: any) {
+  console.log('writing to tally overview', cache)
+  // return setCache('overview', 'tally', cache)
+}

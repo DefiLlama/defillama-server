@@ -87,3 +87,77 @@ export const proposalQuery = `query Proposals($ids: [String]!, $skip: Int!, $sta
     votes
   }
 }`
+
+
+export const proposalQueryTally = `query Governers (
+  $ids: [AccountID!]
+) {
+  governors (
+    ids:$ids
+    includeInactive:false
+    sort: {
+      field:TOTAL_PROPOSALS
+      order:DESC
+    }
+    pagination: {
+      limit:10
+      
+    }
+  ) {
+    id
+    type
+    tokens {
+      id
+      type
+      name
+      symbol
+      supply
+      decimals
+      
+    }
+    proposals {
+      
+    id
+    title
+    description
+    start {
+      timestamp
+    }
+    end {
+      timestamp
+    }
+    eta
+    proposer {
+      id
+      address
+    }
+    voteStats {
+      support
+      weight
+      votes
+      percent
+    }
+    statusChanges {
+      type
+      block {
+        id
+        number
+        timestamp
+      }
+    }
+    }
+    proposalStats {
+      total
+      active
+      failed
+      passed
+    }
+    parameters {
+      __typename
+    }
+    quorum
+    name
+    slug
+    __typename
+  }
+}`

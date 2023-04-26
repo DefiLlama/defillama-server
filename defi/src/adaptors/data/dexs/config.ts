@@ -1474,5 +1474,9 @@ export default {
                 displayName: "Hydradex V3"
             }
         }
+    },
+    "pheasantswap": {
+        "enabled": true,
+        "id": "2896"
     }
 } as AdaptorsConfig

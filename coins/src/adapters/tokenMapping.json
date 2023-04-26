@@ -7,6 +7,13 @@
       "to": "coingecko#metadium"
     }
   },
+  "rei": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "REI",
+      "to": "coingecko#rei-network"
+    }
+  },
   "oas": {
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",

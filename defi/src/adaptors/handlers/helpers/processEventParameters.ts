@@ -18,7 +18,7 @@ export default (event: AWSLambda.APIGatewayEvent) => {
     const chainFilterRaw = (pathChain ? decodeURI(pathChain) : pathChain)?.toLowerCase()
     const chainFilter = Object.keys(normalizeDimensionChainsMap).find(chainKey =>
         chainFilterRaw === sluggifyString(chainKey.toLowerCase())
-    ) ?? "chainFilterRaw"
+    ) ?? chainFilterRaw
     if (!adaptorType) throw new Error("Missing parameter")
     if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
     if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")

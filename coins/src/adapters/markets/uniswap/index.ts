@@ -26,8 +26,15 @@ export function sushiswap2(timestamp: number = 0) {
   console.log("starting sushiswap2");
   const factoryAddress = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
   return Promise.all([
-    getTokenPrices("polygon", factoryAddress, undefined, undefined, timestamp),
     getTokenPrices("arbitrum", factoryAddress, undefined, undefined, timestamp),
+    // getTokenPrices("harmony", factoryAddress, undefined, undefined, timestamp)
+  ]);
+}
+export function sushiswap3(timestamp: number = 0) {
+  console.log("starting sushiswap3");
+  const factoryAddress = "0xc35DADB65012eC5796536bD9864eD8773aBc74C4";
+  return Promise.all([
+    getTokenPrices("polygon", factoryAddress, undefined, undefined, timestamp),
     getTokenPrices("avax", factoryAddress, undefined, undefined, timestamp),
     getTokenPrices(
       "moonriver",

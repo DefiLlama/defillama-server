@@ -82,6 +82,14 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "bsc",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x4b4237b385bd6eaf3ef6b20dbcaed4158a688af7",
+      "0xD86c0B9b686f78a7A5C3780f03e700dbbAd40e01",
+      "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      false,
+      "ethereum",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

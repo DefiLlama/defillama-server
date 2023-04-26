@@ -32839,5 +32839,26 @@ const data2: Protocol[] = [
     audit_links: ["https://skynet.certik.com/projects/snark-launch"],
     listedAt: 1682451487
   },
+  {
+    id: "2894",
+    name: "SuperLauncher",
+    address: "era:0xF6D9a093A1C69a152d87e269A7d909E9D76B1815",
+    symbol: "LAUNCH",
+    url: "https://superlauncher.io/",
+    description: "SuperLauncher is an investment DAO facilitating mass participation in early-stage & listed ventures; decentralized capital management across 20+ EVMs. Headquartered on zkSync Era.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/superlauncher.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "superlauncher-dao",
+    cmcId: "superlauncher",
+    category: "Launchpad",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: [],
+    module: "superlauncher/index.js",
+    twitter: "Super_Launcher",
+    listedAt: 1682494139
+  }
 ]
 export default data2;

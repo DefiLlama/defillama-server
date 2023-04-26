@@ -32970,5 +32970,26 @@ const data2: Protocol[] = [
     twitter: "vertex_protocol",
     listedAt: 1682519828
   },
+  {
+    id: "2900",
+    name: "Wasabi",
+    address: null,
+    symbol: "-",
+    url: "https://www.wasabi.xyz",
+    description: "The decentralized NFT options protocol. Capitalize on market swings, hedge against downturns and earn premiums on your high-value JPEGs.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/wasabi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "wasabi/index.js",
+    twitter: "wasabi_protocol",
+    listedAt: 1682542892
+  },
 ]
 export default data2;

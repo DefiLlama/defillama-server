@@ -435,6 +435,7 @@ async function unknownPools(
           });
           continue;
         }
+
         const isJunk = poolTokens.find(
           (t: any) =>
             t.price == null ||
@@ -442,13 +443,13 @@ async function unknownPools(
             t.balance == null ||
             t.balance == 0,
         );
-        if (isJunk != null) {
-          continue;
-        }
+        if (isJunk != null) continue;
+
         const poolValue: number = poolTokens.reduce(
           (p, c) => p + c.balance * c.price,
           0,
         );
+        if (poolValue < 400) continue;
 
         const price =
           (poolValue * 10 ** tokenInfo.decimals[0].output) /
@@ -458,9 +459,8 @@ async function unknownPools(
           price == 0 ||
           price == Infinity ||
           tokenInfo.supplies[0].output == 0
-        ) {
+        )
           continue;
-        }
 
         const confidence =
           poolTokens

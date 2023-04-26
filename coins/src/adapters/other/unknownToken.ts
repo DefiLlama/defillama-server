@@ -12,7 +12,7 @@ export default async function getTokenPrices(
   unknownToken: string,
   knownToken: string,
   knownTokenIsGas: boolean,
-  chain: any
+  chain: any,
 ) {
   const writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
@@ -21,33 +21,48 @@ export default async function getTokenPrices(
     gasBalance,
     unknownBalance,
     knownBalance,
+    unknownDecimals,
+    knownDecimals,
     knownInfo,
-    unknownInfo
+    unknownInfo,
   ] = await Promise.all([
     getBalance({
       target: pool,
       block,
-      chain
+      chain,
     }),
     call({
       target: unknownToken,
       params: pool,
       abi: "erc20:balanceOf",
       block,
-      chain
+      chain,
     }),
     call({
       target: knownToken,
       params: pool,
       abi: "erc20:balanceOf",
       block,
-      chain
+      chain,
+    }),
+    call({
+      target: unknownToken,
+      abi: "erc20:decimals",
+      block,
+      chain,
+    }),
+    call({
+      target: knownToken,
+      abi: "erc20:decimals",
+      block,
+      chain,
     }),
     getTokenAndRedirectData([knownToken], chain, timestamp),
-    getTokenInfo(chain, [unknownToken], block)
+    getTokenInfo(chain, [unknownToken], block),
   ]);
   const price: number =
-    (parseInt(knownTokenIsGas ? gasBalance.output : knownBalance.output) /
+    ((parseInt(knownTokenIsGas ? gasBalance.output : knownBalance.output) *
+      10 ** (unknownDecimals.output - knownDecimals.output)) /
       unknownBalance.output) *
     knownInfo[0].price;
   const symbol =
@@ -64,7 +79,7 @@ export default async function getTokenPrices(
     symbol,
     timestamp,
     "unknownTokenRequested",
-    0.5
+    0.51,
   );
 
   return writes;

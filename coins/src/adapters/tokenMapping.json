@@ -101,7 +101,7 @@
       "to": "coingecko#wrapped-reflect"
     }
   },
-  "umee": {
+  "ibc": {
     "0B1D3A663E6D41C7B1CFC78DB41C829A3B8329D396B47737445AFF5E0E9DA125": {
       "name": "Akash",
       "decimals": "18",
@@ -125,6 +125,11 @@
       "decimals": "18",
       "symbol": "Luna",
       "to": "coingecko#terra-luna-2"
+    },
+    "A05909C8EEE180BAECC46D91CB29229204C35100F3BD8F0C1F6FF5D72A741FB6": {
+      "decimals": "6",
+      "symbol": "STKATOM",
+      "to": "coingecko#stkatom"
     }
   }
 }

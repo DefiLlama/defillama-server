@@ -62,6 +62,7 @@ export default {
   glacier: require("./markets/uniswap"),
   sushiswap1: require("./markets/uniswap"),
   sushiswap2: require("./markets/uniswap"),
+  sushiswap3: require("./markets/uniswap"),
   traderJoe: require("./markets/uniswap"),
   // vvsFinance: require("./markets/uniswap"),
   quickswap: require("./markets/uniswap"),

@@ -124,7 +124,7 @@ export const formatChain = (chain: string) => {
     return getChainDisplayName(c, true)
 }
 
-export const normalizeDimensionChainsMap = {
+const normalizeDimensionChainsMap = {
     ...normalizedChainReplacements,
     'avalanche': CHAIN.AVAX,
     'terra classic': CHAIN.TERRA,

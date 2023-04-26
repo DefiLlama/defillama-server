@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
+import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, IChartData, IChartDataByDex } from "../../utils/volumeCalcs";
 import { formatChain } from "../../utils/getAllChainsFromAdaptors";
@@ -13,7 +13,6 @@ import { delay } from "../triggerStoreAdaptorData";
 import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
 import { cacheResponseOnR2, getCachedResponseOnR2 } from "../../utils/storeR2Response";
 import { CATEGORIES } from "../../data/helpers/categories";
-import processEventParameters from "../helpers/processEventParameters";
 
 export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
@@ -148,16 +147,16 @@ export const getOverviewCachedResponseKey = (
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
     console.info("Event received", JSON.stringify(event))
-    const {
-        adaptorType,
-        excludeTotalDataChart,
-        excludeTotalDataChartBreakdown,
-        category,
-        fullChart,
-        dataType,
-        chainFilter
-    } = processEventParameters(event)
-
+    const pathChain = event.pathParameters?.chain?.toLowerCase()
+    const adaptorType = event.pathParameters?.type?.toLowerCase() as AdapterType
+    const excludeTotalDataChart = event.queryStringParameters?.excludeTotalDataChart?.toLowerCase() === 'true'
+    const excludeTotalDataChartBreakdown = event.queryStringParameters?.excludeTotalDataChartBreakdown?.toLowerCase() === 'true'
+    const rawDataType = event.queryStringParameters?.dataType
+    const rawCategory = event.queryStringParameters?.category
+    const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
+    const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
+    const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
+    const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
     console.info("Parameters parsing OK")
 
     if (!adaptorType) throw new Error("Missing parameter")

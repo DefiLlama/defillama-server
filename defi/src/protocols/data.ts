@@ -326,6 +326,7 @@ const data: Protocol[] = [
     module: "instadapp.js",
     twitter: "Instadapp",
     audit_links: ["https://github.com/Instadapp/dsa-contracts/blob/master/audits/v1_PeckShield_Mar_2020.pdf"],
+    treasury: "instadapp.js",
     governanceID: ["snapshot:instadapp-gov.eth"]
   },
   {
@@ -4402,6 +4403,7 @@ const data: Protocol[] = [
     twitter: "_Dfyn",
     oracles: ["Chainlink", "DIA"],
     forkedFrom: ["Uniswap V2"],
+    treasury: "dfyn.js",
     governanceID: ["snapshot:dfyn.eth"]
   },
   {
@@ -8937,6 +8939,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "thales/index.js",
     twitter: "thalesmarket",
+    treasury: "thales.js",
     audit_links: ["https://iosiro.com/audits/thales-airdrop-and-staking-smart-contract-audit"],
   },
   {
@@ -26764,6 +26767,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kromatika/index.js",
     twitter: "KromatikaFi",
     language: "Solidity",
+    treasury: "kromatika.js",
     listedAt: 1644597183,
   },
   {

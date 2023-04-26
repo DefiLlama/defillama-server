@@ -32979,7 +32979,7 @@ const data2: Protocol[] = [
     description: "The decentralized NFT options protocol. Capitalize on market swings, hedge against downturns and earn premiums on your high-value JPEGs.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/wasabi.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -32989,6 +32989,10 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "wasabi/index.js",
     twitter: "wasabi_protocol",
+    audit_links: [
+                   "https://dkoda-public.s3.amazonaws.com/Narya.ai_Wasabi_Smart_Contract_Audit.pdf",
+                   "https://dkoda-public.s3.amazonaws.com/Zellic_Wasabi_Smart_Contract_Audit.pdf"
+                 ],
     listedAt: 1682542892
   },
 ]

@@ -61,6 +61,34 @@ export const isDisabled = (adaptor: Adapter) => {
         throw new Error(`Invalid adapter`)
 }
 
+export const getChainByProtocolVersion = (moduleAdapterName: string, moduleAdapter: Adapter, chainFilter?: string, filter: boolean = true): IJSON<string[]> => {
+    if ("adapter" in moduleAdapter) {
+        return {
+            [moduleAdapterName]: Object.keys(moduleAdapter.adapter).filter(c => (!filter || c !== DISABLED_ADAPTER_KEY))
+        }
+    } else if ("breakdown" in moduleAdapter) {
+        const chainsAcc = {} as IJSON<string[]>
+        for (const [protVersion, brokenDownDex] of Object.entries(moduleAdapter.breakdown)) {
+            const chains = Object.keys(brokenDownDex).filter(c => (!filter || c !== DISABLED_ADAPTER_KEY))
+            for (const c of chains) {
+                const chain = c
+                if (chainFilter && chain !== formatChainKey(chainFilter)) continue
+                if (chainsAcc[protVersion]) {
+                    if (!chainsAcc[protVersion].includes(chain)) chainsAcc[protVersion].push(chain)
+                }
+                else chainsAcc[protVersion] = [chain]
+            }
+        }
+        return chainsAcc
+    } else throw new Error("Invalid adapter")
+}
+
+/* export const isDisabledByProtocolVersion = (moduleAdapterName: string, moduleAdapter: Adapter, chainFilter?: string, protV?: string) => {
+    const chs = getChainByProtocolVersion(moduleAdapterName, moduleAdapter, chainFilter, false)
+    if (!chs || !protV) return false
+    return chs[protV] ? chs[protV].includes(DISABLED_ADAPTER_KEY) : true
+} */
+
 export const getMethodologyData = (displayName: string, adaptorKey: string, moduleAdapter: Adapter, category: string): ProtocolAdaptor['methodology'] | undefined => {
     if (
         'adapter' in moduleAdapter

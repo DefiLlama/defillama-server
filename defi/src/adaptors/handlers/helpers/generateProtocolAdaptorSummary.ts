@@ -151,7 +151,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             totalAllTime: totalRecord ? sumAllVolumes(await convertDataToUSD(totalRecord.data, totalRecord.timestamp)) : null,
             breakdown24h: (adapter.disabled || !lastDaysExtrapolation) ? null : stats.breakdown24h,
             config: getConfigByType(adaptorType, adapter.module),
-            chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains,
+            chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
             methodologyURL: adapter.methodologyURL,
             methodology: adapter.methodology,
@@ -196,7 +196,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             change_1m: null,
             change_7dover7d: null,
             change_30dover30d: null,
-            chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains,
+            chains: chainFilter ? [formatChain(chainFilter)] : adapter.chains.map(formatChain),
             spikes: undefined,
         }
     }

@@ -32955,7 +32955,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://vertexprotocol.com",
-    description: "Turbo-charged trading engine to outperform the competition. No MEV. Built on Arbitrum - Optimized for Everyone.",
+    description: "A vertically-integrated DEX on Arbitrum featuring spot, perpetual, and integrated money markets. Universal cross-margin with lightning-fast performance. Take back control.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/vertex-protocol.jpg`,
     audits: "0",

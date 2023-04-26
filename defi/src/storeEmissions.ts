@@ -11,10 +11,12 @@ import { sendMessage } from "./utils/discord";
 
 async function handler() {
   const protocolsArray: string[] = [];
-
+  // https://github.com/apollographql/apollo-client/issues/4843#issuecomment-495717720
+  // https://github.com/microsoft/TypeScript/pull/38808
   await Promise.all(
-    Object.entries(adapters).map(async ([protocolName, rawAdapter]: [string, any]) => {
+    Object.entries(adapters).map(async ([protocolName, adapterGetter]: [string, any]) => {
       try {
+        let rawAdapter = adapterGetter
         const adapter = typeof rawAdapter.default === "function" ? { default: await rawAdapter.default() } : rawAdapter;
         const { rawSections, startTime, endTime, metadata } = await createRawSections(adapter);
 

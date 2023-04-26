@@ -32949,5 +32949,26 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-LionDEX-v1.0.pdf"],
     listedAt: 1682516346
   },
+  {
+    id: "2899",
+    name: "Vertex Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://vertexprotocol.com",
+    description: "Turbo-charged trading engine to outperform the competition. No MEV. Built on Arbitrum - Optimized for Everyone.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/vertex-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "vertex/index.js",
+    twitter: "vertex_protocol",
+    listedAt: 1682519828
+  },
 ]
 export default data2;

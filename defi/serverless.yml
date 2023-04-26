@@ -400,6 +400,13 @@ functions:
       - schedule: cron(43 * * * ? *)
     environment:
       CG_KEY: ${env:CG_KEY}
+  storeFullTokenlist:
+    handler: src/storeFullTokenlist.default
+    timeout: 60
+    events:
+      - schedule: cron(30 * * * ? *)
+    environment:
+      tableName: prod-coins-table
   yieldsConfig:
     handler: src/getYieldsConfig.default
     timeout: 30

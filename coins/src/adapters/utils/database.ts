@@ -312,10 +312,8 @@ export async function batchWriteWithAlerts(
   failOnError: boolean,
 ): Promise<void> {
   const previousItems: DbEntry[] = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
-    items,
-    previousItems,
-  );
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+    await checkMovement(items, previousItems);
   await batchWrite(filteredItems, failOnError);
 }
 async function readPreviousValues(
@@ -338,7 +336,8 @@ async function checkMovement(
   previousItems: DbEntry[],
   margin: number = 0.5,
 ): Promise<AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]> {
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = [];
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
+    [];
   const obj: { [PK: string]: any } = {};
   let errors: string = "";
   previousItems.map((i: any) => (obj[i.PK] = i));
@@ -348,7 +347,7 @@ async function checkMovement(
     const previousItem = obj[d.PK];
     if (previousItem) {
       const percentageChange: number =
-        Math.abs(previousItem.price - d.price) / previousItem.price;
+        (d.price - previousItem.price) / previousItem.price;
 
       if (percentageChange > margin) {
         errors += `${d.adapter} \t ${d.PK.substring(

@@ -138,5 +138,19 @@
       "symbol": "STKATOM",
       "to": "coingecko#stkatom"
     }
+  },
+  "kujira": {
+    "0306D6B66EAA2EDBB7EAD23C0EC9DDFC69BB43E80B398035E90FBCFEF3FD1A87": {
+      "name": "Stride Staked Atom",
+      "decimals": "6",
+      "symbol": "STATOM",
+      "to": "coingecko#stride-staked-atom"
+    },
+    "F97BDCE220CCB52139C73066E36C45EC7EDCEEF1DAFF891A34F4FBA195A2E6E8": {
+      "name": "Stride Staked Osmo",
+      "decimals": "6",
+      "symbol": "STOSMO",
+      "to": "coingecko#stride-staked-osmo"
+    }
   }
 }

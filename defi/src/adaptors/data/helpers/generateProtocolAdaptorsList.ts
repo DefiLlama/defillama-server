@@ -1,6 +1,6 @@
 import data, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
-import { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
+import { formatChain, getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { getChainDisplayName } from "../../../utils/normalizeChain"
@@ -104,7 +104,7 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
                         ...parentConfig,
                         ...configObj,
                     },
-                    chains: getChainsFromBaseAdapter(baseModuleObject),
+                    chains: getChainsFromBaseAdapter(baseModuleObject).map(formatChain),
                     disabled: configObj.disabled ?? false,
                     displayName: configObj.displayName ?? dexFoundInProtocols.name,
                     protocolType: adapterObj.module.default?.protocolType,

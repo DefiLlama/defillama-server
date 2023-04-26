@@ -1429,6 +1429,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ThenaFi_",
   },
+  {
+    id: "parent#smbswap",
+    name: "SMBSwap",
+    url: "https://smbswap.finance",
+    description: "SMBSwap is a fast-growing, decentralized platform",
+    logo: `${baseIconsUrl}/smbswap.jpeg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "smbswap",
+  },
 ];
 
 export default parentProtocols;

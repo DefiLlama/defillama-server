@@ -1,4 +1,5 @@
 import { updateSnapshots, } from './snapshot'
+import { updateTallys, } from './tally'
 import { updateCompounds, } from './compound'
 
 main().then(() => {
@@ -7,6 +8,9 @@ main().then(() => {
 })
 
 async function main() {
-  await updateSnapshots()
-  await updateCompounds()
+  await Promise.all([
+    updateTallys(),
+    updateSnapshots(),
+    updateCompounds(),
+  ])
 }

@@ -18,7 +18,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "7278",
     treasury: "aave.js",
     twitter: "AaveAave",
-    governanceID: ["snapshot:aave.eth"],
+    governanceID: ["snapshot:aave.eth", 'eip155:1:0xEC568fffba86c094cf06b22134B23074DFE2252c'],
     wrongLiquidity: true, // missing balancer v1 pool
   },
   {
@@ -243,7 +243,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "compoundfinance",
     governanceID: [
       "snapshot:comp-vote.eth", 
-      "compound:ethereum:0xc0da02939e1441f497fd74f78ce7decb17b66529",
+      "eip155:1:0xc0Da02939E1441F497fd74F78cE7Decb17B66529",
       "compound:ethereum:0xc0da01a04c3f3e0be433606045bb7017a7323e38",
       "compound:ethereum:0x336505ec1bcc1a020eede459f57581725d23465a",
       //"compound:ethereum:0x542ed9b1b50dc686e88404c73c062faa39568304" //GridZone.io ZONE
@@ -470,7 +470,7 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "uniswap.js",
     governanceID: [
       "snapshot:uniswap", 
-      "compound:ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3",
+      'eip155:1:0x408ED6354d4973f66138C91495F2f2FCbd8724C3',
       "compound:ethereum:0x5e4be8bc9637f0eaa1a755019e06a68ce081d58f"
     ]
   },
@@ -769,7 +769,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8720",
     chains: [],
     treasury: "inverse.js",
-    governanceID: ["compound:ethereum:0x35d9f4953748b318f18c30634ba299b237eedfff"],
+    governanceID: ['eip155:1:0x35d9f4953748b318f18c30634bA299b237eeDfff' ],
     twitter: "InverseFinance",
     stablecoins: ["dola"],
   },

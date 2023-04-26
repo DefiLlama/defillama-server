@@ -449,7 +449,7 @@ async function unknownPools(
           (p, c) => p + c.balance * c.price,
           0,
         );
-        if (poolValue < 100) continue;
+        if (poolValue < 400) continue;
 
         const price =
           (poolValue * 10 ** tokenInfo.decimals[0].output) /

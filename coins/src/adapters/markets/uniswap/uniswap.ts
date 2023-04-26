@@ -191,7 +191,7 @@ async function lps(
     const value =
       (coinData.price * 2 * l.primaryBalance) /
       10 ** tokenInfos.underlyingDecimalAs[i].output;
-    if (value < 100) return;
+    if (value < 400) return;
     const lpPrice: number = value / supply;
     if (isNaN(lpPrice)) return;
 

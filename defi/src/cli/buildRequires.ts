@@ -102,5 +102,5 @@ export interface IImportObj {
 const emission_keys = getDirectories(`./emissions-adapters/protocols`)
 writeFileSync(`./src/utils/imports/emissions_adapters.ts`,
 `export default {
-    ${emission_keys.map(k=>`"${removeDotTs(k)}":require("@defillama/emissions-adapters/protocols/${k}"),`).join('\n')}
+    ${emission_keys.map(k=>`"${removeDotTs(k)}":"@defillama/emissions-adapters/protocols/${k}",`).join('\n')}
 }`)

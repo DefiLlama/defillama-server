@@ -12,11 +12,11 @@ import { sendMessage } from "./utils/discord";
 async function handler() {
   const protocolsArray: string[] = [];
   // https://github.com/apollographql/apollo-client/issues/4843#issuecomment-495717720
-  // https://github.com/microsoft/TypeScript/pull/38808
+  // https://stackoverflow.com/questions/53162001/typeerror-during-jests-spyon-cannot-set-property-getrequest-of-object-which
   await Promise.all(
-    Object.entries(adapters).map(async ([protocolName, adapterGetter]: [string, any]) => {
+    Object.entries(adapters).map(async ([protocolName, adapterPath]: [string, any]) => {
       try {
-        let rawAdapter = adapterGetter
+        const rawAdapter = require(adapterPath)
         const adapter = typeof rawAdapter.default === "function" ? { default: await rawAdapter.default() } : rawAdapter;
         const { rawSections, startTime, endTime, metadata } = await createRawSections(adapter);
 
@@ -44,7 +44,7 @@ async function handler() {
     })
   );
 
-  const errorMessage: string = `emissionsProtocolsList length is 0! This will cause the unlocks UI to be empty.`;
+  const errorMessage: string = `Tried to write emissionsProtocolsList as an empty array, Unlocks page needs updating manually.`;
 
   if (protocolsArray.length == 0) {
     await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!);

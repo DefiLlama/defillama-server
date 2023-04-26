@@ -32926,5 +32926,28 @@ const data2: Protocol[] = [
     audit_links: ["https://super-launcher.gitbook.io/superlauncher-v4/guides/important-stuff/audits"],
     listedAt: 1682515759
   },
+  {
+    id: "2898",
+    name: "LionDEX",
+    address: "arbitrum:0x8ebb85d53e6955e557b7c53acde1d42fd68561ec",
+    symbol: "LION",
+    url: "https://liondex.com",
+    description: "LionDEX is a decentralized crypto derivatives trading protocol. Supported Zero-slippage perpetual futures trading With the innovation of PvP-AMM trading protocol, traders can enjoy extra market liquidity incentives.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/liondex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "liondex",
+    cmcId: "24330",
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    module: "liondex/index.js",
+    twitter: "LionDEXOfficial",
+    treasury: "liondex.js",
+    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-LionDEX-v1.0.pdf"],
+    listedAt: 1682516346
+  },
 ]
 export default data2;

@@ -404,7 +404,7 @@ functions:
     handler: src/storeFullTokenlist.default
     timeout: 60
     events:
-      - schedule: cron(30 * * * ? *)
+      - schedule: cron(30 0,12 * * ? *)
     environment:
       tableName: prod-coins-table
   yieldsConfig:

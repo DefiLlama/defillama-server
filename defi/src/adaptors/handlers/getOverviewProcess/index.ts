@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, IChartData, IChartDataByDex } from "../../utils/volumeCalcs";
-import { formatChain } from "../../utils/getAllChainsFromAdaptors";
+import { formatChain, normalizeDimensionChainsMap } from "../../utils/getAllChainsFromAdaptors";
 import { sendDiscordAlert } from "../../utils/notify";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -13,6 +13,7 @@ import { delay } from "../triggerStoreAdaptorData";
 import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
 import { cacheResponseOnR2, getCachedResponseOnR2 } from "../../utils/storeR2Response";
 import { CATEGORIES } from "../../data/helpers/categories";
+import { sluggifyString } from "../../../utils/sluggify";
 
 export interface IGeneralStats extends ExtraTypes {
     total24h: number | null;
@@ -156,7 +157,10 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
     const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
-    const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
+    const chainFilterRaw = (pathChain ? decodeURI(pathChain) : pathChain)?.toLowerCase()
+    const chainFilter = Object.keys(normalizeDimensionChainsMap).find(chainKey =>
+        chainFilterRaw === sluggifyString(chainKey.toLowerCase())
+    ) ?? "chainFilterRaw"
     console.info("Parameters parsing OK")
 
     if (!adaptorType) throw new Error("Missing parameter")

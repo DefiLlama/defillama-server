@@ -6,6 +6,8 @@ import invokeLambda from "../../../utils/shared/invokeLambda";
 import { AdaptorRecordType, AdaptorRecordTypeMap } from "../../db-utils/adaptor-record";
 import { CATEGORIES } from "../../data/helpers/categories";
 import { getTimestampAtStartOfDay } from "@defillama/dimension-adapters/utils/date";
+import { normalizeDimensionChainsMap } from "../../utils/getAllChainsFromAdaptors";
+import { sluggifyString } from "../../../utils/sluggify";
 
 // -> /overview/{type}/{chain}
 export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: boolean = false): Promise<IResponse> => {
@@ -18,7 +20,10 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
     const category = (rawCategory === 'dexs' ? 'dexes' : rawCategory) as CATEGORIES
     const fullChart = event.queryStringParameters?.fullChart?.toLowerCase() === 'true'
     const dataType = rawDataType ? AdaptorRecordTypeMap[rawDataType] : DEFAULT_CHART_BY_ADAPTOR_TYPE[adaptorType]
-    const chainFilter = pathChain ? decodeURI(pathChain) : pathChain
+    const chainFilterRaw = (pathChain ? decodeURI(pathChain) : pathChain)?.toLowerCase()
+    const chainFilter = Object.keys(normalizeDimensionChainsMap).find(chainKey =>
+        chainFilterRaw === sluggifyString(chainKey.toLowerCase())
+    ) ?? "chainFilterRaw"
     if (!adaptorType) throw new Error("Missing parameter")
     if (!Object.values(AdapterType).includes(adaptorType)) throw new Error(`Adaptor ${adaptorType} not supported`)
     if (category !== undefined && !Object.values(CATEGORIES).includes(category)) throw new Error("Category not supported")

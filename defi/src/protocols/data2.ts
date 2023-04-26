@@ -4941,7 +4941,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1632",
-    name: "SMBSwap-v2",
+    name: "SMBSwap V2",
     address: "bsc:0x7a364484303B38Bce7B0ab60a20DA8F2F4370129",
     symbol: "SELF",
     url: "https://smbswap.finance/",

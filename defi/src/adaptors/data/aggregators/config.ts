@@ -27,5 +27,9 @@ export default {
     "dforce": {
         "enabled": true,
         "id": "123"
+    },
+    "plexus": {
+        enabled: true,
+        id: "2740"
     }
 } as AdaptorsConfig

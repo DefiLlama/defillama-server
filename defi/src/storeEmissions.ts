@@ -47,7 +47,7 @@ async function handler() {
   const errorMessage: string = `Tried to write emissionsProtocolsList as an empty array, Unlocks page needs updating manually.`;
 
   if (protocolsArray.length == 0) {
-    await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!);
+    // await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!);
   } else {
     await storeR2JSONString(
       `emissionsProtocolsList`,

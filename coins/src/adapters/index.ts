@@ -57,6 +57,7 @@ export default {
   pods: require("./other"),
   distressed: require("./other"),
   manualInput: require("./other"),
+  Ovix: require("./moneyMarkets/compound"),
   realt: require("./other"),
   uniswap: require("./markets/uniswap"),
   glacier: require("./markets/uniswap"),

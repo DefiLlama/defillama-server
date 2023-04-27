@@ -59,7 +59,7 @@ async function getcTokens(
     address: m.toLowerCase(),
   }));
 
-  return cTokenData;
+  return cTokenData.filter((c: CToken) => c.underlying != null);
 }
 
 export default async function getTokenPrices(

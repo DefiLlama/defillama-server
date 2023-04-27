@@ -117,6 +117,7 @@ export function manualInput(timestamp: number = 0) {
     manualInputAdapter("arbitrum", timestamp),
     manualInputAdapter("polygon", timestamp),
     manualInputAdapter("kava", timestamp),
+    manualInputAdapter("polygon_zkevm", timestamp),
   ]);
 }
 export function realt(timestamp: number = 0) {

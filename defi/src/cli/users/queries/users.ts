@@ -36,7 +36,6 @@ export async function storeChainUsers({ name, addresses, id }: {name:string, add
                 }
             })
     }))
-    console.log(`${name} processed (id:${id})`)
 }
 
 export async function storeAllUsers({ name, addresses, id }: {name:string, addresses:{[chain:string]:any}, id:any}) {
@@ -89,5 +88,4 @@ ORDER BY
               }
           }
       })
-  console.log(`${name} processed (id:${id})`)
 }

@@ -36,5 +36,4 @@ export async function storeChainTxs({ name, addresses, id }: {name:string, addre
                     }
                 })
         }))
-    console.log(`${name} processed (id:${id})`)
 }

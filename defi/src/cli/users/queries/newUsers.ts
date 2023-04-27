@@ -114,5 +114,4 @@ GROUP BY
                 }
             }
         })
-    console.log(`${name} processed (id:${id})`)
 }

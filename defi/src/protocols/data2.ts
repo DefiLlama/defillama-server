@@ -32995,5 +32995,27 @@ const data2: Protocol[] = [
                  ],
     listedAt: 1682542892
   },
+  {
+    id: "2901",
+    name: "Swell",
+    address: null,
+    symbol: "-",
+    url: "https://app.swellnetwork.io/",
+    description: "Swell is a non-custodial liquid staking protocol",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/swell.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "swell/index.js",
+    twitter: "swellnetworkio",
+    audit_links: ["https://docs.swellnetwork.io/swell/risks/smart-contract-audits"],
+    listedAt: 1682554957
+  },
 ]
 export default data2;

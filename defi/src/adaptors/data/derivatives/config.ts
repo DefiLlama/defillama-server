@@ -89,5 +89,9 @@ export default {
         "enabled": true,
         "id": "2395",
         "displayName": "Level Finance - Derivatives"
+    },
+    "mux-protocol": {
+        "enabled": true,
+        "id": "2254"
     }
 } as AdaptorsConfig

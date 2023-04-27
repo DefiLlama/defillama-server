@@ -70,6 +70,21 @@ export function cream(timestamp: number = 0) {
     ),
   ]);
 }
+export function Ovix(timestamp: number = 0){
+  console.log("starting 0vix");
+  return Promise.all([
+    getTokenPrices(
+      "polygon",
+      "0x8849f1a0cB6b5D6076aB150546EddEe193754F1C",
+      timestamp,
+    ),
+    getTokenPrices(
+      "polygon_zkevm",
+      "0x6EA32f626e3A5c41547235ebBdf861526e11f482",
+      timestamp,
+    ),
+  ]);
+}
 export function scream(timestamp: number = 0) {
   console.log("starting scream");
   return Promise.all([

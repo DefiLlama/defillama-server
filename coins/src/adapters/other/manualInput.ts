@@ -78,6 +78,32 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       redirect: "coingecko#openleverage",
     },
   ],
+  polygon_zkevm: [
+    {
+      symbol: "wstETH",
+      address: "0x5D8cfF95D7A57c0BF50B30b43c7CC0D52825D4a9",
+      decimals: 18,
+      redirect: "coingecko#wrapped-steth",
+    },
+    {
+      symbol: "USDC",
+      address: "0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035",
+      decimals: 6,
+      redirect: "coingecko#usd-coin",
+    },
+    {
+      symbol: "USDT",
+      address: "0x1E4a5963aBFD975d8c9021ce480b42188849D41d",
+      decimals: 6,
+      redirect: "coingecko#tether",
+    },
+    {
+      symbol: "MATIC",
+      address: "0xa2036f0538221a77A3937F1379699f44945018d0",
+      decimals: 18,
+      redirect: "coingecko#matic-network",
+    },
+  ],
   polygon: [
     {
       symbol: "wstETH",

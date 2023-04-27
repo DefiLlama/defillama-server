@@ -5170,6 +5170,7 @@ const data: Protocol[] = [
     cmcId: "8799",
     category: "Insurance",
     chains: ["Ethereum", "Binance", "Polygon", "Avalanche"],
+    oracles: ["Binance Oracle"],
     module: "insurace/index.js",
     twitter: "InsurAce_io",
     audit_links: [

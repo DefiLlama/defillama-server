@@ -33082,5 +33082,26 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/Lybra"],
     listedAt: 1682586612
   },
+  {
+    id: "2905",
+    name: "FunBear",
+    address: "kava:0xD86c0B9b686f78a7A5C3780f03e700dbbAd40e01",
+    symbol: "FUNB",
+    url: "https://funbear.net",
+    description: "Funbear is a community-oriented DeFi protocol that rewards its community while expanding the utility of Web3 tools. Funbear works to grow the intrinsic value of each FUNB through market participation to provide long-term value accrual, but also provides a continuous stream of tokens to members who stake their FUNB into the Bear Cave.",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/funbear.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking",
+    chains: ["Kava"],
+    oracles: [],
+    forkedFrom: [],
+    module: "funbear/index.js",
+    twitter: "funbeario",
+    listedAt: 1682603852
+  },
 ]
 export default data2;

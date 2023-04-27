@@ -33119,7 +33119,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Avalanche", "Arbitrum", "Binance"],
-    module: "traderjoe-lb/index.js",
+    module: "traderjoe-lb-v2-1/index.js",
     twitter: "traderjoe_xyz",
     forkedFrom: [],
     oracles: [],

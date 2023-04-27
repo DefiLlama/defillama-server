@@ -2209,7 +2209,7 @@ const data: Protocol[] = [
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound"],
-    oracles: ["Chainlink"],
+    oracles: ["Binance Oracle", "Chainlink"],
     governanceID: ["snapshot:venus-xvs.eth"]
   },
   {

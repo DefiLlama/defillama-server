@@ -33103,5 +33103,52 @@ const data2: Protocol[] = [
     twitter: "funbeario",
     listedAt: 1682603852
   },
+  {
+    id: "2906",
+    name: "Joe V2.1",
+    address: "avax:0x6e84a6216ea6dacc71ee8e6b0a5b7322eebc0fdd",
+    symbol: "JOE",
+    url: "https://traderjoexyz.com/arbitrum/trade",
+    description:
+      "Joe V2.1 is an optimized protocol that supports all router and quoter versions, enhancing gas efficiency, events, functions, and providing better transfer options across pair versions",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/joe-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Avalanche", "Arbitrum", "Binance"],
+    module: "traderjoe-lb/index.js",
+    twitter: "traderjoe_xyz",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.traderjoexyz.com/audits"],
+    parentProtocol: "parent#trader-joe",
+    listedAt: 1682632507
+  },
+  {
+    id: "2907",
+    name: "Chronos",
+    address: "arbitrum:0x15b2fb8f08E4Ac1Ce019EADAe02eE92AeDF06851",
+    symbol: "CHR",
+    url: "https://app.chronos.exchange/",
+    description:
+      "Chronos is a community-owned decentralized exchange (DEX) and liquidity provider constructed on Arbitrum",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/chronos.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "chronos-finance",
+    cmcId: "24158",
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "chronos/index.js",
+    twitter: "ChronosFi_",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    audit_links: ["https://chronos-finance.gitbook.io/product-docs/~/changes/6sW0qaIRsO7Nde3EP91S/additional-information/security"],
+    listedAt: 1682633327
+  },
 ]
 export default data2;

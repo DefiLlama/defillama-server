@@ -24866,7 +24866,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://www.vaultka.com",
     description:
-      "Vaultka offers a wide spectrum of vault strategies that aim to provide products that suit different risk appetites and tolerance for the community. With our automated processes for our strategies, users will be hassle-free.",
+      "The catalyst of perpetual exchanges on Arbitrum, Vaultka provides 1-click strategies for your LP tokens on different decentralized perpetual exchanges",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/vaultka.jpg`,
     audits: "0",
@@ -24878,7 +24878,6 @@ const data2: Protocol[] = [
     module: "vaultka/index.js",
     twitter: "Vaultkaofficial",
     oracles: ["Chainlink"],
-    forkedFrom: ["Rage Trade"],
     listedAt: 1676372614
   },
   {

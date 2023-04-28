@@ -8,7 +8,6 @@ import { executeAndIgnoreErrors } from "./storeTvlInterval/errorDb";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from "@supercharge/promise-pool";
-import parentProtocols from "./protocols/parentProtocols";
 
 const maxRetries = 4;
 const millisecondsBeforeLambdaEnd = 30e3; // 30s
@@ -39,20 +38,12 @@ async function storeIntervals(protocolIndexes: number[], getRemainingTimeInMilli
       );
       const adapterModule = importAdapter(protocol);
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
-      const updatedProtocol = {
-        ...protocol,
-        name: protocol.parentProtocol
-          ? parentProtocols.find((p) => p.id === protocol.parentProtocol)?.name ?? protocol.name
-          : protocol.name,
-      };
-
-      console.log({ updatedProtocol });
 
       await storeTvl(
         timestamp,
         ethereumBlock,
         chainBlocks,
-        updatedProtocol,
+        protocol,
         adapterModule,
         staleCoins,
         maxRetries,

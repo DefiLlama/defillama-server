@@ -1,6 +1,6 @@
-import * as aws from 'aws-sdk'
 import * as sdk from '@defillama/sdk'
 import fetch from "node-fetch"
+import { storeR2JSONString } from '../utils/r2';
 
 const Bucket = "tvl-adapter-cache";
 
@@ -25,21 +25,11 @@ export async function getCache(govType: string, project: string, { } = {}) {
   }
 }
 
-export async function setCache(govType: string, project: string, cache: any, {
-  ContentType = 'application/json',
-  ACL = 'public-read'
-} = {}) {
-
+export async function setCache(govType: string, project: string, cache: any) {
   const Key = getKey(govType, project)
 
   try {
-    await new aws.S3()
-      .upload({
-        Bucket, Key,
-        Body: JSON.stringify(cache),
-        ACL, ContentType,
-      }).promise();
-
+    await storeR2JSONString(Key, cache)
   } catch (e) {
     sdk.log('failed to write data to s3 bucket: ', Key)
     // sdk.log(e)

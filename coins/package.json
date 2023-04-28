@@ -7,6 +7,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "serve": "node --max-old-space-size=8192 node_modules/serverless/bin/serverless offline start",
     "test": "jest",
+    "test-coin": "ts-node src/test.ts",
     "test:watch": "jest --watch",
     "refill": "tableName='prod-coins-table' AWS_REGION='eu-central-1' ts-node src/refill",
     "build": "sls package"

@@ -27,7 +27,7 @@ export async function setCache(govType: string, project: string, cache: any) {
   const Key = getKey(govType, project)
 
   try {
-    await storeR2JSONString(Key, cache)
+    await storeR2JSONString(Key, JSON.stringify(cache))
   } catch (e) {
     sdk.log('failed to write data to s3 bucket: ', Key)
     // sdk.log(e)

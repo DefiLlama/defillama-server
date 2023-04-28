@@ -788,7 +788,7 @@ export default {
             },
             v3: {
                 "enabled": true,
-                "id": "1673",
+                "id": "2910",
                 displayName: "Hydradex V3"
             }
         }

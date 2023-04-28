@@ -33221,5 +33221,28 @@ const data2: Protocol[] = [
     parentProtocol: "parent#hydradex",
     listedAt: 1682681857
   },
+  {
+    id: "2911",
+    name: "Aboard Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://aboard.exchange",
+    description:
+      "Aboard Exchange is a leading order book perpetual DEX live on multi-chains",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/aboard-exchange.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum", "Avalanche"],
+    module: "aboard-exchange/index.js",
+    twitter: "AboardExchange",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://github.com/Aboard-Exchange/audit_report"],
+    listedAt: 1682688586
+  },
 ]
 export default data2;

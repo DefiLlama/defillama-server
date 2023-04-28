@@ -33147,7 +33147,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "chronos/index.js",
     twitter: "ChronosFi_",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Solidly"],
     oracles: [],
     audit_links: ["https://chronos-finance.gitbook.io/product-docs/~/changes/6sW0qaIRsO7Nde3EP91S/additional-information/security"],
     listedAt: 1682633327

@@ -6384,7 +6384,7 @@ const data: Protocol[] = [
   {
     id: "412",
     name: "Thorchain",
-    address: "0x3155ba85d5f96b2d030a4966af206230e46849cb",
+    address: "thorchain:0x0000000000000000000000000000000000000000",
     symbol: "RUNE",
     url: "https://thorchain.com/",
     description: "THORChain facilitates cross-chain liquidity pools with no pegged or wrapped tokens.",

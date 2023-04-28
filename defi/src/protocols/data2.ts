@@ -33150,5 +33150,51 @@ const data2: Protocol[] = [
     audit_links: ["https://chronos-finance.gitbook.io/product-docs/~/changes/6sW0qaIRsO7Nde3EP91S/additional-information/security"],
     listedAt: 1682633327
   },
+  {
+    id: "2908",
+    name: "stETH.win",
+    address: null,
+    symbol: "-",
+    url: "https://steth.win",
+    description:
+      "The stETH.win project is a PoolTogether v3 community-built pool which gamifies good cause donations. People can deposit the yield-bearing stETH token, and all generated yield is pooled together. Each week, 50% of this yield is directed to a selectable good cause and 50% is won and divided amongst two randomly chosen depositors.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/steth.win.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "steth-win/index.js",
+    twitter: null,
+    forkedFrom: [],
+    oracles: ["Witnet"],
+    audit_links: ["https://v3.docs.pooltogether.com/security/audits-and-testing"],
+    listedAt: 1682677684
+  },
+  {
+    id: "2909",
+    name: "zkDefi",
+    address: null,
+    symbol: "-",
+    url: "https://polygon.zkdefi.io",
+    description:
+      "ZK DeFi is the 1 DeFi Ecosystem on zkEVM, allowing users to trade, receive airdrop, farm and launch new projects",
+    chain: "Polygon zkEVM",
+    logo: `${baseIconsUrl}/zkdefi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon zkEVM"],
+    module: "zkdefi/index.js",
+    twitter: "defi_zk",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    audit_links: ["https://contractwolf.io/projects/zkdefi"],
+    listedAt: 1682677686
+  },
 ]
 export default data2;

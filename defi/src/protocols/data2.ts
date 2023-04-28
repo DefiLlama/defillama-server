@@ -5843,13 +5843,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1673",
-    name: "Hydradex",
+    name: "Hydradex V2",
     address: null,
     symbol: "-",
     url: "https://hydradex.org/#/swap",
     description: "Hydra DEX is the native decentralized exchange of Hydra chain",
     chain: "Hydra",
-    logo: `${baseIconsUrl}/hydradex.png`,
+    logo: `${baseIconsUrl}/hydradex-v2.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -5860,6 +5860,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "hydradex/api.js",
     twitter: "hydra_chain",
+    parentProtocol: "parent#hydradex",
     listedAt: 1650583619
   },
   {
@@ -33195,6 +33196,29 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://contractwolf.io/projects/zkdefi"],
     listedAt: 1682677686
+  },
+  {
+    id: "2910",
+    name: "Hydradex V3",
+    address: null,
+    symbol: "-",
+    url: "https://hydradex.org/#/swap",
+    description:
+      "Hydra DEX is the native decentralized exchange of Hydra chain",
+    chain: "Hydra",
+    logo: `${baseIconsUrl}/hydradex-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Hydra"],
+    module: "hydradex-v3/index.js",
+    twitter: "hydra_chain",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#hydradex",
+    listedAt: 1682681857
   },
 ]
 export default data2;

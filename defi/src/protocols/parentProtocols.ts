@@ -1440,6 +1440,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "smbswap",
   },
+  {
+    id: "parent#hydradex",
+    name: "Hydradex",
+    url: "https://hydradex.org/#/swap",
+    description: "Hydra DEX is the native decentralized exchange of Hydra chain",
+    logo: `${baseIconsUrl}/hydradex.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "hydra_chain",
+  },
 ];
 
 export default parentProtocols;

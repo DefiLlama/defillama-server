@@ -2,14 +2,12 @@ import * as sdk from '@defillama/sdk'
 import fetch from "node-fetch"
 import { storeR2JSONString } from '../utils/r2';
 
-const Bucket = "tvl-adapter-cache";
-
 function getKey(govType: string, project: string): string {
   return `governance-cache/${govType}/${project}.json`
 }
 
 function getLink(govType: string, project: string): string {
-  return `https://${Bucket}.s3.eu-central-1.amazonaws.com/${getKey(govType, project)}`
+  return `https://defillama-datasets.llama.fi/${getKey(govType, project)}`
 }
 
 export async function getCache(govType: string, project: string, { } = {}) {

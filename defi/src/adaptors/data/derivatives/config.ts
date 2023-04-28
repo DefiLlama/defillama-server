@@ -93,5 +93,9 @@ export default {
     "mux-protocol": {
         "enabled": true,
         "id": "2254"
+    },
+    "polynomial-trade": {
+        "enabled": true,
+        "id": "2848"
     }
 } as AdaptorsConfig

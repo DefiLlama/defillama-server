@@ -37,5 +37,6 @@ async function main() {
         storeAllNewUsers(protocol).then(()=>console.log("new users refilled")),
     ])
     console.log(`Finished!`)
+    process.exit(0);
 }
 main()

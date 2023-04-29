@@ -31787,8 +31787,8 @@ const data2: Protocol[] = [
   {
     id: "2845",
     name: "Spiral Fi Mixer",
-    address: null,
-    symbol: "-",
+    address: "era:0xE161A60Da0943dAD69aFfe0249b7F623C518337B",
+    symbol: "SPIRAL",
     url: "https://www.spiralfi.io",
     description: "Spiral finance is a fully decentralized non-custodial protocol allowing private transactions on-chain.",
     chain: "zkSync Era",

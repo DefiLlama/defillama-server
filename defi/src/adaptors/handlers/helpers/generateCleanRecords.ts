@@ -15,10 +15,11 @@ export interface ICleanRecordsConfig {
     genuineSpikes: IJSON<boolean> | boolean
 }
 
-export default async (adaptorRecords: AdaptorRecord[], chains: string[], protocols: string[], chainFilterRaw?: string, cleanRecordsConfig?: ICleanRecordsConfig) => {
+export default async (adaptorRecords: AdaptorRecord[], chainsRaw: string[], protocols: string[], chainFilterRaw?: string, cleanRecordsConfig?: ICleanRecordsConfig) => {
     const genuineSpikes = cleanRecordsConfig?.genuineSpikes ?? {}
     const currentTimestamp = Math.trunc(Date.now() / 1000)
     const spikesLogs: string[] = []
+    const chains = chainsRaw.map(formatChainKey)
     const chainFilter = chainFilterRaw ? formatChainKey(chainFilterRaw) : undefined
     // Get adaptor type for all records
     const type = adaptorRecords[0].type

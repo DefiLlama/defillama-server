@@ -111,7 +111,7 @@ export class AdaptorRecord extends Item {
             }, {} as IRecordAdaptorRecordData)
         if (chains !== undefined && chains.length > 0) {
             data = chains.reduce((acc, chain) => {
-                acc[chain] = data[chain] ?? data[formatChainKey(chain)]// TODO: normalize chain names, check if ok?
+                acc[formatChainKey(chain)] = data[chain] ?? data[formatChainKey(chain)]// TODO: normalize chain names, check if ok?
                 return acc
             }, {} as IJSON<number | IRecordAdapterRecordChainData>)
         }

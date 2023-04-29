@@ -115,11 +115,6 @@ export class AdaptorRecord extends Item {
                 return acc
             }, {} as IJSON<number | IRecordAdapterRecordChainData>)
         }
-        // Format chain names
-        data = Object.entries(data).reduce((acc, [chain, value]) => {
-            acc[formatChain(chain)] = value
-            return acc
-        }, {} as IRecordAdaptorRecordData)
         const newDataNoErr = removeErrors(data)
         if (AdaptorRecord.isDataEmpty(newDataNoErr)) return null
         return new AdaptorRecord(this.type, this.adaptorId, this.timestamp, newDataNoErr)

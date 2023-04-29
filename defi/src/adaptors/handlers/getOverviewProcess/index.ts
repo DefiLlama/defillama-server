@@ -249,7 +249,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChart: totalDataChartResponse,
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
-        allChains,
+        allChains: allChains.map(formatChain),
         total24h: enableStats ? generalStats.total24h : 0,
         total48hto24h: null,
         total7d: enableStats ? generalStats.total7d : 0,

@@ -11,7 +11,7 @@ import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGetOverviewResponseBody, ProtocolAdapto
 import parentProtocols from "../../../protocols/parentProtocols";
 import standardizeProtocolName from "../../../utils/standardizeProtocolName";
 import { IParentProtocol } from "../../../protocols/types";
-import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
+import { getLlamaoLogo, notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
 
 export interface ChartItem {
     data: IRecordAdaptorRecordData;
@@ -178,6 +178,7 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
         ...parentData,
         defillamaId: parentData.id,
         displayName: parentData.name,
+        logo: getLlamaoLogo(parentData.logo),
         total24h: totalToday,
         totalAllTime: sumReduce(summaries, 'totalAllTime'),
         latestFetchIsOk: true,

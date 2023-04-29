@@ -33290,5 +33290,28 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1682736659
   },
+  {
+    id: "2914",
+    name: "Binance Wrapped Beacon ETH",
+    address: "bsc:0xa2E3356610840701BDf5611a53974510Ae27E2e1",
+    symbol: "WBETH",
+    url: "https://www.binance.com/en/wbeth",
+    description:
+      'WBETH is a special kind of BETH, and is a token created by depositing BETH into the BETH wrapper. Each WBETH represents 1 BETH (1:1 to staked ETH) plus all of its accrued ETH2.0 staking rewards',
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/binance-wrapped-beacon-eth.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum", "Binance"],
+    module: "binance-staked-eth/index.js",
+    twitter: "binance",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1682803395
+  },
 ]
 export default data2;

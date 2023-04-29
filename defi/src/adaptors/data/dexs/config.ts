@@ -331,7 +331,18 @@ export default {
     },
     "smbswap": {
         "enabled": true,
-        "id": "1632"
+        parentId: "SMBSwap",
+        id: "1632",
+        protocolsData: {
+            v2: {
+                enabled: true,
+                "id": "1632"
+            },
+            v3: {
+                "enabled": true,
+                "id": "2895"
+            }
+        },
     },
     "sunswap": {
         parentId: "SUN.io",

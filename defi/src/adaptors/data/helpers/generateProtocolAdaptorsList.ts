@@ -1,6 +1,6 @@
 import data, { Protocol } from "../../../protocols/data";
 import { AdaptorsConfig, IJSON } from "../types"
-import { formatChain, getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
+import { getChainsFromBaseAdapter, getMethodologyDataByBaseAdapter } from "../../utils/getAllChainsFromAdaptors";
 import { ProtocolAdaptor } from "../types";
 import { BaseAdapter, ProtocolType } from "@defillama/dimension-adapters/adapters/types";
 import { getChainDisplayName } from "../../../utils/normalizeChain"

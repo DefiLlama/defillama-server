@@ -74,6 +74,7 @@ const stablecoins = [
   "BSC-USD",
   "USD+",
   "sUSD",
+  "DOLA",
 ];
 
 function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {

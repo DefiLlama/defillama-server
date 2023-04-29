@@ -93,4 +93,19 @@ export default [
         },
         lastUpdate: "2023-04-29"
     },
+    {
+        protocolId: "173", // BadgerDAO
+        sources: ["https://lookerstudio.google.com/u/0/reporting/24f03640-4369-4687-a92f-979fe946bb8b/page/UPVxC"],
+        annualUsdCost: {
+            consulting: 45571*12,
+            contractors: 269612*12,
+            expenses: 9343*12,
+            gas: 18965*12,
+            grants: 10954,
+            hosting: 11210,
+            marketing: 25068,
+        },
+        notes: ["Using data from Feb 2023"],
+        lastUpdate: "2023-04-29"
+    },
 ]

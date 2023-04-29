@@ -33244,5 +33244,51 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/Aboard-Exchange/audit_report"],
     listedAt: 1682688586
   },
+  {
+    id: "2912",
+    name: "Onsen Swap",
+    address: "era:-",
+    symbol: "ON",
+    url: "https://app.onsenswap.xyz/",
+    description:
+      "Swap, Yield farming, Launchpad",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/onsen-swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    module: "onsenswap/index.js",
+    twitter: "OnsenSwap",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1682736263
+  },
+  {
+    id: "2913",
+    name: "Rising Undead",
+    address: null,
+    symbol: "-",
+    url: "http://risingundead.com/",
+    description:
+      "Rising Undead is a real-time war strategy game that takes place in a post-apocalyptic world overrun by zombies",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/rising-undead.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Kava"],
+    module: "rising-undead/index.js",
+    twitter: "RisingUndead1",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1682736659
+  },
 ]
 export default data2;

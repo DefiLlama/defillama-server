@@ -75,6 +75,18 @@ const stablecoins = [
   "USD+",
   "sUSD",
   "DOLA",
+  "aUSDT",
+  "amUSDC",
+  "amDAI",
+  "avUSDC",
+  "aUSDC",
+  "avDAI",
+  "aAvaUSDC",
+  "amUSDT",
+  "aAvaUSDT",
+  "aAvaDAI",
+  "avUSDT",
+  "aOptUSDC",
 ];
 
 function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {

@@ -111,7 +111,7 @@ export default [
     },
     {
         protocolId: "parent#inverse-finance", // Inverse Finance
-        headcount: 10,
+        headcount: 11,
         sources: ["https://www.inverse.finance/transparency/dao"],
         annualUsdCost: {
             salaries: 109070*12,

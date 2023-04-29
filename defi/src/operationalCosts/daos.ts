@@ -108,4 +108,13 @@ export default [
         notes: ["Using data from Feb 2023"],
         lastUpdate: "2023-04-29"
     },
+    {
+        protocolId: "parent#inverse-finance", // Inverse Finance
+        sources: ["https://www.inverse.finance/transparency/dao"],
+        annualUsdCost: {
+            salaries: 109070*12,
+            audits: 8e3*12, // average
+        },
+        lastUpdate: "2023-04-29"
+    },
 ]

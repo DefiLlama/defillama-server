@@ -96,6 +96,7 @@ export default [
     {
         protocolId: "173", // BadgerDAO
         sources: ["https://lookerstudio.google.com/u/0/reporting/24f03640-4369-4687-a92f-979fe946bb8b/page/UPVxC"],
+        headcount: 15,
         annualUsdCost: {
             consulting: 45571*12,
             contractors: 269612*12,
@@ -110,6 +111,7 @@ export default [
     },
     {
         protocolId: "parent#inverse-finance", // Inverse Finance
+        headcount: 10,
         sources: ["https://www.inverse.finance/transparency/dao"],
         annualUsdCost: {
             salaries: 109070*12,

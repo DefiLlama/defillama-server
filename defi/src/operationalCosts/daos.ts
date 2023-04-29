@@ -78,4 +78,19 @@ export default [
         },
         lastUpdate: "2023-04-29"
     },
+    {
+        protocolId: "1108", // gearbox
+        sources: ["https://gearboxprotocol.notion.site/Monthly-Reports-6849871a9bae44dfb903531c0a997e8f"],
+        headcount: 13,
+        annualUsdCost: {
+            risk: 11e3*12,
+            salaries: 63480*12,
+        },
+        annualTokenCosts: {
+            "coingecko:gearbox": {
+                salaries: 7864001*12
+            }
+        },
+        lastUpdate: "2023-04-29"
+    },
 ]

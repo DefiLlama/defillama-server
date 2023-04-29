@@ -8,7 +8,6 @@ import chainCoingeckoIds from "./chains"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
 import { getCollectionsMap } from "./collections";
-import { seaportCollections } from "../fees/collections";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -104,6 +103,7 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
                         ...parentConfig,
                         ...configObj,
                     },
+                    logo: getLlamaoLogo(dexFoundInProtocols.logo),
                     chains: getChainsFromBaseAdapter(baseModuleObject).map(formatChain),
                     disabled: configObj.disabled ?? false,
                     displayName: configObj.displayName ?? dexFoundInProtocols.name,
@@ -128,6 +128,12 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
 function getLogoKey(key: string) {
     if (key.toLowerCase() === 'bsc') return 'binance'
     else return key.toLowerCase()
+}
+
+const getLlamaoLogo = (logo: string | null) => {
+    if (!logo) return logo
+    if (logo.includes('chains')) return logo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/")
+    return logo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/protocols/")
 }
 
 // This should be changed to be easier to mantain

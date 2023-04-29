@@ -45,5 +45,20 @@ export default {
                 "id": "2769"
             }
         },
+    },
+    "smbswap": {
+        "enabled": true,
+        parentId: "SMBSwap",
+        id: "1632",
+        protocolsData: {
+            v2: {
+                enabled: true,
+                "id": "1632"
+            },
+            v3: {
+                "enabled": true,
+                "id": "2895"
+            }
+        },
     }
 } as AdaptorsConfig

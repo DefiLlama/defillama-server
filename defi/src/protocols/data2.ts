@@ -33297,7 +33297,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://www.binance.com/en/wbeth",
     description:
-      'WBETH is a special kind of BETH, and is a token created by depositing BETH into the BETH wrapper. Each WBETH represents 1 BETH (1:1 to staked ETH) plus all of its accrued ETH2.0 staking rewards',
+      'A token created by depositing BETH into the BETH wrapper. Each WBETH represents 1 BETH (1:1 to staked ETH) plus all of its accrued ETH2.0 staking rewards',
     chain: "Ethereum",
     logo: `${baseIconsUrl}/binance-staked-eth.png`,
     audits: "0",

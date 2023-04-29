@@ -6,7 +6,7 @@ import { formatTimestampAsDate } from "../../utils/date";
 import { performance } from "perf_hooks";
 
 const event = {
-    pathParameters: { chain: undefined, type: "dexs" },
+    pathParameters: { chain: undefined, type: "fees" },
     queryStringParameters: {
         excludeTotalDataChart: "false",
         excludeTotalDataChartBreakdown: "false"
@@ -31,12 +31,9 @@ const event = {
     // console.log(rr.protocols[0])
     console.log(rr.totalDataChart.length)
     console.log(rr.protocols.length)
-    console.log(rr.protocols.filter(d=>d.module==='zyberswap').map(d=>[
+    console.log(rr.protocols.map(d=>[
         d.displayName,
-        `7d-> ${d.total7d}`,
-        `14d-> ${d.total14dto7d}`,
-        `30d-> ${d.total30d}`,
-        `60d-> ${d.total60dto30d}`,
+        d.logo
     ]))
     const runTime = (endTime - startTime) / 1000
     const runTimeDescription = runTime > 30 ? '🐢' : '🐇'

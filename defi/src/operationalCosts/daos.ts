@@ -119,4 +119,17 @@ export default [
         },
         lastUpdate: "2023-04-29"
     },
+    {
+        protocolId: "parent#aave",
+        sources: ["https://community.llama.xyz/aave/runway"],
+        annualUsdCost: {
+            all: 1.6e6*12,
+        },
+        annualTokenCosts: {
+            "coingecko:aave": {
+                salaries: 12*(21/15+13.3/6+10/12+7.3/12+9.9/12+1.2/5)
+            }
+        },
+        lastUpdate: "2023-04-29"
+    },
 ]

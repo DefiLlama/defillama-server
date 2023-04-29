@@ -33292,14 +33292,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2914",
-    name: "Binance Wrapped Beacon ETH",
-    address: "bsc:0xa2E3356610840701BDf5611a53974510Ae27E2e1",
-    symbol: "WBETH",
+    name: "Binance staked ETH",
+    address: null,
+    symbol: "-",
     url: "https://www.binance.com/en/wbeth",
     description:
       'WBETH is a special kind of BETH, and is a token created by depositing BETH into the BETH wrapper. Each WBETH represents 1 BETH (1:1 to staked ETH) plus all of its accrued ETH2.0 staking rewards',
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/binance-wrapped-beacon-eth.png`,
+    logo: `${baseIconsUrl}/binance-staked-eth.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

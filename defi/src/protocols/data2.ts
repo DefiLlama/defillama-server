@@ -33214,7 +33214,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Hydra"],
-    module: "hydradex-v3/index.js",
+    module: "hydradex-v3/api.js",
     twitter: "hydra_chain",
     forkedFrom: [],
     oracles: [],

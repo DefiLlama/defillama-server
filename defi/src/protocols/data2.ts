@@ -2149,7 +2149,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: ["Olympus DAO"],
-    module: "floor-dao/index.js",
+    module: "floor-dao/api.js",
     twitter: "FloorDAO",
     listedAt: 1646390885,
     governanceID: ["snapshot:floordao.eth"]

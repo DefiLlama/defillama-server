@@ -76,6 +76,9 @@ async function writeCoins(
       symbol: details.symbol,
     }))
     .filter((c: any) => c.lastupdate > time - 3600 * 24);
+  if(insertData.length === 0){
+    return;
+  }
 
   const columnSets = new PGP.helpers.ColumnSet(
     ["id", "time", "address", "lastupdate", "chain", "symbol"],

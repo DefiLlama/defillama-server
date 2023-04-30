@@ -8,10 +8,10 @@ import mysql from 'mysql2/promise';
 // CREATE TABLE staleCoins (time INT, address VARCHAR(500), lastUpdate INT, chain VARCHAR(200), symbol VARCHAR(200), PRIMARY KEY(time, address, chain), INDEX `idx_time` (`time` ASC) VISIBLE);
 
 const connection = mysql.createPool({
-  host: '65.21.124.238',
-  port: 9001,
-  user: 'clcaq1fik030jb3p821iw5dqt',
-  database: 'clcaq1fik030lb3p8gnjbb1s4',
+  host: process.env.ERROR_DB,
+  port: 9007,
+  user: 'clh3m0sco0zwbbso49r00gqyo',
+  database: 'clh3m0sco0zwdbso44e9u269x',
   password: process.env.INFLUXDB_TOKEN,
   waitForConnections: true,
   connectionLimit: 1,

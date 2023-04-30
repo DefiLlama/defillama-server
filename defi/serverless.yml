@@ -75,7 +75,6 @@ provider:
     OUTDATED_WEBHOOK: ${file(./env.js):OUTDATED_WEBHOOK}
     SPIKE_WEBHOOK: ${file(./env.js):SPIKE_WEBHOOK}
     #CLOUDWATCH_WEBHOOK_URL: ${file(./env.js):CLOUDWATCH_WEBHOOK_URL}
-    INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
     DROPS_WEBHOOK: ${file(./env.js):DROPS_WEBHOOK}
     #EULER_MONGODB_APIKEY: ${file(./env.js):EULER_MONGODB_APIKEY}
     #FATHOM_SECRET: ${file(./env.js):FATHOM_SECRET}
@@ -450,6 +449,8 @@ functions:
       LOFTY_API: ${file(./env.js):LOFTY_API}
       OLYMPUS_GRAPH_API_KEY: ${file(./env.js):OLYMPUS_GRAPH_API_KEY}
       COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
+      INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
+      ERROR_DB: ${env:ERROR_DB}
   storeTreasuryInterval:
     handler: src/storeTreasuryInterval.default
     timeout: 900
@@ -458,6 +459,8 @@ functions:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
       COINS_DB: ${env:COINS_DB}
       COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
+      INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
+      ERROR_DB: ${env:ERROR_DB}
   triggerStoreTvls:
     handler: src/triggerStoreTvls.default
     timeout: 900

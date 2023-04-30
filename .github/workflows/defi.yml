@@ -98,3 +98,4 @@ jobs:
           COINS_DB: ${{ secrets.COINS_DB }}
           ACCOUNTS_DB: ${{ secrets.ACCOUNTS_DB }}
           CG_KEY: ${{ secrets.CG_KEY }}
+          ERROR_DB: ${{ secrets.ERROR_DB }}

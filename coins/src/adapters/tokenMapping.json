@@ -137,9 +137,7 @@
       "decimals": "6",
       "symbol": "STKATOM",
       "to": "coingecko#stkatom"
-    }
-  },
-  "kujira": {
+    },
     "0306D6B66EAA2EDBB7EAD23C0EC9DDFC69BB43E80B398035E90FBCFEF3FD1A87": {
       "name": "Stride Staked Atom",
       "decimals": "6",

@@ -1489,5 +1489,10 @@ export default {
     "pheasantswap": {
         "enabled": true,
         "id": "2896"
+    },
+    "velocimeter-v2": {
+        parentId: "Velocimeter",
+        "enabled": true,
+        "id": "2668"
     }
 } as AdaptorsConfig

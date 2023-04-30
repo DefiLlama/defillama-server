@@ -125,7 +125,9 @@ function mergeBalances(key:string, storedKeys:string[], balancesObject:tvlsObjec
     balancesObject[key] = {}
     storedKeys.map(keyToMerge=>{
       Object.entries(balancesObject[keyToMerge]).forEach((balance) => {
-        sdk.util.sumSingleBalance(balancesObject[key], balance[0], balance[1]);
+        let value: any = balance[1]
+        if (typeof value === 'string' && value.includes('.')) value = +value
+        sdk.util.sumSingleBalance(balancesObject[key], balance[0], value);
       });
     })
   }

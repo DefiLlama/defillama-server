@@ -10329,6 +10329,7 @@ const data2: Protocol[] = [
     oracles: ["Stork"],
     forkedFrom: [],
     module: "apex/index.js",
+    treasury: "apex-protocol.js",
     twitter: "OfficialApeXdex",
     audit_links: ["https://github.com/ApeX-Protocol/core/blob/master/docs/audit_report.pdf"],
     listedAt: 1656934904
@@ -19258,6 +19259,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Arbitrum"],
     module: "3xcalibur/index.js",
+    treasury: "3xcalibur.js",
     twitter: "3xcalibur69",
     forkedFrom: ["Solidly"],
     oracles: [],

@@ -498,6 +498,7 @@ const data: Protocol[] = [
     category: "Options",
     chains: ["Ethereum"],
     module: "hegic/index.js",
+    treasury: "hegic.js",
     twitter: "HegicOptions",
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hegic-v1.0.pdf",
@@ -3451,6 +3452,7 @@ const data: Protocol[] = [
     category: "Indexes",
     chains: ["Ethereum", "Optimism"],
     module: "cryptex-finance/index.js",
+    treasury: "cryptex.js",
     twitter: "CryptexFinance",
     audit_links: [
       "https://cryptex.finance/Cryptex_-_Final_Report.pdf",
@@ -4939,6 +4941,7 @@ const data: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "impermax/index.js",
+    treasury: "impermax.js",
     twitter: "ImpermaxFinance",
     audit_links: ["https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/tree/main/audit"],
     oracles: ["Chainlink"],
@@ -5089,6 +5092,7 @@ const data: Protocol[] = [
     category: "Synthetics",
     chains: ["Ethereum", "Polygon"],
     module: "cvi/index.js",
+    treasury: "cvi.js",
     twitter: "official_CVI",
     audit_links: ["https://cvi.finance/files/usdt-audit.pdf", "https://cvi.finance/files/eth-audit.pdf"],
     oracles: ["Chainlink"],
@@ -9205,6 +9209,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Cross Chain",
     chains: ["Ethereum", "EOS", "Telos", "Binance"],
     module: "pnetwork.js",
+    treasury: "p-network.js",
     twitter: "pNetworkDeFi",
     audit_links: ["https://cryptonics.consulting/wp-content/uploads/2020/03/20200302_Audit_Report_pToken-2.pdf"],
     governanceID: ["snapshot:pnetwork-dao.eth"]
@@ -11500,6 +11505,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Bridge",
     chains: ["Ethereum", "Binance", "Avalanche", "Arbitrum", "Polygon", "Fantom"],
     module: "synapse/index.js",
+    treasury: "synapse.js",
     twitter: "SynapseProtocol",
     forkedFrom: ["Saddle Finance"],
     governanceID: ["snapshot:synapseprotocol.eth"]
@@ -22746,6 +22752,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Cross Chain",
     chains: ["Ethereum"],
     module: "across/index.js",
+    treasury: "across.js",
     twitter: "AcrossProtocol",
     audit_links: ["https://blog.openzeppelin.com/uma-audit-l2-bridges/"],
     oracles: ["UMA"],

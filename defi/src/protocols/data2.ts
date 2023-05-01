@@ -33322,5 +33322,49 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1682803395
   },
+  {
+    id: "2915",
+    name: "Tonic Cash",
+    address: null,
+    symbol: "-",
+    url: "https://tonic.cash",
+    description:
+      'Tonic is a decentralized privacy protocol that enhances the privacy of token transfers on an EVM-based blockchain, making it harder to track them. Forked from Tornado Cash, it currently supports Klaytn and WEMIX as the first-ever crypto mixer protocol.',
+    chain: "WEMIX",
+    logo: `${baseIconsUrl}/tonic-cash.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Privacy",
+    chains: ["Klaytn", "WEMIX"],
+    module: "tonic-cash/index.js",
+    forkedFrom: ["Tornado Cash"],
+    oracles: [],
+    twitter: "tonic_cash",
+    listedAt: 1682949293
+  },
+  {
+    id: "2916",
+    name: "Direct Exchange",
+    address: null,
+    symbol: "-",
+    url: "http://directexchange.xyz",
+    description:
+      'Direct Exchange is a groundbreaking cryptocurrency trading platform that takes a unique approach by integrating social interaction and trading.',
+    chain: "Kava",
+    logo: `${baseIconsUrl}/direct-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Kava"],
+    module: "direct-exchange/index.js",
+    forkedFrom: ["Uniswap V2"],
+    oracles: ["TWAP"],
+    twitter: "DirectexchangeX",
+    listedAt: 1682949297
+  },
 ]
 export default data2;

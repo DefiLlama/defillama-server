@@ -74,7 +74,9 @@ export default async function craftParentProtocol({
   );
 
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
-    tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
+    isTreasuryApi ? false : tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
+
+  console.log({ childProtocolsTvls });
 
   const currentTime = Math.floor(Date.now() / 1000);
 
@@ -82,6 +84,7 @@ export default async function craftParentProtocol({
     .sort((a, b) => b.tvl.length - a.tvl.length)
     .reduce<ICombinedTvls>(
       (acc, curr) => {
+        console.log({ curr });
         const isTvlDataHourly = isHourlyTvl(curr.tvl);
 
         // TOTAL TVL OF EACH CHAIN

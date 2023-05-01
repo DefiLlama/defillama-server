@@ -11,7 +11,6 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   const protocolData = treasuries.find((prot) => sluggify(prot) === protocolName);
 
   if (!protocolData && event?.pathParameters?.protocol) {
-    console.log(event.pathParameters!.protocol);
     const parentProtocolId = treasuries
       .filter((prot) => prot.parentProtocol)
       .find(
@@ -25,8 +24,6 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
         message: "Protocol is not in our database",
       });
     }
-
-    console.log({ parentProtocol });
 
     const response = await craftParentProtocol({
       parentProtocol,

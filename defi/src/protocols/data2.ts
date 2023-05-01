@@ -33478,7 +33478,7 @@ const data2: Protocol[] = [
     twitter: "blur_io",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1672970801,
+    listedAt: 1682985457,
     parentProtocol: "parent#blur"
   },
 ]

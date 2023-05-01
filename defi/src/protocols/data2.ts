@@ -22232,7 +22232,8 @@ const data2: Protocol[] = [
     twitter: "blur_io",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1672970801
+    listedAt: 1672970801,
+    parentProtocol: "parent#blur"
   },
   {
     id: "2415",
@@ -33456,6 +33457,29 @@ const data2: Protocol[] = [
     twitter: "LSDxfinance",
     parentProtocol: "parent#lsdx-finance",
     listedAt: 1682961058
+  },
+  {
+    id: "2921",
+    name: "Blur Lending",
+    address: "0x5283d291dbcf85356a21ba090e6db59121208b44",
+    symbol: "BLUR",
+    url: "https://blur.io/",
+    description:
+      "The NFT marketplace for pro traders",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/blur.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "blur",
+    cmcId: null,
+    category: "NFT Lending",
+    chains: ["Ethereum"],
+    module: "blur/index.js",
+    twitter: "blur_io",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1672970801,
+    parentProtocol: "parent#blur"
   },
 ]
 export default data2;

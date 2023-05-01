@@ -58,7 +58,7 @@ export default [
     {
         protocolId: "326", // beefy
         sources: ["https://vote.beefy.finance/#/proposal/0x2a7500179f484c265bc027b664b8bffb67132583541c70b89773d949e8a74cc4"],
-        headcount: 16,
+        headcount: 20,
         annualUsdCost: {
             salaries: 131000*12 + 240220,
         },

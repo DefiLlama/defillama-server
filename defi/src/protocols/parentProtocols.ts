@@ -1464,7 +1464,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#blur",
-    name: "Blur Finance",
+    name: "Blur",
     url: "https://blur.io/",
     description: "The NFT marketplace for pro traders",
     logo: `${baseIconsUrl}/blur-finance.png`,

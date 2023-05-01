@@ -1451,6 +1451,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "hydra_chain",
   },
+  {
+    id: "parent#lsdx-finance",
+    name: "LSDx Finance",
+    url: "LSDx is an ultra-liquid protocol for all LSD",
+    description: "Hydra DEX is the native decentralized exchange of Hydra chain",
+    logo: `${baseIconsUrl}/lsdx-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "LSDxfinance",
+  },
 ];
 
 export default parentProtocols;

@@ -61,7 +61,7 @@ export default [
         headcount: 20,
         annualUsdCost: {
             salaries: 131000*12,
-            others: 240220,
+            others: 240220*4,
         },
         lastUpdate: "2023-04-29"
     },

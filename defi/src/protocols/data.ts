@@ -3443,7 +3443,7 @@ const data: Protocol[] = [
     symbol: "CTX",
     url: "https://cryptex.finance/",
     description:
-      "Cryptex is focused on building innovative, open-source financial solutions for the global Crypto community. Using Ethereum’s smart contract system, Cryptex is able to create decentralized financial solutions such as Total Crypto Market Cap Token, TCAP and many others.",
+      "Cryptex Finance is a multi-network DeFi protocol with the mission of making crypto-native markets tradable. The protocol uses Ethereum smart contracts, Perennial derivatives vaults, and Chainlink data oracles to provide secure and decentralized trading for users.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cryptex-finance.jpg`,
     audits: "2",

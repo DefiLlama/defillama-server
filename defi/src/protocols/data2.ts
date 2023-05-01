@@ -10609,13 +10609,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1891",
-    name: "Blur Finance",
+    name: "Blur RUG",
     address: "bsc:0x4165084A6e5388ce53c9D9892f904a2712Dd943A",
     symbol: "BLR",
     url: "https://www.blur.finance",
     description: "Blur Finance is a revolutionary and user-friendly Yield Aggregator built For Binance Smart Chain",
     chain: "Binance",
-    logo: `${baseIconsUrl}/blur-finance.png`,
+    logo: `${baseIconsUrl}/blur-rug.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "blur-finance",
@@ -22214,14 +22214,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2414",
-    name: "Blur",
+    name: "Blur Bids",
     address: "0x5283d291dbcf85356a21ba090e6db59121208b44",
     symbol: "BLUR",
     url: "https://blur.io/",
     description:
       "The NFT marketplace for pro traders",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/blur.png`,
+    logo: `${baseIconsUrl}/blur-bids.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "blur",
@@ -22233,7 +22233,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1672970801,
-    parentProtocol: "parent#blur"
+    parentProtocol: "parent#blur-finance"
   },
   {
     id: "2415",
@@ -33467,7 +33467,7 @@ const data2: Protocol[] = [
     description:
       "The NFT marketplace for pro traders",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/blur.png`,
+    logo: `${baseIconsUrl}/blur-lending.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "blur",

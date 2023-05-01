@@ -132,4 +132,17 @@ export default [
         },
         lastUpdate: "2023-04-29"
     },
+    {
+        protocolId: "587", // Maple
+        sources: ["https://maple.finance/news/q422-treasuryreport/"],
+        annualUsdCost: {
+            salaries: 1755446*4,
+            legal: 73300*4,
+            marketing: 121462*4,
+            product: 135626*4,
+            operations: 48719*4,
+        },
+        notes: ["Based on expenses for Q4 '22, one-off expenses such as one acquisition were ignored"],
+        lastUpdate: "2023-05-01"
+    },
 ]

@@ -1,5 +1,5 @@
 import type { IParentProtocol } from "../protocols/types";
-import protocols from "../protocols/data";
+import protocols, { treasuries } from "../protocols/data";
 import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
@@ -44,12 +44,16 @@ export default async function craftParentProtocol({
   parentProtocol,
   useHourlyData,
   skipAggregatedTvl,
+  isTreasuryApi,
 }: {
   parentProtocol: IParentProtocol;
   useHourlyData: boolean;
   skipAggregatedTvl: boolean;
+  isTreasuryApi?: boolean;
 }) {
-  const childProtocols = protocols.filter((protocol) => protocol.parentProtocol === parentProtocol.id);
+  const childProtocols = isTreasuryApi
+    ? treasuries.filter((protocol) => protocol.parentProtocol === parentProtocol.id)
+    : protocols.filter((protocol) => protocol.parentProtocol === parentProtocol.id);
 
   if (childProtocols.length < 1 || childProtocols.map((p) => p.name).includes(parentProtocol.name)) {
     return errorResponse({
@@ -57,7 +61,11 @@ export default async function craftParentProtocol({
     });
   }
 
-  const PROTOCOL_API = useHourlyData ? "https://api.llama.fi/hourly" : "https://api.llama.fi/updatedProtocol";
+  const PROTOCOL_API = isTreasuryApi
+    ? "https://api.llama.fi/treasury"
+    : useHourlyData
+    ? "https://api.llama.fi/hourly"
+    : "https://api.llama.fi/updatedProtocol";
 
   const childProtocolsTvls: Array<IProtocolResponse> = await Promise.all(
     childProtocols.map((protocolData) =>
@@ -96,17 +104,6 @@ export default async function craftParentProtocol({
               };
             }
 
-            if (curr.name === "Uniswap V3" && date == 1628121600) {
-              console.log({ current: curr.chainTvls[chain].tvl[index + 1] });
-              console.log(
-                { index, isTvlDataHourly, dateDiff: date - curr.chainTvls[chain].tvl[index - 1].date > 86400 },
-                index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tvl[index - 1].date > 86400
-              );
-              console.log({ next: curr.chainTvls[chain].tvl[index + 1] });
-            }
-
-            console.log(`CHECK 1 ${curr.name} ${chain} ${date}`);
-
             if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tvl[index - 1].date > 86400) {
               const prev = curr.chainTvls[chain].tvl[index - 1];
 
@@ -137,8 +134,6 @@ export default async function craftParentProtocol({
                 tokens: {},
               };
             }
-
-            console.log(`CHECK 2 ${curr.name} ${chain} ${date}`);
 
             if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tokensInUsd![index - 1].date > 86400) {
               const prev = curr.chainTvls[chain].tokensInUsd![index - 1];
@@ -178,8 +173,6 @@ export default async function craftParentProtocol({
               };
             }
 
-            console.log(`CHECK 3 ${curr.name} ${chain} ${date}`);
-
             if (index !== 0 && !isTvlDataHourly && date - curr.chainTvls[chain].tokens![index - 1].date > 86400) {
               const prev = curr.chainTvls[chain].tokens![index - 1];
 
@@ -213,8 +206,6 @@ export default async function craftParentProtocol({
         if (!skipAggregatedTvl) {
           if (curr.tokensInUsd) {
             curr.tokensInUsd.forEach(({ date, tokens }, index) => {
-              console.log(`CHECK 4 ${curr.name} ${date}`);
-
               if (index !== 0 && !isTvlDataHourly && date - curr.tokensInUsd![index - 1].date > 86400) {
                 const prev = curr.tokensInUsd![index - 1];
 
@@ -246,8 +237,6 @@ export default async function craftParentProtocol({
 
           if (curr.tokens) {
             curr.tokens.forEach(({ date, tokens }, index) => {
-              console.log(`CHECK 5 ${curr.name} ${date}`);
-
               if (index !== 0 && !isTvlDataHourly && date - curr.tokens![index - 1].date > 86400) {
                 const prev = curr.tokens![index - 1];
 
@@ -278,8 +267,6 @@ export default async function craftParentProtocol({
           }
 
           curr.tvl.forEach(({ date, totalLiquidityUSD }, index) => {
-            console.log(`CHECK 6 ${curr.name} ${date}`);
-
             if (index !== 0 && !isTvlDataHourly && date - curr.tvl[index - 1].date > 86400) {
               const prev = curr.tvl[index - 1];
               acc.tvl[prev.date + 86400] =

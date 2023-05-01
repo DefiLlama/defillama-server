@@ -17032,6 +17032,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Arbitrum"],
     module: "handlefi-fxpreps/index.js",
+    treasury: "handlefi.js",
     twitter: "handle_fi",
     forkedFrom: ["GMX"],
     listedAt: 1665919003,

@@ -52,7 +52,9 @@ export default async function craftParentProtocol({
   isTreasuryApi?: boolean;
 }) {
   const childProtocols = isTreasuryApi
-    ? treasuries.filter((protocol) => protocol.parentProtocol === parentProtocol.id)
+    ? treasuries
+        .filter((protocol) => protocol.parentProtocol === parentProtocol.id)
+        .map((p) => ({ ...p, name: p.name.replace(" (treasury)", "") }))
     : protocols.filter((protocol) => protocol.parentProtocol === parentProtocol.id);
 
   if (childProtocols.length < 1 || childProtocols.map((p) => p.name).includes(parentProtocol.name)) {
@@ -72,8 +74,6 @@ export default async function craftParentProtocol({
       fetch(`${PROTOCOL_API}/${sluggify(protocolData)}?includeAggregatedTvl=true`).then((res) => res.json())
     )
   );
-
-  console.log({ parentProtocol, childProtocols, childProtocolsTvls });
 
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
     isTreasuryApi ? false : tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;

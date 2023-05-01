@@ -60,7 +60,7 @@ export default [
         sources: ["https://vote.beefy.finance/#/proposal/0x2a7500179f484c265bc027b664b8bffb67132583541c70b89773d949e8a74cc4"],
         headcount: 16,
         annualUsdCost: {
-            salaries: 131000*12,
+            salaries: 131000*12 + 240220,
         },
         lastUpdate: "2023-04-29"
     },

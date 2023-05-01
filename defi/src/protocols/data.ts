@@ -2862,6 +2862,7 @@ const data: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum", "OKExChain", "Binance", "Polygon", "Heco", "Arbitrum"],
     module: "wepiggy.js",
+    treasury: "we-piggy.js",
     twitter: "wepiggydotcom",
     audit_links: ["https://github.com/WePiggy/wepiggy-contracts/tree/master/docs/audits"],
     oracles: ["Chainlink"],
@@ -2962,6 +2963,7 @@ const data: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum", "Polygon"],
     module: "stakedao/index.js",
+    treasury: "stake-dao.js",
     twitter: "StakeDAOHQ",
     governanceID: ["snapshot:stakedao.eth"]
   },

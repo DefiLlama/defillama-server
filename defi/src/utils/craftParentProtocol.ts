@@ -75,8 +75,6 @@ export default async function craftParentProtocol({
     )
   );
 
-  console.log({ parentProtocol, childProtocols, childProtocolsTvls });
-
   const isHourlyTvl = (tvl: Array<{ date: number }>) =>
     isTreasuryApi ? false : tvl.length < 2 || tvl[1].date - tvl[0].date < 86400 ? true : false;
 

@@ -30115,13 +30115,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2768",
-    name: "LSDx Finance",
+    name: "LSDx Farm",
     address: "0xfAC77A24E52B463bA9857d6b758ba41aE20e31FF",
     symbol: "LSD",
     url: "https://www.lsdx.finance",
     description: "LSDx is an ultra-liquid protocol for all LSD. MasterChef",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/lsdx-finance.jpg`,
+    logo: `${baseIconsUrl}/lsdx-farm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -30133,6 +30133,7 @@ const data2: Protocol[] = [
     module: "lsdx/index.js",
     treasury: "lsdx-finance.js",
     twitter: "LSDxfinance",
+    parentProtocol: "parent#lsdx-finance",
     listedAt: 1680550578
   },
   {
@@ -33432,6 +33433,29 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "backed_xyz",
     listedAt: 1682951218
+  },
+  {
+    id: "2920",
+    name: "LSDx ETHx",
+    address: "0xfAC77A24E52B463bA9857d6b758ba41aE20e31FF",
+    symbol: "LSD",
+    url: "https://www.lsdx.finance/ethx",
+    description:
+      'an ultra-liquid protocol for all LSD',
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/lsdx-ethx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Ethereum"],
+    module: "ethx/index.js",
+    forkedFrom: [],
+    oracles: [],
+    twitter: "LSDxfinance",
+    parentProtocol: "parent#lsdx-finance",
+    listedAt: 1682961058
   },
 ]
 export default data2;

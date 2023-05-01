@@ -33470,7 +33470,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/blur-lending.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "blur",
+    gecko_id: null,
     cmcId: null,
     category: "NFT Lending",
     chains: ["Ethereum"],
@@ -33479,7 +33479,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1672970801,
-    parentProtocol: "parent#blur"
+    parentProtocol: "parent#blur-finance"
   },
 ]
 export default data2;

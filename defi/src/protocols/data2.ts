@@ -1847,6 +1847,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "relayChain/index.js",
     twitter: "relay_chain",
+    treasury: "relay.js",
     audit_links: ["https://consensys.net/diligence/audits/private/adash47d-chainbridge/"],
     listedAt: 1646164456,
   },
@@ -9276,6 +9277,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "zeroswap/index.js",
+    treasury: "zero-swap.js",
     twitter: "ZeroSwapLabs",
     audit_links: [
       "https://github.com/TechRate/Smart-Contract-Audits/blob/main/October/Zeroswap.pdf",
@@ -9734,6 +9736,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "insuredao/index.js",
     twitter: "insuredao",
+    treasury: "insure-dao.js",
     audit_links: ["https://drive.google.com/file/d/1RTwAYuPBmQCVrmor-iZ9dFAGlCkdMtdR/view?usp=sharing"],
     listedAt: 1655973909
   },
@@ -13434,6 +13437,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "routerprotocol/index.js",
+    treasury: "router.js",
     twitter: "routerprotocol",
     audit_links: [
       "https://www.certik.com/projects/router",
@@ -18133,6 +18137,7 @@ const data2: Protocol[] = [
     category: "Cross Chain",
     chains: ["Ethereum", "Binance"],
     module: "spherium/index.js",
+    treasury: "spherium.js",
     twitter: "SpheriumFinance",
     forkedFrom: [],
     oracles: [],
@@ -18263,6 +18268,7 @@ const data2: Protocol[] = [
     twitter: "axelarcore",
     forkedFrom: [],
     oracles: [],
+    treasury: "axelar.js",
     audit_links: ["https://github.com/axelarnetwork/audits"],
     listedAt: 1667045416
   },
@@ -23418,6 +23424,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Arbitrum"],
     module: "zyberswap/index.js",
+    treasury: "zyber-swap.js",
     twitter: "zyberswap",
     oracles: ["TWAP"],
     forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.

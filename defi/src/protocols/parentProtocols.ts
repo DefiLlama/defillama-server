@@ -1462,6 +1462,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LSDxfinance",
   },
+  {
+    id: "parent#blur",
+    name: "Blur",
+    url: "https://blur.io/",
+    description: "The NFT marketplace for pro traders",
+    logo: `${baseIconsUrl}/blur.png`,
+    gecko_id: "blur",
+    cmcId: null,
+    chains: ["Ethereum"],
+    twitter: "blur_io",
+  },
 ];
 
 export default parentProtocols;

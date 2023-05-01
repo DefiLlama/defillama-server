@@ -18079,7 +18079,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Reserve Currency",
     chains: ["Avalanche"],
     module: "galaxygoggle/index.js",
-    treasury: "galaxygoggle.js",
+    treasury: "galaxygoogle.js",
     twitter: "GalaxyGoggleDAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638809285,

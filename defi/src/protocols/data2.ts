@@ -10609,13 +10609,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1891",
-    name: "Blur RUG",
+    name: "Blur Finance",
     address: "bsc:0x4165084A6e5388ce53c9D9892f904a2712Dd943A",
     symbol: "BLR",
     url: "https://www.blur.finance",
     description: "Blur Finance is a revolutionary and user-friendly Yield Aggregator built For Binance Smart Chain",
     chain: "Binance",
-    logo: `${baseIconsUrl}/blur-rug.png`,
+    logo: `${baseIconsUrl}/blur-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "blur-finance",
@@ -22233,7 +22233,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1672970801,
-    parentProtocol: "parent#blur-finance"
+    parentProtocol: "parent#blur"
   },
   {
     id: "2415",
@@ -33479,7 +33479,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1672970801,
-    parentProtocol: "parent#blur-finance"
+    parentProtocol: "parent#blur"
   },
 ]
 export default data2;

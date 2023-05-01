@@ -1463,7 +1463,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LSDxfinance",
   },
   {
-    id: "parent#blur-finance",
+    id: "parent#blur",
     name: "Blur Finance",
     url: "https://blur.io/",
     description: "The NFT marketplace for pro traders",

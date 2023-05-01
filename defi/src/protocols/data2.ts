@@ -33474,7 +33474,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "NFT Lending",
     chains: ["Ethereum"],
-    module: "blur/index.js",
+    module: "blur-lend/index.js",
     twitter: "blur_io",
     forkedFrom: [],
     oracles: [],

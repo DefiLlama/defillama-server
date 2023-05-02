@@ -1,7 +1,7 @@
 import { wrap, IResponse, errorResponse } from "./utils/shared";
 import { wrapResponseOrRedirect } from "./getProtocol";
 import craftProtocol from "./utils/craftProtocol";
-import { treasuries } from "./protocols/data";
+import treasuries from "./protocols/treasury";
 import sluggify from "./utils/sluggify";
 import parentProtocols from "./protocols/parentProtocols";
 import craftParentProtocol from "./utils/craftParentProtocol";

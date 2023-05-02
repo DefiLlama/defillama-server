@@ -2,7 +2,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { storeTvl } from "./storeTvlInterval/getAndStoreTvl";
 import { getCurrentBlock } from "./storeTvlInterval/blocks";
 import { getCoingeckoLock, releaseCoingeckoLock } from "./utils/shared/coingeckoLocks";
-import { treasuries } from "./protocols/data";
+import treasuries from "./protocols/treasury";
 import { importAdapter } from "./utils/imports/importAdapter";
 import { executeAndIgnoreErrors } from "./storeTvlInterval/errorDb";
 import { getCurrentUnixTimestamp } from "./utils/date";

@@ -1,5 +1,6 @@
 import { wrap, IResponse, cache20MinResponse } from "./utils/shared";
-import protocols, { Protocol, treasuries } from "./protocols/data";
+import protocols, { Protocol, } from "./protocols/data";
+import treasuries from "./protocols/treasury";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
 import {

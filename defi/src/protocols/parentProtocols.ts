@@ -16,6 +16,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     gecko_id: "aave",
     cmcId: "7278",
+    treasury: "aave.js",
     twitter: "AaveAave",
     governanceID: ["snapshot:aave.eth"],
   },
@@ -30,6 +31,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6758",
     chains: [],
     twitter: "SushiSwap",
+    treasury: "sushiswap.js",
     governanceID: ["snapshot:sushigov.eth"]
   },
   {
@@ -53,6 +55,7 @@ const parentProtocols: IParentProtocol[] = [
     logo: `${baseIconsUrl}/benqi-lending.jpg`,
     gecko_id: "benqi",
     cmcId: "9288",
+    treasury: "benqi.js",
     chains: [],
     twitter: "BenqiFinance",
   },
@@ -218,6 +221,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6953",
     chains: [],
     twitter: "fraxfinance",
+    treasury: "frax.js",
     governanceID: [
       "snapshot:frax.eth",
       "compound:ethereum:0xd74034c6109a23b6c7657144cacbbbb82bdcb00e"//FXS
@@ -226,6 +230,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#compound-finance",
     name: "Compound Finance",
+    treasury: "compound.js",
     url: "https://compound.finance/",
     description:
       "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.",
@@ -316,6 +321,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "12387",
     chains: [],
     twitter: "ribbonfinance",
+    treasury: "ribbon.js",
     governanceID: ["snapshot:rbn.eth", "snapshot:gauge.rbn.eth"]
   },
   {
@@ -406,6 +412,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "11396",
     chains: [],
     twitter: "traderjoe_xyz",
+    treasury: "traderjoe.js",
     governanceID: ["snapshot:joegovernance.eth"]
   },
   {
@@ -419,6 +426,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "11794",
     chains: [],
     twitter: "handle_fi",
+    treasury: "handlefi.js",
     governanceID: ["snapshot:handlefx.eth"]
   },
   {
@@ -456,6 +464,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "7083",
     chains: [],
     twitter: "Uniswap",
+    treasury: "uniswap.js",
     governanceID: [
       "snapshot:uniswap", 
       "compound:ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3",
@@ -613,6 +622,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5748",
     chains: [],
     twitter: "mstable_",
+    treasury: "mstable.js",
     governanceID: ["snapshot:mstablegovernance.eth"]
   },
   {
@@ -713,6 +723,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "2873",
     chains: [],
     twitter: "MetronomeDAO",
+    treasury: "metronome.js",
     governanceID: ["snapshot:metronome.eth", "compound:ethereum:0xc8697de7c190244bfd63d276823aa20035cb5a12"]
   },
   {
@@ -750,6 +761,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "inverse-finance",
     cmcId: "8720",
     chains: [],
+    treasury: "inverse.js",
     governanceID: ["compound:ethereum:0x35d9f4953748b318f18c30634ba299b237eedfff"],
     twitter: "InverseFinance",
   },
@@ -788,6 +800,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8043",
     chains: [],
     twitter: "TheMahaDAO",
+    treasury: "mahadao.js",
     governanceID: ["snapshot:maha.eth"]
   },
   {
@@ -824,6 +837,7 @@ const parentProtocols: IParentProtocol[] = [
     "Decentralized Perps. Trade with up to 100x leverage directly from your wallet. ",
     logo: `${baseIconsUrl}/cap-finance.jpg`,
     gecko_id: "cap",
+    treasury: "cap.js",
     cmcId: "5809",
     chains: [],
     twitter: "CapDotFinance",
@@ -865,6 +879,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "23419",
     chains: [],
     twitter: "zyberswap",
+    treasury: "zyber-swap.js",
     governanceID: ["snapshot:zyberswap.eth"]
   },
   {
@@ -890,6 +905,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "bankofcronos",
+    treasury: "bankofcronos.js",
   },
   {
     id: "parent#benddao",
@@ -902,6 +918,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19162",
     chains: [],
     twitter: "BendDAO",
+    treasury: "benddao.js",
     governanceID: ["snapshot:benddao.eth"]
   },
   {
@@ -999,7 +1016,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "5728",
     chains: [],
     twitter: "Balancer",
-    governanceID: ["snapshot:balancer.eth"]
+    governanceID: ["snapshot:balancer.eth"],
+    treasury: "balancer.js"
   },
   {
     id: "parent#kyberswap",
@@ -1294,6 +1312,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "13881",
     chains: [],
     twitter: "Hector_Network",
+    treasury: "hector.js",
     governanceID: ["snapshot:hectordao.eth"]
   },
   {
@@ -1416,6 +1435,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    treasury: "maia-dao.js",
     twitter: "MaiaDAOEco",
   },
   {
@@ -1460,6 +1480,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    treasury: "lsdx-finance.js",
     twitter: "LSDxfinance",
   },
   {

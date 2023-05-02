@@ -2,6 +2,7 @@ import dynamodb from "../utils/shared/dynamodb";
 import { dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, hourlyTvl } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";
 import { PromisePool } from '@supercharge/promise-pool'
+import { clearProtocolCacheById } from "./utils/clearProtocolCache";
 
 
 async function main() {
@@ -14,7 +15,7 @@ async function main() {
   const protocol = getProtocol(protocolName)
   const deleteFrom = (+new Date(dateFromStr)) / 1000
   const deleteTo = (+new Date(dateToStr)) / 1000
-  for (const tvlFunc of [dailyTokensTvl, dailyTvl, dailyUsdTokensTvl, 
+  for (const tvlFunc of [dailyTokensTvl, dailyTvl, dailyUsdTokensTvl,
     // hourlyTvl // - we retain hourly in case we want to refill using it for some reason
   ]) {
     const data = await dynamodb.query({
@@ -30,7 +31,7 @@ async function main() {
     await PromisePool
       .withConcurrency(42)
       .for(items)
-      .process(async  (d: any) => {
+      .process(async (d: any) => {
         await dynamodb.delete({
           Key: {
             PK: d.PK,
@@ -38,7 +39,9 @@ async function main() {
           },
         });
       })
+
   }
+  return clearProtocolCacheById(protocol.id)
 }
 
 main().then(() => {

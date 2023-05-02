@@ -1,5 +1,5 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
-import { treasuries } from "./protocols/data";
+import treasuries from "./protocols/treasury";
 import invokeLambda from "./utils/shared/invokeLambda";
 
 function shuffleArray(array:number[]) {

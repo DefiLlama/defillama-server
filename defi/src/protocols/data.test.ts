@@ -1,4 +1,5 @@
-import protocols, { Protocol, treasuries } from "./data";
+import protocols from "./data";
+import treasuries  from "./treasury";
 import { baseIconsUrl } from "../constants";
 import { importAdapter, } from "../cli/utils/importAdapter";
 import { normalizeChain, chainCoingeckoIds, getChainDisplayName, transformNewChainName } from "../utils/normalizeChain";
@@ -70,6 +71,14 @@ test("valid treasury fields", async () => {
       }
     }
   }))
+});
+
+
+test("treasury on parent protocol when it exists", async () => {
+  const childWithTreasury = protocols.filter(i => i.treasury && i.parentProtocol)
+  if (childWithTreasury.length)
+    console.log('Migrate treasuries for: ', childWithTreasury.map(i => i.name))
+  expect(childWithTreasury.length).toBeLessThanOrEqual(0)
 });
 
 test("projects have a single chain or each chain has an adapter", async () => {

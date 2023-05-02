@@ -1,4 +1,5 @@
-import protocols, {treasuries} from "../protocols/data";
+import protocols from "../protocols/data";
+import treasuries from "../protocols/treasury";
 import { writeFileSync, readdirSync } from "fs"
 import { Adapter } from "@defillama/dimension-adapters/adapters/types";
 

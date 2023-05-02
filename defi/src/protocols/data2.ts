@@ -33519,5 +33519,28 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1683044490
   },
+  {
+    id: "2924",
+    name: "GoodEntry",
+    address: null,
+    symbol: "-",
+    url: "https://goodentry.io",
+    description:
+      "Good Entry is an onchain derivative exchange enabling leveraged day trading with built-in downside protection, built on top of Uniswap v3. Liquidity providers earn swap and trading fees without counterparty risk.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/goodentry.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "goodentry/index.js",
+    twitter: "goodentrylabs",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://github.com/GoodEntry-io/audits/blob/main/Roe-Protofire-Audit.pdf"],
+    listedAt: 1683061507
+  },
 ]
 export default data2;

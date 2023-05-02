@@ -1494,5 +1494,10 @@ export default {
         parentId: "Velocimeter",
         "enabled": true,
         "id": "2668"
+    },
+    "joe-v2.1": {
+        parentId: "Trader Joe",
+        "enabled": true,
+        "id": "2906",
     }
 } as AdaptorsConfig

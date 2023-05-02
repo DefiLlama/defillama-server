@@ -8,6 +8,7 @@ import manualInputAdapter from "./manualInput";
 import realtAdapter from "./realt";
 import metronomeAdapter from "./metronome";
 import { wrappedGasTokens } from "../utils/gasTokens";
+import collateralizedAdapter from "./collateralizedAssets";
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
@@ -107,7 +108,7 @@ export function pods(timestamp: number = 0) {
 export function distressed(timestamp: number = 0) {
   console.log("starting distressed");
   return Promise.all([
-    distressedAdapter("harmony", timestamp),
+    // distressedAdapter("harmony", timestamp),
     distressedAdapter("klaytn", timestamp),
     distressedAdapter("arbitrum", timestamp),
     distressedAdapter("bsc", timestamp),
@@ -132,5 +133,15 @@ export function realt(timestamp: number = 0) {
   return Promise.all([
     realtAdapter("ethereum", timestamp),
     realtAdapter("xdai", timestamp),
+  ]);
+}
+export function collateralizedAssets(timestamp: number = 0) {
+  console.log("starting collateralized assets");
+  return collateralizedAdapter("arbitrum", timestamp, [
+    {
+      token: "0x52c64b8998eb7c80b6f526e99e29abdcc86b841b", // DSU
+      vault: "0x0d49c416103cbd276d9c3cd96710db264e3a0c27",
+      collateral: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+    },
   ]);
 }

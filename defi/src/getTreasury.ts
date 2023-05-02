@@ -28,7 +28,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     const response = await craftParentProtocol({
       parentProtocol,
       useHourlyData: false,
-      skipAggregatedTvl: false,
+      skipAggregatedTvl: true,
       isTreasuryApi: true,
     });
 
@@ -45,7 +45,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     protocolData,
     useNewChainNames: true,
     useHourlyData: false,
-    skipAggregatedTvl: false,
+    skipAggregatedTvl: true,
   });
 
   return wrapResponseOrRedirect(response);

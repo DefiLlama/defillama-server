@@ -80,6 +80,26 @@ export default async function craftParentProtocol({
 
   const currentTime = Math.floor(Date.now() / 1000);
 
+  if (isTreasuryApi) {
+    const child = childProtocolsTvls.filter((prot: any) => (prot.message ? false : true))?.[0] ?? null;
+
+    if (!child) {
+      return errorResponse({
+        message: "Protocol is not in our database",
+      });
+    }
+
+    return {
+      ...parentProtocol,
+      currentChainTvls: child.currentChainTvls,
+      chainTvls: child.chainTvls,
+      tokens: child.tokens,
+      tokensInUsd: child.tokensInUsd,
+      tvl: child.tvl,
+      isParentProtocol: true,
+    };
+  }
+
   const { currentChainTvls, chainTvls, tokensInUsd, tokens, tvl } = childProtocolsTvls
     .filter((prot: any) => (prot.message ? false : true))
     .sort((a, b) => b.tvl.length - a.tvl.length)

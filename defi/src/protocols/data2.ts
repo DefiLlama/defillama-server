@@ -33465,7 +33465,7 @@ const data2: Protocol[] = [
     symbol: "BLUR",
     url: "https://blur.io/",
     description:
-      "The NFT marketplace for pro traders",
+      "Blur Lending(aka Blend) enables NFT owners to borrow ETH against their assets and offers a Buy Now, Pay Later (BNPL) feature to purchase NFTs with partial payment upfront.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/blur-lending.png`,
     audits: "0",

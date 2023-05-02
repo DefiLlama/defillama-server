@@ -20193,6 +20193,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Services",
     chains: ["Ethereum"],
     module: "everipedia/index.js",
+    treasury: "iq.js",
     twitter: "IQWIKI",
     listedAt: 1640256058,
   },

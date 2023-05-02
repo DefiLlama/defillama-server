@@ -33475,5 +33475,49 @@ const data2: Protocol[] = [
     listedAt: 1682985457,
     parentProtocol: "parent#blur"
   },
+  {
+    id: "2922",
+    name: "Flux Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://app.fluxexchange.io",
+    description:
+      "Flux exchange is a decentralized platform for spot and perpetual trading that allows liquidity providers to earn income through market making, swap fees, and leveraged trading.",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/flux-exchange.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Fantom"],
+    module: "flux-exchange/index.js",
+    twitter: "Flux_Exchange",
+    forkedFrom: ["GMX"],
+    oracles: ["ChainLink"],
+    listedAt: 1683044487
+  },
+  {
+    id: "2923",
+    name: "TProtocol",
+    address: "0x07Ac55797D4F43f57cA92a49E65ca582cC287c27",
+    symbol: "TBT",
+    url: "https://www.tprotocol.io",
+    description:
+      "First DeFi composable LSD solution for stablecoins.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/tprotocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "rebasing-tbt",
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "t-protocol/index.js",
+    twitter: "TProtocol_",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1683044490
+  },
 ]
 export default data2;

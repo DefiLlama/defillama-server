@@ -1494,7 +1494,6 @@ const data2: Protocol[] = [
     oracles: ["Chainlink"],
     forkedFrom: ["Liquity"],
     module: "mahadao/index.js",
-    treasury: "mahadao.js",
     twitter: "TheMahaDAO",
     parentProtocol: "parent#mahadao",
     listedAt: 1645824445,
@@ -8035,7 +8034,6 @@ const data2: Protocol[] = [
     oracles: ["NFTOracle", "ReserveOracle"],
     forkedFrom: [],
     module: "benddao/index.js",
-    treasury: "benddao.js",
     twitter: "BendDAO",
     audit_links: ["https://www.certik.com/projects/bend-dao",
       "https://www.verilog.solutions/audits/BendDAO",
@@ -17034,7 +17032,6 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Arbitrum"],
     module: "handlefi-fxpreps/index.js",
-    treasury: "handlefi.js",
     twitter: "handle_fi",
     forkedFrom: ["GMX"],
     listedAt: 1665919003,
@@ -17358,7 +17355,6 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "uniswap/index.js",
-    treasury: "uniswap.js",
     twitter: "Uniswap",
     audit_links: [
       "https://github.com/Uniswap/uniswap-v3-core/tree/main/audits",
@@ -23430,7 +23426,6 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Arbitrum"],
     module: "zyberswap/index.js",
-    treasury: "zyber-swap.js",
     twitter: "zyberswap",
     oracles: ["TWAP"],
     forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.
@@ -23466,7 +23461,6 @@ const data2: Protocol[] = [
     name: "Cap V4",
     address: "arbitrum:0x43044f861ec040db59a7e324c40507addb673142",
     symbol: "CAP",
-    treasury: "cap.js",
     url: "https://cap.io",
     description:
       "Decentralized Perps. Trade global markets with low fees, deep liquidity, and up to 100× leverage.",
@@ -25171,7 +25165,6 @@ const data2: Protocol[] = [
     category: "Reserve Currency",
     chains: ["Cronos"],
     module: "BankOfCronos/index.js",
-    treasury: "bankofcronos.js",
     twitter: "bankofcronos",
     oracles: ["Tectonic"],
     forkedFrom: ["Olympus DAO"],
@@ -30135,7 +30128,6 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "lsdx/index.js",
-    treasury: "lsdx-finance.js",
     twitter: "LSDxfinance",
     parentProtocol: "parent#lsdx-finance",
     listedAt: 1680550578

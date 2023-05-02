@@ -103,7 +103,7 @@ async function getPools(
 
   return pools;
 }
-function mapGaugeTokenBalances(calls: Multicall[], chain: any) {
+export function mapGaugeTokenBalances(calls: Multicall[], chain: any) {
   const mapping: any = {
     "0x7f90122bf0700f9e7e1f688fe926940e8839f353": {
       to: "0xbF7E49483881C76487b0989CD7d9A8239B20CA41",
@@ -140,7 +140,11 @@ function mapGaugeTokenBalances(calls: Multicall[], chain: any) {
     return { target: token, params: [owner] };
   });
 }
-function aggregateBalanceCalls(coins: string[], nCoins: string[], pool: any) {
+export function aggregateBalanceCalls(
+  coins: string[],
+  nCoins: string[],
+  pool: any,
+) {
   let calls: Multicall[] = [];
   [...Array(Number(nCoins[0])).keys()].map((n) =>
     calls.push({ target: coins[n], params: [pool.output] }),
@@ -182,6 +186,7 @@ async function pcsPoolBalances(
       chain,
       abi: "erc20:balanceOf",
       block,
+      permitFailure: true,
     })
   ).output;
 
@@ -242,7 +247,11 @@ async function poolBalances(
 
   return await getGasTokenBalance(chain, pool.output, balances, block);
 }
-async function PoolToToken(chain: any, pool: any, block: number | undefined) {
+export async function PoolToToken(
+  chain: any,
+  pool: any,
+  block: number | undefined,
+) {
   pool = pool.output.toLowerCase();
   let token: string;
 
@@ -358,7 +367,7 @@ async function PoolToToken(chain: any, pool: any, block: number | undefined) {
   }
   return token;
 }
-async function getUnderlyingPrices(
+export async function getUnderlyingPrices(
   balances: any,
   chain: any,
   timestamp: number,
@@ -487,7 +496,7 @@ async function unknownPools(
     }
   }
 }
-async function unknownTokens(
+export async function unknownTokens(
   chain: any,
   block: number | undefined,
   writes: Write[],

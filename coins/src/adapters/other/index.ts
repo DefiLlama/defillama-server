@@ -44,6 +44,14 @@ export function unknownTokens(timestamp: number = 0) {
     ),
     unknownTokenAdapter(
       timestamp,
+      "0xcD15C231b8A0Bae40bD7938AE5eA8e43f1e9a15F",
+      "0x0D94e59332732D18CF3a3D457A8886A2AE29eA1B",
+      "0xC348F894d0E939FE72c467156E6d7DcbD6f16e21",
+      false,
+      "songbird",
+    ),
+    unknownTokenAdapter(
+      timestamp,
       "0xa0feB3c81A36E885B6608DF7f0ff69dB97491b58",
       "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
       "0x20f663CEa80FaCE82ACDFA3aAE6862d246cE0333",

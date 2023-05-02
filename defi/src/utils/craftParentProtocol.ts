@@ -1,10 +1,11 @@
 import type { IParentProtocol } from "../protocols/types";
-import protocols, { treasuries } from "../protocols/data";
+import protocols from "../protocols/data";
 import { errorResponse } from "./shared";
 import { IProtocolResponse, ICurrentChainTvls, IChainTvl, ITokens, IRaise } from "../types";
 import sluggify from "./sluggify";
 import fetch from "node-fetch";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
+import treasuries from "../protocols/treasury";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;

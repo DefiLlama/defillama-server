@@ -807,5 +807,9 @@ export default {
                 "id": "2895"
             }
         },
+    },
+    "pika-protocol": {
+        "enabled": true,
+        "id": "916"
     }
 } as AdaptorsConfig

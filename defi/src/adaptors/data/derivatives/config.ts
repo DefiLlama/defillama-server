@@ -97,5 +97,9 @@ export default {
     "polynomial-trade": {
         "enabled": true,
         "id": "2848"
+    },
+    "pika-protocol": {
+        "enabled": true,
+        "id": "916"
     }
 } as AdaptorsConfig

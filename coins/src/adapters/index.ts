@@ -96,4 +96,5 @@ export default {
   reservoir: require("./nft/reservoir"),
   jpegd: require("./yield/jpegd"),
   mare: require("./moneyMarkets/compound"),
+  collateralizedAssets: require("./other"),
 };

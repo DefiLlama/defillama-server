@@ -30,6 +30,7 @@ export default {
   yieldProtocol: require("./yield/yield-protocol"),
   timeless: require("./yield/timeless"),
   beefy: require("./yield/beefy"),
+  spares: require("./markets/curve"),
   platypus: require("./markets/platypus"),
   curve1: require("./markets/curve"),
   curve1b: require("./markets/curve"),

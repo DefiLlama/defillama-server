@@ -23245,6 +23245,7 @@ const data2: Protocol[] = [
     category: "Yield",
     chains: ["Arbitrum"],
     module: "neutra-finance/index.js",
+    treasury: "neutra-finance.js",
     twitter: "Neutrafinance",
     oracles: [],
     forkedFrom: [],

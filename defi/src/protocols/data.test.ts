@@ -25,10 +25,12 @@ test("all chains are on chainMap", async () => {
         }
       }
     })
-    protocol.chains.concat(protocol.chain).map(chainRaw => {
+    const chains = [...protocol.chains]
+    if (protocol.chain) chains.push(protocol.chain)
+    chains.map(chainRaw => {
       const chain = transformNewChainName(chainRaw)
       if (chainCoingeckoIds[chain] === undefined && chain !== "Multi-Chain") {
-        throw new Error(`${chain} (found in ${protocol.name}) should be on chainMap`)
+        throw new Error(`${chain} (or ${chainRaw}) (found in ${protocol.name}) should be on chainMap`)
       }
     })
   }

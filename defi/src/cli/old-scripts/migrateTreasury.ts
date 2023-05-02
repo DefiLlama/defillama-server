@@ -90,7 +90,7 @@ const updateData = async () => {
 };
 
 const deleteData = async () => {
-  for (const protocolName of protocolTest) {
+  for (const protocolName of protocols) {
     console.log('deleting data for ', protocolName)
     const tProtocol = getProtocol(protocolName + ' (Treasury)');
     const treasuryData = JSON.parse(fs.readFileSync(`${saveFolder}/${protocolName}-treasury.json`))
@@ -102,7 +102,7 @@ const deleteData = async () => {
 
 const main = async () => {
   // return fetchData()
-  return updateData()
+  // return updateData()
   // return deleteData()
 };
 
@@ -124,9 +124,14 @@ async function deleteItems(items: any) {
   await PromisePool
     .withConcurrency(21)
     .for(items.flat())
-    .process(async (record: any) => {
+    .process(async (item: any) => {
       try {
-        await dynamodb.delete(record)
+        await dynamodb.delete({
+          Key: {
+            PK: item.PK,
+            SK: item.SK,
+          },
+        })
       } catch (e) {
         console.error(e)
         process.exit(1)

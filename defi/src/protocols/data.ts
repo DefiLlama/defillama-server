@@ -4978,7 +4978,6 @@ const data: Protocol[] = [
     twitter: "AlpacaFinance",
     parentProtocol: "parent#alpaca-finance",
     audit_links: ["https://docs.alpacafinance.org/our-protocol-1/transparency"],
-    governanceID: ["snapshot:alpacafinance.eth"]
   },
   {
     id: "346",
@@ -14867,7 +14866,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.com/projects/hector-network"],
     listedAt: 1636755480,
     parentProtocol: "parent#hector-network",
-    governanceID: ["snapshot:hectordao.eth"]
   },
   {
     id: "833",
@@ -22493,7 +22491,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["DIA"],
     audit_links: ["https://github.com/Sperax/Audit_Reports"],
     parentProtocol: "parent#sperax",
-    governanceID: ["snapshot:speraxdao.eth"],
     listedAt: 1641400651,
   },
   {
@@ -26331,7 +26328,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     language: "Solidity",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1644441697,
-    governanceID: ["snapshot:maiadao.eth"],
     parentProtocol: "parent#maia-dao-ecosystem",
   },
   {

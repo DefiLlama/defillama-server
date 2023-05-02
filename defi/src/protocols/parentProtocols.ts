@@ -1436,6 +1436,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     treasury: "maia-dao.js",
+    governanceID: ["snapshot:maiadao.eth"],
     twitter: "MaiaDAOEco",
   },
   {

@@ -21408,7 +21408,6 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1671639906,
     parentProtocol: "parent#stake.link",
-    governanceID: ["snapshot:stakedotlink.eth"]
   },
   {
     id: "2379",
@@ -26683,7 +26682,6 @@ const data2: Protocol[] = [
     module: "balancer/index.js",
     twitter: "BalancerLabs",
     audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
-    governanceID: ["snapshot:balancer.eth"],
     parentProtocol: "parent#balancer"
   },
   {

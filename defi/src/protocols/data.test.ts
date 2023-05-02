@@ -83,6 +83,13 @@ test("treasury on parent protocol when it exists", async () => {
   expect(childWithTreasury.length).toBeLessThanOrEqual(0)
 });
 
+test("governance on parent protocol when it exists", async () => {
+  const childGovs = protocols.filter(i => i.governanceID && i.parentProtocol && !['1384', '1401', '1853'].includes(i.id))
+  if (childGovs.length)
+    console.log('Migrate Governance ids for: ', childGovs.map(i => i.name))
+  expect(childGovs.length).toBeLessThanOrEqual(0)
+});
+
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
     if (protocol.module === 'dummy.js') continue;

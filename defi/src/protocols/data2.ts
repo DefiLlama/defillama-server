@@ -13810,7 +13810,7 @@ const data2: Protocol[] = [
     cmcId: "21330",
     category: "CDP",
     chains: ["Binance"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Binance Oracle"],
     forkedFrom: ["MakerDAO"],
     module: "helio-money/index.js",
     twitter: "Helio_Money",

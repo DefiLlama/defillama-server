@@ -33658,7 +33658,7 @@ const data2: Protocol[] = [
     module: "spark-fi/index.js",
     twitter: "spark_protocol",
     forkedFrom: ["Aave"],
-    oracles: [],
+    oracles: ["Chainlink"],
     audit_links: [],
     listedAt: 1683144119
   },

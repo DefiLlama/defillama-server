@@ -33662,5 +33662,28 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1683144119
   },
+  {
+    id: "2930",
+    name: "Curve USD",
+    address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
+    symbol: "CRV",
+    url: "https://curve.fi",
+    description:
+      "Curve USD",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/curve-usd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables",
+    chains: ["Ethereum"],
+    module: "crv-usd/index.js",
+    twitter: "CurveFinance",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1683150941
+  },
 ]
 export default data2;

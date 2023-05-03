@@ -33071,7 +33071,7 @@ const data2: Protocol[] = [
   {
     id: "2904",
     name: "Lybra Finance",
-    address: "0xC98835e792553e505AE46e73a6fD27a23985aCcA",
+    address: "0xF1182229B71E79E504b1d2bF076C15a277311e05",
     symbol: "LBR",
     url: "https://lybra.finance",
     description: "Lybra Finance is developing the next generation of Omnichain LSD-based stablecoins",

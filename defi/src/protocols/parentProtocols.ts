@@ -1495,6 +1495,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: ["Ethereum"],
     twitter: "blur_io",
   },
+  {
+    id: "parent#guru-network-dao",
+    name: "Guru Network DAO",
+    url: "https://blur.io/",
+    description: "Multi-Faceted Growth Hacker helping aid On-Chain DApp' Discovery+Utility, Tools & bespoke services to Users & Devs. Home to $ELITE's Growing Multi-chain Treasury",
+    logo: `${baseIconsUrl}/guru-network-dao.png`,
+    gecko_id: "ftm-guru",
+    cmcId: "13436",
+    chains: [],
+    twitter: "FTM1337",
+  },
 ];
 
 export default parentProtocols;

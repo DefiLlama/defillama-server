@@ -9432,6 +9432,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Swapr"],
     module: "VAX/index.js",
     twitter: "FTM1337",
+    parentProtocol: "parent#guru-network-dao",
     listedAt: 1655561386
   },
   {
@@ -21361,6 +21362,7 @@ const data2: Protocol[] = [
     module: "ABCDEFX/index.js",
     twitter: "FTM1337",
     forkedFrom: ["Solidly"],
+    parentProtocol: "parent#guru-network-dao",
     oracles: ["TWAP"],
     listedAt: 1671639901
   },
@@ -26576,6 +26578,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "Lockless/index.js",
     twitter: "FTM1337",
+    parentProtocol: "parent#guru-network-dao",
     listedAt: 1677530245
   },
   {
@@ -33565,6 +33568,99 @@ const data2: Protocol[] = [
     parentProtocol: "parent#wemix.fi",
     audit_links: ["https://docs.wemix.com/v/wemixfi-en/introduction/securityaudits"],
     listedAt: 1683115625
+  },
+  {
+    id: "2926",
+    name: "E3",
+    address: null,
+    symbol: "-",
+    url: "https://eliteness.network/e3",
+    description:
+      "E3 is a Dex offering zero-slippage trading and capital efficiency through its 'Bucket' model and concentrated liquidity.",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/e3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fantom"],
+    module: "E3/index.js",
+    twitter: "ftm1337",
+    forkedFrom: ["TraderJoe"],
+    oracles: [],
+    parentProtocol: "parent#guru-network-dao",
+    audit_links: [],
+    listedAt: 1683142326
+  },
+  {
+    id: "2927",
+    name: "ZooDAO",
+    address: "moonbeam:0x7cd3e6e1A69409deF0D78D17a492e8e143F40eC5",
+    symbol: "ZOO",
+    url: "https://zoodao.com",
+    description:
+      "ZooDAO is a no-loss yield farming game for NFTs powered by DeFi yields. Stake, Vote, Earn",
+    chain: "Moonbeam",
+    logo: `${baseIconsUrl}/zoodao.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "zoodao",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Moonbeam"],
+    module: "zoodao/index.js",
+    twitter: "ZooDAO",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/ZooDAO-Project/moonbeam-battles/blob/master/audit/ZooDAO_Moonbeam_Battles_Audit_Report_by_WatchPug.pdf"],
+    listedAt: 1683142758
+  },
+  {
+    id: "2928",
+    name: "Veax",
+    address: "near:-",
+    symbol: "VEAX",
+    url: "https://veax.com/",
+    description:
+      "Veax is a Concentrated Liquidity DEX built on the NEAR Protocol and complies with the NEP-141 standard for automated market makers (AMMs)",
+    chain: "Near",
+    logo: `${baseIconsUrl}/veax.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "veax",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Near"],
+    module: "veax/index.js",
+    twitter: "veaxlabs",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.veax.com/overview/security/external-smart-contract-audits"],
+    listedAt: 1683143073
+  },
+  {
+    id: "2929",
+    name: "Spark Lend",
+    address: null,
+    symbol: "-",
+    url: "https://www.sparkprotocol.io/",
+    description:
+      "Spark Lend is a DeFi lending platform that leverages a credit line from Maker called a Dai Direct Deposit Module (D3M) to offer competitive rates",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/spark-lend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "spark-fi/index.js",
+    twitter: "spark_protocol",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1683144119
   },
 ]
 export default data2;

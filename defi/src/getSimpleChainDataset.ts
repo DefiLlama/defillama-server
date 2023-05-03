@@ -130,7 +130,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   // convert data to csv format
   const csv = grid.map((r) => r.join(",")).join("\n");
 
-  const filename = `chain-dataset-${rawChain}-${event.queryStringParameters}.csv`;
+  const filename = `simpleDataset/chain-dataset-${rawChain}-${event.queryStringParameters}.csv`;
 
   await storeDatasetR2(filename, csv);
 

@@ -14,7 +14,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { constants, brotliCompress } from "zlib";
 import { promisify } from "util";
 import { importAdapter } from "./utils/imports/importAdapter";
-import { storeR2 } from "./utils/r2";
+import { storeR2, storeR2JSONString } from "./utils/r2";
 
 export function sum(sumDailyTvls: SumDailyTvls, chain: string, tvlSection: string, timestamp: number, itemTvl: number) {
   if (sumDailyTvls[chain] === undefined) {
@@ -254,6 +254,11 @@ const handler = async (_event: any) => {
       await storeR2(filename, compressedRespone, true);
     })
   );
+
+  const dataFalseTrue = await getHistoricalTvlForAllProtocols(false, true);
+  await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-true.json", JSON.stringify(dataFalseTrue))
+  const dataFalseFalse = await getHistoricalTvlForAllProtocols(false, false);
+  await storeR2JSONString("cache/getHistoricalTvlForAllProtocols/false-false.json", JSON.stringify(dataFalseFalse))
 };
 
 export default wrapScheduledLambda(handler);

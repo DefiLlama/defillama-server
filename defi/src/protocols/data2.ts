@@ -33657,7 +33657,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "spark-fi/index.js",
     twitter: "spark_protocol",
-    forkedFrom: [],
+    forkedFrom: ["Aave"],
     oracles: [],
     audit_links: [],
     listedAt: 1683144119

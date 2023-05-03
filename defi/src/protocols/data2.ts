@@ -33542,5 +33542,29 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/GoodEntry-io/audits/blob/main/Roe-Protofire-Audit.pdf"],
     listedAt: 1683061507
   },
+  {
+    id: "2925",
+    name: "WEMIX.FI Staking",
+    address: null,
+    symbol: "-",
+    url: "https://wemix.fi",
+    description:
+      "Stake your assets in staking products guaranteed by WEMIX and earn stable profits. Receive various rewards through various programs.",
+    chain: "WEMIX",
+    logo: `${baseIconsUrl}/wemix.fi-staking.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["WEMIX"],
+    module: "wemix-staking/index.js",
+    twitter: "WemixNetwork",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#wemix.fi",
+    audit_links: ["https://docs.wemix.com/v/wemixfi-en/introduction/securityaudits"],
+    listedAt: 1683115625
+  },
 ]
 export default data2;

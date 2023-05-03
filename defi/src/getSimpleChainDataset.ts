@@ -2,7 +2,7 @@ import { wrap, IResponse, errorResponse } from "./utils/shared";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName } from "./utils/normalizeChain";
 import { getHistoricalTvlForAllProtocols } from "./storeGetCharts";
 import { formatTimestampAsDate, getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
-import { buildRedirectR2, storeDatasetR2 } from "./utils/r2";
+import { buildRedirectR2, getR2, storeDatasetR2 } from "./utils/r2";
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   const rawChain = decodeURI(event.pathParameters!.chain!);
@@ -16,7 +16,14 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     };
   };
 
-  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(categorySelected !== undefined, categorySelected === undefined);
+  let historicalProtocolTvlsData:Awaited<ReturnType<typeof getHistoricalTvlForAllProtocols>>
+  if(categorySelected === "Bridge"){
+    historicalProtocolTvlsData = await getHistoricalTvlForAllProtocols(true, false);
+  } else {
+    historicalProtocolTvlsData = JSON.parse((await getR2(`cache/getHistoricalTvlForAllProtocols/false-${categorySelected === undefined}.json`)).body!)
+  }
+  const { historicalProtocolTvls, lastDailyTimestamp } = historicalProtocolTvlsData
+  
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (!protocolTvl) {
       return;

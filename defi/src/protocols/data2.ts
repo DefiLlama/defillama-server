@@ -33754,5 +33754,27 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1683219510
   },
+  {
+    id: "2934",
+    name: "StellaSwap V3",
+    address: "moonbeam:0x0E358838ce72d5e61E0018a2ffaC4bEC5F4c88d2",
+    symbol: "STELLA",
+    url: "https://stellaswap.com",
+    description:
+      "Stellaswap is leading DEX on Moonbeam.",
+    chain: "Moonbeam",
+    logo: `${baseIconsUrl}/stellaswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Moonbeam"],
+    module: "stellaswap-v3/index.js",
+    twitter: "StellaSwap",
+    forkedFrom: ["Algebra DEX"],
+    oracles: [],
+    listedAt: 1683234596
+  },
 ]
 export default data2;

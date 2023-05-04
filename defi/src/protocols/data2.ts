@@ -33686,5 +33686,28 @@ const data2: Protocol[] = [
     parentProtocol: "parent#curve-finance",
     listedAt: 1683150941
   },
+  {
+    id: "2931",
+    name: "BlazeStake",
+    address: "solana:bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1",
+    symbol: "bSOL",
+    url: "https://stake.solblaze.org/",
+    description:
+      "BlazeStake is an innovative liquid staking protocol designed to support the Solana ecosystem. Delegators can choose to stake their SOL either through the standard delegation pool (which balances stake across hundreds of validators to support decentralization) or to any validators of their choice, all while receiving the liquid staking benefits of bSOL (access to instant unstake liquidity, increased staking yields through DeFi, Solana ecosystem token airdrops, and more).",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/blazestake.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "blazestake-staked-sol",
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Solana"],
+    module: "blazestake/index.js",
+    twitter: "solblaze_org",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://stake-docs.solblaze.org/protocol/audits"],
+    listedAt: 1683194920
+  },
 ]
 export default data2;

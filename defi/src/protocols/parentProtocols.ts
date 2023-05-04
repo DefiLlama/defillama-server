@@ -1516,6 +1516,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6538",
     chains: [],
     twitter: "CurveFinance",
+    governanceID: ["snapshot:curve.eth"],
   },
 ];
 

@@ -88,7 +88,6 @@ const data: Protocol[] = [
     audit_links: ["https://curve.fi/audits"],
     oracles: [],
     language: "Vyper",
-    governanceID: ["snapshot:curve.eth"],
     parentProtocol: "parent#curve-finance"
   },
   {

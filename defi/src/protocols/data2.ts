@@ -33731,5 +33731,28 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1683217837
   },
+  {
+    id: "2933",
+    name: "Kei Finance",
+    address: "0xF75C7a59bCD9bd207C4Ab1BEB0b32EEd3B6392f3",
+    symbol: "KEI",
+    url: "https://kei.fi",
+    description:
+      "Kei Finance's the future of DeFi! Solves traditional finance pain points with advanced algorithms, transparent processes, & easy-to-use interfaces.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/kei-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "kei-finance",
+    cmcId: "24481",
+    category: "Staking",
+    chains: ["Ethereum"],
+    module: "kei-finance/index.js",
+    treasury: "kei.js",
+    twitter: "KeiFinance",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1683219510
+  },
 ]
 export default data2;

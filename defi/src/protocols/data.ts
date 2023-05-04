@@ -13538,6 +13538,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Arbitrum"],
     module: "umamifinance/index.js",
+    treasury: "umamifinance.js",
     twitter: "UmamiDao",
     governanceID: ["snapshot:arbis.eth"],
     listedAt: 1635877329,

@@ -33665,8 +33665,8 @@ const data2: Protocol[] = [
   {
     id: "2930",
     name: "crvUSD",
-    address: null,
-    symbol: "-",
+    address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
+    symbol: "CRV",
     url: "https://curve.fi",
     description:
       "crvUSD is a collateralized-debt-position (CDP) stablecoin pegged to the US Dollar",
@@ -33683,6 +33683,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: [],
+    parentProtocol: "parent#curve-finance",
     listedAt: 1683150941
   },
 ]

@@ -1506,6 +1506,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FTM1337",
   },
+  {
+    id: "parent#curve-finance",
+    name: "Curve Finance",
+    url: "https://curve.fi",
+    description: "Creating deep on-chain liquidity using advanced bonding curves",
+    logo: `${baseIconsUrl}/curve.png`,
+    gecko_id: "curve-dao-token",
+    cmcId: "6538",
+    chains: [],
+    twitter: "CurveFinance",
+  },
 ];
 
 export default parentProtocols;

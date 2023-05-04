@@ -69,7 +69,7 @@ const data: Protocol[] = [
   },
   {
     id: "3",
-    name: "Curve",
+    name: "Curve DEX",
     address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
     symbol: "CRV",
     url: "https://curve.fi",
@@ -79,8 +79,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/curve.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "curve-dao-token",
-    cmcId: "6538",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Ethereum", "Polygon", "Fantom", "xDai", "Arbitrum", "Avalanche", "Harmony"],
     module: "curve/index.js",
@@ -88,7 +88,8 @@ const data: Protocol[] = [
     audit_links: ["https://curve.fi/audits"],
     oracles: [],
     language: "Vyper",
-    governanceID: ["snapshot:curve.eth"]
+    governanceID: ["snapshot:curve.eth"],
+    parentProtocol: "parent#curve-finance"
   },
   {
     id: "111",

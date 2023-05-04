@@ -811,5 +811,9 @@ export default {
     "pika-protocol": {
         "enabled": true,
         "id": "916"
+    },
+    "chronos": {
+        "enabled": true,
+        "id": "2907"
     }
 } as AdaptorsConfig

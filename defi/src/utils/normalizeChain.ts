@@ -1471,6 +1471,11 @@ export const chainCoingeckoIds = {
     cmcId: null,
     categories: ["Cosmos"],
   },
+  "Sui": {
+    geckoId: "sui",
+    symbol: "SUI",
+    cmcId: "20947",
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1873,6 +1878,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Oasys"
     case "migaloo":
         return "Migaloo"
+    case "sui":
+        return "Sui"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

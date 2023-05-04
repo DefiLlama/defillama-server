@@ -1499,5 +1499,11 @@ export default {
         parentId: "Trader Joe",
         "enabled": true,
         "id": "2906",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1682899200": true,
+                "1682812800": true
+            },
+        }
     }
 } as AdaptorsConfig

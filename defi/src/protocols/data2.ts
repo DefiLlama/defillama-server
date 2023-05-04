@@ -33671,7 +33671,7 @@ const data2: Protocol[] = [
     description:
       "crvUSD is a collateralized-debt-position (CDP) stablecoin pegged to the US Dollar",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/crvusd.png`,
+    logo: `${baseIconsUrl}/crvusd.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

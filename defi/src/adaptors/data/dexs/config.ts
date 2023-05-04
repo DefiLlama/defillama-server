@@ -1505,5 +1505,9 @@ export default {
                 "1682812800": true
             },
         }
+    },
+    "chronos": {
+        "enabled": true,
+        "id": "2907"
     }
 } as AdaptorsConfig

@@ -108,6 +108,32 @@
       "to": "coingecko#wrapped-reflect"
     }
   },
+  "canto": {
+    "0xb5b060055f0d1ef5174329913ef861bc3addf029": {
+      "name": "Velocimeter FLOW",
+      "decimals": "18",
+      "symbol": "flow",
+      "to": "coingecko#velocimeter-flow"
+    },
+    "0x38d11b40d2173009adb245b869e90525950ae345": {
+      "name": "CantoBonk",
+      "decimals": "9",
+      "symbol": "cbonk",
+      "to": "coingecko#cantobonk"
+    },
+    "0x80a16016cc4a2e6a2caca8a4a498b1699ff0f844": {
+      "name": "MultiBTC",
+      "decimals": "5",
+      "symbol": "multibtc",
+      "to": "coingecko#multibtc"
+    },
+    "0xfbdd194376de19a88118e84e279b977f165d01b8": {
+      "name": "Impermax",
+      "decimals": "18",
+      "symbol": "ibex",
+      "to": "coingecko#impermax-2"
+    }
+  },
   "ibc": {
     "0B1D3A663E6D41C7B1CFC78DB41C829A3B8329D396B47737445AFF5E0E9DA125": {
       "name": "Akash",

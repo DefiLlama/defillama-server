@@ -27926,7 +27926,7 @@ const data2: Protocol[] = [
   {
     id: "2668",
     name: "Velocimeter V2",
-    address: "canto:0x2Baec546a92cA3469f71b7A091f7dF61e5569889",
+    address: "canto:0xb5b060055f0d1ef5174329913ef861bc3addf029",
     symbol: "FLOW",
     url: "https://www.velocimeter.xyz/swap",
     description:

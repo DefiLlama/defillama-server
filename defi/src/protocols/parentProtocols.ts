@@ -1505,6 +1505,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "13436",
     chains: [],
     twitter: "FTM1337",
+    treasury: "guru-network.js"
   },
   {
     id: "parent#curve-finance",

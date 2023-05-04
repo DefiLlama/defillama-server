@@ -33709,5 +33709,27 @@ const data2: Protocol[] = [
     audit_links: ["https://stake-docs.solblaze.org/protocol/audits"],
     listedAt: 1683194920
   },
+  {
+    id: "2932",
+    name: "Latoken",
+    address: null,
+    symbol: "-",
+    url: "https://latoken.com",
+    description:
+      "LATOKEN is a centralized cryptocurrency exchange established in 2017 and is registered in Cayman Islands. ",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/latoken.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum"],
+    module: "latoken/index.js",
+    twitter: "latokens",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1683217837
+  },
 ]
 export default data2;

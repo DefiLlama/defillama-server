@@ -17815,7 +17815,7 @@ const data2: Protocol[] = [
     chains: ["Aptos"],
     module: "animeswap/index.js",
     twitter: "animeswap_org",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     oracles: [],
     listedAt: 1666603789
   },

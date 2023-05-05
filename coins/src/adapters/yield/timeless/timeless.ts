@@ -71,12 +71,15 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   const [
     underlyings,
-    prices
-    // decimals,
+    prices,
+    vaultDecimals, 
+    nytDecimals
   ] = await Promise.all([
     api.multiCall({  abi: abi.getUnderlyingOfVault, calls: gateCalls, permitFailure: true}),
     api.multiCall({  abi: abi.getPricePerVaultShare, calls: gateCalls, permitFailure: true }),
-    // api.multiCall({  abi: 'erc20:decimals', calls: vaults }),
+    api.multiCall({  abi: 'erc20:decimals', calls: vaults }),
+    api.multiCall({  abi: "erc20:decimals", calls: data.map((d: any) => d.nyt),
+    }),
   ])
 
   
@@ -86,7 +89,8 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
     if ([prices[i], underlyings[i]].includes(null)) return 
     const { pyt, nyt, pytPrice, nytPrice, xpyt, xpytPrice, } = val
     const underlying = underlyings[i]
-    const ratio = prices[i] / 1e27
+    const ratio = prices[i] / 10 ** (27 - Number(vaultDecimals[i]) + Number(nytDecimals[i]));
+
     pricesObject[pyt] = { underlying, price: pytPrice * ratio }
     pricesObject[nyt] = { underlying, price: nytPrice * ratio }
     if (xpytPrice) pricesObject[xpyt] = { underlying, price: xpytPrice * ratio }

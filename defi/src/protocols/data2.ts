@@ -33647,7 +33647,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://www.sparkprotocol.io/",
     description:
-      "Spark Lend is a DeFi lending platform that leverages a credit line from Maker called a Dai Direct Deposit Module (D3M) to offer competitive rates",
+      "Spark is a DeFi lending platform that leverages a credit line from Maker called a Dai Direct Deposit Module (D3M) to offer competitive rates",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/spark.png`,
     audits: "0",

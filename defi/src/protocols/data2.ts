@@ -33821,7 +33821,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     oracles: [],
     parentProtocol: "parent#astar-exchange",
-    listedAt: 1683234596
+    listedAt: 1683265971
   },
 ]
 export default data2;

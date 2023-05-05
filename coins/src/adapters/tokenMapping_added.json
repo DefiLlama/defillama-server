@@ -3842,6 +3842,12 @@
       "symbol": "SUI",
       "to": "coingecko:sui"
     },
+    "0x2::sui::sui": {
+      "name": "SUI",
+      "decimals": "9",
+      "symbol": "SUI",
+      "to": "coingecko:sui"
+    },
     "0xc060006111016b8a020ad5b33834984a437aaa7d3c74c18e09a95d48aceab08c::coin::coin": {
       "name": "USDT",
       "decimals": "6",

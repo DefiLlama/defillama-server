@@ -1519,6 +1519,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "CurveFinance",
     governanceID: ["snapshot:curve.eth"],
   },
+  {
+    id: "parent#astar-exchange",
+    name: "Astar Exchange",
+    url: "https://astar.exchange",
+    description: "Decentralized Exchange on Astar",
+    logo: `${baseIconsUrl}/astar-exchange.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AstarExchange",
+  },
 ];
 
 export default parentProtocols;

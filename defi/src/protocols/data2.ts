@@ -4694,7 +4694,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1621",
-    name: "Astar Exchange",
+    name: "Astar Exchange V2",
     address: "astar:0x5D1af739FD538D363Fd61a59d3CBb7B70784A3AC",
     symbol: "ASX",
     url: "https://astar.exchange",
@@ -4711,6 +4711,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "astarexchange/index.js",
     twitter: "AstarExchange",
+    parentProtocol: "parent#astar-exchange",
     listedAt: 1649284541
   },
   {
@@ -33774,6 +33775,52 @@ const data2: Protocol[] = [
     twitter: "StellaSwap",
     forkedFrom: ["Algebra DEX"],
     oracles: [],
+    listedAt: 1683234596
+  },
+  {
+    id: "2935",
+    name: "SynthEx",
+    address: "arbitrum:0x18Fa738852eDa3FE309459c97782c44aFa5C199b",
+    symbol: "SYX",
+    url: "https://www.synthex.finance/",
+    description:
+      "Synthex is a trustless synthetic asset issuance and trading protocol that enables users to trade without slippage on chain",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/synthex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Synthetics",
+    chains: ["Arbitrum"],
+    module: "synthex/index.js",
+    twitter: "synthe_x",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://blaize.tech/clients/smart-contract-security-audit-for-synthex/"],
+    listedAt: 1683258145
+  },
+  {
+    id: "2936",
+    name: "Astar Exchange V3",
+    address: null,
+    symbol: "-",
+    url: "https://astar.exchange",
+    description:
+      "Uniswap v3 fork on Astar - Concentrated liquidity: up to 4000x higher capital efficiency for LPs - Multiple fee tiers, Up to 25x lower trading fees for traders",
+    chain: "Astar",
+    logo: `${baseIconsUrl}/astar-exchange-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Astar"],
+    module: "astarexchangev3/index.js",
+    twitter: "AstarExchange",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    parentProtocol: "parent#astar-exchange",
     listedAt: 1683234596
   },
 ]

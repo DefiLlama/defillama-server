@@ -242,6 +242,7 @@ async function poolBalances(
       chain,
       abi: "erc20:balanceOf",
       block,
+      permitFailure: true,
     })
   ).output;
 
@@ -415,7 +416,7 @@ async function unknownPools(
         const token: string = await PoolToToken(chain, pool, block);
         // THIS IS GOOD FOR DEBUG
         // if (
-        //   !["0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"].includes(
+        //   !["0xefde221f306152971d8e9f181bfe998447975810"].includes(
         //     token.toLowerCase(),
         //   )
         // )

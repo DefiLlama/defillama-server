@@ -179,10 +179,34 @@
   },
   "sui": {
     "0xdbe380b13a6d0f5cdedd58de8f04625263f113b3f9db32b3e1983f49e2841676::coin::COIN": {
-      "name": "Wrapped Matic",
       "decimals": "8",
       "symbol": "WMATIC",
       "to": "coingecko:matic-network"
+    },
+    "0xa198f3be41cda8c07b3bf3fee02263526e535d682499806979a111e88a5a8d0f::coin::COIN": {
+      "decimals": "8",
+      "symbol": "CELO",
+      "to": "coingecko:celo"
+    },
+    "0x027792d9fed7f9844eb4839566001bb6f6cb4804f66aa2da6fe1ee242d896881::coin::COIN": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko:wrapped-bitcoin"
+    },
+    "0x1e8b532cca6569cab9f9b9ebc73f8c13885012ade714729aa3b450e0339ac766::coin::COIN": {
+      "decimals": "8",
+      "symbol": "WAVAX",
+      "to": "coingecko:wrapped-avax"
+    },
+    "0x6081300950a4f1e2081580e919c210436a1bed49080502834950d31ee55a2396::coin::COIN": {
+      "decimals": "8",
+      "symbol": "WFTM",
+      "to": "coingecko:fantom"
+    },
+    "0x66f87084e49c38f76502d17f87d17f943f183bb94117561eb573e075fdc5ff75::coin::COIN": {
+      "decimals": "8",
+      "symbol": "WGLMR",
+      "to": "coingecko:moonbeam"
     }
   }
 }

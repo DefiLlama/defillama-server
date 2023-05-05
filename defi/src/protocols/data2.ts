@@ -33642,14 +33642,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2929",
-    name: "Spark Lend",
+    name: "Spark",
     address: null,
     symbol: "-",
     url: "https://www.sparkprotocol.io/",
     description:
       "Spark Lend is a DeFi lending platform that leverages a credit line from Maker called a Dai Direct Deposit Module (D3M) to offer competitive rates",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/spark-lend.png`,
+    logo: `${baseIconsUrl}/spark.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

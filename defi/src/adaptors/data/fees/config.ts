@@ -815,5 +815,9 @@ export default {
     "chronos": {
         "enabled": true,
         "id": "2907"
+    },
+    "unidex": {
+        "enabled": true,
+        "id": "1833"
     }
 } as AdaptorsConfig

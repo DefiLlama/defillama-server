@@ -33823,5 +33823,28 @@ const data2: Protocol[] = [
     parentProtocol: "parent#astar-exchange",
     listedAt: 1683265971
   },
+  {
+    id: "2937",
+    name: "Cells Finance",
+    address: "bsc:0x3022d80e02075F5A2a442A318229487f9Ea66D82",
+    symbol: "CELLS",
+    url: "http://www.cells.finance/",
+    description:
+      "Cells is a non-custodial vault that optimizes the deployment of digital assets to save investors time, money and earn them the highest possible yields.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/cells-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Binance"],
+    module: "cells/index.js",
+    twitter: "cellsfi",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/Coinsult/solidity/blob/edbd23a82d38a0bc0efcc02b80fb15cb23049e26/Coinsult_CELLSTOKEN_0x30...6D82_Audit.pdf"],
+    listedAt: 1683282600
+  },
 ]
 export default data2;

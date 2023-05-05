@@ -1509,5 +1509,9 @@ export default {
     "chronos": {
         "enabled": true,
         "id": "2907"
+    },
+    "stellaswap-v3": {
+        "enabled": true,
+        "id": "2934"
     }
 } as AdaptorsConfig

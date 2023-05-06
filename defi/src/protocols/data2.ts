@@ -33846,5 +33846,27 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/Coinsult/solidity/blob/edbd23a82d38a0bc0efcc02b80fb15cb23049e26/Coinsult_CELLSTOKEN_0x30...6D82_Audit.pdf"],
     listedAt: 1683282600
   },
+  {
+    id: "2938",
+    name: "LuxsFi",
+    address: null,
+    symbol: "-",
+    url: "https://luxs.fi/",
+    description:
+      "Introducing Luxs.fi - the innovative and decentralized platform that's taking the world of DeFi by storm. If you're looking to maximize your yields and earn compound interest on your crypto holdings, Luxs.fi is the perfect solution for you. With a range of investment strategies secured and enforced by smart contracts, this platform automatically optimizes user rewards from various liquidity pools, automated market making projects, and other yield farming opportunities in the DeFi ecosystem",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/luxsfi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Binance", "Polygon", "Arbitrum", "Optimism"],
+    module: "cells/index.js",
+    twitter: "luxs_fi",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1683394047
+  },
 ]
 export default data2;

@@ -130,10 +130,12 @@ function getLogoKey(key: string) {
     else return key.toLowerCase()
 }
 
-const getLlamaoLogo = (logo: string | null) => {
-    if (!logo) return logo
-    if (logo.includes('chains')) return logo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/")
-    return logo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/protocols/")
+export const getLlamaoLogo = (logo: string | null) => {
+	if (!logo) return logo
+	let llamoLogo = logo
+	if (llamoLogo.includes('chains')) llamoLogo = llamoLogo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/")
+	llamoLogo = llamoLogo.replace("https://icons.llama.fi/", "https://icons.llamao.fi/icons/protocols/")
+	return llamoLogo.split('.').slice(0, -1).join('.')
 }
 
 // This should be changed to be easier to mantain

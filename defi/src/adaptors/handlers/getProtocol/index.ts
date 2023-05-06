@@ -1,6 +1,6 @@
 import { successResponse, wrap, IResponse, notFoundResponse } from "../../../utils/shared";
-import sluggify, { sluggifyString } from "../../../utils/sluggify";
-import { getAdaptorRecord, AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record";
+import { sluggifyString } from "../../../utils/sluggify";
+import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, IRecordAdapterRecordChainData } from "../../db-utils/adaptor-record";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
 import loadAdaptorsData from "../../data"
 import { AdaptorData, IJSON, ProtocolAdaptor } from "../../data/types";
@@ -11,7 +11,8 @@ import { DEFAULT_CHART_BY_ADAPTOR_TYPE, IGetOverviewResponseBody, ProtocolAdapto
 import parentProtocols from "../../../protocols/parentProtocols";
 import standardizeProtocolName from "../../../utils/standardizeProtocolName";
 import { IParentProtocol } from "../../../protocols/types";
-import { notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
+import { getLlamaoLogo, notUndefined } from "../../data/helpers/generateProtocolAdaptorsList";
+import { formatChain } from "../../utils/getAllChainsFromAdaptors";
 
 export interface ChartItem {
     data: IRecordAdaptorRecordData;
@@ -134,7 +135,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
             gecko_id: dexData.gecko_id,
             disabled: dexData.disabled,
             latestFetchIsOk: false,
-            chains: dexData.chains,
+            chains: dexData.chains.map(formatChain),
             totalDataChart: null,
             totalDataChartBreakdown: null,
             total24h: null,
@@ -178,6 +179,7 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
         ...parentData,
         defillamaId: parentData.id,
         displayName: parentData.name,
+        logo: getLlamaoLogo(parentData.logo),
         total24h: totalToday,
         totalAllTime: sumReduce(summaries, 'totalAllTime'),
         latestFetchIsOk: true,

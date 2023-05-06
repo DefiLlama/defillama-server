@@ -33862,7 +33862,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Binance", "Polygon", "Arbitrum", "Optimism"],
-    module: "cells/index.js",
+    module: "luxs.fi/index.js",
     twitter: "luxs_fi",
     forkedFrom: [],
     oracles: [],

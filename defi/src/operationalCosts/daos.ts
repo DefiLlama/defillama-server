@@ -146,4 +146,12 @@ export default [
         notes: ["Based on expenses for Q4 '22, one-off expenses such as one acquisition were ignored"],
         lastUpdate: "2023-05-01"
     },
+    {
+        protocolId: "2618", // OasisSwap
+        sources: ["https://docs.google.com/spreadsheets/d/1lWlQavTbbKcyuaES3wOV9lvfba00XiNrHybZIyhNDYA/htmlview#gid=83043161"],
+        annualUsdCost: {
+            salaries: 707000,
+        },
+        lastUpdate: "2023-05-06"
+    },
 ]

@@ -3,6 +3,7 @@ import { baseIconsUrl } from "../constants";
 import { listenerCount } from 'process';
 import { parentPort } from 'worker_threads';
 import parentProtocols from './parentProtocols';
+import treasuries from './treasury';
 /*
 {
   id: string;
@@ -22024,6 +22025,7 @@ const data2: Protocol[] = [
     category: "Launchpad",
     chains: ["Ethereum", "BSC", "Polygon", "Arbitrum", "Optimism", "Fantom", "Avalanche", "OKExChain", "KCC", "Cronos", "Evmos", "Dogechain"],
     module: "flokifi-locker/index.js",
+    treasury: "flokifi-locker.js",
     twitter: "FlokiFi",
     forkedFrom: [],
     oracles: [],

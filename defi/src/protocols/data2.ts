@@ -33870,5 +33870,50 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1683394047
   },
+  {
+    id: "2939",
+    name: "KriyaDEX",
+    address: null,
+    symbol: "-",
+    url: "https://kriya.finance/",
+    description:
+      "Kriya is building institutional grade infra for on-chain trading. The current suite includes - an in-app bridge, an AMM swap and a fully on-chain orderbook for 20x perp trading. OTC-RFQ functionality coming soon",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/kriyadex.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sui"],
+    module: "kriya-dex/index.js",
+    twitter: "KriyaDEX",
+    forkedFrom: [],
+    audit_links: ["https://drive.google.com/file/d/1glrBMbUc0UHYAI0cILEtKM-z_CI24Gdr/view?usp=sharing"],
+    oracles: [],
+    listedAt: 1683484651
+  },
+  {
+    id: "2940",
+    name: "Turbos",
+    address: null,
+    symbol: "-",
+    url: "https://app.turbos.finance/",
+    description:
+      "A hyper-efficient decentralized crypto marketplace built on Sui",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/turbos.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sui"],
+    module: "turbos/index.js",
+    twitter: "Turbos_finance",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1683484936
+  },
 ]
 export default data2;

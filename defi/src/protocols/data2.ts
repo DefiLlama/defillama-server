@@ -33653,7 +33653,7 @@ const data2: Protocol[] = [
       "Spark is a DeFi lending platform that leverages a credit line from Maker called a Dai Direct Deposit Module (D3M) to offer competitive rates",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/spark.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -33663,7 +33663,7 @@ const data2: Protocol[] = [
     twitter: "spark_protocol",
     forkedFrom: ["Aave"],
     oracles: ["Chainlink"],
-    audit_links: [],
+    audit_links: ["https://docs.sparkprotocol.io/developers/deployed-contracts/security-and-audits"],
     listedAt: 1683144119
   },
   {

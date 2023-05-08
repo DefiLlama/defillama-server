@@ -21823,7 +21823,7 @@ const data2: Protocol[] = [
     twitter: "BlueMove_OA",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "BlueMove",
+    parentProtocol: "parent#bluemove",
     listedAt: 1672334345
   },
   {
@@ -33936,7 +33936,7 @@ const data2: Protocol[] = [
     twitter: "BlueMove_OA",
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "BlueMove",
+    parentProtocol: "parent#bluemove",
     listedAt: 1683522101
   },
 ]

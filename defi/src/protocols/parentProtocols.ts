@@ -1541,6 +1541,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "BlueMove_OA",
   },
+  {
+    id: "parent#bubbleswap",
+    name: "Bubbleswap",
+    url: "https://app.bubbleswap.io",
+    description: "A fully decentralized protocol for automated liquidity provision on Hedera.",
+    logo: `${baseIconsUrl}/bubbleswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "bubbleswapio",
+  },
 ];
 
 export default parentProtocols;

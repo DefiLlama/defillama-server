@@ -1513,5 +1513,9 @@ export default {
     "stellaswap-v3": {
         "enabled": true,
         "id": "2934"
+    },
+    "e3": {
+        "enabled": true,
+        "id": "2926"
     }
 } as AdaptorsConfig

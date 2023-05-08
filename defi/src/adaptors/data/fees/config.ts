@@ -824,5 +824,9 @@ export default {
         parentId: "Trader Joe",
         "enabled": true,
         "id": "2906"
+    },
+    "e3": {
+        "enabled": true,
+        "id": "2926"
     }
 } as AdaptorsConfig

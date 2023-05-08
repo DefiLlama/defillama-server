@@ -1517,5 +1517,9 @@ export default {
     "e3": {
         "enabled": true,
         "id": "2926"
+    },
+    "clober": {
+        "enabled": true,
+        "id": "2541"
     }
 } as AdaptorsConfig

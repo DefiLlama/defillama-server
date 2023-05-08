@@ -1477,9 +1477,10 @@ export const chainCoingeckoIds = {
     cmcId: "20947",
   },
   "Grove": {
-    geckoId: null,
+    geckoId: "grove",
     symbol: "GRV",
-    cmcId: null,
+    cmcId: "23196",
+    categories: ["EVM"]
   },
 } as unknown as {
   [chain: string]: {

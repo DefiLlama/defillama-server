@@ -33939,5 +33939,49 @@ const data2: Protocol[] = [
     parentProtocol: "parent#bluemove",
     listedAt: 1683522101
   },
+  {
+    id: "2942",
+    name: "CroSwap",
+    address: "cronos:0x1Ba477CA252C0FF21c488d41759795E7E7812aB4",
+    symbol: "CROS",
+    url: "https://croswap.com",
+    description:
+      "Croswap is a community-driven, multi-chain DEX that is optimized to run on any EVM-compatible blockchain network.",
+    chain: "Cronos",
+    logo: `${baseIconsUrl}/croswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "croswap",
+    cmcId: "3771",
+    category: "Dexes",
+    chains: ["Cronos"],
+    module: "croswap/index.js",
+    twitter: "CroswapOfficial",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1683539601
+  },
+  {
+    id: "2943",
+    name: "SageBet",
+    address: null,
+    symbol: "-",
+    url: "https://sage.bet",
+    description:
+      "SageBet is the first fully on-chain prediction market built on Arbitrum and Ethereum’s Virtual Machine. With no required signups or deposits, you can connect and start trading in seconds.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/sagabet.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Arbitrum"],
+    module: "sagebet/index.js",
+    twitter: "sage_bet",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1683539603
+  },
 ]
 export default data2;

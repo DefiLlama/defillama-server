@@ -34012,7 +34012,7 @@ const data2: Protocol[] = [
     name: "GroveCoin",
     address: null,
     symbol: "-",
-    url: "https://www.grovetoken.com/",
+    url: "https://app.groveswap.io/swap",
     description:
       "Grove Token is a decentralized and secure green Token built for the future of our planet. Our mission is to Create wealth, for all Grovers, by harnessing the opportunities of a secure, decentralized digital currency in an environmentally conscious way. By compensating nature for years of abuse, Grove will create a healthier, wealthier future for all.",
     chain: "Binance",

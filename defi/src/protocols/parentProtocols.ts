@@ -1530,6 +1530,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AstarExchange",
   },
+  {
+    id: "parent#bluemove",
+    name: "BlueMove",
+    url: "https://bluemove.net",
+    description: "The leading Multi-chain NFT Marketplace on Aptos & Sui Blockchain.",
+    logo: `${baseIconsUrl}/bluemove.png`,
+    gecko_id: "bluemove",
+    cmcId: "23359",
+    chains: [],
+    twitter: "BlueMove_OA",
+  },
 ];
 
 export default parentProtocols;

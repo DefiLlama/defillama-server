@@ -819,5 +819,10 @@ export default {
     "unidex": {
         "enabled": true,
         "id": "1833"
+    },
+    "joe-v2.1": {
+        parentId: "Trader Joe",
+        "enabled": true,
+        "id": "2906"
     }
 } as AdaptorsConfig

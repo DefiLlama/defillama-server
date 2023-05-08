@@ -33970,7 +33970,7 @@ const data2: Protocol[] = [
     description:
       "SageBet is the first fully on-chain prediction market built on Arbitrum and Ethereum’s Virtual Machine. With no required signups or deposits, you can connect and start trading in seconds.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/sagabet.jpg`,
+    logo: `${baseIconsUrl}/sagebet.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

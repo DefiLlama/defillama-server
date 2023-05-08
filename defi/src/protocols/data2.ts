@@ -34102,7 +34102,7 @@ const data2: Protocol[] = [
     name: "CRETH2",
     address: "0x2ba592F78dB6436527729929AAf6c908497cB200",
     symbol: "CREAM",
-    url: "https://app.cream.finance/eth2/",
+    url: "https://classic.cream.finance/eth2/",
     description: "ETH LSD",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/creth2.png`,

@@ -21805,7 +21805,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2396",
-    name: "BlueMove",
+    name: "BlueMove Staking",
     address: "aptos:0x27fafcc4e39daac97556af8a803dbb52bcb03f0821898dc845ac54225b9793eb::move_coin::MoveCoin",
     symbol: "MOVE",
     url: "https://bluemove.net",
@@ -21815,14 +21815,15 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/bluemove.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "bluemove",
-    cmcId: "23359",
+    gecko_id: null,
+    cmcId: null,
     category: "NFT Marketplace",
     chains: ["Aptos"],
     module: "blue-move-mart/index.js",
     twitter: "BlueMove_OA",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "BlueMove",
     listedAt: 1672334345
   },
   {
@@ -33914,6 +33915,29 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1683484936
+  },
+  {
+    id: "2941",
+    name: "BlueMove DEX",
+    address: "aptos:0x27fafcc4e39daac97556af8a803dbb52bcb03f0821898dc845ac54225b9793eb::move_coin::MoveCoin",
+    symbol: "MOVE",
+    url: "https://dex.bluemove.net/",
+    description:
+      "An AMM DEX on SUI Blockchain. Buy, sell, and explore tokens on SUI",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/bluemove.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sui"],
+    module: "bluemove-dex/index.js",
+    twitter: "BlueMove_OA",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "BlueMove",
+    listedAt: 1683522101
   },
 ]
 export default data2;

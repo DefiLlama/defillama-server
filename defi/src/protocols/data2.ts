@@ -34052,5 +34052,27 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.typus.finance/audit"],
     listedAt: 1683552946
   },
+  {
+    id: "2947",
+    name: "BrainDAO",
+    address: "0x579cea1889991f68acc35ff5c3dd0621ff29b0c9",
+    symbol: "IQ",
+    url: "https://iq.wiki",
+    description:
+      "The IQ token is a cryptocurrency dedicated to building a more intelligent future. The IQ token powers a knowledge ecosystem including applications such as IQ.wiki, the world's largest cryptocurrency and blockchain encyclopedia. IQ is a DeFi and governance token with native staking enabled through HiIQ. The token is governed by BrainDAO which also includes BrainDAO's treasury of digital assets.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/braindao.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    treasury: "iq.js",
+    twitter: "IQWIKI",
+    forkedFrom: [],
+    oracles: [],
+  },
 ]
 export default data2;

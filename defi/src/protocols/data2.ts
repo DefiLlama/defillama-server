@@ -33919,8 +33919,8 @@ const data2: Protocol[] = [
   {
     id: "2941",
     name: "BlueMove DEX",
-    address: "aptos:0x27fafcc4e39daac97556af8a803dbb52bcb03f0821898dc845ac54225b9793eb::move_coin::MoveCoin",
-    symbol: "MOVE",
+    address: "sui:0xd9f9b0b4f35276eecd1eea6985bfabe2a2bbd5575f9adb9162ccbdb4ddebde7f",
+    symbol: "SMOVE",
     url: "https://dex.bluemove.net/",
     description:
       "An AMM DEX on SUI Blockchain. Buy, sell, and explore tokens on SUI",

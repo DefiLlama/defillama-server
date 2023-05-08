@@ -327,7 +327,7 @@ const data: Protocol[] = [
   },
   {
     id: "121",
-    name: "CREAM Finance",
+    name: "CREAM Lending",
     address: "0x2ba592F78dB6436527729929AAf6c908497cB200",
     symbol: "CREAM",
     url: "https://cream.finance/",

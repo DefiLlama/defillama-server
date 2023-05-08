@@ -345,7 +345,7 @@ const data: Protocol[] = [
     audit_links: ["https://docs.cream.finance/audit-report"],
     forkedFrom: ["Compound"],
     oracles: ["Chainlink", "Band"],
-    governanceID: ["snapshot:cream-finance.eth"]
+    parentProtocol: "parent#cream-finance"
   },
   {
     id: "122",
@@ -2509,6 +2509,7 @@ const data: Protocol[] = [
     twitter: "CreamdotFinance",
     audit_links: ["https://github.com/CreamFi/compound-protocol/blob/master/audits/trailofbits-CREAMSummary.pdf"],
     forkedFrom: ["Balancer"],
+    parentProtocol: "parent#cream-finance"
   },
   {
     id: "228",

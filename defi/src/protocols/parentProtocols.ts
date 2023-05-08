@@ -1552,6 +1552,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "bubbleswapio",
   },
+  {
+    id: "parent#cream-finance",
+    name: "CREAM Finance",
+    url: "https://cream.finance/",
+    description: "Money markets, liquid staking and protocol-to-protocol lending",
+    logo: `${baseIconsUrl}/cream-finance.png`,
+    gecko_id: "cream-2",
+    cmcId: "6193",
+    chains: [],
+    twitter: "CreamdotFinance",
+    governanceID: ["snapshot:cream-finance.eth"]
+  },
 ];
 
 export default parentProtocols;

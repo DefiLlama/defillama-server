@@ -34226,5 +34226,27 @@ const data2: Protocol[] = [
     module: "dummy.js",
     twitter: "airswap",
   },
+  {
+    id: "2955",
+    name: "Push Protocol",
+    address: "0xf418588522d5dd018b425E472991E52EBBeEEEEE",
+    symbol: "PUSH",
+    url: "https://push.org",
+    description: "Push Protocol is a web3 communication network, enabling cross-chain notifications and messaging for dapps, wallets, and services.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/push-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "ethereum-push-notification-service",
+    cmcId: "9111",
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "push/index.js",
+    treasury: "push.js",
+    twitter: "pushprotocol",
+    listedAt: 1683648560
+  },
 ]
 export default data2;

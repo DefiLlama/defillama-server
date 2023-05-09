@@ -34001,6 +34001,7 @@ const data2: Protocol[] = [
     category: "Payments",
     chains: ["Arbitrum", "Binance", "Polygon"],
     module: "ajira-pay-finance/index.js",
+    treasury: "ajira-pay-finance.js",
     twitter: "ajiraPayDefi",
     forkedFrom: [],
     oracles: [],

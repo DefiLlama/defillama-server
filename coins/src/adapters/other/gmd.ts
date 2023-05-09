@@ -8,7 +8,7 @@ import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 const vault: string = "0x8080B5cE6dfb49a6B86370d6982B3e2A86FBBb08";
 const chain: any = "arbitrum";
 const usdc: string = "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8";
-const token: string = "0xEC13336bbd50790a00CDc0fEddF11287eaF92529";
+const token: string = "0x3DB4B7DA67dd5aF61Cb9b3C70501B1BdB24b2C22";
 
 export default async function getTokenPrice(timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);

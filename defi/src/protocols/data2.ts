@@ -34206,5 +34206,25 @@ const data2: Protocol[] = [
     twitter: "Zenith_cash",
     listedAt: 1683639049
   },
+  {
+    id: "2954",
+    name: "AirSwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.airswap.io",
+    description: "AirSwap is an open-source community that powers the original peer-to-peer DEX: efficient swaps with no slippage and no counter-party risk.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/airswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "dummy.js",
+    twitter: "airswap",
+  },
 ]
 export default data2;

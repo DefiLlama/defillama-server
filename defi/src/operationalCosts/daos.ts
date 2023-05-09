@@ -17,7 +17,7 @@ export default [
     },
     {
         protocolId: "118", // makerdao
-        sources: ["https://expenses.makerdao.network/"],
+        sources: ["https://expenses.makerdao.network/", "https://expenses.makerdao.network/recognized-delegates/finances/reports?viewMonth=Feb2023"],
         headcount: 97,
         annualUsdCost: {
             others: 12*(76122+51801+3056+17900+1974+195916+49091+21387+14104+33264+7503
@@ -26,7 +26,8 @@ export default [
                 ),
             salaries: 12*(398967+127487+27833+67392+193000+42787
                 +122873+112946+17389+94548+15208+46550+13200+54337+130785+80074
-                ) // using september numbers for data insights
+                ), // using september numbers for data insights
+            delegates: 100427*12, // using feb numbers
         }, // extrapolated from feb 2023, the last month with final-ish data as of this writing
         // MKR costs ignored since they are not clear-cut as they are irregularly vested
         notes: ["Based on data from Feb 2023"],

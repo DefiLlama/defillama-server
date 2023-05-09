@@ -10684,7 +10684,7 @@ const data2: Protocol[] = [
     url: "https://www.filet.finance",
     description: "Filet is a decentralized Filecoin staking protocol that has been deployed on the Filecoin (FVM), Binance Smart Chain (BSC), and HECO network. Launched in May 2021, Filet is open source and has been audited by Certik. Additionally, Filet is an official member of Filecoin's FVM Early Builder and Mainnet Cohort projects.",
     chain: "Filecoin",
-    logo: `${baseIconsUrl}/filet.png`,
+    logo: `${baseIconsUrl}/filet-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

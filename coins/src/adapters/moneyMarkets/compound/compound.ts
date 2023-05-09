@@ -138,7 +138,7 @@ export default async function getTokenPrices(
       tokenInfo.decimals[i].output,
       tokenInfo.symbols[i].output,
       timestamp,
-      "compound",
+      "lodestar",
       1,
     );
   });

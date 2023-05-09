@@ -5162,6 +5162,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "epns/index.js",
+    treasury: "push.js",
     twitter: "epnsproject",
     governanceID: ["snapshot:pushdao.eth"],
     listedAt: 1649713407
@@ -34226,6 +34227,7 @@ const data2: Protocol[] = [
     module: "dummy.js",
     twitter: "airswap",
   },
+  /*
   {
     id: "2955",
     name: "Push Protocol",
@@ -34248,5 +34250,6 @@ const data2: Protocol[] = [
     twitter: "pushprotocol",
     listedAt: 1683648560
   },
+  */
 ]
 export default data2;

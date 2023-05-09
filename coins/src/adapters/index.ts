@@ -97,4 +97,5 @@ export default {
   jpegd: require("./yield/jpegd"),
   mare: require("./moneyMarkets/compound"),
   collateralizedAssets: require("./other"),
+  sweth: require("./other"),
 };

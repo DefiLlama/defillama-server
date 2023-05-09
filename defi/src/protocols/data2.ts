@@ -10789,7 +10789,7 @@ const data2: Protocol[] = [
     name: "Taiga Protocol",
     address: "karura:-",
     symbol: "TAI",
-    url: "https://www.taigaprotocol.io",
+    url: "https://www.taigaprotocol.io/",
     description: "A synthetic asset protocol designed to enable maximum efficiency for uniform assets on Kusama.",
     chain: "Karura",
     logo: `${baseIconsUrl}/taiga-protocol.png`,
@@ -10802,7 +10802,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "taiga/index.js",
-    twitter: "TapioProtocol",
+    twitter: "TaigaProtocol",
     listedAt: 1657807133
   },
   {

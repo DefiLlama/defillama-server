@@ -10684,7 +10684,7 @@ const data2: Protocol[] = [
     url: "https://www.filet.finance",
     description: "Filet is a decentralized Filecoin mining platform deployed on Filecoin, BSC(BNB Chain), HECO network. We provide staking service with the APY about 30%. FIL holders can stake FIL to mine FIL without any risk. Filet is open source and audited by Certik.",
     chain: "Filecoin",
-    logo: `${baseIconsUrl}/filet.png`,
+    logo: `${baseIconsUrl}/filet-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -828,5 +828,9 @@ export default {
     "e3": {
         "enabled": true,
         "id": "2926"
+    },
+    "airswap": {
+        "enabled": true,
+        "id": "2954"
     }
 } as AdaptorsConfig

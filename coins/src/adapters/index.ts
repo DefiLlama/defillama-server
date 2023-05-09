@@ -98,4 +98,5 @@ export default {
   mare: require("./moneyMarkets/compound"),
   collateralizedAssets: require("./other"),
   sweth: require("./other"),
+  gmd: require("./other"),
 };

@@ -10678,11 +10678,11 @@ const data2: Protocol[] = [
   },
   {
     id: "1894",
-    name: "Filet",
+    name: "Filet Finance",
     address: null,
     symbol: "-",
     url: "https://www.filet.finance",
-    description: "Filet is a decentralized Filecoin mining platform deployed on Filecoin, BSC(BNB Chain), HECO network. We provide staking service with the APY about 30%. FIL holders can stake FIL to mine FIL without any risk. Filet is open source and audited by Certik.",
+    description: "Filet is a decentralized Filecoin staking protocol that has been deployed on the Filecoin (FVM), Binance Smart Chain (BSC), and HECO network. Launched in May 2021, Filet is open source and has been audited by Certik. Additionally, Filet is an official member of Filecoin's FVM Early Builder and Mainnet Cohort projects.",
     chain: "Filecoin",
     logo: `${baseIconsUrl}/filet.png`,
     audits: "2",

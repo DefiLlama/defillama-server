@@ -9,6 +9,7 @@ import realtAdapter from "./realt";
 import metronomeAdapter from "./metronome";
 import { wrappedGasTokens } from "../utils/gasTokens";
 import collateralizedAdapter from "./collateralizedAssets";
+import swethAdapter from "./sweth";
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
@@ -144,4 +145,8 @@ export function collateralizedAssets(timestamp: number = 0) {
       collateral: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
     },
   ]);
+}
+export function sweth(timestamp: number = 0) {
+  console.log("starting sweth");
+  return swethAdapter(timestamp);
 }

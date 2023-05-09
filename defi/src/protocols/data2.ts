@@ -5853,7 +5853,7 @@ const data2: Protocol[] = [
     description: "Hydra DEX is the native decentralized exchange of Hydra chain",
     chain: "Hydra",
     logo: `${baseIconsUrl}/hydradex-v2.png`,
-    audits: "0",
+    audits: "3",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

@@ -1521,5 +1521,9 @@ export default {
     "clober": {
         "enabled": true,
         "id": "2541"
+    },
+    "airswap": {
+        "enabled": true,
+        "id": "2954"
     }
 } as AdaptorsConfig

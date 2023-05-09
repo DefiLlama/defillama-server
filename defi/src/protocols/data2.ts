@@ -34237,7 +34237,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/push-protocol.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "ethereum-push-notification-service",
+    gecko_id: null,
     cmcId: "9111",
     category: "Services",
     chains: ["Ethereum"],

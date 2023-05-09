@@ -10,6 +10,7 @@ import metronomeAdapter from "./metronome";
 import { wrappedGasTokens } from "../utils/gasTokens";
 import collateralizedAdapter from "./collateralizedAssets";
 import swethAdapter from "./sweth";
+import gmdAdapter from "./gmd";
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
@@ -149,4 +150,8 @@ export function collateralizedAssets(timestamp: number = 0) {
 export function sweth(timestamp: number = 0) {
   console.log("starting sweth");
   return swethAdapter(timestamp);
+}
+export function gmd(timestamp: number = 0) {
+  console.log("starting gmd");
+  return gmdAdapter(timestamp);
 }

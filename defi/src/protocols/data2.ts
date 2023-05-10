@@ -18008,6 +18008,7 @@ const data2: Protocol[] = [
     audit_links: [
       "https://github.com/wombex-finance/wombex-contracts/blob/main/audits/PeckShield-Audit-Report-Wombex-v1.0.pdf",
       "https://github.com/wombex-finance/wombex-contracts/blob/main/audits/SlowMist-Audit-Report-Wombex-Finance.pdf",
+      "https://github.com/wombex-finance/wombex-contracts/blob/main/audits/Zokyo-Audit-Report-Wombex-Finance-Main.pdf"
     ],
     listedAt: 1666803517
   },

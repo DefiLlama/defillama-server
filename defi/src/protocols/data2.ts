@@ -28330,6 +28330,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "ArbitrumExchange/index.js",
+    parentProtocol: "parent#arbitrum-exchange",
     twitter: "arbidex_fi",
     audit_links: ["https://github.com/Vital-block/Smart-Contract-Audit/blob/03c1a811a69f8e459264c22d140cba99b3a518da/ARBITRUM%20EXCHANGE%20Full%20AUDIT%20Report.pdf"],
     listedAt: 1679146739
@@ -34379,6 +34380,28 @@ const data2: Protocol[] = [
     module: "dummy.js",
     treasury: "forth-dao.js",
     twitter: "AmpleforthOrg",
+  },
+  {
+    id: "2962",
+    name: "Arbitrum Exchange V3",
+    address: "arbitrum:0xD5954c3084a1cCd70B4dA011E67760B8e78aeE84",
+    symbol: "ARX",
+    url: "https://arbidex.fi",
+    description: "Uniswap V3 fork on Arbitrum.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/arbitrum-exchange-v3.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "arbitrumexchange-v3/index.js",
+    parentProtocol: "parent#arbitrum-exchange",
+    twitter: "arbidex_fi",
+    listedAt: 1683737837
   },
 ]
 export default data2;

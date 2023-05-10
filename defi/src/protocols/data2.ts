@@ -18765,7 +18765,7 @@ const data2: Protocol[] = [
     module: "injective-orderbook/index.js",
     twitter: "HelixApp_",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1668004664
   },
   {

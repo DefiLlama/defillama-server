@@ -1541,5 +1541,9 @@ export default {
                 displayName: "Arbitrum Exchange V3"
             }
         }
+    },
+    "vertex-protocol": {
+        "enabled": true,
+        "id": "2899"
     }
 } as AdaptorsConfig

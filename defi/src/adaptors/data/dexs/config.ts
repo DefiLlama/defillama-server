@@ -1534,14 +1534,12 @@ export default {
                 "enabled": true,
                 "id": "2685",
                 displayName: "Arbitrum Exchange V2"
-            }
-            /*
+            },
             v3: {
                 "enabled": true,
-                "id": "2685",
+                "id": "2962",
                 displayName: "Arbitrum Exchange V3"
             }
-            */
         }
     }
 } as AdaptorsConfig

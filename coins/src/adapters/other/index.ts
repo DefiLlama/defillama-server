@@ -101,6 +101,14 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "ethereum",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xC977492506E6516102a5687154394Ed747A617ff",
+      "0xEC13336bbd50790a00CDc0fEddF11287eaF92529", // gmUSD
+      "0x4945970EfeEc98D393b4b979b9bE265A3aE28A8B",
+      false,
+      "arbitrum",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

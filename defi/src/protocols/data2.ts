@@ -20003,7 +20003,7 @@ const data2: Protocol[] = [
     symbol: "ARC",
     url: "https://archly.fi",
     description:
-      "Archly is a permissionless, low slippage, low cost protocol that incentives fees on the Telos EVM.",
+      "Archly Finance is a liquidity solution for protocols on a wide range of EVM chains to properly incentivize liquidity for their own use cases.",
     chain: "Telos",
     logo: `${baseIconsUrl}/archly-finance.png`,
     audits: "0",
@@ -20011,7 +20011,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Telos"],
+    chains: ["Arbitrum", "Arbitrum Nova", "Binance", "Fantom", "Kava", "Optimism", "Polygon", "Telos"],
     module: "archly-finance/index.js",
     twitter: "ArchlyFinance",
     forkedFrom: ["Solidly"],

@@ -28857,7 +28857,7 @@ const data2: Protocol[] = [
     twitter: "insrtfinance",
     audit_links: ["https://www.certik.com/projects/insrt-finance"],
     listedAt: 1679483191
-  }, 
+  },
   {
     id: "2710",
     name: "BaptSwap",
@@ -29292,7 +29292,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "gemswap/index.js",
     twitter: "GemSwap_ZKS",
-    listedAt: 1679891989  
+    listedAt: 1679891989
   },
   {
     id: "2730",
@@ -29314,7 +29314,7 @@ const data2: Protocol[] = [
     module: "covo-v2/index.js",
     twitter: "covofinance",
     parentProtocol: "parent#covo-finance",
-    listedAt: 1679912448  
+    listedAt: 1679912448
   },
   {
     id: "2731",
@@ -29335,7 +29335,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Trader Joe DEX"],
     module: "swapline/index.js",
     twitter: "SwaplineDEX",
-    listedAt: 1679923802  
+    listedAt: 1679923802
   },
   {
     id: "2732",
@@ -29356,7 +29356,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "atlas-fi/index.js",
     twitter: "Atlasaggregator",
-    listedAt: 1679923806  
+    listedAt: 1679923806
   },
   {
     id: "2733",
@@ -29377,7 +29377,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "citrus/index.js",
     twitter: "FamousFoxFed",
-    listedAt: 1679923808  
+    listedAt: 1679923808
   },
   {
     id: "2734",
@@ -29443,7 +29443,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "teller/index.js",
     twitter: "useteller",
-    listedAt: 1680005661  
+    listedAt: 1680005661
   },
   {
     id: "2737",
@@ -29487,7 +29487,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "kafidao/index.js",
     twitter: null,
-    listedAt: 1680009928  
+    listedAt: 1680009928
   },
   {
     id: "2739",
@@ -29508,7 +29508,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "Liquify/index.js",
     twitter: "NetworkLiquify",
-    listedAt: 1680017064  
+    listedAt: 1680017064
   },
   {
     id: "2740",
@@ -31392,13 +31392,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2827",
-    name: "SatoshiSwap",
-    address: "core:0xC951d8561B2f1bcE76FEe922933E243C875ba48f",
-    symbol: "SAT",
-    url: "https://satoshiswap.exchange",
-    description: "SatoshiSwap is a DeFi exchange with concentrated liquidity marketing for CoreDAO ecosystem, improving trading for on-chain traders and market makers with volatile and stable tokens",
+    name: "SatoshiCoreSwap",
+    address: "core:0x7fE0ade6E6cB0FE57ea3eebC145682d1893dbe3f",
+    symbol: "SATCORE",
+    url: "https://satoshicoreswap.com",
+    description: "SatoshiCoreSwap is a DeFi exchange with concentrated liquidity marketing for CoreDAO ecosystem, improving trading for on-chain traders and market makers with volatile and stable tokens",
     chain: "CORE",
-    logo: `${baseIconsUrl}/satoshiswap.png`,
+    logo: `${baseIconsUrl}/satoshicoreswap.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -31409,10 +31409,10 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "satoshiswap/index.js",
     audit_links: [
-      "https://docs.satoshiswap.exchange/contracts/audits",
+      "https://docs.satoshicoreswap.com/contracts/audits",
       "https://blocksafu.com/project-detail/0xC951d8561B2f1bcE76FEe922933E243C875ba48f"
     ],
-    twitter: "satoshiswapcore",
+    twitter: "satoshicoreswap",
     listedAt: 1681436914
   },
   {
@@ -32763,7 +32763,7 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     module: "rollup-fi/index.js",
     twitter: "Rollup_Finance",
-    audit_links: [ 
+    audit_links: [
                    "https://972411339-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlKZgazbrrlOv3lmzetUj%2Fuploads%2FYbZ40yoZOoHTV6I8qz3Y%2FRollup.Finance%20Smart%20Contract%20Security%20Audit%20Report.pdf?alt=media&token=91c34451-192e-4015-b3b2-6b74e1307951",
                    "https://972411339-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlKZgazbrrlOv3lmzetUj%2Fuploads%2F6yoR3zWB76OGB6zUH5YS%2FRollup.Finance%20Smart%20Contract%20Audit%20Report%20by%20Noneage.pdf?alt=media&token=2d3e3df2-6285-4291-88a6-e6a791f62e77"
                  ],

@@ -31423,7 +31423,7 @@ const data2: Protocol[] = [
     url: "https://pos-staking.thundercore.com",
     description: "Anyone can join ThunderCore PoS Staking to secure the network and earn staking rewards.",
     chain: "ThunderCore",
-    logo: `${baseIconsUrl}/satoshiswap.png`,
+    logo: `${baseIconsUrl}/thundercore-staking.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "thunder-token",

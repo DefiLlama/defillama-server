@@ -16538,6 +16538,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "ease/index.js",
+    treasury: "ease-org.js",
     twitter: "EaseDeFi",
     audit_links: [
       "https://github.com/EaseDeFi/Audits/blob/main/Dedaub_RCA_Audit.pdf",
@@ -34224,6 +34225,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
+    treasury: "airswap.js",
     twitter: "airswap",
   },
   /*
@@ -34379,6 +34381,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
+    treasury: "forth-dao.js",
     twitter: "AmpleforthOrg",
   },
 ]

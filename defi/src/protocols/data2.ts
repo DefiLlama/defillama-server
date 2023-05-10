@@ -34328,7 +34328,7 @@ const data2: Protocol[] = [
     url: "https://holdstation.exchange",
     description: "Holdstation DeFutures: advance DeFi Futures trading platform with 500x leverage trading & diverse assets on zkSync.",
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/holdstation-defutures.jpg`,
+    logo: `${baseIconsUrl}/holdstation-defutures.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

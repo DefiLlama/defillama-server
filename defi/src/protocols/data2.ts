@@ -26604,7 +26604,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    module: "dummy.js",
+    module: "fpi/index.js",
     twitter: "fraxfinance",
     listedAt: 1677584770
   },

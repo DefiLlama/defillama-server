@@ -1525,5 +1525,21 @@ export default {
     "airswap": {
         "enabled": true,
         "id": "2954"
+    },
+    "ArbitrumExchange": {
+        "enabled": true,
+        "id": "2685",
+        protocolsData: {
+            v2: {
+                "enabled": true,
+                "id": "2685",
+                displayName: "Arbitrum Exchange V2"
+            },
+            v3: {
+                "enabled": true,
+                "id": "2685",
+                displayName: "Arbitrum Exchange V3"
+            }
+        }
     }
 } as AdaptorsConfig

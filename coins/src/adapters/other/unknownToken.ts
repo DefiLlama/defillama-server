@@ -5,7 +5,6 @@ import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectData } from "../utils/database";
 import { getTokenInfo } from "../utils/erc20";
 
-// MIND THIS ONLY SUPPORTS POOL ASSETS OF EQUIVALENT DECIMALS
 export default async function getTokenPrices(
   timestamp: number,
   pool: string,

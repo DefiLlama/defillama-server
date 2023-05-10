@@ -1146,7 +1146,7 @@ const data2: Protocol[] = [
       "https://github.com/elysia-dev/elyfi-token/tree/main/audit"
     ],
     listedAt: 1645646372,
-    governanceID: ["snapshot:elyfi-bsc.eth","compound:ethereum:0x0c54629266d7fa40b4bfaf1640ebc2cd093866c3",]
+    governanceID: ["snapshot:elyfi-bsc.eth", "compound:ethereum:0x0c54629266d7fa40b4bfaf1640ebc2cd093866c3",]
   },
   {
     id: "1460",
@@ -17597,30 +17597,30 @@ const data2: Protocol[] = [
     language: "Move",
     listedAt: 1666310467
   },
-/*
-  {
-    id: "2209",
-    name: "Opulous",
-    address: "algorand:287867876",
-    symbol: "Opulous",
-    url: "https://opulous.org",
-    description:
-      "Opulous is a decentralised peer-to-peer loan platform built on the Algorand blockchain. It will help increase artists’ access to capital without the need for traditional institutions, such as banks. It’s all about providing financial options and flexibility for artists so they can develop their careers, support each other, and remain independent.",
-    chain: "Algorand",
-    logo: `${baseIconsUrl}/opulous.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: "opulous",
-    cmcId: "10409",
-    category: "Lending",
-    chains: ["Algorand"],
-    module: "opulous/index.js",
-    twitter: "opulousapp",
-    forkedFrom: [],
-    oracles: [],
-    listedAt: 1666349179
-  },
-*/
+  /*
+    {
+      id: "2209",
+      name: "Opulous",
+      address: "algorand:287867876",
+      symbol: "Opulous",
+      url: "https://opulous.org",
+      description:
+        "Opulous is a decentralised peer-to-peer loan platform built on the Algorand blockchain. It will help increase artists’ access to capital without the need for traditional institutions, such as banks. It’s all about providing financial options and flexibility for artists so they can develop their careers, support each other, and remain independent.",
+      chain: "Algorand",
+      logo: `${baseIconsUrl}/opulous.jpg`,
+      audits: "0",
+      audit_note: null,
+      gecko_id: "opulous",
+      cmcId: "10409",
+      category: "Lending",
+      chains: ["Algorand"],
+      module: "opulous/index.js",
+      twitter: "opulousapp",
+      forkedFrom: [],
+      oracles: [],
+      listedAt: 1666349179
+    },
+  */
   {
     id: "2210",
     name: "LiquidSwap",
@@ -25135,6 +25135,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "ondofinance/index.js",
     twitter: "OndoFinance",
+    governanceID: ["compound:ethereum:0x336505EC1BcC1A020EeDe459f57581725D23465A"],
     audit_links: ["https://www.certik.org/projects/ondofinance"],
   },
   {
@@ -26366,31 +26367,31 @@ const data2: Protocol[] = [
     listedAt: 1642599283,
     parentProtocol: "parent#beamswap"
   },
-    /*
-  {
-    id: "2597",
-    name: "Surfswap Classic",
-    address: "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
-    symbol: "TIDE",
-    url: "https://surfdex.io",
-    description: "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
-    chain: "Kava",
-    logo: `${baseIconsUrl}/surfswap.png`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexes",
-    chains: ["Kava"],
-    oracles: ["TWAP"],
-    forkedFrom: ["Uniswap V2"],
-    module: "surfswap/index.js",
-    twitter: "SurfswapDEX",
-    audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf"],
-    listedAt: 1656665210,
-    parentProtocol: "parent#surfswap"
-  },
-  */
+  /*
+{
+  id: "2597",
+  name: "Surfswap Classic",
+  address: "kava:0x88905056caCBb5554Add698204B6a757BEcA278D",
+  symbol: "TIDE",
+  url: "https://surfdex.io",
+  description: "Community DEX on Kava. One-stop shop for the crypto community, enabling peer-to-peer transactions.",
+  chain: "Kava",
+  logo: `${baseIconsUrl}/surfswap.png`,
+  audits: "2",
+  audit_note: null,
+  gecko_id: null,
+  cmcId: null,
+  category: "Dexes",
+  chains: ["Kava"],
+  oracles: ["TWAP"],
+  forkedFrom: ["Uniswap V2"],
+  module: "surfswap/index.js",
+  twitter: "SurfswapDEX",
+  audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Surfswap-v1.0.pdf"],
+  listedAt: 1656665210,
+  parentProtocol: "parent#surfswap"
+},
+*/
   {
     id: "2598",
     name: "Surfswap Stable AMM",
@@ -26714,9 +26715,9 @@ const data2: Protocol[] = [
     module: "genius/index.js",
     twitter: "Genicrypto",
     audit_links: [
-                   "https://www.certik.com/projects/genius",
-                   "https://www.gleipnirsecurity.com/reports"
-                 ],
+      "https://www.certik.com/projects/genius",
+      "https://www.gleipnirsecurity.com/reports"
+    ],
     listedAt: 1677607434
   },
   {
@@ -27263,10 +27264,10 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "sector_fi",
-    audit_links:[
-                  "https://1194552491-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Faizh7QHFZ0AM4JGHZRn6%2Fuploads%2Fj3nsS4VbUkK4j5ucSRq8%2FSector_Finance_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf?alt=media&token=baabd2bb-7f8d-40ee-b8ff-b66f84c1345a",
-                  "https://1194552491-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Faizh7QHFZ0AM4JGHZRn6%2Fuploads%2FhOfiANzdgcROK65IdYip%2FSector_Finance_New_Strategies_and_Vaults_Upgradeable_Contracts_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf?alt=media&token=567d90c1-5bcc-4ae9-91f5-b48acc0515d3"
-                ],
+    audit_links: [
+      "https://1194552491-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Faizh7QHFZ0AM4JGHZRn6%2Fuploads%2Fj3nsS4VbUkK4j5ucSRq8%2FSector_Finance_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf?alt=media&token=baabd2bb-7f8d-40ee-b8ff-b66f84c1345a",
+      "https://1194552491-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Faizh7QHFZ0AM4JGHZRn6%2Fuploads%2FhOfiANzdgcROK65IdYip%2FSector_Finance_New_Strategies_and_Vaults_Upgradeable_Contracts_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf?alt=media&token=567d90c1-5bcc-4ae9-91f5-b48acc0515d3"
+    ],
     listedAt: 1678137824
   },
   {
@@ -27288,10 +27289,10 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: ["Pyth"],
     twitter: "UniwhaleEx",
-    audit_links:[
-                  "https://cdn.uniwhale.co/pdf/UniWhale_final_Secure3_Audit_Report.pdf",
-                  "https://cdn.uniwhale.co/pdf/MetaScan_Report_Uniwhale.pdf"
-                ],
+    audit_links: [
+      "https://cdn.uniwhale.co/pdf/UniWhale_final_Secure3_Audit_Report.pdf",
+      "https://cdn.uniwhale.co/pdf/MetaScan_Report_Uniwhale.pdf"
+    ],
     listedAt: 1678196874
   },
   {
@@ -27313,7 +27314,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "ruby_exchange",
-    audit_links:["https://github.com/RubyExchange/documents/blob/master/SlowMist%20Audit%20Report%20-%20Ruby%20Protocol%20FINAL.pdf"],
+    audit_links: ["https://github.com/RubyExchange/documents/blob/master/SlowMist%20Audit%20Report%20-%20Ruby%20Protocol%20FINAL.pdf"],
     parentProtocol: "parent#ruby.exchange",
     listedAt: 1678200473
   },
@@ -27336,7 +27337,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "ruby_exchange",
-    audit_links:["https://github.com/RubyExchange/documents/blob/master/SlowMist%20Audit%20Report%20-%20Ruby%20Protocol%20FINAL.pdf"],
+    audit_links: ["https://github.com/RubyExchange/documents/blob/master/SlowMist%20Audit%20Report%20-%20Ruby%20Protocol%20FINAL.pdf"],
     parentProtocol: "parent#ruby.exchange",
     listedAt: 1678200478
   },
@@ -27381,9 +27382,9 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "PulsarSwap",
     audit_links: [
-                   "https://pulsarswap.com/wp-content/uploads/2022/04/Pulsar-PeckShield-Audit-Report.pdf",
-                   "https://pulsarswap.com/wp-content/uploads/2022/11/Pulsar-Secure3-Audit-Report.pdf",
-                 ],
+      "https://pulsarswap.com/wp-content/uploads/2022/04/Pulsar-PeckShield-Audit-Report.pdf",
+      "https://pulsarswap.com/wp-content/uploads/2022/11/Pulsar-Secure3-Audit-Report.pdf",
+    ],
     listedAt: 1678203848
   },
   {
@@ -27902,9 +27903,9 @@ const data2: Protocol[] = [
     module: "paxo-finance/index.js",
     twitter: "wefi_xyz",
     audit_links: [
-                   "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Paxo-v1.0.pdf",
-                   "https://github.com/Quillhash/QuillAudit_Reports/blob/master/Paxo%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"
-                 ],
+      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Paxo-v1.0.pdf",
+      "https://github.com/Quillhash/QuillAudit_Reports/blob/master/Paxo%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"
+    ],
     listedAt: 1678721730
   },
   {
@@ -28745,9 +28746,9 @@ const data2: Protocol[] = [
     treasury: "sakai-vault.js",
     twitter: "SakaiVault",
     audit_links: [
-                   "https://www.certik.com/projects/sakai-vault",
-                   "https://blocksafu.com/project-detail/0x43B35e89d15B91162Dea1C51133C4c93bdd1C4aF"
-                 ],
+      "https://www.certik.com/projects/sakai-vault",
+      "https://blocksafu.com/project-detail/0x43B35e89d15B91162Dea1C51133C4c93bdd1C4aF"
+    ],
     listedAt: 1679408968
   },
   {
@@ -29030,10 +29031,10 @@ const data2: Protocol[] = [
     module: "dexio-protocol/index.js",
     twitter: "dexioprotocol",
     audit_links: [
-                   "https://global-uploads.webflow.com/63bd414670efa3b8c932ad2b/63bd414670efa34d8e32b1b9_Final%20Security%20Audit%20of%20DEXI%20token-2022-08-22%20(1).pdf",
-                   "https://global-uploads.webflow.com/63bd414670efa3b8c932ad2b/63bd414670efa3125f32b1b8_8e64c255-ad07-4326-8e73-1446db7a72d6%20(1).pdf",
-                   "https://global-uploads.webflow.com/63bd414670efa3b8c932ad2b/63bd414670efa32a4032b263_audit%20(1).pdf"
-                 ],
+      "https://global-uploads.webflow.com/63bd414670efa3b8c932ad2b/63bd414670efa34d8e32b1b9_Final%20Security%20Audit%20of%20DEXI%20token-2022-08-22%20(1).pdf",
+      "https://global-uploads.webflow.com/63bd414670efa3b8c932ad2b/63bd414670efa3125f32b1b8_8e64c255-ad07-4326-8e73-1446db7a72d6%20(1).pdf",
+      "https://global-uploads.webflow.com/63bd414670efa3b8c932ad2b/63bd414670efa32a4032b263_audit%20(1).pdf"
+    ],
     listedAt: 1679573389
   },
   {
@@ -29421,9 +29422,9 @@ const data2: Protocol[] = [
     module: "dummy.js",
     twitter: "GetProtocol",
     audit_links: [
-                   "https://www.get-protocol.io/files/GET-Protocol-Token-Sale-Matthew-Di-Ferrante.pdf",
-                   "https://reports.yacademy.dev/docs/12-2022-GET-Protocol-Staking/"
-                 ],
+      "https://www.get-protocol.io/files/GET-Protocol-Token-Sale-Matthew-Di-Ferrante.pdf",
+      "https://reports.yacademy.dev/docs/12-2022-GET-Protocol-Staking/"
+    ],
 
   },
   {
@@ -32292,10 +32293,10 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "ensuro/index.js",
     twitter: "Ensuroproject",
-    audit_links:[
-                  "https://github.com/ensuro/ensuro/blob/main/audits/Quantstamp-Ensuro-Final-Report-2022-11-09.pdf",
-                  "https://github.com/ensuro/ensuro/blob/main/audits/SlowMistAuditReport-Ensuro-2021-09-29.pdf"
-                ],
+    audit_links: [
+      "https://github.com/ensuro/ensuro/blob/main/audits/Quantstamp-Ensuro-Final-Report-2022-11-09.pdf",
+      "https://github.com/ensuro/ensuro/blob/main/audits/SlowMistAuditReport-Ensuro-2021-09-29.pdf"
+    ],
     listedAt: 1681991669
   },
   {
@@ -32766,9 +32767,9 @@ const data2: Protocol[] = [
     module: "rollup-fi/index.js",
     twitter: "Rollup_Finance",
     audit_links: [
-                   "https://972411339-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlKZgazbrrlOv3lmzetUj%2Fuploads%2FYbZ40yoZOoHTV6I8qz3Y%2FRollup.Finance%20Smart%20Contract%20Security%20Audit%20Report.pdf?alt=media&token=91c34451-192e-4015-b3b2-6b74e1307951",
-                   "https://972411339-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlKZgazbrrlOv3lmzetUj%2Fuploads%2F6yoR3zWB76OGB6zUH5YS%2FRollup.Finance%20Smart%20Contract%20Audit%20Report%20by%20Noneage.pdf?alt=media&token=2d3e3df2-6285-4291-88a6-e6a791f62e77"
-                 ],
+      "https://972411339-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlKZgazbrrlOv3lmzetUj%2Fuploads%2FYbZ40yoZOoHTV6I8qz3Y%2FRollup.Finance%20Smart%20Contract%20Security%20Audit%20Report.pdf?alt=media&token=91c34451-192e-4015-b3b2-6b74e1307951",
+      "https://972411339-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FlKZgazbrrlOv3lmzetUj%2Fuploads%2F6yoR3zWB76OGB6zUH5YS%2FRollup.Finance%20Smart%20Contract%20Audit%20Report%20by%20Noneage.pdf?alt=media&token=2d3e3df2-6285-4291-88a6-e6a791f62e77"
+    ],
     listedAt: 1682430579
   },
   {
@@ -33008,9 +33009,9 @@ const data2: Protocol[] = [
     module: "wasabi/index.js",
     twitter: "wasabi_protocol",
     audit_links: [
-                   "https://dkoda-public.s3.amazonaws.com/Narya.ai_Wasabi_Smart_Contract_Audit.pdf",
-                   "https://dkoda-public.s3.amazonaws.com/Zellic_Wasabi_Smart_Contract_Audit.pdf"
-                 ],
+      "https://dkoda-public.s3.amazonaws.com/Narya.ai_Wasabi_Smart_Contract_Audit.pdf",
+      "https://dkoda-public.s3.amazonaws.com/Zellic_Wasabi_Smart_Contract_Audit.pdf"
+    ],
     listedAt: 1682542892
   },
   {

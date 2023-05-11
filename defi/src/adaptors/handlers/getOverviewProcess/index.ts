@@ -61,6 +61,7 @@ export type IGetOverviewResponseBody = IGeneralStats & {
     totalDataChartBreakdown?: IChartDataByDex,
     protocols: ProtocolsResponse[]
     allChains: string[]
+    chain: string | null
     errors?: string[]
 }
 
@@ -249,6 +250,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
         allChains,
+        chain: chainFilter ? getDisplayChainName(chainFilter) : null,
         total24h: enableStats ? generalStats.total24h : 0,
         total48hto24h: null,
         total7d: enableStats ? generalStats.total7d : 0,

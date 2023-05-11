@@ -1421,7 +1421,7 @@ export default {
         "enabled": true,
         "id": "2792"
     },
-    "satoshicoreswap": {
+    "satoshiswap": {
         "enabled": true,
         "id": "2827"
     },

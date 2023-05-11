@@ -24,7 +24,7 @@ async function main() {
         ":from": deleteFrom,
         ":to": deleteTo,
       },
-      KeyConditionExpression: "PK = :pk AND SK > :from AND SK < :to",
+      KeyConditionExpression: "PK = :pk AND SK BETWEEN :from AND :to",
     });
     const items = data.Items ?? []
     console.log('have to delete ', items.length, ' items, table:', tvlFunc(protocol.id))

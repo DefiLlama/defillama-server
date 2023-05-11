@@ -7578,6 +7578,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "spool/index.js",
+    treasury: "spool-protocol.js",
     twitter: "SpoolFi",
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Spool-v1.0.pdf",
@@ -13416,6 +13417,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "silo/index.js",
+    treasury: "silo-finance.js",
     twitter: "SiloFinance",
     governanceID: ["snapshot:silofinance.eth", "compound:ethereum:0xa89163f7b2d68a8fba6ca36beed32bd4f3eeaf61"],
     audit_links: [
@@ -34489,5 +34491,27 @@ const data2: Protocol[] = [
     forkedFrom: [], 
     oracles: [],
   },
+  {
+    id: "2968",
+    name: "GND Protocol",
+    address: "arbitrum:0xd67a097dce9d4474737e6871684ae3c05460f571",
+    symbol: "GND",
+    url: "https://gndprotocol.com",
+    description: "Incentivize capital efficiency on Arbitrum Ecosystem. Provide concentrated liquidity on your favorite assets to earn yield.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/gnd-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "gnd-protocol",
+    cmcId: "24779",
+    category: "Yield",
+    chains: ["Arbitrum"],
+    module: "gnd-protocol/index.js",
+    twitter: "GNDProtocol",
+    forkedFrom: [], 
+    oracles: [],
+    listedAt: 1683818607
+  },
+
 ]
 export default data2;

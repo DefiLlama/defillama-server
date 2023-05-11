@@ -1583,6 +1583,7 @@ const data: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum", "Binance", "Polygon"],
     module: "mantradao.js",
+    treasury: "mantra-dao.js",
     twitter: "MANTRADAO",
     audit_links: [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=1193264f67af7c2bb840306b82eff6218471cf4fbed79a7d48d6a01a93030e35",
@@ -2649,6 +2650,7 @@ const data: Protocol[] = [
     category: "Lending",
     chains: ["Ethereum"],
     module: "notional/index.js",
+    treasury: "notional.js",
     twitter: "NotionalFinance",
     audit_links: ["https://blog.openzeppelin.com/notional-audit/"],
     governanceID: ["snapshot:notional.eth"]

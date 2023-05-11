@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk"
 import dynamodb from "../../utils/shared/dynamodb"
-import { formatChain, formatChainKey } from "../utils/getAllChainsFromAdaptors"
+import { getDisplayChainName, formatChainKey } from "../utils/getAllChainsFromAdaptors"
 import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
 import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"

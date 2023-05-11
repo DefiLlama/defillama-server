@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, IChartData, IChartDataByDex } from "../../utils/volumeCalcs";
-import { formatChain } from "../../utils/getAllChainsFromAdaptors";
+import { getDisplayChainName } from "../../utils/getAllChainsFromAdaptors";
 import { sendDiscordAlert } from "../../utils/notify";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -318,7 +318,7 @@ export const removeEventTimestampAttribute = (v: AdaptorRecord) => {
 }
 
 export const getAllChainsUniqueString = (chains: string[]) => {
-    return chains.map(formatChain).filter((value, index, self) => {
+    return chains.map(getDisplayChainName).filter((value, index, self) => {
         return self.indexOf(value) === index;
     })
 }

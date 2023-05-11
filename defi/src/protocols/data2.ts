@@ -4222,7 +4222,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Optimism"],
-    oracles: [],
+    oracles: ["Chainlink"],
     forkedFrom: [],
     module: "aave/v3.js",
     twitter: "AaveAave",

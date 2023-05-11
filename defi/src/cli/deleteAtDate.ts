@@ -21,12 +21,12 @@ async function main() {
     const data = await dynamodb.query({
       ExpressionAttributeValues: {
         ":pk": tvlFunc(protocol.id),
+        ":from": deleteFrom,
+        ":to": deleteTo,
       },
-      KeyConditionExpression: "PK = :pk",
+      KeyConditionExpression: "PK = :pk AND SK > :from AND SK < :to",
     });
-    const items = (data.Items ?? [])
-      .filter(d => d.SK < deleteFrom)
-      .filter(d => d.SK > deleteTo)
+    const items = data.Items ?? []
     console.log('have to delete ', items.length, ' items, table:', tvlFunc(protocol.id))
     await PromisePool
       .withConcurrency(42)

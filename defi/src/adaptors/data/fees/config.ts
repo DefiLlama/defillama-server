@@ -848,5 +848,9 @@ export default {
                 displayName: "Arbitrum Exchange V3"
             }
         }
+    },
+    "across": {
+        "enabled": true,
+        "id": "1207"
     }
 } as AdaptorsConfig

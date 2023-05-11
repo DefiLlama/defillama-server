@@ -29721,7 +29721,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "antfarm-governance-token",
     cmcId: "23758",
-    category: "Dexes",
+    category: "Liquidity Management",
     chains: ["Ethereum", "Polygon zkEVM"],
     oracles: ["TWAP"],
     forkedFrom: ["Uniswap V2"],

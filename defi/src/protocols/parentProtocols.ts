@@ -1576,6 +1576,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "arbidex_fi",
   },
+  {
+    id: "parent#cozy-finance",
+    name: "Cozy Finance",
+    url: "https://www.cozy.finance",
+    description: "Cozy is an open-source protocol for automated and trust-minimized Protection Markets",
+    logo: `${baseIconsUrl}/cozy-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "cozyfinance",
+  },
 
 ];
 

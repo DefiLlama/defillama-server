@@ -10891,7 +10891,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "629",
-    name: "Cozy Finance",
+    name: "Cozy V1",
     address: "-",
     symbol: "-",
     url: "https://www.cozy.finance",
@@ -10909,6 +10909,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.cozy.finance/audits/quantstamp.pdf", "https://www.cozy.finance/audits/peckshield.pdf"],
     forkedFrom: ["Compound"], // quite different in purpose but still most code is from compound
     oracles: ["UMA"],
+    parentProtocol: "parent#cozy-finance"
   },
   {
     id: "630",

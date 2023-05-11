@@ -28539,7 +28539,7 @@ const data2: Protocol[] = [
     description: "SMARDEX sophisticated fine-tuned algorithm transforms impermanent loss to impermanent gain!",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/smardex.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "smardex",
     cmcId: null,
@@ -28549,6 +28549,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "SmarDex/index.js",
     twitter: "realSmarDex",
+    audit_links: [" https://smardex.io/audit-reports"],
     listedAt: 1679329866
   },
   {

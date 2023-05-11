@@ -12788,7 +12788,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "DCB",
     url: "https://platform.decubate.com/",
     description:
-      "Decubate is a community-powered investment platform that's bringing the $3 trillion global startup economy onto blockchain",
+      "Empower entrepreneurs with tools and resources to launch, manage, and grow web3 businesses, driving innovation in the decentralized economy.",
     chain: "Binance",
     logo: `${baseIconsUrl}/decubate.png`,
     audits: "0",

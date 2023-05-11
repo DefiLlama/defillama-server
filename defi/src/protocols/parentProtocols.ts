@@ -271,7 +271,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "21324",
     chains: [],
     twitter: "redactedcartel",
-    governanceID: ["snapshot:redactedcartel.eth"]
+    governanceID: ["snapshot:redactedcartel.eth"],
+    treasury: "redacted.js"
   },
   {
     id: "parent#tomb-finance",

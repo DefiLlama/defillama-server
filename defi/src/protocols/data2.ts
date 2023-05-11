@@ -34426,5 +34426,26 @@ const data2: Protocol[] = [
     parentProtocol: "parent#cozy-finance",
     listedAt: 1683779419
   },
+  {
+    id: "2965",
+    name: "Meld Gold",
+    address: null,
+    symbol: "-",
+    url: "https://meld.gold",
+    description: "One Meld Token equates to one gram of the corresponding precious metal that is fully redeemable and housed in a network of secure vaults and facilities.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/meld-gold.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Algorand"],
+    module: "meld-gold/index.js",
+    twitter: "meldgold",
+    forkedFrom: [], 
+    oracles: ["Chainklink"],
+    listedAt: 1683800481
+  },
 ]
 export default data2;

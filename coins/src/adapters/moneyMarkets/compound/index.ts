@@ -133,3 +133,12 @@ export function tonpound(timestamp: number = 0) {
     timestamp,
   );
 }
+
+export function lodestar(timestamp: number = 0) {
+  console.log("starting lodestar");
+  return getTokenPrices(
+    "arbitrum",
+    "0x92a62f8c4750D7FbDf9ee1dB268D18169235117B",
+    timestamp,
+  );
+}

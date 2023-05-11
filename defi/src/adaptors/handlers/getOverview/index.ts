@@ -1,6 +1,6 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { getCachedResponseOnR2 } from "../../utils/storeR2Response";
-import { handler as process_handler, DEFAULT_CHART_BY_ADAPTOR_TYPE, getOverviewCachedResponseKey, IGetOverviewResponseBody } from "../getOverviewProcess"
+import { handler as process_handler, getOverviewCachedResponseKey, IGetOverviewResponseBody } from "../getOverviewProcess"
 import invokeLambda from "../../../utils/shared/invokeLambda";
 import { getTimestampAtStartOfDay } from "@defillama/dimension-adapters/utils/date";
 import processEventParameters from "../helpers/processEventParameters";

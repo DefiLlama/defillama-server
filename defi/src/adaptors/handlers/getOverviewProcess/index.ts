@@ -2,7 +2,7 @@ import { successResponse, wrap, IResponse } from "../../../utils/shared";
 import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, IChartData, IChartDataByDex } from "../../utils/volumeCalcs";
-import { formatChain } from "../../utils/getAllChainsFromAdaptors";
+import { getDisplayChainName } from "../../utils/getAllChainsFromAdaptors";
 import { sendDiscordAlert } from "../../utils/notify";
 import { AdapterType } from "@defillama/dimension-adapters/adapters/types";
 import { IRecordAdaptorRecordData } from "../../db-utils/adaptor-record";
@@ -61,6 +61,7 @@ export type IGetOverviewResponseBody = IGeneralStats & {
     totalDataChartBreakdown?: IChartDataByDex,
     protocols: ProtocolsResponse[]
     allChains: string[]
+    chain: string | null
     errors?: string[]
 }
 
@@ -249,6 +250,7 @@ export const handler = async (event: AWSLambda.APIGatewayEvent, enableAlerts: bo
         totalDataChartBreakdown: totalDataChartBreakdownResponse,
         protocols: okProtocols,
         allChains,
+        chain: chainFilter ? getDisplayChainName(chainFilter) : null,
         total24h: enableStats ? generalStats.total24h : 0,
         total48hto24h: null,
         total7d: enableStats ? generalStats.total7d : 0,
@@ -318,7 +320,7 @@ export const removeEventTimestampAttribute = (v: AdaptorRecord) => {
 }
 
 export const getAllChainsUniqueString = (chains: string[]) => {
-    return chains.map(formatChain).filter((value, index, self) => {
+    return chains.map(getDisplayChainName).filter((value, index, self) => {
         return self.indexOf(value) === index;
     })
 }

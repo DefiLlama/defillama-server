@@ -1,5 +1,6 @@
 import { hourlyTvl, getLastRecord } from "./getLastRecord";
 import protocols from "../protocols/data";
+import treasuries from "../protocols/treasury";
 import { toUNIXTimestamp } from "./date";
 import { util } from "@defillama/sdk";
 import { importAdapter } from "./imports/importAdapter";
@@ -44,7 +45,7 @@ function printOutdated(outdated: [string, InfoProtocol, boolean][], maxLengthPro
 export async function getOutdated(maxDrift: number){
   const now = toUNIXTimestamp(Date.now());
   const outdated = [] as [string, InfoProtocol, boolean][];
-  await Promise.all(protocols.map(async protocol => {
+  await Promise.all(protocols.concat(treasuries).map(async protocol => {
     const item = await getLastRecord(hourlyTvl(protocol.id));
     let text: InfoProtocol;
     if (item === undefined) {

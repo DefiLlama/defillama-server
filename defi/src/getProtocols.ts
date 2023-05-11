@@ -45,7 +45,7 @@ const majors = [
   "icETH",
   "BTCB",
   "BETH",
-];
+].map(t=>t.toUpperCase());
 const stablecoins = [
   "USDT",
   "USDC",
@@ -88,7 +88,7 @@ const stablecoins = [
   "aAvaDAI",
   "avUSDT",
   "aOptUSDC",
-];
+].map(t=>t.toUpperCase());
 
 function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {
   const breakdown = {
@@ -107,7 +107,7 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
   for (const token in lastRecord.tvl) {
     if (majors.includes(token)) {
       breakdown.majors = breakdown.majors + lastRecord.tvl[token];
-    } else if (stablecoins.includes(token)) {
+    } else if (stablecoins.some(stable=>token.includes(stable))) {
       breakdown.stablecoins = breakdown.stablecoins + lastRecord.tvl[token];
     } else {
       breakdown.others = breakdown.others + lastRecord.tvl[token];
@@ -171,7 +171,7 @@ async function craftProtocolsResponseInternal(
           chains.push(getChainDisplayName(chain, useNewChainNames));
         }
 
-        const dataToReturn: IProtocol = {
+        const dataToReturn: Omit<IProtocol, "raises"> = {
           ...protocol,
           slug: sluggify(protocol),
           tvl: lastHourlyRecord.tvl,
@@ -181,7 +181,7 @@ async function craftProtocolsResponseInternal(
           change_1h: getPercentChange(lastHourlyRecord.tvlPrev1Hour, lastHourlyRecord.tvl),
           change_1d: getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl),
           change_7d: getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl),
-          tokenBreakdowns: includeTokenBreakdowns ? getTokenBreakdowns(lastHourlyTokensUsd) : {},
+          tokenBreakdowns: includeTokenBreakdowns ? getTokenBreakdowns(lastHourlyTokensUsd as any) : {},
         };
 
         const extraData: ["staking", "pool2"] = ["staking", "pool2"];

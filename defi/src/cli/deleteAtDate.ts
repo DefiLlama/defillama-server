@@ -6,9 +6,9 @@ import { clearProtocolCacheById } from "./utils/clearProtocolCache";
 
 
 async function main() {
-  const protocolName = "FlokiFi Locker"
-  const dateFromStr = '2022-09-02'
-  const dateToStr = '2022-08-16'
+  const protocolName = "MakerDAO (Treasury)"
+  const dateFromStr = '2020-03-04'
+  const dateToStr = '2021-05-03'
   console.log('Deteting data for protcol: ', protocolName)
   console.log('From: ', dateFromStr)
   console.log('Till: ', dateToStr)

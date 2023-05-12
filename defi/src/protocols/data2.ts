@@ -34545,6 +34545,27 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1683818607
   },
+  {
+    id: "2969",
+    name: "Kyborg Exchange",
+    address: null,
+    symbol: "-",
+    url: "https://kyborg.exchange/",
+    description: "V3 AMM with concentrated liquidity | multiple fee tiers per pool | keeper-less limit orders",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/kyborg-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "KyborgExchange/index.js",
+    twitter: "KyborgExchange",
+    forkedFrom: ["Uniswap V3"], 
+    oracles: [],
+    listedAt: 1683861152
+  },
 
 ]
 export default data2;

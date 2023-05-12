@@ -126,6 +126,20 @@ test("no id is repeated", async () => {
   }
 });
 
+test("all oracle names match exactly", async () => {
+  const oracles = {} as any;
+  for (const protocol of (protocols).concat(parentProtocols as any)) {
+    for(const oracle of (protocol.oracles ?? [])){
+      const prevOracle = oracles[oracle.toLowerCase()]
+      if(prevOracle === undefined){
+        oracles[oracle.toLowerCase()]=oracle
+      } else {
+        expect(prevOracle).toBe(oracle)
+      }
+    }
+  }
+});
+
 test("no coingeckoId is repeated", async () => {
   const ids = [];
   for (const protocol of protocols) {

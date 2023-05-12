@@ -33540,7 +33540,7 @@ const data2: Protocol[] = [
     module: "flux-exchange/index.js",
     twitter: "Flux_Exchange",
     forkedFrom: ["GMX"],
-    oracles: ["ChainLink"],
+    oracles: ["Chainlink"],
     listedAt: 1683044487
   },
   {

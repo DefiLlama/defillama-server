@@ -17,7 +17,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     ) values (
       ${getCurrentUnixTimestamp()}, ${protocol}, ${dataType}, ${message}, ${correctSource}
     )`
-    if(previousErrors.length > 0){
+    if(previousErrors.length === 0){
         await sendMessage(
 `New user report
 Protocol: ${protocol}

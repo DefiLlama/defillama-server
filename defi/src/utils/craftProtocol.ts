@@ -50,7 +50,7 @@ function selectChainFromItem(item: any, normalizedChain: string) {
 
 const raisesPromise = fetch("https://api.llama.fi/raises").then((res) => res.json());
 
-const protocolMcap = async (geckoId?: string | null) => {
+export const protocolMcap = async (geckoId?: string | null) => {
   if (!geckoId) return null;
 
   const mcap = await fetch("https://coins.llama.fi/mcaps", {
@@ -68,7 +68,7 @@ const protocolMcap = async (geckoId?: string | null) => {
   return mcap?.[`coingecko:${geckoId}`]?.mcap ?? null;
 };
 
-const getProtocolTokenPrice = async (geckoId?: string | null) => {
+export const getProtocolTokenPrice = async (geckoId?: string | null) => {
   if (!geckoId) return null;
 
   const price = await fetch("https://coins.llama.fi/prices", {
@@ -86,7 +86,7 @@ const getProtocolTokenPrice = async (geckoId?: string | null) => {
   return price?.coins?.[`coingecko:${geckoId}`]?.price ?? null;
 };
 
-const getProtocolTokenSupply = async (geckoId?: string | null) => {
+export const getProtocolTokenSupply = async (geckoId?: string | null) => {
   if (!geckoId) return null;
 
   const supply = await fetch(

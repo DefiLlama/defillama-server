@@ -6,6 +6,7 @@ import sluggify from "./sluggify";
 import fetch from "node-fetch";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
+import { getProtocolTokenPrice, getProtocolTokenSupply, protocolMcap } from "./craftProtocol";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -370,6 +371,12 @@ export default async function craftParentProtocol({
     totalLiquidityUSD,
   }));
 
+  const [tokenMcap, tokenPrice, tokenSupply] = await Promise.all([
+    protocolMcap(parentProtocol.gecko_id),
+    getProtocolTokenPrice(parentProtocol.gecko_id),
+    getProtocolTokenSupply(parentProtocol.gecko_id),
+  ]);
+
   const response: IProtocolResponse = {
     ...parentProtocol,
     currentChainTvls,
@@ -384,10 +391,10 @@ export default async function craftParentProtocol({
     }, [] as Array<IRaise>),
     metrics: getAvailableMetricsById(parentProtocol.id),
     treasury: parentProtocol.treasury || childProtocols.find((p) => p.treasury)?.treasury,
-    mcap: childProtocolsTvls.find((p) => p.mcap)?.mcap,
-    tokenPrice: childProtocolsTvls.find((p) => p.tokenPrice)?.tokenPrice,
-    tokenMcap: childProtocolsTvls.find((p) => p.tokenMcap)?.tokenMcap,
-    tokenSupply: childProtocolsTvls.find((p) => p.tokenSupply)?.tokenSupply,
+    mcap: tokenMcap || childProtocolsTvls.find((p) => p.mcap)?.mcap,
+    tokenPrice: tokenPrice || childProtocolsTvls.find((p) => p.tokenPrice)?.tokenPrice,
+    tokenMcap: tokenMcap || childProtocolsTvls.find((p) => p.tokenMcap)?.tokenMcap,
+    tokenSupply: tokenSupply || childProtocolsTvls.find((p) => p.tokenSupply)?.tokenSupply,
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

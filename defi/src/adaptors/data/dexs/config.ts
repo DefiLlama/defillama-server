@@ -1104,7 +1104,15 @@ export default {
     },
     "el-dorado-exchange": {
         "enabled": true,
-        "id": "2356"
+        "id": "2356",
+        "protocolsData": {
+            "swap": {
+                "id": "2356",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "El Dorado Exchange - SWAP"
+            }
+        },
     },
     "mummy-finance": {
         "enabled": true,

@@ -168,6 +168,16 @@ functions:
       - http:
           path: treasuries
           method: get
+  reportError:
+    handler: src/reportError.default
+    timeout: 30
+    events:
+      - http:
+          path: reportError
+          method: post
+    environment:
+      ERROR_REPORTS_DB: ${env:ERROR_REPORTS_DB}
+      ERROR_REPORTS_WEBHOOK: ${env:ERROR_REPORTS_WEBHOOK}
   storeAggregatorEvent:
     handler: src/storeAggregatorEvent.default
     timeout: 30

@@ -99,3 +99,5 @@ jobs:
           ACCOUNTS_DB: ${{ secrets.ACCOUNTS_DB }}
           CG_KEY: ${{ secrets.CG_KEY }}
           ERROR_DB: ${{ secrets.ERROR_DB }}
+          ERROR_REPORTS_WEBHOOK:  ${{ secrets.ERROR_REPORTS_WEBHOOK }}
+          ERROR_REPORTS_DB: ${{ secrets.ERROR_REPORTS_DB }}

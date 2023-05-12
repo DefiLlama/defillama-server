@@ -625,7 +625,8 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "mstable_",
     treasury: "mstable.js",
-    governanceID: ["snapshot:mstablegovernance.eth"]
+    governanceID: ["snapshot:mstablegovernance.eth"],
+    stablecoins: ["mstable-usd"]
   },
   {
     id: "parent#realt",
@@ -662,7 +663,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "6715",
     chains: [],
     twitter: "SperaxUSD",
-    governanceID: ["snapshot:speraxdao.eth"]
+    governanceID: ["snapshot:speraxdao.eth"],
+    stablecoins: ["sperax-usd"],
   },
   {
     id: "parent#opyn",
@@ -700,7 +702,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "BaoFinance",
-    governanceID: ["snapshot:pandaswapbsc.eth", "snapshot:baovotes.eth"]
+    governanceID: ["snapshot:pandaswapbsc.eth", "snapshot:baovotes.eth"],
+    stablecoins: ["baousd"]
   },
   {
     id: "parent#uniwswap",
@@ -766,6 +769,7 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "inverse.js",
     governanceID: ["compound:ethereum:0x35d9f4953748b318f18c30634ba299b237eedfff"],
     twitter: "InverseFinance",
+    stablecoins: ["dola"],
   },
   {
     id: "parent#kujira-protocol",
@@ -778,6 +782,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "15185",
     chains: [],
     twitter: "TeamKujira",
+    stablecoins: ["usk"]
   },
   {
     id: "parent#steakhut-finance",
@@ -1315,7 +1320,8 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Hector_Network",
     treasury: "hector.js",
-    governanceID: ["snapshot:hectordao.eth"]
+    governanceID: ["snapshot:hectordao.eth"],
+    stablecoins: ["tor"],
   },
   {
     id: "parent#zenlink",

@@ -28,6 +28,7 @@ export interface Protocol {
     [chain: string]: string[];
   };
   governanceID?: Array<string>;
+  stablecoins?: string[];
 }
 
 export interface IParentProtocol {
@@ -45,4 +46,5 @@ export interface IParentProtocol {
   forkedFrom?: Array<string>;
   governanceID?: Array<string>;
   treasury?: string;
+  stablecoins?: string[];
 }

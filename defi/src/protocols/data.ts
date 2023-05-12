@@ -200,7 +200,8 @@ const data: Protocol[] = [
       ethereum: ["Chainlink"],
       optimism: ["Chainlink", "Pyth"],
     },
-    governanceID: ["snapshot:synthetix-stakers-poll.eth"]
+    governanceID: ["snapshot:synthetix-stakers-poll.eth"],
+    stablecoins: ["susd", "seur"],
   },
   {
     id: "116",
@@ -264,7 +265,8 @@ const data: Protocol[] = [
     twitter: "MakerDAO",
     audit_links: ["https://security.makerdao.com/"],
     oracles: ["Chronicle"],
-    treasury: "maker.js"
+    treasury: "maker.js",
+    stablecoins: ["dai"],
   },
   {
     id: "119",
@@ -389,7 +391,8 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
     forkedFrom: [],
     oracles: ["Chainlink", "Band"],
-    governanceID: ["snapshot:dforcenet.eth"]
+    governanceID: ["snapshot:dforcenet.eth"],
+    stablecoins: ["dforce-usd"],
   },
   {
     id: "124",
@@ -1821,6 +1824,7 @@ const data: Protocol[] = [
     module: "unit.js",
     twitter: "unitprotocol",
     audit_links: ["https://github.com/unitprotocol/protocol_docs"],
+    stablecoins: ["usdp-stablecoin"]
   },
   {
     id: "194",
@@ -2040,7 +2044,8 @@ const data: Protocol[] = [
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Alchemix_v2.pdf",
     ],
     oracles: [],
-    governanceID: ["snapshot:alchemixstakers.eth"]
+    governanceID: ["snapshot:alchemixstakers.eth"],
+    stablecoins: ["alchemix-usd"],
   },
   {
     id: "205",
@@ -2207,7 +2212,8 @@ const data: Protocol[] = [
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:venus-xvs.eth"]
+    governanceID: ["snapshot:venus-xvs.eth"],
+    stablecoins: ["vai"]
   },
   {
     id: "213",
@@ -3005,7 +3011,8 @@ const data: Protocol[] = [
     twitter: "mimo_labs",
     audit_links: ["https://certificate.quantstamp.com/full/ten-x-titan"],
     oracles: ["DIA"],
-    governanceID: ["snapshot:mimo.eth"]
+    governanceID: ["snapshot:mimo.eth"],
+    stablecoins: ["parallel"]
   },
   /* repeated
   {
@@ -3103,7 +3110,8 @@ const data: Protocol[] = [
       "compound:ethereum:0x0bef27feb58e857046d630b2c03dfb7bae567494", 
       "compound:ethereum:0x637deeed4e4deb1d222650bd4b64192abf002c00",
       "compound:ethereum:0xe087f94c3081e1832dc7a22b48c6f2b5faae579b"
-    ]
+    ],
+    stablecoins: ["fei-usd"],
   },
   {
     id: "256",
@@ -3305,7 +3313,8 @@ const data: Protocol[] = [
     twitter: "reflexerfinance",
     audit_links: ["https://reflexer.finance/about/"],
     oracles: ["Chainlink"],
-    governanceID: ["compound:ethereum:0x7a6bbe7fdd793cc9ab7e0fc33605fcd2d19371e8"]
+    governanceID: ["compound:ethereum:0x7a6bbe7fdd793cc9ab7e0fc33605fcd2d19371e8"],
+    stablecoins: ["rai-reflex-index"]
   },
   {
     id: "266",
@@ -3412,6 +3421,7 @@ const data: Protocol[] = [
       "https://www.coinspect.com/liquity-audit/",
     ],
     oracles: ["Chainlink"],
+    stablecoins: ["liquity-usd"],
   },
   {
     id: "271",
@@ -4691,6 +4701,7 @@ const data: Protocol[] = [
     module: "moneyonchain.js",
     twitter: "moneyonchainok",
     audit_links: ["https://github.com/money-on-chain/Audits"],
+    stablecoins: ["dollar-on-chain"]
   },
   {
     id: "332",
@@ -5026,7 +5037,8 @@ const data: Protocol[] = [
     twitter: "MIM_Spell",
     oracles: ["Chainlink"],
     audit_links: ["https://www.certora.com/pubs/SushiBentoboxFeb2021.pdf"],
-    governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"]
+    governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"],
+    stablecoins: ["magic-internet-money"],
   },
   {
     id: "348",
@@ -5262,6 +5274,7 @@ const data: Protocol[] = [
     twitter: "gopartyparrot",
     audit_links: ["https://doc.parrot.fi/security/"],
     openSource: false,
+    stablecoins: ["parrot-usd"],
   },
   {
     id: "359",
@@ -5284,6 +5297,7 @@ const data: Protocol[] = [
     audit_links: ["https://www.certik.org/projects/fraxfinance"],
     oracles: ["Chainlink"],
     parentProtocol: "parent#frax-finance",
+    stablecoins: ["frax"],
   },
   /*
   {
@@ -6741,7 +6755,8 @@ const data: Protocol[] = [
       "snapshot:ousdgov.eth", 
       "compound:ethereum:0x3cdd07c16614059e66344a7b579dab4f9516c0b6",
       "compound:ethereum:0xc6a3525e2fd8f4844a6fdfe4552a583ce5ac7efa"
-    ]
+    ],
+    stablecoins: ["origin-dollar"]
   },
   {
     id: "428",
@@ -7204,7 +7219,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     treasury: "qidao.js",
     twitter: "QiDaoProtocol",
     audit_links: ["https://docs.mai.finance/risks/security#has-the-project-been-audited"],
-    governanceID: ["snapshot:qidao.eth"]
+    governanceID: ["snapshot:qidao.eth"],
+    stablecoins: ["mai"],
   },
   {
     id: "450",
@@ -8189,6 +8205,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "float/index.js",
     twitter: "FloatProtocol",
     audit_links: ["https://drive.google.com/file/d/1Vg3nCThlArC44JFj7Di5HMWziPGMFbvl/view"],
+    stablecoins: ["float-protocol-float"]
   },
   {
     id: "498",
@@ -8333,6 +8350,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mento/index.js",
     twitter: "CeloOrg",
     audit_links: ["https://celo.org/audits"],
+    stablecoins: ["celo-dollar", "celo-euro"],
   },
   {
     id: "505",
@@ -8603,6 +8621,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "HoverEng",
     audit_links: ["https://kolibri.finance/docs/security-report.pdf"],
     oracles: ["Harbinger"],
+    stablecoins: ["kolibri-usd"]
   },
   {
     id: "518",
@@ -8663,6 +8682,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/youves-com/youves-smart-contract/blob/main/audits/09212021-LeastAuthority-TezosFoundationSyntheticAssetPlatformSmartContractsFinalAuditReport.pdf",
     ],
     oracles: ["Acurast"],
+    stablecoins: ["youves-uusd"]
   },
   {
     id: "521",
@@ -10544,6 +10564,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "neutrino/index.js",
     twitter: "neutrino_proto",
     audit_links: ["https://audit.neutrino.at"],
+    stablecoins: ["neutrino-usd"]
   },
   {
     id: "612",
@@ -10848,6 +10869,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "reserve/index.js",
     twitter: "reserveprotocol",
     audit_links: ["https://certificate.certik.io/reports/reserve.org.pdf"],
+    stablecoins: ["electronic-usd", "reserve"]
   },
   {
     id: "627",
@@ -11507,7 +11529,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     treasury: "synapse.js",
     twitter: "SynapseProtocol",
     forkedFrom: ["Saddle Finance"],
-    governanceID: ["snapshot:synapseprotocol.eth"]
+    governanceID: ["snapshot:synapseprotocol.eth"],
+    stablecoins: ["nexus-usd"]
   },
   {
     id: "658",
@@ -12242,6 +12265,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://just.tronscan.org/docs/audit-report-just_cn.pdf"],
     listedAt: 1634757569,
     oracles: ["WINkLink"],
+    stablecoins: ["usdj"],
   },
   {
     id: "692",
@@ -13656,7 +13680,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/AngleProtocol/angle-core/tree/main/audits"],
     oracles: ["Chainlink", "TWAP"],
     listedAt: 1635962344,
-    governanceID: ["snapshot:anglegovernance.eth", "compound:ethereum:0x59153e939c5b4721543251ff3049ea04c755373b"]
+    governanceID: ["snapshot:anglegovernance.eth", "compound:ethereum:0x59153e939c5b4721543251ff3049ea04c755373b"],
+    stablecoins: ["ageur"],
   },
   {
     id: "757",
@@ -17258,6 +17283,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://omniscia.io/platypus-finance-governance-staking/",
     ],
     listedAt: 1638299790,
+    stablecoins: ["usp-stablecoin"]
   },
   {
     id: "945",
@@ -17619,7 +17645,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/fantohm-dev/fantohm-contracts/blob/main/audit/Fantohm%20USD%20Full%20Smart%20Contract%20Security%20Audit.pdf",
     ],
     listedAt: 1638463469,
-    governanceID: ["snapshot:fantohmdao.eth"]
+    governanceID: ["snapshot:fantohmdao.eth"],
+    stablecoins: ["usd-balance"]
   },
   {
     id: "962",
@@ -18931,6 +18958,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
                 ],
     parentProtocol: "parent#overnight-finance",
     listedAt: 1639428732,
+    stablecoins: ["usd+"]
   },
   {
     id: "1024",
@@ -19615,6 +19643,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "fiatdao/index.js",
     twitter: "fiatdao",
     listedAt: 1639957923,
+    stablecoins: ["fixed-income-asset-token"]
   },
   {
     id: "1056",
@@ -22638,6 +22667,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "ZunamiProtocol",
     audit_links: ["https://github.com/ZunamiLab/ZunamiProtocol/tree/main/audit"],
     listedAt: 1641421911,
+    stablecoins: ["zunami-usd"]
   },
   {
     id: "1202",
@@ -24784,7 +24814,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Compound"],
     listedAt: 1642768849,
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:iron-bank.eth"]
+    governanceID: ["snapshot:iron-bank.eth"],
+    stablecoins: ["iron-bank-euro", ]
   },
   {
     id: "1304",
@@ -24953,6 +24984,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/MoreMoney-Finance/audits/blob/main/PeckShield-Audit-Report-Moremoney-1.0.pdf"],
     oracles: ["Chainlink", "TWAP"],
     listedAt: 1643047373,
+    stablecoins: ["moremoney-usd"]
   },
   {
     id: "1312",
@@ -25889,6 +25921,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://hubble-markets.gitbook.io/hubble-protocol-official-docs/documentation/security-audits"],
     oracles: ["Pyth"],
     listedAt: 1643884771,
+    stablecoins: ["usdh"]
   },
   {
     id: "1357",
@@ -26565,7 +26598,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DeusDao",
     language: "Solidity",
     listedAt: 1644525911,
-    governanceID: ["snapshot:dea.eth"]
+    governanceID: ["snapshot:dea.eth"],
+    stablecoins: ["dei"]
   },
   {
     id: "1388",
@@ -26908,6 +26942,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://bramah.systems/audits/UXD_Audit_Bramah.pdf"],
     listedAt: 1644696944,
     openSource: false,
+    stablecoins: ["uxd-stablecoin"]
   },
   {
     id: "1403",

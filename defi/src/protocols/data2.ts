@@ -289,6 +289,7 @@ const data2: Protocol[] = [
     twitter: "ArableProtocol",
     language: "Solidity",
     listedAt: 1644992134,
+    stablecoins: ["arusd"]
   },
   /*
   {
@@ -811,6 +812,7 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.vestafinance.xyz/audit/audits"],
     governanceID: ["snapshot:vestafinance.eth"],
     listedAt: 1645453933,
+    stablecoins: ["vesta-stable"]
   },
   {
     id: "1445",
@@ -1392,6 +1394,7 @@ const data2: Protocol[] = [
     twitter: "nereusfinance",
     audit_links: ["https://docs.nereus.finance/nereus-protocol/security-audit"],
     listedAt: 1645753082,
+    stablecoins: ["nxusd"]
   },
   {
     id: "1471",
@@ -4670,7 +4673,8 @@ const data2: Protocol[] = [
     twitter: "JPEGd_69",
     audit_links: ["https://docs.jpegd.io/other-links/audits"],
     governanceID: ["snapshot:jpeg'd.eth"],
-    listedAt: 1649284165
+    listedAt: 1649284165,
+    stablecoins: ["pusd"]
   },
   {
     id: "1620",
@@ -5626,7 +5630,8 @@ const data2: Protocol[] = [
       "https://docs.google.com/document/d/1qYVwps1KgUxdmOoKFdgTDmhhMk4fY9tf0ukYxOAf_CQ/view",
       "https://code4rena.com/reports/2021-12-yetifinance/"
     ],
-    listedAt: 1650358633
+    listedAt: 1650358633,
+    stablecoins: ["yusd-stablecoin"]
   },
   {
     id: "1663",
@@ -6635,7 +6640,8 @@ const data2: Protocol[] = [
     module: "astriddao/index.js",
     twitter: "AstridDAO",
     audit_links: ["https://www.certik.com/projects/astriddao"],
-    listedAt: 1651225407
+    listedAt: 1651225407,
+    stablecoins: ["bai-stablecoin"]
   },
   {
     id: "1709",
@@ -8873,7 +8879,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "spicetrade/index.js",
     twitter: "spicetradeai",
-    listedAt: 1654678696
+    listedAt: 1654678696,
+    stablecoins: ["spiceusd"]
   },
   {
     id: "1812",
@@ -9261,7 +9268,8 @@ const data2: Protocol[] = [
     module: "ip/index.js",
     twitter: "InterestDeFi",
     audit_links: ["https://gfx.cafe/ip/contracts/-/blob/master/audit/GFX_IP_Protocol_Audit_Report.pdf"],
-    listedAt: 1655545050
+    listedAt: 1655545050,
+    stablecoins: ["interest-protocol"]
   },
   {
     id: "1830",
@@ -9527,7 +9535,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "ratio-finance/index.js",
     twitter: "RatioFinance",
-    listedAt: 1655652176
+    listedAt: 1655652176,
+    stablecoins: ["ratio-stable-coin"]
   },
   {
     id: "1842",
@@ -9677,7 +9686,8 @@ const data2: Protocol[] = [
     module: "acala-lending/index.js",
     twitter: "AcalaNetwork",
     audit_links: ["https://github.com/AcalaNetwork/Acala/tree/master/audit"],
-    listedAt: 1655893651
+    listedAt: 1655893651,
+    stablecoins: ["acala-dollar"]
   },
   {
     id: "1849",
@@ -10805,7 +10815,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "taiga/index.js",
     twitter: "TaigaProtocol",
-    listedAt: 1657807133
+    listedAt: 1657807133,
+    stablecoins: ["3usd"]
   },
   {
     id: "1900",
@@ -11174,7 +11185,8 @@ const data2: Protocol[] = [
     module: "hedge/index.js",
     twitter: "HedgeLabs",
     audit_links: ["https://docs.hedge.so/protocol-overview/security"],
-    listedAt: 1658387691
+    listedAt: 1658387691,
+    stablecoins: ["hedge-usd"]
   },
   {
     id: "1917",
@@ -11508,6 +11520,7 @@ const data2: Protocol[] = [
     twitter: "homecoinfinance",
     audit_links: ["https://files.baconcoin.finance/bacon-protocol-full-audit.pdf"],
     listedAt: 1658849757,
+    stablecoins: ["homecoin"]
   },
   {
     id: "1932",
@@ -13425,7 +13438,8 @@ const data2: Protocol[] = [
       "https://drive.google.com/file/d/1WXaB3ICLv4rSEX86POK3-NaOIxXwyq9l/view",
       "https://drive.google.com/file/d/10GyfA-nBJ5jqLWW9LEYJQeFem8qSgNH6/view"
     ],
-    listedAt: 1661433529
+    listedAt: 1661433529,
+    stablecoins: ["xai"]
   },
   {
     id: "2021",
@@ -13828,7 +13842,8 @@ const data2: Protocol[] = [
     module: "helio-money/index.js",
     twitter: "Helio_Money",
     audit_links: ["https://github.com/helio-money/helio-smart-contracts/tree/master/audits"],
-    listedAt: 1661888773
+    listedAt: 1661888773,
+    stablecoins: ["hay"],
   },
   {
     id: "2039",
@@ -15936,7 +15951,8 @@ const data2: Protocol[] = [
     module: "lemma/index.js",
     twitter: "LemmaFinance",
     audit_links: ["https://github.com/lemma-finance/audits/tree/main/audits"],
-    listedAt: 1664361294
+    listedAt: 1664361294,
+    stablecoins: ["usdlemma"]
   },
   {
     id: "2135",
@@ -15999,7 +16015,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Liquity"],
     module: "defifranc/index.js",
     twitter: "DeFi_Franc",
-    listedAt: 1664485760
+    listedAt: 1664485760,
+    stablecoins: ["defi-franc"]
   },
   {
     id: "2138",
@@ -17131,7 +17148,8 @@ const data2: Protocol[] = [
     twitter: "realprotocoleth",
     forkedFrom: ["Liquity"],
     oracles: [],
-    listedAt: 1666002405
+    listedAt: 1666002405,
+    stablecoins: ["usdw"]
   },
   {
     id: "2189",
@@ -18910,7 +18928,8 @@ const data2: Protocol[] = [
     twitter: "bankofchain_dao",
     forkedFrom: [],
     oracles: ["Chainlink"],
-    listedAt: 1668094972
+    listedAt: 1668094972,
+    stablecoins: ["usdi"]
   },
   {
     id: "2266",
@@ -19224,7 +19243,8 @@ const data2: Protocol[] = [
     twitter: null,
     forkedFrom: [],
     oracles: [],
-    listedAt: 1668512038
+    listedAt: 1668512038,
+    stablecoins: ["sigmausd"]
   },
   {
     id: "2282",
@@ -19727,7 +19747,8 @@ const data2: Protocol[] = [
     twitter: "zkBob_",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1669204672
+    listedAt: 1669204672,
+    stablecoins: ["bob"]
   },
   {
     id: "2305",
@@ -19845,7 +19866,8 @@ const data2: Protocol[] = [
       "https://docs.indigoprotocol.io/resources/audit"
     ],
     oracles: ["Chainlink"],
-    listedAt: 1669327585
+    listedAt: 1669327585,
+    stablecoins: ["iusd"]
   },
   {
     id: "2310",
@@ -20041,7 +20063,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Origin Dollar"],
     oracles: ["Chainlink"],
     audit_links: ["https://ledgerops.com/wp-content/uploads/2022/09/LedgerOps/_StablFi/_Rebase/_Audit.pdf"],
-    listedAt: 1669728928
+    listedAt: 1669728928,
+    stablecoins: ["stabl.fi-cash"]
   },
   {
     id: "2319",
@@ -21643,7 +21666,8 @@ const data2: Protocol[] = [
     twitter: "Harbor_Protocol",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1672065667
+    listedAt: 1672065667,
+    stablecoins: ["composite"]
   },
   {
     id: "2389",
@@ -23641,7 +23665,8 @@ const data2: Protocol[] = [
     twitter: "dontdiememe",
     oracles: ["TWAP"],
     forkedFrom: [],
-    listedAt: 1675014442
+    listedAt: 1675014442,
+    stablecoins: ["meme-dollar"]
   },
   {
     id: "2477",
@@ -23831,7 +23856,8 @@ const data2: Protocol[] = [
     module: "djed-alliance/index.js",
     twitter: "DjedAlliance",
     audit_links: ["https://github.com/DjedAlliance/Djed-Solidity/blob/main/audits/PeckShield-Audit-Report-Djed-2.pdf"],
-    listedAt: 1675229824
+    listedAt: 1675229824,
+    stablecoins: ["djed-stablecoin"]
   },
   {
     id: "2485",
@@ -24418,7 +24444,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://github.com/HalbornSecurity/PublicReports/tree/master/Solidity%20Smart%20Contract%20Audits/DAMfinance%20Audits"],
-    listedAt: 1675781737
+    listedAt: 1675781737,
+    stablecoins: ["deuterium"]
   },
   {
     id: "2511",
@@ -26545,7 +26572,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "dsu-money/index.js",
     twitter: "dsumoney",
-    listedAt: 1677501985
+    listedAt: 1677501985,
+    stablecoins: ["digital-standard-unit"]
   },
   {
     id: "2605",
@@ -26609,7 +26637,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "fpi/index.js",
     twitter: "fraxfinance",
-    listedAt: 1677584770
+    listedAt: 1677584770,
+    stablecoins: ["frax-price-index"],
   },
   {
     id: "2608",
@@ -28295,7 +28324,8 @@ const data2: Protocol[] = [
     module: "davos-protocol/index.js",
     twitter: "Davos_Protocol",
     audit_links: ["https://github.com/davos-money/new-davos-smart-contracts/tree/main/audits"],
-    listedAt: 1679050000
+    listedAt: 1679050000,
+    stablecoins: ["davos-protocol"]
   },
   {
     id: "2684",
@@ -31393,7 +31423,8 @@ const data2: Protocol[] = [
     module: "czodiac/index.js",
     audit_links: ["https://audits.finance/Audits/CZUSD-Smart-Contract-Audit.pdf"],
     twitter: "zodiacs_c",
-    listedAt: 1681436619
+    listedAt: 1681436619,
+    stablecoins: ["czodiac-usd"]
   },
   {
     id: "2827",
@@ -33101,7 +33132,8 @@ const data2: Protocol[] = [
     module: "lybra/index.js",
     twitter: "LybraFinanceLSD",
     audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/Lybra"],
-    listedAt: 1682586612
+    listedAt: 1682586612,
+    stablecoins: ["eusd"]
   },
   {
     id: "2905",
@@ -33694,7 +33726,8 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: [],
     parentProtocol: "parent#curve-finance",
-    listedAt: 1683150941
+    listedAt: 1683150941,
+    stablecoins: ["crvusd"]
   },
   {
     id: "2931",

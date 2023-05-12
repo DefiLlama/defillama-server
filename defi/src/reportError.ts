@@ -4,13 +4,13 @@ import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared"
 import postgres from "postgres";
 
 const sql = postgres(process.env.ERROR_REPORTS_DB!);
-// CREATE TABLE errorReports (time INT, protocol VARCHAR(200), dataType VARCHAR(200), message TEXT, correctSource TEXT, id serial primary key,);
+// CREATE TABLE errorReports (time INT, protocol VARCHAR(200), dataType VARCHAR(200), message TEXT, correctSource TEXT, id serial primary key);
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   try {
     const { message, protocol, dataType, correctSource } = JSON.parse(event.body!);
 
-    const previousErrors = await sql`select protocol, dataType from errorReports where time > ${getCurrentUnixTimestamp() - 24*3600}`
+    const previousErrors = await sql`select protocol, dataType from errorReports where time > ${getCurrentUnixTimestamp() - 24*3600} and protocol = ${protocol} and dataType = ${dataType}`
     await sql`
     insert into errorReports (
       time, protocol, dataType, message, correctSource

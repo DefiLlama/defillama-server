@@ -101,5 +101,17 @@ export default {
     "pika-protocol": {
         "enabled": true,
         "id": "916"
+    },
+    "el-dorado-exchange": {
+        "enabled": true,
+        "id": "2356",
+        "protocolsData": {
+            "derivatives": {
+                "id": "2356",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "El Dorado Exchange - Derivatives"
+            }
+        },
     }
 } as AdaptorsConfig

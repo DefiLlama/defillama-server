@@ -34609,5 +34609,27 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1683886128
   },
+  {
+    id: "2972",
+    name: "Steadefi",
+    address: null,
+    symbol: "STEADY",
+    url: "https://steadefi.com",
+    description: "Leveraged yield strategy vaults with auto risk management.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/steadefi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Arbitrum", "Avalanche"],
+    module: "steadefi/index.js",
+    twitter: "steadefi",
+    forkedFrom: [], 
+    oracles: [],
+    audit_links: ["https://omniscia.io/reports/steadefi-staking-vaults-64031f72d11ef00014ba49e5"],
+    listedAt: 1683891208
+  },
 ]
 export default data2;

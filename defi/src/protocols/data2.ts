@@ -34631,5 +34631,27 @@ const data2: Protocol[] = [
     audit_links: ["https://omniscia.io/reports/steadefi-staking-vaults-64031f72d11ef00014ba49e5"],
     listedAt: 1683891208
   },
+  {
+    id: "2973",
+    name: "Nutbox",
+    address: null,
+    symbol: "-",
+    url: "https://app.nutbox.io",
+    description: "Nutbox is a staking DAO platform for everyon. Every DAO can issue their token easily and open staking pool easily.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/nutbox.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Binance", "ENULS"],
+    module: "nutbox/index.js",
+    twitter: "NutboxDao",
+    forkedFrom: [], 
+    oracles: [],
+    audit_links: ["https://skynet.certik.com/projects/walnut"],
+    listedAt: 1683899829
+  },
 ]
 export default data2;

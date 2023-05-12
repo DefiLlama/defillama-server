@@ -1,6 +1,8 @@
 import { cache20MinResponse, wrap, IResponse } from "./utils/shared";
 import { getLatestUsersData } from "./users/storeUsers";
 import { getCurrentUnixTimestamp } from "./utils/date";
+import protocols from "./protocols/data";
+import parentProtocols from "./protocols/parentProtocols";
 
 type userTypes = "users" | "newUsers" | "txs" | "gasUsd"
 
@@ -12,10 +14,16 @@ const handler = async (): Promise<IResponse> => {
             [type:string]: {value: number, end: number}
         }
     }
+    const allProtocols = protocols.concat(parentProtocols as any).reduce((acc, item)=>({
+        ...acc,
+        [item.id]: item.name
+    }), {} as any)
     latestRecords.forEach(({type, rows}) => {
         rows.forEach(record => {
             if(latestRecordByProtocol[record.protocolid] === undefined){
-                latestRecordByProtocol[record.protocolid] = {}
+                latestRecordByProtocol[record.protocolid] = {
+                    name: allProtocols[record.protocolid]
+                }
             }
             if (latestRecordByProtocol[record.protocolid][type] === undefined || latestRecordByProtocol[record.protocolid][type].end < record.endtime) {
                 latestRecordByProtocol[record.protocolid][type] = { value: record[type === "newUsers"?"users":type], end: record.endtime }

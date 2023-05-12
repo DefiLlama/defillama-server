@@ -34567,6 +34567,47 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1683861152
   },
-
+  {
+    id: "2970",
+    name: "Beluga Dex",
+    address: "arbitrum:0x09090e22118b375f2c7b95420c04414E4bf68e1A",
+    symbol: "BELA",
+    url: "https://arb.beluga.so",
+    description: "Beluga Protocol is a multichain stableswap AMM that aims to solve the problem of liquidity fragmentation with seamless cross-chain swaps.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/beluga-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "beluga-dex/index.js",
+    twitter: "Belugadex",
+    forkedFrom: [], 
+    oracles: [],
+    listedAt: 1683886126
+  },
+  {
+    id: "2971",
+    name: "StarkEx",
+    address: null,
+    symbol: "-",
+    url: "https://app.starkex.org",
+    description: "StarkEx AMM, Liquidity Farms, and Reward pools on StarkNet. StarkEx is also a community-based and open-source ecosystem for DeFi! Say goodbye to CeFi!.",
+    chain: "Starknet",
+    logo: `${baseIconsUrl}/starkex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Starknet"],
+    module: "starkex/index.js",
+    twitter: "Starkex_org",
+    forkedFrom: [], 
+    oracles: [],
+    listedAt: 1683886128
+  },
 ]
 export default data2;

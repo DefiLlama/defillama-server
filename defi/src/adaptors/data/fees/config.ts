@@ -852,5 +852,9 @@ export default {
     "across": {
         "enabled": true,
         "id": "1207"
+    },
+    "gnd-protocol": {
+        "enabled": true,
+        "id": "2968"
     }
 } as AdaptorsConfig

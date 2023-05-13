@@ -111,10 +111,10 @@ export function getLatestUsersData(type: "users"|"newUsers"|"txs"|"gasUsd", minE
   }[type]()
 }
 
-export function getLatestProtocolUsersData(type: "users"|"newUsers"|"txs"|"gasUsd", minEnd:number, protocolId:string) {
+export function getLatestProtocolUsersData(type: "users"|"newusers"|"txs"|"gasUsd", minEnd:number, protocolId:string) {
   return {
     users: ()=>sql`SELECT * FROM hourlyUsers WHERE endTime > ${minEnd} AND chain = 'all' AND protocolId = ${protocolId}`,
-    newUsers: ()=>sql`SELECT * FROM hourlyNewUsers WHERE endTime > ${minEnd} AND chain = 'all' AND protocolId = ${protocolId}`,
+    newusers: ()=>sql`SELECT * FROM hourlyNewUsers WHERE endTime > ${minEnd} AND chain = 'all' AND protocolId = ${protocolId}`,
     txs: ()=>sql`SELECT endTime, sum(txs) FROM hourlyTxs WHERE endTime > ${minEnd} AND protocolId = ${protocolId} group by endTime`,
     gasUsd: ()=>sql`SELECT endTime, sum(gasUsd) FROM hourlyGas WHERE endTime > ${minEnd} AND protocolId = ${protocolId} group by endTime`,
   }[type]()

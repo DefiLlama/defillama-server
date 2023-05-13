@@ -102,11 +102,20 @@ export async function getProtocolGas(protocolId:string) {
   return sql`SELECT start, sum(gasUsd) FROM dailyGas WHERE protocolId = ${protocolId} group by start`
 }
 
-export function getLatestUsersData(type: "users"|"newUsers"|"txs"|"gasUsd",minEnd:number, chain: string) {
+export function getLatestUsersData(type: "users"|"newUsers"|"txs"|"gasUsd", minEnd:number) {
   return {
-    users: ()=>sql`SELECT * FROM hourlyUsers WHERE endTime > ${minEnd} AND chain = ${chain}`,
-    newUsers: ()=>sql`SELECT * FROM hourlyNewUsers WHERE endTime > ${minEnd} AND chain = ${chain}`,
-    txs: ()=>sql`SELECT * FROM hourlyTxs WHERE endTime > ${minEnd} AND chain = ${chain}`,
-    gasUsd: ()=>sql`SELECT * FROM hourlyGas WHERE endTime > ${minEnd} AND chain = ${chain}`,
+    users: ()=>sql`SELECT * FROM hourlyUsers WHERE endTime > ${minEnd} AND chain = 'all'`,
+    newUsers: ()=>sql`SELECT * FROM hourlyNewUsers WHERE endTime > ${minEnd} AND chain = 'all'`,
+    txs: ()=>sql`SELECT endTime, protocolId, sum(txs) FROM hourlyTxs WHERE endTime > ${minEnd} group by endTime, protocolId`,
+    gasUsd: ()=>sql`SELECT endTime, protocolId, sum(gasUsd) FROM hourlyGas WHERE endTime > ${minEnd} group by endTime, protocolId`,
+  }[type]()
+}
+
+export function getLatestProtocolUsersData(type: "users"|"newUsers"|"txs"|"gasUsd", minEnd:number, protocolId:string) {
+  return {
+    users: ()=>sql`SELECT * FROM hourlyUsers WHERE endTime > ${minEnd} AND chain = 'all' AND protocolId = ${protocolId}`,
+    newUsers: ()=>sql`SELECT * FROM hourlyNewUsers WHERE endTime > ${minEnd} AND chain = 'all' AND protocolId = ${protocolId}`,
+    txs: ()=>sql`SELECT endTime, sum(txs) FROM hourlyTxs WHERE endTime > ${minEnd} AND protocolId = ${protocolId} group by endTime`,
+    gasUsd: ()=>sql`SELECT endTime, sum(gasUsd) FROM hourlyGas WHERE endTime > ${minEnd} AND protocolId = ${protocolId} group by endTime`,
   }[type]()
 }

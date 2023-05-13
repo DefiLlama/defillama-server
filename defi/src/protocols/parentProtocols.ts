@@ -586,6 +586,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "woo-network",
     cmcId: "7501",
     chains: [],
+    treasury: "woofi.js",
     twitter: "_WOOFi",
   },
   {

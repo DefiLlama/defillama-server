@@ -28,7 +28,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
         return errorResponse({message: `Wrong type`})
     }
     const records = await selectedTypeInfo.query(protocolId ?? "none")
-    return cache20MinResponse(records.map((d)=>([d.start, d[selectedTypeInfo.column]])))
+    return cache20MinResponse(records.map((d)=>([d.start, d[selectedTypeInfo.column]])).sort((a,b)=>a[0]-b[0]))
 }
 
 export default wrap(handler);

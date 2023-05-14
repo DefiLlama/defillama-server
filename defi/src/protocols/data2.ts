@@ -34669,7 +34669,7 @@ const data2: Protocol[] = [
     category: "Yield",
     chains: ["Optimism"],
     module: "extra/index.js",
-    twitter: "NutboxDao",
+    twitter: "extrafi_io",
     forkedFrom: [], 
     oracles: ["TWAP", "Chainlink"],
     audit_links: ["https://docs.extrafi.io/extra_finance/audits-and-security"],

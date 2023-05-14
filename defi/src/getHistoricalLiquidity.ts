@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 import { wrap, IResponse, cache20MinResponse, errorResponse } from "./utils/shared";
+import { getTimestampAtStartOfDay } from "./utils/date";
 
 async function historicalLiquidity(token:string){
     const [pools, config] = await Promise.all([
@@ -24,8 +25,9 @@ async function historicalLiquidity(token:string){
     }
     historicalPoolInfo.forEach(chart=>{
         chart.data.forEach((day:any)=>{
-            const timestamp = Math.floor(new Date(day.timestamp).getTime()/1e3)
+            const timestamp = getTimestampAtStartOfDay(new Date(day.timestamp).getTime()/1e3)
             if(!liquidity[timestamp]) liquidity[timestamp] = {total:0, pools:{}}
+            if(liquidity[timestamp].pools[chart.pool] !== undefined) return // repeated pool, ignore second
             liquidity[timestamp].total += day.tvlUsd
             liquidity[timestamp].pools[chart.pool] = day.tvlUsd
         })

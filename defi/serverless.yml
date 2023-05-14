@@ -206,6 +206,13 @@ functions:
       - http:
           path: storeBlacklistPermit
           method: post
+  historicalLiquidity:
+    handler: src/getHistoricalLiquidity.default
+    timeout: 30
+    events:
+      - http:
+          path: historicalLiquidity/{token}
+          method: get
   contractName:
     handler: src/getContractName.default
     timeout: 30

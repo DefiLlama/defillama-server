@@ -8,7 +8,7 @@ async function historicalLiquidity(token:string){
     ])
     const tokenPools = (pools.data as any[]).filter(
         (p)=>config.protocols[p.project]?.category === "Dexes" 
-            && p.symbol.toUpperCase().includes(token)
+            && p.symbol.toUpperCase().split("-").includes(token)
         )
     const historicalPoolInfo = await Promise.all(tokenPools.map(p=>fetch(`https://yields.llama.fi/chart/${p.pool}`).then(r=>r.json()).catch(e=>{
         console.error(`Failed to get pool ${p.pool}`, e)

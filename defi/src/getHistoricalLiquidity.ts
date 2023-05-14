@@ -13,18 +13,37 @@ async function historicalLiquidity(token:string){
     const historicalPoolInfo = await Promise.all(tokenPools.map(p=>fetch(`https://yields.llama.fi/chart/${p.pool}`).then(r=>r.json()).catch(e=>{
         console.error(`Failed to get pool ${p.pool}`, e)
         return {data:[]}
-    })))
+    }).then(r=>({pool: p.pool, data:r.data}))))
     const liquidity = {} as {
-        [timestamp:string]:number
+        [timestamp:string]:{
+            total:number,
+            pools: {
+                [pool:string]:number
+            }   
+        }
     }
     historicalPoolInfo.forEach(chart=>{
         chart.data.forEach((day:any)=>{
             const timestamp = Math.floor(new Date(day.timestamp).getTime()/1e3)
-            liquidity[timestamp] = day.tvlUsd + (liquidity[timestamp] ?? 0)
+            if(!liquidity[timestamp]) liquidity[timestamp] = {total:0, pools:{}}
+            liquidity[timestamp].total += day.tvlUsd
+            liquidity[timestamp].pools[chart.pool] = day.tvlUsd
         })
     })
-    const liquidityArray = Object.entries(liquidity).sort((a:any,b:any)=>a[0]-b[0]).map(p=>[Number(p[0]), p[1]])
-    return liquidityArray
+    const liquidityArray = Object.entries(liquidity).sort((a:any,b:any)=>a[0]-b[0])
+    const finalArray = [[Number(liquidityArray[0][0]), liquidityArray[0][1].total]]
+    for(let i =1; i < liquidityArray.length; i++){
+        const prev = liquidityArray[i-1][1]
+        const curr = liquidityArray[i]
+        let total = curr[1].total
+        Object.entries(prev.pools).forEach(([pool, tvl])=>{
+            if(!curr[1].pools[pool]){
+                total+=tvl
+            }
+        })
+        finalArray.push([Number(curr[0]), total])
+    }
+    return finalArray
 }
 
 const handler = async (

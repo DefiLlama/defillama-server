@@ -2,6 +2,7 @@ import { getCurrentUnixTimestamp } from "./utils/date";
 import { sendMessage } from "./utils/discord";
 import { wrap, IResponse, successResponse, errorResponse } from "./utils/shared";
 import postgres from "postgres";
+import { sluggifyString } from "./utils/sluggify";
 
 const sql = postgres(process.env.ERROR_REPORTS_DB!);
 // CREATE TABLE errorReports (time INT, protocol VARCHAR(200), dataType VARCHAR(200), message TEXT, correctSource TEXT, id serial primary key);
@@ -19,11 +20,11 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     )`
     if(previousErrors.length === 0){
         await sendMessage(
-`New user report
-Protocol: ${protocol}
+`Protocol: ${protocol}
 Data: ${dataType}
 What's wrong: ${message}
-Correct data: ${correctSource}`, process.env.ERROR_REPORTS_WEBHOOK).catch(e=>console.log(`Failed to send a discord message for ${protocol} (${dataType})`, e))
+Correct data: ${correctSource}
+https://defillama.com/protocol/${sluggifyString(protocol)}`, process.env.ERROR_REPORTS_WEBHOOK, false).catch(e=>console.log(`Failed to send a discord message for ${protocol} (${dataType})`, e))
     }
 
     return successResponse({message: "success"});

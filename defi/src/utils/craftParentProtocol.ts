@@ -390,6 +390,7 @@ export default async function craftParentProtocol({
       return acc;
     }, [] as Array<IRaise>),
     metrics: getAvailableMetricsById(parentProtocol.id),
+    symbol: childProtocolsTvls.find((p) => p.symbol)?.symbol,
     treasury: parentProtocol.treasury || childProtocols.find((p) => p.treasury)?.treasury,
     mcap: tokenMcap || childProtocolsTvls.find((p) => p.mcap)?.mcap,
     tokenPrice: tokenPrice || childProtocolsTvls.find((p) => p.tokenPrice)?.tokenPrice,

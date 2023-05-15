@@ -7759,6 +7759,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "yieldyak/index.js",
     twitter: "yieldyak_",
     parentProtocol: "parent#yield-yak",
+    oracles: ["RedStone"],
   },
   {
     id: "476",

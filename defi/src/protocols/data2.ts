@@ -27910,6 +27910,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "dummy.js",
+    treasury: "ape-coin.js",
     twitter: "apecoin",
     governanceID: ["snapshot:apecoin.eth"]
   },

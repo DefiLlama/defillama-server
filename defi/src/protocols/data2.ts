@@ -34718,5 +34718,27 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1684124582
   },
+  {
+    id: "2977",
+    name: "Merkl",
+    address: "0x31429d1856aD1377A8A0079410B297e1a9e214c2",
+    symbol: "ANGLE",
+    url: "https://merkl.angle.money",
+    description: "Merkl helps anyone incentivize concentrated liquidity positions in a more efficient way. It allows to customize how rewards are distributed to shape liquidity in specific ways.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/merkl.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Polygon", "Arbitrum", "Optimism"],
+    module: "merkl/index.js",
+    twitter: "AngleProtocol",
+    forkedFrom: [], 
+    oracles: [],
+    audit_links: [],
+    listedAt: 1684158061
+  },
 ]
 export default data2;

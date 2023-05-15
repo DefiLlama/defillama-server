@@ -11,6 +11,7 @@ import { wrappedGasTokens } from "../utils/gasTokens";
 import collateralizedAdapter from "./collateralizedAssets";
 import swethAdapter from "./sweth";
 import gmdAdapter from "./gmd";
+import stkaurabalAdapter from "./stkaurabal";
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
@@ -162,4 +163,8 @@ export function sweth(timestamp: number = 0) {
 export function gmd(timestamp: number = 0) {
   console.log("starting gmd");
   return gmdAdapter(timestamp);
+}
+export function stkaurabal(timestamp: number = 0) {
+  console.log("starting stkaurabal");
+  return stkaurabalAdapter(timestamp);
 }

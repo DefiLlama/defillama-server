@@ -34696,5 +34696,27 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1684070959
   },
+  {
+    id: "2976",
+    name: "sCANTO",
+    address: null,
+    symbol: "-",
+    url: "https://www.scanto.io/",
+    description: "sCANTO is a Liquid Staking Derivative(LSD). By holding sCANTO you are earning a prorata share the validator rewards",
+    chain: "Canto",
+    logo: `${baseIconsUrl}/scanto.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Canto"],
+    module: "scanto/index.js",
+    twitter: "stakedCANTO",
+    forkedFrom: [], 
+    oracles: [],
+    audit_links: [],
+    listedAt: 1684124582
+  },
 ]
 export default data2;

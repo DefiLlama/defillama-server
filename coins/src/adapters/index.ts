@@ -100,4 +100,5 @@ export default {
   collateralizedAssets: require("./other"),
   sweth: require("./other"),
   gmd: require("./other"),
+  stkaurabal: require("./other"),
 };

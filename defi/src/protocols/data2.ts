@@ -32676,8 +32676,8 @@ const data2: Protocol[] = [
   {
     id: "2884",
     name: "Zolidly Finance",
-    address: null,
-    symbol: "-",
+    address: "era:0x0aCe4331210Fb6Fd70797CD5D60a584Cf37009a5",
+    symbol: "ZOLID",
     url: "https://app.zolidly.exchange",
     description: "Zolidly is a ve(3,3) DEX in zkSync Era, providing low slippage and capital efficiency to everyone. Pioneering DeFi ecosystem on top of zkSync technology.",
     chain: "zkSync Era",

@@ -7280,7 +7280,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "bifrost-staking/index.js",
-    twitter: "bifrost_finance",
+    twitter: "BifrostFinance",
     audit_links: [
       "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
       "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",

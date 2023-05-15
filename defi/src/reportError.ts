@@ -24,7 +24,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
 Data: ${dataType}
 What's wrong: ${message}
 Correct data: ${correctSource}
-https://defillama.com/protocol/${sluggifyString(protocol)}`, process.env.ERROR_REPORTS_WEBHOOK, false).catch(e=>console.log(`Failed to send a discord message for ${protocol} (${dataType})`, e))
+<https://defillama.com/protocol/${sluggifyString(protocol)}>`, process.env.ERROR_REPORTS_WEBHOOK, false).catch(e=>console.log(`Failed to send a discord message for ${protocol} (${dataType})`, e))
     }
 
     return successResponse({message: "success"});

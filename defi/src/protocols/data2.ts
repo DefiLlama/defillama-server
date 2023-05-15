@@ -18268,7 +18268,7 @@ const data2: Protocol[] = [
     module: "yieldyak-staked-avax/index.js",
     twitter: "yieldyak_",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"],
     audit_links: ["https://docs.geode.fi/developers/audits"],
     parentProtocol: "parent#yield-yak",
     listedAt: 1667041431

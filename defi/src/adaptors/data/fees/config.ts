@@ -856,5 +856,9 @@ export default {
     "gnd-protocol": {
         "enabled": true,
         "id": "2968"
+    },
+    "kwenta": {
+        "enabled": true,
+        "id": "2981"
     }
 } as AdaptorsConfig

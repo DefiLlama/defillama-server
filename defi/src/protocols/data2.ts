@@ -34774,7 +34774,7 @@ const data2: Protocol[] = [
     description: "Tsunami finance is a margin trading and spot exchange.",
     chain: "Aptos",
     logo: `${baseIconsUrl}/tsunami.finance.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -34784,7 +34784,7 @@ const data2: Protocol[] = [
     twitter: "TsunamiFinance_",
     forkedFrom: [], 
     oracles: [],
-    audit_links: [],
+    audit_links: ["https://docsend.com/view/mfqrf4mcdxk9jvwf"],
     listedAt: 1684183136
   },
   {

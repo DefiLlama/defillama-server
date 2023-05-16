@@ -11,6 +11,13 @@
       "to": "coingecko#grove"
     }
   },
+  "polygon_zkevm": {
+    "0x83b874c1e09d316059d929da402dcb1a98e92082": {
+      "decimals": "18",
+      "symbol": "stMATIC",
+      "to": "ethereum:0x9ee91f9f426fa633d227f7a9b000e28b9dfd8599"
+    }
+  },
   "ibc": {},
   "sui": {
     "0xdbe380b13a6d0f5cdedd58de8f04625263f113b3f9db32b3e1983f49e2841676::coin::COIN": {

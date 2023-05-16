@@ -860,5 +860,9 @@ export default {
     "kwenta": {
         "enabled": true,
         "id": "2981"
+    },
+    "gamma": {
+        "enabled": true,
+        "id": "355"
     }
 } as AdaptorsConfig

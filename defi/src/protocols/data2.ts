@@ -34810,5 +34810,25 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1684213007
   },
+  {
+    id: "2981",
+    name: "Kwenta",
+    address: "0x920cf626a271321c151d027030d5d08af699456b",
+    symbol: "KWENTA",
+    url: "https://kwenta.eth.limo",
+    description: "Kwenta is a decentralized derivatives trading platform offering perpetual futures and options trading on Optimism. Gain exposure to a variety of on-chain and real-world assets, and access advanced functionality through the Kwenta Smart Margin Wallet.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/kwenta.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "kwenta",
+    cmcId: "21929",
+    category: "Derivatives",
+    chains: ["Optimism"],
+    module: "dummy.js",
+    twitter: "Kwenta_io",
+    forkedFrom: [], 
+    oracles: [],
+  },
 ]
 export default data2;

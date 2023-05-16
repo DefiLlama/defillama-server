@@ -12652,7 +12652,7 @@ const data2: Protocol[] = [
     module: "wanlend/index.js",
     twitter: "WanLend",
     forkedFrom: ["Compound"],
-    oracles: [],
+    oracles: ["DIA"],
     listedAt: 1660764309
   },
   {
@@ -28387,7 +28387,7 @@ const data2: Protocol[] = [
     cmcId: "23502",
     category: "Indexes",
     chains: ["Arbitrum"],
-    oracles: [],
+    oracles: ["DIA"],
     forkedFrom: [],
     module: "factor/index.js",
     twitter: "FactorDAO",

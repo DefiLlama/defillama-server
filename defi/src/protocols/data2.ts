@@ -34787,5 +34787,28 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1684183136
   },
+  {
+    id: "2980",
+    name: "QuickPerps",
+    address: "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
+    symbol: "QUICK",
+    url: "https://quickswap.exchange/",
+    description: "Decentralized perpetuals exchange on Polygon zkEVM",
+    chain: "Polygon zkEVM",
+    logo: `${baseIconsUrl}/quickswap-dex.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Polygon zkEVM"],
+    module: "quickswap-perps/index.js",
+    twitter: "QuickswapDEX",
+    audit_links: ["https://contractsecurity.io/quick-audit-report/"],
+    forkedFrom: ["GMX"], 
+    parentProtocol: "parent#quickswap",
+    oracles: [],
+    listedAt: 1684213007
+  },
 ]
 export default data2;

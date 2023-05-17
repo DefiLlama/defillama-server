@@ -1,3 +1,4 @@
+import PromisePool from "@supercharge/promise-pool/dist";
 import fetch from "node-fetch";
 
 const token = '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2'
@@ -105,4 +106,99 @@ async function getLiquidityProtocols() {
     }).filter(Boolean).sort((a: any, b: any) => b[3] - a[3])
     console.table(liqByProtocol)
 }
-getLiquidityProtocols()
+//getLiquidityProtocols()
+
+async function getLiquidityProtocolsCompared() {
+    const chainToId = {
+        ethereum: 'https://api.0x.org/',
+        bsc: 'https://bsc.api.0x.org/',
+        polygon: 'https://polygon.api.0x.org/',
+        optimism: 'https://optimism.api.0x.org/',
+        arbitrum: 'https://arbitrum.api.0x.org/',
+        avax: 'https://avalanche.api.0x.org/',
+        fantom: 'https://fantom.api.0x.org/',
+        celo: 'https://celo.api.0x.org/'
+    } as any;
+    const inchChainToId = {
+        ethereum: 1,
+        bsc: 56,
+        polygon: 137,
+        optimism: 10,
+        arbitrum: 42161,
+        gnosis: 100,
+        avax: 43114,
+        fantom: 250,
+        klaytn: 8217,
+        aurora: 1313161554
+} as any;
+
+
+
+    const protocols = await fetch(`https://api.llama.fi/protocols`).then(r => r.json())
+    const [pools, config] = await Promise.all([
+        fetch(`https://yields.llama.fi/pools`).then(r => r.json()),
+        fetch(`https://api.llama.fi/config/yields`).then(r => r.json())
+    ])
+    const dexPools = (pools.data as any[]).filter(
+        (p) => config.protocols[p.project]?.category === "Dexes")
+    console.log("name, symbol, tvl, # pools, our liq, agg liq, biggestPool, biggestPool tvl")
+    const protocolList = (protocols as any[]).filter((p: any) => p.symbol !== "-" && p.symbol !== null).map((p:any)=>{
+        const tokenPools = dexPools.filter(pool =>
+            pool.symbol.toUpperCase().split("-").includes(p.symbol)
+        )
+        const total = tokenPools.reduce((sum, curr) => sum + curr.tvlUsd, 0) / 1e6
+        const biggestPool = tokenPools.sort((a,b)=>b.tvlUsd-a.tvlUsd)[0]
+        return {p, total, biggestPool, poolsLength: tokenPools.length}
+    })
+    const liqByProtocol = await PromisePool.for(protocolList.filter(p=>p.total>0).sort((a:any,b)=>b.total-a.total)
+        ).withConcurrency(3).process(async ({p, total, biggestPool, poolsLength}) => {
+        const chain = p.address.includes(":")?p.address.split(":")[0]:"ethereum";
+        const address = (p.address.includes(":")?p.address.split(":")[1]:p.address).trim();
+        if(!chainToId[chain]){
+            return
+        }
+        try{
+        let aggAmount;
+        const data = await fetch(
+            `${
+                    chainToId[chain as any]
+            }swap/v1/quote?buyToken=${address}&sellAmount=${
+                "10000000"+"000000000000000000" // 10M eth ~18bn
+            }&sellToken=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&slippagePercentage=${
+                    0.5 / 100
+            }&enableSlippageProtection=false&intentOnFilling=true&skipValidation=true`, {
+                headers: {
+                        '0x-api-key': process.env.OX_API_KEY!
+                }
+        }).then((r) => r.json());
+        aggAmount = data?.buyAmount
+        if(data.message || !aggAmount){
+            const inch = await fetch(
+                        `https://api.1inch.io/v4.0/${inchChainToId[chain]}/quote?fromTokenAddress=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&toTokenAddress=${address}&amount=${
+                            "10000000"+"000000000000000000" // 10M eth ~18bn
+                        }&slippage=${0.5}`).then(r => r.json()) // CHANGE FOR DEFILLAMA API
+            //console.log(inch)
+            aggAmount = inch.toTokenAmount
+            if(!aggAmount){
+                aggAmount = 0;
+            }
+        }
+        const price = (await fetch(`https://coins.llama.fi/prices/current/${chain}:${address}`).then(r => r.json())).coins[`${chain}:${address}`]
+
+        const aggregatorReturns = aggAmount * price.price/(10**price.decimals)
+        if(Number.isNaN(aggregatorReturns)){
+            console.log(p.symbol, `${chain}:${address}`, data?.buyAmount, price, data)
+        }
+        //console.log(p.symbol, tf(aggregatorReturns/1e6), tf(total/2))
+        const values = [p.name, p.symbol, tf(p.tvl/1e6), poolsLength, tf(total/2), tf(aggregatorReturns/1e6), biggestPool?.symbol, tf(biggestPool?.tvlUsd/1e6)]
+        console.log(values.map(v=>`"${v}"`).join(","))
+        return values
+        } catch(e){
+            //console.log(chain, address, p, e)
+            throw e
+        }
+    })
+    //console.log("errors", liqByProtocol.errors)
+    console.table(liqByProtocol.results.filter(Boolean).sort((a: any, b: any) => Number(b[3]) - Number(a[3])))
+}
+getLiquidityProtocolsCompared()

@@ -3,13 +3,17 @@ import { getR2 } from "./utils/r2";
 import { wrap, IResponse, successResponse } from "./utils/shared";
 
 const fetchProtocolEmissionData = async (protocol: string) => {
-  const res = await getR2(`emissions/${protocol}`).then((res) => (res.body ? JSON.parse(res.body) : null));
-  // const res = await fetch(`https://api.llama.fi/emission/${protocol}`)
-  //   .then((res) => res.json())
-  //   .then((res) => (res.body ? JSON.parse(res.body) : null));
-
-  if (!res) {
-    throw new Error(`protocol '${protocol}' has no chart to fetch`);
+  let res: any;
+  try {
+    res = await getR2(`emissions/${protocol}`).then((res) =>
+      res.body ? JSON.parse(res.body) : null,
+    );
+    // const res = await fetch(`https://api.llama.fi/emission/${protocol}`)
+    //   .then((res) => res.json())
+    //   .then((res) => (res.body ? JSON.parse(res.body) : null));
+  } catch {
+    console.log(`${protocol} has no emissions in R2`);
+    return;
   }
 
   const protocolId = res.metadata.protocolIds?.[0] ?? null;
@@ -70,23 +74,23 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     mcap,
     events:
       res.metadata.events
-        ?.map(({ description, timestamp, noOfTokens }: { description: string; timestamp: string, noOfTokens:number[] }) => ({
-          timestamp: Number(timestamp),
-          description,
-          noOfTokens
-        }))
-        .sort(
-          (a: { description: string; timestamp: number }, b: { description: string; timestamp: number }) =>
-            a.timestamp - b.timestamp
+      ?.map(({ description, timestamp, noOfTokens }: { description: string; timestamp: string, noOfTokens:number[] }) => ({
+        timestamp: Number(timestamp),
+        description,
+        noOfTokens
+      }))
+      .sort(
+        (a: { description: string; timestamp: number }, b: { description: string; timestamp: number }) =>
+          a.timestamp - b.timestamp
         ) ?? [],
   };
 };
 
 const handler = async (_event: any): Promise<IResponse> => {
   const allProtocols = (await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!))) as string[];
-  const data = await Promise.all(
+  const data: any[] = (await Promise.all(
     allProtocols.filter((p) => p !== "frax-share").map((protocol) => fetchProtocolEmissionData(protocol))
-  );
+  )).filter((d) => d != null);
   return successResponse(
     data.sort((a, b) => b.mcap - a.mcap),
     10 * 60

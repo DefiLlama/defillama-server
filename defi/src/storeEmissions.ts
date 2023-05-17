@@ -58,7 +58,7 @@ async function handler() {
             3600,
           );
 
-          protocolsArray.push(sluggifyString(name));
+          protocolsArray.push(sluggifyString(id));
         } catch (err) {
           console.log(err, ` storing ${protocolName}`);
         }

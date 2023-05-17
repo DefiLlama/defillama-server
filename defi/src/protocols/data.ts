@@ -737,7 +737,7 @@ const data: Protocol[] = [
   {
     id: "140",
     name: "Kava Lend",
-    address: "-",
+    address: null,
     symbol: "HARD",
     url: "https://app.kava.io/lend",
     description: "Cross-chain money market. Lend, borrow, and earn with your crypto.\r\n",
@@ -1488,7 +1488,7 @@ const data: Protocol[] = [
   {
     id: "177",
     name: "DefiSaver",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://defisaver.com/",
     description:
@@ -1509,7 +1509,7 @@ const data: Protocol[] = [
   {
     id: "178",
     name: "DefiChain",
-    address: "-",
+    address: null,
     symbol: "DFI",
     url: "https://defichain.com/",
     description:
@@ -1621,7 +1621,7 @@ const data: Protocol[] = [
   {
     id: "183",
     name: "Wing Finance",
-    address: "-",
+    address: null,
     symbol: "WING",
     url: "https://wing.finance",
     description: "A Credit-based, cross-chain DeFi Platform.",
@@ -1684,7 +1684,7 @@ const data: Protocol[] = [
   {
     id: "187",
     name: "Unagii",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://www.unagii.com/",
     description: "The automated DeFi yield platform with staking services.",
@@ -1938,7 +1938,7 @@ const data: Protocol[] = [
   {
     id: "199",
     name: "Sablier Finance",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://sablier.finance/",
     description: "The protocol for real-time finance.",
@@ -2296,7 +2296,7 @@ const data: Protocol[] = [
   {
     id: "217",
     name: "Connext",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://connext.network/",
     description: "Fast, non-custodial L1-L2 and cross-L2 communication.\r\n",
@@ -2334,7 +2334,7 @@ const data: Protocol[] = [
   {
     id: "219",
     name: "DDEX",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://ddex.io/",
     description:
@@ -2583,7 +2583,7 @@ const data: Protocol[] = [
   {
     id: "231",
     name: "Lightning Network",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://lightning.network/",
     description: " Scalable, Instant Bitcoin/Blockchain Transactions\r\n",
@@ -2876,7 +2876,7 @@ const data: Protocol[] = [
   {
     id: "245",
     name: "Secret Network",
-    address: "-",
+    address: null,
     symbol: "SCRT",
     url: "https://scrt.network/",
     description:
@@ -3018,7 +3018,7 @@ const data: Protocol[] = [
   {
     id: "252",
     name: "Secret Bridge",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://scrt.network/",
     description:
@@ -3239,7 +3239,7 @@ const data: Protocol[] = [
   {
     id: "262",
     name: "Primitive",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://primitive.xyz/",
     description: `Primitive built the Replicating Market Maker ("RMM") protocol, an oracle-free solution to scalable and efficient on-chain derivatives.`,
@@ -3278,7 +3278,7 @@ const data: Protocol[] = [
   {
     id: "264",
     name: "Robo-Advisor for Yield",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://staked.us/v/robo-advisor-yield/",
     description:
@@ -3320,7 +3320,7 @@ const data: Protocol[] = [
   {
     id: "266",
     name: "Set Protocol",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://www.tokensets.com/",
     description:
@@ -3905,7 +3905,7 @@ const data: Protocol[] = [
   {
     id: "294",
     name: "Anchor",
-    address: "-",
+    address: null,
     symbol: "ANC",
     url: "https://anchorprotocol.com/",
     description: "Money market on Terra",
@@ -3926,7 +3926,7 @@ const data: Protocol[] = [
   {
     id: "295",
     name: "Stacks Staking",
-    address: "-",
+    address: null,
     symbol: "STX",
     url: "https://stacks.co",
     description:
@@ -5393,7 +5393,7 @@ const data: Protocol[] = [
   {
     id: "364",
     name: "Volmex",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://volmex.finance/",
     description: "Tokenized volatility protocol built on Ethereum",
@@ -5412,7 +5412,7 @@ const data: Protocol[] = [
   {
     id: "365",
     name: "Charm Finance",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://charm.fi/",
     description: "An ecosystem of innovative products within DeFi",
@@ -5801,7 +5801,7 @@ const data: Protocol[] = [
   {
     id: "383",
     name: "Osmosis DEX",
-    address: "-",
+    address: null,
     symbol: "OSMO",
     url: "https://osmosis.zone/",
     description:
@@ -5906,7 +5906,7 @@ const data: Protocol[] = [
   {
     id: "388",
     name: "NowSwap",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://nowswap.org",
     description: "Nowswap is a decentralized exchange featuring low transaction fees for small-size trades.",
@@ -5945,7 +5945,7 @@ const data: Protocol[] = [
   {
     id: "390",
     name: "Qilin",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://qilin.fi/",
     description:
@@ -6068,7 +6068,7 @@ const data: Protocol[] = [
   {
     id: "396",
     name: "Polydex",
-    address: "-",
+    address: null,
     symbol: "PLX",
     url: "https://www.polydex.fi",
     description: "AMM And Dexes Aggregator",
@@ -6156,7 +6156,7 @@ const data: Protocol[] = [
   {
     id: "400",
     name: "Amun",
-    address: "-",
+    address: null,
     symbol: "AMUN",
     url: "https://tokens.amun.com",
     description:
@@ -7248,7 +7248,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "451",
     name: "Karura Swap",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://acala.network/karura",
     description:
@@ -7267,7 +7267,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "452",
     name: "Karura Dollar (kUSD)",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://acala.network/karura",
     description:
@@ -7429,7 +7429,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "460",
     name: "Ondo v1 (Legacy)",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://v1.ondo.finance",
     description:
@@ -8071,7 +8071,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "491",
     name: "Terraswap",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://terraswap.io",
     description:
@@ -8337,7 +8337,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "504",
     name: "Mento",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://mento.finance",
     description:
@@ -8358,7 +8358,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "505",
     name: "Karura Liquid-Staking",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://acala.network/karura",
     description:
@@ -8423,7 +8423,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "508",
     name: "KlaySwap",
-    address: "-",
+    address: null,
     symbol: "KSP",
     url: "https://klayswap.com/dashboard",
     description: "KLAYswap is an AMM-based Instant Swap Protocol",
@@ -8629,7 +8629,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "518",
     name: "Nuls",
-    address: "-",
+    address: null,
     symbol: "NULS",
     url: "https://nuls.io",
     description:
@@ -8890,7 +8890,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "531",
     name: "Kuu Finance",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://kuu.finance",
     description:
@@ -9089,7 +9089,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "541",
     name: "Ref Finance",
-    address: "-",
+    address: null,
     symbol: "REF",
     url: "https://app.ref.finance",
     description:
@@ -9173,7 +9173,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "545",
     name: "ApolloDAO",
-    address: "-",
+    address: null,
     symbol: "APOLLO",
     url: "https://apollo.farm",
     description: "A protocol that facilitates cost-efficient and secure auto-compounding returns",
@@ -9622,7 +9622,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "567",
     name: "Newland",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://newland.finance",
     description: "Newland is a one-stop decentralized ecological platform that integrates multiple public chains",
@@ -9750,7 +9750,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "573",
     name: "Liqee",
-    address: "-",
+    address: null,
     symbol: "LQE",
     url: "https://liqee.io",
     description:
@@ -9934,7 +9934,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "582",
     name: "Ante Finance",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://ante.finance",
     description: "Smart Tests for Smart Contracts",
@@ -10407,7 +10407,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "604",
     name: "Sherlock",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://sherlock.xyz",
     description:
@@ -10447,7 +10447,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "606",
     name: "RocketSwap",
-    address: "-",
+    address: null,
     symbol: "RSWP",
     url: "https://rocketswap.exchange",
     description:
@@ -10633,7 +10633,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "615",
     name: "BNBMiner Finance",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://bnbminer.finance",
     description:
@@ -10692,7 +10692,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "618",
     name: "Kava Swap",
-    address: "-",
+    address: null,
     symbol: "SWP",
     url: "https://app.kava.io/swap/pools",
     description:
@@ -10732,7 +10732,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "620",
     name: "Francium",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://francium.io",
     description:
@@ -10775,7 +10775,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "622",
     name: "Clipper",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://clipper.exchange",
     description:
@@ -10795,7 +10795,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "623",
     name: "Composable Finance",
-    address: "-",
+    address: null,
     symbol: "LAYR",
     url: "https://www.composable.finance",
     description:
@@ -10919,7 +10919,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "629",
     name: "Cozy V1",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://www.cozy.finance",
     description: "Cozy is an open-source protocol for automated and trust-minimized Protection Markets.",
@@ -21945,7 +21945,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1166",
     name: "DefiChain DEX",
-    address: "-",
+    address: null,
     symbol: "DFI",
     url: "https://defichain.com/dex",
     description: "Swap between DFI and wrapped tokens in a completely decentralized, exchange.",
@@ -21964,7 +21964,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1167",
     name: "DefiChain Loans",
-    address: "-",
+    address: null,
     symbol: "DFI",
     url: "https://defichain.com",
     description: "Over-collateralized loans on DefiChain.",

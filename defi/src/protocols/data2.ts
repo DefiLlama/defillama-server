@@ -3139,7 +3139,7 @@ const data2: Protocol[] = [
   {
     id: "1551",
     name: "Kujira Orca",
-    address: "-",
+    address: null,
     symbol: "KUJI",
     url: "https://orca.kujira.app/",
     description: "Public marketplace for liquidated collateral.",
@@ -25152,7 +25152,7 @@ const data2: Protocol[] = [
   {
     id: "2542",
     name: "Ondo Finance",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://ondo.finance",
     description:
@@ -29901,7 +29901,7 @@ const data2: Protocol[] = [
   {
     id: "2756",
     name: "Sharpe Magnum",
-    address: "-",
+    address: null,
     symbol: "SHARPE",
     url: "https://www.sharpe.ai/magnum",
     description: "Sharpe Magnum is a leveraged staking layer built on top of Lido stETH. Magnum functions as a staking optimizer, enhancing the capital efficiency of staking pools by leveraging staked assets via lending protocols and flashloans while keeping the same underlying guarantees.",
@@ -34446,7 +34446,7 @@ const data2: Protocol[] = [
   {
     id: "2964",
     name: "Cozy V2",
-    address: "-",
+    address: null,
     symbol: "-",
     url: "https://www.cozy.finance",
     description: "With Cozy v2, you can buy protection to hedge against risks like smart contract hacks, depegs, and more. Or you can earn yields by providing protection, backing an index of markets",

@@ -30051,7 +30051,7 @@ const data2: Protocol[] = [
   {
     id: "2763",
     name: "Dove Swap V2",
-    address: "0x696c0ba235444607a1c4b93e6b34ba14928c1b60",
+    address: "polygon_zkevm:0x696c0ba235444607a1c4b93e6b34ba14928c1b60",
     symbol: "DOV",
     url: "https://swap.dovish.finance",
     description: "Dove Swap is an emerging DEX that runs on the Polygon zkEVM to offer cheaper and faster transactions. The DEX focuses on providing the most user-friendly experience in DeFi, for both DeFi users and protocols. DoveSwap mainly operates and benefits from the lower gas prices, and higher transaction throughputs of the chain it operates on compared to Ethereum.",
@@ -31036,7 +31036,7 @@ const data2: Protocol[] = [
   {
     id: "2809",
     name: "Dove Swap V3",
-    address: "0x696c0ba235444607a1c4b93e6b34ba14928c1b60",
+    address: "polygon_zkevm:0x696c0ba235444607a1c4b93e6b34ba14928c1b60",
     symbol: "DOV",
     url: "https://swap.dovish.finance",
     description: "DoveSwap, the first native DEX on Polygon's zkEVM, enables faster and more cost-effective transactions. The DEX uses concentrated liquidity pools to improve capital efficiency, and reduce impermanent loss. ",
@@ -35001,6 +35001,50 @@ const data2: Protocol[] = [
     module: "mversex/index.js",
     twitter: "multiversec2c",
     listedAt: 1684323315
+  },
+  {
+    id: "2990",
+    name: "Prime Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://app.primeprotocol.xyz",
+    description:
+      "Prime Protocol is the first natively cross-chain decentralized liquidity protocol, serving as a prime brokerage for the entire crypto ecosystem. Borrowers can deposit collateral on any supported blockchain, and receive liquidity on any other chain regardless of original collateral location. All borrows and deposits are cross-margined, so users have the experience of operating from one account across many blockchains.",
+    chain: "Moonbeam",
+    logo: `${baseIconsUrl}/prime-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Moonbeam", "Avalanche", "Arbitrum", "Ethereum"],
+    module: "prime-protocol/index.js",
+    twitter: "prime_protocol",
+    oracles: ["Chainlink"],
+    audit_links: ["https://docs.primeprotocol.xyz/audits-security/audits"],
+    listedAt: 1684332001
+  },
+  {
+    id: "2991",
+    name: "ShrikePerps",
+    address: "polygon_zkevm:0xd4F2Bec1c39fdBFB63CF8EFaacf91914Ce652eEe",
+    symbol: "SHK",
+    url: "https://shrike.dovish.finance",
+    description:
+      "Shrike Perps, a decentralized perpetuals exchange launched by Dovish, is designed to cater to both spot and perpetual trading on the Polygon zkEVM network.",
+    chain: "Polygon zkEVM",
+    logo: `${baseIconsUrl}/shrikeperps.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Polygon zkEVM"],
+    module: "shrike-perps/index.js",
+    twitter: "DovishFi",
+    oracles: ["API3"],
+    forkedFrom: ["GMX"],
+    listedAt: 1684332007
   },
 ]
 export default data2;

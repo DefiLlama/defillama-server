@@ -1595,6 +1595,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "cozyfinance",
   },
+  {
+    id: "parent#vendor-finance",
+    name: "Vendor Finance",
+    url: "https://vendor.finance",
+    description: "Vendor Finance allows for permission-less, isolated, fixed-rate, fixed-term, and zero liquidation loan markets to be created",
+    logo: `${baseIconsUrl}/vendor-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "VendorFi",
+  },
 
 ];
 

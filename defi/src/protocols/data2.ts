@@ -17845,7 +17845,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2219",
-    name: "Vendor Finance",
+    name: "Vendor V1",
     address: null,
     symbol: "-",
     url: "https://vendor.finance",
@@ -17864,6 +17864,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     audit_links: ["https://omniscia.io/reports/vendor-finance-specialized-upgradeability-implementation"],
+    parentProtocol: "parent#vendor-finance",
     listedAt: 1666624353
   },
   {
@@ -34935,6 +34936,30 @@ const data2: Protocol[] = [
     forkedFrom: [], 
     oracles: [],
     listedAt: 1684247028
+  },
+  {
+    id: "2987",
+    name: "Vendor V2",
+    address: null,
+    symbol: "-",
+    url: "https://vendor.finance",
+    description:
+      "Vendor Finance V2 features a simplified, transparent fee structure and the addition of 'strategies' for optimal use of idle funds",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/vendor-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "vendor-finance-v2/index.js",
+    twitter: "VendorFi",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://omniscia.io/reports/vendor-finance-specialized-upgradeability-implementation"],
+    parentProtocol: "parent#vendor-finance",
+    listedAt: 1684288451
   },
 ]
 export default data2;

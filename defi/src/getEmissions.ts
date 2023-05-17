@@ -20,19 +20,17 @@ const fetchProtocolEmissionData = async (protocol: string) => {
 
   const data: { [date: number]: number } = {};
 
-  res.data.forEach(
-    (item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
-      item.data.forEach((value) => {
-        data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
-      });
-    },
-  );
+  res.data.forEach((item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
+    item.data.forEach((value) => {
+      data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
+    });
+  });
 
   const token = res.metadata.token;
 
-  const tokenPrice = await fetch(
-    `https://coins.llama.fi/prices/current/${token}?searchWidth=4h`,
-  ).then((res) => res.json());
+  const tokenPrice = await fetch(`https://coins.llama.fi/prices/current/${token}?searchWidth=4h`).then((res) =>
+    res.json()
+  );
 
   const mcapRes = await fetch("https://coins.llama.fi/mcaps", {
     method: "POST",
@@ -44,28 +42,20 @@ const fetchProtocolEmissionData = async (protocol: string) => {
   const now = Math.floor(Date.now() / 1000);
   const formattedData = Object.entries(data);
   const maxSupply = formattedData[formattedData.length - 1][1];
-  const nextEventIndex = formattedData.findIndex(
-    ([date]) => Number(date) > now,
-  );
-  const circSupply = nextEventIndex
-    ? formattedData[nextEventIndex - 1]?.[1] ?? []
-    : 0;
+  const nextEventIndex = formattedData.findIndex(([date]) => Number(date) > now);
+  const circSupply = nextEventIndex ? formattedData[nextEventIndex - 1]?.[1] ?? [] : 0;
 
-  const coin: any = Object.values(tokenPrice?.coins ?? {})[0];
-  const mcap = mcapRes?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0;
-  const float =
-    coin == null || isNaN(coin.price) || mcap == 0 ? null : mcap / coin.price;
-  const proportion =
-    float == null
-      ? null
-      : (formattedData[nextEventIndex][1] - circSupply) / float;
+  const coin: any = Object.values(tokenPrice?.coins ?? {})[0]
+  const mcap = mcapRes?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0
+  const float = (coin == null ||  isNaN(coin.price) || mcap == 0) ? null : mcap / coin.price
+  const proportion = float == null ? null : (formattedData[nextEventIndex][1] - circSupply) / float
 
   const nextEvent =
     nextEventIndex && formattedData[nextEventIndex]
-      ? {
-          date: formattedData[nextEventIndex][0],
-          toUnlock: formattedData[nextEventIndex][1] - circSupply,
-          proportion,
+      ? { 
+          date: formattedData[nextEventIndex][0], 
+          toUnlock: formattedData[nextEventIndex][1] - circSupply, 
+          proportion
         }
       : null;
   const totalLocked = maxSupply - circSupply;
@@ -84,26 +74,14 @@ const fetchProtocolEmissionData = async (protocol: string) => {
     mcap,
     events:
       res.metadata.events
-        ?.map(
-          ({
-            description,
-            timestamp,
-            noOfTokens,
-          }: {
-            description: string;
-            timestamp: string;
-            noOfTokens: number[];
-          }) => ({
-            timestamp: Number(timestamp),
-            description,
-            noOfTokens,
-          }),
-        )
-        .sort(
-          (
-            a: { description: string; timestamp: number },
-            b: { description: string; timestamp: number },
-          ) => a.timestamp - b.timestamp,
+      ?.map(({ description, timestamp, noOfTokens }: { description: string; timestamp: string, noOfTokens:number[] }) => ({
+        timestamp: Number(timestamp),
+        description,
+        noOfTokens
+      }))
+      .sort(
+        (a: { description: string; timestamp: number }, b: { description: string; timestamp: number }) =>
+          a.timestamp - b.timestamp
         ) ?? [],
   };
 };

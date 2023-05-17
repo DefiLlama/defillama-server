@@ -34982,5 +34982,25 @@ const data2: Protocol[] = [
     parentProtocol: "parent#vyfinance",
     listedAt: 1684291153,
   },
+  {
+    id: "2989",
+    name: "multiverseC2C",
+    address: "kava:0x3f0BF5596902aAf15e09D63328B4176fC12E4206",
+    symbol: "MVX",
+    url: "https://mulitverse.fntokens.xyz",
+    description:
+      "MverseX is a Multichain Decentralized exchange first deployed on kava evm co-chain.",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/multiversec2c.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Kava"],
+    module: "mversex/index.js",
+    twitter: "multiversec2c",
+    listedAt: 1684323315
+  },
 ]
 export default data2;

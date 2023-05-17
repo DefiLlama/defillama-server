@@ -52,13 +52,14 @@ async function handler() {
             gecko_id: pData?.gecko_id,
           };
 
+          const sluggifiedId = sluggifyString(id).replace('parent#', '')
           await storeR2JSONString(
-            `emissions/${sluggifyString(id)}`,
+            `emissions/${sluggifiedId}`,
             JSON.stringify(data),
             3600,
           );
 
-          protocolsArray.push(sluggifyString(id));
+          protocolsArray.push(sluggifiedId);
         } catch (err) {
           console.log(err, ` storing ${protocolName}`);
         }

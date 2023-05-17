@@ -7,7 +7,7 @@ import gasTokens from "./gasTokens";
 //import harmony from "./harmony";
 import optimism from "./optimism";
 import polygon from "./polygon";
-import solana from "./solana";
+// import solana from "./solana";
 import xdai from "./xdai";
 
 export type Token =
@@ -56,7 +56,7 @@ export const bridges = [
   //harmony,
   optimism,
   polygon,
-  solana
+  // solana
   //xdai
 ].map(normalizeBridgeResults) as Bridge[];
 

@@ -35046,5 +35046,30 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     listedAt: 1684332007
   },
+  {
+    id: "2992",
+    name: "Gravita Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://www.gravitaprotocol.com/",
+    description:
+      "Gravita Protocol is an ETH-centric Borrowing Protocol for LSTs and Yield-Generating assets. GRAI is the debt token of the platform. Our motto is: fuelling decentralization. You cannot resist the pull of Gravita!",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/gravita-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "gravita-protocol/index.js",
+    twitter: "gravitaprotocol",
+    oracles: ["Chainlink"],
+    forkedFrom: ["Liquity"],
+    audit_links: [
+      "https://docs.gravitaprotocol.com/gravita-docs/about-gravita-protocol/audits"
+    ],
+    listedAt: 1684364375
+  },
 ]
 export default data2;

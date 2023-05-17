@@ -1606,6 +1606,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VendorFi",
   },
+  {
+    id: "parent#vyfinance",
+    name: "ViFinance",
+    url: "https://vyfi.io",
+    description: "VyFinance offers an ecosystem that‘s easy to use and accessible for everyone.",
+    logo: `${baseIconsUrl}/vyfinance.png`,
+    gecko_id: "vyfinance",
+    cmcId: "17160",
+    chains: [],
+    twitter: "VyFiOfficial",
+  },
 
 ];
 

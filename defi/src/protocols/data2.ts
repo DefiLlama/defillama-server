@@ -34961,5 +34961,26 @@ const data2: Protocol[] = [
     parentProtocol: "parent#vendor-finance",
     listedAt: 1684288451
   },
+  {
+    id: "2988",
+    name: "VyFinance Dex",
+    address: "cardano:asset1znlnu4s2uv3ern2f52csz6s6pvr5rf6dj2uevx",
+    symbol: "VYFI",
+    url: "https://vyfi.io",
+    description:
+      "Decentralized Exchange(DEx) Engage with liquidity pools and swap between multiple Cardano assets",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/vyfinance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Cardano"],
+    module: "vyfi-dex/index.js",
+    twitter: "VyFiOfficial",
+    parentProtocol: "parent#vyfinance",
+    listedAt: 1684291153,
+  },
 ]
 export default data2;

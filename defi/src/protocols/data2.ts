@@ -30902,7 +30902,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "hashdaofinance/index.js",
     twitter: "HashDAOFinance",
-    audit_links: ["https://app.solidproof.io/projects/hashdao"],
+    audit_links: ["https://skynet.certik.com/projects/hashdao", "https://github.com/TechRate/Smart-Contract-Audits/blob/main/April_2023/HashDAO.pdf", "https://app.solidproof.io/projects/hashdao"],
     listedAt: 1681133595
   },
   {

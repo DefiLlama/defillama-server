@@ -125,7 +125,7 @@ const data: Protocol[] = [
     gecko_id: "harvest-finance",
     cmcId: "6859",
     category: "Yield Aggregator",
-    chains: ["Ethereum", "Binance", "Polygon"],
+    chains: ["Ethereum", "Polygon"],
     module: "harvest/api.js",
     twitter: "harvest_finance",
     audit_links: ["https://github.com/harvest-finance/harvest/tree/master/audits"],

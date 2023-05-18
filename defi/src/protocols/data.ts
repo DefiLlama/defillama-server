@@ -398,7 +398,7 @@ const data: Protocol[] = [
   {
     id: "124",
     name: "KEEP Network",
-    address: "0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa",
+    address: "0x85eee30c52b0b379b046fb0f85f4f3dc3009afec",
     symbol: "KEEP",
     url: "https://tbtc.network/",
     description: "Deposit and redeem BTC in DeFi without intermediaries.",
@@ -2619,7 +2619,8 @@ const data: Protocol[] = [
     twitter: "muxprotocol",
     audit_links: ["https://www.certik.com/projects/mux-protocol"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:vote.mcdex.eth"]
+    governanceID: ["snapshot:vote.mcdex.eth"],
+    wrongLiquidity: true, // token is repeated in MUX Protocol + most liquidity on arbi
   },
   {
     id: "233",
@@ -18224,7 +18225,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "989",
     name: "KryptoDex",
-    address: "cronos:0xc21223249CA28397B4B6541dfFaEcC539BfF0c59",
+    address: null,
     symbol: "KRX",
     url: "https://kryptodex.org",
     description:

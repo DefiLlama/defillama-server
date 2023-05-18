@@ -44,6 +44,7 @@ export const chainToCoingeckoId = {
   velas: "velas",
   milkomeda: "milkomeda-cardano",
   aptos: "aptos",
+  hydra: "hydra",
 }
 
 export default chainToCoingeckoId

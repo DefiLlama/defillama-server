@@ -1,6 +1,8 @@
 import protocols from "./protocols/data";
 import parentProtocols from "./protocols/parentProtocols";
 import { IParentProtocol, Protocol } from "./protocols/types";
+import { platformMap } from "./utils/coingeckoPlatforms";
+import { getChainDisplayName } from "./utils/normalizeChain";
 import { cache20MinResponse, wrap, IResponse } from "./utils/shared";
 
 export function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[], cgCoins:any){
@@ -20,12 +22,20 @@ export function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPoo
         return
     }
     const cgInfo = cgCoins.find((t:any)=>t.id===p.gecko_id)
+    const chainAddress = getChainDisplayName(address.includes(":")?address.split(":")[0]:"ethereum", true)
+    const rawAddress = (address.includes(":")?address.split(":")[1]:address).trim().toLowerCase() as string
+    const addresses = {
+        [chainAddress]: [rawAddress]
+    }
+    Object.entries(cgInfo?.platforms ?? {}).forEach(([chain, geckoAddress])=>{
+        const rawChain = platformMap[chain]
+        if(!rawChain){ return }
+        const normalizedChainName = getChainDisplayName(rawChain, true)
+        addresses[normalizedChainName] = (addresses[normalizedChainName] ?? []).concat([(geckoAddress as string).toLowerCase()])
+    })
     const tokenPools = dexPools.filter(pool =>{
         if(pool.underlyingTokens){
-            const addresses = Object.values(cgInfo?.platforms ?? {})
-                .concat([(address!.includes(":")?address!.split(":")[1]:address!).trim()])
-                .map((a:any)=>a.toLowerCase())
-            return pool.underlyingTokens?.map((t:any)=>t.toLowerCase()).some((addy:string)=>addresses.includes(addy))
+            return pool.underlyingTokens?.map((t:any)=>t.toLowerCase()).some((addy:string)=>(addresses[pool.chain] ?? []).includes(addy))
         } else {
             return pool.symbol.toUpperCase().split("-").includes(symbol?.toUpperCase())
         }

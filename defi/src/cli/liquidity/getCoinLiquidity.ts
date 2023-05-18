@@ -1,5 +1,7 @@
 import PromisePool from "@supercharge/promise-pool/dist";
 import fetch from "node-fetch";
+import { getChainDisplayName } from "../../utils/normalizeChain";
+import { platformMap } from "../../utils/coingeckoPlatforms";
 
 const token = '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2'
 const symbol = 'SUSHI'
@@ -128,7 +130,25 @@ async function getLiquidityProtocolsCompare() {
             pool.symbol.toUpperCase().split("-").includes(p.symbol?.toUpperCase())
         )
         const cgInfo = cgCoins.find((t:any)=>t.id===p.gecko_id)
+        const chainAddress = getChainDisplayName(p.address.includes(":")?p.address.split(":")[0]:"ethereum", true)
+        const rawAddress = (p.address.includes(":")?p.address.split(":")[1]:p.address).trim().toLowerCase() as string
+        const addresses = {
+            [chainAddress]: [rawAddress]
+        }
+        Object.entries(cgInfo?.platforms ?? {}).forEach(([chain, geckoAddress])=>{
+            const rawChain = platformMap[chain]
+            if(!rawChain){ return }
+            const normalizedChainName = getChainDisplayName(rawChain, true)
+            addresses[normalizedChainName] = (addresses[normalizedChainName] ?? []).concat([(geckoAddress as string).toLowerCase()])
+        })
         const tokenPoolsAddress = dexPools.filter(pool =>{
+            if(pool.underlyingTokens){
+                return pool.underlyingTokens?.map((t:any)=>t.toLowerCase()).some((addy:string)=>(addresses[pool.chain] ?? []).includes(addy))
+            } else {
+                return pool.symbol.toUpperCase().split("-").includes(p.symbol?.toUpperCase())
+            }
+        })
+        const tokenPoolsAddressOld = dexPools.filter(pool =>{
             if(pool.underlyingTokens){
                 const addresses = Object.values(cgInfo?.platforms ?? {})
                     .concat([(p.address.includes(":")?p.address.split(":")[1]:p.address).trim()])
@@ -147,11 +167,13 @@ async function getLiquidityProtocolsCompare() {
         const biggestPool = tokenPoolsSymbol.sort((a,b)=>b.tvlUsd-a.tvlUsd)[0]
         const biggestPoolAddress = tokenPoolsAddress.sort((a,b)=>b.tvlUsd-a.tvlUsd)[0]
         if(biggestPoolAddress?.symbol && !biggestPoolAddress?.symbol.includes(p.symbol.toUpperCase())){
-            console.log("sussy", p.name, p.symbol, biggestPoolAddress.symbol)
+            //console.log("sussy", p.name, p.symbol, biggestPoolAddress.symbol)
         }
-        return [p.name, p.symbol, tokenPoolsSymbol.length, tokenPoolsAddress.length, biggestPool?.symbol, biggestPoolAddress?.symbol, tf(tokenPoolsSymbol.reduce((sum, curr) => sum + curr.tvlUsd, 0) / 1e6), tf(tokenPoolsAddress.reduce((sum, curr) => sum + curr.tvlUsd, 0) / 1e6)]
+        return [p.name, p.symbol, tokenPoolsSymbol.length, tokenPoolsAddress.length, biggestPool?.symbol, biggestPoolAddress?.symbol, 
+            tf(tokenPoolsSymbol.reduce((sum, curr) => sum + curr.tvlUsd, 0) / 1e6), tf(tokenPoolsAddress.reduce((sum, curr) => sum + curr.tvlUsd, 0) / 1e6),
+            tf(tokenPoolsAddressOld.reduce((sum, curr) => sum + curr.tvlUsd, 0) / 1e6)]
     }).filter(Boolean).sort((a: any, b: any) => b[6] - a[6])
-    //console.log(toCsv(liqByProtocol))
+    console.log(toCsv(liqByProtocol))
 }
 getLiquidityProtocolsCompare()
 

@@ -88,6 +88,32 @@
       "to": "coingecko#dai"
     }
   },
+  "ethereum": {
+    "0xc3d688b66703497daa19211eedff47f25384cdc3": {
+      "decimals": 6,
+      "symbol": "cUSDCv3",
+      "to": "coingecko#usd-coin"
+    },
+    "0xa17581a9e3356d9a858b789d68b4d866e593ae94": {
+      "decimals": 18,
+      "symbol": "cWETHv3",
+      "to": "coingecko#weth"
+    }
+  },
+  "polygon": {
+    "0xf25212e676d1f7f89cd72ffee66158f541246445": {
+      "decimals": 6,
+      "symbol": "cUSDCv3",
+      "to": "coingecko#usd-coin"
+    }
+  },
+  "arbitrum": {
+    "0xa5edbdd9646f8dff606d7448e414884c7d905dca": {
+      "decimals": 6,
+      "symbol": "cUSDCv3",
+      "to": "coingecko#usd-coin"
+    }
+  },
   "tron": {
     "TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR": {
       "decimals": "6",

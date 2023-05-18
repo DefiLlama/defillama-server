@@ -108,6 +108,53 @@ async function getLiquidityProtocols() {
 }
 //getLiquidityProtocols()
 
+const toCsv = (rows:(string|number)[][])=>rows.map(row=>row.map(v=>`"${v}"`).join(",")).join("\n")
+async function getLiquidityProtocolsCompare() {
+    const [protocols, pools, config, cgCoins] = await Promise.all([
+        fetch(`https://api.llama.fi/protocols`).then(r => r.json()),
+        fetch(`https://yields.llama.fi/pools`).then(r => r.json()),
+        fetch(`https://api.llama.fi/config/yields`).then(r => r.json()),
+        fetch(`https://api.coingecko.com/api/v3/coins/list?include_platform=true`).then(r => r.json())
+    ])
+    const dexPools = (pools.data as any[]).filter(
+        (p) => config.protocols[p.project]?.category === "Dexes")
+    const liqByProtocol = protocols
+        //.filter((p:any)=>p.symbol==="QI")
+        .map((p: any) => {
+        if (p.symbol === "-" || p.symbol === null || !p.address) {
+            return
+        }
+        const tokenPoolsSymbol = dexPools.filter(pool =>
+            pool.symbol.toUpperCase().split("-").includes(p.symbol?.toUpperCase())
+        )
+        const cgInfo = cgCoins.find((t:any)=>t.id===p.gecko_id)
+        const tokenPoolsAddress = dexPools.filter(pool =>{
+            if(pool.underlyingTokens){
+                const addresses = Object.values(cgInfo?.platforms ?? {})
+                    .concat([(p.address.includes(":")?p.address.split(":")[1]:p.address).trim()])
+                    .map((a:any)=>a.toLowerCase())
+                return pool.underlyingTokens?.map((t:any)=>t.toLowerCase()).some((addy:string)=>addresses.includes(addy))
+            } else {
+                return pool.symbol.toUpperCase().split("-").includes(p.symbol?.toUpperCase())
+            }
+        })
+        /*
+        console.log(tokenPoolsAddress, Object.values(cgInfo?.platforms ?? {})
+        .concat([(p.address.includes(":")?p.address.split(":")[1]:p.address).trim()])
+        .map((a:any)=>a.toLowerCase()))
+        */
+        //console.log(tokenPoolsSymbol.sort((a,b)=>b.tvlUsd-a.tvlUsd), tokenPoolsAddress.sort((a,b)=>b.tvlUsd-a.tvlUsd))
+        const biggestPool = tokenPoolsSymbol.sort((a,b)=>b.tvlUsd-a.tvlUsd)[0]
+        const biggestPoolAddress = tokenPoolsAddress.sort((a,b)=>b.tvlUsd-a.tvlUsd)[0]
+        if(biggestPoolAddress?.symbol && !biggestPoolAddress?.symbol.includes(p.symbol.toUpperCase())){
+            console.log("sussy", p.name, p.symbol, biggestPoolAddress.symbol)
+        }
+        return [p.name, p.symbol, tokenPoolsSymbol.length, tokenPoolsAddress.length, biggestPool?.symbol, biggestPoolAddress?.symbol, tf(tokenPoolsSymbol.reduce((sum, curr) => sum + curr.tvlUsd, 0) / 1e6), tf(tokenPoolsAddress.reduce((sum, curr) => sum + curr.tvlUsd, 0) / 1e6)]
+    }).filter(Boolean).sort((a: any, b: any) => b[6] - a[6])
+    //console.log(toCsv(liqByProtocol))
+}
+getLiquidityProtocolsCompare()
+
 async function getLiquidityProtocolsCompared() {
     const chainToId = {
         ethereum: 'https://api.0x.org/',
@@ -158,7 +205,8 @@ async function getLiquidityProtocolsCompared() {
             return
         }
         try{
-        let aggAmount;
+        let aggAmount, aggregatorReturns;
+        try{
         const data = await fetch(
             `${
                     chainToId[chain as any]
@@ -185,9 +233,12 @@ async function getLiquidityProtocolsCompared() {
         }
         const price = (await fetch(`https://coins.llama.fi/prices/current/${chain}:${address}`).then(r => r.json())).coins[`${chain}:${address}`]
 
-        const aggregatorReturns = aggAmount * price.price/(10**price.decimals)
+        aggregatorReturns = aggAmount * price.price/(10**price.decimals)
         if(Number.isNaN(aggregatorReturns)){
             console.log(p.symbol, `${chain}:${address}`, data?.buyAmount, price, data)
+        }
+        } catch(e){
+            aggregatorReturns=0
         }
         //console.log(p.symbol, tf(aggregatorReturns/1e6), tf(total/2))
         const values = [p.name, p.symbol, tf(p.tvl/1e6), poolsLength, tf(total/2), tf(aggregatorReturns/1e6), biggestPool?.symbol, tf(biggestPool?.tvlUsd/1e6)]
@@ -201,4 +252,4 @@ async function getLiquidityProtocolsCompared() {
     //console.log("errors", liqByProtocol.errors)
     console.table(liqByProtocol.results.filter(Boolean).sort((a: any, b: any) => Number(b[3]) - Number(a[3])))
 }
-getLiquidityProtocolsCompared()
+//getLiquidityProtocolsCompared()

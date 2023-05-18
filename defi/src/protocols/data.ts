@@ -18952,7 +18952,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "usd",
     cmcId: "20317",
-    category: "Algo-Stables",
+    category: "CDP",
     chains: ["Polygon"],
     module: "overnight-usdPlus/index.js",
     twitter: "overnight_fi",

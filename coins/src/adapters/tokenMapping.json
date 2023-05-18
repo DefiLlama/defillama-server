@@ -113,5 +113,89 @@
       "symbol": "cUSDCv3",
       "to": "coingecko#usd-coin"
     }
+  },
+  "tron": {
+    "TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR": {
+      "decimals": "6",
+      "symbol": "WTRX",
+      "to": "coingecko#tron"
+    },
+    "TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S": {
+      "decimals": "18",
+      "symbol": "SUN",
+      "to": "coingecko#sun-token"
+    },
+    "TAoA331n3iKDkR62kAZ4H2n3vNL7y3d8x9": {
+      "decimals": "6",
+      "symbol": "BCM",
+      "to": "coingecko#bemchain"
+    },
+    "TAFjULxiVgT4qWk6UZwjqwZXTSaGaqnVp4": {
+      "decimals": "18",
+      "symbol": "BTT",
+      "to": "coingecko#bittorrent"
+    },
+    "TZ5jA9F5zGRgi9qk9ATMu6D7wyEpnxQGJh": {
+      "decimals": "18",
+      "symbol": "CYFM",
+      "to": "coingecko#cyberfm"
+    },
+    "TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9": {
+      "decimals": "18",
+      "symbol": "JST",
+      "to": "coingecko#just"
+    },
+    "TDyvndWuvX5xTBwHPYJi7J3Yq8pq8yh62h": {
+      "decimals": "18",
+      "symbol": "HT",
+      "to": "coingecko#huobi-token"
+    },
+    "TDBNKiYQ8yfJtT5MDP3byu7f1npJuG2DBN": {
+      "decimals": "6",
+      "symbol": "LUMI",
+      "to": "coingecko#lumi-credits"
+    },
+    "TFczxzPhnThNSqr5by8tvxsdCFRRz6cPNq": {
+      "decimals": "6",
+      "symbol": "NFT",
+      "to": "coingecko#apenft"
+    },
+    "TT8VkSkW6igkiRsV5WiJgLrsbVwY5bLLjA": {
+      "decimals": "8",
+      "symbol": "JM",
+      "to": "coingecko#justmoney-2"
+    },
+    "TU3kjFuhtEo42tsCBtfYUAZxoqQ4yuSLQ5": {
+      "decimals": "18",
+      "symbol": "STRX",
+      "to": "coingecko#staked-trx"
+    },
+    "TUpMhErZL2fhh4sVNULAbNKLokS4GjC1F4": {
+      "decimals": "18",
+      "symbol": "TUSD",
+      "to": "coingecko#true-usd"
+    },
+    "TYX2iy3i3793YgKU5vqKxDnLpiBMSa5EdV": {
+      "decimals": "6",
+      "symbol": "USTX",
+      "to": "coingecko#upstabletoken"
+    },
+    "TLa2f6VPqDgRE67v1736s7bJ8Ray5wYjU7": {
+      "decimals": "6",
+      "symbol": "WIN",
+      "to": "coingecko#wink"
+    }
+  },
+  "pulse": {
+    "0x02dcdd04e3f455d838cd1249292c58f3b79e3c3c": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xefd766ccb38eaf1dfd701853bfce31359239f305": {
+      "decimals": "18",
+      "symbol": "DAI",
+      "to": "coingecko#dai"
+    }
   }
 }

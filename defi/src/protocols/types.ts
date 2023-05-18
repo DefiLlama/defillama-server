@@ -29,6 +29,7 @@ export interface Protocol {
   };
   governanceID?: Array<string>;
   stablecoins?: string[];
+  wrongLiquidity?: boolean;
 }
 
 export interface IParentProtocol {

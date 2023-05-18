@@ -4,6 +4,7 @@ import { IParentProtocol, Protocol } from "./protocols/types";
 import { platformMap } from "./utils/coingeckoPlatforms";
 import { getChainDisplayName } from "./utils/normalizeChain";
 import { cache20MinResponse, wrap, IResponse } from "./utils/shared";
+import fetch from "node-fetch";
 
 export function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[], cgCoins:any){
     if("wrongLiquidity" in p && p.wrongLiquidity === true){

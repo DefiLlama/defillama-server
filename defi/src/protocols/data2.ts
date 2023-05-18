@@ -10823,7 +10823,7 @@ const data2: Protocol[] = [
     name: "Taiga Acala",
     address: null,
     symbol: "-",
-    url: "https://tapioprotocol.io/",
+    url: "https://www.taigaprotocol.io",
     description: "A synthetic asset protocol designed to enable maximum efficiency for uniform assets on Polkadot.",
     chain: "Acala",
     logo: `${baseIconsUrl}/taiga-acala.png`,
@@ -10836,7 +10836,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "tapio/index.js",
-    twitter: "TapioProtocol",
+    twitter: "TaigaProtocol",
     listedAt: 1657825354
   },
   {

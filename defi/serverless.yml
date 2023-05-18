@@ -213,6 +213,13 @@ functions:
       - http:
           path: historicalLiquidity/{token}
           method: get
+  protocolsLiquidity:
+    handler: src/getProtocolsLiquidity.default
+    timeout: 30
+    events:
+      - http:
+          path: protocolsLiquidity
+          method: get
   contractName:
     handler: src/getContractName.default
     timeout: 30

@@ -1,16 +1,12 @@
 import fetch from "node-fetch";
 import { wrap, IResponse, cache20MinResponse, errorResponse } from "./utils/shared";
 import { getTimestampAtStartOfDay } from "./utils/date";
+import { getDexPools, getLiquidityPoolsOfProtocol } from "./getProtocolsLiquidity";
+import protocols from "./protocols/data";
+import sluggify from "./utils/sluggify";
+import parentProtocols from "./protocols/parentProtocols";
 
-async function historicalLiquidity(token:string){
-    const [pools, config] = await Promise.all([
-        fetch(`https://yields.llama.fi/pools`).then(r=>r.json()),
-        fetch(`https://api.llama.fi/config/yields`).then(r=>r.json())
-    ])
-    const tokenPools = (pools.data as any[]).filter(
-        (p)=>config.protocols[p.project]?.category === "Dexes" 
-            && p.symbol.toUpperCase().split("-").includes(token)
-        )
+async function historicalLiquidity(tokenPools:any[]){
     const historicalPoolInfo = await Promise.all(tokenPools.map(p=>fetch(`https://yields.llama.fi/chart/${p.pool}`).then(r=>r.json()).catch(e=>{
         console.error(`Failed to get pool ${p.pool}`, e)
         return {data:[]}
@@ -51,11 +47,17 @@ async function historicalLiquidity(token:string){
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const token = event.pathParameters?.token?.toUpperCase();
-  if(token === undefined){
-    return errorResponse({message: "No token provided"})
+  const protocolName = event.pathParameters?.token?.toLowerCase();
+  const protocolData = protocols.concat(parentProtocols as any[]).find((prot) => sluggify(prot) === protocolName);
+  if(protocolData === undefined){
+    return errorResponse({message: "No protocol provided"})
   }
-  const liquidity = await historicalLiquidity(token)
+  const {dexPools, cgCoins} = await getDexPools()
+  const tokenPools = await getLiquidityPoolsOfProtocol(protocolData, dexPools, cgCoins)
+  if(!tokenPools?.tokenPools?.length || tokenPools?.tokenPools?.length === 0){
+    return errorResponse({message: "No liquidity info available"})
+  }
+  const liquidity = await historicalLiquidity(tokenPools?.tokenPools ?? [])
   return cache20MinResponse(liquidity)
 };
 

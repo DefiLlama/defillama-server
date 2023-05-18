@@ -4231,7 +4231,8 @@ const data2: Protocol[] = [
     twitter: "AaveAave",
     audit_links: ["https://aave.com/security"],
     listedAt: 1648776877,
-    parentProtocol: "parent#aave"
+    parentProtocol: "parent#aave",
+    wrongLiquidity: true
   },
   {
     id: "1600",
@@ -6600,8 +6601,8 @@ const data2: Protocol[] = [
   {
     id: "1707",
     name: "CLever",
-    address: "0xf05e58fCeA29ab4dA01A495140B349F8410Ba904",
-    symbol: "clev-CVX",
+    address: null,
+    symbol: "-",
     url: "https://clever.aladdin.club/",
     description: "CLever is a leverage system for CVX holders that allows them to multiply their bribe and reward income by up to ~2x, while automating harvesting and swapping into CVX.",
     chain: "Ethereum",
@@ -6618,7 +6619,7 @@ const data2: Protocol[] = [
     twitter: "0xC_Lever",
     audit_links: ["https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_CLever_Report_v1.1.pdf"],
     listedAt: 1651168503,
-    governanceID: ["snapshot:clevercvx.eth", "snapshot:veclev.eth"]
+    governanceID: ["snapshot:clevercvx.eth", "snapshot:veclev.eth"],
   },
   {
     id: "1708",
@@ -9468,7 +9469,8 @@ const data2: Protocol[] = [
     twitter: "AaveAave",
     audit_links: ["https://aave.com/security"],
     listedAt: 1655586107,
-    parentProtocol: "parent#aave"
+    parentProtocol: "parent#aave",
+    wrongLiquidity: true,
   },
   {
     id: "1839",
@@ -9491,7 +9493,8 @@ const data2: Protocol[] = [
     twitter: "AaveAave",
     audit_links: ["https://aave.com/security"],
     listedAt: 1655586107,
-    parentProtocol: "parent#aave"
+    parentProtocol: "parent#aave",
+    wrongLiquidity: true,
   },
   {
     id: "1840",
@@ -11303,7 +11306,7 @@ const data2: Protocol[] = [
   {
     id: "1922",
     name: "Radiant V1",
-    address: "arbitrum:0x0c4681e6c0235179ec3d4f4fc4df3d14fdd96017",
+    address: null,
     symbol: "RDNT",
     url: "https://radiant.capital/#/markets",
     description: "Radiant Capital is aiming to be an omnichain money market, where users can deposit any major asset on any major chain and borrow a variety of supported assets across multiple chains",
@@ -19870,7 +19873,8 @@ const data2: Protocol[] = [
     ],
     oracles: ["Chainlink"],
     listedAt: 1669327585,
-    stablecoins: ["iusd"]
+    stablecoins: ["iusd"],
+    wrongLiquidity: true, // coingecko has the wrong address for it
   },
   {
     id: "2310",
@@ -21048,7 +21052,7 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     oracles: [],
     governanceID: ["snapshot:mmyvote.eth"],
-    listedAt: 1671034969
+    listedAt: 1671034969,
   },
   {
     id: "2362",
@@ -26625,7 +26629,7 @@ const data2: Protocol[] = [
   {
     id: "2607",
     name: "Frax FPI",
-    address: "0x5ca135cb8527d76e932f34b5145575f9d8cbe08e",
+    address: "0xc2544a32872a91f4a553b404c6950e89de901fdb",
     symbol: "FPIS",
     url: "https://app.frax.finance/fpifpis/fpi",
     description: "The Frax Price Index (FPI) is the second stablecoin of the Frax Finance ecosystem. FPI is the first stablecoin pegged to a basket of real-world consumer items as defined by the US CPI-U average. The FPI stablecoin is intended to keep its price constant to the price of all items within the CPI basket and thus hold its purchasing power with on-chain stability mechanisms.f locking the asset.",

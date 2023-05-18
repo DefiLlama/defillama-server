@@ -19,6 +19,7 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "aave.js",
     twitter: "AaveAave",
     governanceID: ["snapshot:aave.eth"],
+    wrongLiquidity: true, // missing balancer v1 pool
   },
   {
     id: "parent#sushi",

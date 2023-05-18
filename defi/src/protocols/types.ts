@@ -48,4 +48,5 @@ export interface IParentProtocol {
   governanceID?: Array<string>;
   treasury?: string;
   stablecoins?: string[];
+  wrongLiquidity?: boolean;
 }

@@ -110,6 +110,7 @@ const data: Protocol[] = [
     audit_links: ["https://aave.com/security"],
     oracles: ["Chainlink"],
     parentProtocol: "parent#aave",
+    wrongLiquidity: true,
   },
   {
     id: "112",
@@ -4601,7 +4602,8 @@ const data: Protocol[] = [
     treasury: "beefy.js",
     twitter: "beefyfinance",
     audit_links: ["https://github.com/beefyfinance/beefy-audits"],
-    governanceID: ["snapshot:beefydao.eth"]
+    governanceID: ["snapshot:beefydao.eth"],
+    wrongLiquidity: true, // coingecko missing optimism address
   },
   {
     id: "327",
@@ -4955,7 +4957,7 @@ const data: Protocol[] = [
     twitter: "ImpermaxFinance",
     audit_links: ["https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/tree/main/audit"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:impermax.eth"]
+    governanceID: ["snapshot:impermax.eth"],
   },
   {
     id: "344",
@@ -7226,6 +7228,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.mai.finance/risks/security#has-the-project-been-audited"],
     governanceID: ["snapshot:qidao.eth"],
     stablecoins: ["mai"],
+    wrongLiquidity: true, // address of qi on optimism is same address as mai on bsc
   },
   {
     id: "450",
@@ -9461,7 +9464,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Arbitrum"],
     module: "magicland/index.js",
     twitter: "0xMagicland",
-    wrongLiquidity: true,
   },
   {
     id: "559",

@@ -35071,5 +35071,27 @@ const data2: Protocol[] = [
     ],
     listedAt: 1684364375
   },
+  {
+    id: "2993",
+    name: "NodeDAO",
+    address: null,
+    symbol: "-",
+    url: "https://www.nodedao.com",
+    description:
+      "Experience the ease of staking on Ethereum 2.0 through NodeDAO's liquid staking service.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/nodedao.jpg`,
+    audits: "2", // they have audits , but is a download file
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum", "Filecoin"],
+    module: "node-dao/index.js",
+    twitter: "Node_DAO",
+    oracles: [],
+    forkedFrom: [], 
+    listedAt: 1684416874
+  },
 ]
 export default data2;

@@ -3,8 +3,10 @@ import parentProtocols from "./protocols/parentProtocols";
 import { IParentProtocol, Protocol } from "./protocols/types";
 import { platformMap } from "./utils/coingeckoPlatforms";
 import { getChainDisplayName } from "./utils/normalizeChain";
+import { storeR2JSONString } from "./utils/r2";
 import { cache20MinResponse, wrap, IResponse } from "./utils/shared";
 import fetch from "node-fetch";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 
 function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[], cgCoins:any){
     if("wrongLiquidity" in p && p.wrongLiquidity === true){
@@ -61,13 +63,13 @@ async function getDexPools(){
     return {dexPools, cgCoins}
 }
 
-const handler = async (): Promise<IResponse> => {
+const handler = async () => {
     const allProtocols = (parentProtocols as (typeof parentProtocols[0] | typeof protocols[0])[]).concat(protocols)
     const {dexPools, cgCoins} = await getDexPools()
     const liqByProtocol = allProtocols.map((p) => getLiquidityPoolsOfProtocol(p, dexPools, cgCoins))
         .filter(p=>p?.totalLiq > 0).sort((a: any, b: any) => b.totalLiq - a.totalLiq)
 
-    return cache20MinResponse(liqByProtocol)
+    await storeR2JSONString(`liquidity.json`, JSON.stringify(liqByProtocol), 60 * 60);
 }
 
-export default wrap(handler);
+export default wrapScheduledLambda(handler);

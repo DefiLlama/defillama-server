@@ -214,12 +214,13 @@ functions:
           path: historicalLiquidity/{token}
           method: get
   protocolsLiquidity:
-    handler: src/getProtocolsLiquidity.default
-    timeout: 30
+    handler: src/storeProtocolsLiquidity.default
+    memorySize: 1000
+    timeout: 60
     events:
-      - http:
-          path: protocolsLiquidity
-          method: get
+      - schedule: cron(18 * * * ? *)
+    environment:
+      CG_KEY: ${env:CG_KEY}
   contractName:
     handler: src/getContractName.default
     timeout: 30

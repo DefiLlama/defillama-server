@@ -47,7 +47,7 @@ const handler = async (
   if(protocolId === undefined){
     return errorResponse({message: "No protocol provided"})
   }
-  const protocolsLiquidity = (await fetch(`https://api.llama.fi/protocolsLiquidity`).then(r=>r.json())).find((p:any)=>p.id===protocolId)
+  const protocolsLiquidity = (await fetch(`https://defillama-datasets.llama.fi/liquidity.json`).then(r=>r.json())).find((p:any)=>p.id===protocolId)
   if(!protocolsLiquidity?.tokenPools?.length || protocolsLiquidity?.tokenPools?.length === 0){
     return errorResponse({message: "No liquidity info available"})
   }

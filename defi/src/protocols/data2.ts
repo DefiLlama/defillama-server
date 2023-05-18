@@ -18126,8 +18126,8 @@ const data2: Protocol[] = [
   {
     id: "2231",
     name: "Tangible",
-    address: "polygon:0xb5DFABd7fF7F83BAB83995E72A52B97ABb7bcf63",
-    symbol: "USDR",
+    address: "polygon:0x49e6a20f1bbdfeec2a8222e052000bbb14ee6007",
+    symbol: "TNGBL",
     url: "https://www.tangible.store",
     description:
       "Tangible is an NFT marketplace for Real World Assets. Tangible is also the creator of Real USD, the first stablecoin backed by tokenized, yield-producing real estate.Rental income from Real USD’s backing is paid out to Real USD holders in the form of a daily rebase projected to range between 10 - 15% APY.",
@@ -23905,7 +23905,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://landshare.io/wp-content/uploads/2022/06/Audit.pdf"],
-    listedAt: 1675273672
+    listedAt: 1675273672,
+    stablecoins: ["real-usd"]
   },
   {
     id: "2487",

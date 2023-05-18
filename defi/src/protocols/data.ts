@@ -9461,6 +9461,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Arbitrum"],
     module: "magicland/index.js",
     twitter: "0xMagicland",
+    wrongLiquidity: true,
   },
   {
     id: "559",
@@ -11727,6 +11728,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "OrcaDAO",
     audit_links: ["https://paladinsec.co/projects/orcadao"],
     listedAt: 1634100536,
+    wrongLiquidity: true, // ORCA repeated
   },
   {
     id: "667",
@@ -18947,8 +18949,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1023",
     name: "Overnight USD+",
-    address: "polygon:0x236eeC6359fb44CCe8f97E99387aa7F8cd5cdE1f",
-    symbol: "USD+",
+    address: null,
+    symbol: "-",
     url: "https://app.overnight.fi/stats",
     description:
       "USD+ is USDC that pays yield daily via rebase. USD+ stablecoin can be instantly minted and redeemed to USDC 1:1. USD+ includes 3 components:1.Pegged to USDC 1:12.Yield generating 3.Insurance (soon)",
@@ -18956,8 +18958,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/overnight-usd+.png`,
     audits: "1",
     audit_note: null,
-    gecko_id: "usd",
-    cmcId: "20317",
+    gecko_id: null,
+    cmcId: null,
     category: "CDP",
     chains: ["Polygon"],
     module: "overnight-usdPlus/index.js",
@@ -19362,6 +19364,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/Tech-Audit/Smart-Contract-Audits/blob/main/TECHAUDIT_SOLANAFARM.pdf"],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1639805654,
+    wrongLiquidity: true
   },
   {
     id: "1043",
@@ -19783,6 +19786,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Cake_DAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1640030248,
+    wrongLiquidity: true,
   },
   {
     id: "1062",

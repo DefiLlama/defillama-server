@@ -6,7 +6,7 @@ import { getChainDisplayName } from "./utils/normalizeChain";
 import { cache20MinResponse, wrap, IResponse } from "./utils/shared";
 import fetch from "node-fetch";
 
-export function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[], cgCoins:any){
+function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[], cgCoins:any){
     if("wrongLiquidity" in p && p.wrongLiquidity === true){
         return
     }
@@ -50,7 +50,7 @@ export function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPoo
     }
 }
 
-export async function getDexPools(){
+async function getDexPools(){
     const [pools, config, cgCoins] = await Promise.all([
         fetch(`https://yields.llama.fi/pools`).then(r => r.json()),
         fetch(`https://api.llama.fi/config/yields`).then(r => r.json()),

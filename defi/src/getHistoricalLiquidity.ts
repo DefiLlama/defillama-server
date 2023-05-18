@@ -1,10 +1,6 @@
 import fetch from "node-fetch";
 import { wrap, IResponse, cache20MinResponse, errorResponse } from "./utils/shared";
 import { getTimestampAtStartOfDay } from "./utils/date";
-import { getDexPools, getLiquidityPoolsOfProtocol } from "./getProtocolsLiquidity";
-import protocols from "./protocols/data";
-import sluggify from "./utils/sluggify";
-import parentProtocols from "./protocols/parentProtocols";
 
 async function historicalLiquidity(tokenPools:any[]){
     const historicalPoolInfo = await Promise.all(tokenPools.map(p=>fetch(`https://yields.llama.fi/chart/${p.pool}`).then(r=>r.json()).catch(e=>{
@@ -47,17 +43,15 @@ async function historicalLiquidity(tokenPools:any[]){
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const protocolName = event.pathParameters?.token?.toLowerCase();
-  const protocolData = protocols.concat(parentProtocols as any[]).find((prot) => sluggify(prot) === protocolName);
-  if(protocolData === undefined){
+  const protocolId = event.pathParameters?.token?.toLowerCase();
+  if(protocolId === undefined){
     return errorResponse({message: "No protocol provided"})
   }
-  const {dexPools, cgCoins} = await getDexPools()
-  const tokenPools = await getLiquidityPoolsOfProtocol(protocolData, dexPools, cgCoins)
-  if(!tokenPools?.tokenPools?.length || tokenPools?.tokenPools?.length === 0){
+  const protocolsLiquidity = (await fetch(`https://api.llama.fi/protocolsLiquidity`).then(r=>r.json())).find((p:any)=>p.id===protocolId)
+  if(!protocolsLiquidity?.tokenPools?.length || protocolsLiquidity?.tokenPools?.length === 0){
     return errorResponse({message: "No liquidity info available"})
   }
-  const liquidity = await historicalLiquidity(tokenPools?.tokenPools ?? [])
+  const liquidity = await historicalLiquidity(protocolsLiquidity!.tokenPools)
   return cache20MinResponse(liquidity)
 };
 

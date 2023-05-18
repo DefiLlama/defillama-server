@@ -33710,6 +33710,8 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.sparkprotocol.io/developers/deployed-contracts/security-and-audits"],
     listedAt: 1683144119
   },
+  /*
+  History wiped due to all deployments
   {
     id: "2930",
     name: "crvUSD",
@@ -33735,6 +33737,7 @@ const data2: Protocol[] = [
     listedAt: 1683150941,
     stablecoins: ["crvusd"]
   },
+  */
   {
     id: "2931",
     name: "BlazeStake",
@@ -35093,6 +35096,31 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [], 
     listedAt: 1684416874
+  },
+  {
+    id: "2994",
+    name: "crvUSD",
+    address: "0xD533a949740bb3306d119CC777fa900bA034cd52",
+    symbol: "CRV",
+    url: "https://curve.fi",
+    description:
+      "crvUSD is a collateralized-debt-position (CDP) stablecoin pegged to the US Dollar",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/crvusd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "crv-usd/index.js",
+    twitter: "CurveFinance",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    parentProtocol: "parent#curve-finance",
+    listedAt: 1683150941,
+    stablecoins: ["crvusd"]
   },
 ]
 export default data2;

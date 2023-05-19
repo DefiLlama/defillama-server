@@ -19227,7 +19227,6 @@ const data2: Protocol[] = [
     ],
     listedAt: 1668436086
   },
-/*
   {
     id: "2281",
     name: "Sigmausd",
@@ -19251,7 +19250,6 @@ const data2: Protocol[] = [
     listedAt: 1668512038,
     stablecoins: ["sigmausd"]
   },
-*/
   {
     id: "2282",
     name: "KSwap",

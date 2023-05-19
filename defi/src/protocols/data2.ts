@@ -32006,7 +32006,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["zkSync Era"],
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Solidly"],
     module: "solunea/index.js",
     twitter: "SoluneaDex",
     listedAt: 1681737935

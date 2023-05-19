@@ -3151,7 +3151,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Services",
     chains: ["Kujira"],
-    oracles: [],
+    oracles: ["Ojo Network"],
     forkedFrom: [],
     module: "orca-kujira/index.js",
     twitter: "TeamKujira",
@@ -22824,7 +22824,7 @@ const data2: Protocol[] = [
     chains: ["Kujira"],
     module: "calculated-finance/index.js",
     twitter: "CALC_Finance",
-    oracles: [],
+    oracles: ["Ojo Network"],
     forkedFrom: [],
     audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/CALC-Finance/CALC%20Finance%20-%20Audit%20Report%20-%20v1.0.pdf"],
     listedAt: 1673816820
@@ -22847,7 +22847,7 @@ const data2: Protocol[] = [
     chains: ["Kujira"],
     module: "fin/index.js",
     twitter: "TeamKujira",
-    oracles: [],
+    oracles: ["Ojo Network"],
     forkedFrom: [],
     parentProtocol: "parent#kujira-protocol",
     listedAt: 1673816822
@@ -22870,7 +22870,7 @@ const data2: Protocol[] = [
     chains: ["Kujira"],
     module: "black-whale/index.js",
     twitter: "BlackWhaleDeFi",
-    oracles: [],
+    oracles: ["Ojo Network"],
     forkedFrom: [],
     audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/Kujira/BlackWhale/Kujira%20-%20BlackWhale%20Contracts%20-%20Audit%20Report%20v1.0.pdf"],
     listedAt: 1673816824
@@ -22893,7 +22893,7 @@ const data2: Protocol[] = [
     chains: ["Kujira"],
     module: "bow/index.js",
     twitter: "TeamKujira",
-    oracles: [],
+    oracles: ["Ojo Network"],
     forkedFrom: [],
     parentProtocol: "parent#kujira-protocol",
     listedAt: 1673816826
@@ -22916,7 +22916,7 @@ const data2: Protocol[] = [
     chains: ["Kujira"],
     module: "kujira/index.js",
     twitter: "TeamKujira",
-    oracles: [],
+    oracles: ["Ojo Network"],
     forkedFrom: [],
     parentProtocol: "parent#kujira-protocol",
     listedAt: 1673816828
@@ -24177,7 +24177,7 @@ const data2: Protocol[] = [
     chains: ["Umee"],
     module: "umee/index.js",
     twitter: "Umee_CrossChain",
-    oracles: ["Ojo Oracle"],
+    oracles: ["Ojo Network"],
     forkedFrom: [],
     audit_links: ["https://umeeversity.umee.cc/overview/umee-overview/security-audits.html"],
     listedAt: 1675684784
@@ -32306,7 +32306,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Kujira"],
-    oracles: ["Internal"],
+    oracles: ["Ojo Network"],
     forkedFrom: [],
     module: "ghost/index.js",
     twitter: "TeamKujira",

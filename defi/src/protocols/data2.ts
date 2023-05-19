@@ -35126,5 +35126,28 @@ const data2: Protocol[] = [
     listedAt: 1683150941,
     stablecoins: ["crvusd"]
   },
+  {
+    id: "2995",
+    name: "PulseX",
+    address: "pulse:0x95B303987A60C71504D99Aa1b13B4DA07b0790ab",
+    symbol: "PLSX",
+    url: "https://app.pulsex.com/swap",
+    description:
+      `PulseX enables you to exchange tokens ("PRC20s") on PulseChain for one another`,
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/pulsex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Pulse"],
+    module: "pulsex/index.js",
+    twitter: "PulseXcom",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1684468587,
+  },
 ]
 export default data2;

@@ -155,4 +155,15 @@ export default [
         },
         lastUpdate: "2023-05-06"
     },
+    {
+        protocolId: "1933", // Timeless
+        sources: ["https://gov.timelessfi.com/discussion/10011-trc-00302-fund-the-12-month-operational-cost-of-the-timeless-engineering-unit"],
+        annualUsdCost: {
+            salaries: 835e3,
+            reimbursement: 185e3,
+            legal: 85e3,
+            gasCosts: 50e3
+        },
+        lastUpdate: "2023-05-06"
+    },
 ]

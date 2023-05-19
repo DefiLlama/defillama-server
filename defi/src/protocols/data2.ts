@@ -23851,7 +23851,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "CDP",
-    chains: ["Cardano", "Milkomeda"],
+    chains: ["Cardano"],
     oraclesByChain: {
       cardano: ["COTI's Oracle"],
       milkomeda: ["Aggr3Oracle"],

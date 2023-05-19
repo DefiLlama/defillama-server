@@ -35215,5 +35215,27 @@ const data2: Protocol[] = [
     twitter: "veSyncL2",
     listedAt: 1684487642
   },
+  {
+    id: "2999",
+    name: "Ethos Reserve",
+    address: null,
+    symbol: "-",
+    url: "https://www.ethos.finance",
+    description: "Ethos Reserve is a decentralized borrowing protocol that allows users to take out 0% interest loans against Bitcoin, Ethereum, or Optimism collateral via the Ethos Reserve Note (ERN). A portion of deposited assets are utilized via private vaults to generate delta neutral yield that is used to create a self-sustaining yield flywheel for the protocol.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/ethos-reserve.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: "24370",
+    category: "CDP",
+    chains: ["Optimism"],
+    oracles: [],
+    forkedFrom: ["Liquity"],
+    module: "ethos/index.js",
+    twitter: "EthosReserve",
+    audit_links: ["https://docsend.com/view/szchhyvbcbiv3ti9"],
+    listedAt: 1684502476
+  },
 ]
 export default data2;

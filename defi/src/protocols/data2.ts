@@ -35095,7 +35095,10 @@ const data2: Protocol[] = [
     module: "node-dao/index.js",
     twitter: "Node_DAO",
     oracles: [],
-    forkedFrom: [], 
+    forkedFrom: [
+                  "https://www.nodedao.com/paf/MetaTrust.pdf",
+                  "https://www.nodedao.com/paf/BEOSIN.pdf"
+    ], 
     listedAt: 1684416874
   },
   {
@@ -35168,6 +35171,49 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/DjedAlliance/Djed-Solidity/blob/main/audits/PeckShield-Audit-Report-Djed-2.pdf"],
     listedAt: 1684477891,
     stablecoins: ["djed-stablecoin"]
+  },
+  {
+    id: "2997",
+    name: "zkDX",
+    address: "era:0x609387F5902A4c70be9b21722a4Fa202e7F63979",
+    symbol: "ZKDLP",
+    url: "https://zkdx.io",
+    description: "zkDX, a decentralized derivatives exchange of liquidity mode and a staking pool built on zkSync Era, which supports the demo trading now of crypto perpetual futures, foreign currencies, stocks and various innovative financial derivatives. zkDX has predominant security, superior liquidity, cheap trading fees, and provides a wide range of leveraged trading products.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zkdx.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm", // for now is just a masterchef, then should de derivatives
+    chains: ["zkSync Era"],
+    oracles: ["Pyth"],
+    forkedFrom: ["GMX"],
+    module: "zkdx/index.js",
+    twitter: "zkDXio",
+    audit_links: ["https://github.com/zkDX-DeFi/zkDX-Contracts/tree/main/audits"],
+    listedAt: 1684487638
+  },
+  {
+    id: "2998",
+    name: "veSync",
+    address: "era:0x5756A28E2aAe01F600FC2C01358395F5C1f8ad3A",
+    symbol: "VS",
+    url: "https://vesync.finance",
+    description: "veSync is a community-driven, ve(3,3) Decentralized Exchange (DEX) built on the zkSync network, providing a powerful and efficient Defi liquidity platform.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/vesync.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: "vesync",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    oracles: ["Pyth"],
+    forkedFrom: ["Solidly"],
+    module: "vesync/index.js",
+    twitter: "veSyncL2",
+    listedAt: 1684487642
   },
 ]
 export default data2;

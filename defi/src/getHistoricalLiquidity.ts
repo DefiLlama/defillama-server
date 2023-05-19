@@ -43,7 +43,7 @@ async function historicalLiquidity(tokenPools:any[]){
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const protocolId = event.pathParameters?.token?.toLowerCase();
+  const protocolId = event.pathParameters?.token?.toLowerCase()?.replace("$", "#");
   if(protocolId === undefined){
     return errorResponse({message: "No protocol provided"})
   }

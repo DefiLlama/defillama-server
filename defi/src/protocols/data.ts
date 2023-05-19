@@ -6847,10 +6847,7 @@ const data: Protocol[] = [
     chains: ["Tron"],
     module: "sun/index.js",
     twitter: "defi_sunio",
-    audit_links: [
-                   "https://sun.io/docs/slowmist_audit_report_en_sun.pdf",
-                   "https://sun.io/docs/audit-report-sun_en.pdf"
-                ],
+    audit_links: ["https://sun.io/docs/audit-report-sun_en.pdf"],
     parentProtocol: "parent#sun",
   },
   {
@@ -12255,10 +12252,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Tron"],
     module: "justSwap/index.js",
     twitter: "DeFi_JUST",
-    audit_links: [
-                   "https://justswap.io/docs/audit-report_cn.pdf",
-                   "https://sunswap.com/docs/audit-report_en.pdf"
-                  ],
+    audit_links: ["https://sunswap.com/docs/audit-report_en.pdf"],
     listedAt: 1634757407,
     parentProtocol: "parent#sun",
   },

@@ -35146,5 +35146,28 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1684468587,
   },
+  {
+    id: "2996",
+    name: "Milkomeda-C1 Djed",
+    address: "null",
+    symbol: "-",
+    url: "https://milkomeda-c1.djed.one/",
+    description: "Djed is an autonomous crypto-backed stablecoin protocol that has been implemented in multiple smart contract programming languages and deployed to multiple blockchains",
+    chain: "Milkomeda",
+    logo: `${baseIconsUrl}/djed-alliance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Milkomeda"],
+    oracles: ["Aggr3Oracle"],
+    forkedFrom: [],
+    module: "milkomeda-djed/index.js",
+    twitter: "DjedAlliance",
+    audit_links: ["https://github.com/DjedAlliance/Djed-Solidity/blob/main/audits/PeckShield-Audit-Report-Djed-2.pdf"],
+    listedAt: 1684477891,
+    stablecoins: ["djed-stablecoin"]
+  },
 ]
 export default data2;

@@ -89,6 +89,11 @@
     }
   },
   "ethereum": {
+    "0xe0b469cb3eda0ece9e425cfeda4df986a55ea9f8": {
+      "decimals": 18,
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    },
     "0xc3d688b66703497daa19211eedff47f25384cdc3": {
       "decimals": 6,
       "symbol": "cUSDCv3",
@@ -187,6 +192,16 @@
     }
   },
   "pulse": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "PLS",
+      "to": "coingecko#pulsechain"
+    },
+    "0xa1077a294dde1b09bb078844df40758a5d0f9a27": {
+      "decimals": "18",
+      "symbol": "WPLS",
+      "to": "coingecko#pulsechain"
+    },
     "0x02dcdd04e3f455d838cd1249292c58f3b79e3c3c": {
       "decimals": "18",
       "symbol": "ETH",

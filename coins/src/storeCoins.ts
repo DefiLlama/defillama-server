@@ -15,7 +15,7 @@ const withTimeout = (millis: number, promise: any) => {
 };
 
 const step = 2000;
-const timeout = 840000; //14mins
+const timeout = process.env.LLAMA_RUN_LOCAL ? 840000 : 8400000; //14mins
 export default async function handler(event: any) {
   const a = Object.entries(adapters);
   const timestamp = 0;
@@ -34,7 +34,11 @@ export default async function handler(event: any) {
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {
-        console.error(e);
+        console.error(
+          `${a[i][0]} adapter failed ${
+            process.env.LLAMA_RUN_LOCAL ? "" : `:${e}`
+          }`,
+        );
         if (!process.env.LLAMA_RUN_LOCAL)
           await sendMessage(
             `${a[i][0]} adapter failed: ${e}`,
@@ -48,9 +52,10 @@ export default async function handler(event: any) {
 
 // ts-node coins/src/storeCoins.ts
 async function main() {
-  let a = { protocolIndexes: [0] };
+  let a = {
+    protocolIndexes: [0],
+  };
   await handler(a);
   if (process.env.LLAMA_RUN_LOCAL) process.exit(0);
 }
-
 if (process.env.LLAMA_RUN_LOCAL) main();

@@ -413,6 +413,7 @@ export default {
         "id": "2296"
     },
     "mux": {
+        "name": "MUX Protocol",
         "enabled": true,
         "id": "2254"
     },

@@ -70,7 +70,7 @@ export function cream(timestamp: number = 0) {
     ),
   ]);
 }
-export function Ovix(timestamp: number = 0){
+export function Ovix(timestamp: number = 0) {
   console.log("starting 0vix");
   return Promise.all([
     getTokenPrices(

@@ -29681,11 +29681,11 @@ const data2: Protocol[] = [
   },
   {
     id: "2746",
-    name: "Nexon Finance",
+    name: "Eralend",
     address: null,
     symbol: "-",
-    url: "https://app.nexon.finance",
-    description: "Nexon Finance is a decentralized lending protocol designed to maximize capital efficiency while minimizing the risks associated with the dependency on external liquidity & oracles. This will allow users to lend and borrow crypto assets more efficiently than any existing solutions in the market.",
+    url: "https://app.eralend.com/",
+    description: "Eralend is a decentralized lending protocol designed to maximize capital efficiency while minimizing the risks associated with the dependency on external liquidity & oracles. This will allow users to lend and borrow crypto assets more efficiently than any existing solutions in the market.",
     chain: "Polygon zkEVM",
     logo: `${baseIconsUrl}/nexon-finance.jpg`,
     audits: "2",
@@ -29697,7 +29697,7 @@ const data2: Protocol[] = [
     oracles: ["Pyth"],
     forkedFrom: ["Compound"],
     module: "nexon/index.js",
-    twitter: "NexonFi",
+    twitter: "Era_Lend",
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Nexon-v1.0.pdf"],
     listedAt: 1680172068,
     governanceID: ["snapshot:nexondao.eth"]

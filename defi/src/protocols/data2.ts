@@ -13497,8 +13497,8 @@ const data2: Protocol[] = [
   {
     id: "2023",
     name: "Arbswap AMM",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xf50874f8246776CA4B89eEF471E718F70f38458F",
+    symbol: "ARBS",
     url: "https://arbswap.io/",
     description: "The #1 AMM and DEX on Arbitrum Nova powered by #Arbitrum.",
     chain: "Arbitrum Nova",
@@ -31971,8 +31971,8 @@ const data2: Protocol[] = [
   {
     id: "2851",
     name: "Arbswap StableSwap",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0xf50874f8246776CA4B89eEF471E718F70f38458F",
+    symbol: "ARBS",
     url: "https://arbswap.io/swap",
     description: "Stableswap AMM",
     chain: "Arbitrum",

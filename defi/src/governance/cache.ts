@@ -84,8 +84,7 @@ export async function getTally(project: string) {
 }
 
 export async function setTally(project: string, cache: any) {
-  console.log('writing to tally cache', project, cache)
-  // return setCache('tally', project, cache)
+  return setCache('tally', project, cache)
 }
 
 
@@ -94,6 +93,5 @@ export async function getTallyOverview() {
 }
 
 export async function setTallyOverview(cache: any) {
-  console.log('writing to tally overview', cache)
-  // return setCache('overview', 'tally', cache)
+  return setCache('overview', 'tally', cache)
 }

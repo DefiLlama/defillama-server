@@ -1,5 +1,6 @@
 
 export const graphURL = 'https://hub.snapshot.org/graphql'
+export const graphURLTally = 'https://api.tally.xyz/query'
 
 export const metadataQuery = `query Spaces($ids: [String]!) {
   spaces(first: 1000, skip: 0, orderBy: "created", orderDirection: desc, where: {id_in: $ids}) {
@@ -89,20 +90,12 @@ export const proposalQuery = `query Proposals($ids: [String]!, $skip: Int!, $sta
 }`
 
 
-export const proposalQueryTally = `query Governers (
-  $ids: [AccountID!]
-) {
-  governors (
-    ids:$ids
-    includeInactive:false
-    sort: {
-      field:TOTAL_PROPOSALS
-      order:DESC
-    }
-    pagination: {
-      limit:10
-      
-    }
+export const metadataQueryTally = `query Governers($ids: [AccountID!]) {
+  governors(
+    ids: $ids
+    includeInactive: false
+    sort: {field: TOTAL_PROPOSALS, order: DESC}
+    pagination: {limit: 999}
   ) {
     id
     type
@@ -113,38 +106,6 @@ export const proposalQueryTally = `query Governers (
       symbol
       supply
       decimals
-      
-    }
-    proposals {
-      
-    id
-    title
-    description
-    start {
-      timestamp
-    }
-    end {
-      timestamp
-    }
-    eta
-    proposer {
-      id
-      address
-    }
-    voteStats {
-      support
-      weight
-      votes
-      percent
-    }
-    statusChanges {
-      type
-      block {
-        id
-        number
-        timestamp
-      }
-    }
     }
     proposalStats {
       total
@@ -159,5 +120,52 @@ export const proposalQueryTally = `query Governers (
     name
     slug
     __typename
+  }
+}`
+
+export const proposalQueryTally = `query Proposals($ids: [Address!], $chain: ChainID!, $skip: Int, $limit: Int) {
+  proposals(
+    governors: $ids
+    sort: {field: END_BLOCK, order: DESC}
+    pagination: {limit: $limit, offset: $skip}
+    chainId: $chain
+  ) {
+    id
+    title
+    description
+    start {
+      id
+      number
+      timestamp
+    }
+    end {
+      id
+      number
+      timestamp
+    }
+    eta
+    block {
+      id
+      number
+      timestamp
+    }
+    governanceId
+    voteStats {
+      support
+      weight
+      votes
+      percent
+    }
+    statusChanges {
+      type
+      blockNumber
+      blockTimestamp
+      block {
+        id
+        number
+        timestamp
+      }
+      txHash
+    }
   }
 }`

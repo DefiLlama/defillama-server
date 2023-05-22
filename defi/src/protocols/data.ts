@@ -670,8 +670,8 @@ const data: Protocol[] = [
     forkedFrom: ["Compound"],
     governanceID: [
       "snapshot:fuse.eth", 
-      "compound:ethereum:0x91d9c2b5cf81d55a5f2ecc0fc84e62f9cd2cefd6",
-      "compoumd:ethereum:0x6552c8fb228f7776fc0e4056aa217c139d4bada1"
+      "eip155:1:0x91d9c2b5cF81D55a5f2Ecc0fC84E62f9cd2ceFd6",
+      'eip155:1:0x637deEED4e4deb1D222650bD4B64192abf002c00',
     ]
   },
   {
@@ -952,8 +952,8 @@ const data: Protocol[] = [
     governanceID: [
       "snapshot:staking.idlefinance.eth", 
       "snapshot:idlefinance.eth",
-      "compound:ethereum:0x3d5fc645320be0a085a32885f078f7121e5e5375",
-      "compound:ethereum:0x2256b25cfc8e35c3135664fd03e77595042fe31b"
+      "eip155:1:0x3D5Fc645320be0A085A32885F078F7121e5E5375",
+      "eip155:1:0x2256b25CFC8E35c3135664FD03E77595042fe31B"
     ]
   },
   {
@@ -1268,7 +1268,7 @@ const data: Protocol[] = [
     module: "truefi/index.js",
     twitter: "TrustToken",
     audit_links: ["https://github.com/trusttoken/audits/tree/master/TrueFi"],
-    governanceID: ["snapshot:truefigov.eth"]
+    governanceID: ["snapshot:truefigov.eth", 'eip155:1:0x585CcA060422ef1779Fb0Dd710A49e7C49A823C9',]
   },
   {
     id: "167",
@@ -1719,7 +1719,7 @@ const data: Protocol[] = [
     module: "indexed/index.js",
     twitter: "ndxfi",
     audit_links: ["https://docs.indexed.finance/protocol/security"],
-    governanceID: ["snapshot:ndx.eth", "compound:ethereum:0x95129751769f99cc39824a0793ef4933dd8bb74b"]
+    governanceID: ["snapshot:ndx.eth", 'eip155:1:0x95129751769f99CC39824a0793eF4933DD8Bb74B']
   },
   {
     id: "189",
@@ -1911,7 +1911,7 @@ const data: Protocol[] = [
     oracles: ["Chainlink"],
     governanceID: [
       "snapshot:ooki.eth", 
-      "compound:ethereum:0x3133b4f4dcffc083724435784fefad510fa659c6"
+      'eip155:1:0x3133b4F4dcffc083724435784fEFAD510FA659c6'
     ]
   },
   /*
@@ -2761,7 +2761,7 @@ const data: Protocol[] = [
     governanceID: [
       "snapshot:pooltogether.eth", 
       "snapshot:poolpool.pooltogether.eth",
-      "compound:ethereum:0xb3a87172f555ae2a2ab79be60b336d2f7d0187f0"
+      'eip155:1:0xB3a87172F555ae2a2AB79Be60B336D2F7D0187f0'
     ]
   },
   {
@@ -3053,6 +3053,7 @@ const data: Protocol[] = [
       "https://github.com/bifrost-platform/BIFI/blob/master/docs/ENG/(ENG)_BiFrost_BTC_Extension_CertiK.pdf",
     ],
     oracles: ["Chainlink", "TWAP"],
+    governanceID: [ 'eip155:1:0x54F50d2f584F1DD05307aB5eB298Ba96C7d4E0ea' ],
   },
   {
     id: "254",
@@ -3099,7 +3100,7 @@ const data: Protocol[] = [
     oracles: ["Chainlink"],
     governanceID: [
       "snapshot:fei.eth",
-      "compound:ethereum:0x0bef27feb58e857046d630b2c03dfb7bae567494", 
+      "compound:", 
       "compound:ethereum:0x637deeed4e4deb1d222650bd4b64192abf002c00",
       "compound:ethereum:0xe087f94c3081e1832dc7a22b48c6f2b5faae579b"
     ]
@@ -3304,7 +3305,7 @@ const data: Protocol[] = [
     twitter: "reflexerfinance",
     audit_links: ["https://reflexer.finance/about/"],
     oracles: ["Chainlink"],
-    governanceID: ["compound:ethereum:0x7a6bbe7fdd793cc9ab7e0fc33605fcd2d19371e8"]
+    governanceID: ["eip155:1:0x7a6BBe7fDd793CC9ab7e0fc33605FCd2D19371E8"]
   },
   {
     id: "266",
@@ -3662,7 +3663,7 @@ const data: Protocol[] = [
       "compound:ethereum:0x62702387c2a26c903985e9d078d18c45acae0908",
       "compound:ethereum:0xc32f9b0292965c5dd4a0ea1abfcc1f5a36d66986",
       "compound:ethereum:0x78bdd33e95ecbcac16745fb28db0ffb703344026",
-      "compound:ethereum:0x2da253835967d6e721c6c077157f9c9742934aea",//CONTRACTCREATOR natew.eth
+      "eip155:1:0x2DA253835967D6E721C6c077157F9c9742934aeA",//CONTRACTCREATOR natew.eth
       "compound:ethereum:0x6aba376e3331e3090456495e8292ecdfa1ab4920"
     ]
   },
@@ -5152,7 +5153,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "armorfinance/index.js",
     twitter: "ArmorFi",
-    governanceID: ["compound:ethereum:0x5afedef1454cdd11d4705c06aa4d66aa396343f6"]
+    governanceID: ['eip155:1:0x5aFeDeF1454CDd11d4705c06aa4D66Aa396343f6']
   },
   {
     id: "354",
@@ -26884,6 +26885,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "UXDProtocol",
     language: "Rust",
     audit_links: ["https://bramah.systems/audits/UXD_Audit_Bramah.pdf"],
+    governanceID: ['eip155:42161:0x8dEc1460C23767e17557f163d8Fe39AF37A244Bb'],
     listedAt: 1644696944,
     openSource: false,
   },

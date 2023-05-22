@@ -8,7 +8,9 @@ main().then(() => {
 })
 
 async function main() {
-  await updateTallys()
-  // await updateSnapshots()
-  // await updateCompounds()
+  await Promise.all([
+    updateTallys,
+    updateSnapshots,
+    updateCompounds,
+  ])
 }

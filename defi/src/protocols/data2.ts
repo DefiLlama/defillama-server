@@ -1144,7 +1144,7 @@ const data2: Protocol[] = [
       "https://github.com/elysia-dev/elyfi-token/tree/main/audit"
     ],
     listedAt: 1645646372,
-    governanceID: ["snapshot:elyfi-bsc.eth","compound:ethereum:0x0c54629266d7fa40b4bfaf1640ebc2cd093866c3",]
+    governanceID: ["snapshot:elyfi-bsc.eth","eip155:1:0x0c54629266d7fa40B4BFaF1640ebC2Cd093866C3",]
   },
   {
     id: "1460",
@@ -11182,7 +11182,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],
-    governanceID: ["compound:ethereum:0x6853f8865ba8e9fbd9c8cce3155ce5023fb7eeb0"],
+    governanceID: ['eip155:1:0x6853f8865BA8e9FBd9C8CCE3155ce5023fB7EEB0'],
     module: "sudoswap/index.js",
     audit_links: ["https://github.com/sudoswap/audits"],
     twitter: "sudoswap",
@@ -13406,7 +13406,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "silo/index.js",
     twitter: "SiloFinance",
-    governanceID: ["snapshot:silofinance.eth", "compound:ethereum:0xa89163f7b2d68a8fba6ca36beed32bd4f3eeaf61"],
+    governanceID: ["snapshot:silofinance.eth","eip155:1:0xA89163F7B2D68A8fbA6Ca36BEEd32Bd4f3EeAf61"],
     audit_links: [
       "https://drive.google.com/file/d/1D2EIOb0XaRov5Ph2AE0DTfIsMISd7UXG/view",
       "https://drive.google.com/file/d/1WXaB3ICLv4rSEX86POK3-NaOIxXwyq9l/view",
@@ -24606,7 +24606,7 @@ const data2: Protocol[] = [
     twitter: "ensdomains",
     oracles: [],
     forkedFrom: [],
-    governanceID: ["snapshot:ens.eth", "compound:ethereum:0x323a76393544d5ecca80cd6ef2a560c6a395b7e3"],
+    governanceID: ["snapshot:ens.eth", "compound:"],
   },
   {
     id: "2520",
@@ -25117,6 +25117,7 @@ const data2: Protocol[] = [
     governanceID: [
       "compound:ethereum:0xeaa87097991a874eee2c66b8a09c3dc90e45f6f0",
       "compound:ethereum:0x76847efc52f0d7ed270ba520a0ee7dddc7141dcf",
+      'eip155:1:0x336505EC1BcC1A020EeDe459f57581725D23465A',
     ]
   },
   {

@@ -35323,5 +35323,27 @@ const data2: Protocol[] = [
     parentProtocol: "parent#omnidex",
     listedAt: 1684751164
   },
+  {
+    id: "3004",
+    name: "BFX Finance",
+    address: "bsc:0x491347561CEc563aD7D91135F92dBdC700277505",
+    symbol: "BFX",
+    url: "https://www.bfx.finance",
+    description: "Trade spot and futures BTC, ETH, BNB, XRP, and LINK with low fees, deep liquidity, and up to 100x more buying power.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/bfx-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: [],
+    module: "bfx/index.js",
+    twitter: "BFXfi",
+    listedAt: 1684761281
+  },
+
 ]
 export default data2;

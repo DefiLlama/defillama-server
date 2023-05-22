@@ -1553,5 +1553,9 @@ export default {
     "vertex-protocol": {
         "enabled": true,
         "id": "2899"
+    },
+    "lighter": {
+        "enabled": true,
+        "id": "2636"
     }
 } as AdaptorsConfig

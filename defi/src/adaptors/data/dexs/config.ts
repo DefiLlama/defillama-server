@@ -1560,6 +1560,14 @@ export default {
     },
     "fulcrom-finance": {
         "enabled": true,
-        "id": "2641"
+        "id": "2641",
+        "protocolsData": {
+            "swap": {
+                "id": "2641",
+                "enabled": true,
+                "category": "Dexes",
+                "displayName": "Fulcrom - SWAP",
+            }
+        },
     }
 } as AdaptorsConfig

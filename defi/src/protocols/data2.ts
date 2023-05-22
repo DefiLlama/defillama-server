@@ -35366,5 +35366,51 @@ const data2: Protocol[] = [
     listedAt: 1684765349,
     parentProtocol: "parent#sun",
   },
+  {
+    id: "3006",
+    name: "Intercroneswap",
+    address: "tron:TKqvrVG7a2zJvQ3VysLoiz9ijuMNDehwy7",
+    symbol: "ICR",
+    url: "http://www.intercroneswap.com",
+    description:
+      "Join our funny meme community start on Tron and on the way to multichain metaverse.",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/intercroneswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null ,
+    category: "Dexes",
+    chains: ["Tron"],
+    forkedFrom: ["Uniswap V2"],
+    module: "intercroneswap/index.js",
+    twitter: "IntercroneWorld",
+    listedAt: 1684767920
+  },
+  {
+    id: "3007",
+    name: "Uswap",
+    address: null,
+    symbol: "-",
+    url: "https://uswap.me",
+    description:
+      "USWAP is a DEX protocol on the TRON blockchain!",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/uswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Tron"],
+    forkedFrom: ["Uniswap V2"],
+    module: "uswap-me/index.js",
+    twitter: "UswapDEX",
+    audit_links: [
+                     "https://www.slowmist.com/security-audit-certificate.html?id=2a002137d6f0b7b2a23aca9251ce5332b0c2f71749c4f07516793e5ad7845c4f",
+                     "https://uswap.me/modules/site/main/assets/audit2.pdf"
+                 ],
+    listedAt: 1684767925
+  },
 ]
 export default data2;

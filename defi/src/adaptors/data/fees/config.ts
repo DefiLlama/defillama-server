@@ -865,5 +865,9 @@ export default {
     "gamma": {
         "enabled": true,
         "id": "355"
+    },
+    "fulcrom-finance": {
+        "enabled": true,
+        "id": "2641"
     }
 } as AdaptorsConfig

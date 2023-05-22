@@ -12236,14 +12236,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "690",
-    name: "SUNSwap",
+    name: "SUNSwap V1",
     address: "tron:TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S",
     symbol: "SUN",
     url: "https://sunswap.com/#/home",
     description:
-      "SUNSwap is a TRON-based decentralized trading protocol for automated liquidity provision and an open financial market accessible to all.",
+      "SUNSwap V1 is a TRON-based decentralized trading protocol for automated liquidity provision and an open financial market accessible to all.",
     chain: "Tron",
-    logo: `${baseIconsUrl}/sunswap.jpg`,
+    logo: `${baseIconsUrl}/sunswap-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

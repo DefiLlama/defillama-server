@@ -1557,5 +1557,9 @@ export default {
     "lighter": {
         "enabled": true,
         "id": "2636"
+    },
+    "fulcrom-finance": {
+        "enabled": true,
+        "id": "2641"
     }
 } as AdaptorsConfig

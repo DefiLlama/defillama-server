@@ -19,6 +19,13 @@
     }
   },
   "ibc": {},
+  "astar": {
+    "0xffffffff00000000000000010000000000000001": {
+      "decimals": "12",
+      "symbol": "AUSD",
+      "to": "coingecko#acala-dollar-acala"
+    }
+  },
   "sui": {
     "0xdbe380b13a6d0f5cdedd58de8f04625263f113b3f9db32b3e1983f49e2841676::coin::COIN": {
       "decimals": "8",

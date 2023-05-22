@@ -35344,6 +35344,27 @@ const data2: Protocol[] = [
     twitter: "BFXfi",
     listedAt: 1684761281
   },
-
+  {
+    id: "3005",
+    name: "SUNSwap V2",
+    address: "tron:TSSMHYeV2uE9qYH95DqyoCuNCzEL1NvU3S",
+    symbol: "SUN",
+    url: "https://sunswap.com/#/home",
+    description:
+      "SUNSwap V2 is a TRON-based decentralized trading protocol for automated liquidity provision and an open financial market accessible to all.",
+    chain: "Tron",
+    logo: `${baseIconsUrl}/sunswap-v2.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Tron"],
+    module: "sunswap-v2/index.js",
+    twitter: "DeFi_JUST",
+    audit_links: ["https://sunswap.com/docs/audit-report_en.pdf"],
+    listedAt: 1684765349,
+    parentProtocol: "parent#sun",
+  },
 ]
 export default data2;

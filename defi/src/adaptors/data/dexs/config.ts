@@ -1569,5 +1569,9 @@ export default {
                 "displayName": "Fulcrom - SWAP",
             }
         },
+    },
+    "veax": {
+        "enabled": true,
+        "id": "2928"
     }
 } as AdaptorsConfig

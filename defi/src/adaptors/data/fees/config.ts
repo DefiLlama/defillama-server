@@ -869,5 +869,9 @@ export default {
     "fulcrom-finance": {
         "enabled": true,
         "id": "2641"
+    },
+    "veax": {
+        "enabled": true,
+        "id": "2928"
     }
 } as AdaptorsConfig

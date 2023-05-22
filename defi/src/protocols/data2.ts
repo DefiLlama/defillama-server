@@ -29710,7 +29710,7 @@ const data2: Protocol[] = [
     url: "https://app.hadouken.finance/lend",
     description: "An integrated borrowing/lending platform on Godwoken V1 Network.",
     chain: "GodwokenV1",
-    logo: `${baseIconsUrl}/nexon-finance.jpg`,
+    logo: `${baseIconsUrl}/hadouken-lend.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

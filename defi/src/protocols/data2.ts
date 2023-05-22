@@ -34989,14 +34989,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2989",
-    name: "multiverseC2C",
+    name: "multiverse",
     address: "kava:0x3f0BF5596902aAf15e09D63328B4176fC12E4206",
     symbol: "MVX",
     url: "https://multiverse.fntokens.xyz/",
     description:
       "MverseX is a Multichain Decentralized exchange first deployed on kava evm co-chain.",
     chain: "Kava",
-    logo: `${baseIconsUrl}/multiversec2c.jpg`,
+    logo: `${baseIconsUrl}/multiverse.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -3100,7 +3100,7 @@ const data: Protocol[] = [
     oracles: ["Chainlink"],
     governanceID: [
       "snapshot:fei.eth",
-      "compound:", 
+      'eip155:1:0x0BEF27FEB58e857046d630B2c03dFb7bae567494', 
       "compound:ethereum:0x637deeed4e4deb1d222650bd4b64192abf002c00",
       "compound:ethereum:0xe087f94c3081e1832dc7a22b48c6f2b5faae579b"
     ]

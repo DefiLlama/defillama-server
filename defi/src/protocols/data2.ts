@@ -24606,7 +24606,7 @@ const data2: Protocol[] = [
     twitter: "ensdomains",
     oracles: [],
     forkedFrom: [],
-    governanceID: ["snapshot:ens.eth", "compound:"],
+    governanceID: ["snapshot:ens.eth", 'eip155:1:0x323A76393544d5ecca80cd6ef2A560C6a395b7E3'],
   },
   {
     id: "2520",

@@ -14122,7 +14122,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Ethereum"],
-    oracles: ["Uniswap"],
+    oracles: ["TWAP"],
     forkedFrom: [],
     module: "logium/index.js",
     twitter: "LogiumDEX",
@@ -15319,7 +15319,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Yield Aggregator",
     chains: ["Arbitrum", "Avalanche", "Ethereum"],
-    oracles: ["Coingecko", "Uniswap"],
+    oracles: ["Coingecko", "TWAP"],
     forkedFrom: ["Beefy"],
     module: "shipyard-finance/index.js",
     twitter: "deficurrent",
@@ -21071,7 +21071,7 @@ const data2: Protocol[] = [
     module: "hedgehog/index.js",
     twitter: "liqui_space",
     forkedFrom: [],
-    oracles: ["Uniswap"],
+    oracles: ["TWAP"],
     listedAt: 1671064853
   },
   {

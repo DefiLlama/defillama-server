@@ -33087,7 +33087,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "lybra/index.js",
     twitter: "LybraFinanceLSD",
-    audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/Lybra"],
+    audit_links: ["https://solidity.finance/audits/Lybra/"],
     listedAt: 1682586612
   },
   {

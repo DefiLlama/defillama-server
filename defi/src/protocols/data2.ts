@@ -35320,6 +35320,7 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     module: "omnidex-perpetuals/index.js",
     twitter: "OmniDex1",
+    parentProtocol: "parent#omnidex",
     listedAt: 1684751164
   },
 ]

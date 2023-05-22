@@ -113,5 +113,16 @@ export default {
                 "displayName": "El Dorado Exchange - Derivatives"
             }
         },
+    },
+    "fulcrom-finance": {
+        "enabled": true,
+        "id": "2641",
+        "protocolsData": {
+            "derivatives": {
+                "id": "2641",
+                "enabled": true,
+                "displayName": "Fulcrom - Derivatives",
+            }
+        },
     }
 } as AdaptorsConfig

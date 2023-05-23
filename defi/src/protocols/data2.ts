@@ -35511,5 +35511,47 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/pessimistic-io/audits/blob/main/Spiral%20DAO%20Security%20Analysis%20by%20Pessimistic.pdf"],
     listedAt: 1684862998
   },
+  {
+    id: "3012",
+    name: "DynastySwap",
+    address: null,
+    symbol: "-",
+    url: "https://www.dynastyswap.xyz/#/swap",
+    description:
+      "Dynasty Swap, the new decentralized exchange on PulseChain",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/dynastyswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Pulse"],
+    forkedFrom: ["Uniswap V2"],
+    module: "dynastyswap-xyz/index.js",
+    twitter: "DynastySwap",
+    listedAt: 1684863863
+  },
+  {
+    id: "3013",
+    name: "UniFi Staking",
+    address: "0x441761326490cacf7af299725b6292597ee822c2",
+    symbol: "UNFI",
+    url: "https://unifiprotocol.com",
+    description:
+      "Unifi Protocol is a group of non-custodial, interoperable smart contracts linking multiple blockchains together into one large DeFi marketplace.",
+    chain: "Harmony",
+    logo: `${baseIconsUrl}/unifi-protocol-staking.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Harmony", "Ontology"],
+    forkedFrom: [],
+    module: "unifi-protocol-staking/index.jss",
+    twitter: "unifiprotocol",
+    listedAt: 1684863868
+  },
 ]
 export default data2;

@@ -35466,5 +35466,50 @@ const data2: Protocol[] = [
                  ],
     listedAt: 1684837801
   },
+  {
+    id: "3010",
+    name: "zkSwap Era",
+    address: "era:0xAbdb137D013b8B328FA43Fc04a6fA340D1CeA733",
+    symbol: "ZKS",
+    url: "https://zkswap.biz",
+    description:
+      "zkSwap is an Automated Market Maker with a Futuristic UI , inbuilt charts , launchpad, locker, NFT staking and many more features.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zkswap-era.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    forkedFrom: ["Uniswap V2"],
+    module: "zk-swap/index.js",
+    twitter: "zkswap_official",
+    audit_links: ["https://contractwolf.io/projects/zkswap"],
+    listedAt: 1684862994
+  },
+  {
+    id: "3011",
+    name: "SpiralDao",
+    address: "0x85b6ACaBa696B9E4247175274F8263F99b4B9180",
+    symbol: "SPR",
+    url: "https://spiral.farm",
+    description:
+      "A novel DAO model bringing innovation into yield farming, bribe markets, and VeTokenomics.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/spiraldao.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "spiraldao-coil",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    forkedFrom: [],
+    module: "spiral-dao/index.js",
+    twitter: "Spiral_DAO",
+    treasury: "spiral-dao.js",
+    audit_links: ["https://github.com/pessimistic-io/audits/blob/main/Spiral%20DAO%20Security%20Analysis%20by%20Pessimistic.pdf"],
+    listedAt: 1684862998
+  },
 ]
 export default data2;

@@ -11145,6 +11145,7 @@ const data2: Protocol[] = [
     module: "pony/index.js",
     audit_links: ["https://kuiper.gitbook.io/kuiper-docs/audits"],
     twitter: "PonyFinance",
+    governanceID: ['eip155:1:0x6CC90C97a940b8A3BAA3055c809Ed16d609073EA'],
     listedAt: 1658298409
   },
   {

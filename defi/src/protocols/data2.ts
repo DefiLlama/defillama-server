@@ -34186,6 +34186,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "originether/index.js",
+    parentProtocol: "parent#origin",
     twitter: "OriginDeFi",
     listedAt: 1683581147
   },

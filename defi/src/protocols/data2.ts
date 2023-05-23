@@ -35413,5 +35413,55 @@ const data2: Protocol[] = [
                  ],
     listedAt: 1684767925
   },
+  {
+    id: "3008",
+    name: "Avely Staking",
+    address: null,
+    symbol: "-",
+    url: "https://dapp.avely.fi",
+    description:
+      "Liquid staking protocol on Zilliqa blockchain",
+    chain: "Zilliqa",
+    logo: `${baseIconsUrl}/avely-staking.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Zilliqa"],
+    forkedFrom: [],
+    module: "avely-finance-staking/index.js",
+    twitter: "AvelyFinance",
+    parentProtocol: "parent#avely-finance",
+    audit_links: [
+                     "https://github.com/Dedaub/audits/blob/main/Avely%20Finance/Avely%20Audit%20Report.pdf",
+                 ],
+    listedAt: 1684837799
+  },
+  {
+    id: "3009",
+    name: "Avely Swap",
+    address: null,
+    symbol: "-",
+    url: "https://dapp.avely.fi/swap",
+    description:
+      "Dex protocol on Zilliqa blockchain",
+    chain: "Zilliqa",
+    logo: `${baseIconsUrl}/avely-swap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Zilliqa"],
+    forkedFrom: ["Uniswap V2"],
+    module: "avely-finance-swap/index.js",
+    twitter: "AvelyFinance",
+    parentProtocol: "parent#avely-finance",
+    audit_links: [
+                     "https://github.com/lucash-dev/audits/blob/main/audit2023-02-27-updated-1.pdf",
+                 ],
+    listedAt: 1684837801
+  },
 ]
 export default data2;

@@ -33352,7 +33352,7 @@ const data2: Protocol[] = [
     id: "2914",
     name: "Binance staked ETH",
     address: null,
-    symbol: "-",
+    symbol: "WBETH",
     url: "https://www.binance.com/en/wbeth",
     description:
       'A token created by depositing BETH into the BETH wrapper. Each WBETH represents 1 BETH (1:1 to staked ETH) plus all of its accrued ETH2.0 staking rewards',

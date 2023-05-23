@@ -6757,11 +6757,6 @@ const data: Protocol[] = [
     module: "origindollar/index.js",
     twitter: "OriginProtocol",
     audit_links: ["https://docs.ousd.com/v/en/security-and-risks/audits"],
-    governanceID: [
-      "snapshot:ousdgov.eth", 
-      "compound:ethereum:0x3cdd07c16614059e66344a7b579dab4f9516c0b6",
-      "compound:ethereum:0xc6a3525e2fd8f4844a6fdfe4552a583ce5ac7efa"
-    ],
     parentProtocol: "parent#origin",
     stablecoins: ["origin-dollar"]
   },

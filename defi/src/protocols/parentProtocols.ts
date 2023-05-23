@@ -1629,6 +1629,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "OriginProtocol",
   },
+  {
+    id: "parent#avely-finance",
+    name: "Avely Finance",
+    url: "https://avely.fi",
+    description: "Avely is a leading-edge liquid staking protocol built on the Zilliqa blockchain.",
+    logo: `${baseIconsUrl}/avely-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AvelyFinance",
+  },
 ];
 
 export default parentProtocols;

@@ -1628,6 +1628,11 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "20949",
     chains: [],
     twitter: "OriginProtocol",
+    governanceID: [
+      "snapshot:ousdgov.eth", 
+      "compound:ethereum:0x3cdd07c16614059e66344a7b579dab4f9516c0b6",
+      "compound:ethereum:0xc6a3525e2fd8f4844a6fdfe4552a583ce5ac7efa"
+    ],
   },
   {
     id: "parent#avely-finance",

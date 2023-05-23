@@ -61,6 +61,7 @@ export const config = {
     wantVaults: [
       '0x9dbbBaecACEDf53d5Caa295b8293c1def2055Adc', // mooGmxGLP
       '0x9e75f8298e458b76382870982788988a0799195b', // mooCurveWSTETH
+      '0xa64A8CAAd2c412baCf215A351FA60cDC2a08C0E8', // Yama PlvGLP
     ],
   },
   ethereum: {

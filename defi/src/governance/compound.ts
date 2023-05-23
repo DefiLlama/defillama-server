@@ -60,7 +60,7 @@ const missing = [
   'eip155:1:0x0BEF27FEB58e857046d630B2c03dFb7bae567494',
 ]
 
-missing.forEach((i: any) => blacklisted.push('ethereum:' + i.split[2].toLowerCase()))
+missing.forEach((i: any) => blacklisted.push('ethereum:' + i.split(':')[2].toLowerCase()))
 
 export function getCompoundIds(existingIds: string[]) {
   let compoundIds = new Set(existingIds.map(i => i.toLowerCase()))
@@ -71,7 +71,7 @@ export function getCompoundIds(existingIds: string[]) {
 
 export async function updateCompounds() {
   const overview: any = await getCompoundOverview()
-  // blacklisted.forEach((i: any) => delete overview[i])
+  blacklisted.forEach((i: any) => delete overview[i])
   const compoundIds = getCompoundIds(Object.keys(overview))
   // const compoundIds = ['ethereum:0x408ed6354d4973f66138c91495f2f2fcbd8724c3']
   console.log('compound gov#', compoundIds.length)

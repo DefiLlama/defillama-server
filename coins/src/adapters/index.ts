@@ -102,4 +102,5 @@ export default {
   sweth: require("./other"),
   gmd: require("./other"),
   stkaurabal: require("./other"),
+  glpDerivs: require("./yield/glpDerivs"),
 };

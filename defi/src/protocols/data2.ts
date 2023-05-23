@@ -35457,7 +35457,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Zilliqa"],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     module: "avely-finance-swap/index.js",
     twitter: "AvelyFinance",
     parentProtocol: "parent#avely-finance",

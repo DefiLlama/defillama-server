@@ -233,6 +233,16 @@
       "decimals": "18",
       "symbol": "DAI",
       "to": "coingecko#dai"
+    },
+    "0x15d38573d2feeb82e7ad5187ab8c1d52810b1f07": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x0cb6f5a34ad42ec934882a05265a7d5f59b51a2f": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
     }
   }
 }

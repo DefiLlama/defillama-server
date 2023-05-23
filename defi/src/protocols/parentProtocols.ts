@@ -1609,7 +1609,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#vyfinance",
-    name: "ViFinance",
+    name: "VyFinance",
     url: "https://vyfi.io",
     description: "VyFinance offers an ecosystem that's easy to use and accessible for everyone.",
     logo: `${baseIconsUrl}/vyfinance.png`,

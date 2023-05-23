@@ -35549,7 +35549,7 @@ const data2: Protocol[] = [
     category: "Staking Pool",
     chains: ["Harmony", "Ontology"],
     forkedFrom: [],
-    module: "unifi-protocol-staking/index.jss",
+    module: "unifi-protocol-staking/index.js",
     twitter: "unifiprotocol",
     listedAt: 1684863868
   },

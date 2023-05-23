@@ -124,5 +124,15 @@ export default {
                 "displayName": "Fulcrom - Derivatives",
             }
         },
+    },
+    "vertex-protocol": {
+        "enabled": true,
+        "id": "2899",
+        "protocolsData": {
+            "derivatives": {
+                "id": "2899",
+                "enabled": true
+            }
+        },
     }
 } as AdaptorsConfig

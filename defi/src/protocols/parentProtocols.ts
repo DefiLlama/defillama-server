@@ -1618,7 +1618,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "VyFiOfficial",
   },
-
+  {
+    id: "parent#origin",
+    name: "Origin",
+    url: "https://www.originprotocol.com",
+    description: "Building NFTs & DeFi for everyone. The revolution won't be centralized — not on our watch.",
+    logo: `${baseIconsUrl}/origin.jpg`,
+    gecko_id: "origin-dollar-governance",
+    cmcId: "20949",
+    chains: [],
+    twitter: "OriginProtocol",
+  },
 ];
 
 export default parentProtocols;

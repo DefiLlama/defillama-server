@@ -2335,12 +2335,6 @@
       "decimals": "18",
       "symbol": "DSU",
       "to": "coingecko#digital-standard-unit"
-    },
-    "0x5326e71ff593ecc2cf7acae5fe57582d6e74cff1": {
-      "name": "Plutus Vault GLP",
-      "decimals": "18",
-      "symbol": "plvGLP",
-      "to": "arbitrum:0x4277f8F2c384827B5273592FF7CeBd9f2C1ac258"
     }
   },
   "telos": {

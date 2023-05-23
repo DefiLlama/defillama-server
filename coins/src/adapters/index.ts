@@ -102,4 +102,5 @@ export default {
   sweth: require("./other"),
   gmd: require("./other"),
   stkaurabal: require("./other"),
+  plutusDao: require("./yield/plutusDao"),
 };

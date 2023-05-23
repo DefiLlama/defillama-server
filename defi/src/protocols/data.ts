@@ -6758,7 +6758,7 @@ const data: Protocol[] = [
     module: "origindollar/index.js",
     twitter: "OriginProtocol",
     audit_links: ["https://docs.ousd.com/v/en/security-and-risks/audits"],
-    parentProtocol: "parent#origin",
+    parentProtocol: "parent#origin-defi",
     stablecoins: ["origin-dollar"]
   },
   {

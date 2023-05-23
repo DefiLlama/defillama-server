@@ -34181,7 +34181,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Indexes",
+    category: "Yield Aggregator",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

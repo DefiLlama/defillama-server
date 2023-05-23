@@ -1552,7 +1552,14 @@ export default {
     },
     "vertex-protocol": {
         "enabled": true,
-        "id": "2899"
+        "id": "2899",
+        "protocolsData": {
+            "swap": {
+                "id": "2899",
+                "enabled": true,
+                "category": "Dexes"
+            }
+        },
     },
     "lighter": {
         "enabled": true,

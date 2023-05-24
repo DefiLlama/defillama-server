@@ -79,44 +79,50 @@ export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: s
         }
         if (dexFoundInProtocolsArr.length > 0 && imports_obj[adapterKey].module.default) {
             return dexFoundInProtocolsArr.map((dexFoundInProtocols => {
-                let configObj = config[adapterKey]
-                let versionKey = undefined
-                const protData = config?.[adapterKey]?.protocolsData
-                if ('breakdown' in moduleObject) {
-                    const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
-                    configObj = vConfig ?? config[adapterKey]
-                    if (key) {
-                        versionKey = key
-                        baseModuleObject = moduleObject.breakdown[key]
+                try {
+                    let configObj = config[adapterKey]
+                    let versionKey = undefined
+                    const protData = config?.[adapterKey]?.protocolsData
+                    if ('breakdown' in moduleObject) {
+                        const [key, vConfig] = Object.entries(protData ?? {}).find(([, pd]) => pd.id === dexFoundInProtocols.id) ?? []
+                        configObj = vConfig ?? config[adapterKey]
+                        if (key) {
+                            versionKey = key
+                            baseModuleObject = moduleObject.breakdown[key]
+                        }
                     }
-                }
-                if (!configObj || !dexFoundInProtocols) return
-                const parentConfig = JSON.parse(JSON.stringify(config[adapterKey]))
-                delete parentConfig.protocolsData
-                const infoItem: ProtocolAdaptor = {
-                    ...dexFoundInProtocols,
-                    ...configObj,
-                    id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id, // used to query db, eventually should be changed to defillamaId
-                    defillamaId: !isNaN(+configObj?.id) ? configObj.id : config[adapterKey].id,
-                    module: adapterKey,
-                    config: {
-                        ...parentConfig,
+                    if (!configObj || !dexFoundInProtocols) return
+                    if (!baseModuleObject) throw "Unable to find the module adapter, please check the breakdown keys or config module names"
+                    const parentConfig = JSON.parse(JSON.stringify(config[adapterKey]))
+                    delete parentConfig.protocolsData
+                    const infoItem: ProtocolAdaptor = {
+                        ...dexFoundInProtocols,
                         ...configObj,
-                    },
-                    chains: getChainsFromBaseAdapter(baseModuleObject),
-                    logo: getLlamaoLogo(dexFoundInProtocols.logo),
-                    disabled: configObj.disabled ?? false,
-                    displayName: configObj.displayName ?? dexFoundInProtocols.name,
-                    protocolType: adapterObj.module.default?.protocolType,
-                    methodologyURL: adapterObj.codePath,
-                    methodology: undefined
+                        id: isNaN(+config[adapterKey]?.id) ? configObj.id : config[adapterKey].id, // used to query db, eventually should be changed to defillamaId
+                        defillamaId: !isNaN(+configObj?.id) ? configObj.id : config[adapterKey].id,
+                        module: adapterKey,
+                        config: {
+                            ...parentConfig,
+                            ...configObj,
+                        },
+                        chains: getChainsFromBaseAdapter(baseModuleObject),
+                        logo: getLlamaoLogo(dexFoundInProtocols.logo),
+                        disabled: configObj.disabled ?? false,
+                        displayName: configObj.displayName ?? dexFoundInProtocols.name,
+                        protocolType: adapterObj.module.default?.protocolType,
+                        methodologyURL: adapterObj.codePath,
+                        methodology: undefined
+                    }
+                    const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
+                    if (methodology)
+                        infoItem.methodology = methodology
+                    if (versionKey)
+                        infoItem.versionKey = versionKey
+                    return infoItem
+                } catch (e) {
+                    console.error(e)
+                    return undefined
                 }
-                const methodology = getMethodologyDataByBaseAdapter(baseModuleObject, type, infoItem.category)
-                if (methodology)
-                    infoItem.methodology = methodology
-                if (versionKey)
-                    infoItem.versionKey = versionKey
-                return infoItem
             }))
         }
         // TODO: Handle better errors

@@ -31098,7 +31098,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Synthetics",
     chains: ["Arbitrum"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Pyth"],
     forkedFrom: [],
     module: "forgesx/index.js",
     twitter: "forge_sx",
@@ -33852,7 +33852,7 @@ const data2: Protocol[] = [
     module: "synthex/index.js",
     twitter: "synthe_x",
     forkedFrom: [],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "Pyth"],
     audit_links: ["https://blaize.tech/clients/smart-contract-security-audit-for-synthex/"],
     listedAt: 1683258145
   },
@@ -34599,7 +34599,7 @@ const data2: Protocol[] = [
     module: "beluga-dex/index.js",
     twitter: "Belugadex",
     forkedFrom: [], 
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1683886126
   },
   {

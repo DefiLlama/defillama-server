@@ -658,7 +658,12 @@ export default {
     },
     "paraswap": {
         enabled: true,
-        id: "894"
+        id: "894",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1684800000": true
+            },
+        }
     },
     "ramses-exchange": {
         enabled: true,

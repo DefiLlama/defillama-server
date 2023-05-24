@@ -35625,5 +35625,27 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1684902654
   },
+  {
+    id: "3017",
+    name: "FemboyDAO",
+    address: "0xF344B01DA08b142D2466dae9e47E333f22e64588",
+    symbol: "FEM",
+    url: "https://femboys.io/",
+    description: "FemboyDAO started in January 2022, with the goal of creating a community for crypto femboy enthusiasts and launching femboy-themed crypto projects, starting with a crowdfunded NFT collection",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/femboydao.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "FemboyDAO",
+    forkedFrom: [], 
+    oracles: [],
+    treasury: "femboy-dao.js",
+    governanceID: ["eip155:1:0x710C7E422A98963d6BA216840b1d83E77064A031"],
+  },
 ]
 export default data2;

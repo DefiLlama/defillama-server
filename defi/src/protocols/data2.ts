@@ -35554,5 +35554,76 @@ const data2: Protocol[] = [
     twitter: "unifiprotocol",
     listedAt: 1684863868
   },
+  {
+    id: "3014",
+    name: "Morpho AaveV3",
+    address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
+    symbol: "MORPHO",
+    url: "https://aavev3.morpho.xyz/",
+    description:
+      "Morpho's AaveV3-ETH Optimizer allows WETH-only transactions in ETH efficiency mode. It offers high-leverage WETH borrowing using stETH, USDC, WBTC, and DAI as collateral",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/morpho.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ethereum"],
+    module: "morpho-aaveV3/index.js",
+    twitter: "MorphoLabs",
+    oracles: ["Chainlink"],
+    audit_links: [
+      "https://docs.morpho.xyz/security/audits"
+    ],
+    listedAt: 1684901863,
+    parentProtocol: "parent#morpho"
+  },
+  {
+    id: "3015",
+    name: "Interest Protocol-SUI",
+    address: "sui:0x49d87b9af35c4fef28def2cd65884aa9c49bb4eedbcee647f4dafb5c8f36ba57",
+    symbol: "IPX",
+    url: "https://www.interestprotocol.com/",
+    description:
+      "Interest Protocol is a DeFi dApp on the Sui Network that allows users to swap, borrow and lend",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/interest protocol-sui.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sui"],
+    module: "interest-protocol/index.js",
+    twitter: "interest_dinero",
+    oracles: [],
+    audit_links: [
+      "https://github.com/interest-protocol/sui-defi/blob/main/audits/Interest%20Protocol%20DEX%20Smart%20Contract%20Audit%20Report.pdf"
+    ],
+    listedAt: 1684902341
+  },
+  {
+    id: "3016",
+    name: "Component Swap",
+    address: null,
+    symbol: "-",
+    url: "https://componentswap.xyz/",
+    description:
+      "Component Swap is an AMM for assets of the same numeraire",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/component-swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Pulse"],
+    module: "componentswap/index.js",
+    twitter: "ComponentSwap",
+    oracles: [],
+    audit_links: [],
+    listedAt: 1684902654
+  },
 ]
 export default data2;

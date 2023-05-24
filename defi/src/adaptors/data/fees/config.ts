@@ -878,5 +878,9 @@ export default {
     "veax": {
         "enabled": true,
         "id": "2928"
+    },
+    "maestro": {
+        "enabled": true,
+        "id": "3019"
     }
 } as AdaptorsConfig

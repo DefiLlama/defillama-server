@@ -3,6 +3,7 @@ const { setOrgDataFile, getOrgDataFile, clearTempFolders } = require('./cache')
 const { pullOrCloneRepository } = require('./git')
 const dataMapping = require('./app-data/mapping.json')
 const sdk = require('@defillama/sdk')
+const blacklists = require('./blacklist')
 
 clearTempFolders()
 const gitOrgs = [...new Set(Object.values(dataMapping).map(i => i.github).flat())]
@@ -50,12 +51,15 @@ async function fetchOrgRepos(orgName, orgData) {
 
 async function main() {
   for (const org of gitOrgs) {
+    if (blacklists.blacklistedOrgs.includes(org)) continue;
     const orgData = getOrgDataFile(org)
     if (!orgData.repos) orgData.repos = {}
     await fetchOrgRepos(org, orgData)
     orgData.lastUpdateTime = +new Date()
     setOrgDataFile(org, orgData)
+    const blacklistedRepos = blacklists.repos[org] ?? []
     for (const repoData of Object.values(orgData.repos)) {
+      if (blacklistedRepos.includes(repoData.name)) continue;
       await pullOrCloneRepository({ orgName: org, repoData, octokit, })
     }
   }

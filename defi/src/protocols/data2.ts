@@ -34803,7 +34803,7 @@ const data2: Protocol[] = [
     name: "QuickPerps",
     address: "polygon:0xb5c064f955d8e7f38fe0460c556a72987494ee17",
     symbol: "QUICK",
-    url: "https://quickswap.exchange/",
+    url: "https://perps.quickswap.exchange/#/trade",
     description: "Decentralized perpetuals exchange on Polygon zkEVM",
     chain: "Polygon zkEVM",
     logo: `${baseIconsUrl}/quickswap-dex.jpg`,

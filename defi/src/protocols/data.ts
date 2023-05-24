@@ -5431,6 +5431,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "charmfinance/index.js",
     twitter: "CharmFinance",
+    github: ['charmfinance'],
     audit_links: [
       "https://github.com/solidified-platform/audits/blob/master/Audit%20Report%20-%20Charm%20Finance%20%5B27.10.2020%5D.pdf",
     ],

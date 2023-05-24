@@ -28,6 +28,7 @@ export interface Protocol {
     [chain: string]: string[];
   };
   governanceID?: Array<string>;
+  github?: Array<string>;
   stablecoins?: string[];
   wrongLiquidity?: boolean;
 }
@@ -46,6 +47,7 @@ export interface IParentProtocol {
   oracles?: Array<string>;
   forkedFrom?: Array<string>;
   governanceID?: Array<string>;
+  github?: Array<string>;
   treasury?: string;
   stablecoins?: string[];
   wrongLiquidity?: boolean;

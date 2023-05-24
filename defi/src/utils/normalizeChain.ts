@@ -76,7 +76,7 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
     chainId: 10,
-    governanceID: ["snapshot:opcollective.eth"]
+    governanceID: ["snapshot:opcollective.eth", "eip155:10:0xcDF27F107725988f2261Ce2256bDfCdE8B382B10"]
   },
   "Stacks": {
     geckoId: "blockstack",
@@ -121,6 +121,7 @@ export const chainCoingeckoIds = {
     geckoId: "solana",
     symbol: "SOL",
     cmcId: "5426",
+    github: ['solana-labs'],
   },
   "Polygon": {
     geckoId: "matic-network",

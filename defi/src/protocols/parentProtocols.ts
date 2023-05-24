@@ -468,10 +468,11 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Uniswap",
     treasury: "uniswap.js",
+    github: ["Uniswap"],
     governanceID: [
       "snapshot:uniswap", 
       'eip155:1:0x408ED6354d4973f66138C91495F2f2FCbd8724C3',
-      "compound:ethereum:0x5e4be8bc9637f0eaa1a755019e06a68ce081d58f"
+      // "compound:ethereum:0x5e4be8bc9637f0eaa1a755019e06a68ce081d58f"
     ]
   },
   {
@@ -1126,6 +1127,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    github: ['alpaca-finance'],
     twitter: "AlpacaFinance",
     governanceID: ["snapshot:alpacafinance.eth"]
   },

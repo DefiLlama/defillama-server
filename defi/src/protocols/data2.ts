@@ -35647,5 +35647,27 @@ const data2: Protocol[] = [
     treasury: "femboy-dao.js",
     governanceID: ["eip155:1:0x710C7E422A98963d6BA216840b1d83E77064A031"],
   },
+  {
+    id: "3018",
+    name: "CowSwap smartBCH",
+    address: null,
+    symbol: "-",
+    url: "http://cowswap.cash/",
+    description:
+      "Decentralized exchange on smartBCH",
+    chain: "smartBCH",
+    logo: `${baseIconsUrl}/cowswap-smartbch.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["smartBCH"],
+    module: "cowswap-cash/index.js",
+    twitter: "CowSwapTeam",
+    forkedFrom: ["Uniswap V2"],
+    audit_links: [],
+    listedAt: 1684949852,
+  },
 ]
 export default data2;

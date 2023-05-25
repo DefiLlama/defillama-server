@@ -1735,6 +1735,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AvelyFinance",
     github: ["avely-finance"]
   },
+  {
+    id: "parent#caviar",
+    name: "Caviar",
+    url: "https://www.caviar.sh",
+    description: "The easiest way to trade and earn yield on an NFT",
+    logo: `${baseIconsUrl}/caviar.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "caviarAMM",
+    github: ["user:outdoteth"]
+  },
 ];
 
 export default parentProtocols;

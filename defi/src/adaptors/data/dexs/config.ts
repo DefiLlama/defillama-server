@@ -1580,5 +1580,9 @@ export default {
     "veax": {
         "enabled": true,
         "id": "2928"
+    },
+    "dpex": {
+        "enabled": true,
+        "id": "2488"
     }
 } as AdaptorsConfig

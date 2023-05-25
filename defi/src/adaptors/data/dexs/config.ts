@@ -1584,5 +1584,9 @@ export default {
     "dpex": {
         "enabled": true,
         "id": "2488"
+    },
+    "forge": {
+        "enabled": true,
+        "id": "2804"
     }
 } as AdaptorsConfig

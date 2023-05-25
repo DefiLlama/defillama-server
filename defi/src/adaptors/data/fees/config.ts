@@ -882,5 +882,9 @@ export default {
     "maestro": {
         "enabled": true,
         "id": "3019"
+    },
+    "forge": {
+        "enabled": true,
+        "id": "2804"
     }
 } as AdaptorsConfig

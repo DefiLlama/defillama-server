@@ -3,7 +3,7 @@ const { setOrgDataFile, getOrgDataFile, clearTempFolders } = require('./cache')
 const { pullOrCloneRepository } = require('./git')
 const dataMapping = require('./app-data/mapping.json')
 const sdk = require('@defillama/sdk')
-const blacklists = require('./blacklist')
+const { blacklistedOrgs, users, blacklistedRepoMapping } = require('./config')
 
 clearTempFolders()
 const gitOrgs = [...new Set(Object.values(dataMapping).map(i => i.github).flat())]
@@ -28,7 +28,17 @@ async function fetchOrgRepos(orgName, orgData) {
   let page = 0
   do {
     sdk.log('Fetching repos for', orgName, page)
-    const { data } = await octokit.rest.repos.listForOrg({ org: orgName, per_page: pageLength, sort: 'pushed', page })
+    const params = { per_page: pageLength, sort: 'pushed', page, direction: 'desc' }
+    let method = 'listForOrg'
+    if (!users.includes(orgName)) {
+      params.org = orgName
+    } else {
+      method = 'listForUser'
+      params.username = orgName
+      params.type = 'owner'
+    }
+
+    const { data } = await octokit.rest.repos[method](params)
     ++page
     repositories.push(...data)
     hasMorePages = data.length === pageLength
@@ -51,13 +61,13 @@ async function fetchOrgRepos(orgName, orgData) {
 
 async function main() {
   for (const org of gitOrgs) {
-    if (blacklists.blacklistedOrgs.includes(org)) continue;
+    if (blacklistedOrgs.includes(org)) continue;
     const orgData = getOrgDataFile(org)
     if (!orgData.repos) orgData.repos = {}
     await fetchOrgRepos(org, orgData)
     orgData.lastUpdateTime = +new Date()
     setOrgDataFile(org, orgData)
-    const blacklistedRepos = blacklists.repos[org] ?? []
+    const blacklistedRepos = blacklistedRepoMapping[org] ?? []
     for (const repoData of Object.values(orgData.repos)) {
       if (blacklistedRepos.includes(repoData.name)) continue;
       await pullOrCloneRepository({ orgName: org, repoData, octokit, })

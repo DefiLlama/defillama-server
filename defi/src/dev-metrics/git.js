@@ -13,7 +13,7 @@ const progress = ({ method, stage, progress }) => {
 
 async function pullOrCloneRepository({ orgName, repoData, octokit, }) {
   const repoName = repoData.name
-  if (repoData.fork) return; // ignore forked repos
+  if (repoData.fork || repoData.size === 0) return; // ignore forked repos
 
   try {
     const commitData = getRepoLogFile(orgName, repoName)

@@ -61,16 +61,22 @@ async function fetchOrgRepos(orgName, orgData) {
 
 async function main() {
   for (const org of gitOrgs) {
-    if (blacklistedOrgs.includes(org)) continue;
-    const orgData = getOrgDataFile(org)
-    if (!orgData.repos) orgData.repos = {}
-    await fetchOrgRepos(org, orgData)
-    orgData.lastUpdateTime = +new Date()
-    setOrgDataFile(org, orgData)
-    const blacklistedRepos = blacklistedRepoMapping[org] ?? []
-    for (const repoData of Object.values(orgData.repos)) {
-      if (blacklistedRepos.includes(repoData.name)) continue;
-      await pullOrCloneRepository({ orgName: org, repoData, octokit, })
+    try {
+
+      if (blacklistedOrgs.includes(org)) continue;
+      const orgData = getOrgDataFile(org)
+      if (!orgData.repos) orgData.repos = {}
+      await fetchOrgRepos(org, orgData)
+      orgData.lastUpdateTime = +new Date()
+      setOrgDataFile(org, orgData)
+      const blacklistedRepos = blacklistedRepoMapping[org] ?? []
+      for (const repoData of Object.values(orgData.repos)) {
+        if (blacklistedRepos.includes(repoData.name)) continue;
+        await pullOrCloneRepository({ orgName: org, repoData, octokit, })
+      }
+    } catch (e) {
+      console.error(e)
+      console.log('Error pulling data for', org)
     }
   }
 }

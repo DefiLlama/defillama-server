@@ -1,7 +1,7 @@
 module.exports = {
-  users: ['ZunamiProtocol', 'planetfinance'],
+  users: ['ZunamiProtocol', 'planetfinance', 'polycatfi', 'UniWswap', 'LfgSwap', 'forgesx', 'MaiaDao', 'cr3k', 'ThenafiBNB'],
   blacklistedOrgs: [],
   blacklistedRepoMapping: {
-    'Uniswap': ['actions'],
+    'KyberNetwork': ['KyberNetwork.github.io'],
   }
 }

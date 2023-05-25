@@ -27934,7 +27934,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/wefi.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "wefi-finance",
     cmcId: "24771",
     category: "Lending",
     chains: ["Polygon"],

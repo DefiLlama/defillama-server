@@ -886,5 +886,9 @@ export default {
     "forge": {
         "enabled": true,
         "id": "2804"
+    },
+    "metamask": {
+        "enabled": true,
+        "id": "3026"
     }
 } as AdaptorsConfig

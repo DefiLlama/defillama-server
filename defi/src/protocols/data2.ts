@@ -35915,7 +35915,7 @@ const data2: Protocol[] = [
     listedAt: 1685049872
   },
   {
-    id: "3029",
+    id: "3030",
     name: "Enosys Bridge",
     address: null,
     symbol: "-",

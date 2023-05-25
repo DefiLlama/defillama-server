@@ -22682,7 +22682,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "ZunamiProtocol",
     audit_links: ["https://github.com/ZunamiLab/ZunamiProtocol/tree/main/audit"],
     listedAt: 1641421911,
-    stablecoins: ["zunami-usd"]
+    stablecoins: ["zunami-usd"],
+    governanceID: ["snapshot:zunamidao.eth"],
+    github: ["ZunamiProtocol"]
   },
   {
     id: "1202",

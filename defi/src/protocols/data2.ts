@@ -22920,6 +22920,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     parentProtocol: "parent#kujira-protocol",
+    stablecoins: ["usk"],
     listedAt: 1673816828
   },
   {

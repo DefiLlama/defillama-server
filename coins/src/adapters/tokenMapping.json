@@ -244,5 +244,12 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     }
+  },
+  "bsc": {
+    "0xa5d4b64a639d93b660cda04d331374da1108f8f5": {
+      "decimals": 18,
+      "symbol": "CROWD",
+      "to": "coingecko#crowdswap"
+    }
   }
 }

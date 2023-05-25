@@ -35823,5 +35823,26 @@ const data2: Protocol[] = [
     audit_links: ["https://ktx-public-assets.s3.ap-southeast-1.amazonaws.com/MetaScan_Report_KTX_Finance.pdf"],
     listedAt: 1685029448
   },
+  {
+    id: "3026",
+    name: "MetaMask",
+    address: null,
+    symbol: "-",
+    url: "https://metamask.io",
+    description:
+      "A crypto wallet & gateway to blockchain apps. Start exploring blockchain applications in seconds. Trusted by over 30 million users worldwide.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/metamask.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "MetaMask",
+    forkedFrom: [],
+    oracles: [],
+  },
 ]
 export default data2;

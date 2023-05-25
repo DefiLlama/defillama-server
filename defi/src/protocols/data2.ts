@@ -35778,5 +35778,50 @@ const data2: Protocol[] = [
     audit_links: ["https://app.solidproof.io/projects/goldbanktoken"],
     listedAt: 1685023885
   },
+  {
+    id: "3024",
+    name: "Etherberry Finance",
+    address: "arbitrum:0xD954Ecd262B3DF276c39f89506AB39ceF0272335",
+    symbol: "BERRY",
+    url: "https://www.etherberry.io",
+    description:
+      "Etherberry, an organic DeFi farm, is committed to improve Ethereum staking experience by enabling seamless swaps of staked Ethereum across different protocols. By planting your Ether with us, you can effortlessly earn and harvest $BERRY in addition to your staking rewards, all while contributing value to the Ethereum/Arbitrum ecosystem.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/etherberry-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Arbitrum"],
+    module: "etherberry/index.js",
+    twitter: "etherberryfi",
+    forkedFrom: ["Agility LSD"],
+    oracles: [],
+    listedAt: 1685029444
+  },
+  {
+    id: "3025",
+    name: "KTX.Finance",
+    address: "bsc:0x545356d4d69d8cD1213Ee7e339867574738751CA",
+    symbol: "KTC",
+    url: "https://www.ktx.finance",
+    description:
+      "Trade and earn cryptocurrencies with lowest fees, depthless liquidity, and up to 50x leverage. Generate yield in a bull, bear, or sideways market.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/ktx.finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    module: "ktx/index.js",
+    twitter: "KTX_finance",
+    forkedFrom: ["GMX"],
+    oracles: ["Chainlink"],
+    audit_links: ["https://ktx-public-assets.s3.ap-southeast-1.amazonaws.com/MetaScan_Report_KTX_Finance.pdf"],
+    listedAt: 1685029448
+  },
 ]
 export default data2;

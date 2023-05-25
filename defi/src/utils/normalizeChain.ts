@@ -869,6 +869,7 @@ export const chainCoingeckoIds = {
     geckoId: "hydra",
     symbol: "HYDRA",
     cmcId: "8245",
+    github: ["Hydra-Chain"]
   },
   "Bitgert": {
     geckoId: "bitrise-token",

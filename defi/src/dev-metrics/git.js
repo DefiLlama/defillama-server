@@ -82,7 +82,7 @@ async function pullOrCloneRepository({ orgName, repoData, octokit, }) {
         sdk.log('[DONE] Pulled commit logs from github for', orgName, repoName, page, commitData.logs.length)
       } while (hasMoreCommits)
     } else {
-      sdk.log('Cloning and pulled repo for ', orgName, repoName)
+      sdk.log('Cloning and pulled repo for ', orgName, repoName, repoData.size)
 
       // Fetching for the first time, pull the entire repo from github
       const repoPath = getTempFolder()

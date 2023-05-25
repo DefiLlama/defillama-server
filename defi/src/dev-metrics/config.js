@@ -3,5 +3,6 @@ module.exports = {
   blacklistedOrgs: [],
   blacklistedRepoMapping: {
     'KyberNetwork': ['KyberNetwork.github.io'],
+    'ethereum': ['solc-bin', 'discv4-dns-lists'],
   }
 }

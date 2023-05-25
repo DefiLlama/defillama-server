@@ -17,7 +17,7 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_API_KEY,
 });
 
-async function fetchOrgRepos(orgName, orgData) {
+async function fetchOrgRepos(orgName, orgData, isUser) {
   const isFirstFech = !orgData.lastUpdateTime
   if (orgData.lastUpdateTime && (+new Date() - orgData.lastUpdateTime) < THREE_DAYS) return;
 
@@ -30,7 +30,7 @@ async function fetchOrgRepos(orgName, orgData) {
     sdk.log('Fetching repos for', orgName, page)
     const params = { per_page: pageLength, sort: 'pushed', page, direction: 'desc' }
     let method = 'listForOrg'
-    if (!users.includes(orgName)) {
+    if (!users.includes(orgName) && !isUser) {
       params.org = orgName
     } else {
       method = 'listForUser'
@@ -60,13 +60,15 @@ async function fetchOrgRepos(orgName, orgData) {
 }
 
 async function main() {
-  for (const org of gitOrgs) {
+  for (let org of gitOrgs) {
     try {
 
       if (blacklistedOrgs.includes(org)) continue;
+      const isUser = org.startsWith('user:')
+      org = org.replace(/^user:/, '')
       const orgData = getOrgDataFile(org)
       if (!orgData.repos) orgData.repos = {}
-      await fetchOrgRepos(org, orgData)
+      await fetchOrgRepos(org, orgData, isUser)
       orgData.lastUpdateTime = +new Date()
       setOrgDataFile(org, orgData)
       const blacklistedRepos = blacklistedRepoMapping[org] ?? []

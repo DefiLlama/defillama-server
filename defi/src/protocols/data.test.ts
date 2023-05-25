@@ -90,6 +90,13 @@ test("governance on parent protocol when it exists", async () => {
   expect(childGovs.length).toBeLessThanOrEqual(0)
 });
 
+test("Github repo on parent protocol when it exists", async () => {
+  const childs = protocols.filter(i => i.github && i.parentProtocol)
+  if (childs.length)
+    console.log('Migrate Guthub config for: ', childs.map(i => i.name))
+  expect(childs.length).toBeLessThanOrEqual(0)
+});
+
 test("projects have a single chain or each chain has an adapter", async () => {
   for (const protocol of protocols) {
     if (protocol.module === 'dummy.js') continue;

@@ -3,7 +3,7 @@ import fetch from "node-fetch"
 import { storeR2JSONString } from '../utils/r2';
 
 function getKey(govType: string, project: string): string {
-  return `governance-cache/${govType}/${project}.json`.replace(/(:|')/g, '/')
+  return `governance-cache/${govType}/${project.toLowerCase()}.json`.replace(/(:|')/g, '/')
 }
 
 function getLink(govType: string, project: string): string {
@@ -13,7 +13,7 @@ function getLink(govType: string, project: string): string {
 export async function getCache(govType: string, project: string, { } = {}) {
   const Key = getKey(govType, project)
 
-  // sdk.log('[FETCHING] ', Key)
+  // sdk.log('[FETCHING] ', Key, getLink(govType, project))
   try {
     const json = await (fetch(getLink(govType, project)).then(r => r.json()))
     return json

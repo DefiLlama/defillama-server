@@ -35914,5 +35914,26 @@ const data2: Protocol[] = [
     parentProtocol: "parent#caviar",
     listedAt: 1685049872
   },
+  {
+    id: "3029",
+    name: "Enosys Bridge",
+    address: null,
+    symbol: "-",
+    url: "https://bridge.enosys.global/",
+    description:
+      "Bridge protocol. It aims to allow diverse blockchains to communicate with each other",
+    chain: "XDC",
+    logo: `${baseIconsUrl}/enosys-bridge.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["XDC"],
+    module: "enosys-bridge/index.js",
+    twitter: "enosys_global",
+    parentProtocol: "parent#enosys",
+    listedAt: 1685051391,
+  },
 ]
 export default data2;

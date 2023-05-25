@@ -5346,7 +5346,7 @@ Hegic Development fund also stakes ~170M Hegic tokens (16% of supply), so that c
     "gecko_id": "mcdex",
     "id": "2254",
     "listedAt": 1667699921,
-    "logo": "https://icons.llama.fi/mux protocol.png",
+    "logo": "https://icons.llama.fi/mux-protocol.png",
     "methodology": Object {
       "Fees": "Fees paid by users",
       "HoldersRevenue": "Fees going to governance token holders",

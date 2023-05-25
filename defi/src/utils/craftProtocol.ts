@@ -71,12 +71,7 @@ export const protocolMcap = async (geckoId?: string | null) => {
 export const getProtocolTokenPrice = async (geckoId?: string | null) => {
   if (!geckoId) return null;
 
-  const price = await fetch("https://coins.llama.fi/prices", {
-    method: "POST",
-    body: JSON.stringify({
-      coins: [`coingecko:${geckoId}`],
-    }),
-  })
+  const price = await fetch(`https://coins.llama.fi/prices/current/coingecko:${geckoId}`)
     .then((r) => r.json())
     .catch((err) => {
       console.log(err);

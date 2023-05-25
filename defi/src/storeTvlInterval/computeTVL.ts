@@ -47,7 +47,7 @@ export default async function (balances: { [address: string]: string }, timestam
       body.timestamp = timestamp;
     }
     readRequests.push(
-      fetch("https://coins.llama.fi/prices", {
+      fetch("https://coins.llama.fi/prices?source=internal", {
         method: "POST",
         body: JSON.stringify(body)
       }).then((r) => r.json()).then(r=>{

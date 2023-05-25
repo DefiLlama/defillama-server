@@ -110,6 +110,11 @@
       "decimals": 18,
       "symbol": "cWETHv3",
       "to": "coingecko#weth"
+    },
+    "0x72a19342e8f1838460ebfccef09f6585e32db86e":  {
+      "decimals": "18",
+      "symbol": "vlCVX",
+      "to": "coingecko#convex-finance"
     }
   },
   "polygon": {

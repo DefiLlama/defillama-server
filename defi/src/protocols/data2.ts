@@ -35733,5 +35733,50 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1685023275
   },
+  {
+    id: "3022",
+    name: "1Pulse",
+    address: null,
+    symbol: "-",
+    url: "https://dex.1pulse.io",
+    description:
+      "The People's DEX on Pulsechain, building the largest DeFi Ecosystem while aiding projects with their launches.",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/1pulse.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Pulse"],
+    module: "1pulse/index.js",
+    twitter: "1PulseDex",
+    forkedFrom: ["Uniswap V2"],
+    audit_links: [],
+    listedAt: 1685023882
+  },
+  {
+    id: "3023",
+    name: "Goldbank Finance",
+    address: "arbitrum:0xbCAd8E85669A3fC9eA9B5d692Bd8BDcC2464df31",
+    symbol: "GB",
+    url: "https://www.goldbank.finance",
+    description:
+      "Goldbank is a community-owned lending protocol that enables seamless borrowing and lending on Arbitrum.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/goldbank-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: "25937",
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "goldbank/index.js",
+    twitter: "GBdotFi",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://app.solidproof.io/projects/goldbanktoken"],
+    listedAt: 1685023885
+  },
 ]
 export default data2;

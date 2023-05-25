@@ -34629,7 +34629,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "STEADY",
     url: "https://steadefi.com",
-    description: "Leveraged yield strategy vaults with auto risk management.",
+    description: "Steadefi is an undercollateralized leveraged yield aggregator on Arbitrum and Avalanche. It provides automated risk and position management, along with various strategies for different market outlooks, delta one and delta neutral. Currently, both lenders and strategy vault depositors can participate in their Liquidity Bootstrap Campaign to earn extra $esSTEADY prior to token launch.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/steadefi.jpg`,
     audits: "2",
@@ -34641,7 +34641,7 @@ const data2: Protocol[] = [
     module: "steadefi/index.js",
     twitter: "steadefi",
     forkedFrom: [], 
-    oracles: [],
+    oracles: ["Chainlink"],
     audit_links: ["https://omniscia.io/reports/steadefi-staking-vaults-64031f72d11ef00014ba49e5"],
     listedAt: 1683891208
   },

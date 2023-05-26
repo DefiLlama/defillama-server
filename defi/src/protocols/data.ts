@@ -15788,7 +15788,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "ICHI is a non-custodial liquidity management protocol that enables the use of sophisticated algorithmic strategies on Uniswap V3. It allows token holders, institutions, and projects to earn on-chain yield and help establish deeper on-chain token liquidity. ICHI's main product is ICHI Vaults which accept single-token deposits and then deploy these tokens into Uniswap V3 concentrated liquidity pools in order to earn trading fees for the depositor (yield). In addition to on-chain yield opportunities, ICHI Vaults allow projects to build deeper, on-chain liquidity and provide them with enticing treasury management strategies.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ichi-farm.png`,
+    logo: `${baseIconsUrl}/ichi.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "ichi",

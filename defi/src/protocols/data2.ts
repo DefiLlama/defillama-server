@@ -11482,7 +11482,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1930",
-    name: "Bubbleswap",
+    name: "Bubbleswap v1",
     address: null,
     symbol: "-",
     url: "https://app.bubbleswap.io",

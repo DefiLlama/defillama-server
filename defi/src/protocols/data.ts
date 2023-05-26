@@ -15793,7 +15793,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "ichi",
     cmcId: "7726",
-    category: "Liquidity Manager",
+    category: "Liquidity manager",
     chains: ["Ethereum", "Polygon"],
     module: "ichifarm/index.js",
     twitter: "ichifoundation",

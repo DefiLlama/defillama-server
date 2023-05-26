@@ -35957,5 +35957,28 @@ const data2: Protocol[] = [
     oracles: [],
     github: ["MetaMask"]
   },
+  {
+    id: "3032",
+    name: "WINR Protocol",
+    address: "arbitrum:0xd77b108d4f6cefaa0cae9506a934e825becca46e",
+    symbol: "WINR",
+    url: "https://winr.games",
+    description:
+      "The WINR Protocol is a fully autonomous liquidity and incentive infrastructure explicitly built for on-chain games requiring a counterparty asset vault. The Protocol pioneers the transition of e-gaming to web3 by providing smart contract tools, a liquidity engine, and an incentive framework to builders.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/winr-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "winr-protocol",
+    cmcId: "23681",
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "winr-protocol/index.js",
+    twitter: "WINRProtocol",
+    forkedFrom: ["GMX"],
+    oracles: ["Supra Oracles"],
+    audit_links: ["https://docs.winr.games/developers/audits"],
+    listedAt: 1685097004
+  },
 ]
 export default data2;

@@ -35980,5 +35980,27 @@ const data2: Protocol[] = [
     audit_links: ["https://docs.winr.games/developers/audits"],
     listedAt: 1685097004
   },
+  {
+    id: "3033",
+    name: "FireBot",
+    address: "polygon:0xd125443f38a69d776177c2b9c041f462936f8218",
+    symbol: "FBX",
+    url: "https://firebot.gg",
+    description:
+      "Let AI manage your crypto and keep your portfolio safe.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/firebot.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "firebot",
+    cmcId: "16219",
+    category: "Yield",
+    chains: ["Polygon"],
+    module: "firebot/index.js",
+    twitter: "FireBotDAO",
+    forkedFrom: [],
+    audit_links: ["https://firebot.gg/audits"],
+    listedAt: 1685106195
+  },
 ]
 export default data2;

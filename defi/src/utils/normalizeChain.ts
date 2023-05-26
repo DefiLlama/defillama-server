@@ -217,7 +217,7 @@ export const chainCoingeckoIds = {
   },
   "DefiChain": {
     geckoId: "defichain",
-    github: ['DeFiChain'],
+    github: ['DeFiCh'],
     symbol: "DFI",
     cmcId: "5804",
   },
@@ -229,7 +229,7 @@ export const chainCoingeckoIds = {
   },
   "Bitcoin": {
     geckoId: "bitcoin",
-    github: ['bitcoin', 'user:etotheipi', 'libbitcoin', 'bitcoin-wallet', 'spesmilo', 'user:piotrnar', 'greenaddress', 'Multibit-Legacy', 'blockchain', 'bitsofproof', 'btcsuite' ],
+    github: ['bitcoin', 'user:etotheipi', 'libbitcoin', 'bitcoin-wallet', 'spesmilo', 'user:piotrnar', 'user:greenaddress', 'Multibit-Legacy', 'blockchain', 'bitsofproof', 'btcsuite' ],
     symbol: "BTC",
     cmcId: "1",
   },
@@ -988,7 +988,7 @@ export const chainCoingeckoIds = {
   },
   "Bitgert": {
     geckoId: "bitrise-token",
-    github: ['Bitgert'],
+    github: ['user:Bitgert'],
     symbol: "BRISE",
     cmcId: "11079",
     categories: ["EVM"],
@@ -1051,7 +1051,6 @@ export const chainCoingeckoIds = {
   },
   "Bitcoincash": {
     geckoId: "bitcoin-cash",
-    github: ['bitcoincashbch'],
     symbol: "BCH",
     cmcId: "1831",
   },
@@ -1141,7 +1140,7 @@ export const chainCoingeckoIds = {
   },
   "Echelon": {
     geckoId: "echelon",
-    github: ['echelonfoundation'],
+    github: ['user:echelonfoundation'],
     symbol: "ECH",
     cmcId: "20047",
     categories: ["EVM", "Cosmos"],
@@ -1472,14 +1471,12 @@ export const chainCoingeckoIds = {
   },
   "Zeniq": {
     geckoId: null,
-    github: ['zeniqsmart'],
     symbol: "ZENIQ",
     cmcId: null,
     categories: ["EVM"],
   },
   "Omax": {
     geckoId: "omax-token",
-    github: ['OMAXCHAIN'],
     symbol: "OMAX",
     cmcId: "13916",
     categories: ["EVM"],
@@ -1531,7 +1528,7 @@ export const chainCoingeckoIds = {
   },
   "ENULS": {
     geckoId: null,
-    github: ['enuls'],
+    github: ['nuls-io'],
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
@@ -1579,7 +1576,6 @@ export const chainCoingeckoIds = {
   },
   "Loop": {
     geckoId: "loopnetwork",
-    github: ['LoopNewtorkInc'],
     symbol: "LOOP",
     cmcId: "18761",
     categories: ["EVM"],

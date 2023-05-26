@@ -18664,7 +18664,7 @@ const data2: Protocol[] = [
     description:
       "MUX Protocol Suite contains the MUX Leveraged Trading Protocol and MUX Aggregator. MUX offers optimized trading cost, deep aggregated liquidity, diverse market options and a wide range of leverage options for traders.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/mux protocol.png`,
+    logo: `${baseIconsUrl}/mux-protocol.png`,
     audits: "1",
     audit_note: null,
     gecko_id: "mcdex",

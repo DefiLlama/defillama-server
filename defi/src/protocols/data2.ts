@@ -35936,5 +35936,26 @@ const data2: Protocol[] = [
     parentProtocol: "parent#enosys",
     listedAt: 1685051391,
   },
+  {
+    id: "3031",
+    name: "MetaMask",
+    address: null,
+    symbol: "-",
+    url: "https://metamask.io/",
+    description: "MetaMask is the leading self-custodial wallet. A simple way to access blockchain applications and web3",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/metamask.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "MetaMask",
+    forkedFrom: [], 
+    oracles: [],
+    github: ["MetaMask"]
+  },
 ]
 export default data2;

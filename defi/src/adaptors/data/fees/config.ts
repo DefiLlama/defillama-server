@@ -888,7 +888,7 @@ export default {
         "id": "2804"
     },
     "metamask": {
-        "enabled": true,
+        "enabled": false,
         "id": "3026"
     }
 } as AdaptorsConfig

@@ -35971,11 +35971,11 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "winr-protocol",
     cmcId: "23681",
-    category: "Derivatives",
+    category: "Prediction Market",
     chains: ["Arbitrum"],
     module: "winr-protocol/index.js",
     twitter: "WINRProtocol",
-    forkedFrom: ["GMX"],
+    forkedFrom: [],
     oracles: ["Supra Oracles"],
     audit_links: ["https://docs.winr.games/developers/audits"],
     listedAt: 1685097004

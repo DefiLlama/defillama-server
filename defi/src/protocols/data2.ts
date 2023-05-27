@@ -33364,7 +33364,7 @@ const data2: Protocol[] = [
       'A token created by depositing BETH into the BETH wrapper. Each WBETH represents 1 BETH (1:1 to staked ETH) plus all of its accrued ETH2.0 staking rewards',
     chain: "Ethereum",
     logo: `${baseIconsUrl}/binance-staked-eth.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -33374,7 +33374,9 @@ const data2: Protocol[] = [
     twitter: "binance",
     forkedFrom: [],
     oracles: [],
-    audit_links: [],
+    audit_links: [
+      "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-wBETH-v1.0.pdf"
+    ],
     listedAt: 1682803395
   },
   {

@@ -36004,5 +36004,49 @@ const data2: Protocol[] = [
     audit_links: ["https://firebot.gg/audits"],
     listedAt: 1685106195
   },
+  {
+    id: "3034",
+    name: "EazySwap",
+    address: "pulse:0x6cF99BAA0a4d079F960216d08cf9a1Bc7e4dd37C",
+    symbol: "EAZY",
+    url: "https://www.eazyswap.io/",
+    description:
+      "Native DEX on Pulsechain",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/eazyswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Pulse"],
+    module: "eazyswap/index.js",
+    twitter: "EazySwap",
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1685224607
+  },
+  {
+    id: "3035",
+    name: "Dexilla",
+    address: null,
+    symbol: "-",
+    url: "https://dexilla.com/",
+    description:
+      "Dexilla is a revolutionary order book DEX that offers a decentralized and trustless trading experience for users",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/dexilla.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    module: "dexilla/index.js",
+    twitter: "dexilla_dao",
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1685224615
+  },
 ]
 export default data2;

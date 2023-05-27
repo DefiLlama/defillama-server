@@ -1,12 +1,12 @@
 const { Octokit } = require('octokit')
 const { setOrgDataFile, getOrgDataFile, clearTempFolders } = require('./cache')
+const { ORG_MAPPING } = require('./utils')
 const { pullOrCloneRepository } = require('./git')
-const dataMapping = require('./app-data/mapping.json')
 const sdk = require('@defillama/sdk')
 const { blacklistedOrgs, users, blacklistedRepoMapping } = require('./config')
 
 clearTempFolders()
-const gitOrgs = [...new Set(Object.values(dataMapping).map(i => i.github).flat())]
+const gitOrgs = [...new Set(Object.values(ORG_MAPPING).map(i => i.github).flat())]
 // const gitOrgs = ['alpaca-finance']
 
 sdk.log('Orgs', gitOrgs, gitOrgs.length)
@@ -86,6 +86,6 @@ async function main() {
 main()
   .catch(e => console.error(e))
   .then(() => {
-    clearTempFolders
+    clearTempFolders()
     console.log('Exiting...')
   })

@@ -9,4 +9,4 @@ docker
 .vscode
 
 defi/src/cli/tmp
-defi/src/dev-metrics/app-data
+defi/dev-metrics/app-data

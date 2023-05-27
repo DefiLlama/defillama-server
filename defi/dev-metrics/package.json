@@ -10,9 +10,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@elastic/elasticsearch": "^8.7.0",
     "octokit": "^2.0.18",
     "rimraf": "^5.0.1",
     "simple-git": "^3.18.0",
+    "toml": "^3.0.0",
     "ts-node": "^10.9.1"
   }
 }

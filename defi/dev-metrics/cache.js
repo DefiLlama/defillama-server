@@ -72,15 +72,16 @@ function getRepoLogFileName(orgName, repoName, isRaw) {
   return path.join(DATA_ROOT, 'orgCache', orgName, 'logs', repoName, file)
 }
 
-function getRepoLogFile(orgName, repoName) {
-  const filePath = getRepoLogFileName(orgName, repoName, true)
+function getRepoLogFile(orgName, repoName, isRaw = true) {
+  const filePath = getRepoLogFileName(orgName, repoName, isRaw)
   return readJSON(filePath)
 }
 
 function setRepoLogFile(orgName, repoName, logData) {
   const filePath = getRepoLogFileName(orgName, repoName, true)
-  const minimalLogFile = getRepoLogFileName(orgName, repoName, false)
   writeJSON(filePath, logData)
+  return; // no more saving minimal log
+  const minimalLogFile = getRepoLogFileName(orgName, repoName, false)
   const { logs = [], ...minimalLogs } = logData
   minimalLogs.logs = logs.map(turnRawLogToMinimalLog)
   writeJSON(minimalLogFile, minimalLogs)

@@ -29296,6 +29296,7 @@ const data2: Protocol[] = [
     module: "mute/index.js",
     twitter: "mute_io",
     listedAt: 1679676617,
+    wrongLiquidity: true, // We haven't integrated mute dex on yields-server and most of the MUTE liquidity is there
     governanceID: ["snapshot:mutegov.eth"]
   },
   {

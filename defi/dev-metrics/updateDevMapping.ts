@@ -1,8 +1,8 @@
 import { writeJSON, DATA_MAPPING_FILE, } from './cache'
 
-import protocols from '../protocols/data'
-import parentProtocols from '../protocols/parentProtocols'
-import { chainCoingeckoIds } from '../utils/normalizeChain'
+import protocols from '../src/protocols/data'
+import parentProtocols from '../src/protocols/parentProtocols'
+import { chainCoingeckoIds } from '../src/utils/normalizeChain'
 
 const protocolMap: any = {}
 

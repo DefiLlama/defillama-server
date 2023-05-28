@@ -24,7 +24,7 @@ function turnRawLogToMinimalLog(log) {
   return minimalLog
 }
 
-function turnToElasticLog({log, repoData, orgName, projects, }) {
+function turnToElasticLog({ log, repoData, orgName, projects, }) {
   log = turnRawLogToMinimalLog(log)
   log['@timestamp'] = log.time
   delete log.time
@@ -52,9 +52,62 @@ function getAuthorsFromCommit(authorName, commitMessage = '') {
   return [...authorSet]
 }
 
+const coAuthorRegex = /Co-authored-by:\s+([^<]+)\s+<([^>]+)>/gi;
+
+function filterCommit(commit) {
+  const botRegex = /\b(bot)\b/i
+  const { authors, } = commit
+  const blacklistedEmails = new Set([
+    'action@github.com',
+    'github-actions@github.com',
+    'actions@github.com',
+  ])
+  return !authors.some(i => botRegex.test(i.name) && botRegex.test(i.email) && !blacklistedEmails.has(i.email))
+}
+
+function extractCommitsFromPushEvent(pushEvent) {
+  const { repo, payload, org, created_at, } = pushEvent
+  const { commits } = payload
+
+  return commits.map(extractCommit).filter(filterCommit)
+
+  function extractCommit(commit) {
+    const { author, distinct, message, sha } = commit
+    const { email, name } = author
+    const authorObj = {}
+    authorObj[name] = email
+
+    const [owner] = repo.name.split('/')
+
+    const authors = [];
+    let matches;
+
+    while ((matches = coAuthorRegex.exec(message))) {
+      const coAuthorName = matches[1].trim()
+      const coAuthorEmail = matches[2].trim()
+      authorObj[coAuthorName] = coAuthorEmail
+    }
+
+    for (const [name, email] of Object.entries(authorObj))
+      authors.push({ name, email })
+
+    return {
+      sha,
+      distinct,
+      message,
+      authors,
+      repo: repo.name,
+      org: org?.login || owner,
+      isMergeCommit: message.includes('Merge pull request') || message.includes('Merge branch'),
+      created_at,
+    }
+  }
+
+}
 
 module.exports = {
   turnRawLogToMinimalLog,
   turnToElasticLog,
+  extractCommitsFromPushEvent,
   ORG_MAPPING
 }

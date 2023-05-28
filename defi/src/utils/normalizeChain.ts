@@ -229,7 +229,6 @@ export const chainCoingeckoIds = {
   },
   "Bitcoin": {
     geckoId: "bitcoin",
-    github: ['bitcoin', 'user:etotheipi', 'libbitcoin', 'bitcoin-wallet', 'spesmilo', 'user:piotrnar', 'user:greenaddress', 'Multibit-Legacy', 'blockchain', 'bitsofproof', 'btcsuite' ],
     symbol: "BTC",
     cmcId: "1",
   },
@@ -988,7 +987,6 @@ export const chainCoingeckoIds = {
   },
   "Bitgert": {
     geckoId: "bitrise-token",
-    github: ['user:Bitgert'],
     symbol: "BRISE",
     cmcId: "11079",
     categories: ["EVM"],
@@ -1140,7 +1138,6 @@ export const chainCoingeckoIds = {
   },
   "Echelon": {
     geckoId: "echelon",
-    github: ['user:echelonfoundation'],
     symbol: "ECH",
     cmcId: "20047",
     categories: ["EVM", "Cosmos"],

@@ -1745,7 +1745,6 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "caviarAMM",
-    github: ["user:outdoteth"]
   },
 ];
 

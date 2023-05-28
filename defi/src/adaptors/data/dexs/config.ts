@@ -1588,5 +1588,9 @@ export default {
     "forge": {
         "enabled": true,
         "id": "2804"
+    },
+    "interest-protocol": {
+        "enabled": true,
+        "id": "3015"
     }
 } as AdaptorsConfig

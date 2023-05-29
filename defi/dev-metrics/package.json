@@ -11,8 +11,12 @@
   "license": "MIT",
   "dependencies": {
     "@elastic/elasticsearch": "^8.7.0",
+    "axios": "^1.4.0",
+    "moment": "^2.29.4",
     "octokit": "^2.0.18",
+    "pg": "^8.11.0",
     "rimraf": "^5.0.1",
+    "sequelize": "^6.31.1",
     "simple-git": "^3.18.0",
     "toml": "^3.0.0",
     "ts-node": "^10.9.1"

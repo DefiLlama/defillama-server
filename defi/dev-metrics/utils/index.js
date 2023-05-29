@@ -1,4 +1,11 @@
-const ORG_MAPPING = require('./app-data/mapping.json')
+const ORG_MAPPING = require('../app-data/mapping.json')
+const tomlData = require('../app-data/tomlData.json')
+
+const orgSet = new Set(tomlData.orgData)
+const repoSet = new Set(Object.keys(tomlData.repos))
+
+Object.keys(ORG_MAPPING).forEach(org => orgSet.add(org))  // Add orgs from mapping.json
+// Object.keys(tomlData.repos).forEach(org => orgSet.add(org.split('/')[1]))  // Add orgs from repos in tomlData.json
 
 function toUnixTime(dateStr) {
   return Math.floor(new Date(dateStr) / 1e3)
@@ -57,27 +64,27 @@ const coAuthorRegex = /Co-authored-by:\s+([^<]+)\s+<([^>]+)>/gi;
 function filterCommit(commit) {
   const botRegex = /\b(bot)\b/i
   const { authors, } = commit
-  const blacklistedEmails = new Set([
-    'action@github.com',
-    'github-actions@github.com',
-    'actions@github.com',
-  ])
-  return !authors.some(i => botRegex.test(i.name) && botRegex.test(i.email) && !blacklistedEmails.has(i.email))
+  return !authors.some(i => botRegex.test(i.name) || botRegex.test(i.email) || i.email.endsWith('@github.com'))
 }
 
 function extractCommitsFromPushEvent(pushEvent) {
   const { repo, payload, org, created_at, } = pushEvent
   const { commits } = payload
 
-  return commits.map(extractCommit).filter(filterCommit)
+  const owner = org?.login || repo.name.split('/')[0]
+  return commits.filter(preFilterCommit).map(extractCommit).filter(filterCommit)
+
+  function preFilterCommit(commit) {
+    // return orgSet.has(owner)
+    return commit.distinct && (orgSet.has(owner) || repoSet.has(repo.name))
+  }
 
   function extractCommit(commit) {
-    const { author, distinct, message, sha } = commit
+    const { author, message, sha } = commit
     const { email, name } = author
     const authorObj = {}
     authorObj[name] = email
 
-    const [owner] = repo.name.split('/')
 
     const authors = [];
     let matches;
@@ -93,12 +100,12 @@ function extractCommitsFromPushEvent(pushEvent) {
 
     return {
       sha,
-      distinct,
       message,
       authors,
       repo: repo.name,
-      org: org?.login || owner,
-      isMergeCommit: message.includes('Merge pull request') || message.includes('Merge branch'),
+      owner,
+      is_merge_commit: message.includes('Merge pull request') || message.includes('Merge branch'),
+      is_processed: false,
       created_at,
     }
   }

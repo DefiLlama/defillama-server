@@ -18572,7 +18572,7 @@ const data2: Protocol[] = [
     name: "Debets",
     address: null,
     symbol: "-",
-    url: "https://app.debets.org",
+    url: "https://debets-protocol.gitbook.io/untitled/",
     description: "Debets is a Decentralized & Permissionless, p2p (peer to pool) Web3 iGaming platform, where players bet against each other(Liquidity providers) instead of against a bookmaker.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/debets.png`,

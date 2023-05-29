@@ -36132,6 +36132,7 @@ const data2: Protocol[] = [
     module: "tai-money/index.js",
     twitter: "taimoney6",
     forkedFrom: ["Reflexer"],
+    oracles: ["Chainlink"],
     audit_links: [],
     listedAt: 1685390267
   },

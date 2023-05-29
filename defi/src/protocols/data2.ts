@@ -34184,7 +34184,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.oeth.com/",
-    description: "Ethereum Liquid Staking",
+    description: "Origin Ether engages with Ethereum staking pools and LP strategies. It uses platforms like Convex and Curve, and plans to integrate with other AMMs, aiming to provide higher yield opportunities",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/origin-ether.png`,
     audits: "0",

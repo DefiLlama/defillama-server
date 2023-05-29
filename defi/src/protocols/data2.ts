@@ -26891,6 +26891,7 @@ const data2: Protocol[] = [
     twitter: "OasisSwapDEX",
     oracles: [],
     treasury: "oasisswapdex.js",
+    wrongLiquidity: true, // We haven't integrated oasisswap dex on yields-server and most of the PSI liquidity is there
     listedAt: 1677734709
   },
   {

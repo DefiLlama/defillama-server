@@ -32,17 +32,19 @@ async function getRawCommits(archiveFile) {
   return { rawCommits, commit_count: i, filtered_commit_count: rawCommits.length, archive_file: archiveFile }
 }
 
-async function addArchive(archive_file) {
+async function addArchive(archive_file, fileNumber = { i: 0 }) {
   if (await archiveExists(archive_file)) {
     sdk.log('Archive already exists, skipping: ', archive_file)
     return
   }
+  const startTime = Date.now()
   const { rawCommits, commit_count, filtered_commit_count } = await getRawCommits(archive_file)
   for (const commit of rawCommits)
     await addRawCommit(commit)
 
   await addArchiveData(archive_file, commit_count, filtered_commit_count)
-  sdk.log(`Added ${filtered_commit_count} commits from ${commit_count} to archive ${archive_file}`)
+  const timeTaken = Number((Date.now() - startTime) / 1000).toPrecision(3)
+  sdk.log(`${++fileNumber.i} Added ${filtered_commit_count} / ${commit_count} to archive ${archive_file} time taken: ${timeTaken} seconds `)
 }
 
 module.exports = {

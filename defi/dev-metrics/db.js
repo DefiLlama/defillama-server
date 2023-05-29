@@ -6,6 +6,7 @@ const sequelize = new Sequelize('dev-metrics', 'llama', process.env.PG_DB_PASSWO
   logging: (msg) => {
     // Log only error messages
     if (msg.includes('ERROR')) {
+      if (msg.includes('CREATE OR REPLACE FUNCTION') && msg.includes('git_commit_raw') && msg.includes('unique_violation')) return;
       console.error(msg);
     }
   },

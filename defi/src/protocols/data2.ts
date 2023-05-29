@@ -35904,7 +35904,7 @@ const data2: Protocol[] = [
       "Allows people to create custom private pools with variable amounts of NFTs and ETH in them. A pool could have only NFTs, only ETH, or both",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/caviar.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -35914,7 +35914,7 @@ const data2: Protocol[] = [
     twitter: "caviarAMM",
     oracles: [],
     forkedFrom: [],
-    audit_links: [],
+    audit_links: ["https://code4rena.com/reports/2023-04-caviar"],
     parentProtocol: "parent#caviar",
     listedAt: 1685049872
   },

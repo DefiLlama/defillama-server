@@ -18,6 +18,18 @@
       "to": "ethereum:0x9ee91f9f426fa633d227f7a9b000e28b9dfd8599"
     }
   },
+  "wra": {
+    "0x8e86e46278518efc1c5ced245cba2c7e3ef11557": {
+      "decimals": "6",
+      "symbol": "USD+",
+      "to": "coingecko#usd"
+    },
+    "0x1382628e018010035999a1ff330447a0751aa84f": {
+      "decimals": "18",
+      "symbol": "iUSD",
+      "to": "coingecko#izumi-bond-usd"
+    }
+  },
   "ibc": {},
   "astar": {
     "0xffffffff00000000000000010000000000000001": {

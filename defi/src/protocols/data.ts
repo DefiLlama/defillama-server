@@ -2971,7 +2971,7 @@ const data: Protocol[] = [
     category: "Yield",
     chains: ["Ethereum", "Polygon"],
     module: "stakedao/index.js",
-    treasury: "stake-dao.js",
+    treasury: "stakedao.js",
     twitter: "StakeDAOHQ",
     governanceID: ["snapshot:stakedao.eth"]
   },

@@ -26172,6 +26172,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Kava"],
     module: "equilibre/index.js",
+    treasury: "equilibre.js",
     twitter: "EquilibreAMM",
     oracles: [],
     forkedFrom: ["Solidly"],

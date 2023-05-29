@@ -1592,5 +1592,9 @@ export default {
     "interest-protocol": {
         "enabled": true,
         "id": "3015"
+    },
+    "fxdx": {
+        "enabled": true,
+        "id": "3036"
     }
 } as AdaptorsConfig

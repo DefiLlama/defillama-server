@@ -18,11 +18,16 @@
       "to": "ethereum:0x9ee91f9f426fa633d227f7a9b000e28b9dfd8599"
     }
   },
-  "wra": {
+  "era": {
     "0x8e86e46278518efc1c5ced245cba2c7e3ef11557": {
       "decimals": "6",
       "symbol": "USD+",
       "to": "coingecko#usd"
+    },
+    "0x2039bb4116b4efc145ec4f0e2ea75012d6c0f181": {
+      "decimals": "18",
+      "symbol": "BUSD",
+      "to": "coingecko#binance-usd"
     },
     "0x1382628e018010035999a1ff330447a0751aa84f": {
       "decimals": "18",

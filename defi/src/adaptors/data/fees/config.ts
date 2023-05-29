@@ -890,5 +890,9 @@ export default {
     "metamask": {
         "enabled": true,
         "id": "3031"
+    },
+    "rainbow-wallet": {
+        "enabled": true,
+        "id": "3038"
     }
 } as AdaptorsConfig

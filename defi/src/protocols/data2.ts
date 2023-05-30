@@ -35107,7 +35107,7 @@ const data2: Protocol[] = [
     module: "node-dao/index.js",
     twitter: "Node_DAO",
     oracles: [],
-    forkedFrom: [
+    audit_links: [
                   "https://www.nodedao.com/paf/MetaTrust.pdf",
                   "https://www.nodedao.com/paf/BEOSIN.pdf"
     ], 

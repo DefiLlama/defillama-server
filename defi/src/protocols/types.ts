@@ -3,6 +3,7 @@ export interface Protocol {
   name: string;
   address?: string | null;
   symbol: string;
+  assetToken?: string;
   url: string;
   description: string | null;
   chain: string;

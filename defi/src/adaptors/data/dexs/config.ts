@@ -117,6 +117,10 @@ export default {
             trident: {
                 enabled: true,
                 id: "2152"
+            },
+            v3: {
+                enabled: true,
+                id: "2776"
             }
         }
     },

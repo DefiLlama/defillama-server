@@ -898,5 +898,9 @@ export default {
     "rainbow-wallet": {
         "enabled": true,
         "id": "3038"
+    },
+    "lybra-finance": {
+        "enabled": true,
+        "id": "2904"
     }
 } as AdaptorsConfig

@@ -6743,8 +6743,8 @@ const data: Protocol[] = [
   {
     id: "427",
     name: "Origin Dollar",
-    address: "0x9c354503c38481a7a7a51629142963f98ecc12d0",
-    symbol: "OGV",
+    address: null,
+    symbol: "-",
     url: "https://www.ousd.com",
     description:
       "Origin Dollar (OUSD) is a new stablecoin that was initially launched on the Ethereum network. Its design is superior to existing stablecoins because OUSD captures competitive yields while being passively held in wallets.",
@@ -6752,8 +6752,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/origin-dollar.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "origin-dollar-governance",
-    cmcId: "20949",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield Aggregator",
     chains: ["Ethereum"],
     module: "origindollar/index.js",

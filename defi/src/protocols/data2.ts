@@ -36250,7 +36250,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://marginx.io",
     description:
-      "MarginX is the world’s first community-based decentralized exchange built on the Function X network, and running via a multi-chain and on-chain infrastructure. It aims to bridge the traditional financial markets and cryptocurrency world by providing a platform where investors can buy, sell and create derivative products of any financial asset, and where every stakeholder has a say in the future of the platform.",
+      "MarginX is the world's first community-based decentralized exchange built on the Function X network, and running via a multi-chain and on-chain infrastructure. It aims to bridge the traditional financial markets and cryptocurrency world by providing a platform where investors can buy, sell and create derivative products of any financial asset, and where every stakeholder has a say in the future of the platform.",
     chain: "FunctionX",
     logo: `${baseIconsUrl}/marginx.jpg`,
     audits: "0",
@@ -36263,6 +36263,30 @@ const data2: Protocol[] = [
     twitter: "marginx_io",
     forkedFrom: [],
     listedAt: 1685437944
+  },
+  {
+    id: "3045",
+    name: "Astaria",
+    address: null,
+    symbol: "-",
+    url: "https://astaria.xyz/",
+    description:
+      "Astaria is an NFT lending platform that enables Strategists to set loan conditions via Vaults, which gather funds from liquidity providers for borrowers",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/astaria.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Lending",
+    chains: ["Ethereum"],
+    module: "astaria/index.js",
+    twitter: "AstariaXYZ",
+    forkedFrom: [],
+    audit_links: [
+      "https://docs.astaria.xyz/docs/smart-contracts/audits"
+    ],
+    listedAt: 1685488754
   },
 ]
 export default data2;

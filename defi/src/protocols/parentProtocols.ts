@@ -1711,7 +1711,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Origin DeFi",
     url: "https://www.originprotocol.com",
     description: "Building NFTs & DeFi for everyone. The revolution won't be centralized — not on our watch.",
-    logo: `${baseIconsUrl}/origin-defi.jpg`,
+    logo: `${baseIconsUrl}/origin-defi.png`,
     gecko_id: "origin-dollar-governance",
     cmcId: "20949",
     chains: [],

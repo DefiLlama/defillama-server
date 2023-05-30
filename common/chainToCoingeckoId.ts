@@ -45,6 +45,7 @@ export const chainToCoingeckoId = {
   milkomeda: "milkomeda-cardano",
   aptos: "aptos",
   hydra: "hydra",
-}
+  era: "zksync",
+};
 
-export default chainToCoingeckoId
+export default chainToCoingeckoId;

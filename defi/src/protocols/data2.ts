@@ -36168,7 +36168,7 @@ const data2: Protocol[] = [
     description:
       "Houdini Swap is an aggregator of non-custodial exchanges. It uses the Monero blockchain to anonymize your transactions, automatically swaping from your desired input currency to Monero on one exchange, then sends the Monero to a different exchange and swaps the Monero to your desired receiving currency",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/houdiniswap.png`,
+    logo: `${baseIconsUrl}/houdini-swap.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "poof-token",

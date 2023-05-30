@@ -49,8 +49,7 @@ async function contractCalls(
       (u: CoinData) => u.address == underlyings[i].toLowerCase(),
     );
     if (!underlying) continue;
-    const price: number =
-      (rate * underlying.price) / 10 ** tokenInfos.decimals[i].output;
+    const price: number = (rate * underlying.price) / 10 ** 18;
 
     addToDBWritesList(
       writes,

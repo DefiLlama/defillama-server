@@ -36159,5 +36159,27 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1685390561
   },
+  {
+    id: "3041",
+    name: "Houdini Swap",
+    address: "0x888cea2bbdd5d47a4032cf63668d7525c74af57a",
+    symbol: "POOF",
+    url: "https://houdiniswap.com/",
+    description:
+      "Houdini Swap is an aggregator of non-custodial exchanges. It uses the Monero blockchain to anonymize your transactions, automatically swaping from your desired input currency to Monero on one exchange, then sends the Monero to a different exchange and swaps the Monero to your desired receiving currency",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/houdiniswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "poof-token",
+    cmcId: "23396",
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "houdiniswap/index.js",
+    twitter: "HoudiniSwap",
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1685405527
+  },
 ]
 export default data2;

@@ -569,8 +569,8 @@ const data: Protocol[] = [
   {
     id: "132",
     name: "hBTC",
-    address: "0x0316EB71485b0Ab14103307bf65a021042c6d380",
-    symbol: "hBTC",
+    address: null,
+    symbol: "-",
     url: "https://www.hbtc.finance/ ",
     description:
       "HBTC token aims to promote the growth of the decentralized marketplace by injecting Bitcoin (BTC), the largest and most liquid asset, into the decentralized finance (DeFi) eco-system.",
@@ -578,8 +578,8 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/hbtc.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "huobi-btc",
-    cmcId: "478",
+    gecko_id: null,
+    cmcId: null,
     category: "Bridge",
     chains: ["Ethereum"],
     module: "hbtc.js",

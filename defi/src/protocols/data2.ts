@@ -17896,8 +17896,8 @@ const data2: Protocol[] = [
   {
     id: "2221",
     name: "Frax Ether",
-    address: "0x5E8422345238F34275888049021821E8E08CAa1f",
-    symbol: "frxETH",
+    address: null,
+    symbol: "-",
     url: "https://app.frax.finance/frxeth/mint",
     description:
       "Frax Ether is a liquid ETH staking derivative designed to uniquely leverage the Frax Finance ecosystem to maximize staking yield and smoothen the Ethereum staking process for a simplified, secure, and DeFi-native way to earn interest on ETH. ",

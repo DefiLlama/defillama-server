@@ -36181,5 +36181,48 @@ const data2: Protocol[] = [
     audit_links: [],
     listedAt: 1685405527
   },
+  {
+    id: "3042",
+    name: "The Llamas",
+    address: null,
+    symbol: "-",
+    url: "https://www.thellamas.io",
+    description:
+      "Llament the time you've been in human form? Don't fret, your future could be as easy as 1, 2, 3, Llama! We are bringing NFT-Fi utility to the Curve ecosystem.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/the-llamas.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    treasury: "thellamas.js",
+    twitter: "WenLlama",
+    forkedFrom: [],
+  },
+  {
+    id: "3043",
+    name: "Steer Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://steer.finance",
+    description:
+      "Steer is a decentralized compute protocol that provides a scaling solution for data processing through its robust off-chain infrastructure. Services are targeted at leveraging off-chain data for on-chain automation, such as automated liquidity management in DeFi.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/steer-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Polygon", "Arbitrum", "Optimism"],
+    module: "steer/index.js",
+    twitter: "steerprotocol",
+    forkedFrom: [],
+    audit_links: ["https://docs.steer.finance/audit-reports"],
+    listedAt: 1685437944
+  },
 ]
 export default data2;

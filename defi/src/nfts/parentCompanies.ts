@@ -62,5 +62,31 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x11708dc8a3ea69020f520c81250abb191b190110", "RTFKT Cryptokicks iRL 👟"],
             ["0x895554bc4f48fe1c2bf5c198bfa3513da538f86b", "RTFKT Exodus Pods 🪐"],
         ]
-    }
+    },
+    {
+        name:"Art Blocks",
+        url: "https://www.artblocks.io/",
+        twitter: "artblocks_io",
+        nftCollections: [
+            ["0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270", "Art Blocks"],
+        ]
+    },
+    {
+        name:"Azuki",
+        url: "https://www.azuki.com/",
+        twitter: "Azuki",
+        nftCollections: [
+            ["0xed5af388653567af2f388e6224dc7c4b3241c544", "Azuki"],
+            ["0x306b1ea3ecdf94ab739f1910bbda052ed4a9f949", "BEANZ Official"],
+        ]
+    },
+    {
+        name:"Doodles",
+        url: "https://www.doodles.app/",
+        twitter: "doodles",
+        nftCollections: [
+            ["0x8a90cab2b38dba80c64b7734e58ee1db38b8992e", "Doodles"],
+            ["0x620b70123fb810f6c653da7644b5dd0b6312e4d8", "Space Doodles"],
+        ]
+    },
 ]

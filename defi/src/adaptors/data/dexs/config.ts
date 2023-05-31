@@ -1600,5 +1600,10 @@ export default {
     "fxdx": {
         "enabled": true,
         "id": "3036"
+    },
+    "sunswap-v2": {
+        parentId: "SUN.io",
+        "enabled": true,
+        "id": "3005"
     }
 } as AdaptorsConfig

@@ -36351,6 +36351,7 @@ const data2: Protocol[] = [
     twitter: "Tranchess",
     forkedFrom: [],
     audit_links: ["https://github.com/tranchess/contract-core/tree/main/audits"],
+    parentProtocol: "parent#tranchess",
     listedAt: 1685532138
   },
 ]

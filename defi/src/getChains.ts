@@ -6,7 +6,7 @@ import { excludeProtocolInCharts } from "./storeGetCharts";
 import { IChain } from "./types";
 import { importAdapter } from "./utils/imports/importAdapter";
 
-export async function craftChainsResponse(excludeDoublecountedAndLSD = false){
+export async function craftChainsResponse(excludeDoublecountedAndLSD = false, useNewChainNames = false){
   const chainTvls = {} as {[chain:string]:number}
   await Promise.all(
     protocols.map(async (protocol) => {
@@ -18,21 +18,19 @@ export async function craftChainsResponse(excludeDoublecountedAndLSD = false){
           return
       }
       const module = await importAdapter(protocol);
-      if(excludeDoublecountedAndLSD && (protocol.category === "Liquid Staking" || isDoubleCounted(module.doublecounted, protocol.category)  === true)){
-        return
-      }
+      const excludeTvl = excludeDoublecountedAndLSD && (protocol.category === "Liquid Staking" || isDoubleCounted(module.doublecounted, protocol.category)  === true)
       let chainsAdded = 0
       Object.entries(lastTvl).forEach(([chain, chainTvl])=>{
-          const chainName = getChainDisplayName(chain, false)
+          const chainName = getChainDisplayName(chain, useNewChainNames)
           if(chainCoingeckoIds[chainName] === undefined){
               return
           }
-          chainTvls[chainName] = (chainTvls[chainName] ?? 0) + chainTvl
+          chainTvls[chainName] = (chainTvls[chainName] ?? 0) + (excludeTvl?0:chainTvl)
           chainsAdded += 1;
       })
       if(chainsAdded === 0){
         const chainName = protocol.chain
-        chainTvls[chainName] = (chainTvls[chainName] ?? 0) + lastTvl.tvl
+        chainTvls[chainName] = (chainTvls[chainName] ?? 0) + (excludeTvl?0:lastTvl.tvl)
       }
     })
   );
@@ -50,7 +48,7 @@ export async function craftChainsResponse(excludeDoublecountedAndLSD = false){
 const handler = async (
   event: AWSLambda.APIGatewayEvent
 ): Promise<IResponse> => {
-  const chainData = await craftChainsResponse(event.path === "/v2/chains")
+  const chainData = await craftChainsResponse(event.path === "/v2/chains", event.path === "/v2/chains")
   return successResponse(chainData, 10 * 60); // 10 mins cache
 };
 

@@ -31744,7 +31744,7 @@ const data2: Protocol[] = [
     gecko_id: "interport-token",
     cmcId: "22877",
     category: "Cross Chain",
-    chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Fantom", "Arbitrum"],
+    chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Fantom", "Arbitrum", "zkSync Era"],
     oracles: [],
     forkedFrom: [],
     module: "interport-finance/index.js",
@@ -34495,7 +34495,7 @@ const data2: Protocol[] = [
     module: "cozy-v2/index.js",
     twitter: "cozyfinance",
     audit_links: ["https://docs.cozy.finance/faq/security-faq"],
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: ["Chainlink", "UMA"],
     parentProtocol: "parent#cozy-finance",
     listedAt: 1683779419
@@ -34517,7 +34517,7 @@ const data2: Protocol[] = [
     chains: ["Algorand"],
     module: "meld-gold/index.js",
     twitter: "meldgold",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: ["Chainklink"],
     listedAt: 1683800481
   },
@@ -34538,7 +34538,7 @@ const data2: Protocol[] = [
     chains: ["zkSync Era"],
     module: "starmaker/index.js",
     twitter: "starmakerzksync",
-    forkedFrom: ["Uniswap V2"], 
+    forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1683817720
   },
@@ -34560,7 +34560,7 @@ const data2: Protocol[] = [
     module: "dummy.js",
     treasury: "op-foundation.js",
     twitter: "optimismFND",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
   },
   {
@@ -34580,7 +34580,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "gnd-protocol/index.js",
     twitter: "GNDProtocol",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     listedAt: 1683818607
   },
@@ -34601,7 +34601,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "KyborgExchange/index.js",
     twitter: "KyborgExchange",
-    forkedFrom: ["Uniswap V3"], 
+    forkedFrom: ["Uniswap V3"],
     oracles: [],
     listedAt: 1683861152
   },
@@ -34622,7 +34622,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "beluga-dex/index.js",
     twitter: "Belugadex",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: ["Pyth"],
     listedAt: 1683886126
   },
@@ -34643,7 +34643,7 @@ const data2: Protocol[] = [
     chains: ["Starknet"],
     module: "starkex/index.js",
     twitter: "Starkex_org",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     listedAt: 1683886128
   },
@@ -34664,7 +34664,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum", "Avalanche"],
     module: "steadefi/index.js",
     twitter: "steadefi",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: ["Chainlink"],
     audit_links: ["https://omniscia.io/reports/steadefi-staking-vaults-64031f72d11ef00014ba49e5"],
     listedAt: 1683891208
@@ -34686,7 +34686,7 @@ const data2: Protocol[] = [
     chains: ["Binance", "ENULS"],
     module: "nutbox/index.js",
     twitter: "NutboxDao",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     audit_links: ["https://skynet.certik.com/projects/walnut"],
     listedAt: 1683899829
@@ -34708,7 +34708,7 @@ const data2: Protocol[] = [
     chains: ["Optimism"],
     module: "extra/index.js",
     twitter: "extrafi_io",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: ["TWAP", "Chainlink"],
     audit_links: ["https://docs.extrafi.io/extra_finance/audits-and-security"],
     listedAt: 1684070957
@@ -34730,7 +34730,7 @@ const data2: Protocol[] = [
     chains: ["Kava"],
     module: "verified-credits/index.js",
     twitter: null,
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     listedAt: 1684070959
   },
@@ -34752,7 +34752,7 @@ const data2: Protocol[] = [
     chains: ["Canto"],
     module: "scanto/index.js",
     twitter: "stakedCANTO",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     audit_links: [],
     listedAt: 1684124582
@@ -34774,7 +34774,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Arbitrum", "Optimism"],
     module: "merkl/index.js",
     twitter: "AngleProtocol",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     audit_links: [],
     listedAt: 1684158061
@@ -34796,7 +34796,7 @@ const data2: Protocol[] = [
     chains: ["Starknet"],
     module: "protoss-dex/index.js",
     twitter: "ProtossDEX",
-    forkedFrom: ["Uniswap V2"], 
+    forkedFrom: ["Uniswap V2"],
     oracles: [],
     audit_links: [],
     listedAt: 1684183134
@@ -34818,7 +34818,7 @@ const data2: Protocol[] = [
     chains: ["Aptos"],
     module: "tsunami-fi/index.js",
     twitter: "TsunamiFinance_",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     audit_links: ["https://docsend.com/view/mfqrf4mcdxk9jvwf"],
     listedAt: 1684183136
@@ -34841,7 +34841,7 @@ const data2: Protocol[] = [
     module: "quickswap-perps/index.js",
     twitter: "QuickswapDEX",
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
-    forkedFrom: ["GMX"], 
+    forkedFrom: ["GMX"],
     parentProtocol: "parent#quickswap",
     oracles: [],
     listedAt: 1684213007
@@ -34863,7 +34863,7 @@ const data2: Protocol[] = [
     chains: ["Optimism"],
     module: "dummy.js",
     twitter: "Kwenta_io",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
   },
   {
@@ -34883,7 +34883,7 @@ const data2: Protocol[] = [
     chains: ["Polygon zkEVM"],
     module: "satori/index.js",
     twitter: "SatoriFinance",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: ["Internal"],
     audit_links: ["https://github.com/satoridao/contract_audit_report/blob/main/Satori_audit_report.pdf"],
     listedAt: 1684244889
@@ -34905,7 +34905,7 @@ const data2: Protocol[] = [
     chains: ["zkSync Era"],
     module: "zomma/index.js",
     twitter: "ZommaProtocol",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: ["Internal"],
     listedAt: 1684244892
   },
@@ -34926,7 +34926,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "stream/index.js",
     twitter: "StreamDefi",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     listedAt: 1684246278
   },
@@ -34947,7 +34947,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "vega-protocol/index.js",
     twitter: "vegaprotocol",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     listedAt: 1684246282
   },
@@ -34968,7 +34968,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "asymmetry-fi/index.js",
     twitter: "asymmetryfin",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     listedAt: 1684247028
   },
@@ -35128,7 +35128,7 @@ const data2: Protocol[] = [
     audit_links: [
                   "https://www.nodedao.com/paf/MetaTrust.pdf",
                   "https://www.nodedao.com/paf/BEOSIN.pdf"
-    ], 
+    ],
     listedAt: 1684416874
   },
   {
@@ -35667,7 +35667,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "FemboyDAO",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     treasury: "femboy-dao.js",
     governanceID: ["eip155:1:0x710C7E422A98963d6BA216840b1d83E77064A031"],
@@ -35711,7 +35711,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "MaestroBots",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
   },
   {
@@ -35977,7 +35977,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "MetaMask",
-    forkedFrom: [], 
+    forkedFrom: [],
     oracles: [],
     github: ["MetaMask"]
   },

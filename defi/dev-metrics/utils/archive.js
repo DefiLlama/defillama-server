@@ -32,9 +32,14 @@ async function getRawCommits(archiveFile) {
   return { rawCommits, commit_count: i, filtered_commit_count: rawCommits.length, archive_file: archiveFile }
 }
 
+const missingArchives = [
+]
+
 async function addArchive(archive_file, fileNumber = { i: 0 }) {
+  const { i, startTimestamp, totalHours, checked } = fileNumber
+  if (missingArchives.includes(archive_file)) return;
   if (await archiveExists(archive_file)) {
-    sdk.log('Archive already exists, skipping: ', archive_file)
+    // sdk.log('Archive already exists, skipping: ', archive_file)
     return
   }
   const startTime = Date.now()
@@ -44,7 +49,9 @@ async function addArchive(archive_file, fileNumber = { i: 0 }) {
 
   await addArchiveData(archive_file, commit_count, filtered_commit_count)
   const timeTaken = Number((Date.now() - startTime) / 1000).toPrecision(3)
-  sdk.log(`${++fileNumber.i} Added ${filtered_commit_count} / ${commit_count} to archive ${archive_file} time taken: ${timeTaken} seconds `)
+  const avgTimeTaken = Number((Date.now() - startTimestamp) / (1000 * i)).toPrecision(3)
+  const progress = Number(100 * checked / totalHours).toPrecision(5)
+  sdk.log(`${fileNumber.i++} Added ${filtered_commit_count} / ${commit_count} to archive ${archive_file} | time taken: ${timeTaken}s | avg: ${avgTimeTaken}s | progress: ${progress}% (${checked}/${totalHours})`)
 }
 
 module.exports = {

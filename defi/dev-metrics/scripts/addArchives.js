@@ -4,15 +4,15 @@ const { sequelize } = require('../db')
 const moment = require('moment');
 
 // Define the start and end dates
-// const startDate = moment('2015-01-01-00', 'YYYY-MM-DD-HH');
-const startDate = moment('2017-11-06-00', 'YYYY-MM-DD-HH');
+let startDate = moment('2015-01-01-00', 'YYYY-MM-DD-HH');
+// const startDate = moment('2020-01-26-23', 'YYYY-MM-DD-HH');
 // const endDate = moment('2015-01-04-00', 'YYYY-MM-DD-HH');
 const endDate = moment().startOf('hour').subtract(1, 'hour');
 
 async function main() {
   await sequelize.sync()
 
-  let fileNumber = { i: 0 }
+  let fileNumber = { i: 1, startTimestamp: +Date.now(), totalHours: (endDate - startDate) / (3600 * 1e3), checked: 0 }
   // Iterate through each hour
   const currentHour = startDate.clone();
   while (currentHour.isSameOrBefore(endDate)) {
@@ -25,11 +25,12 @@ async function main() {
 
     // Process the current hour as needed
     try {
+      fileNumber.checked++
       await addArchive(archive_file, fileNumber)
     } catch (e) {
       // console.error(e)
       console.log('Error processing', archive_file)
-      throw e
+      // throw e
     }
 
     // Move to the next hour

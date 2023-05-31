@@ -3451,7 +3451,7 @@ const data: Protocol[] = [
   },
   {
     id: "272",
-    name: "Cryptex Finance",
+    name: "Cryptex V1",
     address: "0x321C2fE4446C7c963dc41Dd58879AF648838f98D",
     symbol: "CTX",
     url: "https://cryptex.finance/",
@@ -3461,19 +3461,18 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/cryptex-finance.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "cryptex-finance",
-    cmcId: "10368 ",
+    gecko_id: null,
+    cmcId: null,
     category: "Indexes",
     chains: ["Ethereum", "Optimism"],
     module: "cryptex-finance/index.js",
-    treasury: "cryptex.js",
     twitter: "CryptexFinance",
     audit_links: [
       "https://cryptex.finance/Cryptex_-_Final_Report.pdf",
       "https://certificate.quantstamp.com/full/cryptex",
     ],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:cryptexdao.eth", "compound:ethereum:0x271901c3268d0959bbc9543de4f073d3708c88f7"]
+    parentProtocol: "parent#cryptex-finance"
   },
   {
     id: "273",

@@ -36375,5 +36375,50 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1685547388
   },
+  {
+    id: "3050",
+    name: "DAOLama",
+    address: null,
+    symbol: "-",
+    url: "https://daolama.co/",
+    description:
+      "DAOLama is a decentralized peer-to-pool based NFT liquidity protocol",
+    chain: "TON",
+    logo: `${baseIconsUrl}/daolama.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["TON"],
+    module: "daolama/index.js",
+    twitter: "daolama_ton",
+    forkedFrom: [],
+    listedAt: 1685565429
+  },
+  {
+    id: "3051",
+    name: "Cryptex V2",
+    address: "0x321C2fE4446C7c963dc41Dd58879AF648838f98D",
+    symbol: "CTX",
+    url: "https://cryptex.finance/",
+    description:
+      "Cryptex Finance is a multi-network DeFi protocol with the mission of making crypto-native markets tradable. The protocol uses Ethereum smart contracts, Perennial derivatives vaults, and Chainlink data oracles to provide secure and decentralized trading for users.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/cryptex-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Arbitrum"],
+    module: "cryptex-finance/index.js",
+    twitter: "CryptexFinance",
+    audit_links: [
+      "https://docs.cryptex.finance/audits"
+    ],
+    oracles: ["Chainlink"],
+    parentProtocol: "parent#cryptex-finance"
+  },
 ]
 export default data2;

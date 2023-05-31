@@ -1759,6 +1759,19 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "tranchess.js",
     governanceID: ["snapshot:tranchess.com"]
   },
+  {
+    id: "parent#cryptex-finance",
+    name: "Cryptex Finance",
+    url: "https://cryptex.finance/",
+    description: "Cryptex Finance is a multi-network DeFi protocol with the mission of making crypto-native markets tradable. The protocol uses Ethereum smart contracts, Perennial derivatives vaults, and Chainlink data oracles to provide secure and decentralized trading for users.",
+    logo: `${baseIconsUrl}/cryptex-finance.jpg`,
+    gecko_id: "cryptex-finance",
+    cmcId: "10368 ",
+    chains: [],
+    twitter: "CryptexFinance",
+    treasury: "cryptex.js",
+    governanceID: ["snapshot:cryptexdao.eth", "compound:ethereum:0x271901c3268d0959bbc9543de4f073d3708c88f7"]
+  },
 ];
 
 export default parentProtocols;

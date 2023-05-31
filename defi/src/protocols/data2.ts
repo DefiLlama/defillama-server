@@ -25318,7 +25318,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "vela-exchange/index.js",
     twitter: "vela_exchange",
-    oracles: [],
+    oracles: ["Pyth"],
     listedAt: 1676686261
   },
   {

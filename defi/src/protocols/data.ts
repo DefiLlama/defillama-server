@@ -8336,7 +8336,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     treasury: "lyra.js",
     twitter: "lyrafinance",
     audit_links: ["https://github.com/lyra-finance/lyra-protocol/tree/master/audits/v1"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","Pyth"],
     governanceID: ["snapshot:lyra.eth"]
   },
   {

@@ -36418,7 +36418,8 @@ const data2: Protocol[] = [
       "https://docs.cryptex.finance/audits"
     ],
     oracles: ["Chainlink"],
-    parentProtocol: "parent#cryptex-finance"
+    parentProtocol: "parent#cryptex-finance",
+    listedAt: 1685575484
   },
 ]
 export default data2;

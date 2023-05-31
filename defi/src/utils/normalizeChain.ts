@@ -191,7 +191,7 @@ export const chainCoingeckoIds = {
     cmcId: "4846",
     categories: ["EVM", "Cosmos"],
   },
-  "OKXChain": {
+  "OKTChain": {
     geckoId: "oec-token",
     github: ['okx'],
     symbol: "OKT",
@@ -1702,7 +1702,7 @@ chainCoingeckoIds["Nova"] = chainCoingeckoIds["Nova Network"]
 chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
 chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
-chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKXChain"]
+chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
 
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -1714,7 +1714,7 @@ export function transformNewChainName(chain: string) {
     case "Kucoin":
       return "KCC"
     case "OKExChain":
-      return "OKXChain"
+      return "OKTChain"
     case "xDai":
       return "Gnosis"
     case "Cosmos":
@@ -1761,7 +1761,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "kcc":
       return useNewChainNames ? "KCC" : "Kucoin"
     case "okexchain":
-      return useNewChainNames ? "OKXChain" : "OKExChain"
+      return useNewChainNames ? "OKTChain" : "OKExChain"
     case "xdai":
       return useNewChainNames ? "Gnosis" : "xDai"
     case "cosmos":

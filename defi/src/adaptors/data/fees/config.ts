@@ -902,5 +902,9 @@ export default {
     "lybra-finance": {
         "enabled": true,
         "id": "2904"
+    },
+    "houdini-swap": {
+        "enabled": true,
+        "id": "3041"
     }
 } as AdaptorsConfig

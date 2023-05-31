@@ -36354,5 +36354,26 @@ const data2: Protocol[] = [
     parentProtocol: "parent#tranchess",
     listedAt: 1685532138
   },
+  {
+    id: "3049",
+    name: "CrowdSwap",
+    address: null,
+    symbol: "-",
+    url: "https://app.crowdswap.org/swap",
+    description:
+      "Find the best prices in the crypto space. Save significantly on your swaps and much more.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/crowdswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon"],
+    module: "crowdswap/index.js",
+    twitter: "CrowdSwap_App",
+    forkedFrom: [],
+    listedAt: 1685547388
+  },
 ]
 export default data2;

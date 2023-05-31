@@ -1746,6 +1746,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "caviarAMM",
   },
+  {
+    id: "parent#tranchess",
+    name: "Tranchess",
+    url: "https://tranchess.com",
+    description: "Yield Enhancing Asset Tracker with Varied Risk-Return Solutions.",
+    logo: `${baseIconsUrl}/tranchess.png`,
+    gecko_id: "tranchess",
+    cmcId: "10974",
+    chains: [],
+    twitter: "tranchess",
+    treasury: "tranchess.js",
+    governanceID: ["snapshot:tranchess.com"]
+  },
 ];
 
 export default parentProtocols;

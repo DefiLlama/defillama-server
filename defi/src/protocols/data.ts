@@ -6700,13 +6700,13 @@ const data: Protocol[] = [
   // },
   {
     id: "425",
-    name: "Tranchess",
+    name: "Tranchess Yield",
     address: "bsc:0x20de22029ab63cf9A7Cf5fEB2b737Ca1eE4c82A6",
     symbol: "CHESS",
     url: "https://tranchess.com",
     description: "Tranchess is a yield enhancing asset tracker with varied risk-return solutions",
     chain: "Binance",
-    logo: `${baseIconsUrl}/tranchess.png`,
+    logo: `${baseIconsUrl}/tranchess-yield.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "tranchess",
@@ -6715,11 +6715,11 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "tranchess/index.js",
     twitter: "tranchess",
+    parentProtocol: "parent#tranchess",
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Tranchess-v1.0.pdf",
       "https://www.certik.org/projects/tranchess",
     ],
-    governanceID: ["snapshot:tranchess.com"]
   },
   {
     id: "426",

@@ -36412,7 +36412,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Indexes",
     chains: ["Arbitrum"],
-    module: "cryptex-finance/index.js",
+    module: "cryptex-v2/index.js",
     twitter: "CryptexFinance",
     audit_links: [
       "https://docs.cryptex.finance/audits"

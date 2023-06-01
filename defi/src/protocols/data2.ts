@@ -36490,7 +36490,7 @@ const data2: Protocol[] = [
     id: "3055",
     name: "Unlimited Network",
     address: null,
-    symbol: "",
+    symbol: "-",
     url: "https://www.unlimited.trade/pools",
     description:
       "Unlimited Network - #DeFi ecosystem for the everyday degen.",

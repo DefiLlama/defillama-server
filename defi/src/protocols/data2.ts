@@ -36486,5 +36486,26 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     listedAt: 1685645869
   },
+  {
+    id: "3055",
+    name: "Unlimited Network",
+    address: null,
+    symbol: "",
+    url: "https://www.unlimited.trade/pools",
+    description:
+      "Unlimited Network - #DeFi ecosystem for the everyday degen.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/paribus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "unlimited-trade/index.js",
+    twitter: "unlimited_defi",
+    oracles: [],
+    listedAt: 1685645872
+  },
 ]
 export default data2;

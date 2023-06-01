@@ -47,7 +47,7 @@ async function handler() {
       };
       const sluggifiedId = sluggifyString(id).replace("parent#", "");
 
-      await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify(data), 3600);
+      await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify(data));
       protocolsArray.push(sluggifiedId);
     } catch (err) {
       console.log(err, ` storing ${protocolName}`);
@@ -66,8 +66,4 @@ async function handler() {
 
 export default wrapScheduledLambda(handler);
 
-async function main() {
-  let a = await handler();
-  return;
-}
-main(); // ts-node src/storeEmissions.ts
+handler(); // ts-node src/storeEmissions.ts

@@ -69,6 +69,8 @@ export const nftParentCompanies: NFTCompany[] = [
         twitter: "artblocks_io",
         nftCollections: [
             ["0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270", "Art Blocks"],
+            ["0x059edd72cd353df5106d2b9cc5ab83a52287ac3a", "ArtBlock"],
+
         ]
     },
     {
@@ -87,6 +89,123 @@ export const nftParentCompanies: NFTCompany[] = [
         nftCollections: [
             ["0x8a90cab2b38dba80c64b7734e58ee1db38b8992e", "Doodles"],
             ["0x620b70123fb810f6c653da7644b5dd0b6312e4d8", "Space Doodles"],
+        ]
+    },
+    {
+        name:"Parallel Alpha",
+        url: "https://parallel.life",
+        twitter: "ParallelTCG",
+        nftCollections: [
+            ["0x76be3b62873462d2142405439777e971754e8e77", "Parallel Alpha"],
+        ]
+    },
+    {
+        name:"Legends Reborn",
+        url: "https://www.legendsreborn.game",
+        twitter: "GoGalaGames",
+        nftCollections: [
+            ["0xc36cf0cfcb5d905b8b513860db0cfe63f6cf9f5c", "Legends Reborn"],
+        ]
+    },
+    {
+        name:"The Sandbox",
+        url: "https://www.sandbox.game/en",
+        twitter: "GoGalaGames",
+        nftCollections: [
+            ["0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a", "Sandbox's LANDs"],
+            ["0x5cc5b05a8a13e3fbdb0bb9fccd98d38e50f90c38", "The Sandbox"],
+            ["0xa342f5d851e866e18ff98f351f2c6637f4478db5", "The Sandbox ASSETS"],
+            ["0x68aea268f92b715e073d2f5170039faa4b94a47b", "Fantasy Islands - Sandbox"],
+            ["0xf17131a4c85e8a75ba52b3f91ce8c32f6f163924", "The Sandbox Official Open Sea Store"],
+        ]
+    },
+    {
+        name:"Audioglyphs",
+        url: "https://www.audioglyphs.io",
+        twitter: "audioglyphs",
+        nftCollections: [
+            ["0xfb3765e0e7ac73e736566af913fa58c3cfd686b7", "Audioglyphs"],
+        ]
+    },
+    {
+        name:"Cool Cats NFT",
+        url: "https://coolcatsnft.com",
+        twitter: "coolcats",
+        nftCollections: [
+            ["0x1a92f7381b9f03921564a437210bb9396471050c", "Cool Cats NFT"],
+        ]
+    },
+    {
+        name:"VeeFriends",
+        url: "https://veefriends.com",
+        twitter: "veefriends",
+        nftCollections: [
+            ["0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb", "VeeFriends"],
+            ["0x9378368ba6b85c1fba5b131b530f5f5bedf21a18", "VeeFriends Series 2"],
+            ["0x65fff8f5f6a9922b6dc13fe06345a0fe46dd413d", "VeeFriends Iconics"],
+            ["0x6cb5c137ed297c74c8dc1f7c669bbd9a60b98c3c", "VeeFriends Mini Drops 2"],
+        ]
+    },
+    {
+        name:"VeeFriends",
+        url: "https://veefriends.com",
+        twitter: "veefriends",
+        nftCollections: [
+            ["0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb", "VeeFriends"],
+            ["0x9378368ba6b85c1fba5b131b530f5f5bedf21a18", "VeeFriends Series 2"],
+            ["0x65fff8f5f6a9922b6dc13fe06345a0fe46dd413d", "VeeFriends Iconics"],
+            ["0x6cb5c137ed297c74c8dc1f7c669bbd9a60b98c3c", "VeeFriends Mini Drops 2"],
+        ]
+    },
+    {
+        name:"NFT Worlds",
+        url: "https://www.nftworlds.com/",
+        twitter: "TOPIAgg",
+        nftCollections: [
+            ["0xbd4455da5929d5639ee098abfaa3241e9ae111af", "NFT Worlds"],
+        ]
+    },
+    {
+        name:"adidas Originals",
+        url: "https://www.adidas.com/Metaverse",
+        twitter: "altsbyadidas",
+        nftCollections: [
+            ["0x28472a58a490c5e09a238847f66a68a47cc76f0f", "adidas Originals Into the Metaverse"],
+            ["0x749f5ddf5ab4c1f26f74560a78300563c34b417d", "ALTS by adidas"],
+            ["0x455c732fee7b5c3b09531439b598ead4817d5274", "adidas IMPOSSIBLE BOX"],
+            ["0xba0c9cf4da821dba98407cc4f9c11f6c7a5f9bbc", "adidas Virtual Gear - Genesis Collection"],
+        ]
+    },
+    {
+        name:"Loot (for Adventurers)",
+        url: "https://www.lootproject.com",
+        twitter: "lootproject",
+        nftCollections: [
+            ["0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7", "Loot (for Adventurers)"],
+            ["0x8bf2f876e2dcd2cae9c3d272f325776c82da366d", "Extension Loot (for Adventurers)"],
+            ["0xec43a2546625c4c82d905503bc83e66262f0ef84", "LootRock (for adventurers)"],
+            ["0x7afe30cb3e53dba6801aa0ea647a0ecea7cbe18d", "Realms (for Adventurers)"],
+            ["0xb8a51862964f77025abb65e2c6a39ee8070c8ed4", "The Eye (for Adventurers)"],
+            ["0x7403ac30de7309a0bf019cda8eec034a5507cbb3", "Characters  (for Adventurers)"],
+        ]
+    },
+    {
+        name:"Pudgy Penguins",
+        url: "https://pudgypenguins.com",
+        twitter: "pudgypenguins",
+        nftCollections: [
+            ["0xbd3531da5cf5857e7cfaa92426877b022e612cf8", "Pudgy Penguins"],
+        ]
+    },
+    {
+        name:"Murakami",
+        url: "https://murakamiflowers.kaikaikiki.com/",
+        twitter: "",
+        nftCollections: [
+            ["0x341a1c534248966c4b6afad165b98daed4b964ef", "Murakami Flowers Seed"],
+            ["0x7d8820fa92eb1584636f4f5b8515b5476b75171a", "Murakami.Flowers Official"],
+            ["0xdedf88899d7c9025f19c6c9f188deb98d49cd760", "Murakami Lucky Cat Coin Bank"],
+            ["0x3e84607606b25f8a3c75b6db4a8a6683d1e40284", "Murakami Flowers Coin"],
         ]
     },
 ]

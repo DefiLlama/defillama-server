@@ -34378,10 +34378,10 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://holdstation.exchange",
-    description: "Holdstation DeFutures: advance DeFi Futures trading platform with 500x leverage trading & diverse assets on zkSync.",
+    description: "Holdstation DeFutures: Lightning Trades, Real Yield with zk Tech! Trade diverse assets (crypto, forex, commodities, stocks) with 500x leverage. Manage seamlessly via intuitive Account Abstraction Holdstation Wallet on iOS and Android. Embrace the next Defi suite on zkSync ecosystem.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/holdstation-defutures.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -34391,6 +34391,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "holdstation/index.js",
     twitter: "HoldstationW",
+    audit_links: ["https://github.com/verichains/public-audit-reports/blob/main/Verichains%20Draft%20Audit%20Report%20-%20HoldStation%20Dex%20-%20v1.0.pdf"],
     listedAt: 1683724915
   },
   {

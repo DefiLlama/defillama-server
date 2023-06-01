@@ -36421,5 +36421,47 @@ const data2: Protocol[] = [
     parentProtocol: "parent#cryptex-finance",
     listedAt: 1685575484
   },
+  {
+    id: "3052",
+    name: "FilFi",
+    address: null,
+    symbol: "-",
+    url: "https://filfi.io",
+    description:
+      "FilFi is a DeFi protocol that creates the liquidity of Filecoin assets, providing services such as staking pool, lending, Joint Mining, hashrate trading, and FID funds.",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/filfi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Filecoin"],
+    module: "letsfil/index.js",
+    twitter: "filfi_io",
+    oracles: [],
+    listedAt: 1685612653
+  },
+  {
+    id: "3053",
+    name: "FluxBeam",
+    address: null,
+    symbol: "-",
+    url: "https://fluxbeam.xyz",
+    description:
+      "Solana DEX, supporting innovation and Token-2022",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/fluxbeam.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Solana"],
+    module: "fluxbeam-xyz/index.js",
+    twitter: "FluxBeamDEX",
+    oracles: [],
+    listedAt: 1685612658
+  },
 ]
 export default data2;

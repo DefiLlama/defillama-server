@@ -36403,7 +36403,7 @@ const data2: Protocol[] = [
     symbol: "CTX",
     url: "https://v2.cryptex.finance/",
     description:
-      "Cryptex Finance is a multi-network DeFi protocol with the mission of making crypto-native markets tradable. The protocol uses Ethereum smart contracts, Perennial derivatives vaults, and Chainlink data oracles to provide secure and decentralized trading for users.",
+      "Cryptex Finance V2 is a DeFi protocol offering perpetual trading. It employs Ethereum smart contracts, Perennial vaults, and Chainlink oracles to facilitate decentralized trading with real-time data",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/cryptex-finance.jpg`,
     audits: "2",

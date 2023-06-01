@@ -27783,7 +27783,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Binance"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: ["GMX"],
     module: "alpacafinance-gmx/index.js",
     twitter: "AlpacaFinance",

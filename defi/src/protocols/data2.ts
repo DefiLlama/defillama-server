@@ -21363,7 +21363,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2375",
-    name: "Y2K Finance",
+    name: "Y2K V1",
     address: "arbitrum:0x65c936f008bc34fe819bce9fa5afd9dc2d49977f",
     symbol: "Y2K",
     url: "https://www.y2k.finance",
@@ -21386,6 +21386,7 @@ const data2: Protocol[] = [
       "https://2047863079-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaSJHG27D6yEvbos52Fsy%2Fuploads%2FHl3FHTkdL3GkcmrpG4xV%2FHalborn_Y2K.pdf?alt=media&token=9a72ba61-20ad-4e29-8cc6-859bdd7f0ff7",
       "https://2047863079-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaSJHG27D6yEvbos52Fsy%2Fuploads%2Fs53umi8JxWDcLXM2RWkz%2FHalborn_Y2k_Audit2.pdf?alt=media&token=c6deecbb-5e03-4f31-b843-080184e3bfb7",
     ],
+    parentProtocol: "parent#y2k-finance",
     listedAt: 1671622077
   },
   {
@@ -36472,14 +36473,14 @@ const data2: Protocol[] = [
     url: "https://app.paribus.io",
     description:
       "A cross-chain borrowing and lending protocol for NFTs, liquidity positions, and synthetic assets, powered by the Cardano blockchain.",
-    chain: "Cardano",
+    chain: "Arbitrum",
     logo: `${baseIconsUrl}/paribus.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Cardano"],
+    chains: ["Arbitrum"],
     module: "paribus/index.js",
     twitter: "paribus_io",
     oracles: [],
@@ -36506,6 +36507,55 @@ const data2: Protocol[] = [
     twitter: "unlimited_defi",
     oracles: [],
     listedAt: 1685645872
+  },
+  {
+    id: "3056",
+    name: "Y2K V2",
+    address: "arbitrum:0x65c936f008bc34fe819bce9fa5afd9dc2d49977f",
+    symbol: "Y2K",
+    url: "https://app.y2k.finance/mint",
+    description:
+      "Y2K Finance is a suite of structured products designed for exotic peg derivatives, that will allow market participants the ability to robustly hedge or speculate on the risk of a particular pegged asset (or basket of pegged assets), deviating from their 'fair implied market value'.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/y2k-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "y2k-v2/index.js",
+    twitter: "y2kfinance",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [
+      "https://y2k-finance.gitbook.io/y2k-finance/learn-more/audits",
+    ],
+    parentProtocol: "parent#y2k-finance",
+    listedAt: 1685660631
+  },
+  {
+    id: "3057",
+    name: "OpenEden T-Bills",
+    address: null,
+    symbol: "-",
+    url: "https://app.openeden.com/",
+    description:
+      "A smart contract vault managed by a regulated entity to offer 24/7 and direct access to U.S. Treasury Bills",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/openeden-tbills.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "openeden-tbill/index.js",
+    twitter: "OpenEden_HQ",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1685661527
   },
 ]
 export default data2;

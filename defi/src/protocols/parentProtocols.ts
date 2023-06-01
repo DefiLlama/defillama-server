@@ -1772,6 +1772,17 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "cryptex.js",
     governanceID: ["snapshot:cryptexdao.eth", "compound:ethereum:0x271901c3268d0959bbc9543de4f073d3708c88f7"]
   },
+  {
+    id: "parent#y2k-finance",
+    name: "Y2K Finance",
+    url: "https://www.y2k.finance",
+    description: "Y2K Finance is a suite of structured products designed for exotic peg derivatives, that will allow market participants the ability to robustly hedge or speculate on the risk of a particular pegged asset (or basket of pegged assets), deviating from their ‘fair implied market value’.",
+    logo: `${baseIconsUrl}/y2k-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "y2kfinance",
+  },
 ];
 
 export default parentProtocols;

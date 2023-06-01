@@ -200,7 +200,6 @@ export const nftParentCompanies: NFTCompany[] = [
     {
         name:"Murakami",
         url: "https://murakamiflowers.kaikaikiki.com/",
-        twitter: "",
         nftCollections: [
             ["0x341a1c534248966c4b6afad165b98daed4b964ef", "Murakami Flowers Seed"],
             ["0x7d8820fa92eb1584636f4f5b8515b5476b75171a", "Murakami.Flowers Official"],

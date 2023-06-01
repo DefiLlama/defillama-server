@@ -120,9 +120,10 @@ export type TvlItem = { [section: string]: any };
 
 export async function processProtocols(
   processor: (timestamp: number, tvlItem: TvlItem, protocol: IProtocol) => Promise<void>,
-  { includeBridge }: { includeBridge: boolean }
+  { includeBridge }: { includeBridge: boolean },
+  excludeProtocolsFromCharts = true
 ) {
-  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(includeBridge);
+  const { historicalProtocolTvls, lastDailyTimestamp } = await getHistoricalTvlForAllProtocols(includeBridge, excludeProtocolsFromCharts);
 
   historicalProtocolTvls.forEach((protocolTvl) => {
     if (!protocolTvl) {

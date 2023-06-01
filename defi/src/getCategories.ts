@@ -74,7 +74,8 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
         console.log(protocol.name, error);
       }
     },
-    { includeBridge: true }
+    { includeBridge: true },
+    false
   );
 
   return successResponse(

@@ -36464,5 +36464,48 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1685612658
   },
+  {
+    id: "3054",
+    name: "Paribus",
+    address: null,
+    symbol: "PBX",
+    url: "https://app.paribus.io",
+    description:
+      "A cross-chain borrowing and lending protocol for NFTs, liquidity positions, and synthetic assets, powered by the Cardano blockchain.",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/paribus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Cardano"],
+    module: "paribus/index.js",
+    twitter: "paribus_io",
+    oracles: [],
+    forkedFrom: ["Compound"],
+    listedAt: 1685645869
+  },
+  {
+    id: "3055",
+    name: "Unlimited Network",
+    address: null,
+    symbol: "-",
+    url: "https://www.unlimited.trade/pools",
+    description:
+      "Unlimited Network - #DeFi ecosystem for the everyday degen.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/paribus.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "unlimited-trade/index.js",
+    twitter: "unlimited_defi",
+    oracles: [],
+    listedAt: 1685645872
+  },
 ]
 export default data2;

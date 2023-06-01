@@ -1,3 +1,4 @@
+const moment = require('moment')
 const ORG_MAPPING = require('../app-data/mapping.json')
 const tomlData = require('../app-data/tomlData.json')
 
@@ -112,9 +113,59 @@ function extractCommitsFromPushEvent(pushEvent) {
 
 }
 
+function extractCommitsFromSimpleGit(commits, repoData) {
+  const owner = repoData.full_name.split('/')[0]
+  return commits.map(extractCommit)
+
+  function extractCommit(commit) {
+    let { author_email: email, author_name: name, message, body, hash: sha, date } = commit
+    const authorObj = {}
+    authorObj[name] = email
+    if (body && body.length > 0) message += '\n' + body
+    const created_at = moment.utc(date).format()
+
+    const authors = [];
+    let matches;
+
+    while ((matches = coAuthorRegex.exec(message))) {
+      const coAuthorName = matches[1].trim()
+      const coAuthorEmail = matches[2].trim()
+      authorObj[coAuthorName] = coAuthorEmail
+    }
+
+    for (const [name, email] of Object.entries(authorObj))
+      authors.push({ name, email })
+
+    return {
+      sha,
+      message,
+      authors,
+      repo: repoData.full_name,
+      owner,
+      is_merge_commit: message.includes('Merge pull request') || message.includes('Merge branch'),
+      is_processed: false,
+      created_at,
+    }
+  }
+
+}
+
+function sleepInMinutes(minutes) {
+  const milliseconds = minutes * 60 * 1000; // Convert minutes to milliseconds
+
+  return new Promise(resolve => {
+    setTimeout(resolve, milliseconds);
+  });
+}
+
+
 module.exports = {
   turnRawLogToMinimalLog,
   turnToElasticLog,
   extractCommitsFromPushEvent,
-  ORG_MAPPING
+  ORG_MAPPING,
+  orgSet,
+  repoSet,
+  sleepInMinutes,
+  extractCommitsFromSimpleGit,
 }

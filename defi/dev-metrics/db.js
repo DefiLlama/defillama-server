@@ -102,11 +102,6 @@ GitRepo.init(
     },
     owner: {
       type: DataTypes.STRING,
-      references: {
-        model: 'git_owner',
-        key: 'name',
-      },
-      onDelete: 'SET NULL',
     },
     description: DataTypes.TEXT,
     language: DataTypes.STRING,
@@ -132,7 +127,7 @@ GitRepo.init(
     has_downloads: DataTypes.BOOLEAN,
     archived: DataTypes.BOOLEAN,
     disabled: DataTypes.BOOLEAN,
-    license: DataTypes.STRING,
+    license: DataTypes.JSONB,
     has_discussions: DataTypes.BOOLEAN,
     is_template: DataTypes.BOOLEAN,
     topics: DataTypes.ARRAY(DataTypes.STRING),
@@ -227,6 +222,8 @@ async function addArchiveData(archive_file, commit_count, filtered_commit_count)
 }
 
 module.exports = {  
+  GitOwner,
+  GitRepo,
   addRawCommit,
   archiveExists,
   addArchiveData,

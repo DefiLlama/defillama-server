@@ -4,10 +4,10 @@ const fs = require('fs');
 const rimraf = require('rimraf');
 const zlib = require('zlib');
 const { v4: uuidv4 } = require('uuid');
-const { turnRawLogToMinimalLog } = require('./utils');
+const { turnRawLogToMinimalLog } = require('.');
 const sdk = require('@defillama/sdk')
 
-const DATA_ROOT = path.join(__dirname, 'app-data')
+const DATA_ROOT = path.join(__dirname, '../app-data')
 const TEMP_ROOT = path.join(DATA_ROOT, 'temp')
 
 function createSubPath(folderPath) {

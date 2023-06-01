@@ -13,14 +13,19 @@ async function main() {
   await sequelize.sync()
 
   let fileNumber = { i: 1, startTimestamp: +Date.now(), totalHours: (endDate - startDate) / (3600 * 1e3), checked: 0 }
+  const checkedTill = moment('2020-08-27-8', 'YYYY-MM-DD-HH');
+  while (startDate.isSameOrBefore(checkedTill)) {
+    fileNumber.checked++
+    // Move to the next hour
+    startDate.add(1, 'hour');
+  }
   // Iterate through each hour
-  const currentHour = startDate.clone();
-  while (currentHour.isSameOrBefore(endDate)) {
+  while (startDate.isSameOrBefore(endDate)) {
     // Format the current hour as "year-month-day-hour"
-    // const formattedHour = currentHour.format('YYYY-MM-DD-HH');
+    // const formattedHour = startDate.format('YYYY-MM-DD-HH');
 
 
-    const formattedTime = currentHour.format('YYYY-MM-DD-HH');
+    const formattedTime = startDate.format('YYYY-MM-DD-HH');
     const archive_file = formattedTime.split('-').map((v, i) => i === 3 ? +v : v).join('-')
 
     // Process the current hour as needed
@@ -34,7 +39,7 @@ async function main() {
     }
 
     // Move to the next hour
-    currentHour.add(1, 'hour');
+    startDate.add(1, 'hour');
   }
 
   sequelize.close()

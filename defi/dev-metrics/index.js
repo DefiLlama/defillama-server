@@ -1,7 +1,7 @@
 const { Octokit } = require('octokit')
-const { setOrgDataFile, getOrgDataFile, clearTempFolders } = require('./cache')
+const { setOrgDataFile, getOrgDataFile, clearTempFolders } = require('./utils/cache')
 const { ORG_MAPPING } = require('./utils')
-const { pullOrCloneRepository } = require('./git')
+const { pullOrCloneRepository } = require('./utils/git')
 const sdk = require('@defillama/sdk')
 const { blacklistedOrgs, users, blacklistedRepoMapping } = require('./config')
 

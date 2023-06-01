@@ -1,4 +1,4 @@
-import { writeJSON, DATA_MAPPING_FILE, } from './cache'
+import { writeJSON, DATA_MAPPING_FILE, } from './utils/cache'
 
 import protocols from '../src/protocols/data'
 import parentProtocols from '../src/protocols/parentProtocols'

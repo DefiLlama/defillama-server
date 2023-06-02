@@ -36068,7 +36068,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["zkSync Era"],
     module: "dexilla/index.js",
-    twitter: "dexilla_dao",
+    twitter: "DexillaDAO",
     forkedFrom: [],
     audit_links: [],
     listedAt: 1685224615

@@ -1680,6 +1680,12 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainid: 369
   },
+  XPLA: {
+    geckoId: "xpla",
+    symbol: "XPLA",
+    cmcId: "22359",
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2088,6 +2094,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Grove"
     case "pulse":
       return "Pulse"
+    case "xpla":
+      return "XPLA"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

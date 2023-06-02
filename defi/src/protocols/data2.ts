@@ -36581,5 +36581,27 @@ const data2: Protocol[] = [
     parentProtocol: "parent#tropykus-finance",
     listedAt: 1685700448
   },
+  {
+    id: "3059",
+    name: "Dezswap",
+    address: null,
+    symbol: "-",
+    url: "https://app.dezswap.io/trade/swap",
+    description:
+      "Here comes cool guy Dez to make the most decentralized DEX for better DeFi life.",
+    chain: "XPLA",
+    logo: `${baseIconsUrl}/dezswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["XPLA"],
+    module: "xpla/index.js",
+    twitter: "dezswap_io",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1685713799
+  },
 ]
 export default data2;

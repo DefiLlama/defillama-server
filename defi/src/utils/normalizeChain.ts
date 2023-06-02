@@ -1684,7 +1684,7 @@ export const chainCoingeckoIds = {
     geckoId: "xpla",
     symbol: "XPLA",
     cmcId: "22359",
-    categories: ["EVM"],
+    categories: ["Cosmos"],
   },
 } as unknown as {
   [chain: string]: {

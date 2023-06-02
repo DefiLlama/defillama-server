@@ -34892,7 +34892,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2983",
-    name: "Zomma protocol",
+    name: "Zomma Protocol",
     address: null,
     symbol: "-",
     url: "https://zomma.pro",

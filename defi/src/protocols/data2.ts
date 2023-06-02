@@ -1241,13 +1241,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1464",
-    name: "Tropykus Finance",
+    name: "Tropykus RSK",
     address: null,
     symbol: "-",
     url: "https://app.tropykus.com",
     description: "Tropykus is a DeFi for Bitcoin lending and borrowing platform focused on Latanamerica.",
     chain: "RSK",
-    logo: `${baseIconsUrl}/tropykus-finance.png`,
+    logo: `${baseIconsUrl}/tropykus-rsk.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -1258,6 +1258,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     module: "tropykus/index.js",
     twitter: "tropykus",
+    parentProtocol: "parent#tropykus-finance",
     audit_links: [
       "https://firebasestorage.googleapis.com/v0/b/tropycofinance.appspot.com/o/Tropykus%20-%20Smart%20Contract%20Audit%20v210714.pdf?alt=media&token=f4f8e0d5-d577-45a1-85be-4e2d10cc210f",
       "https://firebasestorage.googleapis.com/v0/b/tropycofinance.appspot.com/o/Tropykus%20-%20Smart%20Contract%20Audit%20v211214.pdf?alt=media&token=9a1df569-bce4-4be8-9e3b-bcdd57061b65"
@@ -36556,6 +36557,29 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: [],
     listedAt: 1685661527
+  },
+  {
+    id: "3058",
+    name: "Tropykus zkEVM",
+    address: null,
+    symbol: "-",
+    url: "https://zk.app.tropykus.com",
+    description:
+      "AAVE fork on polygon zk chain",
+    chain: "Polygon zkEVM",
+    logo: `${baseIconsUrl}/tropykus-zkevm.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon zkEVM"],
+    module: "tropykus-zkevm/index.js",
+    twitter: "tropykus",
+    forkedFrom: ["Aave"],
+    oracles: [],
+    parentProtocol: "parent#tropykus-finance",
+    listedAt: 1685700448
   },
 ]
 export default data2;

@@ -1783,6 +1783,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "y2kfinance",
   },
+  {
+    id: "parent#tropykus-finance",
+    name: "Tropykus Finance",
+    url: "https://app.tropykus.com",
+    description: "Lending Protocol on polygon zk and RSK.",
+    logo: `${baseIconsUrl}/tropykus-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "tropykus",
+  },
 ];
 
 export default parentProtocols;

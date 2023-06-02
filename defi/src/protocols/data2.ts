@@ -18243,7 +18243,7 @@ const data2: Protocol[] = [
     url: "https://folks.finance/",
     description: "Liquid Staking protocol built on Algorand Blockchain.",
     chain: "Algorand",
-    logo: `${baseIconsUrl}/folks-finance.png`,
+    logo: `${baseIconsUrl}/algo-liquid-governance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -693,6 +693,7 @@ functions:
       - schedule: cron(0 * * * ? *)
     environment:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
   storeNewActiveUsers:
     handler: src/storeNewActiveUsers.default
     timeout: 900

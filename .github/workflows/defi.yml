@@ -101,3 +101,4 @@ jobs:
           ERROR_DB: ${{ secrets.ERROR_DB }}
           ERROR_REPORTS_WEBHOOK:  ${{ secrets.ERROR_REPORTS_WEBHOOK }}
           ERROR_REPORTS_DB: ${{ secrets.ERROR_REPORTS_DB }}
+          ALLIUM_API_KEY: ${{ secrets.ALLIUM_API_KEY }}

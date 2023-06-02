@@ -906,5 +906,9 @@ export default {
     "houdini-swap": {
         "enabled": true,
         "id": "3041"
+    },
+    "unlimited-network": {
+        "enabled": true,
+        "id": "3055"
     }
 } as AdaptorsConfig

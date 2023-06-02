@@ -552,6 +552,8 @@ functions:
     environment:
       ZEROx_API_KEY: ${file(./env.js):ZEROx_API_KEY}
       BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
+      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
+      FLIPSIDE_API_KEY: ${env:FLIPSIDE_API_KEY}
   triggerStoreAdaptorData:
     handler: src/adaptors/handlers/triggerStoreAdaptorData.default
     timeout: 900
@@ -702,6 +704,7 @@ functions:
       - schedule: cron(0 0 * * ? *)
     environment:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
+      ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
   activeUsers:
     handler: src/getActiveUsers.default
     timeout: 90

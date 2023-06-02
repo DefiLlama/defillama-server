@@ -102,3 +102,4 @@ jobs:
           ERROR_REPORTS_WEBHOOK:  ${{ secrets.ERROR_REPORTS_WEBHOOK }}
           ERROR_REPORTS_DB: ${{ secrets.ERROR_REPORTS_DB }}
           ALLIUM_API_KEY: ${{ secrets.ALLIUM_API_KEY }}
+          FLIPSIDE_API_KEY: ${{ secrets.FLIPSIDE_API_KEY }}

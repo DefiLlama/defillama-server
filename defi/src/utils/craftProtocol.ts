@@ -218,22 +218,12 @@ export default async function craftProtocol({
 
   const module = await importAdapter(protocolData);
   const misrepresentedTokens = module.misrepresentedTokens === true;
-  const [
-    lastUsdHourlyRecord,
-    lastUsdTokenHourlyRecord,
-    lastTokenHourlyRecord,
-    { raises },
-    mcap,
-    tokenPrice,
-    tokenSupply,
-  ] = await Promise.all([
+  const [lastUsdHourlyRecord, lastUsdTokenHourlyRecord, lastTokenHourlyRecord, { raises }, mcap] = await Promise.all([
     getLastRecord(hourlyTvl(protocolData.id)),
     getLastRecord(hourlyUsdTokensTvl(protocolData.id)),
     getLastRecord(hourlyTokensTvl(protocolData.id)),
     raisesPromise,
     protocolMcap(protocolData.gecko_id),
-    getProtocolTokenPrice(protocolData.gecko_id),
-    getProtocolTokenSupply(protocolData.gecko_id),
   ]);
 
   if (!useHourlyData) {
@@ -257,9 +247,6 @@ export default async function craftProtocol({
     raises: raises?.filter((raise: IRaise) => raise.defillamaId?.toString() === protocolData.id.toString()) ?? [],
     metrics: getAvailableMetricsById(protocolData.id),
     mcap,
-    tokenMcap: mcap,
-    tokenPrice: tokenPrice,
-    tokenSupply: tokenSupply,
   };
 
   Object.entries(lastUsdHourlyRecord ?? {}).forEach(([chain, chainTvl]) => {

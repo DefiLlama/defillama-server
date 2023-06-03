@@ -135,9 +135,9 @@ export default async function craftParentProtocol({
               nearestDate = currentTime;
             }
 
-            if (index !== 0 && !isTvlDataHourly){
-              let prevDate = curr.chainTvls[chain].tvl[index - 1].date
-              while(nearestDate - prevDate > 86400) {
+            if (index !== 0 && !isTvlDataHourly) {
+              let prevDate = curr.chainTvls[chain].tvl[index - 1].date;
+              while (nearestDate - prevDate > 86400) {
                 prevDate += 86400;
                 const prev = curr.chainTvls[chain].tvl[index - 1];
 
@@ -163,16 +163,16 @@ export default async function craftParentProtocol({
                 tokens: {},
               };
             }
-            
+
             // roundoff lasthourly date
             let nearestDate = date;
             if (index === curr.chainTvls[chain].tokensInUsd!.length - 1) {
               nearestDate = currentTime;
             }
 
-            if (index !== 0 && !isTvlDataHourly){
-              let prevDate = curr.chainTvls[chain].tokensInUsd![index - 1].date
-              while(nearestDate - prevDate > 86400) {
+            if (index !== 0 && !isTvlDataHourly) {
+              let prevDate = curr.chainTvls[chain].tokensInUsd![index - 1].date;
+              while (nearestDate - prevDate > 86400) {
                 prevDate += 86400;
                 const prev = curr.chainTvls[chain].tokensInUsd![index - 1];
 
@@ -212,10 +212,10 @@ export default async function craftParentProtocol({
               nearestDate = currentTime;
             }
 
-            if (index !== 0 && !isTvlDataHourly){
-              let prevDate = curr.chainTvls[chain].tokens![index - 1].date
-              while(nearestDate - prevDate > 86400){
-                prevDate += 86400
+            if (index !== 0 && !isTvlDataHourly) {
+              let prevDate = curr.chainTvls[chain].tokens![index - 1].date;
+              while (nearestDate - prevDate > 86400) {
+                prevDate += 86400;
                 const prev = curr.chainTvls[chain].tokens![index - 1];
 
                 if (!acc.chainTvls[chain].tokens[prevDate]) {
@@ -250,7 +250,7 @@ export default async function craftParentProtocol({
               }
 
               if (index !== 0 && !isTvlDataHourly) {
-                let prevDate = curr.tokensInUsd![index - 1].date
+                let prevDate = curr.tokensInUsd![index - 1].date;
                 while (nearestDate - prevDate > 86400) {
                   prevDate += 86400;
                   const prev = curr.tokensInUsd![index - 1];
@@ -285,9 +285,9 @@ export default async function craftParentProtocol({
               }
 
               if (index !== 0 && !isTvlDataHourly) {
-                let prevDate = curr.tokens![index - 1].date
+                let prevDate = curr.tokens![index - 1].date;
                 while (nearestDate - prevDate > 86400) {
-                  prevDate += 86400
+                  prevDate += 86400;
                   const prev = curr.tokens![index - 1];
 
                   Object.keys(tokens).forEach((token) => {
@@ -319,12 +319,11 @@ export default async function craftParentProtocol({
             }
 
             if (index !== 0 && !isTvlDataHourly) {
-              let prevDate = curr.tvl[index - 1].date
+              let prevDate = curr.tvl[index - 1].date;
               while (nearestDate - prevDate > 86400) {
-                prevDate += 86400
+                prevDate += 86400;
                 const prev = curr.tvl[index - 1];
-                acc.tvl[prevDate] =
-                  (acc.tvl[prevDate] || 0) + (prev.totalLiquidityUSD + totalLiquidityUSD) / 2;
+                acc.tvl[prevDate] = (acc.tvl[prevDate] || 0) + (prev.totalLiquidityUSD + totalLiquidityUSD) / 2;
               }
             }
 
@@ -417,9 +416,6 @@ export default async function craftParentProtocol({
     symbol: childProtocolsTvls.find((p) => p.symbol)?.symbol,
     treasury: parentProtocol.treasury || childProtocols.find((p) => p.treasury)?.treasury,
     mcap: tokenMcap || childProtocolsTvls.find((p) => p.mcap)?.mcap,
-    tokenPrice: tokenPrice || childProtocolsTvls.find((p) => p.tokenPrice)?.tokenPrice,
-    tokenMcap: tokenMcap || childProtocolsTvls.find((p) => p.tokenMcap)?.tokenMcap,
-    tokenSupply: tokenSupply || childProtocolsTvls.find((p) => p.tokenSupply)?.tokenSupply,
   };
 
   // Filter overall tokens, tokens in usd by date if data is more than 6MB

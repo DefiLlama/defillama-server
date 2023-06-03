@@ -1794,6 +1794,28 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tropykus",
   },
+  {
+    id: "parent#pulsex",
+    name: "PulseX",
+    url: "https://pulsex.com/",
+    description: 'PulseX enables you to exchange tokens ("PRC20s") on PulseChain for one another',
+    logo: `${baseIconsUrl}/pulsex.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PulseXcom",
+  },
+  {
+    id: "parent#synfutures",
+    name: "PulseX",
+    url: "https://www.synfutures.com/",
+    description: 'Next-generation derivatives platform designed for any blockchain',
+    logo: `${baseIconsUrl}/synfutures.svg`,
+    gecko_id: "synfutures",
+    cmcId: "1504",
+    chains: [],
+    twitter: "SynFuturesDefi",
+  },
 ];
 
 export default parentProtocols;

@@ -68,34 +68,6 @@ export const protocolMcap = async (geckoId?: string | null) => {
   return mcap?.[`coingecko:${geckoId}`]?.mcap ?? null;
 };
 
-export const getProtocolTokenPrice = async (geckoId?: string | null) => {
-  if (!geckoId) return null;
-
-  const price = await fetch(`https://coins.llama.fi/prices/current/coingecko:${geckoId}`)
-    .then((r) => r.json())
-    .catch((err) => {
-      console.log(err);
-      return {};
-    });
-
-  return price?.coins?.[`coingecko:${geckoId}`]?.price ?? null;
-};
-
-export const getProtocolTokenSupply = async (geckoId?: string | null) => {
-  if (!geckoId) return null;
-
-  const supply = await fetch(
-    `https://api.coingecko.com/api/v3/coins/${geckoId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false&x_cg_pro_api_key=${process.env.CG_KEY}`
-  )
-    .then((res) => res.json())
-    .catch((err) => {
-      console.log(err);
-      return {};
-    });
-
-  return supply?.["market_data"]?.["total_supply"] ?? null;
-};
-
 export async function buildCoreData({
   protocolData,
   useNewChainNames,

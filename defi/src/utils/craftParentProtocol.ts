@@ -6,7 +6,7 @@ import sluggify from "./sluggify";
 import fetch from "node-fetch";
 import { getAvailableMetricsById } from "../adaptors/data/configs";
 import treasuries from "../protocols/treasury";
-import { getProtocolTokenPrice, getProtocolTokenSupply, protocolMcap } from "./craftProtocol";
+import { protocolMcap } from "./craftProtocol";
 
 interface ICombinedTvls {
   currentChainTvls: ICurrentChainTvls;
@@ -394,11 +394,7 @@ export default async function craftParentProtocol({
     totalLiquidityUSD,
   }));
 
-  const [tokenMcap, tokenPrice, tokenSupply] = await Promise.all([
-    protocolMcap(parentProtocol.gecko_id),
-    getProtocolTokenPrice(parentProtocol.gecko_id),
-    getProtocolTokenSupply(parentProtocol.gecko_id),
-  ]);
+  const [tokenMcap] = await Promise.all([protocolMcap(parentProtocol.gecko_id)]);
 
   const response: IProtocolResponse = {
     ...parentProtocol,

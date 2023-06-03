@@ -8,7 +8,7 @@ import { countNewUsers } from "@defillama/dimension-adapters/users/utils/countUs
 async function storeActiveUsers() {
     const listWithNewUsers = addressList.concat(adapterList.filter((adapter:any)=>adapter.getNewUsers) as any[])
     await PromisePool
-        .withConcurrency(16)
+        .withConcurrency(40)
         .for(shuffleArray(listWithNewUsers))
         .process(async ({ name, addresses, getAddresses, id, getNewUsers }) => {
             if (!id) {

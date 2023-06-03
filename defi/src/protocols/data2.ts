@@ -36653,5 +36653,28 @@ const data2: Protocol[] = [
     parentProtocol: "parent#synfutures",
     listedAt: 1685750365
   },
+  {
+    id: "3062",
+    name: "MagicFox",
+    address: "bsc:0x84E0a246DD437d911989E89667816A9Ed97a1284",
+    symbol: "FOX",
+    url: "https://app.magicfox.fi/vaults",
+    description:
+      "MagicFox is Multichain Solidly ve(3,3) Swap & Yield Optimizer on BNB Chain, Arbitrum and Polygon built atop LayerZero",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/magicfox.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon", "Arbitrum", "Binance"],
+    module: "magicfox/index.js",
+    twitter: "magicfoxfi",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://docs.magicfox.fi/security/kyc-and-audit"],
+    listedAt: 1685824211
+  },
 ]
 export default data2;

@@ -179,6 +179,7 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
             logo: adapter.logo,
             protocolType: adapter.protocolType ?? ProtocolType.PROTOCOL,
             methodologyURL: adapter.methodologyURL,
+            methodology: adapter.methodology,
             latestFetchIsOk: adapter?.config?.latestFetchIsOk ?? false,
             versionKey: adapter.versionKey,
             total24h: null,

@@ -45,6 +45,7 @@ export interface IHandlerBodyResponse extends
     totalAllTime: number | null
     latestFetchIsOk: boolean
     methodologyURL: string | null
+    methodology?: {[key: string]: string} | null
     module: string | null
     childProtocols: string[] | null
 }
@@ -110,6 +111,7 @@ const getProtocolSummary = async (dexData: ProtocolAdaptor, dataType: AdaptorRec
             protocolType: generatedSummary.protocolType,
             chains: generatedSummary.chains,
             methodologyURL: generatedSummary.methodologyURL,
+            methodology: generatedSummary.methodology,
             allAddresses: generatedSummary.allAddresses,
             latestFetchIsOk: generatedSummary.latestFetchIsOk,
             parentProtocol: generatedSummary.parentProtocol,
@@ -184,6 +186,7 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
         disabled: false,
         change_1d,
         methodologyURL: null,
+        methodology: null,
         module: null,
         totalDataChart,
         totalDataChartBreakdown,

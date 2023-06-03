@@ -41,7 +41,7 @@ async function main(){
 async function solana(){
     const usersChart = await queryFlipside(`SELECT
         date_trunc(day, block_timestamp) as dt, 
-        count(tx_hash) uniques
+        count(TX_ID) uniques
     from
         solana.core.fact_transactions
     group by dt`)
@@ -61,12 +61,12 @@ async function near(){
 async function osmosis(){
     const usersChart = await queryFlipside(`SELECT
         date_trunc(day, block_timestamp) as dt, 
-        count(tx_hash uniques
+        count(tx_id) uniques
     from
         osmosis.core.fact_transactions
     group by dt`)
     await storeTxsInDb("osmosis", usersChart)
 }
 Promise.all([main()
-    //, solana(), near(), osmosis()
+    , solana(), near(), osmosis()
 ]).then(()=>console.log("finished!"))

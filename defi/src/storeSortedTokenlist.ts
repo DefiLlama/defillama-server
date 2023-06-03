@@ -3,7 +3,7 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import fetch from "node-fetch";
 import sleep from "./utils/shared/sleep";
 
-const CG_TOKEN_API = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=<PLACEHOLDER>&x_cg_pro_api_key=${process.env.CG_KEY}`;
+const CG_TOKEN_API = `https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=<PLACEHOLDER>&x_cg_pro_api_key=${process.env.CG_KEY}`;
 
 async function cgRequest(url: string) {
   let data;

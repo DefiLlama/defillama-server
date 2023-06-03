@@ -701,7 +701,7 @@ functions:
     timeout: 900
     memorySize: 1000
     events:
-      - schedule: cron(0 0 * * ? *)
+      - schedule: cron(0 * * * ? *)
     environment:
       ACCOUNTS_DB: ${env:ACCOUNTS_DB}
       ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}

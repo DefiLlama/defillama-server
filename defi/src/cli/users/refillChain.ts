@@ -2,12 +2,13 @@ require("dotenv").config();
 import { queryFlipside } from "../../../dimension-adapters/helpers/flipsidecrypto";
 import { PromisePool } from '@supercharge/promise-pool'
 import { storeUsers } from "../../users/storeUsers";
+import { queryAllium } from "@defillama/dimension-adapters/helpers/allium";
 
-async function storeUsersInDb(chain:string, usersChart:[string, number][]){
+async function storeUsersInDb(chain:string, usersChart:[string, number][], suffix = " UTC"){
     await PromisePool
             .withConcurrency(10)
             .for(usersChart).process(async ([dateString, users]) => {
-                const date = new Date(`${dateString} UTC`)
+                const date = new Date(dateString+suffix)
                 const start = Math.round(date.getTime() / 1e3)
                 const end = start + 24 * 3600
                 if(end > Date.now()/1e3){
@@ -34,6 +35,21 @@ async function main(){
             ${chain}.core.fact_transactions
         group by dt`)
         await storeUsersInDb(chain, usersChart)
+        
+    }))
+}
+
+async function allium(){
+    await Promise.all([
+        "tron",
+    ].map(async (chain) => {
+        const usersChart = await queryAllium(`SELECT
+            date_trunc('day', block_timestamp) as dt, 
+            count(DISTINCT FROM_ADDRESS) uniques
+        from
+            ${chain}.raw.transactions
+        group by dt`)
+        await storeUsersInDb(chain, usersChart.map((r:any)=>[r.dt, r.uniques]), "Z")
         
     }))
 }
@@ -67,4 +83,4 @@ async function osmosis(){
     group by dt`)
     await storeUsersInDb("osmosis", usersChart)
 }
-Promise.all([main(), solana(), near(), osmosis()]).then(()=>console.log("finished!"))
+Promise.all([allium()]).then(()=>console.log("finished!"))

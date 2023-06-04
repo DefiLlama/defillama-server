@@ -815,7 +815,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "8720",
     chains: [],
     treasury: "inverse.js",
-    governanceID: ['eip155:1:0x35d9f4953748b318f18c30634bA299b237eeDfff' ],
+    governanceID: ['eip155:1:0x35d9f4953748b318f18c30634bA299b237eeDfff', 'compound:ethereum:0xBeCCB6bb0aa4ab551966A7E4B97cec74bb359Bf6' ],
     twitter: "InverseFinance",
     stablecoins: ["dola"],
     github: ["InverseFinance"]

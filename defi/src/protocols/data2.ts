@@ -36712,7 +36712,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Liquid Staking",
     chains: ["Secret"],
     oracles: [],
     forkedFrom: [],

@@ -1824,9 +1824,8 @@ const parentProtocols: IParentProtocol[] = [
     logo: `${baseIconsUrl}/shade-protocol.jpg`,
     gecko_id: "shade-protocol",
     cmcId: "18699",
-    chains: ["Secret"],
+    chains: [],
     twitter: "Shade_Protocol",
-    stablecoins: ["silk"],
     github: ["securesecrets"]
   },
 ];

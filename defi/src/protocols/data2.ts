@@ -36746,5 +36746,28 @@ const data2: Protocol[] = [
     stablecoins: ["silk"],
     listedAt: 1673816828
   },
+  {
+    id: "3066",
+    name: "Paladin Warlord",
+    address: "0xAB846Fb6C81370327e784Ae7CbB6d6a6af6Ff4BF",
+    symbol: "PAL",
+    url: "https://warlord.paladin.vote",
+    description:
+      "Warlord is a vote incentive index for AMM flywheels.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/paladin-warlord.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Ethereum"],
+    module: "paladinfinance-warlord/index.js",
+    twitter: "Paladin_vote",
+    oracles: [],
+    forkedFrom: [],
+    parentProtocol: "parent#paladin-finance",
+    listedAt: 1685977922
+  },
 ]
 export default data2;

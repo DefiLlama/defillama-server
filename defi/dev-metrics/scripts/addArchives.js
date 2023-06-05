@@ -4,8 +4,8 @@ const { sequelize } = require('../db')
 const moment = require('moment');
 
 // Define the start and end dates
-let startDate = moment('2015-01-01-00', 'YYYY-MM-DD-HH');
-// const startDate = moment('2020-01-26-23', 'YYYY-MM-DD-HH');
+// let startDate = moment('2015-01-01-00', 'YYYY-MM-DD-HH');
+const startDate = moment('2023-06-04-23', 'YYYY-MM-DD-HH');
 // const endDate = moment('2015-01-04-00', 'YYYY-MM-DD-HH');
 const endDate = moment().startOf('hour').subtract(1, 'hour');
 

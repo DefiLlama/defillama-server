@@ -11,11 +11,6 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_API_KEY,
 });
 
-const missingOrgs = new Set([
-  'ferum-dex',
-  'Arbi-s',
-])
-
 async function main() {
   await sequelize.sync()
 
@@ -32,38 +27,34 @@ async function main() {
   console.log('org length: ', OrgArray.length)
   console.log('repo orgs length: ', repoOrgs.length)
 
-  // for (const orgName of ['webrtc', 'muaz-khan']) {
   let i = 0
+
   for (const orgName of OrgArray) {
-  // for (const orgName of ['bitcoin']) {
-    await updateOrgAndRepos(orgName)
     const progress = Number(100 * ++i / OrgArray.length).toPrecision(4)
-    console.log(`[Org] orgs done: ${orgName} ${i}/${OrgArray.length} (${progress}%)`)
+    await updateOrgAndRepos(orgName, undefined, { OrgArray, progress, i})
   }
   i = 0
-  // for (const orgName of ['webrtc']) {
   for (const repoOrg of repoOrgs) {
-  // for (const repoOrg of ['zocteam']) {
-    await updateOrgAndRepos(repoOrg, Object.keys(repoMapping[repoOrg]))
     const progress = Number(100 * ++i / repoOrgs.length).toPrecision(4)
-    console.log(`[Repo] orgs done: ${repoOrg} ${i}/${repoOrgs.length} (${progress}%)`)
-    // await sleepInMinutes(1 / 20)
+    await updateOrgAndRepos(repoOrg, Object.keys(repoMapping[repoOrg]), { OrgArray, progress, i})
+    // console.log(`[Repo] orgs done: ${repoOrg} ${i}/${repoOrgs.length} (${progress}%)`)
+    await sleepInMinutes(1 / 30)
   }
 }
 
 
-async function updateOrgAndRepos(orgName, repoFilter) {
-  if (missingOrgs.has(orgName)) return
+async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } = {}) {
 
   try {
     // Check if the organization exists in the database
     const existingOrg = await GitOwner.findOne({ where: { name: orgName } });
 
     if (existingOrg) {
+      if (existingOrg.is_missing) return;
       // If the organization exists, check the last update time
       const lastUpdateTime = existingOrg.lastUpdateTime;
       const oneWeekAgo = new Date();
-      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7 * 4);
 
       if (lastUpdateTime >= oneWeekAgo) {
         // console.log('Organization is up to date.');
@@ -216,17 +207,28 @@ async function updateOrgAndRepos(orgName, repoFilter) {
     }
 
     // console.log('Org and repos updated successfully: ', orgName, is_org)
+
+    console.log(`[Org] orgs done: ${orgName} ${i}/${OrgArray.length} (${progress}%)`)
     await sleepInMinutes(1 / 15)
   } catch (error) {
-    console.error('Error occurred:', error, orgName);
+    // console.error('Error occurred:', error, orgName);
+    if (error.status === 404 && error.response?.url?.includes('/repos') && error.response?.url?.includes('page=0')) { 
+      console.log('Missing org: ', orgName)
+      return GitOwner.create({
+        name: orgName,
+        is_missing: true
+      });
+    }
+    console.error('------------------Error occurred:', error, orgName);
+    // process.exit(1)
   }
 }
 
 
 async function addCommits(repoData) {
   if (repoData.fork || !repoData.size) return
-  const repoCreatedyear = new Date(repoData.created_at).getFullYear()
-  if (repoCreatedyear > 2014) return
+  // const repoCreatedyear = new Date(repoData.created_at).getFullYear()
+  // if (repoCreatedyear > 2014) return
   // Fetching for the first time, pull the entire repo from github
   const repoPath = getTempFolder()
   const progress = ({ method, stage, progress }) => {
@@ -244,7 +246,6 @@ async function addCommits(repoData) {
 
   const commitLogs = await git.log({ maxCount: 1e6 })
   let commits = extractCommitsFromSimpleGit(commitLogs.all, repoData)
-  commits = commits.filter(commit => new Date(commit.created_at).getFullYear() < 2020)
   for (const commit of commits)
     await addRawCommit(commit)
   deleteFolder(repoPath)

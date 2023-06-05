@@ -83,6 +83,7 @@ GitOwner.init(
     lastUpdateTime: DataTypes.DATE,
     linkedProjects: DataTypes.ARRAY(DataTypes.STRING),
     is_org: DataTypes.BOOLEAN,
+    is_missing: DataTypes.BOOLEAN,
     ecosystem: DataTypes.ARRAY(DataTypes.STRING),
   },
   {

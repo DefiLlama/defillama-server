@@ -2,10 +2,15 @@ const moment = require('moment')
 const ORG_MAPPING = require('../app-data/mapping.json')
 const tomlData = require('../app-data/tomlData.json')
 
-const orgSet = new Set(tomlData.orgData)
-const repoSet = new Set(Object.keys(tomlData.repos))
+const ORGS_MISSING_FROM_TOML = []
 
-Object.keys(ORG_MAPPING).forEach(org => orgSet.add(org))  // Add orgs from mapping.json
+const orgSet = new Set(tomlData.orgData.map(i => i.replace(/\/$/, '')))
+const repoSet = new Set(Object.keys(tomlData.repos))
+Object.values(ORG_MAPPING).forEach(org => org.github.map(i => i.replace('user:', i).replace(/\/$/, '')).forEach(i => {
+  if (orgSet.has(i)) return;
+  ORGS_MISSING_FROM_TOML.push(i)
+  orgSet.add(i)
+}))
 // Object.keys(tomlData.repos).forEach(org => orgSet.add(org.split('/')[1]))  // Add orgs from repos in tomlData.json
 
 function toUnixTime(dateStr) {
@@ -164,6 +169,7 @@ module.exports = {
   turnToElasticLog,
   extractCommitsFromPushEvent,
   ORG_MAPPING,
+  ORGS_MISSING_FROM_TOML,
   orgSet,
   repoSet,
   sleepInMinutes,

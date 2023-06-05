@@ -207,4 +207,95 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x3e84607606b25f8a3c75b6db4a8a6683d1e40284", "Murakami Flowers Coin"],
         ]
     },
+    {
+        name:"Prime Ape Planet PAP",
+        url: "https://primeapeplanet.com",
+        twitter: "PrimeApePlanet",
+        nftCollections: [
+            ["0x6632a9d63e142f17a668064d41a21193b49b41a0", "Prime Ape Planet PAP"],
+        ]
+    },
+    {
+        name:"CyberKongz",
+        url: "https://www.cyberkongz.com/",
+        twitter: "CyberKongz",
+        nftCollections: [
+            ["0x57a204aa1042f6e66dd7730813f4024114d74f37", "CyberKongz"],
+            ["0x7ea3cca10668b8346aec0bf1844a49e995527c8b", "CyberKongz VX"]
+        ],
+    },
+    {
+        name:"World of Women",
+        url: "https://www.worldofwomen.art",
+        twitter: "worldofwomennft",
+        nftCollections: [
+            ["0xe785e82358879f061bc3dcac6f0444462d4b5330", "World of Women"],
+            ["0xf61f24c2d93bf2de187546b14425bf631f28d6dc", "World of Women Galaxy"]
+        ],
+    },
+    {
+        name:"VOX Collectibles",
+        url: "https://collectvox.com",
+        twitter: "TheVOXverse",
+        nftCollections: [
+            ["0xad9fd7cb4fc7a0fbce08d64068f60cbde22ed34c", "VOX Collectibles: Town Star"],
+            ["0xf76179bb0924ba7da8e7b7fc2779495d7a7939d8", "VOX Collectibles: Mirandus"],
+            ["0x338be3d8d0209815601e72f7a04ac7f37d61564b", "VOX Collectibles: The Walking Dead"],
+            ["0x56f13a5385b33f7db926ceb9d17799672355e040", "VOX Collectibles: DreamWorks Trolls VOX Box"],
+            ["0xaa94d963bd7b6c8ddde07a4b4cf13e26c2650899", "VOX Collectibles: DreamWorks Trolls"]
+        ],
+    },
+    {
+        name:"0N1 Force",
+        url: "https://www.0n1force.com",
+        twitter: "0n1Force",
+        nftCollections: [
+            ["0x3bf2922f4520a8ba0c2efc3d2a1539678dad5e9d", "0N1 Force"],
+        ],
+    },
+    {
+        name:"Creature World",
+        url: "https://www.creature.world",
+        twitter: "creatureworld",
+        nftCollections: [
+            ["0xc92ceddfb8dd984a89fb494c376f9a48b999aafc", "Creature World"],
+        ],
+    },
+    {
+        name:"PhantaBear",
+        url: "https://ezek.io",
+        twitter: "EzekClub",
+        nftCollections: [
+            ["0x67d9417c9c3c250f61a83c7e8658dac487b56b09", "PhantaBear"],
+        ],
+    },
+    {
+        name:"HAPE PRIME",
+        url: "https://hape.io",
+        twitter: "HAPEsocial",
+        nftCollections: [
+            ["0x4db1f25d3d98600140dfc18deb7515be5bd293af", "HAPE PRIME"],
+        ],
+    },
+    {
+        name:"Truth Labs",
+        url: "https://truthlabs.co",
+        twitter: "truth",
+        nftCollections: [
+            ["0xbce3781ae7ca1a5e050bd9c4c77369867ebc307e", "GoblinTown"],
+            ["0xa7ee407497b2aeb43580cabe2b04026b5419d1dc", "The Superlative Secret Society"],
+            ["0x62d8ae32b0e6964d2126716cf3da70c2bd062d94", "The Alien Secret Society"],
+            ["0x88091012eedf8dba59d08e27ed7b22008f5d6fe5", "Secret Society of Whales"],
+            ["0xa48eda4b2c63928cac2a1fd631493ac038dafa5d", "The 187 by Truth Labs"],
+            ["0x7b390a46c868ccebf2730121faf777129b47c97c", "BiG iNC Letters of Acceptance"],
+        ],
+    },
+    {
+        name:"Karafuru",
+        url: "https://karafuru.io/",
+        twitter: "KarafuruNFT",
+        nftCollections: [
+            ["0xd2f668a8461d6761115daf8aeb3cdf5f40c532c6", "Karafuru"],
+        ],
+    },
 ]

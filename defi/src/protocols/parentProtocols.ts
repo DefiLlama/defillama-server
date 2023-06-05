@@ -1816,6 +1816,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SynFuturesDefi",
   },
+  {
+    id: "parent#shade-protocol",
+    name: "Shade Protocol",
+    url: "https://shadeprotocol.io",
+    description: "A suite of privacy preserving DeFi applications.",
+    logo: `${baseIconsUrl}/shade-protocol.jpg`,
+    gecko_id: "shade-protocol",
+    cmcId: "18699",
+    chains: ["Secret"],
+    twitter: "Shade_Protocol",
+    stablecoins: ["silk"],
+    github: ["securesecrets"]
+  },
 ];
 
 export default parentProtocols;

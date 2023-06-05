@@ -36722,7 +36722,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#shade-protocol",
     listedAt: 1681404530
   },
-  {
+  /*{
     id: "3065",
     name: "SILK",
     address: null,
@@ -36745,7 +36745,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#shade-protocol",
     stablecoins: ["silk"],
     listedAt: 1673816828
-  },
+  },*/
   {
     id: "3066",
     name: "Paladin Warlord",

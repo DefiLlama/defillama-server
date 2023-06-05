@@ -36749,8 +36749,8 @@ const data2: Protocol[] = [
   {
     id: "3066",
     name: "Paladin Warlord",
-    address: "0xAB846Fb6C81370327e784Ae7CbB6d6a6af6Ff4BF",
-    symbol: "PAL",
+    address: "0xa8258deE2a677874a48F5320670A869D74f0cbC1",
+    symbol: "WAR",
     url: "https://warlord.paladin.vote",
     description:
       "Warlord is a vote incentive index for AMM flywheels.",
@@ -36768,6 +36768,33 @@ const data2: Protocol[] = [
     forkedFrom: [],
     parentProtocol: "parent#paladin-finance",
     listedAt: 1685977922
+  },
+  {
+    id: "3067",
+    name: "Equito Finance",
+    address: null,
+    symbol: "-",
+    url: "https://equitofinance.com",
+    description:
+      "Equito Finance is a cross-chain bridge connecting the Algorand, Ethereum, and BSC chains. More information can be found on",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/equito-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Ethereum", "Algorand", "Binance"],
+    module: "equito-finance/index.js",
+    twitter: "EquitoFinance",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [
+                   "https://skynet.certik.com/projects/equito-finance",
+                   "https://github.com/EquitoBridge/equito-algo-contracts-v1/blob/271bd7b7c6de956f7c567f5a6412a02853817725/audit/REP-final-20221216T155748Z.pdf",
+                   "https://github.com/EquitoBridge/equito-evm-contracts-v1/blob/main/audit/REP-final-20221216T155626Z.pdf"
+                 ],
+    listedAt: 1685989324
   },
 ]
 export default data2;

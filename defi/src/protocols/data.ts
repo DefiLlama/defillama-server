@@ -10818,27 +10818,26 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "624",
-    name: "Paladin Finance",
+    name: "Paladin Vote",
     address: "0xAB846Fb6C81370327e784Ae7CbB6d6a6af6Ff4BF",
     symbol: "PAL",
     url: "https://www.paladin.vote",
     description:
       "Paladin is a decentralized, non-custodial governance lending protocol where users can either loan the voting power in their governance token, or borrow some voting power.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/paladin-finance.jpg`,
+    logo: `${baseIconsUrl}/paladin-vote.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "paladin",
-    cmcId: "19072",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Ethereum"],
     module: "paladinfinance/index.js",
-    treasury: "paladin-finance.js",
     twitter: "Paladin_vote",
     audit_links: [
       "https://github.com/pessimistic-io/audits/blob/914e35fdfc879451a61d2a3969f3be839b8c808f/Paladin%20Security%20Analysis%20by%20Pessimistic.pdf",
     ],
-    governanceID: ["snapshot:palvote.eth"]
+    parentProtocol: "parent#paladin-finance"
   },
   {
     id: "625",

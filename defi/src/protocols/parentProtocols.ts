@@ -1828,6 +1828,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Shade_Protocol",
     github: ["securesecrets"]
   },
+  {
+    id: "parent#paladin-finance",
+    name: "Paladin Finance",
+    url: "https://www.paladin.vote",
+    description: "Paladin is a decentralized, non-custodial governance lending protocol where users can either loan the voting power in their governance token, or borrow some voting power.",
+    logo: `${baseIconsUrl}/paladin-finance.jpg`,
+    gecko_id: "paladin",
+    cmcId: "19072",
+    chains: [],
+    twitter: "Paladin_vote",
+    governanceID: ["snapshot:palvote.eth"],
+    treasury: "paladin-finance.js",
+  },
 ];
 
 export default parentProtocols;

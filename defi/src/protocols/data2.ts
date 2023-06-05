@@ -29704,7 +29704,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2746",
-    name: "Eralend",
+    name: "EraLend",
     address: null,
     symbol: "-",
     url: "https://app.eralend.com/",

@@ -1616,5 +1616,4 @@ export default {
         "enabled": true,
         "id": "3060"
     }
-
 } as AdaptorsConfig

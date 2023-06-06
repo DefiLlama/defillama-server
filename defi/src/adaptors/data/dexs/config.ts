@@ -1605,5 +1605,16 @@ export default {
         parentId: "SUN.io",
         "enabled": true,
         "id": "3005"
+    },
+    "pulsex-v1": {
+        parentId: "PulseX",
+        "enabled": true,
+        "id": "2995"
+    },
+    "pulsex-v2": {
+        parentId: "PulseX",
+        "enabled": true,
+        "id": "3060"
     }
+
 } as AdaptorsConfig

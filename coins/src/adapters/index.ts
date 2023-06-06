@@ -103,4 +103,5 @@ export default {
   gmd: require("./other"),
   stkaurabal: require("./other"),
   glpDerivs: require("./yield/glpDerivs"),
+  pendle: require("./yield/pendle"),
 };

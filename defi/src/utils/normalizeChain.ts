@@ -1680,13 +1680,13 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
     chainid: 369
   },
-  XPLA: {
+  "XPLA": {
     geckoId: "xpla",
     symbol: "XPLA",
     cmcId: "22359",
     categories: ["Cosmos"],
   },
-  Neutron: {
+  "Neutron": {
     geckoId: null,
     symbol: null,
     cmcId: null,

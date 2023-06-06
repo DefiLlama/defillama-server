@@ -36796,5 +36796,97 @@ const data2: Protocol[] = [
                  ],
     listedAt: 1685989324
   },
+  {
+    id: "3068",
+    name: "Raft",
+    address: null,
+    symbol: "-",
+    url: "https://raft.fi/",
+    description:
+      "Raft is a governance-minimized, decentralized protocol that allows people to generate R (a USD stablecoin) by depositing capital-efficient collateral, solely backed by Lido Staked Ether (stETH)",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/raft.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "raft/index.js",
+    twitter: "raft_fi",
+    oracles: ["Chainlink", "Tellor"],
+    forkedFrom: [],
+    audit_links: [ "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-tempus-raft-securityreview.pdf"],
+    listedAt: 1686074293
+  },
+  {
+    id: "3069",
+    name: "QuipuSwap Stableswap",
+    address: "tezos:KT193D4vozYnhGJQVtw7CoxxqphqUEEwK6Vb",
+    symbol: "QUIPU",
+    url: "https://quipuswap.com",
+    description:
+      "Stable DEX, as a part of the growing QuipuSwap ecosystem, provides a platform for price-efficient and low-risk stablecoin or equal-price token trading",
+    chain: "Tezos",
+    logo: `${baseIconsUrl}/quipuswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Tezos"],
+    module: "quipuswap-stableswap/index.js",
+    twitter: "QuipuSwap",
+    audit_links: [
+      "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/quipuswap-stableswap.pdf",
+    ],
+    parentProtocol: "parent#quipuswap"
+  },
+  {
+    id: "3070",
+    name: "QuipuSwap V2",
+    address: "tezos:KT193D4vozYnhGJQVtw7CoxxqphqUEEwK6Vb",
+    symbol: "QUIPU",
+    url: "https://quipuswap.com",
+    description:
+      "QuipuSwap DEX 2.0 is a part of the growing QuipuSwap ecosystem. It provides a platform for better and more powerful trading. We intend to create a solution for the Tezos ecosystem akin to that Uniswap has created for Ethereum",
+    chain: "Tezos",
+    logo: `${baseIconsUrl}/quipuswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Tezos"],
+    module: "quipuswap-v2/index.js",
+    twitter: "QuipuSwap",
+    audit_links: [
+      "https://leastauthority.com/static/publications/LeastAuthority_Tezos_Foundation_QuipuSwap_Smart_Contracts_Final_Audit_Report.pdf",
+    ],
+    parentProtocol: "parent#quipuswap"
+  },
+  {
+    id: "3071",
+    name: "QuipuSwap V3",
+    address: "tezos:KT193D4vozYnhGJQVtw7CoxxqphqUEEwK6Vb",
+    symbol: "QUIPU",
+    url: "https://quipuswap.com",
+    description:
+      "QuipuSwap is an open-source protocol that provides an interface for the seamless decentralized exchange of Tezos-based Tokens, stable swap with dividends, and farming features. Liquidity providers may earn fees from trading, baking rewards, or receive rewards from staking tokens on farms. QuipuSwap smart contracts were developed by the MadFish Team and audited by Least Authority and  Runtime Verification companies.",
+    chain: "Tezos",
+    logo: `${baseIconsUrl}/quipuswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Tezos"],
+    module: "quipuswap-v3/index.js",
+    twitter: "QuipuSwap",
+    audit_links: [
+      "https://leastauthority.com/static/publications/LeastAuthority_Tezos_Foundation_QuipuSwap_Smart_Contracts_Final_Audit_Report.pdf",
+    ],
+    parentProtocol: "parent#quipuswap"
+  },
 ]
 export default data2;

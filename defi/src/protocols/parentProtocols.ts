@@ -1841,6 +1841,17 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:palvote.eth"],
     treasury: "paladin-finance.js",
   },
+  {
+    id: "parent#quipuswap",
+    name: "QuipuSwap",
+    url: "https://quipuswap.com",
+    description: "QuipuSwap is an open-source protocol that provides an interface for the seamless decentralized exchange of Tezos-based Tokens, stable swap with dividends, and farming features. Liquidity providers may earn fees from trading, baking rewards, or receive rewards from staking tokens on farms. QuipuSwap smart contracts were developed by the MadFish Team and audited by Least Authority and  Runtime Verification companies",
+    logo: `${baseIconsUrl}/quipuswap.png`,
+    gecko_id: "quipuswap-governance-token",
+    cmcId: "13316",
+    chains: [],
+    twitter: "QuipuSwap",
+  },
 ];
 
 export default parentProtocols;

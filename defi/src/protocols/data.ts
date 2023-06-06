@@ -8525,7 +8525,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "513",
-    name: "QuipuSwap",
+    name: "QuipuSwap V1",
     address: "tezos:KT193D4vozYnhGJQVtw7CoxxqphqUEEwK6Vb",
     symbol: "QUIPU",
     url: "https://quipuswap.com",
@@ -8545,6 +8545,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://leastauthority.com/static/publications/LeastAuthority_Tezos_Foundation_QuipuSwap_Smart_Contracts_Final_Audit_Report.pdf",
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/quipuswap-stableswap.pdf",
     ],
+    parentProtocol: "parent#quipuswap"
   },
   {
     id: "514",

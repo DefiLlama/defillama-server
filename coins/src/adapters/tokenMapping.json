@@ -25,6 +25,11 @@
       "symbol": "OSMO",
       "to": "coingecko#osmosis"
     },
+    "C0E66D1C81D8AAF0E6896E05190FDFBC222367148F86AC3EA679C28327A763CD": {
+      "decimals": "6",
+      "symbol": "AXL",
+      "to": "coingecko#axelar"
+    },
     "B448C0CA358B958301D328CCDC5D5AD642FC30A6D3AE106FF721DB315F3DDE5C": {
       "decimals": "6",
       "symbol": "USTC",

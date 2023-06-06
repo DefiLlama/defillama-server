@@ -36840,7 +36840,8 @@ const data2: Protocol[] = [
     audit_links: [
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/quipuswap-stableswap.pdf",
     ],
-    parentProtocol: "parent#quipuswap"
+    parentProtocol: "parent#quipuswap",
+    listedAt: 1686076065
   },
   {
     id: "3070",
@@ -36863,7 +36864,8 @@ const data2: Protocol[] = [
     audit_links: [
       "https://leastauthority.com/static/publications/LeastAuthority_Tezos_Foundation_QuipuSwap_Smart_Contracts_Final_Audit_Report.pdf",
     ],
-    parentProtocol: "parent#quipuswap"
+    parentProtocol: "parent#quipuswap",
+    listedAt: 1686076092
   },
   {
     id: "3071",
@@ -36886,7 +36888,56 @@ const data2: Protocol[] = [
     audit_links: [
       "https://leastauthority.com/static/publications/LeastAuthority_Tezos_Foundation_QuipuSwap_Smart_Contracts_Final_Audit_Report.pdf",
     ],
-    parentProtocol: "parent#quipuswap"
+    parentProtocol: "parent#quipuswap",
+    listedAt: 1686076109
+  },
+  {
+    id: "3072",
+    name: "QuipuSwap V3",
+    address: "tezos:KT193D4vozYnhGJQVtw7CoxxqphqUEEwK6Vb",
+    symbol: "QUIPU",
+    url: "https://quipuswap.com",
+    description:
+      "QuipuSwap is an open-source protocol that provides an interface for the seamless decentralized exchange of Tezos-based Tokens, stable swap with dividends, and farming features. Liquidity providers may earn fees from trading, baking rewards, or receive rewards from staking tokens on farms. QuipuSwap smart contracts were developed by the MadFish Team and audited by Least Authority and  Runtime Verification companies.",
+    chain: "Tezos",
+    logo: `${baseIconsUrl}/quipuswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Tezos"],
+    module: "quipuswap-v3/index.js",
+    twitter: "QuipuSwap",
+    audit_links: [
+      "https://leastauthority.com/static/publications/LeastAuthority_Tezos_Foundation_QuipuSwap_Smart_Contracts_Final_Audit_Report.pdf",
+    ],
+    parentProtocol: "parent#quipuswap",
+    listedAt: 1686076121
+  },
+  {
+    id: "3073",
+    name: "Dubble Exchange",
+    address: "arbitrum:0xfe3e29361eDDaC64411722854B4FdFCe8e84D7Cd",
+    symbol: "DUB",
+    url: "https://dubbledex.com/",
+    description:
+      "Liquidity market powered by $DUB autobribes | DAO oriented protocol on Arbitrum",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/dubble-exchange.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum"],
+    module: "dubble-exchange/index.js",
+    twitter: "DubbleExchange",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    audit_links: [],
+    listedAt: 1686076139
+
   },
 ]
 export default data2;

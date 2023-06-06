@@ -2,7 +2,7 @@ import { createChartData } from "../emissions-adapters/utils/convertToChartData"
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import adapters from "./utils/imports/emissions_adapters";
 import { ChartSection } from "../emissions-adapters/types/adapters";
-import { storeR2JSONString } from "./utils/r2";
+import { storeR2JSONString, getR2 } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
@@ -16,7 +16,7 @@ function wait(time: number) {
 }
 
 async function handler() {
-  const protocolsArray: string[] = [];
+  let protocolsArray: string[] = [];
   // https://github.com/apollographql/apollo-client/issues/4843#issuecomment-495717720
   // https://stackoverflow.com/questions/53162001/typeerror-during-jests-spyon-cannot-set-property-getrequest-of-object-which
   for (const [protocolName, adapterPath] of Object.entries(adapters)) {
@@ -60,6 +60,8 @@ async function handler() {
     //await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!);
     throw new Error(errorMessage);
   } else {
+    const res = await getR2(`emissionsProtocolsList`);
+    if (res.body) protocolsArray = [...new Set([...protocolsArray, ...JSON.parse(res.body)])];
     await storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray));
   }
 }

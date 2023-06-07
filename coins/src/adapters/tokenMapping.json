@@ -92,7 +92,6 @@
       "symbol": "AXLUSDC",
       "to": "coingecko#usd-coin"
     },
-
     "erc20:axelar:wbtc": {
       "decimals": "8",
       "symbol": "WBTC",

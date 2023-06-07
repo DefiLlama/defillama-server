@@ -1619,6 +1619,11 @@ export default {
     "pulsex-v2": {
         parentId: "PulseX",
         "enabled": true,
-        "id": "3060"
+        "id": "3060",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1686009600": true,
+            },
+        }
     }
 } as AdaptorsConfig

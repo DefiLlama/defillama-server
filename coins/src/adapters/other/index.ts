@@ -12,6 +12,9 @@ import collateralizedAdapter from "./collateralizedAssets";
 import swethAdapter from "./sweth";
 import gmdAdapter from "./gmd";
 import stkaurabalAdapter from "./stkaurabal";
+import shlb_ from "./shlb"
+
+export const shlb = shlb_
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");

@@ -1863,6 +1863,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "predyfinance",
   },
+  {
+    id: "parent#magicfox",
+    name: "MagicFox",
+    url: "https://app.magicfox.fi/",
+    description: "MagicFox is Multichain Solidly ve(3,3) Swap & Yield Optimizer on BNB Chain, Arbitrum and Polygon built atop LayerZero.",
+    logo: `${baseIconsUrl}/magicfox.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "magicfoxfi",
+  },
 ];
 
 export default parentProtocols;

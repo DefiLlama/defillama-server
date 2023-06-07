@@ -21319,6 +21319,7 @@ const data2: Protocol[] = [
     ],
     listedAt: 1671546445
   },
+/*
   {
     id: "2373",
     name: "Binance US",
@@ -21341,6 +21342,7 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1671554817
   },
+*/
   {
     id: "2374",
     name: "Contango",

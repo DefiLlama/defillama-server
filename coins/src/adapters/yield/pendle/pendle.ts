@@ -226,14 +226,15 @@ export default async function getTokenPrices(
       const underlying: CoinData | undefined = underlyingTokenData.find(
         (u: CoinData) => u.address == yieldTokens[i],
       );
-      const PT: Write | undefined = writes.find((u: Write) =>
-        u.PK.includes(PTs[i]),
+      const PT: Write | undefined = writes.find(
+        (u: Write) => u.PK.includes(PTs[i]) && u.SK == 0,
       );
 
-      if (!PT || !underlying || !PT.price) return;
+      if (!PT || !underlying || !PT.price || !PT.decimals) return;
 
       const price: number =
-        (ptBalances[i] * PT.price + syBalances[i] * underlying.price) /
+        ((ptBalances[i] * PT.price) / 10 ** PT.decimals +
+          (syBalances[i] * underlying.price) / 10 ** underlying.decimals) /
         (supplies[i] / 10 ** decimals[i]);
 
       if (isNaN(price)) return;

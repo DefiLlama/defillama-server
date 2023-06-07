@@ -20265,8 +20265,8 @@ const data2: Protocol[] = [
   {
     id: "2327",
     name: "Neptune Mutual",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x57f12FE6A4e5fe819eec699FAdf9Db2D06606bB4",
+    symbol: "NPM",
     url: "https://neptunemutual.com",
     description:
       "Neptune Mutual follows a parametric insurance model, meaning it provides payout on the basis of parameters instead of individual claim assessments. Upon the resolution of an incident, all the policyholders of the affected protocol will receive the payouts. Neptune Mutual eliminates individual claim assessments which makes policy easy to claim, faster, and much more reliable.",

@@ -1609,7 +1609,12 @@ export default {
     "pulsex-v1": {
         parentId: "PulseX",
         "enabled": true,
-        "id": "2995"
+        "id": "2995",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1686009600": true,
+            },
+        }
     },
     "pulsex-v2": {
         parentId: "PulseX",

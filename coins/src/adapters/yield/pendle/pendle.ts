@@ -13,7 +13,7 @@ export default async function getTokenPrices(
   config: any,
 ): Promise<Write[]> {
   const writes: Write[] = [];
-  const { factory, fromBlock } = config;
+  const { factory, fromBlock, toAsset } = config;
   const api: ChainApi = await getApi(chain, timestamp);
   const logs: any[][] = await newMarkets();
 
@@ -65,8 +65,17 @@ export default async function getTokenPrices(
       api.multiCall({ abi: "uint8:decimals", calls: SYs }),
       api.multiCall({ abi: "string:symbol", calls: SYs }),
     ]);
-    // mind decimals here
+
     SYs.map((SY: string, i: number) => {
+      const underlying: CoinData | undefined = underlyingTokenData.find(
+        (u: CoinData) => u.address == yieldTokens[i],
+      );
+
+      const redirect: string =
+        underlying && underlying.redirect
+          ? underlying.redirect
+          : `asset#${chain}:${yieldTokens[i]}`;
+
       addToDBWritesList(
         writes,
         chain,
@@ -77,17 +86,30 @@ export default async function getTokenPrices(
         timestamp,
         "pendle-sy",
         1,
-        `asset#${chain}:${yieldTokens[i]}`,
+        redirect,
       );
     });
   }
 
   async function ptWrites() {
     const [exchangeRates, decimals, symbols] = await Promise.all([
-      api.multiCall({
-        calls: SYs,
-        abi: "function exchangeRate() view returns (uint256 )",
-      }),
+      Promise.all(
+        // PromisePool error when multicalled on mainnet
+        markets.map((params: string) =>
+          api.call({
+            target: toAsset,
+            params,
+            abi:
+              "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
+          }),
+        ),
+      ),
+      // api.multiCall({
+      //   calls: markets.map((params: string) => ({ target: toAsset, params })),
+      //   abi:
+      //     "function getPtToAssetRate(address) public view returns (uint256 ptToAssetRate)",
+      //   requery: true,
+      // }),
       api.multiCall({
         abi: "uint8:decimals",
         calls: PTs,
@@ -106,7 +128,7 @@ export default async function getTokenPrices(
       if (!underlying || !exchangeRates[i] || !decimals[i] || !symbols[i])
         return;
 
-      const price = (underlying.price * 10 ** decimals[i]) / exchangeRates[i];
+      const price = (underlying.price * exchangeRates[i]) / 10 ** 18;
 
       addToDBWritesList(
         writes,
@@ -147,11 +169,13 @@ export default async function getTokenPrices(
       if (!underlying || !PT || !decimals[i] || !symbols[i] || !PT.price)
         return;
 
+      const price = underlying.price - PT.price;
+
       addToDBWritesList(
         writes,
         chain,
         YT,
-        underlying.price - PT.price,
+        price,
         decimals[i],
         symbols[i],
         timestamp,
@@ -211,6 +235,8 @@ export default async function getTokenPrices(
       const price: number =
         (ptBalances[i] * PT.price + syBalances[i] * underlying.price) /
         (supplies[i] / 10 ** decimals[i]);
+
+      if (isNaN(price)) return;
 
       addToDBWritesList(
         writes,

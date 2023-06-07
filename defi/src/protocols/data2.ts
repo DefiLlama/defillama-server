@@ -12932,7 +12932,7 @@ const data2: Protocol[] = [
     name: "Morpho Compound",
     address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
     symbol: "MORPHO",
-    url: "https://compound.morpho.xyz/?network=mainnet",
+    url: "https://compound.morpho.org/?network=mainnet",
     description:
       "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
@@ -16692,7 +16692,7 @@ const data2: Protocol[] = [
     name: "Morpho Aave",
     address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
     symbol: "MORPHO",
-    url: "https://aave.morpho.xyz/?network=mainnet",
+    url: "https://aavev2.morpho.org/?network=mainnet",
     description:
       "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     chain: "Ethereum",
@@ -35592,7 +35592,7 @@ const data2: Protocol[] = [
     name: "Morpho AaveV3",
     address: "0x9994e35db50125e0df82e4c2dde62496ce330999",
     symbol: "MORPHO",
-    url: "https://aavev3.morpho.xyz/",
+    url: "https://aavev3.morpho.org/",
     description:
       "Morpho's AaveV3-ETH Optimizer allows WETH-only transactions in ETH efficiency mode. It offers high-leverage WETH borrowing using stETH, USDC, WBTC, and DAI as collateral",
     chain: "Ethereum",

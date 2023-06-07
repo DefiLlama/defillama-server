@@ -376,7 +376,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#morpho",
     name: "Morpho",
-    url: "https://www.morpho.xyz",
+    url: "https://morpho.org/",
     description:
       "Morpho is an on-chain peer-to-peer layer on top of lending pools. Rates are seamlessly improved for borrowers and lenders while preserving the same guarantees.",
     logo: `${baseIconsUrl}/morpho.png`,

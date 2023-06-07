@@ -20265,7 +20265,7 @@ const data2: Protocol[] = [
   {
     id: "2327",
     name: "Neptune Mutual",
-    address: "arbitrum:0x57f12FE6A4e5fe819eec699FAdf9Db2D06606bB4",
+    address: "0x57f12FE6A4e5fe819eec699FAdf9Db2D06606bB4",
     symbol: "NPM",
     url: "https://neptunemutual.com",
     description:

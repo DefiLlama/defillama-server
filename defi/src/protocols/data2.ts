@@ -37074,5 +37074,28 @@ const data2: Protocol[] = [
     oracles: ["Pragma"],
     listedAt: 1686175395
   },
+  {
+    id: "3080",
+    name: "GaloSwap",
+    address: null,
+    symbol: "-",
+    url: "https://galoswap.io/",
+    description:
+      "An innovative DEX & NFT marketplace built to enhance liquidity using ZK-Rollups for optimal security and scalability",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/galoswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    module: "galoswap/index.js",
+    twitter: "GaloSwap",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://galoswap.gitbook.io/galoswap/overview/security-and-transparency"],
+    listedAt: 1686177821
+  },
 ]
 export default data2;

@@ -36961,5 +36961,27 @@ const data2: Protocol[] = [
     parentProtocol: "parent#predy-finance",
     listedAt: 1686148859,
   },
+  {
+    id: "3075",
+    name: "MEXC",
+    address: null,
+    symbol: "-",
+    url: "https://www.mexc.com",
+    description:
+      "Find your next Moonshot.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/binance-cex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum", "Tron", "Bitcoin", "Binance", "Arbitrum", "Optimism"],
+    module: "mexc-cex/index.js",
+    twitter: "MEXC_Official",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1686152056
+  },
 ]
 export default data2;

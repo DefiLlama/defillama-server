@@ -92,6 +92,11 @@
       "symbol": "AXLUSDC",
       "to": "coingecko#usd-coin"
     },
+    "erc20:axelar:wbtc": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "erc20:multichain:usdc": {
       "decimals": "6",
       "symbol": "USDC",

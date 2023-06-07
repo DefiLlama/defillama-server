@@ -1852,6 +1852,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "QuipuSwap",
   },
+  {
+    id: "parent#predy-finance",
+    name: "Predy Finance",
+    url: "https://www.predy.finance",
+    description: "Trade, Hedge, and Earn through pVault connected AMM.",
+    logo: `${baseIconsUrl}/predy-finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "predyfinance",
+  },
 ];
 
 export default parentProtocols;

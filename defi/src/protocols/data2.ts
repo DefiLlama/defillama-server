@@ -36970,7 +36970,7 @@ const data2: Protocol[] = [
     description:
       "Find your next Moonshot.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/binance-cex.jpg`,
+    logo: `${baseIconsUrl}/mexc.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -36982,6 +36982,28 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1686152056
+  },
+  {
+    id: "3076",
+    name: "Minerva",
+    address: "optimism:0xE4d8701C69b3B94A620ff048e4226C895b67b2c0",
+    symbol: "MINE",
+    url: "https://minerva.money",
+    description:
+      "Minerva is a decentralized perpetuals exchange on Optimism. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees and leverage trading.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/minerva.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Optimism"],
+    module: "minerva/index.js",
+    twitter: "MinervaOptimism",
+    forkedFrom: ["GMX"],
+    oracles: ["Chainlink"],
+    listedAt: 1686153940
   },
 ]
 export default data2;

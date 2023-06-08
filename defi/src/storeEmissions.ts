@@ -8,6 +8,8 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
 import parentProtocols from "./protocols/parentProtocols";
+import { PromisePool } from '@supercharge/promise-pool'
+import { shuffleArray } from "./utils/shared/shuffleArray";
 
 function wait(time: number) {
   return new Promise((resolve) => {
@@ -19,7 +21,10 @@ async function handler() {
   let protocolsArray: string[] = [];
   // https://github.com/apollographql/apollo-client/issues/4843#issuecomment-495717720
   // https://stackoverflow.com/questions/53162001/typeerror-during-jests-spyon-cannot-set-property-getrequest-of-object-which
-  for (const [protocolName, rawAdapter] of Object.entries(adapters)) {
+  await PromisePool
+  .withConcurrency(5)
+  .for(shuffleArray(Object.entries(adapters)))
+  .process(async ([protocolName, rawAdapter]) => {
     try {
       console.log(protocolName);
       await wait(2000);
@@ -54,7 +59,7 @@ async function handler() {
     } catch (err) {
       console.log(err, ` storing ${protocolName}`);
     }
-  }
+  })
 
   const errorMessage: string = `Tried to write emissionsProtocolsList as an empty array, Unlocks page needs updating manually.`;
 
@@ -69,5 +74,3 @@ async function handler() {
 }
 
 export default wrapScheduledLambda(handler);
-
-handler(); // ts-node src/storeEmissions.ts

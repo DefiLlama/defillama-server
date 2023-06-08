@@ -37050,7 +37050,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://docs.magicfox.fi/security/kyc-and-audit"],
     parentProtocol: "parent#magicfox",
-    listedAt: 1686175389
+    listedAt: 1686175394
   },
   {
     id: "3079",

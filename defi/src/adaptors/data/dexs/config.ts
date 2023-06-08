@@ -1625,5 +1625,9 @@ export default {
                 "1686009600": true,
             },
         }
+    },
+    "fathom-dex": {
+        "enabled": true,
+        "id": "3077"
     }
 } as AdaptorsConfig

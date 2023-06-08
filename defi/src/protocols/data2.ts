@@ -37272,7 +37272,7 @@ const data2: Protocol[] = [
     chains: ["Onus"],
     module: "defily-dex/index.js",
     twitter: "DefilyFinance",
-    forkedFrom: [],
+    forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1686243244
   },
@@ -37294,7 +37294,7 @@ const data2: Protocol[] = [
     chains: ["Onus"],
     module: "heraswap/index.js",
     twitter: "heraswap",
-    forkedFrom: [],
+    forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1686243246
   },
@@ -37316,7 +37316,7 @@ const data2: Protocol[] = [
     chains: ["Onus"],
     module: "miaswap/index.js",
     twitter: "MiaSwap",
-    forkedFrom: [],
+    forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1686243248
   },

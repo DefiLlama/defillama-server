@@ -1,5 +1,6 @@
 import { createChartData } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
+import { createCategoryData } from "../emissions-adapters/utils/categoryData";
 import adapters from "./utils/imports/emissions_adapters";
 import { ChartSection } from "../emissions-adapters/types/adapters";
 import { storeR2JSONString, getR2 } from "./utils/r2";
@@ -32,6 +33,8 @@ async function handler() {
         data: s.data.apiData,
       }));
 
+      const tokenAllocation = createCategoryData(chart, rawData.categories, false);
+
       const pId = rawData.metadata?.protocolIds?.[0] ?? null;
       const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : null;
       const id = pData ? pData.parentProtocol || pData.name : protocolName;
@@ -44,6 +47,7 @@ async function handler() {
         metadata: rawData.metadata,
         name: name,
         gecko_id: pData?.gecko_id,
+        tokenAllocation,
       };
       const sluggifiedId = sluggifyString(id).replace("parent#", "");
 

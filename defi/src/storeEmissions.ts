@@ -1,6 +1,7 @@
 import { createChartData } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
+import { createFuturesData } from "../emissions-adapters/utils/futures";
 import adapters from "./utils/imports/emissions_adapters";
 import { ChartSection } from "../emissions-adapters/types/adapters";
 import { storeR2JSONString, getR2 } from "./utils/r2";
@@ -42,12 +43,16 @@ async function handler() {
       if (pData?.parentProtocol) {
         name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
       }
+
+      const futures = pData?.symbol ? await createFuturesData(pData.symbol) : undefined;
+
       const data = {
         data: chart,
         metadata: rawData.metadata,
         name: name,
         gecko_id: pData?.gecko_id,
         tokenAllocation,
+        futures,
       };
       const sluggifiedId = sluggifyString(id).replace("parent#", "");
 

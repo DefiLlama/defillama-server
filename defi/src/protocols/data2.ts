@@ -37187,5 +37187,50 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1686230018
   },
+  {
+    id: "3085",
+    name: "UrDEX Finance",
+    address: "arbitrum:0x842216e0aa2ae608699f7b1063f26ce6b30c5311",
+    symbol: "URD",
+    url: "https://urdex.finance",
+    description:
+      "A non-custodial, Perpetual Decentralized Exchange on the Arbitrum One",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/urdex-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "urdex-finance",
+    cmcId: "24748",
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "urdex/index.js",
+    twitter: "UrDEX_Finance",
+    forkedFrom: ["Level Finance"],
+    oracles: ["Chainlink"],
+    audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/0f50d3ad59e14547e816b256c2ede1282f9ab403/urDex%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
+    listedAt: 1686231971
+  },
+  {
+    id: "3086",
+    name: "xBank Finance",
+    address: null,
+    symbol: "-",
+    url: "https://xbank.finance",
+    description:
+      "xBank is a decentralized non-custodial liquidity market protocol. xBank manages deposits for lenders and facilitates lending of the deposited asset for borrowers while conducting appropriate risk management to protect the lenders from risks of illiquidity and insolvency.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/xbank-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["zkSync Era"],
+    module: "xbank/index.js",
+    twitter: "xBankFinance",
+    forkedFrom: ["Compound V2"],
+    oracles: ["Pyth"],
+    listedAt: 1686231975
+  },
 ]
 export default data2;

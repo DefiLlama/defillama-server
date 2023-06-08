@@ -8,7 +8,6 @@ import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
 import { sluggifyString } from "./utils/sluggify";
 import parentProtocols from "./protocols/parentProtocols";
-import { sendMessage } from "./utils/discord";
 
 function wait(time: number) {
   return new Promise((resolve) => {
@@ -20,11 +19,10 @@ async function handler() {
   let protocolsArray: string[] = [];
   // https://github.com/apollographql/apollo-client/issues/4843#issuecomment-495717720
   // https://stackoverflow.com/questions/53162001/typeerror-during-jests-spyon-cannot-set-property-getrequest-of-object-which
-  for (const [protocolName, adapterPath] of Object.entries(adapters)) {
+  for (const [protocolName, rawAdapter] of Object.entries(adapters)) {
     try {
       console.log(protocolName);
       await wait(2000);
-      const rawAdapter = require(adapterPath);
       const adapter = typeof rawAdapter.default === "function" ? { default: await rawAdapter.default() } : rawAdapter;
       const rawData = await createRawSections(adapter);
 

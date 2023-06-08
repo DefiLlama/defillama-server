@@ -1,6 +1,7 @@
 export default {
   // wemix: require("./markets/uniswap"),
   dforce: require("./moneyMarkets/dforce"),
+  shlb: require("./other"),
   minswap: require("./markets/minswap"),
   metronome: require("./other"),
   ondo: require("./yield/ondo"),

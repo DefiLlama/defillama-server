@@ -191,6 +191,31 @@
       "decimals": "18",
       "symbol": "WONUS",
       "to": "coingecko#onus"
+    },
+    "0xdfb5e8a4ac08e46258a12abe737bba5d8c452508": {
+      "decimals": "18",
+      "symbol": "BUSD",
+      "to": "coingecko#binance-usd"
+    },
+    "0xbdce8c50c1e6f6501c2af8232d2d76ec75cda51d": {
+      "decimals": "18",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0xff276c6bca1f66fd54a8915e830735d6ab0c7b09": {
+      "decimals": "18",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x935765ad27a1af00f73097c998a9fb721d2d7790": {
+      "decimals": "18",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
+    },
+    "0xb4373ebb073a4dcba47e567d075a9583fa3c763e": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
     }
   }
 }

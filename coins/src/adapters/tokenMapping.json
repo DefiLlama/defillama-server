@@ -180,5 +180,17 @@
       "symbol": "USDT",
       "to": "coingecko#tether-usd-celer"
     }
+  },
+  "onus": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "ONUS",
+      "to": "coingecko#onus"
+    },
+    "0x4c761e48d1e735af551cc38abcbdce1d7faac6e4": {
+      "decimals": "18",
+      "symbol": "WONUS",
+      "to": "coingecko#onus"
+    }
   }
 }

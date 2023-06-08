@@ -37232,5 +37232,27 @@ const data2: Protocol[] = [
     oracles: ["Pyth"],
     listedAt: 1686231975
   },
+  {
+    id: "3087",
+    name: "Gambit Financial",
+    address: null,
+    symbol: "-",
+    url: "https://gambit.financial",
+    description:
+      "The goal of Gambit is to build a better leverage platform. There are no price impacts to enter and exit a position and liquidations only occur through Chainlink price updates so traders will not experience wicks from cascading liquidations.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/gambit-financial.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    module: "gambit-financial/index.js",
+    twitter: "GambitProtocol",
+    forkedFrom: ["GMX"],
+    oracles: ["Chainlink"],
+    listedAt: 1686242084
+  },
 ]
 export default data2;

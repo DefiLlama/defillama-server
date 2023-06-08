@@ -37097,5 +37097,51 @@ const data2: Protocol[] = [
     audit_links: ["https://galoswap.gitbook.io/galoswap/overview/security-and-transparency"],
     listedAt: 1686177821
   },
+  {
+    id: "3081",
+    name: "Atomic Green",
+    address: null,
+    symbol: "-",
+    url: "https://atomic.green",
+    description:
+      "Atomic Green is the first multi-chain platform for leverage trading on DEXs in both EVM-like and non-EVM chains. The first version operates via integration in UNI V3/ARCTIC liquidity pools. Margin balances for trading are borrowed from the own lending protocol.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/atomic-green.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "atomic/index.js",
+    twitter: "atomic__green",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/Atomicgreen/audit"],
+    listedAt: 1686228821
+  },
+  {
+    id: "3082",
+    name: "OlympulseX",
+    address: "pulse:0xBB366A397D7d4d2BEDABD9139D4c32a8826605Ed",
+    symbol: "SEX",
+    url: "https://www.olympulsex.com",
+    description:
+      "The decentralized reserve currency designed to serve the ever growing Web3 financial ecosystem on PulseChain.",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/olympulsex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Reserve Currency",
+    chains: ["Pulse"],
+    module: "olympulsex/index.js",
+    treasury: "olympulsex.js",
+    twitter: "OlympulseX",
+    forkedFrom: ["Olympus DAO"],
+    oracles: [],
+    listedAt: 1686228824
+  },
 ]
 export default data2;

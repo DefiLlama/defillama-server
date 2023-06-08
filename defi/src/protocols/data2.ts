@@ -37143,5 +37143,49 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1686228824
   },
+  {
+    id: "3083",
+    name: "PenPie",
+    address: null,
+    symbol: "-",
+    url: "https://www.pendle.magpiexyz.io/stake",
+    description:
+      "Penpie is a next-generation product by @magpiexyz_io that's set to revolutionize @pendle_fi",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/penpie.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Arbitrum"],
+    module: "penpie/index.js",
+    twitter: "Penpiexyz_io",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1686229898
+  },
+  {
+    id: "3084",
+    name: "L2FINANCE",
+    address: null,
+    symbol: "-",
+    url: "https://l2fibank.xyz",
+    description:
+      "L2FINANCE is a one-stop service platform for financial derivatives markets based on Layer2 technology.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/l2finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "l2fibank-xyz/index.js",
+    twitter: "L2FINANCE",
+    forkedFrom: ["Compound V3"],
+    oracles: [],
+    listedAt: 1686230018
+  },
 ]
 export default data2;

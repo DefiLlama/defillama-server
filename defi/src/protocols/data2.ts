@@ -37320,5 +37320,28 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1686243248
   },
+  {
+    id: "3091",
+    name: "Equilibria",
+    address: "arbitrum:0xbfbcfe8873fe28dfa25f1099282b088d52bbad9c",
+    symbol: "EQB",
+    url: "https://equilibria.fi/home",
+    description:
+      "Equilibria Finance is a platform made for $PENDLE holders and liquidity providers, aiming to optimize profits through a tokenized version of vePENDLE, ePENDLE. It capitalizes on Pendle Finance's veToken/boosted yield model to enhance yields and reward PENDLE holders.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/equilibria.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "equilibria-finance",
+    cmcId: "26556",
+    category: "Yield",
+    chains: ["Ethereum", "Arbitrum"],
+    module: "equilibria/index.js",
+    twitter: "Equilibriafi",
+    forkedFrom: ["Convex Finance"],
+    oracles: [],
+    audit_links: ["https://docs.equilibria.fi/security-and-risk/audit-report"],
+    listedAt: 1686243248
+  },
 ]
 export default data2;

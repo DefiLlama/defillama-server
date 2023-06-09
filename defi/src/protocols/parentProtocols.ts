@@ -548,7 +548,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Folks Finance",
     url: "https://folks.finance/",
     description:
-    "Lending and borrowing protocol with innovative features and Liquid Staking built on Algorand Blockchain.",
+    "Innovative DeFi platform to lend, borrow, trade and manage digital assets.",
     logo: `${baseIconsUrl}/folks-finance.png`,
     gecko_id: null,
     cmcId: null,

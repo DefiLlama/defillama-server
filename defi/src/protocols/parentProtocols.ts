@@ -1884,6 +1884,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "magpiexyz_io",
+    governanceID: ["snapshot:magpiexyz.eth"],
   },
 ];
 

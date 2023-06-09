@@ -1633,5 +1633,9 @@ export default {
     "heraswap": {
         "enabled": true,
         "id": "3089"
+    },
+    "miaswap": {
+        "enabled": true,
+        "id": "3090"
     }
 } as AdaptorsConfig

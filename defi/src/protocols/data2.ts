@@ -5180,7 +5180,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://folks.finance/",
-    description: "Lending and borrowing protocol with innovative features built on Algorand Blockchain.",
+    description: "Innovative DeFi platform to lend, borrow, trade and manage digital assets.",
     chain: "Algorand",
     logo: `${baseIconsUrl}/folks-finance-lending.png`,
     audits: "2",

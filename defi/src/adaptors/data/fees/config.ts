@@ -921,5 +921,9 @@ export default {
     "unlimited-network": {
         "enabled": true,
         "id": "3055"
+    },
+    "cryptex-v2": {
+        "enabled": true,
+        "id": "3051"
     }
 } as AdaptorsConfig

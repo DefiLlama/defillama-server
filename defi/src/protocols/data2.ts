@@ -37341,7 +37341,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Convex Finance"],
     oracles: [],
     audit_links: ["https://docs.equilibria.fi/security-and-risk/audit-report"],
-    listedAt: 1686243248
+    listedAt: 1686276971
   },
 ]
 export default data2;

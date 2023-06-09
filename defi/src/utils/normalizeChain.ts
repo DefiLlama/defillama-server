@@ -1698,6 +1698,11 @@ export const chainCoingeckoIds = {
     cmcId: "15261",
     categories: ["EVM"],
   },
+  "Pokt": {
+    geckoId: "pocket-network",
+    symbol: "POKT",
+    cmcId: "11823",
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2112,6 +2117,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Neutron"
     case "onus":
       return "Onus"
+    case "pokt":
+      return "Pokt"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

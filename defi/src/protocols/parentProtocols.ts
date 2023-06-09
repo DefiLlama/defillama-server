@@ -1874,6 +1874,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "magicfoxfi",
   },
+  {
+    id: "parent#magpie-xyz",
+    name: "Magpie XYZ",
+    url: "https://link3.to/magpiexyz",
+    description: "Magpie is a Multi-chain DeFi platform providing Yield & veTokenomics boosting services",
+    logo: `${baseIconsUrl}/magpie.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "magpiexyz_io",
+  },
 ];
 
 export default parentProtocols;

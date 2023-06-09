@@ -19078,7 +19078,8 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Magpie-v1.1.pdf"],
     listedAt: 1668185763,
-    governanceID: ["snapshot:magpiexyz.eth"]
+    governanceID: ["snapshot:magpiexyz.eth"],
+    parentProtocol: "parent#magpie-xyz"
   },
   {
     id: "2272",
@@ -37163,7 +37164,8 @@ const data2: Protocol[] = [
     twitter: "Penpiexyz_io",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1686229898
+    listedAt: 1686229898,
+    parentProtocol: "parent#magpie-xyz"
   },
   {
     id: "3084",

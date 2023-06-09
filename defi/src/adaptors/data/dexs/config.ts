@@ -1629,5 +1629,9 @@ export default {
     "fathom-dex": {
         "enabled": true,
         "id": "3077"
+    },
+    "heraswap": {
+        "enabled": true,
+        "id": "3089"
     }
 } as AdaptorsConfig

@@ -1886,6 +1886,29 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "magpiexyz_io",
     governanceID: ["snapshot:magpiexyz.eth"],
   },
+  {
+    id: "parent#sudoswap",
+    name: "SudoSwap",
+    url: "https://sudoswap.xyz",
+    description: "The sudoswap AMM is a minimal, gas-efficient AMM protocol for facilitating NFT (ERC721s) to token (ETH or ERC20) swaps using customizable bonding curves",
+    logo: `${baseIconsUrl}/magpie-xyz.png`,
+    gecko_id: "sudoswap",
+    cmcId: null,
+    chains: [],
+    twitter: "sudoswap",
+    governanceID: ['eip155:1:0x6853f8865BA8e9FBd9C8CCE3155ce5023fB7EEB0'],
+  },
+  {
+    id: "parent#ramses-exchange",
+    name: "Ramses Exchange",
+    url: "https://www.ramses.exchange/",
+    description: "Decentralized exchange with ve (3,3) Incentives and Concentrated Liquidity",
+    logo: `${baseIconsUrl}/ramses-exchange.jpg`,
+    gecko_id: "ramses-exchange",
+    cmcId: null,
+    chains: [],
+    twitter: "RamsesExchange",
+  },
 ];
 
 export default parentProtocols;

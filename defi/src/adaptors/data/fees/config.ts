@@ -923,6 +923,7 @@ export default {
         "id": "3055"
     },
     "cryptex-v2": {
+        parentId: "Cryptex Finance",
         "enabled": true,
         "id": "3051"
     }

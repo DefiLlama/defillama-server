@@ -1879,7 +1879,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "Magpie XYZ",
     url: "https://link3.to/magpiexyz",
     description: "Magpie is a Multi-chain DeFi platform providing Yield & veTokenomics boosting services",
-    logo: `${baseIconsUrl}/magpie.png`,
+    logo: `${baseIconsUrl}/magpie-xyz.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

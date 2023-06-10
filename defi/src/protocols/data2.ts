@@ -37504,6 +37504,28 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1686358004
   },
-  
+  {
+    id: "3099",
+    name: "Froggy Protocol",
+    address: "era:0x5217483171b2550C74234C583620C355b74b3095",
+    symbol: "FROG",
+    url: "https://www.froggy.ink/",
+    description:
+      "Froggy Protocol is an all-encompassing and user-friendly yield aggregator that brings together various components to zkSync Era for revolutionary yields and user experience",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/froggy-protocol.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["zkSync Era"],
+    module: "froggy-protocol/index.js",
+    twitter: "FroggyYields",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://github.com/solidproof/projects/blob/main/2023/FroggyToken/SmartContract_Audit_Solidproof_FroggyProtocol.pdf"],
+    listedAt: 1686410187
+  },  
 ]
 export default data2;

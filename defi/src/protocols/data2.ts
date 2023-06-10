@@ -36682,6 +36682,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://docs.magicfox.fi/security/kyc-and-audit"],
     parentProtocol: "parent#magicfox",
+    wrongLiquidity: true,
     listedAt: 1685824211
   },
   {
@@ -37054,6 +37055,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://docs.magicfox.fi/security/kyc-and-audit"],
     parentProtocol: "parent#magicfox",
+    wrongLiquidity: true,
     listedAt: 1686175394
   },
   {

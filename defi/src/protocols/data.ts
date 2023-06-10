@@ -11009,6 +11009,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Harmony"],
     module: "farmersonly/index.js",
     twitter: "FoxswapFi",
+    wrongLiquidity: true,
     audit_links: ["https://rugdoc.io/project/farmersonly/"],
   },
   {

@@ -37457,6 +37457,50 @@ const data2: Protocol[] = [
     parentProtocol: "parent#ramses-exchange",
     listedAt: 1686345425
   },
+  {
+    id: "3097",
+    name: "OMT Finance",
+    address: "onus:0x38776725eB870b9cB076ECA9Fadcb837f3805D51",
+    symbol: "OMT",
+    url: "https://app.omt.finance/#/trade",
+    description:
+      "Perpetual #DEX with zero position fees on ONUS Chain. Trade BTC, ETH with up to x50 leverage",
+    chain: "Onus",
+    logo: `${baseIconsUrl}/omt-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Onus"],
+    module: "omt-finance/index.js",
+    twitter: "OMTFinance",
+    oracles: [],
+    forkedFrom: ["GMX"],
+    listedAt: 1686357437
+  },
+  {
+    id: "3098",
+    name: "USDO",
+    address: null,
+    symbol: "-",
+    url: "https://usdo.finance/en/",
+    description:
+      "USDO is a coin that is backed by collateralized stablecoins",
+    chain: "Onus",
+    logo: `${baseIconsUrl}/usdo.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Onus"],
+    module: "onus-usdo/index.js",
+    twitter: "USDOcoin",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1686358004
+  },
   
 ]
 export default data2;

@@ -28759,8 +28759,11 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Polygon"],
-    oracles: ["Chainlink"],
+    chains: ["Polygon", "Polygon zkEVM"],
+    oraclesByChain: {
+      polygon: ["Chainlink"],
+      polygon_zkevm: ["API3"],
+    },
     forkedFrom: [],
     module: "MantisSwap/index.js",
     twitter: "MantisSwap",
@@ -34851,7 +34854,7 @@ const data2: Protocol[] = [
     audit_links: ["https://contractsecurity.io/quick-audit-report/"],
     forkedFrom: ["GMX"],
     parentProtocol: "parent#quickswap",
-    oracles: [],
+    oracles: ["API3"],
     listedAt: 1684213007
   },
   {

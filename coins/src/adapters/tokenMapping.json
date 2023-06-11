@@ -193,6 +193,23 @@
       "to": "coingecko#tether-usd-celer"
     }
   },
+  "polygon_zkevm": {
+    "0xff8544fed5379d9ffa8d47a74ce6b91e632ac44d": {
+      "decimals": "18",
+      "symbol": "FRAX",
+      "to": "ethereum:0x853d955acef822db058eb8505911ed77f175b99e"
+    },
+    "0x7c2af1fb79d0b1c67d4eb802d44c673d0a1d2c04": {
+      "decimals": "18",
+      "symbol": "sfrxETH",
+      "to": "ethereum:0xac3e018457b222d93114458476f3e3416abbe38f"
+    },
+    "0xcf7ecee185f19e2e970a301ee37f93536ed66179": {
+      "decimals": "18",
+      "symbol": "frxETH",
+      "to": "ethereum:0x5e8422345238f34275888049021821e8e08caa1f"
+    }
+  },
   "onus": {
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",

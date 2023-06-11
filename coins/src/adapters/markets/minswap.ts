@@ -21,7 +21,7 @@ async function getPools() {
   const pools = []
   let fetchMorePools = true
   do {
-    const { data: { data: { topPools }} } = await axios.post('https://monorepo-mainnet-prod.minswap.org/graphql', {
+    const { data: { data: { topPools } } } = await axios.post('https://monorepo-mainnet-prod.minswap.org/graphql', {
       "query": "\n    query TopPools($input: TopPoolsInput) {\n  topPools(input: $input) {\n    assetA {\n      currencySymbol\n      tokenName\n      isVerified\n      ...allMetadata\n    }\n    assetB {\n      currencySymbol\n      tokenName\n      isVerified\n      ...allMetadata\n    }\n    reserveA\n    reserveB\n    lpAsset {\n      currencySymbol\n      tokenName\n    }\n    totalLiquidity\n    reserveADA\n    volumeADAByDay\n    volumeADAByWeek\n    tradingFeeAPR\n    pendingOrders {\n      limit\n      processing\n      overSlippage\n      total\n    }\n    profitSharing {\n      feeTo\n    }\n  }\n}\n    \n    fragment allMetadata on Asset {\n  metadata {\n    name\n    ticker\n    url\n    decimals\n    description\n  }\n}\n    ",
       "variables": {
         "input": {
@@ -44,7 +44,7 @@ async function getPools() {
     fetchMorePools = filteredPools.length === adaPools.length
     pools.push(...filteredPools)
     log('pools', pools.length, offset, fetchMorePools)
-
+    if (fetchMorePools) await sleep(500)
   } while (fetchMorePools)
   log('pool count', pools.length)
   return pools
@@ -59,37 +59,20 @@ async function getTokenPrices(timestamp: number) {
   addToDBWritesList(writes, chain, '0x0000000000000000000000000000000000000000', cardanoPrice, 6, 'ADA', timestamp, 'minswap', 0.9)
   addToDBWritesList(writes, chain, 'lovelace', cardanoPrice, 6, 'ADA', timestamp, 'minswap', 0.9)
   const priceLog: any[] = []
-  pools.forEach(({assetB: { currencySymbol, metadata: { name, ticker, decimals } }, reserveA, reserveB}: any) => {
+  pools.forEach(({ assetB: { currencySymbol, tokenName, metadata: { name, ticker, decimals } }, reserveA, reserveB }: any) => {
     const token = currencySymbol.toLowerCase()
     const symbol = (ticker || name).replace(/ /g, '-').toUpperCase()
-    const price = reserveA * (10 ** (decimals - 6)) / reserveB 
-    priceLog.push({ symbol, price: Number(cardanoPrice * price).toFixed(4),  decimals, ticker, name})
+    const price = reserveA * (10 ** (decimals - 6)) / reserveB
+    priceLog.push({ symbol, price: Number(cardanoPrice * price).toFixed(4), decimals, token })
     addToDBWritesList(writes, chain, token, cardanoPrice * price, decimals, symbol, timestamp, 'minswap', 0.9)
+    if (tokenName && tokenName.length)
+      addToDBWritesList(writes, chain, token+tokenName, cardanoPrice * price, decimals, symbol, timestamp, 'minswap', 0.9)
   })
   // console.table(priceLog)
 
   return writes
 }
 
-async function getDecimals(ids: string[]) {
-
-  let cache = await getCache('decimals', chain)
-
-  if (!cache.decimals)
-    cache = { decimals: {}, failed: [] }
-  cache.failed = [] // we dont cache failed for now
-  ids = ids.filter(i => typeof cache.decimals[i] !== 'number')
-
-  await PromisePool
-    .withConcurrency(7)
-    .for(ids)
-    .process(async (id: any) => {
-      try {
-        const data = await fetch(`https://raw.githubusercontent.com/cardano-foundation/cardano-token-registry/master/mappings/${id}.json`).then(r => r.json())
-        cache.decimals[id] = data.decimals?.value ?? 0
-      } catch (e) { cache.failed.push(id) }
-    })
-
-  await setCache('decimals', chain, cache)
-  return cache.decimals
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

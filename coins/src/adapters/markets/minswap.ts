@@ -1,9 +1,11 @@
-
+import { log } from '@defillama/sdk'
 import { Write, } from "../utils/dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectData, } from "../utils/database";
 import { getCache, setCache, } from "../../utils/cache";
 import fetch from "node-fetch";
+import axios from 'axios'
 import { PromisePool } from '@supercharge/promise-pool'
+import { off } from 'process';
 
 export function minswap(timestamp: number) {
   console.log("starting minswap");
@@ -13,30 +15,56 @@ export function minswap(timestamp: number) {
 }
 const chain = 'cardano'
 
+async function getPools() {
+  let limit = 20
+  let offset = 0
+  const pools = []
+  let fetchMorePools = true
+  do {
+    const { data: { data: { topPools }} } = await axios.post('https://monorepo-mainnet-prod.minswap.org/graphql', {
+      "query": "\n    query TopPools($input: TopPoolsInput) {\n  topPools(input: $input) {\n    assetA {\n      currencySymbol\n      tokenName\n      isVerified\n      ...allMetadata\n    }\n    assetB {\n      currencySymbol\n      tokenName\n      isVerified\n      ...allMetadata\n    }\n    reserveA\n    reserveB\n    lpAsset {\n      currencySymbol\n      tokenName\n    }\n    totalLiquidity\n    reserveADA\n    volumeADAByDay\n    volumeADAByWeek\n    tradingFeeAPR\n    pendingOrders {\n      limit\n      processing\n      overSlippage\n      total\n    }\n    profitSharing {\n      feeTo\n    }\n  }\n}\n    \n    fragment allMetadata on Asset {\n  metadata {\n    name\n    ticker\n    url\n    decimals\n    description\n  }\n}\n    ",
+      "variables": {
+        "input": {
+          "asset": "",
+          "sortBy": {
+            "column": "TVL",
+            "type": "DESC"
+          },
+          "onlyVerified": false,
+          "pagination": {
+            "offset": offset,
+            "limit": limit
+          }
+        }
+      }
+    })
+    offset += limit
+    const adaPools = topPools.filter((i: any) => i.assetA.currencySymbol === '' && i.assetA.isVerified && i.assetB.metadata)
+    const filteredPools = adaPools.filter((i: any) => i.reserveA > 1e9) // ignore pools with less than 1000 ADA
+    fetchMorePools = filteredPools.length === adaPools.length
+    pools.push(...filteredPools)
+    log('pools', pools.length, offset, fetchMorePools)
+
+  } while (fetchMorePools)
+  log('pool count', pools.length)
+  return pools
+}
+
 async function getTokenPrices(timestamp: number) {
 
   const writes: Write[] = [];
-  let pools = await fetch('https://api-mainnet-prod.minswap.org/coinmarketcap/v2/pairs').then(r => r.json())
-  pools = Object.values(pools).filter((i: any) => {
-    return i.quote_id === 'lovelace' && +i.quote_volume > 10
-  })
-  const ids = pools.map((i: any) => i.base_id.toLowerCase())
-  const decimals = await getDecimals(ids)
+  let pools = await getPools()
   const basePrice = await getTokenAndRedirectData(['cardano'], 'coingecko', timestamp)
   const cardanoPrice = basePrice[0].price
   addToDBWritesList(writes, chain, '0x0000000000000000000000000000000000000000', cardanoPrice, 6, 'ADA', timestamp, 'minswap', 0.9)
   addToDBWritesList(writes, chain, 'lovelace', cardanoPrice, 6, 'ADA', timestamp, 'minswap', 0.9)
   const priceLog: any[] = []
-  pools.forEach(({ base_id, base_symbol = '', last_price, base_name = '' }: any) => {
-    const token = base_id.toLowerCase()
-    const decimal = decimals[token]
-    if (typeof decimal !== 'number') {
-      // console.log('Missing decimals for: ', base_id)
-      return;
-    }
-    const symbol = (base_symbol.length > 1 ? base_symbol : (base_name.length > 1 ? base_name : base_id)).replace(/ /g, '-').toUpperCase()
-    priceLog.push({ symbol, price: Number(cardanoPrice * last_price).toFixed(4),  decimal})
-    addToDBWritesList(writes, chain, token, cardanoPrice * last_price, decimal, symbol, timestamp, 'minswap', 0.9)
+  pools.forEach(({assetB: { currencySymbol, metadata: { name, ticker, decimals } }, reserveA, reserveB}: any) => {
+    const token = currencySymbol.toLowerCase()
+    const symbol = (ticker || name).replace(/ /g, '-').toUpperCase()
+    const price = reserveA * (10 ** (decimals - 6)) / reserveB 
+    priceLog.push({ symbol, price: Number(cardanoPrice * price).toFixed(4),  decimals, ticker, name})
+    addToDBWritesList(writes, chain, token, cardanoPrice * price, decimals, symbol, timestamp, 'minswap', 0.9)
   })
   // console.table(priceLog)
 
@@ -65,5 +93,3 @@ async function getDecimals(ids: string[]) {
   await setCache('decimals', chain, cache)
   return cache.decimals
 }
-
-

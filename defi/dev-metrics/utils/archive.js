@@ -2,7 +2,11 @@ const sdk = require('@defillama/sdk')
 const axios = require('axios');
 const zlib = require('zlib');
 const readline = require('readline');
+const { PromisePool } = require('@supercharge/promise-pool')
 const { extractCommitsFromPushEvent } = require('./index')
+const { GitCommitRaw, addRawCommits, } = require('../db')
+const { Op } = require('sequelize');
+
 const { addArchiveData, addRawCommit, archiveExists } = require('../db')
 
 const getUrl = (date) => `http://data.gharchive.org/${date}.json.gz`
@@ -44,9 +48,27 @@ async function addArchive(archive_file, fileNumber = { i: 0 }) {
   }
   const startTime = Date.now()
   const { rawCommits, commit_count, filtered_commit_count } = await getRawCommits(archive_file)
-  for (const commit of rawCommits)
-    await addRawCommit(commit)
+  await addRawCommits(rawCommits)
+  /* const existingCommits = await GitCommitRaw.findAll({
+    where: {
+      sha: {
+        [Op.in]: rawCommits.map(c => c.sha),
+      },
+    },
+  })
+  console.log('existing commits', existingCommits.length)
+  const existingCommitHashes = new Set(existingCommits.map(c => c.sha))
+  const missingCommits = rawCommits.filter(c => !existingCommitHashes.has(c.sha))
+  await GitCommitRaw.bulkCreate(missingCommits) */
+/* 
 
+  const { errors } = await PromisePool.withConcurrency(120)
+    .for(rawCommits)
+    .process(addRawCommit)
+
+  if (errors && errors.length)
+    throw errors[0]
+ */
   await addArchiveData(archive_file, commit_count, filtered_commit_count)
   const timeTaken = Number((Date.now() - startTime) / 1000).toPrecision(3)
   const avgTimeTaken = Number((Date.now() - startTimestamp) / (1000 * i)).toPrecision(3)

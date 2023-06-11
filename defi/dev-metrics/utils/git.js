@@ -17,9 +17,9 @@ async function pullOrCloneRepository({ orgName, repoData, octokit, }) {
 
   try {
     const commitData = getRepoLogFile(orgName, repoName)
-    if (commitData.lastUpdateTime) {
+    if (commitData.lastupdatetime) {
       if (repoData.archived || repoData.disabled) return; // if repo is archived or disabled, dont look for new commits
-      if (+new Date() > commitData.lastUpdateTime - ONE_WEEK) return; // if repo was last updated under a week, dont look for new commits
+      if (+new Date() > commitData.lastupdatetime - ONE_WEEK) return; // if repo was last updated under a week, dont look for new commits
       if (+new Date() - SIX_MONTHS > +new Date(repoData.pushed_at)) return; // if no new commits were pushed to repo in last 6 months, dont look for new commits
 
       let page = 0
@@ -27,8 +27,8 @@ async function pullOrCloneRepository({ orgName, repoData, octokit, }) {
       let pageLength = 100
 
       do {
-        sdk.log('Pulling commit logs from github for', orgName, repoName, page, commitData.lastUpdateTimeStr)
-        const { data: commits } = await octokit.rest.repos.listCommits({ owner: orgName, repo: repoName, per_page: pageLength, page, since: commitData.lastUpdateTimeStr })
+        sdk.log('Pulling commit logs from github for', orgName, repoName, page, commitData.lastupdatetimeStr)
+        const { data: commits } = await octokit.rest.repos.listCommits({ owner: orgName, repo: repoName, per_page: pageLength, page, since: commitData.lastupdatetimeStr })
         if (!commits.length) break;
         hasMoreCommits = commits.length === pageLength
         let reachedCurrentCommit = false
@@ -74,8 +74,8 @@ async function pullOrCloneRepository({ orgName, repoData, octokit, }) {
           if (isHeadCommit) {
             isHeadCommit = false
             commitData.lastHash = sha
-            commitData.lastUpdateTime = +new Date()
-            commitData.lastUpdateTimeStr = commit.committer.date
+            commitData.lastupdatetime = +new Date()
+            commitData.lastupdatetimeStr = commit.committer.date
           }
         }
 
@@ -91,12 +91,12 @@ async function pullOrCloneRepository({ orgName, repoData, octokit, }) {
       await git.clone(repoData.ssh_url)
       git.cwd(path.join(repoPath, repoName))
 
-      commitData.lastUpdateTime = +new Date()
+      commitData.lastupdatetime = +new Date()
       const commitLogs = await git.log({ maxCount: 1e6 })
       commitData.logs = commitLogs.all.map(i => ({ logType: 'simple-git', data: i }))
       commitData.lastHash = commitLogs.latest.hash
-      commitData.lastUpdateTime = +new Date()
-      commitData.lastUpdateTimeStr = commitLogs.latest.date
+      commitData.lastupdatetime = +new Date()
+      commitData.lastupdatetimeStr = commitLogs.latest.date
       sdk.log('[DONE] Cloned and pulled repo for ', orgName, repoName, commitData.logs.length)
       deleteFolder(repoPath)
     }

@@ -1,7 +1,7 @@
 const sdk = require('@defillama/sdk')
 const simpleGit = require('simple-git')
 const fs = require('fs')
-const cache = require('../cache')
+const cache = require('../utils/cache')
 
 const path = require('path');
 const toml = require('toml');
@@ -68,7 +68,7 @@ function crawlAndParseTomlFiles(folderPath) {
       // If it's a TOML file, read and parse its contents
       let fileData = fs.readFileSync(fullPath, 'utf8');
       let { title, sub_ecosystems = [], github_organizations = [], repo = [] } = toml.parse(fileData)
-      sdk.log('parsed', file, ++i)
+      // sdk.log('parsed', file, ++i)
       const data = {
         title,
         sub_ecosystems,

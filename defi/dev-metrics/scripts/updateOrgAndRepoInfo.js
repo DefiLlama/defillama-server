@@ -1,11 +1,13 @@
 const { orgSet, repoSet, sleepInMinutes } = require('../utils/index')
 const { Octokit } = require('octokit')
-const { GitOwner, GitRepo, sequelize, addRawCommit, } = require('../db')
+const { GitOwner, GitRepo, sequelize, addRawCommit, addRawCommits, } = require('../db')
 const { extractCommitsFromSimpleGit } = require('../utils/index')
 const { getTempFolder, clearTempFolders, deleteFolder, } = require('../utils/cache')
 const sdk = require('@defillama/sdk')
 const simpleGit = require('simple-git')
 const path = require('path')
+const { sliceIntoChunks } = require('@defillama/sdk/build/util')
+const { Op } = require('sequelize');
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_API_KEY,
@@ -28,23 +30,62 @@ async function main() {
   console.log('repo orgs length: ', repoOrgs.length)
 
   let i = 0
+  const twoWeekAgo = new Date();
+  twoWeekAgo.setDate(twoWeekAgo.getDate() - 7 * 2);
+  const OrgArrayChunks = sliceIntoChunks(OrgArray, 1000)
+  for (let chunk of OrgArrayChunks) {
+    const existingOrgs = await GitOwner.findAll({
+      where: {
+        name: {
+          [Op.in]: chunk,
+        },
+      },
+    })
+    console.log('existing orgs length: ', existingOrgs.length)
+    const ignoreOrgsSet = new Set(existingOrgs.filter(i => i.is_missing || i.lastupdatetime > twoWeekAgo).map(o => o.name))
+    console.log('org chunk length: ', chunk.length)
+    chunk = chunk.filter(c => !ignoreOrgsSet.has(c))
+    console.log('org chunk length  [after filter]: ', chunk.length)
 
-  for (const orgName of OrgArray) {
-    const progress = Number(100 * ++i / OrgArray.length).toPrecision(4)
-    await updateOrgAndRepos(orgName, undefined, { OrgArray, progress, i})
+    if (!chunk.length) continue;
+    for (const orgName of chunk) {
+      const progress = Number(100 * ++i / OrgArray.length).toPrecision(4)
+      await updateOrgAndRepos(orgName, undefined, { OrgArray, progress, i})
+    }
   }
   i = 0
-  for (const repoOrg of repoOrgs) {
-    const progress = Number(100 * ++i / repoOrgs.length).toPrecision(4)
-    await updateOrgAndRepos(repoOrg, Object.keys(repoMapping[repoOrg]), { OrgArray, progress, i})
-    // console.log(`[Repo] orgs done: ${repoOrg} ${i}/${repoOrgs.length} (${progress}%)`)
-    await sleepInMinutes(1 / 30)
+  const oneMonthAgo = new Date();
+  oneMonthAgo.setDate(oneMonthAgo.getDate() - 7 * 4);
+  const repoOrgChunks = sliceIntoChunks(repoOrgs, 1000)
+
+  for (let chunk of repoOrgChunks) {
+    const existingOrgs = await GitOwner.findAll({
+      where: {
+        name: {
+          [Op.in]: chunk,
+        },
+      },
+    })
+    const ignoreOrgsSet = new Set(existingOrgs.filter(i => i.is_missing || i.lastupdatetime > oneMonthAgo).map(o => o.name))
+    console.log('org chunk length: ', chunk.length)
+    chunk = chunk.filter(c => !ignoreOrgsSet.has(c))
+    console.log('org chunk length  [after filter]: ', chunk.length)
+
+
+    if (!chunk.length) continue;
+    for (const repoOrg of chunk) {
+      const progress = Number(100 * ++i / repoOrgs.length).toPrecision(4)
+      await updateOrgAndRepos(repoOrg, Object.keys(repoMapping[repoOrg]), { OrgArray, progress, i})
+      // console.log(`[Repo] orgs done: ${repoOrg} ${i}/${repoOrgs.length} (${progress}%)`)
+      await sleepInMinutes(1 / 30)
+    }
   }
 }
 
 
 async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } = {}) {
 
+  sdk.log('upating org details for', orgName, repoFilter?.length)
   try {
     // Check if the organization exists in the database
     const existingOrg = await GitOwner.findOne({ where: { name: orgName } });
@@ -52,11 +93,11 @@ async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } 
     if (existingOrg) {
       if (existingOrg.is_missing) return;
       // If the organization exists, check the last update time
-      const lastUpdateTime = existingOrg.lastUpdateTime;
+      const lastupdatetime = existingOrg.lastupdatetime;
       const oneWeekAgo = new Date();
       oneWeekAgo.setDate(oneWeekAgo.getDate() - 7 * 4);
 
-      if (lastUpdateTime >= oneWeekAgo) {
+      if (lastupdatetime >= oneWeekAgo) {
         // console.log('Organization is up to date.');
         return;
       }
@@ -97,7 +138,7 @@ async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } 
       hasMorePages = data.length === pageLength
       if (!isFirstFech && hasMorePages) {
         const lastFetchedRepo = data[data.length - 1]
-        hasMorePages = orgData.lastUpdateTime < +new Date(lastFetchedRepo.pushed_at)
+        hasMorePages = orgData.lastupdatetime < +new Date(lastFetchedRepo.pushed_at)
       }
       if (hasMorePages)
         sdk.log('Fetching more repos for', orgName, page)
@@ -189,18 +230,18 @@ async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } 
     // Update the organization in the database
     if (existingOrg) {
       await existingOrg.update({
-        lastUpdateTime: new Date(),
+        lastupdatetime: new Date(),
         // Update the desired fields based on the relevant data
-        linkedProjects: existingOrg.linkedProjects || [],
+        linkedprojects: existingOrg.linkedprojects || [],
         ecosystem: existingOrg.ecosystem || [],
       });
     } else {
       // Create the organization in the database
       await GitOwner.create({
         name: orgName,
-        lastUpdateTime: new Date(),
+        lastupdatetime: new Date(),
         // Set the desired fields based on the relevant data
-        linkedProjects: [],
+        linkedprojects: [],
         is_org: true,
         ecosystem: [],
       });
@@ -246,8 +287,9 @@ async function addCommits(repoData) {
 
   const commitLogs = await git.log({ maxCount: 1e6 })
   let commits = extractCommitsFromSimpleGit(commitLogs.all, repoData)
-  for (const commit of commits)
-    await addRawCommit(commit)
+  // for (const commit of commits)
+  //   await addRawCommit(commit)
+  await addRawCommits(commits)
   deleteFolder(repoPath)
   sdk.log('Cloned and pulled repo for ', repoName, commits.length)
 }

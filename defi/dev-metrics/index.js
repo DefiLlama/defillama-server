@@ -18,8 +18,8 @@ const octokit = new Octokit({
 });
 
 async function fetchOrgRepos(orgName, orgData, isUser) {
-  const isFirstFech = !orgData.lastUpdateTime
-  if (orgData.lastUpdateTime && (+new Date() - orgData.lastUpdateTime) < THREE_DAYS) return;
+  const isFirstFech = !orgData.lastupdatetime
+  if (orgData.lastupdatetime && (+new Date() - orgData.lastupdatetime) < THREE_DAYS) return;
 
   let pageLength = 99
   const repositories = []
@@ -44,7 +44,7 @@ async function fetchOrgRepos(orgName, orgData, isUser) {
     hasMorePages = data.length === pageLength
     if (!isFirstFech && hasMorePages) {
       const lastFetchedRepo = data[data.length - 1]
-      hasMorePages = orgData.lastUpdateTime < +new Date(lastFetchedRepo.pushed_at)
+      hasMorePages = orgData.lastupdatetime < +new Date(lastFetchedRepo.pushed_at)
     }
     if (hasMorePages)
       sdk.log('Fetching more repos for', orgName, page)
@@ -69,7 +69,7 @@ async function main() {
       const orgData = getOrgDataFile(org)
       if (!orgData.repos) orgData.repos = {}
       await fetchOrgRepos(org, orgData, isUser)
-      orgData.lastUpdateTime = +new Date()
+      orgData.lastupdatetime = +new Date()
       setOrgDataFile(org, orgData)
       const blacklistedRepos = blacklistedRepoMapping[org] ?? []
       for (const repoData of Object.values(orgData.repos)) {

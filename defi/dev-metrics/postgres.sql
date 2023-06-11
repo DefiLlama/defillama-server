@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS git_archive (
 
 CREATE TABLE IF NOT EXISTS git_owner (
   name VARCHAR(255) PRIMARY KEY,
-  lastUpdateTime DATE,
-  linkedProjects TEXT[],
+  lastupdatetime DATE,
+  linkedprojects TEXT[],
   chain VARCHAR(255),
   is_org BOOLEAN,
   ecosystem TEXT[]

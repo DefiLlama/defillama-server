@@ -1,7 +1,13 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize('dev-metrics', 'llama', process.env.PG_DB_PASSWORD, {
-  host: 'localhost',
+const ENV = require('./env');
+
+const sequelize = new Sequelize({
+  host: ENV.host,
+  port: ENV.port,
+  username: ENV.user,
+  password: ENV.password,
+  database: ENV.db_name,
   dialect: 'postgres',
   logging: (msg) => {
     // Log only error messages
@@ -34,9 +40,12 @@ GitCommitRaw.init(
     sequelize,
     tableName: 'git_commit_raw',
     timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
   }
 );
 
+/* 
 class GitCommitAuthor extends Model {}
 GitCommitAuthor.init(
   {
@@ -54,7 +63,7 @@ GitCommitAuthor.init(
     tableName: 'git_commit_author',
     timestamps: true,
   }
-);
+); */
 
 class GitArchive extends Model {}
 GitArchive.init(
@@ -70,6 +79,8 @@ GitArchive.init(
     sequelize,
     tableName: 'git_archive',
     timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
   }
 );
 
@@ -80,8 +91,10 @@ GitOwner.init(
       type: DataTypes.STRING,
       primaryKey: true,
     },
-    lastUpdateTime: DataTypes.DATE,
-    linkedProjects: DataTypes.ARRAY(DataTypes.STRING),
+    lastupdatetime: {
+      type: DataTypes.DATE,
+    },
+    linkedprojects: DataTypes.ARRAY(DataTypes.STRING),
     is_org: DataTypes.BOOLEAN,
     is_missing: DataTypes.BOOLEAN,
     ecosystem: DataTypes.ARRAY(DataTypes.STRING),
@@ -90,6 +103,8 @@ GitOwner.init(
     sequelize,
     tableName: 'git_owner',
     timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
   }
 );
 
@@ -139,10 +154,12 @@ GitRepo.init(
     sequelize,
     tableName: 'git_repo',
     timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
   }
 );
 
-class GitAuthor extends Model {}
+/* class GitAuthor extends Model {}
 GitAuthor.init(
   {
     id: {
@@ -199,6 +216,7 @@ GitCommit.init(
     timestamps: true,
   }
 );
+ */
 
 /**
  * Add a raw commit to the database if it doesn't exist
@@ -207,6 +225,10 @@ GitCommit.init(
  */
 async function addRawCommit(commit) {
   return GitCommitRaw.findOrCreate({ where: { sha: commit.sha }, defaults: commit })
+}
+
+async function addRawCommits(commits) {
+  return GitCommitRaw.bulkCreate(commits, { ignoreDuplicates: true })
 }
 
 /**
@@ -225,7 +247,9 @@ async function addArchiveData(archive_file, commit_count, filtered_commit_count)
 module.exports = {  
   GitOwner,
   GitRepo,
+  GitCommitRaw,
   addRawCommit,
+  addRawCommits,
   archiveExists,
   addArchiveData,
   sequelize,

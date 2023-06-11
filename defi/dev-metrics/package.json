@@ -10,7 +10,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@elastic/elasticsearch": "^8.7.0",
+    "@defillama/sdk": "^4.0.26",
+    "@supercharge/promise-pool": "^2.4.0",
     "axios": "^1.4.0",
     "moment": "^2.29.4",
     "octokit": "^2.0.18",

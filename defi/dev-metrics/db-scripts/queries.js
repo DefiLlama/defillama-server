@@ -9,7 +9,8 @@ commit_month,
 COUNT(DISTINCT developer) AS developer_count
 FROM ${TABLES.contributersAgg}
 WHERE
-owner = :owner
+(:orgs IS NULL OR owner IN (:orgs))
+    AND (:repos IS NULL OR repo IN (:repos))
 GROUP BY
 commit_month
 ORDER BY
@@ -20,7 +21,8 @@ commit_month,
 COUNT(DISTINCT developer) AS developer_count
 FROM ${TABLES.devAgg}
 WHERE
-owner = :owner
+(:orgs IS NULL OR owner IN (:orgs))
+    AND (:repos IS NULL OR repo IN (:repos))
 GROUP BY
 commit_month
 ORDER BY

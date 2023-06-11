@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { extractCommitsFromPushEvent } = require('../utils')
+const { extractCommitsFromPushEvent } = require('../../utils')
 
 const axios = require('axios');
 const zlib = require('zlib');

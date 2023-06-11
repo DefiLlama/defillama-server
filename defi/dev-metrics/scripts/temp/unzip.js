@@ -4,7 +4,7 @@ const repo = 'go-ethereum'
 
 
 const cache = require('../cache')
-const { turnToElasticLog } = require('../utils')
+const { turnToElasticLog } = require('../../utils')
 const orgData = cache.getOrgDataFile(org)
 const repoData = Object.values(orgData.repos).find(i => i.name === repo)
 const logs = cache.getRepoLogFile(org, repo)

@@ -1,4 +1,4 @@
-const { GitOwner, GitRepo, sequelize, addRawCommit, } = require('../db')
+const { GitOwner, GitRepo, sequelize, addRawCommit, } = require('../../db')
 
 async function main() {
   await sequelize.sync()

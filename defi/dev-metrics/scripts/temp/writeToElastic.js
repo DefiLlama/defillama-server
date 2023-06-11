@@ -1,7 +1,7 @@
 const { getOrgDataFile, getRepoLogFile, } = require('../cache')
-const { ORG_MAPPING, turnToElasticLog } = require('../utils')
+const { ORG_MAPPING, turnToElasticLog } = require('../../utils')
 const sdk = require('@defillama/sdk')
-const { blacklistedOrgs, blacklistedRepoMapping } = require('../config')
+const { blacklistedOrgs, blacklistedRepoMapping } = require('../../config')
 
 const { Client } = require('@elastic/elasticsearch')
 const client = new Client({ node: 'http://localhost:9200' })

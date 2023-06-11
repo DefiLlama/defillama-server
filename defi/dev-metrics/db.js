@@ -245,18 +245,26 @@ async function addArchiveData(archive_file, commit_count, filtered_commit_count)
   return GitArchive.create({ archive_file, commit_count, filtered_commit_count })
 }
 
-async function getOrgMonthyAggregation(org) {
+async function getOrgMonthyAggregation({ orgs = [], repos = [] }) {
+  if (!orgs.length && !repos.length) throw new Error('No org or repo filter provided')
+  if (!orgs.length) orgs = null
+  if (!repos.length) repos = null
+
   return sequelize
     .query(owner_query, {
-      replacements: { owner: org, },
+      replacements: { orgs, repos },
       type: Sequelize.QueryTypes.SELECT,
     })
 }
 
-async function getOrgContributersMonthyAggregation(org) {
+async function getOrgContributersMonthyAggregation({ orgs = [], repos = [] }) {
+  if (!orgs.length && !repos.length) throw new Error('No org or repo filter provided')
+  if (!orgs.length) orgs = null
+  if (!repos.length) repos = null
+  
   return sequelize
     .query(owner_query_contributers, {
-      replacements: { owner: org, },
+      replacements: { orgs, repos },
       type: Sequelize.QueryTypes.SELECT,
     })
 }

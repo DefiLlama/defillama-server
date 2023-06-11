@@ -44,6 +44,7 @@ function getLink(govType, project) {
 async function getCache(govType, project, { } = {}) {
   const Key = getKey(govType, project)
 
+  console.log('fetching data from s3 bucket:', getLink(govType, project))
   try {
     const { data: json } = await axios.get(getLink(govType, project))
     return json
@@ -71,9 +72,20 @@ async function setTomlFile(cache) {
   return setCache('config', 'tomlData', cache)
 }
 
+async function saveChartData(id, data) {
+  return setCache('chart-data', id, data)
+}
+
+
+async function getChartData(id, data) {
+  return getCache('chart-data', id)
+}
+
 module.exports = {
   getCache,
   setCache,
   getTomlFile,
   setTomlFile,
+  saveChartData,
+  getChartData,
 }

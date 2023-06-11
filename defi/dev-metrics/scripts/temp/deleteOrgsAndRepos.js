@@ -1,5 +1,5 @@
-const { ORGS_MISSING_FROM_TOML } = require('../utils/index')
-const { GitOwner, GitRepo, sequelize, } = require('../db')
+const { ORGS_MISSING_FROM_TOML } = require('../../utils/index')
+const { GitOwner, GitRepo, sequelize, } = require('../../db')
 
 async function main() {
   await sequelize.sync()

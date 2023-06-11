@@ -134,5 +134,9 @@ export default {
                 "enabled": true
             }
         },
+    },
+    "urdex": {
+        "id": "3085",
+        "enabled": true
     }
 } as AdaptorsConfig

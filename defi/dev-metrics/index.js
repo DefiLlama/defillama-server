@@ -4,6 +4,7 @@ const { ORG_MAPPING } = require('./utils')
 const { pullOrCloneRepository } = require('./utils/git')
 const sdk = require('@defillama/sdk')
 const { blacklistedOrgs, users, blacklistedRepoMapping } = require('./config')
+const { GITHUB_API_KEY } = require('./env')
 
 clearTempFolders()
 const gitOrgs = [...new Set(Object.values(ORG_MAPPING).map(i => i.github).flat())]
@@ -14,7 +15,7 @@ const HOURS_12 = 12 * 60 * 60 * 1000
 const THREE_DAYS = 3 * 24 * 60 * 60 * 1000
 
 const octokit = new Octokit({
-  auth: process.env.GITHUB_API_KEY,
+  auth: GITHUB_API_KEY,
 });
 
 async function fetchOrgRepos(orgName, orgData, isUser) {

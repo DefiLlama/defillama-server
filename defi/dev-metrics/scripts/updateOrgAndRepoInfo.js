@@ -2,15 +2,16 @@ const { orgSet, repoSet, sleepInMinutes } = require('../utils/index')
 const { Octokit } = require('octokit')
 const { GitOwner, GitRepo, sequelize, addRawCommit, addRawCommits, } = require('../db')
 const { extractCommitsFromSimpleGit } = require('../utils/index')
-const { getTempFolder, clearTempFolders, deleteFolder, } = require('../utils/cache')
+const { getTempFolder,  deleteFolder, } = require('../utils/cache')
 const sdk = require('@defillama/sdk')
 const simpleGit = require('simple-git')
 const path = require('path')
 const { sliceIntoChunks } = require('@defillama/sdk/build/util')
 const { Op } = require('sequelize');
+const { GITHUB_API_KEY } = require('../env')
 
 const octokit = new Octokit({
-  auth: process.env.GITHUB_API_KEY,
+  auth: GITHUB_API_KEY,
 });
 
 async function main() {

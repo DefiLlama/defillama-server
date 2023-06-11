@@ -15,10 +15,11 @@ printTitle "Installing dependencies..."
 time npm i
 
 printTitle "Updating dev mapping from our data.ts files"
-# time npx ts-node updateDevMapping.ts
+time npx ts-node updateDevMapping.ts
 
-printTitle "Create toml file from electric-capital repo"
+printTitle "download toml file data from electric-capital repo"
 # time node $script_dir/createMappingFromElectricRepo.js
+ node $script_dir/downloadTomlFile.js
 
 printTitle "Update org/repo details in DB"
 time node $script_dir/updateOrgAndRepoInfo.js

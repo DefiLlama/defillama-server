@@ -1,6 +1,7 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
 const ENV = require('./env');
+const { owner_query, owner_query_contributers } = require('./db-scripts/queries');
 
 const sequelize = new Sequelize({
   host: ENV.host,
@@ -18,7 +19,7 @@ const sequelize = new Sequelize({
   },
 });
 
-class GitCommitRaw extends Model {}
+class GitCommitRaw extends Model { }
 GitCommitRaw.init(
   {
     sha: {
@@ -65,7 +66,7 @@ GitCommitAuthor.init(
   }
 ); */
 
-class GitArchive extends Model {}
+class GitArchive extends Model { }
 GitArchive.init(
   {
     archive_file: {
@@ -84,7 +85,7 @@ GitArchive.init(
   }
 );
 
-class GitOwner extends Model {}
+class GitOwner extends Model { }
 GitOwner.init(
   {
     name: {
@@ -108,7 +109,7 @@ GitOwner.init(
   }
 );
 
-class GitRepo extends Model {}
+class GitRepo extends Model { }
 GitRepo.init(
   {
     name: DataTypes.STRING,
@@ -244,7 +245,23 @@ async function addArchiveData(archive_file, commit_count, filtered_commit_count)
   return GitArchive.create({ archive_file, commit_count, filtered_commit_count })
 }
 
-module.exports = {  
+async function getOrgMonthyAggregation(org) {
+  return sequelize
+    .query(owner_query, {
+      replacements: { owner: org, },
+      type: Sequelize.QueryTypes.SELECT,
+    })
+}
+
+async function getOrgContributersMonthyAggregation(org) {
+  return sequelize
+    .query(owner_query_contributers, {
+      replacements: { owner: org, },
+      type: Sequelize.QueryTypes.SELECT,
+    })
+}
+
+module.exports = {
   GitOwner,
   GitRepo,
   GitCommitRaw,
@@ -252,5 +269,7 @@ module.exports = {
   addRawCommits,
   archiveExists,
   addArchiveData,
+  getOrgMonthyAggregation,
+  getOrgContributersMonthyAggregation,
   sequelize,
 }

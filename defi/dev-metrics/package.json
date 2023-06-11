@@ -10,10 +10,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.350.0",
     "@defillama/sdk": "^4.0.26",
     "@supercharge/promise-pool": "^2.4.0",
     "axios": "^1.4.0",
     "moment": "^2.29.4",
+    "node-fetch": "^3.3.1",
     "octokit": "^2.0.18",
     "pg": "^8.11.0",
     "rimraf": "^5.0.1",

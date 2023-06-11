@@ -2,6 +2,7 @@ const sdk = require('@defillama/sdk')
 const simpleGit = require('simple-git')
 const fs = require('fs')
 const cache = require('../utils/cache')
+const { setTomlFile } = require('../utils/r2')
 
 const path = require('path');
 const toml = require('toml');
@@ -51,7 +52,9 @@ async function cloneRepo() {
     }
   })
   sdk.log(orgData.length, Object.keys(repos).length, Object.keys(ecosystemData).length)
-  cache.writeJSON('tomlData.json', { orgData, repos, ecosystemData }, { compressed: false })
+  const tomlFile = { orgData, repos, ecosystemData }
+  await setTomlFile(tomlFile)
+  cache.writeJSON('tomlData.json', tomlFile, { compressed: false })
 }
 
 let i = 0

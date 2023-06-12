@@ -123,13 +123,13 @@ const formattedChains = async (category: string) => {
     })
   );
 
-  // get mcaps of chains in given category
-  const chainMcaps = await fetch(
-    `https://pro-api.coingecko.com/api/v3/simple/price?ids=${Object.values(chainCoingeckoIds)
-      .map((v) => v.geckoId)
-      .join(",")}&vs_currencies=usd&include_market_cap=true&x_cg_pro_api_key=${process.env.CG_KEY}`
-  )
-    .then((res) => res.json())
+  const chainMcaps = await fetch("https://coins.llama.fi/mcaps", {
+    method: "POST",
+    body: JSON.stringify({
+      coins: Object.values(chainCoingeckoIds).map((id) => `coingecko:${id}`),
+    }),
+  })
+    .then((r) => r.json())
     .catch((err) => {
       console.log(err);
       return {};
@@ -169,7 +169,7 @@ const formattedChains = async (category: string) => {
       const tvlPrevWeek = getPrevTvlFromChart(tvlData[i], 7);
       const tvlPrevMonth = getPrevTvlFromChart(tvlData[i], 30);
       const geckoId = chainCoingeckoIds[chainName]?.geckoId;
-      const mcap = geckoId && chainMcaps[geckoId]?.usd_market_cap;
+      const mcap = geckoId && chainMcaps?.[`coingecko:${geckoId}`]?.mcap;
       const mcaptvl = mcap && tvl && mcap / tvl;
 
       return {

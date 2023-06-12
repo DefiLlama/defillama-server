@@ -126,7 +126,9 @@ const formattedChains = async (category: string) => {
   const chainMcaps = await fetch("https://coins.llama.fi/mcaps", {
     method: "POST",
     body: JSON.stringify({
-      coins: Object.values(chainCoingeckoIds).map((id) => `coingecko:${id}`),
+      coins: Object.values(chainCoingeckoIds)
+        .filter((c) => c.geckoId)
+        .map((c) => `coingecko:${c.geckoId}`),
     }),
   })
     .then((r) => r.json())

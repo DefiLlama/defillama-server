@@ -37552,6 +37552,51 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://docs.coindrip.finance/faq/security"],
     listedAt: 1686410187
-  },   
+  },
+  {
+    id: "3101",
+    name: "Athena Finance",
+    address: "metis:0xA4eE142e34d0676Edc2b760DD0016003D99a4ceC",
+    symbol: "ATH",
+    url: "https://www.athenafinance.io/",
+    description:
+      "Athena Finance, integrated with the Hummus Exchange on METIS, empowers users to generate boosted yields on their Hummus deposits, even if they don't own any HUM and veHUM",
+    chain: "Metis",
+    logo: `${baseIconsUrl}/athena-finance.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Metis"],
+    module: "athenafinance-io/index.js",
+    twitter: "Athena_DeFi_",
+    oracles: [],
+    forkedFrom: ["Vector Finance"],
+    audit_links: ["https://docs.athenafinance.io/athena-finance-protocol/risk-prevention/audit"],
+    listedAt: 1686606767
+  },
+  {
+    id: "3102",
+    name: "Kannagi Finance",
+    address: "era:0x26aC1D9945f65392B8E4E6b895969b5c01A7B414",
+    symbol: "KANA",
+    url: "https://kannagi.finance/",
+    description:
+      "Kannagi Finance is a zkSync decentralized yield aggregator that empower investors to compound interest from their staked assets",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/kannagi-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["zkSync Era"],
+    module: "kannagi-finance/index.js",
+    twitter: "Kannagi_Zksync",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1686607089
+  },
 ]
 export default data2;

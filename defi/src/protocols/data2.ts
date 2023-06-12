@@ -37528,6 +37528,29 @@ const data2: Protocol[] = [
     forkedFrom: [],
     audit_links: ["https://github.com/solidproof/projects/blob/main/2023/FroggyToken/SmartContract_Audit_Solidproof_FroggyProtocol.pdf"],
     listedAt: 1686410187
-  },  
+  }, 
+  {
+    id: "3100",
+    name: "CoinDrip",
+    address: null,
+    symbol: "-",
+    url: "https://coindrip.finance",
+    description:
+      "CoinDrip is the first token streaming protocol launched on MultiversX that opens the door to an entirely new DeFi space for recurring payments, token vesting, subscriptions, and more.",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/coindrip.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Elrond"],
+    module: "coindrip/index.js",
+    twitter: "CoinDripHQ",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://docs.coindrip.finance/faq/security"],
+    listedAt: 1686410187
+  },   
 ]
 export default data2;

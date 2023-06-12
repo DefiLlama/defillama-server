@@ -36776,6 +36776,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     parentProtocol: "parent#paladin-finance",
+    wrongLiquidity: true, // not listed on coingecko, showing liquidity for another WAR token
     listedAt: 1685977922
   },
   {

@@ -2876,7 +2876,7 @@ const data: Protocol[] = [
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
   },
-  {
+  /*{
     id: "245",
     name: "Secret Network",
     address: null,
@@ -2894,7 +2894,7 @@ const data: Protocol[] = [
     chains: ["Secret"],
     module: "scrt.js",
     twitter: "SecretNetwork",
-  },
+  },*/
   {
     id: "246",
     name: "Pangolin",

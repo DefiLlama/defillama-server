@@ -277,5 +277,12 @@
       "symbol": "JEWEL",
       "to": "coingecko#defi-kingdoms"
     }
+  },
+  "metis": {
+    "0x4c078361fc9bbb78df910800a991c7c3dd2f6ce0": {
+      "decimals": "18",
+      "symbol": "m.DAI",
+      "to": "coingecko#dai"
+    }
   }
 }

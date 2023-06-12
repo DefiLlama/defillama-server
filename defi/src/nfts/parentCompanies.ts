@@ -147,17 +147,6 @@ export const nftParentCompanies: NFTCompany[] = [
         ]
     },
     {
-        name:"VeeFriends",
-        url: "https://veefriends.com",
-        twitter: "veefriends",
-        nftCollections: [
-            ["0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb", "VeeFriends"],
-            ["0x9378368ba6b85c1fba5b131b530f5f5bedf21a18", "VeeFriends Series 2"],
-            ["0x65fff8f5f6a9922b6dc13fe06345a0fe46dd413d", "VeeFriends Iconics"],
-            ["0x6cb5c137ed297c74c8dc1f7c669bbd9a60b98c3c", "VeeFriends Mini Drops 2"],
-        ]
-    },
-    {
         name:"NFT Worlds",
         url: "https://www.nftworlds.com/",
         twitter: "TOPIAgg",

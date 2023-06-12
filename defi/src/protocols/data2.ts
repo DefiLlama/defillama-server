@@ -37390,7 +37390,7 @@ const data2: Protocol[] = [
     module: "ezkalibur/index.js",
     twitter: "zkaliburDEX",
     oracles: [],
-    forkedFrom: ["Camelot V2"],
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/2023/ezKalibur"],
     listedAt: 1686321408
   },

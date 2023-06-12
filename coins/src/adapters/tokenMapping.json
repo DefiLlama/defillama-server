@@ -246,5 +246,19 @@
       "symbol": "ETH",
       "to": "coingecko#ethereum"
     }
+  },
+  "shiden": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "SDN",
+      "to": "coingecko#shiden"
+    }
+  },
+  "fusion": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "FSN",
+      "to": "coingecko#fsn"
+    }
   }
 }

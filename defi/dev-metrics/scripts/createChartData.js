@@ -31,7 +31,7 @@ async function createChartData() {
       }
 
       await saveChartData(key, chartData)
-      // const chartData2 = await getChartData(key)
+      // await getChartData(key)
       const timeTaken = Number((Date.now() - startTime) / 1000).toPrecision(3)
       const avgTimeTaken = Number((Date.now() - startTimestamp) / (1000 * i)).toPrecision(3)
       const progress = Number(100 * i / entries.length).toPrecision(5)

@@ -34,7 +34,7 @@ async function storeR2JSONString(filename, body, cache) {
 }
 
 function getKey(govType, project) {
-  return `dev-metrics/${govType}/${project.toLowerCase()}.json`.replace(/(:|')/g, '/')
+  return `dev-metrics/${govType}/${project.toLowerCase()}.json`.replace(/(:|'|#)/g, '/')
 }
 
 function getLink(govType, project) {

@@ -142,6 +142,11 @@
       "decimals": "18",
       "symbol": "BUSD",
       "to": "coingecko#binance-usd"
+    },
+    "0x9e2dfb9912debb2f8cdafc05d4c1de6b57f4d404": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "ethereum:0x0000000000000000000000000000000000000000"
     }
   },
   "thundercore": {
@@ -259,6 +264,13 @@
       "decimals": "18",
       "symbol": "FSN",
       "to": "coingecko#fsn"
+    }
+  },
+  "dfk": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "JEWEL",
+      "to": "coingecko#defi-kingdoms"
     }
   }
 }

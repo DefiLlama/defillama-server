@@ -533,6 +533,18 @@
       [
         "0x7b390a46c868ccebf2730121faf777129b47c97c",
         "BiG iNC Letters of Acceptance"
+      ],
+      [
+        "0x8cb05890b7a640341069fb65dd4e070367f4d2e6",
+        "IlluminatiNFT"
+      ],
+      [
+        "0x7912a656ece2bc669d4116ad8e9495f722d92d76",
+        "undao"
+      ],
+      [
+        "0xe25f0fe686477f9df3c2876c4902d3b85f75f33a",
+        "illuminatidaotoken"
       ]
     ]
   },
@@ -544,6 +556,44 @@
       [
         "0xd2f668a8461d6761115daf8aeb3cdf5f40c532c6",
         "Karafuru"
+      ]
+    ]
+  },
+  {
+    "name": "Memeland",
+    "url": "https://www.memeland.com/",
+    "twitter": "Memeland",
+    "nftCollections": [
+      [
+        "0x6efc003d3f3658383f06185503340c2cf27a57b6",
+        "YOU THE REAL MVP"
+      ],
+      [
+        "0x769272677fab02575e84945f03eca517acc544cc",
+        "THE CAPTAINZ"
+      ],
+      [
+        "0x39ee2c7b3cb80254225884ca001f57118c8f21b6",
+        "THE POTATOZ"
+      ]
+    ]
+  },
+  {
+    "name": "Chimpers",
+    "url": "https://side.xyz/chimpers",
+    "twitter": "ChimpersNFT",
+    "nftCollections": [
+      [
+        "0x80336ad7a747236ef41f47ed2c7641828a480baa",
+        "Chimpers"
+      ],
+      [
+        "0x7cc7add921e2222738561d03c89589929cefcf21",
+        "Chimpers Chronicles"
+      ],
+      [
+        "0x4d55109a17a6914130ace90325dc98cf66ebfa00",
+        "Chimpers Genesis"
       ]
     ]
   }

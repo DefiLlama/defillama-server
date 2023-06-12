@@ -279,6 +279,9 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x88091012eedf8dba59d08e27ed7b22008f5d6fe5", "Secret Society of Whales"],
             ["0xa48eda4b2c63928cac2a1fd631493ac038dafa5d", "The 187 by Truth Labs"],
             ["0x7b390a46c868ccebf2730121faf777129b47c97c", "BiG iNC Letters of Acceptance"],
+            ["0x8CB05890B7A640341069fB65DD4e070367f4D2E6", "IlluminatiNFT"],
+            ["0x7912a656eCE2BC669d4116ad8e9495f722d92D76", "undao"],
+            ["0xe25f0fe686477F9Df3C2876C4902D3B85F75f33a", "illuminatidaotoken"]
         ],
     },
     {
@@ -287,6 +290,26 @@ export const nftParentCompanies: NFTCompany[] = [
         twitter: "KarafuruNFT",
         nftCollections: [
             ["0xd2f668a8461d6761115daf8aeb3cdf5f40c532c6", "Karafuru"],
+        ],
+    },
+    {
+        name:"Memeland",
+        url: "https://www.memeland.com/",
+        twitter: "Memeland",
+        nftCollections: [
+            ["0x6efc003d3f3658383f06185503340c2cf27a57b6", "YOU THE REAL MVP"],
+            ["0x769272677faB02575E84945F03Eca517ACc544Cc", "THE CAPTAINZ"],
+            ["0x39ee2c7b3cb80254225884ca001f57118c8f21b6", "THE POTATOZ"]
+        ],
+    },
+    {
+        name:"Chimpers",
+        url: "https://side.xyz/chimpers",
+        twitter: "ChimpersNFT",
+        nftCollections: [
+            ["0x80336Ad7A747236ef41F47ed2C7641828a480BAA", "Chimpers"],
+            ["0x7cC7ADd921e2222738561D03c89589929ceFcF21", "Chimpers Chronicles"],
+            ["0x4D55109A17a6914130aCe90325dc98CF66EBfa00", "Chimpers Genesis"]
         ],
     },
 ]

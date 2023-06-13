@@ -203,6 +203,7 @@ const data: Protocol[] = [
     },
     governanceID: ["snapshot:synthetix-stakers-poll.eth"],
     stablecoins: ["susd", "seur"],
+    github: ["Synthetixio"]
   },
   {
     id: "116",
@@ -244,7 +245,8 @@ const data: Protocol[] = [
     twitter: "renprotocol",
     audit_links: ["https://github.com/renproject/ren/wiki/Audits"],
     oracles: [],
-    governanceID: ["snapshot:ren-project.eth"]
+    governanceID: ["snapshot:ren-project.eth"],
+    github: ["renproject"]
   },
   {
     id: "118",
@@ -268,6 +270,7 @@ const data: Protocol[] = [
     oracles: ["Chronicle"],
     treasury: "maker.js",
     stablecoins: ["dai"],
+    github: ["makerdao"]
   },
   {
     id: "119",
@@ -326,7 +329,8 @@ const data: Protocol[] = [
     twitter: "Instadapp",
     audit_links: ["https://github.com/Instadapp/dsa-contracts/blob/master/audits/v1_PeckShield_Mar_2020.pdf"],
     treasury: "instadapp.js",
-    governanceID: ["snapshot:instadapp-gov.eth"]
+    governanceID: ["snapshot:instadapp-gov.eth"],
+    github: ["InstaDApp"]
   },
   {
     id: "121",
@@ -370,7 +374,8 @@ const data: Protocol[] = [
     twitter: "NexusMutual",
     audit_links: ["https://nexusmutual.gitbook.io/docs/helpful-resources/audits-and-security"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:community.nexusmutual.eth", "specialresolution.nexusmutual.eth"]
+    governanceID: ["snapshot:community.nexusmutual.eth", "specialresolution.nexusmutual.eth"],
+    github: ["NexusMutual"]
   },
   {
     id: "123",
@@ -394,6 +399,7 @@ const data: Protocol[] = [
     oracles: ["Chainlink", "Band"],
     governanceID: ["snapshot:dforcenet.eth"],
     stablecoins: ["dforce-usd"],
+    github: ["dforce-network"]
   },
   {
     id: "124",
@@ -414,6 +420,7 @@ const data: Protocol[] = [
     twitter: null,
     audit_links: ["https://consensys.net/diligence/audits/2020/02/thesis-tbtc-and-keep/"],
     oracles: ["Chronicle"],
+    github: ["keep-network"]
   },
   {
     id: "125",
@@ -456,7 +463,8 @@ const data: Protocol[] = [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
     ],
     oracles: ["Chainlink", "Band"],
-    governanceID: ["snapshot:loopringdao.eth"]
+    governanceID: ["snapshot:loopringdao.eth"],
+    github: ["Loopring"]
   },
   {
     id: "127",
@@ -503,6 +511,7 @@ const data: Protocol[] = [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Hegic-v1.0.pdf",
       "https://github.com/hegic/contracts/blob/main/packages/herge/docs/PeckShield-Audit-Report-Hegic-Herge-Protocol-Upgrade-v1.0.pdf",
     ],
+    github: ["hegic"]
   },
   {
     id: "129",
@@ -564,7 +573,8 @@ const data: Protocol[] = [
     twitter: "Barn_Bridge",
     audit_links: ["https://github.com/BarnBridge/BarnBridge-PM/tree/master/audits"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:barnbridge.eth"]
+    governanceID: ["snapshot:barnbridge.eth"],
+    github: ["BarnBridge"]
   },
   {
     id: "132",
@@ -603,7 +613,8 @@ const data: Protocol[] = [
     chains: ["Arbitrum"],
     module: "shell/index.js",
     twitter: "ShellProtocol",
-    governanceID: ["snapshot:shellprotocol.eth"]
+    governanceID: ["snapshot:shellprotocol.eth"],
+    github: ["cowri"]
   },
   {
     id: "134",
@@ -624,7 +635,8 @@ const data: Protocol[] = [
     module: "pickle/index.js",
     twitter: "picklefinance",
     audit_links: ["https://docs.pickle.finance/faqs/security"],
-    governanceID: ["snapshot:pickle.eth"]
+    governanceID: ["snapshot:pickle.eth"],
+    github: ["pickle-finance"]
   },
   {
     id: "135",
@@ -672,7 +684,8 @@ const data: Protocol[] = [
       "snapshot:fuse.eth", 
       "eip155:1:0x91d9c2b5cF81D55a5f2Ecc0fC84E62f9cd2ceFd6",
       'eip155:1:0x637deEED4e4deb1D222650bD4B64192abf002c00',
-    ]
+    ],
+    github: ["Rari-Capital"]
   },
   {
     id: "137",
@@ -712,7 +725,8 @@ const data: Protocol[] = [
     twitter: "hakkafinance",
     audit_links: ["https://github.com/hakkafinance/audit-reports"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:hakka.eth"]
+    governanceID: ["snapshot:hakka.eth"],
+    github: ["hakkafinance"]
   },
   {
     id: "139",
@@ -796,6 +810,7 @@ const data: Protocol[] = [
       "https://github.com/crypticlabs/swerve-audit-report/blob/master/Swerve%20Finance%20Audit%20-%20by%20Cryptic%20Labs%20v3.pdf",
     ],
     forkedFrom: ["Curve"],
+    github: ["user:SwerveFinance"]
   },
   {
     id: "143",

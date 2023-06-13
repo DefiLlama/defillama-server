@@ -91,6 +91,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x620b70123fb810f6c653da7644b5dd0b6312e4d8", "Space Doodles"],
         ]
     },
+    /*
     {
         name:"Parallel Alpha",
         url: "https://parallel.life",
@@ -107,6 +108,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0xc36cf0cfcb5d905b8b513860db0cfe63f6cf9f5c", "Legends Reborn"],
         ]
     },
+    */
     {
         name:"The Sandbox",
         url: "https://www.sandbox.game/en",
@@ -119,6 +121,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0xf17131a4c85e8a75ba52b3f91ce8c32f6f163924", "The Sandbox Official Open Sea Store"],
         ]
     },
+    /*
     {
         name:"Audioglyphs",
         url: "https://www.audioglyphs.io",
@@ -135,6 +138,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x1a92f7381b9f03921564a437210bb9396471050c", "Cool Cats NFT"],
         ]
     },
+    */
     {
         name:"VeeFriends",
         url: "https://veefriends.com",
@@ -146,6 +150,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x6cb5c137ed297c74c8dc1f7c669bbd9a60b98c3c", "VeeFriends Mini Drops 2"],
         ]
     },
+    /*
     {
         name:"NFT Worlds",
         url: "https://www.nftworlds.com/",
@@ -154,6 +159,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0xbd4455da5929d5639ee098abfaa3241e9ae111af", "NFT Worlds"],
         ]
     },
+    */
     {
         name:"adidas Originals",
         url: "https://www.adidas.com/Metaverse",
@@ -198,6 +204,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x3e84607606b25f8a3c75b6db4a8a6683d1e40284", "Murakami Flowers Coin"],
         ]
     },
+    /*
     {
         name:"Prime Ape Planet PAP",
         url: "https://primeapeplanet.com",
@@ -206,6 +213,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x6632a9d63e142f17a668064d41a21193b49b41a0", "Prime Ape Planet PAP"],
         ]
     },
+    */
     {
         name:"CyberKongz",
         url: "https://www.cyberkongz.com/",
@@ -236,6 +244,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0xaa94d963bd7b6c8ddde07a4b4cf13e26c2650899", "VOX Collectibles: DreamWorks Trolls"]
         ],
     },
+    /*
     {
         name:"0N1 Force",
         url: "https://www.0n1force.com",
@@ -244,6 +253,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x3bf2922f4520a8ba0c2efc3d2a1539678dad5e9d", "0N1 Force"],
         ],
     },
+    
     {
         name:"Creature World",
         url: "https://www.creature.world",
@@ -268,6 +278,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x4db1f25d3d98600140dfc18deb7515be5bd293af", "HAPE PRIME"],
         ],
     },
+    */
     {
         name:"Truth Labs",
         url: "https://truthlabs.co",
@@ -284,6 +295,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0xe25f0fe686477F9Df3C2876C4902D3B85F75f33a", "illuminatidaotoken"]
         ],
     },
+    /*
     {
         name:"Karafuru",
         url: "https://karafuru.io/",
@@ -292,6 +304,7 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0xd2f668a8461d6761115daf8aeb3cdf5f40c532c6", "Karafuru"],
         ],
     },
+    */
     {
         name:"Memeland",
         url: "https://www.memeland.com/",
@@ -310,6 +323,47 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0x80336Ad7A747236ef41F47ed2C7641828a480BAA", "Chimpers"],
             ["0x7cC7ADd921e2222738561D03c89589929ceFcF21", "Chimpers Chronicles"],
             ["0x4D55109A17a6914130aCe90325dc98CF66EBfa00", "Chimpers Genesis"]
+        ],
+    },
+    {
+        name:"Pixel Vault",
+        url: "https://pixelvault.com",
+        twitter: "pixelvault_",
+        nftCollections: [
+            ["0x797a48c46be32aafcedcfd3d8992493d8a1f256b", "Inhabitants: MintPass"],
+            ["0x6dc6001535e15b9def7b0f6a20a2111dfa9454e2", "Inhabitants: Generative Identities"],
+            ["0x7deb7bce4d360ebe68278dee6054b882aa62d19c", "Inhabitants: United Planets"],
+            ["0x33cfae13a9486c29cd3b11391cc7eca53822e8c7", "Inhabitants: MintPass"],
+            ["0xd07597b64b4878add0965bb1727247ced90c6ce8", "Inhabitants: DOTs"],
+            ["0x5ab21ec0bfa0b29545230395e3adaca7d552c948", "PUNKS Comic"],
+            ["0x128675d4fddbc4a0d3f8aa777d8ee0fb8b427c2f", "PUNKS Comic"],
+            ["0xa173846434d21c1a0eb7740d47f629da89436af5", "PUNKS Comic 2: BBA"],
+            ["0xa379cec69303e3ec0fea64d9298f126658276f63", "PUNKS Comic 2: HANZO"],
+            ["0x15d164340c1548fa74fa1b98c24a3ea24fefb177", "PUNKS Comic 2: BIZ"],
+            ["0x37f02e4fa5f28a25baf64566083c717c387761d0", "PUNKS Comic 2: KIKI"],
+            ["0xce29001d6748c531b420163b88ff58ed326d7337", "PUNKS Comic 2: GOLD-RILLA"],
+            ["0xb716600ed99b4710152582a124c697a7fe78adbf", "PUNKS Comic 3"],
+        ],
+    },
+    {
+        name:"Lazy Lions",
+        url: "https://www.lazylionsnft.com",
+        twitter: "LazyLionsNFT",
+        nftCollections: [
+            ["0x8943c7bac1914c9a7aba750bf2b6b09fd21037e0", "Lazy Lions"],
+            ["0xd80eef7484c8fab1912a43e44a97774093007ab1", "Lazy Lions Bungalows"],
+        ],
+    },
+    {
+        name:"888 inner circle",
+        url: "https://www.lazylionsnft.com",
+        twitter: "crypto888crypto",
+        nftCollections: [
+            ["0x36d30b3b85255473d27dd0f7fd8f35e36a9d6f06", "888 inner circle"],
+            ["0x715565baf69afcbbe88f56d46f1c9fe2df828705", "888 Inner Circle The Drops"],
+            ["0x2378e88624c7dfdf73a6b02ded8733449916fdba", "888 Inner Circle - Blue Realm"],
+            ["0x87b5d8fe6cf8b37678b6cef7cca23a4852883c48", "888 Inner Circle The Drops"],
+            ["0xff063937523c4514179a4d9a6769694baab357a8", "888 Inner Circle - Pink Realm"],
         ],
     },
 ]

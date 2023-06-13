@@ -13578,6 +13578,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "fractional-art.js",
     twitter: "fractional_art",
     listedAt: 1635876350,
+    github: ['fractional-company'],
   },
   {
     id: "751",

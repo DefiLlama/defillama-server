@@ -1,11 +1,13 @@
 const moment = require('moment')
 let ORG_MAPPING = {}
+let TWITTER_MAPPING = {}
 let tomlData = { orgData: [], repos: {}, ecosystemData: {}}  // Default values
 
 const ORGS_MISSING_FROM_TOML = []
 
 try {
   ORG_MAPPING = require('../app-data/mapping.json')
+  TWITTER_MAPPING = require('../app-data/twitter_mapping.json')
   tomlData = require('../app-data/tomlData.json')
 } catch (e) {
   // console.error(e)
@@ -177,6 +179,7 @@ module.exports = {
   extractCommitsFromPushEvent,
   ORG_MAPPING,
   ORGS_MISSING_FROM_TOML,
+  TWITTER_MAPPING,
   orgSet,
   repoSet,
   sleepInMinutes,

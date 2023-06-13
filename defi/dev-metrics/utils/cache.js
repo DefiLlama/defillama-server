@@ -119,5 +119,6 @@ module.exports = {
   clearTempFolders,
   deleteFolder,
   DATA_ROOT,
-  DATA_MAPPING_FILE: path.join(DATA_ROOT, 'mapping.json')
+  DATA_MAPPING_FILE: path.join(DATA_ROOT, 'mapping.json'),
+  TWITTER_MAPPING_FILE: path.join(DATA_ROOT, 'twitter_mapping.json'),
 }

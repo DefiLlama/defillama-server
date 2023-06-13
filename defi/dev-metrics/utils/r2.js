@@ -72,13 +72,28 @@ async function setTomlFile(cache) {
   return setCache('config', 'tomlData', cache)
 }
 
+async function getTwitterOverviewFile() {
+  return getCache('config', 'twitter-overview')
+}
+
+async function setTwitterOverviewFile(cache) {
+  return setCache('config', 'twitter-overview', cache)
+}
+
 async function saveChartData(id, data) {
   return setCache('chart-data', id, data)
 }
 
-
-async function getChartData(id, data) {
+async function getChartData(id) {
   return getCache('chart-data', id)
+}
+
+async function saveTwitterData(handle, data) {
+  return setCache('twitter', handle, data)
+}
+
+async function getTwitterData(handle) {
+  return getCache('twitter', handle)
 }
 
 module.exports = {
@@ -88,4 +103,8 @@ module.exports = {
   setTomlFile,
   saveChartData,
   getChartData,
+  getTwitterOverviewFile,
+  setTwitterOverviewFile,
+  saveTwitterData,
+  getTwitterData,
 }

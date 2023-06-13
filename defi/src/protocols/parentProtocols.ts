@@ -1840,6 +1840,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Paladin_vote",
     governanceID: ["snapshot:palvote.eth"],
     treasury: "paladin-finance.js",
+    github: ["PaladinFinance"]
   },
   {
     id: "parent#quipuswap",
@@ -1862,6 +1863,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "predyfinance",
+    github: ["predyprotocol"]
   },
   {
     id: "parent#magicfox",
@@ -1873,6 +1875,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "magicfoxfi",
+    github: ["user:magicfoxfi"]
   },
   {
     id: "parent#magpie-xyz",
@@ -1897,6 +1900,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "sudoswap",
     governanceID: ['eip155:1:0x6853f8865BA8e9FBd9C8CCE3155ce5023fB7EEB0'],
+    github: ["sudoswap"]
   },
   {
     id: "parent#ramses-exchange",
@@ -1908,6 +1912,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "RamsesExchange",
+    github: ["RamsesExchange"]
   },
 ];
 

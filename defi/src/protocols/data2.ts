@@ -37598,5 +37598,28 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1686607089
   },
+  {
+    id: "3102",
+    name: "Maple RWA",
+    address: "0x33349b282065b0284d756f0577fb39c158f935e6",
+    symbol: "MPL",
+    url: "https://www.maple.finance",
+    description:
+      "Maple Finance is an institutional capital marketplace powered by blockchain technology.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/maple-rwa.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum"],
+    module: "maple-rwa/index.js",
+    twitter: "maplefinance",
+    oracles: [],
+    forkedFrom: [],
+    parentProtocol: "parent#maple-finance",
+    listedAt: 1686663721
+  },
 ]
 export default data2;

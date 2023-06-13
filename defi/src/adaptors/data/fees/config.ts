@@ -926,5 +926,9 @@ export default {
         parentId: "Cryptex Finance",
         "enabled": true,
         "id": "3051"
+    },
+    "usdo": {
+        "enabled": true,
+        "id": "3098"
     }
 } as AdaptorsConfig

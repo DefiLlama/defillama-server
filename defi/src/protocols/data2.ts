@@ -31727,7 +31727,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/stakehouse.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "blockswap-network",
+    gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Ethereum"],

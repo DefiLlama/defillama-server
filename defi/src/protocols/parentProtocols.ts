@@ -1914,6 +1914,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "RamsesExchange",
     github: ["RamsesExchange"]
   },
+  {
+    id: "parent#maple-finance",
+    name: "Maple Finance",
+    url: "https://www.maple.finance",
+    description: "Maple Finance is an institutional capital marketplace powered by blockchain technology.",
+    logo: `${baseIconsUrl}/maple-finance.jpg`,
+    gecko_id: "maple",
+    cmcId: "9417",
+    chains: [],
+    twitter: "maplefinance",
+    treasury: "maple.js",
+  },
 ];
 
 export default parentProtocols;

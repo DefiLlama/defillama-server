@@ -1641,5 +1641,9 @@ export default {
     "hummus": {
         "enabled": true,
         "id": "1715"
+    },
+    "tokenlon": {
+        "enabled": true,
+        "id": "405"
     }
 } as AdaptorsConfig

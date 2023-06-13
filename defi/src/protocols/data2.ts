@@ -37599,7 +37599,7 @@ const data2: Protocol[] = [
     listedAt: 1686607089
   },
   {
-    id: "3102",
+    id: "3103",
     name: "Maple RWA",
     address: "0x33349b282065b0284d756f0577fb39c158f935e6",
     symbol: "MPL",

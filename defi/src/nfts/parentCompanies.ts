@@ -356,7 +356,7 @@ export const nftParentCompanies: NFTCompany[] = [
     },
     {
         name:"888 inner circle",
-        url: "https://www.lazylionsnft.com",
+        url: "https://y.at/%E2%9C%A8",
         twitter: "crypto888crypto",
         nftCollections: [
             ["0x36d30b3b85255473d27dd0f7fd8f35e36a9d6f06", "888 inner circle"],

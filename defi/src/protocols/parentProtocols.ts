@@ -1900,6 +1900,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "sudoswap",
     governanceID: ['eip155:1:0x6853f8865BA8e9FBd9C8CCE3155ce5023fB7EEB0'],
+    treasury: "sudoswap.js",
     github: ["sudoswap"]
   },
   {

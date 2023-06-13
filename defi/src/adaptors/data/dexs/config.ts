@@ -1637,5 +1637,9 @@ export default {
     "miaswap": {
         "enabled": true,
         "id": "3090"
+    },
+    "hummus": {
+        "enabled": true,
+        "id": "1715"
     }
 } as AdaptorsConfig

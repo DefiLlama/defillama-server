@@ -37621,5 +37621,28 @@ const data2: Protocol[] = [
     parentProtocol: "parent#maple-finance",
     listedAt: 1686663721
   },
+  {
+    id: "3104",
+    name: "ambient",
+    address: null,
+    symbol: "-",
+    url: "https://ambient.finance/",
+    description:
+      "Zero-to-One Decentralized Trading Protocol",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/ambient.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Ethereum"],
+    module: "ambient-finance/index.js",
+    twitter: "ambient_finance",
+    oracles: [],
+    forkedFrom: [],
+    github: ["CrocSwap"],
+    listedAt: 1686663721
+  },
 ]
 export default data2;

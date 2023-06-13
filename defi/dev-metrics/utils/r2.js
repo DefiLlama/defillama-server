@@ -1,7 +1,7 @@
 const sdk = require('@defillama/sdk')
 const axios = require('axios')
 const ENV = require('../env')
-const { S3Client, PutObjectCommand, } = require("@aws-sdk/client-s3");
+const { S3Client, PutObjectCommand, GetObjectCommand, } = require("@aws-sdk/client-s3");
 
 const datasetBucket = "defillama-datasets";
 const publicBucketUrl = "https://defillama-datasets.llama.fi";
@@ -30,7 +30,21 @@ async function storeR2JSONString(filename, body, cache) {
       }
       : {}),
   });
-  return await R2.send(command);
+  return R2.send(command)
+}
+
+async function getR2JSONString(filename) {
+  try {
+
+    const command = new GetObjectCommand({
+      Bucket: datasetBucket,
+      Key: filename,
+    });
+    const { Body } = await R2.send(command);
+    return JSON.parse(await Body.transformToString())
+  } catch (e) {
+    return {}
+  }
 }
 
 function getKey(govType, project) {
@@ -42,6 +56,7 @@ function getLink(govType, project) {
 }
 
 async function getCache(govType, project, { } = {}) {
+  return getR2JSONString(getKey(govType, project))
   const Key = getKey(govType, project)
 
   console.log('fetching data from s3 bucket:', getLink(govType, project))
@@ -73,11 +88,11 @@ async function setTomlFile(cache) {
 }
 
 async function getTwitterOverviewFile() {
-  return getCache('config', 'twitter-overview')
+  return getCache('config', 'twitter-files-overview')
 }
 
 async function setTwitterOverviewFile(cache) {
-  return setCache('config', 'twitter-overview', cache)
+  return setCache('config', 'twitter-files-overview', cache)
 }
 
 async function saveChartData(id, data) {
@@ -89,11 +104,16 @@ async function getChartData(id) {
 }
 
 async function saveTwitterData(handle, data) {
-  return setCache('twitter', handle, data)
+  return setCache('twitter-files', handle, data)
 }
 
 async function getTwitterData(handle) {
-  return getCache('twitter', handle)
+  return getCache('twitter-files', handle)
+}
+
+
+async function testFetchWithoutCache(govType, project) {
+  return getR2JSONString(getKey(govType, project))
 }
 
 module.exports = {
@@ -107,4 +127,5 @@ module.exports = {
   setTwitterOverviewFile,
   saveTwitterData,
   getTwitterData,
+  testFetchWithoutCache,
 }

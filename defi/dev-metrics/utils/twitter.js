@@ -3,10 +3,10 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const api = 'http://localhost:8080';
-const getUrl = (handle, cursor='') => `${api}/${handle}/search?f=tweets&q=&e-nativeretweets=on&e-replies=on&cursor=${cursor}`;
-const getUrlWithHref = (handle, href='') => `${api}/${handle}/search${href}`;
+const getUrl = (handle, cursor = '') => `${api}/${handle}/search?f=tweets&q=&e-nativeretweets=on&e-replies=on&cursor=${cursor}`;
+const getUrlWithHref = (handle, href = '') => `${api}/${handle}/search${href}`;
 
-async function getHandleDetails(handle) {
+async function getHandleDetails(handle, tweetSet = new Set()) {
   const updatedAt = +Date.now()
   // Fetch HTML content from the URL
   const response = await axios.get(getUrl(handle), {
@@ -23,12 +23,10 @@ async function getHandleDetails(handle) {
     const errorText = $('.error-panel').text().trim();
     if (new RegExp(`"${handle}" not found`).test(errorText))
       return { notFound: true, error: errorText, updatedAt, handle, }
-      if (new RegExp(`"${handle}" has been suspended`).test(errorText))
-        return { suspended: true, error: errorText, updatedAt, handle, }
+    if (new RegExp(`"${handle}" has been suspended`).test(errorText))
+      return { suspended: true, error: errorText, updatedAt, handle, }
     throw new Error(errorText);
   }
-
-  // convert "7:50 AM - 7 Apr 2013" to data object
 
   const tweetCount = extractNumber('.profile-statlist .posts .profile-stat-num')
   const following = extractNumber('.profile-statlist .following .profile-stat-num')
@@ -41,26 +39,24 @@ async function getHandleDetails(handle) {
   const description = $('.profile-bio p').text().trim();
   const localtion = $('.profile-location').text().trim();
 
-  const tweets = await getTweets({ $, handle, cursor: '', tweets: [] })
+  const tweets = await getTweets({ $, handle, cursor: '', tweets: [], tweetSet, })
 
   return { tweetCount, following, followers, likes, joined, site, description, displayName, handle: userHandle, localtion, tweets, updatedAt, }
 }
 
-async function getTweets({$, handle, tweets = []}) {
+async function getTweets({ $, handle, tweets = [], tweetSet, }) {
   tweets.push(...parseTweets($))
   let href = $('.show-more:last')
-  console.log(href)
-  if (!href) return tweets
+  if (!href || tweets.find(i => tweetSet.has(i.id))) return tweets
   href = $(href).find('a').attr('href')
 
-  sdk.log(`Fetching more tweets for ${handle} ${tweets.length}`, href, $('.show-more').html())
-  sdk.log(tweets[tweets.length - 1])
   if (!/cursor/.test(href)) return tweets
+  sdk.log(`Fetching more tweets for ${handle} ${tweets.length}`)
   const response = await axios.get(getUrlWithHref(handle, href))
 
   const html = response.data;
   $ = cheerio.load(html)
-  return getTweets({ $, handle, tweets })
+  return getTweets({ $, handle, tweets, tweetSet })
 }
 
 function parseTweets($) {

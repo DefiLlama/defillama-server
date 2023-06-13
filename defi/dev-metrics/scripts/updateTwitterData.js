@@ -6,38 +6,46 @@ const {
   saveTwitterData,
   getTwitterOverviewFile,
   setTwitterOverviewFile,
+  testFetchWithoutCache,
 } = require('../utils/r2')
 
 async function main() {
   const handles = [...new Set(Object.values(TWITTER_MAPPING))]
   let checked = 0
-
-  // const twitterOverview = await getTwitterOverviewFile()
-  console.log(twitterOverview)
-  const twitterOverview = {}
+  let i = 0
+  const twitterOverview = await getTwitterOverviewFile()
+  // const twitterOverview = {}
   const TWELVE_HOURS = 12 * 60 * 60 * 1000
   for (const handle of handles) {
     const handleMetadata = twitterOverview[handle] || {}
     checked++
-    const oldData = await getTwitterData(handle)
-    // let oldData = {}
-    if (handleMetadata.ignore || (oldData.notFound || oldData.suspended)) continue;
-    // if ((handleMetadata.updatedAt && +Date.now() - handleMetadata.updatedAt < TWELVE_HOURS)) {
-    //   sdk.log(`Skipping ${handle} because it was updated less than 12 hours ago`)
-    //   continue
-    // }
-
-    let data = oldData
-    if (!oldData.updatedAt || +Date.now() - oldData.updatedAt > TWELVE_HOURS) {
-      data = await getHandleDetails(handle)
-      console.log(data)
+    if (handleMetadata.ignore) continue;
+    if ((handleMetadata.updatedAt && +Date.now() - handleMetadata.updatedAt < TWELVE_HOURS)) {
+      sdk.log(`Skipping ${handle} because it was updated less than 12 hours ago`)
+      continue
     }
-    const mergedTweets = mergeTweets(oldData.tweets, data.tweets)
-    data = { ...oldData, ...data, tweets: mergedTweets }
+
+    // let oldData = {}
+    let oldData = await getTwitterData(handle)
+
+    if (oldData.tweets && !oldData.tweets[0].id)
+      oldData = {} // data is in outdated format, so we need to re-fetch it
+    let data = oldData
+
+    if ((!oldData.updatedAt || +Date.now() - oldData.updatedAt > TWELVE_HOURS) && !oldData.notFound && !oldData.suspended) {
+      const tweetSet = new Set(oldData.tweets?.map(t => t.id))
+      data = await getHandleDetails(handle, tweetSet)
+      const mergedTweets = mergeTweets(oldData.tweets, data.tweets)
+      data = { ...oldData, ...data, tweets: mergedTweets }
+    } else {
+      sdk.log(`Skipping ${handle} because it was updated less than 12 hours ago[data]`)
+    }
+
     twitterOverview[handle] = {
       updatedAt: +Date.now(),
       ignore: data.notFound || data.suspended,
       meta: {
+        tweets2: data.tweets?.length,
         tweetCount: data.tweetCount,
         following: data.following,
         followers: data.followers,
@@ -48,12 +56,15 @@ async function main() {
       }
     }
 
+    const progress = Number(100 * checked / handles.length).toPrecision(5)
+    sdk.log(`${++i} Updated ${handle} `, twitterOverview[handle].ignore, data?.tweets?.length, `(${progress}%) (${checked}/${handles.length})`)
+    // console.log(twitterOverview, data)
 
-    sdk.log(`${checked}/${handles.length} Updated ${handle} `, twitterOverview[handle].ignore, data?.tweets?.length)
     await saveTwitterData(handle, data)
+    await setTwitterOverviewFile(twitterOverview)
+    // process.exit(0)
     // if (checked % 10 === 0) {
-      // sdk.log(`Saving twitter overview file`)
-      await setTwitterOverviewFile(twitterOverview)
+    // sdk.log(`Saving twitter overview file`)
     // }
   }
 }
@@ -70,10 +81,12 @@ function mergeTweets(...tweetsArray) {
 }
 
 async function test() {
-  const handle = 'wrappedbtc'
+  const handle = 'SASHIMISASHIMI5'
+  // console.log(JSON.stringify(await testFetchWithoutCache('twitter', 'iearnfinance'), null, 2))
+  
   const data = await getHandleDetails(handle)
-  console.log(data.tweets.length)
-  await saveTwitterData(handle, data)
+  console.log(handle, data.tweets?.length, data)
+  await saveTwitterData(handle, data) 
 }
 
 test().catch(console.error).then(() => process.exit(0))

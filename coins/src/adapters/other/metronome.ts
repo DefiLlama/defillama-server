@@ -25,9 +25,10 @@ export default async function getTokenPrice(chain: string, timestamp: number) {
   const { synths } = contracts[chain]
   if (['optimism'].includes(chain)) {
     let underlyings = await api.multiCall({ calls: synths, abi: 'address:token', })
+    const uDecimals = await api.multiCall({ calls: underlyings, abi: 'erc20:decimals', })
     let prices = await api.multiCall({ calls: synths, abi: 'uint256:pricePerShare', })
     underlyings.forEach((underlying: any, i: number) => {
-      pricesObject[synths[i]] = { underlying, price: prices[i] / 1e18}
+      pricesObject[synths[i]] = { underlying, price: prices[i]  / (10 ** uDecimals[i])}
     })
 
   } else {

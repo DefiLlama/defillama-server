@@ -1,7 +1,7 @@
 import type { Protocol } from './types'
 import { baseIconsUrl } from "../constants";
 
-export default [
+const data3: Protocol[] = [
   {
     id: "2712",
     name: "prePO",
@@ -8710,7 +8710,7 @@ export default [
   },
   {
     id: "3106",
-    name: "TeamUnibot",
+    name: "Unibot",
     address: "0x25127685dc35d4dc96c7feac7370749d004c5040",
     symbol: "UNIBOT",
     url: "https://unibot.app",
@@ -8728,3 +8728,5 @@ export default [
     twitter: "TeamUnibot",
   },
 ]
+
+export default data3

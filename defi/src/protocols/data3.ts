@@ -1,7 +1,7 @@
 import type { Protocol } from './types'
 import { baseIconsUrl } from "../constants";
 
-export default [
+const data3: Protocol[] = [
   {
     id: "2712",
     name: "prePO",
@@ -8709,3 +8709,5 @@ export default [
     listedAt: 1686755854
   },
 ]
+
+export default data3

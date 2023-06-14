@@ -1,5 +1,4 @@
 import { AdaptorsConfig } from "../types"
-import { seaportCollections } from "./collections"
 
 export default {
     "aave": {

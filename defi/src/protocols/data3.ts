@@ -8861,6 +8861,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.pawnfi.com/appendix/audits"],
     listedAt: 1686778215
   },
+  {
+    id: "3111",
+    name: "PlsPrint",
+    address: null,
+    symbol: "-",
+    url: "https://www.plsprint.lol/",
+    description:
+      "PLS staking on PulseChain, Print daily rewards up to 8%, Refer frens and earn 10%",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/plsprint.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Pulse"],
+    module: "PlsPrint/index.js",
+    twitter: "PlsPrintLol",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1686784328
+  },
 ]
 
 export default data3

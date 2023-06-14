@@ -25079,7 +25079,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Compound"],
     module: "fluxfinance/index.js",
-    governanceID: ["compound:ethereum:0x336505EC1BcC1A020EeDe459f57581725D23465A"],
+    governanceID: ["compound:ethereum:0x336505EC1BcC1A020EeDe459f57581725D23465A",'eip155:1:0x336505EC1BcC1A020EeDe459f57581725D23465A'],
     twitter: "FluxDeFi",
     listedAt: 1676431956,
   },
@@ -25187,10 +25187,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "ondofinance/index.js",
     twitter: "OndoFinance",
-    audit_links: ["https://www.certik.org/projects/ondofinance"],
-    governanceID: [
-      'eip155:1:0x336505EC1BcC1A020EeDe459f57581725D23465A',
-    ]
+    audit_links: ["https://www.certik.org/projects/ondofinance"]
   },
   {
     id: "2543",

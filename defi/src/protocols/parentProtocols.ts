@@ -1757,7 +1757,8 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "tranchess",
     treasury: "tranchess.js",
-    governanceID: ["snapshot:tranchess.com"]
+    governanceID: ["snapshot:tranchess.com"],
+    github: ["tranchess"]
   },
   {
     id: "parent#cryptex-finance",
@@ -1852,6 +1853,12 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "13316",
     chains: [],
     twitter: "QuipuSwap",
+    github: [
+      "madfish-solutions/quipuswap-core",
+      "madfish-solutions/quipuswap-governance",
+      "madfish-solutions/quipuswap-stable-core",
+      "madfish-solutions/quipuswap-webapp"
+    ]
   },
   {
     id: "parent#predy-finance",

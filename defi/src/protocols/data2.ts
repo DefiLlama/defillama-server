@@ -36341,6 +36341,7 @@ const data2: Protocol[] = [
     twitter: "bayswap",
     forkedFrom: [],
     audit_links: ["https://github.com/BaySwap/audits/blob/main/Bay%20Swap%20Smart%20Contract%20Audit%20Report.pdf"],
+    github: ["BaySwap"],
     listedAt: 1685532135
   },
   {
@@ -36495,6 +36496,7 @@ const data2: Protocol[] = [
     twitter: "paribus_io",
     oracles: [],
     forkedFrom: ["Compound"],
+    github: ["paribus"],
     listedAt: 1685645869
   },
   {
@@ -36610,6 +36612,7 @@ const data2: Protocol[] = [
     twitter: "dezswap_io",
     forkedFrom: [],
     oracles: [],
+    github: ["dezswap"],
     listedAt: 1685713799
   },
   {
@@ -36827,6 +36830,7 @@ const data2: Protocol[] = [
     oracles: ["Chainlink", "Tellor"],
     forkedFrom: [],
     audit_links: [ "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-tempus-raft-securityreview.pdf"],
+    github: ["raft-fi"],
     listedAt: 1686074293
   },
   {
@@ -37010,6 +37014,7 @@ const data2: Protocol[] = [
     twitter: "MinervaOptimism",
     forkedFrom: ["GMX"],
     oracles: ["Chainlink"],
+    github: ["Sterl-o"],
     listedAt: 1686153940
   },
   {
@@ -37102,6 +37107,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://galoswap.gitbook.io/galoswap/overview/security-and-transparency"],
+    github: ["user:galoswap"],
     listedAt: 1686177821
   },
   {
@@ -37238,6 +37244,7 @@ const data2: Protocol[] = [
     twitter: "xBankFinance",
     forkedFrom: ["Compound V2"],
     oracles: ["Pyth"],
+    github: ["xbank-lab"],
     listedAt: 1686231975
   },
   {
@@ -37260,6 +37267,7 @@ const data2: Protocol[] = [
     twitter: "GambitProtocol",
     forkedFrom: ["GMX"],
     oracles: ["Chainlink"],
+    github: ["user:xvi10"],
     listedAt: 1686242084
   },
   {
@@ -37289,7 +37297,7 @@ const data2: Protocol[] = [
     name: "Heraswap",
     address: null,
     symbol: "-",
-    url: "https://heraswap.finance/swap",
+    url: "https://heraswap.finance/swap/",
     description:
       "Heraswap is a decentralized exchange (DEX) for cryptocurrencies with robust liquidity through a diverse range of permissionless services and products.",
     chain: "Onus",
@@ -37311,7 +37319,7 @@ const data2: Protocol[] = [
     name: "MiaSwap",
     address: null,
     symbol: "-",
-    url: "https://miaswap.io/swap",
+    url: "https://miaswap.io/",
     description:
       "Top #1 AMM DEX built on ONUS Chain with strong liquidity and a wide range of permissionless liquidity products and solutions.",
     chain: "Onus",
@@ -37349,6 +37357,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Convex Finance"],
     oracles: [],
     audit_links: ["https://docs.equilibria.fi/security-and-risk/audit-report"],
+    github: ["user:eqbtech"],
     listedAt: 1686276971
   },
   {
@@ -37393,6 +37402,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/2023/ezKalibur"],
+    github: ["user:ezkalibur"],
     listedAt: 1686321408
   },
   {
@@ -37551,6 +37561,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://docs.coindrip.finance/faq/security"],
+    github: ["CoinDrip-finance"],
     listedAt: 1686410187
   },
   {
@@ -37596,6 +37607,7 @@ const data2: Protocol[] = [
     twitter: "Kannagi_Zksync",
     oracles: [],
     forkedFrom: [],
+    github: ["user:KannagiFinance"],
     listedAt: 1686607089
   },
   {

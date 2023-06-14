@@ -13716,7 +13716,7 @@ const data2: Protocol[] = [
     cmcId: "21524",
     category: "Dexes",
     chains: ["Ultron"],
-    oracles: [],
+    oracles: ["Witnet"],
     forkedFrom: ["Uniswap V2"],
     module: "ultronSwap/index.js",
     twitter: "ultron_found",

@@ -8769,6 +8769,28 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "TeamUnibot",
   },
+  {
+    id: "3107",
+    name: "EigenLayer",
+    address: null,
+    symbol: "-",
+    url: "https://www.eigenlayer.xyz/",
+    description:
+      "EigenLayer is a protocol built on Ethereum that introduces restaking, a new primitive in cryptoeconomic security. This primitive enables the reuse of ETH on the consensus layer",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/eigenlayer.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    module: "eigenlayer/index.js",
+    twitter: "eigenlayer",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1686776222
+  },
 ]
 
 export default data3

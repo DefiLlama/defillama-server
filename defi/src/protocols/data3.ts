@@ -7325,6 +7325,7 @@ const data3: Protocol[] = [
     module: "astaria/index.js",
     twitter: "AstariaXYZ",
     forkedFrom: [],
+    github: ["AstariaXYZ"],
     audit_links: [
       "https://docs.astaria.xyz/docs/smart-contracts/audits"
     ],
@@ -7349,6 +7350,7 @@ const data3: Protocol[] = [
     module: "hashmix/index.js",
     twitter: "HashMixOfficial",
     forkedFrom: [],
+    github: ["HashMixProject"],
     listedAt: 1685532130
   },
   {

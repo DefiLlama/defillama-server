@@ -37656,5 +37656,27 @@ const data2: Protocol[] = [
     github: ["CrocSwap"],
     listedAt: 1686663721
   },
+  {
+    id: "3105",
+    name: "Owna",
+    address: null,
+    symbol: "-",
+    url: "https://www.owna.io",
+    description:
+      "Owna supports crypto investors in their need for liquidity by allowing them to leverage physical assets to interact with smart contracts in a peer to peer manner.",
+    chain: "Polygon zkEVM",
+    logo: `${baseIconsUrl}/owna.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon zkEVM"],
+    module: "owna/index.js",
+    twitter: null,
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1686755854
+  },
 ]
 export default data2;

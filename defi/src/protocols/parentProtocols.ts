@@ -1934,6 +1934,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "maplefinance",
     treasury: "maple.js",
   },
+  {
+    id: "parent#pawnfi",
+    name: "Pawnfi",
+    url: "https://pawnfi.com/",
+    description: "Pawnfi, offers an All-In-One platform for trading, lending, and earning within the NFT community",
+    logo: `${baseIconsUrl}/pawnfi.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "PawnfiOfficial",
+    governanceID: ["snapshot:pawnfiprotocol.eth"],
+    github: ["PawnFi"]
+  },
 ];
 
 export default parentProtocols;

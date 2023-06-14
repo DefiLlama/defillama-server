@@ -8708,6 +8708,25 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1686755854
   },
+  {
+    id: "3106",
+    name: "Unibot",
+    address: "0x25127685dc35d4dc96c7feac7370749d004c5040",
+    symbol: "UNIBOT",
+    url: "https://unibot.app",
+    description:
+      "The Fastest Telegram Uniswap Sniper, Swap and snipe at lightning-speed with our free-to-use app",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/teamunibot.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "unibot",
+    cmcId: "25436",
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "TeamUnibot",
+  },
 ]
 
 export default data3

@@ -10510,7 +10510,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "xy-finance",
     cmcId: "16013",
-    category: "Bridge",
+    category: "Cross Chain",
     chains: ["Ethereum", "Binance", "Avalanche", "Polygon", "Arbitrum", "Optimism", "Cronos", "KCC", "ThunderCore", "Astar", "Moonriver"],
     oracles: [],
     forkedFrom: [],

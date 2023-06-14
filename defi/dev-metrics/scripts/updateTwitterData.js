@@ -15,7 +15,7 @@ async function main() {
   let i = 0
   const twitterOverview = await getTwitterOverviewFile()
   // const twitterOverview = {}
-  const TWELVE_HOURS = 12 * 60 * 60 * 1000
+  const TWELVE_HOURS = 12 * 60 * 60 * 1000 * 5
   for (const handle of handles) {
     const handleMetadata = twitterOverview[handle] || {}
     checked++
@@ -89,4 +89,4 @@ async function test() {
   await saveTwitterData(handle, data) 
 }
 
-test().catch(console.error).then(() => process.exit(0))
+main().catch(console.error).then(() => process.exit(0))

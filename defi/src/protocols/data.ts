@@ -529,7 +529,7 @@ const data: Protocol[] = [
     category: "Chain",
     chains: ["Ethereum"],
     module: "xdai/index.js",
-    twitter: "xdaichain",
+    twitter: "gnosischain",
   },
   {
     id: "130",

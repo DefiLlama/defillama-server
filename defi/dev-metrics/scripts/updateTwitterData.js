@@ -15,7 +15,7 @@ async function main() {
   let i = 0
   const twitterOverview = await getTwitterOverviewFile()
   // const twitterOverview = {}
-  const TWELVE_HOURS = 12 * 60 * 60 * 1000 * 5
+  const TWELVE_HOURS = 12 * 60 * 60 * 1000
   for (const handle of handles) {
     const handleMetadata = twitterOverview[handle] || {}
     checked++
@@ -28,7 +28,7 @@ async function main() {
     // let oldData = {}
     let oldData = await getTwitterData(handle)
 
-    if (oldData.tweets && !oldData.tweets[0].id)
+    if (oldData.tweets && !oldData.tweets[0]?.id)
       oldData = {} // data is in outdated format, so we need to re-fetch it
     let data = oldData
 

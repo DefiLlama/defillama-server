@@ -7,6 +7,7 @@ import distressedAdapter from "./distressedAssets";
 import manualInputAdapter from "./manualInput";
 import realtAdapter from "./realt";
 import metronomeAdapter from "./metronome";
+import { contracts as metronomeContracts } from "./metronome";
 import { wrappedGasTokens } from "../utils/gasTokens";
 import collateralizedAdapter from "./collateralizedAssets";
 import swethAdapter from "./sweth";
@@ -23,7 +24,7 @@ export function synthetix(timestamp: number = 0) {
 
 export function metronome(timestamp: number = 0) {
   console.log("starting metronome");
-  return metronomeAdapter("ethereum", timestamp);
+  return Promise.all(Object.keys(metronomeContracts).map((chain) => metronomeAdapter(chain, timestamp)));
 }
 
 export function glp(timestamp: number = 0) {

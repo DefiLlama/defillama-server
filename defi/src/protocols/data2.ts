@@ -5290,7 +5290,7 @@ const data2: Protocol[] = [
     name: "Waterfall DeFi",
     address: "bsc:0xd73F32833B6D5D9c8070c23e599e283a3039823C",
     symbol: "WTF",
-    url: "https://waterfalldefi.org",
+    url: "https://app.waterfalldefi.org/",
     description: "Waterfall Defi is a risk lego / tranching protocol that offers fixed and variable yield products based on risk appetite",
     chain: "Binance",
     logo: `${baseIconsUrl}/waterfall-defi.png`,

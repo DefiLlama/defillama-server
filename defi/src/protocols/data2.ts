@@ -35154,7 +35154,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/crvusd.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "crvusd",
     cmcId: null,
     category: "CDP",
     chains: ["Ethereum"],

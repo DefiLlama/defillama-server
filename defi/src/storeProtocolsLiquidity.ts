@@ -4,7 +4,6 @@ import { IParentProtocol, Protocol } from "./protocols/types";
 import { platformMap } from "./utils/coingeckoPlatforms";
 import { getChainDisplayName } from "./utils/normalizeChain";
 import { storeR2JSONString } from "./utils/r2";
-import { cache20MinResponse, wrap, IResponse } from "./utils/shared";
 import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 
@@ -53,6 +52,10 @@ function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[
     }
 }
 
+const excludedPools = [
+    "38160634-07f7-4dcd-a26e-0e0d27ef5a1b", // CRV-cvxCRV
+]
+
 async function getDexPools(){
     const [pools, config, cgCoins] = await Promise.all([
         fetch(`https://yields.llama.fi/pools`).then(r => r.json()),
@@ -60,7 +63,7 @@ async function getDexPools(){
         fetch(`https://api.coingecko.com/api/v3/coins/list?include_platform=true`).then(r => r.json())
     ])
     const dexPools = (pools.data as any[]).filter(
-        (p) => config.protocols[p.project]?.category === "Dexes")
+        (p) => config.protocols[p.project]?.category === "Dexes" && !excludedPools.includes(p.pool))
     return {dexPools, cgCoins}
 }
 

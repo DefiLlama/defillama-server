@@ -11195,7 +11195,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1917",
-    name: "SudoSwap V1",
+    name: "Sudoswap V1",
     address: "0x3446Dd70B2D52A6Bf4a5a192D9b0A161295aB7F9",
     symbol: "SUDO",
     url: "https://sudoswap.xyz",

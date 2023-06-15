@@ -1882,7 +1882,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "magicfoxfi",
-    github: ["user:magicfoxfi"]
+    github: ["user:magicfoxfi"],
+    wrongLiquidity: true,
   },
   {
     id: "parent#magpie-xyz",

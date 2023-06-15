@@ -8886,6 +8886,32 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1686784328
   },
+  {
+    id: "3112",
+    name: "Baton",
+    address: null,
+    symbol: "-",
+    url: "https://www.baton.finance/",
+    description:
+      "Baton is a protocol that facilitates NFT yield farming; improving liquidity for NFTs",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/baton.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "baton/index.js",
+    twitter: "BatonFinance",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: [
+      "https://file.notion.so/f/s/14bc653a-3a28-4f4a-9714-9725ec1d4d33/audit_18_may__2023_(1).pdf?id=ec36acb4-73f1-4a5a-8962-65b8dd4a71f1&table=block&spaceId=50091b74-8df6-4d24-9261-4e4f706b4e20&expirationTimestamp=1686687684541&signature=No0nN29hDVLJJNnmwhFkVwJRjTPF5YzY91lMRLcwWMo&downloadName=First+Audit.pdf",
+      "https://file.notion.so/f/s/156d9394-cc98-4087-8ef6-a39119c14fe4/audit_26_May__2023_(1).pdf?id=f3762605-24a3-4a38-9c27-e251c264e407&table=block&spaceId=50091b74-8df6-4d24-9261-4e4f706b4e20&expirationTimestamp=1686687699084&signature=siDgXWu0Po3AMKWm3dk_ZbTsm3vCw9jfEgM8bHPsP38&downloadName=Second+Audit+-+csanuragjain.pdf"
+    ],
+    listedAt: 1686789177
+  },
 ]
 
 export default data3

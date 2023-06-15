@@ -929,5 +929,9 @@ export default {
     "usdo": {
         "enabled": true,
         "id": "3098"
+    },
+    "unibot": {
+        "enabled": true,
+        "id": "3106"
     }
 } as AdaptorsConfig

@@ -8813,6 +8813,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://docs.pawnfi.com/appendix/audits"],
+    parentProtocol: "parent#pawnfi",
     listedAt: 1686778202
   },
   {
@@ -8836,6 +8837,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://docs.pawnfi.com/appendix/audits"],
+    parentProtocol: "parent#pawnfi",
     listedAt: 1686778209
   },
   {
@@ -8859,6 +8861,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://docs.pawnfi.com/appendix/audits"],
+    parentProtocol: "parent#pawnfi",
     listedAt: 1686778215
   },
   {

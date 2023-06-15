@@ -6,7 +6,7 @@ import { buildRedirectR2, getR2, storeDatasetR2 } from "./utils/r2";
 
 const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
   const rawChain = decodeURI(event.pathParameters!.chain!);
-  const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain, true);
+  const globalChain = rawChain === "All" ? null : getChainDisplayName(rawChain.toLowerCase(), true);
   const params = event.queryStringParameters ?? {};
   const categorySelected = params.category===undefined?undefined:decodeURI(params.category);
 

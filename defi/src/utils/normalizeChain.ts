@@ -1869,6 +1869,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "EthereumClassic"
     case "zksync":
       return useNewChainNames ? "zkSync Lite" : "zkSync"
+    case "zksync era":
+      return "zkSync Era"
     case "godwoken":
       return "Godwoken"
     case "callisto":

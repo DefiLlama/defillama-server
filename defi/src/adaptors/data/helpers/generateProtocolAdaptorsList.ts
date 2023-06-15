@@ -7,7 +7,7 @@ import { getChainDisplayName } from "../../../utils/normalizeChain"
 import chainCoingeckoIds from "./chains"
 import { baseIconsUrl } from "../../../constants";
 import { IImportObj } from "../../../cli/buildRequires";
-import { getCollectionsMap } from "./collections";
+// import { getCollectionsMap } from "./collections";
 
 // Obtaining all dex protocols
 // const dexes = data.filter(d => d.category === "Dexes" || d.category === 'Derivatives')
@@ -47,15 +47,15 @@ export type IImportsMap = IJSON<IImportObj>
 
 // This could be much more efficient
 export default async (imports_obj: IImportsMap, config: AdaptorsConfig, type?: string): Promise<ProtocolAdaptor[]> => {
-    const collectionsMap = await getCollectionsMap()
+    // const collectionsMap = await getCollectionsMap()
     return Object.entries(imports_obj).map(([adapterKey, adapterObj]) => {
         let list = dataMap
         if (adapterObj.module.default?.protocolType === ProtocolType.CHAIN) {
             list = chainDataMap
         }
-        else if (adapterObj.module.default?.protocolType === ProtocolType.COLLECTION) {
-            list = collectionsMap
-        }
+        // else if (adapterObj.module.default?.protocolType === ProtocolType.COLLECTION) {
+        //     list = collectionsMap
+        // }
         const protocolId = config?.[adapterKey]?.id
         let moduleObject = imports_obj[adapterKey].module.default
         if (!moduleObject) return

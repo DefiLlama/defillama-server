@@ -8912,6 +8912,50 @@ const data3: Protocol[] = [
     ],
     listedAt: 1686789177
   },
+  {
+    id: "3113",
+    name: "Okcoin",
+    address: null,
+    symbol: "-",
+    url: "https://www.okcoin.com",
+    description:
+      "Join the fastest growing global cryptocurrency exchange — with the lowest fees around.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/okcoin.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Ethereum"],
+    module: "okcoin/index.js",
+    twitter: "Okcoin",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1686823123
+  },
+  {
+    id: "3114",
+    name: "XLSD",
+    address: "arbitrum:0xce3a75572bc375476438206f6f29f46f8466ecc2",
+    symbol: "XLSD",
+    url: "https://xlsd.io",
+    description:
+      "XLSD is both an LSD liquidity distribution platform and an extUSD trading platform.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/xlsd.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "xlsd-coin",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum"],
+    module: "xlsd/index.js",
+    twitter: "ext_lsd",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1686823126
+  },
 ]
 
 export default data3

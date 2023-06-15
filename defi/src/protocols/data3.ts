@@ -8956,6 +8956,50 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1686823126
   },
+  {
+    id: "3115",
+    name: "BitMake",
+    address: null,
+    symbol: "-",
+    url: "https://www.bitmake.com",
+    description:
+      "An exchange with the most professional Unified Trading Account(UTA) feature for all types of crypto trading.",
+    chain: "Bitcoin",
+    logo: `${baseIconsUrl}/bitmake.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CEX",
+    chains: ["Bitcoin"],
+    module: "bitmake/index.js",
+    twitter: "BitMakeOfficial",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1686838812
+  },
+  {
+    id: "3116",
+    name: "Basilisk",
+    address: "era:0xd154222BD05F6471Da6062A7CB6427434953ed30",
+    symbol: "BLSK",
+    url: "https://basilisk.org",
+    description:
+      "Basilisk is a cutting-edge open lending and borrowing DeFi protocol built on the zkSync Era, using the battle-tested Compound code base with Radiant Capital tokenomics.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/bitmake.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["zkSync Era"],
+    module: "basilisk/index.js",
+    twitter: "BasiliskOrg",
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    listedAt: 1686838818
+  },
 ]
 
 export default data3

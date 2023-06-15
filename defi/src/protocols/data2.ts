@@ -803,7 +803,7 @@ const data2: Protocol[] = [
     cmcId: "19459",
     category: "CDP",
     chains: ["Arbitrum"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"],
     forkedFrom: ["Liquity"],
     module: "vesta/index.js",
     twitter: "vestafinance",
@@ -19481,6 +19481,7 @@ const data2: Protocol[] = [
     module: "voltz/index.js",
     twitter: "voltz_xyz",
     forkedFrom: [],
+    oracles: ["RedStone"],
     audit_links: [
       "https://certificate.quantstamp.com/full/voltz-protocol",
       "https://www.certik.com/projects/voltz",
@@ -21382,7 +21383,7 @@ const data2: Protocol[] = [
     module: "y2k-finance/index.js",
     twitter: "y2kfinance",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["RedStone"],
     audit_links: [
       "https://2047863079-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaSJHG27D6yEvbos52Fsy%2Fuploads%2FcvH67oRCDa5MfmmyxtuU%2FPeckshield_Y2K.pdf?alt=media&token=0f446a19-4829-436d-aeee-bfc7b66aa66c",
       "https://2047863079-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FaSJHG27D6yEvbos52Fsy%2Fuploads%2FHl3FHTkdL3GkcmrpG4xV%2FHalborn_Y2K.pdf?alt=media&token=9a72ba61-20ad-4e29-8cc6-859bdd7f0ff7",

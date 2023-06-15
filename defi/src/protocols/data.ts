@@ -10935,7 +10935,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "float-capital/index.js",
     twitter: "float_shipping",
     audit_links: ["https://code423n4.com/reports/2021-08-floatcapital"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"],
   },
   {
     id: "629",

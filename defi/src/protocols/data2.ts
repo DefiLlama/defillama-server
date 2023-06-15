@@ -11551,8 +11551,8 @@ const data2: Protocol[] = [
   {
     id: "1933",
     name: "Timeless Finance",
-    address: null,
-    symbol: "-",
+    address: "0xfd0205066521550d7d7ab19da8f72bb004b4c341",
+    symbol: "LIT",
     url: "https://timelessfi.com",
     description: "Timeless is a yield market protocol that lets you boost, hedge, and trade yield",
     chain: "Ethereum",
@@ -23219,8 +23219,8 @@ const data2: Protocol[] = [
   {
     id: "2456",
     name: "Bunni",
-    address: null,
-    symbol: "-",
+    address: "0xfd0205066521550d7d7ab19da8f72bb004b4c341",
+    symbol: "LIT",
     url: "https://bunni.pro",
     description:
       "Bunni represents Uniswap v3 LP positions with fungible ERC-20 tokens, which makes it easier to incentivize liquidity and integrate Uniswap liquidity in other apps.",

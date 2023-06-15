@@ -8840,7 +8840,7 @@ const data3: Protocol[] = [
     parentProtocol: "parent#pawnfi",
     listedAt: 1686778209
   },
-  {
+  /* {
     id: "3110",
     name: "Pawnfi NFT",
     address: null,
@@ -8863,7 +8863,7 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.pawnfi.com/appendix/audits"],
     parentProtocol: "parent#pawnfi",
     listedAt: 1686778215
-  },
+  }, */
   {
     id: "3111",
     name: "PlsPrint",

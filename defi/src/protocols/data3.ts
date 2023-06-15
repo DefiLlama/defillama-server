@@ -7391,6 +7391,9 @@ const data3: Protocol[] = [
     twitter: "HashMixOfficial",
     forkedFrom: [],
     github: ["HashMixProject"],
+    audit_links: [
+      "https://github.com/HashMixProject/securityAudit"
+    ],
     listedAt: 1685532130
   },
   {

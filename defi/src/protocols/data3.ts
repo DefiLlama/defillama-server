@@ -9000,6 +9000,27 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1686838818
   },
+  {
+    id: "3117",
+    name: "Astroport",
+    address: "terra:terra1nsuqsk6kh58ulczatwev87ttq2z6r3pusulg9r24mfj2fvtzd4uq3exn26",
+    symbol: "ASTRO",
+    url: "https://astroport.fi",
+    description: "The meta AMM of Cosmos",
+    chain: "Terra2",
+    logo: `${baseIconsUrl}/astroport.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "astroport-fi",
+    cmcId: "23374",
+    category: "Dexes",
+    chains: ["Terra2"],
+    module: "astroport/index.js",
+    twitter: "astroport_fi",
+    audit_links: ["https://github.com/astroport-fi/astro-audits"],
+    openSource: true,
+    listedAt: 1686894797,
+  },
 ]
 
 export default data3

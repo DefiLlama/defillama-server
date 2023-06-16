@@ -22542,8 +22542,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1194",
     name: "Sperax USD",
-    address: "arbitrum:0xD74f5255D557944cf7Dd0E45FF521520002D5748",
-    symbol: "USDs",
+    address: "arbitrum:0x5575552988a3a80504bbaeb1311674fcfd40ad4b",
+    symbol: "SPA",
     url: "http://sperax.io",
     description:
       "SperaxUSD (USDs) is a stablecoin and yield-automator on Arbitrum. USDs is 100% backed by collateral that is sent to DeFi strategies to produce a yield. This yield is then distributed to holders in a gasless manner, making compound interest easy.",

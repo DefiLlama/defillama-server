@@ -1353,6 +1353,7 @@ export default {
         id: "2674"
     },
     "ramses-exchange": {
+        parentId: "Ramses Exchange",
         enabled: true,
         id: "2675"
     },
@@ -1645,5 +1646,10 @@ export default {
     "tokenlon": {
         "enabled": true,
         "id": "405"
+    },
+    "ramses-exchange-v2": {
+        parentId: "Ramses Exchange",
+        enabled: true,
+        id: "3096"
     }
 } as AdaptorsConfig

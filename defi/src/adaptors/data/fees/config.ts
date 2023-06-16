@@ -680,6 +680,7 @@ export default {
         }
     },
     "ramses-exchange": {
+        parentId: "Ramses Exchange",
         enabled: true,
         id: "2675"
     },
@@ -933,5 +934,10 @@ export default {
     "unibot": {
         "enabled": true,
         "id": "3106"
+    },
+    "ramses-exchange-v2": {
+        parentId: "Ramses Exchange",
+        enabled: true,
+        id: "3096"
     }
 } as AdaptorsConfig

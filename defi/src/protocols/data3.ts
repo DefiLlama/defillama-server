@@ -9044,7 +9044,7 @@ const data3: Protocol[] = [
   {
     id: "3119",
     name: "Carmine Options",
-    address: "0x03c0286e9e428a130ae7fbbe911b794e8a829c367dd788e7cfe3efb0367548fa",
+    address: "stark:0x03c0286e9e428a130ae7fbbe911b794e8a829c367dd788e7cfe3efb0367548fa",
     symbol: "CARM",
     url: "https://carmine.finance",
     description: "Automated Market Maker enabling anyone to buy and sell options at a fair price",

@@ -1335,7 +1335,6 @@ export default {
         id: "291"
     },
     "archerswap": {
-        disabled: true,
         enabled: true,
         id: "2648"
     },

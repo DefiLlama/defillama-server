@@ -1886,8 +1886,8 @@ const parentProtocols: IParentProtocol[] = [
     wrongLiquidity: true,
   },
   {
-    id: "parent#magpie-xyz",
-    name: "Magpie XYZ",
+    id: "parent#magpie-ecosystem",
+    name: "Magpie Ecosystem",
     url: "https://link3.to/magpiexyz",
     description: "Magpie is a Multi-chain DeFi platform providing Yield & veTokenomics boosting services",
     logo: `${baseIconsUrl}/magpie-xyz.png`,

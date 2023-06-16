@@ -8249,7 +8249,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1686229898,
-    parentProtocol: "parent#magpie-xyz"
+    parentProtocol: "parent#magpie-ecosystem"
   },
   {
     id: "3084",

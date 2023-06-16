@@ -19074,7 +19074,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Magpie-v1.1.pdf"],
     listedAt: 1668185763,
-    parentProtocol: "parent#magpie-xyz"
+    parentProtocol: "parent#magpie-ecosystem"
   },
   {
     id: "2272",

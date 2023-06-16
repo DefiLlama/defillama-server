@@ -1651,5 +1651,9 @@ export default {
         parentId: "Ramses Exchange",
         enabled: true,
         id: "3096"
+    },
+    "MantisSwap": {
+        enabled: true,
+        id: "2702"
     }
 } as AdaptorsConfig

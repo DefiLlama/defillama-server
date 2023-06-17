@@ -7140,7 +7140,7 @@ const data3: Protocol[] = [
       "Dexilla is a revolutionary order book DEX that offers a decentralized and trustless trading experience for users",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/dexilla.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -7149,7 +7149,7 @@ const data3: Protocol[] = [
     module: "dexilla/index.js",
     twitter: "DexillaDAO",
     forkedFrom: [],
-    audit_links: [],
+    audit_links: ["https://github.com/dexilla/protocol/blob/main/audits/mythx_all.pdf"],
     listedAt: 1685224615
   },
   {

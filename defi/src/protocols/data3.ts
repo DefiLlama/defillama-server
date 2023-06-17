@@ -9087,7 +9087,27 @@ const data3: Protocol[] = [
                  ],
     listedAt: 1686991222
   },
-
+  {
+    id: "3121",
+    name: "PearlFi",
+    address: null,
+    symbol: "-",
+    url: "https://www.pearl.exchange",
+    description: "Polygon's premiere ve(3,3) exchange with deep liquidity for tokenized RWAs and premium digital assets.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/pearlfi.jpg`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon"],
+    module: "pearlfi/index.js",
+    twitter: "PearlFi_",
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    listedAt: 1686992230
+  },
 ]
 
 export default data3

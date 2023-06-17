@@ -21166,7 +21166,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Yield",
     chains: ["Cronos"],
-    module: "zeus/index.js",
+    module: "zeus-finance/index.js",
     twitter: "ZeusFinanceCro",
     listedAt: 1640718828,
   },

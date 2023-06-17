@@ -1654,5 +1654,9 @@ export default {
     "MantisSwap": {
         enabled: true,
         id: "2702"
+    },
+    "abcdefx": {
+        enabled: true,
+        id: "2376"
     }
 } as AdaptorsConfig

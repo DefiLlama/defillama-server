@@ -939,5 +939,9 @@ export default {
         parentId: "Ramses Exchange",
         enabled: true,
         id: "3096"
+    },
+    "abcdefx": {
+        enabled: true,
+        id: "2376"
     }
 } as AdaptorsConfig

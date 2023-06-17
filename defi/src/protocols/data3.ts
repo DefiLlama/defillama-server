@@ -9151,7 +9151,6 @@ const data3: Protocol[] = [
     twitter: "tryfriendtech",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1687018947
   },
 ]
 

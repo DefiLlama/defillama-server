@@ -1,4 +1,5 @@
 import getTokenPrices from "./uniswap";
+import getExtras from "./extraLp";
 
 export function uniswap(timestamp: number = 0) {
   console.log("starting uniswap");
@@ -259,4 +260,28 @@ export function glacier(timestamp: number = 0) {
     undefined,
     timestamp,
   );
+}
+
+export function extraUniV2Lps(timestamp: number = 0) {
+  console.log("starting extra uni v2 lps");
+  return Promise.all([
+    getExtras(
+      timestamp,
+      "0x82DB765c214C1AAB16672058A3C22b12F6A42CD0",
+      "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
+      "avax",
+    ),
+    getExtras(
+      timestamp,
+      "0x5f973e06a59d0bafe464faf36d5b3b06e075c543",
+      "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
+      "avax",
+    ),
+    getExtras(
+      timestamp,
+      "0xd1f377b881010cb97ab0890a5ef908c45bcf13f9",
+      "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
+      "avax",
+    ),
+  ]);
 }

@@ -9062,6 +9062,32 @@ const data3: Protocol[] = [
     audit_links: ["https://carmine.finance/audit/hack-a-chain"],
     listedAt: 1686915106
   },
+  {
+    id: "3120",
+    name: "Orbiter One",
+    address: "stark:0x03c0286e9e428a130ae7fbbe911b794e8a829c367dd788e7cfe3efb0367548fa",
+    symbol: "CARM",
+    url: "https://orbiter.one",
+    description: "Orbiter one is a peer-to-peer lending protocol focused on cross-chain Interoperability. Orbiter one is fully decentralized, transparent, and non-custodial. Users have the flexibility to lend digital assets on Orbiter one and use their capital as collateral to borrow supported assets.",
+    chain: "Moonbeam",
+    logo: `${baseIconsUrl}/orbiter-one.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Moonbeam"],
+    module: "orbiter-one/index.js",
+    twitter: "OrbiterOne",
+    oracles: ["DIA"],
+    forkedFrom: ["Compound"],
+    audit_links: [
+                    "https://github.com/solidproof/projects/blob/main/Orbiterone/SmartContract_Audit_Solidproof_OrbiterOne_Incentive.pdf",
+                    "https://github.com/solidproof/projects/blob/main/Orbiterone/SmartContract_Audit_Solidproof_Orbiterone.pdf",
+                 ],
+    listedAt: 1686991222
+  },
+
 ]
 
 export default data3

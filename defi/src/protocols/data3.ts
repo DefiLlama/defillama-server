@@ -8707,7 +8707,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3104",
-    name: "ambient",
+    name: "Ambient",
     address: null,
     symbol: "-",
     url: "https://ambient.finance/",
@@ -8719,7 +8719,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Derivatives",
+    category: "Dexes",
     chains: ["Ethereum"],
     module: "ambient-finance/index.js",
     twitter: "ambient_finance",

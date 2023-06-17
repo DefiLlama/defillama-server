@@ -9068,8 +9068,8 @@ const data3: Protocol[] = [
   {
     id: "3120",
     name: "Orbiter One",
-    address: "stark:0x03c0286e9e428a130ae7fbbe911b794e8a829c367dd788e7cfe3efb0367548fa",
-    symbol: "CARM",
+    address: "moonbeam:0x4EEaa1fd27c50C64E77272BCdDe68c28F0A3c3D7",
+    symbol: "ORB",
     url: "https://orbiter.one",
     description: "Orbiter one is a peer-to-peer lending protocol focused on cross-chain Interoperability. Orbiter one is fully decentralized, transparent, and non-custodial. Users have the flexibility to lend digital assets on Orbiter one and use their capital as collateral to borrow supported assets.",
     chain: "Moonbeam",

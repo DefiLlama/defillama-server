@@ -943,5 +943,9 @@ export default {
     "abcdefx": {
         enabled: true,
         id: "2376"
+    },
+    "liondex": {
+        enabled: true,
+        id: "2898"
     }
 } as AdaptorsConfig

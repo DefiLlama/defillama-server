@@ -9132,6 +9132,27 @@ const data3: Protocol[] = [
     forkedFrom: ["Aave"],
     listedAt: 1687018321
   },
+  {
+    id: "3123",
+    name: "Stealcam",
+    address: null,
+    symbol: "-",
+    url: "https://www.stealcam.com/",
+    description: "Stealcam is a mobile camera web app that lets you create and share photos and videos on the blockchain",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/stealcam.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "tryfriendtech",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1687018947
+  },
 ]
 
 export default data3

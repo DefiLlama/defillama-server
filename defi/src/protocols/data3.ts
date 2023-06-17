@@ -7381,7 +7381,7 @@ const data3: Protocol[] = [
       "HashMix FIL Liquid Staking Protocol is a decentralized staking protocol on Filecoin, connecting FIL holders and miners in the ecosystem.",
     chain: "Filecoin",
     logo: `${baseIconsUrl}/hashmix-fil.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

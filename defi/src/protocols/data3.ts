@@ -9111,6 +9111,27 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     listedAt: 1686992230
   },
+  {
+    id: "3122",
+    name: "MonoLend",
+    address: "polygon:0x5D089336f95E649e491c054279d64A86565e8b25",
+    symbol: "MLD",
+    url: "https://www.monolend.money/",
+    description: "MonoLend is the lending market platform on Polygon, home of $MLD token: deposit collateral and farm WBTC WETH and stables",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/monolend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "monolend",
+    cmcId: "24952",
+    category: "Lending",
+    chains: ["Polygon"],
+    module: "monolend/index.js",
+    twitter: "Mono_Lend",
+    oracles: [],
+    forkedFrom: ["Aave"],
+    listedAt: 1687018321
+  },
 ]
 
 export default data3

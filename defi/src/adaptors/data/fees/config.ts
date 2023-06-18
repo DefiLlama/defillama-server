@@ -947,5 +947,9 @@ export default {
     "liondex": {
         enabled: true,
         id: "2898"
+    },
+    "stealcam": {
+        enabled: true,
+        id: "3123"
     }
 } as AdaptorsConfig

@@ -4,6 +4,7 @@ export default {
   shlb: require("./other"),
   minswap: require("./markets/minswap"),
   sundaeswap: require("./markets/sundaeswap"),
+  wingriders: require("./markets/wingriders"),
   metronome: require("./other"),
   ondo: require("./yield/ondo"),
   aave: require("./moneyMarkets/aave"),

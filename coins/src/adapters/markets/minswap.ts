@@ -5,7 +5,7 @@ import {
   getTokenAndRedirectData,
 } from "../utils/database";
 import axios, { AxiosInstance } from "axios";
-import { PromisePool } from "@supercharge/promise-pool";
+import { PromisePool, Stoppable } from "@supercharge/promise-pool";
 
 type Value = {
   unit: string;
@@ -41,8 +41,7 @@ const api: AxiosInstance = axios.create({
   },
   timeout: 300000,
 });
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
+let calls: number = 0;
 export function minswap(timestamp: number) {
   console.log("starting minswap");
   return getTokenPrices(timestamp);
@@ -117,13 +116,13 @@ function translateUtxo(value: Value[]): PoolState {
     reserveB,
   };
 }
-async function getUtxos(i: number, j: number): Promise<any> {
-  return api.get(`addresses/${POOL_ADDRESS_LIST[i]}/utxos`, {
+async function getUtxos(addressList: string, page: number): Promise<any> {
+  calls += 1;
+  return api.get(`addresses/${addressList}/utxos`, {
     params: {
       searchParams: {
-        page: j,
-        count: 100,
-        order: "asc",
+        page,
+        order: "desc",
       },
     },
   });
@@ -131,45 +130,28 @@ async function getUtxos(i: number, j: number): Promise<any> {
 async function getPools(): Promise<PoolState[]> {
   let pools: PoolState[] = [];
 
-  for (let i = 0; i < POOL_ADDRESS_LIST.length; i++) {
-    for (let j = 1; ; j++) {
-      let res: Utxo[];
-      try {
-        res = (await getUtxos(i, j)).data;
-      } catch (e) {
-        console.log(e);
-        await sleep(3000);
-        res = (await getUtxos(i, j)).data;
-      }
-      if (res.length === 0) break; // last page
+  async function appendToPoolsList(
+    addressList: string,
+    page: number,
+    pool: Stoppable,
+  ): Promise<void> {
+    const res: Utxo[] = (await getUtxos(addressList, page)).data;
+    if (res.length === 0) return pool.stop(); // last page
 
-      res.map((utxo: Utxo) => {
-        try {
-          pools.push(translateUtxo(utxo.amount));
-        } catch {}
-      });
-    }
-    async function appendToPoolsList(i: number, j: number) {
-      let res: Utxo[];
+    res.map((utxo: Utxo) => {
       try {
-        res = (await getUtxos(i, j)).data;
-      } catch (e) {
-        console.log(e);
-        await sleep(3000);
-        res = (await getUtxos(i, j)).data;
-      }
-      if (res.length === 0) break; // last page
-
-      res.map((utxo: Utxo) => {
-        try {
-          pools.push(translateUtxo(utxo.amount));
-        } catch {}
-      });
-    }
-    await PromisePool.withConcurrency(5)
-      .for(1000)
-      .process(appendToPoolsList(i, j));
+        pools.push(translateUtxo(utxo.amount));
+      } catch {}
+    });
   }
+
+  const maxIteration: number = 1e2;
+  for (let i = 0; i < POOL_ADDRESS_LIST.length; i++) {
+    await PromisePool.withConcurrency(20)
+      .for(Array(maxIteration).fill(POOL_ADDRESS_LIST[i]))
+      .process(async (a, j, p) => appendToPoolsList(a, j, p));
+  }
+
   return pools;
 }
 function listPoolAssets(pools: PoolState[]): string[] {
@@ -188,6 +170,7 @@ async function getAssetMetadata(assets: string[]): Promise<Metadata> {
   for (let asset of assets) {
     if (knownTokenAddresses.includes(asset)) continue;
 
+    calls += 1;
     const { data: res }: any = await api.get(`assets/${asset}`);
     if (!res.metadata || !res.metadata.ticker) continue;
 
@@ -302,7 +285,7 @@ async function getTokenPrices(timestamp: number): Promise<Write[]> {
     timestamp,
   );
 
-  function appendADAPrices() {
+  function appendAdaPrices() {
     addToDBWritesList(
       writes,
       chain,
@@ -327,7 +310,8 @@ async function getTokenPrices(timestamp: number): Promise<Write[]> {
     );
   }
 
-  appendADAPrices();
+  appendAdaPrices();
 
+  console.log(`${calls} bitfrost calls were made`);
   return writes;
 }

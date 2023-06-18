@@ -5921,7 +5921,7 @@ const data3: Protocol[] = [
     chains: ["Polygon zkEVM"],
     module: "quickswap-perps/index.js",
     twitter: "QuickswapDEX",
-    audit_links: ["https://contractsecurity.io/quick-audit-report/"],
+    audit_links: [],
     forkedFrom: ["GMX"],
     parentProtocol: "parent#quickswap",
     oracles: ["API3"],

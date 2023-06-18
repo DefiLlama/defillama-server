@@ -2182,7 +2182,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "yaxis/index.js",
     twitter: "yaxis_project",
-    audit_links: ["https://github.com/yaxis-project/SushiSwap/tree/main/audits"],
+    audit_links: ["https://github.com/yaxis-project/yaxis-audit"],
     governanceID: ["snapshot:yaxis.eth"]
   },
   {
@@ -2553,7 +2553,7 @@ const data: Protocol[] = [
     module: "futureswap/index.js",
     treasury: "futureswap.js",
     twitter: "futureswapx",
-    audit_links: ["https://docs.futureswap.com/protocol/audits"],
+    audit_links: ["https://docs.futureswap.com/other/audits"],
     oracles: ["Chainlink"],
   },
   {
@@ -2779,7 +2779,7 @@ const data: Protocol[] = [
     module: "pooltogether/index.js",
     treasury: "pooltogether.js",
     twitter: "PoolTogether_",
-    audit_links: ["https://docs.pooltogether.com/security/audits-and-testing"],
+    audit_links: ["https://docs.pooltogether.com/security/audits"],
     oracles: ["Chainlink"],
     governanceID: [
       "snapshot:pooltogether.eth", 
@@ -2836,7 +2836,7 @@ const data: Protocol[] = [
     name: "Energiswap",
     address: "0x1416946162b1c2c871a73b07e932d2fb6c932069",
     symbol: "NRG",
-    url: "https://www.energiswap.exchange",
+    url: "https://app.energiswap.exchange/#/swap",
     description: "A fully decentralized protocol for automated liquidity provision on Energi.",
     chain: "Energi",
     logo: `${baseIconsUrl}/energiswap.jpg`,
@@ -3332,7 +3332,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "reflexer/index.js",
     twitter: "reflexerfinance",
-    audit_links: ["https://reflexer.finance/about/"],
+    audit_links: ["https://docs.reflexer.finance/risk/geb-risks"],
     oracles: ["Chainlink"],
     governanceID: ["eip155:1:0x7a6BBe7fDd793CC9ab7e0fc33605FCd2D19371E8"],
     stablecoins: ["rai-reflex-index"]
@@ -3355,7 +3355,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "set-protocol/index.js",
     twitter: "SetProtocol",
-    audit_links: ["https://www.tokensets.com/security"],
+    audit_links: ["https://www.tokensets.com/#/security"],
     oracles: ["Chainlink"],
   },
   {
@@ -4186,7 +4186,7 @@ const data: Protocol[] = [
     chains: ["Polygon"],
     module: "quickswap/index.js",
     twitter: "QuickswapDEX",
-    audit_links: ["https://contractsecurity.io/quick-audit-report/"],
+    audit_links: ["https://docs.quickswap.exchange/concepts/advanced-topics/04-security"],
     forkedFrom: ["Uniswap V2"], 
     parentProtocol: "parent#quickswap",
   },

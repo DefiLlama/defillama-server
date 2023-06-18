@@ -1,5 +1,11 @@
 import { Result } from "./sdkInterfaces";
 
+export interface Metadata {
+  [address: string]: {
+    symbol: string;
+    decimals: number;
+  };
+}
 export interface Write {
   SK: number;
   PK: string;

@@ -223,7 +223,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "balancer-v1/index.js",
     twitter: "BalancerLabs",
-    audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
+    audit_links: ["https://docs.balancer.fi/reference/contracts/security.html#audits"],
     parentProtocol: "parent#balancer",
   },
   {
@@ -541,7 +541,7 @@ const data: Protocol[] = [
     description: "imToken is an easy and secure digital wallet trusted by millions",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/the-tokenized-bitcoin.png`,
-    audits: null,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -552,7 +552,6 @@ const data: Protocol[] = [
     twitter: "tokenlon",
     audit_links: [
       "https://cure53.de/pentest-report_imtoken.pdf",
-      "https://drive.google.com/file/d/1o7byxnZbhl8PkWpYHnWtxDgUp_cpPO73/view",
     ],
   },
   {
@@ -635,7 +634,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "pickle/index.js",
     twitter: "picklefinance",
-    audit_links: ["https://docs.pickle.finance/faqs/security"],
+    audit_links: ["https://docs.pickle.finance/security/audits-and-timelock/smart-contract-audits"],
     governanceID: ["snapshot:pickle.eth"],
     github: ["pickle-finance"]
   },
@@ -941,7 +940,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "bprotocol/index.js",
     twitter: "bprotocoleth",
-    audit_links: ["https://app.bprotocol.org/risk"],
+    audit_links: ["https://docs.bprotocol.org/technical-documentation/bug-bounty"],
     oracles: ["Chainlink"],
   },
   {
@@ -1092,7 +1091,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "88mph/index.js",
     twitter: "88mphapp",
-    audit_links: ["https://docs.88mph.app/main-products/security-and-audits#is-88mph-audited"],
+    audit_links: ["https://docs.88mph.app/developer-docs/security"],
     oracles: ["Chainlink"],
     governanceID: ["snapshot:88mph.eth"]
   },
@@ -1101,7 +1100,7 @@ const data: Protocol[] = [
     name: "Dracula",
     address: "0xb78B3320493a4EFaa1028130C5Ba26f0B6085Ef8",
     symbol: "DRC",
-    url: "https://dracula.sucks/",
+    url: "https://dracula-metaverse.com/",
     description:
       "Meta-level vampirism concept implemented in Dracula protocol delivers higher profits while mitigating those risks.",
     chain: "Ethereum",

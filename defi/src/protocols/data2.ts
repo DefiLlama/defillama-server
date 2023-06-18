@@ -26745,7 +26745,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "balancer/index.js",
     twitter: "BalancerLabs",
-    audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
+    audit_links: ["https://docs.balancer.fi/reference/contracts/security.html#audits"],
     parentProtocol: "parent#balancer"
   },
   {

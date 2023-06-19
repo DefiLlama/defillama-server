@@ -9152,6 +9152,27 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
   },
+  {
+    id: "3124",
+    name: "zkBob Vault",
+    address: null,
+    symbol: "-",
+    url: "https://cdp.zkbob.com/nft-vaults",
+    description: "BOB is a multi-chain, multi-collateral stable token enhanced with optional privacy features.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/zkbob-vault.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Polygon"],
+    module: "zkbob-cdp/index.js",
+    twitter: "zkBob_",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1687180389
+  },
 ]
 
 export default data3

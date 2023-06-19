@@ -1658,5 +1658,9 @@ export default {
     "abcdefx": {
         enabled: true,
         id: "2376"
+    },
+    "thalaswap": {
+        enabled: true,
+        id: "2795"
     }
 } as AdaptorsConfig

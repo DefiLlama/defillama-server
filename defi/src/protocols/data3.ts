@@ -9152,6 +9152,27 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
   },
+  {
+    id: "3124",
+    name: "zkBob Vault",
+    address: "polygon:0x5D089336f95E649e491c054279d64A86565e8b25",
+    symbol: "MLD",
+    url: "https://cdp.zkbob.com/nft-vaults",
+    description: "MonoLend is the lending market platform on Polygon, home of $MLD token: deposit collateral and farm WBTC WETH and stables",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/zkbob-vault.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Polygon"],
+    module: "zkbob-cdp/index.js",
+    twitter: "zkBob_",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1687180389
+  },
 ]
 
 export default data3

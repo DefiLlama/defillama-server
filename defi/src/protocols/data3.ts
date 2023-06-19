@@ -9199,6 +9199,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#fuji-dao",
     listedAt: 1687195545
   },
+  {
+    id: "3126",
+    name: "nftperp",
+    address: null,
+    symbol: "-",
+    url: "https://nftperp.xyz",
+    description:
+      "Perpetual futures DEX for NFTs",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/nftperp.png`,
+    oracles: ["Internal"],
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "nftperp/index.js",
+    audit_links: ["https://nftperp.notion.site/Audits-4b961fc48e324d27b917695b606ee600"],
+    twitter: "nftperp",
+  },
 ]
 
 export default data3

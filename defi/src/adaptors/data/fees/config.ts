@@ -951,5 +951,9 @@ export default {
     "stealcam": {
         enabled: true,
         id: "3123"
+    },
+    "pearlfi": {
+        enabled: true,
+        id: "3121"
     }
 } as AdaptorsConfig

@@ -1662,5 +1662,9 @@ export default {
     "thalaswap": {
         enabled: true,
         id: "2795"
+    },
+    "pearlfi": {
+        enabled: true,
+        id: "3121"
     }
 } as AdaptorsConfig

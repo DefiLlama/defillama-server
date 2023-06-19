@@ -9155,10 +9155,10 @@ const data3: Protocol[] = [
   {
     id: "3124",
     name: "zkBob Vault",
-    address: "polygon:0x5D089336f95E649e491c054279d64A86565e8b25",
-    symbol: "MLD",
+    address: null,
+    symbol: "-",
     url: "https://cdp.zkbob.com/nft-vaults",
-    description: "MonoLend is the lending market platform on Polygon, home of $MLD token: deposit collateral and farm WBTC WETH and stables",
+    description: "BOB is a multi-chain, multi-collateral stable token enhanced with optional privacy features.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/zkbob-vault.png`,
     audits: "0",

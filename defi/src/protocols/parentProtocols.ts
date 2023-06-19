@@ -1948,6 +1948,17 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:pawnfiprotocol.eth"],
     github: ["PawnFi"]
   },
+  {
+    id: "parent#fuji-dao",
+    name: "Fuji DAO",
+    url: "https://fuji.finance/",
+    description: "The Auto-Refinancing Borrow Protocol",
+    logo: `${baseIconsUrl}/fuji-dao.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FujiFinance"
+  },
 ];
 
 export default parentProtocols;

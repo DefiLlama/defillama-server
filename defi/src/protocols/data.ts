@@ -7382,7 +7382,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "457",
-    name: "Fuji Finance",
+    name: "Fuji V1",
     address: null,
     symbol: "-",
     url: "https://www.fujidao.org",
@@ -7393,7 +7393,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Lending",  
     chains: ["Ethereum"],
     module: "fujidao/index.js",
     audit_links: [
@@ -7401,6 +7401,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/Fujicracy/fuji-protocol/blob/main/audits/Fuji_TrailOfBits_2021-11.pdf",
     ],
     twitter: "FujiFinance",
+    parentProtocol: "parent#fuji-dao"
   },
   {
     id: "458",

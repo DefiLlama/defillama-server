@@ -1,5 +1,6 @@
 import type { Protocol } from './types'
 import { baseIconsUrl } from "../constants";
+import list from '@defillama/dimension-adapters/users/list';
 
 /*
 {
@@ -9172,6 +9173,31 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1687180389
+  },
+  {
+    id: "3125",
+    name: "Fuji V2",
+    address: null,
+    symbol: "-",
+    url: "https://fuji.finance/",
+    description: "Fuji V2 Himalaya is a cross-chain layer on top of lending markets. It analyzes lend and borrow terms across multiple lending markets, protocols and chains to provide users with the best rates by routing (including cross-chain if desired) and rebalancing vaults across the aggregated lending markets",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/fuji-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["xDai", "Arbitrum", "Optimism", "Polygon"],
+    module: "fujidao-v2/index.js",
+    oracles: ["Chainlink"],
+    audit_links: [
+      "https://github.com/ComposableSecurity/.github/blob/main/reports/2022_11_Fujidao_Labs_OU.pdf",
+      "https://hatsfinance.medium.com/final-review-fuji-finance-audit-competition-and-winners-announcement-dac2f3b4743e"
+    ],
+    twitter: "FujiFinance",
+    parentProtocol: "parent#fuji-dao",
+    listedAt: 1687195545
   },
 ]
 

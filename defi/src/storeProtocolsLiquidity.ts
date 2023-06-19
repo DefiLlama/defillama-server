@@ -7,7 +7,11 @@ import { storeR2JSONString } from "./utils/r2";
 import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 
-function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[], cgCoins:any){
+interface BridgedCoins {
+    [from:string]:string[]
+}
+
+function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[], cgCoins:any, bridgedCoins:BridgedCoins){
     if("wrongLiquidity" in p && p.wrongLiquidity === true){
         return
     }
@@ -23,7 +27,8 @@ function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[
     if (symbol === "-" || symbol === null || symbol === undefined || !address) {
         return
     }
-    const cgInfo = cgCoins.find((t:any)=>t.id===p.gecko_id)
+    let gecko_id = p.gecko_id ?? parentProtocols.find(pp=>pp.id === (p as any).parentProtocol)?.gecko_id
+    const cgInfo = cgCoins.find((t:any)=>t.id===gecko_id)
     const chainAddress = getChainDisplayName(address.includes(":")?address.split(":")[0]:"ethereum", true)
     const rawAddress = (address.includes(":")?address.split(":")[1]:address).trim().toLowerCase() as string
     const addresses = {
@@ -34,6 +39,15 @@ function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[
         if(!rawChain){ return }
         const normalizedChainName = getChainDisplayName(rawChain, true)
         addresses[normalizedChainName] = (addresses[normalizedChainName] ?? []).concat([(geckoAddress as string).toLowerCase()])
+    })
+    Object.entries(addresses).forEach(([chain, address])=>{
+        const otherCoins = bridgedCoins[chain+':'+address] ?? []
+        otherCoins.forEach(coin=>{
+            const [coinChain, coinAddress] = coin.split(":")
+            if(!(addresses[coinChain]??[]).includes(coinAddress)){
+                addresses[coinChain] = (addresses[coinChain] ?? []).concat([coinAddress])
+            }
+        })
     })
     const tokenPools = dexPools.filter(pool =>{
         if(pool.underlyingTokens){
@@ -48,29 +62,45 @@ function getLiquidityPoolsOfProtocol(p:IParentProtocol | Protocol, dexPools:any[
         id: p.id,
         symbol,
         tokenPools,
-        totalLiq
+        totalLiq,
     }
 }
 
 const excludedPools = [
     "38160634-07f7-4dcd-a26e-0e0d27ef5a1b", // CRV-cvxCRV
+    "d33bbfb6-811c-4e80-9928-b96ebd7e136c", // CRV-cvxCRV
 ]
 
+const transformChainName = (address:string)=>{
+    const [chain, addy] = address.split(":")
+    return getChainDisplayName(chain, true)+':'+addy
+}
+
 async function getDexPools(){
-    const [pools, config, cgCoins] = await Promise.all([
+    const [pools, config, cgCoins, bridgedCoinsRaw] = await Promise.all([
         fetch(`https://yields.llama.fi/pools`).then(r => r.json()),
         fetch(`https://api.llama.fi/config/yields`).then(r => r.json()),
-        fetch(`https://api.coingecko.com/api/v3/coins/list?include_platform=true`).then(r => r.json())
+        fetch(`https://api.coingecko.com/api/v3/coins/list?include_platform=true`).then(r => r.json()),
+        fetch(`https://defillama-datasets.llama.fi/bridgedTokens.json`).then(r => r.json())
     ])
+    const bridgedCoins = {} as BridgedCoins
+    bridgedCoinsRaw.flat().forEach(({from:fromRaw, to:toRaw}:any)=>{
+        const from = transformChainName(fromRaw)
+        const to = transformChainName(toRaw)
+        if(!bridgedCoins[from]){bridgedCoins[from]=[]}
+        if(!bridgedCoins[to]){bridgedCoins[to]=[]}
+        bridgedCoins[from].push(to)
+        bridgedCoins[to].push(from)
+    })
     const dexPools = (pools.data as any[]).filter(
         (p) => config.protocols[p.project]?.category === "Dexes" && !excludedPools.includes(p.pool))
-    return {dexPools, cgCoins}
+    return {dexPools, cgCoins, bridgedCoins}
 }
 
 const handler = async () => {
     const allProtocols = (parentProtocols as (typeof parentProtocols[0] | typeof protocols[0])[]).concat(protocols)
-    const {dexPools, cgCoins} = await getDexPools()
-    const liqByProtocol = allProtocols.map((p) => getLiquidityPoolsOfProtocol(p, dexPools, cgCoins))
+    const {dexPools, cgCoins, bridgedCoins} = await getDexPools()
+    const liqByProtocol = allProtocols.map((p) => getLiquidityPoolsOfProtocol(p, dexPools, cgCoins, bridgedCoins))
         .filter(p=>p?.totalLiq > 0).sort((a: any, b: any) => b.totalLiq - a.totalLiq)
 
     await storeR2JSONString(`liquidity.json`, JSON.stringify(liqByProtocol), 60 * 60);

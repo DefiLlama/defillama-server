@@ -22,11 +22,10 @@ function findPId(token: string) {
   return protocols.find((p) => p.gecko_id == cgId);
 }
 
-function aggregateMetadata(chart: Chart[], rawData: SectionData) {
+function aggregateMetadata(protocolName: string, chart: Chart[], rawData: SectionData) {
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
   const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : findPId(rawData.metadata.token);
-  if (!pData) throw new Error(`token ${rawData.metadata.token} has no pData`);
-  const id = pData.parentProtocol || pData.name;
+  const id = pData ? pData.parentProtocol || pData.name : protocolName;
   let name = id;
   if (pData?.parentProtocol) {
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
@@ -58,7 +57,7 @@ async function processSingleProtocol(
     data: s.data.apiData,
   }));
 
-  const { data, id } = aggregateMetadata(chart, rawData);
+  const { data, id } = aggregateMetadata(protocolName, chart, rawData);
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
 
   await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify(data));
@@ -72,26 +71,21 @@ async function handler() {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
 
-  await PromisePool.withConcurrency(2)
+  await PromisePool.withConcurrency(1)
     .for(shuffleArray(Object.entries(adapters)))
     .process(async ([protocolName, rawAdapter]) => {
-      try {
-        let adapters = typeof rawAdapter.default === "function" ? await rawAdapter.default() : rawAdapter.default;
-        if (!adapters.length) adapters = [adapters];
-        await Promise.all(
-          adapters.map((adapter: Protocol) =>
-            processSingleProtocol(adapter, protocolName, protocolsArray)
-              .then((p: string[]) => (protocolsArray = p))
-              .catch((err: Error) => {
-                console.log(err.message, `: \n storing ${protocolName}`);
-                protocolErrors.push(protocolName);
-              })
-          )
-        );
-      } catch (err) {
-        console.log(err, ` storing ${protocolName}`);
-        protocolErrors.push(protocolName);
-      }
+      let adapters = typeof rawAdapter.default === "function" ? await rawAdapter.default() : rawAdapter.default;
+      if (!adapters.length) adapters = [adapters];
+      await Promise.all(
+        adapters.map((adapter: Protocol) =>
+          processSingleProtocol(adapter, protocolName, protocolsArray)
+            .then((p: string[]) => (protocolsArray = p))
+            .catch((err: Error) => {
+              console.log(err.message, `: \n storing ${protocolName}`);
+              protocolErrors.push(protocolName);
+            })
+        )
+      );
     });
 
   await handlerErrors(protocolErrors);
@@ -102,10 +96,10 @@ async function handler() {
 
 async function handlerErrors(errors: string[]) {
   if (errors.length > 0) {
-    let errorMessage: string = `storeEmissions errors: `;
+    let errorMessage: string = `storeEmissions errors: \n`;
     errors.map((e: string) => (errorMessage += `${e}, `));
     await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!);
-    throw new Error(errorMessage);
+    console.log(errorMessage);
   }
 }
 

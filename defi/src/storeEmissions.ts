@@ -11,21 +11,29 @@ import parentProtocols from "./protocols/parentProtocols";
 import { PromisePool } from "@supercharge/promise-pool";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
+import standardizeProtocolName from "./utils/standardizeProtocolName";
 
 type Chart = { label: string; data: ApiChartData[] | undefined };
 
-function findPId(token: string) {
-  const prefix = "coingecko:";
+const prefix = "coingecko:";
+
+function getCgId(token: string) {
   const idStart = token.indexOf(prefix);
   if (idStart == -1) return null;
-  const cgId = token.substring(idStart + prefix.length);
+  return token.substring(idStart + prefix.length);
+}
+function findPId(cgId: string | null) {
+  if (!cgId) return;
+  const parent = parentProtocols.find((p) => p.gecko_id == cgId);
+  if (parent) return { parentProtocol: parent.id, name: parent.name, gecko_id: parent.gecko_id };
   return protocols.find((p) => p.gecko_id == cgId);
 }
 
 function aggregateMetadata(protocolName: string, chart: Chart[], rawData: SectionData) {
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
-  const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : findPId(rawData.metadata.token);
-  const id = pData ? pData.parentProtocol || pData.name : protocolName;
+  const cgId = getCgId(rawData.metadata.token);
+  const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : findPId(cgId);
+  const id = pData ? pData.parentProtocol || pData.name : cgId ? cgId : protocolName;
   let name = id;
   if (pData?.parentProtocol) {
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
@@ -45,11 +53,7 @@ function aggregateMetadata(protocolName: string, chart: Chart[], rawData: Sectio
   };
 }
 
-async function processSingleProtocol(
-  adapter: Protocol,
-  protocolName: string,
-  protocolsArray: string[]
-): Promise<string[]> {
+async function processSingleProtocol(adapter: Protocol, protocolName: string): Promise<string> {
   const rawData = await createRawSections(adapter);
 
   const chart: Chart[] = (await createChartData(protocolName, rawData, false)).map((s: ChartSection) => ({
@@ -61,10 +65,9 @@ async function processSingleProtocol(
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
 
   await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify(data));
-  protocolsArray.push(sluggifiedId);
   console.log(protocolName);
 
-  return protocolsArray;
+  return sluggifiedId;
 }
 
 async function handler() {
@@ -78,8 +81,8 @@ async function handler() {
       if (!adapters.length) adapters = [adapters];
       await Promise.all(
         adapters.map((adapter: Protocol) =>
-          processSingleProtocol(adapter, protocolName, protocolsArray)
-            .then((p: string[]) => (protocolsArray = p))
+          processSingleProtocol(adapter, protocolName)
+            .then((p: string) => protocolsArray.push(p))
             .catch((err: Error) => {
               console.log(err.message, `: \n storing ${protocolName}`);
               protocolErrors.push(protocolName);

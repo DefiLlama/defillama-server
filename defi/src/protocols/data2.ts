@@ -20058,17 +20058,17 @@ const data2: Protocol[] = [
   },
   {
     id: "2318",
-    name: "Stabl.fi",
-    address: "polygon:0x80487b4f8f70e793a81a42367c225ee0b94315df",
-    symbol: "CASH",
-    url: "http://www.stabl.fi",
+    name: "Stabl.fi V1",
+    address: null,
+    symbol: "-",
+    url: "https://stabl.fi/",
     description:
       "$CASH grows in your wallet while you maintain custody of your funds. Yields are generated automatically through open-source, on-chain yield farming strategies.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/stable.fi.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "stabl-fi",
+    gecko_id: null,
     cmcId: null,
     category: "Yield",
     chains: ["Polygon"],
@@ -20077,8 +20077,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Origin Dollar"],
     oracles: ["Chainlink"],
     audit_links: ["https://ledgerops.com/wp-content/uploads/2022/09/LedgerOps/_StablFi/_Rebase/_Audit.pdf"],
+    parentProtocol: "parent#stabl.fi",
     listedAt: 1669728928,
-    stablecoins: ["stabl.fi-cash"]
   },
   {
     id: "2319",

@@ -1971,6 +1971,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "SolvProtocol",
     governanceID: ["snapshot:solvgov.eth"]    
   },
+  {
+    id: "parent#stabl.fi",
+    name: "Stabl.fi",
+    url: "https://stabl.fi/",
+    description: "$CASH grows in your wallet while you maintain custody of your funds. Yields are generated automatically through open-source, on-chain yield farming strategies",
+    logo: `${baseIconsUrl}/stable.fi.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Stabl_Fi",
+    stablecoins: ["stabl.fi-cash"],
+    github: ["stablfi"]
+  },
 ];
 
 export default parentProtocols;

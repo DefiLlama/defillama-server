@@ -9379,6 +9379,30 @@ const data3: Protocol[] = [
     twitter: "pepemonfinance",
     listedAt: 1687255539
   },
+  {
+    id: "3134",
+    name: "Stabl.fi V2",
+    address: null,
+    symbol: "-",
+    url: "https://stabl.fi/",
+    description:
+      "$CASH grows in your wallet while you maintain custody of your funds. Yields are generated automatically through open-source, on-chain yield farming strategies.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/stable.fi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Polygon"],
+    module: "stabl-v2/index.js",
+    twitter: "Stabl_Fi",
+    forkedFrom: ["Origin Dollar"],
+    oracles: ["Chainlink"],
+    audit_links: [],
+    parentProtocol: "parent#stabl.fi",
+    listedAt: 1687298347,
+  },
 ]
 
 export default data3

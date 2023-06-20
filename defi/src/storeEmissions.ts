@@ -11,7 +11,6 @@ import parentProtocols from "./protocols/parentProtocols";
 import { PromisePool } from "@supercharge/promise-pool";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
-import standardizeProtocolName from "./utils/standardizeProtocolName";
 
 type Chart = { label: string; data: ApiChartData[] | undefined };
 
@@ -34,6 +33,11 @@ function aggregateMetadata(protocolName: string, chart: Chart[], rawData: Sectio
   const cgId = getCgId(rawData.metadata.token);
   const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : findPId(cgId);
   const id = pData ? pData.parentProtocol || pData.name : cgId ? cgId : protocolName;
+
+  const factories: string[] = ["daomaker"];
+  if (factories.includes(protocolName) && !(pData || cgId))
+    throw new Error(`no metadata for raw token ${rawData.metadata.token}`);
+
   let name = id;
   if (pData?.parentProtocol) {
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
@@ -101,8 +105,7 @@ async function handlerErrors(errors: string[]) {
   if (errors.length > 0) {
     let errorMessage: string = `storeEmissions errors: \n`;
     errors.map((e: string) => (errorMessage += `${e}, `));
-    await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!);
-    console.log(errorMessage);
+    process.env.TEAM_WEBHOOK ? await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!) : console.log(errorMessage);
   }
 }
 

@@ -9314,6 +9314,29 @@ const data3: Protocol[] = [
     twitter: "ResonateFi",
     listedAt: 1687208787
   },
+  {
+    id: "3131",
+    name: "Solv Protocol V3",
+    address: "0x256f2d67e52fe834726d2ddcd8413654f5eb8b53",
+    symbol: "SOLV",
+    url: "https://solv.finance/",
+    description: "Solv Finance is a liquidity platform that bridges the gap between asset managers and investors, enabling efficient capital allocation in a reliable and transparent marketplace",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/solv-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "RWA",
+    chains: ["Ethereum", "Binance", "Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "solv-protocol-v3/index.js",
+    twitter: "SolvProtocol",
+    audit_links: ["https://github.com/solv-finance/Audit"],
+    parentProtocol: "parent#solv",
+    listedAt: 1687224991,
+  },
 ]
 
 export default data3

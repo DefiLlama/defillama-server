@@ -5741,8 +5741,8 @@ const data2: Protocol[] = [
     module: "solv-protocol/index.js",
     twitter: "SolvProtocol",
     audit_links: ["https://github.com/solv-finance/Audit"],
+    parentProtocol: "parent#solv",
     listedAt: 1650458739,
-    governanceID: ["snapshot:solvgov.eth"]
   },
   {
     id: "1668",

@@ -1959,6 +1959,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "FujiFinance"
   },
+  {
+    id: "parent#solv",
+    name: "Solv",
+    url: "https://solv.finance/",
+    description: "Solv Protocol is a one-stop platform for creating, using and trading financial NFTs",
+    logo: `${baseIconsUrl}/solv-protocol.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SolvProtocol",
+    governanceID: ["snapshot:solvgov.eth"]    
+  },
 ];
 
 export default parentProtocols;

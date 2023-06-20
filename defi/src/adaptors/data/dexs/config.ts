@@ -1666,5 +1666,9 @@ export default {
     "pearlfi": {
         enabled: true,
         id: "3121"
+    },
+    "ambient": {
+        enabled: true,
+        id: "3104"
     }
 } as AdaptorsConfig

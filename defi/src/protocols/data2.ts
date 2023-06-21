@@ -565,7 +565,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "jones-dao",
     cmcId: "17743",
-    category: "Options Vault",
+    category: "Yield Aggregator",
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: [],

@@ -9515,6 +9515,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1687369867
   },
+  {
+    id: "3140",
+    name: "Avalanche",
+    address: "", // need
+    symbol: "AVAX",
+    url: "https://www.avax.network/",
+    description: "Build anything you want, any way you want on the lightning fast, scalable blockchain that won’t let you down.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/avalanche-2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "avalanche-2",
+    cmcId: null,
+    category: "", // need
+    chains: ["Avalanche"],
+    module: "", // need
+    twitter: "avax",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687369867
+  },
 ]
 
 export default data3

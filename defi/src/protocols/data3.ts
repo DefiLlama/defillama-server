@@ -9559,6 +9559,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1687369867
   },
+  {
+    id: "3142",
+    name: "Primal",
+    address: "0xcb5327ed4649548e0d73e70b633cdfd99af6da87",
+    symbol: "DFIAT",
+    url: "https://www.getprimal.com/app",
+    description: "PRIMAL is the 1st athlete fan token project with integrated Move2Earn. Represented by sports stars with millions of fans.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/primal-b3099cd0-995a-4311-80d5-9c133153b38e.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "primal-b3099cd0-995a-4311-80d5-9c133153b38e",
+    cmcId: null,
+    category: "", // need
+    chains: ["Binance"],
+    module: "", // need
+    twitter: "enterprimal",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687369867
+  },
 ]
 
 export default data3

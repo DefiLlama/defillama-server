@@ -9449,6 +9449,28 @@ const data3: Protocol[] = [
     audit_links: ["https://beosin.com/audits/Minefi_202306120951.pdf"],
     listedAt: 1687352489
   },
+  {
+    id: "3137",
+    name: "My Neighbor Alice",
+    address: "0xac51066d7bec65dc4589368da368b212745d63e8",
+    symbol: "ALICE",
+    url: "https://www.myneighboralice.com/",
+    description: "Grow your farmland into a booming business.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/my-neightbor-alice.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "my-neighbor-alice",
+    cmcId: null,
+    category: "", // need
+    chains: ["Ethereum"],
+    module: "", // need
+    twitter: "MyNeighborAlice",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687369867
+  },
 ]
 
 export default data3

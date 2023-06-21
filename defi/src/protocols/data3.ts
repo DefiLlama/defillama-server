@@ -9471,6 +9471,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1687369867
   },
+  {
+    id: "3138",
+    name: "Step App",
+    address: "0x714f020c54cc9d104b6f4f6998c63ce2a31d1888",
+    symbol: "FITFI",
+    url: "https://step.app/",
+    description: "Move, earn, repeat. The future of fitness.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/step-app-fitfi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "step-app-fitfi",
+    cmcId: null,
+    category: "", // need
+    chains: ["Avalanche"],
+    module: "", // need
+    twitter: "stepapp_",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687369867
+  },
 ]
 
 export default data3

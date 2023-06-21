@@ -9581,6 +9581,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1687369867
   },
+  {
+    id: "3143",
+    name: "Xana",
+    address: "0x31c994ac062c1970c086260bc61babb708643fac",
+    symbol: "XANA",
+    url: "https://xana.net/",
+    description: "AI driven web 3.0 infrastructure custom-built for the Metaverse.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/xana.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "xana",
+    cmcId: null,
+    category: "", // need
+    chains: ["Avalanche"],
+    module: "", // need
+    twitter: "XANAMetaverse",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687369867
+  },
 ]
 
 export default data3

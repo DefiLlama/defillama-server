@@ -9603,6 +9603,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1687369867
   },
+
+  {
+    id: "3144",
+    name: "SuperRare",
+    address: "0xba5bde662c17e2adff1075610382b9b691296350",
+    symbol: "RARE",
+    url: "https://superrare.com/",
+    description: "SuperRare is the digital art market on Ethereum.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/superrare.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "superrare",
+    cmcId: null,
+    category: "", // need
+    chains: ["Ethereum"],
+    module: "", // need
+    twitter: "SuperRare",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687369867
+  },
 ]
 
 export default data3

@@ -43,7 +43,7 @@ function formParamsObject(event: any): QueryParams {
     coins: (event.pathParameters?.coins ?? "").split(","),
     span: "0",
     start: 1514764800, // 1/1/18
-    period: "d",
+    period: quantisePeriod("d"),
   };
 
   for (let p of Object.keys(event.queryStringParameters)) {
@@ -76,7 +76,7 @@ function formParamsObject(event: any): QueryParams {
 
       default:
         params[p] = errorResponse({
-          message: `${p} is either an invalid param`,
+          message: `${p} is an invalid param`,
         });
         continue;
     }
@@ -143,7 +143,7 @@ const handler = async (event: any): Promise<IResponse> => {
   const paramError: any = Object.values(params).find(
     (p: any) => typeof p == "object" && p.length == undefined,
   );
-  if (paramError) return paramError;
+  if (paramError) return errorResponse(paramError);
 
   const timestamps: number[] = getTimestampsArray(
     params.end == null ? params.start : params.end,

@@ -42,7 +42,6 @@ function formParamsObject(event: any): QueryParams {
   let params: any = {
     coins: (event.pathParameters?.coins ?? "").split(","),
     span: "0",
-    start: 1514764800, // 1/1/18
     period: quantisePeriod("d"),
   };
 
@@ -84,7 +83,7 @@ function formParamsObject(event: any): QueryParams {
     params[p] = uintCheck(value, p);
   }
 
-  if (params.start + params.end == 0) params.end = getCurrentUnixTimestamp();
+  if (!params.start && !params.end) params.end = getCurrentUnixTimestamp();
   if (!("searchWidth" in params)) params.searchWidth = params.period / 10;
 
   return params;

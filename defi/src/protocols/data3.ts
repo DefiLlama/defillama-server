@@ -9403,6 +9403,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#stabl.fi",
     listedAt: 1687298347,
   },
+  {
+    id: "3135",
+    name: "GPLX",
+    address: "pulse:0xccb0d8790bbb82754d6d2f79e61ceEE8582704c6",
+    symbol: "GPLX",
+    url: "https://gplx.io/#/",
+    description:
+      "GPLX is a decentralized spot and perpetual exchange on Pulsechain",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/gplx.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Pulse"],
+    module: "gplx/index.js",
+    twitter: "Gplx_io",
+    forkedFrom: ["GMX"],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687310387,
+  },
 ]
 
 export default data3

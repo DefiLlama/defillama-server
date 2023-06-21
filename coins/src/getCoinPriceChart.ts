@@ -45,44 +45,45 @@ function formParamsObject(event: any): QueryParams {
     period: quantisePeriod("d"),
   };
 
-  for (let p of Object.keys(event.queryStringParameters)) {
-    let value;
+  if (event.queryStringParameters) {
+    for (let p of Object.keys(event.queryStringParameters)) {
+      let value;
 
-    switch (p) {
-      case "period":
-        value = quantisePeriod(
-          event.queryStringParameters?.period?.toLowerCase(),
-        );
-        break;
+      switch (p) {
+        case "period":
+          value = quantisePeriod(
+            event.queryStringParameters?.period?.toLowerCase(),
+          );
+          break;
 
-      case "searchWidth":
-        value = quantisePeriod(
-          event.queryStringParameters?.searchWidth?.toLowerCase(),
-        );
-        break;
+        case "searchWidth":
+          value = quantisePeriod(
+            event.queryStringParameters?.searchWidth?.toLowerCase(),
+          );
+          break;
 
-      case "end":
-        value = parseInt(event.queryStringParameters?.[p]);
-        break;
+        case "end":
+          value = parseInt(event.queryStringParameters?.[p]);
+          break;
 
-      case "start":
-        value = parseInt(event.queryStringParameters?.[p]);
-        break;
+        case "start":
+          value = parseInt(event.queryStringParameters?.[p]);
+          break;
 
-      case "span":
-        value = parseInt(event.queryStringParameters?.[p]);
-        break;
+        case "span":
+          value = parseInt(event.queryStringParameters?.[p]);
+          break;
 
-      default:
-        params[p] = errorResponse({
-          message: `${p} is an invalid param`,
-        });
-        continue;
+        default:
+          params[p] = errorResponse({
+            message: `${p} is an invalid param`,
+          });
+          continue;
+      }
+
+      params[p] = uintCheck(value, p);
     }
-
-    params[p] = uintCheck(value, p);
   }
-
   if (!params.start && !params.end) params.end = getCurrentUnixTimestamp();
   if (!("searchWidth" in params)) params.searchWidth = params.period / 10;
 
@@ -180,3 +181,14 @@ const handler = async (event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
+
+async function main() {
+  let a = await handler({
+    pathParameters: {
+      coins: "ethereum:0xdF574c24545E5FfEcb9a659c229253D4111d87e1",
+    },
+    // queryStringParameters: {}, // searchWidth: "600", span: "10" },
+  });
+  return a;
+}
+main(); // ts-node coins/src/getCoinPriceChart.ts

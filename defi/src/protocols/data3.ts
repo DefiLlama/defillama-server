@@ -9493,6 +9493,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1687369867
   },
+  {
+    id: "3139",
+    name: "ImmutableX",
+    address: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
+    symbol: "IMX",
+    url: "https://www.immutable.com/",
+    description: "Build with unmatched speed, scale, and flexibility using Immutable’s simple, end-to-end Web3 solutions.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/immutable-x.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "immutable-x",
+    cmcId: null,
+    category: "", // need
+    chains: ["Ethereum"],
+    module: "", // need
+    twitter: "Immutable",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687369867
+  },
 ]
 
 export default data3

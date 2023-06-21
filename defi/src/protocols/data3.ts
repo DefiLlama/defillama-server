@@ -9573,7 +9573,7 @@ const data3: Protocol[] = [
     id: "3142",
     name: "Primal",
     address: "0xcb5327ed4649548e0d73e70b633cdfd99af6da87",
-    symbol: "DFIAT",
+    symbol: "PRIMAL",
     url: "https://www.getprimal.com/app",
     description: "PRIMAL is the 1st athlete fan token project with integrated Move2Earn. Represented by sports stars with millions of fans.",
     chain: "Binance",

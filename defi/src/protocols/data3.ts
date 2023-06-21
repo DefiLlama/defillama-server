@@ -147,7 +147,8 @@ const data3: Protocol[] = [
     module: "kokomo/index.js",
     twitter: "KokomoFinance",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Kokomo%20Finance%20Token/Kokomo%20Finance%20Token.pdf"],
-    listedAt: 1679573387
+    listedAt: 1679573387,
+    rugged: true,
   },
   {
     id: "2717",
@@ -434,7 +435,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "gemswap/index.js",
     twitter: "GemSwap_ZKS",
-    listedAt: 1679891989
+    listedAt: 1679891989,
+    rugged: true
   },
   {
     id: "2730",
@@ -498,7 +500,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "atlas-fi/index.js",
     twitter: "Atlasaggregator",
-    listedAt: 1679923806
+    listedAt: 1679923806,
+    rugged: true
   },
   {
     id: "2733",
@@ -650,7 +653,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "Liquify/index.js",
     twitter: "NetworkLiquify",
-    listedAt: 1680017064
+    listedAt: 1680017064,
+    rugged: true
   },
   {
     id: "2740",
@@ -1258,7 +1262,8 @@ const data3: Protocol[] = [
     module: "jbc/index.js",
     twitter: "JBCFinance",
     audit_links: ["https://github.com/solidproof/projects/blob/main/JBCFinance/SmartContract_Audit_Solidproof_JBCFinance.pdf"],
-    listedAt: 1680540285
+    listedAt: 1680540285,
+    rugged: true
   },
   {
     id: "2768",
@@ -1876,7 +1881,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "zks-miner/index.js",
     twitter: "Zksminer",
-    listedAt: 1681001887
+    listedAt: 1681001887,
+    rugged: true
   },
   {
     id: "2797",
@@ -2559,7 +2565,8 @@ const data3: Protocol[] = [
       "https://blocksafu.com/project-detail/0xC951d8561B2f1bcE76FEe922933E243C875ba48f"
     ],
     twitter: "satoshicoreswap",
-    listedAt: 1681436914
+    listedAt: 1681436914,
+    rugged: true
   },
   {
     id: "2828",
@@ -3050,7 +3057,8 @@ const data3: Protocol[] = [
     module: "merlin/index.js",
     twitter: "TheMerlinDEX",
     audit_links: ["https://skynet.certik.com/projects/merlin-dex"],
-    listedAt: 1681701241
+    listedAt: 1681701241,
+    rugged: true
   },
   {
     id: "2850",
@@ -3156,7 +3164,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "metaswap/index.js",
     twitter: null,
-    listedAt: 1681749462
+    listedAt: 1681749462,
+    rugged: true
   },
   {
     id: "2855",
@@ -3675,7 +3684,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "avatr/index.js",
     twitter: "Avatr_LSD",
-    listedAt: 1682275843
+    listedAt: 1682275843,
+    rugged: true
   },
   {
     id: "2879",
@@ -3802,7 +3812,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "Zolidly/index.js",
     twitter: "Zolidly_Finance",
-    listedAt: 1682356965
+    listedAt: 1682356965,
+    rugged: true
   },
   {
     id: "2885",
@@ -5004,7 +5015,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/Coinsult/solidity/blob/edbd23a82d38a0bc0efcc02b80fb15cb23049e26/Coinsult_CELLSTOKEN_0x30...6D82_Audit.pdf"],
-    listedAt: 1683282600
+    listedAt: 1683282600,
+    rugged: true
   },
   {
     id: "2938",
@@ -5685,7 +5697,8 @@ const data3: Protocol[] = [
     twitter: "KyborgExchange",
     forkedFrom: ["Uniswap V3"],
     oracles: [],
-    listedAt: 1683861152
+    listedAt: 1683861152,
+    rugged: true
   },
   {
     id: "2970",
@@ -6885,7 +6898,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     audit_links: ["https://app.solidproof.io/projects/goldbanktoken"],
-    listedAt: 1685023885
+    listedAt: 1685023885,
+    rugged: true
   },
   {
     id: "3024",
@@ -8614,7 +8628,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://github.com/solidproof/projects/blob/main/2023/FroggyToken/SmartContract_Audit_Solidproof_FroggyProtocol.pdf"],
-    listedAt: 1686410187
+    listedAt: 1686410187,
+    rugged: true
   }, 
   {
     id: "3100",

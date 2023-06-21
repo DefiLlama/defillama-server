@@ -241,6 +241,7 @@ const data2: Protocol[] = [
     twitter: "DracoFinance",
     language: "Solidity",
     listedAt: 1644972460,
+    rugged: true
   },
   {
     id: "1419",
@@ -505,7 +506,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "kommunitas/index.js",
     twitter: "Kommunitas1",
-    audit_links: ["https://67362912-files.gitbook.io/~/files/v0/b/gitbook-28427.appspot.com/o/assets%2F-Mcc99YHj6X7apRGJDII%2F-MgGmu57PGs3UkrB2GsG%2F-MgGoyNwBZNhWmBNpIi0%2FKommunitas%20Staking%20Contract%20Audit%20Report.pdf?alt=media&token=6325c456-fb79-4298-81d8-14c924b57cb2"],
+    audit_links: ["https://docs.kommunitas.net/audit/shellboxes"],
     listedAt: 1645139153,
   },
   {
@@ -18340,7 +18341,7 @@ const data2: Protocol[] = [
     description: "QuickSwap is a decentralized exchange that runs on Polygon Network to offer cheaper and faster transactions. Its automated market maker integrates upgradeable smart contracts on Ethereum and renders intermediaries obsolete. The exchange is based on open-source software and prioritizes decentralization, censorship resistance and security. It benefits from ultra-low gas prices compared to Ethereum, as well as fast and simple trading execution",
     chain: "Polygon",
     logo: `${baseIconsUrl}/quickswap-dex.jpg`,
-    audits: "3",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -18348,7 +18349,7 @@ const data2: Protocol[] = [
     chains: ["Polygon"],
     module: "quickswap-v3/index.js",
     twitter: "QuickswapDEX",
-    audit_links: ["https://contractsecurity.io/quick-audit-report/"],
+    audit_links: [],
     forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.
     parentProtocol: "parent#quickswap",
     oracles: ["Witnet"],

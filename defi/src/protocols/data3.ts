@@ -9537,6 +9537,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1687369867
   },
+  {
+    id: "3141",
+    name: "DeFiato",
+    address: "0x1045f5ccb01daea4f8eab055f5fcbb7c0e7c89f0",
+    symbol: "DFIAT",
+    url: "https://defiato.com/",
+    description: "DeFiato is the next-generation centralized platform for DeFi staking, yield farming and financial services.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/defiato.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "defiato",
+    cmcId: null,
+    category: "", // need
+    chains: ["Ethereum"],
+    module: "", // need
+    twitter: "DeFiatoOfficial",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687369867
+  },
 ]
 
 export default data3

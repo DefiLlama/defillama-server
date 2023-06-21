@@ -24799,7 +24799,7 @@ const data2: Protocol[] = [
     name: "Covo V1",
     address: "polygon:0x681D3e1b54B3E1a338feB5B076cebf53a697d51F",
     symbol: "COVO",
-    url: "https://covo.finance",
+    url: "https://app.covo.finance/trade/MATIC-USD",
     description:
       "Covo V1 is a decentralized trading platform that offers spot and perpetual trading with low swap fees and zero market impact. The platform offers a maximum leverage of 50x on major cryptos and is backed by a singular multi-asset pool that generates income for liquidity providers through fees garnered from market making, swap transactions, leveraged trading (including spreads, funding fees, and liquidations), and rebalancing of assets",
     chain: "Polygon",

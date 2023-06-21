@@ -441,7 +441,7 @@ const data3: Protocol[] = [
     name: "Covo V2",
     address: "polygon:0x681D3e1b54B3E1a338feB5B076cebf53a697d51F",
     symbol: "COVO",
-    url: "https://v2.covo.finance/trade/MATIC-USD",
+    url: "https://app.covo.finance/trade/MATIC-USD",
     description: "A Decentralized Crypto Trading Platform with up to 50X Leverage.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/covo-v2.jpg`,

@@ -9426,6 +9426,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1687310387,
   },
+  {
+    id: "3136",
+    name: "MineFi",
+    address: null,
+    symbol: "-",
+    url: "https://minefi.io",
+    description:
+      "MineFi will help you to earn daily rewards by staking FIL. With high APY, safe principal, and flexible withdrawal.",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/minefi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Filecoin"],
+    module: "MineFi/index.js",
+    twitter: "MineFiDAO",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://beosin.com/audits/Minefi_202306120951.pdf"],
+    listedAt: 1687352489
+  },
 ]
 
 export default data3

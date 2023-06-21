@@ -9631,6 +9631,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: [],
+  },
+  {
+    id: "3145",
+    name: "Pinjam Labs",
+    address: "kava:0xE5274E38E91b615D8822e8512a29A16FF1B9C4Af",
+    symbol: "PINKAV",
+    url: "https://pinjamlabs.com/",
+    description: "Pinjam is a non-custodial liquidity market by with the unique innovation of achieving 100% capital efficiency by putting unborrowed funds to work",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/pinjam-labs.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending", 
+    chains: ["Kava"],
+    module: "pinjam/index.js", 
+    twitter: "PinjamLabs",
+    forkedFrom: ["Aave"],
+    oracles: ["Witnet"],
+    audit_links: ["https://solidity.finance/audits/Pinjam/"],
+    listedAt: 1687391349
   }
 ]
 

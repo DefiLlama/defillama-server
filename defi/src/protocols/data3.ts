@@ -9677,6 +9677,28 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: [],
     listedAt: 1687402725
+  },
+  {
+    id: "3146",
+    name: "MegaMoon",
+    address: null,
+    symbol: "-",
+    url: "A leading decentralized lottery platform on Polygon Chain.",
+    description: "https://app.megamoon.space",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/megamoon.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market", 
+    chains: ["Polygon"],
+    module: "megamoon/index.js", 
+    twitter: "0xMegaMoon",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: [],
+    listedAt: 1687439601
   }
 ]
 

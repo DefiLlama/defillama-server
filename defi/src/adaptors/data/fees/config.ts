@@ -955,5 +955,9 @@ export default {
     "pearlfi": {
         enabled: true,
         id: "3121"
+    },
+    "scatter": {
+        enabled: true,
+        id: "3146"
     }
 } as AdaptorsConfig

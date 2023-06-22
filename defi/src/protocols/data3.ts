@@ -9675,8 +9675,7 @@ const data3: Protocol[] = [
     twitter: "scatter_art",
     forkedFrom: [],
     oracles: [],
-    audit_links: [],
-    listedAt: 1687402725
+    audit_links: []
   },
   {
     id: "3147",

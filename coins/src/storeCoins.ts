@@ -15,7 +15,7 @@ const withTimeout = (millis: number, promise: any) => {
 };
 
 const step = 2000;
-const timeout = process.env.LLAMA_RUN_LOCAL ? 840000 : 8400000; //14mins
+const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
 export default async function handler(event: any) {
   const a = Object.entries(adapters);
   const timestamp = 0;

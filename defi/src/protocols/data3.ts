@@ -9655,6 +9655,28 @@ const data3: Protocol[] = [
     oracles: ["Witnet"],
     audit_links: ["https://solidity.finance/audits/Pinjam/"],
     listedAt: 1687391349
+  },
+  {
+    id: "3146",
+    name: "Scatter",
+    address: null,
+    symbol: "-",
+    url: "https://www.scatter.art/",
+    description: "An Artist-First NFT Launchpad",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/scatter.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace", 
+    chains: ["Ethereum"],
+    module: "dummy.js", 
+    twitter: "scatter_art",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687402725
   }
 ]
 

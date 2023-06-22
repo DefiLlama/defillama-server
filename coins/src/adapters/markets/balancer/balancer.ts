@@ -31,7 +31,7 @@ type PoolInfo = {
   balances: number[];
   tokens: string[];
 };
-type TokenValues = {
+export type TokenValues = {
   address: string;
   decimals: number;
   price: number;
@@ -165,12 +165,13 @@ function getTokenValues(
   });
   return tokenValues;
 }
-async function getLpPrices(
+export async function getLpPrices(
+  poolIds: string[],
   chain: string,
   timestamp: number,
   block: number | undefined,
+  supplyAbi: any = abi.getActualSupply,
 ): Promise<TokenValues[]> {
-  const poolIds: string[] = await getPoolIds(chain, timestamp);
   const poolTokens: PoolInfo[] = await getPoolTokens(chain, block, poolIds);
   const poolValues: { [poolId: string]: number } = await getPoolValues(
     chain,
@@ -198,7 +199,7 @@ async function getLpPrices(
   const actualSupplies: Result[] = (
     await multiCall({
       calls,
-      abi: abi.getActualSupply,
+      abi: supplyAbi,
       chain,
       block,
       permitFailure: true,
@@ -226,8 +227,9 @@ export default async function getTokenPrices(
 ): Promise<Write[]> {
   let writes: Write[] = [];
   const block: number | undefined = await getBlock(chain, timestamp);
+  const poolIds: string[] = await getPoolIds(chain, timestamp);
   const tokenValues: TokenValues[] = (
-    await getLpPrices(chain, timestamp, block)
+    await getLpPrices(poolIds, chain, timestamp, block)
   ).filter((t: TokenValues) => t.price != Infinity);
   const gauges: string[] = (
     await multiCall({

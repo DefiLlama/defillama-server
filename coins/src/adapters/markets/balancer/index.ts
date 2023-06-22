@@ -1,4 +1,5 @@
 import getTokenPrices from "./balancer";
+import linearPrices from "./linearPools";
 
 export function balancer1(timestamp: number = 0) {
   console.log("starting balancer1 lps");
@@ -11,4 +12,8 @@ export function balancer2(timestamp: number = 0) {
 export function balancer3(timestamp: number = 0) {
   console.log("starting balancer3 lps");
   return getTokenPrices("arbitrum", timestamp);
+}
+export function linearPools(timestamp: number = 0) {
+  console.log("starting balancer linear pools");
+  return linearPrices("arbitrum", timestamp);
 }

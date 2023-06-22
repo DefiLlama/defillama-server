@@ -7,6 +7,6 @@ export function meanFinance(timestamp: number = 0) {
     getTokenPrices("polygon", timestamp),
     getTokenPrices("arbitrum", timestamp),
     getTokenPrices("ethereum", timestamp),
-    getTokenPrices("bnb", timestamp),
+    // getTokenPrices("bnb", timestamp),
   ]);
 }

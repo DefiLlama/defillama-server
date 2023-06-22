@@ -9679,7 +9679,7 @@ const data3: Protocol[] = [
     listedAt: 1687402725
   },
   {
-    id: "3146",
+    id: "3147",
     name: "MegaMoon",
     address: null,
     symbol: "-",

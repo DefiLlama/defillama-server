@@ -23,7 +23,7 @@ async function getHandleDetails(handle, tweetSet = new Set()) {
     const errorText = $('.error-panel').text().trim();
     if (new RegExp(`"${handle}" not found`).test(errorText))
       return { notFound: true, error: errorText, updatedAt, handle, }
-    if (new RegExp(`"${handle}" has been suspended`).test(errorText))
+    if (new RegExp(`has been suspended`).test(errorText))
       return { suspended: true, error: errorText, updatedAt, handle, }
     throw new Error(errorText);
   }

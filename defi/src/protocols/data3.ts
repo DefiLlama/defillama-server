@@ -9698,6 +9698,28 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"],
     audit_links: [],
     listedAt: 1687439601
+  },
+  {
+    id: "3148",
+    name: "Stella",
+    address: "arbitrum:0xc9cbf102c73fb77ec14f8b4c8bd88e050a6b2646",
+    symbol: "ALPHA",
+    url: "https://app.stellaxyz.io/",
+    description: "Stella is a leveraged strategies protocol with 0% cost to borrow.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/stella.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming", 
+    chains: ["Arbitrum"],
+    module: "stellaxyz-io/index.js", 
+    twitter: "stellaxyz_",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://docs.stellaxyz.io/stella-doc/additional-information/audit-reports"],
+    listedAt: 1687464832
   }
 ]
 

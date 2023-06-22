@@ -519,7 +519,7 @@ const data2: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/x2y2.png`,
     audits: "1",
-    audit_links: ["https://docs.x2y2.io/assets/files/X2Y2_NFT_Lending_Report-7dfe991023b2fbd18c647d384fc333e1.pdf"],
+    audit_links: ["https://x2y2.readme.io/reference/contracts_audit"],
     audit_note: null,
     gecko_id: "x2y2",
     cmcId: "18106",
@@ -616,6 +616,7 @@ const data2: Protocol[] = [
     module: "cemetery/index.js",
     twitter: "cemeteryfinance",
     listedAt: 1645299174,
+    rugged: true
   },
   {
     id: "1436",
@@ -658,6 +659,7 @@ const data2: Protocol[] = [
     module: "nightmare/index.js",
     twitter: "Nightmare_fi",
     listedAt: 1645299462,
+    rugged: true
   },
   {
     id: "1438",
@@ -679,6 +681,7 @@ const data2: Protocol[] = [
     module: "treehousefinance/index.js",
     twitter: "treehousefnce",
     listedAt: 1645299673,
+    rugged: true
   },
   {
     id: "1439",
@@ -788,6 +791,7 @@ const data2: Protocol[] = [
     module: "one-ring/index.js",
     twitter: "Onering_Finance",
     listedAt: 1645453599,
+    rugged: true
   },
   {
     id: "1444",
@@ -854,6 +858,7 @@ const data2: Protocol[] = [
     module: "fdoge/index.js",
     twitter: "FDogefinance",
     listedAt: 1645523736,
+    rugged: true
   },
   {
     id: "1447",
@@ -2058,7 +2063,7 @@ const data2: Protocol[] = [
     description: "Cross-chain transfers",
     chain: "Everscale",
     logo: `${baseIconsUrl}/octus-bridge.jpg`,
-    audits: "1",
+    audits: "0",
     audit_note: null,
     gecko_id: "octus-bridge",
     cmcId: "19663",
@@ -2068,7 +2073,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "tonbridge.js",
     twitter: "OctusBridge",
-    audit_links: ["https://everscale.nil.foundation/report.pdf"],
+    audit_links: [],
     listedAt: 1646333180,
   },
   {

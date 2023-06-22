@@ -19761,7 +19761,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1669204672,
-    stablecoins: ["bob"]
+    parentProtocol: "parent#zkbob_"
   },
   {
     id: "2305",

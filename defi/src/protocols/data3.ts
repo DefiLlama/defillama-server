@@ -9187,7 +9187,8 @@ const data3: Protocol[] = [
     twitter: "zkBob_",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1687180389
+    listedAt: 1687180389,
+    parentProtocol: "parent#zkbob_"
   },
   {
     id: "3125",
@@ -9254,7 +9255,8 @@ const data3: Protocol[] = [
     oracles: ["Internal"],
     audit_links: ["https://nftperp.notion.site/Audits-4b961fc48e324d27b917695b606ee600"],
     twitter: "nftperp",
-    listedAt: 1687207997
+    listedAt: 1687207997,
+    github: ["nftperp"]
   },
   {
     id: "3128",

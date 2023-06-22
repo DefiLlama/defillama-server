@@ -67,6 +67,7 @@ const data: Protocol[] = [
     twitter: "WrappedBTC",
     audit_links: ["https://wbtc.network/dashboard/audit"],
     oracles: [],
+    github: ["WrappedBTC"]
   },
   {
     id: "3",
@@ -131,7 +132,8 @@ const data: Protocol[] = [
     module: "harvest/api.js",
     twitter: "harvest_finance",
     audit_links: ["https://github.com/harvest-finance/harvest/tree/master/audits"],
-    governanceID: ["snapshot:harvestfi.eth"]
+    governanceID: ["snapshot:harvestfi.eth"],
+    github: ["harvest-finance", "harvestfi"]
   },
   {
     id: "113",
@@ -154,7 +156,8 @@ const data: Protocol[] = [
     twitter: "iearnfinance",
     audit_links: ["https://github.com/yearn/yearn-audits"],
     language: "Vyper",
-    governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"]
+    governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],
+    github: ["iearn-finance", "yearn"]
   },
   {
     id: "114",
@@ -553,6 +556,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://cure53.de/pentest-report_imtoken.pdf",
     ],
+    github: ["consenlabs"]
   },
   {
     id: "131",
@@ -834,6 +838,7 @@ const data: Protocol[] = [
       "https://github.com/trailofbits/publications/blob/master/reviews/amp.pdf",
     ],
     oracles: ["Chainlink"],
+    github: ["flexahq"]
   },
   {
     id: "144",
@@ -858,7 +863,8 @@ const data: Protocol[] = [
     audit_links: ["https://docs.dydx.exchange/#independent-audits"],
     oracles: ["Chainlink"],
     language: "Cairo",
-    governanceID: ["snapshot:dydxgov.eth"]
+    governanceID: ["snapshot:dydxgov.eth"],
+    github: ["dydxfoundation", "dydxprotocol"]
   },
   {
     id: "145",
@@ -878,6 +884,7 @@ const data: Protocol[] = [
     chains: ["Solana"],
     module: "serum.js",
     twitter: "ProjectSerum",
+    github: ["project-serum", "SerumTaxTime"]
   },
   {
     id: "146",
@@ -899,7 +906,8 @@ const data: Protocol[] = [
     twitter: "BreederDodo",
     audit_links: ["https://github.com/DODOEX/docs/blob/master/docs/audit.md"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:dodobird.eth"]
+    governanceID: ["snapshot:dodobird.eth"],
+    github: ["DODOEX"]
   },
   {
     id: "148",
@@ -920,7 +928,8 @@ const data: Protocol[] = [
     twitter: "TornadoCash",
     audit_links: ["https://tornado.cash/#faq"],
     oracles: [],
-    treasury: "tornado-cash.js"
+    treasury: "tornado-cash.js",
+    github: ["tornadocash"]
   },
   {
     id: "149",
@@ -942,6 +951,7 @@ const data: Protocol[] = [
     twitter: "bprotocoleth",
     audit_links: ["https://docs.bprotocol.org/technical-documentation/bug-bounty"],
     oracles: ["Chainlink"],
+    github: ["backstop-protocol"]
   },
   {
     id: "150",
@@ -969,7 +979,8 @@ const data: Protocol[] = [
       "snapshot:idlefinance.eth",
       "eip155:1:0x3D5Fc645320be0A085A32885F078F7121e5E5375",
       "eip155:1:0x2256b25CFC8E35c3135664FD03E77595042fe31B"
-    ]
+    ],
+    github: ["Idle-Labs"]
   },
   {
     id: "151",
@@ -1013,6 +1024,7 @@ const data: Protocol[] = [
     twitter: "AugurProject",
     audit_links: ["https://github.com/AugurProject/augur-audits"],
     oracles: ["Chainlink"],
+    github: ["AugurProject"]
   },
   {
     id: "153",
@@ -1033,6 +1045,7 @@ const data: Protocol[] = [
     twitter: "CoFiXProtocol",
     oracles: ["Nest"],
     audit_links: ["https://github.com/Computable-Finance/CoFiX/tree/master/security_audit"],
+    github: ["Computable-Finance"]
   },
   {
     id: "155",
@@ -1053,7 +1066,8 @@ const data: Protocol[] = [
     module: "keeper-dao/index.js",
     treasury: "keeperdao.js",
     twitter: "rook",
-    governanceID: ["snapshot:rook.eth"]
+    governanceID: ["snapshot:rook.eth"],
+    github: ["keeperdao"]
   },
   {
     id: "156",
@@ -1073,6 +1087,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "zlot/index.js",
     twitter: "zLOTFinance",
+    github: ["rueisnax/zlot-finance-governance-staking-subgraph"]
   },
   {
     id: "157",
@@ -1093,7 +1108,8 @@ const data: Protocol[] = [
     twitter: "88mphapp",
     audit_links: ["https://docs.88mph.app/developer-docs/security"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:88mph.eth"]
+    governanceID: ["snapshot:88mph.eth"],
+    github: ["88mphapp"]
   },
   {
     id: "158",
@@ -1114,7 +1130,8 @@ const data: Protocol[] = [
     module: "dracula.js",
     twitter: "DraculaProtocol",
     audit_links: ["https://solidity.finance/audits/Dracula/"],
-    governanceID: ["snapshot:draculasucks.eth"]
+    governanceID: ["snapshot:draculasucks.eth"],
+    github: ["Dracula-Protocol"]
   },
   {
     id: "159",
@@ -1136,6 +1153,7 @@ const data: Protocol[] = [
     twitter: "GrowthDefi",
     audit_links: ["https://consensys.net/diligence/audits/2020/12/growth-defi-v1/"],
     oracles: ["Chainlink"],
+    github: ["GrowthDeFi"]
   },
   {
     id: "160",
@@ -1181,7 +1199,8 @@ const data: Protocol[] = [
       "https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf",
     ],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:boringvote.eth"]
+    governanceID: ["snapshot:boringvote.eth"],
+    github: ["BoringDAO"]
   },
   {
     id: "162",
@@ -1223,6 +1242,7 @@ const data: Protocol[] = [
     module: "fortube/index.js",
     twitter: "ForTubeFi",
     audit_links: ["https://for.tube/security"],
+    github: ["thefortube"]
   },
   {
     id: "164",
@@ -1264,7 +1284,8 @@ const data: Protocol[] = [
     module: "cover.js",
     twitter: "CoverProtocol",
     audit_links: ["https://github.com/CoverProtocol/cover-security/tree/master/audits"],
-    governanceID: ["snapshot:cover-protocol.eth"]
+    governanceID: ["snapshot:cover-protocol.eth"],
+    github: ["CoverProtocol"]
   },
   {
     id: "166",
@@ -1284,7 +1305,8 @@ const data: Protocol[] = [
     module: "truefi/index.js",
     twitter: "TrustToken",
     audit_links: ["https://github.com/trusttoken/audits/tree/master/TrueFi"],
-    governanceID: ["snapshot:truefigov.eth", 'eip155:1:0x585CcA060422ef1779Fb0Dd710A49e7C49A823C9',]
+    governanceID: ["snapshot:truefigov.eth", 'eip155:1:0x585CcA060422ef1779Fb0Dd710A49e7C49A823C9',],
+    github: ["trusttoken"]
   },
   {
     id: "167",
@@ -1306,7 +1328,8 @@ const data: Protocol[] = [
     treasury: "piedao.js",
     twitter: "PieDAO_Defi",
     audit_links: ["https://docs.piedao.org/technical/audits"],
-    governanceID: ["snapshot:piedao.eth"]
+    governanceID: ["snapshot:piedao.eth"],
+    github: ["pie-dao"]
   },
   {
     id: "168",
@@ -1326,6 +1349,7 @@ const data: Protocol[] = [
     module: "dev.js",
     twitter: "devprtcl",
     audit_links: ["https://github.com/dev-protocol/protocol/blob/main/docs/audit-report__quantstamp--sept-15-2020.pdf"],
+    github: ["dev-protocol"]
   },
   {
     id: "169",
@@ -1345,6 +1369,7 @@ const data: Protocol[] = [
     module: "basis-cash.js",
     twitter: "BasisCash",
     audit_links: ["https://github.com/basisdollar/basisdollar-protocol#audit"],
+    github: ["Basis-Cash"]
   },
   {
     id: "170",
@@ -1366,6 +1391,7 @@ const data: Protocol[] = [
     twitter: "fin_nexus",
     audit_links: ["https://github.com/Phoenix-Finance/Pdfs/blob/master/PeckShield-Audit-FinnexusOptionsV1.0.pdf"],
     oracles: ["Chainlink", "Band"],
+    github: ["FinNexus"]
   },
   {
     id: "171",
@@ -1384,6 +1410,8 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "synlev.js",
     twitter: null,
+    github: ["SynLev"],
+    rugged: true
   },
   {
     id: "172",
@@ -1408,7 +1436,8 @@ const data: Protocol[] = [
       "https://gist.github.com/bernard-wagner/8a96ae7b9746ba8394dc6c16202a6b64",
     ],
     twitter: "indexcoop",
-    governanceID: ["snapshot:index-coop.eth"]
+    governanceID: ["snapshot:index-coop.eth"],
+    github: ["SetProtocol/index-coop"]
   },
   {
     id: "173",
@@ -1440,6 +1469,7 @@ const data: Protocol[] = [
     ],
     governanceID: ["snapshot:badgerdao.eth"],
     oracles: [],
+    github: ["Badger-Finance"]
   },
   {
     id: "174",
@@ -1459,6 +1489,7 @@ const data: Protocol[] = [
     module: "bt-finance.js",
     twitter: "btdotfinance",
     audit_links: ["https://github.com/btdotfinance/bt-finance/tree/master/audits"],
+    github: ["btdotfinance/bt-finance"]
   },
   {
     id: "175",
@@ -24247,6 +24278,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Cleopatra_DAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1642404036,
+    rugged: true
   },
   {
     id: "1274",

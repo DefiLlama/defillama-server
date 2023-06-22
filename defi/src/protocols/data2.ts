@@ -241,6 +241,7 @@ const data2: Protocol[] = [
     twitter: "DracoFinance",
     language: "Solidity",
     listedAt: 1644972460,
+    rugged: true
   },
   {
     id: "1419",
@@ -505,7 +506,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "kommunitas/index.js",
     twitter: "Kommunitas1",
-    audit_links: ["https://67362912-files.gitbook.io/~/files/v0/b/gitbook-28427.appspot.com/o/assets%2F-Mcc99YHj6X7apRGJDII%2F-MgGmu57PGs3UkrB2GsG%2F-MgGoyNwBZNhWmBNpIi0%2FKommunitas%20Staking%20Contract%20Audit%20Report.pdf?alt=media&token=6325c456-fb79-4298-81d8-14c924b57cb2"],
+    audit_links: ["https://docs.kommunitas.net/audit/shellboxes"],
     listedAt: 1645139153,
   },
   {
@@ -518,7 +519,7 @@ const data2: Protocol[] = [
     chain: "Ethereum",
     logo: `${baseIconsUrl}/x2y2.png`,
     audits: "1",
-    audit_links: ["https://docs.x2y2.io/assets/files/X2Y2_NFT_Lending_Report-7dfe991023b2fbd18c647d384fc333e1.pdf"],
+    audit_links: ["https://x2y2.readme.io/reference/contracts_audit"],
     audit_note: null,
     gecko_id: "x2y2",
     cmcId: "18106",
@@ -564,7 +565,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "jones-dao",
     cmcId: "17743",
-    category: "Options Vault",
+    category: "Yield Aggregator",
     chains: ["Arbitrum"],
     oracles: [],
     forkedFrom: [],
@@ -615,6 +616,7 @@ const data2: Protocol[] = [
     module: "cemetery/index.js",
     twitter: "cemeteryfinance",
     listedAt: 1645299174,
+    rugged: true
   },
   {
     id: "1436",
@@ -657,6 +659,7 @@ const data2: Protocol[] = [
     module: "nightmare/index.js",
     twitter: "Nightmare_fi",
     listedAt: 1645299462,
+    rugged: true
   },
   {
     id: "1438",
@@ -678,6 +681,7 @@ const data2: Protocol[] = [
     module: "treehousefinance/index.js",
     twitter: "treehousefnce",
     listedAt: 1645299673,
+    rugged: true
   },
   {
     id: "1439",
@@ -787,6 +791,7 @@ const data2: Protocol[] = [
     module: "one-ring/index.js",
     twitter: "Onering_Finance",
     listedAt: 1645453599,
+    rugged: true
   },
   {
     id: "1444",
@@ -853,6 +858,7 @@ const data2: Protocol[] = [
     module: "fdoge/index.js",
     twitter: "FDogefinance",
     listedAt: 1645523736,
+    rugged: true
   },
   {
     id: "1447",
@@ -1312,7 +1318,7 @@ const data2: Protocol[] = [
     name: "Farmtom",
     address: "fantom:0x4243cCC302A98B577678d87A53c75593199315A3",
     symbol: "FRTM",
-    url: "https://farmtom.com",
+    url: "https://linktr.ee/farmtom",
     description: "Third Gen Farming built on Fantom for dividends, yields, and buybacks",
     chain: "Fantom",
     logo: `${baseIconsUrl}/farmton.png`,
@@ -1586,6 +1592,7 @@ const data2: Protocol[] = [
     module: "phantom-finance/index.js",
     twitter: "Phantom_fi",
     listedAt: 1645901674,
+    rugged: true
   },
   {
     id: "1480",
@@ -1629,6 +1636,7 @@ const data2: Protocol[] = [
     module: "2doge/index.js",
     twitter: "FDogefinance",
     listedAt: 1646044539,
+    rugged: true
   },
   //{
   //  id: "1482",
@@ -1944,7 +1952,7 @@ const data2: Protocol[] = [
     name: "Grave Finance",
     address: "avax:0x3700a92dd231F0CaC37D31dBcF4c0f5cCb1db6Ca",
     symbol: "GRAVE",
-    url: "https://grave.finance/#/",
+    url: "https://www.grave-finance.com/#/",
     description: "Grave is an algorithmic stable coin protocol pegged to the price of 0.1 AVAX.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/grave-finance.png`,
@@ -2057,7 +2065,7 @@ const data2: Protocol[] = [
     description: "Cross-chain transfers",
     chain: "Everscale",
     logo: `${baseIconsUrl}/octus-bridge.jpg`,
-    audits: "1",
+    audits: "0",
     audit_note: null,
     gecko_id: "octus-bridge",
     cmcId: "19663",
@@ -2067,7 +2075,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "tonbridge.js",
     twitter: "OctusBridge",
-    audit_links: ["https://everscale.nil.foundation/report.pdf"],
+    audit_links: [],
     listedAt: 1646333180,
   },
   {
@@ -18340,7 +18348,7 @@ const data2: Protocol[] = [
     description: "QuickSwap is a decentralized exchange that runs on Polygon Network to offer cheaper and faster transactions. Its automated market maker integrates upgradeable smart contracts on Ethereum and renders intermediaries obsolete. The exchange is based on open-source software and prioritizes decentralization, censorship resistance and security. It benefits from ultra-low gas prices compared to Ethereum, as well as fast and simple trading execution",
     chain: "Polygon",
     logo: `${baseIconsUrl}/quickswap-dex.jpg`,
-    audits: "3",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -18348,7 +18356,7 @@ const data2: Protocol[] = [
     chains: ["Polygon"],
     module: "quickswap-v3/index.js",
     twitter: "QuickswapDEX",
-    audit_links: ["https://contractsecurity.io/quick-audit-report/"],
+    audit_links: [],
     forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.
     parentProtocol: "parent#quickswap",
     oracles: ["Witnet"],
@@ -19760,7 +19768,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1669204672,
-    stablecoins: ["bob"]
+    parentProtocol: "parent#zkbob_"
   },
   {
     id: "2305",
@@ -22096,8 +22104,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["TON"],
-    // module: "tegro/index.js",
-    module: "anyhedge/index.js",
+    module: "tegro/index.js",
     twitter: "TegroDEX",
     forkedFrom: [],
     oracles: [],

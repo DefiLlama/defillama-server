@@ -1934,6 +1934,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "maplefinance",
     treasury: "maple.js",
+    github: ["maple-labs"]
   },
   {
     id: "parent#pawnfi",
@@ -1957,7 +1958,8 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    twitter: "FujiFinance"
+    twitter: "FujiFinance",
+    github: ["Fujicracy"]
   },
   {
     id: "parent#solv",
@@ -1969,7 +1971,8 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "SolvProtocol",
-    governanceID: ["snapshot:solvgov.eth"]    
+    governanceID: ["snapshot:solvgov.eth"],
+    github: ["solv-finance"]
   },
   {
     id: "parent#stabl.fi",
@@ -1983,6 +1986,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Stabl_Fi",
     stablecoins: ["stabl.fi-cash"],
     github: ["stablfi"]
+  },
+  {
+    id: "parent#zkbob_",
+    name: "zkBob_",
+    url: "https://www.zkbob.com/",
+    description: "A privacy tool for common tasks",
+    logo: `${baseIconsUrl}/zkbob.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "zkBob_",
+    stablecoins: ["bob"],
+    github: ["zkBob"]
   },
 ];
 

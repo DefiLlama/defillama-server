@@ -147,7 +147,8 @@ const data3: Protocol[] = [
     module: "kokomo/index.js",
     twitter: "KokomoFinance",
     audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/Kokomo%20Finance%20Token/Kokomo%20Finance%20Token.pdf"],
-    listedAt: 1679573387
+    listedAt: 1679573387,
+    rugged: true,
   },
   {
     id: "2717",
@@ -434,7 +435,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "gemswap/index.js",
     twitter: "GemSwap_ZKS",
-    listedAt: 1679891989
+    listedAt: 1679891989,
+    rugged: true
   },
   {
     id: "2730",
@@ -498,7 +500,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "atlas-fi/index.js",
     twitter: "Atlasaggregator",
-    listedAt: 1679923806
+    listedAt: 1679923806,
+    rugged: true
   },
   {
     id: "2733",
@@ -650,7 +653,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "Liquify/index.js",
     twitter: "NetworkLiquify",
-    listedAt: 1680017064
+    listedAt: 1680017064,
+    rugged: true
   },
   {
     id: "2740",
@@ -1258,7 +1262,8 @@ const data3: Protocol[] = [
     module: "jbc/index.js",
     twitter: "JBCFinance",
     audit_links: ["https://github.com/solidproof/projects/blob/main/JBCFinance/SmartContract_Audit_Solidproof_JBCFinance.pdf"],
-    listedAt: 1680540285
+    listedAt: 1680540285,
+    rugged: true
   },
   {
     id: "2768",
@@ -1876,7 +1881,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "zks-miner/index.js",
     twitter: "Zksminer",
-    listedAt: 1681001887
+    listedAt: 1681001887,
+    rugged: true
   },
   {
     id: "2797",
@@ -2559,7 +2565,8 @@ const data3: Protocol[] = [
       "https://blocksafu.com/project-detail/0xC951d8561B2f1bcE76FEe922933E243C875ba48f"
     ],
     twitter: "satoshicoreswap",
-    listedAt: 1681436914
+    listedAt: 1681436914,
+    rugged: true
   },
   {
     id: "2828",
@@ -3050,7 +3057,8 @@ const data3: Protocol[] = [
     module: "merlin/index.js",
     twitter: "TheMerlinDEX",
     audit_links: ["https://skynet.certik.com/projects/merlin-dex"],
-    listedAt: 1681701241
+    listedAt: 1681701241,
+    rugged: true
   },
   {
     id: "2850",
@@ -3156,7 +3164,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "metaswap/index.js",
     twitter: null,
-    listedAt: 1681749462
+    listedAt: 1681749462,
+    rugged: true
   },
   {
     id: "2855",
@@ -3675,7 +3684,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "avatr/index.js",
     twitter: "Avatr_LSD",
-    listedAt: 1682275843
+    listedAt: 1682275843,
+    rugged: true
   },
   {
     id: "2879",
@@ -3802,7 +3812,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "Zolidly/index.js",
     twitter: "Zolidly_Finance",
-    listedAt: 1682356965
+    listedAt: 1682356965,
+    rugged: true
   },
   {
     id: "2885",
@@ -5004,7 +5015,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/Coinsult/solidity/blob/edbd23a82d38a0bc0efcc02b80fb15cb23049e26/Coinsult_CELLSTOKEN_0x30...6D82_Audit.pdf"],
-    listedAt: 1683282600
+    listedAt: 1683282600,
+    rugged: true
   },
   {
     id: "2938",
@@ -5685,7 +5697,8 @@ const data3: Protocol[] = [
     twitter: "KyborgExchange",
     forkedFrom: ["Uniswap V3"],
     oracles: [],
-    listedAt: 1683861152
+    listedAt: 1683861152,
+    rugged: true
   },
   {
     id: "2970",
@@ -6885,7 +6898,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     audit_links: ["https://app.solidproof.io/projects/goldbanktoken"],
-    listedAt: 1685023885
+    listedAt: 1685023885,
+    rugged: true
   },
   {
     id: "3024",
@@ -8614,7 +8628,8 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://github.com/solidproof/projects/blob/main/2023/FroggyToken/SmartContract_Audit_Solidproof_FroggyProtocol.pdf"],
-    listedAt: 1686410187
+    listedAt: 1686410187,
+    rugged: true
   }, 
   {
     id: "3100",
@@ -9172,7 +9187,8 @@ const data3: Protocol[] = [
     twitter: "zkBob_",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1687180389
+    listedAt: 1687180389,
+    parentProtocol: "parent#zkbob_"
   },
   {
     id: "3125",
@@ -9239,7 +9255,8 @@ const data3: Protocol[] = [
     oracles: ["Internal"],
     audit_links: ["https://nftperp.notion.site/Audits-4b961fc48e324d27b917695b606ee600"],
     twitter: "nftperp",
-    listedAt: 1687207997
+    listedAt: 1687207997,
+    github: ["nftperp"]
   },
   {
     id: "3128",
@@ -9462,14 +9479,13 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "my-neighbor-alice",
     cmcId: null,
-    category: "", // need
+    category: "Services", // need
     chains: ["Ethereum"],
-    module: "", // need
+    module: "dummy.js", // need
     twitter: "MyNeighborAlice",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
-    listedAt: 1687369867
   },
   {
     id: "3138",
@@ -9479,19 +9495,18 @@ const data3: Protocol[] = [
     url: "https://step.app/",
     description: "Move, earn, repeat. The future of fitness.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/step-app-fitfi.jpg`,
+    logo: `${baseIconsUrl}/step-app.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "step-app-fitfi",
     cmcId: null,
-    category: "", // need
+    category: "Services", // need
     chains: ["Avalanche"],
-    module: "", // need
+    module: "dummy.js", // need
     twitter: "stepapp_",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
-    listedAt: 1687369867
   },
   {
     id: "3139",
@@ -9501,19 +9516,18 @@ const data3: Protocol[] = [
     url: "https://www.immutable.com/",
     description: "Build with unmatched speed, scale, and flexibility using Immutable’s simple, end-to-end Web3 solutions.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/immutable-x.jpg`,
+    logo: `${baseIconsUrl}/immutablex.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "immutable-x",
     cmcId: null,
-    category: "", // need
+    category: "Services", // need
     chains: ["Ethereum"],
-    module: "", // need
+    module: "dummy.js", // need
     twitter: "Immutable",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
-    listedAt: 1687369867
   },
   {
     id: "3140",
@@ -9523,19 +9537,18 @@ const data3: Protocol[] = [
     url: "https://www.avax.network/",
     description: "Build anything you want, any way you want on the lightning fast, scalable blockchain that won’t let you down.",
     chain: "Avalanche",
-    logo: `${baseIconsUrl}/avalanche-2.jpg`,
+    logo: `${baseIconsUrl}/avalanche.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "avalanche-2",
     cmcId: null,
-    category: "", // need
+    category: "Services", // need
     chains: ["Avalanche"],
-    module: "", // need
+    module: "dummy.js", // need
     twitter: "avax",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
-    listedAt: 1687369867
   },
   {
     id: "3141",
@@ -9550,36 +9563,34 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "defiato",
     cmcId: null,
-    category: "", // need
+    category: "Services", // need
     chains: ["Ethereum"],
-    module: "", // need
+    module: "dummy.js", // need
     twitter: "DeFiatoOfficial",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
-    listedAt: 1687369867
   },
   {
     id: "3142",
     name: "Primal",
     address: "0xcb5327ed4649548e0d73e70b633cdfd99af6da87",
-    symbol: "DFIAT",
+    symbol: "PRIMAL",
     url: "https://www.getprimal.com/app",
     description: "PRIMAL is the 1st athlete fan token project with integrated Move2Earn. Represented by sports stars with millions of fans.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/primal-b3099cd0-995a-4311-80d5-9c133153b38e.jpg`,
+    logo: `${baseIconsUrl}/primal.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "primal-b3099cd0-995a-4311-80d5-9c133153b38e",
     cmcId: null,
-    category: "", // need
+    category: "Services", // need
     chains: ["Binance"],
-    module: "", // need
+    module: "dummy.js", // need
     twitter: "enterprimal",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
-    listedAt: 1687369867
   },
   {
     id: "3143",
@@ -9594,16 +9605,14 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "xana",
     cmcId: null,
-    category: "", // need
+    category: "Services", // need
     chains: ["Avalanche"],
-    module: "", // need
+    module: "dummy.js", // need
     twitter: "XANAMetaverse",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
-    listedAt: 1687369867
   },
-
   {
     id: "3144",
     name: "SuperRare",
@@ -9612,20 +9621,63 @@ const data3: Protocol[] = [
     url: "https://superrare.com/",
     description: "SuperRare is the digital art market on Ethereum.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/superrare.jpg`,
+    logo: `${baseIconsUrl}/superrare.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "superrare",
     cmcId: null,
-    category: "", // need
+    category: "Services", // need
     chains: ["Ethereum"],
-    module: "", // need
+    module: "dummy.js", // need
     twitter: "SuperRare",
     forkedFrom: [],
     oracles: [],
     audit_links: [],
-    listedAt: 1687369867
   },
+  {
+    id: "3145",
+    name: "Pinjam Labs",
+    address: "kava:0xE5274E38E91b615D8822e8512a29A16FF1B9C4Af",
+    symbol: "PINKAV",
+    url: "https://pinjamlabs.com/",
+    description: "Pinjam is a non-custodial liquidity market by with the unique innovation of achieving 100% capital efficiency by putting unborrowed funds to work",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/pinjam-labs.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending", 
+    chains: ["Kava"],
+    module: "pinjam/index.js", 
+    twitter: "PinjamLabs",
+    forkedFrom: ["Aave"],
+    oracles: ["Witnet"],
+    audit_links: ["https://solidity.finance/audits/Pinjam/"],
+    listedAt: 1687391349
+  },
+  {
+    id: "3146",
+    name: "Scatter",
+    address: null,
+    symbol: "-",
+    url: "https://www.scatter.art/",
+    description: "An Artist-First NFT Launchpad",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/scatter.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace", 
+    chains: ["Ethereum"],
+    module: "dummy.js", 
+    twitter: "scatter_art",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: [],
+    listedAt: 1687402725
+  }
 ]
 
 export default data3

@@ -1410,7 +1410,8 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "synlev.js",
     twitter: null,
-    github: ["SynLev"]
+    github: ["SynLev"],
+    rugged: true
   },
   {
     id: "172",
@@ -24277,6 +24278,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Cleopatra_DAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1642404036,
+    rugged: true
   },
   {
     id: "1274",

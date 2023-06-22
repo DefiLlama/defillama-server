@@ -1318,7 +1318,7 @@ const data2: Protocol[] = [
     name: "Farmtom",
     address: "fantom:0x4243cCC302A98B577678d87A53c75593199315A3",
     symbol: "FRTM",
-    url: "https://farmtom.com",
+    url: "https://linktr.ee/farmtom",
     description: "Third Gen Farming built on Fantom for dividends, yields, and buybacks",
     chain: "Fantom",
     logo: `${baseIconsUrl}/farmton.png`,
@@ -1592,6 +1592,7 @@ const data2: Protocol[] = [
     module: "phantom-finance/index.js",
     twitter: "Phantom_fi",
     listedAt: 1645901674,
+    rugged: true
   },
   {
     id: "1480",
@@ -1635,6 +1636,7 @@ const data2: Protocol[] = [
     module: "2doge/index.js",
     twitter: "FDogefinance",
     listedAt: 1646044539,
+    rugged: true
   },
   //{
   //  id: "1482",
@@ -1950,7 +1952,7 @@ const data2: Protocol[] = [
     name: "Grave Finance",
     address: "avax:0x3700a92dd231F0CaC37D31dBcF4c0f5cCb1db6Ca",
     symbol: "GRAVE",
-    url: "https://grave.finance/#/",
+    url: "https://www.grave-finance.com/#/",
     description: "Grave is an algorithmic stable coin protocol pegged to the price of 0.1 AVAX.",
     chain: "Avalanche",
     logo: `${baseIconsUrl}/grave-finance.png`,

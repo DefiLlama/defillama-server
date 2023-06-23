@@ -1950,11 +1950,11 @@ const parentProtocols: IParentProtocol[] = [
     github: ["PawnFi"]
   },
   {
-    id: "parent#fuji-dao",
-    name: "Fuji DAO",
+    id: "parent#fuji-finance",
+    name: "Fuji Finance",
     url: "https://fuji.finance/",
     description: "The Auto-Refinancing Borrow Protocol",
-    logo: `${baseIconsUrl}/fuji-dao.png`,
+    logo: `${baseIconsUrl}/fuji-finance.png`,
     gecko_id: null,
     cmcId: null,
     chains: [],

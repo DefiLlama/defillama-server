@@ -7432,7 +7432,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/Fujicracy/fuji-protocol/blob/main/audits/Fuji_TrailOfBits_2021-11.pdf",
     ],
     twitter: "FujiFinance",
-    parentProtocol: "parent#fuji-dao"
+    parentProtocol: "parent#fuji-finance"
   },
   {
     id: "458",

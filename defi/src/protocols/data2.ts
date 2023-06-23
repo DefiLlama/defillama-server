@@ -1061,6 +1061,7 @@ const data2: Protocol[] = [
     twitter: "claimswap",
     language: "Solidity",
     audit_links: ["https://github.com/claimswap/claimswap-audit"],
+    parentProtocol: "parent#claimswap",
     listedAt: 1645643108,
   },
   // {

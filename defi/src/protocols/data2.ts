@@ -4679,7 +4679,7 @@ const data2: Protocol[] = [
     treasury: "jpegd",
     twitter: "JPEGd_69",
     audit_links: ["https://docs.jpegd.io/other-links/audits"],
-    governanceID: ["snapshot:jpeg'd.eth"],
+    //governanceID: ["snapshot:jpeg'd.eth"],
     listedAt: 1649284165,
     stablecoins: ["pusd"]
   },

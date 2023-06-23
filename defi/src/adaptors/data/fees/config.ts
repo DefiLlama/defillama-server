@@ -959,5 +959,9 @@ export default {
     "scatter": {
         enabled: true,
         id: "3146"
+    },
+    "alchemix": {
+        enabled: true,
+        id: "204"
     }
 } as AdaptorsConfig

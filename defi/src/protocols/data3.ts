@@ -9720,6 +9720,27 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"],
     audit_links: ["https://docs.stellaxyz.io/stella-doc/additional-information/audit-reports"],
     listedAt: 1687464832
+  },
+  {
+    id: "3149",
+    name: "KlaySwap V3",
+    address: null,
+    symbol: "-",
+    url: "https://klayswap.com/dashboard",
+    description: "KLAYswap is an AMM-based Instant Swap Protocol",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/klayswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Klaytn"],
+    module: "klayswap-v3/index.js", 
+    twitter: "KLAYswap",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1687530648
   }
 ]
 

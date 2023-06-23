@@ -1042,13 +1042,13 @@ const data2: Protocol[] = [
   */
   {
     id: "1455",
-    name: "ClaimSwap",
+    name: "ClaimSwap V1",
     address: "klaytn:0xcf87f94fd8f6b6f0b479771f10df672f99eada63",
     symbol: "CLA",
     url: "https://claimswap.org/",
     description: "Swap, earn, and claim on the decentralized, community driven platform",
     chain: "Klaytn",
-    logo: `${baseIconsUrl}/claimswap.jpg`,
+    logo: `${baseIconsUrl}/claimswap-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "claimswap",

@@ -9741,6 +9741,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1687530648
+  },
+  {
+    id: "3150",
+    name: "ClaimSwap V2",
+    address: "klaytn:0xcf87f94fd8f6b6f0b479771f10df672f99eada63",
+    symbol: "CLA",
+    url: "https://claimswap.org/",
+    description: "Swap, earn, and claim on the decentralized, community driven platform. V2",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/claimswap-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes", 
+    chains: ["Klaytn"],
+    module: "claimswap-v2/index.js", 
+    twitter: "claimswap",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1687539781,
+    parentProtocol: "parent#claimswap"
   }
 ]
 

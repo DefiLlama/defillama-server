@@ -2000,6 +2000,17 @@ const parentProtocols: IParentProtocol[] = [
     stablecoins: ["bob"],
     github: ["zkBob"]
   },
+  {
+    id: "parent#claimswap",
+    name: "ClaimSwap",
+    url: "https://claimswap.org/",
+    description: "Swap, earn, and claim on the decentralized, community driven platform",
+    logo: `${baseIconsUrl}/claimswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "claimswap",
+  },
 ];
 
 export default parentProtocols;

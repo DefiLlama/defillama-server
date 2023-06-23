@@ -9212,7 +9212,7 @@ const data3: Protocol[] = [
       "https://hatsfinance.medium.com/final-review-fuji-finance-audit-competition-and-winners-announcement-dac2f3b4743e"
     ],
     twitter: "FujiFinance",
-    parentProtocol: "parent#fuji-dao",
+    parentProtocol: "parent#fuji-finance",
     listedAt: 1687195545
   },
   {

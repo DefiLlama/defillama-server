@@ -3465,6 +3465,7 @@ const data2: Protocol[] = [
     twitter: "philetairus",
     audit_links: ["https://rugdoc.io/project/philetairus-socius/"],
     listedAt: 1647811513,
+    rugged: true
   },
   {
     id: "1565",

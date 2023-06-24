@@ -9763,6 +9763,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1687539781,
     parentProtocol: "parent#claimswap"
+  },
+  {
+    id: "3151",
+    name: "TiTi Protocol",
+    address: "0x3bdffA70f4b4E6985eED50453c7C0D4A15dcEc52",
+    symbol: "TITI",
+    url: "https://titi.finance/",
+    description: "TiTi Protocol is a decentralized, use-to-earn algorithmic stablecoin offering diversified financial services",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/titi-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stables", 
+    chains: ["Ethereum", "zkSync Era"],
+    module: "titi-finance/index.js", 
+    twitter: "TiTiProtocol",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/TiTi-Finance/TiTi-Protocol/tree/main/audits"],
+    listedAt: 1687630493,
   }
 ]
 

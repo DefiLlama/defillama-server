@@ -963,5 +963,16 @@ export default {
     "alchemix": {
         enabled: true,
         id: "204"
+    },
+    "doveswap": {
+        "enabled": true,
+        "id": "2763",
+        parentId: "Dove Swap",
+        "protocolsData": {
+            "v3": {
+                "id": "2809",
+                "enabled": true,
+            }
+        },
     }
 } as AdaptorsConfig

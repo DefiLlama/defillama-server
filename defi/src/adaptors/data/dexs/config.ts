@@ -1670,5 +1670,16 @@ export default {
     "ambient": {
         enabled: true,
         id: "3104"
+    },
+    "doveswap": {
+        "enabled": true,
+        "id": "2763",
+        parentId: "Dove Swap",
+        "protocolsData": {
+            "v3": {
+                "id": "2809",
+                "enabled": true,
+            }
+        },
     }
 } as AdaptorsConfig

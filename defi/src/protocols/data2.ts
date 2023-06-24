@@ -2186,6 +2186,7 @@ const data2: Protocol[] = [
     module: "pulsedao/index.js",
     twitter: "ThePULSE_DAO",
     listedAt: 1646425665,
+    rugged: true
   },
   {
     id: "1507",
@@ -2207,6 +2208,7 @@ const data2: Protocol[] = [
     module: "zombi/index.js",
     twitter: "ZombiFinance",
     listedAt: 1646426722,
+    rugged: true
   },
   {
     id: "1508",
@@ -2228,6 +2230,7 @@ const data2: Protocol[] = [
     module: "code7/index.js",
     twitter: "code7finance",
     listedAt: 1646426615,
+    rugged: true
   },
   {
     id: "1509",
@@ -2313,6 +2316,7 @@ const data2: Protocol[] = [
     module: "spadefinance/index.js",
     twitter: "Spadefinanceftm",
     listedAt: 1646502914,
+    rugged: true
   },
   {
     id: "1513",
@@ -2376,7 +2380,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "echidna/index.js",
     twitter: "echidna_finance",
-    audit_links: ["https://docs.echidna.finance/docs/security/audits"],
+    audit_links: ["https://docs.echidna.finance/info/security/audit"],
     listedAt: 1646627764,
   },
   {
@@ -2474,7 +2478,7 @@ const data2: Protocol[] = [
     description: "Paraluni,based on the BSC,a no holding currency, no ICO, no pre-mining decentralized platform.",
     chain: "Binance",
     logo: `${baseIconsUrl}/paraluni.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -2484,7 +2488,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "Paraluni/index.js",
     twitter: "paraluni",
-    audit_links: ["http://www.auditlions.com/en/index.php?c=index&id=65"],
+    audit_links: [],
     parentProtocol: "parent#paraluni",
     listedAt: 1646692701,
   },
@@ -2511,7 +2515,8 @@ const data2: Protocol[] = [
     listedAt: 1646762203,
     governanceID: ["snapshot:horizonprotocol.eth"]
   },
-  {
+  /*
+  { //TVL was always $0
     id: "1522",
     name: "CakeTomb",
     address: "bsc:0xAB4F3fC9831dBC77424269B9255fC1A082AC9840",
@@ -2532,6 +2537,7 @@ const data2: Protocol[] = [
     twitter: "CakeTomb",
     listedAt: 1646783157,
   },
+  */
   {
     id: "1523",
     name: "KLAYstation",
@@ -2757,7 +2763,7 @@ const data2: Protocol[] = [
     name: "LIFE",
     address: "fantom:0x8877E4B70C50CF275C2B77d6a0F69a312F5eE236",
     symbol: "LIFE",
-    url: "https://lif3.exchange/",
+    url: "https://lif3.com/swap",
     description: "LIFE is a reward and governance token integrating DeFi yield farming on the Fantom network. Earn yield from your ERC-20 tokens and LP tokens by staking and earning LIFE rewards.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/life.png`,

@@ -9789,7 +9789,30 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/TiTi-Finance/TiTi-Protocol/tree/main/audits"],
     listedAt: 1687630493,
-  }
+  },
+  {
+    id: "3152",
+    name: "Swapscanner LSD",
+    address: "klaytn:0x8888888888885b073f3c81258c27e83db228d5f3",
+    symbol: "SCNR",
+    url: "https://swapscanner.io/staking",
+    description: "Officially deposit KLAY and vote in Klaytn governance through Swapscanner, a member of Klaytn's governing body GC",
+    chain: "Klaytn",
+    logo: `${baseIconsUrl}/swapscanner.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Klaytn"],
+    oracles: [],
+    forkedFrom: [],
+    module: "swapscanner-staking/index.js",
+    twitter: "Swapscanner",
+    audit_links: ["https://docs.swapscanner.io/v/english/audit/audti-certik"],
+    listedAt: 1687717081,
+    parentProtocol: "parent#swapscanner",
+  },
 ]
 
 export default data3

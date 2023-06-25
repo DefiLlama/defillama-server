@@ -2011,6 +2011,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "claimswap",
   },
+  {
+    id: "parent#swapscanner",
+    name: "Swapscanner",
+    url: "https://swapscanner.io/",
+    description: "Swapscanner is a next-generation DEX Aggregator that enables users to buy tokens at the lowest price in the Klaytn Network",
+    logo: `${baseIconsUrl}/swapscanner.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Swapscanner",
+  },
 ];
 
 export default parentProtocols;

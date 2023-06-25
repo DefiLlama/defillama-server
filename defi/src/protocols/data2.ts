@@ -5602,7 +5602,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1661",
-    name: "Swapscanner",
+    name: "Swapscanner Dex",
     address: "klaytn:0x8888888888885b073f3c81258c27e83db228d5f3",
     symbol: "SCNR",
     url: "https://swapscanner.io",
@@ -5620,7 +5620,8 @@ const data2: Protocol[] = [
     module: "swapscanner/index.js",
     twitter: "Swapscanner",
     audit_links: ["https://docs.swapscanner.io/v/english/whitepaper/audit"],
-    listedAt: 1650358249
+    listedAt: 1650358249,
+    parentProtocol: "parent#swapscanner",
   },
   {
     id: "1662",

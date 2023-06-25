@@ -8688,7 +8688,7 @@ const data3: Protocol[] = [
       "Kannagi Finance is a zkSync decentralized yield aggregator that empower investors to compound interest from their staked assets",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/kannagi-finance.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: "kannagi-finance",
     cmcId: null,
@@ -8699,6 +8699,10 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     github: ["user:KannagiFinance"],
+    audit_links: [
+      "https://github.com/solidproof/projects/blob/main/2023/KToken/SmartContract_Audit_Solidproof_KannagiFinance.pdf",
+      "https://sourcehat.com/audits/KannagiFinance/"
+    ],
     listedAt: 1686607089
   },
   {

@@ -25923,7 +25923,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Binance"],
     module: "kalmy-app/index.js",
-    twitter: "kalmar_io",
+    twitter: "KalmyAPP",
     audit_links: [
       "https://hacken.io/wp-content/uploads/2021/06/Kalmar_08062021SC-Audit_Report.pdf",
       "https://hacken.io/wp-content/uploads/2021/04/03042021_Kalmar_SC_Audit_Report.pdf",

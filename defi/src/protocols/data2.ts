@@ -23302,7 +23302,7 @@ const data2: Protocol[] = [
   {
     id: "2459",
     name: "Neutra Finance",
-    address: "arbitrum:0xda51015b73ce11f77a115bb1b8a7049e02ddecf0",
+    address: "arbitrum:0x6609BE1547166D1C4605F3A243FDCFf467e600C3",
     symbol: "NEU",
     url: "https://neutra.finance",
     description:

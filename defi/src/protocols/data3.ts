@@ -9900,6 +9900,26 @@ const data3: Protocol[] = [
     forkedFrom: ["GMX"],
     listedAt: 1687785853
   },
+  {
+    id: "3157",
+    name: "Hats.V2",
+    address: null,
+    symbol: "-",
+    url: "https://hats.finance",
+    description: "Hats is an onchain Bug Bounty Protocol, Hats uses incentives to funnel part of the 3.2bn in stolen assets annually into bounties for ethical and responsible disclosures.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hats.v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "hats-v2/index.js",
+    twitter: "HatsFinance",
+    parentProtocol: "parent#hats.finance",
+    listedAt: 1687786900
+  },
 ]
 
 export default data3

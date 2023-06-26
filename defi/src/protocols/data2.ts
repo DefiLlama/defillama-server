@@ -23506,14 +23506,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2468",
-    name: "Hats.Finance",
+    name: "Hats.V1",
     address: null,
     symbol: "-",
     url: "https://hats.finance",
     description:
       "Hats is an onchain Bug Bounty Protocol, Hats uses incentives to funnel part of the 3.2bn in stolen assets annually into bounties for ethical / responsible disclosures.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/hats.finance.png`,
+    logo: `${baseIconsUrl}/hats.v1png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -23525,6 +23525,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://github.com/hats-finance/hats-contracts/tree/develop/audit"],
+    parentProtocol: "parent#hats.finance",
     listedAt: 1674569878
   },
   {

@@ -2022,6 +2022,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Swapscanner",
   },
+  {
+    id: "parent#hats.finance",
+    name: "Hats.Finance",
+    url: "https://hats.finance",
+    description: "Hats is an onchain Bug Bounty Protocol, Hats uses incentives to funnel part of the 3.2bn in stolen assets annually into bounties for ethical and responsible disclosures.",
+    logo: `${baseIconsUrl}/hats.finance.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HatsFinance",
+  },
 ];
 
 export default parentProtocols;

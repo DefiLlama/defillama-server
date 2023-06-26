@@ -9957,7 +9957,7 @@ const data3: Protocol[] = [
     chains: ["Binance", "Pulse"],
     module: "litxswap/index.js",
     twitter: "droplitdrip",
-    forkedFrom: ["Uniswap V3"],
+    forkedFrom: ["Algebra DEX"],
     listedAt: 1687807087
   },
 ]

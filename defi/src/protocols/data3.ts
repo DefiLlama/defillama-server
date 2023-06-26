@@ -9936,7 +9936,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Arbitrum"],
     module: "themis-exchange/index.js",
-    twitter: "Themis_Pro",
+    twitter: "ThemisProtocol",
     audit_links: ["https://docs.themis.exchange/security"],
     listedAt: 1687800179
   },

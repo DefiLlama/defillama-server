@@ -9857,7 +9857,7 @@ const data3: Protocol[] = [
     audit_links: [],
   },
   {
-    id: "3154",
+    id: "3155",
     name: "StakedICP",
     address: null,
     symbol: "-",

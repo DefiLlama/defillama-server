@@ -23513,7 +23513,7 @@ const data2: Protocol[] = [
     description:
       "Hats is an onchain Bug Bounty Protocol, Hats uses incentives to funnel part of the 3.2bn in stolen assets annually into bounties for ethical / responsible disclosures.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/hats.v1png`,
+    logo: `${baseIconsUrl}/hats.v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

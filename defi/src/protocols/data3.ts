@@ -9856,6 +9856,28 @@ const data3: Protocol[] = [
     twitter: "avnu_fi",
     audit_links: [],
   },
+  {
+    id: "3154",
+    name: "StakedICP",
+    address: null,
+    symbol: "-",
+    url: "https://stakedicp.com",
+    description: "StakedICP is a non-custodial liquid staking protocol build on the Internet Computer.",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/stakedicp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["ICP"],
+    oracles: [],
+    forkedFrom: [],
+    module: "stakedicp/index.js",
+    twitter: "StakedICP",
+    audit_links: [],
+    listedAt: 1687769686
+  },
 ]
 
 export default data3

@@ -1446,17 +1446,6 @@ const parentProtocols: IParentProtocol[] = [
     github: ["stakedotlink"]
   },
   {
-    id: "parent#dove-swap",
-    name: "Dove Swap",
-    url: "https://swap.dovish.finance",
-    description: "Bringing innovative DeFi to the zkEVM space.",
-    logo: `${baseIconsUrl}/dove-swap.png`,
-    gecko_id: null,
-    cmcId: null,
-    chains: [],
-    twitter: "DovishFi",
-  },
-  {
     id: "parent#forge-sx",
     name: "Forge SX",
     url: "https://forge.sx",

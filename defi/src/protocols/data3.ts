@@ -1157,28 +1157,6 @@ const data3: Protocol[] = [
     listedAt: 1680529373
   },
   {
-    id: "2763",
-    name: "Dove Swap V2",
-    address: "polygon_zkevm:0x696c0ba235444607a1c4b93e6b34ba14928c1b60",
-    symbol: "DOV",
-    url: "https://swap.dovish.finance",
-    description: "Dove Swap is an emerging DEX that runs on the Polygon zkEVM to offer cheaper and faster transactions. The DEX focuses on providing the most user-friendly experience in DeFi, for both DeFi users and protocols. DoveSwap mainly operates and benefits from the lower gas prices, and higher transaction throughputs of the chain it operates on compared to Ethereum.",
-    chain: "Polygon zkEVM",
-    logo: `${baseIconsUrl}/dove-swap-v2.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexes",
-    chains: ["Polygon zkEVM"],
-    oracles: [],
-    forkedFrom: ["Uniswap V2"],
-    module: "doveswap/index.js",
-    twitter: "DovishFi",
-    parentProtocol: "parent#dove-swap",
-    listedAt: 1680529375
-  },
-  {
     id: "2764",
     name: "CexDex",
     address: null,
@@ -2145,7 +2123,7 @@ const data3: Protocol[] = [
   },
   {
     id: "2809",
-    name: "Dove Swap V3",
+    name: "DoveSwap",
     address: "polygon_zkevm:0x696c0ba235444607a1c4b93e6b34ba14928c1b60",
     symbol: "DOV",
     url: "https://swap.dovish.finance",
@@ -2162,7 +2140,6 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "doveswap-v3/index.js",
     twitter: "DovishFi",
-    parentProtocol: "parent#dove-swap",
     listedAt: 1681214153
   },
   {

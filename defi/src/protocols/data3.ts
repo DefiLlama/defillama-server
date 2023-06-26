@@ -9940,6 +9940,26 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.themis.exchange/security"],
     listedAt: 1687800179
   },
+  {
+    id: "3159",
+    name: "Litx",
+    address: null,
+    symbol: "-",
+    url: "https://litx.xyz/#/swap",
+    description: "v3 Dex on PulseChain and BSC, from Droplit team.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/litxswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance", "Pulse"],
+    module: "litxswap/index.js",
+    twitter: "droplitdrip",
+    forkedFrom: ["Uniswap V3"],
+    listedAt: 1687807087
+  },
 ]
 
 export default data3

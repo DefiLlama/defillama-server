@@ -31,5 +31,9 @@ export default {
     "plexus": {
         enabled: true,
         id: "2740"
+    },
+    "avnu": {
+        enabled: true,
+        id: "3154"
     }
 } as AdaptorsConfig

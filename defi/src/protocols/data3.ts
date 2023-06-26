@@ -9920,6 +9920,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#hats.finance",
     listedAt: 1687786900
   },
+  {
+    id: "3158",
+    name: "Themis Protocol",
+    address: "arbitrum:-",
+    symbol: "TMS",
+    url: "https://beta.themis.exchange/",
+    description: "Themis Protocol is a decentralized, multi-chain supported Peer-to-Pool lending & borrowing platform",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/themis-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "themis-exchange/index.js",
+    twitter: "Themis_Pro",
+    audit_links: ["https://docs.themis.exchange/security"],
+    listedAt: 1687800179
+  },
 ]
 
 export default data3

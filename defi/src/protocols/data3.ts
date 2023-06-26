@@ -9878,6 +9878,28 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1687769686
   },
+  {
+    id: "3156",
+    name: "Voodoo Trade",
+    address: "fantom:0x1e89e41dF23162d05acaA18539E6173d59640000",
+    symbol: "VMX",
+    url: "https://voodoo.trade",
+    description: "Voodoo Trade is the ultimate FTM-focused perpetual DEX on Fantom Network. Voodoo caters solely to FTM/stable pairs, offering the deepest liquidity and most competitive margin fees available, on par with CEX rates. LPs can earn real yield from both margin trades and swaps on Fantom",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/voodo-trade.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Fantom"],
+    module: "voodoo-trade/index.js",
+    twitter: "TradeVoodoo",
+    audit_links: ["https://github.com/voodoo-trade/voodoo-contracts/blob/master/voodoo-audits/PeckShield-Audit-Report-Voodoo-v1.0.pdf"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["GMX"],
+    listedAt: 1687785853
+  },
 ]
 
 export default data3

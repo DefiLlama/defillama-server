@@ -2033,6 +2033,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HatsFinance",
   },
+  {
+    id: "parent#themis-pro",
+    name: "Themis Pro",
+    url: "https://hats.finance",
+    description: "Themis Protocol is a DeFi protocol on FVM with a portfolio that includes Themis Pro, Themis Swap, Themis Pool, and Themis Stablecoin",
+    logo: `${baseIconsUrl}/themis-pro.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Themis_Pro",
+    github: ["user:ThemisCapital"]
+  },
 ];
 
 export default parentProtocols;

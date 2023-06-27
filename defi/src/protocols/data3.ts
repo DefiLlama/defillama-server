@@ -1094,8 +1094,8 @@ const data3: Protocol[] = [
   {
     id: "2760",
     name: "Maia V3",
-    address: null,
-    symbol: "-",
+    address: "metis:0x72c232D56542Ba082592DEE7C77b1C6CFA758BCD",
+    symbol: "MAIA",
     url: "https://uni.maiadao.io/#/swap",
     description: "Fork of Uniswap V3 on Metis network",
     chain: "Metis",

@@ -2043,6 +2043,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Themis_Pro",
+    treasury: "themis-capital-ohm.js",
     github: ["user:ThemisCapital"]
   },
 ];

@@ -2,7 +2,7 @@ const sdk = require('@defillama/sdk')
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-const api = 'http://localhost:8080';
+const api = 'https://nitter.net';
 const getUrl = (handle, cursor = '') => `${api}/${handle}/search?f=tweets&q=&e-nativeretweets=on&e-replies=on&cursor=${cursor}`;
 const getUrlWithHref = (handle, href = '') => `${api}/${handle}/search${href}`;
 
@@ -48,6 +48,7 @@ async function getTweets({ $, handle, tweets = [], tweetSet, }) {
   tweets.push(...parseTweets($))
   let href = $('.show-more:last')
   if (!href || tweets.find(i => tweetSet.has(i.id))) return tweets
+  await sleep(200)
   href = $(href).find('a').attr('href')
 
   if (!/cursor/.test(href)) return tweets
@@ -128,6 +129,10 @@ function getDateFromTweet(dateString) {
 
   const dateObject = new Date(year, getMonthIndex(month), day, hour, minute)
   return dateObject;
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 module.exports = {

@@ -1,6 +1,6 @@
 import { Token } from "./index";
-import * as cosmosAdapter from "../../../../defi/DefiLlama-Adapters/projects/helper/chain/cosmos"
-import * as tokenMapping from "../../../../defi/DefiLlama-Adapters/projects/helper/tokenMapping"
+// import * as cosmosAdapter from "../../../../defi/DefiLlama-Adapters/projects/helper/chain/cosmos"
+// import * as tokenMapping from "../../../../defi/DefiLlama-Adapters/projects/helper/tokenMapping"
 import { fetch, } from "../utils";
 
 const skipChains = ['ibc', 'terra', 'terra2']
@@ -9,7 +9,10 @@ const includeChains = ['quasar']
 const gitEndpoint = 'https://raw.githubusercontent.com/cosmostation/chainlist/main/chain'
 
 export default async function bridge(): Promise<Token[]> {
-  const cosmosChainsSet = new Set([...Object.keys(cosmosAdapter.endPoints), ...tokenMapping.ibcChains, ...includeChains])
+  // const cosmosChainsSet = new Set([...Object.keys(cosmosAdapter.endPoints), ...tokenMapping.ibcChains, ...includeChains])
+  const cosmosChainsSet = new Set([...includeChains, ...[
+    "kujira", "migaloo", "xpla", "kava", 'crescent', 'osmosis', 'stargaze', 'juno', 'injective', 'cosmos', 'comdex', 'stargaze', 'umee', 'orai', 'persistence', 'fxcore', 'neutron',
+  ]])
   skipChains.forEach(chain => cosmosChainsSet.delete(chain))
   const items: any = {}
   const supportedChains: any = await fetch(`${gitEndpoint}/supports.json`)

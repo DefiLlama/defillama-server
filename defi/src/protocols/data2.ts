@@ -5618,7 +5618,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "swapscanner/index.js",
     twitter: "Swapscanner",
-    audit_links: ["https://docs.swapscanner.io/v/english/whitepaper/audit"],
+    audit_links: ["https://docs.swapscanner.io/v/english/audit/audti-certik"],
     listedAt: 1650358249,
     parentProtocol: "parent#swapscanner",
   },

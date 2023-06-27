@@ -10044,7 +10044,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "NFT Lending",
     chains: ["Cardano"],
     module: "levvy-fi/index.js",
     twitter: "levvyfinance",

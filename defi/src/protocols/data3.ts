@@ -4863,6 +4863,7 @@ const data3: Protocol[] = [
     name: "BlazeStake",
     address: null,
     symbol: "-",
+    assetToken: "bSOL",
     url: "https://stake.solblaze.org/",
     description:
       "BlazeStake is an innovative liquid staking protocol designed to support the Solana ecosystem. Delegators can choose to stake their SOL either through the standard delegation pool (which balances stake across hundreds of validators to support decentralization) or to any validators of their choice, all while receiving the liquid staking benefits of bSOL (access to instant unstake liquidity, increased staking yields through DeFi, Solana ecosystem token airdrops, and more).",
@@ -5271,6 +5272,7 @@ const data3: Protocol[] = [
     name: "CRETH2",
     address: "0x2ba592F78dB6436527729929AAf6c908497cB200",
     symbol: "CREAM",
+    assetToken: "CRETH2",
     url: "https://classic.cream.finance/eth2/",
     description: "ETH LSD",
     chain: "Ethereum",
@@ -7439,6 +7441,7 @@ const data3: Protocol[] = [
     name: "Tranchess Ether",
     address: "0xD6123271F980D966B00cA4FCa6C2c021f05e2E73",
     symbol: "CHESS",
+    assetToken: "qETH",
     url: "https://tranchess.com/liquid-staking",
     description:
       "Tranchess ETH Fund is a Tranchess fund uniquely designed with ETH staking strategy",
@@ -7804,8 +7807,8 @@ const data3: Protocol[] = [
   {
     id: "3064",
     name: "stkd-SCRT",
-    address: null,
-    symbol: "-",
+    address: "secret:secret153wu605vvp934xhd4k9dtd640zsep5jkesstdm",
+    symbol: "SHD",
     url: "https://shadeprotocol.io",
     description: "Liquid staking derivative of SCRT - the native token of Secret Network.",
     chain: "Secret",

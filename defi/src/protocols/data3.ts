@@ -10004,6 +10004,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#themis-pro",
     listedAt: 1687831472
   },
+  {
+    id: "3162",
+    name: "NEOPIN Liquid",
+    address: "klaytn:0xe06597d02a2c3aa7a9708de2cfa587b128bd3815",
+    symbol: "NPT",
+    url: "https://app.neopin.io",
+    description: "Liquid staking protocol on Ethereum and Klaytn network.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/neopin-liquid.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum", "Klaytn"],
+    module: "neopin-liquid-staking/index.js",
+    twitter: "NeopinOfficial",
+    parentProtocol: "parent#neopin",
+    listedAt: 1687857038
+  },
 ]
 
 export default data3

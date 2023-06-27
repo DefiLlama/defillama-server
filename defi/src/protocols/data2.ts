@@ -17918,8 +17918,8 @@ const data2: Protocol[] = [
   {
     id: "2221",
     name: "Frax Ether",
-    address: "0x853d955acef822db058eb8505911ed77f175b99e",
-    symbol: "FRAX",
+    address: null,
+    symbol: "-",
     assetToken: "FRXETH",
     url: "https://app.frax.finance/frxeth/mint",
     description:

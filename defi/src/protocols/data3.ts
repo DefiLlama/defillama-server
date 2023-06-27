@@ -7208,7 +7208,7 @@ const data3: Protocol[] = [
     module: "range/index.js",
     twitter: "Range_Protocol",
     forkedFrom: [],
-    audit_links: ["https://github.com/Range-Protocol/contracts/blob/master/audits/Certik-Audit.pdf"],
+    audit_links: ["https://github.com/Range-Protocol/contracts/blob/master/audits/Certik-Audit.pdf", "https://github.com/Range-Protocol/contracts/blob/master/audits/Halborn-Audit.pdf"],
     listedAt: 1685364025
   },
   {

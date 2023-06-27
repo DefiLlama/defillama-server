@@ -7979,8 +7979,9 @@ const data2: Protocol[] = [
   {
     id: "1770",
     name: "ClayStack",
-    address: "0x38b7Bf4eeCF3EB530b1529c9401FC37d2a71a912",
-    symbol: "csMatic",
+    address: null,
+    symbol: "-",
+    assetToken: "csETH",
     url: "https://claystack.com",
     description: "ClayStack is a decentralized liquid staking platform that enables you to unlock the liquidity of staked assets across multiple chains. You can stake your assets and use the issued staking derivatives across the DeFi ecosystem.",
     chain: "Ethereum",
@@ -11613,7 +11614,7 @@ const data2: Protocol[] = [
     id: "1935",
     name: "sKCS",
     address: null,
-    symbol: "-",
+    symbol: "SKCS",
     url: "https://skcs.io",
     description: "Simplified and secure staking for KCS on KCC.",
     chain: "KCC",
@@ -12103,7 +12104,7 @@ const data2: Protocol[] = [
     id: "1958",
     name: "Parallel Liquid Staking",
     address: null,
-    symbol: "-",
+    symbol: "PARA",
     url: "https://parallel.fi",
     description: "Parallel Finance is a Decentralized Money Market Protocol that offers lending, staking, and borrowing in the Polkadot ecosystem. Depositors can lend and stake simultaneously to earn double yield on their staked coins, and borrowers can collateralize to borrow.",
     chain: "Parallel",
@@ -15477,8 +15478,9 @@ const data2: Protocol[] = [
   {
     id: "2112",
     name: "Stake.ly",
-    address: "klaytn:0xF80F2b22932fCEC6189b9153aA18662b15CC9C00",
-    symbol: "stKLAY",
+    address: null,
+    symbol: "-",
+    assetToken: "stKLAY",
     url: "https://stake.ly",
     description: "Stake.ly is a liquid staking protocol on Klaytn.",
     chain: "Klaytn",
@@ -17916,8 +17918,8 @@ const data2: Protocol[] = [
   {
     id: "2221",
     name: "Frax Ether",
-    address: null,
-    symbol: "-",
+    address: "0x853d955acef822db058eb8505911ed77f175b99e",
+    symbol: "FRAX",
     assetToken: "FRXETH",
     url: "https://app.frax.finance/frxeth/mint",
     description:
@@ -18279,8 +18281,8 @@ const data2: Protocol[] = [
   {
     id: "2236",
     name: "Yield Yak Staked Avax",
-    address: null,
-    symbol: "-",
+    address: "0x59414b3089ce2af0010e7523dea7e2b35d776ec7",
+    symbol: "YAK",
     assetToken: "yyAVAX",
     url: "https://yieldyak.com/liquid-staking",
     description:

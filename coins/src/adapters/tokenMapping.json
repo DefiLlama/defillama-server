@@ -14,6 +14,41 @@
       "decimals": "8",
       "symbol": "axlWBTC",
       "to": "coingecko#wrapped-bitcoin"
+    },
+    "1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4": {
+      "decimals": "6",
+      "symbol": "AKT",
+      "to": "coingecko#akash-network"
+    },
+    "0954E1C28EB7AF5B72D24F3BC2B47BBB2FDF91BDDFD57B74B99E133AED40972A": {
+      "decimals": "6",
+      "symbol": "SCRT",
+      "to": "coingecko#secret"
+    },
+    "46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED": {
+      "decimals": "6",
+      "symbol": "JUNO",
+      "to": "coingecko#juno-network"
+    },
+    "6AE98883D4D5D5FF9E50D7130F1305DA2FFA0C652D1DD9C123657C6B4EB2DF8A": {
+      "decimals": "18",
+      "symbol": "EVMOS",
+      "to": "coingecko#evmos"
+    },
+    "1DCC8A6CB5689018431323953344A9F6CC4D0BFB261E88C9F7777372C10CD076": {
+      "decimals": "6",
+      "symbol": "REGEN",
+      "to": "coingecko#regen"
+    },
+    "A8CA5EE328FA10C9519DF6057DA1F69682D28F7D0F5CCC7ECB72E3DCA2D157A4": {
+      "decimals": "6",
+      "symbol": "STRD",
+      "to": "coingecko#stride"
+    },
+    "67795E528DF67C5606FC20F824EA39A6EF55BA133F4DC79C90A8C47A0901E17C": {
+      "decimals": "6",
+      "symbol": "UMEE",
+      "to": "coingecko#umee"
     }
   },
   "arbitrum": {

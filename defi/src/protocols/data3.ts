@@ -10010,7 +10010,7 @@ const data3: Protocol[] = [
     address: "klaytn:0xe06597d02a2c3aa7a9708de2cfa587b128bd3815",
     symbol: "NPT",
     url: "https://app.neopin.io",
-    description: "Liquid staking protocol on Ethereum and Klaytn network.",
+    description: "NEOPIN is a one-stop, non-custodial CeDeFi protocol for the secure use of crypto with regulatory frameworks while leveraging the benefits of both CeFi and DeFi. Providing decentralized and non-custodial Ethereum, Klaytn staking protocol along side with Yield Farm, Swap and multi-chain bridge.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/neopin-liquid.png`,
     audits: "0",

@@ -49,6 +49,11 @@
       "decimals": "6",
       "symbol": "UMEE",
       "to": "coingecko#umee"
+    },
+    "D176154B0C63D1F9C6DCFB4F70349EBF2E2B5A87A05902F57A6AE92B863E9AEC": {
+      "decimals": "6",
+      "symbol": "stOSMO",
+      "to": "coingecko#stride-staked-osmo"
     }
   },
   "arbitrum": {

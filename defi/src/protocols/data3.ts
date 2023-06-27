@@ -10024,6 +10024,26 @@ const data3: Protocol[] = [
     parentProtocol: "parent#neopin",
     listedAt: 1687857038
   },
+  {
+    id: "3163",
+    name: "Levvy.Fi",
+    address: null,
+    symbol: "-",
+    url: "https://www.levvy.fi",
+    description: "Levvy is an innovative Peer-to-Peer NFT lending protocol that allows NFT owners to access instant liquidity from lenders at efficient market rates.",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/levvy.fi.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Cardano"],
+    module: "levvy-fi/index.js",
+    twitter: "levvyfinance",
+    audit_links: ["https://levvyprojects.nyc3.cdn.digitaloceanspaces.com/Levvy%20Finance%20Audit.pdf"],
+    listedAt: 1687861737
+  },
 ]
 
 export default data3

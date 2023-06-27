@@ -9948,7 +9948,7 @@ const data3: Protocol[] = [
     url: "https://litx.xyz/#/swap",
     description: "v3 Dex on PulseChain and BSC, from Droplit team.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/litxswap.png`,
+    logo: `${baseIconsUrl}/litx.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

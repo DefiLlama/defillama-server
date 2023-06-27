@@ -4606,7 +4606,7 @@ const data2: Protocol[] = [
     name: "RadioShack",
     address: "0x7a5d3A9Dcd33cb8D527f7b5F96EB4Fef43d55636",
     symbol: "RADIO",
-    url: "https://www.radioshack.org/",
+    url: "https://www.radioshack.com/",
     description: "Uniswap fork",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/radioshack.png`,
@@ -4696,7 +4696,7 @@ const data2: Protocol[] = [
     name: "Amaterasu Finance",
     address: "aurora:0x0017Be3E7e36ABF49FE67a78D08bf465bB755120",
     symbol: "IZA",
-    url: "https://app.amaterasu.finance/#/swap",
+    url: "https://linktr.ee/amaterasufinance",
     description: "Amaterasu Finance is a native DEX on the Aurora chain. The governance token of the protocol is IZANAGI (ticker: $IZA)",
     chain: "Aurora",
     logo: `${baseIconsUrl}/amaterasu-finance.png`,
@@ -4840,7 +4840,8 @@ const data2: Protocol[] = [
     module: "astrowar-finance",
     twitter: "AstrowarFi",
     audit_links: ["https://github.com/solidproof/projects/tree/main/AstroWar"],
-    listedAt: 1649420834
+    listedAt: 1649420834,
+    rugged: true
   },
   {
     id: "1627",
@@ -4884,9 +4885,7 @@ const data2: Protocol[] = [
     module: "singularityDAO/index.js",
     twitter: "SingularityDao",
     audit_links: [
-      "https://docs.singularitydao.ai/audits/hacken-bsc-token-contract",
-      "https://docs.singularitydao.ai/audits/hacken-launchpad",
-      "https://docs.singularitydao.ai/audits/hacken-bonded-staking",
+      "https://docs.singularitydao.ai/security/smart-contract-audits",
       "https://www.certik.com/projects/singularitydao"
     ],
     listedAt: 1649526364,

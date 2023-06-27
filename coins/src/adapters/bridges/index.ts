@@ -1,14 +1,15 @@
 import anyswap from "./anyswap";
 import arbitrum from "./arbitrum";
 import avax from "./avax";
-import bsc from "./bsc";
+// import bsc from "./bsc";
 import fantom from "./fantom";
 import gasTokens from "./gasTokens";
 //import harmony from "./harmony";
 import optimism from "./optimism";
 import polygon from "./polygon";
 // import solana from "./solana";
-import xdai from "./xdai";
+// import xdai from "./xdai";
+import cosmos from "./cosmos";
 
 export type Token =
   | {
@@ -58,6 +59,7 @@ export const bridges = [
   polygon,
   // solana
   //xdai
+  cosmos,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

@@ -1681,5 +1681,9 @@ export default {
                 "enabled": true,
             }
         },
+    },
+    "litx": {
+        enabled: true,
+        id: "3159"
     }
 } as AdaptorsConfig

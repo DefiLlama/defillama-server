@@ -4861,8 +4861,8 @@ const data3: Protocol[] = [
   {
     id: "2931",
     name: "BlazeStake",
-    address: "solana:bSo13r4TkiE4KumL71LsHTPpL2euBYLFx6h9HP3piy1",
-    symbol: "bSOL",
+    address: null,
+    symbol: "-",
     url: "https://stake.solblaze.org/",
     description:
       "BlazeStake is an innovative liquid staking protocol designed to support the Solana ecosystem. Delegators can choose to stake their SOL either through the standard delegation pool (which balances stake across hundreds of validators to support decentralization) or to any validators of their choice, all while receiving the liquid staking benefits of bSOL (access to instant unstake liquidity, increased staking yields through DeFi, Solana ecosystem token airdrops, and more).",

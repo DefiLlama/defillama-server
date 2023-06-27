@@ -10114,6 +10114,43 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/solidproof/projects/tree/main/2023/VePlus"],
     listedAt: 1687863938
   },
+  {
+    id: "3167",
+    name: "Quasar Vaults",
+    address: null,
+    symbol: "-",
+    url: "https://app.quasar.fi",
+    description: "Quasar is the first decentralized asset management (D.A.M.) platform supercharged with IBC. The secure, permissionless, composable, and diversified interchain DeFi experience is finally here.",
+    chain: "Quasar",
+    logo: `${baseIconsUrl}/quasar-vaults.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Quasar"],
+    module: "quasar/index.js",
+    twitter: "QuasarFi",
+    listedAt: 1687889149
+  },
+  {
+    id: "3168",
+    name: "Foundation",
+    address: null,
+    symbol: "-",
+    url: "https://foundation.app",
+    description: "We build the most powerful tools for the most creative people in the world.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/foundation.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "foundation",
+  },
 ]
 
 export default data3

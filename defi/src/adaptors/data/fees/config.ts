@@ -974,5 +974,9 @@ export default {
                 "enabled": true,
             }
         },
+    },
+    "foundation": {
+        enabled: true,
+        id: "3168"
     }
 } as AdaptorsConfig

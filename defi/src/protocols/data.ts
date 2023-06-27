@@ -20592,7 +20592,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "templardao",
     cmcId: "15288",
     category: "Reserve Currency",
-    chains: ["Binance", "Moonriver", "Harmony"],
+    chains: ["Binance"],
     module: "templar/api.js",
     treasury: "templar-dao.js",
     twitter: "TemplarDAO",

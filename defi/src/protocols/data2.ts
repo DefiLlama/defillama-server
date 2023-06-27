@@ -3632,7 +3632,7 @@ const data2: Protocol[] = [
     name: "DeFIL",
     address: "0x09ce2b746c32528b7d864a1e3979bd97d2f095ab",
     symbol: "DFL",
-    url: "https://defil.org/",
+    url: "https://defil.org/#/home",
     description: "DeFIL is a decentralized Filecoin lending and finance service platform.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/defil.jpg`,
@@ -3825,7 +3825,6 @@ const data2: Protocol[] = [
     module: "lowcostswap/index.js",
     twitter: "LowcostSwap",
     audit_links: ["https://rugdoc.io/project/lowcost-swap/",
-      "https://github.com/lowcostswap/Audit/blob/main/Lowcost.pdf",
       "https://jagosafer.io/lowcost-swap",
     ],
     listedAt: 1648210430,
@@ -4397,6 +4396,7 @@ const data2: Protocol[] = [
     module: "mockingbird/index.js",
     twitter: "philetairus",
     listedAt: 1649014284,
+    rugged: true
   },
   {
     id: "1607",
@@ -4583,7 +4583,7 @@ const data2: Protocol[] = [
     name: "Polynomial Earn",
     address: null,
     symbol: "-",
-    url: "https://earn.polynomial.fi",
+    url: "https://earn.polynomial.fi/",
     description: "Polynomial automates financial derivative strategies to create products that deliver passive yield on various assets",
     chain: "Optimism",
     logo: `${baseIconsUrl}/polynomial-earn.png`,

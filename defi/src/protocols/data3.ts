@@ -9721,6 +9721,7 @@ const data3: Protocol[] = [
     module: "stellaxyz-io/index.js", 
     twitter: "stellaxyz_",
     forkedFrom: [],
+    github: ["stellaxyz"],
     oracles: ["Chainlink"],
     audit_links: ["https://docs.stellaxyz.io/stella-doc/additional-information/audit-reports"],
     listedAt: 1687464832
@@ -9742,6 +9743,7 @@ const data3: Protocol[] = [
     chains: ["Klaytn"],
     module: "klayswap-v3/index.js", 
     twitter: "KLAYswap",
+    github: ["KlaySwap"],
     forkedFrom: [],
     oracles: [],
     listedAt: 1687530648
@@ -9787,6 +9789,7 @@ const data3: Protocol[] = [
     twitter: "TiTiProtocol",
     forkedFrom: [],
     oracles: [],
+    github: ["TiTi-Finance"],
     audit_links: ["https://github.com/TiTi-Finance/TiTi-Protocol/tree/main/audits"],
     listedAt: 1687630493,
   },
@@ -9854,6 +9857,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "avnu_fi",
+    github: ["avnu-labs"],
     audit_links: [],
   },
   {
@@ -9875,6 +9879,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "stakedicp/index.js",
     twitter: "StakedICP",
+    github: ["AegirFinance"],
     audit_links: [],
     listedAt: 1687769686
   },
@@ -9898,6 +9903,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/voodoo-trade/voodoo-contracts/blob/master/voodoo-audits/PeckShield-Audit-Report-Voodoo-v1.0.pdf"],
     oracles: ["Chainlink"],
     forkedFrom: ["GMX"],
+    github: ['voodoo-trade'],
     listedAt: 1687785853
   },
   {
@@ -9937,6 +9943,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "themis-exchange/index.js",
     twitter: "ThemisProtocol",
+    github: ["themis-protocol"],
     audit_links: ["https://docs.themis.exchange/security"],
     listedAt: 1687800179
   },

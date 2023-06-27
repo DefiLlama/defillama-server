@@ -289,6 +289,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "redactedcartel",
     governanceID: ["snapshot:redactedcartel.eth"],
+    github: ["redacted-cartel"],
     treasury: "redacted.js",
   },
   {
@@ -316,6 +317,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "19160",
     chains: [],
     twitter: "Meter_IO",
+    github: ["meterio/voltswap"],
     governanceID: ["snapshot:voltswap.eth"]
   },
   {
@@ -2009,6 +2011,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    github: ["claimswap"],
     twitter: "claimswap",
   },
   {
@@ -2020,6 +2023,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    github: ["swapscanner"],
     twitter: "Swapscanner",
   },
   {
@@ -2031,6 +2035,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
+    github: ["hats-finance"],
     twitter: "HatsFinance",
   },
   {

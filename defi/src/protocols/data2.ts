@@ -8904,7 +8904,7 @@ const data2: Protocol[] = [
     name: "FluidTokens",
     address: null,
     symbol: "-",
-    url: "https://fluidtokens.com",
+    url: "https://app.fluidtokens.com",
     description: "Lend and borrow using your NFTs on Cardano's fluid NFT-DeFi bridge.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/fluidtokens.jpg`,
@@ -8916,6 +8916,7 @@ const data2: Protocol[] = [
     chains: ["Cardano"],
     oracles: [],
     forkedFrom: [],
+    github: ["FluidTokens"],
     module: "fluidtokens/index.js",
     twitter: "FluidTokens",
     listedAt: 1654771434

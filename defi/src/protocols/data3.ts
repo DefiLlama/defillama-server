@@ -9886,7 +9886,7 @@ const data3: Protocol[] = [
     url: "https://voodoo.trade",
     description: "Voodoo Trade is the ultimate FTM-focused perpetual DEX on Fantom Network. Voodoo caters solely to FTM/stable pairs, offering the deepest liquidity and most competitive margin fees available, on par with CEX rates. LPs can earn real yield from both margin trades and swaps on Fantom",
     chain: "Fantom",
-    logo: `${baseIconsUrl}/voodo-trade.jpg`,
+    logo: `${baseIconsUrl}/voodoo-trade.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

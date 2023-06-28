@@ -23501,7 +23501,7 @@ const data2: Protocol[] = [
     module: "zyberswap/index.js",
     twitter: "zyberswap",
     oracles: ["TWAP"],
-    forkedFrom: ["Algebra DEX"], //concentrated liquidity solutions.
+    forkedFrom: ["Uniswap V2"], 
     audit_links: ["https://github.com/solidproof/projects/blob/main/ZyberSwap/SmartContract_Audit_Solidproof_Zyberswap.pdf"],
     parentProtocol: "parent#zyberswap",
     listedAt: 1674558950
@@ -26567,7 +26567,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Arbitrum"],
     oracles: [],
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Algebra DEX"],
     module: "zyberswap-v3/index.js",
     twitter: "ZyberSwap",
     parentProtocol: "parent#zyberswap",

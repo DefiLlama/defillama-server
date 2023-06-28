@@ -10187,7 +10187,7 @@ const data3: Protocol[] = [
     url: "https://ellipsislabs.xyz",
     description: "High throughput blockchains have enabled the creation of new financial primitives. Ellipsis Labs is building Phoenix, a decentralized limit order book on Solana that is fully on-chain, non-custodial, and crankless.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/ellipisis-labs.jpg`,
+    logo: `${baseIconsUrl}/ellipsis-labs.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

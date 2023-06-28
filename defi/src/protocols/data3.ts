@@ -10198,6 +10198,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1687942915
   },
+  {
+    id: "3171",
+    name: "Kinza Finance",
+    address: null,
+    symbol: "KZA",
+    url: "https://kinza.finance",
+    description: "A reliable lending protocol is core to a solid DeFi ecosystem. Kinza focuses on security relentlessly, and aims to connect demand and supply of liquidity to create the best on-chain money market.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/kinza-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    module: "kinza/index.js",
+    twitter: "kinzafinance",
+    oracles: [],
+    forkedFrom: ["AAVE V3"],
+    treasury: "kinza.js",
+    github: ["Kinza-Finance"],
+    listedAt: 1687952729
+  },
 ]
 
 export default data3

@@ -3,6 +3,7 @@ import { createRawSections } from "../emissions-adapters/utils/convertToRawData"
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
 import adapters from "./utils/imports/emissions_adapters";
 import { ApiChartData, ChartSection, Protocol, SectionData } from "../emissions-adapters/types/adapters";
+import { createFuturesData } from "../emissions-adapters/utils/futures";
 import { storeR2JSONString, getR2 } from "./utils/r2";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import protocols from "./protocols/data";
@@ -28,7 +29,7 @@ function findPId(cgId: string | null) {
   return protocols.find((p) => p.gecko_id == cgId);
 }
 
-function aggregateMetadata(protocolName: string, chart: Chart[], rawData: SectionData) {
+async function aggregateMetadata(protocolName: string, chart: Chart[], rawData: SectionData) {
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
   const cgId = getCgId(rawData.metadata.token);
   const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : findPId(cgId);
@@ -45,6 +46,8 @@ function aggregateMetadata(protocolName: string, chart: Chart[], rawData: Sectio
 
   const tokenAllocation = createCategoryData(chart, rawData.categories, false);
 
+  const futures = pData && "symbol" in pData ? await createFuturesData(pData.symbol) : undefined;
+
   return {
     data: {
       data: chart,
@@ -52,6 +55,7 @@ function aggregateMetadata(protocolName: string, chart: Chart[], rawData: Sectio
       name: name,
       gecko_id: pData?.gecko_id,
       tokenAllocation,
+      futures,
     },
     id,
   };
@@ -65,7 +69,7 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
     data: s.data.apiData,
   }));
 
-  const { data, id } = aggregateMetadata(protocolName, chart, rawData);
+  const { data, id } = await aggregateMetadata(protocolName, chart, rawData);
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
 
   await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify(data));

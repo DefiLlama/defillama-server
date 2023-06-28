@@ -1,5 +1,5 @@
 import { successResponse, wrap, IResponse } from "../../../utils/shared";
-import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMap, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
+import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse } from "../../db-utils/adaptor-record"
 import allSettled from "promise.allsettled";
 import { generateAggregatedVolumesChartData, generateByDexVolumesChartData, getSumAllDexsToday, IChartData, IChartDataByDex } from "../../utils/volumeCalcs";
 import { getDisplayChainName } from "../../utils/getAllChainsFromAdaptors";
@@ -107,7 +107,8 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
         AdaptorRecordType.dailyHoldersRevenue,
         AdaptorRecordType.dailyCreatorRevenue,
         AdaptorRecordType.dailySupplySideRevenue,
-        AdaptorRecordType.dailyProtocolRevenue
+        AdaptorRecordType.dailyProtocolRevenue,
+        AdaptorRecordType.revenue30d,
     ],
     [AdapterType.ROYALTIES]: [
         AdaptorRecordType.dailyRevenue,

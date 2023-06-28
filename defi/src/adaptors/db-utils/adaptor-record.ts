@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk"
 import dynamodb from "../../utils/shared/dynamodb"
-import { getDisplayChainName, formatChainKey } from "../utils/getAllChainsFromAdaptors"
+import { formatChainKey } from "../utils/getAllChainsFromAdaptors"
 import removeErrors from "../utils/removeErrors"
 import { Item } from "./base"
 import { ProtocolType } from "@defillama/dimension-adapters/adapters/types"
@@ -29,7 +29,8 @@ export enum AdaptorRecordType {
     totalSupplySideRevenue = "tssr",
     totalProtocolRevenue = "tpr",
     totalHoldersRevenue = "thr",
-    totalCreatorRevenue = "tcr"
+    totalCreatorRevenue = "tcr",
+    revenue30d = 'r30d'
 }
 
 export const AdaptorRecordTypeMap = Object.entries(AdaptorRecordType).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as IJSON<AdaptorRecordType>)

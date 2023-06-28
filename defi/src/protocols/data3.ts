@@ -1218,6 +1218,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "pepe-bridge/index.js",
     twitter: "cryptopepeteam",
+    parentProtocol: "parent#pepeteam",
     listedAt: 1680540069
   },
   {

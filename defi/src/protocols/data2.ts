@@ -6278,7 +6278,7 @@ const data2: Protocol[] = [
       "https://github.com/Good-Ghosting/goodghosting-protocol-v0/blob/master/docs/audits/dedaub-good-ghosting-core-files-audit.pdf",
       "https://github.com/Good-Ghosting/goodghosting-protocol-v0/blob/master/docs/audits/ackee-good-ghosting-core-files-audit.pdf",
       "https://github.com/Good-Ghosting/goodghosting-protocol-v1/blob/master/docs/audits/ackee-good-ghosting-curve-audit.pdf",
-      "https://github.com/Good-Ghosting/https://github.com/Good-Ghosting/goodghosting-protocol-v2/blob/master/docs/audits/dedaub-goodghosting-v2-audit-june%20'22.pdf.pdf",
+      "https://github.com/Good-Ghosting/goodghosting-protocol-v2/tree/master/docs/audits",
     ],
     listedAt: 1650999421
   },
@@ -6353,7 +6353,7 @@ const data2: Protocol[] = [
     name: "Spectrumswap",
     address: "bsc:0x4AE1A0D592DC4d1c51D37C2AEfE6D2572FC47F7a",
     symbol: "SPECTRUM",
-    url: "https://spectrumswap.com",
+    url: "null",
     description: "",
     chain: "Binance",
     logo: `${baseIconsUrl}/spectrumswap.png`,
@@ -6379,7 +6379,7 @@ const data2: Protocol[] = [
     description: "Cronus Finance is an AMM decentralised exchange (DEX) built on Evmos",
     chain: "Evmos",
     logo: `${baseIconsUrl}/cronus-finance.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "cronus-finance",
     cmcId: null,
@@ -6389,7 +6389,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "cronus/index.js",
     twitter: "CronusFinance",
-    audit_links: ["https://notion.verilog.solutions/audit/cronus_finance"],
+    audit_links: [],
     listedAt: 1651127318
   },
   {
@@ -6964,7 +6964,7 @@ const data2: Protocol[] = [
     name: "KungFuu",
     address: "fantom:0x89b61Ab033584918103698953870F07D6db412A3",
     symbol: "KNGFUU",
-    url: "https://www.kungfuu.app/",
+    url: "https://kungfuu.finance/",
     description: "KungFuu Finance is an auto-staking protocol on Fantom with a 50,000% fixed APY. Owners of Fork It, the leading DeFi fork listing ecosystem.",
     chain: "Fantom",
     logo: `${baseIconsUrl}/kungfuu.jpg`,
@@ -7299,8 +7299,7 @@ const data2: Protocol[] = [
     module: "bifrost-staking/index.js",
     twitter: "BifrostFinance",
     audit_links: [
-      "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
-      "https://github.com/bifrost-finance/bifrost-wiki/blob/master/certik-rep-bifrost-2022-01-13.pdf",
+      "https://github.com/bifrost-finance/bifrost-wiki/tree/master",
       "https://tokeninsight.com/zh/report/2558"
     ],
     listedAt: 1651793295

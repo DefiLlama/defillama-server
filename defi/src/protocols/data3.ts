@@ -6198,6 +6198,7 @@ const data3: Protocol[] = [
     twitter: "gravitaprotocol",
     oracles: ["Chainlink"],
     forkedFrom: ["Liquity"],
+    stablecoins: ["grai"],
     audit_links: [
       "https://docs.gravitaprotocol.com/gravita-docs/about-gravita-protocol/audits"
     ],

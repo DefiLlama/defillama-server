@@ -10222,6 +10222,26 @@ const data3: Protocol[] = [
     github: ["Kinza-Finance"],
     listedAt: 1687952729
   },
+  {
+    id: "3172",
+    name: "Concordex",
+    address: null,
+    symbol: "CCD",
+    url: "https://app.concordex.io/swap",
+    description: "Dex on Concordium chain.",
+    chain: "Concordium",
+    logo: `${baseIconsUrl}/concordex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Concordium"],
+    module: "concordex-io/index.js",
+    twitter: "ConcordiumNet",
+    oracles: [],
+    listedAt: 1687960810
+  },
 ]
 
 export default data3

@@ -1208,7 +1208,7 @@ const data3: Protocol[] = [
     description: "PepeTeam Bridge is a system that allows to transfer assets quickly and cheaply from one blockchain to other ones. The Bridge is based on the core architectural element called PepeTeam Crosschain Iteraction Protocol (CIP) which allows blockchain applications (smart contracts) to invoke other applications in various networks. The Bridge mechanism consists of locking (releasing) assets on smart contracts in one blockchain and minting (burning) equivalent amount in the other one, so users have the opportunity to prove their assets property backed.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/pepeteam-bridge.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -1219,6 +1219,7 @@ const data3: Protocol[] = [
     module: "pepe-bridge/index.js",
     twitter: "cryptopepeteam",
     parentProtocol: "parent#pepeteam",
+    audit_links: ["https://github.com/deemru/pepebridge-audit"],
     listedAt: 1680540069
   },
   {

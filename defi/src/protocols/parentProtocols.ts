@@ -2041,7 +2041,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#themis-pro",
     name: "Themis Pro",
-    url: "https://hats.finance",
+    url: "https://themis.capital/",
     description: "Themis Protocol is a DeFi protocol on FVM with a portfolio that includes Themis Pro, Themis Swap, Themis Pool, and Themis Stablecoin",
     logo: `${baseIconsUrl}/themis-pro.png`,
     gecko_id: null,
@@ -2050,6 +2050,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Themis_Pro",
     treasury: "themis-capital-ohm.js",
     github: ["user:ThemisCapital"]
+  },
+  {
+    id: "parent#pepeteam",
+    name: "PepeTeam",
+    url: "https://pepe.team",
+    description: "PepeTeam Products",
+    logo: `${baseIconsUrl}/pepeteam.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "cryptopepeteam",
+    github: ["user:crypto-pepe"]
   },
 ];
 

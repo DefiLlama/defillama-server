@@ -20852,6 +20852,7 @@ const data2: Protocol[] = [
     twitter: "cryptopepeteam",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#pepeteam",
     listedAt: 1670693571
   },
   {

@@ -20411,7 +20411,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/equalizer-exchange.png`,
     audits: "3",
     audit_note: "Equalizer is forked from Velodrome, which had it's improvements over Solidly audited multiple times.",
-    gecko_id: "equalizer-dex",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Fantom"],
@@ -20419,7 +20419,8 @@ const data2: Protocol[] = [
     twitter: "Equalizer0x",
     forkedFrom: ["Solidly"],
     oracles: ["TWAP"],
-    listedAt: 1670154453
+    listedAt: 1670154453,
+    parentProtocol: "parent#equalizer0x",
   },
   {
     id: "2333",

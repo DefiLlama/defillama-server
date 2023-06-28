@@ -2063,6 +2063,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "cryptopepeteam",
     github: ["user:crypto-pepe"]
   },
+  {
+    id: "parent#equalizer0x",
+    name: "Equalizer0x",
+    url: "https://equalizer.exchange/",
+    description: "PepeTeam Products",
+    logo: `${baseIconsUrl}/equalizer0x.png`,
+    gecko_id: "equalizer-dex",
+    cmcId: null,
+    chains: [],
+    twitter: "Equalizer0x",
+    github: ["Equalizer-Exchange"]
+  },
 ];
 
 export default parentProtocols;

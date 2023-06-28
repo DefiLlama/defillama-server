@@ -10242,6 +10242,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1687960810
   },
+  {
+    id: "3173",
+    name: "Equity",
+    address: "fantom:0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6",
+    symbol: "EQUAL",
+    url: "https://equity.equalizer.exchange",
+    description: "Equity is a trading platform that combines Spot & Derivative markets, offering low-cost trading and real-time pricing",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/equity.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Fantom"],
+    forkedFrom: ["GMX"],
+    module: "equity/index.js",
+    twitter: "Equalizer0x",
+    oracles: [],
+    listedAt: 1687986921,
+    parentProtocol: "parent#equalizer0x",
+  },
 ]
 
 export default data3

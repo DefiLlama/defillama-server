@@ -2884,7 +2884,7 @@ const data: Protocol[] = [
   {
     id: "243",
     name: "Flamincome",
-    address: "0x57dD84042ec9507963016596A34EdaD42F7e4CCE ",
+    address: "0x57dD84042ec9507963016596A34EdaD42F7e4CCE",
     symbol: "FLAG",
     url: "https://flamincome.finance",
     description: "Yield aggregator for flamingo finance",
@@ -2898,6 +2898,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "flamincome.js",
     twitter: "flamincome",
+    github: ["flamincome"],
     audit_links: ["https://github.com/flamincome/audits"],
   },
   {

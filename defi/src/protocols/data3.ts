@@ -9956,8 +9956,8 @@ const data3: Protocol[] = [
   {
     id: "3159",
     name: "Litx",
-    address: null,
-    symbol: "-",
+    address: "bsc:0xf418af970bc08ae22fd3148de612a61807a138cb",
+    symbol: "LitX",
     url: "https://litx.xyz/#/swap",
     description: "v3 Dex on PulseChain and BSC, from Droplit team.",
     chain: "Binance",

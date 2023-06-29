@@ -13,9 +13,9 @@ import collateralizedAdapter from "./collateralizedAssets";
 import swethAdapter from "./sweth";
 import gmdAdapter from "./gmd";
 import stkaurabalAdapter from "./stkaurabal";
-import shlb_ from "./shlb"
+import shlb_ from "./shlb";
 
-export const shlb = shlb_
+export const shlb = shlb_;
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
@@ -24,7 +24,11 @@ export function synthetix(timestamp: number = 0) {
 
 export function metronome(timestamp: number = 0) {
   console.log("starting metronome");
-  return Promise.all(Object.keys(metronomeContracts).map((chain) => metronomeAdapter(chain, timestamp)));
+  return Promise.all(
+    Object.keys(metronomeContracts).map((chain) =>
+      metronomeAdapter(chain, timestamp),
+    ),
+  );
 }
 
 export function glp(timestamp: number = 0) {
@@ -113,6 +117,14 @@ export function unknownTokens(timestamp: number = 0) {
       "0x4945970EfeEc98D393b4b979b9bE265A3aE28A8B",
       false,
       "arbitrum",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x2071a39da7450d68e4f4902774203df208860da2",
+      "0x3712871408a829c5cd4e86da1f4ce727efcd28f6", // GLCR
+      "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+      false,
+      "avax",
     ),
   ]);
 }

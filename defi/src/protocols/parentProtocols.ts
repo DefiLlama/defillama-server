@@ -2067,13 +2067,25 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#equalizer0x",
     name: "Equalizer0x",
     url: "https://equalizer.exchange/",
-    description: "PepeTeam Products",
+    description: "Equalizer's twin-AMM design unites StableSwap pools with Standard 'kxy' liquidity pools. All the trading fees go to Vote-Escrowers of emission token $EQUAL which has to be Locked to earn triple 'Bribes' from candidate pools via Trade Fee, Internal Bribes & External Bribes.",
     logo: `${baseIconsUrl}/equalizer0x.png`,
     gecko_id: "equalizer-dex",
     cmcId: null,
     chains: [],
     twitter: "Equalizer0x",
     github: ["Equalizer-Exchange"]
+  },
+  {
+    id: "parent#mango-markets",
+    name: "Mango Markets",
+    url: "https://mango.markets",
+    description: "A magical new way to interact with DeFi. Groundbreaking safety features designed to keep your funds secure. The easiest way to margin trade any token pair. All powered by flashloans.",
+    logo: `${baseIconsUrl}/mango-markets.png`,
+    gecko_id: "mango-markets",
+    cmcId: "11171",
+    chains: [],
+    twitter: "mangomarkets",
+    github: ["blockworks-foundation"]
   },
 ];
 

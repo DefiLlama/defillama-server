@@ -3791,14 +3791,14 @@ const data: Protocol[] = [
   },
   {
     id: "286",
-    name: "Mango Markets",
+    name: "Mango Markets V3",
     address: "solana:MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac",
     symbol: "MNGO",
     url: "https://mango.markets",
     description:
       "Decentralized spot margined, perpetual futures markets, borrowing and lending protocol on Solana. Permissionless, all on-chain and all markets are collateralised.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/mango-markets.png`,
+    logo: `${baseIconsUrl}/mango-markets-v3.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "mango-markets",
@@ -3809,6 +3809,7 @@ const data: Protocol[] = [
     twitter: "mangomarkets",
     audit_links: ["https://docs.mango.markets/audit"],
     oracles: ["Pyth"],
+    parentProtocol: "parent#mango-markets"
   },
   {
     id: "287",

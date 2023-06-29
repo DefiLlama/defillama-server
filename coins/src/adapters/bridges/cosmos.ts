@@ -4,7 +4,7 @@ import { Token } from "./index";
 import { fetch, } from "../utils";
 
 const skipChains = ['ibc', 'terra', 'terra2']
-const includeChains = ['quasar']
+const includeChains = ['quasar', 'chihuahua',]
 
 const gitEndpoint = 'https://raw.githubusercontent.com/cosmostation/chainlist/main/chain'
 

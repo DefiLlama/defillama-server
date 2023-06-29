@@ -906,6 +906,7 @@ const data2: Protocol[] = [
       "https://www.certik.com/projects/white-whale",
     ],
     openSource: true,
+    github: ["White-Whale-Defi-Platform"],
     listedAt: 1645555485,
   },
   {
@@ -21634,6 +21635,7 @@ const data2: Protocol[] = [
     twitter: "ExactlyProtocol",
     forkedFrom: [],
     oracles: ["Chainlink"],
+    treasury: "exactly.js",
     audit_links: ["https://github.com/exactly/audits"],
     listedAt: 1671893480
   },

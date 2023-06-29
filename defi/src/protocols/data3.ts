@@ -10293,7 +10293,7 @@ const data3: Protocol[] = [
     address: "osmosis:osmo14klwqgkmackvx2tqa0trtg69dmy0nrg4ntq4gjgw2za4734r5seqjqm4gm",
     symbol: "IBCX",
     url: "https://index.ion.wtf",
-    description: "Representing the Fundamental Values of Cosmos",
+    description: "A fully collateralized Index token curated & composed of Leading Cosmos Coins",
     chain: "Osmosis",
     logo: `${baseIconsUrl}/ibcx.jpg`,
     audits: "0",

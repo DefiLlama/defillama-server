@@ -3809,6 +3809,7 @@ const data: Protocol[] = [
     twitter: "mangomarkets",
     audit_links: ["https://docs.mango.markets/audit"],
     oracles: ["Pyth"],
+    wrongLiquidity: true,
     parentProtocol: "parent#mango-markets"
   },
   {

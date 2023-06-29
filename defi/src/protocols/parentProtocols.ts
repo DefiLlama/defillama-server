@@ -2084,6 +2084,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "mango-markets",
     cmcId: "11171",
     chains: [],
+    wrongLiquidity: true, // Most liquidity is on serum/openbook, which we dont track
     twitter: "mangomarkets",
     github: ["blockworks-foundation"]
   },

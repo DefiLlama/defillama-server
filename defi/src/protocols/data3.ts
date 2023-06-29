@@ -10285,6 +10285,7 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1688042613,
     audit_links: ["https://docs.mango.markets/mango-markets/audits"],
+    wrongLiquidity: true,
     parentProtocol: "parent#mango-markets",
   },
   {

@@ -2087,6 +2087,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "mangomarkets",
     github: ["blockworks-foundation"]
   },
+  {
+    id: "parent#white-whale",
+    name: "White Whale",
+    url: "https://whitewhale.money",
+    description: "Interchain Liquidity",
+    logo: `${baseIconsUrl}/white-whale.png`,
+    gecko_id: "white-whale",
+    cmcId: "16121",
+    chains: [],
+    twitter: "WhiteWhaleDefi",
+    github: ["White-Whale-Defi-Platform"]
+  },
 ];
 
 export default parentProtocols;

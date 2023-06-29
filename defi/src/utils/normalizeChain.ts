@@ -1714,6 +1714,12 @@ export const chainCoingeckoIds = {
     symbol: "CCD",
     cmcId: "18031",
   },
+  "Chihuahua": {
+    geckoId: "chihuahua-token",
+    symbol: "HUAHUA",
+    cmcId: "17208",
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2136,6 +2142,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Quasar"
     case "concordium":
       return "Concordium"
+    case "chihuahua":
+      return "Chihuahua"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

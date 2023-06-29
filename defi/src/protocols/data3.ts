@@ -5129,7 +5129,7 @@ const data3: Protocol[] = [
     chains: ["Cronos"],
     module: "croswap/index.js",
     twitter: "CroswapOfficial",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: [],
     oracles: [],
     listedAt: 1683539601
   },

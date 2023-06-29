@@ -900,7 +900,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "whitewhale/index.js",
-    twitter: "WhiteWhaleTerra",
+    twitter: "WhiteWhaleDefi",
     audit_links: [
       "https://github.com/oak-security/audit-reports/blob/master/WhiteWhale/Audit%20Report%20-%20White%20Whale.pdf",
       "https://www.certik.com/projects/white-whale",

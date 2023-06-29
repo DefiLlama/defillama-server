@@ -23246,7 +23246,7 @@ const data2: Protocol[] = [
       "Bunni represents Uniswap v3 LP positions with fungible ERC-20 tokens, which makes it easier to incentivize liquidity and integrate Uniswap liquidity in other apps.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bunni.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -23257,6 +23257,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     parentProtocol: "parent#timeless",
+    audit_links: ["https://reports.yaudit.dev/reports/08-2022-Bunni/"],
     listedAt: 1674140788
   },
   {

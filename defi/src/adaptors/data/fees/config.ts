@@ -978,5 +978,9 @@ export default {
     "foundation": {
         enabled: true,
         id: "3168"
+    },
+    "thalaswap": {
+        enabled: true,
+        id: "2795"
     }
 } as AdaptorsConfig

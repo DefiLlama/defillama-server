@@ -884,7 +884,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1448",
-    name: "White Whale",
+    name: "White Whale Vaults",
     address: "terra:terra1php5m8a6qd68z02t3zpw4jv2pj4vgw4wz0t8mz",
     symbol: "WHALE",
     url: "https://whitewhale.money",
@@ -906,8 +906,8 @@ const data2: Protocol[] = [
       "https://www.certik.com/projects/white-whale",
     ],
     openSource: true,
-    github: ["White-Whale-Defi-Platform"],
     listedAt: 1645555485,
+    parentProtocol: "parent#white-whale",
   },
   {
     id: "1449",

@@ -10332,6 +10332,30 @@ const data3: Protocol[] = [
     github: ["KeyFinanceTeam"],
     listedAt: 1688048208
   },
+  {
+    id: "3177",
+    name: "White Whale Dex",
+    address: "osmosis:ibc/EDD6F0D66BCD49C1084FB2C35353B4ACD7B9191117CE63671B61320548F7C89D",
+    symbol: "WHALE",
+    url: "https://app.whitewhale.money/",
+    description: "Empowering retail investors to keep the UST peg via L1 seigniorage arbitrage as well as participate in other complex automated trading strategies through a simple user-friendly experience.",
+    chain: "Terra2",
+    logo: `${baseIconsUrl}/white-whale.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "white-whale",
+    cmcId: "16121",
+    category: "Dexes",
+    chains: ["Terra2", "Juno", "Injective", "Comdex", "Chihuahua"],
+    oracles: [],
+    forkedFrom: [],
+    module: "whitewhale-dex/index.js",
+    twitter: "WhiteWhaleDefi",
+    audit_links: [],
+    openSource: true,
+    listedAt: 1688072327,
+    parentProtocol: "parent#white-whale",
+  },
 ]
 
 export default data3

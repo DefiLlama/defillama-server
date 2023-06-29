@@ -10272,7 +10272,7 @@ const data3: Protocol[] = [
     url: "https://mango.markets",
     description: "A magical new way to interact with DeFi. Groundbreaking safety features designed to keep your funds secure. The easiest way to margin trade any token pair. All powered by flashloans.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/equity.png`,
+    logo: `${baseIconsUrl}/mango-markets-v4.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

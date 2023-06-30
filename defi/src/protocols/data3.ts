@@ -10376,6 +10376,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     module: "pegasys-v3/index.js",
     twitter: "PegasysDEX",
+    parentProtocol: "parent#pegasys",
     listedAt: 1688122598,
   },
 ]

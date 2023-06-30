@@ -2100,6 +2100,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "WhiteWhaleDefi",
     github: ["White-Whale-Defi-Platform"]
   },
+  {
+    id: "parent#pegasys",
+    name: "PegaSys",
+    url: "https://pegasys.finance",
+    description: "Swap, earn, and build with the leading decentralized crypto trading protocol on Syscoin.",
+    logo: `${baseIconsUrl}/pegasys.png`,
+    gecko_id: "pegasys",
+    cmcId: null,
+    chains: [],
+    twitter: "PegasysDEX",
+    github: ["pegasys-fi"],
+  },
 ];
 
 export default parentProtocols;

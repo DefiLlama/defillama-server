@@ -550,7 +550,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "pegasys/index.js",
     twitter: "PegasysDEX",
-    github: ["pegasys-fi"],
+    parentProtocol: "parent#pegasys",
     listedAt: 1645139464,
   },
   {

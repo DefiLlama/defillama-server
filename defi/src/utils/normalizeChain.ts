@@ -1720,6 +1720,16 @@ export const chainCoingeckoIds = {
     cmcId: "17208",
     categories: ["Cosmos"],
   },
+  "Rollux": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Rollup"],
+    parent: {
+      chain: "Syscoin",
+      types: ["L2", "gas"]
+    },
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2144,6 +2154,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Concordium"
     case "chihuahua":
       return "Chihuahua"
+    case "rollux":
+      return "Rollux"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -8718,6 +8718,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Tezos"],
     module: "tezos-baking/index.js",
     twitter: "tezos",
+    deadUrl: true
   },
   {
     id: "520",

@@ -7581,7 +7581,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "Solily/index.js",
     twitter: "solilyio",
-    listedAt: 1652126730
+    listedAt: 1652126730,
+    rugged: true,
   },
   {
     id: "1752",
@@ -7628,7 +7629,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Tomb Finance"],
     module: "thermes-finance/index.js",
     twitter: "olympus_fi",
-    listedAt: 1652187035
+    listedAt: 1652187035,
+    deadUrl: true
   },
   {
     id: "1754",
@@ -7932,7 +7934,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "xWeowns/index.js",
     twitter: "Weownomy1",
-    listedAt: 1652843301
+    listedAt: 1652843301,
+    deadUrl: true
   },
   {
     id: "1768",
@@ -8447,7 +8450,7 @@ const data2: Protocol[] = [
     name: "Popcorn",
     address: "0xd0cd466b34a24fcb2f87676278af2005ca8a78c4",
     symbol: "POP",
-    url: "https://popcorndao.finance",
+    url: "https://pop.network/",
     description: `Popcorn is where DeFi and Social impact collide.
     Earn high yield on your cryptoassets while creating real world impact.
     Popcorn's products fund environmental, open source, and educational initiatives.`,
@@ -8594,7 +8597,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "smxswap/index.js",
     twitter: "StronghandsDev",
-    listedAt: 1654083965
+    listedAt: 1654083965,
+    deadUrl: true
   },
   {
     id: "1798",
@@ -8833,7 +8837,8 @@ const data2: Protocol[] = [
     module: "AxiaProtocol/index.js",
     twitter: "axiaprotocol",
     audit_links: ["https://solidity.finance/audits/AXIA"],
-    listedAt: 1654600878
+    listedAt: 1654600878,
+    deadUrl: true
   },
   {
     id: "1809",
@@ -8898,7 +8903,8 @@ const data2: Protocol[] = [
     module: "spicetrade/index.js",
     twitter: "spicetradeai",
     listedAt: 1654678696,
-    stablecoins: ["spiceusd"]
+    stablecoins: ["spiceusd"],
+    deadUrl: true
   },
   {
     id: "1812",
@@ -8984,7 +8990,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Goose Finance"],
     module: "draco-story/index.js",
     twitter: "dracodefi",
-    audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/The%20Story%20of%20Draco/The%20Story%20of%20Draco.pd"],
+    audit_links: ["https://github.com/0xGuard-com/audit-reports/blob/master/The%20Story%20of%20Draco/The%20Story%20of%20Draco.pdf"],
     listedAt: 1654799729
   },
   {
@@ -9027,7 +9033,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "jupiterswap/index.js",
     twitter: "jupiter_swap",
-    listedAt: 1654869440
+    listedAt: 1654869440,
+    deadUrl: true
   },
   {
     id: "1818",
@@ -9070,7 +9077,8 @@ const data2: Protocol[] = [
     module: "crown-finance/index.js",
     twitter: "CrownFi_",
     audit_links: ["https://github.com/solidproof/projects/blob/main/Crown%20Finance/SmartContract_Audit_Solidproof_Crown%20Finance.pdf"],
-    listedAt: 1655070947
+    listedAt: 1655070947,
+    rugged: true
   },
   {
     id: "1820",
@@ -9244,7 +9252,8 @@ const data2: Protocol[] = [
     module: "saharadao/index.js",
     twitter: "SaharaDao",
     audit_links: ["https://etherauthority.io/sahara-dao-protocol-smart-contract-audit"],
-    listedAt: 1655464683
+    listedAt: 1655464683,
+    deadUrl: true
   },
   {
     id: "1828",
@@ -9599,7 +9608,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "kavacave/index.js",
     twitter: "kavacave",
-    listedAt: 1655800202
+    listedAt: 1655800202,
+    deadUrl: true
   },
   {
     id: "1844",
@@ -9663,7 +9673,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "kefirswap/index.js",
     twitter: "kefirswap",
-    listedAt: 1655890471
+    listedAt: 1655890471,
+    rugged: true
   },
   {
     id: "1847",

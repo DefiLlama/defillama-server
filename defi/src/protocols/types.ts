@@ -33,6 +33,7 @@ export interface Protocol {
   stablecoins?: string[];
   wrongLiquidity?: boolean;
   rugged?: boolean;
+  deadUrl?: boolean;
 }
 
 export interface IParentProtocol {

@@ -28,6 +28,33 @@
       "to": "arbitrum:0xd67a097dce9d4474737e6871684ae3c05460f571"
     }
   },
+  "rollux": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "SYS",
+      "to": "coingecko#syscoin"
+    },
+    "0x48023b16c3e81aa7f6effbdeb35bb83f4f31a8fd": {
+      "decimals": "18",
+      "symbol": "PSYS",
+      "to": "coingecko#pegasys"
+    },
+    "0x28c9c7fb3fe3104d2116af26cc8ef7905547349c": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x368433cac2a0b8d76e64681a9835502a1f2a8a30": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x4200000000000000000000000000000000000006": {
+      "decimals": "18",
+      "symbol": "WSYS",
+      "to": "coingecko#syscoin"
+    }
+  },
   "filecoin": {
     "0xce5805cf6c84f71d2897f632e0aa60d2430ccd2a": {
       "decimals": "18",

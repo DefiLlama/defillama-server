@@ -49,6 +49,7 @@ async function checkForOutlierCoins(
   previousTvls: tvlsObject<TokensValueLocked>,
   protocol: string,
 ) {
+  if (process.env.IGNORE_CHECK_OUTLIER_COINS === "true") return;
   const changeThresholdFactor = 4;
   const proportionThresholdFactor = 0.5;
   const outlierThreshold = 20_000_000_000;

@@ -10339,7 +10339,7 @@ const data3: Protocol[] = [
     address: "osmosis:ibc/EDD6F0D66BCD49C1084FB2C35353B4ACD7B9191117CE63671B61320548F7C89D",
     symbol: "WHALE",
     url: "https://app.whitewhale.money/",
-    description: "Empowering retail investors to keep the UST peg via L1 seigniorage arbitrage as well as participate in other complex automated trading strategies through a simple user-friendly experience.",
+    description: "White Whale Dex is a unique decentralized exchange (DEX) that optimizes interchain liquidity distribution and price stability across the Cosmos ecosystem",
     chain: "Terra2",
     logo: `${baseIconsUrl}/white-whale.png`,
     audits: "2",

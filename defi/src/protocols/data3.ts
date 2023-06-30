@@ -10401,6 +10401,27 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.gogopool.com/audits"],
     listedAt: 1688122598,
   },
+  {
+    id: "3180",
+    name: "zkSwap Finance",
+    address: null,
+    symbol: "-",
+    url: "https://zkswap.finance",
+    description: "zkSwap.finance is the first decentralized Swap-to-Earn DeFi DEX that pioneers a unique incentive model rewarding both liquidity providers and traders.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zkswap-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: ["SyncSwap"],
+    module: "zkSwap-finance/index.js",
+    twitter: "zkSwap_finance",
+    listedAt: 1688134493
+  },
 ]
 
 export default data3

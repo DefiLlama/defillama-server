@@ -10357,6 +10357,27 @@ const data3: Protocol[] = [
     listedAt: 1688072327,
     parentProtocol: "parent#white-whale",
   },
+  {
+    id: "3178",
+    name: "PegaSys V3",
+    address: "syscoin:0xE18c200A70908c89fFA18C628fE1B83aC0065EA4",
+    symbol: "PSYS",
+    url: "https://rollux.pegasys.finance/",
+    description: "Uniswap V3 fork on Rollux Chain",
+    chain: "Rollux",
+    logo: `${baseIconsUrl}/pegasys-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Rollux"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "pegasys-v3/index.js",
+    twitter: "PegasysDEX",
+    listedAt: 1688122598,
+  },
 ]
 
 export default data3

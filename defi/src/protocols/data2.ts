@@ -9652,7 +9652,8 @@ const data2: Protocol[] = [
     module: "orbitalswap/index.js",
     twitter: "OrbitalSS",
     audit_links: ["https://drive.google.com/file/d/1kJkVsFuK0GAysk1yOVe_Hwu6eFI39L--/view"],
-    listedAt: 1655839251
+    listedAt: 1655839251,
+    deadUrl: true
   },
   {
     id: "1846",
@@ -10027,7 +10028,8 @@ const data2: Protocol[] = [
     module: "velaro/index.js",
     twitter: "VeleroDAO",
     audit_links: ["https://uploads-ssl.webflow.com/6182e85a5a4402f6f59cf04d/61c606df98ac893a6bcebcc0_%5BVeleroFinance_22122021%5DReport.pdf"],
-    listedAt: 1656496979
+    listedAt: 1656496979,
+    deadUrl: true
   },
   {
     id: "1863",
@@ -10179,7 +10181,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Aave"],
     module: "omniprotocol/index.js",
     twitter: null,
-    listedAt: 1656665210
+    listedAt: 1656665210,
+    deadUrl: true
   },
   {
     id: "1870",
@@ -10201,7 +10204,8 @@ const data2: Protocol[] = [
     module: "strategyx-finance/index.js",
     twitter: "StrategyXFi",
     audit_links: ["https://solidity.finance/audits/Strategyx"],
-    listedAt: 1656665210
+    listedAt: 1656665210,
+    rugged: true
   },
   {
     id: "1871",
@@ -10424,7 +10428,7 @@ const data2: Protocol[] = [
     twitter: "BTCMTOfficial",
     audit_links: [
       "https://hacken.io/wp-content/uploads/2021/10/MintoAuditReport.pdf",
-      "https://mywish.io/audit/MINTO.pdf",
+      "https://mywish.io/audit/minto.pdf",
     ],
     listedAt: 1657038997
   },
@@ -10675,7 +10679,8 @@ const data2: Protocol[] = [
     twitter: "Blur_Finance",
     audit_links: ["https://github.com/solidproof/projects/tree/main/BlurFinance"],
     listedAt: 1657699961,
-    governanceID: ["compound:ethereum:0xf7967b43949fb0cec48e63e345512d5ea5845810"]
+    governanceID: ["compound:ethereum:0xf7967b43949fb0cec48e63e345512d5ea5845810"],
+    rugged: true
   },
   {
     id: "1892",
@@ -10826,7 +10831,8 @@ const data2: Protocol[] = [
     module: "waterfall-wtf-finance/index.js",
     twitter: "defi_waterfall",
     listedAt: 1657791449,
-    parentProtocol: "parent#waterfall-finance"
+    parentProtocol: "parent#waterfall-finance",
+    deadUrl: true
   },
   {
     id: "1899",
@@ -11196,7 +11202,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Tomb Finance"],
     module: "nava-finance/index.js",
     twitter: "navafinance",
-    listedAt: 1658332788
+    listedAt: 1658332788,
+    deadUrl: true
   },
   {
     id: "1916",
@@ -11331,7 +11338,8 @@ const data2: Protocol[] = [
     module: "dogeclaw/index.js",
     twitter: "RDogeclaw",
     audit_links: ["https://github.com/solidproof/projects/blob/main/Claw%20Finance/SmartContract_Audit_Solidproof_ClawFinance.pdf"],
-    listedAt: 1658737535
+    listedAt: 1658737535,
+    deadUrl: true
   },
   {
     id: "1922",
@@ -11560,7 +11568,7 @@ const data2: Protocol[] = [
     name: "QuasarSwap",
     address: "nova:0x356c044B99e9378C1B28A1cAb2F95Cd65E877F33",
     symbol: "QSR",
-    url: "https://quasarswap.xyz",
+    url: "https://quasarswap.net/",
     description: "First decentralized exchange on the Nova Network! Staking via Farms and Pools, and even NFT staking",
     chain: "Nova Network",
     logo: `${baseIconsUrl}/quasarswap.jpg`,
@@ -11604,7 +11612,7 @@ const data2: Protocol[] = [
     name: "ETCswap",
     address: null,
     symbol: "-",
-    url: "https://etcswap.org/",
+    url: "https://swap.ethereumclassic.com/",
     description: "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
     chain: "EthereumClassic",
     logo: `${baseIconsUrl}/etcswap.png`,
@@ -11832,6 +11840,7 @@ const data2: Protocol[] = [
   //  forkedFrom: ["Uniswap V2"],
   //  twitter: "carthage_dex",
   //  listedAt: 1659433923
+  //  deadUrl: true
   //},
   {
     id: "1945",
@@ -11874,7 +11883,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "Vacus_finance",
     audit_links: ["https://solidity.finance/audits/VacusFinance"],
-    listedAt: 1659457779
+    listedAt: 1659457779,
+    rugged: true
   },
   {
     id: "1947",
@@ -12236,7 +12246,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Goose Finance"],
     twitter: "MixSwapFinance",
-    listedAt: 1660107807
+    listedAt: 1660107807,
+    deadUrl: true
   },
   {
     id: "1964",
@@ -12279,7 +12290,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "DrachmaExchange",
     audit_links: ["https://github.com/solidproof/projects/blob/main/Drachma%20Exchange/SmartContract_Audit_Solidproof_DrachmaExchange.pdf"],
-    listedAt: 1660135625
+    listedAt: 1660135625,
+    rugged: true
   },
   {
     id: "1966",
@@ -12515,7 +12527,8 @@ const data2: Protocol[] = [
     twitter: "DogeSwapOrg",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    listedAt: 1660612737
+    listedAt: 1660612737,
+    deadUrl: true
   },
   {
     id: "1977",
@@ -12773,7 +12786,8 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     oracles: ["SEDA"],
     audit_links: ["https://github.com/NEX-market/nex-contracts/blob/d6688b13eab7dcc731a2143c5c4fbd6c1af257bd/audits/NEX_Audit_Report_by_WatchPug.pdf"],
-    listedAt: 1660815959
+    listedAt: 1660815959,
+    deadUrl: true
   },
   {
     id: "1989",
@@ -13018,7 +13032,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: ["Pyth"],
     audit_links: ["https://optifi.gitbook.io/optifi/security/audit-report"],
-    listedAt: 1661022636
+    listedAt: 1661022636,
+    deadUrl: true
   },
   {
     id: "2000",
@@ -13422,14 +13437,15 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "autobark/index.js",
     twitter: "AutoBarkYield",
-    listedAt: 1661401601
+    listedAt: 1661401601,
+    deadUrl: true
   },
   {
     id: "2019",
     name: "BFly Finance",
     address: null,
     symbol: "-",
-    url: "https://fai.bfly.finance",
+    url: "https://fai.bfly.finance/",
     description: "Bfly is a lending platform based on algorithm-based stablecoin of the Starcoin chain.",
     chain: "Starcoin",
     logo: `${baseIconsUrl}/bfly-finance.png`,
@@ -13443,7 +13459,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "bfly.js",
     twitter: "BflyFinance",
-    listedAt: 1661433527
+    listedAt: 1661433527,
+    deadUrl: true
   },
   {
     id: "2020",
@@ -13789,7 +13806,8 @@ const data2: Protocol[] = [
     module: "wtfdoge-farm/index.js",
     twitter: "defi_waterfall",
     parentProtocol: "parent#waterfall-finance",
-    listedAt: 1661803273
+    listedAt: 1661803273,
+    deadUrl: true
   },
   {
     id: "2035",
@@ -14005,7 +14023,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "juggler-red/index.js",
     twitter: "0xCircus",
-    listedAt: 1661956711
+    listedAt: 1661956711,
+    deadUrl: true
   },
   {
     id: "2045",

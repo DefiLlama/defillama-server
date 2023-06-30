@@ -1724,7 +1724,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["Rollup"],
+    categories: ["EVM", "Rollup"],
     parent: {
       chain: "Syscoin",
       types: ["L2", "gas"]

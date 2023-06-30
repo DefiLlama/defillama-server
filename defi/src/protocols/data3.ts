@@ -10422,6 +10422,25 @@ const data3: Protocol[] = [
     twitter: "zkSwap_finance",
     listedAt: 1688134493
   },
+  {
+    id: "3181",
+    name: "Sui",
+    address: null,
+    symbol: "-",
+    url: "https://sui.io",
+    description: "Layer 1 blockchain designed to make digital asset ownership fast, private, secure, and accessible to everyone.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/sui.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "sui",
+    cmcId: "20947",
+    category: "Chain",
+    chains: ["Sui"],
+    oracles: [],
+    module: "dummy.js",
+    twitter: "SuiNetwork",
+  },
 ]
 
 export default data3

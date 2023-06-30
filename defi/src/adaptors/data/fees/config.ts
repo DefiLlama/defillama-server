@@ -992,5 +992,9 @@ export default {
         parentId: "Y2K Finance",
         enabled: true,
         id: "3056"
+    },
+    "yield-yak-staked-avax": {
+        enabled: true,
+        id: "475"
     }
 } as AdaptorsConfig

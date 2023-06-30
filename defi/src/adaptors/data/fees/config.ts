@@ -982,5 +982,15 @@ export default {
     "thalaswap": {
         enabled: true,
         id: "2795"
+    },
+    "y2k-finance": {
+        parentId: "Y2K Finance",
+        enabled: true,
+        id: "2375"
+    },
+    "y2k-finance-v2": {
+        parentId: "Y2K Finance",
+        enabled: true,
+        id: "3056"
     }
 } as AdaptorsConfig

@@ -1,4 +1,5 @@
 export default {
+  timeswap: require("./yield/timeswap"),
   // wemix: require("./markets/uniswap"),
   dforce: require("./moneyMarkets/dforce"),
   shlb: require("./other"),

@@ -10484,6 +10484,52 @@ const data3: Protocol[] = [
     twitter: "GhastProtocol",
     listedAt: 1688204419
   },
+  {
+    id: "3184",
+    name: "Jet Margin",
+    address: "solana:JET6zMJWkCN9tpRT2v2jfAmm5VnQFDpUBCyaKojmGtz",
+    symbol: "JET",
+    url: "https://app.jetprotocol.io/",
+    description:
+      "Jet Protocol Margins product offers a unique margin account system that allows users to leverage their deposits as collateral for borrowing or risk positioning, while ensuring protocol safety through a built-in liquidation mechanism to cover debts when necessary",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jet.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Solana"],
+    module: "jetprotocol-v2-margin/index.js",
+    twitter: "JetProtocol",
+    oracles: ["Pyth"],
+    parentProtocol: "parent#jet",
+    audit_links: ["https://docs.jetprotocol.io/jet-protocol/audit-reports"],
+    listedAt: 1688231574
+  },
+  {
+    id: "3185",
+    name: "Jet Fixed Term",
+    address: "solana:JET6zMJWkCN9tpRT2v2jfAmm5VnQFDpUBCyaKojmGtz",
+    symbol: "JET",
+    url: "https://app.jetprotocol.io/",
+    description:
+      "Jet Protocol's Fixed Term product is an innovative lending and borrowing platform that offers secured loans with defined terms, negotiable rates, and a robust liquidation channel, all underpinned by a unique orderbook system and an optional 'autoroll' feature for seamless multi-term transactions",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/jet.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Solana"],
+    module: "jet-protocol-v2-fixed-term/index.js",
+    twitter: "JetProtocol",
+    oracles: ["Pyth"],
+    parentProtocol: "parent#jet",
+    audit_links: ["https://docs.jetprotocol.io/jet-protocol/audit-reports"],
+    listedAt: 1688231982
+  },
 ]
 
 export default data3

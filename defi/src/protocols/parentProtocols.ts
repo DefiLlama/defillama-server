@@ -2112,6 +2112,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "PegasysDEX",
     github: ["pegasys-fi"],
   },
+  {
+    id: "parent#jet",
+    name: "Jet",
+    url: "https://www.jetprotocol.io",
+    description: "Jet is a decentralized borrowing and lending protocol built for speed, power, and scalability on Solana",
+    logo: `${baseIconsUrl}/jet.jpg`,
+    gecko_id: "jet",
+    cmcId: "12236",
+    chains: [],
+    twitter: "JetProtocol",
+    github: ['jet-lab'],
+  },
 ];
 
 export default parentProtocols;

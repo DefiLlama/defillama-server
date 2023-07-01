@@ -10447,7 +10447,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://exit10.fi",
-    description: "We believe so much in ultra sound money we’ve built a protocol around it!",
+    description: "Exit10 is a USDC/ETH Uniswap V3 position in the $500 to $10K range which anyone can bond liquidity to. Fees from the position are automatically converted into staked ETH which can be claimed by burning EXIT tokens once ETH reaches $10K",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/exit10.jpg`,
     audits: "0",

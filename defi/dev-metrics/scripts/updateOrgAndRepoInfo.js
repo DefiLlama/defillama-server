@@ -31,8 +31,8 @@ async function main() {
   console.log('repo orgs length: ', repoOrgs.length)
 
   let i = 0
-  const twoWeekAgo = new Date();
-  twoWeekAgo.setDate(twoWeekAgo.getDate() - 7 * 2);
+  const aMonthAgo = new Date();
+  aMonthAgo.setDate(aMonthAgo.getDate() - 31);
   const OrgArrayChunks = sliceIntoChunks(OrgArray, 1000)
   for (let chunk of OrgArrayChunks) {
     const existingOrgs = await GitOwner.findAll({
@@ -43,15 +43,22 @@ async function main() {
       },
     })
     console.log('existing orgs length: ', existingOrgs.length)
-    const ignoreOrgsSet = new Set(existingOrgs.filter(i => i.is_missing || i.lastupdatetime > twoWeekAgo).map(o => o.name))
     console.log('org chunk length: ', chunk.length)
-    chunk = chunk.filter(c => !ignoreOrgsSet.has(c))
-    console.log('org chunk length  [after filter]: ', chunk.length)
+    const ignoreOrgsSet = new Set(existingOrgs.filter(i => i.is_missing || i.lastupdatetime > aMonthAgo).map(o => o.name))
+    console.log('org chunk length: ', chunk.length)
+    chunk = chunk.filter(c => {
+      if (ignoreOrgsSet.has(c)) {
+        i++
+        return false
+      }
+      return true
+    })
+    console.log('org chunk length  [after filter]: ', chunk.length, i)
 
     if (!chunk.length) continue;
     for (const orgName of chunk) {
       const progress = Number(100 * ++i / OrgArray.length).toPrecision(4)
-      await updateOrgAndRepos(orgName, undefined, { OrgArray, progress, i})
+      await updateOrgAndRepos(orgName, undefined, { OrgArray, progress, i: i})
     }
   }
   i = 0
@@ -76,7 +83,7 @@ async function main() {
     if (!chunk.length) continue;
     for (const repoOrg of chunk) {
       const progress = Number(100 * ++i / repoOrgs.length).toPrecision(4)
-      await updateOrgAndRepos(repoOrg, Object.keys(repoMapping[repoOrg]), { OrgArray, progress, i})
+      await updateOrgAndRepos(repoOrg, Object.keys(repoMapping[repoOrg]), { OrgArray, progress, i: i})
       // console.log(`[Repo] orgs done: ${repoOrg} ${i}/${repoOrgs.length} (${progress}%)`)
       await sleepInMinutes(1 / 30)
     }
@@ -139,7 +146,7 @@ async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } 
       hasMorePages = data.length === pageLength
       if (!isFirstFech && hasMorePages) {
         const lastFetchedRepo = data[data.length - 1]
-        hasMorePages = orgData.lastupdatetime < +new Date(lastFetchedRepo.pushed_at)
+        hasMorePages = existingOrg.lastupdatetime < +new Date(lastFetchedRepo.pushed_at)
       }
       if (hasMorePages)
         sdk.log('Fetching more repos for', orgName, page)
@@ -253,8 +260,9 @@ async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } 
     console.log(`[Org] orgs done: ${orgName} ${i}/${OrgArray.length} (${progress}%)`)
     await sleepInMinutes(1 / 15)
   } catch (error) {
-    // console.error('Error occurred:', error, orgName);
+    console.error('Error occurred:', error, orgName);
     if (error.status === 404 && error.response?.url?.includes('/repos') && error.response?.url?.includes('page=0')) { 
+
       console.log('Missing org: ', orgName)
       return GitOwner.create({
         name: orgName,

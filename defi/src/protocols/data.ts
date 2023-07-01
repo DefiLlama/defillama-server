@@ -11379,6 +11379,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Solana"],
     module: "jetprotocol.js",
     twitter: "JetProtocol",
+    github: ['jet-lab'],
     oracles: ["Pyth"],
   },
   {

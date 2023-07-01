@@ -115,7 +115,7 @@ function extractCommitsFromPushEvent(pushEvent) {
 
     return {
       sha,
-      message,
+      message: truncMessage(message),
       authors,
       repo: repo.name,
       owner,
@@ -152,7 +152,7 @@ function extractCommitsFromSimpleGit(commits, repoData) {
 
     return {
       sha,
-      message,
+      message: truncMessage(message),
       authors,
       repo: repoData.full_name,
       owner,
@@ -162,6 +162,14 @@ function extractCommitsFromSimpleGit(commits, repoData) {
     }
   }
 
+}
+
+function truncMessage(message) {
+  const maxLength = 420
+  if (typeof message === 'string' && message.length > maxLength) {
+    message = message.substring(0, maxLength - 3) + '...'
+  }
+  return message
 }
 
 function sleepInMinutes(minutes) {

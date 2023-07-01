@@ -14090,7 +14090,8 @@ const data2: Protocol[] = [
     module: "kumu-finance/index.js",
     twitter: "KumuFinance",
     audit_links: ["https://github.com/solidproof/projects/tree/main/Kumu%20Finance"],
-    listedAt: 1661964331
+    listedAt: 1661964331,
+    rugged: true
   },
   {
     id: "2048",
@@ -14155,9 +14156,10 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "klaylend/index.js",
-    twitter: "klexfinance",
+    twitter: "Klaylend",
     audit_links: ["https://github.com/solidproof/projects/tree/main/KlayLend"],
-    listedAt: 1662124833
+    listedAt: 1662124833,
+    rugged: true
   },
   {
     id: "2051",
@@ -14332,7 +14334,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "SweetSwap/index.js",
     twitter: "sweetswapfi",
-    listedAt: 1662367337
+    listedAt: 1662367337,
+    deadUrl: true
   },
   {
     id: "2059",
@@ -14375,7 +14378,8 @@ const data2: Protocol[] = [
     module: "fndzdao/index.js",
     twitter: "fndzDAO",
     audit_links: ["https://github.com/FNDZdao/public/blob/main/FNDZ%20full%20platform%20%2B%20staking%20audit%2015%20June.pdf"],
-    listedAt: 1662384510
+    listedAt: 1662384510,
+    deadUrl: true
   },
   {
     id: "2061",
@@ -14646,7 +14650,8 @@ const data2: Protocol[] = [
     module: "polyo-exchange/index.js",
     twitter: "PolyOpt",
     audit_links: ["https://github.com/AnalytixAudit/Solidity/blob/main/Audit_POLYO.pdf"],
-    listedAt: 1662538079
+    listedAt: 1662538079,
+    rugged: true
   },
   {
     id: "2073",
@@ -14710,7 +14715,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "dmusk/index.js",
     twitter: "dmuskswap",
-    listedAt: 1662603203
+    listedAt: 1662603203,
+    deadUrl: true
   },
   {
     id: "2076",
@@ -14754,7 +14760,8 @@ const data2: Protocol[] = [
     module: "corgi/index.js",
     twitter: "Corgifinance_",
     audit_links: ["https://github.com/solidproof/projects/tree/main/Corgi_Finance"],
-    listedAt: 1662635941
+    listedAt: 1662635941,
+    rugged: true
   },
   {
     id: "2078",
@@ -14797,7 +14804,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "inuswap/index.js",
     twitter: "inuswapfi",
-    listedAt: 1662973229
+    listedAt: 1662973229,
+    rugged: true
   },
   {
     id: "2080",
@@ -14819,7 +14827,8 @@ const data2: Protocol[] = [
     module: "procyon-finance/index.js",
     twitter: "procyon_finance",
     audit_links: ["https://spywolf.co/client/procyon"],
-    listedAt: 1662973513
+    listedAt: 1662973513,
+    deadUrl: true
   },
   {
     id: "2081",
@@ -15132,7 +15141,8 @@ const data2: Protocol[] = [
     module: "BoneSwap/index.js",
     twitter: "BoneSwapAMM",
     audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_Bone_Token.pdf"],
-    listedAt: 1663348647
+    listedAt: 1663348647,
+    deadUrl: true
   },
   {
     id: "2095",
@@ -15178,7 +15188,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "sealightswap/index.js",
     twitter: "sealight_swap",
-    listedAt: 1663472819
+    listedAt: 1663472819,
+    rugged: true
   },
   {
     id: "2097",
@@ -15468,7 +15479,7 @@ const data2: Protocol[] = [
     name: "Ultron Staking Hub NFT",
     address: "ultron:0x3a4F06431457de873B588846d139EC0d86275d54",
     symbol: "ULX",
-    url: "https://ultron.foundation/stakingHubNft",
+    url: "https://ultron.foundation/validating-and-delegating",
     description: "The Staking Hub is an innovative digital asset growth instrument developed by the Ultron Foundation that enables users to receive daily APR returns in ULX coins. The predefined amount of ULX supply is destined for the Staking Hub rewards distribution according to the tokenomics.. Every user has registration and dashboard, with ability to mint NFT and stake it on the protocol for 5 years with vesting schedule. All liquidity is locked on a staking smart-contract and could be claimed at certain timelines",
     chain: "Ultron",
     logo: `${baseIconsUrl}/ultron-staking-hub-nft.png`,
@@ -15681,7 +15692,8 @@ const data2: Protocol[] = [
     module: "pls2e/index.js",
     twitter: "PLS2Eio",
     audit_links: ["https://www.certik.com/projects/pls2e"],
-    listedAt: 1663941507
+    listedAt: 1663941507,
+    deadUrl: true
   },
   {
     id: "2120",
@@ -15702,7 +15714,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "apexswap/index.js",
     twitter: "ApexFoundation_",
-    listedAt: 1663941507
+    listedAt: 1663941507,
+    rugged: true
   },
   {
     id: "2121",
@@ -15792,7 +15805,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "PowSea/index.js",
     twitter: "powseafinance",
-    listedAt: 1664061587
+    listedAt: 1664061587,
+    deadUrl: true
   },
   {
     id: "2125",
@@ -15941,7 +15955,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "kdex/index.js",
     twitter: "kdex_app",
-    listedAt: 1664327055
+    listedAt: 1664327055,
+    deadUrl: true
   },
   {
     id: "2132",
@@ -15962,7 +15977,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Saddle Finance"],
     module: "geode/index.js",
     twitter: "Geode_Finance",
-    audit_links: ["https://docs.geode.fi/more/audits"],
+    audit_links: ["https://docs.geode.fi/developers/audits"],
     listedAt: 1664332565
   },
   {
@@ -16299,7 +16314,7 @@ const data2: Protocol[] = [
     name: "Roketo",
     address: null,
     symbol: "-",
-    url: "https://roke.to",
+    url: "https://app2.roke.to/#/authorize",
     description: "Roketo is a financial platform that increase token utility of NEAR-based projects with transfers distributed over time.",
     chain: "Near",
     logo: `${baseIconsUrl}/roketo.png`,
@@ -16466,7 +16481,8 @@ const data2: Protocol[] = [
     module: "zootopia-finance/index.js",
     twitter: "ZootopiaFinance",
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/September_2022/Zootopia.pdf"],
-    listedAt: 1664978120
+    listedAt: 1664978120,
+    rugged: true
   },
   {
     id: "2156",
@@ -16487,7 +16503,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "ethwswap/index.js",
     twitter: "ethw_swap",
-    listedAt: 1664986535
+    listedAt: 1664986535,
+    deadUrl: true
   },
   {
     id: "2157",
@@ -16824,7 +16841,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Olympus DAO"],
     module: "ohmw/index.js",
     twitter: "OHMPOWOfficial",
-    listedAt: 1665393008
+    listedAt: 1665393008,
+    rugged: true
   },
   {
     id: "2172",
@@ -16846,9 +16864,9 @@ const data2: Protocol[] = [
     module: "kleva/index.js",
     twitter: "KLEVA_Protocol",
     audit_links: [
-      "https://docs.kleva.io/audit-report/peckshield",
-      "https://docs.kleva.io/audit-report/sooho",
-      "https://docs.kleva.io/audit-report/scvsoft"
+      "https://docs.kleva.io/v/copy-of-english/audit-report/peckshield",
+      "https://docs.kleva.io/v/copy-of-english/audit-report/sooho",
+      "https://docs.kleva.io/v/copy-of-english/audit-report/scvsoft"
     ],
     parentProtocol: "parent#kleva-protocol",
     listedAt: 1665493642
@@ -17060,7 +17078,7 @@ const data2: Protocol[] = [
     name: "Algomint",
     address: "algorand:441139422",
     symbol: "goMINT",
-    url: "https://gousd.algomint.io",
+    url: "https://basket.algomint.io/",
     description: "Next generation blockchain infrastructure combining interoperability and liquidity consolidation.",
     chain: "Algorand",
     logo: `${baseIconsUrl}/algomint.png`,
@@ -17136,7 +17154,8 @@ const data2: Protocol[] = [
     module: "stabledoin/index.js",
     twitter: "StableDoin",
     forkedFrom: ["Uniswap V2"],
-    listedAt: 1665967733
+    listedAt: 1665967733,
+    rugged: true
   },
   {
     id: "2186",
@@ -17226,7 +17245,8 @@ const data2: Protocol[] = [
     twitter: null,
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    listedAt: 1666021576
+    listedAt: 1666021576,
+    rugged: true
   },
   {
     id: "2190",
@@ -17364,7 +17384,8 @@ const data2: Protocol[] = [
     oracles: [],
     twitter: "GravisFi",
     audit_links: ["https://github.com/chainsulting/Smart-Contract-Security-Audits/blob/master/Gravis%20Finance/02_Smart%20Contract%20Audit_GravisFinance_Farm.pdf?network=56&gravisLanguage=en"],
-    listedAt: 1666189742
+    listedAt: 1666189742,
+    deadUrl: true
   },
   {
     id: "2196",
@@ -17576,7 +17597,7 @@ const data2: Protocol[] = [
     chains: ["Mixin"],
     module: "pando-rings/index.js",
     twitter: "pando_im",
-    audit_links: ["https://docs.pando.im/docs/security/audit-reports"],
+    audit_links: ["https://docs.pando.im/manual/audit-report.html"],
     parentProtocol: "parent#pando",
     listedAt: 1638382732,
   },
@@ -17597,7 +17618,7 @@ const data2: Protocol[] = [
     chains: ["Mixin"],
     module: "pando-leaf/index.js",
     twitter: "pando_im",
-    audit_links: ["https://docs.pando.im/docs/security/audit-reports"],
+    audit_links: ["https://docs.pando.im/manual/audit-report.html"],
     parentProtocol: "parent#pando",
     listedAt: 1638382732,
   },
@@ -17810,7 +17831,8 @@ const data2: Protocol[] = [
     twitter: null,
     forkedFrom: [],
     oracles: [],
-    listedAt: 1666535695
+    listedAt: 1666535695,
+    deadUrl: true
   },
   {
     id: "2215",
@@ -17832,7 +17854,8 @@ const data2: Protocol[] = [
     twitter: "FrogSwapKEK",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    listedAt: 1666535697
+    listedAt: 1666535697,
+    deadUrl: true
   },
   {
     id: "2216",
@@ -17854,7 +17877,8 @@ const data2: Protocol[] = [
     twitter: "KekSwap",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    listedAt: 1666535699
+    listedAt: 1666535699,
+    deadUrl: true
   },
   {
     id: "2217",
@@ -18063,7 +18087,8 @@ const data2: Protocol[] = [
     twitter: "AtodexOfficial",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1666776525
+    listedAt: 1666776525,
+    rugged: true
   },
   {
     id: "2226",
@@ -18180,7 +18205,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     oracles: ["TWAP"],
     audit_links: ["https://contractwolf.io/projects/paperdao"],
-    listedAt: 1666881339
+    listedAt: 1666881339,
+    deadUrl: true
   },
   {
     id: "2231",
@@ -18254,7 +18280,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Solidly"],
     oracles: [],
     audit_links: ["https://github.com/interfinetwork/project-delivery-data/blob/main/Minerswap/MinerSwap_AuditReport_InterFi.pdf"],
-    listedAt: 1666952098
+    listedAt: 1666952098,
+    rugged: true
   },
   {
     id: "2234",
@@ -18280,7 +18307,8 @@ const data2: Protocol[] = [
       "https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/blob/main/audit/SC_impermax_core.pdf",
       "https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/blob/main/audit/CertiK%20Audit%20Report%20for%20impermax-x-uniswapv2-core.pdf"
     ],
-    listedAt: 1666963642
+    listedAt: 1666963642,
+    deadUrl: true
   },
   {
     id: "2235",
@@ -18368,7 +18396,7 @@ const data2: Protocol[] = [
       "AnetaBTC is a fully on-chain, decentralized protocol that allows Bitcoin to be directly wrapped on the Ergo and Cardano blockchains. AnetaBTC enables Bitcoin holders to unlock the value of their assets in a secure and efficient environment to provide yield, without selling any Bitcoin and without any third-party custodian involvement.",
     chain: "Cardano",
     logo: `${baseIconsUrl}/anetabtc.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -18378,8 +18406,9 @@ const data2: Protocol[] = [
     twitter: "anetaBTC",
     forkedFrom: [],
     oracles: [],
-    audit_links: ["https://github.com/andrehafner/my.ergoport.dev/tree/main/aneta"],
-    listedAt: 1667056144
+    audit_links: [],
+    listedAt: 1667056144,
+    github: ["anetaBTC"]
   },
   {
     id: "2239",
@@ -18466,7 +18495,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://etherauthority.io/crolend-token-smart-contract-audit"],
-    listedAt: 1667316046
+    listedAt: 1667316046,
+    rugged: true
   },
   /* {
     id: "2243",
@@ -18780,7 +18810,7 @@ const data2: Protocol[] = [
     twitter: "opxfinance",
     forkedFrom: ["GMX"],
     oracles: ["SEDA"],
-    audit_links: ["https://github.com/opxfinance/opx-contracts/blob/caf9ef6d2695b45fc8182d2094c334951f7c525d/audits/Quantstamp_Audit_Report.pdf"],
+    audit_links: ["https://github.com/opxfinance/opx-contracts/tree/main/audits"],
     listedAt: 1667818926
   },
   {
@@ -18941,10 +18971,10 @@ const data2: Protocol[] = [
     forkedFrom: ["Platypus Finance"],
     oracles: ["Chainlink"],
     audit_links: [
-      "https://github.com/sokenteam/smart_contract_audits/blob/main/Snowflake(SNOW)%20Standard%20Smart%20Contract%20Audit.pdf",
-      "https://github.com/Coinsult/solidity/blob/main/Coinsult_Snowflake_0xE0...f685_Audit.pdf"
+      "https://github.com/sokenteam/"
     ],
-    listedAt: 1668085784
+    listedAt: 1668085784,
+    rugged: true
   },
   {
     id: "2264",

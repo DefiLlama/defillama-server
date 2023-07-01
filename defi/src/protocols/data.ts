@@ -17499,7 +17499,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Mixin"],
     module: "pando/index.js",
     twitter: "pando_im",
-    audit_links: ["https://docs.pando.im/docs/security/audit-reports"],
+    audit_links: ["https://docs.pando.im/manual/audit-report.html"],
     parentProtocol: "parent#pando",
     listedAt: 1638382732,
   },

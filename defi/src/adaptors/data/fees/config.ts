@@ -616,8 +616,8 @@ export default {
         "id": "2221"
     },
     "frax-fpi": {
-        enabled: true,
         parentId: "Frax Finance",
+        enabled: true,
         id: "2607"
     },
     "zora": {

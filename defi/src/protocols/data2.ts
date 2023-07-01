@@ -19688,7 +19688,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://hacken.io/wp-content/uploads/2022/12/FairFi_08.12.2022_SCAudit_Report-1.pdf"],
-    listedAt: 1669029577
+    listedAt: 1669029577,
+    deadUrl: true
   },
   {
     id: "2298",
@@ -20145,7 +20146,7 @@ const data2: Protocol[] = [
       "$CASH grows in your wallet while you maintain custody of your funds. Yields are generated automatically through open-source, on-chain yield farming strategies.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/stable.fi.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -20155,7 +20156,7 @@ const data2: Protocol[] = [
     twitter: "Stabl_Fi",
     forkedFrom: ["Origin Dollar"],
     oracles: ["Chainlink"],
-    audit_links: ["https://ledgerops.com/wp-content/uploads/2022/09/LedgerOps/_StablFi/_Rebase/_Audit.pdf"],
+    audit_links: [],
     parentProtocol: "parent#stabl.fi",
     listedAt: 1669728928,
   },
@@ -21393,8 +21394,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     audit_links: [
-      "https://www.certik.com/projects/polytrade",
-      "https://immunebytes.azurewebsites.net/getlink/PolyTrade(v2)%20-%20Final%20Audit%20Report.pdf"
+      "https://www.certik.com/projects/polytrade"
     ],
     listedAt: 1671546445
   },
@@ -21560,7 +21560,8 @@ const data2: Protocol[] = [
     twitter: "CamelFarmApp",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1671660415
+    listedAt: 1671660415,
+    deadUrl: true
   },
 
   {
@@ -21835,7 +21836,8 @@ const data2: Protocol[] = [
     twitter: "GarbleMoney",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1672155549
+    listedAt: 1672155549,
+    deadUrl: true
   },
   {
     id: "2392",
@@ -22071,7 +22073,8 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX"],
     oracles: [],
     audit_links: ["https://github.com/Syrup-Finance/syrup-contracts/tree/main/audits"],
-    listedAt: 1672682063
+    listedAt: 1672682063,
+    rugged: true
   },
   {
     id: "2402",
@@ -22410,7 +22413,8 @@ const data2: Protocol[] = [
     twitter: "Football_Web3",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1673005148
+    listedAt: 1673005148,
+    deadUrl: true
   },
   {
     id: "2417",
@@ -22456,7 +22460,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Y2K Finance"],
     oracles: [],
     audit_links: ["https://github.com/solidproof/projects/tree/main/Y2B"],
-    listedAt: 1673269106
+    listedAt: 1673269106,
+    rugged: true
   },
   {
     id: "2419",
@@ -22610,7 +22615,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "deridex/index.js",
     twitter: "DeridexHQ",
-    listedAt: 1673519897
+    listedAt: 1673519897,
+    deadUrl: true
   },
   {
     id: "2426",
@@ -22631,7 +22637,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "sugarswap/index.js",
     twitter: "_SugarSwap",
-    listedAt: 1673519899
+    listedAt: 1673519899,
+    rugged: true
   },
   {
     id: "2427",
@@ -23248,7 +23255,8 @@ const data2: Protocol[] = [
     twitter: "DoglandsDC",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1674124870
+    listedAt: 1674124870,
+    rugged: true
   },
   {
     id: "2454",
@@ -23816,7 +23824,8 @@ const data2: Protocol[] = [
     oracles: ["TWAP"],
     forkedFrom: ["Fantasm"],
     audit_links: ["https://docs.akiba.finance/documentation/audit-and-security"],
-    listedAt: 1675076609
+    listedAt: 1675076609,
+    deadUrl: true
   },
   {
     id: "2479",
@@ -24236,7 +24245,8 @@ const data2: Protocol[] = [
     twitter: "Fundexexchange",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
-    listedAt: 1675542033
+    listedAt: 1675542033,
+    rugged: true
   },
   {
     id: "2497",
@@ -24258,7 +24268,8 @@ const data2: Protocol[] = [
     twitter: "Dinosaur_Yield_",
     oracles: [],
     forkedFrom: ["Beefy"],
-    listedAt: 1675542041
+    listedAt: 1675542041,
+    rugged: true
   },
   {
     id: "2498",
@@ -24670,7 +24681,8 @@ const data2: Protocol[] = [
     twitter: "ManifestoDAO",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1675872114
+    listedAt: 1675872114,
+    rugged: true
   },
   {
     id: "2516",
@@ -24692,7 +24704,8 @@ const data2: Protocol[] = [
     twitter: "PhezzanProtocol",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1675872118
+    listedAt: 1675872118,
+    deadUrl: true
   },
   {
     id: "2517",
@@ -24943,7 +24956,8 @@ const data2: Protocol[] = [
     twitter: "wonderlyfinance",
     oracles: ["Chainlink"],
     forkedFrom: ["Tomb Finance"],
-    listedAt: 1676229782
+    listedAt: 1676229782,
+    rugged: true
   },
   {
     id: "2528",
@@ -25717,7 +25731,8 @@ const data2: Protocol[] = [
     twitter: "DefiFarmMaster",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1677007517
+    listedAt: 1677007517,
+    rugged: true
   },
   {
     id: "2563",
@@ -25923,7 +25938,8 @@ const data2: Protocol[] = [
     twitter: "Mosquitos_Fin",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1677149680
+    listedAt: 1677149680,
+    rugged: true
   },
   {
     id: "2572",
@@ -26060,7 +26076,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/SharkySwap"],
-    listedAt: 1677170521
+    listedAt: 1677170521,
+    deadUrl: true
   },
   {
     id: "2578",
@@ -26294,7 +26311,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: [],
-    listedAt: 1677303689
+    listedAt: 1677303689,
+    rugged: true
   },
   {
     id: "2588",
@@ -26828,7 +26846,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "balancer/index.js",
     twitter: "BalancerLabs",
-    audit_links: ["https://docs.balancer.fi/reference/contracts/security.html#audits"],
+    audit_links: ["https://github.com/balancer/balancer-v2-monorepo/tree/master/audits"],
     parentProtocol: "parent#balancer"
   },
   {
@@ -27337,7 +27355,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "XBlueFinance",
-    listedAt: 1678021458
+    listedAt: 1678021458,
+    deadUrl: true
   },
   {
     id: "2635",
@@ -28158,7 +28177,8 @@ const data2: Protocol[] = [
     twitter: "finext_finance",
     oracles: ["TWAP"],
     forkedFrom: [],
-    listedAt: 1678815732
+    listedAt: 1678815732,
+    deadUrl: true
   },
   {
     id: "2672",
@@ -28299,7 +28319,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Reaper Farm"],
     treasury: "cthulhufinance.js",
     audit_links: ["https://github.com/solidproof/projects/tree/main/Cthulhu"],
-    listedAt: 1678918257
+    listedAt: 1678918257,
+    rugged: true
   },
   {
     id: "2678",
@@ -28542,7 +28563,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "palmaswap/index.js",
     twitter: "PalmaSwap",
-    listedAt: 1679172322
+    listedAt: 1679172322,
+    rugged: true
   },
   {
     id: "2689",
@@ -28606,7 +28628,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     module: "sohei/index.js",
     twitter: "soheidotio",
-    listedAt: 1679313368
+    listedAt: 1679313368,
+    deadUrl: true
   },
   {
     id: "2692",
@@ -28798,7 +28821,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "ZukeSwap/index.js",
     twitter: "ZukeSwap",
-    listedAt: 1679396445
+    listedAt: 1679396445,
+    rugged: true
   },
   {
     id: "2701",

@@ -10469,7 +10469,7 @@ const data3: Protocol[] = [
     address: "arbitrum:0xeCA66820ed807c096e1Bd7a1A091cD3D3152cC79",
     symbol: "GHA",
     url: "https://ghastprotocol.com",
-    description: "Using Enhanced Pseudo-Delta-Neutral strategies combined with liquidation-free money-market strategies for yield-bearing tokens to unlock institution-grade yield optimization and seamless capital efficiency.",
+    description: "Ghast Protocol is an enhanced yield-and-lending protocol built on top of GMX's $GLP, GMD Protocol, and other existing large-cap applications within the Arbitrum ecosystem",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/ghast-protocol.jpg`,
     audits: "0",

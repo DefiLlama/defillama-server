@@ -10530,6 +10530,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.jetprotocol.io/jet-protocol/audit-reports"],
     listedAt: 1688231982
   },
+  {
+    id: "3186",
+    name: "SoarPLS",
+    address: null,
+    symbol: "-",
+    url: "https://soarpulse.app/",
+    description:
+      "This is a simple ROI game with 3 different plans.Users can deposit PLS into the smart contract which yields a return based on the flight plan choosen",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/soarpls.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Staking Pool",
+    chains: ["Pulse"],
+    module: "soarpulse/index.js",
+    twitter: null,
+    oracles: [],
+    audit_links: [],
+    listedAt: 1688325459
+  },
 ]
 
 export default data3

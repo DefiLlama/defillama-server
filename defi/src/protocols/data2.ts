@@ -28322,6 +28322,7 @@ const data2: Protocol[] = [
     listedAt: 1678918257,
     rugged: true
   },
+  /* added back to the leverage farming
   {
     id: "2678",
     name: "Alpaca Lending",
@@ -28367,6 +28368,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#kleva-protocol",
     listedAt: 1678946775
   },
+  */
   {
     id: "2680",
     name: "Kivach",

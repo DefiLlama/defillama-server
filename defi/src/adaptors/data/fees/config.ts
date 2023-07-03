@@ -43,6 +43,7 @@ export default {
         }
     },
     "biswap": {
+        parentId: "BiSwap",
         "enabled": true,
         "id": "373"
     },

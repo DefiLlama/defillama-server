@@ -257,6 +257,7 @@ export default {
         "id": "863"
     },
     "biswap": {
+        parentId: "BiSwap",
         "enabled": true,
         "id": "373"
     },

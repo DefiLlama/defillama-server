@@ -1690,7 +1690,14 @@ export default {
     },
     "voodoo-trade": {
         enabled: true,
-        id: "3156"
+        id: "3156",
+        "protocolsData": {
+            "swap": {
+                "id": "3156",
+                "enabled": true,
+                "category": "Dexes",
+            }
+        },
     },
     "equity-spot": {
         parentId: "Equalizer0x",

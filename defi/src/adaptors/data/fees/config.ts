@@ -540,10 +540,6 @@ export default {
         "id": "1657",
         parentId: "Predy Finance",
         protocolsData: {
-            "v3": {
-                id: "3074",
-                enabled: true
-            },
             "v320": {
                 id: "1657",
                 enabled: true

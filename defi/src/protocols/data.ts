@@ -2497,7 +2497,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "dextf",
     cmcId: "8691",
-    category: "Yield",
+    category: "Indexes",
     chains: ["Ethereum"],
     module: "dextf/index.js",
     twitter: "DomaniProtocol",

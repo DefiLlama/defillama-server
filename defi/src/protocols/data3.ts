@@ -10552,6 +10552,27 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1688325459
   },
+  {
+    id: "3187",
+    name: "CryptoDickbutts",
+    address: null,
+    symbol: "-",
+    url: "https://www.cryptodickbutts.com",
+    description:
+      "Once a utopia, Gooch Island has fallen and CryptoDickbutts have been evacuated. Series 3 features 5200 all new CryptoDickbutts, each with a set of randomly generated traits.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/cryptodickbutts.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    treasury: "cryptodickbutts.js",
+    twitter: "CryptoDickbutts",
+    listedAt: 1688373470
+  },
 ]
 
 export default data3

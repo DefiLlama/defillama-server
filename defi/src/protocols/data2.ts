@@ -29073,5 +29073,30 @@ const data2: Protocol[] = [
     twitter: "VoidToken_fi",
     listedAt: 1679496436
   },
+  {
+    id: "2712",
+    name: "xALGO Liquid Governance",
+    address: null,
+    symbol: "-",
+    url: "https://xapp.folks.finance/xalgo",
+    description: "Unlock access to Algorand Governance yield on multiple chains with xALGO.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/xALGO.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Algorand"],
+    oracles: [],
+    forkedFrom: [],
+    module: "folks-xalgo/index.js",
+    twitter: "FolksFinance",
+    audit_links: [
+      "https://github.com/Folks-Finance/audits/blob/main/Vantage%20Point%20-%20Smart%20Contract%20Audit%20of%20xChain%20Liquid%20Governance%20-%20June%202023.pdf",
+    ],
+    parentProtocol: "parent#folks-finance",
+    listedAt: 1688388632
+  },
 ]
 export default data2;

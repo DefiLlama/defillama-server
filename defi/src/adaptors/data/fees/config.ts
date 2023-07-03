@@ -657,6 +657,7 @@ export default {
         id: "2644"
     },
     "equalizer-exchange": {
+        parentId: "Equalizer0x",
         enabled: true,
         id: "2332"
     },
@@ -1001,5 +1002,10 @@ export default {
     "voodoo-trade": {
         enabled: true,
         id: "3156"
+    },
+    "equity": {
+        parentId: "Equalizer0x",
+        enabled: true,
+        id: "3173"
     }
 } as AdaptorsConfig

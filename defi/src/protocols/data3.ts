@@ -10282,7 +10282,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "mango-markets-v4/index.js",
     twitter: "mangomarkets",
-    oracles: [],
+    oracles: ["Pyth", "Switchboard"],
     listedAt: 1688042613,
     audit_links: ["https://docs.mango.markets/mango-markets/audits"],
     wrongLiquidity: true,

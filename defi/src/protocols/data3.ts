@@ -10639,6 +10639,31 @@ const data3: Protocol[] = [
     oracles: ["TWAP", "Chainlink"],
     listedAt: 1688393152
   },
+  {
+    id: "3191",
+    name: "xALGO Liquid Governance",
+    address: null,
+    symbol: "-",
+    url: "https://xapp.folks.finance/xalgo",
+    description: "Unlock access to Algorand Governance yield on multiple chains with xALGO.",
+    chain: "Algorand",
+    logo: `${baseIconsUrl}/xalgo-liquid-governance.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Algorand"],
+    oracles: [],
+    forkedFrom: [],
+    module: "folks-xalgo/index.js",
+    twitter: "FolksFinance",
+    audit_links: [
+      "https://github.com/Folks-Finance/audits/blob/main/Vantage%20Point%20-%20Smart%20Contract%20Audit%20of%20xChain%20Liquid%20Governance%20-%20June%202023.pdf",
+    ],
+    parentProtocol: "parent#folks-finance",
+    listedAt: 1688393892
+  },
 ]
 
 export default data3

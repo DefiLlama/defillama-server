@@ -16617,6 +16617,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Ethereum", "Binance", "Heco"],
     module: "golff-finance/index.js",
+    github: ['golfffinance'],
     twitter: "GolffProtocol",
     audit_links: ["https://github.com/golfffinance/audit"],
     listedAt: 1637812811,

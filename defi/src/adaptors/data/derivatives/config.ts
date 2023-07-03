@@ -138,5 +138,15 @@ export default {
     "urdex": {
         "id": "3085",
         "enabled": true
+    },
+    "voodoo-trade": {
+        enabled: true,
+        id: "3156",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3156",
+                "enabled": true
+            }
+        },
     }
 } as AdaptorsConfig

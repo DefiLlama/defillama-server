@@ -10595,6 +10595,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#biswap",
     listedAt: 1688392041
   },
+  {
+    id: "3189",
+    name: "Konverter",
+    address: null,
+    symbol: "-",
+    url: "https://konverter.finance/home",
+    description:
+      "Konverter is a cutting-edge, decentralized exchange designed to offer optimal swaps.",
+    chain: "WEMIX",
+    logo: `${baseIconsUrl}/konverter.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["WEMIX"],
+    module: "konverter/index.js",
+    twitter: "Konverter_",
+    forkedFrom: ["Curve DEX"],
+    oracles: ["TWAP", "Chainlink"],
+    listedAt: 1688393148
+  },
+  {
+    id: "3190",
+    name: "Kurrency",
+    address: "wemix:0x2ec6Fc5c495aF0C439E17268d595286d5f897dD0",
+    symbol: "WCD",
+    url: "https://kurrency.io",
+    description:
+      "Kurrency is a collateral-backed crypto dollar service where users can mint, deposit and swap WCD (WEMIX Crypto Dollar)",
+    chain: "WEMIX",
+    logo: `${baseIconsUrl}/kurrency.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["WEMIX"],
+    module: "kurrency/index.js",
+    twitter: "KurrencyFinance",
+    forkedFrom: [],
+    oracles: ["TWAP", "Chainlink"],
+    listedAt: 1688393152
+  },
 ]
 
 export default data3

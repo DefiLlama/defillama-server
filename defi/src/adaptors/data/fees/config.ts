@@ -997,5 +997,9 @@ export default {
     "yield-yak-staked-avax": {
         enabled: true,
         id: "475"
+    },
+    "voodoo-trade": {
+        enabled: true,
+        id: "3156"
     }
 } as AdaptorsConfig

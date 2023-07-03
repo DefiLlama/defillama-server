@@ -1686,5 +1686,9 @@ export default {
     "litx": {
         enabled: true,
         id: "3159"
+    },
+    "voodoo-trade": {
+        enabled: true,
+        id: "3156"
     }
 } as AdaptorsConfig

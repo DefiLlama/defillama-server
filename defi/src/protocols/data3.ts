@@ -8254,7 +8254,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3083",
-    name: "PenPie",
+    name: "Penpie",
     address: null,
     symbol: "-",
     url: "https://www.pendle.magpiexyz.io/stake",

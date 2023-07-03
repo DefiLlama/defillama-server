@@ -23606,7 +23606,7 @@ const data2: Protocol[] = [
   {
     id: "2469",
     name: "Cap V4",
-    address: "arbitrum:0x43044f861ec040db59a7e324c40507addb673142",
+    address: "arbitrum:0x031d35296154279dc1984dcd93e392b1f946737b",
     symbol: "CAP",
     url: "https://cap.io",
     description:

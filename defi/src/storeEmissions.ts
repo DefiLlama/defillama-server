@@ -109,7 +109,9 @@ async function handlerErrors(errors: string[]) {
   if (errors.length > 0) {
     let errorMessage: string = `storeEmissions errors: \n`;
     errors.map((e: string) => (errorMessage += `${e}, `));
-    // process.env.TEAM_WEBHOOK ? await sendMessage(errorMessage, process.env.TEAM_WEBHOOK!) : console.log(errorMessage);
+    process.env.UNLOCKS_WEBHOOK
+      ? await sendMessage(errorMessage, process.env.UNLOCKS_WEBHOOK!)
+      : console.log(errorMessage);
   }
 }
 

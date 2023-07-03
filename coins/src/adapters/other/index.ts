@@ -126,6 +126,14 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "avax",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x8a3EcB040d270ca92E122104e2d622b71c89E3cE",
+      "0x09EF821c35B4577f856cA416377Bd2ddDBD3d0C9", // MMTH
+      "0x152b9d0FdC40C096757F570A51E494bd4b943E50",
+      false,
+      "avax",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

@@ -66,5 +66,12 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     }
+  },
+  "ethereum": {
+    "0x72e4f9f808c49a2a61de9c5896298920dc4eeea9": {
+      "decimals": 8,
+      "symbol": "BITCOIN",
+      "to": "coingecko#harrypotterobamasonic10in"
+    }
   }
 }

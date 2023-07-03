@@ -10573,6 +10573,28 @@ const data3: Protocol[] = [
     twitter: "CryptoDickbutts",
     listedAt: 1688373470
   },
+  {
+    id: "3188",
+    name: "BiSwap V3",
+    address: "bsc:0x965f527d9159dce6288a2219db51fc6eef120dd1",
+    symbol: "BSW",
+    url: "https://biswap.org/pool",
+    description:
+      "Boost capital efficiency with flexible trading & earning features",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/biswap-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Binance"],
+    module: "biswap-v3/index.js",
+    twitter: "Biswap_Dex",
+    forkedFrom: ["Uniswap V3"],
+    parentProtocol: "parent#biswap",
+    listedAt: 1688392041
+  },
 ]
 
 export default data3

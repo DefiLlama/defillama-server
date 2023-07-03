@@ -2124,6 +2124,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "JetProtocol",
     github: ['jet-lab'],
   },
+  {
+    id: "parent#biswap",
+    name: "BiSwap",
+    url: "https://biswap.org",
+    description: "Biswap is a trusted DEX platform on the BNB Chain network with a Multi-type Referral Program and low trade fee starting from 0.1%. Biswap is the ecosystem that offers the best service and creates new standards in the DeFi industry.",
+    logo: `${baseIconsUrl}/biswap.jpg`,
+    gecko_id: "biswap",
+    cmcId: "10746",
+    chains: [],
+    twitter: "Biswap_Dex",
+    github: ['biswap-org'],
+    governanceID: ["snapshot:biswap-org.eth"],
+  },
 ];
 
 export default parentProtocols;

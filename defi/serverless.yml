@@ -682,6 +682,7 @@ functions:
       - schedule: cron(0 * * * ? *)
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINGLASS_KEY: ${file(./env.js):COINGLASS_KEY}
   storeGovernance:
     handler: src/storeGovernance.default
     timeout: 900

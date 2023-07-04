@@ -5340,8 +5340,8 @@ const data3: Protocol[] = [
   {
     id: "2952",
     name: "Archi Finance",
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x93d504070ab0eede5449c89c5ea0f5e34d8103f8",
+    symbol: "ARCHI",
     url: "https://archi.finance",
     description: "Archi Finance is composable leveraged yield farming protocol. It has two sides to it: passive liquidity providers who earns low risk interests by supplying single-asset liquidity; and degen farmers who borrow those assets to achieve a higher APY. GMX will be the platform Archi integrated in v1.",
     chain: "Arbitrum",

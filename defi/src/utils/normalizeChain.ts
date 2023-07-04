@@ -1754,6 +1754,7 @@ chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
 chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
 chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
+chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
 
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -1792,7 +1793,7 @@ export function transformNewChainName(chain: string) {
       return "Polygon zkEVM"
     case "eos_evm":
       return "EOS EVM"
-    case "map":
+    case "Map":
       return "MAP Relay Chain"
     default:
       return chain

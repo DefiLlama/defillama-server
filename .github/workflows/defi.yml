@@ -104,3 +104,4 @@ jobs:
           ALLIUM_API_KEY: ${{ secrets.ALLIUM_API_KEY }}
           FLIPSIDE_API_KEY: ${{ secrets.FLIPSIDE_API_KEY }}
           COINGLASS_KEY: ${{ secrets.COINGLASS_KEY }}
+          UNLOCKS_WEBHOOK: ${{ secrets.UNLOCKS_WEBHOOK }}

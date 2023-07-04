@@ -3992,7 +3992,8 @@ const data: Protocol[] = [
     cmcId: "4847",
     category: "Chain",
     chains: ["Stacks"],
-    module: "stacks/index.js",
+    // module: "stacks/index.js",
+    module: "dummy.js",
     twitter: "Stacks",
   },
   {

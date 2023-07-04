@@ -94,9 +94,10 @@ async function main() {
 async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } = {}) {
 
   sdk.log('upating org details for', orgName, repoFilter?.length)
+  let existingOrg
   try {
     // Check if the organization exists in the database
-    const existingOrg = await GitOwner.findOne({ where: { name: orgName } });
+    existingOrg = await GitOwner.findOne({ where: { name: orgName } });
 
     if (existingOrg) {
       if (existingOrg.is_missing) return;
@@ -112,7 +113,7 @@ async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } 
     }
 
     let is_org = false
-    if (!existingOrg) {
+    if (!existingOrg || existingOrg.is_org) {
       try {
         const { data } = await octokit.rest.orgs.get({ org: orgName });
         if (data) is_org = true
@@ -264,6 +265,12 @@ async function updateOrgAndRepos(orgName, repoFilter, { OrgArray, progress, i } 
     if (error.status === 404 && error.response?.url?.includes('/repos') && error.response?.url?.includes('page=0')) { 
 
       console.log('Missing org: ', orgName)
+      if (existingOrg) {
+        return existingOrg.update({
+          is_missing: true,
+          lastupdatetime: new Date(),
+        })
+      }
       return GitOwner.create({
         name: orgName,
         is_missing: true

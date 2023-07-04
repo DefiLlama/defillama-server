@@ -10723,7 +10723,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "arpa",
     cmcId: "4039",
-    category: "Services",
+    category: "Staking Pool",
     chains: ["Ethereum"],
     oracles: [],
     forkedFrom: [],

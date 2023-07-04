@@ -2576,7 +2576,7 @@ const data2: Protocol[] = [
     cmcId: "18621",
     category: "Lending",
     chains: ["Terra"],
-    oracles: ["TWAP"],
+    oracles: ["TWAP","Pyth"],
     forkedFrom: [],
     module: "mars/index.js",
     twitter: "mars_protocol",
@@ -19520,6 +19520,7 @@ const data2: Protocol[] = [
     module: "cetus/index.js",
     twitter: "CetusProtocol",
     forkedFrom: [],
+    oracles: ["Pyth"],
     listedAt: 1668685096
   },
   {
@@ -19666,6 +19667,7 @@ const data2: Protocol[] = [
     module: "perp88/index.js",
     twitter: "HMXorg",
     forkedFrom: [],
+    oracles: ["Pyth"],
     listedAt: 1668805259
   },
   {

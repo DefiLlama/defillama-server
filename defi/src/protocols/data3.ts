@@ -9872,7 +9872,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://stakedicp.com",
-    description: "StakedICP is a non-custodial liquid staking protocol build on the Internet Computer.",
+    description: "StakedICP is a non-custodial liquid staking protocol built on the Internet Computer.",
     chain: "ICP",
     logo: `${baseIconsUrl}/stakedicp.jpg`,
     audits: "0",

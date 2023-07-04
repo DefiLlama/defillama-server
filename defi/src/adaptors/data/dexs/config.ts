@@ -1703,5 +1703,9 @@ export default {
         parentId: "Equalizer0x",
         enabled: true,
         id: "3173"
+    },
+    "flowx-finance": {
+        enabled: true,
+        id: "3196"
     }
 } as AdaptorsConfig

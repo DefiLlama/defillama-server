@@ -10664,6 +10664,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#folks-finance",
     listedAt: 1688393892
   },
+  {
+    id: "3192",
+    name: "Protectorate Protocol",
+    address: null,
+    symbol: "PRTC",
+    url: "https://app.protectorate.xyz/",
+    description: "The Protectorate protocol is a yield aggregation platform that uses strategies targeting NFT/NFTfi protocols on Ethereum mainnet",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/protectorate-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "protectorate/index.js",
+    twitter: "Protectoratexyz",
+    audit_links: [
+      "https://gitbook.protectorate.xyz/protectorate-protocol/audit-report-v0.1",
+    ],
+    listedAt: 1688430345
+  },
 ]
 
 export default data3

@@ -10,7 +10,8 @@ export const normalizedChainReplacements = {
   "zksync era": "era",
   "polygon zkevm": "polygon_zkevm",
   "eos evm": "eos_evm",
-  "oasys": "oas"
+  "oasys": "oas",
+  "map relay chain": "map"
 } as {
   [chain: string]: string
 }
@@ -1485,7 +1486,7 @@ export const chainCoingeckoIds = {
     cmcId: "22026",
     categories: ["EVM"],
   },
-  "Map": {
+  "MAP Relay Chain": {
     geckoId: "marcopolo",
     symbol: "MAP",
     cmcId: "4956",
@@ -1791,6 +1792,8 @@ export function transformNewChainName(chain: string) {
       return "Polygon zkEVM"
     case "eos_evm":
       return "EOS EVM"
+    case "map":
+      return "MAP Relay Chain"
     default:
       return chain
   }
@@ -2087,7 +2090,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bitindi":
       return "Bitindi"
     case "map":
-      return "Map"
+      return useNewChainNames ? "MAP" : "MAP Relay Chain"
     case "stargaze":
       return "Stargaze"
     case "libre":

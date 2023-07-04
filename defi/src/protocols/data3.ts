@@ -10410,7 +10410,7 @@ const data3: Protocol[] = [
     description: "zkSwap.finance is the first decentralized Swap-to-Earn DeFi DEX that pioneers a unique incentive model rewarding both liquidity providers and traders.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/zkswap-finance.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -10420,6 +10420,7 @@ const data3: Protocol[] = [
     forkedFrom: ["SyncSwap"],
     module: "zkSwap-finance/index.js",
     twitter: "zkSwap_finance",
+    audit_links: ["https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ZKSWAP%20FINANCE%20AUDIT%20REPORT.pdf"],
     listedAt: 1688134493
   },
   {

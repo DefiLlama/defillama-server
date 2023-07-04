@@ -4253,7 +4253,7 @@ const data3: Protocol[] = [
     category: "CDP",
     chains: ["Ethereum"],
     oracles: ["Chainlink"],
-    forkedFrom: [],
+    forkedFrom: ["Liquity"],
     module: "lybra/index.js",
     twitter: "LybraFinanceLSD",
     audit_links: ["https://solidity.finance/audits/Lybra/"],
@@ -7924,7 +7924,7 @@ const data3: Protocol[] = [
     module: "raft/index.js",
     twitter: "raft_fi",
     oracles: ["Chainlink", "Tellor"],
-    forkedFrom: [],
+    forkedFrom: ["Liquity"],
     audit_links: [ "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-tempus-raft-securityreview.pdf"],
     github: ["raft-fi"],
     listedAt: 1686074293

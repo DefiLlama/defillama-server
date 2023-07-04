@@ -2090,7 +2090,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bitindi":
       return "Bitindi"
     case "map":
-      return useNewChainNames ? "MAP" : "MAP Relay Chain"
+      return useNewChainNames ? "Map" : "MAP Relay Chain"
     case "stargaze":
       return "Stargaze"
     case "libre":

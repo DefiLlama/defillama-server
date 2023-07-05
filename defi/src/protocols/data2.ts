@@ -13522,7 +13522,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2022",
-    name: "MetaStreet",
+    name: "MetaStreet V1",
     address: null,
     symbol: "-",
     url: "https://metastreet.xyz/",
@@ -13540,7 +13540,8 @@ const data2: Protocol[] = [
     module: "metastreet/index.js",
     twitter: "metastreetxyz",
     audit_links: ["https://docs.metastreet.xyz/other/audits"],
-    listedAt: 1661481103
+    listedAt: 1661481103,
+    parentProtocol: "parent#metastreet"
   },
   {
     id: "2023",

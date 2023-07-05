@@ -2137,6 +2137,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ['biswap-org'],
     governanceID: ["snapshot:biswap-org.eth"],
   },
+  {
+    id: "parent#metastreet",
+    name: "Metastreet",
+    url: "https://metastreet.xyz/",
+    description: "The interest rate protocol for the Metaverse",
+    logo: `${baseIconsUrl}/metastreet.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "metastreetxyz",
+  },
 ];
 
 export default parentProtocols;

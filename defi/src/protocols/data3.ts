@@ -5918,7 +5918,7 @@ const data3: Protocol[] = [
     module: "tsunami-fi/index.js",
     twitter: "TsunamiFinance_",
     forkedFrom: [],
-    oracles: [],
+    oracles: ["Pyth"],
     audit_links: ["https://docsend.com/view/mfqrf4mcdxk9jvwf"],
     listedAt: 1684183136
   },

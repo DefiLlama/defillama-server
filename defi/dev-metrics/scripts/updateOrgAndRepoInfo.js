@@ -64,6 +64,7 @@ async function main() {
   i = 0
   const oneMonthAgo = new Date();
   oneMonthAgo.setDate(oneMonthAgo.getDate() - 7 * 4);
+  return;
   const repoOrgChunks = sliceIntoChunks(repoOrgs, 1000)
 
   for (let chunk of repoOrgChunks) {

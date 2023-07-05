@@ -6221,7 +6221,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Liquid Staking",
-    chains: ["Ethereum", "Filecoin"],
+    chains: ["Ethereum"],
     module: "node-dao/index.js",
     twitter: "Node_DAO",
     oracles: [],

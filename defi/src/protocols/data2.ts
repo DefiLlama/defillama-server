@@ -5532,7 +5532,7 @@ const data2: Protocol[] = [
     module: "predy-v320/index.js",
     twitter: "predyfinance",
     parentProtocol: "parent#predy-finance",
-    audit_links: ["https://www.linkedin.com/posts/zokyo_predy-smart-contract-audit-reportzokyoio-activity-6914551796023627777-8jWC?utm_source=linkedin_share&utm_medium=member_desktop_web"],
+    audit_links: ["https://immunefi.com/bounty/predyfinance/"],
     listedAt: 1650190517,
   },
   {

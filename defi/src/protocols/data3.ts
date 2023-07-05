@@ -10864,6 +10864,28 @@ const data3: Protocol[] = [
     listedAt: 1688536771,
     parentProtocol: "parent#metastreet"
   },
+  {
+    id: "3201",
+    name: "ChirpFinance",
+    address: "pulse:0xCa66B54a8A4AD9a231DD70d3605D1ff6aE95d427",
+    symbol: "CHIRP",
+    url: "https://chirp.finance",
+    description: `Stake, Farm and Battle for $Chirp`,
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/chirpfinance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Pulse"],
+    oracles: [],
+    forkedFrom: [],
+    module: "ChirpFinance/index.js",
+    twitter: "ChirpFinance",
+    audit_links: [],
+    listedAt: 1688579642,
+  },
 ]
 
 export default data3

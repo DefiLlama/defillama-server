@@ -11017,6 +11017,28 @@ const data3: Protocol[] = [
     module: "dummy.js",
     twitter: "BitKeepOS",
   },
+  {
+    id: "3208",
+    name: "UniCrypt V3",
+    address: "0xadb2437e6f65682b85f814fbc12fec0508a7b1d0",
+    symbol: "UNCX",
+    url: "https://unicrypt.network",
+    description: `Unicrypt is a one-stop shop with everything you need to launch and maintain a sustainable and secure protocol. Generate and secure the initial liquidity, lock your tokens with vesting lockers and create farms with customisable rewards.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/unicrypt-v3.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Arbitrum", "Binance"],
+    module: "unicrypt-v3/index.js",
+    twitter: "UNCX_token",
+    oracles: [],
+    forkedFrom: [],
+    parentProtocol: "parent#unicrypt",
+    listedAt: 1688652343
+  },
 ]
 
 export default data3

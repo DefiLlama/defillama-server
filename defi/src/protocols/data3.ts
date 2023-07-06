@@ -10910,6 +10910,28 @@ const data3: Protocol[] = [
     listedAt: 1688606787,
     github: ["NodeDAO/HashKing-FIL"]
   },
+  {
+    id: "3203",
+    name: "Surge",
+    address: null,
+    symbol: "-",
+    url: "https://www.surge-fi.com",
+    description: `Borrow, lend, long or short any token on any chain. `,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/surge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "surge/index.js",
+    twitter: "Surge_Fi",
+    listedAt: 1688636873,
+    github: ["Surge-fi"]
+  },
 ]
 
 export default data3

@@ -7533,7 +7533,47 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
-    }
+    },
+    "0x9663c2d75ffd5f4017310405fce61720af45b829": {
+      "decimals": "18",
+      "symbol": "PHUX",
+      "to": "coingecko#phux-governance-token"
+    },
+    "0x96E035ae0905EFaC8F733f133462f971Cfa45dB1": {
+      "decimals": "18",
+      "symbol": "PHIAT",
+      "to": "pulse:0x96E035ae0905EFaC8F733f133462f971Cfa45dB1"
+    },
+    "0xfe39fdc0012dcf10c9f674ea7e74889e4d71a226": {
+      "decimals": "18",
+      "symbol": "wePHIAT",
+      "to": "coingecko#ephiat"
+    },
+    "0x2b591e99afe9f32eaa6214f7b7629768c40eeb39": {
+      "decimals": "8",
+      "symbol": "pHEX",
+      "to": "coingecko#hex-pulsechain"
+    },
+    "0x57fde0a71132198BBeC939B98976993d8D89D225": {
+      "decimals": "8",
+      "symbol": "weHEX",
+      "to": "coingecko#hex-pulsechain"
+    },
+    "0x3819f64f282bf135d62168C1e513280dAF905e06": {
+      "decimals": "9",
+      "symbol": "pHDRN",
+      "to": "coingecko#hedron"
+    },  
+    "0xAbF663531FA10ab8116cbf7d5c6229B018A26Ff9": {
+      "decimals": "9",
+      "symbol": "wHDRN",
+      "to": "coingecko#hedron"
+    },    
+    "0x95b303987a60c71504d99aa1b13b4da07b0790ab": {
+      "decimals": "18",
+      "symbol": "PLSX",
+      "to": "coingecko#pulsex"
+    },
   },
   "fusion": {
     "0x0000000000000000000000000000000000000000": {

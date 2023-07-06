@@ -10999,6 +10999,24 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Bucket-Protocol/Audit"],
     listedAt: 1688644029
   },
+  {
+    id: "3207",
+    name: "BitKeep Wallet",
+    address: null,
+    symbol: "-",
+    url: "https://bitkeep.com/en/index",
+    description: `Your Web3 Crypto Wallet for effortless trading.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bitkeep-wallet.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "BitKeepOS",
+  },
 ]
 
 export default data3

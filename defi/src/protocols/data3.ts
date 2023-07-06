@@ -10760,7 +10760,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://flowx.finance",
-    description: "The Ecosystem-focused DEX BuildOnSui",
+    description: "FlowX Finance is the ecosystem-focused decentralized exchange built on the Sui Blockchain.",
     chain: "Sui",
     logo: `${baseIconsUrl}/flowx-finance.png`,
     audits: "0",

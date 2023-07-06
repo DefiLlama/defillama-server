@@ -7052,6 +7052,108 @@
       "decimals": "6",
       "symbol": "MARS",
       "to": "coingecko#mars-protocol-a7fcbcfb-fd61-4017-92f0-7ee9f9cc6da3"
+    },
+    "10A0DD366A472B098DFD93FBAE62E65DA387F314872C4AD3AE43185154738D8D": {
+      "name": "mars-protocol",
+      "decimals": "6",
+      "symbol": "MARS",
+      "to": "coingecko#mars-protocol"
+    },
+    "764D1629980B02BAFF3D25BEE4FB1E0C5E350AFA252FDF66E68E10D2179A826A": {
+      "name": "okt-chain",
+      "decimals": "18",
+      "symbol": "OKT",
+      "to": "coingecko#okt-chain"
+    },
+    "E32F6485CDAE995FC492010770936119D0BF90F5226C9AED727988DF03B5F569": {
+      "name": "stkAtom",
+      "decimals": "6",
+      "symbol": "STKATOM",
+      "to": "coingecko#stkatom"
+    },
+    "D64F87FAE0B35C1954DD7921BA7A2939705DE77CBF72B8002F2E3552EDE4DE52": {
+      "name": "stride-staked-Atom",
+      "decimals": "6",
+      "symbol": "STATOM",
+      "to": "coingecko#stride-staked-atom"
+    },
+    "C814F0B662234E24248AE3B2FE2C1B54BBAF12934B757F6E7BC5AEC119963895": {
+      "name": "juno-network",
+      "decimals": "6",
+      "symbol": "JUNO",
+      "to": "coingecko#juno-network"
+    },    
+    "531804EA11DBF043843E20CC6498B5C4C2B19726A33891CAB919545DD3D612E0": {
+      "name": "jakcal",
+      "decimals": "6",
+      "symbol": "JKL",
+      "to": "coingecko#jackal-protocol"
+    },       
+    "2AB7D3FAE795E5DD7ACDE80D215DE076AE4DF64367E2D4B801B595F504002A9E": {
+      "name": "akash-network",
+      "decimals": "6",
+      "symbol": "AKT",
+      "to": "coingecko#akash-network"
+    },    
+    "5EDC10227E40B52D893F5A26C107E2A338C4A643615C10B356DC62B5F4FE1DB1": {
+      "name": "crypto-com-chain",
+      "decimals": "8",
+      "symbol": "CRO",
+      "to": "coingecko#cronos"
+    },    
+    "DA8D591FFA8836FDF3AD0F9F8AF4EAA77D9D4F23DA3D10DFD1FC3B9A3644B26D": {
+      "name": "Umee",
+      "decimals": "6",
+      "symbol": "UMEE",
+      "to": "coingecko#umee"
+    },    
+    "4DF678EF85F1FD3CEFF41429E14B22E5D7730B00230688E6783AF06112415620": {
+      "name": "canto",
+      "decimals": "18",
+      "symbol": "CANTO",
+      "to": "coingecko#canto"
+    },
+    "7C80C41847B0A6BC37D66C13B2EDAF716217BE894FEC3FF11E76FE02D4E7BAA3": {
+        "name": "persistence",
+        "decimals": "6",
+        "symbol": "XPRT",
+        "to": "coingecko#persistence"
+    },
+    "0634D0993744740D675AD01E81156EAC945AEAAE17C074918DC7FF52F41B263E": {
+      "name": "axelar",
+      "decimals": "6",
+      "symbol": "AXL",
+      "to": "coingecko#axelar"      
+    },
+    "1620B95419728A7DEF482DEB9462DD6B9FA120BCB49CCCF74209A56AB9835E59": {
+      "name": "gravity-bridge-wrapped-bitcoin",
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "coingecko#wrapped-bitcoin"      
+    },
+    "4171A6F59F8A708D807E03B43FA0E16EC7041C189557B7A8E519757424367D41": {
+      "name": "stride-staked-EVMOS",
+      "decimals": "18",
+      "symbol": "STEVMOS",
+      "to": "coingecko#stride-staked-evmos"      
+    },
+    "61DF64ADF65230540C14C63D64897BE08A3DC9A516A91425913F01240E2F432F": {
+      "name": "comdex",
+      "decimals": "6",
+      "symbol": "CMDX",
+      "to": "coingecko#comdex"
+    },
+    "73E97EB411B29C6F989C35D277D1A7FC65083572F102AC6BD101884EE9FB2C9F": {
+      "name": "evmos",
+      "decimals": "18",
+      "symbol": "EVMOS",
+      "to": "coingecko#evmos"
+    },
+    "A39C7A94E7955808E135BD13B36DFF8DF722F46E2B90CEB4F88488C0F4B5ABE5": {
+      "name": "stride-staked-UMEE",
+      "decimals": "6",
+      "symbol": "STUMEE",
+      "to": "coingecko#umee"      
     }
   },
   "bitindi": {

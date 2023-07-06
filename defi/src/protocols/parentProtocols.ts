@@ -2148,6 +2148,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "metastreetxyz",
   },
+  {
+    id: "parent#unicrypt",
+    name: "UniCrypt",
+    url: "https://unicrypt.network",
+    description: "Unicrypt is a one-stop shop with everything you need to launch and maintain a sustainable and secure protocol. Generate and secure the initial liquidity, lock your tokens with vesting lockers and create farms with customisable rewards.",
+    logo: `${baseIconsUrl}/unicrypt.png`,
+    gecko_id: "unicrypt-2",
+    cmcId: "7664",
+    chains: [],
+    twitter: "UNCX_token",
+  },
 ];
 
 export default parentProtocols;

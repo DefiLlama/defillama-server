@@ -5521,7 +5521,7 @@ const data2: Protocol[] = [
     description: "Predy V3.2 allows traders to utilize portfolio margin for Squart and ETH perpetual trading while simplifying the creation of delta-neutral and leveraged LP positions. Rest assured, LP positions will always remain in-range, Squart addresses the liquidity fragmentation issue commonly found in perpetual options by eliminating strikes. This ensures positions consistently possess gamma, similar to at-the-money options.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/predy-v3.2.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -5532,7 +5532,6 @@ const data2: Protocol[] = [
     module: "predy-v320/index.js",
     twitter: "predyfinance",
     parentProtocol: "parent#predy-finance",
-    audit_links: ["https://www.linkedin.com/posts/zokyo_predy-smart-contract-audit-reportzokyoio-activity-6914551796023627777-8jWC?utm_source=linkedin_share&utm_medium=member_desktop_web"],
     listedAt: 1650190517,
   },
   {

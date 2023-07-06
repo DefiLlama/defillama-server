@@ -10886,6 +10886,29 @@ const data3: Protocol[] = [
     audit_links: [],
     listedAt: 1688579642,
   },
+  {
+    id: "3202",
+    name: "HashKing",
+    address: null,
+    symbol: "-",
+    url: "https://www.hashking.fi/",
+    description: `HashKing is a provider of professional liquid staking solutions`,
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/hashking.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Filecoin"],
+    oracles: [],
+    forkedFrom: [],
+    module: "hashking/index.js",
+    twitter: "HashKingGlobal",
+    audit_links: ["https://github.com/NodeDAO/HashKing-FIL/blob/master/Filecoin%20Staking%20Audit%20Report.pdf"],
+    listedAt: 1688606787,
+    github: ["NodeDAO/HashKing-FIL"]
+  },
 ]
 
 export default data3

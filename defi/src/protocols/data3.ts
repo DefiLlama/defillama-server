@@ -10135,7 +10135,7 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Yield",
-    chains: ["Quasar"],
+    chains: ["Osmosis"],
     module: "quasar/index.js",
     twitter: "QuasarFi",
     listedAt: 1687889149

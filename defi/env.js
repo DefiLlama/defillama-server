@@ -38,6 +38,7 @@ module.exports = {
   ZEROx_API_KEY: process.env.ZEROx_API_KEY,
   MISSING_COINS_DB_PWD: process.env.MISSING_COINS_DB_PWD,
   AGGREGATOR_DB_URL: process.env.AGGREGATOR_DB_URL,
+  AGGREGATOR_DB_URL: process.env.AGGREGATOR_DB_URL_NEW,
   INDEXER_DB: process.env.INDEXER_DB,
   AIRTABLE_API_KEY: process.env.AIRTABLE_API_KEY,
   R2_ACCESS_KEY_ID: process.env.R2_ACCESS_KEY_ID,

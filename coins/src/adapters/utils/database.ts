@@ -67,14 +67,9 @@ export function addToDBWritesList(
           symbol,
           decimals: Number(decimals),
           redirect,
-          ...(price !== undefined
-            ? {
-                timestamp: getCurrentUnixTimestamp(),
-              }
-            : {}),
+          timestamp: getCurrentUnixTimestamp(),
           adapter,
           confidence: Number(confidence),
-          timestamp,
         },
       ],
     );

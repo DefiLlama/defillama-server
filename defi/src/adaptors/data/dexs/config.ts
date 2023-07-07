@@ -1711,5 +1711,16 @@ export default {
     "zkSwap_Finance": {
         enabled: true,
         id: "3180"
+    },
+    "pinnako": {
+        enabled: true,
+        id: "3209",
+        "protocolsData": {
+            "swap": {
+                "id": "3209",
+                "enabled": true,
+                "category": "Dexes",
+            }
+        },
     }
 } as AdaptorsConfig

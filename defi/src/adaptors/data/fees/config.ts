@@ -1003,5 +1003,9 @@ export default {
         parentId: "Equalizer0x",
         enabled: true,
         id: "3173"
+    },
+    "pendle": {
+        enabled: true,
+        id: "382"
     }
 } as AdaptorsConfig

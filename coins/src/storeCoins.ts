@@ -1,6 +1,9 @@
 require("dotenv").config();
 import adapters from "./adapters/index";
-import { batchWriteWithAlerts } from "./adapters/utils/database";
+import {
+  batchWriteWithAlerts,
+  // batchWrite2WithAlerts,
+} from "./adapters/utils/database";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
 
@@ -27,10 +30,15 @@ export default async function handler(event: any) {
           results.flat(),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {
-          await batchWriteWithAlerts(
-            resultsWithoutDuplicates.slice(i, i + step),
-            true,
-          );
+          await Promise.all([
+            batchWriteWithAlerts(
+              resultsWithoutDuplicates.slice(i, i + step),
+              true,
+            ),
+            // await batchWrite2WithAlerts(
+            //   resultsWithoutDuplicates.slice(i, i + step),
+            // ),
+          ]);
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {
@@ -50,7 +58,7 @@ export default async function handler(event: any) {
   );
 }
 
-// ts-node coins/src/storeCoins.ts
+// ts-node src/storeCoins.ts
 async function main() {
   let a = {
     protocolIndexes: [0],

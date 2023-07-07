@@ -1314,6 +1314,7 @@ const data2: Protocol[] = [
     twitter: "@ALEXLabBTC",
     audit_links: ["https://www.alexgo.io/#Security"],
     language: "Clarity",
+    github:["alexgo-io"],
     listedAt: 1645731214,
   },
   {

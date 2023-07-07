@@ -73,5 +73,56 @@
       "symbol": "BITCOIN",
       "to": "coingecko#harrypotterobamasonic10in"
     }
+  },
+  "era": {
+    "0xBBeB516fb02a01611cBBE0453Fe3c580D7281011": {
+      "name": "WBTC",
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "ethereum:0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+    },
+    "0x493257fD37EDB34451f62EDf8D2a0C418852bA4C": {
+      "name": "USDT",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "ethereum:0xdac17f958d2ee523a2206206994597c13d831ec7"
+    }
+  },
+  "stacks": {
+    "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin::wrapped-bitcoin": {
+      "decimals": "8",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
+    },
+    "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin": {
+      "decimals": "8",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
+    },
+    "SP1Z92MPDQEWZXW36VX71Q25HKF5K2EPCJ304F275.wstx-token-v4a": {
+      "decimals": "6",
+      "symbol": "STX",
+      "to": "coingecko#blockstack"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.age000-governance-token::alex": {
+      "decimals": "8",
+      "symbol": "ALEX",
+      "to": "coingecko#alexgo"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.auto-alex::auto-alex": {
+      "decimals": "8",
+      "symbol": "ALEX",
+      "to": "coingecko#alexgo"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.age000-governance-token": {
+      "decimals": "8",
+      "symbol": "ALEX",
+      "to": "coingecko#alexgo"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.auto-alex": {
+      "decimals": "8",
+      "symbol": "ALEX",
+      "to": "coingecko#alexgo"
+    }
   }
 }

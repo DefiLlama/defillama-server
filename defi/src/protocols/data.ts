@@ -18957,6 +18957,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "arkadiko.js",
     twitter: "ArkadikoFinance",
     language: "Clarity",
+    github: ["arkadiko-dao"],
     listedAt: 1639420466,
   },
   {
@@ -23647,6 +23648,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Stacks"],
     module: "stackswap.js",
     twitter: "Stackswap_BTC",
+    github: ["stackswap"],
     language: "Clarity",
     audit_links: [
       "https://contact-stackswap.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FR2Qy2jO41SJwWbgnrvP4%2Fuploads%2F9tk4xdtFNupBe79yjKqY%2FTintash%20-%20Stackswap%20Contract%20audit.pdf?alt=media&token=b58b7f73-60a6-45e3-a8a5-b5e6f1bde584",

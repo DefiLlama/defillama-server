@@ -1707,5 +1707,9 @@ export default {
     "flowx-finance": {
         enabled: true,
         id: "3196"
+    },
+    "zkSwap_Finance": {
+        enabled: true,
+        id: "3180"
     }
 } as AdaptorsConfig

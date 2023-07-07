@@ -8627,7 +8627,7 @@ const data2: Protocol[] = [
   {
     id: "1799",
     name: "Velodrome",
-    address: "optimism:0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
+    address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
     symbol: "VELO",
     url: "https://app.velodrome.finance",
     description: "A revolutionary new AMM based on Solidly launched on Optimism.",

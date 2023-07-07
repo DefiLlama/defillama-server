@@ -33,7 +33,7 @@ export default async function bridge() {
     if (blacklist.has(token.address)) return;
     tokens.push({
       from: `solana:${token.address}`,
-      to: `zero`,
+      to: `coingecko#${coingeckoId}`,
       symbol: token.symbol,
       decimals: token.decimals
     });

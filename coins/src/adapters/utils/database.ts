@@ -13,7 +13,7 @@ import {
 } from "./dbInterfaces";
 import { contracts } from "../other/distressedAssets";
 import { sendMessage } from "./../../../../defi/src/utils/discord";
-import { batchWrite2, translateItems } from "../../../coins2";
+// import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 
 export async function getTokenAndRedirectData(

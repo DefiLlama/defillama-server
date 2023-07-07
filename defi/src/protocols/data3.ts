@@ -11039,6 +11039,54 @@ const data3: Protocol[] = [
     parentProtocol: "parent#unicrypt",
     listedAt: 1688652343
   },
+  {
+    id: "3209",
+    name: "Pinnako",
+    address: "era:0xf8C6dA1bbdc31Ea5F968AcE76E931685cA7F9962",
+    symbol: "PIKO",
+    url: "https://app.pinnako.io",
+    description: `Next-Gen Derivatives Exchange on the Zksync & Mantle.`,
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/pinnako.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkSync Era"],
+    module: "pinnako/index.js",
+    twitter: "PinnakoDex",
+    oracles: [],
+    forkedFrom: [],
+    github: ["pinnakoex"],
+    listedAt: 1688728443
+  },
+  {
+    id: "3210",
+    name: "Arcadia Finance",
+    address: null,
+    symbol: "-",
+    url: "https://arcadia.finance",
+    description: `Arcadia is a non-custodial protocol enabling composable cross-margin accounts on-chain. Margin account users can collateralize entire portfolios, access up to 10x more capital than their initial collateral value, and use their deposited collateral and the borrowed capital to permissionless interact with any other protocol from a single cross-margin account. Lenders supply assets to Arcadia's lending pools, earning passive yields for providing liquidity to margin account users.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/arcadia-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Leveraged Farming",
+    chains: ["Ethereum", "Optimism"],
+    module: "arcadia-finance/index.js",
+    twitter: "ArcadiaFi",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    github: ["arcadia-finance"],
+    audit_links: [
+                   "https://solidity.finance/audits/ArcadiaFinance",
+                   "https://github.com/NethermindEth/PublicAuditReports/blob/main/NM0072-FINAL_ARCADIA.pdf"
+                 ],
+    listedAt: 1688728448
+  },
 ]
 
 export default data3

@@ -10994,7 +10994,7 @@ const data3: Protocol[] = [
     chains: ["Sui"],
     module: "bucket-protocol/index.js",
     twitter: "bucket_protocol",
-    oracles: ["Internal", "Switchboard"],
+    oracles: ["Internal", "Switchboard","Pyth"],
     forkedFrom: [],
     audit_links: ["https://github.com/Bucket-Protocol/Audit"],
     listedAt: 1688644029

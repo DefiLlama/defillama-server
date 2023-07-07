@@ -9468,7 +9468,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Staking Pool",
+    category: "Liquid Staking",
     chains: ["Filecoin"],
     module: "MineFi/index.js",
     twitter: "MineFiDAO",

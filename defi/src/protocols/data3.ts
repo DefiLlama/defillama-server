@@ -11087,6 +11087,27 @@ const data3: Protocol[] = [
                  ],
     listedAt: 1688728448
   },
+  {
+    id: "3211",
+    name: "Radiate Protocol",
+    address: "arbitrum:0x7CA0B5Ca80291B1fEB2d45702FFE56a7A53E7a97",
+    symbol: "RADT",
+    url: "https://www.radiateprotocol.com",
+    description: `Earn boosted yield on Radiant with no lockups!`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/radiate-protocol.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Arbitrum"],
+    module: "radiate-protocol/index.js",
+    twitter: "RadiateProtocol",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1688728448
+  },
 ]
 
 export default data3

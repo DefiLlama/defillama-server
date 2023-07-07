@@ -8988,7 +8988,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "533",
     name: "OpenOcean",
-    address: "bsc:0x9029fdfae9a03135846381c7ce16595c3554e10a",
+    address: "bsc:0x8ea5219a16c2dbf1d6335a6aa0c6bd45c50347c5",
     symbol: "OOE",
     url: "https://openocean.finance",
     description:

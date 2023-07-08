@@ -11108,6 +11108,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1688728448
   },
+  {
+    id: "3212",
+    name: "Tribe3",
+    address: null,
+    symbol: "-",
+    url: "https://tribe3.xyz/",
+    description: `A Social and Gamified NFT Futures DEX`,
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/tribe3.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "tribe3/index.js",
+    twitter: "Tribe3Official",
+    oracles: ["TWAP"],
+    forkedFrom: ["Perpetual Protocol"],
+    audit_links: ["https://tribe3.gitbook.io/tribe3/audit-and-security"],
+    listedAt: 1688856712
+  },
 ]
 
 export default data3

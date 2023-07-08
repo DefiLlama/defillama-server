@@ -11125,10 +11125,32 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "tribe3/index.js",
     twitter: "Tribe3Official",
-    oracles: ["TWAP"],
+    oracles: ["Internal"],
     forkedFrom: ["Perpetual Protocol"],
     audit_links: ["https://tribe3.gitbook.io/tribe3/audit-and-security"],
     listedAt: 1688856712
+  },
+  {
+    id: "3213",
+    name: "Dinotopia Finance",
+    address: "bsc:0xfE8FFB60a2B6d46102caa35739Be465E600D0f5E",
+    symbol: "FOSSIL",
+    url: "https://dinotopia.finance/",
+    description: `Fantasm Fork on BSC`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/dinotopia-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Algo-Stable",
+    chains: ["Binance"],
+    module: "dinotopia/index.js",
+    twitter: "dinotopiafi",
+    oracles: ["Chainlink", "TWAP"],
+    forkedFrom: ["Fantasm"],
+    listedAt: 1688857145,
+    github: ["dinotopiafi"]
   },
 ]
 

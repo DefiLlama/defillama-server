@@ -200,7 +200,7 @@ const data: Protocol[] = [
     module: "synthetix/index.js",
     treasury: "synthetix.js",
     twitter: "synthetix_io",
-    audit_links: ["https://docs.synthetix.io/contracts/audits/"],
+    audit_links: ["https://docs.synthetix.io/v/v3/for-developers/smart-contract-audits/"],
     oraclesByChain: {
       ethereum: ["Chainlink"],
       optimism: ["Chainlink", "Pyth"],
@@ -250,7 +250,8 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/renproject/ren/wiki/Audits"],
     oracles: [],
     governanceID: ["snapshot:ren-project.eth"],
-    github: ["renproject"]
+    github: ["renproject"],
+    deadUrl: true
   },
   {
     id: "118",
@@ -884,7 +885,8 @@ const data: Protocol[] = [
     chains: ["Solana"],
     module: "serum.js",
     twitter: "ProjectSerum",
-    github: ["project-serum", "SerumTaxTime"]
+    github: ["project-serum", "SerumTaxTime"],
+    deadUrl: true
   },
   {
     id: "146",
@@ -929,14 +931,15 @@ const data: Protocol[] = [
     audit_links: ["https://tornado.cash/#faq"],
     oracles: [],
     treasury: "tornado-cash.js",
-    github: ["tornadocash"]
+    github: ["tornadocash"],
+    deadUrl: true
   },
   {
     id: "149",
     name: "B.Protocol",
     address: "0xbbBBBBB5AA847A2003fbC6b5C16DF0Bd1E725f61",
     symbol: "BPRO",
-    url: "https://www.bprotocol.org/",
+    url: "https://app.bprotocol.org/",
     description:
       "B.Protocol makes lending platforms more secure by eliminating the gas wars and shifting the miner’s profit to the users.",
     chain: "Ethereum",
@@ -1285,7 +1288,8 @@ const data: Protocol[] = [
     twitter: "CoverProtocol",
     audit_links: ["https://github.com/CoverProtocol/cover-security/tree/master/audits"],
     governanceID: ["snapshot:cover-protocol.eth"],
-    github: ["CoverProtocol"]
+    github: ["CoverProtocol"],
+    deadUrl: true
   },
   {
     id: "166",
@@ -1391,7 +1395,8 @@ const data: Protocol[] = [
     twitter: "fin_nexus",
     audit_links: ["https://github.com/Phoenix-Finance/Pdfs/blob/master/PeckShield-Audit-FinnexusOptionsV1.0.pdf"],
     oracles: ["Chainlink", "Band"],
-    github: ["FinNexus"]
+    github: ["FinNexus"],
+    deadUrl: true
   },
   {
     id: "171",
@@ -1915,6 +1920,7 @@ const data: Protocol[] = [
     twitter: "defidollar",
     audit_links: ["https://docs.dusd.finance/audits"],
     oracles: ["Chainlink"],
+    deadUrl: true
   },
   /*
   {
@@ -2358,7 +2364,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon", "xDai"],
     module: "connext/index.js",
     twitter: "ConnextNetwork",
-    audit_links: ["https://drive.google.com/file/d/1l42vxzHwLXrKU10v3FutG2DWthU43vB8/view"],
+    audit_links: ["https://drive.google.com/file/d/1l42vxzHwLXrKU10v3FutG2DWthU43vB8/view?pli=1"],
   },
   {
     id: "218",
@@ -2769,6 +2775,7 @@ const data: Protocol[] = [
     twitter: "Swipe",
     audit_links: ["https://www.certik.org/projects/swipe"],
     oracles: ["Chainlink", "Band"],
+    deadUrl: true
   },
   {
     id: "238",
@@ -3001,6 +3008,7 @@ const data: Protocol[] = [
   //   chains: ["Ethereum"],
   //   module: "forcedao/index.js",
   //   twitter: "force_dao",
+  //   deadUrl: true
   // },
   {
     id: "249",
@@ -3183,6 +3191,7 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "allinx.js",
     twitter: "allinxproject",
+    deadUrl: true
   },
   {
     id: "257",
@@ -3206,6 +3215,7 @@ const data: Protocol[] = [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=7b91209f526407299aee5f99688b62fb2c337a4316a6b305719a9e3cd5442348",
       "https://www.certik.org/projects/xdefi",
     ],
+    deadUrl: true
   },
   {
     id: "258",
@@ -3268,6 +3278,7 @@ const data: Protocol[] = [
     audit_links: ["https://docsend.com/view/p4es2dgvwadamgqg"],
     oracles: ["Band"],
     openSource: true,
+    deadUrl: true
   },
   {
     id: "261",
@@ -3337,7 +3348,7 @@ const data: Protocol[] = [
       "RAY is a set of smart contracts that automatically move crypto assets to the highest yielding opportunity.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/robo-advisor-for-yield.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -3345,7 +3356,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "ray/index.js",
     twitter: null,
-    audit_links: ["https://staked.gitbook.io/staked/ray/security"],
+    audit_links: [],
   },
   {
     id: "265",
@@ -3399,7 +3410,7 @@ const data: Protocol[] = [
     description: "S.Finance is a stable coin trading protocol, introducing a new token governance plan.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/s-finance.svg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "s-finance",
     cmcId: "7187",
@@ -3407,7 +3418,8 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "sfinance/index.js",
     twitter: "SFinanceEx",
-    audit_links: ["https://s.finance/risks"],
+    audit_links: [],
+    deadUrl: true
   },
   {
     id: "268",
@@ -4113,7 +4125,7 @@ const data: Protocol[] = [
       "Nerve is a trustless bridge and stableswap AMM designed to on-ramp & trade pegged assets quickly with minimal slippage.",
     chain: "Binance",
     logo: `${baseIconsUrl}/nerve.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "nerve-finance",
     cmcId: "8755",
@@ -4121,9 +4133,10 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "nerve/index.js",
     twitter: "NerveFinance",
-    audit_links: ["https://docs.nerve.fi/fundamentals/audits-and-security"],
+    audit_links: [],
     forkedFrom: ["Saddle Finance"],
-    governanceID: ["snapshot:nervefinance.eth"]
+    governanceID: ["snapshot:nervefinance.eth"],
+    deadUrl: true
   },
   {
     id: "302",
@@ -4337,7 +4350,7 @@ const data: Protocol[] = [
       "Stacker Ventures is a community-run protocol for initiating and managing pooled capital on the blockchain.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/stacker-ventures.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "stacker-ventures",
     cmcId: "8629",
@@ -4345,10 +4358,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "stacker/index.js",
     twitter: "StackerVentures",
-    audit_links: [
-      "https://docs.stacker.vc/docs-stacker-ventures/audits/active-yield-fund-audit-report",
-      "https://docs.stacker.vc/docs-stacker-ventures/audits/smart-contract-audit-report",
-    ],
+    audit_links: [],
   },
   {
     id: "313",
@@ -4370,6 +4380,7 @@ const data: Protocol[] = [
     twitter: "VenomDAO",
     audit_links: ["https://solidity.finance/audits/ViperSwap/"],
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "314",
@@ -4390,6 +4401,7 @@ const data: Protocol[] = [
     module: "gdl/index.js",
     twitter: "gondola_finance",
     forkedFrom: ["Saddle Finance"],
+    deadUrl: true
   },
   {
     id: "315",
@@ -4429,6 +4441,7 @@ const data: Protocol[] = [
     chains: ["Secret"],
     module: "secretswap.js",
     twitter: "SecretNetwork",
+    deadUrl: true
   },
   {
     id: "317",
@@ -4505,7 +4518,7 @@ const data: Protocol[] = [
       "Depth is a safe and high efficient stablecoin asset management protocol, based on the HECO Chain. As a trusted stablecoin swap manager, Depth allows users earn interest on deposits and swap of stablecoins in a safe and secure environment, with good depth, low slippage, and low transaction fees.",
     chain: "Heco",
     logo: `${baseIconsUrl}/depth.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "depth-token",
     cmcId: "9164",
@@ -4513,7 +4526,8 @@ const data: Protocol[] = [
     chains: ["Heco", "Binance"],
     module: "depth/index.js",
     twitter: "DepthFi",
-    audit_links: ["https://docs.depth.fi/audit"],
+    audit_links: [],
+    deadUrl: true
   },
   // 321 reserved for deprecated version of pancakeswap
   {
@@ -4736,8 +4750,9 @@ const data: Protocol[] = [
     chains: ["Fantom"],
     module: "aquarius/index.js",
     twitter: "Aquarius__Fi",
-    audit_links: ["https://docs.aquarius.fi/security/audit-report"],
+    audit_links: [],
     forkedFrom: ["Liquity"],
+    deadUrl: true
   },
   {
     id: "331",
@@ -4850,7 +4865,7 @@ const data: Protocol[] = [
     name: "Sifchain",
     address: "0x07bac35846e5ed502aa91adf6a9e7aa210f2dcbe",
     symbol: "EROWAN",
-    url: "https://sifchain.finance/",
+    url: "https://sifchain.network/",
     description: "The world's first omni-chain decentralized exchange.",
     chain: "Sifchain",
     logo: `${baseIconsUrl}/sifchain.png`,
@@ -4863,6 +4878,7 @@ const data: Protocol[] = [
     module: "sifchain.js",
     twitter: "sifchain",
     audit_links: ["https://drive.google.com/drive/u/1/folders/1kkjdpNuRmTjaiIKA6CQISavCvj4Awpbc"],
+    github: ["Sifchain"]
   },
   {
     id: "337",
@@ -4883,9 +4899,10 @@ const data: Protocol[] = [
     chains: ["Avalanche", "Arbitrum"],
     module: "gmx/index.js",
     twitter: "GMX_IO",
-    audit_links: ["https://github.com/xvi10/gambit-contracts/tree/master/audits"],
+    audit_links: ["https://gmxio.gitbook.io/gmx/audit"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:gmx.eth"]
+    governanceID: ["snapshot:gmx.eth"],
+    github: ["gmx-io"]
   },
   {
     id: "338",
@@ -4946,7 +4963,7 @@ const data: Protocol[] = [
     module: "olympus/api.js",
     treasury: "olympus-dao.js",
     twitter: "OlympusDAO",
-    audit_links: ["https://docs.olympusdao.finance/main/technical/audits"],
+    audit_links: ["https://docs.olympusdao.finance/main/security/audits"],
     governanceID: ["snapshot:olympusdao.eth"]
   },
   {
@@ -5093,9 +5110,10 @@ const data: Protocol[] = [
     module: "abracadabra/api.js",
     twitter: "MIM_Spell",
     oracles: ["Chainlink"],
-    audit_links: ["https://www.certora.com/pubs/SushiBentoboxFeb2021.pdf"],
+    audit_links: ["https://abracadabramoney.gitbook.io/learn/our-ecosystem/our-contracts"],
     governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"],
     stablecoins: ["magic-internet-money"],
+    github: ["Abracadabra-money"]
   },
   {
     id: "348",
@@ -5205,6 +5223,7 @@ const data: Protocol[] = [
     twitter: "IronFinance",
     audit_links: ["https://docs.iron.finance/bsc/audits", "https://docs.iron.finance/iron-finance-on-polygon/audit"],
     forkedFrom: ["Frax"],
+    deadUrl: true
   },
   {
     id: "353",
@@ -5244,8 +5263,7 @@ const data: Protocol[] = [
     module: "insurace/index.js",
     twitter: "InsurAce_io",
     audit_links: [
-      "https://files.insurace.io/public/security/InsurAce-DeFi%20Smart%20Contract%20Security%20Audit%20Report.pdf",
-      "https://files.insurace.io/public/security/InsurAcePeckShieldAuditReport.pdf",
+      "https://docs.insurace.io/landing-page/documentation/security-1",
     ],
   },
   {
@@ -5462,7 +5480,8 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon"],
     module: "volmex/index.js",
     twitter: "volmexfinance",
-    audit_links: ["https://docs.volmex.finance/security/audits"],
+    audit_links: ["https://docs.volmex.finance/smart-contracts/audits"],
+    github: ["volmexfinance"]
   },
   {
     id: "365",
@@ -5518,7 +5537,7 @@ const data: Protocol[] = [
       "Sale, swap, earn, lock all on one decentralized, community driven platform. Earn PinkS by staking LP & tokens. Welcome to PinkArmy Family!",
     chain: "Binance",
     logo: `${baseIconsUrl}/pinkswap.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "pinkswap-token",
     cmcId: "1384",
@@ -5527,9 +5546,8 @@ const data: Protocol[] = [
     module: "pinkswap/index.js",
     forkedFrom: ["Uniswap V2"],
     twitter: "pinkmoonfinance",
-    audit_links: [
-      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/PinkSwap%20Token%20Full%20Smart%20Contract%20Security%20Audit.pdf",
-    ],
+    audit_links: [],
+    github: ["user:pinkmoonfinance"]
   },
   {
     id: "368",
@@ -5551,8 +5569,7 @@ const data: Protocol[] = [
     twitter: "ChannelsFinance",
     forkedFrom: ["Compound"],
     audit_links: [
-      "https://attest.im/attestation/searchResult?qurey=4c533d00766c4b2a9761fad5da78b56f",
-      "https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MSgvIS2RfKE66pfkI81%2F-MUv-RfymyB6PvCRlnwz%2F-MUv1a71AjJ6p3Bgz5ui%2FChannels-Audit-Report-030321(1).pdf?alt=media&token=1af91ea6-d3d0-4ba3-8784-5dce6a907930",
+      "https://channelsofficial.gitbook.io/channels-finance-english/overview/audit",
     ],
   },
   {
@@ -5597,6 +5614,7 @@ const data: Protocol[] = [
     twitter: "MerlinLab_",
     audit_links: ["https://merlinlab.gitbook.io/merlin/security-and-risks"],
     oracles: ["Chainlink"],
+    deadUrl: true
   },
   {
     id: "371",
@@ -5624,7 +5642,7 @@ const data: Protocol[] = [
     name: "Rabbit Finance",
     address: "bsc:0x95a1199eba84ac5f19546519e287d43d2f0e1b41",
     symbol: "RABBIT",
-    url: "https://www.rabbitfinance.io/earn",
+    url: "https://rabbitfinance.io/",
     description:
       "Rabbit Finance is a cross-chain excess lending protocol, which can help users deposit and obtain more interest and help liquidity farmers obtain higher income through high as 9x leverage.",
     chain: "Binance",
@@ -5637,7 +5655,8 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "rabbitfinance/index.js",
     twitter: "FinanceRabbit",
-    audit_links: ["https://rabbitfinance.gitbook.io/homepage/resources/audit-report"],
+    audit_links: [],
+    github: ["RabbitFinanceProtocol"]
   },
   {
     id: "373",
@@ -5977,6 +5996,7 @@ const data: Protocol[] = [
     module: "nowswap/index.js",
     forkedFrom: ["Uniswap V2"],
     twitter: "nowswap_org",
+    deadUrl: true
   },
   {
     id: "389",
@@ -6038,6 +6058,7 @@ const data: Protocol[] = [
     twitter: "PantherSwap",
     audit_links: ["https://docs.pantherswap.com/security/audits"],
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "392",
@@ -6120,6 +6141,7 @@ const data: Protocol[] = [
     module: "wakafinance.js",
     twitter: "WakaFinance",
     audit_links: ["https://waka-finance-2.gitbook.io/waka-finance/documentation/audit"],
+    deadUrl: true
   },
   {
     id: "396",
@@ -6142,6 +6164,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/polydex-fi/polydex-swap-core/blob/5fdd6b85550235800cd980ccb8fab9bd5247a7af/PolydexSwap.pdf",
     ],
+    deadUrl: true
   },
   {
     id: "397",
@@ -6251,6 +6274,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-ApeRocket-v1.0.pdf",
     ],
+    deadUrl: true
   },
   {
     id: "402",
@@ -6301,7 +6325,7 @@ const data: Protocol[] = [
     description: "BXH (Bitcoin Dex on HECO) is an innovative Dex trading platform developed based on HECO Chain.",
     chain: "Heco",
     logo: `${baseIconsUrl}/bxh.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "bxh",
     cmcId: null,
@@ -6310,7 +6334,7 @@ const data: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "bxh/index.js",
     twitter: "BXH_Blockchain",
-    audit_links: ["https://mos-wallet-public.oss-cn-hangzhou.aliyuncs.com/mos/BXH/bxh_audit.pdf"],
+    audit_links: [],
   },
   {
     id: "405",
@@ -6331,7 +6355,7 @@ const data: Protocol[] = [
     twitter: "tokenlon",
     governanceID: ["snapshot:tokenlon.eth"],
     audit_links: [
-      "https://github.com/consenlabs/tokenlon-security/blob/master/audits/PeckShield-Audit-TokenlonV5-v1.0rc.pdf",
+      "https://github.com/consenlabs/tokenlon-contracts/tree/v5/audits",
     ],
   },
   {
@@ -6548,7 +6572,7 @@ const data: Protocol[] = [
       "WeStarter is a cross-chain token initial swap platform which based on HECO network. Through the fluency of the product and sufficient industry resources, it carries the requirement of resources for a variety of asset types. With the role of gatekeeper, through the decentralized incentive and governance mechanism of tokens, to achieve the goal of selecting high-quality assets.",
     chain: "Heco",
     logo: `${baseIconsUrl}/westarter.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "westarter",
     cmcId: "9757",
@@ -6556,9 +6580,7 @@ const data: Protocol[] = [
     chains: ["Heco"],
     module: "westater/index.js",
     twitter: "westarter_org",
-    audit_links: [
-      "https://www.westarter.org/static/media/Security%20Assessment%20for%20WeStarter%20-%20Starter.4901202a.pdf",
-    ],
+    audit_links: [],
   },
   {
     id: "417",
@@ -6579,6 +6601,7 @@ const data: Protocol[] = [
     twitter: "SolyardFinance",
     audit_links: ["https://github.com/SolyardFinance/Audit/blob/master/SlowMistAuditReport-SolYard.pdf"],
     openSource: false,
+    deadUrl: true
   },
   {
     id: "418",
@@ -6712,7 +6735,7 @@ const data: Protocol[] = [
     name: "Deri Protocol",
     address: "bsc:0xe60eaf5A997DFAe83739e035b005A33AfdCc6df5",
     symbol: "DERI",
-    url: "https://deri.finance",
+    url: "https://deri.io/#/trade/options",
     description:
       "Deri Protocol is a decentralized protocol for users to exchange risk exposures precisely and capital efficiently. It is the DeFi way to trade derivatives: to hedge, to speculate, to arbitrage, all on chain.",
     chain: "Binance",
@@ -6726,8 +6749,9 @@ const data: Protocol[] = [
     module: "deri/index.js",
     treasury: "deri-protocol.js",
     twitter: "DeriProtocol",
-    audit_links: ["https://docs.deri.finance/code-audits"],
+    audit_links: ["https://docs.deri.io/library/code-audits"],
     oracles: ["Chainlink"],
+    github: ["user:deri-protocol"]
   },
   // {
   //   id: "424",
@@ -6918,6 +6942,7 @@ const data: Protocol[] = [
     twitter: "LongdrinkDefi",
     audit_links: ["https://github.com/LongdrinkDefi/contracts/tree/main/audit"],
     forkedFrom: ["BasketDAO"],
+    deadUrl: true
   },
   {
     id: "433",
@@ -6929,7 +6954,7 @@ const data: Protocol[] = [
       "DAOventures is a DeFi technologies based automated investment fund that automatically invests into DeFi protocols and generates returns for the fund based on risk mandate.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/daoventures.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "daoventures",
     cmcId: "8478",
@@ -6937,7 +6962,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "daoventures/index.js",
     twitter: "VenturesDao",
-    audit_links: ["https://github.com/daoventures/dao-audits"],
+    audit_links: [],
   },
   {
     id: "434",
@@ -7066,6 +7091,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "thegrandbanks/index.js",
     twitter: "Grandbanks13",
     audit_links: ["https://www.certik.org/projects/grandbanks"],
+    deadUrl: true
   },
   {
     id: "440",
@@ -7084,7 +7110,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Terra"],
     module: "loterra/index.js",
     twitter: "LoTerra_LOTA",
-    audit_links: ["https://docs.loterra.io/loterra/resources/security-audit#security-audit-report"],
+    audit_links: ["https://docs.loterra.io/resources/security-audit"],
     oracles: ["Terrand"],
     openSource: true,
   },
@@ -7128,6 +7154,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "universe/index.js",
     twitter: "universe_xyz",
     audit_links: ["https://github.com/UniverseXYZ/xyzDAO-PM/tree/master/audits"],
+    deadUrl: true
   },
   {
     id: "443",
@@ -7155,7 +7182,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "PolyDEX-Cryption Network",
     address: "polygon:0xd1e6354fb05bf72a8909266203dab80947dceccf",
     symbol: "CNT",
-    url: "https://www.polydex.org",
+    url: "https://www.polydex.org/",
     description: "Redefining your DEX Experience. Completely gasless, instant and cross chain AMM DEX",
     chain: "Polygon",
     logo: `${baseIconsUrl}/polydex-cryption-network.png`,
@@ -7479,6 +7506,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "MultiplierMXX",
     audit_links: ["https://mcl-docs.multiplier.finance/developers/security-and-audits"],
     oracles: ["Chainlink"],
+    deadUrl: true
   },
   {
     id: "460",
@@ -7565,7 +7593,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "groprotocol/index.js",
     twitter: "groprotocol",
-    audit_links: ["https://docs.gro.xyz/gro-docs/how-it-works/security-and-audits/audits"],
+    audit_links: ["https://docs.gro.xyz/gro-docs/security/audits"],
     governanceID: ["snapshot:gro.xyz"]
   },
   {
@@ -7573,7 +7601,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Beta Finance",
     address: "0xbe1a001fe942f96eea22ba08783140b9dcc09d28",
     symbol: "BETA",
-    url: "https://betafinance.org",
+    url: "https://www.betafinance.org/",
     description: "Beta Finance is the permissionless money market for borrowing, lending, and shorting crypto assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/beta-finance.jpg`,
@@ -7625,6 +7653,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "vanilla/index.js",
     twitter: "VanillaDeFi",
     audit_links: ["https://github.com/vanilladefi/contracts/tree/main/audits"],
+    deadUrl: true
   },
   {
     id: "467",
@@ -7714,6 +7743,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mensa/index.js",
     twitter: "MensaPro",
     audit_links: ["https://docs.mensapro.com/risk-control/audit-reports"],
+    deadUrl: true
   },
   {
     id: "471",

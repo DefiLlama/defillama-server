@@ -4684,7 +4684,7 @@ const data2: Protocol[] = [
     cmcId: "18439",
     category: "NFT Lending",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Chainlink"],
     forkedFrom: [],
     module: "jpeg-d/index.js",
     treasury: "jpegd",

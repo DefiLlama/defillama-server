@@ -11143,7 +11143,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Algo-Stable",
+    category: "Algo-Stables",
     chains: ["Binance"],
     module: "dinotopia/index.js",
     twitter: "dinotopiafi",

@@ -10227,7 +10227,7 @@ const data3: Protocol[] = [
     id: "3172",
     name: "Concordex",
     address: null,
-    symbol: "CCD",
+    symbol: "-",
     url: "https://concordex.io",
     description: "Institutional-grade decentralized exchange on Concordium blockchain",
     chain: "Concordium",

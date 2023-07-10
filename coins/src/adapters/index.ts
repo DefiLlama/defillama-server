@@ -4,6 +4,7 @@ export default {
   dforce: require("./moneyMarkets/dforce"),
   shlb: require("./other"),
   // minswap: require("./markets/minswap"),
+  ergopad: require("./markets/ergopad"),
   sundaeswap: require("./markets/sundaeswap"),
   wingriders: require("./markets/wingriders"),
   metronome: require("./other"),

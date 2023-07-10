@@ -20464,6 +20464,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ergo"],
     module: "ergodex.js",
     twitter: "spectrumlabs_",
+    github: ['spectrum-finance'],
     oracles: ["Internal"],
     listedAt: 1640305029,
   },

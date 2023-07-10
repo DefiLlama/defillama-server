@@ -3,8 +3,14 @@ import { Write, } from "../utils/dbInterfaces";
 import { addToDBWritesList, getTokenAndRedirectData, } from "../utils/database";
 import axios from 'axios'
 
+
 export function sundaeswap(timestamp: number) {
   console.log("starting sundaeswap");
+  
+  const THIRY_MINUTES = 1800
+  if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
+    throw new Error("Can't fetch historical data")
+
   return Promise.all([
     getTokenPrices(timestamp),
   ])

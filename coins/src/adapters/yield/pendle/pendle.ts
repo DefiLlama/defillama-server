@@ -46,6 +46,15 @@ export default async function getTokenPrices(
     timestamp,
   );
 
+  if (chain == "arbitrum")
+    underlyingTokenData.push(
+      ...(await getTokenAndRedirectData(
+        ["0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84"],
+        "ethereum",
+        timestamp,
+      )),
+    );
+
   async function newMarkets() {
     return await getLogs({
       api,

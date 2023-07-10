@@ -91,6 +91,7 @@ export default {
   spacefi: require("./markets/uniswap"),
   gemswap: require("./markets/uniswap"),
   extraUniV2Lps: require("./markets/uniswap"),
+  thena: require("./markets/uniswap"),
   stargate: require("./markets/stargate"),
   jarvis: require("./markets/jarvis"),
   chainlinkNFT: require("./nft/chainlink"),

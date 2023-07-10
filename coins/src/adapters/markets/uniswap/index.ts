@@ -262,7 +262,16 @@ export function glacier(timestamp: number = 0) {
     timestamp,
   );
 }
-
+export function thena(timestamp: number = 0) {
+  console.log("starting thena");
+  return getTokenPrices(
+    "bsc",
+    "0xAFD89d21BdB66d00817d4153E055830B1c2B3970",
+    "0x6352a56caadC4F1E25CD6c75970Fa768A3304e64",
+    undefined,
+    timestamp,
+  );
+}
 export function extraUniV2Lps(timestamp: number = 0) {
   console.log("starting extra uni v2 lps");
   return Promise.all([

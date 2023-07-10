@@ -11176,28 +11176,6 @@ const data3: Protocol[] = [
     listedAt: 1689020071,
     github: ["user:capt-nemo429"]
   },
-  {
-    id: "3215",
-    name: "ImmutableX",
-    address: "bsc:0xfE8FFB60a2B6d46102caa35739Be465E600D0f5E",
-    symbol: "FOSSIL",
-    url: "https://dinotopia.finance/",
-    description: `Fantasm Fork on BSC`,
-    chain: "Binance",
-    logo: `${baseIconsUrl}/dinotopia-finance.png`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Algo-Stables",
-    chains: ["Binance"],
-    module: "dinotopia/index.js",
-    twitter: "dinotopiafi",
-    oracles: ["Chainlink", "TWAP"],
-    forkedFrom: ["Fantasm"],
-    listedAt: 1688857145,
-    github: ["dinotopiafi"]
-  },
 ]
 
 export default data3

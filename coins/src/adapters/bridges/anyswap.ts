@@ -92,7 +92,7 @@ export default async function bridge(): Promise<Token[]> {
 
     tokens.push({
       from: `${destinationChain}:${destinationToken}`,
-      to: destinationChain == 'fantom' ? `zero` : `${originChain}:${srcToken}`,
+      to: destinationChain == 'fantom' ? `ethereum:zero` : `${originChain}:${srcToken}`,
       symbol: token.symbol,
       decimals: token.decimals
     });

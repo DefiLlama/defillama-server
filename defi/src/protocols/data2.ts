@@ -424,7 +424,7 @@ const data2: Protocol[] = [
     name: "Benqi Staked Avax",
     address: null,
     symbol: "-",
-    assetToken:"SAVAX",
+    assetToken: "SAVAX",
     url: "https://staking.benqi.fi",
     description: "Stake AVAX on BENQI's Liquid Staking Protocol and freely utilize it within powerful Decentralized Financial applications.",
     chain: "Avalanche",
@@ -1154,7 +1154,7 @@ const data2: Protocol[] = [
       "https://github.com/elysia-dev/elyfi-token/tree/main/audit"
     ],
     listedAt: 1645646372,
-    governanceID: ["snapshot:elyfi-bsc.eth","eip155:1:0x0c54629266d7fa40B4BFaF1640ebC2Cd093866C3",]
+    governanceID: ["snapshot:elyfi-bsc.eth", "eip155:1:0x0c54629266d7fa40B4BFaF1640ebC2Cd093866C3",]
   },
   {
     id: "1460",
@@ -1314,7 +1314,7 @@ const data2: Protocol[] = [
     twitter: "@ALEXLabBTC",
     audit_links: ["https://www.alexgo.io/#Security"],
     language: "Clarity",
-    github:["alexgo-io"],
+    github: ["alexgo-io"],
     listedAt: 1645731214,
   },
   {
@@ -2577,7 +2577,7 @@ const data2: Protocol[] = [
     cmcId: "18621",
     category: "Lending",
     chains: ["Terra"],
-    oracles: ["TWAP","Pyth"],
+    oracles: ["TWAP", "Pyth"],
     forkedFrom: [],
     module: "mars/index.js",
     twitter: "mars_protocol",
@@ -4203,6 +4203,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "ergopad/index.js",
     twitter: "ErgoPadOfficial",
+    github: ["ergo-pad"],
     listedAt: 1648752461
   },
   {
@@ -5369,7 +5370,7 @@ const data2: Protocol[] = [
     name: "sICX",
     address: null,
     symbol: "-",
-    assetToken:"sICX",
+    assetToken: "sICX",
     url: "https://icon.community",
     description: "sICX is a token that represents a share of a pool of staked ICX, so it’s always accruing staking rewards and compounding automatically.",
     chain: "Icon",
@@ -13485,7 +13486,7 @@ const data2: Protocol[] = [
     module: "silo/index.js",
     treasury: "silo-finance.js",
     twitter: "SiloFinance",
-    governanceID: ["snapshot:silofinance.eth","eip155:1:0xA89163F7B2D68A8fbA6Ca36BEEd32Bd4f3EeAf61"],
+    governanceID: ["snapshot:silofinance.eth", "eip155:1:0xA89163F7B2D68A8fbA6Ca36BEEd32Bd4f3EeAf61"],
     audit_links: [
       "https://drive.google.com/file/d/1D2EIOb0XaRov5Ph2AE0DTfIsMISd7UXG/view",
       "https://drive.google.com/file/d/1WXaB3ICLv4rSEX86POK3-NaOIxXwyq9l/view",
@@ -18001,7 +18002,7 @@ const data2: Protocol[] = [
     name: "Coinbase Wrapped Staked ETH",
     address: null,
     symbol: "-",
-    assetToken:"CBETH",
+    assetToken: "CBETH",
     url: "https://www.coinbase.com/price/coinbase-wrapped-staked-eth",
     description:
       "Coinbase is allowing customers who stake ETH to receive an ERC20 utility token called Coinbase Wrapped Staked ETH (“cbETH”), which is a liquid representation of their staked-ETH.",
@@ -19665,7 +19666,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Derivatives",
-    chains: ["Polygon","Arbitrum"],
+    chains: ["Polygon", "Arbitrum"],
     module: "perp88/index.js",
     twitter: "HMXorg",
     forkedFrom: [],
@@ -19920,7 +19921,7 @@ const data2: Protocol[] = [
     name: "Jito",
     address: null,
     symbol: "-",
-    assetToken:"JitoSOL",
+    assetToken: "JitoSOL",
     url: "https://jito.network",
     description: "MEV-Boosted Staking Rewards",
     chain: "Solana",
@@ -21402,30 +21403,30 @@ const data2: Protocol[] = [
     ],
     listedAt: 1671546445
   },
-/*
-  {
-    id: "2373",
-    name: "Binance US",
-    address: null,
-    symbol: "-",
-    url: "https://www.binance.us",
-    description:
-      "Buy, sell, and trade Bitcoin, Ethereum, and over 130 cryptocurrencies with some of the lowest trading fees in the US.",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/binance-us.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "CEX",
-    chains: ["Ethereum"],
-    module: "binance-us/index.js",
-    twitter: "BinanceUS",
-    forkedFrom: [],
-    oracles: [],
-    listedAt: 1671554817
-  },
-*/
+  /*
+    {
+      id: "2373",
+      name: "Binance US",
+      address: null,
+      symbol: "-",
+      url: "https://www.binance.us",
+      description:
+        "Buy, sell, and trade Bitcoin, Ethereum, and over 130 cryptocurrencies with some of the lowest trading fees in the US.",
+      chain: "Ethereum",
+      logo: `${baseIconsUrl}/binance-us.jpg`,
+      audits: "0",
+      audit_note: null,
+      gecko_id: null,
+      cmcId: null,
+      category: "CEX",
+      chains: ["Ethereum"],
+      module: "binance-us/index.js",
+      twitter: "BinanceUS",
+      forkedFrom: [],
+      oracles: [],
+      listedAt: 1671554817
+    },
+  */
   {
     id: "2374",
     name: "Contango",
@@ -22380,7 +22381,7 @@ const data2: Protocol[] = [
     name: "OKC Liquid Staking",
     address: null,
     symbol: "-",
-    assetToken:"stOKT",
+    assetToken: "stOKT",
     url: "https://www.okx.com/okc/liquid-staking",
     description:
       "Liquidity for staked OKT(stOKT) on OKX Chain.",
@@ -23269,7 +23270,7 @@ const data2: Protocol[] = [
     name: "GETH",
     address: null,
     symbol: "-",
-    assetToken:"GETH",
+    assetToken: "GETH",
     url: "https://guarda.com/staking/ethereum-staking/",
     description:
       "With GETH, you can hold or trade your staked assets at any time, without having to wait for Phase 2 of Ethereum 2.0.",
@@ -23580,7 +23581,7 @@ const data2: Protocol[] = [
     module: "zyberswap/index.js",
     twitter: "zyberswap",
     oracles: ["TWAP"],
-    forkedFrom: ["Uniswap V2"], 
+    forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/solidproof/projects/blob/main/ZyberSwap/SmartContract_Audit_Solidproof_Zyberswap.pdf"],
     parentProtocol: "parent#zyberswap",
     listedAt: 1674558950
@@ -25182,7 +25183,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Compound"],
     module: "fluxfinance/index.js",
-    governanceID: ["compound:ethereum:0x336505EC1BcC1A020EeDe459f57581725D23465A",'eip155:1:0x336505EC1BcC1A020EeDe459f57581725D23465A'],
+    governanceID: ["compound:ethereum:0x336505EC1BcC1A020EeDe459f57581725D23465A", 'eip155:1:0x336505EC1BcC1A020EeDe459f57581725D23465A'],
     twitter: "FluxDeFi",
     listedAt: 1676431956,
   },

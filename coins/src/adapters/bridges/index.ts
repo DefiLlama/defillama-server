@@ -97,7 +97,7 @@ async function storeTokensOfBridge(bridge: Bridge) {
   await Promise.all(
     toRecords.map(async (record) => {
       const toPK = record.PK;
-      if (record.price) {
+      if (record.price != null) {
         toAddressToRecord[toPK] = toPK;
       } else if (record.redirect) {
         redirectsNeeded.push({

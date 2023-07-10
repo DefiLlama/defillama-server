@@ -5648,6 +5648,11 @@
       "symbol": "DAI",
       "to": "coingecko#dai"
     },
+    "erc20:tether:usdt": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
     "0x0000000000000000000000000000000000000000": {
       "name": "kava",
       "decimals": "18",
@@ -7082,31 +7087,31 @@
       "decimals": "6",
       "symbol": "JUNO",
       "to": "coingecko#juno-network"
-    },    
+    },
     "531804EA11DBF043843E20CC6498B5C4C2B19726A33891CAB919545DD3D612E0": {
       "name": "jakcal",
       "decimals": "6",
       "symbol": "JKL",
       "to": "coingecko#jackal-protocol"
-    },       
+    },
     "2AB7D3FAE795E5DD7ACDE80D215DE076AE4DF64367E2D4B801B595F504002A9E": {
       "name": "akash-network",
       "decimals": "6",
       "symbol": "AKT",
       "to": "coingecko#akash-network"
-    },    
+    },
     "5EDC10227E40B52D893F5A26C107E2A338C4A643615C10B356DC62B5F4FE1DB1": {
       "name": "crypto-com-chain",
       "decimals": "8",
       "symbol": "CRO",
       "to": "coingecko#cronos"
-    },    
+    },
     "DA8D591FFA8836FDF3AD0F9F8AF4EAA77D9D4F23DA3D10DFD1FC3B9A3644B26D": {
       "name": "Umee",
       "decimals": "6",
       "symbol": "UMEE",
       "to": "coingecko#umee"
-    },    
+    },
     "4DF678EF85F1FD3CEFF41429E14B22E5D7730B00230688E6783AF06112415620": {
       "name": "canto",
       "decimals": "18",
@@ -7123,19 +7128,19 @@
       "name": "axelar",
       "decimals": "6",
       "symbol": "AXL",
-      "to": "coingecko#axelar"      
+      "to": "coingecko#axelar"
     },
     "1620B95419728A7DEF482DEB9462DD6B9FA120BCB49CCCF74209A56AB9835E59": {
       "name": "gravity-bridge-wrapped-bitcoin",
       "decimals": "8",
       "symbol": "WBTC",
-      "to": "coingecko#wrapped-bitcoin"      
+      "to": "coingecko#wrapped-bitcoin"
     },
     "4171A6F59F8A708D807E03B43FA0E16EC7041C189557B7A8E519757424367D41": {
       "name": "stride-staked-EVMOS",
       "decimals": "18",
       "symbol": "STEVMOS",
-      "to": "coingecko#stride-staked-evmos"      
+      "to": "coingecko#stride-staked-evmos"
     },
     "61DF64ADF65230540C14C63D64897BE08A3DC9A516A91425913F01240E2F432F": {
       "name": "comdex",
@@ -7153,7 +7158,7 @@
       "name": "stride-staked-UMEE",
       "decimals": "6",
       "symbol": "STUMEE",
-      "to": "coingecko#umee"      
+      "to": "coingecko#umee"
     }
   },
   "bitindi": {
@@ -7665,12 +7670,12 @@
       "decimals": "9",
       "symbol": "pHDRN",
       "to": "coingecko#hedron"
-    },  
+    },
     "0xAbF663531FA10ab8116cbf7d5c6229B018A26Ff9": {
       "decimals": "9",
       "symbol": "wHDRN",
       "to": "coingecko#hedron"
-    },    
+    },
     "0x95b303987a60c71504d99aa1b13b4da07b0790ab": {
       "decimals": "18",
       "symbol": "PLSX",

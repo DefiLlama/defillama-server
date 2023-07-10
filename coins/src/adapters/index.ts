@@ -110,5 +110,6 @@ export default {
   stkaurabal: require("./other"),
   glpDerivs: require("./yield/glpDerivs"),
   pendle: require("./yield/pendle"),
-  // phux: require("./markets/phux"),
+  phux: require("./markets/phux"),
+  wombat: require("./markets/wombat"),
 };

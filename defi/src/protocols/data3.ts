@@ -11001,7 +11001,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3207",
-    name: "BitKeep Wallet",
+    name: "BitKeep Swap",
     address: null,
     symbol: "-",
     url: "https://bitkeep.com/en/index",

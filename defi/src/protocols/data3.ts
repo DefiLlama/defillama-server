@@ -11007,7 +11007,7 @@ const data3: Protocol[] = [
     url: "https://bitkeep.com/en/index",
     description: `Your Web3 Crypto Wallet for effortless trading.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bitkeep-wallet.jpg`,
+    logo: `${baseIconsUrl}/bitkeep-swap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

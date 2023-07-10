@@ -21928,6 +21928,8 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Binance"],
     module: "level/index.js",
+    github: ["level-fi"],
+    treasury: "level.js",
     twitter: "Level__Finance",
     forkedFrom: [],
     oracles: ["Chainlink", "Pyth"],

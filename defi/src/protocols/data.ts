@@ -6515,6 +6515,7 @@ const data: Protocol[] = [
     chains: ["Terra"],
     module: "specfinance.js",
     twitter: "SpecProtocol",
+    github: ['spectrumprotocol'],
     audit_links: [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Spectrum_Protocol_CosmWasm_Smart_Contract_Security_Audit_Halborn_Report_v1_1.pdf",
     ],

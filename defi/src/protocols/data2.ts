@@ -16894,8 +16894,7 @@ const data2: Protocol[] = [
     module: "quickswap-lending/index.js",
     twitter: "QuickswapDEX",
     listedAt: 1665495016,
-    parentProtocol: "parent#quickswap"
-
+    //parentProtocol: "parent#quickswap" // Removed at the request of quickswap's team
   },
   {
     id: "2174",

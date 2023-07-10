@@ -1825,7 +1825,7 @@ const parentProtocols: IParentProtocol[] = [
     url: "https://shadeprotocol.io",
     description: "A suite of privacy preserving DeFi applications.",
     logo: `${baseIconsUrl}/shade-protocol.jpg`,
-    gecko_id: "shade-protocol",
+    gecko_id: null, //shade-protocol
     cmcId: "18699",
     chains: [],
     twitter: "Shade_Protocol",

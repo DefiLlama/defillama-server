@@ -88,6 +88,14 @@
       "to": "ethereum:0xdac17f958d2ee523a2206206994597c13d831ec7"
     }
   },
+  "kujira": {
+     "factory:kujira1643jxg8wasy5cfcn7xm8rd742yeazcksqlg4d7:umnta": {
+      "name": "mnta",
+      "decimals": "6",
+      "symbol": "MNTA",
+      "to": "coingecko#mantadao"
+    },
+  },
   "stacks": {
     "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin::wrapped-bitcoin": {
       "decimals": "8",

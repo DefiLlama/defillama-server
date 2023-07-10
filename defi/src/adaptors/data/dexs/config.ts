@@ -1596,7 +1596,7 @@ export default {
         "id": "2804"
     },
     "interest-protocol": {
-        "enabled": true,
+        "enabled": false,
         "id": "3015"
     },
     "fxdx": {

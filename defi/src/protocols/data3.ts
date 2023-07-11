@@ -11352,8 +11352,8 @@ const data3: Protocol[] = [
   {
     id: "3223",
     name: "Tendie Swap",
-    address: null,
-    symbol: "-",
+    address: "tenet:0x0260F440AEa04a1690aB183Dd63C5596d66A9a43",
+    symbol: "TENDIES",
     url: "https://tendieswap.app/#/swap",
     description: `Launching the first Defi Hub on Tenet. Our goal is to be the main Defi hub on Tenet offering projects tools to bootstrap liquidity.`,
     chain: "Tenet",

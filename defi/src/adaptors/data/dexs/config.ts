@@ -1662,6 +1662,7 @@ export default {
         id: "2376"
     },
     "thalaswap": {
+        parentId: "Thala Labs",
         enabled: true,
         id: "2795"
     },

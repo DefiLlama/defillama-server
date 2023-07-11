@@ -25054,7 +25054,6 @@ const data2: Protocol[] = [
     module: "vaultka/index.js",
     twitter: "Vaultkaofficial",
     oracles: ["Chainlink"],
-    forkedFrom: ["Rage Trade"],
     listedAt: 1676372614
   },
   {

@@ -1732,6 +1732,12 @@ export const chainCoingeckoIds = {
       types: ["L2", "gas"]
     },
   },
+  "Tenet": {
+    geckoId: "tenet-1b000f7b-59cb-4e06-89ce-d62b32d362b9",
+    symbol: "TENET",
+    cmcId: "24892",
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2161,6 +2167,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Chihuahua"
     case "rollux":
       return "Rollux"
+    case "tenet":
+      return "Tenet"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

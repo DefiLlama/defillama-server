@@ -36,29 +36,31 @@ export default async function getTokenPrices(
     timestamp,
   );
 
-  const pricedAddresses: string[] = poolTokenData.map(
-    (p: CoinData) => p.address,
+  const pricedAddresses: { [address: string]: number | undefined } = {};
+  poolTokenData.map(
+    (p: CoinData) => (pricedAddresses[p.address] = p.confidence),
   );
 
   const calls: any[] = [];
   poolTokens.map((tokens: string[], i: number) => {
-    let pricedToken: string | undefined;
+    let pricedToken: { address: string; confidence: number } = {
+      address: "",
+      confidence: 0,
+    };
     let unpricedToken: string | undefined;
 
     tokens.map((t: string) => {
-      if (pricedAddresses.includes(t.toLowerCase()) && pricedToken == null) {
-        pricedToken = t.toLowerCase();
-      } else if (
-        !pricedAddresses.includes(t.toLowerCase()) &&
-        unpricedToken == null
-      ) {
+      const conf = pricedAddresses[t.toLowerCase()];
+      if (conf && pricedToken.confidence < conf) {
+        pricedToken = { address: t.toLowerCase(), confidence: conf };
+      } else if (unpricedToken == null) {
         unpricedToken = t.toLowerCase();
       }
     });
 
     calls.push({
       target: contracts.markets[i],
-      params: [pricedToken, unpricedToken, swapQty],
+      params: [pricedToken.address, unpricedToken, swapQty],
     });
   });
 
@@ -77,7 +79,9 @@ export default async function getTokenPrices(
   );
 
   swapRates.map((r: any, i: number) => {
-    const referenceTokenIndex = pricedAddresses.indexOf(r.input.params[0]);
+    const referenceTokenIndex = Object.keys(pricedAddresses).indexOf(
+      r.input.params[0],
+    );
     const referenceTokenPrice = poolTokenData[referenceTokenIndex].price;
     const price = (referenceTokenPrice * swapQty) / r.output.potentialOutcome;
 

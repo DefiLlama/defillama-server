@@ -2,7 +2,7 @@ require("dotenv").config();
 import adapters from "./adapters/index";
 import {
   batchWriteWithAlerts,
-  // batchWrite2WithAlerts,
+  batchWrite2WithAlerts,
 } from "./adapters/utils/database";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
@@ -35,9 +35,7 @@ export default async function handler(event: any) {
               resultsWithoutDuplicates.slice(i, i + step),
               true,
             ),
-            // await batchWrite2WithAlerts(
-            //   resultsWithoutDuplicates.slice(i, i + step),
-            // ),
+            batchWrite2WithAlerts(resultsWithoutDuplicates.slice(i, i + step)),
           ]);
         }
         console.log(`${a[i][0]} done`);

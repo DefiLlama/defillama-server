@@ -13,7 +13,7 @@ import {
 } from "./dbInterfaces";
 import { contracts } from "../other/distressedAssets";
 import { sendMessage } from "./../../../../defi/src/utils/discord";
-// import { batchWrite2, translateItems } from "../../../coins2";
+import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 
 export async function getTokenAndRedirectData(
@@ -321,17 +321,17 @@ export async function batchWriteWithAlerts(
   );
   await batchWrite(filteredItems, failOnError);
 }
-// export async function batchWrite2WithAlerts(
-//   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-// ) {
-//   const previousItems: DbEntry[] = await readPreviousValues(items);
-//   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
-//     items,
-//     previousItems,
-//   );
+export async function batchWrite2WithAlerts(
+  items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+) {
+  const previousItems: DbEntry[] = await readPreviousValues(items);
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
+    items,
+    previousItems,
+  );
 
-//   await batchWrite2(await translateItems(filteredItems));
-// }
+  await batchWrite2(await translateItems(filteredItems));
+}
 async function readPreviousValues(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
 ): Promise<DbEntry[]> {

@@ -11308,6 +11308,26 @@ const data3: Protocol[] = [
     github: ["sigmaO"],
     listedAt: 1689082433
   },
+  {
+    id: "3221",
+    name: "NEAR",
+    address: null,
+    symbol: "-",
+    url: "https://near.org/",
+    description: `Effortlessly create and distribute innovative decentralized apps across any blockchain, while helping build a more open web, with the NEAR Blockchain Operating System (BOS).`,
+    chain: "Near",
+    logo: `${baseIconsUrl}/near.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "near",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Near"],
+    module: "dummy.js",
+    twitter: null,
+    oracles: [],
+    forkedFrom: [],
+  },
 ]
 
 export default data3

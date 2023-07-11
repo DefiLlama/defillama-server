@@ -4258,6 +4258,7 @@ const data3: Protocol[] = [
     twitter: "LybraFinanceLSD",
     audit_links: ["https://solidity.finance/audits/Lybra/"],
     listedAt: 1682586612,
+    github: ["LybraFinance"],
     stablecoins: ["eusd"]
   },
   {

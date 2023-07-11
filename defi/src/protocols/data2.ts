@@ -15351,13 +15351,13 @@ const data2: Protocol[] = [
   },
   {
     id: "2104",
-    name: "Swaap",
+    name: "Swaap V1",
     address: null,
     symbol: "-",
     url: "https://www.swaap.finance",
     description: "Swaap is a market neutral AMM.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/swaap.png`,
+    logo: `${baseIconsUrl}/swaap-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -15369,6 +15369,7 @@ const data2: Protocol[] = [
     module: "swaap/index.js",
     twitter: "SwaapFinance",
     audit_links: ["https://github.com/swaap-labs/swaap-core-v1/tree/main/audits"],
+    parentProtocol: "parent#swaap",
     listedAt: 1663691569
   },
   {

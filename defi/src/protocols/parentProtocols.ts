@@ -2159,6 +2159,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "UNCX_token",
   },
+  {
+    id: "parent#swaap",
+    name: "Swaap",
+    url: "https://www.swaap.finance",
+    description: "Swaap is a market neutral AMM.",
+    logo: `${baseIconsUrl}/swaap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SwaapFinance",
+  },
 ];
 
 export default parentProtocols;

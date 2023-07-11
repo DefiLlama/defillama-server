@@ -11241,6 +11241,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1689070740,
   },
+  {
+    id: "3218",
+    name: "Swaap V2",
+    address: null,
+    symbol: "-",
+    url: "https://www.swaap.finance",
+    description: `Swaap is a market neutral AMM.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/swaap-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum", "Polygon"],
+    module: "swaap-v2/index.js",
+    twitter: "SwaapFinance",
+    oracles: [],
+    forkedFrom: [],
+    parentProtocol: "parent#swaap",
+    listedAt: 1689081238
+  },
 ]
 
 export default data3

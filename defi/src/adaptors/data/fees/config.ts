@@ -978,6 +978,7 @@ export default {
         id: "3168"
     },
     "thalaswap": {
+        parentId: "Thala Labs",
         enabled: true,
         id: "2795"
     },
@@ -1007,5 +1008,10 @@ export default {
     "pendle": {
         enabled: true,
         id: "382"
+    },
+    "move-dollar": {
+        parentId: "Thala Labs",
+        enabled: true,
+        id: "2789"
     }
 } as AdaptorsConfig

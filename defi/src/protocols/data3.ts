@@ -11161,7 +11161,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sigmafi.app/#/",
-    description: `Sigma Finance (SigmaFi) allows anyone with an Ergo wallet to request a loan`,
+    description: `Sigma Finance (SigmaFi) allows anyone with an Ergo wallet to request a loan. Each request specifies the loan amount, the length (term) of the loan and the amount of interest of the loan`,
     chain: "Ergo",
     logo: `${baseIconsUrl}/sigmafi.png`,
     audits: "0",

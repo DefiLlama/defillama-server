@@ -1013,5 +1013,9 @@ export default {
         parentId: "Thala Labs",
         enabled: true,
         id: "2789"
+    },
+    "pinnako": {
+        enabled: true,
+        id: "3209"
     }
 } as AdaptorsConfig

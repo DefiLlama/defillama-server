@@ -11185,7 +11185,7 @@ const data3: Protocol[] = [
     url: "https://lab.aerielab.io",
     description: `Dex on Ethereum`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/aerie.jpg`,
+    logo: `${baseIconsUrl}/aerie-lab.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

@@ -11392,6 +11392,27 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1689153769
   },
+  {
+    id: "3225",
+    name: "HOPE Swap",
+    address: null,
+    symbol: "-",
+    url: "https://hope.money",
+    description: `All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/hope-swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "hope-swap/index.js",
+    twitter: "hope_ecosystem",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1689167605
+  },
 ]
 
 export default data3

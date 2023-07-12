@@ -88,7 +88,6 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "PodsFinance",
-    governanceID: ["snapshot:podsfinance.eth"],
     github: ["pods-finance"],
   },
   {

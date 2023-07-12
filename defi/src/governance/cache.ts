@@ -3,7 +3,7 @@ import fetch from "node-fetch"
 import { storeR2JSONString } from '../utils/r2';
 
 function getKey(govType: string, project: string): string {
-  return `governance-cache/${govType}/${project.toLowerCase()}.json`.replace(/(:|')/g, '/')
+  return `governance-cache/${govType}/${project.toLowerCase()}.json`.replace(/(:|'’)/g, '/')
 }
 
 function getLink(govType: string, project: string): string {

@@ -1,4 +1,5 @@
 import getTokenPrices from "./uniswap";
+import getExtras from "./extraLp";
 
 export function uniswap(timestamp: number = 0) {
   console.log("starting uniswap");
@@ -6,7 +7,8 @@ export function uniswap(timestamp: number = 0) {
     "ethereum",
     "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
     "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-    "https://api.thegraph.com/subgraphs/name/ianlapham/uniswapv2",
+    //"https://api.thegraph.com/subgraphs/name/ianlapham/uniswapv2",
+    "https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev",
     timestamp,
   );
 }
@@ -259,4 +261,37 @@ export function glacier(timestamp: number = 0) {
     undefined,
     timestamp,
   );
+}
+export function thena(timestamp: number = 0) {
+  console.log("starting thena");
+  return getTokenPrices(
+    "bsc",
+    "0xAFD89d21BdB66d00817d4153E055830B1c2B3970",
+    "0x6352a56caadC4F1E25CD6c75970Fa768A3304e64",
+    undefined,
+    timestamp,
+  );
+}
+export function extraUniV2Lps(timestamp: number = 0) {
+  console.log("starting extra uni v2 lps");
+  return Promise.all([
+    getExtras(
+      timestamp,
+      "0x82DB765c214C1AAB16672058A3C22b12F6A42CD0",
+      "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
+      "avax",
+    ),
+    getExtras(
+      timestamp,
+      "0x5f973e06a59d0bafe464faf36d5b3b06e075c543",
+      "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
+      "avax",
+    ),
+    getExtras(
+      timestamp,
+      "0xd1f377b881010cb97ab0890a5ef908c45bcf13f9",
+      "0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664",
+      "avax",
+    ),
+  ]);
 }

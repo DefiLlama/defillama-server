@@ -120,7 +120,7 @@ const main = async () => {
   sdk.log('Refilling for keys: ', process.argv[3].split(','))
   const protocolToRefill = process.argv[2]
   const chainsToRefill = process.argv[3].split(',')
-  const latestDate = (process.argv[4] ?? "now") === "now" ? undefined : Number(process.argv[3]); // undefined -> start from today, number => start from that unix timestamp
+  const latestDate = (process.argv[4] ?? "now") === "now" ? undefined : Number(process.argv[4]); // undefined -> start from today, number => start from that unix timestamp
   const batchSize = Number(process.argv[5] ?? 1); // how many days to fill in parallel
   if (process.env.HISTORICAL !== "true") {
     throw new Error(`You must set HISTORICAL="true" in your .env`)

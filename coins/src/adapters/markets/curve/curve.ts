@@ -48,12 +48,37 @@ async function getPcsPools(chain: any, block: number | undefined) {
 
   return pools;
 }
+async function getPoolsFromRegistryAggregator(block: number | undefined) {
+  const target: string = "0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC";
+  const poolCount: Result = (
+    await call({
+      target,
+      abi: abi.pool_count,
+      block,
+    })
+  ).output;
+
+  const pools: any = { stableswap: [], stableFactory: [], cryptoFactory: [] };
+  pools["crypto"] = (
+    await multiCall({
+      calls: [...Array(Number(poolCount)).keys()].map((n) => ({
+        target,
+        params: [n],
+      })),
+      abi: abi.pool_list,
+      block,
+    })
+  ).output;
+
+  return pools;
+}
 async function getPools(
   chain: any,
   block: number | undefined,
   name: string | undefined,
 ) {
   if (name == "pcs") return await getPcsPools(chain, block);
+  if (chain == "ethereum") return await getPoolsFromRegistryAggregator(block);
   const registries: string[] =
     chain == "bsc"
       ? [
@@ -416,7 +441,7 @@ async function unknownPools(
         const token: string = await PoolToToken(chain, pool, block);
         // THIS IS GOOD FOR DEBUG
         // if (
-        //   !["0xefde221f306152971d8e9f181bfe998447975810"].includes(
+        //   !["0x7f86bf177dd4f3494b841a37e810a34dd56c829b"].includes(
         //     token.toLowerCase(),
         //   )
         // )

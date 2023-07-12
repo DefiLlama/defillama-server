@@ -89,6 +89,7 @@ jobs:
           INDEXER_DB: ${{ secrets.INDEXER_DB }}
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           AGGREGATOR_DB_URL: ${{ secrets.AGGREGATOR_DB_URL }}
+          AGGREGATOR_DB_URL_NEW: ${{ secrets.AGGREGATOR_DB_URL_NEW }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
@@ -99,7 +100,9 @@ jobs:
           ACCOUNTS_DB: ${{ secrets.ACCOUNTS_DB }}
           CG_KEY: ${{ secrets.CG_KEY }}
           ERROR_DB: ${{ secrets.ERROR_DB }}
-          ERROR_REPORTS_WEBHOOK:  ${{ secrets.ERROR_REPORTS_WEBHOOK }}
+          ERROR_REPORTS_WEBHOOK: ${{ secrets.ERROR_REPORTS_WEBHOOK }}
           ERROR_REPORTS_DB: ${{ secrets.ERROR_REPORTS_DB }}
           ALLIUM_API_KEY: ${{ secrets.ALLIUM_API_KEY }}
           FLIPSIDE_API_KEY: ${{ secrets.FLIPSIDE_API_KEY }}
+          COINGLASS_KEY: ${{ secrets.COINGLASS_KEY }}
+          UNLOCKS_WEBHOOK: ${{ secrets.UNLOCKS_WEBHOOK }}

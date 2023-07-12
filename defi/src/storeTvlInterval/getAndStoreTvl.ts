@@ -258,21 +258,24 @@ export async function storeTvl(
         unixTimestamp,
         tokensBalances,
         hourlyTokensTvl,
-        dailyTokensTvl
+        dailyTokensTvl,
+        storePreviousData
       );
       const storeUsdTokensAction = storeNewTokensValueLocked(
         protocol,
         unixTimestamp,
         usdTokenBalances,
         hourlyUsdTokensTvl,
-        dailyUsdTokensTvl
+        dailyUsdTokensTvl,
+        storePreviousData
       );
       const storeRawTokensAction = storeNewTokensValueLocked(
         protocol,
         unixTimestamp,
         rawTokenBalances,
         hourlyRawTokensTvl,
-        dailyRawTokensTvl
+        dailyRawTokensTvl,
+        storePreviousData
       );
 
       await Promise.all([storeTokensAction, storeUsdTokensAction, storeRawTokensAction]);

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 script_dir="$(dirname "$(readlink -f "$0")")"
+root_dir="$(dirname "$script_dir")"
 
 function printTitle() {
   echo ""
@@ -11,7 +12,12 @@ function printTitle() {
 }
 
 
+printTitle "Installing dependencies (parent folder)..."
+cd $root_dir/..
+time npm i
+
 printTitle "Installing dependencies..."
+cd $root_dir
 time npm i
 
 printTitle "Updating dev mapping from our data.ts files"

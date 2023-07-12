@@ -10,6 +10,7 @@
     "test-coin": "ts-node src/test.ts",
     "test:watch": "jest --watch",
     "refill": "tableName='prod-coins-table' AWS_REGION='eu-central-1' ts-node src/refill",
+    "storeBridgedCoins": "ts-node src/cli/storeBridgedCoins",
     "build": "sls package"
   },
   "devDependencies": {
@@ -28,7 +29,6 @@
     "serverless": "^2.31.0",
     "serverless-esbuild": "^1.26.2",
     "serverless-offline": "^7.0.0",
-    "serverless-plugin-datadog": "^5.14.1",
     "serverless-plugin-log-retention": "^2.0.0",
     "serverless-prune-plugin": "^1.4.4",
     "ts-jest": "^26.5.4",
@@ -37,6 +37,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.354.0",
     "@defillama/sdk": "^4.0.7",
     "@ethersproject/bignumber": "^5.5.0",
     "@sentry/serverless": "^6.19.7",

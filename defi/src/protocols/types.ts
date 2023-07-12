@@ -32,6 +32,8 @@ export interface Protocol {
   github?: Array<string>;
   stablecoins?: string[];
   wrongLiquidity?: boolean;
+  rugged?: boolean;
+  deadUrl?: boolean;
 }
 
 export interface IParentProtocol {

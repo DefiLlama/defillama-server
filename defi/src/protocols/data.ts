@@ -67,6 +67,7 @@ const data: Protocol[] = [
     twitter: "WrappedBTC",
     audit_links: ["https://wbtc.network/dashboard/audit"],
     oracles: [],
+    github: ["WrappedBTC"]
   },
   {
     id: "3",
@@ -131,7 +132,8 @@ const data: Protocol[] = [
     module: "harvest/api.js",
     twitter: "harvest_finance",
     audit_links: ["https://github.com/harvest-finance/harvest/tree/master/audits"],
-    governanceID: ["snapshot:harvestfi.eth"]
+    governanceID: ["snapshot:harvestfi.eth"],
+    github: ["harvest-finance", "harvestfi"]
   },
   {
     id: "113",
@@ -154,7 +156,8 @@ const data: Protocol[] = [
     twitter: "iearnfinance",
     audit_links: ["https://github.com/yearn/yearn-audits"],
     language: "Vyper",
-    governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"]
+    governanceID: ["snapshot:ybaby.eth", "snapshot:yearn"],
+    github: ["iearn-finance", "yearn"]
   },
   {
     id: "114",
@@ -197,7 +200,7 @@ const data: Protocol[] = [
     module: "synthetix/index.js",
     treasury: "synthetix.js",
     twitter: "synthetix_io",
-    audit_links: ["https://docs.synthetix.io/contracts/audits/"],
+    audit_links: ["https://docs.synthetix.io/v/v3/for-developers/smart-contract-audits/"],
     oraclesByChain: {
       ethereum: ["Chainlink"],
       optimism: ["Chainlink", "Pyth"],
@@ -223,7 +226,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "balancer-v1/index.js",
     twitter: "BalancerLabs",
-    audit_links: ["https://docs.balancer.fi/core-concepts/security/audits"],
+    audit_links: ["https://docs.balancer.fi/reference/contracts/security.html#audits"],
     parentProtocol: "parent#balancer",
   },
   {
@@ -247,7 +250,8 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/renproject/ren/wiki/Audits"],
     oracles: [],
     governanceID: ["snapshot:ren-project.eth"],
-    github: ["renproject"]
+    github: ["renproject"],
+    deadUrl: true
   },
   {
     id: "118",
@@ -541,7 +545,7 @@ const data: Protocol[] = [
     description: "imToken is an easy and secure digital wallet trusted by millions",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/the-tokenized-bitcoin.png`,
-    audits: null,
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -552,8 +556,8 @@ const data: Protocol[] = [
     twitter: "tokenlon",
     audit_links: [
       "https://cure53.de/pentest-report_imtoken.pdf",
-      "https://drive.google.com/file/d/1o7byxnZbhl8PkWpYHnWtxDgUp_cpPO73/view",
     ],
+    github: ["consenlabs"]
   },
   {
     id: "131",
@@ -635,7 +639,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon", "Arbitrum"],
     module: "pickle/index.js",
     twitter: "picklefinance",
-    audit_links: ["https://docs.pickle.finance/faqs/security"],
+    audit_links: ["https://docs.pickle.finance/security/audits-and-timelock/smart-contract-audits"],
     governanceID: ["snapshot:pickle.eth"],
     github: ["pickle-finance"]
   },
@@ -835,6 +839,7 @@ const data: Protocol[] = [
       "https://github.com/trailofbits/publications/blob/master/reviews/amp.pdf",
     ],
     oracles: ["Chainlink"],
+    github: ["flexahq"]
   },
   {
     id: "144",
@@ -859,7 +864,8 @@ const data: Protocol[] = [
     audit_links: ["https://docs.dydx.exchange/#independent-audits"],
     oracles: ["Chainlink"],
     language: "Cairo",
-    governanceID: ["snapshot:dydxgov.eth"]
+    governanceID: ["snapshot:dydxgov.eth"],
+    github: ["dydxfoundation", "dydxprotocol"]
   },
   {
     id: "145",
@@ -879,6 +885,8 @@ const data: Protocol[] = [
     chains: ["Solana"],
     module: "serum.js",
     twitter: "ProjectSerum",
+    github: ["project-serum", "SerumTaxTime"],
+    deadUrl: true
   },
   {
     id: "146",
@@ -900,7 +908,8 @@ const data: Protocol[] = [
     twitter: "BreederDodo",
     audit_links: ["https://github.com/DODOEX/docs/blob/master/docs/audit.md"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:dodobird.eth"]
+    governanceID: ["snapshot:dodobird.eth"],
+    github: ["DODOEX"]
   },
   {
     id: "148",
@@ -921,14 +930,16 @@ const data: Protocol[] = [
     twitter: "TornadoCash",
     audit_links: ["https://tornado.cash/#faq"],
     oracles: [],
-    treasury: "tornado-cash.js"
+    treasury: "tornado-cash.js",
+    github: ["tornadocash"],
+    deadUrl: true
   },
   {
     id: "149",
     name: "B.Protocol",
     address: "0xbbBBBBB5AA847A2003fbC6b5C16DF0Bd1E725f61",
     symbol: "BPRO",
-    url: "https://www.bprotocol.org/",
+    url: "https://app.bprotocol.org/",
     description:
       "B.Protocol makes lending platforms more secure by eliminating the gas wars and shifting the miner’s profit to the users.",
     chain: "Ethereum",
@@ -941,8 +952,9 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "bprotocol/index.js",
     twitter: "bprotocoleth",
-    audit_links: ["https://app.bprotocol.org/risk"],
+    audit_links: ["https://docs.bprotocol.org/technical-documentation/bug-bounty"],
     oracles: ["Chainlink"],
+    github: ["backstop-protocol"]
   },
   {
     id: "150",
@@ -970,7 +982,8 @@ const data: Protocol[] = [
       "snapshot:idlefinance.eth",
       "eip155:1:0x3D5Fc645320be0A085A32885F078F7121e5E5375",
       "eip155:1:0x2256b25CFC8E35c3135664FD03E77595042fe31B"
-    ]
+    ],
+    github: ["Idle-Labs"]
   },
   {
     id: "151",
@@ -1014,6 +1027,7 @@ const data: Protocol[] = [
     twitter: "AugurProject",
     audit_links: ["https://github.com/AugurProject/augur-audits"],
     oracles: ["Chainlink"],
+    github: ["AugurProject"]
   },
   {
     id: "153",
@@ -1034,6 +1048,7 @@ const data: Protocol[] = [
     twitter: "CoFiXProtocol",
     oracles: ["Nest"],
     audit_links: ["https://github.com/Computable-Finance/CoFiX/tree/master/security_audit"],
+    github: ["Computable-Finance"]
   },
   {
     id: "155",
@@ -1054,7 +1069,8 @@ const data: Protocol[] = [
     module: "keeper-dao/index.js",
     treasury: "keeperdao.js",
     twitter: "rook",
-    governanceID: ["snapshot:rook.eth"]
+    governanceID: ["snapshot:rook.eth"],
+    github: ["keeperdao"]
   },
   {
     id: "156",
@@ -1074,6 +1090,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "zlot/index.js",
     twitter: "zLOTFinance",
+    github: ["rueisnax/zlot-finance-governance-staking-subgraph"]
   },
   {
     id: "157",
@@ -1092,16 +1109,17 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "88mph/index.js",
     twitter: "88mphapp",
-    audit_links: ["https://docs.88mph.app/main-products/security-and-audits#is-88mph-audited"],
+    audit_links: ["https://docs.88mph.app/developer-docs/security"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:88mph.eth"]
+    governanceID: ["snapshot:88mph.eth"],
+    github: ["88mphapp"]
   },
   {
     id: "158",
     name: "Dracula",
     address: "0xb78B3320493a4EFaa1028130C5Ba26f0B6085Ef8",
     symbol: "DRC",
-    url: "https://dracula.sucks/",
+    url: "https://dracula-metaverse.com/",
     description:
       "Meta-level vampirism concept implemented in Dracula protocol delivers higher profits while mitigating those risks.",
     chain: "Ethereum",
@@ -1115,7 +1133,8 @@ const data: Protocol[] = [
     module: "dracula.js",
     twitter: "DraculaProtocol",
     audit_links: ["https://solidity.finance/audits/Dracula/"],
-    governanceID: ["snapshot:draculasucks.eth"]
+    governanceID: ["snapshot:draculasucks.eth"],
+    github: ["Dracula-Protocol"]
   },
   {
     id: "159",
@@ -1137,6 +1156,7 @@ const data: Protocol[] = [
     twitter: "GrowthDefi",
     audit_links: ["https://consensys.net/diligence/audits/2020/12/growth-defi-v1/"],
     oracles: ["Chainlink"],
+    github: ["GrowthDeFi"]
   },
   {
     id: "160",
@@ -1182,7 +1202,8 @@ const data: Protocol[] = [
       "https://github.com/BoringDAO/boringDAO-contract/blob/master/peckshield-audit-report-boringdao-v1.0rc.pdf",
     ],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:boringvote.eth"]
+    governanceID: ["snapshot:boringvote.eth"],
+    github: ["BoringDAO"]
   },
   {
     id: "162",
@@ -1224,6 +1245,7 @@ const data: Protocol[] = [
     module: "fortube/index.js",
     twitter: "ForTubeFi",
     audit_links: ["https://for.tube/security"],
+    github: ["thefortube"]
   },
   {
     id: "164",
@@ -1265,7 +1287,9 @@ const data: Protocol[] = [
     module: "cover.js",
     twitter: "CoverProtocol",
     audit_links: ["https://github.com/CoverProtocol/cover-security/tree/master/audits"],
-    governanceID: ["snapshot:cover-protocol.eth"]
+    governanceID: ["snapshot:cover-protocol.eth"],
+    github: ["CoverProtocol"],
+    deadUrl: true
   },
   {
     id: "166",
@@ -1285,7 +1309,8 @@ const data: Protocol[] = [
     module: "truefi/index.js",
     twitter: "TrustToken",
     audit_links: ["https://github.com/trusttoken/audits/tree/master/TrueFi"],
-    governanceID: ["snapshot:truefigov.eth", 'eip155:1:0x585CcA060422ef1779Fb0Dd710A49e7C49A823C9',]
+    governanceID: ["snapshot:truefigov.eth", 'eip155:1:0x585CcA060422ef1779Fb0Dd710A49e7C49A823C9',],
+    github: ["trusttoken"]
   },
   {
     id: "167",
@@ -1307,7 +1332,8 @@ const data: Protocol[] = [
     treasury: "piedao.js",
     twitter: "PieDAO_Defi",
     audit_links: ["https://docs.piedao.org/technical/audits"],
-    governanceID: ["snapshot:piedao.eth"]
+    governanceID: ["snapshot:piedao.eth"],
+    github: ["pie-dao"]
   },
   {
     id: "168",
@@ -1327,6 +1353,7 @@ const data: Protocol[] = [
     module: "dev.js",
     twitter: "devprtcl",
     audit_links: ["https://github.com/dev-protocol/protocol/blob/main/docs/audit-report__quantstamp--sept-15-2020.pdf"],
+    github: ["dev-protocol"]
   },
   {
     id: "169",
@@ -1346,6 +1373,7 @@ const data: Protocol[] = [
     module: "basis-cash.js",
     twitter: "BasisCash",
     audit_links: ["https://github.com/basisdollar/basisdollar-protocol#audit"],
+    github: ["Basis-Cash"]
   },
   {
     id: "170",
@@ -1367,6 +1395,8 @@ const data: Protocol[] = [
     twitter: "fin_nexus",
     audit_links: ["https://github.com/Phoenix-Finance/Pdfs/blob/master/PeckShield-Audit-FinnexusOptionsV1.0.pdf"],
     oracles: ["Chainlink", "Band"],
+    github: ["FinNexus"],
+    deadUrl: true
   },
   {
     id: "171",
@@ -1385,6 +1415,8 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "synlev.js",
     twitter: null,
+    github: ["SynLev"],
+    rugged: true
   },
   {
     id: "172",
@@ -1409,7 +1441,8 @@ const data: Protocol[] = [
       "https://gist.github.com/bernard-wagner/8a96ae7b9746ba8394dc6c16202a6b64",
     ],
     twitter: "indexcoop",
-    governanceID: ["snapshot:index-coop.eth"]
+    governanceID: ["snapshot:index-coop.eth"],
+    github: ["SetProtocol/index-coop"]
   },
   {
     id: "173",
@@ -1441,6 +1474,7 @@ const data: Protocol[] = [
     ],
     governanceID: ["snapshot:badgerdao.eth"],
     oracles: [],
+    github: ["Badger-Finance"]
   },
   {
     id: "174",
@@ -1460,6 +1494,7 @@ const data: Protocol[] = [
     module: "bt-finance.js",
     twitter: "btdotfinance",
     audit_links: ["https://github.com/btdotfinance/bt-finance/tree/master/audits"],
+    github: ["btdotfinance/bt-finance"]
   },
   {
     id: "175",
@@ -1885,6 +1920,7 @@ const data: Protocol[] = [
     twitter: "defidollar",
     audit_links: ["https://docs.dusd.finance/audits"],
     oracles: ["Chainlink"],
+    deadUrl: true
   },
   /*
   {
@@ -1912,7 +1948,7 @@ const data: Protocol[] = [
     name: "Ooki",
     address: "0x0De05F6447ab4D22c8827449EE4bA2D5C288379B",
     symbol: "OOKI",
-    url: "https://hello.ooki.com",
+    url: "https://ipfs-ooki-eth.ipns.dweb.link/lend/asset",
     description:
       "Ooki is a flexible decentralized finance protocol for margin trading, borrowing, lending and staking on multiple blockchains.",
     chain: "Ethereum",
@@ -2183,7 +2219,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "yaxis/index.js",
     twitter: "yaxis_project",
-    audit_links: ["https://github.com/yaxis-project/SushiSwap/tree/main/audits"],
+    audit_links: ["https://github.com/yaxis-project/yaxis-audit"],
     governanceID: ["snapshot:yaxis.eth"]
   },
   {
@@ -2328,7 +2364,7 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon", "xDai"],
     module: "connext/index.js",
     twitter: "ConnextNetwork",
-    audit_links: ["https://drive.google.com/file/d/1l42vxzHwLXrKU10v3FutG2DWthU43vB8/view"],
+    audit_links: ["https://drive.google.com/file/d/1l42vxzHwLXrKU10v3FutG2DWthU43vB8/view?pli=1"],
   },
   {
     id: "218",
@@ -2467,7 +2503,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "dextf",
     cmcId: "8691",
-    category: "Yield",
+    category: "Indexes",
     chains: ["Ethereum"],
     module: "dextf/index.js",
     twitter: "DomaniProtocol",
@@ -2554,7 +2590,7 @@ const data: Protocol[] = [
     module: "futureswap/index.js",
     treasury: "futureswap.js",
     twitter: "futureswapx",
-    audit_links: ["https://docs.futureswap.com/protocol/audits"],
+    audit_links: ["https://docs.futureswap.com/other/audits"],
     oracles: ["Chainlink"],
   },
   {
@@ -2739,6 +2775,7 @@ const data: Protocol[] = [
     twitter: "Swipe",
     audit_links: ["https://www.certik.org/projects/swipe"],
     oracles: ["Chainlink", "Band"],
+    deadUrl: true
   },
   {
     id: "238",
@@ -2780,7 +2817,7 @@ const data: Protocol[] = [
     module: "pooltogether/index.js",
     treasury: "pooltogether.js",
     twitter: "PoolTogether_",
-    audit_links: ["https://docs.pooltogether.com/security/audits-and-testing"],
+    audit_links: ["https://docs.pooltogether.com/security/audits"],
     oracles: ["Chainlink"],
     governanceID: [
       "snapshot:pooltogether.eth", 
@@ -2837,7 +2874,7 @@ const data: Protocol[] = [
     name: "Energiswap",
     address: "0x1416946162b1c2c871a73b07e932d2fb6c932069",
     symbol: "NRG",
-    url: "https://www.energiswap.exchange",
+    url: "https://app.energiswap.exchange/#/swap",
     description: "A fully decentralized protocol for automated liquidity provision on Energi.",
     chain: "Energi",
     logo: `${baseIconsUrl}/energiswap.jpg`,
@@ -2854,7 +2891,7 @@ const data: Protocol[] = [
   {
     id: "243",
     name: "Flamincome",
-    address: "0x57dD84042ec9507963016596A34EdaD42F7e4CCE ",
+    address: "0x57dD84042ec9507963016596A34EdaD42F7e4CCE",
     symbol: "FLAG",
     url: "https://flamincome.finance",
     description: "Yield aggregator for flamingo finance",
@@ -2868,6 +2905,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "flamincome.js",
     twitter: "flamincome",
+    github: ["flamincome"],
     audit_links: ["https://github.com/flamincome/audits"],
   },
   {
@@ -2970,6 +3008,7 @@ const data: Protocol[] = [
   //   chains: ["Ethereum"],
   //   module: "forcedao/index.js",
   //   twitter: "force_dao",
+  //   deadUrl: true
   // },
   {
     id: "249",
@@ -3152,6 +3191,7 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "allinx.js",
     twitter: "allinxproject",
+    deadUrl: true
   },
   {
     id: "257",
@@ -3175,6 +3215,7 @@ const data: Protocol[] = [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=7b91209f526407299aee5f99688b62fb2c337a4316a6b305719a9e3cd5442348",
       "https://www.certik.org/projects/xdefi",
     ],
+    deadUrl: true
   },
   {
     id: "258",
@@ -3237,6 +3278,7 @@ const data: Protocol[] = [
     audit_links: ["https://docsend.com/view/p4es2dgvwadamgqg"],
     oracles: ["Band"],
     openSource: true,
+    deadUrl: true
   },
   {
     id: "261",
@@ -3306,7 +3348,7 @@ const data: Protocol[] = [
       "RAY is a set of smart contracts that automatically move crypto assets to the highest yielding opportunity.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/robo-advisor-for-yield.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -3314,7 +3356,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "ray/index.js",
     twitter: null,
-    audit_links: ["https://staked.gitbook.io/staked/ray/security"],
+    audit_links: [],
   },
   {
     id: "265",
@@ -3333,7 +3375,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "reflexer/index.js",
     twitter: "reflexerfinance",
-    audit_links: ["https://reflexer.finance/about/"],
+    audit_links: ["https://docs.reflexer.finance/risk/geb-risks"],
     oracles: ["Chainlink"],
     governanceID: ["eip155:1:0x7a6BBe7fDd793CC9ab7e0fc33605FCd2D19371E8"],
     stablecoins: ["rai-reflex-index"]
@@ -3356,7 +3398,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "set-protocol/index.js",
     twitter: "SetProtocol",
-    audit_links: ["https://www.tokensets.com/security"],
+    audit_links: ["https://www.tokensets.com/#/security"],
     oracles: ["Chainlink"],
   },
   {
@@ -3368,7 +3410,7 @@ const data: Protocol[] = [
     description: "S.Finance is a stable coin trading protocol, introducing a new token governance plan.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/s-finance.svg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "s-finance",
     cmcId: "7187",
@@ -3376,7 +3418,8 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "sfinance/index.js",
     twitter: "SFinanceEx",
-    audit_links: ["https://s.finance/risks"],
+    audit_links: [],
+    deadUrl: true
   },
   {
     id: "268",
@@ -3760,24 +3803,26 @@ const data: Protocol[] = [
   },
   {
     id: "286",
-    name: "Mango Markets",
+    name: "Mango Markets V3",
     address: "solana:MangoCzJ36AjZyKwVj3VnYU4GTonjfVEnJmvvWaxLac",
     symbol: "MNGO",
     url: "https://mango.markets",
     description:
       "Decentralized spot margined, perpetual futures markets, borrowing and lending protocol on Solana. Permissionless, all on-chain and all markets are collateralised.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/mango-markets.png`,
+    logo: `${baseIconsUrl}/mango-markets-v3.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "mango-markets",
-    cmcId: "11171",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Solana"],
     module: "mango-markets/index.js",
     twitter: "mangomarkets",
     audit_links: ["https://docs.mango.markets/audit"],
     oracles: ["Pyth"],
+    wrongLiquidity: true,
+    parentProtocol: "parent#mango-markets"
   },
   {
     id: "287",
@@ -3959,7 +4004,8 @@ const data: Protocol[] = [
     cmcId: "4847",
     category: "Chain",
     chains: ["Stacks"],
-    module: "stacks/index.js",
+    // module: "stacks/index.js",
+    module: "dummy.js",
     twitter: "Stacks",
   },
   {
@@ -4079,7 +4125,7 @@ const data: Protocol[] = [
       "Nerve is a trustless bridge and stableswap AMM designed to on-ramp & trade pegged assets quickly with minimal slippage.",
     chain: "Binance",
     logo: `${baseIconsUrl}/nerve.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "nerve-finance",
     cmcId: "8755",
@@ -4087,9 +4133,10 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "nerve/index.js",
     twitter: "NerveFinance",
-    audit_links: ["https://docs.nerve.fi/fundamentals/audits-and-security"],
+    audit_links: [],
     forkedFrom: ["Saddle Finance"],
-    governanceID: ["snapshot:nervefinance.eth"]
+    governanceID: ["snapshot:nervefinance.eth"],
+    deadUrl: true
   },
   {
     id: "302",
@@ -4187,7 +4234,7 @@ const data: Protocol[] = [
     chains: ["Polygon"],
     module: "quickswap/index.js",
     twitter: "QuickswapDEX",
-    audit_links: ["https://contractsecurity.io/quick-audit-report/"],
+    audit_links: ["https://docs.quickswap.exchange/concepts/advanced-topics/04-security"],
     forkedFrom: ["Uniswap V2"], 
     parentProtocol: "parent#quickswap",
   },
@@ -4303,7 +4350,7 @@ const data: Protocol[] = [
       "Stacker Ventures is a community-run protocol for initiating and managing pooled capital on the blockchain.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/stacker-ventures.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "stacker-ventures",
     cmcId: "8629",
@@ -4311,10 +4358,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "stacker/index.js",
     twitter: "StackerVentures",
-    audit_links: [
-      "https://docs.stacker.vc/docs-stacker-ventures/audits/active-yield-fund-audit-report",
-      "https://docs.stacker.vc/docs-stacker-ventures/audits/smart-contract-audit-report",
-    ],
+    audit_links: [],
   },
   {
     id: "313",
@@ -4336,6 +4380,7 @@ const data: Protocol[] = [
     twitter: "VenomDAO",
     audit_links: ["https://solidity.finance/audits/ViperSwap/"],
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "314",
@@ -4356,6 +4401,7 @@ const data: Protocol[] = [
     module: "gdl/index.js",
     twitter: "gondola_finance",
     forkedFrom: ["Saddle Finance"],
+    deadUrl: true
   },
   {
     id: "315",
@@ -4395,6 +4441,7 @@ const data: Protocol[] = [
     chains: ["Secret"],
     module: "secretswap.js",
     twitter: "SecretNetwork",
+    deadUrl: true
   },
   {
     id: "317",
@@ -4471,7 +4518,7 @@ const data: Protocol[] = [
       "Depth is a safe and high efficient stablecoin asset management protocol, based on the HECO Chain. As a trusted stablecoin swap manager, Depth allows users earn interest on deposits and swap of stablecoins in a safe and secure environment, with good depth, low slippage, and low transaction fees.",
     chain: "Heco",
     logo: `${baseIconsUrl}/depth.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "depth-token",
     cmcId: "9164",
@@ -4479,7 +4526,8 @@ const data: Protocol[] = [
     chains: ["Heco", "Binance"],
     module: "depth/index.js",
     twitter: "DepthFi",
-    audit_links: ["https://docs.depth.fi/audit"],
+    audit_links: [],
+    deadUrl: true
   },
   // 321 reserved for deprecated version of pancakeswap
   {
@@ -4702,8 +4750,9 @@ const data: Protocol[] = [
     chains: ["Fantom"],
     module: "aquarius/index.js",
     twitter: "Aquarius__Fi",
-    audit_links: ["https://docs.aquarius.fi/security/audit-report"],
+    audit_links: [],
     forkedFrom: ["Liquity"],
+    deadUrl: true
   },
   {
     id: "331",
@@ -4816,7 +4865,7 @@ const data: Protocol[] = [
     name: "Sifchain",
     address: "0x07bac35846e5ed502aa91adf6a9e7aa210f2dcbe",
     symbol: "EROWAN",
-    url: "https://sifchain.finance/",
+    url: "https://sifchain.network/",
     description: "The world's first omni-chain decentralized exchange.",
     chain: "Sifchain",
     logo: `${baseIconsUrl}/sifchain.png`,
@@ -4829,6 +4878,7 @@ const data: Protocol[] = [
     module: "sifchain.js",
     twitter: "sifchain",
     audit_links: ["https://drive.google.com/drive/u/1/folders/1kkjdpNuRmTjaiIKA6CQISavCvj4Awpbc"],
+    github: ["Sifchain"]
   },
   {
     id: "337",
@@ -4849,9 +4899,10 @@ const data: Protocol[] = [
     chains: ["Avalanche", "Arbitrum"],
     module: "gmx/index.js",
     twitter: "GMX_IO",
-    audit_links: ["https://github.com/xvi10/gambit-contracts/tree/master/audits"],
+    audit_links: ["https://gmxio.gitbook.io/gmx/audit"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:gmx.eth"]
+    governanceID: ["snapshot:gmx.eth"],
+    github: ["gmx-io"]
   },
   {
     id: "338",
@@ -4912,7 +4963,7 @@ const data: Protocol[] = [
     module: "olympus/api.js",
     treasury: "olympus-dao.js",
     twitter: "OlympusDAO",
-    audit_links: ["https://docs.olympusdao.finance/main/technical/audits"],
+    audit_links: ["https://docs.olympusdao.finance/main/security/audits"],
     governanceID: ["snapshot:olympusdao.eth"]
   },
   {
@@ -5059,9 +5110,10 @@ const data: Protocol[] = [
     module: "abracadabra/api.js",
     twitter: "MIM_Spell",
     oracles: ["Chainlink"],
-    audit_links: ["https://www.certora.com/pubs/SushiBentoboxFeb2021.pdf"],
+    audit_links: ["https://abracadabramoney.gitbook.io/learn/our-ecosystem/our-contracts"],
     governanceID: ["snapshot:abracadabrabymerlinthemagician.eth"],
     stablecoins: ["magic-internet-money"],
+    github: ["Abracadabra-money"]
   },
   {
     id: "348",
@@ -5171,6 +5223,7 @@ const data: Protocol[] = [
     twitter: "IronFinance",
     audit_links: ["https://docs.iron.finance/bsc/audits", "https://docs.iron.finance/iron-finance-on-polygon/audit"],
     forkedFrom: ["Frax"],
+    deadUrl: true
   },
   {
     id: "353",
@@ -5210,8 +5263,7 @@ const data: Protocol[] = [
     module: "insurace/index.js",
     twitter: "InsurAce_io",
     audit_links: [
-      "https://files.insurace.io/public/security/InsurAce-DeFi%20Smart%20Contract%20Security%20Audit%20Report.pdf",
-      "https://files.insurace.io/public/security/InsurAcePeckShieldAuditReport.pdf",
+      "https://docs.insurace.io/landing-page/documentation/security-1",
     ],
   },
   {
@@ -5428,7 +5480,8 @@ const data: Protocol[] = [
     chains: ["Ethereum", "Polygon"],
     module: "volmex/index.js",
     twitter: "volmexfinance",
-    audit_links: ["https://docs.volmex.finance/security/audits"],
+    audit_links: ["https://docs.volmex.finance/smart-contracts/audits"],
+    github: ["volmexfinance"]
   },
   {
     id: "365",
@@ -5484,7 +5537,7 @@ const data: Protocol[] = [
       "Sale, swap, earn, lock all on one decentralized, community driven platform. Earn PinkS by staking LP & tokens. Welcome to PinkArmy Family!",
     chain: "Binance",
     logo: `${baseIconsUrl}/pinkswap.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "pinkswap-token",
     cmcId: "1384",
@@ -5493,9 +5546,8 @@ const data: Protocol[] = [
     module: "pinkswap/index.js",
     forkedFrom: ["Uniswap V2"],
     twitter: "pinkmoonfinance",
-    audit_links: [
-      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/PinkSwap%20Token%20Full%20Smart%20Contract%20Security%20Audit.pdf",
-    ],
+    audit_links: [],
+    github: ["user:pinkmoonfinance"]
   },
   {
     id: "368",
@@ -5517,8 +5569,7 @@ const data: Protocol[] = [
     twitter: "ChannelsFinance",
     forkedFrom: ["Compound"],
     audit_links: [
-      "https://attest.im/attestation/searchResult?qurey=4c533d00766c4b2a9761fad5da78b56f",
-      "https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MSgvIS2RfKE66pfkI81%2F-MUv-RfymyB6PvCRlnwz%2F-MUv1a71AjJ6p3Bgz5ui%2FChannels-Audit-Report-030321(1).pdf?alt=media&token=1af91ea6-d3d0-4ba3-8784-5dce6a907930",
+      "https://channelsofficial.gitbook.io/channels-finance-english/overview/audit",
     ],
   },
   {
@@ -5563,6 +5614,7 @@ const data: Protocol[] = [
     twitter: "MerlinLab_",
     audit_links: ["https://merlinlab.gitbook.io/merlin/security-and-risks"],
     oracles: ["Chainlink"],
+    deadUrl: true
   },
   {
     id: "371",
@@ -5590,7 +5642,7 @@ const data: Protocol[] = [
     name: "Rabbit Finance",
     address: "bsc:0x95a1199eba84ac5f19546519e287d43d2f0e1b41",
     symbol: "RABBIT",
-    url: "https://www.rabbitfinance.io/earn",
+    url: "https://rabbitfinance.io/",
     description:
       "Rabbit Finance is a cross-chain excess lending protocol, which can help users deposit and obtain more interest and help liquidity farmers obtain higher income through high as 9x leverage.",
     chain: "Binance",
@@ -5603,29 +5655,30 @@ const data: Protocol[] = [
     chains: ["Binance"],
     module: "rabbitfinance/index.js",
     twitter: "FinanceRabbit",
-    audit_links: ["https://rabbitfinance.gitbook.io/homepage/resources/audit-report"],
+    audit_links: [],
+    github: ["RabbitFinanceProtocol"]
   },
   {
     id: "373",
-    name: "BiSwap",
+    name: "BiSwap V2",
     address: "bsc:0x965f527d9159dce6288a2219db51fc6eef120dd1",
     symbol: "BSW",
     url: "https://biswap.org/",
     description:
       "Biswap is a trusted DEX platform on the BNB Chain network with a Multi-type Referral Program and low trade fee starting from 0.1%. Biswap is the ecosystem that offers the best service and creates new standards in the DeFi industry",
     chain: "Binance",
-    logo: `${baseIconsUrl}/biswap.jpg`,
+    logo: `${baseIconsUrl}/biswap-v2.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "biswap",
-    cmcId: "10746",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Binance"],
     module: "biswap/index.js",
     twitter: "Biswap_Dex",
     audit_links: ["https://www.certik.org/projects/biswap"],
+    parentProtocol: "parent#biswap",
     forkedFrom: ["Uniswap V2"],
-    governanceID: ["snapshot:biswap-org.eth"]
   },
   {
     id: "374",
@@ -5943,6 +5996,7 @@ const data: Protocol[] = [
     module: "nowswap/index.js",
     forkedFrom: ["Uniswap V2"],
     twitter: "nowswap_org",
+    deadUrl: true
   },
   {
     id: "389",
@@ -6004,6 +6058,7 @@ const data: Protocol[] = [
     twitter: "PantherSwap",
     audit_links: ["https://docs.pantherswap.com/security/audits"],
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "392",
@@ -6086,6 +6141,7 @@ const data: Protocol[] = [
     module: "wakafinance.js",
     twitter: "WakaFinance",
     audit_links: ["https://waka-finance-2.gitbook.io/waka-finance/documentation/audit"],
+    deadUrl: true
   },
   {
     id: "396",
@@ -6108,6 +6164,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/polydex-fi/polydex-swap-core/blob/5fdd6b85550235800cd980ccb8fab9bd5247a7af/PolydexSwap.pdf",
     ],
+    deadUrl: true
   },
   {
     id: "397",
@@ -6217,6 +6274,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-ApeRocket-v1.0.pdf",
     ],
+    deadUrl: true
   },
   {
     id: "402",
@@ -6267,7 +6325,7 @@ const data: Protocol[] = [
     description: "BXH (Bitcoin Dex on HECO) is an innovative Dex trading platform developed based on HECO Chain.",
     chain: "Heco",
     logo: `${baseIconsUrl}/bxh.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "bxh",
     cmcId: null,
@@ -6276,7 +6334,7 @@ const data: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "bxh/index.js",
     twitter: "BXH_Blockchain",
-    audit_links: ["https://mos-wallet-public.oss-cn-hangzhou.aliyuncs.com/mos/BXH/bxh_audit.pdf"],
+    audit_links: [],
   },
   {
     id: "405",
@@ -6297,7 +6355,7 @@ const data: Protocol[] = [
     twitter: "tokenlon",
     governanceID: ["snapshot:tokenlon.eth"],
     audit_links: [
-      "https://github.com/consenlabs/tokenlon-security/blob/master/audits/PeckShield-Audit-TokenlonV5-v1.0rc.pdf",
+      "https://github.com/consenlabs/tokenlon-contracts/tree/v5/audits",
     ],
   },
   {
@@ -6457,6 +6515,7 @@ const data: Protocol[] = [
     chains: ["Terra"],
     module: "specfinance.js",
     twitter: "SpecProtocol",
+    github: ['spectrumprotocol'],
     audit_links: [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/CosmWasm%20Smart%20Contract%20Audits/Spectrum_Protocol_CosmWasm_Smart_Contract_Security_Audit_Halborn_Report_v1_1.pdf",
     ],
@@ -6514,7 +6573,7 @@ const data: Protocol[] = [
       "WeStarter is a cross-chain token initial swap platform which based on HECO network. Through the fluency of the product and sufficient industry resources, it carries the requirement of resources for a variety of asset types. With the role of gatekeeper, through the decentralized incentive and governance mechanism of tokens, to achieve the goal of selecting high-quality assets.",
     chain: "Heco",
     logo: `${baseIconsUrl}/westarter.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "westarter",
     cmcId: "9757",
@@ -6522,9 +6581,7 @@ const data: Protocol[] = [
     chains: ["Heco"],
     module: "westater/index.js",
     twitter: "westarter_org",
-    audit_links: [
-      "https://www.westarter.org/static/media/Security%20Assessment%20for%20WeStarter%20-%20Starter.4901202a.pdf",
-    ],
+    audit_links: [],
   },
   {
     id: "417",
@@ -6545,6 +6602,7 @@ const data: Protocol[] = [
     twitter: "SolyardFinance",
     audit_links: ["https://github.com/SolyardFinance/Audit/blob/master/SlowMistAuditReport-SolYard.pdf"],
     openSource: false,
+    deadUrl: true
   },
   {
     id: "418",
@@ -6678,7 +6736,7 @@ const data: Protocol[] = [
     name: "Deri Protocol",
     address: "bsc:0xe60eaf5A997DFAe83739e035b005A33AfdCc6df5",
     symbol: "DERI",
-    url: "https://deri.finance",
+    url: "https://deri.io/#/trade/options",
     description:
       "Deri Protocol is a decentralized protocol for users to exchange risk exposures precisely and capital efficiently. It is the DeFi way to trade derivatives: to hedge, to speculate, to arbitrage, all on chain.",
     chain: "Binance",
@@ -6692,8 +6750,9 @@ const data: Protocol[] = [
     module: "deri/index.js",
     treasury: "deri-protocol.js",
     twitter: "DeriProtocol",
-    audit_links: ["https://docs.deri.finance/code-audits"],
+    audit_links: ["https://docs.deri.io/library/code-audits"],
     oracles: ["Chainlink"],
+    github: ["user:deri-protocol"]
   },
   // {
   //   id: "424",
@@ -6884,6 +6943,7 @@ const data: Protocol[] = [
     twitter: "LongdrinkDefi",
     audit_links: ["https://github.com/LongdrinkDefi/contracts/tree/main/audit"],
     forkedFrom: ["BasketDAO"],
+    deadUrl: true
   },
   {
     id: "433",
@@ -6895,7 +6955,7 @@ const data: Protocol[] = [
       "DAOventures is a DeFi technologies based automated investment fund that automatically invests into DeFi protocols and generates returns for the fund based on risk mandate.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/daoventures.jpg`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "daoventures",
     cmcId: "8478",
@@ -6903,7 +6963,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "daoventures/index.js",
     twitter: "VenturesDao",
-    audit_links: ["https://github.com/daoventures/dao-audits"],
+    audit_links: [],
   },
   {
     id: "434",
@@ -7032,6 +7092,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "thegrandbanks/index.js",
     twitter: "Grandbanks13",
     audit_links: ["https://www.certik.org/projects/grandbanks"],
+    deadUrl: true
   },
   {
     id: "440",
@@ -7050,7 +7111,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Terra"],
     module: "loterra/index.js",
     twitter: "LoTerra_LOTA",
-    audit_links: ["https://docs.loterra.io/loterra/resources/security-audit#security-audit-report"],
+    audit_links: ["https://docs.loterra.io/resources/security-audit"],
     oracles: ["Terrand"],
     openSource: true,
   },
@@ -7094,6 +7155,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "universe/index.js",
     twitter: "universe_xyz",
     audit_links: ["https://github.com/UniverseXYZ/xyzDAO-PM/tree/master/audits"],
+    deadUrl: true
   },
   {
     id: "443",
@@ -7121,7 +7183,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "PolyDEX-Cryption Network",
     address: "polygon:0xd1e6354fb05bf72a8909266203dab80947dceccf",
     symbol: "CNT",
-    url: "https://www.polydex.org",
+    url: "https://www.polydex.org/",
     description: "Redefining your DEX Experience. Completely gasless, instant and cross chain AMM DEX",
     chain: "Polygon",
     logo: `${baseIconsUrl}/polydex-cryption-network.png`,
@@ -7383,7 +7445,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "457",
-    name: "Fuji Finance",
+    name: "Fuji V1",
     address: null,
     symbol: "-",
     url: "https://www.fujidao.org",
@@ -7394,7 +7456,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Lending",
+    category: "Lending",  
     chains: ["Ethereum"],
     module: "fujidao/index.js",
     audit_links: [
@@ -7402,6 +7464,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/Fujicracy/fuji-protocol/blob/main/audits/Fuji_TrailOfBits_2021-11.pdf",
     ],
     twitter: "FujiFinance",
+    parentProtocol: "parent#fuji-finance"
   },
   {
     id: "458",
@@ -7444,6 +7507,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "MultiplierMXX",
     audit_links: ["https://mcl-docs.multiplier.finance/developers/security-and-audits"],
     oracles: ["Chainlink"],
+    deadUrl: true
   },
   {
     id: "460",
@@ -7530,7 +7594,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "groprotocol/index.js",
     twitter: "groprotocol",
-    audit_links: ["https://docs.gro.xyz/gro-docs/how-it-works/security-and-audits/audits"],
+    audit_links: ["https://docs.gro.xyz/gro-docs/security/audits"],
     governanceID: ["snapshot:gro.xyz"]
   },
   {
@@ -7538,7 +7602,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Beta Finance",
     address: "0xbe1a001fe942f96eea22ba08783140b9dcc09d28",
     symbol: "BETA",
-    url: "https://betafinance.org",
+    url: "https://www.betafinance.org/",
     description: "Beta Finance is the permissionless money market for borrowing, lending, and shorting crypto assets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/beta-finance.jpg`,
@@ -7590,6 +7654,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "vanilla/index.js",
     twitter: "VanillaDeFi",
     audit_links: ["https://github.com/vanilladefi/contracts/tree/main/audits"],
+    deadUrl: true
   },
   {
     id: "467",
@@ -7679,6 +7744,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mensa/index.js",
     twitter: "MensaPro",
     audit_links: ["https://docs.mensapro.com/risk-control/audit-reports"],
+    deadUrl: true
   },
   {
     id: "471",
@@ -7797,6 +7863,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "asgardfinance/index.js",
     twitter: "AsgardDAO",
+    deadUrl: true
   },
   {
     id: "477",
@@ -7820,6 +7887,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://sakeperp.fi/audit-report/Smart-Contract-Security-Audit-Report-SakePerp-Protocol-EN.pdf",
       "https://sakeswap.finance/SAKEen.pdf",
     ],
+    deadUrl: true
   },
   {
     id: "478",
@@ -7840,6 +7908,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "yapeswap/index.js",
     twitter: "yapeswap",
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "479",
@@ -7918,8 +7987,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance", "Kucoin"],
     module: "shibance/index.js",
     twitter: "shibance",
-    audit_links: ["https://github.com/shibance/audits/tree/main/ApeAudits"],
+    audit_links: [],
     forkedFrom: ["Uniswap V2"],
+    github: ["shibance"]
   },
   {
     id: "483",
@@ -7984,6 +8054,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     module: "tendieswap/index.js",
     twitter: "tendie_swap",
+    deadUrl: true
   },
   {
     id: "486",
@@ -8187,6 +8258,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "hfione/index.js",
     twitter: "fi_heco",
     audit_links: ["https://hfi.one/slowmist.pdf"],
+    deadUrl: true
   },
   {
     id: "496",
@@ -8327,7 +8399,6 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "coinwind/index.js",
     twitter: "coinwind_com",
     audit_links: [
-      "https://www.fairyproof.com/doc/CoinwindV2-Audit-Report-071821.pdf",
       "https://www.coinwind.pro/BEOSIN_en.pdf",
       "https://www.coinwind.pro/flyhub_en.pdf",
     ],
@@ -8350,7 +8421,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "lyra/index.js",
     treasury: "lyra.js",
     twitter: "lyrafinance",
-    audit_links: ["https://github.com/lyra-finance/lyra-protocol/tree/master/audits/v1"],
+    audit_links: ["https://docs.lyra.finance/overview/audits"],
     oracles: ["Chainlink","Pyth"],
     governanceID: ["snapshot:lyra.eth"]
   },
@@ -8602,6 +8673,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tzwrap/index.js",
     twitter: "Wrap_Protocol",
     audit_links: ["https://leastauthority.com/blog/audit-of-wrap-protocol-smart-contracts-for-tezos-foundation"],
+    deadUrl: true
   },
   {
     id: "516",
@@ -8684,6 +8756,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Tezos"],
     module: "tezos-baking/index.js",
     twitter: "tezos",
+    deadUrl: true
   },
   {
     id: "520",
@@ -8727,6 +8800,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "pizza/index.js",
     twitter: "PizzaProFi",
     oracles: ["Internal"],
+    deadUrl: true
   },
   {
     id: "522",
@@ -8769,6 +8843,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "cryptoyieldfocus/index.js",
     twitter: "CryptYieldFocus",
     forkedFrom: ["Goose Finance"],
+    rugged: true
   },
   {
     id: "524",
@@ -8829,6 +8904,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "zabufinance/index.js",
     twitter: "zabufinance",
     forkedFrom: ["Autofarm"],
+    deadUrl: true
   },
   {
     id: "527",
@@ -8908,13 +8984,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "avaware/index.js",
     twitter: "AvawareAVE",
+    deadUrl: true
   },
   {
     id: "531",
     name: "Kuu Finance",
     address: null,
     symbol: "-",
-    url: "https://kuu.finance",
+    url: "https://kuu.finance/",
     description:
       "KUU is a decentralized protocol designed to provide reinforcing liquidity to on-chain keepers to maximize on-chain profit through liquidations, DEX arbitrage and other on-chain opportunities.",
     chain: "Avalanche",
@@ -8927,6 +9004,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Avalanche"],
     module: "kuufinance/index.js",
     twitter: "KuuFinance",
+    deadUrl: true
   },
   {
     id: "532",
@@ -8952,7 +9030,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "533",
     name: "OpenOcean",
-    address: "bsc:0x9029fdfae9a03135846381c7ce16595c3554e10a",
+    address: "bsc:0x8ea5219a16c2dbf1d6335a6aa0c6bd45c50347c5",
     symbol: "OOE",
     url: "https://openocean.finance",
     description:
@@ -8968,7 +9046,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "openocean.js",
     treasury: "open-oceans.js",
     twitter: "OpenOceanGlobal",
-    audit_links: ["https://docs.openocean.finance/security-and-auditing"],
+    audit_links: ["https://docs.openocean.finance/protocol/introduction/security-and-audits"],
   },
   {
     id: "534",
@@ -9088,6 +9166,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "carbon/index.js",
     twitter: "carbonfi_io",
     forkedFrom: ["ArbiNYAN"],
+    rugged: true
   },
   {
     id: "540",
@@ -9232,7 +9311,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Icon"],
     module: "omm/index.js",
     twitter: "ommfinance",
-    audit_links: ["https://docs.omm.finance/security"],
+    audit_links: ["https://docs.omm.finance/technical-info/smart-contracts"],
     oracles: ["Band"],
   },
   {
@@ -9249,7 +9328,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_note: null,
     gecko_id: "pnetwork",
     cmcId: "5794",
-    category: "Cross Chain",
+    category: "Bridge",
     chains: ["Ethereum", "EOS", "Telos", "Binance"],
     module: "pnetwork.js",
     treasury: "p-network.js",
@@ -9562,6 +9641,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1634207334,
+    deadUrl: true
   },
   {
     id: "563",
@@ -9586,7 +9666,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Fabric",
     address: "solana:token/EdAhkbj5nF9sRM7XN7ewuW8C9XEUMs8P7cnoQ57SYE96",
     symbol: "FAB",
-    url: "https://stake.fsynth.io",
+    url: "https://stake.fsynth.io/",
     description: "FABRIC is a synthetic asset issuance protocol built on Solana.",
     chain: "Solana",
     logo: `${baseIconsUrl}/fabric.png`,
@@ -9599,6 +9679,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "fabric/index.js",
     twitter: "official_fabric",
     openSource: false,
+    deadUrl: true
   },
   {
     id: "565",
@@ -9660,6 +9741,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     treasury: "newland.js",
     twitter: "Newlandplatform",
     audit_links: ["https://www.fairyproof.com/doc/Newland-Audit-Report-080321.pdf"],
+    deadUrl: true
   },
   {
     id: "568",
@@ -9991,6 +10073,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   //   module: "elevenfinance/index.js",
   //   twitter: "ElevenFinance",
   //   audit_links: ["https://www.certik.org/projects/elevenfinance"],
+  //   deadUrl: true
   // },
   {
     id: "584",
@@ -10514,7 +10597,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "608",
     name: "Cap",
-    address: "arbitrum:0x43044f861ec040db59a7e324c40507addb673142",
+    address: "arbitrum:0x031d35296154279dc1984dcd93e392b1f946737b",
     symbol: "CAP",
     url: "https://www.cap.io",
     description: "CAP lets you trade crypto markets like BTC/USD and ETH/USD with leverage. It is decentralized, open source, and accessible to everyone.",
@@ -10569,6 +10652,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "ecurve/index.js",
     twitter: "DAPPAccountDAO",
     forkedFrom: ["Curve"],
+    deadUrl: true
   },
   {
     id: "611",
@@ -10580,7 +10664,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "The Neutrino protocol is an algorithmic index protocol that enables the creation of index coins tied to Waves blockchain assets",
     chain: "Waves",
     logo: `${baseIconsUrl}/neutrino.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "neutrino-system-base-token",
     cmcId: "7320",
@@ -10588,7 +10672,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Waves"],
     module: "neutrino/index.js",
     twitter: "neutrino_proto",
-    audit_links: ["https://audit.neutrino.at"],
+    audit_links: [],
     stablecoins: ["neutrino-usd"]
   },
   {
@@ -10691,6 +10775,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Amy-v1.0.pdf",
     ],
+    deadUrl: true
   },
   {
     id: "617",
@@ -10892,7 +10977,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "reserve/index.js",
     twitter: "reserveprotocol",
-    audit_links: ["https://certificate.certik.io/reports/reserve.org.pdf"],
+    audit_links: ["https://reserve.org/protocol/security/?search=audit#s-result"],
     stablecoins: ["electronic-usd", "reserve"]
   },
   {
@@ -10946,7 +11031,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description: "Cozy is an open-source protocol for automated and trust-minimized Protection Markets.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/cozy-finance.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -10954,7 +11039,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "cozy/index.js",
     twitter: "cozyfinance",
-    audit_links: ["https://www.cozy.finance/audits/quantstamp.pdf", "https://www.cozy.finance/audits/peckshield.pdf"],
+    audit_links: [],
     forkedFrom: ["Compound"], // quite different in purpose but still most code is from compound
     oracles: ["UMA"],
     parentProtocol: "parent#cozy-finance"
@@ -11046,6 +11131,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "totemfi/index.js",
     twitter: "TotemFi",
     oracles: ["Chainlink"],
+    deadUrl: true
   },
   {
     id: "634",
@@ -11299,8 +11385,13 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "latte/index.js",
     twitter: "latteswapOG",
-    audit_links: ["https://docs.latteswap.com/latteswap/security/audits"],
+    audit_links: [
+      "https://github.com/latteswap-official/latteswap-contract/blob/main/audit/protocol/PeckShield-Audit-Report-LatteSwap-v1.0.pdf",
+      "https://app.inspex.co/library",
+      "https://github.com/latteswap-official/latteswap-contract/blob/main/audit/latte-v2/LatteSwap_v2_Audit_Report_by_WatchPug_v1.1.pdf"
+    ],
     forkedFrom: ["Uniswap V2"],
+    github: ["latteswap-official"]
   },
   {
     id: "646",
@@ -11328,7 +11419,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "647",
-    name: "Jet",
+    name: "Jet V1",
     address: "solana:JET6zMJWkCN9tpRT2v2jfAmm5VnQFDpUBCyaKojmGtz",
     symbol: "JET",
     url: "https://www.jetprotocol.io",
@@ -11338,13 +11429,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/jet.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "jet",
-    cmcId: "12236",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Solana"],
     module: "jetprotocol.js",
     twitter: "JetProtocol",
     oracles: ["Pyth"],
+    parentProtocol: "parent#jet",
   },
   {
     id: "648",
@@ -11386,6 +11478,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "swapmatic/index.js",
     twitter: "SwapMatic",
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "650",
@@ -11431,6 +11524,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [
       "https://raw.githubusercontent.com/chfry-finance/chfry-protocol/master/docs/PeckShield-Audit-Report-Chfry-v1.0.pdf",
     ],
+    deadUrl: true
   },
   {
     id: "652",
@@ -11455,6 +11549,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://emiswap.com/docs/06042021_Emiswap_SC_Audit_Report.pdf",
       "https://emiswap.com/docs/12072021_Emiswap_SC_Audit_Report_V2.pdf",
     ],
+    deadUrl: true
   },
   {
     id: "653",
@@ -11533,6 +11628,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Fantom"],
     module: "sapphire/index.js",
     twitter: "DefiSapphire",
+    deadUrl: true
   },
   {
     id: "657",
@@ -12000,6 +12096,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BorgToken",
     audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/BorgSwap.pdf"],
     listedAt: 1634494841,
+    deadUrl: true
   },
   {
     id: "678",
@@ -12108,6 +12205,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BaconDAO_",
     audit_links: ["https://drive.google.com/file/d/1AVc_YuSKoaojLUS7oUz65LZGxJzpItRY/view"],
     listedAt: 1634577126,
+    deadUrl: true
   },
   {
     id: "683",
@@ -12211,6 +12309,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "jaguarswap.js",
     twitter: "JaguarSwap",
     listedAt: 1634675023,
+    deadUrl: true
   },
   {
     id: "688",
@@ -12232,6 +12331,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "HaloDAOFinance",
     audit_links: ["https://docs.halodao.com/contract-audits/overview"],
     listedAt: 1634698714,
+    deadUrl: true
   },
   {
     id: "689",
@@ -12492,6 +12592,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://uploads-ssl.webflow.com/606120c25fb119221b762612/615f8469329e45337d809a9a_Poof_Labs_Fall_Audit_Bramah.pdf",
     ],
     listedAt: 1635102185,
+    deadUrl: true
   },
   {
     id: "701",
@@ -12519,7 +12620,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Coffin Finance",
     address: "fantom:0x593ab53baffaf1e821845cf7080428366f030a9c",
     symbol: "COFFIN",
-    url: "https://coffin.finance",
+    url: "https://app.coffin.finance/",
     description:
       "Coffin Finance protocol is a partially collateralized stable token project. Coffin Finance team believes in the potential of Fantom Opera, so rather than using USDC, it uses FTM and COFFIN (the protocol's native token) as collaterals to mint CoUSD stable tokens. This makes it truly decentralized! A big part of the platform revenue will be given back to the community through its high yield farming options, which includes both staking liquidity pairs and single asset staking.",
     chain: "Fantom",
@@ -12617,7 +12718,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "yslio/index.js",
     twitter: "ysl_io",
-    audit_links: ["https://docs.ysl.io/ysl-io/protocol/audits"],
+    audit_links: ["https://docs.ysl.io/overview-1/audits"],
     listedAt: 1635107834,
   },
   {
@@ -12708,6 +12809,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SquidDeFi",
     forkedFrom: ["Goose Finance"],
     listedAt: 1635249537,
+    deadUrl: true
   },
   {
     id: "711",
@@ -12907,6 +13009,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-UniverseFinance-v1.0.pdf",
     ],
     listedAt: 1635395305,
+    deadUrl: true
   },
   {
     id: "720",
@@ -13230,8 +13333,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "openswap_harmony/index.js",
     twitter: "openswap_one",
     audit_links: [
-      "https://github.com/0xGuard-com/audit-reports/blob/master/openswap/OpenSwap_final-audit-report_v1.pdfaudit",
-      "https://github.com/0xGuard-com/audit-reports/blob/master/openswap_v2/OpenSwapV2_final-audit-report.pdf",
+      "https://github.com/0xGuard-com/audit-reports/tree/master/openswap",
+      "https://github.com/0xGuard-com/audit-reports/tree/master/openswap_v2",
     ],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1635798336,
@@ -13254,7 +13357,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "becoswap/index.js",
     forkedFrom: ["Uniswap V2"],
     twitter: "beco_swap",
-    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/Becoswap.pdf"],
+    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20A-M/Becoswap.pdf"],
     listedAt: 1635800029,
   },
   {
@@ -13275,6 +13378,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "asol/index.js",
     twitter: "aSOLprotocol",
     listedAt: 1635800533,
+    deadUrl: true
   },
   {
     id: "737",
@@ -13318,6 +13422,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     listedAt: 1635801672,
     forkedFrom: ["Liquity"],
+    deadUrl: true
   },
   {
     id: "739",
@@ -13427,6 +13532,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/nekufinance", "https://bitriseaudits.com/project/85"],
     forkedFrom: ["Compound"],
     listedAt: 1635819540,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "744",
@@ -13494,6 +13601,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "NileRiver_Labs",
     forkedFrom: ["Balancer"],
     listedAt: 1635821585,
+    rugged: true,
+    deadUrl: true
   },
   {
     id: "747",
@@ -13625,6 +13734,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1635878160,
     openSource: true,
+    deadUrl: true
   },
   {
     id: "753",
@@ -13668,6 +13778,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.bossswap.finance/audit"],
     listedAt: 1635966094,
+    deadUrl: true
   },
   {
     id: "755",
@@ -13688,6 +13799,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "arrow/index.js",
     twitter: "ArrowProtocol",
     listedAt: 1635961535,
+    deadUrl: true
   },
   {
     id: "756",
@@ -13780,6 +13892,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "EggTartSwap",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1635981448,
+    deadUrl: true
   },
   {
     id: "780",
@@ -13849,6 +13962,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://paladinsec.co/projects/polywhale/",
     ],
     listedAt: 1636043142,
+    deadUrl: true
   },
   {
     id: "783",
@@ -13868,6 +13982,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "atmossoft.js",
     twitter: "AtmosSoft",
     listedAt: 1636043958,
+    deadUrl: true
   },
   {
     id: "784",
@@ -13911,6 +14026,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "lootswapfinance",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1636058049,
+    deadUrl: true
   },
   {
     id: "786",
@@ -13933,6 +14049,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/bagelsfinance"],
     oracles: ["TWAP"],
     listedAt: 1636058525,
+    deadUrl: true
   },
   {
     id: "787",
@@ -14022,7 +14139,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "polygonfarm-finance/index.js",
     twitter: "PolygonFarmFi",
     audit_links: [
-      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/SPADE%20Standart%20Smart%20Contract%20Security%20Audit.pdf",
+      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20N-Z/SPADE%20Standart%20Smart%20Contract%20Security%20Audit.pdf",
       "https://paladinsec.co/projects/polygonfarm/",
       "https://rugdoc.io/project/polygonfarm/",
     ],
@@ -14047,6 +14164,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "sencha/index.js",
   twitter: "SenchaDEX",
   listedAt: 1636176482,
+  deadUrl: true
 },
 */
   {
@@ -14195,7 +14313,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Rubicon",
     address: null,
     symbol: "-",
-    url: "https://www.rubicon.finance",
+    url: "https://app.rubicon.finance/swap",
     description:
       "Democratizing the open order book and bringing decentralized exchange to the masses. Built on Ethereum L2.",
     chain: "Optimism",
@@ -14269,9 +14387,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "celerbridge/index.js",
     twitter: "CelerNetwork",
     audit_links: [
-      "https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/REP-cBridge-v2-2021-11-17.pdf",
-      "https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/PeckShield-Audit-Report-SGNv2-v1.0.pdf",
-      "https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/SlowMist%20Audit%20Report%20-%20SGN.pdf",
+      "https://github.com/celer-network/sgn-v2-contracts/tree/main/audit",
     ],
     listedAt: 1636307154,
   },
@@ -14301,12 +14417,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Ottopia",
     address: "polygon:0xC250e9987A032ACAC293d838726C511E6E1C029d",
     symbol: "CLAM",
-    url: "https://ottopia.app",
+    url: "https://ottopia.app/",
     description:
       "OtterClam is a decentralized ecosystem that incorporates elements of finance, governance, and NFTs, in the Metaverse. These three components correspond to OtterClam’s Treasury, DAO, and Otter Kingdom, respectively.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/ottopia.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "otterclam",
     cmcId: "15233",
@@ -14314,9 +14430,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "ottopia/index.js",
     twitter: "otterclam",
-    audit_links: ["https://docs.ottopia.app/treasury/references/audits"],
+    audit_links: [],
     governanceID: ["snapshot:otterclam.eth"],
     listedAt: 1636363218,
+    github: ["otterclam"]
   },
   {
     id: "804",
@@ -14361,6 +14478,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SnowbankDAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1636385808,
+    deadUrl: true
   },
   {
     id: "806",
@@ -14489,6 +14607,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/kebab"],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1636430124,
+    deadUrl:true
   },
   {
     id: "812",
@@ -14653,6 +14772,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "heliosprime/index.js",
     twitter: "HeliosPrimeOne",
     listedAt: 1636448140,
+    deadUrl: true
   },
   {
     id: "820",
@@ -14692,6 +14812,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "undeadfinance/index.js",
     twitter: "FinanceUndead",
     listedAt: 1636485547,
+    deadUrl: true
   },
   {
     id: "822",
@@ -14731,6 +14852,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tomofinance.js",
     twitter: "TomoFinance",
     listedAt: 1636488285,
+    deadUrl: true
   },
   {
     id: "824",
@@ -14752,6 +14874,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "EuphoriaMoney",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1636592925,
+    deadUrl: true
   },
   {
     id: "825",
@@ -15034,7 +15157,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "arenaswap",
     audit_links: [
       "https://rugdoc.io/project/arenaswap/",
-      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/ArenaSwap%20Standart%20Smart%20Contract%20Security%20Audit.pdf",
+      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20A-M/ArenaSwap%20Standart%20Smart%20Contract%20Security%20Audit.pdf",
     ],
     listedAt: 1636837386,
   },
@@ -15123,6 +15246,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SwappFi",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637002081,
+    deadUrl: true
   },
   {
     id: "842",
@@ -15166,6 +15290,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "UnirexFinance",
     forkedFrom: ["Goose Finance"],
     listedAt: 1637026454,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "844",
@@ -15359,6 +15485,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     forkedFrom: ["Compound"],
     listedAt: 1637123250,
+    deadUrl: true
   },
   {
     id: "853",
@@ -15380,6 +15507,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/axedao/audit/blob/main/Techrate%20-%20AxeDAO.pdf"],
     forkedFrom: ["Olympus DAO"],
     listedAt: 1637174034,
+    rugged: true
   },
   {
     id: "854",
@@ -15508,6 +15636,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "snowdogdao",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1637298113,
+    rugged: true
   },
   {
     id: "860",
@@ -15526,7 +15655,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance", "Polygon", "Harmony", "Fantom", "Avalanche"],
     module: "cougarswap/index.js",
     twitter: "cougarswap",
-    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/CougarSwap.pdf"],
+    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20A-M/CougarSwap.pdf"],
     listedAt: 1637344672,
   },
   {
@@ -15548,6 +15677,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "bearfinance/index.js",
     twitter: "BearFinanceOrg",
     listedAt: 1637345368,
+    rugged: true, 
   },
   {
     id: "862",
@@ -15630,13 +15760,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SeederFinance",
     audit_links: ["https://inspex.co/reports/Inspex_AUDIT2021005_SeederFinance_Core_FullReport_v1.0.pdf"],
     listedAt: 1637350422,
+    deadUrl: true,
   },
   {
     id: "866",
     name: "Reverse",
     address: "harmony:0xed0b4b0f0e2c17646682fc98ace09feb99af3ade",
     symbol: "RVRS",
-    url: "https://app.reverseprotocol.one",
+    url: "https://rvrs.app/",
     description:
       "Reverse is a yield generating and community-led treasury protocol featuring rebasing yields and protocol-owned liquidity",
     chain: "Harmony",
@@ -15652,6 +15783,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     audit_links: ["https://paladinsec.co/projects/reverse-protocol/"],
     listedAt: 1637351714,
+    github: ["user:ReverseProtocol"]
   },
   {
     id: "867",
@@ -15755,6 +15887,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mintswap/index.js",
     twitter: "SwapMint",
     listedAt: 1637374538,
+    deadUrl: true
   },
   {
     id: "872",
@@ -15796,6 +15929,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "bscswap/index.js",
     twitter: null,
     listedAt: 1637375764,
+    deadUrl: true
   },
   {
     id: "874",
@@ -15879,7 +16013,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "dungeonswap/index.js",
     twitter: "DungeonSwap",
-    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/DungeonSwap.pdf"],
+    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20A-M/DungeonSwap.pdf"],
     listedAt: 1637378691,
   },
   {
@@ -15900,7 +16034,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Binance", "Polygon"],
     module: "unilend/index.js",
     twitter: "UniLend_Finance",
-    audit_links: ["https://docs.unilend.finance/the-protocol/audit-reports"],
+    audit_links: ["https://unilend.gitbook.io/unilend-finance/audit-report"],
     listedAt: 1637380340,
   },
   {
@@ -15942,6 +16076,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SwapMarshmallow",
     audit_links: ["https://marshmallowswap.gitbook.io/marshmallowswap/in-the-pipeworks/audit"],
     listedAt: 1637381592,
+    deadUrl: true
   },
   {
     id: "881",
@@ -15963,6 +16098,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Son_OHM",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1637382300,
+    deadUrl: true
   },
   {
     id: "882",
@@ -16088,6 +16224,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SwapperChan",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637511326,
+    deadUrl: true
   },
   {
     id: "888",
@@ -16129,6 +16266,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "8ight_finance",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1637560657,
+    deadUrl: true
   },
   {
     id: "890",
@@ -16194,6 +16332,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SmolSwap",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637605616,
+    deadUrl: true
   },
   {
     id: "893",
@@ -16411,6 +16550,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.hswap.com/slowmist-zh.pdf", "https://www.hswap.com/lianan-zh.pdf"],
     listedAt: 1637724237,
+    deadUrl: true
   },
   {
     id: "903",
@@ -16432,6 +16572,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Mini_Swap",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637725995,
+    deadUrl: true,
   },
   {
     id: "904",
@@ -16581,6 +16722,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Ethereum", "Binance", "Heco"],
     module: "golff-finance/index.js",
+    github: ['golfffinance'],
     twitter: "GolffProtocol",
     audit_links: ["https://github.com/golfffinance/audit"],
     listedAt: 1637812811,
@@ -16671,6 +16813,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     listedAt: 1637883311,
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "915",
@@ -16714,7 +16857,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://www.certik.com/projects/pikaprotocol",
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-PikaPerpV2-v1.0.pdf",
     ],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","Pyth"], 
     listedAt: 1637890789,
   },
   {
@@ -16819,7 +16962,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "daomaker/index.js",
     twitter: "daomaker",
     audit_links: [
-      "https://learn.daomaker.com/audits",
+      "https://daomaker.com/faqs/smart-contracts-%26-audits#prefunding-contract-audit",
       "https://drive.google.com/file/d/18Anm53T_BbcRQLWHMthkQgvtLC6CDGW0/view",
       "https://drive.google.com/file/d/1LCgxsQCz7vCDKK1AFxsInpKkVt_1q3q1/view",
       "https://drive.google.com/file/d/1OpTWnZmhKu04kKYgFx89Nrh2Y68mhlv_/view",
@@ -16892,6 +17035,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.butterswap.me/audit"],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1638085420,
+    deadUrl: true
   },
   {
     id: "925",
@@ -16933,6 +17077,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "MetaverseProDAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638121684,
+    deadUrl: true
   },
   {
     id: "927",
@@ -17016,6 +17161,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "maximizer_xyz",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638133490,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "931",
@@ -17037,6 +17184,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "cronos_genesis",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1638134020,
+    deadUrl: true
   },
   {
     id: "932",
@@ -17060,6 +17208,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Aave"],
     audit_links: ["https://github.com/XensaFi/xensa-audits"],
     listedAt: 1638134542,
+    deadUrl: true,
   },
   {
     id: "933",
@@ -17081,6 +17230,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "NidhiDAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638135181,
+    deadUrl: true
   },
   {
     id: "934",
@@ -17102,6 +17252,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638188717,
     openSource: false,
+    deadUrl: true
   },
   // {
   //   id: "935",
@@ -17143,6 +17294,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "manifest",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638190661,
+    deadUrl: true
   },
   {
     id: "937",
@@ -17378,6 +17530,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TeamPolyshield",
     audit_links: ["https://paladinsec.co/projects/polyshield", "https://rugdoc.io/project/polyshield-finance"],
     listedAt: 1638358117,
+    deadUrl: true,
   },
   {
     id: "948",
@@ -17425,6 +17578,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "LobisHQ",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638366199,
+    rugged: true
   },
   {
     id: "950",
@@ -17464,7 +17618,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Mixin"],
     module: "pando/index.js",
     twitter: "pando_im",
-    audit_links: ["https://docs.pando.im/docs/security/audit-reports"],
+    audit_links: [],
     parentProtocol: "parent#pando",
     listedAt: 1638382732,
   },
@@ -17759,6 +17913,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Moon__Dao",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638494448,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "966",
@@ -17781,6 +17937,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DaoCerberus",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638495881,
+    deadUrl: true
   },
   {
     id: "967",
@@ -17822,6 +17979,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "zai.js",
     twitter: "zaifinance",
     listedAt: 1638563610,
+    deadUrl: true,
   },
   {
     id: "969",
@@ -17934,6 +18092,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "xeus_finance",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638595802,
+    deadUrl: true
   },
   {
     id: "974",
@@ -17955,6 +18114,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TaiChi_Dao_",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638599279,
+    rugged: true
   },
   {
     id: "975",
@@ -18020,6 +18180,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Tornadao_fi",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638680155,
+    deadUrl: true
   },
   {
     id: "978",
@@ -18166,7 +18327,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "mobiusfinance/index.js",
     twitter: "Mobius_Finance",
-    audit_links: ["https://github.com/mobiusfinance/ContractsV1/tree/main/audit"],
+    audit_links: ["https://docs.mobius.finance/technical-resources/audit"],
     oracles: ["Chainlink"],
     listedAt: 1638877544,
   },
@@ -18188,6 +18349,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "arbirise-finance/index.js",
     twitter: "ArbiRiseFinance",
     listedAt: 1638878302,
+    deadUrl: true
   },
   {
     id: "987",
@@ -18429,6 +18591,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/piggy"],
     forkedFrom: ["Liquity"],
     listedAt: 1638999656,
+    deadUrl: true
   },
   // {
   //   id: "998",
@@ -18478,7 +18641,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Brinc Finance",
     address: "arbitrum:0xB5de3f06aF62D8428a8BF7b4400Ea42aD2E0bc53",
     symbol: "BRC",
-    url: "https://brinc.fi",
+    url: "https://brincx.io/#/",
     description:
       "The Brinc protocol allows for the decentralized creation and governance of a token supply using a bonding curve algorithm that is hard-coded into solidity smart contracts.",
     chain: "Arbitrum",
@@ -18668,7 +18831,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "CheeseDAO",
     address: "harmony:0xBbD83eF0c9D347C85e60F1b5D2c58796dBE1bA0d",
     symbol: "CHEEZ",
-    url: "https://www.cheesedao.xyz/#/dashboard",
+    url: "https://linktr.ee/cheesegame",
     description:
       "CheeseDAO attempts to stand on the shoulders' of giants, whose contributions to the ecosystem put all the pieces in place necessary to launch a decentralized gamified risk protocol owned and governed by the players",
     chain: "Harmony",
@@ -18704,6 +18867,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "ICE_DAO_",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639328999,
+    deadUrl: true
   },
   {
     id: "1011",
@@ -18725,6 +18889,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "PapaDAOofficial",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639330608,
+    deadUrl: true
   },
   {
     id: "1012",
@@ -18746,6 +18911,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "pumpkindao_com",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639331363,
+    deadUrl: true
   },
   {
     id: "1013",
@@ -18769,13 +18935,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     governanceID: ["snapshot:stgdao.eth"],
     listedAt: 1639331903,
+    deadUrl: true
   },
   {
     id: "1014",
-    name: "TempoDAO",
+    name: "TempoDAO", //rebranded to revenant
     address: "avax:0x88a425b738682f58c0ff9fcf2cceb47a361ef4cf",
     symbol: "TEMPO",
-    url: "https://earn.tempodao.gg/#/stake",
+    url: "https://www.revenant.gg/",
     description:
       "Tempo DAO is a fork of the already successful Olympus DAO available on the Avalanche Network. The TEMPO token is a revolutionary reserve backed gaming currency for the metaverse. Tempo DAO will use the TEMPO reserve-backed currency to help establish a treasury that rewards all those who decide to stake in the project. ",
     chain: "Avalanche",
@@ -18787,7 +18954,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Reserve Currency",
     chains: ["Avalanche"],
     module: "tempodao/index.js",
-    twitter: "TempoDAO",
+    twitter: "RevenantGamefi",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639332627,
   },
@@ -18919,6 +19086,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "arkadiko.js",
     twitter: "ArkadikoFinance",
     language: "Clarity",
+    github: ["arkadiko-dao"],
     listedAt: 1639420466,
   },
   {
@@ -19586,11 +19754,11 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1052",
-    name: "Astroport",
+    name: "Astroport Classic",
     address: "terra:terra1xj49zyqrwpv5k928jwfpfy2ha668nwdgkwlrg3",
-    symbol: "ASTRO",
+    symbol: "ASTROC",
     url: "https://astroport.fi",
-    description: "The meta AMM of Terra",
+    description: "The meta AMM of Cosmos",
     chain: "Terra",
     logo: `${baseIconsUrl}/astroport.jpg`,
     audits: "2",
@@ -19599,7 +19767,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: "16304",
     category: "Dexes",
     chains: ["Terra"],
-    module: "astroport/index.js",
+    module: "astroport-classic/index.js",
     twitter: "astroport_fi",
     audit_links: ["https://github.com/astroport-fi/astro-audits"],
     openSource: true,
@@ -20363,6 +20531,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ergo"],
     module: "ergodex.js",
     twitter: "spectrumlabs_",
+    github: ['spectrum-finance'],
     oracles: ["Internal"],
     listedAt: 1640305029,
   },
@@ -20561,7 +20730,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "templardao",
     cmcId: "15288",
     category: "Reserve Currency",
-    chains: ["Binance", "Moonriver", "Harmony"],
+    chains: ["Binance"],
     module: "templar/api.js",
     treasury: "templar-dao.js",
     twitter: "TemplarDAO",
@@ -21166,7 +21335,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     cmcId: null,
     category: "Yield",
     chains: ["Cronos"],
-    module: "zeus/index.js",
+    module: "zeus-finance/index.js",
     twitter: "ZeusFinanceCro",
     listedAt: 1640718828,
   },
@@ -22542,8 +22711,9 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1194",
     name: "Sperax USD",
-    address: "arbitrum:0xD74f5255D557944cf7Dd0E45FF521520002D5748",
-    symbol: "USDs",
+    address: "arbitrum:0x5575552988a3a80504bbaeb1311674fcfd40ad4b",
+    symbol: "SPA",
+    assetToken:"USDs",
     url: "http://sperax.io",
     description:
       "SperaxUSD (USDs) is a stablecoin and yield-automator on Arbitrum. USDs is 100% backed by collateral that is sent to DeFi strategies to produce a yield. This yield is then distributed to holders in a gasless manner, making compound interest easy.",
@@ -23608,6 +23778,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Stacks"],
     module: "stackswap.js",
     twitter: "Stackswap_BTC",
+    github: ["stackswap"],
     language: "Clarity",
     audit_links: [
       "https://contact-stackswap.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FR2Qy2jO41SJwWbgnrvP4%2Fuploads%2F9tk4xdtFNupBe79yjKqY%2FTintash%20-%20Stackswap%20Contract%20audit.pdf?alt=media&token=b58b7f73-60a6-45e3-a8a5-b5e6f1bde584",
@@ -24246,6 +24417,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Cleopatra_DAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1642404036,
+    rugged: true
   },
   {
     id: "1274",
@@ -25890,7 +26062,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Yield",
     chains: ["Binance"],
     module: "kalmy-app/index.js",
-    twitter: "kalmar_io",
+    twitter: "KalmyAPP",
     audit_links: [
       "https://hacken.io/wp-content/uploads/2021/06/Kalmar_08062021SC-Audit_Report.pdf",
       "https://hacken.io/wp-content/uploads/2021/04/03042021_Kalmar_SC_Audit_Report.pdf",

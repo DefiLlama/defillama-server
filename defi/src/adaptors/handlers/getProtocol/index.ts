@@ -181,7 +181,7 @@ const getProtocolSummaryParent = async (parentData: IParentProtocol, dataType: A
         defillamaId: parentData.id,
         displayName: parentData.name,
         total24h: totalToday,
-        totalAllTime: sumReduce(summaries, 'totalAllTime'),
+        totalAllTime: summaries.every(c=>c.totalAllTime)? sumReduce(summaries, 'totalAllTime'):null,
         latestFetchIsOk: true,
         disabled: false,
         change_1d,

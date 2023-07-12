@@ -13,6 +13,7 @@ export default async (
   tvl: tvlsObject<TokensValueLocked>,
   hourlyTvl: PKconverted,
   dailyTvl: PKconverted,
+  storePreviousData: boolean
 ) => {
   const hourlyPK = hourlyTvl(protocol.id);
   if (Object.keys(tvl).length === 0) {
@@ -31,10 +32,10 @@ export default async (
     secondsInDay * 1.5,
   );
 
-  if (hourlyPK.includes("hourlyUsdTokensTvl"))
+  if (hourlyPK.includes("hourlyUsdTokensTvl") && storePreviousData)
     await checkForOutlierCoins(tvl, closestDailyRecord, protocol.name);
 
-  if (getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp)) {
+  if (getDay(closestDailyRecord?.SK) !== getDay(unixTimestamp) || storePreviousData === false) {
     // First write of the day
     await dynamodb.put({
       PK: dailyTvl(protocol.id),
@@ -48,6 +49,7 @@ async function checkForOutlierCoins(
   previousTvls: tvlsObject<TokensValueLocked>,
   protocol: string,
 ) {
+  if (process.env.IGNORE_CHECK_OUTLIER_COINS === "true") return;
   const changeThresholdFactor = 4;
   const proportionThresholdFactor = 0.5;
   const outlierThreshold = 20_000_000_000;

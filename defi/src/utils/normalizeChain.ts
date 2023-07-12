@@ -10,7 +10,8 @@ export const normalizedChainReplacements = {
   "zksync era": "era",
   "polygon zkevm": "polygon_zkevm",
   "eos evm": "eos_evm",
-  "oasys": "oas"
+  "oasys": "oas",
+  "map relay chain": "map"
 } as {
   [chain: string]: string
 }
@@ -1485,7 +1486,7 @@ export const chainCoingeckoIds = {
     cmcId: "22026",
     categories: ["EVM"],
   },
-  "Map": {
+  "MAP Relay Chain": {
     geckoId: "marcopolo",
     symbol: "MAP",
     cmcId: "4956",
@@ -1703,6 +1704,40 @@ export const chainCoingeckoIds = {
     symbol: "POKT",
     cmcId: "11823",
   },
+  "Quasar": {
+    geckoId: null,
+    symbol: "QSR",
+    cmcId: null,
+    categories: ["Cosmos"],
+  },
+  "Concordium": {
+    geckoId: "concordium",
+    symbol: "CCD",
+    cmcId: "18031",
+  },
+  "Chihuahua": {
+    geckoId: "chihuahua-token",
+    symbol: "HUAHUA",
+    cmcId: "17208",
+    categories: ["Cosmos"],
+  },
+  "Rollux": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM", "Rollup"],
+    chainid: 570, 
+    parent: {
+      chain: "Syscoin",
+      types: ["L2", "gas"]
+    },
+  },
+  "Tenet": {
+    geckoId: "tenet-1b000f7b-59cb-4e06-89ce-d62b32d362b9",
+    symbol: "TENET",
+    cmcId: "24892",
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -1726,6 +1761,7 @@ chainCoingeckoIds["Milkomeda"] = chainCoingeckoIds["Milkomeda C1"]
 chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
 chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
 chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
+chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
 
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -1764,6 +1800,8 @@ export function transformNewChainName(chain: string) {
       return "Polygon zkEVM"
     case "eos_evm":
       return "EOS EVM"
+    case "Map":
+      return "MAP Relay Chain"
     default:
       return chain
   }
@@ -2060,7 +2098,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "bitindi":
       return "Bitindi"
     case "map":
-      return "Map"
+      return useNewChainNames ? "MAP Relay Chain" : "Map"
     case "stargaze":
       return "Stargaze"
     case "libre":
@@ -2121,6 +2159,16 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Onus"
     case "pokt":
       return "Pokt"
+    case "quasar":
+      return "Quasar"
+    case "concordium":
+      return "Concordium"
+    case "chihuahua":
+      return "Chihuahua"
+    case "rollux":
+      return "Rollux"
+    case "tenet":
+      return "Tenet"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

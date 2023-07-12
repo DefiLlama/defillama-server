@@ -10,7 +10,7 @@ const {
 } = require('../utils/r2')
 
 async function main() {
-  const handles = [...new Set(Object.values(TWITTER_MAPPING))]
+  const handles = [...new Set(Object.values(TWITTER_MAPPING))].reverse()
   let checked = 0
   let i = 0
   const twitterOverview = await getTwitterOverviewFile()
@@ -20,8 +20,8 @@ async function main() {
     const handleMetadata = twitterOverview[handle] || {}
     checked++
     if (handleMetadata.ignore) continue;
-    if ((handleMetadata.updatedAt && +Date.now() - handleMetadata.updatedAt < TWELVE_HOURS)) {
-      sdk.log(`Skipping ${handle} because it was updated less than 12 hours ago`)
+    if ((handleMetadata.updatedAt && +Date.now() - handleMetadata.updatedAt < TWELVE_HOURS * 2)) {
+      sdk.log(`Skipping ${handle} because it was updated less than 24 hours ago`)
       continue
     }
 

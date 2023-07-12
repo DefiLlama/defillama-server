@@ -257,6 +257,7 @@ export default {
         "id": "863"
     },
     "biswap": {
+        parentId: "BiSwap",
         "enabled": true,
         "id": "373"
     },
@@ -969,7 +970,7 @@ export default {
         "id": "1907"
     },
     "chainge-finance": {
-        "enabled": true,
+        "enabled": false,
         "id": "704"
     },
     "minerswap": {
@@ -1188,6 +1189,7 @@ export default {
         "id": "1732"
     },
     "equalizer-exchange": {
+        parentId: "Equalizer0x",
         "enabled": true,
         "id": "2332"
     },
@@ -1335,7 +1337,6 @@ export default {
         id: "291"
     },
     "archerswap": {
-        disabled: true,
         enabled: true,
         id: "2648"
     },
@@ -1353,6 +1354,7 @@ export default {
         id: "2674"
     },
     "ramses-exchange": {
+        parentId: "Ramses Exchange",
         enabled: true,
         id: "2675"
     },
@@ -1594,7 +1596,7 @@ export default {
         "id": "2804"
     },
     "interest-protocol": {
-        "enabled": true,
+        "enabled": false,
         "id": "3015"
     },
     "fxdx": {
@@ -1645,5 +1647,81 @@ export default {
     "tokenlon": {
         "enabled": true,
         "id": "405"
+    },
+    "ramses-exchange-v2": {
+        parentId: "Ramses Exchange",
+        enabled: true,
+        id: "3096"
+    },
+    "MantisSwap": {
+        enabled: true,
+        id: "2702"
+    },
+    "abcdefx": {
+        enabled: true,
+        id: "2376"
+    },
+    "thalaswap": {
+        parentId: "Thala Labs",
+        enabled: true,
+        id: "2795"
+    },
+    "pearlfi": {
+        enabled: true,
+        id: "3121"
+    },
+    "ambient": {
+        enabled: true,
+        id: "3104"
+    },
+    "doveswap": {
+        "enabled": true,
+        "id": "2763",
+        parentId: "Dove Swap",
+        "protocolsData": {
+            "v3": {
+                "id": "2809",
+                "enabled": true,
+            }
+        },
+    },
+    "litx": {
+        enabled: true,
+        id: "3159"
+    },
+    "voodoo-trade": {
+        enabled: true,
+        id: "3156",
+        "protocolsData": {
+            "swap": {
+                "id": "3156",
+                "enabled": true,
+                "category": "Dexes",
+            }
+        },
+    },
+    "equity-spot": {
+        parentId: "Equalizer0x",
+        enabled: true,
+        id: "3173"
+    },
+    "flowx-finance": {
+        enabled: true,
+        id: "3196"
+    },
+    "zkSwap_Finance": {
+        enabled: true,
+        id: "3180"
+    },
+    "pinnako": {
+        enabled: true,
+        id: "3209",
+        "protocolsData": {
+            "swap": {
+                "id": "3209",
+                "enabled": true,
+                "category": "Dexes",
+            }
+        },
     }
 } as AdaptorsConfig

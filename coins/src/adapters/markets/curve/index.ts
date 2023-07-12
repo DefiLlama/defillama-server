@@ -4,18 +4,7 @@ import getSpareTokens from "./spares";
 
 export function curve1(timestamp: number = 0) {
   console.log("starting curve1");
-  return Promise.all([
-    getTokenPrices("ethereum", ["stableswap"], timestamp),
-    getTokenPrices("ethereum", ["crypto"], timestamp),
-  ]);
-}
-export function curve1b(timestamp: number = 0) {
-  console.log("starting curve1b");
-  return getTokenPrices("ethereum", ["stableFactory"], timestamp);
-}
-export function curve1c(timestamp: number = 0) {
-  console.log("starting curve1c");
-  return getTokenPrices("ethereum", ["cryptoFactory"], timestamp);
+  return getTokenPrices("ethereum", ["crypto"], timestamp);
 }
 export function curve2(timestamp: number = 0) {
   console.log("starting curve2");

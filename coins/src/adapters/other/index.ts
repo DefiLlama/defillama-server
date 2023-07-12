@@ -13,9 +13,9 @@ import collateralizedAdapter from "./collateralizedAssets";
 import swethAdapter from "./sweth";
 import gmdAdapter from "./gmd";
 import stkaurabalAdapter from "./stkaurabal";
-import shlb_ from "./shlb"
+import shlb_ from "./shlb";
 
-export const shlb = shlb_
+export const shlb = shlb_;
 
 export function synthetix(timestamp: number = 0) {
   console.log("starting synthetix");
@@ -24,7 +24,11 @@ export function synthetix(timestamp: number = 0) {
 
 export function metronome(timestamp: number = 0) {
   console.log("starting metronome");
-  return Promise.all(Object.keys(metronomeContracts).map((chain) => metronomeAdapter(chain, timestamp)));
+  return Promise.all(
+    Object.keys(metronomeContracts).map((chain) =>
+      metronomeAdapter(chain, timestamp),
+    ),
+  );
 }
 
 export function glp(timestamp: number = 0) {
@@ -111,6 +115,30 @@ export function unknownTokens(timestamp: number = 0) {
       "0xC977492506E6516102a5687154394Ed747A617ff",
       "0xEC13336bbd50790a00CDc0fEddF11287eaF92529", // gmUSD
       "0x4945970EfeEc98D393b4b979b9bE265A3aE28A8B",
+      false,
+      "arbitrum",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x2071a39da7450d68e4f4902774203df208860da2",
+      "0x3712871408a829c5cd4e86da1f4ce727efcd28f6", // GLCR
+      "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+      false,
+      "avax",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x8a3EcB040d270ca92E122104e2d622b71c89E3cE",
+      "0x09EF821c35B4577f856cA416377Bd2ddDBD3d0C9", // MMTH
+      "0x152b9d0FdC40C096757F570A51E494bd4b943E50",
+      false,
+      "avax",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xd3aC0C63feF0506699d68d833a10477137254aFf",
+      "0x9A592B4539E22EeB8B2A3Df679d572C7712Ef999", //pxGMX
+      "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
       false,
       "arbitrum",
     ),

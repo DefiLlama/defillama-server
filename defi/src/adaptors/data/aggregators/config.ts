@@ -31,5 +31,13 @@ export default {
     "plexus": {
         enabled: true,
         id: "2740"
+    },
+    "avnu": {
+        enabled: true,
+        id: "3154"
+    },
+    "bitkeep": {
+        enabled: true,
+        id: "3207"
     }
 } as AdaptorsConfig

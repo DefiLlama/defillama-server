@@ -55,11 +55,6 @@ provider:
         - "s3:ListBucket"
         - "s3:*Object*"
       Resource: "*"
-    - Effect: "Allow"
-      Action:
-        - "secretsmanager:GetSecretValue"
-      Resource:
-        - "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   environment:
     ETHEREUM_RPC: ${file(./env.js):ETHEREUM_RPC}
     BSC_RPC: ${file(./env.js):BSC_RPC}
@@ -84,6 +79,7 @@ provider:
     #PROD_VYBE_API_KEY: ${file(./env.js):PROD_VYBE_API_KEY}
     #INDEXER_DB: ${file(./env.js):INDEXER_DB}
     AGGREGATOR_DB_URL: ${file(./env.js):AGGREGATOR_DB_URL}
+    AGGREGATOR_DB_URL_NEW: ${file(./env.js):AGGREGATOR_DB_URL_NEW}
     tableName: ${self:custom.tableName}
     stage: ${self:custom.stage}
     R2_ACCESS_KEY_ID: ${file(./env.js):R2_ACCESS_KEY_ID}
@@ -118,9 +114,6 @@ custom:
   domain: ${self:custom.domainMap.${self:custom.stage}.domain}
   certificateArn: ${self:custom.domainMap.${self:custom.stage}.certificateArn}
   hostedZone: ${self:custom.domainMap.${self:custom.stage}.hostedZone}
-  datadog:
-    site: datadoghq.eu
-    apiKeySecretArn: "arn:aws:secretsmanager:eu-central-1:856461987125:secret:datadog-defi-sPChTI"
   logRetentionInDays: 30
 
 functions:
@@ -483,6 +476,7 @@ functions:
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
       COINS_DB: ${env:COINS_DB}
+      OLYMPUS_GRAPH_API_KEY: ${file(./env.js):OLYMPUS_GRAPH_API_KEY}
       COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
       INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
       ERROR_DB: ${env:ERROR_DB}
@@ -686,9 +680,11 @@ functions:
     timeout: 900
     memorySize: 3000
     events:
-      - schedule: cron(01 0 * * ? *)
+      - schedule: cron(0 * * * ? *)
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINGLASS_KEY: ${env:COINGLASS_KEY}
+      UNLOCKS_WEBHOOK: ${env:UNLOCKS_WEBHOOK}
   storeGovernance:
     handler: src/storeGovernance.default
     timeout: 900
@@ -755,5 +751,4 @@ plugins:
   - serverless-offline
   - serverless-prune-plugin
   - serverless-plugin-log-retention
-  - serverless-plugin-datadog
   - serverless-plugin-lambda-insights

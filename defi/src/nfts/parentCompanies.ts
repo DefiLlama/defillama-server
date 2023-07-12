@@ -366,4 +366,15 @@ export const nftParentCompanies: NFTCompany[] = [
             ["0xff063937523c4514179a4d9a6769694baab357a8", "888 Inner Circle - Pink Realm"],
         ],
     },
+    {
+        name:"Quirkies",
+        url: "https://quirkies.io/quirklings",
+        twitter: "quirkiesnft",
+        nftCollections: [
+            ["0x3903d4ffaaa700b62578a66e7a67ba4cb67787f9", "Quirkies Originals - OLD"],
+            ["0xda60730e1feaa7d8321f62ffb069edd869e57d02", "Quirklings"],
+            ["0xd4b7d9bb20fa20ddada9ecef8a7355ca983cccb1", "Quirkies Originals"],
+            ["0x8f1b132e9fd2b9a2b210baa186bf1ae650adf7ac", "Quirklings New"]
+        ],
+    },
 ]

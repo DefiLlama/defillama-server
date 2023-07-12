@@ -132,6 +132,7 @@ const main = async () => {
     while (timestamp > start) {
       const batchedActions = [];
       for (let i = 0; i < batchSize && timestamp > start; i++) {
+        sdk.log('refilling timestamp', timestamp)
         batchedActions.push(getAndStore(timestamp, protocol, dailyItems));
         timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
       }

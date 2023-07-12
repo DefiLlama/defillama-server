@@ -43,12 +43,12 @@ const fetchProtocolEmissionData = async (protocol: string) => {
   const formattedData = Object.entries(data);
   const maxSupply = formattedData[formattedData.length - 1][1];
   const nextEventIndex = formattedData.findIndex(([date]) => Number(date) > now);
-  const circSupply = nextEventIndex ? formattedData[nextEventIndex - 1]?.[1] ?? [] : 0;
+  const circSupply = nextEventIndex != -1 ? formattedData[nextEventIndex - 1]?.[1] ?? [] : 0;
 
   const coin: any = Object.values(tokenPrice?.coins ?? {})[0]
   const mcap = mcapRes?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0
   const float = (coin == null ||  isNaN(coin.price) || mcap == 0) ? null : mcap / coin.price
-  const proportion = float == null ? null : (formattedData[nextEventIndex][1] - circSupply) / float
+  const proportion = !float || nextEventIndex == -1 ? null : (formattedData[nextEventIndex][1] - circSupply) / float;
 
   const nextEvent =
     nextEventIndex && formattedData[nextEventIndex]

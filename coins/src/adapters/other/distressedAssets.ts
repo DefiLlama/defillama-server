@@ -68,6 +68,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   avax: {
     DUEL: "0xc1a49c0B9C10F35850bd8E15EaeF0346BE63E002",
+    ApeU: "0x6b0d2a3c37d551963275bB104F045F6a68AB6374",
   },
   oasis: {
     // https://www.chainabuse.com/report/3ac26ddd-6ea5-438d-b0ff-dbe4508c641c?d=https%3A%2F%2Fbridge.evodefi.com%2F
@@ -76,6 +77,12 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
   },
   fantom: {
     CoUSD: "0x0DeF844ED26409C5C46dda124ec28fb064D90D27",
+    DEI: "0x91f7120898b4be26cC1e84F421e76725c07d1361",
+    multiUSDC: "0x04068DA6C83AFCFA0e13ba15A6696662335D5B75",
+    miMATIC: "0xfB98B335551a418cD0737375a2ea0ded62Ea213b",
+    fUSDT: "0x049d68029688eAbF473097a2fC38ef61633A3C7A",
+    WETH: "0x74b23882a30290451A17c44f4F05243b6b58C76d",
+    BTC: "0x321162Cd933E2Be498Cd2267a90534A804051b11",
   },
 };
 

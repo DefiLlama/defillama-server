@@ -1,14 +1,15 @@
 import anyswap from "./anyswap";
 import arbitrum from "./arbitrum";
 import avax from "./avax";
-import bsc from "./bsc";
+// import bsc from "./bsc";
 import fantom from "./fantom";
 import gasTokens from "./gasTokens";
 //import harmony from "./harmony";
 import optimism from "./optimism";
 import polygon from "./polygon";
 // import solana from "./solana";
-import xdai from "./xdai";
+// import xdai from "./xdai";
+import cosmos from "./cosmos";
 
 export type Token =
   | {
@@ -58,6 +59,7 @@ export const bridges = [
   polygon,
   // solana
   //xdai
+  cosmos,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -95,7 +97,7 @@ async function storeTokensOfBridge(bridge: Bridge) {
   await Promise.all(
     toRecords.map(async (record) => {
       const toPK = record.PK;
-      if (record.price) {
+      if (record.price != null) {
         toAddressToRecord[toPK] = toPK;
       } else if (record.redirect) {
         redirectsNeeded.push({
@@ -145,7 +147,9 @@ async function storeTokensOfBridge(bridge: Bridge) {
   );
 
   await batchWrite(writes, true);
+
+  return tokens
 }
 export async function storeTokens() {
-  await Promise.all(bridges.map(storeTokensOfBridge));
+  return await Promise.all(bridges.map(storeTokensOfBridge));
 }

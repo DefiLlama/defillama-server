@@ -43,6 +43,7 @@ export default {
         }
     },
     "biswap": {
+        parentId: "BiSwap",
         "enabled": true,
         "id": "373"
     },
@@ -539,10 +540,6 @@ export default {
         "id": "1657",
         parentId: "Predy Finance",
         protocolsData: {
-            "v3": {
-                id: "3074",
-                enabled: true
-            },
             "v320": {
                 id: "1657",
                 enabled: true
@@ -616,8 +613,8 @@ export default {
         "id": "2221"
     },
     "frax-fpi": {
-        enabled: true,
         parentId: "Frax Finance",
+        enabled: true,
         id: "2607"
     },
     "zora": {
@@ -656,6 +653,7 @@ export default {
         id: "2644"
     },
     "equalizer-exchange": {
+        parentId: "Equalizer0x",
         enabled: true,
         id: "2332"
     },
@@ -680,6 +678,7 @@ export default {
         }
     },
     "ramses-exchange": {
+        parentId: "Ramses Exchange",
         enabled: true,
         id: "2675"
     },
@@ -933,5 +932,90 @@ export default {
     "unibot": {
         "enabled": true,
         "id": "3106"
+    },
+    "ramses-exchange-v2": {
+        parentId: "Ramses Exchange",
+        enabled: true,
+        id: "3096"
+    },
+    "abcdefx": {
+        enabled: true,
+        id: "2376"
+    },
+    "liondex": {
+        enabled: true,
+        id: "2898"
+    },
+    "stealcam": {
+        enabled: true,
+        id: "3123"
+    },
+    "pearlfi": {
+        enabled: true,
+        id: "3121"
+    },
+    "scatter": {
+        enabled: true,
+        id: "3146"
+    },
+    "alchemix": {
+        enabled: true,
+        id: "204"
+    },
+    "doveswap": {
+        "enabled": true,
+        "id": "2763",
+        parentId: "Dove Swap",
+        "protocolsData": {
+            "v3": {
+                "id": "2809",
+                "enabled": true,
+            }
+        },
+    },
+    "foundation": {
+        enabled: true,
+        id: "3168"
+    },
+    "thalaswap": {
+        parentId: "Thala Labs",
+        enabled: true,
+        id: "2795"
+    },
+    "y2k-finance": {
+        parentId: "Y2K Finance",
+        enabled: true,
+        id: "2375"
+    },
+    "y2k-finance-v2": {
+        parentId: "Y2K Finance",
+        enabled: true,
+        id: "3056"
+    },
+    "yield-yak-staked-avax": {
+        enabled: true,
+        id: "475"
+    },
+    "voodoo-trade": {
+        enabled: true,
+        id: "3156"
+    },
+    "equity": {
+        parentId: "Equalizer0x",
+        enabled: true,
+        id: "3173"
+    },
+    "pendle": {
+        enabled: true,
+        id: "382"
+    },
+    "move-dollar": {
+        parentId: "Thala Labs",
+        enabled: true,
+        id: "2789"
+    },
+    "pinnako": {
+        enabled: true,
+        id: "3209"
     }
 } as AdaptorsConfig

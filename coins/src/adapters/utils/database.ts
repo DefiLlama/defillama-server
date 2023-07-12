@@ -3,10 +3,17 @@ import axios from "axios";
 import { getCurrentUnixTimestamp } from "../../utils/date";
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
 import getTVLOfRecordClosestToTimestamp from "../../utils/shared/getRecordClosestToTimestamp";
-import { Write, DbEntry, DbQuery, Read, CoinData } from "./dbInterfaces";
+import {
+  Write,
+  DbEntry,
+  DbQuery,
+  Read,
+  CoinData,
+  Metadata,
+} from "./dbInterfaces";
 import { contracts } from "../other/distressedAssets";
 import { sendMessage } from "./../../../../defi/src/utils/discord";
-
+// import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
 
 export async function getTokenAndRedirectData(
@@ -60,11 +67,7 @@ export function addToDBWritesList(
           symbol,
           decimals: Number(decimals),
           redirect,
-          ...(price !== undefined
-            ? {
-                timestamp: getCurrentUnixTimestamp(),
-              }
-            : {}),
+          timestamp: getCurrentUnixTimestamp(),
           adapter,
           confidence: Number(confidence),
         },
@@ -312,10 +315,23 @@ export async function batchWriteWithAlerts(
   failOnError: boolean,
 ): Promise<void> {
   const previousItems: DbEntry[] = await readPreviousValues(items);
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-    await checkMovement(items, previousItems);
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
+    items,
+    previousItems,
+  );
   await batchWrite(filteredItems, failOnError);
 }
+// export async function batchWrite2WithAlerts(
+//   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+// ) {
+//   const previousItems: DbEntry[] = await readPreviousValues(items);
+//   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
+//     items,
+//     previousItems,
+//   );
+
+//   await batchWrite2(await translateItems(filteredItems));
+// }
 async function readPreviousValues(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
 ): Promise<DbEntry[]> {
@@ -336,8 +352,7 @@ async function checkMovement(
   previousItems: DbEntry[],
   margin: number = 0.5,
 ): Promise<AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[]> {
-  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] =
-    [];
+  const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = [];
   const obj: { [PK: string]: any } = {};
   let errors: string = "";
   previousItems.map((i: any) => (obj[i.PK] = i));
@@ -365,4 +380,26 @@ async function checkMovement(
     await sendMessage(errors, process.env.STALE_COINS_ADAPTERS_WEBHOOK!, true);
 
   return filteredItems;
+}
+export async function getDbMetadata(
+  assets: string[],
+  chain: string,
+): Promise<Metadata> {
+  const res: DbEntry[] = await batchGet(
+    assets.map((a: string) => ({
+      PK:
+        chain == "coingecko"
+          ? `coingecko#${a.toLowerCase()}`
+          : `asset#${chain}:${chain == "solana" ? a : a.toLowerCase()}`,
+      SK: 0,
+    })),
+  );
+  const metadata: Metadata = {};
+  res.map((r: DbEntry) => {
+    metadata[r.PK.substring(r.PK.indexOf(":") + 1)] = {
+      decimals: r.decimals,
+      symbol: r.symbol,
+    };
+  });
+  return metadata;
 }

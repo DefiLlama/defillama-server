@@ -15,11 +15,17 @@ function compress(data: string) {
   });
 }
 
-function replaceChainNames(oraclesByChain?: {
-  [chain: string]: string[];
-} | undefined){
-  if(!oraclesByChain) return oraclesByChain
-  return Object.fromEntries(Object.entries(oraclesByChain).map(([chain, vals])=>[getChainDisplayName(chain, true), vals]))
+function replaceChainNames(
+  oraclesByChain?:
+    | {
+        [chain: string]: string[];
+      }
+    | undefined
+) {
+  if (!oraclesByChain) return oraclesByChain;
+  return Object.fromEntries(
+    Object.entries(oraclesByChain).map(([chain, vals]) => [getChainDisplayName(chain, true), vals])
+  );
 }
 
 const handler = async (_event: any) => {
@@ -62,33 +68,47 @@ const handler = async (_event: any) => {
     if (!p.category) return;
 
     protocolCategoriesSet.add(p.category);
-    if (p.category !== 'Bridge' && p.category !== 'RWA') {
+    if (p.category !== "Bridge" && p.category !== "RWA") {
       p.chains.forEach((c: string) => {
-        chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0)
+        chains[c] = (chains[c] ?? 0) + (p.chainTvls[c]?.tvl ?? 0);
 
         if (p.chainTvls[`${c}-liquidstaking`]) {
-          chains[c] = (chains[c] ?? 0) - (p.chainTvls[`${c}-liquidstaking`]?.tvl ?? 0)
+          chains[c] = (chains[c] ?? 0) - (p.chainTvls[`${c}-liquidstaking`]?.tvl ?? 0);
         }
 
         if (p.chainTvls[`${c}-doublecounted`]) {
-          chains[c] = (chains[c] ?? 0) - (p.chainTvls[`${c}-doublecounted`]?.tvl ?? 0)
+          chains[c] = (chains[c] ?? 0) - (p.chainTvls[`${c}-doublecounted`]?.tvl ?? 0);
         }
 
         if (p.chainTvls[`${c}-dcAndLsOverlap`]) {
-          chains[c] = (chains[c] ?? 0) + (p.chainTvls[`${c}-dcAndLsOverlap`]?.tvl ?? 0)
+          chains[c] = (chains[c] ?? 0) + (p.chainTvls[`${c}-dcAndLsOverlap`]?.tvl ?? 0);
         }
-      })
+      });
     }
   });
 
+  const coinMarkets = await fetch("https://coins.llama.fi/mcaps", {
+    method: "POST",
+    body: JSON.stringify({
+      coins: parentProtocolsList
+        .filter((parent) => typeof parent.gecko_id === "string")
+        .map((parent) => `coingecko:${parent.gecko_id}`),
+    }),
+  }).then((r) => r.json());
+
   const parentProtocols: IParentProtocol[] = parentProtocolsList.map((parent) => {
     const chains: Set<string> = new Set();
+
     const children = response.filter((protocol) => protocol.parentProtocol === parent.id);
     children.forEach((child) => {
       child.chains?.forEach((chain: string) => chains.add(chain));
     });
 
-    return { ...parent, chains: Array.from(chains) };
+    return {
+      ...parent,
+      chains: Array.from(chains),
+      mcap: parent.gecko_id ? coinMarkets?.[`coingecko:${parent.gecko_id}`]?.mcap ?? null : null,
+    };
   });
 
   const compressedV2Response = compress(

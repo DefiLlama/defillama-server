@@ -12331,6 +12331,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "HaloDAOFinance",
     audit_links: ["https://docs.halodao.com/contract-audits/overview"],
     listedAt: 1634698714,
+    deadUrl: true
   },
   {
     id: "689",
@@ -12591,6 +12592,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://uploads-ssl.webflow.com/606120c25fb119221b762612/615f8469329e45337d809a9a_Poof_Labs_Fall_Audit_Bramah.pdf",
     ],
     listedAt: 1635102185,
+    deadUrl: true
   },
   {
     id: "701",
@@ -12618,7 +12620,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Coffin Finance",
     address: "fantom:0x593ab53baffaf1e821845cf7080428366f030a9c",
     symbol: "COFFIN",
-    url: "https://coffin.finance",
+    url: "https://app.coffin.finance/",
     description:
       "Coffin Finance protocol is a partially collateralized stable token project. Coffin Finance team believes in the potential of Fantom Opera, so rather than using USDC, it uses FTM and COFFIN (the protocol's native token) as collaterals to mint CoUSD stable tokens. This makes it truly decentralized! A big part of the platform revenue will be given back to the community through its high yield farming options, which includes both staking liquidity pairs and single asset staking.",
     chain: "Fantom",
@@ -12716,7 +12718,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "yslio/index.js",
     twitter: "ysl_io",
-    audit_links: ["https://docs.ysl.io/ysl-io/protocol/audits"],
+    audit_links: ["https://docs.ysl.io/overview-1/audits"],
     listedAt: 1635107834,
   },
   {
@@ -12807,6 +12809,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SquidDeFi",
     forkedFrom: ["Goose Finance"],
     listedAt: 1635249537,
+    deadUrl: true
   },
   {
     id: "711",
@@ -13006,6 +13009,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-UniverseFinance-v1.0.pdf",
     ],
     listedAt: 1635395305,
+    deadUrl: true
   },
   {
     id: "720",
@@ -13329,8 +13333,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "openswap_harmony/index.js",
     twitter: "openswap_one",
     audit_links: [
-      "https://github.com/0xGuard-com/audit-reports/blob/master/openswap/OpenSwap_final-audit-report_v1.pdfaudit",
-      "https://github.com/0xGuard-com/audit-reports/blob/master/openswap_v2/OpenSwapV2_final-audit-report.pdf",
+      "https://github.com/0xGuard-com/audit-reports/tree/master/openswap",
+      "https://github.com/0xGuard-com/audit-reports/tree/master/openswap_v2",
     ],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1635798336,
@@ -13353,7 +13357,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "becoswap/index.js",
     forkedFrom: ["Uniswap V2"],
     twitter: "beco_swap",
-    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/Becoswap.pdf"],
+    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20A-M/Becoswap.pdf"],
     listedAt: 1635800029,
   },
   {
@@ -13374,6 +13378,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "asol/index.js",
     twitter: "aSOLprotocol",
     listedAt: 1635800533,
+    deadUrl: true
   },
   {
     id: "737",
@@ -13417,6 +13422,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     listedAt: 1635801672,
     forkedFrom: ["Liquity"],
+    deadUrl: true
   },
   {
     id: "739",
@@ -13526,6 +13532,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/nekufinance", "https://bitriseaudits.com/project/85"],
     forkedFrom: ["Compound"],
     listedAt: 1635819540,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "744",
@@ -13593,6 +13601,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "NileRiver_Labs",
     forkedFrom: ["Balancer"],
     listedAt: 1635821585,
+    rugged: true,
+    deadUrl: true
   },
   {
     id: "747",
@@ -13724,6 +13734,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     listedAt: 1635878160,
     openSource: true,
+    deadUrl: true
   },
   {
     id: "753",
@@ -13767,6 +13778,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.bossswap.finance/audit"],
     listedAt: 1635966094,
+    deadUrl: true
   },
   {
     id: "755",
@@ -13787,6 +13799,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "arrow/index.js",
     twitter: "ArrowProtocol",
     listedAt: 1635961535,
+    deadUrl: true
   },
   {
     id: "756",
@@ -13879,6 +13892,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "EggTartSwap",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1635981448,
+    deadUrl: true
   },
   {
     id: "780",
@@ -13948,6 +13962,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://paladinsec.co/projects/polywhale/",
     ],
     listedAt: 1636043142,
+    deadUrl: true
   },
   {
     id: "783",
@@ -13967,6 +13982,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "atmossoft.js",
     twitter: "AtmosSoft",
     listedAt: 1636043958,
+    deadUrl: true
   },
   {
     id: "784",
@@ -14010,6 +14026,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "lootswapfinance",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1636058049,
+    deadUrl: true
   },
   {
     id: "786",
@@ -14032,6 +14049,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/bagelsfinance"],
     oracles: ["TWAP"],
     listedAt: 1636058525,
+    deadUrl: true
   },
   {
     id: "787",
@@ -14121,7 +14139,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "polygonfarm-finance/index.js",
     twitter: "PolygonFarmFi",
     audit_links: [
-      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/SPADE%20Standart%20Smart%20Contract%20Security%20Audit.pdf",
+      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20N-Z/SPADE%20Standart%20Smart%20Contract%20Security%20Audit.pdf",
       "https://paladinsec.co/projects/polygonfarm/",
       "https://rugdoc.io/project/polygonfarm/",
     ],
@@ -14146,6 +14164,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   module: "sencha/index.js",
   twitter: "SenchaDEX",
   listedAt: 1636176482,
+  deadUrl: true
 },
 */
   {
@@ -14294,7 +14313,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Rubicon",
     address: null,
     symbol: "-",
-    url: "https://www.rubicon.finance",
+    url: "https://app.rubicon.finance/swap",
     description:
       "Democratizing the open order book and bringing decentralized exchange to the masses. Built on Ethereum L2.",
     chain: "Optimism",
@@ -14368,9 +14387,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "celerbridge/index.js",
     twitter: "CelerNetwork",
     audit_links: [
-      "https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/REP-cBridge-v2-2021-11-17.pdf",
-      "https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/PeckShield-Audit-Report-SGNv2-v1.0.pdf",
-      "https://github.com/celer-network/sgn-v2-contracts/blob/main/audit/SlowMist%20Audit%20Report%20-%20SGN.pdf",
+      "https://github.com/celer-network/sgn-v2-contracts/tree/main/audit",
     ],
     listedAt: 1636307154,
   },
@@ -14400,12 +14417,12 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Ottopia",
     address: "polygon:0xC250e9987A032ACAC293d838726C511E6E1C029d",
     symbol: "CLAM",
-    url: "https://ottopia.app",
+    url: "https://ottopia.app/",
     description:
       "OtterClam is a decentralized ecosystem that incorporates elements of finance, governance, and NFTs, in the Metaverse. These three components correspond to OtterClam’s Treasury, DAO, and Otter Kingdom, respectively.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/ottopia.png`,
-    audits: "2",
+    audits: "0",
     audit_note: null,
     gecko_id: "otterclam",
     cmcId: "15233",
@@ -14413,9 +14430,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "ottopia/index.js",
     twitter: "otterclam",
-    audit_links: ["https://docs.ottopia.app/treasury/references/audits"],
+    audit_links: [],
     governanceID: ["snapshot:otterclam.eth"],
     listedAt: 1636363218,
+    github: ["otterclam"]
   },
   {
     id: "804",
@@ -14460,6 +14478,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SnowbankDAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1636385808,
+    deadUrl: true
   },
   {
     id: "806",
@@ -14588,6 +14607,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/kebab"],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1636430124,
+    deadUrl:true
   },
   {
     id: "812",
@@ -14752,6 +14772,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "heliosprime/index.js",
     twitter: "HeliosPrimeOne",
     listedAt: 1636448140,
+    deadUrl: true
   },
   {
     id: "820",
@@ -14791,6 +14812,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "undeadfinance/index.js",
     twitter: "FinanceUndead",
     listedAt: 1636485547,
+    deadUrl: true
   },
   {
     id: "822",
@@ -14830,6 +14852,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "tomofinance.js",
     twitter: "TomoFinance",
     listedAt: 1636488285,
+    deadUrl: true
   },
   {
     id: "824",
@@ -14851,6 +14874,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "EuphoriaMoney",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1636592925,
+    deadUrl: true
   },
   {
     id: "825",
@@ -15133,7 +15157,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "arenaswap",
     audit_links: [
       "https://rugdoc.io/project/arenaswap/",
-      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/ArenaSwap%20Standart%20Smart%20Contract%20Security%20Audit.pdf",
+      "https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20A-M/ArenaSwap%20Standart%20Smart%20Contract%20Security%20Audit.pdf",
     ],
     listedAt: 1636837386,
   },
@@ -15222,6 +15246,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SwappFi",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637002081,
+    deadUrl: true
   },
   {
     id: "842",
@@ -15265,6 +15290,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "UnirexFinance",
     forkedFrom: ["Goose Finance"],
     listedAt: 1637026454,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "844",
@@ -15458,6 +15485,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     ],
     forkedFrom: ["Compound"],
     listedAt: 1637123250,
+    deadUrl: true
   },
   {
     id: "853",
@@ -15479,6 +15507,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://github.com/axedao/audit/blob/main/Techrate%20-%20AxeDAO.pdf"],
     forkedFrom: ["Olympus DAO"],
     listedAt: 1637174034,
+    rugged: true
   },
   {
     id: "854",
@@ -15607,6 +15636,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "snowdogdao",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1637298113,
+    rugged: true
   },
   {
     id: "860",
@@ -15625,7 +15655,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance", "Polygon", "Harmony", "Fantom", "Avalanche"],
     module: "cougarswap/index.js",
     twitter: "cougarswap",
-    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/CougarSwap.pdf"],
+    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20A-M/CougarSwap.pdf"],
     listedAt: 1637344672,
   },
   {
@@ -15647,6 +15677,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "bearfinance/index.js",
     twitter: "BearFinanceOrg",
     listedAt: 1637345368,
+    rugged: true, 
   },
   {
     id: "862",
@@ -15729,13 +15760,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SeederFinance",
     audit_links: ["https://inspex.co/reports/Inspex_AUDIT2021005_SeederFinance_Core_FullReport_v1.0.pdf"],
     listedAt: 1637350422,
+    deadUrl: true,
   },
   {
     id: "866",
     name: "Reverse",
     address: "harmony:0xed0b4b0f0e2c17646682fc98ace09feb99af3ade",
     symbol: "RVRS",
-    url: "https://app.reverseprotocol.one",
+    url: "https://rvrs.app/",
     description:
       "Reverse is a yield generating and community-led treasury protocol featuring rebasing yields and protocol-owned liquidity",
     chain: "Harmony",
@@ -15751,6 +15783,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     audit_links: ["https://paladinsec.co/projects/reverse-protocol/"],
     listedAt: 1637351714,
+    github: ["user:ReverseProtocol"]
   },
   {
     id: "867",
@@ -15854,6 +15887,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "mintswap/index.js",
     twitter: "SwapMint",
     listedAt: 1637374538,
+    deadUrl: true
   },
   {
     id: "872",
@@ -15895,6 +15929,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "bscswap/index.js",
     twitter: null,
     listedAt: 1637375764,
+    deadUrl: true
   },
   {
     id: "874",
@@ -15978,7 +16013,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Binance"],
     module: "dungeonswap/index.js",
     twitter: "DungeonSwap",
-    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/DungeonSwap.pdf"],
+    audit_links: ["https://github.com/TechRate/Smart-Contract-Audits/blob/main/2018-21%20A-M/DungeonSwap.pdf"],
     listedAt: 1637378691,
   },
   {
@@ -15999,7 +16034,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum", "Binance", "Polygon"],
     module: "unilend/index.js",
     twitter: "UniLend_Finance",
-    audit_links: ["https://docs.unilend.finance/the-protocol/audit-reports"],
+    audit_links: ["https://unilend.gitbook.io/unilend-finance/audit-report"],
     listedAt: 1637380340,
   },
   {
@@ -16041,6 +16076,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SwapMarshmallow",
     audit_links: ["https://marshmallowswap.gitbook.io/marshmallowswap/in-the-pipeworks/audit"],
     listedAt: 1637381592,
+    deadUrl: true
   },
   {
     id: "881",
@@ -16062,6 +16098,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Son_OHM",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1637382300,
+    deadUrl: true
   },
   {
     id: "882",
@@ -16187,6 +16224,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SwapperChan",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637511326,
+    deadUrl: true
   },
   {
     id: "888",
@@ -16228,6 +16266,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "8ight_finance",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1637560657,
+    deadUrl: true
   },
   {
     id: "890",
@@ -16293,6 +16332,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "SmolSwap",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637605616,
+    deadUrl: true
   },
   {
     id: "893",
@@ -16510,6 +16550,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://www.hswap.com/slowmist-zh.pdf", "https://www.hswap.com/lianan-zh.pdf"],
     listedAt: 1637724237,
+    deadUrl: true
   },
   {
     id: "903",
@@ -16531,6 +16572,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Mini_Swap",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1637725995,
+    deadUrl: true,
   },
   {
     id: "904",
@@ -16771,6 +16813,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Chainlink"],
     listedAt: 1637883311,
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "915",
@@ -16919,7 +16962,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "daomaker/index.js",
     twitter: "daomaker",
     audit_links: [
-      "https://learn.daomaker.com/audits",
+      "https://daomaker.com/faqs/smart-contracts-%26-audits#prefunding-contract-audit",
       "https://drive.google.com/file/d/18Anm53T_BbcRQLWHMthkQgvtLC6CDGW0/view",
       "https://drive.google.com/file/d/1LCgxsQCz7vCDKK1AFxsInpKkVt_1q3q1/view",
       "https://drive.google.com/file/d/1OpTWnZmhKu04kKYgFx89Nrh2Y68mhlv_/view",
@@ -16992,6 +17035,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://docs.butterswap.me/audit"],
     forkedFrom: ["Uniswap V2"],
     listedAt: 1638085420,
+    deadUrl: true
   },
   {
     id: "925",
@@ -17033,6 +17077,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "MetaverseProDAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638121684,
+    deadUrl: true
   },
   {
     id: "927",
@@ -17116,6 +17161,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "maximizer_xyz",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638133490,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "931",
@@ -17137,6 +17184,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "cronos_genesis",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1638134020,
+    deadUrl: true
   },
   {
     id: "932",
@@ -17160,6 +17208,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Aave"],
     audit_links: ["https://github.com/XensaFi/xensa-audits"],
     listedAt: 1638134542,
+    deadUrl: true,
   },
   {
     id: "933",
@@ -17181,6 +17230,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "NidhiDAO",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638135181,
+    deadUrl: true
   },
   {
     id: "934",
@@ -17202,6 +17252,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638188717,
     openSource: false,
+    deadUrl: true
   },
   // {
   //   id: "935",
@@ -17243,6 +17294,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "manifest",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638190661,
+    deadUrl: true
   },
   {
     id: "937",
@@ -17478,6 +17530,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TeamPolyshield",
     audit_links: ["https://paladinsec.co/projects/polyshield", "https://rugdoc.io/project/polyshield-finance"],
     listedAt: 1638358117,
+    deadUrl: true,
   },
   {
     id: "948",
@@ -17525,6 +17578,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "LobisHQ",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638366199,
+    rugged: true
   },
   {
     id: "950",
@@ -17564,7 +17618,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Mixin"],
     module: "pando/index.js",
     twitter: "pando_im",
-    audit_links: ["https://docs.pando.im/manual/audit-report.html"],
+    audit_links: [],
     parentProtocol: "parent#pando",
     listedAt: 1638382732,
   },
@@ -17859,6 +17913,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Moon__Dao",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638494448,
+    deadUrl: true,
+    rugged: true
   },
   {
     id: "966",
@@ -17881,6 +17937,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "DaoCerberus",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638495881,
+    deadUrl: true
   },
   {
     id: "967",
@@ -17922,6 +17979,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "zai.js",
     twitter: "zaifinance",
     listedAt: 1638563610,
+    deadUrl: true,
   },
   {
     id: "969",
@@ -18034,6 +18092,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "xeus_finance",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638595802,
+    deadUrl: true
   },
   {
     id: "974",
@@ -18055,6 +18114,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TaiChi_Dao_",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638599279,
+    rugged: true
   },
   {
     id: "975",
@@ -18120,6 +18180,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Tornadao_fi",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1638680155,
+    deadUrl: true
   },
   {
     id: "978",
@@ -18266,7 +18327,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Polygon"],
     module: "mobiusfinance/index.js",
     twitter: "Mobius_Finance",
-    audit_links: ["https://github.com/mobiusfinance/ContractsV1/tree/main/audit"],
+    audit_links: ["https://docs.mobius.finance/technical-resources/audit"],
     oracles: ["Chainlink"],
     listedAt: 1638877544,
   },
@@ -18288,6 +18349,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "arbirise-finance/index.js",
     twitter: "ArbiRiseFinance",
     listedAt: 1638878302,
+    deadUrl: true
   },
   {
     id: "987",
@@ -18529,6 +18591,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: ["https://www.certik.org/projects/piggy"],
     forkedFrom: ["Liquity"],
     listedAt: 1638999656,
+    deadUrl: true
   },
   // {
   //   id: "998",
@@ -18578,7 +18641,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Brinc Finance",
     address: "arbitrum:0xB5de3f06aF62D8428a8BF7b4400Ea42aD2E0bc53",
     symbol: "BRC",
-    url: "https://brinc.fi",
+    url: "https://brincx.io/#/",
     description:
       "The Brinc protocol allows for the decentralized creation and governance of a token supply using a bonding curve algorithm that is hard-coded into solidity smart contracts.",
     chain: "Arbitrum",
@@ -18768,7 +18831,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "CheeseDAO",
     address: "harmony:0xBbD83eF0c9D347C85e60F1b5D2c58796dBE1bA0d",
     symbol: "CHEEZ",
-    url: "https://www.cheesedao.xyz/#/dashboard",
+    url: "https://linktr.ee/cheesegame",
     description:
       "CheeseDAO attempts to stand on the shoulders' of giants, whose contributions to the ecosystem put all the pieces in place necessary to launch a decentralized gamified risk protocol owned and governed by the players",
     chain: "Harmony",
@@ -18804,6 +18867,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "ICE_DAO_",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639328999,
+    deadUrl: true
   },
   {
     id: "1011",
@@ -18825,6 +18889,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "PapaDAOofficial",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639330608,
+    deadUrl: true
   },
   {
     id: "1012",
@@ -18846,6 +18911,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "pumpkindao_com",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639331363,
+    deadUrl: true
   },
   {
     id: "1013",
@@ -18869,13 +18935,14 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     governanceID: ["snapshot:stgdao.eth"],
     listedAt: 1639331903,
+    deadUrl: true
   },
   {
     id: "1014",
-    name: "TempoDAO",
+    name: "TempoDAO", //rebranded to revenant
     address: "avax:0x88a425b738682f58c0ff9fcf2cceb47a361ef4cf",
     symbol: "TEMPO",
-    url: "https://earn.tempodao.gg/#/stake",
+    url: "https://www.revenant.gg/",
     description:
       "Tempo DAO is a fork of the already successful Olympus DAO available on the Avalanche Network. The TEMPO token is a revolutionary reserve backed gaming currency for the metaverse. Tempo DAO will use the TEMPO reserve-backed currency to help establish a treasury that rewards all those who decide to stake in the project. ",
     chain: "Avalanche",
@@ -18887,7 +18954,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Reserve Currency",
     chains: ["Avalanche"],
     module: "tempodao/index.js",
-    twitter: "TempoDAO",
+    twitter: "RevenantGamefi",
     forkedFrom: ["Olympus DAO"],
     listedAt: 1639332627,
   },

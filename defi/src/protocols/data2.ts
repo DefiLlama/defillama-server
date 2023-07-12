@@ -11492,7 +11492,7 @@ const data2: Protocol[] = [
     cmcId: null,
     category: "Services",
     chains: ["Avalanche", "Polygon",],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink", "RedStone"],
     forkedFrom: [],
     module: "cian/index.js",
     twitter: "CIAN_protocol",

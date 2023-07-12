@@ -11390,7 +11390,8 @@ const data3: Protocol[] = [
     twitter: "golemproject",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1689153769
+    listedAt: 1689153769,
+    github: ["golemfactory"]
   },
   {
     id: "3225",
@@ -11401,7 +11402,7 @@ const data3: Protocol[] = [
     description: `All-in-one DeFi ecosystem featuring crypto-native distributed #stablecoin $HOPE.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/hope-swap.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -11410,8 +11411,10 @@ const data3: Protocol[] = [
     module: "hope-swap/index.js",
     twitter: "hope_ecosystem",
     oracles: [],
+    audit_links: ["https://github.com/Light-Ecosystem/light-dao/tree/main/audit"],
     forkedFrom: [],
-    listedAt: 1689167605
+    listedAt: 1689167605,
+    github: ["Light-Ecosystem/repositories"]
   },
 ]
 

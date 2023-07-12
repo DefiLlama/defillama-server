@@ -23,7 +23,8 @@ export const KEYS_TO_STORE = {
     [AdaptorRecordType.totalSupplySideRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalSupplySideRevenue],
     [AdaptorRecordType.totalProtocolRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalProtocolRevenue],
     [AdaptorRecordType.totalHoldersRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalHoldersRevenue],
-    [AdaptorRecordType.totalCreatorRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalCreatorRevenue]
+    [AdaptorRecordType.totalCreatorRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.totalCreatorRevenue],
+    [AdaptorRecordType.dailyBribesRevenue]: AdaptorRecordTypeMapReverse[AdaptorRecordType.dailyBribesRevenue]
 }
 
 export { default as config } from "./config";
@@ -31,5 +32,3 @@ export { default as config } from "./config";
 export { default as rules } from "./rules"
 
 export { default as fees_imports } from "../../../utils/imports/fees_adapters"
-
- 

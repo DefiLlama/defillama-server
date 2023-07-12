@@ -17,11 +17,13 @@ const subgraphNames: { [chain: string]: string } = {
   ethereum: "balancer-v2",
   arbitrum: "balancer-arbitrum-v2",
   polygon: "balancer-polygon-v2",
+  optimism: "balancer-optimism-v2",
 };
 const gaugeFactories: { [chain: string]: string } = {
   ethereum: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
   arbitrum: "0xb08e16cfc07c684daa2f93c70323badb2a6cbfd2",
   polygon: "0x3b8ca519122cdd8efb272b0d3085453404b25bd0",
+  optimism: "0x2E96068b3D5B5BAE3D7515da4A1D2E52d08A2647",
 };
 type GqlResult = {
   id: string;

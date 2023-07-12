@@ -6,7 +6,6 @@ import { getCurrentUnixTimestamp } from "./src/utils/date";
 
 const read: boolean = true;
 const pgColumns: string[] = ["key", "timestamp", "price", "confidence"];
-const pgConnectionString: string = "";
 const latency = 1 * 60 * 60; // 1hr
 
 type Coin = {
@@ -91,9 +90,8 @@ export async function translateItems(
 
   return remapped;
 }
-async function queryRedis(values: Coin[]): Promise<CoinDict> {
+async function queryRedis(values: Coin[], redis: Redis): Promise<CoinDict> {
   if (values.length == 0) return {};
-  const redis: Redis = new Redis();
   const keys: string[] = values.map((v: Coin) => v.key);
 
   console.log(`${values.length} queried`);
@@ -116,12 +114,10 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
   // console.log(`${values.length} found after delete`);
   // console.log("DONE RD");
 
-  await redis.quit();
   return jsonValues;
 }
-async function queryPostgres(values: Coin[]) {
+async function queryPostgres(values: Coin[], sql: postgres.Sql<{}>) {
   if (values.length == 0) return [];
-  const sql = postgres(pgConnectionString);
   const keys: string[] = values.map((v: Coin) => v.key);
 
   let data: any[] = await sql`
@@ -140,7 +136,6 @@ async function queryPostgres(values: Coin[]) {
   // console.log(`${value2.length} found after delete`);
   // console.log("DONE PG");
 
-  await sql.end();
   return data;
 }
 function sortQueriesByTimestamp(values: Coin[]) {
@@ -159,8 +154,9 @@ function sortQueriesByTimestamp(values: Coin[]) {
 async function combineRedisAndPostgreData(
   redisData: CoinDict,
   historicalQueries: Coin[],
+  sql: postgres.Sql<{}>,
 ): Promise<CoinDict> {
-  const postgresData: Coin[] = await queryPostgres(historicalQueries);
+  const postgresData: Coin[] = await queryPostgres(historicalQueries, sql);
   const combinedData: CoinDict = {};
   postgresData.map((r: Coin) => {
     let coin = redisData[r.key];
@@ -172,41 +168,48 @@ async function combineRedisAndPostgreData(
 
   return combinedData;
 }
-async function readCoins2(values: Coin[]): Promise<CoinDict> {
+export async function readCoins2(
+  values: Coin[],
+  sql: postgres.Sql<{}>,
+  redis: Redis,
+): Promise<CoinDict> {
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
-  const redisData: CoinDict = await queryRedis(currentQueries);
-  let a =
-    historicalQueries.length > 0
-      ? redisData
-      : await combineRedisAndPostgreData(redisData, historicalQueries);
+  const redisData: CoinDict = await queryRedis(currentQueries, redis);
 
-  return a;
+  return historicalQueries.length > 0
+    ? redisData
+    : await combineRedisAndPostgreData(redisData, historicalQueries, sql);
 }
-async function writeCoins2(values: Coin[]) {
-  const redis: Redis = new Redis();
-  const sql = postgres(pgConnectionString);
+export async function writeCoins2(
+  values: Coin[],
+  sql: postgres.Sql<{}>,
+  redis: Redis,
+) {
   // REDIS
   const strings: { [key: string]: string } = {};
   values.map((v: Coin) => {
     strings[v.key] = JSON.stringify(v);
   });
-  await redis.mset(strings);
+  await Promise.all([
+    redis.mset(strings),
 
-  // POSTGRES
-  await sql`
-    insert into coins2main 
-    ${sql(values, "key", "timestamp", "price", "confidence")} 
-    on conflict (key) do 
-    update set 
-      timestamp = excluded.timestamp, 
-      price = excluded.price, 
-      confidence = excluded.confidence
-    `;
-
-  await redis.quit();
-  await sql.end();
+    // POSTGRES
+    sql`
+      insert into coins2main 
+      ${sql(values, "key", "timestamp", "price", "confidence")} 
+      on conflict (key) do 
+      update set 
+        timestamp = excluded.timestamp, 
+        price = excluded.price, 
+        confidence = excluded.confidence
+      `,
+  ]);
 }
-export async function batchWrite2(values: Coin[]) {
-  read ? readCoins2(values) : writeCoins2(values);
-}
+// export async function batchWrite2(
+//   values: Coin[],
+//   sql: postgres.Sql<{}>,
+//   redis: Redis,
+// ) {
+//   read ? readCoins2(values, sql, redis) : writeCoins2(values, sql, redis);
+// }

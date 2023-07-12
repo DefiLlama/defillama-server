@@ -11370,6 +11370,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1689091205
   },
+  {
+    id: "3224",
+    name: "Golem Network",
+    address: "0x7dd9c5cba05e151c895fde1cf355c9a1d5da6429",
+    symbol: "GLM",
+    url: "https://www.golem.network/",
+    description: `The Golem Network fosters a global group of creators building ambitious software solutions that will shape the technological landscape of future generations by accessing computing resources across the platform.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/golem-network.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    treasury: "golem.js",
+    twitter: "golemproject",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1689153769
+  },
 ]
 
 export default data3

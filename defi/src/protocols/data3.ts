@@ -11460,6 +11460,26 @@ const data3: Protocol[] = [
     forkedFrom: ["GMX"],
     listedAt: 1689244336,
   },
+  {
+    id: "3228",
+    name: "Metis",
+    address: null,
+    symbol: "-",
+    url: "https://www.metis.io",
+    description: `Powering dApps, Businesses, and Communities with Decentralization by scaling Ethereum to what its meant to be. Boundless.`,
+    chain: "Metis",
+    logo: `${baseIconsUrl}/metis.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "metis-token",
+    cmcId: null,
+    category: "Chain",
+    chains: ["Metis"],
+    module: "dummy.js",
+    twitter: "MetisDAO",
+    oracles: [],
+    forkedFrom: [],
+  },
 ]
 
 export default data3

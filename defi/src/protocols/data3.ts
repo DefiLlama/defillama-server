@@ -4685,7 +4685,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "rebasing-tbt",
     cmcId: null,
-    category: "CDP",
+    category: "RWA",
     chains: ["Ethereum"],
     module: "t-protocol/index.js",
     twitter: "TProtocol_",

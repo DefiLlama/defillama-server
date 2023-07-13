@@ -11502,6 +11502,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#mare-finance",
     listedAt: 1689257696
   },
+  {
+    id: "3230",
+    name: "ChainTools",
+    address: "0xE155F64B9aD8c81318c313196a60c72e72fD2cD1",
+    symbol: "CTLS",
+    url: "https://chaintools.ai",
+    description: `ChainTools is revolutionizing the DeFi landscape by offering the first-ever Uniswap V3 no-staking liquidity rewards protocol.`,
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/chaintools.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "chaintools",
+    cmcId: "27402",
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "chaintools/index.js",
+    treasury: "chaintools.js",
+    twitter: "ChaintoolsTech",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1689260482
+  },
 ]
 
 export default data3

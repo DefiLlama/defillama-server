@@ -11302,7 +11302,7 @@ const data3: Protocol[] = [
     category: "Options",
     chains: ["Ergo"],
     module: "sigmao/index.js",
-    twitter: null,
+    twitter: "SigmaOptions",
     oracles: [],
     forkedFrom: [],
     github: ["sigmaO"],

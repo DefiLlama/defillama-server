@@ -16478,7 +16478,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sommelier/index.js",
     twitter: "sommfinance",
-    audit_links: ["https://github.com/PeggyJV/cellar-contracts/tree/main/audits"],
+    audit_links: ["https://www.sommelier.finance/audits", "https://github.com/PeggyJV/cellar-contracts/tree/main/audits"],
     listedAt: 1664536707
   },
   {

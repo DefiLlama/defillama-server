@@ -2179,6 +2179,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "23835",
     chains: [],
     twitter: "MareFinance",
+    github: ["mare-finance"]
   },
 ];
 

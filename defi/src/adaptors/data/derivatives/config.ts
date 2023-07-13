@@ -159,5 +159,9 @@ export default {
                 "category": "Dexes",
             }
         },
+    },
+    "hmx": {
+        "enabled": true,
+        "id": "2296"
     }
 } as AdaptorsConfig

@@ -6604,6 +6604,7 @@ const data: Protocol[] = [
     openSource: false,
     deadUrl: true
   },
+  /*
   {
     id: "418",
     name: "MoonFarm",
@@ -6627,6 +6628,7 @@ const data: Protocol[] = [
     ],
     oracles: ["Chainlink"],
   },
+  */ //temporary, until the adapter is onchain 
   {
     id: "419",
     name: "Saber",

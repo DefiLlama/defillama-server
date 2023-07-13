@@ -24346,7 +24346,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     listedAt: 1675271563
   },
-  {
+  /* {
     id: "2486",
     name: "Landshare",
     address: "bsc:0x9D986A3f147212327Dd658F712d5264a73a1fdB0",
@@ -24369,7 +24369,7 @@ const data2: Protocol[] = [
     audit_links: ["https://landshare.io/wp-content/uploads/2022/06/Audit.pdf"],
     listedAt: 1675273672,
     stablecoins: ["real-usd"]
-  },
+  }, - api has been broken for months */
   {
     id: "2487",
     name: "Stargaze",

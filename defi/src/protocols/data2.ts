@@ -27425,14 +27425,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2622",
-    name: "Mare Finance",
+    name: "Mare Finance V1",
     address: "kava:0xd86C8d4279CCaFbec840c782BcC50D201f277419",
     symbol: "MARE",
     url: "https://mare.finance",
     description:
       "Mare Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless, open source protocol serving users on Kava. Users can deposit their assets, use them as collateral and borrow against them.",
     chain: "Kava",
-    logo: `${baseIconsUrl}/mare-finance.png`,
+    logo: `${baseIconsUrl}/mare-finance-v1.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -27443,6 +27443,7 @@ const data2: Protocol[] = [
     twitter: "MareFinance",
     oracles: ["Witnet"],
     forkedFrom: ["Compound"],
+    parentProtocol: "parent#mare-finance",
     listedAt: 1677761709
   },
   {

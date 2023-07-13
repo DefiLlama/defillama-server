@@ -11059,7 +11059,7 @@ const data3: Protocol[] = [
     chains: ["zkSync Era"],
     module: "pinnako/index.js",
     twitter: "PinnakoDex",
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     github: ["pinnakoex"],
     listedAt: 1688728443

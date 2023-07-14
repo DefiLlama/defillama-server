@@ -14317,7 +14317,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     symbol: "-",
     url: "https://app.rubicon.finance/swap",
     description:
-      "Democratizing the open order book and bringing decentralized exchange to the masses. Built on Ethereum L2.",
+      "An on-chain order book protocol for Ethereum. Built on leading L2 networks.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/rubicon.jpg`,
     audits: "2",
@@ -14325,10 +14325,10 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Optimism"],
+    chains: ["Optimism", "Arbitrum"],
     module: "rubicon/index.js",
     twitter: "rubicondefi",
-    audit_links: ["https://docs.rubicon.finance/audits"],
+    audit_links: ["https://docs.rubicon.finance/protocol/audits"],
     listedAt: 1636304524,
   },
   {

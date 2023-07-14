@@ -85,13 +85,14 @@ const data2: Protocol[] = [
     twitter: "VeritableDao",
     language: "Solidity",
     listedAt: 1644596897,
+    deadUrl: true
   },
   {
     id: "1397",
     name: "Kromatika",
     address: "optimism:0x3af33bef05c2dcb3c7288b77fe1c8d2aeba4d789",
     symbol: "KROM",
-    url: "https://kromatika.finance",
+    url: "https://app.kromatika.finance/limitorder#/pool",
     description: "Next generation order book limit trading on Uniswap.",
     chain: "Optimism",
     logo: `${baseIconsUrl}/kromatika.png`,
@@ -131,6 +132,7 @@ const data2: Protocol[] = [
     language: "Solidity",
     audit_links: ["https://docs.1beam.io/audit"],
     listedAt: 1644597493,
+    deadUrl: true
   },
   {
     id: "1399",
@@ -152,6 +154,7 @@ const data2: Protocol[] = [
     module: "fastyield/index.js",
     twitter: "fastyieldapp",
     listedAt: 1644597833,
+    deadUrl: true
   },
   {
     id: "1400",
@@ -222,7 +225,7 @@ const data2: Protocol[] = [
     module: "uxd/index.js",
     twitter: "UXDProtocol",
     language: "Rust",
-    audit_links: ["https://bramah.systems/audits/UXD_Audit_Bramah.pdf"],
+    audit_links: ["https://docs.uxd.fi/uxdprotocol/resources/audits"],
     governanceID: ['eip155:42161:0x8dEc1460C23767e17557f163d8Fe39AF37A244Bb'],
     listedAt: 1644696944,
     openSource: false,
@@ -247,6 +250,7 @@ const data2: Protocol[] = [
     twitter: "Scranton_Fi",
     language: "Solidity",
     listedAt: 1644763770,
+    deadUrl: true
   },
   {
     id: "1404",
@@ -292,6 +296,7 @@ const data2: Protocol[] = [
   //   twitter: "CoconutsFinance",
   //   language: "Solidity",
   //   listedAt: 1644782634,
+  //   deadUrl: true
   // },
   {
     id: "1406",
@@ -361,6 +366,7 @@ const data2: Protocol[] = [
     twitter: "drachmadefi",
     audit_links: ["https://drachma-defi.notion.site/Contracts-Audits-1ef408de14fa4c619feddb99abbddffc"],
     listedAt: 1644868232,
+    deadUrl: true
   },
   // {
   //   id: "1409",
@@ -383,6 +389,7 @@ const data2: Protocol[] = [
   //   twitter: "tower_finance",
   //   audit_links: ["https://github.com/towerfinance/tower-v2-solidity/blob/main/audit/Tower_Finance_Smart_Contract_Audit_-_Final_Report.pdf"],
   //   listedAt: 1644868459,
+  //   deadUrl: true
   // },
   {
     id: "1410",

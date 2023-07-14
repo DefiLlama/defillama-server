@@ -754,7 +754,7 @@ export default {
         }
     },
     "bogged-finance": {
-        "enabled": true,
+        "enabled": false,
         "id": "617"
     },
     "jetswap": {

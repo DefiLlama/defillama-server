@@ -2384,6 +2384,7 @@ const data: Protocol[] = [
     module: "core/index.js",
     twitter: "CORE_Vault",
     audit_links: ["https://arcadiamgroup.com/audits/CoreFinal.pdf"],
+    wrongLiquidity: true // pulling data for a CORE token on Solana
   },
   {
     id: "219",

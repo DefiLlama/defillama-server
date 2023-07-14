@@ -11524,6 +11524,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1689260482
   },
+  {
+    id: "3231",
+    name: "xWin Finance",
+    address: "bsc:0xd88ca08d8eec1E9E09562213Ae83A7853ebB5d28",
+    symbol: "XWIN",
+    url: "https://xwin.finance",
+    description: `xWIN Finance is a decentralized finance platform that brings innovation and accessibility to the world of crypto investments. With our unique robo-advisor engine, anyone can create a personalized portfolio of cryptocurrency assets and strategies with just a few clicks.`,
+    chain: "Binance",
+    logo: `${baseIconsUrl}/xwinfinance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Binance"],
+    module: "xWinFinance/index.js",
+    twitter: "xwinfinance",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    audit_links: ["https://skynet.certik.com/projects/xwinfinance"],
+    listedAt: 1689347148
+  },
 ]
 
 export default data3

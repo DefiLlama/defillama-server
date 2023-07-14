@@ -10,6 +10,7 @@ import polygon from "./polygon";
 // import solana from "./solana";
 // import xdai from "./xdai";
 import cosmos from "./cosmos";
+import synapse from './synapse'
 
 export type Token =
   | {
@@ -60,6 +61,7 @@ export const bridges = [
   // solana
   //xdai
   cosmos,
+  synapse,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

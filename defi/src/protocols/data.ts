@@ -14325,7 +14325,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Optimism", "Arbitrum"],
+    chains: ["Optimism"],
     module: "rubicon/index.js",
     twitter: "rubicondefi",
     audit_links: ["https://docs.rubicon.finance/protocol/audits"],

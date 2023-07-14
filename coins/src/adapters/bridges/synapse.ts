@@ -51,4 +51,3 @@ export default async function bridge(): Promise<Token[]> {
 
   return tokens;
 }
-bridge(); // ts-node coins/src/adapters/bridges/synapse.ts

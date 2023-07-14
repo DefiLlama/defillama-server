@@ -1723,5 +1723,9 @@ export default {
                 "category": "Dexes",
             }
         },
+    },
+    "croswap": {
+        enabled: true,
+        id: "2942"
     }
 } as AdaptorsConfig

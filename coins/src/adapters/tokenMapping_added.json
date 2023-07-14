@@ -7675,7 +7675,7 @@
       "decimals": "18",
       "symbol": "PLSX",
       "to": "coingecko#pulsex"
-    },
+    }
   },
   "fusion": {
     "0x0000000000000000000000000000000000000000": {

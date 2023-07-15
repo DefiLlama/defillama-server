@@ -467,7 +467,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
     ],
-    oracles: ["Chainlink", "Band"],
+    oracles: ["Chainlink"],
     governanceID: ["snapshot:loopringdao.eth"],
     github: ["Loopring"]
   },

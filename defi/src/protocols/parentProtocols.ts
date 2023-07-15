@@ -2181,6 +2181,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "MareFinance",
     github: ["mare-finance"]
   },
+  {
+    id: "parent#chainlink",
+    name: "Chainlink",
+    url: "https://chain.link",
+    description: "Chainlink decentralized oracle networks provide tamper-proof inputs, outputs, and computations to support advanced smart contracts on any blockchain.",
+    logo: `${baseIconsUrl}/chainlink.jpg`,
+    gecko_id: "chainlink",
+    cmcId: "1975",
+    chains: [],
+    twitter: "chainlink",
+  },
 ];
 
 export default parentProtocols;

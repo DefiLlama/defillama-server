@@ -2818,7 +2818,8 @@ const data3: Protocol[] = [
     audit_links: [
       "https://www.blockswap.network/security"
     ],
-    listedAt: 1681518744
+    listedAt: 1681518744,
+	governanceID: ["snapshot:blockswapdao.eth", "eip155:1:0x8869A94df9200C75116A285e12E85C24179129E1"]
   },
   {
     id: "2839",

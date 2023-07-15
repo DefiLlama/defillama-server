@@ -401,7 +401,7 @@ const data: Protocol[] = [
     twitter: "dForcenet",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
     forkedFrom: [],
-    oracles: ["Chainlink", "Band"],
+    oracles: ["Chainlink"],
     governanceID: ["snapshot:dforcenet.eth"],
     stablecoins: ["dforce-usd"],
     github: ["dforce-network"]

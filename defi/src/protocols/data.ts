@@ -10997,11 +10997,17 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Services",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Arbitrum", "Polygon", "Optimism", "BSC"],
     module: "meanfinance/index.js",
     twitter: "mean_fi",
     audit_links: ["https://github.com/Mean-Finance/dca-v2-core/tree/main/audits"],
-    oracles: ["Chainlink", "TWAP"],
+    oraclesByChain: [
+      Arbitrum: ["Chainlink", "TWAP"],
+      Polygon: ["API3", "TWAP"],
+      Optimism: ["Chainlink", "TWAP"],
+      Ethereum: ["Chainlink", "TWAP"],
+      BSC: ["Chainlink", "TWAP"] 
+    ],
   },
   {
     id: "628",

@@ -11532,7 +11532,7 @@ const data3: Protocol[] = [
     url: "https://xwin.finance",
     description: `xWIN Finance is a decentralized finance platform that brings innovation and accessibility to the world of crypto investments. With our unique robo-advisor engine, anyone can create a personalized portfolio of cryptocurrency assets and strategies with just a few clicks.`,
     chain: "Binance",
-    logo: `${baseIconsUrl}/xwinfinance.jpg`,
+    logo: `${baseIconsUrl}/xwin-finance.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

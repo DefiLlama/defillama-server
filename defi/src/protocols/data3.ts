@@ -11577,7 +11577,7 @@ const data3: Protocol[] = [
     description: `Ajna is a peer to peer, oracleless, permissionless lending protocol with no governance, accepting both fungible and non fungible tokens as collateral`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/ajna.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -11587,7 +11587,7 @@ const data3: Protocol[] = [
     twitter: "ajnafi",
     oracles: [],
     forkedFrom: [],
-    audit_links: [],
+    audit_links: ["https://github.com/ajna-finance/audits"],
     listedAt: 1689441053,
     github: ["ajna-finance"]
   },

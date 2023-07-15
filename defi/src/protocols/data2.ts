@@ -27471,6 +27471,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "chainlink",
+    parentProtocol: "parent#chainlink",
     oracles: [],
     forkedFrom: [],
   },

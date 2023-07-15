@@ -2968,7 +2968,6 @@ const data: Protocol[] = [
     module: "pangolin/index.js",
     twitter: "pangolindex",
     forkedFrom: ["Uniswap V2"],
-    oracles: ["RedStone"],
     governanceID: ["snapshot:pangolindex.eth"]
   },
   {

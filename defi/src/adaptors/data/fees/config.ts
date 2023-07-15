@@ -695,21 +695,25 @@ export default {
         id: "2706"
     },
     "chainlink-vrf-v1": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink VRF V1",
         id: "2623",
     },
     "chainlink-vrf-v2": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink VRF V2",
         id: "2623"
     },
     "chainlink-keepers": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Keepers",
         id: "2623"
     },
     "chainlink-requests": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Requests",
         id: "2623"

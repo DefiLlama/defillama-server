@@ -11592,6 +11592,28 @@ const data3: Protocol[] = [
     listedAt: 1689441053,
     github: ["ajna-finance"]
   },
+  {
+    id: "3234",
+    name: "DerpDEX",
+    address: null,
+    symbol: "-",
+    url: "https://derpdex.com/",
+    description: `Trade, earn, stake, and launch crypto with the most autistic DEX on the internet. Make derp great again`,
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/derpdex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    module: "DerpDEX/index.js",
+    twitter: "DerpDEXcom",
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    listedAt: 1689526022,
+    github: ["derpdex-official"]
+  },
 ]
 
 export default data3

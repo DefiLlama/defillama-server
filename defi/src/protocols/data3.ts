@@ -5575,7 +5575,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "memedex/index.js",
     twitter: "memedexcfx",
-    listedAt: 1683778751
+    listedAt: 1683778751,
+    deadUrl: true
   },
   {
     id: "2964",

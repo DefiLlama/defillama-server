@@ -11347,6 +11347,7 @@ const data3: Protocol[] = [
     module: "tenx-exchange/index.js",
     twitter: null,
     oracles: [],
+    github: ["tenxexchange"],
     forkedFrom: [],
     listedAt: 1689091199
   },

@@ -88,6 +88,18 @@
       "to": "ethereum:0xdac17f958d2ee523a2206206994597c13d831ec7"
     }
   },
+  "pulse": {
+    "0x2b591e99afe9f32eaa6214f7b7629768c40eeb39": {
+      "decimals": "8",
+      "symbol": "HEX",
+      "to": "coingecko#hex-pulsechain"
+    },
+    "0x95b303987a60c71504d99aa1b13b4da07b0790ab": {
+      "decimals": "18",
+      "symbol": "PLSX",
+      "to": "coingecko#pulsex"
+    }
+  },
   "kava": {
     "erc20:tether:usdt": {
       "decimals": "6",

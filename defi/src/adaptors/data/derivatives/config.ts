@@ -163,5 +163,19 @@ export default {
     "hmx": {
         "enabled": true,
         "id": "2296"
+    },
+    "y2k": {
+        "enabled": true,
+        "id": "2375",
+        protocolsData: {
+            v1: {
+                "enabled": true,
+                "id": "2375",
+            },
+            v2: {
+                "enabled": true,
+                "id": "3056",
+            }
+        }
     }
 } as AdaptorsConfig

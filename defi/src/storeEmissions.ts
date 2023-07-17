@@ -29,7 +29,14 @@ function findPId(cgId: string | null) {
   return protocols.find((p) => p.gecko_id == cgId);
 }
 
-async function aggregateMetadata(protocolName: string, chart: Chart[], rawData: SectionData) {
+async function aggregateMetadata(
+  protocolName: string,
+  realTimeChart: Chart[],
+  documentedChart: Chart[],
+  rawData: SectionData,
+  documentedData: ChartSection[],
+  replaces: string[]
+) {
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
   const cgId = getCgId(rawData.metadata.token);
   const pData = pId && pId !== "" ? protocols.find((p) => p.id == pId) : findPId(cgId);
@@ -44,17 +51,30 @@ async function aggregateMetadata(protocolName: string, chart: Chart[], rawData: 
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
   }
 
-  const tokenAllocation = createCategoryData(chart, rawData.categories, false);
+  const realTimeTokenAllocation = createCategoryData(realTimeChart, rawData.categories, false);
+  const documentedTokenAllocation = createCategoryData(
+    documentedChart,
+    rawData.categories,
+    false,
+    documentedData,
+    replaces
+  );
 
   const futures = pData && "symbol" in pData ? await createFuturesData(pData.symbol) : undefined;
 
   return {
     data: {
-      data: chart,
+      realTimeData: {
+        data: realTimeChart,
+        tokenAllocation: realTimeTokenAllocation,
+      },
+      documentedData: {
+        data: documentedChart,
+        tokenAllocation: documentedTokenAllocation,
+      },
       metadata: rawData.metadata,
       name: name,
       gecko_id: pData?.gecko_id,
-      tokenAllocation,
       futures,
     },
     id,
@@ -64,12 +84,26 @@ async function aggregateMetadata(protocolName: string, chart: Chart[], rawData: 
 async function processSingleProtocol(adapter: Protocol, protocolName: string): Promise<string> {
   const rawData = await createRawSections(adapter);
 
-  const chart: Chart[] = (await createChartData(protocolName, rawData, false)).map((s: ChartSection) => ({
+  const { realTimeData, documentedData } = await createChartData(protocolName, rawData, false);
+  const realTimeChart: Chart[] = realTimeData.map((s: ChartSection) => ({
     label: s.section,
     data: s.data.apiData,
   }));
 
-  const { data, id } = await aggregateMetadata(protocolName, chart, rawData);
+  const documentedChart: Chart[] = documentedData.map((s: ChartSection) => ({
+    label: s.section,
+    data: s.data.apiData,
+  }));
+
+  const { data, id } = await aggregateMetadata(
+    protocolName,
+    realTimeChart,
+    documentedChart,
+    rawData,
+    documentedData,
+    adapter.documented?.replaces ?? []
+  );
+
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
 
   await storeR2JSONString(`emissions/${sluggifiedId}`, JSON.stringify(data));

@@ -11708,7 +11708,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://fusionx.finance",
-    description: `FusionX builds the native DeFi ecosystem of Mantle Network which powers it’s concentrated liquidity AMM which is highly efficient, isolated perpetual Dex and LSD based products coming up shortly.`,
+    description: `FusionX builds the native DeFi ecosystem of Mantle Network which powers it's concentrated liquidity AMM which is highly efficient, isolated perpetual Dex and LSD based products coming up shortly.`,
     chain: "Mantle",
     logo: `${baseIconsUrl}/fusionx-v3.jpg`,
     audits: "0",
@@ -11723,6 +11723,29 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V3"],
     parentProtocol: "parent#fusionx-finance",
     listedAt: 1689594259
+  },
+  {
+    id: "3240",
+    name: "Magician MV",
+    address: "polygon:0x9e5cc3aF2c87527Fdb48eb783E84E0fD9a59918a",
+    symbol: "MBT",
+    url: "https://magicianmv.com/#/swap",
+    description: `Decentralized Exchange on Polygon`,
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/magician-mv.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Polygon"],
+    module: "magicianmv/index.js",
+    twitter: "MagicianMV",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    audit_links: ["https://skynet.certik.com/projects/magician"],
+    listedAt: 1689617681,
+    github: ["MagicBallSwap/core"]
   },
 ]
 

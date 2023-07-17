@@ -11623,7 +11623,7 @@ const data3: Protocol[] = [
     url: "https://www.yieldguild.io",
     description: `The world's first and biggest web3 gaming guild where you can make friends, discover games, and level up.`,
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/yield-guild-game.png`,
+    logo: `${baseIconsUrl}/yield-guild-games.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "yield-guild-games",

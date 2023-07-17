@@ -11659,6 +11659,27 @@ const data3: Protocol[] = [
     github: ["Cola-Factory"],
     listedAt: 1689589539
   },
+  {
+    id: "3237",
+    name: "SkyDex",
+    address: null,
+    symbol: "-",
+    url: "https://skydex.pro",
+    description: `First Stableswap on Zksync Era Swap stablecoins at minimal slippage and stake at maximum yield. Support Stablecoin and LSDfi`,
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/skydex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    module: "skydex/index.js",
+    twitter: "SkyDex_zksync",
+    oracles: [],
+    forkedFrom: [],
+    listedAt: 1689589537
+  },
 ]
 
 export default data3

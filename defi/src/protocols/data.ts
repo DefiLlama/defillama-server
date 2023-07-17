@@ -27086,6 +27086,29 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1644554424,
     deadUrl: true
   },
+  {
+    id: "1395",
+    name: "Whale Game",
+    address: "ethereum:0x0F5F3E11302a91f806D5589Ec6081494B63BA05a",
+    symbol: "WHALE",
+    url: "https://whalegame.xyz",
+    description:"Welcome to the Whale Game, a fun and engaging experiment that combines game theory and economic principles around an increasing pot.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/whalegame.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Ethereum"],
+    oracles: [],
+    forkedFrom: [],
+    module: "whalegame/index.js",
+    twitter: "TheWhaleGame",
+    language: "Solidity",
+    listedAt: 1644554424,
+    deadUrl: false,
+  },
 ];
 
 const protocols = data.concat(data2, data3)

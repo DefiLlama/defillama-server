@@ -2192,6 +2192,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "chainlink",
   },
+  {
+    id: "parent#fusionx-finance",
+    name: "FusionX Finance",
+    url: "https://fusionx.finance",
+    description: "FusionX builds the native DeFi ecosystem of Mantle Network which powers it’s concentrated liquidity AMM which is highly efficient, isolated perpetual Dex and LSD based products coming up shortly.",
+    logo: `${baseIconsUrl}/fusionx-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FusionX_Finance",
+  },
 ];
 
 export default parentProtocols;

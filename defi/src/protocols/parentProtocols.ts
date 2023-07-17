@@ -2202,6 +2202,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "FusionX_Finance",
+    github: ["fusionx-finance"],
   },
 ];
 

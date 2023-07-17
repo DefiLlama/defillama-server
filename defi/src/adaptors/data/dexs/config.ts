@@ -1727,5 +1727,15 @@ export default {
     "croswap": {
         enabled: true,
         id: "2942"
+    },
+    "fusionx-v2": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3238"
+    },
+    "fusionx-v3": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3239"
     }
 } as AdaptorsConfig

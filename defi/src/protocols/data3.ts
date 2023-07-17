@@ -11680,6 +11680,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1689589537
   },
+  {
+    id: "3238",
+    name: "FusionX Finance",
+    address: null,
+    symbol: "-",
+    url: "https://fusionx.finance",
+    description: `FusionX builds the native DeFi ecosystem of Mantle Network which powers its concentrated liquidity AMM which is highly efficient, isolated perpetual Dex and LSD based products coming up shortly.`,
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/fusionx-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    module: "fusionx-fi/index.js",
+    twitter: "FusionX_Finance",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    github: ["fusionx-finance"],
+    listedAt: 1689594254
+  },
 ]
 
 export default data3

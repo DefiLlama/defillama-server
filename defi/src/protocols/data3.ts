@@ -11699,7 +11699,6 @@ const data3: Protocol[] = [
     twitter: "FusionX_Finance",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
-    github: ["fusionx-finance"],
     parentProtocol: "parent#fusionx-finance",
     listedAt: 1689594254
   },

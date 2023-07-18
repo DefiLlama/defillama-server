@@ -1,4 +1,4 @@
-import { createChartData } from "../emissions-adapters/utils/convertToChartData";
+import { createChartData, mapToServerData } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
 import adapters from "./utils/imports/emissions_adapters";
@@ -31,8 +31,8 @@ function findPId(cgId: string | null) {
 
 async function aggregateMetadata(
   protocolName: string,
-  realTimeChart: Chart[],
-  documentedChart: Chart[],
+  realTimeChart: ChartSection[],
+  documentedChart: ChartSection[],
   rawData: SectionData
 ) {
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
@@ -49,23 +49,22 @@ async function aggregateMetadata(
     name = parentProtocols.find((p) => p.id === pData.parentProtocol)?.name ?? id;
   }
 
-  const realTimeTokenAllocation = createCategoryData(realTimeChart, rawData.categories, false);
-  const documentedTokenAllocation = createCategoryData(documentedChart, rawData.categories, false);
+  const realTimeTokenAllocation = createCategoryData(realTimeChart, rawData.categories);
+  const documentedTokenAllocation = createCategoryData(documentedChart, rawData.categories);
 
   const futures = pData && "symbol" in pData ? await createFuturesData(pData.symbol) : undefined;
 
+  const documentedData = documentedChart.length
+    ? { data: mapToServerData(documentedChart), tokenAllocation: documentedTokenAllocation }
+    : undefined;
+  const realTimeData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+
   return {
     data: {
-      realTimeData: {
-        data: realTimeChart,
-        tokenAllocation: realTimeTokenAllocation,
-      },
-      documentedData: {
-        data: documentedChart,
-        tokenAllocation: documentedTokenAllocation,
-      },
+      realTimeData,
+      documentedData,
       metadata: rawData.metadata,
-      name: name,
+      name,
       gecko_id: pData?.gecko_id,
       futures,
     },
@@ -79,21 +78,10 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
   const { realTimeData, documentedData } = await createChartData(
     protocolName,
     rawData,
-    adapter.documented?.replaces ?? [],
-    false
+    adapter.documented?.replaces ?? []
   );
 
-  const realTimeChart: Chart[] = realTimeData.map((s: ChartSection) => ({
-    label: s.section,
-    data: s.data.apiData,
-  }));
-
-  const documentedChart: Chart[] = documentedData.map((s: ChartSection) => ({
-    label: s.section,
-    data: s.data.apiData,
-  }));
-
-  const { data, id } = await aggregateMetadata(protocolName, realTimeChart, documentedChart, rawData);
+  const { data, id } = await aggregateMetadata(protocolName, realTimeData, documentedData, rawData);
 
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
 
@@ -141,4 +129,4 @@ async function handlerErrors(errors: string[]) {
 }
 
 export default wrapScheduledLambda(handler);
-// handler(); // ts-node src/storeEmissions.ts
+handler(); // ts-node src/storeEmissions.ts

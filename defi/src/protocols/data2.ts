@@ -29370,6 +29370,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#puzzleswaporg",
     listedAt: 1679438099
   },
+  /*
   {
     id: "2709",
     name: "insrt finance",
@@ -29392,6 +29393,7 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/insrt-finance"],
     listedAt: 1679483191
   },
+  */
   {
     id: "2710",
     name: "BaptSwap",

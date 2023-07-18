@@ -11769,6 +11769,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1689657535,
   },
+  {
+    id: "3242",
+    name: "Moraswap",
+    address: null,
+    symbol: "-",
+    url: "https://moraswap.com/exchange/swap#",
+    description: `The leading DeFi shop servicing all your needs on Neon: Trade, Earn and Win on the grounds of transparency, safety and innovation`,
+    chain: "Neon",
+    logo: `${baseIconsUrl}/moraswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Neon"],
+    module: "moraswap/index.js",
+    twitter: "moraswap_amm",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    audit_links: ["https://github.com/moraswap/v2-periphery/blob/master/audits/masterchef-by-hashex.pdf"],
+    listedAt: 1689658469,
+    github: ["user:moraswap"]
+  },
 ]
 
 export default data3

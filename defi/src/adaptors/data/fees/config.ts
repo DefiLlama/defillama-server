@@ -1025,5 +1025,9 @@ export default {
     "DerpDEX": {
         enabled: true,
         id: "3234"
+    },
+    "wigoswap": {
+        "enabled": true,
+        "id": "1351"
     }
 } as AdaptorsConfig

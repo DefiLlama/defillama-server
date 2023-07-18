@@ -60,6 +60,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     ZEDXION: "0xfbc4f3f645c4003a2e4f4e9b51077d2daa9a9341", // price manipulated?
     FEG: "0xacfc95585d80ab62f67a14c566c1b7a49fe91167",
     MFI: "0xeb5bb9d14d27f75c787cf7475e7ed00d21dc7279",
+    BLT: "0x449aed32c1685dbeca28d1ae45462b6156a6096d", // BLT
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

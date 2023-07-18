@@ -1901,7 +1901,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Options",
     chains: ["Ethereum"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: [],
     module: "aevo-xyz/index.js",
     twitter: "aevoxyz",

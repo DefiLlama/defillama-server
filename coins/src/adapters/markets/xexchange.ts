@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export function xexchange(timestamp: number) {
   console.log("starting xexchange");
-  
+
   const THIRY_MINUTES = 1800
   if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
     throw new Error("Can't fetch historical data")
@@ -37,7 +37,7 @@ async function getAshPools() {
   return prices
 }
 
-async function getPools() {
+async function getPools(prices: any) {
   const { data: { data: { pairs } } } = await axios.post('https://graph.xexchange.com/graphql', {
     "query": `{ 
       pairs (limit: 1000) {
@@ -45,6 +45,8 @@ async function getPools() {
         firstToken {identifier name ticker decimals price }
         secondToken {identifier name ticker decimals price }
         lockedValueUSD
+        liquidityPoolToken {identifier name ticker decimals price }
+        liquidityPoolTokenPriceUSD
       }
     }`,
     "operationName": null,
@@ -52,21 +54,30 @@ async function getPools() {
   })
   const filteredPools = pairs.filter((i: any) => +i.lockedValueUSD > 2000) // ignore pools with less than 2000$ in liquidity
   log('pools', filteredPools.length, pairs.length)
-  return filteredPools
+  const poolIds = filteredPools.map(({liquidityPoolToken: { identifier}}: any) => identifier)
+  const { data: lpData } =await axios.get(`https://api.multiversx.com/tokens?identifiers=${poolIds.join(',')}`)
+  const lpInfo : any  = {}
+  lpData.forEach((i: any) => lpInfo[i.identifier] = i) 
+  filteredPools.forEach(({ firstToken, secondToken, liquidityPoolToken, lockedValueUSD, }: any) => {
+    prices[firstToken.identifier] = firstToken
+    prices[secondToken.identifier] = secondToken
+    const lpDatum = lpInfo[liquidityPoolToken.identifier]
+    if (lpDatum) {
+      liquidityPoolToken.price = +lockedValueUSD * (10 ** liquidityPoolToken.decimals) / +lpDatum.supply
+      console.log(lockedValueUSD, lpDatum.supply, liquidityPoolToken.decimals, liquidityPoolToken.identifier, liquidityPoolToken.price)
+      prices[liquidityPoolToken.identifier] = liquidityPoolToken
+    }
+  })
 }
 
 async function getTokenPrices(timestamp: number) {
 
   const prices: any = await getAshPools()
   const writes: Write[] = [];
-  let pools = await getPools()
+  await getPools(prices)
   const priceLog: any[] = []
-  pools.forEach(({ firstToken, secondToken }: any) => {
-    prices[firstToken.identifier] = firstToken
-    prices[secondToken.identifier] = secondToken
-  })
   Object.values(prices).forEach((i: any) => addToken(i))
-  
+
   // console.table(priceLog)
   function addToken({ identifier, ticker, decimals, price, name, }: { identifier: string, name: string, ticker: string, decimals: number, price: string, }) {
     addToDBWritesList(writes, chain, identifier, +price, decimals, ticker, timestamp, 'xexchange', 0.9)

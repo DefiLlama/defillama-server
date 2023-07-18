@@ -2198,6 +2198,7 @@ const data: Protocol[] = [
     chains: ["Binance", "Polygon", "Heco", "Avalanche", "Fantom"],
     module: "autofarm.js",
     twitter: "autofarmnetwork",
+    github: ['autofarmnetwork'],
     audit_links: ["https://www.certik.org/projects/autofarm"],
     forkedFrom: ["Yearn Finance"],
   },

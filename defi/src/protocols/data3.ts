@@ -11778,7 +11778,7 @@ const data3: Protocol[] = [
     description: `The leading DeFi shop servicing all your needs on Neon: Trade, Earn and Win on the grounds of transparency, safety and innovation`,
     chain: "Neon",
     logo: `${baseIconsUrl}/moraswap.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

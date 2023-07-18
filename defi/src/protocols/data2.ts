@@ -15431,8 +15431,8 @@ const data2: Protocol[] = [
   {
     id: "2092",
     name: "Pirex",
-    address: null,
-    symbol: "-",
+    address: "0xc55126051b22ebb829d00368f4b12bde432de5da",
+    symbol: "BTRFLY",
     url: "https://pirex.io/",
     description: "Pirex is a product by Redacted which creates liquid wrappers that allow for auto-compounding and the tokenization of future yield/vote events.",
     chain: "Ethereum",

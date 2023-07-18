@@ -11792,6 +11792,28 @@ const data3: Protocol[] = [
     listedAt: 1689658469,
     github: ["user:moraswap"]
   },
+  {
+    id: "3243",
+    name: "ZeroLend",
+    address: null,
+    symbol: "-",
+    url: "https://zerolend.xyz/",
+    description: `ZeroLend is a decentralized lending protocol built on zkSync Era. Based on Aave V3 and powered by Pyth Network`,
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zerolend.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["zkSync Era"],
+    module: "zerolend/index.js",
+    twitter: "zerolendxyz",
+    oracles: ["Pyth"],
+    forkedFrom: ["AAVE V3"],
+    listedAt: 1689662621,
+    github: ["user:zerolend"]
+  },
 ]
 
 export default data3

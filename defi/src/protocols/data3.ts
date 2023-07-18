@@ -11856,7 +11856,8 @@ const data3: Protocol[] = [
     audit_links: ["https://docs-v4.venus.io/links/security-and-audits#isolated-pools"],
     forkedFrom: [],
     oracles: [],
-    parentProtocol: "parent#venus-finance"
+    parentProtocol: "parent#venus-finance",
+    listedAt: 1689719707
   },
 ]
 

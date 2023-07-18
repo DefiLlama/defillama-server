@@ -129,4 +129,4 @@ async function handlerErrors(errors: string[]) {
 }
 
 export default wrapScheduledLambda(handler);
-handler(); // ts-node src/storeEmissions.ts
+//handler(); // ts-node src/storeEmissions.ts

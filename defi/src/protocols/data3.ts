@@ -11836,6 +11836,28 @@ const data3: Protocol[] = [
     audit_links: ["https://arda.run/audits/onedex"],
     listedAt: 1689686359
   },
+  {
+    id: "3245",
+    name: "Venus Isolated Pools",
+    address: "bsc:0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63",
+    symbol: "XVS",
+    url: "https://app.venus.io/#/isolated-pools/",
+    description: "Isolated Pools are made up of separate collections of assets with tailored risk management configurations",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/venus.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    module: "venus-isolated-pools/index.js",
+    twitter: "VenusProtocol",
+    audit_links: ["https://docs-v4.venus.io/links/security-and-audits#isolated-pools"],
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#venus-finance"
+  },
 ]
 
 export default data3

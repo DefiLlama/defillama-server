@@ -2204,6 +2204,21 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "FusionX_Finance",
     github: ["fusionx-finance"],
   },
+  {
+    id: "parent#venus-finance",
+    name: "Venus Finance",
+    url: "https://venus.io/",
+    description: "A Decentralized Marketplace for Lenders and Borrowers with Borderless Stablecoins",
+    logo: `${baseIconsUrl}/venus.jpg`,
+    gecko_id: "venus",
+    cmcId: "7288",
+    chains: [],
+    twitter: "VenusProtocol",
+    github: ["VenusProtocol"],
+    treasury: "venus.js",
+    governanceID: ["snapshot:venus-xvs.eth"],
+    stablecoins: ["vai"]
+  },
 ];
 
 export default parentProtocols;

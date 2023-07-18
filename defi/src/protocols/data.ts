@@ -2257,18 +2257,16 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/venus.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "venus",
-    cmcId: "7288",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Binance"],
     module: "venus.js",
-    treasury: "venus.js",
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound"],
     oracles: ["Chainlink", "Pyth", "TWAP"],
-    governanceID: ["snapshot:venus-xvs.eth"],
-    stablecoins: ["vai"]
+    parentProtocol: "parent#venus-finance"
   },
   {
     id: "213",

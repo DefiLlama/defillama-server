@@ -21686,6 +21686,7 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1671451792
   },
+  /*
   {
     id: "2370",
     name: "Proteo Defi",
@@ -21708,6 +21709,7 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1671464546
   },
+  */
   {
     id: "2371",
     name: "RAIDSHIFT Marketplace",

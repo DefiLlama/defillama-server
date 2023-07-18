@@ -11747,6 +11747,28 @@ const data3: Protocol[] = [
     listedAt: 1689617681,
     github: ["MagicBallSwap/core"]
   },
+  {
+    id: "3241",
+    name: "Meter Liquid Staking",
+    address: null,
+    symbol: "-",
+    assetToken: "stMTRG",
+    url: "https://meter.io",
+    description: `Meter Liquid Staking is a decentralized liquid staking protocol that automatically stake the Meter network governance token MTRG. The liquid staking token stMTRG automatically manages the daily reward and auto-compounds`,
+    chain: "Meter",
+    logo: `${baseIconsUrl}/meter-liquid-staking.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Meter"],
+    module: "meter-Liquid-Staking/index.js",
+    twitter: "Meter_IO",
+    oracles: ["TWAP"],
+    forkedFrom: [],
+    listedAt: 1689657535,
+  },
 ]
 
 export default data3

@@ -1021,5 +1021,9 @@ export default {
     "pinnako": {
         enabled: true,
         id: "3209"
+    },
+    "DerpDEX": {
+        enabled: true,
+        id: "3234"
     }
 } as AdaptorsConfig

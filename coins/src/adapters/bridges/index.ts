@@ -11,6 +11,7 @@ import polygon from "./polygon";
 // import xdai from "./xdai";
 import cosmos from "./cosmos";
 import synapse from './synapse'
+import base from './base'
 
 export type Token =
   | {
@@ -62,6 +63,7 @@ export const bridges = [
   //xdai
   cosmos,
   synapse,
+  base,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

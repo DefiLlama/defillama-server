@@ -986,15 +986,20 @@ export default {
         enabled: true,
         id: "2795"
     },
-    "y2k-finance": {
+    "y2k": {
         parentId: "Y2K Finance",
         enabled: true,
-        id: "2375"
-    },
-    "y2k-finance-v2": {
-        parentId: "Y2K Finance",
-        enabled: true,
-        id: "3056"
+        id: "2375",
+        "protocolsData": {
+            "v1": {
+                "id": "2375",
+                "enabled": true,
+            },
+            "v2": {
+                "id": "3056",
+                "enabled": true,
+            }
+        },
     },
     "yield-yak-staked-avax": {
         enabled: true,

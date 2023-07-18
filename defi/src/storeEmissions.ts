@@ -33,9 +33,7 @@ async function aggregateMetadata(
   protocolName: string,
   realTimeChart: Chart[],
   documentedChart: Chart[],
-  rawData: SectionData,
-  documentedData: ChartSection[],
-  replaces: string[]
+  rawData: SectionData
 ) {
   const pId = rawData.metadata.protocolIds?.[0] ?? null;
   const cgId = getCgId(rawData.metadata.token);
@@ -52,13 +50,7 @@ async function aggregateMetadata(
   }
 
   const realTimeTokenAllocation = createCategoryData(realTimeChart, rawData.categories, false);
-  const documentedTokenAllocation = createCategoryData(
-    documentedChart,
-    rawData.categories,
-    false,
-    documentedData,
-    replaces
-  );
+  const documentedTokenAllocation = createCategoryData(documentedChart, rawData.categories, false);
 
   const futures = pData && "symbol" in pData ? await createFuturesData(pData.symbol) : undefined;
 
@@ -84,7 +76,13 @@ async function aggregateMetadata(
 async function processSingleProtocol(adapter: Protocol, protocolName: string): Promise<string> {
   const rawData = await createRawSections(adapter);
 
-  const { realTimeData, documentedData } = await createChartData(protocolName, rawData, false);
+  const { realTimeData, documentedData } = await createChartData(
+    protocolName,
+    rawData,
+    adapter.documented?.replaces ?? [],
+    false
+  );
+
   const realTimeChart: Chart[] = realTimeData.map((s: ChartSection) => ({
     label: s.section,
     data: s.data.apiData,
@@ -95,14 +93,7 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
     data: s.data.apiData,
   }));
 
-  const { data, id } = await aggregateMetadata(
-    protocolName,
-    realTimeChart,
-    documentedChart,
-    rawData,
-    documentedData,
-    adapter.documented?.replaces ?? []
-  );
+  const { data, id } = await aggregateMetadata(protocolName, realTimeChart, documentedChart, rawData);
 
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
 

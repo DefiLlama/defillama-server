@@ -1737,5 +1737,9 @@ export default {
         parentId: "FusionX Finance",
         enabled: true,
         id: "3239"
+    },
+    "DerpDEX": {
+        enabled: true,
+        id: "3234"
     }
 } as AdaptorsConfig

@@ -11814,6 +11814,28 @@ const data3: Protocol[] = [
     listedAt: 1689662621,
     github: ["user:zerolend"]
   },
+  {
+    id: "3244",
+    name: "One Dex",
+    address: "elrond:ONE-f9954f",
+    symbol: "ONE",
+    url: "https://onedex.app",
+    description: `OneDex - a protocol for trading and automated liquidity provision on MultiversX Owned By No One`,
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/one-dex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "onedex",
+    cmcId: "25966",
+    category: "Dexes",
+    chains: ["Elrond"],
+    module: "onedex/index.js",
+    twitter: "OneDex_X",
+    oracles: [],
+    forkedFrom: [],
+    audit_links: ["https://arda.run/audits/onedex"],
+    listedAt: 1689686359
+  },
 ]
 
 export default data3

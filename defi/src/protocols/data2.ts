@@ -26367,6 +26367,7 @@ const data2: Protocol[] = [
     oracles: ["Pyth", "Jiritsu"],
     forkedFrom: [],
     audit_links: ["https://docs.hxro.network/hxro-token/staking-and-governance/15-9-2022-audit"],
+    wrongLiquidity: true,
     listedAt: 1677155712
   },
   {

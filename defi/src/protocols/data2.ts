@@ -10475,8 +10475,8 @@ const data2: Protocol[] = [
   {
     id: "1867",
     name: "Sonic",
-    address: "icp:-",
-    symbol: "XTC",
+    address: "icp:lcyu6-siaaa-aaaah-adk2a-cai",
+    symbol: "SONICX",
     url: "https://sonic.ooo",
     description: "Swap tokens, earn fees as a liquidity provider, and build on the Internet Computer's Automated Market Maker (AMM)",
     chain: "ICP",

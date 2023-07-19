@@ -11859,6 +11859,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#venus-finance",
     listedAt: 1689719707
   },
+  {
+    id: "3246",
+    name: "Sobal",
+    address: null,
+    symbol: "-",
+    url: "https://sobal.fi/",
+    description: "Sobal is a flexible and powerful decentralised exchange residing on Neon EVM within the Solana chain",
+    chain: "Neon",
+    logo: `${baseIconsUrl}/sobal.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Neon"],
+    module: "sobal/index.js",
+    twitter: "sobalfi",
+    forkedFrom: ["Balancer"],
+    oracles: [],
+    listedAt: 1689747249,
+    github: ["Sobal"]
+  },
 ]
 
 export default data3

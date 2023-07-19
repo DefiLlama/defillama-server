@@ -1042,5 +1042,9 @@ export default {
     "concordex-io": {
         "enabled": true,
         "id": "3172"
+    },
+    "vvs-finance": {
+        "enabled": true,
+        "id": "831"
     }
 } as AdaptorsConfig

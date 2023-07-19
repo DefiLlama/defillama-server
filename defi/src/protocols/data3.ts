@@ -12063,6 +12063,54 @@ const data3: Protocol[] = [
     github: ["mantleswap"],
     listedAt: 1689796729
   },
+  {
+    id: "3255",
+    name: "HorizonDEX",
+    address: null,
+    symbol: "-",
+    url: "https://horizondex.io",
+    description: "HorizonDEX is a Concantrated Liquidity DEX which let users allocate liqudiity within a custom price range, enabling traders to maximize their efficiency and minimize slippage",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/horizondex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    module: "horizondex/index.js",
+    twitter: "horizondex_io",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    github: ["HorizonDex"],
+    audit_links: [
+                   "https://github.com/solidproof/projects/blob/main/2023/Horizon%20DEX",
+                   "https://github.com/Horizon-Dex/Audits/blob/a1c7f31238a7b0d3390f37d178d855cf284cdcee/HorizonDEX_SC%20Comparison%20Report_11.07.2023_SA-1644%20(2).pdf",
+                   "https://github.com/Defimoonorg/Audit-Report/blob/main/Horizon-Dex.pdf"
+                 ],
+    listedAt: 1689797379
+  },
+  {
+    id: "3256",
+    name: "EchoDEX",
+    address: null,
+    symbol: "-",
+    url: "https://www.echodex.io/swap",
+    description: "EchoDEX, a decentralized exchange platform built on the Linea Consensys network. ",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/echodex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    module: "echodex/index.js",
+    twitter: "Echo_DEX",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1689797381
+  },
 ]
 
 export default data3

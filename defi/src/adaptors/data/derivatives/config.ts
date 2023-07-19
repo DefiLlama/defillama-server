@@ -177,5 +177,9 @@ export default {
                 "id": "3056",
             }
         }
+    },
+    "kwenta": {
+        "enabled": true,
+        "id": "2981"
     }
 } as AdaptorsConfig

@@ -1034,5 +1034,9 @@ export default {
     "wigoswap": {
         "enabled": true,
         "id": "1351"
+    },
+    "apollox": {
+        "enabled": true,
+        "id": "1772"
     }
 } as AdaptorsConfig

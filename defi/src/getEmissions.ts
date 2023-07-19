@@ -20,8 +20,15 @@ const fetchProtocolEmissionData = async (protocol: string) => {
 
   const data: { [date: number]: number } = {};
 
+  if ((res.documentedData?.data ?? res.data) == null) {
+    console.log(`${protocol} null 1`)
+  }
+
   try { 
     (res.documentedData?.data ?? res.data).forEach((item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
+      if (item.data == null) {
+        console.log(`${protocol} null 2`)
+      }
       item.data.forEach((value) => {
         data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
       });

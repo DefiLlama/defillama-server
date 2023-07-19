@@ -1,8 +1,11 @@
 {
-  "arbitrum": {
-  },
   "neon_evm": {
     "0xb14760c064a1b9eaf9ec5a8a421971e40a51b59c": {
+      "decimals": "18",
+      "symbol": "WNEON",
+      "to": "coingecko#neon"
+    },
+    "0x202c35e517fa803b537565c40f0a6965d7204609": {
       "decimals": "18",
       "symbol": "WNEON",
       "to": "coingecko#neon"

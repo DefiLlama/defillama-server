@@ -26355,7 +26355,7 @@ const data2: Protocol[] = [
     description:
       "A core derivatives primitive built on Solana.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/hxro-network.jpg`,
+    logo: `${baseIconsUrl}/hxro-network.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "hxro",

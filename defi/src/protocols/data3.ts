@@ -11927,6 +11927,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.hatom.com/getting-started/security/security-reports"],
   //  parentProtocol: "parent#hatom-protocol",
   },
+  {
+    id: "3249",
+    name: "The Ennead Farm",
+    address: "arbitrum:0x40301951Af3f80b8C1744ca77E55111dd3c1dba1",
+    symbol: "needRAM",
+    url: "https://beta.ennead.farm/home",
+    description: "The Ennead allows ve(3,3) LP depositors and veNFT holders to maximize their returns.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/the-ennead-farm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "the-ennead",
+    cmcId: "24339",
+    category: "Yield",
+    chains: ["Arbitrum", "Avalanche"],
+    module: "ennead/index.js",
+    twitter: "EnneadFarm",
+    forkedFrom: ["Solidex"],
+    oracles: [],
+    listedAt: 1689767981,
+    github: ["The-Ennead-Farm"]
+  },
 ]
 
 export default data3

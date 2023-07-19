@@ -2219,6 +2219,18 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:venus-xvs.eth"],
     stablecoins: ["vai"]
   },
+  {
+    id: "parent#hatom-protocol",
+    name: "Hatom Protocol",
+    url: "https://app.hatom.com",
+    description: "Hatom Protocol is a decentralized algorithmic protocol for lending, borrowing, and staking assets, that operates on the MultiversX Blockchain.",
+    logo: `${baseIconsUrl}/hatom-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HatomProtocol",
+    github: ["HatomProtocol"]
+  },
 ];
 
 export default parentProtocols;

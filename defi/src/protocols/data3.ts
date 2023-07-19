@@ -11902,7 +11902,7 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1689760675,
     audit_links: ["https://docs.hatom.com/getting-started/security/security-reports"],
-  //  parentProtocol: "parent#hatom-protocol",
+    parentProtocol: "parent#hatom-protocol",
   },
   {
     id: "3248",
@@ -11925,7 +11925,7 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1689760682,
     audit_links: ["https://docs.hatom.com/getting-started/security/security-reports"],
-  //  parentProtocol: "parent#hatom-protocol",
+    parentProtocol: "parent#hatom-protocol",
   },
   {
     id: "3249",

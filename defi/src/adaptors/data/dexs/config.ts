@@ -1741,5 +1741,9 @@ export default {
     "DerpDEX": {
         enabled: true,
         id: "3234"
+    },
+    "concordex-io": {
+        "enabled": true,
+        "id": "3172"
     }
 } as AdaptorsConfig

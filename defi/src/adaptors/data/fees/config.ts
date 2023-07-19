@@ -1038,5 +1038,9 @@ export default {
     "apollox": {
         "enabled": true,
         "id": "1772"
+    },
+    "concordex-io": {
+        "enabled": true,
+        "id": "3172"
     }
 } as AdaptorsConfig

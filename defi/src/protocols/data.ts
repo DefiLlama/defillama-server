@@ -19046,6 +19046,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Derivatives",
     chains: ["Polygon", "Arbitrum"],
     module: "gainsNetwork.js",
+    treasury: "gains.js",
     twitter: "GainsNetwork_io",
     audit_links: ["https://www.certik.com/projects/gains-network"],
     listedAt: 1639418230,

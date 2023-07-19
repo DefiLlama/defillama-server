@@ -2231,6 +2231,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "HatomProtocol",
     github: ["HatomProtocol"]
   },
+  {
+    id: "parent#rehold",
+    name: "ReHold",
+    url: "https://rehold.io",
+    description: "ReHold is an innovative protocol that offers the first Dual investments in DeFi. High APRs are accessible due to DEXs' Liquidity Pools with an effective price range for concentrated liquidity.",
+    logo: `${baseIconsUrl}/rehold.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "rehold_io",
+    github: ["rehold-io"]
+  },
 ];
 
 export default parentProtocols;

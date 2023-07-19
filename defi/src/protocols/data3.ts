@@ -11995,6 +11995,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#beamswap",
     listedAt: 1689773129
   },
+  {
+    id: "3252",
+    name: "ReHold V2",
+    address: null,
+    symbol: "-",
+    url: "https://rehold.io",
+    description: "ReHold is an innovative protocol that offers the first Dual investments in DeFi. High APRs are accessible due to DEXs' Liquidity Pools with an effective price range for concentrated liquidity.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/rehold-v2.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Binance", "Polygon", "Avalanche", "Arbitrum", "Optimism"],
+    module: "rehold-v2/index.js",
+    twitter: "rehold_io",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://skynet.certik.com/projects/rehold"],
+    parentProtocol: "parent#rehold",
+    listedAt: 1689773129
+  },
 ]
 
 export default data3

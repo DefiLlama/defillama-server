@@ -20,7 +20,7 @@ const fetchProtocolEmissionData = async (protocol: string) => {
 
   const data: { [date: number]: number } = {};
 
-  res.data.forEach((item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
+  (res.documentedData?.data ?? res.data).forEach((item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
     item.data.forEach((value) => {
       data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
     });
@@ -48,13 +48,13 @@ const fetchProtocolEmissionData = async (protocol: string) => {
   const coin: any = Object.values(tokenPrice?.coins ?? {})[0]
   const mcap = mcapRes?.[`coingecko:${res.gecko_id}`]?.mcap ?? 0
   const float = (coin == null ||  isNaN(coin.price) || mcap == 0) ? null : mcap / coin.price
-  const proportion = !float || nextEventIndex == -1 ? null : (formattedData[nextEventIndex][1] - circSupply) / float;
+  const proportion = !float || nextEventIndex == -1 ? null : Math.max((formattedData[nextEventIndex][1] - circSupply) / float, 0);
 
   const nextEvent =
     nextEventIndex && formattedData[nextEventIndex]
       ? { 
           date: formattedData[nextEventIndex][0], 
-          toUnlock: formattedData[nextEventIndex][1] - circSupply, 
+          toUnlock: Math.max(formattedData[nextEventIndex][1] - circSupply, 0),
           proportion
         }
       : null;

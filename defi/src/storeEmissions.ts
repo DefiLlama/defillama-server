@@ -54,10 +54,14 @@ async function aggregateMetadata(
 
   const futures = pData && "symbol" in pData ? await createFuturesData(pData.symbol) : undefined;
 
-  const documentedData = documentedChart.length
-    ? { data: mapToServerData(documentedChart), tokenAllocation: documentedTokenAllocation }
-    : undefined;
-  const realTimeData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+  let documentedData;
+  let realTimeData;
+  if (documentedChart.length) {
+    documentedData = { data: mapToServerData(documentedChart), tokenAllocation: documentedTokenAllocation };
+    realTimeData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+  } else {
+    documentedData = { data: mapToServerData(realTimeChart), tokenAllocation: realTimeTokenAllocation };
+  }
 
   return {
     data: {

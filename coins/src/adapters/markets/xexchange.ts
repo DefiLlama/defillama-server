@@ -1,6 +1,6 @@
 import { log } from '@defillama/sdk'
 import { Write, } from "../utils/dbInterfaces";
-import { addToDBWritesList, getTokenAndRedirectData, } from "../utils/database";
+import { addToDBWritesList, } from "../utils/database";
 import axios from 'axios'
 
 export function xexchange(timestamp: number) {
@@ -16,25 +16,62 @@ export function xexchange(timestamp: number) {
 }
 const chain = 'elrond'
 
-const ashTokens: any = {
-  'SEGLD-3ad2d0': { ticker: 'SEGLD', decimals: 18 },
-  'HSEGLD-c13a4e': { ticker: 'HSEGLD', decimals: 8 },
-}
-
 async function getAshPools() {
+  const pricesTemp: any = {}
   const prices: any = {}
-  const { data: { data: { tokens } } } = await axios.post('https://api-v2.ashswap.io/graphql', {
-    "query": `{  tokens {    id    price  }}`,
-    "operationName": null,
+  const { data: { data: { tokens, pools, poolsV2 } } } = await axios.post('https://api-v2.ashswap.io/graphql', {
+    query: `{
+      pools {
+        address
+        totalSupply
+        lpToken {
+          id
+          price
+        }
+        reserves
+        state
+        swapFeePercent
+      }
+      poolsV2 {
+        address
+        totalSupply
+        lpToken {
+          id
+          price
+        }
+        reserves
+        state
+      }
+      tokens{
+        id
+        price
+      }
+    }`,
+    operationName: null,
     variables: {},
   })
-  for (const token of tokens) {
-    if (ashTokens[token.id]) {
-      prices[token.id] = { ...ashTokens[token.id], price: token.price, identifier: token.id }
+  pools.forEach((pool: any) => pricesTemp[pool.lpToken.id] = pool.lpToken.price)
+  poolsV2.forEach((pool: any) => pricesTemp[pool.lpToken.id] = pool.lpToken.price)
+  tokens.forEach((pool: any) => pricesTemp[pool.id] = pool.price)
+  const tokenIds = Object.keys(pricesTemp)
+  const lpInfo : any  = await getTokenData(tokenIds)
+
+  for (const token of tokenIds) {
+    const info = lpInfo[token]
+    if (info) {
+      prices[token] = { ...info, price: pricesTemp[token] }
     }
   }
 
   return prices
+}
+
+async function getTokenData(tokens: any[]) {
+  tokens = [...new Set(tokens)]
+  const { data: lpData } =await axios.get(`https://api.multiversx.com/tokens?identifiers=${tokens.join(',')}`)
+  const lpInfo : any  = {}
+  lpData.forEach((i: any) => lpInfo[i.identifier] = i) 
+  return lpInfo
 }
 
 async function getPools(prices: any) {
@@ -55,16 +92,13 @@ async function getPools(prices: any) {
   const filteredPools = pairs.filter((i: any) => +i.lockedValueUSD > 2000) // ignore pools with less than 2000$ in liquidity
   log('pools', filteredPools.length, pairs.length)
   const poolIds = filteredPools.map(({liquidityPoolToken: { identifier}}: any) => identifier)
-  const { data: lpData } =await axios.get(`https://api.multiversx.com/tokens?identifiers=${poolIds.join(',')}`)
-  const lpInfo : any  = {}
-  lpData.forEach((i: any) => lpInfo[i.identifier] = i) 
+  const lpInfo : any  = await getTokenData(poolIds)
   filteredPools.forEach(({ firstToken, secondToken, liquidityPoolToken, lockedValueUSD, }: any) => {
     prices[firstToken.identifier] = firstToken
     prices[secondToken.identifier] = secondToken
     const lpDatum = lpInfo[liquidityPoolToken.identifier]
     if (lpDatum) {
       liquidityPoolToken.price = +lockedValueUSD * (10 ** liquidityPoolToken.decimals) / +lpDatum.supply
-      console.log(lockedValueUSD, lpDatum.supply, liquidityPoolToken.decimals, liquidityPoolToken.identifier, liquidityPoolToken.price)
       prices[liquidityPoolToken.identifier] = liquidityPoolToken
     }
   })

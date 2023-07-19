@@ -869,6 +869,7 @@ const data3: Protocol[] = [
     oracles: ["TWAP"],
     forkedFrom: ["Uniswap V2"],
     module: "antfarm-finance/index.js",
+    treasury: "antfarm_finance.js",
     twitter: "antfarmfinance",
     audit_links: ["https://www.docdroid.net/MxzpjSg/antfarmfinance-11-smart-contract-audit-report-pdf"],
     listedAt: 1680188224

@@ -22,6 +22,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     "yyDAI+yUSDC+yUSDT+yTUSD": "0x5dbcf33d8c2e976c6b560249878e6f1491bca25c",
     yUSD: "0x4b5bfd52124784745c1071dcb244c6688d2533d3",
     YAM: "0x0e2298e3b3390e3b945a5456fbf59ecc3f55da16",
+    PAW: "0x1aa51bc7eb181ce48ce626bf62f8956fa9555136"
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",

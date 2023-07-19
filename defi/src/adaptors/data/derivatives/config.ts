@@ -181,5 +181,9 @@ export default {
     "kwenta": {
         "enabled": true,
         "id": "2981"
+    },
+    "synthetix": {
+        "enabled": true,
+        "id": "115"
     }
 } as AdaptorsConfig

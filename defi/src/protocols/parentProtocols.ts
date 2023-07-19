@@ -2243,6 +2243,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "rehold_io",
     github: ["rehold-io"]
   },
+  {
+    id: "parent#stellaswap",
+    name: "StellaSwap",
+    url: "https://stellaswap.com",
+    description: "All your DeFi needs in one place. Swap, earn and build on Moonbeam's leading DEX",
+    logo: `${baseIconsUrl}/stellaswap.jpg`,
+    gecko_id: "stellaswap",
+    cmcId: "17358",
+    chains: [],
+    twitter: "StellaSwap",
+    github: ["stellaswap"]
+  },
 ];
 
 export default parentProtocols;

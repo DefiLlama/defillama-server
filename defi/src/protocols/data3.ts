@@ -4952,6 +4952,7 @@ const data3: Protocol[] = [
     twitter: "StellaSwap",
     forkedFrom: ["Algebra DEX"],
     oracles: [],
+    parentProtocol: "parent#stellaswap",
     listedAt: 1683234596
   },
   {

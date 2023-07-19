@@ -3,6 +3,7 @@ import arbitrum from "./arbitrum";
 import avax from "./avax";
 // import bsc from "./bsc";
 import fantom from "./fantom";
+import era from "./era";
 import gasTokens from "./gasTokens";
 //import harmony from "./harmony";
 import optimism from "./optimism";
@@ -54,6 +55,7 @@ export const bridges = [
   avax,
   //bsc,
   fantom,
+  era,
   gasTokens,
   //harmony,
   optimism,

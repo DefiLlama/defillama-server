@@ -16376,7 +16376,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "lemma/index.js",
-    twitter: "LemmaFinance",
+    twitter: "Lemma_Labs",
     audit_links: ["https://github.com/lemma-finance/audits/tree/main/audits"],
     listedAt: 1664361294,
     stablecoins: ["usdlemma"]

@@ -11925,7 +11925,6 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1689760682,
     audit_links: ["https://docs.hatom.com/getting-started/security/security-reports"],
-    github: ["HatomProtocol"],
     parentProtocol: "parent#hatom-protocol",
   },
 ]

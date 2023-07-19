@@ -20,11 +20,16 @@ const fetchProtocolEmissionData = async (protocol: string) => {
 
   const data: { [date: number]: number } = {};
 
-  (res.documentedData?.data ?? res.data).forEach((item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
-    item.data.forEach((value) => {
-      data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
+  try { 
+    (res.documentedData?.data ?? res.data).forEach((item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
+      item.data.forEach((value) => {
+        data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
+      });
     });
-  });
+  } catch {
+    console.error(`${protocol} failed`)
+    return
+  }
 
   const token = res.metadata.token;
 
@@ -89,7 +94,7 @@ const fetchProtocolEmissionData = async (protocol: string) => {
 const handler = async (_event: any): Promise<IResponse> => {
   const allProtocols = (await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!))) as string[];
   const data: any[] = (await Promise.all(
-    allProtocols.filter((p) => p !== "frax-share").map((protocol) => fetchProtocolEmissionData(protocol))
+    allProtocols.map((protocol) => fetchProtocolEmissionData(protocol))
   )).filter((d) => d != null);
   return successResponse(
     data.sort((a, b) => b.mcap - a.mcap),
@@ -98,3 +103,4 @@ const handler = async (_event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
+handler({}) // ts-node src/getEmissions.ts

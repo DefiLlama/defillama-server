@@ -2219,7 +2219,6 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:venus-xvs.eth"],
     stablecoins: ["vai"]
   },
-  /*
   {
     id: "parent#hatom-protocol",
     name: "Hatom Protocol",
@@ -2232,7 +2231,6 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "HatomProtocol",
     github: ["HatomProtocol"]
   },
-  */
 ];
 
 export default parentProtocols;

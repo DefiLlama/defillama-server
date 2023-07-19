@@ -53,6 +53,7 @@ function normalizeBridgeResults(bridge: Bridge) {
   };
 }
 export const bridges = [
+  optimism,
   anyswap,
   arbitrum,
   avax,
@@ -61,7 +62,6 @@ export const bridges = [
   era,
   gasTokens,
   //harmony,
-  optimism,
   polygon,
   // solana
   //xdai

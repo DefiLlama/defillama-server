@@ -62,6 +62,11 @@
       "symbol": "USDT",
       "to": "coingecko#tether"
     },
+    "0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
     "0x78c1b0c915c4faa5fffa6cabf0219da63d7f4cb8": {
       "decimals": "18",
       "symbol": "WMNT",
@@ -78,6 +83,18 @@
       "decimals": "18",
       "symbol": "OUSG",
       "to": "ethereum:0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92"
+    }
+  },
+  "linea": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
     }
   }
 }

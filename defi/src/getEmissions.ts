@@ -103,4 +103,4 @@ const handler = async (_event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
-handler({}) // ts-node src/getEmissions.ts
+//handler({}) // ts-node src/getEmissions.ts

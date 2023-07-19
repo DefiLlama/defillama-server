@@ -27130,7 +27130,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://streamflow.finance",
-    description: "Streamflow provides a product suite every organization can use to manage and stream value on Solana. This suite includes token vesting, payroll and batch payments all on top of a secure multisig wallet. The Streamflow real-time streaming vision is ultra-flexible and efficient.",
+    description: "Streamflow provides a product suite every organization can use to manage and distribute value on-chain. This suite includes token vesting, crypto payroll, and a multi-signature wallet treasury (for Solana users).",
     chain: "Solana",
     logo: `${baseIconsUrl}/streamflow.jpg`,
     audits: "2",

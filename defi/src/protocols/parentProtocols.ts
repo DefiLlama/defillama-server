@@ -1883,7 +1883,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "magicfoxfi",
-    github: ["user:magicfoxfi"],
+    github: ["magicfoxfi"],
     wrongLiquidity: true,
   },
   {
@@ -2048,7 +2048,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Themis_Pro",
     treasury: "themis-capital-ohm.js",
-    github: ["user:ThemisCapital"]
+    github: ["ThemisCapital"]
   },
   {
     id: "parent#pepeteam",
@@ -2060,7 +2060,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "cryptopepeteam",
-    github: ["user:crypto-pepe"]
+    github: ["crypto-pepe"]
   },
   {
     id: "parent#equalizer0x",

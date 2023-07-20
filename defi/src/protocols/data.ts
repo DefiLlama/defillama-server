@@ -815,7 +815,7 @@ const data: Protocol[] = [
       "https://github.com/crypticlabs/swerve-audit-report/blob/master/Swerve%20Finance%20Audit%20-%20by%20Cryptic%20Labs%20v3.pdf",
     ],
     forkedFrom: ["Curve"],
-    github: ["user:SwerveFinance"]
+    github: ["SwerveFinance"]
   },
   {
     id: "143",
@@ -5546,7 +5546,7 @@ const data: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     twitter: "pinkmoonfinance",
     audit_links: [],
-    github: ["user:pinkmoonfinance"]
+    github: ["pinkmoonfinance"]
   },
   {
     id: "368",
@@ -6753,7 +6753,7 @@ const data: Protocol[] = [
     twitter: "DeriProtocol",
     audit_links: ["https://docs.deri.io/library/code-audits"],
     oracles: ["Chainlink"],
-    github: ["user:deri-protocol"]
+    github: ["deri-protocol"]
   },
   // {
   //   id: "424",
@@ -15790,7 +15790,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     audit_links: ["https://paladinsec.co/projects/reverse-protocol/"],
     listedAt: 1637351714,
-    github: ["user:ReverseProtocol"]
+    github: ["ReverseProtocol"]
   },
   {
     id: "867",

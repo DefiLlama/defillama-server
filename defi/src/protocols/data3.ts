@@ -8209,7 +8209,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://galoswap.gitbook.io/galoswap/overview/security-and-transparency"],
-    github: ["user:galoswap"],
+    github: ["galoswap"],
     listedAt: 1686177821
   },
   {
@@ -8369,7 +8369,7 @@ const data3: Protocol[] = [
     twitter: "GambitProtocol",
     forkedFrom: ["GMX"],
     oracles: ["Chainlink"],
-    github: ["user:xvi10"],
+    github: ["xvi10"],
     listedAt: 1686242084
   },
   {
@@ -8459,7 +8459,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Convex Finance"],
     oracles: [],
     audit_links: ["https://docs.equilibria.fi/security-and-risk/audit-report"],
-    github: ["user:eqbtech"],
+    github: ["eqbtech"],
     listedAt: 1686276971
   },
   {
@@ -8504,7 +8504,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/2023/ezKalibur"],
-    github: ["user:ezkalibur"],
+    github: ["ezkalibur"],
     listedAt: 1686321408
   },
   {
@@ -8710,7 +8710,7 @@ const data3: Protocol[] = [
     twitter: "Kannagi_Zksync",
     oracles: [],
     forkedFrom: [],
-    github: ["user:KannagiFinance"],
+    github: ["KannagiFinance"],
     audit_links: [
       "https://github.com/solidproof/projects/blob/main/2023/KToken/SmartContract_Audit_Solidproof_KannagiFinance.pdf",
       "https://sourcehat.com/audits/KannagiFinance/"
@@ -11179,7 +11179,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     listedAt: 1689020071,
-    github: ["user:capt-nemo429"]
+    github: ["capt-nemo429"]
   },
   {
     id: "3215",
@@ -11792,7 +11792,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/moraswap/v2-periphery/blob/master/audits/masterchef-by-hashex.pdf"],
     listedAt: 1689658469,
-    github: ["user:moraswap"]
+    github: ["moraswap"]
   },
   {
     id: "3243",
@@ -11814,7 +11814,7 @@ const data3: Protocol[] = [
     oracles: ["Pyth"],
     forkedFrom: ["AAVE V3"],
     listedAt: 1689662621,
-    github: ["user:zerolend"]
+    github: ["zerolend"]
   },
   {
     id: "3244",

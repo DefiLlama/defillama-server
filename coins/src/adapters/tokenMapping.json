@@ -96,5 +96,17 @@
       "symbol": "ETH",
       "to": "coingecko#ethereum"
     }
+  },
+  "sui": {
+    "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdc_coin::CELER_USDC_COIN": {
+      "decimals": "6",
+      "symbol": "CELER_USDC_COIN",
+      "to": "coingecko#usd-coin"
+    },
+    "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN": {
+      "decimals": "6",
+      "symbol": "CELER_USDT_COIN",
+      "to": "coingecko:tether"
+    }
   }
 }

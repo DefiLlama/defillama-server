@@ -184,6 +184,15 @@ export default {
     },
     "synthetix": {
         "enabled": true,
-        "id": "115"
+        "id": "115",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1689292800": true,
+                "1689379200": true,
+                "1689465600": true,
+                "1689638400": true,
+                "1689811309": true,
+            },
+        }
     }
 } as AdaptorsConfig

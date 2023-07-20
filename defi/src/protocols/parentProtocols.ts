@@ -2172,7 +2172,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#mare-finance",
     name: "Mare Finance",
-    url: "https://www.swaap.finance",
+    url: "https://mare.finance",
     description: "Mare Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless, open source protocol serving users on Kava. Users can deposit their assets, use them as collateral and borrow against them.",
     logo: `${baseIconsUrl}/mare-finance.png`,
     gecko_id: "mare-finance",

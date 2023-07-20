@@ -1745,5 +1745,9 @@ export default {
     "concordex-io": {
         "enabled": true,
         "id": "3172"
+    },
+    "icpswap": {
+        "enabled": true,
+        "id": "3257"
     }
 } as AdaptorsConfig

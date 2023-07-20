@@ -2,59 +2,94 @@ import fetch from "node-fetch";
 import { getR2 } from "./utils/r2";
 import { wrap, IResponse, successResponse } from "./utils/shared";
 
-type CoreEmissionData = {
-  res: any;
+type ProtocolData = {
+  token: string;
+  tokenPrice?: any;
+  sources: string[];
   protocolId?: string;
-  data: any;
-  price?: number;
-  mcap?: number;
+  name: string;
+  circSupply: number;
+  totalLocked: number;
+  maxSupply: number;
+  nextEvent?: {
+    date: string;
+    toUnlock: number;
+    proportion?: number;
+  };
+  gecko_id?: string;
+  mcap?: any;
+  events?: any;
 };
 
-const fetchProtocolData = async (protocol: string): Promise<CoreEmissionData> => {
-  let protocolData: CoreEmissionData = { res: "", data: "" };
-  let res: any;
-  try {
-    res = await getR2(`emissions/${protocol}`).then((res) => (res.body ? JSON.parse(res.body) : null));
-  } catch {
-    console.log(`${protocol} has no emissions in R2`);
-    return protocolData;
-  }
+const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> => {
+  const protocolsData: ProtocolData[] = [];
+  const now: number = Math.floor(Date.now() / 1000);
 
-  protocolData.protocolId = res.metadata.protocolIds?.[0] ?? null;
-
-  const data: { [date: number]: number } = {};
-
-  if ((res.documentedData?.data ?? res.data) == null) {
-    console.log(`${protocol} null 1`);
-  }
-
-  try {
-    (res.documentedData?.data ?? res.data).forEach((item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
-      if (item.data == null) {
-        console.log(`${protocol} null 2`);
+  await Promise.all(
+    protocols.map(async (protocol: string) => {
+      let res: any;
+      try {
+        res = await getR2(`emissions/${protocol}`).then((res) => (res.body ? JSON.parse(res.body) : null));
+      } catch {
+        console.log(`${protocol} has no emissions in R2`);
+        return;
       }
-      item.data.forEach((value) => {
-        data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
-      });
-    });
-  } catch {
-    console.error(`${protocol} failed`);
-    return protocolData;
-  }
+      if ((res.documentedData?.data ?? res.data) == null) return;
 
-  protocolData.data = data;
-  protocolData.res = res;
-  return protocolData;
+      const data: { [date: number]: number } = {};
+      try {
+        (res.documentedData?.data ?? res.data).forEach(
+          (item: { data: Array<{ timestamp: number; unlocked: number }> }) => {
+            if (item.data == null) return;
+            item.data.forEach((value) => {
+              data[value.timestamp] = (data[value.timestamp] || 0) + value.unlocked;
+            });
+          }
+        );
+      } catch {
+        console.error(`${protocol} failed`);
+        return;
+      }
+
+      const formattedData = Object.entries(data);
+      const maxSupply = formattedData[formattedData.length - 1][1];
+      const nextEventIndex = formattedData.findIndex(([date]) => Number(date) > now);
+      const circSupply = nextEventIndex != -1 ? formattedData[nextEventIndex - 1]?.[1] ?? [] : maxSupply;
+      const nextEvent =
+        nextEventIndex != -1
+          ? {
+              date: formattedData[nextEventIndex][0],
+              toUnlock: Math.max(formattedData[nextEventIndex][1] - circSupply, 0),
+            }
+          : undefined;
+
+      protocolsData.push({
+        token: res.metadata.token,
+        sources: res.metadata.sources,
+        protocolId: res.metadata.protocolIds?.[0] ?? null,
+        name: res.name,
+        circSupply,
+        totalLocked: maxSupply - circSupply,
+        maxSupply,
+        gecko_id: res.gecko_id,
+        events: res.metadata.events,
+        nextEvent,
+      });
+    })
+  );
+
+  return protocolsData;
 };
-const fetchCoinsApiData = async (protocols: any[]): Promise<void> => {
-  for (let i = 0; i < protocols.length; i = i + 20) {
+const fetchCoinsApiData = async (protocols: ProtocolData[]): Promise<void> => {
+  const step: number = 25;
+  for (let i = 0; i < protocols.length; i = i + step) {
     const tokens: string = protocols
-      .slice(i, Math.min(i + 20, protocols.length))
-      .reduce((p: string, c: CoreEmissionData) => `${p},${c.res.metadata.token}`, "")
+      .slice(i, Math.min(i + step, protocols.length))
+      .reduce((p: string, c: ProtocolData) => `${p},${c.token}`, "")
       .slice(1);
     const coins: string[] = protocols
-      .slice(i, Math.min(i + 20, protocols.length))
-      .map((p: CoreEmissionData) => `coingecko:${p.res.gecko_id}`)
+      .slice(i, Math.min(i + step, protocols.length))
+      .map((p: ProtocolData) => `coingecko:${p.gecko_id}`)
       .filter((p: string) => p);
 
     const [tokenPrices, mcapRes] = await Promise.all([
@@ -67,77 +102,25 @@ const fetchCoinsApiData = async (protocols: any[]): Promise<void> => {
       }).then((r) => r.json()),
     ]);
 
-    protocols.map((p: any) => {
-      if (p.res.metadata.token in tokenPrices.coins) p.price = tokenPrices.coins[p.res.metadata.token].price;
-      if (p.res.gecko_id in mcapRes) p.mcap = mcapRes[p.res.gecko_id];
+    protocols.map((p: ProtocolData) => {
+      if (p.token in tokenPrices.coins) p.tokenPrice = tokenPrices.coins[p.token].price;
+      if (p.gecko_id && `coingecko:${p.gecko_id}` in mcapRes) p.mcap = mcapRes[`coingecko:${p.gecko_id}`]?.mcap ?? 0;
     });
   }
 };
-const fetchProtocolEmissionData = async (protocol: CoreEmissionData) => {
-  const now = Math.floor(Date.now() / 1000);
-  const formattedData: any[] = Object.values(protocol.data);
-  const maxSupply: any = formattedData[formattedData.length - 1];
-  const nextEventIndex = formattedData.findIndex(([date]) => Number(date) > now);
-  const circSupply = nextEventIndex != -1 ? formattedData[nextEventIndex - 1]?.[1] ?? [] : 0;
+const fetchProtocolEmissionData = async (protocol: ProtocolData) => {
+  const float =
+    protocol.tokenPrice == null || isNaN(protocol.tokenPrice) || protocol.mcap == 0
+      ? null
+      : protocol.mcap / protocol.tokenPrice;
 
-  const mcap = protocol.mcap ?? 0;
-  const float = protocol.price == null || isNaN(protocol.price) || mcap == 0 ? null : mcap / protocol.price;
-  const proportion =
-    !float || nextEventIndex == -1 ? null : Math.max((formattedData[nextEventIndex][1] - circSupply) / float, 0);
-
-  const nextEvent =
-    nextEventIndex && formattedData[nextEventIndex]
-      ? {
-          date: formattedData[nextEventIndex][0],
-          toUnlock: Math.max(formattedData[nextEventIndex][1] - circSupply, 0),
-          proportion,
-        }
-      : null;
-  const totalLocked = maxSupply - circSupply;
-
-  return {
-    token: protocol.res.metadata.token,
-    tokenPrice: protocol.price,
-    sources: protocol.res.metadata.sources,
-    protocolId: protocol.protocolId,
-    name: protocol.res.name,
-    circSupply,
-    totalLocked,
-    maxSupply,
-    nextEvent,
-    gecko_id: protocol.res.gecko_id,
-    mcap,
-    events:
-      protocol.res.metadata.events
-        ?.map(
-          ({
-            description,
-            timestamp,
-            noOfTokens,
-          }: {
-            description: string;
-            timestamp: string;
-            noOfTokens: number[];
-          }) => ({
-            timestamp: Number(timestamp),
-            description,
-            noOfTokens,
-          })
-        )
-        .sort(
-          (a: { description: string; timestamp: number }, b: { description: string; timestamp: number }) =>
-            a.timestamp - b.timestamp
-        ) ?? [],
-  };
+  if (protocol.nextEvent && float) protocol.nextEvent.proportion = Math.max(protocol.nextEvent.toUnlock / float, 0);
 };
-
 const handler = async (_event: any): Promise<IResponse> => {
   const allProtocols = (await getR2(`emissionsProtocolsList`).then((res) => JSON.parse(res.body!))) as string[];
-  const r2Data: CoreEmissionData[] = (await Promise.all(allProtocols.map((p) => fetchProtocolData(p)))).filter(
-    (d) => d.res != "" && d.data != ""
-  );
-  await fetchCoinsApiData(r2Data);
-  const data = await Promise.all(r2Data.map((d: CoreEmissionData) => fetchProtocolEmissionData(d)));
+  const data: ProtocolData[] = await fetchProtocolData(allProtocols);
+  await fetchCoinsApiData(data);
+  await Promise.all(data.map((d: ProtocolData) => fetchProtocolEmissionData(d)));
   return successResponse(
     data.sort((a, b) => b.mcap - a.mcap),
     10 * 60
@@ -145,4 +128,4 @@ const handler = async (_event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
-handler({}); // ts-node src/getEmissions.ts
+// handler({}); // ts-node src/getEmissions.ts

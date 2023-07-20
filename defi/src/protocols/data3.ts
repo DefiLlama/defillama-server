@@ -12111,6 +12111,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1689797381
   },
+  {
+    id: "3257",
+    name: "ICPSwap",
+    address: "icp:-",
+    symbol: "ICS",
+    url: "https://app.icpswap.com/",
+    description: "ICPSwap is a hub that provides full-stack financial, market, and DAO services",
+    chain: "ICP",
+    logo: `${baseIconsUrl}/icpswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["ICP"],
+    module: "icpswap/index.js",
+    twitter: "ICPSwap",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1689832459
+  },
 ]
 
 export default data3

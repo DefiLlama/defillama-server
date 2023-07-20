@@ -12132,6 +12132,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1689832459
   },
+  {
+    id: "3258",
+    name: "Narwhal Finance",
+    address: "arbitrum:0x873177DB4EaC3581464FFA64deB39b25CE409bFd",
+    symbol: "NAR",
+    url: "https://narwhal.finance",
+    description: "Leverage trading with boundless asset selection. Seamless experience for #SocialTrading. Bringing the finest trading experience to Arbitrum and BNB chain.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/narwhal-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum", "Binance"],
+    module: "narwhal-finance/index.js",
+    twitter: "Narwhal_Finance",
+    forkedFrom: [],
+    oracles: ["Pyth"],
+    audit_links: ["https://github.com/Narwhal-Finance/Public-docs/blob/main/Zokyo_Narwhal_Finance_Audit_Report_June_2023.pdf"],
+    listedAt: 1689860528
+  },
 ]
 
 export default data3

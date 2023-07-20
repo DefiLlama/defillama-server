@@ -68,7 +68,7 @@ async function getPrices(collaterals: string[]) {
     let chain = _chain;
     if (_chain === "avax") {
       chain = "avalanche";
-    } else if (address === 'coingecko:tezos') {
+    } else if (address === "coingecko:tezos") {
       chain = "tezos";
     }
     return {
@@ -111,6 +111,7 @@ export async function aggregateAssetAdapterData(filteredAdapterOutput: { [protoc
   // lowercase symbols
   const aggregatedData: Map<Symbol, { currentPrice: number; positions: Position[] }> = new Map();
   for (const price of prices) {
+    console.log(price);
     const symbol = getNativeSymbol(price.symbol);
     if (!aggregatedData.has(symbol)) {
       aggregatedData.set(symbol, {

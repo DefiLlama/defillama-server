@@ -2255,6 +2255,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "StellaSwap",
     github: ["stellaswap"]
   },
+  {
+    id: "parent#reax-finance",
+    name: "Reax Finance",
+    url: "https://reax.one/",
+    description: "Trade, Lend, Borrow and Leverage on Crypto, Stocks, Forex, Commodities & more, Slippage Free, on Mantle",
+    logo: `${baseIconsUrl}/stellaswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ReaxFinance",
+  },
 ];
 
 export default parentProtocols;

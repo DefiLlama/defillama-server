@@ -145,5 +145,5 @@ export default async function getTokenPrices(timestamp: number) {
       )),
     );
   }
-  return writes;
+  return writes.filter((w: Write) => w.price);
 }

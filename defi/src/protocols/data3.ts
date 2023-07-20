@@ -12154,6 +12154,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Narwhal-Finance/Public-docs/blob/main/Zokyo_Narwhal_Finance_Audit_Report_June_2023.pdf"],
     listedAt: 1689860528
   },
+  {
+    id: "3259",
+    name: "Aftermath Finance",
+    address: "sui:-",
+    symbol: "-",
+    url: "https://aftermath.finance",
+    description: "The ease of a centralized exchange with none of the risk.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/aftermath-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sui"],
+    module: "aftermath-fi/index.js",
+    twitter: "AftermathFi",
+    forkedFrom: [],
+    oracles: [],
+    github: ["Aftermathfinance"],
+    listedAt: 1689860538
+  },
 ]
 
 export default data3

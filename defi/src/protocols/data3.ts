@@ -12193,7 +12193,7 @@ const data3: Protocol[] = [
     chains: ["Mantle"],
     module: "reax-one-dex/index.js",
     twitter: "ReaxFinance",
-    forkedFrom: [],
+    forkedFrom: ["Balancer V2"],
     oracles: ["netwo"],
     listedAt: 1689876117,
     parentProtocol: "parent#reax-finance"

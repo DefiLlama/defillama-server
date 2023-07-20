@@ -1749,5 +1749,9 @@ export default {
     "icpswap": {
         "enabled": true,
         "id": "3257"
+    },
+    "echodex": {
+        "enabled": true,
+        "id": "3256"
     }
 } as AdaptorsConfig

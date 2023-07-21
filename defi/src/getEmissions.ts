@@ -53,15 +53,24 @@ const fetchProtocolData = async (protocols: string[]): Promise<ProtocolData[]> =
 
       const formattedData = Object.entries(data);
       const maxSupply = formattedData[formattedData.length - 1][1];
-      const nextEventIndex = formattedData.findIndex(([date]) => Number(date) > now);
-      const circSupply = nextEventIndex != -1 ? formattedData[nextEventIndex - 1]?.[1] ?? [] : maxSupply;
-      const nextEvent =
-        nextEventIndex != -1
-          ? {
-              date: formattedData[nextEventIndex][0],
-              toUnlock: Math.max(formattedData[nextEventIndex][1] - circSupply, 0),
-            }
-          : undefined;
+      const rawNextEvent = res.metadata.events.find((e: any) => e.timestamp > now);
+
+      let nextEvent;
+      if (!rawNextEvent) {
+        nextEvent = undefined;
+      } else if ((rawNextEvent.noOfTokens.length = 1)) {
+        nextEvent = {
+          date: rawNextEvent.timestamp,
+          toUnlock: Math.max(rawNextEvent.noOfTokens[0], 0),
+        };
+      } else {
+        nextEvent = {
+          date: Math.ceil(now / 86400) * 86400,
+          toUnlock: Math.max(rawNextEvent.noOfTokens[1], 0),
+        };
+      }
+      const nextUnlockIndex = formattedData.findIndex(([date]) => Number(date) > now);
+      const circSupply = nextUnlockIndex != -1 ? formattedData[nextUnlockIndex - 1]?.[1] ?? [] : maxSupply;
 
       protocolsData.push({
         token: res.metadata.token,
@@ -128,4 +137,4 @@ const handler = async (_event: any): Promise<IResponse> => {
 };
 
 export default wrap(handler);
-// handler({}); // ts-node src/getEmissions.ts
+//handler({}); // ts-node defi/src/getEmissions.ts

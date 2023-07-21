@@ -3080,7 +3080,7 @@ const data3: Protocol[] = [
     category: "Lending",
     chains: ["Kava"],
     oracles: ["Witnet"],
-    forkedFrom: ["Aave"],
+    forkedFrom: ["Aave V2"],
     module: "toreus/index.js",
     twitter: "toreusfinance",
     listedAt: 1681727990
@@ -4830,7 +4830,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "spark-fi/index.js",
     twitter: "spark_protocol",
-    forkedFrom: ["Aave"],
+    forkedFrom: ["Aave V2"],
     oracles: ["Chainlink"],
     audit_links: ["https://docs.sparkprotocol.io/developers/deployed-contracts/security-and-audits"],
     listedAt: 1683144119
@@ -7688,7 +7688,7 @@ const data3: Protocol[] = [
     chains: ["Polygon zkEVM"],
     module: "tropykus-zkevm/index.js",
     twitter: "tropykus",
-    forkedFrom: ["Aave"],
+    forkedFrom: ["Aave V2"],
     oracles: [],
     parentProtocol: "parent#tropykus-finance",
     listedAt: 1685700448
@@ -9161,7 +9161,7 @@ const data3: Protocol[] = [
     module: "monolend/index.js",
     twitter: "Mono_Lend",
     oracles: [],
-    forkedFrom: ["Aave"],
+    forkedFrom: ["Aave V2"],
     listedAt: 1687018321
   },
   {
@@ -9669,7 +9669,7 @@ const data3: Protocol[] = [
     chains: ["Kava"],
     module: "pinjam/index.js", 
     twitter: "PinjamLabs",
-    forkedFrom: ["Aave"],
+    forkedFrom: ["Aave V2"],
     oracles: ["Witnet"],
     audit_links: ["https://solidity.finance/audits/Pinjam/"],
     listedAt: 1687391349
@@ -12391,6 +12391,28 @@ const data3: Protocol[] = [
     twitter: "ArkhamIntel",
     forkedFrom: [],
     oracles: [],
+  },
+  {
+    id: "3270",
+    name: "Reax Lending",
+    address: "mantle:-",
+    symbol: "REAX",
+    url: "https://app.reax.one/lend",
+    description: "Reax Lending: A dual-market lending platform offering borrowing of both synthetic and non-synthetic assets, backed by collateral, with customizable debt dynamics",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/reax-lending.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Mantle"],
+    module: "reax-one-lending/index.js",
+    twitter: "ReaxFinance",
+    forkedFrom: ["Aave V2"],
+    oracles: [],
+    listedAt: 1689959569,
+    parentProtocol: "parent#reax-finance"
   },
 ]
 

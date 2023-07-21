@@ -1766,5 +1766,9 @@ export default {
     "deepbook-sui": {
         "enabled": true,
         "id": "3268"
+    },
+    "agni-fi": {
+        "enabled": true,
+        "id": "3265"
     }
 } as AdaptorsConfig

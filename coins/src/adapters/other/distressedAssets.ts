@@ -22,7 +22,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     "yyDAI+yUSDC+yUSDT+yTUSD": "0x5dbcf33d8c2e976c6b560249878e6f1491bca25c",
     yUSD: "0x4b5bfd52124784745c1071dcb244c6688d2533d3",
     YAM: "0x0e2298e3b3390e3b945a5456fbf59ecc3f55da16",
-    PAW: "0x1aa51bc7eb181ce48ce626bf62f8956fa9555136"
+    PAW: "0x1aa51bc7eb181ce48ce626bf62f8956fa9555136",
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
@@ -158,7 +158,6 @@ const mispricedMultichainAssets: string[] = [
   "polygon:0x49a0400587a7f65072c87c4910449fdcc5c47242",
   "avax:0xc1a49c0b9c10f35850bd8e15eaef0346be63e002",
   "avax:0xcaf870dad882b00f4b20d714bbf7fceada5e4195",
-  "avax:0x130966628846bfd36ff31a822705796e8cb8c18d",
   "avax:0xd6070ae98b8069de6b494332d1a1a81b6179d960",
   "avax:0x340fe1d898eccaad394e2ba0fc1f93d27c7b717a",
   "avax:0xafb2780cbb58b2af27023eb2a0e60c8ca0eee9bb",

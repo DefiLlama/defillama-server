@@ -26,7 +26,8 @@ async function handler() {
                 console.log(`Using external fetcher for ${protocol}/${chain}`);
                 const liquidations = await getExternalLiqsR2(protocol, chain);
                 liqs[chain] = liquidations;
-                await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+                const res = await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+                console.log(res?.$metadata?.httpStatusCode);
                 const _end = performance.now();
                 console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
               } catch (e) {
@@ -93,12 +94,15 @@ async function handler() {
       time,
     };
     const filename = symbol.toLowerCase() + "/" + hourId + ".json";
-    await storeLiqsR2(filename, JSON.stringify(_payload));
+    const resStoreLiqsR2 = await storeLiqsR2(filename, JSON.stringify(_payload));
+    console.log("resStoreLiqsR2", resStoreLiqsR2?.$metadata?.httpStatusCode);
     const latestFilename = symbol.toLowerCase() + "/latest.json";
-    await storeLiqsR2(latestFilename, JSON.stringify(_payload));
+    const resStoreLiqsR2Latest = await storeLiqsR2(latestFilename, JSON.stringify(_payload));
+    console.log("resStoreLiqsR2Latest", resStoreLiqsR2Latest?.$metadata?.httpStatusCode);
   }
 
   await storeLiqsR2("availability.json", JSON.stringify({ availability, time }));
+  console.log("Done");
   return;
 }
 

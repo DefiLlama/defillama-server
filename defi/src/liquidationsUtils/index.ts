@@ -87,10 +87,6 @@ async function getPrices(collaterals: string[]) {
  * @returns **lowercase** native symbol
  */
 const getNativeSymbol = (symbol: string) => {
-  if (!!symbol || symbol.length === 0) {
-    return;
-  }
-
   if (symbol in SYMBOL_MAP) {
     return SYMBOL_MAP[symbol].toLowerCase();
   }
@@ -116,10 +112,6 @@ export async function aggregateAssetAdapterData(filteredAdapterOutput: { [protoc
   const aggregatedData: Map<Symbol, { currentPrice: number; positions: Position[] }> = new Map();
   for (const price of prices) {
     const symbol = getNativeSymbol(price.symbol);
-    if (!symbol) {
-      continue;
-    }
-
     if (!aggregatedData.has(symbol)) {
       aggregatedData.set(symbol, {
         currentPrice: price.price,
@@ -133,15 +125,11 @@ export async function aggregateAssetAdapterData(filteredAdapterOutput: { [protoc
     for (const liq of adapterData) {
       const price = prices.find((price) => price.address.toLowerCase() === liq.collateral.toLowerCase());
       if (!price) {
+        console.error(`No price for ${liq.collateral}`);
         continue;
       }
-
       const collateralAmountRaw = new BigNumber(liq.collateralAmount).div(10 ** price.decimals);
-
       const symbol = getNativeSymbol(price.symbol);
-      if (!symbol) {
-        continue;
-      }
       aggregatedData.get(symbol)!.positions.push({
         owner: liq.owner,
         liqPrice: liq.liqPrice,

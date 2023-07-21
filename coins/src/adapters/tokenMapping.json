@@ -100,6 +100,26 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
+    },
+    "0xf5C6825015280CdfD0b56903F9F8B5A2233476F5": {
+      "decimals": "18",
+      "symbol": "BNB",
+      "to": "coingecko#binancecoin"
+    },
+    "0x7d43AABC515C356145049227CeE54B608342c0ad": {
+      "decimals": "18",
+      "symbol": "BUSD",
+      "to": "coingecko#binance-usd"
+    },
+    "0x5471ea8f739dd37E9B81Be9c5c77754D8AA953E4": {
+      "decimals": "18",
+      "symbol": "AVAX",
+      "to": "coingecko#avalanche-2"
+    },
+    "0x265B25e22bcd7f10a5bD6E6410F10537Cc7567e8": {
+      "decimals": "18",
+      "symbol": "MATIC",
+      "to": "coingecko#matic-network"
     }
   },
   "sui": {

@@ -4,7 +4,8 @@ import { wrap, IResponse, successResponse } from "./utils/shared";
 
 type ProtocolData = {
   token: string;
-  tokenPrice?: any;
+  tokenPrice?: any[];
+  symbol?: string;
   sources: string[];
   protocolId?: string;
   name: string;
@@ -112,16 +113,19 @@ const fetchCoinsApiData = async (protocols: ProtocolData[]): Promise<void> => {
     ]);
 
     protocols.map((p: ProtocolData) => {
-      if (p.token in tokenPrices.coins) p.tokenPrice = tokenPrices.coins[p.token].price;
+      if (p.token in tokenPrices.coins) {
+        p.tokenPrice = [tokenPrices.coins[p.token]]; //tokenPrices.coins[p.token].price;
+        // p.symbol = tokenPrices.coins[p.token].symbol;
+      }
       if (p.gecko_id && `coingecko:${p.gecko_id}` in mcapRes) p.mcap = mcapRes[`coingecko:${p.gecko_id}`]?.mcap ?? 0;
     });
   }
 };
 const fetchProtocolEmissionData = async (protocol: ProtocolData) => {
-  const float =
-    protocol.tokenPrice == null || isNaN(protocol.tokenPrice) || protocol.mcap == 0
-      ? null
-      : protocol.mcap / protocol.tokenPrice;
+  let price = protocol.tokenPrice ? protocol.tokenPrice[0] : undefined;
+  if (price) price = price.price;
+
+  const float = protocol.tokenPrice == null || isNaN(price) || protocol.mcap == 0 ? null : protocol.mcap / price;
 
   if (protocol.nextEvent && float) protocol.nextEvent.proportion = Math.max(protocol.nextEvent.toUnlock / float, 0);
 };

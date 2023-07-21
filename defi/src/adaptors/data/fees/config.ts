@@ -1046,5 +1046,9 @@ export default {
     "vvs-finance": {
         "enabled": true,
         "id": "831"
+    },
+    "agni-fi": {
+        "enabled": true,
+        "id": "3265"
     }
 } as AdaptorsConfig

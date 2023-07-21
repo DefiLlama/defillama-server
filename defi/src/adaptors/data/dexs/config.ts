@@ -1566,6 +1566,11 @@ export default {
                 "category": "Dexes"
             }
         },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1689811200": true,
+            },
+        }
     },
     "lighter": {
         "enabled": true,

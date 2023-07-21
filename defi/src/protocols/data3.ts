@@ -12117,7 +12117,7 @@ const data3: Protocol[] = [
     address: "icp:-",
     symbol: "ICS",
     url: "https://app.icpswap.com/",
-    description: "ICPSwap is a hub that provides full-stack financial, market, and DAO services",
+    description: "ICPSwap is the native and earliest decentralized exchange (DEX) on the ICP ecosystem, providing comprehensive financial, market, and DAO services",
     chain: "ICP",
     logo: `${baseIconsUrl}/icpswap.png`,
     audits: "0",

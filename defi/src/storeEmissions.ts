@@ -12,6 +12,7 @@ import parentProtocols from "./protocols/parentProtocols";
 import { PromisePool } from "@supercharge/promise-pool";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
+import { withTimeout } from "./utils/shared/withTimeout";
 
 type Chart = { label: string; data: ApiChartData[] | undefined };
 
@@ -95,7 +96,7 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
   return sluggifiedId;
 }
 
-async function handler() {
+async function processProtocolList() {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
 
@@ -120,6 +121,13 @@ async function handler() {
   const res = await getR2(`emissionsProtocolsList`);
   if (res.body) protocolsArray = [...new Set([...protocolsArray, ...JSON.parse(res.body)])];
   await storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray));
+}
+async function handler() {
+  try {
+    await withTimeout(840000, processProtocolList());
+  } catch (e) {
+    process.env.UNLOCKS_WEBHOOK ? await sendMessage(`${e}`, process.env.UNLOCKS_WEBHOOK!) : console.log(e);
+  }
 }
 
 async function handlerErrors(errors: string[]) {

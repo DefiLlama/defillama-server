@@ -6,7 +6,7 @@ import { getCachedLiqsR2, getExternalLiqsR2, storeCachedLiqsR2, storeLiqsR2 } fr
 import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 import { performance } from "perf_hooks";
 
-export const standaloneProtocols: string[] = ["venus"];
+export const standaloneProtocols: string[] = ["venus", "maker"];
 export const excludedProtocols: string[] = ["angle", "euler"];
 
 async function handler() {
@@ -32,7 +32,7 @@ async function handler() {
               } catch (e) {
                 console.error(e);
                 try {
-                  liqs[chain] = JSON.parse(await getCachedLiqsR2(protocol, chain));
+                  liqs[chain] = JSON.parse((await getCachedLiqsR2(protocol, chain))!);
                   console.log(`Using cached data for ${protocol}/${chain}`);
                 } catch (e) {
                   console.log(`No external fetcher data for ${protocol}/${chain}`);
@@ -54,7 +54,7 @@ async function handler() {
               } catch (e) {
                 console.error(e);
                 try {
-                  liqs[chain] = JSON.parse(await getCachedLiqsR2(protocol, chain));
+                  liqs[chain] = JSON.parse((await getCachedLiqsR2(protocol, chain))!);
                   console.log(`Using cached data for ${protocol}/${chain}`);
                 } catch (e) {
                   console.log(`No cached data for ${protocol}/${chain}`);

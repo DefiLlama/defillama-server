@@ -4,6 +4,7 @@ import { storeMissingCoins } from "./utils/missingCoins";
 import { quantisePeriod } from "./utils/timestampUtils";
 
 const isFresh = (timestamp:number, searchWidth: number) => {
+  if (!timestamp) return true;
   const now = Date.now()/1e3;
   return (now - timestamp) < searchWidth;
 }

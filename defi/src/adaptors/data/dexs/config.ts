@@ -1758,5 +1758,9 @@ export default {
     "echodex": {
         "enabled": true,
         "id": "3256"
+    },
+    "reax-one-dex": {
+        "enabled": true,
+        "id": "3260"
     }
 } as AdaptorsConfig

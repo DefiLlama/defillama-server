@@ -12351,6 +12351,27 @@ const data3: Protocol[] = [
     github: ["solid-world"],
     listedAt: 1689931379
   },
+  {
+    id: "3268",
+    name: "DeepBook",
+    address: null,
+    symbol: "-",
+    url: "https://sui-deepbook.com",
+    description: "DeepBook is a decentralized central limit order book (CLOB) built for the Sui ecosystem. DeepBook provides a one-stop shop for trading digital assets, with a technical design built for Sui’s architecture. DeepBook leverages Sui’s performance and delivers a low latency and high throughput execution engine to spread liquidity across the DeFi ecosystem.",
+    chain: "Sui",
+    logo: `${baseIconsUrl}/deepbook.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sui"],
+    module: "deepbook-sui/index.js",
+    twitter: "DeepBookonSui",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1689932900
+  },
 ]
 
 export default data3

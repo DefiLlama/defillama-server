@@ -87,7 +87,7 @@ async function getPrices(collaterals: string[]) {
  * @returns **lowercase** native symbol
  */
 const getNativeSymbol = (symbol: string) => {
-  if (!!symbol) {
+  if (!!symbol || symbol.length === 0) {
     return;
   }
 

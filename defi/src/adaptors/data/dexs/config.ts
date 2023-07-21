@@ -1758,5 +1758,13 @@ export default {
     "echodex": {
         "enabled": true,
         "id": "3256"
+    },
+    "reax-one-dex": {
+        "enabled": true,
+        "id": "3260"
+    },
+    "deepbook-sui": {
+        "enabled": true,
+        "id": "3268"
     }
 } as AdaptorsConfig

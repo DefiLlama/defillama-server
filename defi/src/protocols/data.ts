@@ -401,7 +401,7 @@ const data: Protocol[] = [
     twitter: "dForcenet",
     audit_links: ["https://github.com/dforce-network/documents/tree/master/audit_report/Lending"],
     forkedFrom: [],
-    oracles: ["Chainlink", "Band"],
+    oracles: ["Chainlink"],
     governanceID: ["snapshot:dforcenet.eth"],
     stablecoins: ["dforce-usd"],
     github: ["dforce-network"]
@@ -467,7 +467,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/security_audit/LoopringV3_1_Report_EN.pdf",
     ],
-    oracles: ["Chainlink", "Band"],
+    oracles: ["Chainlink"],
     governanceID: ["snapshot:loopringdao.eth"],
     github: ["Loopring"]
   },
@@ -815,7 +815,7 @@ const data: Protocol[] = [
       "https://github.com/crypticlabs/swerve-audit-report/blob/master/Swerve%20Finance%20Audit%20-%20by%20Cryptic%20Labs%20v3.pdf",
     ],
     forkedFrom: ["Curve"],
-    github: ["user:SwerveFinance"]
+    github: ["SwerveFinance"]
   },
   {
     id: "143",
@@ -2198,6 +2198,7 @@ const data: Protocol[] = [
     chains: ["Binance", "Polygon", "Heco", "Avalanche", "Fantom"],
     module: "autofarm.js",
     twitter: "autofarmnetwork",
+    github: ['autofarmnetwork'],
     audit_links: ["https://www.certik.org/projects/autofarm"],
     forkedFrom: ["Yearn Finance"],
   },
@@ -2256,18 +2257,16 @@ const data: Protocol[] = [
     logo: `${baseIconsUrl}/venus.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "venus",
-    cmcId: "7288",
+    gecko_id: null,
+    cmcId: null,
     category: "Lending",
     chains: ["Binance"],
     module: "venus.js",
-    treasury: "venus.js",
     twitter: "VenusProtocol",
     audit_links: ["https://www.certik.org/projects/swipe"],
     forkedFrom: ["Compound"],
     oracles: ["Chainlink", "Pyth", "TWAP"],
-    governanceID: ["snapshot:venus-xvs.eth"],
-    stablecoins: ["vai"]
+    parentProtocol: "parent#venus-finance"
   },
   {
     id: "213",
@@ -2968,7 +2967,6 @@ const data: Protocol[] = [
     module: "pangolin/index.js",
     twitter: "pangolindex",
     forkedFrom: ["Uniswap V2"],
-    oracles: ["RedStone"],
     governanceID: ["snapshot:pangolindex.eth"]
   },
   {
@@ -5548,7 +5546,7 @@ const data: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     twitter: "pinkmoonfinance",
     audit_links: [],
-    github: ["user:pinkmoonfinance"]
+    github: ["pinkmoonfinance"]
   },
   {
     id: "368",
@@ -6755,7 +6753,7 @@ const data: Protocol[] = [
     twitter: "DeriProtocol",
     audit_links: ["https://docs.deri.io/library/code-audits"],
     oracles: ["Chainlink"],
-    github: ["user:deri-protocol"]
+    github: ["deri-protocol"]
   },
   // {
   //   id: "424",
@@ -10998,11 +10996,17 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: null,
     cmcId: null,
     category: "Services",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Arbitrum", "Polygon", "Optimism", "BSC"],
     module: "meanfinance/index.js",
     twitter: "mean_fi",
     audit_links: ["https://github.com/Mean-Finance/dca-v2-core/tree/main/audits"],
-    oracles: ["Chainlink", "TWAP"],
+    oraclesByChain: {
+      Arbitrum: ["Chainlink", "TWAP"],
+      Polygon: ["API3", "TWAP"],
+      Optimism: ["Chainlink", "TWAP"],
+      Ethereum: ["Chainlink", "TWAP"],
+      BSC: ["Chainlink", "TWAP"] 
+    },
   },
   {
     id: "628",
@@ -15786,7 +15790,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     forkedFrom: ["Olympus DAO"],
     audit_links: ["https://paladinsec.co/projects/reverse-protocol/"],
     listedAt: 1637351714,
-    github: ["user:ReverseProtocol"]
+    github: ["ReverseProtocol"]
   },
   {
     id: "867",
@@ -19042,6 +19046,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Derivatives",
     chains: ["Polygon", "Arbitrum"],
     module: "gainsNetwork.js",
+    treasury: "gains.js",
     twitter: "GainsNetwork_io",
     audit_links: ["https://www.certik.com/projects/gains-network"],
     listedAt: 1639418230,
@@ -24498,23 +24503,24 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   },
   {
     id: "1274",
-    name: "StellaSwap",
+    name: "StellaSwap V2",
     address: "moonbeam:0x0E358838ce72d5e61E0018a2ffaC4bEC5F4c88d2",
     symbol: "STELLA",
     url: "https://stellaswap.com",
     description: "Stellaswap is leading DEX on Moonbeam.",
     chain: "Moonbeam",
-    logo: `${baseIconsUrl}/stellaswap.jpg`,
+    logo: `${baseIconsUrl}/stellaswap-v2.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "stellaswap",
-    cmcId: "17358",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Moonbeam"],
     module: "stellaswap.js",
     twitter: "StellaSwap",
     audit_links: ["https://www.certik.com/projects/stellaswap"],
     forkedFrom: ["Algebra DEX"],
+    parentProtocol: "parent#stellaswap",
     listedAt: 1642405794,
   },
   {

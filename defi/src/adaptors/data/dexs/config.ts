@@ -1727,5 +1727,31 @@ export default {
     "croswap": {
         enabled: true,
         id: "2942"
+    },
+    "fusionx-v2": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3238"
+    },
+    "fusionx-v3": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3239"
+    },
+    "DerpDEX": {
+        enabled: true,
+        id: "3234"
+    },
+    "concordex-io": {
+        "enabled": true,
+        "id": "3172"
+    },
+    "icpswap": {
+        "enabled": true,
+        "id": "3257"
+    },
+    "echodex": {
+        "enabled": true,
+        "id": "3256"
     }
 } as AdaptorsConfig

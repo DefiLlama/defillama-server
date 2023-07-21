@@ -61,6 +61,13 @@ export function curve6b(timestamp: number = 0) {
     timestamp,
   );
 }
+export function curve7(timestamp: number = 0) {
+  console.log("starting curve7");
+  return Promise.all([
+    getTokenPrices("celo", ["stableswap", "crypto"], timestamp),
+    getTokenPrices("celo", ["cryptoFactory", "stableFactory"], timestamp),
+  ]);
+}
 
 export function ellipsis(timestamp: number = 0) {
   console.log("starting ellipsis");
@@ -85,9 +92,9 @@ export function gauges(timestamp: number = 0) {
     getGaugePrices("avax", timestamp),
     getGaugePrices("moonbeam", timestamp),
     getGaugePrices("xdai", timestamp),
+    getGaugePrices("celo", timestamp),
   ]);
 }
-
 export function spares(timestamp: number = 0) {
   console.log("starting curve spares");
   return getSpareTokens("ethereum", timestamp, [

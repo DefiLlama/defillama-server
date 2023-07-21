@@ -1203,6 +1203,11 @@
     }
   },
   "ethereum": {
+    "0x72e4f9f808c49a2a61de9c5896298920dc4eeea9": {
+      "decimals": 8,
+      "symbol": "BITCOIN",
+      "to": "coingecko#harrypotterobamasonic10in"
+    },
     "0xe0b469cb3eda0ece9e425cfeda4df986a55ea9f8": {
       "decimals": 18,
       "symbol": "WETH",
@@ -2310,7 +2315,56 @@
       "to": "coingecko#idle"
     }
   },
+  "rollux": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "SYS",
+      "to": "coingecko#syscoin"
+    },
+    "0x48023b16c3e81aa7f6effbdeb35bb83f4f31a8fd": {
+      "decimals": "18",
+      "symbol": "PSYS",
+      "to": "coingecko#pegasys"
+    },
+    "0x28c9c7fb3fe3104d2116af26cc8ef7905547349c": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x368433cac2a0b8d76e64681a9835502a1f2a8a30": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x4200000000000000000000000000000000000006": {
+      "decimals": "18",
+      "symbol": "WSYS",
+      "to": "coingecko#syscoin"
+    }
+  },
+  "filecoin": {
+    "0xce5805cf6c84f71d2897f632e0aa60d2430ccd2a": {
+      "decimals": "18",
+      "symbol": "wFIL",
+      "to": "coingecko#filecoin"
+    },
+    "0x422849b355039bc58f2780cc4854919fc9cfaf94": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    }
+  },
   "arbitrum": {
+    "0x49e050df648e9477c7545fe1779b940f879b787a": {
+      "decimals": "18",
+      "symbol": "esGMD",
+      "to": "arbitrum:0x4945970efeec98d393b4b979b9be265a3ae28a8b"
+    },
+    "0x40ea7f6d6964413d4a26a0a268542dae9f55768e": {
+      "decimals": "18",
+      "symbol": "xGND",
+      "to": "arbitrum:0xd67a097dce9d4474737e6871684ae3c05460f571"
+    },
     "0xa5edbdd9646f8dff606d7448e414884c7d905dca": {
       "decimals": 6,
       "symbol": "cUSDCv3",
@@ -3360,6 +3414,12 @@
     }
   },
   "kujira": {
+    "factory:kujira1643jxg8wasy5cfcn7xm8rd742yeazcksqlg4d7:umnta": {
+      "name": "mnta",
+      "decimals": "6",
+      "symbol": "MNTA",
+      "to": "coingecko#mantadao"
+    },
     "ukuji": {
       "name": "kujira",
       "decimals": "6",
@@ -5568,6 +5628,16 @@
     }
   },
   "kava": {
+    "erc20:tether:usdt": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
+    "0x919c1c267bc06a7039e03fcc2ef738525769109c": {
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "coingecko#tether"
+    },
     "bnb": {
       "decimals": "8",
       "symbol": "BNB",
@@ -6630,6 +6700,21 @@
     }
   },
   "ibc": {
+    "C140AFD542AE77BD7DCC83F13FDD8C5E5BB8C4929785E6EC2F4C636F98F17901": {
+      "decimals": "6",
+      "symbol": "stATOM",
+      "to": "coingecko#stride-staked-atom"
+    },
+    "EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5": {
+      "decimals": "18",
+      "symbol": "axlWETH",
+      "to": "coingecko#ethereum"
+    },
+    "D1542AA8762DB13087D8364F3EA6509FD6F009A34F00426AF9E4F9FA85CBBF1F": {
+      "decimals": "8",
+      "symbol": "axlWBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    },
     "F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349": {
       "decimals": "6",
       "symbol": "AXLUSDC",
@@ -7315,6 +7400,41 @@
     }
   },
   "stacks": {
+    "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin::wrapped-bitcoin": {
+      "decimals": "8",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
+    },
+    "SP3DX3H4FEYZJZ586MFBS25ZW3HZDMEW92260R2PR.Wrapped-Bitcoin": {
+      "decimals": "8",
+      "symbol": "BTC",
+      "to": "coingecko#bitcoin"
+    },
+    "SP1Z92MPDQEWZXW36VX71Q25HKF5K2EPCJ304F275.wstx-token-v4a": {
+      "decimals": "6",
+      "symbol": "STX",
+      "to": "coingecko#blockstack"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.age000-governance-token::alex": {
+      "decimals": "8",
+      "symbol": "ALEX",
+      "to": "coingecko#alexgo"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.auto-alex::auto-alex": {
+      "decimals": "8",
+      "symbol": "ALEX",
+      "to": "coingecko#alexgo"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.age000-governance-token": {
+      "decimals": "8",
+      "symbol": "ALEX",
+      "to": "coingecko#alexgo"
+    },
+    "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.auto-alex": {
+      "decimals": "8",
+      "symbol": "ALEX",
+      "to": "coingecko#alexgo"
+    },
     "0x0000000000000000000000000000000000000000": {
       "name": "STX",
       "decimals": "6",
@@ -7414,6 +7534,18 @@
     }
   },
   "era": {
+    "0xBBeB516fb02a01611cBBE0453Fe3c580D7281011": {
+      "name": "WBTC",
+      "decimals": "8",
+      "symbol": "WBTC",
+      "to": "ethereum:0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+    },
+    "0x493257fD37EDB34451f62EDf8D2a0C418852bA4C": {
+      "name": "USDT",
+      "decimals": "6",
+      "symbol": "USDT",
+      "to": "ethereum:0xdac17f958d2ee523a2206206994597c13d831ec7"
+    },
     "0x2039bb4116B4EFc145Ec4f0e2eA75012D6C0f181": {
       "decimals": "18",
       "symbol": "BUSD",
@@ -7550,6 +7682,16 @@
     }
   },
   "pulse": {
+    "0x2b591e99afe9f32eaa6214f7b7629768c40eeb39": {
+      "decimals": "8",
+      "symbol": "HEX",
+      "to": "coingecko#hex-pulsechain"
+    },
+    "0x95b303987a60c71504d99aa1b13b4da07b0790ab": {
+      "decimals": "18",
+      "symbol": "PLSX",
+      "to": "coingecko#pulsex"
+    },
     "0x0000000000000000000000000000000000000000": {
       "decimals": "18",
       "symbol": "PLS",

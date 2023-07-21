@@ -1738,6 +1738,33 @@ export const chainCoingeckoIds = {
     cmcId: "24892",
     categories: ["EVM"],
   },
+  "Mantle": {
+    geckoId: "mantle",
+    symbol: "MNT",
+    cmcId: "27075",
+    categories: ["EVM"],
+    chainId: 5000,
+  },
+  "Neon": {
+    geckoId: "neon",
+    symbol: "NEON",
+    cmcId: "26735",
+    categories: ["EVM"],
+    chainId: 245022934,
+  },
+  "Base": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 8453,
+  },
+  "Linea": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2169,6 +2196,14 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Rollux"
     case "tenet":
       return "Tenet"
+    case "mantle":
+      return "Mantle"
+    case "neon_evm":
+      return "Neon"
+    case "base":
+      return "Base"
+    case "linea":
+      return "Linea"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

@@ -3648,8 +3648,8 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "single-finance",
     cmcId: "17469",
-    category: "Yield",
-    chains: ["Cronos"],
+    category: "Leveraged Farming",
+    chains: ["Cronos", "Arbitrum", "Fantom"],
     oracles: ["Internal"],
     forkedFrom: [],
     module: "single/index.js",
@@ -10475,8 +10475,8 @@ const data2: Protocol[] = [
   {
     id: "1867",
     name: "Sonic",
-    address: "icp:-",
-    symbol: "XTC",
+    address: "icp:lcyu6-siaaa-aaaah-adk2a-cai",
+    symbol: "SONICX",
     url: "https://sonic.ooo",
     description: "Swap tokens, earn fees as a liquidity provider, and build on the Internet Computer's Automated Market Maker (AMM)",
     chain: "ICP",
@@ -15431,8 +15431,8 @@ const data2: Protocol[] = [
   {
     id: "2092",
     name: "Pirex",
-    address: null,
-    symbol: "-",
+    address: "0xc55126051b22ebb829d00368f4b12bde432de5da",
+    symbol: "BTRFLY",
     url: "https://pirex.io/",
     description: "Pirex is a product by Redacted which creates liquid wrappers that allow for auto-compounding and the tokenization of future yield/vote events.",
     chain: "Ethereum",
@@ -16376,7 +16376,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "lemma/index.js",
-    twitter: "LemmaFinance",
+    twitter: "Lemma_Labs",
     audit_links: ["https://github.com/lemma-finance/audits/tree/main/audits"],
     listedAt: 1664361294,
     stablecoins: ["usdlemma"]
@@ -24540,14 +24540,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2494",
-    name: "ReHold",
+    name: "ReHold V1",
     address: null,
     symbol: "-",
     url: "https://rehold.io",
     description:
       "ReHold is an innovative protocol that offers the first Dual investments in DeFi. High APRs are accessible due to DEXs' Liquidity Pools with an effective price range for concentrated liquidity.",
     chain: "Binance",
-    logo: `${baseIconsUrl}/rehold.png`,
+    logo: `${baseIconsUrl}/rehold-v1.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -24559,6 +24559,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-ReHold-v1.0.pdf"],
+    parentProtocol: "parent#rehold",
     listedAt: 1675454199
   },
   {
@@ -26355,7 +26356,7 @@ const data2: Protocol[] = [
     description:
       "A core derivatives primitive built on Solana.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/hxro-network.jpg`,
+    logo: `${baseIconsUrl}/hxro-network.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "hxro",
@@ -26367,6 +26368,7 @@ const data2: Protocol[] = [
     oracles: ["Pyth", "Jiritsu"],
     forkedFrom: [],
     audit_links: ["https://docs.hxro.network/hxro-token/staking-and-governance/15-9-2022-audit"],
+    wrongLiquidity: true,
     listedAt: 1677155712
   },
   {
@@ -27129,7 +27131,7 @@ const data2: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://streamflow.finance",
-    description: "Streamflow provides a product suite every organization can use to manage and stream value on Solana. This suite includes token vesting, payroll and batch payments all on top of a secure multisig wallet. The Streamflow real-time streaming vision is ultra-flexible and efficient.",
+    description: "Streamflow provides a product suite every organization can use to manage and distribute value on-chain. This suite includes token vesting, crypto payroll, and a multi-signature wallet treasury (for Solana users).",
     chain: "Solana",
     logo: `${baseIconsUrl}/streamflow.jpg`,
     audits: "2",
@@ -29370,6 +29372,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#puzzleswaporg",
     listedAt: 1679438099
   },
+  /*
   {
     id: "2709",
     name: "insrt finance",
@@ -29392,6 +29395,7 @@ const data2: Protocol[] = [
     audit_links: ["https://www.certik.com/projects/insrt-finance"],
     listedAt: 1679483191
   },
+  */
   {
     id: "2710",
     name: "BaptSwap",

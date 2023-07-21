@@ -1,4 +1,5 @@
 export default {
+  xexchange: require("./markets/xexchange"),
   timeswap: require("./yield/timeswap"),
   // wemix: require("./markets/uniswap"),
   dforce: require("./moneyMarkets/dforce"),
@@ -50,6 +51,7 @@ export default {
   curve5d: require("./markets/curve"),
   curve6: require("./markets/curve"),
   curve6b: require("./markets/curve"),
+  curve7: require("./markets/curve"),
   ellipsis: require("./markets/curve"),
   balancer1: require("./markets/balancer"),
   balancer2: require("./markets/balancer"),

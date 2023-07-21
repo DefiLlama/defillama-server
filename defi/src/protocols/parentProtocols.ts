@@ -1883,7 +1883,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "magicfoxfi",
-    github: ["user:magicfoxfi"],
+    github: ["magicfoxfi"],
     wrongLiquidity: true,
   },
   {
@@ -2048,7 +2048,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Themis_Pro",
     treasury: "themis-capital-ohm.js",
-    github: ["user:ThemisCapital"]
+    github: ["ThemisCapital"]
   },
   {
     id: "parent#pepeteam",
@@ -2060,7 +2060,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "cryptopepeteam",
-    github: ["user:crypto-pepe"]
+    github: ["crypto-pepe"]
   },
   {
     id: "parent#equalizer0x",
@@ -2172,7 +2172,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#mare-finance",
     name: "Mare Finance",
-    url: "https://www.swaap.finance",
+    url: "https://mare.finance",
     description: "Mare Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless, open source protocol serving users on Kava. Users can deposit their assets, use them as collateral and borrow against them.",
     logo: `${baseIconsUrl}/mare-finance.png`,
     gecko_id: "mare-finance",
@@ -2191,6 +2191,80 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "1975",
     chains: [],
     twitter: "chainlink",
+  },
+  {
+    id: "parent#fusionx-finance",
+    name: "FusionX Finance",
+    url: "https://fusionx.finance",
+    description: "FusionX builds the native DeFi ecosystem of Mantle Network which powers it’s concentrated liquidity AMM which is highly efficient, isolated perpetual Dex and LSD based products coming up shortly.",
+    logo: `${baseIconsUrl}/fusionx-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "FusionX_Finance",
+    github: ["fusionx-finance"],
+  },
+  {
+    id: "parent#venus-finance",
+    name: "Venus Finance",
+    url: "https://venus.io/",
+    description: "A Decentralized Marketplace for Lenders and Borrowers with Borderless Stablecoins",
+    logo: `${baseIconsUrl}/venus.jpg`,
+    gecko_id: "venus",
+    cmcId: "7288",
+    chains: [],
+    twitter: "VenusProtocol",
+    github: ["VenusProtocol"],
+    treasury: "venus.js",
+    governanceID: ["snapshot:venus-xvs.eth"],
+    stablecoins: ["vai"]
+  },
+  {
+    id: "parent#hatom-protocol",
+    name: "Hatom Protocol",
+    url: "https://app.hatom.com",
+    description: "Hatom Protocol is a decentralized algorithmic protocol for lending, borrowing, and staking assets, that operates on the MultiversX Blockchain.",
+    logo: `${baseIconsUrl}/hatom-protocol.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "HatomProtocol",
+    github: ["HatomProtocol"]
+  },
+  {
+    id: "parent#rehold",
+    name: "ReHold",
+    url: "https://rehold.io",
+    description: "ReHold is an innovative protocol that offers the first Dual investments in DeFi. High APRs are accessible due to DEXs' Liquidity Pools with an effective price range for concentrated liquidity.",
+    logo: `${baseIconsUrl}/rehold.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "rehold_io",
+    github: ["rehold-io"]
+  },
+  {
+    id: "parent#stellaswap",
+    name: "StellaSwap",
+    url: "https://stellaswap.com",
+    description: "All your DeFi needs in one place. Swap, earn and build on Moonbeam's leading DEX",
+    logo: `${baseIconsUrl}/stellaswap.jpg`,
+    gecko_id: "stellaswap",
+    cmcId: "17358",
+    chains: [],
+    twitter: "StellaSwap",
+    github: ["stellaswap"]
+  },
+  {
+    id: "parent#reax-finance",
+    name: "Reax Finance",
+    url: "https://reax.one/",
+    description: "Trade, Lend, Borrow and Leverage on Crypto, Stocks, Forex, Commodities & more, Slippage Free, on Mantle",
+    logo: `${baseIconsUrl}/stellaswap.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ReaxFinance",
   },
 ];
 

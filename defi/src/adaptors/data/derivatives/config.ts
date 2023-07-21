@@ -163,5 +163,36 @@ export default {
     "hmx": {
         "enabled": true,
         "id": "2296"
+    },
+    "y2k": {
+        "enabled": true,
+        "id": "2375",
+        protocolsData: {
+            v1: {
+                "enabled": true,
+                "id": "2375",
+            },
+            v2: {
+                "enabled": true,
+                "id": "3056",
+            }
+        }
+    },
+    "kwenta": {
+        "enabled": true,
+        "id": "2981"
+    },
+    "synthetix": {
+        "enabled": true,
+        "id": "115",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1689292800": true,
+                "1689379200": true,
+                "1689465600": true,
+                "1689638400": true,
+                "1689811309": true,
+            },
+        }
     }
 } as AdaptorsConfig

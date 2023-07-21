@@ -1,4 +1,4 @@
-import { createChartData, mapToServerData } from "../emissions-adapters/utils/convertToChartData";
+import { createChartData, mapToServerData, nullFinder } from "../emissions-adapters/utils/convertToChartData";
 import { createRawSections } from "../emissions-adapters/utils/convertToRawData";
 import { createCategoryData } from "../emissions-adapters/utils/categoryData";
 import adapters from "./utils/imports/emissions_adapters";
@@ -13,8 +13,6 @@ import { PromisePool } from "@supercharge/promise-pool";
 import { shuffleArray } from "./utils/shared/shuffleArray";
 import { sendMessage } from "./utils/discord";
 import { withTimeout } from "./utils/shared/withTimeout";
-
-type Chart = { label: string; data: ApiChartData[] | undefined };
 
 const prefix = "coingecko:";
 
@@ -79,13 +77,15 @@ async function aggregateMetadata(
 
 async function processSingleProtocol(adapter: Protocol, protocolName: string): Promise<string> {
   const rawData = await createRawSections(adapter);
+  nullFinder(rawData.rawSections, "rawSections");
 
   const { realTimeData, documentedData } = await createChartData(
     protocolName,
     rawData,
     adapter.documented?.replaces ?? []
   );
-
+  nullFinder(realTimeData, "realTimeData");
+  // must happen before this line because category datas off
   const { data, id } = await aggregateMetadata(protocolName, realTimeData, documentedData, rawData);
 
   const sluggifiedId = sluggifyString(id).replace("parent#", "");
@@ -100,17 +100,17 @@ async function processProtocolList() {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
 
-  await PromisePool.withConcurrency(1)
+  await PromisePool.withConcurrency(2)
     .for(shuffleArray(Object.entries(adapters)))
     .process(async ([protocolName, rawAdapter]) => {
       let adapters = typeof rawAdapter.default === "function" ? await rawAdapter.default() : rawAdapter.default;
       if (!adapters.length) adapters = [adapters];
       await Promise.all(
         adapters.map((adapter: Protocol) =>
-          processSingleProtocol(adapter, protocolName)
+          withTimeout(60000, processSingleProtocol(adapter, protocolName), protocolName)
             .then((p: string) => protocolsArray.push(p))
             .catch((err: Error) => {
-              console.log(err.message, `: \n storing ${protocolName}`);
+              console.log(err.message ? `${err.message}: \n storing ${protocolName}` : err);
               protocolErrors.push(protocolName);
             })
         )

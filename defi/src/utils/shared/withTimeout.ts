@@ -1,9 +1,9 @@
-export const withTimeout = (millis: number, promise: any) => {
+export const withTimeout = (millis: number, promise: any, id: string = "") => {
   const timeout = new Promise((resolve, reject) =>
     setTimeout(() => {
-      reject(`timed out after ${millis / 1000} s.`);
+      reject(`${id} timed out after ${millis / 1000} s.`);
       resolve;
-    }, millis),
+    }, millis)
   );
   return Promise.race([promise, timeout]);
 };

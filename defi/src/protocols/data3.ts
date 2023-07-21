@@ -12372,6 +12372,26 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1689932900
   },
+  {
+    id: "3269",
+    name: "Arkham",
+    address: null,
+    symbol: "-",
+    url: "https://www.arkhamintelligence.com",
+    description: "Deanonymizing the Blockchain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/arkham.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "arkham",
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "ArkhamIntel",
+    forkedFrom: [],
+    oracles: [],
+  },
 ]
 
 export default data3

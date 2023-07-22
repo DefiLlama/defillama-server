@@ -12433,7 +12433,6 @@ const data3: Protocol[] = [
     twitter: "EvmosDAO",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1690044632,
     treasury: "evmos-dao.js",
     github: ["EvmosGov"]
   },

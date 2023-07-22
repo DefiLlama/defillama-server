@@ -1050,5 +1050,10 @@ export default {
     "agni-fi": {
         "enabled": true,
         "id": "3265"
+    },
+    "benqi-lending": {
+        parentId: "Benqi",
+        "enabled": true,
+        "id": "467"
     }
 } as AdaptorsConfig

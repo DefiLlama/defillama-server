@@ -12436,6 +12436,28 @@ const data3: Protocol[] = [
     treasury: "evmos-dao.js",
     github: ["EvmosGov"]
   },
+  {
+    id: "3272",
+    name: "Dracula Finance",
+    address: "era:0x160e07e42adbc1fce92d505b579bcd8a3fbea77d",
+    symbol: "FANG",
+    url: "https://draculafi.xyz/",
+    description: "Dracula Finance is a ve(3,3) protocol built on zkSync Era",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/dracula-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "dracula-fi",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    module: "dracula/index.js",
+    twitter: "dracula_fi",
+    forkedFrom: ["Solidly"],
+    oracles: [],
+    audit_links: ["https://draculafi.gitbook.io/draculafi/security/audit"],
+    listedAt: 1690065967,
+  },
 ]
 
 export default data3

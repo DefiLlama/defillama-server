@@ -1,8 +1,8 @@
-import { getClosestDayStartTimestamp, secondsInHour } from "./utils/date";
 import { getChainDisplayName, chainCoingeckoIds, transformNewChainName, extraSections } from "./utils/normalizeChain";
 import { processProtocols, TvlItem } from "./storeGetCharts";
-import { successResponse, wrap, IResponse } from "./utils/shared";
 import type { Protocol } from "./protocols/data";
+import { storeR2JSONString } from "./utils/r2";
+import { wrapScheduledLambda } from "./utils/shared/wrap";
 
 interface SumDailyTvls {
   [timestamp: number]: {
@@ -63,7 +63,7 @@ function defaultLang(chainName: string) {
   return chainToLang[chainName];
 }
 
-const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> => {
+const handler = async (_event: AWSLambda.APIGatewayEvent) => {
   const sumDailyTvls = {} as SumDailyTvls;
   const languageProtocols = {} as LanguageProtocols;
   const sumDailySolanaOpenSourceTvls = {} as SumDailyTvls;
@@ -110,14 +110,15 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     { includeBridge: false }
   );
 
-  return successResponse(
-    {
+  await storeR2JSONString(
+    "temp/langs.json",
+    JSON.stringify({
       chart: sumDailyTvls,
       protocols: Object.fromEntries(Object.entries(languageProtocols).map((c) => [c[0], Array.from(c[1])])),
       sumDailySolanaOpenSourceTvls,
-    },
+    }),
     10 * 60
-  ); // 10 mins cache
+  );
 };
 
-export default wrap(handler);
+export default wrapScheduledLambda(handler);

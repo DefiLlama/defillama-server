@@ -315,13 +315,11 @@ functions:
           path: inflows/{protocol}/{timestamp}
           method: get
   langs:
-    handler: src/getLangs.default
-    timeout: 30
+    handler: src/storeLangs.default
+    timeout: 60
     memorySize: 2000
     events:
-      - http:
-          path: langs
-          method: get
+      - schedule: cron(30 0,12 * * ? *)
   raises:
     handler: src/getRaises.default
     timeout: 30

@@ -12414,6 +12414,29 @@ const data3: Protocol[] = [
     listedAt: 1689959569,
     parentProtocol: "parent#reax-finance"
   },
+  {
+    id: "3271",
+    name: "Evmos DAO",
+    address: null,
+    symbol: "-",
+    url: "https://gov.evmos.community",
+    description: "Evmos DAO is a community-driven and independent entity dedicated to fostering the growth and sustainability of the Evmos network, focusing on transparent governance, effective communication, financial independence, and enhanced community involvement",
+    chain: "Evmos",
+    logo: `${baseIconsUrl}/evmos-dao.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Evmos"],
+    module: "dummy.js", // needs
+    twitter: "EvmosDAO",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1690044632,
+    treasury: "evmos-dao.js",
+    github: ["EvmosGov"]
+  },
 ]
 
 export default data3

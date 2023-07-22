@@ -8136,7 +8136,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Celo"],
     module: "moola/index.js",
     twitter: "Moola_Market",
-    forkedFrom: ["Aave V2"],
+    forkedFrom: ["AAVE V2"],
     audit_links: ["https://drive.google.com/file/d/1qd1h0dujnp4Xxrl68ZTIMzbt4aXzMWY7/view"],
     oracles: ["RedStone"],
   },
@@ -11353,7 +11353,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
       "https://solidity.finance/audits/GeistProtocol/",
     ],
     oracles: ["Chainlink"],
-    forkedFrom: ["Aave V2"],
+    forkedFrom: ["AAVE V2"],
   },
   {
     id: "644",
@@ -12509,7 +12509,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["xDai"],
     module: "agave.js",
     twitter: "Agave_lending",
-    forkedFrom: ["Aave V2"],
+    forkedFrom: ["AAVE V2"],
     listedAt: 1634918843,
     governanceID: ["snapshot:agavedao.eth"]
   },
@@ -14528,7 +14528,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "blizzfinance/index.js",
     twitter: "BlizzFinance",
     oracles: ["Chainlink"],
-    forkedFrom: ["Aave V2"],
+    forkedFrom: ["AAVE V2"],
     listedAt: 1636390733,
   },
   {
@@ -17212,7 +17212,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "xensa/index.js",
     twitter: "XensaFi",
     oracles: ["ExOracle"],
-    forkedFrom: ["Aave V2"],
+    forkedFrom: ["AAVE V2"],
     audit_links: ["https://github.com/XensaFi/xensa-audits"],
     listedAt: 1638134542,
     deadUrl: true,
@@ -20951,7 +20951,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "waterloan/index.js",
     twitter: "realwaterloan",
     oracles: ["Chainlink"],
-    forkedFrom: ["Aave V2"],
+    forkedFrom: ["AAVE V2"],
     listedAt: 1640628751,
   },
   {

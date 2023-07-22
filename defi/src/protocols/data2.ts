@@ -29077,7 +29077,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     module: "SmarDex/index.js",
-    twitter: "realSmarDex",
+    twitter: "SmarDex",
     audit_links: [" https://smardex.io/audit-reports"],
     listedAt: 1679329866
   },

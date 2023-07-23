@@ -491,7 +491,6 @@ const data: Protocol[] = [
     twitter: "KyberNetwork",
     audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],
     parentProtocol: "parent#kyberswap",
-    oracles: ["Chainlink", "Band"],
   },
   {
     id: "128",

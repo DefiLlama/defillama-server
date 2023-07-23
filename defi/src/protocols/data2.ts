@@ -27297,7 +27297,6 @@ const data2: Protocol[] = [
     module: "kyber/index.js",
     twitter: "KyberNetwork",
     audit_links: ["https://chainsecurity.com/security-audit/kyber-network-dynamic-market-maker-dmm/"],
-    oracles: ["Chainlink", "Band"],
     parentProtocol: "parent#kyberswap"
   },
   {

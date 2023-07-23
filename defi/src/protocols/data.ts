@@ -8137,6 +8137,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Moola_Market",
     forkedFrom: ["AAVE V2"],
     audit_links: ["https://drive.google.com/file/d/1qd1h0dujnp4Xxrl68ZTIMzbt4aXzMWY7/view"],
+    oracles: ['cLabs'] // Redstone is only used as backup
   },
   {
     id: "490",
@@ -8444,6 +8445,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "CeloOrg",
     audit_links: ["https://celo.org/audits"],
     stablecoins: ["celo-dollar", "celo-euro"],
+    oracles: ['cLabs'] // Redstone is only used as backup
   },
   {
     id: "505",

@@ -13,6 +13,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
       date: new Date(r.fields["Date"]).getTime() / 1000,
       name: r.fields["Name"],
       classification: r.fields["Classification"] ?? null,
+      technique: r.fields["Technique"] ?? null,
       amount: r.fields["Funds Lost"] ?? null,
       chain: r.fields["Chain"] ?? null,
       bridgeHack: r.fields["Bridge / Multichain Application"] ?? false,

@@ -7917,7 +7917,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://raft.fi/",
     description:
-      "Raft is a governance-minimized, decentralized protocol that allows people to generate R (a USD stablecoin) by depositing capital-efficient collateral, solely backed by Lido Staked Ether (stETH)",
+      "Raft is a DeFi protocol that lets you generate R by depositing liquid staking tokens (LSDs) as collateral, providing a capital-efficient way to borrow while keeping your staking rewards.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/raft.png`,
     audits: "2",

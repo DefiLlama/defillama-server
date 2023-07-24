@@ -661,7 +661,7 @@ const data: Protocol[] = [
     module: "kava.js",
     twitter: "KAVA_CHAIN",
     audit_links: ["https://www.certik.org/projects/kava"],
-    oracles: ["Chainlink"],
+    oracles: ["Internal"],
   },
   {
     id: "136",
@@ -771,7 +771,7 @@ const data: Protocol[] = [
     module: "hard.js",
     twitter: "hard_protocol",
     audit_links: ["https://www.certik.org/projects/hard"],
-    oracles: ["Chainlink"],
+    oracles: ["Internal"],
   },
   {
     id: "141",

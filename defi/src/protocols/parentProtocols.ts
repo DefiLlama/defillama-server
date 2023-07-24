@@ -2299,6 +2299,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "20282",
     chains: [],
     treasury: "dex.js",
+    github: ["dexira"],
     twitter: "DexFinance",
   },
 ];

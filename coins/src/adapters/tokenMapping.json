@@ -207,5 +207,13 @@
       "symbol": "wBTC",
       "to": "coingecko#wrapped-bitcoin"
     }
+  },
+  "kujira": {
+    "factory:kujira1n3fr5f56r2ce0s37wdvwrk98yhhq3unnxgcqus8nzsfxvllk0yxquurqty:ampKUJI": {
+      "name": "ampkuji",
+      "decimals": "6",
+      "symbol": "ampKUJI",
+      "to": "coingecko#eris-staked-kuji"
+    }
   }
 }

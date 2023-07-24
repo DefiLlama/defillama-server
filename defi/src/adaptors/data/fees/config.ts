@@ -832,6 +832,7 @@ export default {
         },
     },
     "pika-protocol": {
+        parentId: "Pika Protocol",
         "enabled": true,
         "id": "916"
     },

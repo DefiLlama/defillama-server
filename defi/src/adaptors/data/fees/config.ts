@@ -1056,5 +1056,10 @@ export default {
         parentId: "Benqi",
         "enabled": true,
         "id": "467"
+    },
+    "pika-protocol-v4": {
+        parentId: "Pika Protocol",
+        "enabled": true,
+        "id": "3281"
     }
 } as AdaptorsConfig

@@ -7518,7 +7518,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     description:
       "Ondo is a DeFi protocol that allows investors to better balance risk with rewards while gaining exposure to yield-generating crypto-assets on Ethereum.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ondo-finance.jpg`,
+    logo: `${baseIconsUrl}/ondo-v1-(legacy).png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -12697,6 +12697,7 @@ const data3: Protocol[] = [
     github: ["go-ethereum"],
     listedAt: 1690209075
   },
+  /*
   {
     id: "3284",
     name: "Summer.fi",
@@ -12719,6 +12720,7 @@ const data3: Protocol[] = [
     github: ["OasisDEX"],
     listedAt: 1690209925
   },
+  */
   {
     id: "3285",
     name: "Teahouse V2",

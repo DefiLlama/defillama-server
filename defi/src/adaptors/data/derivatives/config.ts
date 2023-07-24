@@ -99,6 +99,7 @@ export default {
         "id": "2848"
     },
     "pika-protocol": {
+        parentId: "Pika Protocol",
         "enabled": true,
         "id": "916"
     },

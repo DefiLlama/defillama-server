@@ -12629,6 +12629,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1690194329
   },
+  {
+    id: "3281",
+    name: "Pika V4",
+    address: "0x9a601c5bb360811d96a23689066af316a30c3027",
+    symbol: "PIKA",
+    url: "https://pikaprotocol.com",
+    description: "A Perpetual Swap Exchange",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/pika-v4.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Optimism"],
+    module: "pika-v4/index.js",
+    twitter: "PikaProtocol",
+    forkedFrom: [],
+    oracles: ["Pyth"],
+    parentProtocol: "parent#pika-protocol",
+    listedAt: 1690197679
+  },
 ]
 
 export default data3

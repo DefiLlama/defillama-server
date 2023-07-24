@@ -142,6 +142,14 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "arbitrum",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x0E8f117a563Be78Eb5A391A066d0d43Dd187a9E0",
+      "0x07bb65faac502d4996532f834a1b7ba5dc32ff96", //FVM
+      "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      false,
+      "fantom",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {

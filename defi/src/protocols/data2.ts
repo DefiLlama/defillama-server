@@ -19302,7 +19302,6 @@ const data2: Protocol[] = [
     module: "kava-liquid/index.js",
     twitter: "KAVA_CHAIN",
     forkedFrom: [],
-    oracles: ["Chainlink"],
     listedAt: 1668080824
   },
   {
@@ -19396,7 +19395,6 @@ const data2: Protocol[] = [
     module: "kava-earn/index.js",
     twitter: "KAVA_CHAIN",
     forkedFrom: [],
-    oracles: ["Chainlink"],
     listedAt: 1668111911
   },
   {
@@ -19418,7 +19416,6 @@ const data2: Protocol[] = [
     module: "kava-boost/index.js",
     twitter: "KAVA_CHAIN",
     forkedFrom: [],
-    oracles: ["Chainlink"],
     listedAt: 1668111919
   },
   {

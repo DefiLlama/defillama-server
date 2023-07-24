@@ -2278,6 +2278,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PikaProtocol",
   },
+  {
+    id: "parent#teahouse-finance",
+    name: "Teahouse Finance",
+    url: "https://vault.teahouse.finance",
+    description: "Teahouse Finance is a DeFi protocol that strives to emerge as the premier on-chain asset management protocol. Teahouse has dedicated its efforts to addressing the challenges associated with earning swapping fees while providing liquidity.",
+    logo: `${baseIconsUrl}/teahouse-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "TeahouseFinance",
+  },
 ];
 
 export default parentProtocols;

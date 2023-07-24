@@ -2289,6 +2289,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TeahouseFinance",
   },
+  {
+    id: "parent#dexfinance",
+    name: "DexFinance",
+    url: "https://app.dexfinance.com/swap",
+    description: "Bringing the world tools to optimize and simplify DeFi investing.",
+    logo: `${baseIconsUrl}/dexfinance.png`,
+    gecko_id: "dexshare",
+    cmcId: "20282",
+    chains: [],
+    treasury: "dex.js",
+    twitter: "DexFinance",
+  },
 ];
 
 export default parentProtocols;

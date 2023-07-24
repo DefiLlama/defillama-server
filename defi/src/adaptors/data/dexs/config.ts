@@ -1770,5 +1770,9 @@ export default {
     "agni-fi": {
         "enabled": true,
         "id": "3265"
+    },
+    "horizondex": {
+        "enabled": true,
+        "id": "3255"
     }
 } as AdaptorsConfig

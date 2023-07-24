@@ -195,5 +195,10 @@ export default {
                 "1689811309": true,
             },
         }
+    },
+    "pika-protocol-v4": {
+        parentId: "Pika Protocol",
+        "enabled": true,
+        "id": "3281"
     }
 } as AdaptorsConfig

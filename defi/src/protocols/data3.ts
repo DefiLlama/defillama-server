@@ -12697,6 +12697,28 @@ const data3: Protocol[] = [
     github: ["go-ethereum"],
     listedAt: 1690209075
   },
+  {
+    id: "3284",
+    name: "Summer.fi",
+    address: null,
+    symbol: "-",
+    url: "https://summer.fi",
+    description: "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/summer.fi.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "summer-fi/index.js",
+    twitter: "summerfinance_",
+    forkedFrom: [],
+    oracles: [],
+    github: ["OasisDEX"],
+    listedAt: 1690209925
+  },
 ]
 
 export default data3

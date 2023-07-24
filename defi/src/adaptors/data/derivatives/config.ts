@@ -200,5 +200,9 @@ export default {
         parentId: "Pika Protocol",
         "enabled": true,
         "id": "3281"
+    },
+    "gains-network": {
+        "enabled": true,
+        "id": "1018"
     }
 } as AdaptorsConfig

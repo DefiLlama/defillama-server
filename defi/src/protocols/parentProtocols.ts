@@ -2266,6 +2266,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ReaxFinance",
   },
+  {
+    id: "parent#pika-protocol",
+    name: "Pika Protocol",
+    url: "https://pikaprotocol.com",
+    description: "A Perpetual Swap Exchange",
+    logo: `${baseIconsUrl}/pika-protocol.jpg`,
+    gecko_id: "pika-protocol",
+    cmcId: "25148",
+    chains: [],
+    twitter: "PikaProtocol",
+  },
 ];
 
 export default parentProtocols;

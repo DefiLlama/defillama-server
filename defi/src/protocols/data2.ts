@@ -25635,7 +25635,7 @@ const data2: Protocol[] = [
     description:
       "This share class provides liquid exposure to an ETF of short-term U.S. Treasuries",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/ondo-finance.jpg`,
+    logo: `${baseIconsUrl}/ondo-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

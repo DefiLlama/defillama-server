@@ -12608,6 +12608,27 @@ const data3: Protocol[] = [
     audit_links: ["https://2474115411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FgSs7UmtCefVntVTkogKf%2Fuploads%2Fu9FNEjoK2kztwmuTa5o8%2FPalmSwap-audit-report.pdf?alt=media&token=120b83f0-1a98-4c59-919c-986c81dae7ad"],
     listedAt: 1690194324
   },
+  {
+    id: "3280",
+    name: "ZKSpace",
+    address: "0xe4815AE53B124e7263F08dcDBBB757d41Ed658c6",
+    symbol: "ZKS",
+    url: "https://zksync.zks.app/swap",
+    description: "ZKSwap is the first Layer 2 AMM DEX powered by ZK-Rollups technology. It operates on both ZKSpace and the EVM chain ZKSync Era.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zkspace.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    module: "zkswap-2/index.js",
+    twitter: "ZKSpaceOfficial",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1690194329
+  },
 ]
 
 export default data3

@@ -1097,6 +1097,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "9444",
     chains: [],
     twitter: "KyberNetwork",
+    treasury: "kyber.js",
     github: ["KyberNetwork"]
   },
   {

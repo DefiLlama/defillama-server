@@ -12586,6 +12586,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1690193408
   },
+  {
+    id: "3279",
+    name: "Palmswap",
+    address: "bsc:0x29745314B4D294B7C77cDB411B8AAa95923aae38",
+    symbol: "PALM",
+    url: "https://palmswap.org",
+    description: "Trade perpetual futures with up to 50x leverage, deep liquidity, and low fees directly from your wallet.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/palmswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    module: "palmswap/index.js",
+    twitter: "Palmswaporg",
+    forkedFrom: ["GMX"],
+    oracles: [],
+    audit_links: ["https://2474115411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FgSs7UmtCefVntVTkogKf%2Fuploads%2Fu9FNEjoK2kztwmuTa5o8%2FPalmSwap-audit-report.pdf?alt=media&token=120b83f0-1a98-4c59-919c-986c81dae7ad"],
+    listedAt: 1690194324
+  },
 ]
 
 export default data3

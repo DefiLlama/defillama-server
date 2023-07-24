@@ -12562,7 +12562,6 @@ const data3: Protocol[] = [
     twitter: "DexFinance",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    github: ["dexira"],
     parentProtocol: "parent#dexfinance",
     listedAt: 1690193404
   },

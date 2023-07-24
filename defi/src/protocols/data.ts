@@ -4479,7 +4479,6 @@ const data: Protocol[] = [
     chains: ["Polygon"],
     module: "dfyn/index.js",
     twitter: "_Dfyn",
-    oracles: ["Chainlink", "DIA"],
     forkedFrom: ["Uniswap V2"],
     treasury: "dfyn.js",
     governanceID: ["snapshot:dfyn.eth"]

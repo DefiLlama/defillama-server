@@ -11093,7 +11093,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Staking Pool",
+    category: "Liquid Staking",
     chains: ["Filecoin"],
     oracles: [],
     forkedFrom: [],

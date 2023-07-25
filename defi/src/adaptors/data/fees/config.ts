@@ -1065,5 +1065,10 @@ export default {
     "holdstation-defutures": {
         "enabled": true,
         "id": "2959"
+    },
+    "unicrypt": {
+        parentId: "UniCrypt",
+        "enabled": true,
+        "id": "1765"
     }
 } as AdaptorsConfig

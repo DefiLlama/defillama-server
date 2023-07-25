@@ -271,7 +271,7 @@ async function unknownTokens(
     );
   });
 }
-function translateQty(
+export function translateQty(
   usdSwapSize: number,
   decimals: number,
   tokenValue: number,
@@ -281,11 +281,23 @@ function translateQty(
     tokenValue
   ).toString();
   if (scientificNotation.indexOf("e") == -1) {
+    let qty: BigNumber;
     try {
-      const qty: BigNumber = BigNumber.from(parseInt(scientificNotation));
-      return qty;
+      return BigNumber.from(parseInt(scientificNotation));
     } catch {
-      return;
+      try {
+        if (decimals > 9) {
+          qty = BigNumber.from(usdSwapSize).mul(tokenValue * 10 ** 9);
+          qty = BigNumber.from(usdSwapSize).mul(
+            tokenValue * 10 ** (decimals - 9),
+          );
+        } else {
+          qty = BigNumber.from(usdSwapSize).mul(tokenValue * 10 ** decimals);
+        }
+        return qty;
+      } catch {
+        return;
+      }
     }
   }
   const power: string = scientificNotation.substring(

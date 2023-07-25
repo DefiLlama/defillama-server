@@ -106,3 +106,4 @@ jobs:
           FLIPSIDE_API_KEY: ${{ secrets.FLIPSIDE_API_KEY }}
           COINGLASS_KEY: ${{ secrets.COINGLASS_KEY }}
           UNLOCKS_WEBHOOK: ${{ secrets.UNLOCKS_WEBHOOK }}
+          SMARDEX_SUBGRAPH_API_KEY: ${{ secrets.SMARDEX_SUBGRAPH_API_KEY }}

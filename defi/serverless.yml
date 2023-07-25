@@ -556,6 +556,7 @@ functions:
       BIT_QUERY_API_KEY: ${file(./env.js):BIT_QUERY_API_KEY}
       ALLIUM_API_KEY: ${env:ALLIUM_API_KEY}
       FLIPSIDE_API_KEY: ${env:FLIPSIDE_API_KEY}
+      SMARDEX_SUBGRAPH_API_KEY: ${env:SMARDEX_SUBGRAPH_API_KEY}
   triggerStoreAdaptorData:
     handler: src/adaptors/handlers/triggerStoreAdaptorData.default
     timeout: 900

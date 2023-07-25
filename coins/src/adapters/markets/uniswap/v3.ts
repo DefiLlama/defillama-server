@@ -2,58 +2,48 @@ import { multiCall } from "@defillama/sdk/build/abi";
 import { BigNumber } from "ethers";
 import getBlock from "../../utils/block";
 import { translateQty } from "./uniswap";
-const chain: any = "ethereum";
-const contracts: any = {
-  ethereum: { quoter: "0x61fFE014bA17989E743c5F6cB21bF9697530B21e" },
+import { Write } from "../../utils/dbInterfaces";
+import { addToDBWritesList } from "../../utils/database";
+import abi from "./abi.json";
+
+type Data = {
+  [address: string]: {
+    decimals: number;
+    symbol: string;
+    rawQty: number;
+    priceEstimate: number;
+    largeRate: number;
+    smallRate: number;
+  };
 };
-const abi: any = {
-  quoteExactInputSingle: {
-    inputs: [
-      {
-        components: [
-          { internalType: "address", name: "tokenIn", type: "address" },
-          { internalType: "address", name: "tokenOut", type: "address" },
-          { internalType: "uint256", name: "amountIn", type: "uint256" },
-          { internalType: "uint24", name: "fee", type: "uint24" },
-          {
-            internalType: "uint160",
-            name: "sqrtPriceLimitX96",
-            type: "uint160",
-          },
-        ],
-        internalType: "struct IQuoterV2.QuoteExactInputSingleParams",
-        name: "params",
-        type: "tuple",
-      },
-    ],
-    name: "quoteExactInputSingle",
-    outputs: [
-      { internalType: "uint256", name: "amountOut", type: "uint256" },
-      { internalType: "uint160", name: "sqrtPriceX96After", type: "uint160" },
-      {
-        internalType: "uint32",
-        name: "initializedTicksCrossed",
-        type: "uint32",
-      },
-      { internalType: "uint256", name: "gasEstimate", type: "uint256" },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
+type Call = {
+  target?: string;
+  params?: any;
+};
+
+const chain: any = "ethereum";
+const fees: string[] = ["10000", "3000", "500", "100"];
+const sqrtPriceLimitX96 = "0";
+const dollarAmt = 10 ** 5;
+const contracts: any = {
+  ethereum: {
+    quoter: "0x61fFE014bA17989E743c5F6cB21bF9697530B21e",
+    tokenOut: "0xdac17f958d2ee523a2206206994597c13d831ec7",
   },
 };
 
-async function main(tokensIn: string[], timestamp: number = 0) {
-  const block = await getBlock(chain, timestamp);
-  const tokenOut = "0xdac17f958d2ee523a2206206994597c13d831ec7"; //"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"; // USDC
-  const fees: string[] = ["10000", "3000", "500", "100"];
-  const sqrtPriceLimitX96 = "0";
+async function estimateValuesAndFetchMetadata(
+  tokensIn: string[],
+  block: number | undefined,
+): Promise<Data> {
+  // first, estimate the value of the token by swapping 1 USDC for x tokens
   const estimateCalls = tokensIn
     .map((t: string) =>
       fees.map((f: string) => ({
         target: contracts[chain].quoter,
         params: [
           [
-            tokenOut,
+            contracts[chain].tokenOut,
             t,
             BigNumber.from(1e6).toString(),
             BigNumber.from(f).toString(),
@@ -64,10 +54,18 @@ async function main(tokensIn: string[], timestamp: number = 0) {
     )
     .flat();
 
-  // first, estimate the value of the token by swapping 1 USDC for x tokens
-  // need to look at other fee tiers?
-  const decimals: { [address: string]: number } = {};
-  const rawQtys: { [address: string]: number } = {};
+  let data: Data = {};
+  [...tokensIn, contracts[chain].tokenOut].map((t: string) => {
+    data[t] = {
+      rawQty: -1,
+      decimals: -1,
+      symbol: "",
+      priceEstimate: -1,
+      largeRate: -1,
+      smallRate: -1,
+    };
+  });
+
   await Promise.all([
     multiCall({
       calls: estimateCalls,
@@ -78,38 +76,52 @@ async function main(tokensIn: string[], timestamp: number = 0) {
     }).then((res: any) =>
       res.output.map((r: any) => {
         const token = r.input.params[0][1];
-        if (!(token in rawQtys)) rawQtys[token] = 0;
-        if (r.output && r.output.amountOut > rawQtys[token])
-          rawQtys[token] = r.output.amountOut;
+        if (
+          r.output &&
+          data[token].rawQty != undefined &&
+          r.output.amountOut > data[token].rawQty
+        )
+          data[token].rawQty = r.output.amountOut;
       }),
     ),
     multiCall({
-      calls: tokensIn.map((target: string) => ({ target })),
+      calls: [...tokensIn, contracts[chain].outputs].map((target: string) => ({
+        target,
+      })),
       abi: "erc20:decimals",
       chain,
       block,
     }).then((res: any) =>
       res.output.map((r: any) => {
-        decimals[r.input.target] = r.output;
+        data[r.input.target].decimals = r.output;
+      }),
+    ),
+    multiCall({
+      calls: tokensIn.map((target: string) => ({ target })),
+      abi: "erc20:symbol",
+      chain,
+      block,
+    }).then((res: any) =>
+      res.output.map((r: any) => {
+        data[r.input.target].symbol = r.output;
       }),
     ),
   ]);
 
-  const prices: { [address: string]: number } = {};
-  Object.keys(rawQtys).map((a: string) => {
-    prices[a] = 10 ** decimals[a] / rawQtys[a];
-  });
+  return data;
+}
+function createMainQuoterCalls(data: Data): Call[] {
+  const calls: Call[] = [];
+  Object.keys(data).map((t: string) => {
+    if (data[t].priceEstimate < 0) return;
+    const largeQty = translateQty(
+      dollarAmt,
+      data[t].decimals,
+      data[t].priceEstimate,
+    );
+    if (!largeQty) return;
 
-  const swaps: { [address: string]: { large: number; small: number } } = {};
-
-  const dollarAmt = 10 ** 5;
-
-  const calls: any[] = [];
-  Object.keys(prices).map((t: string) =>
     fees.map((f: string) => {
-      const largeQty = translateQty(dollarAmt, decimals[t], prices[t]);
-      if (!largeQty) return;
-
       calls.push(
         ...[
           {
@@ -117,7 +129,7 @@ async function main(tokensIn: string[], timestamp: number = 0) {
             params: [
               [
                 t,
-                tokenOut,
+                contracts[chain].tokenOut,
                 BigNumber.from(largeQty).toString(),
                 BigNumber.from(f).toString(),
                 sqrtPriceLimitX96,
@@ -129,7 +141,7 @@ async function main(tokensIn: string[], timestamp: number = 0) {
             params: [
               [
                 t,
-                tokenOut,
+                contracts[chain].tokenOut,
                 BigNumber.from(largeQty.div(dollarAmt)).toString(),
                 BigNumber.from(f).toString(),
                 sqrtPriceLimitX96,
@@ -138,9 +150,18 @@ async function main(tokensIn: string[], timestamp: number = 0) {
           },
         ],
       );
-    }),
-  );
+    });
+  });
 
+  return calls;
+}
+async function fetchSwapQuotes(
+  calls: Call[],
+  data: Data,
+  block: number | undefined,
+): Promise<void> {
+  // get quotes for token => stable swaps, effectively gives us the $ value of the token
+  // low liq tokens will probably have a lower rate for large swaps
   await Promise.all([
     multiCall({
       calls,
@@ -151,32 +172,63 @@ async function main(tokensIn: string[], timestamp: number = 0) {
     }).then((res: any) =>
       res.output.map((r: any, i: number) => {
         const token = r.input.params[0][0];
-        if (!(token in swaps)) swaps[token] = { large: -1, small: -1 };
         if (!r.output) return;
+        const rate =
+          r.input.params[0][2].toString() /
+          (r.output.amountOut *
+            10 **
+              (data[token].decimals -
+                data[contracts[chain].tokenOut].decimals));
         if (i % 2 == 0) {
-          if (
-            swaps[token].large == -1 ||
-            r.output.amountOut > swaps[token].large
-          )
-            swaps[token].large =
-              (dollarAmt * 10 ** decimals[token]) / r.output.amountOut;
-        } else {
-          if (
-            swaps[token].small == -1 ||
-            r.output.amountOut > swaps[token].small
-          )
-            swaps[token].small = 10 ** decimals[token] / r.output.amountOut;
-        }
+          if (i % 2 == 0 && r.output.amountOut > data[token].largeRate)
+            data[token].largeRate = rate;
+        } else if (r.output.amountOut > data[token].smallRate)
+          data[token].smallRate = rate;
       }),
     ),
   ]);
-
-  return;
 }
+export async function findPricesThroughV3(
+  tokensIn: string[],
+  timestamp: number = 0,
+) {
+  const block = await getBlock(chain, timestamp);
 
-main([
-  "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
-  "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-  "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-]);
-// ts-node src/adapters/markets/uniswap/v3.ts
+  const data = await estimateValuesAndFetchMetadata(tokensIn, block);
+  Object.keys(data).map((a: string) => {
+    data[a].priceEstimate = 10 ** data[a].decimals / data[a].rawQty;
+  });
+
+  const calls: Call[] = createMainQuoterCalls(data);
+
+  await fetchSwapQuotes(calls, data, block);
+  const writes: Write[] = [];
+
+  Object.keys(data).map((t: string) => {
+    const tokenData = data[t];
+    if (
+      Object.values(tokenData).includes("") ||
+      Object.values(tokenData).includes(-1)
+    )
+      return;
+
+    const confidence = Math.min(
+      tokenData.largeRate / tokenData.smallRate,
+      0.989,
+    );
+
+    addToDBWritesList(
+      writes,
+      chain,
+      t,
+      tokenData.smallRate,
+      tokenData.decimals,
+      tokenData.symbol,
+      timestamp,
+      "univ3",
+      confidence,
+    );
+  });
+
+  return writes;
+}

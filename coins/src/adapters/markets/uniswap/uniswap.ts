@@ -283,8 +283,7 @@ export function translateQty(
   if (scientificNotation.indexOf("e") == -1) {
     let qty: BigNumber;
     try {
-      qty = BigNumber.from(parseInt(scientificNotation));
-      qty;
+      return BigNumber.from(parseInt(scientificNotation));
     } catch {
       try {
         if (decimals > 9) {

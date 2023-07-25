@@ -12834,6 +12834,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#jewelswap",
     listedAt: 1690305629
   },
+  {
+    id: "3290",
+    name: "Jadeswap",
+    address: "mantle:0x7c70229F108D3d506Cff8Ea243FFA57344Fc4cE1",
+    symbol: "-",
+    url: "https://www.jadeswap.fi/",
+    description: "Decentralized Exchange for Trading, Automated Liquidity, Farming and More on Mantle Network",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/jadeswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    module: "jadeswap/index.js",
+    twitter: "Jadeswapdex",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1690306145
+  },
 ]
 
 export default data3

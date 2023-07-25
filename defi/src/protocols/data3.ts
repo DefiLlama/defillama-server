@@ -2611,6 +2611,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "trufin/index.js",
     twitter: "TruFinProtocol",
+    parentProtocol: "parent#trufin-protocol",
     listedAt: 1681468835
   },
   {
@@ -12765,6 +12766,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.teahouse.finance/teahouse-finance-doc-3.0/our-product/teahouse-products/teahouse-permissionless-vault/audit-report"],
     parentProtocol: "parent#teahouse-finance",
     listedAt: 1690211928
+  },
+  {
+    id: "3287",
+    name: "TruFin MATIC LSD",
+    address: null,
+    symbol: "-",
+    url: "https://app.trufin.io/vaults/trustake",
+    description: "The MATIC Staker vault provides access to MATIC staking on the Ethereum network",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/trufin-matic-lsd.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    module: "trufin-trustake/index.js",
+    twitter: "TruFinProtocol",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#trufin-protocol",
+    listedAt: 1690303565
   },
 ]
 

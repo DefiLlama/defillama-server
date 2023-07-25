@@ -12704,7 +12704,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://summer.fi",
-    description: "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX.",
+    description: "Borrow, Multiply and Earn on the assets you hold across multiple protocols. Take advantage of powerful automation strategies and simple UX. Discord: https://discord.gg/summerfi",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/summer.fi.png`,
     audits: "0",

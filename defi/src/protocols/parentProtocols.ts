@@ -2313,6 +2313,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "TruFinProtocol",
   },
+  {
+    id: "parent#jewelswap",
+    name: "JewelSwap",
+    url: "https://www.jewelswap.io/",
+    description: "JewelSwap is an NFT lending liquidity protocol and AMM marketplace on the MultiversX blockchain, facilitating NFT collateralized lending and enhancing NFT liquidity through single and two-sided liquidity pools",
+    logo: `${baseIconsUrl}/jewelswap.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "JewelSwapX",
+  },
 ];
 
 export default parentProtocols;

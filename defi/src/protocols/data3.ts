@@ -12584,6 +12584,7 @@ const data3: Protocol[] = [
     twitter: "TheWhaleGame",
     forkedFrom: [],
     oracles: [],
+    wrongLiquidity: true, // using an incorrect token
     listedAt: 1690193408
   },
   {

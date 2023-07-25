@@ -12879,6 +12879,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#velocimeter",
     listedAt: 1690312265
   },
+  {
+    id: "3292",
+    name: "JewelSwap Liquid Staking",
+    address: null,
+    symbol: "-",
+    assetToken: "JWLEGLD",
+    url: "https://app.jewelswap.io/stake/EGLD",
+    description: "JewelSwap's Liquid Staking offers minting of a staking derivative, maximizes yield through staking, and provides flexibility with a dedicated liquidity pool, bypassing the typical unbonding period",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/jewelswap-liquid-staking.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Elrond"],
+    module: "jewelswap-liq-staking/index.js",
+    twitter: "JewelSwapX",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#jewelswap",
+    listedAt: 1690328837
+  },
 ]
 
 export default data3

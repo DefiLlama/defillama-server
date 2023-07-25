@@ -12786,6 +12786,7 @@ const data3: Protocol[] = [
     twitter: "TruFinProtocol",
     forkedFrom: [],
     oracles: [],
+    audit_links: ["https://trufin.gitbook.io/docs/developers/security-and-audits#security-audits"],
     parentProtocol: "parent#trufin-protocol",
     listedAt: 1690303565
   },

@@ -12855,6 +12855,30 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1690306145
   },
+  {
+    id: "3291",
+    name: "FVM Exchange",
+    address: "fantom:0x07bb65faac502d4996532f834a1b7ba5dc32ff96",
+    symbol: "FVM",
+    url: "https://www.fvm.exchange/home",
+    description:
+      "Solidly fork",
+    chain: "Fantom",
+    logo: `${baseIconsUrl}/velocimeter.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "fantom-velocimeter",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Fantom"],
+    module: "fvm/index.js",
+    twitter: "VelocimeterDEX",
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    audit_links: [],
+    parentProtocol: "parent#velocimeter",
+    listedAt: 1690312265
+  },
 ]
 
 export default data3

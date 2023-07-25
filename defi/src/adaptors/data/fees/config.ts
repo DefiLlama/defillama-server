@@ -1061,5 +1061,9 @@ export default {
         parentId: "Pika Protocol",
         "enabled": true,
         "id": "3281"
+    },
+    "holdstation-defutures": {
+        "enabled": true,
+        "id": "2959"
     }
 } as AdaptorsConfig

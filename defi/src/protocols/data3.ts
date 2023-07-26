@@ -4831,7 +4831,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "spark-fi/index.js",
     twitter: "spark_protocol",
-    forkedFrom: ["AAVE V2"],
+    forkedFrom: ["AAVE V3"],
     oracles: ["Chainlink"],
     audit_links: ["https://docs.sparkprotocol.io/developers/deployed-contracts/security-and-audits"],
     listedAt: 1683144119

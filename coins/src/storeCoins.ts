@@ -7,12 +7,14 @@ import {
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
 import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
+import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
 
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
 export default async function handler(event: any) {
   const a = Object.entries(adapters);
   const timestamp = 0;
+  await setEnvSecrets();
   await Promise.all(
     event.protocolIndexes.map(async (i: any) => {
       try {

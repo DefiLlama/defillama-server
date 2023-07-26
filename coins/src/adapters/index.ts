@@ -4,7 +4,7 @@ export default {
   // wemix: require("./markets/uniswap"),
   dforce: require("./moneyMarkets/dforce"),
   shlb: require("./other"),
-  // minswap: require("./markets/minswap"),
+  minswap: require("./markets/minswap2"),
   ergopad: require("./markets/ergopad"),
   sundaeswap: require("./markets/sundaeswap"),
   wingriders: require("./markets/wingriders"),

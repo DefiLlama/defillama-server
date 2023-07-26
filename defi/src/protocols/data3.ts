@@ -12902,6 +12902,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#jewelswap",
     listedAt: 1690328837
   },
+  {
+    id: "3293",
+    name: "Gravity Bridge",
+    address: null,
+    symbol: "-",
+    assetToken: "-",
+    url: "https://www.gravitybridge.net",
+    description: "Gravity Bridge is a decentralized Cosmos blockchain whose primary purpose is to secure the operation of bridges between blockchains.",
+    chain: "GravityBridge",
+    logo: `${baseIconsUrl}/gravity-bridge.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["GravityBridge"],
+    module: "gravity-bridge/index.js",
+    twitter: "gravity_bridge",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1690365542
+  },
 ]
 
 export default data3

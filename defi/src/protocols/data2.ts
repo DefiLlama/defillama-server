@@ -28864,7 +28864,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2686",
-    name: "Factor",
+    name: "Factor V1",
     address: "arbitrum:0x6dD963C510c2D2f09d5eDdB48Ede45FeD063Eb36",
     symbol: "FCTR",
     url: "https://factor.fi",
@@ -28873,14 +28873,16 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/factor.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "factor",
-    cmcId: "23502",
+    gecko_id: null,
+    cmcId: null,
     category: "Indexes",
     chains: ["Arbitrum"],
     oracles: ["DIA"],
     forkedFrom: [],
     module: "factor/index.js",
     twitter: "FactorDAO",
+    audit_links: ["https://docs.factor.fi/audits-and-security"],
+    parentProtocol: "parent#factor",
     listedAt: 1679152920
   },
   {

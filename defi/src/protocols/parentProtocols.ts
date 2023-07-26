@@ -2324,6 +2324,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "JewelSwapX",
   },
+  {
+    id: "parent#factor",
+    name: "Factor",
+    url: "https://factor.fi/",
+    description: "Factor: A no-code middleware infrastructure enabling seamless creation, management, and integration of DeFi assets and liquidity pools via a unified interface",
+    logo: `${baseIconsUrl}/jewelswap.png`,
+    gecko_id: "factor",
+    cmcId: "23502",
+    chains: [],
+    twitter: "FactorDAO",
+    github: ["FactorDAO"]
+  },
 ];
 
 export default parentProtocols;

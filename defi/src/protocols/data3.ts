@@ -13016,6 +13016,29 @@ const data3: Protocol[] = [
     github: ["wagmi-dev"],
     listedAt: 1690371892
   },
+  {
+    id: "3298",
+    name: "Factor V2",
+    address: "arbitrum:0x6dD963C510c2D2f09d5eDdB48Ede45FeD063Eb36",
+    symbol: "FCTR",
+    url: "https://factor.fi",
+    description: "Factor gives exposure to a wide variety of community-generated yield opportunities, including passive and active strategies, thematic indices, and more.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/factor.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Arbitrum"],
+    oracles: ["DIA"],
+    forkedFrom: [],
+    module: "factor-v2/index.js",
+    twitter: "FactorDAO",
+    audit_links: ["https://docs.factor.fi/audits-and-security"],
+    parentProtocol: "parent#factor",
+    listedAt: 1679152920
+  },
 ]
 
 export default data3

@@ -9,6 +9,7 @@ export default {
   sundaeswap: require("./markets/sundaeswap"),
   wingriders: require("./markets/wingriders"),
   metronome: require("./other"),
+  silo: require("./other"),
   ondo: require("./yield/ondo"),
   aave: require("./moneyMarkets/aave"),
   geist: require("./moneyMarkets/aave"),

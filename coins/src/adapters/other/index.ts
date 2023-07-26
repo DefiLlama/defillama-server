@@ -8,6 +8,7 @@ import manualInputAdapter from "./manualInput";
 import realtAdapter from "./realt";
 import metronomeAdapter from "./metronome";
 import { contracts as metronomeContracts } from "./metronome";
+import siloAdapter, { contracts as siloContracts } from "./silo";
 import { wrappedGasTokens } from "../utils/gasTokens";
 import collateralizedAdapter from "./collateralizedAssets";
 import swethAdapter from "./sweth";
@@ -27,6 +28,15 @@ export function metronome(timestamp: number = 0) {
   return Promise.all(
     Object.keys(metronomeContracts).map((chain) =>
       metronomeAdapter(chain, timestamp),
+    ),
+  );
+}
+
+export function silo(timestamp: number = 0) {
+  console.log("starting silo");
+  return Promise.all(
+    Object.keys(siloContracts).map((chain) =>
+      siloAdapter(chain, timestamp),
     ),
   );
 }

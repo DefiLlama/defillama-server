@@ -13001,7 +13001,7 @@ const data3: Protocol[] = [
     url: "https://wagmi.sh",
     description: "wagmi is a collection of React Hooks containing everything you need to start working with Ethereum. It’s used at organizations like ENS, Sushi, LooksRare, WalletConnect, Stripe Crypto, and Gitcoin. wagmi makes it easy to Connect Wallet, display ENS and balance information, sign messages, interact with contracts, and much more — all with caching, request deduplication, and persistence.",
     chain: "Optimism",
-    logo: `${baseIconsUrl}/wagmi.jpg`,
+    logo: `${baseIconsUrl}/wagmi-sh.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

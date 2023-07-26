@@ -133,5 +133,87 @@
       "symbol": "CELER_USDT_COIN",
       "to": "coingecko:tether"
     }
+  },
+  "ibc": {
+    "31ED168F5E93D988FCF223B1298113ACA818DB7BED8F7B73764C5C9FAC293609": {
+      "name": "lion-dao",
+      "decimals": 6,
+      "symbol": "ROAR",
+      "to": "coingecko#lion-dao"
+    },
+    "53796B3762678CD80784A7DD426EB45B89C024BE3D45224CC83FDE3DED7DA0A1": {
+      "name": "fanfury",
+      "decimals": 6,
+      "symbol": "FURY",
+      "to": "coingecko#fanfury"
+    },
+    "D20559F0071F4BFDFF519D0C12B77AFE2A4481D44214BD92808B0C36B1E223C9": {
+      "name": "graviton",
+      "decimals": 6,
+      "symbol": "GRAV",
+      "to": "coingecko#graviton"
+    },
+    "21F041CFE99994E0D027D0C5F72A9EB6224CBCAF5A6AD5DDB75F67A781D46C68": {
+      "name": "white-whale",
+      "decimals": 6,
+      "symbol": "WHALE",
+      "to": "coingecko#white-whale"
+    },
+    "7023F9629A70F8112764D959D04F52EA3115A0AED3CEE59694799FD8C91A97FA": {
+      "name": "akash-network",
+      "decimals": 6,
+      "symbol": "AKT",
+      "to": "coingecko#akash-network"
+    },
+    "A64467480BBE4CCFC3CF7E25AD1446AA9BDBD4F5BCB9EF6038B83D6964C784E6": {
+      "name": "matic-network",
+      "decimals": 18,
+      "symbol": "wMATIC",
+      "to": "coingecko#matic-network"
+    },
+    "950993C6DA64F5A60A48D65A18CAB2D8190DE2DC1B861E70E8B03C61F7D5FBDC": {
+      "name": "archway",
+      "decimals": 18,
+      "symbol": "ARCH",
+      "to": "coingecko#archway"
+    },
+    "96179F5B44CCC15E03AB43D7118E714B4D5CE8F187F7D8A60F2A514299761EA9": {
+      "name": "arbitrum",
+      "decimals": 18,
+      "symbol": "ARB",
+      "to": "coingecko#arbitrum"
+    },
+    "5A3DCF59BC9EC5C0BB7AA0CA0279FC2BB126640CB8B8F704F7BC2DC42495041B": {
+      "name": "injective-protocol",
+      "decimals": 18,
+      "symbol": "INJ",
+      "to": "coingecko#injective-protocol"
+    },
+    "A2146858B5E3CFE759E32F47CA54591F8E27FAEDFF731D30B448E5AB25CA8EC5": {
+      "name": "bittensor",
+      "decimals": 9,
+      "symbol": "wTAO",
+      "to": "coingecko#bittensor"
+    },
+    "B572E6F30E7C33D78A50D8B4E973A9C118C30F848DF31A95FAA5E4C7450A8BD0": {
+      "name": "wrapped-steth",
+      "decimals": 18,
+      "symbol": "wstETH",
+      "to": "coingecko#wrapped-steth"
+    },
+    "301DAF9CB0A9E247CD478533EF0E21F48FF8118C4A51F77C8BC3EB70E5566DBC": {
+      "name": "wrapped-bitcoin",
+      "decimals": 8,
+      "symbol": "wBTC",
+      "to": "coingecko#wrapped-bitcoin"
+    }
+  },
+  "kujira": {
+    "factory:kujira1n3fr5f56r2ce0s37wdvwrk98yhhq3unnxgcqus8nzsfxvllk0yxquurqty:ampKUJI": {
+      "name": "ampkuji",
+      "decimals": "6",
+      "symbol": "ampKUJI",
+      "to": "coingecko#eris-staked-kuji"
+    }
   }
 }

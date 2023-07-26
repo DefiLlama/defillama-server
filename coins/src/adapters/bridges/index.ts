@@ -55,7 +55,7 @@ function normalizeBridgeResults(bridge: Bridge) {
 }
 export const bridges = [
   optimism,
-  anyswap,
+  // anyswap,
   arbitrum,
   avax,
   //bsc,

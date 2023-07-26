@@ -19,5 +19,8 @@ export function balancer4(timestamp: number = 0) {
 }
 export function linearPools(timestamp: number = 0) {
   console.log("starting balancer linear pools");
-  return linearPrices("arbitrum", timestamp);
+  return Promise.all([
+    linearPrices("arbitrum", timestamp),
+    linearPrices("polygon", timestamp),
+  ]);
 }

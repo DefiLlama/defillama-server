@@ -25,7 +25,7 @@ async function storeIntervals(protocolIndexes: number[], getRemainingTimeInMilli
     getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd
   );
   clearTimeout(blocksTimeout);
-  setEnvSecrets()
+  await setEnvSecrets()
 
   const staleCoins: StaleCoins = {};
   const actions = protocolIndexes.map((idx) => treasuries[idx]);

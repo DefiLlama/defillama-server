@@ -85,7 +85,7 @@ async function estimateValuesAndFetchMetadata(
       }),
     ),
     multiCall({
-      calls: [...tokensIn, contracts[chain].outputs].map((target: string) => ({
+      calls: [...tokensIn, contracts[chain].tokenOut].map((target: string) => ({
         target,
       })),
       abi: "erc20:decimals",
@@ -162,31 +162,28 @@ async function fetchSwapQuotes(
 ): Promise<void> {
   // get quotes for token => stable swaps, effectively gives us the $ value of the token
   // low liq tokens will probably have a lower rate for large swaps
-  await Promise.all([
-    multiCall({
-      calls,
-      abi: abi.quoteExactInputSingle,
-      chain,
-      block,
-      permitFailure: true,
-    }).then((res: any) =>
-      res.output.map((r: any, i: number) => {
-        const token = r.input.params[0][0];
-        if (!r.output) return;
-        const rate =
-          r.input.params[0][2].toString() /
-          (r.output.amountOut *
-            10 **
-              (data[token].decimals -
-                data[contracts[chain].tokenOut].decimals));
-        if (i % 2 == 0) {
-          if (i % 2 == 0 && r.output.amountOut > data[token].largeRate)
-            data[token].largeRate = rate;
-        } else if (r.output.amountOut > data[token].smallRate)
-          data[token].smallRate = rate;
-      }),
-    ),
-  ]);
+  await multiCall({
+    calls,
+    abi: abi.quoteExactInputSingle,
+    chain,
+    block,
+    permitFailure: true,
+  }).then((res: any) =>
+    res.output.map((r: any, i: number) => {
+      const token = r.input.params[0][0];
+      if (!r.output) return;
+      const rate =
+        r.input.params[0][2].toString() /
+        (r.output.amountOut *
+          10 **
+            (data[token].decimals - data[contracts[chain].tokenOut].decimals));
+      if (i % 2 == 0) {
+        if (i % 2 == 0 && r.output.amountOut > data[token].largeRate)
+          data[token].largeRate = rate;
+      } else if (r.output.amountOut > data[token].smallRate)
+        data[token].smallRate = rate;
+    }),
+  );
 }
 export async function findPricesThroughV3(
   tokensIn: string[],

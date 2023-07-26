@@ -1070,5 +1070,9 @@ export default {
         parentId: "UniCrypt",
         "enabled": true,
         "id": "1765"
+    },
+    "0x0dex": {
+        "enabled": true,
+        "id": "3264"
     }
 } as AdaptorsConfig

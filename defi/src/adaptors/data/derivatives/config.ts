@@ -204,5 +204,9 @@ export default {
     "gains-network": {
         "enabled": true,
         "id": "1018"
+    },
+    "palmswap": {
+        "enabled": true,
+        "id": "3279"
     }
 } as AdaptorsConfig

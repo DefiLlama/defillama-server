@@ -11038,7 +11038,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Liquid manager",
+    category: "Liquidity manager",
     chains: ["Ethereum", "Arbitrum", "Binance"],
     module: "unicrypt-v3/index.js",
     twitter: "UNCX_token",

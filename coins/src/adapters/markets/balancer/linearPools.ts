@@ -8,7 +8,7 @@ import { getCurrentUnixTimestamp } from "../../../utils/date";
 import { getLpPrices, TokenValues } from "./balancer";
 
 const factories: { [chain: string]: { address: string; fromBlock: number } } = {
-  ethereum: {
+  arbitrum: {
     address: "0xa3B9515A9c557455BC53F7a535A85219b59e8B2E",
     fromBlock: 59209879,
   },

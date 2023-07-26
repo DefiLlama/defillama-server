@@ -13037,7 +13037,7 @@ const data3: Protocol[] = [
     twitter: "FactorDAO",
     audit_links: ["https://docs.factor.fi/audits-and-security"],
     parentProtocol: "parent#factor",
-    listedAt: 1679152920
+    listedAt: 1690390091
   },
 ]
 

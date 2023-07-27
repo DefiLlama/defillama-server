@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { getCoingeckoLock, setTimer } from "./utils/shared/coingeckoLocks";
-import ddb, { batchWrite, batchGet } from "./utils/shared/dynamodb";
+import ddb, { batchWrite, batchGet, getCoinPlatformData, } from "./utils/shared/dynamodb";
 import { cgPK } from "./utils/keys";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import invokeLambda from "./utils/shared/invokeLambda";
@@ -149,13 +149,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   });
   const timestamp = getCurrentUnixTimestamp();
   await storeCoinData(timestamp, coinData, idToSymbol);
-  await storeHistoricalCoinData(coinData);
+  await storeHistoricalCoinData(coinData)
+  const filteredCoins = coins.filter((coin) => coinData[coin.id]?.usd !== undefined);
+  const coinPlatformData = await getCoinPlatformData(filteredCoins)
+
   await Promise.all(
-    coins.map((coin) =>
+    filteredCoins.map((coin) =>
       iterateOverPlatforms(coin, async (PK, tokenAddress, chain) => {
-        if (coinData[coin.id]?.usd === undefined) {
-          return;
-        }
         const { decimals, symbol } = await getSymbolAndDecimals(
           tokenAddress,
           chain,
@@ -170,7 +170,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           redirect: cgPK(coin.id),
           confidence: 0.99
         });
-      })
+      }, coinPlatformData)
     )
   );
 }

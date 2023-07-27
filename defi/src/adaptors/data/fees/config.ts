@@ -1074,5 +1074,9 @@ export default {
     "0x0dex": {
         "enabled": true,
         "id": "3264"
+    },
+    "base": {
+        "enabled": true,
+        "id": "8453"
     }
 } as AdaptorsConfig

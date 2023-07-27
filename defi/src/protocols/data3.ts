@@ -13082,6 +13082,27 @@ const data3: Protocol[] = [
     twitter: "lendlexyz",
     listedAt: 1690465888
   },
+  {
+    id: "3301",
+    name: "Grizzly Trade",
+    address: "bsc:0xa045e37a0d1dd3a45fefb8803d22457abc0a728a",
+    symbol: "GHNY",
+    url: "https://trade.grizzly.fi/#/trade",
+    description: "Grizzly Trade is a decentralized exchange that provides spot and perpetual trading with professional features and deep liquidity on many large-cap crypto assets, offering a seamless trading experience. Our platform aims to become the most user-friendly derivatives hub for traders who want full ownership over their funds and a CEX-like trading experience.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/grizzly-trade.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Binance"],
+    oracles: [],
+    forkedFrom: ["GMX"],
+    module: "grizzly-trade/index.js",
+    twitter: "GrizzlyFi",
+    listedAt: 1690467205
+  },
 ]
 
 export default data3

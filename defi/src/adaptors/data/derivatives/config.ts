@@ -208,5 +208,15 @@ export default {
     "palmswap": {
         "enabled": true,
         "id": "3279"
+    },
+    "drift-protocol": {
+        "enabled": true,
+        "id": "970",
+        "protocolsData": {
+            "derivatives": {
+                "id": "970",
+                "enabled": true,
+            }
+        },
     }
 } as AdaptorsConfig

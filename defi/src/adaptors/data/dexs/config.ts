@@ -1774,5 +1774,15 @@ export default {
     "horizondex": {
         "enabled": true,
         "id": "3255"
+    },
+    "drift-protocol": {
+        "enabled": true,
+        "id": "970",
+        "protocolsData": {
+            "swap": {
+                "id": "970",
+                "enabled": true,
+            }
+        },
     }
 } as AdaptorsConfig

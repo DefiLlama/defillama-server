@@ -13125,6 +13125,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#velodrome",
     listedAt: 1690470847
   },
+  {
+    id: "3303",
+    name: "Weave",
+    address: null,
+    symbol: "-",
+    url: "https://www.weave.financial",
+    description: "Weave is a next generation yield farming platform. Our strategy builder will allow yield farmers to build their own custom strategies for their favorite pairs (even cross-chain strategies as part of phase 2) and set the yield to be harvested/compounded EXACTLY as they want it.",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/weave.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Kava"],
+    oracles: [],
+    forkedFrom: [],
+    module: "weave/index.js",
+    twitter: "Weave_Financial",
+    listedAt: 1690472609
+  },
+  {
+    id: "3304",
+    name: "Ammos Finance",
+    address: null,
+    symbol: "-",
+    url: "https://app.ammos.fi/#/swap",
+    description: "Pro trading experience with ultra-concentrated liquidity, limit orders and managed liquidity provisioning (MLP)",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/ammos-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    oracles: [],
+    forkedFrom: ["Uniswap V3"],
+    module: "ammos-fi/index.js",
+    twitter: "Ammosfinance",
+    listedAt: 1690472612
+  },
 ]
 
 export default data3

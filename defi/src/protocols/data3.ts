@@ -12850,7 +12850,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Mantle"],
     module: "jadeswap/index.js",
-    twitter: "Jadeswapdex",
+    twitter: "JadeSwapFi",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1690306145

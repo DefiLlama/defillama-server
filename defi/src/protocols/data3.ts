@@ -13103,6 +13103,28 @@ const data3: Protocol[] = [
     twitter: "GrizzlyFi",
     listedAt: 1690467205
   },
+  {
+    id: "3302",
+    name: "Velodrome V2",
+    address: "optimism:0x9560e827aF36c94D2Ac33a39bCE1Fe78631088Db",
+    symbol: "VELO",
+    url: "https://app.velodrome.finance",
+    description: "A revolutionary new AMM based on Solidly launched on Optimism.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/velodrome-v2.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Optimism"],
+    oracles: [],
+    forkedFrom: [],
+    module: "velodrome-v2/index.js",
+    twitter: "VelodromeFi",
+    parentProtocol: "parent#velodrome",
+    listedAt: 1690470847
+  },
 ]
 
 export default data3

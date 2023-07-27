@@ -13540,7 +13540,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2007",
-    name: "GrizzlyFi",
+    name: "GrizzlyFi Hives",
     address: "bsc:0xa045e37a0d1dd3a45fefb8803d22457abc0a728a",
     symbol: "GHNY",
     url: "https://grizzly.fi/",
@@ -13549,8 +13549,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/grizzlyfi.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "grizzly-honey",
-    cmcId: "21198",
+    gecko_id: null,
+    cmcId: null,
     category: "Yield",
     chains: ["Binance"],
     oracles: [],
@@ -13558,6 +13558,7 @@ const data2: Protocol[] = [
     module: "grizzlyfi/index.js",
     twitter: "GrizzlyFi",
     audit_links: ["https://docs.grizzly.fi/audits#v1-audits"],
+    parentProtocol: "parent#grizzlyfi",
     listedAt: 1661205589
   },
   {

@@ -13101,6 +13101,7 @@ const data3: Protocol[] = [
     forkedFrom: ["GMX"],
     module: "grizzly-trade/index.js",
     twitter: "GrizzlyFi",
+    parentProtocol: "parent#grizzlyfi",
     listedAt: 1690467205
   },
   {

@@ -2350,6 +2350,18 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "velodrome.js",
     governanceID: ["compound:ethereum:0xa1d8800ae2f4794f2910cfcd835831faae69cea0"]
   },
+  {
+    id: "parent#grizzlyfi",
+    name: "Grizzlyfi",
+    url: "https://grizzly.fi/",
+    description: "Grizzly.fi is a cryptocurrency platform that aggregates and integrates various DeFi protocols and yield sources to facilitate long-term investments",
+    logo: `${baseIconsUrl}/jewelswap.png`,
+    gecko_id: "grizzly-honey",
+    cmcId: "21198",
+    chains: [],
+    twitter: "GrizzlyFi",
+    github: ["grizzlyfi"]
+  },
 ];
 
 export default parentProtocols;

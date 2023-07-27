@@ -1078,9 +1078,5 @@ export default {
     "base": {
         "enabled": true,
         "id": "8453"
-    },
-    "drift-protocol": {
-        "enabled": true,
-        "id": "970"
     }
 } as AdaptorsConfig

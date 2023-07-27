@@ -3,7 +3,7 @@ import glpAdapter from "./glp";
 import abraAdapter from "./abracadabra";
 import unknownTokenAdapter from "./unknownToken";
 import podsAdapter from "./pods";
-import distressedAdapter from "./distressedAssets";
+import distressedAdapter, { contracts } from "./distressedAssets";
 import manualInputAdapter from "./manualInput";
 import realtAdapter from "./realt";
 import metronomeAdapter from "./metronome";
@@ -35,9 +35,7 @@ export function metronome(timestamp: number = 0) {
 export function silo(timestamp: number = 0) {
   console.log("starting silo");
   return Promise.all(
-    Object.keys(siloContracts).map((chain) =>
-      siloAdapter(chain, timestamp),
-    ),
+    Object.keys(siloContracts).map((chain) => siloAdapter(chain, timestamp)),
   );
 }
 
@@ -168,17 +166,11 @@ export function pods(timestamp: number = 0) {
 }
 export function distressed(timestamp: number = 0) {
   console.log("starting distressed");
-  return Promise.all([
-    // distressedAdapter("harmony", timestamp),
-    distressedAdapter("klaytn", timestamp),
-    distressedAdapter("arbitrum", timestamp),
-    distressedAdapter("bsc", timestamp),
-    distressedAdapter("ethereum", timestamp),
-    distressedAdapter("avax", timestamp),
-    // distressedAdapter("cronos", timestamp),
-    // distressedAdapter("solana", timestamp),
-    distressedAdapter("fantom", timestamp),
-  ]);
+  return Promise.all(
+    Object.keys(contracts).map((chain: string) =>
+      distressedAdapter(chain, timestamp),
+    ),
+  );
 }
 export function manualInput(timestamp: number = 0) {
   console.log("starting manualInputs");

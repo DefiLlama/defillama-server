@@ -2,7 +2,6 @@ import getBlock from "../utils/block";
 import { getTokenInfo } from "../utils/erc20";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
-import { getCurrentUnixTimestamp } from "../../utils/date";
 
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
@@ -92,7 +91,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MINTME: "0x138218c8e064ed2a011c9ff203759a8a1e23e6c8",
     GRAIN: "0x8f87a7d376821c7b2658a005aaf190ec778bf37a",
     FITFI: "0x7588df009c3d82378be6ab81f2108fa963c10fc8",
-    GHNY: "0xa045e37a0d1dd3a45fefb8803d22457abc0a728a",
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",
@@ -227,6 +225,10 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     WBTC: "0xefaeee334f0fd1712f9a8cc375f427d9cdd40d73",
     ETH: "0x922d641a426dcffaef11680e5358f34d97d112e1",
   },
+  coingecko: {
+    PREMIO: "premio",
+    TFBX: "truefeedbackchain",
+  },
 };
 const eulerTokens = [
   "0x1b808f49add4b8c6b5117d9681cf7312fcf0dc1d",
@@ -244,25 +246,47 @@ const eulerTokens = [
 export default async function getTokenPrices(chain: string, timestamp: number) {
   const block: number | undefined = await getBlock(chain, timestamp);
   const writes: Write[] = [];
-  const tokens = Object.values(contracts[chain]);
 
-  if (chain === "ethereum") tokens.push(...eulerTokens);
-
-  const tokenInfos = await getTokenInfo(chain, tokens, block);
-
-  tokens.map((a: string, i: number) => {
-    addToDBWritesList(
-      writes,
-      chain,
-      a,
-      0,
-      tokenInfos.decimals[i].output,
-      tokenInfos.symbols[i].output,
-      timestamp,
-      "distressed",
-      1.01,
-    );
-  });
+  if (chain == "coingecko") {
+    const symbols = Object.keys(contracts[chain]);
+    symbols.map((s: string) => {
+      writes.push(
+        {
+          PK: `coingecko#${contracts[chain][s]}`,
+          SK: 0,
+          confidence: 1.01,
+          price: 0,
+          symbol: s,
+          adapter: "distressed",
+          timestamp,
+        },
+        {
+          PK: `coingecko#${contracts[chain][s]}`,
+          SK: timestamp,
+          confidence: 1.01,
+          price: 0,
+          adapter: "distressed",
+        },
+      );
+    });
+  } else {
+    const tokens = Object.values(contracts[chain]);
+    if (chain === "ethereum") tokens.push(...eulerTokens);
+    const tokenInfos = await getTokenInfo(chain, tokens, block);
+    tokens.map((a: string, i: number) => {
+      addToDBWritesList(
+        writes,
+        chain,
+        a,
+        0,
+        tokenInfos.decimals[i].output,
+        tokenInfos.symbols[i].output,
+        timestamp,
+        "distressed",
+        1.01,
+      );
+    });
+  }
 
   return writes;
 }

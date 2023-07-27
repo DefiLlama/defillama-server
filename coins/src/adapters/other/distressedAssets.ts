@@ -92,7 +92,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     MINTME: "0x138218c8e064ed2a011c9ff203759a8a1e23e6c8",
     GRAIN: "0x8f87a7d376821c7b2658a005aaf190ec778bf37a",
     FITFI: "0x7588df009c3d82378be6ab81f2108fa963c10fc8",
-    GHNY: "0xa045e37a0d1dd3a45fefb8803d22457abc0a728a",
   },
   cronos: {
     CRK: "0x065de42e28e42d90c2052a1b49e7f83806af0e1f",

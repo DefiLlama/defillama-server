@@ -18032,6 +18032,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     oracles: ["Pyth"],
     audit_links: ["https://github.com/Zellic/publications/blob/master/Drift%20Protocol%20Audit%20Report.pdf"],
     listedAt: 1638568951,
+    github: ['drift-labs'],
   },
   {
     id: "971",

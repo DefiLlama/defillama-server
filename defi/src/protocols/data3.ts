@@ -13168,6 +13168,28 @@ const data3: Protocol[] = [
     twitter: "Ammosfinance",
     listedAt: 1690472612
   },
+  {
+    id: "3305",
+    name: "SALSA",
+    address: null,
+    symbol: "-",
+    assetToken: "LEGLD",
+    url: "https://liquid.staking.agency/",
+    description: "Liquid Staking protocol on MultiversX",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/salsa.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Elrond"],
+    oracles: [],
+    forkedFrom: [],
+    module: "salsa/index.js",
+    twitter: "liquid_egld",
+    listedAt: 1690491392
+  },
 ]
 
 export default data3

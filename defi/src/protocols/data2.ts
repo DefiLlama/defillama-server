@@ -8997,6 +8997,7 @@ const data2: Protocol[] = [
     module: "velodrome/index.js",
     twitter: "VelodromeFi",
     audit_links: ["https://app.velodrome.finance/security#audits"],
+    parentProtocol: "parent#velodrome",
     listedAt: 1654194517,
   },
   {

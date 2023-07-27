@@ -2151,8 +2151,8 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#uncx-network",
     name: "UNCX Network",
-    url: "https://unicrypt.network",
-    description: "Unicrypt is a one-stop shop with everything you need to launch and maintain a sustainable and secure protocol. Generate and secure the initial liquidity, lock your tokens with vesting lockers and create farms with customisable rewards.",
+    url: "https://uncx.network",
+    description: "UNCX Network is a one-stop shop with providing its customers with everything they need to launch and maintain a sustainable and secure protocol. Create your token, secure your LP with our liquidity lockers, vest your supply according to your tokenomics and create farming/staking incentives with customisable rewards.",
     logo: `${baseIconsUrl}/uncx-network.png`,
     gecko_id: "unicrypt-2",
     cmcId: "7664",

@@ -2336,6 +2336,20 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "FactorDAO",
     github: ["FactorDAO"]
   },
+  {
+    id: "parent#velodrome",
+    name: "Velodrome",
+    url: "https://app.velodrome.finance",
+    description: "A revolutionary new AMM based on Solidly launched on Optimism.",
+    logo: `${baseIconsUrl}/velodrome.png`,
+    gecko_id: "velodrome-finance",
+    cmcId: "20435",
+    chains: [],
+    twitter: "VelodromeFi",
+    github: ["velodrome-finance"],
+    treasury: "velodrome.js",
+    governanceID: ["compound:ethereum:0xa1d8800ae2f4794f2910cfcd835831faae69cea0"]
+  },
 ];
 
 export default parentProtocols;

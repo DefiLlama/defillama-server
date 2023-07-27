@@ -259,6 +259,7 @@ export default {
         },
     },
     "velodrome": {
+        parentId: "Velodrome",
         "enabled": true,
         "id": "1799"
     },
@@ -1078,5 +1079,10 @@ export default {
     "base": {
         "enabled": true,
         "id": "8453"
+    },
+    "velodrome-v2": {
+        parentId: "Velodrome",
+        "enabled": true,
+        "id": "3302"
     }
 } as AdaptorsConfig

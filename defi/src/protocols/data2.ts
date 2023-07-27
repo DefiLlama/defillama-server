@@ -25956,25 +25956,25 @@ const data2: Protocol[] = [
   },
   {
     id: "2557",
-    name: "Bhavish Finance",
+    name: "Nexter", //  previous Bhavish Finance
     address: null,
     symbol: "-",
-    url: "https://www.bhavish.xyz",
+    url: "https://nexter.fi/",
     description:
-      "Bhavish Predictions is a decentralized prediction market protocol based on Polygon that allows users to forecast cryptocurrencies, stocks (equities), commodities, sports events, and socio-political outcomes. The platform is set apart by its GameFi elements that reward users for their engagement on the platform along with the accuracy of predictions.",
+      "previous Bhavish Finance. Decentralised predictions for crypto, commodities, and sporting events.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/bhavish-finance.jpg`,
+    logo: `${baseIconsUrl}/nexter.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Dexes",
+    category: "Prediction Market",
     chains: ["Polygon"],
     module: "bhavish/index.js",
-    twitter: "BhavishFinance",
+    twitter: "NexterDotFi",
     forkedFrom: [],
     oracles: [],
-    audit_links: ["https://www.bhavish.xyz/assets/docs/slowmist-audit-report.pdf"],
+    audit_links: ["https://nexter.fi/docs/blocksec-audit-report.pdf", "https://nexter.fi/docs/slowmist-audit-report.pdf"],
     listedAt: 1676983479
   },
   {

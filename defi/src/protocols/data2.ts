@@ -22034,8 +22034,8 @@ const data2: Protocol[] = [
   {
     id: "2385",
     name: "Exactly",
-    address: null,
-    symbol: "-",
+    address: "optimism:0x1e925de1c68ef83bd98ee3e130ef14a50309c01b",
+    symbol: "EXA",
     url: "https://exact.ly",
     description:
       "Exactly is a decentralized, non-custodial, open-source protocol that provides an autonomous fixed and variable interest rate market, enabling users to frictionlessly exchange their assets' time value and complete the DeFi credit market.",
@@ -22043,10 +22043,10 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/exactly.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "exa",
     cmcId: null,
     category: "Lending",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Optimism"],
     module: "exactly/index.js",
     twitter: "ExactlyProtocol",
     forkedFrom: [],

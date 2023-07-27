@@ -33,6 +33,11 @@ provider:
         - dynamodb:BatchGetItem
       Resource:
         - "Fn::GetAtt": [DynamoTable, Arn]
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+      Resource:
+        - "arn:aws:dynamodb:eu-central-1:856461987125:table/secrets"
     - Effect: Allow # Lambda logs on cloudwatch
       Action:
         - logs:CreateLogGroup

@@ -1798,9 +1798,5 @@ export default {
                 "1690416000": true,
             },
         }
-    },
-    "phux": {
-        "enabled": true,
-        "id": "3205"
     }
 } as AdaptorsConfig

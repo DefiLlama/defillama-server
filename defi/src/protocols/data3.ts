@@ -13190,6 +13190,28 @@ const data3: Protocol[] = [
     twitter: "liquid_egld",
     listedAt: 1690491392
   },
+  {
+    id: "3306",
+    name: "Tangent Protocol",
+    address: null,
+    symbol: "TANG",
+    url: "https://app.tangent.art",
+    description: "Tangent is the radical Art & Finance project built on the Cardano (ADA) blockchain.",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/tangent-protocol.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Cardano"],
+    oracles: [],
+    forkedFrom: [],
+    module: "tangent-protocol/index.js",
+    twitter: "TangentADA",
+    github: ["TangentADA"],
+    listedAt: 1690551985
+  },
 ]
 
 export default data3

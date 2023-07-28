@@ -20996,7 +20996,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     oracles: ["Chainlink"],
     listedAt: 1670424005,
-    parentProtocol: "lodestar-finance",
+    parentProtocol: "parent#lodestar-finance",
   },
   {
     id: "2340",

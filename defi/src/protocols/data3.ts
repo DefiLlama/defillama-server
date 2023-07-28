@@ -13231,7 +13231,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Compound V2"],
     module: "lodestar-v1/index.js",
     twitter: "LodestarFinance",
-    parentProtocol: "lodestar-finance",
+    parentProtocol: "parent#lodestar-finance",
     listedAt: 1690551992
   },
 ]

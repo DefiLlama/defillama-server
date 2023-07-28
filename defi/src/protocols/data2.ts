@@ -16473,7 +16473,7 @@ const data2: Protocol[] = [
     address: "0xa670d7237398238de01267472c6f13e5b8010fd1",
     symbol: "SOMM",
     url: "https://www.sommelier.finance",
-    description: "Let algorithms manage your crypto portfolio. 24/7. Advanced strategies by financial and crypto markets experts available on the Sommelier marketplace.",
+    description: "Provider of automated vaults that find best-in-class yields while mitigating risk.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sommelier.png`,
     audits: "2",

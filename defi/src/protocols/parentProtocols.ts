@@ -2362,6 +2362,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "GrizzlyFi",
     github: ["grizzlyfi"]
   },
+  {
+    id: "parent#lodestar-finance",
+    name: "Lodestar Finance",
+    url: "https://www.lodestarfinance.io",
+    description: "Lodestar Finance is an algorithmic borrowing and lending protocol that aims to bring the critical DeFi primitive of decentralized money markets to Arbitrum communities.",
+    logo: `${baseIconsUrl}/lodestar-finance.png`,
+    gecko_id: "lodestar",
+    cmcId: "24178",
+    chains: [],
+    twitter: "LodestarFinance",
+    governanceID: ["snapshot:lodestarfinance.eth"]
+  },
 ];
 
 export default parentProtocols;

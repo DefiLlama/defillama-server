@@ -2306,7 +2306,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#trufin-protocol",
     name: "TruFin Protocol",
     url: "https://www.trufin.io/",
-    description: "TruFin is a defi protocol built to provide institutional grade access to on-chain derivatives markets",
+    description: "TruFin is a defi protocol built to provide institutional grade access to on-chain asset management",
     logo: `${baseIconsUrl}/trufin.jpg`,
     gecko_id: null,
     cmcId: null,

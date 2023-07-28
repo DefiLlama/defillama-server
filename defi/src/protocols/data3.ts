@@ -2600,7 +2600,7 @@ const data3: Protocol[] = [
     url: "https://trufin.io",
     description: "(Deprecated) MATIC Staking Vault",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/trufin.jpg`,
+    logo: `${baseIconsUrl}/trufin-legacy-vaults.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

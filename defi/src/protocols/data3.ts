@@ -1906,7 +1906,6 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "aevo-xyz/index.js",
     twitter: "aevoxyz",
-    parentProtocol: "parent#ribbon-finance",
     audit_links: ["https://github.com/aevoxyz/audit"],
     listedAt: 1681122429
   },

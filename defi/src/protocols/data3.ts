@@ -13212,6 +13212,28 @@ const data3: Protocol[] = [
     github: ["TangentADA"],
     listedAt: 1690551985
   },
+  {
+    id: "3307",
+    name: "Lodestar V1",
+    address: "arbitrum:0xF19547f9ED24aA66b03c3a552D181Ae334FBb8DB",
+    symbol: "LODE",
+    url: "https://www.lodestarfinance.io",
+    description: "Lodestar Finance is an algorithmic borrowing and lending protocol that aims to bring the critical DeFi primitive of decentralized money markets to Arbitrum communities.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/lodestar-v1.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    oracles: ["Chainlink"],
+    forkedFrom: ["Compound V2"],
+    module: "lodestar-v1/index.js",
+    twitter: "LodestarFinance",
+    parentProtocol: "lodestar-finance",
+    listedAt: 1690551992
+  },
 ]
 
 export default data3

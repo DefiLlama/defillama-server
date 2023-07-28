@@ -20977,17 +20977,17 @@ const data2: Protocol[] = [
   },
   {
     id: "2339",
-    name: "Lodestar Finance",
+    name: "Lodestar V0", //they want this name
     address: "arbitrum:0xF19547f9ED24aA66b03c3a552D181Ae334FBb8DB",
     symbol: "LODE",
     url: "https://www.lodestarfinance.io",
     description:
       "Lodestar Finance is an algorithmic borrowing and lending protocol that aims to bring the critical DeFi primitive of decentralized money markets to Arbitrum communities.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/lodestar-finance.png`,
+    logo: `${baseIconsUrl}/lodestar-v0.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: "lodestar",
+    gecko_id: null,
     cmcId: null,
     category: "Lending",
     chains: ["Arbitrum"],
@@ -20996,7 +20996,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     oracles: ["Chainlink"],
     listedAt: 1670424005,
-    governanceID: ["snapshot:lodestarfinance.eth"]
+    parentProtocol: "lodestar-finance",
   },
   {
     id: "2340",

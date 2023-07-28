@@ -30,5 +30,9 @@ export default {
                 enabled: false,
             }
         }
+    },
+    "aevo": {
+        "enabled": true,
+        "id": "2797"
     }
 } as AdaptorsConfig

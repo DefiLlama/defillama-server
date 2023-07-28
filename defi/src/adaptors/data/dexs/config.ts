@@ -1789,6 +1789,14 @@ export default {
     "velodrome-v2": {
         parentId: "Velodrome",
         "enabled": true,
-        "id": "3302"
+        "id": "3302",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1690156800": true,
+                "1690243200": true,
+                "1690329600": true,
+                "1690416000": true,
+            },
+        }
     }
 } as AdaptorsConfig

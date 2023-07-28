@@ -5,5 +5,12 @@
       "symbol": "MNT",
       "to": "coingecko#mantle"
     }
+  },
+  "era": {
+    "0x5bf39bde21b95d77fb18f27bbcb07f3648720a2e": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    }
   }
 }

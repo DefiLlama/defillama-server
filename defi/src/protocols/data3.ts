@@ -13249,7 +13249,7 @@ const data3: Protocol[] = [
     category: "Payments",
     chains: ["Ethereum", "Arbitrum", "Binance", "xDai", "Optimism", "Polygon", "Avalanche"],
     module: "sablier-v2/index.js",
-    twitter: "SablierHQ",
+    twitter: "Sablier",
     audit_links: ["https://github.com/sablier-labs/audits"],
     parentProtocol: "parent#sablier-finance",
     listedAt: 1690655852

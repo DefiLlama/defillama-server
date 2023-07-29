@@ -2004,7 +2004,7 @@ const data: Protocol[] = [
     category: "Payments",
     chains: ["Ethereum"],
     module: "sablier/index.js",
-    twitter: "SablierHQ",
+    twitter: "Sablier",
     audit_links: ["https://certificate.quantstamp.com/full/sablier"],
     parentProtocol: "parent#sablier-finance"
   },

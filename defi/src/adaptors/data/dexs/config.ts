@@ -328,10 +328,12 @@ export default {
         "id": "2049"
     },
     "koyo": {
+        disabled: true,
         "enabled": true,
         "id": "1766"
     },
     "pyeswap": {
+        disabled: true,
         "enabled": true,
         "id": "2109"
     },
@@ -357,6 +359,7 @@ export default {
     },
     "whaleswap": {
         "enabled": true,
+        disabled: true,
         "id": "1884"
     },
     "nomiswap": {
@@ -565,6 +568,7 @@ export default {
         "id": "1660"
     },
     "yodeswap": {
+        disabled: true,
         "enabled": true,
         "id": "1980"
     },
@@ -991,6 +995,7 @@ export default {
         "id": "2253"
     },
     "goosefx": {
+        disabled: true,
         "enabled": true,
         "id": "2175"
     },
@@ -1101,6 +1106,7 @@ export default {
         "id": "976"
     },
     "zircon-gamma": {
+        disabled: true,
         "enabled": true,
         "id": "2143"
     },
@@ -1254,6 +1260,7 @@ export default {
         "id": "2528"
     },
     "onepunch": {
+        disabled: true,
         "enabled": true,
         "id": "2534"
     },

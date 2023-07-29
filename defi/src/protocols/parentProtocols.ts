@@ -2377,7 +2377,7 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#sablier-finance",
     name: "Sablier Finance",
-    url: "https://sablier.finance/",
+    url: "https://sablier.com/",
     description: "A collection of persistent, non-upgradeable smart contracts that together create a protocol which facilitates streaming of ERC-20 assets on Ethereum and other EVM blockchains",
     logo: `${baseIconsUrl}/sablier-finance.jpg`,
     gecko_id: null,

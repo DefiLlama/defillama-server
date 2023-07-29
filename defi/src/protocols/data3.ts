@@ -13234,7 +13234,7 @@ const data3: Protocol[] = [
     listedAt: 1690551992
   },
   {
-    id: "3307",
+    id: "3308",
     name: "Sablier V2",
     address: null,
     symbol: "-",

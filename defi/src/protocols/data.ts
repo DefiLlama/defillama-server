@@ -1990,7 +1990,7 @@ const data: Protocol[] = [
   */
   {
     id: "199",
-    name: "Sablier Finance",
+    name: "Sablier V1",
     address: null,
     symbol: "-",
     url: "https://sablier.finance/",
@@ -2006,6 +2006,7 @@ const data: Protocol[] = [
     module: "sablier/index.js",
     twitter: "SablierHQ",
     audit_links: ["https://certificate.quantstamp.com/full/sablier"],
+    parentProtocol: "parent#sablier-finance"
   },
   {
     id: "200",

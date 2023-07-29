@@ -2374,6 +2374,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LodestarFinance",
     governanceID: ["snapshot:lodestarfinance.eth"]
   },
+  {
+    id: "parent#sablier-finance",
+    name: "Sablier Finance",
+    url: "https://sablier.finance/",
+    description: "A collection of persistent, non-upgradeable smart contracts that together create a protocol which facilitates streaming of ERC-20 assets on Ethereum and other EVM blockchains",
+    logo: `${baseIconsUrl}/sablier-finance.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "SablierHQ",
+  },
 ];
 
 export default parentProtocols;

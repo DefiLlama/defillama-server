@@ -13233,6 +13233,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#lodestar-finance",
     listedAt: 1690551992
   },
+  {
+    id: "3307",
+    name: "Sablier V2",
+    address: null,
+    symbol: "-",
+    url: "https://sablier.com/",
+    description: "Sablier is a token streaming protocol, designed to facilitate by-the-second payments for cryptocurrencies, specifically ERC-20 assets",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sablier-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Ethereum", "Arbitrum", "Binance", "xDai", "Optimism", "Polygon", "Avalanche"],
+    module: "sablier-v2/index.js",
+    twitter: "SablierHQ",
+    audit_links: ["https://github.com/sablier-labs/audits"],
+    parentProtocol: "parent#sablier-finance",
+    listedAt: 1690655852
+  },
 ]
 
 export default data3

@@ -13254,6 +13254,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#sablier-finance",
     listedAt: 1690655852
   },
+  {
+    id: "3309",
+    name: "Arbitrove",
+    address: "arbitrum:0x982239d38af50b0168da33346d85fb12929c4c07",
+    symbol: "TROVE",
+    url: "https://arbitrove.finance",
+    description: "Arbitrove Protocol is a yield-bearing index protocol that allows people to one-click mint an index that give exposure to a batch of strategies consist of yield-bearing assets. Unlike traditional index protocol that only hold tokens, Arbitrove Protocol dynamically deploy capital to strategies. At launch, ALP will be the first index demonstrating Arbitrove's uniqueness. Designing an index is permissioned at launch and will be permissionless in later updates.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/arbitrove.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "nitro-cartel",
+    cmcId: null,
+    category: "Indexes",
+    chains: ["Arbitrum"],
+    module: "arbitrove/index.js",
+    twitter: "nitrocartel",
+    oracles: ["Dark Oracle"],
+    audit_links: ["https://hacken.io/audits/arbitrove-protocol"],
+    listedAt: 1690712196
+  },
 ]
 
 export default data3

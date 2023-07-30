@@ -1088,5 +1088,9 @@ export default {
     "sobal": {
         "enabled": true,
         "id": "3246"
+    },
+    "reserve": {
+        "enabled": true,
+        "id": "626"
     }
 } as AdaptorsConfig

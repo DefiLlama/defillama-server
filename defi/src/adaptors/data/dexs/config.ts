@@ -1805,5 +1805,9 @@ export default {
                 "1690416000": true,
             },
         }
+    },
+    "sobal": {
+        "enabled": true,
+        "id": "3246"
     }
 } as AdaptorsConfig

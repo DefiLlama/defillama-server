@@ -1084,5 +1084,9 @@ export default {
         parentId: "Velodrome",
         "enabled": true,
         "id": "3302"
+    },
+    "sobal": {
+        "enabled": true,
+        "id": "3246"
     }
 } as AdaptorsConfig

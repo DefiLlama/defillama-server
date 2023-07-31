@@ -13410,7 +13410,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://www.brine.fi",
-    description: "The decentralized order-book exchange for traders crafted by traders. Gasless, Instant, Multi-Chain, Secure, Trustless. Powered by @tarkWareLtd",
+    description: "The decentralized order-book exchange for traders crafted by traders. Gasless, Instant, Multi-Chain, Secure, Trustless. Powered by @StarkWareLtd",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/brine.fi.jpg`,
     audits: "0",

@@ -13434,7 +13434,7 @@ const data3: Protocol[] = [
     description: "The ultimate, pioneering leveraged yield farming protocol with lending pools deployed on zkSync Era. VivaLeva allows maximized profit by allowing borrowers undercollateralized loans for their farming position, and stable, risk - free benefits for lenders.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/vivaleva-protocol.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -13446,6 +13446,29 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://docs.vivaleva.com/protocol-overview/security-audit"],
     listedAt: 1690831706
+  },
+  {
+    id: "3318",
+    name: "Nayms",
+    address: null,
+    symbol: "-",
+    url: "https://nayms.com/",
+    description: "Regulated insurance marketplace",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/nayms.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Insurance",
+    chains: ["Ethereum"],
+    module: "nayms/index.js",
+    forkedFrom: [],
+    twitter: "nayms",
+    oracles: [],
+    audit_links: ["https://certificate.quantstamp.com/full/nayms-2/79da5daf-4326-4f12-a71c-828b72fbea09/index.html"],
+    listedAt: 1690838171,
+    github: ["nayms"]
   },
 ]
 

@@ -1809,5 +1809,15 @@ export default {
     "sobal": {
         "enabled": true,
         "id": "3246"
+    },
+    "grizzly-trade": {
+        "enabled": true,
+        "id": "3301",
+        "protocolsData": {
+            "swap": {
+                "id": "3301",
+                "enabled": true,
+            }
+        },
     }
 } as AdaptorsConfig

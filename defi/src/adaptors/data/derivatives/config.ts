@@ -222,5 +222,15 @@ export default {
     "aevo": {
         "enabled": true,
         "id": "2797"
+    },
+    "grizzly-trade": {
+        "enabled": true,
+        "id": "3301",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3301",
+                "enabled": true,
+            }
+        },
     }
 } as AdaptorsConfig

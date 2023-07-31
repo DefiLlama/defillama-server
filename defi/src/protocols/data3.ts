@@ -13062,7 +13062,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3300",
-    name: "lendle",
+    name: "Lendle",
     address: null,
     symbol: "LEND",
     url: "https://www.lendle.xyz",

@@ -4796,7 +4796,7 @@ const data3: Protocol[] = [
     symbol: "VEAX",
     url: "https://veax.com/",
     description:
-      "Veax is a Concentrated Liquidity DEX built on the NEAR Protocol and complies with the NEP-141 standard for automated market makers (AMMs)",
+      "Veax is a pioneering DEX built on NEAR Protocol that offers users an easy way to maximize their profits with a comprehensive suite of features such as single-sided liquidity, concentrated liquidity, and multiple fee levels.",
     chain: "Near",
     logo: `${baseIconsUrl}/veax.png`,
     audits: "2",
@@ -10236,7 +10236,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://concordex.io",
-    description: "Institutional-grade decentralized exchange on Concordium blockchain",
+    description: "Concordex is a next generation DEX on the Concordium blockchain providing a simplified, regulated DeFi experience. Its advanced liquidity provision features ensure traders and liquidity providers can trade with ease.",
     chain: "Concordium",
     logo: `${baseIconsUrl}/concordex.jpg`,
     audits: "0",

@@ -100,7 +100,7 @@ async function processProtocolList() {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
 
-  await PromisePool.withConcurrency(2)
+  await PromisePool.withConcurrency(4)
     .for(shuffleArray(Object.entries(adapters)))
     .process(async ([protocolName, rawAdapter]) => {
       let adapters = typeof rawAdapter.default === "function" ? await rawAdapter.default() : rawAdapter.default;

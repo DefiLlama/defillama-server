@@ -13383,7 +13383,7 @@ const data3: Protocol[] = [
     listedAt: 1690797861
   },
   {
-    id: "33158",
+    id: "3315",
     name: "CrescentSwap",
     address: null,
     symbol: "MNLT",

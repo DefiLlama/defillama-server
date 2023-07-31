@@ -77,5 +77,6 @@ async function getTokenPrices(timestamp: number) {
   })
   // console.table(priceLog)
 
+  console.log(writes.length)
   return writes
 }

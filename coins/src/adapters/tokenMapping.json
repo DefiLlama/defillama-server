@@ -12,5 +12,12 @@
       "symbol": "WETH",
       "to": "coingecko#ethereum"
     }
+  },
+  "base": {
+    "0x4200000000000000000000000000000000000006": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    }
   }
 }

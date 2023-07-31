@@ -1092,5 +1092,9 @@ export default {
     "reserve": {
         "enabled": true,
         "id": "626"
+    },
+    "grizzly-trade": {
+        "enabled": true,
+        "id": "3301"
     }
 } as AdaptorsConfig

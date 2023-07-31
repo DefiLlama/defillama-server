@@ -13398,7 +13398,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Arbitrum", "Base"],
     module: "crescentswap/index.js",
-    forkedFrom: ["Uniswap V2"],
+    forkedFrom: ["Uniswap V3"],
     twitter: "CrescentSwap",
     oracles: [],
     audit_links: ["https://prismashield.com/audit/crescentswap"],

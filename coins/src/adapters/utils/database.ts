@@ -345,7 +345,10 @@ async function readPreviousValues(
       });
     },
   );
-  return await batchGet(queries);
+  const results = await batchGet(queries);
+  return results.filter(
+    (r: any) => r.timestamp > getCurrentUnixTimestamp() - 24 * 60 * 60,
+  );
 }
 async function checkMovement(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],

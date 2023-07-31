@@ -26316,7 +26316,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "1360",
     name: "Meld",
-    address: "cardano:asset1zvn33mj5kzgxtct7jr5qjyefu9ewk22xp0s0yw",
+    address: "cardano:a2944573e99d2ed3055b808eaa264f0bf119e01fc6b18863067c63e44d454c44",
     symbol: "MELD",
     url: "https://www.meld.com",
     description:
@@ -26325,7 +26325,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/meld.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "meld",
+    gecko_id: "meld-2",
     cmcId: "13397",
     category: "Lending",
     chains: ["Cardano"],

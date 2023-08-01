@@ -13583,6 +13583,28 @@ const data3: Protocol[] = [
     audit_links: ["https://2311140553-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYTRq6w3DGapKHxfqaA3Z%2Fuploads%2FsoS2qrvZPrclkXpPp9z2%2FNavi%20Smart%20Contract%20Preliminary%20Audit%20Report.pdf?alt=media&token=002c6c6c-a723-4e36-9689-f014791fb076"],
     listedAt: 1690897069
   },
+  {
+    id: "3323",
+    name: "Predy V5",
+    address: null,
+    symbol: "-",
+    url: "https://www.predy.finance",
+    description: "Trade, Hedge, and Earn through pVault connected AMM. The most capital efficient Derivative based on Uniswap. Live on Arbitrum.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/predy-v5.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "predy-v5/index.js",
+    twitter: "predyfinance",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#predy-finance",
+    listedAt: 1690901941
+  },
 ]
 
 export default data3

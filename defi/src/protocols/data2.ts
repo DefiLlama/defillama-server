@@ -15137,6 +15137,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "giveth/index.js",
+    treasury: "giveth.js",
     twitter: "Givethio",
     audit_links: ["https://github.com/lastperson/code-reviews/blob/main/Giveth%20GIVeconomy%20Contracts%20Code%20Review.pdf"],
     listedAt: 1662676779

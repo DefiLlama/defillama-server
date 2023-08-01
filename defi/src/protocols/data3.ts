@@ -13075,7 +13075,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mantle"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: ["AAVE V2"],
     module: "lendle/index.js",
     twitter: "lendlexyz",

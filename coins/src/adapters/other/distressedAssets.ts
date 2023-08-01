@@ -28,6 +28,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     PLQ: "0xd23ed8ca350ce2631f7ecdc5e6bf80d0a1debb7b",
     MINTME: "0x772722b55cdc2a086abd064267a17855eb15e8b3",
     GRAIN: "0xf88baf18fab7e330fa0c4f83949e23f52fececce",
+    FUNB: "0xd86c0b9b686f78a7a5c3780f03e700dbbad40e01"
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",
@@ -183,7 +184,6 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     USDC: "0xfa9343c3897324496a05fc75abed6bac29f8a40f",
     USDT: "0xb44a9b6905af7c801311e8f4e76932ee959c663c",
     WBTC: "0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b",
-    FUNB: "0xd86c0b9b686f78a7a5c3780f03e700dbbad40e01"
   },
   kardia: {
     USDC: "0x765277eebeca2e31912c9946eae1021199b39c61",

@@ -24,8 +24,8 @@ printTitle "Updating dev mapping from our data.ts files"
 time npx ts-node updateDevMapping.ts
 
 printTitle "download toml file data from electric-capital repo"
-# time node $script_dir/createMappingFromElectricRepo.js
- node $script_dir/downloadTomlFile.js
+time node $script_dir/createMappingFromElectricRepo.js
+time node $script_dir/downloadTomlFile.js
 
 printTitle "Update org/repo details in DB"
 time node $script_dir/updateOrgAndRepoInfo.js

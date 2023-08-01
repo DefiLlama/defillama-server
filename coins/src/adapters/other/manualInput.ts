@@ -119,6 +119,12 @@ const contracts: { [chain: string]: TokenInfo[] } = {
       decimals: 9,
       redirect: "coingecko#dexioprotocol-v2",
     },
+    {
+      symbol: "ATOM",
+      address: "0x15932e26f5bd4923d46a2b205191c4b5d5f43fe3",
+      decimals: 6,
+      redirect: "coingecko#cosmos",
+    },
   ],
 };
 

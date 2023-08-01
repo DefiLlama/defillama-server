@@ -1346,6 +1346,15 @@ export default {
         },
         chainid: 324,
     },
+    "Base": {
+        geckoId: null,
+        symbol: null,
+        cmcId: null,
+        categories: [
+            "EVM"
+        ],
+        chainId: 8453
+    },
 } as unknown as {
     [chain: string]: {
         geckoId: string | null,

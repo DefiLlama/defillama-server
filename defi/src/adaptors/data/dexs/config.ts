@@ -166,6 +166,7 @@ export default {
         "id": "146"
     },
     "velodrome": {
+        parentId: "Velodrome",
         "enabled": true,
         "id": "1799"
     },
@@ -327,10 +328,12 @@ export default {
         "id": "2049"
     },
     "koyo": {
+        disabled: true,
         "enabled": true,
         "id": "1766"
     },
     "pyeswap": {
+        disabled: true,
         "enabled": true,
         "id": "2109"
     },
@@ -356,6 +359,7 @@ export default {
     },
     "whaleswap": {
         "enabled": true,
+        disabled: true,
         "id": "1884"
     },
     "nomiswap": {
@@ -564,6 +568,7 @@ export default {
         "id": "1660"
     },
     "yodeswap": {
+        disabled: true,
         "enabled": true,
         "id": "1980"
     },
@@ -754,7 +759,7 @@ export default {
         }
     },
     "bogged-finance": {
-        "enabled": true,
+        "enabled": false,
         "id": "617"
     },
     "jetswap": {
@@ -990,6 +995,7 @@ export default {
         "id": "2253"
     },
     "goosefx": {
+        disabled: true,
         "enabled": true,
         "id": "2175"
     },
@@ -1100,6 +1106,7 @@ export default {
         "id": "976"
     },
     "zircon-gamma": {
+        disabled: true,
         "enabled": true,
         "id": "2143"
     },
@@ -1253,6 +1260,7 @@ export default {
         "id": "2528"
     },
     "onepunch": {
+        disabled: true,
         "enabled": true,
         "id": "2534"
     },
@@ -1566,6 +1574,11 @@ export default {
                 "category": "Dexes"
             }
         },
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1689811200": true,
+            },
+        }
     },
     "lighter": {
         "enabled": true,
@@ -1662,6 +1675,7 @@ export default {
         id: "2376"
     },
     "thalaswap": {
+        parentId: "Thala Labs",
         enabled: true,
         id: "2795"
     },
@@ -1722,5 +1736,92 @@ export default {
                 "category": "Dexes",
             }
         },
+    },
+    "croswap": {
+        enabled: true,
+        id: "2942"
+    },
+    "fusionx-v2": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3238"
+    },
+    "fusionx-v3": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3239"
+    },
+    "DerpDEX": {
+        enabled: true,
+        id: "3234"
+    },
+    "concordex-io": {
+        "enabled": true,
+        "id": "3172"
+    },
+    "icpswap": {
+        "enabled": true,
+        "id": "3257"
+    },
+    "echodex": {
+        "enabled": true,
+        "id": "3256"
+    },
+    "reax-one-dex": {
+        "enabled": true,
+        "id": "3260"
+    },
+    "deepbook-sui": {
+        "enabled": true,
+        "id": "3268"
+    },
+    "agni-fi": {
+        "enabled": true,
+        "id": "3265"
+    },
+    "horizondex": {
+        "enabled": true,
+        "id": "3255"
+    },
+    "drift-protocol": {
+        "enabled": true,
+        "id": "970",
+        "protocolsData": {
+            "swap": {
+                "id": "970",
+                "enabled": true,
+            }
+        },
+    },
+    "velodrome-v2": {
+        parentId: "Velodrome",
+        "enabled": true,
+        "id": "3302",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1690156800": true,
+                "1690243200": true,
+                "1690329600": true,
+                "1690416000": true,
+            },
+        }
+    },
+    "sobal": {
+        "enabled": true,
+        "id": "3246"
+    },
+    "grizzly-trade": {
+        "enabled": true,
+        "id": "3301",
+        "protocolsData": {
+            "swap": {
+                "id": "3301",
+                "enabled": true,
+            }
+        },
+    },
+    "crescent-swap": {
+        "enabled": true,
+        "id": "3315"
     }
 } as AdaptorsConfig

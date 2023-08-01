@@ -28,6 +28,7 @@ export const contracts: { [chain: string]: { [token: string]: string } } = {
     PLQ: "0xd23ed8ca350ce2631f7ecdc5e6bf80d0a1debb7b",
     MINTME: "0x772722b55cdc2a086abd064267a17855eb15e8b3",
     GRAIN: "0xf88baf18fab7e330fa0c4f83949e23f52fececce",
+    FUNB: "0xd86c0b9b686f78a7a5c3780f03e700dbbad40e01"
   },
   harmony: {
     Frax: "0xeB6C08ccB4421b6088e581ce04fcFBed15893aC3",

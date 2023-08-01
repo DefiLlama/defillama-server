@@ -15,6 +15,9 @@ import swethAdapter from "./sweth";
 import gmdAdapter from "./gmd";
 import stkaurabalAdapter from "./stkaurabal";
 import shlb_ from "./shlb";
+import axios from "axios";
+import { Write, } from "../utils/dbInterfaces";
+import { addToDBWritesList, } from "../utils/database";
 
 export const shlb = shlb_;
 
@@ -218,4 +221,32 @@ export function gmd(timestamp: number = 0) {
 export function stkaurabal(timestamp: number = 0) {
   console.log("starting stkaurabal");
   return stkaurabalAdapter(timestamp);
+}
+
+export async function buck(timestamp: number = 0) {
+  console.log("starting buck");
+  const THIRY_MINUTES = 1800
+  if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
+    throw new Error("Can't fetch historical data")
+  const writes: Write[] = [];
+  const { data: { result: { data: { content: { fields: { type_names, normalized_balances, coin_decimals, } } } } } } = await axios.post('https://fullnode.mainnet.sui.io', {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "sui_getObject",
+    "params": [
+      "0xeec6b5fb1ddbbe2eb1bdcd185a75a8e67f52a5295704dd73f3e447394775402b",
+      {
+        "showContent": true,
+      }
+    ]
+  })
+  const usdt = '5d4b302506645c37ff133b98c4b50a5ae14841659738d6d733d59d0d217a93bf::coin::COIN'
+  const buck = 'ce7ff77a83ea0cb6fd39bd8748e2ec89a3f41e8efdc3f4eb123e0ca37b184db2::buck::BUCK'
+  const usdtBal = normalized_balances[type_names.indexOf(usdt)]
+  const buckBal = normalized_balances[type_names.indexOf(buck)]
+  const buckDecimals = coin_decimals[type_names.indexOf(buck)]
+  const usdtDecimals = coin_decimals[type_names.indexOf(usdt)]
+  addToDBWritesList(writes, 'sui', buck, usdtBal * (10 ** (buckDecimals - usdtDecimals)) / buckBal, buckDecimals, 'BUCK', timestamp, 'buck', 0.9)
+
+  return writes;
 }

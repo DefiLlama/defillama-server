@@ -25389,17 +25389,17 @@ const data2: Protocol[] = [
     parentProtocol: "parent#zyberswap",
     listedAt: 1676313508
   },
-  {
+   {
     id: "2531",
     name: "Vaultka",
     address: null,
-    symbol: "-",
+    symbol: "VKA",
     url: "https://www.vaultka.com",
     description:
-      "The catalyst of perpetual exchanges on Arbitrum, Vaultka provides 1-click strategies for your LP tokens on different decentralized perpetual exchanges.",
+      "Vaultka stands as the cornerstone for perpetual DEXs growth on Arbitrum, primarily focused on amplifying the value of LP tokens of Perp DEXs. We serve a broad array of beverage-themed DeFi solutions, each meticulously crafted to optimize returns across diverse risk profiles. Our mission is to catalyze the continuous expansion of perpetual DEXs.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/vaultka.jpg`,
-    audits: "0",
+    audits: "1",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -25407,8 +25407,9 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "vaultka/index.js",
     twitter: "Vaultkaofficial",
+    forkedFrom: [],
     oracles: ["Chainlink"],
-    forkedFrom: ["Rage Trade"],
+    audit_links: ["https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf",], 
     listedAt: 1676372614
   },
   {

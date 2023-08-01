@@ -11454,11 +11454,11 @@ const data2: Protocol[] = [
   {
     id: "1911",
     name: "BetSwirl",
-    address: "polygon:0x9246a5f10a79a5a939b0c2a75a3ad196aafdb43b",
+    address: "ethereum:0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5",
     symbol: "BETS",
     url: "https://www.betswirl.com",
     description: "BetSwirl aims to be the decentralized gambling platform: provably fair, non-custodial, licensed, trustless and community driven.",
-    chain: "Binance",
+    chain: "Ethereum",
     logo: `${baseIconsUrl}/betswirl.jpg`,
     audits: "2",
     audit_note: null,
@@ -11466,12 +11466,12 @@ const data2: Protocol[] = [
     treasury: "betswirl.js",
     cmcId: "18453",
     category: "Prediction Market",
-    chains: ["Binance"],
+    chains: ["Ethereum"],
     oracles: ["Chainlink"],
     forkedFrom: [],
     module: "betswirl/index.js",
     twitter: "BetSwirl",
-    audit_links: ["https://github.com/BetSwirl/Smart-Contracts/tree/v2/audits"],
+    audit_links: ["https://github.com/BetSwirl/Smart-Contracts"],
     listedAt: 1658236552
   },
   {

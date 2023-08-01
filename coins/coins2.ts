@@ -191,11 +191,10 @@ export async function writeCoins2(
   values.map((v: Coin) => {
     strings[v.key] = JSON.stringify(v);
   });
-  await Promise.all([
-    redis.mset(strings),
+  await redis.mset(strings);
 
-    // POSTGRES
-    sql`
+  await // POSTGRES
+  sql`
       insert into coins2main 
       ${sql(values, "key", "timestamp", "price", "confidence")} 
       on conflict (key) do 
@@ -203,13 +202,13 @@ export async function writeCoins2(
         timestamp = excluded.timestamp, 
         price = excluded.price, 
         confidence = excluded.confidence
-      `,
-  ]);
+      `;
+  return;
 }
-// export async function batchWrite2(
-//   values: Coin[],
-//   sql: postgres.Sql<{}>,
-//   redis: Redis,
-// ) {
-//   read ? readCoins2(values, sql, redis) : writeCoins2(values, sql, redis);
-// }
+export async function batchWrite2(
+  values: Coin[],
+  sql: postgres.Sql<{}>,
+  redis: Redis,
+) {
+  read ? readCoins2(values, sql, redis) : writeCoins2(values, sql, redis);
+}

@@ -6,6 +6,8 @@ import {
 } from "./adapters/utils/database";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
+import { Redis } from "ioredis";
+import postgres from "postgres";
 
 const withTimeout = (millis: number, promise: any) => {
   const timeout = new Promise((resolve, reject) =>
@@ -17,9 +19,44 @@ const withTimeout = (millis: number, promise: any) => {
   return Promise.race([promise, timeout]);
 };
 
+let redis: Redis;
+let sql: postgres.Sql<{}>;
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
+
+async function startup() {
+  const pg_conn = process.env.PG_CONNECTION_STRING ?? "";
+  if (pg_conn == "") {
+    await sendMessage(
+      `no PG_CONNECTION_STRING in env`,
+      process.env.STALE_COINS_ADAPTERS_WEBHOOK!,
+      true,
+    );
+    throw new Error(`no PG_CONNECTION_STRING in env`);
+  }
+  sql = postgres(pg_conn);
+
+  const host: string = pg_conn.substring(
+    pg_conn.indexOf("@") + 1,
+    pg_conn.lastIndexOf(":"),
+  );
+
+  const [username, password] = pg_conn
+    .substring(pg_conn.indexOf("//") + 2, pg_conn.indexOf("@"))
+    .split(":");
+
+  redis = new Redis({
+    port: 6379,
+    host,
+    username,
+    password,
+  });
+
+  return;
+}
+
 export default async function handler(event: any) {
+  await startup();
   const a = Object.entries(adapters);
   const timestamp = 0;
   await Promise.all(
@@ -35,7 +72,13 @@ export default async function handler(event: any) {
               resultsWithoutDuplicates.slice(i, i + step),
               true,
             ),
-            batchWrite2WithAlerts(resultsWithoutDuplicates.slice(i, i + step)),
+            batchWrite2WithAlerts(
+              resultsWithoutDuplicates.slice(i, i + step),
+              sql,
+              redis,
+            ),
+            redis.quit(),
+            sql.end(),
           ]);
         }
         console.log(`${a[i][0]} done`);
@@ -56,7 +99,7 @@ export default async function handler(event: any) {
   );
 }
 
-// ts-node src/storeCoins.ts
+// ts-node coins/src/storeCoins.ts
 async function main() {
   let a = {
     protocolIndexes: [0],

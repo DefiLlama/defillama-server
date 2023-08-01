@@ -4821,7 +4821,7 @@ const data3: Protocol[] = [
     description:
       "Spark is a DeFi lending platform that leverages a credit line from Maker called a Dai Direct Deposit Module (D3M) to offer competitive rates",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/spark.png`,
+    logo: `${baseIconsUrl}/spark.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

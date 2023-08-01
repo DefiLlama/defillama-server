@@ -25399,7 +25399,7 @@ const data2: Protocol[] = [
       "Vaultka stands as the cornerstone for perpetual DEXs growth on Arbitrum, primarily focused on amplifying the value of LP tokens of Perp DEXs. We serve a broad array of beverage-themed DeFi solutions, each meticulously crafted to optimize returns across diverse risk profiles. Our mission is to catalyze the continuous expansion of perpetual DEXs.",
     chain: "Arbitrum",
     logo: `${baseIconsUrl}/vaultka.jpg`,
-    audits: "1",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,

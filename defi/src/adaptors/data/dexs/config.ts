@@ -1823,5 +1823,9 @@ export default {
     "crescent-swap": {
         "enabled": true,
         "id": "3315"
+    },
+    "brine": {
+        "enabled": true,
+        "id": "3316"
     }
 } as AdaptorsConfig

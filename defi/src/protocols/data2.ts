@@ -8709,6 +8709,7 @@ const data2: Protocol[] = [
     module: "credix/index.js",
     twitter: "Credix_finance",
     audit_links: ["https://www.certik.com/projects/credix"],
+    github: ['credix-finance'],
     listedAt: 1653591974
   },
   {

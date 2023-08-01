@@ -20547,7 +20547,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://app.jojo.exchange/trade",
     description:
-      "JOJO is a decentralized perpetual contract exchange based on an off-chain matching system.",
+      "JOJO is a decentralized perpetual contract trading platform that uses an off-chain matching and on-chain settlement order book model.JOJO balances liquidity and composability, providing professional traders with a smooth, fast, and low-cost trading experience and hedging capabilities for other DeFi protocols.",
     chain: "Binance",
     logo: `${baseIconsUrl}/jojo.jpg`,
     audits: "0",

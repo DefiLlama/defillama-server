@@ -263,11 +263,12 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     }
   });
 
-  return filteredWrites.filter(
-    (f: Write) =>
-      f != undefined &&
-      !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
-  );
+  return filteredWrites;
+  //.filter(
+  //   (f: Write) =>
+  //     f != undefined &&
+  //     !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
+  // );
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {
   const coinData: CoinData[] = reads

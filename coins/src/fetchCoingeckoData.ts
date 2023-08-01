@@ -1,7 +1,8 @@
 import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { getCoingeckoLock, setTimer } from "./utils/shared/coingeckoLocks";
-import ddb, { batchWrite, batchGet, getCoinPlatformData, } from "./utils/shared/dynamodb";
+import ddb, { batchWrite, batchGet, } from "./utils/shared/dynamodb";
+import { getCoinPlatformData, } from "./utils/coingeckoPlatforms";
 import { cgPK } from "./utils/keys";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import invokeLambda from "./utils/shared/invokeLambda";
@@ -85,7 +86,7 @@ function storeHistoricalCoinData(
 }
 
 let solanaTokens: Promise<any>;
-async function getSymbolAndDecimals(tokenAddress: string, chain: string, coingeckoSymbol:string) {
+async function getSymbolAndDecimals(tokenAddress: string, chain: string, coingeckoSymbol: string) {
   if (chain === "solana") {
     if (solanaTokens === undefined) {
       solanaTokens = fetch(
@@ -98,7 +99,7 @@ async function getSymbolAndDecimals(tokenAddress: string, chain: string, coingec
     if (token === undefined) {
       const decimalsQuery = await solanaConnection.getParsedAccountInfo(new PublicKey(tokenAddress))
       const decimals = (decimalsQuery.value?.data as any)?.parsed?.info?.decimals
-      if(typeof decimals !== "number"){
+      if (typeof decimals !== "number") {
         throw new Error(
           `Token ${chain}:${tokenAddress} not found in solana token list`
         );

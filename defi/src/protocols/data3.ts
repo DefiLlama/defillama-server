@@ -13075,7 +13075,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Mantle"],
-    oracles: [],
+    oracles: ["Pyth"],
     forkedFrom: ["AAVE V2"],
     module: "lendle/index.js",
     twitter: "lendlexyz",
@@ -13584,7 +13584,7 @@ const data3: Protocol[] = [
     listedAt: 1690897069
   },
   {
-    id: "3323",
+    id: "3324",
     name: "Predy V5",
     address: null,
     symbol: "-",

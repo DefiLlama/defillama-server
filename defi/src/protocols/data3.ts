@@ -13584,7 +13584,7 @@ const data3: Protocol[] = [
     listedAt: 1690897069
   },
   {
-    id: "3323",
+    id: "3324",
     name: "Predy V5",
     address: null,
     symbol: "-",

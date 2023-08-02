@@ -263,12 +263,10 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     }
   });
 
-  return filteredWrites;
-  //.filter(
-  //   (f: Write) =>
-  //     f != undefined &&
-  //     !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
-  // );
+  return filteredWrites.filter(
+    (f: Write) => f != undefined,
+    //  && !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
+  );
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {
   const coinData: CoinData[] = reads
@@ -348,7 +346,9 @@ async function readPreviousValues(
   );
   const results = await batchGet(queries);
   return results.filter(
-    (r: any) => r.timestamp > getCurrentUnixTimestamp() - 24 * 60 * 60,
+    (r: any) =>
+      r.timestamp > getCurrentUnixTimestamp() - 24 * 60 * 60 ||
+      r.confidence > 1,
   );
 }
 async function checkMovement(

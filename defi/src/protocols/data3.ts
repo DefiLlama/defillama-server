@@ -13677,7 +13677,7 @@ const data3: Protocol[] = [
     url: "https://swapbased.finance",
     description: "Kickstarting the Base ecosystem, SwapBased is THE DEX on Base.",
     chain: "Base",
-    logo: `${baseIconsUrl}/swapbase.png`,
+    logo: `${baseIconsUrl}/swapbased.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

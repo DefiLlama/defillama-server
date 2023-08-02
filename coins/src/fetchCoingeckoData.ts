@@ -165,6 +165,8 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   await Promise.all(
     filteredCoins.map((coin) =>
       iterateOverPlatforms(coin, async (PK, tokenAddress, chain) => {
+        const previous = await ddb.get({ PK, SK: 0 });
+        if (previous.Item?.confidence > 0.99) return;
         const { decimals, symbol } = await getSymbolAndDecimals(
           tokenAddress,
           chain,

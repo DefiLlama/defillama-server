@@ -13768,7 +13768,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: "ignore-fud",
     cmcId: "24136",
-    category: "Yield",
+    category: "Staking Pool",
     chains: ["CORE"],
     module: "IgnoreFUD/index.js",
     twitter: "ignore_fud",

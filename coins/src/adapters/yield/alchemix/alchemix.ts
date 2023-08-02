@@ -23,6 +23,11 @@ const tokensByChain = {
     '0x110e2d3d4c94596f5698c753d5cd43221d3ec78b',
     '0x20e5eb701e8d711d419d444814308f8c2243461f',
     '0x3d938f90ac251c1bcf6b4e399dd72c8c685a9bbc',
+  ],
+  avax: [
+    '0xe7839ea8ea8543c7f5d9c9d7269c661904729fe7',
+    '0x759a2e28d4c3ad394d3125d5ab75a6a5d6782fd9',
+    '0xa291ae608d8854cdbf9838e28e9badcf10181669'
   ]
 } as {
   [chain:string]:string[]

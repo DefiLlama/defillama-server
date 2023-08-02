@@ -1096,5 +1096,9 @@ export default {
     "grizzly-trade": {
         "enabled": true,
         "id": "3301"
+    },
+    "rollup-finace": {
+        "enabled": true,
+        "id": "2889"
     }
 } as AdaptorsConfig

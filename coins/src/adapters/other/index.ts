@@ -246,7 +246,7 @@ export async function buck(timestamp: number = 0) {
   const buckBal = normalized_balances[type_names.indexOf(buck)]
   const buckDecimals = coin_decimals[type_names.indexOf(buck)]
   const usdtDecimals = coin_decimals[type_names.indexOf(usdt)]
-  addToDBWritesList(writes, 'sui', buck, usdtBal * (10 ** (buckDecimals - usdtDecimals)) / buckBal, buckDecimals, 'BUCK', timestamp, 'buck', 0.9)
+  addToDBWritesList(writes, 'sui', '0x'+buck, usdtBal * (10 ** (buckDecimals - usdtDecimals)) / buckBal, buckDecimals, 'BUCK', timestamp, 'buck', 0.9)
 
   return writes;
 }

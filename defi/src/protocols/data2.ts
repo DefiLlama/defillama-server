@@ -20561,7 +20561,7 @@ const data2: Protocol[] = [
     twitter: "jojo_exchange",
     forkedFrom: [],
     oracles: ["Chainlink"],
-    github: ["smart-contract-EVM"],
+    github: ["JOJOexchange"],
     audit_links: ["https://github.com/JOJOexchange/smart-contract-EVM/tree/main/audit"],
     listedAt: 1669732079
   },
@@ -20585,6 +20585,7 @@ const data2: Protocol[] = [
     twitter: "2piNetwork",
     forkedFrom: [],
     oracles: ["Chainlink", "TWAP"],
+    github: ["2pinetwork"],
     audit_links: ["https://github.com/2pinetwork/security/tree/master/audits"],
     listedAt: 1669733991
   },

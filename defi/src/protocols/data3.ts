@@ -11867,7 +11867,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://sobal.fi/",
-    description: "Sobal is a flexible and powerful decentralised exchange residing on Neon EVM within the Solana chain",
+    description: "Sobal is a decentralized asset management platform, or in simple terms, a DEX that utilizes Balancer V2's powerful and flexible smart contracts, providing an unparalleled DeFi experience for builders, investors and traders",
     chain: "Neon",
     logo: `${baseIconsUrl}/sobal.png`,
     audits: "0",

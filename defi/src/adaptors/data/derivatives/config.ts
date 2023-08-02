@@ -232,5 +232,15 @@ export default {
                 "enabled": true,
             }
         },
+    },
+    "rollup-finace": {
+        "enabled": true,
+        "id": "2889",
+        "protocolsData": {
+            "derivatives": {
+                "id": "2889",
+                "enabled": true,
+            }
+        },
     }
 } as AdaptorsConfig

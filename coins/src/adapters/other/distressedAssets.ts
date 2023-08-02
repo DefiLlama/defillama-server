@@ -2,7 +2,6 @@ import getBlock from "../utils/block";
 import { getTokenInfo } from "../utils/erc20";
 import { Write } from "../utils/dbInterfaces";
 import { addToDBWritesList } from "../utils/database";
-import { getCurrentUnixTimestamp } from "../../utils/date";
 
 export const contracts: { [chain: string]: { [token: string]: string } } = {
   ethereum: {
@@ -262,7 +261,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
           price: 0,
           symbol: s,
           adapter: "distressed",
-          timestamp: timestamp == 0 ? getCurrentUnixTimestamp() : timestamp,
+          timestamp,
         },
         {
           PK: `coingecko#${contracts[chain][s]}`,

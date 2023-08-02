@@ -156,7 +156,7 @@ function getTokenValues(
     if (poolValue.length == 0) return;
     const price: number =
       (poolValue[0][1] * 10 ** poolInfos.decimals[i].output) / s.output;
-    if (isNaN(price)) return;
+    if (isNaN(price) || price == Infinity) return;
 
     tokenValues.push({
       address: s.input.target,

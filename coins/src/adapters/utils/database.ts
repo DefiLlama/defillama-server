@@ -15,6 +15,7 @@ import { contracts } from "../other/distressedAssets";
 import { sendMessage } from "./../../../../defi/src/utils/discord";
 // import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
+const currentTime: number = getCurrentUnixTimestamp() - 24 * 60 * 60;
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -200,8 +201,12 @@ async function getTokenAndRedirectDataDB(
   }
   return aggregateTokenAndRedirectData(allReads);
 }
-export function filterWritesWithLowConfidence(allWrites: Write[]) {
+export async function filterWritesWithLowConfidence(allWrites: Write[]) {
   allWrites = allWrites.filter((w: Write) => w != undefined);
+  const allReads = (
+    await batchGet(allWrites.map((w: Write) => ({ PK: w.PK, SK: 0 })))
+  ).filter((w: Write) => w.timestamp ?? 0 > currentTime);
+
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
 
@@ -211,13 +216,6 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     allWrites[0].PK.indexOf("#") + 1,
     allWrites[0].PK.indexOf(":"),
   );
-
-  const distressedAssets =
-    chain in contracts
-      ? Object.values(contracts[chain]).map((d: string) =>
-          chain == "solana" ? d : d.toLowerCase(),
-        )
-      : [];
 
   allWrites.map((w: Write) => {
     let checkedWritesOfThisKind = checkedWrites.filter(
@@ -241,7 +239,9 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
           (x.SK == 0 && w.SK == 0)),
     );
 
-    if (allWritesOfThisKind.length == 1) {
+    let allReadsOfThisKind = allReads.filter((x: any) => x.PK == w.PK);
+
+    if (allWritesOfThisKind.length + allReadsOfThisKind.length == 1) {
       if (
         "confidence" in allWritesOfThisKind[0] &&
         allWritesOfThisKind[0].confidence > confidenceThreshold
@@ -252,7 +252,9 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     } else {
       const maxConfidence = Math.max.apply(
         null,
-        allWritesOfThisKind.map((x: Write) => x.confidence),
+        [...allWritesOfThisKind, ...allReadsOfThisKind].map(
+          (x: Write) => x.confidence,
+        ),
       );
       filteredWrites.push(
         allWritesOfThisKind.filter(
@@ -263,10 +265,7 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     }
   });
 
-  return filteredWrites.filter(
-    (f: Write) => f != undefined,
-    //  && !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
-  );
+  return filteredWrites.filter((f: Write) => f != undefined);
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {
   const coinData: CoinData[] = reads
@@ -346,9 +345,7 @@ async function readPreviousValues(
   );
   const results = await batchGet(queries);
   return results.filter(
-    (r: any) =>
-      r.timestamp > getCurrentUnixTimestamp() - 24 * 60 * 60 ||
-      r.confidence > 1,
+    (r: any) => r.timestamp > currentTime || r.confidence > 1,
   );
 }
 async function checkMovement(

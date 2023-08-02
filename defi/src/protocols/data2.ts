@@ -25411,7 +25411,7 @@ const data2: Protocol[] = [
     twitter: "Vaultkaofficial",
     forkedFrom: [],
     oracles: ["Chainlink"],
-    audit_links: ["https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf",], 
+    audit_links: ["https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf", "https://admin.zokyo.io/uploads/Vaultka_Zokyo_audit_report_July25th_2023_1aed462dc9.pdf"], 
     listedAt: 1676372614
   },
   {

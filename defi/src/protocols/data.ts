@@ -2015,7 +2015,7 @@ const data: Protocol[] = [
     symbol: "BEL",
     url: "https://fs.bella.fi/",
     description:
-      "Bella Flex Savings v2 is a smart-mining DApp where users can deposit stablecoins and supported tokens to earn attractive yields instantly. ",
+      "Aiming to help users unleash the liquidity potential and maximize crypto yields across multiple chains, Bella Protocol provides a suite of streamlined tools, including a zkSync-based yield protocol, an Ethereum-based smart liquidity pool, and a Uniswap V3 simulator.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bella-finance.jpg`,
     audits: "2",

@@ -190,6 +190,13 @@ functions:
       - http:
           path: getSwapsHistory
           method: get
+  getLatestSwap:
+    handler: src/getLatestSwap.default
+    timeout: 30
+    events:
+      - http:
+          path: getLatestSwap
+          method: get
   getBlackListedTokens:
     handler: src/getBlackListedTokens.default
     timeout: 30

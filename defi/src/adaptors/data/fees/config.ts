@@ -544,6 +544,10 @@ export default {
             "v320": {
                 id: "1657",
                 enabled: true
+            },
+            "v5": {
+                id: "3324",
+                enabled: true
             }
         }
     },

@@ -13669,6 +13669,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1690969725
   },
+  {
+    id: "3328",
+    name: "SwapBased",
+    address: "base:0xd07379a755A8f11B57610154861D694b2A0f615a",
+    symbol: "Base",
+    url: "https://swapbased.finance",
+    description: "Kickstarting the Base ecosystem, SwapBased is THE DEX on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/swapbase.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "swapbase/index.js",
+    twitter: "swap_based",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1690973151
+  },
 ]
 
 export default data3

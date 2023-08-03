@@ -1964,8 +1964,8 @@ const parentProtocols: IParentProtocol[] = [
     github: ["Fujicracy"]
   },
   {
-    id: "parent#solv",
-    name: "Solv",
+    id: "parent#solv-protocol",
+    name: "Solv Protocol",
     url: "https://solv.finance/",
     description: "Solv Protocol is a one-stop platform for creating, using and trading financial NFTs",
     logo: `${baseIconsUrl}/solv-protocol.png`,

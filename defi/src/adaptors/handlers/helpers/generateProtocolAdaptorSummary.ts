@@ -7,7 +7,7 @@ import { AdaptorRecord, AdaptorRecordType, AdaptorRecordTypeMapReverse, getAdapt
 import { getDisplayChainName } from "../../utils/getAllChainsFromAdaptors"
 import { sendDiscordAlert } from "../../utils/notify"
 import { calcNdChange, getWoWStats, sumAllVolumes } from "../../utils/volumeCalcs"
-import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraN30DTypes, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
+import { ACCOMULATIVE_ADAPTOR_TYPE, getExtraTypes, IGeneralStats, ProtocolAdaptorSummary, ProtocolStats } from "../getOverviewProcess"
 import { ONE_DAY_IN_SECONDS } from "../getProtocol"
 import { convertDataToUSD } from "./convertRecordDataCurrency"
 import generateCleanRecords from "./generateCleanRecords"
@@ -204,10 +204,6 @@ Last record found\n${JSON.stringify(lastRecordRaw.data, null, 2)}
                 acc[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : value
                 return acc
             }, {} as typeof extraTypes),
-            ...Object.entries(extraN30DTypes).reduce((acc, [key, value]) => {
-                acc[key] = (adapter.disabled || !lastDaysExtrapolation) ? null : value
-                return acc
-            }, {} as typeof extraN30DTypes),
             spikes: cleanRecords.spikesLogs.length > 0 ? ["Spikes detected", ...cleanRecords.spikesLogs].join('\n') : undefined
         }
     } catch (error) {

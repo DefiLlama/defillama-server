@@ -1827,5 +1827,15 @@ export default {
     "brine": {
         "enabled": true,
         "id": "3316"
+    },
+    "ktx": {
+        "enabled": true,
+        "id": "3025",
+        "protocolsData": {
+            "swap": {
+                "id": "3025",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

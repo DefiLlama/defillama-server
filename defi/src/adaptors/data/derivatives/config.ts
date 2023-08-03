@@ -242,5 +242,19 @@ export default {
                 "enabled": true,
             }
         },
+    },
+    "ktx": {
+        "enabled": true,
+        "id": "3025",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3025",
+                "enabled": true,
+            }
+        }
+    },
+    "metavault-derivative": {
+        "enabled": true,
+        "id": "1801"
     }
 } as AdaptorsConfig

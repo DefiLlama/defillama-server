@@ -941,13 +941,13 @@ const data3: Protocol[] = [
   },
   {
     id: "2753",
-    name: "Velocore",
+    name: "Velocore V1",
     address: null,
     symbol: "VC",
     url: "https://velocore.xyz",
     description: "Velocore is a low-slippage DEX on zkSync Era. Swap, farming, Lending, launchpad and vault. Building the essential blocks of DeFi on top of zkRollup technology.",
     chain: "zkSync Era",
-    logo: `${baseIconsUrl}/velocore.png`,
+    logo: `${baseIconsUrl}/velocore-v1.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -958,6 +958,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "velocore/index.js",
     twitter: "velocorexyz",
+    parentProtocol: "parent#velocore",
     listedAt: 1680257943
   },
   {
@@ -13731,6 +13732,7 @@ const data3: Protocol[] = [
     twitter: "velocorexyz",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#velocore",
     listedAt: 1690979758
   },
   {
@@ -13797,6 +13799,27 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     listedAt: 1691012408
+  },
+  {
+    id: "3334",
+    name: "Galador",
+    address: null,
+    symbol: "-",
+    url: "https://app.galador.io/swap",
+    description: "Empowering DeFi traders with fast execution & advanced trading with our hyper-efficient liquidity infrastructure.",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/galador.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    module: "galador-io/index.js",
+    twitter: "galadorfi",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1691068455
   },
 ]
 

@@ -34,5 +34,9 @@ export default {
     "aevo": {
         "enabled": true,
         "id": "2797"
+    },
+    "typus": {
+        "enabled": true,
+        "id": "2946"
     }
 } as AdaptorsConfig

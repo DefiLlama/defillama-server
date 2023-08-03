@@ -13798,6 +13798,27 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691012408
   },
+  {
+    id: "3334",
+    name: "Galador",
+    address: null,
+    symbol: "-",
+    url: "https://app.galador.io/swap",
+    description: "Empowering DeFi traders with fast execution & advanced trading with our hyper-efficient liquidity infrastructure.",
+    chain: "Mantle",
+    logo: `${baseIconsUrl}/galador.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Mantle"],
+    module: "galador-io/index.js",
+    twitter: "galadorfi",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1691068455
+  },
 ]
 
 export default data3

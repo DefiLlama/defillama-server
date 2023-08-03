@@ -2396,6 +2396,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "velocorexyz",
   },
+  {
+    id: "parent#chronos",
+    name: "Chronos",
+    url: "https://chronos.exchange/",
+    description: "Velocore is a ve(3,3) DEX with real-time voting.",
+    logo: `${baseIconsUrl}/chronos.png`,
+    gecko_id: "chronos-finance",
+    cmcId: "24158",
+    chains: [],
+    twitter: "ChronosFi_",
+    github: ["ChronosEx"]
+  },
 ];
 
 export default parentProtocols;

@@ -4311,7 +4311,7 @@ const data3: Protocol[] = [
   },
   {
     id: "2907",
-    name: "Chronos",
+    name: "Chronos V1",
     address: "arbitrum:0x15b2fb8f08E4Ac1Ce019EADAe02eE92AeDF06851",
     symbol: "CHR",
     url: "https://app.chronos.exchange/",
@@ -4321,8 +4321,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/chronos.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: "chronos-finance",
-    cmcId: "24158",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Arbitrum"],
     module: "chronos/index.js",
@@ -4330,6 +4330,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     oracles: [],
     audit_links: ["https://chronos-finance.gitbook.io/product-docs/~/changes/6sW0qaIRsO7Nde3EP91S/additional-information/security"],
+    parentProtocol: "parent#chronos",
     listedAt: 1682633327
   },
   {
@@ -13948,6 +13949,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#chainlink",
     oracles: [],
     forkedFrom: [],
+  },
+  {
+    id: "3341",
+    name: "Chronos V2",
+    address: "arbitrum:0x15b2fb8f08E4Ac1Ce019EADAe02eE92AeDF06851",
+    symbol: "CHR",
+    url: "https://app.chronos.exchange/",
+    description:
+      "Chronos is a community-owned decentralized exchange (DEX) and liquidity provider constructed on Arbitrum",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/chronos.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "chronos-v2/index.js",
+    twitter: "ChronosFi_",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    audit_links: [],
+    parentProtocol: "parent#chronos",
+    listedAt: 1691087952
   },
 ]
 

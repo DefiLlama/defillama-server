@@ -1104,5 +1104,9 @@ export default {
     "rollup-finace": {
         "enabled": true,
         "id": "2889"
+    },
+    "ktx": {
+        "enabled": true,
+        "id": "3025"
     }
 } as AdaptorsConfig

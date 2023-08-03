@@ -123,7 +123,14 @@ const EXTRA_TYPES: IJSON<AdaptorRecordType[]> = {
     ]
 }
 
+const EXTRA_N30D_TYPE: IJSON<AdaptorRecordType[]> = {
+    [AdapterType.FEES]: [
+        AdaptorRecordType.dailyHoldersRevenue,
+    ],
+}
+
 export const getExtraTypes = (type: AdapterType) => EXTRA_TYPES[type] ?? []
+export const getExtraN30DTypes = (type: AdapterType) => EXTRA_N30D_TYPE[type] ?? []
 
 export interface IGetOverviewEventParams {
     pathParameters: {

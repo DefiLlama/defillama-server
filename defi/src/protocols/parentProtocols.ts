@@ -2385,6 +2385,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Sablier",
   },
+  {
+    id: "parent#velocore",
+    name: "Velocore",
+    url: "https://velocore.xyz",
+    description: "Velocore is a ve(3,3) DEX with real-time voting.",
+    logo: `${baseIconsUrl}/velocore.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    oracles: [],
+    twitter: "velocorexyz",
+  },
 ];
 
 export default parentProtocols;

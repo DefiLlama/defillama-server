@@ -67,7 +67,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
         for (const recordType of getExtraN30DTypes(adaptorType)) {
             const _adaptorRecordsRawN30D = await getAdaptorRecord(adapter.id, recordType, adapter.protocolType).catch(_e => { }) as AdaptorRecord[] | undefined
             if (!_adaptorRecordsRawN30D) continue;
-            if (_adaptorRecordsRawN30D?.length === 0) continue;
+            if (_adaptorRecordsRawN30D?.length && _adaptorRecordsRawN30D?.length === 0) continue;
             const startTimestamp = adapter.startFrom
             const startIndex = startTimestamp ? _adaptorRecordsRawN30D.findIndex((ar: any) => ar.timestamp === startTimestamp) : -1
             let _adaptorRecordsN30D = _adaptorRecordsRawN30D.slice(startIndex + 1)

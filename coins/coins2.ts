@@ -4,7 +4,7 @@ import { DbEntry } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 
-const read: boolean = true;
+const read: boolean = false;
 const pgColumns: string[] = ["key", "timestamp", "price", "confidence"];
 const latency = 1 * 60 * 60; // 1hr
 
@@ -82,8 +82,6 @@ export async function translateItems(
       decimals,
       symbol,
     });
-
-    return;
   });
 
   console.error(`${errors.length} errors in storing to coins2`);
@@ -108,12 +106,6 @@ async function queryRedis(values: Coin[], redis: Redis): Promise<CoinDict> {
   });
   console.log(`${Object.keys(jsonValues).length} found in RD`);
 
-  // if (valuesRes) await redis.del(keys);
-  // const res: any[] = await redis.mget(keys);
-  // valuesRes = res.filter((r: any) => r != null);
-  // console.log(`${values.length} found after delete`);
-  // console.log("DONE RD");
-
   return jsonValues;
 }
 async function queryPostgres(values: Coin[], sql: postgres.Sql<{}>) {
@@ -121,20 +113,9 @@ async function queryPostgres(values: Coin[], sql: postgres.Sql<{}>) {
   const keys: string[] = values.map((v: Coin) => v.key);
 
   let data: any[] = await sql`
-      select ${sql(pgColumns)} from coins2main where key in ${sql(keys)}
+      select ${sql(pgColumns)} from main where key in ${sql(keys)}
     `;
   console.log(`${data.length} found in PG`);
-
-  // if (value2)
-  //   await sql`
-  //     delete from coins2main where key in ${sql(keys)}
-  //   `;
-
-  // value2 = await sql`
-  //     select ${sql(pgColumns)} from coins2main where key in ${sql(keys)}
-  //   `;
-  // console.log(`${value2.length} found after delete`);
-  // console.log("DONE PG");
 
   return data;
 }
@@ -178,32 +159,30 @@ export async function readCoins2(
   const redisData: CoinDict = await queryRedis(currentQueries, redis);
 
   return historicalQueries.length > 0
-    ? redisData
-    : await combineRedisAndPostgreData(redisData, historicalQueries, sql);
+    ? await combineRedisAndPostgreData(redisData, historicalQueries, sql)
+    : redisData;
 }
 export async function writeCoins2(
   values: Coin[],
   sql: postgres.Sql<{}>,
   redis: Redis,
 ) {
-  // REDIS
   const strings: { [key: string]: string } = {};
   values.map((v: Coin) => {
     strings[v.key] = JSON.stringify(v);
   });
-  await redis.mset(strings);
-
-  await // POSTGRES
-  sql`
-      insert into coins2main 
+  await Promise.all([
+    redis.mset(strings),
+    sql`
+      insert into main 
       ${sql(values, "key", "timestamp", "price", "confidence")} 
       on conflict (key) do 
       update set 
         timestamp = excluded.timestamp, 
         price = excluded.price, 
         confidence = excluded.confidence
-      `;
-  return;
+      `,
+  ]);
 }
 export async function batchWrite2(
   values: Coin[],

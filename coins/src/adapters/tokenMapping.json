@@ -31,5 +31,12 @@
       "symbol": "CELER_USDT_COIN",
       "to": "coingecko:tether"
     }
+  },
+  "ethereum": {
+    "0x03928473f25bb2da6bc880b07ecbadc636822264": {
+      "decimals": "18",
+      "symbol": "stataEthWETH",
+      "to": "ethereum:0x8b8bf083fd1837486c141681e10ea61d0f3cd692"
+    }
   }
 }

@@ -13821,6 +13821,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691068455
   },
+  {
+    id: "3335",
+    name: "SpartaDex",
+    address: null,
+    symbol: "SPARTA",
+    url: "https://spartadex.io/",
+    description: "SpartaDEX is a combination of real-time strategy game set in the realities of ancient Greece and a decentralized cryptocurrency exchange. We called it a gamified DEX.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/spartadex.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Arbitrum"],
+    module: "spartadex/index.js",
+    twitter: "Spartadex_io",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    audit_links: ["https://docs.spartadex.io/technical-documentation/or-audits"],
+    listedAt: 1691072418
+  },
 ]
 
 export default data3

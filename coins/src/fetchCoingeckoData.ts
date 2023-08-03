@@ -10,8 +10,6 @@ import sleep from "./utils/shared/sleep";
 import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 import { Connection, PublicKey, Keypair } from "@solana/web3.js";
-import { Write } from "./adapters/utils/dbInterfaces";
-import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 
 let solanaConnection = new Connection(process.env.SOLANA_RPC || "https://rpc.ankr.com/solana")
 
@@ -50,29 +48,23 @@ interface IdToSymbol {
   [id: string]: string;
 }
 
-async function storeCoinData(
+function storeCoinData(
   timestamp: number,
   coinData: CoingeckoResponse,
   idToSymbol: IdToSymbol
 ) {
-  const writes: Write[] = Object.entries(coinData)
-  .filter((c) => c[1]?.usd !== undefined)
-  .map(([cgId, data]) => ({
-    PK: cgPK(cgId),
-    SK: 0,
-    price: data.usd,
-    mcap: data.usd_market_cap,
-    timestamp,
-    symbol: idToSymbol[cgId].toUpperCase(),
-    confidence: 0.99
-  }))
-
-  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes)
-
-  if (filteredWrites.length = 0) return 
-
   return batchWrite(
-    filteredWrites,
+    Object.entries(coinData)
+      .filter((c) => c[1]?.usd !== undefined)
+      .map(([cgId, data]) => ({
+        PK: cgPK(cgId),
+        SK: 0,
+        price: data.usd,
+        mcap: data.usd_market_cap,
+        timestamp,
+        symbol: idToSymbol[cgId].toUpperCase(),
+        confidence: 0.99
+      })),
     false
   );
 }
@@ -165,8 +157,6 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   await Promise.all(
     filteredCoins.map((coin) =>
       iterateOverPlatforms(coin, async (PK, tokenAddress, chain) => {
-        const previous = await ddb.get({ PK, SK: 0 });
-        if (previous.Item?.confidence > 0.99) return;
         const { decimals, symbol } = await getSymbolAndDecimals(
           tokenAddress,
           chain,

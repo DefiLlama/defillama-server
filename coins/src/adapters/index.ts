@@ -59,7 +59,6 @@ export default {
   balancer2: require("./markets/balancer"),
   balancer3: require("./markets/balancer"),
   balancer4: require("./markets/balancer"),
-  balancer5: require("./markets/balancer"),
   linearPools: require("./markets/balancer"),
   hop: require("./markets/hop"),
   gauges: require("./markets/curve"),

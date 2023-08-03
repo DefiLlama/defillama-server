@@ -2809,7 +2809,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/stakehouse.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "blockswap-network-2",
     cmcId: null,
     category: "Liquid Staking",
     chains: ["Ethereum"],

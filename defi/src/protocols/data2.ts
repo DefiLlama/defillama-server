@@ -27460,14 +27460,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2623",
-    name: "Chainlink",
+    name: "Chainlink Requests",
     address: "0x514910771af9ca656af840dff83e8264ecf986ca",
     symbol: "LINK",
     url: "https://chain.link",
     description:
       "Chainlink decentralized oracle networks provide tamper-proof inputs, outputs, and computations to support advanced smart contracts on any blockchain.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/chainlink.jpg`,
+    logo: `${baseIconsUrl}/chainlink-requests.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

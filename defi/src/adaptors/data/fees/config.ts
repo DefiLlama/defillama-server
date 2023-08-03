@@ -704,24 +704,48 @@ export default {
         enabled: true,
         displayName: "Chainlink VRF V1",
         id: "2623",
+        "protocolsData": {
+            "chainlink-vrf-v1": {
+                "id": "3339",
+                "enabled": true,
+            }
+        },
     },
     "chainlink-vrf-v2": {
         parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink VRF V2",
-        id: "2623"
+        id: "2623",
+        "protocolsData": {
+            "chainlink-vrf-v2": {
+                "id": "3340",
+                "enabled": true,
+            }
+        },
     },
     "chainlink-keepers": {
         parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Keepers",
-        id: "2623"
+        id: "2623",
+        "protocolsData": {
+            "chainlink-keepers": {
+                "id": "3338",
+                "enabled": true,
+            }
+        },
     },
     "chainlink-requests": {
         parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Requests",
-        id: "2623"
+        id: "2623",
+        "protocolsData": {
+            "chainlink-requests": {
+                "id": "2623",
+                "enabled": true,
+            }
+        },
     },
     "aura": {
         enabled: true,

@@ -958,6 +958,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "velocore/index.js",
     twitter: "velocorexyz",
+    parentProtocol: "parent#velocore",
     listedAt: 1680257943
   },
   {
@@ -13731,6 +13732,7 @@ const data3: Protocol[] = [
     twitter: "velocorexyz",
     forkedFrom: [],
     oracles: [],
+    parentProtocol: "parent#velocore",
     listedAt: 1690979758
   },
   {

@@ -17,10 +17,6 @@ export function balancer4(timestamp: number = 0) {
   console.log("starting balancer4 lps");
   return getTokenPrices("optimism", timestamp);
 }
-export function balancer5(timestamp: number = 0) {
-  console.log("starting balancer5 lps");
-  return getTokenPrices("avax", timestamp);
-}
 export function linearPools(timestamp: number = 0) {
   console.log("starting balancer linear pools");
   return Promise.all([

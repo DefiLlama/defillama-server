@@ -252,5 +252,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "metavault-derivative": {
+        "enabled": true,
+        "id": "1801"
     }
 } as AdaptorsConfig

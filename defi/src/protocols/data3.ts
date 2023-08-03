@@ -13821,7 +13821,6 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691068455
   },
-  /*
   {
     id: "3335",
     name: "SpartaDex",
@@ -13844,7 +13843,6 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.spartadex.io/technical-documentation/or-audits"],
     listedAt: 1691072418
   },
-  */
   {
     id: "3336",
     name: "Banana Gun",

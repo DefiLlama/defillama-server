@@ -76,7 +76,7 @@ export default async (adapter: ProtocolAdaptor, adaptorRecordType: AdaptorRecord
                 getAdapterKey(
                     adapter.id,
                     adapter.versionKey ?? adapter.module,
-                    adaptorRecordType,
+                    recordType,
                     adaptorType,
                     adapter.protocolType,
                     chainFilter,

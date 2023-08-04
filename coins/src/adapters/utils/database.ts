@@ -202,7 +202,7 @@ async function getTokenAndRedirectDataDB(
 }
 export async function filterWritesWithLowConfidence(
   allWrites: Write[],
-  latencyHours: number = 24,
+  latencyHours: number = 6,
 ) {
   const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
 
@@ -331,7 +331,7 @@ export async function batchWriteWithAlerts(
 // }
 async function readPreviousValues(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-  latencyHours: number = 24,
+  latencyHours: number = 6,
 ): Promise<DbEntry[]> {
   let queries: { PK: string; SK: number }[] = [];
   items.map(

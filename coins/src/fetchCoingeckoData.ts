@@ -67,7 +67,7 @@ async function storeCoinData(
     confidence: 0.99	
   }))	
 
-  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes, 0.08)	
+  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes, 1)	
 
   if (filteredWrites.length = 0) return 
 
@@ -77,26 +77,21 @@ async function storeCoinData(
   );
 }
 
-function storeHistoricalCoinData(
+async function storeHistoricalCoinData(
   coinData: CoingeckoResponse,
 ) {
-  let a = Object.entries(coinData)
+  const writes = Object.entries(coinData)
   .filter((c) => c[1]?.usd !== undefined)
   .map(([cgId, data]) => ({
     SK: data.last_updated_at,
     PK: cgPK(cgId),
     price: data.usd,
     confidence: 0.99
-  }))
+  }))  
+  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes, 1)	
+
   return batchWrite(
-    Object.entries(coinData)
-      .filter((c) => c[1]?.usd !== undefined)
-      .map(([cgId, data]) => ({
-        SK: data.last_updated_at,
-        PK: cgPK(cgId),
-        price: data.usd,
-        confidence: 0.99
-      })),
+    filteredWrites,
     false
   );
 }

@@ -14043,6 +14043,29 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/f(x)_Protocol_Report_v1.0_2023_06_14.pdf"],
     listedAt: 1691149929
   },
+  {
+    id: "3345",
+    name: "DackieSwap",
+    address: "base:0xc2bc7a73613b9bd5f373fe10b55c59a69f4d617b",
+    symbol: "DACKIE",
+    url: "https://dackieswap.xyz",
+    description:
+      "Native and Most Trusted DEX on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/dackieswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "dackieswap",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "dackieswap/index.js",
+    twitter: "DackieSwap",
+    forkedFrom: ["Uniswap V3"],
+    oracles: ["Chainlink"],
+    github: ["dackieswap"],
+    listedAt: 1691153591
+  },
 ]
 
 export default data3

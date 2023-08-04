@@ -4647,13 +4647,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1602",
-    name: "Aada",
+    name: "Lenfi", // Aada rebranded
     address: "cardano:asset1khk46tdfsknze9k84ae0ee0k2x8mcwhz93k70d",
     symbol: "AADA",
     url: "https://aada.finance",
     description: "Open-source and decentralized Lending and Borrowing protocol.",
     chain: "Cardano",
-    logo: `${baseIconsUrl}/aada.png`,
+    logo: `${baseIconsUrl}/lenfi.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "aada-finance",
@@ -4663,7 +4663,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "aada/index.js",
-    twitter: "AadaFinance",
+    twitter: "LenfiOfficial",
     listedAt: 1648841508
   },
   {

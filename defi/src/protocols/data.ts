@@ -13704,7 +13704,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     url: "https://umami.finance/",
     description: "Sustainable, Risk-Hedged Yields on Arbitrum.",
     chain: "Arbitrum",
-    logo: `${baseIconsUrl}/umamifinance.png`,
+    logo: `${baseIconsUrl}/umami-finance.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "umami-finance",

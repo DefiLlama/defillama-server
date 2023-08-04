@@ -50,37 +50,33 @@ interface IdToSymbol {
   [id: string]: string;
 }
 
-async function storeCoinData(
+function storeCoinData(
   coinData: any[],
 ) {
-  const writes: Write[] = coinData.map((c) => ({
-    PK: c.PK,
-    SK: 0,
-    price: c.price,
-    mcap: c.mcap,
-    timestamp: c.timestamp,
-    symbol: c.symbol,
-    confidence: c.confidence
-  }))
-
   return batchWrite(
-    writes,
+    coinData.map((c) => ({
+      PK: c.PK,
+      SK: 0,
+      price: c.price,
+      mcap: c.mcap,
+      timestamp: c.timestamp,
+      symbol: c.symbol,
+      confidence: c.confidence
+    })),
     false
   );
 }
 
-async function storeHistoricalCoinData(
+function storeHistoricalCoinData(
   coinData: Write[],
 ) {
-  const writes = coinData.map((c) => ({
-    SK: c.SK,
-    PK: c.PK,
-    price: c.price,
-    confidence: c.confidence
-  }))
-
   return batchWrite(
-    writes,
+    coinData.map((c) => ({
+      SK: c.SK,
+      PK: c.PK,
+      price: c.price,
+      confidence: c.confidence
+    })),
     false
   );
 }

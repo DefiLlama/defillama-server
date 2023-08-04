@@ -10,6 +10,8 @@ import sleep from "./utils/shared/sleep";
 import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 import { Connection, PublicKey, Keypair } from "@solana/web3.js";
+import { Write } from "./adapters/utils/dbInterfaces";	
+import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 
 let solanaConnection = new Connection(process.env.SOLANA_RPC || "https://rpc.ankr.com/solana")
 
@@ -48,39 +50,48 @@ interface IdToSymbol {
   [id: string]: string;
 }
 
-function storeCoinData(
+async function storeCoinData(
   timestamp: number,
   coinData: CoingeckoResponse,
   idToSymbol: IdToSymbol
 ) {
+  const writes: Write[] = Object.entries(coinData)	
+  .filter((c) => c[1]?.usd !== undefined)	
+  .map(([cgId, data]) => ({	
+    PK: cgPK(cgId),	
+    SK: 0,	
+    price: data.usd,	
+    mcap: data.usd_market_cap,	
+    timestamp,	
+    symbol: idToSymbol[cgId].toUpperCase(),	
+    confidence: 0.99	
+  }))	
+
+  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes, 1)	
+
+  if (filteredWrites.length = 0) return 
+
   return batchWrite(
-    Object.entries(coinData)
-      .filter((c) => c[1]?.usd !== undefined)
-      .map(([cgId, data]) => ({
-        PK: cgPK(cgId),
-        SK: 0,
-        price: data.usd,
-        mcap: data.usd_market_cap,
-        timestamp,
-        symbol: idToSymbol[cgId].toUpperCase(),
-        confidence: 0.99
-      })),
+    filteredWrites,
     false
   );
 }
 
-function storeHistoricalCoinData(
+async function storeHistoricalCoinData(
   coinData: CoingeckoResponse,
 ) {
+  const writes = Object.entries(coinData)
+  .filter((c) => c[1]?.usd !== undefined)
+  .map(([cgId, data]) => ({
+    SK: data.last_updated_at,
+    PK: cgPK(cgId),
+    price: data.usd,
+    confidence: 0.99
+  }))  
+  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes, 1)	
+
   return batchWrite(
-    Object.entries(coinData)
-      .filter((c) => c[1]?.usd !== undefined)
-      .map(([cgId, data]) => ({
-        SK: data.last_updated_at,
-        PK: cgPK(cgId),
-        price: data.usd,
-        confidence: 0.99
-      })),
+    filteredWrites,
     false
   );
 }
@@ -157,6 +168,9 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   await Promise.all(
     filteredCoins.map((coin) =>
       iterateOverPlatforms(coin, async (PK, tokenAddress, chain) => {
+        const previous = await ddb.get({ PK, SK: 0 });	
+        if (previous.Item?.confidence > 0.99) return;
+        
         const { decimals, symbol } = await getSymbolAndDecimals(
           tokenAddress,
           chain,
@@ -200,6 +214,18 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
     all[item.SK] = true;
     return all;
   }, {});
+
+  let a = coinData.prices
+  .filter((price) => {
+    const ts = toUNIXTimestamp(price[0]);
+    return !writtenTimestamps[ts];
+  })
+  .map((price) => ({
+    SK: toUNIXTimestamp(price[0]),
+    PK,
+    price: price[1],
+    confidence: 0.99
+  }))
   await batchWrite(
     coinData.prices
       .filter((price) => {
@@ -234,9 +260,9 @@ async function filterCoins(coins: Coin[]): Promise<Coin[]> {
 
 const step = 80;
 
-const handler = (hourly: boolean) => async (
+export const handler = (hourly: boolean) => async (
   event: any,
-  _context: AWSLambda.Context
+  _context: any
 ) => {
   const coins = event.coins as Coin[];
   const depth = event.depth as number;

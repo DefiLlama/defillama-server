@@ -15,7 +15,6 @@ import { contracts } from "../other/distressedAssets";
 import { sendMessage } from "./../../../../defi/src/utils/discord";
 // import { batchWrite2, translateItems } from "../../../coins2";
 const confidenceThreshold: number = 0.3;
-const currentTime: number = getCurrentUnixTimestamp() - 24 * 60 * 60;
 
 export async function getTokenAndRedirectData(
   tokens: string[],
@@ -201,21 +200,21 @@ async function getTokenAndRedirectDataDB(
   }
   return aggregateTokenAndRedirectData(allReads);
 }
-export async function filterWritesWithLowConfidence(allWrites: Write[]) {
+export async function filterWritesWithLowConfidence(
+  allWrites: Write[],
+  latencyHours: number = 24,
+) {
+  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
+
   allWrites = allWrites.filter((w: Write) => w != undefined);
   const allReads = (
     await batchGet(allWrites.map((w: Write) => ({ PK: w.PK, SK: 0 })))
-  ).filter((w: Write) => w.timestamp ?? 0 > currentTime);
+  ).filter((w: Write) => w.timestamp ?? 0 > recentTime);
 
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
 
   if (allWrites.length == 0) return [];
-
-  const chain = allWrites[0].PK.substring(
-    allWrites[0].PK.indexOf("#") + 1,
-    allWrites[0].PK.indexOf(":"),
-  );
 
   allWrites.map((w: Write) => {
     let checkedWritesOfThisKind = checkedWrites.filter(
@@ -332,6 +331,7 @@ export async function batchWriteWithAlerts(
 // }
 async function readPreviousValues(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  latencyHours: number = 24,
 ): Promise<DbEntry[]> {
   let queries: { PK: string; SK: number }[] = [];
   items.map(
@@ -344,8 +344,9 @@ async function readPreviousValues(
     },
   );
   const results = await batchGet(queries);
+  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
   return results.filter(
-    (r: any) => r.timestamp > currentTime || r.confidence > 1,
+    (r: any) => r.timestamp > recentTime || r.confidence > 1,
   );
 }
 async function checkMovement(

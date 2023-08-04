@@ -1132,9 +1132,5 @@ export default {
     "ktx": {
         "enabled": true,
         "id": "3025"
-    },
-    "velocore-v2": {
-        "enabled": true,
-        "id": "3330"
     }
 } as AdaptorsConfig

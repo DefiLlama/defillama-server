@@ -1837,5 +1837,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "velocore-v2": {
+        "enabled": true,
+        "id": "3330"
     }
 } as AdaptorsConfig

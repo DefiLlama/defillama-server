@@ -716,7 +716,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "fluidity-money/index.js",
     audit_links: ["https://docs.fluidity.money/docs/security/audits-completed"],
-    twitter: "fluiditymoney",
+    twitter: "fluiditylabs",
     listedAt: 1680036839
   },
   {

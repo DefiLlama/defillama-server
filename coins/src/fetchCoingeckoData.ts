@@ -248,7 +248,7 @@ const step = 80;
 
 const handler = (hourly: boolean) => async (
   event: any,
-  _context: any
+  _context: AWSLambda.Context
 ) => {
   const coins = event.coins as Coin[];
   const depth = event.depth as number;

@@ -14020,6 +14020,29 @@ const data3: Protocol[] = [
     oracles: ["Pyth"],
     listedAt: 1691144368
   },
+  {
+    id: "3344",
+    name: "fx Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://fx.aladdin.club",
+    description:
+      "f(x) splits ETH into a mix of low-volatility “floating stablecoins” called fETH and high volatility “leveraged ETH” tokens called xETH. Users can supply ETH or stETH to mint either one (pure ETH is zapped into stETH before deposit)",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/fx-protocol.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "fx-Protocol/index.js",
+    twitter: "protocol_fx",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/f(x)_Protocol_Report_v1.0_2023_06_14.pdf"],
+    listedAt: 1691149929
+  },
 ]
 
 export default data3

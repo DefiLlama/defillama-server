@@ -51,47 +51,55 @@ interface IdToSymbol {
 }
 
 async function storeCoinData(
-  timestamp: number,
-  coinData: CoingeckoResponse,
-  idToSymbol: IdToSymbol
+  coinData: any[],
 ) {
-  const writes: Write[] = Object.entries(coinData)	
-  .filter((c) => c[1]?.usd !== undefined)	
-  .map(([cgId, data]) => ({	
-    PK: cgPK(cgId),	
-    SK: 0,	
-    price: data.usd,	
-    mcap: data.usd_market_cap,	
-    timestamp,	
-    symbol: idToSymbol[cgId].toUpperCase(),	
-    confidence: 0.99	
-  }))	
+  const writes: Write[] = coinData.map((c) => ({
+    PK: c.PK,
+    SK: 0,
+    price: c.price,
+    mcap: c.mcap,
+    timestamp: c.timestamp,
+    symbol: c.symbol,
+    confidence: c.confidence
+  }))
+  // Object.entries(coinData)	
+  // .filter((c) => c[1]?.usd !== undefined)	
+  // .map(([cgId, data]) => ({	
+  //   PK: cgPK(cgId),	
+  //   SK: 0,	// changes 
+  //   price: data.usd,	
+  //   mcap: data.usd_market_cap,	 // removed 
+  //   timestamp,	// removed 
+  //   symbol: idToSymbol[cgId].toUpperCase(),	// removed
+  //   confidence: 0.99	
+  // }))	
 
-  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes, 1)	
-
-  if (filteredWrites.length = 0) return 
-
-  return batchWrite(
-    filteredWrites,
-    false
-  );
+  // return batchWrite(
+  //   writes,
+  //   false
+  // );
 }
 
 async function storeHistoricalCoinData(
-  coinData: CoingeckoResponse,
+  coinData: Write[],
 ) {
-  const writes = Object.entries(coinData)
-  .filter((c) => c[1]?.usd !== undefined)
-  .map(([cgId, data]) => ({
-    SK: data.last_updated_at,
-    PK: cgPK(cgId),
-    price: data.usd,
-    confidence: 0.99
-  }))  
-  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes, 1)	
+  const writes = coinData.map((c) => ({
+    SK: c.SK,
+    PK: c.PK,
+    price: c.price,
+    confidence: c.confidence
+  }))
+  //  Object.entries(coinData)
+  // .filter((c) => c[1]?.usd !== undefined)
+  // .map(([cgId, data]) => ({
+  //   SK: data.last_updated_at,
+  //   PK: cgPK(cgId),
+  //   price: data.usd,
+  //   confidence: 0.99
+  // }))  
 
   return batchWrite(
-    filteredWrites,
+    writes,
     false
   );
 }
@@ -160,8 +168,20 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     idToSymbol[coin.id] = coin.symbol;
   });
   const timestamp = getCurrentUnixTimestamp();
-  await storeCoinData(timestamp, coinData, idToSymbol);
-  await storeHistoricalCoinData(coinData)
+  const writes = Object.entries(coinData)	
+  .filter((c) => c[1]?.usd !== undefined)	
+  .map(([cgId, data]) => ({	
+    PK: cgPK(cgId),	
+    SK: data.last_updated_at,	
+    price: data.usd,	
+    mcap: data.usd_market_cap,	
+    timestamp,	
+    symbol: idToSymbol[cgId].toUpperCase(),	
+    confidence: 0.99	
+  }))	
+  const confidentCoins = await filterWritesWithLowConfidence(writes, 1) 
+  await storeCoinData(confidentCoins);
+  await storeHistoricalCoinData(confidentCoins)
   const filteredCoins = coins.filter((coin) => coinData[coin.id]?.usd !== undefined);
   const coinPlatformData = await getCoinPlatformData(filteredCoins)
 
@@ -215,6 +235,17 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
     return all;
   }, {});
 
+  let a =  coinData.prices
+  .filter((price) => {
+    const ts = toUNIXTimestamp(price[0]);
+    return !writtenTimestamps[ts];
+  })
+  .map((price) => ({
+    SK: toUNIXTimestamp(price[0]),
+    PK,
+    price: price[1],
+    confidence: 0.99
+  }))
   await batchWrite(
     coinData.prices
       .filter((price) => {
@@ -249,9 +280,9 @@ async function filterCoins(coins: Coin[]): Promise<Coin[]> {
 
 const step = 80;
 
-const handler = (hourly: boolean) => async (
+export const handler2 = (hourly: boolean) => async (
   event: any,
-  _context: AWSLambda.Context
+  _context: any
 ) => {
   const coins = event.coins as Coin[];
   const depth = event.depth as number;
@@ -304,5 +335,5 @@ function getMetadataPDA(mint: PublicKey) {
 }
 */
 
-export const fetchCoingeckoData = wrapScheduledLambda(handler(false));
-export const fetchHourlyCoingeckoData = wrapScheduledLambda(handler(true));
+// export const fetchCoingeckoData = wrapScheduledLambda(handler(false));
+// export const fetchHourlyCoingeckoData = wrapScheduledLambda(handler(true));

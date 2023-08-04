@@ -67,9 +67,9 @@ async function storeCoinData(
     confidence: 0.99	
   }))	
 
-  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes, 1)	
+  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes)	
 
-  if (filteredWrites.length = 0) return 
+  if (filteredWrites.length == 0) return 
 
   return batchWrite(
     filteredWrites,
@@ -88,7 +88,9 @@ async function storeHistoricalCoinData(
     price: data.usd,
     confidence: 0.99
   }))  
-  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes, 1)	
+  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes)	
+
+  if (filteredWrites.length == 0) return 
 
   return batchWrite(
     filteredWrites,

@@ -215,17 +215,6 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
     return all;
   }, {});
 
-  let a = coinData.prices
-  .filter((price) => {
-    const ts = toUNIXTimestamp(price[0]);
-    return !writtenTimestamps[ts];
-  })
-  .map((price) => ({
-    SK: toUNIXTimestamp(price[0]),
-    PK,
-    price: price[1],
-    confidence: 0.99
-  }))
   await batchWrite(
     coinData.prices
       .filter((price) => {
@@ -260,9 +249,9 @@ async function filterCoins(coins: Coin[]): Promise<Coin[]> {
 
 const step = 80;
 
-export const handler = (hourly: boolean) => async (
+const handler = (hourly: boolean) => async (
   event: any,
-  _context: any
+  _context: AWSLambda.Context
 ) => {
   const coins = event.coins as Coin[];
   const depth = event.depth as number;

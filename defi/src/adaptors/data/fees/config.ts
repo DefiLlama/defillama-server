@@ -1132,5 +1132,9 @@ export default {
     "ktx": {
         "enabled": true,
         "id": "3025"
+    },
+    "zunami": {
+        "enabled": true,
+        "id": "1201"
     }
 } as AdaptorsConfig

@@ -202,7 +202,7 @@ async function getTokenAndRedirectDataDB(
 }
 export async function filterWritesWithLowConfidence(
   allWrites: Write[],
-  latencyHours: number = 6,
+  latencyHours: number = 3,
 ) {
   const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
 
@@ -240,7 +240,12 @@ export async function filterWritesWithLowConfidence(
 
     let allReadsOfThisKind = allReads.filter((x: any) => x.PK == w.PK);
 
-    if (allWritesOfThisKind.length + allReadsOfThisKind.length == 1) {
+    if (allWritesOfThisKind.length == 1) {
+      if (
+        allReadsOfThisKind.length == 1 &&
+        allWritesOfThisKind[0].confidence < allReadsOfThisKind[0].confidence
+      )
+        return;
       if (
         "confidence" in allWritesOfThisKind[0] &&
         allWritesOfThisKind[0].confidence > confidenceThreshold

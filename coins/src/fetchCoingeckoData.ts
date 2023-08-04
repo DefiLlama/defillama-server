@@ -62,22 +62,11 @@ async function storeCoinData(
     symbol: c.symbol,
     confidence: c.confidence
   }))
-  // Object.entries(coinData)	
-  // .filter((c) => c[1]?.usd !== undefined)	
-  // .map(([cgId, data]) => ({	
-  //   PK: cgPK(cgId),	
-  //   SK: 0,	// changes 
-  //   price: data.usd,	
-  //   mcap: data.usd_market_cap,	 // removed 
-  //   timestamp,	// removed 
-  //   symbol: idToSymbol[cgId].toUpperCase(),	// removed
-  //   confidence: 0.99	
-  // }))	
 
-  // return batchWrite(
-  //   writes,
-  //   false
-  // );
+  return batchWrite(
+    writes,
+    false
+  );
 }
 
 async function storeHistoricalCoinData(
@@ -89,14 +78,6 @@ async function storeHistoricalCoinData(
     price: c.price,
     confidence: c.confidence
   }))
-  //  Object.entries(coinData)
-  // .filter((c) => c[1]?.usd !== undefined)
-  // .map(([cgId, data]) => ({
-  //   SK: data.last_updated_at,
-  //   PK: cgPK(cgId),
-  //   price: data.usd,
-  //   confidence: 0.99
-  // }))  
 
   return batchWrite(
     writes,
@@ -235,17 +216,6 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
     return all;
   }, {});
 
-  let a =  coinData.prices
-  .filter((price) => {
-    const ts = toUNIXTimestamp(price[0]);
-    return !writtenTimestamps[ts];
-  })
-  .map((price) => ({
-    SK: toUNIXTimestamp(price[0]),
-    PK,
-    price: price[1],
-    confidence: 0.99
-  }))
   await batchWrite(
     coinData.prices
       .filter((price) => {
@@ -280,7 +250,7 @@ async function filterCoins(coins: Coin[]): Promise<Coin[]> {
 
 const step = 80;
 
-export const handler2 = (hourly: boolean) => async (
+const handler = (hourly: boolean) => async (
   event: any,
   _context: any
 ) => {
@@ -335,5 +305,5 @@ function getMetadataPDA(mint: PublicKey) {
 }
 */
 
-// export const fetchCoingeckoData = wrapScheduledLambda(handler(false));
-// export const fetchHourlyCoingeckoData = wrapScheduledLambda(handler(true));
+export const fetchCoingeckoData = wrapScheduledLambda(handler(false));
+export const fetchHourlyCoingeckoData = wrapScheduledLambda(handler(true));

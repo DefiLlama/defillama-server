@@ -73,8 +73,8 @@ export async function getCoinPlatformData(
     }
 
     const storedItems: any= await ddb.batchGet(pks.map((PK) => ({ PK, SK: 0, })))
-    storedItems.forEach((item: any) => {
-      coinPlatformData[item.PK] = item.Item
+    storedItems.Responses["prod-coins-table"].forEach((item: any) => {
+      coinPlatformData[item.PK] = item;
     })
   } catch (e) {
     console.error(e);

@@ -13974,6 +13974,52 @@ const data3: Protocol[] = [
     parentProtocol: "parent#chronos",
     listedAt: 1691087952
   },
+  {
+    id: "3342",
+    name: "Magnate Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.magnate.finance",
+    description:
+      "Build a novel lending protocol with a dynamic interest rate model and more capital-efficient risk management pools.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/magnate-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    module: "Magnate/index.js",
+    twitter: "MagnateFi",
+    forkedFrom: ["Compound"],
+    oracles: [],
+    audit_links: ["https://github.com/MagnateArb/Audits/blob/main/SmartContract_Audit_Solidproof_MagnateProtocol.pdf"],
+    github: ["MagnateArb"],
+    listedAt: 1691144362
+  },
+  {
+    id: "3343",
+    name: "zkEra Finance",
+    address: "era:0x7b3e1236c39ddD2e61cF6Da6ac6D11193238ccB0",
+    symbol: "ZKE",
+    url: "https://zkera.fi",
+    description:
+      "Trade USDC, ETH and other top cryptocurrencies with up to 50x leverage directly from your wallet.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/zkera-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["zkSync Era"],
+    module: "zkdx-finance/index.js",
+    twitter: "zkera_fi",
+    forkedFrom: ["GMX"],
+    oracles: ["Pyth"],
+    listedAt: 1691144368
+  },
 ]
 
 export default data3

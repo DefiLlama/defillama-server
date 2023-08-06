@@ -14087,6 +14087,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691326424
   },
+  {
+    id: "3347",
+    name: "Meridian Finance",
+    address: "base:0x2F3b1A07E3eFb1fCc64BD09b86bD0Fa885D93552",
+    symbol: "MST",
+    url: "https://www.meridianfinance.net/",
+    description:
+      "Meridian is a decentralized, non-custodial, governance-free borrowing protocol that enables users to obtain interest-free loans against ETH collateral. Loans are paid in USDM, which is a USD pegged stablecoin",
+    chain: "Base",
+    logo: `${baseIconsUrl}/meridan-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Base"],
+    module: "meridian/index.js",
+    twitter: "MeridianFi",
+    forkedFrom: ["Liquity"],
+    oracles: ["DIA"],
+    listedAt: 1691326424,
+    github: ["MeridianDollar"]
+  },
 ]
 
 export default data3

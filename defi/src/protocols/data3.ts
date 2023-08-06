@@ -14065,6 +14065,28 @@ const data3: Protocol[] = [
     github: ["dackieswap"],
     listedAt: 1691153591
   },
+  {
+    id: "3346",
+    name: "CookieBase",
+    address: "base:0x614747C53CB1636b4b962E15e1D66D3214621100",
+    symbol: "Cookie",
+    url: "https://cookiebase.xyz",
+    description:
+      "Sweeten your DeFi journey with CookieBase! Embrace creamy yields and crumbly rewards on Base Blockchain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/cookiebase.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "cookiebase/index.js",
+    twitter: "base_cookie",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1691326424
+  },
 ]
 
 export default data3

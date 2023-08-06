@@ -7931,7 +7931,6 @@ const data3: Protocol[] = [
     module: "raft/index.js",
     twitter: "raft_fi",
     oracles: ["Chainlink"],
-    forkedFrom: ["Liquity"],
     audit_links: [ "https://github.com/trailofbits/publications/blob/master/reviews/2023-04-tempus-raft-securityreview.pdf"],
     github: ["raft-fi"],
     listedAt: 1686074293

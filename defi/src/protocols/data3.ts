@@ -14096,7 +14096,7 @@ const data3: Protocol[] = [
     description:
       "Meridian is a decentralized, non-custodial, governance-free borrowing protocol that enables users to obtain interest-free loans against ETH collateral. Loans are paid in USDM, which is a USD pegged stablecoin",
     chain: "Base",
-    logo: `${baseIconsUrl}/meridan-finance.png`,
+    logo: `${baseIconsUrl}/meridian-finance.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

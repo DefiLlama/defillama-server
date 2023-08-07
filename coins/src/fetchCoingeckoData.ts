@@ -50,50 +50,33 @@ interface IdToSymbol {
   [id: string]: string;
 }
 
-async function storeCoinData(
-  timestamp: number,
-  coinData: CoingeckoResponse,
-  idToSymbol: IdToSymbol
+function storeCoinData(
+  coinData: any[],
 ) {
-  const writes: Write[] = Object.entries(coinData)	
-  .filter((c) => c[1]?.usd !== undefined)	
-  .map(([cgId, data]) => ({	
-    PK: cgPK(cgId),	
-    SK: 0,	
-    price: data.usd,	
-    mcap: data.usd_market_cap,	
-    timestamp,	
-    symbol: idToSymbol[cgId].toUpperCase(),	
-    confidence: 0.99	
-  }))	
-
-  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes)	
-
-  if (filteredWrites.length == 0) return 
-
   return batchWrite(
-    filteredWrites,
+    coinData.map((c) => ({
+      PK: c.PK,
+      SK: 0,
+      price: c.price,
+      mcap: c.mcap,
+      timestamp: c.timestamp,
+      symbol: c.symbol,
+      confidence: c.confidence
+    })),
     false
   );
 }
 
-async function storeHistoricalCoinData(
-  coinData: CoingeckoResponse,
+function storeHistoricalCoinData(
+  coinData: Write[],
 ) {
-  const writes = Object.entries(coinData)
-  .filter((c) => c[1]?.usd !== undefined)
-  .map(([cgId, data]) => ({
-    SK: data.last_updated_at,
-    PK: cgPK(cgId),
-    price: data.usd,
-    confidence: 0.99
-  }))  
-  const filteredWrites: Write[] = await filterWritesWithLowConfidence(writes)	
-
-  if (filteredWrites.length == 0) return 
-
   return batchWrite(
-    filteredWrites,
+    coinData.map((c) => ({
+      SK: c.SK,
+      PK: c.PK,
+      price: c.price,
+      confidence: c.confidence
+    })),
     false
   );
 }
@@ -162,8 +145,20 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     idToSymbol[coin.id] = coin.symbol;
   });
   const timestamp = getCurrentUnixTimestamp();
-  await storeCoinData(timestamp, coinData, idToSymbol);
-  await storeHistoricalCoinData(coinData)
+  const writes = Object.entries(coinData)	
+  .filter((c) => c[1]?.usd !== undefined)	
+  .map(([cgId, data]) => ({	
+    PK: cgPK(cgId),	
+    SK: data.last_updated_at,	
+    price: data.usd,	
+    mcap: data.usd_market_cap,	
+    timestamp,	
+    symbol: idToSymbol[cgId].toUpperCase(),	
+    confidence: 0.99	
+  }))	
+  const confidentCoins = await filterWritesWithLowConfidence(writes, 1) 
+  await storeCoinData(confidentCoins);
+  await storeHistoricalCoinData(confidentCoins)
   const filteredCoins = coins.filter((coin) => coinData[coin.id]?.usd !== undefined);
   const coinPlatformData = await getCoinPlatformData(filteredCoins)
 

@@ -14119,7 +14119,7 @@ const data3: Protocol[] = [
     symbol: "-",
     url: "https://soswap.rai.finance",
     description:
-      "Dexes on base chain",
+      "Decentralized exchange on Base chain",
     chain: "Base",
     logo: `${baseIconsUrl}/soswap.jpg`,
     audits: "0",

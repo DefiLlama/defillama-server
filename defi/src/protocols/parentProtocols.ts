@@ -2408,6 +2408,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ChronosFi_",
     github: ["ChronosEx"]
   },
+  {
+    id: "parent#echodex",
+    name: "EchoDEX",
+    url: "https://www.echodex.io",
+    description: "EchoDEX, a decentralized exchange platform built on the Linea Consensys network.",
+    logo: `${baseIconsUrl}/echodex.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Echo_DEX",
+  },
 ];
 
 export default parentProtocols;

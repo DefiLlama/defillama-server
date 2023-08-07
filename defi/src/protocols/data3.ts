@@ -13615,7 +13615,7 @@ const data3: Protocol[] = [
     description: "Introducing Gambit, an environment fueled by our enthusiasm for groundbreaking advancements that aim to transform leveraged trading in the realm of blockchain. Guided by our dedication to innovation, we strive to pioneer new developments while maintaining a steadfast commitment to the fundamental principles of decentralization and security.",
     chain: "zkSync Era",
     logo: `${baseIconsUrl}/gambit-trade.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -13623,8 +13623,9 @@ const data3: Protocol[] = [
     chains: ["zkSync Era"],
     module: "gambit/index.js",
     twitter: "Gambit_Trade",
-    forkedFrom: ["Pyth"],
-    oracles: [],
+    forkedFrom: ["Gains Network"],
+    oracles: ["Pyth"],
+    audit_links: ["https://github.com/Secure3Audit/Secure3Academy/blob/main/audit_reports/Gambit/Gambit_final_Secure3_Audit_Report.pdf", "https://skynet.certik.com/ko/projects/gambit-exchange"], 
     listedAt: 1690969711
   },
   {

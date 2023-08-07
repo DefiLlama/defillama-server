@@ -2,16 +2,35 @@ require("dotenv").config();
 import adapters from "./adapters/index";
 import {
   batchWriteWithAlerts,
-  // batchWrite2WithAlerts,
+  batchWrite2WithAlerts,
 } from "./adapters/utils/database";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
+import { Redis } from "ioredis";
+import postgres from "postgres";
 import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
 import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
 
+let redis: Redis;
+let sql: postgres.Sql<{}>;
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
+
+async function startup(): Promise<void> {
+  const auth: string[] | undefined = process.env.COINS2_AUTH?.split(",");
+  if (auth && auth.length == 3) {
+    sql = postgres(auth[0]);
+
+    redis = new Redis({
+      port: 6379,
+      host: auth[1],
+      password: auth[2],
+    });
+  }
+}
+
 export default async function handler(event: any) {
+  await startup();
   const a = Object.entries(adapters);
   const timestamp = 0;
   await setEnvSecrets();
@@ -28,10 +47,12 @@ export default async function handler(event: any) {
               resultsWithoutDuplicates.slice(i, i + step),
               true,
             ),
-            // await batchWrite2WithAlerts(
-            //   resultsWithoutDuplicates.slice(i, i + step),
-            // ),
           ]);
+          await batchWrite2WithAlerts(
+            resultsWithoutDuplicates.slice(i, i + step),
+            sql,
+            redis,
+          );
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {
@@ -49,6 +70,8 @@ export default async function handler(event: any) {
       }
     }),
   );
+  await Promise.all([redis.quit(), sql.end()]);
+  console.log("connections closed");
 }
 
 // ts-node coins/src/storeCoins.ts

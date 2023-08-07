@@ -63,15 +63,16 @@ export async function translateItems(
     }),
   );
 
-  redirectData.map((r) => {
-    const {
-      timestamp,
-      PK: key,
-      adapter,
-      confidence,
-      decimals,
-      symbol,
-    } = redirects[r.PK];
+  redirectData.map((r: any, i: number) => {
+    if (r.SK != 0 || r.price == null) {
+      errors.push(Object.keys(redirects)[i]);
+      return;
+    }
+
+    const timestamp = redirects[r.PK].timestamp ?? getCurrentUnixTimestamp();
+    const adapter = redirects[r.PK].adapter ?? null;
+    const decimals = redirects[r.PK].adapter ?? null;
+    const { PK: key, confidence, symbol } = redirects[r.PK];
 
     remapped.push({
       price: r.price,
@@ -171,15 +172,25 @@ export async function writeCoins2(
   values.map((v: Coin) => {
     strings[v.key] = JSON.stringify(v);
   });
+
   await Promise.all([
     redis.mset(strings),
     sql`
-      insert into main 
-      ${sql(values, "key", "timestamp", "price", "confidence")} 
-      on conflict (key) do 
-      update set 
-        timestamp = excluded.timestamp, 
-        price = excluded.price, 
+      insert into main
+      ${sql(
+        values,
+        "key",
+        "timestamp",
+        "price",
+        "confidence",
+        "adapter",
+        "decimals",
+        "symbol",
+      )}
+      on conflict (key) do
+      update set
+        timestamp = excluded.timestamp,
+        price = excluded.price,
         confidence = excluded.confidence
       `,
   ]);

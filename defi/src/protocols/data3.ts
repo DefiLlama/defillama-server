@@ -14207,7 +14207,7 @@ const data3: Protocol[] = [
     name: "Paladin Dullahan",
     address: "0xAB846Fb6C81370327e784Ae7CbB6d6a6af6Ff4BF",
     symbol: "PAL",
-    url: "https://www.boobs.finance",
+    url: "https://dullahan.paladin.vote/",
     description:
       "Dullahan, created by Paladin, is a vault that produces passive income for stkAAVE owners and provides GHO borrowers with access to reduced interest rates. Dullahan can support the growth and adoption of GHO, while simultaneously incentivizing stkAAVE participation. Depositors have the choice to enter the vault with either stkAAVE or AAVE, which is staked into the Aave Safety Module, ensuring maximum flexibility and rewards. Borrowers interact with the AAVE V3 market through “pods” which manage their collateral and discount rate.",
     chain: "Ethereum",

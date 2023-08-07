@@ -12218,7 +12218,7 @@ const data3: Protocol[] = [
     module: "reax-one-synth/index.js",
     twitter: "ReaxFinance",
     forkedFrom: [],
-    oracles: ["Chainlink","Pyth"],
+    oracles: ["Pyth"],
     audit_links: ["https://docs.reax.one/about/security-audit"],
     listedAt: 1689876851,
     parentProtocol: "parent#reax-finance"

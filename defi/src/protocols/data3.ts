@@ -14180,6 +14180,52 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691414977
   },
+  {
+    id: "3351",
+    name: "boobs.finance",
+    address: "base:0x66b70221b22925c4663C46cd15f2f2EaaC822CEB",
+    symbol: "boobs",
+    url: "https://www.boobs.finance",
+    description:
+      "boobs.finance is the all in one yield platform on base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/boobs.finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "boobs-fi/index.js",
+    twitter: "boobsdotfinance",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1691414977
+  },
+  {
+    id: "3352",
+    name: "Paladin Dullahan",
+    address: "0xAB846Fb6C81370327e784Ae7CbB6d6a6af6Ff4BF",
+    symbol: "PAL",
+    url: "https://www.boobs.finance",
+    description:
+      "Dullahan, created by Paladin, is a vault that produces passive income for stkAAVE owners and provides GHO borrowers with access to reduced interest rates. Dullahan can support the growth and adoption of GHO, while simultaneously incentivizing stkAAVE participation. Depositors have the choice to enter the vault with either stkAAVE or AAVE, which is staked into the Aave Safety Module, ensuring maximum flexibility and rewards. Borrowers interact with the AAVE V3 market through “pods” which manage their collateral and discount rate.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/paladin-dullahan.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum"],
+    module: "paladinfinance-dullahan/index.js",
+    twitter: "Paladin_vote",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/PaladinFinance/Dullahan/blob/main/audit/Paladin%20Dullahan%20Security%20Analysis%20by%20Pessimistic.pdf"],
+    parentProtocol: "parent#paladin-finance",
+    listedAt: 1691414989
+  },
 ]
 
 export default data3

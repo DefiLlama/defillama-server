@@ -4,6 +4,7 @@ import { BigNumber, utils } from "ethers";
 import getBlock from "./block";
 import { getTokenAndRedirectData } from "./database";
 import { CoinData } from "./dbInterfaces";
+import { wrappedGasTokens } from "./gasTokens";
 
 export type Result4626 = {
   token: string;
@@ -95,7 +96,11 @@ async function getTokenData(
   ]);
   return {
     sharesDecimals: sharesDecimals.output.map(({ output }: any) => output),
-    assets: assets.output.map(({ output }: any) => output),
+    assets: assets.output.map(({ output }: any) =>
+      output == "0x0000000000000000000000000000000000000000"
+        ? wrappedGasTokens[chain]
+        : output,
+    ),
     symbols: symbols.output.map(({ output }: any) => output),
     ratios: ratios.output.map(({ output }: any) => output),
   };

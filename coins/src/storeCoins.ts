@@ -8,21 +8,14 @@ import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
 import { Redis } from "ioredis";
 import postgres from "postgres";
+import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
+import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
 
 let redis: Redis;
 let sql: postgres.Sql<{}>;
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
 
-const withTimeout = (millis: number, promise: any) => {
-  const timeout = new Promise((resolve, reject) =>
-    setTimeout(() => {
-      reject(`timed out after ${millis / 1000} s.`);
-      resolve;
-    }, millis),
-  );
-  return Promise.race([promise, timeout]);
-};
 async function startup(): Promise<void> {
   const auth: string[] | undefined = process.env.COINS2_AUTH?.split(",");
   if (auth && auth.length == 3) {
@@ -35,15 +28,17 @@ async function startup(): Promise<void> {
     });
   }
 }
+
 export default async function handler(event: any) {
   await startup();
   const a = Object.entries(adapters);
   const timestamp = 0;
+  await setEnvSecrets();
   await Promise.all(
     event.protocolIndexes.map(async (i: any) => {
       try {
         const results = await withTimeout(timeout, a[i][1][a[i][0]](timestamp));
-        const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+        const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
           results.flat(),
         );
         for (let i = 0; i < resultsWithoutDuplicates.length; i += step) {

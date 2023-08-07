@@ -21,10 +21,10 @@ async function getHandleDetails(handle, tweetSet = new Set()) {
   const extractNumber = (selector) => +$(selector).text().trim().replace(/,/g, '');
   if (response.status !== 200 || $('.error-panel').length) {
     const errorText = $('.error-panel').text().trim();
-    if (new RegExp(`"${handle}" not found`).test(errorText))
+    /* if (new RegExp(`"${handle}" not found`).test(errorText))
       return { notFound: true, error: errorText, updatedAt, handle, }
     if (new RegExp(`has been suspended`).test(errorText))
-      return { suspended: true, error: errorText, updatedAt, handle, }
+      return { suspended: true, error: errorText, updatedAt, handle, } */
     throw new Error(errorText);
   }
 

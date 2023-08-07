@@ -3,17 +3,21 @@ import glpAdapter from "./glp";
 import abraAdapter from "./abracadabra";
 import unknownTokenAdapter from "./unknownToken";
 import podsAdapter from "./pods";
-import distressedAdapter from "./distressedAssets";
+import distressedAdapter, { contracts } from "./distressedAssets";
 import manualInputAdapter from "./manualInput";
 import realtAdapter from "./realt";
 import metronomeAdapter from "./metronome";
 import { contracts as metronomeContracts } from "./metronome";
+import siloAdapter, { contracts as siloContracts } from "./silo";
 import { wrappedGasTokens } from "../utils/gasTokens";
 import collateralizedAdapter from "./collateralizedAssets";
 import swethAdapter from "./sweth";
 import gmdAdapter from "./gmd";
 import stkaurabalAdapter from "./stkaurabal";
 import shlb_ from "./shlb";
+import axios from "axios";
+import { Write, } from "../utils/dbInterfaces";
+import { addToDBWritesList, } from "../utils/database";
 
 export const shlb = shlb_;
 
@@ -28,6 +32,13 @@ export function metronome(timestamp: number = 0) {
     Object.keys(metronomeContracts).map((chain) =>
       metronomeAdapter(chain, timestamp),
     ),
+  );
+}
+
+export function silo(timestamp: number = 0) {
+  console.log("starting silo");
+  return Promise.all(
+    Object.keys(siloContracts).map((chain) => siloAdapter(chain, timestamp)),
   );
 }
 
@@ -134,6 +145,30 @@ export function unknownTokens(timestamp: number = 0) {
       false,
       "avax",
     ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xd3aC0C63feF0506699d68d833a10477137254aFf",
+      "0x9A592B4539E22EeB8B2A3Df679d572C7712Ef999", //pxGMX
+      "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      false,
+      "arbitrum",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0x0E8f117a563Be78Eb5A391A066d0d43Dd187a9E0",
+      "0x07bb65faac502d4996532f834a1b7ba5dc32ff96", //FVM
+      "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+      false,
+      "fantom",
+    ),
+    unknownTokenAdapter(
+      timestamp,
+      "0xf3C45b45223Df6071a478851B9C17e0630fDf535",
+      "0x1e925De1c68ef83bD98eE3E130eF14a50309C01B",
+      "0x4200000000000000000000000000000000000006",
+      false,
+      "optimism",
+    ),
   ]);
 }
 export function pods(timestamp: number = 0) {
@@ -142,17 +177,11 @@ export function pods(timestamp: number = 0) {
 }
 export function distressed(timestamp: number = 0) {
   console.log("starting distressed");
-  return Promise.all([
-    // distressedAdapter("harmony", timestamp),
-    distressedAdapter("klaytn", timestamp),
-    distressedAdapter("arbitrum", timestamp),
-    distressedAdapter("bsc", timestamp),
-    distressedAdapter("ethereum", timestamp),
-    distressedAdapter("avax", timestamp),
-    // distressedAdapter("cronos", timestamp),
-    // distressedAdapter("solana", timestamp),
-    distressedAdapter("fantom", timestamp),
-  ]);
+  return Promise.all(
+    Object.keys(contracts).map((chain: string) =>
+      distressedAdapter(chain, timestamp),
+    ),
+  );
 }
 export function manualInput(timestamp: number = 0) {
   console.log("starting manualInputs");
@@ -192,4 +221,32 @@ export function gmd(timestamp: number = 0) {
 export function stkaurabal(timestamp: number = 0) {
   console.log("starting stkaurabal");
   return stkaurabalAdapter(timestamp);
+}
+
+export async function buck(timestamp: number = 0) {
+  console.log("starting buck");
+  const THIRY_MINUTES = 1800
+  if (+timestamp !== 0 && timestamp < (+new Date() / 1e3 - THIRY_MINUTES))
+    throw new Error("Can't fetch historical data")
+  const writes: Write[] = [];
+  const { data: { result: { data: { content: { fields: { type_names, normalized_balances, coin_decimals, } } } } } } = await axios.post('https://fullnode.mainnet.sui.io', {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "sui_getObject",
+    "params": [
+      "0xeec6b5fb1ddbbe2eb1bdcd185a75a8e67f52a5295704dd73f3e447394775402b",
+      {
+        "showContent": true,
+      }
+    ]
+  })
+  const usdt = '5d4b302506645c37ff133b98c4b50a5ae14841659738d6d733d59d0d217a93bf::coin::COIN'
+  const buck = 'ce7ff77a83ea0cb6fd39bd8748e2ec89a3f41e8efdc3f4eb123e0ca37b184db2::buck::BUCK'
+  const usdtBal = normalized_balances[type_names.indexOf(usdt)]
+  const buckBal = normalized_balances[type_names.indexOf(buck)]
+  const buckDecimals = coin_decimals[type_names.indexOf(buck)]
+  const usdtDecimals = coin_decimals[type_names.indexOf(usdt)]
+  addToDBWritesList(writes, 'sui', '0x'+buck, usdtBal * (10 ** (buckDecimals - usdtDecimals)) / buckBal, buckDecimals, 'BUCK', timestamp, 'buck', 0.9)
+
+  return writes;
 }

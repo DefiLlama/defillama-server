@@ -7,17 +7,28 @@ import { getLogs, lookupBlock } from "@defillama/sdk/build/util";
 import { getCurrentUnixTimestamp } from "../../../utils/date";
 import { getLpPrices, TokenValues } from "./balancer";
 
+const factories: { [chain: string]: { address: string; fromBlock: number } } = {
+  arbitrum: {
+    address: "0xa3B9515A9c557455BC53F7a535A85219b59e8B2E",
+    fromBlock: 59209879,
+  },
+  polygon: {
+    address: "0x7bc6c0e73edaa66ef3f6e2f27b0ee8661834c6c9",
+    fromBlock: 39037615,
+  },
+};
+
 async function getPools(chain: any, block: number): Promise<string[]> {
   const tokens: string[] = [];
 
   (
     await getLogs({
-      target: "0xa3B9515A9c557455BC53F7a535A85219b59e8B2E",
+      target: factories[chain].address,
       topic:
         "0x83a48fbcfc991335314e74d0496aab6a1987e992ddc85dddbcc4d6dd6ef2e9fc",
       topics: [],
       keys: [],
-      fromBlock: 59209879,
+      fromBlock: factories[chain].fromBlock,
       toBlock: block,
       chain,
     })

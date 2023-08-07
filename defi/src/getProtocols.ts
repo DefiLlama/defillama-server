@@ -1,5 +1,5 @@
 import { wrap, IResponse, cache20MinResponse } from "./utils/shared";
-import protocols, { Protocol, } from "./protocols/data";
+import protocols, { Protocol } from "./protocols/data";
 import treasuries from "./protocols/treasury";
 import { getLastRecord, hourlyTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import sluggify from "./utils/sluggify";
@@ -45,7 +45,7 @@ const majors = [
   "icETH",
   "BTCB",
   "BETH",
-].map(t=>t.toUpperCase());
+].map((t) => t.toUpperCase());
 const stablecoins = [
   "USDT",
   "USDC",
@@ -88,7 +88,7 @@ const stablecoins = [
   "aAvaDAI",
   "avUSDT",
   "aOptUSDC",
-].map(t=>t.toUpperCase());
+].map((t) => t.toUpperCase());
 
 function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownTokens: { [token: string]: number } }) {
   const breakdown = {
@@ -107,7 +107,7 @@ function getTokenBreakdowns(lastRecord: { tvl: { [token: string]: number }; ownT
   for (const token in lastRecord.tvl) {
     if (majors.includes(token)) {
       breakdown.majors = breakdown.majors + lastRecord.tvl[token];
-    } else if (stablecoins.some(stable=>token.includes(stable))) {
+    } else if (stablecoins.some((stable) => token.includes(stable))) {
       breakdown.stablecoins = breakdown.stablecoins + lastRecord.tvl[token];
     } else {
       breakdown.others = breakdown.others + lastRecord.tvl[token];
@@ -122,7 +122,7 @@ async function craftProtocolsResponseInternal(
   protocolList: Protocol[],
   includeTokenBreakdowns?: boolean
 ) {
-  const coinMarkets = fetch("https://coins.llama.fi/mcaps", {
+  const coinMarkets = await fetch("https://coins.llama.fi/mcaps", {
     method: "POST",
     body: JSON.stringify({
       coins: protocolList
@@ -182,6 +182,7 @@ async function craftProtocolsResponseInternal(
           change_1d: getPercentChange(lastHourlyRecord.tvlPrev1Day, lastHourlyRecord.tvl),
           change_7d: getPercentChange(lastHourlyRecord.tvlPrev1Week, lastHourlyRecord.tvl),
           tokenBreakdowns: includeTokenBreakdowns ? getTokenBreakdowns(lastHourlyTokensUsd as any) : {},
+          mcap: protocol.gecko_id ? coinMarkets?.[`coingecko:${protocol.gecko_id}`]?.mcap ?? null : null,
         };
 
         const extraData: ["staking", "pool2"] = ["staking", "pool2"];
@@ -189,13 +190,6 @@ async function craftProtocolsResponseInternal(
         for (let type of extraData) {
           if (lastHourlyRecord[type] !== undefined) {
             dataToReturn[type] = lastHourlyRecord[type];
-          }
-        }
-
-        if (typeof protocol.gecko_id === "string") {
-          const coingeckoData = (await coinMarkets)[`coingecko:${protocol.gecko_id}`];
-          if (coingeckoData !== undefined) {
-            dataToReturn.mcap = coingeckoData.mcap;
           }
         }
 

@@ -1,7 +1,8 @@
 import fetch from "node-fetch";
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { getCoingeckoLock, setTimer } from "./utils/shared/coingeckoLocks";
-import ddb, { batchWrite, batchGet } from "./utils/shared/dynamodb";
+import ddb, { batchWrite, batchGet, } from "./utils/shared/dynamodb";
+import { getCoinPlatformData, } from "./utils/coingeckoPlatforms";
 import { cgPK } from "./utils/keys";
 import { decimals, symbol } from "@defillama/sdk/build/erc20";
 import invokeLambda from "./utils/shared/invokeLambda";
@@ -9,6 +10,8 @@ import sleep from "./utils/shared/sleep";
 import { Coin, iterateOverPlatforms } from "./utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 import { Connection, PublicKey, Keypair } from "@solana/web3.js";
+import { Write } from "./adapters/utils/dbInterfaces";	
+import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 
 let solanaConnection = new Connection(process.env.SOLANA_RPC || "https://rpc.ankr.com/solana")
 
@@ -48,44 +51,38 @@ interface IdToSymbol {
 }
 
 function storeCoinData(
-  timestamp: number,
-  coinData: CoingeckoResponse,
-  idToSymbol: IdToSymbol
+  coinData: any[],
 ) {
   return batchWrite(
-    Object.entries(coinData)
-      .filter((c) => c[1]?.usd !== undefined)
-      .map(([cgId, data]) => ({
-        PK: cgPK(cgId),
-        SK: 0,
-        price: data.usd,
-        mcap: data.usd_market_cap,
-        timestamp,
-        symbol: idToSymbol[cgId].toUpperCase(),
-        confidence: 0.99
-      })),
+    coinData.map((c) => ({
+      PK: c.PK,
+      SK: 0,
+      price: c.price,
+      mcap: c.mcap,
+      timestamp: c.timestamp,
+      symbol: c.symbol,
+      confidence: c.confidence
+    })),
     false
   );
 }
 
 function storeHistoricalCoinData(
-  coinData: CoingeckoResponse,
+  coinData: Write[],
 ) {
   return batchWrite(
-    Object.entries(coinData)
-      .filter((c) => c[1]?.usd !== undefined)
-      .map(([cgId, data]) => ({
-        SK: data.last_updated_at,
-        PK: cgPK(cgId),
-        price: data.usd,
-        confidence: 0.99
-      })),
+    coinData.map((c) => ({
+      SK: c.SK,
+      PK: c.PK,
+      price: c.price,
+      confidence: c.confidence
+    })),
     false
   );
 }
 
 let solanaTokens: Promise<any>;
-async function getSymbolAndDecimals(tokenAddress: string, chain: string, coingeckoSymbol:string) {
+async function getSymbolAndDecimals(tokenAddress: string, chain: string, coingeckoSymbol: string) {
   if (chain === "solana") {
     if (solanaTokens === undefined) {
       solanaTokens = fetch(
@@ -98,7 +95,7 @@ async function getSymbolAndDecimals(tokenAddress: string, chain: string, coingec
     if (token === undefined) {
       const decimalsQuery = await solanaConnection.getParsedAccountInfo(new PublicKey(tokenAddress))
       const decimals = (decimalsQuery.value?.data as any)?.parsed?.info?.decimals
-      if(typeof decimals !== "number"){
+      if (typeof decimals !== "number") {
         throw new Error(
           `Token ${chain}:${tokenAddress} not found in solana token list`
         );
@@ -148,14 +145,29 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     idToSymbol[coin.id] = coin.symbol;
   });
   const timestamp = getCurrentUnixTimestamp();
-  await storeCoinData(timestamp, coinData, idToSymbol);
-  await storeHistoricalCoinData(coinData);
+  const writes = Object.entries(coinData)	
+  .filter((c) => c[1]?.usd !== undefined)	
+  .map(([cgId, data]) => ({	
+    PK: cgPK(cgId),	
+    SK: data.last_updated_at,	
+    price: data.usd,	
+    mcap: data.usd_market_cap,	
+    timestamp,	
+    symbol: idToSymbol[cgId].toUpperCase(),	
+    confidence: 0.99	
+  }))	
+  const confidentCoins = await filterWritesWithLowConfidence(writes, 1) 
+  await storeCoinData(confidentCoins);
+  await storeHistoricalCoinData(confidentCoins)
+  const filteredCoins = coins.filter((coin) => coinData[coin.id]?.usd !== undefined);
+  const coinPlatformData = await getCoinPlatformData(filteredCoins)
+
   await Promise.all(
-    coins.map((coin) =>
+    filteredCoins.map((coin) =>
       iterateOverPlatforms(coin, async (PK, tokenAddress, chain) => {
-        if (coinData[coin.id]?.usd === undefined) {
-          return;
-        }
+        const previous = await ddb.get({ PK, SK: 0 });	
+        if (previous.Item?.confidence > 0.99) return;
+        
         const { decimals, symbol } = await getSymbolAndDecimals(
           tokenAddress,
           chain,
@@ -170,7 +182,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
           redirect: cgPK(coin.id),
           confidence: 0.99
         });
-      })
+      }, coinPlatformData)
     )
   );
 }
@@ -199,6 +211,7 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
     all[item.SK] = true;
     return all;
   }, {});
+
   await batchWrite(
     coinData.prices
       .filter((price) => {

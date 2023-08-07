@@ -99,6 +99,7 @@ export default {
         "id": "2848"
     },
     "pika-protocol": {
+        parentId: "Pika Protocol",
         "enabled": true,
         "id": "916"
     },
@@ -159,5 +160,101 @@ export default {
                 "category": "Dexes",
             }
         },
+    },
+    "hmx": {
+        "enabled": true,
+        "id": "2296"
+    },
+    "y2k": {
+        "enabled": true,
+        "id": "2375",
+        protocolsData: {
+            v1: {
+                "enabled": true,
+                "id": "2375",
+            },
+            v2: {
+                "enabled": true,
+                "id": "3056",
+            }
+        }
+    },
+    "kwenta": {
+        "enabled": true,
+        "id": "2981"
+    },
+    "synthetix": {
+        "enabled": true,
+        "id": "115",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1689292800": true,
+                "1689379200": true,
+                "1689465600": true,
+                "1689638400": true,
+                "1689811309": true,
+            },
+        }
+    },
+    "pika-protocol-v4": {
+        parentId: "Pika Protocol",
+        "enabled": true,
+        "id": "3281"
+    },
+    "gains-network": {
+        "enabled": true,
+        "id": "1018"
+    },
+    "palmswap": {
+        "enabled": true,
+        "id": "3279"
+    },
+    "drift-protocol": {
+        "enabled": true,
+        "id": "970",
+        "protocolsData": {
+            "derivatives": {
+                "id": "970",
+                "enabled": true,
+            }
+        },
+    },
+    "aevo": {
+        "enabled": true,
+        "id": "2797"
+    },
+    "grizzly-trade": {
+        "enabled": true,
+        "id": "3301",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3301",
+                "enabled": true,
+            }
+        },
+    },
+    "rollup-finace": {
+        "enabled": true,
+        "id": "2889",
+        "protocolsData": {
+            "derivatives": {
+                "id": "2889",
+                "enabled": true,
+            }
+        },
+    },
+    "ktx": {
+        "enabled": true,
+        "id": "3025",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3025",
+                "enabled": true,
+            }
+        }
+    },
+    "metavault-derivative": {
+        "enabled": true,
+        "id": "1801"
     }
 } as AdaptorsConfig

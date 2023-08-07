@@ -66,7 +66,7 @@ const handler = async (_event: AWSLambda.APIGatewayEvent): Promise<IResponse> =>
     async (timestamp: number, item: TvlItem, protocol: IProtocol) => {
       try {
         let category = protocol.category;
-        if (category) {
+        if (category && category !== "CEX") {
           sum(sumDailyTvls, category, timestamp, item, categoryProtocols, protocol);
           return;
         }

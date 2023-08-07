@@ -295,3 +295,13 @@ export function extraUniV2Lps(timestamp: number = 0) {
     ),
   ]);
 }
+export function fvm(timestamp: number = 0) {
+  console.log("starting fvm");
+  return getTokenPrices(
+    "fantom",
+    "0x472f3C3c9608fe0aE8d702f3f8A2d12c410C881A",
+    "0x2E14B53E2cB669f3A974CeaF6C735e134F3Aa9BC",
+    undefined,
+    timestamp,
+  );
+}

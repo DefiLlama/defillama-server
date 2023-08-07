@@ -200,24 +200,21 @@ async function getTokenAndRedirectDataDB(
   }
   return aggregateTokenAndRedirectData(allReads);
 }
-export function filterWritesWithLowConfidence(allWrites: Write[]) {
+export async function filterWritesWithLowConfidence(
+  allWrites: Write[],
+  latencyHours: number = 3,
+) {
+  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
+
   allWrites = allWrites.filter((w: Write) => w != undefined);
+  const allReads = (
+    await batchGet(allWrites.map((w: Write) => ({ PK: w.PK, SK: 0 })))
+  ).filter((w: Write) => w.timestamp ?? 0 > recentTime);
+
   const filteredWrites: Write[] = [];
   const checkedWrites: Write[] = [];
 
   if (allWrites.length == 0) return [];
-
-  const chain = allWrites[0].PK.substring(
-    allWrites[0].PK.indexOf("#") + 1,
-    allWrites[0].PK.indexOf(":"),
-  );
-
-  const distressedAssets =
-    chain in contracts
-      ? Object.values(contracts[chain]).map((d: string) =>
-          chain == "solana" ? d : d.toLowerCase(),
-        )
-      : [];
 
   allWrites.map((w: Write) => {
     let checkedWritesOfThisKind = checkedWrites.filter(
@@ -241,7 +238,14 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
           (x.SK == 0 && w.SK == 0)),
     );
 
+    let allReadsOfThisKind = allReads.filter((x: any) => x.PK == w.PK);
+
     if (allWritesOfThisKind.length == 1) {
+      if (
+        allReadsOfThisKind.length == 1 &&
+        allWritesOfThisKind[0].confidence < allReadsOfThisKind[0].confidence
+      )
+        return;
       if (
         "confidence" in allWritesOfThisKind[0] &&
         allWritesOfThisKind[0].confidence > confidenceThreshold
@@ -252,7 +256,9 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     } else {
       const maxConfidence = Math.max.apply(
         null,
-        allWritesOfThisKind.map((x: Write) => x.confidence),
+        [...allWritesOfThisKind, ...allReadsOfThisKind].map(
+          (x: Write) => x.confidence,
+        ),
       );
       filteredWrites.push(
         allWritesOfThisKind.filter(
@@ -263,11 +269,7 @@ export function filterWritesWithLowConfidence(allWrites: Write[]) {
     }
   });
 
-  return filteredWrites.filter(
-    (f: Write) =>
-      f != undefined &&
-      !distressedAssets.includes(f.PK.substring(f.PK.indexOf(":") + 1)),
-  );
+  return filteredWrites.filter((f: Write) => f != undefined);
 }
 function aggregateTokenAndRedirectData(reads: Read[]) {
   const coinData: CoinData[] = reads
@@ -336,6 +338,7 @@ export async function batchWrite2WithAlerts(
 }
 async function readPreviousValues(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
+  latencyHours: number = 6,
 ): Promise<DbEntry[]> {
   let queries: { PK: string; SK: number }[] = [];
   items.map(
@@ -347,7 +350,11 @@ async function readPreviousValues(
       });
     },
   );
-  return await batchGet(queries);
+  const results = await batchGet(queries);
+  const recentTime: number = getCurrentUnixTimestamp() - latencyHours * 60 * 60;
+  return results.filter(
+    (r: any) => r.timestamp > recentTime || r.confidence > 1,
+  );
 }
 async function checkMovement(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],

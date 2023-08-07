@@ -52,12 +52,12 @@ export default async function handler(event: any) {
               resultsWithoutDuplicates.slice(i, i + step),
               true,
             ),
-            batchWrite2WithAlerts(
-              resultsWithoutDuplicates.slice(i, i + step),
-              sql,
-              redis,
-            ),
           ]);
+          await batchWrite2WithAlerts(
+            resultsWithoutDuplicates.slice(i, i + step),
+            sql,
+            redis,
+          );
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {

@@ -14226,6 +14226,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#paladin-finance",
     listedAt: 1691414989
   },
+  {
+    id: "3353",
+    name: "Mooncake Finance",
+    address: null,
+    symbol: "-",
+    url: "https://mooncake.finance",
+    description:
+      "Mooncake Finance is a decentralized lending market on the Linea that allows users to lend and borrow assets on the Linea chain.",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/mooncake-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Linea"],
+    module: "mooncakefi/index.js",
+    twitter: "MooncakeFi",
+    forkedFrom: ["AAVE V3"],
+    oracles: ["Pyth"],
+    listedAt: 1691437238
+  },
 ]
 
 export default data3

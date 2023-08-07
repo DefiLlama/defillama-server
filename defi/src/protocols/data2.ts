@@ -17814,7 +17814,7 @@ const data2: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Base"],
     module: "uniswap/index.js",
     twitter: "Uniswap",
     audit_links: [

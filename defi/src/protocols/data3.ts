@@ -14248,6 +14248,30 @@ const data3: Protocol[] = [
     oracles: ["Pyth"],
     listedAt: 1691437238
   },
+  {
+    id: "3354",
+    name: "Synclub Staked BNB",
+    address: "bsc:0xb0b84d294e0c75a6abe60171b70edeb2efd14a1b",
+    symbol: "SNBNB",
+    //assetToken: "SNBNB",
+    url: "https://www.synclub.io/",
+    description:
+      "SnBNB is the yield bearing & liquid staking token for Synclub, which appreciates against BNB in line with BNB’s staking APR.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/synclub-staked-bnb.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "synclub-staked-bnb",
+    cmcId: "27568",
+    category: "Liquid Staking",
+    chains: ["Binance"],
+    module: "mooncakefi/index.js",
+    twitter: "Helio_Money",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://synclub.gitbook.io/synclub-docs/protocol/security"],
+    listedAt: 1691438200
+  },
 ]
 
 export default data3

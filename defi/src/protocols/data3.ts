@@ -14158,6 +14158,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#echodex",
     listedAt: 1691405999,
   },
+  {
+    id: "3350",
+    name: "Pulsar Money",
+    address: null,
+    symbol: "-",
+    url: "https://pulsar.money",
+    description:
+      "Pulsar Money is a Smart Payments Hub reshaping on-chain payments through advanced transfer modules.",
+    chain: "Elrond",
+    logo: `${baseIconsUrl}/pulsar-money.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Payments",
+    chains: ["Elrond"],
+    module: "pulsar-money/index.js",
+    twitter: "pulsarmoney",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1691414977
+  },
 ]
 
 export default data3

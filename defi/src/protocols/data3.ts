@@ -7864,8 +7864,8 @@ const data3: Protocol[] = [
   {
     id: "3066",
     name: "Paladin Warlord",
-    address: "0xa8258deE2a677874a48F5320670A869D74f0cbC1",
-    symbol: "WAR",
+    address: "0xAB846Fb6C81370327e784Ae7CbB6d6a6af6Ff4BF",
+    symbol: "PAL",
     url: "https://warlord.paladin.vote",
     description:
       "Warlord is a vote incentive index for AMM flywheels.",

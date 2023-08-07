@@ -14265,7 +14265,7 @@ const data3: Protocol[] = [
     cmcId: "27568",
     category: "Liquid Staking",
     chains: ["Binance"],
-    module: "mooncakefi/index.js",
+    module: "synclub-staked-bnb/index.js",
     twitter: "Helio_Money",
     forkedFrom: [],
     oracles: [],

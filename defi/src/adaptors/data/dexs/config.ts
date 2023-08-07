@@ -1841,5 +1841,9 @@ export default {
     "velocore-v2": {
         "enabled": true,
         "id": "3330"
+    },
+    "syncswap": {
+        "enabled": true,
+        "id": "2728"
     }
 } as AdaptorsConfig

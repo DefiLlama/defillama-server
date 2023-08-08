@@ -86,7 +86,6 @@ async function storeCoinData(coinData: any[]) {
       confidence: c.confidence,
       symbol: c.symbol,
       adapter: "coingecko",
-      decimals: 0,
     });
   });
   await batchWrite2(writes2, sql, redis);
@@ -115,7 +114,6 @@ async function storeHistoricalCoinData(coinData: Write[]) {
       confidence: c.confidence,
       symbol: c.symbol,
       adapter: "coingecko",
-      decimals: 0,
     });
   });
   await batchWrite2(writes2, sql, redis);

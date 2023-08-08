@@ -14384,6 +14384,30 @@ const data3: Protocol[] = [
     github: ["PhoenixErgo"],
     listedAt: 1691508185
   },
+  {
+    id: "3360",
+    name: "Aquarius Loan",
+    address: "core:-",
+    symbol: "ARS",
+    url: "https://www.aquarius.loan/",
+    description:
+      "A Decentralized Money Markets for Lenders and Borrowers in Core Blockchain",
+    chain: "CORE",
+    logo: `${baseIconsUrl}/aquarius-loan.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["CORE"],
+    module: "aquarius-loan/index.js",
+    twitter: "AquariusLoan",
+    forkedFrom: [],
+    oracles: [],
+    github: ["aquarius-loan"],
+    audit_links: ["https://docs.aquarius.loan/security/formal-verification"],
+    listedAt: 1691521815
+  },
 ]
 
 export default data3

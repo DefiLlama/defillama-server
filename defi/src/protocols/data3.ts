@@ -14291,7 +14291,7 @@ const data3: Protocol[] = [
     module: "sable-finance/index.js",
     twitter: "SableFinance",
     forkedFrom: ["Liquity"],
-    oracles: [],
+    oracles: ["Pyth"],
     audit_links: ["https://github.com/Sable-Finance/sable_audit/blob/main/reports/Mainnet_SlowMist%20Audit%20Report%20-%20Sable%20Finance.pdf"],
     listedAt: 1691506058
   },

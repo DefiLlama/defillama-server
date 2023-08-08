@@ -13826,7 +13826,7 @@ const data3: Protocol[] = [
   {
     id: "3335",
     name: "SpartaDex",
-    address: null,
+    address: "0x11f98c7e42a367dab4f200d2fdc460fb445ce9a8",
     symbol: "SPARTA",
     url: "https://spartadex.io/",
     description: "SpartaDEX is a combination of real-time strategy game set in the realities of ancient Greece and a decentralized cryptocurrency exchange. We called it a gamified DEX.",
@@ -13834,7 +13834,7 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/spartadex.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "spartadex",
     cmcId: null,
     category: "Dexes",
     chains: ["Arbitrum"],

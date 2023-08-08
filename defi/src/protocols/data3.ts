@@ -14402,7 +14402,7 @@ const data3: Protocol[] = [
     chains: ["CORE"],
     module: "aquarius-loan/index.js",
     twitter: "AquariusLoan",
-    forkedFrom: [],
+    forkedFrom: ["Compound V2"],
     oracles: [],
     github: ["aquarius-loan"],
     audit_links: ["https://docs.aquarius.loan/security/formal-verification"],

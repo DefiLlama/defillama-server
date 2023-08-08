@@ -26,6 +26,7 @@ async function startup(): Promise<void> {
       host: auth[1],
       password: auth[2],
     });
+    console.log(`redis configured`);
   }
 }
 

@@ -30,7 +30,7 @@ async function startup(): Promise<void> {
 }
 
 export default async function handler(event: any) {
-  // await startup();
+  await startup();
   const a = Object.entries(adapters);
   const timestamp = 0;
   await setEnvSecrets();
@@ -48,11 +48,11 @@ export default async function handler(event: any) {
               true,
             ),
           ]);
-          // await batchWrite2WithAlerts(
-          //   resultsWithoutDuplicates.slice(i, i + step),
-          //   sql,
-          //   redis,
-          // );
+          await batchWrite2WithAlerts(
+            resultsWithoutDuplicates.slice(i, i + step),
+            sql,
+            redis,
+          );
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {
@@ -70,7 +70,7 @@ export default async function handler(event: any) {
       }
     }),
   );
-  // await Promise.all([redis.quit(), sql.end()]);
+  await Promise.all([redis.quit(), sql.end()]);
   console.log("connections closed");
 }
 

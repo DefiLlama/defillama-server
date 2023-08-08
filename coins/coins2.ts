@@ -71,7 +71,7 @@ export async function translateItems(
 
     const timestamp = redirects[r.PK].timestamp ?? getCurrentUnixTimestamp();
     const adapter = redirects[r.PK].adapter ?? null;
-    const decimals = redirects[r.PK].adapter ?? null;
+    const decimals = redirects[r.PK].decimals ?? null;
     const { PK: key, confidence, symbol } = redirects[r.PK];
 
     remapped.push({
@@ -111,11 +111,17 @@ async function queryRedis(values: Coin[], redis: Redis): Promise<CoinDict> {
 }
 async function queryPostgres(values: Coin[], sql: postgres.Sql<{}>) {
   if (values.length == 0) return [];
-  const keys: string[] = values.map((v: Coin) => v.key);
+  const margin: number = 12 * 60 * 60;
+  const queries: any[] = values.map((v: Coin) => ({
+    key: v.key,
+    lower: v.timestamp - margin,
+    upper: v.timestamp + margin,
+  }));
 
   let data: any[] = await sql`
-      select ${sql(pgColumns)} from main where key in ${sql(keys)}
-    `;
+      select ${sql(pgColumns)} from main where 
+      key in ${sql(queries.map((q: any) => q.key))}
+    `; // and timestamp > etc
   console.log(`${data.length} found in PG`);
 
   return data;
@@ -142,9 +148,9 @@ async function combineRedisAndPostgreData(
   const combinedData: CoinDict = {};
   postgresData.map((r: Coin) => {
     let coin = redisData[r.key];
-    coin.price = r.price;
-    coin.timestamp = r.timestamp;
-    coin.confidence = r.confidence;
+    coin.price = Number(r.price);
+    coin.timestamp = Number(r.timestamp);
+    coin.confidence = Number(r.confidence);
     combinedData[r.key] = coin;
   });
 
@@ -177,21 +183,8 @@ export async function writeCoins2(
     redis.mset(strings),
     sql`
       insert into main
-      ${sql(
-        values,
-        "key",
-        "timestamp",
-        "price",
-        "confidence",
-        "adapter",
-        "decimals",
-        "symbol",
-      )}
-      on conflict (key) do
-      update set
-        timestamp = excluded.timestamp,
-        price = excluded.price,
-        confidence = excluded.confidence
+      ${sql(values, "key", "timestamp", "price", "confidence")}
+      on conflict (key, timestamp) do nothing
       `,
   ]);
 }
@@ -200,5 +193,7 @@ export async function batchWrite2(
   sql: postgres.Sql<{}>,
   redis: Redis,
 ) {
-  read ? readCoins2(values, sql, redis) : writeCoins2(values, sql, redis);
+  read
+    ? await readCoins2(values, sql, redis)
+    : await writeCoins2(values, sql, redis);
 }

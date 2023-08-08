@@ -11,8 +11,8 @@ import postgres from "postgres";
 import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
 import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
 
-let redis: Redis;
-let sql: postgres.Sql<{}>;
+export let redis: Redis;
+export let sql: postgres.Sql<{}>;
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
 
@@ -50,8 +50,8 @@ export default async function handler(event: any) {
           ]);
           await batchWrite2WithAlerts(
             resultsWithoutDuplicates.slice(i, i + step),
-            sql,
-            redis,
+            // sql,
+            // redis,
           );
         }
         console.log(`${a[i][0]} done`);

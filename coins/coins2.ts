@@ -1,5 +1,6 @@
-import { Redis } from "ioredis";
-import postgres from "postgres";
+// import { Redis } from "ioredis";
+// import postgres from "postgres";
+import { redis, sql } from "./src/storeCoins";
 import { DbEntry } from "./src/adapters/utils/dbInterfaces";
 import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordClosestToTimestamp";
 import { getCurrentUnixTimestamp } from "./src/utils/date";
@@ -89,7 +90,7 @@ export async function translateItems(
 
   return remapped;
 }
-async function queryRedis(values: Coin[], redis: Redis): Promise<CoinDict> {
+async function queryRedis(values: Coin[]): Promise<CoinDict> {
   if (values.length == 0) return {};
   const keys: string[] = values.map((v: Coin) => v.key);
 
@@ -109,7 +110,8 @@ async function queryRedis(values: Coin[], redis: Redis): Promise<CoinDict> {
 
   return jsonValues;
 }
-async function queryPostgres(values: Coin[], sql: postgres.Sql<{}>) {
+async function queryPostgres(values: Coin[]) {
+  //, sql: postgres.Sql<{}>) {
   if (values.length == 0) return [];
   const margin: number = 12 * 60 * 60;
   const queries: any[] = values.map((v: Coin) => ({
@@ -142,9 +144,9 @@ function sortQueriesByTimestamp(values: Coin[]) {
 async function combineRedisAndPostgreData(
   redisData: CoinDict,
   historicalQueries: Coin[],
-  sql: postgres.Sql<{}>,
+  // sql: postgres.Sql<{}>,
 ): Promise<CoinDict> {
-  const postgresData: Coin[] = await queryPostgres(historicalQueries, sql);
+  const postgresData: Coin[] = await queryPostgres(historicalQueries); //, sql);
   const combinedData: CoinDict = {};
   postgresData.map((r: Coin) => {
     let coin = redisData[r.key];
@@ -158,21 +160,21 @@ async function combineRedisAndPostgreData(
 }
 export async function readCoins2(
   values: Coin[],
-  sql: postgres.Sql<{}>,
-  redis: Redis,
+  // sql: postgres.Sql<{}>,
+  // redis: Redis,
 ): Promise<CoinDict> {
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
-  const redisData: CoinDict = await queryRedis(currentQueries, redis);
+  const redisData: CoinDict = await queryRedis(currentQueries); //, redis);
 
   return historicalQueries.length > 0
-    ? await combineRedisAndPostgreData(redisData, historicalQueries, sql)
+    ? await combineRedisAndPostgreData(redisData, historicalQueries) //, sql)
     : redisData;
 }
 export async function writeCoins2(
   values: Coin[],
-  sql: postgres.Sql<{}>,
-  redis: Redis,
+  // sql: postgres.Sql<{}>,
+  // redis: Redis,
 ) {
   const strings: { [key: string]: string } = {};
   values.map((v: Coin) => {
@@ -190,10 +192,10 @@ export async function writeCoins2(
 }
 export async function batchWrite2(
   values: Coin[],
-  sql: postgres.Sql<{}>,
-  redis: Redis,
+  // sql: postgres.Sql<{}>,
+  // redis: Redis,
 ) {
   read
-    ? await readCoins2(values, sql, redis)
-    : await writeCoins2(values, sql, redis);
+    ? await readCoins2(values) //, sql, redis)
+    : await writeCoins2(values); //, sql, redis);
 }

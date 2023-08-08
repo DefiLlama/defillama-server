@@ -1136,5 +1136,10 @@ export default {
     "zunami": {
         "enabled": true,
         "id": "1201"
+    },
+    "fusionx-v3": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3239"
     }
 } as AdaptorsConfig

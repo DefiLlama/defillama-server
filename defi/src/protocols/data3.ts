@@ -14317,6 +14317,73 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691506065
   },
+  {
+    id: "3357",
+    name: "AntiHero Finance",
+    address: "arbitrum:0x9d15bb4351E95A3FE213E48B410BA1aB7CF8Ce45",
+    symbol: "ANTI",
+    url: "https://www.antihero.finance",
+    description:
+      "AntiHero is a pioneering non-custodial lending protocol on Arbitrum, empowering users to borrow and lend assets.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/antihero-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "antihero-fi/index.js",
+    twitter: "AntiHeroFinance",
+    forkedFrom: ["Compound V2"],
+    oracles: ["Chainlink"],
+    listedAt: 1691508154
+  },
+  {
+    id: "3358",
+    name: "KRAV",
+    address: "base:0xbe3111856e4aca828593274ea6872f27968c8dd6",
+    symbol: "KRAV",
+    url: "https://krav.trade",
+    description:
+      "Decentralized Quanto Exchange on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/krav.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "krav/index.js",
+    twitter: "kravtrade",
+    forkedFrom: ["Gains Network"],
+    oracles: [],
+    listedAt: 1691508180
+  },
+  {
+    id: "3359",
+    name: "Phoenix Ergo",
+    address: null,
+    symbol: "-",
+    url: "https://phoenixfi.app",
+    description:
+      "Decentralized degen finance for Ergo blockchain.",
+    chain: "Ergo",
+    logo: `${baseIconsUrl}/phoenix-ergo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Ergo"],
+    module: "phoenixfi-app/index.js",
+    twitter: "PhoenixErgo",
+    forkedFrom: [],
+    oracles: [],
+    github: ["PhoenixErgo"],
+    listedAt: 1691508185
+  },
 ]
 
 export default data3

@@ -31,10 +31,10 @@ async function startup(): Promise<void> {
 }
 
 export default async function handler(event: any) {
+  await setEnvSecrets();
   await startup();
   const a = Object.entries(adapters);
   const timestamp = 0;
-  await setEnvSecrets();
   await Promise.all(
     event.protocolIndexes.map(async (i: any) => {
       try {

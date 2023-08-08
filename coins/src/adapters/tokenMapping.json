@@ -37,6 +37,11 @@
       "decimals": "18",
       "symbol": "stataEthWETH",
       "to": "ethereum:0x8b8bf083fd1837486c141681e10ea61d0f3cd692"
+    },
+    "0xbb6881874825e60e1160416d6c426eae65f2459e": {
+      "decimals": "18",
+      "symbol": "bb-a-WETH",
+      "to": "ethereum:0x60d604890feaa0b5460b28a424407c24fe89374a"
     }
   }
 }

@@ -14272,6 +14272,51 @@ const data3: Protocol[] = [
     audit_links: ["https://synclub.gitbook.io/synclub-docs/protocol/security"],
     listedAt: 1691438200
   },
+  {
+    id: "3355",
+    name: "Sable Finance",
+    address: "bsc:0x1eE098cBaF1f846d5Df1993f7e2d10AFb35A878d",
+    symbol: "SABLE",
+    url: "https://sable.finance",
+    description:
+      "Sable Finance is a reformative primitive for ETH LSD-backed stablecoin on Arbitrum and BNB Chain. Users can deposit ETH liquid staking derivatives as collateral to mint USDS.",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/sable-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "sable",
+    cmcId: "27648",
+    category: "CDP",
+    chains: ["Binance"],
+    module: "sable-finance/index.js",
+    twitter: "SableFinance",
+    forkedFrom: ["Liquity"],
+    oracles: [],
+    audit_links: ["https://github.com/Sable-Finance/sable_audit/blob/main/reports/Mainnet_SlowMist%20Audit%20Report%20-%20Sable%20Finance.pdf"],
+    listedAt: 1691506058
+  },
+  {
+    id: "3356",
+    name: "neuron",
+    address: null,
+    symbol: "-",
+    url: "https://goneuron.xyz",
+    description:
+      "The blazing fast privacy focused cross-chain bridge for transferring Ethereum native assets quickly and privately between L1 and L2 chains",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/neuron.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Bridge",
+    chains: ["Arbitrum"],
+    module: "neuron/index.js",
+    twitter: "goneuronxyz",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1691506065
+  },
 ]
 
 export default data3

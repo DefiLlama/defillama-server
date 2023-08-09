@@ -63,6 +63,11 @@
       "decimals": "18",
       "symbol": "rETH",
       "to": "coingecko#reth"
+    },
+    "0x2bcc6d6cdbbdc0a4071e48bb3b969b06b3330c07": {
+      "decimals": "9",
+      "symbol": "wSOL",
+      "to": "coingecko#solana"
     }
   },
   "aura": {

@@ -38,5 +38,12 @@
       "symbol": "stataEthWETH",
       "to": "ethereum:0x8b8bf083fd1837486c141681e10ea61d0f3cd692"
     }
+  },
+  "arbitrum": {
+    "0x6cda1d3d092811b2d48f7476adb59a6239ca9b95": {
+      "decimals": "18",
+      "symbol": "rETH",
+      "to": "coingecko#reth"
+    }
   }
 }

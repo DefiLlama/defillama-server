@@ -66,6 +66,11 @@
     }
   },
   "aura": {
+    "uaura": {
+      "decimals": "6",
+      "symbol": "AURA",
+      "to": "coingecko#aura-network"
+    },
     "aura1fgfnuru6krewgt9zzu7nzercz007928uzrw2t2tl6hl3ec50me2q3ankr2": {
       "decimals": "18",
       "symbol": "USDC",

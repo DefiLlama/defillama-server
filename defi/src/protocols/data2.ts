@@ -10182,7 +10182,7 @@ const data2: Protocol[] = [
     chains: ["Moonbeam"],
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
-    module: "moonwell-artemis/index.js",
+    module: "moonwell/index.js",
     twitter: "MoonwellDeFi",
     language: "Solidity",
     audit_links: [

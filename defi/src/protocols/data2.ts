@@ -9039,7 +9039,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Polygon"],
     oracles: ["Chainlink"],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     module: "metavault.trade/index.js",
     twitter: "MetavaultTRADE",
     audit_links: ["https://github.com/metavaultorg/trade-contracts/blob/main/Metavault.Trade_Full_Smart_Contract_Security_Audit.pdf"],
@@ -13139,7 +13139,7 @@ const data2: Protocol[] = [
     chains: ["Aurora"],
     module: "nex/index.js",
     twitter: "nex_market",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: ["SEDA"],
     audit_links: ["https://github.com/NEX-market/nex-contracts/blob/d6688b13eab7dcc731a2143c5c4fbd6c1af257bd/audits/NEX_Audit_Report_by_WatchPug.pdf"],
     listedAt: 1660815959,
@@ -13163,7 +13163,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "mycelium/index.js",
     twitter: "mycelium_xyz",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: ["Chainlink"],
     parentProtocol: "parent#mycelium",
     listedAt: 1660821814
@@ -14803,7 +14803,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Polygon"],
     oracles: [],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     module: "madmex/index.js",
     twitter: "MMFcrypto",
     parentProtocol: "parent#mm-finance",
@@ -17490,7 +17490,7 @@ const data2: Protocol[] = [
     chains: ["Arbitrum"],
     module: "handlefi-fxpreps/index.js",
     twitter: "handle_fi",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     listedAt: 1665919003,
     parentProtocol: "parent#handle-finance"
   },
@@ -18808,7 +18808,7 @@ const data2: Protocol[] = [
     chains: ["Binance"],
     module: "peaky-finance/index.js",
     twitter: "peakyfinance",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: ["Chainlink"],
     listedAt: 1667292908
   },
@@ -19166,7 +19166,7 @@ const data2: Protocol[] = [
     chains: ["Optimism"],
     module: "opx/index.js",
     twitter: "opxfinance",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: ["SEDA"],
     audit_links: ["https://github.com/opxfinance/opx-contracts/tree/main/audits"],
     listedAt: 1667818926
@@ -20696,7 +20696,7 @@ const data2: Protocol[] = [
     chains: ["Kava"],
     module: "kperp-exchange/index.js",
     twitter: "KPerpExchange",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: ["TWAP", "Witnet"],
     listedAt: 1669910621
   },
@@ -21385,7 +21385,7 @@ const data2: Protocol[] = [
     chains: ["Binance"],
     module: "El-Dorado-Exchange/index.js",
     twitter: "ede_finance",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: ["Chainlink"],
     audit_links: ["https://docs.ede.finance/audit"],
     listedAt: 1670855637,
@@ -21500,7 +21500,7 @@ const data2: Protocol[] = [
     chains: ["Fantom"],
     module: "mummy/index.js",
     twitter: "mummyftm",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: [],
     governanceID: ["snapshot:mmyvote.eth"],
     listedAt: 1671034969,
@@ -22172,7 +22172,7 @@ const data2: Protocol[] = [
     chains: ["Kava"],
     module: "kmex-io/index.js",
     twitter: "kmex_io",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: [],
     listedAt: 1672105449
   },
@@ -22432,7 +22432,7 @@ const data2: Protocol[] = [
     chains: ["Binance"],
     module: "syrupfinance/index.js",
     twitter: "syrupfinance",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: [],
     audit_links: ["https://github.com/Syrup-Finance/syrup-contracts/tree/main/audits"],
     listedAt: 1672682063,
@@ -23455,7 +23455,7 @@ const data2: Protocol[] = [
     module: "baymax/index.js",
     twitter: "baymaxfi",
     oracles: [],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     listedAt: 1673950178
   },
   {
@@ -23825,7 +23825,7 @@ const data2: Protocol[] = [
     module: "cranium/index.js",
     twitter: "craniumexchange",
     oracles: ["Chainlink"],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     listedAt: 1674239023
   },
   {
@@ -23892,7 +23892,7 @@ const data2: Protocol[] = [
     module: "tethys-perpetual/index.js",
     twitter: "tethysfinance",
     oracles: [],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     parentProtocol: "parent#tethys-finance",
     listedAt: 1674434859
   },
@@ -24422,7 +24422,7 @@ const data2: Protocol[] = [
     module: "dpex/index.js",
     twitter: "DPEX_io",
     oracles: [],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     audit_links: [
       "https://www.certik.com/projects/dpex",
       "https://github.com/zokyo-sec/audit-reports/blob/main/DPEX/DPEX_Zokyo%20audit%20report.pdf"
@@ -25273,7 +25273,7 @@ const data2: Protocol[] = [
     module: "covo-finance/index.js",
     twitter: "covofinance",
     oracles: ["Chainlink"],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     parentProtocol: "parent#covo-finance",
     listedAt: 1676226573
   },
@@ -26118,7 +26118,7 @@ const data2: Protocol[] = [
     module: "lif3-trade/index.js",
     twitter: "Official_LIF3",
     oracles: ["Chainlink"],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     parentProtocol: "parent#lif3.com",
     listedAt: 1677033189
   },
@@ -27880,7 +27880,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Cronos"],
     module: "fulcrom/index.js",
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     oracles: ["Pyth"],
     twitter: "FulcromFinance",
     listedAt: 1678203844
@@ -28252,7 +28252,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Binance"],
     oracles: ["Pyth"],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     module: "alpacafinance-gmx/index.js",
     twitter: "AlpacaFinance",
     parentProtocol: "parent#alpaca-finance",
@@ -28339,7 +28339,7 @@ const data2: Protocol[] = [
     category: "Derivatives",
     chains: ["Fantom"],
     oracles: ["Pyth"],
-    forkedFrom: ["GMX V2"],
+    forkedFrom: ["GMX V1"],
     module: "morphex/index.js",
     twitter: "MorphexFTM",
     listedAt: 1678706137

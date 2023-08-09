@@ -14477,6 +14477,29 @@ const data3: Protocol[] = [
     github: ["halotrade-zone"],
     listedAt: 1691604795
   },
+  {
+    id: "3364",
+    name: "Themis-lsdFil",
+    address: null,
+    symbol: "-",
+    url: "https://dapp.themis.capital/",
+    description:
+      "Liquid staking protocol on Filecoin",
+    chain: "Filecoin",
+    logo: `${baseIconsUrl}/themis-lsdfil.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Filecoin"],
+    module: "lsdFil/index.js",
+    twitter: "ThemisProtocol",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#themis-pro",
+    listedAt: 1691614732
+  },
   
 ]
 

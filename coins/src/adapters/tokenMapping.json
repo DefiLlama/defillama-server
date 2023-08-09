@@ -25,6 +25,13 @@
       "to": "coingecko#ethereum"
     }
   },
+  "core": {
+    "0xeab3ac417c4d6df6b143346a46fee1b847b50296": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    }
+  },
   "sui": {
     "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN": {
       "decimals": "6",
@@ -37,6 +44,11 @@
       "decimals": "18",
       "symbol": "stataEthWETH",
       "to": "ethereum:0x8b8bf083fd1837486c141681e10ea61d0f3cd692"
+    },
+    "0xbb6881874825e60e1160416d6c426eae65f2459e": {
+      "decimals": "18",
+      "symbol": "bb-a-WETH",
+      "to": "ethereum:0x60d604890feaa0b5460b28a424407c24fe89374a"
     }
   }
 }

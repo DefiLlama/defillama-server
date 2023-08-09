@@ -703,49 +703,25 @@ export default {
         parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink VRF V1",
-        id: "2623",
-        "protocolsData": {
-            "chainlink-vrf-v1": {
-                "id": "3339",
-                "enabled": true,
-            }
-        },
+        id: "3339"
     },
     "chainlink-vrf-v2": {
         parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink VRF V2",
-        id: "2623",
-        "protocolsData": {
-            "chainlink-vrf-v2": {
-                "id": "3340",
-                "enabled": true,
-            }
-        },
+        id: "3340"
     },
     "chainlink-keepers": {
         parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Keepers",
-        id: "2623",
-        "protocolsData": {
-            "chainlink-keepers": {
-                "id": "3338",
-                "enabled": true,
-            }
-        },
+        id: "3338"
     },
     "chainlink-requests": {
         parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Requests",
-        id: "2623",
-        "protocolsData": {
-            "chainlink-requests": {
-                "id": "2623",
-                "enabled": true,
-            }
-        },
+        id: "2623"
     },
     "aura": {
         enabled: true,
@@ -1136,5 +1112,10 @@ export default {
     "zunami": {
         "enabled": true,
         "id": "1201"
+    },
+    "fusionx-v3": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3239"
     }
 } as AdaptorsConfig

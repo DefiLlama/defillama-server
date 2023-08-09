@@ -256,5 +256,9 @@ export default {
     "metavault-derivative": {
         "enabled": true,
         "id": "1801"
+    },
+    "unidex": {
+        "enabled": true,
+        "id": "1833"
     }
 } as AdaptorsConfig

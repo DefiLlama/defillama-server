@@ -1764,6 +1764,7 @@ export default {
         "id": "3257"
     },
     "echodex": {
+        parentId: "EchoDEX",
         "enabled": true,
         "id": "3256"
     },
@@ -1841,5 +1842,14 @@ export default {
     "velocore-v2": {
         "enabled": true,
         "id": "3330"
+    },
+    "syncswap": {
+        "enabled": true,
+        "id": "2728"
+    },
+    "echodex-v3": {
+        parentId: "EchoDEX",
+        "enabled": true,
+        "id": "3349"
     }
 } as AdaptorsConfig

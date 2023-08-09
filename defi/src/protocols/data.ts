@@ -11581,7 +11581,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     name: "Beethoven X",
     address: "fantom:0xf24bcf4d1e507740041c9cfd2dddb29585adce1e",
     symbol: "BEETS",
-    url: "https://www.beethovenx.io",
+    url: "https://beets.fi",
     description:
       "We leverage best in breed DeFi protocols to offer novel decentralized investment strategies. Built on Balancer V2, Beethoven X is the first next-generation AMM protocol on Fantom.",
     chain: "Fantom",
@@ -11591,7 +11591,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     gecko_id: "beethoven-x",
     cmcId: "13244",
     category: "Dexes",
-    chains: ["Fantom"],
+    chains: ["Fantom", "Optimism"],
     module: "beethovenx/index.js",
     twitter: "beethoven_x",
     forkedFrom: ["Balancer"],

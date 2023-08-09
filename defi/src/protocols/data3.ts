@@ -14453,6 +14453,30 @@ const data3: Protocol[] = [
     audit_links: ["https://trufy.io/reports/orchai.pdf"],
     listedAt: 1691591862
   },
+  {
+    id: "3363",
+    name: "HaloTrade",
+    address: null,
+    symbol: "-",
+    url: "https://halotrade.zone/swap",
+    description:
+      "The DEX on Aura Network",
+    chain: "Aura",
+    logo: `${baseIconsUrl}/halotrade.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Aura"],
+    module: "halotrade/index.js",
+    twitter: "Halotradezone",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/halotrade-zone/audit-report"],
+    github: ["halotrade-zone"],
+    listedAt: 1691604795
+  },
 ]
 
 export default data3

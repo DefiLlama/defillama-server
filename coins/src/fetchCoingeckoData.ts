@@ -12,29 +12,12 @@ import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 import { Connection, PublicKey, Keypair } from "@solana/web3.js";
 import { Write } from "./adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
-import { batchWrite2 } from "../coins2";
-import { Redis } from "ioredis";
-import postgres from "postgres";
+import { batchWrite2, startup } from "../coins2";
+import setEnvSecrets from "../../defi/src/utils/shared/setEnvSecrets";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
 );
-
-let redis: Redis;
-let sql: postgres.Sql<{}>;
-
-async function startup(): Promise<void> {
-  const auth: string[] | undefined = process.env.COINS2_AUTH?.split(",");
-  if (auth && auth.length == 3) {
-    sql = postgres(auth[0]);
-
-    redis = new Redis({
-      port: 6379,
-      host: auth[1],
-      password: auth[2],
-    });
-  }
-}
 
 export async function retryCoingeckoRequest(
   query: string,
@@ -88,7 +71,7 @@ async function storeCoinData(coinData: any[]) {
       adapter: "coingecko",
     });
   });
-  await batchWrite2(writes2, sql, redis);
+  await batchWrite2(writes2);
   return batchWrite(
     coinData.map((c) => ({
       PK: c.PK,
@@ -112,11 +95,9 @@ async function storeHistoricalCoinData(coinData: Write[]) {
       timestamp: c.SK,
       price: c.price,
       confidence: c.confidence,
-      symbol: c.symbol,
-      adapter: "coingecko",
     });
   });
-  await batchWrite2(writes2, sql, redis);
+  await batchWrite2(writes2);
   return batchWrite(
     coinData.map((c) => ({
       SK: c.SK,
@@ -262,7 +243,7 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
     ),
   );
 
-  if (writes2.length) await batchWrite2(writes2, sql, redis);
+  if (writes2.length) await batchWrite2(writes2);
 }
 
 const HOUR = 3600;
@@ -319,8 +300,6 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
         adapter: "coingecko",
         symbol: "null",
       })),
-    sql,
-    redis,
   );
 }
 
@@ -352,6 +331,7 @@ export const handler2 = (hourly: boolean) => async (
   const rejected = [] as Coin[];
   const timer = setTimer();
   const requests = [];
+  await setEnvSecrets();
   await startup();
   if (hourly) {
     const hourlyCoins = [];

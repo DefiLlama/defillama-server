@@ -83,4 +83,4 @@ async function main() {
   await handler(a);
   if (process.env.LLAMA_RUN_LOCAL) process.exit(0);
 }
-if (process.env.LLAMA_RUN_LOCAL) main();
+// if (process.env.LLAMA_RUN_LOCAL) main();

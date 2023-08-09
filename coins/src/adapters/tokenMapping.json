@@ -50,5 +50,12 @@
       "symbol": "bb-a-WETH",
       "to": "ethereum:0x60d604890feaa0b5460b28a424407c24fe89374a"
     }
+  },
+  "arbitrum": {
+    "0x6cda1d3d092811b2d48f7476adb59a6239ca9b95": {
+      "decimals": "18",
+      "symbol": "rETH",
+      "to": "coingecko#reth"
+    }
   }
 }

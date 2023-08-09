@@ -8,6 +8,7 @@ import { executeAndIgnoreErrors } from "./storeTvlInterval/errorDb";
 import { getCurrentUnixTimestamp } from "./utils/date";
 import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from "@supercharge/promise-pool";
+import setEnvSecrets from "./utils/shared/setEnvSecrets";
 
 const maxRetries = 4;
 const millisecondsBeforeLambdaEnd = 30e3; // 30s
@@ -24,6 +25,7 @@ async function storeIntervals(protocolIndexes: number[], getRemainingTimeInMilli
     getRemainingTimeInMillis() - millisecondsBeforeLambdaEnd
   );
   clearTimeout(blocksTimeout);
+  await setEnvSecrets()
 
   const staleCoins: StaleCoins = {};
   const actions = protocolIndexes.map((idx) => treasuries[idx]);

@@ -73,6 +73,7 @@ export default async function (balances: { [address: string]: string }, timestam
       PKsToTokens[response.PK].forEach((address) => {
         const balance = balances[address];
         const { price, decimals } = response;
+        if (!price) return;
         let symbol:string, amount:number;
         if (response.PK.startsWith('coingecko:')) {
           symbol = address;

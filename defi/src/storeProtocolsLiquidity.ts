@@ -78,7 +78,7 @@ const transformChainName = (address:string)=>{
 
 async function getDexPools(){
     const [pools, config, cgCoins, bridgedCoinsRaw] = await Promise.all([
-        fetch(`https://yields.llama.fi/pools`).then(r => r.json()),
+        fetch(`https://yields.llama.fi/allPools`).then(r => r.json()),
         fetch(`https://api.llama.fi/config/yields`).then(r => r.json()),
         fetch(`https://api.coingecko.com/api/v3/coins/list?include_platform=true`).then(r => r.json()),
         fetch(`https://defillama-datasets.llama.fi/bridgedTokens.json`).then(r => r.json())

@@ -259,6 +259,7 @@ export default {
         },
     },
     "velodrome": {
+        parentId: "Velodrome",
         "enabled": true,
         "id": "1799"
     },
@@ -543,6 +544,10 @@ export default {
             "v320": {
                 id: "1657",
                 enabled: true
+            },
+            "v5": {
+                id: "3324",
+                enabled: true
             }
         }
     },
@@ -695,21 +700,25 @@ export default {
         id: "2706"
     },
     "chainlink-vrf-v1": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink VRF V1",
-        id: "2623",
+        id: "3339"
     },
     "chainlink-vrf-v2": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink VRF V2",
-        id: "2623"
+        id: "3340"
     },
     "chainlink-keepers": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Keepers",
-        id: "2623"
+        id: "3338"
     },
     "chainlink-requests": {
+        parentId: "Chainlink",
         enabled: true,
         displayName: "Chainlink Requests",
         id: "2623"
@@ -828,6 +837,7 @@ export default {
         },
     },
     "pika-protocol": {
+        parentId: "Pika Protocol",
         "enabled": true,
         "id": "916"
     },
@@ -978,18 +988,24 @@ export default {
         id: "3168"
     },
     "thalaswap": {
+        parentId: "Thala Labs",
         enabled: true,
         id: "2795"
     },
-    "y2k-finance": {
+    "y2k": {
         parentId: "Y2K Finance",
         enabled: true,
-        id: "2375"
-    },
-    "y2k-finance-v2": {
-        parentId: "Y2K Finance",
-        enabled: true,
-        id: "3056"
+        id: "2375",
+        "protocolsData": {
+            "v1": {
+                "id": "2375",
+                "enabled": true,
+            },
+            "v2": {
+                "id": "3056",
+                "enabled": true,
+            }
+        },
     },
     "yield-yak-staked-avax": {
         enabled: true,
@@ -1003,5 +1019,103 @@ export default {
         parentId: "Equalizer0x",
         enabled: true,
         id: "3173"
+    },
+    "pendle": {
+        enabled: true,
+        id: "382"
+    },
+    "move-dollar": {
+        parentId: "Thala Labs",
+        enabled: true,
+        id: "2789"
+    },
+    "pinnako": {
+        enabled: true,
+        id: "3209"
+    },
+    "DerpDEX": {
+        enabled: true,
+        id: "3234"
+    },
+    "wigoswap": {
+        "enabled": true,
+        "id": "1351"
+    },
+    "apollox": {
+        "enabled": true,
+        "id": "1772"
+    },
+    "concordex-io": {
+        "enabled": true,
+        "id": "3172"
+    },
+    "vvs-finance": {
+        "enabled": true,
+        "id": "831"
+    },
+    "agni-fi": {
+        "enabled": true,
+        "id": "3265"
+    },
+    "benqi-lending": {
+        parentId: "Benqi",
+        "enabled": true,
+        "id": "467"
+    },
+    "pika-protocol-v4": {
+        parentId: "Pika Protocol",
+        "enabled": true,
+        "id": "3281"
+    },
+    "holdstation-defutures": {
+        "enabled": true,
+        "id": "2959"
+    },
+    "unicrypt": {
+        parentId: "UniCrypt",
+        "enabled": true,
+        "id": "1765"
+    },
+    "0x0dex": {
+        "enabled": true,
+        "id": "3264"
+    },
+    "base": {
+        "enabled": true,
+        "id": "8453"
+    },
+    "velodrome-v2": {
+        parentId: "Velodrome",
+        "enabled": true,
+        "id": "3302"
+    },
+    "sobal": {
+        "enabled": true,
+        "id": "3246"
+    },
+    "reserve": {
+        "enabled": true,
+        "id": "626"
+    },
+    "grizzly-trade": {
+        "enabled": true,
+        "id": "3301"
+    },
+    "rollup-finace": {
+        "enabled": true,
+        "id": "2889"
+    },
+    "ktx": {
+        "enabled": true,
+        "id": "3025"
+    },
+    "zunami": {
+        "enabled": true,
+        "id": "1201"
+    },
+    "fusionx-v3": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3239"
     }
 } as AdaptorsConfig

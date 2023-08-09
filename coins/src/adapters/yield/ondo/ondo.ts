@@ -8,7 +8,7 @@ const fluxTokens = [
   '0x1dd7950c266fb1be96180a8fdb0591f70200e018', // OUSG
 ]
 
-const oracle = '0xBa9B10f90B0ef26711373A0D8B6e7741866a7ef2'
+const oracle = '0xA42e17F72aEFC6Ae585A08E6058A38ec036D37ec'
 const chain = 'ethereum'
 
 export default async function getTokenPrices(timestamp: number) {

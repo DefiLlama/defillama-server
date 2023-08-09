@@ -1726,10 +1726,50 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM", "Rollup"],
+    chainid: 570, 
     parent: {
       chain: "Syscoin",
       types: ["L2", "gas"]
     },
+  },
+  "Tenet": {
+    geckoId: "tenet-1b000f7b-59cb-4e06-89ce-d62b32d362b9",
+    symbol: "TENET",
+    cmcId: "24892",
+    categories: ["EVM"],
+  },
+  "Mantle": {
+    geckoId: "mantle",
+    symbol: "MNT",
+    cmcId: "27075",
+    categories: ["EVM"],
+    chainId: 5000,
+  },
+  "Neon": {
+    geckoId: "neon",
+    symbol: "NEON",
+    cmcId: "26735",
+    categories: ["EVM"],
+    chainId: 245022934,
+  },
+  "Base": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+    chainId: 8453,
+  },
+  "Linea": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
+  "GravityBridge": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["Cosmos"],
   },
 } as unknown as {
   [chain: string]: {
@@ -2160,6 +2200,18 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Chihuahua"
     case "rollux":
       return "Rollux"
+    case "tenet":
+      return "Tenet"
+    case "mantle":
+      return "Mantle"
+    case "neon_evm":
+      return "Neon"
+    case "base":
+      return "Base"
+    case "linea":
+      return "Linea"
+    case "gravitybridge":
+      return "GravityBridge"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

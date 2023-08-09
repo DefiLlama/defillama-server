@@ -6,7 +6,7 @@ import { getCachedLiqsR2, getExternalLiqsR2, storeCachedLiqsR2, storeLiqsR2 } fr
 import { aggregateAssetAdapterData, Liq } from "./liquidationsUtils";
 import { performance } from "perf_hooks";
 
-export const standaloneProtocols: string[] = ["venus"];
+export const standaloneProtocols: string[] = ["venus", "maker"];
 export const excludedProtocols: string[] = ["angle", "euler"];
 
 async function handler() {
@@ -26,13 +26,14 @@ async function handler() {
                 console.log(`Using external fetcher for ${protocol}/${chain}`);
                 const liquidations = await getExternalLiqsR2(protocol, chain);
                 liqs[chain] = liquidations;
-                await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+                const res = await storeCachedLiqsR2(protocol, chain, JSON.stringify(liquidations));
+                console.log(res?.$metadata?.httpStatusCode);
                 const _end = performance.now();
                 console.log(`Fetched ${protocol} data for ${chain} in ${((_end - _start) / 1000).toLocaleString()}s`);
               } catch (e) {
                 console.error(e);
                 try {
-                  liqs[chain] = JSON.parse(await getCachedLiqsR2(protocol, chain));
+                  liqs[chain] = JSON.parse((await getCachedLiqsR2(protocol, chain))!);
                   console.log(`Using cached data for ${protocol}/${chain}`);
                 } catch (e) {
                   console.log(`No external fetcher data for ${protocol}/${chain}`);
@@ -54,7 +55,7 @@ async function handler() {
               } catch (e) {
                 console.error(e);
                 try {
-                  liqs[chain] = JSON.parse(await getCachedLiqsR2(protocol, chain));
+                  liqs[chain] = JSON.parse((await getCachedLiqsR2(protocol, chain))!);
                   console.log(`Using cached data for ${protocol}/${chain}`);
                 } catch (e) {
                   console.log(`No cached data for ${protocol}/${chain}`);
@@ -93,12 +94,15 @@ async function handler() {
       time,
     };
     const filename = symbol.toLowerCase() + "/" + hourId + ".json";
-    await storeLiqsR2(filename, JSON.stringify(_payload));
+    const resStoreLiqsR2 = await storeLiqsR2(filename, JSON.stringify(_payload));
+    console.log("resStoreLiqsR2", resStoreLiqsR2?.$metadata?.httpStatusCode);
     const latestFilename = symbol.toLowerCase() + "/latest.json";
-    await storeLiqsR2(latestFilename, JSON.stringify(_payload));
+    const resStoreLiqsR2Latest = await storeLiqsR2(latestFilename, JSON.stringify(_payload));
+    console.log("resStoreLiqsR2Latest", resStoreLiqsR2Latest?.$metadata?.httpStatusCode);
   }
 
   await storeLiqsR2("availability.json", JSON.stringify({ availability, time }));
+  console.log("Done");
   return;
 }
 

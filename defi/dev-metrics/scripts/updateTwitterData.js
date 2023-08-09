@@ -32,13 +32,23 @@ async function main() {
       oldData = {} // data is in outdated format, so we need to re-fetch it
     let data = oldData
 
-    if ((!oldData.updatedAt || +Date.now() - oldData.updatedAt > TWELVE_HOURS) && !oldData.notFound && !oldData.suspended) {
-      const tweetSet = new Set(oldData.tweets?.map(t => t.id))
-      data = await getHandleDetails(handle, tweetSet)
-      const mergedTweets = mergeTweets(oldData.tweets, data.tweets)
-      data = { ...oldData, ...data, tweets: mergedTweets }
-    } else {
-      sdk.log(`Skipping ${handle} because it was updated less than 12 hours ago[data]`)
+    try {
+
+      if ((!oldData.updatedAt || +Date.now() - oldData.updatedAt > TWELVE_HOURS) && !oldData.notFound && !oldData.suspended) {
+        const tweetSet = new Set(oldData.tweets?.map(t => t.id))
+        data = await getHandleDetails(handle, tweetSet)
+        const mergedTweets = mergeTweets(oldData.tweets, data.tweets)
+        data = { ...oldData, ...data, tweets: mergedTweets }
+      } else {
+        sdk.log(`Skipping ${handle} because it was updated less than 12 hours ago[data]`)
+        ++i;
+        continue;
+      }
+
+      await saveTwitterData(handle, data)
+
+    } catch (e) {
+      sdk.log(`Error fetching ${handle}`, e.toString())
     }
 
     twitterOverview[handle] = {
@@ -55,17 +65,16 @@ async function main() {
         handle: data.handle,
       }
     }
-
     const progress = Number(100 * checked / handles.length).toPrecision(5)
-    sdk.log(`${++i} Updated ${handle} `, twitterOverview[handle].ignore, data?.tweets?.length, `(${progress}%) (${checked}/${handles.length})`)
+    sdk.log(`${++i} Updated ${handle} `, twitterOverview[handle]?.ignore, data?.tweets?.length, `(${progress}%) (${checked}/${handles.length})`)
     // console.log(twitterOverview, data)
 
-    await saveTwitterData(handle, data)
-    await setTwitterOverviewFile(twitterOverview)
     // process.exit(0)
-    // if (checked % 10 === 0) {
-    // sdk.log(`Saving twitter overview file`)
-    // }
+    if (checked % 10 === 0) {
+      sdk.log(`Saving twitter overview file`)
+      await setTwitterOverviewFile(twitterOverview)
+    }
+    await setTwitterOverviewFile(twitterOverview)
   }
 }
 
@@ -81,12 +90,13 @@ function mergeTweets(...tweetsArray) {
 }
 
 async function test() {
-  const handle = 'SASHIMISASHIMI5'
+  const handle = 'logarithm_fi'
   // console.log(JSON.stringify(await testFetchWithoutCache('twitter', 'iearnfinance'), null, 2))
-  
+
   const data = await getHandleDetails(handle)
-  console.log(handle, data.tweets?.length, data)
-  await saveTwitterData(handle, data) 
+  console.log(handle, data.tweets?.length)
+  // await saveTwitterData(handle, data) 
 }
 
 main().catch(console.error).then(() => process.exit(0))
+// test().catch(console.error).then(() => process.exit(0))

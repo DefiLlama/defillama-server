@@ -11,20 +11,23 @@ const gitEndpoint = 'https://raw.githubusercontent.com/cosmostation/chainlist/ma
 export default async function bridge(): Promise<Token[]> {
   // const cosmosChainsSet = new Set([...Object.keys(cosmosAdapter.endPoints), ...tokenMapping.ibcChains, ...includeChains])
   const cosmosChainsSet = new Set([...includeChains, ...[
-    "kujira", "migaloo", "xpla", "kava", 'crescent', 'osmosis', 'stargaze', 'juno', 'injective', 'cosmos', 'comdex', 'stargaze', 'umee', 'orai', 'persistence', 'fxcore', 'neutron',
+    "kujira", "migaloo", "xpla", "kava", 'crescent', 'osmosis', 'stargaze', 'juno', 'injective', 'cosmos', 'comdex', 'stargaze', 'umee', 'persistence', 'neutron', 'gravitybridge',
   ]])
+  const chainMapping: any = {
+    'gravitybridge': 'gravity-bridge'
+  }
   skipChains.forEach(chain => cosmosChainsSet.delete(chain))
   const items: any = {}
   const supportedChains: any = await fetch(`${gitEndpoint}/supports.json`)
   const supportedChainsSet = new Set(supportedChains)
 
   for (const chain of cosmosChainsSet) {
-    if (!supportedChainsSet.has(chain)) {
+    if (!supportedChainsSet.has(chainMapping[chain] ?? chain) && !['migaloo'].includes(chain)) {
       console.log('Not yet supported by cosmostation:', chain)
       continue
     }
     try {
-      const assets: any = await fetch(`${gitEndpoint}/${chain}/assets.json`)
+      const assets: any = await fetch(`${gitEndpoint}/${chainMapping[chain] ?? chain}/assets.json`)
       assets.map(({ decimals, symbol, denom, type: assetType, coinGeckoId, counter_party, contract, origin_chain, origin_denom, }: any) => {
         if (typeof decimals !== 'number') return;
 

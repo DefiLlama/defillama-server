@@ -262,7 +262,16 @@ export function glacier(timestamp: number = 0) {
     timestamp,
   );
 }
-
+export function thena(timestamp: number = 0) {
+  console.log("starting thena");
+  return getTokenPrices(
+    "bsc",
+    "0xAFD89d21BdB66d00817d4153E055830B1c2B3970",
+    "0x6352a56caadC4F1E25CD6c75970Fa768A3304e64",
+    undefined,
+    timestamp,
+  );
+}
 export function extraUniV2Lps(timestamp: number = 0) {
   console.log("starting extra uni v2 lps");
   return Promise.all([
@@ -285,4 +294,14 @@ export function extraUniV2Lps(timestamp: number = 0) {
       "avax",
     ),
   ]);
+}
+export function fvm(timestamp: number = 0) {
+  console.log("starting fvm");
+  return getTokenPrices(
+    "fantom",
+    "0x472f3C3c9608fe0aE8d702f3f8A2d12c410C881A",
+    "0x2E14B53E2cB669f3A974CeaF6C735e134F3Aa9BC",
+    undefined,
+    timestamp,
+  );
 }

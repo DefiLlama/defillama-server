@@ -142,3 +142,11 @@ export function lodestar(timestamp: number = 0) {
     timestamp,
   );
 }
+export function marev2(timestamp: number = 0) {
+  console.log("starting marev2");
+  return getTokenPrices(
+    "kava",
+    "0xFcD7D41D5cfF03C7f6D573c9732B0506C72f5C72",
+    timestamp,
+  );
+}

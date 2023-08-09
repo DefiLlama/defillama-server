@@ -34,7 +34,7 @@ async function main(){
             ${chain}.core.fact_transactions
         group by dt`)
         await storeTxsInDb(chain, usersChart)
-        
+
     }))
 }
 

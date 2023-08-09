@@ -35,5 +35,9 @@ export default {
     "avnu": {
         enabled: true,
         id: "3154"
+    },
+    "bitkeep": {
+        enabled: true,
+        id: "3207"
     }
 } as AdaptorsConfig

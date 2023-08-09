@@ -3,6 +3,7 @@ import arbitrum from "./arbitrum";
 import avax from "./avax";
 // import bsc from "./bsc";
 import fantom from "./fantom";
+import era from "./era";
 import gasTokens from "./gasTokens";
 //import harmony from "./harmony";
 import optimism from "./optimism";
@@ -10,6 +11,12 @@ import polygon from "./polygon";
 // import solana from "./solana";
 // import xdai from "./xdai";
 import cosmos from "./cosmos";
+import synapse from './synapse'
+import base from './base'
+import neon_evm from './neon_evm'
+import arbitrum_nova from './arbitrum_nova'
+import mantle from './mantle'
+import axelar from './axelar'
 
 export type Token =
   | {
@@ -48,18 +55,25 @@ function normalizeBridgeResults(bridge: Bridge) {
   };
 }
 export const bridges = [
-  anyswap,
+  optimism,
+  // anyswap,
   arbitrum,
   avax,
   //bsc,
   fantom,
+  era,
   gasTokens,
   //harmony,
-  optimism,
   polygon,
   // solana
   //xdai
   cosmos,
+  synapse,
+  base,
+  neon_evm,
+  arbitrum_nova,
+  mantle,
+  axelar
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";
@@ -97,7 +111,7 @@ async function storeTokensOfBridge(bridge: Bridge) {
   await Promise.all(
     toRecords.map(async (record) => {
       const toPK = record.PK;
-      if (record.price) {
+      if (record.price != null) {
         toAddressToRecord[toPK] = toPK;
       } else if (record.redirect) {
         redirectsNeeded.push({

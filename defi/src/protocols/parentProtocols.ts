@@ -1264,6 +1264,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "kleva",
     cmcId: "21122",
     chains: [],
+    github: ["kleva-protocol"],
     twitter: "KLEVA_Protocol",
   },
   {

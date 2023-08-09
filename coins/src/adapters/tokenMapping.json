@@ -32,6 +32,13 @@
       "to": "coingecko#ethereum"
     }
   },
+  "klaytn": {
+    "0x67cb285790bb9f5dce728f80a3104a2297df2bb2": {
+      "decimals": "18",
+      "symbol": "oWEMIX",
+      "to": "coingecko#wemix-token"
+    }
+  },
   "sui": {
     "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN": {
       "decimals": "6",

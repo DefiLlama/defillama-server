@@ -23291,6 +23291,7 @@ const data2: Protocol[] = [
     twitter: "CALC_Finance",
     oracles: [],
     forkedFrom: [],
+    github: ['calculated-finance'],
     audit_links: ["https://github.com/SCV-Security/PublicReports/blob/main/CW/CALC-Finance/CALC%20Finance%20-%20Audit%20Report%20-%20v1.0.pdf"],
     listedAt: 1673816820
   },

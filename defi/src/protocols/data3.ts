@@ -14461,14 +14461,14 @@ const data3: Protocol[] = [
     url: "https://halotrade.zone/swap",
     description:
       "The DEX on Aura Network",
-    chain: "Aura",
+    chain: "Aura Network",
     logo: `${baseIconsUrl}/halotrade.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
     category: "Dexes",
-    chains: ["Aura"],
+    chains: ["Aura Network"],
     module: "halotrade/index.js",
     twitter: "Halotradezone",
     forkedFrom: [],
@@ -14477,6 +14477,7 @@ const data3: Protocol[] = [
     github: ["halotrade-zone"],
     listedAt: 1691604795
   },
+  
 ]
 
 export default data3

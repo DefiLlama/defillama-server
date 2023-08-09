@@ -1117,5 +1117,9 @@ export default {
         parentId: "FusionX Finance",
         enabled: true,
         id: "3239"
+    },
+    "ferro": {
+        "enabled": true,
+        "id": "1882"
     }
 } as AdaptorsConfig

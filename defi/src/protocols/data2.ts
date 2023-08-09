@@ -195,7 +195,7 @@ const data2: Protocol[] = [
     chains: ["Moonriver"],
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
-    module: "moonwell/index.js",
+    module: "moonwell-apollo/index.js",
     twitter: "MoonwellDeFi",
     language: "Solidity",
     audit_links: [

@@ -14500,7 +14500,30 @@ const data3: Protocol[] = [
     parentProtocol: "parent#themis-pro",
     listedAt: 1691614732
   },
-  
+  {
+    id: "3365",
+    name: "GMX V2",
+    address: "arbitrum:0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
+    symbol: "GMX",
+    url: "https://gmx.io",
+    description: "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/gmx-v2.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum", "Avalanche"],
+    module: "gmx-v2/index.js",
+    twitter: "GMX_IO",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#gmx",
+    audit_links: ["https://github.com/gmx-io/gmx-synthetics/tree/main/audits"],
+    listedAt: 1691622170
+  },
+
 ]
 
 export default data3

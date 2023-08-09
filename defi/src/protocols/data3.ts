@@ -14408,6 +14408,28 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.aquarius.loan/security/formal-verification"],
     listedAt: 1691521815
   },
+  {
+    id: "3361",
+    name: "Alien Base",
+    address: "base:0x1dd2d631c92b1acdfcdd51a0f7145a50130050c4",
+    symbol: "ALB",
+    url: "https://app.alienbase.xyz/",
+    description:
+      "Alienbase is a DEX built on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/alien-base.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "alienbase/index.js",
+    twitter: "AlienBaseDEX",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1691545534
+  },
 ]
 
 export default data3

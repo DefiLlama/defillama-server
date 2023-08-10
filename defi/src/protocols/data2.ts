@@ -21386,7 +21386,7 @@ const data2: Protocol[] = [
     module: "El-Dorado-Exchange/index.js",
     twitter: "ede_finance",
     forkedFrom: ["GMX V1"],
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","Pyth"],
     audit_links: ["https://docs.ede.finance/audit"],
     listedAt: 1670855637,
     governanceID: ["snapshot:edefinance.eth"]

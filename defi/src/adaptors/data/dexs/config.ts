@@ -1851,5 +1851,9 @@ export default {
         parentId: "EchoDEX",
         "enabled": true,
         "id": "3349"
+    },
+    "fcon-dex": {
+        "enabled": true,
+        "id": "3299"
     }
 } as AdaptorsConfig

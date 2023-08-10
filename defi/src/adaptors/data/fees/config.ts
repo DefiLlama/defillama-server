@@ -1125,5 +1125,9 @@ export default {
     "satori": {
         "enabled": true,
         "id": "2982"
+    },
+    "fcon-dex": {
+        "enabled": true,
+        "id": "3299"
     }
 } as AdaptorsConfig

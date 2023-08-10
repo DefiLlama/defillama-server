@@ -14545,7 +14545,29 @@ const data3: Protocol[] = [
     github: ["cochilli"],
     listedAt: 1691637723
   },
-
+  {
+    id: "3367",
+    name: "PSY",
+    address: null, //wilt not add their slsd token, since they will launch a governance token soon 
+    symbol: "-",
+    url: "https://www.psy.money",
+    description: "PSY is a CDP platform for yield-bearing assets such as LSDs. PSY offers SLSD borrowing against a curated list of yield-bearing asset.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/psy.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Arbitrum"],
+    module: "psy/index.js",
+    twitter: "PSY_Stablecoin",
+    forkedFrom: ["Liquity"],
+    oracles: ["Chainlink"],
+    github: ["psystablecoin"],
+    audit_links: ["https://github.com/psystablecoin/psy-contract/tree/main/audit"],
+    listedAt: 1691675187
+  },
 ]
 
 export default data3

@@ -11,8 +11,8 @@ import postgres from "postgres";
 import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
 import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
 
-let redis: Redis;
-let sql: postgres.Sql<{}>;
+export let redis: Redis;
+export let sql: postgres.Sql<{}>;
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
 
@@ -26,14 +26,15 @@ async function startup(): Promise<void> {
       host: auth[1],
       password: auth[2],
     });
+    console.log(`redis configured`);
   }
 }
 
 export default async function handler(event: any) {
-  // await startup();
+  await setEnvSecrets();
+  await startup();
   const a = Object.entries(adapters);
   const timestamp = 0;
-  await setEnvSecrets();
   await Promise.all(
     event.protocolIndexes.map(async (i: any) => {
       try {
@@ -48,11 +49,11 @@ export default async function handler(event: any) {
               true,
             ),
           ]);
-          // await batchWrite2WithAlerts(
-          //   resultsWithoutDuplicates.slice(i, i + step),
-          //   sql,
-          //   redis,
-          // );
+          await batchWrite2WithAlerts(
+            resultsWithoutDuplicates.slice(i, i + step),
+            // sql,
+            // redis,
+          );
         }
         console.log(`${a[i][0]} done`);
       } catch (e) {
@@ -70,7 +71,7 @@ export default async function handler(event: any) {
       }
     }),
   );
-  // await Promise.all([redis.quit(), sql.end()]);
+  await Promise.all([redis.quit(), sql.end()]);
   console.log("connections closed");
 }
 
@@ -82,4 +83,4 @@ async function main() {
   await handler(a);
   if (process.env.LLAMA_RUN_LOCAL) process.exit(0);
 }
-if (process.env.LLAMA_RUN_LOCAL) main();
+// if (process.env.LLAMA_RUN_LOCAL) main();

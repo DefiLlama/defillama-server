@@ -38,5 +38,9 @@ export default {
     "typus": {
         "enabled": true,
         "id": "2946"
+    },
+    "rysk-finance": {
+        "enabled": true,
+        "id": "2605"
     }
 } as AdaptorsConfig

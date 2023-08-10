@@ -28,7 +28,7 @@ async function main() {
   }
 
   const results = await protocolWrapper[protocol](0);
-  const resultsWithoutDuplicates = filterWritesWithLowConfidence(
+  const resultsWithoutDuplicates = await filterWritesWithLowConfidence(
     results.flat()
   );
 

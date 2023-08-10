@@ -325,8 +325,8 @@ export async function batchWriteWithAlerts(
 }
 export async function batchWrite2WithAlerts(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
-  sql: any,
-  redis: any,
+  // sql: any,
+  // redis: any,
 ) {
   const previousItems: DbEntry[] = await readPreviousValues(items);
   const filteredItems: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[] = await checkMovement(
@@ -334,7 +334,7 @@ export async function batchWrite2WithAlerts(
     previousItems,
   );
 
-  await batchWrite2(await translateItems(filteredItems), sql, redis);
+  await batchWrite2(await translateItems(filteredItems)); //), sql, redis);
 }
 async function readPreviousValues(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],

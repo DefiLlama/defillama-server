@@ -25,6 +25,20 @@
       "to": "coingecko#ethereum"
     }
   },
+  "core": {
+    "0xeab3ac417c4d6df6b143346a46fee1b847b50296": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "to": "coingecko#ethereum"
+    }
+  },
+  "klaytn": {
+    "0x67cb285790bb9f5dce728f80a3104a2297df2bb2": {
+      "decimals": "18",
+      "symbol": "oWEMIX",
+      "to": "coingecko#wemix-token"
+    }
+  },
   "sui": {
     "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN": {
       "decimals": "6",
@@ -37,6 +51,35 @@
       "decimals": "18",
       "symbol": "stataEthWETH",
       "to": "ethereum:0x8b8bf083fd1837486c141681e10ea61d0f3cd692"
+    },
+    "0xbb6881874825e60e1160416d6c426eae65f2459e": {
+      "decimals": "18",
+      "symbol": "bb-a-WETH",
+      "to": "ethereum:0x60d604890feaa0b5460b28a424407c24fe89374a"
+    }
+  },
+  "arbitrum": {
+    "0x6cda1d3d092811b2d48f7476adb59a6239ca9b95": {
+      "decimals": "18",
+      "symbol": "rETH",
+      "to": "coingecko#reth"
+    },
+    "0x2bcc6d6cdbbdc0a4071e48bb3b969b06b3330c07": {
+      "decimals": "9",
+      "symbol": "wSOL",
+      "to": "coingecko#solana"
+    }
+  },
+  "aura": {
+    "uaura": {
+      "decimals": "6",
+      "symbol": "AURA",
+      "to": "coingecko#aura-network"
+    },
+    "aura1fgfnuru6krewgt9zzu7nzercz007928uzrw2t2tl6hl3ec50me2q3ankr2": {
+      "decimals": "18",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
     }
   }
 }

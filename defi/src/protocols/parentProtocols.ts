@@ -1264,6 +1264,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "kleva",
     cmcId: "21122",
     chains: [],
+    github: ["kleva-protocol"],
     twitter: "KLEVA_Protocol",
   },
   {
@@ -2418,6 +2419,19 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "Echo_DEX",
+  },
+  {
+    id: "parent#gmx",
+    name: "GMX",
+    url: "https://gmx.io",
+    description: "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations) and asset rebalancing.",
+    logo: `${baseIconsUrl}/gmx.png`,
+    gecko_id: "gmx",
+    cmcId: "11857",
+    chains: [],
+    twitter: "GMX_IO",
+    governanceID: ["snapshot:gmx.eth"],
+    github: ["gmx-io"]
   },
 ];
 

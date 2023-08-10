@@ -17,6 +17,7 @@ import neon_evm from './neon_evm'
 import arbitrum_nova from './arbitrum_nova'
 import mantle from './mantle'
 import axelar from './axelar'
+import linea from './linea'
 
 export type Token =
   | {
@@ -73,7 +74,8 @@ export const bridges = [
   neon_evm,
   arbitrum_nova,
   mantle,
-  axelar
+  axelar,
+  linea,
 ].map(normalizeBridgeResults) as Bridge[];
 
 import { batchGet, batchWrite } from "../../utils/shared/dynamodb";

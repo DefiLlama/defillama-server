@@ -4109,6 +4109,7 @@ const data: Protocol[] = [
     governanceID: ["compound:ethereum:0x593b443da1ef8be060c4b7e793998ed743621340"],
     module: "bond-appetit.js",
     twitter: "DeFiBonds",
+    github: ['bondappetit'],
     audit_links: [
       "https://github.com/mixbytes/audits_public/tree/4fc7d333e3df57586e0f96cc551819e2c93f3ae9/BondAppetit",
       "https://github.com/HashEx/public_audits/blob/32a680c5b8f3a784ef3273c324e0841341f3abc2/BondApp%C3%A9tit/BondAppetit%20report.pdf",
@@ -21982,6 +21983,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     category: "Dexes",
     chains: ["Binance"],
     module: "sheepdex/index.js",
+    forkedFrom: ["Uniswap V3"],
     twitter: "SheepDex",
     listedAt: 1640829982,
     deadUrl: true

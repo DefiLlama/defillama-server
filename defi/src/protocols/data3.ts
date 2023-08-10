@@ -14590,6 +14590,27 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.preon.finance/information/security#audits"],
     listedAt: 1691686281
   },
+  {
+    id: "3369",
+    name: "Bounce Finance",
+    address: "0xA9B1Eb5908CfC3cdf91F9B8B3a74108598009096",
+    symbol: "Auction",
+    url: "https://www.bounce.finance",
+    description: "From customized auction pools to seamless on-chain settlements, Bounce Finance provides the tools you need to unleash the full potential of decentralized auctions.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bounce-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Launchpad",
+    chains: ["Ethereum"],
+    module: "bounce/index.js",
+    twitter: "bounce_finance",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    listedAt: 1691702530
+  },
 ]
 
 export default data3

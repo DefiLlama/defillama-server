@@ -14523,6 +14523,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/gmx-io/gmx-synthetics/tree/main/audits"],
     listedAt: 1691622170
   },
+  {
+    id: "3366",
+    name: "CoChilli",
+    address: null,
+    symbol: "-",
+    url: "https://app.cochilli.io",
+    description: "CoChilli is an Base protocol that combines elements of cryptocurrency trading with gamification. Our platform provides users with an opportunity to predict future Bitcoin (BTC) prices in a fully decentralized and secure environment",
+    chain: "Base",
+    logo: `${baseIconsUrl}/cochilli.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Prediction Market",
+    chains: ["Base"],
+    module: "cochilli/index.js",
+    twitter: "CoChilli_io",
+    forkedFrom: [],
+    oracles: ["Pyth"],
+    github: ["cochilli"],
+    listedAt: 1691637723
+  },
 
 ]
 

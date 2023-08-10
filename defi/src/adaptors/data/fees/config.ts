@@ -1121,5 +1121,9 @@ export default {
     "ferro": {
         "enabled": true,
         "id": "1882"
+    },
+    "satori": {
+        "enabled": true,
+        "id": "2982"
     }
 } as AdaptorsConfig

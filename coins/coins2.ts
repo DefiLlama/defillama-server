@@ -3,10 +3,13 @@ import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordCloses
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
 import postgres from "postgres";
+import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 
 const read: boolean = false;
 const pgColumns: string[] = ["key", "timestamp", "price", "confidence"];
-const latency = 1 * 60 * 60; // 1hr
+const latency: number = 1 * 60 * 60; // 1hr
+const margin: number = 12 * 60 * 60; // 12hr
+const confidenceThreshold: number = 0.3;
 
 type Coin = {
   price: number;
@@ -42,36 +45,38 @@ export async function translateItems(
   const remapped: Coin[] = [];
   const errors: string[] = [];
   const redirects: { [redirect: string]: any } = {};
-  items.map((i) => {
-    if (i.SK != 0) return;
+  items
+    .filter((i) => i != null)
+    .map((i) => {
+      if (i.SK != 0) return;
 
-    const {
-      price,
-      timestamp,
-      PK: key,
-      adapter,
-      confidence,
-      decimals,
-      symbol,
-      redirect,
-    } = i;
-
-    if (redirect) {
-      redirects[redirect] = i;
-    } else if (price == null) {
-      errors.push(key);
-    } else {
-      remapped.push({
+      const {
         price,
         timestamp,
-        key,
+        PK: key,
         adapter,
         confidence,
         decimals,
         symbol,
-      });
-    }
-  });
+        redirect,
+      } = i;
+
+      if (redirect) {
+        redirects[redirect] = i;
+      } else if (price == null) {
+        errors.push(key);
+      } else {
+        remapped.push({
+          price,
+          timestamp,
+          key,
+          adapter,
+          confidence,
+          decimals,
+          symbol,
+        });
+      }
+    });
 
   const redirectData = await Promise.all(
     Object.values(redirects).map((r: DbEntry) => {
@@ -101,7 +106,7 @@ export async function translateItems(
     });
   });
 
-  console.error(`${errors.length} errors in storing to coins2`);
+  console.error(`${errors.length} errors in translating to coins2`);
 
   return remapped;
 }
@@ -125,48 +130,71 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
 
   return jsonValues;
 }
-async function queryPostgres(values: Coin[]) {
-  if (values.length == 0) return [];
-  const margin: number = 12 * 60 * 60;
-  const queries: any[] = values.map((v: Coin) => ({
-    key: v.key,
-    lower: v.timestamp - margin,
-    upper: v.timestamp + margin,
-  }));
+async function queryPostgres(
+  values: Coin[],
+  target: number,
+): Promise<CoinDict> {
+  if (values.length == 0) return {};
+  const upper: number = target + margin;
+  const lower: number = target - margin;
 
-  let data: any[] = await sql`
+  let data: Coin[] = await sql`
       select ${sql(pgColumns)} from main where 
-      key in ${sql(queries.map((q: any) => q.key))}
-    `; // and timestamp > etc
+      key in ${sql(values.map((v: Coin) => v.key))}
+      and timestamp < ${upper}
+      and timestamp > ${lower}
+    `;
   console.log(`${data.length} found in PG`);
 
-  return data;
-}
-function sortQueriesByTimestamp(values: Coin[]) {
-  const now = getCurrentUnixTimestamp();
-  const historicalQueries: Coin[] = [];
-  const currentQueries: Coin[] = [];
-
-  values.map((v: Coin) => {
-    v.timestamp < now - latency
-      ? historicalQueries.push(v)
-      : currentQueries.push(v);
+  let dict: CoinDict = {};
+  data.map((d: Coin) => {
+    if (!(d.key in dict)) {
+      dict[d.key] = d;
+      return;
+    }
+    const savedTimestamp = dict[d.key].timestamp;
+    if (Math.abs(savedTimestamp - target) < Math.abs(d.timestamp - target))
+      return;
+    dict[d.key] = d;
   });
 
-  return [currentQueries, historicalQueries];
+  return dict;
+}
+function sortQueriesByTimestamp(values: Coin[]): Coin[][] {
+  const now = getCurrentUnixTimestamp();
+  const historicalQueries: Coin[] = [];
+
+  values.map((v: Coin) => {
+    if (v.timestamp < now - latency) historicalQueries.push(v);
+  });
+
+  return [values, historicalQueries];
 }
 async function combineRedisAndPostgreData(
   redisData: CoinDict,
   historicalQueries: Coin[],
+  target: number,
 ): Promise<CoinDict> {
-  const postgresData: Coin[] = await queryPostgres(historicalQueries);
+  const postgresData: CoinDict = await queryPostgres(historicalQueries, target);
   const combinedData: CoinDict = {};
-  postgresData.map((r: Coin) => {
-    let coin = redisData[r.key];
-    coin.price = Number(r.price);
-    coin.timestamp = Number(r.timestamp);
-    coin.confidence = Number(r.confidence);
-    combinedData[r.key] = coin;
+
+  Object.values(redisData).map((r: Coin) => {
+    const p = postgresData[r.key];
+    if (p) {
+      combinedData[r.key] = {
+        ...r,
+        price: Number(p.price),
+        timestamp: Number(p.timestamp),
+        confidence: Number(p.confidence),
+      };
+      return;
+    }
+    const withinMargin = Math.abs(r.timestamp - target) < margin;
+    if (withinMargin) {
+      combinedData[r.key] = r;
+      return;
+    }
+    console.log(`${r.key} is stale`);
   });
 
   return combinedData;
@@ -177,20 +205,71 @@ export async function readCoins2(values: Coin[]): Promise<CoinDict> {
   const redisData: CoinDict = await queryRedis(currentQueries);
 
   return historicalQueries.length > 0
-    ? await combineRedisAndPostgreData(redisData, historicalQueries)
+    ? await combineRedisAndPostgreData(
+        redisData,
+        historicalQueries,
+        values[0].timestamp,
+      )
     : redisData;
 }
+function cleanTimestamps(values: Coin[]): Coin[] {
+  const margin = 2 * 60; // 2 min
+  const timestamps = values.map((c: Coin) => c.timestamp);
+  const maxTimestamp = Math.max(...timestamps);
+  const minTimestamp = Math.min(...timestamps);
+
+  if (maxTimestamp - minTimestamp > margin)
+    throw new Error("mixed timestamps are unsupported");
+
+  return values.map((c: Coin) => ({ ...c, timestamp: maxTimestamp }));
+}
+function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
+  const writesToRedis: Coin[] = [];
+  values.map((c: Coin) => {
+    const record = storedRecords[c.key];
+    if (!record || record.timestamp < c.timestamp) {
+      writesToRedis.push(c);
+    } else {
+      console.log(`${c.key} already fresher in redis`);
+    }
+  });
+
+  return writesToRedis;
+}
+function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
+  const confidentValues: Coin[] = [];
+
+  values.map((c: Coin) => {
+    if (c.confidence < confidenceThreshold) return;
+    const storedRecord = storedRecords[c.key];
+    if (!storedRecord) {
+      confidentValues.push(c);
+      return;
+    }
+    if (c.confidence < storedRecord.confidence) return;
+    confidentValues.push(c);
+  });
+
+  return confidentValues;
+}
 export async function writeCoins2(values: Coin[]) {
-  // normalize timestamps, if theyre slightly different, round them up to latest
-  // check redis for if timestamp is more recent or not. Only write to redis if timestamp is latest
+  console.log(`${values.length} values entering`);
+  await setEnvSecrets();
+  await startup();
+  values = cleanTimestamps(values);
+  const storedRecords = await readCoins2(values);
+  values = cleanConfidences(values, storedRecords);
+  const writesToRedis = findRedisWrites(values, storedRecords);
   const strings: { [key: string]: string } = {};
-  values.map((v: Coin) => {
+  writesToRedis.map((v: Coin) => {
     strings[v.key] = JSON.stringify(v);
   });
 
   await Promise.all([
-    redis.mset(strings),
-    sql`
+    Object.keys(strings).length == 0 ? "" : redis.mset(strings),
+    values.length == 0
+      ? ""
+      : sql`
       insert into main
       ${sql(values, "key", "timestamp", "price", "confidence")}
       on conflict (key, timestamp) do nothing

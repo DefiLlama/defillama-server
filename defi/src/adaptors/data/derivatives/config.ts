@@ -260,5 +260,9 @@ export default {
     "unidex": {
         "enabled": true,
         "id": "1833"
+    },
+    "satori": {
+        "enabled": true,
+        "id": "2982"
     }
 } as AdaptorsConfig

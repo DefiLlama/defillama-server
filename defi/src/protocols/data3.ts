@@ -14611,6 +14611,28 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"],
     listedAt: 1691702530
   },
+  {
+    id: "3370",
+    name: "Sweep n Flip",
+    address: null,
+    symbol: "-",
+    url: "https://www.bounce.finance",
+    description: "Sweep n' Flip is increasing liquidity and volume of NFT collections through a powerful AMM with simple UI/UX.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/sweep-n-flip.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["Ethereum", "Polygon", "Arbitrum"],
+    module: "sweep-n-flip/index.js",
+    twitter: "SweepnFlip",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://sweep-n-flip.gitbook.io/documentation/sweep-n-flip-or-amm/audit"],
+    listedAt: 1691702535
+  },
 ]
 
 export default data3

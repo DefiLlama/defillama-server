@@ -14568,6 +14568,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/psystablecoin/psy-contract/tree/main/audit"],
     listedAt: 1691675187
   },
+  {
+    id: "3368",
+    name: "Preon Finance",
+    address: null,
+    symbol: "PREON",
+    url: "https://app.preon.finance/borrow",
+    description: "Preon is a decentralized, lending protocol that allows you to borrow against your crypto - at 0 interest. Loans are paid out in $STAR (a USD-pegged stablecoin) with a minimum maintained collateral ratio of 110%",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/preon-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Arbitrum"],
+    module: "preon/index.js",
+    twitter: "PreonFinance",
+    forkedFrom: ["Liquity"],
+    oracles: [],
+    audit_links: ["https://docs.preon.finance/information/security#audits"],
+    listedAt: 1691686281
+  },
 ]
 
 export default data3

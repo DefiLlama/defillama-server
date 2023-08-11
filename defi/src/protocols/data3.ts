@@ -14655,6 +14655,27 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/pessimistic-io/audits/blob/main/Locus%20Security%20Analysis%20by%20Pessimistic.pdf"],
     listedAt: 1691719621
   },
+  {
+    id: "3372",
+    name: "IceSwap",
+    address: "base:0x2303d1B31CF34fD06BBBeB3C1FaA003D90fD7218",
+    symbol: "IKE",
+    url: "https://iceswap.org",
+    description: "Unlock Infinite Possibilities: Trade, Earn, and Connect Across Chains with Iceswap.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/iceswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "iceswap/index.js",
+    twitter: "iceswap_org",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1691747179
+  },
 ]
 
 export default data3

@@ -804,6 +804,7 @@ export default {
         "id": "2864"
     },
     "merlin": {
+        disabled: true,
         "enabled": true,
         "id": "2849"
     },

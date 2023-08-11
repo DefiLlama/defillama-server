@@ -14616,7 +14616,7 @@ const data3: Protocol[] = [
     name: "Sweep n Flip",
     address: null,
     symbol: "-",
-    url: "https://www.bounce.finance",
+    url: "https://www.sweepnflip.io/",
     description: "Sweep n' Flip is increasing liquidity and volume of NFT collections through a powerful AMM with simple UI/UX.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/sweep-n-flip.png`,
@@ -14632,6 +14632,28 @@ const data3: Protocol[] = [
     oracles: [],
     audit_links: ["https://sweep-n-flip.gitbook.io/documentation/sweep-n-flip-or-amm/audit"],
     listedAt: 1691702535
+  },
+  {
+    id: "3371",
+    name: "Locus Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.locus.finance",
+    description: "Locus is a platform for decentralized asset management that offers tokenized yield-bearing vaults of strategies",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/locus-finance.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Ethereum", "Arbitrum"],
+    module: "locus/index.js",
+    twitter: "Locus_finance",
+    forkedFrom: [],
+    oracles: ["Chainlink", "TWAP"],
+    audit_links: ["https://github.com/pessimistic-io/audits/blob/main/Locus%20Security%20Analysis%20by%20Pessimistic.pdf"],
+    listedAt: 1691719621
   },
 ]
 

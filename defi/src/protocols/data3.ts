@@ -7401,8 +7401,8 @@ const data3: Protocol[] = [
   {
     id: "3046",
     name: "HashMix FIL",
-    address: null,
-    symbol: "-",
+    address: "filecoin:0x587A7eaE9b461ad724391Aa7195210e0547eD11d",
+    symbol: "cWFIL",
     url: "https://fvm.hashmix.org/#/deposit",
     description:
       "HashMix FIL Liquid Staking Protocol is a decentralized staking protocol on Filecoin, connecting FIL holders and miners in the ecosystem.",

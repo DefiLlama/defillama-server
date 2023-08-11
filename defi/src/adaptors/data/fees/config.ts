@@ -543,7 +543,8 @@ export default {
         protocolsData: {
             "v320": {
                 id: "1657",
-                enabled: true
+                enabled: true,
+                disabled: true
             },
             "v5": {
                 id: "3324",

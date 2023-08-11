@@ -484,6 +484,7 @@ export default {
         "id": "1401"
     },
     "kperp-exchange": {
+        "disabled": true,
         "enabled": true,
         "id": "2326"
     },

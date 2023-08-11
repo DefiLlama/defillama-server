@@ -59,7 +59,7 @@ function pullRepoCode() {
       git checkout master
       git pull
       cd defi
-      npm uninstall @defillama/emissions-adapters @defillama/dimension-adapters
+      npm uninstall @defillama/emissions-adapters
       npm i
       # npm update @defillama/sdk
       cd dev-metrics

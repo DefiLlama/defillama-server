@@ -1,6 +1,5 @@
 import type { Protocol } from './types'
 import { baseIconsUrl } from "../constants";
-import list from '@defillama/dimension-adapters/users/list';
 
 /*
 {

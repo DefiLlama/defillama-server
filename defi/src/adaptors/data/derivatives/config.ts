@@ -263,6 +263,11 @@ export default {
     },
     "satori": {
         "enabled": true,
-        "id": "2982"
+        "id": "2982",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1691625600": true,
+            },
+        }
     }
 } as AdaptorsConfig

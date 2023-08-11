@@ -2433,6 +2433,17 @@ const parentProtocols: IParentProtocol[] = [
     governanceID: ["snapshot:gmx.eth"],
     github: ["gmx-io"]
   },
+  {
+    id: "parent#swapbased",
+    name: "SwapBased",
+    url: "https://swapbased.finance",
+    description: "Kickstarting the Base ecosystem, SwapBased is THE DEX on Base.",
+    logo: `${baseIconsUrl}/swapbased.jpg`,
+    gecko_id: "base",
+    cmcId: "27789",
+    chains: [],
+    twitter: "swap_based",
+  },
 ];
 
 export default parentProtocols;

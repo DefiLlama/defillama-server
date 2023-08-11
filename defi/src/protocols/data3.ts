@@ -13675,13 +13675,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3328",
-    name: "SwapBased",
+    name: "SwapBased AMM",
     address: "base:0xd07379a755A8f11B57610154861D694b2A0f615a",
     symbol: "Base",
     url: "https://swapbased.finance",
     description: "Kickstarting the Base ecosystem, SwapBased is THE DEX on Base.",
     chain: "Base",
-    logo: `${baseIconsUrl}/swapbased.jpg`,
+    logo: `${baseIconsUrl}/swapbased-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -13692,6 +13692,7 @@ const data3: Protocol[] = [
     twitter: "swap_based",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    parentProtocol: "parent#swapbased",
     listedAt: 1690973151
   },
   {
@@ -14677,6 +14678,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691747179
   },
+  {
+    id: "3373",
+    name: "SwapBased Perp",
+    address: "base:0xd07379a755A8f11B57610154861D694b2A0f615a",
+    symbol: "Base",
+    url: "https://perps.swapbased.finance",
+    description: "Trade main assets on Base Chain with no price impact, low fees & up-to 30x leverage",
+    chain: "Base",
+    logo: `${baseIconsUrl}/swapbased-perp.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "swapbased-perp/index.js",
+    twitter: "swap_based",
+    forkedFrom: ["GMX V1"],
+    oracles: [],
+    parentProtocol: "parent#swapbased",
+    listedAt: 1691759429
+  },
+
 ]
 
 export default data3

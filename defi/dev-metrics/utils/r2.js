@@ -57,7 +57,7 @@ function getLink(govType, project) {
 
 async function getCache(govType, project, { } = {}) {
   return getR2JSONString(getKey(govType, project))
-  const Key = getKey(govType, project)
+  /* const Key = getKey(govType, project)
 
   console.log('fetching data from s3 bucket:', getLink(govType, project))
   try {
@@ -66,7 +66,7 @@ async function getCache(govType, project, { } = {}) {
   } catch (e) {
     sdk.log('failed to fetch data from s3 bucket:', Key)
     return {}
-  }
+  } */
 }
 
 async function setCache(govType, project, cache) {

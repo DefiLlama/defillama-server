@@ -103,7 +103,7 @@ async function runNpmCommand({ script, name }) {
     name,
     bashCode: `
       cd repo/defi/dev-metrics
-      npm run ${script}
+      time npm run ${script}
     `
   })
 }

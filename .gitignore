@@ -10,3 +10,4 @@ docker
 
 defi/src/cli/tmp
 defi/dev-metrics/app-data
+defi/dev-metrics/runner/repo

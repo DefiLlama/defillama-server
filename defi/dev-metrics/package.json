@@ -5,7 +5,8 @@
   "main": "test.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node updateDevMapping.ts && node index.js"
+    "start": "ts-node updateDevMapping.ts && node index.js",
+    "update-dev-mapping": "ts-node updateDevMapping.ts"
   },
   "author": "",
   "license": "MIT",

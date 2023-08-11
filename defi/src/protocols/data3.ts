@@ -13516,6 +13516,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     github: ["safe-global"],
+    governanceID: ["snapshot:safe.eth"],
     listedAt: 1690856679
   },
   {

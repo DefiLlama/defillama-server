@@ -2514,7 +2514,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Lending",
     chains: ["Starknet"],
     oracles: [],
     forkedFrom: [],

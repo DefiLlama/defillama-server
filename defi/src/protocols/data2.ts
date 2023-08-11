@@ -181,7 +181,7 @@ const data2: Protocol[] = [
   {
     id: "1401",
     name: "Moonwell Apollo",
-    address: null,
+    address: "moonriver:0xbb8d88bcd9749636bc4d2be22aac4bb3b01a58f1",
     symbol: "-",
     url: "https://moonwell.fi",
     description: "Moonwell is an open lending and borrowing DeFi protocol on Moonbeam & Moonriver.",
@@ -10168,7 +10168,7 @@ const data2: Protocol[] = [
   {
     id: "1853",
     name: "MoonwellDeFi",
-    address: null,
+    address: "moonbeam:0x511aB53F793683763E5a8829738301368a2411E3",
     symbol: "-",
     url: "https://moonwell.fi",
     description: "Moonwell is an open lending and borrowing DeFi protocol on Moonbeam & Moonriver.",

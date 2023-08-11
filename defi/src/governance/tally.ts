@@ -105,6 +105,10 @@ export async function updateTallys() {
     const firstFetchIds: string[] = []
     const fetchOnlyProposals: string[] = []
     metadataAll.forEach((v: any) => {
+      if (!idMap[v.id]) {
+        console.log('missing', v.id)
+        idMap[v.id] = {} as any
+      }
       idMap[v.id].metadata = v
       const [chainStr] = chainAndAddrFromId(v.id)
       v.network = chainStr.split(':')[1]

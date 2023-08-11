@@ -376,6 +376,7 @@ export default {
         "id": "1241"
     },
     "junoswap": {
+        disabled: true,
         "enabled": true,
         "id": "2052"
     },

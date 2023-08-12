@@ -166,6 +166,14 @@ functions:
       - http:
           path: treasuries
           method: get
+  entities:
+    handler: src/getProtocols.entitiesHandler
+    timeout: 30
+    memorySize: 2000
+    events:
+      - http:
+          path: entities
+          method: get
   reportError:
     handler: src/reportError.default
     timeout: 30

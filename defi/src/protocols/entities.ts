@@ -147,10 +147,120 @@ const entities = [
         name: "FBG Capital",
         url: "https://www.fbg.capital",
         description: "FBG Capital is a digital asset management firm. FBG Capital also incubates promising blockchain projects and companies.",
-        logo: "dragonfly.jpg",
+        logo: "fbg-capital.jpg",
         category: "VC",
         module: "entities/fbg-capital.js",
         twitter: "FBGCapital"
+    },
+    {
+        id: "16",
+        name: "Fenbushi Capital",
+        url: "https://www.fenbushicapital.vc/",
+        description: "Fenbushi Capital is the first and most active blockchain-focused venture capital firm in Asia. Founded in Shanghai in 2015 by veterans across both blockchain and traditional financial industries, it has to date supported over 60 leading projects across 4 continents leveraging blockchain technology to reshape myriad industries such as finance, healthcare, supply chain, and consumer goods. ",
+        logo: "fenbushi-capital.jpg",
+        category: "VC",
+        module: "entities/fenbushi-capital.js",
+        twitter: "fenbushi"
+    },
+    {
+        id: "17",
+        name: "Framework Ventures",
+        url: "https://framework.ventures/",
+        description: "A thesis-driven crypto venture firm that builds alongside our founders.",
+        logo: "framework-ventures.jpg",
+        category: "VC",
+        module: "entities/framework-ventures.js",
+        twitter: "hiFramework"
+    },
+    {
+        id: "18",
+        name: "Genesis Trading",
+        url: "https://genesistrading.com/",
+        description: "Genesis is a premier financial services firm connecting institutional investors to digital asset markets.",
+        logo: "genesis-trading.jpg",
+        category: "VC",
+        module: "entities/genesis-trading.js",
+        twitter: "GenesisTrading"
+    },
+    {
+        id: "19",
+        name: "LD Capital",
+        url: "https://ldcap.com/",
+        description: "Web3 VC supported 250+ portfolios since 2016. The investments span across Infra, Defi, Gamefi, AI, ETH eco, with afocus on disruptive innovative projects.",
+        logo: "ld-capital.jpg",
+        category: "VC",
+        module: "entities/id-capital.js",
+        twitter: "LD_Capital"
+    },
+    {
+        id: "20",
+        name: "Jump Capital",
+        url: "https://jumpcap.com/",
+        description: "Jump’s thesis-driven approach and depth of knowledge and experience in financial technology have made them a great partner to Personal Capital and one of our most valuable investors.",
+        logo: "jump-capital.jpg",
+        category: "VC",
+        module: "entities/jump-capital.js",
+        twitter: "jumpcapital"
+    },
+    {
+        id: "21",
+        name: "Mechanism Capital",
+        url: "https://www.mechanism.capital/",
+        description: "Investor",
+        logo: "mechanism-capital.jpg",
+        category: "VC",
+        module: "entities/mechanism-capital.js",
+        twitter: "MechanismCap"
+    },
+    {
+        id: "22",
+        name: "NGC Ventures",
+        url: "https://ngc.fund",
+        description: "NGC Ventures is one of the largest institutional investors of blockchain technologies, and has been a key contributor to a number of leading projects.",
+        logo: "ngc-ventures.jpg",
+        category: "VC",
+        module: "entities/ngc-ventures.js",
+        twitter: "NGC_Ventures"
+    },
+    {
+        id: "23",
+        name: "Pantera Capital",
+        url: "https://panteracapital.com/",
+        description: "Since 2013, Pantera has invested in digital assets and blockchain companies, providing investors with the full spectrum of exposure to the space. First U.S. institutional asset manager focused exclusively on blockchain technology.",
+        logo: "pantera-capital.png",
+        category: "VC",
+        module: "entities/pantera-capital.js",
+        twitter: "PanteraCapital"
+    },
+    {
+        id: "24",
+        name: "Paradigm",
+        url: "https://www.paradigm.xyz/",
+        description: "We focus on crypto and related technologies at the frontier. We invest in, build, and contribute to companies and protocols with as little as $1M and as much as $100M+. We often get involved at the earliest stages and continue to support our portfolio companies over time.",
+        logo: "paradigm.jpg",
+        category: "VC",
+        module: "entities/paradigm-capital.js",
+        twitter: "paradigm"
+    },
+    {
+        id: "25",
+        name: "Plutos VC",
+        url: "https://www.plutusvc.com/",
+        description: "PLUTUSVC understands the need for a safe, secured, and trustworthy crypto lending partner, especially after serial insolvency issues happened among different Defi and lending platforms.",
+        logo: "plutus-vc.jpg",
+        category: "VC",
+        module: "entities/plutus-vc.js",
+        twitter: "PlutusVc"
+    },
+    {
+        id: "26",
+        name: "Polychain Capital",
+        url: "https://polychain.capital/",
+        description: "Polychain is an investment firm committed to exceptional returns for investors through actively managed portfolios of these blockchain assets.",
+        logo: "polychain-capital.jpg",
+        category: "VC",
+        module: "entities/polychain-capital.js",
+        twitter: "polychain"
     },
 ].map(entity=>({
     ...entity,

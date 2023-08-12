@@ -1,20 +1,19 @@
-const protocolName = "binance cex"
-const chainToChange = "bsc"
-const tokenToChange = "binancecoin"
-const valueToSet = 30e6
-const start = Math.round(new Date("2023-02-01").getTime()/1e3)
+const protocolName = "huobi"
+const chainToChange = "ethereum"
+const tokenToDelete = "HBTC"
+const hourly = true
 
 import dynamodb, { getHistoricalValues } from "../utils/shared/dynamodb";
 import { hourlyTokensTvl, hourlyTvl, hourlyUsdTokensTvl, dailyTokensTvl, dailyTvl, dailyUsdTokensTvl } from "../utils/getLastRecord";
 import { getProtocol } from "./utils";
 
-const tokensKey = hourlyTokensTvl
-const usdTokensKey = hourlyUsdTokensTvl
-const tvlKey = hourlyTvl
+const tokensKey = hourly?hourlyTokensTvl:dailyTokensTvl
+const usdTokensKey = hourly?hourlyUsdTokensTvl:dailyUsdTokensTvl
+const tvlKey = hourly?hourlyTvl:dailyTvl
 
 async function main() {
     const protocol = getProtocol(protocolName)
-    const data = (await getHistoricalValues(tvlKey(protocol.id))).filter(t=>t.SK>start)
+    const data = (await getHistoricalValues(tvlKey(protocol.id)))
     for (const d of data ?? []) {
         const tokens = await dynamodb.get({
             PK: tokensKey(protocol.id),
@@ -27,24 +26,18 @@ async function main() {
         if(usdTokens.Item === undefined || tokens.Item === undefined){
             throw new Error(`Rugged at ${d.SK}`)
         }
-        const price = usdTokens.Item.tvl[tokenToChange]/tokens.Item.tvl[tokenToChange]
 
-        const extraTvl = ((tokens.Item.tvl[tokenToChange] + tokens.Item.tvl.BNB) - valueToSet) * price
+        const extraTvl = usdTokens.Item.tvl[tokenToDelete] ?? 0
         d.tvl -= extraTvl
         d[chainToChange] -= extraTvl
-        tokens.Item.tvl[tokenToChange] = valueToSet
-        tokens.Item[chainToChange][tokenToChange] = valueToSet
-        usdTokens.Item.tvl[tokenToChange] = valueToSet * price
-        usdTokens.Item[chainToChange][tokenToChange] = valueToSet * price
-
         for(const f of [tokens.Item.tvl, tokens.Item[chainToChange], usdTokens.Item.tvl, usdTokens.Item[chainToChange]]){
-            delete f.BNB
+            delete f[tokenToDelete]
         }
 
         await dynamodb.put(d);
         await dynamodb.put(tokens.Item);
         await dynamodb.put(usdTokens.Item);
-       //console.log(d)
+        //console.log(d, tokens.Item, usdTokens.Item)
         
         console.log(`stored for ${d.SK}`)
     }

@@ -14784,6 +14784,27 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "3378",
+    name: "Basetrade",
+    address: "base:0x0a7df211de68b10e9a833a42d8d30b9f0358ab6d",
+    symbol: "BTD",
+    url: "https://basetrade.xyz/",
+    description: "Decentralized Perpetual Exchange on Base chain",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basetrade.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "basetrade/index.js",
+    twitter: "basetrade_xyz",
+    forkedFrom: ["GMX V1"],
+    oracles: ["Chainlink"],
+    listedAt: 1691864027
+  },
 ]
 
 export default data3

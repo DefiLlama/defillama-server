@@ -14740,7 +14740,7 @@ const data3: Protocol[] = [
     forkedFrom: ["GMX V1"],
     oracles: [],
     audit_links: ["https://docs.ede.finance/audit"],
-    //parentProtocol: "parent#ede",
+    parentProtocol: "parent#ede",
     listedAt: 1691812506
   },
   {
@@ -14764,6 +14764,7 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691812695
   },
+  
 
 ]
 

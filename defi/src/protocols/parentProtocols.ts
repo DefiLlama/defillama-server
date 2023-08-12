@@ -1033,6 +1033,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "TimeswapLabs",
     github: ["Timeswap-Labs"]
   },
+  /*
   {
     id: "parent#moonwell",
     name: "Moonwell",
@@ -1046,6 +1047,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "LunarTechFdn",
     github: ["moonwell-fi"]
   },
+  */
   {
     id: "parent#beamswap",
     name: "BeamSwap",
@@ -2443,6 +2445,18 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "27789",
     chains: [],
     twitter: "swap_based",
+  },
+  {
+    id: "parent#ede",
+    name: "EDE",
+    url: "https://ede.finance",
+    description: "Kickstarting the Base ecosystem, SwapBased is THE DEX on Base.",
+    logo: `${baseIconsUrl}/ede.png`,
+    gecko_id: "el-dorado-exchange",
+    cmcId: "22810",
+    chains: [],
+    twitter: "ede_finance",
+    governanceID: ["snapshot:edefinance.eth"]
   },
 ];
 

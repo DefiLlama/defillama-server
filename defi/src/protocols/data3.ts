@@ -14764,8 +14764,26 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1691812695
   },
-  
-
+  {
+    id: "3377",
+    name: "friend.tech",
+    address: null,
+    symbol: "-",
+    url: "https://www.friend.tech",
+    description: "Your network is your net worth.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/friend.tech.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Base"],
+    module: "dummy.js",
+    twitter: "friendtech",
+    forkedFrom: [],
+    oracles: [],
+  },
 ]
 
 export default data3

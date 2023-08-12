@@ -14,38 +14,23 @@ cron.schedule('0 11 */3 * *', updateTwitterData)
 cron.schedule('55 2 */3 * *', createMappingFromElectricRepo)
 
 function updateTwitterData() {
-  return runNpmCommand({
-    name: 'Updating twitter data',
-    script: `update-twitter`
-  })
+  return runNpmCommand({ name: 'Updating twitter data', script: `update-twitter` })
 }
 
 function updateGithubData() {
-  return runNpmCommand({
-    name: 'Updating github data',
-    script: `update-github`
-  })
+  return runNpmCommand({ name: 'Updating github data', script: `update-github` })
 }
 
 function createMappingFromElectricRepo() {
-  return runNpmCommand({
-    name: 'Updating twitter data',
-    script: `get-electric-mapping`
-  })
+  return runNpmCommand({ name: 'Updating twitter data', script: `get-electric-mapping` })
 }
 
 function downloadGitTomlFile() {
-  return runNpmCommand({
-    name: 'Download git toml file',
-    script: `download-git-toml`
-  })
+  return runNpmCommand({ name: 'Download git toml file', script: `download-git-toml` })
 }
 
 function updateAppData() {
-  return runNpmCommand({
-    name: 'Updating data mapping for twitter & github',
-    script: `update-dev-mapping`
-  })
+  return runNpmCommand({ name: 'Updating data mapping for twitter & github', script: `update-dev-mapping` })
 }
 
 function pullRepoCode() {
@@ -78,7 +63,7 @@ async function onStart() {
 
 onStart()
 
-async function spawnPromise({ bashCode, name }) {
+async function spawnPromise({ bashCode, name }) {
   console.log('[Start]', name)
   return new Promise((resolve, reject) => {
     const childProcess = spawn('bash', ['-c', bashCode], { stdio: 'inherit' });

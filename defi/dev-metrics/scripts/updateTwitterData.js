@@ -15,7 +15,7 @@ async function main() {
   let i = 0
   const twitterOverview = await getTwitterOverviewFile()
   // const twitterOverview = {}
-  const TWELVE_HOURS = 12 * 60 * 60 * 1000
+  const TWELVE_HOURS = 12 * 60 * 60 * 1000 * 3
   for (const handle of handles) {
     const handleMetadata = twitterOverview[handle] || {}
     checked++
@@ -55,6 +55,7 @@ async function main() {
       updatedAt: +Date.now(),
       ignore: data.notFound || data.suspended,
       meta: {
+        lastTweet: getLatestTweet(data.tweets),
         tweets2: data.tweets?.length,
         tweetCount: data.tweetCount,
         following: data.following,
@@ -70,12 +71,12 @@ async function main() {
     // console.log(twitterOverview, data)
 
     // process.exit(0)
-    if (checked % 10 === 0) {
+    if (checked % 42 === 0) {
       sdk.log(`Saving twitter overview file`)
       await setTwitterOverviewFile(twitterOverview)
     }
-    await setTwitterOverviewFile(twitterOverview)
   }
+  await setTwitterOverviewFile(twitterOverview)
 }
 
 function mergeTweets(...tweetsArray) {
@@ -87,6 +88,14 @@ function mergeTweets(...tweetsArray) {
     }
   }
   return Object.values(obj)
+}
+
+function getLatestTweet(tweets = []) {
+  // Sort the array in descending order based on the "date" field
+  tweets.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // Get the latest data (first element after sorting)
+  return tweets[0] ?? {}
 }
 
 async function test() {

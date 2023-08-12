@@ -1089,7 +1089,6 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "zlot/index.js",
     twitter: "zLOTFinance",
-    github: ["rueisnax/zlot-finance-governance-staking-subgraph"]
   },
   {
     id: "157",
@@ -1441,7 +1440,7 @@ const data: Protocol[] = [
     ],
     twitter: "indexcoop",
     governanceID: ["snapshot:index-coop.eth"],
-    github: ["SetProtocol/index-coop"]
+    github: ["SetProtocol"]
   },
   {
     id: "173",
@@ -1493,7 +1492,7 @@ const data: Protocol[] = [
     module: "bt-finance.js",
     twitter: "btdotfinance",
     audit_links: ["https://github.com/btdotfinance/bt-finance/tree/master/audits"],
-    github: ["btdotfinance/bt-finance"]
+    github: ["btdotfinance"]
   },
   {
     id: "175",

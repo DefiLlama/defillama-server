@@ -10915,7 +10915,7 @@ const data3: Protocol[] = [
     twitter: "HashKingGlobal",
     audit_links: ["https://github.com/NodeDAO/HashKing-FIL/blob/master/Filecoin%20Staking%20Audit%20Report.pdf"],
     listedAt: 1688606787,
-    github: ["NodeDAO/HashKing-FIL"]
+    github: ["NodeDAO"]
   },
   {
     id: "3203",
@@ -11419,7 +11419,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Light-Ecosystem/light-dao/tree/main/audit"],
     forkedFrom: [],
     listedAt: 1689167605,
-    github: ["Light-Ecosystem/repositories"]
+    github: ["Light-Ecosystem"]
   },
   {
     id: "3226",
@@ -11747,7 +11747,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://skynet.certik.com/projects/magician"],
     listedAt: 1689617681,
-    github: ["MagicBallSwap/core"]
+    github: ["MagicBallSwap"]
   },
   {
     id: "3241",

@@ -1133,5 +1133,9 @@ export default {
     "fcon-dex": {
         "enabled": true,
         "id": "3299"
+    },
+    "friend-tech": {
+        "enabled": true,
+        "id": "3377"
     }
 } as AdaptorsConfig

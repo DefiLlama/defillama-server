@@ -14805,6 +14805,29 @@ const data3: Protocol[] = [
     oracles: ["Chainlink"],
     listedAt: 1691864027
   },
+  {
+    id: "3379",
+    name: "Yamato Protocol",
+    address: null,
+    symbol: "-",
+    url: "https://app.yamato.fi/#/",
+    description: "Yamato Protocol is a crypto-asset overcollateralized stable coin issuance protocol. V1 allows the issuance of CJPY (“Convertible JPY”, a Japanese Yen equivalent coin) using ETH as collateral",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/yamato-protocol.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "yamato/index.js",
+    twitter: "YamatoProtocol",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://blockapex.io/yamato-protocol-audit-report/"],
+    github: ["DeFiGeek-Community"],
+    listedAt: 1691955574
+  },
 ]
 
 export default data3

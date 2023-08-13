@@ -1137,5 +1137,10 @@ export default {
     "friend-tech": {
         "enabled": true,
         "id": "3377"
+    },
+    "fusionx-v2": {
+        parentId: "FusionX Finance",
+        enabled: true,
+        id: "3238"
     }
 } as AdaptorsConfig

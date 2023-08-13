@@ -1142,5 +1142,9 @@ export default {
         parentId: "FusionX Finance",
         enabled: true,
         id: "3238"
+    },
+    "vertex-protocol": {
+        "enabled": true,
+        "id": "2899"
     }
 } as AdaptorsConfig

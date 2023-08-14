@@ -20005,15 +20005,15 @@ const data2: Protocol[] = [
   {
     id: "2296",
     name: "HMX", //previous perp88
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
+    symbol: "HMX",
     url: "https://hmx.org/arbitrum",
     description: "(Previous perp88) The Next-Gen Decentralized Perpetual Exchange Trade Crypto, FX, Equity, and Commodity with up to 1,000x leverage on Arbitrum",
     chain: "Polygon",
     logo: `${baseIconsUrl}/hmx.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "hmx",
     cmcId: null,
     category: "Derivatives",
     chains: ["Polygon", "Arbitrum"],

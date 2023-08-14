@@ -14916,6 +14916,29 @@ const data3: Protocol[] = [
     parentProtocol: "parent#throne",
     listedAt: 1692011216
   },
+  {
+    id: "3384",
+    name: "PWN",
+    address: null,
+    symbol: "-",
+    url: "https://pwn.xyz",
+    description: "PWN is a peer-to-peer lending protocol designed for long-term mortgage-like loans of digital assets, backed by other digital assets. Borrowers can receive a fixed-duration loan of fungible tokens backed by fungible or non-fungible tokens, while lenders can earn interest by granting these loans. The protocol is trustless, immutable and operates without the need for oracles or protocol-managed liquidations.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/pwn.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Lending",
+    chains: ["Polygon"],
+    module: "pwn/index.js",
+    twitter: "pwndao",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://audit.pwn.xyz"],
+    github: ["PWNFinance"],
+    listedAt: 1692012713
+  },
 ]
 
 export default data3

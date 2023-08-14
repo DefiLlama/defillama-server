@@ -213,7 +213,7 @@ export async function readCoins2(values: Coin[]): Promise<CoinDict> {
     : redisData;
 }
 function cleanTimestamps(values: Coin[]): Coin[] {
-  const margin = 2 * 60; // 2 min
+  const margin = 15 * 60; // 15 min
   const timestamps = values.map((c: Coin) => c.timestamp);
   const maxTimestamp = Math.max(...timestamps);
   const minTimestamp = Math.min(...timestamps);
@@ -256,8 +256,8 @@ export async function writeCoins2(values: Coin[]) {
   console.log(`${values.length} values entering`);
   await setEnvSecrets();
   await startup();
-  values = cleanTimestamps(values);
-  const storedRecords = await readCoins2(values);
+  const cleanValues = cleanTimestamps(values);
+  const storedRecords = await readCoins2(cleanValues);
   values = cleanConfidences(values, storedRecords);
   const writesToRedis = findRedisWrites(values, storedRecords);
   const strings: { [key: string]: string } = {};

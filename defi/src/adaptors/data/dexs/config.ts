@@ -1855,5 +1855,10 @@ export default {
     "fcon-dex": {
         "enabled": true,
         "id": "3299"
+    },
+    "throne-v3": {
+        "id": "3382",
+        "enabled": true,
+        parentId: "Throne"
     }
 } as AdaptorsConfig

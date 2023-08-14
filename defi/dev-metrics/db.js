@@ -160,6 +160,30 @@ GitRepo.init(
   }
 );
 
+class ProjectReport extends Model { }
+ProjectReport.init(
+  {
+    name: DataTypes.STRING,
+    project_type: DataTypes.STRING,
+    project_id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    linked_orgs: DataTypes.ARRAY(DataTypes.STRING),
+    report: DataTypes.JSONB,
+    last_report_generated_time: DataTypes.DATE,
+    last_commit_update_time: DataTypes.DATE,
+    exported_to_r2: DataTypes.BOOLEAN,
+  },
+  {
+    sequelize,
+    tableName: 'project_report',
+    timestamps: true,
+    createdAt: 'createdat',
+    updatedAt: 'updatedat',
+  }
+);
+
 /* class GitAuthor extends Model {}
 GitAuthor.init(
   {
@@ -273,6 +297,7 @@ module.exports = {
   GitOwner,
   GitRepo,
   GitCommitRaw,
+  ProjectReport,
   addRawCommit,
   addRawCommits,
   archiveExists,

@@ -75,7 +75,7 @@ async function main() {
         },
       },
     })
-    const ignoreOrgsSet = new Set(existingOrgs.filter(i => i.is_missing || i.lastupdatetime > oneMonthAgo).map(o => o.name))
+    const ignoreOrgsSet = new Set(existingOrgs.filter(i => i.is_missing || i.lastupdatetime > oneMonthAgo * 2).map(o => o.name))
     console.log('org chunk length: ', chunk.length)
     chunk = chunk.filter(c => !ignoreOrgsSet.has(c))
     console.log('org chunk length  [after filter]: ', chunk.length)

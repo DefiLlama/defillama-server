@@ -10,7 +10,7 @@ try {
   TWITTER_MAPPING = require('../app-data/twitter_mapping.json')
   tomlData = require('../app-data/tomlData.json')
 } catch (e) {
-  // console.error(e)
+  console.error(e)
 }
 
 const orgSet = new Set(tomlData.orgData.map(i => i.replace(/\/$/, '')))

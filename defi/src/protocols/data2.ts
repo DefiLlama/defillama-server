@@ -20021,6 +20021,7 @@ const data2: Protocol[] = [
     twitter: "HMXorg",
     forkedFrom: [],
     oracles: ["Pyth"],
+    github: ["hmxorg"],
     listedAt: 1668805259
   },
   {

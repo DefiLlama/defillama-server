@@ -14738,7 +14738,7 @@ const data3: Protocol[] = [
     module: "edebase/index.js",
     twitter: "ede_finance",
     forkedFrom: ["GMX V1"],
-    oracles: [],
+    oracles: ["Pyth"],
     audit_links: ["https://docs.ede.finance/audit"],
     parentProtocol: "parent#ede",
     listedAt: 1691812506

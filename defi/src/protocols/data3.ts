@@ -14846,8 +14846,8 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "baso/index.js",
     twitter: "Baso_Finance",
-    forkedFrom: [],
-    oracles: ["Solidly"],
+    forkedFrom: ["Solidly"],
+    oracles: [],
     listedAt: 1692007688
   },
   {

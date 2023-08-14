@@ -13543,13 +13543,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3322",
-    name: "Synthswap",
+    name: "Synthswap V2",
     address: "base:0xbd2DBb8eceA9743CA5B16423b4eAa26bDcfE5eD2",
     symbol: "SYNTH",
     url: "https://synthswap.io",
     description: "Synthswap is one of the first decentralized exchanges (DEX) with an automated market-maker (AMM) in the Base ecosystem.",
     chain: "Base",
-    logo: `${baseIconsUrl}/synthswap.jpg`,
+    logo: `${baseIconsUrl}/synthswap-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -13560,6 +13560,7 @@ const data3: Protocol[] = [
     twitter: "synthswapio",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    parentProtocol: "parent#synthswap",
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-SynthSwap-v1.0.pdf"],
     listedAt: 1690897062
   },
@@ -14938,6 +14939,28 @@ const data3: Protocol[] = [
     audit_links: ["https://audit.pwn.xyz"],
     github: ["PWNFinance"],
     listedAt: 1692012713
+  },
+  {
+    id: "3385",
+    name: "Synthswap V3",
+    address: "base:0xbd2DBb8eceA9743CA5B16423b4eAa26bDcfE5eD2",
+    symbol: "SYNTH",
+    url: "https://synthswap.io",
+    description: "Synthswap is one of the first decentralized exchanges (DEX) with an automated market-maker (AMM) in the Base ecosystem.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/synthswap-v3.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "synthswap-v3/index.js",
+    twitter: "synthswapio",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    parentProtocol: "parent#synthswap",
+    listedAt: 1692025853
   },
 ]
 

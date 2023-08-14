@@ -1146,5 +1146,10 @@ export default {
     "vertex-protocol": {
         "enabled": true,
         "id": "2899"
+    },
+    "edebase": {
+        parentId: "EDE",
+        "enabled": true,
+        "id": "3375"
     }
 } as AdaptorsConfig

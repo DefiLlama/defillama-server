@@ -322,9 +322,9 @@ async function filterCoins(coins: Coin[]): Promise<Coin[]> {
 
 const step = 80;
 
-export const handler2 = (hourly: boolean) => async (
+const handler = (hourly: boolean) => async (
   event: any,
-  _context: any,
+  _context: AWSLambda.Context,
 ) => {
   const coins = event.coins as Coin[];
   const depth = event.depth as number;
@@ -379,5 +379,5 @@ function getMetadataPDA(mint: PublicKey) {
 }
 */
 
-// export const fetchCoingeckoData = wrapScheduledLambda(handler(false));
-// export const fetchHourlyCoingeckoData = wrapScheduledLambda(handler(true));
+export const fetchCoingeckoData = wrapScheduledLambda(handler(false));
+export const fetchHourlyCoingeckoData = wrapScheduledLambda(handler(true));

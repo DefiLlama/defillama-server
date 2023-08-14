@@ -531,6 +531,7 @@ export default {
         "id": "128"
     },
     "el-dorado-exchange": {
+        parentId: "EDE",
         "enabled": true,
         "id": "2356"
     },

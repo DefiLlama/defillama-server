@@ -1152,5 +1152,9 @@ export default {
         parentId: "EDE",
         "enabled": true,
         "id": "3375"
+    },
+    "venus-finance": {
+        "id": "212",
+        "enabled": true
     }
 } as AdaptorsConfig

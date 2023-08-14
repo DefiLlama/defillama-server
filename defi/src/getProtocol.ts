@@ -46,6 +46,9 @@ export async function craftProtocolResponse({
 }
 
 export async function wrapResponseOrRedirect(response: any) {
+  if(response.statusCode !== undefined){
+    return response
+  }
   const jsonData = JSON.stringify(response);
   const dataLength = Buffer.byteLength(jsonData, "utf8");
 

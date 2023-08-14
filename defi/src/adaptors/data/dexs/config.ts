@@ -1423,7 +1423,7 @@ export default {
         "id": "2754"
     },
     "native": {
-        "enabled": false,
+        "enabled": true,
         "id": "2803"
     },
     "spacedex": {

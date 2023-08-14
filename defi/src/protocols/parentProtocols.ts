@@ -2464,6 +2464,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "ThroneDEX",
   },
+  {
+    id: "parent#synthswap",
+    name: "Synthswap",
+    url: "https://synthswap.io",
+    description: "A Majestic Native DEX Reigning over the Base Ecosystem. Fortified by the Community, Empowered by V3 Protocol.",
+    logo: `${baseIconsUrl}/synthswap.jpg`,
+    gecko_id: "synthswap",
+    cmcId: "27759",
+    chains: [],
+    twitter: "synthswapio",
+  },
 ];
 
 export default parentProtocols;

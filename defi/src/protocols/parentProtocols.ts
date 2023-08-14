@@ -2453,6 +2453,17 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ede_finance",
     governanceID: ["snapshot:edefinance.eth"]
   },
+  {
+    id: "parent#throne",
+    name: "Throne",
+    url: "hhttps://throne.exchange",
+    description: "A Majestic Native DEX Reigning over the Base Ecosystem. Fortified by the Community, Empowered by V3 Protocol.",
+    logo: `${baseIconsUrl}/throne.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "ThroneDEX",
+  },
 ];
 
 export default parentProtocols;

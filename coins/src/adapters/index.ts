@@ -101,6 +101,7 @@ export default {
   extraUniV2Lps: require("./markets/uniswap"),
   thena: require("./markets/uniswap"),
   fvm: require("./markets/uniswap"),
+  velocimeter: require("./markets/uniswap"),
   stargate: require("./markets/stargate"),
   jarvis: require("./markets/jarvis"),
   chainlinkNFT: require("./nft/chainlink"),

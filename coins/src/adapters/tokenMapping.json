@@ -5,5 +5,12 @@
       "symbol": "USDC",
       "to": "coingecko#usd-coin"
     }
+  },
+  "avax": {
+    "0xAEC8318a9a59bAEb39861d10ff6C7f7bf1F96C57": {
+      "decimals": "18",
+      "symbol": "agEUR",
+      "to": "coingecko#ageur"
+    }
   }
 }

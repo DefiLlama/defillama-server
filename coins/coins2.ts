@@ -28,16 +28,16 @@ export let redis: Redis;
 export let sql: postgres.Sql<{}>;
 export async function startup(): Promise<void> {
   const auth: string[] | undefined = process.env.COINS2_AUTH?.split(",");
-  if (auth && auth.length == 3) {
-    sql = postgres(auth[0]);
+  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 
+  if (!redis)
     redis = new Redis({
       port: 6379,
       host: auth[1],
       password: auth[2],
     });
-    console.log(`redis configured`);
-  }
+
+  if (!sql) sql = postgres(auth[0]);
 }
 export async function translateItems(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],

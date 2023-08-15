@@ -3212,6 +3212,7 @@ const data: Protocol[] = [
       "compound:ethereum:0xe087f94c3081e1832dc7a22b48c6f2b5faae579b"
     ],
     stablecoins: ["fei-usd"],
+    github: ["fei-protocol"]
   },
   {
     id: "256",
@@ -3276,6 +3277,7 @@ const data: Protocol[] = [
     twitter: "WasabixFinance",
     audit_links: ["https://wasabix-finance.gitbook.io/wasabix_finance/code/certik-audit-report"],
     forkedFrom: ["Alchemix"],
+    github: ["wasabi-swap-team"]
   },
   {
     id: "259",
@@ -3296,6 +3298,7 @@ const data: Protocol[] = [
     module: "snowball/index.js",
     twitter: "throwsnowballs",
     forkedFrom: ["Pickle", "Saddle Finance"],
+    github: ["Snowball-Finance"]
   },
   {
     id: "260",
@@ -3356,6 +3359,7 @@ const data: Protocol[] = [
     module: "primitive/index.js",
     twitter: "PrimitiveFi",
     audit_links: ["https://library.primitive.xyz/technical/security/audits"],
+    github: ["primitivefinance"]
   },
   {
     id: "263",
@@ -3376,6 +3380,7 @@ const data: Protocol[] = [
     module: "qian/index.js",
     twitter: null,
     audit_links: ["https://qian.finance/PeckShield-Audit-Report-QIAN2-v1.0.pdf"],
+    github: ["QIAN-Protocol"]
   },
   {
     id: "264",
@@ -3417,7 +3422,8 @@ const data: Protocol[] = [
     audit_links: ["https://docs.reflexer.finance/risk/geb-risks"],
     oracles: ["Chainlink"],
     governanceID: ["eip155:1:0x7a6BBe7fDd793CC9ab7e0fc33605FCd2D19371E8"],
-    stablecoins: ["rai-reflex-index"]
+    stablecoins: ["rai-reflex-index"],
+    github: ["reflexer-labs"]
   },
   {
     id: "266",
@@ -3439,6 +3445,7 @@ const data: Protocol[] = [
     twitter: "SetProtocol",
     audit_links: ["https://www.tokensets.com/#/security"],
     oracles: ["Chainlink"],
+    github: ["SetProtocol"]
   },
   {
     id: "267",
@@ -3500,6 +3507,7 @@ const data: Protocol[] = [
     twitter: "DfiMoney",
     audit_links: ["https://github.com/yfii/audit"],
     forkedFrom: ["Yearn Finance"],
+    github: ["yfii"]
   },
   {
     id: "270",
@@ -3526,6 +3534,7 @@ const data: Protocol[] = [
     ],
     oracles: ["Chainlink"],
     stablecoins: ["liquity-usd"],
+    github: ["liquity"]
   },
   {
     id: "271",
@@ -3546,6 +3555,7 @@ const data: Protocol[] = [
     module: "honeyswap/index.js",
     twitter: "Honeyswap",
     forkedFrom: ["Uniswap V2"],
+    github: ["1Hive"]
   },
   {
     id: "272",
@@ -3591,7 +3601,8 @@ const data: Protocol[] = [
     module: "acoconut/index.js",
     twitter: null,
     audit_links: ["https://docs.acoconut.fi/security"],
-    governanceID: ["snapshot:acoconutbsc.eth", "snapshot:acoconut.eth"]
+    governanceID: ["snapshot:acoconutbsc.eth", "snapshot:acoconut.eth"],
+    github: ["nutsfinance"]
   },
   {
     id: "274",
@@ -3611,6 +3622,7 @@ const data: Protocol[] = [
     module: "olivecash/index.js",
     twitter: "OliveCashBsc",
     audit_links: ["https://olive-cash.gitbook.io/olive-cash/bsc-1/audit-1"],
+    github: ["olive-cash"]
   },
   {
     id: "275",
@@ -3630,7 +3642,8 @@ const data: Protocol[] = [
     module: "sharedstake/index.js",
     twitter: "SharedStakeDAO",
     audit_links: ["https://www.certik.org/projects/sharedstake"],
-    governanceID: ["snapshot:sharedstake.eth"]
+    governanceID: ["snapshot:sharedstake.eth"],
+    github: ["SharedStake"]
   },
   {
     id: "276",
@@ -3651,6 +3664,7 @@ const data: Protocol[] = [
     twitter: "StaFi_Protocol",
     audit_links: ["https://github.com/stafiprotocol/stafi-bootstrap/tree/master/audits"],
     oracles: ["Chainlink"],
+    github: ["stafiprotocol"]
   },
   {
     id: "277",
@@ -3670,7 +3684,8 @@ const data: Protocol[] = [
     module: "stakewise/index.js",
     twitter: "stakewise_io",
     audit_links: ["https://github.com/stakewise/contracts/tree/master/audits"],
-    governanceID: ["snapshot:stakewise.eth"]
+    governanceID: ["snapshot:stakewise.eth"],
+    github: ["stakewise"]
   },
   {
     id: "278",
@@ -3690,7 +3705,8 @@ const data: Protocol[] = [
     module: "ankr/index.js",
     twitter: "ankr",
     audit_links: ["https://assets.ankr.com/files/stkr_smart_contract_auditing_report.pdf"],
-    governanceID: ["snapshot:ankr-dao.eth"]
+    governanceID: ["snapshot:ankr-dao.eth"],
+    github: ["Ankr-network"]
   },
   {
     id: "279",
@@ -3779,7 +3795,8 @@ const data: Protocol[] = [
       "compound:ethereum:0x78bdd33e95ecbcac16745fb28db0ffb703344026",
       "eip155:1:0x2DA253835967D6E721C6c077157F9c9742934aeA",//CONTRACTCREATOR natew.eth
       "compound:ethereum:0x6aba376e3331e3090456495e8292ecdfa1ab4920"
-    ]
+    ],
+    github: ["yam-finance"]
   },
   {
     id: "283",
@@ -3923,6 +3940,7 @@ const data: Protocol[] = [
     module: "yetiswap/index.js",
     twitter: "YetiSwap",
     forkedFrom: ["Uniswap V2"],
+    github: ["YetiSwap"]
   },
   {
     id: "290",
@@ -3942,6 +3960,7 @@ const data: Protocol[] = [
     module: "penguin/index.js",
     twitter: "penguin_defi",
     audit_links: ["https://www.certik.com/projects/penguinfinance"],
+    github: ["Penguin-Finance"]
   },
   {
     id: "291",
@@ -3963,6 +3982,7 @@ const data: Protocol[] = [
     twitter: "IntegralHQ",
     governanceID: ["snapshot:integraldao.eth"],
     audit_links: ["https://docs.integral.link/library/audit-reports"],
+    github: ["IntegralHQ"]
   },
   {
     id: "292",
@@ -3983,7 +4003,8 @@ const data: Protocol[] = [
     twitter: "SwaprEth",
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://gateway.ipfs.io/ipfs/QmNspbn2dQgQMQ9uXkMc7Fjf12RUVVJTzB27ywGeLUXXdn"],
-    governanceID: ["snapshot:swpr.eth"]
+    governanceID: ["snapshot:swpr.eth"],
+    github: ["levelkdev"]
   },
   {
     id: "293",
@@ -4004,7 +4025,8 @@ const data: Protocol[] = [
     module: "lydia/index.js",
     twitter: "LydiaFinance",
     audit_links: ["https://docs.lydia.finance/security/certik-audit"],
-    governanceID: ["snapshot:lydiafinance.eth"]
+    governanceID: ["snapshot:lydiafinance.eth"],
+    github: ["lydiafinance"]
   },
   {
     id: "294",
@@ -4046,6 +4068,7 @@ const data: Protocol[] = [
     // module: "stacks/index.js",
     module: "dummy.js",
     twitter: "Stacks",
+    github: ["stacks-network"]
   },
   {
     id: "296",
@@ -4066,6 +4089,7 @@ const data: Protocol[] = [
     module: "zookeeper.js",
     twitter: "ZooEcosystem",
     audit_links: ["https://github.com/ZooFarming/Audit"],
+    github: ["zooFarming"]
   },
   /*
   {
@@ -4129,6 +4153,7 @@ const data: Protocol[] = [
     module: "levinswap/index.js",
     twitter: "levinswap",
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "300",

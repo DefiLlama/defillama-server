@@ -7598,7 +7598,7 @@ const data3: Protocol[] = [
     twitter: "paribus_io",
     oracles: [],
     forkedFrom: ["Compound"],
-    github: ["paribus"],
+    github: ["Paribus"],
     listedAt: 1685645869
   },
   {
@@ -8209,7 +8209,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://galoswap.gitbook.io/galoswap/overview/security-and-transparency"],
-    github: ["galoswap"],
+    github: ["GaloSwap"],
     listedAt: 1686177821
   },
   {
@@ -8504,7 +8504,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/2023/ezKalibur"],
-    github: ["ezkalibur"],
+    github: ["eZKalibur"],
     listedAt: 1686321408
   },
   {
@@ -8710,7 +8710,6 @@ const data3: Protocol[] = [
     twitter: "Kannagi_Zksync",
     oracles: [],
     forkedFrom: [],
-    github: ["KannagiFinance"],
     audit_links: [
       "https://github.com/solidproof/projects/blob/main/2023/KToken/SmartContract_Audit_Solidproof_KannagiFinance.pdf",
       "https://sourcehat.com/audits/KannagiFinance/"
@@ -9957,7 +9956,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "themis-exchange/index.js",
     twitter: "ThemisProtocol",
-    github: ["themis-protocol"],
+    github: ["Themis-protocol"],
     audit_links: ["https://docs.themis.exchange/security"],
     listedAt: 1687800179
   },
@@ -10469,7 +10468,7 @@ const data3: Protocol[] = [
     forkedFrom: ["LUSD ChickenBonds"],
     module: "exit10-fi/index.js",
     twitter: "EXIT10_ETH",
-    github: ["exit10-protocol"],
+    github: ["open-bakery"],
     listedAt: 1688204416
   },
   {
@@ -11309,7 +11308,7 @@ const data3: Protocol[] = [
     twitter: "SigmaOptions",
     oracles: [],
     forkedFrom: [],
-    github: ["sigmaO"],
+    github: ["SigmaO"],
     listedAt: 1689082433
   },
   {
@@ -12174,7 +12173,7 @@ const data3: Protocol[] = [
     twitter: "AftermathFi",
     forkedFrom: [],
     oracles: [],
-    github: ["Aftermathfinance"],
+    github: ["AftermathFinance"],
     listedAt: 1689860538
   },
   {
@@ -12696,7 +12695,7 @@ const data3: Protocol[] = [
     twitter: "go_ethereum",
     forkedFrom: [],
     oracles: [],
-    github: ["go-ethereum"],
+    github: ["ethereum"],
     listedAt: 1690209075
   },
   {
@@ -14066,7 +14065,7 @@ const data3: Protocol[] = [
     twitter: "DackieSwap",
     forkedFrom: ["Uniswap V3"],
     oracles: ["Chainlink"],
-    github: ["dackieswap"],
+    github: ["DackieSwap"],
     listedAt: 1691153591
   },
   {

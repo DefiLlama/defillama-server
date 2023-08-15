@@ -18764,7 +18764,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: [],
     listedAt: 1667056144,
-    github: ["anetaBTC"]
+    github: ["anetabtc"]
   },
   {
     id: "2239",
@@ -20021,7 +20021,7 @@ const data2: Protocol[] = [
     twitter: "HMXorg",
     forkedFrom: [],
     oracles: ["Pyth"],
-    github: ["hmxorg"],
+    github: ["HMXOrg"],
     listedAt: 1668805259
   },
   {

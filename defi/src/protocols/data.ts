@@ -1648,7 +1648,7 @@ const data: Protocol[] = [
     ],
     oracles: ["Band"],
     governanceID: ["snapshot:mantra-dao.eth"],
-    github: ["Mantradao"]
+    github: ["MantraDAO"]
   },
   {
     id: "182",
@@ -2764,7 +2764,7 @@ const data: Protocol[] = [
     twitter: "PEAKDEFI",
     audit_links: ["https://certificate.quantstamp.com/full/peakdefi"],
     governanceID: ["compound:ethereum:0x1a76ff40cddbf908e3289414d54f6caa85bef0a2"],
-    github: ["peakdefi"]
+    github: ["PeakDeFi"]
   },
   {
     id: "236",
@@ -3380,7 +3380,7 @@ const data: Protocol[] = [
     module: "qian/index.js",
     twitter: null,
     audit_links: ["https://qian.finance/PeckShield-Audit-Report-QIAN2-v1.0.pdf"],
-    github: ["QIAN-Protocol"]
+    github: ["QIAN-protocol"]
   },
   {
     id: "264",
@@ -4089,7 +4089,7 @@ const data: Protocol[] = [
     module: "zookeeper.js",
     twitter: "ZooEcosystem",
     audit_links: ["https://github.com/ZooFarming/Audit"],
-    github: ["zooFarming"]
+    github: ["ZooFarming"]
   },
   /*
   {
@@ -14510,7 +14510,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     audit_links: [],
     governanceID: ["snapshot:otterclam.eth"],
     listedAt: 1636363218,
-    github: ["otterclam"]
+    github: ["OtterClam"]
   },
   {
     id: "804",

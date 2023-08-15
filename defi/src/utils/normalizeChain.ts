@@ -103,7 +103,7 @@ export const chainCoingeckoIds = {
     geckoId: "conflux-token",
     symbol: "CFX",
     cmcId: "7334",
-    github: ['conflux-chain'],
+    github: ['Conflux-Chain'],
   },
   "Nuls": {
     geckoId: "nuls",
@@ -160,7 +160,7 @@ export const chainCoingeckoIds = {
     cmcId: "3513",
     categories: ["EVM"],
     chainId: 250,
-    github: ['Fantom-Foundation'],
+    github: ['Fantom-foundation'],
   },
   "Gnosis": {
     geckoId: "gnosis",
@@ -271,7 +271,7 @@ export const chainCoingeckoIds = {
   },
   "Rootstock": {
     geckoId: "rootstock",
-    github: ['RSKSmart'],
+    github: ['rsksmart'],
     symbol: "RBTC",
     cmcId: "3626",
     categories: ["EVM"],
@@ -283,7 +283,7 @@ export const chainCoingeckoIds = {
   },
   "Sifchain": {
     geckoId: "sifchain",
-    github: ['sifchain'],
+    github: ['Sifchain'],
     symbol: "EROWAN",
     cmcId: "8541",
     categories: ["Cosmos"],
@@ -1036,7 +1036,7 @@ export const chainCoingeckoIds = {
   },
   "Lachain": {
     geckoId: "latoken",
-    github: ['LAToken'],
+    github: ['LATOKEN'],
     symbol: "LA",
     cmcId: "2090",
     categories: ["EVM"],
@@ -1089,7 +1089,7 @@ export const chainCoingeckoIds = {
   },
   "Carbon": {
     geckoId: "switcheo",
-    github: ['switcheo'],
+    github: ['Switcheo'],
     symbol: "SWTH",
     cmcId: "2620",
     categories: ["Cosmos"],
@@ -1108,7 +1108,7 @@ export const chainCoingeckoIds = {
   },
   "Bytomsidechain": {
     geckoId: "bytom",
-    github: ['bytom'],
+    github: ['Bytom'],
     symbol: "BTM",
     cmcId: "1866",
     categories: ["EVM"],
@@ -1610,7 +1610,7 @@ export const chainCoingeckoIds = {
   },
   "Meta": {
     geckoId: "metadium",
-    github: ['metadium'],
+    github: ['METADIUM'],
     symbol: "META",
     cmcId: "3418",
     categories: ["EVM"],

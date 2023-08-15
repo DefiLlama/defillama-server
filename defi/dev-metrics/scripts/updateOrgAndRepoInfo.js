@@ -298,7 +298,7 @@ async function addCommits(repoData) {
 
   sdk.log('Cloning repo for ', repoName, repoData.ssh_url, repoPath, repoDir)
   let git = simpleGit(repoPath, repoDir, { progress });
-  await git.clone(repoData.ssh_url)
+  await git.clone(repoData.html_url)
   git.cwd(path.join(repoPath, repoDir))
   // git = simpleGit(repoPath, repoName, { progress })
 

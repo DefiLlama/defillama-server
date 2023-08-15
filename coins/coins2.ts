@@ -238,8 +238,7 @@ async function readCoins2(
       )
     : redisData;
 }
-function cleanTimestamps(values: Coin[]): Coin[] {
-  const margin = 15 * 60; // 15 min
+function cleanTimestamps(values: Coin[], margin: number = 15 * 60): Coin[] {
   const timestamps = values.map((c: Coin) => c.timestamp);
   const maxTimestamp = Math.max(...timestamps);
   const minTimestamp = Math.min(...timestamps);
@@ -293,11 +292,14 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
 export async function writeCoins2(
   values: Coin[],
   batchPostgresReads: boolean = true,
+  margin?: number,
 ) {
   console.log(`${values.length} values entering`);
   await setEnvSecrets();
   await startup();
-  const cleanValues = batchPostgresReads ? cleanTimestamps(values) : values;
+  const cleanValues = batchPostgresReads
+    ? cleanTimestamps(values, margin)
+    : values;
   const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
   values = cleanConfidences(values, storedRecords);
   const writesToRedis = findRedisWrites(values, storedRecords);
@@ -311,8 +313,9 @@ export async function writeCoins2(
 export async function batchWrite2(
   values: Coin[],
   batchPostgresReads: boolean = true,
+  margin: number = 15 * 60,
 ) {
   read
     ? await readCoins2(values, batchPostgresReads)
-    : await writeCoins2(values, batchPostgresReads);
+    : await writeCoins2(values, batchPostgresReads, margin);
 }

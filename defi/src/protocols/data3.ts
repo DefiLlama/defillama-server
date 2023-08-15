@@ -15043,7 +15043,7 @@ const data3: Protocol[] = [
     chains: ["Kujira"],
     module: "dummy.js",
     treasury: "mantadao.js", //
-    twitter: "sanctumso",
+    twitter: "Manta_DAO",
     forkedFrom: [],
     oracles: [],
     listedAt: 1692111232

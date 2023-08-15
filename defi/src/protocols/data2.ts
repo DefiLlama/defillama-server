@@ -19822,8 +19822,8 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/thorswap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "thorchain",
-    cmcId: "4157",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Thorchain"],
     module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)

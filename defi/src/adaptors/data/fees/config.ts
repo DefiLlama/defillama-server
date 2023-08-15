@@ -1160,5 +1160,9 @@ export default {
     "none-trading-bot": {
         "id": "3337",
         "enabled": true
+    },
+    "dackieswap": {
+        "enabled": true,
+        "id": "3345"
     }
 } as AdaptorsConfig

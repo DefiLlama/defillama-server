@@ -14984,7 +14984,7 @@ const data3: Protocol[] = [
     listedAt: 1692093398
   },
   {
-    id: "3386",
+    id: "3387",
     name: "Bryan on Base",
     address: "base:0xB75445A717D5A8c268f37045162837CFe72Ac337",
     symbol: "BRYAN",

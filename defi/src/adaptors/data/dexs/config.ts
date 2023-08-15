@@ -1861,5 +1861,9 @@ export default {
         "id": "3382",
         "enabled": true,
         parentId: "Throne"
+    },
+    "dackieswap": {
+        "enabled": true,
+        "id": "3345"
     }
 } as AdaptorsConfig

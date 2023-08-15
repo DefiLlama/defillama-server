@@ -1864,6 +1864,14 @@ export default {
     },
     "dackieswap": {
         "enabled": true,
-        "id": "3345"
+        "id": "3345",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1691971200": true,
+                "1691884800": true,
+                "1691798400": true,
+                "1691712000": true,
+            },
+        }
     }
 } as AdaptorsConfig

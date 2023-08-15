@@ -2763,7 +2763,8 @@ const data: Protocol[] = [
     module: "peakdefi/index.js",
     twitter: "PEAKDEFI",
     audit_links: ["https://certificate.quantstamp.com/full/peakdefi"],
-    governanceID: ["compound:ethereum:0x1a76ff40cddbf908e3289414d54f6caa85bef0a2"]
+    governanceID: ["compound:ethereum:0x1a76ff40cddbf908e3289414d54f6caa85bef0a2"],
+    github: ["peakdefi"]
   },
   {
     id: "236",
@@ -2827,6 +2828,7 @@ const data: Protocol[] = [
       "https://github.com/ellipsis-finance/ellipsis-audits/blob/master/010421_Hacken_Ellipsis_SC_Audit_Report.pdf",
     ],
     forkedFrom: ["Curve"],
+    github: ["ellipsis-finance"]
   },
   {
     id: "239",
@@ -2852,7 +2854,8 @@ const data: Protocol[] = [
       "snapshot:pooltogether.eth", 
       "snapshot:poolpool.pooltogether.eth",
       'eip155:1:0xB3a87172F555ae2a2AB79Be60B336D2F7D0187f0'
-    ]
+    ],
+    github: ["pooltogether"]
   },
   {
     id: "240",
@@ -2897,6 +2900,7 @@ const data: Protocol[] = [
       "compound:ethereum:0xefe147ffc12b847c0f2b6f19c11fa8266a8e3ddf"
     ],
     audit_links: ["https://docs.powerpool.finance/security/security-audits"],
+    github: ["powerpool-finance"]
   },
   {
     id: "242",
@@ -2916,6 +2920,7 @@ const data: Protocol[] = [
     module: "energiswap.js",
     twitter: "energi",
     forkedFrom: ["Uniswap V2"],
+    github: ["energicryptocurrency"]
   },
   {
     id: "243",
@@ -2958,6 +2963,7 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/WePiggy/wepiggy-contracts/tree/master/docs/audits"],
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
+    github: ["WePiggy"]
   },
   /*{
     id: "245",
@@ -2996,7 +3002,8 @@ const data: Protocol[] = [
     module: "pangolin/index.js",
     twitter: "pangolindex",
     forkedFrom: ["Uniswap V2"],
-    governanceID: ["snapshot:pangolindex.eth"]
+    governanceID: ["snapshot:pangolindex.eth"],
+    github: ["pangolindex"]
   },
   {
     id: "247",
@@ -3057,7 +3064,8 @@ const data: Protocol[] = [
     module: "stakedao/index.js",
     treasury: "stakedao.js",
     twitter: "StakeDAOHQ",
-    governanceID: ["snapshot:stakedao.eth"]
+    governanceID: ["snapshot:stakedao.eth"],
+    github: ["StakeDAO"]
   },
   {
     id: "250",
@@ -3099,7 +3107,8 @@ const data: Protocol[] = [
     audit_links: ["https://certificate.quantstamp.com/full/ten-x-titan"],
     oracles: ["DIA"],
     governanceID: ["snapshot:mimo.eth"],
-    stablecoins: ["parallel"]
+    stablecoins: ["parallel"],
+    github: ["mimo-capital"]
   },
   /* repeated
   {
@@ -3149,6 +3158,7 @@ const data: Protocol[] = [
     ],
     oracles: ["Chainlink", "TWAP"],
     governanceID: [ 'eip155:1:0x54F50d2f584F1DD05307aB5eB298Ba96C7d4E0ea' ],
+    github: ["bifrost-platform"]
   },
   {
     id: "254",
@@ -3171,7 +3181,8 @@ const data: Protocol[] = [
       "https://github.com/PancakeBunny-finance/Bunny/blob/main/audits/%5BHAECHI%20AUDIT%5D%20PancakeBunny%20Smart%20Contract%20Audit%20Report%20ver%202.0.pdf",
     ],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:pancakebunny.eth"]
+    governanceID: ["snapshot:pancakebunny.eth"],
+    github: ["PancakeBunny-finance"]
   },
   {
     id: "255",

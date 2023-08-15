@@ -19812,23 +19812,23 @@ const data2: Protocol[] = [
   },
   {
     id: "2287",
-    name: "THORSwap",
-    address: "0xa5f2211b9b8170f694421f2046281775e8468044",
-    symbol: "THOR",
-    url: "https://app.thorswap.finance/liquidity",
+    name: "ThorChain DEX",
+    address: null, 
+    symbol: "RUNE",
+    url: "https://thorchain.org/",
     description:
-      "Earn native yield with THORChain Savers Vaults with no additional asset exposure or impermanent loss.",
+      "Native dex of thorchain",
     chain: "Thorchain",
     logo: `${baseIconsUrl}/thorswap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "thorswap",
-    cmcId: "12942",
+    gecko_id: "thorchain",
+    cmcId: "4157",
     category: "Dexes",
     chains: ["Thorchain"],
     module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
     forkedFrom: [],
-    twitter: "THORSwap",
+    twitter: "THORChain",
     listedAt: 1668600716
   },
   /*

@@ -12,6 +12,8 @@ import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 import { Connection, PublicKey, Keypair } from "@solana/web3.js";
 import { Write } from "./adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
+import { batchWrite2, startup } from "../coins2";
+import setEnvSecrets from "../../defi/src/utils/shared/setEnvSecrets";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -56,7 +58,24 @@ interface IdToSymbol {
   [id: string]: string;
 }
 
-function storeCoinData(coinData: any[]) {
+async function storeCoinData(coinData: any[]) {
+  const writes2: any[] = [];
+  coinData.map((c: Write) => {
+    if (c.price == null) return;
+    writes2.push({
+      key: c.PK,
+      timestamp: c.SK,
+      price: c.price,
+      confidence: c.confidence,
+      symbol: c.symbol,
+      adapter: "coingecko",
+    });
+  });
+  try {
+    await batchWrite2(writes2);
+  } catch (e) {
+    console.error(e);
+  }
   return batchWrite(
     coinData.map((c) => ({
       PK: c.PK,
@@ -71,7 +90,22 @@ function storeCoinData(coinData: any[]) {
   );
 }
 
-function storeHistoricalCoinData(coinData: Write[]) {
+async function storeHistoricalCoinData(coinData: Write[]) {
+  const writes2: any[] = [];
+  coinData.map((c: Write) => {
+    if (c.price == null) return;
+    writes2.push({
+      key: c.PK,
+      timestamp: c.SK,
+      price: c.price,
+      confidence: c.confidence,
+    });
+  });
+  try {
+    await batchWrite2(writes2);
+  } catch (e) {
+    console.error(e);
+  }
   return batchWrite(
     coinData.map((c) => ({
       SK: c.SK,
@@ -173,8 +207,14 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
   );
   const coinPlatformData = await getCoinPlatformData(filteredCoins);
 
+  const prices: { [key: string]: number } = {};
+  confidentCoins.map((c: Write) => {
+    if (!c.price) return;
+    prices[c.PK] = c.price;
+  });
+  const writes2: any[] = [];
   await Promise.all(
-    filteredCoins.map((coin) =>
+    filteredCoins.map(async (coin) =>
       iterateOverPlatforms(
         coin,
         async (PK, tokenAddress, chain) => {
@@ -186,6 +226,16 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
             chain,
             coin.symbol,
           );
+
+          writes2.push({
+            key: PK,
+            timestamp: getCurrentUnixTimestamp(),
+            price: prices[cgPK(coin.id)],
+            decimals: decimals,
+            symbol: symbol,
+            confidence: 0.99,
+            adapter: "coingecko",
+          });
           await ddb.put({
             PK,
             SK: 0,
@@ -200,6 +250,13 @@ async function getAndStoreCoins(coins: Coin[], rejected: Coin[]) {
       ),
     ),
   );
+
+  if (writes2.length == 0) return;
+  try {
+    await batchWrite2(writes2);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 const HOUR = 3600;
@@ -241,6 +298,23 @@ async function getAndStoreHourly(coin: Coin, rejected: Coin[]) {
       })),
     false,
   );
+
+  await batchWrite2(
+    coinData.prices
+      .filter((price) => {
+        const ts = toUNIXTimestamp(price[0]);
+        return !writtenTimestamps[ts];
+      })
+      .map((price) => ({
+        timestamp: toUNIXTimestamp(price[0]),
+        key: PK,
+        price: price[1],
+        confidence: 0.99,
+        adapter: "coingecko",
+        symbol: coin.symbol,
+      })),
+    false,
+  );
 }
 
 async function filterCoins(coins: Coin[]): Promise<Coin[]> {
@@ -256,7 +330,7 @@ async function filterCoins(coins: Coin[]): Promise<Coin[]> {
     // we fetch chart information only for coins with:
     //   at least 10M marketcap
     //   at least 10M trading volume in last 24 hours
-    return coinData.usd_market_cap > 1e7 && coinData.usd_24h_vol > 1e17;
+    return coinData.usd_market_cap > 1e7 && coinData.usd_24h_vol > 1e7;
   });
 }
 
@@ -271,6 +345,8 @@ const handler = (hourly: boolean) => async (
   const rejected = [] as Coin[];
   const timer = setTimer();
   const requests = [];
+  await setEnvSecrets();
+  await startup();
   if (hourly) {
     const hourlyCoins = [];
     for (let i = 0; i < coins.length; i += step) {

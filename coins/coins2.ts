@@ -133,17 +133,34 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
 async function queryPostgres(
   values: Coin[],
   target: number,
+  batchPostgresReads: boolean,
 ): Promise<CoinDict> {
   if (values.length == 0) return {};
   const upper: number = target + margin;
   const lower: number = target - margin;
 
-  let data: Coin[] = await sql`
+  let data: Coin[] = [];
+
+  if (batchPostgresReads) {
+    data = await sql`
       select ${sql(pgColumns)} from main where 
       key in ${sql(values.map((v: Coin) => v.key))}
       and timestamp < ${upper}
       and timestamp > ${lower}
     `;
+  } else {
+    for (let i = 0; i < values.length; i++) {
+      const read = await sql`
+        select ${sql(pgColumns)} from main where 
+        key = ${values[i].key}
+        and timestamp < ${upper}
+        and timestamp > ${lower}
+      `;
+      if (read.count) {
+        data.push(read as any);
+      }
+    }
+  }
   console.log(`${data.length} found in PG`);
 
   let dict: CoinDict = {};
@@ -170,12 +187,17 @@ function sortQueriesByTimestamp(values: Coin[]): Coin[][] {
 
   return [values, historicalQueries];
 }
-async function combineRedisAndPostgreData(
+async function combineRedisAndPostgresData(
   redisData: CoinDict,
   historicalQueries: Coin[],
   target: number,
+  batchPostgresReads: boolean,
 ): Promise<CoinDict> {
-  const postgresData: CoinDict = await queryPostgres(historicalQueries, target);
+  const postgresData: CoinDict = await queryPostgres(
+    historicalQueries,
+    target,
+    batchPostgresReads,
+  );
   const combinedData: CoinDict = {};
 
   Object.values(redisData).map((r: Coin) => {
@@ -199,16 +221,20 @@ async function combineRedisAndPostgreData(
 
   return combinedData;
 }
-export async function readCoins2(values: Coin[]): Promise<CoinDict> {
+async function readCoins2(
+  values: Coin[],
+  batchPostgresReads: boolean = true,
+): Promise<CoinDict> {
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
   const redisData: CoinDict = await queryRedis(currentQueries);
 
   return historicalQueries.length > 0
-    ? await combineRedisAndPostgreData(
+    ? await combineRedisAndPostgresData(
         redisData,
         historicalQueries,
         values[0].timestamp,
+        batchPostgresReads,
       )
     : redisData;
 }
@@ -252,12 +278,27 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
 
   return confidentValues;
 }
-export async function writeCoins2(values: Coin[]) {
+async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
+  if (Object.keys(strings).length == 0) return;
+  redis.mset(strings);
+}
+async function writeToPostgres(values: Coin[]): Promise<void> {
+  if (values.length == 0) return;
+  sql`
+      insert into main
+      ${sql(values, "key", "timestamp", "price", "confidence")}
+      on conflict (key, timestamp) do nothing
+      `;
+}
+export async function writeCoins2(
+  values: Coin[],
+  batchPostgresReads: boolean = true,
+) {
   console.log(`${values.length} values entering`);
   await setEnvSecrets();
   await startup();
-  const cleanValues = cleanTimestamps(values);
-  const storedRecords = await readCoins2(cleanValues);
+  const cleanValues = batchPostgresReads ? cleanTimestamps(values) : values;
+  const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
   values = cleanConfidences(values, storedRecords);
   const writesToRedis = findRedisWrites(values, storedRecords);
   const strings: { [key: string]: string } = {};
@@ -265,17 +306,13 @@ export async function writeCoins2(values: Coin[]) {
     strings[v.key] = JSON.stringify(v);
   });
 
-  await Promise.all([
-    Object.keys(strings).length == 0 ? "" : redis.mset(strings),
-    values.length == 0
-      ? ""
-      : sql`
-      insert into main
-      ${sql(values, "key", "timestamp", "price", "confidence")}
-      on conflict (key, timestamp) do nothing
-      `,
-  ]);
+  await Promise.all([writeToPostgres(values), writeToRedis(strings)]);
 }
-export async function batchWrite2(values: Coin[]) {
-  read ? await readCoins2(values) : await writeCoins2(values);
+export async function batchWrite2(
+  values: Coin[],
+  batchPostgresReads: boolean = true,
+) {
+  read
+    ? await readCoins2(values, batchPostgresReads)
+    : await writeCoins2(values, batchPostgresReads);
 }

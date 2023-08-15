@@ -1512,6 +1512,7 @@ const data: Protocol[] = [
     module: "n3rd.js",
     twitter: "nerdfinance1",
     forkedFrom: ["cVault Finance"],
+    github: ["N3RD-FINANCE"]
   },
   {
     id: "176",
@@ -1534,7 +1535,8 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/mushroomsforest/deployment/blob/main/security.md"],
     forkedFrom: ["Yearn Finance"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:mushroomsfi.eth"]
+    governanceID: ["snapshot:mushroomsfi.eth"],
+    deadUrl: true
   },
   {
     id: "177",
@@ -1555,6 +1557,7 @@ const data: Protocol[] = [
     module: "defisaver.js",
     twitter: "DefiSaver",
     audit_links: ["https://consensys.net/diligence/audits/2021/03/defi-saver/"],
+    github: ["defisaver"]
   },
   /*
   {
@@ -1597,7 +1600,8 @@ const data: Protocol[] = [
     twitter: "varenfinance",
     audit_links: ["https://certificate.quantstamp.com/full/linkswap"],
     forkedFrom: ["Uniswap V2"],
-    governanceID: ["snapshot:varen.eth"]
+    governanceID: ["snapshot:varen.eth"],
+    github: ["varenfinance"]
   },
   /*
   {
@@ -1643,7 +1647,8 @@ const data: Protocol[] = [
       "https://www.slowmist.com/en/security-audit-certificate.html?id=1193264f67af7c2bb840306b82eff6218471cf4fbed79a7d48d6a01a93030e35",
     ],
     oracles: ["Band"],
-    governanceID: ["snapshot:mantra-dao.eth"]
+    governanceID: ["snapshot:mantra-dao.eth"],
+    github: ["Mantradao"]
   },
   {
     id: "182",
@@ -1667,7 +1672,8 @@ const data: Protocol[] = [
     twitter: "LidoFinance",
     audit_links: ["https://github.com/lidofinance/audits"],
     openSource: true,
-    governanceID: ["snapshot:lido-snapshot.eth"]
+    governanceID: ["snapshot:lido-snapshot.eth"],
+    github: ["lidofinance"]
   },
   {
     id: "183",
@@ -1731,6 +1737,7 @@ const data: Protocol[] = [
     module: "wanswap.js",
     twitter: "wanswap",
     audit_links: ["https://docs.wanswap.finance/audit"],
+    github: ["wanswap"]
   },
   {
     id: "187",
@@ -1770,7 +1777,8 @@ const data: Protocol[] = [
     module: "indexed/index.js",
     twitter: "ndxfi",
     audit_links: ["https://docs.indexed.finance/protocol/security"],
-    governanceID: ["snapshot:ndx.eth", 'eip155:1:0x95129751769f99CC39824a0793eF4933DD8Bb74B']
+    governanceID: ["snapshot:ndx.eth", 'eip155:1:0x95129751769f99CC39824a0793eF4933DD8Bb74B'],
+    github: ["indexed-finance"]
   },
   {
     id: "189",
@@ -1794,7 +1802,8 @@ const data: Protocol[] = [
     twitter: "1inchNetwork",
     audit_links: ["https://help.1inch.io/en/articles/4585088-how-secure-is-1inch"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:1inch.eth"]
+    governanceID: ["snapshot:1inch.eth"],
+    github: ["1inch"]
   },
   {
     id: "190",
@@ -1814,7 +1823,8 @@ const data: Protocol[] = [
     module: "dhedge.js",
     twitter: "dHedgeOrg",
     audit_links: ["https://iosiro.com/audits/dhedge-platform-smart-contract-audit"],
-    governanceID: ["snapshot:gov.dhedge.eth"]
+    governanceID: ["snapshot:gov.dhedge.eth"],
+    github: ["dhedge"]
   },
   {
     id: "191",
@@ -1835,7 +1845,8 @@ const data: Protocol[] = [
     module: "opium.js",
     twitter: "Opium_Network",
     audit_links: ["https://blog.smartdec.net/opium-smart-contracts-security-analysis-4c1857cfd93f"],
-    governanceID: ["snapshot:opiumprotocol.eth"]
+    governanceID: ["snapshot:opiumprotocol.eth"],
+    github: ["OpiumProtocol"]
   },
   {
     id: "192",
@@ -1855,6 +1866,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "gdao.js",
     twitter: "Governor_DAO",
+    governanceID: ["snapshot:gdao.eth"]
   },
   {
     id: "193",
@@ -1875,7 +1887,8 @@ const data: Protocol[] = [
     module: "unit.js",
     twitter: "unitprotocol",
     audit_links: ["https://github.com/unitprotocol/protocol_docs"],
-    stablecoins: ["usdp-stablecoin"]
+    stablecoins: ["usdp-stablecoin"],
+    github: ["unitprotocol"]
   },
   {
     id: "194",
@@ -2028,6 +2041,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/peckshield/publications/blob/master/audit_reports/bella_audit_report_2020_48_en_1_0.pdf",
     ],
+    github: ["Bella-DeFinTech"]
   },
   {
     id: "202",
@@ -2052,7 +2066,8 @@ const data: Protocol[] = [
       "https://github.com/saddle-finance/saddle-audits/blob/master/12-09-2020_Quantstamp.pdf",
     ],
     forkedFrom: [],
-    governanceID: ["snapshot:saddlefinance.eth"]
+    governanceID: ["snapshot:saddlefinance.eth"],
+    github: ["saddle-finance"]
   },
   {
     id: "203",
@@ -2072,7 +2087,8 @@ const data: Protocol[] = [
     module: "siren/index.js",
     twitter: "sirenprotocol",
     audit_links: ["https://docs.sirenmarkets.com/faq-general/for-users#is-the-siren-protocol-safe"],
-    governanceID: ["snapshot:sirenmarkets.eth"]
+    governanceID: ["snapshot:sirenmarkets.eth"],
+    github: ["sirenmarkets"]
   },
   {
     id: "204",
@@ -2099,6 +2115,7 @@ const data: Protocol[] = [
     oracles: [],
     governanceID: ["snapshot:alchemixstakers.eth"],
     stablecoins: ["alchemix-usd"],
+    github: ["alchemix-finance"]
   },
   {
     id: "205",
@@ -2119,6 +2136,7 @@ const data: Protocol[] = [
     twitter: "Goosedefi",
     audit_links: ["https://www.goosedefi.com/files/hackenAudit.pdf", "https://www.certik.org/projects/goose-finance"],
     forkedFrom: [],
+    github: ["goosedefi"]
   },
   {
     id: "206",
@@ -2138,7 +2156,8 @@ const data: Protocol[] = [
     module: "xtoken/index.js",
     twitter: "xtokenterminal",
     audit_links: ["https://github.com/xtokenmarket/terminal-mining/tree/master/audits"],
-    governanceID: ["snapshot:xxtka.eth"]
+    governanceID: ["snapshot:xxtka.eth"],
+    github: ["xtokenmarket"]
   },
   {
     id: "207",
@@ -2178,6 +2197,7 @@ const data: Protocol[] = [
     module: "acryptos/index.js",
     twitter: "acryptosdao",
     audit_links: ["https://docs.acryptos.com/security-and-risks#audits"],
+    governanceID: ["snapshot:acryptos"]
   },
   {
     id: "209",
@@ -2220,7 +2240,8 @@ const data: Protocol[] = [
     module: "yaxis/index.js",
     twitter: "yaxis_project",
     audit_links: ["https://github.com/yaxis-project/yaxis-audit"],
-    governanceID: ["snapshot:yaxis.eth"]
+    governanceID: ["snapshot:yaxis.eth"],
+    github: ["yaxis-project"]
   },
   {
     id: "211",
@@ -2344,6 +2365,7 @@ const data: Protocol[] = [
     twitter: "AuctusOptions",
     audit_links: ["https://docs.auctus.org/security#audits"],
     oracles: ["Chainlink"],
+    github: ["AuctusProject"]
   },
   {
     id: "217",
@@ -2405,6 +2427,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/HydroProtocol/audit-reports/blob/master/2.0/hydro_audit_report_2019_14_en_1_0.pdf",
     ],
+    github: ["HydroProtocol"]
   },
   {
     id: "220",
@@ -2425,7 +2448,8 @@ const data: Protocol[] = [
     twitter: "VesperFi",
     audit_links: ["https://github.com/vesperfi/doc/tree/main/audit"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:vsp.eth"]
+    governanceID: ["snapshot:vsp.eth"],
+    github: ["vesperfi"]
   },
   {
     id: "221",
@@ -2468,7 +2492,8 @@ const data: Protocol[] = [
     twitter: "DeFinerOrg",
     audit_links: ["https://docs.definer.org/"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:definerorg.eth"]
+    governanceID: ["snapshot:definerorg.eth"],
+    github: ["DeFinerOrg"]
   },
   {
     id: "223",
@@ -2528,7 +2553,8 @@ const data: Protocol[] = [
     twitter: "enzymefinance",
     audit_links: ["https://audit.enzyme.finance/"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:enzymefinance.eth"]
+    governanceID: ["snapshot:enzymefinance.eth"],
+    github: ["enzymefinance"]
   },
   {
     id: "226",
@@ -2548,6 +2574,7 @@ const data: Protocol[] = [
     module: "erasure/index.js",
     twitter: "numerai",
     audit_links: ["https://github.com/erasureprotocol/NMR/tree/master/audits"],
+    github: ["erasureprotocol"]
   },
   {
     id: "227",
@@ -2591,6 +2618,7 @@ const data: Protocol[] = [
     twitter: "futureswapx",
     audit_links: ["https://docs.futureswap.com/other/audits"],
     oracles: ["Chainlink"],
+    github: ["futureswap"]
   },
   {
     id: "229",
@@ -2632,6 +2660,7 @@ const data: Protocol[] = [
       "https://github.com/idexio/idex-contracts/tree/master/audits",
       "https://callisto.network/idex-security-audit/",
     ],
+    github: ["idexio"]
   },
   {
     id: "231",
@@ -2713,7 +2742,8 @@ const data: Protocol[] = [
     treasury: "notional.js",
     twitter: "NotionalFinance",
     audit_links: ["https://blog.openzeppelin.com/notional-audit/"],
-    governanceID: ["snapshot:notional.eth"]
+    governanceID: ["snapshot:notional.eth"],
+    github: ["notional-finance"]
   },
   {
     id: "235",

@@ -269,5 +269,9 @@ export default {
                 "1691625600": true,
             },
         }
+    },
+    "aark": {
+        "enabled": true,
+        "id": "3376"
     }
 } as AdaptorsConfig

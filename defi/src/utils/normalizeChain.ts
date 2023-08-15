@@ -1777,6 +1777,12 @@ export const chainCoingeckoIds = {
     cmcId: "20326",
     categories: ["Cosmos"],
   },
+  "Sei": {
+    geckoId: "sei-network",
+    symbol: "SEI",
+    cmcId: "23149",
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2220,6 +2226,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "GravityBridge"
     case "aura":
       return "Aura Network"
+    case "sei":
+      return "Sei"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

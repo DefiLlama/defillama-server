@@ -1156,5 +1156,9 @@ export default {
     "venus-finance": {
         "id": "212",
         "enabled": true
+    },
+    "none-trading-bot": {
+        "id": "3337",
+        "enabled": true
     }
 } as AdaptorsConfig

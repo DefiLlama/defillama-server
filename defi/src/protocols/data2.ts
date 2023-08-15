@@ -24213,7 +24213,8 @@ const data2: Protocol[] = [
       "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/DeltaPrime-Review-Piotr-Szlachciak.pdf",
       "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/PeckShield-Audit-Report-DeltaPrime.pdf",
       "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/Smart_Contract_Audit_DeltaPrime_Protocol_04112022.pdf",
-      "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/PeckShield-Audit-Report-DeltaPrime-v1.0.pdf"
+      "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/PeckShield-Audit-Report-DeltaPrime-v1.0.pdf",
+      "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/dev/main/audits/PeckShield-Audit-Report-DeltaPrime-v2.0.pdf"
     ],
     listedAt: 1675090708
   },

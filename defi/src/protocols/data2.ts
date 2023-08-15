@@ -25271,7 +25271,7 @@ const data2: Protocol[] = [
     chains: ["Polygon"],
     module: "covo-finance/index.js",
     twitter: "covofinance",
-    oracles: ["Chainlink"],
+    oracles: ["Chainlink","Pyth"],
     forkedFrom: ["GMX V1"],
     parentProtocol: "parent#covo-finance",
     listedAt: 1676226573

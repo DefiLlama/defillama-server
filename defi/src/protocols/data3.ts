@@ -15026,6 +15026,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/igneous-labs/sanctum-unstake-program/blob/master/audits/sec3-20230724.pdf"],
     listedAt: 1692111232
   },
+  {
+    id: "3389",
+    name: "MantaDAO",
+    address: "kujira:factory/kujira1643jxg8wasy5cfcn7xm8rd742yeazcksqlg4d7/umnta",
+    symbol: "MNTA",
+    url: "https://mantadao.app/",
+    description: "MantaDAOs flagship product is MantaSwap which provides a multi-hop router for the Kujira FIN orderbook allowing for best trade execution and routing on any-to-any swaps.",
+    chain: "Kujira",
+    logo: `${baseIconsUrl}/mantadao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "mantadao",
+    cmcId: null,
+    category: "Services", 
+    chains: ["Kujira"],
+    module: "dummy.js",
+    treasury: "mantadao.js", //
+    twitter: "sanctumso",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692111232
+  },
 ]
 
 export default data3

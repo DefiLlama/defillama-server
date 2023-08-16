@@ -2486,6 +2486,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "base_cookie",
   },
+  {
+    id: "parent#onering",
+    name: "OneRing",
+    url: "https://www.onering.tools",
+    description: "One Ring is a Multi-Chain Cross-Stable Yield Optimizer Platform.",
+    logo: `${baseIconsUrl}/onering.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Onering_Tools",
+  },
 ];
 
 export default parentProtocols;

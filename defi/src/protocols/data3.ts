@@ -15140,6 +15140,51 @@ const data3: Protocol[] = [
     audit_links: ["https://docs.term.finance/security-audits/sigma-prime"],
     listedAt: 1692193295
   },
+  {
+    id: "3394",
+    name: "IMPLS",
+    address: "pulse:0x5f63BC3d5bd234946f18d24e98C324f629D9d60e",
+    symbol: "IMPLS",
+    url: "https://impls.finance",
+    description:
+      "IMPLS is a yield farming and auto compounding vaults protocol built on PulseChain",
+    chain: "Pulse",
+    logo: `${baseIconsUrl}/impls.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Pulse"],
+    module: "implsfinance/index.js",
+    twitter: "IMPLSfinance",
+    forkedFrom: ["Yearn Finance"],
+    oracles: [],
+    listedAt: 1692196284
+  },
+  {
+    id: "3395",
+    name: "OneRing V2",
+    address: null,
+    symbol: "-",
+    url: "https://www.onering.tools",
+    description:
+      "One Ring is a Multi-Chain Cross-Stable Yield Optimizer Platform.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/onering-v2.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield",
+    chains: ["Optimism"],
+    module: "one-ring-tools/index.js",
+    twitter: "Onering_Tools",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#onering",
+    listedAt: 1692196654
+  },
 ]
 
 export default data3

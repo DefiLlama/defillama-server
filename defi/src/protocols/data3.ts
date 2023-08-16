@@ -15185,6 +15185,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#onering",
     listedAt: 1692196654
   },
+  {
+    id: "3396",
+    name: "LogX",
+    address: null,
+    symbol: "-",
+    url: "https://www.logx.trade",
+    description:
+      "Aggregator of Perp DEXes, for Best Execution of Perps.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/logx.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "dummy.js",
+    twitter: "LogX_trade",
+    forkedFrom: [],
+    oracles: [],
+  },
 ]
 
 export default data3

@@ -15065,7 +15065,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Farm",
     chains: ["Base"],
-    module: "cookiebase/index.js",
+    module: "cookiebase-farm/index.js",
     twitter: "base_cookie",
     forkedFrom: [],
     oracles: [],

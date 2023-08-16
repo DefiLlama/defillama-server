@@ -315,3 +315,13 @@ export function velocimeter(timestamp: number = 0) {
     timestamp,
   );
 }
+export function pulsex(timestamp: number = 0) {
+  console.log("starting pulsex");
+  return getTokenPrices(
+    "pulse",
+    "0x1715a3E4A142d8b698131108995174F37aEBA10D",
+    "0xc40cE31d9bcBe2edFbD30D0a7503f6C663b69877",
+    undefined,
+    timestamp,
+  );
+}

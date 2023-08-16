@@ -98,6 +98,7 @@ export default {
   mute: require("./markets/uniswap"),
   spacefi: require("./markets/uniswap"),
   gemswap: require("./markets/uniswap"),
+  pulsex: require("./markets/uniswap"),
   extraUniV2Lps: require("./markets/uniswap"),
   thena: require("./markets/uniswap"),
   fvm: require("./markets/uniswap"),

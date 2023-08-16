@@ -7,6 +7,7 @@ import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
 import { storeR2 } from "./utils/r2";
 import { getChainDisplayName } from "./utils/normalizeChain";
+import { extraSections } from "./utils/normalizeChain";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -122,6 +123,7 @@ const handler = async (_event: any) => {
       tvl,
       chainTvls,
       mcap,
+      gecko_id: parent.gecko_id,
       isParent: true,
     })
     return {
@@ -148,8 +150,9 @@ const handler = async (_event: any) => {
     symbol: protocol.symbol,
     category: protocol.category,
     tvl: protocol.tvl,
-    chainTvls: Object.fromEntries(Object.entries(protocol.chainTvls).filter(c=>!c[0].includes("-"))),
+    chainTvls: Object.fromEntries(Object.entries(protocol.chainTvls).filter(c=>!c[0].includes("-") && !extraSections.includes(c[0]))),
     mcap: protocol.mcap,
+    gecko_id: protocol.gecko_id,
     parent: protocol.parentProtocol,
   })).concat(extendedParentProtocols)), true, false);
 };

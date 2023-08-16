@@ -15229,7 +15229,50 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692204129
   },
-
+  {
+    id: "3398",
+    name: "v2swap",
+    address: null,
+    symbol: "-",
+    url: "https://www.v2swap.io",
+    description:
+      "Bringing the infamous battle-tested Uniswap V2 protocol to opBNB network",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/v2swap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "v2swap/index.js",
+    twitter: "v2swapUNI",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1692220046
+  },
+  {
+    id: "3399",
+    name: "Bridge LZ",
+    address: null,
+    symbol: "-",
+    url: "https://twitter.com/bridge_lz",
+    description:
+      "The first shitcoin omnichain with multiple functionality thank’s to oft technology from LayerZero_Labs",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bridge-lz.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "bridge-lz/index.js",
+    twitter: "Bridge_LZ",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692220052
+  },
 ]
 
 export default data3

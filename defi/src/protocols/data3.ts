@@ -15069,7 +15069,7 @@ const data3: Protocol[] = [
     twitter: "base_cookie",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1691326424,
+    listedAt: 1692166471,
     parentProtocol: "parent#cookiebase"
   },
 ]

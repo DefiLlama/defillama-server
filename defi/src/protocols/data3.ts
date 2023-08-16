@@ -15223,7 +15223,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Boba_Bnb"],
-    module: "one-ring-tools/index.js",
+    module: "binaryswap/index.js",
     twitter: "binaryswapio",
     forkedFrom: ["Uniswap V2"],
     oracles: [],

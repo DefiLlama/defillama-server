@@ -281,11 +281,11 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
 }
 async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
   if (Object.keys(strings).length == 0) return;
-  redis.mset(strings);
+  await redis.mset(strings);
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
-  sql`
+  await sql`
       insert into main
       ${sql(values, "key", "timestamp", "price", "confidence")}
       on conflict (key, timestamp) do nothing

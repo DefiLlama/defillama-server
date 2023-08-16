@@ -15216,7 +15216,7 @@ const data3: Protocol[] = [
     description:
       "Decentralized exchange and yield farm on OpBNB network",
     chain: "Boba_Bnb",
-    logo: `${baseIconsUrl}/onering-v2.jpg`,
+    logo: `${baseIconsUrl}/binary-swap.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

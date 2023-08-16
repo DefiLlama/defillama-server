@@ -18,6 +18,8 @@
       "decimals": "18",
       "symbol": "GRAI",
       "to": "coingecko#grai"
+    }
+  },
   "base": {
     "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376": {
       "decimals": "6",

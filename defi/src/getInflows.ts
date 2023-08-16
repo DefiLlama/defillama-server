@@ -4,6 +4,7 @@ import sluggify from "./utils/sluggify";
 import getTVLOfRecordClosestToTimestamp from "./utils/shared/getRecordClosestToTimestamp";
 import { getLastRecord, hourlyTokensTvl, hourlyUsdTokensTvl } from "./utils/getLastRecord";
 import cgSymbols from "./utils/symbols/symbols.json";
+import { getCurrentUnixTimestamp } from "./utils/date";
 
 const geckoSymbols = cgSymbols as { [key: string]: string };
 
@@ -11,6 +12,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
   const protocolName = event.pathParameters?.protocol?.toLowerCase();
   const tokensToExclude = event.queryStringParameters?.tokensToExclude?.split(",") ?? [];
   const timestamp = Number(event.pathParameters?.timestamp);
+  const endTimestamp = Number(event.queryStringParameters?.end ?? getCurrentUnixTimestamp());
   const protocolData = protocols.find((prot) => sluggify(prot) === protocolName);
 
   const old = await getTVLOfRecordClosestToTimestamp(hourlyTokensTvl(protocolData?.id!), timestamp, 2 * 3600);
@@ -18,7 +20,7 @@ const handler = async (event: AWSLambda.APIGatewayEvent): Promise<IResponse> => 
     return errorResponse({ message: "No data at that timestamp" });
   }
   const [currentTokens, currentUsdTokens] = await Promise.all(
-    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getLastRecord(prefix(protocolData?.id!)))
+    [hourlyTokensTvl, hourlyUsdTokensTvl].map((prefix) => getTVLOfRecordClosestToTimestamp(prefix(protocolData?.id!), endTimestamp, 2 * 3600))
   );
 
   if (!currentTokens || !currentTokens.SK || !currentUsdTokens || !currentTokens.SK) {

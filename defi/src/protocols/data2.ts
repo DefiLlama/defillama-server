@@ -24726,14 +24726,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2502",
-    name: "BitDAO",
+    name: "Mantle Treasury", // rebranded from BitDAO
     address: "0x1a4b46696b2bb4794eb3d4c26f1c55f9170fa4c5",
     symbol: "BIT",
     url: "https://www.bitdao.io",
     description:
       "BitDAO is a collective of builders, products, and mutually beneficial ecosystems governed by $BIT token holders.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bitdao.png`,
+    logo: `${baseIconsUrl}/mantle-treasury.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "bitdao",

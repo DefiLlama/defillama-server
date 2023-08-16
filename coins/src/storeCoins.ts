@@ -8,7 +8,7 @@ import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
 import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
 import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
-import { startup, redis, sql } from "../coins2";
+import { startup, windDown } from "../coins2";
 
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
@@ -52,7 +52,7 @@ export default async function handler(event: any) {
       }
     }),
   );
-  await Promise.all([redis.quit(), sql.end()]);
+  await windDown();
   console.log("connections closed");
 }
 

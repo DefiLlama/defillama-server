@@ -1124,13 +1124,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1443",
-    name: "OneRing",
+    name: "OneRing V1",
     address: "fantom:0x582423c10c9e83387a96d00a69ba3d11ee47b7b5",
     symbol: "RING",
     url: "https://www.onering.finance",
     description: "One Ring is a Multi-Chain Cross-Stable Yield Optimizer Platform.",
     chain: "Polygon",
-    logo: `${baseIconsUrl}/onering.png`,
+    logo: `${baseIconsUrl}/onering-v1.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: "onering",
@@ -1141,6 +1141,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "one-ring/index.js",
     twitter: "Onering_Finance",
+    parentProtocol: "parent#onering",
     listedAt: 1645453599,
     rugged: true
   },

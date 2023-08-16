@@ -123,4 +123,5 @@ export default {
   pendle: require("./yield/pendle"),
   phux: require("./markets/phux"),
   wombat: require("./markets/wombat"),
+  backed: require("./rwa/backed"),
 };

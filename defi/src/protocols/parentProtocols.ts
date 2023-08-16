@@ -1813,7 +1813,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#synfutures",
-    name: "PulseX",
+    name: "SynFutures",
     url: "https://www.synfutures.com/",
     description: 'Next-generation derivatives platform designed for any blockchain',
     logo: `${baseIconsUrl}/synfutures.svg`,

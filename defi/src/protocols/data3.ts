@@ -14780,10 +14780,11 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Services",
     chains: ["Base"],
-    module: "dummy.js",
+    module: "friendtech/index.js",
     twitter: "friendtech",
     forkedFrom: [],
     oracles: [],
+    listedAt: 1692204447
   },
   {
     id: "3378",
@@ -15206,6 +15207,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
   },
+  {
+    id: "3397",
+    name: "Binary Swap",
+    address: null,
+    symbol: "-",
+    url: "https://www.binaryswap.io/#/swap",
+    description:
+      "Decentralized exchange and yield farm on OpBNB network",
+    chain: "Boba_Bnb",
+    logo: `${baseIconsUrl}/binary-swap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Boba_Bnb"],
+    module: "binaryswap/index.js",
+    twitter: "binaryswapio",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1692204129
+  },
+
 ]
 
 export default data3

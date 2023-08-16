@@ -46,4 +46,3 @@ export default async function bridge(): Promise<Token[]> {
   //   console.log([...new Set(unknownChains)]);
   return tokens;
 }
-bridge();

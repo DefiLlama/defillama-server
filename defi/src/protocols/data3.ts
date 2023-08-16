@@ -14780,7 +14780,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Services",
     chains: ["Base"],
-    module: "dummy.js",
+    module: "friendtech/index.js",
     twitter: "friendtech",
     forkedFrom: [],
     oracles: [],

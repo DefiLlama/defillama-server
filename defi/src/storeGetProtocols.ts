@@ -96,18 +96,38 @@ const handler = async (_event: any) => {
     }),
   }).then((r) => r.json());
 
+  const extendedParentProtocols = [] as any[]
   const parentProtocols: IParentProtocol[] = parentProtocolsList.map((parent) => {
     const chains: Set<string> = new Set();
 
     const children = response.filter((protocol) => protocol.parentProtocol === parent.id);
+    let symbol = '-', tvl = 0, chainTvls = {} as {[chain:string]:number}
     children.forEach((child) => {
+      if(child.symbol !== "-"){
+        symbol = child.symbol
+      }
+      tvl += child.tvl;
+      Object.entries(child.chainTvls).forEach(([chain, chainTvl])=>{
+        chainTvls[chain] = (chainTvls[chain] ?? 0) + chainTvl
+      })
       child.chains?.forEach((chain: string) => chains.add(chain));
     });
 
+    const mcap = parent.gecko_id ? coinMarkets?.[`coingecko:${parent.gecko_id}`]?.mcap ?? null : null
+    extendedParentProtocols.push({
+      id: parent.id,
+      name: parent.name,
+      symbol,
+      //category,
+      tvl,
+      chainTvls,
+      mcap,
+      isParent: true,
+    })
     return {
       ...parent,
       chains: Array.from(chains),
-      mcap: parent.gecko_id ? coinMarkets?.[`coingecko:${parent.gecko_id}`]?.mcap ?? null : null,
+      mcap,
     };
   });
 
@@ -122,6 +142,17 @@ const handler = async (_event: any) => {
     })
   );
   await storeR2("lite/protocols2", compressedV2Response, true);
+  const dummyProtocols = response.filter(p=>p.module==="dummy.js").reduce((acc, curr)=>({...acc, [curr.id]:true}), {} as {[id:string]:boolean})
+  await storeR2("lite/v2/protocols", JSON.stringify(trimmedResponse.filter(p=>dummyProtocols[p.defillamaId] === undefined).map(protocol=>({
+    id: protocol.defillamaId,
+    name: protocol.name,
+    symbol: protocol.symbol,
+    category: protocol.category,
+    tvl: protocol.tvl,
+    chainTvls: protocol.chainTvls,
+    mcap: protocol.mcap,
+    parent: protocol.parentProtocol,
+  })).concat(extendedParentProtocols)), true, false);
 };
 
 export default wrapScheduledLambda(handler);

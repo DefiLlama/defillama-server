@@ -24538,6 +24538,7 @@ const data2: Protocol[] = [
     chains: ["Ethereum", "Binance", "Polygon"],
     module: "brewlabs/index.js",
     twitter: "TeamBrewlabs",
+    treasury: "brewlabs.js",
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://www.certik.com/projects/brewlabs"],

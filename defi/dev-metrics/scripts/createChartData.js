@@ -3,6 +3,7 @@ const db = require('../db')
 const { ORG_MAPPING } = require('../utils')
 const { saveChartData, getChartData } = require('../utils/r2')
 
+// I think it is no longer used/never used and can be deleted
 async function createChartData() {
   const entries = Object.entries(ORG_MAPPING)
   let i = 0

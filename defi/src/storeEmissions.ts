@@ -96,18 +96,18 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
   return sluggifiedId;
 }
 
-async function processProtocolList() {
+async function processProtocolList(protocolAdapters: [string, any][]) {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
 
   await PromisePool.withConcurrency(2)
-    .for(shuffleArray(Object.entries(adapters)))
+    .for(shuffleArray(protocolAdapters))
     .process(async ([protocolName, rawAdapter]) => {
       let adapters = typeof rawAdapter.default === "function" ? await rawAdapter.default() : rawAdapter.default;
       if (!adapters.length) adapters = [adapters];
       await Promise.all(
         adapters.map((adapter: Protocol) =>
-          withTimeout(120000, processSingleProtocol(adapter, protocolName), protocolName)
+          withTimeout(180000, processSingleProtocol(adapter, protocolName), protocolName)
             .then((p: string) => protocolsArray.push(p))
             .catch((err: Error) => {
               console.log(err.message ? `${err.message}: \n storing ${protocolName}` : err);
@@ -122,9 +122,9 @@ async function processProtocolList() {
   if (res.body) protocolsArray = [...new Set([...protocolsArray, ...JSON.parse(res.body)])];
   await storeR2JSONString(`emissionsProtocolsList`, JSON.stringify(protocolsArray));
 }
-async function handler() {
+async function handler(event: any) {
   try {
-    await withTimeout(840000, processProtocolList());
+    await withTimeout(840000, processProtocolList(event.adapters));
   } catch (e) {
     process.env.UNLOCKS_WEBHOOK ? await sendMessage(`${e}`, process.env.UNLOCKS_WEBHOOK!) : console.log(e);
   }

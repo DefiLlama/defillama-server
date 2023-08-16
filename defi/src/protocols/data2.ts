@@ -18764,7 +18764,7 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: [],
     listedAt: 1667056144,
-    github: ["anetaBTC"]
+    github: ["anetabtc"]
   },
   {
     id: "2239",
@@ -19812,23 +19812,23 @@ const data2: Protocol[] = [
   },
   {
     id: "2287",
-    name: "THORSwap",
-    address: "0xa5f2211b9b8170f694421f2046281775e8468044",
-    symbol: "THOR",
-    url: "https://app.thorswap.finance/liquidity",
+    name: "ThorChain DEX",
+    address: null, 
+    symbol: "RUNE",
+    url: "https://thorchain.org/",
     description:
-      "Earn native yield with THORChain Savers Vaults with no additional asset exposure or impermanent loss.",
+      "Native dex of thorchain",
     chain: "Thorchain",
     logo: `${baseIconsUrl}/thorswap.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "thorswap",
-    cmcId: "12942",
+    gecko_id: null,
+    cmcId: null,
     category: "Dexes",
     chains: ["Thorchain"],
     module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
     forkedFrom: [],
-    twitter: "THORSwap",
+    twitter: "THORChain",
     listedAt: 1668600716
   },
   /*
@@ -20005,15 +20005,15 @@ const data2: Protocol[] = [
   {
     id: "2296",
     name: "HMX", //previous perp88
-    address: null,
-    symbol: "-",
+    address: "arbitrum:0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
+    symbol: "HMX",
     url: "https://hmx.org/arbitrum",
     description: "(Previous perp88) The Next-Gen Decentralized Perpetual Exchange Trade Crypto, FX, Equity, and Commodity with up to 1,000x leverage on Arbitrum",
     chain: "Polygon",
     logo: `${baseIconsUrl}/hmx.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "hmx",
     cmcId: null,
     category: "Derivatives",
     chains: ["Polygon", "Arbitrum"],
@@ -20021,6 +20021,7 @@ const data2: Protocol[] = [
     twitter: "HMXorg",
     forkedFrom: [],
     oracles: ["Pyth"],
+    github: ["HMXOrg"],
     listedAt: 1668805259
   },
   {
@@ -24212,7 +24213,8 @@ const data2: Protocol[] = [
       "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/DeltaPrime-Review-Piotr-Szlachciak.pdf",
       "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/PeckShield-Audit-Report-DeltaPrime.pdf",
       "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/Smart_Contract_Audit_DeltaPrime_Protocol_04112022.pdf",
-      "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/PeckShield-Audit-Report-DeltaPrime-v1.0.pdf"
+      "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/main/audits/PeckShield-Audit-Report-DeltaPrime-v1.0.pdf",
+      "https://github.com/DeltaPrimeLabs/deltaprime-primeloans/blob/dev/main/audits/PeckShield-Audit-Report-DeltaPrime-v2.0.pdf"
     ],
     listedAt: 1675090708
   },
@@ -24724,14 +24726,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2502",
-    name: "BitDAO",
+    name: "Mantle Treasury", // rebranded from BitDAO
     address: "0x1a4b46696b2bb4794eb3d4c26f1c55f9170fa4c5",
     symbol: "BIT",
     url: "https://www.bitdao.io",
     description:
       "BitDAO is a collective of builders, products, and mutually beneficial ecosystems governed by $BIT token holders.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bitdao.png`,
+    logo: `${baseIconsUrl}/mantle-treasury.png`,
     audits: "0",
     audit_note: null,
     gecko_id: "bitdao",

@@ -7,6 +7,7 @@ import type { IParentProtocol } from "./protocols/types";
 import type { IProtocol, LiteProtocol, ProtocolTvls } from "./types";
 import { storeR2 } from "./utils/r2";
 import { getChainDisplayName } from "./utils/normalizeChain";
+import { extraSections } from "./utils/normalizeChain";
 
 function compress(data: string) {
   return brotliCompressSync(data, {
@@ -96,18 +97,39 @@ const handler = async (_event: any) => {
     }),
   }).then((r) => r.json());
 
+  const extendedParentProtocols = [] as any[]
   const parentProtocols: IParentProtocol[] = parentProtocolsList.map((parent) => {
     const chains: Set<string> = new Set();
 
     const children = response.filter((protocol) => protocol.parentProtocol === parent.id);
+    let symbol = '-', tvl = 0, chainTvls = {} as {[chain:string]:number}
     children.forEach((child) => {
+      if(child.symbol !== "-"){
+        symbol = child.symbol
+      }
+      tvl += child.tvl;
+      Object.entries(child.chainTvls).forEach(([chain, chainTvl])=>{
+        chainTvls[chain] = (chainTvls[chain] ?? 0) + chainTvl
+      })
       child.chains?.forEach((chain: string) => chains.add(chain));
     });
 
+    const mcap = parent.gecko_id ? coinMarkets?.[`coingecko:${parent.gecko_id}`]?.mcap ?? null : null
+    extendedParentProtocols.push({
+      id: parent.id,
+      name: parent.name,
+      symbol,
+      //category,
+      tvl,
+      chainTvls,
+      mcap,
+      gecko_id: parent.gecko_id,
+      isParent: true,
+    })
     return {
       ...parent,
       chains: Array.from(chains),
-      mcap: parent.gecko_id ? coinMarkets?.[`coingecko:${parent.gecko_id}`]?.mcap ?? null : null,
+      mcap,
     };
   });
 
@@ -122,6 +144,17 @@ const handler = async (_event: any) => {
     })
   );
   await storeR2("lite/protocols2", compressedV2Response, true);
+  await storeR2("lite/v2/protocols", JSON.stringify(response.filter(p=> p.module!=="dummy.js" && p.category !== "Chain" && p.category !== "CEX").map(protocol=>({
+    id: protocol.id,
+    name: protocol.name,
+    symbol: protocol.symbol,
+    category: protocol.category,
+    tvl: protocol.tvl,
+    chainTvls: Object.fromEntries(Object.entries(protocol.chainTvls).filter(c=>!c[0].includes("-") && !extraSections.includes(c[0]))),
+    mcap: protocol.mcap,
+    gecko_id: protocol.gecko_id,
+    parent: protocol.parentProtocol,
+  })).concat(extendedParentProtocols)), true, false);
 };
 
 export default wrapScheduledLambda(handler);

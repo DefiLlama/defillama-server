@@ -110,6 +110,15 @@ async function saveTwitterData(handle, data) {
 async function getTwitterData(handle) {
   return getCache('twitter-files', handle)
 }
+async function saveGithubData(handle, data) {
+  return setCache('github', handle, data)
+}
+async function saveGithubOverview(data) {
+  data.forEach(i => {
+    i.link = getLink('github', i.project_id)
+  })
+  return setCache('config', 'github-overview', data)
+}
 
 
 async function testFetchWithoutCache(govType, project) {
@@ -128,4 +137,6 @@ module.exports = {
   saveTwitterData,
   getTwitterData,
   testFetchWithoutCache,
+  saveGithubData,
+  saveGithubOverview,
 }

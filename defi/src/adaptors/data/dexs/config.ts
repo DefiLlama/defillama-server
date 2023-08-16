@@ -1423,7 +1423,7 @@ export default {
         "id": "2754"
     },
     "native": {
-        "enabled": false,
+        "enabled": true,
         "id": "2803"
     },
     "spacedex": {
@@ -1861,5 +1861,17 @@ export default {
         "id": "3382",
         "enabled": true,
         parentId: "Throne"
+    },
+    "dackieswap": {
+        "enabled": true,
+        "id": "3345",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1691971200": true,
+                "1691884800": true,
+                "1691798400": true,
+                "1691712000": true,
+            },
+        }
     }
 } as AdaptorsConfig

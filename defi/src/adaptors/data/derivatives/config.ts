@@ -269,5 +269,15 @@ export default {
                 "1691625600": true,
             },
         }
+    },
+    "aark": {
+        "enabled": true,
+        "id": "3376",
+        cleanRecordsConfig: {
+            genuineSpikes: {
+                "1691971200": true,
+                "1691884800": true,
+            },
+        }
     }
 } as AdaptorsConfig

@@ -88,7 +88,7 @@ async function pullOrCloneRepository({ orgName, repoData, octokit, }) {
       const repoPath = getTempFolder()
 
       let git = simpleGit(repoPath, repoName, { progress });
-      await git.clone(repoData.ssh_url)
+      await git.clone(repoData.html_url)
       git.cwd(path.join(repoPath, repoName))
 
       commitData.lastupdatetime = +new Date()

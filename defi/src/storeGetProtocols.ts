@@ -148,7 +148,7 @@ const handler = async (_event: any) => {
     symbol: protocol.symbol,
     category: protocol.category,
     tvl: protocol.tvl,
-    chainTvls: protocol.chainTvls,
+    chainTvls: Object.fromEntries(Object.entries(protocol.chainTvls).filter(c=>!c[0].includes("-"))),
     mcap: protocol.mcap,
     parent: protocol.parentProtocol,
   })).concat(extendedParentProtocols)), true, false);

@@ -988,7 +988,7 @@ export default {
     },
     "thorswap": {
         "enabled": true,
-        "id": "2287"
+        "id": "412"
     },
     "metatdex": {
         "enabled": true,

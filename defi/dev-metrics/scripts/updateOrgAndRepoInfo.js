@@ -75,7 +75,7 @@ async function main() {
         },
       },
     })
-    const ignoreOrgsSet = new Set(existingOrgs.filter(i => i.is_missing || i.lastupdatetime > oneMonthAgo).map(o => o.name))
+    const ignoreOrgsSet = new Set(existingOrgs.filter(i => i.is_missing || i.lastupdatetime > oneMonthAgo * 2).map(o => o.name))
     console.log('org chunk length: ', chunk.length)
     chunk = chunk.filter(c => !ignoreOrgsSet.has(c))
     console.log('org chunk length  [after filter]: ', chunk.length)
@@ -298,7 +298,7 @@ async function addCommits(repoData) {
 
   sdk.log('Cloning repo for ', repoName, repoData.ssh_url, repoPath, repoDir)
   let git = simpleGit(repoPath, repoDir, { progress });
-  await git.clone(repoData.ssh_url)
+  await git.clone(repoData.html_url)
   git.cwd(path.join(repoPath, repoDir))
   // git = simpleGit(repoPath, repoName, { progress })
 

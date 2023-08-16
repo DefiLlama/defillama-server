@@ -63,23 +63,25 @@ async function onStart() {
 
 onStart()
 
+function titleLog(...title) {
+  console.log('\n---------------------------------\n')
+  console.log(...title)
+  console.log('\n---------------------------------\n')
+}
+
 async function spawnPromise({ bashCode, name }) {
-  console.log('[Start]', name)
+  titleLog('[Start]', name)
   return new Promise((resolve, reject) => {
     const childProcess = spawn('bash', ['-c', bashCode], { stdio: 'inherit' });
 
     childProcess.on('close', (code) => {
-      console.log('[Done] ', name)
+      titleLog('[Done] ', name)
       if (code === 0) {
         resolve()
       } else {
         reject(new Error(`Child process exited with code ${code}`));
       }
     });
-
-    /* childProcess.on('error', (error) => {
-      reject(error);
-    }); */
   });
 }
 

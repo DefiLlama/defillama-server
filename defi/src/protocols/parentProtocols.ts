@@ -75,7 +75,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "incrementfi",
-    github: ["incrementfi"],
+    github: ["IncrementFi"],
   },
   {
     id: "parent#pods-finance",
@@ -153,7 +153,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "HuckleberryDEX",
     governanceID: ["snapshot:huckleberrydex.eth"],
-    github: ["huckleberrydex"],
+    github: ["HuckleberryDex"],
   },
   {
     id: "parent#mm-finance",
@@ -400,7 +400,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "QuickswapDEX",
     governanceID: ["snapshot:quickvote.eth"],
-    github: ["Quickswap"],
+    github: ["QuickSwap"],
   },
   {
     id: "parent#izumi-finance",
@@ -414,7 +414,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "izumi_Finance",
     governanceID: ["snapshot:veizi.eth"],
-    github: ["IzumiFinance"],
+    github: ["izumiFinance"],
   },
   {
     id: "parent#temple-dao",
@@ -763,7 +763,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "uniwswap",
-    github: ["UniWswap"]
+    github: ["uniwswap"]
   },
   {
     id: "parent#metronome",
@@ -928,7 +928,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "PancakeSwap",
     governanceID: ["snapshot:cakevote.eth"],
-    github: ["PancakeSwap"]
+    github: ["pancakeswap"]
   },
   {
     id: "parent#zyberswap",
@@ -1086,7 +1086,7 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "Balancer",
     governanceID: ["snapshot:balancer.eth"],
     treasury: "balancer.js",
-    github: ["Balancer"]
+    github: ["balancer"]
   },
   {
     id: "parent#kyberswap",
@@ -1181,7 +1181,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "ParaSpace_NFT",
-    github: ["Para-Space"]
+    github: ["para-space"]
   },
   {
     id: "parent#alpaca-finance",
@@ -1327,7 +1327,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "RDNTCapital",
     governanceID: ["snapshot:radiantcapital.eth"],
-    github: ["Radiant-Capital"]
+    github: ["radiant-capital"]
   },
   {
     id: "parent#puzzleswaporg",
@@ -1471,7 +1471,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "forge_sx",
-    github: ["forgesx"]
+    github: ["ForgeSx"]
   },
   {
     id: "parent#juicebox",
@@ -1532,7 +1532,7 @@ const parentProtocols: IParentProtocol[] = [
     treasury: "maia-dao.js",
     governanceID: ["snapshot:maiadao.eth"],
     twitter: "MaiaDAOEco",
-    github: ["MaiaDao"]
+    github: ["MaiaDAO"]
   },
   {
     id: "parent#thena",
@@ -1556,7 +1556,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "smbswap",
-    github: ["cr3k"]
+    github: ["Cr3k"]
   },
   {
     id: "parent#hydradex",
@@ -1685,7 +1685,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "cozyfinance",
-    github: ["cozy-finance"]
+    github: ["Cozy-Finance"]
   },
   {
     id: "parent#vendor-finance",
@@ -1709,7 +1709,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "17160",
     chains: [],
     twitter: "VyFiOfficial",
-    github: ["vyfi"]
+    github: ["VYFI"]
   },
   {
     id: "parent#origin-defi",
@@ -1726,7 +1726,7 @@ const parentProtocols: IParentProtocol[] = [
       "compound:ethereum:0x3cdd07c16614059e66344a7b579dab4f9516c0b6",
       "compound:ethereum:0xc6a3525e2fd8f4844a6fdfe4552a583ce5ac7efa"
     ],
-    github: ["originprotocol"]
+    github: ["OriginProtocol"]
   },
   {
     id: "parent#avely-finance",
@@ -1813,7 +1813,7 @@ const parentProtocols: IParentProtocol[] = [
   },
   {
     id: "parent#synfutures",
-    name: "PulseX",
+    name: "SynFutures",
     url: "https://www.synfutures.com/",
     description: 'Next-generation derivatives platform designed for any blockchain',
     logo: `${baseIconsUrl}/synfutures.svg`,
@@ -1985,7 +1985,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Stabl_Fi",
     stablecoins: ["stabl.fi-cash"],
-    github: ["stablfi"]
+    github: ["StablFi"]
   },
   {
     id: "parent#zkbob_",
@@ -2021,7 +2021,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: null,
     cmcId: null,
     chains: [],
-    github: ["swapscanner"],
+    github: ["Swapscanner"],
     twitter: "Swapscanner",
   },
   {
@@ -2201,7 +2201,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "FusionX_Finance",
-    github: ["fusionx-finance"],
+    github: ["FusionX-Finance"],
   },
   {
     id: "parent#venus-finance",
@@ -2297,7 +2297,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: "20282",
     chains: [],
     treasury: "dex.js",
-    github: ["dexira"],
+    github: ["dexIRA"],
     twitter: "DexFinance",
   },
   {
@@ -2463,6 +2463,28 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "ThroneDEX",
+  },
+  {
+    id: "parent#synthswap",
+    name: "Synthswap",
+    url: "https://synthswap.io",
+    description: "A Majestic Native DEX Reigning over the Base Ecosystem. Fortified by the Community, Empowered by V3 Protocol.",
+    logo: `${baseIconsUrl}/synthswap.jpg`,
+    gecko_id: "synthswap",
+    cmcId: "27759",
+    chains: [],
+    twitter: "synthswapio",
+  },
+  {
+    id: "parent#cookiebase",
+    name: "CookieBase",
+    url: "https://cookiebase.xyz",
+    description: "Sweeten your DeFi journey with CookieBase! Embrace creamy yields and crumbly rewards on Base Blockchain",
+    logo: `${baseIconsUrl}/cookiebase.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "base_cookie",
   },
 ];
 

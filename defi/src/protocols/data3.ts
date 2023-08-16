@@ -6189,8 +6189,8 @@ const data3: Protocol[] = [
   {
     id: "2992",
     name: "Gravita Protocol",
-    address: null,
-    symbol: "-",
+    address: "0x15f74458ae0bfdaa1a96ca1aa779d715cc1eefe4",
+    symbol: "GRAI",
     url: "https://www.gravitaprotocol.com/",
     description:
       "Gravita Protocol is an ETH-centric Borrowing Protocol for LSTs and Yield-Generating assets. GRAI is the debt token of the platform. Our motto is: fuelling decentralization. You cannot resist the pull of Gravita!",
@@ -6198,8 +6198,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/gravita-protocol.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "grai",
+    cmcId: "25337",
     category: "CDP",
     chains: ["Ethereum"],
     module: "gravita-protocol/index.js",
@@ -7598,7 +7598,7 @@ const data3: Protocol[] = [
     twitter: "paribus_io",
     oracles: [],
     forkedFrom: ["Compound"],
-    github: ["paribus"],
+    github: ["Paribus"],
     listedAt: 1685645869
   },
   {
@@ -8209,7 +8209,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://galoswap.gitbook.io/galoswap/overview/security-and-transparency"],
-    github: ["galoswap"],
+    github: ["GaloSwap"],
     listedAt: 1686177821
   },
   {
@@ -8504,7 +8504,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://github.com/solidproof/projects/tree/main/2023/ezKalibur"],
-    github: ["ezkalibur"],
+    github: ["eZKalibur"],
     listedAt: 1686321408
   },
   {
@@ -8710,7 +8710,6 @@ const data3: Protocol[] = [
     twitter: "Kannagi_Zksync",
     oracles: [],
     forkedFrom: [],
-    github: ["KannagiFinance"],
     audit_links: [
       "https://github.com/solidproof/projects/blob/main/2023/KToken/SmartContract_Audit_Solidproof_KannagiFinance.pdf",
       "https://sourcehat.com/audits/KannagiFinance/"
@@ -9957,7 +9956,7 @@ const data3: Protocol[] = [
     chains: ["Arbitrum"],
     module: "themis-exchange/index.js",
     twitter: "ThemisProtocol",
-    github: ["themis-protocol"],
+    github: ["Themis-protocol"],
     audit_links: ["https://docs.themis.exchange/security"],
     listedAt: 1687800179
   },
@@ -10469,7 +10468,7 @@ const data3: Protocol[] = [
     forkedFrom: ["LUSD ChickenBonds"],
     module: "exit10-fi/index.js",
     twitter: "EXIT10_ETH",
-    github: ["exit10-protocol"],
+    github: ["open-bakery"],
     listedAt: 1688204416
   },
   {
@@ -11309,7 +11308,7 @@ const data3: Protocol[] = [
     twitter: "SigmaOptions",
     oracles: [],
     forkedFrom: [],
-    github: ["sigmaO"],
+    github: ["SigmaO"],
     listedAt: 1689082433
   },
   {
@@ -12174,7 +12173,7 @@ const data3: Protocol[] = [
     twitter: "AftermathFi",
     forkedFrom: [],
     oracles: [],
-    github: ["Aftermathfinance"],
+    github: ["AftermathFinance"],
     listedAt: 1689860538
   },
   {
@@ -12696,7 +12695,7 @@ const data3: Protocol[] = [
     twitter: "go_ethereum",
     forkedFrom: [],
     oracles: [],
-    github: ["go-ethereum"],
+    github: ["ethereum"],
     listedAt: 1690209075
   },
   {
@@ -13543,13 +13542,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3322",
-    name: "Synthswap",
+    name: "Synthswap V2",
     address: "base:0xbd2DBb8eceA9743CA5B16423b4eAa26bDcfE5eD2",
     symbol: "SYNTH",
     url: "https://synthswap.io",
     description: "Synthswap is one of the first decentralized exchanges (DEX) with an automated market-maker (AMM) in the Base ecosystem.",
     chain: "Base",
-    logo: `${baseIconsUrl}/synthswap.jpg`,
+    logo: `${baseIconsUrl}/synthswap-v2.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -13560,6 +13559,7 @@ const data3: Protocol[] = [
     twitter: "synthswapio",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    parentProtocol: "parent#synthswap",
     audit_links: ["https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-SynthSwap-v1.0.pdf"],
     listedAt: 1690897062
   },
@@ -13793,8 +13793,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/baseswap.png`,
     audits: "0",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "baseswap",
+    cmcId: "27764",
     category: "Dexes",
     chains: ["Base"],
     module: "baseswap/index.js",
@@ -14065,12 +14065,12 @@ const data3: Protocol[] = [
     twitter: "DackieSwap",
     forkedFrom: ["Uniswap V3"],
     oracles: ["Chainlink"],
-    github: ["dackieswap"],
+    github: ["DackieSwap"],
     listedAt: 1691153591
   },
   {
     id: "3346",
-    name: "CookieBase",
+    name: "CookieBase Dex",
     address: "base:0x614747C53CB1636b4b962E15e1D66D3214621100",
     symbol: "Cookie",
     url: "https://cookiebase.xyz",
@@ -14082,13 +14082,14 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Dexes",
     chains: ["Base"],
     module: "cookiebase/index.js",
     twitter: "base_cookie",
-    forkedFrom: [],
+    forkedFrom: ["Uniswap V2"],
     oracles: [],
-    listedAt: 1691326424
+    listedAt: 1691326424,
+    parentProtocol: "parent#cookiebase"
   },
   {
     id: "3347",
@@ -14738,7 +14739,7 @@ const data3: Protocol[] = [
     module: "edebase/index.js",
     twitter: "ede_finance",
     forkedFrom: ["GMX V1"],
-    oracles: [],
+    oracles: ["Pyth"],
     audit_links: ["https://docs.ede.finance/audit"],
     parentProtocol: "parent#ede",
     listedAt: 1691812506
@@ -14845,8 +14846,8 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "baso/index.js",
     twitter: "Baso_Finance",
-    forkedFrom: [],
-    oracles: ["Solidly"],
+    forkedFrom: ["Solidly"],
+    oracles: [],
     listedAt: 1692007688
   },
   {
@@ -14938,6 +14939,138 @@ const data3: Protocol[] = [
     audit_links: ["https://audit.pwn.xyz"],
     github: ["PWNFinance"],
     listedAt: 1692012713
+  },
+  {
+    id: "3385",
+    name: "Synthswap V3",
+    address: "base:0xbd2DBb8eceA9743CA5B16423b4eAa26bDcfE5eD2",
+    symbol: "SYNTH",
+    url: "https://synthswap.io",
+    description: "Synthswap is one of the first decentralized exchanges (DEX) with an automated market-maker (AMM) in the Base ecosystem.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/synthswap-v3.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "synthswap-v3/index.js",
+    twitter: "synthswapio",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    parentProtocol: "parent#synthswap",
+    listedAt: 1692025853
+  },
+  {
+    id: "3386",
+    name: "Meridian Trade",
+    address: "base:0x2F3b1A07E3eFb1fCc64BD09b86bD0Fa885D93552",
+    symbol: "MST",
+    url: "https://www.meridianfinance.net",
+    description: "Meridian Trade is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades. Trading is supported by a multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations), and asset rebalancing.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/meridian-trade.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "meridian-trade/index.js",
+    twitter: "MeridianFi",
+    forkedFrom: ["GMX V1"],
+    oracles: ["DIA"],
+    github: ["MeridianDollar"],
+    listedAt: 1692093398
+  },
+  {
+    id: "3387",
+    name: "Bryan on Base",
+    address: "base:0xB75445A717D5A8c268f37045162837CFe72Ac337",
+    symbol: "BRYAN",
+    url: "https://bryanonbase.com",
+    description: "First fair launch token on Base with baked-in revenue share.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bryan-on-base.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "bryanonbase/index.js",
+    twitter: "bryanonbase",
+    forkedFrom: ["ArbiNYAN"],
+    oracles: [],
+    listedAt: 1692094265
+  },
+  {
+    id: "3388",
+    name: "Sanctum",
+    address: null,
+    symbol: "-",
+    url: "https://www.sanctum.so",
+    description: "Sanctum is Solana’s on-chain stability protocol. Sanctum unlocks staked SOL to be used throughout DeFi by providing a backstop of SOL liquidity, and makes sure DeFi borrow-lend protocols remain solvent by providing a safe haven of SOL to flash loan and close LST-collateralised positions.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/sanctum.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield", 
+    chains: ["Solana"],
+    module: "sanctum/index.js",
+    twitter: "sanctumso",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/igneous-labs/sanctum-unstake-program/blob/master/audits/sec3-20230724.pdf"],
+    listedAt: 1692111232
+  },
+  {
+    id: "3389",
+    name: "MantaDAO",
+    address: "kujira:factory/kujira1643jxg8wasy5cfcn7xm8rd742yeazcksqlg4d7/umnta",
+    symbol: "MNTA",
+    url: "https://mantadao.app/",
+    description: "MantaDAOs flagship product is MantaSwap which provides a multi-hop router for the Kujira FIN orderbook allowing for best trade execution and routing on any-to-any swaps.",
+    chain: "Kujira",
+    logo: `${baseIconsUrl}/mantadao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "mantadao",
+    cmcId: null,
+    category: "Services", 
+    chains: ["Kujira"],
+    module: "dummy.js",
+    treasury: "mantadao.js", //
+    twitter: "Manta_DAO",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692111232
+  },
+  {
+    id: "3390",
+    name: "CookieBase Farm",
+    address: "base:0x614747C53CB1636b4b962E15e1D66D3214621100",
+    symbol: "Cookie",
+    url: "https://cookiebase.xyz",
+    description:
+      "Sweeten your DeFi journey with CookieBase! Embrace creamy yields and crumbly rewards on Base Blockchain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/cookiebase.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "cookiebase-farm/index.js",
+    twitter: "base_cookie",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692166471,
+    parentProtocol: "parent#cookiebase"
   },
 ]
 

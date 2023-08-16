@@ -701,12 +701,15 @@ functions:
       - http:
           path: emissionsList
           method: get
+  triggerStoreEmissions: 
+    handler: src/triggerStoreEmissions.default
+    timeout: 900
+    events:
+      - schedule: cron(0 * * * ? *)
   storeEmissions:
     handler: src/storeEmissions.default
     timeout: 900
     memorySize: 3000
-    events:
-      - schedule: cron(0 * * * ? *)
     environment:
       TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
       COINGLASS_KEY: ${env:COINGLASS_KEY}

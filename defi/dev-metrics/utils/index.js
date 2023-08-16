@@ -10,11 +10,11 @@ try {
   TWITTER_MAPPING = require('../app-data/twitter_mapping.json')
   tomlData = require('../app-data/tomlData.json')
 } catch (e) {
-  // console.error(e)
+  console.error(e)
 }
 
-const orgSet = new Set(tomlData.orgData.map(i => i.replace(/\/$/, '')))
-const repoSet = new Set(Object.keys(tomlData.repos))
+const orgSet = new Set(tomlData.orgData?.map(i => i.replace(/\/$/, '')))
+const repoSet = new Set(Object.keys(tomlData.repos || {}))
 Object.values(ORG_MAPPING).forEach(org => org.github.map(i => i.replace('user:', i).replace(/\/$/, '')).forEach(i => {
   if (orgSet.has(i)) return;
   ORGS_MISSING_FROM_TOML.push(i)

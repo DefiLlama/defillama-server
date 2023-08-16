@@ -14070,7 +14070,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3346",
-    name: "CookieBase",
+    name: "CookieBase Dex",
     address: "base:0x614747C53CB1636b4b962E15e1D66D3214621100",
     symbol: "Cookie",
     url: "https://cookiebase.xyz",
@@ -14082,13 +14082,14 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "Farm",
+    category: "Dexes",
     chains: ["Base"],
     module: "cookiebase/index.js",
     twitter: "base_cookie",
-    forkedFrom: [],
+    forkedFrom: ["Uniswap V2"],
     oracles: [],
-    listedAt: 1691326424
+    listedAt: 1691326424,
+    parentProtocol: "parent#cookiebase"
   },
   {
     id: "3347",
@@ -15047,6 +15048,29 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     listedAt: 1692111232
+  },
+  {
+    id: "3390",
+    name: "CookieBase Farm",
+    address: "base:0x614747C53CB1636b4b962E15e1D66D3214621100",
+    symbol: "Cookie",
+    url: "https://cookiebase.xyz",
+    description:
+      "Sweeten your DeFi journey with CookieBase! Embrace creamy yields and crumbly rewards on Base Blockchain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/cookiebase.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "cookiebase/index.js",
+    twitter: "base_cookie",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1691326424,
+    parentProtocol: "parent#cookiebase"
   },
 ]
 

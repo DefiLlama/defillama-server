@@ -2475,6 +2475,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "synthswapio",
   },
+  {
+    id: "parent#cookiebase",
+    name: "Synthswap",
+    url: "https://cookiebase.xyz",
+    description: "Sweeten your DeFi journey with CookieBase! Embrace creamy yields and crumbly rewards on Base Blockchain",
+    logo: `${baseIconsUrl}/cookiebase.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "base_cookie",
+  },
 ];
 
 export default parentProtocols;

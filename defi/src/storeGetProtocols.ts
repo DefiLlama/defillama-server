@@ -142,9 +142,8 @@ const handler = async (_event: any) => {
     })
   );
   await storeR2("lite/protocols2", compressedV2Response, true);
-  const dummyProtocols = response.filter(p=>p.module==="dummy.js").reduce((acc, curr)=>({...acc, [curr.id]:true}), {} as {[id:string]:boolean})
-  await storeR2("lite/v2/protocols", JSON.stringify(trimmedResponse.filter(p=>dummyProtocols[p.defillamaId] === undefined).map(protocol=>({
-    id: protocol.defillamaId,
+  await storeR2("lite/v2/protocols", JSON.stringify(response.filter(p=> p.module!=="dummy.js" && p.category !== "Chain" && p.category !== "CEX").map(protocol=>({
+    id: protocol.id,
     name: protocol.name,
     symbol: protocol.symbol,
     category: protocol.category,

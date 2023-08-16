@@ -1164,5 +1164,9 @@ export default {
     "dackieswap": {
         "enabled": true,
         "id": "3345"
+    },
+    "banana-gun-trading": {
+        "enabled": true,
+        "id": "3336"
     }
 } as AdaptorsConfig

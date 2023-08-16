@@ -452,7 +452,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Derivatives",
     chains: ["Polygon"],
-    oracles: ["Pyth"],
+    oracles: ["Pyth", "Chainlink"],
     forkedFrom: [],
     module: "covo-v2/index.js",
     twitter: "covofinance",

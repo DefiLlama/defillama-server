@@ -96,10 +96,19 @@ async function processSingleProtocol(adapter: Protocol, protocolName: string): P
   return sluggifiedId;
 }
 
-async function processProtocolList(protocolAdapters: [string, any][]) {
+function filterAdapters(protocolIndexes: number[]): any[] {
+  const selected: any[] = [];
+  const entries: any[] = Object.entries(adapters);
+  for (let i = 0; i < entries.length; i++) {
+    if (protocolIndexes.includes(i)) selected.push(entries[i]);
+  }
+  return selected;
+}
+async function processProtocolList(protocolIndexes: number[]) {
   let protocolsArray: string[] = [];
   let protocolErrors: string[] = [];
 
+  const protocolAdapters = filterAdapters(protocolIndexes);
   await PromisePool.withConcurrency(2)
     .for(shuffleArray(protocolAdapters))
     .process(async ([protocolName, rawAdapter]) => {
@@ -124,7 +133,7 @@ async function processProtocolList(protocolAdapters: [string, any][]) {
 }
 async function handler(event: any) {
   try {
-    await withTimeout(840000, processProtocolList(event.adapters));
+    await withTimeout(840000, processProtocolList(event.protocolIndexes));
   } catch (e) {
     process.env.UNLOCKS_WEBHOOK ? await sendMessage(`${e}`, process.env.UNLOCKS_WEBHOOK!) : console.log(e);
   }

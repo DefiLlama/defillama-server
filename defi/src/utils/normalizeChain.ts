@@ -1783,6 +1783,12 @@ export const chainCoingeckoIds = {
     cmcId: "23149",
     categories: ["Cosmos"],
   },
+  "Op_Bnb": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2228,6 +2234,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Aura Network"
     case "sei":
       return "Sei"
+      case "op_bnb":
+        return "Op_Bnb"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

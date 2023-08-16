@@ -3,7 +3,6 @@ import getTVLOfRecordClosestToTimestamp from "./src/utils/shared/getRecordCloses
 import { getCurrentUnixTimestamp } from "./src/utils/date";
 import { Redis } from "ioredis";
 import postgres from "postgres";
-import setEnvSecrets from "./src/utils/shared/setEnvSecrets";
 
 const read: boolean = false;
 const pgColumns: string[] = ["key", "timestamp", "price", "confidence"];
@@ -38,6 +37,9 @@ export async function startup(): Promise<void> {
     });
 
   if (!sql) sql = postgres(auth[0]);
+}
+export async function windDown(): Promise<void> {
+  await Promise.all([redis.quit(), sql.end()]);
 }
 export async function translateItems(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
@@ -295,8 +297,6 @@ export async function writeCoins2(
   margin?: number,
 ) {
   console.log(`${values.length} values entering`);
-  await setEnvSecrets();
-  await startup();
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
     : values;

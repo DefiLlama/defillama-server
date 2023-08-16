@@ -6299,7 +6299,7 @@ const data3: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "CDP",
+    category: "Algo-Stables",
     chains: ["Milkomeda"],
     oracles: ["Aggr3Oracle"],
     forkedFrom: [],

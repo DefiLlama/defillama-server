@@ -39,5 +39,9 @@ export default {
     "bitkeep": {
         enabled: true,
         id: "3207"
+    },
+    "logx": {
+        enabled: true,
+        id: "3396"
     }
 } as AdaptorsConfig

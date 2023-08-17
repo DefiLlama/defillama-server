@@ -1963,6 +1963,11 @@
       "symbol": "WBTC",
       "to": "coingecko#wrapped-bitcoin"
     },
+    "0xAEC8318a9a59bAEb39861d10ff6C7f7bf1F96C57": {
+      "decimals": "18",
+      "symbol": "agEUR",
+      "to": "coingecko#ageur"
+    },
     "0xaa44678304cc1a848bfc31dc013afcc6c9feae11": {
       "decimals": "18",
       "symbol": "QI",
@@ -8046,6 +8051,11 @@
       "symbol": "ETH",
       "to": "coingecko#ethereum"
     },
+    "0x176211869ca2b568f2a7d4ee941e073a821ee1ff": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
     "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f": {
       "decimals": "18",
       "symbol": "ETH",
@@ -8082,6 +8092,16 @@
       "decimals": "18",
       "symbol": "ETH",
       "to": "coingecko#ethereum"
+    },
+    "0xB79DD08EA68A908A97220C76d19A6aA9cBDE4376": {
+      "decimals": "6",
+      "symbol": "USD+",
+      "to": "coingecko#usd"
+    },
+    "0x65a2508C429a6078a7BC2f7dF81aB575BD9D9275": {
+      "decimals": "18",
+      "symbol": "DAI+",
+      "to": "coingecko#overnight-dai"
     }
   },
   "aura": {

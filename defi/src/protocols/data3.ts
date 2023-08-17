@@ -15273,6 +15273,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692220052
   },
+  {
+    id: "3400",
+    name: "duckpools",
+    address: "ergo:089990451bb430f05a85f4ef3bcb6ebf852b3d6ee68d86d78658b9ccef20074f",
+    symbol: "QUACKS",
+    url: "https://duckpools.io",
+    description:
+      "Decentralized lending platform built on Ergo featuring lending pools, algorithmic interest rates, overcollateralized loans and leveraged borrowing",
+    chain: "Ergo",
+    logo: `${baseIconsUrl}/duckpools.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Ergo"],
+    module: "duckpools.js",
+    twitter: "duckpools_io",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692253152,
+    github: ["duckpools"]
+  },
 ]
 
 export default data3

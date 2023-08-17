@@ -15456,6 +15456,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692289355
   },
+  {
+    id: "3408",
+    name: "Lynex",
+    address: null,
+    symbol: "-",
+    url: "https://app.lynex.fi/",
+    description:
+      "Linea's native on-chain liquidity marketplace. Powered by cutting-edge DEX infrastructure, it offers a highly capital-efficient DeFi solution",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/lynex.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    module: "lynex/index.js",
+    twitter: "LynexFi",
+    forkedFrom: ["Algebra"],
+    oracles: [],
+    listedAt: 1692294659
+  },
 ]
 
 export default data3

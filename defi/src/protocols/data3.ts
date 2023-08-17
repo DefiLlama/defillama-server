@@ -4193,6 +4193,7 @@ const data3: Protocol[] = [
     module: "swell/index.js",
     twitter: "swellnetworkio",
     audit_links: ["https://docs.swellnetwork.io/swell/risks/smart-contract-audits"],
+    github: ["SwellNetwork"],
     listedAt: 1682554957
   },
   {
@@ -4834,6 +4835,7 @@ const data3: Protocol[] = [
     forkedFrom: ["AAVE V3"],
     oracles: ["Chainlink"],
     audit_links: ["https://docs.sparkprotocol.io/developers/deployed-contracts/security-and-audits"],
+    github: ["marsfoundation"],
     listedAt: 1683144119
   },
   /*
@@ -8824,6 +8826,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://docs.eigenlayer.xyz/overview/audits"],
+    github: ["Layr-Labs"],
     listedAt: 1686776222
   },
   {

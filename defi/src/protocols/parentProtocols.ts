@@ -679,6 +679,7 @@ const parentProtocols: IParentProtocol[] = [
     logo: `${baseIconsUrl}/realt.png`,
     gecko_id: null,
     cmcId: null,
+    github: ["real-token"],
     chains: [],
     twitter: "RealTPlatform",
   },
@@ -1591,6 +1592,7 @@ const parentProtocols: IParentProtocol[] = [
     gecko_id: "blur",
     cmcId: null,
     chains: ["Ethereum"],
+    github: ["blur-io"],
     twitter: "blur_io",
   },
   {

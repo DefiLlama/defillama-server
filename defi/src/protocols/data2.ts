@@ -1,5 +1,6 @@
 import type { Protocol } from './types'
 import { baseIconsUrl } from "../constants";
+import { getTimestamp } from '@defillama/sdk/build/util';
 
 /*
 {
@@ -3979,6 +3980,7 @@ const data2: Protocol[] = [
     twitter: "StargateFinance",
     audit_links: ["https://github.com/stargate-protocol/stargate/tree/main/audit"],
     treasury: "stargate.js",
+    github: ["stargate-protocol"],
     listedAt: 1647975344,
   },
   {
@@ -11628,6 +11630,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/aurafinance/aura-contracts/tree/main/audits"],
     listedAt: 1658511775,
     governanceID: ["snapshot:gauges.aurafinance.eth", "snapshot:gauges.aurafinance.eth"],
+    github: ["aurafinance"],
     treasury: "aura.js"
   },
   {
@@ -15873,7 +15876,8 @@ const data2: Protocol[] = [
     module: "uwulend/index.js",
     twitter: "UwU_Lend",
     listedAt: 1663811025,
-    treasury: "uwulend.js"
+    treasury: "uwulend.js",
+    github: ["UwU-Lend"]
   },
   {
     id: "2112",
@@ -18372,6 +18376,7 @@ const data2: Protocol[] = [
     twitter: "coinbase",
     forkedFrom: [],
     oracles: [],
+    github: ["coinbase"],
     listedAt: 1666641682
   },
   {
@@ -25636,8 +25641,8 @@ const data2: Protocol[] = [
   {
     id: "2542",
     name: "Ondo Finance",
-    address: null,
-    symbol: "-",
+    address: "0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3",
+    symbol: "ONDO",
     url: "https://ondo.finance",
     description:
       "This share class provides liquid exposure to an ETF of short-term U.S. Treasuries",
@@ -25645,13 +25650,14 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/ondo-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "ondo-finance",
     cmcId: null,
     category: "RWA",
     chains: ["Ethereum"],
     module: "ondofinance/index.js",
     twitter: "OndoFinance",
-    audit_links: ["https://www.certik.org/projects/ondofinance"]
+    audit_links: ["https://www.certik.org/projects/ondofinance"],
+    github: ["ondoprotocol"]
   },
   {
     id: "2543",

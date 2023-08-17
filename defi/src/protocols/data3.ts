@@ -15111,11 +15111,12 @@ const data3: Protocol[] = [
     gecko_id: null,
     cmcId: null,
     category: "Lending",
-    chains: ["Sui"],
+    chains: ["Sui", "Arbitrum", "Base", "Optimism", "Polygon"],
     module: "omnibtc/index.js",
     twitter: "OmniBTC",
     forkedFrom: [],
     oracles: [],
+    github: ["OmniBTC"],
     listedAt: 1692193286
   },
   {

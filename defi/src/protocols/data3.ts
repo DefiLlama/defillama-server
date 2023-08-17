@@ -15077,7 +15077,7 @@ const data3: Protocol[] = [
     id: "3391",
     name: "Liquid Collective",
     address: "0x8c1bed5b9a0928467c9b1341da1d7bd5e10b6549",
-    symbol: "LSETH",
+    symbol: "LsETH",
     url: "https://liquidcollective.io",
     description:
       "Liquid Collective is a non-custodial staking protocol launched on Ethereum. Liquid Collective is built and run by a collective of leading web3 teams. The protocol was initially launched in 2023.",

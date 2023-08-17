@@ -15398,7 +15398,7 @@ const data3: Protocol[] = [
     description:
       "Meta Pool is a liquid staking protocol built on the NEAR and Ethereum blockchain.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/metapool-eth.png`,
+    logo: `${baseIconsUrl}/meta-pool-eth.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

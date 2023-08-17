@@ -15297,6 +15297,50 @@ const data3: Protocol[] = [
     listedAt: 1692253152,
     github: ["duckpools"]
   },
+  {
+    id: "3401",
+    name: "SeaSwap",
+    address: null,
+    symbol: "-",
+    url: "https://seaswap.io",
+    description:
+      "Layered DeFi platform built on SeiNetwork (OTC swap, Bonding Curve launchpad, permissionless DEX, token creator).",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/seaswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sei"],
+    module: "seaswap/index.js",
+    twitter: "Seaswap_sei",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692264154,
+  },
+  {
+    id: "3402",
+    name: "FlitSwap",
+    address: null,
+    symbol: "-",
+    url: "https://flitswap.org",
+    description:
+      "Enjoy seamless, efficient and secure trading with flitswap, a DEX/AMM on OpBNB network.",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/flitswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "FlitSwap/index.js",
+    twitter: "Flitswap",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692264440
+  },
 ]
 
 export default data3

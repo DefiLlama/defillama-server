@@ -15386,6 +15386,29 @@ const data3: Protocol[] = [
     github: ["abex-finance"],
     listedAt: 1692265558
   },
+  {
+    id: "3405",
+    name: "Meta Pool ETH",
+    address: "near:0xc21ff01229e982d7c8b8691163b0a3cb8f357453",
+    symbol: "META",
+    url: "https://metapool.app",
+    description:
+      "Meta Pool is a liquid staking protocol built on the NEAR and Ethereum blockchain.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/metapool-eth.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquid Staking",
+    chains: ["Ethereum"],
+    module: "metapool-eth/index.js",
+    twitter: "meta_pool",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#meta-pool",
+    listedAt: 1692266928
+  },
 ]
 
 export default data3

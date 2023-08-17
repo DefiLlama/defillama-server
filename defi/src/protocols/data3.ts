@@ -15412,6 +15412,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#meta-pool",
     listedAt: 1692266928
   },
+  {
+    id: "3406",
+    name: "Tempest Capital",
+    address: "optimism:0xbf0c7ccB143126C1bE90a426f676f5cb313956d9",
+    symbol: "TEM",
+    url: "https://www.tempest.capital",
+    description:
+      "Tempest is a decentralized non-custodial liquidity market protocol where users can participate as depositors or borrowers.",
+    chain: "Optimism",
+    logo: `${baseIconsUrl}/tempest-capital.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Optimism"],
+    module: "tempest/index.js",
+    twitter: "Tempestlend",
+    forkedFrom: ["Compound"],
+    oracles: [],
+    listedAt: 1692289348
+  },
+  {
+    id: "3407",
+    name: "FuzioNetwork DEX",
+    address: null,
+    symbol: "-",
+    url: "https://www.fuzio.network",
+    description:
+      "Fuzio fuses strategic gaming with DeFi, crafting a cutting-edge platform for a captivating, skill-driven financial journey that's thrilling and rewarding on SEI Network.",
+    chain: "Sei",
+    logo: `${baseIconsUrl}/fuzionetwork-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Sei"],
+    module: "FuzioNetwork/index.js",
+    twitter: "FuzioNetwork",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692289355
+  },
 ]
 
 export default data3

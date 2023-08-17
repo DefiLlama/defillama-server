@@ -2497,6 +2497,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Onering_Tools",
   },
+  {
+    id: "parent#meta-pool",
+    name: "Meta Pool",
+    url: "https://metapool.app",
+    description: "Meta Pool is a liquid staking protocol built on the NEAR and Ethereum blockchain.",
+    logo: `${baseIconsUrl}/meta-pool.png`,
+    gecko_id: "meta-pool",
+    cmcId: "18755",
+    chains: [],
+    twitter: "meta_pool",
+  },
 ];
 
 export default parentProtocols;

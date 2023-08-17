@@ -15478,6 +15478,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692294659
   },
+  {
+    id: "3409",
+    name: "SwapBased Consentrated Liquidity",
+    address: "base:0xd07379a755A8f11B57610154861D694b2A0f615a",
+    symbol: "Base",
+    url: "https://swapbased.finance/#/swap",
+    description:
+      "Concentrated Liquidity AMM on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/swapbased-consentrated-liquidity.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "swapbased-cl/index.js",
+    twitter: "swap_based",
+    forkedFrom: ["Algebra"],
+    oracles: [],
+    parentProtocol: "parent#swapbased",
+    listedAt: 1692315621
+  },
 ]
 
 export default data3

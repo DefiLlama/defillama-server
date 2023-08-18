@@ -15612,6 +15612,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692358737
   },
+  {
+    id: "3415",
+    name: "Knight DEX",
+    address: "opbnb:0xdea52f6aabe9E1005D7A2443568C1F0C0B18Bdd4",
+    symbol: "KDX",
+    url: "https://knightdex.cc/",
+    description:
+      "KnightDEX is a AMM DEX with low slippage and deep liquidity on opBNB Chain. As an automated market-maker (AMM), KnightDEX enables seamless exchanges of a broad range of coin pairs with Low Slippage and High Liquidity.",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/knight-dex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "knightdex/index.js",
+    twitter: "Knightdex_cc",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1692368526
+  },
 ]
 
 export default data3

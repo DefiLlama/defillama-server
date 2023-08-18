@@ -15634,6 +15634,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692368526
   },
+  {
+    id: "3416",
+    name: "UncleSam Protocol",
+    address: "base:0x80A3d4999B2836a5ac90B4742Da133F5F5F6C27D",
+    symbol: "SAM",
+    url: "https://unclesam.finance/",
+    description:
+      "Money markets for all crypto assets built on Base Chain",
+    chain: "Base",
+    logo: `${baseIconsUrl}/unclesam-protocol.png`,
+    audits: "1",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Base"],
+    module: "knightdex/index.js",
+    twitter: "unclesamfi",
+    forkedFrom: ["Compound V2"],
+    oracles: ["Chainlink"],
+    audit_links: ["https://github.com/freshcoins/Smart-Contract-Audits/blob/main/UncleSam_0x80a3d4999b2836a5ac90b4742da133f5f5f6c27d.pdf"],
+    listedAt: 1692376612
+  },
 ]
 
 export default data3

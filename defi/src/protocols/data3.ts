@@ -15474,7 +15474,7 @@ const data3: Protocol[] = [
     chains: ["Linea"],
     module: "lynex/index.js",
     twitter: "LynexFi",
-    forkedFrom: ["Algebra"],
+    forkedFrom: ["Algebra DEX"],
     oracles: [],
     listedAt: 1692294659
   },
@@ -15496,7 +15496,7 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "swapbased-cl/index.js",
     twitter: "swap_based",
-    forkedFrom: ["Algebra"],
+    forkedFrom: ["Algebra DEX"],
     oracles: [],
     parentProtocol: "parent#swapbased",
     listedAt: 1692315621

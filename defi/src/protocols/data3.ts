@@ -15170,8 +15170,8 @@ const data3: Protocol[] = [
   {
     id: "3395",
     name: "OneRing V2",
-    address: null,
-    symbol: "-",
+    address: "optimism:0xB0ae108669CEB86E9E98e8fE9e40d98b867855fD",
+    symbol: "RING",
     url: "https://www.onering.tools",
     description:
       "One Ring is a Multi-Chain Cross-Stable Yield Optimizer Platform.",

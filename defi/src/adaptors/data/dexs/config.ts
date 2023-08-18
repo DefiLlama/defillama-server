@@ -1873,5 +1873,9 @@ export default {
                 "1691712000": true,
             },
         }
+    },
+    "lynex": {
+        "enabled": true,
+        "id": "3408"
     }
 } as AdaptorsConfig

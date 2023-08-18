@@ -1168,5 +1168,9 @@ export default {
     "banana-gun-trading": {
         "enabled": true,
         "id": "3336"
+    },
+    "lynex": {
+        "enabled": true,
+        "id": "3408"
     }
 } as AdaptorsConfig

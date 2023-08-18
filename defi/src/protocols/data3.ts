@@ -15480,14 +15480,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3409",
-    name: "SwapBased Consentrated Liquidity",
+    name: "SwapBased Concentrated Liquidity",
     address: "base:0xd07379a755A8f11B57610154861D694b2A0f615a",
     symbol: "Base",
     url: "https://swapbased.finance/#/swap",
     description:
       "Concentrated Liquidity AMM on Base",
     chain: "Base",
-    logo: `${baseIconsUrl}/swapbased-consentrated-liquidity.png`,
+    logo: `${baseIconsUrl}/swapbased-concentrated-liquidity.png`,
     audits: "3",
     audit_note: null,
     gecko_id: null,

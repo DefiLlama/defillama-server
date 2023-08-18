@@ -15543,7 +15543,7 @@ const data3: Protocol[] = [
     twitter: "PixelSwapFi",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
-    listedAt: 1692315621
+    listedAt: 1692325568
   },
 ]
 

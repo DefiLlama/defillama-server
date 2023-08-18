@@ -2510,6 +2510,18 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "meta_pool",
   },
+  {
+    id: "parent#baseswap",
+    name: "BaseSwap",
+    url: "https://metapool.app",
+    description: "Native DEX on Base chain",
+    logo: `${baseIconsUrl}/meta-pool.png`,
+    gecko_id: "baseswap",
+    cmcId: "27764",
+    chains: [],
+    twitter: "BaseSwap_Fi",
+    treasury: "baseswap.js",
+  },
 ];
 
 export default parentProtocols;

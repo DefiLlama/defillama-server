@@ -2282,7 +2282,7 @@ const parentProtocols: IParentProtocol[] = [
     id: "parent#teahouse-finance",
     name: "Teahouse Finance",
     url: "https://vault.teahouse.finance",
-    description: "Teahouse Finance is a DeFi protocol that strives to emerge as the premier on-chain asset management protocol. Teahouse has dedicated its efforts to addressing the challenges associated with earning swapping fees while providing liquidity.",
+    description: "Teahouse is a multi-strategy DeFi asset manager similar to a hedge fund. We help enterprise and individual clients grow their crypto assets on our secure and transparent platform.",
     logo: `${baseIconsUrl}/teahouse-finance.jpg`,
     gecko_id: null,
     cmcId: null,

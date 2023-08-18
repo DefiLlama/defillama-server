@@ -15590,6 +15590,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692339093
   },
+  {
+    id: "3415",
+    name: "LuigiSwap",
+    address: null,
+    symbol: "-",
+    url: "https://luigiswap.finance",
+    description:
+      "Your gateway to seamless and secure decentralized tradingon opBNB.",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/luigiswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "LuigiSwap/index.js",
+    twitter: "LuigiSwap",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1692358737
+  },
 ]
 
 export default data3

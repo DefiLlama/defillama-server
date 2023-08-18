@@ -15545,6 +15545,51 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692325568
   },
+  {
+    id: "3412",
+    name: "DeNet File Token",
+    address: "polygon:0x081Ec4c0e30159C8259BAD8F4887f83010a681DC",
+    symbol: "DE",
+    url: "https://denet.pro",
+    description:
+      "DeNet File Token (DE) serves as a means for users to open TBY storage deposits for storing data, as well as for Datakeepers to run nodes",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/denet-file-token.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "denet-file-token",
+    cmcId: null,
+    category: "Services",
+    chains: ["Polygon"],
+    module: "DeNet/index.js",
+    twitter: "denetpro",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/pessimistic-io/audits/blob/a2acb36c7f4b2a61c579a29133bb2eab7e9ad894/DeNet%20Security%20Analysis%20by%20Pessimistic.pdf"],
+    listedAt: 1692338873
+  },
+  {
+    id: "3413",
+    name: "FourDex",
+    address: "opbnb:0x9F673D3682AaCf02Bd09500961FbFFa3a91655BC",
+    symbol: "FDEX",
+    url: "https://fourdex.cz/en/swap",
+    description:
+      "FourDex is an automated market-making (AMM) decentralized exchange (DEX) for the opBNB network",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/fourdex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "fourdex/index.js",
+    twitter: "FourDexonBNB",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1692339093
+  },
 ]
 
 export default data3

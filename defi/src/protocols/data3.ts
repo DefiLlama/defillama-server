@@ -15650,7 +15650,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Lending",
     chains: ["Base"],
-    module: "knightdex/index.js",
+    module: "unclesam.js",
     twitter: "unclesamfi",
     forkedFrom: ["Compound V2"],
     oracles: ["Chainlink"],

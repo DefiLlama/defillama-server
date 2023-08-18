@@ -15501,6 +15501,50 @@ const data3: Protocol[] = [
     parentProtocol: "parent#swapbased",
     listedAt: 1692315621
   },
+  {
+    id: "3410",
+    name: "BAS3D",
+    address: "base:0xC4743d049891ea4333F8b559D09a93c3511f0762 ",
+    symbol: "BAS3D",
+    url: "https://bas3d.io",
+    description:
+      "BAS3D offers yield farming, and auto compounding boosted vaults to users on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bas3d.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Base"],
+    module: "bas3d/index.js",
+    twitter: "BAS3Dfinance",
+    forkedFrom: ["Yearn Finance"],
+    oracles: [],
+    listedAt: 1692315982  
+  },
+  {
+    id: "3411",
+    name: "PixelSwap",
+    address: "base:0x8d161EB5eB541c09C9589d7C55F17E89AD9d225F",
+    symbol: "PIXEL",
+    url: "https://pixelswap.xyz/",
+    description:
+      "PixelSwap Is a efficient and interconnected decentralized exchange that accommodates various blockchain networks seamlessly",
+    chain: "Base",
+    logo: `${baseIconsUrl}/pixelswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base", "Linea", "Op_Bnb"],
+    module: "pixelswap/index.js",
+    twitter: "PixelSwapFi",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1692315621
+  },
 ]
 
 export default data3

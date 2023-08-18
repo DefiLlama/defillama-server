@@ -15613,7 +15613,7 @@ const data3: Protocol[] = [
     listedAt: 1692358737
   },
   {
-    id: "3415",
+    id: "3416",
     name: "Knight DEX",
     address: "opbnb:0xdea52f6aabe9E1005D7A2443568C1F0C0B18Bdd4",
     symbol: "KDX",
@@ -15635,7 +15635,7 @@ const data3: Protocol[] = [
     listedAt: 1692368526
   },
   {
-    id: "3416",
+    id: "3417",
     name: "UncleSam Protocol",
     address: "base:0x80A3d4999B2836a5ac90B4742Da133F5F5F6C27D",
     symbol: "SAM",

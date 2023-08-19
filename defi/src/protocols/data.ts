@@ -3640,7 +3640,7 @@ const data: Protocol[] = [
     category: "Liquid Staking",
     chains: ["Ethereum"],
     module: "sharedstake/index.js",
-    twitter: "SharedStakeDAO",
+    twitter: "SharedStakeNews",
     audit_links: ["https://www.certik.org/projects/sharedstake"],
     governanceID: ["snapshot:sharedstake.eth"],
     github: ["SharedStake"]

@@ -1172,5 +1172,9 @@ export default {
     "lynex": {
         "enabled": true,
         "id": "3408"
+    },
+    "op-bnb": {
+        "enabled": true,
+        "id": "204"
     }
 } as AdaptorsConfig

@@ -4920,6 +4920,7 @@ const data: Protocol[] = [
       "https://mdex.com/certik_bsc.pdf",
     ],
     forkedFrom: ["Uniswap V2"],
+    github: ["mdexSwap"]
   },
   {
     id: "335",
@@ -5025,6 +5026,7 @@ const data: Protocol[] = [
     twitter: "LienFinance",
     audit_links: ["https://lien.finance/risk"],
     oracles: ["Chainlink"],
+    github: ["LienFinance"]
   },
   {
     id: "340",
@@ -5045,7 +5047,8 @@ const data: Protocol[] = [
     treasury: "olympus-dao.js",
     twitter: "OlympusDAO",
     audit_links: ["https://docs.olympusdao.finance/main/security/audits"],
-    governanceID: ["snapshot:olympusdao.eth"]
+    governanceID: ["snapshot:olympusdao.eth"],
+    github: ["OlympusDAO"]
   },
   {
     id: "341",
@@ -5065,6 +5068,7 @@ const data: Protocol[] = [
     module: "nsure/index.js",
     twitter: "Nsure_network",
     oracles: ["Chainlink"],
+    github: ["nsure-tech"]
   },
   {
     id: "342",
@@ -5087,6 +5091,7 @@ const data: Protocol[] = [
       "https://github.com/CompliFi/complifi-protocol/tree/master/audits",
       "https://github.com/CompliFi/complifi-amm/tree/master/audits",
     ],
+    github: ["CompliFi"]
   },
   {
     id: "343",
@@ -5109,6 +5114,7 @@ const data: Protocol[] = [
     audit_links: ["https://github.com/Impermax-Finance/impermax-x-uniswapv2-core/tree/main/audit"],
     oracles: ["Chainlink"],
     governanceID: ["snapshot:impermax.eth"],
+    github: ["Impermax-Finance"]
   },
   {
     id: "344",
@@ -5127,6 +5133,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "zkswap/index.js",
     twitter: "ZKSwapOfficial",
+    github: ["l2labs"]
   },
   {
     id: "345",
@@ -5219,6 +5226,7 @@ const data: Protocol[] = [
     ],
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
+    github: ["fildaio"]
   },
   {
     id: "349",
@@ -5260,6 +5268,7 @@ const data: Protocol[] = [
     twitter: "official_CVI",
     audit_links: ["https://cvi.finance/files/usdt-audit.pdf", "https://cvi.finance/files/eth-audit.pdf"],
     oracles: ["Chainlink"],
+    github: ["govi-dao"]
   },
   {
     id: "351",

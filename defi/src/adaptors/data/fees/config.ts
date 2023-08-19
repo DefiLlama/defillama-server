@@ -1166,7 +1166,7 @@ export default {
         "id": "3345"
     },
     "banana-gun-trading": {
-        "enabled": true,
+        "enabled": false,
         "id": "3336"
     },
     "lynex": {

@@ -1788,6 +1788,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM"],
+    chainId: 204,
   },
 } as unknown as {
   [chain: string]: {

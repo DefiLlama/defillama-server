@@ -4243,7 +4243,7 @@ const data: Protocol[] = [
     chains: ["Zilliqa"],
     module: "zilswap.js",
     twitter: "ZilSwap",
-    github: ["Switcheo/zilswap"]
+    github: ["Switcheo"]
   },
   {
     id: "304",

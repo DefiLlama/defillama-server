@@ -5975,7 +5975,7 @@ const data3: Protocol[] = [
   },
   {
     id: "2982",
-    name: "Satori Finance",
+    name: "Satori",
     address: null,
     symbol: "-",
     url: "https://satori.finance",

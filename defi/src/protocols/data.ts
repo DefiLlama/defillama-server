@@ -5293,6 +5293,7 @@ const data: Protocol[] = [
       "https://github.com/Tibereum/obelisk-audits/blob/main/Gravity.pdf",
       "https://github.com/JorgeRodriguezsec/CTDsec/blob/main/Audits/Cybersecurity_Audit_CTDSEC_Gravity_v4.pdf",
     ],
+    github: ["inthenextversion"]
   },
   {
     id: "352",
@@ -5332,7 +5333,8 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "armorfinance/index.js",
     twitter: "ArmorFi",
-    governanceID: ['eip155:1:0x5aFeDeF1454CDd11d4705c06aa4D66Aa396343f6']
+    governanceID: ['eip155:1:0x5aFeDeF1454CDd11d4705c06aa4D66Aa396343f6'],
+    github: ["ArmorFi"]
   },
   {
     id: "354",
@@ -5355,6 +5357,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://docs.insurace.io/landing-page/documentation/security-1",
     ],
+    github: ["InsurAce-Protocol"]
   },
   {
     id: "355",
@@ -5398,6 +5401,7 @@ const data: Protocol[] = [
     module: "dopplefinance/index.js",
     twitter: "dopplefi",
     audit_links: ["https://dopple.gitbook.io/dopple-finance/certik-audit"],
+    github: ["DoppleFinance"]
   },
   /*
   {
@@ -5553,6 +5557,7 @@ const data: Protocol[] = [
       "https://github.com/xDollar-Finance/xDollar-contracts/blob/main/xDollar%20-%20Smart%20Contract%20Audit%20v210624.pdf",
     ],
     forkedFrom: ["Liquity"],
+    github: ["xDollar-Finance"]
   },
   {
     id: "364",

@@ -2515,7 +2515,7 @@ const parentProtocols: IParentProtocol[] = [
     name: "BaseSwap",
     url: "https://metapool.app",
     description: "Native DEX on Base chain",
-    logo: `${baseIconsUrl}/meta-pool.png`,
+    logo: `${baseIconsUrl}/baseswap.png`,
     gecko_id: "baseswap",
     cmcId: "27764",
     chains: [],

@@ -4223,7 +4223,8 @@ const data: Protocol[] = [
     twitter: "SpookySwap",
     audit_links: ["https://www.certik.org/projects/spookyswap"],
     forkedFrom: ["Uniswap V2"],
-    governanceID: ["snapshot:spookyswap.eth"]
+    governanceID: ["snapshot:spookyswap.eth"],
+    github: ["SpookySwap"]
   },
   {
     id: "303",
@@ -4242,6 +4243,7 @@ const data: Protocol[] = [
     chains: ["Zilliqa"],
     module: "zilswap.js",
     twitter: "ZilSwap",
+    github: ["Switcheo/zilswap"]
   },
   {
     id: "304",
@@ -4321,6 +4323,7 @@ const data: Protocol[] = [
     module: "wault.js",
     twitter: "Wault_Finance",
     audit_links: ["https://docs.wault.finance/resources/transparency"],
+    github: ["WaultFinance"]
   },
   {
     id: "308",
@@ -4341,6 +4344,7 @@ const data: Protocol[] = [
     twitter: "RulerProtocol",
     audit_links: ["https://docs.rulerprotocol.com/security"],
     oracles: ["Chainlink"],
+    github: ["Ruler-Protocol"]
   },
   /*
   {
@@ -4381,6 +4385,7 @@ const data: Protocol[] = [
     module: "belt/index.js",
     twitter: "BELT_Finance",
     audit_links: ["https://github.com/BeltFi/belt-contract/tree/main/audit"],
+    github: ["BeltFi"]
   },
   {
     id: "311",
@@ -4487,6 +4492,7 @@ const data: Protocol[] = [
     twitter: "TulipProtocol",
     oracles: ["Pyth"],
     openSource: false,
+    github: ["sol-farm"]
   },
   {
     id: "316",
@@ -4527,7 +4533,8 @@ const data: Protocol[] = [
     twitter: "Hyperjump_fi",
     audit_links: ["https://docs.hyperjump.fi/essentials/audits"],
     forkedFrom: ["Uniswap V2"],
-    governanceID: ["snapshot:ftm.hyperjumpdao.eth", "snapshot:bsc.hyperjumpdao.eth"]
+    governanceID: ["snapshot:ftm.hyperjumpdao.eth", "snapshot:bsc.hyperjumpdao.eth"],
+    github: ["HyperJump-DeFi"]
   },
   {
     id: "318",
@@ -4548,7 +4555,8 @@ const data: Protocol[] = [
     twitter: "_Dfyn",
     forkedFrom: ["Uniswap V2"],
     treasury: "dfyn.js",
-    governanceID: ["snapshot:dfyn.eth"]
+    governanceID: ["snapshot:dfyn.eth"],
+    github: ["dfyn"]
   },
   {
     id: "319",
@@ -4634,6 +4642,7 @@ const data: Protocol[] = [
     twitter: "yogi_finance",
     audit_links: ["https://docs.yogi.fi/core-concepts/security/audits"],
     forkedFrom: ["Balancer"],
+    deadUrl: true
   },
   {
     id: "323",
@@ -4655,6 +4664,7 @@ const data: Protocol[] = [
     twitter: "FluityFinance",
     audit_links: ["https://docs.fluity.finance/audits"],
     forkedFrom: ["Liquity"],
+    github: ["fluity-finance"]
   },
   {
     id: "324",
@@ -4676,6 +4686,7 @@ const data: Protocol[] = [
     twitter: "uniclyNFT",
     audit_links: ["https://github.com/uniclyNFT/Resources/blob/main/Unicly%20Security%20Audit.pdf"],
     forkedFrom: ["Uniswap V2"],
+    github: ["uniclyNFT"]
   },
   {
     id: "325",
@@ -4757,6 +4768,7 @@ const data: Protocol[] = [
     module: "youswap/index.js",
     twitter: "YouSwap_Global",
     audit_links: ["https://youswap-1.gitbook.io/youswap/develop/audit-agency"],
+    deadUrl: true
   },
   {
     id: "328",
@@ -4776,6 +4788,7 @@ const data: Protocol[] = [
     module: "steakbank/index.js",
     twitter: "SteakBank",
     audit_links: ["https://docs.steakbank.finance/audits"],
+    github: ["steakbankfinance"]
   },
   {
     id: "329",
@@ -4797,6 +4810,7 @@ const data: Protocol[] = [
     twitter: "SovrynBTC",
     governanceID: ["snapshot:sovrynbitocracy.eth"],
     audit_links: ["https://www.sovryn.app/library"],
+    github: ["DistributedCollective"]
   },
   {
     id: "330",
@@ -4839,7 +4853,8 @@ const data: Protocol[] = [
     module: "moneyonchain.js",
     twitter: "moneyonchainok",
     audit_links: ["https://github.com/money-on-chain/Audits"],
-    stablecoins: ["dollar-on-chain"]
+    stablecoins: ["dollar-on-chain"],
+    github: ["money-on-chain"]
   },
   {
     id: "332",
@@ -4880,6 +4895,7 @@ const data: Protocol[] = [
     treasury: "o3-swap.js",
     twitter: "O3_Labs",
     audit_links: ["https://certik-public-assets.s3.amazonaws.com/CertiK+Security+Assessment+for+O3+Swap.pdf"],
+    github: ["O3Labs"]
   },
   {
     id: "334",

@@ -15677,6 +15677,7 @@ const data3: Protocol[] = [
     twitter: "meowlxyz",
     forkedFrom: [],
     oracles: [],
+    treasury: "meowl.js",
     audit_links: ["https://github.com/freshcoins/Smart-Contract-Audits/blob/main/UncleSam_0x80a3d4999b2836a5ac90b4742da133f5f5f6c27d.pdf"],
     github: ["meowlxyz"],
     listedAt: 1692560976

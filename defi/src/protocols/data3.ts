@@ -15436,14 +15436,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3407",
-    name: "FuzioNetwork DEX",
+    name: "Fuzio",
     address: null,
     symbol: "-",
     url: "https://www.fuzio.network",
     description:
       "Fuzio fuses strategic gaming with DeFi, crafting a cutting-edge platform for a captivating, skill-driven financial journey that's thrilling and rewarding on SEI Network.",
     chain: "Sei",
-    logo: `${baseIconsUrl}/fuzionetwork-dex.jpg`,
+    logo: `${baseIconsUrl}/fuzio.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

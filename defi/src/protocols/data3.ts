@@ -15673,7 +15673,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Services",
     chains: ["Ethereum"],
-    module: "dummy.js",
+    module: "meowl/index.js",
     twitter: "meowlxyz",
     forkedFrom: [],
     oracles: [],

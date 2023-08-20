@@ -15657,6 +15657,30 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/freshcoins/Smart-Contract-Audits/blob/main/UncleSam_0x80a3d4999b2836a5ac90b4742da133f5f5f6c27d.pdf"],
     listedAt: 1692376612
   },
+  {
+    id: "3418",
+    name: "Meowl",
+    address: "0x1f1f26c966f483997728bed0f9814938b2b5e294",
+    symbol: "MEOWL",
+    url: "https://meowl.xyz",
+    description:
+      "Meowl is a Discord Bot that can be integrated into any server, enabling members to trade, share coins, set alerts, and monitor crypto positions directly within Discord",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/meowl.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "meowl",
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    module: "dummy.js",
+    twitter: "meowlxyz",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/freshcoins/Smart-Contract-Audits/blob/main/UncleSam_0x80a3d4999b2836a5ac90b4742da133f5f5f6c27d.pdf"],
+    github: ["meowlxyz"],
+    listedAt: 1692560976
+  },
 ]
 
 export default data3

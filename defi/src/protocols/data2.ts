@@ -22469,7 +22469,7 @@ const data2: Protocol[] = [
   {
     id: "2403",
     name: "NestFi",
-    address: "0x04abeda201850ac0124161f037efd70c74ddc74c",
+    address: "0xcd6926193308d3B371FdD6A6219067E550000000",
     symbol: "NEST",
     url: "https://nestprotocol.org",
     description: "Use NEST to buy ETH/USDT and BTC/USDT futures with up to 20x leverage",

@@ -12545,13 +12545,13 @@ const data2: Protocol[] = [
   },
   {
     id: "1961",
-    name: "Scallop",
+    name: "Scallop Lend",
     address: null,
     symbol: "-",
     url: "https://scallop.io",
     description: "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
     chain: "Solana",
-    logo: `${baseIconsUrl}/scallop.png`,
+    logo: `${baseIconsUrl}/scallop-lend.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -12562,6 +12562,7 @@ const data2: Protocol[] = [
     oracles: ['Switchboard', 'Pyth'],
     forkedFrom: [],
     twitter: "Scallop_io",
+    parentProtocol: "parent#scallop",
     listedAt: 1660034149
   },
   {

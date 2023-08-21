@@ -13982,8 +13982,8 @@ const data3: Protocol[] = [
   {
     id: "3342",
     name: "Magnate Finance",
-    address: null,
-    symbol: "-",
+    address: "base:0x2dc1cda9186a4993bd36de60d08787c0c382bead",
+    symbol: "MAG",
     url: "https://www.magnate.finance",
     description:
       "Build a novel lending protocol with a dynamic interest rate model and more capital-efficient risk management pools.",
@@ -13991,8 +13991,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/magnate-finance.png`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
-    cmcId: null,
+    gecko_id: "magnate-finance",
+    cmcId: "27879",
     category: "Lending",
     chains: ["Base"],
     module: "Magnate/index.js",

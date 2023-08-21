@@ -15772,6 +15772,50 @@ const data3: Protocol[] = [
     github: ["orange-finance"],
     listedAt: 1692625599
   },
+  {
+    id: "3423",
+    name: "Zena Finance",
+    address: "opbnb:0x9A0041a4D8C609FA460Db5a59077658bF616c4FA",
+    symbol: "ZEN",
+    url: "https://zena.fi",
+    description:
+      "First AMM on opBNB Mainnet with Concentrated Liquidity, Zena is a decentralized exchange running on opBNB Mainnet, with lots of other features that let you earn and win tokens.",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/zena-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "zena-v2/index.js",
+    twitter: "ZenaFinance",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692626893
+  },
+  {
+    id: "3424",
+    name: "Raccoon Finance",
+    address: "base:0x1299aA83ECa28D799349e9946D38C84D310b7450",
+    symbol: "RAC",
+    url: "https://www.raccoon.finance",
+    description:
+      "Unleash the power of your Base with Raccoon: Your gateway to revolutionary yield aggregation built on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/raccoon-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Yield Aggregator",
+    chains: ["Base"],
+    module: "racoon/index.js",
+    twitter: "RaccoonYields",
+    forkedFrom: ["Yearn Finance"],
+    oracles: [],
+    listedAt: 1692626899
+  },
 ]
 
 export default data3

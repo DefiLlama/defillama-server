@@ -1742,7 +1742,11 @@ export const chainCoingeckoIds = {
     geckoId: "mantle",
     symbol: "MNT",
     cmcId: "27075",
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 5000,
   },
   "Neon": {
@@ -1756,14 +1760,22 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 8453,
   },
   "Linea": {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
   },
   "GravityBridge": {
     geckoId: null,
@@ -1787,7 +1799,11 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
-    categories: ["EVM"],
+    categories: ["EVM", "Rollup"],
+    parent: {
+      chain: "Ethereum",
+      types: ["L2", "gas"]
+    },
     chainId: 204,
   },
 } as unknown as {

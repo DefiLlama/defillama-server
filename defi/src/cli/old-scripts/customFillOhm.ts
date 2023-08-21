@@ -14,10 +14,6 @@ import {
 } from "../utils/getLastRecord";
 import { getHistoricalValues} from "../utils/shared/dynamodb";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import {
-  getCoingeckoLock,
-  releaseCoingeckoLock,
-} from "../utils/shared/coingeckoLocks";
 import { importAdapter } from "./utils/importAdapter";
 import { log } from '../../DefiLlama-Adapters/projects/helper/utils'
 import { clearProtocolCacheById } from "./utils/clearProtocolCache";
@@ -59,7 +55,7 @@ const protocolTest = [
 ]
 
 const ex_main = async () => {
-  setInterval(releaseCoingeckoLock, 1.5e3);
+  setInterval(, 1.5e3);
   let count = 0
   let ethereumBlock = 1e15, chainBlocks = {} // we set ethereum block to absurd number and it will be ignored
   for (const protocolName of protocolTest) {
@@ -98,7 +94,7 @@ const ex_main = async () => {
           }
           moduleObj[chain] = { tvl }
         })
-        const tvl = await storeTvl(timestamp, ethereumBlock, chainBlocks, tProtocol, moduleObj, {}, 4, getCoingeckoLock, false, false, false, undefined);
+        const tvl = await storeTvl(timestamp, ethereumBlock, chainBlocks, tProtocol, moduleObj, {}, 4, false, false, false, undefined);
         console.log(++count, 'Refilled', tProtocol.name, timestamp, new Date(timestamp * 1000).toDateString(), tvl);
       })
 
@@ -110,7 +106,6 @@ const ex_main = async () => {
 
 
 const fetchData = async () => {
-  // setInterval(releaseCoingeckoLock, 1.5e3);
   for (const protocolName of protocols) {
     console.log('fetching data for ', protocolName)
     const protocol = getProtocol(protocolName);

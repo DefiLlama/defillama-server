@@ -11,10 +11,6 @@ import {
 import { getHistoricalValues } from "../utils/shared/dynamodb";
 import { getClosestDayStartTimestamp } from "../utils/date";
 import { storeTvl } from "../storeTvlInterval/getAndStoreTvl";
-import {
-  getCoingeckoLock,
-  releaseCoingeckoLock,
-} from "../utils/shared/coingeckoLocks";
 import type { Protocol } from "../protocols/data";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { importAdapter } from "./utils/importAdapter";
@@ -74,7 +70,6 @@ async function getAndStore(
     adapterModule,
     {},
     4,
-    getCoingeckoLock,
     false,
     false,
     true,
@@ -123,9 +118,6 @@ const main = async () => {
   if (timestamp > now) {
     timestamp = getClosestDayStartTimestamp(timestamp - secondsInDay);
   }
-  setInterval(() => {
-    releaseCoingeckoLock();
-  }, 1.5e3);
   let atLeastOneUpdateSuccessful = false
 
   try {

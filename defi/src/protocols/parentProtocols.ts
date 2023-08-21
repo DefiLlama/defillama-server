@@ -2522,6 +2522,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "BaseSwap_Fi",
     treasury: "baseswap.js",
   },
+  {
+    id: "parent#scallop",
+    name: "Scallop",
+    url: "https://scallop.io",
+    description:
+      "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
+    logo: `${baseIconsUrl}/scallop.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "Scallop_io",
+  },
 ];
 
 export default parentProtocols;

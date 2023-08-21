@@ -15816,6 +15816,29 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692626899
   },
+  {
+    id: "3425",
+    name: "Scallop Pool",
+    address: null,
+    symbol: "-",
+    url: "https://scallop.io",
+    description:
+      "Scallop is the pioneering Next Generation Money Market for the Sui ecosystem which emphasizes institutional-grade quality, enhanced composability, and robust security.",
+    chain: "Solana",
+    logo: `${baseIconsUrl}/scallop-pool.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Solana"],
+    module: "scallop-pool/index.js",
+    twitter: "Scallop_io",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#scallop",
+    listedAt: 1692631527
+  },
 ]
 
 export default data3

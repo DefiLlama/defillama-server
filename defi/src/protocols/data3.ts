@@ -15725,6 +15725,53 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692618839
   },
+  {
+    id: "3421",
+    name: "Mendi Finance",
+    address: "linea:0x43e8809ea748eff3204ee01f08872f063e44065f",
+    symbol: "MENDI",
+    url: "https://mendi.finance",
+    description:
+      "Mendi Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless, open source protocol serving users on Linea. Users can deposit their assets, use them as collateral and borrow against them.",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/mendi-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Linea"],
+    module: "mendi-finance/index.js",
+    twitter: "MendiFinance",
+    forkedFrom: ["Compound"],
+    oracles: [],
+    github: ["mendi-finance"],
+    listedAt: 1692625594
+  },
+  {
+    id: "3422",
+    name: "Orange Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.orangefinance.io",
+    description:
+      "Orange Finance is an Automatic Liquidity-Management protocol for concentrated liquidity-type DEX such as Uni v3, maximizing the capital efficiency of LP by maintaining an efficient price range through statistical modeling and delta hedging strategies.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/orange-finance.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Liquidity manager",
+    chains: ["Arbitrum"],
+    module: "orange-finance/index.js",
+    twitter: "0xOrangeFinance",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://orange-finance.gitbook.io/orange-finance/risk-and-security/audit"],
+    github: ["orange-finance"],
+    listedAt: 1692625599
+  },
 ]
 
 export default data3

@@ -279,5 +279,9 @@ export default {
                 "1691884800": true,
             },
         }
+    },
+    "apex": {
+        "enabled": true,
+        "id": "1878"
     }
 } as AdaptorsConfig

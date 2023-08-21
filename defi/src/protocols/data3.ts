@@ -15681,6 +15681,50 @@ const data3: Protocol[] = [
     github: ["meowlxyz"],
     listedAt: 1692560976
   },
+  {
+    id: "3419",
+    name: "MobyDEX",
+    address: "opbnb:0x80592297613BF9318A622A43615f4fE1D1A9509E",
+    symbol: "MOBY",
+    url: "https://mobydex.io",
+    description:
+      "MobyDEX is user-friendly CP-AMM DEX on opBNB",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/mobydex.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "mobydex/index.js",
+    twitter: "mobydexio",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1692618835
+  },
+  {
+    id: "3420",
+    name: "Energon DEX",
+    address: "base:0xF8F85beB4121fDAa9229141e5D5e4B782d8819D8",
+    symbol: "EGDY",
+    url: "https://www.energondex.io",
+    description:
+      "Energon DEX Automated Market Maker on Base Chain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/energon-dex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "energondex/index.js",
+    twitter: "EnergonDex",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1692618839
+  },
 ]
 
 export default data3

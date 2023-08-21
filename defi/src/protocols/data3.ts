@@ -15839,6 +15839,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#scallop",
     listedAt: 1692631527
   },
+  {
+    id: "3426",
+    name: "ChocoBase",
+    address: "base:0x6d6080492D0Bd40F1e44cc16791CC1664357f685",
+    symbol: "Choco",
+    url: "http://chocobase.xyz",
+    description:
+      "AMM on base chain.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/chocobase.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Base"],
+    module: "chocobase/index.js",
+    twitter: "TheKitchenBase",
+    forkedFrom: ["Goose Finance"],
+    oracles: [],
+    listedAt: 1692641855
+  },
 ]
 
 export default data3

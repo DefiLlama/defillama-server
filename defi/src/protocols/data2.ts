@@ -10740,6 +10740,7 @@ const data2: Protocol[] = [
     treasury: "apex-protocol.js",
     twitter: "OfficialApeXdex",
     audit_links: ["https://github.com/ApeX-Protocol/core/blob/master/docs/audit_report.pdf"],
+    github: ["ApeX-Protocol"],
     listedAt: 1656934904
   },
   {

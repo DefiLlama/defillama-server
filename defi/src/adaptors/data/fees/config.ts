@@ -1176,5 +1176,9 @@ export default {
     "op-bnb": {
         "enabled": true,
         "id": "204"
+    },
+    "meowl": {
+        "enabled": true,
+        "id": "3418"
     }
 } as AdaptorsConfig

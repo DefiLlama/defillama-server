@@ -15848,7 +15848,7 @@ const data3: Protocol[] = [
     description:
       "AMM on base chain.",
     chain: "Base",
-    logo: `${baseIconsUrl}/chocobase.jpg`,
+    logo: `${baseIconsUrl}/chocobase.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

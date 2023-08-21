@@ -15707,7 +15707,7 @@ const data3: Protocol[] = [
     id: "3420",
     name: "Energon DEX",
     address: "base:0xF8F85beB4121fDAa9229141e5D5e4B782d8819D8",
-    symbol: "EGDY",
+    symbol: "EGD",
     url: "https://www.energondex.io",
     description:
       "Energon DEX Automated Market Maker on Base Chain.",

@@ -15976,6 +15976,28 @@ const data3: Protocol[] = [
     parentProtocol: "parent#synthswap",
     listedAt: 1692718225
   },
+  {
+    id: "3432",
+    name: "Vooi",
+    address: null,
+    symbol: "-",
+    url: "https://vooi.io",
+    description:
+      "Experience seamless stablecoin swaps on your favorite L2 networks. Discover better yields with single-token staking.",
+    chain: "Linea",
+    logo: `${baseIconsUrl}/vooi.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Linea"],
+    module: "vooi/index.js",
+    twitter: "vooi_io",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692719840
+  },
 ]
 
 export default data3

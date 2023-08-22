@@ -1180,5 +1180,9 @@ export default {
     "meowl": {
         "enabled": true,
         "id": "3418"
+    },
+    "qidao": {
+        "enabled": true,
+        "id": "449"
     }
 } as AdaptorsConfig

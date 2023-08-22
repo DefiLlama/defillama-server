@@ -15883,6 +15883,54 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692679099
   },
+  {
+    id: "3428",
+    name: "Intswap",
+    address: null,
+    symbol: "-",
+    url: "https://intswap.io/",
+    description:
+      "The first multichain NFT AMM enables LP Mining by staking NFT/FT LP Tokens to earn compound trading fee, royalty fee and beyond.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/intswap.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "NFT Marketplace",
+    chains: ["zkSync Era"],
+    module: "intswap/index.js",
+    twitter: "Intswap_amm",
+    forkedFrom: [],
+    oracles: [],
+    audit_links: ["https://github.com/Vital-block/Smart-Contract-Audit/blob/main/INTSWAP%20CONTRACT%20AUDITING%20REPORT.pdf"],
+    github: ["Intswap-Labs"],
+    listedAt: 1692703661
+  },
+  {
+    id: "3429",
+    name: "YFX",
+    address: "arbitrum:0x569deb225441FD18BdE18aED53E2EC7Eb4e10D93",
+    symbol: "YFX",
+    url: "https://www.yfx.com",
+    description:
+      "World-leading decentralized perpetual exchange with up to 100x leverage, high liquidity, low fees, and no slippage.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/yfx.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "yfx",
+    cmcId: "9946",
+    category: "Derivatives",
+    chains: ["Arbitrum"],
+    module: "yfx-v3/index.js",
+    twitter: "YFX_COM",
+    forkedFrom: [],
+    oracles: ["Chainlink"],
+    audit_links: ["https://skynet.certik.com/projects/yfx"],
+    github: ["yfxcom"],
+    listedAt: 1692703669
+  },
 ]
 
 export default data3

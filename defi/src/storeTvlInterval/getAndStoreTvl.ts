@@ -148,7 +148,6 @@ export async function storeTvl(
   module: any,
   staleCoins: StaleCoins,
   maxRetries: number = 1,
-  _getCoingeckoLock?: () => Promise<unknown>, // TODO: remove unused
   storePreviousData: boolean = true,
   useCurrentPrices: boolean = true,
   breakIfTvlIsZero: boolean = false,

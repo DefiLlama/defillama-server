@@ -1,7 +1,6 @@
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import { storeTvl } from "./storeTvlInterval/getAndStoreTvl";
 import { getCurrentBlock } from "./storeTvlInterval/blocks";
-import { getCoingeckoLock, releaseCoingeckoLock } from "./utils/shared/coingeckoLocks";
 import { importAdapter } from "./utils/imports/importAdapter";
 import { executeAndIgnoreErrors } from "./storeTvlInterval/errorDb";
 import { getCurrentUnixTimestamp } from "./utils/date";
@@ -49,16 +48,9 @@ async function storeIntervals(protocolIndexes: number[], getRemainingTimeInMilli
         adapterModule,
         staleCoins,
         maxRetries,
-        getCoingeckoLock
       );
       return clearTimeout(protocolTimeout);
     });
 
-  const timer = setInterval(() => {
-    // Rate limit is 100 calls/min for coingecko's API
-    // So we'll release one every 0.6 seconds to match it
-    releaseCoingeckoLock();
-  }, 600);
-  clearInterval(timer);
   await storeStaleCoins(staleCoins);
 }

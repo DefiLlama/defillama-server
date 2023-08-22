@@ -1,4 +1,21 @@
 {
+  "tron": {
+    "0x0000000000000000000000000000000000000000": {
+      "decimals": "18",
+      "symbol": "TRX",
+      "to": "coingecko#tron"
+    },
+    "TRFe3hT5oYhjSZ6f3ji5FJ7YCfrkWnHRvh": {
+      "decimals": "18",
+      "symbol": "ETH",
+      "to": "coingecko#ethereum"
+    },
+    "TGkxzkDKyMeq2T7edKnyjZoFypyzjkkssq": {
+      "decimals": "18",
+      "symbol": "wstUSDT",
+      "to": "coingecko#wrapped-staked-usdt"
+    }
+  },
   "ibc": {
     "6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388": {
       "decimals": "6",

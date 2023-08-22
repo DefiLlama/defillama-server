@@ -1,6 +1,5 @@
 import { storeTvl } from "./getAndStoreTvl";
 import { getCurrentBlock } from "./blocks";
-import { getCoingeckoLock, releaseCoingeckoLock } from "../utils/shared/coingeckoLocks";
 import protocols from "../protocols/data";
 import { importAdapter } from "../utils/imports/importAdapter";
 import { executeAndIgnoreErrors } from "./errorDb";
@@ -39,17 +38,10 @@ export default async (protocolIndexes: number[], getRemainingTimeInMillis: () =>
         adapterModule,
         staleCoins,
         maxRetries,
-        getCoingeckoLock,
       )
       return clearTimeout(protocolTimeout)
     })
 
-  const timer = setInterval(() => {
-    // Rate limit is 100 calls/min for coingecko's API
-    // So we'll release one every 0.6 seconds to match it
-    releaseCoingeckoLock();
-  }, 600);
-  clearInterval(timer);
   
   await storeStaleCoins(staleCoins);
 

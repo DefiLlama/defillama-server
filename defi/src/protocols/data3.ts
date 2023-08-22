@@ -15998,6 +15998,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692719840
   },
+  {
+    id: "3433",
+    name: "Bagelswap",
+    address: null,
+    symbol: "-",
+    url: "https://www.bagelswap.com",
+    description:
+      "BagelSwap stands as a decentralized exchange (DEX) utilizing automated market-making (AMM) on Base chain. In contrast to conventional DEX platforms, our focus lies in establishing a robust base through employment of the BAGEL token for governance, a variety of farming options, an expansive gaming platform, and top tier service orientation centered around users.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/bagelswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    module: "bagelswap/index.js",
+    twitter: "GamesCroissant",
+    forkedFrom: ["Uniswap V3"],
+    oracles: [],
+    listedAt: 1692725616
+  },
 ]
 
 export default data3

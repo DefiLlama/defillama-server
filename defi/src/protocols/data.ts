@@ -5533,7 +5533,8 @@ const data: Protocol[] = [
     twitter: "perpprotocol",
     audit_links: ["https://docs.perp.fi/library/audit-report"],
     oracles: ["Chainlink"],
-    governanceID: ["snapshot:vote-perp.eth", "snapshot:perp-temp-check.eth"]
+    governanceID: ["snapshot:vote-perp.eth", "snapshot:perp-temp-check.eth"],
+    github: ["perpetual-protocol"]
   },
   {
     id: "363",
@@ -5621,7 +5622,8 @@ const data: Protocol[] = [
     module: "dfx/index.js",
     twitter: "DFXFinance",
     audit_links: ["https://github.com/dfx-finance/protocol/blob/main/audits/2021-05-03-Trail_of_Bits.pdf"],
-    governanceID: ["snapshot:dfx.eth"]
+    governanceID: ["snapshot:dfx.eth"],
+    github: ["dfx-finance"]
   },
   {
     id: "367",
@@ -5667,6 +5669,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://channelsofficial.gitbook.io/channels-finance-english/overview/audit",
     ],
+    github: ["ChannelsFinance"]
   },
   {
     id: "369",
@@ -5689,6 +5692,7 @@ const data: Protocol[] = [
       "https://attest.im/attestation/searchResult?qurey=4c533d00766c4b2a9761fad5da78b56f",
       "https://firebasestorage.googleapis.com/v0/b/gitbook-28427.appspot.com/o/assets%2F-MSgvIS2RfKE66pfkI81%2F-MUv-RfymyB6PvCRlnwz%2F-MUv1a71AjJ6p3Bgz5ui%2FChannels-Audit-Report-030321(1).pdf?alt=media&token=1af91ea6-d3d0-4ba3-8784-5dce6a907930",
     ],
+    deadUrl: true
   },
   {
     id: "370",
@@ -5732,6 +5736,7 @@ const data: Protocol[] = [
     twitter: "KokomoSwap",
     forkedFrom: ["Uniswap V2"],
     audit_links: ["https://docs.kokomoswap.io/risk-and-security-1/audit"],
+    github: ["KokomoSwap"]
   },
   {
     id: "372",
@@ -5878,6 +5883,7 @@ const data: Protocol[] = [
     twitter: "MakiSwap",
     audit_links: ["https://www.certik.org/projects/makiswap"],
     oracles: ["Chainlink"],
+    github: ["MakiSwap-Protocol"]
   },
   {
     id: "379",
@@ -5924,6 +5930,7 @@ const data: Protocol[] = [
     ],
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
+    github: ["lendhub"]
   },
   {
     id: "381",
@@ -5948,7 +5955,8 @@ const data: Protocol[] = [
       "https://hacken.io/audits/#solidstate",
       "https://hacken.io/audits/#premia_finance",
     ],
-    governanceID: ["snapshot:premia.eth"]
+    governanceID: ["snapshot:premia.eth"],
+    github: ["Premian-Labs"]
   },
   {
     id: "382",
@@ -6013,7 +6021,8 @@ const data: Protocol[] = [
       "https://docs.firebird.finance/security-safu/audits",
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Firebird-Swap-v1.0.pdf",
     ],
-    governanceID: ["snapshot:firebirdfinance.eth"]
+    governanceID: ["snapshot:firebirdfinance.eth"],
+    github: ["firebird-finance"]
   },
   {
     id: "385",
@@ -6055,6 +6064,7 @@ const data: Protocol[] = [
     twitter: "polyquity_org",
     audit_links: ["https://github.com/PolyQuity/audits/tree/main"],
     forkedFrom: ["Liquity"],
+    github: ["PolyQuity"]
   },
   {
     id: "387",
@@ -6075,6 +6085,7 @@ const data: Protocol[] = [
     module: "bearnfi/index.js",
     twitter: "BearnFi",
     forkedFrom: ["Uniswap V2", "Compound"],
+    github: ["bearn-defi"]
   },
   {
     id: "388",
@@ -6115,6 +6126,7 @@ const data: Protocol[] = [
     module: "adamantfinance/index.js",
     twitter: "AdamantVault",
     audit_links: ["https://adamantfinance.gitbook.io/adamant-finance/audits"],
+    github: ["eepdev"]
   },
   {
     id: "390",
@@ -6135,6 +6147,7 @@ const data: Protocol[] = [
     module: "qilin/index.js",
     twitter: "QilinProtocol",
     audit_links: ["https://github.com/CodexDao/QiLin/tree/main/audit"],
+    github: ["CodexDao"]
   },
   {
     id: "391",
@@ -6178,6 +6191,7 @@ const data: Protocol[] = [
     twitter: "WardenSwap",
     audit_links: ["https://www.certik.org/projects/wardenswap"],
     forkedFrom: ["Uniswap V2"],
+    github: ["Wardenswap"]
   },
   {
     id: "393",
@@ -6329,6 +6343,7 @@ const data: Protocol[] = [
       "https://resources.gysr.io/gysr_v1_audit_pessimistic.pdf",
       "https://resources.gysr.io/gysr_v2_audit_certik.pdf",
     ],
+    github: ["gysr-io"]
   },
   {
     id: "400",
@@ -6393,6 +6408,7 @@ const data: Protocol[] = [
     module: "hunnyfinance/index.js",
     twitter: "HunnyFinance",
     audit_links: ["https://www.certik.org/projects/pancakehunny"],
+    github: ["HunnyFinance"]
   },
   {
     id: "403",
@@ -6412,7 +6428,8 @@ const data: Protocol[] = [
     chains: ["Fantom"],
     module: "liquiddriver/index.js",
     twitter: "LiquidDriver",
-    governanceID: ["snapshot:liquiddriver.eth"]
+    governanceID: ["snapshot:liquiddriver.eth"],
+    github: ["LiquidDriver-finance"]
   },
   {
     id: "404",
@@ -6455,13 +6472,14 @@ const data: Protocol[] = [
     audit_links: [
       "https://github.com/consenlabs/tokenlon-contracts/tree/v5/audits",
     ],
+    github: ["consenlabs"]
   },
   {
     id: "406",
     name: "DELV", // rebrand from Element Finance to DELV https://twitter.com/delv_tech/status/1641880663174549504
     address: null,
     symbol: "-",
-    url: "https://www.element.fi",
+    url: "https://www.delv.tech/",
     description: "DELV (formerly Element Finance) is developing the complete suite of decentralized finance. Our protocols work together to help create the new financial system..",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/delv.jpg`,
@@ -6474,6 +6492,7 @@ const data: Protocol[] = [
     module: "elementfi/index.js",
     twitter: "delv_tech",
     audit_links: ["https://docs.element.fi/developers/bug-bounty-programs#b93e"],
+    github: ["delvtech"]
   },
   {
     id: "407",
@@ -6493,6 +6512,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "marspoolin/index.js",
     twitter: "MarsProject2020",
+    github: ["MarsFi"]
   },
   {
     id: "408",
@@ -6514,6 +6534,7 @@ const data: Protocol[] = [
     twitter: "Jetfuelfinance",
     audit_links: ["https://jetfuel.finance/audits"],
     forkedFrom: ["Compound"],
+    github: ["jetfuelfinance"]
   },
   {
     id: "409",
@@ -6535,6 +6556,7 @@ const data: Protocol[] = [
     twitter: "CafeSwapFinance",
     audit_links: ["https://docs.cafeswap.finance/audits"],
     forkedFrom: ["Uniswap V2"],
+    deadUrl: true
   },
   {
     id: "410",
@@ -6554,6 +6576,7 @@ const data: Protocol[] = [
     module: "swampfinance/index.js",
     twitter: "SwampFinance",
     audit_links: ["https://docs.swamp.finance/audits"],
+    deadUrl: true
   },
   {
     id: "411",
@@ -6575,6 +6598,7 @@ const data: Protocol[] = [
     twitter: "pippishrimpswap",
     audit_links: ["https://github.com/Shrimp-Labs/audit/blob/master/Pippi%20Shrimp_audit.pdf"],
     forkedFrom: ["Uniswap V2"],
+    github: ["Shrimp-Labs"]
   },
   {
     id: "412",
@@ -6660,6 +6684,7 @@ const data: Protocol[] = [
       "https://certificate.quantstamp.com/full/naos-formation",
       "https://www.certik.com/projects/naosfinance",
     ],
+    github: ["NAOS-Finance"]
   },
   {
     id: "416",
@@ -6680,6 +6705,7 @@ const data: Protocol[] = [
     module: "westater/index.js",
     twitter: "westarter_org",
     audit_links: [],
+    github: ["we-starter"]
   },
   {
     id: "417",
@@ -6745,6 +6771,7 @@ const data: Protocol[] = [
     chains: ["Solana"],
     module: "saber.js",
     twitter: "Saber_HQ",
+    github: ["saber-hq"]
   },
   {
     id: "420",
@@ -6788,6 +6815,7 @@ const data: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     twitter: "elk_finance",
     audit_links: ["https://blog.hashex.org/elk-finance-smart-contracts-audit-report-a18deaa5890b"],
+    github: ["elkfinance"]
   },
   {
     id: "421",

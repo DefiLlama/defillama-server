@@ -6837,6 +6837,7 @@ const data: Protocol[] = [
     module: "paintswap/index.js",
     twitter: "paint_swap",
     audit_links: ["https://solidity.finance/audits/PaintSwap/"],
+    github: ["PaintSwap"]
   },
   {
     id: "422",
@@ -6858,6 +6859,7 @@ const data: Protocol[] = [
     audit_links: [
       "https://hacken.io/wp-content/uploads/2021/05/Bunicorndefi_03052021_SC_Audit_2Report.pdf",
       "https://hacken.io/wp-content/uploads/2021/06/Bunicorndefi_11062021SC_Audit_Report_2.pdf"],
+      github: ["bunicorndefi"]
   },
   {
     id: "423",
@@ -6942,6 +6944,7 @@ const data: Protocol[] = [
     module: "mint-club/index.js",
     twitter: "MintClubPro",
     audit_links: ["https://github.com/Steemhunt/mint.club-contract/tree/main/audits"],
+    github: ["Steemhunt"]
   },
   {
     id: "427",
@@ -6984,7 +6987,8 @@ const data: Protocol[] = [
     module: "dinoswap/index.js",
     twitter: "DinoSwapHQ",
     audit_links: ["https://www.certik.org/projects/dinoswap"],
-    governanceID: ["snapshot:dinoswapexchange.eth"]
+    governanceID: ["snapshot:dinoswapexchange.eth"],
+    github: ["DinoSwap"]
   },
   {
     id: "429",
@@ -7009,7 +7013,8 @@ const data: Protocol[] = [
       "https://www.bamboodefi.com/assets/Bamboo%20DeFi%20-%20Security%20Audit%20Report.pdf",
       "https://www.bamboodefi.com/assets/bridge_audit.pdf",
     ],
-    governanceID: ["snapshot:bamboodefi.eth"]
+    governanceID: ["snapshot:bamboodefi.eth"],
+    github: ["bamboo-defi"]
   },
   {
     id: "430",
@@ -7112,7 +7117,8 @@ const data: Protocol[] = [
     module: "tarot/index.js",
     twitter: "TarotFinance",
     forkedFrom: ["Impermax Finance"],
-    governanceID: ["snapshot:xtarot.eth"]
+    governanceID: ["snapshot:xtarot.eth"],
+    github: ["tarot-finance"]
   },
   {
     id: "435",
@@ -7135,7 +7141,8 @@ const data: Protocol[] = [
     twitter: "HopProtocol",
     audit_links: ["https://docs.hop.exchange/faq#are-hop-contracts-audited"],
     forkedFrom: ["Saddle Finance"],
-    governanceID: ["snapshot:hop.eth", "compound:ethereum:0xed8bdb5895b8b7f9fdb3c087628fd8410e853d48"]
+    governanceID: ["snapshot:hop.eth", "compound:ethereum:0xed8bdb5895b8b7f9fdb3c087628fd8410e853d48"],
+    github: ["hop-protocol"]
   },
   {
     id: "436",
@@ -7178,6 +7185,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "helmetinsure/index.js",
     twitter: "Helmet_insure",
     audit_links: ["https://www.certik.org/projects/helmet"],
+    github: ["app-helmet-insure"]
   },
   {
     id: "438",
@@ -7199,7 +7207,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "TokenReactor",
     audit_links: ["https://omniscia.io/tokemak-capital-management-protocol/"],
     treasury: 'tokemak.js',
-    governanceID: ["snapshot:tokemak.eth"]
+    governanceID: ["snapshot:tokemak.eth"],
+    github: ["Tokemak"]
   },
   {
     id: "439",
@@ -7263,6 +7272,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "pylon_protocol",
     audit_links: ["https://docs.pylon.money/security#audits"],
     openSource: true,
+    deadUrl: true
   },
   {
     id: "442",
@@ -7304,7 +7314,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "kogefarm/index.js",
     twitter: "kogecoin",
     audit_links: ["https://github.com/Tibereum/obelisk-audits/blob/main/Kogefarm.pdf"],
-    governanceID: ["snapshot:kogecoin.eth"]
+    governanceID: ["snapshot:kogecoin.eth"],
+    github: ["kogecoin"]
   },
   {
     id: "444",
@@ -7345,6 +7356,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "cobraswap/index.js",
     forkedFrom: ["Uniswap V2"],
     twitter: "VenomDAO",
+    deadUrl: true
   },
   {
     id: "446",
@@ -7365,6 +7377,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "miningtycoon/index.js",
     twitter: "NEXTYPE1",
     audit_links: ["https://www.certik.org/projects/nextype"],
+    github: ["nextypefinance"]
   },
   {
     id: "447",
@@ -7408,6 +7421,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "BalancedDAO",
     audit_links: ["https://docs.balanced.network/security#smart-contract-audits"],
     oracles: ["Band"],
+    github: ["balancednetwork"]
   },
   {
     id: "449",
@@ -7432,6 +7446,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     governanceID: ["snapshot:qidao.eth"],
     stablecoins: ["mai"],
     wrongLiquidity: true, // address of qi on optimism is same address as mai on bsc
+    github: ["0xlaozi"]
   },
   {
     id: "450",
@@ -7452,7 +7467,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "Screamdotsh",
     oracles: ["Chainlink"],
     forkedFrom: ["Compound"],
-    governanceID: ["snapshot:screamsh.eth"]
+    governanceID: ["snapshot:screamsh.eth"],
+    github: ["Scream-Finance"]
   },
   {
     id: "451",
@@ -7511,6 +7527,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "WildCredit",
     audit_links: ["https://code423n4.com/reports/2021-07-wildcredit/"],
     oracles: ["Chainlink"],
+    deadUrl: true
   },
   {
     id: "454",
@@ -7570,6 +7587,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     module: "telcoin/index.js",
     twitter: "telcoin_team",
     audit_links: ["https://www.certik.org/projects/telcoin"],
+    github: ["telcoin"]
   },
   {
     id: "457",
@@ -7614,6 +7632,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "solendprotocol",
     audit_links: ["https://github.com/solendprotocol/solana-program-library/tree/master/token-lending/audit"],
     oracles: ["Pyth"],
+    github: ["solendprotocol"]
   },
   {
     id: "459",

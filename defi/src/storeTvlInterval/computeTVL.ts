@@ -87,7 +87,7 @@ function replaceETHwithWETH(balances: { [address: string]: string }) {
   }
 }
 
-const maxParallelCalls = +(process.env.PRICE_CACHE_MAX_PARALLEL_CALLS ?? 7)
+const maxParallelCalls = +(process.env.PRICE_CACHE_MAX_PARALLEL_CALLS ?? 11)
 
 const counter: Counter = {
   activeWorkers: 0,

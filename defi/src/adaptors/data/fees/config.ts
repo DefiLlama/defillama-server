@@ -1184,5 +1184,9 @@ export default {
     "qidao": {
         "enabled": true,
         "id": "449"
+    },
+    "zksync-era": {
+        "enabled": true,
+        "id": "324"
     }
 } as AdaptorsConfig

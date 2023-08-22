@@ -15931,6 +15931,51 @@ const data3: Protocol[] = [
     github: ["yfxcom"],
     listedAt: 1692703669
   },
+  {
+    id: "3430",
+    name: "CuanSwap",
+    address: "opbnb:0x47f63e5654db977c8bec9bd11928c4d517af7655",
+    symbol: "CUAN",
+    url: "https://app.cuanswap.com",
+    description:
+      "Trade CuanSwap Token, list and swap any coredao toekens.",
+    chain: "Arbitrum",
+    logo: `${baseIconsUrl}/cuanswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "cuanswap/index.js",
+    twitter: "CuanSwap",
+    forkedFrom: [],
+    oracles: [],
+    listedAt: 1692718218
+  },
+  {
+    id: "3431",
+    name: "Synthswap Perps",
+    address: "base:0xbd2DBb8eceA9743CA5B16423b4eAa26bDcfE5eD2",
+    symbol: "SYNTH",
+    url: "https://perps.synthswap.io/#/trade",
+    description:
+      "On Synthswap you can open Long and Short Positions with up to x50 Leverage. Alternatively you can use Synthswap Futures for Swapping with 0% Price Impact. Both, Market and Limit Orders are possible.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/synthswap-perps.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Base"],
+    module: "synthswap-perps/index.js",
+    twitter: "synthswapio",
+    forkedFrom: [],
+    oracles: [],
+    parentProtocol: "parent#synthswap",
+    listedAt: 1692718225
+  },
 ]
 
 export default data3

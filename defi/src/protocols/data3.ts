@@ -16040,6 +16040,7 @@ const data3: Protocol[] = [
     module: "spacefi-zksync/index.js",
     twitter: "spacefi_io",
     audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/SpaceFi%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
+    parentProtocol: "parent#spacefi",
     listedAt: 1692727275
   },
 ]

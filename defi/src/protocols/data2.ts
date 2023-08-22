@@ -8098,7 +8098,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1759",
-    name: "SpaceFi",
+    name: "SpaceFi Evmos",
     address: "evmos:0x4e2d4f33d759976381d9dee04b197bf52f6bc1fc",
     symbol: "SPACE",
     url: "https://spacefi.io",
@@ -8116,6 +8116,7 @@ const data2: Protocol[] = [
     module: "spacefi/index.js",
     twitter: "spacefi_io",
     audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/SpaceFi%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
+    parentProtocol: "parent#spacefi",
     listedAt: 1652356517
   },
   {

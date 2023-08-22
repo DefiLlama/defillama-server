@@ -15861,6 +15861,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692641855
   },
+  {
+    id: "3427",
+    name: "BalloonSwap",
+    address: "opbnb:0xfb39b78daa75c2cc6827347fb54897e22f7d7846",
+    symbol: "Balloon",
+    url: "https://balloonswap.org",
+    description:
+      "BalloonSwap is a protocol to trade on opBNB and automatically provide liquidity..BallonSwap offers security, transparency, and control over their digital asset transactions",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/balloonswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    module: "balloonswap/index.js",
+    twitter: "balloonswap",
+    forkedFrom: ["Uniswap V2"],
+    oracles: [],
+    listedAt: 1692679099
+  },
 ]
 
 export default data3

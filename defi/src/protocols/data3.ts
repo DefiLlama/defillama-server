@@ -15971,7 +15971,7 @@ const data3: Protocol[] = [
     chains: ["Base"],
     module: "synthswap-perps/index.js",
     twitter: "synthswapio",
-    forkedFrom: [],
+    forkedFrom: ["GMX V1"],
     oracles: [],
     parentProtocol: "parent#synthswap",
     listedAt: 1692718225

@@ -11013,7 +11013,7 @@ const data3: Protocol[] = [
     name: "Bitget Swap",
     address: null,
     symbol: "-",
-    url: "https://bitkeep.com/en/index",
+    url: "https://web3.bitget.com/",
     description: `Your Web3 Crypto Wallet for effortless trading.`,
     chain: "Ethereum",
     logo: `${baseIconsUrl}/bitget-swap.jpg`,

@@ -23099,6 +23099,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     listedAt: 1641421911,
     stablecoins: ["zunami-usd"],
     governanceID: ["snapshot:zunamidao.eth"],
+    treasury: "zunami.js",
     github: ["ZunamiProtocol"]
   },
   {

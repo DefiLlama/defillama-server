@@ -16020,6 +16020,28 @@ const data3: Protocol[] = [
     oracles: [],
     listedAt: 1692725616
   },
+  {
+    id: "3434",
+    name: "SpaceFi zkSync",
+    address: "era:0x47260090ce5e83454d5f05a0abbb2c953835f777",
+    symbol: "SPACE",
+    url: "https://spacefi.io",
+    description: "SpaceFi is a cross-chain web3.0 platform, with DEX+Farm+NFT+Starter+Spacebase.",
+    chain: "zkSync Era",
+    logo: `${baseIconsUrl}/spacefi.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: "spacefi-zksync",
+    cmcId: null,
+    category: "Dexes",
+    chains: ["zkSync Era"],
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    module: "spacefi-zksync/index.js",
+    twitter: "spacefi_io",
+    audit_links: ["https://github.com/Quillhash/QuillAudit_Reports/blob/master/SpaceFi%20Smart%20Contract%20Audit%20Report%20-%20QuillAudits.pdf"],
+    listedAt: 1692727275
+  },
 ]
 
 export default data3

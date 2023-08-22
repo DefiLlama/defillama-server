@@ -25,7 +25,7 @@ async function hotloadTasks(isFirstRun) {
   await scheduleNewTasks()
 
   function readTasks() {
-    const rootFolder = isFirstRun ? __dirname : 'app/repo/task-runner/src'
+    const rootFolder = isFirstRun === true ? __dirname : 'app/repo/task-runner/src' // first argument is timestamp of the run if this is started by cron
     const file = path.join(rootFolder, process.env.TASK_FILE)
     return JSON.parse(fs.readFileSync(file))
   }
@@ -52,8 +52,12 @@ async function hotloadTasks(isFirstRun) {
   function formTaskFunction(id, taskObj) {
     return async () => {
       taskObj.name = id
-      if (taskObj.npm_script) return runNpmCommand(taskObj)
-      return spawnPromise(taskObj)
+      try {
+        if (taskObj.npm_script) return runNpmCommand(taskObj)
+        return spawnPromise(taskObj)
+      } catch (e) {
+        console.log('Error running task', id, e)
+      }
     }
   }
 

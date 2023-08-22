@@ -9,14 +9,14 @@
         "git pull",
         "git submodule update --init --recursive --remote --merge",
         "npm uninstall @defillama/emissions-adapters",
-        "npm i  > /dev/null",
-        "npm update @defillama/sdk  > /dev/null",
+        "npm i",
+        "npm update @defillama/sdk",
         "cd dev-metrics",
-        "npm i  > /dev/null",
+        "npm i",
         "git reset --hard HEAD"
       ]
     },
-    "[TVL] Updating twitter data": {
+    "[TVL] Updating tvl data": {
       "schedule": "3 * * * *",
       "npm_script": "task-tvl",
       "script_location": "defi"

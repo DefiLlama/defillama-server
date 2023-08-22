@@ -19819,6 +19819,7 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1668595021
   },
+/*
   {
     id: "2287",
     name: "ThorChain DEX",
@@ -19840,6 +19841,7 @@ const data2: Protocol[] = [
     twitter: "THORChain",
     listedAt: 1668600716
   },
+*/
   /*
   {
     id: "2288",

@@ -12,6 +12,7 @@
         "npm uninstall @defillama/emissions-adapters",
         "npm i",
         "npm update @defillama/sdk",
+        "npm i @types/node-fetch node-fetch",
         "cd dev-metrics",
         "npm i",
         "git stash",

@@ -6,6 +6,7 @@
       "bash_script": [
         "[ ! -d 'repo' ] && git clone  --depth 1 https://github.com/DefiLlama/defillama-server repo",
         "cd /app/repo/defi",
+        "git stash",
         "git pull",
         "git submodule update --init --recursive --remote --merge",
         "npm uninstall @defillama/emissions-adapters",
@@ -13,7 +14,8 @@
         "npm update @defillama/sdk",
         "cd dev-metrics",
         "npm i",
-        "git reset --hard HEAD"
+        "git stash",
+        "git submodule update --init --recursive --remote --merge"
       ]
     },
     "[TVL] Updating tvl data": {

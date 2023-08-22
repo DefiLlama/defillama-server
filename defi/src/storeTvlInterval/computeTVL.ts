@@ -66,7 +66,7 @@ export default async function (balances: { [address: string]: string }, timestam
         usdTvl += usdAmount;
       });
     } else {
-      console.error(`Data for ${response.PK} is stale`);
+      sdk.log(`Data for ${response.PK} is stale`);
     }
   });
   return {

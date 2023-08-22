@@ -1344,7 +1344,7 @@ export default {
             chain: "Ethereum",
             types: ["L2", "gas"]
         },
-        chainid: 324,
+        chainId: 324,
     },
     "Base": {
         geckoId: null,

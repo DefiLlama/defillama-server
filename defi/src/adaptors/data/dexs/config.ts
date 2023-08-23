@@ -35,6 +35,7 @@ export default {
         }
     },
     "champagneswap": {
+        disabled: true,
         "enabled": true,
         "id": "1643"
     },
@@ -406,6 +407,7 @@ export default {
         "id": "680"
     },
     "junoswap": {
+        disabled: true,
         "enabled": true,
         "id": "2052"
     },
@@ -661,10 +663,12 @@ export default {
         "id": "2158"
     },
     "aldrin": {
+        disabled: true,
         "enabled": true,
         "id": "739"
     },
     "capricorn-finance": {
+        disabled: true,
         "enabled": true,
         "id": "2128"
     },
@@ -703,6 +707,7 @@ export default {
         "id": "2167"
     },
     "jswap": {
+        disabled: true,
         "enabled": true,
         "id": "678"
     },
@@ -920,6 +925,7 @@ export default {
         "id": "232"
     },
     "mistswap": {
+        disabled: true,
         "enabled": true,
         "id": "748"
     },
@@ -1090,6 +1096,7 @@ export default {
         "id": "2213"
     },
     "wojak-finance": {
+        disabled: true,
         "enabled": true,
         "id": "2113"
     },
@@ -1445,6 +1452,7 @@ export default {
         "id": "2792"
     },
     "satoshiswap": {
+        disabled: true,
         "enabled": true,
         "id": "2827"
     },
@@ -1705,6 +1713,7 @@ export default {
     },
     "voodoo-trade": {
         enabled: true,
+        disabled: true,
         id: "3156",
         "protocolsData": {
             "swap": {

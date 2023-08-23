@@ -1806,6 +1806,12 @@ export const chainCoingeckoIds = {
     },
     chainId: 204,
   },
+  "Archway": {
+    geckoId: "archway",
+    symbol: "ARCH",
+    cmcId: "27358",
+    categories: ["Cosmos"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2251,8 +2257,10 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Aura Network"
     case "sei":
       return "Sei"
-      case "op_bnb":
-        return "Op_Bnb"
+    case "op_bnb":
+      return "Op_Bnb"
+    case "archway":
+      return "Archway"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

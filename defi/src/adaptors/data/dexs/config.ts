@@ -172,7 +172,7 @@ export default {
         "id": "1799"
     },
     "gmx": {
-        parentId: "337",
+        parentId: "GMX",
         "protocolsData": {
             "swap": {
                 "id": "337",
@@ -1887,5 +1887,10 @@ export default {
     "lynex": {
         "enabled": true,
         "id": "3408"
+    },
+    "gmx-v2-swap": {
+        parentId: "GMX",
+        "enabled": true,
+        "id": "3365"
     }
 } as AdaptorsConfig

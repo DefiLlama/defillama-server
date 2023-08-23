@@ -981,7 +981,7 @@ export default {
         "id": "1907"
     },
     "chainge-finance": {
-        "enabled": false,
+        "enabled": true,
         "id": "704"
     },
     "minerswap": {

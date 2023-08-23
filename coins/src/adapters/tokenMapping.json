@@ -16,6 +16,13 @@
       "to": "coingecko#wrapped-staked-usdt"
     }
   },
+  "avax": {
+    "0xae64d55a6f09e4263421737397d1fdfa71896a69": {
+      "decimals": "18",
+      "symbol": "sGLP",
+      "to": "avax:0x01234181085565ed162a948b6a5e88758cd7c7b8"
+    }
+  },
   "ibc": {
     "6CDD4663F2F09CD62285E2D45891FC149A3568E316CE3EBBE201A71A78A69388": {
       "decimals": "6",

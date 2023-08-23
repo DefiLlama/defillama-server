@@ -6999,7 +6999,7 @@ const data: Protocol[] = [
     description:
       "A new generation DeFi that brings together the best of protocols like Uniswap v2, SushiSwap, YAM ,Compound with security improvements & new protocols like BBYP.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/bamboodefi.svg`,
+    logo: `${baseIconsUrl}/bamboodefi.png`,
     audits: "2",
     audit_note: null,
     gecko_id: "bamboo-defi",

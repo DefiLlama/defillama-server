@@ -84,7 +84,7 @@ async function getAndStore(
     Object.entries(tvl).forEach(([key, val]) => sdk.log(key, humanizeNumber((val ?? 0) as number)))
   }
 
-  const finalTvl = typeof tvl.tvl === "number" ? humanizeNumber(tvl.tvl) : tvl.tvl
+  const finalTvl = typeof tvl?.tvl === "number" ? humanizeNumber(tvl.tvl) : tvl?.tvl
 
   console.log(timestamp, new Date(timestamp * 1000).toDateString(), finalTvl);
   if (tvl === undefined) failed++

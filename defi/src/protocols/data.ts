@@ -7004,7 +7004,7 @@ const data: Protocol[] = [
     audit_note: null,
     gecko_id: "bamboo-defi",
     cmcId: "8389",
-    category: "Yield",
+    category: "Dexes",
     chains: ["Ethereum", "Binance"],
     module: "bamboodefi/index.js",
     forkedFrom: ["Uniswap V2"],

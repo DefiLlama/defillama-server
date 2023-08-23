@@ -43,7 +43,13 @@ async function hotloadTasks(isFirstRun) {
       if (scheduledTasks[id]) continue;
       console.log('Start scheduled task', id)
       const taskFn = formTaskFunction(id, taskObj)
-      if (taskObj.run_on_load) await taskFn()
+      if (taskObj.run_on_load) {
+        try {
+          await taskFn()
+        } catch (e) {
+          console.log('Error running task first time', id, e)
+        }
+      }
       scheduledTasks[id] = cron.schedule(taskObj.schedule, taskFn)
     }
   }

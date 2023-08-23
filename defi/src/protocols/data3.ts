@@ -13122,7 +13122,7 @@ const data3: Protocol[] = [
     category: "Dexes",
     chains: ["Optimism"],
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Solidly"],
     module: "velodrome-v2/index.js",
     twitter: "VelodromeFi",
     parentProtocol: "parent#velodrome",

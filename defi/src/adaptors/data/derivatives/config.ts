@@ -6,7 +6,7 @@ export default {
         "id": "2299"
     },
     "gmx": {
-        parentId: "337",
+        parentId: "GMX",
         "protocolsData": {
             "derivatives": {
                 displayName: "GMX - Derivatives",
@@ -283,5 +283,10 @@ export default {
     "apex": {
         "enabled": true,
         "id": "1878"
+    },
+    "gmx-v2-trade": {
+        parentId: "GMX",
+        "enabled": true,
+        "id": "3365"
     }
 } as AdaptorsConfig

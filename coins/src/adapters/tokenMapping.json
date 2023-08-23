@@ -21,6 +21,21 @@
       "decimals": "6",
       "symbol": "ATOM",
       "to": "coingecko#cosmos"
+    },
+    "926432AE1C5FA4F857B36D970BE7774C7472079506820B857B75C5DE041DD7A3": {
+      "decimals": "6",
+      "symbol": "JKL",
+      "to": "coingecko#jackal-protocol"
+    },
+    "B9E4FD154C92D3A23BEA029906C4C5FF2FE74CB7E3A058290B77197A263CF88B": {
+      "decimals": "6",
+      "symbol": "axlUSDC",
+      "to": "coingecko#axlusdc"
+    },
+    "13C5990F84FA5D472E1F8BB1BAAEA8774DA5F24128EC02B119107AD21FB52A61": {
+      "decimals": "18",
+      "symbol": "axlWETH",
+      "to": "coingecko#ethereum"
     }
   },
   "arbitrum": {
@@ -112,6 +127,28 @@
       "decimals": "8",
       "symbol": "WBTC",
       "to": "coingecko#wrapped-bitcoin"
+    }
+  },
+  "archway": {
+    "aarch": {
+      "decimals": "18",
+      "symbol": "ARCH",
+      "to": "coingecko#archway"
+    },
+    "archway1yjdgfut7jkq5xwzyp6p5hs7hdkmszn34zkhun6mglu3falq3yh8sdkaj7j": {
+      "decimals": "6",
+      "symbol": "xJKL",
+      "to": "coingecko#jackal-protocol"
+    },
+    "archway1m273xq2fjmn993jm4kft5c49w2c70yfv5zypt3d92cqp4n5faefqqkuf0l": {
+      "decimals": "6",
+      "symbol": "xATOM",
+      "to": "coingecko#cosmos"
+    },
+    "archway1cutfh7m87cyq5qgqqw49f289qha7vhsg6wtr6rl5fvm28ulnl9ssg0vk0n": {
+      "decimals": "18",
+      "symbol": "xARCH",
+      "to": "coingecko#archway"
     }
   }
 }

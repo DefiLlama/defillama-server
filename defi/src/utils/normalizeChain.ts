@@ -1812,6 +1812,17 @@ export const chainCoingeckoIds = {
     cmcId: "27358",
     categories: ["Cosmos"],
   },
+  "HydraDX": {
+    geckoId: "hydradx",
+    github: ['galacticcouncil'],
+    symbol: "HDX",
+    cmcId: "6753",
+    categories: ["Parachain"],
+    parent: {
+      chain: "Polkadot",
+      types: ["parachain"]
+    },
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2261,6 +2272,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Op_Bnb"
     case "archway":
       return "Archway"
+    case "hydradx":
+      return "HydraDX"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

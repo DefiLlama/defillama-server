@@ -2534,6 +2534,19 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "Scallop_io",
   },
+  {
+    id: "parent#spacefi",
+    name: "SpaceFi",
+    url: "https://spacefi.io",
+    description:
+      "SpaceFi is a cross-chain web3.0 platform, with DEX+Farm+NFT+Starter+Spacebase.",
+    logo: `${baseIconsUrl}/spacefi.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "spacefi_io",
+    github: ["SpaceFinance"]
+  },
 ];
 
 export default parentProtocols;

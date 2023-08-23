@@ -66,7 +66,7 @@ export default async function (balances: { [address: string]: string }, timestam
         usdTvl += usdAmount;
       });
     } else {
-      console.error(`Data for ${response.PK} is stale`);
+      sdk.log(`Data for ${response.PK} is stale`);
     }
   });
   return {
@@ -87,7 +87,7 @@ function replaceETHwithWETH(balances: { [address: string]: string }) {
   }
 }
 
-const maxParallelCalls = +(process.env.PRICE_CACHE_MAX_PARALLEL_CALLS ?? 7)
+const maxParallelCalls = +(process.env.PRICE_CACHE_MAX_PARALLEL_CALLS ?? 11)
 
 const counter: Counter = {
   activeWorkers: 0,

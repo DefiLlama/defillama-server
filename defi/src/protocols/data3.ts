@@ -16051,7 +16051,7 @@ const data3: Protocol[] = [
     url: "https://astrovault.io",
     description: "DeFi, Sustainably.",
     chain: "Archway",
-    logo: `${baseIconsUrl}/astrovault.jpg`,
+    logo: `${baseIconsUrl}/astrovault.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -16084,6 +16084,27 @@ const data3: Protocol[] = [
     twitter: "FedexOfficial_",
     forkedFrom: ["Uniswap V2"],
     listedAt: 1692788839
+  },
+  {
+    id: "3437",
+    name: "PySwap",
+    address: "opbnb:0x2928CBA5b5e5B48113281263FC037c7a5d8E1EDf",
+    symbol: "PYS",
+    url: "https://www.pyswap.exchange",
+    description: "Farm protocol on base network",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/pyswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Farm",
+    chains: ["Op_Bnb"],
+    oracles: [],
+    module: "pyswap/index.js",
+    twitter: "pyswap",
+    forkedFrom: [],
+    listedAt: 1692800865
   },
 ]
 

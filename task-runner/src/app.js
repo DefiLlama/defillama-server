@@ -13,7 +13,6 @@ const scheduledTasks = {}
 async function load() {
   console.log('Starting the app...')
   await hotloadTasks(true)
-  console.log('CRONOS_RPC:', process.env.CRONOS_RPC)
 }
 
 load()

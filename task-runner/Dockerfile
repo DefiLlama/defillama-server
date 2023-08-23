@@ -18,6 +18,8 @@ RUN git clone --depth 1  https://github.com/DefiLlama/defillama-server /app/repo
 RUN cd /app/repo/defi && git submodule update --init --recursive
 # RUN cd /app/repo/defi && git submodule update --remote --merge 
 RUN cd /app/repo/defi && npm i
+RUN cd /app/repo/defi && npm ls @types/node-fetch
+RUN cd /app/repo/defi && npm ls node-fetch
 
 # Run the app when the container starts
 CMD ["node", "src/app.js"]

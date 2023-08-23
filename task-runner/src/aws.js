@@ -14,6 +14,7 @@ async function loadSecrets() {
   Object.entries(secrets).forEach(([key, value]) => {
     if (key !== 'PK' && key !== 'SK') process.env[key] = value
   })
+  console.log('[test env] CRONOS_RPC:', process.env.CRONOS_RPC)
 }
 
 module.exports = {

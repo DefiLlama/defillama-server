@@ -16127,6 +16127,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1692804776
   },
+  {
+    id: "3439",
+    name: "HydraDX",
+    address: null,
+    symbol: "-",
+    url: "https://hydradx.io/",
+    description: "HydraDX is an innovative AMM which unlocks unparalleled efficiencies by combining all assets in a single trading pool.",
+    chain: "HydraDX",
+    logo: `${baseIconsUrl}/hydradx.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "hydradx",
+    cmcId: "6753",
+    category: "Dexes",
+    chains: ["HydraDX"],
+    oracles: [],
+    module: "hydradx/index.js",
+    twitter: "hydra_dx",
+    forkedFrom: [],
+    listedAt: 1692805979
+  },
+
 ]
 
 export default data3

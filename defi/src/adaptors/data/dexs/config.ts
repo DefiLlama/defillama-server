@@ -1717,6 +1717,7 @@ export default {
         id: "3156",
         "protocolsData": {
             "swap": {
+                disabled: true,
                 "id": "3156",
                 "enabled": true,
                 "category": "Dexes",

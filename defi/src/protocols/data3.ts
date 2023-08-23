@@ -14392,7 +14392,7 @@ const data3: Protocol[] = [
   {
     id: "3360",
     name: "Aquarius Loan",
-    address: "core:-",
+    address: "core:0x204e2D49b7cDA6d93301bcF667A2Da28Fb0e5780",
     symbol: "ARS",
     url: "https://www.aquarius.loan/",
     description:

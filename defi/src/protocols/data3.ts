@@ -16043,6 +16043,48 @@ const data3: Protocol[] = [
     parentProtocol: "parent#spacefi",
     listedAt: 1692727275
   },
+  {
+    id: "3435",
+    name: "Astrovault",
+    address: null,
+    symbol: "-",
+    url: "https://astrovault.io",
+    description: "DeFi, Sustainably.",
+    chain: "Archway",
+    logo: `${baseIconsUrl}/astrovault.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Archway"],
+    oracles: [],
+    forkedFrom: [],
+    module: "astrovault/index.js",
+    twitter: "axvdex",
+    listedAt: 1692788834
+  },
+  {
+    id: "3436",
+    name: "FeDex Finance",
+    address: "opbnb:0xa899f1830c64045b8b368781677d036a0b379d31",
+    symbol: "FED",
+    url: "https://fedex.finance/#/swap",
+    description: "Unleash the potential of decentralized trading with our proprietary AMM technology. Explore the DeFi platform with new technology, and build a new era for the future with low cost, abundant liquidity, and high scalability.",
+    chain: "Op_Bnb",
+    logo: `${baseIconsUrl}/fedex-finance.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Op_Bnb"],
+    oracles: [],
+    module: "fedex/index.js",
+    twitter: "FedexOfficial_",
+    forkedFrom: ["Uniswap V2"],
+    listedAt: 1692788839
+  },
 ]
 
 export default data3

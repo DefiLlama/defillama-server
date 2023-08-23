@@ -1685,6 +1685,7 @@ export const chainCoingeckoIds = {
     geckoId: "xpla",
     symbol: "XPLA",
     cmcId: "22359",
+    github: ["xpladev"],
     categories: ["Cosmos"],
   },
   "Neutron": {
@@ -1698,33 +1699,39 @@ export const chainCoingeckoIds = {
     symbol: "ONUS",
     cmcId: "15261",
     categories: ["EVM"],
+    github: ["ONUS-APP"]
   },
   "Pokt": {
     geckoId: "pocket-network",
     symbol: "POKT",
     cmcId: "11823",
+    github: ["pokt-network"]
   },
   "Quasar": {
     geckoId: null,
     symbol: "QSR",
     cmcId: null,
+    github: ["quasar-finance"],
     categories: ["Cosmos"],
   },
   "Concordium": {
     geckoId: "concordium",
     symbol: "CCD",
     cmcId: "18031",
+    github: ["Concordium"]
   },
   "Chihuahua": {
     geckoId: "chihuahua-token",
     symbol: "HUAHUA",
     cmcId: "17208",
+    github: ["ChihuahuaChain"],
     categories: ["Cosmos"],
   },
   "Rollux": {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    github: ["SYS-Labs"],
     categories: ["EVM", "Rollup"],
     chainid: 570, 
     parent: {
@@ -1736,12 +1743,14 @@ export const chainCoingeckoIds = {
     geckoId: "tenet-1b000f7b-59cb-4e06-89ce-d62b32d362b9",
     symbol: "TENET",
     cmcId: "24892",
+    github: ["tenet-org"],
     categories: ["EVM"],
   },
   "Mantle": {
     geckoId: "mantle",
     symbol: "MNT",
     cmcId: "27075",
+    github: ["mantlenetworkio"],
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -1753,6 +1762,7 @@ export const chainCoingeckoIds = {
     geckoId: "neon",
     symbol: "NEON",
     cmcId: "26735",
+    github: ["neonevm"],
     categories: ["EVM"],
     chainId: 245022934,
   },
@@ -1760,6 +1770,7 @@ export const chainCoingeckoIds = {
     geckoId: null,
     symbol: null,
     cmcId: null,
+    github: ["base-org"],
     categories: ["EVM", "Rollup"],
     parent: {
       chain: "Ethereum",
@@ -1772,6 +1783,7 @@ export const chainCoingeckoIds = {
     symbol: null,
     cmcId: null,
     categories: ["EVM", "Rollup"],
+    github: ["Consensys"],
     parent: {
       chain: "Ethereum",
       types: ["L2", "gas"]
@@ -1788,12 +1800,14 @@ export const chainCoingeckoIds = {
     symbol: "AURA",
     cmcId: "20326",
     categories: ["Cosmos"],
+    github: ["aura-nw"]
   },
   "Sei": {
     geckoId: "sei-network",
     symbol: "SEI",
     cmcId: "23149",
     categories: ["Cosmos"],
+    github: ["sei-protocol"]
   },
   "Op_Bnb": {
     geckoId: null,
@@ -1811,6 +1825,7 @@ export const chainCoingeckoIds = {
     symbol: "ARCH",
     cmcId: "27358",
     categories: ["Cosmos"],
+    github: ["archway-network"]
   },
   "HydraDX": {
     geckoId: "hydradx",

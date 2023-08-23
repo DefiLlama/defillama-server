@@ -16051,7 +16051,7 @@ const data3: Protocol[] = [
     url: "https://astrovault.io",
     description: "DeFi, Sustainably.",
     chain: "Archway",
-    logo: `${baseIconsUrl}/astrovault.jpg`,
+    logo: `${baseIconsUrl}/astrovault.png`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

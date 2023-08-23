@@ -16049,7 +16049,7 @@ const data3: Protocol[] = [
     address: null,
     symbol: "-",
     url: "https://astrovault.io",
-    description: "Astrovault is a re-envisioned AMM which fixes a core problem — AMMs are not economically viable.",
+    description: "DeFi, Sustainably.",
     chain: "Archway",
     logo: `${baseIconsUrl}/astrovault.jpg`,
     audits: "0",

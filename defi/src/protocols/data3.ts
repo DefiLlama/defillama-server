@@ -16106,6 +16106,27 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1692800865
   },
+  {
+    id: "3438",
+    name: "Baklava Space",
+    address: "avax:0xe19A1684873faB5Fb694CfD06607100A632fF21c",
+    symbol: "BAVA",
+    url: "https://baklava.space",
+    description: "Baklava Space is a yield optimizer. Available for Avalanche, & FunctionX.",
+    chain: "Avalanche",
+    logo: `${baseIconsUrl}/baklava-space.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "baklava",
+    cmcId: null,
+    category: "Yield",
+    chains: ["Avalanche"],
+    oracles: [],
+    module: "baklava-space/index.js",
+    twitter: "baklavaspace",
+    forkedFrom: [],
+    listedAt: 1692804776
+  },
 ]
 
 export default data3

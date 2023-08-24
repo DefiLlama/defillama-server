@@ -40,11 +40,11 @@ async function main() {
           staleCoins,
           maxRetries,
         ))
-      } catch (e) { }
+      } catch (e) { console.error(e) }
       const timeTakenI = (+Date.now() - startTime) / 1e3
       timeTaken += timeTakenI
       const avgTimeTaken = timeTaken / ++i
-      sdk.log(`Done: ${i} / ${actions.length} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s`)
+      sdk.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s`)
     })
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s`)

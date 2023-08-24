@@ -9692,7 +9692,7 @@ const data3: Protocol[] = [
   {
     id: "3135",
     name: "GPLX",
-    address: "pulse:0xccb0d8790bbb82754d6d2f79e61ceEE8582704c6",
+    address: "pulse:0xF2d9A3Ea1ADB44B7e95893069a2d5CB9BB50E677",
     symbol: "GPLX",
     url: "https://gplx.io/#/",
     description:

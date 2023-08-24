@@ -288,5 +288,15 @@ export default {
         parentId: "GMX",
         "enabled": true,
         "id": "3365"
+    },
+    "meridian-trade": {
+        "enabled": true,
+        "id": "3386",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3386",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

@@ -16397,6 +16397,7 @@ const data3: Protocol[] = [
     module: "hydradx/index.js",
     twitter: "hydra_dx",
     forkedFrom: [],
+    github: ['galacticcouncil'],
     listedAt: 1692805979
   },
 

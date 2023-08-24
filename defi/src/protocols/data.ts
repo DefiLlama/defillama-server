@@ -12249,6 +12249,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Ethereum"],
     module: "fodl/index.js",
     twitter: "FODLfi",
+    github: ["Fodl-DAO"],
     audit_links: ["https://certificate.quantstamp.com/full/fodl"],
     listedAt: 1634287149,
   },

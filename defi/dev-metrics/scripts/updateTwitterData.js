@@ -14,14 +14,16 @@ async function main() {
   let checked = 0
   let i = 0
   const twitterOverview = await getTwitterOverviewFile()
+
   // const twitterOverview = {}
-  const TWELVE_HOURS = 12 * 60 * 60 * 1000 * 3
+  const TWELVE_HOURS = 12 * 60 * 60 * 1000 * 7
+  let connectionRefusedCount = 0
   for (const handle of handles) {
     const handleMetadata = twitterOverview[handle] || {}
     checked++
-    if (handleMetadata.ignore) continue;
-    if ((handleMetadata.updatedAt && +Date.now() - handleMetadata.updatedAt < TWELVE_HOURS * 2)) {
-      sdk.log(`Skipping ${handle} because it was updated less than 24 hours ago`)
+    if (connectionRefusedCount > 5 || handleMetadata.ignore) continue;
+    if ((handleMetadata.updatedAt && +Date.now() - handleMetadata.updatedAt < TWELVE_HOURS)) {
+      sdk.log(`[Twitter] Skipping ${handle} because it was updated less than ${(TWELVE_HOURS/ (36 *1e5)).toFixed(2)} hours ago`)
       continue
     }
 
@@ -40,7 +42,7 @@ async function main() {
         const mergedTweets = mergeTweets(oldData.tweets, data.tweets)
         data = { ...oldData, ...data, tweets: mergedTweets }
       } else {
-        sdk.log(`Skipping ${handle} because it was updated less than 12 hours ago[data]`)
+        sdk.log(`[Twitter] Skipping ${handle} because it was updated less than 12 hours ago[data]`)
         ++i;
         continue;
       }
@@ -48,7 +50,11 @@ async function main() {
       await saveTwitterData(handle, data)
 
     } catch (e) {
-      sdk.log(`Error fetching ${handle}`, e.toString())
+      sdk.log(`[Twitter] Error fetching ${handle}`, e.toString())
+      if (e.toString().includes('ECONNREFUSED')) {
+        connectionRefusedCount++
+        continue;
+      }
     }
 
     twitterOverview[handle] = {
@@ -67,7 +73,7 @@ async function main() {
       }
     }
     const progress = Number(100 * checked / handles.length).toPrecision(5)
-    sdk.log(`${++i} Updated ${handle} `, twitterOverview[handle]?.ignore, data?.tweets?.length, `(${progress}%) (${checked}/${handles.length})`)
+    sdk.log(`[Twitter] ${++i} Updated ${handle} `, twitterOverview[handle]?.ignore, data?.tweets?.length, `(${progress}%) (${checked}/${handles.length})`)
     // console.log(twitterOverview, data)
 
     // process.exit(0)

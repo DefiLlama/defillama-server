@@ -1902,5 +1902,9 @@ export default {
                 "enabled": true,
             }
         }
+    },
+    "hydradx": {
+        "enabled": true,
+        "id": "3439"
     }
 } as AdaptorsConfig

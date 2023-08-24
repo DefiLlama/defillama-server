@@ -1188,5 +1188,9 @@ export default {
     "zksync-era": {
         "enabled": true,
         "id": "324"
+    },
+    "meridian-trade": {
+        "enabled": true,
+        "id": "3386"
     }
 } as AdaptorsConfig

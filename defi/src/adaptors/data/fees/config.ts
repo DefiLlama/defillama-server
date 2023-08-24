@@ -127,10 +127,12 @@ export default {
             v1: {
                 "id": "2630",
                 enabled: true,
+                disabled: true,
                 displayName: "Opensea V1"
             },
             v2: {
                 "id": "2631",
+                disabled: true,
                 enabled: true,
                 displayName: "Opensea V2"
             },

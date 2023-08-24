@@ -8652,7 +8652,7 @@ const data2: Protocol[] = [
     id: "1784",
     name: "Tenderize",
     address: null,
-    symbol: "-",
+    symbol: "WAGYU",
     url: "https://tenderize.me",
     description: "Connecting Web3 with DeFi through Liquid Staking.",
     chain: "Ethereum",

@@ -15,7 +15,7 @@ async function main() {
 
   const staleCoins: StaleCoins = {};
   // const actions = [protocols, entities, treasuries].flat()
-  const actions = [entities, treasuries, ].flat()
+  const actions = [entities, ].flat()
   shuffleArray(actions) // randomize order of execution
   await cacheCurrentBlocks()
   let i = 0

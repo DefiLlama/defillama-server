@@ -5,7 +5,7 @@
       "run_on_load": true,
       "bash_script": [
         "[ ! -d 'repo' ] && git clone  --depth 1 https://github.com/DefiLlama/defillama-server repo",
-        "cd /app/repo/defi",
+        "cd repo/defi",
         "git stash",
         "git pull",
         "git submodule update --init --recursive --remote --merge",

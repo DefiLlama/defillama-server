@@ -24,7 +24,7 @@ async function hotloadTasks(isFirstRun) {
   await scheduleNewTasks()
 
   function readTasks() {
-    const rootFolder = isFirstRun === true ? __dirname : 'app/repo/task-runner/src' // first argument is timestamp of the run if this is started by cron
+    const rootFolder = isFirstRun === true ? __dirname : 'repo/task-runner/src' // first argument is timestamp of the run if this is started by cron
     const file = path.join(rootFolder, process.env.TASK_FILE)
     return JSON.parse(fs.readFileSync(file))
   }

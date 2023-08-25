@@ -124,4 +124,5 @@ export default {
   phux: require("./markets/phux"),
   wombat: require("./markets/wombat"),
   backed: require("./rwa/backed"),
+  vela: require("./yield/vela"),
 };

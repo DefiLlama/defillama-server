@@ -39,6 +39,7 @@ export default {
   vesper: require("./yield/vesper"),
   yieldProtocol: require("./yield/yield-protocol"),
   levelFinance: require("./yield/level-finance"),
+  quickperps: require("./yield/quickperps"),
   timeless: require("./yield/timeless"),
   beefy: require("./yield/beefy"),
   spares: require("./markets/curve"),

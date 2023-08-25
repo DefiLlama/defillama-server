@@ -24,7 +24,7 @@ async function main() {
   sdk.log('tvl adapter count:', actions.length)
 
   await PromisePool
-    .withConcurrency(25)
+    .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 15))
     .for(actions)
     .process(async (protocol: any) => {
       const startTime = +Date.now()

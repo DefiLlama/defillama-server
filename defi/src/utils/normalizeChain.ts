@@ -12,7 +12,7 @@ export const normalizedChainReplacements = {
   "eos evm": "eos_evm",
   "oasys": "oas",
   "map relay chain": "map",
-  "pulse": "pulsechain"
+  "pulsechain": "pulse"
 } as {
   [chain: string]: string
 }

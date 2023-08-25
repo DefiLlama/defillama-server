@@ -51,7 +51,7 @@ async function main() {
 
     } catch (e) {
       sdk.log(`[Twitter] Error fetching ${handle}`, e.toString())
-      if (e.toString().includes('ECONNREFUSED')) {
+      if (e.toString().includes('ECONNREFUSED') || e.toString().includes('ETIMEDOUT')) {
         connectionRefusedCount++
         continue;
       }

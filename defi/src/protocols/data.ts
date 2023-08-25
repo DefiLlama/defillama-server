@@ -2306,6 +2306,7 @@ const data: Protocol[] = [
     chains: ["Ethereum"],
     module: "onx.js",
     twitter: "OnXFinance",
+    github: ["onx-finance"],
     audit_links: ["https://onx-finance.gitbook.io/docs/audits-and-contracts"],
     governanceID: ["snapshot:onx-finance.eth"]
   },

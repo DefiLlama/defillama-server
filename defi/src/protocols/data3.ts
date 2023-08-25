@@ -16425,6 +16425,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1692972867
   },
+  {
+    id: "3441",
+    name: "Autotronic",
+    address: null,
+    symbol: "-",
+    url: "https://autotronic.finance",
+    description: "Autotronic is a DEX, Yield Farm and Token on Base",
+    chain: "Base",
+    logo: `${baseIconsUrl}/autotronic.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    oracles: [],
+    module: "autotronic/index.js",
+    twitter: "autotronicbase",
+    forkedFrom: ["Uniswap V2"],
+    listedAt: 1693000319,
+    github: ["AutoTronicProject"]
+  },
 ]
 
 export default data3

@@ -16400,7 +16400,27 @@ const data3: Protocol[] = [
     github: ['galacticcouncil'],
     listedAt: 1692805979
   },
-
+  {
+    id: "3440",
+    name: "KnightSwap Lending",
+    address: "bsc:0xD23811058Eb6e7967D9a00dc3886E75610c4AbBa",
+    symbol: "KNIGHT",
+    url: "https://knightswap.financial",
+    description: "Trade, Earn, & Raid To Stack Your Riches While Securely Storing Them Within Our Castle Vaults",
+    chain: "Binance",
+    logo: `${baseIconsUrl}/knightswap-lending.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Binance"],
+    oracles: [],
+    module: "knightswap-lending/index.js",
+    twitter: "KnightEcosystem",
+    forkedFrom: [],
+    listedAt: 1692972867
+  },
 ]
 
 export default data3

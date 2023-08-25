@@ -11,7 +11,8 @@ export const normalizedChainReplacements = {
   "polygon zkevm": "polygon_zkevm",
   "eos evm": "eos_evm",
   "oasys": "oas",
-  "map relay chain": "map"
+  "map relay chain": "map",
+  "pulse": "pulsechain"
 } as {
   [chain: string]: string
 }
@@ -1674,7 +1675,7 @@ export const chainCoingeckoIds = {
     cmcId: "23196",
     categories: ["EVM"]
   },
-  "Pulse": {
+  "PulseChain": {
     geckoId: "pulsechain",
     symbol: "PLS",
     cmcId: null,
@@ -1862,6 +1863,7 @@ chainCoingeckoIds["Elrond"] = chainCoingeckoIds["MultiversX"]
 chainCoingeckoIds["RSK"] = chainCoingeckoIds["Rootstock"]
 chainCoingeckoIds["OKExChain"] = chainCoingeckoIds["OKTChain"]
 chainCoingeckoIds["Map"] = chainCoingeckoIds["MAP Relay Chain"]
+chainCoingeckoIds["Pulse"] = chainCoingeckoIds["PulseChain"]
 
 
 export const extraSections = ["staking", "pool2", "offers", "borrowed", "treasury", "vesting"]
@@ -1902,6 +1904,8 @@ export function transformNewChainName(chain: string) {
       return "EOS EVM"
     case "Map":
       return "MAP Relay Chain"
+    case "Pulse":
+      return "PulseChain"
     default:
       return chain
   }
@@ -1937,6 +1941,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return useNewChainNames ? "MultiversX" : "Elrond"
     case "rsk":
       return useNewChainNames ? "Rootstock" : "RSK"
+    case "pulse":
+      return useNewChainNames ? "PulseChain" : "Pulse"
     case "avax":
       return "Avalanche"
     case "xdaiarb":
@@ -2249,8 +2255,6 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Sui"
     case "grove":
       return "Grove"
-    case "pulse":
-      return "Pulse"
     case "xpla":
       return "XPLA"
     case "neutron":

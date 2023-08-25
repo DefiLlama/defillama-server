@@ -30,6 +30,7 @@ export default {
   tonpound: require("./moneyMarkets/compound"),
   lodestar: require("./moneyMarkets/compound"),
   marev2: require("./moneyMarkets/compound"),
+  tenderfi: require("./moneyMarkets/compound"),
   // euler: require("./moneyMarkets/euler"),
   yearn: require("./yield/yearn"),
   convex: require("./yield/convex"),

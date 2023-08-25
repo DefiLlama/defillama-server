@@ -11128,8 +11128,8 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
   {
     id: "622",
     name: "Clipper",
-    address: null,
-    symbol: "-",
+    address: "0xd8f1460044925d2d5c723c7054cd9247027415b7",
+    symbol: "SAIL",
     url: "https://clipper.exchange",
     description:
       "Clipper is the decentralized exchange (DEX) built to give the self-made crypto trader the best possible prices on small trades (< $10k)",
@@ -11137,7 +11137,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     logo: `${baseIconsUrl}/clipper.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: null,
+    gecko_id: "sail-2",
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],

@@ -157,5 +157,12 @@
       "symbol": "xARCH",
       "to": "coingecko#archway"
     }
+  },
+  "migaloo": {
+    "uwhale": {
+      "decimals": "6",
+      "symbol": "WHALE",
+      "to": "coingecko#white-whale"
+    }
   }
 }

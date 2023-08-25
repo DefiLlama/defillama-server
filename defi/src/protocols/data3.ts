@@ -16423,6 +16423,7 @@ const data3: Protocol[] = [
     module: "knightswap-lending/index.js",
     twitter: "KnightEcosystem",
     forkedFrom: [],
+    parentProtocol: "parent#knightswap",
     listedAt: 1692972867
   },
   {

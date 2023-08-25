@@ -2547,6 +2547,19 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "spacefi_io",
     github: ["SpaceFinance"]
   },
+  {
+    id: "parent#knightswap",
+    name: "KnightSwap",
+    url: "https://knightswap.financial",
+    description:
+      "Trade, Earn, & Raid To Stack Your Riches While Securely Storing Them Within Our Castle Vaults.",
+    logo: `${baseIconsUrl}/knightswap-finance.png`,
+    gecko_id: "knightswap",
+    cmcId: "15841",
+    chains: [],
+    twitter: "KnightEcosystem",
+    github: ["Knightswap"]
+  },
 ];
 
 export default parentProtocols;

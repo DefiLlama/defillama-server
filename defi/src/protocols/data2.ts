@@ -548,7 +548,7 @@ const data2: Protocol[] = [
     symbol: "UXP",
     url: "https://uxd.fi/",
     description:
-      "UXD Protocol is an algorithmic stablecoin that is fully backed by a delta-neutral position using derivatives.",
+      "Fully collateralized decentralized stablecoin backed by the Asset Liability Management Module",
     chain: "Solana",
     logo: `${baseIconsUrl}/uxd.png`,
     audits: "2",

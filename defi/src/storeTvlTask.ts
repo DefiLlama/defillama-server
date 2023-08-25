@@ -9,7 +9,7 @@ import { PromisePool } from '@supercharge/promise-pool'
 import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import * as sdk from '@defillama/sdk'
 
-const maxRetries = 2;
+const maxRetries = 3;
 
 async function main() {
 

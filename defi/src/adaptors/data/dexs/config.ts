@@ -1906,5 +1906,9 @@ export default {
     "hydradx": {
         "enabled": true,
         "id": "3439"
+    },
+    "baseswap": {
+        "enabled": true,
+        "id": "3333"
     }
 } as AdaptorsConfig

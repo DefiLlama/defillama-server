@@ -1194,5 +1194,9 @@ export default {
     "meridian-trade": {
         "enabled": true,
         "id": "3386"
+    },
+    "baseswap": {
+        "enabled": true,
+        "id": "3333"
     }
 } as AdaptorsConfig

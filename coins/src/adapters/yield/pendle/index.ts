@@ -16,6 +16,11 @@ const config: { [chain: string]: any } = {
     fromBlock: 29484286,
     toAsset: "0x2700ADB035F82a11899ce1D3f1BF8451c296eABb",
   },
+  optimism: {
+    factory: "0x17F100fB4bE2707675c6439468d38249DD993d58",
+    fromBlock: 108061449,
+    toAsset: "0x704478Dd72FD7F9B83d1F1e0fc18C14B54F034d0",
+  },
 };
 
 export function pendle(timestamp: number = 0) {

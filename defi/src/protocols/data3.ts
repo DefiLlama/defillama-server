@@ -16055,7 +16055,7 @@ const data3: Protocol[] = [
       "Unleash the power of your Base with Raccoon: Your gateway to revolutionary yield aggregation built on Base.",
     chain: "Base",
     logo: `${baseIconsUrl}/raccoon-finance.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -16065,6 +16065,7 @@ const data3: Protocol[] = [
     twitter: "RaccoonYields",
     forkedFrom: ["Yearn Finance"],
     oracles: [],
+    audit_links: ["https://github.com/solidproof/projects/blob/main/2023/Raccoon%20Finance/SmartContract_Audit_Solidproof_RaccoonFinance.pdf"],
     listedAt: 1692626899
   },
   {

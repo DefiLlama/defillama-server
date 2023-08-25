@@ -1198,5 +1198,9 @@ export default {
     "baseswap": {
         "enabled": true,
         "id": "3333"
+    },
+    "yfx-v3": {
+        "enabled": true,
+        "id": "3429"
     }
 } as AdaptorsConfig

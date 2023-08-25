@@ -1942,7 +1942,7 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
     case "rsk":
       return useNewChainNames ? "Rootstock" : "RSK"
     case "pulse":
-      return useNewChainNames ? "PulseChain" : "Pulse"
+      return useNewChainNames ? "Pulse" : "PulseChain"
     case "avax":
       return "Avalanche"
     case "xdaiarb":

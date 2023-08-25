@@ -16065,7 +16065,10 @@ const data3: Protocol[] = [
     twitter: "RaccoonYields",
     forkedFrom: ["Yearn Finance"],
     oracles: [],
-    audit_links: ["https://github.com/solidproof/projects/blob/main/2023/Raccoon%20Finance/SmartContract_Audit_Solidproof_RaccoonFinance.pdf"],
+    audit_links: [
+      "https://github.com/solidproof/projects/blob/main/2023/Raccoon%20Finance/SmartContract_Audit_Solidproof_RaccoonFinance.pdf",
+      "https://techright.io/audit/raccoon/"
+    ],
     listedAt: 1692626899
   },
   {

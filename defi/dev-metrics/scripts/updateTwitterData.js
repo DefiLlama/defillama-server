@@ -23,7 +23,7 @@ async function main() {
     checked++
     if (connectionRefusedCount > 5 || handleMetadata.ignore) continue;
     if ((handleMetadata.updatedAt && +Date.now() - handleMetadata.updatedAt < TWELVE_HOURS)) {
-      sdk.log(`[Twitter] Skipping ${handle} because it was updated less than ${(TWELVE_HOURS/ (36 *1e5)).toFixed(2)} hours ago`)
+      // sdk.log(`[Twitter] Skipping ${handle} because it was updated less than ${(TWELVE_HOURS/ (36 *1e5)).toFixed(2)} hours ago`)
       continue
     }
 

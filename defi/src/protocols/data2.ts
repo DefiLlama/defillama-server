@@ -5192,6 +5192,7 @@ const data2: Protocol[] = [
     module: "kagla/index.js",
     twitter: "kagla_fi",
     listedAt: 1649072470,
+    github: ["kagla-finance"]
   },
   {
     id: "1609",
@@ -5214,6 +5215,7 @@ const data2: Protocol[] = [
     twitter: "ProtonSwap",
     audit_links: ["https://drive.google.com/file/d/1sSr8DKzdHO4aV6Xeh3JaNuAkvH7Yxuqr/view?usp=sharing"],
     listedAt: 1649097710,
+    github: ["ProtonProtocol"]
   },
   {
     id: "1610",
@@ -5279,7 +5281,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "concave/index.js",
     twitter: "ConcaveFi",
-    listedAt: 1649155527
+    listedAt: 1649155527,
+    github: ["ConcaveFi"]
   },
   {
     id: "1613",
@@ -5301,7 +5304,8 @@ const data2: Protocol[] = [
     module: "nested/index.js",
     twitter: "NestedFi",
     audit_links: ["https://github.com/NestedFinance/nested-core-lego/tree/master/audits"],
-    listedAt: 1649155995
+    listedAt: 1649155995,
+    github: ["NestedFi"]
   },
   {
     id: "1614",
@@ -5329,7 +5333,8 @@ const data2: Protocol[] = [
       "https://assets.website-files.com/622a09bc809cd190f58b7b15/627cd4450f5eb2df769b4ac1_PeckShield-Audit-Report-0VIX-v1.0.pdf",
       "https://assets.website-files.com/622a09bc809cd190f58b7b15/627a5d6eea14146296b3261b_0VIX_Audit_Report_by_WatchPug.pdf"
     ],
-    listedAt: 1649156430
+    listedAt: 1649156430,
+    github: ["0Vix"]
   },
   {
     id: "1615",
@@ -5374,7 +5379,8 @@ const data2: Protocol[] = [
     module: "radioshack/index.js",
     twitter: "RadioShack",
     audit_links: ["https://www.certik.com/projects/radioshack"],
-    listedAt: 1649156839
+    listedAt: 1649156839,
+    github: ["radioshackswap"]
   },
   {
     id: "1617",
@@ -5464,7 +5470,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "amaterasu.js",
     twitter: "AmaterasuFi",
-    listedAt: 1649284344
+    listedAt: 1649284344,
+    github: ["Amaterasu-Finance"]
   },
   {
     id: "1621",
@@ -5529,7 +5536,8 @@ const data2: Protocol[] = [
     module: "troydefi/index.js",
     twitter: "TroyDefi",
     audit_links: ["https://rugdoc.io/project/troy-defi"],
-    listedAt: 1649319546
+    listedAt: 1649319546,
+    deadUrl: true
   },
   {
     id: "1624",
@@ -5551,7 +5559,8 @@ const data2: Protocol[] = [
     module: "ambire-wallet/index.js",
     twitter: "AmbireWallet",
     listedAt: 1649359983,
-    governanceID: ["snapshot:ambire.eth"]
+    governanceID: ["snapshot:ambire.eth"],
+    github: ["AmbireTech"]
   },
   {
     id: "1625",
@@ -5643,7 +5652,8 @@ const data2: Protocol[] = [
       "https://www.certik.com/projects/singularitydao"
     ],
     listedAt: 1649526364,
-    governanceID: ["snapshot:sdao.eth"]
+    governanceID: ["snapshot:sdao.eth"],
+    github: ["Singularity-DAO"]
   },
   {
     id: "1629",
@@ -5689,7 +5699,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Beefy"],
     module: "yieldhubfinance/index.js",
     twitter: "YieldHubFinance",
-    listedAt: 1649526698
+    listedAt: 1649526698,
+    github: ["YieldHubFinance"]
   },
   {
     id: "1631",
@@ -5712,7 +5723,8 @@ const data2: Protocol[] = [
     twitter: "OnyxProtocol",
     audit_links: ["https://github.com/chain/chain-token/blob/main/XCN-token-Certik-Audit-2022-03-06.pdf"],
     listedAt: 1649671541,
-    governanceID: ["snapshot:onyx.eth"]
+    governanceID: ["snapshot:onyx.eth"],
+    github: ["Onyx-Protocol"]
   },
   {
     id: "1632",
@@ -5755,7 +5767,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "bencu/index.js",
     twitter: "BencuFi",
-    listedAt: 1649674184
+    listedAt: 1649674184,
+    github: ["bencufi"]
   },
   {
     id: "1634",
@@ -5780,7 +5793,8 @@ const data2: Protocol[] = [
       "https://solace.fi/static/media/Solace-Quantstamp-Report.44617837.pdf",
       "https://hacken.io/audits/#solace"
     ],
-    listedAt: 1649684026
+    listedAt: 1649684026,
+    github: ["solace-fi"]
   },
   {
     id: "1635",
@@ -5805,7 +5819,8 @@ const data2: Protocol[] = [
       "https://www.certik.com/projects/clearpool",
       "https://3929482601-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhkiSI8bK3ThlypJ3jdEC%2Fuploads%2FOFonx1OQS6ni5lUsyiPx%2FClearpool%20Security%20Analysis%20by%20Pessimistic.pdf?alt=media&token=d584e7c3-993c-4ce4-8adf-6a2c77727ec2"
     ],
-    listedAt: 1649674184
+    listedAt: 1649674184,
+    github: ["clearpool-finance"]
   },
   {
     id: "1636",
@@ -5828,7 +5843,8 @@ const data2: Protocol[] = [
     twitter: "Bolide_fi",
     audit_links: ["https://docs.bolide.fi/protocol/audits"],
     listedAt: 1649674184,
-    governanceID: ["snapshot:blid.eth"]
+    governanceID: ["snapshot:blid.eth"],
+    github: ["bolide-fi"]
   },
   {
     id: "1637",
@@ -5849,7 +5865,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "bluebit/index.js",
     twitter: "BlueBitFinance",
-    listedAt: 1649686454
+    listedAt: 1649686454,
+    github: ["BluebitFinance"]
   },
   {
     id: "1638",
@@ -5893,7 +5910,8 @@ const data2: Protocol[] = [
     module: "hodltree/index.js",
     twitter: "HodlTree",
     audit_links: ["https://github.com/HodlTreeProtocol/stableFlashloan/blob/master/audits/Certik.pdf"],
-    listedAt: 1649686454
+    listedAt: 1649686454,
+    github: ["HodlTreeProtocol"]
   },
   {
     id: "1640",
@@ -5937,7 +5955,8 @@ const data2: Protocol[] = [
     treasury: "push.js",
     twitter: "epnsproject",
     governanceID: ["snapshot:pushdao.eth"],
-    listedAt: 1649713407
+    listedAt: 1649713407,
+    github: ["ethereum-push-notification-service"]
   },
   {
     id: "1642",
@@ -6027,7 +6046,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "luchadores/index.js",
     twitter: "LuchadoresNFT",
-    listedAt: 1649793203
+    listedAt: 1649793203,
+    github: ["luchadores-community"]
   },
   {
     id: "1646",
@@ -6134,7 +6154,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sicx/index.js",
     twitter: "helloiconworld",
-    listedAt: 1650020227
+    listedAt: 1650020227,
+    github: ["icon-project"]
   },
   {
     id: "1651",
@@ -6156,6 +6177,7 @@ const data2: Protocol[] = [
     module: "oaswap.js",
     twitter: "oaswap",
     listedAt: 1650021906,
+    github: ["oaswap"]
   },
   {
     id: "1652",
@@ -6242,6 +6264,7 @@ const data2: Protocol[] = [
     module: "versa/index.js",
     twitter: "versa_finance",
     listedAt: 1650038462,
+    deadUrl: true
   },
   {
     id: "1656",
@@ -6328,7 +6351,8 @@ const data2: Protocol[] = [
     module: "sirius-finance/index.js",
     twitter: "Sirius_Finance",
     audit_links: ["https://github.com/SiriusFinance/siriusfinance-contract/blob/main/audit/PeckShield-Audit-Report-SiriusFinance-v1.0.pdf"],
-    listedAt: 1650333957
+    listedAt: 1650333957,
+    github: ["SiriusFinance"]
   },
   {
     id: "1660",
@@ -6350,7 +6374,8 @@ const data2: Protocol[] = [
     module: "swappi/index.js",
     twitter: "SwappiDEX",
     audit_links: ["https://drive.google.com/file/d/1zj08NuUuMAO-bikOBvPOsOnPcTC5rdHx/view?usp=sharing"],
-    listedAt: 1650350091
+    listedAt: 1650350091,
+    github: ["swappidex"]
   },
   {
     id: "1661",

@@ -19672,7 +19672,7 @@ const data2: Protocol[] = [
     symbol: "-",
     url: "https://orderly.network",
     description:
-      "Orderly Network is a permissionless and modular protocol that brings high throughput, low latency, low fees, tight spreads and composability for DeFi builders.",
+      "Orderly is an omnichain CLOB infrastructure.It’s the ultimate trading lego for seamless integration by any builder on any blockchain. Give your app the transparency and composability of DEXs, with the speed and performance of CEXs.",
     chain: "Near",
     logo: `${baseIconsUrl}/orderly-network.jpg`,
     audits: "2",

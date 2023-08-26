@@ -22,7 +22,7 @@ async function main() {
   let timeTaken = 0
   const startTimeAll = Date.now() / 1e3
   sdk.log('tvl adapter count:', actions.length)
-  const alwaysRun = (adapterModule: any) => true
+  const alwaysRun = (_adapterModule: any) => true
   const nonTronModules = (adapterModule: any) => !adapterModule.tron
   const tronModules = (adapterModule: any) => adapterModule.tron
 

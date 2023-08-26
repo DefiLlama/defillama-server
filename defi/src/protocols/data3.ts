@@ -16448,6 +16448,28 @@ const data3: Protocol[] = [
     listedAt: 1693000319,
     github: ["AutoTronicProject"]
   },
+  {
+    id: "3442",
+    name: "Bad Idea AI",
+    address: "0x32b86b99441480a7e5bd3a26c124ec2373e3f015",
+    symbol: "BAD",
+    url: "https://badidea.ai",
+    description: "The first true AI meme token, combining Blockchain, Ai & DAO's. Power to teh people & not our AI overlords.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/bad-idea-ai.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "bad-idea-ai",
+    cmcId: "25479",
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    module: "dummy.js",
+    treasury: "badidea.js",
+    twitter: "badideaai",
+    forkedFrom: [],
+    listedAt: 1693049145
+  },
 ]
 
 export default data3

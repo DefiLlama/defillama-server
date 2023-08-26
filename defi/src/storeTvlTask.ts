@@ -8,6 +8,7 @@ import { storeStaleCoins, StaleCoins } from "./storeTvlInterval/staleCoins";
 import { PromisePool } from '@supercharge/promise-pool'
 import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import * as sdk from '@defillama/sdk'
+import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 
 const maxRetries = 3;
 
@@ -31,7 +32,6 @@ async function main() {
     try {
       const adapterModule = importAdapter(protocol)
       if (!filter(adapterModule)) {
-        i++
         return;
       }
       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
@@ -55,13 +55,17 @@ async function main() {
     .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 15))
     .for(actions)
     .process(runProcess(nonTronModules))
+    
+  await normalAdapterRuns
+  clearPriceCache()
 
   const tronAdapterRuns = PromisePool
     .withConcurrency(2)
     .for(actions)
     .process(runProcess(tronModules))
+  await tronAdapterRuns
 
-  await Promise.all([normalAdapterRuns, tronAdapterRuns,])
+  // await Promise.all([normalAdapterRuns, tronAdapterRuns,])
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s`)
 

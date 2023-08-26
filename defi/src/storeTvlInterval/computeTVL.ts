@@ -107,6 +107,15 @@ const priceCache: { [PK: string]: any } = {
   }
 }
 
+export function clearPriceCache() {
+  for (const key of Object.keys(priceCache)) {
+    if (key !== "coingecko:tether")
+      delete priceCache[key]
+  }
+}
+
+// setInterval(clearPriceCache, 1000 * 60 * 15)
+
 async function getTokenData(readKeys: string[], timestamp: string | number): Promise<any> {
   if (!readKeys.length) return []
 

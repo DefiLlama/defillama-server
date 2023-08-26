@@ -6469,7 +6469,8 @@ const data2: Protocol[] = [
     module: "llamapay/index.js",
     twitter: "llamapay_io",
     audit_links: ["https://github.com/LlamaPay/llamapay/blob/master/audits/PeckShield-Audit-Report-LlamaPay-v1.0.pdf"],
-    listedAt: 1650367042
+    listedAt: 1650367042,
+    github: ["LlamaPay"]
   },
   {
     id: "1665",
@@ -6491,7 +6492,8 @@ const data2: Protocol[] = [
     module: "blueshift/index.js",
     twitter: "blueshiftfi",
     audit_links: ["https://www.certik.com/projects/blueshift"],
-    listedAt: 1650384287
+    listedAt: 1650384287,
+    github: ["blueshift-fi"]
   },
   {
     id: "1666",
@@ -6513,7 +6515,8 @@ const data2: Protocol[] = [
     module: "nord-finance/index.js",
     twitter: "Nord_Finance",
     audit_links: ["https://docs.nordfinance.io/security-audits/security-audits"],
-    listedAt: 1650437930
+    listedAt: 1650437930,
+    github: ["nordfinance"]
   },
   {
     id: "1667",
@@ -6579,7 +6582,8 @@ const data2: Protocol[] = [
     module: "tokensfarm/index.js",
     twitter: "TokensFarm",
     audit_links: ["https://www.certik.com/projects/tokensfarm"],
-    listedAt: 1650460802
+    listedAt: 1650460802,
+    github: ["Tokensfarm"]
   },
   {
     id: "1670",
@@ -6708,6 +6712,7 @@ const data2: Protocol[] = [
     module: "cennz-bridge.js",
     twitter: "CENNZnet",
     listedAt: 1650586534,
+    github: ["cennznet"]
   },
   {
     id: "1676",
@@ -6793,7 +6798,8 @@ const data2: Protocol[] = [
     module: "dotdot/index.js",
     audit_links: ["https://github.com/dotdot-ellipsis/dotdot-contracts/blob/main/PeckShield-Audit-Report-DotDot.pdf"],
     twitter: "DotDotDotFi",
-    listedAt: 1650804679
+    listedAt: 1650804679,
+    github: ["dotdot-ellipsis"]
   },
   {
     id: "1680",
@@ -6858,7 +6864,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "nomad/index.js",
     twitter: "nomadxyz_",
-    listedAt: 1650917040
+    listedAt: 1650917040,
+    github: ["nomad-xyz"]
   },
   {
     id: "1683",
@@ -6901,6 +6908,7 @@ const data2: Protocol[] = [
     module: "dual/index.js",
     twitter: "DualFinance",
     listedAt: 1650933184,
+    github: ["Dual-Finance"]
   },
   {
     id: "1685",
@@ -6943,7 +6951,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Olympus DAO"],
     module: "ignite-finance/index.js",
     twitter: "Ignite_Finance_",
-    listedAt: 1650967571
+    listedAt: 1650967571,
+    github: ["ignite"]
   },
   {
     id: "1687",
@@ -7009,7 +7018,8 @@ const data2: Protocol[] = [
     module: "gard/index.js",
     twitter: "algogard",
     audit_links: ["https://algogard.com/audits/GARD-March-2022-Vantage-Point-Audit.pdf", "https://algogard.com/audits/GARD-March-2022-Coinspect-Audit.pdf"],
-    listedAt: 1650988125
+    listedAt: 1650988125,
+    github: ["Tapera-Finance"]
   },
   {
     id: "1690",
@@ -7080,7 +7090,8 @@ const data2: Protocol[] = [
     module: "sienna/index.js",
     twitter: "sienna_network",
     audit_links: ["https://sienna.network/audits"],
-    listedAt: 1651009772
+    listedAt: 1651009772,
+    github: ["SiennaNetwork"]
   },
   {
     id: "1693",
@@ -7263,7 +7274,8 @@ const data2: Protocol[] = [
       "https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Wombat-v1.0.pdf",
       "https://www.wombat.exchange/zokyo_wombat_audit_report.pdf",
     ],
-    listedAt: 1651148250
+    listedAt: 1651148250,
+    github: ["wombat-exchange"]
   },
   {
     id: "1701",
@@ -7284,7 +7296,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "yup/index.js",
     twitter: "yup_io",
-    listedAt: 1651148516
+    listedAt: 1651148516,
+    github: ["Yup-io"]
   },
   {
     id: "1702",
@@ -7390,7 +7403,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "vortex/index.js",
     twitter: "vortexAMM",
-    listedAt: 1651168503
+    listedAt: 1651168503,
+    github: ["Smartlinkhub"]
   },
   {
     id: "1707",
@@ -7414,6 +7428,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/AladdinDAO/aladdin-v3-contracts/blob/main/audit-reports/SECBIT_CLever_Report_v1.1.pdf"],
     listedAt: 1651168503,
     governanceID: ["snapshot:clevercvx.eth", "snapshot:veclev.eth"],
+    github: ["AladdinDAO"]
   },
   {
     id: "1708",
@@ -7436,7 +7451,8 @@ const data2: Protocol[] = [
     twitter: "AstridDAO",
     audit_links: ["https://www.certik.com/projects/astriddao"],
     listedAt: 1651225407,
-    stablecoins: ["bai-stablecoin"]
+    stablecoins: ["bai-stablecoin"],
+    github: ["AstridDAO"]
   },
   {
     id: "1709",
@@ -7542,7 +7558,8 @@ const data2: Protocol[] = [
     module: "duet/index.js",
     twitter: "duetprotocol",
     audit_links: ["https://linktr.ee/duetaudit"],
-    listedAt: 1651486174
+    listedAt: 1651486174,
+    github: ["duet-protocol"]
   },
   {
     id: "1714",
@@ -7564,7 +7581,8 @@ const data2: Protocol[] = [
     module: "0x_nodes/index.js",
     twitter: "0x_nodes",
     audit_links: ["https://github.com/0xNODES/_audits/tree/main/Halborn"],
-    listedAt: 1651514582
+    listedAt: 1651514582,
+    github: ["0xNODES"]
   },
   {
     id: "1715",
@@ -8013,7 +8031,8 @@ const data2: Protocol[] = [
     module: "bchpad/index.js",
     twitter: "bchpad",
     audit_links: ["https://www.notion.so/7614cd1d122245d198058e3ed43c1025?v=6a67bf0ca90448528700df7d7947a0d1"],
-    listedAt: 1651792630
+    listedAt: 1651792630,
+    github: ["Bloktopia"]
   },
   {
     id: "1736",
@@ -8034,7 +8053,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Convex Finance"],
     module: "muuu/index.js",
     twitter: "muuu_fi",
-    listedAt: 1651792802
+    listedAt: 1651792802,
+    github: ["muuu-finance"]
   },
   {
     id: "1737",
@@ -8124,7 +8144,8 @@ const data2: Protocol[] = [
     module: "linear.js",
     twitter: "LinearProtocol",
     audit_links: ["https://github.com/linear-protocol/audits/blob/main/BlockSec%20-%20Security%20Audit%20Report%20for%20LiNEAR%20-%20202204.pdf"],
-    listedAt: 1651826746
+    listedAt: 1651826746,
+    github: ["linear-protocol"]
   },
   {
     id: "1741",
@@ -8472,7 +8493,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "dystopia/index.js",
     twitter: "dystopiaswap",
-    listedAt: 1652295848
+    listedAt: 1652295848,
+    github: ["dystopia-exchange"]
   },
   // {
   //   id: "1757",
@@ -8824,7 +8846,8 @@ const data2: Protocol[] = [
     module: "apollox/index.js",
     twitter: "ApolloX_com",
     listedAt: 1652988932,
-    governanceID: ["snapshot:apolloxdao.eth"]
+    governanceID: ["snapshot:apolloxdao.eth"],
+    github: ["apollox-finance"]
   },
   {
     id: "1773",
@@ -8981,7 +9004,8 @@ const data2: Protocol[] = [
     module: "cake-monster/index.js",
     twitter: "thecakemnstr",
     audit_links: ["https://solidity.finance/audits/CakeMonster"],
-    listedAt: 1653409255
+    listedAt: 1653409255,
+    github: ["cake-monster"]
   },
   {
     id: "1780",
@@ -9178,7 +9202,8 @@ const data2: Protocol[] = [
     module: "invariant/index.js",
     twitter: "invariant_labs",
     audit_links: ["https://invariant.app/audit.pdf"],
-    listedAt: 1653656978
+    listedAt: 1653656978,
+    github: ["invariant-labs"]
   },
   {
     id: "1789",
@@ -9223,7 +9248,8 @@ const data2: Protocol[] = [
     module: "kokonut-swap/index.js",
     twitter: null,
     audit_links: ["https://drive.google.com/file/d/1I0HnU8Rs88HHqBC6Y3aUcEKTPZfVTAZD/view"],
-    listedAt: 1653727694
+    listedAt: 1653727694,
+    github: ["kokoa-finance"]
   },
   {
     id: "1791",
@@ -9248,7 +9274,8 @@ const data2: Protocol[] = [
     module: "popcorn/index.js",
     twitter: "Popcorn_DAO",
     governanceID: ["snapshot:popcorn-snapshot.eth"],
-    listedAt: 1653901963
+    listedAt: 1653901963,
+    github: ["popcorndao"]
   },
   {
     id: "1792",
@@ -9356,7 +9383,8 @@ const data2: Protocol[] = [
     module: "polynetwork/index.js",
     twitter: "PolyNetwork2",
     audit_links: ["https://github.com/polynetwork/audit-report"],
-    listedAt: 1654083965
+    listedAt: 1654083965,
+    github: ["polynetwork"]
   },
   {
     id: "1797",
@@ -9531,7 +9559,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "zeta/index.js",
     twitter: "ZetaMarkets",
-    listedAt: 1654452112
+    listedAt: 1654452112,
+    github: ["zetamarkets"]
   },
   {
     id: "1805",
@@ -9552,7 +9581,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "mole/index.js",
     twitter: "moledefi",
-    listedAt: 1654491423
+    listedAt: 1654491423,
+    github: ["Mole-Fi"]
   },
   {
     id: "1806",
@@ -9574,7 +9604,8 @@ const data2: Protocol[] = [
     module: "phuture/index.js",
     twitter: "phuture_finance",
     audit_links: ["https://www.certik.com/projects/phuture", "https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-Phuture-v1.0.pdf", "https://code4rena.com/reports/2022-04-phuture/"],
-    listedAt: 1654508924
+    listedAt: 1654508924,
+    github: ["Phuturedao"]
   },
   {
     id: "1807",
@@ -9880,7 +9911,8 @@ const data2: Protocol[] = [
     module: "unipilot/index.js",
     twitter: "unipilot_io",
     audit_links: ["https://github.com/Unipilot/unipilot-audits"],
-    listedAt: 1655152786
+    listedAt: 1655152786,
+    github: ["Unipilot"]
   },
   {
     id: "1821",
@@ -9924,7 +9956,8 @@ const data2: Protocol[] = [
     module: "MyTrade/index.js",
     twitter: "mytradeglobal",
     audit_links: ["https://www.mytrade.org/files/MyTradeDEX_auditPolygon.pdf"],
-    listedAt: 1655205337
+    listedAt: 1655205337,
+    github: ["mytrade-dex"]
   },
   {
     id: "1823",
@@ -9968,7 +10001,8 @@ const data2: Protocol[] = [
     module: "swapsicle/index.js",
     twitter: "SwapsicIeDEX",
     audit_links: ["https://www.certik.com/projects/swapsicle"],
-    listedAt: 1655221773
+    listedAt: 1655221773,
+    github: ["swapsicledex"]
   },
   {
     id: "1825",
@@ -10010,7 +10044,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "everlend/index.js",
     twitter: "EverlendFinance",
-    listedAt: 1655289558
+    listedAt: 1655289558,
+    github: ["everlend"]
   },
   {
     id: "1827",
@@ -10077,7 +10112,8 @@ const data2: Protocol[] = [
     twitter: "InterestDeFi",
     audit_links: ["https://gfx.cafe/ip/contracts/-/blob/master/audit/GFX_IP_Protocol_Audit_Report.pdf"],
     listedAt: 1655545050,
-    stablecoins: ["interest-protocol"]
+    stablecoins: ["interest-protocol"],
+    github: ["interest-protocol"]
   },
   {
     id: "1830",
@@ -10103,7 +10139,8 @@ const data2: Protocol[] = [
       "https://github.com/TechRate/Smart-Contract-Audits/blob/main/October/Zeroswap.pdf",
       "https://drive.google.com/file/d/1QCYEmpjHYoj3rYTyUWxkuYfMfunazHFv/view",
     ],
-    listedAt: 1655545050
+    listedAt: 1655545050,
+    github: ["ZeroSwapLabs"]
   },
   {
     id: "1831",
@@ -10231,7 +10268,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "investin/index.js",
     twitter: "Investin_pro",
-    listedAt: 1655548694
+    listedAt: 1655548694,
+    github: ["Investin-pro"]
   },
   {
     id: "1837",
@@ -10410,7 +10448,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "stipend.js",
     twitter: "Governor_DAO",
-    listedAt: 1655839104
+    listedAt: 1655839104,
+    github: ["Stipend-Developer"]
   },
   {
     id: "1845",
@@ -10543,7 +10582,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "union-finance/index.js",
     twitter: "unionprotocol",
-    listedAt: 1655894184
+    listedAt: 1655894184,
+    github: ["unioncredit"]
   },
   {
     id: "1851",
@@ -10566,7 +10606,8 @@ const data2: Protocol[] = [
     twitter: "insuredao",
     treasury: "insure-dao.js",
     audit_links: ["https://drive.google.com/file/d/1RTwAYuPBmQCVrmor-iZ9dFAGlCkdMtdR/view?usp=sharing"],
-    listedAt: 1655973909
+    listedAt: 1655973909,
+    github: ["InsureDAO"]
   },
   {
     id: "1852",
@@ -10614,7 +10655,8 @@ const data2: Protocol[] = [
       "https://github.com/HalbornSecurity/PublicReports/blob/master/Solidity%20Smart%20Contract%20Audits/Moonwell_Finance_Safety_Module_Smart_Contract_Security_Audit_Report_Halborn_Final.pdf",
     ],
     listedAt: 1655988523,
-    governanceID: ["snapshot:moonwell-governance.eth"]
+    governanceID: ["snapshot:moonwell-governance.eth"],
+    github: ["moonwell-fi"]
   },
   {
     id: "1854",
@@ -10743,7 +10785,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "auraswap/index.js",
     twitter: "AuraSwapDEX",
-    listedAt: 1656409099
+    listedAt: 1656409099,
+    deadUrl: true
   },
   {
     id: "1860",
@@ -10851,7 +10894,8 @@ const data2: Protocol[] = [
     module: "team-finance/api.js",
     twitter: "TeamFinance_",
     audit_links: ["https://www.team.finance/file/audit.pdf"],
-    listedAt: 1656506800
+    listedAt: 1656506800,
+    github: ["team-finance"]
   },
   {
     id: "1865",
@@ -10916,7 +10960,8 @@ const data2: Protocol[] = [
     module: "sonicooo/index.js",
     twitter: "sonic_ooo",
     language: "Motoko",
-    listedAt: 1656622132
+    listedAt: 1656622132,
+    github: ["Psychedelic"]
   },
   {
     id: "1868",
@@ -11006,7 +11051,8 @@ const data2: Protocol[] = [
     module: "hunnyswap/index.js",
     twitter: "hunnyswap",
     audit_links: ["https://www.certik.com/projects/hunny-swap"],
-    listedAt: 1656716851
+    listedAt: 1656716851,
+    github: ["HunnyFinance"]
   },
   {
     id: "1872",
@@ -11092,7 +11138,8 @@ const data2: Protocol[] = [
     module: "atlendis/index.js",
     twitter: "AtlendisLabs",
     audit_links: ["https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/atlendis-audit-report.pdf"],
-    listedAt: 1656855449
+    listedAt: 1656855449,
+    github: ["Atlendis"]
   },
   {
     id: "1876",
@@ -11436,7 +11483,8 @@ const data2: Protocol[] = [
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algodex_Jan.pdf",
       "https://github.com/runtimeverification/publications/blob/main/reports/smart-contracts/Algodex_Dec.pdf",
     ],
-    listedAt: 1657637208
+    listedAt: 1657637208,
+    github: ["algodex"]
   },
   {
     id: "1891",
@@ -11482,7 +11530,8 @@ const data2: Protocol[] = [
     module: "azuro/index.js",
     twitter: "azuroprotocol",
     audit_links: ["https://github.com/Azuro-protocol/Bug-Bounty/tree/main/audit-reports"],
-    listedAt: 1657701519
+    listedAt: 1657701519,
+    github: ["Azuro-protocol"]
   },
   {
     id: "1893",
@@ -11546,7 +11595,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "sideshift/index.js",
     twitter: "sideshiftai",
-    listedAt: 1657711223
+    listedAt: 1657711223,
+    github: ["sideshift"]
   },
   {
     id: "1896",
@@ -11589,7 +11639,8 @@ const data2: Protocol[] = [
     module: "uplift/index.js",
     twitter: "UpliftDao",
     audit_links: ["https://app.uplift.io/docs/Audit.pdf"],
-    listedAt: 1657718229
+    listedAt: 1657718229,
+    github: ["UpliftDAO"]
   },
   {
     id: "1898",
@@ -11634,7 +11685,8 @@ const data2: Protocol[] = [
     module: "taiga/index.js",
     twitter: "TaigaProtocol",
     listedAt: 1657807133,
-    stablecoins: ["3usd"]
+    stablecoins: ["3usd"],
+    github: ["nutsfinance"]
   },
   {
     id: "1900",
@@ -11655,7 +11707,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "tapio/index.js",
     twitter: "TaigaProtocol",
-    listedAt: 1657825354
+    listedAt: 1657825354,
+    github: ["nutsfinance"]
   },
   {
     id: "1901",

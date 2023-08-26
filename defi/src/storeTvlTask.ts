@@ -22,30 +22,46 @@ async function main() {
   let timeTaken = 0
   const startTimeAll = Date.now() / 1e3
   sdk.log('tvl adapter count:', actions.length)
+  const alwaysRun = (adapterModule: any) => true
+  const nonTronModules = (adapterModule: any) => !adapterModule.tron
+  const tronModules = (adapterModule: any) => adapterModule.tron
 
-  await PromisePool
+  const runProcess = (filter = alwaysRun) => async (protocol: any) => {
+    const startTime = +Date.now()
+    try {
+      const adapterModule = importAdapter(protocol)
+      if (!filter(adapterModule)) {
+        i++
+        return;
+      }
+      const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
+      await rejectAfterXMinutes(() => storeTvl(
+        timestamp,
+        ethereumBlock,
+        chainBlocks,
+        protocol,
+        adapterModule,
+        staleCoins,
+        maxRetries,
+      ))
+    } catch (e) { console.error(e) }
+    const timeTakenI = (+Date.now() - startTime) / 1e3
+    timeTaken += timeTakenI
+    const avgTimeTaken = timeTaken / ++i
+    sdk.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s`)
+  }
+
+  const normalAdapterRuns = PromisePool
     .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 15))
     .for(actions)
-    .process(async (protocol: any) => {
-      const startTime = +Date.now()
-      try {
-        const adapterModule = importAdapter(protocol)
-        const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
-        await rejectAfterXMinutes(() => storeTvl(
-          timestamp,
-          ethereumBlock,
-          chainBlocks,
-          protocol,
-          adapterModule,
-          staleCoins,
-          maxRetries,
-        ))
-      } catch (e) { console.error(e) }
-      const timeTakenI = (+Date.now() - startTime) / 1e3
-      timeTaken += timeTakenI
-      const avgTimeTaken = timeTaken / ++i
-      sdk.log(`Done: ${i} / ${actions.length} | protocol: ${protocol?.name} | runtime: ${timeTakenI.toFixed(2)}s | avg: ${avgTimeTaken.toFixed(2)}s | overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s`)
-    })
+    .process(runProcess(nonTronModules))
+
+  const tronAdapterRuns = PromisePool
+    .withConcurrency(2)
+    .for(actions)
+    .process(runProcess(tronModules))
+
+  await Promise.all([normalAdapterRuns, tronAdapterRuns,])
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s`)
 

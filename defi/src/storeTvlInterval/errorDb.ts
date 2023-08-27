@@ -9,6 +9,7 @@ import mysql from 'mysql2/promise';
 
 let connection: mysql.Pool | undefined;
 
+const isLambda = !!process.env.LAMBDA_TASK_ROOT;
 function getConnection() {
   if (!connection)
     connection = mysql.createPool({
@@ -18,7 +19,7 @@ function getConnection() {
       database: 'clh3m0sco0zwdbso44e9u269x',
       password: process.env.INFLUXDB_TOKEN,
       waitForConnections: true,
-      connectionLimit: 1,
+      connectionLimit: isLambda? 1 : 20,
     })
   return connection
 }

@@ -11073,7 +11073,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "rift-finance/index.js",
     twitter: "RiftFinance",
-    listedAt: 1656755201
+    listedAt: 1656755201,
+    github: ["recursive-research"]
   },
   {
     id: "1873",
@@ -11552,7 +11553,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "mindgames/index.js",
     twitter: "MINDGames_io",
-    listedAt: 1657711223
+    listedAt: 1657711223,
+    github: ["mindgames-io"]
   },
   {
     id: "1894",
@@ -11815,7 +11817,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "bitgert/index.js",
     twitter: "bitgertbrise",
-    listedAt: 1658135993
+    listedAt: 1658135993,
+    github: ["Bitgert"]
   },
   {
     id: "1906",
@@ -11949,7 +11952,8 @@ const data2: Protocol[] = [
     module: "betswirl/index.js",
     twitter: "BetSwirl",
     audit_links: ["https://github.com/BetSwirl/Smart-Contracts"],
-    listedAt: 1658236552
+    listedAt: 1658236552,
+    github: ["BetSwirl"]
   },
   {
     id: "1912",
@@ -12306,6 +12310,7 @@ const data2: Protocol[] = [
     twitter: "merofinance",
     audit_links: ["https://docs.backd.fund/faq/risks-and-security"],
     listedAt: 1658804851,
+    github: ["merofinance"]
   },
   {
     id: "1928",
@@ -12328,6 +12333,7 @@ const data2: Protocol[] = [
     twitter: "CIAN_protocol",
     audit_links: ["https://docs.cian.app/security-and-risk/audit-report"],
     listedAt: 1658824413,
+    github: ["cian-ai"]
   },
   {
     id: "1929",
@@ -12350,6 +12356,7 @@ const data2: Protocol[] = [
     twitter: "Algem_io",
     audit_links: ["https://drive.google.com/file/d/1DWRV7rb0fikVJeif41SEat4QlPeE2TFF/view"],
     listedAt: 1658824927,
+    github: ["AlgemDeFi"]
   },
   {
     id: "1930",
@@ -12416,7 +12423,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "quasar-swap/index.js",
     twitter: "SwapQuasar",
-    listedAt: 1658929561
+    listedAt: 1658929561,
+    deadUrl: true
   },
   {
     id: "1933",
@@ -12446,7 +12454,7 @@ const data2: Protocol[] = [
     name: "ETCswap",
     address: null,
     symbol: "-",
-    url: "https://swap.ethereumclassic.com/",
+    url: "https://ethereumclassic.com/",
     description: "ETC Swap is a decentralized cryptocurrency exchange where users acquire digital assets without an intermediary",
     chain: "EthereumClassic",
     logo: `${baseIconsUrl}/etcswap.png`,
@@ -12461,7 +12469,8 @@ const data2: Protocol[] = [
     module: "etcswap/index.js",
     twitter: "EthClassicDAO",
     audit_links: ["https://github.com/etcswap/public-audits"],
-    listedAt: 1658953401
+    listedAt: 1658953401,
+    github: ["ethereumclassic"]
   },
   {
     id: "1935",
@@ -12504,7 +12513,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "securofinance/index.js",
     twitter: "Securo_Finance",
-    listedAt: 1659001664
+    listedAt: 1659001664,
+    github: ["thirdfi"]
   },
   {
     id: "1937",
@@ -12547,7 +12557,8 @@ const data2: Protocol[] = [
     module: "metalswap/index.js",
     twitter: "MetalSwapNet",
     audit_links: ["https://www.certik.com/projects/metalswap"],
-    listedAt: 1659014862
+    listedAt: 1659014862,
+    github: ["DEFI-Foundation"]
   },
   {
     id: "1939",
@@ -12631,7 +12642,8 @@ const data2: Protocol[] = [
     module: "moon-swap/index.js",
     forkedFrom: ["Uniswap V2"],
     twitter: "imMoonSwap",
-    listedAt: 1659175114
+    listedAt: 1659175114,
+    github: ["moon-migration"]
   },
   {
     id: "1943",
@@ -12786,7 +12798,8 @@ const data2: Protocol[] = [
     oracles: ["Chainlink"],
     forkedFrom: [],
     twitter: "CivFund",
-    listedAt: 1659552597
+    listedAt: 1659552597,
+    github: ["CivilizationCIV"]
   },
   {
     id: "1950",
@@ -12815,7 +12828,7 @@ const data2: Protocol[] = [
     name: "DotOracle",
     address: "0xb57420fad6731b004309d5a0ec7c6c906adb8df7",
     symbol: "DTO",
-    url: "https://civfund.org/",
+    url: "https://bridge.dotoracle.network/",
     description: "DotOracle is a real-time decentralized Oracle and Cross-chain bridge supported by multi-chains such as Polkadot, Ethereum, Binance Smart Chain, Fantom, Polygon, Avalanche, Tomochain, and Casper Network. It is currently the first cross-chain bridge on Casper Network and aims to support the Avalanche subnet.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/dotoracle.jpg`,
@@ -12829,7 +12842,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "DoTOracle",
-    listedAt: 1659607635
+    listedAt: 1659607635,
+    github: ["dotoracle"]
   },
   {
     id: "1952",
@@ -12875,7 +12889,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "ToucanProtocol",
     audit_links: ["https://docs.toucan.earth/protocol/resources/security"],
-    listedAt: 1659621481
+    listedAt: 1659621481,
+    github: ["ToucanProtocol"]
   },
   {
     id: "1954",
@@ -12995,7 +13010,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "HubbleExchange",
     audit_links: ["https://docs.hubble.exchange/audit-reports"],
-    listedAt: 1659987915
+    listedAt: 1659987915,
+    github: ["hubble-exchange"]
   },
   {
     id: "1960",
@@ -13016,7 +13032,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "CryptoBlades",
-    listedAt: 1660032267
+    listedAt: 1660032267,
+    github: ["CryptoBlades"]
   },
   {
     id: "1961",
@@ -13060,7 +13077,8 @@ const data2: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     twitter: "SiO2_Finance",
     audit_links: ["https://github.com/SiO2-Finance/contracts/tree/main/audits"],
-    listedAt: 1660050871
+    listedAt: 1660050871,
+    github: ["SiO2-Finance"]
   },
   {
     id: "1963",
@@ -13103,7 +13121,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "unboundfinance",
-    listedAt: 1660121047
+    listedAt: 1660121047,
+    github: ["unbound-finance"]
   },
   {
     id: "1965",
@@ -13171,7 +13190,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     twitter: "PembrockFi",
     audit_links: ["https://github.com/PembROCK-Finance/audits/blob/main/2022-07-01%20BlockSec%20Security%20Audit%20Report%20for%20PembRock%20Contracts.pdf"],
-    listedAt: 1660329722
+    listedAt: 1660329722,
+    github: ["PembROCK-Finance"]
   },
   {
     id: "1968",
@@ -13236,7 +13256,8 @@ const data2: Protocol[] = [
     module: "cone/index.js",
     twitter: "Coneswap",
     forkedFrom: ["Solidly"],
-    listedAt: 1660475403
+    listedAt: 1660475403,
+    github: ["cone-exchange"]
   },
   {
     id: "1971",
@@ -13427,7 +13448,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     audit_links: ["https://docs.saucerswap.finance/resources/audits"],
-    listedAt: 1660728743
+    listedAt: 1660728743,
+    github: ["saucerswaplabs"]
   },
   {
     id: "1980",
@@ -13470,7 +13492,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/orbit-chain/bridge-contract/blob/master/audit/Theori_OrbitBridge_2022_1Q.pdf"],
-    listedAt: 1660730289
+    listedAt: 1660730289,
+    github: ["orbit-chain"]
   },
   {
     id: "1982",
@@ -13598,7 +13621,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: ["Witnet"],
     audit_links: ["https://github.com/pangea-protocol/pangea-core/blob/main/audits/%5BHAECHI%20AUDIT%5D%20Smart%20Contract%20Audit%20Reports%20for%20Pangea.pdf"],
-    listedAt: 1660815952
+    listedAt: 1660815952,
+    github: ["pangea-protocol"]
   },
   {
     id: "1988",
@@ -13800,6 +13824,7 @@ const data2: Protocol[] = [
       "https://www.dropbox.com/s/7j8bjlmaxdp1apn/certik_glitter_finance_solana_audit.pdf?dl=0"
     ],
     listedAt: 1660945639,
+    github: ["Glitter-Finance"]
   },
   {
     id: "1997",
@@ -13889,7 +13914,8 @@ const data2: Protocol[] = [
     twitter: "FRAKT_HQ",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1661022639
+    listedAt: 1661022639,
+    github: ["frakt-solana"]
   },
   {
     id: "2001",
@@ -14017,6 +14043,7 @@ const data2: Protocol[] = [
     twitter: "jioswap",
     forkedFrom: ["Saddle Finance"],
     listedAt: 1661169623,
+    github: ["JioSwap"]
   },
   {
     id: "2007",
@@ -14325,7 +14352,8 @@ const data2: Protocol[] = [
       "https://drive.google.com/file/d/10GyfA-nBJ5jqLWW9LEYJQeFem8qSgNH6/view"
     ],
     listedAt: 1661433529,
-    stablecoins: ["xai"]
+    stablecoins: ["xai"],
+    github: ["silo-finance"]
   },
   {
     id: "2021",
@@ -14353,7 +14381,8 @@ const data2: Protocol[] = [
       "https://2030736250-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2MOVWdZOYqYGCPk8rjiB%2Fuploads%2FF32FJ6GmvterrygKVJec%2FRouter%20Protocol%20GoLang%20Bridge%20Audit.pdf?alt=media&token=ef437a79-9f49-4a0a-ac5d-9b1768d8d783",
       "https://github.com/router-protocol/router-protocol-audit"
     ],
-    listedAt: 1661480724
+    listedAt: 1661480724,
+    github: ["router-protocol"]
   },
   {
     id: "2022",

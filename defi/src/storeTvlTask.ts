@@ -15,10 +15,12 @@ const maxRetries = 3;
 async function main() {
 
   const staleCoins: StaleCoins = {};
-  const actions = [protocols, entities, treasuries].flat()
+  let actions = [protocols, entities, treasuries].flat()
   // const actions = [entities, treasuries].flat()
   shuffleArray(actions) // randomize order of execution
-  await cacheCurrentBlocks()
+  // actions = actions.slice(0, 301) 
+  await cacheCurrentBlocks() // cache current blocks for all chains - reduce #getBlock calls
+  await initializeSdkInternalCache() // initialize sdk cache - this will cache abi call responses and reduce the number of calls to the blockchain
   let i = 0
   let timeTaken = 0
   const startTimeAll = Date.now() / 1e3
@@ -54,21 +56,22 @@ async function main() {
   const normalAdapterRuns = PromisePool
     .withConcurrency(+(process.env.STORE_TVL_TASK_CONCURRENCY ?? 15))
     .for(actions)
-    .process(runProcess(nonTronModules))
-    
+    .process(runProcess(alwaysRun))
+
   await normalAdapterRuns
   clearPriceCache()
 
-  const tronAdapterRuns = PromisePool
-    .withConcurrency(2)
-    .for(actions)
-    .process(runProcess(tronModules))
-  await tronAdapterRuns
+  // const tronAdapterRuns = PromisePool
+  //   .withConcurrency(2)
+  //   .for(actions)
+  //   .process(runProcess(tronModules))
+  // await tronAdapterRuns
 
   // await Promise.all([normalAdapterRuns, tronAdapterRuns,])
 
   sdk.log(`All Done: overall: ${(Date.now() / 1e3 - startTimeAll).toFixed(2)}s`)
 
+  await saveSdkInternalCache() // save sdk cache to r2
   await storeStaleCoins(staleCoins)
 }
 
@@ -88,7 +91,10 @@ async function cacheCurrentBlocks() {
   } catch (e) { }
 }
 
-main().then(() => {
+main().catch((e) => {
+  console.error(e)
+  process.exit(1)
+}).then(() => {
   sdk.log('Exitting now...')
   process.exit(0)
 })
@@ -114,4 +120,24 @@ async function rejectAfterXMinutes(promiseFn: any, minutes = 5) {
       reject(error)
     })
   })
+}
+
+const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
+
+async function initializeSdkInternalCache() {
+  let currentCache = await sdk.cache.readCache(INTERNAL_CACHE_FILE)
+  sdk.log('cache size:', JSON.stringify(currentCache).length, 'chains:', Object.keys(currentCache))
+  const ONE_WEEK = 60 * 60 * 24 * 7
+  if (!currentCache || !currentCache.startTime || (Date.now() / 1000 - currentCache.startTime > ONE_WEEK)) {
+    currentCache = {
+      startTime: Math.round(Date.now() / 1000),
+    }
+    await sdk.cache.writeCache(INTERNAL_CACHE_FILE, currentCache)
+  }
+  sdk.sdkCache.startCache(currentCache)
+}
+
+
+async function saveSdkInternalCache() {
+  await sdk.cache.writeCache(INTERNAL_CACHE_FILE, sdk.sdkCache.retriveCache())
 }

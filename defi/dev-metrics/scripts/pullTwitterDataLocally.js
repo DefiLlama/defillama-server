@@ -27,5 +27,5 @@ function runCommand() {
 runCommand();
 
 // Schedule the command to run every 30 minutes
-const interval = 42 * 60 * 1000; // 30 minutes in milliseconds - assuming the IP is ratelimited for 30 minutes
+const interval = 2 * 60 * 60 * 1000; // 30 minutes in milliseconds - assuming the IP is ratelimited for 30 minutes
 setInterval(runCommand, interval);

@@ -16,7 +16,7 @@ async function main() {
   const twitterOverview = await getTwitterOverviewFile()
 
   // const twitterOverview = {}
-  const TWELVE_HOURS = 12 * 60 * 60 * 1000 * 7
+  const TWELVE_HOURS = 12 * 60 * 60 * 1000 * 7 * 2
   let connectionRefusedCount = 0
   for (const handle of handles) {
     const handleMetadata = twitterOverview[handle] || {}
@@ -42,7 +42,7 @@ async function main() {
         const mergedTweets = mergeTweets(oldData.tweets, data.tweets)
         data = { ...oldData, ...data, tweets: mergedTweets }
       } else {
-        sdk.log(`[Twitter] Skipping ${handle} because it was updated less than 12 hours ago[data]`)
+        // sdk.log(`[Twitter] Skipping ${handle} because it was updated less than 12 hours ago[data]`)
         ++i;
         continue;
       }

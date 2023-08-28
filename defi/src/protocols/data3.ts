@@ -16625,7 +16625,7 @@ const data3: Protocol[] = [
     twitter: "ParaSpace_NFT",
     parentProtocol: "parent#parax",
     audit_links: ["https://github.com/Secure3Audit/Secure3Academy/tree/main/audit_reports/ParaSpace%20Ape%20Yield"],
-    listedAt: 1693238059
+    listedAt: 1693238065
   },
 ]
 

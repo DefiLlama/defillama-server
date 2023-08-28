@@ -1,4 +1,5 @@
 import mysql from 'mysql2/promise';
+import plimit from 'p-limit'
 
 // Error tables
 // CREATE TABLE errors (time INT, protocol VARCHAR(200), error TEXT, PRIMARY KEY(time, protocol), INDEX `idx_time` (`time` ASC) VISIBLE);
@@ -8,6 +9,9 @@ import mysql from 'mysql2/promise';
 // CREATE TABLE staleCoins (time INT, address VARCHAR(500), lastUpdate INT, chain VARCHAR(200), symbol VARCHAR(200), PRIMARY KEY(time, address, chain), INDEX `idx_time` (`time` ASC) VISIBLE);
 
 let connection: mysql.Pool | undefined;
+
+const rateLimit = plimit(3)
+
 
 const isLambda = !!process.env.LAMBDA_TASK_ROOT;
 function getConnection() {
@@ -25,10 +29,10 @@ function getConnection() {
 }
 
 export function execute(sql: string, values: any){
-  return getConnection().execute(sql, values)
+  return rateLimit(() => getConnection().execute(sql, values))
 }
 
 export function executeAndIgnoreErrors(sql: string, values: any){
-  return getConnection().execute(sql, values)
+  return rateLimit(() => getConnection().execute(sql, values))
     .catch(e => console.log("mysql error", e));
 }

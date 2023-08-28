@@ -25588,7 +25588,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2517",
-    name: "ParaSpace Lending",
+    name: "ParaSpace Lending V1",
     address: null,
     symbol: "-",
     url: "https://para.space",
@@ -25606,7 +25606,7 @@ const data2: Protocol[] = [
     twitter: "ParaSpace_NFT",
     oracles: ["Internal"],
     forkedFrom: [],
-    parentProtocol: "parent#paraspace",
+    parentProtocol: "parent#parax",
     audit_links: ["https://docs.para.space/para-space/para-space/external-audits"],
     listedAt: 1675872130
   },
@@ -28667,7 +28667,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2654",
-    name: "ParaSpace APE Staking",
+    name: "ParaSpace APE Staking V1",
     address: null,
     symbol: "-",
     url: "https://apecoinstaking.io",
@@ -28684,7 +28684,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "paraspace-ape-staking/index.js",
     twitter: "ParaSpace_NFT",
-    parentProtocol: "parent#paraspace",
+    parentProtocol: "parent#parax",
     audit_links: ["https://github.com/Secure3Audit/Secure3Academy/tree/main/audit_reports/ParaSpace%20Ape%20Yield"],
     listedAt: 1678375097
   },

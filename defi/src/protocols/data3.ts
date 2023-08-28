@@ -16470,6 +16470,28 @@ const data3: Protocol[] = [
     forkedFrom: [],
     listedAt: 1693049145
   },
+  {
+    id: "3443",
+    name: "Loot  DAO",
+    address: "0xFF9C1b15B16263C61d017ee9F65C50e4AE0113D7",
+    symbol: "LOOT",
+    url: "https://www.royaltydao.com/",
+    description: "Randomized adventurer gear generated and stored on chain. ",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/loot-dao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Ethereum"],
+    oracles: [],
+    module: "dummy.js",
+    treasury: "loot-dao.js",
+    twitter: "lootproject",
+    forkedFrom: [],
+    github: ["lootexchange"],
+  },
 ]
 
 export default data3

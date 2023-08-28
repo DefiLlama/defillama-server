@@ -10,7 +10,7 @@ import plimit from 'p-limit'
 
 let connection: mysql.Pool | undefined;
 
-const rateLimit = plimit(25)
+const rateLimit = plimit(5)
 
 
 const isLambda = !!process.env.LAMBDA_TASK_ROOT;
@@ -23,7 +23,7 @@ function getConnection() {
       database: 'clh3m0sco0zwdbso44e9u269x',
       password: process.env.INFLUXDB_TOKEN,
       waitForConnections: true,
-      connectionLimit: isLambda? 1 : 42,
+      connectionLimit: isLambda? 1 : 21,
     })
   return connection
 }
@@ -33,6 +33,6 @@ export function execute(sql: string, values: any){
 }
 
 export function executeAndIgnoreErrors(sql: string, values: any){
-  return rateLimit(() => getConnection().execute(sql, values))
+  rateLimit(() => getConnection().execute(sql, values))
     .catch(e => console.log("mysql error", e.message));
 }

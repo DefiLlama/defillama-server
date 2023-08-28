@@ -21,6 +21,8 @@ async function main() {
   // const actions = [entities, treasuries].flat()
   shuffleArray(actions) // randomize order of execution
   // actions = actions.slice(0, 301) 
+
+  // we let the adapters take care of the blocks
   // await cacheCurrentBlocks() // cache current blocks for all chains - reduce #getBlock calls
   await initializeSdkInternalCache() // initialize sdk cache - this will cache abi call responses and reduce the number of calls to the blockchain
   let i = 0
@@ -39,17 +41,10 @@ async function main() {
         return;
       }
       // const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
-       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({});
-      await rejectAfterXMinutes(() => storeTvl(
-        timestamp,
-        ethereumBlock,
-        chainBlocks,
-        protocol,
-        adapterModule,
-        staleCoins,
-        maxRetries,
-      ))
-    } catch (e) { console.error(e) }
+      // NOTE: we are intentionally not fetching chain blocks, in theory this makes it easier for rpc calls as we no longer need to query at a particular block
+      const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({});
+      await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
+    } catch (e: any) { console.log('FAILED: ', protocol?.name, e?.message) }
     const timeTakenI = (+Date.now() - startTime) / 1e3
     timeTaken += timeTakenI
     const avgTimeTaken = timeTaken / ++i

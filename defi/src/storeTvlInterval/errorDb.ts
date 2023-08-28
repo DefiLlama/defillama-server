@@ -23,7 +23,7 @@ function getConnection() {
       database: 'clh3m0sco0zwdbso44e9u269x',
       password: process.env.INFLUXDB_TOKEN,
       waitForConnections: true,
-      connectionLimit: isLambda? 1 : 42,
+      connectionLimit: isLambda? 1 : 50,
     })
   return connection
 }

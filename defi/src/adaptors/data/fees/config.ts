@@ -1088,6 +1088,7 @@ export default {
         "id": "3264"
     },
     "base": {
+        "category": "Rollup",
         "enabled": true,
         "id": "8453"
     },
@@ -1188,6 +1189,7 @@ export default {
         "id": "449"
     },
     "zksync-era": {
+        "category": "Rollup",
         "enabled": true,
         "id": "324"
     },

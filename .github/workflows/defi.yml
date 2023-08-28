@@ -44,7 +44,7 @@ jobs:
       - run: cd emissions-adapters && git checkout master && git pull
       - run: npm  ci || npm i
       - name: DEBUG
-        run: ls node_modules/lzma-native && echo "---LZMA prebuilds -- " && node_modules/lzma-native/prebuilds/linux-x64/
+        run: ls node_modules/lzma-native && echo "---LZMA prebuilds -- " && ls node_modules/lzma-native/prebuilds/linux-x64/
       - name: Run tests
         run: npm t data && npx esbuild src/protocols/import.test.ts --bundle --log-limit=0 --platform=node | node
         env:

@@ -34,5 +34,5 @@ export function execute(sql: string, values: any){
 
 export function executeAndIgnoreErrors(sql: string, values: any){
   return rateLimit(() => getConnection().execute(sql, values))
-    .catch(e => console.log("mysql error", e.message));
+    .catch(e => console.log("mysql error", e.message))
 }

@@ -180,7 +180,7 @@ export default {
         }
     },
     "kwenta": {
-        "enabled": true,
+        "enabled": false,
         "id": "2981"
     },
     "synthetix": {

@@ -71,7 +71,7 @@
     "bignumber.js": "^9.0.1",
     "dotenv": "^16.0.1",
     "ethers": "^5.7.2",
-    "mysql2": "^2.3.3",
+    "mysql2": "^3.6.0",
     "node-fetch": "^2.6.1",
     "p-limit": "^3.0.0",
     "pg-promise": "^11.4.0",

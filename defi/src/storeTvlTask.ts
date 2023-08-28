@@ -19,7 +19,7 @@ async function main() {
   // const actions = [entities, treasuries].flat()
   shuffleArray(actions) // randomize order of execution
   // actions = actions.slice(0, 301) 
-  await cacheCurrentBlocks() // cache current blocks for all chains - reduce #getBlock calls
+  // await cacheCurrentBlocks() // cache current blocks for all chains - reduce #getBlock calls
   await initializeSdkInternalCache() // initialize sdk cache - this will cache abi call responses and reduce the number of calls to the blockchain
   let i = 0
   let timeTaken = 0
@@ -36,7 +36,8 @@ async function main() {
       if (!filter(adapterModule)) {
         return;
       }
-      const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
+      // const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
+       const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({});
       await rejectAfterXMinutes(() => storeTvl(
         timestamp,
         ethereumBlock,

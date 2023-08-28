@@ -16581,28 +16581,6 @@ const data3: Protocol[] = [
     listedAt: 1693231695
   },
   {
-    id: "3447",
-    name: "Altitude",
-    address: "0x8929e9DbD2785e3BA16175E596CDD61520feE0D1",
-    symbol: "ALTD",
-    url: "https://www.altitudedefi.com",
-    description: "Altitude is a composable native asset bridge, and one of the first dApp’s built on LayerZero, a cross-chain communication infrastructure designed to ease the current constraints of omnichain activity.",
-    chain: "Ethereum",
-    logo: `${baseIconsUrl}/altitude.jpg`,
-    audits: "2",
-    audit_note: null,
-    gecko_id: "altitude",
-    cmcId: null,
-    category: "Cross Chain",
-    chains: ["Ethereum", "Polygon", "Binance"],
-    oracles: [],
-    module: "altitude/index.js",
-    twitter: "AltitudeDeFi",
-    forkedFrom: [],
-    audit_links: ["https://github.com/ContractWolf/smart-contract-audits/blob/main/ContractWolf_Audit_AltitudeDEFI_Bridge.pdf"],
-    listedAt: 1693231695
-  },
-  {
     id: "3448",
     name: "ParaSpace Lending V2",
     address: null,

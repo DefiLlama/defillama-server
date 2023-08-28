@@ -7440,7 +7440,7 @@ const data3: Protocol[] = [
     description:
       "FXDX is 0 trading fee perpetual futures decentralized exchange.",
     chain: "Optimism",
-    logo: `${baseIconsUrl}/fxdx.jpg`,
+    logo: `${baseIconsUrl}/fxdx.png`,
     audits: "2",
     audit_note: null,
     gecko_id: null,

@@ -2560,6 +2560,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "KnightEcosystem",
     github: ["Knightswap"]
   },
+  {
+    id: "parent#alien-base",
+    name: "Alien Base",
+    url: "https://app.alienbase.xyz",
+    description:
+      "Trade confidently on Alien Base - A DEX on the base chain. Farm and stake tokens.",
+    logo: `${baseIconsUrl}/alien-base.png`,
+    gecko_id: "alienbase",
+    cmcId: null,
+    chains: [],
+    twitter: "AlienBaseDEX",
+  },
 ];
 
 export default parentProtocols;

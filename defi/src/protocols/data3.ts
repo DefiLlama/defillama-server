@@ -14666,14 +14666,14 @@ const data3: Protocol[] = [
   },
   {
     id: "3361",
-    name: "Alien Base",
+    name: "Alien Base AMM",
     address: "base:0x1dd2d631c92b1acdfcdd51a0f7145a50130050c4",
     symbol: "ALB",
     url: "https://app.alienbase.xyz/",
     description:
       "Alienbase is a DEX built on Base",
     chain: "Base",
-    logo: `${baseIconsUrl}/alien-base.png`,
+    logo: `${baseIconsUrl}/alien-base-amm.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -14684,6 +14684,7 @@ const data3: Protocol[] = [
     twitter: "AlienBaseDEX",
     forkedFrom: ["Uniswap V2"],
     oracles: [],
+    parentProtocol: "parent#alien-base",
     listedAt: 1691545534
   },
   {
@@ -16553,6 +16554,7 @@ const data3: Protocol[] = [
     oracles: [],
     module: "alienbase-stableswap/index.js",
     twitter: "AlienBaseDEX",
+    parentProtocol: "parent#alien-base",
     forkedFrom: [],
     listedAt: 1693231687
   },

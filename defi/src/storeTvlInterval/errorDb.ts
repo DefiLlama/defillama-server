@@ -10,7 +10,7 @@ import plimit from 'p-limit'
 
 let connection: mysql.Pool | undefined;
 
-const rateLimit = plimit(3)
+const rateLimit = plimit(13)
 
 
 const isLambda = !!process.env.LAMBDA_TASK_ROOT;

@@ -12,6 +12,8 @@ import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 
 const maxRetries = 3;
 
+const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
+
 async function main() {
 
   const staleCoins: StaleCoins = {};
@@ -122,8 +124,6 @@ async function rejectAfterXMinutes(promiseFn: any, minutes = 5) {
     })
   })
 }
-
-const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 
 async function initializeSdkInternalCache() {
   let currentCache = await sdk.cache.readCache(INTERNAL_CACHE_FILE)

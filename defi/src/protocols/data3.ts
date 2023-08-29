@@ -16585,9 +16585,9 @@ const data3: Protocol[] = [
     name: "ParaSpace Lending V2",
     address: null,
     symbol: "-",
-    url: "https://para.space",
+    url: "https://parax.ai",
     description:
-      "ParaSpace is a permissionless universal, cross-margin NFT lending protocol that enables users to collateralize both ERC-721 and ERC-20 assets into a single portfolio to borrow against.",
+      "ParaX is an upgrade from ParaSpace. ParaX is an everything app for web3 application, aiming to provide a simpler DeFi experience for 1 billion users. ParaX is powered by account abstraction, making the DeFi experience more efficient, cheaper and safer.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/paraspace-lending-v2.png`,
     audits: "2",

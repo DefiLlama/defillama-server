@@ -16517,7 +16517,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3445",
-    name: "Xoswap",
+    name: "Xops Finance",
     address: "opbnb:0xE413045ae03E56f0F627eA4f1272637e155D445f",
     symbol: "XOS",
     url: "http://xops.finance",

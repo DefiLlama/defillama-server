@@ -16523,7 +16523,7 @@ const data3: Protocol[] = [
     url: "http://xops.finance",
     description: "The cutting-edge decentralised exchange (DEX) Xops Finance has swiftly become the most popular DEX on OpBNB, an Ethereum layer-2 scaling solution.",
     chain: "Op_Bnb",
-    logo: `${baseIconsUrl}/xoswap.jpg`,
+    logo: `${baseIconsUrl}/xops-finance.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,

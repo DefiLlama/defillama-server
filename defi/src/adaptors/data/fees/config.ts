@@ -84,7 +84,7 @@ export default {
     "gmx": {
         "enabled": true,
         "id": "337",
-        parentId: "337",
+        parentId: "GMX",
         protocolsData: {
             "swap": {
                 "id": "337",
@@ -1204,5 +1204,10 @@ export default {
     "yfx-v3": {
         "enabled": true,
         "id": "3429"
+    },
+    "gmx-v2": {
+        parentId: "GMX",
+        "enabled": true,
+        "id": "3365"
     }
 } as AdaptorsConfig

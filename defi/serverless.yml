@@ -485,7 +485,7 @@ functions:
       - http:
           path: /{params+}
           method: options
-  storeTvlInterval:
+  storeTvlInterval2:
     handler: src/storeTvlInterval.default
     timeout: 900
     memorySize: 512

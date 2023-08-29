@@ -16649,6 +16649,27 @@ const data3: Protocol[] = [
     parentProtocol: "parent#velodrome",
     listedAt: 1693274059
   },
+  {
+    id: "3451",
+    name: "Astarter",
+    address: "cardano:-",
+    symbol: "AA",
+    url: "https://astarter.io/",
+    description: "Astarter is a key DeFi infrastructure hub on Cardano that features four core applications: Launchpad(Launchpool), DEX, Money Market & Tech Service Platform, with the backing of EMURGO, a founding entity of the Cardano protocol. Astarter aims to elevate its contribution and bring broader possibilities to the Cardano ecosystem by providing fair, safe, and accessible open finance services to meet existing and future demand in accelerating DeFi apps to empower the next generation of projects built on Cardano.",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/astarter.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Cardano"],
+    oracles: [],
+    forkedFrom: [],
+    module: "astarter/index.js",
+    twitter: "AstarterDefiHub",
+    listedAt: 1693279471
+  },
 ]
 
 export default data3

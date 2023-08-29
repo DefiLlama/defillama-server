@@ -1839,6 +1839,12 @@ export const chainCoingeckoIds = {
       types: ["parachain"]
     },
   },
+  "Shibarium": {
+    geckoId: null,
+    symbol: null,
+    cmcId: null,
+    categories: ["EVM"],
+  },
 } as unknown as {
   [chain: string]: {
     geckoId: string | null,
@@ -2293,6 +2299,8 @@ export function getChainDisplayName(normalizedChain: string, useNewChainNames: b
       return "Archway"
     case "hydradx":
       return "HydraDX"
+    case "shibarium":
+      return "Shibarium"
     default:
       return normalizedChain.slice(0, 1).toUpperCase() + normalizedChain.slice(1) // Capitalize first letter
   }

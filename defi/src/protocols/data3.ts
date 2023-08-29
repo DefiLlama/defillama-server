@@ -16782,7 +16782,7 @@ const data3: Protocol[] = [
   },
   {
     id: "3457",
-    name: "Shibbex",
+    name: "Shibex",
     address: null,
     symbol: "SHIB",
     url: "https://shibex.org",

@@ -16801,6 +16801,48 @@ const data3: Protocol[] = [
     twitter: "SHIBExchange",
     listedAt: 1693327729
   },
+  {
+    id: "3458",
+    name: "WoofSwap",
+    address: null,
+    symbol: "WOOF",
+    url: "https://www.woofswap.finance",
+    description: "The first ve(3,3) DEX on #Shibarium.",
+    chain: "Shibarium",
+    logo: `${baseIconsUrl}/woofswap.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shibarium"],
+    module: "woof/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "woofswap",
+    listedAt: 1693328565
+  },
+  {
+    id: "3459",
+    name: "DogSwap",
+    address: null,
+    symbol: "-",
+    url: "https://dog-swap.finance/#/swap",
+    description: "DEX on Shibarium.",
+    chain: "Shibarium",
+    logo: `${baseIconsUrl}/dogswap.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shibarium"],
+    module: "dogswap/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "dogswapshib",
+    listedAt: 1693328575
+  },
 ]
 
 export default data3

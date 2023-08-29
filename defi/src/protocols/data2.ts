@@ -14650,7 +14650,7 @@ const data2: Protocol[] = [
     module: "interlay-btc/index.js",
     twitter: "InterlayHQ",
     parentProtocol: "parent#interlay",
-    listedAt: 1661801239
+    listedAt: 1661801239,
   },
   {
     id: "2034",
@@ -14762,6 +14762,7 @@ const data2: Protocol[] = [
     audit_links: ["https://github.com/helio-money/helio-smart-contracts/tree/master/audits"],
     listedAt: 1661888773,
     stablecoins: ["hay"],
+    github: ["helio-money"]
   },
   {
     id: "2039",
@@ -15136,7 +15137,8 @@ const data2: Protocol[] = [
     module: "swivel/index.js",
     twitter: "SwivelFinance",
     listedAt: 1662283597,
-    governanceID: ["snapshot:swiveldao.eth"]
+    governanceID: ["snapshot:swiveldao.eth"],
+    github: ["Swivel-Finance"]
   },
   {
     id: "2056",
@@ -15427,7 +15429,8 @@ const data2: Protocol[] = [
     module: "powaa-protocol/index.js",
     audit_links: ["https://app.inspex.co/library/powaa"],
     twitter: "PowaaProtocol",
-    listedAt: 1662496715
+    listedAt: 1662496715,
+    github: ["powaa-protocol"]
   },
   {
     id: "2069",
@@ -15649,7 +15652,8 @@ const data2: Protocol[] = [
     treasury: "giveth.js",
     twitter: "Givethio",
     audit_links: ["https://github.com/lastperson/code-reviews/blob/main/Giveth%20GIVeconomy%20Contracts%20Code%20Review.pdf"],
-    listedAt: 1662676779
+    listedAt: 1662676779,
+    github: ["Giveth"]
   },
   {
     id: "2079",
@@ -15738,7 +15742,8 @@ const data2: Protocol[] = [
     module: "symphony/index.js",
     twitter: "SymphonyFinance",
     audit_links: ["https://symphonyfi.gitbook.io/docs/audit"],
-    listedAt: 1662981929
+    listedAt: 1662981929,
+    github: ["symphony-finance"]
   },
   {
     id: "2083",
@@ -15781,7 +15786,8 @@ const data2: Protocol[] = [
     module: "hectagon/index.js",
     twitter: "HectagonFinance",
     audit_links: ["https://github.com/DAudit/Smart-Contract-Audits/blob/main/audit_hectagon_20220803.pdf"],
-    listedAt: 1663070181
+    listedAt: 1663070181,
+    github: ["hectagon-finance"]
   },
   {
     id: "2085",
@@ -15829,7 +15835,8 @@ const data2: Protocol[] = [
       "https://drive.google.com/file/d/1rgTgB3Zs1A6YhssF4jIsVS5l0Lr8sl1r/view", // Audit Reports + Insurance
       "https://docs.google.com/document/d/1joxRpf1D-KoACf7h1xnB72YkPYKxd27oDX-9axTbIQw/edit#heading=h.mnockoickb7e" //Insurance
     ],
-    listedAt: 1663144131
+    listedAt: 1663144131,
+    github: ["RageTrade"]
   },
   {
     id: "2087",
@@ -15850,7 +15857,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     module: "chee-finance/index.js",
     twitter: "CheeFinance",
-    listedAt: 1663153491
+    listedAt: 1663153491,
+    github: ["chee-finance"]
   },
   {
     id: "2088",
@@ -16033,7 +16041,8 @@ const data2: Protocol[] = [
       "https://gitlab.com/EthicHub/ethix-contracts/-/blob/master/audits/Red4Sec-EthicHub%20-%20Smart%20Contract%20Audit%20Report_v3.pdf",
       "https://gitlab.com/EthicHub/minimice/-/blob/main/audits/EthicHub%20-%20Smart%20Contract%20Audit%20Report%20Final.pdf"
     ],
-    listedAt: 1663349441
+    listedAt: 1663349441,
+    github: ["EthicHub"]
   },
   {
     id: "2096",
@@ -16098,7 +16107,8 @@ const data2: Protocol[] = [
     module: "maffin/index.js",
     twitter: "Muffin_fi",
     audit_links: ["https://docs.muffin.fi/resources/audit-reports"],
-    listedAt: 1663584198
+    listedAt: 1663584198,
+    github: ["muffinfi"]
   },
   {
     id: "2099",
@@ -16165,7 +16175,8 @@ const data2: Protocol[] = [
     twitter: "FstSwapbright",
     audit_links: ["https://help.fstswap.exchange/audit-report"],
     listedAt: 1663680968,
-    governanceID: ["snapshot:fistdex.eth"]
+    governanceID: ["snapshot:fistdex.eth"],
+    github: ["FstSwapDex"]
   },
   {
     id: "2102",
@@ -16473,7 +16484,8 @@ const data2: Protocol[] = [
       "https://docs.flashstake.io/docs/security-and-risks/audits",
       "https://github.com/peckshield/publications/tree/master/audit_reports/PeckShield-Audit-Report-Flashstake-v1.0.pdf"
     ],
-    listedAt: 1663898509
+    listedAt: 1663898509,
+    github: ["BlockzeroLabs"]
   },
   {
     id: "2116",
@@ -16496,7 +16508,8 @@ const data2: Protocol[] = [
     twitter: "0xProject",
     audit_links: ["https://docs.0x.org/developer-resources/audits"],
     governanceID: ["snapshot:0xgov.eth"],
-    listedAt: 1663922935
+    listedAt: 1663922935,
+    github: ["0xProject"]
   },
   {
     id: "2117",
@@ -16846,7 +16859,8 @@ const data2: Protocol[] = [
     module: "geode/index.js",
     twitter: "Geode_Finance",
     audit_links: ["https://docs.geode.fi/developers/audits"],
-    listedAt: 1664332565
+    listedAt: 1664332565,
+    github: ["Geodefi"]
   },
   {
     id: "2133",
@@ -16891,7 +16905,8 @@ const data2: Protocol[] = [
     twitter: "Lemma_Labs",
     audit_links: ["https://github.com/lemma-finance/audits/tree/main/audits"],
     listedAt: 1664361294,
-    stablecoins: ["usdlemma"]
+    stablecoins: ["usdlemma"],
+    github: ["lemma-finance"]
   },
   {
     id: "2135",
@@ -17062,7 +17077,8 @@ const data2: Protocol[] = [
     module: "sonne-finance/index.js",
     twitter: "SonneFinance",
     listedAt: 1664706279,
-    governanceID: ["snapshot:sonnefi.eth"]
+    governanceID: ["snapshot:sonnefi.eth"],
+    github: ["sonne-finance"]
   },
   {
     id: "2143",
@@ -17130,7 +17146,8 @@ const data2: Protocol[] = [
       "https://github.com/XRC20-Swap/DEX-Audit/blob/main/DEX%20Audit%20Techrate.pdf",
       "https://www.certik.com/projects/xswap-protocol"
     ],
-    listedAt: 1664803068
+    listedAt: 1664803068,
+    github: ["XRC20-Swap"]
   },
   {
     id: "2146",
@@ -17175,7 +17192,8 @@ const data2: Protocol[] = [
     twitter: "ipor_io",
     treasury: "ipor.js",
     audit_links: ["https://drive.google.com/file/d/1t5oRH8Cxux19Trl75qTEF3kxIpX717H7/view?usp=sharing"],
-    listedAt: 1664876804
+    listedAt: 1664876804,
+    github: ["IPOR-Labs"]
   },
   {
     id: "2148",
@@ -17196,7 +17214,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "roketo/index.js",
     twitter: "roketostream",
-    listedAt: 1664898064
+    listedAt: 1664898064,
+    github: ["roke-to"]
   },
   {
     id: "2149",
@@ -17505,7 +17524,8 @@ const data2: Protocol[] = [
       "https://github.com/EaseDeFi/gvToken/tree/main/audits"
     ],
     listedAt: 1665063478,
-    governanceID: ["snapshot:easedao.eth", "compound:ethereum:0xea5edef17c4fce9c120790f3c54d6e04823de587"]
+    governanceID: ["snapshot:easedao.eth", "compound:ethereum:0xea5edef17c4fce9c120790f3c54d6e04823de587"],
+    github: ["EaseDeFi"]
   },
   {
     id: "2163",
@@ -17574,7 +17594,8 @@ const data2: Protocol[] = [
       "https://code423n4.com/reports/2021-09-yaxis",
       "https://www.certik.com/projects/numisme?utm_source=CMC&utm_campaign=AuditByCertiKLink"
     ],
-    listedAt: 1665074989
+    listedAt: 1665074989,
+    github: ["NumisMe"]
   },
   {
     id: "2166",
@@ -17807,7 +17828,8 @@ const data2: Protocol[] = [
       "https://safefiles.defiyield.info/safe/files/audit/pdf/GooseFX_Swap_Program_Security_Audit_Report_Halborn_Final.pdf",
       "https://github.com/GooseFX1/gfx-swap/blob/master/audit/goosefx_ssl-audit-public.pdf"
     ],
-    listedAt: 1665568360
+    listedAt: 1665568360,
+    github: ["GooseFX1"]
   },
   {
     id: "2176",
@@ -17959,7 +17981,8 @@ const data2: Protocol[] = [
     twitter: "Algomint_io",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1665742020
+    listedAt: 1665742020,
+    github: ["Algomint"]
   },
   {
     id: "2183",
@@ -18229,7 +18252,8 @@ const data2: Protocol[] = [
     oracles: ["Pyth"],
     twitter: "Belugadex",
     audit_links: ["https://kudelskisecurity.com/wp-content/uploads/PUBLIC_RELEASE_REDACTED_Kudelski_BelugaDex_SCR_2022_Retest_Report.pdf"],
-    listedAt: 1666174631
+    listedAt: 1666174631,
+    github: ["belugaprotocol"]
   },
   {
     id: "2195",
@@ -18355,7 +18379,8 @@ const data2: Protocol[] = [
     twitter: "hedge_farm",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1666195534
+    listedAt: 1666195534,
+    github: ["HedgeFarm"]
   },
   {
     id: "2200",
@@ -18377,7 +18402,8 @@ const data2: Protocol[] = [
     twitter: "_IONDAO",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1666272262
+    listedAt: 1666272262,
+    github: ["many-things"]
   },
   {
     id: "2201",
@@ -18400,7 +18426,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://hacken.io/audits/#bepro"],
-    listedAt: 1666273430
+    listedAt: 1666273430,
+    github: ["bepronetwork"]
   },
   {
     id: "2202",
@@ -18535,7 +18562,8 @@ const data2: Protocol[] = [
     oracles: [],
     audit_links: ["https://github.com/ditto-research/audit/blob/main/ottersec-14-10-22/Ditto-Ottersec-Audit.pdf"],
     language: "Move",
-    listedAt: 1666310374
+    listedAt: 1666310374,
+    github: ["ditto-research"]
   },
   {
     id: "2208",
@@ -18676,7 +18704,8 @@ const data2: Protocol[] = [
     twitter: "AuxExchange",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1666452035
+    listedAt: 1666452035,
+    github: ["aux-exchange"]
   },
   {
     id: "2214",
@@ -18789,7 +18818,8 @@ const data2: Protocol[] = [
     twitter: "animeswap_org",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1666603789
+    listedAt: 1666603789,
+    github: ["AnimeSwap"]
   },
   {
     id: "2219",
@@ -18981,7 +19011,8 @@ const data2: Protocol[] = [
     audit_links: [
       "https://github.com/wombex-finance/wombex-contracts/tree/main/audits",
     ],
-    listedAt: 1666803517
+    listedAt: 1666803517,
+    github: ["wombex-finance"]
   },
   {
     id: "2227",
@@ -19252,7 +19283,8 @@ const data2: Protocol[] = [
     oracles: [],
     treasury: "axelar.js",
     audit_links: ["https://github.com/axelarnetwork/audits"],
-    listedAt: 1667045416
+    listedAt: 1667045416,
+    github: ["axelarnetwork"]
   },
   {
     id: "2238",
@@ -19408,7 +19440,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     oracles: [],
     audit_links: ["https://github.com/LimeChain/HeliSwap-contracts/blob/main/audits/Halborn-august-2022.pdf"],
-    listedAt: 1667390065
+    listedAt: 1667390065,
+    github: ["LimeChain"]
   },
   {
     id: "2245",
@@ -19563,7 +19596,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/Stride-Labs/audits"],
-    listedAt: 1667603619
+    listedAt: 1667603619,
+    github: ["Stride-Labs"]
   },
   {
     id: "2252",
@@ -19679,7 +19713,8 @@ const data2: Protocol[] = [
     forkedFrom: ["GMX V1"],
     oracles: ["SEDA"],
     audit_links: ["https://github.com/opxfinance/opx-contracts/tree/main/audits"],
-    listedAt: 1667818926
+    listedAt: 1667818926,
+    github: ["opxfinance"]
   },
   {
     id: "2257",
@@ -19745,7 +19780,7 @@ const data2: Protocol[] = [
     twitter: "HelixApp_",
     forkedFrom: [],
     oracles: ["Pyth"],
-    listedAt: 1668004664
+    listedAt: 1668004664,
   },
   {
     id: "2260",
@@ -19794,7 +19829,8 @@ const data2: Protocol[] = [
       "https://github.com/alwaysbegrowing/arbor-contracts/blob/main/audits/previously-porter-finance-spearbit-audit.pdf",
       "https://github.com/alwaysbegrowing/arbor-contracts/blob/main/audits/previously-porter-finance-zellic-audit.pdf"
     ],
-    listedAt: 1668080722
+    listedAt: 1668080722,
+    github: ["alwaysbegrowing"]
   },
   {
     id: "2262",
@@ -19887,7 +19923,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     listedAt: 1668094972,
-    stablecoins: ["usdi"]
+    stablecoins: ["usdi"],
+    github: ["Bank-Of-Chain"]
   },
   {
     id: "2266",
@@ -20200,7 +20237,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: ["Oracle Pools"],
     listedAt: 1668512038,
-    stablecoins: ["sigmausd"]
+    stablecoins: ["sigmausd"],
+    github: ["anon-real"]
   },
   {
     id: "2282",
@@ -20298,7 +20336,7 @@ const data2: Protocol[] = [
       //insured by Sherlock for upto $10m
       "https://github.com/sherlock-protocol/sherlock-reports/blob/main/coverage-agreements/Sentiment%20Coverage%20Agreement%20(Revised%202022.10.26).pdf",
     ],
-    listedAt: 1668540740
+    listedAt: 1668540740,
   },
   {
     id: "2286",
@@ -20408,7 +20446,8 @@ const data2: Protocol[] = [
     module: "ghostmarket.js",
     twitter: "ghostmarketio",
     forkedFrom: [],
-    listedAt: 1668700062
+    listedAt: 1668700062,
+    github: ["OnBlockIO"]
   },
   {
     id: "2291",
@@ -20434,7 +20473,8 @@ const data2: Protocol[] = [
       "https://www.certik.com/projects/voltz",
       "https://github.com/abdk-consulting/audits/blob/main/voltz/ABDK_Voltz_Project1_v_1_0.pdf"
     ],
-    listedAt: 1668700069
+    listedAt: 1668700069,
+    github: ["voltz-energy"]
   },
   {
     id: "2292",
@@ -20601,7 +20641,8 @@ const data2: Protocol[] = [
     audit_links: [
       "https://github.com/emdx-dex/perpetual-protocol/blob/emdx/main/audit/2021-12%20EMDX%20Protocol%20Audit.final.pdf"
     ],
-    listedAt: 1669035629
+    listedAt: 1669035629,
+    github: ["emdx-dex"]
   },
   {
     id: "2300",
@@ -20805,7 +20846,8 @@ const data2: Protocol[] = [
       "https://2926710696-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Ffrb9MGTK6eZJlEQJyylq%2Fuploads%2F1jfEDpGcd5YlnHusbKYO%2FNeodymeJito.pdf"
     ],
     oracles: [],
-    listedAt: 1669265429
+    listedAt: 1669265429,
+    github: ["jito-foundation"]
   },
   {
     id: "2309",
@@ -20832,6 +20874,7 @@ const data2: Protocol[] = [
     listedAt: 1669327585,
     stablecoins: ["iusd"],
     wrongLiquidity: true, // coingecko has the wrong address for it
+    github: ["IndigoProtocol"]
   },
   {
     id: "2310",
@@ -21122,7 +21165,8 @@ const data2: Protocol[] = [
     twitter: "openbookdex",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1669735243
+    listedAt: 1669735243,
+    github: ["openbook-dex"]
   },
   {
     id: "2323",
@@ -21310,7 +21354,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     oracles: ["Band"],
     audit_links: ["https://github.com/Bitlend-protocol/bitlend-audits"],
-    listedAt: 1670096665
+    listedAt: 1670096665,
+    github: ["Bitlend-protocol"]
   },
   {
     id: "2331",
@@ -21425,7 +21470,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     oracles: ["Pyth"],
     audit_links: ["https://github.com/Vital-block/Project-KYC-Verification/blob/main/ABEL%20FINANCE%20KYC%20CERTIFICATE.pdf", "https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ABEL%20FINANCE%20Audit-Report.pdf", "https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ABEL%20FINANCE%20Audit-Report.pdf"],
-    listedAt: 1670348069
+    listedAt: 1670348069,
+    github: ["abelfinance"]
   },
   {
     id: "2336",
@@ -21585,7 +21631,8 @@ const data2: Protocol[] = [
     twitter: "Vapor_DEX",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1670517161
+    listedAt: 1670517161,
+    github: ["VaporFi"]
   },
   {
     id: "2343",
@@ -21653,7 +21700,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     language: "Cairo",
-    listedAt: 1670544009
+    listedAt: 1670544009,
+    github: ["10k-swap"]
   },
   {
     id: "2346",
@@ -21925,7 +21973,8 @@ const data2: Protocol[] = [
     forkedFrom: ["AAVE V2"],
     oracles: ["Chainlink"],
     audit_links: ["https://github.com/RoeFinance/RoeMarkets/blob/main/reports/Akira-Roe-Report.pdf"],
-    listedAt: 1670855639
+    listedAt: 1670855639,
+    github: ["RoeFinance"]
   },
   {
     id: "2358",
@@ -22082,7 +22131,8 @@ const data2: Protocol[] = [
     twitter: "ButterNetworkio",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1671145989
+    listedAt: 1671145989,
+    github: ["butternetwork"]
   },
   {
     id: "2365",
@@ -22480,7 +22530,8 @@ const data2: Protocol[] = [
     twitter: "GeniusyieldO",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1671795512
+    listedAt: 1671795512,
+    github: ["geniusyield"]
   },
   {
     id: "2382",
@@ -22503,7 +22554,8 @@ const data2: Protocol[] = [
     forkedFrom: ["Compound"],
     oracles: ["Chainlink"],
     audit_links: ["http://odex.vip/?sign=6100531bc2e5bf8b94dd7a7b87b53577"],
-    listedAt: 1671807469
+    listedAt: 1671807469,
+    github: ["tender-finance"]
   },
   {
     id: "2383",
@@ -22572,7 +22624,8 @@ const data2: Protocol[] = [
     oracles: ["Chainlink"],
     treasury: "exactly.js",
     audit_links: ["https://github.com/exactly/audits"],
-    listedAt: 1671893480
+    listedAt: 1671893480,
+    github: ["exactly"]
   },
   {
     id: "2386",
@@ -22595,7 +22648,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://docs.sandclock.org/current/technical-documentation/security/external"],
-    listedAt: 1671893485
+    listedAt: 1671893485,
+    github: ["sandclock-org"]
   },
   {
     id: "2387",
@@ -23425,7 +23479,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "tonic/index.js",
     twitter: "tonicdex",
-    listedAt: 1673401554
+    listedAt: 1673401554,
+    github: ["tonic-foundation"]
   },
   {
     id: "2423",

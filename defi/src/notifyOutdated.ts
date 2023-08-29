@@ -1,7 +1,10 @@
-import findOutdated, { buildOutdatedMessage, getOutdated } from './utils/findOutdated'
+import { buildOutdatedMessage, getOutdated } from './utils/findOutdated'
 import { wrapScheduledLambda } from "./utils/shared/wrap";
 import {sendMessage} from "./utils/discord"
 import axios from 'axios'
+import protocols from './protocols/data';
+import { shuffleArray } from './utils/shared/shuffleArray';
+import invokeLambda from './utils/shared/invokeLambda';
 
 const maxDrift = 4 * 3600; // Max 4 updates missed
 const llamaRole = "<@&849669546448388107>"
@@ -12,13 +15,24 @@ const handler = async (_event: any) => {
   const hourlyOutdated = await getOutdated((60+20)*60); // 1hr
   await sendMessage(`${hourlyOutdated.length} adapters haven't updated their data in the last hour`, webhookUrl, false)
   await sendMessage(buildOutdatedMessage(hourlyOutdated) ?? "No protocols are outdated", process.env.HOURLY_OUTDATED_WEBHOOK!)
-  const message = await findOutdated(maxDrift)
+  const outdated = await getOutdated(maxDrift);
+  const message = buildOutdatedMessage(outdated)
   if (message !== null) {
     if(message.length >= 16000){
       await sendMessage(`${llamaRole} everything is broken REEEE`, webhookUrl, false)
     }
     await sendMessage(message, webhookUrl)
   }
+
+  const protocolIndexes = outdated.map(o=>o[3]).filter(o=>o<protocols.length); // remove treasuries
+  shuffleArray(protocolIndexes);
+  for (let i = 0; i < protocols.length; i += 40) {
+    const event = {
+      protocolIndexes: protocolIndexes.slice(i, i+40)
+    };
+    await invokeLambda(`defillama-prod-storeTvlInterval`, event);
+  }
+
   await checkBuildStatus(webhookUrl)
 };
 

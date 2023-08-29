@@ -24,6 +24,7 @@ async function main() {
 
   // we let the adapters take care of the blocks
   // await cacheCurrentBlocks() // cache current blocks for all chains - reduce #getBlock calls
+  await getCurrentBlock({ chains: []})
   await initializeSdkInternalCache() // initialize sdk cache - this will cache abi call responses and reduce the number of calls to the blockchain
   let i = 0
   let timeTaken = 0

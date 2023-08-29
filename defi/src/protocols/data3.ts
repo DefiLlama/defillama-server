@@ -16627,6 +16627,28 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/Secure3Audit/Secure3Academy/tree/main/audit_reports/ParaSpace%20Ape%20Yield"],
     listedAt: 1693238065
   },
+  {
+    id: "3450",
+    name: "Aerodrome",
+    address: "base:0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+    symbol: "AERO",
+    url: "https://aerodrome.finance/",
+    description: "A central trading and liquidity marketplace on Base.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/aerodrome.png`,
+    audits: "3",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Base"],
+    oracles: [],
+    forkedFrom: ["Solidly"],
+    module: "aerodrome/index.js",
+    twitter: "aerodromefi",
+    parentProtocol: "parent#velodrome",
+    listedAt: 1693274059
+  },
 ]
 
 export default data3

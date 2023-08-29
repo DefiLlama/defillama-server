@@ -30,6 +30,7 @@ async function main() {
   let timeTaken = 0
   const startTimeAll = Date.now() / 1e3
   sdk.log('tvl adapter count:', actions.length)
+  console.log('[test env] AVAX_RPC:', process.env.AVAX_RPC)
   const alwaysRun = (_adapterModule: any) => true
   const nonTronModules = (adapterModule: any) => !adapterModule.tron
   const tronModules = (adapterModule: any) => adapterModule.tron

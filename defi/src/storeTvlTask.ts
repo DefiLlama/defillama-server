@@ -10,7 +10,7 @@ import { getCurrentBlocks } from "@defillama/sdk/build/computeTVL/blocks";
 import * as sdk from '@defillama/sdk'
 import { clearPriceCache } from "./storeTvlInterval/computeTVL";
 
-const maxRetries = 3;
+const maxRetries = 2;
 
 const INTERNAL_CACHE_FILE = 'tvl-adapter-cache/sdk-cache.json'
 
@@ -42,7 +42,7 @@ async function main() {
       }
       // const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock(adapterModule);
       // NOTE: we are intentionally not fetching chain blocks, in theory this makes it easier for rpc calls as we no longer need to query at a particular block
-      const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({});
+      const { timestamp, ethereumBlock, chainBlocks } = await getCurrentBlock({ chains: []});
       await rejectAfterXMinutes(() => storeTvl(timestamp, ethereumBlock, chainBlocks, protocol, adapterModule, staleCoins, maxRetries,))
     } catch (e: any) { console.log('FAILED: ', protocol?.name, e?.message) }
     const timeTakenI = (+Date.now() - startTime) / 1e3

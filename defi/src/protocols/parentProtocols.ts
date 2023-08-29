@@ -2571,6 +2571,7 @@ const parentProtocols: IParentProtocol[] = [
     cmcId: null,
     chains: [],
     twitter: "AlienBaseDEX",
+    github: ["alienbase-xyz"]
   },
 ];
 

@@ -16692,6 +16692,28 @@ const data3: Protocol[] = [
     github: ["CygnusDAO"],
     listedAt: 1693318931
   },
+  {
+    id: "3453",
+    name: "Racoon.Bet",
+    address: null,
+    symbol: "-",
+    url: "https://www.racoon.bet",
+    description: "Racoon.Bet is a fully on-chain gaming platform governed by the Racoon NFTs DAO. It currently operates on 3 different blockchain within the Cosmos Ecosystem.",
+    chain: "Juno",
+    logo: `${baseIconsUrl}/racoon.bet.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Gaming",
+    chains: ["Juno"],
+    module: "dummy.js",
+    treasury: "racoon-bet.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "RacoonSupply",
+    listedAt: 1693318939
+  },
 ]
 
 export default data3

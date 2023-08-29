@@ -16670,6 +16670,28 @@ const data3: Protocol[] = [
     twitter: "AstarterDefiHub",
     listedAt: 1693279471
   },
+  {
+    id: "3452",
+    name: "CygnusDAO",
+    address: "polygon:0xc553a5A789f1BB56a72847b3FDA1DE3E16e6763f",
+    symbol: "CYG",
+    url: "https://cygnusdao.finance",
+    description: "CygnusDAO is a decentralized Stablecoin Lending and Leverage Trading protocol for LPs.",
+    chain: "Polygon",
+    logo: `${baseIconsUrl}/cygnusdao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Lending",
+    chains: ["Polygon"],
+    module: "cygnusdao/index.js",
+    oracles: ["Chainlink"],
+    forkedFrom: [],
+    twitter: "CygnusDAO",
+    github: ["CygnusDAO"],
+    listedAt: 1693318931
+  },
 ]
 
 export default data3

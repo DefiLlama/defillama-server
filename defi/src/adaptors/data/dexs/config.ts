@@ -1914,5 +1914,10 @@ export default {
     "yfx-v3": {
         "enabled": true,
         "id": "3429"
+    },
+    "swapbased": {
+        parentId: "SwapBased",
+        "enabled": true,
+        "id": "3328"
     }
 } as AdaptorsConfig

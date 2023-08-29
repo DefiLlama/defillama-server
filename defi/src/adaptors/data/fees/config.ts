@@ -1209,5 +1209,10 @@ export default {
         parentId: "GMX",
         "enabled": true,
         "id": "3365"
+    },
+    "swapbased": {
+        parentId: "SwapBased",
+        "enabled": true,
+        "id": "3328"
     }
 } as AdaptorsConfig

@@ -555,7 +555,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: "uxd-protocol-token",
     cmcId: "15028",
-    category: "Algo-Stables",
+    category: "Decentralized Stablecoin",
     chains: ["Solana"],
     module: "uxd/index.js",
     twitter: "UXDProtocol",

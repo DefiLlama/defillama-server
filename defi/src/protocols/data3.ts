@@ -16712,7 +16712,30 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "RacoonSupply",
+    github: ["racoon-supply-rac"],
     listedAt: 1693318939
+  },
+  {
+    id: "3454",
+    name: "Danogo",
+    address: null,
+    symbol: "-",
+    url: "https://danogo.io",
+    description: "Danogo is a decentralized CARDANO exchange for listing and trading Bond Token issued by Optim without central intermediaries.",
+    chain: "Cardano",
+    logo: `${baseIconsUrl}/danogo.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Cardano"],
+    module: "danogo/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "danogo_2023",
+    github: ["danogo2023"],
+    listedAt: 1693321887
   },
 ]
 

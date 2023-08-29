@@ -1175,9 +1175,9 @@ const parentProtocols: IParentProtocol[] = [
   {
     id: "parent#parax",
     name: "ParaX",
-    url: "https://para.space",
-    description: "ParaSpace is a permissionless universal, cross-margin NFT lending protocol that enables users to collateralize both ERC-721 and ERC-20 assets into a single portfolio to borrow against.",
-    logo: `${baseIconsUrl}/paraspace.jpg`,
+    url: "https://parax.ai",
+    description: "ParaX is an upgrade from ParaSpace. ParaX is an everything app for web3 application, aiming to provide a simpler DeFi experience for 1 billion users. ParaX is powered by account abstraction, making the DeFi experience more efficient, cheaper and safer.",
+    logo: `${baseIconsUrl}/parax.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],

@@ -14844,6 +14844,7 @@ const data3: Protocol[] = [
     twitter: "PreonFinance",
     forkedFrom: ["Liquity"],
     oracles: [],
+    stablecoins: ["star"],
     audit_links: ["https://docs.preon.finance/information/security#audits"],
     listedAt: 1691686281
   },

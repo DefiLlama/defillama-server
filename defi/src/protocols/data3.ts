@@ -16816,7 +16816,7 @@ const data3: Protocol[] = [
     cmcId: null,
     category: "Dexes",
     chains: ["Shibarium"],
-    module: "woof/index.js",
+    module: "woofswap/index.js",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
     twitter: "woofswap",

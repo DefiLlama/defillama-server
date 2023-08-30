@@ -1919,5 +1919,9 @@ export default {
         parentId: "SwapBased",
         "enabled": true,
         "id": "3328"
+    },
+    "danogo": {
+        "enabled": true,
+        "id": "3454"
     }
 } as AdaptorsConfig

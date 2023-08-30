@@ -2573,6 +2573,18 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "AlienBaseDEX",
     github: ["alienbase-xyz"]
   },
+  {
+    id: "parent#lybra-finance",
+    name: "Lybra Finance",
+    url: "https://lybra.finance",
+    description: "Lybra Finance is developing the next generation of Omnichain LSD-based stablecoins",
+    logo: `${baseIconsUrl}/lybra-finance.jpg`,
+    gecko_id: "lybra-finance",
+    cmcId: "24700",
+    chains: [],
+    twitter: "LybraFinanceLSD",
+    github: ["LybraFinance"],
+  },
 ];
 
 export default parentProtocols;

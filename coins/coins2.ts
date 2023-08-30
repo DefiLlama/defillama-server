@@ -25,7 +25,7 @@ type CoinDict = {
 
 export let redis: Redis;
 export let sql: postgres.Sql<{}>;
-export async function startup(): Promise<void> {
+export function startup(): void {
   const auth: string[] | undefined = process.env.COINS2_AUTH?.split(",");
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 

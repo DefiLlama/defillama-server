@@ -16843,6 +16843,48 @@ const data3: Protocol[] = [
     twitter: "dogswapshib",
     listedAt: 1693328575
   },
+  {
+    id: "3460",
+    name: "Woof Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.woof.finance/#/swap",
+    description: "DEX on Shibarium.",
+    chain: "Shibarium",
+    logo: `${baseIconsUrl}/woof-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shibarium"],
+    module: "woof/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "wooffinance",
+    listedAt: 1693390723
+  },
+  {
+    id: "3461",
+    name: "Basin DAO",
+    address: "base:0x4788de271F50EA6f5D5D2a5072B8D3C61d650326",
+    symbol: "BASIN",
+    url: "https://www.basinfinance.com",
+    description: "Basin DAO is proud to introduce BAI, a groundbreaking stablecoin deployed on Base Mainnet As the first overcollateralized Collateralized Debt Position (CDP) stablecoin on Base, BAI is designed to address key challenges in the existing stablecoin market by implementing a robust and secure framework.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/basin-dao.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "basin-finance",
+    cmcId: null,
+    category: "CDP",
+    chains: ["Base"],
+    module: "basinfinance/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "BasinOnBase",
+    listedAt: 1693390735
+  },
 ]
 
 export default data3

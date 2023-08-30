@@ -23524,7 +23524,8 @@ const data2: Protocol[] = [
     module: "lunafi/index.js",
     twitter: "LunaFi_Project",
     audit_links: ["https://hacken.io/audits/#lunafi"],
-    listedAt: 1673451772
+    listedAt: 1673451772,
+    github: ["Luna-Fi"]
   },
   {
     id: "2425",
@@ -23791,7 +23792,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://docs.arcade.xyz/docs/audit-reports"],
-    listedAt: 1673781145
+    listedAt: 1673781145,
+    github: ["arcadexyz", "PawnFi"]
   },
   /*
   {
@@ -24047,7 +24049,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://github.com/xBacked-DAO/xbacked-audits"],
-    listedAt: 1673954939
+    listedAt: 1673954939,
+    github: ["xbacked-dao", "xBacked-DAO"]
   },
   {
     id: "2448",
@@ -24577,7 +24580,8 @@ const data2: Protocol[] = [
     twitter: "bitindichain",
     oracles: [],
     forkedFrom: ["Uniswap V2"],
-    listedAt: 1674733691
+    listedAt: 1674733691,
+    github: ["bitindi"]
   },
   {
     id: "2471",
@@ -24970,7 +24974,8 @@ const data2: Protocol[] = [
     twitter: "StargazeZone",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1675310293
+    listedAt: 1675310293,
+    github: ["public-awesome"]
   },
   {
     id: "2488",
@@ -25226,7 +25231,8 @@ const data2: Protocol[] = [
     oracles: ["Ojo Oracle"],
     forkedFrom: [],
     audit_links: ["https://umeeversity.umee.cc/overview/umee-overview/security-audits.html"],
-    listedAt: 1675684784
+    listedAt: 1675684784,
+    github: ["umee-network"]
   },
   {
     id: "2499",
@@ -25271,6 +25277,7 @@ const data2: Protocol[] = [
     twitter: "BanklessHQ",
     oracles: [],
     forkedFrom: [],
+    github: ["BanklessDAO"]
   },
   {
     id: "2501",
@@ -25293,6 +25300,7 @@ const data2: Protocol[] = [
     twitter: "AragonProject",
     oracles: [],
     forkedFrom: [],
+    github: ["aragon", "aragonzkresearch"]
   },
   {
     id: "2502",
@@ -25338,6 +25346,7 @@ const data2: Protocol[] = [
     twitter: "PleasrDAO",
     oracles: [],
     forkedFrom: [],
+    github: ["PleasrDAO"]
   },
   {
     id: "2504",
@@ -25360,7 +25369,8 @@ const data2: Protocol[] = [
     twitter: "rarible",
     oracles: [],
     forkedFrom: [],
-    governanceID: ["snapshot:rarible.eth"]
+    governanceID: ["snapshot:rarible.eth"],
+    github: ["rarible"]
   },
   {
     id: "2505",
@@ -25686,7 +25696,8 @@ const data2: Protocol[] = [
     twitter: "gitcoin",
     oracles: [],
     forkedFrom: [],
-    governanceID: ["snapshot:gitcoindao.eth"]
+    governanceID: ["snapshot:gitcoindao.eth"],
+    github: ["gitcoinco"]
   },
   {
     id: "2519",
@@ -25710,6 +25721,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     governanceID: ["snapshot:ens.eth", 'eip155:1:0x323A76393544d5ecca80cd6ef2A560C6a395b7E3'],
+    github: ["ensdomains"]
   },
   {
     id: "2520",
@@ -25777,7 +25789,8 @@ const data2: Protocol[] = [
     twitter: "nounsdao",
     oracles: [],
     forkedFrom: [],
-    governanceID: ["eip155:1:0x6f3E6272A167e8AcCb32072d08E0957F9c79223d"]
+    governanceID: ["eip155:1:0x6f3E6272A167e8AcCb32072d08E0957F9c79223d"],
+    github: ["nounsDAO"]
   },
   {
     id: "2523",
@@ -25822,7 +25835,8 @@ const data2: Protocol[] = [
     twitter: "FWBtweets",
     oracles: [],
     forkedFrom: [],
-    governanceID: ["snapshot:friendswithbenefits.eth"]
+    governanceID: ["snapshot:friendswithbenefits.eth"],
+    github: ["friends-with-benefits"]
   },
   {
     id: "2525",
@@ -26026,6 +26040,7 @@ const data2: Protocol[] = [
     twitter: "THORWalletDEX",
     oracles: [],
     forkedFrom: [],
+    github: ["THORWallet"]
   },
   {
     id: "2534",
@@ -26331,7 +26346,8 @@ const data2: Protocol[] = [
       "https://github.com/thisisarchimedes/Archimedes_Finance/tree/main/audit"
     ],
     oracles: [],
-    listedAt: 1676665602
+    listedAt: 1676665602,
+    github: ["thisisarchimedes"]
   },
   {
     id: "2548",
@@ -26418,7 +26434,8 @@ const data2: Protocol[] = [
     twitter: "ash_swap",
     audit_links: ["https://docs.ashswap.io/resources/audit-report"],
     oracles: [],
-    listedAt: 1676732747
+    listedAt: 1676732747,
+    github: ["ashswap"]
   },
   {
     id: "2552",
@@ -26554,7 +26571,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://nexter.fi/docs/blocksec-audit-report.pdf", "https://nexter.fi/docs/slowmist-audit-report.pdf"],
-    listedAt: 1676983479
+    listedAt: 1676983479,
+    github: ["Bhavish-finance"]
   },
   {
     id: "2558",
@@ -26967,7 +26985,8 @@ const data2: Protocol[] = [
     twitter: "cypher_protocol",
     oracles: ["Pyth"],
     forkedFrom: [],
-    listedAt: 1677162923
+    listedAt: 1677162923,
+    github: ["chugach-foundation"]
   },
   {
     id: "2576",
@@ -27127,7 +27146,8 @@ const data2: Protocol[] = [
     twitter: "Truefeedback_io",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1677248276
+    listedAt: 1677248276,
+    github: ["TrueFeedBack"]
   },
   {
     id: "2583",
@@ -27201,7 +27221,8 @@ const data2: Protocol[] = [
       "https://github.com/Zharta/protocol-v1/blob/main/docs/audits/Zharta_SCAudit_Report_Final.pdf",
       "https://github.com/Zharta/protocol-v1/blob/main/docs/audits/Zharta%20-%20Audit%20Report%20Final.pdf"
     ],
-    listedAt: 1677302847
+    listedAt: 1677302847,
+    github: ["Zharta"]
   },
   {
     id: "2586",
@@ -27271,7 +27292,8 @@ const data2: Protocol[] = [
     twitter: "bisq_network",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1676983383
+    listedAt: 1676983383,
+    github: ["bisq-network"]
   },
   {
     id: "2589",
@@ -27293,7 +27315,8 @@ const data2: Protocol[] = [
     twitter: "dexalotcom",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1676985639
+    listedAt: 1676985639,
+    github: ["Dexalot"]
   },
   {
     id: "2590",
@@ -27548,6 +27571,7 @@ const data2: Protocol[] = [
     twitter: "symmetry_fi",
     audit_links: ["https://twitter.com/symmetry_fi/status/1593286912252461060"],
     listedAt: 1677438953,
+    github: ["symmetryinvestments"]
   },
   {
     id: "2601",
@@ -27655,7 +27679,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "rysk/index.js",
     twitter: "ryskfinance",
-    listedAt: 1677530240
+    listedAt: 1677530240,
+    github: ["rysk-finance"]
   },
   {
     id: "2606",
@@ -27721,7 +27746,8 @@ const data2: Protocol[] = [
     module: "streamflow/index.js",
     twitter: "streamflow_fi",
     audit_links: ["https://github.com/streamflow-finance/rust-sdk/blob/main/protocol_audit.pdf"],
-    listedAt: 1677586293
+    listedAt: 1677586293,
+    github: ["StreamFlow-Finance"]
   },
   {
     id: "2609",
@@ -27742,7 +27768,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "hord-fi/index.js",
     twitter: "HordApp",
-    listedAt: 1677586298
+    listedAt: 1677586298,
+    github: ["hord"]
   },
   {
     id: "2610",
@@ -27764,7 +27791,8 @@ const data2: Protocol[] = [
     module: "dummy.js",
     twitter: "ourZORA",
     listedAt: 1677604484,
-    governanceID: ["snapshot:zora.eth"]
+    governanceID: ["snapshot:zora.eth"],
+    github: ["ourzora"]
   },
   {
     id: "2611",
@@ -27831,7 +27859,8 @@ const data2: Protocol[] = [
     module: "MellowProtocol/index.js",
     twitter: "mellowprotocol",
     audit_links: ["https://github.com/mellow-finance/mellow-audits"],
-    listedAt: 1677607439
+    listedAt: 1677607439,
+    github: ["mellow-finance"]
   },
   {
     id: "2614",
@@ -27852,7 +27881,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "grappa-finance/index.js",
     twitter: "grappafinance",
-    listedAt: 1677611970
+    listedAt: 1677611970,
+    github: ["grappafinance"]
   },
   {
     id: "2615",
@@ -28674,7 +28704,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "numoen/index.js",
     twitter: "numoen",
-    listedAt: 1678371764
+    listedAt: 1678371764,
+    github: ["Numoen"]
   },
   {
     id: "2652",
@@ -28955,6 +28986,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "forta/index.js",
     twitter: "FortaNetwork",
+    github: ["forta-network"]
   },
   {
     id: "2665",
@@ -29162,7 +29194,8 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     audit_links: ["https://www.certik.com/projects/metacoinswap"],
-    listedAt: 1678822025
+    listedAt: 1678822025,
+    github: ["MetacoinPlatform"]
   },
   {
     id: "2674",
@@ -29699,7 +29732,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "bond-protocol/index.js",
     twitter: "Bond_Protocol",
-    listedAt: 1679351635
+    listedAt: 1679351635,
+    github: ["Bond-Protocol"]
   },
   {
     id: "2698",

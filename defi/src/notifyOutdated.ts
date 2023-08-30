@@ -24,7 +24,7 @@ const handler = async (_event: any) => {
     await sendMessage(message, webhookUrl)
   }
 
-  const protocolIndexes = outdated.map(o=>o[3]).filter(o=>o<protocols.length); // remove treasuries
+  const protocolIndexes = (await getOutdated(6 * 3600)).map(o=>o[3]).filter(o=>o<protocols.length); // remove treasuries
   shuffleArray(protocolIndexes);
   for (let i = 0; i < protocols.length; i += 40) {
     const event = {

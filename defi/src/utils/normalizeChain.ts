@@ -1846,9 +1846,9 @@ export const chainCoingeckoIds = {
     categories: ["EVM"],
   },
   "MVC": {
-    geckoId: null,
-    symbol: null,
-    cmcId: null,
+    geckoId: "microvisionchain",
+    symbol: "SPACE",
+    cmcId: "24193",
     categories: ["Cosmos"],
   },
 } as unknown as {

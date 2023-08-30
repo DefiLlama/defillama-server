@@ -1218,5 +1218,9 @@ export default {
     "danogo": {
         "enabled": true,
         "id": "3454"
+    },
+    "sharesgram": {
+        "enabled": true,
+        "id": "3464"
     }
 } as AdaptorsConfig

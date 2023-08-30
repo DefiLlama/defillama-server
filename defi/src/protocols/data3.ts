@@ -16929,6 +16929,27 @@ const data3: Protocol[] = [
     github: ["Tutellus"],
     listedAt: 1693395398
   },
+  {
+    id: "3464",
+    name: "SharesGram",
+    address: null,
+    symbol: "-",
+    url: "https://twitter.com/SharesGram",
+    description: "Experience the real SocialFi on Telegram. Unlock the full potential of your shares.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/sharesgram.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Services",
+    chains: ["Base"],
+    module: "sharesgram/index.js",
+    oracles: [],
+    forkedFrom: ["friend.tech"],
+    twitter: "SharesGram",
+    listedAt: 1693402734
+  },
 ]
 
 export default data3

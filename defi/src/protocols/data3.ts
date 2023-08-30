@@ -16950,6 +16950,27 @@ const data3: Protocol[] = [
     twitter: "SharesGram",
     listedAt: 1693402734
   },
+  {
+    id: "3465",
+    name: "Kinetix",
+    address: null,
+    symbol: "-",
+    url: "https://kinetix.finance/",
+    description: "A DeFi Hub for Kava",
+    chain: "Kava",
+    logo: `${baseIconsUrl}/kinetix.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Kava"],
+    module: "kinetix/index.js",
+    oracles: [],
+    forkedFrom: ["GMX V1"],
+    twitter: "KinetixFi",
+    listedAt: 1693433723
+  },
 ]
 
 export default data3

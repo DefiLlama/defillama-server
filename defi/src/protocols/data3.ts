@@ -16647,7 +16647,6 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "aerodrome/index.js",
     twitter: "aerodromefi",
-    parentProtocol: "parent#velodrome",
     listedAt: 1693274059
   },
   {

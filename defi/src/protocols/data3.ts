@@ -17132,7 +17132,7 @@ const data3: Protocol[] = [
     description: "The end game for liquid staking tokens. A non-custodial and decentralized Ethereum LST-backed stablecoin.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/prisma-finance.jpg`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
     gecko_id: null,
     cmcId: null,
@@ -17142,6 +17142,11 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "PrismaFi",
+    github: ["prisma-fi"],
+    audit_links: [
+      "https://github.com/prisma-fi/audits/blob/main/audit-nomoi.pdf",
+      "https://github.com/prisma-fi/audits/blob/main/audit-zellic.pdf"
+    ],
     listedAt: 1693488775
   },
 ]

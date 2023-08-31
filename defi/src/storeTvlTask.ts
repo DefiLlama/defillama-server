@@ -143,7 +143,7 @@ async function filterProtocol(adapterModule: any, protocol: any) {
 
   let tvlHistkeys = ['tvl', 'tvlPrev1Hour', 'tvlPrev1Day', 'tvlPrev1Week']
   // let tvlNowKeys = ['tvl', 'staking', 'pool2']
-  const getMax = (({ record: i }: any, keys = tvlHistkeys) => Math.max(...keys.map(k => i[k] ?? 0)))
+  const getMax = ((i : any, keys = tvlHistkeys) => Math.max(...keys.map(k => i[k] ?? 0)))
   const lastRecord = await getLastRecord(hourlyTvl(protocol.id))
   // for whatever reason if latest tvl record is not found, run tvl adapter
   if (!lastRecord)

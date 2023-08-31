@@ -300,6 +300,7 @@ export async function writeCoins2(
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
     : values;
+  startup();
   const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
   values = cleanConfidences(values, storedRecords);
   const writesToRedis = findRedisWrites(values, storedRecords);
@@ -309,6 +310,7 @@ export async function writeCoins2(
   });
 
   await Promise.all([writeToPostgres(values), writeToRedis(strings)]);
+  await windDown();
 }
 export async function batchWrite2(
   values: Coin[],

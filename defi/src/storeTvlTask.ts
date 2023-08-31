@@ -168,3 +168,9 @@ async function filterProtocol(adapterModule: any, protocol: any) {
 
   return true
 }
+
+// Absolutely bad code: workaround for aws-sdk crashing with ThrottlingException
+process.on('uncaughtException', (err) => {
+  console.log(err.name, err.message);
+  console.log('UNHANDLED EXCEPTION! Shutting down...');
+})

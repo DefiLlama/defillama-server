@@ -4500,7 +4500,7 @@ const data: Protocol[] = [
     name: "SecretSwap",
     address: "0x773258b03c730f84af10dfcb1bfaa7487558b8ac",
     symbol: "SEFI",
-    url: "https://www.secretswap.io/",
+    url: "https://secretswap.net",
     description:
       "SecretSwap is the first front-running resistant, cross-chain and privacy-first AMM - secured by Secret Network.",
     chain: "Secret",
@@ -4512,8 +4512,7 @@ const data: Protocol[] = [
     category: "Dexes",
     chains: ["Secret"],
     module: "secretswap.js",
-    twitter: "SecretNetwork",
-    deadUrl: true
+    twitter: "secret_swap"
   },
   {
     id: "317",

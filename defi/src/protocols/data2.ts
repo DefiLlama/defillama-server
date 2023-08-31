@@ -23455,8 +23455,8 @@ const data2: Protocol[] = [
     chains: ["Binance"],
     oracles: [],
     forkedFrom: [],
-    module: "Revoluzion/index.js",
-    treasury: "dummy.js",
+    module: "dummy.js",
+    treasury: "revoluzion.js",
     twitter: "RevoluzionEco",
     audit_links: ["https://github.com/cyberscope-io/audits/blob/main/rvz/audit.pdf"],
     listedAt: 1673372523

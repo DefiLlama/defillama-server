@@ -17038,6 +17038,27 @@ const data3: Protocol[] = [
     stablecoins: ["eusdv2"],
     listedAt: 1693434433
   },
+  {
+    id: "3469",
+    name: "BoneDex",
+    address: "shibarium:0x30750665E3E679481aC8EdFf804CbD00c673EA05",
+    symbol: "BONED",
+    url: "https://www.bonedex.pro/",
+    description: "BoneDex is a Shibarium-native AMM built for the SHIB ecosystem",
+    chain: "Shibarium",
+    logo: `${baseIconsUrl}/bonedex.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shibarium"],
+    module: "bonedex/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "bonedex_shib",
+    listedAt: 1693453632
+  },
 ]
 
 export default data3

@@ -2584,6 +2584,7 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "LybraFinanceLSD",
     github: ["LybraFinance"],
+    stablecoins: ["peg-eusd"],
   },
 ];
 

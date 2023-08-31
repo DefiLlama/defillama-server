@@ -23,18 +23,17 @@ type CoinDict = {
   [key: string]: Coin;
 };
 
-export let redis: Redis;
-export let sql: postgres.Sql<{}>;
+let redis: Redis;
+let sql: postgres.Sql<{}>;
 export async function startup(): Promise<void> {
   const auth: string[] | undefined = process.env.COINS2_AUTH?.split(",");
   if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 
-  if (!redis)
-    redis = new Redis({
-      port: 6379,
-      host: auth[1],
-      password: auth[2],
-    });
+  redis = new Redis({
+    port: 6379,
+    host: auth[1],
+    password: auth[2],
+  });
 
   if (!sql) sql = postgres(auth[0]);
 }
@@ -228,6 +227,9 @@ async function readCoins2(
   values: Coin[],
   batchPostgresReads: boolean = true,
 ): Promise<CoinDict> {
+  console.log("opening connection");
+  startup();
+  console.log("connection opened");
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
   const redisData: CoinDict = await queryRedis(currentQueries);
@@ -303,9 +305,6 @@ export async function writeCoins2(
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
     : values;
-  console.log("opening connection");
-  startup();
-  console.log("connection opened");
   const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
   values = cleanConfidences(values, storedRecords);
   const writesToRedis = findRedisWrites(values, storedRecords);
@@ -316,7 +315,6 @@ export async function writeCoins2(
 
   await writeToPostgres(values);
   await writeToRedis(strings);
-  // await Promise.all([writeToPostgres(values), writeToRedis(strings)]);
   console.log("closing connection");
   await windDown();
   console.log("connection closed");

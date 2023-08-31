@@ -1,10 +1,10 @@
 {
   "shibarium": {
     "0x0000000000000000000000000000000000000000": {
-      "name": "Shiba Inu",
+      "name": "Bone Shibaswap",
       "decimals": "18",
-      "symbol": "SHIB",
-      "to": "coingecko#shiba-inu"
+      "symbol": "BONE",
+      "to": "coingecko#bone-shibaswap"
     }
   }
 }

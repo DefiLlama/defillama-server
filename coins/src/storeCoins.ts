@@ -8,14 +8,12 @@ import { filterWritesWithLowConfidence } from "./adapters/utils/database";
 import { sendMessage } from "./../../defi/src/utils/discord";
 import { withTimeout } from "./../../defi/src/utils/shared/withTimeout";
 import setEnvSecrets from "./../../defi/src/utils/shared/setEnvSecrets";
-import { startup, windDown } from "../coins2";
 
 const step = 2000;
 const timeout = process.env.LLAMA_RUN_LOCAL ? 8400000 : 840000; //14mins
 
 export default async function handler(event: any) {
   await setEnvSecrets();
-  await startup();
   const a = Object.entries(adapters);
   const timestamp = 0;
   await Promise.all(
@@ -52,8 +50,6 @@ export default async function handler(event: any) {
       }
     }),
   );
-  await windDown();
-  console.log("connections closed");
 }
 
 // ts-node coins/src/storeCoins.ts

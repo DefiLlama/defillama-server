@@ -12,7 +12,7 @@ import { getCurrentUnixTimestamp, toUNIXTimestamp } from "./utils/date";
 import { Connection, PublicKey, Keypair } from "@solana/web3.js";
 import { Write } from "./adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "./adapters/utils/database";
-import { batchWrite2, startup, windDown } from "../coins2";
+import { batchWrite2 } from "../coins2";
 import setEnvSecrets from "../../defi/src/utils/shared/setEnvSecrets";
 
 let solanaConnection = new Connection(
@@ -346,7 +346,6 @@ const handler = (hourly: boolean) => async (
   const timer = setTimer();
   const requests = [];
   await setEnvSecrets();
-  await startup();
   if (hourly) {
     const hourlyCoins = [];
     for (let i = 0; i < coins.length; i += step) {
@@ -381,7 +380,6 @@ const handler = (hourly: boolean) => async (
       );
     }
   }
-  await windDown();
 };
 
 /*

@@ -116,8 +116,16 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
   const keys: string[] = values.map((v: Coin) => v.key);
 
   console.log(`${values.length} queried`);
-  let res = await redis.mget(keys);
-  console.log("mget finished");
+
+  let res;
+  try {
+    res = await redis.mget(keys);
+    console.log("mget finished");
+  } catch {
+    startup();
+    res = await redis.mget(keys);
+    console.log("mget finished");
+  }
   const jsonValues: { [key: string]: Coin } = {};
   res.map((v: string | null) => {
     if (!v) return;

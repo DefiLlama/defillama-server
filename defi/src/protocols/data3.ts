@@ -17124,6 +17124,27 @@ const data3: Protocol[] = [
     twitter: "shibfi",
     listedAt: 1693488755
   },
+  {
+    id: "3473",
+    name: "Prisma Finance",
+    address: null,
+    symbol: "-",
+    url: "https://prismafinance.com",
+    description: "The end game for liquid staking tokens. A non-custodial and decentralized Ethereum LST-backed stablecoin.",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/prisma-finance.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "CDP",
+    chains: ["Ethereum"],
+    module: "prisma/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "PrismaFi",
+    listedAt: 1693488775
+  },
 ]
 
 export default data3

@@ -1222,5 +1222,9 @@ export default {
     "sharesgram": {
         "enabled": true,
         "id": "3464"
+    },
+    "tigris": {
+        "enabled": true,
+        "id": "3129"
     }
 } as AdaptorsConfig

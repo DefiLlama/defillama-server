@@ -38,3 +38,4 @@ export default async function test() {
   await windDown();
   console.log("connections closed");
 }
+test();

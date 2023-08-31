@@ -1,2 +1,10 @@
 {
+  "shibarium": {
+    "0x0000000000000000000000000000000000000000": {
+      "name": "Shiba Inu",
+      "decimals": "18",
+      "symbol": "SHIB",
+      "to": "coingecko#shiba-inu"
+    }
+  }
 }

@@ -20562,7 +20562,7 @@ const data2: Protocol[] = [
     address: "arbitrum:0x83d6c8c06ac276465e4c92e7ac8c23740f435140",
     symbol: "HMX",
     url: "https://hmx.org/arbitrum",
-    description: "(Previous perp88) The Next-Gen Decentralized Perpetual Exchange Trade Crypto, FX, Equity, and Commodity with up to 1,000x leverage on Arbitrum",
+    description: " HMX (previous perp88) is a next-gen decentralized perpetual exchange with a cross-margin and multi-asset collateral support on Arbitrum, offering up to 1,000x leverage various asset classes. Additionally, HMX also supports the leveraged market making feature, which allows market makers to maximize their real yields generated from protocol revenue of both HMX and GMX, while also offering multiple LP protection mechanisms, such as a velocity-based funding fee and adaptive pricing, to protect market makers from undue risks.",
     chain: "Polygon",
     logo: `${baseIconsUrl}/hmx.jpg`,
     audits: "0",

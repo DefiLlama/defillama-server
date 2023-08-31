@@ -46,6 +46,9 @@ export async function getOutdated(maxDrift: number){
   const now = toUNIXTimestamp(Date.now());
   const outdated = [] as [string, InfoProtocol, boolean, number][];
   await Promise.all(protocols.concat(treasuries).map(async (protocol, index) => {
+    if(protocol.rugged === true || protocol.module === "dummy.js"){
+      return 
+    }
     const item = await getLastRecord(hourlyTvl(protocol.id));
     let text: InfoProtocol;
     if (item === undefined) {
@@ -59,6 +62,9 @@ export async function getOutdated(maxDrift: number){
       return
     }
     const module = await importAdapter(protocol)
+    if(module.deadFrom){
+      return
+    }
     const refillable = !(module.fetch || module.timetravel === false)
     outdated.push([protocol.name, text, refillable, index])
   }))

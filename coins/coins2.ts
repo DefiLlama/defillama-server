@@ -118,6 +118,7 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
 
   console.log(`${values.length} queried`);
   let res = await redis.mget(keys);
+  console.log("mget finished");
   const jsonValues: { [key: string]: Coin } = {};
   res.map((v: string | null) => {
     if (!v) return;
@@ -281,7 +282,9 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
 }
 async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
   if (Object.keys(strings).length == 0) return;
+  console.log("starting mset");
   await redis.mset(strings);
+  console.log("mset finished");
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
@@ -300,7 +303,9 @@ export async function writeCoins2(
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
     : values;
+  console.log("opening connection");
   startup();
+  console.log("connection opened");
   const storedRecords = await readCoins2(cleanValues, batchPostgresReads);
   values = cleanConfidences(values, storedRecords);
   const writesToRedis = findRedisWrites(values, storedRecords);
@@ -309,8 +314,12 @@ export async function writeCoins2(
     strings[v.key] = JSON.stringify(v);
   });
 
-  await Promise.all([writeToPostgres(values), writeToRedis(strings)]);
+  await writeToPostgres(values);
+  await writeToRedis(strings);
+  // await Promise.all([writeToPostgres(values), writeToRedis(strings)]);
+  console.log("closing connection");
   await windDown();
+  console.log("connection closed");
 }
 export async function batchWrite2(
   values: Coin[],

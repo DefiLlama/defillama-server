@@ -17169,6 +17169,7 @@ const data3: Protocol[] = [
     module: "levana/index.js",
     oracles: ["Pyth"],
     forkedFrom: [],
+    github: ["Levana-Protocol"],
     twitter: "Levana_protocol",
     audit_links: [
       "https://docs.levana.finance/audits"

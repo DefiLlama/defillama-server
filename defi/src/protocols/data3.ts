@@ -17239,6 +17239,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Liquity"],
     twitter: "0xAlternity",
     github: ["0xAlternity"],
+    stablecoins: ["alternity-cny"],
     listedAt: 1693576999
   },
   {

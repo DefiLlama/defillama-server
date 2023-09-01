@@ -2597,6 +2597,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "AstarterDefiHub",
   },
+  {
+    id: "parent#myso",
+    name: "MYSO",
+    url: "https://www.myso.finance",
+        description:"We're building a liquidation-free, fixed-interest and oracle-free borrowing solution. Borrowers are freed from liquidation risk while liquidity providers gain exposure to a passive option writing strategy, unlocking option selling as a sustainable yield source.",
+    logo: `${baseIconsUrl}/myso.jpg`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "MysoFinance",
+  },
 ];
 
 export default parentProtocols;

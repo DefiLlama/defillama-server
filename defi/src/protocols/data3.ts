@@ -17035,7 +17035,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Liquity"],
     twitter: "LybraFinanceLSD",
     parentProtocol: "parent#lybra-finance",
-    stablecoins: ["eusdv2"],
+    stablecoins: ["eusd-(v2)"],
     listedAt: 1693434433
   },
   {

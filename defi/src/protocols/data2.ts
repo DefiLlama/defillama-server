@@ -23729,14 +23729,14 @@ const data2: Protocol[] = [
   },
   {
     id: "2434",
-    name: "MYSO",
+    name: "MYSO~V1",
     address: null,
     symbol: "-",
     url: "https://www.myso.finance",
     description:
       "We're building a liquidation-free, fixed-interest and oracle-free borrowing solution. Borrowers are freed from liquidation risk while liquidity providers gain exposure to a passive option writing strategy, unlocking option selling as a sustainable yield source.",
     chain: "Ethereum",
-    logo: `${baseIconsUrl}/myso.jpg`,
+    logo: `${baseIconsUrl}/myso-v1.jpg`,
     audits: "2",
     audit_note: null,
     gecko_id: null,
@@ -23747,6 +23747,7 @@ const data2: Protocol[] = [
     twitter: "MysoFinance",
     oracles: [],
     forkedFrom: [],
+    parentProtocol: "parent#myso",
     audit_links: ["https://chainsecurity.com/security-audit/myso-finance-core-v1/"],
     listedAt: 1673623208
   },

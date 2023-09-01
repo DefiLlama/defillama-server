@@ -16651,13 +16651,13 @@ const data3: Protocol[] = [
   },
   {
     id: "3451",
-    name: "Astarter",
+    name: "Astarter Launch",
     address: "cardano:-",
     symbol: "AA",
     url: "https://astarter.io/",
     description: "Astarter is a key DeFi infrastructure hub on Cardano that features four core applications: Launchpad(Launchpool), DEX, Money Market & Tech Service Platform, with the backing of EMURGO, a founding entity of the Cardano protocol. Astarter aims to elevate its contribution and bring broader possibilities to the Cardano ecosystem by providing fair, safe, and accessible open finance services to meet existing and future demand in accelerating DeFi apps to empower the next generation of projects built on Cardano.",
     chain: "Cardano",
-    logo: `${baseIconsUrl}/astarter.png`,
+    logo: `${baseIconsUrl}/astarter-launch.jpg`,
     audits: "0",
     audit_note: null,
     gecko_id: null,
@@ -16667,6 +16667,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "astarter/index.js",
+    parentProtocol: "parent#astarter",
     twitter: "AstarterDefiHub",
     listedAt: 1693279471
   },
@@ -17258,6 +17259,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "AstarterDefiHub",
+    parentProtocol: "parent#astarter",
     listedAt: 1693577005
   },
   {
@@ -17280,6 +17282,7 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     twitter: "MysoFinance",
+    parentProtocol: "parent#myso",
     listedAt: 1693577010
   },
 ]

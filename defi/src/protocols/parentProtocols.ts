@@ -2586,6 +2586,17 @@ const parentProtocols: IParentProtocol[] = [
     github: ["LybraFinance"],
     stablecoins: ["peg-eusd"],
   },
+  {
+    id: "parent#astarter",
+    name: "Astarter",
+    url: "https://astarter.io/",
+    description: "Astarter is a key DeFi infrastructure hub on Cardano that features four core applications: Launchpad(Launchpool), DEX, Money Market & Tech Service Platform, with the backing of EMURGO, a founding entity of the Cardano protocol. Astarter aims to elevate its contribution and bring broader possibilities to the Cardano ecosystem by providing fair, safe, and accessible open finance services to meet existing and future demand in accelerating DeFi apps to empower the next generation of projects built on Cardano.",
+    logo: `${baseIconsUrl}/astarter.png`,
+    gecko_id: null,
+    cmcId: null,
+    chains: [],
+    twitter: "AstarterDefiHub",
+  },
 ];
 
 export default parentProtocols;

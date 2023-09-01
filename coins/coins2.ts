@@ -25,12 +25,7 @@ type CoinDict = {
 
 let redis: Redis;
 let sql: postgres.Sql<{}>;
-const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
-if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 
-async function windDown(): Promise<void> {
-  await Promise.all([redis.quit(), sql.end()]);
-}
 export async function translateItems(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
 ): Promise<Coin[]> {
@@ -108,19 +103,17 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
 
   // console.log(`${values.length} queried`);
 
-  let res;
-  try {
-    res = await redis.mget(keys);
-    console.log("mget finished");
-  } catch {
-    redis = new Redis({
-      port: 6379,
-      host: auth[1],
-      password: auth[2],
-    });
-    res = await redis.mget(keys);
-    console.log("mget finished");
-  }
+  const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
+  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
+
+  redis = new Redis({
+    port: 6379,
+    host: auth[1],
+    password: auth[2],
+  });
+  let res = await redis.mget(keys);
+  // console.log("mget finished");
+  redis.quit();
   const jsonValues: { [key: string]: Coin } = {};
   res.map((v: string | null) => {
     if (!v) return;
@@ -146,55 +139,32 @@ async function queryPostgres(
 
   let data: Coin[] = [];
 
+  const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
+  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
+
   if (batchPostgresReads) {
-    try {
-      data = await sql`
+    sql = postgres(auth[0]);
+    data = await sql`
         select ${sql(pgColumns)} from main where 
         key in ${sql(values.map((v: Coin) => v.key))}
         and timestamp < ${upper}
         and timestamp > ${lower}
       `;
-    } catch {
-      console.log("creating a new pg instance");
-      sql = postgres(auth[0]);
-      console.log("created a new pg instance");
-      data = await sql`
-        select ${sql(pgColumns)} from main where 
-        key in ${sql(values.map((v: Coin) => v.key))}
-        and timestamp < ${upper}
-        and timestamp > ${lower}
-      `;
-    }
   } else {
-    try {
-      for (let i = 0; i < values.length; i++) {
-        const read = await sql`
+    sql = postgres(auth[0]);
+    for (let i = 0; i < values.length; i++) {
+      const read = await sql`
           select ${sql(pgColumns)} from main where 
           key = ${values[i].key}
           and timestamp < ${upper}
           and timestamp > ${lower}
         `;
-        if (read.count) {
-          data.push(read as any);
-        }
-      }
-    } catch {
-      console.log("creating a new pg instance");
-      sql = postgres(auth[0]);
-      console.log("created a new pg instance");
-      for (let i = 0; i < values.length; i++) {
-        const read = await sql`
-          select ${sql(pgColumns)} from main where 
-          key = ${values[i].key}
-          and timestamp < ${upper}
-          and timestamp > ${lower}
-        `;
-        if (read.count) {
-          data.push(read as any);
-        }
+      if (read.count) {
+        data.push(read as any);
       }
     }
   }
+  sql.end();
   console.log(`${data.length} found in PG`);
 
   let dict: CoinDict = {};
@@ -313,38 +283,35 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
 }
 async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
   if (Object.keys(strings).length == 0) return;
-  console.log("starting mset");
-  try {
-    await redis.mset(strings);
-  } catch {
-    console.log("opening a new redis instance");
-    redis = new Redis({
-      port: 6379,
-      host: auth[1],
-      password: auth[2],
-    });
-    await redis.mset(strings);
-  }
-  console.log("mset finished");
+  // console.log("starting mset");
+
+  const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
+  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
+
+  redis = new Redis({
+    port: 6379,
+    host: auth[1],
+    password: auth[2],
+  });
+  await redis.mset(strings);
+  redis.quit();
+  // console.log("mset finished");
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
-  try {
-    await sql`
+
+  const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
+  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
+
+  // console.log("creating a new pg instance");
+  sql = postgres(auth[0]);
+  // console.log("created a new pg instance");
+  await sql`
       insert into main
       ${sql(values, "key", "timestamp", "price", "confidence")}
       on conflict (key, timestamp) do nothing
       `;
-  } catch {
-    console.log("creating a new pg instance");
-    sql = postgres(auth[0]);
-    console.log("created a new pg instance");
-    await sql`
-      insert into main
-      ${sql(values, "key", "timestamp", "price", "confidence")}
-      on conflict (key, timestamp) do nothing
-      `;
-  }
+  sql.end();
 }
 export async function writeCoins2(
   values: Coin[],
@@ -365,9 +332,6 @@ export async function writeCoins2(
 
   await writeToPostgres(values);
   await writeToRedis(strings);
-  // console.log("closing connection");
-  await windDown();
-  console.log("connection closed");
 }
 export async function batchWrite2(
   values: Coin[],

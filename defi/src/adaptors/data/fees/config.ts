@@ -1226,5 +1226,9 @@ export default {
     "tigris": {
         "enabled": true,
         "id": "3129"
+    },
+    "aerodrome": {
+        "enabled": true,
+        "id": "3450"
     }
 } as AdaptorsConfig

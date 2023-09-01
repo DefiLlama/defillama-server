@@ -23729,7 +23729,7 @@ const data2: Protocol[] = [
   },
   {
     id: "2434",
-    name: "MYSO~V1",
+    name: "MYSO V1",
     address: null,
     symbol: "-",
     url: "https://www.myso.finance",

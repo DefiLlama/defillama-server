@@ -25,19 +25,10 @@ type CoinDict = {
 
 let redis: Redis;
 let sql: postgres.Sql<{}>;
-export async function startup(): Promise<void> {
-  const auth: string[] | undefined = process.env.COINS2_AUTH?.split(",");
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
+const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
+if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 
-  redis = new Redis({
-    port: 6379,
-    host: auth[1],
-    password: auth[2],
-  });
-
-  if (!sql) sql = postgres(auth[0]);
-}
-export async function windDown(): Promise<void> {
+async function windDown(): Promise<void> {
   await Promise.all([redis.quit(), sql.end()]);
 }
 export async function translateItems(
@@ -107,7 +98,7 @@ export async function translateItems(
     });
   });
 
-  console.error(`${errors.length} errors in translating to coins2`);
+  // console.error(`${errors.length} errors in translating to coins2`);
 
   return remapped;
 }
@@ -115,14 +106,18 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
   if (values.length == 0) return {};
   const keys: string[] = values.map((v: Coin) => v.key);
 
-  console.log(`${values.length} queried`);
+  // console.log(`${values.length} queried`);
 
   let res;
   try {
     res = await redis.mget(keys);
     console.log("mget finished");
   } catch {
-    startup();
+    redis = new Redis({
+      port: 6379,
+      host: auth[1],
+      password: auth[2],
+    });
     res = await redis.mget(keys);
     console.log("mget finished");
   }
@@ -152,22 +147,51 @@ async function queryPostgres(
   let data: Coin[] = [];
 
   if (batchPostgresReads) {
-    data = await sql`
-      select ${sql(pgColumns)} from main where 
-      key in ${sql(values.map((v: Coin) => v.key))}
-      and timestamp < ${upper}
-      and timestamp > ${lower}
-    `;
-  } else {
-    for (let i = 0; i < values.length; i++) {
-      const read = await sql`
+    try {
+      data = await sql`
         select ${sql(pgColumns)} from main where 
-        key = ${values[i].key}
+        key in ${sql(values.map((v: Coin) => v.key))}
         and timestamp < ${upper}
         and timestamp > ${lower}
       `;
-      if (read.count) {
-        data.push(read as any);
+    } catch {
+      console.log("creating a new pg instance");
+      sql = postgres(auth[0]);
+      console.log("created a new pg instance");
+      data = await sql`
+        select ${sql(pgColumns)} from main where 
+        key in ${sql(values.map((v: Coin) => v.key))}
+        and timestamp < ${upper}
+        and timestamp > ${lower}
+      `;
+    }
+  } else {
+    try {
+      for (let i = 0; i < values.length; i++) {
+        const read = await sql`
+          select ${sql(pgColumns)} from main where 
+          key = ${values[i].key}
+          and timestamp < ${upper}
+          and timestamp > ${lower}
+        `;
+        if (read.count) {
+          data.push(read as any);
+        }
+      }
+    } catch {
+      console.log("creating a new pg instance");
+      sql = postgres(auth[0]);
+      console.log("created a new pg instance");
+      for (let i = 0; i < values.length; i++) {
+        const read = await sql`
+          select ${sql(pgColumns)} from main where 
+          key = ${values[i].key}
+          and timestamp < ${upper}
+          and timestamp > ${lower}
+        `;
+        if (read.count) {
+          data.push(read as any);
+        }
       }
     }
   }
@@ -226,7 +250,7 @@ async function combineRedisAndPostgresData(
       combinedData[r.key] = r;
       return;
     }
-    console.log(`${r.key} is stale`);
+    // console.log(`${r.key} is stale`);
   });
 
   return combinedData;
@@ -235,9 +259,6 @@ async function readCoins2(
   values: Coin[],
   batchPostgresReads: boolean = true,
 ): Promise<CoinDict> {
-  console.log("opening connection");
-  startup();
-  console.log("connection opened");
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
   const redisData: CoinDict = await queryRedis(currentQueries);
@@ -293,7 +314,17 @@ function cleanConfidences(values: Coin[], storedRecords: CoinDict): Coin[] {
 async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
   if (Object.keys(strings).length == 0) return;
   console.log("starting mset");
-  await redis.mset(strings);
+  try {
+    await redis.mset(strings);
+  } catch {
+    console.log("opening a new redis instance");
+    redis = new Redis({
+      port: 6379,
+      host: auth[1],
+      password: auth[2],
+    });
+    await redis.mset(strings);
+  }
   console.log("mset finished");
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
@@ -309,7 +340,7 @@ export async function writeCoins2(
   batchPostgresReads: boolean = true,
   margin?: number,
 ) {
-  console.log(`${values.length} values entering`);
+  // console.log(`${values.length} values entering`);
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
     : values;
@@ -323,7 +354,7 @@ export async function writeCoins2(
 
   await writeToPostgres(values);
   await writeToRedis(strings);
-  console.log("closing connection");
+  // console.log("closing connection");
   await windDown();
   console.log("connection closed");
 }

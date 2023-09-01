@@ -23,8 +23,6 @@ type CoinDict = {
   [key: string]: Coin;
 };
 
-let redis: Redis;
-let sql: postgres.Sql<{}>;
 let auth: string[];
 
 async function generateAuth() {
@@ -108,7 +106,7 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
 
   // console.log(`${values.length} queried`);
 
-  redis = new Redis({
+  const redis = new Redis({
     port: 6379,
     host: auth[1],
     password: auth[2],
@@ -141,6 +139,7 @@ async function queryPostgres(
 
   let data: Coin[] = [];
 
+  let sql;
   if (batchPostgresReads) {
     sql = postgres(auth[0]);
     data = await sql`
@@ -285,7 +284,7 @@ async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
-  redis = new Redis({
+  const redis = new Redis({
     port: 6379,
     host: auth[1],
     password: auth[2],
@@ -298,7 +297,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
 
   // console.log("creating a new pg instance");
-  sql = postgres(auth[0]);
+  const sql = postgres(auth[0]);
   // console.log("created a new pg instance");
   await sql`
       insert into main
@@ -312,7 +311,7 @@ export async function writeCoins2(
   batchPostgresReads: boolean = true,
   margin?: number,
 ) {
-  // console.log(`${values.length} values entering`);
+  console.log(`${values.length} values entering`);
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
     : values;

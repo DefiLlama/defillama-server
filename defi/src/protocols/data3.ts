@@ -17148,6 +17148,7 @@ const data3: Protocol[] = [
       "https://github.com/prisma-fi/audits/blob/main/audit-nomoi.pdf",
       "https://github.com/prisma-fi/audits/blob/main/audit-zellic.pdf"
     ],
+    stablecoins: ["mkusd"],
     listedAt: 1693488775
   },
 ]

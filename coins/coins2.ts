@@ -98,7 +98,7 @@ export async function translateItems(
     });
   });
 
-  console.error(`${errors.length} errors in translating to coins2`);
+  // console.error(`${errors.length} errors in translating to coins2`);
 
   return remapped;
 }
@@ -106,7 +106,7 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
   if (values.length == 0) return {};
   const keys: string[] = values.map((v: Coin) => v.key);
 
-  console.log(`${values.length} queried`);
+  // console.log(`${values.length} queried`);
 
   let res;
   try {
@@ -155,7 +155,9 @@ async function queryPostgres(
         and timestamp > ${lower}
       `;
     } catch {
+      console.log("creating a new pg instance");
       sql = postgres(auth[0]);
+      console.log("created a new pg instance");
       data = await sql`
         select ${sql(pgColumns)} from main where 
         key in ${sql(values.map((v: Coin) => v.key))}
@@ -177,7 +179,9 @@ async function queryPostgres(
         }
       }
     } catch {
+      console.log("creating a new pg instance");
       sql = postgres(auth[0]);
+      console.log("created a new pg instance");
       for (let i = 0; i < values.length; i++) {
         const read = await sql`
           select ${sql(pgColumns)} from main where 
@@ -246,7 +250,7 @@ async function combineRedisAndPostgresData(
       combinedData[r.key] = r;
       return;
     }
-    console.log(`${r.key} is stale`);
+    // console.log(`${r.key} is stale`);
   });
 
   return combinedData;
@@ -313,6 +317,7 @@ async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
   try {
     await redis.mset(strings);
   } catch {
+    console.log("opening a new redis instance");
     redis = new Redis({
       port: 6379,
       host: auth[1],
@@ -335,7 +340,7 @@ export async function writeCoins2(
   batchPostgresReads: boolean = true,
   margin?: number,
 ) {
-  console.log(`${values.length} values entering`);
+  // console.log(`${values.length} values entering`);
   const cleanValues = batchPostgresReads
     ? cleanTimestamps(values, margin)
     : values;
@@ -349,7 +354,7 @@ export async function writeCoins2(
 
   await writeToPostgres(values);
   await writeToRedis(strings);
-  console.log("closing connection");
+  // console.log("closing connection");
   await windDown();
   console.log("connection closed");
 }

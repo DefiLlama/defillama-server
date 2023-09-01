@@ -329,11 +329,22 @@ async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
-  await sql`
+  try {
+    await sql`
       insert into main
       ${sql(values, "key", "timestamp", "price", "confidence")}
       on conflict (key, timestamp) do nothing
       `;
+  } catch {
+    console.log("creating a new pg instance");
+    sql = postgres(auth[0]);
+    console.log("created a new pg instance");
+    await sql`
+      insert into main
+      ${sql(values, "key", "timestamp", "price", "confidence")}
+      on conflict (key, timestamp) do nothing
+      `;
+  }
 }
 export async function writeCoins2(
   values: Coin[],

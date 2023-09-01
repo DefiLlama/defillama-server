@@ -1923,5 +1923,9 @@ export default {
     "danogo": {
         "enabled": true,
         "id": "3454"
+    },
+    "aerodrome": {
+        "enabled": true,
+        "id": "3450"
     }
 } as AdaptorsConfig

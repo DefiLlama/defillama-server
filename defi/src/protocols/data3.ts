@@ -17150,6 +17150,30 @@ const data3: Protocol[] = [
     stablecoins: ["mkusd"],
     listedAt: 1693488775
   },
+  {
+    id: "3474",
+    name: "Levana Perps",
+    address: null,
+    symbol: "LVN",
+    url: "https://www.levana.finance",
+    description: "The Levana Protocol: Levana is an acronym for “Leverage any Asset” Levana is a crypto collateralized perpetual swap platform designed to offer low fees and high real yield on a number of different Blockchains",
+    chain: "Osmosis",
+    logo: `${baseIconsUrl}/levana-perps.jpg`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Derivatives",
+    chains: ["Osmosis"],
+    module: "levana/index.js",
+    oracles: ["Pyth"],
+    forkedFrom: [],
+    twitter: "Levana_protocol",
+    audit_links: [
+      "https://docs.levana.finance/audits"
+    ],
+    listedAt: 1693573353
+  },
 ]
 
 export default data3

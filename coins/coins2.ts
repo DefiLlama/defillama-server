@@ -25,7 +25,12 @@ type CoinDict = {
 
 let redis: Redis;
 let sql: postgres.Sql<{}>;
+let auth: string[];
 
+async function generateAuth() {
+  auth = process.env.COINS2_AUTH?.split(",") ?? [];
+  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
+}
 export async function translateItems(
   items: AWS.DynamoDB.DocumentClient.PutItemInputAttributeMap[],
 ): Promise<Coin[]> {
@@ -103,9 +108,6 @@ async function queryRedis(values: Coin[]): Promise<CoinDict> {
 
   // console.log(`${values.length} queried`);
 
-  const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
-
   redis = new Redis({
     port: 6379,
     host: auth[1],
@@ -138,9 +140,6 @@ async function queryPostgres(
   const lower: number = target - margin;
 
   let data: Coin[] = [];
-
-  const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 
   if (batchPostgresReads) {
     sql = postgres(auth[0]);
@@ -229,6 +228,7 @@ async function readCoins2(
   values: Coin[],
   batchPostgresReads: boolean = true,
 ): Promise<CoinDict> {
+  await generateAuth();
   const [currentQueries, historicalQueries] = sortQueriesByTimestamp(values);
 
   const redisData: CoinDict = await queryRedis(currentQueries);
@@ -285,9 +285,6 @@ async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
   if (Object.keys(strings).length == 0) return;
   // console.log("starting mset");
 
-  const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
-
   redis = new Redis({
     port: 6379,
     host: auth[1],
@@ -299,9 +296,6 @@ async function writeToRedis(strings: { [key: string]: string }): Promise<void> {
 }
 async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
-
-  const auth: string[] = process.env.COINS2_AUTH?.split(",") ?? [];
-  if (!auth || auth.length != 3) throw new Error("there arent 3 auth params");
 
   // console.log("creating a new pg instance");
   sql = postgres(auth[0]);

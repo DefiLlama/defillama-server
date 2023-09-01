@@ -31,7 +31,8 @@
     "get-snapshot-ids": "npx ts-node src/governance/getSnapshotIds.ts",
     "backfill": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/adaptors/cli/backfillUtilities/auto.ts",
     "backfill-local": "npm run update-submodules && export AWS_REGION='eu-central-1' && export tableName='prod-table' && export runLocal='true' && npx ts-node src/adaptors/cli/backfillUtilities/auto.ts",
-    "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeTvlTask.ts"
+    "task-tvl": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/storeTvlTask.ts",
+    "run-local": "export AWS_REGION='eu-central-1' && export tableName='prod-table' && npx ts-node src/runLocalTVL.ts"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
@@ -64,14 +65,15 @@
     "@defillama/adapters": "file:./DefiLlama-Adapters",
     "@defillama/dimension-adapters": "file:./dimension-adapters",
     "@defillama/emissions-adapters": "file:./emissions-adapters",
-    "@defillama/sdk": "^4.0.26",
+    "@defillama/sdk": "^4.0.46",
     "@supercharge/promise-pool": "^2.3.2",
     "axios": "^0.27.2",
     "bignumber.js": "^9.0.1",
     "dotenv": "^16.0.1",
     "ethers": "^5.7.2",
-    "mysql2": "^2.3.3",
+    "mysql2": "^3.6.0",
     "node-fetch": "^2.6.1",
+    "p-limit": "^3.0.0",
     "pg-promise": "^11.4.0",
     "postgres": "^3.3.1",
     "promise.allsettled": "^1.0.5",

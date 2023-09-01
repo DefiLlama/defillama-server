@@ -1173,11 +1173,11 @@ const parentProtocols: IParentProtocol[] = [
     twitter: "ObyteOrg",
   },
   {
-    id: "parent#paraspace",
-    name: "ParaSpace",
-    url: "https://para.space",
-    description: "ParaSpace is a permissionless universal, cross-margin NFT lending protocol that enables users to collateralize both ERC-721 and ERC-20 assets into a single portfolio to borrow against.",
-    logo: `${baseIconsUrl}/paraspace.jpg`,
+    id: "parent#parax",
+    name: "ParaX",
+    url: "https://parax.ai",
+    description: "ParaX is an upgrade from ParaSpace. ParaX is an everything app for web3 application, aiming to provide a simpler DeFi experience for 1 billion users. ParaX is powered by account abstraction, making the DeFi experience more efficient, cheaper and safer.",
+    logo: `${baseIconsUrl}/parax.jpg`,
     gecko_id: null,
     cmcId: null,
     chains: [],
@@ -2546,6 +2546,45 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "spacefi_io",
     github: ["SpaceFinance"]
+  },
+  {
+    id: "parent#knightswap",
+    name: "KnightSwap",
+    url: "https://knightswap.financial",
+    description:
+      "Trade, Earn, & Raid To Stack Your Riches While Securely Storing Them Within Our Castle Vaults.",
+    logo: `${baseIconsUrl}/knightswap-finance.png`,
+    gecko_id: "knightswap",
+    cmcId: "15841",
+    chains: [],
+    twitter: "KnightEcosystem",
+    github: ["Knightswap"]
+  },
+  {
+    id: "parent#alien-base",
+    name: "Alien Base",
+    url: "https://app.alienbase.xyz",
+    description:
+      "Trade confidently on Alien Base - A DEX on the base chain. Farm and stake tokens.",
+    logo: `${baseIconsUrl}/alien-base.png`,
+    gecko_id: "alienbase",
+    cmcId: null,
+    chains: [],
+    twitter: "AlienBaseDEX",
+    github: ["alienbase-xyz"]
+  },
+  {
+    id: "parent#lybra-finance",
+    name: "Lybra Finance",
+    url: "https://lybra.finance",
+    description: "Lybra Finance is developing the next generation of Omnichain LSD-based stablecoins",
+    logo: `${baseIconsUrl}/lybra-finance.jpg`,
+    gecko_id: "lybra-finance",
+    cmcId: "24700",
+    chains: [],
+    twitter: "LybraFinanceLSD",
+    github: ["LybraFinance"],
+    stablecoins: ["peg-eusd"],
   },
 ];
 

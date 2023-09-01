@@ -124,9 +124,9 @@ BEGIN
                         COALESCE(report, '{}'::jsonb),
                         '{monthly_contributers}',
                         (
-                            SELECT jsonb_agg(jsonb_build_object('k', commit_month, 'v', developer_count))
+                            SELECT jsonb_agg(jsonb_build_object('k', commit_month, 'v', developer_count, 'cc', commit_count))
                             FROM (
-                                SELECT commit_month, COUNT(distinct developer) as developer_count
+                                SELECT commit_month, COUNT(distinct developer) as developer_count, SUM(commit_count) AS commit_count
                                 FROM view_agg_contributer_monthly_commits
                                 WHERE owner = any(pr.linked_orgs)
                                 GROUP BY commit_month
@@ -136,9 +136,9 @@ BEGIN
                     ),
                     '{monthly_devs}',
                     (
-                        SELECT jsonb_agg(jsonb_build_object('k', commit_month, 'v', developer_count))
+                        SELECT jsonb_agg(jsonb_build_object('k', commit_month, 'v', developer_count, 'cc', commit_count))
                         FROM (
-                            SELECT commit_month, COUNT(distinct developer) as developer_count
+                            SELECT commit_month, COUNT(distinct developer) as developer_count, SUM(commit_count) AS commit_count
                             FROM view_agg_dev_monthly_commits
                             WHERE owner = any(pr.linked_orgs)
                             GROUP BY commit_month
@@ -150,7 +150,7 @@ BEGIN
                 (
                     SELECT jsonb_agg(jsonb_build_object('k', commit_week, 'v', developer_count, 'cc', commit_count))
                     FROM (
-                        SELECT commit_week, COUNT(distinct developer) as developer_count, COUNT(*) AS commit_count
+                        SELECT commit_week, COUNT(distinct developer) as developer_count, SUM(commit_count) AS commit_count
                         FROM view_agg_contributer_weekly_commits
                         WHERE owner = any(pr.linked_orgs)
                         GROUP BY commit_week
@@ -162,7 +162,7 @@ BEGIN
             (
                 SELECT jsonb_agg(jsonb_build_object('k', commit_week, 'v', developer_count, 'cc', commit_count))
                 FROM (
-                    SELECT commit_week, COUNT(distinct developer) as developer_count, COUNT(*) AS commit_count
+                    SELECT commit_week, COUNT(distinct developer) as developer_count, SUM(commit_count) AS commit_count
                     FROM view_agg_dev_weekly_commits
                     WHERE owner = any(pr.linked_orgs)
                     GROUP BY commit_week

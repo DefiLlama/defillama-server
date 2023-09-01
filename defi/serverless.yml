@@ -485,16 +485,16 @@ functions:
       - http:
           path: /{params+}
           method: options
-  # storeTvlInterval:
-  #   handler: src/storeTvlInterval.default
-  #   timeout: 900
-  #   memorySize: 512
-  #   environment:
-  #     TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
-  #     COINS_DB: ${env:COINS_DB}
-  #     COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
-  #     INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
-  #     ERROR_DB: ${env:ERROR_DB}
+  storeTvlInterval2:
+    handler: src/storeTvlInterval.default
+    timeout: 900
+    memorySize: 512
+    environment:
+      TEAM_WEBHOOK: ${file(./env.js):TEAM_WEBHOOK}
+      COINS_DB: ${env:COINS_DB}
+      COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
+      INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
+      ERROR_DB: ${env:ERROR_DB}
   # storeTreasuryInterval:
   #   handler: src/storeTreasuryInterval.default
   #   timeout: 900
@@ -505,9 +505,9 @@ functions:
   #     COVALENT_KEY: ${file(./env.js):COVALENT_KEY}
   #     INFLUXDB_TOKEN: ${file(./env.js):INFLUXDB_TOKEN}
   #     ERROR_DB: ${env:ERROR_DB}
-  # triggerStoreTvls:
-  #   handler: src/triggerStoreTvls.default
-  #   timeout: 900
+  triggerStoreTvls:
+    handler: src/triggerStoreTvls.default
+    timeout: 900
   #   events:
   #     - schedule: cron(0 * * * ? *)
   # triggerStoreTreasuries:

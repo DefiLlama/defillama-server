@@ -57,6 +57,11 @@ export const config = {
       '0xa0FdCDDA62C4C6a0109A702a7Efe59B4E8807e3f', // mooMvxMVLP
     ],
   },
+  polygon_zkevm: {
+    wantVaults: [
+      '0x4Ebbf072288856dD7EBaE9CdEDd4f2Fd049523F7' // Yama QLP
+    ]
+  },
   arbitrum: {
     wantVaults: [
       '0x9dbbBaecACEDf53d5Caa295b8293c1def2055Adc', // mooGmxGLP

@@ -3,7 +3,7 @@ import { writeFileSync } from "fs";
 import adapters from "../adapters/index";
 import { batchWrite } from "../utils/shared/dynamodb";
 
-const adapterName = "beefy";
+const adapterName = "backed";
 const timestamp = +(new Date())/1e3;
 
 async function main() {

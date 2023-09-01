@@ -1906,5 +1906,26 @@ export default {
     "hydradx": {
         "enabled": true,
         "id": "3439"
+    },
+    "baseswap": {
+        "enabled": true,
+        "id": "3333"
+    },
+    "yfx-v3": {
+        "enabled": true,
+        "id": "3429"
+    },
+    "swapbased": {
+        parentId: "SwapBased",
+        "enabled": true,
+        "id": "3328"
+    },
+    "danogo": {
+        "enabled": true,
+        "id": "3454"
+    },
+    "aerodrome": {
+        "enabled": true,
+        "id": "3450"
     }
 } as AdaptorsConfig

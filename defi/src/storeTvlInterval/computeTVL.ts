@@ -66,7 +66,7 @@ export default async function (balances: { [address: string]: string }, timestam
         usdTvl += usdAmount;
       });
     } else {
-      sdk.log(`Data for ${response.PK} is stale`);
+      // sdk.log(`Data for ${response.PK} is stale`);
     }
   });
   return {
@@ -106,6 +106,15 @@ const priceCache: { [PK: string]: any } = {
     timestamp: Math.floor(Date.now() / 1e3 + 3600) // an hour from script start time
   }
 }
+
+export function clearPriceCache() {
+  for (const key of Object.keys(priceCache)) {
+    if (key !== "coingecko:tether")
+      delete priceCache[key]
+  }
+}
+
+// setInterval(clearPriceCache, 1000 * 60 * 15)
 
 async function getTokenData(readKeys: string[], timestamp: string | number): Promise<any> {
   if (!readKeys.length) return []

@@ -21,7 +21,7 @@ type InfoProtocol = {
   tvl: number
 } | null
 
-function printOutdated(outdated: [string, InfoProtocol, boolean][], maxLengthProtocolName: number, now:number) {
+function printOutdated(outdated: [string, InfoProtocol, boolean, number][], maxLengthProtocolName: number, now:number) {
   return outdated.sort((a, b) => {
     if (a[1] === null) {
       return 1
@@ -44,8 +44,11 @@ function printOutdated(outdated: [string, InfoProtocol, boolean][], maxLengthPro
 
 export async function getOutdated(maxDrift: number){
   const now = toUNIXTimestamp(Date.now());
-  const outdated = [] as [string, InfoProtocol, boolean][];
-  await Promise.all(protocols.concat(treasuries).map(async protocol => {
+  const outdated = [] as [string, InfoProtocol, boolean, number][];
+  await Promise.all(protocols.concat(treasuries).map(async (protocol, index) => {
+    if(protocol.rugged === true || protocol.module === "dummy.js"){
+      return 
+    }
     const item = await getLastRecord(hourlyTvl(protocol.id));
     let text: InfoProtocol;
     if (item === undefined) {
@@ -59,13 +62,16 @@ export async function getOutdated(maxDrift: number){
       return
     }
     const module = await importAdapter(protocol)
+    if(module.deadFrom){
+      return
+    }
     const refillable = !(module.fetch || module.timetravel === false)
-    outdated.push([protocol.name, text, refillable])
+    outdated.push([protocol.name, text, refillable, index])
   }))
   return outdated
 }
 
-export function buildOutdatedMessage(outdated: [string, InfoProtocol, boolean][]){
+export function buildOutdatedMessage(outdated: [string, InfoProtocol, boolean, number][]){
   const now = toUNIXTimestamp(Date.now());
   if (outdated.length === 0) {
     return null

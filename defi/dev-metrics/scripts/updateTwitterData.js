@@ -16,14 +16,14 @@ async function main() {
   const twitterOverview = await getTwitterOverviewFile()
 
   // const twitterOverview = {}
-  const TWELVE_HOURS = 12 * 60 * 60 * 1000 * 7
+  const TWELVE_HOURS = 12 * 60 * 60 * 1000 * 7 * 2
   let connectionRefusedCount = 0
   for (const handle of handles) {
     const handleMetadata = twitterOverview[handle] || {}
     checked++
     if (connectionRefusedCount > 5 || handleMetadata.ignore) continue;
     if ((handleMetadata.updatedAt && +Date.now() - handleMetadata.updatedAt < TWELVE_HOURS)) {
-      sdk.log(`[Twitter] Skipping ${handle} because it was updated less than ${(TWELVE_HOURS/ (36 *1e5)).toFixed(2)} hours ago`)
+      // sdk.log(`[Twitter] Skipping ${handle} because it was updated less than ${(TWELVE_HOURS/ (36 *1e5)).toFixed(2)} hours ago`)
       continue
     }
 
@@ -42,7 +42,7 @@ async function main() {
         const mergedTweets = mergeTweets(oldData.tweets, data.tweets)
         data = { ...oldData, ...data, tweets: mergedTweets }
       } else {
-        sdk.log(`[Twitter] Skipping ${handle} because it was updated less than 12 hours ago[data]`)
+        // sdk.log(`[Twitter] Skipping ${handle} because it was updated less than 12 hours ago[data]`)
         ++i;
         continue;
       }
@@ -51,7 +51,7 @@ async function main() {
 
     } catch (e) {
       sdk.log(`[Twitter] Error fetching ${handle}`, e.toString())
-      if (e.toString().includes('ECONNREFUSED')) {
+      if (e.toString().includes('ECONNREFUSED') || e.toString().includes('ETIMEDOUT')) {
         connectionRefusedCount++
         continue;
       }

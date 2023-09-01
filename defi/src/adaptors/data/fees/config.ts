@@ -84,7 +84,7 @@ export default {
     "gmx": {
         "enabled": true,
         "id": "337",
-        parentId: "337",
+        parentId: "GMX",
         protocolsData: {
             "swap": {
                 "id": "337",
@@ -1088,6 +1088,7 @@ export default {
         "id": "3264"
     },
     "base": {
+        "category": "Rollup",
         "enabled": true,
         "id": "8453"
     },
@@ -1168,7 +1169,7 @@ export default {
         "id": "3345"
     },
     "banana-gun-trading": {
-        "enabled": false,
+        "enabled": true,
         "id": "3336"
     },
     "lynex": {
@@ -1188,11 +1189,46 @@ export default {
         "id": "449"
     },
     "zksync-era": {
+        "category": "Rollup",
         "enabled": true,
         "id": "324"
     },
     "meridian-trade": {
         "enabled": true,
         "id": "3386"
+    },
+    "baseswap": {
+        "enabled": true,
+        "id": "3333"
+    },
+    "yfx-v3": {
+        "enabled": true,
+        "id": "3429"
+    },
+    "gmx-v2": {
+        parentId: "GMX",
+        "enabled": true,
+        "id": "3365"
+    },
+    "swapbased": {
+        parentId: "SwapBased",
+        "enabled": true,
+        "id": "3328"
+    },
+    "danogo": {
+        "enabled": true,
+        "id": "3454"
+    },
+    "sharesgram": {
+        "enabled": true,
+        "id": "3464"
+    },
+    "tigris": {
+        "enabled": true,
+        "id": "3129"
+    },
+    "aerodrome": {
+        "enabled": true,
+        "id": "3450"
     }
 } as AdaptorsConfig

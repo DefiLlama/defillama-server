@@ -1230,5 +1230,9 @@ export default {
     "aerodrome": {
         "enabled": true,
         "id": "3450"
+    },
+    "apex": {
+        "enabled": true,
+        "id": "1878"
     }
 } as AdaptorsConfig

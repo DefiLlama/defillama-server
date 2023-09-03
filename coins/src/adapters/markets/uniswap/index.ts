@@ -332,8 +332,8 @@ export function pulsex(timestamp: number = 0) {
   );
 }
 
-export function zkSwapFinance(timestamp: number = 0) {
-  console.log("starting zkswap finance");
+export function zkSwap(timestamp: number = 0) {
+  console.log("starting zkSwap finance");
   return getTokenPrices(
     "era",
     "0x3a76e377ED58c8731F9DF3A36155942438744Ce3",

@@ -26716,6 +26716,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     twitter: "adax_pro",
     audit_links: ["https://www.btblock.io/post/btblock-completes-cardano-smart-contract-review-for-adax"],
     listedAt: 1643889165,
+    deadUrl: true
   },
   {
     id: "1358",

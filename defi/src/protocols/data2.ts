@@ -22976,7 +22976,7 @@ const data2: Protocol[] = [
     category: "Dexes",
     chains: ["Ethereum"],
     module: "solidly-v2/index.js",
-    twitter: "SolidlyDEX",
+    twitter: "SolidlyLabs",
     forkedFrom: ["Solidly"],
     oracles: [],
     audit_links: ["https://github.com/SolidlyLabs/Solidly-Audits/blob/main/audit_solidly.pdf"],

@@ -25667,7 +25667,7 @@ const data2: Protocol[] = [
     audit_note: null,
     gecko_id: null,
     cmcId: null,
-    category: "NFT Lending",
+    category: "Lending",
     chains: ["Ethereum"],
     module: "paraspace/index.js",
     twitter: "ParaSpace_NFT",

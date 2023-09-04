@@ -9,7 +9,7 @@ import { Coin, iterateOverPlatforms } from "../utils/coingeckoPlatforms";
 import { getCurrentUnixTimestamp, toUNIXTimestamp } from "../utils/date";
 import { Write } from "../adapters/utils/dbInterfaces";
 import { filterWritesWithLowConfidence } from "../adapters/utils/database";
-import { batchWrite2, startup, windDown } from "../../coins2";
+import { batchWrite2 } from "../../coins2";
 
 let solanaConnection = new Connection(
   process.env.SOLANA_RPC || "https://rpc.ankr.com/solana",
@@ -343,7 +343,6 @@ async function fetchCoingeckoData(
   const rejected = [] as Coin[];
   const timer = setTimer();
   const requests: Promise<void>[] = [];
-  await startup();
   if (hourly) {
     const hourlyCoins: Coin[] = [];
     for (let i = 0; i < coins.length; i += step) {
@@ -370,7 +369,6 @@ async function fetchCoingeckoData(
       await fetchCoingeckoData(rejected, hourly, depth + 1);
     }
   }
-  await windDown();
 }
 
 function shuffleArray(array: any[]) {

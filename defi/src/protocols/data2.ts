@@ -11416,7 +11416,8 @@ const data2: Protocol[] = [
     forkedFrom: [],
     module: "avault/index.js",
     twitter: "Avault_Astar",
-    listedAt: 1657291702
+    listedAt: 1657291702,
+    github: ["AVaultFinance"]
   },
   {
     id: "1888",

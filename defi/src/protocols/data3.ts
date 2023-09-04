@@ -17315,6 +17315,51 @@ const data3: Protocol[] = [
     parentProtocol: "parent#myso",
     listedAt: 1693577010
   },
+  {
+    id: "3480",
+    name: "Based Farm",
+    address: "base:0x9CBD543f1B1166b2Df36b68Eb6bB1DcE24E6aBDf",
+    symbol: "BASED",
+    url: "https://based.farm",
+    description:
+      "Based Farm is the first Solidly-powered seigniorage protocol on Base Chain, pegged to Ethereum.",
+    chain: "Base",
+    logo: `${baseIconsUrl}/based-farm.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: "based-finance",
+    cmcId: "17954",
+    category: "Algo-Stables",
+    chains: ["Base"],
+    module: "basedfarm/index.js",
+    oracles: [],
+    forkedFrom: ["Tomb"],
+    github: ["BasedDotFarm"],
+    twitter: "BasedDotFarm",
+    listedAt: 1693841922
+  },
+  {
+    id: "3481",
+    name: "Solidly V3",
+    address: "0x777172D858dC1599914a1C4c6c9fC48c99a60990",
+    symbol: "SOLID",
+    url: "https://solidly.com",
+    description:
+      "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
+    chain: "Ethereum",
+    logo: `${baseIconsUrl}/solidly-v3.jpg`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Ethereum"],
+    module: "solidly-v3/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "SolidlyLabs",
+    listedAt: 1693841928
+  },
 ]
 
 export default data3

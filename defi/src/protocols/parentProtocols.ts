@@ -2608,6 +2608,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "MysoFinance",
   },
+  {
+    id: "parent#solidly-labs",
+    name: "Solidly Labs",
+    url: "https://solidly.com",
+    description: "Self-optimizing DEX combining the best of Curve, Uniswap and ve(3,3)",
+    logo: `${baseIconsUrl}/solidly-labs.jpg`,
+    gecko_id: "solidlydex",
+    cmcId: null,
+    chains: [],
+    twitter: "SolidlyLabs",
+  },
 ];
 
 export default parentProtocols;

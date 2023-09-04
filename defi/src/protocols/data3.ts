@@ -17356,8 +17356,9 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "solidly-v3/index.js",
     oracles: [],
-    forkedFrom: [],
+    forkedFrom: ["Uniswap V3"],
     twitter: "SolidlyLabs",
+    parentProtocol: "parent#solidly-labs",
     listedAt: 1693841928
   },
   {

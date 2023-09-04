@@ -22971,7 +22971,7 @@ const data2: Protocol[] = [
     logo: `${baseIconsUrl}/solidly-v2.jpg`,
     audits: "2",
     audit_note: null,
-    gecko_id: "solidlydex",
+    gecko_id: null,
     cmcId: null,
     category: "Dexes",
     chains: ["Ethereum"],
@@ -22980,6 +22980,7 @@ const data2: Protocol[] = [
     forkedFrom: ["Solidly"],
     oracles: [],
     audit_links: ["https://github.com/SolidlyLabs/Solidly-Audits/blob/main/audit_solidly.pdf"],
+    parentProtocol: "parent#solidly-labs",
     listedAt: 1672678979
   },
   {

@@ -8651,7 +8651,7 @@ const data3: Protocol[] = [
     forkedFrom: ["GMX V1"],
     oracles: ["Chainlink"],
     github: ["xvi10"],
-    listedAt: 1686242084
+    listedAt: 1686242084,
   },
   {
     id: "3088",
@@ -9336,6 +9336,7 @@ const data3: Protocol[] = [
     audit_links: ["https://github.com/astroport-fi/astro-audits"],
     openSource: true,
     listedAt: 1686894797,
+    github: ["astroport-fi"]
   },
   {
     id: "3118",
@@ -10385,7 +10386,8 @@ const data3: Protocol[] = [
     twitter: "StructFinance",
     oracles: ["Chainlink"],
     audit_links: ["https://struct-finance.notion.site/Audits-5b16f07308024dec848808aaf1a5a21d"],
-    listedAt: 1687863935
+    listedAt: 1687863935,
+    github: ["struct-defi"]
   },
   {
     id: "3166",
@@ -10426,7 +10428,8 @@ const data3: Protocol[] = [
     chains: ["Osmosis"],
     module: "quasar/index.js",
     twitter: "QuasarFi",
-    listedAt: 1687889149
+    listedAt: 1687889149,
+    github: ["quasar-finance"]
   },
   {
     id: "3168",
@@ -10486,7 +10489,8 @@ const data3: Protocol[] = [
     module: "ellipisis-phoenix/index.js",
     twitter: "ellipsis_labs",
     oracles: [],
-    listedAt: 1687942915
+    listedAt: 1687942915,
+    github: ["Ellipsis-Labs"]
   },
   {
     id: "3171",
@@ -10710,7 +10714,8 @@ const data3: Protocol[] = [
     module: "zkSwap-finance/index.js",
     twitter: "zkSwap_finance",
     audit_links: ["https://github.com/Vital-block/Smart-Contract-Audit/blob/main/ZKSWAP%20FINANCE%20AUDIT%20REPORT.pdf"],
-    listedAt: 1688134493
+    listedAt: 1688134493,
+    github: ["l2labs"]
   },
   {
     id: "3181",
@@ -11019,7 +11024,8 @@ const data3: Protocol[] = [
     module: "arpa-staking/index.js",
     twitter: "arpaofficial",
     audit_links: ["https://docsend.com/view/ih328hdccd7h8sxm"],
-    listedAt: 1688472915
+    listedAt: 1688472915,
+    github: ["arpachain"]
   },
   {
     id: "3195",
@@ -11128,7 +11134,8 @@ const data3: Protocol[] = [
     module: "CollectifDAO/index.js",
     twitter: "CollectifDAO",
     audit_links: ["https://github.com/collectif-dao/collectif-audits"],
-    listedAt: 1688494775
+    listedAt: 1688494775,
+    github: ["collective-dao"]
   },
   {
     id: "3200",
@@ -11654,7 +11661,8 @@ const data3: Protocol[] = [
     twitter: "Tendieswap",
     oracles: [],
     forkedFrom: [],
-    listedAt: 1689091205
+    listedAt: 1689091205,
+    github: ["TendieSwap"]
   },
   {
     id: "3224",
@@ -12412,7 +12420,8 @@ const data3: Protocol[] = [
     twitter: "ICPSwap",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1689832459
+    listedAt: 1689832459,
+    github: ["ICPSwap-Labs"]
   },
   {
     id: "3258",
@@ -13203,7 +13212,8 @@ const data3: Protocol[] = [
     twitter: "gravity_bridge",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1690365542
+    listedAt: 1690365542,
+    github: ["Gravity-Bridge"]
   },
   {
     id: "3294",
@@ -13641,7 +13651,8 @@ const data3: Protocol[] = [
     twitter: "OpenWorldVision",
     oracles: [],
     audit_links: ["https://wiki.openworld.vision/audit"],
-    listedAt: 1690749957
+    listedAt: 1690749957,
+    github: ["OpenWorldVision"]
   },
   {
     id: "3314",
@@ -13865,7 +13876,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Pyth"],
     audit_links: ["https://2311140553-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYTRq6w3DGapKHxfqaA3Z%2Fuploads%2FsoS2qrvZPrclkXpPp9z2%2FNavi%20Smart%20Contract%20Preliminary%20Audit%20Report.pdf?alt=media&token=002c6c6c-a723-4e36-9689-f014791fb076"],
-    listedAt: 1690897069
+    listedAt: 1690897069,
+    github: ["naviprotocol"]
   },
   {
     id: "3324",
@@ -16410,7 +16422,8 @@ const data3: Protocol[] = [
     module: "baklava-space/index.js",
     twitter: "baklavaspace",
     forkedFrom: [],
-    listedAt: 1692804776
+    listedAt: 1692804776,
+    github: ["baklavaspace"]
   },
   {
     id: "3439",
@@ -16675,7 +16688,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Solidly"],
     module: "aerodrome/index.js",
     twitter: "aerodromefi",
-    listedAt: 1693274059
+    listedAt: 1693274059,
+    github: ["aerodrome-finance"]
   },
   {
     id: "3451",

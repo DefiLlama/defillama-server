@@ -8805,24 +8805,27 @@ const data2: Protocol[] = [
   },
   {
     id: "1771",
-    name: "Arch Ethereum Web3",
-    address: "0xe8e8486228753E01Dbc222dA262Aa706Bd67e601",
-    symbol: "WEB3",
-    url: "https://www.archfinance.io",
+    name: "Arch Finance",
+    address: null,
+    symbol: "-",
+    url: "https://www.arch.finance",
     description: "We curate a comprehensive family of market indices and tokenized products, and help investors build and manage their web3 portfolios.",
     chain: "Ethereum",
     logo: `${baseIconsUrl}/arch-ethereum-web3.png`,
-    audits: "0",
+    audits: "2",
     audit_note: null,
-    gecko_id: "arch-ethereum-web3",
-    cmcId: "21146",
+    gecko_id: null,
+    cmcId: null,
     category: "Indexes",
-    chains: ["Ethereum"],
+    chains: ["Ethereum", "Polygon"],
     oracles: [],
     forkedFrom: ["Set Protocol"],
     module: "arch-ethereum-web-3/index.js",
-    twitter: "archdefi",
-    listedAt: 1652988802
+    twitter: "Arch_Finance",
+    listedAt: 1652988802,
+    audit_links: [
+      "https://arch-document.s3.amazonaws.com/Chambers-audit-report.pdf"
+    ]
   },
   {
     id: "1772",
@@ -20362,29 +20365,29 @@ const data2: Protocol[] = [
     oracles: [],
     listedAt: 1668595021
   },
-/*
-  {
-    id: "2287",
-    name: "ThorChain DEX",
-    address: null, 
-    symbol: "RUNE",
-    url: "https://thorchain.org/",
-    description:
-      "Native dex of thorchain",
-    chain: "Thorchain",
-    logo: `${baseIconsUrl}/thorswap.jpg`,
-    audits: "0",
-    audit_note: null,
-    gecko_id: null,
-    cmcId: null,
-    category: "Dexes",
-    chains: ["Thorchain"],
-    module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
-    forkedFrom: [],
-    twitter: "THORChain",
-    listedAt: 1668600716
-  },
-*/
+  /*
+    {
+      id: "2287",
+      name: "ThorChain DEX",
+      address: null, 
+      symbol: "RUNE",
+      url: "https://thorchain.org/",
+      description:
+        "Native dex of thorchain",
+      chain: "Thorchain",
+      logo: `${baseIconsUrl}/thorswap.jpg`,
+      audits: "0",
+      audit_note: null,
+      gecko_id: null,
+      cmcId: null,
+      category: "Dexes",
+      chains: ["Thorchain"],
+      module: "dummy.js", // if tvl is added, feel fre to add the path here, volume adapter path is added when extracting dexs from this list (/src/dexVolumes/dexAdapters/index.ts)
+      forkedFrom: [],
+      twitter: "THORChain",
+      listedAt: 1668600716
+    },
+  */
   /*
   {
     id: "2288",
@@ -21949,7 +21952,7 @@ const data2: Protocol[] = [
     module: "El-Dorado-Exchange/index.js",
     twitter: "ede_finance",
     forkedFrom: ["GMX V1"],
-    oracles: ["Chainlink","Pyth"],
+    oracles: ["Chainlink", "Pyth"],
     audit_links: ["https://docs.ede.finance/audit"],
     listedAt: 1670855637,
     parentProtocol: "parent#ede"
@@ -25860,7 +25863,7 @@ const data2: Protocol[] = [
     chains: ["Polygon"],
     module: "covo-finance/index.js",
     twitter: "covofinance",
-    oracles: ["Chainlink","Pyth"],
+    oracles: ["Chainlink", "Pyth"],
     forkedFrom: ["GMX V1"],
     parentProtocol: "parent#covo-finance",
     listedAt: 1676226573
@@ -25980,7 +25983,7 @@ const data2: Protocol[] = [
     parentProtocol: "parent#zyberswap",
     listedAt: 1676313508
   },
-   {
+  {
     id: "2531",
     name: "Vaultka",
     address: null,
@@ -26000,7 +26003,7 @@ const data2: Protocol[] = [
     twitter: "Vaultkaofficial",
     forkedFrom: [],
     oracles: ["Chainlink"],
-    audit_links: ["https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf", "https://admin.zokyo.io/uploads/Vaultka_Zokyo_audit_report_July25th_2023_1aed462dc9.pdf"], 
+    audit_links: ["https://github.com/Vaultka/vaultka-contracts/blob/main/Audits/Fortitude-Vaultka-Audit-Report.pdf", "https://admin.zokyo.io/uploads/Vaultka_Zokyo_audit_report_July25th_2023_1aed462dc9.pdf"],
     listedAt: 1676372614
   },
   {

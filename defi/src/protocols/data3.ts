@@ -17360,6 +17360,29 @@ const data3: Protocol[] = [
     twitter: "SolidlyLabs",
     listedAt: 1693841928
   },
+  {
+    id: "3482",
+    name: "ComfySwap",
+    address: null,
+    symbol: "-",
+    url: "https://app.comfyswap.com/",
+    description:
+      "Decentralized exchange on Shibarium",
+    chain: "Shibarium",
+    logo: `${baseIconsUrl}/comfyswap.png`,
+    audits: "2",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Dexes",
+    chains: ["Shibarium"],
+    module: "comfyswap/index.js",
+    oracles: [],
+    forkedFrom: ["Uniswap V2"],
+    twitter: "ComfySwap",
+    audit_links: ["https://gist.github.com/HollaDieWaldfee100/4a17ad22191753abba1cef6edd7efe60"],
+    listedAt: 1693850602
+  },
 ]
 
 export default data3

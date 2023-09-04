@@ -8805,7 +8805,7 @@ const data2: Protocol[] = [
   },
   {
     id: "1771",
-    name: "Arch Finance",
+    name: "Arch",
     address: null,
     symbol: "-",
     url: "https://www.arch.finance",

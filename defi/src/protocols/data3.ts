@@ -17334,7 +17334,6 @@ const data3: Protocol[] = [
     module: "basedfarm/index.js",
     oracles: [],
     forkedFrom: ["Tomb"],
-    github: ["BasedDotFarm"],
     twitter: "BasedDotFarm",
     parentProtocol: "parent#based-finance",
     listedAt: 1693841922

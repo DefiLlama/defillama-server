@@ -37,3 +37,4 @@ export default async function test() {
   process.exit(0);
 }
 test();
+// ts-node src/scripts/test.ts

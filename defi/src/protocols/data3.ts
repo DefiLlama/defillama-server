@@ -17349,7 +17349,6 @@ const data3: Protocol[] = [
     oracles: [],
     forkedFrom: ["Tomb"],
     twitter: "BasedDotFarm",
-    parentProtocol: "parent#based-finance",
     listedAt: 1693841922
   },
   {

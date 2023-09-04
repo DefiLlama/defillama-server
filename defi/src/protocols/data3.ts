@@ -109,7 +109,8 @@ const data3: Protocol[] = [
     module: "phenix-dex/index.js",
     twitter: "phenixfinance",
     audit_links: ["https://solidity.finance/audits/Phenix"],
-    listedAt: 1679408966
+    listedAt: 1679408966,
+    github: ["phenixfinance"]
   },
   {
     id: "2704",
@@ -312,7 +313,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "prePo/index.js",
     twitter: "prepo_io",
-    listedAt: 1679504121
+    listedAt: 1679504121,
+    github: ["prepo-io"]
   },
   {
     id: "2713",
@@ -513,7 +515,8 @@ const data3: Protocol[] = [
     module: "flair-dex/index.js",
     treasury: "flair-dex.js",
     twitter: "FlairDefi",
-    listedAt: 1679658222
+    listedAt: 1679658222,
+    github: ["flair-defi"]
   },
   {
     id: "2722",
@@ -838,7 +841,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "teller/index.js",
     twitter: "useteller",
-    listedAt: 1680005661
+    listedAt: 1680005661,
+    github: ["teller-protocol"]
   },
   {
     id: "2737",
@@ -967,7 +971,8 @@ const data3: Protocol[] = [
     module: "fluidity-money/index.js",
     audit_links: ["https://docs.fluidity.money/docs/security/audits-completed"],
     twitter: "fluiditylabs",
-    listedAt: 1680036839
+    listedAt: 1680036839,
+    github: ["fluidity-money"]
   },
   {
     id: "2743",
@@ -1839,7 +1844,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "aktionariat/index.js",
     twitter: "aktionariat",
-    listedAt: 1680810692
+    listedAt: 1680810692,
+    github: ["aktionariat"]
   },
   {
     id: "2783",
@@ -2179,7 +2185,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "future-swap/index.js",
     twitter: "future_swap",
-    listedAt: 1681122435
+    listedAt: 1681122435,
+    github: ["futureswap"]
   },
   {
     id: "2799",
@@ -2552,7 +2559,8 @@ const data3: Protocol[] = [
     module: "holdr-fi/index.js",
     twitter: "HoldrFi",
     audit_links: [],
-    listedAt: 1681262189
+    listedAt: 1681262189,
+    github: ["holdr-fi"]
   },
   {
     id: "2816",
@@ -2793,7 +2801,8 @@ const data3: Protocol[] = [
     audit_links: ["https://audits.finance/Audits/CZUSD-Smart-Contract-Audit.pdf"],
     twitter: "zodiacs_c",
     listedAt: 1681436619,
-    stablecoins: ["czodiac-usd"]
+    stablecoins: ["czodiac-usd"],
+    github: ["chinese-zodiac"]
   },
   {
     id: "2827",
@@ -3046,7 +3055,8 @@ const data3: Protocol[] = [
     module: "wagmi-com/index.js",
     twitter: "PopsicleFinance",
     audit_links: [],
-    listedAt: 1681518737
+    listedAt: 1681518737,
+    github: ["wagmi-dev"]
   },
   {
     id: "2838",
@@ -3506,7 +3516,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "glif/index.js",
     twitter: "glifio",
-    listedAt: 1681809804
+    listedAt: 1681809804,
+    github: ["glifio"]
   },
   {
     id: "2859",
@@ -4024,7 +4035,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "TokenPocket/index.js",
     twitter: "TokenPocket_TP",
-    listedAt: 1682329075
+    listedAt: 1682329075,
+    github: ["tokenbankteam", "TP-Lab"]
   },
   {
     id: "2883",
@@ -4353,7 +4365,8 @@ const data3: Protocol[] = [
     module: "superlauncher/index.js",
     twitter: "Super_Launcher",
     audit_links: ["https://super-launcher.gitbook.io/superlauncher-v4/guides/important-stuff/audits"],
-    listedAt: 1682515759
+    listedAt: 1682515759,
+    github: ["SuperLauncher"]
   },
   {
     id: "2898",
@@ -4397,7 +4410,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "vertex/index.js",
     twitter: "vertex_protocol",
-    listedAt: 1682519828
+    listedAt: 1682519828,
+    github: ["vertex-protocol"]
   },
   {
     id: "2900",
@@ -4674,7 +4688,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Chainlink"],
     audit_links: ["https://github.com/Aboard-Exchange/audit_report"],
-    listedAt: 1682688586
+    listedAt: 1682688586,
+    github: ["Aboard-Exchange"]
   },
   {
     id: "2912",
@@ -4834,7 +4849,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "debtdao",
-    listedAt: 1682951215
+    listedAt: 1682951215,
+    github: ["debtdao"]
   },
   {
     id: "2919",
@@ -4856,7 +4872,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     twitter: "backed_xyz",
-    listedAt: 1682951218
+    listedAt: 1682951218,
+    github: ["with-backed"]
   },
   {
     id: "2920",
@@ -5040,7 +5057,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://github.com/ZooDAO-Project/moonbeam-battles/blob/master/audit/ZooDAO_Moonbeam_Battles_Audit_Report_by_WatchPug.pdf"],
-    listedAt: 1683142758
+    listedAt: 1683142758,
+    github: ["ZooDAO-Project"]
   },
   {
     id: "2928",
@@ -5658,6 +5676,7 @@ const data3: Protocol[] = [
     module: "dummy.js",
     treasury: "airswap.js",
     twitter: "airswap",
+    github: ["airswap"]
   },
   /*
   {
@@ -5768,6 +5787,7 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "dummy.js",
     twitter: "DXdao_",
+    github: ["DXgovernance"]
   },
   {
     id: "2961",
@@ -6047,7 +6067,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: [],
     audit_links: ["https://skynet.certik.com/projects/walnut"],
-    listedAt: 1683899829
+    listedAt: 1683899829,
+    github: ["nutbox-dao"]
   },
   {
     id: "2974",
@@ -6223,6 +6244,7 @@ const data3: Protocol[] = [
     twitter: "Kwenta_io",
     forkedFrom: [],
     oracles: [],
+    github: ["Kwenta"]
   },
   {
     id: "2982",
@@ -6244,7 +6266,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     oracles: ["Internal"],
     audit_links: ["https://github.com/satoridao/contract_audit_report/blob/main/Satori_audit_report.pdf"],
-    listedAt: 1684244889
+    listedAt: 1684244889,
+    github: ["satori-hq"]
   },
   {
     id: "2983",
@@ -6307,7 +6330,8 @@ const data3: Protocol[] = [
     twitter: "vegaprotocol",
     forkedFrom: [],
     oracles: [],
-    listedAt: 1684246282
+    listedAt: 1684246282,
+    github: ["vegaprotocol"]
   },
   {
     id: "2986",
@@ -6646,7 +6670,8 @@ const data3: Protocol[] = [
     forkedFrom: ["Uniswap V2"],
     module: "FlashLiquidity/index.js",
     twitter: "flashliquidity",
-    listedAt: 1684593780
+    listedAt: 1684593780,
+    github: ["flashliquidity"]
   },
   {
     id: "3001",
@@ -6689,7 +6714,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "rigoblock/index.js",
     twitter: "RigoBlock",
-    listedAt: 1684751161
+    listedAt: 1684751161,
+    github: ["RigoBlock"]
   },
   {
     id: "3003",
@@ -6937,7 +6963,8 @@ const data3: Protocol[] = [
     forkedFrom: [],
     module: "unifi-protocol-staking/index.js",
     twitter: "unifiprotocol",
-    listedAt: 1684863868
+    listedAt: 1684863868,
+    github: ["unifiprotocol"]
   },
   {
     id: "3014",
@@ -7493,6 +7520,7 @@ const data3: Protocol[] = [
     chains: ["Ethereum"],
     module: "dummy.js",
     twitter: "rainbowdotme",
+    github: ["rainbow-me"]
   },
   {
     id: "3039",
@@ -7648,7 +7676,7 @@ const data3: Protocol[] = [
     audit_links: [
       "https://docs.astaria.xyz/docs/smart-contracts/audits"
     ],
-    listedAt: 1685488754
+    listedAt: 1685488754,
   },
   {
     id: "3046",

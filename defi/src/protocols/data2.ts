@@ -12930,7 +12930,7 @@ const data2: Protocol[] = [
     chains: ["Parallel"],
     module: "parallel-lending/index.js",
     twitter: "ParallelFi",
-    parentProtocol: "parent#parallel-deFi-super-app",
+    parentProtocol: "parent#parax",
   },
   {
     id: "1956",
@@ -12949,7 +12949,7 @@ const data2: Protocol[] = [
     chains: ["Parallel"],
     module: "parallelamm/index.js",
     twitter: "ParallelFi",
-    parentProtocol: "parent#parallel-deFi-super-app",
+    parentProtocol: "parent#parax",
   },
   {
     id: "1957",
@@ -12968,7 +12968,7 @@ const data2: Protocol[] = [
     chains: ["Parallel"],
     module: "parallel-stream/index.js",
     twitter: "ParallelFi",
-    parentProtocol: "parent#parallel-deFi-super-app",
+    parentProtocol: "parent#parax",
   },
   {
     id: "1958",
@@ -12987,7 +12987,7 @@ const data2: Protocol[] = [
     chains: ["Parallel"],
     module: "parallel-staking/index.js",
     twitter: "ParallelFi",
-    parentProtocol: "parent#parallel-deFi-super-app",
+    parentProtocol: "parent#parax",
   },
   {
     id: "1959",

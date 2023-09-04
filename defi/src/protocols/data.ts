@@ -23721,7 +23721,7 @@ The eWIT token is a custodial, wrapped version of the Witnet coin managed by the
     chains: ["Parallel"],
     module: "parallel.js",
     twitter: "ParallelFi",
-    parentProtocol: "parent#parallel-deFi-super-app",
+    parentProtocol: "parent#parax",
     listedAt: 1641749944,
   },
   {

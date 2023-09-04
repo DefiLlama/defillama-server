@@ -25051,6 +25051,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1675355930
   },
+  /*
   {
     id: "2491",
     name: "Liqwid",
@@ -25073,6 +25074,7 @@ const data2: Protocol[] = [
     forkedFrom: [],
     listedAt: 1675383083
   },
+  */
   {
     id: "2492",
     name: "Monolith",

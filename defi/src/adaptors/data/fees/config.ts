@@ -926,6 +926,7 @@ export default {
         "id": "3038"
     },
     "lybra-finance": {
+        parentId: "Lybra Finance",
         "enabled": true,
         "id": "2904"
     },
@@ -1234,5 +1235,10 @@ export default {
     "apex": {
         "enabled": true,
         "id": "1878"
+    },
+    "lybra-v2": {
+        parentId: "Lybra Finance",
+        "enabled": true,
+        "id": "3468"
     }
 } as AdaptorsConfig

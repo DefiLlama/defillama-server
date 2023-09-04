@@ -1,4 +1,3 @@
-import { startup, windDown } from "../../coins2";
 import {
   batchWrite2WithAlerts,
   batchWriteWithAlerts,
@@ -6,7 +5,6 @@ import {
 import { getCurrentUnixTimestamp } from "../utils/date";
 
 export default async function test() {
-  startup();
   try {
     const result = [
       {
@@ -35,7 +33,6 @@ export default async function test() {
   } catch (e) {
     console.error(`test runner failed  ${e}`);
   }
-  await windDown();
   console.log("connections closed");
   process.exit(0);
 }

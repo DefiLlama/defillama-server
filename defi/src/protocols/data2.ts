@@ -11415,7 +11415,7 @@ const data2: Protocol[] = [
     oracles: [],
     forkedFrom: [],
     module: "avault/index.js",
-    twitter: "Avault_Astar",
+    twitter: "AvaultOmni",
     listedAt: 1657291702,
     github: ["AVaultFinance"]
   },

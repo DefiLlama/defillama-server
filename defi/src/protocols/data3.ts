@@ -17327,8 +17327,8 @@ const data3: Protocol[] = [
     logo: `${baseIconsUrl}/based-farm.jpg`,
     audits: "0",
     audit_note: null,
-    gecko_id: "based-finance",
-    cmcId: "17954",
+    gecko_id: null,
+    cmcId: null,
     category: "Algo-Stables",
     chains: ["Base"],
     module: "basedfarm/index.js",
@@ -17336,6 +17336,7 @@ const data3: Protocol[] = [
     forkedFrom: ["Tomb"],
     github: ["BasedDotFarm"],
     twitter: "BasedDotFarm",
+    parentProtocol: "parent#based-finance",
     listedAt: 1693841922
   },
   {

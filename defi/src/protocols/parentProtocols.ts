@@ -2619,6 +2619,17 @@ const parentProtocols: IParentProtocol[] = [
     chains: [],
     twitter: "SolidlyLabs",
   },
+  {
+    id: "parent#morphex",
+    name: "Morphex",
+    url: "https://www.morphex.trade",
+    description: "Decentralized perpetual exchange on Fantom and BNB Chain",
+    logo: `${baseIconsUrl}/morphex.jpg`,
+    gecko_id: "mpx",
+    cmcId: "23431",
+    chains: [],
+    twitter: "MorphexFTM",
+  },
 ];
 
 export default parentProtocols;

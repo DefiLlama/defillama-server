@@ -6,5 +6,31 @@
       "symbol": "BONE",
       "to": "coingecko#bone-shibaswap"
     }
+  },
+  "sui": {
+    "0x1d58e26e85fbf9ee8596872686da75544342487f95b1773be3c9a49ab1061b19::suia_token::SUIA_TOKEN": {
+      "name": "SUIA",
+      "decimals": "9",
+      "symbol": "SUIA",
+      "to": "coingecko#suia"
+    },
+    "0xcf72ec52c0f8ddead746252481fb44ff6e8485a39b803825bde6b00d77cdb0bb::coin::COIN": {
+      "name": "USDC",
+      "decimals": "6",
+      "symbol": "USDC",
+      "to": "coingecko#usd-coin"
+    },
+    "0x06864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS": {
+      "name": "Cetus",
+      "decimals": "9",
+      "symbol": "CETUS",
+      "to": "coingecko#cetus"
+    },
+    "0xe4239cd951f6c53d9c41e25270d80d31f925ad1655e5ba5b543843d4a66975ee::SUIP::SUIP": {
+      "name": "SuiPad",
+      "decimals": "9",
+      "symbol": "SUIP",
+      "to": "coingecko#suipad"
+    }
   }
 }

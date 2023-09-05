@@ -17466,6 +17466,28 @@ const data3: Protocol[] = [
     github: ["basetasmfinance"],
     listedAt: 1693922475
   },
+  {
+    id: "3486",
+    name: "Aeria",
+    address: null,
+    symbol: "-",
+    url: "https://aeria.finance/",
+    description:
+      "Protocol for exotic options trading strategies",
+    chain: "Base",
+    logo: `${baseIconsUrl}/aeria.png`,
+    audits: "0",
+    audit_note: null,
+    gecko_id: null,
+    cmcId: null,
+    category: "Options Vault",
+    chains: ["Base"],
+    module: "aeria/index.js",
+    oracles: [],
+    forkedFrom: [],
+    twitter: "aeriafinance",
+    listedAt: 1693938331
+  },
 ]
 
 export default data3

@@ -310,5 +310,15 @@ export default {
         },
         "enabled": true,
         "id": "3483"
+    },
+    "baseswap": {
+        "enabled": true,
+        "id": "3333",
+        "protocolsData": {
+            "derivatives": {
+                "id": "3333",
+                "enabled": true,
+            }
+        }
     }
 } as AdaptorsConfig

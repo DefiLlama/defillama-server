@@ -1909,7 +1909,13 @@ export default {
     },
     "baseswap": {
         "enabled": true,
-        "id": "3333"
+        "id": "3333",
+        "protocolsData": {
+            "swap": {
+                "id": "3333",
+                "enabled": true,
+            }
+        }
     },
     "yfx-v3": {
         "enabled": true,

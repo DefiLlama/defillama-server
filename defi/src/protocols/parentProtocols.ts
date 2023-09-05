@@ -2064,11 +2064,11 @@ const parentProtocols: IParentProtocol[] = [
     github: ["crypto-pepe"]
   },
   {
-    id: "parent#equalizer0x",
-    name: "Equalizer0x",
+    id: "parent#equalizer",
+    name: "Equalizer",
     url: "https://equalizer.exchange/",
     description: "Equalizer's twin-AMM design unites StableSwap pools with Standard 'kxy' liquidity pools. All the trading fees go to Vote-Escrowers of emission token $EQUAL which has to be Locked to earn triple 'Bribes' from candidate pools via Trade Fee, Internal Bribes & External Bribes.",
-    logo: `${baseIconsUrl}/equalizer0x.png`,
+    logo: `${baseIconsUrl}/equalizer.png`,
     gecko_id: "equalizer-dex",
     cmcId: null,
     chains: [],

@@ -218,7 +218,7 @@ async function combineRedisAndPostgresData(
       combinedData[r.key] = r;
       return;
     }
-    // console.log(`${r.key} is stale`);
+    // console.log(`${r.key} is stale in redis`);
   });
 
   return combinedData;
@@ -258,9 +258,9 @@ function findRedisWrites(values: Coin[], storedRecords: CoinDict): Coin[] {
     if (!record || record.timestamp < c.timestamp) {
       writesToRedis.push(c);
     } else {
-      console.log(
-        `${c.key} already fresher in redis (${record.timestamp} stored vs: ${c.timestamp})`,
-      );
+      // console.log(
+      //   `${c.key} already fresher in redis (${record.timestamp} stored vs: ${c.timestamp})`,
+      // );
     }
   });
 
@@ -299,14 +299,7 @@ async function writeToPostgres(values: Coin[]): Promise<void> {
   if (values.length == 0) return;
 
   values.map((v: Coin) => {
-    if (
-      !v.price ||
-      !v.timestamp ||
-      !v.key ||
-      !v.adapter ||
-      !v.confidence ||
-      !v.symbol
-    )
+    if (!v.price || !v.timestamp || !v.key || !v.confidence)
       console.log(`${v.key} entry is invalid oops`);
   });
   console.log(`${values.length} values to pg (should be <80)`);

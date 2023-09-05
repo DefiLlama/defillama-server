@@ -175,7 +175,7 @@ export default async function getTokenPrices(chain: string, timestamp: number) {
 
   let vaults: VaultKeys[] = (
     await axios.get(
-      `https://api.yearn.finance/v1/chains/${
+      `https://api.yearn.fi/v1/chains/${
         chains[chain as keyof object]
       }/vaults/all`,
     )
